@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "method": "exact_institutional_grounds_exclusion",
+  "id": "osm:way:100982052",
+  "classification": "Presidential palace institutional compound imported as a residential locality",
+  "originalTags": {
+    "landuse": "residential",
+    "name": "القصر الرئاسي",
+    "name:ar": "القصر الرئاسي",
+    "name:en": "Presidential Palace Grounds",
+    "name:fr": "Palais présidentiel"
+  },
+  "sourceGeometrySha256": "ff1ecf1ff7e489c1ddd08f3b31a3a9e3dd176b116662a333f4ecb04e7ae1b340",
+  "packedGeometrySha256": "eb9d39a9d4fab54a5a05079db552c29c0449855eaac47cc9e580623538baedc8",
+  "currentRaw": {
+    "id": "osm:way:100982052",
+    "sourceId": "osm",
+    "name": "القصر الرئاسي",
+    "aliases": [
+      "Palais présidentiel",
+      "Presidential Palace Grounds"
+    ],
+    "kind": "residential",
+    "parentName": "قرطاج",
+    "contextAliases": [
+      "Cartagine",
+      "Cartago",
+      "Carthage",
+      "Delegación de Cartago",
+      "Delegation Karthago",
+      "Kartagina",
+      "Karthago",
+      "Καρχηδόνα",
+      "Καρχηδών",
+      "Картаген",
+      "Карфаген",
+      "Կարթագեն",
+      "Կարթագէն",
+      "قرطاج",
+      "قرطاجنہ",
+      "معتمدية قرطاج",
+      "کارتاژ",
+      "ܩܪܬܐܓܘ"
+    ],
+    "governorateId": 342,
+    "lat": 36.856645,
+    "lng": 10.33743,
+    "delegationId": 387,
+    "hasBoundary": true,
+    "bbox": [
+      10.332048,
+      36.854332,
+      10.340772,
+      36.85894
+    ],
+    "areaKm2": 0.1698150052475701,
+    "pickerGroupId": "osm:way:100982052",
+    "offset": 5240308,
+    "length": 732
+  },
+  "evidence": [
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/osm-way-100982052-current-v2.json",
+      "sha256": "fc42ba5d0c11c6c7c8d10678639735c4f89b280c41d0f2d955c7c4c2a982e876",
+      "bytes": 1559
+    },
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/osm-way-100982052-history-v2.json",
+      "sha256": "8e6db297a52670ae05f048eb36b8e33aa95570dced97a5794913513caad646ad",
+      "bytes": 9578
+    },
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/osm-way-100982052-full-v2.json",
+      "sha256": "482809d3b515ec135a679e45ba9602bd99d5cd977b30b20e409af9175cbbdf4d",
+      "bytes": 16283
+    },
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/presidency-carthage-palace-original.html",
+      "sha256": "8624f73df4a2f639d68a1c6bc59c3b4f74aba30e301c2be97a08d0dca20556ac",
+      "bytes": 58079
+    },
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/presidency-carthage-palace-derived-text.txt",
+      "sha256": "c6757afd5fcbde500f7c85bee763a0f4a36b2c72e835cacf12b9d494d335a323",
+      "bytes": 2578
+    },
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/source-finite-facts.json",
+      "sha256": "5fa820cdec2f268465bcf5d567c05b1d3f33f8ba6e743df75a89ee4140f312e7",
+      "bytes": 63026
+    },
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/osm_way_100982052-1.json",
+      "sha256": "9e52dbbf1bb36cd6c1417b012f81d515caed69e86bfeb65f08c2efcf4a0ad3c2",
+      "bytes": 1338
+    },
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/osm_way_100982052-2.json",
+      "sha256": "5e36b7020eea7179eaac0ecfd1ae6b2e567ef1a4ffc9774e57c837d6ada626ac",
+      "bytes": 1336
+    }
+  ],
+  "primarySourceUrl": "https://www.carthage.tn/ar/%D9%82%D8%B5%D8%B1_%D9%82%D8%B1%D8%B7%D8%A7%D8%AC",
+  "authenticVersionsReviewed": 8,
+  "phoneObservationQualification": "Two root-viewed public Maps observations corroborate government-office identity and geographic context. No Google polygon is used.",
+  "phoneScreenshotSha256s": [
+    "800e6e613d4f9e596abcbacf21e5613e109b569e216250d3d6e15e78d5a1b1a5",
+    "0fc1606efffc72f45e67bf8d279a074c425bb01ea658c3d7dbc41b98fcda51be"
+  ],
+  "preservation": {
+    "removeOnlyIds": [
+      "osm:way:100982052"
+    ],
+    "metadataRowsBefore": 3530,
+    "metadataRowsAfter": 3529,
+    "polygonsBefore": 2626,
+    "polygonsAfter": 2625,
+    "pointCountUnchanged": 904,
+    "packedBytesRemovedOnly": 732,
+    "binaryBefore": 5537724,
+    "binaryAfter": 5536992,
+    "rawGroupsBefore": 3394,
+    "rawGroupsAfter": 3393,
+    "curationsBefore": 265,
+    "curationsAfter": 266,
+    "allCurrentReceiptsUnchanged": 389,
+    "allCurrentConflictsUnchanged": 366,
+    "allCurrentDuplicateGroupsUnchanged": 308,
+    "retiredCountBefore": 117,
+    "retiredCountAfter": 118,
+    "allReviewedNamesUnchanged": 121,
+    "allSavedReplacementObjectsUnchanged": 1,
+    "noNewSourcePointsWouldSurface": true,
+    "manualPrayerReferencesUnchanged": true,
+    "remainingRawIdsMetadataAndPackedSlicesPreservedExceptOffsets": true
+  },
+  "separateHeldObject": {
+    "id": "osm:way:100904291",
+    "currentRaw": {
+      "id": "osm:way:100904291",
+      "sourceId": "osm",
+      "name": "Presidential Residences",
+      "aliases": [],
+      "kind": "residential",
+      "parentName": "المرسى الشاطئ",
+      "contextAliases": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Plage",
+        "المرسى الشاطئ",
+        "معتمدية المرسى"
+      ],
+      "governorateId": 342,
+      "lat": 36.911154,
+      "lng": 10.31659,
+      "delegationId": 386,
+      "hasBoundary": true,
+      "bbox": [
+        10.314274,
+        36.909711,
+        10.318745,
+        36.913278
+      ],
+      "areaKm2": 0.11677848960808318,
+      "pickerGroupId": "osm:way:100904291",
+      "offset": 5240128,
+      "length": 180
+    },
+    "packedGeometrySha256": "479a376b2c738b8c5bbe6f6b7aaf8e9b9c70e21f79dc9bcca09688073b4446a6",
+    "spatiallyDisjointFromPalaceGrounds": true,
+    "preserveUnchanged": true,
+    "qualification": "Presidential Residences is a separate source object and remains held. This palace-ground finding supplies no classification for that residential area."
+  },
+  "qualification": "The exclusion proposal is source-object classification, not a claim that nobody resides inside the official compound, not a legal parcel certification, and not a Google polygon import. Public institutional identity does not justify removing unrelated residential neighborhoods."
+}

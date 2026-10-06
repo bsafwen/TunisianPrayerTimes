@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "installedAtUtc": "2026-09-25T00:15:41.769124+00:00",
+  "status": "installed",
+  "package": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\boundary-reviews\\sousse-ain-rahma-selloum-main-component-20260925",
+  "baseSha256": {
+    "neighborhoods.json": "e3ff4c5543b023b8846d61dcf3031b0e4504598b9227a02a50a441ca4d8339e4",
+    "neighborhoods.bin": "a8745844d40d2314c3cd14bb4ca295593d1263ad84c13da8e521dc361211e45b"
+  },
+  "afterSha256": {
+    "neighborhoods.json": "8e065ceec567aaa943d3ea30dc00ab46758c56e3b4856970496afd46c364cb98",
+    "neighborhoods.bin": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd"
+  },
+  "backupFiles": {
+    "neighborhoods.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\boundary-reviews\\sousse-ain-rahma-selloum-main-component-20260925\\before-neighborhoods.json",
+    "neighborhoods.bin": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\boundary-reviews\\sousse-ain-rahma-selloum-main-component-20260925\\before-neighborhoods.bin"
+  },
+  "validationReport": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\boundary-reviews\\sousse-ain-rahma-selloum-main-component-20260925\\validation.json",
+  "sourceId": "derived-sousse-ain-rahma-minus-selloum-main-component-20260925",
+  "featureId": "osm:relation:7105253",
+  "sourcePinsSha256": {
+    "review.json": "19174435e6da199789228bd73cc1af839b6b60c4abaa4c63e49a884f11c2f929",
+    "followup-20260925.json": "73a79aaee471ec4e2b9ce7c8e8de2c2b248c48ffb965b28de07e86605fda76fc",
+    "ain-rahma-metadata.json": "4db735e2d6604f6612ff2796b7a2be7ad880b644ffc88d76bb0aabd655dd64a3",
+    "ain-rahma.pdf": "18dc3ead58d3ea1ba96c9c30287fc944872df80a81560d8f3497b41ad1d3283c",
+    "generate_neighborhoods.py": "ae3cde00bb6929cf19254bd42f66d77c1decadb370a46148983e4a3752f67d56",
+    "prayer-source-coordinates.json": "3b1ea927202e5674324271c1f45db0813167377d80aaf517619916e1bb89cf3d"
+  },
+  "proof": {
+    "schemaVersion": 1,
+    "status": "ALL_PRECONDITIONS_PASSED",
+    "stageOnly": false,
+    "installationPerformed": true,
+    "baseSha256": {
+      "neighborhoods.json": "e3ff4c5543b023b8846d61dcf3031b0e4504598b9227a02a50a441ca4d8339e4",
+      "neighborhoods.bin": "a8745844d40d2314c3cd14bb4ca295593d1263ad84c13da8e521dc361211e45b"
+    },
+    "sourcePinsSha256": {
+      "review.json": "19174435e6da199789228bd73cc1af839b6b60c4abaa4c63e49a884f11c2f929",
+      "followup-20260925.json": "73a79aaee471ec4e2b9ce7c8e8de2c2b248c48ffb965b28de07e86605fda76fc",
+      "ain-rahma-metadata.json": "4db735e2d6604f6612ff2796b7a2be7ad880b644ffc88d76bb0aabd655dd64a3",
+      "ain-rahma.pdf": "18dc3ead58d3ea1ba96c9c30287fc944872df80a81560d8f3497b41ad1d3283c",
+      "generate_neighborhoods.py": "ae3cde00bb6929cf19254bd42f66d77c1decadb370a46148983e4a3752f67d56",
+      "prayer-source-coordinates.json": "3b1ea927202e5674324271c1f45db0813167377d80aaf517619916e1bb89cf3d"
+    },
+    "target": {
+      "id": "osm:relation:7105253",
+      "sourceIdBefore": "osm",
+      "sourceIdAfter": "derived-sousse-ain-rahma-minus-selloum-main-component-20260925",
+      "originalRepresentativeLatLng": [
+        36.223986,
+        10.424705
+      ],
+      "representativeCoordinatePreserved": true,
+      "candidateGeometryType": "Polygon",
+      "candidateIsValid": true,
+      "candidateComponentCount": 1,
+      "fullClipComponentCount": 3,
+      "removedDetachedComponents": [
+        {
+          "areaKm2": 0.005145070054560128,
+          "officialOverlapKm2": 0.0,
+          "officialOverlapPercent": 0.0,
+          "representativePointLatLng": [
+            36.268142,
+            10.488953
+          ]
+        },
+        {
+          "areaKm2": 0.016837322171146366,
+          "officialOverlapKm2": 0.0,
+          "officialOverlapPercent": 0.0,
+          "representativePointLatLng": [
+            36.2595,
+            10.485716
+          ]
+        }
+      ],
+      "removedDetachedAreaKm2": 0.021982392225706495,
+      "candidateAreaKm2": 47.821911320793646,
+      "bboxWgs84": [
+        10.366762,
+        36.176066,
+        10.481857,
+        36.265455
+      ],
+      "repInsideCandidate": true,
+      "candidateExclusionMaskIntersectionDegree2": 0.0,
+      "officialRingOverlapKm2": 25.947640147648325
+    },
+    "catalog": {
+      "featureCount": 3474,
+      "idsAndOrderUnchanged": true,
+      "untouchedFeatureSemanticsPreserved": true,
+      "untouchedPackedPayloadsPreserved": true,
+      "countryPayloadPreserved": true,
+      "bboxGridRebuilt": true,
+      "conflictCountBefore": 480,
+      "conflictCountAfter": 479,
+      "addedConflictPairs": [],
+      "removedConflictPairs": [
+        [
+          "osm:relation:7105249",
+          "osm:relation:7105253"
+        ]
+      ],
+      "targetConflictBefore": {
+        "ids": [
+          "osm:relation:7105249",
+          "osm:relation:7105253"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 2.8964490685616027,
+        "sample": {
+          "lat": 36.258354499999996,
+          "lng": 10.479765472384766
+        }
+      },
+      "targetConflictAfter": null
+    },
+    "gps": {
+      "disputedSample": {
+        "lat": 36.258354499999996,
+        "lng": 10.479765472384766
+      },
+      "beforeWinnerId": null,
+      "afterWinnerId": "osm:relation:7105249",
+      "selloumContains": true,
+      "ainCandidateContains": false
+    },
+    "prayerSourceInvariance": {
+      "prayerSourceCoordinatesSha256": "3b1ea927202e5674324271c1f45db0813167377d80aaf517619916e1bb89cf3d",
+      "featureIdsAndOrderUnchanged": true,
+      "allFeatureLatLngAndDelegationIdentityFieldsUnchanged": true,
+      "ainRepresentativePreserved": true,
+      "note": "The reviewed prayer-source coordinate asset is byte-identical; every feature ID/name/kind/governorate/delegation/lat/lng used to select a prayer-source locality remains unchanged."
+    },
+    "lineage": {
+      "sourceId": "derived-sousse-ain-rahma-minus-selloum-main-component-20260925",
+      "boundaryAccuracyVerified": false,
+      "evidenceFiles": [
+        {
+          "path": "work/official-imada-evidence-20260924-v2/01-sousse/boundary-risk/selloum-ain-rahma/review.json",
+          "sha256": "19174435e6da199789228bd73cc1af839b6b60c4abaa4c63e49a884f11c2f929"
+        },
+        {
+          "path": "work/official-imada-evidence-20260924-v2/01-sousse/boundary-risk/selloum-ain-rahma/followup-20260925.json",
+          "sha256": "73a79aaee471ec4e2b9ce7c8e8de2c2b248c48ffb965b28de07e86605fda76fc"
+        },
+        {
+          "path": "work/hammamet-frontier11-official-maps-20260919/ain-rahma.pdf",
+          "sha256": "18dc3ead58d3ea1ba96c9c30287fc944872df80a81560d8f3497b41ad1d3283c"
+        },
+        {
+          "path": "work/hammamet-frontier11-official-maps-20260919/ain-rahma-metadata.json",
+          "sha256": "4db735e2d6604f6612ff2796b7a2be7ad880b644ffc88d76bb0aabd655dd64a3"
+        }
+      ]
+    }
+  }
+}

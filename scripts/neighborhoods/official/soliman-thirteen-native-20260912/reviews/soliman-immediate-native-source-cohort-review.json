@@ -1,0 +1,279 @@
+{
+  "status": "COMPLETE_IMMEDIATE_NATIVE_SOURCE_COHORT_READY_FOR_IMPACT_REVIEW_NOT_IMPORT_ACCEPTANCE",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "fbd93249d69e9f05d1e713a5924241c38503224adf1b5baab98ac5f44effc4e6"
+  },
+  "registry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "initialImmediateIntersections": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\initial-immediate-sector-intersections.json",
+    "sha256": "a087d5cbd2e5601c6be17f605680d6d5cffd14d52838836f02f556d9d008c29a"
+  },
+  "priorSolimanPrimaryReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\soliman-sector-building-context-primary-review.json",
+    "sha256": "4bce2114d3b3cd4f50aea00256a7b24fffec9cb5dc71407690ccfa5ce097c396"
+  },
+  "priorSolimanNativeFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-sector-building-context-review\\source-geography-facts.json",
+    "sha256": "df697da61dfa7af2f5576c58e2e88538df0197cebc59f049bc61045f1d796f78"
+  },
+  "currentSolimanCarry": "Current fbd row equals historical94f row exactly except binary offset; root-owned apartment exclusions leave remaining geometry unchanged. Source cache and native artifacts remain pinned original evidence.",
+  "scope": {
+    "currentOsmSectors": 8,
+    "newImmediateNeighborOriginalPdfs": 8,
+    "totalOriginalPdfsIncludingReusedSoliman": 9,
+    "validNativePolygons": 8,
+    "sourceIdentityBoundSectorCandidates": 6,
+    "unboundNamedBorjCedriaComponents": 2,
+    "heldInvalidNativeClosedPaths": 1,
+    "noAreaThresholdExclusion": "All seven positive-area current-sector intersections were included, including Cherifet54.75m2 and Mraissa14.94m2 source-loss slivers."
+  },
+  "nativeGeometryBundle": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\whole-native-source-polygons.geojson",
+    "sha256": "c18e02069247cd0bd528464ee5da6b01e59bf07ed46e1ab37656d543688b935f"
+  },
+  "completeSourceExtraction": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+    "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+  },
+  "originalRetrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\manifest.json",
+    "sha256": "6c701406132ab041034a8e9110801b16ea938aa666ad5b14380bcbf07e094c30"
+  },
+  "sourceRecords": [
+    {
+      "key": "soliman-sud",
+      "featureId": "osm:relation:7100694",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\soliman-sud.pdf",
+        "sha256": "ce5884a3f7ebbadbfa5383b0b433e28e554760cd8531dc286354cf6405f3f3c0"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\soliman-sud.png",
+        "sha256": "5c5ef70f96ad9cce16463cc2c28e5890fdf974c9423f0cbd2f99be88fa546935"
+      },
+      "sourceDrawingIndices": [
+        422
+      ],
+      "verticesIncludingClosure": 566,
+      "areaSquareMetersUTM32": 25961925.045039188,
+      "maxControlResidualMeters": 0.14537327845723458,
+      "originalCurrentCode": "156155",
+      "splitPathReconstruction": null,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": true,
+      "identityQualification": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+    },
+    {
+      "key": "bouchray",
+      "featureId": "osm:relation:7102534",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\bouchray.pdf",
+        "sha256": "3b54f8c69b91a27619da685b1f127bfd2317f8c031195b90aa55b6f57364796c"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\bouchray.png",
+        "sha256": "0bde6c8e42dc55392596ae176b410a7aa0820cc90273b3595549001b72145a0b"
+      },
+      "sourceDrawingIndices": [
+        399
+      ],
+      "verticesIncludingClosure": 722,
+      "areaSquareMetersUTM32": 22681661.850413527,
+      "maxControlResidualMeters": 0.09352704551793506,
+      "originalCurrentCode": "156153",
+      "splitPathReconstruction": null,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": true,
+      "identityQualification": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+    },
+    {
+      "key": "fondouk-jedid",
+      "featureId": "osm:relation:7104935",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\fondouk-jedid.pdf",
+        "sha256": "30e8a44086627c679d90fe8c55dfbdf2e96280519d7660b691af408088440cef"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\fondouk-jedid.png",
+        "sha256": "db2fac40c3edca1f3c3825809c296b8e3537398d7231a03d32c805eb72f99df9"
+      },
+      "sourceDrawingIndices": [
+        579
+      ],
+      "verticesIncludingClosure": 499,
+      "areaSquareMetersUTM32": 39311588.55112318,
+      "maxControlResidualMeters": 0.1611713177187804,
+      "originalCurrentCode": "156451",
+      "splitPathReconstruction": null,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": true,
+      "identityQualification": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+    },
+    {
+      "key": "chammes",
+      "featureId": "osm:relation:7104934",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\chammes.pdf",
+        "sha256": "73f9a0b5a3b2c2ebd393be651755a4afa4a4de2051008905eef72c6efd1323c1"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\chammes.png",
+        "sha256": "dc844d2bad375ce8849f78dddd367d9717b2127e0043958249419d4525510515"
+      },
+      "sourceDrawingIndices": [
+        620
+      ],
+      "verticesIncludingClosure": 271,
+      "areaSquareMetersUTM32": 24966099.999625877,
+      "maxControlResidualMeters": 0.14524760212172858,
+      "originalCurrentCode": "156452",
+      "splitPathReconstruction": null,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": true,
+      "identityQualification": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+    },
+    {
+      "key": "borj-cedria-1",
+      "featureId": "isie2023:borj-cedria-1",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1.pdf",
+        "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1.png",
+        "sha256": "c1afcb1c94241199138c63ad932995070fcbc7d6698fb908def8b3e53aedbd0b"
+      },
+      "sourceDrawingIndices": [
+        480
+      ],
+      "verticesIncludingClosure": 432,
+      "areaSquareMetersUTM32": 17520304.3292878,
+      "maxControlResidualMeters": 0.44819810513939695,
+      "originalCurrentCode": null,
+      "splitPathReconstruction": null,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": true,
+      "identityQualification": "Source-only named component. Current unsuffixed Borj Cedria raw7174585/code135552 is not independently bound to this one component; no fake new code or source identity assigned."
+    },
+    {
+      "key": "borj-cedria-2",
+      "featureId": "isie2023:borj-cedria-2",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2.pdf",
+        "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2.png",
+        "sha256": "fbad2fbbbcd367ec62b8319f7762fcb5b68b92fcc5c4a3082c363da465602e2f"
+      },
+      "sourceDrawingIndices": [
+        210
+      ],
+      "verticesIncludingClosure": 398,
+      "areaSquareMetersUTM32": 3538020.1691587125,
+      "maxControlResidualMeters": 0.17769819495373276,
+      "originalCurrentCode": null,
+      "splitPathReconstruction": null,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": true,
+      "identityQualification": "Source-only named component. Current unsuffixed Borj Cedria raw7174585/code135552 is not independently bound to this one component; no fake new code or source identity assigned."
+    },
+    {
+      "key": "cherifet",
+      "featureId": "osm:relation:7102535",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\cherifet.pdf",
+        "sha256": "fab1b73d8275448c7467c57f37e613439a1e1e444835e965d6a95155cb3b68f3"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\cherifet.png",
+        "sha256": "b186bd92bf83615ff97847c244461e38860e27505dffe6f6d1e4f8da88193551"
+      },
+      "sourceDrawingIndices": [
+        409
+      ],
+      "verticesIncludingClosure": 392,
+      "areaSquareMetersUTM32": 17768100.29689612,
+      "maxControlResidualMeters": 0.09009119490922811,
+      "originalCurrentCode": "156152",
+      "splitPathReconstruction": null,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": true,
+      "identityQualification": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+    },
+    {
+      "key": "mraissa",
+      "featureId": null,
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa.pdf",
+        "sha256": "444feebb83c9c559fc645d590cda0824752ce91b2fc3f65539233eca7dacce2f"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa.png",
+        "sha256": "803cc88ed9e4dbdd5f6a00294e0640690ec2a74774b1f5da4c9afeaa3d3c32e1"
+      },
+      "sourceDrawingIndices": [
+        507,
+        508
+      ],
+      "verticesIncludingClosure": 1499,
+      "originalCurrentCode": "156151",
+      "currentOsmId": "osm:relation:7100603",
+      "maxControlResidualMeters": 0.2755716914389869,
+      "wholePagePersonallyViewed": true,
+      "nativeGeometryValidClosedAndUnclipped": false,
+      "heldNativePath": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa-native-two-path-reconstruction-held.json",
+        "sha256": "41cf724636693f43be37e5c3bc70a25f7b72a5d9108940223ed7658775133c46"
+      },
+      "identityQualification": "The map is named Mraissa and aligns with registry156151, but its complete native closed linework self-intersects. Current source geometry is held unchanged; no usable polygon candidate is supplied."
+    }
+  ],
+  "identityHold": {
+    "currentOsmId": "osm:relation:7174585",
+    "currentRegistryRow": {
+      "governorateCode": "13",
+      "governorateFr": "Ben arous",
+      "governorateAr": "بن عروس",
+      "delegationCode": "1355",
+      "delegationFr": "Hammam chott",
+      "delegationAr": "حمام الشط",
+      "sectorCode": "135552",
+      "sectorFr": "Borj cedria",
+      "sectorAr": "برج السدرية",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 7991,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 265,
+        "Nombre_de_menages_par_Secteurs.xlsx": 265
+      }
+    },
+    "separateNativeMapFeatureIds": [
+      "isie2023:borj-cedria-1",
+      "isie2023:borj-cedria-2"
+    ],
+    "rule": "Keep both official named components distinct and unbound. Neither inherits code135552 or a new source identity in this artifact. Their union may be measured as a source-only coverage scenario, but that arithmetic does not establish a legal/administrative equivalence to the current unsuffixed sector."
+  },
+  "heldNativePaths": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa-native-two-path-reconstruction-held.json",
+      "sha256": "41cf724636693f43be37e5c3bc70a25f7b72a5d9108940223ed7658775133c46"
+    }
+  ],
+  "nativeReconstructionQualification": "All eight polygon candidates are complete and valid, wholly within their native viewports and active clips. Mraissa paths507 and508 join and close at exactly matching original endpoints, preserving1498 original edges, but the complete native ring self-intersects. Its unaltered linework is separately preserved and excluded from polygon operations; currentMraissa remains unchanged. BorjCedria1 label requires explicit bidi digit-order handling; exact native text and complete-page visual review identify the named component.",
+  "visualReview": "Personally viewed all eight new whole-page renders. Source title, red sector labels and boundaries, blue delegation boundaries and black governorate boundaries were inspected. Additional red labels inside some paths are retained in detailed extraction records and do not by themselves prove multiple geometry ownership.",
+  "importHold": "Source availability alone is insufficient for import. Remaining reviewer is independently measuring full-cohort gaps/overlaps, administrative contexts, raw metadata and proof dependencies. No neighboring source was clipped to fit another, no sector was renamed, and no import has been proposed by this source freeze.",
+  "operations": {
+    "liveOrSourceStageEdits": false,
+    "generationOrProductImports": false,
+    "testsOrBuild": false,
+    "phoneOrLedgerActions": false
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_soliman_immediate_native_sources.py",
+    "sha256": "7b893fee295ac148705f114fd947718e751c007d9b363f542eb3352fb62de1c4"
+  }
+}

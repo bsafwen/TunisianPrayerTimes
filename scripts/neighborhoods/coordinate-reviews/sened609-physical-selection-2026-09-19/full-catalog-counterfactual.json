@@ -1,0 +1,233 @@
+{
+  "baselineMetadataSha256": "2b060e0f598ecbec6680d929f97352f2dedb5e9db172258df0abab17e79d290d",
+  "baselineGovSha256": "7bbec58ccdad296eff14653ec55db760e8d9b29e6cc55fa20254b32cc2eaed20",
+  "featureCount": 3523,
+  "availableReferences": 258,
+  "allCurrentDefaultsMatchIndependentCalculation": true,
+  "scenarios": {
+    "609": {
+      "changes": [
+        {
+          "id": "osm:relation:7150211",
+          "name": "بئر سعد",
+          "lat": 34.353325,
+          "lng": 9.243952,
+          "before": 609,
+          "after": 612
+        },
+        {
+          "id": "osm:relation:7150239",
+          "name": "منزل ميمون",
+          "lat": 34.664645,
+          "lng": 9.091602,
+          "before": 509,
+          "after": 609
+        },
+        {
+          "id": "osm:relation:7169625",
+          "name": "العمرية",
+          "lat": 34.619485,
+          "lng": 9.319933,
+          "before": 510,
+          "after": 609
+        },
+        {
+          "id": "osm:way:285155889",
+          "name": "الطلح",
+          "lat": 34.41376,
+          "lng": 9.390675,
+          "before": 609,
+          "after": 612
+        },
+        {
+          "id": "osm:node:10008679396",
+          "name": "أولاد زايد",
+          "lat": 34.4264212,
+          "lng": 9.4342564,
+          "before": 609,
+          "after": 510
+        },
+        {
+          "id": "osm:node:10008679398",
+          "name": "أولاد طالب",
+          "lat": 34.3610411,
+          "lng": 9.2729875,
+          "before": 609,
+          "after": 612
+        }
+      ],
+      "candidatePointsBefore": {
+        "609": 609
+      },
+      "candidatePointsAfter": {
+        "609": 609
+      }
+    },
+    "1522": {
+      "changes": [
+        {
+          "id": "osm:relation:7169555",
+          "name": "الزيتونة",
+          "lat": 34.91343,
+          "lng": 9.490654,
+          "before": 513,
+          "after": 1522
+        },
+        {
+          "id": "osm:relation:7169577",
+          "name": "ورغة",
+          "lat": 34.78717,
+          "lng": 9.292787,
+          "before": 1522,
+          "after": 509
+        },
+        {
+          "id": "osm:relation:7169583",
+          "name": "بئر عمامة",
+          "lat": 34.87317,
+          "lng": 9.303254,
+          "before": 1522,
+          "after": 508
+        },
+        {
+          "id": "osm:relation:7169628",
+          "name": "القلال",
+          "lat": 34.695375,
+          "lng": 9.349164,
+          "before": 1522,
+          "after": 510
+        },
+        {
+          "id": "osm:relation:7169672",
+          "name": "القصر",
+          "lat": 34.96864,
+          "lng": 9.339641,
+          "before": 508,
+          "after": 1522
+        },
+        {
+          "id": "osm:relation:7169673",
+          "name": "بئر بدر",
+          "lat": 34.86994,
+          "lng": 9.520706,
+          "before": 513,
+          "after": 1522
+        }
+      ],
+      "candidatePointsBefore": {
+        "1522": 1522
+      },
+      "candidatePointsAfter": {
+        "1522": 1522
+      }
+    },
+    "609+1522": {
+      "changes": [
+        {
+          "id": "osm:relation:7150211",
+          "name": "بئر سعد",
+          "lat": 34.353325,
+          "lng": 9.243952,
+          "before": 609,
+          "after": 612
+        },
+        {
+          "id": "osm:relation:7150239",
+          "name": "منزل ميمون",
+          "lat": 34.664645,
+          "lng": 9.091602,
+          "before": 509,
+          "after": 609
+        },
+        {
+          "id": "osm:relation:7169555",
+          "name": "الزيتونة",
+          "lat": 34.91343,
+          "lng": 9.490654,
+          "before": 513,
+          "after": 1522
+        },
+        {
+          "id": "osm:relation:7169577",
+          "name": "ورغة",
+          "lat": 34.78717,
+          "lng": 9.292787,
+          "before": 1522,
+          "after": 509
+        },
+        {
+          "id": "osm:relation:7169583",
+          "name": "بئر عمامة",
+          "lat": 34.87317,
+          "lng": 9.303254,
+          "before": 1522,
+          "after": 508
+        },
+        {
+          "id": "osm:relation:7169625",
+          "name": "العمرية",
+          "lat": 34.619485,
+          "lng": 9.319933,
+          "before": 510,
+          "after": 609
+        },
+        {
+          "id": "osm:relation:7169628",
+          "name": "القلال",
+          "lat": 34.695375,
+          "lng": 9.349164,
+          "before": 1522,
+          "after": 510
+        },
+        {
+          "id": "osm:relation:7169672",
+          "name": "القصر",
+          "lat": 34.96864,
+          "lng": 9.339641,
+          "before": 508,
+          "after": 1522
+        },
+        {
+          "id": "osm:relation:7169673",
+          "name": "بئر بدر",
+          "lat": 34.86994,
+          "lng": 9.520706,
+          "before": 513,
+          "after": 1522
+        },
+        {
+          "id": "osm:way:285155889",
+          "name": "الطلح",
+          "lat": 34.41376,
+          "lng": 9.390675,
+          "before": 609,
+          "after": 612
+        },
+        {
+          "id": "osm:node:10008679396",
+          "name": "أولاد زايد",
+          "lat": 34.4264212,
+          "lng": 9.4342564,
+          "before": 609,
+          "after": 510
+        },
+        {
+          "id": "osm:node:10008679398",
+          "name": "أولاد طالب",
+          "lat": 34.3610411,
+          "lng": 9.2729875,
+          "before": 609,
+          "after": 612
+        }
+      ],
+      "candidatePointsBefore": {
+        "609": 609,
+        "1522": 1522
+      },
+      "candidatePointsAfter": {
+        "609": 609,
+        "1522": 1522
+      }
+    }
+  }
+}

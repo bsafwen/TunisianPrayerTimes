@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sector-2023-sidi-mtir-bouficha",
+  "boundarySource": {
+    "file": "official/sidi-mtir-20260920/sidi-mtir-source.geojson",
+    "sha256": "4d8069110dc7c8720f7904c85596789d11da79a2bb9c740c7b4ff3d95a8349e9"
+  },
+  "baselineMetadata": {
+    "file": "official/sidi-mtir-20260920/evidence/currentmetadata.json",
+    "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7105456",
+      "officialCode": "316159",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7105456",
+        "sourceId": "osm",
+        "name": "سيدي مطير",
+        "aliases": [
+          "Sidi Mtir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بوفيشة",
+        "contextAliases": [
+          "Bouficha",
+          "Délégation Bouficha",
+          "معتمدية بوفيشة"
+        ],
+        "governorateId": 348,
+        "lat": 36.358483,
+        "lng": 10.501576,
+        "delegationId": 433,
+        "hasBoundary": true,
+        "bbox": [
+          10.434029,
+          36.325313,
+          10.53185,
+          36.391772
+        ],
+        "areaKm2": 26.051887293880604,
+        "pickerGroupId": "osm:relation:7105456",
+        "offset": 471680,
+        "length": 812
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.358483,
+        "lng": 10.501576
+      },
+      "expectedNearestId": 433
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/sidi-mtir-20260920/evidence/root-cross-governorate-review.json",
+      "sha256": "b1536cc521b3fc75c61ac2dcef3379b5e7ae69e836752d6b3f64fb6f8c0e8e45"
+    },
+    {
+      "file": "official/sidi-mtir-20260920/source-review.json",
+      "sha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/sourcefacts-and-design.json",
+    "sha256": "01e96d6aecbf98c8407c751551dfa287b287cbee1206fd393c9d92e8ec7570e4"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7154916",
+      "name": "حزوة",
+      "status": "eligible_proposal",
+      "targetDelegationId": 479,
+      "governorateId": 352,
+      "basePoint": {
+        "lat": 33.738,
+        "lng": 7.603
+      },
+      "existingTargetGroupMembers": [
+        "delegation:479"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7154916",
+          "name": "حزوة",
+          "kind": "sector",
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "originalContainsDisplayReference": true,
+          "packagedContainsDisplayReference": true,
+          "originalGeometrySha256": "c41fc183c98f89985c5bd35cc48a129d94bbc18ce854f48880cecd5edecae40e",
+          "packedGeometrySha256": "2e1e01b3e0d215f35c901fd83ac178f1fad3cec46735e041167e7565afe59364"
+        },
+        {
+          "id": "osm:way:207579215",
+          "name": "حزوة",
+          "kind": "village",
+          "originalContainsBasePoint": false,
+          "packagedContainsBasePoint": false,
+          "originalContainsDisplayReference": true,
+          "packagedContainsDisplayReference": true,
+          "originalGeometrySha256": "810ea33b29bc91238d10cecb62c7fefd5188a6dd4493668636610d5403306a0b",
+          "packedGeometrySha256": "b009b55868151800ddcc32bd5e590f94fa89ad7d00d736e6964d4eb3a11a0dbe"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7154916",
+          "code": "625551",
+          "currentOfficialRecord": {
+            "governorateCode": "62",
+            "governorateFr": "Tozeur",
+            "governorateAr": "توزر",
+            "delegationCode": "6255",
+            "delegationFr": "Hazoua",
+            "delegationAr": "حزوة",
+            "sectorCode": "625551",
+            "sectorFr": "Hazoua",
+            "sectorAr": "حزوة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69109,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3388,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3381
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:fr": "Hazoua",
+            "ref:tn:codegeo": "625551"
+          },
+          "effectiveOriginalGeometrySha256": "c41fc183c98f89985c5bd35cc48a129d94bbc18ce854f48880cecd5edecae40e"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7154891",
+          "code": "6255",
+          "name": "معتمدية حزوة",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Hazoua",
+            "boundary": "administrative",
+            "name": "معتمدية حزوة",
+            "name:ar": "معتمدية حزوة",
+            "name:fr": "Délégation Hazoua",
+            "ref:tn:codegeo": "6255",
+            "ref:tn:hasc_2": "TN.TO.HA",
+            "wikidata": "Q3128900"
+          },
+          "effectiveOriginalGeometrySha256": "c69702da677ecc5617960bf5f39621239e3073c8c0e2c2f4b946a2a3a3b9bb06",
+          "currentOfficialRecord": {
+            "governorateCode": "62",
+            "governorateFr": "Tozeur",
+            "governorateAr": "توزر",
+            "delegationCode": "6255",
+            "delegationFr": "Hazoua",
+            "delegationAr": "حزوة"
+          }
+        }
+      ],
+      "scope": "One reviewed Hazoua settlement display identity across its existing sector and village depictions. Retain their unequal polygons, names and raw representatives. Public INM reference coordinates are independent and do not define the town or its boundary.",
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/retained-display-review.json",
+          "sha256": "1a483e5380a6523faf610606f9408be881f98b30a238e88b2bcbf8948556cd20"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1775 @@
+{
+  "history": {
+    "osm:way:1187366129": [
+      {
+        "version": 1,
+        "changeset": 138116777,
+        "timestamp": "2023-07-04T17:22:08Z",
+        "tags": {
+          "landuse": "residential",
+          "name": "Oualed Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "residential": "osada"
+        },
+        "nodes": [
+          "11026082492",
+          "11026082493",
+          "11026082494",
+          "11026082495",
+          "11026082496",
+          "11026082497",
+          "11026082498",
+          "11026082499",
+          "11026082500",
+          "11026082501",
+          "11026082502",
+          "11026082503",
+          "11026082504",
+          "11026092205",
+          "11026092206",
+          "11026092207",
+          "11026092208",
+          "11026092209",
+          "11026092210",
+          "11026092211",
+          "11026092212",
+          "11026092213",
+          "11026092214",
+          "11026092215",
+          "11026092216",
+          "11026092217",
+          "11026092218",
+          "11026092219",
+          "11026092220",
+          "11026092221",
+          "11026092222",
+          "11026092223",
+          "11026092224",
+          "11026092225",
+          "11026092226",
+          "11026092227",
+          "11026092228",
+          "11026092229",
+          "11026082492"
+        ],
+        "point": null
+      },
+      {
+        "version": 2,
+        "changeset": 146329970,
+        "timestamp": "2024-01-16T16:19:24Z",
+        "tags": {
+          "landuse": "residential",
+          "name": "Ouled Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "residential": "osada"
+        },
+        "nodes": [
+          "11026082492",
+          "11026082493",
+          "11026082494",
+          "11026082495",
+          "11026082496",
+          "11026082497",
+          "11026082498",
+          "11026082499",
+          "11026082500",
+          "11026082501",
+          "11026082502",
+          "11026082503",
+          "11026082504",
+          "11026092205",
+          "11026092206",
+          "11026092207",
+          "11026092208",
+          "11026092209",
+          "11026092210",
+          "11026092211",
+          "11026092212",
+          "11026092213",
+          "11026092214",
+          "11026092215",
+          "11026092216",
+          "11026092217",
+          "11026092218",
+          "11026092219",
+          "11026092220",
+          "11026092221",
+          "11026092222",
+          "11026092223",
+          "11026092224",
+          "11026092225",
+          "11026092226",
+          "11026092227",
+          "11026092228",
+          "11026092229",
+          "11026082492"
+        ],
+        "point": null
+      },
+      {
+        "version": 3,
+        "changeset": 180432269,
+        "timestamp": "2026-03-26T00:33:46Z",
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "residential": "osada"
+        },
+        "nodes": [
+          "11026082492",
+          "11026082493",
+          "11026082494",
+          "11026082495",
+          "11026082496",
+          "11026082497",
+          "11026082498",
+          "11026082499",
+          "11026082500",
+          "11026082501",
+          "11026082502",
+          "11026082503",
+          "11026082504",
+          "11026092205",
+          "11026092206",
+          "11026092207",
+          "11026092208",
+          "11026092209",
+          "11026092210",
+          "11026092211",
+          "11026092212",
+          "11026092213",
+          "11026092214",
+          "11026092215",
+          "11026092216",
+          "11026092217",
+          "11026092218",
+          "11026092219",
+          "11026092220",
+          "11026092221",
+          "11026092222",
+          "11026092223",
+          "11026092224",
+          "11026092225",
+          "11026092226",
+          "11026092227",
+          "11026092228",
+          "11026092229",
+          "11026082492"
+        ],
+        "point": null
+      }
+    ],
+    "osm:way:1187366130": [
+      {
+        "version": 1,
+        "changeset": 138116777,
+        "timestamp": "2023-07-04T17:22:08Z",
+        "tags": {
+          "landuse": "residential",
+          "name": "Oualed Hamed",
+          "name:aeb": "حاف اولاد حامد"
+        },
+        "nodes": [
+          "11026092230",
+          "11026092231",
+          "11026092232",
+          "11026092233",
+          "11026092234",
+          "11026092235",
+          "11026092236",
+          "11026092237",
+          "11026092238",
+          "11026092239",
+          "11026092240",
+          "11026092241",
+          "11026092242",
+          "11026092230"
+        ],
+        "point": null
+      },
+      {
+        "version": 2,
+        "changeset": 180432269,
+        "timestamp": "2026-03-26T00:33:46Z",
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed"
+        },
+        "nodes": [
+          "11026092230",
+          "11026092231",
+          "11026092232",
+          "11026092233",
+          "11026092234",
+          "11026092235",
+          "11026092236",
+          "11026092237",
+          "11026092238",
+          "11026092239",
+          "11026092240",
+          "11026092241",
+          "11026092242",
+          "11026092230"
+        ],
+        "point": null
+      }
+    ],
+    "osm:node:11522289870": [
+      {
+        "version": 1,
+        "changeset": 146329970,
+        "timestamp": "2024-01-16T16:19:24Z",
+        "tags": {
+          "name": "Ouled Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "place": "hamlet"
+        },
+        "nodes": [],
+        "point": [
+          10.2297856,
+          32.7922759
+        ]
+      },
+      {
+        "version": 2,
+        "changeset": 180432269,
+        "timestamp": "2026-03-26T00:33:46Z",
+        "tags": {
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "place": "hamlet"
+        },
+        "nodes": [],
+        "point": [
+          10.2297856,
+          32.7922759
+        ]
+      }
+    ]
+  },
+  "sourceActions": {
+    "138116777": [
+      {
+        "id": "osm:way:1187366129",
+        "action": "create",
+        "version": 1,
+        "tags": {
+          "landuse": "residential",
+          "name": "Oualed Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "residential": "osada"
+        },
+        "nodeReferences": [
+          "11026082492",
+          "11026082493",
+          "11026082494",
+          "11026082495",
+          "11026082496",
+          "11026082497",
+          "11026082498",
+          "11026082499",
+          "11026082500",
+          "11026082501",
+          "11026082502",
+          "11026082503",
+          "11026082504",
+          "11026092205",
+          "11026092206",
+          "11026092207",
+          "11026092208",
+          "11026092209",
+          "11026092210",
+          "11026092211",
+          "11026092212",
+          "11026092213",
+          "11026092214",
+          "11026092215",
+          "11026092216",
+          "11026092217",
+          "11026092218",
+          "11026092219",
+          "11026092220",
+          "11026092221",
+          "11026092222",
+          "11026092223",
+          "11026092224",
+          "11026092225",
+          "11026092226",
+          "11026092227",
+          "11026092228",
+          "11026092229",
+          "11026082492"
+        ],
+        "point": null,
+        "mapperSourceId": "15169703"
+      },
+      {
+        "id": "osm:way:1187366130",
+        "action": "create",
+        "version": 1,
+        "tags": {
+          "landuse": "residential",
+          "name": "Oualed Hamed",
+          "name:aeb": "حاف اولاد حامد"
+        },
+        "nodeReferences": [
+          "11026092230",
+          "11026092231",
+          "11026092232",
+          "11026092233",
+          "11026092234",
+          "11026092235",
+          "11026092236",
+          "11026092237",
+          "11026092238",
+          "11026092239",
+          "11026092240",
+          "11026092241",
+          "11026092242",
+          "11026092230"
+        ],
+        "point": null,
+        "mapperSourceId": "15169703"
+      }
+    ],
+    "146329970": [
+      {
+        "id": "osm:node:11522289870",
+        "action": "create",
+        "version": 1,
+        "tags": {
+          "name": "Ouled Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "place": "hamlet"
+        },
+        "nodeReferences": [],
+        "point": [
+          10.2297856,
+          32.7922759
+        ],
+        "mapperSourceId": "15169703"
+      },
+      {
+        "id": "osm:way:1187366129",
+        "action": "modify",
+        "version": 2,
+        "tags": {
+          "landuse": "residential",
+          "name": "Ouled Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "residential": "osada"
+        },
+        "nodeReferences": [
+          "11026082492",
+          "11026082493",
+          "11026082494",
+          "11026082495",
+          "11026082496",
+          "11026082497",
+          "11026082498",
+          "11026082499",
+          "11026082500",
+          "11026082501",
+          "11026082502",
+          "11026082503",
+          "11026082504",
+          "11026092205",
+          "11026092206",
+          "11026092207",
+          "11026092208",
+          "11026092209",
+          "11026092210",
+          "11026092211",
+          "11026092212",
+          "11026092213",
+          "11026092214",
+          "11026092215",
+          "11026092216",
+          "11026092217",
+          "11026092218",
+          "11026092219",
+          "11026092220",
+          "11026092221",
+          "11026092222",
+          "11026092223",
+          "11026092224",
+          "11026092225",
+          "11026092226",
+          "11026092227",
+          "11026092228",
+          "11026092229",
+          "11026082492"
+        ],
+        "point": null,
+        "mapperSourceId": "15169703"
+      }
+    ],
+    "180432269": [
+      {
+        "id": "osm:node:11522289870",
+        "action": "modify",
+        "version": 2,
+        "tags": {
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "place": "hamlet"
+        },
+        "nodeReferences": [],
+        "point": [
+          10.2297856,
+          32.7922759
+        ],
+        "mapperSourceId": "16642036"
+      },
+      {
+        "id": "osm:way:1187366130",
+        "action": "modify",
+        "version": 2,
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed"
+        },
+        "nodeReferences": [
+          "11026092230",
+          "11026092231",
+          "11026092232",
+          "11026092233",
+          "11026092234",
+          "11026092235",
+          "11026092236",
+          "11026092237",
+          "11026092238",
+          "11026092239",
+          "11026092240",
+          "11026092241",
+          "11026092242",
+          "11026092230"
+        ],
+        "point": null,
+        "mapperSourceId": "16642036"
+      },
+      {
+        "id": "osm:way:1187366129",
+        "action": "modify",
+        "version": 3,
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "residential": "osada"
+        },
+        "nodeReferences": [
+          "11026082492",
+          "11026082493",
+          "11026082494",
+          "11026082495",
+          "11026082496",
+          "11026082497",
+          "11026082498",
+          "11026082499",
+          "11026082500",
+          "11026082501",
+          "11026082502",
+          "11026082503",
+          "11026082504",
+          "11026092205",
+          "11026092206",
+          "11026092207",
+          "11026092208",
+          "11026092209",
+          "11026092210",
+          "11026092211",
+          "11026092212",
+          "11026092213",
+          "11026092214",
+          "11026092215",
+          "11026092216",
+          "11026092217",
+          "11026092218",
+          "11026092219",
+          "11026092220",
+          "11026092221",
+          "11026092222",
+          "11026092223",
+          "11026092224",
+          "11026092225",
+          "11026092226",
+          "11026092227",
+          "11026092228",
+          "11026092229",
+          "11026082492"
+        ],
+        "point": null,
+        "mapperSourceId": "16642036"
+      }
+    ]
+  },
+  "allNamedObjectsInReviewedChangesets": {
+    "138116777": [
+      {
+        "id": "osm:node:11026092268",
+        "action": "create",
+        "tags": {
+          "access": "yes",
+          "historic": "ruins",
+          "name": "Ksar Oum er Roumanat",
+          "ruins": "building"
+        }
+      },
+      {
+        "id": "osm:way:1187366129",
+        "action": "create",
+        "tags": {
+          "landuse": "residential",
+          "name": "Oualed Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "residential": "osada"
+        }
+      },
+      {
+        "id": "osm:way:1187366130",
+        "action": "create",
+        "tags": {
+          "landuse": "residential",
+          "name": "Oualed Hamed",
+          "name:aeb": "حاف اولاد حامد"
+        }
+      }
+    ],
+    "146329970": [
+      {
+        "id": "osm:node:11522289870",
+        "action": "create",
+        "tags": {
+          "name": "Ouled Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "place": "hamlet"
+        }
+      },
+      {
+        "id": "osm:way:1187366129",
+        "action": "modify",
+        "tags": {
+          "landuse": "residential",
+          "name": "Ouled Hamed",
+          "name:aeb": "حاف اولاد حامد",
+          "residential": "osada"
+        }
+      },
+      {
+        "id": "osm:way:1187366131",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "ruins",
+          "name": "Ksar Sidi Hallel",
+          "ruins": "building"
+        }
+      }
+    ],
+    "180432269": [
+      {
+        "id": "osm:node:9811073750",
+        "action": "modify",
+        "tags": {
+          "name": "بيع مواد غذائية",
+          "name:ar": "بيع مواد غذائية",
+          "name:fr": "alimentation générale",
+          "shop": "convenience"
+        }
+      },
+      {
+        "id": "osm:node:11522289870",
+        "action": "modify",
+        "tags": {
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "place": "hamlet"
+        }
+      },
+      {
+        "id": "osm:node:11525318199",
+        "action": "modify",
+        "tags": {
+          "name": "طويل أولاد زايد",
+          "name:aeb": "طويل أولاد زايد",
+          "name:ar": "طويل أولاد زايد",
+          "name:en": "Touil Ouled Zayed",
+          "name:fr": "Touil Ouled Zayed",
+          "place": "hamlet"
+        }
+      },
+      {
+        "id": "osm:node:11811858845",
+        "action": "modify",
+        "tags": {
+          "name": "معصرة زيت",
+          "name:ar": "معصرة زيت",
+          "name:fr": "huilerie",
+          "tourism": "attraction"
+        }
+      },
+      {
+        "id": "osm:way:1187366130",
+        "action": "modify",
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed"
+        }
+      },
+      {
+        "id": "osm:way:1234814527",
+        "action": "modify",
+        "tags": {
+          "name": "وادي الغدير",
+          "name:ar": "وادي الغدير",
+          "name:en": "Oued el Ghedir",
+          "name:fr": "Oued el Ghedir",
+          "natural": "valley"
+        }
+      },
+      {
+        "id": "osm:way:1240582379",
+        "action": "modify",
+        "tags": {
+          "name": "وادي الجلوش",
+          "name:ar": "وادي الجلوش",
+          "name:en": "Oued Jallouch",
+          "natural": "valley"
+        }
+      },
+      {
+        "id": "osm:way:1243837352",
+        "action": "modify",
+        "tags": {
+          "name": "جبل الجلوش",
+          "name:ar": "جبل الجلوش",
+          "name:en": "Djebel El Jallouch",
+          "name:fr": "Djebel El Jallouch",
+          "natural": "ridge"
+        }
+      },
+      {
+        "id": "osm:node:10899059789",
+        "action": "modify",
+        "tags": {
+          "name": "رأس الوادي",
+          "name:ar": "رأس الوادي",
+          "name:en": "Ras El Oued",
+          "name:fr": "Ras El Oued",
+          "place": "village"
+        }
+      },
+      {
+        "id": "osm:node:11525830166",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "ruins",
+          "historic:civilization": "modern",
+          "name": "أولاد حامد",
+          "name:aeb": "أولاد حامد",
+          "name:ar": "أولاد حامد",
+          "name:en": "Kasbet Ouled Hamed",
+          "name:fr": "Kasbet Ouled Hamed",
+          "ruins": "building"
+        }
+      },
+      {
+        "id": "osm:way:1187366129",
+        "action": "modify",
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "residential": "osada"
+        }
+      },
+      {
+        "id": "osm:node:3814110946",
+        "action": "modify",
+        "tags": {
+          "name": "طويل أولاد زايد",
+          "name:aeb": "طويل أولاد زايد",
+          "name:ar": "طويل أولاد زايد",
+          "name:en": "Touil Ouled Zayed",
+          "name:fr": "Touil Ouled Zayed",
+          "natural": "peak"
+        }
+      },
+      {
+        "id": "osm:node:11024118205",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "ruins",
+          "historic:civilization": "modern",
+          "name": "طالب بلدين",
+          "name:aeb": "طالب بلدين",
+          "name:ar": "طالب بلدين",
+          "name:en": "Ksar Talb Beldin",
+          "name:fr": "Ksar Talb Beldin",
+          "ruins": "settlement"
+        }
+      },
+      {
+        "id": "osm:node:11492009837",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "ruins",
+          "historic:civilization": "medieval",
+          "name": "قصر بني غدير 2",
+          "name:ar": "قصر بني غدير 2",
+          "name:en": "Ksar Beni Ghedir 02",
+          "name:fr": "Ksar Beni Ghedir 02",
+          "ruins": "yes"
+        }
+      },
+      {
+        "id": "osm:way:148643064",
+        "action": "modify",
+        "tags": {
+          "highway": "residential",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "نهج الأقحوان",
+          "name:ar": "نهج الأقحوان",
+          "name:fr": "rue marguerite",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "id": "osm:way:148643066",
+        "action": "modify",
+        "tags": {
+          "highway": "residential",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "نهج النسرين",
+          "name:ar": "نهج النسرين",
+          "name:fr": "Rue Nessrine",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "id": "osm:way:148643070",
+        "action": "modify",
+        "tags": {
+          "highway": "residential",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "نهج القرنفل",
+          "name:ar": "نهج القرنفل",
+          "name:fr": "Rue du Girofle",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "id": "osm:way:148643072",
+        "action": "modify",
+        "tags": {
+          "landuse": "residential",
+          "name": "الطرومة",
+          "name:aeb": "الطرومة",
+          "name:ar": "الطرومة",
+          "name:en": "El Tarouma",
+          "name:fr": "ettarouma"
+        }
+      },
+      {
+        "id": "osm:way:1068796766",
+        "action": "modify",
+        "tags": {
+          "addr:city": "رأس الوادي",
+          "addr:postcode": "3264",
+          "amenity": "school",
+          "barrier": "wall",
+          "name": "المدرسة الابتدائية برأس الوادي",
+          "name:ar": "المدرسة الابتدائية برأس الوادي",
+          "name:fr": "École Primaire Ras El Oued"
+        }
+      },
+      {
+        "id": "osm:way:1126485929",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "ruins",
+          "historic:civilization": "modern",
+          "name": "قصر بني غدير",
+          "name:aeb": "قصر بني غدير",
+          "name:ar": "قصر بني غدير",
+          "name:en": "Ksar Beni Ghedir",
+          "name:fr": "Ksar Beni Ghedir",
+          "ruins": "building"
+        }
+      },
+      {
+        "id": "osm:way:148643057",
+        "action": "modify",
+        "tags": {
+          "highway": "residential",
+          "lanes": "2",
+          "name": "نهج الزعفران",
+          "name:ar": "نهج الزعفران",
+          "name:fr": "rue safran",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "id": "osm:way:148643065",
+        "action": "modify",
+        "tags": {
+          "highway": "residential",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "نهج السوسن",
+          "name:ar": "نهج السوسن",
+          "name:fr": "rue iriss",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "id": "osm:way:321991673",
+        "action": "modify",
+        "tags": {
+          "building": "ruins",
+          "name": "قصر بني غدير",
+          "name:aeb": "قصر بني غدير",
+          "name:ar": "قصر بني غدير",
+          "name:en": "Ksar Beni Ghedir",
+          "name:fr": "Ksar Beni Ghedir"
+        }
+      },
+      {
+        "id": "osm:way:321991675",
+        "action": "modify",
+        "tags": {
+          "building": "ruins",
+          "historic": "building",
+          "name": "قصر بني غدير",
+          "name:aeb": "قصر بني غدير",
+          "name:ar": "قصر بني غدير",
+          "name:en": "Ksar Beni Ghedir",
+          "name:fr": "Ksar Beni Ghedir"
+        }
+      },
+      {
+        "id": "osm:way:377996284",
+        "action": "modify",
+        "tags": {
+          "landuse": "residential",
+          "name": "طويل أولاد زايد",
+          "name:ar": "طويل أولاد زايد",
+          "name:fr": "Touil Ouled Zayed"
+        }
+      },
+      {
+        "id": "osm:way:435785961",
+        "action": "modify",
+        "tags": {
+          "building": "ruins",
+          "name": "طالب بلدين",
+          "name:aeb": "طالب بلدين",
+          "name:ar": "طالب بلدين",
+          "name:en": "Ksar Talb Beldin",
+          "name:fr": "Ksar Talb Beldin"
+        }
+      },
+      {
+        "id": "osm:way:435785974",
+        "action": "modify",
+        "tags": {
+          "building": "ruins",
+          "name": "طالب بلدين",
+          "name:aeb": "طالب بلدين",
+          "name:ar": "طالب بلدين",
+          "name:en": "Ksar Talb Beldin",
+          "name:fr": "Ksar Talb Beldin"
+        }
+      },
+      {
+        "id": "osm:way:1126485928",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "ruins",
+          "historic:civilization": "modern",
+          "name": "قصر بني غدير",
+          "name:aeb": "قصر بني غدير",
+          "name:ar": "قصر بني غدير",
+          "name:en": "Ksar Beni Ghedir",
+          "name:fr": "Ksar Beni Ghedir",
+          "ruins": "building"
+        }
+      },
+      {
+        "id": "osm:way:1181046577",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "area": "yes",
+          "historic": "ruins",
+          "historic:civilization": "modern",
+          "name": "قصر بني غدير 1",
+          "name:aeb": "قصر بني غدير 1",
+          "name:ar": "قصر بني غدير 1",
+          "name:en": "Ksar Beni Ghedir 01",
+          "name:fr": "Ksar Beni Ghedir 01",
+          "ruins": "villages"
+        }
+      },
+      {
+        "id": "osm:way:1181015747",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "archaeological_site",
+          "name": "قصر كف الخديلج",
+          "name:aeb": "قصر كف الخديلج",
+          "name:ar": "قصر كف الخديلج",
+          "name:en": "Ksar Kef el Khedellej",
+          "name:fr": "Ksar Kef el Khedellej",
+          "ruins": "yes"
+        }
+      },
+      {
+        "id": "osm:way:1181015748",
+        "action": "modify",
+        "tags": {
+          "access": "yes",
+          "historic": "archaeological_site",
+          "name": "قصر كف الخديلج",
+          "name:aeb": "قصر كف الخديلج",
+          "name:ar": "قصر كف الخديلج",
+          "name:en": "Ksar Kef el Khedellej",
+          "name:fr": "Ksar Kef el Khedellej",
+          "ruins": "building"
+        }
+      },
+      {
+        "id": "osm:way:321991671",
+        "action": "modify",
+        "tags": {
+          "building": "ruins",
+          "name": "قصر بني غدير",
+          "name:aeb": "قصر بني غدير",
+          "name:ar": "قصر بني غدير",
+          "name:en": "Ksar Beni Ghedir",
+          "name:fr": "Ksar Beni Ghedir"
+        }
+      },
+      {
+        "id": "osm:way:148643068",
+        "action": "modify",
+        "tags": {
+          "highway": "residential",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "نهج الياسمين",
+          "name:ar": "نهج الياسمين",
+          "name:fr": "Rue Jasmin",
+          "surface": "asphalt"
+        }
+      }
+    ]
+  },
+  "sourceChangesets": {
+    "138116777": {
+      "tags": {
+        "changesets_count": "3058",
+        "comment": "supplementation of information, actualization",
+        "created_by": "iD 2.25.2",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "Bing Maps Aerial",
+        "locale": "cs",
+        "source": "survey;aerial imagery"
+      },
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\changeset-138116777.xml",
+        "sha256": "6de461b365b0035abc31210abc771443ba09bf3643dfc7bee5c4e98ae56dbcc0",
+        "bytes": 909
+      }
+    },
+    "146329970": {
+      "tags": {
+        "changesets_count": "4026",
+        "comment": "supplementation of information, line correction",
+        "created_by": "iD 2.27.3",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "Bing Maps Aerial;OpenTopoMap",
+        "locale": "cs",
+        "source": "survey;aerial imagery"
+      },
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\changeset-146329970.xml",
+        "sha256": "fae28e10af05bb6566922309d25fee63029fee4ccbc7d25a554c1645d5c32f40",
+        "bytes": 921
+      }
+    },
+    "180432269": {
+      "tags": {
+        "changesets_count": "1440",
+        "comment": "Improve naming and tagging unification in Tunisia",
+        "created_by": "iD 2.39.5",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "OpenStreetMap (Standard)",
+        "locale": "ar",
+        "resolved:suspicious_name:generic_name": "3"
+      },
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\changeset-180432269.xml",
+        "sha256": "5ebf22bcc06418a95456256ddaf44f97b0d6cd7d38f4fbf9d19fc8187f1cb71d",
+        "bytes": 933
+      }
+    }
+  },
+  "geometryChain": [
+    {
+      "id": "osm:way:1187366129",
+      "unchangedWayNodeReferenceList": true,
+      "uniqueVertices": 38,
+      "verticesMovedIn2024": 38,
+      "creation2023Geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2289321,
+              32.7914257
+            ],
+            [
+              10.2289599,
+              32.7913643
+            ],
+            [
+              10.2292504,
+              32.791474
+            ],
+            [
+              10.2294088,
+              32.7915822
+            ],
+            [
+              10.2295671,
+              32.7917796
+            ],
+            [
+              10.2296784,
+              32.7919566
+            ],
+            [
+              10.2298002,
+              32.7921291
+            ],
+            [
+              10.2298036,
+              32.7921467
+            ],
+            [
+              10.2300594,
+              32.7922066
+            ],
+            [
+              10.2300855,
+              32.7922768
+            ],
+            [
+              10.2300385,
+              32.7922929
+            ],
+            [
+              10.230002,
+              32.7922461
+            ],
+            [
+              10.2299237,
+              32.7922359
+            ],
+            [
+              10.2298315,
+              32.7922227
+            ],
+            [
+              10.2297967,
+              32.7922227
+            ],
+            [
+              10.229748,
+              32.792252
+            ],
+            [
+              10.2296975,
+              32.7922944
+            ],
+            [
+              10.2296245,
+              32.7923222
+            ],
+            [
+              10.2295601,
+              32.7923368
+            ],
+            [
+              10.2294383,
+              32.7923602
+            ],
+            [
+              10.2291217,
+              32.7924699
+            ],
+            [
+              10.2290834,
+              32.792407
+            ],
+            [
+              10.2291704,
+              32.7923675
+            ],
+            [
+              10.2292504,
+              32.7923427
+            ],
+            [
+              10.22932,
+              32.792331
+            ],
+            [
+              10.2293827,
+              32.7923251
+            ],
+            [
+              10.2295653,
+              32.7922929
+            ],
+            [
+              10.2296593,
+              32.7922622
+            ],
+            [
+              10.2297114,
+              32.7922066
+            ],
+            [
+              10.2296871,
+              32.7921423
+            ],
+            [
+              10.2295462,
+              32.7919493
+            ],
+            [
+              10.229494,
+              32.7918732
+            ],
+            [
+              10.2293827,
+              32.7916875
+            ],
+            [
+              10.2293513,
+              32.7916378
+            ],
+            [
+              10.2292765,
+              32.7915807
+            ],
+            [
+              10.2291687,
+              32.791531
+            ],
+            [
+              10.2290608,
+              32.7914637
+            ],
+            [
+              10.2290052,
+              32.7914623
+            ],
+            [
+              10.2289321,
+              32.7914257
+            ]
+          ]
+        ]
+      },
+      "reviewed2024Geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2288943,
+              32.7914118
+            ],
+            [
+              10.2289221,
+              32.7913418
+            ],
+            [
+              10.2291938,
+              32.7914471
+            ],
+            [
+              10.2293607,
+              32.7915726
+            ],
+            [
+              10.2295122,
+              32.7917585
+            ],
+            [
+              10.2296081,
+              32.7919269
+            ],
+            [
+              10.2297573,
+              32.7921066
+            ],
+            [
+              10.2297607,
+              32.7921242
+            ],
+            [
+              10.2300165,
+              32.7921841
+            ],
+            [
+              10.2300426,
+              32.7922543
+            ],
+            [
+              10.2299956,
+              32.7922704
+            ],
+            [
+              10.2299591,
+              32.7922236
+            ],
+            [
+              10.2298808,
+              32.7922134
+            ],
+            [
+              10.2297886,
+              32.7922002
+            ],
+            [
+              10.2297538,
+              32.7922045
+            ],
+            [
+              10.2297308,
+              32.7922295
+            ],
+            [
+              10.2296666,
+              32.7922719
+            ],
+            [
+              10.2295782,
+              32.7923184
+            ],
+            [
+              10.2295001,
+              32.7923258
+            ],
+            [
+              10.229368,
+              32.7923506
+            ],
+            [
+              10.2290411,
+              32.792479
+            ],
+            [
+              10.2289943,
+              32.7924334
+            ],
+            [
+              10.2291172,
+              32.7923579
+            ],
+            [
+              10.2291938,
+              32.7923259
+            ],
+            [
+              10.2292737,
+              32.7923142
+            ],
+            [
+              10.2294562,
+              32.7922608
+            ],
+            [
+              10.2295532,
+              32.7922488
+            ],
+            [
+              10.2296609,
+              32.7922008
+            ],
+            [
+              10.2296685,
+              32.7921841
+            ],
+            [
+              10.2296442,
+              32.7921198
+            ],
+            [
+              10.2295067,
+              32.7919397
+            ],
+            [
+              10.2294357,
+              32.7918665
+            ],
+            [
+              10.2293312,
+              32.7916664
+            ],
+            [
+              10.2292861,
+              32.7916224
+            ],
+            [
+              10.2292421,
+              32.7915769
+            ],
+            [
+              10.2291258,
+              32.7915228
+            ],
+            [
+              10.229023,
+              32.7914512
+            ],
+            [
+              10.2289623,
+              32.7914398
+            ],
+            [
+              10.2288943,
+              32.7914118
+            ]
+          ]
+        ]
+      },
+      "currentOriginalPbfGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2288943,
+                32.7914118
+              ],
+              [
+                10.2289221,
+                32.7913418
+              ],
+              [
+                10.2291938,
+                32.7914471
+              ],
+              [
+                10.2293607,
+                32.7915726
+              ],
+              [
+                10.2295122,
+                32.7917585
+              ],
+              [
+                10.2296081,
+                32.7919269
+              ],
+              [
+                10.2297573,
+                32.7921066
+              ],
+              [
+                10.2297607,
+                32.7921242
+              ],
+              [
+                10.2300165,
+                32.7921841
+              ],
+              [
+                10.2300426,
+                32.7922543
+              ],
+              [
+                10.2299956,
+                32.7922704
+              ],
+              [
+                10.2299591,
+                32.7922236
+              ],
+              [
+                10.2298808,
+                32.7922134
+              ],
+              [
+                10.2297886,
+                32.7922002
+              ],
+              [
+                10.2297538,
+                32.7922045
+              ],
+              [
+                10.2297308,
+                32.7922295
+              ],
+              [
+                10.2296666,
+                32.7922719
+              ],
+              [
+                10.2295782,
+                32.7923184
+              ],
+              [
+                10.2295001,
+                32.7923258
+              ],
+              [
+                10.229368,
+                32.7923506
+              ],
+              [
+                10.2290411,
+                32.792479
+              ],
+              [
+                10.2289943,
+                32.7924334
+              ],
+              [
+                10.2291172,
+                32.7923579
+              ],
+              [
+                10.2291938,
+                32.7923259
+              ],
+              [
+                10.2292737,
+                32.7923142
+              ],
+              [
+                10.2294562,
+                32.7922608
+              ],
+              [
+                10.2295532,
+                32.7922488
+              ],
+              [
+                10.2296609,
+                32.7922008
+              ],
+              [
+                10.2296685,
+                32.7921841
+              ],
+              [
+                10.2296442,
+                32.7921198
+              ],
+              [
+                10.2295067,
+                32.7919397
+              ],
+              [
+                10.2294357,
+                32.7918665
+              ],
+              [
+                10.2293312,
+                32.7916664
+              ],
+              [
+                10.2292861,
+                32.7916224
+              ],
+              [
+                10.2292421,
+                32.7915769
+              ],
+              [
+                10.2291258,
+                32.7915228
+              ],
+              [
+                10.229023,
+                32.7914512
+              ],
+              [
+                10.2289623,
+                32.7914398
+              ],
+              [
+                10.2288943,
+                32.7914118
+              ]
+            ]
+          ]
+        ]
+      },
+      "currentEquals2024ActualCoordinateEditResultExactly": true,
+      "currentEqualsAfter2026PayloadExactly": true,
+      "sourcePbfGeometryPin": "9ec8cdba6dd95b32867e1a4c149afdc0374a7120d3c2c715960cb7fbbbcff65b",
+      "creationToCurrent": {
+        "areaBeforeMeters2": 1737.821910455456,
+        "areaAfterMeters2": 1886.6242633493814,
+        "symmetricDifferenceMeters2": 1224.7062200831024,
+        "hausdorffMeters": 8.842662050253104
+      }
+    },
+    {
+      "id": "osm:way:1187366130",
+      "unchangedWayNodeReferenceList": true,
+      "uniqueVertices": 13,
+      "verticesMovedIn2024": 13,
+      "creation2023Geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2292149,
+              32.7931079
+            ],
+            [
+              10.2292792,
+              32.7930728
+            ],
+            [
+              10.229368,
+              32.793162
+            ],
+            [
+              10.2294532,
+              32.7931298
+            ],
+            [
+              10.2295489,
+              32.793219
+            ],
+            [
+              10.2295889,
+              32.7933141
+            ],
+            [
+              10.2295941,
+              32.7933653
+            ],
+            [
+              10.2295611,
+              32.7934121
+            ],
+            [
+              10.2295106,
+              32.7934442
+            ],
+            [
+              10.2294445,
+              32.7934369
+            ],
+            [
+              10.2294184,
+              32.7934238
+            ],
+            [
+              10.2293732,
+              32.793339
+            ],
+            [
+              10.2292984,
+              32.7932278
+            ],
+            [
+              10.2292149,
+              32.7931079
+            ]
+          ]
+        ]
+      },
+      "reviewed2024Geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2291452,
+              32.7931034
+            ],
+            [
+              10.2292095,
+              32.7930683
+            ],
+            [
+              10.2292983,
+              32.7931575
+            ],
+            [
+              10.2293835,
+              32.7931253
+            ],
+            [
+              10.2294792,
+              32.7932145
+            ],
+            [
+              10.2295192,
+              32.7933096
+            ],
+            [
+              10.2295244,
+              32.7933608
+            ],
+            [
+              10.2294914,
+              32.7934076
+            ],
+            [
+              10.2294409,
+              32.7934397
+            ],
+            [
+              10.2293748,
+              32.7934324
+            ],
+            [
+              10.2293487,
+              32.7934193
+            ],
+            [
+              10.2293035,
+              32.7933345
+            ],
+            [
+              10.2292287,
+              32.7932233
+            ],
+            [
+              10.2291452,
+              32.7931034
+            ]
+          ]
+        ]
+      },
+      "currentOriginalPbfGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2291452,
+                32.7931034
+              ],
+              [
+                10.2292095,
+                32.7930683
+              ],
+              [
+                10.2292983,
+                32.7931575
+              ],
+              [
+                10.2293835,
+                32.7931253
+              ],
+              [
+                10.2294792,
+                32.7932145
+              ],
+              [
+                10.2295192,
+                32.7933096
+              ],
+              [
+                10.2295244,
+                32.7933608
+              ],
+              [
+                10.2294914,
+                32.7934076
+              ],
+              [
+                10.2294409,
+                32.7934397
+              ],
+              [
+                10.2293748,
+                32.7934324
+              ],
+              [
+                10.2293487,
+                32.7934193
+              ],
+              [
+                10.2293035,
+                32.7933345
+              ],
+              [
+                10.2292287,
+                32.7932233
+              ],
+              [
+                10.2291452,
+                32.7931034
+              ]
+            ]
+          ]
+        ]
+      },
+      "currentEquals2024ActualCoordinateEditResultExactly": true,
+      "currentEqualsAfter2026PayloadExactly": true,
+      "sourcePbfGeometryPin": "b38086feded1cd4b03bfeb8652f117fbca4fecfde5d328c2a5ba4c57f1075561",
+      "creationToCurrent": {
+        "areaBeforeMeters2": 721.3267886166711,
+        "areaAfterMeters2": 721.3267977435481,
+        "symmetricDifferenceMeters2": 519.7195076776676,
+        "hausdorffMeters": 6.546345054206291
+      }
+    }
+  ],
+  "nodePointUnchangedAcrossItsHistory": true
+}

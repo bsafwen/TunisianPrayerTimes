@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "taouaicha-source-facts.json",
+    "sha256": "582e08bb5523d3c0034d0c96cfcc774eeaf56c459be0d6b5673e5fafa965edbc"
+  },
+  "reviewedMetadataSha256": "e77621878bf06f0cd668d011e1774f230ccdbb20c1e3635da453c28887677286",
+  "researchReview": {
+    "file": "current-same-subtitle12-source-review.json",
+    "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7"
+  },
+  "records": [
+    {
+      "id": "osm:way:378448709",
+      "status": "eligible_proposal",
+      "method": "explicit_named_village_containment",
+      "targetPickerGroupId": "osm:way:312733902",
+      "expectedExistingMemberIds": [
+        "osm:way:378448709"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:way:312733902",
+        "osm:way:969654331"
+      ],
+      "expectedGovernorateId": 353,
+      "expectedParentName": "ولاية مدنين",
+      "expectedDelegationId": 493,
+      "members": [
+        {
+          "id": "osm:way:312733902",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "الطوايشة",
+          "expectedAliases": [
+            "Ettwaycha"
+          ],
+          "expectedLat": 33.638365,
+          "expectedLng": 10.719325,
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "35e62f74d2814c3a71d1b7c5be956cc35e94c191601adab2d9bef96d0cb9e15c",
+          "effectiveOriginalGeometrySha256": "35e62f74d2814c3a71d1b7c5be956cc35e94c191601adab2d9bef96d0cb9e15c",
+          "packedGeometrySha256": "af0e42c89242de4960a6dc9d2b9c4795b968c91cb7a427e90b126fc25b98e63d"
+        },
+        {
+          "id": "osm:way:378448709",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "الطوايشة",
+          "expectedAliases": [
+            "Ettwaycha"
+          ],
+          "expectedLat": 33.637169,
+          "expectedLng": 10.720368,
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "8b526a7198d35925174a3e7c876d4171f7b8c73a19cc178259a0817d70824683",
+          "effectiveOriginalGeometrySha256": "8b526a7198d35925174a3e7c876d4171f7b8c73a19cc178259a0817d70824683",
+          "packedGeometrySha256": "36e19ec587288144ff0aadf8729083543742931ed1906f009cefb23035e26708"
+        },
+        {
+          "id": "osm:way:969654331",
+          "expectedKind": "village",
+          "expectedSourceId": "osm",
+          "expectedName": "Ettwaycha",
+          "expectedAliases": [],
+          "expectedLat": 33.6531,
+          "expectedLng": 10.718154,
+          "expectedOriginalTags": {
+            "name": "Ettwaycha",
+            "place": "village"
+          },
+          "expectedEffectiveTags": {
+            "name": "Ettwaycha",
+            "place": "village"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "28d0a6b3592d4ac16e9643050a0bde216ee974ff0b8599da12c7f32ea8e80ecc",
+          "effectiveOriginalGeometrySha256": "28d0a6b3592d4ac16e9643050a0bde216ee974ff0b8599da12c7f32ea8e80ecc",
+          "packedGeometrySha256": "3a5a875cbd4663b45712f3b3afa48b1a2759ca22a48c569589e1672849fec4d5"
+        }
+      ],
+      "anchorId": "osm:way:969654331",
+      "nameEvidence": {
+        "arabic": "الطوايشة",
+        "latin": "Ettwaycha",
+        "anchorLatinTag": "name",
+        "nodeArabicTag": "name:ar",
+        "nodeLatinTag": "name:fr",
+        "residentialArabicTag": "name:ar",
+        "residentialLatinTag": "name:en"
+      },
+      "bilingualNode": {
+        "id": "osm:node:9843640664",
+        "expectedKind": "village",
+        "expectedSourceId": "osm",
+        "expectedOriginalTags": {
+          "name": "الطوايشة",
+          "name:aeb": "الطوايشة",
+          "name:ar": "الطوايشة",
+          "name:fr": "Ettwaycha",
+          "place": "village"
+        },
+        "expectedEffectiveTags": {
+          "name": "الطوايشة",
+          "name:aeb": "الطوايشة",
+          "name:ar": "الطوايشة",
+          "name:fr": "Ettwaycha",
+          "place": "village"
+        },
+        "expectedLat": 33.6368796,
+        "expectedLng": 10.720083,
+        "expectedCuration": null,
+        "containedByMemberId": "osm:way:378448709"
+      },
+      "expectedSameNameVillageSourceIds": [
+        "osm:node:9843640664",
+        "osm:way:969654331"
+      ],
+      "limitations": [
+        "A display identity grouping, not an official or certified village boundary.",
+        "Keep all three IDs, names, aliases, coordinates, defaults and polygon bytes unchanged.",
+        "Keep governorate-only parent context: village footprint crosses Bou Ghrara525260 and El Jorf525954 source sectors.",
+        "The bilingual source village node is already absorbed; do not add or remove any raw catalog point.",
+        "Do not apply this relation transitively to another nearby name or automatically expand the exact group inventory."
+      ]
+    }
+  ]
+}

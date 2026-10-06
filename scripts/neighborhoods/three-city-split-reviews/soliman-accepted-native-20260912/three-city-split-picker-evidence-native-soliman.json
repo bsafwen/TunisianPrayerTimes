@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "three-city-split-reviews/three-city-split-source-proof.json",
+    "sha256": "ff66bf2aedeed7e18832b077175acf02968aefddb23cb2850d8c79af9f3f2f62"
+  },
+  "records": [
+    {
+      "id": "osm:way:177385463",
+      "targetDelegationId": 465,
+      "governorateId": 350,
+      "name": "سليمان",
+      "basePoint": {
+        "lat": 36.7067,
+        "lng": 10.4875
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:177385463"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:465"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_split_settlement_reference",
+          "id": "osm:node:1124155543",
+          "accepted": true,
+          "residentialId": "osm:way:177385463",
+          "reviewEvidence": {
+            "file": "three-city-split-reviews/soliman-accepted-native-20260912/three-city-split-source-proof-native-soliman.json",
+            "sha256": "dd24a0319a9b2b6b6318f584fa2d0df06c8fb463a4ba0d04b757743820ec1cf4"
+          }
+        }
+      ],
+      "requiredCurations": []
+    },
+    {
+      "id": "osm:relation:15063268",
+      "targetDelegationId": 473,
+      "governorateId": 351,
+      "name": "غمراسن",
+      "basePoint": {
+        "lat": 33.06,
+        "lng": 10.34
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:relation:15063268"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:473"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_split_settlement_reference",
+          "id": "osm:node:1655884872",
+          "accepted": true,
+          "residentialId": "osm:relation:15063268",
+          "reviewEvidence": {
+            "file": "three-city-split-reviews/three-city-split-source-proof.json",
+            "sha256": "ff66bf2aedeed7e18832b077175acf02968aefddb23cb2850d8c79af9f3f2f62"
+          }
+        }
+      ],
+      "requiredCurations": []
+    },
+    {
+      "id": "osm:way:142985514",
+      "targetDelegationId": 555,
+      "governorateId": 360,
+      "name": "المرناقية",
+      "basePoint": {
+        "lat": 36.752,
+        "lng": 10.008
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:142985514"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:555"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_split_settlement_reference",
+          "id": "osm:node:1564481999",
+          "accepted": true,
+          "residentialId": "osm:way:142985514",
+          "reviewEvidence": {
+            "file": "three-city-split-reviews/three-city-split-source-proof.json",
+            "sha256": "ff66bf2aedeed7e18832b077175acf02968aefddb23cb2850d8c79af9f3f2f62"
+          }
+        }
+      ],
+      "requiredCurations": []
+    }
+  ]
+}

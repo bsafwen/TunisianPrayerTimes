@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED_ONLY_NOT_APPLIED",
+  "baselineCuration": {
+    "file": "catalog-curation.json",
+    "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43"
+  },
+  "removeExactlyTheseDecisions": [
+    {
+      "id": "osm:relation:7189452",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عمدون",
+        "name:ar": "عمدون",
+        "name:fr": "Amdoun",
+        "ref:tn:codegeo": "215351"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "زهرة مدين",
+        "name:ar": "زهرة مدين",
+        "name:fr": "Zahret medien",
+        "alt_name:ar": "عمدون",
+        "alt_name:fr": "Amdoun"
+      },
+      "reason": "Official INS sector code 215351 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين / Zahret medien. Retain عمدون and Amdoun as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+      "evidence": [
+        {
+          "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7189451",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عمدون الجنوبية",
+        "name:ar": "عمدون الجنوبية",
+        "name:fr": "Amdoun Sud",
+        "ref:tn:codegeo": "215352"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "زهرة مدين الجنوبية",
+        "name:ar": "زهرة مدين الجنوبية",
+        "name:fr": "Zahret medien sud",
+        "alt_name:ar": "عمدون الجنوبية",
+        "alt_name:fr": "Amdoun Sud"
+      },
+      "reason": "Official INS sector code 215352 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين الجنوبية / Zahret medien sud. Retain عمدون الجنوبية and Amdoun Sud as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+      "evidence": [
+        {
+          "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "addDecisions": [],
+  "replacementBoundarySourceId": "isie-local-sectors-2023-amdoun-two-whole",
+  "replacementBoundarySourceRef": {
+    "file": "official/amdoun-two-whole-20260920/reviewed-boundary-source-addition.json",
+    "sha256": "b71fb39567652e37d6ef70e558efab34b4f579dbc8ddc34a07d3bccf5ff4013e"
+  },
+  "preserveOriginalNameProof": {
+    "file": "name-reviews/amdoun-two-20260920/proof.json",
+    "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+  },
+  "preserveAllOtherCurationEntriesAndOrder": true,
+  "canonicalNamesAliasesAndSavedReviewedNamesUnchanged": true,
+  "doNotBypassDuplicateActionGuard": true
+}

@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 17:21:31 GMT
+X-Backend: web2-10.10.117.3
+Last-Modified: Tue, 17 Oct 2023 00:41:24 GMT
+ETag: "18eb31-607dec83f7500"
+Accept-Ranges: bytes
+Content-Length: 1633073
+X-Content-Type-Options: nosniff
+Content-Security-Policy: frame-ancestors 'self';
+Content-Type: application/pdf
+

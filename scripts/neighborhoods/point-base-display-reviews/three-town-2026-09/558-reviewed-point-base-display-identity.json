@@ -1,0 +1,819 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:1433130924",
+  "baseId": 558,
+  "rawCurrent": {
+    "id": "osm:node:1433130924",
+    "sourceId": "osm",
+    "name": "جومين",
+    "aliases": [
+      "Joumine"
+    ],
+    "kind": "village",
+    "parentName": "السمان",
+    "contextAliases": [
+      "Délégation Joumine",
+      "Essman",
+      "Joumine",
+      "السمان",
+      "معتمدية جومين"
+    ],
+    "governorateId": 361,
+    "lat": 36.9253535,
+    "lng": 9.3889921,
+    "delegationId": 558,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1433130924"
+  },
+  "baseCurrent": {
+    "id": 558,
+    "nomFr": "Joumine",
+    "nomAr": "جومين",
+    "nomEn": "Joumine",
+    "lat": 36.9262,
+    "lng": 9.3874
+  },
+  "expectedGovernor": {
+    "id": 361,
+    "nomFr": "Bizerte",
+    "nomAr": "بنزرت",
+    "nomEn": "Bizerte",
+    "lat": 37.2744,
+    "lng": 9.8739
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1433130924",
+    "tags": {
+      "addr:governorate": "Bizerte",
+      "name": "جومين",
+      "name:ar": "جومين",
+      "name:en": "Joumine",
+      "name:fr": "Joumine",
+      "place": "village"
+    },
+    "lat": 36.9253535,
+    "lng": 9.3889921
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-identity-review.json",
+    "sha256": "9152e9be8763f75128ceecb4cc557ccbc2756a4ccc2eb1a46475a6ea3c8ed766"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/three-town-2026-09/independent-source-review.json",
+    "sha256": "c737cf8f0c0d485cb896c8c4fc2e0ab7370697a376d677496d1f404f18e08905"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/three-town-2026-09/node-1433130924.json",
+    "sha256": "5906477199e03404a33815341bd127e7e2c792e78b5bb1d10cfcf07b7b730d16",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1433130924.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1433130924.json",
+    "sha256": "5906477199e03404a33815341bd127e7e2c792e78b5bb1d10cfcf07b7b730d16",
+    "exactElement": {
+      "type": "node",
+      "id": 1433130924,
+      "lat": 36.9253535,
+      "lon": 9.3889921,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "version": 6,
+      "changeset": 98539602,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "addr:governorate": "Bizerte",
+        "name": "جومين",
+        "name:ar": "جومين",
+        "name:en": "Joumine",
+        "name:fr": "Joumine",
+        "place": "village"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/three-town-2026-09/joumine-social-ministry-local-village.html",
+      "sha256": "6e90595c7ff2580126d649e89acb827f3e360ab509a4c333f4cdb3a01938b49b",
+      "url": "https://www.social.gov.tn/en/node/1186",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "الوحدة المحلية للنهوض الاجتماعي بجومين بنزرت",
+        "قرية السمان جومين"
+      ],
+      "qualification": "The displayed coordinate exactly matches the OSM village node. Its provenance is not supplied, so it is not counted as an independently surveyed point or proof of office/building occupancy or village extent."
+    }
+  ],
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/three-town-2026-09/joumine-ird-firsthand-locality.pdf",
+      "sha256": "34affd3016a9ba3ef18e5a731b336415c826a2669184a84897088465224084da",
+      "url": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/doc34-01/35171.pdf",
+      "role": "contextual_primary_settlement_identity",
+      "pdfPage": 13,
+      "support": "Firsthand field description identifies inhabited Joumine, its administrative amenities and the Esenam and Mélassine quarters.",
+      "qualification": "Historical inhabited-settlement evidence, not a present population, legal municipal status, exact village perimeter, or exact prayer-reference anchor certification. Binary PDF is supplemental evidence; no UTF-8 compiler text assertion is claimed."
+    }
+  ],
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-retrieval.json",
+    "sha256": "84e514139b4ec6f6000248e916ab162799cf5ddeb14d5f78565a68b70c378ac8"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "1755",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7124444",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175551",
+        "sectorFr": "Ouled ghanem",
+        "sectorAr": "أولاد غانم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17578,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 758,
+          "Nombre_de_menages_par_Secteurs.xlsx": 757
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "اولاد غانم",
+        "name:ar": "اولاد غانم",
+        "name:fr": "Ouled Ghanem",
+        "ref:tn:codegeo": "175551"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124444",
+        "sourceId": "osm",
+        "name": "اولاد غانم",
+        "aliases": [
+          "Ouled Ghanem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.990587,
+        "lng": 9.365452,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.284428,
+          36.948277,
+          9.446881,
+          37.033056
+        ],
+        "areaKm2": 62.401709334198095,
+        "pickerGroupId": "osm:relation:7124444",
+        "offset": 1253928,
+        "length": 1548
+      },
+      "sourceGeometrySha256": "3783ff245d0062ee843c55fdecf0e35283f332f3924a9541a0c2806e25872a77",
+      "packedGeometrySha256": "5bd45ce5706869db373ffe4f417a897baae8eb2a79ae3a06cdad4658def332f9",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124441",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175552",
+        "sectorFr": "Essemman",
+        "sectorAr": "السمان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17612,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 760,
+          "Nombre_de_menages_par_Secteurs.xlsx": 759
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السمان",
+        "name:ar": "السمان",
+        "name:fr": "Essman",
+        "ref:tn:codegeo": "175552"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124441",
+        "sourceId": "osm",
+        "name": "السمان",
+        "aliases": [
+          "Essman"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.913836,
+        "lng": 9.378047,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.340958,
+          36.849656,
+          9.460271,
+          36.97811
+        ],
+        "areaKm2": 68.40011058692595,
+        "pickerGroupId": "osm:relation:7124441",
+        "offset": 1248844,
+        "length": 2108
+      },
+      "sourceGeometrySha256": "361a849fe85f4b8b7f02ff9b672d20e1ec93370a27bc173461c64f16617b9e2e",
+      "packedGeometrySha256": "3ddb5ccfc11997fed34e7a5cd4cc00730a725e62c97cb804c95a700a8ce34492",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124443",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175553",
+        "sectorFr": "Chenana",
+        "sectorAr": "الشنانة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17646,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 762,
+          "Nombre_de_menages_par_Secteurs.xlsx": 761
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "شنانة",
+        "name:ar": "شنانة",
+        "name:fr": "Chnena",
+        "ref:tn:codegeo": "175553"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124443",
+        "sourceId": "osm",
+        "name": "شنانة",
+        "aliases": [
+          "Chnena"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.93707,
+        "lng": 9.331093,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.302302,
+          36.913801,
+          9.365581,
+          36.961558
+        ],
+        "areaKm2": 18.064456021103133,
+        "pickerGroupId": "osm:relation:7124443",
+        "offset": 1253004,
+        "length": 924
+      },
+      "sourceGeometrySha256": "de22b141607ce6917586bcf2be1bed50a104336f16ed2605d46b3f461a7599f1",
+      "packedGeometrySha256": "2e72028a7b683b15e612201c2066f1f22dc24bee2067fb4b91d60c70b331085c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124439",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175554",
+        "sectorFr": "Tahent",
+        "sectorAr": "تاهنت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17680,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 764,
+          "Nombre_de_menages_par_Secteurs.xlsx": 763
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تاهنت",
+        "name:ar": "تاهنت",
+        "name:fr": "Tahent",
+        "ref:tn:codegeo": "175554"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124439",
+        "sourceId": "osm",
+        "name": "تاهنت",
+        "aliases": [
+          "Tahent"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.898387,
+        "lng": 9.499998,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.422639,
+          36.832076,
+          9.588134,
+          36.963931
+        ],
+        "areaKm2": 85.11139016979287,
+        "pickerGroupId": "osm:relation:7124439",
+        "offset": 1243556,
+        "length": 1612
+      },
+      "sourceGeometrySha256": "75b33506356630096bc970d0476bca77f7eb1fa3dc2fbae6d0dff97198bb5bc3",
+      "packedGeometrySha256": "ac66374d5c2a290707b0d6776fb5f315a3651e23898cbd1f7fd3e7bdc688a25c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124438",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175555",
+        "sectorFr": "Kef ghrab",
+        "sectorAr": "كاف غراب",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17714,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 765,
+          "Nombre_de_menages_par_Secteurs.xlsx": 764
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كاف غراب",
+        "name:ar": "كاف غراب",
+        "name:fr": "Kef Ghrab",
+        "ref:tn:codegeo": "175555"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124438",
+        "sourceId": "osm",
+        "name": "كاف غراب",
+        "aliases": [
+          "Kef Ghrab"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.868844,
+        "lng": 9.442872,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.393154,
+          36.794348,
+          9.55308,
+          36.943074
+        ],
+        "areaKm2": 96.71964132409057,
+        "pickerGroupId": "osm:relation:7124438",
+        "offset": 1241416,
+        "length": 2140
+      },
+      "sourceGeometrySha256": "0c6d5abc9b17913b7e6b8fbf9716226b3382ef61b9548058179f8674c32f5413",
+      "packedGeometrySha256": "df5b5bcd0e6d865c3dab68244083aff81a26163806ea6bab481e27d8ce4c9349",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124440",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175556",
+        "sectorFr": "Berraies",
+        "sectorAr": "بالرايس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17748,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 767,
+          "Nombre_de_menages_par_Secteurs.xlsx": 766
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بالرايس",
+        "name:ar": "بالرايس",
+        "name:fr": "Berraies",
+        "ref:tn:codegeo": "175556"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124440",
+        "sourceId": "osm",
+        "name": "بالرايس",
+        "aliases": [
+          "Berraies"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.793267,
+        "lng": 9.436597,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.344931,
+          36.723401,
+          9.516618,
+          36.863551
+        ],
+        "areaKm2": 115.79028683842601,
+        "pickerGroupId": "osm:relation:7124440",
+        "offset": 1245168,
+        "length": 3676
+      },
+      "sourceGeometrySha256": "ccc8a0390757be9b988fa324b165a7d63f157bdadd21b0d773611463fd8ca248",
+      "packedGeometrySha256": "6f968b39a32f1e6ba3b451f83c952fc42b4216fef7f18fcf58aeef4d21bbb32a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124445",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175557",
+        "sectorFr": "Touajnia",
+        "sectorAr": "الطواجنية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17782,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 769,
+          "Nombre_de_menages_par_Secteurs.xlsx": 768
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطواجنية",
+        "name:ar": "الطواجنية",
+        "name:fr": "Touajnia",
+        "ref:tn:codegeo": "175557"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124445",
+        "sourceId": "osm",
+        "name": "الطواجنية",
+        "aliases": [
+          "Touajnia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.975716,
+        "lng": 9.239889,
+        "delegationId": 557,
+        "hasBoundary": true,
+        "bbox": [
+          9.203704,
+          36.92904,
+          9.293312,
+          37.022486
+        ],
+        "areaKm2": 47.59157953314454,
+        "pickerGroupId": "osm:relation:7124445",
+        "offset": 1255476,
+        "length": 1596
+      },
+      "sourceGeometrySha256": "e8f78de44375f062440ff6b58e2c7392c1d168c48d6155c65cd1e382968fbec0",
+      "packedGeometrySha256": "69d911d1c0ead5f4ed6f3f218ed8b1bc030207b6e5a8107e361fe2f8f46a7fce",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124446",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175558",
+        "sectorFr": "Bazina",
+        "sectorAr": "بازينة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17816,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 771,
+          "Nombre_de_menages_par_Secteurs.xlsx": 770
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بازينة",
+        "name:ar": "بازينة",
+        "name:fr": "Bazina",
+        "ref:tn:codegeo": "175558"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124446",
+        "sourceId": "osm",
+        "name": "بازينة",
+        "aliases": [
+          "Bazina"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.958943,
+        "lng": 9.300518,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.259087,
+          36.932328,
+          9.325713,
+          36.985104
+        ],
+        "areaKm2": 17.68572425279591,
+        "pickerGroupId": "osm:relation:7124446",
+        "offset": 1257072,
+        "length": 748
+      },
+      "sourceGeometrySha256": "258a2471037d9b3e7fbf1ed62816ad5c33b81165d143ab2f75946e828ee559de",
+      "packedGeometrySha256": "d33cd0ee0347e1800953af45a6b376e15ac1b8031d6e23efc8268bd8e8734faf",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7124442",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1755",
+        "delegationFr": "Djoumine",
+        "delegationAr": "جومين",
+        "sectorCode": "175559",
+        "sectorFr": "Rouaha",
+        "sectorAr": "رواحة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17850,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 773,
+          "Nombre_de_menages_par_Secteurs.xlsx": 772
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "رواحة",
+        "name:ar": "رواحة",
+        "name:fr": "Rouaha",
+        "ref:tn:codegeo": "175559"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7124442",
+        "sourceId": "osm",
+        "name": "رواحة",
+        "aliases": [
+          "Rouaha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جومين",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Joumine",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.907708,
+        "lng": 9.300034,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.24398,
+          36.871385,
+          9.362577,
+          36.943304
+        ],
+        "areaKm2": 42.66439311726273,
+        "pickerGroupId": "osm:relation:7124442",
+        "offset": 1250952,
+        "length": 2052
+      },
+      "sourceGeometrySha256": "c6a2d725d29de13264366b69e61b3305405dbe2c199647d83c32e24a6f6c10cb",
+      "packedGeometrySha256": "88efce92c5a13653833816526f76458acbd5009ed8e70091687aec69e02ef9c5",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1433130924",
+      "kind": "village",
+      "tags": {
+        "addr:governorate": "Bizerte",
+        "name": "جومين",
+        "name:ar": "جومين",
+        "name:en": "Joumine",
+        "name:fr": "Joumine",
+        "place": "village"
+      }
+    },
+    {
+      "id": "osm:relation:7151756",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Joumine",
+        "boundary": "administrative",
+        "name": "معتمدية جومين",
+        "name:ar": "معتمدية جومين",
+        "name:fr": "Délégation Joumine",
+        "ref:tn:codegeo": "1755",
+        "ref:tn:hasc_2": "TN.BZ.JO",
+        "wikidata": "Q3186735"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7151756": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Joumine",
+        "boundary": "administrative",
+        "name": "معتمدية جومين",
+        "name:ar": "معتمدية جومين",
+        "name:fr": "Délégation Joumine",
+        "ref:tn:codegeo": "1755",
+        "ref:tn:hasc_2": "TN.BZ.JO",
+        "wikidata": "Q3186735"
+      },
+      "sourceGeometrySha256": "5704e5fca9dba8bcde53591fde0e5fd20976542660bb2a638386f37295d0a8dd"
+    },
+    "osm:relation:1435827": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-23",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Bizerte",
+        "boundary": "administrative",
+        "name": "ولاية بنزرت",
+        "name:ar": "ولاية بنزرت",
+        "name:az": "Bizerta (vilayət)",
+        "name:azb": "بنزرت",
+        "name:be": "Бізерта (вілает)",
+        "name:be-tarask": "Бізэрта (вілает)",
+        "name:bg": "Бизерта (област)",
+        "name:ca": "Governació de Bizerta",
+        "name:ceb": "Gouvernorat de Bizerte",
+        "name:cy": "Bizerte (talaith)",
+        "name:de": "Binzart",
+        "name:el": "Μπιζέρτα (Κυβερνείο)",
+        "name:en": "Bizerte",
+        "name:es": "Gobernación de Bizerta",
+        "name:fa": "بنزرت",
+        "name:fi": "Bizerte (kuvernementti)",
+        "name:fr": "Gouvernorat Bizerte",
+        "name:frr": "Bizerte (Guwernement)",
+        "name:hu": "Bizerte kormányzóság",
+        "name:id": "Kegubernuran Bizerte",
+        "name:it": "Biserta",
+        "name:ja": "ビゼルト県",
+        "name:ka": "ბიზერტის ვილაიეთი",
+        "name:ko": "비제르테주",
+        "name:ks": "بنزرت",
+        "name:lt": "Bizertos vilajetas",
+        "name:ms": "Kawasan kegabenoran Bizerte",
+        "name:nl": "Bizerte (gouvernement)",
+        "name:no": "Bizerte (guvernement)",
+        "name:pl": "Gubernatorstwo Bizerta",
+        "name:pnb": "بنزرت",
+        "name:pt": "Bizerta (província)",
+        "name:ro": "Guvernoratul Bizerte",
+        "name:ru": "Бизерта (вилайет)",
+        "name:sco": "Bizerte Govrenorate",
+        "name:sh": "Bizerta (vilajet)",
+        "name:sv": "Bizerte (guvernement)",
+        "name:tr": "Bizerte (vilayet)",
+        "name:uk": "Бізерта (вілаєт)",
+        "name:ur": "بنزرت",
+        "name:zh": "比塞大省",
+        "name:zu": "Bizerte Governorate",
+        "official_name": "ولاية بنزرت",
+        "official_name:ar": "ولاية بنزرت",
+        "official_name:en": "Bizerte Governorate",
+        "official_name:es": "Gobernación de Bizerta",
+        "official_name:fa": "استان بنزرت",
+        "official_name:fr": "Gouvernorat de Bizerte",
+        "official_name:it": "Governatorato di Biserta",
+        "official_name:ur": "ولایت بنزرت",
+        "population": "568219",
+        "population:date": "2014",
+        "ref:tn:codegeo": "17",
+        "wikidata": "Q241129",
+        "wikipedia": "ar:ولاية بنزرت",
+        "wikipedia:es": "Gobernación de Bizerta"
+      },
+      "sourceGeometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1433130924",
+    "field": "pickerGroupId",
+    "before": "osm:node:1433130924",
+    "after": "delegation:558"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1433130924"
+      ],
+      [
+        "delegation:558"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:558",
+        "osm:node:1433130924"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Preserve the independent OSM node coordinate and legacy timetable coordinate exactly. Neither city identity nor proximity certifies a historical INM calculation anchor. No reference moves.",
+  "scope": "Associate the retained village point with its existing timetable picker choice. Preserve all9 complete imadas, their geometry and groups, the coded delegation and governorate, raw kind and inherited context.",
+  "spellingPolicy": "Keep every current Arabic and Latin name and alias; published variants are identity evidence only.",
+  "sourcePhasePolicy": "Original snapshots have provider None, effective snapshots osm. Every selected point, context and imada retains exact tags, kind and geometry; no optional lineage, typed peer or deferred extension.",
+  "geometryHashConvention": "Runtime mapping geometry with compact JSON insertion order; no sorted-key research digest substitution.",
+  "dependencyPolicy": "Operational references are relative to scripts/neighborhoods. Absolute paths within frozen source reports record research provenance only.",
+  "officialPrimaryRetrieval": {
+    "file": "point-base-display-reviews/three-town-2026-09/joumine-official-retrieval.json",
+    "sha256": "1dbe88439da6c5ad6663a563c95064b0d994d91a92b9fff788e6d4848700387f"
+  },
+  "coordinateEvidenceQualification": "The Social Ministry map repeats the exact OSM coordinate; its provenance is unspecified and it is not counted as independent surveying."
+}

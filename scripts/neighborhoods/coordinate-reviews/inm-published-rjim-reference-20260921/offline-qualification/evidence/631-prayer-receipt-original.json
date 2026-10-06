@@ -1,0 +1,30 @@
+{
+  "key": "631-prayer",
+  "delegationId": 631,
+  "governorateId": 358,
+  "kind": "prayer",
+  "disposition": "fresh",
+  "attempt": 1,
+  "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/631/",
+  "startedAtUtc": "2026-09-19T11:44:41.324960+00:00",
+  "status": 200,
+  "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/631/",
+  "responseHeaders": {
+    "Date": "Sat, 19 Sep 2026 11:44:40 GMT",
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "must-revalidate, no-cache, private",
+    "X-UA-Compatible": "IE=edge",
+    "Content-language": "fr",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+    "Vary": "",
+    "Content-Length": "555",
+    "Content-Type": "application/json",
+    "Connection": "close"
+  },
+  "finishedAtUtc": "2026-09-19T11:44:41.483393+00:00",
+  "elapsedSeconds": 0.156,
+  "responseFile": "responses\\631-prayer-attempt01-8aa46d0045a66b0d.json",
+  "sha256": "8aa46d0045a66b0d397e432a123d64660b43d75d7fed68dd87487ae246b0f765",
+  "bytes": 555
+}

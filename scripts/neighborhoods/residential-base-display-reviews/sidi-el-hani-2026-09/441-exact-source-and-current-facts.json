@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "cachedExtractionSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "baselineMetadataSha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+  "sourceReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-source-identity-wrapper-sidi-only-stage.json",
+    "sha256": "c76da19443f4db74929bd3317fa12c361ce34fe8e9e85e5048e09580885ac79e"
+  },
+  "originalSourceReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "currentFiniteFacts": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/finite-source-schema-facts.json",
+    "sha256": "e8163672bd26da8e5c280c6ee0110986dab20dc543e3c6ab06ef140fddd27707"
+  },
+  "records": {
+    "osm:node:558855437": {
+      "kind": "village",
+      "tags": {
+        "name": "سيدي الهاني",
+        "name:ar": "سيدي الهاني",
+        "name:en": "Sidi El Heni",
+        "name:fr": "Sidi El Heni",
+        "place": "village"
+      },
+      "geometrySha256": "ae002b745c94f9356442343150d8f653361877b23742ee9f39cd1ee108cdaf5f",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:3152094": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-51",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية سوسة",
+        "name:ar": "ولاية سوسة",
+        "name:azb": "سوسه",
+        "name:be": "Сус (вілает)",
+        "name:be-tarask": "Сус (вілает)",
+        "name:bg": "Сус (област)",
+        "name:ca": "Governació de Sussa",
+        "name:ceb": "Gouvernorat de Sousse",
+        "name:ckb": "سوسە",
+        "name:cy": "Sousse (talaith)",
+        "name:de": "Gouvernement Sousse",
+        "name:el": "Σούσα (Κυβερνείο)",
+        "name:en": "Sousse",
+        "name:es": "Gobernación de Susa",
+        "name:fa": "سوسه",
+        "name:fi": "Sousse (kuvernementti)",
+        "name:fr": "Gouvernorat Sousse",
+        "name:frr": "Sousse (Guwernement)",
+        "name:he": "סוסה (מחוז)",
+        "name:id": "Kegubernuran Sousse",
+        "name:it": "Susa",
+        "name:ja": "スース県",
+        "name:ko": "수스주",
+        "name:ks": "سوسہ",
+        "name:lt": "Suso vilajetas",
+        "name:ms": "Kawasan kegabenoran Sousse",
+        "name:nl": "Sousse (gouvernement)",
+        "name:no": "Sousse (guvernement)",
+        "name:ota": "سوسه",
+        "name:pl": "Gubernatorstwo Susa",
+        "name:pt": "Susa (província)",
+        "name:ro": "Guvernoratul Sousse",
+        "name:ru": "Сус (вилайет)",
+        "name:sco": "Sousse Govrenorate",
+        "name:sh": "Sousse (vilajet)",
+        "name:tr": "Susa ili",
+        "name:uk": "Сус (вілаєт)",
+        "name:ur": "سوسہ",
+        "name:zh": "蘇塞省",
+        "name:zu": "Sousse Governorate",
+        "official_name": "ولاية سوسة",
+        "official_name:ar": "ولاية سوسة",
+        "official_name:en": "Sousse Governorate",
+        "official_name:es": "Gobernación de Susa",
+        "official_name:fa": "استان سوسه",
+        "official_name:fr": "Gouvernorat de Sousse",
+        "official_name:ur": "ولایت سوسہ",
+        "population": "674971",
+        "population:date": "2014",
+        "ref:tn:codegeo": "31",
+        "wikidata": "Q276565",
+        "wikipedia": "ar:ولاية سوسة"
+      },
+      "geometrySha256": "138e1cc0a156a36479032ee061f4428058d06d9c813103f8cc21cc6fddd5bd52",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7113806": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي الهاني الجنوبية",
+        "name:ar": "سيدي الهاني الجنوبية",
+        "name:fr": "Sidi El Heni Sud",
+        "ref:tn:codegeo": "316353"
+      },
+      "geometrySha256": "e3798ca29c2c68ed8dd2de78811f70cf1f0bf31acca6133b9d4e0808da50faac",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7113806",
+        "sourceId": "osm",
+        "name": "سيدي الهاني الجنوبية",
+        "aliases": [
+          "Sidi El Heni Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.640107,
+        "lng": 10.355191,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.25261,
+          35.584393,
+          10.441185,
+          35.69478
+        ],
+        "areaKm2": 109.4039347061993,
+        "pickerGroupId": "osm:relation:7113806"
+      },
+      "packedGeometrySha256": "27aeb02f45b12c9b45d81f32cdab0b0369a7069c04be2bc2a7b0711e139d5f81"
+    },
+    "osm:relation:7113807": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أولاد علي بالهاني",
+        "name:ar": "أولاد علي بالهاني",
+        "name:fr": "Ouled Ali Bel Hani",
+        "ref:tn:codegeo": "316354"
+      },
+      "geometrySha256": "92117907d47ab38bf0f0125573e6b664883a99438ba3a50d5fbb13350b3359d5",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7113807",
+        "sourceId": "osm",
+        "name": "أولاد علي بالهاني",
+        "aliases": [
+          "Ouled Ali Bel Hani"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.706906,
+        "lng": 10.35972,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.314887,
+          35.679898,
+          10.401984,
+          35.733435
+        ],
+        "areaKm2": 28.28985158564307,
+        "pickerGroupId": "osm:relation:7113807"
+      },
+      "packedGeometrySha256": "99d0c13e8de9956b1492bac32bae59e12f697231877689ca4cb0663f9402be0d"
+    },
+    "osm:relation:7113808": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كروسية الغربية",
+        "name:ar": "كروسية الغربية",
+        "name:fr": "Kroussia Ouest",
+        "ref:tn:codegeo": "316355"
+      },
+      "geometrySha256": "1aeb7f0006728770982908ca87dac1f1791229ac2cc2255836a1acc367a22e66",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7113808",
+        "sourceId": "osm",
+        "name": "كروسية الغربية",
+        "aliases": [
+          "Kroussia Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.763518,
+        "lng": 10.254913,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.195861,
+          35.716132,
+          10.367074,
+          35.80966
+        ],
+        "areaKm2": 98.21989340437968,
+        "pickerGroupId": "osm:relation:7113808"
+      },
+      "packedGeometrySha256": "da9e35f560695d2b8ba9072c1c491b2decde77f3f1d2ee6bfc1aba8f69d8c646"
+    },
+    "osm:relation:7113809": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي الهاني المركزية",
+        "name:ar": "سيدي الهاني المركزية",
+        "name:fr": "Sidi El Heni Centre",
+        "ref:tn:codegeo": "316351"
+      },
+      "geometrySha256": "4099c1b798b95328ea0751d63ebf503dbfa8ad1f77144db3b8a829d75c284521",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7113809",
+        "sourceId": "osm",
+        "name": "سيدي الهاني المركزية",
+        "aliases": [
+          "Sidi El Heni Centre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.704736,
+        "lng": 10.29537,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.250896,
+          35.678726,
+          10.320449,
+          35.730774
+        ],
+        "areaKm2": 19.338275045664936,
+        "pickerGroupId": "osm:relation:7113809"
+      },
+      "packedGeometrySha256": "bd399063f96227f5737fa078abca8fa810ddc4dae6ae07ec31b93b003d91ead2"
+    },
+    "osm:relation:7113811": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كروسية المركزية",
+        "name:ar": "كروسية المركزية",
+        "name:fr": "Kroussia Centrale",
+        "ref:tn:codegeo": "316356"
+      },
+      "geometrySha256": "c13ae72e22441d1d8dce9a7bc63826968c4e1d9eec7acabff86134da445fae7e",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7113811",
+        "sourceId": "osm",
+        "name": "كروسية المركزية",
+        "aliases": [
+          "Kroussia Centrale"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.752033,
+        "lng": 10.345479,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.291893,
+          35.715274,
+          10.445582,
+          35.789074
+        ],
+        "areaKm2": 50.355608912071176,
+        "pickerGroupId": "osm:relation:7113811"
+      },
+      "packedGeometrySha256": "5ed25b4512527985ae18adac4fbe3104190eca33cb52145778ebe080f7e2e570"
+    },
+    "osm:relation:7135672": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي الهاني الغربية",
+        "name:ar": "سيدي الهاني الغربية",
+        "name:fr": "Sidi El Heni Ouest",
+        "ref:tn:codegeo": "316352"
+      },
+      "geometrySha256": "6a9c7f2906ed25ba3793ce3aeccd23b53a219836ccaa3f15988e6f0db30af476",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7135672",
+        "sourceId": "osm",
+        "name": "سيدي الهاني الغربية",
+        "aliases": [
+          "Sidi El Heni Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.707146,
+        "lng": 10.241486,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.212735,
+          35.678396,
+          10.306014,
+          35.735355
+        ],
+        "areaKm2": 18.899028591675894,
+        "pickerGroupId": "osm:relation:7135672"
+      },
+      "packedGeometrySha256": "dbd27878b27dea5c1f988a8577d074528fe9fe563843d8421a09423e6bc81a4a"
+    },
+    "osm:relation:7150740": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name": "سيدي الهاني",
+        "alt_name:ar": "سيدي الهاني",
+        "alt_name:fr": "Sidi El Hani",
+        "boundary": "administrative",
+        "name": "معتمدية سيدي الهاني",
+        "name:ar": "معتمدية سيدي الهاني",
+        "name:fr": "Délégation Sidi El Heni",
+        "ref:tn:codegeo": "3163",
+        "ref:tn:hasc_2": "TN.SS.SH",
+        "wikidata": "Q3483227",
+        "wikipedia": "ar:معتمدية سيدي الهاني"
+      },
+      "geometrySha256": "9b654c29cbb06df62bf3bc8174f0d7f68c910a6a1d10c670bdb66c50d520d068",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:way:43944790": {
+      "kind": "residential",
+      "tags": {
+        "landuse": "residential",
+        "name": "سيدي الهاني",
+        "name:ar": "سيدي الهاني"
+      },
+      "geometrySha256": "742842961a0e5f84af189333522832e680e639ffc13a51abba7d05c687eb58c7",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:way:43944790",
+        "sourceId": "osm",
+        "name": "سيدي الهاني",
+        "aliases": [
+          "Sidi El Heni"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.680877,
+        "lng": 10.311315,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.302708,
+          35.676573,
+          10.320224,
+          35.685514
+        ],
+        "areaKm2": 0.6345806885521329,
+        "pickerGroupId": "osm:way:43944790"
+      },
+      "packedGeometrySha256": "c884949514a482950341e6e98fdffeb125904faba575597775c4d14a009fad8e"
+    }
+  },
+  "sourceNamePeerIds": [
+    "osm:node:558855437",
+    "osm:relation:7150740",
+    "osm:way:43944790"
+  ],
+  "originalAndEffectiveNamePeerIds": {
+    "original": [
+      "osm:node:558855437",
+      "osm:relation:7150740",
+      "osm:way:43944790"
+    ],
+    "effective": [
+      "osm:node:558855437",
+      "osm:relation:7150740",
+      "osm:way:43944790"
+    ]
+  },
+  "coordinatePolicy": "preserve_all_reference_and_raw_coordinates",
+  "completeCurrentGroups": {
+    "osm:relation:7113806": [
+      "osm:relation:7113806"
+    ],
+    "osm:relation:7113807": [
+      "osm:relation:7113807"
+    ],
+    "osm:relation:7113808": [
+      "osm:relation:7113808"
+    ],
+    "osm:relation:7113809": [
+      "osm:relation:7113809"
+    ],
+    "osm:relation:7113811": [
+      "osm:relation:7113811"
+    ],
+    "osm:relation:7135672": [
+      "osm:relation:7135672"
+    ],
+    "osm:way:43944790": [
+      "osm:way:43944790"
+    ],
+    "delegation:441": [
+      "delegation:441"
+    ]
+  },
+  "completeExpectedFinalGroups": {
+    "osm:relation:7113806": [
+      "osm:relation:7113806"
+    ],
+    "osm:relation:7113807": [
+      "osm:relation:7113807"
+    ],
+    "osm:relation:7113808": [
+      "osm:relation:7113808"
+    ],
+    "osm:relation:7113809": [
+      "osm:relation:7113809"
+    ],
+    "osm:relation:7113811": [
+      "osm:relation:7113811"
+    ],
+    "osm:relation:7135672": [
+      "osm:relation:7135672"
+    ],
+    "delegation:441": [
+      "delegation:441",
+      "osm:way:43944790"
+    ]
+  },
+  "exactRawFieldChanges": [
+    {
+      "id": "osm:way:43944790",
+      "field": "pickerGroupId",
+      "before": "osm:way:43944790",
+      "after": "delegation:441"
+    }
+  ],
+  "noCurationInSourceClosure": true,
+  "noSourceOnlyPointRestoration": true,
+  "originalResponseProvenance": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sidi-el-hani-original-response-provenance.json",
+    "sha256": "461324c0b708d15f66dd6b78575a6fa72a24585b31859794b7d1ef7cb07814e6"
+  },
+  "sourceGeometryHashProvenance": {
+    "sourceReportSortedGeojsonSha256": "6e6065ecfd090b2b5f1ceaae814323e0668490097139cee70b80ef047b555b81",
+    "compilerCompatibleMappingSha256": "742842961a0e5f84af189333522832e680e639ffc13a51abba7d05c687eb58c7",
+    "qualification": "Different serialization conventions of the same unchanged source geometry. Source report sorts original GeoJSON keys; compiler hashes Shapely mapping with insertion order. Neither hash is silently substituted for the other."
+  },
+  "sourcePointEvidenceQualification": "Exact frozen extracted town/village point, currently absent from raw catalog. No fresh public node response is claimed by this finite review."
+}

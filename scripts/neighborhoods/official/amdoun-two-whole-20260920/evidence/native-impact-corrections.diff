@@ -1,0 +1,739 @@
+--- impact-worker-draft.py
++++ impact-reviewed.py
+@@ -1,624 +1,122 @@
+-#!/usr/bin/env python3
+-import hashlib, json, struct
++"""Read-only joint replacement impact; native corrections to the bounded worker draft."""
++import ast, hashlib, json, math, struct
+ from pathlib import Path
+-from shapely.geometry import MultiPolygon, Point, Polygon, box, shape
++from shapely import set_precision
++from shapely.geometry import Polygon, MultiPolygon, Point, shape, mapping
+ from shapely.ops import transform, unary_union
++from shapely.strtree import STRtree
+ from pyproj import Transformer
+-W = Path('C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/amdoun-two-boundary-review-20260920').resolve()
+-F = W / 'frozen'
+-PIN = {
+- 'context': (W / 'frozen-context.json', None),
+- 'meta': (F / 'neighborhoods.json', 'ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94'),
+- 'bin': (F / 'neighborhoods.bin', '57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494'),
+- 'coverage': (F / 'coverage.json', '1d3c4413fb2b41cf02c35cced9deb0e013461f6a417969e685d95ab5fec9a517'),
+- 'curation': (F / 'catalog-curation.json', '35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43'),
+- 'reviewedBoundaries': (F / 'reviewed-boundaries.json', '34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57'),
+- 'reviewedPickerGroups': (F / 'reviewed-picker-groups.json', 'f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99'),
+- 'generator': (F / 'generate_neighborhoods.py', 'fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1'),
+- 'priorReview': (F / 'prior-source-and-geometry-review.json', '6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b'),
+- 'priorGeometryFacts': (F / 'prior-geometry-facts.json', 'baa703fd7ca7f8ed502b2bc9afab552cbc3b401c867684f44ab1463cc630dcb9'),
+- 'priorNative': (F / 'prior-native-geometries.json', '8ec9290dcd89849ec2af082bd3b0a3b718cbd4814ac573a79120741c4dbadfe2'),
+- 'priorNativeInventory': (F / 'prior-native-path-inventory.json', '9e136d19d69e5f86c5283be86af1942b6ccc5dcf7f017cc3a790514345143ea8'),
+- 'priorSourceReceipts': (F / 'prior-source-receipts.json', 'a2c6a172a96d43bd5c41fe552ac9c7cefb5fc8600c3341cef5fb1c9093151e02'),
+- 'priorFrozenSourceRows': (F / 'prior-frozen-source-rows.json', '17894890818f921fdda9789529a409a42aa0be7984af68c5169d93cf58275a71'),
+- 'gouvernorats': (F / 'gouvernorats.json', 'bd131b8d673fb039a0e94ad62f3b263a385d52d0734d903f6241aa2b96682203'),
+- 'retired': (F / 'retired-localities.json', 'd86c7cb90724966a0496400d522f4da071048dc08f7f175979fadd44625d64a4'),
+-}
+-TARGETS = {
+- 'osm:relation:7189452': {'nativeKey':'zahret-medien','officialSectorCode':'215351','officialSectorAr':'زهرة مدين','officialSectorFr':'Zahret medien','oldNameAr':'عمدون','oldNameFr':'Amdoun'},
+- 'osm:relation:7189451': {'nativeKey':'zahret-medien-sud','officialSectorCode':'215352','officialSectorAr':'زهرة مدين الجنوبية','officialSectorFr':'Zahret medien sud','oldNameAr':'عمدون الجنوبية','oldNameFr':'Amdoun Sud'},
+-}
+-OUT_OF_SCOPE = {'osm:relation:7133850','osm:node:287613682'}
+-OUT_OF_SCOPE_NATIVE_KEYS = {'midoun','arkou'}
+-DEPENDENT_CONTEXT_ID = 'osm:node:4099579144'
+-QSCALE = 1000000
+-def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+-def load_json(p): return json.loads(p.read_text(encoding='utf-8'))
+-def close(a,b): return a is not None and b is not None and abs(a-b) < 1e-6
++
++W=Path(__file__).resolve().parent;F=W/'frozen'
++TARGETS={'osm:relation:7189452':'zahret-medien','osm:relation:7189451':'zahret-medien-sud'}
++SCALE=1000000
++PLACES={'neighbourhood','quarter','suburb','city_district','village','hamlet','town'}
++FINE_KINDS={'neighbourhood','quarter','suburb','city_district','residential','subdistrict','locality'}
++def read(p):return json.loads(Path(p).read_text(encoding='utf-8'))
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def pin(p):return {'file':str(Path(p).resolve()),'sha256':sha(p),'bytes':Path(p).stat().st_size}
++def save(name,data):
++ with (W/name).open('x',encoding='utf-8',newline='\n') as f:json.dump(data,f,ensure_ascii=False,indent=2);f.write('\n')
++assert sha(W/'frozen-context.json')=='92e77236546e2a82dda4b65fbeb53d624e1d87f28c0287a38232db6ebd88be30'
++CTX=read(W/'frozen-context.json')
++PINS={Path(r['snapshot']):r['sha256'] for r in CTX['readOnlyInputs']}
++PINS.update({W/'frozen-context.json':'92e77236546e2a82dda4b65fbeb53d624e1d87f28c0287a38232db6ebd88be30',F/'source-targets-and-parents.json':'be9828dc3b3126235b317e3a7e83c8729f762e17d1cd3ceb2dd34e3f2a08f322',W/'decree-scope-addendum.json':'ca3711e4ccde56dabcd9c520fa5b62785379cf74cc03dc95233da1514dd01da4'})
+ def check_pins():
+- out = {}
+- for k in PIN:
+-  p = PIN[k][0]
+-  h = PIN[k][1]
+-  got = sha(p)
+-  if h is not None and got != h:
+-   raise SystemExit('pin mismatch ' + k + ' ' + got)
+-  out[k] = {'file': p.resolve().as_posix(), 'sha256': got, 'bytes': p.stat().st_size}
+- return out
+-def polygon_parts(g):
+- if g.geom_type == 'Polygon':
+-  return [g]
+- return [p for p in getattr(g, 'geoms', []) if p.geom_type == 'Polygon']
++ for path,digest in PINS.items():assert sha(path)==digest,str(path)
++ for row in CTX['readOnlyInputs']:assert sha(row['file'])==row['sha256'],row['file']
++check_pins()
++META=read(F/'neighborhoods.json');ROWS=META['features'];BYID={r['id']:r for r in ROWS};BROWS=[r for r in ROWS if r['hasBoundary']];BLOB=(F/'neighborhoods.bin').read_bytes()
++assert len(ROWS)==3523 and len(BROWS)==2619 and BLOB[:8]==b'NPOL'+struct.pack('>i',1)
+ def unpack(row):
+- raw = BLOB[row['offset']:row['offset'] + row['length']]
+- pos = 0
++ raw=BLOB[row['offset']:row['offset']+row['length']];pos=0
+  def take():
+   nonlocal pos
+-  n = struct.unpack_from('>i', raw, pos)[0]
+-  pos += 4
+-  return n
+- polys = []
++  value=struct.unpack_from('>i',raw,pos)[0];pos+=4;return value
++ polygons=[]
+  for _ in range(take()):
+-  rings = []
+-  for _ in range(take()):
+-   pts = [(take() / SCALE, take() / SCALE) for _ in range(take())]
+-   rings.append(pts)
+-  if rings:
+-   polys.append(Polygon(rings[0], rings[1:]))
+- if pos != len(raw):
+-  raise ValueError('packed length mismatch ' + row['id'])
+- return MultiPolygon(polys)
+-def utm(g): return transform(FW.transform, g)
+-def km2(g): return g.area / 1e6
+-def quantize_ring(coords):
+- return [(round(x * QSCALE) / QSCALE, round(y * QSCALE) / QSCALE) for x, y in coords]
+-def quantize_polygon(poly):
+- ext = quantize_ring(poly.exterior.coords)
+- holes = [quantize_ring(r.coords) for r in poly.interiors]
+- return Polygon(ext, holes)
+-PINS = check_pins()
+-CTX = load_json(PIN['context'][0])
+-assert sorted(CTX['targetIds']) == sorted(TARGETS)
+-CTX_ROWS = {r['id']: r for r in CTX['currentRows']}
+-META = load_json(PIN['meta'][0])
+-ROWS = META['features']
+-SCALE = META['coordinateScale']
+-ROW_BY_ID = {r['id']: r for r in ROWS}
+-BROWS = [r for r in ROWS if r.get('hasBoundary')]
+-BLOB = PIN['bin'][0].read_bytes()
+-CURRENT_GEOMS = {}
+-for row in BROWS:
+- CURRENT_GEOMS[row['id']] = unpack(row)
+-NATIVE = load_json(PIN['priorNative'][0])
+-PRIOR = load_json(PIN['priorReview'][0])
+-PRIOR_GF = load_json(PIN['priorGeometryFacts'][0])
+-PRIOR_CONC = {c['id']: c for c in PRIOR['amdoun']['conclusions']}
+-GF_BY_SLUG = {r['slug']: r for r in PRIOR_GF['records']}
+-FW = Transformer.from_crs(4326, 32632, always_xy=True)
+-BW = Transformer.from_crs(32632, 4326, always_xy=True)
+-OLD_WGS = {}
+-NEW_WGS = {}
+-OLD_UTM = {}
+-NEW_UTM = {}
+-for tid in TARGETS:
+- cfg = TARGETS[tid]
+- row = ROW_BY_ID[tid]
+- OLD_WGS[tid] = CURRENT_GEOMS[tid]
+- NEW_WGS[tid] = shape(NATIVE[cfg['nativeKey']])
+- if not NEW_WGS[tid].is_valid or NEW_WGS[tid].is_empty:
+-  raise SystemExit('invalid native path ' + tid)
+- OLD_UTM[tid] = utm(OLD_WGS[tid])
+- NEW_UTM[tid] = utm(NEW_WGS[tid])
+-SOURCE_REVIEW = {}
+-CHECKS = {}
+-for tid in TARGETS:
+- cfg = TARGETS[tid]
+- row = ROW_BY_ID[tid]
+- ctx = CTX_ROWS[tid]
+- prior = PRIOR_CONC[tid]
+- gf = GF_BY_SLUG[cfg['nativeKey']]
+- reg = prior['officialRegistryRecord']
+- checks = {
+-  'currentRowExists': True,
+-  'currentRowNameEqualsOfficialArabic': row.get('name') == cfg['officialSectorAr'],
+-  'currentRowAliasesRetainOldArabic': cfg['oldNameAr'] in (row.get('aliases') or []),
+-  'currentRowAliasesRetainOldFrench': cfg['oldNameFr'] in (row.get('aliases') or []),
+-  'currentRowLatLngMatchesFrozenContext': row.get('lat') == ctx.get('lat') and row.get('lng') == ctx.get('lng'),
+-  'officialSectorCodeMatchesOriginalTag': reg.get('sectorCode') == cfg['officialSectorCode'] and prior['originalTags'].get('ref:tn:codegeo') == cfg['officialSectorCode'],
+-  'nativeKeyPresent': cfg['nativeKey'] in NATIVE,
+-  'nativeValid': bool(gf.get('nativeGeometryValid')),
+-  'nativeContinuousExplicitlyClosed': bool(gf.get('nativeContinuousExplicitlyClosed')),
+-  'nativeFullyInsideViewport': bool(gf.get('fullyInsideViewport')),
+-  'nativeInsideBothActiveClips': all(bool(c.get('coversWholeTargetPath')) for c in gf.get('activeClipChecks', [])),
+- }
+- CHECKS[tid] = checks
+- SOURCE_REVIEW[tid] = {
+-  'currentRowName': row.get('name'),
+-  'currentRowAliases': row.get('aliases'),
+-  'currentRowParentName': row.get('parentName'),
+-  'currentRowContextAliases': row.get('contextAliases'),
+-  'officialSectorCode': cfg['officialSectorCode'],
+-  'officialRegistryRecord': reg,
+-  'originalTags': prior['originalTags'],
+-  'officialMap': {
+-   'file': prior['officialMap']['file'],
+-   'sha256': prior['officialMap']['sha256'],
+-   'bytes': prior['officialMap']['bytes'],
+-   'drawingIndex': gf.get('drawingIndex'),
+-   'sourceLayer': gf.get('sourceLayer'),
+-   'nativeVertexCount': gf.get('nativeVertexCount'),
+-   'nativeGeometryValid': gf.get('nativeGeometryValid'),
+-   'nativeContinuousExplicitlyClosed': gf.get('nativeContinuousExplicitlyClosed'),
+-   'fullyInsideViewport': gf.get('fullyInsideViewport'),
+-   'epsg': gf.get('epsg'),
+-   'maxControlResidualMeters': max(gf.get('controlResidualsMeters') or [0.0]),
+-   'wgs84Bounds': gf.get('wgs84Bounds'),
+-  },
+-  'priorOfficialVsOriginal': prior.get('officialVsOriginal'),
+-  'priorOfficialVsPacked': prior.get('officialVsPacked'),
+-  'priorCurrentAnchor': prior.get('currentAnchor'),
+-  'priorVerdict': prior.get('verdict'),
+-  'priorProposedPrimaryName': prior.get('proposedPrimaryName'),
+-  'checks': checks,
+- }
+-ANCHORS = {}
+-for tid in TARGETS:
+- row = ROW_BY_ID[tid]
+- pt = Point(row['lng'], row['lat'])
+- pt_u = transform(FW.transform, pt)
+- old = OLD_WGS[tid]
+- new = NEW_WGS[tid]
+- ANCHORS[tid] = {
+-  'lat': row['lat'],
+-  'lng': row['lng'],
+-  'source': 'currentRow lat/lng, preserved original relation anchor per frozen current rows',
+-  'oldPackedCovers': bool(old.covers(pt)),
+-  'newNativeCovers': bool(new.covers(pt)),
+-  'oldBoundaryDistanceM': OLD_UTM[tid].boundary.distance(pt_u),
+-  'newBoundaryDistanceM': NEW_UTM[tid].boundary.distance(pt_u),
+-  'originalTags': SOURCE_REVIEW[tid]['originalTags'],
+-  'currentName': row.get('name'),
+-  'officialArabicName': TARGETS[tid]['officialSectorAr'],
+-  'nameChangeRequired': False,
+-  'geometryReplacementProposedSubjectToImpactAndRootDecision': True,
+- }
+-OFFICIAL_VS_CURRENT = {}
+-for tid in TARGETS:
+- off = NEW_UTM[tid]
+- cur = OLD_UTM[tid]
+- inter = off.intersection(cur)
+- union = off.union(cur)
+- OFFICIAL_VS_CURRENT[tid] = {
+-  'officialAreaKm2': km2(off),
+-  'currentPackedAreaKm2': km2(cur),
+-  'intersectionKm2': km2(inter),
+-  'officialCoveredByCurrentPacked': inter.area / off.area if off.area else None,
+-  'currentPackedCoveredByOfficial': inter.area / cur.area if cur.area else None,
+-  'iou': inter.area / union.area if union.area else None,
+-  'officialOutsideCurrentPackedKm2': km2(off.difference(cur)),
+-  'currentPackedOutsideOfficialKm2': km2(cur.difference(off)),
+-  'hausdorffMeters': off.boundary.hausdorff_distance(cur.boundary),
+-  'centroidDistanceMeters': off.centroid.distance(cur.centroid),
+-  'priorFactOfficialVsPacked': SOURCE_REVIEW[tid]['priorOfficialVsPacked'],
+-  'priorFactMatchesRecomputedWithin1e-6': None,
+- }
+- p = SOURCE_REVIEW[tid]['priorOfficialVsPacked']
+- if p:
+-  OFFICIAL_VS_CURRENT[tid]['priorFactMatchesRecomputedWithin1e-6'] = (
+-   close(p.get('officialAreaKm2'), OFFICIAL_VS_CURRENT[tid]['officialAreaKm2']) and
+-   close(p.get('comparedAreaKm2'), OFFICIAL_VS_CURRENT[tid]['currentPackedAreaKm2']) and
+-   close(p.get('intersectionKm2'), OFFICIAL_VS_CURRENT[tid]['intersectionKm2']) and
+-   close(p.get('iou'), OFFICIAL_VS_CURRENT[tid]['iou'])
+-  )
+-TID_A = 'osm:relation:7189452'
+-TID_B = 'osm:relation:7189451'
+-PAIR = {
+- 'oldPackedIntersectionM2': OLD_UTM[TID_A].intersection(OLD_UTM[TID_B]).area,
+- 'newNativeIntersectionM2': NEW_UTM[TID_A].intersection(NEW_UTM[TID_B]).area,
+- 'oldPackedBoundaryIntersectionLengthM': OLD_UTM[TID_A].boundary.intersection(OLD_UTM[TID_B].boundary).length,
+- 'newNativeBoundaryIntersectionLengthM': NEW_UTM[TID_A].boundary.intersection(NEW_UTM[TID_B].boundary).length,
+- 'priorNativePairTopology': PRIOR['amdoun']['pairTopology'],
+-}
+-PAIR['newNativeMatchesPriorWithin1e-6'] = (
+- close(PAIR['newNativeIntersectionM2'], PAIR['priorNativePairTopology'].get('intersectionAreaM2')) and
+- close(PAIR['newNativeBoundaryIntersectionLengthM'], PAIR['priorNativePairTopology'].get('boundaryIntersectionLengthMeters'))
+-)
+-IGNORED = {
+- 'ids': sorted(OUT_OF_SCOPE),
+- 'nativeKeys': sorted(OUT_OF_SCOPE_NATIVE_KEYS),
+- 'policy': 'Midoun/Arkou entries read but excluded from all target comparisons, conflict checks, membership context and affected set.',
+- 'packedRowsReadButIgnored': [r['id'] for r in BROWS if r['id'] in OUT_OF_SCOPE],
+- 'nativeKeysPresentInPriorNativeFile': sorted(set(NATIVE) & OUT_OF_SCOPE_NATIVE_KEYS),
+-}
+-INTERSECTIONS = {}
+-COVERAGE = {}
+-UNCHANGED = {}
+-for tid in TARGETS:
+- old = OLD_UTM[tid]
+- new = NEW_UTM[tid]
+- gain = new.difference(old)
+- loss = old.difference(new)
+- oldbb = box(*OLD_WGS[tid].bounds)
+- newbb = box(*NEW_WGS[tid].bounds)
+- recs = []
+- local_all = []
+- local_sectors = []
+- unchanged_ids = []
+- for row in BROWS:
+-  rid = row['id']
+-  if rid == tid or rid in OUT_OF_SCOPE:
+-   continue
+-  rb = row.get('bbox')
+-  if not rb:
+-   continue
+-  rbox = box(*rb)
+-  if not (rbox.intersects(oldbb) or rbox.intersects(newbb)):
+-   continue
+-  g = utm(CURRENT_GEOMS[rid])
+-  local_all.append(g)
+-  if row.get('kind') == 'sector':
+-   local_sectors.append(g)
+-  before = g.intersection(old).area
+-  after = g.intersection(new).area
+-  gain_m2 = g.intersection(gain).area
+-  loss_m2 = g.intersection(loss).area
+-  rec = {
+-   'id': rid,
+-   'name': row.get('name'),
+-   'kind': row.get('kind'),
+-   'sourceId': row.get('sourceId'),
+-   'beforeM2': before,
+-   'afterM2': after,
+-   'gainM2': gain_m2,
+-   'lossM2': loss_m2,
+-   'unchanged': (before == after and gain_m2 == 0 and loss_m2 == 0),
+-  }
+-  recs.append(rec)
+-  if rec['unchanged']:
+-   unchanged_ids.append(rid)
+- other_all = unary_union(local_all) if local_all else Polygon()
+- other_sectors = unary_union(local_sectors) if local_sectors else Polygon()
+- coverage = {
+-  'oldAreaKm2': km2(old),
+-  'newAreaKm2': km2(new),
+-  'gainKm2': km2(gain),
+-  'lossKm2': km2(loss),
+-  'oldOutsideOtherSectorsKm2': km2(old.difference(other_sectors)),
+-  'oldOutsideAllRemainingPolygonsKm2': km2(old.difference(other_all)),
+-  'newOutsideOtherSectorsKm2': km2(new.difference(other_sectors)),
+-  'newOutsideAllRemainingPolygonsKm2': km2(new.difference(other_all)),
+-  'lossNotCoveredByAnyRemainingPolygonKm2': km2(loss.difference(other_all)),
+-  'lossNotCoveredByOtherSectorKm2': km2(loss.difference(other_sectors)),
+-  'gainAlreadyClaimedByAllRemainingPolygonsKm2': km2(gain.intersection(other_all)),
+-  'gainAlreadyClaimedByOtherSectorsKm2': km2(gain.intersection(other_sectors)),
+-  'nonPeerOverlapIsNotAConflict': True,
+- }
+- coverage['potentialNewGapKm2'] = coverage['lossNotCoveredByAnyRemainingPolygonKm2']
+- coverage['possiblePeerConflictKm2'] = coverage['gainAlreadyClaimedByOtherSectorsKm2']
+- INTERSECTIONS[tid] = recs
+- COVERAGE[tid] = coverage
+- UNCHANGED[tid] = sorted(unchanged_ids)
+-SECTOR_ROWS = [r for r in BROWS if r.get('kind') == 'sector' and r['id'] not in OUT_OF_SCOPE]
+-STORED_CONFLICTS = META.get('conflicts') or []
+-def stored_incident(tid):
+- out = []
+- for c in STORED_CONFLICTS:
+-  ids = c.get('ids') or []
+-  if tid in ids:
+-   out.append(c)
+- return sorted(out, key=lambda c: sorted(c.get('ids') or []))
+-def overlap_records(tid, target_wgs, target_utm):
+- out = []
+- tb = box(*target_wgs.bounds)
+- for row in SECTOR_ROWS:
+-  rid = row['id']
+-  if rid == tid or rid in OUT_OF_SCOPE:
+-   continue
+-  rb = row.get('bbox')
+-  if not rb:
+-   continue
+-  if not box(*rb).intersects(tb):
+-   continue
+-  g = utm(CURRENT_GEOMS[rid])
+-  inter = target_utm.intersection(g)
+-  if inter.is_empty or inter.area <= 0:
+-   continue
+-  sample = transform(BW.transform, inter.representative_point())
+-  out.append({
+-   'ids': sorted([tid, rid]),
+-   'otherId': rid,
+-   'intersectionM2': inter.area,
+-   'intersectionKm2': inter.area / 1e6,
+-   'sample': {'lat': sample.y, 'lng': sample.x},
+-   'source': 'computed_sector_overlap',
+-  })
+- return sorted(out, key=lambda c: c['ids'])
+-def idset(records):
+- return set(tuple(sorted(r.get('ids') or [])) for r in records)
+-CONFLICTS = {}
+-for tid in TARGETS:
+- stored = stored_incident(tid)
+- old_recs = overlap_records(tid, OLD_WGS[tid], OLD_UTM[tid])
+- new_recs = overlap_records(tid, NEW_WGS[tid], NEW_UTM[tid])
+- CONFLICTS[tid] = {
+-  'storedIncidentConflicts': stored,
+-  'computedOldIncidentSectorOverlaps': old_recs,
+-  'computedNewIncidentSectorOverlaps': new_recs,
+-  'storedIds': sorted(idset(stored)),
+-  'computedOldIds': sorted(idset(old_recs)),
+-  'computedNewIds': sorted(idset(new_recs)),
+-  'storedMatchesOldComputed': idset(stored) == idset(old_recs),
+-  'storedMatchesNewComputed': idset(stored) == idset(new_recs),
+-  'idsOnlyInStoredVsOld': sorted(idset(stored) - idset(old_recs)),
+-  'idsOnlyInOldComputedVsStored': sorted(idset(old_recs) - idset(stored)),
+-  'newOverlapIdsNotInStored': sorted(idset(new_recs) - idset(stored)),
+-  'storedIdsNotInNewComputed': sorted(idset(stored) - idset(new_recs)),
+- }
+-MEMBERSHIP_CHANGES = {}
+-for tid in TARGETS:
+- old = OLD_WGS[tid]
+- new = NEW_WGS[tid]
+- changes = []
++  rings=[]
++  for _ in range(take()):rings.append([(take()/SCALE,take()/SCALE) for _ in range(take())])
++  polygons.append(Polygon(rings[0],rings[1:]))
++ assert pos==len(raw)
++ return polygons[0] if len(polygons)==1 else MultiPolygon(polygons)
++OLD={r['id']:unpack(r) for r in BROWS};NATIVE=read(F/'prior-native-geometries.json');NEW={i:shape(NATIVE[key]) for i,key in TARGETS.items()}
++COUNTRY=unpack(META['country']);Q={i:set_precision(g,1/SCALE) for i,g in NEW.items()}
++for i in TARGETS:
++ assert NEW[i].is_valid and not NEW[i].is_empty and COUNTRY.covers(NEW[i])
++ assert Q[i].is_valid and not Q[i].is_empty and COUNTRY.covers(Q[i])
++ assert all(g.covers(Point(BYID[i]['lng'],BYID[i]['lat'])) for g in [OLD[i],NEW[i],Q[i]])
++for key in ['zahret-medien','zahret-medien-sud']:
++ row=next(r for r in read(F/'prior-geometry-facts.json')['records'] if r['slug']==key)
++ assert row['nativeGeometryValid'] and row['nativeContinuousExplicitlyClosed'] and row['fullyInsideViewport']
++ assert len(row['activeClipChecks'])==2 and all(r['coversWholeTargetPath'] for r in row['activeClipChecks'])
++tree=ast.parse((F/'generate_neighborhoods.py').read_text(encoding='utf-8'))
++helpers=[node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name in {'detect_conflicts','packed_geometry_bytes'}]
++assert {n.name for n in helpers}=={'detect_conflicts','packed_geometry_bytes'}
++exec(compile(ast.Module(body=helpers,type_ignores=[]),'<pinned-read-only-geometry-helpers>','exec'),globals())
++fw=Transformer.from_crs(4326,32632,always_xy=True).transform
++def utm(g):return transform(fw,g)
++def area(g):return g.area/1e6
++UOLD={i:utm(g) for i,g in OLD.items()}
++UNEW={i:utm(g) for i,g in NEW.items()}
++INDICES={r['id']:i for i,r in enumerate(BROWS)};tree=STRtree([OLD[r['id']] for r in BROWS]);cohort=set()
++for i in TARGETS:
++ for g in [OLD[i],NEW[i]]:cohort.update(int(j) for j in tree.query(g))
++cohort.update(INDICES[i] for i in TARGETS);cohort=sorted(cohort);CROWS=[BROWS[j] for j in cohort]
++def incident(replacements):
++ geometries=[replacements.get(r['id'],OLD[r['id']]) for r in CROWS]
++ return [r for r in detect_conflicts(CROWS,geometries) if set(r['ids'])&set(TARGETS)]
++BEFORE=incident({});AFTER=incident(NEW);PACKED=incident(Q)
++STORED=[r for r in META['conflicts'] if set(r['ids'])&set(TARGETS)]
++assert BEFORE==STORED,'Current incident conflicts do not reproduce exactly'
++INTERSECTIONS={};COVERAGE={}
++for i in TARGETS:
++ old,new=UOLD[i],UNEW[i];gain=new.difference(old);loss=old.difference(new)
++ remaining_before=[];remaining_after=[];sector_before=[];sector_after=[];records=[]
++ for row in CROWS:
++  j=row['id']
++  if j==i:continue
++  a=UOLD[j];b=UNEW.get(j,a)
++  remaining_before.append(a);remaining_after.append(b)
++  if row['kind']=='sector':sector_before.append(a);sector_after.append(b)
++  records.append({'id':j,'name':row['name'],'kind':row['kind'],'geometryAlsoReplaced':j in TARGETS,'beforeIntersectionM2':old.intersection(a).area,'afterJointReplacementIntersectionM2':new.intersection(b).area,'gainAlreadyCoveredBeforeM2':gain.intersection(a).area,'lossStillCoveredAfterM2':loss.intersection(b).area})
++ before_all=unary_union(remaining_before);after_all=unary_union(remaining_after);before_sectors=unary_union(sector_before);after_sectors=unary_union(sector_after)
++ INTERSECTIONS[i]=records
++ COVERAGE[i]={'oldAreaKm2':area(old),'newNativeAreaKm2':area(new),'gainKm2':area(gain),'lossKm2':area(loss),'oldOutsideOtherPolygonsKm2':area(old.difference(before_all)),'newOutsideOtherEffectivePolygonsKm2':area(new.difference(after_all)),'lossUncoveredByAnyEffectivePolygonKm2':area(loss.difference(after_all)),'lossUncoveredByEffectiveSectorsKm2':area(loss.difference(after_sectors)),'gainAlreadyCoveredByOldPolygonsKm2':area(gain.intersection(before_all)),'gainOverlapsEffectivePolygonsKm2':area(gain.intersection(after_all)),'gainOverlapsEffectiveSectorsKm2':area(gain.intersection(after_sectors))}
++old_union=unary_union([UOLD[i] for i in TARGETS]);new_union=unary_union(list(UNEW.values()));other_union=unary_union([UOLD[r['id']] for r in CROWS if r['id'] not in TARGETS]);other_sectors=unary_union([UOLD[r['id']] for r in CROWS if r['id'] not in TARGETS and r['kind']=='sector'])
++joint_gain=new_union.difference(old_union);joint_loss=old_union.difference(new_union)
++JOINT={'oldUnionKm2':area(old_union),'newUnionKm2':area(new_union),'gainKm2':area(joint_gain),'lossKm2':area(joint_loss),'gainPreviouslyUncoveredAllLayersKm2':area(joint_gain.difference(other_union)),'lossUncoveredAllLayersKm2':area(joint_loss.difference(other_union)),'gainOverlapsUnchangedPolygonsKm2':area(joint_gain.intersection(other_union)),'lossUncoveredSectorLayerKm2':area(joint_loss.difference(other_sectors)),'method':'Joint union old pair versus new pair, with both targets removed from unchanged peers; no double counting or stale other-target geometry.'}
++parents=read(F/'source-targets-and-parents.json');parea={r['tags'].get('ref:tn:codegeo'):r for r in parents['areas']};PARENTS={}
++for i in TARGETS:
++ PARENTS[i]={}
++ for code,role in [('2153','delegation'),('21','governorate')]:
++  row=parea[code];g=utm(shape(row['geometry']));PARENTS[i][role]={'id':row['id'],'code':code,'oldOutsideM2':UOLD[i].difference(g).area,'newOutsideM2':UNEW[i].difference(g).area,'sourceTags':row['tags']}
++MEMBERSHIP={};CHILDREN=[];affected=set(TARGETS)
++for i in TARGETS:
++ changes=[]
+  for row in ROWS:
+-  rid = row['id']
+-  if rid in OUT_OF_SCOPE:
+-   continue
+-  lat = row.get('lat')
+-  lng = row.get('lng')
+-  if lat is None or lng is None:
+-   continue
+-  pt = Point(lng, lat)
+-  before = old.covers(pt)
+-  after = new.covers(pt)
+-  if before != after:
+-   changes.append({
+-    'id': rid,
+-    'name': row.get('name'),
+-    'kind': row.get('kind'),
+-    'beforeInsideOldPacked': bool(before),
+-    'afterInsideNewNative': bool(after),
+-    'lat': lat,
+-    'lng': lng,
+-   })
+- MEMBERSHIP_CHANGES[tid] = changes
+-DELEGATION_IDS = sorted({ROW_BY_ID[tid].get('delegationId') for tid in TARGETS if ROW_BY_ID[tid].get('delegationId') is not None})
+-CONTEXT_TOKENS = set()
+-for tid in TARGETS:
+- row = ROW_BY_ID[tid]
+- CONTEXT_TOKENS.add(row.get('name'))
+- CONTEXT_TOKENS.add(TARGETS[tid]['oldNameAr'])
+- CONTEXT_TOKENS.add(TARGETS[tid]['oldNameFr'])
+- for a in (row.get('aliases') or []):
+-  CONTEXT_TOKENS.add(a)
+- for a in (row.get('contextAliases') or []):
+-  CONTEXT_TOKENS.add(a)
+-CONTEXT_TOKENS = {t for t in CONTEXT_TOKENS if t}
+-def is_context_row(row):
+- rid = row.get('id')
+- if rid in TARGETS:
+-  return True
+- if rid == DEPENDENT_CONTEXT_ID:
+-  return True
+- if row.get('delegationId') in DELEGATION_IDS:
+-  return True
+- texts = [row.get('parentName') or ''] + list(row.get('contextAliases') or [])
+- for text in texts:
+-  for token in CONTEXT_TOKENS:
+-   if token and token in text:
+-    return True
+- return False
+-CONTEXT_RECORDS = []
++  point=Point(row['lng'],row['lat']);before=OLD[i].covers(point);after=NEW[i].covers(point)
++  if before!=after:changes.append({'id':row['id'],'name':row['name'],'kind':row['kind'],'before':before,'after':after,'pickerGroupId':row['pickerGroupId']});affected.add(row['id'])
++ MEMBERSHIP[i]=changes
+ for row in ROWS:
+- rid = row.get('id')
+- if rid in OUT_OF_SCOPE:
+-  continue
+- if not is_context_row(row):
+-  continue
+- rec = {
+-  'id': rid,
+-  'name': row.get('name'),
+-  'kind': row.get('kind'),
+-  'parentName': row.get('parentName'),
+-  'contextAliases': row.get('contextAliases'),
+-  'delegationId': row.get('delegationId'),
+-  'pickerGroupId': row.get('pickerGroupId'),
+-  'hasBoundary': bool(row.get('hasBoundary')),
+-  'lat': row.get('lat'),
+-  'lng': row.get('lng'),
+-  'targetMemberships': {},
+- }
+- if row.get('lat') is not None and row.get('lng') is not None:
+-  pt = Point(row['lng'], row['lat'])
+-  for tid in TARGETS:
+-   rec['targetMemberships'][tid] = {
+-    'oldPackedCoversPoint': bool(OLD_WGS[tid].covers(pt)),
+-    'newNativeCoversPoint': bool(NEW_WGS[tid].covers(pt)),
+-   }
+- else:
+-  for tid in TARGETS:
+-   rec['targetMemberships'][tid] = {
+-    'oldPackedCoversPoint': None,
+-    'newNativeCoversPoint': None,
+-   }
+- if row.get('hasBoundary') and rid in CURRENT_GEOMS:
+-  gu = utm(CURRENT_GEOMS[rid])
+-  for tid in TARGETS:
+-   rec['targetMemberships'][tid]['footprintCoveredByOld'] = bool(OLD_UTM[tid].covers(gu))
+-   rec['targetMemberships'][tid]['footprintCoveredByNew'] = bool(NEW_UTM[tid].covers(gu))
+-   rec['targetMemberships'][tid]['intersectionOldM2'] = gu.intersection(OLD_UTM[tid]).area
+-   rec['targetMemberships'][tid]['intersectionNewM2'] = gu.intersection(NEW_UTM[tid]).area
+-   rec['targetMemberships'][tid]['wholeGeometryCrossesUnresolved'] = bool(
+-    (gu.intersects(OLD_UTM[tid]) or gu.intersects(NEW_UTM[tid])) and not (OLD_UTM[tid].covers(gu) and NEW_UTM[tid].covers(gu))
+-   )
+- CONTEXT_RECORDS.append(rec)
+-AFFECTED = set(TARGETS)
+-for tid in TARGETS:
+- for rec in INTERSECTIONS[tid]:
+-  if (not rec['unchanged']) or rec['gainM2'] > 0 or rec['lossM2'] > 0:
+-   AFFECTED.add(rec['id'])
+- for rec in MEMBERSHIP_CHANGES[tid]:
+-  AFFECTED.add(rec['id'])
+- for rec in CONFLICTS[tid]['computedOldIncidentSectorOverlaps'] + CONFLICTS[tid]['computedNewIncidentSectorOverlaps']:
+-  AFFECTED.update(rec['ids'])
+-for rec in CONTEXT_RECORDS:
+- AFFECTED.add(rec['id'])
+-GROUPS = sorted({ROW_BY_ID[i].get('pickerGroupId') for i in AFFECTED if i in ROW_BY_ID and ROW_BY_ID[i].get('pickerGroupId')})
+-GROUP_CLOSURE = [r for r in ROWS if r.get('pickerGroupId') in GROUPS]
+-QUANT = {}
+-for tid in TARGETS:
+- new = NEW_WGS[tid]
+- try:
+-  parts = []
+-  for poly in polygon_parts(new):
+-   parts.append(quantize_polygon(poly))
+-  q = MultiPolygon(parts) if len(parts) > 1 else parts[0]
+-  rec = {
+-   'scale': QSCALE,
+-   'quantizedRingValid': bool(q.is_valid),
+-   'quantizedRingEmpty': bool(q.is_empty),
+-   'qualification': 'separate 1e-6 coordinate copy for assessment only; no repair/snap/cut/fill and no app generation',
+-  }
+-  if q.is_valid and not q.is_empty:
+-   qu = utm(q)
+-   inter = qu.intersection(OLD_UTM[tid])
+-   union = qu.union(OLD_UTM[tid])
+-   un = qu.union(NEW_UTM[tid])
+-   rec.update({
+-    'quantizedAreaKm2': km2(qu),
+-    'unroundedAreaKm2': km2(NEW_UTM[tid]),
+-    'areaDeltaM2': qu.area - NEW_UTM[tid].area,
+-    'iouVsUnroundedNative': qu.intersection(NEW_UTM[tid]).area / un.area if un.area else None,
+-    'oldPackedIntersectionKm2': km2(inter),
+-    'iouVsOldPacked': inter.area / union.area if union.area else None,
+-    'gainVsOldPackedKm2': km2(qu.difference(OLD_UTM[tid])),
+-    'lossVsOldPackedKm2': km2(OLD_UTM[tid].difference(qu)),
+-    'oldPackedCoversAnchor': bool(OLD_WGS[tid].covers(Point(ROW_BY_ID[tid]['lng'], ROW_BY_ID[tid]['lat']))),
+-    'quantizedCoversAnchor': bool(q.covers(Point(ROW_BY_ID[tid]['lng'], ROW_BY_ID[tid]['lat']))),
+-   })
+-  QUANT[tid] = rec
+- except Exception as exc:
+-  QUANT[tid] = {'scale': QSCALE, 'quantizedRingValid': False, 'error': str(exc), 'qualification': 'separate 1e-6 coordinate copy assessment only'}
+-UNCHANGED_EXCLUSIONS = {
+- 'policy': 'Only geometry rows with gain/loss/membership/conflict/context change enter the affected set; unchanged neighbors are excluded from the change set. Midoun/Arkou are out of scope and ignored.',
+- 'outOfScopeIds': sorted(OUT_OF_SCOPE),
+- 'outOfScopeNativeKeys': sorted(OUT_OF_SCOPE_NATIVE_KEYS),
+- 'unchangedNeighborIdsByTarget': UNCHANGED,
+- 'affectedIds': sorted(AFFECTED),
+- 'affectedCount': len(AFFECTED),
+-}
+-QUALIFICATIONS = {
+- 'prePackingActualSourceVsPackedPeersProjection': True,
+- 'exactLaterGenerationRun': False,
+- 'quantized1e-6AssessmentSeparate': True,
+- 'productionAssetsModified': False,
+- 'curationCoreControlLedgerModified': False,
+- 'noRepairSnapCutFill': True,
+- 'noAppGenerationPackagingOrBuild': True,
+- 'nativeSourcePathsPreservedUnrounded': True,
+- 'protectedProofsRetained': True,
+- 'wholeOsmExtentUnchanged': False,
+- 'legalWholeImadaEquivalence': False,
+- 'wholeImadaScopeProofPresent': False,
+- 'jortOrDecreePresent': False,
+- 'websiteIndexOrEqualLabelTreatedAsWholeScopeProof': False,
+- 'packageOnlyAfterImpactAndRootDecision': True,
+- 'afterConflictsAndIntersections': 'prepacking projection using untouched saved native geometry against current packed peers; not an exact generated/packed app prediction',
+- 'exactLaterGenerationDistinction': 'unrounded native projection is not the same as a generated/packed artifact; 1e-6 quantized copy is a separate assessment; no generator run.',
+-}
+-FACTS = {
+- 'status': 'READ_ONLY_AMDOUN_TWO_SECTOR_IMPACT_FACTS',
+- 'configuration': 'MAX_ESTABLISHED',
+- 'analysisOnly': True,
+- 'networkDevicesApiTestsApkBuildControlLedgerProductionWrites': False,
+- 'targetIds': sorted(TARGETS),
+- 'inputs': PINS,
+- 'frozenContext': {'targetIds': CTX.get('targetIds'), 'currentRows': CTX.get('currentRows')},
+- 'sourceReview': SOURCE_REVIEW,
+- 'sourceChecks': CHECKS,
+- 'targets': TARGETS,
+- 'outOfScopeIgnored': IGNORED,
+- 'anchors': ANCHORS,
+- 'officialVsCurrentPacked': OFFICIAL_VS_CURRENT,
+- 'targetPairOverlap': PAIR,
+- 'prePackingProjectionVsPackedPeers': {
+-  'qualification': QUALIFICATIONS['afterConflictsAndIntersections'],
+-  'targetResults': {tid: {
+-   'coverage': COVERAGE[tid],
+-   'intersectionRecordCount': len(INTERSECTIONS[tid]),
+-   'unchangedNeighborIds': UNCHANGED[tid],
+-   'conflictComparison': CONFLICTS[tid],
+-  } for tid in TARGETS},
+-  'intersectionRecords': INTERSECTIONS,
+- },
+- 'quantized1e-6Assessment': QUANT,
+- 'membership': {
+-  'allRowRepresentativePointChanges': MEMBERSHIP_CHANGES,
+-  'fullChildContextMemberships': CONTEXT_RECORDS,
+-  'contextDefinition': {
+-   'delegationIds': DELEGATION_IDS,
+-   'tokens': sorted(CONTEXT_TOKENS),
+-   'dependentContextId': DEPENDENT_CONTEXT_ID,
+-   'dependentContextPresent': DEPENDENT_CONTEXT_ID in ROW_BY_ID,
+-   'outOfScopeIgnored': sorted(OUT_OF_SCOPE),
+-  },
+- },
+- 'unchangedNeighborExclusions': UNCHANGED_EXCLUSIONS,
+- 'pickerGroupClosure': {
+-  'groups': GROUPS,
+-  'rows': GROUP_CLOSURE,
+-  'groupsMergedOrRetired': [],
+-  'pickerGroupsUnchanged': True,
+- },
+- 'qualifications': QUALIFICATIONS,
+-}
+-OUT_FACTS = W / 'impact-facts.json'
+-OUT_SUMMARY = W / 'impact-summary.json'
+-if OUT_FACTS.exists() or OUT_SUMMARY.exists():
+- raise SystemExit('refusing to overwrite existing output')
+-if OUT_FACTS.parent.resolve() != W or OUT_SUMMARY.parent.resolve() != W:
+- raise SystemExit('output directory mismatch')
+-SUMMARY = {
+- 'status': FACTS['status'],
+- 'factsFile': OUT_FACTS.resolve().as_posix(),
+- 'summaryFile': OUT_SUMMARY.resolve().as_posix(),
+- 'counts': {
+-  'currentRows': len(ROWS),
+-  'currentBoundaryRows': len(BROWS),
+-  'packedPolygonsRead': len(CURRENT_GEOMS),
+-  'outOfScopePackedRowsIgnored': len(IGNORED['packedRowsReadButIgnored']),
+-  'intersectionRecords': sum(len(v) for v in INTERSECTIONS.values()),
+-  'oldIncidentSectorOverlaps': sum(len(CONFLICTS[t]['computedOldIncidentSectorOverlaps']) for t in TARGETS),
+-  'newIncidentSectorOverlaps': sum(len(CONFLICTS[t]['computedNewIncidentSectorOverlaps']) for t in TARGETS),
+-  'membershipChanges': sum(len(v) for v in MEMBERSHIP_CHANGES.values()),
+-  'contextRows': len(CONTEXT_RECORDS),
+-  'contextTokens': len(CONTEXT_TOKENS),
+-  'pickerGroups': len(GROUPS),
+-  'pickerClosureRows': len(GROUP_CLOSURE),
+-  'affectedIds': len(AFFECTED),
+- },
+- 'metrics': {tid: COVERAGE[tid] for tid in TARGETS},
+- 'sourceChecks': CHECKS,
+- 'conflictChecks': {tid: {
+-  'storedMatchesOldComputed': CONFLICTS[tid]['storedMatchesOldComputed'],
+-  'storedMatchesNewComputed': CONFLICTS[tid]['storedMatchesNewComputed'],
+-  'storedIds': CONFLICTS[tid]['storedIds'],
+-  'computedOldIds': CONFLICTS[tid]['computedOldIds'],
+-  'computedNewIds': CONFLICTS[tid]['computedNewIds'],
+- } for tid in TARGETS},
+- 'quantizedChecks': {tid: {
+-  'valid': QUANT[tid]['quantizedRingValid'],
+-  'areaDeltaM2': QUANT[tid].get('areaDeltaM2'),
+-  'iouVsUnroundedNative': QUANT[tid].get('iouVsUnroundedNative'),
+- } for tid in TARGETS},
+- 'qualifications': {
+-  'prePackingProjection': QUALIFICATIONS['afterConflictsAndIntersections'],
+-  'exactLaterGenerationRun': QUALIFICATIONS['exactLaterGenerationRun'],
+-  'wholeImadaScopeProofPresent': QUALIFICATIONS['wholeImadaScopeProofPresent'],
+- },
+-}
+-PINS2 = check_pins()
+-assert PINS2 == PINS
+-OUT_FACTS.write_text(json.dumps(FACTS, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+-OUT_SUMMARY.write_text(json.dumps(SUMMARY, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+-check_pins()
+-print(json.dumps(SUMMARY, ensure_ascii=False, indent=2))
++ if row['id'] in TARGETS or row['kind']=='sector':continue
++ g=OLD[row['id']] if row['hasBoundary'] else Point(row['lng'],row['lat'])
++ memberships={i:{'oldPackedCoversWholeFootprint':OLD[i].covers(g),'newNativeCoversWholeFootprint':NEW[i].covers(g),'newPackedCoversWholeFootprint':Q[i].covers(g)} for i in TARGETS}
++ exact_name_reference=any(row.get('parentName')==BYID[i]['name'] or BYID[i]['name'] in row.get('contextAliases',[]) for i in TARGETS)
++ if exact_name_reference or any(v['oldPackedCoversWholeFootprint'] or v['newNativeCoversWholeFootprint'] for v in memberships.values()):
++  CHILDREN.append({'currentRow':row,'memberships':memberships,'exactCurrentSectorNameReference':exact_name_reference});affected.add(row['id'])
++for records in [BEFORE,AFTER,PACKED]:
++ for row in records:affected.update(row['ids'])
++for rows in INTERSECTIONS.values():
++ for row in rows:
++  if row['beforeIntersectionM2']!=row['afterJointReplacementIntersectionM2']:affected.add(row['id'])
++groups=sorted({BYID[i]['pickerGroupId'] for i in affected if i in BYID});closure=[r for r in ROWS if r['pickerGroupId'] in groups]
++QUANT={}
++for i in TARGETS:
++ g=Q[i];p=Point(BYID[i]['lng'],BYID[i]['lat']);a,b=UNEW[i],utm(g)
++ QUANT[i]={'coordinateScale':SCALE,'packedGeometrySha256':hashlib.sha256(packed_geometry_bytes(g)).hexdigest(),'packedLength':len(packed_geometry_bytes(g)),'nativeValid':NEW[i].is_valid,'packedValid':g.is_valid,'nativeAndPackedContainCurrentAnchor':NEW[i].covers(p) and g.covers(p),'anchor':{'lat':p.y,'lng':p.x},'sourceBoundaryDistanceM':a.boundary.distance(utm(p)),'symmetricDifferenceM2':a.symmetric_difference(b).area,'hausdorffM':a.hausdorff_distance(b),'nativeHoles':sum(len(x.interiors) for x in ([NEW[i]] if isinstance(NEW[i],Polygon) else NEW[i].geoms)),'packedHoles':sum(len(x.interiors) for x in ([g] if isinstance(g,Polygon) else g.geoms))}
++pair=list(TARGETS);PAIR={'oldOverlapM2':UOLD[pair[0]].intersection(UOLD[pair[1]]).area,'nativeOverlapM2':UNEW[pair[0]].intersection(UNEW[pair[1]]).area,'packedOverlapM2':utm(Q[pair[0]]).intersection(utm(Q[pair[1]])).area,'unchangedNativePaths':True}
++qualifications={'sourceEdition':2023,'wholeImadaScope':pin(W/'decree-scope-addendum.json'),'notSurveyOrPresentDayCurrencyProof':True,'oldAndNewSourceDisagreementsRetained':True,'noNativeRepairSnapCutFill':True,'quantization':'Existing set_precision1e-6 and exact pinned encoder applied only to a separate copy.','geometryProposalOnly':'No generation, source, production, ledger, controls or devices modified.','nativeModelReviewMissingJortResolvedBySeparateVisualAddendum':True,'membershipIsFiniteDataEvidenceNotGenerationGuarantee':True}
++facts={'status':'READ_ONLY_JOINT_AMDOUN_TWO_BOUNDARY_IMPACT','producer':pin(Path(__file__)),'inputs':[pin(p) for p in PINS],'targetRows':[BYID[i] for i in TARGETS],'jointCoverage':JOINT,'perTargetCoverage':COVERAGE,'targetPair':PAIR,'intersectionRecords':INTERSECTIONS,'conflicts':{'oldStoredAndRecomputed':BEFORE,'nativeJointReplacement':AFTER,'packedCopyJointReplacement':PACKED,'oldAllCatalogCount':len(META['conflicts']),'projectedPackedAllCatalogCount':len(META['conflicts'])-len(BEFORE)+len(PACKED),'cohortIds':[r['id'] for r in CROWS]},'rawRepresentativeMembershipChanges':MEMBERSHIP,'wholeFootprintChildConsumers':CHILDREN,'parents':PARENTS,'quantization':QUANT,'pickerClosure':{'groups':groups,'rows':closure,'noGroupingOrMetadataMutation':True},'qualifications':qualifications}
++summary={'status':facts['status'],'jointCoverage':JOINT,'perTargetCoverage':COVERAGE,'targetPair':PAIR,'counts':{'oldIncidentConflicts':len(BEFORE),'newNativeIncidentConflicts':len(AFTER),'newPackedIncidentConflicts':len(PACKED),'projectedPackedAllCatalogConflicts':facts['conflicts']['projectedPackedAllCatalogCount'],'cohortPolygons':len(CROWS),'rawMembershipChanges':sum(len(v) for v in MEMBERSHIP.values()),'childConsumers':len(CHILDREN),'pickerClosureGroups':len(groups)},'quantization':QUANT,'parents':PARENTS}
++check_pins();save('impact-facts.json',facts);save('impact-summary.json',summary);check_pins()
++print(json.dumps({'facts':pin(W/'impact-facts.json'),'summary':pin(W/'impact-summary.json'),'counts':summary['counts'],'jointCoverage':JOINT},ensure_ascii=False))

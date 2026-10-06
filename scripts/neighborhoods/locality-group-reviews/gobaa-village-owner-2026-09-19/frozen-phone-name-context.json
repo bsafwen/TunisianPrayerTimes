@@ -1,0 +1,101 @@
+{
+  "createdAt": "2026-09-19T09:18:42.900831+00:00",
+  "status": "QUALIFIED_NAME_CONTEXT_OBSERVATIONS",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_7095859-2\\ledger.json",
+    "sha256": "b84b2743e0ea2c32d299326b7e0b452bb642bc5884bcaf25fb75612eaf5e9797"
+  },
+  "afterLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "6e1ed116b76b383ebf7dbab0b3def4abac4618951bb53201e291645ddcbe3514"
+  },
+  "observations": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095859-2.json",
+        "sha256": "b90b82caafa3fe38678dbd7193ea275b5b9a61d35b4c6bc88c1b62d3f1fd91c7"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095859-2.png",
+        "sha256": "c1d74ef67bc1dc47f350f412e1cbb15a7ddea4f3449ae0d50eecc9e7ebe6f444"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Latin Gobaa query returns local POI results including القباعة medical centre, municipal district and PrimarySchoolGobaa1; context only, not a locality card.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_456466522-1.json",
+        "sha256": "34b1b95d0724166205ec5445b9fdec805bf0c8eb81b0df599375f52aae47de29"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_456466522-1.png",
+        "sha256": "1dad34db041afdfcddeec01e22301c2cc79f66780bf85073094e96b029c4cd95"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Arabic query returns القباعة / El Kobbaa locality card and an urban outline; confirms visible name context, not the exact stored polygon.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7121325-1.json",
+        "sha256": "c8af37ec1ce488ac91b2696f48b62fdf380f7a8f8dada044a6580d65f03bcacd"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7121325-1.png",
+        "sha256": "01d04c91d07302b2013e77e0452e23d848314d6f0fb1e8baf65a0605457e21ac"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Named query returns الزواوين / Zouaouine card with settlement streets and outline; supports current official Arabic spelling, not boundaries.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7129263-1.json",
+        "sha256": "18a37c7d7fb85030934568f960e384d33098e574e5961e7cac7c8af39ef68f9c"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7129263-1.png",
+        "sha256": "f8652fdfb6625fec490cc4088746e99672f902f9c0772ced646b65da4cef5fdc"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Named query returns قلعة سنان / Kalaat Senan card with broad administrative-looking outline including Jugurtha Tableland. Name context only; not settlement extent.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-1.json",
+        "sha256": "3dbaf51b5ea8c3f8173c8dc9585f051ac256b21a2f971dbfed4b1d8053aec2b3"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-1.png",
+        "sha256": "f07625739996d012f8c4365c704badfc73746480cf30f3a6cf96719b869c3b81"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Named query returns دوار هيشر / Douar Hicher card with broad outline. Supports standard Arabic letter spelling; not a same-sector/base reference conclusion.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-1.json",
+        "sha256": "c7f80cf65a6a5c07969dee4a863cb9f2a47fa3ce74eee8ad44e2afddef631386"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-1.png",
+        "sha256": "98490f7a5450f24e8fe8fc1f7f45f4df9429260d7fb204ee638779fc83a8dcc4"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Named query returns وادي الليل / Oued Ellil card with urban streets and outline. Supports standard Arabic spelling; does not establish base-point containment or every stored boundary.",
+      "boundaryVerified": false
+    }
+  ],
+  "all1252PriorObservationsPreserved": true,
+  "totalObservations": 1258,
+  "currentRowsWithObservations": 773,
+  "catalogMutated": false,
+  "sourceCandidateReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-display-top-ten-20260919.json",
+    "sha256": "96c5289b756f15670b21dff984e4ec9ef8ef93875b0b25d23594c61b21303b33"
+  },
+  "conclusion": "These observations corroborate name context only; source-specific name curation and separate display-group evidence remain to be applied."
+}

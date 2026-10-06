@@ -1,0 +1,2663 @@
+{
+  "status": "CURRENT_SOURCE_SCOPE_FACTS_NO_IMPLEMENTATION",
+  "baselineMetadataSha256": "b50f62fba68c6ba0989f3a4cb673a0cfad820dcd059164b26a0ac208467c9600",
+  "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "cachedSource": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "geometryHashMethod": "sha256(json.dumps(shapely.mapping(geometry), separators=(comma,colon)).encode()); generator convention, no key sorting",
+  "records": [
+    {
+      "baseId": 417,
+      "baseCurrent": {
+        "id": 417,
+        "nomFr": "Bargou",
+        "nomAr": "برقو",
+        "nomEn": "Bargou",
+        "lat": 36.0914446,
+        "lng": 9.5667337
+      },
+      "governorate": {
+        "id": 344,
+        "nomFr": "Siliana",
+        "nomAr": "سليانة",
+        "nomEn": "Siliana",
+        "lat": 36.0849,
+        "lng": 9.3708
+      },
+      "parentSourceId": "osm:relation:7154129",
+      "governorSourceId": "osm:relation:1435829",
+      "separateSectorId": "osm:relation:7125182",
+      "settlementPolygonId": null,
+      "sourceSettlementPointId": "osm:node:1278517274",
+      "baseToSourceTownKm": 0.0,
+      "sourceImadaIds": [
+        "osm:relation:7125182",
+        "osm:relation:7125183",
+        "osm:relation:7125184",
+        "osm:relation:7125185",
+        "osm:relation:7125186",
+        "osm:relation:7125187",
+        "osm:relation:7125188",
+        "osm:relation:7125189"
+      ],
+      "officialImadas": [
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246051",
+          "sectorFr": "Bargou",
+          "sectorAr": "برقو",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31959,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1511,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1510
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246052",
+          "sectorFr": "Banlieue bargou",
+          "sectorAr": "أحواز برقو",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31993,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1512,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1511
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246053",
+          "sectorFr": "Awled fraj",
+          "sectorAr": "أولاد فرج",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32027,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1514,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1513
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246054",
+          "sectorFr": "Sidi said",
+          "sectorAr": "سيدي سعيد",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32061,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1516,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1515
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246055",
+          "sectorFr": "Ain fourna",
+          "sectorAr": "عين فرنة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32095,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1517,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1516
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246056",
+          "sectorFr": "Ain bous saadia",
+          "sectorAr": "عين بوسعدية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32129,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1519,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1518
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246057",
+          "sectorFr": "Ed-derija",
+          "sectorAr": "الدريجة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32163,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1521,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1520
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2460",
+          "delegationFr": "Bargou",
+          "delegationAr": "برقو",
+          "sectorCode": "246058",
+          "sectorFr": "El behirin",
+          "sectorAr": "البحيرين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32197,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1522,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1521
+          }
+        }
+      ],
+      "sourceCodesAbsentFromRegistry": [],
+      "currentWholeGroups": {
+        "osm:relation:7125182": [
+          "osm:relation:7125182"
+        ],
+        "osm:relation:7125183": [
+          "osm:relation:7125183"
+        ],
+        "osm:relation:7125184": [
+          "osm:relation:7125184"
+        ],
+        "osm:relation:7125185": [
+          "osm:relation:7125185"
+        ],
+        "osm:relation:7125186": [
+          "osm:relation:7125186"
+        ],
+        "osm:relation:7125187": [
+          "osm:relation:7125187"
+        ],
+        "osm:relation:7125188": [
+          "osm:relation:7125188"
+        ],
+        "osm:relation:7125189": [
+          "osm:relation:7125189"
+        ],
+        "delegation:417": [
+          "delegation:417"
+        ]
+      },
+      "protectedRawIds": [
+        "osm:relation:7125182",
+        "osm:relation:7125183",
+        "osm:relation:7125184",
+        "osm:relation:7125185",
+        "osm:relation:7125186",
+        "osm:relation:7125187",
+        "osm:relation:7125188",
+        "osm:relation:7125189"
+      ],
+      "originalNamePeerIds": [
+        "osm:node:1278517274",
+        "osm:relation:7125182",
+        "osm:relation:7154129"
+      ],
+      "effectiveNamePeerIds": [
+        "osm:node:1278517274",
+        "osm:relation:7125182",
+        "osm:relation:7154129"
+      ],
+      "records": {
+        "osm:node:1278517274": {
+          "id": "osm:node:1278517274",
+          "kind": "village",
+          "originalTags": {
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:en": "Bargou",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "place": "village",
+            "postal_code": "6170",
+            "wikidata": "Q2884486",
+            "wikimedia_commons": "Category:Bargou",
+            "wikipedia": "ar:برقو"
+          },
+          "effectiveTags": {
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:en": "Bargou",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "place": "village",
+            "postal_code": "6170",
+            "wikidata": "Q2884486",
+            "wikimedia_commons": "Category:Bargou",
+            "wikipedia": "ar:برقو"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "51772cde8896df8df71039013d58f5279eca1641ec2175d2a1bf3dee8b3b8a03",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:relation:1435829": {
+          "id": "osm:relation:1435829",
+          "kind": "governorate",
+          "originalTags": {
+            "ISO3166-2": "TN-34",
+            "admin_level": "4",
+            "alt_name:en": "Siliana Governorate",
+            "alt_name:es": "Gobernación de Siliana",
+            "alt_name:it": "Governatorato di Siliana",
+            "alt_name:ur": "ولایت سلیانہ",
+            "boundary": "administrative",
+            "name": "ولاية سليانة",
+            "name:ar": "ولاية سليانة",
+            "name:be": "Сільяна",
+            "name:be-tarask": "Сільяна",
+            "name:bg": "Силиана (област)",
+            "name:ca": "Governació de Siliana",
+            "name:ceb": "Gouvernorat de Siliana",
+            "name:cy": "Siliana (talaith)",
+            "name:de": "Gouvernement Siliana",
+            "name:el": "Σιλγιάνα",
+            "name:en": "Siliana",
+            "name:fa": "سلیانه",
+            "name:fi": "Siliana",
+            "name:fr": "Gouvernorat Siliana",
+            "name:frr": "Siliana",
+            "name:id": "Kegubernuran Siliana",
+            "name:it": "Siliana",
+            "name:ja": "シリアナ県",
+            "name:ko": "실리아나주",
+            "name:ms": "Kawasan kegabenoran Siliana",
+            "name:nl": "Siliana",
+            "name:no": "Siliana",
+            "name:pl": "Gubernatorstwo Siljana",
+            "name:pt": "Siliana",
+            "name:ro": "Guvernoratul Siliana",
+            "name:ru": "Сильяна",
+            "name:sco": "Siliana Govrenorate",
+            "name:sh": "Siliana",
+            "name:tr": "Silyana ili",
+            "name:uk": "Сільяна",
+            "name:ur": "سلیانہ",
+            "name:zh": "錫勒亞奈省",
+            "name:zu": "Siliana Governorate",
+            "official_name": "ولاية سليانة",
+            "official_name:ar": "ولاية سليانة",
+            "official_name:en": "Siliana Governorate",
+            "official_name:fr": "Gouvernorat de Siliana",
+            "official_name:it": "Governatorato di Siliana",
+            "population": "233985",
+            "population:date": "2004",
+            "ref:tn:codegeo": "24",
+            "wikidata": "Q328115",
+            "wikipedia": "ar:ولاية سليانة"
+          },
+          "effectiveTags": {
+            "ISO3166-2": "TN-34",
+            "admin_level": "4",
+            "alt_name:en": "Siliana Governorate",
+            "alt_name:es": "Gobernación de Siliana",
+            "alt_name:it": "Governatorato di Siliana",
+            "alt_name:ur": "ولایت سلیانہ",
+            "boundary": "administrative",
+            "name": "ولاية سليانة",
+            "name:ar": "ولاية سليانة",
+            "name:be": "Сільяна",
+            "name:be-tarask": "Сільяна",
+            "name:bg": "Силиана (област)",
+            "name:ca": "Governació de Siliana",
+            "name:ceb": "Gouvernorat de Siliana",
+            "name:cy": "Siliana (talaith)",
+            "name:de": "Gouvernement Siliana",
+            "name:el": "Σιλγιάνα",
+            "name:en": "Siliana",
+            "name:fa": "سلیانه",
+            "name:fi": "Siliana",
+            "name:fr": "Gouvernorat Siliana",
+            "name:frr": "Siliana",
+            "name:id": "Kegubernuran Siliana",
+            "name:it": "Siliana",
+            "name:ja": "シリアナ県",
+            "name:ko": "실리아나주",
+            "name:ms": "Kawasan kegabenoran Siliana",
+            "name:nl": "Siliana",
+            "name:no": "Siliana",
+            "name:pl": "Gubernatorstwo Siljana",
+            "name:pt": "Siliana",
+            "name:ro": "Guvernoratul Siliana",
+            "name:ru": "Сильяна",
+            "name:sco": "Siliana Govrenorate",
+            "name:sh": "Siliana",
+            "name:tr": "Silyana ili",
+            "name:uk": "Сільяна",
+            "name:ur": "سلیانہ",
+            "name:zh": "錫勒亞奈省",
+            "name:zu": "Siliana Governorate",
+            "official_name": "ولاية سليانة",
+            "official_name:ar": "ولاية سليانة",
+            "official_name:en": "Siliana Governorate",
+            "official_name:fr": "Gouvernorat de Siliana",
+            "official_name:it": "Governatorato di Siliana",
+            "population": "233985",
+            "population:date": "2004",
+            "ref:tn:codegeo": "24",
+            "wikidata": "Q328115",
+            "wikipedia": "ar:ولاية سليانة"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "582177f1d9663eaa55f23b0a3b5e96b2ee68102c689481083954edb96d6960f8",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:relation:7125182": {
+          "id": "osm:relation:7125182",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "boundary": "administrative",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "ref:tn:codegeo": "246051",
+            "wikidata": "Q2884486",
+            "wikipedia": "ar:برقو"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "boundary": "administrative",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "ref:tn:codegeo": "246051",
+            "wikidata": "Q2884486",
+            "wikipedia": "ar:برقو"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "f91c26b45910163cd9f87710a917d48dc8db0bee120664fd547b4ede9f129ba6",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125182",
+            "sourceId": "osm",
+            "name": "برقو",
+            "aliases": [
+              "Bargou",
+              "البرقو"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.092062,
+            "lng": 9.567854,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.561146,
+              36.084866,
+              9.573184,
+              36.099448
+            ],
+            "areaKm2": 0.8950270822781998,
+            "pickerGroupId": "osm:relation:7125182",
+            "offset": 1292932,
+            "length": 244
+          },
+          "packedGeometrySha256": "edd48d5e7e06a0af91022d6bd0ba903c82ae06361bb3ffef07c6bae023d30f2b"
+        },
+        "osm:relation:7125183": {
+          "id": "osm:relation:7125183",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البحيرين",
+            "name:ar": "البحيرين",
+            "name:fr": "El Behiri",
+            "ref:tn:codegeo": "246058"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البحيرين",
+            "name:ar": "البحيرين",
+            "name:fr": "El Behiri",
+            "ref:tn:codegeo": "246058"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "00fd9c289de753710eb46f7c1c88ebba90292643b23562da0ff23ff1f4a29a76",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125183",
+            "sourceId": "osm",
+            "name": "البحيرين",
+            "aliases": [
+              "El Behiri"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.013615,
+            "lng": 9.602384,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.552671,
+              35.972712,
+              9.651061,
+              36.054557
+            ],
+            "areaKm2": 41.44821811564,
+            "pickerGroupId": "osm:relation:7125183",
+            "offset": 1293176,
+            "length": 860
+          },
+          "packedGeometrySha256": "cfbda6d7b7497c0d73616f6d22cc0312fabc03f0637fed40e001e2feb0196970"
+        },
+        "osm:relation:7125184": {
+          "id": "osm:relation:7125184",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين بوسعدية",
+            "name:ar": "عين بوسعدية",
+            "name:fr": "Ain Boussaadia",
+            "ref:tn:codegeo": "246056"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين بوسعدية",
+            "name:ar": "عين بوسعدية",
+            "name:fr": "Ain Boussaadia",
+            "ref:tn:codegeo": "246056"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "80e31891bc141d03d4c41eccd22ce238bfabc80868eba5234db5fec899b8b3eb",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125184",
+            "sourceId": "osm",
+            "name": "عين بوسعدية",
+            "aliases": [
+              "Ain Boussaadia",
+              "Aïn Boussaadia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.058076,
+            "lng": 9.655015,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.588312,
+              36.019248,
+              9.72063,
+              36.096752
+            ],
+            "areaKm2": 54.25718493262676,
+            "pickerGroupId": "osm:relation:7125184",
+            "offset": 1294036,
+            "length": 908
+          },
+          "packedGeometrySha256": "fe0a0b1dea4cbf4a8486877ed4e87714e8c6c714c4eeaa23bf6e2e4007cb09e4"
+        },
+        "osm:relation:7125185": {
+          "id": "osm:relation:7125185",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدريجة",
+            "name:ar": "الدريجة",
+            "name:fr": "Ed Derija",
+            "ref:tn:codegeo": "246057"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدريجة",
+            "name:ar": "الدريجة",
+            "name:fr": "Ed Derija",
+            "ref:tn:codegeo": "246057"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "13a214e3871ec83d4d6aee72dffda611aaf018ff4104a349c13940adbb88cffb",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125185",
+            "sourceId": "osm",
+            "name": "الدريجة",
+            "aliases": [
+              "Ed Derija"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.114331,
+            "lng": 9.700268,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.641052,
+              36.067298,
+              9.769594,
+              36.162186
+            ],
+            "areaKm2": 78.29312948854668,
+            "pickerGroupId": "osm:relation:7125185",
+            "offset": 1294944,
+            "length": 1316
+          },
+          "packedGeometrySha256": "ab38f07db44e0dd748d152a271b69480a0d3dddf3481a92b02452a27c31e19ba"
+        },
+        "osm:relation:7125186": {
+          "id": "osm:relation:7125186",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي سعيد",
+            "name:ar": "سيدي سعيد",
+            "name:fr": "Sidi Said",
+            "ref:tn:codegeo": "246054"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي سعيد",
+            "name:ar": "سيدي سعيد",
+            "name:fr": "Sidi Said",
+            "ref:tn:codegeo": "246054"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "9076c30641401b0e5c0370857e5f98d596bc5b2f426ae283e0f4cbd8b234fe1c",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125186",
+            "sourceId": "osm",
+            "name": "سيدي سعيد",
+            "aliases": [
+              "Sidi Said"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.179037,
+            "lng": 9.67587,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.612961,
+              36.128564,
+              9.727293,
+              36.229396
+            ],
+            "areaKm2": 61.235182558767264,
+            "pickerGroupId": "osm:relation:7125186",
+            "offset": 1296260,
+            "length": 2188
+          },
+          "packedGeometrySha256": "b5315c0dbdfd4b6a5a5da8f961cced0a6059259be2342abec10acf47dae657c0"
+        },
+        "osm:relation:7125187": {
+          "id": "osm:relation:7125187",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين فرنة",
+            "name:ar": "عين فرنة",
+            "name:fr": "Ain Fourna",
+            "ref:tn:codegeo": "246055"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين فرنة",
+            "name:ar": "عين فرنة",
+            "name:fr": "Ain Fourna",
+            "ref:tn:codegeo": "246055"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "4e48bf4a9a9c7b2be8ca61a0fd8f98e6cacb3fea1b1ae94b0cb139720ee6bdf3",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125187",
+            "sourceId": "osm",
+            "name": "عين فرنة",
+            "aliases": [
+              "Ain Fourna"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.153392,
+            "lng": 9.595192,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.521497,
+              36.11447,
+              9.656802,
+              36.192123
+            ],
+            "areaKm2": 58.64595968905967,
+            "pickerGroupId": "osm:relation:7125187",
+            "offset": 1298448,
+            "length": 2908
+          },
+          "packedGeometrySha256": "494bbf696adee889cf56be32baf0a24ce76c032b5fac49a988e6db771c355ae6"
+        },
+        "osm:relation:7125188": {
+          "id": "osm:relation:7125188",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أحواز برقو",
+            "name:ar": "أحواز برقو",
+            "name:fr": "Banlieue Bargo",
+            "ref:tn:codegeo": "246052"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أحواز برقو",
+            "name:ar": "أحواز برقو",
+            "name:fr": "Banlieue Bargo",
+            "ref:tn:codegeo": "246052"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "0a4461311462ad1a9641148e4dd292bf9520a7a91237da708f26f75c483ad977",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125188",
+            "sourceId": "osm",
+            "name": "أحواز برقو",
+            "aliases": [
+              "Banlieue Bargo"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.096678,
+            "lng": 9.533417,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.474715,
+              36.017641,
+              9.59138,
+              36.175429
+            ],
+            "areaKm2": 87.41408886696497,
+            "pickerGroupId": "osm:relation:7125188",
+            "offset": 1301356,
+            "length": 2868
+          },
+          "packedGeometrySha256": "0df494c8d1d6669438f808fc0a1733007f2de310a85fb55ec80db8e9c0470b1d"
+        },
+        "osm:relation:7125189": {
+          "id": "osm:relation:7125189",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أولاد فرج",
+            "name:ar": "أولاد فرج",
+            "name:fr": "Ouled Fraj",
+            "ref:tn:codegeo": "246053"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أولاد فرج",
+            "name:ar": "أولاد فرج",
+            "name:fr": "Ouled Fraj",
+            "ref:tn:codegeo": "246053"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "4fc63406325b1ffee49785ec8781ccf784a0a65b2d2458afc53f67e54e4cc9f0",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7125189",
+            "sourceId": "osm",
+            "name": "أولاد فرج",
+            "aliases": [
+              "Ouled Fraj"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية برقو",
+            "contextAliases": [
+              "Bargou",
+              "Délégation Bargou",
+              "معتمدية برقو"
+            ],
+            "governorateId": 344,
+            "lat": 36.053538,
+            "lng": 9.568345,
+            "delegationId": 417,
+            "hasBoundary": true,
+            "bbox": [
+              9.509723,
+              35.984997,
+              9.644917,
+              36.122383
+            ],
+            "areaKm2": 67.9069366656807,
+            "pickerGroupId": "osm:relation:7125189",
+            "offset": 1304224,
+            "length": 2700
+          },
+          "packedGeometrySha256": "603d4a77e2835d948e49b858bc8e01b0e77a9a12482ea893787e4b42d7ad9015"
+        },
+        "osm:relation:7154129": {
+          "id": "osm:relation:7154129",
+          "kind": "delegation",
+          "originalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bargou",
+            "boundary": "administrative",
+            "name": "معتمدية برقو",
+            "name:ar": "معتمدية برقو",
+            "name:fr": "Délégation Bargou",
+            "ref:tn:codegeo": "2460",
+            "ref:tn:hasc_2": "TN.SL.BA",
+            "wikidata": "Q2884474"
+          },
+          "effectiveTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bargou",
+            "boundary": "administrative",
+            "name": "معتمدية برقو",
+            "name:ar": "معتمدية برقو",
+            "name:fr": "Délégation Bargou",
+            "ref:tn:codegeo": "2460",
+            "ref:tn:hasc_2": "TN.SL.BA",
+            "wikidata": "Q2884474"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "5f6cc5fc6322a35e1354fc9c5370d1b3117e006e9f939b7fa6d88050b9f930a3",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        }
+      },
+      "geometryFacts": {
+        "osm:relation:7125182": {
+          "areaKm2": 0.8950270822781998,
+          "baseInsideSource": true,
+          "baseInsidePacked": true,
+          "townPointInsideSource": true,
+          "townPointInsidePacked": true,
+          "baseOutsideSourceMeters": 0.0,
+          "baseOutsidePackedMeters": 0.0,
+          "currentDefault": 417,
+          "nearestThree": [
+            {
+              "id": 417,
+              "km": 0.12184476111412486
+            },
+            {
+              "id": 617,
+              "km": 17.72468558536714
+            },
+            {
+              "id": 525,
+              "km": 28.049323295892076
+            }
+          ]
+        },
+        "base": {
+          "lat": 36.0914446,
+          "lng": 9.5667337,
+          "insideSourceParent": true,
+          "insideSourceGovernor": true,
+          "insideSourceImadas": [
+            "osm:relation:7125182",
+            "osm:relation:7125189"
+          ],
+          "nearestThree": [
+            {
+              "id": 417,
+              "km": 0.0
+            },
+            {
+              "id": 617,
+              "km": 17.621220865815378
+            },
+            {
+              "id": 525,
+              "km": 27.984844193268714
+            }
+          ]
+        },
+        "sourceTown": {
+          "lat": 36.0914446,
+          "lng": 9.5667337,
+          "insideSourceParent": true,
+          "insideSourceGovernor": true,
+          "insideSourceImadas": [
+            "osm:relation:7125182",
+            "osm:relation:7125189"
+          ],
+          "nearestThree": [
+            {
+              "id": 417,
+              "km": 0.0
+            },
+            {
+              "id": 617,
+              "km": 17.621220865815378
+            },
+            {
+              "id": 525,
+              "km": 27.984844193268714
+            }
+          ]
+        }
+      },
+      "existingCoordinateCorrections": [
+        {
+          "delegationId": 417,
+          "expectedGovernorateId": 344,
+          "expectedNames": {
+            "nomAr": "برقو",
+            "nomFr": "Bargou",
+            "nomEn": "Bargou"
+          },
+          "reviewedDate": "2026-09-08",
+          "reviewBatchId": "2026-09-08-bargou-kalaa-settlement-reference-proposal",
+          "original": {
+            "lat": 36.09,
+            "lng": 9.53
+          },
+          "originalSourceAssetSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+          "originalProvenance": "Unchanged legacy point in the byte-pinned source asset after the existing 26 corrections. External per-coordinate provenance was not documented.",
+          "proposed": {
+            "lat": 36.0914446,
+            "lng": 9.5667337
+          },
+          "movedKm": 3.304612336423831,
+          "distanceMetric": "Spherical Haversine, matching the source-review/app metric; not the slightly different WGS84 ellipsoidal distance.",
+          "osm": {
+            "id": "osm:node:1278517274",
+            "url": "https://www.openstreetmap.org/node/1278517274",
+            "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1278517274.json",
+            "version": 12,
+            "timestamp": "2023-10-25T21:12:37Z",
+            "changeset": 143134733,
+            "name": "برقو",
+            "place": "village",
+            "tags": {
+              "alt_name": "البرقو",
+              "alt_name:ar": "البرقو",
+              "name": "برقو",
+              "name:ar": "برقو",
+              "name:en": "Bargou",
+              "name:fr": "Bargou",
+              "old_name": "ربع أولاد يحيى",
+              "old_name:ar": "ربع أولاد يحيى",
+              "place": "village",
+              "postal_code": "6170",
+              "wikidata": "Q2884486",
+              "wikimedia_commons": "Category:Bargou",
+              "wikipedia": "ar:برقو"
+            }
+          },
+          "osmEvidence": {
+            "liveResponse": {
+              "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-node-1278517274.json",
+              "sha256": "a69256e76e59ff545e94a9c1fbdd595802eb2a658e515891794fed444d75cea4"
+            },
+            "source": "Public OpenStreetMap API identity snapshot; not a new PBF extraction.",
+            "cachedTagsAndCoordinatesEqual": true,
+            "retrievalEvidence": {
+              "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-live-response-manifest.json",
+              "sha256": "122e2e447a918e50bb926e4789b179f154aeefab2b56399366281adbb6d0ceb5"
+            }
+          },
+          "sourceReviews": [
+            {
+              "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-source-review.json",
+              "sha256": "68744f5473660733b91c79906af10802f856c20e3775141eac197caf72e8d2f6"
+            },
+            {
+              "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-independent-review.json",
+              "sha256": "175ed4b3731bb8f2b52bd76bcf56287c1d42b025a1027d32d5e9265465585ca7"
+            }
+          ],
+          "scope": "Named settlement reference for nearest available meteo.tn timetable selection. Not certified INM prayer-calculation coordinates or a settlement/admin boundary.",
+          "phoneVisualReviewPerformedInThisBatch": false,
+          "primaryCorroboration": [
+            {
+              "requestedUrl": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببرقو",
+              "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-social-unit.html",
+              "sha256": "6f4f927273a9370525552d5127d7cc8b783b037d919b9a8f0c33d4d3a19ffb52"
+            },
+            {
+              "requestedUrl": "https://www.commune-bargou.gov.tn/index.php/2022-03-29-08-57-12/2022-03-29-11-21-25",
+              "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-municipal-geography.html",
+              "sha256": "5aebaaaf2e7023b8774471d7087fc9aa7d46c754e1ee71f26f6db4c844dc9173"
+            }
+          ],
+          "sourceQualification": "The ministry publishes the exact OSM point, potentially from shared upstream data. The municipality publishes a nearby point. Reviewed whole-imada map/decree places the named point inside Bargou and legacy point outside that imada; no entire-municipality or complete-built-up-extent claim follows.",
+          "reviewEvidence": {
+            "file": "coordinate-reviews/bargou-kalaa-2026-09-08/source-reference-review.json",
+            "sha256": "e1b43498bcfcb38e66b878f53dec00c8e8dc0fc5027e8e2925690142e1ca6ec4"
+          }
+        }
+      ],
+      "existingActivePickerReferences": [],
+      "priorGroupAndPackedFactsUnchanged": false
+    },
+    {
+      "baseId": 460,
+      "baseCurrent": {
+        "id": 460,
+        "nomFr": "Beni Khiar",
+        "nomAr": "بني خيار ",
+        "nomEn": "Beni Khiar",
+        "lat": 36.46,
+        "lng": 10.78
+      },
+      "governorate": {
+        "id": 350,
+        "nomFr": "Nabeul",
+        "nomAr": "نابل",
+        "nomEn": "Nabeul",
+        "lat": 36.4561,
+        "lng": 10.7376
+      },
+      "parentSourceId": "osm:relation:7145299",
+      "governorSourceId": "osm:relation:1435825",
+      "separateSectorId": "osm:relation:7103009",
+      "settlementPolygonId": "osm:way:97396877",
+      "sourceSettlementPointId": "osm:node:1128018620",
+      "baseToSourceTownKm": 1.0447488290570937,
+      "sourceImadaIds": [
+        "osm:relation:7102854",
+        "osm:relation:7102855",
+        "osm:relation:7103009",
+        "osm:relation:7103011",
+        "osm:relation:7103012"
+      ],
+      "officialImadas": [
+        {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155351",
+          "sectorFr": "Beni khiar",
+          "sectorAr": "بني خيار",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11697,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 438,
+            "Nombre_de_menages_par_Secteurs.xlsx": 437
+          }
+        },
+        {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155352",
+          "sectorFr": "Diar ben salem",
+          "sectorAr": "ديار بنسالم",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11731,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 440,
+            "Nombre_de_menages_par_Secteurs.xlsx": 439
+          }
+        },
+        {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155353",
+          "sectorFr": "El maamoura",
+          "sectorAr": "المعمورة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11765,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 442,
+            "Nombre_de_menages_par_Secteurs.xlsx": 441
+          }
+        },
+        {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155354",
+          "sectorFr": "Somaa",
+          "sectorAr": "الصمعة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11799,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 444,
+            "Nombre_de_menages_par_Secteurs.xlsx": 443
+          }
+        },
+        {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155355",
+          "sectorFr": "Halfa",
+          "sectorAr": "حلفاء",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11833,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 446,
+            "Nombre_de_menages_par_Secteurs.xlsx": 445
+          }
+        }
+      ],
+      "sourceCodesAbsentFromRegistry": [],
+      "currentWholeGroups": {
+        "osm:relation:7102854": [
+          "osm:relation:7102854",
+          "osm:way:174740047"
+        ],
+        "osm:relation:7102855": [
+          "osm:relation:7102855",
+          "osm:way:176000340"
+        ],
+        "osm:relation:7103009": [
+          "osm:relation:7103009",
+          "osm:way:97396877"
+        ],
+        "osm:relation:7103011": [
+          "osm:relation:7103011",
+          "osm:way:176000341"
+        ],
+        "osm:relation:7103012": [
+          "osm:relation:7103012"
+        ],
+        "delegation:460": [
+          "delegation:460"
+        ]
+      },
+      "protectedRawIds": [
+        "osm:relation:7102854",
+        "osm:relation:7102855",
+        "osm:relation:7103009",
+        "osm:relation:7103011",
+        "osm:relation:7103012",
+        "osm:way:174740047",
+        "osm:way:176000340",
+        "osm:way:176000341",
+        "osm:way:97396877"
+      ],
+      "originalNamePeerIds": [
+        "osm:node:1128018620",
+        "osm:relation:7103009",
+        "osm:relation:7145299",
+        "osm:way:97396877"
+      ],
+      "effectiveNamePeerIds": [
+        "osm:node:1128018620",
+        "osm:relation:7103009",
+        "osm:relation:7145299",
+        "osm:way:97396877"
+      ],
+      "records": {
+        "osm:node:1128018620": {
+          "id": "osm:node:1128018620",
+          "kind": "town",
+          "originalTags": {
+            "addr:governorate": "Nabeul",
+            "int_name": "Béni Khiar",
+            "name": "بني خيار",
+            "name:ar": "بني خيار",
+            "name:en": "Béni Khiar",
+            "name:fr": "Béni Khiar",
+            "name:uk": "Бені-Х'яр",
+            "place": "town",
+            "wikidata": "Q2737310",
+            "wikimedia_commons": "Category:Beni Khiar",
+            "wikipedia": "en:Béni Khiar"
+          },
+          "effectiveTags": {
+            "addr:governorate": "Nabeul",
+            "int_name": "Béni Khiar",
+            "name": "بني خيار",
+            "name:ar": "بني خيار",
+            "name:en": "Béni Khiar",
+            "name:fr": "Béni Khiar",
+            "name:uk": "Бені-Х'яр",
+            "place": "town",
+            "wikidata": "Q2737310",
+            "wikimedia_commons": "Category:Beni Khiar",
+            "wikipedia": "en:Béni Khiar"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "041274bb40d10a33de5468d1e3b0e9b70b04fbedafe8ebc8785d70e880122d0c",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:relation:1435825": {
+          "id": "osm:relation:1435825",
+          "kind": "governorate",
+          "originalTags": {
+            "ISO3166-2": "TN-21",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية نابل",
+            "name:ar": "ولاية نابل",
+            "name:az": "Nabul (vilayət)",
+            "name:be": "Набуль (вілает)",
+            "name:be-tarask": "Набуль (вілает)",
+            "name:bg": "Набил (област)",
+            "name:ca": "Governació de Nabeul",
+            "name:ceb": "Gouvernorat de Nabeul",
+            "name:cy": "Nabeul (talaith)",
+            "name:de": "Gouvernement Nabeul",
+            "name:el": "Ναμπέλ (Κυβερνείο)",
+            "name:en": "Nabeul",
+            "name:es": "Gobernación de Nabeul",
+            "name:fa": "نابل",
+            "name:fi": "Nabeul (kuvernementti)",
+            "name:fr": "Gouvernorat Nabeul",
+            "name:frr": "Nabeul (Guwernement)",
+            "name:id": "Kegubernuran Nabeul",
+            "name:it": "Nabeul",
+            "name:ja": "ナブール県",
+            "name:ko": "나뵐주",
+            "name:ks": "نابل",
+            "name:ms": "Kawasan kegabenoran Nabeul",
+            "name:nl": "Nabeul (gouvernement)",
+            "name:no": "Nabeul (guvernement)",
+            "name:pl": "Gubernatorstwo Nabul",
+            "name:pt": "Nabeul (província)",
+            "name:ro": "Guvernoratul Nabeul",
+            "name:ru": "Набуль (вилайет)",
+            "name:sco": "Nabeul Govrenorate",
+            "name:sh": "Nabeul (vilajet)",
+            "name:tr": "Nabil ili",
+            "name:uk": "Набуль (вілаєт)",
+            "name:ur": "نابل",
+            "name:zh": "納布勒省",
+            "name:zu": "Nabeul Governorate",
+            "official_name": "ولاية نابل",
+            "official_name:ar": "ولاية نابل",
+            "official_name:en": "Nabeul Governorate",
+            "official_name:fa": "استان نابل",
+            "official_name:fr": "Gouvernorat de Nabeul",
+            "official_name:it": "Governatorato di Nabeul",
+            "official_name:ur": "ولاية نابل",
+            "population": "787920",
+            "population:date": "2014",
+            "ref:tn:codegeo": "15",
+            "wikidata": "Q328145",
+            "wikipedia": "ar:ولاية نابل"
+          },
+          "effectiveTags": {
+            "ISO3166-2": "TN-21",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية نابل",
+            "name:ar": "ولاية نابل",
+            "name:az": "Nabul (vilayət)",
+            "name:be": "Набуль (вілает)",
+            "name:be-tarask": "Набуль (вілает)",
+            "name:bg": "Набил (област)",
+            "name:ca": "Governació de Nabeul",
+            "name:ceb": "Gouvernorat de Nabeul",
+            "name:cy": "Nabeul (talaith)",
+            "name:de": "Gouvernement Nabeul",
+            "name:el": "Ναμπέλ (Κυβερνείο)",
+            "name:en": "Nabeul",
+            "name:es": "Gobernación de Nabeul",
+            "name:fa": "نابل",
+            "name:fi": "Nabeul (kuvernementti)",
+            "name:fr": "Gouvernorat Nabeul",
+            "name:frr": "Nabeul (Guwernement)",
+            "name:id": "Kegubernuran Nabeul",
+            "name:it": "Nabeul",
+            "name:ja": "ナブール県",
+            "name:ko": "나뵐주",
+            "name:ks": "نابل",
+            "name:ms": "Kawasan kegabenoran Nabeul",
+            "name:nl": "Nabeul (gouvernement)",
+            "name:no": "Nabeul (guvernement)",
+            "name:pl": "Gubernatorstwo Nabul",
+            "name:pt": "Nabeul (província)",
+            "name:ro": "Guvernoratul Nabeul",
+            "name:ru": "Набуль (вилайет)",
+            "name:sco": "Nabeul Govrenorate",
+            "name:sh": "Nabeul (vilajet)",
+            "name:tr": "Nabil ili",
+            "name:uk": "Набуль (вілаєт)",
+            "name:ur": "نابل",
+            "name:zh": "納布勒省",
+            "name:zu": "Nabeul Governorate",
+            "official_name": "ولاية نابل",
+            "official_name:ar": "ولاية نابل",
+            "official_name:en": "Nabeul Governorate",
+            "official_name:fa": "استان نابل",
+            "official_name:fr": "Gouvernorat de Nabeul",
+            "official_name:it": "Governatorato di Nabeul",
+            "official_name:ur": "ولاية نابل",
+            "population": "787920",
+            "population:date": "2014",
+            "ref:tn:codegeo": "15",
+            "wikidata": "Q328145",
+            "wikipedia": "ar:ولاية نابل"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:relation:7102854": {
+          "id": "osm:relation:7102854",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المعمورة",
+            "name:ar": "المعمورة",
+            "name:fr": "El Maamoura",
+            "ref:tn:codegeo": "155353"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المعمورة",
+            "name:ar": "المعمورة",
+            "name:fr": "El Maamoura",
+            "ref:tn:codegeo": "155353"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "a2bb90ff1b396a031704e9265a08cede4f6ccda35a574c646461774d1329348a",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7102854",
+            "sourceId": "osm",
+            "name": "المعمورة",
+            "aliases": [
+              "El Maamoura"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.485232,
+            "lng": 10.808409,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.79094,
+              36.454895,
+              10.83582,
+              36.515614
+            ],
+            "areaKm2": 11.770145046566963,
+            "pickerGroupId": "osm:relation:7102854",
+            "offset": 366660,
+            "length": 2060
+          },
+          "packedGeometrySha256": "19e0e27bd6838a67f01cb0e702de73691ab6ab553d93b9dfc9a5364c2e4e32b5"
+        },
+        "osm:relation:7102855": {
+          "id": "osm:relation:7102855",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ديار بن سالم",
+            "name:ar": "ديار بن سالم",
+            "name:fr": "Diar Ben Salem",
+            "ref:tn:codegeo": "155352"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ديار بن سالم",
+            "name:ar": "ديار بن سالم",
+            "name:fr": "Diar Ben Salem",
+            "ref:tn:codegeo": "155352"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "22e12139ad23a65268252bc4f75dcbb73e7110c26ad7af39984904e252cc6228",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7102855",
+            "sourceId": "osm",
+            "name": "ديار بن سالم",
+            "aliases": [
+              "Diar Ben Salem"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.504351,
+            "lng": 10.798,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.76126,
+              36.486053,
+              10.821013,
+              36.52278
+            ],
+            "areaKm2": 11.575104541410985,
+            "pickerGroupId": "osm:relation:7102855",
+            "offset": 368720,
+            "length": 1412
+          },
+          "packedGeometrySha256": "2e899ae329943ce288badf890298b641a5c49db95aea977c160935ba6260aa37"
+        },
+        "osm:relation:7103009": {
+          "id": "osm:relation:7103009",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني خيار",
+            "name:ar": "بني خيار",
+            "name:fr": "Beni Khiar",
+            "ref:tn:codegeo": "155351"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني خيار",
+            "name:ar": "بني خيار",
+            "name:fr": "Beni Khiar",
+            "ref:tn:codegeo": "155351"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "dc7bcd936311077229e537514915b899282a6beb59b51e09680dbb8bd86c0d12",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7103009",
+            "sourceId": "osm",
+            "name": "بني خيار",
+            "aliases": [
+              "Beni Khiar"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.507937,
+            "lng": 10.760805,
+            "delegationId": 468,
+            "hasBoundary": true,
+            "bbox": [
+              10.694861,
+              36.449426,
+              10.802516,
+              36.566397
+            ],
+            "areaKm2": 33.20706196077058,
+            "pickerGroupId": "osm:relation:7103009",
+            "offset": 371712,
+            "length": 3180
+          },
+          "packedGeometrySha256": "f72f5b7542dad50f82c12c02b783e72806a36389bed7222cf3d2ce3302700e0a"
+        },
+        "osm:relation:7103011": {
+          "id": "osm:relation:7103011",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صمعة",
+            "name:ar": "صمعة",
+            "name:fr": "Somaa",
+            "ref:tn:codegeo": "155354"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صمعة",
+            "name:ar": "صمعة",
+            "name:fr": "Somaa",
+            "ref:tn:codegeo": "155354"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "ddb4446ea1eb92d6988e3bb2662ad8431e36aedc9e4f9412107e0fe10d30d59f",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7103011",
+            "sourceId": "osm",
+            "name": "صمعة",
+            "aliases": [
+              "Somaa"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.551865,
+            "lng": 10.770973,
+            "delegationId": 459,
+            "hasBoundary": true,
+            "bbox": [
+              10.720592,
+              36.514273,
+              10.821727,
+              36.590568
+            ],
+            "areaKm2": 38.649817076967395,
+            "pickerGroupId": "osm:relation:7103011",
+            "offset": 374892,
+            "length": 2372
+          },
+          "packedGeometrySha256": "7e97045798e611ef3d2499ff93cf0403e66e12bdcfe2c7c6377e883d10342808"
+        },
+        "osm:relation:7103012": {
+          "id": "osm:relation:7103012",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حلفة",
+            "name:ar": "حلفة",
+            "name:fr": "Halfa",
+            "ref:tn:codegeo": "155355"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حلفة",
+            "name:ar": "حلفة",
+            "name:fr": "Halfa",
+            "ref:tn:codegeo": "155355"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "c7f8464c86a77618799a407e2066e29b2bbb05e00e4308e7c3fd8fc36fa7269c",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7103012",
+            "sourceId": "osm",
+            "name": "حلفة",
+            "aliases": [
+              "Halfa"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.578193,
+            "lng": 10.712443,
+            "delegationId": 459,
+            "hasBoundary": true,
+            "bbox": [
+              10.685768,
+              36.559449,
+              10.747808,
+              36.596706
+            ],
+            "areaKm2": 11.267188458433031,
+            "pickerGroupId": "osm:relation:7103012",
+            "offset": 377264,
+            "length": 1020
+          },
+          "packedGeometrySha256": "4ea386237a633af62d8e30a4f3c0ebe7e969a76257f8b38db11ecce71bdb6c55"
+        },
+        "osm:relation:7145299": {
+          "id": "osm:relation:7145299",
+          "kind": "delegation",
+          "originalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Béni Khiar",
+            "boundary": "administrative",
+            "name": "معتمدية بني خيار",
+            "name:ar": "معتمدية بني خيار",
+            "name:fr": "Délégation Beni Khiar",
+            "ref:tn:codegeo": "1553",
+            "ref:tn:hasc_2": "TN.NB.BR",
+            "wikidata": "Q2929836"
+          },
+          "effectiveTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Béni Khiar",
+            "boundary": "administrative",
+            "name": "معتمدية بني خيار",
+            "name:ar": "معتمدية بني خيار",
+            "name:fr": "Délégation Beni Khiar",
+            "ref:tn:codegeo": "1553",
+            "ref:tn:hasc_2": "TN.NB.BR",
+            "wikidata": "Q2929836"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "05eb4c55bb1ce75973047237e4c7c3e855854b7d0a02b0fd2f9ab2b9764ebb75",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:way:174740047": {
+          "id": "osm:way:174740047",
+          "kind": "residential",
+          "originalTags": {
+            "landuse": "residential",
+            "name": "المعمورة",
+            "name:ar": "المعمورة"
+          },
+          "effectiveTags": {
+            "landuse": "residential",
+            "name": "المعمورة",
+            "name:ar": "المعمورة"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "270fa44d849d205c38e23e44250fa4e15f64dc0ea830974594fa93ab22f90c33",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:way:174740047",
+            "sourceId": "osm",
+            "name": "المعمورة",
+            "aliases": [
+              "Maâmoura"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "El Maamoura",
+              "المعمورة",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.463385,
+            "lng": 10.805036,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.798175,
+              36.455933,
+              10.812269,
+              36.471267
+            ],
+            "areaKm2": 1.547068466531967,
+            "pickerGroupId": "osm:relation:7102854",
+            "offset": 5264396,
+            "length": 404
+          },
+          "packedGeometrySha256": "a07b183c84403fe2260c7d2d0a14ee9db8f0b4d793dfa8ba8d4f4683d59127db"
+        },
+        "osm:way:176000340": {
+          "id": "osm:way:176000340",
+          "kind": "residential",
+          "originalTags": {
+            "landuse": "residential",
+            "name": "ديار بن سالم",
+            "name:ar": "ديار بن سالم"
+          },
+          "effectiveTags": {
+            "landuse": "residential",
+            "name": "ديار بن سالم",
+            "name:ar": "ديار بن سالم"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "21ecc2db8ed47d953c0a67b9c966081f012c3607a2dc802d7a19b9ee106af347",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:way:176000340",
+            "sourceId": "osm",
+            "name": "ديار بن سالم",
+            "aliases": [
+              "Diar Ben Salem"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Diar Ben Salem",
+              "Délégation Beni Khiar",
+              "ديار بن سالم",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.511438,
+            "lng": 10.802282,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.797189,
+              36.507325,
+              10.80765,
+              36.51631
+            ],
+            "areaKm2": 0.3266502045733793,
+            "pickerGroupId": "osm:relation:7102855",
+            "offset": 5265060,
+            "length": 300
+          },
+          "packedGeometrySha256": "e5c95e790ee507ee2a1c763fb2f4ca436846a2f09ddc0b405de5bbb70d1ec1bf"
+        },
+        "osm:way:176000341": {
+          "id": "osm:way:176000341",
+          "kind": "town",
+          "originalTags": {
+            "landuse": "residential",
+            "name": "الصمعة",
+            "name:ar": "الصمعة",
+            "name:en": "Somâa",
+            "name:fr": "Somâa",
+            "name:ru": "Эс-Сомаа",
+            "place": "town"
+          },
+          "effectiveTags": {
+            "landuse": "residential",
+            "name": "الصمعة",
+            "name:ar": "الصمعة",
+            "name:en": "Somâa",
+            "name:fr": "Somâa",
+            "name:ru": "Эс-Сомаа",
+            "place": "town"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "862cd0370ee5b175eee1eb40004acc5998ed094bcefb9831822afe6e2df21bf8",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:way:176000341",
+            "sourceId": "osm",
+            "name": "الصمعة",
+            "aliases": [
+              "Somâa",
+              "Эс-Сомаа"
+            ],
+            "kind": "town",
+            "parentName": "صمعة",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "Somaa",
+              "صمعة",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.541775,
+            "lng": 10.780672,
+            "delegationId": 459,
+            "hasBoundary": true,
+            "bbox": [
+              10.774236,
+              36.536068,
+              10.788588,
+              36.54787
+            ],
+            "areaKm2": 0.8709552943982057,
+            "pickerGroupId": "osm:relation:7103011",
+            "offset": 5265360,
+            "length": 652
+          },
+          "packedGeometrySha256": "9307a4e0fb808ec2286bee0eb6155956de873a0d64c8c6849eac165697482c0f"
+        },
+        "osm:way:97396877": {
+          "id": "osm:way:97396877",
+          "kind": "residential",
+          "originalTags": {
+            "landuse": "residential",
+            "name": "بني خيار",
+            "name:ar": "بني خيار",
+            "name:fr": "Béni Khiar",
+            "wikidata": "Q2737310",
+            "wikimedia_commons": "Category:Beni Khiar",
+            "wikipedia": "fr:Béni Khiar"
+          },
+          "effectiveTags": {
+            "landuse": "residential",
+            "name": "بني خيار",
+            "name:ar": "بني خيار",
+            "name:fr": "Béni Khiar",
+            "wikidata": "Q2737310",
+            "wikimedia_commons": "Category:Beni Khiar",
+            "wikipedia": "fr:Béni Khiar"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "fa285e42e47d21fe04d900eeac485b5dc034d3a5f8fcca9a5b6ed7112a714418",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:way:97396877",
+            "sourceId": "osm",
+            "name": "بني خيار",
+            "aliases": [
+              "Béni Khiar",
+              "Бені-Х'яр"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Beni Khiar",
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "بني خيار",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.463188,
+            "lng": 10.780953,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.768596,
+              36.450942,
+              10.79889,
+              36.475357
+            ],
+            "areaKm2": 3.0463471041906556,
+            "pickerGroupId": "osm:relation:7103009",
+            "offset": 5453856,
+            "length": 1876
+          },
+          "packedGeometrySha256": "eb7fa6b8e76b92559cc0abbd735b478330654d7f8158706091dea95627707db5"
+        }
+      },
+      "geometryFacts": {
+        "osm:relation:7103009": {
+          "areaKm2": 33.20706196077058,
+          "baseInsideSource": true,
+          "baseInsidePacked": true,
+          "townPointInsideSource": true,
+          "townPointInsidePacked": true,
+          "baseOutsideSourceMeters": 0.0,
+          "baseOutsidePackedMeters": 0.0,
+          "currentDefault": 468,
+          "nearestThree": [
+            {
+              "id": 468,
+              "km": 5.330837038545663
+            },
+            {
+              "id": 460,
+              "km": 5.599788442451086
+            },
+            {
+              "id": 623,
+              "km": 6.126012092247911
+            }
+          ]
+        },
+        "osm:way:97396877": {
+          "areaKm2": 3.0463471041906556,
+          "baseInsideSource": false,
+          "baseInsidePacked": false,
+          "townPointInsideSource": true,
+          "townPointInsidePacked": true,
+          "baseOutsideSourceMeters": 6.573238590537995,
+          "baseOutsidePackedMeters": 6.523851255670983,
+          "currentDefault": 460,
+          "nearestThree": [
+            {
+              "id": 460,
+              "km": 0.36459047710355436
+            },
+            {
+              "id": 468,
+              "km": 1.9070449546188055
+            },
+            {
+              "id": 623,
+              "km": 3.9564156180178967
+            }
+          ],
+          "sourceFootprintInsideSector": true
+        },
+        "base": {
+          "lat": 36.46,
+          "lng": 10.78,
+          "insideSourceParent": true,
+          "insideSourceGovernor": true,
+          "insideSourceImadas": [
+            "osm:relation:7103009"
+          ],
+          "nearestThree": [
+            {
+              "id": 460,
+              "km": 0.0
+            },
+            {
+              "id": 468,
+              "km": 1.7886191604806476
+            },
+            {
+              "id": 623,
+              "km": 3.8166846987392438
+            }
+          ],
+          "insideSourceTownPolygon": false
+        },
+        "sourceTown": {
+          "lat": 36.4693627,
+          "lng": 10.7809776,
+          "insideSourceParent": true,
+          "insideSourceGovernor": true,
+          "insideSourceImadas": [
+            "osm:relation:7103009"
+          ],
+          "nearestThree": [
+            {
+              "id": 460,
+              "km": 1.0447488290570937
+            },
+            {
+              "id": 468,
+              "km": 2.1454566623172413
+            },
+            {
+              "id": 623,
+              "km": 4.150034114098225
+            }
+          ],
+          "insideSourceTownPolygon": true
+        },
+        "socialOffice": {
+          "lat": 36.465707,
+          "lng": 10.776704,
+          "insideSourceParent": true,
+          "insideSourceGovernor": true,
+          "insideSourceImadas": [
+            "osm:relation:7103009"
+          ],
+          "nearestThree": [
+            {
+              "id": 460,
+              "km": 0.6997023971651454
+            },
+            {
+              "id": 468,
+              "km": 1.6230038368046995
+            },
+            {
+              "id": 623,
+              "km": 3.656588271517347
+            }
+          ],
+          "insideSourceTownPolygon": true
+        }
+      },
+      "existingCoordinateCorrections": [],
+      "existingActivePickerReferences": [],
+      "priorGroupAndPackedFactsUnchanged": true
+    },
+    {
+      "baseId": 479,
+      "baseCurrent": {
+        "id": 479,
+        "nomFr": "Hazoua",
+        "nomAr": "حزوة",
+        "nomEn": "Hazoua",
+        "lat": 33.764,
+        "lng": 7.63
+      },
+      "governorate": {
+        "id": 352,
+        "nomFr": "Tozeur",
+        "nomAr": "توزر",
+        "nomEn": "Tozeur",
+        "lat": 33.9197,
+        "lng": 8.1335
+      },
+      "parentSourceId": "osm:relation:7154891",
+      "governorSourceId": "osm:relation:1435826",
+      "separateSectorId": "osm:relation:7154916",
+      "settlementPolygonId": "osm:way:207579215",
+      "sourceSettlementPointId": "osm:node:1566167629",
+      "baseToSourceTownKm": 3.5652698746016553,
+      "sourceImadaIds": [
+        "osm:relation:7154916",
+        "osm:relation:7154917",
+        "osm:relation:7154925"
+      ],
+      "officialImadas": [
+        {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6255",
+          "delegationFr": "Hazoua",
+          "delegationAr": "حزوة",
+          "sectorCode": "625551",
+          "sectorFr": "Hazoua",
+          "sectorAr": "حزوة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69109,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3388,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3381
+          }
+        },
+        {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6255",
+          "delegationFr": "Hazoua",
+          "delegationAr": "حزوة",
+          "sectorCode": "625552",
+          "sectorFr": "Hattem",
+          "sectorAr": "حطام",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69143,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3390,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3383
+          }
+        }
+      ],
+      "sourceCodesAbsentFromRegistry": [
+        "625553"
+      ],
+      "currentWholeGroups": {
+        "osm:relation:7154916": [
+          "osm:relation:7154916",
+          "osm:way:207579215"
+        ],
+        "osm:relation:7154917": [
+          "osm:relation:7154917"
+        ],
+        "osm:relation:7154925": [
+          "osm:relation:7154925"
+        ],
+        "delegation:479": [
+          "delegation:479"
+        ]
+      },
+      "protectedRawIds": [
+        "osm:relation:7154916",
+        "osm:relation:7154917",
+        "osm:relation:7154925",
+        "osm:way:207579215"
+      ],
+      "originalNamePeerIds": [
+        "osm:node:1566167629",
+        "osm:relation:7154891",
+        "osm:relation:7154916",
+        "osm:way:207579215"
+      ],
+      "effectiveNamePeerIds": [
+        "osm:node:1566167629",
+        "osm:relation:7154891",
+        "osm:relation:7154916",
+        "osm:way:207579215"
+      ],
+      "records": {
+        "osm:node:1566167629": {
+          "id": "osm:node:1566167629",
+          "kind": "village",
+          "originalTags": {
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:de": "Hazwa",
+            "name:en": "Hazwa",
+            "name:fr": "Hazoua",
+            "place": "village",
+            "wikidata": "Q4119790",
+            "wikipedia": "ar:حزوة"
+          },
+          "effectiveTags": {
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:de": "Hazwa",
+            "name:en": "Hazwa",
+            "name:fr": "Hazoua",
+            "place": "village",
+            "wikidata": "Q4119790",
+            "wikipedia": "ar:حزوة"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "9754dabc934ea0a103b5ada9b2c8fde672ede5a3cd1d1a76143baba6615f9fae",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:relation:1435826": {
+          "id": "osm:relation:1435826",
+          "kind": "governorate",
+          "originalTags": {
+            "ISO3166-2": "TN-72",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية توزر",
+            "name:ar": "ولاية توزر",
+            "name:azb": "توزر",
+            "name:be": "Таўзар (вілает)",
+            "name:be-tarask": "Таўзар (вілает)",
+            "name:bg": "Тозьор (област)",
+            "name:ca": "Governació de Tozeur",
+            "name:ceb": "Gouvernorat de Tozeur",
+            "name:cy": "Tozeur (talaith)",
+            "name:de": "Tauzar",
+            "name:el": "Ταουζάρ (Κυβερνείο)",
+            "name:en": "Tozeur",
+            "name:es": "Gobernación de Tozeur",
+            "name:fa": "توزر",
+            "name:fr": "Gouvernorat Tozeur",
+            "name:frr": "Tozeur (Guwernement)",
+            "name:id": "Kegubernuran Tozeur",
+            "name:it": "Tozeur",
+            "name:ja": "トズール県",
+            "name:kab": "توزر",
+            "name:ko": "토죄르주",
+            "name:ks": "توزر",
+            "name:ms": "Kawasan kegabenoran Tozeur",
+            "name:nl": "Tozeur (gouvernement)",
+            "name:no": "Tozeur (guvernement)",
+            "name:pl": "Gubernatorstwo Tauzar",
+            "name:pt": "Tozeur (província)",
+            "name:ro": "Guvernoratul Tozeur",
+            "name:ru": "Таузар (вилайет)",
+            "name:sco": "Tozeur Govrenorate",
+            "name:sh": "Tozeur (vilajet)",
+            "name:sv": "Tozeur (guvernement)",
+            "name:tr": "Tuzer ili",
+            "name:uk": "Таузар (вілаєт)",
+            "name:ur": "توزر",
+            "name:zh": "托澤爾省",
+            "name:zu": "Tozeur Governorate",
+            "official_name": "ولاية توزر",
+            "official_name:ar": "ولاية توزر",
+            "official_name:en": "Tozeur Governorate",
+            "official_name:fa": "استان توزر",
+            "official_name:fr": "Gouvernorat de Tozeur",
+            "official_name:it": "Governatorato di Tozeur",
+            "official_name:ur": "ولایت توزر",
+            "population": "107912",
+            "population:date": "2014",
+            "ref:tn:codegeo": "62",
+            "wikidata": "Q388059",
+            "wikipedia": "ar:ولاية توزر"
+          },
+          "effectiveTags": {
+            "ISO3166-2": "TN-72",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية توزر",
+            "name:ar": "ولاية توزر",
+            "name:azb": "توزر",
+            "name:be": "Таўзар (вілает)",
+            "name:be-tarask": "Таўзар (вілает)",
+            "name:bg": "Тозьор (област)",
+            "name:ca": "Governació de Tozeur",
+            "name:ceb": "Gouvernorat de Tozeur",
+            "name:cy": "Tozeur (talaith)",
+            "name:de": "Tauzar",
+            "name:el": "Ταουζάρ (Κυβερνείο)",
+            "name:en": "Tozeur",
+            "name:es": "Gobernación de Tozeur",
+            "name:fa": "توزر",
+            "name:fr": "Gouvernorat Tozeur",
+            "name:frr": "Tozeur (Guwernement)",
+            "name:id": "Kegubernuran Tozeur",
+            "name:it": "Tozeur",
+            "name:ja": "トズール県",
+            "name:kab": "توزر",
+            "name:ko": "토죄르주",
+            "name:ks": "توزر",
+            "name:ms": "Kawasan kegabenoran Tozeur",
+            "name:nl": "Tozeur (gouvernement)",
+            "name:no": "Tozeur (guvernement)",
+            "name:pl": "Gubernatorstwo Tauzar",
+            "name:pt": "Tozeur (província)",
+            "name:ro": "Guvernoratul Tozeur",
+            "name:ru": "Таузар (вилайет)",
+            "name:sco": "Tozeur Govrenorate",
+            "name:sh": "Tozeur (vilajet)",
+            "name:sv": "Tozeur (guvernement)",
+            "name:tr": "Tuzer ili",
+            "name:uk": "Таузар (вілаєт)",
+            "name:ur": "توزر",
+            "name:zh": "托澤爾省",
+            "name:zu": "Tozeur Governorate",
+            "official_name": "ولاية توزر",
+            "official_name:ar": "ولاية توزر",
+            "official_name:en": "Tozeur Governorate",
+            "official_name:fa": "استان توزر",
+            "official_name:fr": "Gouvernorat de Tozeur",
+            "official_name:it": "Governatorato di Tozeur",
+            "official_name:ur": "ولایت توزر",
+            "population": "107912",
+            "population:date": "2014",
+            "ref:tn:codegeo": "62",
+            "wikidata": "Q388059",
+            "wikipedia": "ar:ولاية توزر"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "c8401d707cecac8654c66ed40f4eeb9cbf3c10a7ef7c1ba268046ad2d49b24ee",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:relation:7154891": {
+          "id": "osm:relation:7154891",
+          "kind": "delegation",
+          "originalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Hazoua",
+            "boundary": "administrative",
+            "name": "معتمدية حزوة",
+            "name:ar": "معتمدية حزوة",
+            "name:fr": "Délégation Hazoua",
+            "ref:tn:codegeo": "6255",
+            "ref:tn:hasc_2": "TN.TO.HA",
+            "wikidata": "Q3128900"
+          },
+          "effectiveTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Hazoua",
+            "boundary": "administrative",
+            "name": "معتمدية حزوة",
+            "name:ar": "معتمدية حزوة",
+            "name:fr": "Délégation Hazoua",
+            "ref:tn:codegeo": "6255",
+            "ref:tn:hasc_2": "TN.TO.HA",
+            "wikidata": "Q3128900"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "c69702da677ecc5617960bf5f39621239e3073c8c0e2c2f4b946a2a3a3b9bb06",
+          "expectedCuration": null,
+          "currentMetadata": null,
+          "rawAbsent": true
+        },
+        "osm:relation:7154916": {
+          "id": "osm:relation:7154916",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:fr": "Hazoua",
+            "ref:tn:codegeo": "625551"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:fr": "Hazoua",
+            "ref:tn:codegeo": "625551"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "c41fc183c98f89985c5bd35cc48a129d94bbc18ce854f48880cecd5edecae40e",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7154916",
+            "sourceId": "osm",
+            "name": "حزوة",
+            "aliases": [
+              "Hazoua"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية حزوة",
+            "contextAliases": [
+              "Délégation Hazoua",
+              "Hazoua",
+              "معتمدية حزوة"
+            ],
+            "governorateId": 352,
+            "lat": 33.764215,
+            "lng": 7.630519,
+            "delegationId": 479,
+            "hasBoundary": true,
+            "bbox": [
+              7.561315,
+              33.705951,
+              7.726653,
+              33.82407
+            ],
+            "areaKm2": 89.0042614669994,
+            "pickerGroupId": "osm:relation:7154916",
+            "offset": 3150020,
+            "length": 172
+          },
+          "packedGeometrySha256": "2e1e01b3e0d215f35c901fd83ac178f1fad3cec46735e041167e7565afe59364"
+        },
+        "osm:relation:7154917": {
+          "id": "osm:relation:7154917",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حطام",
+            "name:ar": "حطام",
+            "name:fr": "Hattem",
+            "ref:tn:codegeo": "625552"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حطام",
+            "name:ar": "حطام",
+            "name:fr": "Hattem",
+            "ref:tn:codegeo": "625552"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "fff9c80db7e882cbece217ff4c0781d7ac0eda9c5a71bb79e9cff7dbe456a337",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7154917",
+            "sourceId": "osm",
+            "name": "حطام",
+            "aliases": [
+              "Hattem"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية حزوة",
+            "contextAliases": [
+              "Délégation Hazoua",
+              "Hazoua",
+              "معتمدية حزوة"
+            ],
+            "governorateId": 352,
+            "lat": 33.956571,
+            "lng": 7.642963,
+            "delegationId": 479,
+            "hasBoundary": true,
+            "bbox": [
+              7.521981,
+              33.777659,
+              7.756975,
+              34.10768
+            ],
+            "areaKm2": 585.4789786175553,
+            "pickerGroupId": "osm:relation:7154917",
+            "offset": 3150192,
+            "length": 348
+          },
+          "packedGeometrySha256": "89793abe716323d6dd2e297a0247ef883098fe3e403c540370d76e5490fc9ec8"
+        },
+        "osm:relation:7154925": {
+          "id": "osm:relation:7154925",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين أولاد اللغريسي",
+            "name:ar": "عين أولاد اللغريسي",
+            "name:fr": "Ain Ouled El Ggerissi",
+            "ref:tn:codegeo": "625553"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين أولاد اللغريسي",
+            "name:ar": "عين أولاد اللغريسي",
+            "name:fr": "Ain Ouled El Ggerissi",
+            "ref:tn:codegeo": "625553"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "ccd132f1526e92bb9a8dd6aa3bf77fed0090bd16ffe8b5febae5a30d56a8fe22",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:relation:7154925",
+            "sourceId": "osm",
+            "name": "عين أولاد اللغريسي",
+            "aliases": [
+              "Ain Ouled El Ggerissi"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية حزوة",
+            "contextAliases": [
+              "Délégation Hazoua",
+              "Hazoua",
+              "معتمدية حزوة"
+            ],
+            "governorateId": 352,
+            "lat": 33.606742,
+            "lng": 7.722822,
+            "delegationId": 479,
+            "hasBoundary": true,
+            "bbox": [
+              7.581941,
+              33.424659,
+              7.929185,
+              33.79444
+            ],
+            "areaKm2": 611.9428644116889,
+            "pickerGroupId": "osm:relation:7154925",
+            "offset": 3166288,
+            "length": 196
+          },
+          "packedGeometrySha256": "aeb4ea230c10275dda0e42142872acfd0f038adfdde85b998dc28e136891b626"
+        },
+        "osm:way:207579215": {
+          "id": "osm:way:207579215",
+          "kind": "village",
+          "originalTags": {
+            "addr:city": "حزوة",
+            "landuse": "residential",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:de": "Hazwa",
+            "name:en": "Hazwa",
+            "name:fr": "Hazoua",
+            "place": "village"
+          },
+          "effectiveTags": {
+            "addr:city": "حزوة",
+            "landuse": "residential",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:de": "Hazwa",
+            "name:en": "Hazwa",
+            "name:fr": "Hazoua",
+            "place": "village"
+          },
+          "originalSourceId": null,
+          "effectiveSourceId": "osm",
+          "sourceGeometrySha256": "810ea33b29bc91238d10cecb62c7fefd5188a6dd4493668636610d5403306a0b",
+          "expectedCuration": null,
+          "currentMetadata": {
+            "id": "osm:way:207579215",
+            "sourceId": "osm",
+            "name": "حزوة",
+            "aliases": [
+              "Hazoua",
+              "Hazwa"
+            ],
+            "kind": "village",
+            "parentName": "معتمدية حزوة",
+            "contextAliases": [
+              "Délégation Hazoua",
+              "Hazoua",
+              "حزوة",
+              "معتمدية حزوة"
+            ],
+            "governorateId": 352,
+            "lat": 33.740709,
+            "lng": 7.599514,
+            "delegationId": 479,
+            "hasBoundary": true,
+            "bbox": [
+              7.585485,
+              33.732901,
+              7.613863,
+              33.748678
+            ],
+            "areaKm2": 1.9124028100719948,
+            "pickerGroupId": "osm:relation:7154916",
+            "offset": 5333440,
+            "length": 412
+          },
+          "packedGeometrySha256": "b009b55868151800ddcc32bd5e590f94fa89ad7d00d736e6964d4eb3a11a0dbe"
+        }
+      },
+      "geometryFacts": {
+        "osm:relation:7154916": {
+          "areaKm2": 89.0042614669994,
+          "baseInsideSource": true,
+          "baseInsidePacked": true,
+          "townPointInsideSource": true,
+          "townPointInsidePacked": true,
+          "baseOutsideSourceMeters": 0.0,
+          "baseOutsidePackedMeters": 0.0,
+          "currentDefault": 479,
+          "nearestThree": [
+            {
+              "id": 479,
+              "km": 0.053602899906088644
+            },
+            {
+              "id": 477,
+              "km": 25.875867954609973
+            },
+            {
+              "id": 486,
+              "km": 48.19541197315016
+            }
+          ]
+        },
+        "osm:way:207579215": {
+          "areaKm2": 1.9124028100719948,
+          "baseInsideSource": false,
+          "baseInsidePacked": false,
+          "townPointInsideSource": true,
+          "townPointInsidePacked": true,
+          "baseOutsideSourceMeters": 2493.121932000878,
+          "baseOutsidePackedMeters": 2493.0904449695176,
+          "currentDefault": 479,
+          "nearestThree": [
+            {
+              "id": 479,
+              "km": 3.82769978779816
+            },
+            {
+              "id": 477,
+              "km": 29.636177677281783
+            },
+            {
+              "id": 486,
+              "km": 46.668370486850336
+            }
+          ],
+          "sourceFootprintInsideSector": true
+        },
+        "base": {
+          "lat": 33.764,
+          "lng": 7.63,
+          "insideSourceParent": true,
+          "insideSourceGovernor": true,
+          "insideSourceImadas": [
+            "osm:relation:7154916"
+          ],
+          "nearestThree": [
+            {
+              "id": 479,
+              "km": 0.0
+            },
+            {
+              "id": 477,
+              "km": 25.92946771938567
+            },
+            {
+              "id": 486,
+              "km": 48.18663538617513
+            }
+          ],
+          "insideSourceTownPolygon": false
+        },
+        "sourceTown": {
+          "lat": 33.7404313,
+          "lng": 7.6038545,
+          "insideSourceParent": true,
+          "insideSourceGovernor": true,
+          "insideSourceImadas": [
+            "osm:relation:7154916"
+          ],
+          "nearestThree": [
+            {
+              "id": 479,
+              "km": 3.5652698746016553
+            },
+            {
+              "id": 477,
+              "km": 29.30133586311509
+            },
+            {
+              "id": 486,
+              "km": 46.49486263554898
+            }
+          ],
+          "insideSourceTownPolygon": true
+        }
+      },
+      "existingCoordinateCorrections": [],
+      "existingActivePickerReferences": [],
+      "priorGroupAndPackedFactsUnchanged": true
+    }
+  ],
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "b50f62fba68c6ba0989f3a4cb673a0cfad820dcd059164b26a0ac208467c9600"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "7928f3e7291512f152e6ece5452ab87f52d0416a5f68470c78b5e687e4bf03fd"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "cfe5c6df542ec9a02a608c71af7d696533d6ec46b4ffdeca3ff2f5a203ca0807"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "8f38da8820cd11e74953dec93a9229aace216467cee25afaf54a7b6bcfa06be5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "da7472703a3ab83283b220ded7384890fa4ff97b45415d41b7383abb19e78728"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "2cfaa2bb3846117a010924f19348ad63e1c799f4c629e716e8a10a61afcd0d6e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\eight-base-sector-settlement-scope-review.json",
+      "sha256": "7bf454fbcd356fed762cd3c730445562fa4c0c6bae8ac3e678f120bf79f99b57"
+    }
+  ],
+  "newPrimaryEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\retrieval-and-node-comparison.json",
+    "sha256": "dd4674ddf4ceacb8f65427c0b7a9e80c929a04fee3ac88e5c9a8a95a2b1c0163"
+  }
+}

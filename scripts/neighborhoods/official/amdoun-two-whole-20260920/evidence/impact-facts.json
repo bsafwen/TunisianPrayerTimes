@@ -1,0 +1,1244 @@
+{
+  "status": "READ_ONLY_JOINT_AMDOUN_TWO_BOUNDARY_IMPACT",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\impact-reviewed.py",
+    "sha256": "bc3f8b12a40863a35ea7bd0a96fad8a190d31a861418915ef906a5ab27fa4706",
+    "bytes": 12112
+  },
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+      "bytes": 5590876
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\gouvernorats.json",
+      "sha256": "bd131b8d673fb039a0e94ad62f3b263a385d52d0734d903f6241aa2b96682203",
+      "bytes": 54605
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\retired-localities.json",
+      "sha256": "d86c7cb90724966a0496400d522f4da071048dc08f7f175979fadd44625d64a4",
+      "bytes": 16349
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\coverage.json",
+      "sha256": "1d3c4413fb2b41cf02c35cced9deb0e013461f6a417969e685d95ab5fec9a517",
+      "bytes": 1229291
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "bytes": 446748
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\reviewed-boundaries.json",
+      "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57",
+      "bytes": 108873
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\reviewed-picker-groups.json",
+      "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+      "bytes": 630000
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\generate_neighborhoods.py",
+      "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+      "bytes": 776658
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-source-and-geometry-review.json",
+      "sha256": "6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b",
+      "bytes": 29736
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-geometry-facts.json",
+      "sha256": "baa703fd7ca7f8ed502b2bc9afab552cbc3b401c867684f44ab1463cc630dcb9",
+      "bytes": 55436
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-native-geometries.json",
+      "sha256": "8ec9290dcd89849ec2af082bd3b0a3b718cbd4814ac573a79120741c4dbadfe2",
+      "bytes": 206365
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-native-path-inventory.json",
+      "sha256": "9e136d19d69e5f86c5283be86af1942b6ccc5dcf7f017cc3a790514345143ea8",
+      "bytes": 19942
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-source-receipts.json",
+      "sha256": "a2c6a172a96d43bd5c41fe552ac9c7cefb5fc8600c3341cef5fb1c9093151e02",
+      "bytes": 4677
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-frozen-source-rows.json",
+      "sha256": "17894890818f921fdda9789529a409a42aa0be7984af68c5169d93cf58275a71",
+      "bytes": 126895
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen-context.json",
+      "sha256": "92e77236546e2a82dda4b65fbeb53d624e1d87f28c0287a38232db6ebd88be30",
+      "bytes": 8697
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\source-targets-and-parents.json",
+      "sha256": "be9828dc3b3126235b317e3a7e83c8729f762e17d1cd3ceb2dd34e3f2a08f322",
+      "bytes": 576219
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\decree-scope-addendum.json",
+      "sha256": "ca3711e4ccde56dabcd9c520fa5b62785379cf74cc03dc95233da1514dd01da4",
+      "bytes": 4496
+    }
+  ],
+  "targetRows": [
+    {
+      "id": "osm:relation:7189452",
+      "sourceId": "osm",
+      "name": "زهرة مدين",
+      "aliases": [
+        "Zahret medien",
+        "عمدون",
+        "Amdoun"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية عمدون",
+      "contextAliases": [
+        "Délégation Amdoun",
+        "معتمدية عمدون"
+      ],
+      "governorateId": 356,
+      "lat": 36.78194,
+      "lng": 9.088968,
+      "delegationId": 515,
+      "hasBoundary": true,
+      "bbox": [
+        9.055601,
+        36.76293,
+        9.109579,
+        36.80082
+      ],
+      "areaKm2": 9.558281132863852,
+      "pickerGroupId": "osm:relation:7189452",
+      "offset": 4801484,
+      "length": 3292
+    },
+    {
+      "id": "osm:relation:7189451",
+      "sourceId": "osm",
+      "name": "زهرة مدين الجنوبية",
+      "aliases": [
+        "Zahret medien sud",
+        "عمدون الجنوبية",
+        "Amdoun Sud"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية عمدون",
+      "contextAliases": [
+        "Délégation Amdoun",
+        "معتمدية عمدون"
+      ],
+      "governorateId": 356,
+      "lat": 36.76026,
+      "lng": 9.087709,
+      "delegationId": 515,
+      "hasBoundary": true,
+      "bbox": [
+        9.052248,
+        36.73371,
+        9.139952,
+        36.7867
+      ],
+      "areaKm2": 18.70448151465049,
+      "pickerGroupId": "osm:relation:7189451",
+      "offset": 4797936,
+      "length": 3548
+    }
+  ],
+  "jointCoverage": {
+    "oldUnionKm2": 28.185888428865432,
+    "newUnionKm2": 28.685572282122056,
+    "gainKm2": 1.0478986974068625,
+    "lossKm2": 0.5482148441499014,
+    "gainPreviouslyUncoveredAllLayersKm2": 0.0,
+    "lossUncoveredAllLayersKm2": 0.5482148441499038,
+    "gainOverlapsUnchangedPolygonsKm2": 1.0478986974068638,
+    "lossUncoveredSectorLayerKm2": 0.5482148441499038,
+    "method": "Joint union old pair versus new pair, with both targets removed from unchanged peers; no double counting or stale other-target geometry."
+  },
+  "perTargetCoverage": {
+    "osm:relation:7189452": {
+      "oldAreaKm2": 9.53265200601067,
+      "newNativeAreaKm2": 8.995099411369877,
+      "gainKm2": 0.08573926445373674,
+      "lossKm2": 0.6232918590943703,
+      "oldOutsideOtherPolygonsKm2": 9.532652006010684,
+      "newOutsideOtherEffectivePolygonsKm2": 8.911054195420505,
+      "lossUncoveredByAnyEffectivePolygonKm2": 0.39648898037394664,
+      "lossUncoveredByEffectiveSectorsKm2": 0.39648898037394664,
+      "gainAlreadyCoveredByOldPolygonsKm2": 0.08573926445376015,
+      "gainOverlapsEffectivePolygonsKm2": 0.08206303919373042,
+      "gainOverlapsEffectiveSectorsKm2": 0.08206303919373042
+    },
+    "osm:relation:7189451": {
+      "oldAreaKm2": 18.653236422854725,
+      "newNativeAreaKm2": 19.69289727814528,
+      "gainKm2": 1.1950629443266874,
+      "lossKm2": 0.15540208903602168,
+      "oldOutsideOtherPolygonsKm2": 18.653236422854775,
+      "newOutsideOtherEffectivePolygonsKm2": 18.724209395096423,
+      "lossUncoveredByAnyEffectivePolygonKm2": 0.1517258637759865,
+      "lossUncoveredByEffectiveSectorsKm2": 0.1517258637759865,
+      "gainAlreadyCoveredByOldPolygonsKm2": 1.195062944326685,
+      "gainOverlapsEffectivePolygonsKm2": 0.9682600656062396,
+      "gainOverlapsEffectiveSectorsKm2": 0.9682600656062396
+    }
+  },
+  "targetPair": {
+    "oldOverlapM2": 0.0,
+    "nativeOverlapM2": 2424.4073931095145,
+    "packedOverlapM2": 2448.5708443139033,
+    "unchangedNativePaths": true
+  },
+  "intersectionRecords": {
+    "osm:relation:7189452": [
+      {
+        "id": "osm:relation:7189410",
+        "name": "الغيرية",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 0.0,
+        "gainAlreadyCoveredBeforeM2": 0.0,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189416",
+        "name": "القوسة",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 0.0,
+        "gainAlreadyCoveredBeforeM2": 0.0,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189417",
+        "name": "المجالس",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 0.0,
+        "gainAlreadyCoveredBeforeM2": 0.0,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189451",
+        "name": "زهرة مدين الجنوبية",
+        "kind": "sector",
+        "geometryAlsoReplaced": true,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 2424.4073931095145,
+        "gainAlreadyCoveredBeforeM2": 4104.042702605802,
+        "lossStillCoveredAfterM2": 226802.87872047783
+      },
+      {
+        "id": "osm:relation:7189465",
+        "name": "صباح",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 77660.99254313693,
+        "gainAlreadyCoveredBeforeM2": 77660.99254313605,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189466",
+        "name": "عزرة",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 0.0,
+        "gainAlreadyCoveredBeforeM2": 0.0,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189472",
+        "name": "عين سلطان",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 0.0,
+        "gainAlreadyCoveredBeforeM2": 0.0,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189474",
+        "name": "غزية",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 0.0,
+        "gainAlreadyCoveredBeforeM2": 0.0,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189484",
+        "name": "مالك",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 3974.229208018082,
+        "gainAlreadyCoveredBeforeM2": 3974.2292080183365,
+        "lossStillCoveredAfterM2": 0.0
+      }
+    ],
+    "osm:relation:7189451": [
+      {
+        "id": "osm:relation:7189410",
+        "name": "الغيرية",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 16795.136330514477,
+        "gainAlreadyCoveredBeforeM2": 16795.136330486268,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189416",
+        "name": "القوسة",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 457228.8727959947,
+        "gainAlreadyCoveredBeforeM2": 457228.872795995,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189417",
+        "name": "المجالس",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 0.0,
+        "gainAlreadyCoveredBeforeM2": 0.0,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189452",
+        "name": "زهرة مدين",
+        "kind": "sector",
+        "geometryAlsoReplaced": true,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 2424.4073931095118,
+        "gainAlreadyCoveredBeforeM2": 228785.0554762336,
+        "lossStillCoveredAfterM2": 3676.2252600784823
+      },
+      {
+        "id": "osm:relation:7189465",
+        "name": "صباح",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 1489.4869001161867,
+        "gainAlreadyCoveredBeforeM2": 1489.4869001161833,
+        "lossStillCoveredAfterM2": 2.9786992327719957e-09
+      },
+      {
+        "id": "osm:relation:7189466",
+        "name": "عزرة",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 110162.93693334295,
+        "gainAlreadyCoveredBeforeM2": 110162.93693334486,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189472",
+        "name": "عين سلطان",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 1585.7134418165547,
+        "gainAlreadyCoveredBeforeM2": 1585.7134418165547,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189474",
+        "name": "غزية",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 379013.8970062646,
+        "gainAlreadyCoveredBeforeM2": 379013.89700620517,
+        "lossStillCoveredAfterM2": 0.0
+      },
+      {
+        "id": "osm:relation:7189484",
+        "name": "مالك",
+        "kind": "sector",
+        "geometryAlsoReplaced": false,
+        "beforeIntersectionM2": 0.0,
+        "afterJointReplacementIntersectionM2": 1.845442399379798,
+        "gainAlreadyCoveredBeforeM2": 1.845442399379798,
+        "lossStillCoveredAfterM2": 0.0
+      }
+    ]
+  },
+  "conflicts": {
+    "oldStoredAndRecomputed": [],
+    "nativeJointReplacement": [
+      {
+        "ids": [
+          "osm:relation:7189410",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.016837983386967313,
+        "sample": {
+          "lat": 36.74789867660306,
+          "lng": 9.107019995596648
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189416",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.4584833964048614,
+        "sample": {
+          "lat": 36.74067738883812,
+          "lng": 9.084690201678075
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189452"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0024311787674335976,
+        "sample": {
+          "lat": 36.76512263613692,
+          "lng": 9.065970879294182
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0014935483520958125,
+        "sample": {
+          "lat": 36.78261637272514,
+          "lng": 9.114767500565282
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189466"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.11044837278218918,
+        "sample": {
+          "lat": 36.7664295926393,
+          "lng": 9.13244822020795
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189472"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0015900518003103528,
+        "sample": {
+          "lat": 36.78016995701014,
+          "lng": 9.13905677184772
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189474"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.38004642500997754,
+        "sample": {
+          "lat": 36.78136114200434,
+          "lng": 9.130873044705513
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 1.8505966475718249e-06,
+        "sample": {
+          "lat": 36.76854392827417,
+          "lng": 9.05586680621481
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.07786226236991697,
+        "sample": {
+          "lat": 36.78648312647084,
+          "lng": 9.103501744860994
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0039852674338214655,
+        "sample": {
+          "lat": 36.76915177791642,
+          "lng": 9.060313818508998
+        }
+      }
+    ],
+    "packedCopyJointReplacement": [
+      {
+        "ids": [
+          "osm:relation:7189410",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.016837647531836912,
+        "sample": {
+          "lat": 36.747899000000004,
+          "lng": 9.107020382409974
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189416",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.45849439376383605,
+        "sample": {
+          "lat": 36.740677500000004,
+          "lng": 9.084690335445803
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189452"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0024554102829616926,
+        "sample": {
+          "lat": 36.765122500000004,
+          "lng": 9.06597125636683
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0014991589667945695,
+        "sample": {
+          "lat": 36.7826165,
+          "lng": 9.114767555122777
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189466"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.1104427605205102,
+        "sample": {
+          "lat": 36.7664295,
+          "lng": 9.132448114733432
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189472"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.001588369579349192,
+        "sample": {
+          "lat": 36.78017,
+          "lng": 9.13905637855478
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189474"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.3800465370967913,
+        "sample": {
+          "lat": 36.78136087383022,
+          "lng": 9.13087306817173
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 1.9954578326234587e-06,
+        "sample": {
+          "lat": 36.768544155244996,
+          "lng": 9.055866714055528
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.07784766544719957,
+        "sample": {
+          "lat": 36.786483000000004,
+          "lng": 9.103502009746917
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.003991112204637531,
+        "sample": {
+          "lat": 36.76915180593677,
+          "lng": 9.060313701027189
+        }
+      }
+    ],
+    "oldAllCatalogCount": 428,
+    "projectedPackedAllCatalogCount": 438,
+    "cohortIds": [
+      "osm:relation:7189410",
+      "osm:relation:7189416",
+      "osm:relation:7189417",
+      "osm:relation:7189451",
+      "osm:relation:7189452",
+      "osm:relation:7189465",
+      "osm:relation:7189466",
+      "osm:relation:7189472",
+      "osm:relation:7189474",
+      "osm:relation:7189484"
+    ]
+  },
+  "rawRepresentativeMembershipChanges": {
+    "osm:relation:7189452": [],
+    "osm:relation:7189451": []
+  },
+  "wholeFootprintChildConsumers": [
+    {
+      "currentRow": {
+        "id": "osm:node:4099579144",
+        "sourceId": "osm",
+        "name": "عمدون",
+        "aliases": [
+          "Amdoun",
+          "Zahret Medien",
+          "زهرة مدين",
+          "Zahret Median"
+        ],
+        "kind": "town",
+        "parentName": "زهرة مدين الجنوبية",
+        "contextAliases": [
+          "Amdoun Sud",
+          "Délégation Amdoun",
+          "Zahret medien sud",
+          "زهرة مدين الجنوبية",
+          "عمدون الجنوبية",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.7686376,
+        "lng": 9.0894667,
+        "delegationId": 515,
+        "hasBoundary": false,
+        "pickerGroupId": "delegation:515"
+      },
+      "memberships": {
+        "osm:relation:7189452": {
+          "oldPackedCoversWholeFootprint": false,
+          "newNativeCoversWholeFootprint": false,
+          "newPackedCoversWholeFootprint": false
+        },
+        "osm:relation:7189451": {
+          "oldPackedCoversWholeFootprint": true,
+          "newNativeCoversWholeFootprint": true,
+          "newPackedCoversWholeFootprint": true
+        }
+      },
+      "exactCurrentSectorNameReference": true
+    }
+  ],
+  "parents": {
+    "osm:relation:7189452": {
+      "delegation": {
+        "id": "osm:relation:7189391",
+        "code": "2153",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 0.0,
+        "sourceTags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "long_name": "معتمدية عمدون",
+          "long_name:ar": "معتمدية عمدون",
+          "long_name:fr": "Délégation d'Amdoun",
+          "name": "معتمدية عمدون",
+          "name:ar": "معتمدية عمدون",
+          "name:fr": "Délégation Amdoun",
+          "ref:tn:codegeo": "2153",
+          "ref:tn:hasc_2": "TN.BJ.AM",
+          "sorting_name": "عمدون",
+          "sorting_name:ar": "عمدون",
+          "sorting_name:fr": "Amdoun",
+          "wikidata": "Q2842503",
+          "wikipedia": "ar:معتمدية عمدون",
+          "wikipedia:ar": "معتمدية عمدون"
+        }
+      },
+      "governorate": {
+        "id": "osm:relation:1435833",
+        "code": "21",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 0.0,
+        "sourceTags": {
+          "ISO3166-2": "TN-31",
+          "admin_level": "4",
+          "alt_name:fa": "استان باجه",
+          "alt_name:ur": "ولایت باجہ",
+          "boundary": "administrative",
+          "name": "ولاية باجة",
+          "name:ar": "ولاية باجة",
+          "name:az": "Beca (vilayət)",
+          "name:azb": "باجه",
+          "name:be": "Беджа (вілает)",
+          "name:be-tarask": "Бэджа (вілает)",
+          "name:bg": "Бежа (област)",
+          "name:ca": "Governació de Béja",
+          "name:ceb": "Gouvernorat de Béja",
+          "name:cy": "Béja (talaith)",
+          "name:de": "Gouvernement Beja",
+          "name:el": "Μπετζά (Κυβερνείο)",
+          "name:en": "Béja",
+          "name:es": "Gobernación de Béja",
+          "name:fa": "باجه",
+          "name:fi": "Béja (kuvernoraatti)",
+          "name:fr": "Gouvernorat Béja",
+          "name:frr": "Béja (Guwernement)",
+          "name:hu": "Béja kormányzóság",
+          "name:id": "Kegubernuran Béja",
+          "name:it": "Béja",
+          "name:ja": "ベジャ県",
+          "name:ka": "ბეჯის ვილაიეთი",
+          "name:ko": "베자주",
+          "name:lt": "Badžos vilajetas",
+          "name:ms": "Kawasan kegabenoran Béja",
+          "name:nl": "Béja (gouvernement)",
+          "name:no": "Béja (guvernement)",
+          "name:pl": "Gubernatorstwo Badża",
+          "name:pt": "Béja (província)",
+          "name:ro": "Guvernoratul Béja",
+          "name:ru": "Беджа (вилайет)",
+          "name:sco": "Béja Govrenorate",
+          "name:sh": "Béja (vilajet)",
+          "name:tr": "Bace ili",
+          "name:uk": "Беджа (вілаєт)",
+          "name:ur": "باجہ",
+          "name:zh": "巴傑省",
+          "name:zu": "Béja Governorate",
+          "official_name": "ولاية باجة",
+          "official_name:ar": "ولاية باجة",
+          "official_name:en": "Béja Governorate",
+          "official_name:fr": "Gouvernorat de Béja",
+          "official_name:it": "Governatorato di Béja",
+          "population": "304501",
+          "ref:tn:codegeo": "21",
+          "wikidata": "Q276576",
+          "wikipedia": "ar:ولاية باجة"
+        }
+      }
+    },
+    "osm:relation:7189451": {
+      "delegation": {
+        "id": "osm:relation:7189391",
+        "code": "2153",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 128543.78670567618,
+        "sourceTags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "long_name": "معتمدية عمدون",
+          "long_name:ar": "معتمدية عمدون",
+          "long_name:fr": "Délégation d'Amdoun",
+          "name": "معتمدية عمدون",
+          "name:ar": "معتمدية عمدون",
+          "name:fr": "Délégation Amdoun",
+          "ref:tn:codegeo": "2153",
+          "ref:tn:hasc_2": "TN.BJ.AM",
+          "sorting_name": "عمدون",
+          "sorting_name:ar": "عمدون",
+          "sorting_name:fr": "Amdoun",
+          "wikidata": "Q2842503",
+          "wikipedia": "ar:معتمدية عمدون",
+          "wikipedia:ar": "معتمدية عمدون"
+        }
+      },
+      "governorate": {
+        "id": "osm:relation:1435833",
+        "code": "21",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 0.0,
+        "sourceTags": {
+          "ISO3166-2": "TN-31",
+          "admin_level": "4",
+          "alt_name:fa": "استان باجه",
+          "alt_name:ur": "ولایت باجہ",
+          "boundary": "administrative",
+          "name": "ولاية باجة",
+          "name:ar": "ولاية باجة",
+          "name:az": "Beca (vilayət)",
+          "name:azb": "باجه",
+          "name:be": "Беджа (вілает)",
+          "name:be-tarask": "Бэджа (вілает)",
+          "name:bg": "Бежа (област)",
+          "name:ca": "Governació de Béja",
+          "name:ceb": "Gouvernorat de Béja",
+          "name:cy": "Béja (talaith)",
+          "name:de": "Gouvernement Beja",
+          "name:el": "Μπετζά (Κυβερνείο)",
+          "name:en": "Béja",
+          "name:es": "Gobernación de Béja",
+          "name:fa": "باجه",
+          "name:fi": "Béja (kuvernoraatti)",
+          "name:fr": "Gouvernorat Béja",
+          "name:frr": "Béja (Guwernement)",
+          "name:hu": "Béja kormányzóság",
+          "name:id": "Kegubernuran Béja",
+          "name:it": "Béja",
+          "name:ja": "ベジャ県",
+          "name:ka": "ბეჯის ვილაიეთი",
+          "name:ko": "베자주",
+          "name:lt": "Badžos vilajetas",
+          "name:ms": "Kawasan kegabenoran Béja",
+          "name:nl": "Béja (gouvernement)",
+          "name:no": "Béja (guvernement)",
+          "name:pl": "Gubernatorstwo Badża",
+          "name:pt": "Béja (província)",
+          "name:ro": "Guvernoratul Béja",
+          "name:ru": "Беджа (вилайет)",
+          "name:sco": "Béja Govrenorate",
+          "name:sh": "Béja (vilajet)",
+          "name:tr": "Bace ili",
+          "name:uk": "Беджа (вілаєт)",
+          "name:ur": "باجہ",
+          "name:zh": "巴傑省",
+          "name:zu": "Béja Governorate",
+          "official_name": "ولاية باجة",
+          "official_name:ar": "ولاية باجة",
+          "official_name:en": "Béja Governorate",
+          "official_name:fr": "Gouvernorat de Béja",
+          "official_name:it": "Governatorato di Béja",
+          "population": "304501",
+          "ref:tn:codegeo": "21",
+          "wikidata": "Q276576",
+          "wikipedia": "ar:ولاية باجة"
+        }
+      }
+    }
+  },
+  "quantization": {
+    "osm:relation:7189452": {
+      "coordinateScale": 1000000,
+      "packedGeometrySha256": "49deae0d15e1c3ccdf74ded24019fa3cf9568e14d95fa260963212b306843219",
+      "packedLength": 2996,
+      "nativeValid": true,
+      "packedValid": true,
+      "nativeAndPackedContainCurrentAnchor": true,
+      "anchor": {
+        "lat": 36.78194,
+        "lng": 9.088968
+      },
+      "sourceBoundaryDistanceM": 925.1525654002706,
+      "symmetricDifferenceM2": 297.1337978343469,
+      "hausdorffM": 0.07047603556209149,
+      "nativeHoles": 0,
+      "packedHoles": 0
+    },
+    "osm:relation:7189451": {
+      "coordinateScale": 1000000,
+      "packedGeometrySha256": "7ac5bb56ebeaaf68b040a48925ebb48fb374316f0b584aadf0da5fd06f63397b",
+      "packedLength": 4132,
+      "nativeValid": true,
+      "packedValid": true,
+      "nativeAndPackedContainCurrentAnchor": true,
+      "anchor": {
+        "lat": 36.76026,
+        "lng": 9.087709
+      },
+      "sourceBoundaryDistanceM": 484.7773939765363,
+      "symmetricDifferenceM2": 457.08237848787155,
+      "hausdorffM": 0.06366501049044587,
+      "nativeHoles": 0,
+      "packedHoles": 0
+    }
+  },
+  "pickerClosure": {
+    "groups": [
+      "delegation:515",
+      "osm:relation:7189410",
+      "osm:relation:7189416",
+      "osm:relation:7189451",
+      "osm:relation:7189452",
+      "osm:relation:7189465",
+      "osm:relation:7189466",
+      "osm:relation:7189472",
+      "osm:relation:7189474",
+      "osm:relation:7189484"
+    ],
+    "rows": [
+      {
+        "id": "osm:relation:7189410",
+        "sourceId": "osm",
+        "name": "الغيرية",
+        "aliases": [
+          "El Ghriria"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باجة الشمالية",
+        "contextAliases": [
+          "Béja Nord",
+          "Délégation Béja Nord",
+          "معتمدية باجة الشمالية"
+        ],
+        "governorateId": 356,
+        "lat": 36.71804,
+        "lng": 9.109055,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.063581,
+          36.68653,
+          9.162209,
+          36.74963
+        ],
+        "areaKm2": 31.87576016403267,
+        "pickerGroupId": "osm:relation:7189410",
+        "offset": 4647684,
+        "length": 2964
+      },
+      {
+        "id": "osm:relation:7189416",
+        "sourceId": "osm",
+        "name": "القوسة",
+        "aliases": [
+          "El Goussa",
+          "La Goussa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.753728,
+        "lng": 9.039925,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.006372,
+          36.72413,
+          9.088337,
+          36.78337
+        ],
+        "areaKm2": 23.966043640568937,
+        "pickerGroupId": "osm:relation:7189416",
+        "offset": 4663964,
+        "length": 4052
+      },
+      {
+        "id": "osm:relation:7189451",
+        "sourceId": "osm",
+        "name": "زهرة مدين الجنوبية",
+        "aliases": [
+          "Zahret medien sud",
+          "عمدون الجنوبية",
+          "Amdoun Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.76026,
+        "lng": 9.087709,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.052248,
+          36.73371,
+          9.139952,
+          36.7867
+        ],
+        "areaKm2": 18.70448151465049,
+        "pickerGroupId": "osm:relation:7189451",
+        "offset": 4797936,
+        "length": 3548
+      },
+      {
+        "id": "osm:relation:7189452",
+        "sourceId": "osm",
+        "name": "زهرة مدين",
+        "aliases": [
+          "Zahret medien",
+          "عمدون",
+          "Amdoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.78194,
+        "lng": 9.088968,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.055601,
+          36.76293,
+          9.109579,
+          36.80082
+        ],
+        "areaKm2": 9.558281132863852,
+        "pickerGroupId": "osm:relation:7189452",
+        "offset": 4801484,
+        "length": 3292
+      },
+      {
+        "id": "osm:relation:7189465",
+        "sourceId": "osm",
+        "name": "صباح",
+        "aliases": [
+          "Sabah"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.80032,
+        "lng": 9.076651,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.056199,
+          36.78183,
+          9.12239,
+          36.81885
+        ],
+        "areaKm2": 10.356890031729389,
+        "pickerGroupId": "osm:relation:7189465",
+        "offset": 4845304,
+        "length": 2580
+      },
+      {
+        "id": "osm:relation:7189466",
+        "sourceId": "osm",
+        "name": "عزرة",
+        "aliases": [
+          "Azra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باجة الشمالية",
+        "contextAliases": [
+          "Béja Nord",
+          "Délégation Béja Nord",
+          "معتمدية باجة الشمالية"
+        ],
+        "governorateId": 356,
+        "lat": 36.752235,
+        "lng": 9.156081,
+        "delegationId": 629,
+        "hasBoundary": true,
+        "bbox": [
+          9.109251,
+          36.72508,
+          9.207093,
+          36.77968
+        ],
+        "areaKm2": 27.7683581633059,
+        "pickerGroupId": "osm:relation:7189466",
+        "offset": 4847884,
+        "length": 3492
+      },
+      {
+        "id": "osm:relation:7189472",
+        "sourceId": "osm",
+        "name": "عين سلطان",
+        "aliases": [
+          "Ain Soltane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باجة الشمالية",
+        "contextAliases": [
+          "Béja Nord",
+          "Délégation Béja Nord",
+          "معتمدية باجة الشمالية"
+        ],
+        "governorateId": 356,
+        "lat": 36.814415,
+        "lng": 9.156771,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.125848,
+          36.76089,
+          9.214729,
+          36.86777
+        ],
+        "areaKm2": 50.37602247266379,
+        "pickerGroupId": "osm:relation:7189472",
+        "offset": 4872748,
+        "length": 6372
+      },
+      {
+        "id": "osm:relation:7189474",
+        "sourceId": "osm",
+        "name": "غزية",
+        "aliases": [
+          "Ghazia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.81666,
+        "lng": 9.107995,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.08709,
+          36.77779,
+          9.14378,
+          36.85554
+        ],
+        "areaKm2": 18.22819252668365,
+        "pickerGroupId": "osm:relation:7189474",
+        "offset": 4884884,
+        "length": 6892
+      },
+      {
+        "id": "osm:relation:7189484",
+        "sourceId": "osm",
+        "name": "مالك",
+        "aliases": [
+          "Malek"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.79724,
+        "lng": 9.037947,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          8.991664,
+          36.76852,
+          9.069482,
+          36.82652
+        ],
+        "areaKm2": 19.755433410962972,
+        "pickerGroupId": "osm:relation:7189484",
+        "offset": 4930476,
+        "length": 6324
+      },
+      {
+        "id": "osm:node:4099579144",
+        "sourceId": "osm",
+        "name": "عمدون",
+        "aliases": [
+          "Amdoun",
+          "Zahret Medien",
+          "زهرة مدين",
+          "Zahret Median"
+        ],
+        "kind": "town",
+        "parentName": "زهرة مدين الجنوبية",
+        "contextAliases": [
+          "Amdoun Sud",
+          "Délégation Amdoun",
+          "Zahret medien sud",
+          "زهرة مدين الجنوبية",
+          "عمدون الجنوبية",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.7686376,
+        "lng": 9.0894667,
+        "delegationId": 515,
+        "hasBoundary": false,
+        "pickerGroupId": "delegation:515"
+      }
+    ],
+    "noGroupingOrMetadataMutation": true
+  },
+  "qualifications": {
+    "sourceEdition": 2023,
+    "wholeImadaScope": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\decree-scope-addendum.json",
+      "sha256": "ca3711e4ccde56dabcd9c520fa5b62785379cf74cc03dc95233da1514dd01da4",
+      "bytes": 4496
+    },
+    "notSurveyOrPresentDayCurrencyProof": true,
+    "oldAndNewSourceDisagreementsRetained": true,
+    "noNativeRepairSnapCutFill": true,
+    "quantization": "Existing set_precision1e-6 and exact pinned encoder applied only to a separate copy.",
+    "geometryProposalOnly": "No generation, source, production, ledger, controls or devices modified.",
+    "nativeModelReviewMissingJortResolvedBySeparateVisualAddendum": true,
+    "membershipIsFiniteDataEvidenceNotGenerationGuarantee": true
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "inm-retrieval-manifest/v1",
+  "scope": "2026-09-21-inm-published-mellita544",
+  "serviceDate": "2026-09-19",
+  "relocation": {
+    "originalAuditBase": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919",
+    "storage": "originals/",
+    "note": "explicit relocation index; original responseFile fields preserved"
+  },
+  "responses": [
+    {
+      "key": "544-prayer",
+      "delegationId": 544,
+      "governorateId": 359,
+      "kind": "prayer",
+      "disposition": "fresh",
+      "attempt": 1,
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/359/544/",
+      "startedAtUtc": "2026-09-19T11:44:53.233891+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/359/544/",
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:44:52 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "582",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "finishedAtUtc": "2026-09-19T11:44:53.415567+00:00",
+      "elapsedSeconds": 0.188,
+      "responseFile": "responses\\544-prayer-attempt01-398696f43bb79d63.json",
+      "sha256": "398696f43bb79d63390e10523b94ea4ac43569b150c50f08b6d1478bace7b97c",
+      "bytes": 582,
+      "file": "originals/544-prayer-attempt01-398696f43bb79d63.json",
+      "sourceReceipt": {
+        "file": "originals/544-prayer-attempt01.json",
+        "sha256": "7d8380e386f7c47180cc1bf34a24dcd71af8b039bc6a1e34836b6baffe0c6722"
+      }
+    },
+    {
+      "key": "544-sun",
+      "delegationId": 544,
+      "governorateId": 359,
+      "kind": "sun",
+      "disposition": "fresh",
+      "attempt": 1,
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/359/544/",
+      "startedAtUtc": "2026-09-19T11:44:53.896762+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/359/544/",
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:44:53 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "551",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "finishedAtUtc": "2026-09-19T11:44:54.066660+00:00",
+      "elapsedSeconds": 0.172,
+      "responseFile": "responses\\544-sun-attempt01-930cbf180ece843a.json",
+      "sha256": "930cbf180ece843a1fda8c317768661c74e98b7ce90e089f044867b58449f347",
+      "bytes": 551,
+      "file": "originals/544-sun-attempt01-930cbf180ece843a.json",
+      "sourceReceipt": {
+        "file": "originals/544-sun-attempt01.json",
+        "sha256": "eee74935cfbddeedf671543aa95facc7207f0a141e820c35009da85cc9422ad2"
+      }
+    }
+  ]
+}

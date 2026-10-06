@@ -1,0 +1,931 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceExtraction": {
+    "schemaVersion": 1,
+    "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "sourceFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+    "extraction": "Exact five source objects using pinned compiler extract semantics; no geometry edits or generation.",
+    "records": [
+      {
+        "id": "osm:node:7090084103",
+        "kind": "neighbourhood",
+        "tags": {
+          "name": "حي المرجان",
+          "name:ar": "حي المرجان",
+          "name:en": "Hay El Morjane",
+          "name:fr": "Cité El Morjane",
+          "place": "neighbourhood"
+        },
+        "inputValidBeforeCompilerNormalization": true,
+        "originalGeometrySha256": "f258aca358f4b95b644e46178846b1b712dd4818e41ac5a30790b8a7c29388ad",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            8.794592,
+            36.9430258
+          ]
+        }
+      },
+      {
+        "id": "osm:way:1062690914",
+        "kind": "quarter",
+        "tags": {
+          "name": "Ben Slama - بن سلامة",
+          "place": "quarter"
+        },
+        "inputValidBeforeCompilerNormalization": true,
+        "originalGeometrySha256": "2310b19f0490259a1bb06b26d7e5b5594da19297afb3c961e27b62b721e3f993",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.6940293,
+                  33.5921103
+                ],
+                [
+                  10.7028596,
+                  33.5846017
+                ],
+                [
+                  10.7100693,
+                  33.5893744
+                ],
+                [
+                  10.7000915,
+                  33.5985258
+                ],
+                [
+                  10.6940782,
+                  33.5921724
+                ],
+                [
+                  10.6940293,
+                  33.5921103
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "id": "osm:way:252923901",
+        "kind": "residential",
+        "tags": {
+          "addr:city": "طبرقة",
+          "addr:place": "حي المرجان",
+          "landuse": "residential",
+          "name": "Cité El-Mordjane"
+        },
+        "inputValidBeforeCompilerNormalization": true,
+        "originalGeometrySha256": "b33dd7970da012ad785fe04fe17e107804ce5df057c1233aa4f4fed5e881e34f",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  8.7890588,
+                  36.9430922
+                ],
+                [
+                  8.790501,
+                  36.9430596
+                ],
+                [
+                  8.7904986,
+                  36.9429857
+                ],
+                [
+                  8.7904385,
+                  36.941098
+                ],
+                [
+                  8.7915772,
+                  36.9408713
+                ],
+                [
+                  8.7917783,
+                  36.9406736
+                ],
+                [
+                  8.7920671,
+                  36.9408444
+                ],
+                [
+                  8.7926338,
+                  36.9412513
+                ],
+                [
+                  8.7927142,
+                  36.9412442
+                ],
+                [
+                  8.792846,
+                  36.9410144
+                ],
+                [
+                  8.7931426,
+                  36.9407151
+                ],
+                [
+                  8.793233,
+                  36.9405917
+                ],
+                [
+                  8.7948083,
+                  36.9413831
+                ],
+                [
+                  8.7948892,
+                  36.94134
+                ],
+                [
+                  8.795389,
+                  36.9415932
+                ],
+                [
+                  8.7952987,
+                  36.9417388
+                ],
+                [
+                  8.7956543,
+                  36.9419933
+                ],
+                [
+                  8.7957164,
+                  36.9418581
+                ],
+                [
+                  8.7963114,
+                  36.9418832
+                ],
+                [
+                  8.796326,
+                  36.9420396
+                ],
+                [
+                  8.7970273,
+                  36.9420076
+                ],
+                [
+                  8.7974929,
+                  36.9410202
+                ],
+                [
+                  8.7977476,
+                  36.940713
+                ],
+                [
+                  8.797981,
+                  36.9405633
+                ],
+                [
+                  8.7989868,
+                  36.9404678
+                ],
+                [
+                  8.799157,
+                  36.9405911
+                ],
+                [
+                  8.7995112,
+                  36.9405505
+                ],
+                [
+                  8.799529,
+                  36.9404518
+                ],
+                [
+                  8.7996843,
+                  36.9404477
+                ],
+                [
+                  8.7998893,
+                  36.9405585
+                ],
+                [
+                  8.8006183,
+                  36.9401718
+                ],
+                [
+                  8.8015676,
+                  36.9403501
+                ],
+                [
+                  8.8017334,
+                  36.9402706
+                ],
+                [
+                  8.8018424,
+                  36.9403964
+                ],
+                [
+                  8.8016476,
+                  36.940516
+                ],
+                [
+                  8.8018841,
+                  36.940813
+                ],
+                [
+                  8.8008541,
+                  36.941673
+                ],
+                [
+                  8.8010895,
+                  36.942142
+                ],
+                [
+                  8.8006376,
+                  36.9425888
+                ],
+                [
+                  8.8008993,
+                  36.9429881
+                ],
+                [
+                  8.8009112,
+                  36.9434064
+                ],
+                [
+                  8.8005306,
+                  36.9435014
+                ],
+                [
+                  8.8000311,
+                  36.9438627
+                ],
+                [
+                  8.8002572,
+                  36.9446327
+                ],
+                [
+                  8.8001663,
+                  36.9455302
+                ],
+                [
+                  8.7997712,
+                  36.9447821
+                ],
+                [
+                  8.7992738,
+                  36.9435742
+                ],
+                [
+                  8.7989172,
+                  36.9433823
+                ],
+                [
+                  8.7980179,
+                  36.9442921
+                ],
+                [
+                  8.7976216,
+                  36.944464
+                ],
+                [
+                  8.7971058,
+                  36.944683
+                ],
+                [
+                  8.7968405,
+                  36.9447238
+                ],
+                [
+                  8.7961246,
+                  36.9449007
+                ],
+                [
+                  8.7957928,
+                  36.9449461
+                ],
+                [
+                  8.7950472,
+                  36.9450599
+                ],
+                [
+                  8.7946529,
+                  36.9451153
+                ],
+                [
+                  8.791381,
+                  36.9456744
+                ],
+                [
+                  8.7897652,
+                  36.9459384
+                ],
+                [
+                  8.789621,
+                  36.9451989
+                ],
+                [
+                  8.7915137,
+                  36.9449197
+                ],
+                [
+                  8.7914936,
+                  36.9443149
+                ],
+                [
+                  8.7892054,
+                  36.9446983
+                ],
+                [
+                  8.7890588,
+                  36.9430922
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "id": "osm:way:958706905",
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "بن سلامة - Ben Slama"
+        },
+        "inputValidBeforeCompilerNormalization": true,
+        "originalGeometrySha256": "167997ba16f8fc1fddc4cddd7204be09532d6924c2abb09f1540a246c86b0b67",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.6984801,
+                  33.5923611
+                ],
+                [
+                  10.6990534,
+                  33.5918202
+                ],
+                [
+                  10.7001886,
+                  33.5916526
+                ],
+                [
+                  10.7004074,
+                  33.5915433
+                ],
+                [
+                  10.7007518,
+                  33.5910464
+                ],
+                [
+                  10.7010435,
+                  33.5910936
+                ],
+                [
+                  10.7016164,
+                  33.5908773
+                ],
+                [
+                  10.7006129,
+                  33.5891068
+                ],
+                [
+                  10.699956,
+                  33.5879615
+                ],
+                [
+                  10.7005877,
+                  33.5876984
+                ],
+                [
+                  10.7023502,
+                  33.5880286
+                ],
+                [
+                  10.7034828,
+                  33.5883824
+                ],
+                [
+                  10.7046649,
+                  33.5895617
+                ],
+                [
+                  10.7051037,
+                  33.5908059
+                ],
+                [
+                  10.7048135,
+                  33.5919203
+                ],
+                [
+                  10.7041198,
+                  33.5928755
+                ],
+                [
+                  10.7031572,
+                  33.5938483
+                ],
+                [
+                  10.7020105,
+                  33.5938955
+                ],
+                [
+                  10.7007363,
+                  33.5940547
+                ],
+                [
+                  10.6995472,
+                  33.5935005
+                ],
+                [
+                  10.6990542,
+                  33.593096
+                ],
+                [
+                  10.6992358,
+                  33.592809
+                ],
+                [
+                  10.6984801,
+                  33.5923611
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "id": "osm:way:958708445",
+        "kind": "village",
+        "tags": {
+          "name": "Ben Slama",
+          "place": "village",
+          "population": "5000",
+          "website": "https://www.google.fr/maps/place/Ben+slama,+Tunisie/@33.5895597,10.6855773,14z/data=!3m1!4b1!4m5!3m4!1s0x13aacc02f262d99d:0xcb03af34e6589aac!8m2!3d33.5904608!4d10.7069707"
+        },
+        "inputValidBeforeCompilerNormalization": true,
+        "originalGeometrySha256": "d26e5e37817d1e837f0afacdcd4b5cb0bca24de9b9c86a5afdbb1fd9f3a6d47c",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.6742004,
+                  33.5966249
+                ],
+                [
+                  10.6759241,
+                  33.5950712
+                ],
+                [
+                  10.6776394,
+                  33.5923013
+                ],
+                [
+                  10.678052,
+                  33.5894795
+                ],
+                [
+                  10.6787347,
+                  33.5874667
+                ],
+                [
+                  10.6789839,
+                  33.5852731
+                ],
+                [
+                  10.6803733,
+                  33.5835715
+                ],
+                [
+                  10.6885985,
+                  33.5785353
+                ],
+                [
+                  10.6999067,
+                  33.5747274
+                ],
+                [
+                  10.7080645,
+                  33.5707287
+                ],
+                [
+                  10.7109634,
+                  33.5732473
+                ],
+                [
+                  10.7139647,
+                  33.5754478
+                ],
+                [
+                  10.7166241,
+                  33.5762375
+                ],
+                [
+                  10.7183777,
+                  33.5763037
+                ],
+                [
+                  10.7202789,
+                  33.5753124
+                ],
+                [
+                  10.7213337,
+                  33.5771915
+                ],
+                [
+                  10.7216075,
+                  33.5798466
+                ],
+                [
+                  10.7232123,
+                  33.5838389
+                ],
+                [
+                  10.7245869,
+                  33.5889384
+                ],
+                [
+                  10.7245809,
+                  33.5914369
+                ],
+                [
+                  10.7253874,
+                  33.5936241
+                ],
+                [
+                  10.72721,
+                  33.5962197
+                ],
+                [
+                  10.7300556,
+                  33.5976418
+                ],
+                [
+                  10.7305778,
+                  33.5977546
+                ],
+                [
+                  10.7310537,
+                  33.5975815
+                ],
+                [
+                  10.7312489,
+                  33.5974306
+                ],
+                [
+                  10.7318015,
+                  33.5974935
+                ],
+                [
+                  10.7325196,
+                  33.5979997
+                ],
+                [
+                  10.7254628,
+                  33.6008607
+                ],
+                [
+                  10.7103305,
+                  33.6065337
+                ],
+                [
+                  10.7069234,
+                  33.6082775
+                ],
+                [
+                  10.697718,
+                  33.6146035
+                ],
+                [
+                  10.6940702,
+                  33.6149788
+                ],
+                [
+                  10.6898431,
+                  33.6119409
+                ],
+                [
+                  10.6834342,
+                  33.6069202
+                ],
+                [
+                  10.6756381,
+                  33.6019509
+                ],
+                [
+                  10.6744579,
+                  33.5989662
+                ],
+                [
+                  10.6742004,
+                  33.5966249
+                ]
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "originalRelationships": [
+      {
+        "container": "osm:way:1062690914",
+        "contained": "osm:way:958706905",
+        "covers": true
+      },
+      {
+        "container": "osm:way:958708445",
+        "contained": "osm:way:1062690914",
+        "covers": true
+      },
+      {
+        "container": "osm:way:252923901",
+        "contained": "osm:node:7090084103",
+        "covers": true
+      }
+    ]
+  },
+  "currentEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ben-slama-morjane-picker-group-review-20260920\\bounded-input.json",
+    "sha256": "01dbe01c7d6faaf3caab5522e1d02b1bfc2363baa11d2084093cb099a2f0b1d1"
+  },
+  "records": [
+    {
+      "id": "osm:way:958706905",
+      "status": "eligible_proposal",
+      "method": "reviewed_named_neighbourhood_residential_display_identity",
+      "targetPickerGroupId": "osm:way:1062690914",
+      "expectedExistingMemberIds": [
+        "osm:way:958706905"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:way:1062690914",
+        "osm:way:958708445"
+      ],
+      "expectedGovernorateId": 353,
+      "expectedDelegationId": 493,
+      "expectedParentName": "بوغرارة",
+      "relationship": "quarter_residential",
+      "nameEvidence": {
+        "arabic": "بن سلامة",
+        "latin": "Ben Slama",
+        "residentialLatin": "بن سلامة - Ben Slama"
+      },
+      "members": [
+        {
+          "id": "osm:way:1062690914",
+          "expectedMetadata": {
+            "id": "osm:way:1062690914",
+            "sourceId": "osm",
+            "name": "Ben Slama - بن سلامة",
+            "aliases": [
+              "Ben Slama",
+              "بن سلامة"
+            ],
+            "kind": "quarter",
+            "parentName": "بوغرارة",
+            "contextAliases": [
+              "Boughrara",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "بوغرارة",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.590742,
+            "lng": 10.702108,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.694029,
+              33.584602,
+              10.710069,
+              33.598526
+            ],
+            "areaKm2": 1.1139795595171567
+          },
+          "expectedOriginalTags": {
+            "name": "Ben Slama - بن سلامة",
+            "place": "quarter"
+          },
+          "expectedEffectiveTags": {
+            "name": "Ben Slama - بن سلامة",
+            "place": "quarter"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "2310b19f0490259a1bb06b26d7e5b5594da19297afb3c961e27b62b721e3f993",
+          "packedGeometrySha256": "36c9104d83921535f383359111320dd0cddc4270da2ac3c4752e29f1a0cd00aa"
+        },
+        {
+          "id": "osm:way:958706905",
+          "expectedMetadata": {
+            "id": "osm:way:958706905",
+            "sourceId": "osm",
+            "name": "بن سلامة - Ben Slama",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "بوغرارة",
+            "contextAliases": [
+              "Boughrara",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "بوغرارة",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.590841,
+            "lng": 10.703345,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.69848,
+              33.587698,
+              10.705104,
+              33.594055
+            ],
+            "areaKm2": 0.25630645504723937
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "بن سلامة - Ben Slama"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "بن سلامة - Ben Slama"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "167997ba16f8fc1fddc4cddd7204be09532d6924c2abb09f1540a246c86b0b67",
+          "packedGeometrySha256": "bf534c308892ce60fe1274afba73896a07c673077df3978e65f5226a8c6f3dc5"
+        },
+        {
+          "id": "osm:way:958708445",
+          "expectedMetadata": {
+            "id": "osm:way:958708445",
+            "sourceId": "osm",
+            "name": "Ben Slama",
+            "aliases": [],
+            "kind": "village",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.592963,
+            "lng": 10.701186,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.6742,
+              33.570729,
+              10.73252,
+              33.614979
+            ],
+            "areaKm2": 15.526737968448714
+          },
+          "expectedOriginalTags": {
+            "name": "Ben Slama",
+            "place": "village",
+            "population": "5000",
+            "website": "https://www.google.fr/maps/place/Ben+slama,+Tunisie/@33.5895597,10.6855773,14z/data=!3m1!4b1!4m5!3m4!1s0x13aacc02f262d99d:0xcb03af34e6589aac!8m2!3d33.5904608!4d10.7069707"
+          },
+          "expectedEffectiveTags": {
+            "name": "Ben Slama",
+            "place": "village",
+            "population": "5000",
+            "website": "https://www.google.fr/maps/place/Ben+slama,+Tunisie/@33.5895597,10.6855773,14z/data=!3m1!4b1!4m5!3m4!1s0x13aacc02f262d99d:0xcb03af34e6589aac!8m2!3d33.5904608!4d10.7069707"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "d26e5e37817d1e837f0afacdcd4b5cb0bca24de9b9c86a5afdbb1fd9f3a6d47c",
+          "packedGeometrySha256": "57df6140a987e307693432d699e4a33ffc81c5d6f4d8f203adc2983df8881639"
+        }
+      ],
+      "qualifications": {
+        "displayIdentityOnly": true,
+        "noBoundaryEqualityClaim": true,
+        "allRawGeometryAndCoordinatesRetained": true,
+        "prayerSourceIsNotIdentityEvidence": true
+      }
+    },
+    {
+      "id": "osm:way:252923901",
+      "status": "eligible_proposal",
+      "method": "reviewed_named_neighbourhood_residential_display_identity",
+      "targetPickerGroupId": "osm:node:7090084103",
+      "expectedExistingMemberIds": [
+        "osm:way:252923901"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:7090084103"
+      ],
+      "expectedGovernorateId": 354,
+      "expectedDelegationId": 497,
+      "expectedParentName": "الحامدية",
+      "relationship": "neighbourhood_point_residential",
+      "nameEvidence": {
+        "arabic": "حي المرجان",
+        "latin": "Cité El Morjane",
+        "residentialLatin": "Cité El-Mordjane"
+      },
+      "members": [
+        {
+          "id": "osm:node:7090084103",
+          "expectedMetadata": {
+            "id": "osm:node:7090084103",
+            "sourceId": "osm",
+            "name": "حي المرجان",
+            "aliases": [
+              "Cité El Morjane",
+              "Hay El Morjane"
+            ],
+            "kind": "neighbourhood",
+            "parentName": "الحامدية",
+            "contextAliases": [
+              "Délégation Tabarka",
+              "Délégation de Tabarka",
+              "El Hamdia",
+              "Tabarka",
+              "الحامدية",
+              "معتمدية طبرقة"
+            ],
+            "governorateId": 354,
+            "lat": 36.9430258,
+            "lng": 8.794592,
+            "delegationId": 497,
+            "hasBoundary": false
+          },
+          "expectedOriginalTags": {
+            "name": "حي المرجان",
+            "name:ar": "حي المرجان",
+            "name:en": "Hay El Morjane",
+            "name:fr": "Cité El Morjane",
+            "place": "neighbourhood"
+          },
+          "expectedEffectiveTags": {
+            "name": "حي المرجان",
+            "name:ar": "حي المرجان",
+            "name:en": "Hay El Morjane",
+            "name:fr": "Cité El Morjane",
+            "place": "neighbourhood"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "f258aca358f4b95b644e46178846b1b712dd4818e41ac5a30790b8a7c29388ad",
+          "packedGeometrySha256": null
+        },
+        {
+          "id": "osm:way:252923901",
+          "expectedMetadata": {
+            "id": "osm:way:252923901",
+            "sourceId": "osm",
+            "name": "Cité El-Mordjane",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "الحامدية",
+            "contextAliases": [
+              "Délégation Tabarka",
+              "Délégation de Tabarka",
+              "El Hamdia",
+              "Tabarka",
+              "الحامدية",
+              "معتمدية طبرقة"
+            ],
+            "governorateId": 354,
+            "lat": 36.943024,
+            "lng": 8.7957,
+            "delegationId": 497,
+            "hasBoundary": true,
+            "bbox": [
+              8.789059,
+              36.940172,
+              8.801884,
+              36.945938
+            ],
+            "areaKm2": 0.42284691822097303
+          },
+          "expectedOriginalTags": {
+            "addr:city": "طبرقة",
+            "addr:place": "حي المرجان",
+            "landuse": "residential",
+            "name": "Cité El-Mordjane"
+          },
+          "expectedEffectiveTags": {
+            "addr:city": "طبرقة",
+            "addr:place": "حي المرجان",
+            "landuse": "residential",
+            "name": "Cité El-Mordjane"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "b33dd7970da012ad785fe04fe17e107804ce5df057c1233aa4f4fed5e881e34f",
+          "packedGeometrySha256": "8b4b87a19379add3fcdec4a82e2edd09376dd083a308b84f768d71a068205e22"
+        }
+      ],
+      "qualifications": {
+        "displayIdentityOnly": true,
+        "noBoundaryEqualityClaim": true,
+        "allRawGeometryAndCoordinatesRetained": true,
+        "prayerSourceIsNotIdentityEvidence": true
+      }
+    }
+  ],
+  "qualification": "All five source records and their independent geographic extents remain intact. These are two explicit picker representation joins."
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-28",
+  "status": "provisional_best_effort_boundary_candidate",
+  "targetId": "osm:relation:7142957",
+  "officialCode": "525564",
+  "officialRowId": "ministry-row:ffa3faef8a9de82b715e",
+  "ministryParent": "جرجيس",
+  "ministryName": "حمادي بو تفاحة",
+  "officialSourceNameAr": "حمادي بوتفاحة",
+  "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جرجيس/حمادي بو تفاحة.pdf",
+  "sourcePdfSha256": "30835017f6bf447026161285f8fa65e1bcbadd9d850de71c555f3a149f7a0740",
+  "sourceGeojsonSha256": "ec84c5f12f50af85f520aaad389b06353111d3803910907df32726e41f5ab820",
+  "sourceFeatureId": "osm:relation:7142957",
+  "nameBinding": {
+    "officialSourceNameAr": "حمادي بوتفاحة",
+    "runtimeDisplayNameAr": "حمادي بو تفاحة",
+    "exactMatch": false,
+    "officialNameAlreadySearchable": false,
+    "searchAliasFollowupRequired": true,
+    "reason": "The existing picker label is retained; official code, officialRowId, delegation, source PDF hash, and accepted red-face WKB pin this same source row. The label difference is explicit and does not change source identity or boundary geometry. Add the official Arabic spelling as a searchable alias in a separate text-only follow-up."
+  },
+  "stagingDisposition": "replace_geometry",
+  "currentAppGeometryEqualsQuantizedSource": false,
+  "sourceFaceEvidence": {
+    "sourceFaceWkbSha256": "3a1d3abf4bbaaca3cbecdfdafbc5454084b3cfa95fd3da2faa05ebf0b471613b",
+    "registeredFaceWkbSha256": "d82c148faedde12c2c769143105d8c98b1abd45c2c516f4ea8e9e13c71512351",
+    "nativeInventorySha256": "471982ab1afa0cea62c2eba5e7b0b8a2156bd9a688d3459d3dd0c7d9f235fe35",
+    "nativePdfSha256": "30835017f6bf447026161285f8fa65e1bcbadd9d850de71c555f3a149f7a0740",
+    "pageIndexZeroBased": 0,
+    "georeferenceIndex": 0,
+    "faceIndex": 0,
+    "registration": {
+      "status": "validated",
+      "commonCrs": "EPSG:32632",
+      "embeddedCrsEpsg": 32632,
+      "controlCount": 4,
+      "affineControlFitMaxResidualM": 0.11398857382794933,
+      "leaveOneOutMaxResidualM": 0.4559544570934145,
+      "leaveOneOutResidualsM": [
+        0.4559542826115919,
+        0.4559542985166746,
+        0.4559544570934145,
+        0.45595437130503125
+      ],
+      "inventoryMapControlConsistencyMaxM": 0.11398857382794933,
+      "controlDesignCondition": 1131.2184201140087,
+      "thresholds": {
+        "fitMaxResidualM": 1.0,
+        "leaveOneOutMaxResidualM": 1.5,
+        "inventoryMapConsistencyMaxM": 1.0,
+        "maxCondition": 1000000.0
+      },
+      "qualification": "Internal consistency of embedded controls only; not external survey accuracy."
+    },
+    "transformedWgs84GeometrySha256": "cb760840fb0b9f44be7f56d710976c945f996294ab3f7be9f5ca2996706fed0a"
+  },
+  "evidencePins": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\medenine\\zarzis-full16-gps-install-simulation-20260928-v1\\report.json",
+      "sha256": "4401018001c4cbd6ca7b939c43abf7ac811538036ddc66b0139e37103036d4f2",
+      "role": "pinned_M75_full16_measurement_report"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\medenine\\m74-install-candidate-ranking-20260927-v1\\ranking-report.json",
+      "sha256": "a2c195401611c05675f92861ed79074ef49c008380edba9ac755028c717ebee4",
+      "role": "pinned_M74_source_face_reconstruction_ledger"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\medenine\\525552-isie-mfull-successor-20260927-v1\\shared-group-entry-snapshot.json",
+      "sha256": "c30ad66128bbdb4445282e871ce3dade8cd522884bb4327f8b33ac1552b73118",
+      "role": "source_PDF_URL_and_neighbor_group_manifest"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\pdf-inventories\\30835017f6bf447026161285f8fa65e1bcbadd9d850de71c555f3a149f7a0740.json",
+      "sha256": "471982ab1afa0cea62c2eba5e7b0b8a2156bd9a688d3459d3dd0c7d9f235fe35",
+      "role": "native_source_inventory"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\locality-automation\\batches\\c9a91110bf33668033d1b63d\\osm_relation_7142957\\osm_relation_7142957.pdf",
+      "sha256": "30835017f6bf447026161285f8fa65e1bcbadd9d850de71c555f3a149f7a0740",
+      "role": "native_ISIE_source_PDF"
+    }
+  ],
+  "uncertainty": "Best-effort boundary from the row-specific red face on the official ISIE 2023 electoral map, linked to the official imada row and pinned MFull registered-face WKB. The registration residuals measure internal map-control fit, not surveyed legal-boundary accuracy. Positive-area source overlaps are retained and registered for conflict-aware GPS selection; at true or uncertain seams the 10 m accuracy clearance may return no locality. Current OSM geometry is only the before-state."
+}

@@ -1,0 +1,569 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:1206558973",
+  "baseId": 593,
+  "rawCurrent": {
+    "id": "osm:node:1206558973",
+    "sourceId": "osm",
+    "name": "الوردانين",
+    "aliases": [
+      "Ouardanine",
+      "Wardanin"
+    ],
+    "kind": "village",
+    "parentName": "الوردانين الجنوبية",
+    "contextAliases": [
+      "Délégation El Ouerdanine",
+      "Ouerdanine",
+      "Ouerdanine Sud",
+      "الوردانين الجنوبية",
+      "معتمدية الوردانين"
+    ],
+    "governorateId": 364,
+    "lat": 35.7097268,
+    "lng": 10.67649,
+    "delegationId": 593,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1206558973"
+  },
+  "baseCurrent": {
+    "id": 593,
+    "nomFr": "Ouerdanine",
+    "nomAr": "الوردانين",
+    "nomEn": "Ouerdanine",
+    "lat": 35.7087,
+    "lng": 10.6788
+  },
+  "expectedGovernor": {
+    "id": 364,
+    "nomFr": "Monastir",
+    "nomAr": "المنستير",
+    "nomEn": "Monastir",
+    "lat": 35.7643,
+    "lng": 10.8113
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1206558973",
+    "tags": {
+      "addr:governorate": "Monastir",
+      "name": "الوردانين",
+      "name:ar": "الوردانين",
+      "name:en": "Ouardanine",
+      "name:fr": "Ouardanine",
+      "name:kab": "Wardanin",
+      "place": "village",
+      "postal_code": "5010",
+      "wikipedia": "fr:Ouerdanine"
+    },
+    "lat": 35.7097268,
+    "lng": 10.67649
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-identity-review.json",
+    "sha256": "9152e9be8763f75128ceecb4cc557ccbc2756a4ccc2eb1a46475a6ea3c8ed766"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/three-town-2026-09/independent-source-review.json",
+    "sha256": "c737cf8f0c0d485cb896c8c4fc2e0ab7370697a376d677496d1f404f18e08905"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/three-town-2026-09/node-1206558973.json",
+    "sha256": "424296bd8cc64824ac1fcbd1838dc3f66a6edeec2f5692b399548315db32ec16",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1206558973.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1206558973.json",
+    "sha256": "424296bd8cc64824ac1fcbd1838dc3f66a6edeec2f5692b399548315db32ec16",
+    "exactElement": {
+      "type": "node",
+      "id": 1206558973,
+      "lat": 35.7097268,
+      "lon": 10.67649,
+      "timestamp": "2022-05-17T00:37:18Z",
+      "version": 11,
+      "changeset": 121073689,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "addr:governorate": "Monastir",
+        "name": "الوردانين",
+        "name:ar": "الوردانين",
+        "name:en": "Ouardanine",
+        "name:fr": "Ouardanine",
+        "name:kab": "Wardanin",
+        "place": "village",
+        "postal_code": "5010",
+        "wikipedia": "fr:Ouerdanine"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/three-town-2026-09/ouerdanine-governorate-city.html",
+      "sha256": "37e4f4b42f4458fa835c393fb051761901dab93b534530547bdcbcbaa5a43654",
+      "url": "https://www.g-monastir.tn/news/1221-67-22-1952",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "مدينة الوردانين",
+        "أهالي الوردانين"
+      ],
+      "qualification": "Settlement identity only; OSM Ouardanine and base Ouerdanine are retained spelling variants, not a proposed renaming."
+    }
+  ],
+  "contextualPrimaryEvidence": [],
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-retrieval.json",
+    "sha256": "84e514139b4ec6f6000248e916ab162799cf5ddeb14d5f78565a68b70c378ac8"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "3252",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7107446",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3252",
+        "delegationFr": "El Ouerdanine",
+        "delegationAr": "الوردانين",
+        "sectorCode": "325251",
+        "sectorFr": "Ouerdanine nord",
+        "sectorAr": "الوردانين الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36277,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1712,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1710
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الوردانين الشمالية",
+        "name:ar": "الوردانين الشمالية",
+        "name:fr": "Ouerdanine Nord",
+        "ref:tn:codegeo": "325251"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7107446",
+        "sourceId": "osm",
+        "name": "الوردانين الشمالية",
+        "aliases": [
+          "Ouerdanine Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الوردانين",
+        "contextAliases": [
+          "Délégation El Ouerdanine",
+          "Ouerdanine",
+          "معتمدية الوردانين"
+        ],
+        "governorateId": 364,
+        "lat": 35.723618,
+        "lng": 10.652203,
+        "delegationId": 593,
+        "hasBoundary": true,
+        "bbox": [
+          10.623373,
+          35.703431,
+          10.69232,
+          35.743639
+        ],
+        "areaKm2": 15.649524378018365,
+        "pickerGroupId": "osm:relation:7107446",
+        "offset": 523244,
+        "length": 2092
+      },
+      "sourceGeometrySha256": "131a698a59664e4f60bfead1e4cc46ed6e17a48240e8a85d67e1dc8cc38d3121",
+      "packedGeometrySha256": "83a1ad744a3c97e9de0d97650ea17643c7edaa35c713545f62d04767c822776f",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107445",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3252",
+        "delegationFr": "El Ouerdanine",
+        "delegationAr": "الوردانين",
+        "sectorCode": "325252",
+        "sectorFr": "Ouerdanine Sud",
+        "sectorAr": "الوردانين الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36311,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1714,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1712
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الوردانين الجنوبية",
+        "name:ar": "الوردانين الجنوبية",
+        "name:fr": "Ouerdanine Sud",
+        "ref:tn:codegeo": "325252"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7107445",
+        "sourceId": "osm",
+        "name": "الوردانين الجنوبية",
+        "aliases": [
+          "Ouerdanine Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الوردانين",
+        "contextAliases": [
+          "Délégation El Ouerdanine",
+          "Ouerdanine",
+          "معتمدية الوردانين"
+        ],
+        "governorateId": 364,
+        "lat": 35.693593,
+        "lng": 10.656749,
+        "delegationId": 593,
+        "hasBoundary": true,
+        "bbox": [
+          10.625278,
+          35.66624,
+          10.705408,
+          35.721314
+        ],
+        "areaKm2": 17.641135047271685,
+        "pickerGroupId": "osm:relation:7107445",
+        "offset": 520728,
+        "length": 2516
+      },
+      "sourceGeometrySha256": "e5dc7e9cdbd44dbfb208e302a54c2ec3d1cbf3654a5f4c4c3bcdb3a9f1b00455",
+      "packedGeometrySha256": "e109fcc8ff59c2b5299da4c238622bf67ded04ebb29da96d740d4b82160e375a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107448",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3252",
+        "delegationFr": "El Ouerdanine",
+        "delegationAr": "الوردانين",
+        "sectorCode": "325253",
+        "sectorFr": "Menzel khir",
+        "sectorAr": "منزل خير",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36345,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1716,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1714
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "منزل خير",
+        "name:ar": "منزل خير",
+        "name:fr": "Menzel Khair",
+        "ref:tn:codegeo": "325253"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7107448",
+        "sourceId": "osm",
+        "name": "منزل خير",
+        "aliases": [
+          "Menzel Khair",
+          "Menzel Khir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الوردانين",
+        "contextAliases": [
+          "Délégation El Ouerdanine",
+          "Ouerdanine",
+          "معتمدية الوردانين"
+        ],
+        "governorateId": 364,
+        "lat": 35.690895,
+        "lng": 10.706121,
+        "delegationId": 593,
+        "hasBoundary": true,
+        "bbox": [
+          10.693899,
+          35.672522,
+          10.724002,
+          35.709604
+        ],
+        "areaKm2": 5.45427632604652,
+        "pickerGroupId": "osm:relation:7107448",
+        "offset": 526588,
+        "length": 1236
+      },
+      "sourceGeometrySha256": "58da1c169af94a106c85fcfc75af7c5ba7f69d780f61d62cad95d36b39a7e020",
+      "packedGeometrySha256": "279af1c21ace7dc39827c40eabd9e34f352edf6ba846021dfddc9211a7fc0e9d",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107447",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3252",
+        "delegationFr": "El Ouerdanine",
+        "delegationAr": "الوردانين",
+        "sectorCode": "325254",
+        "sectorFr": "Sidi bou othman",
+        "sectorAr": "سيدي بوعثمان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36379,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1717,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1715
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي بو عثمان",
+        "name:ar": "سيدي بو عثمان",
+        "name:fr": "Sidi Bou Othman",
+        "ref:tn:codegeo": "325254"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7107447",
+        "sourceId": "osm",
+        "name": "سيدي بو عثمان",
+        "aliases": [
+          "Sidi Bou Othman",
+          "Sidi Bou Othmane",
+          "سيدي بوعثمان"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الوردانين",
+        "contextAliases": [
+          "Délégation El Ouerdanine",
+          "Ouerdanine",
+          "معتمدية الوردانين"
+        ],
+        "governorateId": 364,
+        "lat": 35.677128,
+        "lng": 10.697801,
+        "delegationId": 593,
+        "hasBoundary": true,
+        "bbox": [
+          10.677296,
+          35.658138,
+          10.713392,
+          35.696085
+        ],
+        "areaKm2": 6.29364770714965,
+        "pickerGroupId": "osm:relation:7107447",
+        "offset": 525336,
+        "length": 1252
+      },
+      "sourceGeometrySha256": "f47ec6ff10213e856374349b25f9e6ac6951e98dcebfd93725b7ce4207cf66a2",
+      "packedGeometrySha256": "7d454a81ff84f19a8ae12397aa1dc674b1deffbe178cbad82c90aa2473c97535",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107449",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3252",
+        "delegationFr": "El Ouerdanine",
+        "delegationAr": "الوردانين",
+        "sectorCode": "325255",
+        "sectorFr": "Oued el jebs",
+        "sectorAr": "وادي الجبس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36413,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1718,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1716
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي الجبس",
+        "name:ar": "وادي الجبس",
+        "name:fr": "Oued El Jebs",
+        "ref:tn:codegeo": "325255"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7107449",
+        "sourceId": "osm",
+        "name": "وادي الجبس",
+        "aliases": [
+          "Oued El Jebs"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الوردانين",
+        "contextAliases": [
+          "Délégation El Ouerdanine",
+          "Ouerdanine",
+          "معتمدية الوردانين"
+        ],
+        "governorateId": 364,
+        "lat": 35.679398,
+        "lng": 10.674912,
+        "delegationId": 593,
+        "hasBoundary": true,
+        "bbox": [
+          10.651018,
+          35.663641,
+          10.687348,
+          35.695244
+        ],
+        "areaKm2": 6.444101301651917,
+        "pickerGroupId": "osm:relation:7107449",
+        "offset": 527824,
+        "length": 1964
+      },
+      "sourceGeometrySha256": "e75f45a996a8c0490e3a084a52a3307bbc08f26315d4c86df44cab441617c386",
+      "packedGeometrySha256": "aea61ddba714c551ac38afa8cf40be32d97da1f9ae76e0d1adef9b3e8e4da7db",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1206558973",
+      "kind": "village",
+      "tags": {
+        "addr:governorate": "Monastir",
+        "name": "الوردانين",
+        "name:ar": "الوردانين",
+        "name:en": "Ouardanine",
+        "name:fr": "Ouardanine",
+        "name:kab": "Wardanin",
+        "place": "village",
+        "postal_code": "5010",
+        "wikipedia": "fr:Ouerdanine"
+      }
+    },
+    {
+      "id": "osm:relation:7154975",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ouerdanine",
+        "boundary": "administrative",
+        "name": "معتمدية الوردانين",
+        "name:ar": "معتمدية الوردانين",
+        "name:fr": "Délégation El Ouerdanine",
+        "ref:tn:codegeo": "3252",
+        "ref:tn:hasc_2": "TN.MS.OU",
+        "wikidata": "Q12243865"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7154975": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ouerdanine",
+        "boundary": "administrative",
+        "name": "معتمدية الوردانين",
+        "name:ar": "معتمدية الوردانين",
+        "name:fr": "Délégation El Ouerdanine",
+        "ref:tn:codegeo": "3252",
+        "ref:tn:hasc_2": "TN.MS.OU",
+        "wikidata": "Q12243865"
+      },
+      "sourceGeometrySha256": "66ddf5135cc71bbc0f59688312e5cc20895d9803e1ac642fbbab7d983a6843c6"
+    },
+    "osm:relation:1434954": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-52",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Monastir",
+        "boundary": "administrative",
+        "long_name": "ولاية المنستير",
+        "long_name:ar": "ولاية المنستير",
+        "long_name:en": "Monastir Governorate",
+        "long_name:fr": "Gouvernorat de Monastir",
+        "long_name:it": "Governatorato di Monastir",
+        "name": "ولاية المنستير",
+        "name:ar": "ولاية المنستير",
+        "name:az": "Monastir (vilayət)",
+        "name:be": "Манасцір (вілает)",
+        "name:be-tarask": "Манастыр (вілает)",
+        "name:bg": "Монастир (област)",
+        "name:ca": "Governació de Monastir",
+        "name:ceb": "Gouvernorat de Monastir",
+        "name:cy": "Monastir (talaith)",
+        "name:de": "Al-Munastir",
+        "name:el": "Μοναστίρ (Κυβερνείο)",
+        "name:en": "Monastir",
+        "name:es": "Gobernación de Monastir",
+        "name:fa": "استان منستیر",
+        "name:fi": "Monastir (kuvernementti)",
+        "name:fr": "Gouvernorat Monastir",
+        "name:frr": "Monastir (Guwernement)",
+        "name:hr": "Monastir",
+        "name:id": "Kegubernuran Monastir",
+        "name:it": "Monastir",
+        "name:ja": "モナスティル県",
+        "name:ka": "მონასტირის ვილაიეთი",
+        "name:ko": "모나스티르주",
+        "name:ms": "Kawasan kegabenoran Monastir",
+        "name:nl": "Monastir (gouvernement)",
+        "name:no": "Monastir (guvernement)",
+        "name:pl": "Gubernatorstwo Monastyr",
+        "name:pt": "Monastir (província)",
+        "name:ro": "Guvernoratul Monastir",
+        "name:ru": "Монастир (вилайет)",
+        "name:sco": "Monastir Govrenorate",
+        "name:sh": "Monastir (vilajet)",
+        "name:sq": "Monastir",
+        "name:tr": "Munastır (vilayet)",
+        "name:uk": "Монастір (вілаєт)",
+        "name:ur": "ولایت منستیر",
+        "name:zh": "莫納斯提爾省",
+        "name:zu": "Monastir Governorate",
+        "population": "455590",
+        "ref:tn:codegeo": "32",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q318102",
+        "wikipedia": "ar:ولاية المنستير"
+      },
+      "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1206558973",
+    "field": "pickerGroupId",
+    "before": "osm:node:1206558973",
+    "after": "delegation:593"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1206558973"
+      ],
+      [
+        "delegation:593"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:593",
+        "osm:node:1206558973"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Preserve the independent OSM node coordinate and legacy timetable coordinate exactly. Neither city identity nor proximity certifies a historical INM calculation anchor. No reference moves.",
+  "scope": "Associate the retained village point with its existing timetable picker choice. Preserve all5 complete imadas, their geometry and groups, the coded delegation and governorate, raw kind and inherited context.",
+  "spellingPolicy": "Keep every current Arabic and Latin name and alias; published variants are identity evidence only.",
+  "sourcePhasePolicy": "Original snapshots have provider None, effective snapshots osm. Every selected point, context and imada retains exact tags, kind and geometry; no optional lineage, typed peer or deferred extension.",
+  "geometryHashConvention": "Runtime mapping geometry with compact JSON insertion order; no sorted-key research digest substitution.",
+  "dependencyPolicy": "Operational references are relative to scripts/neighborhoods. Absolute paths within frozen source reports record research provenance only."
+}

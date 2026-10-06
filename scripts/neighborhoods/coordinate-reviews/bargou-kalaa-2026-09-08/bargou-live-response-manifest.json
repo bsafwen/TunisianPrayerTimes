@@ -1,0 +1,11 @@
+{
+  "url": "https://api.openstreetmap.org/api/0.6/node/1278517274.json",
+  "retrievedAt": "2026-09-07T23:53:47.803501+00:00",
+  "statusCode": 200,
+  "redirected": false,
+  "responseFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-kalaa-coordinate-proposal\\bargou-node-1278517274.json",
+  "sha256": "a69256e76e59ff545e94a9c1fbdd595802eb2a658e515891794fed444d75cea4",
+  "bytes": 780,
+  "requestCount": 1,
+  "tlsVerification": true
+}

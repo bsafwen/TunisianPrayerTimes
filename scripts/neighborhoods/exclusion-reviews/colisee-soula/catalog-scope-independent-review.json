@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPPORTED_CATALOG_EXCLUSION_PENDING_REMOVAL_IMPACT_AND_SAVED_ID_REVIEW",
+  "baselineMetadataSha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\colisee-soula-source-and-phone-review.json",
+    "sha256": "b2ccb5966c599c7e7ffa7ae6c26c16137fb23109149ae502708a0fc75393832f"
+  },
+  "decision": "Support excluding osm:relation:1622298 as this named residential locality from the app catalog. This removes an unsupported shopping-centre name/large-neighborhood-footprint association; it does not claim that all land inside the source polygon is nonresidential or require deleting the original OSM data.",
+  "currentRawRecord": {
+    "id": "osm:relation:1622298",
+    "sourceId": "osm",
+    "name": "كولزي صولة",
+    "aliases": [
+      "Colisée Soula"
+    ],
+    "kind": "residential",
+    "parentName": "ولاية تونس",
+    "contextAliases": [],
+    "governorateId": 342,
+    "lat": 36.83717,
+    "lng": 10.15397,
+    "delegationId": 391,
+    "hasBoundary": true,
+    "bbox": [
+      10.135734,
+      36.827688,
+      10.168428,
+      36.84675
+    ],
+    "areaKm2": 2.532622157445949,
+    "pickerGroupId": "osm:relation:1622298",
+    "offset": 19292,
+    "length": 1380
+  },
+  "currentGroupMembers": [
+    "osm:relation:1622298"
+  ],
+  "positiveEvidence": [
+    "Two primary businesses independently locate their premises in the Colisée Soula shopping centre within El Manar2; COMAR specifically gives a first-floor address. This is positive place-type evidence, not merely a missing neighborhood search result.",
+    "The root reports personally selecting a named shopping-centre Maps card at a circular commercial building. That observation corroborates the tenant descriptions; this reviewer did not read phone captures or ledger files.",
+    "The current cached polygon represents roughly2.53km² across two independently named imadas. Those overlaps are scale/context evidence, not by themselves a reason to exclude a residential area. Combined with the positive commercial identity, they do not support labeling this whole footprint Colisée Soula."
+  ],
+  "geometryQualification": {
+    "sourceGeometrySha256FromPinnedPriorReview": "6aac341727dae9f3a9a53246f3016505acc38080df21574bb33a83936d025c04",
+    "packedGeometrySha256IndependentlyMatched": "154e7a3103a463dc788b8fca30a683cbe00d79e57ff1f2f5f24a26a5d4dc1e07",
+    "extent": [
+      10.135734,
+      36.827688,
+      10.168428,
+      36.84675
+    ],
+    "administrativeOverlapFromPriorReview": [
+      {
+        "id": "osm:relation:7201547",
+        "name": "المنار",
+        "code": "115854",
+        "sharedAreaKm2": 1.383085689253944,
+        "percentOfQuestionedArea": 54.72
+      },
+      {
+        "id": "osm:relation:7201546",
+        "name": "المنار 1",
+        "code": "115855",
+        "sharedAreaKm2": 1.1446760265757903,
+        "percentOfQuestionedArea": 45.28
+      }
+    ],
+    "noNewGeometryComputation": "No replacement shape, clipping, area reclassification or broad coverage recomputation performed."
+  },
+  "primarySources": [
+    {
+      "provider": "COMAR",
+      "url": "https://www.comar.tn/nos-agences/abdou-amar",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\comar-agency.html",
+        "sha256": "cf6c184912dd354fa168d899213d9e10198ba8863175d0179d32600fb72d25dc"
+      },
+      "finding": "Primary tenant address explicitly identifies Colisée Soula as a shopping centre in El Manar2."
+    },
+    {
+      "provider": "Aquadream",
+      "url": "https://aquadreamtunisie.com/index.php/contact.html",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\aquadream-contact.html",
+        "sha256": "6a4a7c1394d6ecafcd863b1e1d30dbc4c5c9209596337437bf9c81ee0f4bfe7b"
+      },
+      "finding": "Primary tenant address explicitly identifies Colisée Soula as a shopping centre in El Manar2."
+    }
+  ],
+  "coordinateCaveat": "COMAR embeds35.5130542,11.0374401, inconsistent with its explicit2092 El Manar2/Tunis address. Its text supports commercial identity only; no coordinate from that page is adopted or certified.",
+  "sourceHistory": {
+    "currentResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\relation-current.json",
+      "sha256": "f0625ca0d6b53127483b02aaf1ae0f6086afdd46bbfad4d5a3cb510dffcc27cd"
+    },
+    "historyResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\relation-history.json",
+      "sha256": "a1bbfd2ce120b425affa6203419838ad69927dca7bdc569655262fa26bdb768d"
+    },
+    "currentVersion": 6,
+    "currentTimestamp": "2020-12-06T16:29:14Z",
+    "tagsEqualCacheAfterCollectorTypeOmission": true,
+    "nameFirstRecordedVersion": 3,
+    "nameTimestamp": "2013-08-26T09:33:27Z",
+    "residentialFirstRecordedVersion": 4,
+    "residentialTimestamp": "2017-05-01T15:54:09Z",
+    "outerWay": 117426430,
+    "limitation": "Relation history preserves membership of the outer way, not its coordinate history. These API responses do not establish unchanged historical or current live outer-way geometry; the catalog footprint remains independently pinned to the cached PBF and packed bytes."
+  },
+  "notEstablished": [
+    "An authoritative residential locality named Colisée Soula covering this full source polygon.",
+    "An exact boundary or replacement point for the shopping centre.",
+    "Intent of the2013/2017 mapper beyond the recorded tags; no bad-faith or author-error history is inferred."
+  ],
+  "implementationHold": [
+    "Before any exclusion, assess actual GPS/source-selection effects and conflict/coverage changes from removing this one polygon. Preserve other rows and all existing geometry/source-coordinate inputs.",
+    "Explicitly review retirement of this singleton saved ID and how manual selections remain resolvable. Do not infer a replacement locality or copy its observation to a different identity.",
+    "Do not rename this large geometry El Manar2 or replace it with a Maps-derived polygon/point. A shopping-centre POI belongs to a different catalog scope unless separately authorized."
+  ],
+  "scope": {
+    "onlyCandidateId": "osm:relation:1622298",
+    "currentSourceDefault": 391,
+    "repositoryChanges": [],
+    "newFetches": 0,
+    "phoneOrLedgerFilesRead": false,
+    "generatorOrHelperExecuted": false,
+    "testsRun": false
+  },
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    }
+  ]
+}

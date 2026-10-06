@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_REVIEWED_PENDING_ACTUAL_GENERATED_DATA_ACCEPTANCE",
+  "sourceId": "isie-local-sectors-2023-carthage",
+  "baselineMetadataSha256": "535c8c8a5c48405c4511019e3049ccd330b63bf2b6adb0cd5b9fa9c74f3d8dc9",
+  "geometrySource": {
+    "file": "official/carthage-isie2023-six-sectors.geojson",
+    "sha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448"
+  },
+  "nativeSourceCandidate": {
+    "root": "task",
+    "file": "outputs/carthage-six-native-source-candidates.geojson",
+    "sha256": "4754bd8fb9cfbee9c73143a3c629d5a550ce9e3e0e5f5c006b14fd6594eb79ff"
+  },
+  "nativeSourceReview": {
+    "root": "task",
+    "file": "outputs/carthage-six-native-boundary-source-review.json",
+    "sha256": "e5af5546cba2a18c2066b00c591cc48f9296fa8ed423fa2c36176ef1526259e1"
+  },
+  "sourceFreeze": {
+    "root": "task",
+    "file": "work/carthage-six-native-source-review/freeze-manifest.json",
+    "sha256": "51dd3f1cbb619c35564c879bd3725392a6b10c574cb914bd6e070cbdf0e9e79a"
+  },
+  "namesReview": {
+    "root": "task",
+    "file": "outputs/carthage-four-sector-identity-name-source-review.json",
+    "sha256": "6b5879dfb0cd9b9072cb1a719fe70cbbd716bcd0ddd3f235d61c66d94da8f588"
+  },
+  "jointDesign": {
+    "root": "task",
+    "file": "outputs/carthage-six-joint-source-design.json",
+    "sha256": "0145fe72c87092d3aa3ab0d7e518b46f4889796049366fbf5c0767133b15db41"
+  },
+  "acceptedNames": [
+    {
+      "id": "osm:relation:7116249",
+      "code": "115151",
+      "nameAr": "سيدي بو سعيد",
+      "nameFr": "Sidi Bou Said",
+      "aliases": [
+        "سيدي بوسعيد"
+      ]
+    },
+    {
+      "id": "osm:relation:7116250",
+      "code": "115152",
+      "nameAr": "أميلكار",
+      "nameFr": "Amilcar",
+      "aliases": []
+    },
+    {
+      "id": "osm:relation:7116451",
+      "code": "115153",
+      "nameAr": "قرطاج بيرصة",
+      "nameFr": "Carthage Byrsa",
+      "aliases": [
+        "قرطاج بيرصا"
+      ]
+    },
+    {
+      "id": "osm:relation:7116452",
+      "code": "115156",
+      "nameAr": "حي محمد علي",
+      "nameFr": "Cite Mohamed Ali",
+      "aliases": []
+    },
+    {
+      "id": "osm:relation:7116453",
+      "code": "115155",
+      "nameAr": "الياسمينة",
+      "nameFr": "Le Jasmin",
+      "aliases": [
+        "الياسمين"
+      ]
+    },
+    {
+      "id": "osm:relation:7116454",
+      "code": "115154",
+      "nameAr": "قرطاج الشاطئ",
+      "nameFr": "Carthage Plage",
+      "aliases": [
+        "Cartago Playa",
+        "قرطاج الشاطىء"
+      ]
+    }
+  ],
+  "geometryPolicy": "All six native geometry objects are unchanged. No clipping, repair, filling, buffer, snap or alternate parent-derived geometry.",
+  "namePolicy": "Exact original tags/code and current three-workbook INS rows identify each target. ISIE school directory/map/decree support official forms. Existing Sidi spacing, Byrsa Finance-attested بيرصة and Plage الشاطئ are preserved. Historical Yasmin and Spanish Cartago Playa are retained only on their source-attested IDs. No wholesale transfer of names from other features.",
+  "archivedSupersededNameDecision": {
+    "baselineCurationSha256": "efda34b65c027a2ba2a1106c8a410fdc8ce0eb4118c97f8a125cff5a9ccade61",
+    "originalIndex": 136,
+    "decision": {
+      "id": "osm:relation:7116451",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قرطاج بيرصة",
+        "name:ar": "قرطاج بيرصة",
+        "name:fr": "Carthage Byrsa",
+        "ref:tn:codegeo": "115153"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "قرطاج بيرصة",
+        "name:ar": "قرطاج بيرصة",
+        "name:fr": "Carthage Byrsa",
+        "alt_name:ar": "قرطاج بيرصا"
+      },
+      "reason": "Add the exact official Arabic variant قرطاج بيرصا for this uniquely coded imada while retaining all current primary and translated names. This is an alias-only search correction; preserve its administrative scope, source geometry, references and singleton display group.",
+      "evidence": [
+        {
+          "file": "name-reviews/marsa-byrsa-official-aliases/official-sector-alias-source-proof.json",
+          "sha256": "94680e4a36de7b4c8e14d40f01c16f87778a614f71e383e242c5f777ea78f21c"
+        }
+      ]
+    },
+    "replacement": {
+      "sourceId": "isie-local-sectors-2023-carthage",
+      "recordId": "osm:relation:7116451",
+      "nameAr": "قرطاج بيرصة",
+      "nameFr": "Carthage Byrsa",
+      "aliases": [
+        "قرطاج بيرصا"
+      ]
+    },
+    "reason": "The boundary loader now produces the same reviewed primary/alias. Its unchanged guard rejects a second name_tags decision for this official target. Original decision and proof remain provenance."
+  },
+  "teboulbaDependencyRevision": {
+    "oldLineage": {
+      "file": "point-base-display-reviews/teboulba/accepted-boundary-source-phase-lineage.json",
+      "sha256": "b8219d255ab248eef9ced8060de479eb954227fffb130d7aeed5cf0918b3d737"
+    },
+    "oldWrapper": {
+      "file": "point-base-display-reviews/teboulba/reviewed-point-base-display-identity.json",
+      "sha256": "fb512a8e9201fc28be750d00a81e9a875be06925674e3d1c29b358b7ff7a91ef"
+    },
+    "reason": "Append six unrelated Carthage sources to the active boundary manifest. Preserve every previous source record and all Teboulba source/shape/metadata/identity facts; version only its active manifest checksum and connecting proof pointers."
+  },
+  "expectedGroups": {
+    "osm:relation:7116249": [
+      "osm:relation:7116249",
+      "osm:way:90263452"
+    ],
+    "osm:relation:7116250": [
+      "osm:relation:2055955",
+      "osm:relation:7116250"
+    ],
+    "osm:relation:7116451": [
+      "osm:relation:7116451"
+    ],
+    "osm:relation:7116452": [
+      "osm:relation:7116452"
+    ],
+    "osm:relation:7116453": [
+      "osm:relation:7116453"
+    ],
+    "osm:relation:7116454": [
+      "osm:relation:7116454"
+    ]
+  },
+  "limits": [
+    "Seven internal and fourteen external prospective overlap pairs remain source differences; conflict suppression is not an accuracy certificate. The parent second component is Punic-harbour water and most is included by the official Plage map; preserve exact native outlines without clipping, filling or inferred repair. Complete source-reviewed corrections do not require replacing every unrelated neighboring boundary first.",
+    "Existing same-name overlap keeps the present display association eligible under unchanged behavior. The official imada still excludes 56.23% of the broad residential footprint; this source import does not newly certify quarter/imada equivalence or authorize expanding either geometry.",
+    "Original source/phone/current metadata reports stay historical. This source package does not certify actual generated representatives, timetable defaults, child contexts or GPS behavior."
+  ]
+}

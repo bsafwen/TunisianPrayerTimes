@@ -1,0 +1,579 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:558814817",
+  "baseId": 594,
+  "rawCurrent": {
+    "id": "osm:node:558814817",
+    "sourceId": "osm",
+    "name": "طبلبة",
+    "aliases": [
+      "Teboulba",
+      "Téboulba"
+    ],
+    "kind": "village",
+    "parentName": "العيايشة",
+    "contextAliases": [
+      "Délégation Teboulba",
+      "El aiaicha",
+      "Téboulba",
+      "العيايشة",
+      "معتمدية طبلبة"
+    ],
+    "governorateId": 364,
+    "lat": 35.6417897,
+    "lng": 10.9658372,
+    "delegationId": 594,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:558814817"
+  },
+  "baseCurrent": {
+    "id": 594,
+    "nomFr": "Teboulba",
+    "nomAr": "طبلبة",
+    "nomEn": "Teboulba",
+    "lat": 35.6418,
+    "lng": 10.966
+  },
+  "expectedGovernor": {
+    "id": 364,
+    "nomFr": "Monastir",
+    "nomAr": "المنستير",
+    "nomEn": "Monastir",
+    "lat": 35.7643,
+    "lng": 10.8113
+  },
+  "originalSourceNode": {
+    "id": "osm:node:558814817",
+    "tags": {
+      "addr:city": "طبلبة",
+      "name": "طبلبة",
+      "name:ar": "طبلبة",
+      "name:en": "Téboulba",
+      "name:fr": "Teboulba",
+      "place": "village",
+      "population": "40000",
+      "wikidata": "Q2400416",
+      "wikimedia_commons": "Category:Teboulba",
+      "wikipedia": "ar:طبلبة"
+    },
+    "lat": 35.6417897,
+    "lng": 10.9658372
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/teboulba/teboulba594-point-base-display-source-proposal.json",
+    "sha256": "60a44ab8501cf47f535093eb751551c4ecadb452d48a4457740cb97260337053"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/teboulba/teboulba594-point-base-display-independent-source-review.json",
+    "sha256": "78b610db55c07cff4394bd0ee3bcd4a7be9a35246ecc43ae4c7329bde29be951"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/teboulba/node-558814817.json",
+    "sha256": "df38252d5d792e9040d630996eecaefbf7a7490f77c9b6948ba7ab92aecacc0b",
+    "url": "https://api.openstreetmap.org/api/0.6/node/558814817.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/558814817.json",
+    "sha256": "df38252d5d792e9040d630996eecaefbf7a7490f77c9b6948ba7ab92aecacc0b",
+    "exactElement": {
+      "type": "node",
+      "id": 558814817,
+      "lat": 35.6417897,
+      "lon": 10.9658372,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 19,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:city": "طبلبة",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:en": "Téboulba",
+        "name:fr": "Teboulba",
+        "place": "village",
+        "population": "40000",
+        "wikidata": "Q2400416",
+        "wikimedia_commons": "Category:Teboulba",
+        "wikipedia": "ar:طبلبة"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/teboulba/municipality-fr.html",
+      "sha256": "17be46ea3cdb2645fd9c9b1c9f7548b61ec68f3649eeb397bce5fbb06ceeff29",
+      "url": "https://www.commune-teboulba.gov.tn/fr",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "La commune de TEBOULBA",
+        "بمدينة طبلبة"
+      ]
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "3260",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7111783",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326054",
+        "sectorFr": "Sokrine",
+        "sectorAr": "السكرين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38147,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1813,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1810
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السكرين",
+        "name:ar": "السكرين",
+        "name:fr": "Sokrine",
+        "ref:tn:codegeo": "326054"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7111783",
+        "sourceId": "osm",
+        "name": "السكرين",
+        "aliases": [
+          "Sokrine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.65322,
+        "lng": 10.96443,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.928409,
+          35.641837,
+          10.985148,
+          35.664618
+        ],
+        "areaKm2": 4.409805668314854,
+        "pickerGroupId": "osm:relation:7111783",
+        "offset": 739224,
+        "length": 4172
+      },
+      "sourceGeometrySha256": "d5e1fd66a67f0e8fe7ffc8bb0fef043075470975068347dc683d354d6594ae91",
+      "packedGeometrySha256": "c7a440b4e699f2b2be38a70735ff563bc59a291baa5b088404143125a4d09e13",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111784",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326053",
+        "sectorFr": "El aiaicha",
+        "sectorAr": "العيايشة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38113,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1811,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1808
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيايشة",
+        "name:ar": "العيايشة",
+        "name:fr": "El Aïaïcha",
+        "ref:tn:codegeo": "326053"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7111784",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "name": "العيايشة",
+        "aliases": [
+          "El aiaicha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.628742,
+        "lng": 10.956135,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.934598,
+          35.615757,
+          10.978802,
+          35.641811
+        ],
+        "areaKm2": 6.888887324895325,
+        "pickerGroupId": "osm:relation:7111784",
+        "offset": 743396,
+        "length": 1004
+      },
+      "sourceGeometrySha256": "daf2bdbf447797f0156b08939f1c9c41d5c1ee978b4fda16c690afee38b92ccf",
+      "packedGeometrySha256": "3b1da5b0c843d73bcef4e1d102d8bd8201d62f0f1a157c3b6d772762aa53e110",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111785",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326052",
+        "sectorFr": "El fadhline",
+        "sectorAr": "الفضلين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38079,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1809,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1806
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الفضلين",
+        "name:ar": "الفضلين",
+        "name:fr": "El Fadhline",
+        "ref:tn:codegeo": "326052"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7111785",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "name": "الفضلين",
+        "aliases": [
+          "El fadhline"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.637025,
+        "lng": 10.979964,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.971565,
+          35.626533,
+          10.999582,
+          35.647434
+        ],
+        "areaKm2": 2.523472596820673,
+        "pickerGroupId": "osm:relation:7111785",
+        "offset": 744400,
+        "length": 1108
+      },
+      "sourceGeometrySha256": "6cbb6e6a2e67d155404436abf719f505fab5697342909f17bc68f01c07b74bf4",
+      "packedGeometrySha256": "de3579ef6c06cbb68312b15d688d79dc46967a8a119649e72f69e0e2fee93da0",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111786",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326055",
+        "sectorFr": "Bou-driss",
+        "sectorAr": "بودريس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38181,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1815,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1812
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بودريس",
+        "name:ar": "بودريس",
+        "name:fr": "Bou-driss",
+        "ref:tn:codegeo": "326055"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7111786",
+        "sourceId": "osm",
+        "name": "بودريس",
+        "aliases": [
+          "Bou-driss"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.645247,
+        "lng": 10.947215,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.924943,
+          35.630898,
+          10.965851,
+          35.659739
+        ],
+        "areaKm2": 5.790310573315543,
+        "pickerGroupId": "osm:relation:7111786",
+        "offset": 745508,
+        "length": 1052
+      },
+      "sourceGeometrySha256": "d6f0d9edba3ff2e6de0deba1251500cb6e1b64d08f8d592461804fa437bbd2a2",
+      "packedGeometrySha256": "9d60046714fd1371a691d785736c309e6f66c693c3dd3f01ccb717bfb30c1e21",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111787",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326051",
+        "sectorFr": "Houmet essouk",
+        "sectorAr": "حومة السوق",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38045,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1808,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1805
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حومة السوق",
+        "name:ar": "حومة السوق",
+        "name:fr": "Houmet Essouk",
+        "ref:tn:codegeo": "326051"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7111787",
+        "sourceId": "osm",
+        "name": "حومة السوق",
+        "aliases": [
+          "Houmet Essouk"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.643871,
+        "lng": 10.97281,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.965851,
+          35.635657,
+          10.98536,
+          35.651718
+        ],
+        "areaKm2": 0.8853520287716131,
+        "pickerGroupId": "osm:relation:7111787",
+        "offset": 746560,
+        "length": 876
+      },
+      "sourceGeometrySha256": "12da290b26b9b4b7ece202a96880f2ec5ed58098b5fd6bd18c2f34dc934dbb2e",
+      "packedGeometrySha256": "5f3d6f041680a2f7b8d3befccbf8dd323efedc29d4259ea28019f3cf4572249d",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:558814817",
+      "kind": "village",
+      "tags": {
+        "addr:city": "طبلبة",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:en": "Téboulba",
+        "name:fr": "Teboulba",
+        "place": "village",
+        "population": "40000",
+        "wikidata": "Q2400416",
+        "wikimedia_commons": "Category:Teboulba",
+        "wikipedia": "ar:طبلبة"
+      }
+    },
+    {
+      "id": "osm:relation:7111933",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:fr": "Téboulba",
+        "ref:tn:codegeo": "325951"
+      }
+    },
+    {
+      "id": "osm:relation:7154981",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Téboulba",
+        "boundary": "administrative",
+        "name": "معتمدية طبلبة",
+        "name:ar": "معتمدية طبلبة",
+        "name:fr": "Délégation Teboulba",
+        "ref:tn:codegeo": "3260",
+        "ref:tn:hasc_2": "TN.MS.TE",
+        "wikidata": "Q12243965"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7154981": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Téboulba",
+        "boundary": "administrative",
+        "name": "معتمدية طبلبة",
+        "name:ar": "معتمدية طبلبة",
+        "name:fr": "Délégation Teboulba",
+        "ref:tn:codegeo": "3260",
+        "ref:tn:hasc_2": "TN.MS.TE",
+        "wikidata": "Q12243965"
+      },
+      "sourceGeometrySha256": "0ea9d8248c6c1559376fd3de54bdda94156694292a546651231e130fada96a1a"
+    },
+    "osm:relation:1434954": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-52",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Monastir",
+        "boundary": "administrative",
+        "long_name": "ولاية المنستير",
+        "long_name:ar": "ولاية المنستير",
+        "long_name:en": "Monastir Governorate",
+        "long_name:fr": "Gouvernorat de Monastir",
+        "long_name:it": "Governatorato di Monastir",
+        "name": "ولاية المنستير",
+        "name:ar": "ولاية المنستير",
+        "name:az": "Monastir (vilayət)",
+        "name:be": "Манасцір (вілает)",
+        "name:be-tarask": "Манастыр (вілает)",
+        "name:bg": "Монастир (област)",
+        "name:ca": "Governació de Monastir",
+        "name:ceb": "Gouvernorat de Monastir",
+        "name:cy": "Monastir (talaith)",
+        "name:de": "Al-Munastir",
+        "name:el": "Μοναστίρ (Κυβερνείο)",
+        "name:en": "Monastir",
+        "name:es": "Gobernación de Monastir",
+        "name:fa": "استان منستیر",
+        "name:fi": "Monastir (kuvernementti)",
+        "name:fr": "Gouvernorat Monastir",
+        "name:frr": "Monastir (Guwernement)",
+        "name:hr": "Monastir",
+        "name:id": "Kegubernuran Monastir",
+        "name:it": "Monastir",
+        "name:ja": "モナスティル県",
+        "name:ka": "მონასტირის ვილაიეთი",
+        "name:ko": "모나스티르주",
+        "name:ms": "Kawasan kegabenoran Monastir",
+        "name:nl": "Monastir (gouvernement)",
+        "name:no": "Monastir (guvernement)",
+        "name:pl": "Gubernatorstwo Monastyr",
+        "name:pt": "Monastir (província)",
+        "name:ro": "Guvernoratul Monastir",
+        "name:ru": "Монастир (вилайет)",
+        "name:sco": "Monastir Govrenorate",
+        "name:sh": "Monastir (vilajet)",
+        "name:sq": "Monastir",
+        "name:tr": "Munastır (vilayet)",
+        "name:uk": "Монастір (вілаєт)",
+        "name:ur": "ولایت منستیر",
+        "name:zh": "莫納斯提爾省",
+        "name:zu": "Monastir Governorate",
+        "population": "455590",
+        "ref:tn:codegeo": "32",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q318102",
+        "wikipedia": "ar:ولاية المنستير"
+      },
+      "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:558814817",
+    "field": "pickerGroupId",
+    "before": "osm:node:558814817",
+    "after": "delegation:594"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:558814817"
+      ],
+      [
+        "delegation:594"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:594",
+        "osm:node:558814817"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "sourcePhaseLineage": {
+    "file": "point-base-display-reviews/teboulba/accepted-boundary-source-phase-lineage.json",
+    "sha256": "b8219d255ab248eef9ced8060de479eb954227fffb130d7aeed5cf0918b3d737"
+  },
+  "sourceNodeRetrieval": {
+    "file": "point-base-display-reviews/teboulba/node-retrieval-and-cache-comparison.json",
+    "sha256": "9a4c7a0ccb24ad9c37fcbeaadeef6a55a7d94f3a4b8721508dbdbb493cd352eb"
+  },
+  "scope": "One Teboulba settlement choice; preserve two accepted point coordinates, source594, all five3260 imadas and the distinct accepted Bekalta North325951 identity.",
+  "coordinatePolicy": "No coordinate correction. The exact source address/name and official town identity support this display association;14.79m distance is corroboration only."
+}

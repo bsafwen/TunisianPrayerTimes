@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "status": "ORIGINAL_PUBLIC_COMPETING_REFERENCE_HTTP_RESPONSES",
+  "responses": [
+    {
+      "file": "391-prayer-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/391/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/391/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:26:24 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "533",
+        "Content-Type": "application/json"
+      },
+      "startedAtUtc": "2026-09-19T11:26:24.294770+00:00",
+      "retrievedAtUtc": "2026-09-19T11:26:24.574642+00:00",
+      "sha256": "064de7dffdda425774e3aed4697698703bfac9c5b76aed75806371d4b5d8ec73",
+      "bytes": 533
+    },
+    {
+      "file": "391-sun-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/391/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/391/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:26:24 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "502",
+        "Content-Type": "application/json"
+      },
+      "startedAtUtc": "2026-09-19T11:26:24.294770+00:00",
+      "retrievedAtUtc": "2026-09-19T11:26:24.570643+00:00",
+      "sha256": "8422d73488b49a5730330d2604c01a97816b6b30af92f08cecd0ccd20a73f5be",
+      "bytes": 502
+    },
+    {
+      "file": "393-prayer-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/393/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/393/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:26:24 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "537",
+        "Content-Type": "application/json"
+      },
+      "startedAtUtc": "2026-09-19T11:26:24.295771+00:00",
+      "retrievedAtUtc": "2026-09-19T11:26:24.574642+00:00",
+      "sha256": "29f95ede13475726e30c437326360ed2c4703ee6091716adc28a9ece744c78f1",
+      "bytes": 537
+    },
+    {
+      "file": "393-sun-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/393/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/393/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:26:24 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "506",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "startedAtUtc": "2026-09-19T11:26:24.295771+00:00",
+      "retrievedAtUtc": "2026-09-19T11:26:24.569642+00:00",
+      "sha256": "be1387cd8a76bfa003031a8d3ceb253d012b01e051adf37a8fb312cc38b2ed09",
+      "bytes": 506
+    },
+    {
+      "file": "396-prayer-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/396/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/396/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:26:24 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "533",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "startedAtUtc": "2026-09-19T11:26:24.295771+00:00",
+      "retrievedAtUtc": "2026-09-19T11:26:24.571643+00:00",
+      "sha256": "9619ccf6fd8b379f1871b4cc3b7924fa04f46af9687a3d92227adefb27c1b89c",
+      "bytes": 533
+    },
+    {
+      "file": "396-sun-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/396/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/396/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:26:24 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "502",
+        "Content-Type": "application/json"
+      },
+      "startedAtUtc": "2026-09-19T11:26:24.295771+00:00",
+      "retrievedAtUtc": "2026-09-19T11:26:24.568642+00:00",
+      "sha256": "5507f31572962898354f27980cfff60379031ff889401462499d847ae87caf9f",
+      "bytes": 502
+    }
+  ],
+  "noApiKey": true
+}

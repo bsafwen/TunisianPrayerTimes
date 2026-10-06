@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-09-07-two-scope-labels",
+  "reviewedAt": "2026-09-07T08:38:54.051712+00:00",
+  "workerExitCode": 0,
+  "metadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+  "queueSha256": "44491fcb1c9bcafca1216abd22e7380a84ff3d6d7fbb531e94f60f944304e15a",
+  "batchSha256": "c8ca83f7aded4147b1600f6db171457a46c78748db24d6f2156d3e8ee3477cd7",
+  "beforeLedgerSha256": "49135f1d2b609760d0f2d180dfc400a3f06d5ddf653c0ca3922436387fc8e2a1",
+  "afterLedger": "outputs\\phone-ledger-after-scope-labels-2.json",
+  "afterLedgerSha256": "d90dfe36e9cc7a761fc3e005147710cb846ec9c473369ab356f006066706d979",
+  "continuity": {
+    "activeRows": 3718,
+    "beforeRowsEverObserved": 513,
+    "afterRowsEverObserved": 515,
+    "beforeActiveObservationCount": 601,
+    "afterActiveObservationCount": 603,
+    "additionalQueries": 2,
+    "separateFromFortyBatch": true,
+    "unselectedEntriesExactlyPreserved": true,
+    "retiredEntriesExactlyPreserved": true,
+    "allCatalogFingerprintsPreserved": true,
+    "staleFlagsPreserved": true,
+    "staleCount": 16
+  },
+  "records": [
+    {
+      "index": 1,
+      "id": "osm:way:315007832",
+      "query": "SOS Village d'enfants Mahrès Mahres Tunisia",
+      "screenshot": "osm_way_315007832-1.png",
+      "screenshotSha256": "0559fdc5efb5334dd63cbb48b92b7ba85fca384b885ee0600d81f50a52050555",
+      "titles": [
+        "قرية الأطفال س و س المحرس, Orphelinat، P1"
+      ],
+      "status": "candidate_observed",
+      "classification": "institutional_facility_card",
+      "visualFinding": "The selected قرية الأطفال س و س المحرس is explicitly categorized Orphanage, with a rated single facility pin and address Orphelinat, P1, Al-Mahras 3060, Tunisia. This supports an institutional facility named SOS children village, not an independent neighborhood or administrative area.",
+      "visuallyInspected": true,
+      "observationJsonSha256": "2852ae595735ac0614ede26374e302bdfeae1d52725b74219f5a8b22da197cb6",
+      "boundaryCertified": false
+    },
+    {
+      "index": 2,
+      "id": "osm:way:691401654",
+      "query": "مشكلة حق الطريق عقارب صفاقس Tunisia",
+      "screenshot": "osm_way_691401654-1.png",
+      "screenshotSha256": "fb7ab5d2b3de8340c53753c2284124f175adb4d5cf645ed07e9d4e5ba6b4e82e",
+      "titles": [],
+      "status": "needs_visual_review",
+      "classification": "partial_match_broader_parent",
+      "visualFinding": "Maps explicitly displays Partial matches, strikes out مشكلة حق الطريق from the query, and offers Agareb / عقارب. This observation supports only the broader parent. It neither establishes the queried label as a locality nor proves its nonexistence.",
+      "visuallyInspected": true,
+      "observationJsonSha256": "13c671fa7cdd9072c2cee61d098316656a0465a5b31038c8d3407e818c505827",
+      "boundaryCertified": false
+    }
+  ],
+  "limitations": [
+    "Public Maps search evidence only; no geometry or administrative certification.",
+    "No repository, app, compiler, test or build changes."
+  ]
+}

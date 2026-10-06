@@ -1,0 +1,69 @@
+{
+  "status": "SOURCE_SCOPE_FACTS_VERIFIED",
+  "decree": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "pdfPagesPersonallyViewed": [
+      2,
+      3,
+      95
+    ]
+  },
+  "registry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\original-sector-point-reviews\\oued-zbib-2026-09\\official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "whole125656": {
+    "officialCode": "125656",
+    "imadaName": "المنجي سليم",
+    "circleName": "المنجي سليم - (حي التضامن)",
+    "circleCountForImada": 1,
+    "visibleCellSpan": 1,
+    "seats": 1,
+    "delegationCode": "1256",
+    "delegationName": "حي التضامن",
+    "governorateCode": "12",
+    "governorateName": "أريانة",
+    "officialRegistryRow": {
+      "governorateCode": "12",
+      "governorateFr": "Ariana",
+      "governorateAr": "أريانة",
+      "delegationCode": "1256",
+      "delegationFr": "Cite ettadhamen",
+      "delegationAr": "حي التضامن",
+      "sectorCode": "125656",
+      "sectorFr": "El mongi slim",
+      "sectorAr": "المنجي سليم",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6869,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 229,
+        "Nombre_de_menages_par_Secteurs.xlsx": 229
+      }
+    },
+    "jortPage": 5100,
+    "pdfPageOneBased": 3,
+    "annex": 1,
+    "table": "A",
+    "personallyViewed": true,
+    "conclusion": "whole_imada"
+  },
+  "contraryEvidence": [],
+  "qualifications": [
+    "Decree row supplies whole-sector correspondence, not survey certification.",
+    "Native map control residuals do not measure real-world positional error."
+  ],
+  "visualReview": {
+    "officialMapPersonallyViewed": true,
+    "mapTitleAndHierarchy": "المنجي سليم - (حي التضامن)",
+    "nativeTargetDrawing": 4,
+    "legend": {
+      "black": "الولاية",
+      "blue": "المعتمدية",
+      "red": "الدائرة / العمادة"
+    },
+    "labelPlacement": "Target name center inside native ring. Neighbor التضامن4 label center is also placed inside target; text positions are not used to trace or reassign borders. Exact official source hierarchy/title and complete native path identify target.",
+    "noUnrelatedSidiThabetMerge": true
+  }
+}

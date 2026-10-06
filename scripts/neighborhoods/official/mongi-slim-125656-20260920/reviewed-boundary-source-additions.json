@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "currentManifest": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57"
+  },
+  "sources": [
+    {
+      "id": "isie-local-sector-2023-mongi-slim-ettadhamen",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-native-source.geojson",
+      "sha256": "4767bfefe9a431036d3d7562169653af44c047a3b01c02821ffa99a4604a5913",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7115583",
+          "officialCode": "125656",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المنجي سليم",
+            "name:ar": "المنجي سليم",
+            "name:fr": "Mongi Slim",
+            "ref:tn:codegeo": "125656"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-manual-point-review.json",
+        "sha256": "62873a64a351a94ebdc9879a3e21b6b5244f5bb4cd229d2388750c07a572ff30"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "identityRegistry": "Exact current 125656 official registry row; source originalName MongiSlim and official registry El mongi slim are same identity; no new alias authorized.",
+        "geometryPolicy": "Unmodified complete native whole-imada vector from pinned official map receipt/diagnostic; no repair.",
+        "aliasReview": "Preserve exactly nameAr/nameFr/aliases from package-config sourceNamePolicy; standard source-entry aliases empty; no historical rename aliases.",
+        "uncertainty": "Impact facts report prepacking geometry/coverage/conflict effects. Combined generation must validate actual catalog effects.",
+        "evidenceFile": "official/mongi-slim-125656-20260920/source-package-acceptance-review.json",
+        "evidenceSha256": "fdfe1ccd641a17f659472c8d3a4cc19162010085346e5200f29a057142d91483"
+      }
+    }
+  ],
+  "administrativeScopeAddition": {
+    "file": "official/mongi-slim-125656-20260920/whole-scope-addition.json",
+    "sha256": "390ca45954267ee58dc9605412e894fe46b4d465a733318edbbc383c7ce79565"
+  },
+  "status": "FINITE_SOURCE_COMPONENTS_ONLY_NOT_A_STANDALONE_GENERATION_MANIFEST"
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "status": "provisional_best_effort_boundary_candidate",
+  "sourceGeojsonSha256": "2f6958dfb7975029f0e7bbe6c24ff6eefdf5182d93f572dc607e879785d3b7fa",
+  "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D8%B1%D9%86%D8%A7%D9%82/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%B3%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D9%82%D8%A7%D8%B1%D8%B5%D9%8A.pdf",
+  "sourcePdfSha256": "2eb8c032560c328b6e8d2fec370384095c47f7300c0cd23e6d14e5f3135a4b26",
+  "extractionMetadata": "evidence/sidi-salem-el-garsi-extraction-metadata.json",
+  "extractionMetadataSha256": "31ffd24cb938913ce2306d657841be05d330ce355e5b9cd33a464bfc8347f0a0",
+  "sourceFeatureId": "sidi-salem-el-garsi-red-sector-ring",
+  "purpose": "Preservation mask only; this ring is not installed as the Sidi Salem boundary.",
+  "boundaryEvidence": {
+    "ouedPdfSha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b",
+    "sidiPdfSha256": "2eb8c032560c328b6e8d2fec370384095c47f7300c0cd23e6d14e5f3135a4b26",
+    "blackGovernorateLineHausdorffMeters": 9.1,
+    "ouedGeoPdfMaximumControlResidualMeters": 0.1698565984668559,
+    "sidiGeoPdfMaximumControlResidualMeters": 0.21831580757678234,
+    "installedIntersectionSupportedByOuedRingKm2": 0.474293,
+    "installedIntersectionSupportedBySidiRingKm2": 0.006438
+  },
+  "clipPolicy": "Subtract only the intersection of the installed Sidi Salem polygon with the Oued Ezzit official candidate, excluding the portion covered by this Sidi Salem source ring plus one 1e-6 degree app-grid unit of preservation margin. Keep the source-supported junction overlap unresolved so runtime conflict handling can suppress a confident label there.",
+  "preserveBufferGridUnits": 1,
+  "preserveBufferSizeDegrees": 1e-06,
+  "uncertainty": "The extracted Sidi Salem ring remains PENDING for standalone whole-boundary review. It is used only as an exemption mask at the cross-governorate junction. The retained source-supported overlap remains unresolved; no 100 percent geographic reliability is claimed."
+}

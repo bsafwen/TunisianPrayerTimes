@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "method": "exact_property_scope_exclusion",
+  "id": "osm:way:129273831",
+  "originalTags": {
+    "addr:city": "طبرقة",
+    "email": "mehari.tabarka@goldenyasmin.com",
+    "fax": "+216 78 671 923",
+    "landuse": "residential",
+    "name": "إقامة المهاري",
+    "name:ar": "إقامة المهاري",
+    "name:en": "Résidence Méhari",
+    "name:fr": "Résidence Méhari",
+    "phone": "+216 78 671 445",
+    "stars": "4",
+    "website": "https://www.goldenyasmin.com/residence-mehari-tabarka/"
+  },
+  "currentRaw": {
+    "id": "osm:way:129273831",
+    "sourceId": "osm",
+    "name": "إقامة المهاري",
+    "aliases": [
+      "Résidence Méhari"
+    ],
+    "kind": "residential",
+    "parentName": "الحامدية",
+    "contextAliases": [
+      "Délégation Tabarka",
+      "Délégation de Tabarka",
+      "El Hamdia",
+      "Tabarka",
+      "الحامدية",
+      "معتمدية طبرقة"
+    ],
+    "governorateId": 354,
+    "lat": 36.950361,
+    "lng": 8.784316,
+    "delegationId": 497,
+    "hasBoundary": true,
+    "bbox": [
+      8.781052,
+      36.948681,
+      8.787069,
+      36.952039
+    ],
+    "areaKm2": 0.0884124693954804,
+    "pickerGroupId": "osm:way:129273831",
+    "offset": 5262704,
+    "length": 292
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\source-review.json",
+    "sha256": "cd2f33c3eabc4f51d012d002d2c514bd051e21c3ce59b81170f902de4929f2d6"
+  },
+  "evidence": [
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/afariat-bel-horizon-property-advert-original.html",
+      "sha256": "b80794dd82405d5d0f0695f311dd0e6b52c1d0e6b18a9773696dd5067f43a6c7",
+      "bytes": 111497
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/discovertunisia-residence-mehari-original.html",
+      "sha256": "73ca3bbbb1d7b3d899e1bd8912050a7b51b06bdca6dcd0477a7280bdab6ba3c4",
+      "bytes": 29107
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/goldenyasmin-residence-mehari-tabarka-original.html",
+      "sha256": "0f9d681749a52567db62187ac3603c5de82c60c65acdc4ded41b26a8b2627a20",
+      "bytes": 74718
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/osm-way-129273831-current.json",
+      "sha256": "9d138470f50833a04a26bcd6b28d6ebddecaa47734a69c25974ecee551fadd5d",
+      "bytes": 1162
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/osm-way-129273831-full.json",
+      "sha256": "1de61af4fd46298449e7a162b13498e28ad9695cde845d3c16495612ba4f9c47",
+      "bytes": 6735
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/osm-way-129273831-history.json",
+      "sha256": "26d2e56794d56f0f595220a815e00c794cbab92ab87c67be781a836c8683db9f",
+      "bytes": 10932
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/osm-way-1430310523-current.json",
+      "sha256": "0c5c3ff960011c8840ea5014c02397961cb91cae22f1f649faa20e6e8aee8bb3",
+      "bytes": 795
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/osm-way-1430310523-full.json",
+      "sha256": "af8907c32d00a469506d0d971c53dc921183eefe323531281e6395142a5db814",
+      "bytes": 3765
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/osm-way-1430310523-history.json",
+      "sha256": "35ff9b5c6777a963cd3819c7ae6c31d89262dda77dad9e0fa860a8de1a8e38f5",
+      "bytes": 1631
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/retrieval-manifest.json",
+      "sha256": "9aae85701d8d7b297a34da4d15b5f00537ed74084b48af65e42a64d1bdf16b72",
+      "bytes": 15438
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/source-finite-facts.json",
+      "sha256": "15319d9807d522937568de740389349c5c007d05e6a796c3217453372f783f63",
+      "bytes": 104441
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/tabarka/source-review.json",
+      "sha256": "cd2f33c3eabc4f51d012d002d2c514bd051e21c3ce59b81170f902de4929f2d6",
+      "bytes": 38241
+    }
+  ],
+  "phoneScopeReview": {
+    "file": "exclusion-reviews/six-properties-20260912/phone/six-properties-phone-scope-review-20260912.json",
+    "sha256": "e612982064923d6876634833b038a174378374ccbbfd1886c3078c132cf1f043",
+    "bytes": 11383
+  },
+  "phoneObservations": [
+    {
+      "record": {
+        "file": "exclusion-reviews/six-properties-20260912/phone/osm_way_129273831-1.json",
+        "sha256": "a8dd8004507d605658a83f6a65089218d8620ccdaa77077ceb5e27f0efedc569"
+      },
+      "finding": "Named search gives Mehari Tabarka Hotel & Residence, four-star hotel; main named pin lies north of the road.",
+      "screenshotSha256": "3982a477d1a7976a0d9608eda295754a3b8ac4608eca05cac9cc036c56d8c698"
+    },
+    {
+      "record": {
+        "file": "exclusion-reviews/six-properties-20260912/phone/osm_way_129273831-2.json",
+        "sha256": "5a6b1f8be521edca72688682d5e70c5f87ec0fab99f6cdaa4173aabaed639685"
+      },
+      "finding": "Coordinate query gives an unnamed pin near El Hamdia, south of the road by the golf area. It does not establish the named hotel entrance or exact property boundary.",
+      "screenshotSha256": "dc6b352e883d6e31d791a045001b017033a92ea167596fdd41a3bd494b619fd7"
+    }
+  ],
+  "classificationReason": "The exact source way represents the named Golden Yasmin holiday-residence property; authentic history, retained operator contacts and the operator own property description support property scope rather than a neighborhood polygon.",
+  "qualification": "The exact mapped property is excluded from locality choices. Supporting advertisements and Maps results do not certify a legal parcel or neighborhood boundary. No Google geometry copied.",
+  "preservation": "Remove only this singleton source object; preserve all named points, surrounding polygons, prayer coordinates and mappings, existing receipts, conflicts and saved names."
+}

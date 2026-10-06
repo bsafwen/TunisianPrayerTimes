@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "status": "ISOLATED_SOURCE_ID_CORRECTION_SYNTAX_ACCEPTED_PENDING_INDEPENDENT_REVIEW",
+  "createdAt": "2026-09-12T09:30:44.578098+00:00",
+  "originalGenerator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+    "bytes": 459609
+  },
+  "stagedGenerator": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-retained-town-compiler-stage\\scripts\\generate_neighborhoods.py",
+    "sha256": "5c608285466bf95a6ac35236907155a17a207911791317978e1a54710866235d",
+    "bytes": 466225
+  },
+  "fullDiff": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-retained-town-compiler-stage\\retained-town-point-v2.diff",
+    "sha256": "f7d8ad4a1499764cf7befc3b13fbaa6415c7e822a33d8b3d146bc1d1e802a628",
+    "bytes": 13746
+  },
+  "correctionDiff": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-retained-town-compiler-stage\\source-id-correction.diff",
+    "sha256": "3e7e77db09371dca89b17385fbe7e8ed8aed82a15fb4394bf58439379cdcacda",
+    "bytes": 1363
+  },
+  "supersededImplementationReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-retained-town-compiler-stage-review.json",
+    "sha256": "171ba13aa6ff53a7bbe8f87e66af63571b6ed873eccaf0f351bc17aa05db1ee1",
+    "bytes": 6779
+  },
+  "supersededCompilerArchived": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-retained-town-compiler-stage\\history\\generate_neighborhoods-a95-before-source-id-fix.py",
+    "sha256": "a95d76c43425bbf716c094bc953be057a69371cc449cb2ab1c0469919adfb1f4",
+    "bytes": 466192
+  },
+  "schemaChange": false,
+  "correction": "Original source mappings carry identity in dictionary keys; their values do not have an id field. Iterate items, use keys for context closure, and pass the same source objects to matching_base_delegation. No other contract or behavior changes.",
+  "validation": {
+    "astParse": "accepted",
+    "compileToCodeObjectNeverExecuted": "accepted",
+    "productImportOrExecution": false
+  },
+  "liveGeneratorUnchanged": true,
+  "generatorRun": false,
+  "tests": false,
+  "build": false,
+  "remainingGate": "Root independent correction review supersedes the historical A95 compiler acceptance."
+}

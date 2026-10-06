@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "status": "ORDINARY_CANONICAL_DISPLAY_GROUP_ELIGIBLE_PROPOSAL",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/source-facts.json",
+    "sha256": "48c20bc2907b42630232cbc31311a2c31e2d0c00e6b6162213d60de2b1b3a41b"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7121325",
+      "status": "eligible_proposal",
+      "targetDelegationId": 570,
+      "targetBaseId": "delegation:570",
+      "name": "الزواوين",
+      "governorateId": 361,
+      "governorate": "بنزرت",
+      "basePoint": {
+        "lat": 37.127,
+        "lng": 10.057
+      },
+      "members": [
+        {
+          "id": "osm:relation:7121325",
+          "name": "الزواوين",
+          "kind": "sector",
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زواوين",
+            "name:ar": "زواوين",
+            "name:fr": "Zouaouine",
+            "ref:tn:codegeo": "176154"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 570,
+          "independentNearestPrayerSource": 570,
+          "reasons": []
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:570"
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7121325",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زواوين",
+            "name:ar": "زواوين",
+            "name:fr": "Zouaouine",
+            "ref:tn:codegeo": "176154"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:3771493269",
+          "nameTags": {
+            "name": "الزواوين",
+            "name:ar": "الزواوين",
+            "name:fr": "Zouaouine",
+            "alt_name:ar": "زواوين"
+          },
+          "reason": "Use the official176154, authentic contained village and INM570 spelling الزواوين for one display identity while preserving زواوين as an Arabic alias. Select the authentic source village coordinate for the manual choice; retain the existing administrative polygon for GPS containment.",
+          "evidence": [
+            {
+              "source": "Current official sector record, original source village, paired published INM responses, and qualified public phone name context.",
+              "reviewFiles": [
+                {
+                  "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/source-facts.json",
+                  "sha256": "48c20bc2907b42630232cbc31311a2c31e2d0c00e6b6162213d60de2b1b3a41b"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7121325",
+          "code": "176154",
+          "currentOfficialRecord": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1761",
+            "delegationFr": "Ghar el meleh",
+            "delegationAr": "غار الملح",
+            "sectorCode": "176154",
+            "sectorFr": "Zouaouine",
+            "sectorAr": "الزواوين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19278,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 848,
+              "Nombre_de_menages_par_Secteurs.xlsx": 847
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زواوين",
+            "name:ar": "زواوين",
+            "name:fr": "Zouaouine",
+            "ref:tn:codegeo": "176154"
+          },
+          "effectiveOriginalGeometrySha256": "b87238d2a735f362eb95a0a519ab4c5ab916d9b2c63262fa386dfc357c13b86e",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7151815",
+              "sourceCode": "1761",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Ghar El Melh",
+                "boundary": "administrative",
+                "name": "معتمدية غار الملح",
+                "name:ar": "معتمدية غار الملح",
+                "name:fr": "Délégation Ghar El Melh",
+                "ref:tn:codegeo": "1761",
+                "ref:tn:hasc_2": "TN.BZ.GM",
+                "wikidata": "Q3104773"
+              },
+              "effectiveOriginalGeometrySha256": "9ceae26f1ba4d33d64cc3e5f6a10bdcd9aed03f6b1de0dae408fd42b98bfd416",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ]
+        }
+      ],
+      "reasons": []
+    }
+  ]
+}

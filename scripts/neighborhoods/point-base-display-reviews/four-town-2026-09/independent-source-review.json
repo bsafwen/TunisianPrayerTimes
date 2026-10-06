@@ -1,0 +1,249 @@
+{
+  "status": "PASS",
+  "baselineMetadataSha256": "0a5157a80a85612dde242e7ab4a99c09aeec0669fee29bbf28a0d2b9d2d21104",
+  "generatorSha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+  "sourceProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-four-town-base-source-identity-review.json",
+    "sha256": "19389ee363b1edc90b69c1585afee9dd335927ca65b448e1907cd3977c5314c0"
+  },
+  "geographyReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-four-town-geography-schema-feasibility.json",
+    "sha256": "387759d0166cf04049fa2343a82695591c8d7d45b84210d7d709e05a74db3fb2"
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\exact-four-source-and-current-facts.json",
+    "sha256": "dce437b25ff092792216e7a1412fdc76106afd1f78a9ee0ec4ef7dba89735633"
+  },
+  "geographyFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-geography-feasibility\\exact-four-geography-source-phase-facts.json",
+    "sha256": "b7dc7d952fa0cd02d75d34da67b6119ffcaf8e0d9a77a85a17f71f68049731f7"
+  },
+  "cases": [
+    {
+      "id": "osm:node:2876921759",
+      "baseId": 505,
+      "status": "PASS_DISPLAY_IDENTITY_AND_EXISTING_SCHEMA_PREREQUISITES",
+      "schema": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": "townPreservationExtension",
+        "status": "EXISTING_EXTENSION_FITS_PENDING_SOURCE_IDENTITY_APPROVAL",
+        "reason": "Complete existing imada/residential groups require the installed typed closure; no source transition or plural-parent exception is needed."
+      },
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\meknassy-social-ministry-neighborhood.html",
+        "sha256": "db48e129f183454ce594cdd5c78f132ab82b265f07011541863b6fff950ed86b",
+        "url": "https://www.social.gov.tn/en/node/2747",
+        "role": "official_settlement_identity",
+        "requiredText": [
+          "حي الانطلاقة المكناسي 9140سيدي بوزيد"
+        ],
+        "qualification": "Official inhabited-neighborhood address in Meknassy/Sidi Bouzid. The separate MEHAT atlas page70 explicitly identifies the city; the office map coordinate is not the town or INM anchor."
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-2876921759.json",
+        "sha256": "fd79fc1ad866e45b5aa388af3e8238bd68e3b17a922bd10666c638b190cc6b4b",
+        "url": "https://api.openstreetmap.org/api/0.6/node/2876921759.json"
+      },
+      "sourceVersion": 7,
+      "protectedRaw": 11,
+      "imadas": 9,
+      "sourceStates": 13,
+      "acceptedReplacementIds": [],
+      "completeExistingMultiMemberGroups": {
+        "osm:relation:7169569": [
+          "osm:relation:7169569",
+          "osm:way:192752617"
+        ]
+      },
+      "onlyPossibleRawChange": {
+        "id": "osm:node:2876921759",
+        "field": "pickerGroupId",
+        "before": "osm:node:2876921759",
+        "after": "delegation:505"
+      }
+    },
+    {
+      "id": "osm:node:1432078789",
+      "baseId": 514,
+      "status": "PASS_DISPLAY_IDENTITY_AND_EXISTING_SCHEMA_PREREQUISITES",
+      "schema": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": "townPreservationExtension",
+        "status": "EXISTING_EXTENSION_FITS_PENDING_SOURCE_IDENTITY_APPROVAL",
+        "reason": "Complete existing imada/residential groups require the installed typed closure; no source transition or plural-parent exception is needed."
+      },
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\nefza-social-ministry-city-address.html",
+        "sha256": "5c8d78f42904d6cd607d9d1f94b31206760934ac3958754df6dd070b77b2f9aa",
+        "url": "https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A5%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D9%86%D9%81%D8%B2%D8%A9-%D8%A8%D8%A7%D8%AC%D8%A9",
+        "role": "official_settlement_identity",
+        "requiredText": [
+          "مدينة نفزة 9010 نفزة"
+        ],
+        "qualification": "Official ministry address expressly names Nefza city in Beja. This identifies the settlement name; it does not certify its outline, sector boundary or either reference coordinate."
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-1432078789.json",
+        "sha256": "be638b54c0e0558cadb2294fd127e26d2d0428de5d18b4dee9adf8d3a7f5732f",
+        "url": "https://api.openstreetmap.org/api/0.6/node/1432078789.json"
+      },
+      "sourceVersion": 14,
+      "protectedRaw": 19,
+      "imadas": 16,
+      "sourceStates": 21,
+      "acceptedReplacementIds": [],
+      "completeExistingMultiMemberGroups": {
+        "osm:relation:7189405": [
+          "osm:relation:7189405",
+          "osm:way:129896001"
+        ],
+        "osm:relation:7189483": [
+          "osm:relation:7189483",
+          "osm:way:609907339"
+        ]
+      },
+      "onlyPossibleRawChange": {
+        "id": "osm:node:1432078789",
+        "field": "pickerGroupId",
+        "before": "osm:node:1432078789",
+        "after": "delegation:514"
+      }
+    },
+    {
+      "id": "osm:node:2017271470",
+      "baseId": 584,
+      "status": "PASS_DISPLAY_IDENTITY_AND_EXISTING_SCHEMA_PREREQUISITES",
+      "schema": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": null,
+        "status": "EXISTING_STANDARD_FORMAT_FITS_PENDING_SOURCE_IDENTITY_APPROVAL",
+        "reason": "Nine singleton imadas and one unchanged common delegation/governorate. Preserve municipal official_name aliases pending the independent settlement identity review."
+      },
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\sers-mehat-city-flood-protection.html",
+        "sha256": "6d19849b7f1143ff275e6921589927ee24ca71201c64dc2a139e318b57c628b8",
+        "url": "https://intranet.mehat.gov.tn/geao.nsf/AvisAR.xsp?action=openDocument&documentId=E70D41196681C88741257CE60046F295",
+        "role": "official_settlement_identity",
+        "requiredText": [
+          "8 / DHU / 2014",
+          "&#1605;&#1583;&#1610;&#1606;&#1577; &#1575;&#1604;&#1587;&#1585;&#1587;"
+        ],
+        "qualification": "Official public urban-water tender identifies flood-protection works for Le Sers city, rather than a municipal office. The Arabic name is encoded as numeric HTML entities in the authentic payload.",
+        "decodedRequiredText": "مدينة السرس"
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-2017271470.json",
+        "sha256": "0ef861733f167da559fb1da6234ec62093ac792a35288f7e3eee3c957802d607",
+        "url": "https://api.openstreetmap.org/api/0.6/node/2017271470.json"
+      },
+      "sourceVersion": 10,
+      "protectedRaw": 10,
+      "imadas": 9,
+      "sourceStates": 12,
+      "acceptedReplacementIds": [],
+      "completeExistingMultiMemberGroups": {},
+      "onlyPossibleRawChange": {
+        "id": "osm:node:2017271470",
+        "field": "pickerGroupId",
+        "before": "osm:node:2017271470",
+        "after": "delegation:584"
+      }
+    },
+    {
+      "id": "osm:node:1124133881",
+      "baseId": 467,
+      "status": "PASS_DISPLAY_IDENTITY_AND_EXISTING_SCHEMA_PREREQUISITES",
+      "schema": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": "sourcePhaseLineage",
+        "lineageMethod": "reviewed_official_boundary_source_phase_lineage",
+        "status": "EXISTING_BOUNDARY_LINEAGE_FORMAT_FITS_PENDING_SOURCE_IDENTITY_APPROVAL",
+        "reason": "Six singleton imadas permit the standard final guard. Exactly three real accepted replacements explain the source phases; no nameTags or administrative-context curation is introduced.",
+        "lineageSourceStateIds": [
+          "osm:node:1124133881",
+          "osm:relation:7102672",
+          "osm:relation:7102673",
+          "osm:relation:7102674",
+          "osm:relation:7102675",
+          "osm:relation:7103676",
+          "osm:relation:7103677",
+          "osm:relation:7145838"
+        ],
+        "additionalPreservedSectors": [],
+        "townExtensionAlsoFitsButNotRequired": true
+      },
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\beni-khalled-governorate-city-festival.html",
+        "sha256": "ff6d2a18d92790a062bcf683895a7f8b6dbbad2e03e7325e449d6938c16c8119",
+        "url": "https://www.nabeul.gov.tn/ar/%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D8%A7%D9%84%D8%AF%D9%88%D8%B1%D8%A9-35-%D9%84%D9%85%D9%87%D8%B1%D8%AC%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D8%A8%D9%8A%D8%B9-%D8%A8%D8%A8%D9%86%D9%8A-%D8%AE%D9%84%D8%A7/",
+        "role": "official_settlement_identity",
+        "requiredText": [
+          "وسط مدينة بني خلاد",
+          "16 مارس 2019"
+        ],
+        "qualification": "Governorate first-party account locates a public civic festival in central Beni Khalled city. This supports inhabited-town identity separately from the six-imada delegation, not exact extent or coordinates."
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-1124133881.json",
+        "sha256": "4aae76339e0be9b816dc3e78123247f03e4f6c24493eadf25c394b424c7b7fb3",
+        "url": "https://api.openstreetmap.org/api/0.6/node/1124133881.json"
+      },
+      "sourceVersion": 10,
+      "protectedRaw": 7,
+      "imadas": 6,
+      "sourceStates": 9,
+      "acceptedReplacementIds": [
+        "osm:relation:7102674",
+        "osm:relation:7102675",
+        "osm:relation:7103676"
+      ],
+      "completeExistingMultiMemberGroups": {},
+      "onlyPossibleRawChange": {
+        "id": "osm:node:1124133881",
+        "field": "pickerGroupId",
+        "before": "osm:node:1124133881",
+        "after": "delegation:467"
+      }
+    }
+  ],
+  "independentChecks": {
+    "fourAuthenticNodePayloadsExactToCurrentAndOriginalCache": true,
+    "fourPrimaryRawHtmlRequiredTextsPresentAndRead": true,
+    "meknassyAtlasPdf70Printed69PersonallyViewed": true,
+    "sersTenSourceVersionsInspected": true,
+    "47CurrentRawRowsAnd40PackedImadasExact": true,
+    "55OriginalEffectiveSourceStatesAnd3AcceptedLoaderTransitionsReconstructed": true,
+    "completeExistingGroupsAndAllPositiveNegativeSourceContextValuesExact": true,
+    "coordinatesDefaultsNamesAliasesUnchanged": true,
+    "fullNearestMatrixRepeated": false
+  },
+  "identityQualifications": {
+    "505": "MEHAT atlas classifies Meknassy as a city and urban centre; the ministry neighborhood address agrees. Preserve raw Meknassy and legacy base Meknassi spellings and all nine imadas.",
+    "514": "The ministry explicitly addresses its office in Nefza city. The settlement point/base identity is supported; all16 imadas and two residential group members remain separate.",
+    "584": "The official flood-protection tender explicitly names Le Sers city. All10 source versions retain place=village; the municipal official_name was added at v8, with no office/government/building/amenity tag in any version. Preserve بلدية السرس as a search alias; it does not turn this settlement node into an office.",
+    "467": "The governorate places a civic festival in central Beni Khalled city. Existing source/accepted-imada differences are preserved: original node in East and base in Zaouiet Jdidi; accepted Joufia covers both, accepted Zaouiet neither, and East still covers the node. The current delegation-level fallback and all six imadas remain exact."
+  },
+  "requiredPackageGuards": [
+    "Meknassi and Nefza: installed townPreservationExtension, exact typed complete groups, unchanged source states and read-only final preservation.",
+    "Le Sers: unchanged standard method with nine singleton imadas; retain municipal alias and raw numeric HTML-entity requiredText from the ministry payload.",
+    "Beni Khalled: existing sourcePhaseLineage, exactly three accepted replacement records bound to active full source records/features/loader receipts, eight lineage source IDs and no additional preserved sectors. No new engine branch or context override.",
+    "All four: later independent sparse-stage byte/schema gate and actual whole-catalog equality except four pickerGroupId fields; binary/tiny and all prior group members remain exact."
+  ],
+  "limitations": [
+    "This is a supported town display inference, not town/imada/delegation area equivalence or certification of any coordinate, geometry or INM anchor.",
+    "Three failed municipal-site acquisitions remain disclosed discovery leads; only successful pinned primary payloads are used.",
+    "No phone or ledger content was read or used for this decision."
+  ],
+  "findings": [],
+  "notPerformed": [
+    "new source fetch",
+    "generator or product helper execution",
+    "tests/builds",
+    "phone/ledger access",
+    "repository/stage mutation"
+  ],
+  "reviewScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_next_four_town_source_prerequisites.py",
+    "sha256": "300dc69a9c3abe76f2f9f36112b0f1fb206aa8d5ecb4c6947e62c3e61d8bb620"
+  }
+}

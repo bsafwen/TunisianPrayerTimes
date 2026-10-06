@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Independent source identity approval only; no implementation or staged-code approval.",
+  "baselineMetadataSha256": "0b9a6dc6186cafaa948adf602f39ff6e90f700401d8332593cab99fea31ab038",
+  "sourceProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\teboulba594-point-base-display-source-proposal.json",
+    "sha256": "60a44ab8501cf47f535093eb751551c4ecadb452d48a4457740cb97260337053"
+  },
+  "sourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboulba594-identity-review\\public-node-source\\node-558814817.json",
+    "sha256": "df38252d5d792e9040d630996eecaefbf7a7490f77c9b6948ba7ab92aecacc0b",
+    "url": "https://api.openstreetmap.org/api/0.6/node/558814817.json",
+    "version": 19,
+    "timestamp": "2023-10-25T21:12:37Z",
+    "changeset": 143134733
+  },
+  "nodeRetrievalAndCacheComparison": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboulba594-identity-review\\public-node-source\\node-retrieval-and-cache-comparison.json",
+    "sha256": "9a4c7a0ccb24ad9c37fcbeaadeef6a55a7d94f3a4b8721508dbdbb493cd352eb"
+  },
+  "sourceNodeExactTagsAndCoordinatesMatchCacheAndCurrent": true,
+  "sourceIdentityDecision": "same_named_settlement_display_only",
+  "reason": "Exact Arabic/French base and village names, the source node explicit addr:city=طبلبة, one actual settlement-node identity, official bilingual municipality text and matching Monastir/Teboulba context support one settlement timetable choice. The14.79m difference and shared default are not sufficient alone and are not used as standalone identity proof.",
+  "exactPair": {
+    "basePickerId": "delegation:594",
+    "baseCurrent": {
+      "id": 594,
+      "nomFr": "Teboulba",
+      "nomAr": "طبلبة",
+      "nomEn": "Teboulba",
+      "lat": 35.6418,
+      "lng": 10.966
+    },
+    "expectedGovernor": {
+      "id": 364,
+      "nomFr": "Monastir",
+      "nomAr": "المنستير",
+      "nomEn": "Monastir",
+      "lat": 35.7643,
+      "lng": 10.8113
+    },
+    "rawCurrent": {
+      "id": "osm:node:558814817",
+      "sourceId": "osm",
+      "name": "طبلبة",
+      "aliases": [
+        "Teboulba",
+        "Téboulba"
+      ],
+      "kind": "village",
+      "parentName": "العيايشة",
+      "contextAliases": [
+        "Délégation Teboulba",
+        "El aiaicha",
+        "Téboulba",
+        "العيايشة",
+        "معتمدية طبلبة"
+      ],
+      "governorateId": 364,
+      "lat": 35.6417897,
+      "lng": 10.9658372,
+      "delegationId": 594,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:558814817"
+    },
+    "originalSourceNode": {
+      "id": "osm:node:558814817",
+      "tags": {
+        "addr:city": "طبلبة",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:en": "Téboulba",
+        "name:fr": "Teboulba",
+        "place": "village",
+        "population": "40000",
+        "wikidata": "Q2400416",
+        "wikimedia_commons": "Category:Teboulba",
+        "wikipedia": "ar:طبلبة"
+      },
+      "lat": 35.6417897,
+      "lng": 10.9658372
+    },
+    "expectedCoordinateCorrections": []
+  },
+  "proposedOnlyRawChange": {
+    "id": "osm:node:558814817",
+    "field": "pickerGroupId",
+    "before": "osm:node:558814817",
+    "after": "delegation:594"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:558814817"
+      ],
+      [
+        "delegation:594"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:594",
+        "osm:node:558814817"
+      ]
+    ]
+  },
+  "primaryEvidence": [
+    {
+      "role": "official_settlement_identity",
+      "url": "https://www.commune-teboulba.gov.tn/fr",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboulba594-identity-review\\municipality-fr.html",
+      "sha256": "17be46ea3cdb2645fd9c9b1c9f7548b61ec68f3649eeb397bce5fbb06ceeff29",
+      "retrievedAt": "2026-09-08T05:17:34.489301+00:00",
+      "retrieval": "Windows curl with default verified TLS; HTTP200; no certificate bypass.",
+      "requiredText": [
+        "La commune de TEBOULBA",
+        "بمدينة طبلبة"
+      ],
+      "qualification": "Official municipality page identifies the town bilingually. Its municipal scope is not equated to a single imada or to the point coordinates."
+    }
+  ],
+  "preservedSectors": [
+    {
+      "governorateCode": "32",
+      "governorateFr": "Monastir",
+      "governorateAr": "المنستير",
+      "delegationCode": "3260",
+      "delegationFr": "Teboulba",
+      "delegationAr": "طبلبة",
+      "sectorCode": "326051",
+      "sectorFr": "Houmet essouk",
+      "sectorAr": "حومة السوق",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38045,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1808,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1805
+      }
+    },
+    {
+      "governorateCode": "32",
+      "governorateFr": "Monastir",
+      "governorateAr": "المنستير",
+      "delegationCode": "3260",
+      "delegationFr": "Teboulba",
+      "delegationAr": "طبلبة",
+      "sectorCode": "326052",
+      "sectorFr": "El fadhline",
+      "sectorAr": "الفضلين",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38079,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1809,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1806
+      }
+    },
+    {
+      "governorateCode": "32",
+      "governorateFr": "Monastir",
+      "governorateAr": "المنستير",
+      "delegationCode": "3260",
+      "delegationFr": "Teboulba",
+      "delegationAr": "طبلبة",
+      "sectorCode": "326053",
+      "sectorFr": "El aiaicha",
+      "sectorAr": "العيايشة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38113,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1811,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1808
+      }
+    },
+    {
+      "governorateCode": "32",
+      "governorateFr": "Monastir",
+      "governorateAr": "المنستير",
+      "delegationCode": "3260",
+      "delegationFr": "Teboulba",
+      "delegationAr": "طبلبة",
+      "sectorCode": "326054",
+      "sectorFr": "Sokrine",
+      "sectorAr": "السكرين",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38147,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1813,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1810
+      }
+    },
+    {
+      "governorateCode": "32",
+      "governorateFr": "Monastir",
+      "governorateAr": "المنستير",
+      "delegationCode": "3260",
+      "delegationFr": "Teboulba",
+      "delegationAr": "طبلبة",
+      "sectorCode": "326055",
+      "sectorFr": "Bou-driss",
+      "sectorAr": "بودريس",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38181,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1815,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1812
+      }
+    }
+  ],
+  "preservedImadaIds": [
+    "osm:relation:7111787",
+    "osm:relation:7111785",
+    "osm:relation:7111784",
+    "osm:relation:7111783",
+    "osm:relation:7111786"
+  ],
+  "protectedCurrentRawIds": [
+    "osm:node:558814817",
+    "osm:relation:7111783",
+    "osm:relation:7111784",
+    "osm:relation:7111785",
+    "osm:relation:7111786",
+    "osm:relation:7111787",
+    "osm:relation:7111933"
+  ],
+  "source594": {
+    "existingCorrectionObjects": [],
+    "currentDefault": 594,
+    "baseCoordinate": [
+      35.6418,
+      10.966
+    ],
+    "rawCoordinate": [
+      35.6417897,
+      10.9658372
+    ],
+    "bothCoordinatesMustRemainUnchanged": true,
+    "all12BundledMonthlyFilesPinnedAndUnchanged": true,
+    "rejectedByCurrentCatalog": false,
+    "currentTargetNearestEvidence": {
+      "id": 594,
+      "distanceKm": 0.014756007808016086
+    },
+    "noNumericOrSourceChangeProposed": true
+  },
+  "sourcePeerTransition": {
+    "originalPeerIds": [
+      "osm:node:558814817",
+      "osm:relation:7111933",
+      "osm:relation:7154981"
+    ],
+    "effectivePeerIds": [
+      "osm:node:558814817",
+      "osm:relation:7154981"
+    ],
+    "removedFalseNamePeer": "osm:relation:7111933",
+    "originalTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "طبلبة",
+      "name:ar": "طبلبة",
+      "name:fr": "Téboulba",
+      "ref:tn:codegeo": "325951"
+    },
+    "effectiveBoundaryTags": {
+      "boundary": "administrative",
+      "admin_level": "6",
+      "ref:tn:codegeo": "325951",
+      "name:ar": "البقالطة الشمالية",
+      "name:fr": "Bekalta nord"
+    },
+    "acceptedBoundaryManifest": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4"
+    },
+    "acceptedBoundarySource": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+    },
+    "acceptedApplication": {
+      "id": "osm:relation:7111933",
+      "action": "replace",
+      "officialCode": "325951",
+      "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review"
+    },
+    "originalGeometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee",
+    "effectiveSourceGeometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e",
+    "currentPackedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+    "preservedCurrentCanonicalGroup": [
+      "osm:relation:7111933"
+    ],
+    "qualification": "Already accepted Bekalta North325951 identity and full replacement remain intact. Original/effective geometry and names differ legitimately; each requires its own exact accepted-baseline binding. No old Teboulba alias may be restored."
+  },
+  "implementationConstraint": "The existing explicit point-base display method cannot represent unequal original/effective name-peer inventories with one shared list. A narrow separately validated inventory-transition format is required; retain the unchanged old proof path and exhaustive inventory checks. Current source approval does not approve any such code.",
+  "phoneQualification": "Root reports an existing Téboulba/طبلبة locality card. It is supplemental name corroboration only and was not read or captured here; no dotted outline or boundary inference is accepted.",
+  "findings": [],
+  "execution": {
+    "generatorOrHelperExecuted": false,
+    "testsOrMatrixRun": false,
+    "appFilesModified": false,
+    "deviceOrLedgerAccess": false,
+    "networkRequestsByThisReview": 0,
+    "pbfScan": false
+  },
+  "inputPins": {
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": "0b9a6dc6186cafaa948adf602f39ff6e90f700401d8332593cab99fea31ab038",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json": "8cc4859de48a206f52498f6902a83f4247d19a9b78da3fc70bb16badf81e896c",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json": "7384fa1b3711482017b398ec766ea8c37debb1cd7504585680d5d94e0b63e12b",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json": "64529ebec12655c3b2d44c5f43e9daeb15dadb8b9c136c3c22fe6d4895549688",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py": "e0787b055678b23b2b9fd47adea60c5b2e6af013ae5d02eeaa7a4be1c9e46276",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "supersedes": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\teboulba594-point-base-display-independent-source-review.json",
+    "sha256": "ed9e419f282560b5bb630fd69820cfbaee11cd02e27cd941547df051451d20c7",
+    "correction": "Remove only the explanatory redundant name key from effectiveBoundaryTags. The actual load_reviewed_boundaries output contains name:ar/name:fr plus boundary/admin_level/ref:tn:codegeo. Source identity approval, source pins, accepted geometry and intended display scope are unchanged. Historical report retained byte-identically."
+  }
+}

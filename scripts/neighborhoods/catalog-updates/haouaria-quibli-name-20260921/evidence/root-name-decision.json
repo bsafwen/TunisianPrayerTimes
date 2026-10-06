@@ -1,0 +1,120 @@
+{
+  "status": "ROOT_APPROVED_TWO_TEXT_EDITS_ONLY",
+  "id": "haouaria-quibli-name-20260921",
+  "evidence": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\two-historical-sectors-20260920\\evidence\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\root-source-scope-review.json",
+      "sha256": "0113953b58f9d661e0389ca7024e7969d2c046e59fa7e31fbc235c914b6aa2e6"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155952.pdf",
+      "sha256": "06c2f1c9bbef0cc1b4f969bf92492b85bf0788a2851e7432122d615fbcd84e8b"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\neighbor-identity-20260921-emulator-5554-v2\\osm_relation_7095873-2.json",
+      "sha256": "ec6189cc649819eecb8e196e02fb0098db562ee5c3b7ad28fb7eb9f1d6de555e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\neighbor-identity-20260921-emulator-5554-v2\\osm_relation_7095873-2.png",
+      "sha256": "6be82dd8c332cc92735760ade2c50f80621cb3364eaa8cd6884321932ca8447e"
+    }
+  ],
+  "updates": [
+    {
+      "id": "osm:relation:7095873",
+      "before": {
+        "id": "osm:relation:7095873",
+        "sourceId": "osm",
+        "name": "الهوارية الجنوبية",
+        "aliases": [
+          "El Haouaira Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الهوارية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "معتمدية الهوارية"
+        ],
+        "governorateId": 350,
+        "lat": 36.996418,
+        "lng": 11.007524,
+        "delegationId": 466,
+        "hasBoundary": true,
+        "bbox": [
+          10.969902,
+          36.963834,
+          11.030096,
+          37.028728
+        ],
+        "areaKm2": 14.372882153034217,
+        "pickerGroupId": "osm:relation:7095873",
+        "offset": 134768,
+        "length": 1036
+      },
+      "set": {
+        "name": "الهوارية القبلية",
+        "aliases": [
+          "El Haouaira Sud",
+          "El Haouaria Sud",
+          "الهوارية الجنوبية"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:751394001",
+      "before": {
+        "id": "osm:way:751394001",
+        "sourceId": "osm",
+        "name": "الكدوة",
+        "aliases": [
+          "El Kedoua"
+        ],
+        "kind": "hamlet",
+        "parentName": "الهوارية الجنوبية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaira Sud",
+          "El Haouaria",
+          "الهوارية الجنوبية",
+          "معتمدية الهوارية"
+        ],
+        "governorateId": 350,
+        "lat": 37.004261,
+        "lng": 10.998316,
+        "delegationId": 466,
+        "hasBoundary": true,
+        "bbox": [
+          10.991206,
+          36.99876,
+          11.00187,
+          37.011372
+        ],
+        "areaKm2": 0.7291455597797744,
+        "pickerGroupId": "osm:way:751394001",
+        "offset": 5524036,
+        "length": 108
+      },
+      "set": {
+        "parentName": "الهوارية القبلية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaira Sud",
+          "El Haouaria",
+          "El Haouaria Sud",
+          "الهوارية الجنوبية",
+          "الهوارية القبلية",
+          "معتمدية الهوارية"
+        ]
+      }
+    }
+  ],
+  "reason": "Official INS sector155952 and ISIE same-imada map/table say الهوارية القبلية. Fresh public Google Maps query visibly returns El Haouaria Sud and الهوارية القبلية. Preserve historical Arabic/French aliases and correct existing child الكدوة parent display only.",
+  "geography": "No geometry, coordinates, governorates, picker groups, or prayer sources approved for change. Eight candidate polygons and fifteen neighboring conflicts remain held.",
+  "mapsVisualReview": "Root inspected exact named result screenshot. Coordinate result ElKedoua is contextual only, not boundary proof.",
+  "noOtherPrimaryNameCollision": true
+}

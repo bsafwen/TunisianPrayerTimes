@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "derived_single_record_extract",
+  "isOriginalRetrievalManifestBytes": false,
+  "originalInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\reference-inventory.json",
+    "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401"
+  },
+  "originalRecordSelector": {
+    "responses.expected.delegationId": 476
+  },
+  "exactOriginalRetrievalRecord": {
+    "expected": {
+      "governorateId": 351,
+      "delegationId": 476,
+      "governorate": {
+        "id": 351,
+        "nomFr": "Tataouine",
+        "nomAr": "تطاوين",
+        "nomEn": "Tataouine",
+        "lat": 32.9297,
+        "lng": 10.4518
+      },
+      "delegation": {
+        "id": 476,
+        "nomFr": "El Borma",
+        "nomAr": "البرمة",
+        "nomEn": "El Borma",
+        "lat": 31.6916,
+        "lng": 9.2043
+      },
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/351/476/"
+    },
+    "attempt": 1,
+    "retrievedAt": "2026-09-12T10:17:05.965914+00:00",
+    "reused": false,
+    "status": 200,
+    "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/351/476/",
+    "headers": {
+      "Date": "Sat, 12 Sep 2026 10:17:05 GMT",
+      "X-Content-Type-Options": "nosniff, nosniff",
+      "Cache-Control": "must-revalidate, no-cache, private",
+      "X-UA-Compatible": "IE=edge",
+      "Content-language": "fr",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "Vary": "",
+      "Content-Length": "571",
+      "Keep-Alive": "timeout=5, max=95",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-476-2026-09-12.json",
+      "sha256": "aff4fa2cb83fa88f87902552f5d49edde663dabbaeab85c38addf00952fcc1b4",
+      "bytes": 571
+    },
+    "provenance": "Original HTTP response body bytes after content decoding; not rewritten.",
+    "analysis": {
+      "classification": "VALID_DAILY_REFERENCE",
+      "actual": {
+        "dailyRecordId": 908607,
+        "gouvernorat": {
+          "id": 351,
+          "intituleFr": "Tataouine",
+          "intituleAr": "تطاوين",
+          "intituleAn": "Tataouine"
+        },
+        "delegation": {
+          "id": 476,
+          "intituleFr": "El Borma",
+          "intituleAr": "البرمة",
+          "intituleAn": "El Borma",
+          "parent": {
+            "id": 351,
+            "intituleFr": "Tataouine",
+            "intituleAr": "تطاوين",
+            "intituleAn": "Tataouine"
+          }
+        },
+        "date": "2026-09-12 00:00",
+        "year": 2026,
+        "active": true,
+        "method": "GET",
+        "lat": "31.690",
+        "lng": " 9.211",
+        "times": {
+          "sobh": "04:40",
+          "dhohr": "12:27",
+          "aser": "15:52",
+          "magreb": "18:38",
+          "isha": "19:58"
+        }
+      },
+      "validationErrors": [],
+      "nameDifferences": [],
+      "coordinateComparison": {
+        "numeric": {
+          "lat": "31.690",
+          "lng": "9.211"
+        },
+        "matchesCurrentAppNumbersExactly": false,
+        "currentApp": {
+          "lat": 31.6916,
+          "lng": 9.2043
+        }
+      }
+    },
+    "accessChallengeSuspected": false,
+    "completedAt": "2026-09-12T10:17:06.237800+00:00"
+  },
+  "relocatedOriginalResponse": {
+    "file": "point-base-display-reviews/el-borma-2026-09/prayer-476-2026-09-12.json",
+    "sha256": "aff4fa2cb83fa88f87902552f5d49edde663dabbaeab85c38addf00952fcc1b4",
+    "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/351/476/"
+  },
+  "qualification": "This is an explicitly derived exact single-record extraction from the pinned259-response inventory, not original retrieval-manifest bytes. The response body itself is copied unchanged. Historical absolute paths and current relative response reference are distinguished."
+}

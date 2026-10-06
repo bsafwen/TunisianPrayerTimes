@@ -1,0 +1,141 @@
+{
+  "status": "eight_aliases_installed_nine_current_identity_rows_match_pinned_review",
+  "pinnedReviewSha256": "b2231d4ac5bd787f828344a6c35695d85e2845c1a760573a86575c366ba21a6f",
+  "pinnedReviewCatalogSha256": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4",
+  "proposalBaseCatalogSha256": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4",
+  "currentCatalogSha256": "fb5ac069d93d57ffb0d3d9c286a7460e4b51417a18962568ea71c178a40ff1de",
+  "wholeCatalogHashMatchesPinnedReview": false,
+  "comparisonNote": "The full current catalog hash differs from the review's source-catalog pin; all nine proposed feature IDs, names, parents, sector kinds, governorate IDs, and review/proposal code links were compared directly and match.",
+  "features": [
+    {
+      "featureId": "osm:relation:7125035",
+      "appName": "ضاحية بوعرادة",
+      "appParent": "معتمدية بوعرادة",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245351",
+      "reviewInsSectorCode": "245351",
+      "reviewOsmCodeTag": "245351",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7125518",
+      "appName": "أولاد زنق",
+      "appParent": "معتمدية سليانة الجنوبية",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245258",
+      "reviewInsSectorCode": "245258",
+      "reviewOsmCodeTag": "245258",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7125787",
+      "appName": "صدين",
+      "appParent": "معتمدية مكثر",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245758",
+      "reviewInsSectorCode": "245758",
+      "reviewOsmCodeTag": "245758",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7126051",
+      "appName": "مرج مقدم",
+      "appParent": "معتمدية سليانة الجنوبية",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245252",
+      "reviewInsSectorCode": "245252",
+      "reviewOsmCodeTag": "245252",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7126058",
+      "appName": "مدينة سليانة",
+      "appParent": "معتمدية سليانة الشمالية",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245151",
+      "reviewInsSectorCode": "245151",
+      "reviewOsmCodeTag": "245151",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7126205",
+      "appName": "الخوات",
+      "appParent": "معتمدية قعفور",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245453",
+      "reviewInsSectorCode": "245453",
+      "reviewOsmCodeTag": "245453",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7126318",
+      "appName": "برج المسعودية شمالية",
+      "appParent": "معتمدية الكريب",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245556",
+      "reviewInsSectorCode": "245556",
+      "reviewOsmCodeTag": "245556",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7126319",
+      "appName": "برج المسعودية جنوبية",
+      "appParent": "معتمدية الكريب",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245557",
+      "reviewInsSectorCode": "245557",
+      "reviewOsmCodeTag": "245557",
+      "reviewCodeTagMatchesIns": true
+    },
+    {
+      "featureId": "osm:relation:7126320",
+      "appName": "دخانية",
+      "appParent": "معتمدية الكريب",
+      "kind": "sector",
+      "governorateId": 344,
+      "ministryInsSectorCode": "245553",
+      "reviewInsSectorCode": "245553",
+      "reviewOsmCodeTag": "245553",
+      "reviewCodeTagMatchesIns": true
+    }
+  ],
+  "excludedDuplicateAlias": {
+    "featureId": "osm:relation:7126320",
+    "alias": "الدخانية",
+    "collidingFeatureId": "osm:way:184043911",
+    "reason": "The same Arabic label already names a nested residential feature; it has a distinct pickerGroupId, so adding this search alias would make one query resolve to two selectable rows.",
+    "nestedFeatureKind": "residential",
+    "nestedFeatureParent": "دخانية",
+    "delegationId": 421,
+    "sectorPickerGroupId": "osm:relation:7126320",
+    "nestedFeaturePickerGroupId": "osm:way:184043911",
+    "nestedResidentialGroupedOrHiddenUnderSector": false,
+    "action": "Keep alias excluded pending a separate picker-group correction review; do not remove either catalog feature based on this alias collision alone."
+  },
+  "existingDisplayRecordBefore": {
+    "id": "osm:relation:7126051",
+    "nameAr": "مرج مقدم",
+    "searchAliases": [
+      "MARJ MOKADDEM"
+    ]
+  },
+  "existingDisplayRecordAfter": {
+    "id": "osm:relation:7126051",
+    "nameAr": "مرج مقدم",
+    "existingLatinAliasPreserved": "MARJ MOKADDEM",
+    "newMinistryAliasAppended": "مرج المقدم"
+  },
+  "heldNameConflictIds": [
+    "osm:relation:7125032",
+    "osm:relation:7125183",
+    "osm:relation:7125778"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "status": "AUTHENTIC_EXACT_JSON_NODE_RESPONSES_MATCH_PINNED_XML",
+  "createdAt": "2026-09-12T08:48:40.235702+00:00",
+  "sourceIdentityReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-town-source-identity-review.json",
+    "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08"
+  },
+  "records": [
+    {
+      "id": "osm:node:287625095",
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-287625095-current.json",
+        "sha256": "efd47e379cb8d72354ddd4553221801e704080851a790891eb3be3c45079bbc3",
+        "url": "https://api.openstreetmap.org/api/0.6/node/287625095.json",
+        "bytes": 924
+      },
+      "retrievedAt": "2026-09-12T08:48:40.055235+00:00",
+      "status": 200,
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287625095.json",
+      "contentType": "application/json; charset=utf-8",
+      "originalResponseBytesPreserved": true,
+      "derivedFromXml": false,
+      "exactElement": {
+        "type": "node",
+        "id": 287625095,
+        "lat": 36.4967177,
+        "lon": 8.775699,
+        "timestamp": "2025-12-23T14:16:25Z",
+        "version": 30,
+        "changeset": 176310814,
+        "user": "Yovân El-Mekh",
+        "uid": 23638457,
+        "tags": {
+          "addr:postcode": "8100",
+          "name": "جندوبة",
+          "name:ar": "جندوبة",
+          "name:en": "Jendouba",
+          "name:fa": "جندوبه",
+          "name:fr": "Jendouba",
+          "name:he": "ז'נדובה",
+          "name:kab": "Janduba",
+          "name:ru": "Джендуба",
+          "old_name": "سوق الأربعاء",
+          "old_name:ar": "سوق الأربعاء",
+          "old_name:fr": "Souk El Arba",
+          "place": "town",
+          "population": "45431",
+          "population:date": "2014-01-01",
+          "wikidata": "Q27064",
+          "wikimedia_commons": "Category:Jendouba",
+          "wikipedia": "ar:جندوبة"
+        }
+      },
+      "comparedOriginalXml": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-287625095-current.xml",
+        "sha256": "2815e47380f42e8341c8c05ace9c063e0acbe1a181b634d465c1dbbe33e774a2"
+      },
+      "xmlEquivalentFields": [
+        "type",
+        "id",
+        "lat",
+        "lon",
+        "version",
+        "timestamp",
+        "changeset",
+        "user",
+        "uid",
+        "tags"
+      ],
+      "allElementFieldsExactlyEqualXml": true
+    },
+    {
+      "id": "osm:node:264881676",
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-264881676-current.json",
+        "sha256": "6bab854494f3c0a35f5c18824090875f512103a89e91a27e17444cbf38f530e3",
+        "url": "https://api.openstreetmap.org/api/0.6/node/264881676.json",
+        "bytes": 675
+      },
+      "retrievedAt": "2026-09-12T08:48:40.056182+00:00",
+      "status": 200,
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/264881676.json",
+      "contentType": "application/json; charset=utf-8",
+      "originalResponseBytesPreserved": true,
+      "derivedFromXml": false,
+      "exactElement": {
+        "type": "node",
+        "id": 264881676,
+        "lat": 33.4571102,
+        "lon": 9.0249829,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "version": 24,
+        "changeset": 171909432,
+        "user": "tg4567",
+        "uid": 12500589,
+        "tags": {
+          "name": "دوز",
+          "name:ar": "دوز",
+          "name:en": "Douz",
+          "name:eo": "Douz",
+          "name:fr": "Douz",
+          "name:kab": "Duz",
+          "name:pl": "Duz",
+          "name:ru": "Дуз",
+          "place": "town",
+          "wikidata": "Q1009268",
+          "wikimedia_commons": "Category:Douz",
+          "wikipedia": "ar:دوز"
+        }
+      },
+      "comparedOriginalXml": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-264881676-current.xml",
+        "sha256": "7ed039e0afe4457a057431b2070e3986599f24be49a64baa417dd44e426b5152"
+      },
+      "xmlEquivalentFields": [
+        "type",
+        "id",
+        "lat",
+        "lon",
+        "version",
+        "timestamp",
+        "changeset",
+        "user",
+        "uid",
+        "tags"
+      ],
+      "allElementFieldsExactlyEqualXml": true
+    },
+    {
+      "id": "osm:node:1165828361",
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-1165828361-current.json",
+        "sha256": "a79d1f93a6b3d22e2c386d973dbd70296cf245b15d05a827c062c4e840965e78",
+        "url": "https://api.openstreetmap.org/api/0.6/node/1165828361.json",
+        "bytes": 684
+      },
+      "retrievedAt": "2026-09-12T08:48:40.058219+00:00",
+      "status": 200,
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1165828361.json",
+      "contentType": "application/json; charset=utf-8",
+      "originalResponseBytesPreserved": true,
+      "derivedFromXml": false,
+      "exactElement": {
+        "type": "node",
+        "id": 1165828361,
+        "lat": 35.6239297,
+        "lon": 10.7592359,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "version": 18,
+        "changeset": 179509225,
+        "user": "Johnwhelan",
+        "uid": 186592,
+        "tags": {
+          "name": "جمال",
+          "name:ar": "جمال",
+          "name:en": "Jemmal",
+          "name:fr": "Jemmel",
+          "place": "village",
+          "population": "65420",
+          "source:population": "English Wikipedia",
+          "wikidata": "Q2545445",
+          "wikimedia_commons": "Category:Jemmal",
+          "wikipedia": "en:Jemmal"
+        }
+      },
+      "comparedOriginalXml": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-1165828361-current.xml",
+        "sha256": "42aa5971868e3c88fd60ff17293419678f07c2304e4ec17d9dbbc4fb140af0db"
+      },
+      "xmlEquivalentFields": [
+        "type",
+        "id",
+        "lat",
+        "lon",
+        "version",
+        "timestamp",
+        "changeset",
+        "user",
+        "uid",
+        "tags"
+      ],
+      "allElementFieldsExactlyEqualXml": true
+    }
+  ],
+  "method": "Fetch exact official OSM /api/0.6/node/{id}.json endpoint; save unchanged HTTP response content bytes; compare every node element field to typed attributes and complete tags parsed from the already pinned original current XML response. No XML-to-JSON derived file used.",
+  "scope": "JSON schema compatibility and exact source continuity only; no new semantic, coordinate or boundary certification.",
+  "operations": {
+    "productWrites": false,
+    "staging": false,
+    "generator": false,
+    "tests": false,
+    "build": false,
+    "phone": false,
+    "ledger": false
+  }
+}

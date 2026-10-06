@@ -1,0 +1,2065 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-07T22:15:42.686454+00:00",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "metadataSha256": "7b194f55483fb015d3bd762cd41ce5bff25865f9c62f61250bc763669b55c148",
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "239a571c11bf645b8d585783a9802853d46e67c92f0e823622da701217cdb7ea"
+  },
+  "freshPbfScan": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\fresh-pbf-scan.json",
+    "sha256": "d8d635f71f111f16e110787a7827171be88a65cc28be59698e59c4e353db9972"
+  },
+  "readerRecovery": "First full name scan completed with exactly the same three matches; postprocessing failed on an unrelated deleted node with no coordinates. Corrected reader filters refinement to the exact target vertices and persists the scan before processing. No app or generator run was involved.",
+  "binary": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272"
+  },
+  "originalFullSourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+    "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+  },
+  "records": [
+    {
+      "id": "osm:node:11522289870",
+      "expectedMetadata": {
+        "id": "osm:node:11522289870",
+        "sourceId": "osm",
+        "name": "حاف أولاد حامد",
+        "aliases": [
+          "Oualed Hamed"
+        ],
+        "kind": "hamlet",
+        "parentName": "الدويرات",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Edouiret",
+          "Tataouine Sud",
+          "الدويرات",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.7922759,
+        "lng": 10.2297856,
+        "delegationId": 624,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:11522289870"
+      },
+      "expectedOriginalTags": {
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "place": "hamlet"
+      },
+      "expectedEffectiveTags": {
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "place": "hamlet"
+      },
+      "expectedCuration": {
+        "id": "osm:node:11522289870",
+        "expectedKind": "hamlet",
+        "expectedTags": {
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "place": "hamlet"
+        },
+        "action": "locality_context",
+        "reason": "The complete original and packed locality footprint belongs to official Eddouiret535260 and is outside official Ras El Oued535263. Correct display context only; preserve source identity, geometry and prayer selection.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+        ],
+        "reviewEvidence": {
+          "file": "locality-context-reviews/haf-three-context-proof.json",
+          "sha256": "d7bf57ebcf0346c9bd44fb0b16c5199b1d86a46c808a20ad26d3cdbda7e55325"
+        }
+      },
+      "pbfObject": {
+        "id": "osm:node:11522289870",
+        "tags": {
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "place": "hamlet"
+        },
+        "version": 2,
+        "changeset": 0,
+        "lat": 32.7922759,
+        "lng": 10.2297856
+      },
+      "latestHistoryTagsAndVersionMatchPinnedSource": true,
+      "changesetMetadataAvailableInPbf": false,
+      "changesetProvenance": "Exact history and OSC documents; this PBF retains version but strips changeset IDs.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2297856,
+          32.7922759
+        ]
+      },
+      "originalPointGeometrySha256": "c07bb54779c587c8b393479ed0be5f79cb8b2f154f894122e8845126df2e3b28"
+    },
+    {
+      "id": "osm:way:1187366129",
+      "expectedMetadata": {
+        "id": "osm:way:1187366129",
+        "sourceId": "osm",
+        "name": "حاف أولاد حامد",
+        "aliases": [
+          "Oualed Hamed"
+        ],
+        "kind": "residential",
+        "parentName": "الدويرات",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Edouiret",
+          "Tataouine Sud",
+          "الدويرات",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.791897,
+        "lng": 10.229528,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          10.228894,
+          32.791342,
+          10.230043,
+          32.792479
+        ],
+        "areaKm2": 0.0018914142146176324,
+        "pickerGroupId": "osm:way:1187366129"
+      },
+      "expectedOriginalTags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "residential": "osada"
+      },
+      "expectedEffectiveTags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "residential": "osada"
+      },
+      "expectedCuration": {
+        "id": "osm:way:1187366129",
+        "expectedKind": "residential",
+        "expectedTags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "residential": "osada"
+        },
+        "action": "locality_context",
+        "reason": "The complete original and packed locality footprint belongs to official Eddouiret535260 and is outside official Ras El Oued535263. Correct display context only; preserve source identity, geometry and prayer selection.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+        ],
+        "reviewEvidence": {
+          "file": "locality-context-reviews/haf-three-context-proof.json",
+          "sha256": "d7bf57ebcf0346c9bd44fb0b16c5199b1d86a46c808a20ad26d3cdbda7e55325"
+        }
+      },
+      "pbfObject": {
+        "id": "osm:way:1187366129",
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed",
+          "residential": "osada"
+        },
+        "version": 3,
+        "changeset": 0,
+        "nodes": [
+          "11026082492",
+          "11026082493",
+          "11026082494",
+          "11026082495",
+          "11026082496",
+          "11026082497",
+          "11026082498",
+          "11026082499",
+          "11026082500",
+          "11026082501",
+          "11026082502",
+          "11026082503",
+          "11026082504",
+          "11026092205",
+          "11026092206",
+          "11026092207",
+          "11026092208",
+          "11026092209",
+          "11026092210",
+          "11026092211",
+          "11026092212",
+          "11026092213",
+          "11026092214",
+          "11026092215",
+          "11026092216",
+          "11026092217",
+          "11026092218",
+          "11026092219",
+          "11026092220",
+          "11026092221",
+          "11026092222",
+          "11026092223",
+          "11026092224",
+          "11026092225",
+          "11026092226",
+          "11026092227",
+          "11026092228",
+          "11026092229",
+          "11026082492"
+        ]
+      },
+      "latestHistoryTagsAndVersionMatchPinnedSource": true,
+      "changesetMetadataAvailableInPbf": false,
+      "changesetProvenance": "Exact history and OSC documents; this PBF retains version but strips changeset IDs.",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2288943,
+                32.7914118
+              ],
+              [
+                10.2289221,
+                32.7913418
+              ],
+              [
+                10.2291938,
+                32.7914471
+              ],
+              [
+                10.2293607,
+                32.7915726
+              ],
+              [
+                10.2295122,
+                32.7917585
+              ],
+              [
+                10.2296081,
+                32.7919269
+              ],
+              [
+                10.2297573,
+                32.7921066
+              ],
+              [
+                10.2297607,
+                32.7921242
+              ],
+              [
+                10.2300165,
+                32.7921841
+              ],
+              [
+                10.2300426,
+                32.7922543
+              ],
+              [
+                10.2299956,
+                32.7922704
+              ],
+              [
+                10.2299591,
+                32.7922236
+              ],
+              [
+                10.2298808,
+                32.7922134
+              ],
+              [
+                10.2297886,
+                32.7922002
+              ],
+              [
+                10.2297538,
+                32.7922045
+              ],
+              [
+                10.2297308,
+                32.7922295
+              ],
+              [
+                10.2296666,
+                32.7922719
+              ],
+              [
+                10.2295782,
+                32.7923184
+              ],
+              [
+                10.2295001,
+                32.7923258
+              ],
+              [
+                10.229368,
+                32.7923506
+              ],
+              [
+                10.2290411,
+                32.792479
+              ],
+              [
+                10.2289943,
+                32.7924334
+              ],
+              [
+                10.2291172,
+                32.7923579
+              ],
+              [
+                10.2291938,
+                32.7923259
+              ],
+              [
+                10.2292737,
+                32.7923142
+              ],
+              [
+                10.2294562,
+                32.7922608
+              ],
+              [
+                10.2295532,
+                32.7922488
+              ],
+              [
+                10.2296609,
+                32.7922008
+              ],
+              [
+                10.2296685,
+                32.7921841
+              ],
+              [
+                10.2296442,
+                32.7921198
+              ],
+              [
+                10.2295067,
+                32.7919397
+              ],
+              [
+                10.2294357,
+                32.7918665
+              ],
+              [
+                10.2293312,
+                32.7916664
+              ],
+              [
+                10.2292861,
+                32.7916224
+              ],
+              [
+                10.2292421,
+                32.7915769
+              ],
+              [
+                10.2291258,
+                32.7915228
+              ],
+              [
+                10.229023,
+                32.7914512
+              ],
+              [
+                10.2289623,
+                32.7914398
+              ],
+              [
+                10.2288943,
+                32.7914118
+              ]
+            ]
+          ]
+        ]
+      },
+      "originalGeometrySha256": "084d774d046270bc1deeea3fbf6ac62331d139032360dd734c2c6278c1527bdb",
+      "effectiveOriginalGeometrySha256": "084d774d046270bc1deeea3fbf6ac62331d139032360dd734c2c6278c1527bdb",
+      "packedGeometrySha256": "c02b049c38fc4e03605150a78a08f6387f0f069cb0d8d3cd88af690e2ad0118b",
+      "packedGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.228962,
+                32.79144
+              ],
+              [
+                10.229023,
+                32.791451
+              ],
+              [
+                10.229126,
+                32.791523
+              ],
+              [
+                10.229242,
+                32.791577
+              ],
+              [
+                10.229286,
+                32.791622
+              ],
+              [
+                10.229331,
+                32.791666
+              ],
+              [
+                10.229436,
+                32.791866
+              ],
+              [
+                10.229507,
+                32.79194
+              ],
+              [
+                10.229644,
+                32.79212
+              ],
+              [
+                10.229669,
+                32.792184
+              ],
+              [
+                10.229661,
+                32.792201
+              ],
+              [
+                10.229553,
+                32.792249
+              ],
+              [
+                10.229456,
+                32.792261
+              ],
+              [
+                10.229274,
+                32.792314
+              ],
+              [
+                10.229194,
+                32.792326
+              ],
+              [
+                10.229117,
+                32.792358
+              ],
+              [
+                10.228994,
+                32.792433
+              ],
+              [
+                10.229041,
+                32.792479
+              ],
+              [
+                10.229368,
+                32.792351
+              ],
+              [
+                10.2295,
+                32.792326
+              ],
+              [
+                10.229578,
+                32.792318
+              ],
+              [
+                10.229667,
+                32.792272
+              ],
+              [
+                10.229731,
+                32.792229
+              ],
+              [
+                10.229754,
+                32.792204
+              ],
+              [
+                10.229789,
+                32.7922
+              ],
+              [
+                10.229881,
+                32.792213
+              ],
+              [
+                10.229959,
+                32.792224
+              ],
+              [
+                10.229996,
+                32.79227
+              ],
+              [
+                10.230043,
+                32.792254
+              ],
+              [
+                10.230017,
+                32.792184
+              ],
+              [
+                10.229761,
+                32.792124
+              ],
+              [
+                10.229757,
+                32.792107
+              ],
+              [
+                10.229608,
+                32.791927
+              ],
+              [
+                10.229512,
+                32.791759
+              ],
+              [
+                10.229361,
+                32.791573
+              ],
+              [
+                10.229194,
+                32.791447
+              ],
+              [
+                10.228922,
+                32.791342
+              ],
+              [
+                10.228894,
+                32.791412
+              ],
+              [
+                10.228962,
+                32.79144
+              ]
+            ]
+          ]
+        ]
+      },
+      "allCurrentConstituentCoordinatesEqualSurveyTaggedCreation": false,
+      "allCurrentConstituentCoordinatesEqualSurveyTagged2024Refinement": true,
+      "creationGeometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2289321,
+              32.7914257
+            ],
+            [
+              10.2289599,
+              32.7913643
+            ],
+            [
+              10.2292504,
+              32.791474
+            ],
+            [
+              10.2294088,
+              32.7915822
+            ],
+            [
+              10.2295671,
+              32.7917796
+            ],
+            [
+              10.2296784,
+              32.7919566
+            ],
+            [
+              10.2298002,
+              32.7921291
+            ],
+            [
+              10.2298036,
+              32.7921467
+            ],
+            [
+              10.2300594,
+              32.7922066
+            ],
+            [
+              10.2300855,
+              32.7922768
+            ],
+            [
+              10.2300385,
+              32.7922929
+            ],
+            [
+              10.230002,
+              32.7922461
+            ],
+            [
+              10.2299237,
+              32.7922359
+            ],
+            [
+              10.2298315,
+              32.7922227
+            ],
+            [
+              10.2297967,
+              32.7922227
+            ],
+            [
+              10.229748,
+              32.792252
+            ],
+            [
+              10.2296975,
+              32.7922944
+            ],
+            [
+              10.2296245,
+              32.7923222
+            ],
+            [
+              10.2295601,
+              32.7923368
+            ],
+            [
+              10.2294383,
+              32.7923602
+            ],
+            [
+              10.2291217,
+              32.7924699
+            ],
+            [
+              10.2290834,
+              32.792407
+            ],
+            [
+              10.2291704,
+              32.7923675
+            ],
+            [
+              10.2292504,
+              32.7923427
+            ],
+            [
+              10.22932,
+              32.792331
+            ],
+            [
+              10.2293827,
+              32.7923251
+            ],
+            [
+              10.2295653,
+              32.7922929
+            ],
+            [
+              10.2296593,
+              32.7922622
+            ],
+            [
+              10.2297114,
+              32.7922066
+            ],
+            [
+              10.2296871,
+              32.7921423
+            ],
+            [
+              10.2295462,
+              32.7919493
+            ],
+            [
+              10.229494,
+              32.7918732
+            ],
+            [
+              10.2293827,
+              32.7916875
+            ],
+            [
+              10.2293513,
+              32.7916378
+            ],
+            [
+              10.2292765,
+              32.7915807
+            ],
+            [
+              10.2291687,
+              32.791531
+            ],
+            [
+              10.2290608,
+              32.7914637
+            ],
+            [
+              10.2290052,
+              32.7914623
+            ],
+            [
+              10.2289321,
+              32.7914257
+            ]
+          ]
+        ]
+      },
+      "refined2024Geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2288943,
+              32.7914118
+            ],
+            [
+              10.2289221,
+              32.7913418
+            ],
+            [
+              10.2291938,
+              32.7914471
+            ],
+            [
+              10.2293607,
+              32.7915726
+            ],
+            [
+              10.2295122,
+              32.7917585
+            ],
+            [
+              10.2296081,
+              32.7919269
+            ],
+            [
+              10.2297573,
+              32.7921066
+            ],
+            [
+              10.2297607,
+              32.7921242
+            ],
+            [
+              10.2300165,
+              32.7921841
+            ],
+            [
+              10.2300426,
+              32.7922543
+            ],
+            [
+              10.2299956,
+              32.7922704
+            ],
+            [
+              10.2299591,
+              32.7922236
+            ],
+            [
+              10.2298808,
+              32.7922134
+            ],
+            [
+              10.2297886,
+              32.7922002
+            ],
+            [
+              10.2297538,
+              32.7922045
+            ],
+            [
+              10.2297308,
+              32.7922295
+            ],
+            [
+              10.2296666,
+              32.7922719
+            ],
+            [
+              10.2295782,
+              32.7923184
+            ],
+            [
+              10.2295001,
+              32.7923258
+            ],
+            [
+              10.229368,
+              32.7923506
+            ],
+            [
+              10.2290411,
+              32.792479
+            ],
+            [
+              10.2289943,
+              32.7924334
+            ],
+            [
+              10.2291172,
+              32.7923579
+            ],
+            [
+              10.2291938,
+              32.7923259
+            ],
+            [
+              10.2292737,
+              32.7923142
+            ],
+            [
+              10.2294562,
+              32.7922608
+            ],
+            [
+              10.2295532,
+              32.7922488
+            ],
+            [
+              10.2296609,
+              32.7922008
+            ],
+            [
+              10.2296685,
+              32.7921841
+            ],
+            [
+              10.2296442,
+              32.7921198
+            ],
+            [
+              10.2295067,
+              32.7919397
+            ],
+            [
+              10.2294357,
+              32.7918665
+            ],
+            [
+              10.2293312,
+              32.7916664
+            ],
+            [
+              10.2292861,
+              32.7916224
+            ],
+            [
+              10.2292421,
+              32.7915769
+            ],
+            [
+              10.2291258,
+              32.7915228
+            ],
+            [
+              10.229023,
+              32.7914512
+            ],
+            [
+              10.2289623,
+              32.7914398
+            ],
+            [
+              10.2288943,
+              32.7914118
+            ]
+          ]
+        ]
+      },
+      "historyWayNodeReferencesUnchanged": true
+    },
+    {
+      "id": "osm:way:1187366130",
+      "expectedMetadata": {
+        "id": "osm:way:1187366130",
+        "sourceId": "osm",
+        "name": "حاف أولاد حامد",
+        "aliases": [
+          "Oualed Hamed"
+        ],
+        "kind": "residential",
+        "parentName": "الدويرات",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Edouiret",
+          "Tataouine Sud",
+          "الدويرات",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.793267,
+        "lng": 10.22938,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          10.229145,
+          32.793068,
+          10.229524,
+          32.79344
+        ],
+        "areaKm2": 0.0007227356008872879,
+        "pickerGroupId": "osm:way:1187366130"
+      },
+      "expectedOriginalTags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed"
+      },
+      "expectedEffectiveTags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed"
+      },
+      "expectedCuration": {
+        "id": "osm:way:1187366130",
+        "expectedKind": "residential",
+        "expectedTags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed"
+        },
+        "action": "locality_context",
+        "reason": "The complete original and packed locality footprint belongs to official Eddouiret535260 and is outside official Ras El Oued535263. Correct display context only; preserve source identity, geometry and prayer selection.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+        ],
+        "reviewEvidence": {
+          "file": "locality-context-reviews/haf-three-context-proof.json",
+          "sha256": "d7bf57ebcf0346c9bd44fb0b16c5199b1d86a46c808a20ad26d3cdbda7e55325"
+        }
+      },
+      "pbfObject": {
+        "id": "osm:way:1187366130",
+        "tags": {
+          "landuse": "residential",
+          "name": "حاف أولاد حامد",
+          "name:aeb": "حاف أولاد حامد",
+          "name:ar": "حاف أولاد حامد",
+          "name:en": "Oualed Hamed",
+          "name:fr": "Oualed Hamed"
+        },
+        "version": 2,
+        "changeset": 0,
+        "nodes": [
+          "11026092230",
+          "11026092231",
+          "11026092232",
+          "11026092233",
+          "11026092234",
+          "11026092235",
+          "11026092236",
+          "11026092237",
+          "11026092238",
+          "11026092239",
+          "11026092240",
+          "11026092241",
+          "11026092242",
+          "11026092230"
+        ]
+      },
+      "latestHistoryTagsAndVersionMatchPinnedSource": true,
+      "changesetMetadataAvailableInPbf": false,
+      "changesetProvenance": "Exact history and OSC documents; this PBF retains version but strips changeset IDs.",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2291452,
+                32.7931034
+              ],
+              [
+                10.2292095,
+                32.7930683
+              ],
+              [
+                10.2292983,
+                32.7931575
+              ],
+              [
+                10.2293835,
+                32.7931253
+              ],
+              [
+                10.2294792,
+                32.7932145
+              ],
+              [
+                10.2295192,
+                32.7933096
+              ],
+              [
+                10.2295244,
+                32.7933608
+              ],
+              [
+                10.2294914,
+                32.7934076
+              ],
+              [
+                10.2294409,
+                32.7934397
+              ],
+              [
+                10.2293748,
+                32.7934324
+              ],
+              [
+                10.2293487,
+                32.7934193
+              ],
+              [
+                10.2293035,
+                32.7933345
+              ],
+              [
+                10.2292287,
+                32.7932233
+              ],
+              [
+                10.2291452,
+                32.7931034
+              ]
+            ]
+          ]
+        ]
+      },
+      "originalGeometrySha256": "ea4f0567bfc29e25d0863c85af8ec02ab18127ef81e9659e89533d3e6e42bd84",
+      "effectiveOriginalGeometrySha256": "ea4f0567bfc29e25d0863c85af8ec02ab18127ef81e9659e89533d3e6e42bd84",
+      "packedGeometrySha256": "7368d7c555c9fdf38262a866e26bd3a0d8a73a37bac378b94c1c5d94dd5b1289",
+      "packedGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.229229,
+                32.793223
+              ],
+              [
+                10.229304,
+                32.793335
+              ],
+              [
+                10.229349,
+                32.793419
+              ],
+              [
+                10.229375,
+                32.793432
+              ],
+              [
+                10.229441,
+                32.79344
+              ],
+              [
+                10.229491,
+                32.793408
+              ],
+              [
+                10.229524,
+                32.793361
+              ],
+              [
+                10.229519,
+                32.79331
+              ],
+              [
+                10.229479,
+                32.793214
+              ],
+              [
+                10.229384,
+                32.793125
+              ],
+              [
+                10.229298,
+                32.793158
+              ],
+              [
+                10.22921,
+                32.793068
+              ],
+              [
+                10.229145,
+                32.793103
+              ],
+              [
+                10.229229,
+                32.793223
+              ]
+            ]
+          ]
+        ]
+      },
+      "allCurrentConstituentCoordinatesEqualSurveyTaggedCreation": false,
+      "allCurrentConstituentCoordinatesEqualSurveyTagged2024Refinement": true,
+      "creationGeometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2292149,
+              32.7931079
+            ],
+            [
+              10.2292792,
+              32.7930728
+            ],
+            [
+              10.229368,
+              32.793162
+            ],
+            [
+              10.2294532,
+              32.7931298
+            ],
+            [
+              10.2295489,
+              32.793219
+            ],
+            [
+              10.2295889,
+              32.7933141
+            ],
+            [
+              10.2295941,
+              32.7933653
+            ],
+            [
+              10.2295611,
+              32.7934121
+            ],
+            [
+              10.2295106,
+              32.7934442
+            ],
+            [
+              10.2294445,
+              32.7934369
+            ],
+            [
+              10.2294184,
+              32.7934238
+            ],
+            [
+              10.2293732,
+              32.793339
+            ],
+            [
+              10.2292984,
+              32.7932278
+            ],
+            [
+              10.2292149,
+              32.7931079
+            ]
+          ]
+        ]
+      },
+      "refined2024Geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.2291452,
+              32.7931034
+            ],
+            [
+              10.2292095,
+              32.7930683
+            ],
+            [
+              10.2292983,
+              32.7931575
+            ],
+            [
+              10.2293835,
+              32.7931253
+            ],
+            [
+              10.2294792,
+              32.7932145
+            ],
+            [
+              10.2295192,
+              32.7933096
+            ],
+            [
+              10.2295244,
+              32.7933608
+            ],
+            [
+              10.2294914,
+              32.7934076
+            ],
+            [
+              10.2294409,
+              32.7934397
+            ],
+            [
+              10.2293748,
+              32.7934324
+            ],
+            [
+              10.2293487,
+              32.7934193
+            ],
+            [
+              10.2293035,
+              32.7933345
+            ],
+            [
+              10.2292287,
+              32.7932233
+            ],
+            [
+              10.2291452,
+              32.7931034
+            ]
+          ]
+        ]
+      },
+      "historyWayNodeReferencesUnchanged": true
+    }
+  ],
+  "pbfCounts": {
+    "node": 11466039,
+    "way": 1111892,
+    "relation": 7461
+  },
+  "matchingNamesNormalized": [
+    "oualed hamed",
+    "ouled hamed",
+    "حاف اولاد حامد"
+  ],
+  "allPbfCurrentNameMatches": [
+    {
+      "id": "osm:node:11522289870",
+      "tags": {
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "place": "hamlet"
+      },
+      "version": 2,
+      "changeset": 0,
+      "lat": 32.7922759,
+      "lng": 10.2297856,
+      "matchingNames": [
+        "Oualed Hamed",
+        "حاف أولاد حامد"
+      ]
+    },
+    {
+      "id": "osm:way:1187366129",
+      "tags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "residential": "osada"
+      },
+      "version": 3,
+      "changeset": 0,
+      "nodes": [
+        "11026082492",
+        "11026082493",
+        "11026082494",
+        "11026082495",
+        "11026082496",
+        "11026082497",
+        "11026082498",
+        "11026082499",
+        "11026082500",
+        "11026082501",
+        "11026082502",
+        "11026082503",
+        "11026082504",
+        "11026092205",
+        "11026092206",
+        "11026092207",
+        "11026092208",
+        "11026092209",
+        "11026092210",
+        "11026092211",
+        "11026092212",
+        "11026092213",
+        "11026092214",
+        "11026092215",
+        "11026092216",
+        "11026092217",
+        "11026092218",
+        "11026092219",
+        "11026092220",
+        "11026092221",
+        "11026092222",
+        "11026092223",
+        "11026092224",
+        "11026092225",
+        "11026092226",
+        "11026092227",
+        "11026092228",
+        "11026092229",
+        "11026082492"
+      ],
+      "matchingNames": [
+        "Oualed Hamed",
+        "حاف أولاد حامد"
+      ]
+    },
+    {
+      "id": "osm:way:1187366130",
+      "tags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed"
+      },
+      "version": 2,
+      "changeset": 0,
+      "nodes": [
+        "11026092230",
+        "11026092231",
+        "11026092232",
+        "11026092233",
+        "11026092234",
+        "11026092235",
+        "11026092236",
+        "11026092237",
+        "11026092238",
+        "11026092239",
+        "11026092240",
+        "11026092241",
+        "11026092242",
+        "11026092230"
+      ],
+      "matchingNames": [
+        "Oualed Hamed",
+        "حاف أولاد حامد"
+      ]
+    }
+  ],
+  "expectedMatchingPlaceSourceIds": [
+    "osm:node:11522289870"
+  ],
+  "expectedMatchingResidentialSourceIds": [
+    "osm:way:1187366129",
+    "osm:way:1187366130"
+  ],
+  "geometryRelationship": {
+    "hamletPointOutsideBothResidentialPatches": true,
+    "noBoundaryUnionOrFillProposed": true
+  },
+  "historyFiles": [
+    {
+      "id": "osm:way:1187366129",
+      "url": "https://api.openstreetmap.org/api/0.6/way/1187366129/history",
+      "file": "work\\haf-current-display-identity-followup\\way-1187366129-history.xml",
+      "sha256": "e48db0519a5de01c071043892afb67f13b62793fbe327477dd75ebcbcc4c9e18",
+      "retrievedAt": "2026-09-07T21:47:54.008497+00:00",
+      "records": [
+        {
+          "version": 1,
+          "changeset": 138116777,
+          "timestamp": "2023-07-04T17:22:08Z",
+          "tags": {
+            "landuse": "residential",
+            "name": "Oualed Hamed",
+            "name:aeb": "حاف اولاد حامد",
+            "residential": "osada"
+          },
+          "lat": null,
+          "lon": null,
+          "nodes": [
+            "11026082492",
+            "11026082493",
+            "11026082494",
+            "11026082495",
+            "11026082496",
+            "11026082497",
+            "11026082498",
+            "11026082499",
+            "11026082500",
+            "11026082501",
+            "11026082502",
+            "11026082503",
+            "11026082504",
+            "11026092205",
+            "11026092206",
+            "11026092207",
+            "11026092208",
+            "11026092209",
+            "11026092210",
+            "11026092211",
+            "11026092212",
+            "11026092213",
+            "11026092214",
+            "11026092215",
+            "11026092216",
+            "11026092217",
+            "11026092218",
+            "11026092219",
+            "11026092220",
+            "11026092221",
+            "11026092222",
+            "11026092223",
+            "11026092224",
+            "11026092225",
+            "11026092226",
+            "11026092227",
+            "11026092228",
+            "11026092229",
+            "11026082492"
+          ]
+        },
+        {
+          "version": 2,
+          "changeset": 146329970,
+          "timestamp": "2024-01-16T16:19:24Z",
+          "tags": {
+            "landuse": "residential",
+            "name": "Ouled Hamed",
+            "name:aeb": "حاف اولاد حامد",
+            "residential": "osada"
+          },
+          "lat": null,
+          "lon": null,
+          "nodes": [
+            "11026082492",
+            "11026082493",
+            "11026082494",
+            "11026082495",
+            "11026082496",
+            "11026082497",
+            "11026082498",
+            "11026082499",
+            "11026082500",
+            "11026082501",
+            "11026082502",
+            "11026082503",
+            "11026082504",
+            "11026092205",
+            "11026092206",
+            "11026092207",
+            "11026092208",
+            "11026092209",
+            "11026092210",
+            "11026092211",
+            "11026092212",
+            "11026092213",
+            "11026092214",
+            "11026092215",
+            "11026092216",
+            "11026092217",
+            "11026092218",
+            "11026092219",
+            "11026092220",
+            "11026092221",
+            "11026092222",
+            "11026092223",
+            "11026092224",
+            "11026092225",
+            "11026092226",
+            "11026092227",
+            "11026092228",
+            "11026092229",
+            "11026082492"
+          ]
+        },
+        {
+          "version": 3,
+          "changeset": 180432269,
+          "timestamp": "2026-03-26T00:33:46Z",
+          "tags": {
+            "landuse": "residential",
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed",
+            "residential": "osada"
+          },
+          "lat": null,
+          "lon": null,
+          "nodes": [
+            "11026082492",
+            "11026082493",
+            "11026082494",
+            "11026082495",
+            "11026082496",
+            "11026082497",
+            "11026082498",
+            "11026082499",
+            "11026082500",
+            "11026082501",
+            "11026082502",
+            "11026082503",
+            "11026082504",
+            "11026092205",
+            "11026092206",
+            "11026092207",
+            "11026092208",
+            "11026092209",
+            "11026092210",
+            "11026092211",
+            "11026092212",
+            "11026092213",
+            "11026092214",
+            "11026092215",
+            "11026092216",
+            "11026092217",
+            "11026092218",
+            "11026092219",
+            "11026092220",
+            "11026092221",
+            "11026092222",
+            "11026092223",
+            "11026092224",
+            "11026092225",
+            "11026092226",
+            "11026092227",
+            "11026092228",
+            "11026092229",
+            "11026082492"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:way:1187366130",
+      "url": "https://api.openstreetmap.org/api/0.6/way/1187366130/history",
+      "file": "work\\haf-current-display-identity-followup\\way-1187366130-history.xml",
+      "sha256": "adccfb4c86a24340dbe00f0356739478e1ff8046bb1ff398c7911edab7659ce1",
+      "retrievedAt": "2026-09-07T21:47:54.010498+00:00",
+      "records": [
+        {
+          "version": 1,
+          "changeset": 138116777,
+          "timestamp": "2023-07-04T17:22:08Z",
+          "tags": {
+            "landuse": "residential",
+            "name": "Oualed Hamed",
+            "name:aeb": "حاف اولاد حامد"
+          },
+          "lat": null,
+          "lon": null,
+          "nodes": [
+            "11026092230",
+            "11026092231",
+            "11026092232",
+            "11026092233",
+            "11026092234",
+            "11026092235",
+            "11026092236",
+            "11026092237",
+            "11026092238",
+            "11026092239",
+            "11026092240",
+            "11026092241",
+            "11026092242",
+            "11026092230"
+          ]
+        },
+        {
+          "version": 2,
+          "changeset": 180432269,
+          "timestamp": "2026-03-26T00:33:46Z",
+          "tags": {
+            "landuse": "residential",
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed"
+          },
+          "lat": null,
+          "lon": null,
+          "nodes": [
+            "11026092230",
+            "11026092231",
+            "11026092232",
+            "11026092233",
+            "11026092234",
+            "11026092235",
+            "11026092236",
+            "11026092237",
+            "11026092238",
+            "11026092239",
+            "11026092240",
+            "11026092241",
+            "11026092242",
+            "11026092230"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:node:11522289870",
+      "url": "https://api.openstreetmap.org/api/0.6/node/11522289870/history",
+      "file": "work\\haf-current-display-identity-followup\\node-11522289870-history.xml",
+      "sha256": "bd54be631928afb637ca76f1ea2b419072e5157f7971f83d666e44b27ddbf1c8",
+      "retrievedAt": "2026-09-07T21:47:54.023221+00:00",
+      "records": [
+        {
+          "version": 1,
+          "changeset": 146329970,
+          "timestamp": "2024-01-16T16:19:24Z",
+          "tags": {
+            "name": "Ouled Hamed",
+            "name:aeb": "حاف اولاد حامد",
+            "place": "hamlet"
+          },
+          "lat": "32.7922759",
+          "lon": "10.2297856",
+          "nodes": []
+        },
+        {
+          "version": 2,
+          "changeset": 180432269,
+          "timestamp": "2026-03-26T00:33:46Z",
+          "tags": {
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed",
+            "place": "hamlet"
+          },
+          "lat": "32.7922759",
+          "lon": "10.2297856",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "changesetMetadataFiles": [
+    {
+      "id": 138116777,
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/138116777",
+      "file": "work\\haf-current-display-identity-followup\\changeset-138116777.xml",
+      "sha256": "6de461b365b0035abc31210abc771443ba09bf3643dfc7bee5c4e98ae56dbcc0",
+      "retrievedAt": "2026-09-07T21:49:01.450405+00:00",
+      "tags": {
+        "changesets_count": "3058",
+        "comment": "supplementation of information, actualization",
+        "created_by": "iD 2.25.2",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "Bing Maps Aerial",
+        "locale": "cs",
+        "source": "survey;aerial imagery"
+      },
+      "changesCount": "141",
+      "bbox": {
+        "min_lat": "32.7843483",
+        "min_lon": "10.1804808",
+        "max_lat": "32.7992563",
+        "max_lon": "10.2432631"
+      }
+    },
+    {
+      "id": 146329970,
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/146329970",
+      "file": "work\\haf-current-display-identity-followup\\changeset-146329970.xml",
+      "sha256": "fae28e10af05bb6566922309d25fee63029fee4ccbc7d25a554c1645d5c32f40",
+      "retrievedAt": "2026-09-07T21:49:01.443271+00:00",
+      "tags": {
+        "changesets_count": "4026",
+        "comment": "supplementation of information, line correction",
+        "created_by": "iD 2.27.3",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "Bing Maps Aerial;OpenTopoMap",
+        "locale": "cs",
+        "source": "survey;aerial imagery"
+      },
+      "changesCount": "84",
+      "bbox": {
+        "min_lat": "32.7913418",
+        "min_lon": "10.2194347",
+        "max_lat": "32.7957842",
+        "max_lon": "10.2300855"
+      }
+    },
+    {
+      "id": 180432269,
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269",
+      "file": "work\\haf-current-display-identity-followup\\changeset-180432269.xml",
+      "sha256": "5ebf22bcc06418a95456256ddaf44f97b0d6cd7d38f4fbf9d19fc8187f1cb71d",
+      "retrievedAt": "2026-09-07T21:49:01.420363+00:00",
+      "tags": {
+        "changesets_count": "1440",
+        "comment": "Improve naming and tagging unification in Tunisia",
+        "created_by": "iD 2.39.5",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "OpenStreetMap (Standard)",
+        "locale": "ar",
+        "resolved:suspicious_name:generic_name": "3"
+      },
+      "changesCount": "34",
+      "bbox": {
+        "min_lat": "32.7355804",
+        "min_lon": "10.1722163",
+        "max_lat": "33.1409147",
+        "max_lon": "10.3655835"
+      }
+    }
+  ],
+  "changesetDownloads": [
+    {
+      "changeset": 138116777,
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/138116777/download",
+      "file": "work\\haf-current-display-identity-followup\\changeset-138116777-download.osc",
+      "sha256": "0673f8a345e3376e9b28399a0726f3c2c0c0a6485409bd733a2640a04f7fc9d9",
+      "bytes": 34119,
+      "retrievedAt": "2026-09-07T21:52:06.167369+00:00",
+      "targetEdits": [
+        {
+          "id": "osm:way:1187366129",
+          "action": "create",
+          "version": "1",
+          "tags": {
+            "landuse": "residential",
+            "name": "Oualed Hamed",
+            "name:aeb": "حاف اولاد حامد",
+            "residential": "osada"
+          },
+          "lat": null,
+          "lng": null,
+          "nodes": [
+            "11026082492",
+            "11026082493",
+            "11026082494",
+            "11026082495",
+            "11026082496",
+            "11026082497",
+            "11026082498",
+            "11026082499",
+            "11026082500",
+            "11026082501",
+            "11026082502",
+            "11026082503",
+            "11026082504",
+            "11026092205",
+            "11026092206",
+            "11026092207",
+            "11026092208",
+            "11026092209",
+            "11026092210",
+            "11026092211",
+            "11026092212",
+            "11026092213",
+            "11026092214",
+            "11026092215",
+            "11026092216",
+            "11026092217",
+            "11026092218",
+            "11026092219",
+            "11026092220",
+            "11026092221",
+            "11026092222",
+            "11026092223",
+            "11026092224",
+            "11026092225",
+            "11026092226",
+            "11026092227",
+            "11026092228",
+            "11026092229",
+            "11026082492"
+          ]
+        },
+        {
+          "id": "osm:way:1187366130",
+          "action": "create",
+          "version": "1",
+          "tags": {
+            "landuse": "residential",
+            "name": "Oualed Hamed",
+            "name:aeb": "حاف اولاد حامد"
+          },
+          "lat": null,
+          "lng": null,
+          "nodes": [
+            "11026092230",
+            "11026092231",
+            "11026092232",
+            "11026092233",
+            "11026092234",
+            "11026092235",
+            "11026092236",
+            "11026092237",
+            "11026092238",
+            "11026092239",
+            "11026092240",
+            "11026092241",
+            "11026092242",
+            "11026092230"
+          ]
+        }
+      ]
+    },
+    {
+      "changeset": 146329970,
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/146329970/download",
+      "file": "work\\haf-current-display-identity-followup\\changeset-146329970-download.osc",
+      "sha256": "e2cf9f08e496831baebe2f28e7340b5b6f3817567d6c76f1de54f535c198ed6e",
+      "bytes": 19017,
+      "retrievedAt": "2026-09-07T21:52:06.161311+00:00",
+      "targetEdits": [
+        {
+          "id": "osm:node:11522289870",
+          "action": "create",
+          "version": "1",
+          "tags": {
+            "name": "Ouled Hamed",
+            "name:aeb": "حاف اولاد حامد",
+            "place": "hamlet"
+          },
+          "lat": "32.7922759",
+          "lng": "10.2297856",
+          "nodes": []
+        },
+        {
+          "id": "osm:way:1187366129",
+          "action": "modify",
+          "version": "2",
+          "tags": {
+            "landuse": "residential",
+            "name": "Ouled Hamed",
+            "name:aeb": "حاف اولاد حامد",
+            "residential": "osada"
+          },
+          "lat": null,
+          "lng": null,
+          "nodes": [
+            "11026082492",
+            "11026082493",
+            "11026082494",
+            "11026082495",
+            "11026082496",
+            "11026082497",
+            "11026082498",
+            "11026082499",
+            "11026082500",
+            "11026082501",
+            "11026082502",
+            "11026082503",
+            "11026082504",
+            "11026092205",
+            "11026092206",
+            "11026092207",
+            "11026092208",
+            "11026092209",
+            "11026092210",
+            "11026092211",
+            "11026092212",
+            "11026092213",
+            "11026092214",
+            "11026092215",
+            "11026092216",
+            "11026092217",
+            "11026092218",
+            "11026092219",
+            "11026092220",
+            "11026092221",
+            "11026092222",
+            "11026092223",
+            "11026092224",
+            "11026092225",
+            "11026092226",
+            "11026092227",
+            "11026092228",
+            "11026092229",
+            "11026082492"
+          ]
+        }
+      ]
+    },
+    {
+      "changeset": 180432269,
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269/download",
+      "file": "work\\haf-current-display-identity-followup\\changeset-180432269-download.osc",
+      "sha256": "ad829a346c64a5d2a17fac22c2250f180827c3084c02bcbdf4575faa0750c4b6",
+      "bytes": 30366,
+      "retrievedAt": "2026-09-07T21:52:06.174501+00:00",
+      "targetEdits": [
+        {
+          "id": "osm:node:11522289870",
+          "action": "modify",
+          "version": "2",
+          "tags": {
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed",
+            "place": "hamlet"
+          },
+          "lat": "32.7922759",
+          "lng": "10.2297856",
+          "nodes": []
+        },
+        {
+          "id": "osm:way:1187366130",
+          "action": "modify",
+          "version": "2",
+          "tags": {
+            "landuse": "residential",
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed"
+          },
+          "lat": null,
+          "lng": null,
+          "nodes": [
+            "11026092230",
+            "11026092231",
+            "11026092232",
+            "11026092233",
+            "11026092234",
+            "11026092235",
+            "11026092236",
+            "11026092237",
+            "11026092238",
+            "11026092239",
+            "11026092240",
+            "11026092241",
+            "11026092242",
+            "11026092230"
+          ]
+        },
+        {
+          "id": "osm:way:1187366129",
+          "action": "modify",
+          "version": "3",
+          "tags": {
+            "landuse": "residential",
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed",
+            "residential": "osada"
+          },
+          "lat": null,
+          "lng": null,
+          "nodes": [
+            "11026082492",
+            "11026082493",
+            "11026082494",
+            "11026082495",
+            "11026082496",
+            "11026082497",
+            "11026082498",
+            "11026082499",
+            "11026082500",
+            "11026082501",
+            "11026082502",
+            "11026082503",
+            "11026082504",
+            "11026092205",
+            "11026092206",
+            "11026092207",
+            "11026092208",
+            "11026092209",
+            "11026092210",
+            "11026092211",
+            "11026092212",
+            "11026092213",
+            "11026092214",
+            "11026092215",
+            "11026092216",
+            "11026092217",
+            "11026092218",
+            "11026092219",
+            "11026092220",
+            "11026092221",
+            "11026092222",
+            "11026092223",
+            "11026092224",
+            "11026092225",
+            "11026092226",
+            "11026092227",
+            "11026092228",
+            "11026092229",
+            "11026082492"
+          ]
+        }
+      ]
+    }
+  ],
+  "proposal": {
+    "status": "awaiting_independent_review",
+    "method": "reviewed_surveyed_hamlet",
+    "targetPickerGroupId": "osm:node:11522289870",
+    "sourceGroups": [
+      "osm:way:1187366129",
+      "osm:way:1187366130"
+    ],
+    "change": "Only two pickerGroupId fields; retain all three raw IDs, shapes, labels, coordinates and source624.",
+    "limits": [
+      "Mapper-declared survey provenance is not independently certified fieldwork.",
+      "The two residential patches are not a full hamlet boundary.",
+      "Existing official-source locality contexts are retained, not inferred from old packaged sector containment.",
+      "Historical Google landmark cards, local-history blog and GMG clan mentions do not establish individual patch identity."
+    ]
+  }
+}

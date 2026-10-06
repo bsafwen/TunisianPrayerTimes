@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "kind": "alias_successor_review_scope",
+  "status": "PROJECTED_ALIAS_ONLY_SUCCESSOR_NOT_GENERATED",
+  "method": "reviewed_explicit_alias_successor_scope",
+  "pointId": "osm:node:500182808",
+  "baseId": 476,
+  "sectorId": "osm:relation:7143844",
+  "originalProof": {
+    "file": "point-base-display-reviews/el-borma-2026-09/476-reviewed-point-base-display-identity.json",
+    "sha256": "c4848d85ea1db340ef1c61422c6e58cb09458331c957033da6d0de05b808f78d",
+    "bytes": 54924
+  },
+  "currentInputs": {
+    "workArtifact": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\kambout-alias-el-borma-successor-20260920\\current-inputs.json",
+    "sha256": "34dd7806eaac28698cf1a6bbce1c060bc9ed42e39dbd7ada51151dc05cdf1a4c",
+    "pins": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+        "sha256": "1bfd506fc596021401117d1c31dd13f2017ff8273516b275edffc5ddb1e7433a",
+        "bytes": 1876375
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+        "sha256": "a3b978099c49e97b9186da8eace48bd5acada9273dc04b04673e0fa2232e942d",
+        "bytes": 5591116
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "2b0babb95261f660d3e31a25dd31167f266cb545820e0e2dad1a3b89db0ae1a0",
+        "bytes": 443229
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+        "bytes": 630000
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+        "sha256": "6b1a63cb63ab71521bf0c6a8d7f65f48559320e3162a68b6724399912b68c30e",
+        "bytes": 118117
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+        "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+        "bytes": 776658
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\el-borma-2026-09\\476-reviewed-point-base-display-identity.json",
+        "sha256": "c4848d85ea1db340ef1c61422c6e58cb09458331c957033da6d0de05b808f78d",
+        "bytes": 54924
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\catalog-automation\\baseline-three-boundaries-soukra-20260920.json",
+        "sha256": "e9ff5ec006de7a59808764b2e391e8cdd79cb80d259c0ecb9c8e7e398c6513ca",
+        "bytes": 330461
+      }
+    ]
+  },
+  "frozenNameProof": {
+    "file": "name-reviews/six-name-20260920/proof.json",
+    "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+    "bytes": 18283
+  },
+  "frozenRecordArtifact": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-name-source-package-20260920\\proposed-curation-records-v2.json",
+    "sha256": "2818bfe50b4dfb08dd87cbd62058ed70a0621d5d92f53f2ac042fbca9aa2f70c"
+  },
+  "exactKamboutRule": {
+    "id": "osm:relation:7143844",
+    "expectedKind": "sector",
+    "expectedTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "كمبوت",
+      "name:ar": "كمبوت",
+      "name:fr": "Kambout",
+      "ref:tn:codegeo": "535754"
+    },
+    "action": "name_tags",
+    "nameTags": {
+      "name": "كمبوت",
+      "name:ar": "كمبوت",
+      "name:fr": "Kambout",
+      "alt_name:ar": "كنبوت",
+      "alt_name:fr": "Kenbout"
+    },
+    "reason": "Unique code535754/parent5357 and INS+ISIE Arabic كنبوت with French Kenbout establish proved official same-sector variants. Retain current كمبوت/Kambout/Tifinagh forms and add كنبوت/Kenbout for search; no independent evidence establishes the current m spelling is a typo. Substantial official/old footprint discrepancy is a separate geometry qualification, not failed name identity. The active El Borma proof requires an explicit successor before even this alias-only change.",
+    "evidence": [
+      {
+        "source": "Preserve historical variants and identity; accepted exact child deltas remain independent.",
+        "reviewFiles": [
+          {
+            "file": "name-reviews/six-name-20260920/proof.json",
+            "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+            "bytes": 18283
+          }
+        ]
+      }
+    ]
+  },
+  "projectedSemanticChanges": {
+    "sectorAliases": {
+      "id": "osm:relation:7143844",
+      "before": [
+        "Kambout",
+        "ⴽⵎⴱⵓⵜ"
+      ],
+      "after": [
+        "Kambout",
+        "Kenbout",
+        "كنبوت",
+        "ⴽⵎⴱⵓⵜ"
+      ],
+      "added": [
+        "Kenbout",
+        "كنبوت"
+      ],
+      "preserved": [
+        "Kambout",
+        "ⴽⵎⴱⵓⵜ"
+      ]
+    },
+    "sectorSourceEffectiveTags": {
+      "id": "osm:relation:7143844",
+      "before": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "ref:tn:codegeo": "535754"
+      },
+      "after": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "ref:tn:codegeo": "535754",
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "alt_name:ar": "كنبوت",
+        "alt_name:fr": "Kenbout"
+      },
+      "removedCurrentNameKeys": [
+        "name",
+        "name:ar",
+        "name:fr"
+      ],
+      "appliedNameTags": {
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "alt_name:ar": "كنبوت",
+        "alt_name:fr": "Kenbout"
+      },
+      "originalTagsUnchanged": true,
+      "geometryHashesUnchanged": true,
+      "sourceFrenchRetained": "name:fr Kambout",
+      "tifinaghSourceFabrication": false
+    },
+    "childContextAliases": [
+      {
+        "id": "osm:node:1974940233",
+        "name": "برج بورقيبة",
+        "parentName": "كمبوت",
+        "before": [
+          "Délégation Remada",
+          "Kambout",
+          "Remada",
+          "كمبوت",
+          "معتمدية رمادة"
+        ],
+        "after": [
+          "Délégation Remada",
+          "Kambout",
+          "Kenbout",
+          "Remada",
+          "كمبوت",
+          "كنبوت",
+          "معتمدية رمادة"
+        ],
+        "added": [
+          "Kenbout",
+          "كنبوت"
+        ],
+        "protectedByThisTownProof": false,
+        "ownNameUnchanged": true,
+        "parentNameUnchanged": true
+      },
+      {
+        "id": "osm:way:186750635",
+        "name": "Borj Bourguiba",
+        "parentName": "كمبوت",
+        "before": [
+          "Délégation Remada",
+          "Kambout",
+          "Remada",
+          "كمبوت",
+          "معتمدية رمادة"
+        ],
+        "after": [
+          "Délégation Remada",
+          "Kambout",
+          "Kenbout",
+          "Remada",
+          "كمبوت",
+          "كنبوت",
+          "معتمدية رمادة"
+        ],
+        "added": [
+          "Kenbout",
+          "كنبوت"
+        ],
+        "protectedByThisTownProof": false,
+        "ownNameUnchanged": true,
+        "parentNameUnchanged": true
+      }
+    ]
+  },
+  "sourceQualification": "Authentic historical OSM version8 exactly matches frozen source cache. Current version9 changes only name. Version8 must remain explicitly historical; neither source snapshot is rewritten. The original source state remains exact; the effective source state for osm:relation:7143844 is the only changed source phase, replacing its current name-key namespace with the exact frozen nameTags (retaining كمبوت/Kambout and adding only كنبوت/Kenbout). Historical baselineMetadataSha256, baselineCurationSha256 and source-facts lineage remain retained and unchanged.",
+  "boundaryQualification": "Cached Remada administrative boundaries remain unchanged. Official registry confirms administrative identities, not legal or surveyed point containment. The SITEP residential-camp image has no geographic control and is not an imported polygon.",
+  "noFullDerivedSnapshot": {
+    "reason": "The actual El Borma townPreservationExtension has no rawContextClosure baselineMetadata and no currentSourcePhaseCarry. Its protectedRawRecords embed the retained metadata. Historical baselineMetadataSha256 and baselineCurationSha256 remain historical and immutable. No full derived snapshot, replacement provider, or copied catalog is consumed or fabricated by this alias-only successor.",
+    "consumedSchema": "townPreservationExtension",
+    "baselineMetadataSha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+    "baselineCurationSha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94",
+    "fullCatalogCopy": false
+  },
+  "projectionNotice": "Projected metadata only. This scope does not claim generation, compilation, production writes, provider changes, geometry changes, coordinate changes, or boundary changes."
+}

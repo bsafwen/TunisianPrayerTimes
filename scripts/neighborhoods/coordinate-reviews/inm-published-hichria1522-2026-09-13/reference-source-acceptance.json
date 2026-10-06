@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "status": "ORDINARY_OFFICIAL_REFERENCE_SOURCE_PARTS_RETAINED_DISPLAY_INTEGRATION_PENDING",
+  "reviewedDate": "2026-09-13",
+  "referenceId": 1522,
+  "baselineMetadataSha256": "ef5bcb592957d3b753d21ff528a20533e80247041ff4639a23a25e1e825f2b39",
+  "originalPublicEvidence": {
+    "prayer": {
+      "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-prayer-1522-2026-09-12.json",
+      "sha256": "e549430d69fced86c75ed842d5df501c82e8d83e517bb255dc9897ffa7b799d6",
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/"
+    },
+    "sun": {
+      "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-sun-1522-2026-09-12.json",
+      "sha256": "543c5cfdcac7e3b959e7e1ead940f4e983042b2254994d3433911b132fb1c484",
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/"
+    },
+    "retrievalManifest": {
+      "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/retrieval-manifest.json",
+      "sha256": "e2db43e8ecc6f949c11a5e426e217b5746772a58f017fb7843ea1b4e941f09dd"
+    }
+  },
+  "historicalWorkEvidence": {
+    "sourceReview": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/hichria-reference-review-20260913/source-review.json",
+      "sha256": "c3bb0435a216ec42b522b8bed13c4abf82a3cc7eaf194555a2547e7b982b8bf1",
+      "bytes": 12679
+    },
+    "sourceFacts": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/hichria-reference-review-20260913/source-finite-facts.json",
+      "sha256": "ef99e8d1548c254cbbaf1e921ae49445736a181f23bd6861dd554e47fe9bbeb4",
+      "bytes": 58046
+    }
+  },
+  "historicalWorkEvidenceQualification": "Original source report retains its earlier open display disposition. Root subsequently authorized preserving the existing1522/northern-sector display identity while adopting the independent published reference; final source-aware display proof is a separate prerequisite, not fabricated by this coordinate evidence. Historical workspace pins are provenance, not shipping-loader dependencies.",
+  "publishedDelegation": {
+    "id": 1522,
+    "nomAr": "الهيشرية",
+    "nomFr": "Hichria",
+    "nomEn": "Hichria",
+    "governorateId": 355
+  },
+  "publishedDailyFields": {
+    "serviceDate": "2026-09-12",
+    "literalLat": "34.829",
+    "literalLng": " 9.376",
+    "lat": 34.829,
+    "lng": 9.376
+  },
+  "exactAssetFieldChanges": [
+    {
+      "delegationId": 1522,
+      "governorateId": 355,
+      "field": "lat",
+      "before": 34.895,
+      "after": 34.829
+    },
+    {
+      "delegationId": 1522,
+      "governorateId": 355,
+      "field": "lng",
+      "before": 9.3918,
+      "after": 9.376
+    }
+  ],
+  "qualification": "Official published daily timetable reference fields, corroborated by original prayer and sunrise responses. Their latitude/longitude are separate from data.delegation identity; no surveyed centre, internal calculation input or administrative boundary is certified.",
+  "displayPreservationRequired": {
+    "groupId": "delegation:1522",
+    "rawMemberIds": [
+      "osm:relation:7169598"
+    ],
+    "retainedRepresentative": {
+      "lat": 34.895,
+      "lng": 9.40957
+    },
+    "sourcePointInsideNorthernSectorAfter": false,
+    "noNewSouthernDisplayEntityInferred": true,
+    "separateSouthernVillageId": "osm:node:7938334020",
+    "preserveNorthernAbsorbedNodeId": "osm:node:7938334046",
+    "preserveAllThreeCurrentHichriaSectorIds": [
+      "osm:relation:7169598",
+      "osm:relation:7169594",
+      "osm:relation:7169555"
+    ],
+    "noRawNameGeometryOrPickerMembershipChanges": true
+  },
+  "integrationQualification": "The old source/packed base-containment assertion must not be silently reused. A separately reviewed retained-display proof/compiler successor must distinguish named display identity from the published daily reference location before staging or generation."
+}

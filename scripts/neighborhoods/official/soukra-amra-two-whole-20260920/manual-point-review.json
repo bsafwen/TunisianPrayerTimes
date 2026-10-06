@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sectors-2023-soukra-amra-two-whole",
+  "boundarySource": {
+    "file": "official/soukra-amra-two-whole-20260920/soukra-amra-two-whole-source.geojson",
+    "sha256": "7a6694d74dde124cfd6cdcdfdbaa7f444adaf8ebedd4dd17aff122951cd56a4b"
+  },
+  "baselineMetadata": {
+    "file": "official/soukra-amra-two-whole-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "2a84a65ca96fa88cb7818001f493d7efb7038f00b153dacd6fd8eb648740a0e3"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7114902",
+      "officialCode": "125253",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7114902",
+        "sourceId": "osm",
+        "name": "البساتين",
+        "aliases": [
+          "El Bassatine",
+          "البستان",
+          "El bousten"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سكرة",
+        "contextAliases": [
+          "Délégation Soukra",
+          "La Soukra",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.87628,
+        "lng": 10.231171,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.216997,
+          36.865139,
+          10.245671,
+          36.887692
+        ],
+        "areaKm2": 3.1291807974184263,
+        "pickerGroupId": "osm:relation:7114902",
+        "offset": 1028048,
+        "length": 340
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.87628,
+        "lng": 10.231171
+      },
+      "expectedNearestId": 532
+    },
+    {
+      "id": "osm:relation:7169582",
+      "officialCode": "435255",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7169582",
+        "sourceId": "osm",
+        "name": "العامرة",
+        "aliases": [
+          "El Amra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بوزيد الشرقية",
+        "contextAliases": [
+          "Délégation Sidi Bouzid Est",
+          "معتمدية سيدي بوزيد الشرقية"
+        ],
+        "governorateId": 355,
+        "lat": 35.15323,
+        "lng": 9.650934,
+        "delegationId": 628,
+        "hasBoundary": true,
+        "bbox": [
+          9.555598,
+          35.10567,
+          9.708717,
+          35.20065
+        ],
+        "areaKm2": 78.45743420197148,
+        "pickerGroupId": "osm:relation:7169582",
+        "offset": 4006032,
+        "length": 1540
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 35.15323,
+        "lng": 9.650934
+      },
+      "expectedNearestId": 628
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/soukra-amra-two-whole-20260920/source-acceptance-review.json",
+      "sha256": "abbc835ceaf5f4ee5702d5baf9ded19963a228f3a18ed6c15b073542fd331c32"
+    },
+    {
+      "file": "official/soukra-amra-two-whole-20260920/accepted-whole-scope-successor.json",
+      "sha256": "d69ade61d3c68077431a43ea15fe9ac15d2c590d44ffafa2968f8eed42c44f75"
+    }
+  ]
+}

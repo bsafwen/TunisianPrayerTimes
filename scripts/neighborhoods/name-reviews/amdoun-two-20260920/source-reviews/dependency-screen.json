@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "scope": "Read-only finite direct-ID/name-context dependency screen, not a substitute for isolated generation.",
+  "operationalManifests": [
+    {
+      "manifest": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "d7eac391b4e9072cd939e36781b32a5ec13794df614035ac471e0a830e7240bc",
+        "bytes": 442521
+      },
+      "targetOrChildIdOccurrences": []
+    },
+    {
+      "manifest": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+        "bytes": 630000
+      },
+      "targetOrChildIdOccurrences": []
+    },
+    {
+      "manifest": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+        "sha256": "4611c1bafd550a6448e31177b3a49bd62f47d718743a8e7778de6a092a4cd91b",
+        "bytes": 104391
+      },
+      "targetOrChildIdOccurrences": []
+    }
+  ],
+  "affectedRawFieldChanges": [
+    {
+      "id": "osm:relation:7189452",
+      "field": "name",
+      "before": "عمدون",
+      "after": "زهرة مدين"
+    },
+    {
+      "id": "osm:relation:7189452",
+      "field": "aliases",
+      "before": [
+        "Amdoun"
+      ],
+      "after": [
+        "Zahret medien",
+        "عمدون",
+        "Amdoun"
+      ]
+    },
+    {
+      "id": "osm:relation:7189451",
+      "field": "name",
+      "before": "عمدون الجنوبية",
+      "after": "زهرة مدين الجنوبية"
+    },
+    {
+      "id": "osm:relation:7189451",
+      "field": "aliases",
+      "before": [
+        "Amdoun Sud"
+      ],
+      "after": [
+        "Zahret medien sud",
+        "عمدون الجنوبية",
+        "Amdoun Sud"
+      ]
+    },
+    {
+      "id": "osm:node:4099579144",
+      "field": "parentName",
+      "before": "عمدون الجنوبية",
+      "after": "زهرة مدين الجنوبية"
+    },
+    {
+      "id": "osm:node:4099579144",
+      "field": "contextAliases",
+      "before": [
+        "Amdoun Sud",
+        "Délégation Amdoun",
+        "عمدون الجنوبية",
+        "معتمدية عمدون"
+      ],
+      "after": [
+        "Amdoun Sud",
+        "Délégation Amdoun",
+        "Zahret medien sud",
+        "زهرة مدين الجنوبية",
+        "عمدون الجنوبية",
+        "معتمدية عمدون"
+      ]
+    }
+  ],
+  "inheritedChildIds": [
+    "osm:node:4099579144"
+  ],
+  "newPrimaryNameCurrentExactPeers": {
+    "زهرة مدين": [],
+    "زهرة مدين الجنوبية": []
+  },
+  "historicalEvidenceQualification": "Global source catalogs and original registry snapshots may contain these IDs as historical/source evidence. They are retained unchanged. No blanket successor repins were made.",
+  "compilerUnchanged": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "722c90af0739d79714edb4df78cbfb38a08aa4801bf343113e0d3f74533ab50c",
+    "bytes": 765085
+  },
+  "generationNotExecuted": true
+}

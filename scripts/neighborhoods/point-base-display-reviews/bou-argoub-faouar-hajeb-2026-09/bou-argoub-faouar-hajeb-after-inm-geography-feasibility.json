@@ -1,0 +1,677 @@
+{
+  "status": "FINITE_FACTS_READY_AGAINST_ACTUAL_ISOLATED_INM_GENERATION_NO_DISPLAY_STAGE",
+  "reviewedAt": "2026-09-12T10:51:53.042247+00:00",
+  "baselineMetadataSha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2",
+  "priorBaselineMetadataSha256": "ad68201de32928467232f1aeb07675e84e993aaad79212406444a65634da1c87",
+  "generatorSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "actualGeneration": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\official463526-actual-generation.json",
+    "sha256": "24750e7d8f49b0f0c587cedbfac136395fdb31a430b51fbccaf01225c394848c"
+  },
+  "installedCheckpoint": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\official463526-reference-catalog-checkpoint.json",
+    "sha256": "c643cc33d77bfa29a357d9dec153959c6f392d6d27fa209341a0724b9947ce3f"
+  },
+  "installedMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2"
+  },
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-faouar-hajeb-after-inm-geography-feasibility\\finite-source-group-facts.json",
+    "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+  },
+  "candidates": [
+    {
+      "id": "osm:node:1190878345",
+      "baseId": 463,
+      "sectors": 7,
+      "protectedRawRows": 8,
+      "sourceStates": 10,
+      "currentBase": {
+        "id": 463,
+        "nomFr": "Bou Argoub",
+        "nomAr": "بوعرقوب",
+        "nomEn": "Bou Argoub",
+        "lat": 36.535,
+        "lng": 10.552
+      },
+      "schemaAssessment": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": null,
+        "status": "EXISTING_STANDARD_FORMAT_FEASIBLE",
+        "reason": "Complete singleton sector inventory, unchanged source-name peers, common governorate/delegation contexts and no current point/sector curation or boundary/picker replacement. Preserve both distinct point/base coordinates."
+      },
+      "referenceGuards": {
+        "point": {
+          "coordinate": {
+            "lat": 36.5342202,
+            "lng": 10.5498743
+          },
+          "nearest": {
+            "id": 463,
+            "kilometers": 0.20877815123951543
+          },
+          "runnerUp": {
+            "id": 464,
+            "kilometers": 8.690492529567718
+          }
+        },
+        "base": {
+          "coordinate": {
+            "lat": 36.535,
+            "lng": 10.552
+          },
+          "nearest": {
+            "id": 463,
+            "kilometers": 0.0
+          },
+          "runnerUp": {
+            "id": 464,
+            "kilometers": 8.70165443716533
+          }
+        }
+      },
+      "completeAdministrativeContainers": {
+        "original": {
+          "point": [
+            "osm:relation:1435825",
+            "osm:relation:7103682",
+            "osm:relation:7145836"
+          ],
+          "base": [
+            "osm:relation:1435825",
+            "osm:relation:7103682",
+            "osm:relation:7145836"
+          ]
+        },
+        "effective": {
+          "point": [
+            "osm:relation:1435825",
+            "osm:relation:7103682",
+            "osm:relation:7145836"
+          ],
+          "base": [
+            "osm:relation:1435825",
+            "osm:relation:7103682",
+            "osm:relation:7145836"
+          ]
+        }
+      },
+      "expectedCorrectionCount": 1,
+      "priorPickerIds": []
+    },
+    {
+      "id": "osm:node:560792911",
+      "baseId": 485,
+      "sectors": 5,
+      "protectedRawRows": 7,
+      "sourceStates": 9,
+      "currentBase": {
+        "id": 485,
+        "nomFr": "El Faouar",
+        "nomAr": "الفوار",
+        "nomEn": "El Faouar",
+        "lat": 33.3643,
+        "lng": 8.6766
+      },
+      "schemaAssessment": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": "townPreservationExtension",
+        "status": "EXISTING_EXTENSION_FEASIBLE",
+        "reason": "Preserve Ghidma complete two-member sector/point group, both exact existing curations, original/effective name phase and manual reference, plus two prior picker bindings through the old Faouar delegation."
+      },
+      "referenceGuards": {
+        "point": {
+          "coordinate": {
+            "lat": 33.355963,
+            "lng": 8.6732515
+          },
+          "nearest": {
+            "id": 485,
+            "kilometers": 0.9778042793954542
+          },
+          "runnerUp": {
+            "id": 484,
+            "kilometers": 34.20182078875153
+          }
+        },
+        "base": {
+          "coordinate": {
+            "lat": 33.3643,
+            "lng": 8.6766
+          },
+          "nearest": {
+            "id": 485,
+            "kilometers": 0.0
+          },
+          "runnerUp": {
+            "id": 484,
+            "kilometers": 33.60307759211067
+          }
+        }
+      },
+      "completeAdministrativeContainers": {
+        "original": {
+          "point": [
+            "osm:relation:1434950",
+            "osm:relation:7095579",
+            "osm:relation:7107872"
+          ],
+          "base": [
+            "osm:relation:1434950",
+            "osm:relation:7095579",
+            "osm:relation:7107872"
+          ]
+        },
+        "effective": {
+          "point": [
+            "osm:relation:1434950",
+            "osm:relation:7095579",
+            "osm:relation:7107872"
+          ],
+          "base": [
+            "osm:relation:1434950",
+            "osm:relation:7095579",
+            "osm:relation:7107872"
+          ]
+        }
+      },
+      "expectedCorrectionCount": 0,
+      "priorPickerIds": [
+        "osm:relation:7082336",
+        "osm:relation:7082340"
+      ]
+    },
+    {
+      "id": "osm:node:1187489040",
+      "baseId": 526,
+      "sectors": 9,
+      "protectedRawRows": 10,
+      "sourceStates": 12,
+      "currentBase": {
+        "id": 526,
+        "nomFr": "Hajeb El Ayoun",
+        "nomAr": "حاجب العيون",
+        "nomEn": "Hajeb El Ayoun",
+        "lat": 35.397,
+        "lng": 9.543
+      },
+      "schemaAssessment": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": null,
+        "status": "EXISTING_STANDARD_FORMAT_FEASIBLE",
+        "reason": "Complete singleton sector inventory, unchanged source-name peers, common governorate/delegation contexts and no current point/sector curation or boundary/picker replacement. Preserve both distinct point/base coordinates."
+      },
+      "referenceGuards": {
+        "point": {
+          "coordinate": {
+            "lat": 35.395434,
+            "lng": 9.5424162
+          },
+          "nearest": {
+            "id": 526,
+            "kilometers": 0.1819942360842493
+          },
+          "runnerUp": {
+            "id": 506,
+            "kilometers": 17.928142470448286
+          }
+        },
+        "base": {
+          "coordinate": {
+            "lat": 35.397,
+            "lng": 9.543
+          },
+          "nearest": {
+            "id": 526,
+            "kilometers": 0.0
+          },
+          "runnerUp": {
+            "id": 506,
+            "kilometers": 18.09714590823139
+          }
+        }
+      },
+      "completeAdministrativeContainers": {
+        "original": {
+          "point": [
+            "osm:relation:11318400",
+            "osm:relation:1435832",
+            "osm:relation:7165263"
+          ],
+          "base": [
+            "osm:relation:11318400",
+            "osm:relation:1435832",
+            "osm:relation:7165263"
+          ]
+        },
+        "effective": {
+          "point": [
+            "osm:relation:11318400",
+            "osm:relation:1435832",
+            "osm:relation:7165263"
+          ],
+          "base": [
+            "osm:relation:11318400",
+            "osm:relation:1435832",
+            "osm:relation:7165263"
+          ]
+        }
+      },
+      "expectedCorrectionCount": 1,
+      "priorPickerIds": []
+    }
+  ],
+  "finiteScope": {
+    "officialImadas": 21,
+    "protectedRawRows": 25,
+    "sourceStates": 31,
+    "adjacentTransferredImadas": 2,
+    "adjacentRawRows": 4,
+    "otherUnchangedFaouarContextRows": 3,
+    "boundedReferenceComparisons": 1548,
+    "acceptedBoundariesCheckedForNewContainment": 77,
+    "changedExistingSourceStateOrGeometry": 0,
+    "changedProtectedRawRecords": 0,
+    "conditionalRawChanges": [
+      {
+        "id": "osm:node:1190878345",
+        "field": "pickerGroupId",
+        "before": "osm:node:1190878345",
+        "after": "delegation:463"
+      },
+      {
+        "id": "osm:node:560792911",
+        "field": "pickerGroupId",
+        "before": "osm:node:560792911",
+        "after": "delegation:485"
+      },
+      {
+        "id": "osm:node:1187489040",
+        "field": "pickerGroupId",
+        "before": "osm:node:1187489040",
+        "after": "delegation:526"
+      }
+    ],
+    "curationsBeforeConditionalAfter": [
+      163,
+      166
+    ],
+    "rawGroupsBeforeConditionalAfter": [
+      3489,
+      3489
+    ],
+    "pickerRowsBeforeConditionalAfter": [
+      3560,
+      3557
+    ],
+    "eligiblePickerRowsBeforeConditionalAfter": [
+      3559,
+      3556
+    ],
+    "engineChangesNeededForTheseDisplayRules": 0
+  },
+  "changesFromHistoricalFacts": {
+    "baseCoordinatesUpdatedIds": [
+      463,
+      526
+    ],
+    "expectedOfficialCoordinateCorrectionIds": [
+      463,
+      526
+    ],
+    "referenceRankingsRecomputed": 6,
+    "faouarPriorPickerManifestSha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877",
+    "coordinateMembershipChanges": [
+      {
+        "candidateId": "osm:node:1190878345",
+        "baseId": 463,
+        "sourceId": "osm:relation:7103682",
+        "phase": "original",
+        "role": "base",
+        "before": {
+          "contains": false,
+          "covers": false
+        },
+        "after": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      {
+        "candidateId": "osm:node:1190878345",
+        "baseId": 463,
+        "sourceId": "osm:relation:7103682",
+        "phase": "effective",
+        "role": "base",
+        "before": {
+          "contains": false,
+          "covers": false
+        },
+        "after": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      {
+        "candidateId": "osm:node:1190878345",
+        "baseId": 463,
+        "sourceId": "osm:relation:7103683",
+        "phase": "original",
+        "role": "base",
+        "before": {
+          "contains": true,
+          "covers": true
+        },
+        "after": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      {
+        "candidateId": "osm:node:1190878345",
+        "baseId": 463,
+        "sourceId": "osm:relation:7103683",
+        "phase": "effective",
+        "role": "base",
+        "before": {
+          "contains": true,
+          "covers": true
+        },
+        "after": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      {
+        "candidateId": "osm:node:1187489040",
+        "baseId": 526,
+        "sourceId": "osm:relation:7165263",
+        "phase": "original",
+        "role": "base",
+        "before": {
+          "contains": false,
+          "covers": false
+        },
+        "after": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      {
+        "candidateId": "osm:node:1187489040",
+        "baseId": 526,
+        "sourceId": "osm:relation:7165263",
+        "phase": "effective",
+        "role": "base",
+        "before": {
+          "contains": false,
+          "covers": false
+        },
+        "after": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      {
+        "candidateId": "osm:node:1187489040",
+        "baseId": 526,
+        "sourceId": "osm:relation:7165294",
+        "phase": "original",
+        "role": "base",
+        "before": {
+          "contains": true,
+          "covers": true
+        },
+        "after": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      {
+        "candidateId": "osm:node:1187489040",
+        "baseId": 526,
+        "sourceId": "osm:relation:7165294",
+        "phase": "effective",
+        "role": "base",
+        "before": {
+          "contains": true,
+          "covers": true
+        },
+        "after": {
+          "contains": false,
+          "covers": false
+        }
+      }
+    ]
+  },
+  "interpretation": "The corrected BouArgoub reference now lies in the same source sector7103682 as the town point, instead of7103683. The corrected Hajeb reference likewise moves from7165294 to the town point sector7165263. Faouar membership remains unchanged. Every candidate still has its own timetable reference as nearest usable source; explicit settlement identity remains separately supported by the original reviews.",
+  "preservation": "All21 official sectors,25 protected raws,31 original/effective source states, Ghidma curations/group and the two transferred-sector/four-raw neighbor closure remain exact against actual generated metadata. None is7169663, the sole coordinate-migration raw default change.",
+  "remainingGate": "Root independent finite/source review and any subsequent display-stage authorization. No display rule is staged by this artifact.",
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\official463526-actual-generation.json",
+      "sha256": "24750e7d8f49b0f0c587cedbfac136395fdb31a430b51fbccaf01225c394848c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-faouar-hajeb-geography-feasibility\\finite-source-group-facts.json",
+      "sha256": "e3df80b5d9b49d63a20e57d81ec95ede08179baebc0d7ee00a5960f1632faff0"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generated-stage\\assets\\neighborhoods.json",
+      "sha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generated-stage\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generated-stage\\report\\coverage.json",
+      "sha256": "fc8f3ecb526f1d79eeb3040a5778ee1e3965b744afb6d1e37a298647e53fff0e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "3be47aac507d34a9088a1dd26e3e71d844cdb36d3fc91259f57d17092dc877a9"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bou-argoub-town-point-source-review.json",
+      "sha256": "c0be681b4afc62fce65a38e131e2b9d6a9baa966fcdb21a3875f6e24393f6fdd"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-faouar-town-point-source-review.json",
+      "sha256": "b46eef0ec5b43f07b6ab2c3f92dd3335ddadc62646f391989a972781bbbf07a4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\hajeb-el-ayoun-town-point-source-review.json",
+      "sha256": "55f1b613798694634635996bd7c740a19655c291c4edb81f2b961711dd73cbeb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\exact-bou-argoub-source-group-facts.json",
+      "sha256": "d2805e73a04becc3f5bb0f4affb40fefbdc8c6f3150ddd44f38da25ee118baa5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\finite-source-group-facts.json",
+      "sha256": "089f3760164fb5a6ad2a595e4c0c9554b2642b266b8b7049881a69832eb45d58"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\finite-source-group-facts.json",
+      "sha256": "9e7fa27f9d6cf74698297664481da9ef1882b6adb55523ff9af9a70ae0a89f6f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+      "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bou-argoub-faouar-hajeb-phone-review-20260912.json",
+      "sha256": "16bac80d9ffcd27ce60ac2a13a26c0cf7d583bdcbabd10518df6aff2739d5a9e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\megrine-isie2023-sectors.geojson",
+      "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\identity-review-isie2023-sectors.geojson",
+      "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\next-identity-review-isie2023-sectors.geojson",
+      "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\neighbor-review-isie2023-sectors.geojson",
+      "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\bekalta-neighbors-review-isie2023-sectors.geojson",
+      "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\bekalta-south-east-review-isie2023-sectors.geojson",
+      "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\baghdadi-review-isie2023-sector.geojson",
+      "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\hiboun-review-isie2023-sector.geojson",
+      "sha256": "b1f3b459d642e6be62ab60f27fed66068df3222fbc726e970bfed3276c5b642c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\bizerte-three-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\bembla-seven-native-source-candidates.geojson",
+      "sha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\bembla-bennane-joufia-native-source-candidate.geojson",
+      "sha256": "395e9bb9803d0ae544977aad8178e0b06e74de7ff013d0c3c5346b4078f00497"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\bembla-bennane-keblia-native-source-candidate.geojson",
+      "sha256": "760dd75369b87109b81609ec18cf77c171486aed45dea79ea04d34964d793cf5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\carthage-isie2023-six-sectors.geojson",
+      "sha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\le-kram-isie2023-six-sectors.geojson",
+      "sha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\la-goulette-isie2023-three-sectors.geojson",
+      "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\beni-hassan-isie2023-five-sectors.geojson",
+      "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\saouaf-isie2023-five-sectors.geojson",
+      "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\zeramdine-south-isie2023-sectors.geojson",
+      "sha256": "7af1bc235260fcdbaf61332f2317a6ae9911fed1982746cdb1a78fd6fd1328c1"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\nadhour-isie2023-sectors.geojson",
+      "sha256": "5c7f6a16500866daf3a2937eb92e1b3be6798e1c34d2dcb6ef6c7bb5d2f8024e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\jammel-isie2023-two-sectors.geojson",
+      "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\nadhour-souar-isie2023-sectors.geojson",
+      "sha256": "8c2fda9b927cb8e0c5761df51adede563a96d3a2c683649586ddf181fa32582f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\official\\zeramdine-north-isie2023-sectors.geojson",
+      "sha256": "8f3f52ecf69ea9df4136a53e83241e57775399c1d5c805ffea16862372812361"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\osm-node-1190878345-current.json",
+      "sha256": "150723df61be020e28f56a2945106c22fb9b7b655f7e30ea25239794a750f73a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\osm-node-560792911-current.json",
+      "sha256": "fdb150fc934c0bcbb196ce191103d3ca96f939edfd02852cab1bd30caaf48ad8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\osm-node-1187489040-current.json",
+      "sha256": "184395482034cdeb111d6340c7495bfad64bf008da4bade361874979d8d0ac69"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\name-reviews\\eight-point-sector-spelling-review.json",
+      "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\name-reviews\\eight-point-sector-spelling-independent-verification.json",
+      "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-generation-source\\scripts\\neighborhoods\\name-reviews\\eight-proposed-manual-anchors-independent-review.json",
+      "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\official463526-reference-catalog-checkpoint.json",
+      "sha256": "c643cc33d77bfa29a357d9dec153959c6f392d6d27fa209341a0724b9947ce3f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-faouar-hajeb-after-inm-geography-feasibility\\finite-source-group-facts.json",
+      "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+    }
+  ],
+  "notPerformed": [
+    "source fetching",
+    "live edits",
+    "display/source-stage edits",
+    "generator or product-helper execution",
+    "tests/build",
+    "phone/ledger"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\prepare_bou_argoub_faouar_hajeb_after_inm_facts.py",
+    "sha256": "804caa6993fb9a817825a7d96971dbc94af57254c2884759036e76e54ac1521d"
+  }
+}

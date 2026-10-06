@@ -1,0 +1,2864 @@
+{
+  "schemaVersion": 1,
+  "reviewedDate": "2026-09-13",
+  "scope": "Reviewed references for nearest available meteo.tn timetable selection: 30 preserved OSM settlement references and six official INM-published references 463, 526, 607, 609, 1522, 478. No internal calculation-input or boundary certification.",
+  "originalSourceAsset": {
+    "path": "android-app/app/src/main/assets/gouvernorats.json",
+    "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8",
+    "coordinateProvenance": "Legacy bundled reference coordinates; an external origin for these coordinates was not documented."
+  },
+  "osmEvidence": {
+    "retrieved": "2026-09-07",
+    "liveNodeResponseSha256": "49be026dd6719b1261ce12e8929468e7a81c974cfa4076ae90d797f413b25979"
+  },
+  "geonamesEvidence": {
+    "url": "https://download.geonames.org/export/dump/TN.zip",
+    "retrieved": "2026-09-07",
+    "sha256": "0bf00a026ba0772c64f95e2893d52f7b58d40846653db1b996386bae6f128fae",
+    "populatedPlaceRecords": 2245
+  },
+  "reviewLimitations": [
+    "For 30 original OSM settlement corrections, named OSM place nodes supply the reference coordinates. Official INM prayer and sunrise responses supply 463, 526, 607, 609, 1522, 478. Public phone observations corroborate place context only; no Google coordinates or geometry are copied and internal calculation inputs remain uncertified.",
+    "Coordinate searches can display a nearby address or POI. Phone screenshots do not certify exact pin coordinates, administrative membership or polygon borders.",
+    "GeoNames disagrees for Rouhia. The conflicting point is retained; the Social Affairs Ministry record embeds exactly the selected OSM settlement coordinate."
+  ],
+  "corrections": [
+    {
+      "delegationId": 586,
+      "expectedGovernorateId": 363,
+      "expectedNames": {
+        "nomAr": "تاجروين",
+        "nomFr": "Tejerouine",
+        "nomEn": "Tejerouine"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 36.003,
+        "lng": 8.5282
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 35.8913691,
+        "lng": 8.5530477
+      },
+      "movedKm": 12.612709474960532,
+      "osm": {
+        "id": "osm:node:1899226322",
+        "url": "https://www.openstreetmap.org/node/1899226322",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1899226322.json",
+        "version": 9,
+        "timestamp": "2023-11-30T19:22:38Z",
+        "name": "تاجروين",
+        "place": "town"
+      },
+      "geonames": {
+        "id": 2464809,
+        "name": "Tajerouine",
+        "lat": 35.89174,
+        "lng": 8.55276,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2022-01-11",
+        "url": "https://www.geonames.org/2464809",
+        "distanceToProposedKm": 0.048709245294835314
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+        "observation": "Proposed capture shows the pin among dense streets directly beside the Tajerouine / تاجروين town label; the selected attraction address says Tajerouine. Original capture shows sparse roads and an Unnamed location near Garn Halfaia, without the town street network.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 1019,
+      "expectedGovernorateId": 347,
+      "expectedNames": {
+        "nomAr": "غنوش",
+        "nomFr": "Ghannouch",
+        "nomEn": "Ghannouch"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 33.92,
+        "lng": 10.06
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 33.939816,
+        "lng": 10.0650345
+      },
+      "movedKm": 2.251863667990985,
+      "osm": {
+        "id": "osm:node:2203045897",
+        "url": "https://www.openstreetmap.org/node/2203045897",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2203045897.json",
+        "version": 9,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "غنوش",
+        "place": "town"
+      },
+      "geonames": {
+        "id": 2471012,
+        "name": "Rhennouch",
+        "lat": 33.94055,
+        "lng": 10.06439,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2471012",
+        "distanceToProposedKm": 0.10097638940041169
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+        "observation": "Proposed capture is within the dense Ghannouch / غنوش street network; pharmacy address and nearby railway-station label name Ghannouch. Original capture has much sparser roads and only a Gabes Governorate card. The original view alone does not establish administrative exclusion from Ghannouch.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 480,
+      "expectedGovernorateId": 352,
+      "expectedNames": {
+        "nomAr": "تمغزة",
+        "nomFr": "Tameghza",
+        "nomEn": "Tameghza"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 34.2087,
+        "lng": 7.9157
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 34.3863938,
+        "lng": 7.9334946
+      },
+      "movedKm": 19.82614939465232,
+      "osm": {
+        "id": "osm:node:928627591",
+        "url": "https://www.openstreetmap.org/node/928627591",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/928627591.json",
+        "version": 12,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "تمغزة",
+        "place": "village"
+      },
+      "geonames": {
+        "id": 2464770,
+        "name": "Tamaghzah",
+        "lat": 34.38849,
+        "lng": 7.94313,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2022-01-11",
+        "url": "https://www.geonames.org/2464770",
+        "distanceToProposedKm": 0.9143730779047841
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+        "observation": "Proposed capture places the pin on P16 inside the mapped Tamaqzah / تمغزة settlement street network, with Tamaghza Oasis nearby. Original capture shows an attraction card addressed to As-Sabikah and a Chebika-labelled medical POI, rather than the Tameghza town network.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 483,
+      "expectedGovernorateId": 1012,
+      "expectedNames": {
+        "nomAr": "سوق الأحد",
+        "nomFr": "Souk El Ahad",
+        "nomEn": "Souk El Ahad"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 33.9537,
+        "lng": 8.8361
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 33.7783142,
+        "lng": 8.8525855
+      },
+      "movedKm": 19.561319977017398,
+      "osm": {
+        "id": "osm:node:351575544",
+        "url": "https://www.openstreetmap.org/node/351575544",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/351575544.json",
+        "version": 10,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "سوق الأحد",
+        "place": "town"
+      },
+      "geonames": {
+        "id": 11862824,
+        "name": "Souk Lahad",
+        "lat": 33.77579,
+        "lng": 8.85992,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/11862824",
+        "distanceToProposedKm": 0.7337076303282382
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+        "observation": "Proposed capture shows P16 within a dense street network, a Souk Lahad address, and nearby SOUK LAHAD business labelling. Original capture is an unnamed location near Oum Essoumaa without visible roads or settlement detail at that viewport.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 612,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "بلخير",
+        "nomFr": "Belkhir",
+        "nomEn": "Belkhir"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 34.3672,
+        "lng": 9.4117
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 34.2742071,
+        "lng": 9.3914392
+      },
+      "movedKm": 10.506409707561355,
+      "osm": {
+        "id": "osm:node:2877642957",
+        "url": "https://www.openstreetmap.org/node/2877642957",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2877642957.json",
+        "version": 5,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "name": "بلخير",
+        "place": "village"
+      },
+      "geonames": {
+        "id": 11862942,
+        "name": "Belkhir",
+        "lat": 34.27418,
+        "lng": 9.39107,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2018-08-05",
+        "url": "https://www.geonames.org/11862942",
+        "distanceToProposedKm": 0.03405793883917897
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+        "observation": "Although the proposed card says Unnamed location near Belkhir, its pin is visibly within the settlement street network beside BELKHIR and Arabic place labelling. Original capture shows sparse roads and a garden/irrigation-area POI, without a town street network.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 416,
+      "expectedGovernorateId": 344,
+      "expectedNames": {
+        "nomAr": "الروحية",
+        "nomFr": "Rouhia",
+        "nomEn": "Rouhia"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 35.6978,
+        "lng": 9.1456
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 35.651431,
+        "lng": 9.0563411
+      },
+      "movedKm": 9.570261325464488,
+      "osm": {
+        "id": "osm:node:2843047485",
+        "url": "https://www.openstreetmap.org/node/2843047485",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2843047485.json",
+        "version": 7,
+        "timestamp": "2020-11-15T00:30:46Z",
+        "name": "الروحية",
+        "place": "village"
+      },
+      "geonames": {
+        "id": 7870035,
+        "name": "Rouhia",
+        "lat": 35.69778,
+        "lng": 9.14561,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2022-01-13",
+        "url": "https://www.geonames.org/7870035",
+        "distanceToProposedKm": 9.569825322114886
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+        "observation": "Proposed capture shows the pin within the dense Ar-Rawhiyah / الروحية street network, beside Rouhia High School; the pharmacy card is addressed to Ar-Rawhiyah. Original capture has no visible settlement street network and shows a Western Union card addressed Hammam Biadh6132, plus a Rouhia-named medical POI. That POI name does not establish the old point as the town reference.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      },
+      "officialGovernmentEvidence": {
+        "url": "https://www.social.gov.tn/fr/node/1231",
+        "title": "الوحدة المحلية للنهوض الاجتماعي بالروحية سليانة",
+        "address": "حي الطيب المهيري 6150 الروحية",
+        "embeddedWkt": "POINT (9.0563411 35.651431)",
+        "retrieved": "2026-09-07",
+        "htmlSha256": "6eb9549f9bbb84543a3d79703cda8af03eb85105e870d8159854a3ac2f242217",
+        "reason": "Official Ministry of Social Affairs location is exactly the proposed settlement anchor; GeoNames carries a conflicting point9.57km away."
+      }
+    },
+    {
+      "delegationId": 469,
+      "expectedGovernorateId": 350,
+      "expectedNames": {
+        "nomAr": "حمام الغزاز",
+        "nomFr": "Hammam Ghezaz",
+        "nomEn": "Hammam Ghezaz"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 36.9402,
+        "lng": 11.0599
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 36.873986,
+        "lng": 11.1082328
+      },
+      "movedKm": 8.52504409842979,
+      "osm": {
+        "id": "osm:node:2078807462",
+        "url": "https://www.openstreetmap.org/node/2078807462",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2078807462.json",
+        "version": 7,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "حمام الغزاز",
+        "place": "village"
+      },
+      "geonames": {
+        "id": 2470586,
+        "name": "Hammam el Rhezez",
+        "lat": 36.87483,
+        "lng": 11.10837,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2470586",
+        "distanceToProposedKm": 0.09463869613628059
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+        "observation": "The proposed pin sits within the dense Hammam Ghezèze street network and resolves to Hammam Ghezèze. The separately viewed name-search screenshot shows the same named settlement.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 510,
+      "expectedGovernorateId": 355,
+      "expectedNames": {
+        "nomAr": "منزل بو زيان",
+        "nomFr": "Menzel Bouzayane",
+        "nomEn": "Menzel Bouzayane"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 34.6308,
+        "lng": 9.4117
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 34.5731138,
+        "lng": 9.4269175
+      },
+      "movedKm": 6.563885464245662,
+      "osm": {
+        "id": "osm:node:7371710998",
+        "url": "https://www.openstreetmap.org/node/7371710998",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/7371710998.json",
+        "version": 3,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "name": "منزل بوزيان",
+        "place": "village"
+      },
+      "geonames": {
+        "id": 13132701,
+        "name": "Menzel Bouzaiane",
+        "lat": 34.5732,
+        "lng": 9.42567,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/13132701",
+        "distanceToProposedKm": 0.11462027547268014
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+        "observation": "The proposed pin sits on P14 in the dense street network labelled Menzel Bouzaiane; its address card agrees.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 608,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "القصر",
+        "nomFr": "El Ksar",
+        "nomEn": "El Ksar"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 34.349,
+        "lng": 8.7701
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 34.3978553,
+        "lng": 8.8045119
+      },
+      "movedKm": 6.283798029929493,
+      "osm": {
+        "id": "osm:node:7372876054",
+        "url": "https://www.openstreetmap.org/node/7372876054",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/7372876054.json",
+        "version": 2,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "name": "القصر",
+        "place": "village"
+      },
+      "geonames": {
+        "id": 2473466,
+        "name": "El Ksar",
+        "lat": 34.3992,
+        "lng": 8.80399,
+        "featureClass": "P",
+        "featureCode": "PPLX",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2473466",
+        "distanceToProposedKm": 0.1570040864058775
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+        "observation": "The proposed pin is in the urban grid just north of Gafsa Gare; its coordinate result explicitly resolves to El Ksar Est.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 551,
+      "expectedGovernorateId": 360,
+      "expectedNames": {
+        "nomAr": "البطان",
+        "nomFr": "El Battan",
+        "nomEn": "El Battan"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 36.7862,
+        "lng": 9.7902
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 36.804353,
+        "lng": 9.844442
+      },
+      "movedKm": 5.234687070109467,
+      "osm": {
+        "id": "osm:node:3668370508",
+        "url": "https://www.openstreetmap.org/node/3668370508",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/3668370508.json",
+        "version": 8,
+        "timestamp": "2023-10-25T21:12:37Z",
+        "name": "البطان",
+        "place": "town"
+      },
+      "geonames": {
+        "id": 2473823,
+        "name": "El Battan",
+        "lat": 36.80368,
+        "lng": 9.84424,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2022-01-12",
+        "url": "https://www.geonames.org/2473823",
+        "distanceToProposedKm": 0.07696493109639231
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+        "observation": "The proposed pin sits in the built-up street network labelled Al-Battan / البطان near School El Battan; the snapped villa address is also Al-Battan.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 635,
+      "expectedGovernorateId": 362,
+      "expectedNames": {
+        "nomAr": "القصرين",
+        "nomFr": "Kasserine",
+        "nomEn": "Kasserine"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 35.1308,
+        "lng": 8.7916
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 35.1687646,
+        "lng": 8.8365654
+      },
+      "movedKm": 5.8765712189646395,
+      "osm": {
+        "id": "osm:node:287547703",
+        "url": "https://www.openstreetmap.org/node/287547703",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/287547703.json",
+        "version": 22,
+        "timestamp": "2025-12-23T13:54:19Z",
+        "name": "القصرين",
+        "place": "city"
+      },
+      "geonames": {
+        "id": 2473457,
+        "name": "Kasserine",
+        "lat": 35.16758,
+        "lng": 8.83651,
+        "featureClass": "P",
+        "featureCode": "PPLA",
+        "modified": "2026-04-14",
+        "url": "https://www.geonames.org/2473457",
+        "distanceToProposedKm": 0.13181773390111223
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+        "observation": "The proposed pin sits within the dense Kasserine city grid by P16 and Rue Abdelaziz Sbiki; both map label and card identify Kasserine.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      }
+    },
+    {
+      "delegationId": 1022,
+      "expectedGovernorateId": 347,
+      "expectedNames": {
+        "nomAr": "مطماطا",
+        "nomFr": "Matmata",
+        "nomEn": "Matmata"
+      },
+      "reviewedDate": "2026-09-07",
+      "original": {
+        "lat": 33.4552,
+        "lng": 9.7679
+      },
+      "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 33.5457377,
+        "lng": 9.9671116
+      },
+      "movedKm": 21.036869031664686,
+      "osm": {
+        "id": "osm:node:262722264",
+        "url": "https://www.openstreetmap.org/node/262722264",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/262722264.json",
+        "version": 28,
+        "timestamp": "2025-12-04T00:47:11Z",
+        "name": "مطماطة القديمة",
+        "place": "town"
+      },
+      "geonames": {
+        "id": 2463810,
+        "name": "Matmata",
+        "lat": 33.54445,
+        "lng": 9.97157,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2022-01-11",
+        "url": "https://www.geonames.org/2463810",
+        "distanceToProposedKm": 0.43729130928732285
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+        "observation": "The proposed pin lies on C107 within the mapped old Matmata settlement, labelled Matmatat-Al-Qadimal, near its hotel and welcome-sign landmarks.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      },
+      "identityNote": "Old Matmata (مطماطة القديمة), distinct from Nouvelle Matmata / مطماطة الجديدة source 1023."
+    },
+    {
+      "delegationId": 1084,
+      "expectedGovernorateId": 345,
+      "expectedNames": {
+        "nomAr": "الرجيش",
+        "nomFr": "Rejiche",
+        "nomEn": "Rejiche"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 35.4621,
+        "lng": 11.0132
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 35.4655214,
+        "lng": 11.0416985
+      },
+      "movedKm": 2.6088912877312027,
+      "osm": {
+        "id": "osm:node:2402352381",
+        "url": "https://www.openstreetmap.org/node/2402352381",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2402352381.json",
+        "version": 17,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "رجيش",
+        "place": "village"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2473274,
+        "name": "Rejiche",
+        "lat": 35.46665,
+        "lng": 11.03848,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473274",
+        "distanceToProposedKm": 0.3173469632204843,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed pin is embedded in the dense street network directly on the Rejiche / رجيش settlement label. The selected NurvaDev business address explicitly says Place de l'indépendance Rejiche.",
+        "originalObservation": "The original view has sparse roads and a pin away from the dense mapped town network; the card says Unnamed location, Near Rejiche.",
+        "limitation": "The business card may be a nearby selection. The map context supports a Rejiche settlement reference, not the exact coordinates of that business.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 35.4655214,
+              "lng": 11.0416985
+            },
+            "requestedQuery": "35.4655214,11.0416985",
+            "observedAt": "2026-09-07T06:25:06.276397+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_1084-2.png",
+            "screenshotSha256": "32ca8dd18a363178618bebca395d0040015fd595f5034e856572528c87898727",
+            "observationJson": "outputs/phone-maps-review/delegation_1084-2.json",
+            "observationJsonSha256": "aa91e740480ce4485f1feba01bcefbda5b6470834d5885a6161fb783a3285d5b",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 35.4621,
+              "lng": 11.0132
+            },
+            "requestedQuery": "35.4621,11.0132",
+            "observedAt": "2026-09-07T06:25:13.114072+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_1084-3.png",
+            "screenshotSha256": "374a75c99c79cf527542d98b63463d4da2ced8ea1887dbf0c8ba72df3e18ae6f",
+            "observationJson": "outputs/phone-maps-review/delegation_1084-3.json",
+            "observationJsonSha256": "f6be07b761704bee2292cb5f4a99e7a2d02b746c52d629a7d69ec2faf1afdb01",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 1020,
+      "expectedGovernorateId": 347,
+      "expectedNames": {
+        "nomAr": "مارث",
+        "nomFr": "Mareth",
+        "nomEn": "Mareth"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 33.63,
+        "lng": 10.24
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 33.617159,
+        "lng": 10.2882317
+      },
+      "movedKm": 4.688544489619358,
+      "osm": {
+        "id": "osm:node:352839775",
+        "url": "https://www.openstreetmap.org/node/352839775",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/352839775.json",
+        "version": 21,
+        "timestamp": "2025-11-02T11:21:25Z",
+        "name": "مارث",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2469174,
+        "name": "Mareth",
+        "lat": 33.61794,
+        "lng": 10.28536,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2469174",
+        "distanceToProposedKm": 0.2797346441724725,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture shows a dense street network near the P1 road and Mareth Regional Hospital, with the selected locality card explicitly labelled Mareth.",
+        "originalObservation": "The original view shows sparse roads around an Unnamed location whose card says Near Mareth Nord.",
+        "limitation": "The locality card supports the settlement identity, but the numeric query is absent and the pin is not an official calculation point.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 33.617159,
+              "lng": 10.2882317
+            },
+            "requestedQuery": "33.617159,10.2882317",
+            "observedAt": "2026-09-07T06:25:20.586989+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_1020-2.png",
+            "screenshotSha256": "aee4b5ef8b8407b2daf3a6955e0207d4846357e40e1f073d29c775f825cb74fb",
+            "observationJson": "outputs/phone-maps-review/delegation_1020-2.json",
+            "observationJsonSha256": "d6a0f81bf630757ae1ddc6ab2211e73a95d13b0f2412ca28e879d272b4bbe103",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 33.63,
+              "lng": 10.24
+            },
+            "requestedQuery": "33.63,10.24",
+            "observedAt": "2026-09-07T06:25:27.526167+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_1020-3.png",
+            "screenshotSha256": "a3102439f45ac8d199458bf8143eefba6ec04d086bdfbd19bf5e17e6f5bf899a",
+            "observationJson": "outputs/phone-maps-review/delegation_1020-3.json",
+            "observationJsonSha256": "4852848b799800048c9b10fe04c38738f57e91a2f6d88f2527d14bd467becc67",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 1024,
+      "expectedGovernorateId": 347,
+      "expectedNames": {
+        "nomAr": "الحامة",
+        "nomFr": "El Hamma",
+        "nomEn": "El Hamma"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 33.89,
+        "lng": 9.75
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 33.8894378,
+        "lng": 9.7997111
+      },
+      "movedKm": 4.588973178117307,
+      "osm": {
+        "id": "osm:node:298020344",
+        "url": "https://www.openstreetmap.org/node/298020344",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/298020344.json",
+        "version": 13,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "الحامة",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2473747,
+        "name": "El Hamma",
+        "lat": 33.89152,
+        "lng": 9.79629,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473747",
+        "distanceToProposedKm": 0.3915645340113349,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture shows the pin on P16 within the dense El Hamma / الحامة town network. The road address says P16, El Hamma, and the nearby supermarket label also names El Hamma.",
+        "originalObservation": "The original capture shows sparse roads and an Unnamed location card saying Near Bechima El Borj.",
+        "limitation": "Google selected a road address, so the displayed pin is evidence of settlement context rather than certification of the requested coordinate.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 33.8894378,
+              "lng": 9.7997111
+            },
+            "requestedQuery": "33.8894378,9.7997111",
+            "observedAt": "2026-09-07T06:25:34.885304+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_1024-2.png",
+            "screenshotSha256": "7614a700c1b57b3746908f6420104b097f11e02f7fa29e5cd23e78c933223714",
+            "observationJson": "outputs/phone-maps-review/delegation_1024-2.json",
+            "observationJsonSha256": "7b22a6df2b28feecfe4637b435306c25db7a6fb3e41ef99041587b5608d99e81",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 33.89,
+              "lng": 9.75
+            },
+            "requestedQuery": "33.89,9.75",
+            "observedAt": "2026-09-07T06:25:41.901709+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_1024-3.png",
+            "screenshotSha256": "19691570f8fccdd1fc8193eb2a7761115cff7ee8202f9a4bb5a7d829a5553e0c",
+            "observationJson": "outputs/phone-maps-review/delegation_1024-3.json",
+            "observationJsonSha256": "1b590179ac79606857049d1606672aff638340a5e3c653218196b819a696e807",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 434,
+      "expectedGovernorateId": 348,
+      "expectedNames": {
+        "nomAr": "النفيضة",
+        "nomFr": "Enfida",
+        "nomEn": "Enfida"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 36.16,
+        "lng": 10.39
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 36.1341194,
+        "lng": 10.3779916
+      },
+      "movedKm": 3.073155756687769,
+      "osm": {
+        "id": "osm:node:1439531928",
+        "url": "https://www.openstreetmap.org/node/1439531928",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1439531928.json",
+        "version": 18,
+        "timestamp": "2025-11-02T11:21:25Z",
+        "name": "النفيضة",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2473358,
+        "name": "Enfidha",
+        "lat": 36.13528,
+        "lng": 10.38083,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473358",
+        "distanceToProposedKm": 0.2857087034292308,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture places the pin directly among the Enfidha / النفيضة street network and labels, with Enfidaville and Enfidha Stadium nearby. The selected photographer business address is Enfidha 4030.",
+        "originalObservation": "The original capture shows sparse roads and an Unnamed location card saying Near Chegarnia, without the dense Enfidha town network in view.",
+        "limitation": "The photographer card is a nearby POI result. Its exact location is not used as the replacement coordinate.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 36.1341194,
+              "lng": 10.3779916
+            },
+            "requestedQuery": "36.1341194,10.3779916",
+            "observedAt": "2026-09-07T06:25:49.305818+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_434-2.png",
+            "screenshotSha256": "3db9d6cf04e297a110c4d9d12d25c435714c4966bbaa19cb5f83ace1d79d7f9e",
+            "observationJson": "outputs/phone-maps-review/delegation_434-2.json",
+            "observationJsonSha256": "52440afff0010c04a430733b7f146aa2369a3e4ab968a40575518aa1bc42e998",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 36.16,
+              "lng": 10.39
+            },
+            "requestedQuery": "36.16,10.39",
+            "observedAt": "2026-09-07T06:25:56.344085+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_434-3.png",
+            "screenshotSha256": "1ee21fabd5d5b7ac1dc333e4c68821978dac4dae0e8652eac9bb60c12def34b0",
+            "observationJson": "outputs/phone-maps-review/delegation_434-3.json",
+            "observationJsonSha256": "0cff9394b2f1bd5ec94be6f2a49c1627d9452f51ad7531edbad62cb44a31c3c8",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 436,
+      "expectedGovernorateId": 348,
+      "expectedNames": {
+        "nomAr": "سيدي بوعلي",
+        "nomFr": "Sidi Bouali",
+        "nomEn": "Sidi Bouali"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 35.95,
+        "lng": 10.5
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 35.9563486,
+        "lng": 10.470397
+      },
+      "movedKm": 2.7565491243275875,
+      "osm": {
+        "id": "osm:node:1444704293",
+        "url": "https://www.openstreetmap.org/node/1444704293",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1444704293.json",
+        "version": 9,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "سيدي بو علي",
+        "place": "village"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2466034,
+        "name": "Sidi Bou Ali",
+        "lat": 35.95667,
+        "lng": 10.47306,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2466034",
+        "distanceToProposedKm": 0.24234138496468685,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture shows the pin within the dense Sidi Bou Ali / سيدي بوعلي street network, near a pharmacy and Station OLA. The selected locality card says Sidi Bou Ali.",
+        "originalObservation": "The original capture shows much sparser roads around an Unnamed location card saying Near Sidi Bou Ali.",
+        "limitation": "Both captures use the same broader place name; the proposed map context better supports a central settlement reference, not a boundary change.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 35.9563486,
+              "lng": 10.470397
+            },
+            "requestedQuery": "35.9563486,10.470397",
+            "observedAt": "2026-09-07T06:26:03.713827+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_436-2.png",
+            "screenshotSha256": "7e3f5d63c339a0b78e50748133ebccbcdcd7f2079b2daff4c2a22034de2ae58f",
+            "observationJson": "outputs/phone-maps-review/delegation_436-2.json",
+            "observationJsonSha256": "acef6e3f83a3ecc001d2c3a659090fd3acc327b57a5aab50f0807352fd45f8a5",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 35.95,
+              "lng": 10.5
+            },
+            "requestedQuery": "35.95,10.5",
+            "observedAt": "2026-09-07T06:26:10.763741+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_436-3.png",
+            "screenshotSha256": "931e27eea5ab066a89d7cbedf1a79ddf16d6840e4ebcd7452a7ed05a695e08a8",
+            "observationJson": "outputs/phone-maps-review/delegation_436-3.json",
+            "observationJsonSha256": "dde8f99069bbc17d7cca3417f8d1650e8689049739b49c9d1e74efd9e1809e07",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 488,
+      "expectedGovernorateId": 353,
+      "expectedNames": {
+        "nomAr": "بن قردان",
+        "nomFr": "Ben Guerdene",
+        "nomEn": "Ben Guerdene"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 33.17,
+        "lng": 11.22
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 33.1403223,
+        "lng": 11.2170109
+      },
+      "movedKm": 3.3117204707469865,
+      "osm": {
+        "id": "osm:node:287588734",
+        "url": "https://www.openstreetmap.org/node/287588734",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/287588734.json",
+        "version": 20,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "بن قردان",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2472431,
+        "name": "Ben Gardane",
+        "lat": 33.13783,
+        "lng": 11.21965,
+        "featureCode": "PPL",
+        "modified": "2026-07-28",
+        "url": "https://www.geonames.org/2472431",
+        "distanceToProposedKm": 0.3703801398291166,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture shows the pin within the Ben Gardane / بن قردان street network. The selected market card explicitly says Cente ville Ben Gardane and its address is in Ben Gardane.",
+        "originalObservation": "The original view has sparse roads around an Unnamed location near Ben Gardane, with C110 at the western side of the capture.",
+        "limitation": "The market card may be a nearby snapped result. The sourced OSM place coordinate remains the proposed reference.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 33.1403223,
+              "lng": 11.2170109
+            },
+            "requestedQuery": "33.1403223,11.2170109",
+            "observedAt": "2026-09-07T06:26:18.199872+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_488-2.png",
+            "screenshotSha256": "b005a51113b6d1642120785824b30c92b019f52d35eedf66ee2dd334f1a627be",
+            "observationJson": "outputs/phone-maps-review/delegation_488-2.json",
+            "observationJsonSha256": "71d6c6f39cb89388a08adc110b09e20f4ff45322a41e087eabc6021cbbc738d9",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 33.17,
+              "lng": 11.22
+            },
+            "requestedQuery": "33.17,11.22",
+            "observedAt": "2026-09-07T06:26:25.073055+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_488-3.png",
+            "screenshotSha256": "2e46f53c038f103e1808e24db44aecad82d87a07aea206b72625bfe4fbd68bd8",
+            "observationJson": "outputs/phone-maps-review/delegation_488-3.json",
+            "observationJsonSha256": "f59c244b106635cbdf8bf203fb2be5e5d5d5cf4e2aa702e9dc7b6cafcca40243",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 499,
+      "expectedGovernorateId": 354,
+      "expectedNames": {
+        "nomAr": "بوسالم",
+        "nomFr": "Bou Salem",
+        "nomEn": "Bou Salem"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 36.5673,
+        "lng": 8.9671
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 36.607408,
+        "lng": 8.9696535
+      },
+      "movedKm": 4.465629672718391,
+      "osm": {
+        "id": "osm:node:1837034352",
+        "url": "https://www.openstreetmap.org/node/1837034352",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1837034352.json",
+        "version": 13,
+        "timestamp": "2025-11-30T16:07:31Z",
+        "name": "بوسالم",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2471956,
+        "name": "Bou Salem",
+        "lat": 36.60732,
+        "lng": 8.96981,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2471956",
+        "distanceToProposedKm": 0.01705551516255584,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture places the pin on a roundabout amid the Bou Salem street network beside Bou Salem Regional Hospital. The selected Fountain Roundabout card names Fontaine de Bousalem / نافورة بوسالم.",
+        "originalObservation": "The original capture shows sparse roads and an Unnamed location whose card says Near Bir Lakhdar.",
+        "limitation": "The fountain card supports the named settlement context; it does not certify the exact query coordinate or an INM reference point.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 36.607408,
+              "lng": 8.9696535
+            },
+            "requestedQuery": "36.607408,8.9696535",
+            "observedAt": "2026-09-07T06:26:32.434570+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_499-2.png",
+            "screenshotSha256": "6bcd082a343522e33f7fbb1fc279afab896476a973f80acc111c2ec03fa89523",
+            "observationJson": "outputs/phone-maps-review/delegation_499-2.json",
+            "observationJsonSha256": "14d1779902bb142d952e1651e05dbac35e6dc1c3845a912c7d86e6d18665a85f",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 36.5673,
+              "lng": 8.9671
+            },
+            "requestedQuery": "36.5673,8.9671",
+            "observedAt": "2026-09-07T06:26:39.268492+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_499-3.png",
+            "screenshotSha256": "75aeb0e286b268f1ed500f186b80cf8ec5a53296999eedb495e5e7d70cff69e3",
+            "observationJson": "outputs/phone-maps-review/delegation_499-3.json",
+            "observationJsonSha256": "952ff7f0c562bc8310a59e5081f995762ae62f30ef0031450480d6fadb449a0e",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 542,
+      "expectedGovernorateId": 359,
+      "expectedNames": {
+        "nomAr": "منزل شاكر",
+        "nomFr": "Menzel Chaker",
+        "nomEn": "Menzel Chaker"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 34.9877,
+        "lng": 10.3947
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 34.970059,
+        "lng": 10.3715504
+      },
+      "movedKm": 2.8803294888689357,
+      "osm": {
+        "id": "osm:node:434547646",
+        "url": "https://www.openstreetmap.org/node/434547646",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/434547646.json",
+        "version": 15,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "منزل شاكر",
+        "place": "village"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2469251,
+        "name": "Menzel Chaker",
+        "lat": 34.96472,
+        "lng": 10.36944,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2469251",
+        "distanceToProposedKm": 0.6240387601875845,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-last-seven.json",
+        "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+        "proposedObservation": "Pin lies at the P13/C119 road junction on the Manzil Sakir town street network; the map labels Manzil Sakir and the card gives P13, Manzil Sakir.",
+        "originalObservation": "Pin is on a sparse road area northeast of that street network. Maps selects a housing-society POI with a broad Manzil Sakir address; the nearby Manzel chaker POI text does not establish a settlement center.",
+        "limitation": "The proposed pin is near the northern town junction, not proof of an exact central point; GeoNames is about 624m away within the settlement reference area.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 34.970059,
+              "lng": 10.3715504
+            },
+            "requestedQuery": "34.970059,10.3715504",
+            "observedAt": "2026-09-07T06:26:46.415027+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_542-2.png",
+            "screenshotSha256": "28225d2004817fb80dbeffba551d6c6750a787c54d705e5fdad0b94e19c685e0",
+            "observationJson": "outputs/phone-maps-review/delegation_542-2.json",
+            "observationJsonSha256": "00e3c1a5e997304f84dc2279ca53bd08b00c0a4cb620056e5be22a06e3206108",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 34.9877,
+              "lng": 10.3947
+            },
+            "requestedQuery": "34.9877,10.3947",
+            "observedAt": "2026-09-07T06:26:53.592658+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_542-3.png",
+            "screenshotSha256": "f3541a4026dacb5629bf269a76cd552ef26c8b721017bedde48d4231d271b3ef",
+            "observationJson": "outputs/phone-maps-review/delegation_542-3.json",
+            "observationJsonSha256": "95ddce928e47aecf6e222e0a6deb66695d3a8545d9b333dcfea4b911a4769a05",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 546,
+      "expectedGovernorateId": 359,
+      "expectedNames": {
+        "nomAr": "الصخيرة",
+        "nomFr": "Skhira",
+        "nomEn": "Skhira"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 34.28,
+        "lng": 10.07
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 34.2988183,
+        "lng": 10.0690355
+      },
+      "movedKm": 2.0943747305792075,
+      "osm": {
+        "id": "osm:node:559394563",
+        "url": "https://www.openstreetmap.org/node/559394563",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/559394563.json",
+        "version": 16,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "name": "الصخيرة",
+        "place": "village"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2473161,
+        "name": "Skhira",
+        "lat": 34.2992,
+        "lng": 10.06999,
+        "featureCode": "PPL",
+        "modified": "2022-01-11",
+        "url": "https://www.geonames.org/2473161",
+        "distanceToProposedKm": 0.09741201551683276,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-last-seven.json",
+        "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+        "proposedObservation": "Pin lies in the Skhira urban street grid near La gare de Skhira and P1/R89. Both Skhira and الصخيرة labels are visible.",
+        "originalObservation": "Pin is in open map space south of the visible urban grid; the card says Unnamed location, Near Skhira.",
+        "limitation": "The map confirms settlement placement, not an official calculation anchor; GeoNames is about 97m from the proposal.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 34.2988183,
+              "lng": 10.0690355
+            },
+            "requestedQuery": "34.2988183,10.0690355",
+            "observedAt": "2026-09-07T06:27:00.939016+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_546-2.png",
+            "screenshotSha256": "ab1613dc56e41caaddeede404173c8e4e89060b8b046e4841e2ec2d787f883e1",
+            "observationJson": "outputs/phone-maps-review/delegation_546-2.json",
+            "observationJsonSha256": "9a1593d8b3adea75f25578a8dc06704c0a59a4f32d602f45f33cd02363e3bb25",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 34.28,
+              "lng": 10.07
+            },
+            "requestedQuery": "34.28,10.07",
+            "observedAt": "2026-09-07T06:27:07.862306+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_546-3.png",
+            "screenshotSha256": "404a3f370ff8706a18773fcec90c5b489b86e4beb3814d5a4697289ac9070893",
+            "observationJson": "outputs/phone-maps-review/delegation_546-3.json",
+            "observationJsonSha256": "d22b20e36522354d49aad4433c6e69486e5ac7047e9f0a1ffc768d4f555d1a48",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 569,
+      "expectedGovernorateId": 361,
+      "expectedNames": {
+        "nomAr": "المتلين",
+        "nomFr": "Al Matlin ",
+        "nomEn": "Al Matlin "
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 37.21,
+        "lng": 10.02
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 37.2441137,
+        "lng": 10.047511
+      },
+      "movedKm": 4.507983344566727,
+      "osm": {
+        "id": "osm:node:1132950382",
+        "url": "https://www.openstreetmap.org/node/1132950382",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1132950382.json",
+        "version": 8,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "ماتلين",
+        "place": "village"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2473533,
+        "name": "Al Matlīn",
+        "lat": 37.24516,
+        "lng": 10.05,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2473533",
+        "distanceToProposedKm": 0.24915232644298219,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-last-seven.json",
+        "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+        "proposedObservation": "Pin is in the Metline street network beside the Metline/ماتلين label, near CTRE VILLE/وسط البلاد. The card is Metline.",
+        "originalObservation": "Pin is on a green land area without a settlement street grid; the card says Unnamed location, Near El Garia.",
+        "limitation": "This supports moving the town reference into Metline; it does not certify an administrative boundary or the land cover at the old point.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 37.2441137,
+              "lng": 10.047511
+            },
+            "requestedQuery": "37.2441137,10.047511",
+            "observedAt": "2026-09-07T06:27:15.367672+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_569-2.png",
+            "screenshotSha256": "ca07de52606d925dab8caafa76596e36d2cf57b98905eaa54d7e2725918d3e76",
+            "observationJson": "outputs/phone-maps-review/delegation_569-2.json",
+            "observationJsonSha256": "e4eaa35c357e0621c26ea32b80ed9c322f98b36024125924ffdc2cb875a666a0",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 37.21,
+              "lng": 10.02
+            },
+            "requestedQuery": "37.21,10.02",
+            "observedAt": "2026-09-07T06:27:22.188644+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_569-3.png",
+            "screenshotSha256": "12955311b790af959dc6e49f733ac9f4f5f67a4fd411910d770c5fdc9175a2d2",
+            "observationJson": "outputs/phone-maps-review/delegation_569-3.json",
+            "observationJsonSha256": "4bbbf1071e3de7eccd080d7a2757e0585bb29b02d82de581aa973f2a06dcc48f",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 596,
+      "expectedGovernorateId": 364,
+      "expectedNames": {
+        "nomAr": "زرمدين",
+        "nomFr": "Zeramdine",
+        "nomEn": "Zeramdine"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 35.61,
+        "lng": 10.72
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 35.5791762,
+        "lng": 10.7379156
+      },
+      "movedKm": 3.7909778459453523,
+      "osm": {
+        "id": "osm:node:1165832678",
+        "url": "https://www.openstreetmap.org/node/1165832678",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1165832678.json",
+        "version": 15,
+        "timestamp": "2023-11-30T19:22:38Z",
+        "name": "زرمدين",
+        "place": "village"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2472838,
+        "name": "Zeramedine",
+        "lat": 35.57525,
+        "lng": 10.73456,
+        "featureCode": "PPL",
+        "modified": "2024-07-23",
+        "url": "https://www.geonames.org/2472838",
+        "distanceToProposedKm": 0.5316893868058561,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-last-seven.json",
+        "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+        "proposedObservation": "Pin is at a junction within a dense urban road network. The selected location card is Zaramidin, Tunisia.",
+        "originalObservation": "Pin is in the sparse northern road/garden area near L1551, with Unnamed location, Near Zeramdine Nord.",
+        "limitation": "The differing transliteration Zaramidin/Zeramdine is consistent with the same town in the proposal evidence. GeoNames is about 532m away, so no exact center is claimed.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 35.5791762,
+              "lng": 10.7379156
+            },
+            "requestedQuery": "35.5791762,10.7379156",
+            "observedAt": "2026-09-07T06:27:29.458965+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_596-2.png",
+            "screenshotSha256": "29b30a8fbcb87f1e1c776e57d1336f19e9c9428994dcd534754679ebea91d194",
+            "observationJson": "outputs/phone-maps-review/delegation_596-2.json",
+            "observationJsonSha256": "2fb6ae56d458bed4004341791f3ab31da064ddb0d9bb123ef6daedf837a4c145",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 35.61,
+              "lng": 10.72
+            },
+            "requestedQuery": "35.61,10.72",
+            "observedAt": "2026-09-07T06:27:36.510847+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_596-3.png",
+            "screenshotSha256": "2f3687e4ee8d0a086dad1a8b63317092b0cb5a13257e365f5cc0cc3f1d323490",
+            "observationJson": "outputs/phone-maps-review/delegation_596-3.json",
+            "observationJsonSha256": "3884951cbdf19dfcd4baf54c5d0328caab5ad17fcf166439c6b9f985083e9c83",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 604,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "أم العرايس",
+        "nomFr": "Moulares",
+        "nomEn": "Moulares"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 34.48,
+        "lng": 8.24
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 34.485737,
+        "lng": 8.2733836
+      },
+      "movedKm": 3.1256472915508184,
+      "osm": {
+        "id": "osm:node:2165194615",
+        "url": "https://www.openstreetmap.org/node/2165194615",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2165194615.json",
+        "version": 13,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "أم العرائس",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2464378,
+        "name": "Moularès",
+        "lat": 34.4888,
+        "lng": 8.26874,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2464378",
+        "distanceToProposedKm": 0.5451013033175234,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-last-seven.json",
+        "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+        "proposedObservation": "Pin is inside the Moulares street network, with the Moularès/أم العرائس town label and a Moularès location card.",
+        "originalObservation": "Pin lies amid sparse roads without the town grid; the card says Unnamed location, Near Oum El Araies Centre.",
+        "limitation": "The old card uses a broad administrative address containing Centre; this does not make the original pin a central settlement point.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 34.485737,
+              "lng": 8.2733836
+            },
+            "requestedQuery": "34.485737,8.2733836",
+            "observedAt": "2026-09-07T06:27:43.872491+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_604-2.png",
+            "screenshotSha256": "4a3f8352d9de74827a7caf5bc0abf8fd26c6f91eb2df93891f66d43bf1901fb1",
+            "observationJson": "outputs/phone-maps-review/delegation_604-2.json",
+            "observationJsonSha256": "a77347f30c9199f80054ef3a1c5131d5ccef4a8fdd158ee81f8288aaf0956864",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 34.48,
+              "lng": 8.24
+            },
+            "requestedQuery": "34.48,8.24",
+            "observedAt": "2026-09-07T06:27:50.732651+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_604-3.png",
+            "screenshotSha256": "088711a3dbc44b3c70de8b1323b903855f1dfc8297c09c5a06b88e92118d2b99",
+            "observationJson": "outputs/phone-maps-review/delegation_604-3.json",
+            "observationJsonSha256": "2759f6f60e6a344d6f59afdade9b0d894485ebbe50fc8e3b242f28bc3b2baf27",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 610,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "سيدي عيش",
+        "nomFr": "Sidi Aich",
+        "nomEn": "Sidi Aich"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 34.6976,
+        "lng": 8.8142
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 34.7328584,
+        "lng": 8.7827624
+      },
+      "movedKm": 4.860804128084213,
+      "osm": {
+        "id": "osm:node:3203082588",
+        "url": "https://www.openstreetmap.org/node/3203082588",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/3203082588.json",
+        "version": 8,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "سيدي عيش",
+        "place": "village"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2466150,
+        "name": "Sidi Aïch",
+        "lat": 34.73263,
+        "lng": 8.78276,
+        "featureCode": "PPL",
+        "modified": "2018-08-05",
+        "url": "https://www.geonames.org/2466150",
+        "distanceToProposedKm": 0.02539786819105915,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-last-seven.json",
+        "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+        "proposedObservation": "Pin is within the Ksar Sidi Aich street grid near pharmacie sidi aich; the map shows Ksar Sidi Aich/قصر سيدي عيش. Maps selects the nearby JOZEF GSM shop.",
+        "originalObservation": "Pin is in a sparse rural track area near Hinchir si Ibrahim. Maps selects a crop-grower POI with a broad Ksar Sidi Aich address.",
+        "limitation": "The selected business POI may be snapped to a nearby location, so its marker does not certify the exact query coordinate. The settlement placement is corroborated independently by OSM and GeoNames, about 25m apart.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 34.7328584,
+              "lng": 8.7827624
+            },
+            "requestedQuery": "34.7328584,8.7827624",
+            "observedAt": "2026-09-07T06:27:58.231145+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_610-2.png",
+            "screenshotSha256": "3679dac13968f163c1fa95297caaa61198d869bfc5f5c3a8588a44fb318720f5",
+            "observationJson": "outputs/phone-maps-review/delegation_610-2.json",
+            "observationJsonSha256": "39486210183127d265cc993b3e7b6bb0eccfd80f5510f55fe85122cbe797698c",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 34.6976,
+              "lng": 8.8142
+            },
+            "requestedQuery": "34.6976,8.8142",
+            "observedAt": "2026-09-07T06:28:05.265159+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_610-3.png",
+            "screenshotSha256": "39c7ebd7923c23fb61285b38fd72a5c93c5fa4d8e2284b0710d03d333430533c",
+            "observationJson": "outputs/phone-maps-review/delegation_610-3.json",
+            "observationJsonSha256": "3a1e28af6e6001976e34baf7f46248e89f21e92d7027c0cfa6b478a641daafd6",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 611,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "القطار",
+        "nomFr": "El Guettar",
+        "nomEn": "El Guettar"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 34.32,
+        "lng": 8.94
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 34.3394652,
+        "lng": 8.950364
+      },
+      "movedKm": 2.364414451233457,
+      "osm": {
+        "id": "osm:node:2177334841",
+        "url": "https://www.openstreetmap.org/node/2177334841",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2177334841.json",
+        "version": 9,
+        "timestamp": "2021-02-04T01:35:54Z",
+        "name": "القطار",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2473454,
+        "name": "El Guetar",
+        "lat": 34.33628,
+        "lng": 8.94964,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2473454",
+        "distanceToProposedKm": 0.3603623976406534,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-last-seven.json",
+        "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+        "proposedObservation": "Pin is in the dense El Guettar street grid near the El Guettar/القطار town label. The selected Police Office card gives Avenue de Martyrs, El Guettar.",
+        "originalObservation": "Pin is in open map space without a town street network. The card says Unnamed location, Near El Guetar Ouest.",
+        "limitation": "The selected police POI may be near the query point; it corroborates the settlement area but is not an official prayer calculation coordinate.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 34.3394652,
+              "lng": 8.950364
+            },
+            "requestedQuery": "34.3394652,8.950364",
+            "observedAt": "2026-09-07T06:28:12.529040+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_611-2.png",
+            "screenshotSha256": "d1b8dd50c00efbf70e11fc0e2d586eeff10a24d81b350f509eb83396e2436afa",
+            "observationJson": "outputs/phone-maps-review/delegation_611-2.json",
+            "observationJsonSha256": "a7c403e8af0c5d831000edd6dee1d988f7c85ae56f1fc6c45b8d8dee4bcd79ff",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 34.32,
+              "lng": 8.94
+            },
+            "requestedQuery": "34.32,8.94",
+            "observedAt": "2026-09-07T06:28:19.587681+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_611-3.png",
+            "screenshotSha256": "9f11a36cc2665e1cc6b6ed9ad51908f5be71c7601c4ef8ca9226d5d0c246fb99",
+            "observationJson": "outputs/phone-maps-review/delegation_611-3.json",
+            "observationJsonSha256": "d9b7d55663dfa8fc2fa85028f7d22d24887699e50661094d7a2c96c36914c258",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    {
+      "delegationId": 417,
+      "expectedGovernorateId": 344,
+      "expectedNames": {
+        "nomAr": "برقو",
+        "nomFr": "Bargou",
+        "nomEn": "Bargou"
+      },
+      "reviewedDate": "2026-09-08",
+      "reviewBatchId": "2026-09-08-bargou-kalaa-settlement-reference-proposal",
+      "original": {
+        "lat": 36.09,
+        "lng": 9.53
+      },
+      "originalSourceAssetSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+      "originalProvenance": "Unchanged legacy point in the byte-pinned source asset after the existing 26 corrections. External per-coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 36.0914446,
+        "lng": 9.5667337
+      },
+      "movedKm": 3.304612336423831,
+      "distanceMetric": "Spherical Haversine, matching the source-review/app metric; not the slightly different WGS84 ellipsoidal distance.",
+      "osm": {
+        "id": "osm:node:1278517274",
+        "url": "https://www.openstreetmap.org/node/1278517274",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1278517274.json",
+        "version": 12,
+        "timestamp": "2023-10-25T21:12:37Z",
+        "changeset": 143134733,
+        "name": "برقو",
+        "place": "village",
+        "tags": {
+          "alt_name": "البرقو",
+          "alt_name:ar": "البرقو",
+          "name": "برقو",
+          "name:ar": "برقو",
+          "name:en": "Bargou",
+          "name:fr": "Bargou",
+          "old_name": "ربع أولاد يحيى",
+          "old_name:ar": "ربع أولاد يحيى",
+          "place": "village",
+          "postal_code": "6170",
+          "wikidata": "Q2884486",
+          "wikimedia_commons": "Category:Bargou",
+          "wikipedia": "ar:برقو"
+        }
+      },
+      "osmEvidence": {
+        "liveResponse": {
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-node-1278517274.json",
+          "sha256": "a69256e76e59ff545e94a9c1fbdd595802eb2a658e515891794fed444d75cea4"
+        },
+        "source": "Public OpenStreetMap API identity snapshot; not a new PBF extraction.",
+        "cachedTagsAndCoordinatesEqual": true,
+        "retrievalEvidence": {
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-live-response-manifest.json",
+          "sha256": "122e2e447a918e50bb926e4789b179f154aeefab2b56399366281adbb6d0ceb5"
+        }
+      },
+      "sourceReviews": [
+        {
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-source-review.json",
+          "sha256": "68744f5473660733b91c79906af10802f856c20e3775141eac197caf72e8d2f6"
+        },
+        {
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-independent-review.json",
+          "sha256": "175ed4b3731bb8f2b52bd76bcf56287c1d42b025a1027d32d5e9265465585ca7"
+        }
+      ],
+      "scope": "Named settlement reference for nearest available meteo.tn timetable selection. Not certified INM prayer-calculation coordinates or a settlement/admin boundary.",
+      "phoneVisualReviewPerformedInThisBatch": false,
+      "primaryCorroboration": [
+        {
+          "requestedUrl": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببرقو",
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-social-unit.html",
+          "sha256": "6f4f927273a9370525552d5127d7cc8b783b037d919b9a8f0c33d4d3a19ffb52"
+        },
+        {
+          "requestedUrl": "https://www.commune-bargou.gov.tn/index.php/2022-03-29-08-57-12/2022-03-29-11-21-25",
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-municipal-geography.html",
+          "sha256": "5aebaaaf2e7023b8774471d7087fc9aa7d46c754e1ee71f26f6db4c844dc9173"
+        }
+      ],
+      "sourceQualification": "The ministry publishes the exact OSM point, potentially from shared upstream data. The municipality publishes a nearby point. Reviewed whole-imada map/decree places the named point inside Bargou and legacy point outside that imada; no entire-municipality or complete-built-up-extent claim follows.",
+      "reviewEvidence": {
+        "file": "coordinate-reviews/bargou-kalaa-2026-09-08/source-reference-review.json",
+        "sha256": "e1b43498bcfcb38e66b878f53dec00c8e8dc0fc5027e8e2925690142e1ca6ec4"
+      }
+    },
+    {
+      "delegationId": 443,
+      "expectedGovernorateId": 348,
+      "expectedNames": {
+        "nomAr": "القلعة الصغيرة",
+        "nomFr": "Kalaa Seghira",
+        "nomEn": "Kalaa Seghira"
+      },
+      "reviewedDate": "2026-09-08",
+      "reviewBatchId": "2026-09-08-bargou-kalaa-settlement-reference-proposal",
+      "original": {
+        "lat": 35.805,
+        "lng": 10.575
+      },
+      "originalSourceAssetSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+      "originalProvenance": "Unchanged legacy point in the byte-pinned source asset after the existing 26 corrections. External per-coordinate provenance was not documented.",
+      "proposed": {
+        "lat": 35.8241499,
+        "lng": 10.5610794
+      },
+      "movedKm": 2.47179885632233,
+      "distanceMetric": "Spherical Haversine, matching the source-review/app metric; not the slightly different WGS84 ellipsoidal distance.",
+      "osm": {
+        "id": "osm:node:1495587105",
+        "url": "https://www.openstreetmap.org/node/1495587105",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1495587105.json",
+        "version": 8,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "changeset": 179509225,
+        "name": "القلعة الصغرى",
+        "place": "village",
+        "tags": {
+          "addr:city": "Kalaa Sghira",
+          "addr:governorate": "Sousse",
+          "name": "القلعة الصغرى",
+          "name:ar": "القلعة الصغرى",
+          "name:en": "Kalaa Sghira",
+          "name:fr": "Kalaa Sghira",
+          "name:nl": "Kalaa Sghira",
+          "place": "village"
+        }
+      },
+      "osmEvidence": {
+        "liveResponse": {
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-node-1495587105.json",
+          "sha256": "81af96007b5cdcdd4abacbf0e0ab3ccc0ae1dda7d3da02df4917dddfeff8e932"
+        },
+        "source": "Public OpenStreetMap API identity snapshot; not a new PBF extraction.",
+        "cachedTagsAndCoordinatesEqual": true,
+        "retrievalEvidence": {
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-retrieval-manifest.json",
+          "sha256": "d254d5455d815f2dd8d3e4be4379ac4f0a0e811349159411533adf6f49f1a5b8"
+        }
+      },
+      "sourceReviews": [
+        {
+          "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-source-review.json",
+          "sha256": "e0303bf691ed72ce846395f6c3cd3ac2cbd64c56ed520277ceab4433ff5adbfb"
+        }
+      ],
+      "scope": "Named settlement reference for nearest available meteo.tn timetable selection. Not certified INM prayer-calculation coordinates or a settlement/admin boundary.",
+      "phoneVisualReviewPerformedInThisBatch": false,
+      "primaryCorroboration": {
+        "provider": "Tunisian Ministry of Social Affairs",
+        "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-القلعة-الصغرى-سوسة",
+        "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-social-local-unit.html",
+        "sha256": "bc67ec4f968c43d7877d07075a5f0e16c90c7c97b87be7e2e1bf62899683ca94",
+        "stableContentNode": "3059",
+        "title": "الوحدة المحلية للنهوض الاجتماعي القلعة الصغرى سوسة",
+        "publishedAddress": "نهج الطيب المهيري –القلعة الصغرى سوسة",
+        "publishedPoint": {
+          "lat": 35.823752,
+          "lng": 10.564552
+        },
+        "visiblePageLastUpdate": "09/07/2026 - 14:20",
+        "exactSameAsOsmPoint": false,
+        "scope": "The ministry publishes a public local administrative facility address and coordinates. It corroborates the settlement neighborhood and name; it does not independently measure the OSM village point or provide its boundary."
+      },
+      "geonames": {
+        "id": "2473481",
+        "name": "Kalaa Srira",
+        "aliases": [
+          "Al Qal`ah as Saghirah",
+          "Al Qal`ah as Sughra",
+          "Al Qal‘ah aş Şaghīrah",
+          "Al Qal‘ah aş Şughrá",
+          "Kalaa Seghira",
+          "Kalaa Srira",
+          "Kalaa-Sghira",
+          "Kalâa Seghira",
+          "Srireh"
+        ],
+        "lat": 35.82244,
+        "lng": 10.55739,
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "distanceToProposedKm": 0.38314031528403664
+      },
+      "sourceQualification": "The explicit named village is corroborated by a nearby ministry facility and GeoNames. The legacy point is not proven outside the whole town. Source names retain the bundled spelling; no locality rename is part of this proposal.",
+      "reviewEvidence": {
+        "file": "coordinate-reviews/bargou-kalaa-2026-09-08/source-reference-review.json",
+        "sha256": "e1b43498bcfcb38e66b878f53dec00c8e8dc0fc5027e8e2925690142e1ca6ec4"
+      }
+    },
+    {
+      "delegationId": 603,
+      "expectedGovernorateId": 364,
+      "expectedNames": {
+        "nomAr": "بنبلة",
+        "nomFr": "Benbla",
+        "nomEn": "Benbla"
+      },
+      "reviewedDate": "2026-09-08",
+      "original": {
+        "lat": 35.682,
+        "lng": 10.7662
+      },
+      "proposed": {
+        "lat": 35.6919328,
+        "lng": 10.7921125
+      },
+      "originalProvenance": "Legacy bundled reference point in gouvernorats.json SHA256 4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e; no external INM origin was documented.",
+      "osm": {
+        "id": "osm:node:1212253279",
+        "url": "https://www.openstreetmap.org/node/1212253279",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1212253279",
+        "version": 16,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "بنبلة",
+        "place": "village",
+        "responseSha256": "c714e00a970df2e910604a858d008bb84e68797be7d545203372529e12262b4f"
+      },
+      "reviewEvidence": {
+        "file": "coordinate-reviews/bembla-2026-09-08/source-reference-review.json",
+        "sha256": "9af70e413c4d6a213d17aa617b4ad1cb59bebf7c7f50dd98360deb3f3a7ff35d"
+      },
+      "limitations": [
+        "Settlement reference only, not certified INM calculation coordinates.",
+        "No official sector boundary import accompanies this correction."
+      ]
+    },
+    {
+      "delegationId": 500,
+      "expectedGovernorateId": 354,
+      "expectedNames": {
+        "nomAr": "واد مليز",
+        "nomFr": "Oued Mliz",
+        "nomEn": "Oued Mliz"
+      },
+      "reviewedDate": "2026-09-08",
+      "original": {
+        "lat": 36.4539,
+        "lng": 8.5501
+      },
+      "proposed": {
+        "lat": 36.4678121,
+        "lng": 8.5500007
+      },
+      "originalSourceAssetSha256": "20cdb11ccc5eb4f4eb07198b222a16bd1f5493224487185e6f3a6cf593857084",
+      "originalProvenance": "Legacy bundled locality reference in the exact originalSourceAssetSha256 governorate asset. No external INM origin for36.4539,8.5501 is documented; this correction chooses a reviewed settlement reference, not a certified INM calculation station.",
+      "movedKm": 1.5469804280099577,
+      "osm": {
+        "id": "osm:node:2840204369",
+        "url": "https://www.openstreetmap.org/node/2840204369",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2840204369",
+        "version": 8,
+        "timestamp": "2020-07-17T08:38:41Z",
+        "changeset": 88131134,
+        "name": "وادي مليز",
+        "place": "village",
+        "tags": {
+          "alt_name:ar": "واد مليز",
+          "name": "وادي مليز",
+          "name:ar": "وادي مليز",
+          "name:de": "Wadi Maliz",
+          "name:en": "Oued Melliz",
+          "name:fr": "Oued Meliz",
+          "place": "village",
+          "postal_code": "8115",
+          "wikidata": "Q3136209",
+          "wikipedia": "ar:وادي مليز"
+        }
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-08",
+        "liveResponse": {
+          "file": "coordinate-reviews/oued-meliz-2026-09-08/node-2840204369.xml",
+          "sha256": "46f916a7fa28a88e8ef3b7c13f699745aa897963f8b1058ed9b9e979d3a0763e"
+        },
+        "format": "OSM XML",
+        "responseUrl": "https://api.openstreetmap.org/api/0.6/node/2840204369",
+        "allTagsAndCoordinatesEqualCached": true
+      },
+      "primaryCorroboration": {
+        "file": "coordinate-reviews/oued-meliz-2026-09-08/social-local-unit.html",
+        "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2",
+        "url": "https://www.social.gov.tn/en/node/3498",
+        "publishedPoint": {
+          "lat": 36.4678121,
+          "lng": 8.5500007
+        },
+        "qualification": "Official local-unit coordinate at the town node; not an independently measured INM anchor."
+      },
+      "sourceReviews": [
+        {
+          "file": "coordinate-reviews/oued-meliz-2026-09-08/source-reference-review.json",
+          "sha256": "567ea56701a847c4a80f392105bd2a94f1f977d254a2060d32442a4285543669"
+        },
+        {
+          "file": "coordinate-reviews/oued-meliz-2026-09-08/map-position-review-data.json",
+          "sha256": "a82ad1b6218b014a5fa250876ede28122e363a1c05bbf32f6bbb9fe5df2e4cc7"
+        }
+      ],
+      "reviewEvidence": {
+        "file": "coordinate-reviews/oued-meliz-2026-09-08/source-reference-review.json",
+        "sha256": "567ea56701a847c4a80f392105bd2a94f1f977d254a2060d32442a4285543669"
+      },
+      "independentReview": {
+        "root": "TASK",
+        "file": "outputs/oued-meliz-reference-independent-review.json",
+        "sha256": "b803457c12c297268abc558a2b0dbf3a34899f2f595e494cf9beacc3b86c5a6c"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-08",
+        "decision": "supported_as_reviewed_settlement_reference",
+        "report": "coordinate-reviews/oued-meliz-2026-09-08/two-reference-phone-visual-review.json",
+        "reportSha256": "a5e3b9975a84fc6f1607d2ff9c9004414becc831a6de41b5a59feb3af94877a3",
+        "records": [
+          {
+            "rowId": "delegation:500",
+            "observationIndex": 2,
+            "query": "Oued Meliz Jendouba Tunisia",
+            "visualFinding": "Named result Oued Mliz / وادي مليز and visible regional map label Wadi Maliz.",
+            "qualification": "Supports name association; regional dotted outline was not extracted or certified.",
+            "screenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-2.png",
+              "sha256": "7c2cb6f9e7190500865a61cd5fea454776b8540272a847ca68d603f73a5aa260"
+            },
+            "capture": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-2.json",
+              "sha256": "bcf55a91ffa2e50b939ff9e9f068d9b337874c9b942a9a16827195a51ca92731"
+            }
+          },
+          {
+            "rowId": "delegation:500",
+            "observationIndex": 3,
+            "query": "36.4539,8.5501",
+            "visualFinding": "Old coordinate shows sparse roads; Maps selected a Western Union card with Tazoghrane8074 address.",
+            "qualification": "The automatic POI address is inconsistent with the intended locality and cannot validate identity; do not use it as authoritative administration.",
+            "screenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-3.png",
+              "sha256": "54b67e051f9145797849512dfae4edbf257612381af43ab1813f724d9dd73c30"
+            },
+            "capture": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-3.json",
+              "sha256": "4cce59d9ec7b5a67c78bc478403843c7ac89d2a72919d21b866de0b0081b5d3b"
+            }
+          },
+          {
+            "rowId": "osm:node:2840204369",
+            "observationIndex": 1,
+            "query": "36.4678121,8.5500007",
+            "visualFinding": "Proposed coordinate resolves to P6 amid the Wadi Maliz street grid, near Oued Meliz railway station.",
+            "qualification": "Supports settlement placement; road card is not an official prayer calculation coordinate.",
+            "screenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2840204369-1.png",
+              "sha256": "ff1442ca1fa5ed02913d182d858fa3af4a86ee51f6ed23ed344d31f99a4bfa85"
+            },
+            "capture": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2840204369-1.json",
+              "sha256": "33e7de3ca60ffa184391ad680ff3732a6a013c8f21b2f093df499ec776902772"
+            }
+          }
+        ],
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      },
+      "limitations": [
+        "Settlement reference only; no certified INM calculation coordinate.",
+        "Existing raw node coordinates, timetable ID500 and five coded imadas are preserved.",
+        "Old auto-selected Western Union address is rejected as locality evidence."
+      ]
+    },
+    {
+      "delegationId": 463,
+      "expectedGovernorateId": 350,
+      "expectedNames": {
+        "nomAr": "بوعرقوب",
+        "nomFr": "Bou Argoub",
+        "nomEn": "Bou Argoub"
+      },
+      "reviewedDate": "2026-09-12",
+      "original": {
+        "lat": 36.55,
+        "lng": 10.55
+      },
+      "proposed": {
+        "lat": 36.535,
+        "lng": 10.552
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d. Original external provenance is not certified by this migration.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-prayer-463-2026-09-12.json",
+          "sha256": "c95b48e575298a1d6bfd3c085969775a10591cfaf46c915ba1ebd79532a7fffc",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/350/463/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-sun-463-2026-09-12.json",
+          "sha256": "821a07ba0bf2944227a69cf1caa03700a2c8fddf8035c2cf1f6077fcb90b3edc",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/350/463/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+        }
+      },
+      "qualification": "Official public INM prayer and sunrise responses publish these reference values. This records published fields and does not certify internal calculation inputs, survey precision, an OSM node or any boundary.",
+      "reviewBatchId": "2026-09-12-inm-published-reference-463-526",
+      "originalSourceAssetSha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      }
+    },
+    {
+      "delegationId": 526,
+      "expectedGovernorateId": 357,
+      "expectedNames": {
+        "nomAr": "حاجب العيون",
+        "nomFr": "Hajeb El Ayoun",
+        "nomEn": "Hajeb El Ayoun"
+      },
+      "reviewedDate": "2026-09-12",
+      "original": {
+        "lat": 35.39,
+        "lng": 9.57
+      },
+      "proposed": {
+        "lat": 35.397,
+        "lng": 9.543
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d. Original external provenance is not certified by this migration.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-prayer-526-2026-09-12.json",
+          "sha256": "24a1faf1c1729fc619c0bddaf556d91b497e935c9d3d51a17cbc234a4036e3c5",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/357/526/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-sun-526-2026-09-12.json",
+          "sha256": "1fe20564a56468c8592fac5842dc0e4f06aef5e0b14aa8539831190f0fa60a21",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/357/526/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+        }
+      },
+      "qualification": "Official public INM prayer and sunrise responses publish these reference values. This records published fields and does not certify internal calculation inputs, survey precision, an OSM node or any boundary.",
+      "reviewBatchId": "2026-09-12-inm-published-reference-463-526",
+      "originalSourceAssetSha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      }
+    },
+    {
+      "delegationId": 607,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "المظيلة",
+        "nomFr": "Mdhilla",
+        "nomEn": "Mdhilla"
+      },
+      "reviewedDate": "2026-09-12",
+      "original": {
+        "lat": 34.25,
+        "lng": 8.76
+      },
+      "proposed": {
+        "lat": 34.293,
+        "lng": 8.751
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659; external origin was not documented. The source town node and legacy gazetteer mine are not substituted for the official published daily reference.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/inm-prayer-607-2026-09-12.json",
+          "sha256": "cdf5da5a76fd38d2b7afba892ba12445c22ef0da50df453df42e517b611a84f2",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/607/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/inm-sun-607-2026-09-12.json",
+          "sha256": "5870f50370a213668643f86f34fec8385035b916022d70dd4ea9845e5dc3c069",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/607/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "9e8ab961edaf86e158f71e91bff9017b7f6f0860179deabf080e5b00e63cc8bc"
+        }
+      },
+      "qualification": "The original daily INM prayer and sunrise responses publish matching607/Gafsa names, date and coordinates. These are official published timetable reference fields, not certified internal astronomical inputs, survey precision or polygon boundaries.",
+      "reviewBatchId": "2026-09-12-inm-published-mdhila607",
+      "originalSourceAssetSha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/before-gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+      }
+    },
+    {
+      "delegationId": 609,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "السند",
+        "nomFr": "Sened",
+        "nomEn": "Sened"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 34.5406,
+        "lng": 9.254
+      },
+      "proposed": {
+        "lat": 34.462,
+        "lng": 9.262
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f; external origin was not documented. This northern inhabited-town anchor is preserved as historical evidence, not relabelled as an OSM error.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/inm-prayer-609-2026-09-12.json",
+          "sha256": "7968b7ae601a813181d54917366dc469422d9d4cf2be04e21f93b14b061755cf",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/609/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/inm-sun-609-2026-09-12.json",
+          "sha256": "8d2067a1ec2a93d41519121eb5c98343ff4e0624c29b0f61da3bcc6fa1e85963",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/609/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "0c3d97183aa188a913e14e6210531c86134aee5cbb10bb51d2da9de99798c0fe"
+        }
+      },
+      "qualification": "The official prayer and sunrise records agree on date, names, parent and published reference fields. They do not certify the backend astronomical inputs, survey precision, a settlement centre, or any polygon boundary.",
+      "reviewBatchId": "2026-09-13-inm-published-sened609",
+      "originalSourceAssetSha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/before-gouvernorats.json",
+        "sha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f"
+      }
+    },
+    {
+      "delegationId": 1522,
+      "expectedGovernorateId": 355,
+      "expectedNames": {
+        "nomAr": "الهيشرية",
+        "nomFr": "Hichria",
+        "nomEn": "Hichria"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 34.895,
+        "lng": 9.3918
+      },
+      "proposed": {
+        "lat": 34.829,
+        "lng": 9.376
+      },
+      "originalProvenance": "Legacy bundled reference in gouvernorats.json SHA256b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4; external origin undocumented. Its original northern-sector containment remains historical evidence and is not relabelled as an OSM error.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-prayer-1522-2026-09-12.json",
+          "sha256": "e549430d69fced86c75ed842d5df501c82e8d83e517bb255dc9897ffa7b799d6",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-sun-1522-2026-09-12.json",
+          "sha256": "543c5cfdcac7e3b959e7e1ead940f4e983042b2254994d3433911b132fb1c484",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "e2db43e8ecc6f949c11a5e426e217b5746772a58f017fb7843ea1b4e941f09dd"
+        }
+      },
+      "qualification": "Official published daily timetable reference fields, corroborated by original prayer and sunrise responses. Their latitude/longitude are separate from data.delegation identity; no surveyed centre, internal calculation input or administrative boundary is certified.",
+      "reviewBatchId": "2026-09-13-inm-published-hichria1522",
+      "originalSourceAssetSha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-gouvernorats.json",
+        "sha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4"
+      }
+    },
+    {
+      "delegationId": 478,
+      "expectedGovernorateId": 352,
+      "expectedNames": {
+        "nomAr": "دقاش",
+        "nomFr": "Degueche",
+        "nomEn": "Degueche"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 33.97,
+        "lng": 8.22
+      },
+      "proposed": {
+        "lat": 34.016,
+        "lng": 8.273
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen Hichria-stage gouvernorats.json SHA256 cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c; external origin undocumented. Neither old nor published daily coordinates are labelled as an exact OSM settlement point.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-prayer-478-2026-09-12.json",
+          "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-sun-478-2026-09-12.json",
+          "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "3ff5d6d8a60a6519320f566e5a2e6995fd6980490f040bdb578db0b8b6068bb2"
+        }
+      },
+      "qualification": "Official published daily timetable reference fields corroborated by original prayer and sunrise responses. The coordinates are separate from the named data.delegation identity; they do not certify a town centre, hidden server calculation input, settlement equivalence or administrative boundary.",
+      "reviewBatchId": "2026-09-13-inm-published-degueche478",
+      "originalSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-gouvernorats.json",
+        "sha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
+      }
+    }
+  ],
+  "reviewBatches": [
+    {
+      "id": "2026-09-07-second-settlement-reference-review",
+      "reviewedDate": "2026-09-07",
+      "priorSourceAsset": {
+        "path": "android-app/app/src/main/assets/gouvernorats.json",
+        "sha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b"
+      },
+      "proposal": {
+        "file": "outputs/prayer-source-coordinate-second-proposals.json",
+        "sha256": "fa48457e551385ca9660915b2d627706907a1db421b47ca855b10cc1bde2b0e4"
+      },
+      "osmEvidence": {
+        "file": "work/source-coordinates/candidate-place-nodes-second-live.json",
+        "url": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "retrieved": "2026-09-07",
+        "sha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonamesEvidence": {
+        "url": "https://download.geonames.org/export/dump/TN.zip",
+        "retrieved": "2026-09-07",
+        "sha256": "0bf00a026ba0772c64f95e2893d52f7b58d40846653db1b996386bae6f128fae",
+        "populatedPlaceRecords": 2245
+      },
+      "phoneVisualReports": [
+        {
+          "file": "outputs/phone-source-point-second-review-first-eight.json",
+          "sha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+          "reviewer": "mapping_audit",
+          "reviewedAt": "2026-09-07T06:30:30.541397+00:00"
+        },
+        {
+          "file": "outputs/phone-source-point-second-review-last-seven.json",
+          "sha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+          "reviewer": "catalog_confirmed_fixes",
+          "reviewedAt": "2026-09-07T06:33:19.026779+00:00"
+        }
+      ],
+      "appliedSourceIds": [
+        1084,
+        1020,
+        1024,
+        434,
+        436,
+        488,
+        499,
+        542,
+        546,
+        569,
+        596,
+        604,
+        610,
+        611
+      ],
+      "deferred": [
+        {
+          "delegationId": 409,
+          "reason": "The village reference is supported, but the generic meteo source name does not resolve Zriba Village versus Zriba Hammam. Preserve the current point pending settlement-identity evidence."
+        }
+      ],
+      "limitations": [
+        "All replacement values come from the identified OSM place nodes. Google Maps images corroborate the settlement context only; no Google coordinates or geometry are copied.",
+        "Coordinate queries can snap to nearby POIs. These observations do not certify the exact point, INM calculation coordinates or neighborhood boundaries."
+      ]
+    },
+    {
+      "id": "2026-09-08-bargou-kalaa-settlement-reference-proposal",
+      "reviewedDate": "2026-09-08",
+      "priorSourceAsset": {
+        "path": "android-app/app/src/main/assets/gouvernorats.json",
+        "sha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e"
+      },
+      "priorCoordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+      "sourceReview": {
+        "file": "coordinate-reviews/bargou-kalaa-2026-09-08/source-reference-review.json",
+        "sha256": "e1b43498bcfcb38e66b878f53dec00c8e8dc0fc5027e8e2925690142e1ca6ec4"
+      },
+      "appliedSourceIds": [
+        417,
+        443
+      ],
+      "phoneReviewPerformed": false,
+      "scope": "Named OSM settlement references corroborated by primary published location/identity evidence. No INM calculation point or boundary certification."
+    },
+    {
+      "id": "2026-09-12-inm-published-reference-463-526",
+      "reviewedDate": "2026-09-12",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-prayer-source-coordinates.json",
+        "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+      },
+      "reviewedSourceAssetSha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/independent-source-semantics-review.json",
+        "sha256": "430fa85a60106015de0a057168ae9bc85f290d900d50d4852f51888f1f6f9f7a"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+        "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+      },
+      "appliedSourceIds": [
+        463,
+        526
+      ],
+      "preservedOriginalCorrectionCount": 30,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 463,
+          "governorateId": 350,
+          "field": "lat",
+          "before": 36.55,
+          "after": 36.535
+        },
+        {
+          "delegationId": 463,
+          "governorateId": 350,
+          "field": "lng",
+          "before": 10.55,
+          "after": 10.552
+        },
+        {
+          "delegationId": 526,
+          "governorateId": 357,
+          "field": "lat",
+          "before": 35.39,
+          "after": 35.397
+        },
+        {
+          "delegationId": 526,
+          "governorateId": 357,
+          "field": "lng",
+          "before": 9.57,
+          "after": 9.543
+        }
+      ],
+      "evidenceRelocation": "The five original HTTP body files and original retrieval manifest are relocated together without changing any byte or original record filename. Manifest basenames resolve from its own original-source directory. The source review is an unchanged historical review artifact; its original work paths remain truthful documentary provenance.",
+      "scope": "Only463/526 official published reference coordinates. Timetable IDs/names, all original OSM correction records, settlement display decisions and boundaries are preserved. No claim that the response fields are internal astronomical calculation inputs."
+    },
+    {
+      "id": "2026-09-12-inm-published-mdhila607",
+      "reviewedDate": "2026-09-12",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/before-gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/before-prayer-source-coordinates.json",
+        "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+      },
+      "reviewedSourceAssetSha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/source-proposal.json",
+        "sha256": "359db0f9cb423ff3cb57208e066ed149132d9e701144d78c646a14792c3486f5"
+      },
+      "currentSourceCarry": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/current-source-carry.json",
+        "sha256": "84a4dad64c67c65dbc46807074346e28d4969bde083a3cfd46ca3a3cd62aaed2"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/retrieval-manifest.json",
+        "sha256": "9e8ab961edaf86e158f71e91bff9017b7f6f0860179deabf080e5b00e63cc8bc"
+      },
+      "appliedSourceIds": [
+        607
+      ],
+      "preservedOriginalCorrectionCount": 32,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 607,
+          "governorateId": 365,
+          "field": "lat",
+          "before": 34.25,
+          "after": 34.293
+        },
+        {
+          "delegationId": 607,
+          "governorateId": 365,
+          "field": "lng",
+          "before": 8.76,
+          "after": 8.751
+        }
+      ],
+      "scope": "Only607 official published reference and intended Mdhila town display/name correction; preserve all existing reference objects and independent source polygons."
+    },
+    {
+      "id": "2026-09-13-inm-published-sened609",
+      "reviewedDate": "2026-09-13",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/before-gouvernorats.json",
+        "sha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/before-prayer-source-coordinates.json",
+        "sha256": "bf440554a5ef6c6979eb6553d8c8a4dbfa93c4ddcdbe6ef2897469467eb04f86"
+      },
+      "reviewedSourceAssetSha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/reference-source-acceptance.json",
+        "sha256": "77ae67d7ce2fa4e5dc8d5d8281f3f2013a68f83c7aea410546694b4a1b87de41"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/retrieval-manifest.json",
+        "sha256": "0c3d97183aa188a913e14e6210531c86134aee5cbb10bb51d2da9de99798c0fe"
+      },
+      "appliedSourceIds": [
+        609
+      ],
+      "preservedOriginalCorrectionCount": 33,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 609,
+          "governorateId": 365,
+          "field": "lat",
+          "before": 34.5406,
+          "after": 34.462
+        },
+        {
+          "delegationId": 609,
+          "governorateId": 365,
+          "field": "lng",
+          "before": 9.254,
+          "after": 9.262
+        }
+      ],
+      "scope": "Only609 official published reference, with unchanged northern town, distinct southern village and all existing picker memberships. No locality name, source coordinate or boundary changes."
+    },
+    {
+      "id": "2026-09-13-inm-published-hichria1522",
+      "reviewedDate": "2026-09-13",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-gouvernorats.json",
+        "sha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-prayer-source-coordinates.json",
+        "sha256": "55f9c5d0406d20e073ba887817436737ebdfb9d0c1e84967870f3eeb52bfc99e"
+      },
+      "reviewedSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/reference-source-acceptance.json",
+        "sha256": "bc9dad7a9583442e0a4bd7d9d3905f24598aaf2f91672e2b2985be8e5745343d"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/retrieval-manifest.json",
+        "sha256": "e2db43e8ecc6f949c11a5e426e217b5746772a58f017fb7843ea1b4e941f09dd"
+      },
+      "appliedSourceIds": [
+        1522
+      ],
+      "preservedOriginalCorrectionCount": 34,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 1522,
+          "governorateId": 355,
+          "field": "lat",
+          "before": 34.895,
+          "after": 34.829
+        },
+        {
+          "delegationId": 1522,
+          "governorateId": 355,
+          "field": "lng",
+          "before": 9.3918,
+          "after": 9.376
+        }
+      ],
+      "scope": "Only official published reference1522. Preserve existing Hichria group and all raw localities via separately reviewed retained-display evidence; no locality identity is inferred from the shifted daily-reference point."
+    },
+    {
+      "id": "2026-09-13-inm-published-degueche478",
+      "reviewedDate": "2026-09-13",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-gouvernorats.json",
+        "sha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-prayer-source-coordinates.json",
+        "sha256": "b65c08b99bb7fe6e04bf26fee9c9253ca4206fbcb3e065bd892cb64c7a42904c"
+      },
+      "reviewedSourceAssetSha256": "1a399f88f1d77e95a49451f05928f3e0122052889f945c4719fa3a61e4051042",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/reference-source-acceptance.json",
+        "sha256": "4f1a36236a66246386bd7568d7e7e93a14a96047b5f05e6187b366e1661c9d88"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/retrieval-manifest.json",
+        "sha256": "3ff5d6d8a60a6519320f566e5a2e6995fd6980490f040bdb578db0b8b6068bb2"
+      },
+      "appliedSourceIds": [
+        478
+      ],
+      "preservedOriginalCorrectionCount": 35,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 478,
+          "governorateId": 352,
+          "field": "lat",
+          "before": 33.97,
+          "after": 34.016
+        },
+        {
+          "delegationId": 478,
+          "governorateId": 352,
+          "field": "lng",
+          "before": 8.22,
+          "after": 8.273
+        }
+      ],
+      "scope": "Only the official published daily reference478. Preserve distinct Degache/Bou Helal/Kriz locality identities and the existing Degache display via separately reviewed manual/display evidence; no locality is moved to the published reference point."
+    }
+  ],
+  "reviewedSourceAssetSha256": "1a399f88f1d77e95a49451f05928f3e0122052889f945c4719fa3a61e4051042"
+}

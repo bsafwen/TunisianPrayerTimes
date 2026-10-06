@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "status": "VERIFIED_FOUR_NATIVE_AND_PACKED_CONTEXTS",
+  "records": [
+    {
+      "delegationId": 441,
+      "governorateId": 348,
+      "name": "سيدي الهاني",
+      "polygonId": "osm:way:43944790",
+      "pointId": "osm:node:558855437",
+      "parentId": "osm:relation:7150740",
+      "before": {
+        "lat": 35.6792,
+        "lng": 10.3231
+      },
+      "published": {
+        "lat": 35.681,
+        "lng": 10.31
+      },
+      "namedPoint": {
+        "lat": 35.6809917,
+        "lng": 10.3118167
+      },
+      "distanceToNamedPointKm": {
+        "before": 1.0384221572440449,
+        "published": 0.16408891101141238
+      },
+      "coverage": {
+        "before": {
+          "originalSettlement": false,
+          "packedSettlement": false,
+          "originalParent": true
+        },
+        "published": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        },
+        "namedSettlement": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        }
+      },
+      "witnesses": {
+        "osm:node:558855437": {
+          "geometrySha256": "ae002b745c94f9356442343150d8f653361877b23742ee9f39cd1ee108cdaf5f",
+          "tags": {
+            "name": "سيدي الهاني",
+            "name:ar": "سيدي الهاني",
+            "name:en": "Sidi El Heni",
+            "name:fr": "Sidi El Heni",
+            "place": "village"
+          }
+        },
+        "osm:way:43944790": {
+          "geometrySha256": "742842961a0e5f84af189333522832e680e639ffc13a51abba7d05c687eb58c7",
+          "tags": {
+            "landuse": "residential",
+            "name": "سيدي الهاني",
+            "name:ar": "سيدي الهاني"
+          }
+        },
+        "osm:relation:7150740": {
+          "geometrySha256": "9b654c29cbb06df62bf3bc8174f0d7f68c910a6a1d10c670bdb66c50d520d068",
+          "tags": {
+            "admin_level": "5",
+            "alt_name": "سيدي الهاني",
+            "alt_name:ar": "سيدي الهاني",
+            "alt_name:fr": "Sidi El Hani",
+            "boundary": "administrative",
+            "name": "معتمدية سيدي الهاني",
+            "name:ar": "معتمدية سيدي الهاني",
+            "name:fr": "Délégation Sidi El Heni",
+            "ref:tn:codegeo": "3163",
+            "ref:tn:hasc_2": "TN.SS.SH",
+            "wikidata": "Q3483227",
+            "wikipedia": "ar:معتمدية سيدي الهاني"
+          }
+        }
+      },
+      "packedGeometrySha256": "c884949514a482950341e6e98fdffeb125904faba575597775c4d14a009fad8e",
+      "displayProof": {
+        "file": "residential-base-display-reviews/sidi-el-hani-2026-09/441-residential-base-display-review.json",
+        "sha256": "a0aec76295af79dd997d4feaaad788f12eebf7c1a4c66ad948a983ac15bf3556"
+      }
+    },
+    {
+      "delegationId": 468,
+      "governorateId": 350,
+      "name": "دار شعبان الفهري",
+      "polygonId": "osm:way:174739936",
+      "pointId": "osm:node:1851671410",
+      "parentId": "osm:relation:7145300",
+      "before": {
+        "lat": 36.46,
+        "lng": 10.76
+      },
+      "published": {
+        "lat": 36.463,
+        "lng": 10.747
+      },
+      "namedPoint": {
+        "lat": 36.4666209,
+        "lng": 10.7478479
+      },
+      "distanceToNamedPointKm": {
+        "before": 1.3126243357780667,
+        "published": 0.40970319950420764
+      },
+      "coverage": {
+        "before": {
+          "originalSettlement": false,
+          "packedSettlement": false,
+          "originalParent": true
+        },
+        "published": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        },
+        "namedSettlement": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        }
+      },
+      "witnesses": {
+        "osm:node:1851671410": {
+          "geometrySha256": "7cb7aab7d056aed46e3f271a348c16f9f962bdf06c8a6dae7d65d70878f3924a",
+          "tags": {
+            "name": "دار شعبان الفهري",
+            "name:ar": "دار شعبان الفهري",
+            "name:en": "Dar Chaabane",
+            "name:fr": "Dar Chaâbane",
+            "name:kab": "Dar Caɛban",
+            "name:ru": "Дар-Шаабан",
+            "place": "town",
+            "wikidata": "Q2478232",
+            "wikimedia_commons": "Category:Dar Chaâbane",
+            "wikipedia": "en:Dar Chaabane"
+          }
+        },
+        "osm:way:174739936": {
+          "geometrySha256": "352372b42bb57863998ec3e5e3de90e79c7370ff3a26462daa10bc2c7a0f3f04",
+          "tags": {
+            "landuse": "residential",
+            "name": "دار شعبان الفهري",
+            "name:ar": "دار شعبان الفهري",
+            "name:fr": "Dar Chaâbane El Fehri",
+            "wikidata": "Q2478232",
+            "wikimedia_commons": "Category:Dar Chaâbane",
+            "wikipedia": "ar:دار شعبان الفهري"
+          }
+        },
+        "osm:relation:7145300": {
+          "geometrySha256": "fb0f0a47c339f7238e56ad0739a4d9415082ed8c61dabe7952434982d2e75750",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Dar Châabane El Fehri",
+            "boundary": "administrative",
+            "name": "معتمدية دار شعبان الفهري",
+            "name:ar": "معتمدية دار شعبان الفهري",
+            "name:fr": "Délégation Dar Chaabane El Fehri",
+            "ref:tn:codegeo": "1552",
+            "ref:tn:hasc_2": "TN.NB.DC",
+            "wikidata": "Q3015928"
+          }
+        }
+      },
+      "packedGeometrySha256": "2f06a184fc3bb7dae0a2e17bd955eea485af27b66619be0daf11d19e40a33f58",
+      "displayProof": {
+        "file": "dar-chaabane-reviews/nearest-manual-20260913/dar-chaabane-nearest-manual-city-display-policy.json",
+        "sha256": "d214a464b175fe9c2ec3c7be95fb66eb3d17a4bb21d368448698cb792fdc2caf"
+      }
+    },
+    {
+      "delegationId": 516,
+      "governorateId": 356,
+      "name": "تيبار",
+      "polygonId": "osm:way:278951683",
+      "pointId": "osm:node:2832036076",
+      "parentId": "osm:relation:7189390",
+      "before": {
+        "lat": 36.5301,
+        "lng": 9.1124
+      },
+      "published": {
+        "lat": 36.522,
+        "lng": 9.106
+      },
+      "namedPoint": {
+        "lat": 36.5218222,
+        "lng": 9.1049848
+      },
+      "distanceToNamedPointKm": {
+        "before": 1.1341271821728764,
+        "published": 0.09284710323743807
+      },
+      "coverage": {
+        "before": {
+          "originalSettlement": false,
+          "packedSettlement": false,
+          "originalParent": true
+        },
+        "published": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        },
+        "namedSettlement": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        }
+      },
+      "witnesses": {
+        "osm:node:2832036076": {
+          "geometrySha256": "7f76fbb010f965576ac08d1bcfb7ea987ec7db32d09800d726277a2a5fce083e",
+          "tags": {
+            "addr:postcode": "9022",
+            "name": "تيبار",
+            "name:ar": "تيبار",
+            "name:en": "Thibar",
+            "name:fr": "Thibar",
+            "place": "village",
+            "population": "3334",
+            "wikidata": "Q3523994",
+            "wikimedia_commons": "Category:Thibar",
+            "wikipedia": "ar:تيبار (تونس)",
+            "wikipedia:ar": "تيبار (تونس)"
+          }
+        },
+        "osm:way:278951683": {
+          "geometrySha256": "8bc411f078c4585a906c4fd0ba09a76c82a533a99ad5ee8f162c59e2c7d8c9a2",
+          "tags": {
+            "landuse": "residential",
+            "name": "Thibar"
+          }
+        },
+        "osm:relation:7189390": {
+          "geometrySha256": "28040f5addc0256d7c53b9b0198c465898d766f2680b04c89ab03085e009f1b1",
+          "tags": {
+            "admin_level": "5",
+            "boundary": "administrative",
+            "long_name": "معتمدية تيبار",
+            "long_name:ar": "معتمدية تيبار",
+            "long_name:fr": "Délégation de Thibar",
+            "name": "معتمدية تيبار",
+            "name:ar": "معتمدية تيبار",
+            "name:fr": "Délégation Tibar",
+            "ref:tn:codegeo": "2156",
+            "ref:tn:hasc_2": "TN.BJ.TH",
+            "sorting_name": "تيبار",
+            "sorting_name:ar": "تيبار",
+            "sorting_name:fr": "Thibar",
+            "wikidata": "Q3523989",
+            "wikipedia": "ar:معتمدية تيبار",
+            "wikipedia:ar": "معتمدية تيبار"
+          }
+        }
+      },
+      "packedGeometrySha256": "6c6dc8489d146c953837da1982e42767969daf201b3e5b63347a47297d00d1fc",
+      "displayProof": {
+        "file": "settlement-polygon-display-reviews/three-town/516-reviewed-display-identity.json",
+        "sha256": "c7f2e99f4562b86ec857379b343402b5408154f250215c3c2c536ec98bd313cf"
+      }
+    },
+    {
+      "delegationId": 579,
+      "governorateId": 362,
+      "name": "العيون",
+      "polygonId": "osm:way:543781477",
+      "pointId": "osm:node:5316229408",
+      "parentId": "osm:relation:7165022",
+      "before": {
+        "lat": 35.5341,
+        "lng": 8.8694
+      },
+      "published": {
+        "lat": 35.541,
+        "lng": 8.884
+      },
+      "namedPoint": {
+        "lat": 35.5402671,
+        "lng": 8.8836602
+      },
+      "distanceToNamedPointKm": {
+        "before": 1.4612199927966898,
+        "published": 0.087101385345517
+      },
+      "coverage": {
+        "before": {
+          "originalSettlement": false,
+          "packedSettlement": false,
+          "originalParent": true
+        },
+        "published": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        },
+        "namedSettlement": {
+          "originalSettlement": true,
+          "packedSettlement": true,
+          "originalParent": true
+        }
+      },
+      "witnesses": {
+        "osm:node:5316229408": {
+          "geometrySha256": "0cdb5ccdd5b5955ef9f428f54deb8aa7e13db007b0bcae268540c1530fe8a4a1",
+          "tags": {
+            "addr:city": "العيون",
+            "addr:postcode": "1216",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:en": "El Ayoun",
+            "name:fr": "El Ayoun",
+            "place": "village",
+            "postal_code": "1216",
+            "wikidata": "Q3049722",
+            "wikipedia": "ar:العيون (تونس)"
+          }
+        },
+        "osm:way:543781477": {
+          "geometrySha256": "d211247934eb8eedb81634069247c6a6e45cec11cfd22f9acffba68a6a600b92",
+          "tags": {
+            "addr:postcode": "1216",
+            "landuse": "residential",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:en": "El Ayoun",
+            "name:fr": "El Ayoun",
+            "place": "village"
+          }
+        },
+        "osm:relation:7165022": {
+          "geometrySha256": "96ff309ba4caf50ed2f06c3eba99f9c794e6de56f0531084a6a270036910a827",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "El Ayoun",
+            "boundary": "administrative",
+            "name": "معتمدية العيون",
+            "name:ar": "معتمدية العيون",
+            "name:fr": "Délégation El Ayoun",
+            "official_name": "معتمدية العيون",
+            "official_name:ar": "معتمدية العيون",
+            "ref:tn:codegeo": "4258",
+            "ref:tn:hasc_2": "TN.KS.AY",
+            "wikidata": "Q12243830",
+            "wikipedia": "ar:معتمدية العيون"
+          }
+        }
+      },
+      "packedGeometrySha256": "04445274d5d12b4e398d0b400a8709a92218acc0435b39ff74e02631a1d7dece",
+      "displayProof": {
+        "file": "settlement-polygon-display-reviews/three-town/579-reviewed-display-identity.json",
+        "sha256": "1b3ac12d52a987e6845dc875514fe9a3d1593cc4567fc1d7e3d9831d6ce65e95"
+      }
+    }
+  ],
+  "inputPins": {
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py": "c50b03c2b012accadaba8514d954c842b645a2cb81d58704f66afdbf4673a109",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json": "7d6c7ca8f9872e55c4c5a4f75dfd216d64ae9882644eb1abfe4c0b9cee39f4c6",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-references-20260921\\paired-inm-validation.json": "6bf5aa456285641bdea090ddb12674baedb7453f4d77b9ed2bdf1d33ed28ba4f",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\sidi-el-hani-2026-09\\441-residential-base-display-review.json": "a0aec76295af79dd997d4feaaad788f12eebf7c1a4c66ad948a983ac15bf3556",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\sidi-el-hani-2026-09\\441-exact-source-and-current-facts.json": "fdc8f9be73d62b1fc178189a183f4c8d2a1949cbf8d7d04b51676bab7477dd80",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\sidi-el-hani-2026-09\\two-town-source-identity-wrapper-sidi-only-stage.json": "c76da19443f4db74929bd3317fa12c361ce34fe8e9e85e5048e09580885ac79e",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\dar-chaabane-reviews\\nearest-manual-20260913\\dar-chaabane-nearest-manual-city-display-policy.json": "d214a464b175fe9c2ec3c7be95fb66eb3d17a4bb21d368448698cb792fdc2caf",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\dar-chaabane-reviews\\direct-pbf-source-facts.json": "455683e0a6c82d563e5513f32f1b80d8b8faf41eea87081d3b7ed52eb3461da8",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\dar-chaabane-reviews\\nearest-manual-20260913\\dar-chaabane-nearest-manual-source-review.json": "15d4503a7a6f4ad4e0b5fff8dcd23b9788243e263b07353126171d6d73495d7c",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\settlement-polygon-display-reviews\\three-town\\516-reviewed-display-identity.json": "c7f2e99f4562b86ec857379b343402b5408154f250215c3c2c536ec98bd313cf",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\settlement-polygon-display-reviews\\three-town\\516-reviewed-source-facts.json": "21c1e64072a826c741403c1fa937873b0ce0b1036c88f8c78809a6c192850020",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\settlement-polygon-display-reviews\\three-town\\tibar-ayoun-source-review.json": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\settlement-polygon-display-reviews\\three-town\\579-reviewed-display-identity.json": "1b3ac12d52a987e6845dc875514fe9a3d1593cc4567fc1d7e3d9831d6ce65e95",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\settlement-polygon-display-reviews\\three-town\\579-reviewed-source-facts.json": "6701834d28665e48512a40d82135a1abc7e8dcaecce21d21d5bcdd94189b16ed"
+  },
+  "qualification": "Exact cached source witnesses and shipped polygons corroborate the four selection reference points. No boundary certification, repair, source edit, or claim about internal INM calculations."
+}

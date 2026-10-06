@@ -1,0 +1,36 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T08:24:41.085693+00:00",
+  "query": "Khitmin, Bizerte, Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "الخيتمين"
+  ],
+  "publicUiText": [
+    "الخيتمين",
+    "Al Khitmin",
+    "تونس‎",
+    "الاتجاهات إلى الخيتمين",
+    "الاتجاهات",
+    "مشاركة الخيتمين",
+    "مشاركة",
+    "حفظ الخيتمين في القوائم",
+    "حفظ",
+    "عرض المزيد من الإجراءات لهذا المكان",
+    "المزيد",
+    "صورة",
+    "إغلاق",
+    "Khitmin, Bizerte, Tunisia",
+    "محو",
+    "المطاعم",
+    "مَعالِم الجذب السياحي",
+    "الفنادق",
+    "المتنزهات"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "الخيتمين"
+  ],
+  "screenshot": "osm_node_1513517120-1.png",
+  "boundaryVerified": false
+}

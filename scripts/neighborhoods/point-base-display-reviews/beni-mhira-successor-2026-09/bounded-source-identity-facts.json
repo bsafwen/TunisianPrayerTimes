@@ -1,0 +1,890 @@
+{
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c5d895dd8e1c5cd35e99dcce1790a468f3438aa90658c55c11bcdb2a34eba4e9",
+    "bytes": 1883646
+  },
+  "curation": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "2d1c80ef35b9066249461c2824aad9ae277d06d718b7537c0c68f76e348e5f55",
+    "bytes": 273444
+  },
+  "sourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "bytes": 25378903
+  },
+  "registry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "rawPoint": {
+    "id": "osm:node:5239666199",
+    "sourceId": "osm",
+    "name": "بني مهيرة",
+    "aliases": [
+      "Beni Mhira"
+    ],
+    "kind": "village",
+    "parentName": "قصر مهيرة",
+    "contextAliases": [
+      "Beni Mhira",
+      "Ksar Mehira",
+      "بني مهيرة",
+      "قصر مهيرة",
+      "معتمدية بني مهيرة"
+    ],
+    "governorateId": 351,
+    "lat": 32.8634378,
+    "lng": 10.8172175,
+    "delegationId": 1524,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:5239666199"
+  },
+  "base": {
+    "id": 1524,
+    "nomFr": "Bni Mhira",
+    "nomAr": "بني مهيرة",
+    "nomEn": "Bni Mhira",
+    "lat": 32.868,
+    "lng": 10.8113
+  },
+  "sourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-current.json",
+    "sha256": "b8376fbc4cefd88fb9a76e9629636bd4b9d5740a8eec27113f2bad6842c769af",
+    "bytes": 536
+  },
+  "exactElement": {
+    "type": "node",
+    "id": 5239666199,
+    "lat": 32.8634378,
+    "lon": 10.8172175,
+    "timestamp": "2025-08-06T07:32:02Z",
+    "version": 6,
+    "changeset": 170041603,
+    "user": "Wüstenrose",
+    "uid": 1900013,
+    "tags": {
+      "name": "Beni Mhira",
+      "name:ar": "بني مهيرة",
+      "name:fr": "Beni Mhira",
+      "place": "village"
+    }
+  },
+  "history": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-history.json",
+    "sha256": "437de0f92ede40d47846800e3450d99828aaff7dee1f43ad5668066308d308de",
+    "bytes": 1905
+  },
+  "historySummaries": [
+    {
+      "version": 1,
+      "timestamp": "2017-11-20T16:23:18Z",
+      "lat": 32.8637284,
+      "lng": 10.8167776,
+      "tags": {
+        "name": "Beni mhira",
+        "place": "village"
+      }
+    },
+    {
+      "version": 2,
+      "timestamp": "2019-12-14T17:55:44Z",
+      "lat": 32.8637284,
+      "lng": 10.8167776,
+      "tags": {
+        "name": "بني مهيرة",
+        "name:ar": "بني مهيرة",
+        "name:fr": "Beni mhira",
+        "place": "village"
+      }
+    },
+    {
+      "version": 3,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "lat": 32.8637284,
+      "lng": 10.8167776,
+      "tags": {
+        "name": "بني مهيرة",
+        "name:ar": "بني مهيرة",
+        "name:en": "Beni mhira",
+        "name:fr": "Beni mhira",
+        "place": "village"
+      }
+    },
+    {
+      "version": 4,
+      "timestamp": "2021-08-20T12:48:06Z",
+      "lat": 32.8637284,
+      "lng": 10.8167776,
+      "tags": {
+        "name": "بني مهيرة",
+        "name:ar": "بني مهيرة",
+        "name:en": "Beni mhira",
+        "name:fr": "Beni Mhira",
+        "place": "village"
+      }
+    },
+    {
+      "version": 5,
+      "timestamp": "2023-09-09T00:50:00Z",
+      "lat": 32.8637284,
+      "lng": 10.8167776,
+      "tags": {
+        "name": "Beni Mhira",
+        "name:ar": "بني مهيرة",
+        "name:fr": "Beni Mhira",
+        "place": "village"
+      }
+    },
+    {
+      "version": 6,
+      "timestamp": "2025-08-06T07:32:02Z",
+      "lat": 32.8634378,
+      "lng": 10.8172175,
+      "tags": {
+        "name": "Beni Mhira",
+        "name:ar": "بني مهيرة",
+        "name:fr": "Beni Mhira",
+        "place": "village"
+      }
+    }
+  ],
+  "latestCoordinateMoveKm": 0.052271036068157486,
+  "pointBaseDistanceKm": 0.7502024322772682,
+  "pointOfficeDistanceKm": 0.45642227366031735,
+  "sourceBaseOwners": [],
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7143818",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني مهيرة الشرقية",
+        "name:ar": "بني مهيرة الشرقية",
+        "name:fr": "Beni Mehira Est",
+        "ref:tn:codegeo": "535358"
+      },
+      "sourceCode": "535358",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535855",
+        "sectorFr": "Beni mehira est",
+        "sectorAr": "بني مهيرة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65508,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3216,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3210
+        }
+      },
+      "mappingBasis": "Exact sector Arabic name, same governorate, and independently confirmed five-sector Beni Mhira membership; not an official relation-ID crosswalk or boundary certification.",
+      "currentRaw": {
+        "id": "osm:relation:7143818",
+        "sourceId": "osm",
+        "name": "بني مهيرة الشرقية",
+        "aliases": [
+          "Beni Mehira Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني مهيرة",
+        "contextAliases": [
+          "Beni Mhira",
+          "بني مهيرة",
+          "معتمدية بني مهيرة"
+        ],
+        "governorateId": 351,
+        "lat": 32.613337,
+        "lng": 10.990805,
+        "delegationId": 1524,
+        "hasBoundary": true,
+        "bbox": [
+          10.757821,
+          32.306,
+          11.190776,
+          32.928207
+        ],
+        "areaKm2": 241.7840799951297,
+        "pickerGroupId": "osm:relation:7143818",
+        "offset": 2043832,
+        "length": 964
+      },
+      "activeAdministrativeCuration": {
+        "id": "osm:relation:7143818",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "بني مهيرة الشرقية",
+          "ref:tn:codegeo": "535358"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية بني مهيرة",
+          "بني مهيرة",
+          "Beni Mhira"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "canonicalSourceGeojsonSha256": "3821d23edb3c17ce8383a499a2ba500f1bbbf121529b2d622413ae6ddfee8091",
+      "packedGeometrySha256": "ea2072acf59e70d80814457b2722a6b5d070476bbe42ab3fac9a4fa846e73435",
+      "sourceCoordinateMembership": {
+        "point": false,
+        "legacyBase": false,
+        "socialOffice": false
+      }
+    },
+    {
+      "id": "osm:relation:7143819",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قصر مهيرة",
+        "name:ar": "قصر مهيرة",
+        "name:fr": "Ksar Mehira",
+        "ref:tn:codegeo": "535357"
+      },
+      "sourceCode": "535357",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535854",
+        "sectorFr": "Ksar mehira",
+        "sectorAr": "قصر مهيرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65474,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3214,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3208
+        }
+      },
+      "mappingBasis": "Exact sector Arabic name, same governorate, and independently confirmed five-sector Beni Mhira membership; not an official relation-ID crosswalk or boundary certification.",
+      "currentRaw": {
+        "id": "osm:relation:7143819",
+        "sourceId": "osm",
+        "name": "قصر مهيرة",
+        "aliases": [
+          "Ksar Mehira"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني مهيرة",
+        "contextAliases": [
+          "Beni Mhira",
+          "بني مهيرة",
+          "معتمدية بني مهيرة"
+        ],
+        "governorateId": 351,
+        "lat": 32.591027,
+        "lng": 10.964091,
+        "delegationId": 1524,
+        "hasBoundary": true,
+        "bbox": [
+          10.683697,
+          32.305908,
+          11.185607,
+          32.876247
+        ],
+        "areaKm2": 344.1947300404464,
+        "pickerGroupId": "osm:relation:7143819",
+        "offset": 2044796,
+        "length": 2884
+      },
+      "activeAdministrativeCuration": {
+        "id": "osm:relation:7143819",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "قصر مهيرة",
+          "ref:tn:codegeo": "535357"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية بني مهيرة",
+          "بني مهيرة",
+          "Beni Mhira"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "canonicalSourceGeojsonSha256": "20e518b196ed07df3af511975ffea4d600eade6e7eef4e2272d4d3b15b986f50",
+      "packedGeometrySha256": "632a69299fa05d44195ec5ff4068351740f27c5b0713b36a66a649a9c4a3207d",
+      "sourceCoordinateMembership": {
+        "point": true,
+        "legacyBase": true,
+        "socialOffice": true
+      }
+    },
+    {
+      "id": "osm:relation:7143820",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قصر عون",
+        "name:ar": "قصر عون",
+        "name:fr": "Ksar Aoun",
+        "ref:tn:codegeo": "535356"
+      },
+      "sourceCode": "535356",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535853",
+        "sectorFr": "Ksar aoun",
+        "sectorAr": "قصر عون",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65440,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3212,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3206
+        }
+      },
+      "mappingBasis": "Exact sector Arabic name, same governorate, and independently confirmed five-sector Beni Mhira membership; not an official relation-ID crosswalk or boundary certification.",
+      "currentRaw": {
+        "id": "osm:relation:7143820",
+        "sourceId": "osm",
+        "name": "قصر عون",
+        "aliases": [
+          "Ksar Aoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني مهيرة",
+        "contextAliases": [
+          "Beni Mhira",
+          "بني مهيرة",
+          "معتمدية بني مهيرة"
+        ],
+        "governorateId": 351,
+        "lat": 32.621677,
+        "lng": 11.040689,
+        "delegationId": 1524,
+        "hasBoundary": true,
+        "bbox": [
+          10.809422,
+          32.307534,
+          11.204633,
+          32.933757
+        ],
+        "areaKm2": 442.0550431602131,
+        "pickerGroupId": "osm:relation:7143820",
+        "offset": 2047680,
+        "length": 924
+      },
+      "activeAdministrativeCuration": {
+        "id": "osm:relation:7143820",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "قصر عون",
+          "ref:tn:codegeo": "535356"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية بني مهيرة",
+          "بني مهيرة",
+          "Beni Mhira"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "canonicalSourceGeojsonSha256": "f6545140a26f4bbf723c02165d2378f0068ecd9955afb70a7a5363a71a1529e8",
+      "packedGeometrySha256": "1a885aa308870e812e2928d155f56c7a866416e103bc0246b67e6438fd9833da",
+      "sourceCoordinateMembership": {
+        "point": false,
+        "legacyBase": false,
+        "socialOffice": false
+      }
+    },
+    {
+      "id": "osm:relation:7143821",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المرة",
+        "name:ar": "المرة",
+        "name:fr": "El Morra",
+        "ref:tn:codegeo": "535355"
+      },
+      "sourceCode": "535355",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535852",
+        "sectorFr": "El morra",
+        "sectorAr": "المرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65406,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3211,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3205
+        }
+      },
+      "mappingBasis": "Exact sector Arabic name, same governorate, and independently confirmed five-sector Beni Mhira membership; not an official relation-ID crosswalk or boundary certification.",
+      "currentRaw": {
+        "id": "osm:relation:7143821",
+        "sourceId": "osm",
+        "name": "المرة",
+        "aliases": [
+          "El Morra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني مهيرة",
+        "contextAliases": [
+          "Beni Mhira",
+          "بني مهيرة",
+          "معتمدية بني مهيرة"
+        ],
+        "governorateId": 351,
+        "lat": 32.604003,
+        "lng": 11.100558,
+        "delegationId": 1524,
+        "hasBoundary": true,
+        "bbox": [
+          10.941772,
+          32.314281,
+          11.341979,
+          32.907937
+        ],
+        "areaKm2": 397.54833011386927,
+        "pickerGroupId": "osm:relation:7143821",
+        "offset": 2048604,
+        "length": 2228
+      },
+      "activeAdministrativeCuration": {
+        "id": "osm:relation:7143821",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "المرة",
+          "ref:tn:codegeo": "535355"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية بني مهيرة",
+          "بني مهيرة",
+          "Beni Mhira"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "canonicalSourceGeojsonSha256": "5e601453490878f110d315958681f22b2a2aaebc784d3c0e8ee5dc7320766340",
+      "packedGeometrySha256": "d2b0904f72159b9e2aa3dfb5911bfccb9e171bcc22ba05ea196e4c7cd7ca1810",
+      "sourceCoordinateMembership": {
+        "point": false,
+        "legacyBase": false,
+        "socialOffice": false
+      }
+    },
+    {
+      "id": "osm:relation:7143822",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الرهاش",
+        "name:ar": "الرهاش",
+        "name:fr": "Errahech",
+        "ref:tn:codegeo": "535354"
+      },
+      "sourceCode": "535354",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535851",
+        "sectorFr": "Errahech",
+        "sectorAr": "الرهاش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65373,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3209,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3203
+        }
+      },
+      "mappingBasis": "Exact sector Arabic name, same governorate, and independently confirmed five-sector Beni Mhira membership; not an official relation-ID crosswalk or boundary certification.",
+      "currentRaw": {
+        "id": "osm:relation:7143822",
+        "sourceId": "osm",
+        "name": "الرهاش",
+        "aliases": [
+          "Errahech"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني مهيرة",
+        "contextAliases": [
+          "Beni Mhira",
+          "بني مهيرة",
+          "معتمدية بني مهيرة"
+        ],
+        "governorateId": 351,
+        "lat": 32.917932,
+        "lng": 10.953256,
+        "delegationId": 1524,
+        "hasBoundary": true,
+        "bbox": [
+          10.747551,
+          32.873807,
+          10.999782,
+          32.961947
+        ],
+        "areaKm2": 96.79878585597454,
+        "pickerGroupId": "osm:relation:7143822",
+        "offset": 2050832,
+        "length": 868
+      },
+      "activeAdministrativeCuration": {
+        "id": "osm:relation:7143822",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "الرهاش",
+          "ref:tn:codegeo": "535354"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية بني مهيرة",
+          "بني مهيرة",
+          "Beni Mhira"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "canonicalSourceGeojsonSha256": "372d514b71026ce0ecae594070a185847f504030adc1d2e8a1e26802ddde0a8f",
+      "packedGeometrySha256": "44f78e2334d31c2088ced82c5fab5ccbd49fa397ba3e6afc465328554d8a4aee",
+      "sourceCoordinateMembership": {
+        "point": false,
+        "legacyBase": false,
+        "socialOffice": false
+      }
+    }
+  ],
+  "protectedRawRecords": [
+    {
+      "id": "osm:relation:7143818",
+      "sourceId": "osm",
+      "name": "بني مهيرة الشرقية",
+      "aliases": [
+        "Beni Mehira Est"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بني مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "بني مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.613337,
+      "lng": 10.990805,
+      "delegationId": 1524,
+      "hasBoundary": true,
+      "bbox": [
+        10.757821,
+        32.306,
+        11.190776,
+        32.928207
+      ],
+      "areaKm2": 241.7840799951297,
+      "pickerGroupId": "osm:relation:7143818",
+      "offset": 2043832,
+      "length": 964
+    },
+    {
+      "id": "osm:relation:7143819",
+      "sourceId": "osm",
+      "name": "قصر مهيرة",
+      "aliases": [
+        "Ksar Mehira"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بني مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "بني مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.591027,
+      "lng": 10.964091,
+      "delegationId": 1524,
+      "hasBoundary": true,
+      "bbox": [
+        10.683697,
+        32.305908,
+        11.185607,
+        32.876247
+      ],
+      "areaKm2": 344.1947300404464,
+      "pickerGroupId": "osm:relation:7143819",
+      "offset": 2044796,
+      "length": 2884
+    },
+    {
+      "id": "osm:relation:7143820",
+      "sourceId": "osm",
+      "name": "قصر عون",
+      "aliases": [
+        "Ksar Aoun"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بني مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "بني مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.621677,
+      "lng": 11.040689,
+      "delegationId": 1524,
+      "hasBoundary": true,
+      "bbox": [
+        10.809422,
+        32.307534,
+        11.204633,
+        32.933757
+      ],
+      "areaKm2": 442.0550431602131,
+      "pickerGroupId": "osm:relation:7143820",
+      "offset": 2047680,
+      "length": 924
+    },
+    {
+      "id": "osm:relation:7143821",
+      "sourceId": "osm",
+      "name": "المرة",
+      "aliases": [
+        "El Morra"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بني مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "بني مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.604003,
+      "lng": 11.100558,
+      "delegationId": 1524,
+      "hasBoundary": true,
+      "bbox": [
+        10.941772,
+        32.314281,
+        11.341979,
+        32.907937
+      ],
+      "areaKm2": 397.54833011386927,
+      "pickerGroupId": "osm:relation:7143821",
+      "offset": 2048604,
+      "length": 2228
+    },
+    {
+      "id": "osm:relation:7143822",
+      "sourceId": "osm",
+      "name": "الرهاش",
+      "aliases": [
+        "Errahech"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بني مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "بني مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.917932,
+      "lng": 10.953256,
+      "delegationId": 1524,
+      "hasBoundary": true,
+      "bbox": [
+        10.747551,
+        32.873807,
+        10.999782,
+        32.961947
+      ],
+      "areaKm2": 96.79878585597454,
+      "pickerGroupId": "osm:relation:7143822",
+      "offset": 2050832,
+      "length": 868
+    },
+    {
+      "id": "osm:node:1980186910",
+      "sourceId": "osm",
+      "name": "بئر مرة",
+      "aliases": [
+        "Bir Morra"
+      ],
+      "kind": "hamlet",
+      "parentName": "المرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "El Morra",
+        "المرة",
+        "بني مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.8145833,
+      "lng": 11.0933403,
+      "delegationId": 1524,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1980186910"
+    },
+    {
+      "id": "osm:node:5239666199",
+      "sourceId": "osm",
+      "name": "بني مهيرة",
+      "aliases": [
+        "Beni Mhira"
+      ],
+      "kind": "village",
+      "parentName": "قصر مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "Ksar Mehira",
+        "بني مهيرة",
+        "قصر مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.8634378,
+      "lng": 10.8172175,
+      "delegationId": 1524,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:5239666199"
+    }
+  ],
+  "sourceContexts": [
+    {
+      "id": "osm:relation:1434953",
+      "tags": {
+        "ISO3166-2": "TN-83",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية تطاوين",
+        "name:ar": "ولاية تطاوين",
+        "name:be": "Татавін (вілает)",
+        "name:be-tarask": "Татаўін (вілает)",
+        "name:bg": "Татауин (област)",
+        "name:ca": "Governació de Tataouine",
+        "name:ceb": "Tataouine (lalawigan)",
+        "name:cy": "Tataouine (talaith)",
+        "name:de": "Gouvernement Tataouine",
+        "name:el": "Ταταουίν (Κυβερνείο)",
+        "name:en": "Tataouine",
+        "name:es": "Gobernación de Tataouine",
+        "name:fa": "تطاوین",
+        "name:fi": "Tataouine (kuvernementti)",
+        "name:fr": "Gouvernorat Tataouine",
+        "name:frr": "Tataouine (Guwernement)",
+        "name:id": "Kegubernuran Tataouine",
+        "name:it": "Tataouine",
+        "name:ja": "タタウイヌ県",
+        "name:ko": "타타우인주",
+        "name:ms": "Kawasan kegabenoran Tataouine",
+        "name:nl": "Tataouine (gouvernement)",
+        "name:no": "Tataouine (guvernement)",
+        "name:pl": "Gubernatorstwo Tatawin",
+        "name:pt": "Tataouine (província)",
+        "name:ro": "Guvernoratul Tataouine",
+        "name:ru": "Татавин (вилайет)",
+        "name:sco": "Tataouine Govrenorate",
+        "name:sh": "Tataouine (vilajet)",
+        "name:sv": "Tataouine (guvernement)",
+        "name:tr": "Tatavin ili",
+        "name:uk": "Татауїн (вілаєт)",
+        "name:ur": "تطاوین",
+        "name:zh": "泰塔溫省",
+        "name:zu": "Tataouine Governorate",
+        "official_name": "ولاية تطاوين",
+        "official_name:ar": "ولاية تطاوين",
+        "official_name:en": "Tataouine Governorate",
+        "official_name:fa": "استان تطاوین",
+        "official_name:fr": "Gouvernorat de Tataouine",
+        "official_name:it": "Governatorato di Tataouine",
+        "official_name:ur": "ولایت تطاوین",
+        "population": "143524",
+        "population:date": "2004",
+        "ref:tn:codegeo": "53",
+        "wikidata": "Q327045",
+        "wikipedia": "ar:ولاية تطاوين"
+      },
+      "sourceCoordinateMembership": {
+        "point": true,
+        "legacyBase": true,
+        "socialOffice": true
+      },
+      "qualification": "Cached OSM source geometry only; Smar delegation polygon predates the reviewed transfer and cannot establish current Beni Mhira borders."
+    },
+    {
+      "id": "osm:relation:7143836",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Smâr",
+        "boundary": "administrative",
+        "name": "معتمدية الصمار",
+        "name:ar": "معتمدية الصمار",
+        "name:fr": "Délégation Smâr",
+        "ref:tn:codegeo": "5353",
+        "ref:tn:hasc_2": "TN.TA.SA",
+        "wikidata": "Q3487090"
+      },
+      "sourceCoordinateMembership": {
+        "point": true,
+        "legacyBase": true,
+        "socialOffice": true
+      },
+      "qualification": "Cached OSM source geometry only; Smar delegation polygon predates the reviewed transfer and cannot establish current Beni Mhira borders."
+    }
+  ],
+  "currentDelegationPolygonPresentInSource": false,
+  "priorPickerManifest": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877",
+    "bytes": 554334
+  },
+  "touchingPriorPickerRecords": [],
+  "reviewedBoundaryManifest": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+    "bytes": 80850
+  },
+  "touchingAcceptedBoundaryRecords": [],
+  "sourceIdentityScope": "Finite identity/context inventory only; no product transformations, complete generator proof, global distance matrix, or boundary import."
+}

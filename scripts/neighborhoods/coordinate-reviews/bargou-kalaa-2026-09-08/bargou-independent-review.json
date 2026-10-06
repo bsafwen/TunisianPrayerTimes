@@ -1,0 +1,130 @@
+{
+  "status": "PASS_SOURCE_REFERENCE_SUPPORT_WITH_SCOPE_SUPPLEMENT_NO_BOUNDARY_IMPORT",
+  "createdAt": "2026-09-07T23:48:26.251973+00:00",
+  "reviewedOriginalReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bargou-reference-primary-source-review.json",
+    "sha256": "68744f5473660733b91c79906af10802f856c20e3775141eac197caf72e8d2f6"
+  },
+  "originalReportPreserved": true,
+  "sourceId": 417,
+  "personallyViewed": [
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\bargou.png",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\decree-page-47.png"
+  ],
+  "decreeScopeSupplement": {
+    "document": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "pdfPage": 47,
+    "jortPage": 5144,
+    "decree": "2023-590, Annex A",
+    "governorate": "سليانة",
+    "delegation": "برقو",
+    "imada": "برقو",
+    "circle": "برقو",
+    "seats": 1,
+    "wholeImadaSingleCircle": true,
+    "completeBargouDelegationBlockImadas": 8,
+    "qualification": "Confirms the one-to-one legal scope after the original source report was frozen; does not approve geometric topology or import."
+  },
+  "officialRegistry": {
+    "governorateCode": "24",
+    "governorateFr": "Siliana",
+    "governorateAr": "سليانة",
+    "delegationCode": "2460",
+    "delegationFr": "Bargou",
+    "delegationAr": "برقو",
+    "sectorCode": "246051",
+    "sectorFr": "Bargou",
+    "sectorAr": "برقو",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31959,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 1511,
+      "Nombre_de_menages_par_Secteurs.xlsx": 1510
+    }
+  },
+  "independentNativeMapReview": {
+    "crsEpsg": 32632,
+    "maxControlResidualMeters": 0.24254353956127786,
+    "drawingIndex": 211,
+    "explicitlyClosed": true,
+    "sourceVertices": 266,
+    "repairApplied": false,
+    "geometryExactlyReconstructsSavedExtraction": true,
+    "outsideActiveClipAreas": [
+      0.0,
+      0.0
+    ],
+    "areaKm2": 1.3523650445304047,
+    "positions": {
+      "legacy": {
+        "point": {
+          "lat": 36.09,
+          "lng": 9.53
+        },
+        "insideOfficialImada": false,
+        "distanceToImadaMeters": 2606.956947811133,
+        "distanceToBoundaryMeters": 2606.956947811133
+      },
+      "namedNode": {
+        "point": {
+          "lat": 36.0914446,
+          "lng": 9.5667337
+        },
+        "insideOfficialImada": true,
+        "distanceToImadaMeters": 0.0,
+        "distanceToBoundaryMeters": 273.1939755183548
+      },
+      "municipalPublisherPoint": {
+        "point": {
+          "lat": 36.09309379494558,
+          "lng": 9.56779659977762
+        },
+        "insideOfficialImada": true,
+        "distanceToImadaMeters": 0.0,
+        "distanceToBoundaryMeters": 228.84434912250592
+      }
+    },
+    "originalSectorIoU": 0.5087323078958503
+  },
+  "additionalMunicipalHtmlEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\municipal-geography.html",
+    "sha256": "5aebaaaf2e7023b8774471d7087fc9aa7d46c754e1ee71f26f6db4c844dc9173",
+    "literalPublisherMapCenter": {
+      "lat": 36.09309379494558,
+      "lng": 9.56779659977762
+    },
+    "markerConfiguredAtSamePoint": true,
+    "distanceToNamedNodeMeters": 206.51975913950776,
+    "scope": "Read only the publisher-authored coordinates in saved HTML. No Google API call, Google geometry extraction or replacement coordinate derived from Google. This corroborates the town context; the proposed source remains the exact OSM node.",
+    "originalReportPublishedPointsEmptyReason": "Its extractor read only WKT POINT expressions and did not capture this LatLng declaration."
+  },
+  "ministryAndOsm": {
+    "coordinatesExactlyEqual": true,
+    "independentMeasurementClaim": false,
+    "qualification": "The Ministry website and OSM may share a geocoder/upstream point. Agreement establishes publication corroboration, not two independently surveyed measurements."
+  },
+  "distanceMetricQualification": {
+    "legacyToNamedNodeWgs84GeodesicMeters": 3312.1292659476453,
+    "existingSphericalHaversineKm": 3.304612336423831,
+    "qualification": "The original report uses ellipsoidal WGS84 distance; app nearest ranking uses spherical Haversine. Their small difference is expected."
+  },
+  "recommendation": "Support the exact OSM named settlement point36.0914446,9.5667337 as a reviewed source417 reference candidate. Do a separate source-only mapping impact review before changing the app.",
+  "limits": [
+    "No INM prayer-calculation coordinate has been established.",
+    "The legacy point is outside the official Bargou imada; do not expand that result into a claim about the entire municipality/delegation or every built-up extension.",
+    "The official-vs-current50.87%IoU and large neighboring source disagreements require separate topology review; no boundary import is approved.",
+    "No source-coordinate edits, generation, tests, PBF scans, downloads, phone/device or ledger I/O occurred in this independent review."
+  ],
+  "inputPins": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bargou-reference-primary-source-review.json": "68744f5473660733b91c79906af10802f856c20e3775141eac197caf72e8d2f6",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bargou-reference-geopdf-data.json": "fefdad74eaf0aa27878e49369a5ce8fe5b52a0e9406bab6f70815c984fd88d55",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\social-unit.html": "6f4f927273a9370525552d5127d7cc8b783b037d919b9a8f0c33d4d3a19ffb52",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\municipal-geography.html": "5aebaaaf2e7023b8774471d7087fc9aa7d46c754e1ee71f26f6db4c844dc9173",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\bargou.pdf": "01edad25d3ae9c8d4ac3d0e6bf9a452b527b8cde76daf11d745948d8d8b0dc2b",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\bargou.png": "dac4bcdec4e60e441638c01ff6edeccd85930351bd7b512d31fa490b1a2edd07",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\decree-page-47.png": "33e40d866b510062a29b9b76f743a01aac361209215205e392a5f0e0d9e4614b"
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "status": "READ_ONLY_ASSESSMENT_COMPLETE_RECOMMEND_HOLD_ISOLATED_TWO_SHAPE_REPLACEMENT",
+  "currentMetadataSha256": "d396925c0a7adb85010fb1a2b3f839ffcea939bc12b59a0da6c04d23c57d79a4",
+  "sourceScopeReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\source-scope-review.json",
+    "sha256": "6b2d8bf2e2e1094c66e964b3784505d3882903f77e49133c6f3e2c58a676ca2b"
+  },
+  "impactFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\impact-facts.json",
+    "sha256": "70215bbff849dd22f3659dc343a0471780e1ceae9471bc8ff3539044c162581f"
+  },
+  "impactSummary": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\impact-summary.json",
+    "sha256": "f89485ab1d9c1fdd3d60af8f46281e50b4127a2c2278c3cdcbfb83ed20dc245f"
+  },
+  "deepseekVerdict": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\deepseek-source-verdict.json",
+    "sha256": "7d1c95f3bae2269c760fd4ccceb60a2caec46b9364b93bd9502d5317907f0a22"
+  },
+  "reviewedImpactScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\impact-reviewed.py",
+    "sha256": "e42242e52750b2299e24084981fc3c123554a1b6399c68eff0afd2a6fda6b096"
+  },
+  "sourceBytesPinned": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\ettadhamen4.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/التضامن 4.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%AD%D9%8A%20%D8%A7%D9%84%D8%AA%D8%B6%D8%A7%D9%85%D9%86/%D8%A7%D9%84%D8%AA%D8%B6%D8%A7%D9%85%D9%86%204.pdf",
+      "sha256": "ba9d75ba467a055e07f96c810263e4502a9b3273697414303eab8edb19d11c38",
+      "bytes": 2016091,
+      "contentType": "application/pdf"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh1.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%88%D8%B3%D8%A9/%D8%B3%D9%88%D8%B3%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6/%D8%AD%D9%85%D8%A7%D9%85%20%D9%85%D8%B9%D8%B1%D9%88%D9%81%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%201.pdf",
+      "sha256": "974ebe24f0dee0a2701db768d6dd160554c9a492c5601b2978df6c710ad81025",
+      "bytes": 2119706,
+      "contentType": "application/pdf"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh2.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%88%D8%B3%D8%A9/%D8%B3%D9%88%D8%B3%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6/%D8%AD%D9%85%D8%A7%D9%85%20%D9%85%D8%B9%D8%B1%D9%88%D9%81%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%202.pdf",
+      "sha256": "377144831315b1197c2f4aefdc0f4aee2bf5db4ba20d7c99a24c401d70ff7eaf",
+      "bytes": 1617679,
+      "contentType": "application/pdf"
+    }
+  ],
+  "sourceIdentityVerdict": "Historical/current INS exact codes and independent official map geography support current names التضامن 4 and حمام معروف الرياض for the two source sectors. This is an administrative rename identity finding; original/current OSM footprint equivalence is not established.",
+  "sourceGeometryVerdict": "Three native closed red district paths are valid, wholly inside viewport and both active clipping regions, with embedded WGS84/UTM32N WKT/GPTS/LPTS. No guessed CRS or repaired geometry. The Sousse pair is exhaustive within the complete cached official parent index; that is same-provider evidence, not an independent present-day legal-whole-sector guarantee.",
+  "replacementRecommendation": "HOLD isolated production replacement: introducing only these two official shapes creates nine new sector conflicts and uncovered losses. Runtime withholding of incident conflicts prevents an unqualified precise label within overlaps, but does not restore missing coverage in newly uncovered losses. Current source names may be corrected on identity evidence independently of any future geometry decision; no name candidate is generated here.",
+  "counts": {
+    "currentRawRows": 3523,
+    "currentBoundaryRows": 2619,
+    "intersectionRecords": 18,
+    "oldIncidentConflicts": 0,
+    "afterPrepackingProjectionConflicts": 9,
+    "currentRawMembershipChanges": 0,
+    "oldNameReferenceRows": 1,
+    "pickerGroups": 13,
+    "pickerClosureRows": 13
+  },
+  "coverageMetrics": {
+    "osm:relation:7115584": {
+      "oldAreaKm2": 0.40842937080126285,
+      "newAreaKm2": 0.34681396648482204,
+      "gainKm2": 0.0040894440052867504,
+      "lossKm2": 0.06570484832171279,
+      "oldOutsideOtherSectorsKm2": 0.40842937080126296,
+      "oldOutsideAllRemainingPolygonsKm2": 0.40842937080126296,
+      "newOutsideOtherSectorsKm2": 0.3427245224795499,
+      "newOutsideAllRemainingPolygonsKm2": 0.3427245224795499,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.06570484832171282,
+      "lossNotCoveredByOtherSectorKm2": 0.06570484832171282,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.004089444005286332,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.004089444005286332,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    },
+    "osm:relation:7113315": {
+      "oldAreaKm2": 4.119931455052667,
+      "newAreaKm2": 4.348393893732443,
+      "gainKm2": 0.363583823464645,
+      "lossKm2": 0.13512138478491123,
+      "oldOutsideOtherSectorsKm2": 4.119931455052669,
+      "oldOutsideAllRemainingPolygonsKm2": 2.435693780327265,
+      "newOutsideOtherSectorsKm2": 3.984810070267811,
+      "newOutsideAllRemainingPolygonsKm2": 2.32066921514722,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.11502456518006825,
+      "lossNotCoveredByOtherSectorKm2": 0.13512138478490154,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.3635838234646526,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.3635838234646445,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    }
+  },
+  "conflicts": {
+    "osm:relation:7115584": [
+      {
+        "ids": [
+          "osm:relation:7090954",
+          "osm:relation:7115584"
+        ],
+        "peerId": "osm:relation:7090954",
+        "peerName": "حي الشباب",
+        "compilerApproximateIntersectionKm2": 0.0004090546588124414,
+        "sample": {
+          "lat": 36.83733939737938,
+          "lng": 10.092655442582736
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7115406",
+          "osm:relation:7115584"
+        ],
+        "peerId": "osm:relation:7115406",
+        "peerName": "البساتين",
+        "compilerApproximateIntersectionKm2": 3.495798428330516e-06,
+        "sample": {
+          "lat": 36.8397652518651,
+          "lng": 10.09395304133292
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7115582",
+          "osm:relation:7115584"
+        ],
+        "peerId": "osm:relation:7115582",
+        "peerName": "مارس 2",
+        "compilerApproximateIntersectionKm2": 0.0027048014824283067,
+        "sample": {
+          "lat": 36.836612,
+          "lng": 10.099041315155972
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7115583",
+          "osm:relation:7115584"
+        ],
+        "peerId": "osm:relation:7115583",
+        "peerName": "المنجي سليم",
+        "compilerApproximateIntersectionKm2": 0.0009822143515898843,
+        "sample": {
+          "lat": 36.83904884521786,
+          "lng": 10.094894692806793
+        }
+      }
+    ],
+    "osm:relation:7113315": [
+      {
+        "ids": [
+          "osm:relation:7106871",
+          "osm:relation:7113315"
+        ],
+        "peerId": "osm:relation:7106871",
+        "peerName": "سهلول جوهرة",
+        "compilerApproximateIntersectionKm2": 0.00019052805257054717,
+        "sample": {
+          "lat": 35.82534914039958,
+          "lng": 10.591555606698005
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7106872",
+          "osm:relation:7113315"
+        ],
+        "peerId": "osm:relation:7106872",
+        "peerName": "بو حسينة",
+        "compilerApproximateIntersectionKm2": 0.07534929206689421,
+        "sample": {
+          "lat": 35.81838079994969,
+          "lng": 10.598161314842017
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7106873",
+          "osm:relation:7113315"
+        ],
+        "peerId": "osm:relation:7106873",
+        "peerName": "الهادي شاكر",
+        "compilerApproximateIntersectionKm2": 0.057985304880259,
+        "sample": {
+          "lat": 35.80612148880084,
+          "lng": 10.610780760918392
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7108099",
+          "osm:relation:7113315"
+        ],
+        "peerId": "osm:relation:7108099",
+        "peerName": "القلعة الصغرى الشرقية",
+        "compilerApproximateIntersectionKm2": 0.17988111746532842,
+        "sample": {
+          "lat": 35.805842380988125,
+          "lng": 10.579265117441597
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7113315",
+          "osm:relation:7113316"
+        ],
+        "peerId": "osm:relation:7113316",
+        "peerName": "حي الرياض",
+        "compilerApproximateIntersectionKm2": 0.051059829901629286,
+        "sample": {
+          "lat": 35.80403514083474,
+          "lng": 10.58467217417462
+        }
+      }
+    ]
+  },
+  "currentAnchors": {
+    "osm:relation:7115584": {
+      "lat": 36.835375,
+      "lng": 10.097386,
+      "oldCovers": true,
+      "newCovers": true
+    },
+    "osm:relation:7113315": {
+      "lat": 35.811559,
+      "lng": 10.595204,
+      "oldCovers": true,
+      "newCovers": true
+    }
+  },
+  "derivedContexts": [
+    {
+      "currentRaw": {
+        "id": "osm:node:1567848345",
+        "sourceId": "osm",
+        "name": "حي الرياض",
+        "aliases": [
+          "Cité Riadh",
+          "Hay Riadh",
+          "Cité Erriadh"
+        ],
+        "kind": "suburb",
+        "parentName": "العهد الجديد",
+        "contextAliases": [
+          "Délégation Sousse Erriadh",
+          "El Ahd El Jadid",
+          "Sousse Riadh",
+          "العهد الجديد",
+          "معتمدية سوسة الرياض"
+        ],
+        "governorateId": 348,
+        "lat": 35.804617,
+        "lng": 10.6050818,
+        "delegationId": 621,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1567848345"
+      },
+      "matchingTargetIds": [
+        "osm:relation:7113315"
+      ],
+      "matchingParentName": "العهد الجديد",
+      "matchingContextAliases": [
+        "Délégation Sousse Erriadh",
+        "El Ahd El Jadid",
+        "Sousse Riadh",
+        "العهد الجديد",
+        "معتمدية سوسة الرياض"
+      ],
+      "proposedParentName": "حمام معروف الرياض",
+      "proposedContextAliases": [
+        "Délégation Sousse Erriadh",
+        "El Ahd El Jadid",
+        "Sousse Riadh",
+        "حمام معروف الرياض",
+        "معتمدية سوسة الرياض"
+      ],
+      "requiresFinalCurationAliasPolicy": true,
+      "arabicContextOnlyProposedFrenchLegacyAliasPreservedForAssessment": true,
+      "mutatedCurrentRow": false,
+      "containment": {
+        "osm:relation:7113315": {
+          "targetId": "osm:relation:7113315",
+          "currentPointContainedOld": true,
+          "currentPointContainedNew": true,
+          "source": {
+            "geometryType": "Point",
+            "insideOld": true,
+            "insideNew": true
+          }
+        }
+      },
+      "representativePointAloneNotGenerationProof": true
+    }
+  ],
+  "parentGovernorateDiscrepancy": {
+    "osm:relation:7115584": {
+      "parent": {
+        "id": "osm:relation:4156579",
+        "compactExpectedOfficialOutsideOriginalM2": 405.4674913191327,
+        "oldPackedOutsideM2": 3.1183603836678,
+        "newNativeOutsideM2": 405.4674913191327,
+        "newNativeMinusCompactExpectedM2": 0.0
+      },
+      "governorate": {
+        "id": "osm:relation:1435830",
+        "compactExpectedOfficialOutsideOriginalM2": 402.0129208057862,
+        "oldPackedOutsideM2": 3.1183603836678,
+        "newNativeOutsideM2": 402.0129208057862,
+        "newNativeMinusCompactExpectedM2": 0.0
+      }
+    },
+    "osm:relation:7113315": {
+      "parent": {
+        "id": "osm:relation:7150108",
+        "compactExpectedOfficialOutsideOriginalM2": 312599.3935339133,
+        "oldPackedOutsideM2": 68.15218411519639,
+        "newNativeOutsideM2": 312599.39364841225,
+        "newNativeMinusCompactExpectedM2": 0.00011449895100668073
+      },
+      "governorate": {
+        "id": "osm:relation:3152094",
+        "compactExpectedOfficialOutsideOriginalM2": 0.0,
+        "oldPackedOutsideM2": 0.0,
+        "newNativeOutsideM2": 0.0,
+        "newNativeMinusCompactExpectedM2": 0.0
+      }
+    }
+  },
+  "compilerContextCaveat": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+    "sha256": "722c90af0739d79714edb4df78cbfb38a08aa4801bf343113e0d3f74533ab50c",
+    "lines": "3850–3902",
+    "finding": "administrative_context requires whole-footprint parent containment; coded parent is selected only if its shape covers the footprint (lines3882–3885). Both new official shapes exceed original OSM parents. A future candidate must explicitly inspect/prove preserved parent/governorate context through existing reviewed membership support; current codes alone cannot silently override disagreeing source geometry."
+  },
+  "nativeUnionQualification": {
+    "nativePartOverlapM2": 288.3215669586554,
+    "adjusted": false,
+    "calculationNote": "Source scope union was measured in stored UTM32N; impact constructs untouched native WGS84 union before projection, matching the geometry payload representation. Sousse area difference between operation spaces is about0.000955m², a numerical/projection distinction; no source path is moved."
+  },
+  "workerNativeCorrections": [
+    "Replaced heuristic geometry discovery with exact payload keys and explicit native two-part union; removed mistaken Sousse part1-only bounds assertion.",
+    "Restricted other-polygon coverage unions to exact bbox incident cohort; all2619 polygons inspected for candidates.",
+    "Read original child point from cached nodes (not only area records), verifying old/new containment.",
+    "Proposed Arabic context substitution only; did not replace French historical alias with Arabic or invent new aliases. Final alias policy remains a candidate decision.",
+    "Separated sector-municipality overlap metrics from peer conflict semantics; only sector peers trigger these target conflicts.",
+    "Pin checks run before and after computation/writes; script writes only two work artifacts."
+  ],
+  "productionWrites": false,
+  "neighborReplacementOrResearchExpansion": false,
+  "testsBuildApkDevices": false,
+  "candidateGenerated": false,
+  "remainingDecision": "Root decides whether to retain existing geometry with corrected names or separately authorize a coherent bounded treatment of the documented seams. No neighbor expansion performed."
+}

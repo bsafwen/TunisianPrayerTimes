@@ -1,0 +1,49 @@
+{
+  "status": "installed_sidi_bouzid_ministry_search_aliases",
+  "installedAtUtc": "2026-09-25T01:03:27.066128+00:00",
+  "sourceSha256": {
+    "catalog": "e2016b6878f7663d0cfd09076eaaeeb85a5b774ef987a36f3a6e84e6e16137d6",
+    "display": "e4637d42ce9deb04c2407ca5477c13647fd09bda5984faa8203a4cfbfa14f834",
+    "review": "29d418819d21d078f0c90f1db631ae3620ad66aedb2f23906b3e709d8ddc49d3"
+  },
+  "installedDisplaySha256": "606ab74455c124b52a635aebb5adf36b6055edfa16fc2c0fd35f5ef88c7474a2",
+  "aliasesAdded": [
+    {
+      "id": "osm:relation:7169655",
+      "alias": "ابراهيم",
+      "caseId": "identity-exception:355:2cb1ca219681"
+    },
+    {
+      "id": "osm:relation:7169584",
+      "alias": "الأسودة",
+      "caseId": "identity-exception:355:7386e41afd51"
+    },
+    {
+      "id": "osm:relation:7169572",
+      "alias": "الحنية ابازيد",
+      "caseId": "identity-exception:355:a91ad28b3cc7"
+    },
+    {
+      "id": "osm:relation:7169556",
+      "alias": "الشواشنية",
+      "caseId": "identity-exception:355:cf2ca5e41b42"
+    },
+    {
+      "id": "osm:relation:7169650",
+      "alias": "اولاد المنصورة الغربية",
+      "caseId": "identity-exception:355:12a39225035b"
+    },
+    {
+      "id": "osm:relation:7169591",
+      "alias": "اولاد عوني",
+      "caseId": "identity-exception:355:3406fed165d7"
+    },
+    {
+      "id": "osm:relation:7169628",
+      "alias": "قلال",
+      "caseId": "identity-exception:355:4df7bd4d9fca"
+    }
+  ],
+  "heldParentConflicts": 3,
+  "catalogAndGeometryChanged": false
+}

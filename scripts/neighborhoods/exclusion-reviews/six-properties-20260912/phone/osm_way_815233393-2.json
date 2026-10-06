@@ -1,0 +1,37 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-12T18:51:04.137675+00:00",
+  "query": "36.856853,10.268766",
+  "queryVisibleInUi": false,
+  "publicCardTitles": [
+    "formi.tn"
+  ],
+  "publicUiText": [
+    "formi.tn",
+    "Tunis 2045، تونس",
+    "محل هدايا",
+    "مغلق · يفتح يوم الاثنين عند الساعة 9:30 ص",
+    "الاتجاهات إلى formi.tn",
+    "الاتجاهات",
+    "الاتصال بـ: formi.tn",
+    "اتصال",
+    "مشاركة formi.tn",
+    "مشاركة",
+    "حفظ formi.tn في القوائم",
+    "حفظ",
+    "نظرة عامة",
+    "آخر الأخبار",
+    "مصغَّرة",
+    "التقييم والمراجعة",
+    "مساهماتك",
+    "إضافة لحظة مميّزة من زيارة أخيرة",
+    "إغلاق",
+    "ابحث عن محطات وقود مثلاً",
+    "البحث الصوتي",
+    "‏\"عدسة Google\" في \"خرائط Google\""
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "osm_way_815233393-2.png",
+  "boundaryVerified": false
+}

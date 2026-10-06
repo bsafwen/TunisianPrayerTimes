@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "status": "ROOT_AUTHORIZED_PRODUCT_SCOPE_EXCLUSION_REVIEW_WORK_ONLY",
+  "id": "osm:way:391586656",
+  "action": "exclude",
+  "scope": "product_picker_and_gps_labels_only",
+  "sourceFacts": {
+    "file": "exclusion-reviews/gct-staff-housing-20260920/source-facts.json",
+    "sha256": "34b5b0156b5cebcf8a2ef0e88c0d279a975ea9c018b4710d58b0a035e018ac4f",
+    "bytes": 4058
+  },
+  "sourceFactsRepositoryPath": "scripts/neighborhoods/exclusion-reviews/gct-staff-housing-20260920/source-facts.json",
+  "sourceFactsSha256": "34b5b0156b5cebcf8a2ef0e88c0d279a975ea9c018b4710d58b0a035e018ac4f",
+  "sourceFactsBytes": 4058,
+  "rootAuthorization": "Root approved staging the exact GCT staff-housing exclusion under the user's residential-compound product scope. No generation or installation is authorized by this source component.",
+  "policy": "Exclude from locality picker and GPS labels; preserve saved delegation and fromGPS flag via existing PrefsManager semantics.",
+  "qualifications": {
+    "noPrimaryOperatorParcelLink": true,
+    "failedOperatorSearchIsNotNegativeIdentityEvidence": true,
+    "notNonexistence": true,
+    "notCertifiedOwnership": true,
+    "exactScope": "Only this exact source id may be excluded; no compiler or broad filter changes, no display/boundary/picker manifest changes, no surviving raw identity or group changes.",
+    "fallback": "If reviewed source identity or pinned facts change, do not apply; regenerate review."
+  },
+  "externalBodyRequired": false
+}

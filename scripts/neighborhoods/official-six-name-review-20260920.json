@@ -1,0 +1,501 @@
+{
+  "at": "2026-09-20T00:48:40.647828+00:00",
+  "inventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119"
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "metadata": {
+    "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "0c71238f85216b5e3e9a247958f5c8bb1e9891f78cba3c70a5e05de20f0442ab"
+  },
+  "sourceQueue": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\nine-physical-name-reviews-20260920\\remaining-focused-name-queue.json",
+    "sha256": "18353c129ed0b0e27a4477dcae2eecc6446abba5374cb72951a3914d55019d5b"
+  },
+  "changes": [
+    {
+      "id": "osm:relation:7118030",
+      "officialSectorCode": "116059",
+      "oldName": "قصر سعيد",
+      "newName": "قصر السعيد",
+      "oldAliases": [
+        "Ksar-Said"
+      ],
+      "proposedAliases": [
+        "Ksar-Said",
+        "قصر سعيد"
+      ],
+      "status": "ROOT_REVIEWED_NAME_CORRECTION_STAGED_NOT_APPLIED",
+      "sourceRecord": {
+        "id": "osm:relation:7118030",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "قصر سعيد",
+          "name:ar": "قصر سعيد",
+          "name:fr": "Ksar-Said",
+          "ref:tn:codegeo": "116059"
+        }
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1160",
+        "delegationFr": "Le bardo",
+        "delegationAr": "باردو",
+        "sectorCode": "116059",
+        "sectorFr": "Ksar-said",
+        "sectorAr": "قصر السعيد",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2654,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 82,
+          "Nombre_de_menages_par_Secteurs.xlsx": 82
+        }
+      },
+      "catalogFingerprint": "4e0907238bd031dcf5e9f0a5ec0265b3d6cc767be02b6655a5936fbab34aa5b5",
+      "currentPointToKeep": {
+        "lat": 36.81232,
+        "lng": 10.126314
+      },
+      "governorateIdToKeep": 342,
+      "nearestDelegationIdToKeep": 394,
+      "parentNameToKeep": "معتمدية باردو",
+      "phoneNameEvidence": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118030-3.json",
+          "sha256": "1d90f0274dd1641b086b2d566c3cd20c71f291211a5858b5dae63e23ddce17d6"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118030-3.png",
+          "sha256": "ca25531048fb8e734fd80b9067fa5ccfaac101058658e622db2b2dbd236e0a4a"
+        },
+        "rootScreenshotReviewed": true,
+        "matchedOfficialArabicTitle": "قصر السعيد",
+        "boundaryCertified": false
+      },
+      "phoneNameFacetSupported": true,
+      "qualification": "Official sector name and Google locality card agree. Dotted extent is not certified as the official polygon.",
+      "factsIssuesPreserved": [],
+      "applied": false
+    },
+    {
+      "id": "osm:relation:7117932",
+      "officialSectorCode": "116954",
+      "oldName": "الطيب مهيري",
+      "newName": "الطيب المهيري",
+      "oldAliases": [
+        "Taieb Mhiri"
+      ],
+      "proposedAliases": [
+        "Taieb Mhiri",
+        "الطيب مهيري"
+      ],
+      "status": "ROOT_REVIEWED_NAME_CORRECTION_STAGED_NOT_APPLIED",
+      "sourceRecord": {
+        "id": "osm:relation:7117932",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطيب مهيري",
+          "name:ar": "الطيب مهيري",
+          "name:fr": "Taieb Mhiri",
+          "ref:tn:codegeo": "116954"
+        }
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1169",
+        "delegationFr": "La goulette",
+        "delegationAr": "حلق الوادي",
+        "sectorCode": "116954",
+        "sectorFr": "Taieb mhiri",
+        "sectorAr": "الطيب المهيري",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4897,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 154,
+          "Nombre_de_menages_par_Secteurs.xlsx": 154
+        }
+      },
+      "catalogFingerprint": "91ef3d7ab99dce95ebaeb6b79c70d03f8be22b531380298482f702a18d21165f",
+      "currentPointToKeep": {
+        "lat": 36.836049,
+        "lng": 10.278915
+      },
+      "governorateIdToKeep": 342,
+      "nearestDelegationIdToKeep": 406,
+      "parentNameToKeep": "معتمدية حلق الوادي",
+      "phoneNameEvidence": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7117932-1.json",
+          "sha256": "5d4c7f1ceaf0a73917b3b067b4a5776f1caeb3d6ca0b07bb1bb758c0692a2022"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7117932-1.png",
+          "sha256": "b62b8cd2b43f73907f5dcadd28247c1378c39abd71abd8755eb2f7c49bfe4659"
+        },
+        "rootScreenshotReviewed": true,
+        "matchedOfficialArabicTitle": "الطيب المهيري",
+        "boundaryCertified": false
+      },
+      "phoneNameFacetSupported": true,
+      "qualification": "Official sector name and Google locality card agree. Dotted extent is not certified as the official polygon.",
+      "factsIssuesPreserved": [
+        "osm:relation:7117932:packed-not-covered-by-source-governor"
+      ],
+      "applied": false
+    },
+    {
+      "id": "osm:relation:7116965",
+      "officialSectorCode": "116451",
+      "oldName": "برج شكير",
+      "newName": "برج شاكير",
+      "oldAliases": [
+        "Borj Chakir"
+      ],
+      "proposedAliases": [
+        "Borj Chakir",
+        "برج شكير"
+      ],
+      "status": "ROOT_REVIEWED_NAME_CORRECTION_STAGED_NOT_APPLIED",
+      "sourceRecord": {
+        "id": "osm:relation:7116965",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "برج شكير",
+          "name:ar": "برج شكير",
+          "name:fr": "Borj Chakir",
+          "ref:tn:codegeo": "116451"
+        }
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1164",
+        "delegationFr": "Sidi hassine",
+        "delegationAr": "سيدي حسين",
+        "sectorCode": "116451",
+        "sectorFr": "Borj-chakir",
+        "sectorAr": "برج شاكير",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3572,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 110,
+          "Nombre_de_menages_par_Secteurs.xlsx": 110
+        }
+      },
+      "catalogFingerprint": "f62c20302d77ee687467efcadcdf33d3b9a8fc21a5320380fb492d80f12d7117",
+      "currentPointToKeep": {
+        "lat": 36.753114,
+        "lng": 10.068519
+      },
+      "governorateIdToKeep": 342,
+      "nearestDelegationIdToKeep": 398,
+      "parentNameToKeep": "معتمدية سيدي حسين",
+      "phoneNameEvidence": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7116965-1.json",
+          "sha256": "1cd2582eb0e62b9ce9425a1a311f2c07b111f8484a4ecc3db41dde0bca31ab2f"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7116965-1.png",
+          "sha256": "ad9959f29c16994c34d59baacbe3fa55c3c543a5797086b1a2abe4287bb2d72e"
+        },
+        "rootScreenshotReviewed": true,
+        "matchedOfficialArabicTitle": "برج شاكير",
+        "boundaryCertified": false
+      },
+      "phoneNameFacetSupported": true,
+      "qualification": "Official sector name and Google locality card agree. Dotted extent is not certified as the official polygon.",
+      "factsIssuesPreserved": [
+        "osm:relation:7116965:packed-not-covered-by-source-governor"
+      ],
+      "applied": false
+    },
+    {
+      "id": "osm:relation:7125779",
+      "officialSectorCode": "245761",
+      "oldName": "سوالم",
+      "newName": "السوالم",
+      "oldAliases": [
+        "Soualem"
+      ],
+      "proposedAliases": [
+        "Soualem",
+        "سوالم",
+        "Esswelem"
+      ],
+      "status": "ROOT_REVIEWED_NAME_CORRECTION_STAGED_NOT_APPLIED",
+      "sourceRecord": {
+        "id": "osm:relation:7125779",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سوالم",
+          "name:ar": "سوالم",
+          "name:fr": "Soualem",
+          "ref:tn:codegeo": "245761"
+        }
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "24",
+        "governorateFr": "Siliana",
+        "governorateAr": "سليانة",
+        "delegationCode": "2457",
+        "delegationFr": "Makthar",
+        "delegationAr": "مكثر",
+        "sectorCode": "245761",
+        "sectorFr": "Esswelem",
+        "sectorAr": "السوالم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31279,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1473,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1472
+        }
+      },
+      "catalogFingerprint": "819a2e810f753f82b3e9782f55604fff9e0966a222e1439f0b85d1460ecea10b",
+      "currentPointToKeep": {
+        "lat": 35.798321,
+        "lng": 9.201163
+      },
+      "governorateIdToKeep": 344,
+      "nearestDelegationIdToKeep": 415,
+      "parentNameToKeep": "معتمدية مكثر",
+      "phoneNameEvidence": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7125779-1.json",
+          "sha256": "75b62c89bae29c9d044ad8b3e78c24c7bb2a2f9265692d1a36bc9f130d26f9dd"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7125779-1.png",
+          "sha256": "1c9fccf2ad65d8714a724da2b74bd4e02ae94bb217e8869feab4f3527e7949e4"
+        },
+        "rootScreenshotReviewed": true,
+        "matchedOfficialArabicTitle": "السوالم",
+        "boundaryCertified": false
+      },
+      "phoneNameFacetSupported": true,
+      "qualification": "Official sector name and Google locality card agree. Dotted extent is not certified as the official polygon.",
+      "factsIssuesPreserved": [],
+      "applied": false
+    },
+    {
+      "id": "osm:relation:7125784",
+      "officialSectorCode": "245759",
+      "oldName": "شوارنية",
+      "newName": "الشوارنية",
+      "oldAliases": [
+        "Chouarnia"
+      ],
+      "proposedAliases": [
+        "Chouarnia",
+        "شوارنية"
+      ],
+      "status": "ROOT_REVIEWED_NAME_CORRECTION_STAGED_NOT_APPLIED",
+      "sourceRecord": {
+        "id": "osm:relation:7125784",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شوارنية",
+          "name:ar": "شوارنية",
+          "name:fr": "Chouarnia",
+          "ref:tn:codegeo": "245759"
+        }
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "24",
+        "governorateFr": "Siliana",
+        "governorateAr": "سليانة",
+        "delegationCode": "2457",
+        "delegationFr": "Makthar",
+        "delegationAr": "مكثر",
+        "sectorCode": "245759",
+        "sectorFr": "Chouarnia",
+        "sectorAr": "الشوارنية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31211,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1470,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1469
+        }
+      },
+      "catalogFingerprint": "a3e7e09924121d8175ed428ea5ce21fe17ae6ad622a078fdf45367c43c005191",
+      "currentPointToKeep": {
+        "lat": 35.954924,
+        "lng": 9.126626
+      },
+      "governorateIdToKeep": 344,
+      "nearestDelegationIdToKeep": 415,
+      "parentNameToKeep": "معتمدية مكثر",
+      "phoneNameEvidence": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7125784-3.json",
+          "sha256": "afbb68f2c476572b68a8228c1af7c81160313f3344a8b5641cb469a1ec1f4906"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7125784-3.png",
+          "sha256": "f51f401540f80f85156ce9c42b2d563005f24b8190a8f3c35873db16cd7fe1fe"
+        },
+        "rootScreenshotReviewed": true,
+        "matchedOfficialArabicTitle": "الشوارنية",
+        "boundaryCertified": false
+      },
+      "phoneNameFacetSupported": true,
+      "qualification": "Official sector name and Google locality card agree. Dotted extent is not certified as the official polygon.",
+      "factsIssuesPreserved": [
+        "osm:relation:7125784:packed-not-covered-by-source-governor"
+      ],
+      "applied": false
+    },
+    {
+      "id": "osm:relation:7152188",
+      "officialSectorCode": "335453",
+      "oldName": "الشحدة الجنوبية",
+      "newName": "الشحدة القبلية",
+      "oldAliases": [
+        "Ech-Chahda Sud"
+      ],
+      "proposedAliases": [
+        "Ech-Chahda Sud",
+        "الشحدة الجنوبية"
+      ],
+      "status": "ROOT_REVIEWED_NAME_CORRECTION_STAGED_NOT_APPLIED",
+      "sourceRecord": {
+        "id": "osm:relation:7152188",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الشحدة الجنوبية",
+          "name:ar": "الشحدة الجنوبية",
+          "name:fr": "Ech-Chahda Sud",
+          "ref:tn:codegeo": "335453"
+        }
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3354",
+        "delegationFr": "Chorbane",
+        "delegationAr": "شربان",
+        "sectorCode": "335453",
+        "sectorFr": "Ech-chahda sud",
+        "sectorAr": "الشحدة القبلية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39711,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1895,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1891
+        }
+      },
+      "catalogFingerprint": "b3cd560131b9c004b361788275f4c88593e9f1b3474af4793a08dfcd0d6f9f80",
+      "currentPointToKeep": {
+        "lat": 35.256955,
+        "lng": 10.319657
+      },
+      "governorateIdToKeep": 345,
+      "nearestDelegationIdToKeep": 429,
+      "parentNameToKeep": "معتمدية شربان",
+      "phoneNameEvidence": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7152188-3.json",
+          "sha256": "0b763102db15460b49d68589025b8a8ba798e10d0db4042120ffc04411cabb38"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7152188-3.png",
+          "sha256": "d13c200e4171b17fca67dd24bfe1be53391b0f11a2bd05504f545783b9e87f36"
+        },
+        "rootScreenshotReviewed": true,
+        "matchedOfficialArabicTitle": "الشحدة القبلية",
+        "boundaryCertified": false
+      },
+      "phoneNameFacetSupported": true,
+      "qualification": "Official sector name and Google locality card agree. Dotted extent is not certified as the official polygon.",
+      "factsIssuesPreserved": [],
+      "applied": false
+    },
+    {
+      "id": "osm:relation:7152215",
+      "officialSectorCode": "335655",
+      "oldName": "بوهلال",
+      "newName": "سيدي بوهلال",
+      "oldAliases": [
+        "Bou Helal"
+      ],
+      "proposedAliases": [
+        "Bou Helal",
+        "بوهلال",
+        "Sidi bou helal"
+      ],
+      "status": "ROOT_REVIEWED_NAME_CORRECTION_STAGED_NOT_APPLIED",
+      "sourceRecord": {
+        "id": "osm:relation:7152215",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بوهلال",
+          "name:ar": "بوهلال",
+          "name:fr": "Bou Helal",
+          "ref:tn:codegeo": "335655"
+        }
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3356",
+        "delegationFr": "Essouassi",
+        "delegationAr": "السواسي",
+        "sectorCode": "335655",
+        "sectorFr": "Sidi bou helal",
+        "sectorAr": "سيدي بوهلال",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 40289,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1922,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1918
+        }
+      },
+      "catalogFingerprint": "f071f355feffb692c637432728018bc60aaf348d3e17c5ac30bb55c68d79e014",
+      "currentPointToKeep": {
+        "lat": 35.261645,
+        "lng": 10.546278
+      },
+      "governorateIdToKeep": 345,
+      "nearestDelegationIdToKeep": 428,
+      "parentNameToKeep": "معتمدية السواسي",
+      "phoneNameEvidence": null,
+      "phoneNameFacetSupported": false,
+      "qualification": "Official registry supports full Sidi Bou Helal label. Phone exact locality-card identity remains unresolved; mixed name results and nearby-coordinate wording do not establish sector extent or justify a governorate change.",
+      "factsIssuesPreserved": [
+        "osm:relation:7152215:packed-not-covered-by-source-governor"
+      ],
+      "applied": false
+    }
+  ],
+  "sourceAndPhoneSupportedCount": 6,
+  "sourceSupportedPhoneIdentityHeldCount": 1,
+  "sidiBouHelalPhoneReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-official-names-review-20260920\\root-sidi-bouhelal-phone-review.json",
+    "sha256": "8ebfb2d6ba415486824e3ffc277452bf70d7881ebdca94f02e1a1b7e53562219"
+  },
+  "integrationInstructions": [
+    "Apply by stable feature ID after collection constraints are released, verifying expected name and current catalog fingerprint. Preserve old Arabic spelling as a search alias.",
+    "Preserve existing feature IDs, geometries, coordinates, governorates and prayer references for these name-only corrections. Resolve linked display labels by identity/context, never a global same-string replacement.",
+    "Keep actual source-boundary/duplicate issues open. For Sidi Bou Helal the official-label correction does not clear the Google same-name ambiguity."
+  ],
+  "appChanges": false,
+  "fullCatalogCertified": false
+}

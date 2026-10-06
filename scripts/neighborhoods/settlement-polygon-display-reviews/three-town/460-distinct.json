@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7103009",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Beni Khiar",
+        "ref:tn:codegeo": "155351"
+      },
+      "originalGeometrySha256": "dc7bcd936311077229e537514915b899282a6beb59b51e09680dbb8bd86c0d12",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Beni Khiar",
+        "ref:tn:codegeo": "155351"
+      },
+      "effectiveGeometrySha256": "dc7bcd936311077229e537514915b899282a6beb59b51e09680dbb8bd86c0d12",
+      "expectedMetadata": {
+        "name": "بني خيار",
+        "aliases": [
+          "Beni Khiar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خيار",
+        "governorateId": 350,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:97396877",
+      "originalKind": "residential",
+      "originalTags": {
+        "landuse": "residential",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Béni Khiar",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "fr:Béni Khiar"
+      },
+      "originalGeometrySha256": "fa285e42e47d21fe04d900eeac485b5dc034d3a5f8fcca9a5b6ed7112a714418",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Béni Khiar",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "fr:Béni Khiar"
+      },
+      "effectiveGeometrySha256": "fa285e42e47d21fe04d900eeac485b5dc034d3a5f8fcca9a5b6ed7112a714418",
+      "expectedMetadata": {
+        "name": "بني خيار",
+        "aliases": [
+          "Béni Khiar",
+          "Бені-Х'яр"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية بني خيار",
+        "governorateId": 350,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/beni-khiar-source-review.json",
+      "sha256": "f99e8ceb81f8127db54b253d1c5c3405a27772869c05b165ed520f36a031676c"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/beni-khiar-original-source-facts.json",
+      "sha256": "5166ae5a38c93739a94300e3516b36b77f69ddcefa762d71796c75bff4a461a3"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/independent-source-review.json",
+      "sha256": "88297770c4116ad4c7011ba9d745a5d184b9a274a298901751c6256afb261a70"
+    }
+  ],
+  "scope": "The independently coded imada remains a separate choice. Only this exact inhabited settlement polygon may later join its unchanged timetable base; all names, references and geometry remain."
+}

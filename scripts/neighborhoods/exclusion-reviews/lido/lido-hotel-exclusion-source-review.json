@@ -1,0 +1,528 @@
+{
+  "status": "PASS",
+  "scope": "SOURCE_QUALIFICATION_FOR_ONE_LIDO_HOTEL_EXCLUSION_ONLY",
+  "baselineMetadataSha256": "31ac2b52bbeec196cc3da2eacae11851b23ca08584027ceaf0665e40fc6bb21f",
+  "baselineGeneratorSha256": "c4bba701f4c06fb2f9f09862e06aa00761233bde91980517522ee9de4429e4b5",
+  "baselineCurationSha256": "cfe5c6df542ec9a02a608c71af7d696533d6ec46b4ffdeca3ff2f5a203ca0807",
+  "sourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "priorProvenanceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\unobserved-queue-eight-source-provenance-review.json",
+    "sha256": "701eb6010d6347560b255937356a7f15f0ac6f5fea6c73e691fb22f360ebee10"
+  },
+  "decision": {
+    "id": "osm:way:533465358",
+    "action": "exclude",
+    "expectedKind": "residential",
+    "expectedTags": {
+      "landuse": "residential",
+      "leisure": "garden",
+      "name": "Lido hôtel & spa nabeul"
+    },
+    "replacementId": null,
+    "finding": "This exact OSM object names a hotel compound, not an independently supported inhabited locality. Current full API tags and polygon equal the cached source. Original 2017 hotel/building tagging and the same name persist through the 2019 landuse/garden retagging. JORT independently identifies the named hotel at Dar Chaabane El Fehri. The exclusion is specific to this object; it is not a rule excluding residences or every hotel-tagged polygon."
+  },
+  "primaryEvidence": {
+    "jort": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\lido-jort-2021-012.pdf",
+      "sha256": "6c0cebf012a761002ceed0db0e0d06a7d96beba2380f882dcd2aaa3cd5f78aea",
+      "url": "https://lake.jort.tn/annonces-legales/fr/2021/012.pdf",
+      "publicationDate": "2021-02-09",
+      "pdfPage": 20,
+      "printedPage": 276,
+      "notice": "2021400217VEPA1",
+      "personallyViewedFullPage": true,
+      "finding": "The notice describes title550360 Nabeul, a 131000 m² hotel property in Dar Chaabane El Fehri on Avenue 7 Novembre, with guest rooms, bungalows and hotel facilities. It is primary historical property/use evidence, not a current tenure or operating-status certificate."
+    },
+    "render": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\lido-jort-page20.png",
+      "sha256": "0557d0f6ac73dc198eb922612783f514ddf121be796896f071e906b89439c0b9"
+    }
+  },
+  "exactSource": {
+    "currentFull": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\way-533465358-full.json",
+      "sha256": "bf2933e3d58ec0bebcc2d86bf6afdb442e17f7d2f4d5605702df47ece37b206a",
+      "url": "https://api.openstreetmap.org/api/0.6/way/533465358/full.json"
+    },
+    "history": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\queue-eight-source-provenance\\way-533465358-history.json",
+      "sha256": "7647a7dd0474aa842f0c52676aa82e33a02fc939d5dd159353469682ef2c933c",
+      "url": "https://api.openstreetmap.org/api/0.6/way/533465358/history.json"
+    },
+    "fullApiTagsEqualCache": true,
+    "fullApiClosedPolygonEqualsCache": true,
+    "currentVersion": 4,
+    "currentWayTimestamp": "2020-07-05T23:24:29Z",
+    "currentWayChangeset": 87568664,
+    "closedRingCoordinateCount": 10,
+    "sourceGeometrySha256": "1c8647fdb79716d65fcaf596c88d7dd5bb28b3549c14414e88a2889a52da4f41",
+    "geometryHashConvention": "SHA256 of sorted-key compact UTF-8 JSON of cached GeoJSON geometry; not a runtime aggregate hash."
+  },
+  "extentAndPhoneLimits": [
+    "The JORT 131000 m² property is not equated to the catalog areaKm2*1e6 value147296.3879205689 or UTM packed area146975.65648207167. No cadastral parcel or replacement ring is inferred.",
+    "Root reported phone2d8078 selected a four-star hotel. This is supplemental name/category corroboration only; no screenshot or exact phone coordinate was used here.",
+    "Current hotel operation, ownership, tenure and every OSM vertex are not certified by the historical notice. The fresh API comparison certifies only equality to the reviewed cached OSM object."
+  ],
+  "currentTarget": {
+    "id": "osm:way:533465358",
+    "sourceId": "osm",
+    "name": "Lido hôtel & spa nabeul",
+    "aliases": [],
+    "kind": "residential",
+    "parentName": "الفهري",
+    "contextAliases": [
+      "Dar Châabane El Fehri",
+      "Délégation Dar Chaabane El Fehri",
+      "El Fehri",
+      "الفهري",
+      "معتمدية دار شعبان الفهري"
+    ],
+    "governorateId": 350,
+    "lat": 36.448185,
+    "lng": 10.75685,
+    "delegationId": 468,
+    "hasBoundary": true,
+    "bbox": [
+      10.753223,
+      36.445907,
+      10.760278,
+      36.450473
+    ],
+    "areaKm2": 0.1472963879205689,
+    "pickerGroupId": "osm:way:533465358",
+    "offset": 5411896,
+    "length": 92
+  },
+  "packedRemoval": {
+    "offset": 5411896,
+    "length": 92,
+    "sha256": "2ef8b5ceae8d91ae18f701affbf9a173bf4e54a6cb10ff254f99c66a05a1c500",
+    "lidoOnlyRemainingBytes": 5501496,
+    "lidoOnlyRemainingSha256": "4b065fd50e0d7cdb4ad143644e85050ca8ef52b6c185c9c5f6c6d59862d31bed",
+    "scope": "The 92-byte deletion is additive to independently reviewed removals; these full-binary values describe Lido alone, before any simultaneous official boundary replacement."
+  },
+  "gpsAndAbsorption": {
+    "currentGroup": [
+      "osm:way:533465358"
+    ],
+    "sourcePointsExamined": 1742,
+    "sourcePointsInsideOriginal": [],
+    "sourcePointsInsidePacked": [],
+    "currentRawPointsInsidePacked": [],
+    "newlySurfacedSourcePoints": [],
+    "registeredConflictsInvolvingTarget": [],
+    "intersectingOtherPackedPolygons": [
+      {
+        "id": "osm:relation:7103336",
+        "name": "الفهري",
+        "kind": "sector",
+        "areaM2": 146975.65648207167,
+        "coversWholeTarget": true,
+        "wholeOtherInsideTarget": false
+      }
+    ],
+    "representativeBefore": {
+      "hits": [
+        "osm:relation:7103336",
+        "osm:way:533465358"
+      ],
+      "suppressed": [],
+      "selected": "osm:way:533465358"
+    },
+    "representativeAfter": {
+      "hits": [
+        "osm:relation:7103336"
+      ],
+      "suppressed": [],
+      "selected": "osm:relation:7103336"
+    },
+    "conclusion": "Only El Fehri sector7103336 intersects the target with positive area and it covers the complete target. No conflict suppresses it there. The current smallest-area hotel selection becomes the sector selection throughout the target interior; timetable selection still uses the actual GPS coordinate. No remaining names, coordinates, defaults, contexts, geometry or groups are changed by this exclusion.",
+    "noCurrentPointOrAbsorptionChange": true
+  },
+  "preservedRawRows": {
+    "osm:relation:7103334": {
+      "currentMetadata": {
+        "id": "osm:relation:7103334",
+        "sourceId": "osm",
+        "name": "عمرون",
+        "aliases": [
+          "Amroun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دار شعبان الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.515219,
+        "lng": 10.71816,
+        "delegationId": 623,
+        "hasBoundary": true,
+        "bbox": [
+          10.67653,
+          36.47058,
+          10.764823,
+          36.559776
+        ],
+        "areaKm2": 33.60741690586281,
+        "pickerGroupId": "osm:relation:7103334",
+        "offset": 384852,
+        "length": 1756
+      },
+      "packedSha256": "769ddda039d92d67adcf4f3edb8fca8186ff64bf2f51f15e78e5e6baa2821908",
+      "completeRawGroup": [
+        "osm:relation:7103334"
+      ]
+    },
+    "osm:relation:7103335": {
+      "currentMetadata": {
+        "id": "osm:relation:7103335",
+        "sourceId": "osm",
+        "name": "دار شعبان",
+        "aliases": [
+          "Dar Chaabane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دار شعبان الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.469825,
+        "lng": 10.748533,
+        "delegationId": 468,
+        "hasBoundary": true,
+        "bbox": [
+          10.721101,
+          36.455763,
+          10.768015,
+          36.484163
+        ],
+        "areaKm2": 5.5608663602413095,
+        "pickerGroupId": "osm:relation:7103335",
+        "offset": 386608,
+        "length": 884
+      },
+      "packedSha256": "300ac61140a0fe78bcf8f06f6d797f0881d53347548d6fff3a5f1ab48f9d4d82",
+      "completeRawGroup": [
+        "osm:relation:7103335"
+      ]
+    },
+    "osm:relation:7103336": {
+      "currentMetadata": {
+        "id": "osm:relation:7103336",
+        "sourceId": "osm",
+        "name": "الفهري",
+        "aliases": [
+          "El Fehri"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دار شعبان الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.4533,
+        "lng": 10.758472,
+        "delegationId": 468,
+        "hasBoundary": true,
+        "bbox": [
+          10.744748,
+          36.44429,
+          10.770937,
+          36.462491
+        ],
+        "areaKm2": 2.8148434433263523,
+        "pickerGroupId": "osm:relation:7103336",
+        "offset": 387492,
+        "length": 868
+      },
+      "packedSha256": "019e1552949342515cf581ab23243fe665ee098bfa04dcafee1458e4f045fd30",
+      "completeRawGroup": [
+        "osm:relation:7103336"
+      ]
+    },
+    "osm:relation:7103337": {
+      "currentMetadata": {
+        "id": "osm:relation:7103337",
+        "sourceId": "osm",
+        "name": "الفرينين",
+        "aliases": [
+          "El Frinine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دار شعبان الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.555001,
+        "lng": 10.663173,
+        "delegationId": 463,
+        "hasBoundary": true,
+        "bbox": [
+          10.622163,
+          36.518248,
+          10.696894,
+          36.591869
+        ],
+        "areaKm2": 26.927242209400486,
+        "pickerGroupId": "osm:relation:7103337",
+        "offset": 388360,
+        "length": 1116
+      },
+      "packedSha256": "2fc7c93d063c7fa0e92ab583c5f71a7edd89e9df10e8b4e6cce90424893f9ffe",
+      "completeRawGroup": [
+        "osm:relation:7103337"
+      ]
+    },
+    "osm:way:174739936": {
+      "currentMetadata": {
+        "id": "osm:way:174739936",
+        "sourceId": "osm",
+        "name": "دار شعبان الفهري",
+        "aliases": [
+          "Dar Caɛban",
+          "Dar Chaabane",
+          "Dar Chaâbane",
+          "Dar Chaâbane El Fehri",
+          "Дар-Шаабан"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية نابل",
+        "contextAliases": [],
+        "governorateId": 350,
+        "lat": 36.465982,
+        "lng": 10.74479,
+        "delegationId": 623,
+        "hasBoundary": true,
+        "bbox": [
+          10.73136,
+          36.456459,
+          10.758713,
+          36.475599
+        ],
+        "areaKm2": 3.1749449639112854,
+        "pickerGroupId": "delegation:468",
+        "offset": 5263608,
+        "length": 788
+      },
+      "packedSha256": "2f06a184fc3bb7dae0a2e17bd955eea485af27b66619be0daf11d19e40a33f58",
+      "completeRawGroup": [
+        "osm:way:174739936"
+      ]
+    },
+    "osm:way:658923544": {
+      "currentMetadata": {
+        "id": "osm:way:658923544",
+        "sourceId": "osm",
+        "name": "La Princesse de la mer",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "El Fehri",
+          "الفهري",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.445913,
+        "lng": 10.752974,
+        "delegationId": 468,
+        "hasBoundary": true,
+        "bbox": [
+          10.751302,
+          36.44451,
+          10.754474,
+          36.447569
+        ],
+        "areaKm2": 0.05325226966821019,
+        "pickerGroupId": "osm:way:658923544",
+        "offset": 5418788,
+        "length": 116
+      },
+      "packedSha256": "cc28b73830eabdbeb14527ffe93a554212528c962ef58cd709c51168aedd6605",
+      "completeRawGroup": [
+        "osm:way:658923544"
+      ]
+    }
+  },
+  "preservedBase": {
+    "id": 468,
+    "nomFr": "Dar Chaabane Elfehri",
+    "nomAr": "دار شعبان الفهري",
+    "nomEn": "Dar Chaabane Elfehri",
+    "lat": 36.46,
+    "lng": 10.76
+  },
+  "preservedImadaIds": [
+    "osm:relation:7103334",
+    "osm:relation:7103335",
+    "osm:relation:7103336",
+    "osm:relation:7103337"
+  ],
+  "explicitPreservation": "Keep Princesse658923544 as a supported apartment-residence identity; preserve the actual Dar Chaabane town174739936/groupdelegation468 and all four imadas. Lido does not own any of those names or groups.",
+  "activeTargetBoundDependencies": [],
+  "expectedLidoOnlyCatalogDelta": {
+    "removedRawIds": [
+      "osm:way:533465358"
+    ],
+    "removedPolygonBytes": 92,
+    "rawCount": [
+      3630,
+      3629
+    ],
+    "polygonCount": [
+      2725,
+      2724
+    ],
+    "pointCount": [
+      905,
+      905
+    ],
+    "rawGroupCount": [
+      3497,
+      3496
+    ],
+    "pickerCount": [
+      3583,
+      3582
+    ],
+    "eligiblePickerCount": [
+      3582,
+      3581
+    ],
+    "curationDecisions": [
+      138,
+      139
+    ],
+    "retiredIds": [
+      17,
+      18
+    ],
+    "reviewedNames": [
+      99,
+      99
+    ],
+    "newCurationApplications": [],
+    "existingCurationApplicationsPreserved": 306,
+    "unchangedOtherSemanticMetadata": true,
+    "mechanicalChanges": [
+      "Subsequent packed offsets",
+      "Grid feature indices",
+      "Metadata byte count",
+      "Retired-ID sorted insertion"
+    ]
+  },
+  "combinedMunicipalCompatibility": {
+    "additionalRemovedRawId": "osm:way:533465358",
+    "additionalRemovedPolygonBytes": 92,
+    "municipalTwoPlusLidoRemovedPolygonBytes": 152,
+    "municipalTwoPlusLidoRetiredCount": 20,
+    "reviewedNamesRemain": 99,
+    "noDependencyOnMunicipalTargets": true,
+    "doesNotCertifyUnseenCombinedGeneratedOutput": true
+  },
+  "ksarRahacheHold": {
+    "id": "osm:way:377996281",
+    "status": "HOLD_EXCLUSION",
+    "currentMetadata": {
+      "id": "osm:way:377996281",
+      "sourceId": "osm",
+      "name": "Ksar Rahache",
+      "aliases": [],
+      "kind": "residential",
+      "parentName": "رأس الوادي",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Ras El Oued",
+        "Tataouine Sud",
+        "رأس الوادي",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.757442,
+      "lng": 10.250618,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        10.249327,
+        32.756559,
+        10.250801,
+        32.758289
+      ],
+      "areaKm2": 0.010459317450409861,
+      "pickerGroupId": "osm:way:377996281",
+      "offset": 5398708,
+      "length": 380
+    },
+    "currentFull": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\way-377996281-full.json",
+      "sha256": "9119458052dc04c3d833a8a580d9276fe25cfa3333d622158fc5f678d9cd02b3"
+    },
+    "history": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\queue-eight-source-provenance\\way-377996281-history.json",
+      "sha256": "cf9a738386212dbc90f8cd284bddb67c403f949f992df5758dd195d2919a2b56"
+    },
+    "finding": "All four historical versions carry historic=ruins; ruins=building and the name were added in2023. The exact fresh polygon/tags match cache. These are substantive ruin-identity leads, but independent exact-site evidence distinguishing the named ruin object from any inhabited locality or habitation within its footprint was not established. No exclusion rule is proposed.",
+    "phoneQualification": "Root ca9635 returned unrelated Ksar results; those provide no absence evidence.",
+    "excludedPrimaryNamesake": {
+      "html": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\education-january2023.html",
+        "sha256": "df18b21b09c2bc182384fa1e994381479abb9bc8c6c7c810a455463c41e209a5"
+      },
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\rahache-education-20230127.pdf",
+        "sha256": "5d78de62fb3928d245163c56cd03262a29f0ba14e6d730e7954dbe91d83c5254"
+      },
+      "url": "http://www.echos.education.gov.tn/2023-01-27/Actu_Min27012023.pdf",
+      "pdfPage": 1,
+      "personallyViewed": true,
+      "finding": "The school الرهاش is explicitly in Beni Mhira. It is not a spatial or administrative match to this Ras El Oued535263 ruin."
+    },
+    "hypotheticalOnlyImpact": {
+      "singletonGroup": true,
+      "removedPolygonBytesIfLaterApproved": 380,
+      "sourceOrCurrentPointsInside": [],
+      "onlyOverlappingSector": "osm:relation:7143876",
+      "sectorName": "رأس الوادي",
+      "sectorCode": "535263",
+      "fallbackAtRepresentative": "osm:relation:7143876",
+      "noRemovalAuthorized": true
+    },
+    "preserveNearbyIds": [
+      "osm:way:148643072",
+      "osm:node:11525318199",
+      "osm:way:377996284"
+    ],
+    "requiredNextEvidence": "A primary heritage/site or locally attributable source that locates this exact Ksar Rahache and establishes the object as an uninhabited ruin/monument scope; a generic Ksar name or failed search is insufficient."
+  },
+  "finiteFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\finite-current-impact.json",
+    "sha256": "9a02de2e48d0d0409f8e0ec393a31943a01b0c0d189b8f9a4b6eb60ec5268251"
+  },
+  "actions": {
+    "newFullWayFetches": 2,
+    "newPrimaryPdfFetches": 2,
+    "newPrimaryHtmlFetches": 1,
+    "generatorOrProductHelpersExecuted": false,
+    "testsOrBuildsRun": false,
+    "repoOrStageMutation": false,
+    "phoneAccess": false,
+    "ledgerMutation": false,
+    "ledgerContentUsed": false
+  }
+}

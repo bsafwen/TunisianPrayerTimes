@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_NAME_ONLY_WITH_OWN_EXPECTED_NAME_METADATA_UPDATE",
+  "sourceReview": {
+    "file": "residential-base-display-reviews/three-town-review/source-review.json",
+    "sha256": "e0a418a9cf369db73de7539983d8adff6487134bbefc56e870b22d5514038ce0"
+  },
+  "correction": {
+    "beforeBase": {
+      "id": 596,
+      "nomFr": "Zeramdine",
+      "nomAr": "زرامدين",
+      "nomEn": "Zeramdine",
+      "lat": 35.5791762,
+      "lng": 10.7379156
+    },
+    "afterBase": {
+      "id": 596,
+      "nomFr": "Zeramdine",
+      "nomAr": "زرمدين",
+      "nomEn": "Zeramdine",
+      "lat": 35.5791762,
+      "lng": 10.7379156
+    },
+    "savedName": {
+      "id": "delegation:596",
+      "name": "زرمدين",
+      "kind": "delegation"
+    },
+    "historicalSearchAlias": "زرامدين",
+    "source": "Current INS3254 plus current source village and residential use زرمدين; municipal indexed text corroborates it."
+  },
+  "coordinateCorrectionBefore": {
+    "delegationId": 596,
+    "expectedGovernorateId": 364,
+    "expectedNames": {
+      "nomAr": "زرامدين",
+      "nomFr": "Zeramdine",
+      "nomEn": "Zeramdine"
+    },
+    "reviewedDate": "2026-09-07",
+    "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+    "original": {
+      "lat": 35.61,
+      "lng": 10.72
+    },
+    "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+    "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+    "proposed": {
+      "lat": 35.5791762,
+      "lng": 10.7379156
+    },
+    "movedKm": 3.7909778459453523,
+    "osm": {
+      "id": "osm:node:1165832678",
+      "url": "https://www.openstreetmap.org/node/1165832678",
+      "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1165832678.json",
+      "version": 15,
+      "timestamp": "2023-11-30T19:22:38Z",
+      "name": "زرمدين",
+      "place": "village"
+    },
+    "osmEvidence": {
+      "retrieved": "2026-09-07",
+      "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+      "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+    },
+    "geonames": {
+      "id": 2472838,
+      "name": "Zeramedine",
+      "lat": 35.57525,
+      "lng": 10.73456,
+      "featureCode": "PPL",
+      "modified": "2024-07-23",
+      "url": "https://www.geonames.org/2472838",
+      "distanceToProposedKm": 0.5316893868058561,
+      "featureClass": "P"
+    },
+    "phoneVisualReview": {
+      "reviewedDate": "2026-09-07",
+      "decision": "approved_settlement_reference",
+      "report": "outputs/phone-source-point-second-review-last-seven.json",
+      "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+      "proposedObservation": "Pin is at a junction within a dense urban road network. The selected location card is Zaramidin, Tunisia.",
+      "originalObservation": "Pin is in the sparse northern road/garden area near L1551, with Unnamed location, Near Zeramdine Nord.",
+      "limitation": "The differing transliteration Zaramidin/Zeramdine is consistent with the same town in the proposal evidence. GeoNames is about 532m away, so no exact center is claimed.",
+      "exactCoordinateCertified": false,
+      "boundaryVerified": false,
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 35.5791762,
+            "lng": 10.7379156
+          },
+          "requestedQuery": "35.5791762,10.7379156",
+          "observedAt": "2026-09-07T06:27:29.458965+00:00",
+          "screenshot": "outputs/phone-maps-review/delegation_596-2.png",
+          "screenshotSha256": "29b30a8fbcb87f1e1c776e57d1336f19e9c9428994dcd534754679ebea91d194",
+          "observationJson": "outputs/phone-maps-review/delegation_596-2.json",
+          "observationJsonSha256": "2fb6ae56d458bed4004341791f3ab31da064ddb0d9bb123ef6daedf837a4c145",
+          "visuallyReviewed": true,
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 35.61,
+            "lng": 10.72
+          },
+          "requestedQuery": "35.61,10.72",
+          "observedAt": "2026-09-07T06:27:36.510847+00:00",
+          "screenshot": "outputs/phone-maps-review/delegation_596-3.png",
+          "screenshotSha256": "2f3687e4ee8d0a086dad1a8b63317092b0cb5a13257e365f5cc0cc3f1d323490",
+          "observationJson": "outputs/phone-maps-review/delegation_596-3.json",
+          "observationJsonSha256": "3884951cbdf19dfcd4baf54c5d0328caab5ad17fcf166439c6b9f985083e9c83",
+          "visuallyReviewed": true,
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false
+        }
+      ]
+    }
+  },
+  "coordinateCorrectionAfter": {
+    "delegationId": 596,
+    "expectedGovernorateId": 364,
+    "expectedNames": {
+      "nomAr": "زرمدين",
+      "nomFr": "Zeramdine",
+      "nomEn": "Zeramdine"
+    },
+    "reviewedDate": "2026-09-07",
+    "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+    "original": {
+      "lat": 35.61,
+      "lng": 10.72
+    },
+    "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+    "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+    "proposed": {
+      "lat": 35.5791762,
+      "lng": 10.7379156
+    },
+    "movedKm": 3.7909778459453523,
+    "osm": {
+      "id": "osm:node:1165832678",
+      "url": "https://www.openstreetmap.org/node/1165832678",
+      "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1165832678.json",
+      "version": 15,
+      "timestamp": "2023-11-30T19:22:38Z",
+      "name": "زرمدين",
+      "place": "village"
+    },
+    "osmEvidence": {
+      "retrieved": "2026-09-07",
+      "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+      "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+    },
+    "geonames": {
+      "id": 2472838,
+      "name": "Zeramedine",
+      "lat": 35.57525,
+      "lng": 10.73456,
+      "featureCode": "PPL",
+      "modified": "2024-07-23",
+      "url": "https://www.geonames.org/2472838",
+      "distanceToProposedKm": 0.5316893868058561,
+      "featureClass": "P"
+    },
+    "phoneVisualReview": {
+      "reviewedDate": "2026-09-07",
+      "decision": "approved_settlement_reference",
+      "report": "outputs/phone-source-point-second-review-last-seven.json",
+      "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+      "proposedObservation": "Pin is at a junction within a dense urban road network. The selected location card is Zaramidin, Tunisia.",
+      "originalObservation": "Pin is in the sparse northern road/garden area near L1551, with Unnamed location, Near Zeramdine Nord.",
+      "limitation": "The differing transliteration Zaramidin/Zeramdine is consistent with the same town in the proposal evidence. GeoNames is about 532m away, so no exact center is claimed.",
+      "exactCoordinateCertified": false,
+      "boundaryVerified": false,
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 35.5791762,
+            "lng": 10.7379156
+          },
+          "requestedQuery": "35.5791762,10.7379156",
+          "observedAt": "2026-09-07T06:27:29.458965+00:00",
+          "screenshot": "outputs/phone-maps-review/delegation_596-2.png",
+          "screenshotSha256": "29b30a8fbcb87f1e1c776e57d1336f19e9c9428994dcd534754679ebea91d194",
+          "observationJson": "outputs/phone-maps-review/delegation_596-2.json",
+          "observationJsonSha256": "2fb6ae56d458bed4004341791f3ab31da064ddb0d9bb123ef6daedf837a4c145",
+          "visuallyReviewed": true,
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 35.61,
+            "lng": 10.72
+          },
+          "requestedQuery": "35.61,10.72",
+          "observedAt": "2026-09-07T06:27:36.510847+00:00",
+          "screenshot": "outputs/phone-maps-review/delegation_596-3.png",
+          "screenshotSha256": "2f3687e4ee8d0a086dad1a8b63317092b0cb5a13257e365f5cc0cc3f1d323490",
+          "observationJson": "outputs/phone-maps-review/delegation_596-3.json",
+          "observationJsonSha256": "3884951cbdf19dfcd4baf54c5d0328caab5ad17fcf166439c6b9f985083e9c83",
+          "visuallyReviewed": true,
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false
+        }
+      ]
+    }
+  },
+  "scope": "The existing correction596 coordinates and all numeric values stay fixed. Preserve historical زرامدين for saved IDs/search; official زرمدين agrees across INS/current source village/residential and municipal indexed text."
+}

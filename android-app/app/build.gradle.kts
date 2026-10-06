@@ -1,9 +1,12 @@
 import org.gradle.api.GradleException
 import java.util.Properties
 
+val unsignedRelease = providers.gradleProperty("unsignedRelease")
+    .map { it.toBooleanStrict() }
+    .getOrElse(false)
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 val keystoreProperties = Properties().apply {
-    if (keystorePropertiesFile.exists()) {
+    if (!unsignedRelease && keystorePropertiesFile.exists()) {
         keystorePropertiesFile.inputStream().use(::load)
     }
 }
@@ -15,7 +18,7 @@ fun requireKeystoreProperty(name: String): String {
         ?: throw GradleException("Missing '$name' in ${keystorePropertiesFile.name}.")
 }
 
-if (isReleaseTask && !keystorePropertiesFile.exists()) {
+if (isReleaseTask && !unsignedRelease && !keystorePropertiesFile.exists()) {
     throw GradleException("Missing ${keystorePropertiesFile.path}. Create it before running release builds.")
 }
 
@@ -24,15 +27,20 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.gms.google-services")
+    // Bundles data/prayer-formula and data/official-islamic-dates as assets.
+    id("tunisianprayertimes.bundled-data")
+    // Ships the Quran's recitations and page scans as Play Asset Delivery packs.
+    id("tunisianprayertimes.quran-assets")
 }
 
 android {
     namespace = "com.tunisianprayertimes"
     compileSdk = 36
 
+
     signingConfigs {
         create("release") {
-            if (keystorePropertiesFile.exists()) {
+            if (!unsignedRelease && keystorePropertiesFile.exists()) {
                 storeFile = file(requireKeystoreProperty("storeFile"))
                 storePassword = requireKeystoreProperty("storePassword")
                 keyAlias = requireKeystoreProperty("keyAlias")
@@ -45,8 +53,8 @@ android {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
         targetSdk = 36
-        versionCode = 154
-        versionName = "2.143"
+        versionCode = 155
+        versionName = "2.144"
         
         androidResources {
             localeFilters += "ar"
@@ -66,7 +74,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (unsignedRelease) null else signingConfigs.getByName("release")
             ndk {
                 debugSymbolLevel = "FULL"
             }
@@ -91,6 +99,11 @@ android {
         compose = true
     }
 
+    androidResources {
+        // MediaPlayer streams recitations that a build bundles directly through AssetFileDescriptor.
+        noCompress += "mp3"
+    }
+
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
@@ -106,7 +119,10 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.7")
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("androidx.work:work-runtime-ktx:2.10.1")
+    // Quran packs for Play installs; other installs download them from the quran-cdn Worker.
+    implementation("com.google.android.play:asset-delivery-ktx:2.3.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    implementation("net.sf.geographiclib:GeographicLib-Java:2.1")
 
     // Compose
     implementation(platform("androidx.compose:compose-bom:2025.04.01"))
@@ -124,10 +140,13 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.14.1")
     testImplementation("org.json:json:20240303")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
     testImplementation("androidx.test:core:1.7.0")
     testImplementation("androidx.test.ext:junit:1.3.0")
     testImplementation("androidx.test:runner:1.7.0")
     testImplementation("androidx.work:work-testing:2.10.1")
+    testImplementation(platform("androidx.compose:compose-bom:2025.04.01"))
+    testImplementation("androidx.compose.ui:ui-test-junit4")
 
     // Instrumented tests (Compose)
     androidTestImplementation("androidx.test:core:1.7.0")

@@ -1,0 +1,21 @@
+{
+  "responses": [
+    {
+      "file": "evidence/486-prayer.json",
+      "sha256": "0a3cba2ac92479e584a9cc331547b42cd0b6395368dd928aeb72daa5602b5ec1",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/486/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/486/",
+      "status": 200,
+      "originalProvenanceFile": "evidence/486-prayer-receipt-original.json"
+    },
+    {
+      "file": "evidence/486-sun.json",
+      "sha256": "5c19f429b3508dcd8d9caad901afe7f0aa5a592d05ebe84a51984331a2ba78a5",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/486/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/486/",
+      "status": 200,
+      "originalProvenanceFile": "evidence/486-sun-receipt-original.json"
+    }
+  ],
+  "qualification": "Derived relocation manifest; original retrieval bytes preserved separately."
+}

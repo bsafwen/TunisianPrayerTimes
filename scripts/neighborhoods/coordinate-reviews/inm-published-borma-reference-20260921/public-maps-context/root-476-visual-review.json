@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-09-21T09:20:28.677209+00:00",
+  "sourceId": 476,
+  "status": "SOURCE_REFERENCE_COORDINATE_APPROVED",
+  "sourceReferenceApproved": true,
+  "polygonApproved": false,
+  "newViews": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-z11\\delegation_476-detail-border-z11.json",
+        "sha256": "73b40f78db829fb25ba2b153dc608d58e1b52cb34a1bdf31f93fe8c078ea4bf6"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-z11\\delegation_476-detail-border-z11.png",
+        "sha256": "0851d41f5164a2e23b78fa2f3b1825ed356ac9615e3aba51a07daae4de41821a"
+      }
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\coordinate-z11\\delegation_476-detail-coordinate-z11.json",
+        "sha256": "56567afb7dfcf2f5b68f8adb5c59e502bb9e8a6876720e7d974c47a21ca68f29"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\coordinate-z11\\delegation_476-detail-coordinate-z11.png",
+        "sha256": "46dd86dd2c6b37303f74484851cf0216a1ba2f85eb8aa112f8d1518eb2acf020"
+      }
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\expanded-country\\delegation_476-detail-expanded-country.json",
+        "sha256": "7c8c5c0ba596801ce52405c691527557549bca42c9efe91960e7a6e7a04e8b43"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\expanded-country\\delegation_476-detail-expanded-country.png",
+        "sha256": "a9b6991e59d8b9baae88b944540d4a4fadd42ef54d66703b7927d600ca627669"
+      }
+    }
+  ],
+  "reusedExactPointRecord": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_476-3.json",
+    "sha256": "928f4b6c46af301ca586321c4c814cccdb299f123b0e7a8f61492dd37452ebf4"
+  },
+  "observations": [
+    "Root viewed all three new screenshots and the saved exact-coordinate screenshot.",
+    "New expanded card simultaneously shows exact31.690000,9.211000, address Near Al Borma Tunisia, and Plus Code M6Q6+XCR Al Borma Algeria.",
+    "At zoom11 the point and Al Borma label are east of the Google Maps country boundary marked TUNISIA; El Borma Arabic town label is separately shown southwest of the boundary.",
+    "The earlier Algeria finding came exclusively from the Plus Code row; it is not the Maps address field.",
+    "The exact coordinate readback prevents treating a snapped POI card as proof of the requested point."
+  ],
+  "plusCodeInterpretation": {
+    "status": "REFERENCE_LOCALITY_IS_NOT_ADMINISTRATIVE_CONTAINMENT_PROOF",
+    "sources": [
+      "https://maps.google.com/pluscodes/support/",
+      "https://github.com/google/open-location-code/blob/main/Documentation/Specification/specification.md"
+    ],
+    "basis": "Google describes short codes as coordinates recovered relative to a nearby reference locality. Inference: the Algeria suffix here identifies that reference locality; the same Maps card gives Tunisia as the point address.",
+    "limitation": "This resolves this country-label objection only; it does not certify neighborhood borders."
+  },
+  "cachedGeometryMeasurement": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-measurement.json",
+    "sha256": "499600fc192053618c7adac5896adc4a984cf47296f0c06f1890a7a92068cd39"
+  },
+  "decision": "Accept paired INM published source476reference31.69,9.211 in place of legacy31.6916,9.2043. No locality representative point, label, parent, polygon or current nearest-source assignment changes."
+}

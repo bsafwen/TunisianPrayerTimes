@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "status": "NATIVE_SOURCE_REVIEW_PASS_NAME_ONLY_CANDIDATE",
+  "rank": 5,
+  "id": "osm:relation:7198157",
+  "sourceAndCurrentFacts": {
+    "id": "osm:relation:7198157",
+    "currentRaw": {
+      "id": "osm:relation:7198157",
+      "sourceId": "osm",
+      "name": "سيدي مدنين",
+      "aliases": [
+        "Sidi Medien"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية نبر",
+      "contextAliases": [
+        "Délégation Nebeur",
+        "Délégation de Nebeur",
+        "Nebeur",
+        "Nibbar",
+        "معتمدية نبر"
+      ],
+      "governorateId": 363,
+      "lat": 36.299364,
+      "lng": 8.931953,
+      "delegationId": 589,
+      "hasBoundary": true,
+      "bbox": [
+        8.882407,
+        36.25193,
+        8.973526,
+        36.34666
+      ],
+      "areaKm2": 47.394899457556185,
+      "pickerGroupId": "osm:relation:7198157",
+      "offset": 5086184,
+      "length": 5564
+    },
+    "sourceTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "سيدي مدنين",
+      "name:ar": "سيدي مدنين",
+      "name:fr": "Sidi Medien",
+      "ref:tn:codegeo": "235360"
+    },
+    "sourceKind": "sector",
+    "sourceReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\source.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997,
+      "jsonPointer": "/areas/2332"
+    },
+    "officialRecord": {
+      "governorateCode": "23",
+      "governorateFr": "Le kef",
+      "governorateAr": "الكاف",
+      "delegationCode": "2353",
+      "delegationFr": "Nebeur",
+      "delegationAr": "نبر",
+      "sectorCode": "235360",
+      "sectorFr": "Sidi medyen",
+      "sectorAr": "سيدي مدين",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 27097,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1271,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1270
+      }
+    },
+    "workbookRowIndices": [
+      3,
+      11,
+      19
+    ],
+    "sourceCodeMatchingIds": [
+      "osm:relation:7198157"
+    ],
+    "parentScope": [
+      {
+        "id": "osm:relation:4748624",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Nebeur",
+          "boundary": "administrative",
+          "name": "معتمدية نبر",
+          "name:ar": "معتمدية نبر",
+          "name:de": "Nibbar",
+          "name:en": "Nibbar",
+          "name:fr": "Délégation Nebeur",
+          "official_name": "معتمدية نبر",
+          "official_name:ar": "معتمدية نبر",
+          "official_name:fr": "Délégation de Nebeur",
+          "ref:tn:codegeo": "2353",
+          "ref:tn:hasc_2": "TN.KF.NE",
+          "wikidata": "Q3337611",
+          "wikipedia": "ar:معتمدية نبر"
+        },
+        "originalParentCoversOriginalObject": true
+      }
+    ],
+    "directDecisions": {
+      "curation": [],
+      "picker": [],
+      "boundaries": []
+    },
+    "existingCuration": null,
+    "pendingReview": [],
+    "currentPickerId": "osm:relation:7198157",
+    "currentPickerMembers": [
+      "osm:relation:7198157"
+    ],
+    "childrenWithSameContextName": [
+      {
+        "currentRaw": {
+          "id": "osm:node:2610858584",
+          "sourceId": "osm",
+          "name": "دار السلام",
+          "aliases": [
+            "Dar Essalem",
+            "Dar As Salam",
+            "Dar as-Salam"
+          ],
+          "kind": "hamlet",
+          "parentName": "سيدي مدنين",
+          "contextAliases": [
+            "Délégation Nebeur",
+            "Délégation de Nebeur",
+            "Nebeur",
+            "Nibbar",
+            "Sidi Medien",
+            "سيدي مدنين",
+            "معتمدية نبر"
+          ],
+          "governorateId": 363,
+          "lat": 36.2762248,
+          "lng": 8.9666375,
+          "delegationId": 421,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2610858584"
+        },
+        "source": {
+          "id": "osm:node:2610858584",
+          "kind": "hamlet",
+          "tags": {
+            "addr:city": "دار السلام",
+            "name": "دار السلام",
+            "name:ar": "دار السلام",
+            "name:de": "Dar as-Salam",
+            "name:en": "Dar As Salam",
+            "name:fr": "Dar Essalem",
+            "place": "hamlet"
+          },
+          "lat": 36.2762248,
+          "lng": 8.9666375
+        },
+        "originalObjectContainsChildPoint": true,
+        "curation": null
+      }
+    ],
+    "savedMaps": [
+      {
+        "artifact": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass4-phone-002\\osm_relation_7198157-1.json",
+          "sha256": "59414dd7fcd527c33fa3463177d561ca19b4aca9c84596b5f483107ac660ed9b",
+          "bytes": 1523
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass4-phone-002\\osm_relation_7198157-1.png",
+          "sha256": "d283b904223b5d1334e5bdac44a535162db143f5b7be0426147f7844cd8e305e",
+          "bytes": 432398
+        },
+        "exactQuery": "Sidi Medien, Le kef, Tunisia",
+        "parserVersion": 3,
+        "status": "candidate_observed",
+        "synchronizationOutcome": null,
+        "titles": [
+          "سيدي مدنين"
+        ],
+        "literalPublicUiText": [
+          "سيدي مدنين",
+          "Sidi Medien",
+          "تونس‎",
+          "الاتجاهات إلى سيدي مدنين",
+          "الاتجاهات",
+          "مشاركة سيدي مدنين",
+          "مشاركة",
+          "حفظ سيدي مدنين في القوائم",
+          "حفظ",
+          "عرض المزيد من الإجراءات لهذا المكان",
+          "المزيد",
+          "لمحة",
+          "العنوان:‏ تونس‎",
+          "إضافة مكان غير مدرج على الخريطة",
+          "إضافة مؤسستك إلى \"خرائط Google\" مجانًا",
+          "قياس المسافة",
+          "إغلاق",
+          "Sidi Medien, Le kef, Tunisia",
+          "محو"
+        ],
+        "qualification": "Historical captured public text; no geography/identity/boundary facet promotion. Existing ambiguous/uncertain parser signals remain unchanged."
+      }
+    ]
+  },
+  "officialOriginalWorkbookRows": [
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "bytes": 9247324
+      },
+      "officialUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population",
+      "worksheetXml": "xl/worksheets/sheet3.xml",
+      "row": 27097,
+      "cells": {
+        "A": "1",
+        "B": "District 1",
+        "C": "إقليم 1",
+        "D": "23",
+        "E": "Le kef",
+        "F": "الكاف",
+        "G": "2353",
+        "H": "Nebeur",
+        "I": "نبر",
+        "J": "235360",
+        "K": "Sidi medyen",
+        "L": "سيدي مدين",
+        "M": "235360-Sidi medyen",
+        "N": "235360-سيدي مدين",
+        "O": "M",
+        "P": " Masculin",
+        "Q": " ذكر",
+        "R": "1",
+        "S": "00-04",
+        "T": "00-04",
+        "U": "34"
+      },
+      "code": "235360",
+      "matchesRegistryExactly": true
+    },
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "bytes": 755797
+      },
+      "officialUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "sheet": "Logements",
+      "worksheetXml": "xl/worksheets/sheet3.xml",
+      "row": 1271,
+      "cells": {
+        "A": "1",
+        "B": "District 1",
+        "C": "إقليم 1",
+        "D": "23",
+        "E": "Le kef",
+        "F": "الكاف",
+        "G": "2353",
+        "H": "Nebeur",
+        "I": "نبر",
+        "J": "Sidi medyen",
+        "K": "سيدي مدين",
+        "L": "235360",
+        "M": "235360-Sidi medyen",
+        "N": "235360-سيدي مدين",
+        "O": "2",
+        "P": "Rural",
+        "Q": "ريفي",
+        "R": "436",
+        "S": "384"
+      },
+      "code": "235360",
+      "matchesRegistryExactly": true
+    },
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "bytes": 649843
+      },
+      "officialUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "sheet": "Ménages",
+      "worksheetXml": "xl/worksheets/sheet3.xml",
+      "row": 1270,
+      "cells": {
+        "A": "1",
+        "B": "District 1",
+        "C": "إقليم 1",
+        "D": "23",
+        "E": "Le kef",
+        "F": "الكاف",
+        "G": "2353",
+        "H": "Nebeur",
+        "I": "نبر",
+        "J": "Sidi medyen",
+        "K": "سيدي مدين",
+        "L": "235360",
+        "M": "235360-Sidi medyen",
+        "N": "235360-سيدي مدين",
+        "O": "2",
+        "P": "Rural",
+        "Q": "ريفي",
+        "R": "383"
+      },
+      "code": "235360",
+      "matchesRegistryExactly": true
+    }
+  ],
+  "sourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "metadataBaseline": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "ddb2bfe2389fe257d37cef60a6293e449323258cf2d4db3896a3986a6d4ee8f6",
+    "bytes": 1866364
+  },
+  "ledgerBaseline": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "d8a557c94abfbe0a66e039f7a71deefcb7f4fa0dd72f6fa9a4b6d0cf4aa1c251",
+    "bytes": 36828572
+  },
+  "originalAndPacked": {
+    "originalBounds": [
+      8.882407,
+      36.25193,
+      8.9735259,
+      36.34666
+    ],
+    "packedBounds": [
+      8.882407,
+      36.25193,
+      8.973526,
+      36.34666
+    ],
+    "packedSliceSha256": "c79664e21ece89e8292812ff16a509f41cf1653903558bb40ed68c0dc0ad4db3",
+    "parentRelationships": [
+      {
+        "id": "osm:relation:4748624",
+        "originalParentCoversOriginalSector": true,
+        "originalParentCoversPackedSector": false,
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Nebeur",
+          "boundary": "administrative",
+          "name": "معتمدية نبر",
+          "name:ar": "معتمدية نبر",
+          "name:de": "Nibbar",
+          "name:en": "Nibbar",
+          "name:fr": "Délégation Nebeur",
+          "official_name": "معتمدية نبر",
+          "official_name:ar": "معتمدية نبر",
+          "official_name:fr": "Délégation de Nebeur",
+          "ref:tn:codegeo": "2353",
+          "ref:tn:hasc_2": "TN.KF.NE",
+          "wikidata": "Q3337611",
+          "wikipedia": "ar:معتمدية نبر"
+        }
+      }
+    ],
+    "originalContainsCurrentAnchor": true,
+    "packedContainsCurrentAnchor": true
+  },
+  "identityFinding": "Unique original source code, matching coded parent, and the corresponding official catalog row identify the same sector. Only its Arabic display spelling is proposed for correction. No geometry, point, membership, group or nearest prayer-source change is authorized by this review.",
+  "proposedEffectiveNameTags": {
+    "name": "سيدي مدين",
+    "name:ar": "سيدي مدين",
+    "name:fr": "Sidi Medien"
+  },
+  "aliasPolicy": "Keep existing consumed Latin alias list unchanged; do not add the former erroneous primary as a searchable alias. Existing name_tags saved reviewedNames history must preserve the old name; final generated review remains required.",
+  "exactProjectedRawFieldChanges": [
+    {
+      "id": "osm:relation:7198157",
+      "field": "name",
+      "before": "سيدي مدنين",
+      "after": "سيدي مدين"
+    },
+    {
+      "id": "osm:node:2610858584",
+      "field": "parentName",
+      "before": "سيدي مدنين",
+      "after": "سيدي مدين"
+    },
+    {
+      "id": "osm:node:2610858584",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Nebeur",
+        "Délégation de Nebeur",
+        "Nebeur",
+        "Nibbar",
+        "Sidi Medien",
+        "سيدي مدنين",
+        "معتمدية نبر"
+      ],
+      "after": [
+        "Délégation Nebeur",
+        "Délégation de Nebeur",
+        "Nebeur",
+        "Nibbar",
+        "Sidi Medien",
+        "سيدي مدين",
+        "معتمدية نبر"
+      ]
+    }
+  ],
+  "expectedSavedNameHistory": {
+    "reviewedNamesNewRecords": 1,
+    "retiredRawIdsNew": 0,
+    "oldName": "سيدي مدنين",
+    "newName": "سيدي مدين"
+  },
+  "homonymsAndSourcePeers": [
+    {
+      "id": "osm:relation:7189461",
+      "kind": "sector",
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي مدين",
+        "name:ar": "سيدي مدين",
+        "name:fr": "Sidi Medien",
+        "ref:tn:codegeo": "215953"
+      },
+      "sourceLat": null,
+      "sourceLng": null,
+      "currentRaw": {
+        "id": "osm:relation:7189461",
+        "sourceId": "osm",
+        "name": "سيدي مدين",
+        "aliases": [
+          "Sidi Medien"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مجاز الباب",
+        "contextAliases": [
+          "Délégation Medjez El Bab",
+          "معتمدية مجاز الباب"
+        ],
+        "governorateId": 356,
+        "lat": 36.639575,
+        "lng": 9.748233,
+        "delegationId": 520,
+        "hasBoundary": true,
+        "bbox": [
+          9.688601,
+          36.61235,
+          9.807243,
+          36.6667
+        ],
+        "areaKm2": 33.2324176269842,
+        "pickerGroupId": "osm:relation:7189461",
+        "offset": 4836148,
+        "length": 1876
+      },
+      "insideOriginalCandidate": false,
+      "insidePackedCandidate": false
+    },
+    {
+      "id": "osm:node:1390303177",
+      "kind": "village",
+      "sourceTags": {
+        "addr:governorate": "Zaghouan",
+        "name": "سيدي مَديَن",
+        "name:ar": "سيدي مَديَن",
+        "name:en": "Sidi Medien",
+        "name:fr": "Sidi Medien",
+        "place": "village"
+      },
+      "sourceLat": 36.3343195,
+      "sourceLng": 10.0894842,
+      "currentRaw": {
+        "id": "osm:node:1390303177",
+        "sourceId": "osm",
+        "name": "سيدي مَديَن",
+        "aliases": [
+          "Sidi Medien"
+        ],
+        "kind": "village",
+        "parentName": "بئر حليمة",
+        "contextAliases": [
+          "Bir Halima",
+          "Délégation Zaghouan",
+          "Zaghouan",
+          "بئر حليمة",
+          "معتمدية زغوان"
+        ],
+        "governorateId": 343,
+        "lat": 36.3343195,
+        "lng": 10.0894842,
+        "delegationId": 616,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1390303177"
+      },
+      "insideOriginalCandidate": false,
+      "insidePackedCandidate": false
+    },
+    {
+      "id": "osm:node:8022428811",
+      "kind": "village",
+      "sourceTags": {
+        "name": "سيدي مدين",
+        "name:ar": "سيدي مدين",
+        "name:en": "Sidi Medien",
+        "name:fr": "Sidi Medien",
+        "place": "village"
+      },
+      "sourceLat": 36.6249253,
+      "sourceLng": 9.7465689,
+      "currentRaw": null,
+      "insideOriginalCandidate": false,
+      "insidePackedCandidate": false
+    }
+  ],
+  "peerQualification": "All listed original name peers lie outside both original and current packed candidate geometry; preserve their raw/source/group states. The absent8022428811 village belongs to separate source context and must not be revived.",
+  "modelVerdict": {
+    "rank": 5,
+    "ids": [
+      "osm:relation:7198157"
+    ],
+    "verdict": "HOLD",
+    "exactEvidenceProvingChange": "None. Official code 235360 gives سيدي مدين and Sidi medyen; OSM relation 7198157 gives سيدي مدنين and Sidi Medien with the same code and parent code 2353. The Arabic and Latin forms differ, so supplied evidence does not prove a pure typo rather than a local variant or a source error.",
+    "proposedPrimaryName": null,
+    "whyNotWrongIdentity": "No name-only change is safe. Shared code and parent do not prove that the official spelling should replace the current Arabic/Latin form; changing it could correct to a different variant or the wrong source object.",
+    "scopeEffects": "HOLD; no change to relation 7198157. If ever changed, affected fields would include its name/name:ar/name:fr and name-context parentName/contextAliases on child node 2610858584; those child fields are context, not a child rename.",
+    "missingEvidence": "Independent authoritative confirmation that code 235360's primary Arabic/French name is مدين/medyen and not a local variant; no geometry mismatch was established.",
+    "nextBoundedAction": "Keep HOLD; do not rename relation 7198157 or child node 2610858584. Revisit only if independent authoritative evidence explicitly ties code 235360 to the corrected spelling."
+  },
+  "nativeModelDisposition": "OVERRIDE HOLD: Medien versus medyen is an explicitly acknowledged transliteration variation. The proposed change keeps original French Sidi Medien unchanged. Exact unique235360, original2353parent containment, and allthreeoriginal official Arabic rows سيدي مدين support correcting the extraن in the current Arabic primary. This does not require treating the Latin strings as byte-equal or inferring a historical rename.",
+  "limitations": [
+    "The threeworkbooks share one official source catalog; they are not threeindependent geographical verifications.",
+    "Maps repeats the old spelling and is not the corrective source.",
+    "OSM source/packed containment is not official boundary certification.",
+    "Direct manifest matches are empty, but full active aggregate guards and generated metadata/coverage must still be reviewed before installation."
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\finalize.py",
+    "sha256": "e30622e5f2e8f9fb01397abfaf20a09a85a46785d4c82a792b6582b1a9a3035c",
+    "bytes": 10325
+  }
+}

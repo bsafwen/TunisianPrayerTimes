@@ -1,0 +1,962 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_boundary_source_phase_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "pointId": "osm:node:1165828355",
+  "baseId": 597,
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+  },
+  "sourceStates": [
+    {
+      "id": "osm:node:1165828355",
+      "original": {
+        "tags": {
+          "addr:city": "Beni Hassen",
+          "addr:governorate": "Monastir",
+          "name": "بني حسان",
+          "name:ar": "بني حسان",
+          "name:en": "Beni Hassen",
+          "name:fr": "Beni Hassen",
+          "place": "village",
+          "wikidata": "Q1124789",
+          "wikimedia_commons": "Category:Beni Hassen",
+          "wikipedia": "en:Beni Hassen"
+        },
+        "kind": "village",
+        "sourceId": null,
+        "geometrySha256": "a72dc1ef656c83b051ff032267bf3aac7a3b3ea1775bd16e511a8009eb67d903"
+      },
+      "effective": {
+        "tags": {
+          "addr:city": "Beni Hassen",
+          "addr:governorate": "Monastir",
+          "name": "بني حسان",
+          "name:ar": "بني حسان",
+          "name:en": "Beni Hassen",
+          "name:fr": "Beni Hassen",
+          "place": "village",
+          "wikidata": "Q1124789",
+          "wikimedia_commons": "Category:Beni Hassen",
+          "wikipedia": "en:Beni Hassen"
+        },
+        "kind": "village",
+        "sourceId": "osm",
+        "geometrySha256": "a72dc1ef656c83b051ff032267bf3aac7a3b3ea1775bd16e511a8009eb67d903"
+      }
+    },
+    {
+      "id": "osm:relation:7113965",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني حسان الجوفية",
+          "name:ar": "بني حسان الجوفية",
+          "name:fr": "Beni Hassen Nord",
+          "ref:tn:codegeo": "325552"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "311c6c5f95b0e23a5db7ffe2f1f1292ab9eeba612e680714c2825ab80c008352"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325552",
+          "name:ar": "بني حسان الجوفية",
+          "name:fr": "Beni Hassen Nord",
+          "alt_name": "Beni Hassen Nord"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "geometrySha256": "b26277bef2419102697f44b3f725f56361fdc64e8aa47d7b740911eb1f103e90"
+      }
+    },
+    {
+      "id": "osm:relation:7113975",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني حسان القبلية",
+          "name:ar": "بني حسان القبلية",
+          "name:fr": "Beni Hassen Sud",
+          "ref:tn:codegeo": "325551"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "ed2cebe0d92622eb7e02dad8b649aa3917d8d3bbe8faa34fdc4bf0ae1e77bd50"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325551",
+          "name:ar": "بني حسان القبلية",
+          "name:fr": "Beni Hassen Sud",
+          "alt_name": "Beni Hassen Sud"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "geometrySha256": "facd2b3e65fe20a89269988fb915bf5fc4abff0f9b98d281057507a43244b845"
+      }
+    },
+    {
+      "id": "osm:relation:7114530",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الجنائحة",
+          "name:ar": "الجنائحة",
+          "name:fr": "EL Jnaïha",
+          "ref:tn:codegeo": "325554"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "ee1fb9780324aa9854444cbe0265b1d34e2dc150aed1ff2fab3f504881374c2c"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325554",
+          "name:ar": "الجنائحة",
+          "name:fr": "EL Jnaïha",
+          "alt_name": "EL Jnaïha"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "geometrySha256": "1fe5a9ce35d890b55506c0e96b9546ba718b03434db1b68669bd90fc2dd39f35"
+      }
+    },
+    {
+      "id": "osm:relation:7114531",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الغنادة",
+          "name:ar": "الغنادة",
+          "name:fr": "Ghnada",
+          "ref:tn:codegeo": "325555"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "6f1fa7ca07a652fc39cadf98f8c5c1fc9aa4e7824bdb2581452d25581abe84ea"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325555",
+          "name:ar": "الغنادة",
+          "name:fr": "Ghnada",
+          "alt_name": "Ghenada;Ghnada"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "geometrySha256": "7e0ee6ef08c1df6c7b07858479b2c863ea4bbaaddd243f7ab357a7f4d0b701c5"
+      }
+    },
+    {
+      "id": "osm:relation:7114532",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حاتم",
+          "name:ar": "حاتم",
+          "name:fr": "Hatem",
+          "ref:tn:codegeo": "325553"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "9932cc824431ec857f1f2b147d9b2b7dd57b093bff8b300eec67365574a6ac83"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325553",
+          "name:ar": "حاتم",
+          "name:fr": "Hatem",
+          "alt_name": "Hatem"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "geometrySha256": "5e6ee0ac3017bbe7c3e1f46b01359eb6e8e31d84715807727394527b385f3962"
+      }
+    },
+    {
+      "id": "osm:relation:7154977",
+      "original": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Beni Hassen",
+          "boundary": "administrative",
+          "name": "معتمدية بني حسان",
+          "name:ar": "معتمدية بني حسان",
+          "name:fr": "Délégation Beni Hassen",
+          "ref:tn:codegeo": "3255",
+          "ref:tn:hasc_2": "TN.MS.BH",
+          "wikidata": "Q2400649"
+        },
+        "kind": "delegation",
+        "sourceId": null,
+        "geometrySha256": "d9af6b5530f4f6c9ccb81ab4b845f38a6c72d24b48afc216fcd75bfaee868ef9"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Beni Hassen",
+          "boundary": "administrative",
+          "name": "معتمدية بني حسان",
+          "name:ar": "معتمدية بني حسان",
+          "name:fr": "Délégation Beni Hassen",
+          "ref:tn:codegeo": "3255",
+          "ref:tn:hasc_2": "TN.MS.BH",
+          "wikidata": "Q2400649"
+        },
+        "kind": "delegation",
+        "sourceId": "osm",
+        "geometrySha256": "d9af6b5530f4f6c9ccb81ab4b845f38a6c72d24b48afc216fcd75bfaee868ef9"
+      }
+    }
+  ],
+  "originalNamePeerIds": [
+    "osm:node:1165828355",
+    "osm:relation:7154977"
+  ],
+  "effectiveNamePeerIds": [
+    "osm:node:1165828355",
+    "osm:relation:7154977"
+  ],
+  "acceptedReplacements": [
+    {
+      "id": "osm:relation:7113965",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-beni-hassan",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7113965",
+            "officialCode": "325552",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان الجوفية",
+              "name:ar": "بني حسان الجوفية",
+              "name:fr": "Beni Hassen Nord",
+              "ref:tn:codegeo": "325552"
+            },
+            "aliases": [
+              "Beni Hassen Nord"
+            ]
+          },
+          {
+            "id": "osm:relation:7113975",
+            "officialCode": "325551",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان القبلية",
+              "name:ar": "بني حسان القبلية",
+              "name:fr": "Beni Hassen Sud",
+              "ref:tn:codegeo": "325551"
+            },
+            "aliases": [
+              "Beni Hassen Sud"
+            ]
+          },
+          {
+            "id": "osm:relation:7114530",
+            "officialCode": "325554",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الجنائحة",
+              "name:ar": "الجنائحة",
+              "name:fr": "EL Jnaïha",
+              "ref:tn:codegeo": "325554"
+            },
+            "aliases": [
+              "EL Jnaïha"
+            ]
+          },
+          {
+            "id": "osm:relation:7114531",
+            "officialCode": "325555",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الغنادة",
+              "name:ar": "الغنادة",
+              "name:fr": "Ghnada",
+              "ref:tn:codegeo": "325555"
+            },
+            "aliases": [
+              "Ghenada",
+              "Ghnada"
+            ]
+          },
+          {
+            "id": "osm:relation:7114532",
+            "officialCode": "325553",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حاتم",
+              "name:ar": "حاتم",
+              "name:fr": "Hatem",
+              "ref:tn:codegeo": "325553"
+            },
+            "aliases": [
+              "Hatem"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-review.json",
+            "sha256": "61af7973593798faed4d1fa8d9f3bf10eb8a9a2ea08c35edd2f8ffb051bbedf8"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-independent-review.json",
+            "sha256": "e0e3e6a0477ba19ca6dad57d4614ac0442ae04a441c130182c11fa6da18c2626"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7113965",
+        "officialCode": "325552",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني حسان الجوفية",
+          "name:ar": "بني حسان الجوفية",
+          "name:fr": "Beni Hassen Nord",
+          "ref:tn:codegeo": "325552"
+        },
+        "aliases": [
+          "Beni Hassen Nord"
+        ]
+      },
+      "geojson": {
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+      },
+      "featureSha256": "4fb1ff0090bcd7e2884808f2cd1a7ed037e1ffa91f6f6c530f2234a199b5b787",
+      "application": {
+        "id": "osm:relation:7113965",
+        "action": "replace",
+        "officialCode": "325552",
+        "sourceId": "isie-local-sectors-2023-beni-hassan"
+      }
+    },
+    {
+      "id": "osm:relation:7113975",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-beni-hassan",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7113965",
+            "officialCode": "325552",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان الجوفية",
+              "name:ar": "بني حسان الجوفية",
+              "name:fr": "Beni Hassen Nord",
+              "ref:tn:codegeo": "325552"
+            },
+            "aliases": [
+              "Beni Hassen Nord"
+            ]
+          },
+          {
+            "id": "osm:relation:7113975",
+            "officialCode": "325551",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان القبلية",
+              "name:ar": "بني حسان القبلية",
+              "name:fr": "Beni Hassen Sud",
+              "ref:tn:codegeo": "325551"
+            },
+            "aliases": [
+              "Beni Hassen Sud"
+            ]
+          },
+          {
+            "id": "osm:relation:7114530",
+            "officialCode": "325554",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الجنائحة",
+              "name:ar": "الجنائحة",
+              "name:fr": "EL Jnaïha",
+              "ref:tn:codegeo": "325554"
+            },
+            "aliases": [
+              "EL Jnaïha"
+            ]
+          },
+          {
+            "id": "osm:relation:7114531",
+            "officialCode": "325555",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الغنادة",
+              "name:ar": "الغنادة",
+              "name:fr": "Ghnada",
+              "ref:tn:codegeo": "325555"
+            },
+            "aliases": [
+              "Ghenada",
+              "Ghnada"
+            ]
+          },
+          {
+            "id": "osm:relation:7114532",
+            "officialCode": "325553",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حاتم",
+              "name:ar": "حاتم",
+              "name:fr": "Hatem",
+              "ref:tn:codegeo": "325553"
+            },
+            "aliases": [
+              "Hatem"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-review.json",
+            "sha256": "61af7973593798faed4d1fa8d9f3bf10eb8a9a2ea08c35edd2f8ffb051bbedf8"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-independent-review.json",
+            "sha256": "e0e3e6a0477ba19ca6dad57d4614ac0442ae04a441c130182c11fa6da18c2626"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7113975",
+        "officialCode": "325551",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني حسان القبلية",
+          "name:ar": "بني حسان القبلية",
+          "name:fr": "Beni Hassen Sud",
+          "ref:tn:codegeo": "325551"
+        },
+        "aliases": [
+          "Beni Hassen Sud"
+        ]
+      },
+      "geojson": {
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+      },
+      "featureSha256": "f6fd1b0dee71f654cc04bd5b85ad1af45f46f70dd0add5e15a34ccbc2b52b594",
+      "application": {
+        "id": "osm:relation:7113975",
+        "action": "replace",
+        "officialCode": "325551",
+        "sourceId": "isie-local-sectors-2023-beni-hassan"
+      }
+    },
+    {
+      "id": "osm:relation:7114530",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-beni-hassan",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7113965",
+            "officialCode": "325552",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان الجوفية",
+              "name:ar": "بني حسان الجوفية",
+              "name:fr": "Beni Hassen Nord",
+              "ref:tn:codegeo": "325552"
+            },
+            "aliases": [
+              "Beni Hassen Nord"
+            ]
+          },
+          {
+            "id": "osm:relation:7113975",
+            "officialCode": "325551",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان القبلية",
+              "name:ar": "بني حسان القبلية",
+              "name:fr": "Beni Hassen Sud",
+              "ref:tn:codegeo": "325551"
+            },
+            "aliases": [
+              "Beni Hassen Sud"
+            ]
+          },
+          {
+            "id": "osm:relation:7114530",
+            "officialCode": "325554",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الجنائحة",
+              "name:ar": "الجنائحة",
+              "name:fr": "EL Jnaïha",
+              "ref:tn:codegeo": "325554"
+            },
+            "aliases": [
+              "EL Jnaïha"
+            ]
+          },
+          {
+            "id": "osm:relation:7114531",
+            "officialCode": "325555",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الغنادة",
+              "name:ar": "الغنادة",
+              "name:fr": "Ghnada",
+              "ref:tn:codegeo": "325555"
+            },
+            "aliases": [
+              "Ghenada",
+              "Ghnada"
+            ]
+          },
+          {
+            "id": "osm:relation:7114532",
+            "officialCode": "325553",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حاتم",
+              "name:ar": "حاتم",
+              "name:fr": "Hatem",
+              "ref:tn:codegeo": "325553"
+            },
+            "aliases": [
+              "Hatem"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-review.json",
+            "sha256": "61af7973593798faed4d1fa8d9f3bf10eb8a9a2ea08c35edd2f8ffb051bbedf8"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-independent-review.json",
+            "sha256": "e0e3e6a0477ba19ca6dad57d4614ac0442ae04a441c130182c11fa6da18c2626"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7114530",
+        "officialCode": "325554",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الجنائحة",
+          "name:ar": "الجنائحة",
+          "name:fr": "EL Jnaïha",
+          "ref:tn:codegeo": "325554"
+        },
+        "aliases": [
+          "EL Jnaïha"
+        ]
+      },
+      "geojson": {
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+      },
+      "featureSha256": "f24e2dd6d58d14aacf3d581fddd6385ab94dca93fc3673ff272d74f0a56a865a",
+      "application": {
+        "id": "osm:relation:7114530",
+        "action": "replace",
+        "officialCode": "325554",
+        "sourceId": "isie-local-sectors-2023-beni-hassan"
+      }
+    },
+    {
+      "id": "osm:relation:7114531",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-beni-hassan",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7113965",
+            "officialCode": "325552",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان الجوفية",
+              "name:ar": "بني حسان الجوفية",
+              "name:fr": "Beni Hassen Nord",
+              "ref:tn:codegeo": "325552"
+            },
+            "aliases": [
+              "Beni Hassen Nord"
+            ]
+          },
+          {
+            "id": "osm:relation:7113975",
+            "officialCode": "325551",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان القبلية",
+              "name:ar": "بني حسان القبلية",
+              "name:fr": "Beni Hassen Sud",
+              "ref:tn:codegeo": "325551"
+            },
+            "aliases": [
+              "Beni Hassen Sud"
+            ]
+          },
+          {
+            "id": "osm:relation:7114530",
+            "officialCode": "325554",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الجنائحة",
+              "name:ar": "الجنائحة",
+              "name:fr": "EL Jnaïha",
+              "ref:tn:codegeo": "325554"
+            },
+            "aliases": [
+              "EL Jnaïha"
+            ]
+          },
+          {
+            "id": "osm:relation:7114531",
+            "officialCode": "325555",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الغنادة",
+              "name:ar": "الغنادة",
+              "name:fr": "Ghnada",
+              "ref:tn:codegeo": "325555"
+            },
+            "aliases": [
+              "Ghenada",
+              "Ghnada"
+            ]
+          },
+          {
+            "id": "osm:relation:7114532",
+            "officialCode": "325553",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حاتم",
+              "name:ar": "حاتم",
+              "name:fr": "Hatem",
+              "ref:tn:codegeo": "325553"
+            },
+            "aliases": [
+              "Hatem"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-review.json",
+            "sha256": "61af7973593798faed4d1fa8d9f3bf10eb8a9a2ea08c35edd2f8ffb051bbedf8"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-independent-review.json",
+            "sha256": "e0e3e6a0477ba19ca6dad57d4614ac0442ae04a441c130182c11fa6da18c2626"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7114531",
+        "officialCode": "325555",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الغنادة",
+          "name:ar": "الغنادة",
+          "name:fr": "Ghnada",
+          "ref:tn:codegeo": "325555"
+        },
+        "aliases": [
+          "Ghenada",
+          "Ghnada"
+        ]
+      },
+      "geojson": {
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+      },
+      "featureSha256": "776f26da4afdb4e7d50cdc725ce6c8534574a58f6c0a3e59f74970ed26edb53f",
+      "application": {
+        "id": "osm:relation:7114531",
+        "action": "replace",
+        "officialCode": "325555",
+        "sourceId": "isie-local-sectors-2023-beni-hassan"
+      }
+    },
+    {
+      "id": "osm:relation:7114532",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-beni-hassan",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7113965",
+            "officialCode": "325552",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان الجوفية",
+              "name:ar": "بني حسان الجوفية",
+              "name:fr": "Beni Hassen Nord",
+              "ref:tn:codegeo": "325552"
+            },
+            "aliases": [
+              "Beni Hassen Nord"
+            ]
+          },
+          {
+            "id": "osm:relation:7113975",
+            "officialCode": "325551",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني حسان القبلية",
+              "name:ar": "بني حسان القبلية",
+              "name:fr": "Beni Hassen Sud",
+              "ref:tn:codegeo": "325551"
+            },
+            "aliases": [
+              "Beni Hassen Sud"
+            ]
+          },
+          {
+            "id": "osm:relation:7114530",
+            "officialCode": "325554",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الجنائحة",
+              "name:ar": "الجنائحة",
+              "name:fr": "EL Jnaïha",
+              "ref:tn:codegeo": "325554"
+            },
+            "aliases": [
+              "EL Jnaïha"
+            ]
+          },
+          {
+            "id": "osm:relation:7114531",
+            "officialCode": "325555",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الغنادة",
+              "name:ar": "الغنادة",
+              "name:fr": "Ghnada",
+              "ref:tn:codegeo": "325555"
+            },
+            "aliases": [
+              "Ghenada",
+              "Ghnada"
+            ]
+          },
+          {
+            "id": "osm:relation:7114532",
+            "officialCode": "325553",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حاتم",
+              "name:ar": "حاتم",
+              "name:fr": "Hatem",
+              "ref:tn:codegeo": "325553"
+            },
+            "aliases": [
+              "Hatem"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-review.json",
+            "sha256": "61af7973593798faed4d1fa8d9f3bf10eb8a9a2ea08c35edd2f8ffb051bbedf8"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-five-native-source-independent-review.json",
+            "sha256": "e0e3e6a0477ba19ca6dad57d4614ac0442ae04a441c130182c11fa6da18c2626"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7114532",
+        "officialCode": "325553",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حاتم",
+          "name:ar": "حاتم",
+          "name:fr": "Hatem",
+          "ref:tn:codegeo": "325553"
+        },
+        "aliases": [
+          "Hatem"
+        ]
+      },
+      "geojson": {
+        "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+        "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+      },
+      "featureSha256": "240eb2b087463bb1e9d5a2ac5a4b8ecbb0d57049e376d4a53766ac8c8c1e4492",
+      "application": {
+        "id": "osm:relation:7114532",
+        "action": "replace",
+        "officialCode": "325553",
+        "sourceId": "isie-local-sectors-2023-beni-hassan"
+      }
+    }
+  ],
+  "additionalPreservedSectors": []
+}

@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "scope": "read-only single-544 hypothetical reference impact after Camp exclusion; no adoption/live writes",
+  "inputs": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "cb893bfa2d446214e4f6aa50b77c68d952d31f23620ee2441832467ac52c6b7c"
+    },
+    "governorates": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "a651245f8c0ca8bc06df90d2047462a51daa1ca55ae79e647058d13b6a88b99e"
+    },
+    "equalityFacts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-nearest-source-reconciliation-20260920\\equality-facts.json",
+      "sha256": "60157e55a7bd4ac3edbe38a20aad54f2ec4c59c536dd744d45c8567d1344254b"
+    },
+    "postCampView": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\legacy-reference-proposal-20260921\\post-camp-current-view.json",
+      "sha256": "d0666347c38a689a1a13a104215b7b934b7677f3a5ef3a5b34f782843d48df31"
+    },
+    "compilerEvents": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-dependencies-20260921\\compiler-read-events.json",
+      "sha256": "013e108f82e29fdf6086a8b95b33bb3cd28588edcfcf74686ec4ef4181b41b17"
+    }
+  },
+  "baseline": {
+    "rawRows": 3484,
+    "manualRows": 3336,
+    "campRemoved": "osm:node:1190877566",
+    "exactAssignmentsVerified": true
+  },
+  "hypotheticalReference": {
+    "delegationId": 544,
+    "before": {
+      "id": 544,
+      "nomFr": "Kerkennah Mellita",
+      "nomAr": "قرقنة مليتة",
+      "nomEn": "Kerkennah Mellita",
+      "lat": 34.6722,
+      "lng": 11.0888
+    },
+    "after": {
+      "lat": 34.65,
+      "lng": 11.034
+    },
+    "publishedToVillageKm": 0.2339286864140434
+  },
+  "impactCounts": {
+    "raw": 3,
+    "manual": 3,
+    "currentOwnerIdsChanged": 3,
+    "compilerContacts544": 0
+  },
+  "rawChanged": [
+    {
+      "id": "osm:relation:7147638",
+      "lat": 34.700555,
+      "lng": 11.180862,
+      "before": 544,
+      "after": 543,
+      "representativeId": null,
+      "beforeFeature": {
+        "name": "أولاد قاسم",
+        "aliases": [
+          "Ouled kacem"
+        ],
+        "kind": "sector",
+        "parentName": "قرقنة",
+        "pickerGroupId": "osm:relation:7147638"
+      },
+      "beforeSource": {
+        "id": 544,
+        "nomAr": "قرقنة مليتة",
+        "nomFr": "Kerkennah Mellita",
+        "lat": 34.6722,
+        "lng": 11.0888
+      },
+      "beforeDistanceKm": 8.98866171334174,
+      "afterSource": {
+        "id": 543,
+        "nomAr": "قرقنة العطايا",
+        "nomFr": "Kerkennah El Attaya",
+        "lat": 34.7445,
+        "lng": 11.2963
+      },
+      "afterDistanceKm": 11.626949470920433
+    },
+    {
+      "id": "osm:node:12189397654",
+      "lat": 34.7187105,
+      "lng": 11.1584073,
+      "before": 544,
+      "after": 543,
+      "representativeId": null,
+      "beforeFeature": {
+        "name": "El Karraba",
+        "aliases": [],
+        "kind": "hamlet",
+        "parentName": "قرقنة",
+        "pickerGroupId": "osm:node:12189397654"
+      },
+      "beforeSource": {
+        "id": 544,
+        "nomAr": "قرقنة مليتة",
+        "nomFr": "Kerkennah Mellita",
+        "lat": 34.6722,
+        "lng": 11.0888
+      },
+      "beforeDistanceKm": 8.200244228089893,
+      "afterSource": {
+        "id": 543,
+        "nomAr": "قرقنة العطايا",
+        "nomFr": "Kerkennah El Attaya",
+        "lat": 34.7445,
+        "lng": 11.2963
+      },
+      "afterDistanceKm": 12.923290293621829
+    },
+    {
+      "id": "osm:node:475591250",
+      "lat": 34.703122,
+      "lng": 11.193232,
+      "before": 544,
+      "after": 543,
+      "representativeId": null,
+      "beforeFeature": {
+        "name": "أولاد بو علي",
+        "aliases": [
+          "Ouled Bou Ali"
+        ],
+        "kind": "village",
+        "parentName": "أولاد قاسم",
+        "pickerGroupId": "osm:node:475591250"
+      },
+      "beforeSource": {
+        "id": 544,
+        "nomAr": "قرقنة مليتة",
+        "nomFr": "Kerkennah Mellita",
+        "lat": 34.6722,
+        "lng": 11.0888
+      },
+      "beforeDistanceKm": 10.148638360263298,
+      "afterSource": {
+        "id": 543,
+        "nomAr": "قرقنة العطايا",
+        "nomFr": "Kerkennah El Attaya",
+        "lat": 34.7445,
+        "lng": 11.2963
+      },
+      "afterDistanceKm": 10.483237141132589
+    }
+  ],
+  "manualChanged": [
+    {
+      "id": "osm:relation:7147638",
+      "lat": 34.700555,
+      "lng": 11.180862,
+      "before": 544,
+      "after": 543,
+      "representativeId": "osm:relation:7147638",
+      "beforeMembers": [
+        "osm:relation:7147638"
+      ],
+      "beforeSource": {
+        "id": 544,
+        "nomAr": "قرقنة مليتة",
+        "nomFr": "Kerkennah Mellita",
+        "lat": 34.6722,
+        "lng": 11.0888
+      },
+      "beforeDistanceKm": 8.98866171334174,
+      "afterSource": {
+        "id": 543,
+        "nomAr": "قرقنة العطايا",
+        "nomFr": "Kerkennah El Attaya",
+        "lat": 34.7445,
+        "lng": 11.2963
+      },
+      "afterDistanceKm": 11.626949470920433
+    },
+    {
+      "id": "osm:node:12189397654",
+      "lat": 34.7187105,
+      "lng": 11.1584073,
+      "before": 544,
+      "after": 543,
+      "representativeId": "osm:node:12189397654",
+      "beforeMembers": [
+        "osm:node:12189397654"
+      ],
+      "beforeSource": {
+        "id": 544,
+        "nomAr": "قرقنة مليتة",
+        "nomFr": "Kerkennah Mellita",
+        "lat": 34.6722,
+        "lng": 11.0888
+      },
+      "beforeDistanceKm": 8.200244228089893,
+      "afterSource": {
+        "id": 543,
+        "nomAr": "قرقنة العطايا",
+        "nomFr": "Kerkennah El Attaya",
+        "lat": 34.7445,
+        "lng": 11.2963
+      },
+      "afterDistanceKm": 12.923290293621829
+    },
+    {
+      "id": "osm:node:475591250",
+      "lat": 34.703122,
+      "lng": 11.193232,
+      "before": 544,
+      "after": 543,
+      "representativeId": "osm:node:475591250",
+      "beforeMembers": [
+        "osm:node:475591250"
+      ],
+      "beforeSource": {
+        "id": 544,
+        "nomAr": "قرقنة مليتة",
+        "nomFr": "Kerkennah Mellita",
+        "lat": 34.6722,
+        "lng": 11.0888
+      },
+      "beforeDistanceKm": 10.148638360263298,
+      "afterSource": {
+        "id": 543,
+        "nomAr": "قرقنة العطايا",
+        "nomFr": "Kerkennah El Attaya",
+        "lat": 34.7445,
+        "lng": 11.2963
+      },
+      "afterDistanceKm": 10.483237141132589
+    }
+  ],
+  "runtime": {
+    "baseChoice544": {
+      "id": 544,
+      "nomFr": "Kerkennah Mellita",
+      "nomAr": "قرقنة مليتة",
+      "nomEn": "Kerkennah Mellita",
+      "lat": 34.6722,
+      "lng": 11.0888
+    },
+    "matchingSectorFeature": {
+      "id": "osm:relation:7147645",
+      "name": "مليتة",
+      "aliases": [
+        "Mellita"
+      ],
+      "kind": "sector",
+      "parentName": "قرقنة",
+      "governorateId": 359,
+      "delegationId": 544,
+      "lat": 34.643446,
+      "lng": 11.037579,
+      "pickerGroupId": "osm:relation:7147645"
+    },
+    "note": "Base delegation choice 544 and sector feature 7147645 are separate runtime/catalog identities; this simulation changes only base source coordinates and leaves sector display/geometry/representative coordinates unchanged."
+  },
+  "compilerContacts544": [],
+  "dependencyAssessment": {
+    "exactContactsFound": 0,
+    "result": "No compiler-read event has an exact scalar ID 544 or delegation:544 contact; no limited binding proof is directly keyed to 544 in the supplied event inventory. Generic governor asset and source-coordinate manifest are global inputs and must be revalidated if adopted.",
+    "checksNeededIfAdopted": [
+      "prayer-source-coordinates.json correction/reference binding for delegation 544, if added",
+      "governorats.json base coordinate consumer checks",
+      "any explicit source/reference dependency introduced by integration"
+    ],
+    "notCheckedByHeuristic": "No parent-path or filename substring was treated as a 544 dependency."
+  },
+  "assessment": {
+    "currentPointSupport": "Current 34.6722,11.0888 is not near authentic Mellita village candidate; nearest-source calculation keeps it as base 544 before substitution.",
+    "publishedPointSupport": "Published 34.65,11.034 is 0.234 km from exact Kerkennah Mellita village node 475589445, supporting a reference-label correction only and not certifying calculation semantics.",
+    "geometryAndDisplay": "No locality geometry, sector feature coordinates, aliases, picker IDs or representative IDs are changed by this hypothetical source substitution.",
+    "qualification": "Proposal only; no production reference change approved or written."
+  },
+  "currentOwnerIds": [
+    "osm:relation:7147638",
+    "osm:node:12189397654",
+    "osm:node:475591250"
+  ],
+  "retainedRepresentatives": [
+    {
+      "id": "osm:relation:7147638",
+      "representativeId": null,
+      "aliases": [
+        "Ouled kacem"
+      ],
+      "name": "أولاد قاسم",
+      "pickerGroupId": "osm:relation:7147638"
+    },
+    {
+      "id": "osm:node:12189397654",
+      "representativeId": null,
+      "aliases": [],
+      "name": "El Karraba",
+      "pickerGroupId": "osm:node:12189397654"
+    },
+    {
+      "id": "osm:node:475591250",
+      "representativeId": null,
+      "aliases": [
+        "Ouled Bou Ali"
+      ],
+      "name": "أولاد بو علي",
+      "pickerGroupId": "osm:node:475591250"
+    }
+  ]
+}

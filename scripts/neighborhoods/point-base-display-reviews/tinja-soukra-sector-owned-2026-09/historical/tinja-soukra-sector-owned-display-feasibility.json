@@ -1,0 +1,112 @@
+{
+  "status": "BOUNDED_FEASIBILITY_AND_DESIGN_COMPLETE_NO_IMPLEMENTATION",
+  "baselineMetadataSha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\finite-source-group-facts.json",
+    "sha256": "70c565a5c47e9e6b62fa7d809a3d447fc1c0c1c1c2468ca25b07f2862a51f499",
+    "bytes": 137856
+  },
+  "design": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\sector-owned-settlement-contract-design.json",
+    "sha256": "64804d3b6357ea428b18d95a433ccd72b3ad862dad9c8273f6c66561ed3d28fc",
+    "bytes": 155052
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-hrairia-point-source-review.json",
+    "sha256": "acb85d738ea62d1bfb216420b004148070c1a73bd73d1bc9e9ead385c5b13c60",
+    "bytes": 62389
+  },
+  "rootScopeAcceptance": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-hrairia-primary-root-scope-review.json",
+    "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+    "bytes": 7728
+  },
+  "candidates": [
+    {
+      "pointId": "osm:node:1109384824",
+      "baseId": 565,
+      "counts": {
+        "officialLocalSectors": 3,
+        "localRawRecords": 7,
+        "protectedRawRecordsIncludingForeignNamePeers": 7,
+        "originalAndEffectiveSourceObjects": 10,
+        "sourceOnlyAbsorbedPoints": 1,
+        "foreignReadOnlyNamePeers": 0,
+        "preservedRelatedLocalPoints": 3,
+        "packedPolygons": 3
+      },
+      "pointAndBaseSectorMembership": {
+        "point": {
+          "original": [
+            "osm:relation:7119648"
+          ],
+          "effective": [
+            "osm:relation:7119648"
+          ]
+        },
+        "base": {
+          "original": [
+            "osm:relation:7119649"
+          ],
+          "effective": [
+            "osm:relation:7119649"
+          ]
+        }
+      },
+      "disposition": "Qualified display scope supported; current compiler has no compatible contract. Proposed phase-aware reviewed-sector-owner option requires implementation and review."
+    },
+    {
+      "pointId": "osm:node:7390818324",
+      "baseId": 532,
+      "counts": {
+        "officialLocalSectors": 7,
+        "localRawRecords": 15,
+        "protectedRawRecordsIncludingForeignNamePeers": 16,
+        "originalAndEffectiveSourceObjects": 18,
+        "sourceOnlyAbsorbedPoints": 0,
+        "foreignReadOnlyNamePeers": 1,
+        "preservedRelatedLocalPoints": 5,
+        "packedPolygons": 10
+      },
+      "pointAndBaseSectorMembership": {
+        "point": {
+          "original": [
+            "osm:relation:7114902"
+          ],
+          "effective": [
+            "osm:relation:7114902"
+          ]
+        },
+        "base": {
+          "original": [
+            "osm:relation:7114900"
+          ],
+          "effective": [
+            "osm:relation:7114900"
+          ]
+        }
+      },
+      "disposition": "Qualified display scope supported; current compiler has no compatible contract. Proposed phase-aware reviewed-sector-owner option requires implementation and review."
+    }
+  ],
+  "totalPreservedRawRecords": 23,
+  "totalLocalSectors": 10,
+  "foreignNamePeerSectors": 1,
+  "totalSourceObjects": 28,
+  "expectedOnlyMetadataFieldChanges": [
+    {
+      "id": "osm:node:1109384824",
+      "field": "pickerGroupId",
+      "before": "osm:node:1109384824",
+      "after": "delegation:565"
+    },
+    {
+      "id": "osm:node:7390818324",
+      "field": "pickerGroupId",
+      "before": "osm:node:7390818324",
+      "after": "delegation:532"
+    }
+  ],
+  "excludedHeldCandidate": "osm:node:3145829327",
+  "validation": "Data-only snapshot and full-row/source inventory, direct NPOL decoding, exact current owner/proof/receipt checks and compiler text reading. No product helper/compiler execution, tests, generation, build, phone, ledger or live writes."
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "osm:relation:7142943",
+    "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/سيدي مخلوف/المغراوية.pdf",
+    "statusCode": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.pdf",
+    "sha256": "71e12a872fc481bd0d01556762594184bfc29bc455287c9874f13ac0f966375d",
+    "bytes": 604111,
+    "retrievedAt": "2026-09-20T12:36:15.4921380+00:00"
+  },
+  {
+    "id": "osm:relation:7165270",
+    "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/القيروان/السبيخة/الذريعات.pdf",
+    "statusCode": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.pdf",
+    "sha256": "b006f584b2ea730c11c466f0bb5043136c0a7d81428532818b29a59dc94f1d2e",
+    "bytes": 1281053,
+    "retrievedAt": "2026-09-20T12:36:15.7744766+00:00"
+  },
+  {
+    "id": "osm:relation:7169564",
+    "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/أولاد حفوز/الذويبات الجنوبية.pdf",
+    "statusCode": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.pdf",
+    "sha256": "53c46020cbd02c66b59fd2f3b9814139afacbf01d797026fc033ba1cd512a0a0",
+    "bytes": 1096750,
+    "retrievedAt": "2026-09-20T12:36:16.0549683+00:00"
+  },
+  {
+    "id": "osm:relation:7127889",
+    "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/صفاقس 1/جبنيانة/بلتش.pdf",
+    "statusCode": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.pdf",
+    "sha256": "4aacc2971854e536557137477b70f6c16b82cd87b48bd3c7bed520e080d9c166",
+    "bytes": 1062665,
+    "retrievedAt": "2026-09-20T12:36:16.3337003+00:00"
+  },
+  {
+    "id": "osm:relation:7133851",
+    "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/صدويكش.pdf",
+    "statusCode": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.pdf",
+    "sha256": "bd3caf3d29ed9ffe07ddd48562a8972fc72591929657d63b87ff207dfb671242",
+    "bytes": 1406120,
+    "retrievedAt": "2026-09-20T12:36:16.6143090+00:00"
+  },
+  {
+    "id": "osm:relation:7143844",
+    "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/رمادة/كنبوت.pdf",
+    "statusCode": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.pdf",
+    "sha256": "f06b6aedbc2edd5b0e9662dd447b63bd9456c3b033c1db6616d64d3b4453cdde",
+    "bytes": 917623,
+    "retrievedAt": "2026-09-20T12:36:16.8830403+00:00"
+  }
+]

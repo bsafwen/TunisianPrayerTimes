@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-07",
+  "status": "PROPOSAL_ONLY_NO_ASSET_COORDINATES_CHANGED",
+  "scope": "Named settlement reference anchors for nearest available meteo timetable; not INM calculation coordinates or boundary certification.",
+  "sourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+  "liveOsmEvidenceUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+  "liveOsmEvidenceSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5",
+  "candidates": [
+    {
+      "delegationId": 409,
+      "nameAr": "الزريبة",
+      "nameFr": "Zeriba",
+      "governorateId": 343,
+      "governorateName": "زغوان",
+      "original": {
+        "lat": 36.32,
+        "lng": 10.25
+      },
+      "proposed": {
+        "lat": 36.3406138,
+        "lng": 10.2491768
+      },
+      "movedKm": 2.2933358852527626,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:2028879938",
+        "url": "https://www.openstreetmap.org/node/2028879938",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2028879938.json",
+        "version": 9,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "name": "الزريبة",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2463988",
+        "name": "Zriba-Village",
+        "lat": 36.34265,
+        "lng": 10.24905,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2463988",
+        "distanceToProposedKm": 0.22669977128012708
+      }
+    },
+    {
+      "delegationId": 1084,
+      "nameAr": "الرجيش",
+      "nameFr": "Rejiche",
+      "governorateId": 345,
+      "governorateName": "المهدية",
+      "original": {
+        "lat": 35.4621,
+        "lng": 11.0132
+      },
+      "proposed": {
+        "lat": 35.4655214,
+        "lng": 11.0416985
+      },
+      "movedKm": 2.6088912877312027,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:2402352381",
+        "url": "https://www.openstreetmap.org/node/2402352381",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2402352381.json",
+        "version": 17,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "رجيش",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2473274",
+        "name": "Rejiche",
+        "lat": 35.46665,
+        "lng": 11.03848,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473274",
+        "distanceToProposedKm": 0.3173469632204843
+      }
+    },
+    {
+      "delegationId": 1020,
+      "nameAr": "مارث",
+      "nameFr": "Mareth",
+      "governorateId": 347,
+      "governorateName": "قابس",
+      "original": {
+        "lat": 33.63,
+        "lng": 10.24
+      },
+      "proposed": {
+        "lat": 33.617159,
+        "lng": 10.2882317
+      },
+      "movedKm": 4.688544489619358,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:352839775",
+        "url": "https://www.openstreetmap.org/node/352839775",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/352839775.json",
+        "version": 21,
+        "timestamp": "2025-11-02T11:21:25Z",
+        "name": "مارث",
+        "place": "town"
+      },
+      "geonames": {
+        "id": "2469174",
+        "name": "Mareth",
+        "lat": 33.61794,
+        "lng": 10.28536,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2469174",
+        "distanceToProposedKm": 0.2797346441724725
+      }
+    },
+    {
+      "delegationId": 1024,
+      "nameAr": "الحامة",
+      "nameFr": "El Hamma",
+      "governorateId": 347,
+      "governorateName": "قابس",
+      "original": {
+        "lat": 33.89,
+        "lng": 9.75
+      },
+      "proposed": {
+        "lat": 33.8894378,
+        "lng": 9.7997111
+      },
+      "movedKm": 4.588973178117307,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:298020344",
+        "url": "https://www.openstreetmap.org/node/298020344",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/298020344.json",
+        "version": 13,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "الحامة",
+        "place": "town"
+      },
+      "geonames": {
+        "id": "2473747",
+        "name": "El Hamma",
+        "lat": 33.89152,
+        "lng": 9.79629,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473747",
+        "distanceToProposedKm": 0.3915645340113349
+      }
+    },
+    {
+      "delegationId": 434,
+      "nameAr": "النفيضة",
+      "nameFr": "Enfida",
+      "governorateId": 348,
+      "governorateName": "سوسة",
+      "original": {
+        "lat": 36.16,
+        "lng": 10.39
+      },
+      "proposed": {
+        "lat": 36.1341194,
+        "lng": 10.3779916
+      },
+      "movedKm": 3.073155756687769,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:1439531928",
+        "url": "https://www.openstreetmap.org/node/1439531928",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1439531928.json",
+        "version": 18,
+        "timestamp": "2025-11-02T11:21:25Z",
+        "name": "النفيضة",
+        "place": "town"
+      },
+      "geonames": {
+        "id": "2473358",
+        "name": "Enfidha",
+        "lat": 36.13528,
+        "lng": 10.38083,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473358",
+        "distanceToProposedKm": 0.2857087034292308
+      }
+    },
+    {
+      "delegationId": 436,
+      "nameAr": "سيدي بوعلي",
+      "nameFr": "Sidi Bouali",
+      "governorateId": 348,
+      "governorateName": "سوسة",
+      "original": {
+        "lat": 35.95,
+        "lng": 10.5
+      },
+      "proposed": {
+        "lat": 35.9563486,
+        "lng": 10.470397
+      },
+      "movedKm": 2.7565491243275875,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:1444704293",
+        "url": "https://www.openstreetmap.org/node/1444704293",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1444704293.json",
+        "version": 9,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "سيدي بو علي",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2466034",
+        "name": "Sidi Bou Ali",
+        "lat": 35.95667,
+        "lng": 10.47306,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2466034",
+        "distanceToProposedKm": 0.24234138496468685
+      }
+    },
+    {
+      "delegationId": 488,
+      "nameAr": "بن قردان",
+      "nameFr": "Ben Guerdene",
+      "governorateId": 353,
+      "governorateName": "مدنين",
+      "original": {
+        "lat": 33.17,
+        "lng": 11.22
+      },
+      "proposed": {
+        "lat": 33.1403223,
+        "lng": 11.2170109
+      },
+      "movedKm": 3.3117204707469865,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:287588734",
+        "url": "https://www.openstreetmap.org/node/287588734",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/287588734.json",
+        "version": 20,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "بن قردان",
+        "place": "town"
+      },
+      "geonames": {
+        "id": "2472431",
+        "name": "Ben Gardane",
+        "lat": 33.13783,
+        "lng": 11.21965,
+        "featureCode": "PPL",
+        "modified": "2026-07-28",
+        "url": "https://www.geonames.org/2472431",
+        "distanceToProposedKm": 0.3703801398291166
+      }
+    },
+    {
+      "delegationId": 499,
+      "nameAr": "بوسالم",
+      "nameFr": "Bou Salem",
+      "governorateId": 354,
+      "governorateName": "جندوبة",
+      "original": {
+        "lat": 36.5673,
+        "lng": 8.9671
+      },
+      "proposed": {
+        "lat": 36.607408,
+        "lng": 8.9696535
+      },
+      "movedKm": 4.465629672718391,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:1837034352",
+        "url": "https://www.openstreetmap.org/node/1837034352",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1837034352.json",
+        "version": 13,
+        "timestamp": "2025-11-30T16:07:31Z",
+        "name": "بوسالم",
+        "place": "town"
+      },
+      "geonames": {
+        "id": "2471956",
+        "name": "Bou Salem",
+        "lat": 36.60732,
+        "lng": 8.96981,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2471956",
+        "distanceToProposedKm": 0.01705551516255584
+      }
+    },
+    {
+      "delegationId": 542,
+      "nameAr": "منزل شاكر",
+      "nameFr": "Menzel Chaker",
+      "governorateId": 359,
+      "governorateName": "صفاقس",
+      "original": {
+        "lat": 34.9877,
+        "lng": 10.3947
+      },
+      "proposed": {
+        "lat": 34.970059,
+        "lng": 10.3715504
+      },
+      "movedKm": 2.8803294888689357,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:434547646",
+        "url": "https://www.openstreetmap.org/node/434547646",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/434547646.json",
+        "version": 15,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "منزل شاكر",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2469251",
+        "name": "Menzel Chaker",
+        "lat": 34.96472,
+        "lng": 10.36944,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2469251",
+        "distanceToProposedKm": 0.6240387601875845
+      }
+    },
+    {
+      "delegationId": 546,
+      "nameAr": "الصخيرة",
+      "nameFr": "Skhira",
+      "governorateId": 359,
+      "governorateName": "صفاقس",
+      "original": {
+        "lat": 34.28,
+        "lng": 10.07
+      },
+      "proposed": {
+        "lat": 34.2988183,
+        "lng": 10.0690355
+      },
+      "movedKm": 2.0943747305792075,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:559394563",
+        "url": "https://www.openstreetmap.org/node/559394563",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/559394563.json",
+        "version": 16,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "name": "الصخيرة",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2473161",
+        "name": "Skhira",
+        "lat": 34.2992,
+        "lng": 10.06999,
+        "featureCode": "PPL",
+        "modified": "2022-01-11",
+        "url": "https://www.geonames.org/2473161",
+        "distanceToProposedKm": 0.09741201551683276
+      }
+    },
+    {
+      "delegationId": 569,
+      "nameAr": "المتلين",
+      "nameFr": "Al Matlin ",
+      "governorateId": 361,
+      "governorateName": "بنزرت",
+      "original": {
+        "lat": 37.21,
+        "lng": 10.02
+      },
+      "proposed": {
+        "lat": 37.2441137,
+        "lng": 10.047511
+      },
+      "movedKm": 4.507983344566727,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:1132950382",
+        "url": "https://www.openstreetmap.org/node/1132950382",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1132950382.json",
+        "version": 8,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "ماتلين",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2473533",
+        "name": "Al Matlīn",
+        "lat": 37.24516,
+        "lng": 10.05,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2473533",
+        "distanceToProposedKm": 0.24915232644298219
+      }
+    },
+    {
+      "delegationId": 596,
+      "nameAr": "زرامدين",
+      "nameFr": "Zeramdine",
+      "governorateId": 364,
+      "governorateName": "المنستير",
+      "original": {
+        "lat": 35.61,
+        "lng": 10.72
+      },
+      "proposed": {
+        "lat": 35.5791762,
+        "lng": 10.7379156
+      },
+      "movedKm": 3.7909778459453523,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:1165832678",
+        "url": "https://www.openstreetmap.org/node/1165832678",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1165832678.json",
+        "version": 15,
+        "timestamp": "2023-11-30T19:22:38Z",
+        "name": "زرمدين",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2472838",
+        "name": "Zeramedine",
+        "lat": 35.57525,
+        "lng": 10.73456,
+        "featureCode": "PPL",
+        "modified": "2024-07-23",
+        "url": "https://www.geonames.org/2472838",
+        "distanceToProposedKm": 0.5316893868058561
+      }
+    },
+    {
+      "delegationId": 604,
+      "nameAr": "أم العرايس",
+      "nameFr": "Moulares",
+      "governorateId": 365,
+      "governorateName": "قفصة",
+      "original": {
+        "lat": 34.48,
+        "lng": 8.24
+      },
+      "proposed": {
+        "lat": 34.485737,
+        "lng": 8.2733836
+      },
+      "movedKm": 3.1256472915508184,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:2165194615",
+        "url": "https://www.openstreetmap.org/node/2165194615",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2165194615.json",
+        "version": 13,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "أم العرائس",
+        "place": "town"
+      },
+      "geonames": {
+        "id": "2464378",
+        "name": "Moularès",
+        "lat": 34.4888,
+        "lng": 8.26874,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2464378",
+        "distanceToProposedKm": 0.5451013033175234
+      }
+    },
+    {
+      "delegationId": 610,
+      "nameAr": "سيدي عيش",
+      "nameFr": "Sidi Aich",
+      "governorateId": 365,
+      "governorateName": "قفصة",
+      "original": {
+        "lat": 34.6976,
+        "lng": 8.8142
+      },
+      "proposed": {
+        "lat": 34.7328584,
+        "lng": 8.7827624
+      },
+      "movedKm": 4.860804128084213,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:3203082588",
+        "url": "https://www.openstreetmap.org/node/3203082588",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/3203082588.json",
+        "version": 8,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "سيدي عيش",
+        "place": "village"
+      },
+      "geonames": {
+        "id": "2466150",
+        "name": "Sidi Aïch",
+        "lat": 34.73263,
+        "lng": 8.78276,
+        "featureCode": "PPL",
+        "modified": "2018-08-05",
+        "url": "https://www.geonames.org/2466150",
+        "distanceToProposedKm": 0.02539786819105915
+      }
+    },
+    {
+      "delegationId": 611,
+      "nameAr": "القطار",
+      "nameFr": "El Guettar",
+      "governorateId": 365,
+      "governorateName": "قفصة",
+      "original": {
+        "lat": 34.32,
+        "lng": 8.94
+      },
+      "proposed": {
+        "lat": 34.3394652,
+        "lng": 8.950364
+      },
+      "movedKm": 2.364414451233457,
+      "status": "corroborated_candidate_pending_phone_review",
+      "osm": {
+        "id": "osm:node:2177334841",
+        "url": "https://www.openstreetmap.org/node/2177334841",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2177334841.json",
+        "version": 9,
+        "timestamp": "2021-02-04T01:35:54Z",
+        "name": "القطار",
+        "place": "town"
+      },
+      "geonames": {
+        "id": "2473454",
+        "name": "El Guetar",
+        "lat": 34.33628,
+        "lng": 8.94964,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2473454",
+        "distanceToProposedKm": 0.3603623976406534
+      }
+    }
+  ]
+}

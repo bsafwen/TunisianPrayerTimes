@@ -1,0 +1,92 @@
+{
+  "status": "SOURCE_QUALIFIED_ARABIC_DISPLAY_SPELLING_PROPOSAL_PENDING_INDEPENDENT_STAGE_REVIEW",
+  "id": "osm:node:2778243022",
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "sourceAuthorReportSha256": "b3c47138b89438ffb4e1b435e623fefe21b9590e61c9202f5bd2c280258466b0",
+  "sourceAuthorFactsSha256": "ed6dfb0d0cbc40e121efaa4a2f605b82935c31aba0dbb129b68ad3fac973f2ed",
+  "meaning": "Correct this retained hamlet’s Arabic display spelling from الخرمية to الكرمية. Preserve the existing French El Kharmia search spelling and add the independently published El Karmia. This is not a formal legal renaming, point move, administrative transfer, or polygon interpretation.",
+  "sourceCurrent": {
+    "file": "name-reviews/kharmia-20260912/node-2778243022-current.json",
+    "sha256": "f0a69b592f64119730e017d172add3c28ba6459b79915abe1f51dc05070b93af",
+    "bytes": 571
+  },
+  "sourceHistory": {
+    "file": "name-reviews/kharmia-20260912/node-2778243022-history.json",
+    "sha256": "91ed4f698f87ab6e666c522169e4130d56b6bd93fe5f9459ad648a7b5dc52481",
+    "bytes": 2646
+  },
+  "exactOriginalTags": {
+    "addr:governorate": "Nabeul",
+    "name": "الخرمية",
+    "name:ar": "الخرمية",
+    "name:fr": "El Kharmia",
+    "place": "hamlet"
+  },
+  "proposedNameTags": {
+    "name": "الكرمية",
+    "name:ar": "الكرمية",
+    "name:fr": "El Kharmia",
+    "alt_name:fr": "El Karmia"
+  },
+  "finiteImpact": {
+    "file": "name-reviews/kharmia-20260912/finite-name-impact.json",
+    "sha256": "c3f3de793577495d1175ac97f6d21b37a36eaf66468baf893bec52ab2558511d",
+    "bytes": 5847
+  },
+  "primaryEvidence": [
+    {
+      "response": {
+        "file": "name-reviews/kharmia-20260912/kharmia-governorate-historical-name.html",
+        "sha256": "32e6b9a5288ed960b054b99774755681e0a86fff57173a21563f83f2eae99d76",
+        "bytes": 113373
+      },
+      "url": "https://www.nabeul.gov.tn/ar/%D9%85%D8%B9%D9%85%D8%A7%D8%B1-%D8%B9%D9%87%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9/",
+      "finding": "Nabeul governorate spells the modern locality الكرمية in its account of former El Kalbia."
+    },
+    {
+      "response": {
+        "file": "name-reviews/kharmia-20260912/inp-grombalia-2010.pdf",
+        "sha256": "5257f8e9ffa2d32c0dba536cba62c1f34d97ca6176bfd1ab53e7cf38de3ea17b",
+        "bytes": 1673260
+      },
+      "url": "https://www.inp2020.tn/cartes/029Grombalia.pdf",
+      "physicalPageOneBased": 21,
+      "printedPage": 16,
+      "fullPageDerivedText": {
+        "file": "name-reviews/kharmia-20260912/inp-grombalia-2010-page-021.txt",
+        "sha256": "a658be4935d9d90efcb41004a56cdff570dc9fad57e1f202ebac32bb829a360c",
+        "bytes": 2507
+      },
+      "finding": "INP explicitly describes El Karmia as a village in Grombalia and places site029.042 at the village exit near the college. It is used for inhabited name/context, not as the hamlet point or outline."
+    },
+    {
+      "response": {
+        "file": "name-reviews/kharmia-20260912/arp-proceedings-112323.pdf",
+        "sha256": "bded5d09542b391fe37bf2e1cdba136475d2d03b2604d301fb84834d11ed779f",
+        "bytes": 7754316
+      },
+      "url": "https://www.arp.tn/document/download/112323",
+      "physicalPageOneBased": 40,
+      "printedPage": 3992,
+      "sessionDate": "2025-05-12",
+      "fullPageDerivedText": {
+        "file": "name-reviews/kharmia-20260912/arp-proceedings-112323-page-040.txt",
+        "sha256": "cab9497e5460e4230bc9b98cfb1862552a263f2198873b31f4ab4fe9db295372",
+        "bytes": 9047
+      },
+      "finding": "MP Mohamed Ali Fnira names كرمية among Grombalia villages in a residential-housing discussion. This is primary public testimony, not a ministerial survey."
+    }
+  ],
+  "derivedTextProvenance": "Original complete PDF page.get_text() via PyMuPDF1.28.2, exact UTF-8 LF serialization, no text or numeral correction. Original PDFs remain authoritative; original complete pages were personally viewed during source research. These text files are not original HTTP response bodies.",
+  "supplementaryPublicMaps": {
+    "frozenRootReview": {
+      "file": "name-reviews/kharmia-20260912/kharmia-essabala-phone-scope-review-20260912.json",
+      "sha256": "e5445497f08f08e8150c7d114bf8ea07e78e68420114e4c7ed668459d7e048b8",
+      "bytes": 6847
+    },
+    "qualification": "Exact-coordinate query showed Karmia-named local school/stadium/cafe context; not a boundary, exact returned-coordinate certificate, or sole basis for renaming. Embedded absolute paths in this byte-exact historical summary are provenance only and are not operative dependencies. No referenced screenshot or ledger is imported or accessed."
+  },
+  "historyQualification": "Original2014 French-only El Kharmia preceded Arabic الخرمية added2017; primary Arabic changed2021. Coordinates unchanged since2014 version2. The chronology does not establish creator motive or legal name status.",
+  "preservation": "Use only existing name_tags action with complete expected source tags. No compiler edit, extra preserve_point action, grouping rule, source geometry or prayer-reference change. The same ID receives a saved-name update.",
+  "compilerEnforcementQualification": "The unchanged compiler enforces expected source tags and complete consumed name replacement. Documentary evidence hashes and the exact finite projection are checked by isolated source/actual-data review, not a newly invented compiler branch."
+}

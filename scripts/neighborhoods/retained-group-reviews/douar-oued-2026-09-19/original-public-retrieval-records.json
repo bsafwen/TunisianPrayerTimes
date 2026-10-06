@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "responses": [
+    {
+      "requestedUrl": "https://www.augt.gov.tn/ar/evenements-3/2-uncategorised/479-%D8%AC%D9%84%D8%B3%D8%A9-%D8%B9%D9%85%D9%84-%D8%A8%D9%84%D8%AF%D9%8A%D8%A9-%D9%88%D8%A7%D8%AF-%D8%A7%D9%84%D9%84%D9%8A%D9%84ar.html",
+      "finalUrl": "https://www.augt.gov.tn/ar/evenements-3/2-uncategorised/479-%D8%AC%D9%84%D8%B3%D8%A9-%D8%B9%D9%85%D9%84-%D8%A8%D9%84%D8%AF%D9%8A%D8%A9-%D9%88%D8%A7%D8%AF-%D8%A7%D9%84%D9%84%D9%8A%D9%84ar.html",
+      "status": 200,
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 19 Sep 2026 10:53:18 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "X-Powered-By": "PleskLin",
+        "P3P": "CP=\"NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM\"",
+        "Expires": "Wed, 17 Aug 2005 00:00:00 GMT",
+        "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "Pragma": "no-cache",
+        "Set-Cookie": "39ce333c80ddc0e3887b0d1ae9a1e3af=pckpe35shq5q146stn9so7lptn; path=/; HttpOnly",
+        "Last-Modified": "Sat, 19 Sep 2026 10:53:18 GMT"
+      },
+      "file": "oued-augt-primary.html",
+      "sha256": "a1575b2f4800918a1ea3380df195f6affa643c5dceaf49e4fdbbeab6a7548d4f",
+      "bytes": 44717,
+      "retrievedAtUtc": "2026-09-19T10:53:18.404240+00:00",
+      "containsBaseSpelling": true,
+      "containsOfficialSpelling": true
+    },
+    {
+      "file": "oued-municipality-history.html",
+      "requestedUrl": "https://www.commune-ouedellil.gov.tn/index.php?Itemid=403&catid=51%3Acategories-4&id=279%3A4eme-magazine-municipale-commune-ouedellil&lang=fr&option=com_content&view=article",
+      "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
+      "errorType": "URLError"
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/7720714782.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/7720714782.json",
+      "status": 200,
+      "headers": {
+        "Connection": "close",
+        "content-encoding": "identity",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "cache-control": "private, max-age=0, must-revalidate",
+        "content-type": "application/json; charset=utf-8",
+        "server": "Apache",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 19 Sep 2026 10:53:15 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150026-PAR, cache-par-lfpb1150026-PAR",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1789815195.370699,VS0,VE65",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "file": "town-7720714782-current.json",
+      "sha256": "25b6cda7ac902a2d4aef152e063331e00e2dbde0ad75856b2a5ae5945140376a",
+      "bytes": 726,
+      "retrievedAtUtc": "2026-09-19T10:53:15.220510+00:00",
+      "containsBaseSpelling": false,
+      "containsOfficialSpelling": false
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/287619187.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/287619187.json",
+      "status": 200,
+      "headers": {
+        "Connection": "close",
+        "content-encoding": "identity",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "cache-control": "private, max-age=0, must-revalidate",
+        "content-type": "application/json; charset=utf-8",
+        "server": "Apache",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 19 Sep 2026 10:53:15 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150063-PAR, cache-par-lfpb1150068-PAR",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1789815195.352997,VS0,VE65",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "file": "town-287619187-current.json",
+      "sha256": "83f00cc6e17be35c48f15b8211bd9fd9fc671c4e178368395c37438b6070d24e",
+      "bytes": 667,
+      "retrievedAtUtc": "2026-09-19T10:53:15.202508+00:00",
+      "containsBaseSpelling": false,
+      "containsOfficialSpelling": true
+    }
+  ]
+}

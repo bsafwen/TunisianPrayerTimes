@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "status": "PUBLISHED_INM_REFERENCE_CONFIRMED_SETTLEMENT_REFERENCE_ADOPTION_HELD",
+  "createdAtUtc": "2026-09-12T22:19:34.120444+00:00",
+  "taskDateLocal": "2026-09-13 Europe/Paris",
+  "scopeIds": {
+    "referenceId": 478,
+    "governorateId": 352,
+    "degacheTown": "osm:node:351582010",
+    "nearbyBouHelal": "osm:node:351581998"
+  },
+  "baselineMetadataSha256": "d88eb5bb2d07eb709ec028980a1f010f0f1d648869e390db8a3213b70e3645c6",
+  "sourceFacts": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/finite-source-facts.json",
+    "sha256": "72b5b15477e82fc16684cc9bd46fc0c7a0bd0c7649aedd8788f1abbb71661309",
+    "bytes": 26724
+  },
+  "retrievalManifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/retrievals.json",
+    "sha256": "37e1c1646720d790141d93b104c9a8bf12d3bbfcb1097f49f0472f6c5df005f9",
+    "bytes": 8663
+  },
+  "verifiedWindowsTlsRetry": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/social-windows-tls-retrieval.json",
+    "sha256": "28145cec00551435da24158343f0a45fd21a0646a56f5e0c1eb11a158bf1f403",
+    "bytes": 2316
+  },
+  "priorTriage": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/post-mdhila-inm-reference-triage-20260913.json",
+    "sha256": "ba48f08187fea3a843b2da1452290a32d792c71e0506ea7b07fce5e4a9cda5ff",
+    "bytes": 61989
+  },
+  "inmSourceFinding": {
+    "prayer": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/inm-reference-inventory-20260912/responses/prayer-478-2026-09-12.json",
+      "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+      "bytes": 523,
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+    },
+    "sunrise": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/sun-478-2026-09-12.json",
+      "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+      "bytes": 492,
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/"
+    },
+    "serviceDate": "2026-09-12",
+    "fieldPaths": [
+      "$.data.lat",
+      "$.data.lng"
+    ],
+    "rawCoordinates": {
+      "lat": "34.016",
+      "lng": " 8.273"
+    },
+    "exactNumericCoordinates": {
+      "lat": 34.016,
+      "lng": 8.273
+    },
+    "validation": "HTTP200, original bytes/hash, same delegation478/governorate352 and parent/names in three languages, date/year/active/GET and HH:MM fields verified. The prayer body is the archived morning original; the matching historical-date sunrise body was newly retrieved in this task.",
+    "semantics": "These coordinates are explicitly published daily-record fields. The delegation object names an administrative reference; the JSON does not state that the fields are the town center or establish why this point was selected. No claim of hidden server calculation inputs is made."
+  },
+  "primaryEvidence": [
+    {
+      "source": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/social-degache-windows-tls.html",
+        "sha256": "294e1c6249366f7a9322b7db5702ac0b439a15cafe65b6dc04a64b6bdcca43a7",
+        "bytes": 65804
+      },
+      "url": "https://www.social.gov.tn/fr/node/2972",
+      "finding": "The Ministry of Social Affairs identifies its Degache local social-promotion unit at شارع المحطة دقاش 2260 and publishes POINT (8.218126 33.986179), corroborating the western town vicinity. This office point is not declared a city-center or INM reference.",
+      "coordinate": {
+        "lat": 33.986179,
+        "lng": 8.218126
+      },
+      "retrievalQualification": "Python TLS failure retained; default Windows-trust retry succeeded without bypass. The original retry manifest did not capture the final URL, which remains null rather than being inferred."
+    },
+    {
+      "source": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/atlas-tozeur-ar.pdf",
+        "sha256": "f58dae895f0204f61fa196ae9c2fd81b4c1fb3a5886a955d212018a1bb4afe82",
+        "bytes": 18617772
+      },
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasTozeurAr.pdf",
+      "publication": "Ministry of Equipment, General Directorate of Territorial Planning, April2013 final Tozeur atlas.",
+      "inspectedPages": [
+        {
+          "pdfPage": 1,
+          "finding": "Cover identifies ministry, report title and April2013."
+        },
+        {
+          "pdfPage": 97,
+          "printedPage": 96,
+          "finding": "Delegation description and table131 distinguish Degache North/South, Bou Helal and other imadas; map41 is a broader administrative depiction."
+        },
+        {
+          "pdfPage": 99,
+          "printedPage": 98,
+          "finding": "Map42 separately labels Degache and Bou Helal as places in the larger delegation; source legend dates land-cover map2009."
+        }
+      ],
+      "wholePageRendersPersonallyViewed": true,
+      "derivedPageProvenance": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/atlas-page-provenance.json",
+        "sha256": "789fc4af0df9e8e3ea076c27eb46d494915e4512dec2602d50a61052033f99ec",
+        "bytes": 1542
+      },
+      "qualification": "Historical identity/geographic context only. No georeferencing, boundary extraction, current administrative certification or exact point placement was inferred from this atlas."
+    }
+  ],
+  "conclusions": [
+    "The live app town point is a distinct, long-established OSM town: all12 authentic versions have place=town; current coordinates have been stable since2020 and exactly match the fresh PBF and current raw row.",
+    "The matching INM coordinate is 0.770 km from the distinct Bou Helal hamlet source point and 6.381 km from the Degache town source point. Both are within the broader archived Degache delegation; sharing that delegation does not establish one settlement identity.",
+    "The legacy app reference is also not the exact town point and has no individual coordinate review. The primary office location corroborates the town vicinity but does not prove that the legacy point is correct.",
+    "The source supports recording the INM coordinate as its published administrative daily reference, but does not justify silently replacing the town-based reference with that point or renaming/moving either locality."
+  ],
+  "recommendation": {
+    "action": "HOLD_REFERENCE_REPLACEMENT_KEEP_CURRENT_DATA_PENDING_SOURCE_PURPOSE_OR_SETTLEMENT_REFERENCE_REVIEW",
+    "approvedCorrection": null,
+    "missingEvidence": [
+      "Resolve whether reference478 is intended to represent the published administrative daily-record point near Bou Helal or the inhabited Degache town. The paired responses alone do not select that geographic meaning.",
+      "If a town reference is desired, review the exact existing town point33.9841058,8.2154584 as a separate candidate with its primary corroboration; do not substitute the ministry office point merely because it is official.",
+      "Before any chosen reference change, assess exact locality defaults and active proof dependencies in an isolated proposal. No national default matrix or proposed catalog output was calculated here."
+    ],
+    "usefulRootPhoneChecks": [
+      "Exact point34.016,8.273 for public local context near Bou Helal.",
+      "Exact point33.9841058,8.2154584 for the named Degache town vicinity."
+    ],
+    "preserve": [
+      "Both named point IDs and their original coordinates",
+      "All six current sector polygons and their distinct identities",
+      "Current town-owned picker group delegation478",
+      "Current source labels, defaults, aliases and historical reviews until a separate reviewed change"
+    ]
+  },
+  "attemptsAndLimitations": {
+    "failedAttempts": [
+      {
+        "artifact": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/retrievals.json",
+          "sha256": "37e1c1646720d790141d93b104c9a8bf12d3bbfcb1097f49f0472f6c5df005f9",
+          "bytes": 8663
+        },
+        "description": "Python requests rejected the Social Affairs certificate chain; exact exception preserved. Windows default-trust retry obtained the original HTML."
+      },
+      {
+        "toolChunk": "00c3db",
+        "description": "Read-only probe could not import optional bs4; no analysis/output/source mutation occurred. Subsequent extraction used Python standard HTMLParser."
+      }
+    ],
+    "noPhoneOrLedgerAccess": true,
+    "noProductImportOrExecution": true,
+    "noGenerationTestsBuild": true,
+    "noLiveOrStageMutation": true,
+    "noBoundaryCertification": true,
+    "noAutomaticAdoption": true
+  },
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/prepare_findings_v2.py",
+    "sha256": "a6b44e9dbe50cf3c53311c9c16dbd0d17ddb66dca3bf248fc42a6ff38003ce21",
+    "bytes": 15497
+  }
+}

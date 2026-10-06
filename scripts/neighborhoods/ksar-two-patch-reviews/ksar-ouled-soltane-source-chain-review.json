@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "status": "supported_bounded_two_fragment_display_association",
+  "reviewedAt": "2026-09-07T22:36:11.238904+00:00",
+  "scope": "Ksar Ouled Soltane exact two residential source objects. Source proposal only, no generator implementation or app import.",
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "ae8202fbf2ce97cfde0cfa4c270a8a93e77cdd09b5fa22e8623f978debc154bf",
+    "bytes": 1842921
+  },
+  "currentGeometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+    "bytes": 5498784
+  },
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "priorReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\ksar-ouled-soltane-display-identity-review.json",
+    "sha256": "02f39f124fba2e420115c8f0bff2bc373ca52308f31c5e63446e9d659c8aece9",
+    "bytes": 26055
+  },
+  "existingSourceFacts": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-identity-review\\direct-context-source-facts.json",
+      "sha256": "241f0a76e138f21e423d8067839e4f98053d6cf0f7da994d1b50278f8965dde0",
+      "bytes": 204399
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "bytes": 529199
+    }
+  ],
+  "currentRecords": [
+    {
+      "id": "osm:way:1264348269",
+      "sourceId": "osm",
+      "name": "قصر أولاد سلطان",
+      "aliases": [
+        "Ksar Ouled Soltane"
+      ],
+      "kind": "residential",
+      "parentName": "القلعة الشرقية",
+      "contextAliases": [
+        "Délégation Tataouine Nord",
+        "El Galaa Est",
+        "القلعة الشرقية",
+        "معتمدية تطاوين الشمالية"
+      ],
+      "governorateId": 351,
+      "lat": 32.792254,
+      "lng": 10.518313,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        10.516506,
+        32.789897,
+        10.521192,
+        32.794528
+      ],
+      "areaKm2": 0.11053746530568001,
+      "pickerGroupId": "osm:way:1264348269",
+      "offset": 5214564,
+      "length": 764
+    },
+    {
+      "id": "osm:way:1264348270",
+      "sourceId": "osm",
+      "name": "قصر أولاد سلطان",
+      "aliases": [
+        "Ksar Ouled Soltane"
+      ],
+      "kind": "residential",
+      "parentName": "القلعة الشرقية",
+      "contextAliases": [
+        "Délégation Tataouine Nord",
+        "El Galaa Est",
+        "القلعة الشرقية",
+        "معتمدية تطاوين الشمالية"
+      ],
+      "governorateId": 351,
+      "lat": 32.788021,
+      "lng": 10.519467,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        10.514313,
+        32.786085,
+        10.520198,
+        32.789881
+      ],
+      "areaKm2": 0.064808399523089,
+      "pickerGroupId": "osm:way:1264348270",
+      "offset": 5215328,
+      "length": 740
+    }
+  ],
+  "currentGroupInventories": {
+    "osm:way:1264348269": [
+      "osm:way:1264348269"
+    ],
+    "osm:way:1264348270": [
+      "osm:way:1264348270"
+    ]
+  },
+  "exactSourceHistory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\exact-source-history-and-discussion.json",
+    "sha256": "d9451572207548cbb98b57534cb7428a4f175b75ba4f0dd9fc2db9237b5b8c40",
+    "bytes": 99501
+  },
+  "newDownloads": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-145942126.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/145942126?include_discussion=true",
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/145942126?include_discussion=true",
+      "sha256": "f78c05f3dc81c7131fef70e3fd3e9880110b1d8e170c6e9f53ba1ce6e86a835f",
+      "bytes": 941,
+      "retrievedAt": "2026-09-07T22:30:53.058126+00:00"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-145942126-download.osc",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/145942126/download",
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/145942126/download",
+      "sha256": "c37b946c3a7d00a6c060ffdd39d91e497bbf09908e317f259b38409472b8b9c7",
+      "bytes": 10502,
+      "retrievedAt": "2026-09-07T22:30:53.050622+00:00"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-177353601.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/177353601?include_discussion=true",
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/177353601?include_discussion=true",
+      "sha256": "5e4b6664f80c5cd35a9e478803b2b6999f8426adc6c633d202b7be0040156637",
+      "bytes": 2025,
+      "retrievedAt": "2026-09-07T22:30:53.083009+00:00"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-177353601-download.osc",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/177353601/download",
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/177353601/download",
+      "sha256": "003532fe08be2812c82a252b8310c864146d6e8e7626d2cadb2f9265c878a15c",
+      "bytes": 13178,
+      "retrievedAt": "2026-09-07T22:30:53.077985+00:00"
+    }
+  ],
+  "sourceChronology": [
+    {
+      "changesetId": 145942126,
+      "date": "2024-01-06",
+      "finding": "The exact village point is created with Ksar Ouled Soltane/قصر أولاد سلطان and place=village under aerial-imagery and survey provenance. The same source edit separately modifies the fortress as historic ruins and creates differently named Tazeghdent hamlet/archaeological objects."
+    },
+    {
+      "changesetId": 148885304,
+      "date": "2024-03-19",
+      "finding": "The same mapper deliberately creates both exact residential ways with identical Ksar Ouled Soltane names. These are the only named objects in the actual251-object edit. The source declaration here is aerial imagery only; the earlier survey declaration is not silently transferred to every footprint vertex."
+    },
+    {
+      "changesetId": 177353601,
+      "date": "2026-01-17",
+      "finding": "The later editor standardizes Arabic/language naming on the village and both residential ways together. This is naming cleanup and is not evidence of a new field survey."
+    }
+  ],
+  "newExplicitDiscussionEvidence": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-177353601.xml",
+      "sha256": "5e4b6664f80c5cd35a9e478803b2b6999f8426adc6c633d202b7be0040156637",
+      "bytes": 2025,
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/177353601?include_discussion=true"
+    },
+    "comments": [
+      {
+        "id": "1542534",
+        "date": "2026-01-19T15:48:26Z",
+        "mapperId": "23603490",
+        "textSha256": "c541802322a4d6e9bd674d478a98962e6ba2d0cc7bf20fd58139f09743e578b0",
+        "source": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-177353601.xml",
+          "sha256": "5e4b6664f80c5cd35a9e478803b2b6999f8426adc6c633d202b7be0040156637",
+          "bytes": 2025
+        },
+        "sourceXPath": "/osm/changeset/discussion/comment[@id='1542534']/text",
+        "shortExcerpt": "one node and two landuse=residential areas",
+        "paraphrase": "The commenter identifies the repeated Ksar Ouled Soltane name on one village node and both residential polygons, recommends keeping the label only on the village node, and describes the issue as map display duplication."
+      },
+      {
+        "id": "1543720",
+        "date": "2026-01-21T22:43:03Z",
+        "mapperId": "16642036",
+        "textSha256": "ff372e786be575e61bd380e9b953e8a1e47b74df22e0e51812ffe2728da5a1b2",
+        "source": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-177353601.xml",
+          "sha256": "5e4b6664f80c5cd35a9e478803b2b6999f8426adc6c633d202b7be0040156637",
+          "bytes": 2025
+        },
+        "sourceXPath": "/osm/changeset/discussion/comment[@id='1543720']/text",
+        "paraphrase": "The latest naming editor replies that the names predated their edit and invites the commenter to make the suggested improvement; they do not assert that the three labels identify separate settlements."
+      },
+      {
+        "id": "1544462",
+        "date": "2026-01-23T17:30:12Z",
+        "mapperId": "23603490",
+        "textSha256": "5fadf5b794d6795506c3db8ea445ca8faf4220ae58aa056a4c9a6ebc4169c534",
+        "source": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-source-chain-review\\changeset-177353601.xml",
+          "sha256": "5e4b6664f80c5cd35a9e478803b2b6999f8426adc6c633d202b7be0040156637",
+          "bytes": 2025
+        },
+        "sourceXPath": "/osm/changeset/discussion/comment[@id='1544462']/text",
+        "paraphrase": "The commenter says they report concerns rather than editing objects directly; no authoritative boundary or field-survey evidence is added."
+      }
+    ],
+    "centralFinding": "The original primary changeset discussion explicitly identifies the one village node and two residential labels as a duplicate-display issue and recommends retaining the name on the village node. This addresses the exact relationship that the earlier bounded review had left unresolved.",
+    "qualification": "This is a mapper/reviewer interpretation of the source objects, not an official or independently surveyed perimeter assignment. The response is not treated as formal concurrence or an authoritative identity declaration."
+  },
+  "independentInhabitedLocalityEvidence": [
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-identity-review\\municipal-localities-2024.html",
+        "sha256": "09171609cd6e27331461ead8c7fa88dcc9cd7108d0b4f2e49a03765a275f3e91",
+        "bytes": 80906,
+        "url": "https://www.commune-tataouine.gov.tn/index.php?Itemid=101&catid=28&id=922:2024-2025&lang=fr&option=com_content&view=article"
+      },
+      "finding": "The municipality reproduces the 2024-2025 agricultural vaccination locality schedule. Ksar Ouled Soltane is individually listed under El Galaa Est in Tataouine Nord, alongside other named localities. This directly supports inhabited locality and current sector context, without identifying a specific northern residential footprint."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-identity-review\\municipal-planning-inquiry-2026.html",
+        "sha256": "8b58ca9292a04cf30e277215e6f65ad8060e9cddec174d8b6c2b0e6ffc63d19d",
+        "bytes": 80909,
+        "url": "https://www.commune-tataouine.gov.tn/index.php?Itemid=101&catid=11:annonces&id=980:2026-07-09-10-53-03&lang=ar&option=com_content&view=article"
+      },
+      "finding": "A municipality notice announces consultation on urban planning for Ksar Ouled Soltane and three other named areas. The plans are described as displayed at the municipal offices. The notice establishes planning-locality status; its article has no attached Ksar Ouled Soltane map or parcel/address inventory."
+    }
+  ],
+  "exactIdentityInventory": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ksar-ouled-soltane-identity-review\\direct-context-source-facts.json",
+      "sha256": "241f0a76e138f21e423d8067839e4f98053d6cf0f7da994d1b50278f8965dde0",
+      "bytes": 204399
+    },
+    "onlyNamedVillageId": "osm:node:11493025894",
+    "namedResidentialIds": [
+      "osm:way:1264348269",
+      "osm:way:1264348270"
+    ],
+    "absorbedVillage": {
+      "id": "osm:node:11493025894",
+      "tags": {
+        "name": "قصر أولاد سلطان",
+        "name:aeb": "قصر أولاد سلطان",
+        "name:ar": "قصر أولاد سلطان",
+        "name:en": "Ksar Ouled Soltane",
+        "place": "village"
+      },
+      "lat": 32.7892277,
+      "lng": 10.5175137,
+      "absentFromRawCatalog": true,
+      "containedBySouthernOriginalAndPackedFootprint": true,
+      "mustRemainAbsorbed": true
+    },
+    "fortressAndMosqueRemainSeparateSourceObjects": {
+      "fortressId": "osm:relation:2516832",
+      "mosqueId": "osm:way:1394472968"
+    },
+    "otherNamedSettlementsInReviewedSourceEdits": [
+      "Tazeghdent",
+      "تجينت",
+      "أولاد شهيدة"
+    ],
+    "qualification": "Different names or feature kinds in the source edits are not absorbed into this association. The current same-name inventory comes from the unchanged pinned source, not a repeated PBF scan."
+  },
+  "geometryPreservation": {
+    "packedSha256": {
+      "osm:way:1264348269": "a7ce8c33641e2d3117cb8ac92052a108619897171cc1b4361818003ff582bdaf",
+      "osm:way:1264348270": "aa6e118ee4cf3c92026570b92d4b595ad78f7d224acaeb791d9a48aa5f5ec0f0"
+    },
+    "sameMeaningfulFieldsAndPackedBytesAsPriorReview": true,
+    "coordinateChain": [
+      {
+        "id": "osm:way:1264348269",
+        "uniqueVertices": 93,
+        "creationEqualsCurrentSource": false,
+        "afterReviewed2026EditEqualsCurrentSource": false,
+        "reviewed2026VertexEdits": 0,
+        "creationCoordinatesNotPresentInCurrentRing": 3,
+        "creationToCurrentSymmetricDifferenceMeters2": 1181.5486002658397,
+        "creationToCurrentHausdorffMeters": 20.134466645984812
+      },
+      {
+        "id": "osm:way:1264348270",
+        "uniqueVertices": 90,
+        "creationEqualsCurrentSource": false,
+        "afterReviewed2026EditEqualsCurrentSource": false,
+        "reviewed2026VertexEdits": 0,
+        "creationCoordinatesNotPresentInCurrentRing": 9,
+        "creationToCurrentSymmetricDifferenceMeters2": 696.3887705343577,
+        "creationToCurrentHausdorffMeters": 10.356849603072787
+      }
+    ],
+    "coordinateHistoryLimit": "The creation coordinates differ from the current PBF at3 northern and9 southern vertices through unreviewed constituent-node edits. This source association uses only the current independently pinned original shapes and packed slices, never the older creation shape. No full vertex-history reconstruction or new boundary certification is claimed.",
+    "noWholeVillageBoundaryClaim": true,
+    "noDistanceThresholdUsedForIdentity": true
+  },
+  "decision": {
+    "eligibleForGuardedDisplayAssociation": true,
+    "proposal": {
+      "sourcePickerGroupId": "osm:way:1264348269",
+      "targetPickerGroupId": "osm:way:1264348270",
+      "expectedSourceMembers": [
+        "osm:way:1264348269"
+      ],
+      "expectedTargetMembers": [
+        "osm:way:1264348270"
+      ],
+      "resultMemberIds": [
+        "osm:way:1264348269",
+        "osm:way:1264348270"
+      ],
+      "permittedChanges": [
+        {
+          "id": "osm:way:1264348269",
+          "field": "pickerGroupId",
+          "before": "osm:way:1264348269",
+          "after": "osm:way:1264348270"
+        }
+      ],
+      "preserveAllRawIdsNamesAliasesContextsCoordinatesPolygonsAndPrayer624": true,
+      "doNotRestoreAbsorbedVillageOrAddFortress": true
+    },
+    "basis": "The exact village creation with survey provenance, deliberate subsequent creation of both same-name residential objects by that mapper, explicit duplicate-display discussion naming the one-node/two-area situation, and independent municipal recognition of the inhabited locality together support the bounded display association.",
+    "limit": "This is a documented source-identity inference for two retained representations. The municipality does not enumerate the northern polygon, and source comments are not cadastral proof. No complete village outline, point buffer, source name removal or geometry union is proposed.",
+    "changeFromPriorHold": "The previously uncached village-creation source and2026 discussion now clarify the naming provenance and explicitly discuss the duplicate representations. Existing geometry/context/municipal evidence remains unchanged; no new northern address or full planning map is claimed.",
+    "implementationStatus": "No implementation prepared. Exact source tags/shapes, singleton groups, stable southern target, absorbed village containment and source624 need guards if root accepts a later implementation."
+  },
+  "operations": {
+    "pbfPasses": 0,
+    "genericSearchQueries": 0,
+    "newExactApiDownloads": 4,
+    "existingHistoriesReused": 3,
+    "phoneOrLedgerAccess": false,
+    "repoCoreGeneratorEdits": false,
+    "testsBuildsGenerationOrApks": false
+  }
+}

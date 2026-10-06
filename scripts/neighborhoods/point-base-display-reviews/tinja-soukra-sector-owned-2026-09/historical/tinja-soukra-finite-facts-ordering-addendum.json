@@ -1,0 +1,67 @@
+{
+  "status": "PASS_WITH_EXPLICIT_IMPLEMENTATION_REQUIREMENTS",
+  "factsReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-finite-facts-independent-review.json",
+    "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62"
+  },
+  "design": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\sector-owned-settlement-contract-design.json",
+    "sha256": "64804d3b6357ea428b18d95a433ccd72b3ad862dad9c8273f6c66561ed3d28fc"
+  },
+  "inspectedCompiler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-teboursouk-combined-compiler-proposal\\scripts\\generate_neighborhoods.py",
+    "sha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9"
+  },
+  "readOnlyOrderingEvidence": {
+    "deferredValidatorAndApplyLines": [
+      1381,
+      1463
+    ],
+    "finalPointBaseVerifierLines": [
+      1467,
+      1495
+    ],
+    "earlyMetadataAssignmentLines": [
+      6633,
+      6651
+    ],
+    "buildMutationAndVerificationOrderLines": [
+      6718,
+      6758
+    ]
+  },
+  "observedOrdering": [
+    "Current early metadata dispatch skips immediate assignment only for deferredCompleteGroupExtension at6642. A new validated option needs its own explicit bypass; ordinary point behavior must remain unchanged.",
+    "Existing strict reviewed owner groups apply at6726, followed by locality contexts, deferred hamlets and residential mutations. Current deferred point extension applies at6745, followed by all final verifiers.",
+    "Existing deferred apply has a used_ids/used_targets set scoped only to its own pending entries. A separate new dispatcher with a separate set would not establish cross-contract reservation.",
+    "Existing strict one-sector application receipt is checked independently of final expanded raw group. New display receipt is a separate point action."
+  ],
+  "requiredImplementationInvariants": [
+    "Before committing any pending point change, derive reservations across new proposals and existing deferred/pending mutation contracts, covering target base IDs, all protected raw members and source-only/foreign context dependencies. Reject a proposal that would mutate or acquire ownership of another proposal protected identity; do not limit overlap checks to the new list.",
+    "Run all before-state/group/strict-receipt checks before either new pending mutation, then apply only the two explicitly reviewed point pickerGroupId changes. No source type or existing strict proof/record/receipt rewrite.",
+    "After all existing mutation stages and new assignments, rederive the complete final raw/group/source-name/covered-point closure and compare every protected field, coordinate and polygon slice. Reject hidden target members, split groups, missing independent rows, restored source-only IDs and conflicting base_groups ownership.",
+    "Ensure final point/base verification dispatches the new option to its own complete-group verifier instead of the ordinary exact-pair branch. Retain all existing old-option branches and checks.",
+    "Preserve each historical strict receipt as {pickerGroupId:target,ids:[existingSector]}; add a separate point picker_base_display receipt. The final duplicate-group report may contain sector+point without changing the strict approval proof."
+  ],
+  "supplementalFiniteChecks": [
+    "Both target coordinate-correction inventories independently checked empty against pinned prayer-source-coordinates manifest; no nearest matrix recalculated.",
+    "Existing strict owner evidence refs equal the pinned whole picker reviewEvidence and resolve to exact96b96d4e proof bytes.",
+    "Soukra7114904 accepted provider feature/source evidence and loader application receipt exactly match baseline coverage; no accepted transformation omitted.",
+    "Zaarour original source point is geometrically covered by exactly7119647 among all three Tinja sectors, independent of name filtering."
+  ],
+  "qualifiedAssessment": "No missing finite member or contradictory source phase was found. The design is suitable for a bounded isolated implementation only with these explicit cross-contract and final-order safeguards. This is not approval of code that has not been written.",
+  "actionableSourceFactsIssues": [],
+  "notPerformed": [
+    "product compiler/helper import or execution",
+    "generation",
+    "tests",
+    "build",
+    "source or live mutation",
+    "phone",
+    "ledger"
+  ],
+  "toolEvidence": [
+    "c31390",
+    "cf88d2"
+  ]
+}

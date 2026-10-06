@@ -1,0 +1,800 @@
+{
+  "schemaVersion": 1,
+  "baselineMetadataSha256": "c5bd9cdd5c955a3a993107f477b443d2cc82df09ce599f4f91119650cb07cee9",
+  "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceCache": {
+    "file": "work/geo/osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "records": {
+    "osm:node:283645091": {
+      "id": "osm:node:283645091",
+      "originalTags": {
+        "addr:city": "حلق الوادي",
+        "addr:postcode": "2060",
+        "name": "حلق الوادي",
+        "name:ar": "حلق الوادي",
+        "name:azb": "حلق الوادی",
+        "name:de": "Ḥalq al-Wādī",
+        "name:en": "La Goulette",
+        "name:es": "La Goleta",
+        "name:fa": "حلق الوادی",
+        "name:fr": "La Goulette",
+        "name:he": "לה גולט",
+        "name:it": "La Goletta",
+        "name:ru": "Хальк-эль-Уэд",
+        "place": "town",
+        "wikidata": "Q798445",
+        "wikimedia_commons": "Category:La Goulette",
+        "wikipedia": "ar:حلق الوادي",
+        "wikipedia:es": "La Goleta"
+      },
+      "originalGeometrySha256": "5f96406f7f8fef111aff221eb8d21c2f51dc094d422ced1567dc582fb09384ef",
+      "expectedCuration": null,
+      "lat": 36.8159278,
+      "lng": 10.3042378
+    },
+    "osm:relation:1435835": {
+      "id": "osm:relation:1435835",
+      "originalTags": {
+        "ISO3166-2": "TN-11",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Tunis",
+        "alt_name:ko": "튀니스주",
+        "alt_name:ru": "Тунис (вилайет)",
+        "boundary": "administrative",
+        "long_name:ar": "ولاية تونس",
+        "long_name:en": "Tunis Governorate",
+        "long_name:fr": "Gouvernorat de Tunis",
+        "long_name:it": "Governatorato di Tunisi",
+        "name": "ولاية تونس",
+        "name:ar": "ولاية تونس",
+        "name:be": "Туніс (вілает)",
+        "name:be-tarask": "Туніс (вілает)",
+        "name:bg": "Тунис (област)",
+        "name:ca": "Governació de Tunis",
+        "name:ceb": "Gouvernorat de Tunis",
+        "name:cy": "Tiwnis (talaith)",
+        "name:de": "Tunis",
+        "name:en": "Tunis",
+        "name:es": "Gobernación de Túnez",
+        "name:fa": "استان تونس",
+        "name:fr": "Gouvernorat Tunis",
+        "name:id": "Kegubernuran Tunis",
+        "name:it": "Tunisi",
+        "name:ja": "チュニス県",
+        "name:ko": "튀니스",
+        "name:ms": "Kawasan kegabenoran Tunis",
+        "name:nl": "Tunis (gouvernement)",
+        "name:no": "Tunis (guvernement)",
+        "name:pl": "Gubernatorstwo Tunis",
+        "name:pt": "Túnis (província)",
+        "name:ro": "Guvernoratul Tunis",
+        "name:ru": "Тунис",
+        "name:sco": "Tunis Govrenorate",
+        "name:sh": "Tunis (vilajet)",
+        "name:sv": "Tunis (guvernement)",
+        "name:tr": "Tunus ili",
+        "name:uk": "Туніс (вілаєт)",
+        "name:ur": "ولایت تونس",
+        "name:zh": "突尼斯省",
+        "name:zu": "Tunis Governorate",
+        "population": "983861",
+        "ref:tn:codegeo": "11",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q328109",
+        "wikipedia": "ar:ولاية تونس"
+      },
+      "originalGeometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468",
+      "expectedCuration": null
+    },
+    "osm:relation:4134886": {
+      "id": "osm:relation:4134886",
+      "originalTags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "name": "معتمدية حلق الوادي",
+        "name:ar": "معتمدية حلق الوادي",
+        "name:es": "Delegación de La Goleta",
+        "name:fr": "Délégation La Goulette",
+        "ref:tn:codegeo": "1169",
+        "ref:tn:hasc_2": "TN.TU.LG",
+        "short_name": "حلق الوادي",
+        "short_name:ar": "حلق الوادي",
+        "short_name:es": "La Goleta",
+        "wikidata": "Q3209432",
+        "wikipedia": "ar:معتمدية حلق الوادي"
+      },
+      "originalGeometrySha256": "9acc86f546f0f1f9dade23f86323d3965da301781d9cdd0cb412da5bcff6ca69",
+      "expectedCuration": null
+    },
+    "osm:relation:7117889": {
+      "id": "osm:relation:7117889",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حلق الوادي الكازينو",
+        "name:ar": "حلق الوادي الكازينو",
+        "name:fr": "La Goulette Casino",
+        "ref:tn:codegeo": "116952"
+      },
+      "originalGeometrySha256": "84906ae2f8175ad5140b66ed4c806c493f0a7ec1d44b627d2e78ffad54940cb2",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7117889",
+        "sourceId": "osm",
+        "name": "حلق الوادي الكازينو",
+        "aliases": [
+          "La Goulette Casino"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.822587,
+        "lng": 10.308696,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "bbox": [
+          10.302061,
+          36.818082,
+          10.314094,
+          36.827223
+        ],
+        "areaKm2": 0.41756813222437883,
+        "pickerGroupId": "osm:relation:7117889",
+        "offset": 971364,
+        "length": 684
+      },
+      "packedGeometrySha256": "29f34a15fc462bb4c5aeb09b7f0c7fc439b78ec38be0e32dc4cbb9e39537a2cb"
+    },
+    "osm:relation:7117890": {
+      "id": "osm:relation:7117890",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "خير الدين",
+        "name:ar": "خير الدين",
+        "name:fr": "Kheredine",
+        "ref:tn:codegeo": "116953",
+        "wikidata": "Q12211002"
+      },
+      "originalGeometrySha256": "5c4c260eb6299ad502f7de03eb7884ae5629f1589fa832dd7672a16d47a047cd",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7117890",
+        "sourceId": "osm",
+        "name": "خير الدين",
+        "aliases": [
+          "Kheredine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.829477,
+        "lng": 10.309437,
+        "delegationId": 406,
+        "hasBoundary": true,
+        "bbox": [
+          10.301843,
+          36.821696,
+          10.318763,
+          36.837228
+        ],
+        "areaKm2": 0.9128660093059964,
+        "pickerGroupId": "osm:relation:7117890",
+        "offset": 972048,
+        "length": 764
+      },
+      "packedGeometrySha256": "17bc33b8035613826ffedf9dc60fe05b0e89c02c2a32fc105db97dac7f357063"
+    },
+    "osm:relation:7117891": {
+      "id": "osm:relation:7117891",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي السلامة",
+        "name:ar": "حي السلامة",
+        "name:fr": "Cité Essalema",
+        "ref:tn:codegeo": "116955"
+      },
+      "originalGeometrySha256": "af90deb746660c4845ef7b0c0237ba1c90d03002229b71a7c178c66217f08991",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7117891",
+        "sourceId": "osm",
+        "name": "حي السلامة",
+        "aliases": [
+          "Cité Essalema"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.855453,
+        "lng": 10.270085,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.266895,
+          36.852162,
+          10.272286,
+          36.858832
+        ],
+        "areaKm2": 0.2054957293095274,
+        "pickerGroupId": "osm:relation:7117891",
+        "offset": 972812,
+        "length": 228
+      },
+      "packedGeometrySha256": "73c6a6f829774b6ce4223e39782b52ee87e73491df3f849af62793c0324f7046"
+    },
+    "osm:relation:7117932": {
+      "id": "osm:relation:7117932",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطيب مهيري",
+        "name:ar": "الطيب مهيري",
+        "name:fr": "Taieb Mhiri",
+        "ref:tn:codegeo": "116954"
+      },
+      "originalGeometrySha256": "897432cd2ab943e349506a1931aecda8aacb4396aa235a2a95a2a914bf34c447",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7117932",
+        "sourceId": "osm",
+        "name": "الطيب مهيري",
+        "aliases": [
+          "Taieb Mhiri"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.836049,
+        "lng": 10.278915,
+        "delegationId": 406,
+        "hasBoundary": true,
+        "bbox": [
+          10.239206,
+          36.810457,
+          10.30779,
+          36.862359
+        ],
+        "areaKm2": 17.2850050701517,
+        "pickerGroupId": "osm:relation:7117932",
+        "offset": 973040,
+        "length": 892
+      },
+      "packedGeometrySha256": "0badd7769ca8854a2231a11b273e409254b376fa0eee5c5496976b005b12620a"
+    },
+    "osm:relation:7117933": {
+      "id": "osm:relation:7117933",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حلق الوادي",
+        "name:ar": "حلق الوادي",
+        "name:azb": "حلق الوادی",
+        "name:de": "Ḥalq al-Wādī",
+        "name:es": "La Goleta",
+        "name:fr": "La Goulette",
+        "ref:tn:codegeo": "116951"
+      },
+      "originalGeometrySha256": "1b99463754515fcedb5b6f3857548e8e3ad7a7ab78946c7013ba00cc3d9d591a",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7117933",
+        "sourceId": "osm",
+        "name": "حلق الوادي",
+        "aliases": [
+          "La Goleta",
+          "La Goletta",
+          "La Goulette",
+          "Хальк-эль-Уэд",
+          "לה גולט",
+          "حلق الوادی",
+          "Ḥalq al-Wādī"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.813376,
+        "lng": 10.293059,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "bbox": [
+          10.279783,
+          36.806327,
+          10.31101,
+          36.820236
+        ],
+        "areaKm2": 1.7649760805297365,
+        "pickerGroupId": "osm:relation:7117933",
+        "offset": 973932,
+        "length": 1236
+      },
+      "packedGeometrySha256": "b99b336c18442f4ffc9f43403ec7c1398f1485f7611c2a1ee4a668355b86a1d5"
+    },
+    "osm:way:93164500": {
+      "id": "osm:way:93164500",
+      "originalTags": {
+        "addr:city": "حلق الوادي",
+        "landuse": "residential",
+        "name": "حلق الوادي",
+        "name:ar": "حلق الوادي",
+        "name:fr": "La Goulette"
+      },
+      "originalGeometrySha256": "2589d552f9945ba6b3e9c0ca0c35375b4bf81c6ed7ded9aa8d27c156adeddb9e",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:93164500",
+        "sourceId": "osm",
+        "name": "حلق الوادي",
+        "aliases": [
+          "La Goulette"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.816185,
+        "lng": 10.294957,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "bbox": [
+          10.279961,
+          36.806327,
+          10.313079,
+          36.825935
+        ],
+        "areaKm2": 2.1205906386256106,
+        "pickerGroupId": "osm:relation:7117933",
+        "offset": 5438896,
+        "length": 1780
+      },
+      "packedGeometrySha256": "d4796b4da6a119b125b885041dbcebf35cde1cb11660b47a3b1d8925f8c3211c"
+    },
+    "osm:node:352752197": {
+      "id": "osm:node:352752197",
+      "originalTags": {
+        "name": "مطماطة الجديدة",
+        "name:aeb": "مطماطة الجديدة",
+        "name:ar": "مطماطة الجديدة",
+        "name:en": "New Matmata",
+        "name:fr": "Nouvelle Matmata",
+        "place": "town",
+        "population": "30000",
+        "wikipedia": "ar:مطماطة الجديدة"
+      },
+      "originalGeometrySha256": "84c21c2904e4b2cf08f2da52a4df2029427a6d19cc7e2a36d62b3145e3b67307",
+      "expectedCuration": null,
+      "lat": 33.6688822,
+      "lng": 10.0144336
+    },
+    "osm:relation:1434956": {
+      "id": "osm:relation:1434956",
+      "originalTags": {
+        "ISO3166-2": "TN-81",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية قابس",
+        "name:ar": "ولاية قابس",
+        "name:az": "Qabes (vilayət)",
+        "name:azb": "قابس",
+        "name:be": "Габес (вілает)",
+        "name:be-tarask": "Габэс (вілает)",
+        "name:bg": "Габес (област)",
+        "name:ca": "Governació de Gabès",
+        "name:ceb": "Gouvernorat de Gabès",
+        "name:cy": "Gabès (talaith)",
+        "name:de": "Gouvernement Gabès",
+        "name:el": "Γκαμπές (Κυβερνείο)",
+        "name:en": "Gabès",
+        "name:es": "Gobernación de Gabès",
+        "name:fa": "قابس",
+        "name:fi": "Gabès (kuvernementti)",
+        "name:fr": "Gouvernorat Gabès",
+        "name:frr": "Gabès (Guwernement)",
+        "name:he": "גאבס (מחוז)",
+        "name:hu": "Gabès kormányzóság",
+        "name:id": "Kegubernuran Gabès",
+        "name:it": "Gabès",
+        "name:ja": "ガベズ県",
+        "name:ko": "가베스주",
+        "name:ks": "قابس",
+        "name:lt": "Gabeso vilajetas",
+        "name:ms": "Kawasan kegabenoran Gabès",
+        "name:nl": "Gabès (gouvernement)",
+        "name:no": "Gabès (guvernement)",
+        "name:pl": "Gubernatorstwo Kabis",
+        "name:pnb": "قابس",
+        "name:pt": "Gabès (província)",
+        "name:ro": "Guvernoratul Gabès",
+        "name:ru": "Габес (вилайет)",
+        "name:sco": "Gabès Govrenorate",
+        "name:sh": "Gabes (vilajet)",
+        "name:sv": "Gabès (guvernement)",
+        "name:tr": "Kabes Vilayeti",
+        "name:uk": "Габес (вілаєт)",
+        "name:ur": "قابس",
+        "name:zh": "加貝斯省",
+        "name:zu": "Gabès Governorate",
+        "official_name": "ولاية قابس",
+        "official_name:ar": "ولاية قابس",
+        "official_name:en": "Gabès Governorate",
+        "official_name:fa": "استان قابس",
+        "official_name:fr": "Gouvernorat de Gabès",
+        "official_name:it": "Governatorato di Gabès",
+        "official_name:ur": "ولایت قابس",
+        "population": "342630",
+        "population:date": "2004",
+        "ref:tn:codegeo": "51",
+        "wikidata": "Q242263",
+        "wikipedia": "ar:ولاية قابس"
+      },
+      "originalGeometrySha256": "8a4df569adeebda2f0f5069ea56746b0b7860cacc39feab8c8b8421980239565",
+      "expectedCuration": null
+    },
+    "osm:relation:7145382": {
+      "id": "osm:relation:7145382",
+      "originalTags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "name": "معتمدية مطماطة الجديدة",
+        "name:ar": "معتمدية مطماطة الجديدة",
+        "name:fr": "Délégation Nouvelle Matmata",
+        "ref:tn:codegeo": "5159",
+        "ref:tn:hasc_2": "TN.GB.MN",
+        "sorting_name": "مطماطة الجديدة",
+        "sorting_name:ar": "مطماطة الجديدة",
+        "sorting_name:fr": "Nouvelle Matmata",
+        "wikidata": "Q12244000",
+        "wikipedia": "ar:معتمدية مطماطة الجديدة",
+        "wikipedia:ar": "معتمدية مطماطة الجديدة"
+      },
+      "originalGeometrySha256": "701a810b133282564a2e1643d3d4b21703ec06d6e37306013dde43cff85724ca",
+      "expectedCuration": null
+    },
+    "osm:relation:7145389": {
+      "id": "osm:relation:7145389",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني عيسى",
+        "name:ar": "بني عيسى",
+        "name:fr": "Beni Aissa",
+        "ref:tn:codegeo": "515954"
+      },
+      "originalGeometrySha256": "89400731b265bfed08eb04aa0d888dac85147588fea3dcfbee1084e6357da5a2",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7145389",
+        "sourceId": "osm",
+        "name": "بني عيسى",
+        "aliases": [
+          "Beni Aissa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "contextAliases": [
+          "Délégation Nouvelle Matmata",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.660595,
+        "lng": 9.881841,
+        "delegationId": 1023,
+        "hasBoundary": true,
+        "bbox": [
+          9.807792,
+          33.571815,
+          9.959215,
+          33.749055
+        ],
+        "areaKm2": 133.26512613720965,
+        "pickerGroupId": "osm:relation:7145389",
+        "offset": 2204556,
+        "length": 1932
+      },
+      "packedGeometrySha256": "9f84d7296b387b5f0d3f770bfdea0d9e5dad2afd699db1614ce67c8f04d29706"
+    },
+    "osm:relation:7145390": {
+      "id": "osm:relation:7145390",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الزراوة",
+        "name:ar": "الزراوة",
+        "name:fr": "Ezzeraoua",
+        "ref:tn:codegeo": "515953"
+      },
+      "originalGeometrySha256": "41d4b352c101be4d560272d561404fd3e383017709fcea52f8db2052be6524e3",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7145390",
+        "sourceId": "osm",
+        "name": "الزراوة",
+        "aliases": [
+          "Ezzeraoua"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "contextAliases": [
+          "Délégation Nouvelle Matmata",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.61011,
+        "lng": 9.694064,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          9.54085,
+          33.539315,
+          9.850216,
+          33.684145
+        ],
+        "areaKm2": 244.6237495865523,
+        "pickerGroupId": "osm:relation:7145390",
+        "offset": 2206488,
+        "length": 2324
+      },
+      "packedGeometrySha256": "54c309f7b789abe64f34560e023667465941f9f9ec85810478bf86a9fefe2bcf"
+    },
+    "osm:relation:7145405": {
+      "id": "osm:relation:7145405",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني زلطن",
+        "name:ar": "بني زلطن",
+        "name:fr": "Beni Zalten",
+        "ref:tn:codegeo": "515955"
+      },
+      "originalGeometrySha256": "218c6258a6ecd9cb812168e29f73f7d4dc2d5f68e77e77fc3ae1edef45f83f66",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7145405",
+        "sourceId": "osm",
+        "name": "بني زلطن",
+        "aliases": [
+          "Beni Zalten"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "contextAliases": [
+          "Délégation Nouvelle Matmata",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.55923,
+        "lng": 10.104193,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.055744,
+          33.486025,
+          10.157798,
+          33.632265
+        ],
+        "areaKm2": 89.1128152966732,
+        "pickerGroupId": "osm:relation:7145405",
+        "offset": 2261340,
+        "length": 7492
+      },
+      "packedGeometrySha256": "e8461a3aa53ba28139733f3e98141d795329a5abbb242d0b970e12ae3f8c37b2"
+    },
+    "osm:relation:7145427": {
+      "id": "osm:relation:7145427",
+      "originalTags": {
+        "admin_level": "6",
+        "alt_name": "الحادج",
+        "alt_name:ar": "الحادج",
+        "boundary": "administrative",
+        "name": "هداج",
+        "name:ar": "هداج",
+        "name:fr": "Heddaj",
+        "ref:tn:codegeo": "515952"
+      },
+      "originalGeometrySha256": "6b4087a53eb6b7a2b9fafafc92097daac59a5923ee7fab3d9d5d5f20065f9d0a",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7145427",
+        "sourceId": "osm",
+        "name": "هداج",
+        "aliases": [
+          "Haddaj",
+          "Heddaj",
+          "الحادج"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "contextAliases": [
+          "Délégation Nouvelle Matmata",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.604175,
+        "lng": 10.044489,
+        "delegationId": 1023,
+        "hasBoundary": true,
+        "bbox": [
+          9.989387,
+          33.485885,
+          10.150423,
+          33.722675
+        ],
+        "areaKm2": 175.33305034114767,
+        "pickerGroupId": "osm:relation:7145427",
+        "offset": 2343116,
+        "length": 8396
+      },
+      "packedGeometrySha256": "ffb69fa739fde2916a6f33e3973645d32fa62119a17f2185febdb88b4cc00ae5"
+    },
+    "osm:relation:7145430": {
+      "id": "osm:relation:7145430",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مطماطة الجديدة",
+        "name:ar": "مطماطة الجديدة",
+        "name:fr": "Nouvelle Matmata",
+        "ref:tn:codegeo": "515951"
+      },
+      "originalGeometrySha256": "f8a0ee5f8a54e2663e2cbee42d8e9667b530a0dd847ecbe452af6ff99b3b0f6d",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7145430",
+        "sourceId": "osm",
+        "name": "مطماطة الجديدة",
+        "aliases": [
+          "Nouvelle Matmata"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "contextAliases": [
+          "Délégation Nouvelle Matmata",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.654405,
+        "lng": 9.980098,
+        "delegationId": 1023,
+        "hasBoundary": true,
+        "bbox": [
+          9.943657,
+          33.571235,
+          10.061625,
+          33.737595
+        ],
+        "areaKm2": 111.7649425377035,
+        "pickerGroupId": "osm:relation:7145430",
+        "offset": 2355184,
+        "length": 2556
+      },
+      "packedGeometrySha256": "0edc2ec85cdef52d90b285ba42f4bfddeb9295809290d4314de32bb41337f3ee"
+    },
+    "osm:way:186705198": {
+      "id": "osm:way:186705198",
+      "originalTags": {
+        "addr:city": "مطماطة الجديدة",
+        "addr:postcode": "6044",
+        "landuse": "residential",
+        "name": "مطماطة الجديدة",
+        "name:ar": "مطماطة الجديدة",
+        "name:fr": "Matmata Nouvelle"
+      },
+      "originalGeometrySha256": "38a07883fbda9788aea0f286c35aef573a4d90b00ea0d623cbbbdb1fdf5c4e0f",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:186705198",
+        "sourceId": "osm",
+        "name": "مطماطة الجديدة",
+        "aliases": [
+          "Matmata Nouvelle",
+          "New Matmata",
+          "Nouvelle Matmata"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "contextAliases": [
+          "Délégation Nouvelle Matmata",
+          "Nouvelle Matmata",
+          "مطماطة الجديدة",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.666563,
+        "lng": 10.016447,
+        "delegationId": 1023,
+        "hasBoundary": true,
+        "bbox": [
+          10.005701,
+          33.654073,
+          10.02292,
+          33.679181
+        ],
+        "areaKm2": 1.7793987143776042,
+        "pickerGroupId": "osm:relation:7145430",
+        "offset": 5281388,
+        "length": 956
+      },
+      "packedGeometrySha256": "84aa0d19b6bfa60a73e73ce3f7b6ed1bb26e6410220d92ff2900fbd8d02aa332"
+    },
+    "osm:way:377951368": {
+      "id": "osm:way:377951368",
+      "originalTags": {
+        "addr:city": "بني زلطن",
+        "landuse": "residential",
+        "name": "Beni Zelten"
+      },
+      "originalGeometrySha256": "70ba6b93d0cda2f626dbb93872a1f01a714acfa7c90a8129300c3ab964797f6a",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:377951368",
+        "sourceId": "osm",
+        "name": "Beni Zelten",
+        "aliases": [
+          "بني زلطن"
+        ],
+        "kind": "residential",
+        "parentName": "بني زلطن",
+        "contextAliases": [
+          "Beni Zalten",
+          "Délégation Nouvelle Matmata",
+          "بني زلطن",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.545428,
+        "lng": 10.098189,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.091228,
+          33.54044,
+          10.103487,
+          33.550413
+        ],
+        "areaKm2": 0.6926374699136989,
+        "pickerGroupId": "osm:relation:7145405",
+        "offset": 5388816,
+        "length": 1420
+      },
+      "packedGeometrySha256": "6cbe8e4e0c70f35ab7766bcb5e6fb442539b58120981a1c683c3d657f624fc9f"
+    }
+  }
+}

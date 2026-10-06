@@ -1,0 +1,138 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_FOR_DISPLAY_ASSOCIATIONS_ONLY",
+  "createdAt": "2026-09-12T09:22:10.995348+00:00",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea"
+  },
+  "sourceReviews": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-second-point-source-review.json",
+      "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\metouia-town-point-source-review.json",
+      "sha256": "01f445a84f52ea7adc67971c529bd4a663937c30727d6a6e707d00fea87cdccb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\akouda-town-point-source-review.json",
+      "sha256": "ccd0b18aa939de386d92edede69a8a66d871d10bba08fbfa5bca33f2584adc2b"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "osm:node:6681328578",
+      "current": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-6681328578-current.json",
+        "sha256": "fc552c28bdb39e71a5d36dc9cbf69acfed079ce2e80ddc64bc38cb30e200860a"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-6681328578-history.xml",
+        "sha256": "c146c6fcd38a8a8aedbcee1d831dcde7a5512df0fb5c65141b9b888d47b826e0"
+      },
+      "versionsIndependentlyCompared": 3,
+      "cacheAndRawParity": true,
+      "historyContainsInstitutionOrSectorRetag": false
+    },
+    {
+      "id": "osm:node:287612727",
+      "current": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-287612727-current.json",
+        "sha256": "c5cafff1e78ee2a6cf0bc403477ccdc698b526ed0f0c3dfc200c9c4b2d5b8f25"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-287612727-history.xml",
+        "sha256": "0c70eff236f632090ca42d27e1c5f3989b8ee44a1588e221b710824c47930d67"
+      },
+      "versionsIndependentlyCompared": 19,
+      "cacheAndRawParity": true,
+      "historyContainsInstitutionOrSectorRetag": false
+    },
+    {
+      "id": "osm:node:559400503",
+      "current": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\osm-node-559400503-current.json",
+        "sha256": "66d45ffdcfae450e812c84588d052bf3195c9aaa6bbf9e1f7b55f47d2e9aa35e"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\osm-node-559400503-history.json",
+        "sha256": "6424969bf512193556017b12a973c5ca78bccc8ca7ab5ccc58fdbd5329e76489"
+      },
+      "versionsIndependentlyCompared": 17,
+      "cacheAndRawParity": true,
+      "historyContainsInstitutionOrSectorRetag": false
+    },
+    {
+      "id": "osm:node:1184918055",
+      "current": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\osm-node-1184918055-current.json",
+        "sha256": "e0f095820e59030b66848d2f60485e0f07af9903b5732d514d7f11fc4d5e1b2b"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\osm-node-1184918055-history.json",
+        "sha256": "f26ee3a59f1df8302924e29be5bc10de7a563f2c6bde27e4e79cc058e5379c1d"
+      },
+      "versionsIndependentlyCompared": 14,
+      "cacheAndRawParity": true,
+      "historyContainsInstitutionOrSectorRetag": false
+    }
+  ],
+  "primaryPdf": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+    "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9"
+  },
+  "primaryPageDerivations": [
+    {
+      "page": 81,
+      "derivedText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020-page81.txt",
+        "sha256": "d2061cb8938b522c392e0223094e12a64d470b17e05039f781ae3fc6d69a7ac3"
+      },
+      "completePageBytesReproduced": true,
+      "rootViewedWholeRenderedPage": true,
+      "noBoundaryOrCoordinateExtracted": true
+    },
+    {
+      "page": 82,
+      "derivedText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\mehat-sousse-ar-page-82.txt",
+        "sha256": "b968a8629d1ba54173fa974c4d7d6ff67b68a59ad6cf62b423d43020c7ab7fc7"
+      },
+      "completePageBytesReproduced": true,
+      "rootViewedWholeRenderedPage": true,
+      "noBoundaryOrCoordinateExtracted": true
+    }
+  ],
+  "metouiaOfficialProducerHtml": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\metouia-national-catalog-producer.html",
+    "sha256": "f673f9c4552273d60d1c7b154d1547a1ce4c576b214986144aa030d7918f0052"
+  },
+  "phoneReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-metouia-akouda-phone-review-20260912.json",
+    "sha256": "c1a1604b1f55ccdca9fdc40cb5aa9ca42e040779001af78fed919469a387a794"
+  },
+  "historyVersionsIndependentlyCompared": 53,
+  "decisions": {
+    "osm:node:6681328578": "same M’saken settlement display; retain existing town node287612727",
+    "osm:node:559400503": "same Metouia settlement display; keep North/South/Akarit sectors distinct",
+    "osm:node:1184918055": "same Akouda settlement display; keep all six sectors distinct"
+  },
+  "reasoning": "Stable unqualified settlement identities in complete source histories, public official city descriptions and phone context support duplicate city choices. Shared prayer defaults or short distances are not sufficient evidence on their own.",
+  "remainingWork": [
+    "Finite group/source closure",
+    "Reviewed compiler support for retained M’saken town point",
+    "Source-stage assembly and generated catalog comparison"
+  ],
+  "notCertified": [
+    "Exact settlement centres",
+    "Legal city or neighborhood polygons",
+    "Original INM prayer-reference coordinates",
+    "Remaining catalog"
+  ],
+  "productChanges": false,
+  "testsOrBuild": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_msaken_metouia_akouda_source_identity.py",
+    "sha256": "3091e395da6a99a22be9ec31dbe29ec31f9d21d53dde0e75ecf3a703d119aa83"
+  }
+}

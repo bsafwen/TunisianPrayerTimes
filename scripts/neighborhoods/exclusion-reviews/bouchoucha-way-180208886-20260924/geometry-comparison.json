@@ -1,0 +1,56 @@
+{
+  "sourcePbf": {
+    "file": "tunisia-260905.osm.pbf",
+    "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd"
+  },
+  "candidate": {
+    "id": "osm:way:180208886",
+    "tags": {
+      "landuse": "residential",
+      "name": "\u0628\u0648\u0634\u0648\u0634\u0629",
+      "name:ar": "\u0628\u0648\u0634\u0648\u0634\u0629",
+      "name:en": "Bouchoucha",
+      "name:fr": "Bouchoucha"
+    },
+    "closedNodeCount": 21,
+    "areaKm2": 0.48859354267113997
+  },
+  "method": {
+    "projection": "EPSG:4326 to EPSG:32632",
+    "sectorConstruction": "polygonize the source PBF outer member ways",
+    "overlapDenominator": "residential way polygon area",
+    "boundaryClaim": false
+  },
+  "relations": {
+    "7118028": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "\u0627\u0642\u0627\u0645\u0629 \u062c\u0645\u064a\u0644\u0629",
+      "name:ar": "\u0627\u0642\u0627\u0645\u0629 \u062c\u0645\u064a\u0644\u0629",
+      "name:fr": "Bonne R\u00e9sidence",
+      "ref:tn:codegeo": "116056",
+      "type": "boundary"
+    },
+    "7118029": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "\u0628\u0648\u0634\u0648\u0634\u0629",
+      "name:ar": "\u0628\u0648\u0634\u0648\u0634\u0629",
+      "name:fr": "Bouchoucha",
+      "ref:tn:codegeo": "116055",
+      "type": "boundary"
+    }
+  },
+  "comparisons": {
+    "7118028": {
+      "sectorAreaKm2": 0.47607139803582965,
+      "intersectionAreaKm2": 0.47321678814198476,
+      "candidateAreaOverlapPercent": 96.85285350987438
+    },
+    "7118029": {
+      "sectorAreaKm2": 0.4489775437952041,
+      "intersectionAreaKm2": 0.005448817745517626,
+      "candidateAreaOverlapPercent": 1.115204616853704
+    }
+  }
+}

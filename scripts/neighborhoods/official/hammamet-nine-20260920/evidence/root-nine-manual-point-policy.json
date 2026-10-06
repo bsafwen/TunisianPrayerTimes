@@ -1,0 +1,452 @@
+{
+  "status": "NINE_MANUAL_REPRESENTATIVE_CHOICES_SELECTED_FOR_ISOLATED_INTEGRATION",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+  },
+  "boundarySourcePackage": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-source-stage-20260920\\package-manifest.json",
+    "sha256": "66f803adefe47fe41a49de6aca2918733639d9869f1eb36e421e90462d7dac2d"
+  },
+  "scopeReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\root-nine-source-scope-review.json",
+    "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+  },
+  "sourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119"
+  },
+  "previousPointComparison": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\displaced-points-review-20260920\\root-displaced-point-proposals-staged.json",
+    "sha256": "0936d52e6179ad9e168669edb6ee41eedd8d3eeeee3b315dca3ec80317cc3864"
+  },
+  "phoneEvidenceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\displaced-points-review-20260920\\root-supplemental-phone-review.json",
+    "sha256": "75c08e13bb61a90d3d5babfa31e4981701751f66635d596bc54f0590e20d76db"
+  },
+  "nameAssociation": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baraket-name-equivalence-20260920\\root-name-association-accepted.json",
+    "sha256": "38de1245baa4795bce9d8496c08c049eac0365174730bbe5f93006a9130bfd98"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7105070",
+      "officialCode": "156651",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7105070",
+        "sourceId": "osm",
+        "name": "سيدي الجديدي",
+        "aliases": [
+          "Sidi Ejdidi",
+          "Sidi Jadidi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.421917,
+        "lng": 10.427507,
+        "delegationId": 433,
+        "hasBoundary": true,
+        "bbox": [
+          10.344094,
+          36.353477,
+          10.53878,
+          36.490588
+        ],
+        "areaKm2": 153.50185465440399,
+        "pickerGroupId": "osm:relation:7105070",
+        "offset": 459276,
+        "length": 2492
+      },
+      "point": {
+        "lat": 36.421917,
+        "lng": 10.427507
+      },
+      "expectedNearestId": 433,
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7144606",
+      "officialCode": "156652",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7144606",
+        "sourceId": "osm",
+        "name": "الاطرش",
+        "aliases": [
+          "Latrach"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.474958,
+        "lng": 10.484984,
+        "delegationId": 463,
+        "hasBoundary": true,
+        "bbox": [
+          10.398189,
+          36.438552,
+          10.535985,
+          36.511326
+        ],
+        "areaKm2": 41.13070350001682,
+        "pickerGroupId": "osm:relation:7144606",
+        "offset": 2213572,
+        "length": 1644
+      },
+      "point": {
+        "lat": 36.474958,
+        "lng": 10.484984
+      },
+      "expectedNearestId": 463,
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7104926",
+      "officialCode": "156653",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104926",
+        "sourceId": "osm",
+        "name": "بير بورقبة",
+        "aliases": [
+          "Bir Bouregba",
+          "بئر بورقبة"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.455911,
+        "lng": 10.559755,
+        "delegationId": 461,
+        "hasBoundary": true,
+        "bbox": [
+          10.495779,
+          36.417786,
+          10.615836,
+          36.494119
+        ],
+        "areaKm2": 47.03409599001534,
+        "pickerGroupId": "osm:relation:7104926",
+        "offset": 433836,
+        "length": 2300
+      },
+      "point": {
+        "lat": 36.455911,
+        "lng": 10.559755
+      },
+      "expectedNearestId": 461,
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7104931",
+      "officialCode": "156654",
+      "mode": "existing_source_point",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104931",
+        "sourceId": "osm",
+        "name": "منارة الحمامات",
+        "aliases": [
+          "Manaret El Hammamet",
+          "Mnaret El Hammamet",
+          "براكة الساحل"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.396361,
+        "lng": 10.544,
+        "delegationId": 461,
+        "hasBoundary": true,
+        "bbox": [
+          10.495833,
+          36.352827,
+          10.576348,
+          36.439747
+        ],
+        "areaKm2": 28.356014609587717,
+        "pickerGroupId": "osm:relation:7104931",
+        "offset": 442520,
+        "length": 3532
+      },
+      "point": {
+        "lat": 36.4047613,
+        "lng": 10.5602519
+      },
+      "expectedNearestId": 461,
+      "sourcePoint": {
+        "id": "osm:node:7321681450",
+        "kind": "village",
+        "tags": {
+          "name": "منارة الحمامات",
+          "name:ar": "منارة الحمامات",
+          "name:en": "Mnaret El Hammamet",
+          "name:fr": "Mnaret El Hammamet",
+          "place": "village"
+        },
+        "lat": 36.4047613,
+        "lng": 10.5602519
+      },
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7104927",
+      "officialCode": "156655",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104927",
+        "sourceId": "osm",
+        "name": "الحمامات الجوفية",
+        "aliases": [
+          "Hammamet Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.435638,
+        "lng": 10.632269,
+        "delegationId": 461,
+        "hasBoundary": true,
+        "bbox": [
+          10.588494,
+          36.402822,
+          10.678124,
+          36.468789
+        ],
+        "areaKm2": 35.720243645497604,
+        "pickerGroupId": "osm:relation:7104927",
+        "offset": 436136,
+        "length": 1892
+      },
+      "point": {
+        "lat": 36.435638,
+        "lng": 10.632269
+      },
+      "expectedNearestId": 461,
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7104929",
+      "officialCode": "156656",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104929",
+        "sourceId": "osm",
+        "name": "الحمامات الشرقية",
+        "aliases": [
+          "Hammamet Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.399951,
+        "lng": 10.621608,
+        "delegationId": 461,
+        "hasBoundary": true,
+        "bbox": [
+          10.610391,
+          36.392138,
+          10.64187,
+          36.407715
+        ],
+        "areaKm2": 2.7137582933247657,
+        "pickerGroupId": "osm:relation:7104929",
+        "offset": 439552,
+        "length": 1260
+      },
+      "point": {
+        "lat": 36.399951,
+        "lng": 10.621608
+      },
+      "expectedNearestId": 461,
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7104930",
+      "officialCode": "156657",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104930",
+        "sourceId": "osm",
+        "name": "الحمامات الغربية",
+        "aliases": [
+          "Hammamet Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.412834,
+        "lng": 10.582532,
+        "delegationId": 461,
+        "hasBoundary": true,
+        "bbox": [
+          10.567579,
+          36.39794,
+          10.612446,
+          36.42726
+        ],
+        "areaKm2": 6.775994653364434,
+        "pickerGroupId": "osm:relation:7104930",
+        "offset": 440812,
+        "length": 1708
+      },
+      "point": {
+        "lat": 36.412834,
+        "lng": 10.582532
+      },
+      "expectedNearestId": 461,
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7104928",
+      "officialCode": "156658",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104928",
+        "sourceId": "osm",
+        "name": "المرازقة",
+        "aliases": [
+          "El Mrezga"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.422055,
+        "lng": 10.662188,
+        "delegationId": 461,
+        "hasBoundary": true,
+        "bbox": [
+          10.645561,
+          36.404623,
+          10.685636,
+          36.439609
+        ],
+        "areaKm2": 5.653714164875306,
+        "pickerGroupId": "osm:relation:7104928",
+        "offset": 438028,
+        "length": 1524
+      },
+      "point": {
+        "lat": 36.422055,
+        "lng": 10.662188
+      },
+      "expectedNearestId": 461,
+      "coversChosenPointInSourceAndQuantized": true
+    },
+    {
+      "id": "osm:relation:7104932",
+      "officialCode": "156659",
+      "mode": "existing_source_point",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104932",
+        "sourceId": "osm",
+        "name": "ياسمين الحمامات",
+        "aliases": [
+          "Yasmine Hammamet"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الحمامات",
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "governorateId": 350,
+        "lat": 36.332443,
+        "lng": 10.511143,
+        "delegationId": 433,
+        "hasBoundary": true,
+        "bbox": [
+          10.494454,
+          36.308445,
+          10.529529,
+          36.356531
+        ],
+        "areaKm2": 5.206642318925503,
+        "pickerGroupId": "osm:relation:7104932",
+        "offset": 446052,
+        "length": 716
+      },
+      "point": {
+        "lat": 36.3746888,
+        "lng": 10.5411468
+      },
+      "expectedNearestId": 461,
+      "sourcePoint": {
+        "id": "osm:node:312482164",
+        "kind": "suburb",
+        "tags": {
+          "int_name": "Yasmin Hammamet",
+          "name": "ياسمين الحمامات",
+          "name:ar": "ياسمين الحمامات",
+          "name:en": "Yasmine Hammamet",
+          "name:fr": "Yasmine Hammamet",
+          "place": "suburb",
+          "wikidata": "Q3571932",
+          "wikimedia_commons": "Category:Yasmine Hammamet",
+          "wikipedia": "fr:Yasmine Hammamet"
+        },
+        "lat": 36.3746888,
+        "lng": 10.5411468
+      },
+      "coversChosenPointInSourceAndQuantized": true
+    }
+  ],
+  "decisions": [
+    "Preserve seven actual saved sector coordinates, all covered by both original and reviewed boundaries. They are not separate village records.",
+    "For Yasmine, choose the existing named source suburb point312482164 inside its own reviewed official sector; manual nearest source changes433 to461. No generated replacement point.",
+    "For Baraket, choose existing named Manaret village point7321681450 inside official156654 as a representative for manual selection. INS census links the two names; this does not equate municipal district and imada extents. Nearest source stays461.",
+    "Both named source points are currently absorbed and absent from raw selectable metadata. Do not invent saved-node identities or prior locality_context transitions.",
+    "Preserve original node names and tags. An explicit source-point review should bind exact node identity and document the name association instead of renaming the node solely to satisfy a primary-name check.",
+    "GPS timetable selection continues using actual device coordinates independently, as confirmed in current DelegationLocator.resolveGpsLocation."
+  ],
+  "limitations": [
+    "Public phone evidence is as recorded: Yasmine nearby address card is not an exact coordinate confirmation; Baraket coordinate cell matches but card title is Hammama Sud. These are disclosed source-based representatives, not exact Google identity certification.",
+    "No new arbitrary geometric representative point is selected.",
+    "Positive-area boundary discrepancies remain, and administrative imada coverage does not prove every Google neighborhood footprint.",
+    "Implementation, isolated generation, dependency reviews, actual data diff and installation remain."
+  ],
+  "appChanges": false,
+  "fullCatalogCertified": false
+}

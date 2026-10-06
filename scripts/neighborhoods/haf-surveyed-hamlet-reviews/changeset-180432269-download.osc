@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osmChange version="0.6" generator="openstreetmap-cgimap 2.1.0 (244699 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <modify>
+  <node id="9811073750" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.7689063" lon="10.2569302">
+   <tag k="name" v="بيع مواد غذائية"/>
+   <tag k="name:ar" v="بيع مواد غذائية"/>
+   <tag k="name:fr" v="alimentation générale"/>
+   <tag k="shop" v="convenience"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11522289870" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.7922759" lon="10.2297856">
+   <tag k="name" v="حاف أولاد حامد"/>
+   <tag k="name:aeb" v="حاف أولاد حامد"/>
+   <tag k="name:ar" v="حاف أولاد حامد"/>
+   <tag k="name:en" v="Oualed Hamed"/>
+   <tag k="name:fr" v="Oualed Hamed"/>
+   <tag k="place" v="hamlet"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11525318199" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.7671737" lon="10.2628336">
+   <tag k="name" v="طويل أولاد زايد"/>
+   <tag k="name:aeb" v="طويل أولاد زايد"/>
+   <tag k="name:ar" v="طويل أولاد زايد"/>
+   <tag k="name:en" v="Touil Ouled Zayed"/>
+   <tag k="name:fr" v="Touil Ouled Zayed"/>
+   <tag k="place" v="hamlet"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11529014905" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.7355804" lon="10.2135198">
+   <tag k="historic" v="archaeological_site"/>
+   <tag k="historic:civilization" v="modern"/>
+   <tag k="ruins" v="yes"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11811858845" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="33.0850738" lon="10.3516864">
+   <tag k="name" v="معصرة زيت"/>
+   <tag k="name:ar" v="معصرة زيت"/>
+   <tag k="name:fr" v="huilerie"/>
+   <tag k="tourism" v="attraction"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="1187366130" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="11026092230"/>
+   <nd ref="11026092231"/>
+   <nd ref="11026092232"/>
+   <nd ref="11026092233"/>
+   <nd ref="11026092234"/>
+   <nd ref="11026092235"/>
+   <nd ref="11026092236"/>
+   <nd ref="11026092237"/>
+   <nd ref="11026092238"/>
+   <nd ref="11026092239"/>
+   <nd ref="11026092240"/>
+   <nd ref="11026092241"/>
+   <nd ref="11026092242"/>
+   <nd ref="11026092230"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="حاف أولاد حامد"/>
+   <tag k="name:aeb" v="حاف أولاد حامد"/>
+   <tag k="name:ar" v="حاف أولاد حامد"/>
+   <tag k="name:en" v="Oualed Hamed"/>
+   <tag k="name:fr" v="Oualed Hamed"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1234814527" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="11461776355"/>
+   <nd ref="11461776368"/>
+   <nd ref="11461776356"/>
+   <nd ref="11461776357"/>
+   <nd ref="11461776358"/>
+   <nd ref="11461805769"/>
+   <nd ref="11461776359"/>
+   <nd ref="11461776360"/>
+   <nd ref="11461805770"/>
+   <nd ref="11461805771"/>
+   <nd ref="11461776361"/>
+   <nd ref="11461805772"/>
+   <nd ref="11461776362"/>
+   <nd ref="11461776363"/>
+   <nd ref="11461805773"/>
+   <nd ref="11461776364"/>
+   <nd ref="11461776365"/>
+   <nd ref="11461776366"/>
+   <nd ref="11461805774"/>
+   <nd ref="11461776367"/>
+   <tag k="name" v="وادي الغدير"/>
+   <tag k="name:ar" v="وادي الغدير"/>
+   <tag k="name:en" v="Oued el Ghedir"/>
+   <tag k="name:fr" v="Oued el Ghedir"/>
+   <tag k="natural" v="valley"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1240582379" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="11526070901"/>
+   <nd ref="11526070902"/>
+   <nd ref="11526070903"/>
+   <nd ref="11526070904"/>
+   <nd ref="11526070905"/>
+   <nd ref="11526070906"/>
+   <nd ref="11526070907"/>
+   <nd ref="11526070908"/>
+   <nd ref="11526070909"/>
+   <nd ref="11526070910"/>
+   <nd ref="11526070911"/>
+   <nd ref="11526070912"/>
+   <nd ref="11526070913"/>
+   <nd ref="11526070914"/>
+   <nd ref="11526070915"/>
+   <nd ref="11526070916"/>
+   <nd ref="11526070917"/>
+   <tag k="name" v="وادي الجلوش"/>
+   <tag k="name:ar" v="وادي الجلوش"/>
+   <tag k="name:en" v="Oued Jallouch"/>
+   <tag k="natural" v="valley"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1243837352" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="11561450480"/>
+   <nd ref="11561450498"/>
+   <nd ref="11561450499"/>
+   <nd ref="11561450497"/>
+   <nd ref="11561450496"/>
+   <nd ref="11561450495"/>
+   <nd ref="11561450481"/>
+   <nd ref="11561450482"/>
+   <nd ref="11561450483"/>
+   <nd ref="11561450484"/>
+   <nd ref="11561450485"/>
+   <nd ref="11561450486"/>
+   <nd ref="11561450487"/>
+   <nd ref="11561450488"/>
+   <nd ref="11561450489"/>
+   <nd ref="11561450490"/>
+   <nd ref="11561450491"/>
+   <nd ref="11561450494"/>
+   <nd ref="11561450493"/>
+   <nd ref="11561450492"/>
+   <tag k="name" v="جبل الجلوش"/>
+   <tag k="name:ar" v="جبل الجلوش"/>
+   <tag k="name:en" v="Djebel El Jallouch"/>
+   <tag k="name:fr" v="Djebel El Jallouch"/>
+   <tag k="natural" v="ridge"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="10899059789" visible="true" version="3" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.7683493" lon="10.2572704">
+   <tag k="name" v="رأس الوادي"/>
+   <tag k="name:ar" v="رأس الوادي"/>
+   <tag k="name:en" v="Ras El Oued"/>
+   <tag k="name:fr" v="Ras El Oued"/>
+   <tag k="place" v="village"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11525830166" visible="true" version="3" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.7541270" lon="10.2434751">
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="historic:civilization" v="modern"/>
+   <tag k="name" v="أولاد حامد"/>
+   <tag k="name:aeb" v="أولاد حامد"/>
+   <tag k="name:ar" v="أولاد حامد"/>
+   <tag k="name:en" v="Kasbet Ouled Hamed"/>
+   <tag k="name:fr" v="Kasbet Ouled Hamed"/>
+   <tag k="ruins" v="building"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="1187366129" visible="true" version="3" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="11026082492"/>
+   <nd ref="11026082493"/>
+   <nd ref="11026082494"/>
+   <nd ref="11026082495"/>
+   <nd ref="11026082496"/>
+   <nd ref="11026082497"/>
+   <nd ref="11026082498"/>
+   <nd ref="11026082499"/>
+   <nd ref="11026082500"/>
+   <nd ref="11026082501"/>
+   <nd ref="11026082502"/>
+   <nd ref="11026082503"/>
+   <nd ref="11026082504"/>
+   <nd ref="11026092205"/>
+   <nd ref="11026092206"/>
+   <nd ref="11026092207"/>
+   <nd ref="11026092208"/>
+   <nd ref="11026092209"/>
+   <nd ref="11026092210"/>
+   <nd ref="11026092211"/>
+   <nd ref="11026092212"/>
+   <nd ref="11026092213"/>
+   <nd ref="11026092214"/>
+   <nd ref="11026092215"/>
+   <nd ref="11026092216"/>
+   <nd ref="11026092217"/>
+   <nd ref="11026092218"/>
+   <nd ref="11026092219"/>
+   <nd ref="11026092220"/>
+   <nd ref="11026092221"/>
+   <nd ref="11026092222"/>
+   <nd ref="11026092223"/>
+   <nd ref="11026092224"/>
+   <nd ref="11026092225"/>
+   <nd ref="11026092226"/>
+   <nd ref="11026092227"/>
+   <nd ref="11026092228"/>
+   <nd ref="11026092229"/>
+   <nd ref="11026082492"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="حاف أولاد حامد"/>
+   <tag k="name:aeb" v="حاف أولاد حامد"/>
+   <tag k="name:ar" v="حاف أولاد حامد"/>
+   <tag k="name:en" v="Oualed Hamed"/>
+   <tag k="name:fr" v="Oualed Hamed"/>
+   <tag k="residential" v="osada"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="3814110946" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.7659643" lon="10.2638953">
+   <tag k="name" v="طويل أولاد زايد"/>
+   <tag k="name:aeb" v="طويل أولاد زايد"/>
+   <tag k="name:ar" v="طويل أولاد زايد"/>
+   <tag k="name:en" v="Touil Ouled Zayed"/>
+   <tag k="name:fr" v="Touil Ouled Zayed"/>
+   <tag k="natural" v="peak"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11024118205" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="32.8487902" lon="10.3212244">
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="historic:civilization" v="modern"/>
+   <tag k="name" v="طالب بلدين"/>
+   <tag k="name:aeb" v="طالب بلدين"/>
+   <tag k="name:ar" v="طالب بلدين"/>
+   <tag k="name:en" v="Ksar Talb Beldin"/>
+   <tag k="name:fr" v="Ksar Talb Beldin"/>
+   <tag k="ruins" v="settlement"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11492009837" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036" lat="33.0829469" lon="10.3463937">
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="historic:civilization" v="medieval"/>
+   <tag k="name" v="قصر بني غدير 2"/>
+   <tag k="name:ar" v="قصر بني غدير 2"/>
+   <tag k="name:en" v="Ksar Beni Ghedir 02"/>
+   <tag k="name:fr" v="Ksar Beni Ghedir 02"/>
+   <tag k="ruins" v="yes"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="148643064" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="1617177451"/>
+   <nd ref="1617177450"/>
+   <nd ref="1617177441"/>
+   <nd ref="1617177428"/>
+   <nd ref="9972404738"/>
+   <nd ref="1617177421"/>
+   <tag k="highway" v="residential"/>
+   <tag k="lanes" v="2"/>
+   <tag k="maxspeed" v="30"/>
+   <tag k="name" v="نهج الأقحوان"/>
+   <tag k="name:ar" v="نهج الأقحوان"/>
+   <tag k="name:fr" v="rue marguerite"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="148643066" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="1617177446"/>
+   <nd ref="1617177455"/>
+   <nd ref="1617177459"/>
+   <nd ref="1617177470"/>
+   <nd ref="1617177484"/>
+   <nd ref="1617177494"/>
+   <tag k="highway" v="residential"/>
+   <tag k="lanes" v="2"/>
+   <tag k="maxspeed" v="30"/>
+   <tag k="name" v="نهج النسرين"/>
+   <tag k="name:ar" v="نهج النسرين"/>
+   <tag k="name:fr" v="Rue Nessrine"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="148643070" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="1617177450"/>
+   <nd ref="1617177454"/>
+   <nd ref="1617177458"/>
+   <nd ref="1617177463"/>
+   <nd ref="1617177470"/>
+   <nd ref="1617177478"/>
+   <nd ref="1617177483"/>
+   <nd ref="1617177485"/>
+   <tag k="highway" v="residential"/>
+   <tag k="lanes" v="2"/>
+   <tag k="maxspeed" v="30"/>
+   <tag k="name" v="نهج القرنفل"/>
+   <tag k="name:ar" v="نهج القرنفل"/>
+   <tag k="name:fr" v="Rue du Girofle"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="148643072" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="1617177272"/>
+   <nd ref="1617177262"/>
+   <nd ref="1617177268"/>
+   <nd ref="1617177287"/>
+   <nd ref="1617177332"/>
+   <nd ref="1617177349"/>
+   <nd ref="1617177359"/>
+   <nd ref="1617177366"/>
+   <nd ref="1617177372"/>
+   <nd ref="1617177377"/>
+   <nd ref="1617177386"/>
+   <nd ref="1617177391"/>
+   <nd ref="1617177393"/>
+   <nd ref="1617177390"/>
+   <nd ref="1617177387"/>
+   <nd ref="1617177384"/>
+   <nd ref="1617177382"/>
+   <nd ref="1617177379"/>
+   <nd ref="1617177378"/>
+   <nd ref="1617177368"/>
+   <nd ref="1617177361"/>
+   <nd ref="1617177351"/>
+   <nd ref="1617177338"/>
+   <nd ref="1617177323"/>
+   <nd ref="1617177308"/>
+   <nd ref="1617177288"/>
+   <nd ref="1617177255"/>
+   <nd ref="1617177269"/>
+   <nd ref="1617177297"/>
+   <nd ref="1617177316"/>
+   <nd ref="1617177340"/>
+   <nd ref="1617177346"/>
+   <nd ref="1617177354"/>
+   <nd ref="1617177364"/>
+   <nd ref="1617177373"/>
+   <nd ref="1617177383"/>
+   <nd ref="1617177396"/>
+   <nd ref="1617177401"/>
+   <nd ref="1617177400"/>
+   <nd ref="1617177404"/>
+   <nd ref="1617177408"/>
+   <nd ref="1617177415"/>
+   <nd ref="1617177414"/>
+   <nd ref="1617177413"/>
+   <nd ref="1617177398"/>
+   <nd ref="1617177380"/>
+   <nd ref="1617177370"/>
+   <nd ref="1617177362"/>
+   <nd ref="1617177356"/>
+   <nd ref="1617177336"/>
+   <nd ref="1617177300"/>
+   <nd ref="1617177278"/>
+   <nd ref="1617177267"/>
+   <nd ref="1617177246"/>
+   <nd ref="1617177230"/>
+   <nd ref="1617177232"/>
+   <nd ref="1617177233"/>
+   <nd ref="1617177272"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="الطرومة"/>
+   <tag k="name:aeb" v="الطرومة"/>
+   <tag k="name:ar" v="الطرومة"/>
+   <tag k="name:en" v="El Tarouma"/>
+   <tag k="name:fr" v="ettarouma"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1068796766" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="9810921578"/>
+   <nd ref="9810921579"/>
+   <nd ref="9810921580"/>
+   <nd ref="9810921581"/>
+   <nd ref="9810921582"/>
+   <nd ref="9972380638"/>
+   <nd ref="9972380635"/>
+   <nd ref="9972380634"/>
+   <nd ref="9810921583"/>
+   <nd ref="9972380632"/>
+   <nd ref="9972380627"/>
+   <nd ref="9972380624"/>
+   <nd ref="9810921578"/>
+   <tag k="addr:city" v="رأس الوادي"/>
+   <tag k="addr:postcode" v="3264"/>
+   <tag k="amenity" v="school"/>
+   <tag k="barrier" v="wall"/>
+   <tag k="name" v="المدرسة الابتدائية برأس الوادي"/>
+   <tag k="name:ar" v="المدرسة الابتدائية برأس الوادي"/>
+   <tag k="name:fr" v="École Primaire Ras El Oued"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1126485929" visible="true" version="4" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="10300599062"/>
+   <nd ref="10300599063"/>
+   <nd ref="10968435544"/>
+   <nd ref="10968435545"/>
+   <nd ref="10300599064"/>
+   <nd ref="10300599065"/>
+   <nd ref="10300599066"/>
+   <nd ref="10300599067"/>
+   <nd ref="10300599073"/>
+   <nd ref="10300599068"/>
+   <nd ref="10300599069"/>
+   <nd ref="10300599070"/>
+   <nd ref="10300599071"/>
+   <nd ref="10300599062"/>
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="historic:civilization" v="modern"/>
+   <tag k="name" v="قصر بني غدير"/>
+   <tag k="name:aeb" v="قصر بني غدير"/>
+   <tag k="name:ar" v="قصر بني غدير"/>
+   <tag k="name:en" v="Ksar Beni Ghedir"/>
+   <tag k="name:fr" v="Ksar Beni Ghedir"/>
+   <tag k="ruins" v="building"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="148643057" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="1617177446"/>
+   <nd ref="1617177457"/>
+   <nd ref="3814111494"/>
+   <nd ref="3814111507"/>
+   <nd ref="1617177476"/>
+   <nd ref="1617177483"/>
+   <nd ref="1617177491"/>
+   <nd ref="1617177499"/>
+   <tag k="highway" v="residential"/>
+   <tag k="lanes" v="2"/>
+   <tag k="name" v="نهج الزعفران"/>
+   <tag k="name:ar" v="نهج الزعفران"/>
+   <tag k="name:fr" v="rue safran"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="148643065" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="1617177465"/>
+   <nd ref="1617177454"/>
+   <nd ref="1617177443"/>
+   <nd ref="1617177433"/>
+   <nd ref="1617177425"/>
+   <tag k="highway" v="residential"/>
+   <tag k="lanes" v="2"/>
+   <tag k="maxspeed" v="30"/>
+   <tag k="name" v="نهج السوسن"/>
+   <tag k="name:ar" v="نهج السوسن"/>
+   <tag k="name:fr" v="rue iriss"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="321991673" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="3287579871"/>
+   <nd ref="3287579867"/>
+   <nd ref="11461732564"/>
+   <nd ref="11461732565"/>
+   <nd ref="3287579871"/>
+   <tag k="building" v="ruins"/>
+   <tag k="name" v="قصر بني غدير"/>
+   <tag k="name:aeb" v="قصر بني غدير"/>
+   <tag k="name:ar" v="قصر بني غدير"/>
+   <tag k="name:en" v="Ksar Beni Ghedir"/>
+   <tag k="name:fr" v="Ksar Beni Ghedir"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="321991675" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="3287579881"/>
+   <nd ref="3287579878"/>
+   <nd ref="3287579876"/>
+   <nd ref="3287579875"/>
+   <nd ref="11461732566"/>
+   <nd ref="11461732567"/>
+   <nd ref="3287579881"/>
+   <tag k="building" v="ruins"/>
+   <tag k="historic" v="building"/>
+   <tag k="name" v="قصر بني غدير"/>
+   <tag k="name:aeb" v="قصر بني غدير"/>
+   <tag k="name:ar" v="قصر بني غدير"/>
+   <tag k="name:en" v="Ksar Beni Ghedir"/>
+   <tag k="name:fr" v="Ksar Beni Ghedir"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="377996284" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="3814110884"/>
+   <nd ref="3814110898"/>
+   <nd ref="3814110909"/>
+   <nd ref="3814110916"/>
+   <nd ref="3814110923"/>
+   <nd ref="3814110940"/>
+   <nd ref="3814110955"/>
+   <nd ref="3814111077"/>
+   <nd ref="3814111100"/>
+   <nd ref="3814111113"/>
+   <nd ref="3814111121"/>
+   <nd ref="3814111142"/>
+   <nd ref="3814111289"/>
+   <nd ref="3814111304"/>
+   <nd ref="3814111310"/>
+   <nd ref="3814111313"/>
+   <nd ref="3814111303"/>
+   <nd ref="3814111273"/>
+   <nd ref="3814111148"/>
+   <nd ref="3814111118"/>
+   <nd ref="3814111085"/>
+   <nd ref="3814111059"/>
+   <nd ref="3814110943"/>
+   <nd ref="3814110928"/>
+   <nd ref="3814110924"/>
+   <nd ref="3814110917"/>
+   <nd ref="3814110912"/>
+   <nd ref="3814110905"/>
+   <nd ref="3814110892"/>
+   <nd ref="3814110881"/>
+   <nd ref="3814110871"/>
+   <nd ref="3814110865"/>
+   <nd ref="3814110867"/>
+   <nd ref="3814110874"/>
+   <nd ref="3814110882"/>
+   <nd ref="3814110893"/>
+   <nd ref="3814110908"/>
+   <nd ref="3814110929"/>
+   <nd ref="3814110939"/>
+   <nd ref="3814110950"/>
+   <nd ref="3814111072"/>
+   <nd ref="3814111092"/>
+   <nd ref="3814111094"/>
+   <nd ref="3814111095"/>
+   <nd ref="3814111103"/>
+   <nd ref="3814111125"/>
+   <nd ref="3814111134"/>
+   <nd ref="3814111145"/>
+   <nd ref="3814111300"/>
+   <nd ref="3814111318"/>
+   <nd ref="3814111337"/>
+   <nd ref="3814111343"/>
+   <nd ref="3814111341"/>
+   <nd ref="3814111334"/>
+   <nd ref="3814111323"/>
+   <nd ref="3814111308"/>
+   <nd ref="3814111291"/>
+   <nd ref="3814111264"/>
+   <nd ref="3814111141"/>
+   <nd ref="3814111128"/>
+   <nd ref="3814111119"/>
+   <nd ref="3814111111"/>
+   <nd ref="3814111104"/>
+   <nd ref="3814111084"/>
+   <nd ref="3814111057"/>
+   <nd ref="3814110948"/>
+   <nd ref="3814110938"/>
+   <nd ref="3814110930"/>
+   <nd ref="3814110919"/>
+   <nd ref="3814110902"/>
+   <nd ref="3814110887"/>
+   <nd ref="3814110880"/>
+   <nd ref="3814110876"/>
+   <nd ref="3814110877"/>
+   <nd ref="3814110878"/>
+   <nd ref="3814110884"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="طويل أولاد زايد"/>
+   <tag k="name:ar" v="طويل أولاد زايد"/>
+   <tag k="name:fr" v="Touil Ouled Zayed"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="435785961" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="4336804334"/>
+   <nd ref="4336804342"/>
+   <nd ref="11529937271"/>
+   <nd ref="11529937272"/>
+   <nd ref="4336804329"/>
+   <nd ref="4336804323"/>
+   <nd ref="11024114303"/>
+   <nd ref="11024114302"/>
+   <nd ref="4336804360"/>
+   <nd ref="11529937273"/>
+   <nd ref="4336804365"/>
+   <nd ref="4336804369"/>
+   <nd ref="4336804361"/>
+   <nd ref="4336804346"/>
+   <nd ref="4336804358"/>
+   <nd ref="4336804359"/>
+   <nd ref="4336804357"/>
+   <nd ref="4336804347"/>
+   <nd ref="4336804313"/>
+   <nd ref="4336804305"/>
+   <nd ref="4336804302"/>
+   <nd ref="4336804311"/>
+   <nd ref="4336804325"/>
+   <nd ref="4336804334"/>
+   <tag k="building" v="ruins"/>
+   <tag k="name" v="طالب بلدين"/>
+   <tag k="name:aeb" v="طالب بلدين"/>
+   <tag k="name:ar" v="طالب بلدين"/>
+   <tag k="name:en" v="Ksar Talb Beldin"/>
+   <tag k="name:fr" v="Ksar Talb Beldin"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="435785974" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="4336804212"/>
+   <nd ref="4336804195"/>
+   <nd ref="4336804176"/>
+   <nd ref="4336804165"/>
+   <nd ref="4336804131"/>
+   <nd ref="4336804123"/>
+   <nd ref="4336804118"/>
+   <nd ref="4336804107"/>
+   <nd ref="4336804103"/>
+   <nd ref="11024114301"/>
+   <nd ref="4336804085"/>
+   <nd ref="4336804084"/>
+   <nd ref="11529793151"/>
+   <nd ref="11529793150"/>
+   <nd ref="4336804089"/>
+   <nd ref="4336804090"/>
+   <nd ref="11529793149"/>
+   <nd ref="4336804100"/>
+   <nd ref="11529793148"/>
+   <nd ref="4336804111"/>
+   <nd ref="4336804114"/>
+   <nd ref="4336804117"/>
+   <nd ref="11529793147"/>
+   <nd ref="4336804119"/>
+   <nd ref="4336804122"/>
+   <nd ref="4336804125"/>
+   <nd ref="4336804130"/>
+   <nd ref="4336804153"/>
+   <nd ref="4336804175"/>
+   <nd ref="4336804204"/>
+   <nd ref="4336804225"/>
+   <nd ref="4336804212"/>
+   <tag k="building" v="ruins"/>
+   <tag k="name" v="طالب بلدين"/>
+   <tag k="name:aeb" v="طالب بلدين"/>
+   <tag k="name:ar" v="طالب بلدين"/>
+   <tag k="name:en" v="Ksar Talb Beldin"/>
+   <tag k="name:fr" v="Ksar Talb Beldin"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1126485928" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="10300599035"/>
+   <nd ref="10300599036"/>
+   <nd ref="10968435565"/>
+   <nd ref="10968435563"/>
+   <nd ref="10300599037"/>
+   <nd ref="10300599038"/>
+   <nd ref="10300599039"/>
+   <nd ref="10300599040"/>
+   <nd ref="10300599041"/>
+   <nd ref="10300599042"/>
+   <nd ref="11461735470"/>
+   <nd ref="10300599043"/>
+   <nd ref="11461735469"/>
+   <nd ref="10300599047"/>
+   <nd ref="11811858844"/>
+   <nd ref="11811858843"/>
+   <nd ref="10300599048"/>
+   <nd ref="10300599049"/>
+   <nd ref="11461735471"/>
+   <nd ref="11461735472"/>
+   <nd ref="10300599051"/>
+   <nd ref="10300599052"/>
+   <nd ref="10300599055"/>
+   <nd ref="10300599056"/>
+   <nd ref="10300599057"/>
+   <nd ref="10300599058"/>
+   <nd ref="10300599059"/>
+   <nd ref="10300599060"/>
+   <nd ref="11461732561"/>
+   <nd ref="10968435560"/>
+   <nd ref="10300599061"/>
+   <nd ref="10300599035"/>
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="historic:civilization" v="modern"/>
+   <tag k="name" v="قصر بني غدير"/>
+   <tag k="name:aeb" v="قصر بني غدير"/>
+   <tag k="name:ar" v="قصر بني غدير"/>
+   <tag k="name:en" v="Ksar Beni Ghedir"/>
+   <tag k="name:fr" v="Ksar Beni Ghedir"/>
+   <tag k="ruins" v="building"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1181046577" visible="true" version="5" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="10300599067"/>
+   <nd ref="10300599073"/>
+   <nd ref="10300599068"/>
+   <nd ref="10968435525"/>
+   <nd ref="10968435527"/>
+   <nd ref="11461732560"/>
+   <nd ref="10968435528"/>
+   <nd ref="10968435529"/>
+   <nd ref="10968435548"/>
+   <nd ref="10968435530"/>
+   <nd ref="10968435547"/>
+   <nd ref="10968435531"/>
+   <nd ref="10968435553"/>
+   <nd ref="10968435552"/>
+   <nd ref="10968435551"/>
+   <nd ref="10968435549"/>
+   <nd ref="11461732559"/>
+   <nd ref="10968435554"/>
+   <nd ref="10968435557"/>
+   <nd ref="10968435559"/>
+   <nd ref="10968435561"/>
+   <nd ref="10968435562"/>
+   <nd ref="10968435567"/>
+   <nd ref="10968435532"/>
+   <nd ref="10968435533"/>
+   <nd ref="10968435534"/>
+   <nd ref="10968435535"/>
+   <nd ref="10968435536"/>
+   <nd ref="10968435537"/>
+   <nd ref="10968435538"/>
+   <nd ref="10968435568"/>
+   <nd ref="10968435539"/>
+   <nd ref="10968435540"/>
+   <nd ref="10968435541"/>
+   <nd ref="3287579864"/>
+   <nd ref="3287579852"/>
+   <nd ref="10968435542"/>
+   <nd ref="10968435543"/>
+   <nd ref="10968435544"/>
+   <nd ref="10968435545"/>
+   <nd ref="10300599064"/>
+   <nd ref="10300599065"/>
+   <nd ref="10300599066"/>
+   <nd ref="10300599067"/>
+   <tag k="access" v="yes"/>
+   <tag k="area" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="historic:civilization" v="modern"/>
+   <tag k="name" v="قصر بني غدير 1"/>
+   <tag k="name:aeb" v="قصر بني غدير 1"/>
+   <tag k="name:ar" v="قصر بني غدير 1"/>
+   <tag k="name:en" v="Ksar Beni Ghedir 01"/>
+   <tag k="name:fr" v="Ksar Beni Ghedir 01"/>
+   <tag k="ruins" v="villages"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1181015747" visible="true" version="6" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="10968166325"/>
+   <nd ref="10968166326"/>
+   <nd ref="10968166327"/>
+   <nd ref="10968166328"/>
+   <nd ref="10968166329"/>
+   <nd ref="10968166337"/>
+   <nd ref="10968166330"/>
+   <nd ref="10968166331"/>
+   <nd ref="10968166332"/>
+   <nd ref="10968166333"/>
+   <nd ref="10968166334"/>
+   <nd ref="11880588677"/>
+   <nd ref="10968166335"/>
+   <nd ref="10968166336"/>
+   <nd ref="10968166325"/>
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="archaeological_site"/>
+   <tag k="name" v="قصر كف الخديلج"/>
+   <tag k="name:aeb" v="قصر كف الخديلج"/>
+   <tag k="name:ar" v="قصر كف الخديلج"/>
+   <tag k="name:en" v="Ksar Kef el Khedellej"/>
+   <tag k="name:fr" v="Ksar Kef el Khedellej"/>
+   <tag k="ruins" v="yes"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1181015748" visible="true" version="6" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="10968166340"/>
+   <nd ref="10968166341"/>
+   <nd ref="10968166342"/>
+   <nd ref="10968166343"/>
+   <nd ref="10968166345"/>
+   <nd ref="10968166346"/>
+   <nd ref="10968166347"/>
+   <nd ref="10968166348"/>
+   <nd ref="10968166349"/>
+   <nd ref="10968166350"/>
+   <nd ref="10968166351"/>
+   <nd ref="10968166395"/>
+   <nd ref="10968166352"/>
+   <nd ref="10968166396"/>
+   <nd ref="10968166353"/>
+   <nd ref="10968166355"/>
+   <nd ref="10968166356"/>
+   <nd ref="11880588674"/>
+   <nd ref="10968166357"/>
+   <nd ref="10968166358"/>
+   <nd ref="10968166359"/>
+   <nd ref="11880588673"/>
+   <nd ref="10968166360"/>
+   <nd ref="10968166398"/>
+   <nd ref="10968166361"/>
+   <nd ref="10968166362"/>
+   <nd ref="11880578566"/>
+   <nd ref="11880578567"/>
+   <nd ref="10968166364"/>
+   <nd ref="10968166365"/>
+   <nd ref="10968166366"/>
+   <nd ref="10968166367"/>
+   <nd ref="10968166368"/>
+   <nd ref="10968166369"/>
+   <nd ref="10968166370"/>
+   <nd ref="10968166371"/>
+   <nd ref="11880588672"/>
+   <nd ref="10968166372"/>
+   <nd ref="10968166373"/>
+   <nd ref="10968166374"/>
+   <nd ref="10968166375"/>
+   <nd ref="10968166376"/>
+   <nd ref="10968166377"/>
+   <nd ref="10968166379"/>
+   <nd ref="10968166380"/>
+   <nd ref="10968166381"/>
+   <nd ref="10968166382"/>
+   <nd ref="11880588676"/>
+   <nd ref="10968166384"/>
+   <nd ref="11880588675"/>
+   <nd ref="10968166386"/>
+   <nd ref="10968166387"/>
+   <nd ref="10968166388"/>
+   <nd ref="10968166389"/>
+   <nd ref="10968166390"/>
+   <nd ref="10968166391"/>
+   <nd ref="10968166392"/>
+   <nd ref="10968166393"/>
+   <nd ref="10968166340"/>
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="archaeological_site"/>
+   <tag k="name" v="قصر كف الخديلج"/>
+   <tag k="name:aeb" v="قصر كف الخديلج"/>
+   <tag k="name:ar" v="قصر كف الخديلج"/>
+   <tag k="name:en" v="Ksar Kef el Khedellej"/>
+   <tag k="name:fr" v="Ksar Kef el Khedellej"/>
+   <tag k="ruins" v="building"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="321991671" visible="true" version="7" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="3287579893"/>
+   <nd ref="3287579894"/>
+   <nd ref="3287579896"/>
+   <nd ref="3287579891"/>
+   <nd ref="3287579892"/>
+   <nd ref="3287579864"/>
+   <nd ref="3287579852"/>
+   <nd ref="3287579853"/>
+   <nd ref="10968435514"/>
+   <nd ref="10968435513"/>
+   <nd ref="4219531130"/>
+   <nd ref="4219531129"/>
+   <nd ref="4219531131"/>
+   <nd ref="3287579869"/>
+   <nd ref="3287579886"/>
+   <nd ref="11461732568"/>
+   <nd ref="3287579893"/>
+   <tag k="building" v="ruins"/>
+   <tag k="name" v="قصر بني غدير"/>
+   <tag k="name:aeb" v="قصر بني غدير"/>
+   <tag k="name:ar" v="قصر بني غدير"/>
+   <tag k="name:en" v="Ksar Beni Ghedir"/>
+   <tag k="name:fr" v="Ksar Beni Ghedir"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="148643068" visible="true" version="8" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+   <nd ref="1617177422"/>
+   <nd ref="3814110952"/>
+   <nd ref="1617177423"/>
+   <nd ref="9972404748"/>
+   <nd ref="9972404739"/>
+   <nd ref="9612420709"/>
+   <nd ref="1617177438"/>
+   <nd ref="1617177445"/>
+   <nd ref="1617177449"/>
+   <nd ref="1617177458"/>
+   <nd ref="1617177475"/>
+   <tag k="highway" v="residential"/>
+   <tag k="lanes" v="2"/>
+   <tag k="maxspeed" v="30"/>
+   <tag k="name" v="نهج الياسمين"/>
+   <tag k="name:ar" v="نهج الياسمين"/>
+   <tag k="name:fr" v="Rue Jasmin"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+</osmChange>

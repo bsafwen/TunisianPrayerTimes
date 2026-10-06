@@ -1,0 +1,86 @@
+{
+  "sourcePdf": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+  "originalSourceRecord": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree-source.json",
+    "sha256": "4d32d381e259cbecab67ac7b2d268cb8e7892a2ffd6c36531f2e82236cbb5dae"
+  },
+  "title": "Decree2023-590 of21September2023, JORT108 of22September2023",
+  "annex1TableA": {
+    "pdfPages": [
+      26,
+      27
+    ],
+    "jortPages": [
+      5123,
+      5124
+    ],
+    "wholePageRenders": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\decree-page-26.png",
+        "sha256": "9e7cdaa014e0e3641d1c8402fd70624ba49c49b63a3ef698f15d8685e9a0f064"
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\decree-page-27.png",
+        "sha256": "4bc44455859460d03247f4a5b8980d71f15e85ed8232005458a2badaf57766e9"
+      }
+    ],
+    "personallyViewedWholePages": true,
+    "manualTableTranscription": {
+      "administrativeGovernorate": "بن عروس",
+      "administrativeDelegation": "حمام الشط",
+      "rows": [
+        {
+          "imada": "برج السدرية",
+          "localElectoralDistricts": [
+            "برج السدرية 1",
+            "برج السدرية 2"
+          ],
+          "administrativeCellSpansPages": true
+        },
+        {
+          "imada": "بئر الباي",
+          "localElectoralDistricts": [
+            "بئر الباي"
+          ]
+        },
+        {
+          "imada": "حمام الشط",
+          "localElectoralDistricts": [
+            "حمام الشط 1",
+            "حمام الشط 2"
+          ]
+        }
+      ]
+    },
+    "transcriptionIsDerivedNotOriginalPdfText": true
+  },
+  "annex6TerritorialDescriptions": {
+    "pdfPages": [
+      117,
+      118
+    ],
+    "jortPages": [
+      5214,
+      5215
+    ],
+    "wholePageRenders": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\decree-page-117.png",
+        "sha256": "2d94d2e723d181d7edb0deb77fe3d004e0061acaf792da9071dd359401594747"
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\decree-page-118.png",
+        "sha256": "8b1faa44ef4669079d2b9a8e0772ceefb7cc3bd4778abae7073436a77d26c76f"
+      }
+    ],
+    "personallyViewedWholePages": true,
+    "section": "BenArous,3 HammamChott; a BorjCedria1 and b BorjCedria2",
+    "qualification": "Own legal territorial descriptions include named roads, coordinates and governorate-border context. This pass locates/reads the source; it does not claim every native PDF vertex was independently certified against the prose."
+  },
+  "conclusion": "The two numbered own maps represent electoral components of the single unsuffixed administrative imada; they are not two newly proved administrative successors. Same unsuffixed135552 identity appears in all three published INS2024 workbooks.",
+  "permittedNextMeasurement": "Conditional whole union of the two complete native electoral polygons under135552/7174585 is now identity-supported. Geographic seams, possible native overlap/gaps, exact region validity, and complete cohort impact still require independent assessment; neither component alone replaces the administrative sector."
+}

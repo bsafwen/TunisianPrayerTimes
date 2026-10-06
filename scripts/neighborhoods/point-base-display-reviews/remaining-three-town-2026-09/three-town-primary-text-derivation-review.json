@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "status": "DERIVED_UTF8_PRIMARY_PAGE_EVIDENCE_READY_FOR_INDEPENDENT_PROVENANCE_REVIEW",
+  "createdAt": "2026-09-12T08:44:36.763753+00:00",
+  "scope": "Jendouba and Jemmal primary PDFs only. Douz HTML and all catalog/display decisions remain unchanged.",
+  "sourceIdentityReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-town-source-identity-review.json",
+    "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08",
+    "bytes": 8857
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\derive_three_town_primary_pdf_text.py",
+    "sha256": "13a345860867d20b231b20bb7bc268d62e73bbc0487208263b4c89cc2f833cf7",
+    "bytes": 7311
+  },
+  "reproducibleMethod": {
+    "tool": "PyMuPDF",
+    "pythonModule": "pymupdf",
+    "bindingVersion": "1.28.2",
+    "mupdfVersion": "1.28.2",
+    "textFlagsSymbol": "pymupdf.TEXTFLAGS_TEXT",
+    "textFlagsValue": 195,
+    "pageNumberConvention": "One-based source page; convert to zero-based PDF array index by subtracting one.",
+    "expression": "pymupdf.open(original_pdf)[pdf_page_number - 1].get_text(\"text\", flags=pymupdf.TEXTFLAGS_TEXT, sort=False).encode(\"utf-8\", errors=\"strict\")",
+    "postprocessing": "None. No stripping, normalization, reflow, headers, inserted prose, corrections, or manual content changes.",
+    "outputEncoding": "UTF-8 without BOM; original extractor line breaks and trailing newline preserved.",
+    "originalPdfHandling": "Full byte-identical copies retained beside derived pages, independently hashed against original cached response bytes."
+  },
+  "records": [
+    {
+      "id": "jendouba-mehat-resume-2018",
+      "placeId": "osm:node:287625095",
+      "sourceIdentityReport": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-town-source-identity-review.json",
+        "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08",
+        "bytes": 8857
+      },
+      "publisher": "Tunisian Ministry of Equipment, Housing and Territorial Planning; DGAT; URAM2018",
+      "originalCachedPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+        "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+        "bytes": 7131225
+      },
+      "preservedOriginalPdfCopy": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018.pdf",
+        "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+        "bytes": 7131225
+      },
+      "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+      "originalPdfBytesUnchanged": true,
+      "originalPdfPages": 87,
+      "derivedPages": [
+        {
+          "derivedUtf8Text": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018-page26.txt",
+            "sha256": "20e35c795d0c4e81c7cacc5dece2b61673ccc16eee48bff7aa2c72c80c9f64d6",
+            "bytes": 2185
+          },
+          "artifactKind": "derived_complete_page_text",
+          "isOriginalHttpResponseBytes": false,
+          "originalPdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018.pdf",
+            "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+            "bytes": 7131225
+          },
+          "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+          "sourcePdfPageOneBased": 26,
+          "sourcePdfPageZeroBased": 25,
+          "printedPage": 21,
+          "completePageExtracted": true,
+          "extractionCharacterCount": 2110,
+          "requiredText": [
+            "ville de Jendouba",
+            "GOUVERNORAT DE JENDOUBA"
+          ],
+          "requiredTextLocations": [
+            {
+              "phrase": "ville de Jendouba",
+              "firstCharacterOffset": 1513,
+              "firstUtf8ByteOffset": 1571,
+              "firstLineOneBased": 20,
+              "occurrences": 1,
+              "sourcePdfPageOneBased": 26,
+              "printedPage": 21,
+              "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+            },
+            {
+              "phrase": "GOUVERNORAT DE JENDOUBA",
+              "firstCharacterOffset": 166,
+              "firstUtf8ByteOffset": 175,
+              "firstLineOneBased": 5,
+              "occurrences": 1,
+              "sourcePdfPageOneBased": 26,
+              "printedPage": 21,
+              "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+            }
+          ],
+          "derivationMethod": "PyMuPDF Page.get_text(\"text\", flags=TEXTFLAGS_TEXT, sort=False), followed by strict UTF-8 encoding without any postprocessing.",
+          "derivedUrlQualification": "The URL identifies the original PDF; this derived TXT file was not served at that URL."
+        },
+        {
+          "derivedUtf8Text": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018-page33.txt",
+            "sha256": "3b93c9b91fa7607457b8c9b996ebfb5882f835384502c63d43e8df4c1eed5497",
+            "bytes": 3148
+          },
+          "artifactKind": "derived_complete_page_text",
+          "isOriginalHttpResponseBytes": false,
+          "originalPdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018.pdf",
+            "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+            "bytes": 7131225
+          },
+          "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+          "sourcePdfPageOneBased": 33,
+          "sourcePdfPageZeroBased": 32,
+          "printedPage": 27,
+          "completePageExtracted": true,
+          "extractionCharacterCount": 3049,
+          "requiredText": [
+            "Jendouba (nord et sud)",
+            "Jendouba Nord"
+          ],
+          "requiredTextLocations": [
+            {
+              "phrase": "Jendouba (nord et sud)",
+              "firstCharacterOffset": 1220,
+              "firstUtf8ByteOffset": 1282,
+              "firstLineOneBased": 23,
+              "occurrences": 1,
+              "sourcePdfPageOneBased": 33,
+              "printedPage": 27,
+              "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+            },
+            {
+              "phrase": "Jendouba Nord",
+              "firstCharacterOffset": 1723,
+              "firstUtf8ByteOffset": 1795,
+              "firstLineOneBased": 54,
+              "occurrences": 2,
+              "sourcePdfPageOneBased": 33,
+              "printedPage": 27,
+              "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+            }
+          ],
+          "derivationMethod": "PyMuPDF Page.get_text(\"text\", flags=TEXTFLAGS_TEXT, sort=False), followed by strict UTF-8 encoding without any postprocessing.",
+          "derivedUrlQualification": "The URL identifies the original PDF; this derived TXT file was not served at that URL."
+        },
+        {
+          "derivedUtf8Text": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018-page51.txt",
+            "sha256": "8c8312057dc5d131aff99a66ad5e5a2564745a56b9c1fc8f2b4cddbade984b3b",
+            "bytes": 3408
+          },
+          "artifactKind": "derived_complete_page_text",
+          "isOriginalHttpResponseBytes": false,
+          "originalPdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018.pdf",
+            "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+            "bytes": 7131225
+          },
+          "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+          "sourcePdfPageOneBased": 51,
+          "sourcePdfPageZeroBased": 50,
+          "printedPage": 42,
+          "completePageExtracted": true,
+          "extractionCharacterCount": 3280,
+          "requiredText": [
+            "ville de Jendouba",
+            "GOUVERNORAT DE JENDOUBA"
+          ],
+          "requiredTextLocations": [
+            {
+              "phrase": "ville de Jendouba",
+              "firstCharacterOffset": 747,
+              "firstUtf8ByteOffset": 782,
+              "firstLineOneBased": 14,
+              "occurrences": 1,
+              "sourcePdfPageOneBased": 51,
+              "printedPage": 42,
+              "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+            },
+            {
+              "phrase": "GOUVERNORAT DE JENDOUBA",
+              "firstCharacterOffset": 191,
+              "firstUtf8ByteOffset": 200,
+              "firstLineOneBased": 5,
+              "occurrences": 1,
+              "sourcePdfPageOneBased": 51,
+              "printedPage": 42,
+              "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+            }
+          ],
+          "derivationMethod": "PyMuPDF Page.get_text(\"text\", flags=TEXTFLAGS_TEXT, sort=False), followed by strict UTF-8 encoding without any postprocessing.",
+          "derivedUrlQualification": "The URL identifies the original PDF; this derived TXT file was not served at that URL."
+        }
+      ],
+      "identityFindingUnchanged": [
+        {
+          "pdfPage": 26,
+          "printedPage": 21,
+          "finding": "Treats Essaada and Ettataouer as sectors on the periphery of the city of Jendouba."
+        },
+        {
+          "pdfPage": 33,
+          "printedPage": 27,
+          "finding": "Discusses Jendouba North and South as separate delegations and tabulates Jendouba and Jendouba North as separate administrative rows."
+        },
+        {
+          "pdfPage": 51,
+          "printedPage": 42,
+          "finding": "Proposes strengthening Jendouba as a regional city, with urban rail, economic and service functions."
+        }
+      ],
+      "sourceLimitationsUnchanged": "The resumed report supports an inhabited city identity distinct from the two administrative delegations. No exact town perimeter, population or coordinate is imported. The larger Rapport URL supplied as a lead was not used as this cached file source."
+    },
+    {
+      "id": "jemmal-mehat-city-tender-2017",
+      "placeId": "osm:node:1165828361",
+      "sourceIdentityReport": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-town-source-identity-review.json",
+        "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08",
+        "bytes": 8857
+      },
+      "publisher": "Tunisian Ministry of Equipment, Housing and Territorial Planning, Urban Hydraulics Directorate",
+      "originalCachedPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jemmal-mehat-city-floodworks-tender2017.pdf",
+        "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+        "bytes": 242375
+      },
+      "preservedOriginalPdfCopy": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jemmal-mehat-tender2017.pdf",
+        "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+        "bytes": 242375
+      },
+      "originalPdfUrl": "https://intranet.mehat.gov.tn/geao.nsf/xsp/.ibmmodres/domino/OpenAttachment/geao.nsf/251CD8B8DD61C6F4412581670029E05A/AvisAOfr/MEHAT_DHU_AO-06_2017_Fr.pdf",
+      "originalPdfBytesUnchanged": true,
+      "originalPdfPages": 2,
+      "derivedPages": [
+        {
+          "derivedUtf8Text": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jemmal-mehat-tender2017-page1.txt",
+            "sha256": "a035c4abeb0de9443cf0f1f29028174ad2928a7802cf29950eddbce01a421371",
+            "bytes": 3391
+          },
+          "artifactKind": "derived_complete_page_text",
+          "isOriginalHttpResponseBytes": false,
+          "originalPdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jemmal-mehat-tender2017.pdf",
+            "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+            "bytes": 242375
+          },
+          "originalPdfUrl": "https://intranet.mehat.gov.tn/geao.nsf/xsp/.ibmmodres/domino/OpenAttachment/geao.nsf/251CD8B8DD61C6F4412581670029E05A/AvisAOfr/MEHAT_DHU_AO-06_2017_Fr.pdf",
+          "sourcePdfPageOneBased": 1,
+          "sourcePdfPageZeroBased": 0,
+          "printedPage": null,
+          "completePageExtracted": true,
+          "extractionCharacterCount": 3252,
+          "requiredText": [
+            "ville de Jemmal",
+            "Lot 2"
+          ],
+          "requiredTextLocations": [
+            {
+              "phrase": "ville de Jemmal",
+              "firstCharacterOffset": 642,
+              "firstUtf8ByteOffset": 668,
+              "firstLineOneBased": 16,
+              "occurrences": 1,
+              "sourcePdfPageOneBased": 1,
+              "printedPage": null,
+              "sourceIdentityEvidenceId": "jemmal-mehat-city-tender-2017"
+            },
+            {
+              "phrase": "Lot 2",
+              "firstCharacterOffset": 583,
+              "firstUtf8ByteOffset": 609,
+              "firstLineOneBased": 16,
+              "occurrences": 1,
+              "sourcePdfPageOneBased": 1,
+              "printedPage": null,
+              "sourceIdentityEvidenceId": "jemmal-mehat-city-tender-2017"
+            }
+          ],
+          "derivationMethod": "PyMuPDF Page.get_text(\"text\", flags=TEXTFLAGS_TEXT, sort=False), followed by strict UTF-8 encoding without any postprocessing.",
+          "derivedUrlQualification": "The URL identifies the original PDF; this derived TXT file was not served at that URL."
+        }
+      ],
+      "identityFindingUnchanged": "Official tender06/2017 explicitly assigns lot2 to city flood-protection works in Jemmal, alongside separate Sousse and Zeramdine city works. This establishes city identity without conflating any named imada with the whole town.",
+      "sourceLimitationsUnchanged": "No geographical extent or delegation population is imported. The municipal PGES lead could be indexed by web search, but direct archival access timed out; it is supplementary discovery only, not a pinned PDF source."
+    }
+  ],
+  "interpretation": [
+    "Each requiredText phrase is present verbatim in the derived complete-page extraction and linked to its original PDF page.",
+    "The derived text hash is a TXT artifact hash, never the original PDF response hash.",
+    "A reference URL continues to identify the original PDF, not a fictitious hosted TXT response.",
+    "This adapts archived primary evidence to the existing UTF-8 requiredText contract without changing the engine.",
+    "No independent provenance approval, source stage, display association, coordinate correction or geometry change is claimed by this derivation."
+  ],
+  "operations": {
+    "productWrites": false,
+    "staging": false,
+    "generator": false,
+    "tests": false,
+    "build": false,
+    "phone": false,
+    "ledger": false
+  }
+}

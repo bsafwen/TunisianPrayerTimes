@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_SCOPED_REFERENCE_CORRECTIONS_PENDING_GENERATION",
+  "sourceIds": [
+    441,
+    468,
+    516,
+    579
+  ],
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputPins": {
+    "neighborhoods.json": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e",
+    "neighborhoods.bin": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "retired-localities.json": "77145339d11170746937cd73c714c52b1717aa3b66e0ad80d26991470f94bebb",
+    "locality-display-names.json": "4f3eca5c90a5cffd7e6bba82d3ca84d7c235de67723d45013f552fd91ae8bd70",
+    "gouvernorats.json": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06",
+    "generate_neighborhoods.py": "c50b03c2b012accadaba8514d954c842b645a2cb81d58704f66afdbf4673a109",
+    "prayer-source-coordinates.json": "f56e4c570c5d4c6136dd8d8b9b811b51882452da6cdf5b001a00224c7e8a63c2",
+    "catalog-curation.json": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0",
+    "reviewed-picker-groups.json": "7d6c7ca8f9872e55c4c5a4f75dfd216d64ae9882644eb1abfe4c0b9cee39f4c6",
+    "reviewed-boundaries.json": "d4986a089d0409e5bd77f682091a1d6462ad082326f05a3ad81b7f9505330890",
+    "municipal-sources.json": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238"
+  },
+  "inputFiles": {
+    "neighborhoods.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "neighborhoods.bin": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "retired-localities.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+    "locality-display-names.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+    "gouvernorats.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+    "generate_neighborhoods.py": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "prayer-source-coordinates.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+    "catalog-curation.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "reviewed-picker-groups.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "reviewed-boundaries.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "municipal-sources.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\municipal-sources.json"
+  },
+  "evidence": {
+    "geographicReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-geometry-20260921\\geometry-report.json",
+      "sha256": "866ee0dcbb0597c5b735bc1592df536de287f96cfe38b2afb1d641e56c09d6b1"
+    },
+    "mapsReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\verified-inventory-20260921\\inventory-report.json",
+      "sha256": "2dd299a9b8af8c11c675317431cf282388dc437c645fb63ad650727a2876098e"
+    },
+    "impactReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-references-20260921\\corrected-impact.json",
+      "sha256": "337fe0e30371075bc822e707a9bd1e69b2e90110defb25d7c14605045521e904"
+    },
+    "pairedInmReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-references-20260921\\paired-inm-validation.json",
+      "sha256": "6bf5aa456285641bdea090ddb12674baedb7453f4d77b9ed2bdf1d33ed28ba4f"
+    }
+  },
+  "records": [
+    {
+      "delegationId": 441,
+      "governorateId": 348,
+      "name": "سيدي الهاني",
+      "before": {
+        "lat": 35.6792,
+        "lng": 10.3231
+      },
+      "proposed": {
+        "lat": 35.681,
+        "lng": 10.31
+      },
+      "polygonId": "osm:way:43944790",
+      "namedPointId": "osm:node:558855437",
+      "rootViewedBothScreenshots": true,
+      "visualNotes": {
+        "current": "Pin in industrial-building context near Valofish/BK FOOD USINE/Alliance Europe Industrie. M8HF+M6Q Sidi Al-Hani.",
+        "published": "Pin in built-up streets near the Sidi El Hani mosque/Rue d Environnement. M8J6+92R Sidi Al-Hani."
+      }
+    },
+    {
+      "delegationId": 468,
+      "governorateId": 350,
+      "name": "دار شعبان الفهري",
+      "before": {
+        "lat": 36.46,
+        "lng": 10.76
+      },
+      "proposed": {
+        "lat": 36.463,
+        "lng": 10.747
+      },
+      "polygonId": "osm:way:174739936",
+      "namedPointId": "osm:node:1851671410",
+      "rootViewedBothScreenshots": true,
+      "visualNotes": {
+        "current": "Pin near sparsely mapped parcel and commercial/industrial surroundings near Shell/NEOBOX. FQ65+2X5 Dar Chaabane Al Fehri.",
+        "published": "Pin in dense urban streets near Rue Assad Ben Fourat/Farhat Hached Rd. FP7W+5RR Dar Chaabane Al Fehri."
+      }
+    },
+    {
+      "delegationId": 516,
+      "governorateId": 356,
+      "name": "تيبار",
+      "before": {
+        "lat": 36.5301,
+        "lng": 9.1124
+      },
+      "proposed": {
+        "lat": 36.522,
+        "lng": 9.106
+      },
+      "polygonId": "osm:way:278951683",
+      "namedPointId": "osm:node:2832036076",
+      "rootViewedBothScreenshots": true,
+      "visualNotes": {
+        "current": "Pin in plain green map area without immediate building/road detail visible; no land-use conclusion. G4J6+2XR Thibar.",
+        "published": "Pin in town streets/buildings near Pharmacie de Thibar. G4C4+Q9X Thibar."
+      }
+    },
+    {
+      "delegationId": 579,
+      "governorateId": 362,
+      "name": "العيون",
+      "before": {
+        "lat": 35.5341,
+        "lng": 8.8694
+      },
+      "proposed": {
+        "lat": 35.541,
+        "lng": 8.884
+      },
+      "polygonId": "osm:way:543781477",
+      "namedPointId": "osm:node:5316229408",
+      "rootViewedBothScreenshots": true,
+      "visualNotes": {
+        "current": "Pin in plain map area without immediate building/road detail visible; no land-use conclusion. GVM9+JQJ El Aayoun.",
+        "published": "Pin in built-up streets near Youth Club Laayoun, cultural centre and El Rahma mosque. GVRM+9JR El Aayoun."
+      }
+    }
+  ],
+  "expectedRawChanges": [
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:way:174739936",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    }
+  ],
+  "expectedManualChanges": [
+    {
+      "id": "delegation:468",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    }
+  ],
+  "decision": "Adopt the four paired INM-published coordinates as nearest-prayer selection references. Each point is in its reviewed native and packed named-town footprint and original delegation, closer to the authentic settlement node, and corroborated by the eight reviewed Maps screenshots. Preserve the four historical display-identity proofs and every locality identity, geometry, grouping, and manual representative.",
+  "implementation": "Validate the complete frozen pre-change display catalog and geometry against its original references first. Validate the four current reference corrections independently, then recompute every raw and manual nearest-source result with the current references. Apply exactly the ten approved raw delegationId changes, report current manual results separately from historical display-proof results, and reject any other catalog change.",
+  "requiredBeforeInstallation": [
+    "isolated full generation succeeds",
+    "all3484 raw fields and catalog-root fields preserved except exact10 delegationId changes",
+    "binary and retired/display-name assets unchanged",
+    "all3336 manual representatives/membership preserved and exact10 nearest-source changes reproduced",
+    "all48 prior corrections and all historical evidence bytes unchanged",
+    "all52 current reference corrections validate",
+    "compileDebugKotlin succeeds after installing verified changes"
+  ],
+  "limitations": [
+    "Maps corroborates place context, not polygon boundaries.",
+    "Published reference fields do not prove the internal INM calculation inputs.",
+    "The current batch approves four reference corrections only; remaining catalog-wide geographic work is still open.",
+    "Neither similarly named POIs nor residential-looking labels alone justify deleting a locality."
+  ]
+}

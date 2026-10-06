@@ -1,0 +1,840 @@
+{
+  "status": "PASS_UNCHANGED_BOUNDED_FACTS_AND_DESIGN_CARRY",
+  "createdAt": "2026-09-12T13:27:09.114576+00:00",
+  "frozenFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\finite-source-group-facts.json",
+    "sha256": "70c565a5c47e9e6b62fa7d809a3d447fc1c0c1c1c2468ca25b07f2862a51f499",
+    "bytes": 137856
+  },
+  "frozenDesign": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\sector-owned-settlement-contract-design.json",
+    "sha256": "64804d3b6357ea428b18d95a433ccd72b3ad862dad9c8273f6c66561ed3d28fc",
+    "bytes": 155052
+  },
+  "frozenFeasibility": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-sector-owned-display-feasibility.json",
+    "sha256": "c86c5aca60ea8d89c1c0af9c5438016312cf79b894e544cd86afc191f4cd1ca1",
+    "bytes": 4291
+  },
+  "oldSnapshotRoot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo",
+  "installedCheckpoint": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-teboursouk-display-catalog-checkpoint.json",
+    "sha256": "7b21961e4bb917aa3133d83f45c90b5ed5184b0fe2807c371296d6ec7063bc0a",
+    "bytes": 6071
+  },
+  "installedAudit": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\packaged-beni-teboursouk-display-audit.json",
+    "sha256": "30c2f78e5054c361d556e9d6719407acc3cc290437b2e819798b339454fc366d",
+    "bytes": 69538
+  },
+  "beforeMetadataSha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+  "afterMetadataSha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+  "beforeCompilerSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "afterCompilerSha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9",
+  "oldToNewInputs": [
+    {
+      "role": "metadata",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+        "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+        "bytes": 1883636
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+        "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+        "bytes": 1883630
+      },
+      "unchanged": false
+    },
+    {
+      "role": "binary",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+        "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069",
+        "bytes": 5501548
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+        "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069",
+        "bytes": 5501548
+      },
+      "unchanged": true
+    },
+    {
+      "role": "governorates",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+        "bytes": 54583
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+        "bytes": 54583
+      },
+      "unchanged": true
+    },
+    {
+      "role": "curation",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "eedfb8c82b98b6ca62de798ff31eff50722c3ec779a8c41cd7b823bc04c83cf4",
+        "bytes": 277515
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "e5772ed17165b4a472e62e57d18aa6601878b5948e11cb532230970cbc0c1c53",
+        "bytes": 279957
+      },
+      "unchanged": false
+    },
+    {
+      "role": "picker",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "8e79c6d3ebb080fc85e6e8fcd8cbdac65d70ef5c0d5a09f378407a89ea3cd246",
+        "bytes": 554707
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+        "bytes": 555201
+      },
+      "unchanged": false
+    },
+    {
+      "role": "boundaries",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\reviewed-boundaries.json",
+        "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+        "bytes": 80850
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+        "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+        "bytes": 80850
+      },
+      "unchanged": true
+    },
+    {
+      "role": "municipal",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\municipal-sources.json",
+        "sha256": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+        "bytes": 1324
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\municipal-sources.json",
+        "sha256": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+        "bytes": 1324
+      },
+      "unchanged": true
+    },
+    {
+      "role": "coordinates",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+        "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193",
+        "bytes": 113816
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+        "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193",
+        "bytes": 113816
+      },
+      "unchanged": true
+    },
+    {
+      "role": "coverage",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\coverage.json",
+        "sha256": "7525fd5eee9bee86b14abeebcae95d352606fea06a258f2e5fb8fc67aae8ebd3",
+        "bytes": 873140
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+        "sha256": "4a7fc51fcb5f5fdd649f3a29c559262e36affe1bc4f1b373b5394d30f725dceb",
+        "bytes": 890737
+      },
+      "unchanged": false
+    },
+    {
+      "role": "compiler",
+      "before": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\generate_neighborhoods.py",
+        "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+        "bytes": 473357
+      },
+      "after": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+        "sha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9",
+        "bytes": 498918
+      },
+      "unchanged": false
+    }
+  ],
+  "unchangedExternalInputs": [
+    {
+      "role": "cache",
+      "reference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+        "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+        "bytes": 25378903
+      },
+      "baselineReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+        "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+        "bytes": 25378903
+      }
+    },
+    {
+      "role": "registry",
+      "reference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+        "bytes": 1133114
+      },
+      "baselineReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+        "bytes": 1133114
+      }
+    }
+  ],
+  "unchangedProviderFileCount": 25,
+  "candidates": [
+    {
+      "pointId": "osm:node:1109384824",
+      "baseId": 565,
+      "protectedRawIds": [
+        "osm:node:1109384824",
+        "osm:node:1201923151",
+        "osm:node:1201923189",
+        "osm:node:1201923313",
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649"
+      ],
+      "sourceObjectIds": [
+        "osm:node:1109384824",
+        "osm:node:1201923151",
+        "osm:node:1201923189",
+        "osm:node:1201923313",
+        "osm:node:7366238620",
+        "osm:relation:1435827",
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649",
+        "osm:relation:7151752"
+      ],
+      "rawRecordCount": 7,
+      "sourceObjectCount": 10,
+      "localSectorIds": [
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649"
+      ],
+      "localRawIds": [
+        "osm:node:1109384824",
+        "osm:node:1201923151",
+        "osm:node:1201923189",
+        "osm:node:1201923313",
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649"
+      ],
+      "expectedBeforeRawGroups": {
+        "delegation:565": [
+          "osm:relation:7119649"
+        ],
+        "osm:node:1109384824": [
+          "osm:node:1109384824"
+        ],
+        "osm:node:1201923151": [
+          "osm:node:1201923151"
+        ],
+        "osm:node:1201923189": [
+          "osm:node:1201923189"
+        ],
+        "osm:node:1201923313": [
+          "osm:node:1201923313"
+        ],
+        "osm:relation:7119647": [
+          "osm:relation:7119647"
+        ],
+        "osm:relation:7119648": [
+          "osm:relation:7119648"
+        ]
+      },
+      "expectedAfterRawGroups": {
+        "delegation:565": [
+          "osm:node:1109384824",
+          "osm:relation:7119649"
+        ],
+        "osm:node:1201923151": [
+          "osm:node:1201923151"
+        ],
+        "osm:node:1201923189": [
+          "osm:node:1201923189"
+        ],
+        "osm:node:1201923313": [
+          "osm:node:1201923313"
+        ],
+        "osm:relation:7119647": [
+          "osm:relation:7119647"
+        ],
+        "osm:relation:7119648": [
+          "osm:relation:7119648"
+        ]
+      },
+      "strictOwner": {
+        "recordId": "osm:relation:7119649",
+        "expectedRecord": {
+          "id": "osm:relation:7119649",
+          "targetDelegationId": 565,
+          "expectedGovernorateId": 361,
+          "expectedBase": {
+            "nomAr": "تينجة",
+            "lat": 37.1634,
+            "lng": 9.7651
+          },
+          "expectedExistingMemberIds": [
+            "osm:relation:7119649"
+          ],
+          "expectedTargetMemberIds": [
+            "delegation:565"
+          ],
+          "members": [
+            {
+              "id": "osm:relation:7119649",
+              "expectedKind": "sector",
+              "expectedSourceId": "osm",
+              "expectedName": "تينجة",
+              "expectedParentName": "معتمدية تينجة",
+              "expectedDelegationId": 565,
+              "expectedLat": 37.148433,
+              "expectedLng": 9.762066,
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "تينجة",
+                "name:ar": "تينجة",
+                "name:fr": "Tinja",
+                "ref:tn:codegeo": "175951"
+              },
+              "originalGeometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f",
+              "packedGeometrySha256": "544f4a7913a643e769d5f57a9b086fcf71e95c3d4bd464cd292f02e212cf7fc9"
+            }
+          ],
+          "identityEvidence": [
+            {
+              "method": "current_coded_sector",
+              "id": "osm:relation:7119649",
+              "code": "175951",
+              "currentOfficialRecord": {
+                "governorateCode": "17",
+                "governorateFr": "Bizerte",
+                "governorateAr": "بنزرت",
+                "delegationCode": "1759",
+                "delegationFr": "Tinja",
+                "delegationAr": "تينجة",
+                "sectorCode": "175951",
+                "sectorFr": "Tinja",
+                "sectorAr": "تينجة",
+                "sourceRows": {
+                  "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18802,
+                  "Nombre_de_Logements_par_Secteurs.xlsx": 822,
+                  "Nombre_de_menages_par_Secteurs.xlsx": 821
+                }
+              },
+              "accepted": true,
+              "reasons": [],
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "تينجة",
+                "name:ar": "تينجة",
+                "name:fr": "Tinja",
+                "ref:tn:codegeo": "175951"
+              },
+              "effectiveOriginalGeometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f"
+            },
+            {
+              "method": "current_coded_namesake_administrative_parent",
+              "id": "osm:relation:7151752",
+              "code": "1759",
+              "name": "معتمدية تينجة",
+              "accepted": true,
+              "reasons": [],
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Tinja",
+                "boundary": "administrative",
+                "name": "معتمدية تينجة",
+                "name:ar": "معتمدية تينجة",
+                "name:fr": "Délégation Tinja",
+                "ref:tn:codegeo": "1759",
+                "ref:tn:hasc_2": "TN.BZ.TI",
+                "wikidata": "Q3529188"
+              },
+              "effectiveOriginalGeometrySha256": "0187eb28b3139acae59d90ab9f73219fe5284999c3f35a6b302a48ea696c894e",
+              "currentOfficialRecord": {
+                "governorateCode": "17",
+                "governorateAr": "بنزرت",
+                "governorateFr": "Bizerte",
+                "delegationCode": "1759",
+                "delegationAr": "تينجة",
+                "delegationFr": "Tinja"
+              }
+            }
+          ]
+        },
+        "reviewEvidence": {
+          "file": "reviews/base-locality110-strict-proposal.json",
+          "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+        },
+        "proofRecordObjectSha256": "bc205b831b3e3df26aff040575917e7bd820bbc6298d376970663481d1279485",
+        "expectedAppliedReceipt": {
+          "pickerGroupId": "delegation:565",
+          "ids": [
+            "osm:relation:7119649"
+          ]
+        }
+      },
+      "strictOwnerEvidence": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviews\\base-locality110-strict-proposal.json",
+        "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3",
+        "bytes": 374063
+      },
+      "sourcePhasesCarryExactByUnchangedInputsAndBindings": true,
+      "acceptedBoundaryIds": [],
+      "preservedCurationIds": [],
+      "linkedCurationEvidence": [],
+      "allRawFieldsAndPackedGeometryExact": true,
+      "sourceOnlyAbsenceAndIndependentPeerGroupsExact": true,
+      "coordinateCorrections": [],
+      "expectedOnlyFutureMetadataChange": {
+        "id": "osm:node:1109384824",
+        "field": "pickerGroupId",
+        "before": "osm:node:1109384824",
+        "after": "delegation:565"
+      }
+    },
+    {
+      "pointId": "osm:node:7390818324",
+      "baseId": 532,
+      "protectedRawIds": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:relation:7147558",
+        "osm:way:1346769253",
+        "osm:way:93676034"
+      ],
+      "sourceObjectIds": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324",
+        "osm:relation:1435830",
+        "osm:relation:4184709",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:relation:7147558",
+        "osm:way:1346769253",
+        "osm:way:93676034"
+      ],
+      "rawRecordCount": 16,
+      "sourceObjectCount": 18,
+      "localSectorIds": [
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906"
+      ],
+      "localRawIds": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:way:1346769253",
+        "osm:way:93676034"
+      ],
+      "expectedBeforeRawGroups": {
+        "delegation:532": [
+          "osm:relation:7114900"
+        ],
+        "osm:node:1080388142": [
+          "osm:node:1080388142"
+        ],
+        "osm:node:1080390577": [
+          "osm:node:1080390577"
+        ],
+        "osm:node:1205570513": [
+          "osm:node:1205570513"
+        ],
+        "osm:node:1205571123": [
+          "osm:node:1205571123"
+        ],
+        "osm:node:2157169857": [
+          "osm:node:2157169857"
+        ],
+        "osm:node:7390818324": [
+          "osm:node:7390818324"
+        ],
+        "osm:relation:7114901": [
+          "osm:relation:7114901"
+        ],
+        "osm:relation:7114902": [
+          "osm:relation:7114902"
+        ],
+        "osm:relation:7114903": [
+          "osm:relation:7114903"
+        ],
+        "osm:relation:7114904": [
+          "osm:relation:7114904"
+        ],
+        "osm:relation:7114905": [
+          "osm:relation:7114905"
+        ],
+        "osm:relation:7114906": [
+          "osm:relation:7114906"
+        ],
+        "osm:relation:7147558": [
+          "osm:relation:7147558"
+        ],
+        "osm:way:1346769253": [
+          "osm:way:1346769253"
+        ],
+        "osm:way:93676034": [
+          "osm:way:93676034"
+        ]
+      },
+      "expectedAfterRawGroups": {
+        "delegation:532": [
+          "osm:node:7390818324",
+          "osm:relation:7114900"
+        ],
+        "osm:node:1080388142": [
+          "osm:node:1080388142"
+        ],
+        "osm:node:1080390577": [
+          "osm:node:1080390577"
+        ],
+        "osm:node:1205570513": [
+          "osm:node:1205570513"
+        ],
+        "osm:node:1205571123": [
+          "osm:node:1205571123"
+        ],
+        "osm:node:2157169857": [
+          "osm:node:2157169857"
+        ],
+        "osm:relation:7114901": [
+          "osm:relation:7114901"
+        ],
+        "osm:relation:7114902": [
+          "osm:relation:7114902"
+        ],
+        "osm:relation:7114903": [
+          "osm:relation:7114903"
+        ],
+        "osm:relation:7114904": [
+          "osm:relation:7114904"
+        ],
+        "osm:relation:7114905": [
+          "osm:relation:7114905"
+        ],
+        "osm:relation:7114906": [
+          "osm:relation:7114906"
+        ],
+        "osm:relation:7147558": [
+          "osm:relation:7147558"
+        ],
+        "osm:way:1346769253": [
+          "osm:way:1346769253"
+        ],
+        "osm:way:93676034": [
+          "osm:way:93676034"
+        ]
+      },
+      "strictOwner": {
+        "recordId": "osm:relation:7114900",
+        "expectedRecord": {
+          "id": "osm:relation:7114900",
+          "targetDelegationId": 532,
+          "expectedGovernorateId": 358,
+          "expectedBase": {
+            "nomAr": "سكرة",
+            "lat": 36.8791,
+            "lng": 10.2656
+          },
+          "expectedExistingMemberIds": [
+            "osm:relation:7114900"
+          ],
+          "expectedTargetMemberIds": [
+            "delegation:532"
+          ],
+          "members": [
+            {
+              "id": "osm:relation:7114900",
+              "expectedKind": "sector",
+              "expectedSourceId": "osm",
+              "expectedName": "سكرة",
+              "expectedParentName": "معتمدية سكرة",
+              "expectedDelegationId": 532,
+              "expectedLat": 36.876348,
+              "expectedLng": 10.258199,
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "int_name": "Soukra",
+                "name": "سكرة",
+                "name:ar": "سكرة",
+                "name:fr": "Soukra",
+                "ref:tn:codegeo": "125251"
+              },
+              "originalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f",
+              "packedGeometrySha256": "db4b5309477bcfe72d8156e17be76fe3a94f2bc0e12f9967c08132815471e1e1"
+            }
+          ],
+          "identityEvidence": [
+            {
+              "method": "current_coded_sector",
+              "id": "osm:relation:7114900",
+              "code": "125251",
+              "currentOfficialRecord": {
+                "governorateCode": "12",
+                "governorateFr": "Ariana",
+                "governorateAr": "أريانة",
+                "delegationCode": "1252",
+                "delegationFr": "Soukra",
+                "delegationAr": "سكرة",
+                "sectorCode": "125251",
+                "sectorFr": "Soukra",
+                "sectorAr": "سكرة",
+                "sourceRows": {
+                  "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5849,
+                  "Nombre_de_Logements_par_Secteurs.xlsx": 184,
+                  "Nombre_de_menages_par_Secteurs.xlsx": 184
+                }
+              },
+              "accepted": true,
+              "reasons": [],
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "int_name": "Soukra",
+                "name": "سكرة",
+                "name:ar": "سكرة",
+                "name:fr": "Soukra",
+                "ref:tn:codegeo": "125251"
+              },
+              "effectiveOriginalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f"
+            },
+            {
+              "method": "current_coded_namesake_administrative_parent",
+              "id": "osm:relation:4184709",
+              "code": "1252",
+              "name": "معتمدية سكرة",
+              "accepted": true,
+              "reasons": [],
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "La Soukra",
+                "boundary": "administrative",
+                "name": "معتمدية سكرة",
+                "name:ar": "معتمدية سكرة",
+                "name:fr": "Délégation Soukra",
+                "ref:tn:codegeo": "1252",
+                "ref:tn:hasc_2": "TN.AN.LS",
+                "wikidata": "Q3212913"
+              },
+              "effectiveOriginalGeometrySha256": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c",
+              "currentOfficialRecord": {
+                "governorateCode": "12",
+                "governorateAr": "أريانة",
+                "governorateFr": "Ariana",
+                "delegationCode": "1252",
+                "delegationAr": "سكرة",
+                "delegationFr": "Soukra"
+              }
+            }
+          ]
+        },
+        "reviewEvidence": {
+          "file": "reviews/base-locality110-strict-proposal.json",
+          "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+        },
+        "proofRecordObjectSha256": "2cf844ed9e835edd6399a87ca4033912a486d6724ec014d34b8c144d83f0d7e8",
+        "expectedAppliedReceipt": {
+          "pickerGroupId": "delegation:532",
+          "ids": [
+            "osm:relation:7114900"
+          ]
+        }
+      },
+      "strictOwnerEvidence": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviews\\base-locality110-strict-proposal.json",
+        "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3",
+        "bytes": 374063
+      },
+      "sourcePhasesCarryExactByUnchangedInputsAndBindings": true,
+      "acceptedBoundaryIds": [
+        "osm:relation:7114904"
+      ],
+      "preservedCurationIds": [
+        "osm:node:2157169857"
+      ],
+      "linkedCurationEvidence": [
+        {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\name-reviews\\charguia-two-point-name\\charguia-two-node-spelling-source-review.json",
+          "sha256": "653a482fda42902dabb74c975e398f6704a19d362d594fb7994599e77d97498e",
+          "bytes": 12081
+        }
+      ],
+      "allRawFieldsAndPackedGeometryExact": true,
+      "sourceOnlyAbsenceAndIndependentPeerGroupsExact": true,
+      "coordinateCorrections": [],
+      "expectedOnlyFutureMetadataChange": {
+        "id": "osm:node:7390818324",
+        "field": "pickerGroupId",
+        "before": "osm:node:7390818324",
+        "after": "delegation:532"
+      }
+    }
+  ],
+  "counts": {
+    "protectedRawRecords": 23,
+    "sourceObjects": 28,
+    "localSectors": 10,
+    "separateForeignNamesakeSectors": 1,
+    "localRawGroupsUnchanged": true,
+    "oldCurationDecisions": 168,
+    "currentCurationDecisions": 169
+  },
+  "compilerIntegrationCarry": {
+    "changedExistingDefinitions": [
+      "apply_reviewed_residential_display_associations",
+      "validate_reviewed_town_preservation_extension",
+      "verify_reviewed_city_display_associations",
+      "verify_reviewed_town_preservation"
+    ],
+    "addedDefinitions": [
+      "validate_residential_complete_sector_groups",
+      "validate_reviewed_administrative_successor_identity",
+      "verify_residential_complete_sector_groups"
+    ],
+    "removedDefinitions": [],
+    "allOtherDefinitionsAndModuleStatementsAstUnchanged": true,
+    "functionLineRelocations": [
+      {
+        "function": "reviewed_complete_group_owner",
+        "beforeStartLine": 1278,
+        "afterStartLine": 1278,
+        "astUnchanged": true
+      },
+      {
+        "function": "validate_deferred_complete_group_extension",
+        "beforeStartLine": 1306,
+        "afterStartLine": 1306,
+        "astUnchanged": true
+      },
+      {
+        "function": "verify_reviewed_complete_group_state",
+        "beforeStartLine": 1381,
+        "afterStartLine": 1381,
+        "astUnchanged": true
+      },
+      {
+        "function": "apply_deferred_point_base_group_extensions",
+        "beforeStartLine": 1424,
+        "afterStartLine": 1424,
+        "astUnchanged": true
+      },
+      {
+        "function": "validate_reviewed_point_base_display",
+        "beforeStartLine": 2144,
+        "afterStartLine": 2366,
+        "astUnchanged": true
+      },
+      {
+        "function": "validate_reviewed_town_preservation_extension",
+        "beforeStartLine": 1757,
+        "afterStartLine": 1953,
+        "astUnchanged": false
+      },
+      {
+        "function": "verify_reviewed_town_preservation",
+        "beforeStartLine": 2099,
+        "afterStartLine": 2311,
+        "astUnchanged": false
+      }
+    ],
+    "guardLineRelocations": [
+      {
+        "guardMessage": "Deferred complete-group extension requires the explicit suburb method",
+        "beforeLine": 2173,
+        "afterLine": 2395
+      },
+      {
+        "guardMessage": "Reviewed complete-group point representation changed",
+        "beforeLine": 1354,
+        "afterLine": 1354
+      },
+      {
+        "guardMessage": "Reviewed retained town ownership or complete point inventory changed",
+        "beforeLine": 1958,
+        "afterLine": 2165
+      },
+      {
+        "guardMessage": "Reviewed town group closure or single point transition changed",
+        "beforeLine": 2062,
+        "afterLine": 2269
+      },
+      {
+        "guardMessage": "Reviewed town active prior picker source changed",
+        "beforeLine": 2070,
+        "afterLine": 2277
+      },
+      {
+        "guardMessage": "Reviewed deferred point already has an early base owner",
+        "beforeLine": 6313,
+        "afterLine": 6644
+      }
+    ],
+    "qualification": "The new Beni successor option does not provide strict-sector base ownership. The new complete-sector-group option is for residential polygons. Existing Tinja/Soukra contract blockers remain. Future implementation must start from current5680, preserve both newly installed options and retain their reviews; olde9 proposal facts remain historical."
+  },
+  "sourcePhaseProof": "Full original/effective states carry because exact cache, every accepted provider and municipal source, registry, all28 per-state curation bindings, complete23 raw metadata rows, all groups and binary bytes remain unchanged. The only new curation concerns Beni Mhira, outside this closure; changed historical display-proof references are outside this closure. No new primary or geometric inference is made.",
+  "excludedHeldCandidate": "osm:node:3145829327",
+  "limitations": "This is a carry report only. Old facts/design are not rewritten or relabelled. No new compiler implementation, source manifest, stage, generation, tests, build, live edit, phone or ledger access."
+}

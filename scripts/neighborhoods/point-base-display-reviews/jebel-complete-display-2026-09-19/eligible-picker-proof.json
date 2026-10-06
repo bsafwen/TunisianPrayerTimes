@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/sourcefacts.json",
+    "sha256": "fa6a0d8e343e2c0a45f9a5cdb7206771e3fa6d4f68b6a09d26872b8c463c9dad"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7202851",
+      "targetBaseId": "delegation:401",
+      "targetDelegationId": 401,
+      "name": "جبل الجلود",
+      "governorateId": 342,
+      "governorate": "تونس",
+      "basePoint": {
+        "lat": 36.7693,
+        "lng": 10.2032
+      },
+      "status": "eligible_proposal",
+      "reasons": [],
+      "members": [
+        {
+          "id": "osm:relation:7202851",
+          "name": "جبل الجلود",
+          "kind": "sector",
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جبل الجلود",
+            "name:ar": "جبل الجلود",
+            "name:fr": "Djebel Djeloud",
+            "ref:tn:codegeo": "116857"
+          },
+          "officialSource": null,
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 401,
+          "independentNearestPrayerSource": 401,
+          "reasons": []
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7202851",
+          "code": "116857",
+          "currentOfficialRecord": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1168",
+            "delegationFr": "Djebel djelloud",
+            "delegationAr": "جبل الجلود",
+            "sectorCode": "116857",
+            "sectorFr": "Djebel djeloud",
+            "sectorAr": "جبل الجلود",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4761,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 149,
+              "Nombre_de_menages_par_Secteurs.xlsx": 149
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جبل الجلود",
+            "name:ar": "جبل الجلود",
+            "name:fr": "Djebel Djeloud",
+            "ref:tn:codegeo": "116857"
+          },
+          "effectiveOriginalGeometrySha256": "38eb44b1085b9071429753cd1f166edf5e1423ff45c8162d1ed6ccd2e9ec0487"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:4134869",
+          "code": "1168",
+          "name": "معتمدية جبل الجلود",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Djebel Jelloud",
+            "boundary": "administrative",
+            "name": "معتمدية جبل الجلود",
+            "name:ar": "معتمدية جبل الجلود",
+            "name:fr": "Délégation Djebel Jelloud",
+            "ref:tn:codegeo": "1168",
+            "ref:tn:hasc_2": "TN.TU.JJ",
+            "wikidata": "Q3032829"
+          },
+          "effectiveOriginalGeometrySha256": "15fa79373300b8b01d965e32a11157398099a5d00271d11076477a9b313bd0d0",
+          "currentOfficialRecord": {
+            "governorateCode": "11",
+            "governorateAr": "تونس",
+            "governorateFr": "Tunis",
+            "delegationCode": "1168",
+            "delegationAr": "جبل الجلود",
+            "delegationFr": "Djebel djelloud"
+          }
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:401"
+      ],
+      "reviewedSpellingEquivalence": {
+        "schemaVersion": 1,
+        "method": "reviewed_paired_article_spelling_equivalence",
+        "reviewEvidence": {
+          "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/paired-spelling-review.json",
+          "sha256": "b988d4d3410713af5f0d863b7dc92a903676b664dd8bb8f94cff31cdb2388a35"
+        }
+      },
+      "scope": "The strict sector joins first, then the already reviewed retained village joins through its deferred complete-group extension. All raw geometry and coordinates remain unchanged."
+    }
+  ]
+}

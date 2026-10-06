@@ -1,0 +1,65 @@
+{
+  "status": "ACCEPTED_MANUAL_REPRESENTATIVE_ONLY",
+  "reviewedBy": "root",
+  "userSubmissionId": "c6b80693-2c87-4d82-a8f6-84c2cad01265",
+  "id": "osm:relation:7174628",
+  "supportingAreaId": "osm:way:1485127837",
+  "before": {
+    "lat": 36.781147,
+    "lng": 10.24057
+  },
+  "after": {
+    "lat": 36.782498,
+    "lng": 10.235313
+  },
+  "method": "Rounded representative of the intersection of existing compiled official Chaker1 geometry and existing Hay Chaker neighborhood geometry; source vertices unmodified. This intersection is only a point-selection filter and is not exported as a replacement boundary.",
+  "visualReview": "Personally inspected Google Maps emulator-5554 / Pixel_10_Pro_XL_THREE screenshot with exact candidate coordinates visible; red pin lies on a building within the developed street grid near Rue Des Grenades / Rue El Hana. It replaces the old point in the undeveloped eastern sector area.",
+  "canonicalSourceId": "isie-local-sectors-2023-megrine",
+  "memberSourceId": "osm",
+  "sameGovernorate": true,
+  "sameParent": true,
+  "withinBothOutlines": true,
+  "insideDistinctChaker2": false,
+  "approximateClearanceToOverlapBoundaryMeters": 41.37533652797456,
+  "scope": "Manual representative only. Names, IDs, selectable grouping, official Chaker2, both polygons and meteo.tn source448 retained. No new boundary certification. Proposed point derived from existing redistributable app geometry; Google used for corroborating visible development and geographic identity.",
+  "evidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chaker-manual-pin-20260921\\current-boundaries.geojson",
+      "sha256": "2ba2a258bdb1bc3865c85ae657fc006c12a236d7f98e48edc213930ac9248f27"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chaker-manual-pin-20260921\\google-geocode-name.json",
+      "sha256": "3a2e4c89bdbae4f352e28e4e0e8f60c1765b04deff9e083c110a6ebfd61ec49a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chaker-manual-pin-20260921\\google-reverse-intersection-candidate.json",
+      "sha256": "026b902055d1fa5835b805206a5b13b85e4020ca3af85e730294fdc56f0c9f4a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\chaker-inhabited-overlap-20260921\\osm_relation_7174628-2.png",
+      "sha256": "8b3be06ac5c087c69748f880b325cd7d4e458ef5413c43d6412733f070bec33e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\chaker-inhabited-overlap-20260921\\osm_relation_7174628-2.json",
+      "sha256": "7ca9affb706839ffe1474494d0ae943c8e6cc3da8559352e1623a654251c38d3"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\chaker-inhabited-overlap-20260921\\batch-summary.json",
+      "sha256": "5c2727ce9854a9e4f83cab068996d0e7bf6ab73bcc280c35d492673f39473843"
+    }
+  ],
+  "sourcePins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "81f1e3971a3d54c439276d43a88a35a134ad76c0fe401cf63727e1287dc1426e"
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+    },
+    "officialAcceptance": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\megrine-isie2023-acceptance-review.json",
+      "sha256": "f2e58906e3ced6f758634108f261b3921265ddbbc9f4e4945ad41b70b7aa0f96"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "status": "TWO_PUBLIC_PHONE_OBSERVATIONS_RECORDED_AND_QUALIFIED",
+  "createdAtUtc": "2026-09-19T11:23:48.861377+00:00",
+  "metadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\delegation_394-2\\ledger.json",
+    "sha256": "2bc3265d04f023fdc9e82795b69aa403fa7bbd302de9fc87215e61f7c6ed2935"
+  },
+  "afterLedgerSha256": "941ab547a61d0e4df0f64341d079290c3b936516f36408ec5984db1a22a4c209",
+  "totalObservationsBefore": 1273,
+  "totalObservationsAfter": 1275,
+  "allPriorObservationsPreserved": true,
+  "reviews": [
+    {
+      "id": "delegation:394",
+      "query": "36.814275,10.137426",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_394-2.json",
+        "sha256": "87c07fc59e1293a477d9ffe691cde99b30c4fb7b92614a6a7ed08e6401788062"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_394-2.png",
+        "sha256": "9978cd1426e1d51b3a882bf31059409d677042d1bdc2cc980d6161c290d9d4c6"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "The current town representative query opens a public شارع قرطاج street card, addressed Tunis. The surrounding map visibly labels باردو near the pin and the Bardo museum southwest. This supports local Bardo context only; the street card is not a locality identity certificate or an exact coordinate/polygon boundary proof.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7118020",
+      "query": "36.81236,10.14065",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118020-3.json",
+        "sha256": "893c7381c58a62f61171cf1b1581aab736fc4cd535e63ae1f71215679a0a8803"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118020-3.png",
+        "sha256": "d5ba37da03ebf40744f2383f802c29ebc7e7241ef008b628c33d47d9ea4aad2a"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "The current sector representative query opens a building/plus-code card R46R+X6V on Rue de Bayrouth, Tunis. The surrounding map visibly labels باردو near the pin and Biwai shops Bardo to its east. This supports local Bardo context only; a building card does not identify the full sector or certify either polygon.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    }
+  ],
+  "captures": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo-phone-point-captures-20260919.json",
+    "sha256": "1bffc5f33a17486ac469d85ee2adb6e657298fd031bc7ee37208170ae3af1e08"
+  },
+  "qualifications": "Phone observations supply geographic context. Exact manual point identities and polygon containment come from independently pinned source records; none of these screenshots certifies source polygons or every alias.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_bardo_points_20260919.py",
+    "sha256": "b2be2283ac093c86239507ab99a394e63f3c1c7ce9b886359a6dff6e03b903ea"
+  }
+}

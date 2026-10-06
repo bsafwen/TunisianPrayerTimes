@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "governorate": "أريانة",
+  "governorateId": 358,
+  "scope": "INS sector code and normalized Arabic name/parent identity evidence only; no geographic or legal reliability claim.",
+  "pins": {
+    "catalogSha256": "63908a83db9b024bddbd8ff75e11806e987a95742cde1571ac7c0286b46460e7",
+    "registrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "osmAreasSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "counts": {
+    "appSectors": 48,
+    "officialRegistrySectors": 48,
+    "appCodesPresent": 48,
+    "distinctAppCodes": 48,
+    "officialCodesMatched": 48,
+    "normalizedNameParentAndCodeMatches": 37,
+    "exceptions": 11,
+    "officialCodesNotInstalled": 0
+  },
+  "codeSourceCounts": {
+    "osm-source-tag": 48
+  },
+  "exceptions": [
+    {
+      "appId": "osm:relation:7114421",
+      "appName": "بو حناش",
+      "appParent": "معتمدية قلعة الأندلس",
+      "code": "125454",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "بوحنش",
+      "officialParent": "قلعة الأندلس",
+      "nameMatchesNormalized": false,
+      "parentMatchesNormalized": true
+    },
+    {
+      "appId": "osm:relation:7114902",
+      "appName": "البساتين",
+      "appParent": "معتمدية سكرة",
+      "code": "125253",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "البستان",
+      "officialParent": "سكرة",
+      "nameMatchesNormalized": false,
+      "parentMatchesNormalized": true
+    },
+    {
+      "appId": "osm:relation:7115051",
+      "appName": "المنزه 5",
+      "appParent": "معتمدية أريانة المدينة",
+      "code": "125154",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "المنزه الخامس",
+      "officialParent": "اريانةالمدينة",
+      "nameMatchesNormalized": false,
+      "parentMatchesNormalized": true
+    },
+    {
+      "appId": "osm:relation:7115052",
+      "appName": "المنزه 6",
+      "appParent": "معتمدية أريانة المدينة",
+      "code": "125155",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "المنزه السادس",
+      "officialParent": "اريانةالمدينة",
+      "nameMatchesNormalized": false,
+      "parentMatchesNormalized": true
+    },
+    {
+      "appId": "osm:relation:7115405",
+      "appName": "15 أكتوبر",
+      "appParent": "معتمدية منيهلة",
+      "code": "125755",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "15أكتوبر",
+      "officialParent": "المنيهلة",
+      "nameMatchesNormalized": true,
+      "parentMatchesNormalized": false
+    },
+    {
+      "appId": "osm:relation:7115406",
+      "appName": "البساتين",
+      "appParent": "معتمدية منيهلة",
+      "code": "125754",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "البساتين",
+      "officialParent": "المنيهلة",
+      "nameMatchesNormalized": true,
+      "parentMatchesNormalized": false
+    },
+    {
+      "appId": "osm:relation:7115407",
+      "appName": "المنيهلة",
+      "appParent": "معتمدية منيهلة",
+      "code": "125751",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "المنيهلة",
+      "officialParent": "المنيهلة",
+      "nameMatchesNormalized": true,
+      "parentMatchesNormalized": false
+    },
+    {
+      "appId": "osm:relation:7115408",
+      "appName": "الرفاهة",
+      "appParent": "معتمدية منيهلة",
+      "code": "125752",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "الرفاهة",
+      "officialParent": "المنيهلة",
+      "nameMatchesNormalized": true,
+      "parentMatchesNormalized": false
+    },
+    {
+      "appId": "osm:relation:7115409",
+      "appName": "النصر",
+      "appParent": "معتمدية منيهلة",
+      "code": "125753",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "النصر",
+      "officialParent": "المنيهلة",
+      "nameMatchesNormalized": true,
+      "parentMatchesNormalized": false
+    },
+    {
+      "appId": "osm:relation:7115582",
+      "appName": "مارس 2",
+      "appParent": "معتمدية حي التضامن",
+      "code": "125655",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "2مارس",
+      "officialParent": "حي التضامن",
+      "nameMatchesNormalized": false,
+      "parentMatchesNormalized": true
+    },
+    {
+      "appId": "osm:relation:7115587",
+      "appName": "حي التضامن",
+      "appParent": "معتمدية حي التضامن",
+      "code": "125651",
+      "codeSource": "osm-source-tag",
+      "officialCandidateCount": 1,
+      "officialName": "التضامن",
+      "officialParent": "حي التضامن",
+      "nameMatchesNormalized": false,
+      "parentMatchesNormalized": true
+    }
+  ],
+  "officialCodesNotInstalled": [],
+  "limitations": [
+    "The INS registry is a published census hierarchy, independent of the Ministry name list.",
+    "OSM code tags are candidate identity links, corroborated here by INS Arabic name and parent; they do not prove polygon shape.",
+    "ISIE feature IDs were assigned during earlier source review and are checked against INS, not independently re-extracted here."
+  ]
+}

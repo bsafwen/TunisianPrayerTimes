@@ -1,0 +1,798 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "retained_named_town_delegation_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-13",
+  "pointId": "osm:node:351582010",
+  "baseId": 478,
+  "rawCurrent": {
+    "id": "osm:node:351582010",
+    "sourceId": "osm",
+    "name": "دقاش",
+    "aliases": [
+      "Degache",
+      "Дегаш"
+    ],
+    "kind": "town",
+    "parentName": "دقاش الجنوبية",
+    "contextAliases": [
+      "Degach Sud",
+      "Degache",
+      "Délégation Degache",
+      "دقاش الجنوبية",
+      "معتمدية دقاش"
+    ],
+    "governorateId": 352,
+    "lat": 33.9841058,
+    "lng": 8.2154584,
+    "delegationId": 481,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:351582010"
+  },
+  "baseCurrent": {
+    "id": 478,
+    "nomFr": "Degueche",
+    "nomAr": "دقاش",
+    "nomEn": "Degueche",
+    "lat": 34.016,
+    "lng": 8.273
+  },
+  "expectedGovernor": {
+    "id": 352,
+    "nomFr": "Tozeur",
+    "nomAr": "توزر",
+    "nomEn": "Tozeur",
+    "lat": 33.9197,
+    "lng": 8.1335
+  },
+  "originalSourceNode": {
+    "id": "osm:node:351582010",
+    "tags": {
+      "name": "دقاش",
+      "name:ar": "دقاش",
+      "name:en": "Degache",
+      "name:fr": "Degache",
+      "name:ru": "Дегаш",
+      "place": "town",
+      "wikidata": "Q2499386",
+      "wikimedia_commons": "Category:Degache",
+      "wikipedia": "ar:دقاش"
+    },
+    "lat": 33.9841058,
+    "lng": 8.2154584
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/degueche-retained-reference-2026-09-13/node-351582010-current.json",
+    "sha256": "7132b1eff4a953973e838b906f6b249a38834c60e6dbe70087841d966bc72d71",
+    "url": "https://api.openstreetmap.org/api/0.6/node/351582010.json"
+  },
+  "sourceNodeIdentity": {
+    "exactElement": {
+      "type": "node",
+      "id": 351582010,
+      "lat": 33.9841058,
+      "lon": 8.2154584,
+      "timestamp": "2025-09-14T10:19:40Z",
+      "version": 12,
+      "changeset": 171909432,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "name": "دقاش",
+        "name:ar": "دقاش",
+        "name:en": "Degache",
+        "name:fr": "Degache",
+        "name:ru": "Дегаш",
+        "place": "town",
+        "wikidata": "Q2499386",
+        "wikimedia_commons": "Category:Degache",
+        "wikipedia": "ar:دقاش"
+      }
+    },
+    "sha256": "7132b1eff4a953973e838b906f6b249a38834c60e6dbe70087841d966bc72d71",
+    "url": "https://api.openstreetmap.org/api/0.6/node/351582010.json"
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/degueche-retained-reference-2026-09-13/historical-retained-display-proposal.json",
+    "sha256": "87896aaf2dbce58865d98b3b94bce242b78c0fe9fee77ee5ca458a1baa239c5b"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/degueche-retained-reference-2026-09-13/independent-display-review.json",
+    "sha256": "ddfbb9b47d0afd753755314a21321bf68ff69c32f49a85f8a77c4c2bf69c84d2"
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/degueche-retained-reference-2026-09-13/social-degache-windows-tls.html",
+      "sha256": "294e1c6249366f7a9322b7db5702ac0b439a15cafe65b6dc04a64b6bdcca43a7",
+      "url": "https://www.social.gov.tn/fr/node/2972",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "الوحدة المحلية للنهوض الاجتماعي بدقاش توزر",
+        "شارع المحطة دقاش",
+        "2260",
+        "POINT (8.218126 33.986179)"
+      ]
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "6252",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7154909",
+      "officialIdentity": {
+        "governorateCode": "62",
+        "governorateFr": "Tozeur",
+        "governorateAr": "توزر",
+        "delegationCode": "6252",
+        "delegationFr": "Degach",
+        "delegationAr": "دقاش",
+        "sectorCode": "625254",
+        "sectorFr": "El mahassen",
+        "sectorAr": "المحاسن",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68531,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3364,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3357
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المحاسن",
+        "name:ar": "المحاسن",
+        "name:fr": "El Mahassen",
+        "ref:tn:codegeo": "625254"
+      },
+      "sourceGeometrySha256": "914a098a9a189472108a8d51dd69cba9c3bdefa39fa065f2a530031172311425",
+      "currentMetadata": {
+        "id": "osm:relation:7154909",
+        "sourceId": "osm",
+        "name": "المحاسن",
+        "aliases": [
+          "El Mahassen"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.91335,
+        "lng": 8.346637,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.2416,
+          33.82348,
+          8.423543,
+          34.01921
+        ],
+        "areaKm2": 55.34497644947627,
+        "pickerGroupId": "osm:relation:7154909",
+        "offset": 3185168,
+        "length": 876
+      },
+      "packedGeometrySha256": "dbc37dd1e7e91d2ea729540e27e760492472a365ce515d3840c9c5ae698cd1bf",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7154914",
+      "officialIdentity": {
+        "governorateCode": "62",
+        "governorateFr": "Tozeur",
+        "governorateAr": "توزر",
+        "delegationCode": "6252",
+        "delegationFr": "Degach",
+        "delegationAr": "دقاش",
+        "sectorCode": "625255",
+        "sectorFr": "Bou helal",
+        "sectorAr": "بوهلال",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68565,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3366,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3359
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوهلال",
+        "name:ar": "بوهلال",
+        "name:fr": "Bou Helal",
+        "ref:tn:codegeo": "625255"
+      },
+      "sourceGeometrySha256": "9967d80db9feedb23e5c88da067f59012ee71df196fb69a25653500b846ae3c4",
+      "currentMetadata": {
+        "id": "osm:relation:7154914",
+        "sourceId": "osm",
+        "name": "بوهلال",
+        "aliases": [
+          "Bou Helal"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.94926,
+        "lng": 8.337583,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.235598,
+          33.83469,
+          8.432435,
+          34.05751
+        ],
+        "areaKm2": 57.40572507892205,
+        "pickerGroupId": "osm:relation:7154914",
+        "offset": 3191720,
+        "length": 444
+      },
+      "packedGeometrySha256": "6d5ec48af19241c108b629514eb7ac719799909a128de221b6c9accccab60086",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7154919",
+      "officialIdentity": {
+        "governorateCode": "62",
+        "governorateFr": "Tozeur",
+        "governorateAr": "توزر",
+        "delegationCode": "6252",
+        "delegationFr": "Degach",
+        "delegationAr": "دقاش",
+        "sectorCode": "625258",
+        "sectorFr": "Dghoumes",
+        "sectorAr": "دغومس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68599,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3367,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3360
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دغومس",
+        "name:ar": "دغومس",
+        "name:fr": "Dghoumes",
+        "ref:tn:codegeo": "625258"
+      },
+      "sourceGeometrySha256": "9b8d034af06ac2a12e13ae783169b14203726f3ad707bc0176550c2dfa3346d4",
+      "currentMetadata": {
+        "id": "osm:relation:7154919",
+        "sourceId": "osm",
+        "name": "دغومس",
+        "aliases": [
+          "Dghoumes"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.958512,
+        "lng": 8.457449,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.298263,
+          33.84155,
+          8.64814,
+          34.06789
+        ],
+        "areaKm2": 468.48737708561686,
+        "pickerGroupId": "osm:relation:7154919",
+        "offset": 3194252,
+        "length": 4708
+      },
+      "packedGeometrySha256": "4f5a8857a39649eb5df00f89e9d38da7d4e5f2d87738fb62d4564ebffb705497",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7154920",
+      "officialIdentity": {
+        "governorateCode": "62",
+        "governorateFr": "Tozeur",
+        "governorateAr": "توزر",
+        "delegationCode": "6252",
+        "delegationFr": "Degach",
+        "delegationAr": "دقاش",
+        "sectorCode": "625252",
+        "sectorFr": "Degach sud",
+        "sectorAr": "دقاش الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68463,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3361,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3354
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دقاش الجنوبية",
+        "name:ar": "دقاش الجنوبية",
+        "name:fr": "Degach Sud",
+        "ref:tn:codegeo": "625252"
+      },
+      "sourceGeometrySha256": "7f286a5eb5a96722902e67f22e6c7e46d30f8cd98dbd8901cc00a3920b064fa6",
+      "currentMetadata": {
+        "id": "osm:relation:7154920",
+        "sourceId": "osm",
+        "name": "دقاش الجنوبية",
+        "aliases": [
+          "Degach Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.890245,
+        "lng": 8.247926,
+        "delegationId": 625,
+        "hasBoundary": true,
+        "bbox": [
+          8.178966,
+          33.75676,
+          8.352495,
+          34.00107
+        ],
+        "areaKm2": 104.83306440866039,
+        "pickerGroupId": "osm:relation:7154920",
+        "offset": 3198960,
+        "length": 1468
+      },
+      "packedGeometrySha256": "273c3519ac5fa652d09bd3e8c05229b47c0495dfded3d7004e704efe4d57dad9",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7154921",
+      "officialIdentity": {
+        "governorateCode": "62",
+        "governorateFr": "Tozeur",
+        "governorateAr": "توزر",
+        "delegationCode": "6252",
+        "delegationFr": "Degach",
+        "delegationAr": "دقاش",
+        "sectorCode": "625251",
+        "sectorFr": "Degach nord",
+        "sectorAr": "دقاش الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68429,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3360,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3353
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دقاش الشمالية",
+        "name:ar": "دقاش الشمالية",
+        "name:fr": "Degach Nord",
+        "ref:tn:codegeo": "625251"
+      },
+      "sourceGeometrySha256": "8d0771ac754c605b1ef0a6811ec52c1c05cf6b00fa644f4770e2edefb7aa02fb",
+      "currentMetadata": {
+        "id": "osm:relation:7154921",
+        "sourceId": "osm",
+        "name": "دقاش الشمالية",
+        "aliases": [
+          "Degach Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.988975,
+        "lng": 8.221939,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.215344,
+          33.98367,
+          8.228486,
+          33.99442
+        ],
+        "areaKm2": 0.6933969581906012,
+        "pickerGroupId": "osm:relation:7154921",
+        "offset": 3200428,
+        "length": 740
+      },
+      "packedGeometrySha256": "8f5d701f5074eb7b2ceaffe9b5113cc23885047a3165bedad24fc64620211797",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7154923",
+      "officialIdentity": {
+        "governorateCode": "62",
+        "governorateFr": "Tozeur",
+        "governorateAr": "توزر",
+        "delegationCode": "6252",
+        "delegationFr": "Degach",
+        "delegationAr": "دقاش",
+        "sectorCode": "625253",
+        "sectorFr": "Sebaa abar",
+        "sectorAr": "سبع آبار",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68497,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3362,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3355
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سبع آبار",
+        "name:ar": "سبع آبار",
+        "name:fr": "Sabaa Abar",
+        "ref:tn:codegeo": "625253"
+      },
+      "sourceGeometrySha256": "53f098d67ba403c2d4742fa2f8a6f33dec06fc33e63ead602af9b800f247f599",
+      "currentMetadata": {
+        "id": "osm:relation:7154923",
+        "sourceId": "osm",
+        "name": "سبع آبار",
+        "aliases": [
+          "Sabaa Abar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.903675,
+        "lng": 8.30006,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.212077,
+          33.77988,
+          8.408994,
+          34.02209
+        ],
+        "areaKm2": 151.3224399353294,
+        "pickerGroupId": "osm:relation:7154923",
+        "offset": 3202588,
+        "length": 1828
+      },
+      "packedGeometrySha256": "55471e9225bc0129a79dd620a51e0a3f53aad47a592c2ee0fd4de896fc10f76e",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:351582010",
+      "kind": "town",
+      "tags": {
+        "name": "دقاش",
+        "name:ar": "دقاش",
+        "name:en": "Degache",
+        "name:fr": "Degache",
+        "name:ru": "Дегаш",
+        "place": "town",
+        "wikidata": "Q2499386",
+        "wikimedia_commons": "Category:Degache",
+        "wikipedia": "ar:دقاش"
+      }
+    },
+    {
+      "id": "osm:relation:7154892",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Degache",
+        "boundary": "administrative",
+        "name": "معتمدية دقاش",
+        "name:ar": "معتمدية دقاش",
+        "name:fr": "Délégation Degache",
+        "ref:tn:codegeo": "6252",
+        "ref:tn:hasc_2": "TN.TO.DE",
+        "wikidata": "Q3021228"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7154892": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Degache",
+        "boundary": "administrative",
+        "name": "معتمدية دقاش",
+        "name:ar": "معتمدية دقاش",
+        "name:fr": "Délégation Degache",
+        "ref:tn:codegeo": "6252",
+        "ref:tn:hasc_2": "TN.TO.DE",
+        "wikidata": "Q3021228"
+      },
+      "sourceGeometrySha256": "1da6dc7b398581770d30d24cd552e968dcfb3b1e2ec86136b3bf87d78ed36891"
+    },
+    "osm:relation:1435826": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-72",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية توزر",
+        "name:ar": "ولاية توزر",
+        "name:azb": "توزر",
+        "name:be": "Таўзар (вілает)",
+        "name:be-tarask": "Таўзар (вілает)",
+        "name:bg": "Тозьор (област)",
+        "name:ca": "Governació de Tozeur",
+        "name:ceb": "Gouvernorat de Tozeur",
+        "name:cy": "Tozeur (talaith)",
+        "name:de": "Tauzar",
+        "name:el": "Ταουζάρ (Κυβερνείο)",
+        "name:en": "Tozeur",
+        "name:es": "Gobernación de Tozeur",
+        "name:fa": "توزر",
+        "name:fr": "Gouvernorat Tozeur",
+        "name:frr": "Tozeur (Guwernement)",
+        "name:id": "Kegubernuran Tozeur",
+        "name:it": "Tozeur",
+        "name:ja": "トズール県",
+        "name:kab": "توزر",
+        "name:ko": "토죄르주",
+        "name:ks": "توزر",
+        "name:ms": "Kawasan kegabenoran Tozeur",
+        "name:nl": "Tozeur (gouvernement)",
+        "name:no": "Tozeur (guvernement)",
+        "name:pl": "Gubernatorstwo Tauzar",
+        "name:pt": "Tozeur (província)",
+        "name:ro": "Guvernoratul Tozeur",
+        "name:ru": "Таузар (вилайет)",
+        "name:sco": "Tozeur Govrenorate",
+        "name:sh": "Tozeur (vilajet)",
+        "name:sv": "Tozeur (guvernement)",
+        "name:tr": "Tuzer ili",
+        "name:uk": "Таузар (вілаєт)",
+        "name:ur": "توزر",
+        "name:zh": "托澤爾省",
+        "name:zu": "Tozeur Governorate",
+        "official_name": "ولاية توزر",
+        "official_name:ar": "ولاية توزر",
+        "official_name:en": "Tozeur Governorate",
+        "official_name:fa": "استان توزر",
+        "official_name:fr": "Gouvernorat de Tozeur",
+        "official_name:it": "Governatorato di Tozeur",
+        "official_name:ur": "ولایت توزر",
+        "population": "107912",
+        "population:date": "2014",
+        "ref:tn:codegeo": "62",
+        "wikidata": "Q388059",
+        "wikipedia": "ar:ولاية توزر"
+      },
+      "sourceGeometrySha256": "c8401d707cecac8654c66ed40f4eeb9cbf3c10a7ef7c1ba268046ad2d49b24ee"
+    }
+  },
+  "expectedCoordinateCorrections": [
+    {
+      "delegationId": 478,
+      "expectedGovernorateId": 352,
+      "expectedNames": {
+        "nomAr": "دقاش",
+        "nomFr": "Degueche",
+        "nomEn": "Degueche"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 33.97,
+        "lng": 8.22
+      },
+      "proposed": {
+        "lat": 34.016,
+        "lng": 8.273
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen Hichria-stage gouvernorats.json SHA256 cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c; external origin undocumented. Neither old nor published daily coordinates are labelled as an exact OSM settlement point.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-prayer-478-2026-09-12.json",
+          "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-sun-478-2026-09-12.json",
+          "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "3ff5d6d8a60a6519320f566e5a2e6995fd6980490f040bdb578db0b8b6068bb2"
+        }
+      },
+      "qualification": "Official published daily timetable reference fields corroborated by original prayer and sunrise responses. The coordinates are separate from the named data.delegation identity; they do not certify a town centre, hidden server calculation input, settlement equivalence or administrative boundary.",
+      "reviewBatchId": "2026-09-13-inm-published-degueche478",
+      "originalSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-gouvernorats.json",
+        "sha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
+      }
+    }
+  ],
+  "onlyRawChange": {
+    "id": "osm:node:351582010",
+    "field": "pickerGroupId",
+    "before": "osm:node:351582010",
+    "after": "delegation:478"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:351582010"
+      ],
+      [
+        "delegation:478"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:478",
+        "osm:node:351582010"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "independentPublishedPrayerSelection": {
+    "schemaVersion": 1,
+    "method": "exact_degueche_retained_display_independent_prayer_source",
+    "displayGroupId": "delegation:478",
+    "retainedPoint": {
+      "id": "osm:node:351582010",
+      "lat": 33.9841058,
+      "lng": 8.2154584
+    },
+    "manualSourceId": 481,
+    "publishedPrayerReference": {
+      "file": "prayer-source-coordinates.json",
+      "sha256": "091711bafdf85d4f94a09141b555b480dadc18e8f188f0e8989c1d3162b87b9f",
+      "expectedCorrection": {
+        "delegationId": 478,
+        "expectedGovernorateId": 352,
+        "expectedNames": {
+          "nomAr": "دقاش",
+          "nomFr": "Degueche",
+          "nomEn": "Degueche"
+        },
+        "reviewedDate": "2026-09-13",
+        "original": {
+          "lat": 33.97,
+          "lng": 8.22
+        },
+        "proposed": {
+          "lat": 34.016,
+          "lng": 8.273
+        },
+        "originalProvenance": "Legacy bundled reference retained in the frozen Hichria-stage gouvernorats.json SHA256 cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c; external origin undocumented. Neither old nor published daily coordinates are labelled as an exact OSM settlement point.",
+        "referenceKind": "inm_published_reference",
+        "inmEvidence": {
+          "serviceDate": "2026-09-12",
+          "prayer": {
+            "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-prayer-478-2026-09-12.json",
+            "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+          },
+          "sun": {
+            "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-sun-478-2026-09-12.json",
+            "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/"
+          },
+          "retrievalManifest": {
+            "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/retrieval-manifest.json",
+            "sha256": "3ff5d6d8a60a6519320f566e5a2e6995fd6980490f040bdb578db0b8b6068bb2"
+          }
+        },
+        "qualification": "Official published daily timetable reference fields corroborated by original prayer and sunrise responses. The coordinates are separate from the named data.delegation identity; they do not certify a town centre, hidden server calculation input, settlement equivalence or administrative boundary.",
+        "reviewBatchId": "2026-09-13-inm-published-degueche478",
+        "originalSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c",
+        "originalSourceAssetEvidence": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-gouvernorats.json",
+          "sha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
+        }
+      }
+    },
+    "historicalDisplayEvidence": {
+      "file": "point-base-display-reviews/degueche-retained-reference-2026-09-13/historical-retained-display-proposal.json",
+      "sha256": "87896aaf2dbce58865d98b3b94bce242b78c0fe9fee77ee5ca458a1baa239c5b"
+    },
+    "preservedPoints": [
+      {
+        "id": "osm:node:351581998",
+        "kind": "hamlet",
+        "tags": {
+          "name": "بوهلال",
+          "name:ar": "بوهلال",
+          "name:en": "Bou Helal",
+          "name:fr": "Bou Helal",
+          "place": "hamlet"
+        },
+        "currentMetadata": {
+          "id": "osm:node:351581998",
+          "sourceId": "osm",
+          "name": "بوهلال",
+          "aliases": [
+            "Bou Helal"
+          ],
+          "kind": "hamlet",
+          "parentName": "المحاسن",
+          "contextAliases": [
+            "Degache",
+            "Délégation Degache",
+            "El Mahassen",
+            "المحاسن",
+            "معتمدية دقاش"
+          ],
+          "governorateId": 352,
+          "lat": 34.0099439,
+          "lng": 8.2689451,
+          "delegationId": 478,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:351581998"
+        }
+      },
+      {
+        "id": "osm:node:5629636916",
+        "kind": "village",
+        "tags": {
+          "name": "كريز المحسن",
+          "name:ar": "كريز المحسن",
+          "name:en": "Kriz El Mahassen",
+          "name:fr": "Kriz El Mahassen",
+          "place": "village"
+        },
+        "currentMetadata": {
+          "id": "osm:node:5629636916",
+          "sourceId": "osm",
+          "name": "كريز المحسن",
+          "aliases": [
+            "Kriz El Mahassen"
+          ],
+          "kind": "village",
+          "parentName": "دغومس",
+          "contextAliases": [
+            "Degache",
+            "Dghoumes",
+            "Délégation Degache",
+            "دغومس",
+            "معتمدية دقاش"
+          ],
+          "governorateId": 352,
+          "lat": 34.0366878,
+          "lng": 8.3372594,
+          "delegationId": 478,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:5629636916"
+        }
+      }
+    ],
+    "qualification": "The published daily reference is separate from the retained Degache town; it does not move or merge Bou Helal or certify a settlement center."
+  },
+  "scope": "Keep the existing named Degache browsing identity and town coordinate while selecting the nearest available source481. Source478 remains the separately published INM delegation reference. All six imadas and Bou Helal/Kriz point rows remain separate.",
+  "rawCurrentPhaseQualification": "Projected metadata after the478 coordinate correction, before the reviewed display dispatch; not a claim that these projected bytes are already installed.",
+  "boundaryQualification": "Archived source containment and exact retained polygon bytes only; no new official boundary or settlement-center certification."
+}

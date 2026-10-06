@@ -1,0 +1,971 @@
+{
+  "scope": "Exact name/context and current canonical owner inspection for six target names only. Direct contracts from frozen facts. Not a transitive compiler proof audit or automatic descendant name rename.",
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\facts.json",
+      "sha256": "3bd995789604ecdc0e9e07d03af1b693ac63976af464f3ed5889fccfbcf4f304"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\metadata.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\selected-geometries.json",
+      "sha256": "507da8e7add75d106135c838f065f6cd308acdb926f0d5eed73c8bb70a2bfe2c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\native-review\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494"
+    }
+  ],
+  "items": [
+    {
+      "id": "osm:relation:7142943",
+      "exactTerms": [
+        "El Maghzaouia",
+        "El maghzaouia",
+        "المغراوية",
+        "المغزاوية"
+      ],
+      "targetOwner": "osm:relation:7142943",
+      "targetOwnerMembers": [
+        "osm:relation:7142943"
+      ],
+      "directCuration": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "directPicker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "matchingRows": [
+        {
+          "row": {
+            "id": "osm:node:352753595",
+            "sourceId": "osm",
+            "name": "مغراوية",
+            "aliases": [
+              "Maghraouia"
+            ],
+            "kind": "hamlet",
+            "parentName": "المغزاوية",
+            "contextAliases": [
+              "Délégation Sidi Makhlouf",
+              "El Maghzaouia",
+              "Sidi Makhlouf",
+              "المغزاوية",
+              "معتمدية سيدي مخلوف"
+            ],
+            "governorateId": 353,
+            "lat": 33.6490516,
+            "lng": 10.6141292,
+            "delegationId": 493,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:352753595"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "المغزاوية"
+            ],
+            "contextAliases": [
+              "El Maghzaouia",
+              "المغزاوية"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:352753595",
+          "ownerMembers": [
+            "osm:node:352753595"
+          ]
+        }
+      ],
+      "knownContextConsumers": [
+        "osm:node:352753595"
+      ]
+    },
+    {
+      "id": "osm:relation:7165270",
+      "exactTerms": [
+        "Ed-dheriaat",
+        "Edheriaat",
+        "الدريعات",
+        "الذريعات"
+      ],
+      "targetOwner": "osm:relation:7165270",
+      "targetOwnerMembers": [
+        "osm:relation:7165270"
+      ],
+      "directCuration": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "directPicker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "matchingRows": [
+        {
+          "row": {
+            "id": "osm:way:951284044",
+            "sourceId": "osm",
+            "name": "العبادلية",
+            "aliases": [
+              "Abadlia"
+            ],
+            "kind": "residential",
+            "parentName": "الدريعات",
+            "contextAliases": [
+              "Délégation Sbikha",
+              "Edheriaat",
+              "Sbikha",
+              "الدريعات",
+              "معتمدية السبيخة"
+            ],
+            "governorateId": 357,
+            "lat": 35.969749,
+            "lng": 10.097308,
+            "delegationId": 521,
+            "hasBoundary": true,
+            "bbox": [
+              10.092757,
+              35.966684,
+              10.099881,
+              35.972745
+            ],
+            "areaKm2": 0.1903022267760857,
+            "pickerGroupId": "osm:way:951284044",
+            "offset": 5539980,
+            "length": 164
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "الدريعات"
+            ],
+            "contextAliases": [
+              "Edheriaat",
+              "الدريعات"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:way:951284044",
+          "ownerMembers": [
+            "osm:way:951284044"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:way:951326265",
+            "sourceId": "osm",
+            "name": "الرواونة",
+            "aliases": [
+              "Rwawna"
+            ],
+            "kind": "residential",
+            "parentName": "الدريعات",
+            "contextAliases": [
+              "Délégation Sbikha",
+              "Edheriaat",
+              "Sbikha",
+              "الدريعات",
+              "معتمدية السبيخة"
+            ],
+            "governorateId": 357,
+            "lat": 35.979898,
+            "lng": 10.099737,
+            "delegationId": 521,
+            "hasBoundary": true,
+            "bbox": [
+              10.097927,
+              35.977928,
+              10.101593,
+              35.981809
+            ],
+            "areaKm2": 0.08227844770184185,
+            "pickerGroupId": "osm:way:951326265",
+            "offset": 5540144,
+            "length": 260
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "الدريعات"
+            ],
+            "contextAliases": [
+              "Edheriaat",
+              "الدريعات"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:way:951326265",
+          "ownerMembers": [
+            "osm:way:951326265"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:way:951326266",
+            "sourceId": "osm",
+            "name": "أولاد الجلاصي",
+            "aliases": [
+              "Aulád Alyalási",
+              "Aulád Yalási",
+              "Awled Jlassi",
+              "Ouled Jlassi"
+            ],
+            "kind": "residential",
+            "parentName": "الدريعات",
+            "contextAliases": [
+              "Délégation Sbikha",
+              "Edheriaat",
+              "Sbikha",
+              "الدريعات",
+              "معتمدية السبيخة"
+            ],
+            "governorateId": 357,
+            "lat": 35.968125,
+            "lng": 10.11592,
+            "delegationId": 521,
+            "hasBoundary": true,
+            "bbox": [
+              10.11408,
+              35.966394,
+              10.118386,
+              35.970134
+            ],
+            "areaKm2": 0.08876692158240251,
+            "pickerGroupId": "osm:way:951326266",
+            "offset": 5540404,
+            "length": 172
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "الدريعات"
+            ],
+            "contextAliases": [
+              "Edheriaat",
+              "الدريعات"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:way:951326266",
+          "ownerMembers": [
+            "osm:way:951326266"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:2203976293",
+            "sourceId": "osm",
+            "name": "سيدي بلال",
+            "aliases": [
+              "Sidi Belal"
+            ],
+            "kind": "village",
+            "parentName": "الدريعات",
+            "contextAliases": [
+              "Délégation Sbikha",
+              "Edheriaat",
+              "Sbikha",
+              "الدريعات",
+              "معتمدية السبيخة"
+            ],
+            "governorateId": 357,
+            "lat": 35.9748077,
+            "lng": 10.1541859,
+            "delegationId": 521,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:2203976293"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "الدريعات"
+            ],
+            "contextAliases": [
+              "Edheriaat",
+              "الدريعات"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:2203976293",
+          "ownerMembers": [
+            "osm:node:2203976293"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:7433415028",
+            "sourceId": "osm",
+            "name": "هندي الزيتونة",
+            "aliases": [
+              "Hendi Zitouna"
+            ],
+            "kind": "village",
+            "parentName": "الدريعات",
+            "contextAliases": [
+              "Délégation Sbikha",
+              "Edheriaat",
+              "Sbikha",
+              "الدريعات",
+              "معتمدية السبيخة"
+            ],
+            "governorateId": 357,
+            "lat": 35.9993803,
+            "lng": 10.0969483,
+            "delegationId": 521,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:7433415028"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "الدريعات"
+            ],
+            "contextAliases": [
+              "Edheriaat",
+              "الدريعات"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:7433415028",
+          "ownerMembers": [
+            "osm:node:7433415028"
+          ]
+        }
+      ],
+      "knownContextConsumers": [
+        "osm:way:951284044",
+        "osm:way:951326265",
+        "osm:way:951326266",
+        "osm:node:2203976293",
+        "osm:node:7433415028"
+      ]
+    },
+    {
+      "id": "osm:relation:7169564",
+      "exactTerms": [
+        "Dheouibet Sud",
+        "Dheouibet sud",
+        "الدويبات الجنوبية",
+        "الذويبات الجنوبية"
+      ],
+      "targetOwner": "osm:relation:7169564",
+      "targetOwnerMembers": [
+        "osm:relation:7169564"
+      ],
+      "directCuration": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "directPicker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "matchingRows": [
+        {
+          "row": {
+            "id": "osm:node:6916227160",
+            "sourceId": "osm",
+            "name": "الذويبات",
+            "aliases": [
+              "Dhouibet"
+            ],
+            "kind": "village",
+            "parentName": "الدويبات الجنوبية",
+            "contextAliases": [
+              "Dheouibet Sud",
+              "Délégation Ouled Haffouz",
+              "Ouled Haffouz",
+              "الدويبات الجنوبية",
+              "معتمدية أولاد حفوز"
+            ],
+            "governorateId": 355,
+            "lat": 35.0905554,
+            "lng": 9.9425111,
+            "delegationId": 512,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:6916227160"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "الدويبات الجنوبية"
+            ],
+            "contextAliases": [
+              "Dheouibet Sud",
+              "الدويبات الجنوبية"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:6916227160",
+          "ownerMembers": [
+            "osm:node:6916227160"
+          ]
+        }
+      ],
+      "knownContextConsumers": [
+        "osm:node:6916227160"
+      ]
+    },
+    {
+      "id": "osm:relation:7127889",
+      "exactTerms": [
+        "Baltech",
+        "بلتش",
+        "بلطش"
+      ],
+      "targetOwner": "osm:relation:7127889",
+      "targetOwnerMembers": [
+        "osm:relation:7127889"
+      ],
+      "directCuration": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "directPicker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "matchingRows": [],
+      "knownContextConsumers": []
+    },
+    {
+      "id": "osm:relation:7133851",
+      "exactTerms": [
+        "Sedouikech",
+        "سدويكش",
+        "صدويكش"
+      ],
+      "targetOwner": "osm:relation:7133851",
+      "targetOwnerMembers": [
+        "osm:relation:7133851"
+      ],
+      "directCuration": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "directPicker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "matchingRows": [
+        {
+          "row": {
+            "id": "osm:way:183799954",
+            "sourceId": "osm",
+            "name": "ورسيغن",
+            "aliases": [
+              "Ouersighen"
+            ],
+            "kind": "residential",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.729341,
+            "lng": 10.883718,
+            "delegationId": 491,
+            "hasBoundary": true,
+            "bbox": [
+              10.877606,
+              33.724946,
+              10.8911,
+              33.733741
+            ],
+            "areaKm2": 0.6706416606924408,
+            "pickerGroupId": "osm:way:183799954",
+            "offset": 5379280,
+            "length": 1884
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:way:183799954",
+          "ownerMembers": [
+            "osm:way:183799954"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:11256424282",
+            "sourceId": "osm",
+            "name": "غرداية",
+            "aliases": [
+              "Ghardaia"
+            ],
+            "kind": "village",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.7163618,
+            "lng": 10.9358141,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11256424282"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:11256424282",
+          "ownerMembers": [
+            "osm:node:11256424282"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:11256425588",
+            "sourceId": "osm",
+            "name": "المحاميد",
+            "aliases": [
+              "El Mhamid"
+            ],
+            "kind": "hamlet",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.6940052,
+            "lng": 10.9119599,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11256425588"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:11256425588",
+          "ownerMembers": [
+            "osm:node:11256425588"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:11256425593",
+            "sourceId": "osm",
+            "name": "Tala",
+            "aliases": [],
+            "kind": "hamlet",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.707639,
+            "lng": 10.9117752,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11256425593"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:11256425593",
+          "ownerMembers": [
+            "osm:node:11256425593"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:11256427632",
+            "sourceId": "osm",
+            "name": "Talbet",
+            "aliases": [],
+            "kind": "hamlet",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.7126979,
+            "lng": 10.9244903,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11256427632"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:11256427632",
+          "ownerMembers": [
+            "osm:node:11256427632"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:12171078159",
+            "sourceId": "osm",
+            "name": "تافرطاست",
+            "aliases": [
+              "Tafertasset"
+            ],
+            "kind": "village",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.7418591,
+            "lng": 10.9041383,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:12171078159"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:12171078159",
+          "ownerMembers": [
+            "osm:node:12171078159"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:12198018912",
+            "sourceId": "osm",
+            "name": "Teghalla",
+            "aliases": [],
+            "kind": "neighbourhood",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.7463022,
+            "lng": 10.9246649,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:12198018912"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:12198018912",
+          "ownerMembers": [
+            "osm:node:12198018912"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:12198018913",
+            "sourceId": "osm",
+            "name": "Tmasset",
+            "aliases": [],
+            "kind": "neighbourhood",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.7432886,
+            "lng": 10.9135474,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:12198018913"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:12198018913",
+          "ownerMembers": [
+            "osm:node:12198018913"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:12211699220",
+            "sourceId": "osm",
+            "name": "Tamgret",
+            "aliases": [],
+            "kind": "neighbourhood",
+            "parentName": "سدويكش",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "Sedouikech",
+              "سدويكش",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.7512184,
+            "lng": 10.9202687,
+            "delegationId": 491,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:12211699220"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "سدويكش"
+            ],
+            "contextAliases": [
+              "Sedouikech",
+              "سدويكش"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:12211699220",
+          "ownerMembers": [
+            "osm:node:12211699220"
+          ]
+        }
+      ],
+      "knownContextConsumers": [
+        "osm:way:183799954",
+        "osm:node:11256424282",
+        "osm:node:11256425588",
+        "osm:node:11256425593",
+        "osm:node:11256427632",
+        "osm:node:12171078159",
+        "osm:node:12198018912",
+        "osm:node:12198018913",
+        "osm:node:12211699220"
+      ]
+    },
+    {
+      "id": "osm:relation:7143844",
+      "exactTerms": [
+        "Kambout",
+        "Kenbout",
+        "كمبوت",
+        "كنبوت",
+        "ⴽⵎⴱⵓⵜ"
+      ],
+      "targetOwner": "osm:relation:7143844",
+      "targetOwnerMembers": [
+        "osm:relation:7143844"
+      ],
+      "directCuration": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "directPicker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "matchingRows": [
+        {
+          "row": {
+            "id": "osm:way:186750635",
+            "sourceId": "osm",
+            "name": "Borj Bourguiba",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "كمبوت",
+            "contextAliases": [
+              "Délégation Remada",
+              "Kambout",
+              "Remada",
+              "كمبوت",
+              "معتمدية رمادة"
+            ],
+            "governorateId": 351,
+            "lat": 32.207308,
+            "lng": 10.030953,
+            "delegationId": 471,
+            "hasBoundary": true,
+            "bbox": [
+              10.029008,
+              32.205619,
+              10.032324,
+              32.208956
+            ],
+            "areaKm2": 0.04640696403370559,
+            "pickerGroupId": "osm:way:186750635",
+            "offset": 5386192,
+            "length": 204
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "كمبوت"
+            ],
+            "contextAliases": [
+              "Kambout",
+              "كمبوت"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:way:186750635",
+          "ownerMembers": [
+            "osm:way:186750635"
+          ]
+        },
+        {
+          "row": {
+            "id": "osm:node:1974940233",
+            "sourceId": "osm",
+            "name": "برج بورقيبة",
+            "aliases": [
+              "ⴱⵔⵊ ⴱⵓⵔⵇⵉⴱⴰ برج بورقيبة",
+              "Bordj Bourguiba",
+              "Borj Bourguiba",
+              "ⴱⵔⵊ ⴱⵓⵔⵇⵉⴱⴰ"
+            ],
+            "kind": "village",
+            "parentName": "كمبوت",
+            "contextAliases": [
+              "Délégation Remada",
+              "Kambout",
+              "Remada",
+              "كمبوت",
+              "معتمدية رمادة"
+            ],
+            "governorateId": 351,
+            "lat": 32.2046642,
+            "lng": 10.0302214,
+            "delegationId": 471,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:1974940233"
+          },
+          "exactMatchingFields": {
+            "parentName": [
+              "كمبوت"
+            ],
+            "contextAliases": [
+              "Kambout",
+              "كمبوت"
+            ]
+          },
+          "originalTargetCoversPoint": true,
+          "packedTargetCoversPoint": true,
+          "sameGovernorate": true,
+          "pickerOwner": "osm:node:1974940233",
+          "ownerMembers": [
+            "osm:node:1974940233"
+          ]
+        }
+      ],
+      "knownContextConsumers": [
+        "osm:way:186750635",
+        "osm:node:1974940233"
+      ]
+    }
+  ]
+}

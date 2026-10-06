@@ -1,0 +1,61 @@
+{
+  "requestedUrl": "https://www.social.gov.tn/fr/node/2972",
+  "retrievedAt": "2026-09-12T22:14:04.0181772Z",
+  "method": "GET",
+  "tlsVerification": "Default Windows trust; no bypass",
+  "originalPythonFailurePreserved": "retrievals.json",
+  "status": 200,
+  "finalUrl": null,
+  "headers": {
+    "Date": [
+      "Sat, 12 Sep 2026 22:14:10 GMT"
+    ],
+    "Server": [
+      "Apache"
+    ],
+    "X-Content-Type-Options": [
+      "nosniff",
+      "nosniff"
+    ],
+    "X-Powered-By": [
+      "PHP/7.4.30"
+    ],
+    "Cache-Control": [
+      "must-revalidate, no-cache, private"
+    ],
+    "X-Drupal-Dynamic-Cache": [
+      "UNCACHEABLE"
+    ],
+    "Link": [
+      "<https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%A8%D8%AF%D9%82%D8%A7%D8%B4-%D8%AA%D9%88%D8%B2%D8%B1>; rel=\"alternate\"; hreflang=\"ar\"",
+      "<https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%A8%D8%AF%D9%82%D8%A7%D8%B4-%D8%AA%D9%88%D8%B2%D8%B1>; rel=\"canonical\"",
+      "<https://www.social.gov.tn/ar/node/2972>; rel=\"shortlink\"",
+      "<https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%A8%D8%AF%D9%82%D8%A7%D8%B4-%D8%AA%D9%88%D8%B2%D8%B1>; rel=\"revision\""
+    ],
+    "X-UA-Compatible": [
+      "IE=edge"
+    ],
+    "X-Frame-Options": [
+      "SAMEORIGIN"
+    ],
+    "X-Generator": [
+      "Drupal 9 (https://www.drupal.org)"
+    ],
+    "Transfer-Encoding": [
+      "chunked"
+    ],
+    "Content-Language": [
+      "fr"
+    ],
+    "Expires": [
+      "Sun, 19 Nov 1978 05:00:00 GMT"
+    ],
+    "Content-Type": [
+      "text/html; charset=UTF-8"
+    ]
+  },
+  "file": "social-degache-windows-tls.html",
+  "sha256": "294e1c6249366f7a9322b7db5702ac0b439a15cafe65b6dc04a64b6bdcca43a7",
+  "bytes": 65804,
+  "provenance": "Original HTTP response bytes written by Invoke-WebRequest -OutFile; not parsed or rewritten"
+}

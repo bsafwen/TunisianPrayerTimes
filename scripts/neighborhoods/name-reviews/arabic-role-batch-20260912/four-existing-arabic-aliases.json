@@ -1,0 +1,611 @@
+{
+  "status": "PASS_FOUR_EXISTING_ARABIC_ALIAS_PROMOTIONS",
+  "baselineMetadataSha256": "c173c3051ca1ab9ec6ba077c5b86a52b4e78aa695820d8caf3e2ad3d170250e9",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c173c3051ca1ab9ec6ba077c5b86a52b4e78aa695820d8caf3e2ad3d170250e9",
+    "bytes": 1851719
+  },
+  "baselineCuration": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "660f481f680bad551df14b56b5909d65714856492498d826b468d129c02a16bd",
+    "bytes": 381051
+  },
+  "compiler": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "b4210755827fff89a6660c5439aee5081f6932776144ba515f736913664aead3",
+    "bytes": 563448
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\source-name-finite-facts.json",
+    "sha256": "796f781a6c39d6f3a4145608975d73bfcd63c79279aa938ed493964642c5ecd3",
+    "bytes": 257481
+  },
+  "originalRetrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\retrieval-manifest.json",
+    "sha256": "4c27c25e5b84fa6a9cb5c30adff5ec8f5501daf88f4ed2e59f1d146c19238b9d",
+    "bytes": 36257
+  },
+  "primaryContextRetrievals": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\primary-context-retrievals.json",
+    "sha256": "b2ee009ecdb45f490c3ec04e4a6d836a78079fa4eaf9899cabd5419d3eb22700",
+    "bytes": 4845
+  },
+  "exactProposedCurations": [
+    {
+      "id": "osm:way:123158451",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "Sidi Aïssa",
+        "addr:country": "TN",
+        "addr:governorate": "Nabeul",
+        "landuse": "residential",
+        "name": "Sidi Aïssa"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Sidi Aïssa",
+        "name:ar": "سيدي عيسى"
+      },
+      "reason": "The exact contained and already absorbed hamlet supplies سيدي عيسى. Public ministerial reporting names the Sidi Aissa school in Takelsa. The same-named remote Ghezala/Bizerte sector remains a distinct identity. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        "https://api.openstreetmap.org/api/0.6/way/123158451.json",
+        "https://api.openstreetmap.org/api/0.6/node/2041838914.json",
+        "https://www.radiomonastir.tn/article/6909d8542b5755c3b513069b/وزير-التربية-في-زيارة-ميدانية-إلى-كافة-معتمديات-نابل"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    },
+    {
+      "id": "osm:way:148644396",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Douiret"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Douiret",
+        "name:ar": "دويرات"
+      },
+      "reason": "The exact contained and already absorbed village supplies دويرات. This promotes its existing alias on the current residential footprint. It neither substitutes the historic northern ruined village/ksar nor equates the broader Douiret sector with this footprint. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        "https://api.openstreetmap.org/api/0.6/way/148644396.json",
+        "https://api.openstreetmap.org/api/0.6/node/1977376169.json"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    },
+    {
+      "id": "osm:way:243776389",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "Aïn Garci",
+        "addr:country": "TN",
+        "addr:governorate": "Sousse",
+        "addr:postcode": "4035",
+        "landuse": "residential",
+        "name": "Aïn Garci",
+        "name:fr": "Aïn Garci"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Aïn Garci",
+        "name:fr": "Aïn Garci",
+        "name:ar": "عين القارصي"
+      },
+      "reason": "The exact contained and already absorbed village supplies عين القارصي; the Enfidha municipality independently uses this place name in regional history. The broader القارصي sector remains separate; the historical place-name mention is not modern polygon certification. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        "https://api.openstreetmap.org/api/0.6/way/243776389.json",
+        "https://api.openstreetmap.org/api/0.6/node/1863511989.json",
+        "https://www.commune-enfidha.gov.tn/index.php/ar/features/histoire-et-patrimoines"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    },
+    {
+      "id": "osm:way:246391073",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Chenchou"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Chenchou",
+        "name:ar": "شنشو"
+      },
+      "reason": "The exact contained and already absorbed hamlet supplies شنشو, already the current alias. Keep this source-specific spelling for the small residential locality. The parent sector and CTAB publication use شانشو; root Maps Arabic query likewise identifies a broader شانشو/Chanchou area. Neither establishes that the specific absorbed hamlet must be renamed or merged. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        "https://api.openstreetmap.org/api/0.6/way/246391073.json",
+        "https://api.openstreetmap.org/api/0.6/node/2534432406.json"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "osm:way:123158451",
+      "currentRaw": {
+        "id": "osm:way:123158451",
+        "sourceId": "osm",
+        "name": "Sidi Aïssa",
+        "aliases": [
+          "سيدي عيسى"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تاكلسة",
+        "contextAliases": [
+          "Délégation Takelsa",
+          "Takelsa",
+          "معتمدية تاكلسة"
+        ],
+        "governorateId": 350,
+        "lat": 36.808316,
+        "lng": 10.658028,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.65354,
+          36.80595,
+          10.661575,
+          36.810832
+        ],
+        "areaKm2": 0.1897584490098836,
+        "pickerGroupId": "osm:way:123158451",
+        "offset": 5254560,
+        "length": 364
+      },
+      "expectedMetadata": {
+        "id": "osm:way:123158451",
+        "sourceId": "osm",
+        "name": "سيدي عيسى",
+        "aliases": [
+          "Sidi Aïssa"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تاكلسة",
+        "contextAliases": [
+          "Délégation Takelsa",
+          "Takelsa",
+          "معتمدية تاكلسة"
+        ],
+        "governorateId": 350,
+        "lat": 36.808316,
+        "lng": 10.658028,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.65354,
+          36.80595,
+          10.661575,
+          36.810832
+        ],
+        "areaKm2": 0.1897584490098836,
+        "pickerGroupId": "osm:way:123158451",
+        "offset": 5254560,
+        "length": 364
+      },
+      "expectedNameFields": {
+        "name": "سيدي عيسى",
+        "aliases": [
+          "Sidi Aïssa"
+        ]
+      },
+      "absorbedNodeId": "osm:node:2041838914",
+      "qualifications": "The exact contained and already absorbed hamlet supplies سيدي عيسى. Public ministerial reporting names the Sidi Aissa school in Takelsa. The same-named remote Ghezala/Bizerte sector remains a distinct identity.",
+      "sameNamePeers": [
+        {
+          "id": "osm:relation:7124229",
+          "sourceId": "osm",
+          "name": "سيدي عيسى",
+          "aliases": [
+            "Sidi Aissa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية غزالة",
+          "contextAliases": [
+            "Délégation Ghezala",
+            "Ghezala",
+            "معتمدية غزالة"
+          ],
+          "governorateId": 361,
+          "lat": 37.112737,
+          "lng": 9.482615,
+          "delegationId": 560,
+          "hasBoundary": true,
+          "bbox": [
+            9.418455,
+            37.079752,
+            9.540306,
+            37.146058
+          ],
+          "areaKm2": 39.2453941840239,
+          "pickerGroupId": "osm:relation:7124229",
+          "offset": 1270456,
+          "length": 2332
+        }
+      ],
+      "sameNameBasePeers": [],
+      "sourceChecks": {
+        "wayCurrentEqualsHistoryLastAndFull": true,
+        "wayFullTopologyEqualsFreshPbfExactCyclicRing": true,
+        "packedEqualsDeclaredQuantization": true,
+        "nodeCurrentExactlyMatchesFreshPbf": true,
+        "singleContainedNamedSourceNode": "osm:node:2041838914",
+        "nodeAbsentFromRawCatalog": true,
+        "noHistoricalNodeCoordinatesInferredFromWayHistory": true
+      },
+      "packedSha256": "7c1b253e4ef8d35254a4b7ea044f42e9878e49fd582fde073cfe720952b8df5a",
+      "packedBytes": 364
+    },
+    {
+      "id": "osm:way:148644396",
+      "currentRaw": {
+        "id": "osm:way:148644396",
+        "sourceId": "osm",
+        "name": "Douiret",
+        "aliases": [
+          "دويرات"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تطاوين الجنوبية",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.857067,
+        "lng": 10.289225,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          10.2856,
+          32.854759,
+          10.293401,
+          32.858927
+        ],
+        "areaKm2": 0.23402941569124724,
+        "pickerGroupId": "osm:way:148644396",
+        "offset": 5282172,
+        "length": 300
+      },
+      "expectedMetadata": {
+        "id": "osm:way:148644396",
+        "sourceId": "osm",
+        "name": "دويرات",
+        "aliases": [
+          "Douiret"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تطاوين الجنوبية",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.857067,
+        "lng": 10.289225,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          10.2856,
+          32.854759,
+          10.293401,
+          32.858927
+        ],
+        "areaKm2": 0.23402941569124724,
+        "pickerGroupId": "osm:way:148644396",
+        "offset": 5282172,
+        "length": 300
+      },
+      "expectedNameFields": {
+        "name": "دويرات",
+        "aliases": [
+          "Douiret"
+        ]
+      },
+      "absorbedNodeId": "osm:node:1977376169",
+      "qualifications": "The exact contained and already absorbed village supplies دويرات. This promotes its existing alias on the current residential footprint. It neither substitutes the historic northern ruined village/ksar nor equates the broader Douiret sector with this footprint.",
+      "sameNamePeers": [],
+      "sameNameBasePeers": [],
+      "sourceChecks": {
+        "wayCurrentEqualsHistoryLastAndFull": true,
+        "wayFullTopologyEqualsFreshPbfExactCyclicRing": true,
+        "packedEqualsDeclaredQuantization": true,
+        "nodeCurrentExactlyMatchesFreshPbf": true,
+        "singleContainedNamedSourceNode": "osm:node:1977376169",
+        "nodeAbsentFromRawCatalog": true,
+        "noHistoricalNodeCoordinatesInferredFromWayHistory": true
+      },
+      "packedSha256": "b08eab6dcb92d302ad658d17fbe1ca73a21702f328f4e8b7b7f23aa821326381",
+      "packedBytes": 300
+    },
+    {
+      "id": "osm:way:243776389",
+      "currentRaw": {
+        "id": "osm:way:243776389",
+        "sourceId": "osm",
+        "name": "Aïn Garci",
+        "aliases": [
+          "عين القارصي"
+        ],
+        "kind": "residential",
+        "parentName": "القارصي",
+        "contextAliases": [
+          "Délégation Enfidha",
+          "El Garci",
+          "Enfida",
+          "القارصي",
+          "معتمدية النفيضة"
+        ],
+        "governorateId": 348,
+        "lat": 36.147017,
+        "lng": 10.247344,
+        "delegationId": 413,
+        "hasBoundary": true,
+        "bbox": [
+          10.242198,
+          36.14143,
+          10.254427,
+          36.152493
+        ],
+        "areaKm2": 0.6342097508082947,
+        "pickerGroupId": "osm:way:243776389",
+        "offset": 5393624,
+        "length": 796
+      },
+      "expectedMetadata": {
+        "id": "osm:way:243776389",
+        "sourceId": "osm",
+        "name": "عين القارصي",
+        "aliases": [
+          "Aïn Garci"
+        ],
+        "kind": "residential",
+        "parentName": "القارصي",
+        "contextAliases": [
+          "Délégation Enfidha",
+          "El Garci",
+          "Enfida",
+          "القارصي",
+          "معتمدية النفيضة"
+        ],
+        "governorateId": 348,
+        "lat": 36.147017,
+        "lng": 10.247344,
+        "delegationId": 413,
+        "hasBoundary": true,
+        "bbox": [
+          10.242198,
+          36.14143,
+          10.254427,
+          36.152493
+        ],
+        "areaKm2": 0.6342097508082947,
+        "pickerGroupId": "osm:way:243776389",
+        "offset": 5393624,
+        "length": 796
+      },
+      "expectedNameFields": {
+        "name": "عين القارصي",
+        "aliases": [
+          "Aïn Garci"
+        ]
+      },
+      "absorbedNodeId": "osm:node:1863511989",
+      "qualifications": "The exact contained and already absorbed village supplies عين القارصي; the Enfidha municipality independently uses this place name in regional history. The broader القارصي sector remains separate; the historical place-name mention is not modern polygon certification.",
+      "sameNamePeers": [],
+      "sameNameBasePeers": [],
+      "sourceChecks": {
+        "wayCurrentEqualsHistoryLastAndFull": true,
+        "wayFullTopologyEqualsFreshPbfExactCyclicRing": true,
+        "packedEqualsDeclaredQuantization": true,
+        "nodeCurrentExactlyMatchesFreshPbf": true,
+        "singleContainedNamedSourceNode": "osm:node:1863511989",
+        "nodeAbsentFromRawCatalog": true,
+        "noHistoricalNodeCoordinatesInferredFromWayHistory": true
+      },
+      "packedSha256": "b79652fe1764eeebbe5d4648feddc1e8ecd02f36f412942bafbda81da08b479c",
+      "packedBytes": 796
+    },
+    {
+      "id": "osm:way:246391073",
+      "currentRaw": {
+        "id": "osm:way:246391073",
+        "sourceId": "osm",
+        "name": "Chenchou",
+        "aliases": [
+          "شنشو"
+        ],
+        "kind": "residential",
+        "parentName": "شانشو",
+        "contextAliases": [
+          "Chanchou",
+          "Délégation El Hamma",
+          "El Hamma",
+          "شانشو",
+          "معتمدية الحامة"
+        ],
+        "governorateId": 347,
+        "lat": 33.888827,
+        "lng": 9.896263,
+        "delegationId": 1024,
+        "hasBoundary": true,
+        "bbox": [
+          9.892605,
+          33.88446,
+          9.899959,
+          33.893193
+        ],
+        "areaKm2": 0.32812982865995216,
+        "pickerGroupId": "osm:way:246391073",
+        "offset": 5396364,
+        "length": 404
+      },
+      "expectedMetadata": {
+        "id": "osm:way:246391073",
+        "sourceId": "osm",
+        "name": "شنشو",
+        "aliases": [
+          "Chenchou"
+        ],
+        "kind": "residential",
+        "parentName": "شانشو",
+        "contextAliases": [
+          "Chanchou",
+          "Délégation El Hamma",
+          "El Hamma",
+          "شانشو",
+          "معتمدية الحامة"
+        ],
+        "governorateId": 347,
+        "lat": 33.888827,
+        "lng": 9.896263,
+        "delegationId": 1024,
+        "hasBoundary": true,
+        "bbox": [
+          9.892605,
+          33.88446,
+          9.899959,
+          33.893193
+        ],
+        "areaKm2": 0.32812982865995216,
+        "pickerGroupId": "osm:way:246391073",
+        "offset": 5396364,
+        "length": 404
+      },
+      "expectedNameFields": {
+        "name": "شنشو",
+        "aliases": [
+          "Chenchou"
+        ]
+      },
+      "absorbedNodeId": "osm:node:2534432406",
+      "qualifications": "The exact contained and already absorbed hamlet supplies شنشو, already the current alias. Keep this source-specific spelling for the small residential locality. The parent sector and CTAB publication use شانشو; root Maps Arabic query likewise identifies a broader شانشو/Chanchou area. Neither establishes that the specific absorbed hamlet must be renamed or merged.",
+      "sameNamePeers": [],
+      "sameNameBasePeers": [],
+      "sourceChecks": {
+        "wayCurrentEqualsHistoryLastAndFull": true,
+        "wayFullTopologyEqualsFreshPbfExactCyclicRing": true,
+        "packedEqualsDeclaredQuantization": true,
+        "nodeCurrentExactlyMatchesFreshPbf": true,
+        "singleContainedNamedSourceNode": "osm:node:2534432406",
+        "nodeAbsentFromRawCatalog": true,
+        "noHistoricalNodeCoordinatesInferredFromWayHistory": true
+      },
+      "packedSha256": "58d8b799e76256be50bee8dc699a9d8148f97466743eb5a5e360f1962d47e9f4",
+      "packedBytes": 404
+    }
+  ],
+  "exactMetadataFieldChanges": [
+    {
+      "id": "osm:way:123158451",
+      "field": "name",
+      "before": "Sidi Aïssa",
+      "after": "سيدي عيسى"
+    },
+    {
+      "id": "osm:way:123158451",
+      "field": "aliases",
+      "before": [
+        "سيدي عيسى"
+      ],
+      "after": [
+        "Sidi Aïssa"
+      ]
+    },
+    {
+      "id": "osm:way:148644396",
+      "field": "name",
+      "before": "Douiret",
+      "after": "دويرات"
+    },
+    {
+      "id": "osm:way:148644396",
+      "field": "aliases",
+      "before": [
+        "دويرات"
+      ],
+      "after": [
+        "Douiret"
+      ]
+    },
+    {
+      "id": "osm:way:243776389",
+      "field": "name",
+      "before": "Aïn Garci",
+      "after": "عين القارصي"
+    },
+    {
+      "id": "osm:way:243776389",
+      "field": "aliases",
+      "before": [
+        "عين القارصي"
+      ],
+      "after": [
+        "Aïn Garci"
+      ]
+    },
+    {
+      "id": "osm:way:246391073",
+      "field": "name",
+      "before": "Chenchou",
+      "after": "شنشو"
+    },
+    {
+      "id": "osm:way:246391073",
+      "field": "aliases",
+      "before": [
+        "شنشو"
+      ],
+      "after": [
+        "Chenchou"
+      ]
+    }
+  ],
+  "preservationContract": {
+    "onlyNameAndAliasesChangeForIds": [
+      "osm:way:123158451",
+      "osm:way:148644396",
+      "osm:way:243776389",
+      "osm:way:246391073"
+    ],
+    "existing271CurationObjectsTokensAndExteriorBytes": "Preserve exactly when appending these four rules; this report does not alter a manifest.",
+    "sourceCoordinatesRawIdsAllPackedGeometryParentContextsPrayerDefaultsAndPickerGroups": "unchanged",
+    "absorbedNodes": "All four remain absent as raw rows; existing containment and absorption are preserved.",
+    "normalizedSearchNameSets": "Unchanged; original Latin primary becomes an alias.",
+    "expectedAdditionalNameCurationReceipts": 4,
+    "expectedAdditionalReviewedSavedNames": 4,
+    "noNameBasedMerges": true
+  },
+  "primaryQualification": {
+    "ctabPublication": "Issue 36, September–December 2020. The 2024 URL path is an upload date. Whole original physical pages 22–24 were viewed; physical page 23 spells شانشو, not شنشو. It corroborates broader El Hamma context only.",
+    "ctabDerivedText": "Full-page text is derived UTF-8 LF from PyMuPDF; it is not original HTTP content. Embedded Arabic font encoding makes rendered page wording decisive.",
+    "zinaFresh": "Original retrieval was HTTP 403 with an empty body; no address claim or search snippet from it supports these rules.",
+    "google": "Root public named-place observations supplement identity only; no outlines, vertices or administrative equivalence copied."
+  },
+  "separateMdhilaDisposition": {
+    "id": "osm:way:207473651",
+    "includedInTheseCurations": false,
+    "reason": "Adding the existing Arabic alias also activates the compiler town/base grouping. A separate intentional northern Mdhila identity, official INM reference and group proposal is required and is being frozen separately; it is not a fifth name-only correction.",
+    "referencePreview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\mdhila-reference-default-preview.json",
+      "sha256": "d76ea71e979d4692da4dfc903fe56f02a06a706dd2673e6f9b13360a91d66c7e",
+      "bytes": 1274
+    }
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\freeze_four_name_review_v2.py",
+    "sha256": "645f3fd630d7088c15a465b17de635abc194a853c9cf929ef92f7b1e67141661",
+    "bytes": 6507
+  },
+  "scope": "Read-only source review and proposals only. No product import, compiler execution, generation, tests, build, phone, ledger or live/source-stage mutation."
+}

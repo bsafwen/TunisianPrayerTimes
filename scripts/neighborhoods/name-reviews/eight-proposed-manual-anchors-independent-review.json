@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T07:58:52.467245+00:00",
+  "decision": "ALL_EIGHT_SUPPORTED_EXPLICIT_MANUAL_ANCHORS",
+  "scope": "Read-only review of exactly eight proposed sector spellings and existing settlement-point anchors. No geometry or app changes, no phone actions, tests or builds.",
+  "proposalSha256": "a5b088411a9f4873c692cbdc7c25c19f359bdba9cd74fcadc4cbf40577d828da",
+  "registrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+  "rawSnapshotSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "pbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "metadataSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b",
+  "packedGeometrySha256": "6e1cef46ba7b353741317850ade4b24505d44a0f9dd1f31723ba01f37c5fc168",
+  "prayerSourceAssetSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+  "generatorSha256AtReviewEnd": "16b9f3744d972a41cf3f1ff5fc921ef95f8463ded18b7144a67c72a0362d5928",
+  "allNamedRawPlaceNodesInspected": 1887,
+  "eligibleTimetableCount": 258,
+  "recordsChangingPolygonManualDefault": [
+    "osm:relation:7126202",
+    "osm:relation:7114433",
+    "osm:relation:7124231",
+    "osm:relation:7082714"
+  ],
+  "records": [
+    {
+      "sectorId": "osm:relation:7126202",
+      "manualPointId": "osm:node:10002024787",
+      "officialCode": "245454",
+      "officialNameAr": "عين زريق",
+      "officialNameFr": "Ain zerig",
+      "officialParentCode": "2454",
+      "officialParentAr": "قعفور",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30361,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1424,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1423
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين الزريق",
+        "name:ar": "عين الزريق",
+        "name:fr": "Ain Ezrig",
+        "ref:tn:codegeo": "245454"
+      },
+      "rawPoint": {
+        "id": "osm:node:10002024787",
+        "tags": {
+          "name": "عين زريق",
+          "name:ar": "عين زريق",
+          "name:fr": "Ain Zerig",
+          "place": "hamlet"
+        },
+        "lat": 36.163799,
+        "lng": 9.4505751
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 2326.938203624256,
+      "distanceFromPackedBoundaryMeters": 2326.9073858704082,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7126202"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:10002024787",
+          "tags": {
+            "name": "عين زريق",
+            "name:ar": "عين زريق",
+            "name:fr": "Ain Zerig",
+            "place": "hamlet"
+          },
+          "lat": 36.163799,
+          "lng": 9.4505751
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:10002024787",
+          "tags": {
+            "name": "عين زريق",
+            "name:ar": "عين زريق",
+            "name:fr": "Ain Zerig",
+            "place": "hamlet"
+          },
+          "lat": 36.163799,
+          "lng": 9.4505751
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 36.194513,
+        "lng": 9.408184,
+        "delegationId": 617
+      },
+      "currentPointRepresentative": {
+        "lat": 36.163799,
+        "lng": 9.4505751,
+        "delegationId": 417
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 417,
+        "nameAr": "برقو",
+        "nameFr": "Bargou"
+      },
+      "changesPolygonManualDefault": true,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    },
+    {
+      "sectorId": "osm:relation:7150193",
+      "manualPointId": "osm:node:10010935167",
+      "officialCode": "615253",
+      "officialNameAr": "العمايمية",
+      "officialNameFr": "El amaima",
+      "officialParentCode": "6152",
+      "officialParentAr": "سيدي عيش",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65848,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3236,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3230
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العمايمة",
+        "name:ar": "العمايمة",
+        "name:fr": "El Amaima",
+        "ref:tn:codegeo": "615253"
+      },
+      "rawPoint": {
+        "id": "osm:node:10010935167",
+        "tags": {
+          "name": "العمايمية",
+          "name:ar": "العمايمية",
+          "name:fr": "El Amaimia",
+          "place": "hamlet"
+        },
+        "lat": 34.6363366,
+        "lng": 8.7014249
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 3385.704484639415,
+      "distanceFromPackedBoundaryMeters": 3385.704484639415,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7150193"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:10010935167",
+          "tags": {
+            "name": "العمايمية",
+            "name:ar": "العمايمية",
+            "name:fr": "El Amaimia",
+            "place": "hamlet"
+          },
+          "lat": 34.6363366,
+          "lng": 8.7014249
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:10010935167",
+          "tags": {
+            "name": "العمايمية",
+            "name:ar": "العمايمية",
+            "name:fr": "El Amaimia",
+            "place": "hamlet"
+          },
+          "lat": 34.6363366,
+          "lng": 8.7014249
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 34.66169,
+        "lng": 8.698633,
+        "delegationId": 610
+      },
+      "currentPointRepresentative": {
+        "lat": 34.6363366,
+        "lng": 8.7014249,
+        "delegationId": 610
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 610,
+        "nameAr": "سيدي عيش",
+        "nameFr": "Sidi Aich"
+      },
+      "changesPolygonManualDefault": false,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    },
+    {
+      "sectorId": "osm:relation:7152195",
+      "manualPointId": "osm:node:10021286069",
+      "officialCode": "335757",
+      "officialNameAr": "الطواهرة",
+      "officialNameFr": "Touahra",
+      "officialParentCode": "3357",
+      "officialParentAr": "الجم",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 40731,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1946,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1942
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطواهرية",
+        "name:ar": "الطواهرية",
+        "name:fr": "Touahria",
+        "ref:tn:codegeo": "335757"
+      },
+      "rawPoint": {
+        "id": "osm:node:10021286069",
+        "tags": {
+          "name": "الطواهرة",
+          "name:ar": "الطواهرة",
+          "name:fr": "Ettouahra",
+          "place": "village"
+        },
+        "lat": 35.3238175,
+        "lng": 10.7987315
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 830.2387930926742,
+      "distanceFromPackedBoundaryMeters": 830.2387930926742,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7152195"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:10021286069",
+          "tags": {
+            "name": "الطواهرة",
+            "name:ar": "الطواهرة",
+            "name:fr": "Ettouahra",
+            "place": "village"
+          },
+          "lat": 35.3238175,
+          "lng": 10.7987315
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:10021286069",
+          "tags": {
+            "name": "الطواهرة",
+            "name:ar": "الطواهرة",
+            "name:fr": "Ettouahra",
+            "place": "village"
+          },
+          "lat": 35.3238175,
+          "lng": 10.7987315
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 35.32134,
+        "lng": 10.795887,
+        "delegationId": 619
+      },
+      "currentPointRepresentative": {
+        "lat": 35.3238175,
+        "lng": 10.7987315,
+        "delegationId": 619
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 619,
+        "nameAr": "الجم",
+        "nameFr": "El Jem"
+      },
+      "changesPolygonManualDefault": false,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    },
+    {
+      "sectorId": "osm:relation:7114433",
+      "manualPointId": "osm:node:10118270176",
+      "officialCode": "325453",
+      "officialNameAr": "المليشات",
+      "officialNameFr": "Melichet",
+      "officialParentCode": "3254",
+      "officialParentAr": "زرمدين",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36685,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1733,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1731
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المليشيات",
+        "name:ar": "المليشيات",
+        "name:fr": "Melichet",
+        "ref:tn:codegeo": "325453"
+      },
+      "rawPoint": {
+        "id": "osm:node:10118270176",
+        "tags": {
+          "name": "المليشات",
+          "name:ar": "المليشات",
+          "name:fr": "Mlichette",
+          "place": "village"
+        },
+        "lat": 35.51208,
+        "lng": 10.5316808
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 3005.265709669358,
+      "distanceFromPackedBoundaryMeters": 3005.27769494231,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7114433"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:10118270176",
+          "tags": {
+            "name": "المليشات",
+            "name:ar": "المليشات",
+            "name:fr": "Mlichette",
+            "place": "village"
+          },
+          "lat": 35.51208,
+          "lng": 10.5316808
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:10118270176",
+          "tags": {
+            "name": "المليشات",
+            "name:ar": "المليشات",
+            "name:fr": "Mlichette",
+            "place": "village"
+          },
+          "lat": 35.51208,
+          "lng": 10.5316808
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 35.520479,
+        "lng": 10.550962,
+        "delegationId": 596
+      },
+      "currentPointRepresentative": {
+        "lat": 35.51208,
+        "lng": 10.5316808,
+        "delegationId": 428
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 428,
+        "nameAr": "السواسي",
+        "nameFr": "Souassi"
+      },
+      "changesPolygonManualDefault": true,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    },
+    {
+      "sectorId": "osm:relation:7095632",
+      "manualPointId": "osm:node:349303622",
+      "officialCode": "635654",
+      "officialNameAr": "غيدمة",
+      "officialNameFr": "Gueidma",
+      "officialParentCode": "6356",
+      "officialParentAr": "الفوار",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70593,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3464,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3457
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قايدمة",
+        "name:ar": "قايدمة",
+        "name:fr": "Gueïdma",
+        "ref:tn:codegeo": "635654"
+      },
+      "rawPoint": {
+        "id": "osm:node:349303622",
+        "tags": {
+          "name": "غيدمة",
+          "name:ar": "غيدمة",
+          "name:en": "Ghidma",
+          "name:fr": "Ghidma",
+          "place": "village"
+        },
+        "lat": 33.4316482,
+        "lng": 8.8159209
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 2468.1689817165866,
+      "distanceFromPackedBoundaryMeters": 2468.168528915988,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7095632"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:349303622",
+          "tags": {
+            "name": "غيدمة",
+            "name:ar": "غيدمة",
+            "name:en": "Ghidma",
+            "name:fr": "Ghidma",
+            "place": "village"
+          },
+          "lat": 33.4316482,
+          "lng": 8.8159209
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:349303622",
+          "tags": {
+            "name": "غيدمة",
+            "name:ar": "غيدمة",
+            "name:en": "Ghidma",
+            "name:fr": "Ghidma",
+            "place": "village"
+          },
+          "lat": 33.4316482,
+          "lng": 8.8159209
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 33.410448,
+        "lng": 8.798065,
+        "delegationId": 485
+      },
+      "currentPointRepresentative": {
+        "lat": 33.4316482,
+        "lng": 8.8159209,
+        "delegationId": 485
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 485,
+        "nameAr": "الفوار",
+        "nameFr": "El Faouar"
+      },
+      "changesPolygonManualDefault": false,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    },
+    {
+      "sectorId": "osm:relation:7124231",
+      "manualPointId": "osm:node:8035791884",
+      "officialCode": "175753",
+      "officialNameAr": "الذواودة",
+      "officialNameFr": "Dheouaouda",
+      "officialParentCode": "1757",
+      "officialParentAr": "غزالة",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18292,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 796,
+        "Nombre_de_menages_par_Secteurs.xlsx": 795
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ذواودة",
+        "name:ar": "ذواودة",
+        "name:fr": "Dhouaouda",
+        "ref:tn:codegeo": "175753"
+      },
+      "rawPoint": {
+        "id": "osm:node:8035791884",
+        "tags": {
+          "name": "الذواودة",
+          "name:ar": "الذواودة",
+          "name:en": "Edhewewda",
+          "name:fr": "Edhewewda",
+          "place": "village"
+        },
+        "lat": 37.0331728,
+        "lng": 9.4336813
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 932.3644261267877,
+      "distanceFromPackedBoundaryMeters": 932.3314582919335,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7124231"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:8035791884",
+          "tags": {
+            "name": "الذواودة",
+            "name:ar": "الذواودة",
+            "name:en": "Edhewewda",
+            "name:fr": "Edhewewda",
+            "place": "village"
+          },
+          "lat": 37.0331728,
+          "lng": 9.4336813
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:8035791884",
+          "tags": {
+            "name": "الذواودة",
+            "name:ar": "الذواودة",
+            "name:en": "Edhewewda",
+            "name:fr": "Edhewewda",
+            "place": "village"
+          },
+          "lat": 37.0331728,
+          "lng": 9.4336813
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 37.020819,
+        "lng": 9.402634,
+        "delegationId": 558
+      },
+      "currentPointRepresentative": {
+        "lat": 37.0331728,
+        "lng": 9.4336813,
+        "delegationId": 560
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 560,
+        "nameAr": "غزالة",
+        "nameFr": "Ghezala"
+      },
+      "changesPolygonManualDefault": true,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    },
+    {
+      "sectorId": "osm:relation:7082748",
+      "manualPointId": "osm:node:9945093900",
+      "officialCode": "635158",
+      "officialNameAr": "بني محمّد",
+      "officialNameFr": "Beni mehemed",
+      "officialParentCode": "6351",
+      "officialParentAr": "قبلي الجنوبية",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69505,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3409,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3402
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بن محمد",
+        "name:ar": "بن محمد",
+        "name:fr": "Ben Mehemed",
+        "ref:tn:codegeo": "635158"
+      },
+      "rawPoint": {
+        "id": "osm:node:9945093900",
+        "tags": {
+          "name": "بني محمد",
+          "name:ar": "بني محمد",
+          "name:fr": "Beni Mhammad",
+          "place": "village"
+        },
+        "lat": 33.5724927,
+        "lng": 8.8865999
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 2639.1020523076295,
+      "distanceFromPackedBoundaryMeters": 2639.0794377233215,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7082748"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:9945093900",
+          "tags": {
+            "name": "بني محمد",
+            "name:ar": "بني محمد",
+            "name:fr": "Beni Mhammad",
+            "place": "village"
+          },
+          "lat": 33.5724927,
+          "lng": 8.8865999
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:9945093900",
+          "tags": {
+            "name": "بني محمد",
+            "name:ar": "بني محمد",
+            "name:fr": "Beni Mhammad",
+            "place": "village"
+          },
+          "lat": 33.5724927,
+          "lng": 8.8865999
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 33.571308,
+        "lng": 8.897374,
+        "delegationId": 482
+      },
+      "currentPointRepresentative": {
+        "lat": 33.5724927,
+        "lng": 8.8865999,
+        "delegationId": 482
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 482,
+        "nameAr": "قبلي",
+        "nameFr": "Kebili"
+      },
+      "changesPolygonManualDefault": false,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    },
+    {
+      "sectorId": "osm:relation:7082714",
+      "manualPointId": "osm:node:9947246733",
+      "officialCode": "635156",
+      "officialNameAr": "جرسين",
+      "officialNameFr": "Jersine",
+      "officialParentCode": "6351",
+      "officialParentAr": "قبلي الجنوبية",
+      "registrySourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69437,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3405,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3398
+      },
+      "originalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جرسین",
+        "name:fr": "Jersine",
+        "ref:tn:codegeo": "635156"
+      },
+      "rawPoint": {
+        "id": "osm:node:9947246733",
+        "tags": {
+          "name": "جرسين",
+          "name:ar": "جرسين",
+          "name:fr": "Zarsin",
+          "place": "village"
+        },
+        "lat": 33.530208,
+        "lng": 8.8273725
+      },
+      "primaryNamesMatchAfterNormalization": true,
+      "samePickerNameIncludingNumbers": true,
+      "originalContainsPointStrictly": true,
+      "quantizedContainsPointStrictly": true,
+      "actualPackedPolygonContainsStoredPrecisionPointStrictly": true,
+      "packedPolygonMatchesQuantizedOriginal": true,
+      "distanceFromOriginalBoundaryMeters": 1817.8933549727615,
+      "distanceFromPackedBoundaryMeters": 1817.9176231135307,
+      "uniqueSourceSectorCodeClaimants": [
+        "osm:relation:7082714"
+      ],
+      "allContainedPrimaryNamePlaceNodeMatches": [
+        {
+          "id": "osm:node:9947246733",
+          "tags": {
+            "name": "جرسين",
+            "name:ar": "جرسين",
+            "name:fr": "Zarsin",
+            "place": "village"
+          },
+          "lat": 33.530208,
+          "lng": 8.8273725
+        }
+      ],
+      "allContainedAliasCompatiblePlaceNodeMatches": [
+        {
+          "id": "osm:node:9947246733",
+          "tags": {
+            "name": "جرسين",
+            "name:ar": "جرسين",
+            "name:fr": "Zarsin",
+            "place": "village"
+          },
+          "lat": 33.530208,
+          "lng": 8.8273725
+        }
+      ],
+      "currentPolygonRepresentative": {
+        "lat": 33.62152,
+        "lng": 8.721267,
+        "delegationId": 483
+      },
+      "currentPointRepresentative": {
+        "lat": 33.530208,
+        "lng": 8.8273725,
+        "delegationId": 484
+      },
+      "reviewedAnchorNearestTimetable": {
+        "id": 484,
+        "nameAr": "دوز",
+        "nameFr": "Douz"
+      },
+      "changesPolygonManualDefault": true,
+      "preservesCurrentPointManualDefault": true,
+      "decision": "SUPPORTED_EXPLICIT_MANUAL_ANCHOR"
+    }
+  ],
+  "limitations": [
+    "A named OSM place node is a source settlement anchor, not a verified population center or official prayer-calculation coordinate.",
+    "The anchor is appropriate only for explicit manual selection. GPS lookup must continue using actual user coordinates and unchanged source polygon/conflict rules.",
+    "Containment and primary-name uniqueness were checked against the pinned source and current packed polygons; later source/tag/geometry changes need a fresh assertion check.",
+    "Original point IDs should remain resolvable for saved selections when picker rows merge; this review does not alter persistence or group behavior."
+  ]
+}

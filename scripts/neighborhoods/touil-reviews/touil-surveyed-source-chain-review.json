@@ -1,0 +1,625 @@
+{
+  "schemaVersion": 1,
+  "status": "supported_bounded_display_association_with_source_inference",
+  "reviewedAt": "2026-09-07T22:28:47.836968+00:00",
+  "scope": "Exact Touil residential/hamlet source history and actual edit review. Candidate display association only; no implementation, catalog generation or import.",
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "7b194f55483fb015d3bd762cd41ce5bff25865f9c62f61250bc763669b55c148",
+    "bytes": 1842923
+  },
+  "currentGeometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+    "bytes": 5498784
+  },
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "currentRecords": [
+    {
+      "id": "osm:node:11525318199",
+      "sourceId": "osm",
+      "name": "طويل أولاد زايد",
+      "aliases": [
+        "Touil Ouled Zayed"
+      ],
+      "kind": "hamlet",
+      "parentName": "رأس الوادي",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Ras El Oued",
+        "Tataouine Sud",
+        "رأس الوادي",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.7671737,
+      "lng": 10.2628336,
+      "delegationId": 624,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:11525318199"
+    },
+    {
+      "id": "osm:way:377996284",
+      "sourceId": "osm",
+      "name": "طويل أولاد زايد",
+      "aliases": [
+        "Touil Ouled Zayed"
+      ],
+      "kind": "residential",
+      "parentName": "رأس الوادي",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Ras El Oued",
+        "Tataouine Sud",
+        "رأس الوادي",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.766158,
+      "lng": 10.265125,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        10.262448,
+        32.764912,
+        10.266663,
+        32.7675
+      ],
+      "areaKm2": 0.026324605121398816,
+      "pickerGroupId": "osm:way:377996284",
+      "offset": 5396284,
+      "length": 620
+    }
+  ],
+  "currentGroupInventories": {
+    "osm:node:11525318199": [
+      "osm:node:11525318199"
+    ],
+    "osm:way:377996284": [
+      "osm:way:377996284"
+    ]
+  },
+  "currentCuration": {
+    "osm:node:11525318199": null,
+    "osm:way:377996284": null
+  },
+  "priorFrozenEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\touil-oulad-zayed-display-identity-review.json",
+      "sha256": "cbcf1567d074d71665f5de152b464fb07ae2ba30023a6ea0026f78a86c78d9d2",
+      "bytes": 31995
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\touil-current-display-identity-followup-review.json",
+      "sha256": "96bd3f5d197fc57d66e8b7c1ba32f41f22cf06538c924841e7643b584eaeb26c",
+      "bytes": 31140
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\touil-current-identity-followup\\direct-pbf-address-and-membership-review.json",
+      "sha256": "01867525513850b3040e334c8cf98ddd33e2995e7c5cddb3070f52957cac4f57",
+      "bytes": 127268
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "bytes": 529199
+    }
+  ],
+  "reusedEvidence": {
+    "allThreeObjectHistoriesAlreadyCached": true,
+    "key2024SurveyEditAlreadyCached": true,
+    "noPbfAddressOrGenericSearchRepeat": true,
+    "newDownloads": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\touil-surveyed-source-chain-review\\osm-changeset-35038528-download.osc",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/35038528/download",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/35038528/download",
+        "retrievedAt": "2026-09-07T22:24:11.052516+00:00",
+        "sha256": "6dceaebd4af6cf0d20e7706a4634b25811977240d080573ccb71090dbd12fe6d",
+        "bytes": 317370
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\touil-surveyed-source-chain-review\\osm-changeset-122572164-download.osc",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/122572164/download",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/122572164/download",
+        "retrievedAt": "2026-09-07T22:24:11.004324+00:00",
+        "sha256": "6f9c7c64fd1432e785a6b08f9e4becb414fecd680868566e7923ff07f7218db9",
+        "bytes": 4788
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\touil-surveyed-source-chain-review\\osm-changeset-146876838.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838?include_discussion=true",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/146876838?include_discussion=true",
+        "retrievedAt": "2026-09-07T22:24:11.008848+00:00",
+        "sha256": "5e244b749a316e94b312e557051a0860a56dcd840be91837a68d2071ea0dba74",
+        "bytes": 977
+      },
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838/download",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\touil-surveyed-source-chain-review\\osm-changeset-146876838-download.osc",
+        "sha256": "975344b8f4a6d7a7b0c5fb6c2027eda5f2ae966ab9e0f252c35042697b7f0f79",
+        "bytes": 2634,
+        "retrievedAt": "2026-09-07T22:24:53.720906+00:00"
+      }
+    ]
+  },
+  "exactSourceChain": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\touil-surveyed-source-chain-review\\exact-object-and-coordinate-chain.json",
+    "sha256": "923998b85e70f9bd77bd0bd09723f495daead0c591be491df7ffbf369e81a5df",
+    "bytes": 71422
+  },
+  "chronology": [
+    {
+      "year": 2015,
+      "changesetId": 35038528,
+      "finding": "An unnamed residential way and separate unnamed natural peak are created. Source is Bing imagery; no settlement name or survey claim yet."
+    },
+    {
+      "year": 2022,
+      "changesetId": 122572164,
+      "finding": "A different mapper deliberately assigns طويل اولاد زايد / touil wlad zayid to this exact residential way. The actual three-object OSC separately names another residential settlement الطرومة / ettarouma and creates its differently named motel. These are separate named objects, not a claim that the three objects form one settlement.",
+      "limit": "The edit cites mapping Tataouine and Maxar imagery, without an explicit survey or local-knowledge source tag. It predates the hamlet node and supplies no shared settlement identifier."
+    },
+    {
+      "year": 2024,
+      "date": "2024-01-17",
+      "changesetId": 146375270,
+      "finding": "The survey-and-imagery-tagged mapper deliberately normalizes this residential way to Touil Ouled Zayed while preserving the same Arabic place name, creates the same-named place=hamlet node, and assigns the name to a separately typed natural=peak. The three exact per-object edits are present in the actual OSC.",
+      "interpretation": "The residential area was already explicitly named as an inhabited land-use area by the earlier mapper. The later mapper reaffirms that same named residential identity and adds its same-named hamlet representation, while using natural=peak for the separate landform. This supports a common settlement identity for the two inhabited-place representations; it is more specific than timestamps or proximity alone.",
+      "limit": "The source declaration is changeset-wide and mapper-provided. It does not independently prove which specific facts were observed on the ground, and contains no textual assertion or relation enumerating the hamlet footprint."
+    },
+    {
+      "year": 2024,
+      "date": "2024-01-30",
+      "changesetId": 146876838,
+      "finding": "A one-object edit returns the residential primary name to its already-existing Arabic form. Its comment cites internet/Wikipedia search results and imagery, not a new survey or new settlement identity.",
+      "limit": "The comment does not identify the underlying webpage. It is not used as independent documentary confirmation."
+    },
+    {
+      "year": 2026,
+      "changesetId": 180432269,
+      "finding": "The later shared name cleanup standardizes Arabic and language tags. It preserves the hamlet point and current source footprint. It is not a new field survey."
+    }
+  ],
+  "identityInventory": {
+    "exactCurrentNamedSourceObjects": [
+      {
+        "id": "osm:node:11525318199",
+        "kindTags": {
+          "place": "hamlet"
+        },
+        "matches": {
+          "name": "طويل أولاد زايد",
+          "name:aeb": "طويل أولاد زايد",
+          "name:ar": "طويل أولاد زايد",
+          "name:en": "Touil Ouled Zayed",
+          "name:fr": "Touil Ouled Zayed"
+        }
+      },
+      {
+        "id": "osm:node:3814110946",
+        "kindTags": {
+          "natural": "peak"
+        },
+        "matches": {
+          "name": "طويل أولاد زايد",
+          "name:aeb": "طويل أولاد زايد",
+          "name:ar": "طويل أولاد زايد",
+          "name:en": "Touil Ouled Zayed",
+          "name:fr": "Touil Ouled Zayed"
+        }
+      },
+      {
+        "id": "osm:way:377996284",
+        "kindTags": {
+          "landuse": "residential"
+        },
+        "matches": {
+          "name": "طويل أولاد زايد",
+          "name:ar": "طويل أولاد زايد",
+          "name:fr": "Touil Ouled Zayed"
+        }
+      }
+    ],
+    "eligibleInhabitedPlaceSourceIds": [
+      "osm:node:11525318199",
+      "osm:way:377996284"
+    ],
+    "separatePeak": {
+      "id": "osm:node:3814110946",
+      "tags": {
+        "name": "طويل أولاد زايد",
+        "name:aeb": "طويل أولاد زايد",
+        "name:ar": "طويل أولاد زايد",
+        "name:en": "Touil Ouled Zayed",
+        "name:fr": "Touil Ouled Zayed",
+        "natural": "peak"
+      },
+      "lat": 32.7659643,
+      "lng": 10.2638953,
+      "absentFromRawPickerCatalog": true,
+      "decision": "Preserve natural=peak semantics and keep excluded from this display association. A same-name religious-destination result does not identify this peak or define either inhabited object."
+    },
+    "competingSameNamedHamletOrResidentialFoundInReusedFullPbfScreen": false,
+    "unrelatedBroadSubstringHits": [
+      "osm:node:11062156627",
+      "osm:node:11062161780",
+      "osm:node:11062164695"
+    ],
+    "qualification": "The exact source identity inventory is reused from the already pinned full PBF pass, whose source file has not changed. It is not an exhaustive real-world gazetteer."
+  },
+  "geometryAndContext": {
+    "originalGeometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              10.2624482,
+              32.7672796
+            ],
+            [
+              10.2624507,
+              32.7671854
+            ],
+            [
+              10.2624736,
+              32.7670547
+            ],
+            [
+              10.2625297,
+              32.7669175
+            ],
+            [
+              10.2625934,
+              32.7668125
+            ],
+            [
+              10.2627004,
+              32.7666626
+            ],
+            [
+              10.2627947,
+              32.7665769
+            ],
+            [
+              10.2628304,
+              32.7664933
+            ],
+            [
+              10.2628304,
+              32.7663262
+            ],
+            [
+              10.2628176,
+              32.7660326
+            ],
+            [
+              10.2628227,
+              32.7658741
+            ],
+            [
+              10.2628533,
+              32.7657498
+            ],
+            [
+              10.2629068,
+              32.7656341
+            ],
+            [
+              10.2629858,
+              32.7654927
+            ],
+            [
+              10.2632483,
+              32.7652484
+            ],
+            [
+              10.2634266,
+              32.7650856
+            ],
+            [
+              10.2635591,
+              32.7650127
+            ],
+            [
+              10.2636738,
+              32.7649742
+            ],
+            [
+              10.2637961,
+              32.7649742
+            ],
+            [
+              10.2638751,
+              32.7649763
+            ],
+            [
+              10.2639923,
+              32.765062
+            ],
+            [
+              10.2640458,
+              32.7652013
+            ],
+            [
+              10.2636712,
+              32.7653213
+            ],
+            [
+              10.2634062,
+              32.765467
+            ],
+            [
+              10.2633069,
+              32.7655441
+            ],
+            [
+              10.2631565,
+              32.7657798
+            ],
+            [
+              10.2631208,
+              32.7659898
+            ],
+            [
+              10.2631616,
+              32.7662983
+            ],
+            [
+              10.2631896,
+              32.7664633
+            ],
+            [
+              10.263182,
+              32.7665854
+            ],
+            [
+              10.2631285,
+              32.7666818
+            ],
+            [
+              10.2629425,
+              32.766924
+            ],
+            [
+              10.2626902,
+              32.7671811
+            ],
+            [
+              10.2626724,
+              32.7672539
+            ],
+            [
+              10.2626877,
+              32.7672925
+            ],
+            [
+              10.2627488,
+              32.7673032
+            ],
+            [
+              10.2629221,
+              32.7672518
+            ],
+            [
+              10.2634903,
+              32.7670996
+            ],
+            [
+              10.2637044,
+              32.7669604
+            ],
+            [
+              10.2639693,
+              32.7666604
+            ],
+            [
+              10.2643312,
+              32.7663519
+            ],
+            [
+              10.2648026,
+              32.7660712
+            ],
+            [
+              10.2653886,
+              32.7658055
+            ],
+            [
+              10.2659186,
+              32.765602
+            ],
+            [
+              10.266046,
+              32.7655462
+            ],
+            [
+              10.2661097,
+              32.7654734
+            ],
+            [
+              10.2661454,
+              32.765392
+            ],
+            [
+              10.2661454,
+              32.7652848
+            ],
+            [
+              10.266153,
+              32.7651499
+            ],
+            [
+              10.2661785,
+              32.7650149
+            ],
+            [
+              10.2662448,
+              32.7649356
+            ],
+            [
+              10.2664155,
+              32.764912
+            ],
+            [
+              10.2665531,
+              32.7649185
+            ],
+            [
+              10.2666448,
+              32.7649613
+            ],
+            [
+              10.2666626,
+              32.7650234
+            ],
+            [
+              10.2666524,
+              32.7651649
+            ],
+            [
+              10.2665378,
+              32.765317
+            ],
+            [
+              10.2663645,
+              32.7656298
+            ],
+            [
+              10.2662422,
+              32.7657777
+            ],
+            [
+              10.2661454,
+              32.7658848
+            ],
+            [
+              10.2654166,
+              32.7662447
+            ],
+            [
+              10.2650242,
+              32.7663862
+            ],
+            [
+              10.26493,
+              32.7663904
+            ],
+            [
+              10.2648306,
+              32.7663947
+            ],
+            [
+              10.2645987,
+              32.7664826
+            ],
+            [
+              10.2643159,
+              32.7667333
+            ],
+            [
+              10.2643006,
+              32.7668511
+            ],
+            [
+              10.2642394,
+              32.7669497
+            ],
+            [
+              10.2638343,
+              32.7672303
+            ],
+            [
+              10.2636457,
+              32.7673503
+            ],
+            [
+              10.2633196,
+              32.7674682
+            ],
+            [
+              10.2630597,
+              32.7675003
+            ],
+            [
+              10.2626291,
+              32.7674917
+            ],
+            [
+              10.262517,
+              32.7674575
+            ],
+            [
+              10.2624482,
+              32.7673803
+            ],
+            [
+              10.2624482,
+              32.7672796
+            ]
+          ]
+        ]
+      ]
+    },
+    "originalGeometrySha256": "5063ccdb840da4d24c78f72a98b3a6f3a1644c4bfe10dbf6f36f4bf4325d07e7",
+    "packedGeometrySha256": "ce3e4b625d73393f336201c30b9dec22e930d15bc4524010851badba92873171",
+    "packedBytesEqualPriorInstalledSnapshot": true,
+    "creationCoordinatesEqualCurrentSourceGeometry": true,
+    "currentNamesCoordinatesContextsPrayerSourceUnchangedSincePriorReview": true,
+    "hamletOutsideResidentialByMeters": 9.817441910756074,
+    "parentNamePreserved": "رأس الوادي",
+    "prayerSourceIdPreserved": 624,
+    "qualification": "Residential footprints need not contain the source hamlet label point or exhaust its settlement. Neither outside distance nor lack of vertex refinements proves distinct identity. No buffering, union, shape correction or perimeter certification is proposed."
+  },
+  "decision": {
+    "eligibleForGuardedDisplayAssociation": true,
+    "confidenceScope": "A reviewed inference from deliberate per-object primary source naming and settlement classification, not an administrative or cadastral identity certification.",
+    "proposal": {
+      "sourcePickerGroupId": "osm:way:377996284",
+      "targetPickerGroupId": "osm:node:11525318199",
+      "expectedSourceMembers": [
+        "osm:way:377996284"
+      ],
+      "expectedTargetMembers": [
+        "osm:node:11525318199"
+      ],
+      "resultMembers": [
+        "osm:node:11525318199",
+        "osm:way:377996284"
+      ],
+      "canonicalKind": "hamlet",
+      "canonicalName": "طويل أولاد زايد",
+      "permittedChanges": [
+        {
+          "id": "osm:way:377996284",
+          "field": "pickerGroupId",
+          "before": "osm:way:377996284",
+          "after": "osm:node:11525318199"
+        }
+      ],
+      "allRawIdsShapesNamesAliasesContextsCoordinatesPrayerDefaultsRemain": true,
+      "sourcePeakExcluded": "osm:node:3814110946"
+    },
+    "basis": "The earlier exact residential naming, the later survey-tagged deliberate residential-name reaffirmation plus creation of the same-name hamlet, and the absence of a second same-name inhabited-place competitor in the source inventory support associating these two representations for display. The separately typed peak does not itself constitute a competing settlement.",
+    "reassessmentOfPriorHold": "The earlier reviews correctly recorded the absence of a shared address, relation or independently documented complete settlement extent. This decision does not claim that missing evidence has appeared. It assesses the more limited display association from the actual naming/source chain, retains both raw identities and geometry, and qualifies the inference rather than demanding an explicit shared identifier or complete perimeter.",
+    "notEstablished": [
+      "An exhaustive village boundary",
+      "Every location called Touil is the same feature",
+      "An independently certified field survey",
+      "Any association with the historical Google religious-destination card"
+    ],
+    "implementationStatus": "No implementation drafted. A future exact source/group guard and independent acceptance remain required before app changes."
+  },
+  "preservationChecks": {
+    "allObjectHistoryLatestTagsMatchPinnedPbf": true,
+    "actualTargetEditsMatchHistories": true,
+    "allCurrentRawFieldsExceptOffsetsEqualPriorFrozenReview": true,
+    "currentPackedResidentialBytesPreserved": true,
+    "pbfRescan": false,
+    "genericNameSearch": false,
+    "phoneOrLedgerAccess": false,
+    "appOrGeneratorEdits": false,
+    "testsBuildsOrApks": false
+  }
+}

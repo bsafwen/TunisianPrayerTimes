@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "package": "abdelbaki-hamdouni-picker-exclusion-20260925",
+  "mode": "installed",
+  "featureId": "osm:way:744642242",
+  "sourceReviewSha256": "f61b2b0ba1dfb7a0f1d556f62a070d7fdb9a3ceeedff3b143d42fa6b6bafffc2",
+  "expectedGeometrySha256": "35c3be336b8040be5b7559c4fd01e1fbe5ba55eac72e12610a67643ab8608fcb",
+  "beforeSha256": {
+    "neighborhoods.json": "d920c17fe018db9f77cf3bc747ac8b11336ae2c62c74fcb877acaaa4088c4c4f",
+    "neighborhoods.bin": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd",
+    "retired-localities.json": "32ba6be85e14d9dc749b40c7098091c128baedc8810127585e684d763da8836c",
+    "final-exclusions.json": "d240c9da55e1b86ace5473cace1ecb1575ba576bd869264828dbb81ce3508bb2"
+  },
+  "afterSha256": {
+    "neighborhoods.json": "e2c13ab6c635d6509b01bbf3f78b6bc4cd7a331f8dd9a4d30e3997ba44fd1d59",
+    "neighborhoods.bin": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd",
+    "retired-localities.json": "bf96b2a0ad80301b4e9bfeb9fa4a683f0ff167a02635b03711365979d7d3c3cf",
+    "final-exclusions.json": "ba8786fa0ed766bb3c8042fedd000449124278ba2021e7ce17fe74e92a22ca4a"
+  },
+  "featureCount": {
+    "before": 3474,
+    "after": 3473,
+    "delta": -1
+  },
+  "retiredLocalityCount": {
+    "before": 175,
+    "after": 176,
+    "delta": 1
+  },
+  "staticPickerCount": {
+    "before": 3375,
+    "after": 3374,
+    "delta": -1
+  },
+  "gpsLabelImpact": {
+    "targetRemovedFromFeatureCatalog": true,
+    "representativePoint": {
+      "lat": 35.03987,
+      "lng": 9.477209
+    },
+    "containingSector": {
+      "id": "osm:relation:7169639",
+      "name": "سيدي بوزيد الغربية",
+      "delegationId": 628
+    },
+    "containingSectorCoversEntireTarget": true,
+    "packedGeometryBytesChanged": false
+  },
+  "savedSelectionFallback": {
+    "verifiedBySource": {
+      "LocalityRepository.kt": "59dcb3e9a2687f5428e117b72fcb536a6888fba6982a197ca04a7df57a830ed9",
+      "PrefsManager.kt": "0e159eba7c557e9da203165d98d6de1e9dff5f9ab76e8b0905e2744f3f297731"
+    },
+    "savedLocalityIdResolvesTo": null,
+    "savedLocalityNameAndKind": null,
+    "delegationIdPreserved": 628,
+    "fromGpsFlagPreserved": true,
+    "timetableSourceChanged": false
+  },
+  "otherFeatureRowsChanged": 0,
+  "displayNameAssetChanged": false,
+  "appAssetInstall": "installed atomically",
+  "finalExclusionEntryCount": {
+    "before": 3,
+    "after": 4,
+    "delta": 1
+  },
+  "allExistingFinalExclusionEntriesPreserved": true
+}

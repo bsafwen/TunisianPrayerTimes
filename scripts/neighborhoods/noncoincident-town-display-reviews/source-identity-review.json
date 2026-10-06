@@ -1,0 +1,784 @@
+{
+  "schemaVersion": 1,
+  "status": "TWO_EXACT_DISPLAY_TRANSITIONS_SOURCE_SUPPORTED_NOT_IMPLEMENTED",
+  "baselineMetadataSha256": "c5bd9cdd5c955a3a993107f477b443d2cc82df09ce599f4f91119650cb07cee9",
+  "currentMetadataSha256AtReview": "1a7004d2f07f2405f11b66883bcea7d35d8498204601116508a629fe5e947656",
+  "scope": "Only La Goulette388 and Nouvelle Matmata1023 selected from the frozen20-candidate screen; excludes active596/461/488, Ptolemy607 and keep-separateMedina403. No broad screen rerun.",
+  "sourceFacts": {
+    "file": "work\\la-goulette-new-matmata-display-review\\frozen-c5-source-facts.json",
+    "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc"
+  },
+  "inputPins": {
+    "outputs/bourouis-jerissa-current-cross-group-base-alias-screen.json": "93283d48601e168ec7cf123610f47e50a833b179b127c018f965f13f916f8789",
+    "outputs/current-grouped-sector-alias-collision-screen.json": "b681dcb85ddf466134e47046a8a641e89f462d1d7a6b317229e62eb25e89d85c",
+    "outputs/prayer-source-coordinate-review.json": "ba33f7cff8af77a871f14954547913fb6f1f2c6d8f643afe5dc883ecc6be13eb",
+    "outputs/current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "work/la-goulette-new-matmata-display-review/primary-indexed-response.json": "fd9539ff07d8e28787c684e83697a7cb9ee98f74f72044b002c2cf17121770b9",
+    "work/la-goulette-new-matmata-display-review/primary-open-failures.json": "cd74fe0e098a1c5fdb2a834762156b898b7c6dd56fe253cb773843204518aed2"
+  },
+  "baselineInputPins": {
+    "android-app\\app\\src\\main\\assets\\neighborhoods.json": "c5bd9cdd5c955a3a993107f477b443d2cc82df09ce599f4f91119650cb07cee9",
+    "android-app\\app\\src\\main\\assets\\neighborhoods.bin": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "android-app\\app\\src\\main\\assets\\gouvernorats.json": "9699bb3830edceb1505e9ad67c919bd95eabce2e1f3cdd1e4eeb53d0bdba4970",
+    "scripts\\neighborhoods\\catalog-curation.json": "193239d60f7b55f6d057127533c08ebb71ef83df6aa843fceeb4e834ae8a3961",
+    "scripts\\neighborhoods\\prayer-source-coordinates.json": "e2e866c8a7b69eafc472467294afa86f58e7376b5f576072812570983c739951",
+    "scripts\\neighborhoods\\coverage.json": "33ccd2bd9245488bd53a8fb01c459fad266040370e87caf804f77b976e42849b"
+  },
+  "records": [
+    {
+      "baseId": 388,
+      "residentialId": "osm:way:93164500",
+      "namesakeSectorId": "osm:relation:7117933",
+      "sourceTownId": "osm:node:283645091",
+      "decision": "SUPPORTED_EXACT_TOWN_BASE_ASSOCIATION_WITH_DISTINCT_IMADA_CHOICE",
+      "sameTownIdentityGrounds": [
+        "Residential addr:city and Arabic primary exactly agree with the sole source place=town primary; the original base French identifies that same town.",
+        "Current INS independently binds a same-name imada to the delegation but also lists four other imadas; town and imada are distinct source object types and extents.",
+        "Indexed official municipal sources corroborate the town spelling and identity; direct source downloads failed and are not claimed as HTML evidence."
+      ],
+      "baseCurrent": {
+        "id": 388,
+        "nomFr": "La Goulette",
+        "nomAr": "حلق الواد",
+        "nomEn": "Goulette",
+        "lat": 36.8181,
+        "lng": 10.305
+      },
+      "beforeGroups": {
+        "delegation:388": [
+          "delegation:388"
+        ],
+        "osm:relation:7117890": [
+          "osm:relation:7117890"
+        ],
+        "osm:relation:7117891": [
+          "osm:relation:7117891"
+        ],
+        "osm:relation:7117889": [
+          "osm:relation:7117889"
+        ],
+        "osm:relation:7117933": [
+          "osm:relation:7117933",
+          "osm:way:93164500"
+        ],
+        "osm:relation:7117932": [
+          "osm:relation:7117932"
+        ]
+      },
+      "proposedAfterGroups": {
+        "delegation:388": [
+          "delegation:388",
+          "osm:way:93164500"
+        ],
+        "osm:relation:7117890": [
+          "osm:relation:7117890"
+        ],
+        "osm:relation:7117891": [
+          "osm:relation:7117891"
+        ],
+        "osm:relation:7117889": [
+          "osm:relation:7117889"
+        ],
+        "osm:relation:7117933": [
+          "osm:relation:7117933"
+        ],
+        "osm:relation:7117932": [
+          "osm:relation:7117932"
+        ]
+      },
+      "exactProposedRawChanges": [
+        {
+          "id": "osm:way:93164500",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7117933",
+          "after": "delegation:388"
+        },
+        {
+          "id": "osm:way:93164500",
+          "field": "aliases",
+          "before": [
+            "La Goulette"
+          ],
+          "after": [
+            "La Goulette",
+            "حلق الواد"
+          ]
+        }
+      ],
+      "preferredOfficialBaseName": {
+        "id": 388,
+        "field": "nomAr",
+        "before": "حلق الواد",
+        "after": "حلق الوادي",
+        "retainPreviousSpellingAsSearchAlias": true,
+        "doNotClaimOldVariantRepresentsDifferentTown": true
+      },
+      "savedNameProposal": {
+        "id": "delegation:388",
+        "name": "حلق الوادي",
+        "kind": "delegation"
+      },
+      "requiredDistinctPair": [
+        "osm:relation:7117933",
+        "osm:way:93164500"
+      ],
+      "preservedImadas": [
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116951",
+            "sectorFr": "La goulette",
+            "sectorAr": "حلق الوادي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4795,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 150,
+              "Nombre_de_menages_par_Secteurs.xlsx": 150
+            }
+          },
+          "sourceId": "osm:relation:7117933",
+          "currentGroupMembers": [
+            "osm:relation:7117933",
+            "osm:way:93164500"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116952",
+            "sectorFr": "La goulette casino",
+            "sectorAr": "حلق الوادي كازينو",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4829,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 152,
+              "Nombre_de_menages_par_Secteurs.xlsx": 152
+            }
+          },
+          "sourceId": "osm:relation:7117889",
+          "currentGroupMembers": [
+            "osm:relation:7117889"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116953",
+            "sectorFr": "Kheireddine",
+            "sectorAr": "خير الدين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4863,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 153,
+              "Nombre_de_menages_par_Secteurs.xlsx": 153
+            }
+          },
+          "sourceId": "osm:relation:7117890",
+          "currentGroupMembers": [
+            "osm:relation:7117890"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116954",
+            "sectorFr": "Taieb mhiri",
+            "sectorAr": "الطيب المهيري",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4897,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 154,
+              "Nombre_de_menages_par_Secteurs.xlsx": 154
+            }
+          },
+          "sourceId": "osm:relation:7117932",
+          "currentGroupMembers": [
+            "osm:relation:7117932"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116955",
+            "sectorFr": "Cite essalama",
+            "sectorAr": "حي السلامة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4931,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 155,
+              "Nombre_de_menages_par_Secteurs.xlsx": 155
+            }
+          },
+          "sourceId": "osm:relation:7117891",
+          "currentGroupMembers": [
+            "osm:relation:7117891"
+          ]
+        }
+      ],
+      "protectedRawIds": [
+        "osm:relation:7117889",
+        "osm:relation:7117890",
+        "osm:relation:7117891",
+        "osm:relation:7117932",
+        "osm:relation:7117933",
+        "osm:way:93164500"
+      ],
+      "sourceNamePeerIds": [
+        "osm:node:283645091",
+        "osm:relation:4134886",
+        "osm:relation:7117933",
+        "osm:way:93164500"
+      ],
+      "exactNameQueries": [
+        "goulette",
+        "halqalwadi",
+        "lagoleta",
+        "lagoletta",
+        "lagoulette",
+        "халькэльуэд",
+        "להגולט",
+        "حلقالواد",
+        "حلقالوادي",
+        "حلقالوادی"
+      ],
+      "geometryFacts": {
+        "originalAndPackedResidentialValid": true,
+        "originalAndPackedSectorValid": true,
+        "nativeResidentialCoveredBySector": false,
+        "packedResidentialCoveredBySector": false,
+        "nativeResidentialOutsideSectorM2": 427947.3338636723,
+        "residentialAreaKm2": 2.1205906386256106,
+        "sectorAreaKm2": 1.7649760805297365,
+        "baseToTownNodeKm": 0.25088628007772085,
+        "baseDistanceOutsideResidentialM": 0.0,
+        "nativeResidentialCoveredByDelegation": true,
+        "pointFacts": [
+          {
+            "role": "legacy_base",
+            "lat": 36.8181,
+            "lng": 10.305,
+            "nearestUsableSources": [
+              {
+                "id": 388,
+                "distanceKm": 0.0
+              },
+              {
+                "id": 406,
+                "distanceKm": 1.931171796027902
+              },
+              {
+                "id": 387,
+                "distanceKm": 4.453978872272111
+              }
+            ],
+            "insideOriginalResidential": true,
+            "insidePackedResidential": true,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          },
+          {
+            "role": "absorbed_named_town",
+            "lat": 36.8159278,
+            "lng": 10.3042378,
+            "nearestUsableSources": [
+              {
+                "id": 388,
+                "distanceKm": 0.25088628007772085
+              },
+              {
+                "id": 406,
+                "distanceKm": 2.181868350571331
+              },
+              {
+                "id": 387,
+                "distanceKm": 4.697530151417267
+              }
+            ],
+            "insideOriginalResidential": true,
+            "insidePackedResidential": true,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          },
+          {
+            "role": "residential_reference",
+            "lat": 36.816185,
+            "lng": 10.294957,
+            "nearestUsableSources": [
+              {
+                "id": 388,
+                "distanceKm": 0.9190106855690141
+              },
+              {
+                "id": 406,
+                "distanceKm": 2.4839039005315366
+              },
+              {
+                "id": 387,
+                "distanceKm": 5.12862304570908
+              }
+            ],
+            "insideOriginalResidential": true,
+            "insidePackedResidential": true,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          },
+          {
+            "role": "sector_reference",
+            "lat": 36.813376,
+            "lng": 10.293059,
+            "nearestUsableSources": [
+              {
+                "id": 388,
+                "distanceKm": 1.1856816720059553
+              },
+              {
+                "id": 406,
+                "distanceKm": 2.8381849060617035
+              },
+              {
+                "id": 449,
+                "distanceKm": 5.263878061459535
+              }
+            ],
+            "insideOriginalResidential": true,
+            "insidePackedResidential": true,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          }
+        ],
+        "metricCRS": "EPSG:32632"
+      },
+      "ownCoordinateCorrections": [],
+      "proposedCoordinateOrDefaultChanges": [],
+      "limits": [
+        "Neither residential nor imada geometry is newly certified. Existing boundaries remain byte-identical for GPS.",
+        "No point relocation is needed to express the supported display identity; Nouvelle Matmata base noncontainment must remain an explicit reviewed exception, not silently bypassed.",
+        "Do not simply merge the whole current sector group into the base: first keep the imada distinct and move only the exact residential member."
+      ]
+    },
+    {
+      "baseId": 1023,
+      "residentialId": "osm:way:186705198",
+      "namesakeSectorId": "osm:relation:7145430",
+      "sourceTownId": "osm:node:352752197",
+      "decision": "SUPPORTED_EXACT_TOWN_BASE_ASSOCIATION_WITH_DISTINCT_IMADA_CHOICE",
+      "sameTownIdentityGrounds": [
+        "Residential addr:city and Arabic primary exactly agree with the sole source place=town primary; the original base French identifies that same town.",
+        "Current INS independently binds a same-name imada to the delegation but also lists four other imadas; town and imada are distinct source object types and extents.",
+        "Indexed official municipal sources corroborate the town spelling and identity; direct source downloads failed and are not claimed as HTML evidence."
+      ],
+      "baseCurrent": {
+        "id": 1023,
+        "nomFr": "Matmata Nouvelle",
+        "nomAr": "مطماطا الجديدة",
+        "nomEn": "Matmata Nouvelle",
+        "lat": 33.67,
+        "lng": 9.99
+      },
+      "beforeGroups": {
+        "delegation:1023": [
+          "delegation:1023"
+        ],
+        "osm:relation:7145390": [
+          "osm:relation:7145390"
+        ],
+        "osm:relation:7145389": [
+          "osm:relation:7145389"
+        ],
+        "osm:relation:7145427": [
+          "osm:relation:7145427"
+        ],
+        "osm:relation:7145430": [
+          "osm:relation:7145430",
+          "osm:way:186705198"
+        ],
+        "osm:relation:7145405": [
+          "osm:relation:7145405",
+          "osm:way:377951368"
+        ]
+      },
+      "proposedAfterGroups": {
+        "delegation:1023": [
+          "delegation:1023",
+          "osm:way:186705198"
+        ],
+        "osm:relation:7145390": [
+          "osm:relation:7145390"
+        ],
+        "osm:relation:7145389": [
+          "osm:relation:7145389"
+        ],
+        "osm:relation:7145427": [
+          "osm:relation:7145427"
+        ],
+        "osm:relation:7145430": [
+          "osm:relation:7145430"
+        ],
+        "osm:relation:7145405": [
+          "osm:relation:7145405",
+          "osm:way:377951368"
+        ]
+      },
+      "exactProposedRawChanges": [
+        {
+          "id": "osm:way:186705198",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7145430",
+          "after": "delegation:1023"
+        },
+        {
+          "id": "osm:way:186705198",
+          "field": "aliases",
+          "before": [
+            "Matmata Nouvelle",
+            "New Matmata",
+            "Nouvelle Matmata"
+          ],
+          "after": [
+            "Matmata Nouvelle",
+            "New Matmata",
+            "Nouvelle Matmata",
+            "مطماطا الجديدة"
+          ]
+        }
+      ],
+      "preferredOfficialBaseName": {
+        "id": 1023,
+        "field": "nomAr",
+        "before": "مطماطا الجديدة",
+        "after": "مطماطة الجديدة",
+        "retainPreviousSpellingAsSearchAlias": true,
+        "doNotClaimOldVariantRepresentsDifferentTown": true
+      },
+      "savedNameProposal": {
+        "id": "delegation:1023",
+        "name": "مطماطة الجديدة",
+        "kind": "delegation"
+      },
+      "requiredDistinctPair": [
+        "osm:relation:7145430",
+        "osm:way:186705198"
+      ],
+      "preservedImadas": [
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515951",
+            "sectorFr": "Nouvelle matmata",
+            "sectorAr": "مطماطة الجديدة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59226,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2905,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2899
+            }
+          },
+          "sourceId": "osm:relation:7145430",
+          "currentGroupMembers": [
+            "osm:relation:7145430",
+            "osm:way:186705198"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515952",
+            "sectorFr": "Heddaj",
+            "sectorAr": "هداج",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59260,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2907,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2901
+            }
+          },
+          "sourceId": "osm:relation:7145427",
+          "currentGroupMembers": [
+            "osm:relation:7145427"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515953",
+            "sectorFr": "Ez-zeraoua",
+            "sectorAr": "الزراوة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59294,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2909,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2903
+            }
+          },
+          "sourceId": "osm:relation:7145390",
+          "currentGroupMembers": [
+            "osm:relation:7145390"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515954",
+            "sectorFr": "Beni aissa",
+            "sectorAr": "بني عيسى",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59328,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2911,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2905
+            }
+          },
+          "sourceId": "osm:relation:7145389",
+          "currentGroupMembers": [
+            "osm:relation:7145389"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515955",
+            "sectorFr": "Beni zalten",
+            "sectorAr": "بني زلطن",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59362,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2912,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2906
+            }
+          },
+          "sourceId": "osm:relation:7145405",
+          "currentGroupMembers": [
+            "osm:relation:7145405",
+            "osm:way:377951368"
+          ]
+        }
+      ],
+      "protectedRawIds": [
+        "osm:relation:7145389",
+        "osm:relation:7145390",
+        "osm:relation:7145405",
+        "osm:relation:7145427",
+        "osm:relation:7145430",
+        "osm:way:186705198",
+        "osm:way:377951368"
+      ],
+      "sourceNamePeerIds": [
+        "osm:node:352752197",
+        "osm:relation:7145430",
+        "osm:way:186705198"
+      ],
+      "exactNameQueries": [
+        "matmatanouvelle",
+        "newmatmata",
+        "nouvellematmata",
+        "مطماطاالجديدة",
+        "مطماطةالجديدة"
+      ],
+      "geometryFacts": {
+        "originalAndPackedResidentialValid": true,
+        "originalAndPackedSectorValid": true,
+        "nativeResidentialCoveredBySector": true,
+        "packedResidentialCoveredBySector": true,
+        "nativeResidentialOutsideSectorM2": 0.0,
+        "residentialAreaKm2": 1.7793987143776042,
+        "sectorAreaKm2": 111.7649425377035,
+        "baseToTownNodeKm": 2.2645470889226744,
+        "baseDistanceOutsideResidentialM": 2103.9456607117,
+        "nativeResidentialCoveredByDelegation": true,
+        "pointFacts": [
+          {
+            "role": "legacy_base",
+            "lat": 33.67,
+            "lng": 9.99,
+            "nearestUsableSources": [
+              {
+                "id": 1023,
+                "distanceKm": 0.0
+              },
+              {
+                "id": 1022,
+                "distanceKm": 13.978974729209042
+              },
+              {
+                "id": 620,
+                "distanceKm": 25.555746224925635
+              }
+            ],
+            "insideOriginalResidential": false,
+            "insidePackedResidential": false,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          },
+          {
+            "role": "absorbed_named_town",
+            "lat": 33.6688822,
+            "lng": 10.0144336,
+            "nearestUsableSources": [
+              {
+                "id": 1023,
+                "distanceKm": 2.2645470889226744
+              },
+              {
+                "id": 1022,
+                "distanceKm": 14.377243708971722
+              },
+              {
+                "id": 620,
+                "distanceKm": 24.87748319872718
+              }
+            ],
+            "insideOriginalResidential": true,
+            "insidePackedResidential": true,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          },
+          {
+            "role": "residential_reference",
+            "lat": 33.666563,
+            "lng": 10.016447,
+            "nearestUsableSources": [
+              {
+                "id": 1023,
+                "distanceKm": 2.477149338547854
+              },
+              {
+                "id": 1022,
+                "distanceKm": 14.190801151529149
+              },
+              {
+                "id": 620,
+                "distanceKm": 25.0659927968915
+              }
+            ],
+            "insideOriginalResidential": true,
+            "insidePackedResidential": true,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          },
+          {
+            "role": "sector_reference",
+            "lat": 33.654405,
+            "lng": 9.980098,
+            "nearestUsableSources": [
+              {
+                "id": 1023,
+                "distanceKm": 1.9613490489486178
+              },
+              {
+                "id": 1022,
+                "distanceKm": 12.142965430157348
+              },
+              {
+                "id": 620,
+                "distanceKm": 27.510569014556552
+              }
+            ],
+            "insideOriginalResidential": false,
+            "insidePackedResidential": false,
+            "insideOriginalSector": true,
+            "insidePackedSector": true,
+            "insideSourceDelegation": true
+          }
+        ],
+        "metricCRS": "EPSG:32632"
+      },
+      "ownCoordinateCorrections": [],
+      "proposedCoordinateOrDefaultChanges": [],
+      "limits": [
+        "Neither residential nor imada geometry is newly certified. Existing boundaries remain byte-identical for GPS.",
+        "No point relocation is needed to express the supported display identity; Nouvelle Matmata base noncontainment must remain an explicit reviewed exception, not silently bypassed.",
+        "Do not simply merge the whole current sector group into the base: first keep the imada distinct and move only the exact residential member."
+      ]
+    }
+  ],
+  "primaryCorroboration": [
+    {
+      "url": "https://www.collectiviteslocales.gov.tn/site_web_communes/",
+      "type": "Indexed official directory",
+      "support": "Municipality1114 La Goulette/حلق الوادي; municipality5118 Nouvelle Matmata/مطماطة الجديدة and6044 address, distinct from5117 old Matmata."
+    },
+    {
+      "url": "https://www.commune-lagoulette.gov.tn/index.php/ar/9-uncategorised?limit=3&start=36",
+      "type": "Indexed municipal city description",
+      "support": "Explicit urban identity and official حلق الوادي spelling; not imada boundary equality."
+    }
+  ],
+  "implementationGuidance": [
+    "Two exact distinctPairs plus two source-bound residential/base applications; all10 coded imadas, all raw IDs/coordinates/defaults/geometries retained.",
+    "Current three-town helper requires initial residential singleton and base inside its source polygon. DistinctPairs can provide singleton groups; Nouvelle Matmata additionally needs an explicitly reviewed legacy-base noncontainment mode. Do not weaken current guard.",
+    "Current Bou Rouis/Jerissa legacy mode permits explicitly reviewed base noncontainment but assumes six imadas and another proof schema; it cannot accept these five-imada cases unchanged.",
+    "Prefer official Arabic base names with old variants added late to residential search and tiny saved-name entries; no generic Arabic or word-order normalization.",
+    "Neither388 nor1023 has an existing source-coordinate correction. All30 correction objects remain untouched; governor-asset name checksum and active Bousalem dependency need a new historical-preserving revision.",
+    "Rebase source-package hashes after the active three-town import; all13 protected raw records, including the separate Beni Zalten residential group member, and source shapes were unchanged at this review."
+  ],
+  "execution": {
+    "broadScreensRerun": false,
+    "generatorOrHelperExecuted": false,
+    "testsOrMatrix": false,
+    "appEdits": false,
+    "deviceIo": false,
+    "newPbfOrApiScan": false,
+    "searchScopeIncident": "Initial rg -l over outputs returned a matching live-ledger filename only; no ledger record or observation was used or printed. Search was stopped and subsequent reads were restricted to named non-ledger inputs; root was notified."
+  },
+  "reviewScript": {
+    "file": "work\\review_la_goulette_new_matmata_sources.py",
+    "sha256": "3b18b331147b43f64eac0f516bf787648c77b9fcbb81678a4e9d3537d926ed5b"
+  },
+  "counts": {
+    "selectedCandidates": 2,
+    "preservedImadas": 10,
+    "protectedRawRecords": 13,
+    "sourceObjects": 19,
+    "proposedRawGroupChanges": 2,
+    "proposedLateAliasChanges": 2,
+    "proposedBaseNameChanges": 2,
+    "coordinateOrDefaultChanges": 0
+  }
+}

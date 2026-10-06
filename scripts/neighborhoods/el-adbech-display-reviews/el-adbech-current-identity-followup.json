@@ -1,0 +1,1449 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T20:29:35.621270+00:00",
+  "status": "SUPPORTED_BOUNDED_DISPLAY_IDENTITY_PROPOSAL_NOT_IMPLEMENTED",
+  "question": "Do the two English rural residential patches and the existing Arabic El Adbech residential row describe one named settlement for display grouping, without combining their geometry?",
+  "currentCheckpoint": {
+    "metadata": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "378899b486efa44f93cd07ed9ee558529cb7bad11165a52cbe6e860b3e7edddc"
+    },
+    "geometry": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "8c0a2f48c73e927ea357c0f7696e33ff91d38587a1649e071d80cc0dca801ad2"
+    }
+  },
+  "priorReview": {
+    "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tijma-adbech-display-identity-review.json",
+    "sha256": "180f0b0b8720d7407d862c6e36d8486c9bc8d8d368213f6ecfa4c7137a31c4cf"
+  },
+  "newHypothesis": "Inspect original author editing history for explicit local-knowledge naming linkage, then corroborate the named inhabited locality and its address in primary Tunisian publications. Do not repeat the prior PBF scan or infer identity from distance.",
+  "sourceReuse": {
+    "pbfPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+    "pbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "freshPbfScanRepeated": false,
+    "sourceFacts": {
+      "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\direct-pbf-context-inventory.json",
+      "sha256": "61ef7c5d06737930d86e3f8239801fc96c904b0c05172b07b4368013e7646490"
+    },
+    "method": "Fresh full PBF pass with osmium area assembly. Global exact/containing-name and addr:place/addr:city search; all named place/residential/amenity/tourism/historic/address objects intersecting these original source contexts. Closed areas replace their duplicate way line. No source geometry repair.",
+    "limitations": "The complete prior source-fact extraction is reused with its byte pin; this task does not claim a second independent PBF pass."
+  },
+  "exactCurrentRecords": [
+    {
+      "current": {
+        "id": "osm:way:1265702650",
+        "sourceId": "osm",
+        "name": "El Adbech",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "عين تونين",
+        "contextAliases": [
+          "Ain Tounine",
+          "Dkhilet Toujane",
+          "دخيلة توجان",
+          "عين تونين",
+          "معتمدية دخيلة توجان"
+        ],
+        "governorateId": 347,
+        "lat": 33.480734,
+        "lng": 10.082918,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.080554,
+          33.478131,
+          10.083967,
+          33.483146
+        ],
+        "areaKm2": 0.05228457126955565,
+        "pickerGroupId": "osm:way:1265702650",
+        "offset": 5215032,
+        "length": 636
+      },
+      "source": {
+        "id": "osm:way:1265702650",
+        "tags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        },
+        "sourceObjectType": "assembled_area",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.0805537,
+                  33.4826933
+                ],
+                [
+                  10.0807724,
+                  33.4825772
+                ],
+                [
+                  10.0810627,
+                  33.4824628
+                ],
+                [
+                  10.0812058,
+                  33.4824064
+                ],
+                [
+                  10.0813987,
+                  33.4822058
+                ],
+                [
+                  10.0814802,
+                  33.4820897
+                ],
+                [
+                  10.0815126,
+                  33.4820274
+                ],
+                [
+                  10.0812183,
+                  33.4819541
+                ],
+                [
+                  10.0807933,
+                  33.4818551
+                ],
+                [
+                  10.0807268,
+                  33.481764
+                ],
+                [
+                  10.0808574,
+                  33.4814155
+                ],
+                [
+                  10.0808864,
+                  33.4811541
+                ],
+                [
+                  10.0808759,
+                  33.4810763
+                ],
+                [
+                  10.0810994,
+                  33.4809325
+                ],
+                [
+                  10.0815279,
+                  33.4809421
+                ],
+                [
+                  10.081979,
+                  33.4809342
+                ],
+                [
+                  10.0823707,
+                  33.4808847
+                ],
+                [
+                  10.082525,
+                  33.4808669
+                ],
+                [
+                  10.082639,
+                  33.4806371
+                ],
+                [
+                  10.0827411,
+                  33.4802965
+                ],
+                [
+                  10.0828645,
+                  33.4799441
+                ],
+                [
+                  10.0829714,
+                  33.479853
+                ],
+                [
+                  10.0827418,
+                  33.4794395
+                ],
+                [
+                  10.0823776,
+                  33.4794028
+                ],
+                [
+                  10.0821877,
+                  33.479185
+                ],
+                [
+                  10.0819255,
+                  33.4790192
+                ],
+                [
+                  10.0817531,
+                  33.4790162
+                ],
+                [
+                  10.0812955,
+                  33.4787153
+                ],
+                [
+                  10.0809101,
+                  33.4782838
+                ],
+                [
+                  10.0811389,
+                  33.4781311
+                ],
+                [
+                  10.0817791,
+                  33.478528
+                ],
+                [
+                  10.0820312,
+                  33.4786085
+                ],
+                [
+                  10.0821009,
+                  33.4785637
+                ],
+                [
+                  10.0824603,
+                  33.4786532
+                ],
+                [
+                  10.0827768,
+                  33.4791253
+                ],
+                [
+                  10.0832704,
+                  33.4791029
+                ],
+                [
+                  10.0833895,
+                  33.4792241
+                ],
+                [
+                  10.0833364,
+                  33.4792983
+                ],
+                [
+                  10.0834631,
+                  33.4794596
+                ],
+                [
+                  10.0835264,
+                  33.4796189
+                ],
+                [
+                  10.0834701,
+                  33.4797241
+                ],
+                [
+                  10.0832486,
+                  33.4797726
+                ],
+                [
+                  10.0832721,
+                  33.479906
+                ],
+                [
+                  10.0830629,
+                  33.4800545
+                ],
+                [
+                  10.0831556,
+                  33.4803023
+                ],
+                [
+                  10.0832018,
+                  33.4806319
+                ],
+                [
+                  10.0832866,
+                  33.4808296
+                ],
+                [
+                  10.0834952,
+                  33.480956
+                ],
+                [
+                  10.0839671,
+                  33.4811908
+                ],
+                [
+                  10.0838102,
+                  33.4814437
+                ],
+                [
+                  10.0836742,
+                  33.4814008
+                ],
+                [
+                  10.0834242,
+                  33.4812541
+                ],
+                [
+                  10.0832285,
+                  33.4813094
+                ],
+                [
+                  10.0828632,
+                  33.4814837
+                ],
+                [
+                  10.0829581,
+                  33.4815512
+                ],
+                [
+                  10.0825657,
+                  33.4817266
+                ],
+                [
+                  10.0826919,
+                  33.4819256
+                ],
+                [
+                  10.0827164,
+                  33.4820609
+                ],
+                [
+                  10.0826948,
+                  33.4821345
+                ],
+                [
+                  10.08266,
+                  33.4821596
+                ],
+                [
+                  10.0826532,
+                  33.4822884
+                ],
+                [
+                  10.0823589,
+                  33.4822837
+                ],
+                [
+                  10.082133,
+                  33.4822472
+                ],
+                [
+                  10.0820445,
+                  33.4822526
+                ],
+                [
+                  10.0820547,
+                  33.4822987
+                ],
+                [
+                  10.0817895,
+                  33.4824093
+                ],
+                [
+                  10.0816706,
+                  33.4824095
+                ],
+                [
+                  10.0813211,
+                  33.4824661
+                ],
+                [
+                  10.0812078,
+                  33.4825457
+                ],
+                [
+                  10.0812572,
+                  33.4828466
+                ],
+                [
+                  10.0812721,
+                  33.4829679
+                ],
+                [
+                  10.0813262,
+                  33.4830795
+                ],
+                [
+                  10.0812124,
+                  33.4831463
+                ],
+                [
+                  10.0811553,
+                  33.4830781
+                ],
+                [
+                  10.0811121,
+                  33.4830946
+                ],
+                [
+                  10.081007,
+                  33.4830482
+                ],
+                [
+                  10.0809613,
+                  33.4829785
+                ],
+                [
+                  10.0805537,
+                  33.4826933
+                ]
+              ]
+            ]
+          ]
+        },
+        "geometrySha256": "17d8f420f4fd340f9f131c0950efc792f066543cc06f38b4a195d4c72868ef00",
+        "geometryValid": true,
+        "exactReviewedNameOrAddress": {
+          "adbech": {
+            "name": "El Adbech"
+          }
+        },
+        "includesReviewedNameOrAddress": {
+          "adbech": {
+            "name": "El Adbech"
+          }
+        },
+        "intersectingSourceContexts": [
+          "adbech"
+        ]
+      },
+      "packedGeometrySha256": "1814bfc260fa32d92d9535dcf1b041c37f51da07626ec1aa4fc05a66ac0141a5"
+    },
+    {
+      "current": {
+        "id": "osm:way:1265702651",
+        "sourceId": "osm",
+        "name": "El Adbech",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "عين تونين",
+        "contextAliases": [
+          "Ain Tounine",
+          "Dkhilet Toujane",
+          "دخيلة توجان",
+          "عين تونين",
+          "معتمدية دخيلة توجان"
+        ],
+        "governorateId": 347,
+        "lat": 33.48056,
+        "lng": 10.085204,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.084576,
+          33.479842,
+          10.085687,
+          33.481344
+        ],
+        "areaKm2": 0.010069491066740944,
+        "pickerGroupId": "osm:way:1265702651",
+        "offset": 5215668,
+        "length": 164
+      },
+      "source": {
+        "id": "osm:way:1265702651",
+        "tags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        },
+        "sourceObjectType": "assembled_area",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.0845758,
+                  33.4799747
+                ],
+                [
+                  10.084913,
+                  33.4798418
+                ],
+                [
+                  10.0850446,
+                  33.4800903
+                ],
+                [
+                  10.0851831,
+                  33.480046
+                ],
+                [
+                  10.0852848,
+                  33.4802771
+                ],
+                [
+                  10.0856394,
+                  33.4802866
+                ],
+                [
+                  10.0856872,
+                  33.4806491
+                ],
+                [
+                  10.085612,
+                  33.4807867
+                ],
+                [
+                  10.0854485,
+                  33.480858
+                ],
+                [
+                  10.0854603,
+                  33.4810645
+                ],
+                [
+                  10.0853171,
+                  33.4811852
+                ],
+                [
+                  10.0849268,
+                  33.4813436
+                ],
+                [
+                  10.0846509,
+                  33.4807756
+                ],
+                [
+                  10.0847629,
+                  33.4807297
+                ],
+                [
+                  10.0847167,
+                  33.4804697
+                ],
+                [
+                  10.084749,
+                  33.4804081
+                ],
+                [
+                  10.0846497,
+                  33.4802675
+                ],
+                [
+                  10.0846705,
+                  33.4801211
+                ],
+                [
+                  10.0845758,
+                  33.4799747
+                ]
+              ]
+            ]
+          ]
+        },
+        "geometrySha256": "1a32bd584c9dda4d2de1e255c91037e07ae4d2feb676a6a7117823d32747f9b1",
+        "geometryValid": true,
+        "exactReviewedNameOrAddress": {
+          "adbech": {
+            "name": "El Adbech"
+          }
+        },
+        "includesReviewedNameOrAddress": {
+          "adbech": {
+            "name": "El Adbech"
+          }
+        },
+        "intersectingSourceContexts": [
+          "adbech"
+        ]
+      },
+      "packedGeometrySha256": "3c22b92008dcd73b49c0f8dfcefe9abe3ee03ff7482dbf424bf37d98329fdb11"
+    },
+    {
+      "current": {
+        "id": "osm:way:189085992",
+        "sourceId": "osm",
+        "name": "الأدباش",
+        "aliases": [
+          "El Adbech"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية قابس",
+        "contextAliases": [],
+        "governorateId": 347,
+        "lat": 33.485609,
+        "lng": 10.086235,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.083056,
+          33.482979,
+          10.095571,
+          33.488208
+        ],
+        "areaKm2": 0.29550161938013964,
+        "pickerGroupId": "osm:way:189085992",
+        "offset": 5292856,
+        "length": 316
+      },
+      "source": {
+        "id": "osm:way:189085992",
+        "tags": {
+          "addr:city": "El Adbech",
+          "landuse": "residential",
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:fr": "El Adbech"
+        },
+        "sourceObjectType": "assembled_area",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.0830563,
+                  33.4853953
+                ],
+                [
+                  10.0832746,
+                  33.4842522
+                ],
+                [
+                  10.0835179,
+                  33.4841592
+                ],
+                [
+                  10.0836696,
+                  33.483971
+                ],
+                [
+                  10.0839199,
+                  33.4839445
+                ],
+                [
+                  10.0840566,
+                  33.4839487
+                ],
+                [
+                  10.0844031,
+                  33.4849916
+                ],
+                [
+                  10.0847663,
+                  33.4851181
+                ],
+                [
+                  10.0850872,
+                  33.4851475
+                ],
+                [
+                  10.0851507,
+                  33.4842622
+                ],
+                [
+                  10.0849356,
+                  33.4833033
+                ],
+                [
+                  10.0853002,
+                  33.4831603
+                ],
+                [
+                  10.0857361,
+                  33.4841441
+                ],
+                [
+                  10.086749,
+                  33.484989
+                ],
+                [
+                  10.0885313,
+                  33.4854809
+                ],
+                [
+                  10.0901725,
+                  33.485791
+                ],
+                [
+                  10.0912111,
+                  33.4853953
+                ],
+                [
+                  10.0909803,
+                  33.4848499
+                ],
+                [
+                  10.0893776,
+                  33.4843687
+                ],
+                [
+                  10.088121,
+                  33.4838019
+                ],
+                [
+                  10.0881851,
+                  33.4832138
+                ],
+                [
+                  10.089493,
+                  33.4829785
+                ],
+                [
+                  10.090929,
+                  33.4832244
+                ],
+                [
+                  10.0926087,
+                  33.48408
+                ],
+                [
+                  10.0931601,
+                  33.4846468
+                ],
+                [
+                  10.0924164,
+                  33.4852777
+                ],
+                [
+                  10.0924933,
+                  33.4857375
+                ],
+                [
+                  10.0938781,
+                  33.4863578
+                ],
+                [
+                  10.0947244,
+                  33.4862615
+                ],
+                [
+                  10.0955706,
+                  33.4862081
+                ],
+                [
+                  10.0955706,
+                  33.4876517
+                ],
+                [
+                  10.0938781,
+                  33.4882078
+                ],
+                [
+                  10.0924549,
+                  33.4874485
+                ],
+                [
+                  10.0906854,
+                  33.4870743
+                ],
+                [
+                  10.088966,
+                  33.4868881
+                ],
+                [
+                  10.0871594,
+                  33.487085
+                ],
+                [
+                  10.0836333,
+                  33.4860049
+                ],
+                [
+                  10.0830563,
+                  33.4853953
+                ]
+              ]
+            ]
+          ]
+        },
+        "geometrySha256": "0e713d30d888dbe3a02a332292db08dfe54ed383a39fb05a1c28ac389a76c2f9",
+        "geometryValid": true,
+        "exactReviewedNameOrAddress": {
+          "adbech": {
+            "name": "El Adbech",
+            "name:ar": "الأدباش",
+            "name:fr": "El Adbech",
+            "addr:city": "El Adbech"
+          }
+        },
+        "includesReviewedNameOrAddress": {
+          "adbech": {
+            "name": "El Adbech",
+            "name:ar": "الأدباش",
+            "name:fr": "El Adbech",
+            "addr:city": "El Adbech"
+          }
+        },
+        "intersectingSourceContexts": [
+          "adbech"
+        ]
+      },
+      "packedGeometrySha256": "ea4928df3a3da3b1615392c3379d24859c2ceda0dd1d54d855912b5bc887e202"
+    }
+  ],
+  "villageSourceRecord": {
+    "id": "osm:node:1997440361",
+    "tags": {
+      "name": "الأدباش",
+      "name:ar": "الأدباش",
+      "name:en": "El Adbech",
+      "name:fr": "El Adbech",
+      "place": "village"
+    },
+    "sourceObjectType": "node",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        10.0910266,
+        33.485959
+      ]
+    },
+    "geometrySha256": "a0866ab3b4f7b9883ee853b260c2fbe95950f11206ecc0622b8134e542a796ec",
+    "geometryValid": true,
+    "exactReviewedNameOrAddress": {
+      "adbech": {
+        "name": "الأدباش",
+        "name:ar": "الأدباش",
+        "name:en": "El Adbech",
+        "name:fr": "El Adbech"
+      }
+    },
+    "includesReviewedNameOrAddress": {
+      "adbech": {
+        "name": "الأدباش",
+        "name:ar": "الأدباش",
+        "name:en": "El Adbech",
+        "name:fr": "El Adbech"
+      }
+    },
+    "intersectingSourceContexts": [
+      "adbech"
+    ]
+  },
+  "sourceVillageAlreadyAbsorbed": true,
+  "pointMembership": [
+    {
+      "id": "osm:way:1265702650",
+      "sourcePolygonContainsVillagePoint": false,
+      "currentPickerGroupId": "osm:way:1265702650"
+    },
+    {
+      "id": "osm:way:1265702651",
+      "sourcePolygonContainsVillagePoint": false,
+      "currentPickerGroupId": "osm:way:1265702651"
+    },
+    {
+      "id": "osm:way:189085992",
+      "sourcePolygonContainsVillagePoint": true,
+      "currentPickerGroupId": "osm:way:189085992"
+    }
+  ],
+  "editingEvidence": {
+    "changesetId": 149074040,
+    "url": "https://www.openstreetmap.org/changeset/149074040",
+    "sourceStatement": "aerial imagery;local knowledge",
+    "comment": "supplementation of information, line correction",
+    "date": "2024-03-24T03:37:11Z",
+    "pins": [
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/way/1265702650/history",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\osm-way-1265702650-history.xml",
+        "sha256": "78243328e8b69ceca90a2694596151aead7b857f9fa80e158c6b54c11ce11a89",
+        "versions": [
+          {
+            "version": "1",
+            "timestamp": "2024-03-24T03:37:12Z",
+            "changeset": "149074040",
+            "tags": {
+              "landuse": "residential",
+              "name": "El Adbech",
+              "residential": "rural"
+            },
+            "nodeCount": 78
+          }
+        ]
+      },
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/way/1265702651/history",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\osm-way-1265702651-history.xml",
+        "sha256": "42a8eed4f6af99ff860b685f4c776db12c739d46fd4203587895900ccaacf153",
+        "versions": [
+          {
+            "version": "1",
+            "timestamp": "2024-03-24T03:37:12Z",
+            "changeset": "149074040",
+            "tags": {
+              "landuse": "residential",
+              "name": "El Adbech",
+              "residential": "rural"
+            },
+            "nodeCount": 19
+          }
+        ]
+      },
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/way/189085992/history",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\osm-way-189085992-history.xml",
+        "sha256": "7cd306c8c9bec027ecf249b620ea14c7192ef59602193d2ac7f989ba69b125ef",
+        "versions": [
+          {
+            "version": "1",
+            "timestamp": "2012-11-04T17:27:02Z",
+            "changeset": "13750226",
+            "tags": {
+              "addr:city": "El Adbech",
+              "addr:country": "TN",
+              "addr:governorate": "Gabès",
+              "is_in": "Gabes; Tunisia; Africa",
+              "is_in:continent": "Africa",
+              "is_in:country": "Tunisia",
+              "is_in:governorate": "Gabès",
+              "landuse": "residential",
+              "name": "El Adbech",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech"
+            },
+            "nodeCount": 30
+          },
+          {
+            "version": "2",
+            "timestamp": "2015-10-26T12:43:46Z",
+            "changeset": "34880828",
+            "tags": {
+              "addr:city": "El Adbech",
+              "addr:country": "TN",
+              "addr:governorate": "Gabès",
+              "is_in": "Gabes; Tunisia; Africa",
+              "is_in:continent": "Africa",
+              "is_in:country": "Tunisia",
+              "is_in:governorate": "Gabès",
+              "landuse": "residential",
+              "name": "El Adbech",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech"
+            },
+            "nodeCount": 38
+          },
+          {
+            "version": "3",
+            "timestamp": "2020-04-08T21:03:20Z",
+            "changeset": "83272065",
+            "tags": {
+              "addr:city": "El Adbech",
+              "addr:country": "TN",
+              "addr:governorate": "Gabès",
+              "is_in": "Gabes;Tunisia;Africa",
+              "is_in:continent": "Africa",
+              "is_in:country": "Tunisia",
+              "is_in:governorate": "Gabès",
+              "landuse": "residential",
+              "name": "الأدباش",
+              "name:ar": "الأدباش",
+              "name:fr": "El Adbech"
+            },
+            "nodeCount": 38
+          },
+          {
+            "version": "4",
+            "timestamp": "2020-11-18T20:16:40Z",
+            "changeset": "94393307",
+            "tags": {
+              "addr:city": "El Adbech",
+              "landuse": "residential",
+              "name": "الأدباش",
+              "name:ar": "الأدباش",
+              "name:fr": "El Adbech"
+            },
+            "nodeCount": 38
+          },
+          {
+            "version": "5",
+            "timestamp": "2024-03-24T03:37:12Z",
+            "changeset": "149074040",
+            "tags": {
+              "addr:city": "El Adbech",
+              "landuse": "residential",
+              "name": "El Adbech",
+              "name:ar": "الأدباش",
+              "name:fr": "El Adbech"
+            },
+            "nodeCount": 38
+          }
+        ]
+      },
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/node/1997440361/history",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\osm-node-1997440361-history.xml",
+        "sha256": "a7e9ef399a837366e7cdf484316293b9489e5039eb42a360ac046fa8057ff818",
+        "versions": [
+          {
+            "version": "1",
+            "timestamp": "2012-11-04T18:32:35Z",
+            "changeset": "13751366",
+            "tags": {
+              "addr:city": "El Adbech",
+              "addr:country": "TN",
+              "addr:governorate": "Gabès",
+              "is_in": "Gabes; Tunisia; Africa",
+              "is_in:continent": "Africa",
+              "is_in:country": "Tunisia",
+              "is_in:governorate": "Gabès",
+              "name": "El Adbech",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech",
+              "place": "hamlet"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "2",
+            "timestamp": "2014-03-17T14:33:23Z",
+            "changeset": "21155947",
+            "tags": {
+              "addr:city": "El Adbech",
+              "addr:country": "TN",
+              "addr:governorate": "Gabès",
+              "int_name": "El Adbech",
+              "is_in": "Gabes; Tunisia; Africa",
+              "is_in:continent": "Africa",
+              "is_in:country": "Tunisia",
+              "is_in:governorate": "Gabès",
+              "name": "El Adbech",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech",
+              "place": "hamlet"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "3",
+            "timestamp": "2016-11-20T21:44:43Z",
+            "changeset": "43833104",
+            "tags": {
+              "addr:city": "El Adbech",
+              "addr:governorate": "Gabès",
+              "int_name": "El Adbech",
+              "is_in": "Gabes; Tunisia; Africa",
+              "is_in:continent": "Africa",
+              "is_in:country": "Tunisia",
+              "is_in:country_code": "TN",
+              "is_in:governorate": "Gabès",
+              "name": "El Adbech",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech",
+              "place": "hamlet"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "4",
+            "timestamp": "2020-04-08T21:03:20Z",
+            "changeset": "83272065",
+            "tags": {
+              "addr:city": "El Adbech",
+              "addr:governorate": "Gabès",
+              "int_name": "El Adbech",
+              "is_in": "Gabes;Tunisia;Africa",
+              "is_in:continent": "Africa",
+              "is_in:country": "Tunisia",
+              "is_in:country_code": "TN",
+              "is_in:governorate": "Gabès",
+              "name": "الأدباش",
+              "name:en": "الأدباش",
+              "name:fr": "El Adbech",
+              "place": "hamlet"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "5",
+            "timestamp": "2020-11-18T20:16:40Z",
+            "changeset": "94393307",
+            "tags": {
+              "addr:city": "El Adbech",
+              "name": "الأدباش",
+              "name:ar": "الأدباش",
+              "name:fr": "El Adbech",
+              "place": "hamlet"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "6",
+            "timestamp": "2021-02-03T02:11:00Z",
+            "changeset": "98609845",
+            "tags": {
+              "name": "الأدباش",
+              "name:ar": "الأدباش",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech",
+              "place": "hamlet"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "7",
+            "timestamp": "2023-07-15T02:15:35Z",
+            "changeset": "138528828",
+            "tags": {
+              "name": "El Adbech",
+              "name:ar": "الأدباش",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech",
+              "place": "hamlet"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "8",
+            "timestamp": "2024-03-24T03:37:12Z",
+            "changeset": "149074040",
+            "tags": {
+              "name": "El Adbech",
+              "name:ar": "الأدباش",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech",
+              "place": "village"
+            },
+            "nodeCount": 0
+          },
+          {
+            "version": "9",
+            "timestamp": "2025-12-04T00:47:11Z",
+            "changeset": "175468652",
+            "tags": {
+              "name": "الأدباش",
+              "name:ar": "الأدباش",
+              "name:en": "El Adbech",
+              "name:fr": "El Adbech",
+              "place": "village"
+            },
+            "nodeCount": 0
+          }
+        ]
+      },
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/149074040",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\osm-changeset-149074040.xml",
+        "sha256": "aa5fad6df3e78a3236b40e159ebe0883eee9a773b5af06935a973f9d6f18dccb"
+      },
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/149074040/download",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\osm-changeset-149074040-download.osc",
+        "sha256": "900c846b21aea3f682ca34b305c2348e5e444b4dbfc209125dbd593af7688e7e"
+      }
+    ],
+    "exactNamedChanges": [
+      {
+        "action": "create",
+        "type": "way",
+        "id": "1265702650",
+        "tags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        }
+      },
+      {
+        "action": "create",
+        "type": "way",
+        "id": "1265702651",
+        "tags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        }
+      },
+      {
+        "action": "modify",
+        "type": "way",
+        "id": "189085992",
+        "tags": {
+          "addr:city": "El Adbech",
+          "landuse": "residential",
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:fr": "El Adbech"
+        }
+      },
+      {
+        "action": "modify",
+        "type": "node",
+        "id": "1997440361",
+        "tags": {
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:en": "El Adbech",
+          "name:fr": "El Adbech",
+          "place": "village"
+        }
+      },
+      {
+        "action": "modify",
+        "type": "way",
+        "id": "376974465",
+        "tags": {
+          "highway": "primary",
+          "lanes": "2",
+          "name": "الطريق الوطنية مدنين - حزوة",
+          "name:ar": "الطريق الوطنية مدنين - حزوة",
+          "name:fr": "Route Nationale Medenine - Hazoua",
+          "ref": "RN20",
+          "surface": "asphalt"
+        }
+      }
+    ],
+    "relationship": "The author explicitly created both named rural residential areas as El Adbech in the same change that reasserted El Adbech on the older bilingual addr:city polygon and moved/upgraded the same bilingual settlement node to village. The source declaration includes local knowledge. These are jointly authored common-settlement names, not an inference from timestamps or distance alone.",
+    "lineage": {
+      "existingLargeWayNodeSequenceUnchanged": true,
+      "existingLargeWayBeforeVersion": "4",
+      "existingLargeWayAfterVersion": "5",
+      "smallWays": [
+        {
+          "id": "osm:way:1265702650",
+          "nodeCount": 78,
+          "allNodeIdsNewInChangeset": true,
+          "sharedNodeIdsWithLargeWay": []
+        },
+        {
+          "id": "osm:way:1265702651",
+          "nodeCount": 19,
+          "allNodeIdsNewInChangeset": true,
+          "sharedNodeIdsWithLargeWay": []
+        }
+      ],
+      "note": "Same changeset is an explicit jointly named source edit, but the small ways are separately traced rural residential patches, not a geometric split of the old way."
+    },
+    "largeWayNodeIdsAlsoModifiedInChange": [
+      "1997332624"
+    ],
+    "largeWayGeometryCaveat": "The large way keeps its node-reference sequence between versions 4 and 5, but node 1997332624 was modified in that changeset. Therefore no assertion of unchanged large-way coordinates is made.",
+    "villagePointBefore": {
+      "lat": "33.4858657",
+      "lon": "10.0914315",
+      "version": "7"
+    },
+    "villagePointAfter": {
+      "lat": "33.4859590",
+      "lon": "10.0910266",
+      "version": "8"
+    },
+    "separateSettlementNamingFound": false,
+    "limitation": "The generic changeset comment does not literally say these are parts of one village. OSM local knowledge is self-declared, and the two newly drawn patches are not a split of the older polygon. This is reviewed source-authored name identity, not government certification of each footprint."
+  },
+  "primaryLocalityEvidence": [
+    {
+      "authority": "Institut National du Patrimoine",
+      "url": "https://www.inp2020.tn/inventaire/Touslessites.pdf",
+      "file": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\inp-touslessites.pdf",
+        "sha256": "780035dfd174a6f128b01ba2c1be0626e20a28672e2047eaf86b1c7bed5977bc"
+      },
+      "pdfPage": 1490,
+      "siteId": "168.100",
+      "name": "Ladbech",
+      "personallyViewedImage": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\official\\inp-inventory-page-1490.png",
+        "sha256": "8d654b98cc3f0f60b7c254a3329d1b2ef7fde8cfdfe1e2378a06a2912999f630"
+      },
+      "supports": "Names Ladbech as a locality and describes rural troglodytic dwellings. It independently supports an inhabited locality, distinct from the nearby Roman fort record 168.099.",
+      "doesNotSupport": "Does not delineate or enumerate the three modern OSM residential patches. Its archaeological-site coordinate is not a village perimeter."
+    },
+    {
+      "authority": "ISIE",
+      "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf",
+      "file": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\isie-ussd2022.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf",
+        "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97",
+        "size": 3391771,
+        "relevantPdfPage": 80
+      },
+      "pdfPage": 80,
+      "votingCentreCode": "5216",
+      "labelFr": "E.P.EL EDBECHE TOUNINE",
+      "labelAr": "م إبتدائية الأدباش - تونين",
+      "imadaAr": "عين تونين",
+      "delegationAr": "دخيلة توجان",
+      "governorateAr": "قابس",
+      "personallyViewedImage": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ussd-page-80.png",
+        "sha256": "a9021c38c1057bcc23509082094682691ad7e56f39ea46f63c88d9926a747b9c"
+      },
+      "supports": "Official school address corroborates the inhabited locality spelling and its Ain Tounine / Dkhilet Toujane context.",
+      "doesNotSupport": "Does not assign every nearby residential footprint to that imada."
+    },
+    {
+      "authority": "HAICOP / Commissariat Régional au Développement Agricole de Gabès",
+      "url": "https://www.marchespublics.gov.tn/fr/projets-annuels/P2026-142618",
+      "file": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\haicop-ladbech-road-2026.html",
+        "url": "https://www.marchespublics.gov.tn/fr/projets-annuels/P2026-142618",
+        "sha256": "9c5271df6e4a925a95d1b9145f7663f0e3dfaeb0d789e98288496856ecd95258",
+        "size": 62336
+      },
+      "projectId": "P2026-142618",
+      "publicationDate": "2026-04-15",
+      "supports": "Current rural-road procurement names the Ladbech-to-stadium road in Dkhilet Toujane, corroborating the locality name as an inhabited transport origin.",
+      "doesNotSupport": "No exact road alignment, neighborhood inventory or fragment-to-village boundary accompanies this page."
+    },
+    {
+      "authority": "ISIE",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قابس/دخيلة توجان/عين تونين.pdf",
+      "file": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ain-tounine-isie2023.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قابس/دخيلة توجان/عين تونين.pdf",
+        "sha256": "988e6e40f08b58e7418876249aebd3a8978b8c27d31403361b985480f3662fd4",
+        "size": 1630685
+      },
+      "mapTitle": "عين تونين",
+      "personallyViewedFullMap": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ain-tounine-full.png",
+        "sha256": "4d8e15be4a14476f56fb23b62960fbcaa173981626567d0d67c2e1d010109ad6"
+      },
+      "personallyViewedContextCrop": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ain-tounine-adbech-context-crop.png",
+        "sha256": "dfeefcce2049607e99e29623dcec6bbb976c7e67ba28932aeaff0cac24625dc8"
+      },
+      "positionReview": {
+        "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\official-map-position-review.json",
+        "sha256": "44b1c4656f146dccc680db0e3e98e3ede4a27fce5e5918eb0703718336fcb20d"
+      },
+      "supports": "Georeferenced map places the Adbech school label on the administrative edge near the documented settlement.",
+      "doesNotSupport": "The raster school label alone does not establish village membership. The map was inspected for context only; no official boundary was extracted or imported."
+    }
+  ],
+  "officialAdministrativeContext": {
+    "registry": {
+      "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "currentDkhiletToujaneSectors": [
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5161",
+        "delegationFr": "Dkhilet toujen",
+        "delegationAr": "دخيلة توجان",
+        "sectorCode": "516151",
+        "sectorFr": "Toujane",
+        "sectorAr": "توجان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59770,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2933,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2927
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5161",
+        "delegationFr": "Dkhilet toujen",
+        "delegationAr": "دخيلة توجان",
+        "sectorCode": "516152",
+        "sectorFr": "Zemarten",
+        "sectorAr": "زمرتن",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59804,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2934,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2928
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5161",
+        "delegationFr": "Dkhilet toujen",
+        "delegationAr": "دخيلة توجان",
+        "sectorCode": "516153",
+        "sectorFr": "Ain tounine",
+        "sectorAr": "عين تونين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59838,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2936,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2930
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5161",
+        "delegationFr": "Dkhilet toujen",
+        "delegationAr": "دخيلة توجان",
+        "sectorCode": "516154",
+        "sectorFr": "Dekhilet toujane",
+        "sectorAr": "دخيلة توجان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59872,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2938,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2932
+        }
+      }
+    ],
+    "interpretation": "These three source features are residential land-use patches, not coded administrative sectors. Existing Ain Tounine/Beni Zelten border claims and the large row's governorate-only subtitle are a separate context issue; they are not evidence that the three same-name residential patches are three distinct villages. No common parent correction is proposed."
+  },
+  "decision": {
+    "supportedClaim": "All three source residential records can be represented by one El Adbech / الأدباش picker choice while retaining their three raw footprints and identities.",
+    "basis": "The exact common name is deliberately assigned to three residential pieces and a bilingual village in the author's explicitly local-knowledge edit. The existing large piece additionally has addr:city=El Adbech, contains that village point, and independent INP / official school / road records corroborate the same inhabited settlement. The prior full named-source inventory identifies no competing exact-name village or distinct qualifiers in this context.",
+    "confidenceQualification": "Supported for an explicitly reviewed display association. Independent Tunisian documents establish the locality and address, while the per-patch association is still source-mapper evidence. Neither informal limits nor complete local coverage becomes certified.",
+    "notClaimed": [
+      "All three footprints form one contiguous area",
+      "Every source polygon is a correct or complete village boundary",
+      "The entire village belongs to one imada",
+      "The Roman fort and wall POIs are residential settlement rows"
+    ],
+    "missingForStrongerClaim": "A primary cadastral/local map or georeferenced municipal address inventory expressly enumerating the residential fragments would independently verify the mapper's per-patch membership; an exhaustive village polygon is not required for this display proposal."
+  },
+  "proposal": {
+    "canonicalPickerId": "osm:way:189085992",
+    "canonicalName": "الأدباش",
+    "canonicalAliases": [
+      "El Adbech"
+    ],
+    "memberIds": [
+      "osm:way:189085992",
+      "osm:way:1265702650",
+      "osm:way:1265702651"
+    ],
+    "expectedCurrentGroupIds": [
+      "osm:way:189085992",
+      "osm:way:1265702650",
+      "osm:way:1265702651"
+    ],
+    "expectedChanges": [
+      {
+        "id": "osm:way:1265702650",
+        "field": "pickerGroupId",
+        "before": "osm:way:1265702650",
+        "after": "osm:way:189085992"
+      },
+      {
+        "id": "osm:way:1265702651",
+        "field": "pickerGroupId",
+        "before": "osm:way:1265702651",
+        "after": "osm:way:189085992"
+      }
+    ],
+    "sourceVillageId": "osm:node:1997440361",
+    "sourceVillageIsNotNewRawPoint": true,
+    "preserveExactly": [
+      "All three raw feature IDs and every original/packed polygon byte",
+      "All names and aliases",
+      "All raw representative coordinates",
+      "Each delegationId=1022",
+      "Each original parentName and contextAliases",
+      "All saved raw IDs; selection matching should resolve them as members of the canonical row"
+    ],
+    "pickerCountDelta": -2,
+    "rawFeatureCountDelta": 0,
+    "geometryChange": false,
+    "requiresReviewedGeneratorSupport": "Existing localRecords guards must be inspected for cross-parent residential identity support and exact original/effective geometry plus source evidence validation. Do not relax name, membership or geometry guards globally.",
+    "searchConsideration": "Retain all member aliases and contexts in search even though the canonical visible row retains its current governorate-level subtitle. This proposal does not manufacture Ain Tounine containment for the large footprint.",
+    "savedChoiceConsideration": "Both old small-way selection IDs remain valid raw IDs and should highlight the canonical group through normal member matching. All three defaults already equal 1022, so grouping requires no prayer source correction.",
+    "implementationAuthorizedByThisReport": false
+  },
+  "operations": {
+    "repositoryEdits": 0,
+    "catalogGenerations": 0,
+    "testsOrBuilds": 0,
+    "phoneOrLedgerIo": 0,
+    "newWholePbfScans": 0,
+    "sourceFetchesOnly": true
+  }
+}

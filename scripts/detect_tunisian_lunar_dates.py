@@ -6,6 +6,7 @@ import dataclasses
 import datetime as dt
 import email.utils
 import html
+import http.client
 import json
 import math
 import os
@@ -129,6 +130,7 @@ HREF_RE = re.compile(r"href=[\"']([^\"']+)[\"']", re.IGNORECASE)
 SPACE_RE = re.compile(r"\s+")
 JSON_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ISLAMIC_EPOCH = 1_948_439
+SOURCE_FETCH_ERRORS = (OSError, http.client.HTTPException)
 METEO_LIST_URL = "https://www.meteo.tn/ar/liste-visibilite-croissant-lunaire"
 TUNISIAN_MONTHS = {
     "جانفي": 1,
@@ -171,8 +173,8 @@ def main() -> int:
         print("No active Ramadan/Aid polling window; nothing to update.")
         return 0
 
-    deepseek_key = load_deepseek_key(repo_root, args.env_file)
     changed_files: list[Path] = []
+    failed_events = 0
     for event, hijri_year in targets:
         report_lines.extend([f"## {event.label} {hijri_year}", ""])
         if args.skip_network:
@@ -187,27 +189,40 @@ def main() -> int:
             report_lines.append("")
             continue
 
-        decision = deterministic_decision_from_candidates(event, hijri_year, candidates)
-        if decision is None:
-            if not deepseek_key:
-                raise SystemExit("DEEP secret is required when search fallback needs LLM extraction.")
-            decision = ask_deepseek(
-                api_key=deepseek_key,
-                event=event,
-                hijri_year=hijri_year,
-                today=today,
-                candidates=candidates,
-            )
-        validation = validate_decision(decision, event, hijri_year, candidates)
+        try:
+            decision = deterministic_decision_from_candidates(event, hijri_year, candidates)
+            if decision is None:
+                deepseek_key = load_deepseek_key(repo_root, args.env_file)
+                if not deepseek_key:
+                    raise ValueError("DEEP secret is required when search fallback needs LLM extraction.")
+                decision = ask_deepseek(
+                    api_key=deepseek_key,
+                    event=event,
+                    hijri_year=hijri_year,
+                    today=today,
+                    candidates=candidates,
+                )
+            validation = validate_decision(decision, event, hijri_year, candidates)
+        except (*SOURCE_FETCH_ERRORS, ValueError, TypeError, KeyError, RuntimeError) as error:
+            # One unusable response must not discard another event's valid detection.
+            failed_events += 1
+            report_lines.extend([f"Detection failed: {error}", "No JSON update was made for this event.", ""])
+            print(f"Detection failed for {event.key}: {error}", file=sys.stderr)
+            continue
+        changed = False
+        if validation["accepted"]:
+            try:
+                changed = update_override_file(
+                    repo_root=repo_root,
+                    event=event,
+                    hijri_year=hijri_year,
+                    gregorian_date=validation["selected_date"],
+                    dry_run=args.dry_run,
+                )
+            except ValueError as error:
+                validation = {**validation, "accepted": False, "rejection_reason": str(error)}
         append_validation_report(report_lines, event, validation)
         if validation["accepted"]:
-            changed = update_override_file(
-                repo_root=repo_root,
-                event=event,
-                hijri_year=hijri_year,
-                gregorian_date=validation["selected_date"],
-                dry_run=args.dry_run,
-            )
             if changed:
                 changed_files.append(official_dates_path(repo_root, hijri_year))
                 if args.dry_run:
@@ -229,7 +244,8 @@ def main() -> int:
 
     write_reports(args, report_lines)
     print("\n".join(report_lines))
-    return 0
+    # Keep valid partial updates reviewable; otherwise make extraction failures visible in Actions.
+    return 1 if failed_events and not changed_files else 0
 
 
 def parse_args() -> argparse.Namespace:
@@ -330,7 +346,7 @@ def collect_candidates(
             return candidates
         try:
             feed_xml = fetch_text(url)
-        except urllib.error.URLError as error:
+        except SOURCE_FETCH_ERRORS as error:
             print(f"Search fetch failed via {provider}: {error}", file=sys.stderr)
             continue
         for item in parse_feed(feed_xml, provider):
@@ -353,7 +369,7 @@ def collect_candidates(
             return candidates
         try:
             gdelt_json = fetch_text(url)
-        except urllib.error.URLError as error:
+        except SOURCE_FETCH_ERRORS as error:
             print(f"GDELT fetch failed: {error}", file=sys.stderr)
             continue
         for item in parse_gdelt(gdelt_json):
@@ -377,12 +393,21 @@ def collect_meteo_direct_candidates(event: TargetEvent, hijri_year: int) -> list
     for url in meteo_direct_urls(event, hijri_year):
         try:
             page_html = fetch_text(url)
-        except urllib.error.URLError as error:
+        except SOURCE_FETCH_ERRORS as error:
             print(f"Source fetch failed for meteo.tn direct page: {error}", file=sys.stderr)
             continue
         plain_text = html_to_text(page_html)
         if not meteo_text_matches_event(event, hijri_year, plain_text):
             continue
+        evidence = derive_meteo_evidence(event, hijri_year, plain_text)
+        snippet = plain_text[:6_000]
+        if evidence is not None and evidence[1] not in snippet:
+            # Preserve the actual source paragraph even when site navigation has
+            # pushed it beyond the normal excerpt. Never turn our calculation
+            # into a second, apparently independent source record.
+            quote_start = plain_text.find(evidence[1])
+            if quote_start >= 0:
+                snippet = plain_text[:2_000] + "\n" + plain_text[max(0, quote_start - 400) : quote_start + len(evidence[1]) + 400]
         candidates.append(
             ArticleCandidate(
                 id="",
@@ -393,24 +418,9 @@ def collect_meteo_direct_candidates(event: TargetEvent, hijri_year: int) -> list
                 title=extract_html_title(page_html)[:300],
                 url=url,
                 published=parse_meteo_published_date(plain_text),
-                snippet=plain_text[:6_000],
+                snippet=snippet,
             ),
         )
-        derived_date = derive_meteo_event_date(event, hijri_year, plain_text)
-        if derived_date is not None:
-            candidates.append(
-                ArticleCandidate(
-                    id="",
-                    source_name=source.name,
-                    source_domain=source.domain,
-                    source_tier=source.tier,
-                    provider="meteo_direct_derived",
-                    title=f"Official meteo.tn derived {event.label} date",
-                    url=url,
-                    published=parse_meteo_published_date(plain_text),
-                    snippet=build_meteo_derived_snippet(event, derived_date),
-                ),
-            )
     return candidates
 
 
@@ -437,14 +447,15 @@ def meteo_direct_urls(event: TargetEvent, hijri_year: int) -> list[str]:
         list_url = f"{METEO_LIST_URL}?page={page_index}"
         try:
             list_html = fetch_text(list_url)
-        except urllib.error.URLError as error:
+        except SOURCE_FETCH_ERRORS as error:
             print(f"Source fetch failed for meteo.tn list page: {error}", file=sys.stderr)
             continue
         for match in HREF_RE.finditer(list_html):
             href = html.unescape(match.group(1))
             absolute_url = urllib.parse.urljoin("https://www.meteo.tn", href)
             context = html_to_text(list_html[max(0, match.start() - 800) : match.end() + 1_200])
-            if "meteo.tn" not in urllib.parse.urlparse(absolute_url).netloc:
+            hostname = (urllib.parse.urlparse(absolute_url).hostname or "").lower()
+            if hostname != "meteo.tn" and not hostname.endswith(".meteo.tn"):
                 continue
             if str(hijri_year) in context and meteo_text_matches_event(event, hijri_year, context):
                 urls.append(absolute_url)
@@ -472,66 +483,102 @@ def meteo_text_matches_event(event: TargetEvent, hijri_year: int, text: str) -> 
 
 
 def derive_meteo_event_date(event: TargetEvent, hijri_year: int, text: str) -> dt.date | None:
-    if event.key == "ramadan_start":
-        return derive_meteo_ramadan_start_date(event, text)
-    if event.key == "eid_adha":
-        return derive_meteo_eid_adha_date(event, hijri_year, text)
-    return None
+    evidence = derive_meteo_evidence(event, hijri_year, text)
+    return evidence[0] if evidence else None
 
 
 def derive_meteo_ramadan_start_date(event: TargetEvent, text: str) -> dt.date | None:
-    normalized = clean_text(text)
-    if event.key != "ramadan_start" or "meteo" not in normalized.lower() and "المعهد الوطني للرصد الجوي" not in normalized:
+    if event.key != "ramadan_start":
         return None
-    if "رؤية هلال شهر رمضان" not in normalized and "هلال رمضان" not in normalized:
-        return None
-    for match in re.finditer(r"(?:تصبح\s+)?الرؤية\s+ممكنة\s+يوم.{0,220}", normalized):
-        possible_dates = parse_tunisian_dates(match.group(0))
-        if possible_dates:
-            return possible_dates[0] + dt.timedelta(days=1)
-    return None
+    evidence = _meteo_visibility_evidence(event, text)
+    return evidence[0] + dt.timedelta(days=1) if evidence else None
 
 
 def derive_meteo_eid_adha_date(event: TargetEvent, hijri_year: int, text: str) -> dt.date | None:
-    normalized = clean_text(text)
-    if event.key != "eid_adha" or "meteo" not in normalized.lower() and "المعهد الوطني للرصد الجوي" not in normalized:
+    if event.key != "eid_adha":
         return None
-    if "ذو الحجة" not in normalized and "ذي الحجة" not in normalized:
-        return None
+    return derive_meteo_event_date(event, hijri_year, text)
 
-    expected_month_start = hijri_to_gregorian(hijri_year, 12, 1)
-    visibility_dates: list[dt.date] = []
-    for window in meteo_dhul_hijja_visibility_windows(normalized):
-        for parsed_date in parse_tunisian_dates(window):
-            if abs((parsed_date - expected_month_start).days) <= 4:
-                visibility_dates.append(parsed_date)
-    if not visibility_dates:
-        return None
 
-    visibility_date = max(visibility_dates)
-    first_dhul_hijja = visibility_date + dt.timedelta(days=1)
-    return first_dhul_hijja + dt.timedelta(days=9)
+def derive_meteo_evidence(event: TargetEvent, hijri_year: int, text: str) -> tuple[dt.date, str] | None:
+    """Return a calculated event date and its verbatim affirmative source clause.
+
+    The caller must establish that the text comes from meteo.tn. Visibility is
+    astronomy evidence, not an announcement; a caption, a negative statement or
+    several possible dates cannot establish one event date deterministically.
+    """
+    if event.key not in {"ramadan_start", "eid_adha"} or not meteo_text_matches_event(event, hijri_year, text):
+        return None
+    evidence = _meteo_visibility_evidence(event, text)
+    if evidence is None:
+        return None
+    visibility_date, quote = evidence
+    selected = visibility_date + dt.timedelta(days=10 if event.key == "eid_adha" else 1)
+    expected = hijri_to_gregorian(hijri_year, event.hijri_month, event.hijri_day)
+    if abs((selected - expected).days) > 4:
+        return None
+    return selected, quote
+
+
+def _meteo_visibility_evidence(event: TargetEvent, text: str) -> tuple[dt.date, str] | None:
+    # Title/body and excerpt paragraph boundaries must survive normalization:
+    # joining them can invent a supporting quote that exists in neither field.
+    normalized = "\n".join(clean_text(line) for line in text.splitlines())
+    target_month = r"رمضان" if event.key == "ramadan_start" else r"ذ[وي]\s+الحجة"
+    if not re.search(target_month, normalized):
+        return None
+    affirmative = re.compile(
+        r"(?:الرؤية\s+ممكنة|يمكن\s+رؤية\s+(?:هلال|الهلال)|"
+        r"رؤية\s+(?:هلال|الهلال)[^،.!?؟؛;]{0,65}\s+ممكنة)",
+    )
+    negated_or_conditional = re.compile(
+        r"\b[وف]?(?:لا|لن|لم|ليس|ليست|غير|مستحيل|مستحيلة|تعذر|يتعذر|استحالة|"
+        r"قد|ربما|احتمال|محتمل|محتملة|مشروط|شريطة|إذا|إلا|عدا|باستثناء)\b",
+    )
+    positive: dict[dt.date, str] = {}
+    negative: set[dt.date] = set()
+    # Sentence/clause boundaries prevent dates in adjacent chart captions or
+    # paragraphs from being borrowed by a visibility statement.
+    month_names = r"رمضان|شوال|شعبان|ذ[وي]\s+الحجة|ذ[وي]\s+القعدة"
+    for clause_match in re.finditer(r"[^.!?؟؛;،\n]+", normalized):
+        clause = clause_match.group(0).strip()
+        if len(clause) > 800 or not re.search(r"(?:الرؤية|رؤية|الهلال|هلال)", clause):
+            continue
+        dates = set(parse_tunisian_dates(clause))
+        if not dates:
+            continue
+        if negated_or_conditional.search(clause):
+            negative.update(dates)
+            continue
+        affirmation = affirmative.search(clause)
+        if len(dates) != 1 or affirmation is None:
+            continue
+        if not re.search(r"\b(?:يوم|مساء|ليلة|غروب)\b", clause):
+            continue
+        # A statement explicitly about another lunar month is not evidence for
+        # the target just because the site's menu mentions it elsewhere.
+        lunar_months = re.findall(month_names, clause)
+        if lunar_months and not any(re.fullmatch(target_month, month) for month in lunar_months):
+            continue
+        if not lunar_months:
+            preceding_months = re.findall(month_names, normalized[:clause_match.start()])
+            if not preceding_months or not re.fullmatch(target_month, preceding_months[-1]):
+                continue
+        date_match = TUNISIAN_DATE_RE.search(clause)
+        if date_match is None:
+            continue
+        quote = clause[min(affirmation.start(), date_match.start()) : max(affirmation.end(), date_match.end())]
+        if len(quote) > 400:
+            continue
+        positive.setdefault(next(iter(dates)), quote)
+    if len(positive) != 1 or negative.intersection(positive):
+        return None
+    return next(iter(positive.items()))
 
 
 def meteo_dhul_hijja_visibility_windows(text: str) -> list[str]:
-    terms = (
-        "يمكن رؤية هلال شهر ذو الحجة",
-        "خريطة إمكانية رؤية هلال شهر ذو الحجة",
-        "إمكانية رؤية هلال شهر ذو الحجة",
-        "رؤية هلال بداية شهر ذو الحجة",
-        "بعد غروب شمس يوم",
-        "صورة 3",
-    )
-    windows: list[str] = []
-    for term in terms:
-        start = 0
-        while True:
-            index = text.find(term, start)
-            if index < 0:
-                break
-            windows.append(text[max(0, index - 240) : index + 520])
-            start = index + len(term)
-    return windows
+    evidence = _meteo_visibility_evidence(EVENTS["eid_adha"], text)
+    return [evidence[1]] if evidence else []
 
 
 def build_meteo_derived_snippet(event: TargetEvent, selected_date: dt.date) -> str:
@@ -577,50 +624,40 @@ def deterministic_decision_from_candidates(
     hijri_year: int,
     candidates: list[ArticleCandidate],
 ) -> dict[str, Any] | None:
-    for candidate in candidates:
-        if candidate.provider != "meteo_direct_derived" or candidate.source_domain != "meteo.tn":
-            continue
-        dates = re.findall(r"\b\d{4}-\d{2}-\d{2}\b", candidate.snippet)
-        if not dates:
-            continue
-        selected_date = extract_selected_date(candidate.snippet) or dates[-1]
-        if event.key == "eid_adha":
-            reason = (
-                "Official INM/meteo.tn Dhul Hijja crescent visibility report clearly implies "
-                f"Aid el-Adha on {selected_date}."
-            )
-            quote = (
-                f"Official INM/meteo.tn report: Dhul Hijja visibility is source evidence; "
-                f"Aid el-Adha is {selected_date}."
-            )
-        else:
-            reason = (
-                "Official INM/meteo.tn crescent visibility report states that the Ramadan crescent "
-                f"becomes visible after sunset on {dates[0]}, so the first fasting day is {selected_date}."
-            )
-            quote = (
-                f"Official INM/meteo.tn report: crescent visibility becomes possible after sunset on "
-                f"{dates[0]}; first fasting day is {selected_date}."
-            )
-        return {
-            "event": event.key,
-            "hijriYear": hijri_year,
-            "selectedDate": selected_date,
-            "confidence": "high",
-            "reason": reason,
-            "claims": [
-                {
-                    "sourceId": candidate.id,
-                    "gregorianDate": selected_date,
-                    "certainty": "official_astronomical_report",
-                    "isOfficialAnnouncement": True,
-                    "authorityMentioned": "INM/meteo.tn",
-                    "quote": quote,
-                },
-            ],
-            "conflicts": [],
-        }
-    return None
+    credible = [candidate for candidate in candidates
+                if candidate.source_tier in {"official", "state_news", "trusted_news"}]
+    if not credible or any(candidate.provider != "meteo_direct" or candidate.source_domain != "meteo.tn"
+                           for candidate in credible):
+        # An announcement or another credible report must participate in the
+        # normal extraction/validation, even if the first INM page was derivable.
+        return None
+    evidence = [(candidate, derive_meteo_evidence(event, hijri_year, f"{candidate.title}\n{candidate.snippet}"))
+                for candidate in credible]
+    if any(derived is None for _, derived in evidence):
+        return None
+    selected_dates = {derived[0] for _, derived in evidence if derived is not None}
+    if len(selected_dates) != 1:
+        return None
+    selected_date = next(iter(selected_dates)).isoformat()
+    return {
+        "event": event.key,
+        "hijriYear": hijri_year,
+        "selectedDate": selected_date,
+        "confidence": "high",
+        "reason": "The supplied INM reports consistently imply this date from one affirmative visibility date.",
+        "claims": [
+            {
+                "sourceId": candidate.id,
+                "gregorianDate": selected_date,
+                "certainty": "official_astronomical_report",
+                "isOfficialAnnouncement": False,
+                "authorityMentioned": "INM/meteo.tn",
+                "quote": derived[1],
+            }
+            for candidate, derived in evidence if derived is not None
+        ],
+        "conflicts": [],
+    }
 
 
 def extract_selected_date(text: str) -> str | None:
@@ -972,7 +1009,10 @@ def ask_deepseek(
                     visibility becomes possible after sunset on date V, select V+1 as the first fasting day and mark the claim
                     certainty as official_astronomical_report. You may resolve relative phrases such as tomorrow, Saturday,
                     or مساء اليوم only when the article's published date is available in the provided record. Return strict
-                    JSON only.
+                    JSON only. Every supporting quote must be copied verbatim from one provided title or snippet and
+                    include the event and its date (or an unambiguous relative date). Do not paraphrase quotes. GDELT
+                    seendate is not a reliable publication date for relative-date inference. Report every conflicting
+                    official date in conflicts; any unresolved conflict prevents publication.
                     """,
                 ).strip(),
             },
@@ -1000,11 +1040,19 @@ def ask_deepseek(
         raise RuntimeError(f"DeepSeek request failed with HTTP {error.code}: {detail}") from error
 
     payload = json.loads(response_body)
-    content = payload["choices"][0]["message"]["content"]
+    try:
+        choices = payload["choices"]
+        if not isinstance(choices, list) or not choices:
+            raise ValueError("DeepSeek response did not contain a message.")
+        content = choices[0]["message"]["content"]
+    except (KeyError, TypeError, IndexError) as error:
+        raise ValueError("DeepSeek response had a malformed message envelope.") from error
     return parse_json_object(content)
 
 
 def parse_json_object(content: str) -> dict[str, Any]:
+    if not isinstance(content, str):
+        raise ValueError("DeepSeek message content was not text.")
     try:
         value = json.loads(content)
     except json.JSONDecodeError:
@@ -1018,33 +1066,243 @@ def parse_json_object(content: str) -> dict[str, Any]:
     return value
 
 
+def normalize_evidence_text(value: str) -> str:
+    """Normalize typography and Arabic/French accents, without changing words or dates."""
+    import unicodedata
+
+    text = unicodedata.normalize("NFKD", clean_text(value)).casefold()
+    text = "".join(character for character in text if not unicodedata.combining(character))
+    text = text.translate(str.maketrans("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹", "01234567890123456789"))
+    text = text.translate({ord("ى"): "ي", ord("ـ"): None, ord("’"): "'", ord("‘"): "'"})
+    return SPACE_RE.sub(" ", text).strip()
+
+
+def normalized_quote(value: str) -> str:
+    return re.sub(r"[^\w]+", " ", normalize_evidence_text(value)).strip()
+
+
+def quote_is_in_candidate(quote: str, candidate: ArticleCandidate) -> bool:
+    quoted = normalized_quote(quote)
+    return len(quoted) >= 12 and any(
+        f" {quoted} " in f" {normalized_quote(part)} " for part in (candidate.title, candidate.snippet)
+    )
+
+
+def evidence_iso_date(value: Any) -> dt.date | None:
+    if not isinstance(value, str) or not JSON_DATE_RE.fullmatch(value):
+        return None
+    try:
+        return dt.date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def reliable_publication_date(candidate: ArticleCandidate) -> dt.date | None:
+    # GDELT's seendate is a crawler timestamp; meteo's page date can be a visibility
+    # date. Neither can safely anchor an announcement's "tomorrow" or weekday.
+    if candidate.provider not in {"google_news", "bing_news"}:
+        return None
+    return evidence_iso_date(candidate.published)
+
+
+def date_from_evidence(text: str, candidate: ArticleCandidate) -> dt.date | None:
+    text = normalize_evidence_text(text)
+    months = {normalize_evidence_text(name): number for name, number in TUNISIAN_MONTHS.items()}
+    months.update(dict(zip(
+        "janvier fevrier mars avril mai juin juillet aout septembre octobre novembre decembre".split(),
+        range(1, 13),
+    )))
+    months.update({"يناير": 1, "فبراير": 2, "ابريل": 4, "يونيو": 6, "يوليو": 7, "اغسطس": 8})
+    dates: set[dt.date] = set()
+    malformed = False
+
+    def add_date(year: int, month: int, day: int) -> None:
+        nonlocal malformed
+        try:
+            dates.add(dt.date(year, month, day))
+        except ValueError:
+            malformed = True
+
+    for match in re.finditer(r"(?<!\d)(\d{4})[-/](\d{1,2})[-/](\d{1,2})(?!\d)", text):
+        add_date(*map(int, match.groups()))
+    for match in re.finditer(r"(?<!\d)(\d{1,2})[/.-](\d{1,2})[/.-](\d{4})(?!\d)", text):
+        day, month, year = map(int, match.groups())
+        add_date(year, month, day)
+    month_names = "|".join(sorted(map(re.escape, months), key=len, reverse=True))
+    named_pattern = rf"(?<!\w)(\d{{1,2}})(?:er|eme)?\s+({month_names})(?:\s+(\d{{4}}))?(?!\w)"
+    published = reliable_publication_date(candidate)
+    for match in re.finditer(named_pattern, text):
+        day, month, year = match.groups()
+        if year:
+            add_date(int(year), months[month], int(day))
+        elif published:
+            possible = []
+            for inferred_year in (published.year - 1, published.year, published.year + 1):
+                try:
+                    value = dt.date(inferred_year, months[month], int(day))
+                except ValueError:
+                    continue
+                if -1 <= (value - published).days <= 14:
+                    possible.append(value)
+            if len(possible) != 1:
+                malformed = True
+            else:
+                dates.add(possible[0])
+        else:
+            malformed = True
+    if malformed or len(dates) > 1:
+        return None
+    relative = None
+    if published is not None:
+        if re.search(r"\b(?:بعد غد|apres[- ]demain)\b", text):
+            relative = published + dt.timedelta(days=2)
+        elif re.search(r"\b(?:غدا|غد|demain)\b", text):
+            relative = published + dt.timedelta(days=1)
+        elif re.search(r"\b(?:اليوم|aujourd[' ]hui)\b", text):
+            relative = published
+    if dates:
+        explicit = next(iter(dates))
+        # A sentence can date the announcement itself, then say the event is
+        # tomorrow. Do not mistake that publication date for the event; require
+        # a focused event quote when absolute and relative dates disagree.
+        if relative is not None and relative != explicit:
+            return None
+        return explicit
+    if published is None:
+        return None
+    # A focused announcement quote may mention "announced today ... begins tomorrow";
+    # the future expression is the event's date, while "today" describes the announcement.
+    if relative is not None:
+        return relative
+    weekdays = {
+        "الاثنين": 0, "الثلاثاء": 1, "الاربعاء": 2, "الخميس": 3,
+        "الجمعة": 4, "السبت": 5, "الاحد": 6,
+        "lundi": 0, "mardi": 1, "mercredi": 2, "jeudi": 3,
+        "vendredi": 4, "samedi": 5, "dimanche": 6,
+    }
+    mentioned = {number for name, number in weekdays.items() if re.search(rf"\b{re.escape(name)}\b", text)}
+    if len(mentioned) != 1:
+        return None
+    offset = (next(iter(mentioned)) - published.weekday()) % 7
+    if offset == 0 and re.search(r"\b(?:القادم|المقبل|prochain)\b", text):
+        offset = 7
+    return published + dt.timedelta(days=offset)
+
+
+def announced_date_in_text(
+    event: TargetEvent, candidate: ArticleCandidate, text: str,
+) -> dt.date | None:
+    """Conservative local grounding; model labels and authorityMentioned are not evidence."""
+    normalized = normalize_evidence_text(text)
+    source_text = normalize_evidence_text(f"{candidate.title} {candidate.snippet}")
+    uncertain = (
+        r"متوقع|يتوقع|توقع|مرتقب|فلكي|تقديري|حسابات|حسب الحساب|قد يكون|من المرجح|من المنتظر|"
+        r"من الممكن|علي الارجح|احتمال|لم يعلن|لم يتم|لم تثبت|لم تتاكد|لن يكون|ليس|غير موكد|"
+        r"عدم ثبوت|لا يمكن|لا تكون|لا رؤية|لم تر|prevu|prevision|probable|pourrait|devrait|"
+        r"estime|attendu|astronomique|non confirme|pas confirme|pas annonce|ne .{0,45} pas|"
+        r"لاحقا|سيتحدد|سيعلن|سيتم الاعلان|تحري|استطلاع|جلسة|sera annonce|sera fixe"
+    )
+    # A model must not turn "expected: [event on date]" into an announcement by
+    # cropping the forecast/negation prefix out of an otherwise verbatim quote.
+    surrounding_clauses = []
+    quoted_words = normalized_quote(text)
+    for source_part in (candidate.title, candidate.snippet):
+        clauses = re.split(r"[!?؟؛;\n]|(?<!\d)\.(?!\d)", source_part)
+        surrounding_clauses.extend(
+            normalize_evidence_text(clause) for clause in clauses
+            if quoted_words and quoted_words in normalized_quote(clause)
+        )
+    if re.search(uncertain, normalized) or any(re.search(uncertain, clause) for clause in surrounding_clauses):
+        return None
+    authority = re.search(
+        r"مفتي|دار الافتا|ديوان الافتا|وزارة الشوون الدينية|mufti|dar.{0,12}ift|"
+        r"ministere.{0,18}affaires religieuses", source_text,
+    )
+    announced = re.search(
+        r"اعلن|اعلنت|افاد|افادت|اكد|اكدت|قرر|قررت|حدد|حددت|ثبوت|ثبتت|بلاغ|بيان|تعلن|"
+        r"annonce|confirme|fixe|declare|communique", source_text,
+    )
+    announced = announced or re.search(r"(?:مفتي الجمهورية|دار الافتا|mufti)[^:]{0,35}:", source_text)
+    if candidate.source_tier != "official" and not (authority and announced):
+        return None
+    # A Tunisian newspaper can report another country's announcement. Such a quote
+    # must explicitly identify Tunisia before it can ground a Tunisian calendar date.
+    if any(
+        re.search(r"السعودية|المغرب|الجزاير|مصر|saoud|maroc|algerie|egypte", clause)
+        and not re.search(r"تونس|tunisi", clause)
+        for clause in [normalized, *surrounding_clauses]
+    ):
+        return None
+    offset = 0
+    if event.key == "ramadan_start":
+        identifies_event = re.search(
+            r"(?:غرة|اول (?:ايام|يوم)|بداية)(?: شهر)? رمضان|"
+            r"(?:رمضان|ramadan).{0,55}(?:يبدا|ينطلق|يحل|سيكون|يوافق|sera|debut|commenc)|"
+            r"(?:debut|premier jour).{0,30}ramadan", normalized,
+        )
+    elif event.key == "eid_fitr":
+        identifies_event = re.search(r"عيد الفطر|(?:غرة|اول (?:ايام|يوم))(?: شهر)? شوال|aid.{0,12}fitr", normalized)
+    else:
+        identifies_event = re.search(r"عيد الاضحي|aid.{0,12}(?:adha|idha)", normalized)
+        month_start = re.search(r"(?:غرة|اول (?:ايام|يوم))(?: شهر)? ذ[يو] الحجة|premier jour.{0,20}(?:hijja|hijjah)", normalized)
+        if identifies_event and month_start:
+            return None  # Two event anchors in one quote require a more focused quote.
+        if month_start:
+            identifies_event = month_start
+            offset = 9
+    if not identifies_event:
+        return None
+    explicit = date_from_evidence(text, candidate)
+    return explicit + dt.timedelta(days=offset) if explicit is not None else None
+
+
+def grounded_candidate_dates(event: TargetEvent, hijri_year: int, candidate: ArticleCandidate) -> set[dt.date]:
+    if candidate.source_tier not in {"official", "state_news", "trusted_news"} or candidate.provider.endswith("_derived"):
+        return set()
+    if candidate.source_domain == "meteo.tn":
+        evidence = derive_meteo_evidence(event, hijri_year, f"{candidate.title}. {candidate.snippet}")
+        return {evidence[0]} if evidence else set()
+    dates = set()
+    for part in (candidate.title, candidate.snippet):
+        for clause in re.split(r"[!?؟؛;\n]|(?<!\d)\.(?!\d)", part):
+            parsed = announced_date_in_text(event, candidate, clause)
+            if parsed is not None:
+                dates.add(parsed)
+    return dates
+
+
 def validate_decision(
     decision: dict[str, Any],
     event: TargetEvent,
     hijri_year: int,
     candidates: list[ArticleCandidate],
 ) -> dict[str, Any]:
+    decision = decision if isinstance(decision, dict) else {}
     candidate_by_id = {candidate.id: candidate for candidate in candidates}
     selected_date = decision.get("selectedDate")
     result: dict[str, Any] = {
         "accepted": False,
-        "selected_date": selected_date,
-        "confidence": decision.get("confidence", "low"),
-        "reason": decision.get("reason", ""),
+        "selected_date": selected_date if isinstance(selected_date, str) else None,
+        "confidence": decision.get("confidence") if isinstance(decision.get("confidence"), str) else "low",
+        "reason": decision.get("reason") if isinstance(decision.get("reason"), str) else "",
         "evidence": [],
         "rejection_reason": "",
     }
-    if not isinstance(selected_date, str) or not JSON_DATE_RE.match(selected_date):
+    parsed_selected = evidence_iso_date(selected_date)
+    if parsed_selected is None:
         result["rejection_reason"] = "No ISO selected date was returned."
         return result
-    if decision.get("event") != event.key or int(decision.get("hijriYear", -1)) != hijri_year:
+    model_year = decision.get("hijriYear")
+    valid_year = (type(model_year) is int and model_year == hijri_year) or (
+        isinstance(model_year, str) and re.fullmatch(r"[0-9]{4}", model_year) and int(model_year) == hijri_year
+    )
+    if decision.get("event") != event.key or not valid_year:
         result["rejection_reason"] = "The response event or Hijri year did not match the request."
         return result
     if decision.get("confidence") != "high":
         result["rejection_reason"] = "The model did not mark the result as high confidence."
         return result
 
-    parsed_selected = parse_iso_date(selected_date)
     expected = hijri_to_gregorian(hijri_year, event.hijri_month, event.hijri_day)
     if abs((parsed_selected - expected).days) > 4:
         result["rejection_reason"] = (
@@ -1052,16 +1310,36 @@ def validate_decision(
         )
         return result
 
-    claims = decision.get("claims") if isinstance(decision.get("claims"), list) else []
+    conflicts = decision.get("conflicts", [])
+    if not isinstance(conflicts, list) or any(not isinstance(conflict, str) for conflict in conflicts):
+        result["rejection_reason"] = "The response contained malformed conflicts."
+        return result
+    if any(conflict.strip() for conflict in conflicts):
+        result["rejection_reason"] = "The response reported unresolved conflicts."
+        return result
+    claims = decision.get("claims")
+    if not isinstance(claims, list) or any(not isinstance(claim, dict) for claim in claims):
+        result["rejection_reason"] = "The response contained malformed claims."
+        return result
     matching_announced_claims = []
-    conflicting_dates: set[str] = set()
+    conflicting_dates: set[dt.date] = set()
+    for candidate in candidates:
+        conflicting_dates.update(
+            date for date in grounded_candidate_dates(event, hijri_year, candidate)
+            if date != parsed_selected and abs((date - expected).days) <= 4
+        )
     for claim in claims:
-        if not isinstance(claim, dict):
-            continue
         claim_date = claim.get("gregorianDate")
-        if not isinstance(claim_date, str) or not JSON_DATE_RE.match(claim_date):
+        if claim_date is None:
             continue
-        candidate = candidate_by_id.get(str(claim.get("sourceId")))
+        parsed_claim = evidence_iso_date(claim_date)
+        if parsed_claim is None or not isinstance(claim.get("sourceId"), str):
+            result["rejection_reason"] = "The response contained a malformed claim date or source ID."
+            return result
+        candidate = candidate_by_id.get(claim["sourceId"])
+        if candidate is None or candidate.provider.endswith("_derived"):
+            result["rejection_reason"] = "A claim did not reference an original provided source."
+            return result
         authoritative_candidate = candidate is not None and candidate.source_tier in {
             "official",
             "state_news",
@@ -1076,12 +1354,28 @@ def validate_decision(
             claim.get("certainty") == "official_astronomical_report"
             and candidate is not None
             and candidate.source_domain == "meteo.tn"
+            and type(claim.get("isOfficialAnnouncement")) is bool
         )
-        if claim_is_announced or claim_is_meteo_report:
-            if claim_date == selected_date:
-                matching_announced_claims.append(claim)
-            else:
-                conflicting_dates.add(claim_date)
+        if not (claim_is_announced or claim_is_meteo_report):
+            continue
+        quote = claim.get("quote")
+        if not isinstance(quote, str) or not quote_is_in_candidate(quote, candidate):
+            result["rejection_reason"] = "A supporting quote was not found in its provided title/snippet."
+            return result
+        if claim_is_meteo_report:
+            evidence = derive_meteo_evidence(event, hijri_year, f"{candidate.title}. {candidate.snippet}")
+            grounded = evidence[0] if evidence and normalized_quote(evidence[1]) in normalized_quote(quote) else None
+        elif candidate.source_domain == "meteo.tn":
+            grounded = None  # A forecast cannot bypass the separate visibility-evidence rules.
+        else:
+            grounded = announced_date_in_text(event, candidate, quote)
+        if grounded != parsed_claim:
+            result["rejection_reason"] = "A claimed event date was not grounded in its quoted source text."
+            return result
+        if parsed_claim == parsed_selected:
+            matching_announced_claims.append(claim)
+        else:
+            conflicting_dates.add(parsed_claim)
     if conflicting_dates:
         result["rejection_reason"] = "Conflicting announced dates were found."
         return result
@@ -1093,7 +1387,7 @@ def validate_decision(
         if not candidate:
             continue
         source_domains[candidate.source_domain] = candidate.source_tier
-        quote = clean_text(str(claim.get("quote", "")))[:240]
+        quote = clean_text(claim["quote"])
         result["evidence"].append(
             {
                 "source": candidate.source_name,
@@ -1107,7 +1401,7 @@ def validate_decision(
             candidate.source_domain == "meteo.tn"
             and claim.get("certainty") == "official_astronomical_report"
         ) or candidate.source_tier == "official" or (
-            candidate.source_tier == "state_news" and claim.get("authorityMentioned")
+            candidate.source_tier == "state_news"
         ):
             official_evidence = True
 
@@ -1133,7 +1427,7 @@ def append_validation_report(report_lines: list[str], event: TargetEvent, valida
             report_lines.append("Evidence:")
             for item in evidence:
                 report_lines.append(
-                    f"- {item['source']} (`{item['domain']}`, {item['tier']}): {item['quote']}",
+                    f"- [{item['source']}]({item['url']}) (`{item['domain']}`, {item['tier']}): {item['quote']}",
                 )
     else:
         report_lines.append(f"Validation: rejected. {validation['rejection_reason']}")
@@ -1157,8 +1451,7 @@ def update_override_file(
             "eidAdhaDate": None,
             "lastUpdated": None,
         }
-    if int(data.get("hijriYear", -1)) != hijri_year:
-        raise ValueError(f"{path} has hijriYear={data.get('hijriYear')}, expected {hijri_year}.")
+    validate_override_record(data, hijri_year)
     existing_date = data.get(event.override_field)
     if existing_date == gregorian_date:
         return False
@@ -1166,13 +1459,73 @@ def update_override_file(
         raise ValueError(
             f"{path} already has {event.override_field}={existing_date}; refusing to overwrite with {gregorian_date}.",
         )
+    updated = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    timestamps = {"ramadanStart": "ramadanStartUpdated", "eidFitrDate": "eidFitrUpdated", "eidAdhaDate": "eidAdhaUpdated"}
+    for date_field, updated_field in timestamps.items():
+        # A later Adha announcement must not make a retained Ramadan/Fitr date look newer.
+        if updated_field not in data:
+            data[updated_field] = data.get("lastUpdated") if data.get(date_field) else None
     data[event.override_field] = gregorian_date
-    data["lastUpdated"] = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    data[timestamps[event.override_field]] = updated
+    data["lastUpdated"] = updated
+    validate_override_record(data, hijri_year)
+    validate_neighboring_records(repo_root, data, hijri_year)
     if dry_run:
         return True
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return True
+
+
+def validate_override_record(data: Any, hijri_year: int) -> None:
+    """Validate the same month-start spacing used by the app before publishing any anchor."""
+    if not isinstance(data, dict) or type(data.get("hijriYear")) is not int or data["hijriYear"] != hijri_year:
+        raise ValueError(f"Official-date record must have hijriYear={hijri_year}.")
+    if not 1300 <= hijri_year <= 1600:
+        raise ValueError(f"Hijri year {hijri_year} is outside the app calendar's supported range.")
+    anchors: list[tuple[int, dt.date, str]] = []
+    for event in EVENTS.values():
+        value = data.get(event.override_field)
+        if value is None:
+            continue
+        if not isinstance(value, str) or not JSON_DATE_RE.fullmatch(value):
+            raise ValueError(f"{event.override_field} must be an ISO date or null.")
+        try:
+            date = parse_iso_date(value)
+        except ValueError as error:
+            raise ValueError(f"Invalid {event.override_field}: {value}.") from error
+        expected = hijri_to_gregorian(hijri_year, event.hijri_month, event.hijri_day)
+        if abs((date - expected).days) > 4:
+            raise ValueError(f"{event.override_field}={value} is outside the {hijri_year} event window.")
+        anchors.append((hijri_year * 12 + event.hijri_month, date - dt.timedelta(days=event.hijri_day - 1), event.override_field))
+    validate_anchor_spacing(anchors)
+
+
+def validate_anchor_spacing(anchors: list[tuple[int, dt.date, str]]) -> None:
+    anchors = sorted(anchors)
+    for (first_month, first_day, first_label), (last_month, last_day, last_label) in zip(anchors, anchors[1:]):
+        months = last_month - first_month
+        days = (last_day - first_day).days
+        if not 29 * months <= days <= 30 * months:
+            raise ValueError(f"{first_label} and {last_label} cannot be joined by {months} Hijri month(s) of 29 or 30 days ({days} days apart).")
+
+
+def validate_neighboring_records(repo_root: Path, incoming: dict[str, Any], hijri_year: int) -> None:
+    anchors: list[tuple[int, dt.date, str]] = []
+    for year in (hijri_year - 1, hijri_year, hijri_year + 1):
+        if year == hijri_year:
+            record = incoming
+        else:
+            path = official_dates_path(repo_root, year)
+            if not path.exists():
+                continue
+            record = json.loads(path.read_text(encoding="utf-8"))
+        validate_override_record(record, year)
+        for event in EVENTS.values():
+            if record.get(event.override_field) is not None:
+                date = parse_iso_date(record[event.override_field]) - dt.timedelta(days=event.hijri_day - 1)
+                anchors.append((year * 12 + event.hijri_month, date, f"{year}.{event.override_field}"))
+    validate_anchor_spacing(anchors)
 
 
 def official_dates_path(repo_root: Path, hijri_year: int) -> Path:

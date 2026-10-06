@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_SOURCE_COMPONENTS_COMBINED_FOR_ISOLATED_GENERATION",
+  "baselineMetadataSha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+  "componentProposals": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/douar-oued-data-component-20260919/proposal.json",
+      "sha256": "1d5c3f2223b005e914077cf15de332d6bf11ffcd0c02633dd49e08e0e3fd56d8",
+      "bytes": 49169
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/douar-oued-group-component-20260919/proposal.json",
+      "sha256": "1bab0c15d78bc98761efe1a3e23f3b93b1a1a152a80d3ddd0f679da81330d36a",
+      "bytes": 33374
+    }
+  ],
+  "rootNumericProjection": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/douar-oued-root-projection-20260919.json",
+    "sha256": "e27094daf475d95a966eb54f79aa0b2f5d8fcf03edf06bb73b9716449eb6c0b6",
+    "bytes": 22322
+  },
+  "referenceIds": [
+    553,
+    554
+  ],
+  "exactRawChanges": [
+    {
+      "id": "osm:relation:7090957",
+      "field": "name",
+      "before": "دوار ھیشر",
+      "after": "دوار هيشر"
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "aliases",
+      "before": [
+        "Douar Hicher",
+        "דואר הישר",
+        "دوار هيشر"
+      ],
+      "after": [
+        "Douar Hicher",
+        "דואר הישר",
+        "دوار ھیشر"
+      ]
+    },
+    {
+      "id": "osm:way:663536803",
+      "field": "parentName",
+      "before": "دوار ھیشر",
+      "after": "دوار هيشر"
+    },
+    {
+      "id": "osm:way:663536803",
+      "field": "contextAliases",
+      "before": [
+        "Douar Hicher",
+        "Délégation Douar Hicher",
+        "دوار ھیشر",
+        "معتمدية دوار هيشر"
+      ],
+      "after": [
+        "Douar Hicher",
+        "Délégation Douar Hicher",
+        "دوار هيشر",
+        "دوار ھیشر",
+        "معتمدية دوار هيشر"
+      ]
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "lat",
+      "before": 36.821735,
+      "after": 36.8237415
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "lng",
+      "before": 10.097085,
+      "after": 10.0960637
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:7720714782"
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "name",
+      "before": "وادي اللیل",
+      "after": "وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "aliases",
+      "before": [
+        "Oued Ellil",
+        "Оуед Еллил",
+        "ואדי אל-ליל",
+        "وادي الليل",
+        "وادی اللیل"
+      ],
+      "after": [
+        "Oued Ellil",
+        "Оуед Еллил",
+        "ואדי אל-ליל",
+        "وادي اللیل",
+        "وادی اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "lat",
+      "before": 36.832848,
+      "after": 36.8376735
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "lng",
+      "before": 10.039089,
+      "after": 10.0422381
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:287619187"
+    },
+    {
+      "id": "osm:relation:7091763",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7091763",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095857",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095857",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095858",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095858",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095859",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095859",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095860",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095860",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095861",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095861",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:way:158484548",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:way:158484548",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Es Saida",
+        "Oued Ellil",
+        "السعيدة",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Es Saida",
+        "Oued Ellil",
+        "السعيدة",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:way:169498195",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:way:169498195",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "Sanhaja",
+        "صنهاجة",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "Sanhaja",
+        "صنهاجة",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:way:609722184",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:way:609722184",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:way:861326316",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:way:861326316",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:node:8027679311",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Er Riadh",
+        "Oued Ellil",
+        "الرياض",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Er Riadh",
+        "Oued Ellil",
+        "الرياض",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095859",
+      "field": "delegationId",
+      "before": 554,
+      "after": 553
+    },
+    {
+      "id": "osm:way:456466522",
+      "field": "delegationId",
+      "before": 554,
+      "after": 553
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7090957",
+      "after": "delegation:554"
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7095862",
+      "after": "delegation:553"
+    }
+  ],
+  "scope": "Authentic town manual references remain separate from published daily INM references. Gobaa member defaults change554 to553 at unchanged coordinates; every polygon byte and all other nearest defaults remain unchanged."
+}

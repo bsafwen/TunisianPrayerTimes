@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "status": "DESIGN_ONLY_TYPED_PEER_EXTENSION_RECOMMENDED_PENDING_SOURCE_APPROVAL",
+  "reviewedAt": "2026-09-08T07:54:31.561654+00:00",
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\ettahrir393-point-base-display-source-review.json",
+      "sha256": "20acd394ae1abd2a8c4f64e3c4fb2364fbee69872b645b201e78d33a0015e7cc"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\exact-peer-scope-facts.json",
+      "sha256": "d69b86bb0547388fc217457dda8eedd6003aef739fa66a6baa6260d6ac5f5b9e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "fb5af4a572c1df0eb813deecc83ddb4ff16c5d2ea5a4d73f04ee08fe850a8c6e"
+    }
+  ],
+  "baselineMetadataSha256": "d769190af16ba9c4e560ccaab7f23572f38faa3b9734e090bedff4c2416a1f78",
+  "scope": "Only the two source-peer representation gaps for the proposed Ettahrir suburb/base393 display association. This is not an implementation or independent source-identity approval.",
+  "confirmedGaps": [
+    {
+      "id": "osm:node:2245539847",
+      "actualKind": "neighbourhood",
+      "rawPresence": true,
+      "hasBoundary": false,
+      "sourceCoordinates": {
+        "lat": 32.9958033,
+        "lng": 10.4628552
+      },
+      "reason": "Installed preservedNamePeers requires hasBoundary=true and Polygon/MultiPolygon; its final verifier calls packed_geometry_bytes. A real unrelated point cannot enter that branch."
+    },
+    {
+      "id": "osm:relation:4130434",
+      "actualKind": "delegation",
+      "rawPresence": false,
+      "sourceCode": "1157",
+      "reason": "The complete source-name inventory includes the Ettahrir parent alt_name:fr. Installed expected_peer_ids subtracts only target and preservedSectors, requiring this source-only context to masquerade as a raw polygon peer."
+    }
+  ],
+  "recommendedDesign": {
+    "methodUnchanged": "reviewed_explicit_suburb_point_base_display_identity",
+    "extensionOptional": true,
+    "placement": "Embedded typedNamePeerExtension object inside the existing byte-pinned main wrapper; no extra transport file or method is needed. Existing preservedNamePeers keeps its exact polygon format.",
+    "schemaExample": {
+      "typedNamePeerExtension": {
+        "schemaVersion": 1,
+        "rawPointPeers": [
+          {
+            "id": "osm:node:2245539847",
+            "kind": "neighbourhood",
+            "originalTags": {
+              "addr:postcode": "3263",
+              "name": "حي التحرير",
+              "name:ar": "حي التحرير",
+              "name:en": "Hay Ettahrir",
+              "name:fr": "Cité Ettahrir",
+              "place": "neighbourhood"
+            },
+            "sourceGeometrySha256": "f440ea7e75bfe4ca89bd80e7407894c02f08e0639fab9fde81e28f8ecdbd4b2d",
+            "expectedCuration": null,
+            "currentMetadata": {
+              "id": "osm:node:2245539847",
+              "sourceId": "osm",
+              "name": "حي التحرير",
+              "aliases": [
+                "Cité Ettahrir",
+                "Hay Ettahrir"
+              ],
+              "kind": "neighbourhood",
+              "parentName": "برورمت",
+              "contextAliases": [
+                "Berourmet",
+                "Délégation Tataouine Nord",
+                "برورمت",
+                "معتمدية تطاوين الشمالية"
+              ],
+              "governorateId": 351,
+              "lat": 32.9958033,
+              "lng": 10.4628552,
+              "delegationId": 624,
+              "hasBoundary": false,
+              "pickerGroupId": "osm:node:2245539847"
+            },
+            "completeRawGroup": [
+              "osm:node:2245539847"
+            ]
+          }
+        ],
+        "readOnlyContextPeers": [
+          {
+            "id": "osm:relation:4130434",
+            "kind": "delegation",
+            "expectedCuration": null,
+            "expectedRawPresence": false,
+            "completeRawGroup": []
+          }
+        ]
+      }
+    },
+    "pointGeometryHashConvention": "Exactly aggregate_geometry_sha256 over the canonical Point: json.dumps(mapping(point),separators=(comma,colon)) with default ensure_ascii and unsorted mapping keys. The shown point digest was derived from the frozen exact coordinates without importing a generator helper.",
+    "contextBinding": "Each readOnlyContextPeers.id must be a key of the existing review.contexts and a complete name peer. The full tags/kind/geometry remain pinned there; no fabricated currentMetadata or packedGeometrySha256 field is allowed for a source-only context."
+  },
+  "exactInventoryPartition": {
+    "sourceNamePeers": [
+      "osm:node:1158752159",
+      "osm:node:2245539847",
+      "osm:relation:4130434",
+      "osm:relation:7154897",
+      "osm:way:1321465756"
+    ],
+    "target": [
+      "osm:node:1158752159"
+    ],
+    "matchingPreservedImadas": [],
+    "unchangedPreservedNamePeersPolygons": [
+      "osm:relation:7154897",
+      "osm:way:1321465756"
+    ],
+    "newRawPointPeers": [
+      "osm:node:2245539847"
+    ],
+    "newReadOnlyContextPeers": [
+      "osm:relation:4130434"
+    ],
+    "separatelyPreservedImadaIds": [
+      "osm:relation:7201527",
+      "osm:relation:7201531",
+      "osm:relation:7201529",
+      "osm:relation:7201528",
+      "osm:relation:7201530"
+    ],
+    "preservedRawRowsIncludingTarget": 9,
+    "governorContextSourceOnly": "The existing Tunis governorate context also remains exact under the common context guard; it is not a matching name peer."
+  },
+  "validatorChanges": [
+    "Activate the extension only when explicitly present on the suburb method. Reject it on the legacy town/village method; absent means the installed path and returned result are unchanged. Require exactly schemaVersion/rawPointPeers/readOnlyContextPeers, integer schemaVersion1, lists of unique exact records, no null/coercion, and at least one extension record.",
+    "Keep the original and effective complete sourceNamePeers scans unchanged. Require original/effective peer sets identical under the suburb format and retain the current sourcePhaseLineage rejection.",
+    "Partition, never drop: let P be complete source peer IDs; I be target; S be preserved imada IDs; Q be existing polygon peer IDs; N be typed point IDs; C be typed source-only context IDs. Require Q,N,C pairwise disjoint, disjoint from I and S, and Q union N union C equals P minus I minus S. Require C equals P intersect keys(review.contexts), so no arbitrary administrative or settlement object can be hidden as a context.",
+    "Keep all existing preservedNamePeers polygon validation unchanged. Only its expected ID set becomes P minus I minus S minus N minus C when the extension is explicitly valid.",
+    "For each rawPointPeers record, initially admit only kind neighbourhood; preserve the target suburb-only guard. Require exact full currentMetadata with matching ID/kind, sourceId osm, hasBoundary exactlyFalse, no offset/length keys, pickerGroupId self and completeRawGroup [id]. Require full originalTags, canonical Point sourceGeometrySha256 and exact active curation.",
+    "In BOTH source phases verify the typed point exists; original sourceId is None and effective sourceId is osm; kind and complete tags are exact; get(shape) is None; point is a nonempty Point whose sole coordinate exactly equals currentMetadata lng/lat; canonical geometry hash and curation match. Do not use a truthy fallback for shape, infer a boundary, or call packed_geometry_bytes on it.",
+    "For each readOnlyContextPeers record require kind delegation or governorate, exact agreement with review.contexts[id].kind, expectedRawPresence exactlyFalse, completeRawGroup [], and exact curation. Verify source providers None/original and osm/effective, polygon type and existing context tags/geometry in both phases. Retain the existing code-bound delegation/governorate and both-reference containment checks.",
+    "Return new preservedNamePoints [{id,current}] and readOnlyNameContexts [{id,kind}] only when the optional extension is present. Existing preservedSectors and preservedNamePeers polygon result records remain identical. Do not add a raw row, group assignment or globally exclusive reservation for the parent."
+  ],
+  "finalVerifierChanges": [
+    "Leave the current loop over preservedSectors + preservedNamePeers exactly unchanged, including geometry serialization, full group and metadata checks.",
+    "New preservedNamePoints loop: require ID exists at an index >= len(geometries), because the actual caller passes polygon features followed by point_only. Require full feature dictionary equality to pinned current (no filtering of point fields), hasBoundary exactlyFalse, offset and length absent, pickerGroupId self and exact singleton group. This branch never indexes geometries or hashes packed bytes.",
+    "New readOnlyNameContexts loop: require ID absent from all final raw indices and from all final group IDs. Also reject an entry under that source ID in base_groups or a base_groups value equal to it. This checks final absence after every grouping/context phase without reserving or modifying the parent source object.",
+    "Keep the existing retained target point, exact canonical base group and base_groups ownership checks byte/AST-equivalent. Expected change remains only1158752159.pickerGroupId to delegation:393."
+  ],
+  "functionsAffected": [
+    {
+      "name": "validate_reviewed_point_base_display",
+      "firstLine": 1443,
+      "lastLine": 1607,
+      "astSha256": "c403a4da0ffcb55f4bc62e98986a4ed8c39211b72407176314a3e82ce3cc7527"
+    },
+    {
+      "name": "verify_reviewed_point_base_names",
+      "firstLine": 1172,
+      "lastLine": 1194,
+      "astSha256": "27c3b55219316771cf60ae6f9fd9a03c70bf27d2882a8954230324cc7a7f74ee"
+    }
+  ],
+  "functionsNotRequiredToChange": [
+    "load_catalog_curation",
+    "build",
+    "validate_reviewed_source_phase_lineage",
+    "all name comparison and automatic grouping functions",
+    "all old town/village and Khadra proof files"
+  ],
+  "unchangedCommonGuards": [
+    "source PBF hash and full expected source tags/kind",
+    "authentic source API node version/timestamp/changeset and coordinates",
+    "independent source review and primary inhabited-quarter evidence",
+    "full base/governor records and both current reference coordinates",
+    "nearest available timetable source and exact target-only coordinate-correction subset",
+    "complete official five-imada registry inventory and all original/effective source/geometry/curation bindings",
+    "both references inside exact parent delegation and governorate (same imada is not required or claimed)",
+    "full before/after target group and every protected raw row/geometry/default/name/context"
+  ],
+  "acceptancePrerequisites": [
+    "Ptolemy independent source-identity review is pending; this design approval does not replace it.",
+    "The source-stage wrapper must populate complete original/effective context and imada geometry digests using the generator hash convention, not a differently sorted research digest.",
+    "The two polygon peers remain in their installed typed list with complete metadata, packed geometry and singleton groups; the unrelated point must not be omitted, absorbed, or reclassified.",
+    "Actual implementation and eventual generated delta require separate review; no helper, generator or test was executed here."
+  ],
+  "proposedFieldChanges": [
+    {
+      "id": "osm:node:1158752159",
+      "field": "pickerGroupId",
+      "before": "osm:node:1158752159",
+      "after": "delegation:393"
+    }
+  ],
+  "execution": {
+    "designReportOnly": true,
+    "codeOrStageOrRepositoryChanges": false,
+    "generatorOrHelperOrTestsExecuted": false,
+    "phoneOrLedgerAccess": false,
+    "newSourceFetches": false
+  }
+}

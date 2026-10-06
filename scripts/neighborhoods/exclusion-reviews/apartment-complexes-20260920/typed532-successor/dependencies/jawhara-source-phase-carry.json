@@ -1,0 +1,1066 @@
+{
+  "schemaVersion": 1,
+  "status": "WORK_ONLY_TYPED532_JAWHARA_EXCLUSION_SOURCE_CARRY",
+  "notDeployable": true,
+  "current": false,
+  "historicalCatalog": false,
+  "scope": "Soukra532 typed successor removing only osm:way:1346769253 Jawhara from raw/source closure; original source inventory remains unchanged; the excluded row is absent from the effective source phase.",
+  "activePointRuleId": "osm:node:7390818324",
+  "excludeId": "osm:way:1346769253",
+  "oldProof": {
+    "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/node-7390818324-proof.json",
+    "sha256": "c1a41e8af46805322c95e6c201a8b633ea4a51737e83ed0c7b746921fe664b38"
+  },
+  "oldBaseline": {
+    "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/derived-pre-display-baseline.json",
+    "sha256": "9fa05631adfb20bdbbb0c8574e7bf75608c9506f7e479fe2ac4e34d95616a07b",
+    "bytes": 2837248
+  },
+  "oldCarry": {
+    "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/alias-source-phase-carry.json",
+    "sha256": "8983129f1e8f70542dac45fd424c3cf8d6c2ffc58d2a8c44b5244fc6394d7e61",
+    "bytes": 4058
+  },
+  "newBaseline": {
+    "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/derived-pre-display-baseline.json",
+    "sha256": "b5f61224ffaab98420e134860635611a64fee11aeb8a1f7d71e3d0ce510e1338",
+    "bytes": 2836476
+  },
+  "jawharaPolicyProof": {
+    "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_1346769253.json",
+    "sha256": "0211b3b5201fb4e2fe3b64a5f238f83395bffc6a1b38d62a5215b7d59b65a252",
+    "bytes": 3934,
+    "originalPreparedFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\residential-building-screen-20260920\\source-component\\files\\exclusion-reviews\\apartment-complexes-20260920\\proofs\\osm_way_1346769253.json"
+  },
+  "removed": {
+    "baselineFeature": {
+      "id": "osm:way:1346769253",
+      "sourceId": "osm",
+      "name": "اقامة جوهرة",
+      "aliases": [
+        "Résidence Jawhara"
+      ],
+      "kind": "residential",
+      "parentName": "برج الوزير",
+      "contextAliases": [
+        "Borj Louzir",
+        "Délégation Soukra",
+        "La Soukra",
+        "برج الوزير",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.864991,
+      "lng": 10.219709,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.218957,
+        36.86459,
+        10.220475,
+        36.86551
+      ],
+      "areaKm2": 0.007053381333194259,
+      "pickerGroupId": "osm:way:1346769253",
+      "offset": 5223800,
+      "length": 68
+    },
+    "localProtectedRawIds": "osm:way:1346769253",
+    "protectedRawRecords": {
+      "id": "osm:way:1346769253",
+      "kind": "residential",
+      "currentMetadata": {
+        "id": "osm:way:1346769253",
+        "sourceId": "osm",
+        "name": "اقامة جوهرة",
+        "aliases": [
+          "Résidence Jawhara"
+        ],
+        "kind": "residential",
+        "parentName": "برج الوزير",
+        "contextAliases": [
+          "Borj Louzir",
+          "Délégation Soukra",
+          "La Soukra",
+          "برج الوزير",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.864991,
+        "lng": 10.219709,
+        "delegationId": 631,
+        "hasBoundary": true,
+        "bbox": [
+          10.218957,
+          36.86459,
+          10.220475,
+          36.86551
+        ],
+        "areaKm2": 0.007053381333194259,
+        "pickerGroupId": "osm:way:1346769253",
+        "offset": 5223800,
+        "length": 68
+      },
+      "packedGeometrySha256": "bbde041ca1752802941f13ccc2d12e7087c9524d298ac2c6733d4db8f643acf5"
+    },
+    "sourceStates": {
+      "id": "osm:way:1346769253",
+      "rawPresent": true,
+      "expectedCuration": null,
+      "original": {
+        "tags": {
+          "addr:city": "سكرة",
+          "addr:street": "شارع اتحاد المغرب العربي",
+          "landuse": "residential",
+          "name:ar": "اقامة جوهرة",
+          "name:fr": "Résidence Jawhara",
+          "residential": "apartments"
+        },
+        "kind": "residential",
+        "sourceId": null,
+        "geometrySha256": "f101fd5f6cf804229d1ae48fffc8ff25ef54aba95b0a51c28b3f03da5bd53b81"
+      },
+      "effective": {
+        "tags": {
+          "addr:city": "سكرة",
+          "addr:street": "شارع اتحاد المغرب العربي",
+          "landuse": "residential",
+          "name:ar": "اقامة جوهرة",
+          "name:fr": "Résidence Jawhara",
+          "residential": "apartments"
+        },
+        "kind": "residential",
+        "sourceId": "osm",
+        "geometrySha256": "f101fd5f6cf804229d1ae48fffc8ff25ef54aba95b0a51c28b3f03da5bd53b81"
+      }
+    },
+    "curationBindings": null,
+    "expectedRawIds": "osm:way:1346769253",
+    "fullRowRepresentativeSectorCoverage": {
+      "original": "osm:way:1346769253",
+      "effective": "osm:way:1346769253"
+    },
+    "expectedBeforeRawGroups": [
+      "osm:way:1346769253"
+    ],
+    "expectedAfterRawGroups": [
+      "osm:way:1346769253"
+    ],
+    "completePickerGroups": {
+      "before": [
+        "osm:way:1346769253"
+      ],
+      "after": [
+        "osm:way:1346769253"
+      ]
+    },
+    "topLevelCompletePickerGroups": {
+      "before": [
+        "osm:way:1346769253"
+      ],
+      "after": [
+        "osm:way:1346769253"
+      ]
+    }
+  },
+  "preserved": {
+    "sourceSectorIds": {
+      "original": [
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906"
+      ],
+      "effective": [
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906"
+      ]
+    },
+    "fullSourcePointCoverage": {
+      "original": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324"
+      ],
+      "effective": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324"
+      ]
+    },
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:7390818324",
+        "osm:relation:4184709",
+        "osm:relation:7114900",
+        "osm:relation:7147558"
+      ],
+      "effective": [
+        "osm:node:7390818324",
+        "osm:relation:4184709",
+        "osm:relation:7114900",
+        "osm:relation:7147558"
+      ]
+    },
+    "readOnlyRawNamePeers": [
+      {
+        "id": "osm:relation:7147558",
+        "reason": "Global same-name peer only; not a member of the candidate delegation or city.",
+        "officialIdentity": {
+          "governorateCode": "34",
+          "governorateFr": "Sfax",
+          "governorateAr": "صفاقس",
+          "delegationCode": "3452",
+          "delegationFr": "Sfax ouest",
+          "delegationAr": "صفاقس الغريبة",
+          "sectorCode": "345253",
+          "sectorFr": "Soukra",
+          "sectorAr": "سكرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 42499,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2036,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2032
+          }
+        },
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:fr": "Soukra",
+            "ref:tn:codegeo": "345253"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "396fbd48a049641f6a23b7e82ad09419e80ab43f4689871cfab8ff9e6ecc8b4c"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:fr": "Soukra",
+            "ref:tn:codegeo": "345253"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "396fbd48a049641f6a23b7e82ad09419e80ab43f4689871cfab8ff9e6ecc8b4c"
+        },
+        "currentMetadata": {
+          "id": "osm:relation:7147558",
+          "sourceId": "osm",
+          "name": "سكرة",
+          "aliases": [
+            "Soukra"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية صفاقس الغربية",
+          "contextAliases": [
+            "Délégation Sfax Ouest",
+            "Sfax Ouest",
+            "معتمدية صفاقس الغربية"
+          ],
+          "governorateId": 359,
+          "lat": 34.725925,
+          "lng": 10.733506,
+          "delegationId": 632,
+          "hasBoundary": true,
+          "bbox": [
+            10.724515,
+            34.71598,
+            10.748677,
+            34.735889
+          ],
+          "areaKm2": 2.5116211786147478,
+          "pickerGroupId": "osm:relation:7147558",
+          "offset": 2486944,
+          "length": 716
+        },
+        "packedGeometrySha256": "3f48b20492bf5b9e0cbeb6e93ff3ff7f517c4bef293577fa2a655c0414f649e6",
+        "expectedCuration": null,
+        "expectedRawGroup": [
+          "osm:relation:7147558"
+        ],
+        "candidatePointMembership": {
+          "original": false,
+          "effective": false,
+          "packed": false
+        },
+        "candidateBaseMembership": {
+          "original": false,
+          "effective": false,
+          "packed": false
+        }
+      }
+    ],
+    "sourceOnlyAbsorbedPoints": [],
+    "coordinateContextMembership": {
+      "osm:relation:7114900": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7114901": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7114902": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7114903": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7114904": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7114905": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7114906": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:1435830": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:4184709": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "strictOwner": {
+      "recordId": "osm:relation:7114900",
+      "expectedRecord": {
+        "id": "osm:relation:7114900",
+        "targetDelegationId": 532,
+        "expectedGovernorateId": 358,
+        "expectedBase": {
+          "nomAr": "سكرة",
+          "lat": 36.8791,
+          "lng": 10.2656
+        },
+        "expectedExistingMemberIds": [
+          "osm:relation:7114900"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:532"
+        ],
+        "members": [
+          {
+            "id": "osm:relation:7114900",
+            "expectedKind": "sector",
+            "expectedSourceId": "osm",
+            "expectedName": "سكرة",
+            "expectedParentName": "معتمدية سكرة",
+            "expectedDelegationId": 532,
+            "expectedLat": 36.876348,
+            "expectedLng": 10.258199,
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "int_name": "Soukra",
+              "name": "سكرة",
+              "name:ar": "سكرة",
+              "name:fr": "Soukra",
+              "ref:tn:codegeo": "125251"
+            },
+            "originalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f",
+            "packedGeometrySha256": "db4b5309477bcfe72d8156e17be76fe3a94f2bc0e12f9967c08132815471e1e1"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "method": "current_coded_sector",
+            "id": "osm:relation:7114900",
+            "code": "125251",
+            "currentOfficialRecord": {
+              "governorateCode": "12",
+              "governorateFr": "Ariana",
+              "governorateAr": "أريانة",
+              "delegationCode": "1252",
+              "delegationFr": "Soukra",
+              "delegationAr": "سكرة",
+              "sectorCode": "125251",
+              "sectorFr": "Soukra",
+              "sectorAr": "سكرة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5849,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 184,
+                "Nombre_de_menages_par_Secteurs.xlsx": 184
+              }
+            },
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "int_name": "Soukra",
+              "name": "سكرة",
+              "name:ar": "سكرة",
+              "name:fr": "Soukra",
+              "ref:tn:codegeo": "125251"
+            },
+            "effectiveOriginalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f"
+          },
+          {
+            "method": "current_coded_namesake_administrative_parent",
+            "id": "osm:relation:4184709",
+            "code": "1252",
+            "name": "معتمدية سكرة",
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "5",
+              "alt_name:fr": "La Soukra",
+              "boundary": "administrative",
+              "name": "معتمدية سكرة",
+              "name:ar": "معتمدية سكرة",
+              "name:fr": "Délégation Soukra",
+              "ref:tn:codegeo": "1252",
+              "ref:tn:hasc_2": "TN.AN.LS",
+              "wikidata": "Q3212913"
+            },
+            "effectiveOriginalGeometrySha256": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c",
+            "currentOfficialRecord": {
+              "governorateCode": "12",
+              "governorateAr": "أريانة",
+              "governorateFr": "Ariana",
+              "delegationCode": "1252",
+              "delegationAr": "سكرة",
+              "delegationFr": "Soukra"
+            }
+          }
+        ]
+      },
+      "reviewEvidence": {
+        "file": "reviews/base-locality110-strict-proposal.json",
+        "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+      },
+      "proofRecordObjectSha256": "2cf844ed9e835edd6399a87ca4033912a486d6724ec014d34b8c144d83f0d7e8",
+      "expectedAppliedReceipt": {
+        "pickerGroupId": "delegation:532",
+        "ids": [
+          "osm:relation:7114900"
+        ]
+      }
+    },
+    "onlyRawChange": {
+      "id": "osm:node:7390818324",
+      "field": "pickerGroupId",
+      "before": "osm:node:7390818324",
+      "after": "delegation:532"
+    },
+    "acceptedBoundaryReplacements": [
+      {
+        "id": "osm:relation:7114904",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-identity-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/identity-review-isie2023-sectors.geojson",
+          "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7110676",
+              "officialCode": "326151",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "قصرهلال",
+                "name:ar": "قصرهلال",
+                "name:fr": "Ksar Hellal",
+                "ref:tn:codegeo": "326151"
+              }
+            },
+            {
+              "id": "osm:relation:7110673",
+              "officialCode": "326153",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "قصر هلال",
+                "name:ar": "قصر هلال",
+                "name:fr": "Ksar Hellal",
+                "ref:tn:codegeo": "326153"
+              }
+            },
+            {
+              "id": "osm:relation:7164965",
+              "officialCode": "426153",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "loc_name": "خمودة الجنوبية",
+                "name": "خمودة الجنوبية",
+                "name:ar": "خمودة الجنوبية",
+                "name:fr": "Khmouda sud",
+                "ref:tn:codegeo": "426153"
+              }
+            },
+            {
+              "id": "osm:relation:7164980",
+              "officialCode": "426154",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "خمودة الشمالية",
+                "name:ar": "خمودة الشمالية",
+                "name:fr": "Khmouda nord",
+                "ref:tn:codegeo": "426154"
+              }
+            },
+            {
+              "id": "osm:relation:7102675",
+              "officialCode": "156351",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "بني خلاد الشمالية",
+                "name:ar": "بني خلاد الشمالية",
+                "name:fr": "Beni Khalled Nord",
+                "ref:tn:codegeo": "156351"
+              },
+              "aliases": [
+                "بني خلاد الشمالية"
+              ]
+            },
+            {
+              "id": "osm:relation:7102674",
+              "officialCode": "156352",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "بني خلاد الجوفية",
+                "name:ar": "بني خلاد الجوفية",
+                "name:fr": "Beni Khalled Sud",
+                "ref:tn:codegeo": "156352"
+              },
+              "aliases": [
+                "بني خلاد الجنوبية",
+                "Beni Khalled Sud"
+              ]
+            },
+            {
+              "id": "osm:relation:7115053",
+              "officialCode": "125156",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "التعمير",
+                "name:ar": "التعمير 2",
+                "name:fr": "Ettaamir I",
+                "ref:tn:codegeo": "125156"
+              }
+            },
+            {
+              "id": "osm:relation:7114904",
+              "officialCode": "125257",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "التعمير",
+                "name:ar": "التعمير 2",
+                "name:fr": "Ettaamir",
+                "ref:tn:codegeo": "125257"
+              },
+              "aliases": [
+                "التعمير 5",
+                "Ettaamir V"
+              ],
+              "resolvedCatalogReview": {
+                "id": "osm:relation:7114904",
+                "expectedKind": "sector",
+                "expectedTags": {
+                  "name:ar": "التعمير 2",
+                  "ref:tn:codegeo": "125257"
+                },
+                "reason": "The source labels old code125257 as Ettaamir / التعمير 2 in Soukra. INS2024 retains125257 in Soukra but calls it Etaamir kamesse / التعمير الخامس. A name-only match to125156 in Ariana is a different sector and has no geometric overlap with this polygon. Retain current membership and review the exact sector title separately.",
+                "evidence": [
+                  "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                  "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                  "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                  "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+                ],
+                "unresolved": [
+                  "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+                ]
+              }
+            },
+            {
+              "id": "osm:relation:7147636",
+              "officialCode": "346653",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "أولاد قاسم",
+                "name:ar": "أولاد قاسم",
+                "name:fr": "Ouled Kacem",
+                "ref:tn:codegeo": "346653"
+              },
+              "resolvedCatalogReview": {
+                "id": "osm:relation:7147636",
+                "expectedKind": "sector",
+                "expectedTags": {
+                  "name:ar": "أولاد قاسم",
+                  "ref:tn:codegeo": "346653"
+                },
+                "reason": "The source calls this Kerkennah polygon Ouled Kacem but assigns346653, which INS2012 and INS2024 assign to Sidi Frej. The adjacent source polygon7147638 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+                "evidence": [
+                  "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                  "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                  "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                  "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+                ],
+                "unresolved": [
+                  "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+                ]
+              }
+            },
+            {
+              "id": "osm:relation:7147638",
+              "officialCode": "346660",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "سيدي فرج",
+                "name:ar": "سيدي فرج",
+                "name:fr": "Sidi Fraj",
+                "ref:tn:codegeo": "346660"
+              },
+              "resolvedCatalogReview": {
+                "id": "osm:relation:7147638",
+                "expectedKind": "sector",
+                "expectedTags": {
+                  "name:ar": "سيدي فرج",
+                  "ref:tn:codegeo": "346660"
+                },
+                "reason": "The source calls this Kerkennah polygon Sidi Fraj but assigns346660, which INS2024 assigns to Ouled Kacem. The adjacent source polygon7147636 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+                "evidence": [
+                  "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                  "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                  "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                  "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+                ],
+                "unresolved": [
+                  "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+                ]
+              }
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024 sector registry; population, housing and households workbooks agree",
+            "acceptance": "Individually reviewed complete closed electoral-sector vectors, PDF geographic controls and visual identity. Stable IDs retained only for reviewed original identity.",
+            "repair": "No repair, clipping, buffering, snapping or simplification.",
+            "uncertainty": "Independent PDF registration leaves small overlaps and gaps. Preserve these; runtime conflict handling excludes overlapping sector claims only at their intersections. This does not establish survey accuracy, later boundary currency or complete neighborhood coverage.",
+            "evidenceFile": "official/identity-review-isie2023-sector-decisions.json",
+            "aliasReview": "Only explicit equivalents of the reviewed North/South and Fifth identities are retained, supported by the official registry/map labels and phone place-card review. Old contradictory source names are not copied.",
+            "evidenceSha256": "8dbe2274eda9ecfe2e5eb865dc0ed8c06a056f170a080550cb58e5bf6697752d"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7114904",
+          "officialCode": "125257",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التعمير",
+            "name:ar": "التعمير 2",
+            "name:fr": "Ettaamir",
+            "ref:tn:codegeo": "125257"
+          },
+          "aliases": [
+            "التعمير 5",
+            "Ettaamir V"
+          ],
+          "resolvedCatalogReview": {
+            "id": "osm:relation:7114904",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "التعمير 2",
+              "ref:tn:codegeo": "125257"
+            },
+            "reason": "The source labels old code125257 as Ettaamir / التعمير 2 in Soukra. INS2024 retains125257 in Soukra but calls it Etaamir kamesse / التعمير الخامس. A name-only match to125156 in Ariana is a different sector and has no geometric overlap with this polygon. Retain current membership and review the exact sector title separately.",
+            "evidence": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "unresolved": [
+              "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+            ]
+          }
+        },
+        "application": {
+          "id": "osm:relation:7114904",
+          "action": "replace",
+          "officialCode": "125257",
+          "sourceId": "isie-local-sectors-2023-identity-review"
+        },
+        "geojson": {
+          "file": "official/identity-review-isie2023-sectors.geojson",
+          "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+        },
+        "featureSha256": "b6ef074d45f5780fc717e854fc0312d399b26e728b603d2c5f9704eb877f604c",
+        "providerEvidence": {
+          "file": "official/identity-review-isie2023-sector-decisions.json",
+          "sha256": "8dbe2274eda9ecfe2e5eb865dc0ed8c06a056f170a080550cb58e5bf6697752d",
+          "bytes": 15304
+        }
+      }
+    ],
+    "contexts": {
+      "osm:relation:1435830": {
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-12",
+          "admin_level": "4",
+          "boundary": "administrative",
+          "name": "ولاية أريانة",
+          "name:ar": "ولاية أريانة",
+          "name:az": "Aryana",
+          "name:azb": "اریانه",
+          "name:bar": "Gouvernement Ariana",
+          "name:be": "Арыяна",
+          "name:be-tarask": "Арыяна (вілает)",
+          "name:bg": "Ариана",
+          "name:ca": "Governació d'Ariana",
+          "name:ce": "Арьяна",
+          "name:ceb": "Gouvernorat de l'Ariana",
+          "name:cy": "Ariana",
+          "name:de": "Gouvernement Ariana",
+          "name:el": "Αρυάνα",
+          "name:en": "Ariana",
+          "name:eo": "Arjana",
+          "name:fa": "اریانه",
+          "name:fi": "Ariana",
+          "name:fr": "Gouvernorat Ariana",
+          "name:frr": "Ariana",
+          "name:he": "אריאנה (מחוז)",
+          "name:hu": "Arjána kormányzóság",
+          "name:id": "Kegubernuran Ariana",
+          "name:it": "Ariana",
+          "name:ja": "アリアナ県",
+          "name:ka": "არიანის ვილაიეთი",
+          "name:ko": "아리아나주",
+          "name:lt": "Arianos vilajetas",
+          "name:ms": "Kawasan kegabenoran Ariana",
+          "name:nl": "Ariana",
+          "name:no": "Ariana",
+          "name:pl": "Arjana",
+          "name:pnb": "آریانہ",
+          "name:pt": "Ariana",
+          "name:ro": "Guvernoratul Ariana",
+          "name:ru": "Арьяна",
+          "name:sco": "Ariana Govrenorate",
+          "name:sh": "Ariana",
+          "name:sv": "Ariana",
+          "name:tr": "Aryana ili",
+          "name:uk": "Ар'яна",
+          "name:ur": "آریانہ",
+          "name:vi": "Ariana",
+          "name:zh": "艾爾亞內省",
+          "name:zu": "Ariana Governorate",
+          "official_name": "ولاية أريانة",
+          "official_name:ar": "ولاية أريانة",
+          "official_name:en": "Ariana Governorate",
+          "official_name:eo": "Gubernio de Arjana",
+          "official_name:fa": "استان اریانه",
+          "official_name:fr": "Gouvernorat de Ariana",
+          "official_name:it": "Governatorato di Ariana",
+          "official_name:pl": "Gubernatorstwo Arjana",
+          "official_name:ur": "ولایت آریانہ",
+          "population": "576088",
+          "population:date": "2014",
+          "ref:tn:codegeo": "12",
+          "wikidata": "Q233116",
+          "wikipedia": "ar:ولاية أريانة"
+        },
+        "sourceGeometrySha256": "28dd97fdb0f75b913551cfdd1b6c6034e09070ccb3d0ac21aed957c9113527b6"
+      },
+      "osm:relation:4184709": {
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "La Soukra",
+          "boundary": "administrative",
+          "name": "معتمدية سكرة",
+          "name:ar": "معتمدية سكرة",
+          "name:fr": "Délégation Soukra",
+          "ref:tn:codegeo": "1252",
+          "ref:tn:hasc_2": "TN.AN.LS",
+          "wikidata": "Q3212913"
+        },
+        "sourceGeometrySha256": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c"
+      }
+    },
+    "geometryHashes": {
+      "osm:node:1080388142": {
+        "original": "fe35d490fa02519d5c8b915a499050a709c67eddc1af45644db59c4a0f458064",
+        "effective": "fe35d490fa02519d5c8b915a499050a709c67eddc1af45644db59c4a0f458064"
+      },
+      "osm:node:1080390577": {
+        "original": "90452af26f5a5572802e6d963fa9c9500e7cba79c0aa294351272934a88e1ccc",
+        "effective": "90452af26f5a5572802e6d963fa9c9500e7cba79c0aa294351272934a88e1ccc"
+      },
+      "osm:node:1205570513": {
+        "original": "88134f478edf012ac31ac2c35711464d4a1b3c40fbcc1073ddcd1efbf6c6ad82",
+        "effective": "88134f478edf012ac31ac2c35711464d4a1b3c40fbcc1073ddcd1efbf6c6ad82"
+      },
+      "osm:node:1205571123": {
+        "original": "a94e468bc93b8b2fb7150ae63e06943c787ea2b17c36393e38935dd7d8bf7514",
+        "effective": "a94e468bc93b8b2fb7150ae63e06943c787ea2b17c36393e38935dd7d8bf7514"
+      },
+      "osm:node:2157169857": {
+        "original": "e638e63f4ceb53d1a9979640f5909e12e67554f2517e8094bca8dd7fa5ac4f8f",
+        "effective": "e638e63f4ceb53d1a9979640f5909e12e67554f2517e8094bca8dd7fa5ac4f8f"
+      },
+      "osm:node:7390818324": {
+        "original": "03f3a546132bc1a37b25aa0eccdd2e448854848408acbedde28b1e7d22826c27",
+        "effective": "03f3a546132bc1a37b25aa0eccdd2e448854848408acbedde28b1e7d22826c27"
+      },
+      "osm:relation:1435830": {
+        "original": "28dd97fdb0f75b913551cfdd1b6c6034e09070ccb3d0ac21aed957c9113527b6",
+        "effective": "28dd97fdb0f75b913551cfdd1b6c6034e09070ccb3d0ac21aed957c9113527b6"
+      },
+      "osm:relation:4184709": {
+        "original": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c",
+        "effective": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c"
+      },
+      "osm:relation:7114900": {
+        "original": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f",
+        "effective": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f"
+      },
+      "osm:relation:7114901": {
+        "original": "eb6492f6b7f18e91003d6b4ab75e71b1e002e28d3084f52608cd38451ade37c4",
+        "effective": "eb6492f6b7f18e91003d6b4ab75e71b1e002e28d3084f52608cd38451ade37c4"
+      },
+      "osm:relation:7114902": {
+        "original": "f5a9fe0ed90f6749ed74f6723cd7fceb4f55c52518564ad31265c6e59bf0164d",
+        "effective": "f5a9fe0ed90f6749ed74f6723cd7fceb4f55c52518564ad31265c6e59bf0164d"
+      },
+      "osm:relation:7114903": {
+        "original": "9d866fd305cc0800d53c7ef645febf00061cc9b2130ffcfc134ae812e3c176f2",
+        "effective": "9d866fd305cc0800d53c7ef645febf00061cc9b2130ffcfc134ae812e3c176f2"
+      },
+      "osm:relation:7114904": {
+        "original": "33a746570c640ea19a61ad4dea05b0b5155756cd62c959121e326e1c86e60630",
+        "effective": "0e1824bcd7b7173269284ac94f96bb2d295e0bb6249a868ab6dc78748a69b1e6"
+      },
+      "osm:relation:7114905": {
+        "original": "8fcfdaa70d0b61da1e2587867b65db2d15f1450404a84c757a15faa14dc12a5a",
+        "effective": "8fcfdaa70d0b61da1e2587867b65db2d15f1450404a84c757a15faa14dc12a5a"
+      },
+      "osm:relation:7114906": {
+        "original": "6ff42cc72f3c9c73e7fb574c3f94cf4299fa65b70964d82c1590ba924dc1c8a3",
+        "effective": "6ff42cc72f3c9c73e7fb574c3f94cf4299fa65b70964d82c1590ba924dc1c8a3"
+      },
+      "osm:relation:7147558": {
+        "original": "396fbd48a049641f6a23b7e82ad09419e80ab43f4689871cfab8ff9e6ecc8b4c",
+        "effective": "396fbd48a049641f6a23b7e82ad09419e80ab43f4689871cfab8ff9e6ecc8b4c"
+      },
+      "osm:way:93676034": {
+        "original": "e7c0d4e827f629f3860f452965d95757746da95e9dc33305ce7fd362efb25b9e",
+        "effective": "e7c0d4e827f629f3860f452965d95757746da95e9dc33305ce7fd362efb25b9e"
+      }
+    }
+  },
+  "explanation": "Original Jawhara source geometry/tags remain in immutable original inventory and this removed-source receipt. Current product policy removes it from effective source areas and required raw/protected closure; no assertion of nonexistence is made.",
+  "qualification": "Work-only counterfactual verification snapshot. Not deployable, not current, not a historical catalog."
+}

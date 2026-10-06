@@ -1,0 +1,67 @@
+{
+  "baselineMetadataSha256": "c03311437d50ac6b7e0b6fa6c516a4955c778c11a07b940888751fca3da56d27",
+  "baselineGovSha256": "bf98f4eca062962f0c474bf4a0f37dfed9ea380e6b20dbfa962fba644c58888f",
+  "featureCount": 3523,
+  "availableReferences": 258,
+  "allCurrentDefaultsMatchIndependentCalculation": true,
+  "scenarios": {
+    "1522": {
+      "changes": [
+        {
+          "id": "osm:relation:7169555",
+          "name": "الزيتونة",
+          "lat": 34.91343,
+          "lng": 9.490654,
+          "before": 513,
+          "after": 1522
+        },
+        {
+          "id": "osm:relation:7169577",
+          "name": "ورغة",
+          "lat": 34.78717,
+          "lng": 9.292787,
+          "before": 1522,
+          "after": 509
+        },
+        {
+          "id": "osm:relation:7169583",
+          "name": "بئر عمامة",
+          "lat": 34.87317,
+          "lng": 9.303254,
+          "before": 1522,
+          "after": 508
+        },
+        {
+          "id": "osm:relation:7169628",
+          "name": "القلال",
+          "lat": 34.695375,
+          "lng": 9.349164,
+          "before": 1522,
+          "after": 510
+        },
+        {
+          "id": "osm:relation:7169672",
+          "name": "القصر",
+          "lat": 34.96864,
+          "lng": 9.339641,
+          "before": 508,
+          "after": 1522
+        },
+        {
+          "id": "osm:relation:7169673",
+          "name": "بئر بدر",
+          "lat": 34.86994,
+          "lng": 9.520706,
+          "before": 513,
+          "after": 1522
+        }
+      ],
+      "candidatePointsBefore": {
+        "1522": 1522
+      },
+      "candidatePointsAfter": {
+        "1522": 1522
+      }
+    }
+  }
+}

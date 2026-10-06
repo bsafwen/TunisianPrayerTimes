@@ -1,0 +1,191 @@
+{
+  "status": "ACCEPT_LIMITED_BROAD_TOWN_DISPLAY_INFERENCE_PENDING_COMPLETE_SOURCE_STAGE",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-urban-scope-review.json",
+    "sha256": "a52991b8d6905534f87552ddcfb4bffe94b821fffe50b6d12c89a9cbac090a59"
+  },
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a"
+  },
+  "originalFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\bounded-source-identity-facts.json",
+    "sha256": "70994adfa92466a8a705a58e9cbddba37ed1d0a6a470ad4bf0e3bc9f6c016c70",
+    "bytes": 29890
+  },
+  "pointId": "osm:node:5239666199",
+  "targetDelegationId": 1524,
+  "permittedRawChange": {
+    "field": "pickerGroupId",
+    "before": "osm:node:5239666199",
+    "after": "delegation:1524"
+  },
+  "rootDecision": "The consistent unqualified village identity, nearby inhabited point/base phone contexts and primary planning and heritage descriptions support one broad Beni Mhira town choice. This is an inference across evidence, not a certified point-to-town-polygon crosswalk.",
+  "primaryChecks": {
+    "mehatPlanningAndApprovalWordingRead": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html",
+        "sha256": "344191b6aed8fe5a53aef108190d7c622cea7806efbdfd597f52f22b5763e0b6",
+        "bytes": 183788
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\mehat-approval-announcement.html",
+        "sha256": "8d917eaa93bb5c1697376d00c6e3adcd5df82f40e3465687a790cc03f7eecccc",
+        "bytes": 168653
+      }
+    ],
+    "gmgVillageDistinctFromGranaryDescriptionsRead": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-elataya.html",
+        "sha256": "98691cf82f8a45bba0abd97b33ca00081514735e862be29c2cded6b2d4687119",
+        "bytes": 81240
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-zorgan.html",
+        "sha256": "f9ff3516f5674488a1b60467e2a93c3695556921a024f65f81a2ff8e84434751",
+        "bytes": 81245
+      }
+    ],
+    "isieWholePagePersonallyViewed": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\isie-ksar-mhira-2023-page1.png",
+      "sha256": "6a38892be759e2d5c57855b903702494f1c6f9c39c59f16bf59ef9728750f5e8",
+      "bytes": 1427941
+    },
+    "mapScope": "The legend describes governorate, delegation and sector/electoral boundaries. It is not a town footprint."
+  },
+  "currentFiniteRawClosure": [
+    "osm:node:1980186910",
+    "osm:node:5239666199",
+    "osm:relation:7143818",
+    "osm:relation:7143819",
+    "osm:relation:7143820",
+    "osm:relation:7143821",
+    "osm:relation:7143822"
+  ],
+  "allSevenRowsEqualHistoricalFacts": true,
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7143818",
+      "originalSourceCode": "535358",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535855",
+        "sectorFr": "Beni mehira est",
+        "sectorAr": "بني مهيرة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65508,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3216,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3210
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7143819",
+      "originalSourceCode": "535357",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535854",
+        "sectorFr": "Ksar mehira",
+        "sectorAr": "قصر مهيرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65474,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3214,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3208
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7143820",
+      "originalSourceCode": "535356",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535853",
+        "sectorFr": "Ksar aoun",
+        "sectorAr": "قصر عون",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65440,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3212,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3206
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7143821",
+      "originalSourceCode": "535355",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535852",
+        "sectorFr": "El morra",
+        "sectorAr": "المرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65406,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3211,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3205
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7143822",
+      "originalSourceCode": "535354",
+      "currentOfficialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5358",
+        "delegationFr": "Beni mhira",
+        "delegationAr": "بنى مهيرة",
+        "sectorCode": "535851",
+        "sectorFr": "Errahech",
+        "sectorAr": "الرهاش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65373,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3209,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3203
+        }
+      }
+    }
+  ],
+  "requiredPreservation": [
+    "All five named current sectors and their original source codes and polygons.",
+    "Actual historical Smar source context, with no invented current5358 source polygon.",
+    "Independent Bir Morra hamlet1980186910 as its own raw/picker choice.",
+    "Absorbed source-only Ksar Aoun9022801628 remains absent from raw choices, with receiver7143820 independently checked by the source-stage contract.",
+    "Every raw/reference coordinate and nearest prayer-time default."
+  ],
+  "limitations": [
+    "No new town, municipal or neighborhood polygon is certified.",
+    "No old/new/east/west neighborhood equivalence is inferred.",
+    "The parliamentary municipality proposal is not an enacted boundary and does not support this decision as current law.",
+    "Source-stage packaging, combined-manifest dependencies, generation and actual-data review remain outstanding."
+  ],
+  "acceptedCompilerStaticReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-teboursouk-combined-compiler-independent-review.json",
+    "sha256": "0e8e9fb38e375d97d8b3e7d42c76178314500cb6fd0ed23d2564b5323ac6b09b"
+  },
+  "catalogOrCompilerWritten": false,
+  "testsBuildGenerationPhoneLedger": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_beni_mhira_root_display_acceptance.py",
+    "sha256": "8c3839b9eb53af9662bfa55a2d97bd1f049e12f443f6ad1a52aa32a4867b4945"
+  }
+}

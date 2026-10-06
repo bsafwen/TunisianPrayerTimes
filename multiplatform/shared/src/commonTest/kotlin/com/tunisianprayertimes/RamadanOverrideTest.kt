@@ -2,8 +2,8 @@ package com.tunisianprayertimes
 
 import java.time.LocalDate
 import java.time.chrono.HijrahDate
-import java.time.temporal.ChronoField
 import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -25,10 +25,17 @@ import kotlin.test.assertTrue
  */
 class RamadanOverrideTest {
 
+    private lateinit var testEnvironment: OfficialDateTestEnvironment
+
+    @BeforeTest
+    fun setup() {
+        testEnvironment = OfficialDateTestEnvironment()
+        RamadanOverrideChecker.testDateOverride = LocalDate.of(2026, 2, 17)
+    }
+
     @AfterTest
     fun cleanup() {
-        RamadanOverrideChecker.cachedOverride = null
-        RamadanOverrideChecker.testDateOverride = null
+        testEnvironment.close()
     }
 
     // ---------------------------------------------------------------
@@ -78,12 +85,12 @@ class RamadanOverrideTest {
 
     @Test
     fun drift_eidFitrTakesPrecedence() {
-        // ramadanStart drift = +1, but eidFitrDate drift = -1 → should use -1
-        // Algorithmic 1 Ramadan 1447 = 2026-02-18, announced = 2026-02-19 (drift +1)
+        // A valid 29-day Ramadan with a zero start offset and -1 Fitr offset.
+        // Algorithmic 1 Ramadan 1447 = 2026-02-18, announced = 2026-02-18 (drift 0)
         // Algorithmic 1 Shawwal 1447 = 2026-03-20, announced = 2026-03-19 (drift -1)
         RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
             hijriYear = 1447,
-            ramadanStart = LocalDate.of(2026, 2, 19),
+            ramadanStart = LocalDate.of(2026, 2, 18),
             eidFitrDate = LocalDate.of(2026, 3, 19),
             eidAdhaDate = null,
         )
@@ -98,7 +105,7 @@ class RamadanOverrideTest {
     fun eidFitr_withOverride_returnsOverrideDate() {
         RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
             hijriYear = 1447,
-            ramadanStart = LocalDate.of(2026, 2, 19),
+            ramadanStart = LocalDate.of(2026, 2, 18),
             eidFitrDate = LocalDate.of(2026, 3, 19),
             eidAdhaDate = null,
         )
@@ -109,7 +116,7 @@ class RamadanOverrideTest {
     fun isEidFitr_withOverride_correctDate() {
         RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
             hijriYear = 1447,
-            ramadanStart = LocalDate.of(2026, 2, 19),
+            ramadanStart = LocalDate.of(2026, 2, 18),
             eidFitrDate = LocalDate.of(2026, 3, 19),
             eidAdhaDate = null,
         )
@@ -141,7 +148,7 @@ class RamadanOverrideTest {
         // Algorithmic 10 Dhul Hijja 1447 = 2026-05-27 → predicted = 2026-05-26
         RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
             hijriYear = 1447,
-            ramadanStart = LocalDate.of(2026, 2, 19),
+            ramadanStart = LocalDate.of(2026, 2, 18),
             eidFitrDate = LocalDate.of(2026, 3, 19),
             eidAdhaDate = null,
         )
@@ -235,26 +242,26 @@ class RamadanOverrideTest {
 
     @Test
     fun ramadanDetector_29dayRamadan_overrideEidFitr() {
-        // Ramadan = 29 days: starts 2026-02-19, Eid = 2026-03-19
+        // Ramadan = 29 days: starts 2026-02-19, Eid = 2026-03-20.
         RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
             hijriYear = 1447,
             ramadanStart = LocalDate.of(2026, 2, 19),
-            eidFitrDate = LocalDate.of(2026, 3, 19),
+            eidFitrDate = LocalDate.of(2026, 3, 20),
             eidAdhaDate = null,
         )
-        // 2026-03-18 = last day of Ramadan (day 28, 0-indexed from start)
-        val hijriMar18 = HijrahDate.of(1447, 9, 29) // algo 29 Ram = 2026-03-18
-        assertTrue(RamadanDetector.isRamadan(hijriMar18),
+        // 2026-03-19 = day 29 of the announced Ramadan.
+        val hijriMar19 = HijrahDate.from(LocalDate.of(2026, 3, 19))
+        assertTrue(RamadanDetector.isRamadan(hijriMar19),
             "Last day of 29-day Ramadan should still be Ramadan")
 
-        // 2026-03-19 = Eid al-Fitr (first Shawwal) — included in isRamadan buffer
-        val hijriMar19 = HijrahDate.of(1447, 9, 30) // algo 30 Ram = 2026-03-19
-        assertTrue(RamadanDetector.isRamadan(hijriMar19),
+        // 2026-03-20 = Eid al-Fitr — included in the app's Ramadan buffer.
+        val hijriMar20 = HijrahDate.from(LocalDate.of(2026, 3, 20))
+        assertTrue(RamadanDetector.isRamadan(hijriMar20),
             "Eid al-Fitr day should be in Ramadan buffer (firstShawwal)")
 
-        // 2026-03-20 = day after Eid — NOT Ramadan
-        val hijriMar20 = HijrahDate.of(1447, 10, 1) // algo 1 Shawwal = 2026-03-20
-        assertFalse(RamadanDetector.isRamadan(hijriMar20),
+        // 2026-03-21 = day after Eid — outside the buffer.
+        val hijriMar21 = HijrahDate.from(LocalDate.of(2026, 3, 21))
+        assertFalse(RamadanDetector.isRamadan(hijriMar21),
             "Day after Eid should not be Ramadan")
     }
 
@@ -340,7 +347,7 @@ class RamadanOverrideTest {
     }
 
     @Test
-    fun eidDates_ignoreCachedOverrideFromPreviousHijriYear() {
+    fun eidDates_defaultToCurrentYearWhileHistoricalQueriesKeepTheirCorrections() {
         RamadanOverrideChecker.testDateOverride = LocalDate.from(HijrahDate.of(1448, 8, 29))
         RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
             hijriYear = 1447,
@@ -351,8 +358,8 @@ class RamadanOverrideTest {
 
         assertEquals(LocalDate.from(HijrahDate.of(1448, 10, 1)), RamadanOverrideChecker.getEidFitrDate())
         assertEquals(LocalDate.from(HijrahDate.of(1448, 12, 10)), RamadanOverrideChecker.getEidAdhaDate())
-        assertFalse(RamadanOverrideChecker.isEidFitr(LocalDate.of(2026, 3, 20)))
-        assertFalse(RamadanOverrideChecker.isEidAdha(LocalDate.of(2026, 5, 27)))
+        assertTrue(RamadanOverrideChecker.isEidFitr(LocalDate.of(2026, 3, 20)))
+        assertTrue(RamadanOverrideChecker.isEidAdha(LocalDate.of(2026, 5, 27)))
     }
 
     // ---------------------------------------------------------------
@@ -360,18 +367,14 @@ class RamadanOverrideTest {
     // ---------------------------------------------------------------
 
     @Test
-    fun fetchOverrideForYear_parsesJsonCorrectly() {
-        // This test validates the JSON parsing logic indirectly.
-        // We can't mock the HTTP call, but we can validate the data class structure.
-        val override = RamadanOverrideChecker.RamadanOverride(
-            hijriYear = 1447,
-            ramadanStart = LocalDate.of(2026, 2, 19),
-            eidFitrDate = LocalDate.of(2026, 3, 19),
-            eidAdhaDate = null,
-        )
+    fun parseOverride_parsesJsonCorrectly() {
+        val override = RamadanOverrideChecker.parseOverrideForTest(
+            """{"hijriYear":1447,"ramadanStart":"2026-02-19","eidFitrDate":"2026-03-20","eidAdhaDate":null}"""
+        )!!
         assertEquals(1447, override.hijriYear)
         assertEquals(LocalDate.of(2026, 2, 19), override.ramadanStart)
-        assertEquals(LocalDate.of(2026, 3, 19), override.eidFitrDate)
+        assertEquals(LocalDate.of(2026, 3, 20), override.eidFitrDate)
+        assertNull(override.eidAdhaDate)
     }
 
     @Test
@@ -392,24 +395,12 @@ class RamadanOverrideTest {
 
     @Test
     fun eidFitr_noOverride_fallsBackToAlgorithmic() {
-        // No override → getEidFitrDate should return algorithmic 1 Shawwal
-        // Current Hijri year from HijrahDate.now() — just verify it returns a date
-        val date = RamadanOverrideChecker.getEidFitrDate()
-        // Should be the Gregorian equivalent of 1 Shawwal of current Hijri year
-        val expected = LocalDate.from(
-            HijrahDate.now().let { HijrahDate.of(it.get(ChronoField.YEAR), 10, 1) }
-        )
-        assertEquals(expected, date)
+        assertEquals(LocalDate.of(2026, 3, 20), RamadanOverrideChecker.getEidFitrDate())
     }
 
     @Test
     fun eidAdha_noOverride_fallsBackToAlgorithmic() {
-        // No override → getEidAdhaDate should return algorithmic 10 Dhul Hijja
-        val date = RamadanOverrideChecker.getEidAdhaDate()
-        val expected = LocalDate.from(
-            HijrahDate.now().let { HijrahDate.of(it.get(ChronoField.YEAR), 12, 10) }
-        )
-        assertEquals(expected, date)
+        assertEquals(LocalDate.of(2026, 5, 27), RamadanOverrideChecker.getEidAdhaDate())
     }
 
     @Test

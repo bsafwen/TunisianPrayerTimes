@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_PARENT_DISPLAY_LABEL_ONLY",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "efad48ccdcfe78939802d14e351bcc477b30d203cf1d04542ba17e6bc839b94a",
+  "id": "osm:relation:4133740",
+  "expectedKind": "delegation",
+  "expectedTags": {
+    "admin_level": "5",
+    "alt_name:fr": "Bab El Bhar",
+    "boundary": "administrative",
+    "name": "معتمدية باب بحر",
+    "name:ar": "معتمدية باب بحر",
+    "name:fr": "Délégation Bab Bhar",
+    "ref:tn:codegeo": "1153",
+    "ref:tn:hasc_2": "TN.TU.BB",
+    "wikidata": "Q2877661"
+  },
+  "originalGeometryCanonicalSha256": "a4e8ca217775f19067a7dc1d1d312a7b9e6952af189e0b3216930e9874eb3138",
+  "officialIdentity": {
+    "governorateCode": "11",
+    "governorateAr": "تونس",
+    "delegationCode": "1153",
+    "delegationAr": "باب البحر",
+    "sectorCodes": [
+      "115351",
+      "115352",
+      "115353",
+      "115354",
+      "115355",
+      "115356",
+      "115357",
+      "115358"
+    ]
+  },
+  "finding": "INS lists all8 code1153 imadas under باب البحر. The cached Interior Ministry directory independently lists باب البحر with the same8 imadas; personally reviewed ISIE2022 page2 rows1065–1072 also show باب البحر in the delegation column. Use this published parent label while retaining the original short form as an alias.",
+  "sourceReferences": [
+    {
+      "root": "task",
+      "file": "outputs/bab-bhar-parent-name-source-finding.json",
+      "sha256": "9c85951c09e4ace5f66614d42395d87b0e3f52875eae9c952348d7c47824ae34"
+    },
+    {
+      "root": "task",
+      "file": "work/bourouis-jerissa-alias-identity-review/interior-sector-directory.html",
+      "sha256": "a3d231b09f8b42dbf1747e3c42566dc6afa747860d6d86a5a53607ece2f4cb95",
+      "url": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation"
+    },
+    {
+      "root": "task",
+      "file": "work/el-adbech-identity-followup/isie-ussd2022.pdf",
+      "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97",
+      "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf"
+    },
+    {
+      "root": "task",
+      "file": "outputs/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ],
+  "sourceQualifications": [
+    "Interior directory is historical2013 corroboration, not current legal geometry.",
+    "ISIE page2 has8 voting-centre rows covering6 distinct imadas; the complete8-imada inventory is supplied by INS and Interior.",
+    "The prior finding used0b9 metadata; all10 affected raw rows are exactly identical at current efad after the unrelated Teboulba group change."
+  ],
+  "intendedDelta": {
+    "parentName": "معتمدية باب بحر -> معتمدية باب البحر",
+    "parentNameRows": 8,
+    "contextAliasesRows": 10,
+    "contextPolicy": "Add معتمدية باب البحر and retain every current alias, including معتمدية باب بحر.",
+    "rawFieldCount": 18
+  },
+  "preserved": "All10 raw names, own aliases, kinds, full source identities, groups, geometry, coordinates and prayer defaults; base404 and tiny reviewedNames remain unchanged. No geographic membership correction is made.",
+  "compatibility": "Existing name_tags accepts the non-raw delegation and requires the complete consumed original name set. It applies before context generation; final raw-only saved-name filtering excludes this delegation. No new generator capability or evidence schema is required."
+}

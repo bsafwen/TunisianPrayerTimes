@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sector-2023-soukra125251-whole",
+  "boundarySource": {
+    "file": "official/soukra125251-whole-20260920/soukra125251-whole-source.geojson",
+    "sha256": "69e9681041dbae1b712ba75fd56210ce4c484ea33b381c36f9330f1d59eecf1b"
+  },
+  "baselineMetadata": {
+    "file": "official/soukra125251-whole-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "b8b1145eba4936916ddf9c750641a21000bde898c9a70975257cd98064cd30b9"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7114900",
+      "officialCode": "125251",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7114900",
+        "sourceId": "osm",
+        "name": "سكرة",
+        "aliases": [
+          "Soukra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سكرة",
+        "contextAliases": [
+          "Délégation Soukra",
+          "La Soukra",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.876348,
+        "lng": 10.258199,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.236409,
+          36.861799,
+          10.288739,
+          36.890763
+        ],
+        "areaKm2": 8.467930614714383,
+        "pickerGroupId": "delegation:532",
+        "offset": 1026320,
+        "length": 980
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.876348,
+        "lng": 10.258199
+      },
+      "expectedNearestId": 532
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/soukra125251-whole-20260920/source-acceptance-review.json",
+      "sha256": "eed9586210c7771d19b4e72342b9937356f3b4eabed74b27633ea4937374a0dc"
+    },
+    {
+      "file": "official/soukra125251-whole-20260920/accepted-whole-scope-successor.json",
+      "sha256": "5bdd0d56c6b86f7899aa7e9d2c683bc432229d0b6b5a7a235a91898f19a24dd5"
+    }
+  ]
+}

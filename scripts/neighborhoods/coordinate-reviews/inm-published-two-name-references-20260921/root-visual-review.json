@@ -1,0 +1,17 @@
+{
+  "status": "TWO_REFERENCE_COORDINATES_SUPPORTED_WITH_SCOPE_LIMITS",
+  "supportedReferenceIds": [
+    425,
+    534
+  ],
+  "held": [],
+  "mapsReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-reference-name-successors-20260921\\maps-review.json",
+    "sha256": "64cdae63727a435b6803614b48f52080d28dd7e6091fa32592d8cdc974762727"
+  },
+  "geographyReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-reference-name-successors-20260921\\geography-review.json",
+    "sha256": "a14f07631bc7e3052ea00a82a37125bca5389b3ba8d3f0dac8b99c67428cb5b2"
+  },
+  "qualification": "Reference coordinates only; no boundary approval. Cebalat broad Google address for534 retained explicitly; paired source identity, Ettadhamen context and native/active Ariana containment support this published reference."
+}

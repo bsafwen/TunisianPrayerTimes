@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "reviewed_city_display_association",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_city_display_association",
+    "id": "osm:way:174739936",
+    "targetDelegationId": 468
+  },
+  "sourceReview": {
+    "file": "dar-chaabane-reviews/nearest-manual-20260913/dar-chaabane-nearest-manual-source-review.json",
+    "sha256": "15d4503a7a6f4ad4e0b5fff8dcd23b9788243e263b07353126171d6d73495d7c"
+  },
+  "sourceFacts": {
+    "file": "dar-chaabane-reviews/direct-pbf-source-facts.json",
+    "sha256": "455683e0a6c82d563e5513f32f1b80d8b8faf41eea87081d3b7ed52eb3461da8"
+  },
+  "officialRegistry": {
+    "file": "dar-chaabane-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "requiredDistinctPair": {
+    "ids": [
+      "osm:relation:7103335",
+      "osm:way:174739936"
+    ],
+    "reviewEvidence": {
+      "file": "dar-chaabane-reviews/dar-chaabane-town-sector-distinct-choices.json",
+      "sha256": "679d291d327f62cfffec746efec240e5ca968bd16828fc41946d4f2b9ff8f5db"
+    }
+  },
+  "acceptedPolicy": {
+    "method": "reviewed_city_display_association",
+    "sourceIdentitySupported": true,
+    "requiresRootPolicyAcceptance": true,
+    "scope": "Exact city display identity with nearest available prayer selection at its retained raw locality representative.",
+    "preserveRawRepresentativeAndDefault": true,
+    "preserveCanonicalDisplayIdentity": true,
+    "selectNearestAvailableAtRetainedRepresentative": true,
+    "recomputeSavedManualCanonicalIds": true,
+    "preserveSavedRawManual623AndGpsSources": true,
+    "basePointOutsideResidentialAcknowledged": true,
+    "historicalFixed468PolicySuperseded": true,
+    "townNodeIsIdentityEvidenceOnly": true,
+    "notACompleteTownBoundaryClaim": true,
+    "noGenericOrTransitiveNameMatching": true
+  },
+  "primarySources": [
+    {
+      "file": "dar-chaabane-reviews/nabeul-panorama.html",
+      "sha256": "6a149fea33192d62ddd6da095c85ebf19ec465bbf3d843443de6e6b91d110653",
+      "url": "https://www.nabeul.gov.tn/fr/panorama-des-villes/"
+    },
+    {
+      "file": "dar-chaabane-reviews/nabeul-municipalities.html",
+      "sha256": "9e4a2e8b9593a0ebbcae7344e61b53bf1e288601814c605fa9e6e1e47c2619ee",
+      "url": "https://www.nabeul.gov.tn/fr/administration-du-gouvernorat/les-municipalites-2/"
+    },
+    {
+      "file": "dar-chaabane-reviews/nabeul-stonecraft.html",
+      "sha256": "8d9cf075ed4e18b54bb3f770d10bc741305020e39dd20c66203167a8230d286a",
+      "url": "https://www.nabeul.gov.tn/fr/les-pierres-de-taile-de-dar-chaabane/"
+    }
+  ],
+  "implementationScope": "Exact city display ID/name retained; new and saved canonical manual selections use nearest623 at unchanged raw way174739936 coordinates. Historical fixed468 policy remains preserved in the referenced original. Raw623, separate sector468, absorbed point and all geometry remain unchanged.",
+  "historicalPolicyProof": {
+    "file": "dar-chaabane-reviews/dar-chaabane-city-display-policy.json",
+    "sha256": "91ed841f8fa31963ab89361ab8232a7b5995884314c098ac71bafedf71baeea3"
+  },
+  "manualPrayerSelection": {
+    "method": "nearest_available_at_retained_locality",
+    "displayGroupId": "delegation:468",
+    "representativeId": "osm:way:174739936",
+    "representative": {
+      "lat": 36.465982,
+      "lng": 10.74479
+    },
+    "expectedCurrentNearestSourceId": 623,
+    "expectedNearestSourceCoordinates": {
+      "lat": 36.4561,
+      "lng": 10.7376
+    },
+    "expectedNearestDistanceKm": 1.2731349096201334,
+    "historicalCanonicalSourceId": 468,
+    "distanceMetric": "haversine_6371km_distance_then_id",
+    "savedManualCanonicalIdsRecompute": true,
+    "savedRawLocalityIdsPreserved": true,
+    "gpsUsesActualFix": true
+  }
+}

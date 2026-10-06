@@ -1,0 +1,910 @@
+{
+  "schemaVersion": 1,
+  "status": "VALIDATED_CACHED_MAPS_INVENTORY",
+  "coordinateCount": 11,
+  "coordinateRows": [
+    {
+      "id": "delegation:482",
+      "mode": "plan",
+      "serial": "emulator-5554",
+      "avd": "Pixel_10_Pro_XL_THREE",
+      "query": "33.687,8.97",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-1-20260921\\delegation_482-2.json",
+        "sha256": "5b01dbf07f4ccfafec007beb32a198da2df29f4f4609269f7d6a11eb5cb23f5b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-1-20260921\\delegation_482-2.png",
+        "sha256": "c51a0a1e0200f4f2f1f2038e75773fed8c0dd41e24843ea1179fa4c92c521161"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "33°41'13.2\"N 8°58'12.0\"E"
+      ],
+      "publicUiText": [
+        "33°41'13.2\"N 8°58'12.0\"E",
+        "33.687000, 8.970000",
+        "Directions to 33°41'13.2\"N 8°58'12.0\"E",
+        "Directions",
+        "Share 33°41'13.2\"N 8°58'12.0\"E",
+        "Share",
+        "Save 33°41'13.2\"N 8°58'12.0\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "33.6870000, 8.9700000",
+        "MXP9+QXX Kebili, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "33.687,8.97",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:473",
+      "mode": "plan",
+      "serial": "emulator-5554",
+      "avd": "Pixel_10_Pro_XL_THREE",
+      "query": "33.067,10.33",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-1-20260921\\delegation_473-2.json",
+        "sha256": "52ce8076b7e6926ff2221c7bdc4edade5debf69c831f327f102d10f258255ee2"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-1-20260921\\delegation_473-2.png",
+        "sha256": "62c71a432f5335459d6d383a055878bc7865da74fb03b73d61b69d66ac0bbaba"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "33°04'01.2\"N 10°19'48.0\"E"
+      ],
+      "publicUiText": [
+        "33°04'01.2\"N 10°19'48.0\"E",
+        "33.067000, 10.330000",
+        "Directions to 33°04'01.2\"N 10°19'48.0\"E",
+        "Directions",
+        "Share 33°04'01.2\"N 10°19'48.0\"E",
+        "Share",
+        "Save 33°04'01.2\"N 10°19'48.0\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "33.0670000, 10.3300000",
+        "388J+R22 Ghomrassen, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "33.067,10.33",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:505",
+      "mode": "plan",
+      "serial": "emulator-5554",
+      "avd": "Pixel_10_Pro_XL_THREE",
+      "query": "34.607,9.607",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-1-20260921\\delegation_505-2.json",
+        "sha256": "6daa3171cb28dc2970c094046a42664bf6433018fdfe1c6e650c6952fabb590a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-1-20260921\\delegation_505-2.png",
+        "sha256": "00bdba0951777768e419868f419355ac007273ef8cad836879c3bdc36f5c791e"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "34°36'25.2\"N 9°36'25.2\"E"
+      ],
+      "publicUiText": [
+        "34°36'25.2\"N 9°36'25.2\"E",
+        "34.607000, 9.607000",
+        "Directions to 34°36'25.2\"N 9°36'25.2\"E",
+        "Directions",
+        "Share 34°36'25.2\"N 9°36'25.2\"E",
+        "Share",
+        "Save 34°36'25.2\"N 9°36'25.2\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "34.6070000, 9.6070000",
+        "JJ44+QQX Meknassy, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "34.607,9.607",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:1025",
+      "mode": "plan",
+      "serial": "emulator-5556",
+      "avd": "Pixel_10_Pro_XL",
+      "query": "33.959,10.005",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-2-20260921\\delegation_1025-2.json",
+        "sha256": "ba407e66a059ac635cdf6ca32012d12e1c903b4f2e178b6a2969b314fb113dfa"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-2-20260921\\delegation_1025-2.png",
+        "sha256": "4d14cc3a9a02fee10243c96ba9264fcf3244edfef7464e56e81071479bbf144d"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "33°57'32.4\"N 10°00'18.0\"E"
+      ],
+      "publicUiText": [
+        "33°57'32.4\"N 10°00'18.0\"E",
+        "33.959000, 10.005000",
+        "Directions to 33°57'32.4\"N 10°00'18.0\"E",
+        "Directions",
+        "Share 33°57'32.4\"N 10°00'18.0\"E",
+        "Share",
+        "Save 33°57'32.4\"N 10°00'18.0\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "33.9590000, 10.0050000",
+        "X253+JX5 Métouia, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "33.959,10.005",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:584",
+      "mode": "plan",
+      "serial": "emulator-5556",
+      "avd": "Pixel_10_Pro_XL",
+      "query": "36.078,9.021",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-2-20260921\\delegation_584-2.json",
+        "sha256": "f72a1b0344a5a2df6b139bcc502c335f3671080b443c7aa71b0d9227db4d60fb"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-2-20260921\\delegation_584-2.png",
+        "sha256": "517952702d8120973a397327a47eb8659cbc1201c842407608ff3c3e1f2d66c0"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "36°04'40.8\"N 9°01'15.6\"E"
+      ],
+      "publicUiText": [
+        "36°04'40.8\"N 9°01'15.6\"E",
+        "36.078000, 9.021000",
+        "Directions to 36°04'40.8\"N 9°01'15.6\"E",
+        "Directions",
+        "Share 36°04'40.8\"N 9°01'15.6\"E",
+        "Share",
+        "Save 36°04'40.8\"N 9°01'15.6\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "36.0780000, 9.0210000",
+        "32HC+695 Sers, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "36.078,9.021",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:636",
+      "mode": "plan",
+      "serial": "emulator-5558",
+      "avd": "Pixel_10_Pro_XL_TWO",
+      "query": "36.184,8.715",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-3-20260921\\delegation_636-2.json",
+        "sha256": "9b69c726906806ff45f92360ebc1376ae10221b04a1d9ecffe625bf734676384"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-3-20260921\\delegation_636-2.png",
+        "sha256": "021b19b439a2cec115a38545ca874a51b9e434bf1ce9a560828bf1e439d12b7b"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "36°11'02.4\"N 8°42'54.0\"E"
+      ],
+      "publicUiText": [
+        "36°11'02.4\"N 8°42'54.0\"E",
+        "36.184000, 8.715000",
+        "Directions to 36°11'02.4\"N 8°42'54.0\"E",
+        "Directions",
+        "Share 36°11'02.4\"N 8°42'54.0\"E",
+        "Share",
+        "Save 36°11'02.4\"N 8°42'54.0\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "36.1840000, 8.7150000",
+        "5PM8+H2R El Kef, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Measure distance",
+        "Close",
+        "36.184,8.715",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:514",
+      "mode": "plan",
+      "serial": "emulator-5558",
+      "avd": "Pixel_10_Pro_XL_TWO",
+      "query": "36.976,9.081",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-3-20260921\\delegation_514-2.json",
+        "sha256": "cbfed581fda8e6434107d3461737c2242d1e4ea8ab27304d280203d4c3af6499"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-3-20260921\\delegation_514-2.png",
+        "sha256": "6fea1495ad7bd83914517d472414708a0f64d37b66e164265b9238bdc5e1a8d0"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "36°58'33.6\"N 9°04'51.6\"E"
+      ],
+      "publicUiText": [
+        "36°58'33.6\"N 9°04'51.6\"E",
+        "36.976000, 9.081000",
+        "Directions to 36°58'33.6\"N 9°04'51.6\"E",
+        "Directions",
+        "Share 36°58'33.6\"N 9°04'51.6\"E",
+        "Share",
+        "Save 36°58'33.6\"N 9°04'51.6\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "36.9760000, 9.0810000",
+        "X3GJ+99X Nefza, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Measure distance",
+        "Close",
+        "36.976,9.081",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:532",
+      "mode": "plan",
+      "serial": "emulator-5560",
+      "avd": "Pixel_10_Pro_XL_FOUR",
+      "query": "36.868,10.265",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-4-20260921\\delegation_532-2.json",
+        "sha256": "0519c58f0b8a2c46f8f483934970cce5fa8850795ca7517612aec51a09ff0848"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-4-20260921\\delegation_532-2.png",
+        "sha256": "4ba1560282915e131a173f18a6dab31799a34c40fcf1efd552327818ee5c4dd0"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "36°52'04.8\"N 10°15'54.0\"E"
+      ],
+      "publicUiText": [
+        "36°52'04.8\"N 10°15'54.0\"E",
+        "36.868000, 10.265000",
+        "Directions to 36°52'04.8\"N 10°15'54.0\"E",
+        "Directions",
+        "Share 36°52'04.8\"N 10°15'54.0\"E",
+        "Share",
+        "Save 36°52'04.8\"N 10°15'54.0\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "36.8680000, 10.2650000",
+        "V797+5XX Ariana, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "36.868,10.265",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:467",
+      "mode": "plan",
+      "serial": "emulator-5560",
+      "avd": "Pixel_10_Pro_XL_FOUR",
+      "query": "36.649,10.592",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-4-20260921\\delegation_467-2.json",
+        "sha256": "4a2aabc7672be16d1d2b1c750fb4e9b6f59b4144429de2a985ca5c69a21fd567"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-4-20260921\\delegation_467-2.png",
+        "sha256": "dadb11d9ab103a249dd2113f2e25626aa2cb2c07d9725e918f4abbfee33c43ac"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "36°38'56.4\"N 10°35'31.2\"E"
+      ],
+      "publicUiText": [
+        "View Street view imagery for 36°38'56.4\"N 10°35'31.2\"E",
+        "36°38'56.4\"N 10°35'31.2\"E",
+        "36.649000, 10.592000",
+        "Directions to 36°38'56.4\"N 10°35'31.2\"E",
+        "Directions",
+        "Share 36°38'56.4\"N 10°35'31.2\"E",
+        "Share",
+        "Save 36°38'56.4\"N 10°35'31.2\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "36.6490000, 10.5920000",
+        "JHXR+JQ5 Beni Khalled, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "36.649,10.592",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:555",
+      "mode": "plan",
+      "serial": "emulator-5562",
+      "avd": "Pixel_10_Pro_XL_FIVE",
+      "query": "36.761,10.016",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-5-20260921\\delegation_555-2.json",
+        "sha256": "5c1de37787c13d5757c83798675c0592d933e7d8f598bdf3eb2158c091c2b86b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-5-20260921\\delegation_555-2.png",
+        "sha256": "5b0757d8b68ffd2e27c8b35868b6e5ac6167f349e9f724e5a004c44b5cb56f36"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "36°45'39.6\"N 10°00'57.6\"E"
+      ],
+      "publicUiText": [
+        "View Street view imagery for 36°45'39.6\"N 10°00'57.6\"E",
+        "36°45'39.6\"N 10°00'57.6\"E",
+        "36.761000, 10.016000",
+        "Directions to 36°45'39.6\"N 10°00'57.6\"E",
+        "Directions",
+        "Share 36°45'39.6\"N 10°00'57.6\"E",
+        "Share",
+        "Save 36°45'39.6\"N 10°00'57.6\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "36.7610000, 10.0160000",
+        "Q268+99X Mornaguia, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "36.761,10.016",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    },
+    {
+      "id": "delegation:561",
+      "mode": "plan",
+      "serial": "emulator-5562",
+      "avd": "Pixel_10_Pro_XL_FIVE",
+      "query": "37.235,9.91",
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-5-20260921\\delegation_561-2.json",
+        "sha256": "2678d219bd04ca1c5ad237d11ee53bc96f6ccd182a8c3ccd697331991ef3bf05"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\captures\\eleven-reference-coordinates-5-20260921\\delegation_561-2.png",
+        "sha256": "f69a46c09fc5561ceac7c7aa18c1463ec920c5e825bb3cdaf584c0233773dd1e"
+      },
+      "observationStatus": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "37°14'06.0\"N 9°54'36.0\"E"
+      ],
+      "publicUiText": [
+        "37°14'06.0\"N 9°54'36.0\"E",
+        "37.235000, 9.910000",
+        "Directions to 37°14'06.0\"N 9°54'36.0\"E",
+        "Directions",
+        "Share 37°14'06.0\"N 9°54'36.0\"E",
+        "Share",
+        "Save 37°14'06.0\"N 9°54'36.0\"E to lists",
+        "Save",
+        "Add label",
+        "About",
+        "37.2350000, 9.9100000",
+        "6WM5+XXX Menzel Jemil, Tunisia",
+        "Plus Codes work like street addresses, search for it to find this location again.",
+        "Add a missing place",
+        "Measure distance",
+        "Close",
+        "37.235,9.91",
+        "Clear"
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "captureStable": true
+    }
+  ],
+  "reusedNamedCount": 11,
+  "reusedNamedRows": [
+    {
+      "id": "delegation:482",
+      "sourceId": 482,
+      "query": "قبلي Tunisia",
+      "titles": [
+        "Kebili"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_482-1.json",
+        "sha256": "9d5b8afc29465b644be3e476de29a04d99985dc381e93e9bbc135b148e9d2cdb"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_482-1.png",
+        "sha256": "87b13c8c7c4ee7227ebf42c65cac33b0add6986d726f1887a21fc3191abab3f4"
+      },
+      "publicCardTitles": [
+        "Kebili"
+      ],
+      "publicUiText": [
+        "Kebili",
+        "قبلي",
+        "Tunisia",
+        "Directions to Kebili",
+        "Directions",
+        "Share Kebili",
+        "Share",
+        "Save Kebili to lists",
+        "Save",
+        "Photo",
+        "Video",
+        "Close",
+        "قبلي Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:1025",
+      "sourceId": 1025,
+      "query": "المطوية قابس Tunisia",
+      "titles": [
+        "Métouia"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1025-1.json",
+        "sha256": "09ed2f21d814493ab7abb4d96e72deb670e124bc17121f794e732bbcfbdb04c1"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1025-1.png",
+        "sha256": "015048c8e0ca510cc6debb50b5e96c941bbb535620e097c4bc51db1a0359117b"
+      },
+      "publicCardTitles": [
+        "Métouia"
+      ],
+      "publicUiText": [
+        "Métouia",
+        "المطوية",
+        "Tunisia",
+        "Directions to Métouia",
+        "Directions",
+        "Share Métouia",
+        "Share",
+        "Save Métouia to lists",
+        "Save",
+        "Photo",
+        "Close",
+        "المطوية قابس Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:636",
+      "sourceId": 636,
+      "query": "الكاف Tunisia",
+      "titles": [
+        "El Kef"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_636-1.json",
+        "sha256": "34a869ca86d8cdf6494a98b3a8e6f2dc870031c91ddc3a7300e2d8ca40b0f8d4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_636-1.png",
+        "sha256": "46de4c03b7f5c49a33ba9f32b38fc9603a2a9d34466fbb3fc44559fb35780bc4"
+      },
+      "publicCardTitles": [
+        "El Kef"
+      ],
+      "publicUiText": [
+        "El Kef",
+        "الكاف",
+        "Tunisia",
+        "Directions to El Kef",
+        "Directions",
+        "Share El Kef",
+        "Share",
+        "Save El Kef to lists",
+        "Save",
+        "Photo",
+        "Close",
+        "الكاف Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:532",
+      "sourceId": 532,
+      "query": "سكرة اريانة Tunisia",
+      "titles": [
+        "La Soukra"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_532-1.json",
+        "sha256": "9ab5a8adcd55dc798720f78929cf506df10aa1fb6a831b2baabb64ac35951253"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_532-1.png",
+        "sha256": "76d4e0654396b5587d52e1165ba5fd09632782cf293c8f947a5b345d5def60c2"
+      },
+      "publicCardTitles": [
+        "La Soukra"
+      ],
+      "publicUiText": [
+        "View Street view imagery for La Soukra",
+        "La Soukra",
+        "سكرة",
+        "Tunisia",
+        "Directions to La Soukra",
+        "Directions",
+        "Share La Soukra",
+        "Share",
+        "Save La Soukra to lists",
+        "Save",
+        "Photo",
+        "Video",
+        "Close",
+        "سكرة اريانة Tunisia",
+        "Clear",
+        "Restaurants",
+        "Attractions",
+        "Hotels"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:555",
+      "sourceId": 555,
+      "query": "المرناقية منوبة Tunisia",
+      "titles": [
+        "Mornaguia"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_555-1.json",
+        "sha256": "3b0046a391eb1867bd40e7151d2e9d637fb25c0697e5b1d843ab245fffa01f71"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_555-1.png",
+        "sha256": "cf4dfc609de8a5eaeefcead4446b203bca2e22f480d846e38230a954143b45d0"
+      },
+      "publicCardTitles": [
+        "Mornaguia"
+      ],
+      "publicUiText": [
+        "Mornaguia",
+        "المرناقية",
+        "Tunisia",
+        "Directions to Mornaguia",
+        "Directions",
+        "Share Mornaguia",
+        "Share",
+        "Save Mornaguia to lists",
+        "Save",
+        "Photo",
+        "Video",
+        "Close",
+        "المرناقية منوبة Tunisia",
+        "Clear",
+        "Restaurants",
+        "Attractions",
+        "Hotels"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:473",
+      "sourceId": 473,
+      "query": "غمراسن تطاوين Tunisia",
+      "titles": [
+        "Ghomrassen"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_473-1.json",
+        "sha256": "15f317bca0a26a7cb92e2af43a18a049131de7f4f275e4f7ff4cb1522a6ff9d6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_473-1.png",
+        "sha256": "7187a2d7a584b5948700fbc1ef1a3c3fdd9d16ccab14ddd215faf2bab39b5f20"
+      },
+      "publicCardTitles": [
+        "Ghomrassen"
+      ],
+      "publicUiText": [
+        "View Street view imagery for Ghomrassen",
+        "Ghomrassen",
+        "غمراسن",
+        "Tunisia",
+        "Directions to Ghomrassen",
+        "Directions",
+        "Share Ghomrassen",
+        "Share",
+        "Save Ghomrassen to lists",
+        "Save",
+        "Photo",
+        "Video",
+        "Close",
+        "غمراسن تطاوين Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:584",
+      "sourceId": 584,
+      "query": "السرس الكاف Tunisia",
+      "titles": [
+        "Sers"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_584-1.json",
+        "sha256": "16809e4c608e16f696544a43401a7b9678c28f08f49d8efdcafd7f7a8136e4f6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_584-1.png",
+        "sha256": "012fdfbbf38b240a6d308db4c8ffc95215fb97c3172d8ea0d068ba1f6fcf3169"
+      },
+      "publicCardTitles": [
+        "Sers"
+      ],
+      "publicUiText": [
+        "Sers",
+        "السرس",
+        "Tunisia",
+        "Directions to Sers",
+        "Directions",
+        "Share Sers",
+        "Share",
+        "Save Sers to lists",
+        "Save",
+        "Video",
+        "Photo",
+        "Close",
+        "السرس الكاف Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:514",
+      "sourceId": 514,
+      "query": "نفزة باجة Tunisia",
+      "titles": [
+        "Nefza"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_514-1.json",
+        "sha256": "fb472ad1b9fe88e56bb99817c7eba22dd8e61c2c2ac6a36c285999a0208236dc"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_514-1.png",
+        "sha256": "da21321d04eba1e7e21ddf768aeb93c1163b9833c89b6b1060a56e88ade55cbe"
+      },
+      "publicCardTitles": [
+        "Nefza"
+      ],
+      "publicUiText": [
+        "Nefza",
+        "نفزة",
+        "Tunisia",
+        "Directions to Nefza",
+        "Directions",
+        "Share Nefza",
+        "Share",
+        "Save Nefza to lists",
+        "Save",
+        "Photo",
+        "Video",
+        "Close",
+        "نفزة باجة Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:467",
+      "sourceId": 467,
+      "query": "بني خلاد نابل Tunisia",
+      "titles": [
+        "Beni Khalled"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_467-1.json",
+        "sha256": "b62480a00d14826585fc93d682f0e071c68aba8d3cb0dd9b382fdd712e39bb55"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_467-1.png",
+        "sha256": "41f121c99842717c116b6ffc01b778f5eee83bbbc2b940343cfe6bf0bf3d7191"
+      },
+      "publicCardTitles": [
+        "Beni Khalled"
+      ],
+      "publicUiText": [
+        "Beni Khalled",
+        "بني خلاد",
+        "Tunisia",
+        "Directions to Beni Khalled",
+        "Directions",
+        "Share Beni Khalled",
+        "Share",
+        "Save Beni Khalled to lists",
+        "Save",
+        "Photo",
+        "Close",
+        "بني خلاد نابل Tunisia",
+        "Clear",
+        "Restaurants",
+        "Attractions",
+        "Hotels"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:561",
+      "sourceId": 561,
+      "query": "منزل جميل بنزرت Tunisia",
+      "titles": [
+        "Menzel Jemil"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_561-1.json",
+        "sha256": "8f81d01fb479ee8e3982ab361ee7e7c65c7a46bf0131bae4588079ed651d50de"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_561-1.png",
+        "sha256": "42d2f13f553dbe3693293118deefde6e8293d06ba345eeb9b117f02159e5e630"
+      },
+      "publicCardTitles": [
+        "Menzel Jemil"
+      ],
+      "publicUiText": [
+        "View Street view imagery for Menzel Jemil",
+        "Menzel Jemil",
+        "منزل جميل",
+        "Tunisia",
+        "Directions to Menzel Jemil",
+        "Directions",
+        "Share Menzel Jemil",
+        "Share",
+        "Save Menzel Jemil to lists",
+        "Save",
+        "Photo",
+        "Close",
+        "منزل جميل بنزرت Tunisia",
+        "Clear",
+        "Restaurants",
+        "Attractions",
+        "Hotels"
+      ],
+      "valid": true
+    },
+    {
+      "id": "delegation:505",
+      "sourceId": 505,
+      "query": "المكناسي سيدي بوزيد Tunisia",
+      "titles": [
+        "Meknassy"
+      ],
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_505-1.json",
+        "sha256": "1c6b8d91047cbc971e4c502c613882b7b8ea0ab90e81206af32f1449a9967e62"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_505-1.png",
+        "sha256": "b92aacc24e97c26a7c10b9bc7a64a1d4310550c054065f001f4ff4522d3d0218"
+      },
+      "publicCardTitles": [
+        "Meknassy"
+      ],
+      "publicUiText": [
+        "Meknassy",
+        "المكناسي",
+        "Tunisia",
+        "Directions to Meknassy",
+        "Directions",
+        "Share Meknassy",
+        "Share",
+        "Save Meknassy to lists",
+        "Save",
+        "Photo",
+        "Video",
+        "Close",
+        "المكناسي سيدي بوزيد Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "valid": true
+    }
+  ],
+  "planManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\plans.json",
+    "sha256": "9497ea4f3471c5acef3d524a0d61dc9faa937fa10c421a608297390ed41f0445"
+  },
+  "collector": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\collector.py",
+    "sha256": "4aff03df0ddb19d0faefa6a223e8c9e637db597389775982aaef734b0a5dc50b"
+  },
+  "errors": [],
+  "geographicApproval": false
+}

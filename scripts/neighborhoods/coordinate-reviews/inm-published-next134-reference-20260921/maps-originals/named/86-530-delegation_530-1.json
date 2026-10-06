@@ -1,0 +1,34 @@
+{
+  "observedAt": "2026-09-07T06:15:18.097701+00:00",
+  "query": "قلعة الأندلس اريانة Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Kalâat el-Andalous"
+  ],
+  "publicUiText": [
+    "Kalâat el-Andalous",
+    "قلعة الأندلس",
+    "Tunisia",
+    "Directions to Kalâat el-Andalous",
+    "Directions",
+    "Share Kalâat el-Andalous",
+    "Share",
+    "Save Kalâat el-Andalous to lists",
+    "Save",
+    "Photo",
+    "Close",
+    "قلعة الأندلس اريانة Tunisia",
+    "Clear",
+    "Restaurants",
+    "Attractions",
+    "Hotels"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "قلعة الأندلس",
+    "Kalaat El Andalous  ",
+    "Kalaat El Andalous  "
+  ],
+  "screenshot": "delegation_530-1.png",
+  "boundaryVerified": false
+}

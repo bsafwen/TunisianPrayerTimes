@@ -1,0 +1,123 @@
+{
+  "status": "ORIGINAL_TWO_RECEIVING_OWN_MAP_RETRIEVAL_ONLY",
+  "scope": "Exactly Arima156053 and Menzel Bouzelfa Joufia156253; no further edge closure or change to the frozen thirteen package.",
+  "baselineMetadata": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+    "sha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+    "bytes": 1842364
+  },
+  "registry": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "officialIndex": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/current-official-catalog/isie-local-boundary-index-links.json",
+    "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+    "bytes": 818063
+  },
+  "primaryPointIdentityReport": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/baddar-aitha-kharmia-essabala-name-source-review.json",
+    "sha256": "b3c47138b89438ffb4e1b435e623fefe21b9590e61c9202f5bd2c280258466b0",
+    "bytes": 11608
+  },
+  "records": [
+    {
+      "key": "arima",
+      "currentRawId": "osm:relation:7100361",
+      "currentCode": "156053",
+      "officialName": "العريمة",
+      "officialRegistryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1560",
+        "delegationFr": "Takelsa",
+        "delegationAr": "تاكلسة",
+        "sectorCode": "156053",
+        "sectorFr": "El arima",
+        "sectorAr": "العريمة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13295,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 532,
+          "Nombre_de_menages_par_Secteurs.xlsx": 531
+        }
+      },
+      "officialIndexEntry": {
+        "text": "العريمة.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/تاكلسة/العريمة.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/تاكلسة/العريمة.pdf"
+      },
+      "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9.pdf",
+      "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9.pdf",
+      "retrievedAt": "2026-09-12T17:21:31.264945+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "response": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.pdf",
+        "sha256": "6411d48b0acb4b3cffde4c17d52004deb54fbb93d5fd0a6922aec2842dd55a6b",
+        "bytes": 1404326
+      },
+      "headers": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.headers",
+        "sha256": "036555b1be91dce05e55490b965f9d6e04d287b998fccf8b4ef8453947c0679e",
+        "bytes": 560
+      },
+      "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.33M 100  1.33M   0      0  4.71M      0                              0\n100  1.33M 100  1.33M   0      0  4.71M      0                              0\n100  1.33M 100  1.33M   0      0  4.71M      0                              0\n",
+      "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+      "success": true
+    },
+    {
+      "key": "menzel-bouzelfa-joufia",
+      "currentRawId": "osm:relation:7101605",
+      "currentCode": "156253",
+      "officialName": "منزل بوزلفة الجوفية",
+      "officialRegistryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1562",
+        "delegationFr": "Menzel bouzelfa",
+        "delegationAr": "منزل بوزلفة",
+        "sectorCode": "156253",
+        "sectorFr": "Menzel bou zelfa nord",
+        "sectorAr": "منزل بوزلفة الجوفية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13635,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 552,
+          "Nombre_de_menages_par_Secteurs.xlsx": 551
+        }
+      },
+      "officialIndexEntry": {
+        "text": "منزل بوزلفة الجوفية.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/منزل بوزلفة/منزل بوزلفة الجوفية.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/منزل بوزلفة/منزل بوزلفة الجوفية.pdf"
+      },
+      "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "retrievedAt": "2026-09-12T17:21:31.265946+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "response": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.pdf",
+        "sha256": "b828a2a54b8cde4e2dbdb0894319a3ca051c08066fa89fc07d76c18928a15b58",
+        "bytes": 1633073
+      },
+      "headers": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.headers",
+        "sha256": "128e4b17df18261ac8bca7c7e0317b62da67b6551533ef339c4e3e0ea9496392",
+        "bytes": 322
+      },
+      "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.55M 100  1.55M   0      0  5.30M      0                              0\n100  1.55M 100  1.55M   0      0  5.30M      0                              0\n100  1.55M 100  1.55M   0      0  5.29M      0                              0\n",
+      "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+      "success": true
+    }
+  ],
+  "cacheReuseCheck": "Targeted filenames in task work and repository source trees found the Baddar primary HTML but no matching own-map original PDF; no broad content scan.",
+  "retrievalConcurrency": 2,
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/retrieve_two_originals.py",
+    "sha256": "209c2042c7768417bf35bf3f50994cfc43d33a299a664114a78e131b9a7846d3",
+    "bytes": 4102
+  }
+}

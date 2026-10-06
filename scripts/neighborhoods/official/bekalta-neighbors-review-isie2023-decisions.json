@@ -1,0 +1,499 @@
+{
+  "status": "REVIEWED_SOURCE_GEOMETRIES_PENDING_CLUSTER_ACCEPTANCE",
+  "exportPath": "outputs/bekalta-neighbors-review-isie2023-sectors.geojson",
+  "exportSha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+  "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+  "featureCount": 2,
+  "decisions": [
+    {
+      "id": "osm:relation:7111785",
+      "officialCode": "326052",
+      "nameAr": "الفضلين",
+      "nameFr": "El fadhline",
+      "governorateCode": "32",
+      "governorateAr": "المنستير",
+      "governorateFr": "Monastir",
+      "delegationCode": "3260",
+      "parentAr": "طبلبة",
+      "parentFr": "Teboulba",
+      "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%B7%D8%A8%D9%84%D8%A8%D8%A9/%D8%A7%D9%84%D9%81%D8%B6%D9%84%D9%8A%D9%86.pdf",
+      "sourcePdfSha256": "1507a3879adc693e0ea3a84bb6ee53cd560533b369908899e46e4937c0b1a4e2",
+      "sourcePdfFile": "work/isie-sector-maps-fadhalin/fadhalin.pdf",
+      "sourcePdfCreated": "D:20231017051433+01",
+      "reviewedDate": "2026-09-07",
+      "sourceMapTitleAr": "الفضلين",
+      "targetIsPageTitle": true,
+      "sourceDrawingIndices": [
+        225
+      ],
+      "sourceVectorLayer": "circonscription_isie2023",
+      "sourceCrsEpsg": 32632,
+      "sourceControlPointMaxResidualMeters": 0.32292455722153535,
+      "sourceControlPointsLatLon": [
+        [
+          35.6257,
+          10.96502
+        ],
+        [
+          35.64881,
+          10.96558
+        ],
+        [
+          35.64814,
+          11.0061
+        ],
+        [
+          35.62504,
+          11.00552
+        ]
+      ],
+      "sourceLocalControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "sourceViewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "sourcePageTransformationMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        595.5023803710938
+      ],
+      "sourceAffineMetersFromPagePoints": [
+        [
+          4.383677231212013,
+          0.00039726326344794485
+        ],
+        [
+          0.0002639459007696132,
+          -4.382469825361113
+        ],
+        [
+          677927.7093070076,
+          3946798.6580253826
+        ]
+      ],
+      "sourceGeometry": "One original complete valid explicitly closed red vector ring; no repair, joining, rounding, snapping, buffering, clipping or simplification applied to export.",
+      "geometryHash": "94a0d10eeda90f6b26e7004bf6e6f78630a2964531179f192b7f2593cfb17599",
+      "joiningReview": {
+        "joined": false
+      },
+      "repair": null,
+      "clipReview": {
+        "activeClipCount": 2,
+        "outsideActiveClipsAreaPoints2": [
+          0.0,
+          0.0
+        ],
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 26.643310546875004
+      },
+      "manualIdentityQualification": "The page title and interior Fadhalin label identify the complete coastal ring. Its west boundary follows the red Houmet Souk divider; east/south follow the blue Bekalta delegation boundary. The Houmet Souk neighboring label on this page is displaced east of its actual divider. Its own independent official map (ring222, sha1d2c8c9b2ba0154f6b582e9c86f3a9f5a940c08cbf1f6fad72e612a19936428d) confirms a distinct northwest polygon, preventing an accidental combined-sector interpretation.",
+      "labelCenterContainmentPassed": true,
+      "visualReview": {
+        "file": "work/isie-sector-maps-fadhalin/fadhalin.png",
+        "completeTargetReviewed": true
+      },
+      "sourceAssertion": {
+        "id": "osm:relation:7111785",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الفضلين",
+          "name:ar": "الفضلين",
+          "name:fr": "El Fadhline",
+          "ref:tn:codegeo": "326052"
+        }
+      },
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326052",
+        "sectorFr": "El fadhline",
+        "sectorAr": "الفضلين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38079,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1809,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1806
+        }
+      },
+      "officialRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "scopeReview": {
+        "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+        "wholeCircleEqualsWholeImada": true,
+        "decreeAnnex": 1,
+        "decreeTable": "A",
+        "decreePDFPage": 18,
+        "decreeJORTPage": 5115,
+        "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "imadaNameAr": "الفضلين",
+        "circleNameAr": "الفضلين"
+      },
+      "validation": {
+        "valid": true,
+        "countryFullyContains": true,
+        "countryOutsideAreaMeters2": 0.0,
+        "sourceUnchanged": true,
+        "quantizedValid": true,
+        "quantizedCountryFullyContains": true,
+        "quantizedSymmetricDifferenceMeters2": 185.85341160238562,
+        "quantizedHausdorffMeters": 0.06529689236307715,
+        "quantizationGridDegrees": 1e-06
+      },
+      "osmComparison": {
+        "oldAreaMeters2": 5546419.693036206,
+        "officialAreaMeters2": 2517923.299388902,
+        "iou": 0.4519083534879137,
+        "officialCoveredByOsm": 0.9968680104630044,
+        "osmCoveredByOfficial": 0.45255089388776865,
+        "hausdorffMeters": 1353.5278427450064
+      }
+    },
+    {
+      "id": "osm:relation:7111784",
+      "officialCode": "326053",
+      "nameAr": "العيايشة",
+      "nameFr": "El aiaicha",
+      "governorateCode": "32",
+      "governorateAr": "المنستير",
+      "governorateFr": "Monastir",
+      "delegationCode": "3260",
+      "parentAr": "طبلبة",
+      "parentFr": "Teboulba",
+      "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%B7%D8%A8%D9%84%D8%A8%D8%A9/%D8%A7%D9%84%D8%B9%D9%8A%D8%A7%D9%8A%D8%B4%D8%A9.pdf",
+      "sourcePdfSha256": "d4ec8820cb98123a8af0b6505972e708eb049b894766ac37d12e9a0248ab3a64",
+      "sourcePdfFile": "work/isie-sector-maps-ayaicha/ayaicha.pdf",
+      "sourcePdfCreated": "D:20231017051427+01",
+      "reviewedDate": "2026-09-07",
+      "sourceMapTitleAr": "العيايشة - (طبلبة)",
+      "targetIsPageTitle": true,
+      "sourceDrawingIndices": [
+        247
+      ],
+      "sourceVectorLayer": "circonscription_isie2023",
+      "sourceCrsEpsg": 32632,
+      "sourceControlPointMaxResidualMeters": 0.36929432340403623,
+      "sourceControlPointsLatLon": [
+        [
+          35.61484,
+          10.93111
+        ],
+        [
+          35.64368,
+          10.9318
+        ],
+        [
+          35.64285,
+          10.98237
+        ],
+        [
+          35.61402,
+          10.98165
+        ]
+      ],
+      "sourceLocalControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "sourceViewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "sourcePageTransformationMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        595.5023803710938
+      ],
+      "sourceAffineMetersFromPagePoints": [
+        [
+          5.471143510773823,
+          -0.0004705467879232736
+        ],
+        [
+          -0.00032319125693902606,
+          -5.469225790588098
+        ],
+        [
+          674875.7563726441,
+          3946174.4364566123
+        ]
+      ],
+      "sourceGeometry": "One original complete valid explicitly closed red vector ring; no repair, joining, rounding, snapping, buffering, clipping or simplification applied to export.",
+      "geometryHash": "45fb1abc8304dbbe6ad33ad88907da12e55b05314ff784362ab3095044fa3d2a",
+      "joiningReview": {
+        "joined": false
+      },
+      "repair": null,
+      "clipReview": {
+        "activeClipCount": 2,
+        "outsideActiveClipsAreaPoints2": [
+          0.0,
+          0.0
+        ],
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 26.643310546875004
+      },
+      "manualIdentityQualification": "The page title explicitly qualifies Ayaicha by Teboulba, and the same parent-qualified interior label lies in the complete target ring. North borders Boudriss/Sokrine, east borders Fadhalin and Bekalta North2, west borders Moknine, and south follows the lagoon. A neighboring Moknine label displaced into the target is not used to identify it.",
+      "labelCenterContainmentPassed": true,
+      "visualReview": {
+        "file": "work/isie-sector-maps-ayaicha/ayaicha.png",
+        "completeTargetReviewed": true
+      },
+      "sourceAssertion": {
+        "id": "osm:relation:7111784",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "العيايشة",
+          "name:ar": "العيايشة",
+          "name:fr": "El Aïaïcha",
+          "ref:tn:codegeo": "326053"
+        }
+      },
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326053",
+        "sectorFr": "El aiaicha",
+        "sectorAr": "العيايشة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38113,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1811,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1808
+        }
+      },
+      "officialRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "scopeReview": {
+        "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+        "wholeCircleEqualsWholeImada": true,
+        "decreeAnnex": 1,
+        "decreeTable": "A",
+        "decreePDFPage": 18,
+        "decreeJORTPage": 5115,
+        "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "imadaNameAr": "العيايشة",
+        "circleNameAr": "العيايشة"
+      },
+      "validation": {
+        "valid": true,
+        "countryFullyContains": true,
+        "countryOutsideAreaMeters2": 0.0,
+        "sourceUnchanged": true,
+        "quantizedValid": true,
+        "quantizedCountryFullyContains": true,
+        "quantizedSymmetricDifferenceMeters2": 245.80541507269223,
+        "quantizedHausdorffMeters": 0.05967280812516145,
+        "quantizationGridDegrees": 1e-06
+      },
+      "osmComparison": {
+        "oldAreaMeters2": 7014818.800798894,
+        "officialAreaMeters2": 6873756.3267296925,
+        "iou": 0.9527643998673794,
+        "officialCoveredByOsm": 0.9858236490125872,
+        "osmCoveredByOfficial": 0.9659995128695688,
+        "hausdorffMeters": 269.0231338676613
+      }
+    }
+  ],
+  "houmetSoukIdentityCrosscheck": {
+    "role": "Identity corroboration only; not an approved or exported replacement",
+    "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%B7%D8%A8%D9%84%D8%A8%D8%A9/%D8%AD%D9%88%D9%85%D8%A9%20%D8%A7%D9%84%D8%B3%D9%88%D9%82.pdf",
+    "sourcePdfSha256": "1d2c8c9b2ba0154f6b582e9c86f3a9f5a940c08cbf1f6fad72e612a19936428d",
+    "sourceDrawingIndex": 222,
+    "target": "حومة السوق",
+    "officialCode": "326051",
+    "rawId": "osm:relation:7111787",
+    "fadhalinIntersectionMeters2": 369.7026452222969,
+    "conclusion": "The independently mapped Houmet Souk lies northwest of Fadhalin across the same divider, with only a small georeferencing strip overlap. The displaced Houmet Souk label inside Fadhalin on its page does not make ring225 a combined-sector shape."
+  },
+  "prospectiveCombinedCluster": [
+    {
+      "id": "osm:relation:7111933",
+      "nameAr": "البقالطة الشمالية",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111931",
+          "name": "البقالطة الجنوبية",
+          "officialPeer": false,
+          "newOverlapMeters2": 49430.37309017528,
+          "quantizedBothOverlapMeters2": 49451.551737079564,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111932",
+          "name": "البقالطة الشرقية",
+          "officialPeer": false,
+          "newOverlapMeters2": 14333.451782129516,
+          "quantizedBothOverlapMeters2": 14335.599159741576,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111785",
+          "name": "الفضلين",
+          "officialPeer": true,
+          "newOverlapMeters2": 1333.7517979558127,
+          "quantizedBothOverlapMeters2": 1353.8147832595089,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 2510037.189960257
+        },
+        {
+          "id": "osm:relation:7111784",
+          "name": "العيايشة",
+          "officialPeer": true,
+          "newOverlapMeters2": 341.0111278003325,
+          "quantizedBothOverlapMeters2": 337.31701027869656,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 4132.437225337762
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7111785",
+      "nameAr": "الفضلين",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111933",
+          "name": "البقالطة الشمالية",
+          "officialPeer": true,
+          "newOverlapMeters2": 1333.7517979558188,
+          "quantizedBothOverlapMeters2": 1353.814783259508,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 2815569.91386182
+        },
+        {
+          "id": "osm:relation:7111787",
+          "name": "حومة السوق",
+          "officialPeer": false,
+          "newOverlapMeters2": 862.0137625423115,
+          "quantizedBothOverlapMeters2": 866.8773195218043,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111784",
+          "name": "العيايشة",
+          "officialPeer": true,
+          "newOverlapMeters2": 162.03798131758026,
+          "quantizedBothOverlapMeters2": 174.26993550848087,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 4132.437225337762
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7111784",
+      "nameAr": "العيايشة",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111393",
+          "name": "المكنين الشرقية",
+          "officialPeer": false,
+          "newOverlapMeters2": 2212.819738618463,
+          "quantizedBothOverlapMeters2": 2214.4131888010033,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111786",
+          "name": "بودريس",
+          "officialPeer": false,
+          "newOverlapMeters2": 1009.4468692089373,
+          "quantizedBothOverlapMeters2": 1010.9666090614845,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111933",
+          "name": "البقالطة الشمالية",
+          "officialPeer": true,
+          "newOverlapMeters2": 341.0111278003326,
+          "quantizedBothOverlapMeters2": 337.3170102786968,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 57096.42308665173
+        },
+        {
+          "id": "osm:relation:7111785",
+          "name": "الفضلين",
+          "officialPeer": true,
+          "newOverlapMeters2": 162.0379813175806,
+          "quantizedBothOverlapMeters2": 174.26993550848087,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 7024.095666101623
+        }
+      ]
+    }
+  ],
+  "inventory": {
+    "rawSectorCount": 2084,
+    "acceptedBaselineCount": 25,
+    "acceptedBaselineFiles": [
+      {
+        "file": "megrine-isie2023-sectors.geojson",
+        "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51"
+      },
+      {
+        "file": "identity-review-isie2023-sectors.geojson",
+        "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+      },
+      {
+        "file": "neighbor-review-isie2023-sectors.geojson",
+        "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce"
+      },
+      {
+        "file": "next-identity-review-isie2023-sectors.geojson",
+        "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02"
+      }
+    ],
+    "pendingBekaltaAggregateSha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+    "method": "All2084 raw sector identities checked, with25 accepted substitutes plus the pending Bekalta aggregate and both new reviewed neighbors. Every positive raw or rounded intersection retained without threshold."
+  },
+  "limits": [
+    "Exports preserve the original complete rings at source precision. App coordinate quantization is evaluated separately and remains an ordinary precision limit.",
+    "No claim of survey accuracy or exact abutting boundaries between independently georeferenced maps.",
+    "Remaining unreviewed-neighbor overlaps stay explicit; source geometry acceptance does not certify the entire cluster."
+  ]
+}

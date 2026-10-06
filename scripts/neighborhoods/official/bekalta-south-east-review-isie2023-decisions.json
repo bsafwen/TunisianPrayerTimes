@@ -1,0 +1,549 @@
+{
+  "status": "REVIEWED_SOURCE_GEOMETRIES_PENDING_CLUSTER_ACCEPTANCE",
+  "exportPath": "outputs/bekalta-south-east-review-isie2023-sectors.geojson",
+  "exportSha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+  "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+  "featureCount": 2,
+  "decisions": [
+    {
+      "id": "osm:relation:7111931",
+      "officialCode": "325952",
+      "nameAr": "البقالطة الجنوبية",
+      "nameFr": "Bekalta Sud",
+      "governorateCode": "32",
+      "governorateAr": "المنستير",
+      "governorateFr": "Monastir",
+      "delegationCode": "3259",
+      "parentAr": "البقالطة",
+      "parentFr": "Bekalta",
+      "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+      "sourcePdfSha256": "3fdddc32c5c2ad1de5b626dd9a5d0d0f1669c5b51ccab941071162a275b5667a",
+      "sourcePdfFile": "work/isie-sector-maps-bekalta-south/bekalta-south.pdf",
+      "sourcePdfCreated": "D:20231017051329+01",
+      "reviewedDate": "2026-09-07",
+      "sourceMapTitleAr": "البقالطة الجنوبية",
+      "targetIsPageTitle": true,
+      "sourceDrawingIndices": [
+        248
+      ],
+      "sourceVectorLayer": "circonscription_isie2023",
+      "sourceCrsEpsg": 32632,
+      "sourceControlPointMaxResidualMeters": 0.21987705408440317,
+      "sourceControlPointsLatLon": [
+        [
+          35.57215,
+          10.95459
+        ],
+        [
+          35.62175,
+          10.9558
+        ],
+        [
+          35.6203,
+          11.04274
+        ],
+        [
+          35.57071,
+          11.04148
+        ]
+      ],
+      "sourceLocalControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "sourceViewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "sourcePageTransformationMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        595.5023803710938
+      ],
+      "sourceAffineMetersFromPagePoints": [
+        [
+          9.410130473078414,
+          -0.00040079479813393416
+        ],
+        [
+          -0.0002458157559885876,
+          -9.40702330644126
+        ],
+        [
+          677079.9459657274,
+          3943804.639038309
+        ]
+      ],
+      "sourceGeometry": "One original complete valid explicitly closed red vector ring; no repair, joining, rounding, snapping, buffering, clipping or simplification applied to export.",
+      "geometryHash": "6a739bf408f25fad5d65e42ec36ce92b4f4f751610f835d5753273ae986f2c43",
+      "joiningReview": {
+        "joined": false
+      },
+      "repair": null,
+      "clipReview": {
+        "activeClipCount": 2,
+        "outsideActiveClipsAreaPoints2": [
+          0.0,
+          0.0
+        ],
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 26.643310546875004
+      },
+      "manualIdentityQualification": "The page title and interior South label uniquely identify the complete target ring. Its northern urban boundary meets North1 and North2, its western side follows the blue Moknine lagoon boundary, its eastern red divider separates East, and its complete southern red boundary separates Baghdadi. No adjacent named target is included.",
+      "labelCenterContainmentPassed": true,
+      "visualReview": {
+        "file": "work/isie-sector-maps-bekalta-south/bekalta-south.png",
+        "completeTargetReviewed": true
+      },
+      "sourceAssertion": {
+        "id": "osm:relation:7111931",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البقالطة الجنوبية",
+          "name:ar": "البقالطة الجنوبية",
+          "name:fr": "Beklta Sud",
+          "ref:tn:codegeo": "325952"
+        }
+      },
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3259",
+        "delegationFr": "Bekalta",
+        "delegationAr": "البقالطة",
+        "sectorCode": "325952",
+        "sectorFr": "Bekalta Sud",
+        "sectorAr": "البقالطة الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37943,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1803,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1800
+        }
+      },
+      "officialRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "scopeReview": {
+        "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+        "wholeCircleEqualsWholeImada": true,
+        "decreeAnnex": 1,
+        "decreeTable": "A",
+        "decreePDFPage": 15,
+        "decreeJORTPage": 5112,
+        "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "imadaNameAr": "البقالطة الجنوبية",
+        "circleNameAr": "البقالطة الجنوبية"
+      },
+      "validation": {
+        "valid": true,
+        "countryFullyContains": true,
+        "countryOutsideAreaMeters2": 0.0,
+        "sourceUnchanged": true,
+        "quantizedValid": true,
+        "quantizedCountryFullyContains": true,
+        "quantizedSymmetricDifferenceMeters2": 348.00699722990487,
+        "quantizedHausdorffMeters": 0.06710565999163749,
+        "quantizationGridDegrees": 1e-06
+      },
+      "osmComparison": {
+        "oldAreaMeters2": 11959668.61083538,
+        "officialAreaMeters2": 11477959.583925148,
+        "iou": 0.8744279788635506,
+        "officialCoveredByOsm": 0.952586135663402,
+        "osmCoveredByOfficial": 0.9142180708457144,
+        "hausdorffMeters": 894.1802506428461
+      }
+    },
+    {
+      "id": "osm:relation:7111932",
+      "officialCode": "325954",
+      "nameAr": "البقالطة الشرقية",
+      "nameFr": "Bekalta est",
+      "governorateCode": "32",
+      "governorateAr": "المنستير",
+      "governorateFr": "Monastir",
+      "delegationCode": "3259",
+      "parentAr": "البقالطة",
+      "parentFr": "Bekalta",
+      "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "sourcePdfSha256": "602b348d8da271ae9d0467019775a0af72c3844f2e894e77124e601318101882",
+      "sourcePdfFile": "work/isie-sector-maps-bekalta-east/bekalta-east.pdf",
+      "sourcePdfCreated": "D:20231017051334+01",
+      "reviewedDate": "2026-09-07",
+      "sourceMapTitleAr": "البقالطة الشرقية",
+      "targetIsPageTitle": true,
+      "sourceDrawingIndices": [
+        278
+      ],
+      "sourceVectorLayer": "circonscription_isie2023",
+      "sourceCrsEpsg": 32632,
+      "sourceControlPointMaxResidualMeters": 0.19231643360012066,
+      "sourceControlPointsLatLon": [
+        [
+          35.5729,
+          10.97031
+        ],
+        [
+          35.63598,
+          10.97186
+        ],
+        [
+          35.63412,
+          11.08246
+        ],
+        [
+          35.57104,
+          11.08083
+        ]
+      ],
+      "sourceLocalControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "sourceViewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "sourcePageTransformationMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        595.5023803710938
+      ],
+      "sourceAffineMetersFromPagePoints": [
+        [
+          11.969240552656983,
+          -1.6597180726146122e-05
+        ],
+        [
+          0.0001521794001746457,
+          -11.96502658422287
+        ],
+        [
+          678491.7620228096,
+          3945425.4237938332
+        ]
+      ],
+      "sourceGeometry": "One original complete valid explicitly closed red vector ring; no repair, joining, rounding, snapping, buffering, clipping or simplification applied to export.",
+      "geometryHash": "ea11ae659d96bd68629131d6b5dd050531d152009dfd1a7e9098e251abe96e94",
+      "joiningReview": {
+        "joined": false
+      },
+      "repair": null,
+      "clipReview": {
+        "activeClipCount": 2,
+        "outsideActiveClipsAreaPoints2": [
+          0.0,
+          0.0
+        ],
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 26.643310546875004
+      },
+      "manualIdentityQualification": "The page title and interior East label uniquely identify the complete eastern coastal ring. North1 is separately labeled across its northern divider, South lies west of the red stepped divider, Baghdadi is south of the full southern boundary, and the eastern edge follows the black coast boundary. The separate South ring on this same page is not combined with the target.",
+      "labelCenterContainmentPassed": true,
+      "visualReview": {
+        "file": "work/isie-sector-maps-bekalta-east/bekalta-east.png",
+        "completeTargetReviewed": true
+      },
+      "sourceAssertion": {
+        "id": "osm:relation:7111932",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البقالطة الشرقية",
+          "name:ar": "البقالطة الشرقية",
+          "name:fr": "Bekalta Est",
+          "ref:tn:codegeo": "325954"
+        }
+      },
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3259",
+        "delegationFr": "Bekalta",
+        "delegationAr": "البقالطة",
+        "sectorCode": "325954",
+        "sectorFr": "Bekalta est",
+        "sectorAr": "البقالطة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38011,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1806,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1803
+        }
+      },
+      "officialRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "scopeReview": {
+        "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+        "wholeCircleEqualsWholeImada": true,
+        "decreeAnnex": 1,
+        "decreeTable": "A",
+        "decreePDFPage": 15,
+        "decreeJORTPage": 5112,
+        "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "imadaNameAr": "البقالطة الشرقية",
+        "circleNameAr": "البقالطة الشرقية"
+      },
+      "validation": {
+        "valid": true,
+        "countryFullyContains": true,
+        "countryOutsideAreaMeters2": 0.0,
+        "sourceUnchanged": true,
+        "quantizedValid": true,
+        "quantizedCountryFullyContains": true,
+        "quantizedSymmetricDifferenceMeters2": 343.95921668012863,
+        "quantizedHausdorffMeters": 0.06864002298230887,
+        "quantizationGridDegrees": 1e-06
+      },
+      "osmComparison": {
+        "oldAreaMeters2": 11355668.486141613,
+        "officialAreaMeters2": 13997096.316218775,
+        "iou": 0.7483565841252882,
+        "officialCoveredByOsm": 0.7752931503553621,
+        "osmCoveredByOfficial": 0.955633119447985,
+        "hausdorffMeters": 1861.1991901203626
+      }
+    }
+  ],
+  "prospectiveCombinedCluster": [
+    {
+      "id": "osm:relation:7111933",
+      "nameAr": "البقالطة الشمالية",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111932",
+          "name": "البقالطة الشرقية",
+          "officialPeer": true,
+          "newOverlapMeters2": 1945.2598333248409,
+          "quantizedBothOverlapMeters2": 1936.9846215754299,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 2870.058913038416
+        },
+        {
+          "id": "osm:relation:7111785",
+          "name": "الفضلين",
+          "officialPeer": true,
+          "newOverlapMeters2": 1333.7517979558127,
+          "quantizedBothOverlapMeters2": 1353.8147832595089,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 2510037.189960257
+        },
+        {
+          "id": "osm:relation:7111931",
+          "name": "البقالطة الجنوبية",
+          "officialPeer": true,
+          "newOverlapMeters2": 1076.446417021395,
+          "quantizedBothOverlapMeters2": 1093.990094745403,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 1426.8858588608152
+        },
+        {
+          "id": "osm:relation:7111784",
+          "name": "العيايشة",
+          "officialPeer": true,
+          "newOverlapMeters2": 341.0111278003325,
+          "quantizedBothOverlapMeters2": 337.31701027869656,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 4132.437225337762
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7111785",
+      "nameAr": "الفضلين",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111933",
+          "name": "البقالطة الشمالية",
+          "officialPeer": true,
+          "newOverlapMeters2": 1333.7517979558188,
+          "quantizedBothOverlapMeters2": 1353.814783259508,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 2815569.91386182
+        },
+        {
+          "id": "osm:relation:7111787",
+          "name": "حومة السوق",
+          "officialPeer": false,
+          "newOverlapMeters2": 862.0137625423115,
+          "quantizedBothOverlapMeters2": 866.8773195218043,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111784",
+          "name": "العيايشة",
+          "officialPeer": true,
+          "newOverlapMeters2": 162.03798131758026,
+          "quantizedBothOverlapMeters2": 174.26993550848087,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 4132.437225337762
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7111784",
+      "nameAr": "العيايشة",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111393",
+          "name": "المكنين الشرقية",
+          "officialPeer": false,
+          "newOverlapMeters2": 2212.819738618463,
+          "quantizedBothOverlapMeters2": 2214.4131888010033,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111786",
+          "name": "بودريس",
+          "officialPeer": false,
+          "newOverlapMeters2": 1009.4468692089373,
+          "quantizedBothOverlapMeters2": 1010.9666090614845,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111933",
+          "name": "البقالطة الشمالية",
+          "officialPeer": true,
+          "newOverlapMeters2": 341.0111278003326,
+          "quantizedBothOverlapMeters2": 337.3170102786968,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 57096.42308665173
+        },
+        {
+          "id": "osm:relation:7111785",
+          "name": "الفضلين",
+          "officialPeer": true,
+          "newOverlapMeters2": 162.0379813175806,
+          "quantizedBothOverlapMeters2": 174.26993550848087,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 7024.095666101623
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7111931",
+      "nameAr": "البقالطة الجنوبية",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111930",
+          "name": "البغدادي",
+          "officialPeer": false,
+          "newOverlapMeters2": 357946.908192849,
+          "quantizedBothOverlapMeters2": 357897.960108291,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111932",
+          "name": "البقالطة الشرقية",
+          "officialPeer": true,
+          "newOverlapMeters2": 4008.5473238665736,
+          "quantizedBothOverlapMeters2": 3995.191627976678,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 936804.3856684358
+        },
+        {
+          "id": "osm:relation:7111933",
+          "name": "البقالطة الشمالية",
+          "officialPeer": true,
+          "newOverlapMeters2": 1076.4464170213962,
+          "quantizedBothOverlapMeters2": 1093.9900947454037,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 49430.37309017532
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7111932",
+      "nameAr": "البقالطة الشرقية",
+      "prospectivePeerOverlaps": [
+        {
+          "id": "osm:relation:7111930",
+          "name": "البغدادي",
+          "officialPeer": false,
+          "newOverlapMeters2": 2169507.8927269117,
+          "quantizedBothOverlapMeters2": 2169474.600165868,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 0.0
+        },
+        {
+          "id": "osm:relation:7111931",
+          "name": "البقالطة الجنوبية",
+          "officialPeer": true,
+          "newOverlapMeters2": 4008.5473238665745,
+          "quantizedBothOverlapMeters2": 3995.191627976672,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 77587.14184676933
+        },
+        {
+          "id": "osm:relation:7111933",
+          "name": "البقالطة الشمالية",
+          "officialPeer": true,
+          "newOverlapMeters2": 1945.2598333248388,
+          "quantizedBothOverlapMeters2": 1936.984621575439,
+          "oldSourceAgainstSameProspectivePeerOverlapMeters2": 14333.451782129512
+        }
+      ]
+    }
+  ],
+  "inventory": {
+    "rawSectorCount": 2084,
+    "acceptedBaselineCount": 25,
+    "acceptedBaselineFiles": [
+      {
+        "file": "megrine-isie2023-sectors.geojson",
+        "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51"
+      },
+      {
+        "file": "identity-review-isie2023-sectors.geojson",
+        "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+      },
+      {
+        "file": "neighbor-review-isie2023-sectors.geojson",
+        "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce"
+      },
+      {
+        "file": "next-identity-review-isie2023-sectors.geojson",
+        "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02"
+      }
+    ],
+    "pendingBekaltaAggregateSha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+    "pendingFadhalinAyaichaSha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+    "method": "All 2084 raw sector identities checked, with 25 accepted substitutes plus the pending Bekalta aggregate, Fadhalin, Ayaicha and both new reviewed South/East neighbors. Every positive raw or rounded intersection retained without threshold."
+  },
+  "limits": [
+    "Exports preserve the original complete rings at source precision. App coordinate quantization is evaluated separately and remains an ordinary precision limit.",
+    "No claim of survey accuracy or exact abutting boundaries between independently georeferenced maps.",
+    "Remaining unreviewed-neighbor overlaps stay explicit; source geometry acceptance does not certify the entire cluster."
+  ]
+}

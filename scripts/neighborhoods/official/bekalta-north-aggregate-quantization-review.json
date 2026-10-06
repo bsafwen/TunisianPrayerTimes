@@ -1,0 +1,57 @@
+{
+  "candidatePath": "outputs/bekalta-north-aggregate-review-isie2023-sector.geojson",
+  "candidateSha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+  "status": "QUANTIZATION_CAVEAT_REQUIRES_EXPLICIT_REVIEW",
+  "gridDegrees": 1e-06,
+  "sourceGeometryUnchanged": true,
+  "sourceAndQuantizedValid": true,
+  "exteriorHausdorffMeters": 0.06164800090210324,
+  "allRingBoundaryHausdorffMeters": 87.13743027602197,
+  "maxOriginalBoundaryVertexDistanceOutsideQuantizedAreaMeters": 0.060661873145562116,
+  "internalGapComponentCountPreserved": true,
+  "internalGapShapesFullyPreserved": false,
+  "holes": [
+    {
+      "sourceHoleNumber": 1,
+      "originalAreaMeters2": 23.233201590541682,
+      "roundedAreaMeters2": 22.0678832307392,
+      "originalGapFilledByRoundingMeters2": 1.6669155421786463,
+      "newlyExcludedTerritoryMeters2": 0.5015971834114054,
+      "boundaryHausdorffMeters": 0.03908084681769629,
+      "originalVertexCount": 5,
+      "roundedVertexCount": 5
+    },
+    {
+      "sourceHoleNumber": 2,
+      "originalAreaMeters2": 77.23789121160836,
+      "roundedAreaMeters2": 80.73034080208845,
+      "originalGapFilledByRoundingMeters2": 1.1123102447756783,
+      "newlyExcludedTerritoryMeters2": 4.6047598289169,
+      "boundaryHausdorffMeters": 0.05356680784602147,
+      "originalVertexCount": 5,
+      "roundedVertexCount": 5
+    },
+    {
+      "sourceHoleNumber": 3,
+      "originalAreaMeters2": 4.589248110349907,
+      "roundedAreaMeters2": 4.789246278222436,
+      "originalGapFilledByRoundingMeters2": 0.9079542618064327,
+      "newlyExcludedTerritoryMeters2": 1.1079524318699727,
+      "boundaryHausdorffMeters": 0.05832735821409683,
+      "originalVertexCount": 5,
+      "roundedVertexCount": 5
+    },
+    {
+      "sourceHoleNumber": 4,
+      "originalAreaMeters2": 139.03635904411195,
+      "roundedAreaMeters2": 129.4664125237831,
+      "originalGapFilledByRoundingMeters2": 11.54940373351376,
+      "newlyExcludedTerritoryMeters2": 1.979457217493068,
+      "boundaryHausdorffMeters": 87.13743027602197,
+      "originalVertexCount": 11,
+      "roundedVertexCount": 7
+    }
+  ],
+  "conclusion": "The87.137m boundary Hausdorff is a collapsed thin branch of source interior hole4, not an87m movement of the exterior or polygon coverage edge. The outer boundary changes at most0.06165m at the discrete Hausdorff samples. Four gap components survive, but the original uncovered areas are not all retained after1e-6-degree quantization. Do not describe the shipped quantized shape as preserving every source gap exactly.",
+  "integrationRecommendation": "Keep candidate pending alongside four unresolved peer overlaps. Any later import must explicitly accept and report normal coordinate quantization, or preserve source precision for this shape; no manual filling or smoothing was performed."
+}

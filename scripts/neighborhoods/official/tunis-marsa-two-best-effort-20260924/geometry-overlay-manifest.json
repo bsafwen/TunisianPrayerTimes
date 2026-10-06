@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/tunis-souk-jedid-five-boundaries-20260924/build_best_effort_overlay.py",
+  "evidencePins": {
+    "tunisMarsaBorderReview": {
+      "file": "work/interior-imada-triage-20260924/tunis-marsa-border-review.json",
+      "sha256": "6c75f03e514454e4cbdc1b295984efe3dfdec7e7759bf94db65f69f533640639"
+    },
+    "qammartMarsaCombinedReview": {
+      "file": "work/interior-imada-triage-20260924/qammart-marsa-combined-review.json",
+      "sha256": "2f437feac9b053206b129aa30f998bd8a6df7986d695253254b28494f235e456"
+    }
+  },
+  "sources": [
+    {
+      "id": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/candidate-source.geojson",
+      "geojsonSha256": "e52492ec65b98af53affb7d29ae2487cc13cd0b730cf1aabf01b3a3e79be8622",
+      "reviewFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/source-review.json",
+      "reviewSha256": "0393bcc9cbeb0c84a746d6862dda40f8fa140736b415cb44d63059d9a73de41e"
+    },
+    {
+      "id": "isie-best-effort-imada-tunis-qammart-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/qammart-candidate-source.geojson",
+      "geojsonSha256": "461ee4a806347f01eedfe9de59deba6354fa9172ecd9f2a14c95aba5223330e3",
+      "reviewFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/qammart-source-review.json",
+      "reviewSha256": "1ec0bf3e9d2cbed17ce92a5aa76a9662981e3337b062c79297a52b382d75fe64"
+    },
+    {
+      "id": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/marsa-beach-candidate-source.geojson",
+      "geojsonSha256": "b8c3b9faa6d862cc24dcba12ceee5a80b26708b6b783fe1cdbb4a579a48d1a6e",
+      "reviewFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/marsa-beach-source-review.json",
+      "reviewSha256": "4c4fae3c51e173bb3dbf22d8bd6b691e00f8f49182804780abcd938dbfe99700"
+    }
+  ],
+  "records": [
+    {
+      "action": "replace",
+      "id": "osm:relation:7117932",
+      "sourceId": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "sourceFeatureId": "osm:relation:7117932",
+      "officialCode": "116954",
+      "ministryName": "الطيب المهيري",
+      "ministryParent": "حلق الوادي",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الطيب المهيري",
+        "aliases": [
+          "Taieb Mhiri",
+          "الطيب مهيري"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7117932"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7062758",
+      "sourceId": "isie-best-effort-imada-tunis-qammart-20260924",
+      "sourceFeatureId": "osm:relation:7062758",
+      "officialCode": "117157",
+      "ministryName": "قمرت",
+      "ministryParent": "المرسى",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "قمرت",
+        "aliases": [
+          "Gammarth"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7062758"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7062337",
+      "sourceId": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+      "sourceFeatureId": "osm:relation:7062337",
+      "officialCode": "117151",
+      "ministryName": "المرسى الشاطئ",
+      "ministryParent": "المرسى",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "المرسى الشاطئ",
+        "aliases": [
+          "La Marsa Plage"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7062337"
+      }
+    }
+  ]
+}

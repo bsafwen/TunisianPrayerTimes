@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "status": "SUPPORTED_COMPLETE_GROUP_EXISTING_VILLAGE_OWNER_PROPOSAL",
+  "baselineMetadataSha256": "94d9472c144b0df6ea2d473ad0018ef79dc18c1fedca5a64291849c117c14066",
+  "baselineInputs": {
+    "neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "94d9472c144b0df6ea2d473ad0018ef79dc18c1fedca5a64291849c117c14066",
+      "bytes": 1851300
+    },
+    "neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "5029c262f8f698c74cfa7acf0d302b9b65c034a4a9fb29edf0cc00fd84453053",
+      "bytes": 5536172
+    },
+    "gouvernorats.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "bytes": 54585
+    },
+    "retired-localities.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "a195ea449bd954b0268afaa84473ea0acf397bc759f2802d93a39741d06cdeeb",
+      "bytes": 12779
+    },
+    "catalog-curation.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "e358dc69c3760a35aa42f55ec01dc64c6d21e3e52d8bf72804ba70f06d37c2e0",
+      "bytes": 408753
+    },
+    "reviewed-picker-groups.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1816f6e4736b7fff8d5c7b9a5ab86b51c45cb3463b7ef1f0e8625ebb12620ed0",
+      "bytes": 585396
+    },
+    "coverage.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "1c6a85280fb4fc445fc91c2b6c5133badc905d87b199451ae74fe835a9456eca",
+      "bytes": 1099035
+    },
+    "current-official-sector-registry.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "generate_neighborhoods.py": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "7789b13a2128daa04822f04c7ba243f203096bf60841594abf04706324479e09",
+      "bytes": 621033
+    },
+    "LocalityRepository.kt": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\LocalityRepository.kt",
+      "sha256": "8f3b8d9c4ca2dd5edb8d0451d544704b89ba3c05d9cbb63db64493bb8f95554b",
+      "bytes": 18225
+    },
+    "packaged-hazoua-smar-v2-audit-20260919.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\packaged-hazoua-smar-v2-audit-20260919.json",
+      "sha256": "86d58f2712cb0728a946f7d1cc6792b3d774f3858957a0b40e1478b5aaf432aa",
+      "bytes": 24552
+    },
+    "soliman-current-original-source-inventory-20260912.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "five-locality-names-phone-review-20260919.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\five-locality-names-phone-review-20260919.json",
+      "sha256": "57e12e425dd25789510fdbdafd21a7d5dc2c516d05859bf05193e7c4af9fb282",
+      "bytes": 6192
+    }
+  },
+  "memberIds": [
+    "osm:relation:7095859",
+    "osm:way:456466522"
+  ],
+  "canonicalName": "القباعة",
+  "proposedOwnerId": "osm:way:456466522",
+  "sourceRecords": {
+    "osm:way:456466522": {
+      "id": "osm:way:456466522",
+      "kind": "village",
+      "tags": {
+        "landuse": "residential",
+        "name": "القباعة",
+        "name:ar": "القباعة",
+        "name:de": "Al-Qaba'a",
+        "name:en": "Gobaa",
+        "name:fr": "Gobaâ",
+        "place": "village"
+      },
+      "lat": null,
+      "lng": null,
+      "geometrySha256": "6556ad1a9c8fa6bd7327b31a5dafaebca1e688d799073cf82e248184f8afd237",
+      "expectedCuration": null,
+      "raw": {
+        "id": "osm:way:456466522",
+        "sourceId": "osm",
+        "name": "القباعة",
+        "aliases": [
+          "Gobaâ",
+          "Gobaa",
+          "Al-Qaba'a"
+        ],
+        "kind": "village",
+        "parentName": "ولاية منوبة",
+        "contextAliases": [],
+        "governorateId": 360,
+        "lat": 36.824277,
+        "lng": 10.060474,
+        "delegationId": 554,
+        "hasBoundary": true,
+        "bbox": [
+          10.053807,
+          36.82147,
+          10.067282,
+          36.827161
+        ],
+        "areaKm2": 0.47739231418602934,
+        "pickerGroupId": "osm:way:456466522",
+        "offset": 5448776,
+        "length": 164
+      },
+      "groupMembers": [
+        "osm:way:456466522"
+      ],
+      "packedGeometrySha256": "924cd4b669a22f0efdc958bd93b6ec7060c34ab4f37709788ae68e6016bdaa2c"
+    },
+    "osm:relation:7095859": {
+      "id": "osm:relation:7095859",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القبعة",
+        "name:ar": "القبعة",
+        "name:fr": "El Kobbâa",
+        "ref:tn:codegeo": "145357"
+      },
+      "lat": null,
+      "lng": null,
+      "geometrySha256": "be44bfe04652989e3627373fd70485258d7b6de19ff9f5d0acf607aaad7263f8",
+      "expectedCuration": null,
+      "raw": {
+        "id": "osm:relation:7095859",
+        "sourceId": "osm",
+        "name": "القبعة",
+        "aliases": [
+          "El Kobbâa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية وادي اللیل",
+        "contextAliases": [
+          "Délégation Oued Ellil",
+          "Oued Ellil",
+          "معتمدية وادي اللیل"
+        ],
+        "governorateId": 360,
+        "lat": 36.820863,
+        "lng": 10.060016,
+        "delegationId": 554,
+        "hasBoundary": true,
+        "bbox": [
+          10.049056,
+          36.814471,
+          10.075316,
+          36.827278
+        ],
+        "areaKm2": 1.5520591353122575,
+        "pickerGroupId": "osm:relation:7095859",
+        "offset": 126728,
+        "length": 1412
+      },
+      "groupMembers": [
+        "osm:relation:7095859"
+      ],
+      "packedGeometrySha256": "b3791b37cc3b6ab8a0a8633234ee956d1ad06885dc7549e57ddb22985b9978b0"
+    },
+    "osm:relation:7204582": {
+      "id": "osm:relation:7204582",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Oued Ellil",
+        "boundary": "administrative",
+        "name": "معتمدية وادي اللیل",
+        "name:ar": "معتمدية وادي اللیل‬",
+        "name:fr": "Délégation Oued Ellil",
+        "ref:tn:codegeo": "1453",
+        "ref:tn:hasc_2": "TN.MN.OE",
+        "wikidata": "Q3358013"
+      },
+      "lat": null,
+      "lng": null,
+      "geometrySha256": "fe97fa2e53f05980fdfe501d952fe9dc7bb21737cbf880b632430f7749ee148e",
+      "expectedCuration": null,
+      "raw": null,
+      "groupMembers": [],
+      "packedGeometrySha256": null
+    },
+    "osm:relation:1435828": {
+      "id": "osm:relation:1435828",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-14",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية منوبة",
+        "name:ar": "ولاية منوبة",
+        "name:arz": "ولاية منوبه",
+        "name:az": "Manuba (vilayət)",
+        "name:be": "Мануба (вілает)",
+        "name:be-tarask": "Мануба (вілает)",
+        "name:bg": "Мануба (област)",
+        "name:bjn": "Tunisia",
+        "name:ca": "Governació de Manouba",
+        "name:ceb": "Manouba (lalawigan)",
+        "name:cy": "Manouba (talaith)",
+        "name:de": "Gouvernement Manouba",
+        "name:el": "Λα Μανουμπά (Κυβερνείο)",
+        "name:en": "Manouba",
+        "name:es": "Gobernación de Manouba",
+        "name:fa": "منوبه",
+        "name:fr": "Gouvernorat La Manouba",
+        "name:frr": "Manouba (Guwernement)",
+        "name:id": "Kegubernuran Manouba",
+        "name:it": "Manouba",
+        "name:ja": "マヌーバ県",
+        "name:ko": "마누바주",
+        "name:ms": "Kawasan kegabenoran Manouba",
+        "name:nl": "Manouba (gouvernement)",
+        "name:no": "Manouba (guvernement)",
+        "name:pl": "Gubernatorstwo Manuba",
+        "name:pt": "Manouba (província)",
+        "name:ro": "Guvernoratul Manouba",
+        "name:ru": "Мануба (вилайет)",
+        "name:sco": "Manouba Govrenorate",
+        "name:sh": "Manouba (vilajet)",
+        "name:sv": "Manouba (guvernement)",
+        "name:tr": "Manuba ili",
+        "name:uk": "Мануба (вілаєт)",
+        "name:ur": "منوبہ",
+        "name:zh": "馬努巴省",
+        "name:zu": "Manouba Governorate",
+        "official_name": "ولاية منوبة",
+        "official_name:ar": "ولاية منوبة",
+        "official_name:en": "Manouba Governorate",
+        "official_name:fa": "استان منوبه",
+        "official_name:fr": "Gouvernorat de la Manouba",
+        "official_name:it": "Governatorato di Manouba",
+        "official_name:ur": "ولایت منوبہ",
+        "population": "335912",
+        "population:date": "2014",
+        "ref:tn:codegeo": "14",
+        "wikidata": "Q734328",
+        "wikipedia": "ar:ولاية منوبة"
+      },
+      "lat": null,
+      "lng": null,
+      "geometrySha256": "45240f4735b249f476a71af8d94d323efbbed6659fdf79ef387b32d052ba16a5",
+      "expectedCuration": null,
+      "raw": null,
+      "groupMembers": [],
+      "packedGeometrySha256": null
+    }
+  },
+  "officialSectorRecord": {
+    "governorateCode": "14",
+    "governorateFr": "Manouba",
+    "governorateAr": "منوبة",
+    "delegationCode": "1453",
+    "delegationFr": "Oued ellil",
+    "delegationAr": "وادي الليل",
+    "sectorCode": "145357",
+    "sectorFr": "El kobbaa",
+    "sectorAr": "القباعة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10337,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 364,
+      "Nombre_de_menages_par_Secteurs.xlsx": 363
+    }
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "priorQualifiedIdentityReview": {
+    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/prior-source-identity-and-owner-hold.json",
+    "sha256": "f6e6bdd617899c8389ddf5c75c3fcb9fe98d2a98c74cc9534894286814006e14"
+  },
+  "phoneEvidence": {
+    "frozen": {
+      "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/frozen-phone-name-context.json",
+      "sha256": "57e12e425dd25789510fdbdafd21a7d5dc2c516d05859bf05193e7c4af9fb282"
+    },
+    "publicCard": {
+      "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/gobaa-public-card.json",
+      "sha256": "34b1b95d0724166205ec5445b9fdec805bf0c8eb81b0df599375f52aae47de29"
+    },
+    "screenshot": {
+      "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/gobaa-public-card.png",
+      "sha256": "1dad34db041afdfcddeec01e22301c2cc79f66780bf85073094e96b029c4cd95"
+    },
+    "nearbyPoiContext": {
+      "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/gobaa-poi-context.json",
+      "sha256": "b90b82caafa3fe38678dbd7193ea275b5b9a61d35b4c6bc88c1b62d3f1fd91c7"
+    },
+    "qualification": "Saved root-reviewed and agent-viewed public name/card evidence only. No phone call, boundary certification or coordinate inference."
+  },
+  "finiteNameClosure": {
+    "originalSourceIds": [
+      "osm:relation:7095859",
+      "osm:way:456466522"
+    ],
+    "currentRawIds": [
+      "osm:relation:7095859",
+      "osm:way:456466522"
+    ],
+    "rawContextDependants": [],
+    "matchingSourcePoints": []
+  },
+  "proposedSectorNameTags": {
+    "name": "القباعة",
+    "name:ar": "القباعة",
+    "name:fr": "El Kobbâa",
+    "alt_name:ar": "القبعة"
+  },
+  "expectedEffectiveSectorTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "ref:tn:codegeo": "145357",
+    "name": "القباعة",
+    "name:ar": "القباعة",
+    "name:fr": "El Kobbâa",
+    "alt_name:ar": "القبعة"
+  },
+  "partialOverlap": {
+    "original": {
+      "sectorCoversVillage": false,
+      "villageCoversSector": false,
+      "villageFractionInsideSector": 0.991689598751558,
+      "sectorFractionInsideVillage": 0.3050503458823904
+    },
+    "packed": {
+      "sectorCoversVillage": false,
+      "villageCoversSector": false,
+      "villageFractionInsideSector": 0.9916669951249593,
+      "sectorFractionInsideVillage": 0.3050369096768278
+    }
+  },
+  "rawChanges": [
+    {
+      "id": "osm:relation:7095859",
+      "field": "name",
+      "before": "القبعة",
+      "after": "القباعة"
+    },
+    {
+      "id": "osm:relation:7095859",
+      "field": "aliases",
+      "before": [
+        "El Kobbâa"
+      ],
+      "after": [
+        "El Kobbâa",
+        "القبعة"
+      ]
+    },
+    {
+      "id": "osm:relation:7095859",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7095859",
+      "after": "osm:way:456466522"
+    }
+  ],
+  "automaticGroupBeforeOwnerReview": {
+    "id": "osm:relation:7095859",
+    "memberIds": [
+      "osm:relation:7095859",
+      "osm:way:456466522"
+    ]
+  },
+  "reviewedFinalGroup": {
+    "id": "osm:way:456466522",
+    "memberIds": [
+      "osm:relation:7095859",
+      "osm:way:456466522"
+    ]
+  },
+  "manualSelection": {
+    "representativeId": "osm:way:456466522",
+    "lat": 36.824277,
+    "lng": 10.060474,
+    "expectedNearestSourceId": 554
+  },
+  "prayerSourcesAtPreservedRawCoordinates": {
+    "osm:relation:7095859": 554,
+    "osm:way:456466522": 554
+  },
+  "savedManualSelectionBehavior": "The grouped picker uses canonical village456466522 at its unchanged coordinate. Saved raw village and sector IDs both remain present and retain their own coordinates. Neither member is merged with nearest prayer source delegation554.",
+  "gpsPreservation": "All raw IDs, kinds, coordinates, polygon bytes, indexes and conflict samples remain unchanged; only sector spelling/alias and display group owner change. Name correction also updates the explicit saved-name index for the same sector ID.",
+  "scopeQualification": "The village crosses source-sector borders; original and packed whole containment are false. Positive overlap supports the established display identity without equating polygons. The chosen existing village representative is inside both polygons; the old sector representative is outside the village. No new coordinate is introduced.",
+  "researchConclusion": "Official code145357, source village names, matching French/English names and preserved phone card support canonical القباعة. Complete-group ownership by the existing village resolves the previous outside-village manual-anchor concern without moving either raw record.",
+  "expectedMetadataSha256": "bcb426c2e7df22ca5302d13ae15483c50255347d895e7be39ccf6aa058226473",
+  "expectedRetiredSha256": "6358b93cbbc8c2a189f4ca16d89fb8ada8c5ce3b35db2fbd26ec5621ba29717d",
+  "expectedSavedNameInsertionIndex": 17,
+  "expectedSavedNameEntry": {
+    "id": "osm:relation:7095859",
+    "name": "القباعة",
+    "kind": "sector"
+  },
+  "projection": {
+    "rawFieldChanges": 3,
+    "rawRows": 3524,
+    "polygons": 2620,
+    "points": 904,
+    "curationRulesDelta": 1,
+    "curationReceiptsBefore": 406,
+    "curationReceiptsDelta": 1,
+    "rawPickerGroupsBefore": 3387,
+    "rawPickerGroupsDelta": -1,
+    "allPickerChoicesBefore": 3443,
+    "allPickerChoicesDelta": -1,
+    "duplicateGroupsBefore": 311,
+    "duplicateGroupsDelta": 1,
+    "reviewedLocalityGroupsBefore": 8,
+    "reviewedLocalityGroupsDelta": 1,
+    "localStagedGroupAssignmentCount": 2,
+    "finalBaselineChangedGroupIdCount": 1,
+    "savedNameCountBefore": 133,
+    "savedNameCountDelta": 1,
+    "geometryChanges": 0,
+    "rawCoordinateChanges": 0,
+    "nearestPrayerSourceChanges": 0,
+    "retiredIdChanges": 0
+  },
+  "sourceRowsUnchangedInNewInstalledBaseline": true,
+  "notRun": [
+    "compiler execution/import",
+    "generator",
+    "tests",
+    "build",
+    "APK generation",
+    "phone/ADB"
+  ],
+  "liveRepositoryChanges": []
+}

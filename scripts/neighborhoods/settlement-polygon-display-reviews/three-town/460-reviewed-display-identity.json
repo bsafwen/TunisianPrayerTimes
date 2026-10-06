@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_explicit_settlement_polygon_base_display_identity",
+    "id": "osm:way:97396877",
+    "targetDelegationId": 460
+  },
+  "conclusion": "same_named_settlement_display_only",
+  "sourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/beni-khiar-source-review.json",
+    "sha256": "f99e8ceb81f8127db54b253d1c5c3405a27772869c05b165ed520f36a031676c"
+  },
+  "sourceFacts": {
+    "file": "settlement-polygon-display-reviews/three-town/460-reviewed-source-facts.json",
+    "sha256": "4ef6f6030caff94bd50c8c5518aa4e7ee6ebe5698a93e1777226607df7d5e39b"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "independentSourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/independent-source-review.json",
+    "sha256": "88297770c4116ad4c7011ba9d745a5d184b9a274a298901751c6256afb261a70"
+  },
+  "primaryEvidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/beni-khiar-social-unit.html",
+      "sha256": "d455d1280b402e395b1bd302ebe322d6f890fae5e86fb4f5186573ff108c4682",
+      "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببني-خيار-نابل"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/nabeul-delegations.html",
+      "sha256": "8db10a1b820b26c7378f45d2b5c15b0fa2d8568afdd9579f23f8076795dbdf79",
+      "url": "https://www.nabeul.gov.tn/ar/بانوراما-المعتمديات-2/"
+    }
+  ],
+  "publicNode": {
+    "file": "settlement-polygon-display-reviews/three-town/beni-khiar-node-1128018620.json",
+    "sha256": "a34fc261be8423a9ee6a11f0c8b1b8c1765656900b4dbb37c7f4c25f51a84d91"
+  },
+  "expected": {
+    "baseCurrent": {
+      "id": 460,
+      "nomFr": "Beni Khiar",
+      "nomAr": "بني خيار ",
+      "nomEn": "Beni Khiar",
+      "lat": 36.46,
+      "lng": 10.78
+    },
+    "governorCurrent": {
+      "id": 350,
+      "nomFr": "Nabeul",
+      "nomAr": "نابل",
+      "nomEn": "Nabeul",
+      "lat": 36.4561,
+      "lng": 10.7376
+    },
+    "pointId": "osm:node:1128018620",
+    "sourcePointCoordinates": {
+      "lat": 36.4693627,
+      "lng": 10.7809776
+    },
+    "separateSectorId": "osm:relation:7103009",
+    "parentSourceId": "osm:relation:7145299",
+    "governorSourceId": "osm:relation:1435825",
+    "preservedImadas": [
+      {
+        "id": "osm:relation:7103009",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155351",
+          "sectorFr": "Beni khiar",
+          "sectorAr": "بني خيار",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11697,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 438,
+            "Nombre_de_menages_par_Secteurs.xlsx": 437
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7102855",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155352",
+          "sectorFr": "Diar ben salem",
+          "sectorAr": "ديار بنسالم",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11731,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 440,
+            "Nombre_de_menages_par_Secteurs.xlsx": 439
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7102854",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155353",
+          "sectorFr": "El maamoura",
+          "sectorAr": "المعمورة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11765,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 442,
+            "Nombre_de_menages_par_Secteurs.xlsx": 441
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7103011",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155354",
+          "sectorFr": "Somaa",
+          "sectorAr": "الصمعة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11799,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 444,
+            "Nombre_de_menages_par_Secteurs.xlsx": 443
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7103012",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155355",
+          "sectorFr": "Halfa",
+          "sectorAr": "حلفاء",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11833,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 446,
+            "Nombre_de_menages_par_Secteurs.xlsx": 445
+          }
+        }
+      }
+    ],
+    "protectedRawIds": [
+      "osm:relation:7102854",
+      "osm:relation:7102855",
+      "osm:relation:7103009",
+      "osm:relation:7103011",
+      "osm:relation:7103012",
+      "osm:way:174740047",
+      "osm:way:176000340",
+      "osm:way:176000341",
+      "osm:way:97396877"
+    ],
+    "originalNamePeerIds": [
+      "osm:node:1128018620",
+      "osm:relation:7103009",
+      "osm:relation:7145299",
+      "osm:way:97396877"
+    ],
+    "effectiveNamePeerIds": [
+      "osm:node:1128018620",
+      "osm:relation:7103009",
+      "osm:relation:7145299",
+      "osm:way:97396877"
+    ],
+    "nameQueries": [
+      "benikhiar",
+      "беніхяр",
+      "بنيخيار"
+    ],
+    "currentWholeGroups": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009",
+        "osm:way:97396877"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460"
+      ]
+    },
+    "requiredGroupsAfterDistinctGuard": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460"
+      ],
+      "osm:way:97396877": [
+        "osm:way:97396877"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460",
+        "osm:way:97396877"
+      ]
+    },
+    "distinctPair": {
+      "ids": [
+        "osm:relation:7103009",
+        "osm:way:97396877"
+      ],
+      "reviewEvidence": {
+        "file": "settlement-polygon-display-reviews/three-town/460-distinct.json",
+        "sha256": "081053cea358a218133e1c1121c545562a40f8b0b6ac08ba48c2ad9b2bcc0005"
+      }
+    },
+    "baseInsideSettlementPolygon": {
+      "original": false,
+      "effective": false,
+      "packed": false
+    },
+    "coordinatePolicy": "preserve_all_reference_and_raw_coordinates",
+    "reviewedNoncontainmentReason": "Preserve legacy base460 36.46/10.78 and every raw coordinate. Its approximately6.5m polygon noncontainment is explicit, not a reason to move it or expand a border. No original INM coordinate provenance is claimed.",
+    "namesakeSectorReferenceContainment": {
+      "original": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "effective": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "packed": {
+        "base": true,
+        "sourcePoint": true
+      }
+    },
+    "settlementWithinNamesakeSector": {
+      "original": true,
+      "effective": true,
+      "packed": true
+    },
+    "coordinateCorrections": [],
+    "nearestReferenceIds": {
+      "base": 460,
+      "settlementPolygon": 460,
+      "sourcePoint": 460,
+      "separateSector": 468
+    },
+    "publicNodeElement": {
+      "type": "node",
+      "id": 1128018620,
+      "lat": 36.4693627,
+      "lon": 10.7809776,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 17,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:governorate": "Nabeul",
+        "int_name": "Béni Khiar",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:en": "Béni Khiar",
+        "name:fr": "Béni Khiar",
+        "name:uk": "Бені-Х'яр",
+        "place": "town",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "en:Béni Khiar"
+      }
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:97396877",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7103009",
+        "after": "delegation:460"
+      }
+    ]
+  }
+}

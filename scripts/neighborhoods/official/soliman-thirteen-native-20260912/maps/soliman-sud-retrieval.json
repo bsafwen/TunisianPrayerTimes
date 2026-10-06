@@ -1,0 +1,26 @@
+{
+  "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/سليمان الجنوبية.pdf",
+  "finalUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+  "retrievedAt": "2026-09-12T15:51:03.920677+00:00",
+  "status": 200,
+  "headers": {
+    "Date": "Sat, 12 Sep 2026 15:51:03 GMT",
+    "X-Backend": "web2-10.10.117.3",
+    "Last-Modified": "Tue, 17 Oct 2023 00:44:22 GMT",
+    "ETag": "\"16f071-607ded2db8580\"",
+    "Accept-Ranges": "bytes",
+    "Content-Length": "1503345",
+    "X-Content-Type-Options": "nosniff",
+    "Content-Security-Policy": "frame-ancestors 'self';",
+    "Keep-Alive": "timeout=5, max=100",
+    "Connection": "Keep-Alive",
+    "Content-Type": "application/pdf"
+  },
+  "bodyFile": "soliman-sud.pdf",
+  "sha256": "ce5884a3f7ebbadbfa5383b0b433e28e554760cd8531dc286354cf6405f3f3c0",
+  "exactDiscoveryEntry": {
+    "text": "سليمان الجنوبية.pdf",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/سليمان الجنوبية.pdf",
+    "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/سليمان الجنوبية.pdf"
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "start": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\facts.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\facts.json",
+      "sha256": "3bd995789604ecdc0e9e07d03af1b693ac63976af464f3ed5889fccfbcf4f304",
+      "bytes": 77228
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\selected-geometries.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\selected-geometries.json",
+      "sha256": "507da8e7add75d106135c838f065f6cd308acdb926f0d5eed73c8bb70a2bfe2c",
+      "bytes": 376721
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\metadata.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\metadata.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\receipts.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\receipts.json",
+      "sha256": "6c732d4c7eb3598012bb755b280b5aeaa0704944ac884364d66f59f84c5efd02",
+      "bytes": 3458
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+      "bytes": 5590876
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.pdf",
+      "sha256": "71e12a872fc481bd0d01556762594184bfc29bc455287c9874f13ac0f966375d",
+      "bytes": 604111
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.png",
+      "sha256": "191dec0522826545b16cca3dfc4b1b96513bc45ea2113f134fe0c6f658a782cd",
+      "bytes": 2056492
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.txt",
+      "sha256": "4a9f86900ca1f0e77a3e9a9124aa2009ae590cf6a6004d4f60f63e2a1e88c75c",
+      "bytes": 1219
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.pdf",
+      "sha256": "b006f584b2ea730c11c466f0bb5043136c0a7d81428532818b29a59dc94f1d2e",
+      "bytes": 1281053
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.png",
+      "sha256": "e3693e0cd77d10921dc54a421ed871897be0eef2a582891231fdef6b8ca04bad",
+      "bytes": 3203322
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.txt",
+      "sha256": "cf4462f6ee30a2ec671e300708d14aa3a3d4d454adbd195ea5efd7d3549bf63c",
+      "bytes": 2610
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.pdf",
+      "sha256": "53c46020cbd02c66b59fd2f3b9814139afacbf01d797026fc033ba1cd512a0a0",
+      "bytes": 1096750
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.png",
+      "sha256": "7b944877dfcb29e2ca5e62ba8b3c933197df572260a4d71887093e964b52efc2",
+      "bytes": 2785357
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.txt",
+      "sha256": "c00d9aebedd643fd3f42e39d739dfc91695d2c8e7c6fc385dd6b680d30664732",
+      "bytes": 2775
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.pdf",
+      "sha256": "4aacc2971854e536557137477b70f6c16b82cd87b48bd3c7bed520e080d9c166",
+      "bytes": 1062665
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.png",
+      "sha256": "34002dafb2e750c0695676491648a48a8de5259b5200c698515c9f0caa731bcc",
+      "bytes": 2769287
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.txt",
+      "sha256": "b1c975814c754ebd5ab11118535f35b099372008065d735a139dbeab8dd32900",
+      "bytes": 2544
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.pdf",
+      "sha256": "bd3caf3d29ed9ffe07ddd48562a8972fc72591929657d63b87ff207dfb671242",
+      "bytes": 1406120
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.png",
+      "sha256": "3b4084fd177f465ab9e484b0933d8acf471744d317b6ad53d3102ee385d78fbc",
+      "bytes": 3219039
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.txt",
+      "sha256": "b3e87cb17d630d73dbd1a5d2af75f048cd2731e9768ce59359a59bd0ffa8ac2f",
+      "bytes": 1914
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.pdf",
+      "sha256": "f06b6aedbc2edd5b0e9662dd447b63bd9456c3b033c1db6616d64d3b4453cdde",
+      "bytes": 917623
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.png",
+      "sha256": "3d739070e9c7ec738ac2f4d2926445760350da205cb56d4c96de981d17450074",
+      "bytes": 2525383
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.txt",
+      "sha256": "c3d8878055698a8407617126d2341edd0a4e0fa3bfffc9e22e8aff2de997dbeb",
+      "bytes": 535
+    }
+  },
+  "end": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\facts.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\facts.json",
+      "sha256": "3bd995789604ecdc0e9e07d03af1b693ac63976af464f3ed5889fccfbcf4f304",
+      "bytes": 77228
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\selected-geometries.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\selected-geometries.json",
+      "sha256": "507da8e7add75d106135c838f065f6cd308acdb926f0d5eed73c8bb70a2bfe2c",
+      "bytes": 376721
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\metadata.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\metadata.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\receipts.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\receipts.json",
+      "sha256": "6c732d4c7eb3598012bb755b280b5aeaa0704944ac884364d66f59f84c5efd02",
+      "bytes": 3458
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+      "bytes": 5590876
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.pdf",
+      "sha256": "71e12a872fc481bd0d01556762594184bfc29bc455287c9874f13ac0f966375d",
+      "bytes": 604111
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.png",
+      "sha256": "191dec0522826545b16cca3dfc4b1b96513bc45ea2113f134fe0c6f658a782cd",
+      "bytes": 2056492
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.txt",
+      "sha256": "4a9f86900ca1f0e77a3e9a9124aa2009ae590cf6a6004d4f60f63e2a1e88c75c",
+      "bytes": 1219
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.pdf",
+      "sha256": "b006f584b2ea730c11c466f0bb5043136c0a7d81428532818b29a59dc94f1d2e",
+      "bytes": 1281053
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.png",
+      "sha256": "e3693e0cd77d10921dc54a421ed871897be0eef2a582891231fdef6b8ca04bad",
+      "bytes": 3203322
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.txt",
+      "sha256": "cf4462f6ee30a2ec671e300708d14aa3a3d4d454adbd195ea5efd7d3549bf63c",
+      "bytes": 2610
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.pdf",
+      "sha256": "53c46020cbd02c66b59fd2f3b9814139afacbf01d797026fc033ba1cd512a0a0",
+      "bytes": 1096750
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.png",
+      "sha256": "7b944877dfcb29e2ca5e62ba8b3c933197df572260a4d71887093e964b52efc2",
+      "bytes": 2785357
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.txt",
+      "sha256": "c00d9aebedd643fd3f42e39d739dfc91695d2c8e7c6fc385dd6b680d30664732",
+      "bytes": 2775
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.pdf",
+      "sha256": "4aacc2971854e536557137477b70f6c16b82cd87b48bd3c7bed520e080d9c166",
+      "bytes": 1062665
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.png",
+      "sha256": "34002dafb2e750c0695676491648a48a8de5259b5200c698515c9f0caa731bcc",
+      "bytes": 2769287
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.txt",
+      "sha256": "b1c975814c754ebd5ab11118535f35b099372008065d735a139dbeab8dd32900",
+      "bytes": 2544
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.pdf",
+      "sha256": "bd3caf3d29ed9ffe07ddd48562a8972fc72591929657d63b87ff207dfb671242",
+      "bytes": 1406120
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.png",
+      "sha256": "3b4084fd177f465ab9e484b0933d8acf471744d317b6ad53d3102ee385d78fbc",
+      "bytes": 3219039
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.txt",
+      "sha256": "b3e87cb17d630d73dbd1a5d2af75f048cd2731e9768ce59359a59bd0ffa8ac2f",
+      "bytes": 1914
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.pdf",
+      "sha256": "f06b6aedbc2edd5b0e9662dd447b63bd9456c3b033c1db6616d64d3b4453cdde",
+      "bytes": 917623
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.png",
+      "sha256": "3d739070e9c7ec738ac2f4d2926445760350da205cb56d4c96de981d17450074",
+      "bytes": 2525383
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.txt",
+      "sha256": "c3d8878055698a8407617126d2341edd0a4e0fa3bfffc9e22e8aff2de997dbeb",
+      "bytes": 535
+    }
+  },
+  "unchanged": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\facts.json": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\selected-geometries.json": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\metadata.json": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\receipts.json": true,
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": true,
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.pdf": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.png": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.txt": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.pdf": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.png": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.txt": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.pdf": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.png": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.txt": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.pdf": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.png": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.txt": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.pdf": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.png": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7133851.txt": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.pdf": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.png": true,
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.txt": true
+  },
+  "liveMetadataHashChecked": true,
+  "liveBinHash": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+  "copiedLiveBin": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\native-review\\neighborhoods.bin",
+    "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+    "bytes": 5590876
+  }
+}

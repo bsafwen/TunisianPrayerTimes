@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "ROOT_APPROVED_TASK_ONLY_IMPLEMENTATION_DESIGN",
+  "baselineMetadataSha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+  "baselineCompilerSha256": "2c67379cea3fe8c12c79ae8febb354694a139dc54b579fa5a6ef55c1f74d2a7e",
+  "priorSourceAndDesignNote": {"file": "next-batch-source-and-design-note.json", "sha256": "617a6e0f31e3c5cfcb53c1172689f5e99395b300ac5f87e306268a81c1f3bd05"},
+  "compilerScope": "Only validate_settlement_retained_display_reference changes. Reuse its current method, proof schema, exact source/witness checks, independent review and the existing requiredCurations mechanism; add no new validator or hardcoded locality IDs.",
+  "optionalManualMode": {
+    "trigger": "requiredCurations is explicitly present and identical in the picker record and eligible proof",
+    "group": "Exactly one complete existing sector group whose only member is the reviewed coded sector",
+    "curation": "Exactly one existing name_tags rule on that sector, with exact original expectedTags, every consumed name tag retained byte-semantically, and manualPointId equal to the already pinned absorbed settlement witness",
+    "curationKeys": ["id", "expectedKind", "expectedTags", "action", "reason", "evidence", "nameTags", "manualPointId"],
+    "sourceAssertions": "The sector source row has exactly that expectedCuration; every other witness/context source retains expectedCuration=null. Original/effective source tags and geometry remain equal.",
+    "additionalRawFields": ["lat", "lng", "manualPointId"],
+    "exactBeforeGuard": "Recompute the pre-manual point from the unchanged generator geometry's representative_point(), with generator precision retained and metadata round(...,7). Require the prior manualPointId to be absent. The independent source review separately binds the installed baseline and all before/after fields.",
+    "exactAfterGuard": "Require the current sector's manualPointId and rounded coordinates to equal the existing exact source witness. Require exactly those three extra changes plus the already required complete-group changes; no name/alias/geometry/context mutation is allowed.",
+    "precisionQualification": "Decoded packed geometry without a GEOS precision model produces35.7692815,8.3472481. Restoring the generator's1e-6 precision produces the actual installed35.769282,8.347248. The compiler already receives precision-aware generator geometries; do not validate against an unrounded decoded approximation.",
+    "oldMode": "Without requiredCurations, preserve the prior no-curation contract and permitted group/default fields exactly. Do not broaden ordinary grouping, Hichria, Menzel, Hazoua, Smar or local group behavior."
+  },
+  "unchangedGuards": ["exact public absorbed witness and primary names", "pinned Ministry paired-name evidence", "original and effective name peer closure", "published prayer correction", "official coded sector and namesake parent", "source and packed polygons plus witness containment", "complete before and final group closure", "per-member nearest prayer source", "protected raw metadata", "independent source review and exact raw changes", "picker record and eligible proof core hashes"],
+  "kalaat": {
+    "sectorId": "osm:relation:7129263",
+    "sourcePointId": "osm:node:501803032",
+    "targetDelegationId": 588,
+    "sourcePrimaryName": "قلعة سنان",
+    "prayerPrimaryName": "قلعة السنان",
+    "manualPoint": {"lat": 35.7672773, "lng": 8.3438119},
+    "publishedPrayerPoint": {"lat": 35.768, "lng": 8.342},
+    "exactRawFieldChanges": [
+      {"id": "osm:relation:7129263", "field": "lat", "before": 35.769282, "after": 35.7672773},
+      {"id": "osm:relation:7129263", "field": "lng", "before": 8.347248, "after": 8.3438119},
+      {"id": "osm:relation:7129263", "field": "manualPointId", "before": null, "after": "osm:node:501803032"},
+      {"id": "osm:relation:7129263", "field": "pickerGroupId", "before": "osm:relation:7129263", "after": "delegation:588"}
+    ],
+    "all3523PublishedReferenceOnlyDefaultChanges": [],
+    "savedSelectionPolicy": "Keep the raw sector ID; the existing absorbed town remains absent. Saved sector selection receives its deliberately improved authentic source town coordinate. GPS still uses device coordinates and unchanged polygon bytes."
+  },
+  "rootPhoneContext": {
+    "file": "outputs/zouaouine-kalaat-coordinate-phone-review-20260919.json",
+    "sha256": "46aa92d284bffbb76188c79fb4d50b429e0f3fccea6e67bde2a0c8cc2ab3b873",
+    "qualification": "Root personally observed authentic town point amid town street grid and current sector point toward northeastern street edge. Context only; reverse-label spelling is not adopted, and no boundary certification is claimed."
+  },
+  "notPerformed": ["live edits", "compiler execution", "generation", "tests", "build", "phone control"]
+}

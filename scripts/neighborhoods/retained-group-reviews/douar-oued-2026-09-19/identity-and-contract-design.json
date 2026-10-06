@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPPORTED_EXACT_DISPLAY_IDENTITIES_CONCRETE_REVIEWED_NAME_EXTENSION_DESIGN",
+  "baselineMetadataSha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+  "baselineCompilerSha256": "66b1be7edbed0dc54ed346391787eef95b8243938dc352133942d0289609a668",
+  "sourceNameDesign": {"file": "work/douar-hicher-oued-ellil-name-review-20260919/sourcefacts-and-design.json", "sha256": "854596665f20b7bb9249aa495b07ef9fe03d24f8303ee449884f18d553180b75"},
+  "freshPrayerReferenceReview": {"file": "work/oued-douar-fresh-reference-review-20260919/source-and-reference-impact-review.json", "sha256": "21f024f7571a2c098b67da2b69ce7b69e459a5cc90c886c9ba55714d75e8274c"},
+  "dataComponent": {"file": "work/douar-oued-data-component-20260919/proposal.json", "sha256": "1d5c3f2223b005e914077cf15de332d6bf11ffcd0c02633dd49e08e0e3fd56d8"},
+  "identities": [
+    {
+      "targetDelegationId": 554,
+      "sectorId": "osm:relation:7090957",
+      "townId": "osm:node:7720714782",
+      "parentId": "osm:relation:7204580",
+      "officialSectorCode": "145251",
+      "officialParentCode": "1452",
+      "canonicalName": "دوار هيشر",
+      "oldSourcePrimaryPreservedAsAlias": "دوار ھیشر",
+      "authenticManualPoint": {"lat": 36.8237415, "lng": 10.0960637},
+      "publishedPrayerPoint": {"lat": 36.828, "lng": 10.089},
+      "identityConclusion": "The uniquely coded current namesake sector, current official namesake parent, unchanged authentic town point inside the original and packed sector, and same-name INM base support one inhabited-place display identity. The published prayer point lies in adjacent Nasim sector; the place identity is independent of that point and does not equate town, sector or administrative extents.",
+      "distinctChild": "osm:way:663536803 remains a separate quarter; only its inherited sector name/context changes.",
+      "freshPublicNode": {"file": "town-7720714782-current.json", "sha256": "25b6cda7ac902a2d4aef152e063331e00e2dbde0ad75856b2a5ae5945140376a", "version": 5, "timestamp": "2025-12-27T23:04:23Z", "originalTagsAndCoordinatesUnchanged": true}
+    },
+    {
+      "targetDelegationId": 553,
+      "sectorId": "osm:relation:7095862",
+      "townId": "osm:node:287619187",
+      "parentId": "osm:relation:7204582",
+      "officialSectorCode": "145351",
+      "officialParentCode": "1453",
+      "canonicalName": "وادي الليل",
+      "publishedPrayerName": "واد الليل",
+      "oldSourcePrimaryPreservedAsAlias": "وادي اللیل",
+      "authenticManualPoint": {"lat": 36.8376735, "lng": 10.0422381},
+      "publishedPrayerPoint": {"lat": 36.836, "lng": 10.041},
+      "identityConclusion": "The uniquely coded current namesake sector and parent, contained unchanged town point, and direct official paired-name usage support one display identity. The old parent spelling receives a separate exactly reviewed name_tags correction with23 inherited raw context changes. This does not replace any administrative polygon or merge Gobaa into this group.",
+      "freshPublicNode": {"file": "town-287619187-current.json", "sha256": "83f00cc6e17be35c48f15b8211bd9fd9fc671c4e178368395c37438b6070d24e", "version": 19, "timestamp": "2025-12-27T23:04:23Z", "originalTagsAndCoordinatesUnchanged": true}
+    }
+  ],
+  "ouedPrimaryPair": {
+    "file": "oued-augt-primary.html",
+    "sha256": "a1575b2f4800918a1ea3380df195f6affa643c5dceaf49e4fdbbeab6a7548d4f",
+    "captureKind": "original_http_200_html_bytes",
+    "url": "https://www.augt.gov.tn/ar/evenements-3/2-uncategorised/479-%D8%AC%D9%84%D8%B3%D8%A9-%D8%B9%D9%85%D9%84-%D8%A8%D9%84%D8%AF%D9%8A%D8%A9-%D9%88%D8%A7%D8%AF-%D8%A7%D9%84%D9%84%D9%8A%D9%84ar.html",
+    "requiredText": ["بلدية واد الليل", "بلدية وادي الليل", "13 فيفري 2020"],
+    "qualification": "AUGT's title and body refer to the same municipal planning meeting using both exact forms. This supports a spelling relationship, not polygon equality or precise town extent."
+  },
+  "genericContract": {
+    "scope": "Extend only validate_settlement_retained_display_reference; reuse the existing retained/manual method. No hardcoded locality IDs, new validator, global character normalization or Android changes.",
+    "optionalNameCuration": "One optional nameCuration block binds curated source IDs and exact baseline raw metadata for affected name/context rows. Its complete independently reviewed raw delta includes the changed names/aliases and inherited contexts; the unchanged old path has no such block.",
+    "allowedSourceRules": "Exactly the existing manual sector name_tags rule and, optionally, its official coded parent name_tags rule. Source rows retain original tags and bind expectedCuration. Effective tags are derived exactly from these pinned rules; all other source rows remain unchanged and uncurated.",
+    "nameSafety": "Canonical sector and parent names must match the exact official sector/delegation record and exact public town witness. Retain every consumed prior name; preserve foreign name tags; keep the old Arabic source spelling searchable. Pair differing INM/locality primary forms only through explicit primary evidence.",
+    "rawSafety": "Name/alias changes are permitted only on the named sector. Parent/context changes must equal substitutions/additions from the exact source rule names, retaining prior aliases. Compare all other metadata before/after and reject extra changes. Manual-point changes retain the existing precision-aware ordinary-point before guard and exact public-witness after guard.",
+    "contextProtection": "Protect affected context-row metadata through the final verifier without claiming those unrelated rows join the retained display group. Gobaa's later village-owner group remains governed by its own exact reviewed record.",
+    "unchangedChecks": ["official coded identity", "exact original/effective source geometry", "original/packed witness containment", "complete retained-group membership", "source name peer closure", "independent source review and exact raw changes", "published prayer-source evidence", "per-member nearest source", "record/proof core hashes", "protected final metadata"],
+    "legacyModes": "Ordinary grouping, Hichria, Menzel, Hazoua/Smar, identity-preserving Kalaat manual mode and Gobaa local-owner behavior retain their existing contracts."
+  },
+  "exactProjectedScope": {"dataComponentFields": 37, "addedGroupFields": 2, "combinedRawFieldChanges": 39, "rawIdsRetained": 3523, "newDuplicateChoicesRemoved": 2, "polygonChanges": 0, "extraNearestChanges": [{"id": "osm:relation:7095859", "before": 554, "after": 553}, {"id": "osm:way:456466522", "before": 554, "after": 553}]},
+  "phoneContext": {"file": "outputs/douar-oued-coordinate-phone-review-20260919.json", "sha256": "cf850b0b428dc0d1ded80f19eae28b8c4f7a02c17cbfdc7bde32275c9bf6c4ab", "qualification": "Root-viewed map/POI context only; this agent performed no phone control. No boundary or exact-coordinate certification is inferred."},
+  "notPerformed": ["live edits", "compiler execution", "generation", "tests", "build", "phone control"]
+}

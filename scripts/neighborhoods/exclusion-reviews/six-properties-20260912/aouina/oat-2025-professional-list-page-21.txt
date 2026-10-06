@@ -1,0 +1,184 @@
+OAT: Tableau de l'Ordre des Architectes 2025
+ 1 - Colonne A
+NC
+Matricule
+Nom et Prénom
+Adresse
+Région
+Mode d'Exercice
+541 A020274231100
+Mr
+MHENNI Makram
+16 bis Av. de la République - 5035 - Sayada
+Monastir
+Indépendant
+542 A020274250800
+Mr
+BEN CHAABANE Badreddine
+Rue du 08 janvier 1938 Galerie des Arts Apt.N°7 - 7000 - Bizerte
+Bizerte
+Indépendant
+543 A020274291200
+Mr
+SBOUI Amir
+Av. 2 Mars 1934 - 5100 - Mahdia
+Mahdia
+Indépendant
+544 A020275061200
+Mme FOURATI Souleïma
+Résidence Acropole Apt.7 - 2037 - Ennasr II
+Ariana
+Indépendant
+545 A020275070400
+Mr
+WELDI Brahim
+Cité Safâa Rue du Liban - 7033 - Ghar El Melh
+Bizerte
+Indépendant
+546 A020275130300
+Mr
+JAMOUSSI Wassim
+34 Av. Habib Bourguiba  Bur.10 -3ème Etage - 2080 - Ariana
+Ariana
+Indépendant
+547 A020275140200
+Mr
+MASMOUDI Atef
+Rue Ennasria Imm Ennasria bloc C 3éme Etage - 3027 - Sfax El Jadida
+Sfax
+Indépendant
+548 A020275150400
+Mme MANAI Chiraz
+Cité Taieb Mhiri enface UGTT Kef 1ér étage Bureau  - 7100 - Le Kef
+Le Kef
+Indépendant
+549 A020275170600
+Mr
+GHARIANI Najmeddine
+Résidence Saja Numéro  AR03 - 2058 - Riadh El Andalous
+Ariana
+Indépendant
+550 A020275261200
+Mr
+OUESLETI Mohamed
+Rue Ali Belhouane - 3100 - Kairouan
+Kairouan
+Indépendant
+551 A020276010100
+Mr
+HAMMED Ali
+Place 7 Nov. Im.Ben Hamza-2è Et. - 4200 - Kébili
+Kébili
+Indépendant
+552 A020276030700
+Mme DAHMANI-CHERIF Sana
+Immeuble Ennakhile 2 - 1004 - El Menzah I
+Tunis
+Indépendant
+553 A020276060500
+Mr
+ZOUAOUI Zied
+10 bis rue de l'Atarche - 2080 - Ariana Supérieur
+Ariana
+Indépendant
+554 A020276061100
+Mr
+BOURICHA Maher
+13 Rue Hassen Ibn Noomen - 2037 - El Menzah 7
+Ariana
+Salarié du Secteur Privé
+555 A020276090600
+Mr
+EL BAHRI Majed
+5 Rue Lagha  - 2015 - Le Kram
+Tunis 
+Indépendant
+556 A020276140100
+Mr
+HADDADA Med El Mounir
+37 Rue Med El Aroui -Cité Jawhara - 4000 - Sousse
+Sousse
+Indépendant
+557 A020276140800
+Mr
+SAIHI Ghassen
+6 Rue Errazi - Cité El Bassatine - 1110 - La Mornaguia
+Manouba
+Indépendant
+558 A020276261000
+Mr
+LABASSI Maher
+8 Rue Ibn El Jazzar - 1110 - La Mornaguia
+Manouba
+Indépendant
+559 A020276290700
+Mme TOUILEB Rania
+Résidence Sourour Bloc B App B1 - 2046 - Ain Zaghouan
+Tunis
+Indépendant
+560 A020276291100
+Mr
+AMMAR Anis
+23 Rue de Londre - 2073 - Borj Louzir
+Ariana
+Indépendant
+561 A020276300500
+Mr
+BOUJELBEN Mourad
+Av.Cheikh Med Neifar Rés.Errayhane Apt.A74  - 2036 - La Soukra
+Tunis
+Indépendant
+562 A020277050500
+Mme ZAABAR Rym
+Ministere du Transport  - 1002 - Tunis
+Tunis
+Fonctionnaire de l'état
+563 A020277120900
+Mr
+CHAARI Firass
+53 Rue Azzouz Errebai E.01 - 2092 - El Manar II
+Tunis
+Indépendant
+564 A020277150600
+Mr
+MOUSSI Sami
+71 résidence alain savary appt C33-71 AV.A.SAVAR - 1003 - Cité El Khadhra
+Tunis
+Indépendant
+565 A020277210400
+Mme HAOUEL Boudhina Afef
+64 Av. Salah Ben Youssef - 8050 - Hammamet
+Nabeul
+Indépendant
+566 A020277251000
+Mme DAOUD Zeineb
+Ré Amen El Bouhaira,1er étage.Rue du Lac Wenderme - 1053 - Les Berges du Lac
+Tunis
+Indépendant
+567 A020277290500
+Mr
+HARIZ Faïçal
+Rue 8300 Imm. Luxor II Apt.BM 4 - Montplaisir - 1073 - Tunis Belvédère
+Tunis
+Indépendant
+568 A029566040400
+Mme JERBI Ben Jomaa Faïrouz
+A.F.H.  - 1013 - El Menzah 9A
+Tunis
+Fonctionnaire de l'état
+569 A029868310100
+Mr
+LADJILI Karim
+15 Av. Abdelaziz El Saoud - 2092 - El Manar 2
+Tunis
+Salarié du Secteur Privé
+570 A029973180800
+Mme CHEKIR Khalfallah Rim
+M2 Résidence Nour -Route de Gammarth - 2070 - La Marsa
+Tunis
+Indépendant
+Tableau OAT 2025
+Page 19
+
+Tableau de l'Ordre des Architectes 2025
+20

@@ -1,0 +1,159 @@
+{
+  "status": "PASS_FINITE_STAGED_SOURCE_COORDINATES_AND_QUANTIZATION_DIAGNOSTIC",
+  "sourceReadiness": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\soliman-thirteen-native-source-stage-readiness-20260912.json",
+    "sha256": "3ec47bb2007f8de140d897644ed0c15103b446cdce55aae7ad77278dff2c2306"
+  },
+  "packageManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-thirteen-native-source-stage-20260912\\source-package-manifest.json",
+    "sha256": "171752fefd84e6be834e795140b2c53168984f08cd15aa384928b9c3b52ffddc"
+  },
+  "sourceBundle": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-thirteen-native-source-stage-20260912\\scripts\\neighborhoods\\official\\soliman-thirteen-native-20260912\\soliman-thirteen-whole-source-boundaries.geojson",
+    "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857"
+  },
+  "frozenOriginalGeometryInputs": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\whole-native-source-polygons.geojson",
+      "sha256": "c18e02069247cd0bd528464ee5da6b01e59bf07ed46e1ab37656d543688b935f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\five-reviewed-whole-native-source-polygons.geojson",
+      "sha256": "fd0f4d1b6d6b7d3eb58a1fb42c7d9967bf31b84801e8e7601d78adc8143344a9"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\mraissa-conditional-closed-walk-region.geojson",
+      "sha256": "3219c5ed433374a28bcb18be70fa31851aa9dbb1a7ebe6214e81480b7c4e04fc"
+    }
+  ],
+  "selectedFilePinsVerified": 70,
+  "existingProviderObjectsPreservedExactly": 24,
+  "records": [
+    {
+      "id": "osm:relation:7100603",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 1,
+      "declaredNpolBytes": 11936,
+      "declaredNpolSha256": "ee4f5997f03ae7b66fd8fe7235f80914ed022e270bbd8c853e0c2d91b659f979",
+      "oneTouchingFourEdgeHoleRetained": true
+    },
+    {
+      "id": "osm:relation:7100693",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 3236,
+      "declaredNpolSha256": "95956c0f49b29b7789cb9f4c6c4a2ccd8a6e294a143cefff94bf39076a960bd6"
+    },
+    {
+      "id": "osm:relation:7100694",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 4540,
+      "declaredNpolSha256": "288835d91164f7d38318bb9bffd926213ebf82e2cc95c951ea00471947ade966"
+    },
+    {
+      "id": "osm:relation:7101601",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 3980,
+      "declaredNpolSha256": "f16081a59cf0bda17efff1cf45a6feb8d2337163dd9077475263f238fccf0e2b"
+    },
+    {
+      "id": "osm:relation:7101606",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 2628,
+      "declaredNpolSha256": "d444f93ae07b7301256853766ad1f2ad6886f36dff2fd835e64f43f511edb755"
+    },
+    {
+      "id": "osm:relation:7102534",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 5788,
+      "declaredNpolSha256": "38c666124b09f436da597f593689e7a8cd691343c0860fab6464c9609681aa40"
+    },
+    {
+      "id": "osm:relation:7102535",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 3148,
+      "declaredNpolSha256": "56eeaa30ba7c256bfebdb3dd2700458a52f4350ec5e4047a4efbebcfa33a495d"
+    },
+    {
+      "id": "osm:relation:7103805",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 2204,
+      "declaredNpolSha256": "f3ae0951e65de48d50d1386cd7b16b41159dc14c1126e09c455e47de703c1af9"
+    },
+    {
+      "id": "osm:relation:7103806",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 2708,
+      "declaredNpolSha256": "4ba780ddf2b5ca0f2a4c2b493e099faa4d18c81ad689f1585b8bb2b349d4f275"
+    },
+    {
+      "id": "osm:relation:7104933",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 4612,
+      "declaredNpolSha256": "2ca40577139d451814627153506e695a619434b4f749d6debeffa1479d6dacb1"
+    },
+    {
+      "id": "osm:relation:7104934",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 2180,
+      "declaredNpolSha256": "32c5d399fb1bd52b46b7b80a384d31e1468940d758ef427a33cdf2721af392b1"
+    },
+    {
+      "id": "osm:relation:7104935",
+      "sourceComparison": "All source coordinate arrays and ring order match the frozen reviewed geometry exactly.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 4004,
+      "declaredNpolSha256": "425e28a6ca0f89ab5ef3f1095bf730eae2265f084db23fbb064286d0e28eb82e"
+    },
+    {
+      "id": "osm:relation:7174585",
+      "sourceComparison": "Exact region of the complete two-part union; source overlap retained in evidence.",
+      "quantizedValid": true,
+      "quantizedParts": 1,
+      "quantizedHoles": 0,
+      "declaredNpolBytes": 6620,
+      "declaredNpolSha256": "ab68b1cd97087a4fb558087c6289c6b51bd76e63c4200fe01e0aaddf9614788e"
+    }
+  ],
+  "liveCatalogChanged": false,
+  "scope": "Source-stage audit only; exact twelve source coordinate arrays plus mathematically complete Borj union. Original source scope/identity reviews remain separately pinned. No product helper or generator was imported or run.",
+  "remaining": "Independent compiler/proof review, full source dependency assembly, actual generated metadata/groups/packing/default/conflict audit and Baddar primary-context contradiction remain. This diagnostic is not app installation or whole-catalog certification.",
+  "testsBuildsPackagesRun": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_soliman_thirteen_staged_geometries_root_20260912.py",
+    "sha256": "0fce1ddd81683b8fe5a40d3754336febab3463798f1c4bd3a93182bd533a804e"
+  }
+}

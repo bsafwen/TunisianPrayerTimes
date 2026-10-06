@@ -1,0 +1,120 @@
+name: TV Tests
+
+# Also run by TV Release before it builds (workflow_call), so a release passes the same checks.
+# multiplatform's own build files set the Kotlin, AGP and Compose versions the TV compiles against.
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches: [main]
+    paths:
+      - "tv-app/**"
+      - "multiplatform/shared/**"
+      - "multiplatform/*.gradle.kts"
+      - "multiplatform/gradle/**"
+      - "build-logic/**"
+      - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - ".github/workflows/tv-tests.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "tv-app/**"
+      - "multiplatform/shared/**"
+      - "multiplatform/*.gradle.kts"
+      - "multiplatform/gradle/**"
+      - "build-logic/**"
+      - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - ".github/workflows/tv-tests.yml"
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+# github.workflow is the caller's name when TV Release runs these checks: a push never cancels a release's.
+concurrency:
+  group: tv-tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    name: Build and unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tv-app
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      # tv-app/gradle/gradle-daemon-jvm.properties asks for a JDK 21 daemon.
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # local.properties points at a developer's SDK; CI uses ANDROID_HOME instead.
+      - name: Remove local SDK path
+        run: rm -f local.properties
+
+      # Two builds: "play" (Google Play) and "github" (boxes without Play Store, self-updating).
+      - name: Build and run unit tests
+        run: ./gradlew :app:assembleDebug :app:testPlayDebugUnitTest :app:testGithubDebugUnitTest
+
+      # The release is minified: an unsigned build shows that R8 keeps what the app needs. lintVital runs
+      # with it, and fails on a call newer than Android 8 (NewApi is fatal in app/build.gradle.kts).
+      - name: Minified release builds
+        run: ./gradlew :app:assemblePlayRelease :app:assembleGithubRelease -PunsignedRelease=true
+
+      # Google Play forbids self-updating apps and an accessibility service that opens the app by itself:
+      # the Play build must not be able to install anything, nor have the quick-start service. R8 renames
+      # the classes, so the update code is found by the address it alone uses.
+      - name: The Play build has no install permission, update code or quick-start service
+        run: |
+          manifest=app/build/intermediates/merged_manifest/playRelease/processPlayReleaseMainManifest/AndroidManifest.xml
+          test -f "$manifest"
+          if grep -E "REQUEST_INSTALL_PACKAGES|UPDATE_PACKAGES_WITHOUT_USER_ACTION|InstallResultReceiver" "$manifest"; then exit 1; fi
+          if grep -E "BIND_ACCESSIBILITY_SERVICE|WRITE_SECURE_SETTINGS|KioskAccessibilityService" "$manifest"; then exit 1; fi
+          apk=$(ls app/build/outputs/apk/play/release/*.apk | head -1)
+          if unzip -p "$apk" 'classes*.dex' | grep -a -q "api.github.com/repos"; then echo "update code in the Play build"; exit 1; fi
+
+      # A USB key is read in the app's own folder, which needs no permission; Play asks apps that declare
+      # photo or storage access to justify it, and the app never uses it.
+      - name: No build asks for storage access
+        run: |
+          for build in playRelease githubRelease; do
+            manifest=app/build/intermediates/merged_manifest/$build/process${build^}MainManifest/AndroidManifest.xml
+            test -f "$manifest"
+            if grep -E "READ_EXTERNAL_STORAGE|WRITE_EXTERNAL_STORAGE|MANAGE_EXTERNAL_STORAGE|READ_MEDIA_|requestLegacyExternalStorage" "$manifest"; then exit 1; fi
+          done
+
+      # The phone dashboard is served as it is written, with no build step: a syntax error in any script
+      # would open it blank on every phone.
+      - name: Dashboard scripts parse
+        working-directory: tv-app/app/src/main/assets/dashboard
+        run: |
+          for script in $(grep -o 'src="[^"]*\.js"' index.html | cut -d'"' -f2); do test -f "$script"; done
+          for script in *.js views/*.js; do node --check "$script"; done
+
+      - name: Shared module tests
+        working-directory: multiplatform
+        run: chmod +x gradlew && ./gradlew :shared:javaTest
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: tv-unit-test-results
+          path: |
+            tv-app/app/build/reports/tests/
+            multiplatform/shared/build/reports/tests/

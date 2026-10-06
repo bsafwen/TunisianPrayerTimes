@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "reviewedBy": "root",
+  "reviewedAtUtc": "2026-09-21T10:28:02.193060+00:00",
+  "status": "409_REFERENCE_SUPPORTED_392_AND_622_SCOPE_HELD",
+  "evidence": [
+    {
+      "sourceId": 392,
+      "wideRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\published-392\\delegation_392-detail-published-point.json",
+        "sha256": "2086702af491b9fe8423b357d957d07ad0ead6de517b7fd176b010f1cf54e2b7"
+      },
+      "wideImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\published-392\\delegation_392-detail-published-point.png",
+        "sha256": "e5cdc171f4c7f8f5baf0c2bbdbe804f3ffa1a2f2f8fd59917d969109e196c596"
+      },
+      "expandedRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\expanded-392\\delegation_392-detail-expanded-point.json",
+        "sha256": "b10dcdb63aac05300a31b7afe6f8fea38c01d568ce03f05e22756d0c6d1c831a"
+      },
+      "expandedImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\expanded-392\\delegation_392-detail-expanded-point.png",
+        "sha256": "7975a1932f034cf5701b21c8a530bf9fb6753ab59ef9f5b56e187f9f6da525ec"
+      },
+      "exactRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-392-exact-20260921\\delegation_392-2.json",
+        "sha256": "059acced64400bb5832ba6f8e3981bb64bc39527d9c23fc9fec418ca197e7876"
+      },
+      "exactImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-392-exact-20260921\\delegation_392-2.png",
+        "sha256": "8b91ba28afa9c9035ca6036608e13c0eb2fa3328fe0de26629b69738f099a367"
+      },
+      "exactBatch": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-392-exact-20260921\\batch-summary.json",
+        "sha256": "4f2dc3c99aa240312bd03ee43e6efc431349a238706e6a91fb627cd50540c1a1"
+      }
+    },
+    {
+      "sourceId": 409,
+      "wideRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\published-409\\delegation_409-detail-published-point.json",
+        "sha256": "c752953befdaf7f16a699290b966979df00b947fdcedd01f17f01fcf15ba3942"
+      },
+      "wideImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\published-409\\delegation_409-detail-published-point.png",
+        "sha256": "8e0a7184fe4d0eac5444e1caadce8e4f0abaf17aeacd70e24c446b3e094f91f0"
+      },
+      "expandedRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\expanded-409\\delegation_409-detail-expanded-point.json",
+        "sha256": "5fc92a6efe0cf086ca65b198ca497c281c7404bad060629b402456f037826440"
+      },
+      "expandedImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\expanded-409\\delegation_409-detail-expanded-point.png",
+        "sha256": "e0ceae7603ff067e2c6178747fe43cb95062a589766e51de803f7d1378ed478c"
+      },
+      "exactRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-409-exact-20260921\\delegation_409-4.json",
+        "sha256": "fde8c94caca9b684d6e6c9f5d98c8797ef0a691903d87c865cd1449d4fe1a2a2"
+      },
+      "exactImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-409-exact-20260921\\delegation_409-4.png",
+        "sha256": "adf03868af8bb42e197b000834c75c034613806285eb22bb895c96aa4e80065a"
+      },
+      "exactBatch": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-409-exact-20260921\\batch-summary.json",
+        "sha256": "25e35ed029602f1a8f2ecd746f6a682b397bbeeb0427a8fc37a3bb4ef00c8ae1"
+      }
+    },
+    {
+      "sourceId": 622,
+      "wideRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\published-622\\delegation_622-detail-published-point.json",
+        "sha256": "a555bd7c889cd9481a02bd8dd0e9dd0b33d6f7c2d5f457d85fb1a816f3f2eaa8"
+      },
+      "wideImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\published-622\\delegation_622-detail-published-point.png",
+        "sha256": "9c1f1f0530e30e7a3dc1f08d3d2b3410dd7052208aafcdb56186df54e19c3258"
+      },
+      "expandedRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\expanded-622\\delegation_622-detail-expanded-point.json",
+        "sha256": "ab92001d44d46bb3f2cb7942793a89dc85df1a8398502b2b2e4f1bd87642d3a7"
+      },
+      "expandedImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\expanded-622\\delegation_622-detail-expanded-point.png",
+        "sha256": "591429a45de8708d35376ee3e5fa0f006b4f250d9e072dcd670bdf98d7f242ae"
+      },
+      "exactRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-622-exact-20260921\\delegation_622-2.json",
+        "sha256": "b36fb60f80bbc15e373a9de3dd05956a306e8d490275033128eca574411cf0a3"
+      },
+      "exactImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-622-exact-20260921\\delegation_622-2.png",
+        "sha256": "c0c50e5478f682311e2046fcf2a3ae8d74e14b8455cede97a95b34eca39f8ca7"
+      },
+      "exactBatch": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\three-reference-622-exact-20260921\\batch-summary.json",
+        "sha256": "f0ff4063b243d08bda63569a22e8b060ef25f2cc5b09000bb924833fbc1e99ef"
+      }
+    }
+  ],
+  "sourceQualification": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\qualified\\report.json",
+    "sha256": "900b2c0b5c49b6775fbc7bfef9001b697f99f7bc5b7392d9668263aa8ded68df"
+  },
+  "contextMeasurement": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-reference-context-20260921\\geography.json",
+    "sha256": "2d63e54b76b984dc7f56d54c2a8979640d19a1a25bde59ff5bcc1ad9e8cec08c"
+  },
+  "observations": [
+    "Root visually reviewed wide, expanded address, and exact-coordinate screenshots for all three sources. Exact-coordinate readbacks equal requested published points.",
+    "392 proposed36.834,10.14 is shown by Maps nearElManar1; cached native and active geometry place it in ElManar1,ElMenzah delegation, whereas legacy is EsSadique,OmraneSuperieur. This is a source-scope conflict, not resolved by the generic Tunis address.",
+    "409 proposed36.353,10.206 is in built-up HammamZriba, with matching exact readback, wide town label and expanded address. Cached current and proposed points are both in Zriba delegation; current in ZribaVillage sector and proposed in EzzribaHammamNord. Paired INM responses qualify for generic delegation-level source409. This supports use of its published reference without conflating town and village picker identities.",
+    "622 proposed36.738,10.281 has Maps address BouMhelElBassatine. Cached boundaries place it in ElBassatine,BouMhel, whereas legacy lies in BenArousEst,BenArous delegation. Keep scope hold."
+  ],
+  "approvedSourceIds": [
+    409
+  ],
+  "heldSourceIds": [
+    392,
+    622
+  ],
+  "nextActions": {
+    "409": "Compute current nearest-source impact; stage the published reference only if all affected mappings and catalog preservation are checked. No locality label, representative point, grouping or polygon approval.",
+    "392": "Need source-specific INM documentation resolving OmraneSuperieur versus ElManar1/ElMenzah scope; do not repeat identical Maps searches.",
+    "622": "Need source-specific INM documentation resolving BenArous versus BouMhel scope; do not repeat identical Maps searches."
+  },
+  "sourceCoordinateApproval": "409_ONLY_SUBJECT_TO_INTEGRATION_VALIDATION",
+  "boundaryApproval": false,
+  "appChanges": 0,
+  "metricChanges": 0
+}

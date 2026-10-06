@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "bonne-residence-ins-official-arabic-20260924",
+  "baseMetadataSha256": "f6589f98defdd38e8454c94df61a21eacb005c75218e7a60afb7d9fb7e76a899",
+  "baseGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+  "evidence": [
+    {
+      "file": "catalog-updates/bonne-residence-ins-official-arabic-20260924/evidence/source-and-name-decision.json",
+      "sha256": "166f3a84a4da8bc44586f02cb54ce9ae952fd355d101f1ed8cc2b59425fbdb81"
+    },
+    {
+      "file": "residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ],
+  "newSources": {},
+  "updates": [
+    {
+      "id": "osm:relation:7118028",
+      "expectedFeatureSha256": "06c33cdae454c05131aa08b6c7a78d9f3f1002df86292edbc08a323f19f1611a",
+      "set": {
+        "name": "الإقامة الطيبة",
+        "aliases": [
+          "Bonne Résidence"
+        ]
+      },
+      "geometry": null
+    }
+  ],
+  "scopeNote": "Use the Arabic imada name in the Interior Ministry's official Bardo list, corroborated by the INS RGPH 2024 spelling for sector code 116056 and the OSM relation's matching code and French name. Retain only the supported French search alias; remove the incorrect old Arabic label. Text only: no exclusion, polygon or identity claim, parent change, delegation remap, or boundary accuracy certification."
+}

@@ -1,0 +1,786 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:2840204369",
+  "baseId": 500,
+  "rawCurrent": {
+    "id": "osm:node:2840204369",
+    "sourceId": "osm",
+    "name": "وادي مليز",
+    "aliases": [
+      "Oued Meliz",
+      "Oued Melliz",
+      "واد مليز",
+      "Wadi Maliz"
+    ],
+    "kind": "village",
+    "parentName": "وادي مليز الشرقية",
+    "contextAliases": [
+      "Délégation Oued Meliz",
+      "Délégation de Oued Meliz",
+      "Oued Meliz",
+      "Oued Mliz Est",
+      "Wadi Maliz",
+      "معتمدية وادي مليز",
+      "واد مليز",
+      "واد مليز الشرقية",
+      "وادي مليز الشرقية"
+    ],
+    "governorateId": 354,
+    "lat": 36.4678121,
+    "lng": 8.5500007,
+    "delegationId": 500,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:2840204369"
+  },
+  "baseCurrent": {
+    "id": 500,
+    "nomFr": "Oued Mliz",
+    "nomAr": "واد مليز",
+    "nomEn": "Oued Mliz",
+    "lat": 36.4678121,
+    "lng": 8.5500007
+  },
+  "expectedGovernor": {
+    "id": 354,
+    "nomFr": "Jendouba",
+    "nomAr": "جندوبة",
+    "nomEn": "Jendouba",
+    "lat": 36.5012,
+    "lng": 8.7802
+  },
+  "originalSourceNode": {
+    "id": "osm:node:2840204369",
+    "tags": {
+      "alt_name:ar": "واد مليز",
+      "name": "وادي مليز",
+      "name:ar": "وادي مليز",
+      "name:de": "Wadi Maliz",
+      "name:en": "Oued Melliz",
+      "name:fr": "Oued Meliz",
+      "place": "village",
+      "postal_code": "8115",
+      "wikidata": "Q3136209",
+      "wikipedia": "ar:وادي مليز"
+    },
+    "lat": 36.4678121,
+    "lng": 8.5500007
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/oued-meliz/oued-meliz-reference-source-review.json",
+    "sha256": "aae7ce5d7c5463f32f948e210a339468616ed0c37b8b6bdb016b082e01a9f737"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/oued-meliz/oued-meliz-reference-independent-review.json",
+    "sha256": "b803457c12c297268abc558a2b0dbf3a34899f2f595e494cf9beacc3b86c5a6c"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/oued-meliz/node-2840204369.json",
+    "sha256": "cb0799e40da804c2fbcf5744d07aaacae52381d5b867dd77be56d36bccebeea7",
+    "url": "https://api.openstreetmap.org/api/0.6/node/2840204369.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/2840204369.json",
+    "sha256": "cb0799e40da804c2fbcf5744d07aaacae52381d5b867dd77be56d36bccebeea7",
+    "exactElement": {
+      "type": "node",
+      "id": 2840204369,
+      "lat": 36.4678121,
+      "lon": 8.5500007,
+      "timestamp": "2020-07-17T08:38:41Z",
+      "version": 8,
+      "changeset": 88131134,
+      "user": "Anis Ben Makhlouf",
+      "uid": 10001069,
+      "tags": {
+        "alt_name:ar": "واد مليز",
+        "name": "وادي مليز",
+        "name:ar": "وادي مليز",
+        "name:de": "Wadi Maliz",
+        "name:en": "Oued Melliz",
+        "name:fr": "Oued Meliz",
+        "place": "village",
+        "postal_code": "8115",
+        "wikidata": "Q3136209",
+        "wikipedia": "ar:وادي مليز"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "coordinate-reviews/oued-meliz-2026-09-08/social-local-unit.html",
+      "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2",
+      "url": "https://www.social.gov.tn/en/node/3498",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "الوحدة المحلية للنهوض الاجتماعي وادى مليز جندوبة",
+        "شارع البيئة وادي مليز 8115",
+        "POINT (8.5500007 36.4678121)"
+      ]
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "2258",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7138845",
+      "officialIdentity": {
+        "governorateCode": "22",
+        "governorateFr": "Jendouba",
+        "governorateAr": "جندوبة",
+        "delegationCode": "2258",
+        "delegationFr": "Oued meliz",
+        "delegationAr": "وادي مليز",
+        "sectorCode": "225852",
+        "sectorFr": "Oued meliz ouest",
+        "sectorAr": "وادي مليز الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 25975,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1216,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1215
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "alt_name:ar": "واد مليز الغربية",
+        "boundary": "administrative",
+        "name": "وادي مليز الغربية",
+        "name:ar": "وادي مليز الغربية",
+        "name:fr": "Oued Mliz Ouest",
+        "ref:tn:codegeo": "225852"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7138845",
+        "sourceId": "osm",
+        "name": "وادي مليز الغربية",
+        "aliases": [
+          "Oued Mliz Ouest",
+          "واد مليز الغربية"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية وادي مليز",
+        "contextAliases": [
+          "Délégation Oued Meliz",
+          "Délégation de Oued Meliz",
+          "Oued Meliz",
+          "Wadi Maliz",
+          "معتمدية وادي مليز",
+          "واد مليز"
+        ],
+        "governorateId": 354,
+        "lat": 36.436411,
+        "lng": 8.515653,
+        "delegationId": 500,
+        "hasBoundary": true,
+        "bbox": [
+          8.483835,
+          36.397104,
+          8.547499,
+          36.475836
+        ],
+        "areaKm2": 36.006673158209985,
+        "pickerGroupId": "osm:relation:7138845",
+        "offset": 1707044,
+        "length": 1092
+      },
+      "sourceGeometrySha256": "e90f51cb35a49c7a6121070ca198d81cb2ff5078ccb7c5b1a4f9346d4d7d71d3",
+      "packedGeometrySha256": "9fa9a059c7ffd42abd277ca667443c8be1b9d836bc2182d43dbdf00a63e96e0c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7138846",
+      "officialIdentity": {
+        "governorateCode": "22",
+        "governorateFr": "Jendouba",
+        "governorateAr": "جندوبة",
+        "delegationCode": "2258",
+        "delegationFr": "Oued meliz",
+        "delegationAr": "وادي مليز",
+        "sectorCode": "225853",
+        "sectorFr": "Dkhailia",
+        "sectorAr": "الدخايلية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 26009,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1218,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1217
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دخايلية",
+        "name:ar": "دخايلية",
+        "name:fr": "Dkhaylia",
+        "ref:tn:codegeo": "225853"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7138846",
+        "sourceId": "osm",
+        "name": "دخايلية",
+        "aliases": [
+          "Dkhaylia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية وادي مليز",
+        "contextAliases": [
+          "Délégation Oued Meliz",
+          "Délégation de Oued Meliz",
+          "Oued Meliz",
+          "Wadi Maliz",
+          "معتمدية وادي مليز",
+          "واد مليز"
+        ],
+        "governorateId": 354,
+        "lat": 36.528429,
+        "lng": 8.513943,
+        "delegationId": 500,
+        "hasBoundary": true,
+        "bbox": [
+          8.476537,
+          36.482834,
+          8.570727,
+          36.576909
+        ],
+        "areaKm2": 42.55693103395478,
+        "pickerGroupId": "osm:relation:7138846",
+        "offset": 1708136,
+        "length": 836
+      },
+      "sourceGeometrySha256": "1edd76d54654e8f14a28da69a26285ce69c9a72ae33317117ba5dc6072bc15b9",
+      "packedGeometrySha256": "a6a18e61ea20c52ce0b3100ef8775a83661f01de580f3fdc85c29b52eb75aae1",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7138844",
+      "officialIdentity": {
+        "governorateCode": "22",
+        "governorateFr": "Jendouba",
+        "governorateAr": "جندوبة",
+        "delegationCode": "2258",
+        "delegationFr": "Oued meliz",
+        "delegationAr": "وادي مليز",
+        "sectorCode": "225851",
+        "sectorFr": "Oued meliz est",
+        "sectorAr": "وادي مليز الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 25941,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1214,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1213
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "alt_name:ar": "واد مليز الشرقية",
+        "boundary": "administrative",
+        "name": "وادي مليز الشرقية",
+        "name:ar": "وادي مليز الشرقية",
+        "name:fr": "Oued Mliz Est",
+        "ref:tn:codegeo": "225851"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7138844",
+        "sourceId": "osm",
+        "name": "وادي مليز الشرقية",
+        "aliases": [
+          "Oued Mliz Est",
+          "واد مليز الشرقية"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية وادي مليز",
+        "contextAliases": [
+          "Délégation Oued Meliz",
+          "Délégation de Oued Meliz",
+          "Oued Meliz",
+          "Wadi Maliz",
+          "معتمدية وادي مليز",
+          "واد مليز"
+        ],
+        "governorateId": 354,
+        "lat": 36.444209,
+        "lng": 8.565566,
+        "delegationId": 500,
+        "hasBoundary": true,
+        "bbox": [
+          8.518169,
+          36.394895,
+          8.600108,
+          36.492409
+        ],
+        "areaKm2": 41.520138496739044,
+        "pickerGroupId": "osm:relation:7138844",
+        "offset": 1704152,
+        "length": 2892
+      },
+      "sourceGeometrySha256": "4cd308053c964cafe96a1427b6e50ed5f27d083e52b5b5a99e7a406908066d07",
+      "packedGeometrySha256": "5fabaf36f92a5fc30f7d60dc8b922aefe76271d92ccadd82861eaca271031e66",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7138842",
+      "officialIdentity": {
+        "governorateCode": "22",
+        "governorateFr": "Jendouba",
+        "governorateAr": "جندوبة",
+        "delegationCode": "2258",
+        "delegationFr": "Oued meliz",
+        "delegationAr": "وادي مليز",
+        "sectorCode": "225854",
+        "sectorFr": "Hakim nord",
+        "sectorAr": "حكيم الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 26043,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1220,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1219
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حكيم الشمالية",
+        "name:ar": "حكيم الشمالية",
+        "name:fr": "Hakim Nord",
+        "ref:tn:codegeo": "225854"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7138842",
+        "sourceId": "osm",
+        "name": "حكيم الشمالية",
+        "aliases": [
+          "Hakim Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية وادي مليز",
+        "contextAliases": [
+          "Délégation Oued Meliz",
+          "Délégation de Oued Meliz",
+          "Oued Meliz",
+          "Wadi Maliz",
+          "معتمدية وادي مليز",
+          "واد مليز"
+        ],
+        "governorateId": 354,
+        "lat": 36.486644,
+        "lng": 8.641894,
+        "delegationId": 500,
+        "hasBoundary": true,
+        "bbox": [
+          8.591541,
+          36.454207,
+          8.671251,
+          36.518828
+        ],
+        "areaKm2": 21.86775167797634,
+        "pickerGroupId": "osm:relation:7138842",
+        "offset": 1700432,
+        "length": 1692
+      },
+      "sourceGeometrySha256": "dd219be8105ca769e34d799c7033729734ef2b660c2ef6cd8563b14e6a6891a8",
+      "packedGeometrySha256": "81ac467d21dd94cefad9f1149cb7b40c499a62fdfef0f28fd5fcf8e490758235",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7138843",
+      "officialIdentity": {
+        "governorateCode": "22",
+        "governorateFr": "Jendouba",
+        "governorateAr": "جندوبة",
+        "delegationCode": "2258",
+        "delegationFr": "Oued meliz",
+        "delegationAr": "وادي مليز",
+        "sectorCode": "225855",
+        "sectorFr": "Hakim sud",
+        "sectorAr": "حكيم الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 26077,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1222,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1221
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حكيم الجنوبية",
+        "name:ar": "حكيم الجنوبية",
+        "name:fr": "Hakim Sud",
+        "ref:tn:codegeo": "225855"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7138843",
+        "sourceId": "osm",
+        "name": "حكيم الجنوبية",
+        "aliases": [
+          "Hakim Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية وادي مليز",
+        "contextAliases": [
+          "Délégation Oued Meliz",
+          "Délégation de Oued Meliz",
+          "Oued Meliz",
+          "Wadi Maliz",
+          "معتمدية وادي مليز",
+          "واد مليز"
+        ],
+        "governorateId": 354,
+        "lat": 36.442165,
+        "lng": 8.638005,
+        "delegationId": 500,
+        "hasBoundary": true,
+        "bbox": [
+          8.564145,
+          36.394446,
+          8.691806,
+          36.489562
+        ],
+        "areaKm2": 58.298296169092964,
+        "pickerGroupId": "osm:relation:7138843",
+        "offset": 1702124,
+        "length": 2028
+      },
+      "sourceGeometrySha256": "6b8076f4a09f6d9a442249c5c44918cff544a42884a06f2ae68faca452f6b403",
+      "packedGeometrySha256": "9ed2e920f6b04f66e2186214cb59f4d3c1a3ef9d900134fb6f4e74b0f56189e2",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:2840204369",
+      "kind": "village",
+      "tags": {
+        "alt_name:ar": "واد مليز",
+        "name": "وادي مليز",
+        "name:ar": "وادي مليز",
+        "name:de": "Wadi Maliz",
+        "name:en": "Oued Melliz",
+        "name:fr": "Oued Meliz",
+        "place": "village",
+        "postal_code": "8115",
+        "wikidata": "Q3136209",
+        "wikipedia": "ar:وادي مليز"
+      }
+    },
+    {
+      "id": "osm:relation:4742499",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:ar": "واد مليز",
+        "alt_name:fr": "Oued Meliz",
+        "boundary": "administrative",
+        "name": "معتمدية وادي مليز",
+        "name:ar": "معتمدية وادي مليز",
+        "name:de": "Wadi Maliz",
+        "name:en": "Wadi Maliz",
+        "name:fr": "Délégation Oued Meliz",
+        "official_name": "معتمدية وادي مليز",
+        "official_name:ar": "معتمدية وادي مليز",
+        "official_name:fr": "Délégation de Oued Meliz",
+        "ref:tn:codegeo": "2258",
+        "ref:tn:hasc_2": "TN.JE.OM",
+        "wikidata": "Q3358031",
+        "wikipedia": "ar:معتمدية وادي مليز"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1435834": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-32",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية جندوبة",
+        "name:ar": "ولاية جندوبة",
+        "name:ast": "Gobernación de Jendouba",
+        "name:az": "Cenduba (vilayət)",
+        "name:be": "Джэндуба (вілает)",
+        "name:be-tarask": "Джэндуба (вілает)",
+        "name:bg": "Жендуба (област)",
+        "name:ca": "Governació de Jendouba",
+        "name:ceb": "Gouvernorat de Jendouba",
+        "name:cy": "Jendouba (talaith)",
+        "name:de": "Gouvernement Jendouba",
+        "name:el": "Τζεντούμπα (Κυβερνείο)",
+        "name:en": "Jendouba",
+        "name:es": "Gobernación de Jendouba",
+        "name:fa": "استان جندوبه",
+        "name:fi": "Jendouba (kuvernementti)",
+        "name:fr": "Gouvernorat Jendouba",
+        "name:frr": "Jendouba (Guwernement)",
+        "name:he": "מחוז ז'נדובה",
+        "name:id": "Kegubernuran Jendouba",
+        "name:it": "Jendouba",
+        "name:ja": "ジェンドゥーバ県",
+        "name:ko": "젠두바주",
+        "name:lt": "Džendubos vilajetas",
+        "name:ms": "Kawasan kegabenoran Jendouba",
+        "name:nl": "Jendouba (gouvernement)",
+        "name:no": "Jendouba (guvernement)",
+        "name:pl": "Gubernatorstwo Dżunduba",
+        "name:pt": "Jendouba (província)",
+        "name:ro": "Guvernoratul Jendouba",
+        "name:ru": "Джендуба (вилайет)",
+        "name:sco": "Jendouba Govrenorate",
+        "name:sh": "Jendouba (vilajet)",
+        "name:tr": "Cendube ili",
+        "name:uk": "Джендуба (вілаєт)",
+        "name:ur": "ولایت جندوبہ",
+        "name:zh": "堅杜拜省",
+        "name:zu": "Jendouba Governorate",
+        "official_name": "ولاية جندوبة",
+        "official_name:ar": "ولاية جندوبة",
+        "official_name:en": "Jendouba Governorate",
+        "official_name:fr": "Gouvernorat de Jendouba",
+        "official_name:it": "Governatorato di Jendouba",
+        "old_name": "ولاية سوق الأربعاء",
+        "old_name:ar": "ولاية سوق الأربعاء",
+        "old_name:fr": "Gouvernorat de Souk El Arba",
+        "population": "416608",
+        "ref:tn:codegeo": "22",
+        "wikidata": "Q276580",
+        "wikipedia": "ar:ولاية جندوبة"
+      },
+      "sourceGeometrySha256": "396df26beb2d04dc195c5f712b3bcc4847662d77b78c1b45cbff7d6a53b57782"
+    },
+    "osm:relation:4742499": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:ar": "واد مليز",
+        "alt_name:fr": "Oued Meliz",
+        "boundary": "administrative",
+        "name": "معتمدية وادي مليز",
+        "name:ar": "معتمدية وادي مليز",
+        "name:de": "Wadi Maliz",
+        "name:en": "Wadi Maliz",
+        "name:fr": "Délégation Oued Meliz",
+        "official_name": "معتمدية وادي مليز",
+        "official_name:ar": "معتمدية وادي مليز",
+        "official_name:fr": "Délégation de Oued Meliz",
+        "ref:tn:codegeo": "2258",
+        "ref:tn:hasc_2": "TN.JE.OM",
+        "wikidata": "Q3358031",
+        "wikipedia": "ar:معتمدية وادي مليز"
+      },
+      "sourceGeometrySha256": "08a4b792663bdf3e5ee3ee725025107d56ddfbbd1f5a0e0581082606c06ba8f2"
+    }
+  },
+  "expectedCoordinateCorrections": [
+    {
+      "delegationId": 500,
+      "expectedGovernorateId": 354,
+      "expectedNames": {
+        "nomAr": "واد مليز",
+        "nomFr": "Oued Mliz",
+        "nomEn": "Oued Mliz"
+      },
+      "reviewedDate": "2026-09-08",
+      "original": {
+        "lat": 36.4539,
+        "lng": 8.5501
+      },
+      "proposed": {
+        "lat": 36.4678121,
+        "lng": 8.5500007
+      },
+      "originalSourceAssetSha256": "20cdb11ccc5eb4f4eb07198b222a16bd1f5493224487185e6f3a6cf593857084",
+      "originalProvenance": "Legacy bundled locality reference in the exact originalSourceAssetSha256 governorate asset. No external INM origin for36.4539,8.5501 is documented; this correction chooses a reviewed settlement reference, not a certified INM calculation station.",
+      "movedKm": 1.5469804280099577,
+      "osm": {
+        "id": "osm:node:2840204369",
+        "url": "https://www.openstreetmap.org/node/2840204369",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2840204369",
+        "version": 8,
+        "timestamp": "2020-07-17T08:38:41Z",
+        "changeset": 88131134,
+        "name": "وادي مليز",
+        "place": "village",
+        "tags": {
+          "alt_name:ar": "واد مليز",
+          "name": "وادي مليز",
+          "name:ar": "وادي مليز",
+          "name:de": "Wadi Maliz",
+          "name:en": "Oued Melliz",
+          "name:fr": "Oued Meliz",
+          "place": "village",
+          "postal_code": "8115",
+          "wikidata": "Q3136209",
+          "wikipedia": "ar:وادي مليز"
+        }
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-08",
+        "liveResponse": {
+          "file": "coordinate-reviews/oued-meliz-2026-09-08/node-2840204369.xml",
+          "sha256": "46f916a7fa28a88e8ef3b7c13f699745aa897963f8b1058ed9b9e979d3a0763e"
+        },
+        "format": "OSM XML",
+        "responseUrl": "https://api.openstreetmap.org/api/0.6/node/2840204369",
+        "allTagsAndCoordinatesEqualCached": true
+      },
+      "primaryCorroboration": {
+        "file": "coordinate-reviews/oued-meliz-2026-09-08/social-local-unit.html",
+        "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2",
+        "url": "https://www.social.gov.tn/en/node/3498",
+        "publishedPoint": {
+          "lat": 36.4678121,
+          "lng": 8.5500007
+        },
+        "qualification": "Official local-unit coordinate at the town node; not an independently measured INM anchor."
+      },
+      "sourceReviews": [
+        {
+          "file": "coordinate-reviews/oued-meliz-2026-09-08/source-reference-review.json",
+          "sha256": "567ea56701a847c4a80f392105bd2a94f1f977d254a2060d32442a4285543669"
+        },
+        {
+          "file": "coordinate-reviews/oued-meliz-2026-09-08/map-position-review-data.json",
+          "sha256": "a82ad1b6218b014a5fa250876ede28122e363a1c05bbf32f6bbb9fe5df2e4cc7"
+        }
+      ],
+      "reviewEvidence": {
+        "file": "coordinate-reviews/oued-meliz-2026-09-08/source-reference-review.json",
+        "sha256": "567ea56701a847c4a80f392105bd2a94f1f977d254a2060d32442a4285543669"
+      },
+      "independentReview": {
+        "root": "TASK",
+        "file": "outputs/oued-meliz-reference-independent-review.json",
+        "sha256": "b803457c12c297268abc558a2b0dbf3a34899f2f595e494cf9beacc3b86c5a6c"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-08",
+        "decision": "supported_as_reviewed_settlement_reference",
+        "report": "coordinate-reviews/oued-meliz-2026-09-08/two-reference-phone-visual-review.json",
+        "reportSha256": "a5e3b9975a84fc6f1607d2ff9c9004414becc831a6de41b5a59feb3af94877a3",
+        "records": [
+          {
+            "rowId": "delegation:500",
+            "observationIndex": 2,
+            "query": "Oued Meliz Jendouba Tunisia",
+            "visualFinding": "Named result Oued Mliz / وادي مليز and visible regional map label Wadi Maliz.",
+            "qualification": "Supports name association; regional dotted outline was not extracted or certified.",
+            "screenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-2.png",
+              "sha256": "7c2cb6f9e7190500865a61cd5fea454776b8540272a847ca68d603f73a5aa260"
+            },
+            "capture": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-2.json",
+              "sha256": "bcf55a91ffa2e50b939ff9e9f068d9b337874c9b942a9a16827195a51ca92731"
+            }
+          },
+          {
+            "rowId": "delegation:500",
+            "observationIndex": 3,
+            "query": "36.4539,8.5501",
+            "visualFinding": "Old coordinate shows sparse roads; Maps selected a Western Union card with Tazoghrane8074 address.",
+            "qualification": "The automatic POI address is inconsistent with the intended locality and cannot validate identity; do not use it as authoritative administration.",
+            "screenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-3.png",
+              "sha256": "54b67e051f9145797849512dfae4edbf257612381af43ab1813f724d9dd73c30"
+            },
+            "capture": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_500-3.json",
+              "sha256": "4cce59d9ec7b5a67c78bc478403843c7ac89d2a72919d21b866de0b0081b5d3b"
+            }
+          },
+          {
+            "rowId": "osm:node:2840204369",
+            "observationIndex": 1,
+            "query": "36.4678121,8.5500007",
+            "visualFinding": "Proposed coordinate resolves to P6 amid the Wadi Maliz street grid, near Oued Meliz railway station.",
+            "qualification": "Supports settlement placement; road card is not an official prayer calculation coordinate.",
+            "screenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2840204369-1.png",
+              "sha256": "ff1442ca1fa5ed02913d182d858fa3af4a86ee51f6ed23ed344d31f99a4bfa85"
+            },
+            "capture": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2840204369-1.json",
+              "sha256": "33e7de3ca60ffa184391ad680ff3732a6a013c8f21b2f093df499ec776902772"
+            }
+          }
+        ],
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false
+      },
+      "limitations": [
+        "Settlement reference only; no certified INM calculation coordinate.",
+        "Existing raw node coordinates, timetable ID500 and five coded imadas are preserved.",
+        "Old auto-selected Western Union address is rejected as locality evidence."
+      ]
+    }
+  ],
+  "onlyRawChange": {
+    "id": "osm:node:2840204369",
+    "field": "pickerGroupId",
+    "before": "osm:node:2840204369",
+    "after": "delegation:500"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:2840204369"
+      ],
+      [
+        "delegation:500"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:500",
+        "osm:node:2840204369"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Run this display association only after applying the separately approved500 settlement-reference correction. The exact resulting base and unchanged raw point coordinates coincide; the display method changes neither. That coincidence is a consequence of independent source qualification, not an automatic identity rule.",
+  "priorBaseReference": {
+    "id": 500,
+    "nomFr": "Oued Mliz",
+    "nomAr": "واد مليز",
+    "nomEn": "Oued Mliz",
+    "lat": 36.4539,
+    "lng": 8.5501
+  },
+  "separateCoordinateProposal": {
+    "historicalTaskReadiness": {
+      "file": "outputs/oued-meliz-reference30-source-package-readiness.json",
+      "root": "TASK",
+      "sha256": "b000aba250ead4b8ea5d67c69aeac47e62a13cfb16e0b0ff02f77a0704d1bb1a"
+    },
+    "expectedCoordinateManifestSha256": "8315b7883e7d4e228f7f2a79e6bcccfdba6c0797e70d127cd220628428a740e8",
+    "expectedGovernorAssetSha256": "b9d9934dce62166196290261b2510c02b08548e3bf1b14ec857191d781ec30c1",
+    "ownCorrectionObjectOnlyIsRuntimeConstraint": true
+  },
+  "nameEquivalence": {
+    "baseArabic": "واد مليز",
+    "sourceArabic": "وادي مليز",
+    "exactSourceAlias": "واد مليز",
+    "officialDelegationArabic": "وادي مليز",
+    "frenchBase": "Oued Mliz",
+    "frenchSource": "Oued Meliz"
+  },
+  "formatSourceEvidence": {
+    "jsonXmlEquality": {
+      "file": "point-base-display-reviews/oued-meliz/xml-json-identity-equivalence.json",
+      "sha256": "57c9cbc17b6f163aab6d7b1092f7e275d78b43f2defa1eea4c63aadb6b6a3b89"
+    },
+    "authoritativeOriginalXml": {
+      "file": "coordinate-reviews/oued-meliz-2026-09-08/node-2840204369.xml",
+      "sha256": "46f916a7fa28a88e8ef3b7c13f699745aa897963f8b1058ed9b9e979d3a0763e"
+    },
+    "qualification": "Both independently retrieved public API formats describe the same version8 node. JSON is a direct live API response; it is not derived or relabeled XML. The XML remains unchanged in the coordinate30 package."
+  },
+  "scope": "Exactly one retained village/base choice; preserve all five separately coded imadas, their complete groups/geometry/context/defaults. No new geometry or source-name correction.",
+  "dependencyPolicy": "Active explicit relative references resolve using existing repo files plus the immutable seven-file coordinate30 source package and this five-file display package. Nested historical TASK/phone paths are provenance only.",
+  "phoneSupplement": {
+    "file": "coordinate-reviews/oued-meliz-2026-09-08/two-reference-phone-visual-review.json",
+    "sha256": "a5e3b9975a84fc6f1607d2ff9c9004414becc831a6de41b5a59feb3af94877a3",
+    "scope": "Supporting parent visual review; not administrative or INM calculation-point certification."
+  }
+}

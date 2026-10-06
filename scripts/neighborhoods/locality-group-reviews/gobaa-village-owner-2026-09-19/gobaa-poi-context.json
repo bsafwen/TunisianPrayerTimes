@@ -1,0 +1,22 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T09:15:49.431213+00:00",
+  "query": "Gobaa, Oued Ellil, Manouba, Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [],
+  "publicUiText": [
+    "الطبقات",
+    "Gobaa, Oued Ellil, Manouba, Tunisia",
+    "إغلاق",
+    "الاتجاهات",
+    "الاتصال",
+    "مشاركة",
+    "حفظ",
+    "مناسب لأصحاب الكراسي المتحرّكة",
+    "محو"
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "osm_relation_7095859-2.png",
+  "boundaryVerified": false
+}

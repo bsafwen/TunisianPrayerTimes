@@ -1,0 +1,1070 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_AND_FINITE_DISPLAY_SCOPE",
+  "baselineMetadataSha256": "012d83671e12e8cba3f8e5b64066e85637886502aa93f174b472709d8931894d",
+  "candidateTriage": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-hassan-saouaf-picker-candidate-triage.json",
+    "sha256": "80c943d260ae027e1a2b60940116b6cadeca4cb9ad7716b661477a326ae5fc17"
+  },
+  "primarySourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-hassan-saouaf-point-base-source-identity-review.json",
+    "sha256": "000b869270ccbe044f4991fd4002a69df027729739f364f9468b4be5dce3edfa"
+  },
+  "records": [
+    {
+      "nodeId": "osm:node:1165828355",
+      "baseId": 597,
+      "rawCurrent": {
+        "id": "osm:node:1165828355",
+        "sourceId": "osm",
+        "name": "بني حسان",
+        "aliases": [
+          "Beni Hassen"
+        ],
+        "kind": "village",
+        "parentName": "بني حسان الجوفية",
+        "contextAliases": [
+          "Beni Hassen",
+          "Beni Hassen Nord",
+          "Délégation Beni Hassen",
+          "بني حسان الجوفية",
+          "معتمدية بني حسان"
+        ],
+        "governorateId": 364,
+        "lat": 35.5670718,
+        "lng": 10.8080266,
+        "delegationId": 597,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1165828355"
+      },
+      "baseCurrent": {
+        "id": 597,
+        "nomFr": "Beni Hassan",
+        "nomAr": "بني حسان",
+        "nomEn": "Beni Hassan",
+        "lat": 35.5672,
+        "lng": 10.8079
+      },
+      "governorateId": 364,
+      "baseToNodeDistanceMeters": 18.284817263336357,
+      "coordinateReview": "Legacy base coordinates equal the earlier pinned coordinate review; neither base has a reviewed coordinate correction. This establishes data provenance, not historical INM station measurement.",
+      "currentNodeResponse": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\node-1165828355.json",
+        "sha256": "eadc84f817faec131f4ed88a699f02d37edb709d498922fc63307c03906d1a5e"
+      },
+      "nodeVersion": 15,
+      "nodeTimestamp": "2026-03-07T20:28:17Z",
+      "wholeGroupsBefore": {
+        "delegation:597": [
+          "delegation:597"
+        ],
+        "osm:node:1165828355": [
+          "osm:node:1165828355"
+        ]
+      },
+      "wholeGroupsAfterIfApproved": {
+        "delegation:597": [
+          "delegation:597",
+          "osm:node:1165828355"
+        ]
+      },
+      "normalizedOwnNameSourcePeers": [
+        {
+          "id": "osm:node:1165828355",
+          "kind": "village",
+          "tags": {
+            "addr:city": "Beni Hassen",
+            "addr:governorate": "Monastir",
+            "name": "بني حسان",
+            "name:ar": "بني حسان",
+            "name:en": "Beni Hassen",
+            "name:fr": "Beni Hassen",
+            "place": "village",
+            "wikidata": "Q1124789",
+            "wikimedia_commons": "Category:Beni Hassen",
+            "wikipedia": "en:Beni Hassen"
+          },
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7154977",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Beni Hassen",
+            "boundary": "administrative",
+            "name": "معتمدية بني حسان",
+            "name:ar": "معتمدية بني حسان",
+            "name:fr": "Délégation Beni Hassen",
+            "ref:tn:codegeo": "3255",
+            "ref:tn:hasc_2": "TN.MS.BH",
+            "wikidata": "Q2400649"
+          },
+          "rawPresent": false
+        }
+      ],
+      "normalizedRawOwnNamePeers": [
+        "osm:node:1165828355"
+      ],
+      "normalizedBaseOwnNamePeers": [
+        597
+      ],
+      "relatedContextAliasesOnly": [
+        {
+          "id": "osm:relation:7113965",
+          "name": "بني حسان الجوفية",
+          "kind": "sector",
+          "group": "osm:relation:7113965"
+        },
+        {
+          "id": "osm:relation:7113975",
+          "name": "بني حسان القبلية",
+          "kind": "sector",
+          "group": "osm:relation:7113975"
+        },
+        {
+          "id": "osm:relation:7114530",
+          "name": "الجنائحة",
+          "kind": "sector",
+          "group": "osm:relation:7114530"
+        },
+        {
+          "id": "osm:relation:7114531",
+          "name": "الغنادة",
+          "kind": "sector",
+          "group": "osm:relation:7114531"
+        },
+        {
+          "id": "osm:relation:7114532",
+          "name": "حاتم",
+          "kind": "sector",
+          "group": "osm:relation:7114532"
+        }
+      ],
+      "imadaInventory": [
+        {
+          "id": "osm:relation:7113965",
+          "officialCode": "325552",
+          "officialArabic": "بني حسان الجوفية",
+          "officialFrench": "Beni hassen nord",
+          "rawCurrent": {
+            "id": "osm:relation:7113965",
+            "sourceId": "osm",
+            "name": "بني حسان الجوفية",
+            "aliases": [
+              "Beni Hassen Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني حسان",
+            "contextAliases": [
+              "Beni Hassen",
+              "Délégation Beni Hassen",
+              "معتمدية بني حسان"
+            ],
+            "governorateId": 364,
+            "lat": 35.576337,
+            "lng": 10.806036,
+            "delegationId": 597,
+            "hasBoundary": true,
+            "bbox": [
+              10.788954,
+              35.553575,
+              10.828048,
+              35.599179
+            ],
+            "areaKm2": 7.757551282821774,
+            "pickerGroupId": "osm:relation:7113965",
+            "offset": 828004,
+            "length": 1628
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني حسان الجوفية",
+            "name:ar": "بني حسان الجوفية",
+            "name:fr": "Beni Hassen Nord",
+            "ref:tn:codegeo": "325552"
+          },
+          "cachedGeometrySha256": "a16ed17569fbfa739fcf60304d31960cc9d578989536e0c721668c8e45f21bb5",
+          "packedSha256": "83fe8559b8ad88a534bc1ebf0ba62888092232796d0b51846cd1292105a7b6e7",
+          "wholeGroup": [
+            "osm:relation:7113965"
+          ]
+        },
+        {
+          "id": "osm:relation:7113975",
+          "officialCode": "325551",
+          "officialArabic": "بني حسان القبلية",
+          "officialFrench": "Beni hassen sud",
+          "rawCurrent": {
+            "id": "osm:relation:7113975",
+            "sourceId": "osm",
+            "name": "بني حسان القبلية",
+            "aliases": [
+              "Beni Hassen Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني حسان",
+            "contextAliases": [
+              "Beni Hassen",
+              "Délégation Beni Hassen",
+              "معتمدية بني حسان"
+            ],
+            "governorateId": 364,
+            "lat": 35.553749,
+            "lng": 10.824302,
+            "delegationId": 597,
+            "hasBoundary": true,
+            "bbox": [
+              10.779899,
+              35.514632,
+              10.851957,
+              35.59277
+            ],
+            "areaKm2": 22.48153885326612,
+            "pickerGroupId": "osm:relation:7113975",
+            "offset": 829632,
+            "length": 2212
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني حسان القبلية",
+            "name:ar": "بني حسان القبلية",
+            "name:fr": "Beni Hassen Sud",
+            "ref:tn:codegeo": "325551"
+          },
+          "cachedGeometrySha256": "a1f58cbadb3b45523bf0de7538bf2bbca405135490db69b2eb597cf94641cd56",
+          "packedSha256": "776d519ae8a8d21ce5a4c6a80f8be5d75ea18e28a72139822e83c1b402a49f44",
+          "wholeGroup": [
+            "osm:relation:7113975"
+          ]
+        },
+        {
+          "id": "osm:relation:7114530",
+          "officialCode": "325554",
+          "officialArabic": "الجنائحة",
+          "officialFrench": "El jnaiha",
+          "rawCurrent": {
+            "id": "osm:relation:7114530",
+            "sourceId": "osm",
+            "name": "الجنائحة",
+            "aliases": [
+              "EL Jnaïha"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني حسان",
+            "contextAliases": [
+              "Beni Hassen",
+              "Délégation Beni Hassen",
+              "معتمدية بني حسان"
+            ],
+            "governorateId": 364,
+            "lat": 35.526525,
+            "lng": 10.773256,
+            "delegationId": 597,
+            "hasBoundary": true,
+            "bbox": [
+              10.737341,
+              35.49546,
+              10.803112,
+              35.557251
+            ],
+            "areaKm2": 17.21597993258721,
+            "pickerGroupId": "osm:relation:7114530",
+            "offset": 912756,
+            "length": 2172
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجنائحة",
+            "name:ar": "الجنائحة",
+            "name:fr": "EL Jnaïha",
+            "ref:tn:codegeo": "325554"
+          },
+          "cachedGeometrySha256": "7b9a99a964d95852d986f48215240c303f1c31e05c09ad4eecfefba87c43b00a",
+          "packedSha256": "fcb07b5ec7061bdf726297e1cefc763fb06650552754d676ba3f62fd63508040",
+          "wholeGroup": [
+            "osm:relation:7114530"
+          ]
+        },
+        {
+          "id": "osm:relation:7114531",
+          "officialCode": "325555",
+          "officialArabic": "الغنادة",
+          "officialFrench": "Ghnada",
+          "rawCurrent": {
+            "id": "osm:relation:7114531",
+            "sourceId": "osm",
+            "name": "الغنادة",
+            "aliases": [
+              "Ghenada",
+              "Ghnada"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني حسان",
+            "contextAliases": [
+              "Beni Hassen",
+              "Délégation Beni Hassen",
+              "معتمدية بني حسان"
+            ],
+            "governorateId": 364,
+            "lat": 35.498233,
+            "lng": 10.679364,
+            "delegationId": 427,
+            "hasBoundary": true,
+            "bbox": [
+              10.638127,
+              35.471646,
+              10.723575,
+              35.524493
+            ],
+            "areaKm2": 24.466902716371024,
+            "pickerGroupId": "osm:relation:7114531",
+            "offset": 914928,
+            "length": 2668
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الغنادة",
+            "name:ar": "الغنادة",
+            "name:fr": "Ghnada",
+            "ref:tn:codegeo": "325555"
+          },
+          "cachedGeometrySha256": "0b8b60a7448dcc799238f40d477df927f9e1d4f4fa8b3276f4ac7dba4e8e36ad",
+          "packedSha256": "eea735638ef45d1abe9995f9fb40fbe8418c3c26005c47aed3f74299c4fb4e30",
+          "wholeGroup": [
+            "osm:relation:7114531"
+          ]
+        },
+        {
+          "id": "osm:relation:7114532",
+          "officialCode": "325553",
+          "officialArabic": "حاتم",
+          "officialFrench": "Hatem",
+          "rawCurrent": {
+            "id": "osm:relation:7114532",
+            "sourceId": "osm",
+            "name": "حاتم",
+            "aliases": [
+              "Hatem"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني حسان",
+            "contextAliases": [
+              "Beni Hassen",
+              "Délégation Beni Hassen",
+              "معتمدية بني حسان"
+            ],
+            "governorateId": 364,
+            "lat": 35.518691,
+            "lng": 10.741304,
+            "delegationId": 427,
+            "hasBoundary": true,
+            "bbox": [
+              10.718012,
+              35.487362,
+              10.763012,
+              35.550105
+            ],
+            "areaKm2": 15.097863453438663,
+            "pickerGroupId": "osm:relation:7114532",
+            "offset": 917596,
+            "length": 1500
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حاتم",
+            "name:ar": "حاتم",
+            "name:fr": "Hatem",
+            "ref:tn:codegeo": "325553"
+          },
+          "cachedGeometrySha256": "c1a9c2efedb678a84875e14c7d6183261736624b2f61ecb94dbc050cbdfa9e5f",
+          "packedSha256": "45769db9a3cf2f18e28cb9051bcbc5b33819127b46de6f5e2cc50fae5886492c",
+          "wholeGroup": [
+            "osm:relation:7114532"
+          ]
+        }
+      ],
+      "pointImadaContainment": [
+        {
+          "role": "base",
+          "sectorId": "osm:relation:7113965",
+          "sourceContains": true,
+          "packedContains": true
+        },
+        {
+          "role": "node",
+          "sectorId": "osm:relation:7113965",
+          "sourceContains": true,
+          "packedContains": true
+        }
+      ],
+      "nearestReferenceChecks": [
+        {
+          "role": "node",
+          "lat": 35.5670718,
+          "lng": 10.8080266,
+          "nearest": 597,
+          "topThree": [
+            {
+              "sourceId": 597,
+              "distanceKm": 0.018284817263336358
+            },
+            {
+              "sourceId": 596,
+              "distanceKm": 6.482322650648544
+            },
+            {
+              "sourceId": 595,
+              "distanceKm": 8.235148027551093
+            }
+          ]
+        },
+        {
+          "role": "base",
+          "lat": 35.5672,
+          "lng": 10.8079,
+          "nearest": 597,
+          "topThree": [
+            {
+              "sourceId": 597,
+              "distanceKm": 0.0
+            },
+            {
+              "sourceId": 596,
+              "distanceKm": 6.468167630176273
+            },
+            {
+              "sourceId": 595,
+              "distanceKm": 8.216998477121757
+            }
+          ]
+        }
+      ],
+      "currentCoordinateCorrections": [],
+      "existingDirectCurationRules": [],
+      "existingPickerOwnershipReferences": [],
+      "sourceContextContainment": {
+        "parentId": "osm:relation:7154977",
+        "governorId": "osm:relation:1434954",
+        "bothPointsInsideBoth": true,
+        "parentGeometrySha256": "98b921bc804e88563b29d11e53b7d4066356b8fdbc558acec5f9085c74245dec",
+        "governorGeometrySha256": "ba3565c5a54a90374f3c53ed101919e86427b0689e6c2b6af3ac231ac274a747"
+      },
+      "primaryEvidence": [
+        {
+          "role": "official_settlement_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\social-beni-hassen.html",
+          "sha256": "72c66630bc33b3133977694fe332d1e72afd94ef3e58757e1bf658c0d5c86428",
+          "url": "https://www.social.gov.tn/fr/node/3186",
+          "requiredText": [
+            "شارع حبيب بورقيبة 5014 بني حسان",
+            "المنستير"
+          ],
+          "finding": "The named local Social Ministry office gives an inhabited-locality street address and governorate; its facility point corroborates local context, not an INM reference or town boundary.",
+          "facilityPoint": {
+            "lat": 35.56913,
+            "lng": 10.805901
+          }
+        },
+        {
+          "role": "official_explicit_city_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-activity-2019.pdf",
+          "sha256": "f9fb23a2e73de7a6c4b74ed1ab3b7d374c848f43bd477f53e2725584b02b583b",
+          "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/11/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%86%D8%B4%D8%A7%D8%B7-2019-.pdf",
+          "pdfPage": 87,
+          "printedPage": 87,
+          "tableRow": 14,
+          "visuallyReadText": "حماية مدينة بني حسان",
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-page-87.png",
+            "sha256": "d5a608332ed343c2c7d4166ab474d323eaa9efd057ca98881879ce30739c5a8e"
+          },
+          "personallyViewed": true,
+          "finding": "The ministry lists the locality as a city in its flood-protection projects. This distinguishes inhabited settlement usage from delegation-only nomenclature."
+        }
+      ],
+      "independentPrimaryFinding": "Personally read original Social Ministry HTML locality address and governorate, and visually read MEHAT PDF87 rows9/14 explicitly calling the two named places cities. This establishes inhabited-place usage independently of administrative delegation names.",
+      "acceptedBoundaryReplacementsForFiveImadas": [],
+      "baseAvailableInAccepted258": true,
+      "condition": "Source identity supports only the specified display association; implementation still requires exact guarded proof review. Administrative areas and phone outlines are not declared equivalent."
+    },
+    {
+      "nodeId": "osm:node:1419131100",
+      "baseId": 413,
+      "rawCurrent": {
+        "id": "osm:node:1419131100",
+        "sourceId": "osm",
+        "name": "صواف",
+        "aliases": [
+          "Saouaf",
+          "Sawwaf"
+        ],
+        "kind": "village",
+        "parentName": "صواف الغربية",
+        "contextAliases": [
+          "Délégation Saouaf",
+          "Saouaf",
+          "Saouaf Ouest",
+          "صواف الغربية",
+          "معتمدية صواف"
+        ],
+        "governorateId": 343,
+        "lat": 36.2275534,
+        "lng": 10.1712341,
+        "delegationId": 413,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1419131100"
+      },
+      "baseCurrent": {
+        "id": 413,
+        "nomFr": "Saouaf",
+        "nomAr": "صواف",
+        "nomEn": "Saouaf",
+        "lat": 36.2273,
+        "lng": 10.1725
+      },
+      "governorateId": 343,
+      "baseToNodeDistanceMeters": 116.99302038546624,
+      "coordinateReview": "Legacy base coordinates equal the earlier pinned coordinate review; neither base has a reviewed coordinate correction. This establishes data provenance, not historical INM station measurement.",
+      "currentNodeResponse": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\node-1419131100.json",
+        "sha256": "ff717341a43fa51318d9e5d4bd0c0363724d750e2715211db89f7c14b9ec7965"
+      },
+      "nodeVersion": 11,
+      "nodeTimestamp": "2026-03-07T20:28:17Z",
+      "wholeGroupsBefore": {
+        "delegation:413": [
+          "delegation:413"
+        ],
+        "osm:node:1419131100": [
+          "osm:node:1419131100"
+        ]
+      },
+      "wholeGroupsAfterIfApproved": {
+        "delegation:413": [
+          "delegation:413",
+          "osm:node:1419131100"
+        ]
+      },
+      "normalizedOwnNameSourcePeers": [
+        {
+          "id": "osm:node:1419131100",
+          "kind": "village",
+          "tags": {
+            "addr:city": "Sawwaf",
+            "addr:governorate": "Zaghouan",
+            "name": "صواف",
+            "name:ar": "صواف",
+            "name:en": "Sawwaf",
+            "name:fr": "Saouaf",
+            "place": "village"
+          },
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7167811",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Saouaf",
+            "boundary": "administrative",
+            "name": "معتمدية صواف",
+            "name:ar": "معتمدية صواف",
+            "name:fr": "Délégation Saouaf",
+            "ref:tn:codegeo": "1656",
+            "ref:tn:hasc_2": "TN.ZA.SA",
+            "wikidata": "Q3473078"
+          },
+          "rawPresent": false
+        }
+      ],
+      "normalizedRawOwnNamePeers": [
+        "osm:node:1419131100"
+      ],
+      "normalizedBaseOwnNamePeers": [
+        413
+      ],
+      "relatedContextAliasesOnly": [
+        {
+          "id": "osm:relation:7114526",
+          "name": "صواف الشرقية",
+          "kind": "sector",
+          "group": "osm:relation:7114526"
+        },
+        {
+          "id": "osm:relation:7114549",
+          "name": "الحميرة",
+          "kind": "sector",
+          "group": "osm:relation:7114549"
+        },
+        {
+          "id": "osm:relation:7116957",
+          "name": "صواف الغربية",
+          "kind": "sector",
+          "group": "osm:relation:7116957"
+        },
+        {
+          "id": "osm:relation:7119808",
+          "name": "الدغافلة الشرقية",
+          "kind": "sector",
+          "group": "osm:relation:7119808"
+        },
+        {
+          "id": "osm:relation:7119809",
+          "name": "الدغافلة الغربية",
+          "kind": "sector",
+          "group": "osm:relation:7119809"
+        }
+      ],
+      "imadaInventory": [
+        {
+          "id": "osm:relation:7114526",
+          "officialCode": "165651",
+          "officialArabic": "صواف الشرقية",
+          "officialFrench": "Saouef est",
+          "rawCurrent": {
+            "id": "osm:relation:7114526",
+            "sourceId": "osm",
+            "name": "صواف الشرقية",
+            "aliases": [
+              "Saouaf Est"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية صواف",
+            "contextAliases": [
+              "Délégation Saouaf",
+              "Saouaf",
+              "معتمدية صواف"
+            ],
+            "governorateId": 343,
+            "lat": 36.251159,
+            "lng": 10.17072,
+            "delegationId": 413,
+            "hasBoundary": true,
+            "bbox": [
+              10.103409,
+              36.207274,
+              10.227842,
+              36.295101
+            ],
+            "areaKm2": 56.08768427084746,
+            "pickerGroupId": "osm:relation:7114526",
+            "offset": 909808,
+            "length": 2948
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صواف الشرقية",
+            "name:ar": "صواف الشرقية",
+            "name:fr": "Saouaf Est",
+            "ref:tn:codegeo": "165651"
+          },
+          "cachedGeometrySha256": "c0f68c9927c790d30cb7da6c7ed7b03335283a1ccb36412895044297c80b0594",
+          "packedSha256": "949314256d8d5638bedf0b5340c3d12396db3883f068c2d0d2fa4d7f7a488a50",
+          "wholeGroup": [
+            "osm:relation:7114526"
+          ]
+        },
+        {
+          "id": "osm:relation:7114549",
+          "officialCode": "165653",
+          "officialArabic": "الحميرة",
+          "officialFrench": "El hamira",
+          "rawCurrent": {
+            "id": "osm:relation:7114549",
+            "sourceId": "osm",
+            "name": "الحميرة",
+            "aliases": [
+              "El Hamira",
+              "El Hmira"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية صواف",
+            "contextAliases": [
+              "Délégation Saouaf",
+              "Saouaf",
+              "معتمدية صواف"
+            ],
+            "governorateId": 343,
+            "lat": 36.207435,
+            "lng": 10.229782,
+            "delegationId": 413,
+            "hasBoundary": true,
+            "bbox": [
+              10.178396,
+              36.156168,
+              10.266294,
+              36.258824
+            ],
+            "areaKm2": 57.08424784691023,
+            "pickerGroupId": "osm:relation:7114549",
+            "offset": 919096,
+            "length": 3980
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحميرة",
+            "name:ar": "الحميرة",
+            "name:fr": "El Hamira",
+            "ref:tn:codegeo": "165653"
+          },
+          "cachedGeometrySha256": "00fadd0dcf6f235204d9c5dde2e4a14c4d423210ecc74253758033ceab5a10ed",
+          "packedSha256": "e1be372da33582bd74c19a3ba8cceaf65da18856d593f994ff385f24455921ee",
+          "wholeGroup": [
+            "osm:relation:7114549"
+          ]
+        },
+        {
+          "id": "osm:relation:7116957",
+          "officialCode": "165652",
+          "officialArabic": "صواف الغربية",
+          "officialFrench": "Saouef ouest",
+          "rawCurrent": {
+            "id": "osm:relation:7116957",
+            "sourceId": "osm",
+            "name": "صواف الغربية",
+            "aliases": [
+              "Saouaf Ouest"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية صواف",
+            "contextAliases": [
+              "Délégation Saouaf",
+              "Saouaf",
+              "معتمدية صواف"
+            ],
+            "governorateId": 343,
+            "lat": 36.193245,
+            "lng": 10.157726,
+            "delegationId": 413,
+            "hasBoundary": true,
+            "bbox": [
+              10.100227,
+              36.137595,
+              10.193927,
+              36.248922
+            ],
+            "areaKm2": 61.22474672496374,
+            "pickerGroupId": "osm:relation:7116957",
+            "offset": 966540,
+            "length": 4804
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صواف الغربية",
+            "name:ar": "صواف الغربية",
+            "name:fr": "Saouaf Ouest",
+            "ref:tn:codegeo": "165652"
+          },
+          "cachedGeometrySha256": "c31747961fd81fb63d41982551bd09db5ca82d96ba275ed2da0840ad35ca3641",
+          "packedSha256": "03d7dd8dda4bf87ce28c1339463f809c065f2d72fb4f925bae091cce25c26f46",
+          "wholeGroup": [
+            "osm:relation:7116957"
+          ]
+        },
+        {
+          "id": "osm:relation:7119808",
+          "officialCode": "165654",
+          "officialArabic": "الدغافلة الشرقية",
+          "officialFrench": "Deghafla est",
+          "rawCurrent": {
+            "id": "osm:relation:7119808",
+            "sourceId": "osm",
+            "name": "الدغافلة الشرقية",
+            "aliases": [
+              "Deghafla Est"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية صواف",
+            "contextAliases": [
+              "Délégation Saouaf",
+              "Saouaf",
+              "معتمدية صواف"
+            ],
+            "governorateId": 343,
+            "lat": 36.18993,
+            "lng": 10.11678,
+            "delegationId": 413,
+            "hasBoundary": true,
+            "bbox": [
+              10.06426,
+              36.134922,
+              10.14263,
+              36.245035
+            ],
+            "areaKm2": 29.011358546419828,
+            "pickerGroupId": "osm:relation:7119808",
+            "offset": 1144300,
+            "length": 4292
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدغافلة الشرقية",
+            "name:ar": "الدغافلة الشرقية",
+            "name:fr": "Deghafla Est",
+            "ref:tn:codegeo": "165654"
+          },
+          "cachedGeometrySha256": "756704bafe1f03e5f0b18af6aaf0e567d427465fc4724dea19a706255573d24c",
+          "packedSha256": "b0b1970b9df729673cc00a29f65dab561e1a4e577d0629fd1ae5f1c6047605f2",
+          "wholeGroup": [
+            "osm:relation:7119808"
+          ]
+        },
+        {
+          "id": "osm:relation:7119809",
+          "officialCode": "165655",
+          "officialArabic": "الدغافلة الغربية",
+          "officialFrench": "Deghafla ouest",
+          "rawCurrent": {
+            "id": "osm:relation:7119809",
+            "sourceId": "osm",
+            "name": "الدغافلة الغربية",
+            "aliases": [
+              "Deghafla Ouest"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية صواف",
+            "contextAliases": [
+              "Délégation Saouaf",
+              "Saouaf",
+              "معتمدية صواف"
+            ],
+            "governorateId": 343,
+            "lat": 36.200419,
+            "lng": 10.074802,
+            "delegationId": 412,
+            "hasBoundary": true,
+            "bbox": [
+              10.005227,
+              36.150577,
+              10.108734,
+              36.250205
+            ],
+            "areaKm2": 50.20198350858805,
+            "pickerGroupId": "osm:relation:7119809",
+            "offset": 1148592,
+            "length": 3060
+          },
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدغافلة الغربية",
+            "name:ar": "الدغافلة الغربية",
+            "name:fr": "Deghafla Ouest",
+            "ref:tn:codegeo": "165655"
+          },
+          "cachedGeometrySha256": "cfcadf130330c86febb98c5be8c17a6ccb355fa67d7a71c2ccadcb694c804714",
+          "packedSha256": "93d8fe57b7dd03cd0439e07d81622e60cea6e45ce643633ad7c687b2e9a8b5bf",
+          "wholeGroup": [
+            "osm:relation:7119809"
+          ]
+        }
+      ],
+      "pointImadaContainment": [
+        {
+          "role": "base",
+          "sectorId": "osm:relation:7114526",
+          "sourceContains": true,
+          "packedContains": true
+        },
+        {
+          "role": "node",
+          "sectorId": "osm:relation:7116957",
+          "sourceContains": true,
+          "packedContains": true
+        }
+      ],
+      "nearestReferenceChecks": [
+        {
+          "role": "node",
+          "lat": 36.2275534,
+          "lng": 10.1712341,
+          "nearest": 413,
+          "topThree": [
+            {
+              "sourceId": 413,
+              "distanceKm": 0.11699302038546623
+            },
+            {
+              "sourceId": 409,
+              "distanceKm": 12.471069251082241
+            },
+            {
+              "sourceId": 412,
+              "distanceKm": 13.496564585438612
+            }
+          ]
+        },
+        {
+          "role": "base",
+          "lat": 36.2273,
+          "lng": 10.1725,
+          "nearest": 413,
+          "topThree": [
+            {
+              "sourceId": 413,
+              "distanceKm": 0.0
+            },
+            {
+              "sourceId": 409,
+              "distanceKm": 12.430530983147
+            },
+            {
+              "sourceId": 412,
+              "distanceKm": 13.531912927632211
+            }
+          ]
+        }
+      ],
+      "currentCoordinateCorrections": [],
+      "existingDirectCurationRules": [],
+      "existingPickerOwnershipReferences": [],
+      "sourceContextContainment": {
+        "parentId": "osm:relation:7167811",
+        "governorId": "osm:relation:1435837",
+        "bothPointsInsideBoth": true,
+        "parentGeometrySha256": "82dec154480cd33904cbf6a668f7f475be6ebdf75d6e42e60d745a4f622547f1",
+        "governorGeometrySha256": "e6a23d13372b7d864e5389de7cc3b3c36e9cdd4cb0d30b269ab6ca2d370689b8"
+      },
+      "primaryEvidence": [
+        {
+          "role": "official_settlement_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\social-saouaf.html",
+          "sha256": "681bca6c896c69bed092b503b1a9aba24cc28dba42e06dc2fc9db59c19512f3b",
+          "url": "https://www.social.gov.tn/en/node/1277",
+          "requiredText": [
+            "شارع عقبة بن نافع 1115 صواف",
+            "زغوان"
+          ],
+          "finding": "The named local Social Ministry office gives an inhabited-locality street address and governorate; its facility point corroborates local context, not an INM reference or town boundary.",
+          "facilityPoint": {
+            "lat": 36.230147,
+            "lng": 10.1705942
+          }
+        },
+        {
+          "role": "official_explicit_city_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-activity-2019.pdf",
+          "sha256": "f9fb23a2e73de7a6c4b74ed1ab3b7d374c848f43bd477f53e2725584b02b583b",
+          "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/11/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%86%D8%B4%D8%A7%D8%B7-2019-.pdf",
+          "pdfPage": 87,
+          "printedPage": 87,
+          "tableRow": 9,
+          "visuallyReadText": "حماية مدينة صواف",
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-page-87.png",
+            "sha256": "d5a608332ed343c2c7d4166ab474d323eaa9efd057ca98881879ce30739c5a8e"
+          },
+          "personallyViewed": true,
+          "finding": "The ministry lists the locality as a city in its flood-protection projects. This distinguishes inhabited settlement usage from delegation-only nomenclature."
+        }
+      ],
+      "independentPrimaryFinding": "Personally read original Social Ministry HTML locality address and governorate, and visually read MEHAT PDF87 rows9/14 explicitly calling the two named places cities. This establishes inhabited-place usage independently of administrative delegation names.",
+      "acceptedBoundaryReplacementsForFiveImadas": [],
+      "baseAvailableInAccepted258": true,
+      "condition": "Source identity supports only the specified display association; implementation still requires exact guarded proof review. Administrative areas and phone outlines are not declared equivalent."
+    }
+  ],
+  "exactMetadataFieldChangesIfApproved": [
+    {
+      "id": "osm:node:1165828355",
+      "field": "pickerGroupId",
+      "before": "osm:node:1165828355",
+      "after": "delegation:597"
+    },
+    {
+      "id": "osm:node:1419131100",
+      "field": "pickerGroupId",
+      "before": "osm:node:1419131100",
+      "after": "delegation:413"
+    }
+  ],
+  "expectedCountsIfApproved": {
+    "raw": 3630,
+    "polygons": 2725,
+    "points": 905,
+    "rawGroups": 3494,
+    "pickerBefore": 3585,
+    "pickerAfter": 3583,
+    "eligibleAfter": 3582
+  },
+  "preservation": "All twelve current raw records, ten imada singleton groups, four distinct point/reference coordinates, all raw defaults and all binary geometry remain exact; only the two target group fields would change. Parents remain non-raw.",
+  "allTenImadasStayDistinct": true,
+  "numericComparisons": 1032,
+  "limitations": [
+    "Source identity and finite scope are approved; no implementation or generated output has been reviewed by this report.",
+    "Saouaf prior Maps base card was delegation-scale and the current node card town-scale; their outline equality is not asserted.",
+    "Cached imada containment is a consistency check, not boundary certification; legacy coordinate provenance does not establish an INM station anchor."
+  ],
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "012d83671e12e8cba3f8e5b64066e85637886502aa93f174b472709d8931894d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "a955a22e5db46a268937deaedf1677739c73df4ee2f3f9a2cd711d3dfa9f01ae"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "a7df0837b6d193a716574cdbbab7580dcbab0403cf7a15a116759191340e16eb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "357e9fe2d280bc6ba08dbb736b35fa24c26346d48882f455107360d7f3af67c9"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "3126cf6628ffe1629e8b9b2cc84e7e989054cc69dcc045e8c77c584c576f414a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "ee6db3469c37d1f02762b855df240cdf637bd054fb08fdee55098721ac51330a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\prayer-source-coordinate-review.json",
+      "sha256": "ba33f7cff8af77a871f14954547913fb6f1f2c6d8f643afe5dc883ecc6be13eb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "d4f2463cec169a4ac1bbd2e2df6905db9fa0a0646f841a19ae2a582142e727f5"
+    }
+  ],
+  "notPerformed": [
+    "generator/helper import or execution",
+    "whole-catalog nearest matrix",
+    "network",
+    "PBF scan",
+    "repo mutation",
+    "phone or live ledger access",
+    "tests/builds"
+  ],
+  "reviewScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_beni_hassan_saouaf_finite_scope.py",
+    "sha256": "c7cdacca7d2b945de13c09f5cd7fb2e347f195c802452b627e4f14ea95dfa259"
+  }
+}

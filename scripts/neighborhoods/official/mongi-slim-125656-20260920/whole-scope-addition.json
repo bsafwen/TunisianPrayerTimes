@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "primarySource": {
+    "title": "Tunisian decree2023-590 of21September2023, annex1 tableA and annex6 introduction",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "date": "2023-09-21",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "pages": 190,
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "records": [
+    {
+      "officialCode": "125656",
+      "imadaName": "المنجي سليم",
+      "circleName": "المنجي سليم - (حي التضامن)",
+      "circleCountForImada": 1,
+      "visibleCellSpan": 1,
+      "seats": 1,
+      "delegationCode": "1256",
+      "delegationName": "حي التضامن",
+      "governorateCode": "12",
+      "governorateName": "أريانة",
+      "officialRegistryRow": {
+        "governorateCode": "12",
+        "governorateFr": "Ariana",
+        "governorateAr": "أريانة",
+        "delegationCode": "1256",
+        "delegationFr": "Cite ettadhamen",
+        "delegationAr": "حي التضامن",
+        "sectorCode": "125656",
+        "sectorFr": "El mongi slim",
+        "sectorAr": "المنجي سليم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6869,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 229,
+          "Nombre_de_menages_par_Secteurs.xlsx": 229
+        }
+      },
+      "jortPage": 5100,
+      "annex": 1,
+      "table": "A",
+      "personallyViewed": true,
+      "conclusion": "whole_imada",
+      "pdfPage": 3,
+      "id": "osm:relation:7115583",
+      "boundarySourceId": "isie-local-sector-2023-mongi-slim-ettadhamen",
+      "boundarySourceFile": "official/mongi-slim-125656-20260920/mongi-slim-125656-native-source.geojson",
+      "boundarySourceSha256": "4767bfefe9a431036d3d7562169653af44c047a3b01c02821ffa99a4604a5913",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%AD%D9%8A%20%D8%A7%D9%84%D8%AA%D8%B6%D8%A7%D9%85%D9%86/%D8%A7%D9%84%D9%85%D9%86%D8%AC%D9%8A%20%D8%B3%D9%84%D9%8A%D9%85.pdf",
+      "mapPdfSha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21"
+    }
+  ]
+}

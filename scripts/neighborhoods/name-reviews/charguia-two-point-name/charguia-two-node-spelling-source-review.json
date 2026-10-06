@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_EXACT_TWO_NODE_NAME_CORRECTIONS",
+  "createdAt": "2026-09-08T06:50:34.630689+00:00",
+  "baselineMetadataSha256": "5f917545f27b00c111221d366dfb7702e70952445296967a2219e1db93d92404",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "cachedSource": {
+    "file": "work/geo/osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "provenance": "Existing cache from the pinned source extract; no fresh PBF scan or API provenance claimed."
+  },
+  "scope": "Exact ordinary Arabic word transposition in two current numbered Charguia industrial-neighborhood point labels only. No industrial polygon, administrative boundary, governorate or source-anchor certification.",
+  "records": [
+    {
+      "id": "osm:node:2157169856",
+      "sourceNode": {
+        "id": "osm:node:2157169856",
+        "tags": {
+          "addr:neighbourhood": "المنقطة الصناعية الشرقية 1",
+          "addr:postcode": "2035",
+          "name": "المنقطة الصناعية الشرقية 1",
+          "name:ar": "المنقطة الصناعية الشرقية 1",
+          "name:en": "Zone Industrielle La Charguia I",
+          "name:fr": "Zone Industrielle La Charguia I",
+          "place": "neighbourhood"
+        },
+        "lat": 36.8406119,
+        "lng": 10.2079928
+      },
+      "sourceNodeSha256": "c4a874c886ca814633642823d3e5ff45d2f4699a24586c1ffd49ed70a0efebf2",
+      "currentRawRecord": {
+        "id": "osm:node:2157169856",
+        "sourceId": "osm",
+        "name": "المنقطة الصناعية الشرقية 1",
+        "aliases": [
+          "Zone Industrielle La Charguia I"
+        ],
+        "kind": "neighbourhood",
+        "parentName": "الشرقية",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "Ech-Charguia",
+          "la cité El Khadra",
+          "الشرقية",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.8406119,
+        "lng": 10.2079928,
+        "delegationId": 389,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2157169856"
+      },
+      "rawRecordSha256": "df650bd4d300dbb15f1130049d11695e645f9e9415a4663a4b08af2861c9884b",
+      "unchangedParentSector": {
+        "id": "osm:relation:7201235",
+        "sourceId": "osm",
+        "name": "الشرقية",
+        "aliases": [
+          "Ech-Charguia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.847325,
+        "lng": 10.224886,
+        "delegationId": 631,
+        "hasBoundary": true,
+        "bbox": [
+          10.19983,
+          36.82467,
+          10.250262,
+          36.871292
+        ],
+        "areaKm2": 10.560892730073157,
+        "pickerGroupId": "osm:relation:7201235",
+        "offset": 5049700,
+        "length": 2436
+      },
+      "expectedNameTags": {
+        "name": "المنطقة الصناعية الشرقية 1",
+        "name:ar": "المنطقة الصناعية الشرقية 1",
+        "name:en": "Zone Industrielle La Charguia I",
+        "name:fr": "Zone Industrielle La Charguia I",
+        "alt_name:ar": "المنقطة الصناعية الشرقية 1"
+      },
+      "expectedName": "المنطقة الصناعية الشرقية 1",
+      "expectedAliases": [
+        "Zone Industrielle La Charguia I",
+        "المنقطة الصناعية الشرقية 1"
+      ],
+      "completeBeforeAndAfterRawGroup": [
+        "osm:node:2157169856"
+      ]
+    },
+    {
+      "id": "osm:node:2157169857",
+      "sourceNode": {
+        "id": "osm:node:2157169857",
+        "tags": {
+          "addr:neighbourhood": "المنقطة الصناعية الشرقية 2",
+          "addr:postcode": "2035",
+          "name": "المنقطة الصناعية الشرقية 2",
+          "name:ar": "المنقطة الصناعية الشرقية 2",
+          "name:en": "Zone Industrielle La Charguia II",
+          "name:fr": "Zone Industrielle La Charguia II",
+          "place": "neighbourhood"
+        },
+        "lat": 36.8545279,
+        "lng": 10.2079247
+      },
+      "sourceNodeSha256": "462be03575294d31cc751e5dd289b24a21bbc1d25ee1e40ef53c81da653d6cb2",
+      "currentRawRecord": {
+        "id": "osm:node:2157169857",
+        "sourceId": "osm",
+        "name": "المنقطة الصناعية الشرقية 2",
+        "aliases": [
+          "Zone Industrielle La Charguia II"
+        ],
+        "kind": "neighbourhood",
+        "parentName": "برج الوزير",
+        "contextAliases": [
+          "Borj Louzir",
+          "Délégation Soukra",
+          "La Soukra",
+          "برج الوزير",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.8545279,
+        "lng": 10.2079247,
+        "delegationId": 631,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2157169857"
+      },
+      "rawRecordSha256": "b57a87b73bdd5ee658bd3c038ff0931718108dd38d4a9037726ca2b52bd7bc28",
+      "unchangedParentSector": {
+        "id": "osm:relation:7114906",
+        "sourceId": "osm",
+        "name": "برج الوزير",
+        "aliases": [
+          "Borj Louzir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سكرة",
+        "contextAliases": [
+          "Délégation Soukra",
+          "La Soukra",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.860654,
+        "lng": 10.208701,
+        "delegationId": 631,
+        "hasBoundary": true,
+        "bbox": [
+          10.200396,
+          36.848547,
+          10.225259,
+          36.872933
+        ],
+        "areaKm2": 2.9220117666167105,
+        "pickerGroupId": "osm:relation:7114906",
+        "offset": 935604,
+        "length": 556
+      },
+      "expectedNameTags": {
+        "name": "المنطقة الصناعية الشرقية 2",
+        "name:ar": "المنطقة الصناعية الشرقية 2",
+        "name:en": "Zone Industrielle La Charguia II",
+        "name:fr": "Zone Industrielle La Charguia II",
+        "alt_name:ar": "المنقطة الصناعية الشرقية 2"
+      },
+      "expectedName": "المنطقة الصناعية الشرقية 2",
+      "expectedAliases": [
+        "Zone Industrielle La Charguia II",
+        "المنقطة الصناعية الشرقية 2"
+      ],
+      "completeBeforeAndAfterRawGroup": [
+        "osm:node:2157169857"
+      ]
+    }
+  ],
+  "exactCurrentTypoOccurrenceIds": [
+    "osm:node:2157169856",
+    "osm:node:2157169857"
+  ],
+  "matchingCachedNamePeerInventory": [
+    {
+      "id": "osm:relation:7201235",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الشرقية",
+        "name:ar": "الشرقية",
+        "name:fr": "Ech-Charguia",
+        "ref:tn:codegeo": "115953"
+      }
+    },
+    {
+      "id": "osm:node:2157169856",
+      "tags": {
+        "addr:neighbourhood": "المنقطة الصناعية الشرقية 1",
+        "addr:postcode": "2035",
+        "name": "المنقطة الصناعية الشرقية 1",
+        "name:ar": "المنقطة الصناعية الشرقية 1",
+        "name:en": "Zone Industrielle La Charguia I",
+        "name:fr": "Zone Industrielle La Charguia I",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "id": "osm:node:2157169857",
+      "tags": {
+        "addr:neighbourhood": "المنقطة الصناعية الشرقية 2",
+        "addr:postcode": "2035",
+        "name": "المنقطة الصناعية الشرقية 2",
+        "name:ar": "المنقطة الصناعية الشرقية 2",
+        "name:en": "Zone Industrielle La Charguia II",
+        "name:fr": "Zone Industrielle La Charguia II",
+        "place": "neighbourhood"
+      }
+    }
+  ],
+  "primaryEvidence": {
+    "file": "name-reviews/charguia-two-point-name/mehat-approved-developers-ar-2025-12-31.pdf",
+    "sha256": "ad4dc90df4d85d72b5db3f7d0231d7578d920ab8251f59d3658fa90a8f4c9444",
+    "url": "https://www.mehat.gov.tn/wp-content/uploads/2026/01/ste-spi-agree-31-12-2025-Ar.pdf",
+    "retrieval": {
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2026/01/ste-spi-agree-31-12-2025-Ar.pdf",
+      "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2026/01/ste-spi-agree-31-12-2025-Ar.pdf",
+      "retrievedAt": "2026-09-08T06:47:34.273141+00:00",
+      "httpStatus": 200,
+      "sha256": "ad4dc90df4d85d72b5db3f7d0231d7578d920ab8251f59d3658fa90a8f4c9444",
+      "bytes": 970650
+    },
+    "publisher": "Ministry of Equipment and Housing",
+    "documentDate": "2025-12-31",
+    "pdfPage": 7,
+    "personallyViewedWholePage": true,
+    "rows": [
+      {
+        "row": 160,
+        "supportsZone": 1,
+        "addressSummary": "ZoneIndustrielleCharguia1, Rue8600, Tunis2035; Arabic word المنطقة."
+      },
+      {
+        "row": 168,
+        "supportsZone": 2,
+        "addressSummary": "ZoneIndustrielleCharguia2, Rue8601, TunisCarthage mailing address; Arabic word المنطقة."
+      }
+    ],
+    "scopeLimit": "Published addresses establish numbered-zone spelling, not facility-to-node coordinate identity or administrative jurisdiction. The TunisCarthage mailing label does not override the coded Ariana governorate of zone2."
+  },
+  "compatibility": {
+    "existingGeneratorNameTagsMechanism": true,
+    "generatorUnchanged": true,
+    "oldArabicRetainedExactlyAsAltNameAr": true,
+    "allLatinNameTagsRetained": true,
+    "savedSelectionUpdate": "Existing generated retired-localities.json reviewedNames adds both exact raw IDs/current kinds/new names; no replacement or retirement.",
+    "nonNameSourceTag": "addr:neighbourhood remains the exact historical source typo. This curation changes only consumed name tags and does not alter original source files.",
+    "expectedRawFields": [
+      {
+        "id": "osm:node:2157169856",
+        "field": "name",
+        "before": "المنقطة الصناعية الشرقية 1",
+        "after": "المنطقة الصناعية الشرقية 1"
+      },
+      {
+        "id": "osm:node:2157169856",
+        "field": "aliases",
+        "before": [
+          "Zone Industrielle La Charguia I"
+        ],
+        "after": [
+          "Zone Industrielle La Charguia I",
+          "المنقطة الصناعية الشرقية 1"
+        ]
+      },
+      {
+        "id": "osm:node:2157169857",
+        "field": "name",
+        "before": "المنقطة الصناعية الشرقية 2",
+        "after": "المنطقة الصناعية الشرقية 2"
+      },
+      {
+        "id": "osm:node:2157169857",
+        "field": "aliases",
+        "before": [
+          "Zone Industrielle La Charguia II"
+        ],
+        "after": [
+          "Zone Industrielle La Charguia II",
+          "المنقطة الصناعية الشرقية 2"
+        ]
+      }
+    ],
+    "expectedTinyReviewedNameAdditions": [
+      {
+        "id": "osm:node:2157169856",
+        "name": "المنطقة الصناعية الشرقية 1",
+        "kind": "neighbourhood"
+      },
+      {
+        "id": "osm:node:2157169857",
+        "name": "المنطقة الصناعية الشرقية 2",
+        "kind": "neighbourhood"
+      }
+    ]
+  },
+  "notPerformed": [
+    "No generator/helper execution",
+    "No tests/build/APK",
+    "No phone or live-ledger access",
+    "No repository mutation",
+    "No broad catalog re-audit beyond exact typo occurrences"
+  ]
+}

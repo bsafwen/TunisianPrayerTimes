@@ -1,0 +1,123 @@
+{
+  "sourceVerdict": {
+    "status": "SOURCE_FACTS_REVIEWED_CURRENT_OFFICIAL_NAMES_ALREADY_INSTALLED",
+    "targets": [
+      {
+        "id": "osm:relation:7189452",
+        "currentName": "زهرة مدين",
+        "officialSectorCode": "215351",
+        "officialSectorFr": "Zahret medien",
+        "originalOsmName": "عمدون",
+        "originalOsmNameFr": "Amdoun",
+        "nameIdentity": "SUPPORTED",
+        "currentNameMatchesOfficialArabicPrimary": true,
+        "legacyAliasesRetained": true,
+        "officialMapFile": "zahret-medien.pdf",
+        "officialMapSha256": "7e8b308d9e185da02fcb450153d1239e783cfef54f82a3a78c0a580661217bd3",
+        "nativeDrawingIndex": 245,
+        "nativeVertexCount": 373,
+        "nativeValid": true,
+        "nativeContinuousExplicitlyClosed": true,
+        "epsg": 32632,
+        "maxControlResidualMeters": 0.2836175848720098,
+        "wholeTargetInsideViewportAndBothClips": true,
+        "officialVsPacked": {
+          "officialAreaKm2": 8.995099411370612,
+          "packedAreaKm2": 9.53265200601067,
+          "iou": 0.9262838136221708,
+          "officialCoveredByPacked": 0.9904682249152539,
+          "packedCoveredByOfficial": 0.9346150621357868,
+          "hausdorffMeters": 431.1044064147871,
+          "centroidDistanceMeters": 45.07504683958938,
+          "materialDifferenceNotCertifiedRoundingOnly": true
+        },
+        "currentAnchor": {
+          "lat": 36.78194,
+          "lng": 9.088968,
+          "coveredByOfficialNative": true,
+          "distanceToOfficialBoundaryMeters": 925.1525654005069
+        }
+      },
+      {
+        "id": "osm:relation:7189451",
+        "currentName": "زهرة مدين الجنوبية",
+        "officialSectorCode": "215352",
+        "officialSectorFr": "Zahret medien sud",
+        "originalOsmName": "عمدون الجنوبية",
+        "originalOsmNameFr": "Amdoun Sud",
+        "nameIdentity": "SUPPORTED",
+        "currentNameMatchesOfficialArabicPrimary": true,
+        "legacyAliasesRetained": true,
+        "officialMapFile": "zahret-medien-sud.pdf",
+        "officialMapSha256": "d4f5105ecb380f07b675b1897e4ad9f903da2cfae9ee81daf5e0d88fe2944107",
+        "nativeDrawingIndex": 271,
+        "nativeVertexCount": 515,
+        "nativeValid": true,
+        "nativeContinuousExplicitlyClosed": true,
+        "epsg": 32632,
+        "maxControlResidualMeters": 0.33349120266599147,
+        "wholeTargetInsideViewportAndBothClips": true,
+        "officialVsPacked": {
+          "officialAreaKm2": 19.692897278145765,
+          "packedAreaKm2": 18.653236422854725,
+          "iou": 0.9319606678445581,
+          "officialCoveredByPacked": 0.9393150267607477,
+          "packedCoveredByOfficial": 0.9916688940453157,
+          "hausdorffMeters": 649.1935219569352,
+          "centroidDistanceMeters": 2.8990386627862534,
+          "materialDifferenceNotCertifiedRoundingOnly": true
+        },
+        "currentAnchor": {
+          "lat": 36.76026,
+          "lng": 9.087709,
+          "coveredByOfficialNative": true,
+          "distanceToOfficialBoundaryMeters": 484.7773939761201
+        }
+      }
+    ],
+    "pairTopology": {
+      "relation": "212101212",
+      "intersectionAreaM2": 2424.407393552848,
+      "boundaryIntersectionLengthMeters": 0.0,
+      "qualification": "separately georeferenced complete native paths; no snapping or repair"
+    },
+    "wholeImadaScope": {
+      "proofPresent": false,
+      "jortOrDecreePresent": false,
+      "websiteIndexOrEqualLabelTreatedAsWholeScopeProof": false,
+      "qualification": "ISIE 2023 electoral district/imada PDFs, website index entries and equal labels are not exact whole-imada legal scope proof"
+    },
+    "outOfScopeIgnored": [
+      "osm:relation:7133850",
+      "osm:node:287613682",
+      "midoun",
+      "arkou"
+    ],
+    "reextractionPerformed": false,
+    "geometryRepairSnapCutFillPerformed": false,
+    "impactAdapterExecutionClaimed": false,
+    "impactPythonSuppliedForNativeAgentReviewExecution": true
+  },
+  "missingEvidence": {
+    "status": "MISSING_EXACT_WHOLE_IMADA_SCOPED_PROOF_ONLY",
+    "items": [
+      {
+        "id": "osm:relation:7189452",
+        "officialSectorCode": "215351",
+        "missing": "No JORT/official decree or equivalent legal instrument delimiting the whole imada 215351 was supplied; ISIE 2023 map, website index entry and equal label do not establish whole-imada legal scope."
+      },
+      {
+        "id": "osm:relation:7189451",
+        "officialSectorCode": "215352",
+        "missing": "No JORT/official decree or equivalent legal instrument delimiting the whole imada 215352 was supplied; ISIE 2023 map, website index entry and equal label do not establish whole-imada legal scope."
+      }
+    ],
+    "notAcceptedAsScopedProof": [
+      "ISIE website index entry",
+      "observed PDF title",
+      "equal Arabic/French label",
+      "red legend label"
+    ],
+    "qualification": "Only the missing exact scoped proof is identified; no decree or whole-imada scope is fabricated or inferred."
+  }
+}

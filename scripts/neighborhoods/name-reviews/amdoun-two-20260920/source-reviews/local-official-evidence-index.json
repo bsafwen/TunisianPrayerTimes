@@ -1,0 +1,2173 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_FINITE_LOCAL_EVIDENCE_INDEX",
+  "scope": "Five holds/seven exactIDs only; no newresearch/network/devices/production changes. Historical Maps records reused from frozenfacts; no ledger/images rescan.",
+  "installedMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "d396925c0a7adb85010fb1a2b3f839ffcea939bc12b59a0da6c04d23c57d79a4",
+    "bytes": 1866360
+  },
+  "selectedCurrentRowsUnchangedFromFrozenSevenFacts": true,
+  "frozenFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+    "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+    "bytes": 132738
+  },
+  "originalInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\source.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "officialPdf": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+    "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+    "bytes": 749971
+  },
+  "cachedIndex": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+    "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+    "bytes": 818063
+  },
+  "codegeoAvailability": {
+    "localFolder": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes",
+    "verifiedExisting": "ins-2012.pdf",
+    "pre2011CopiesFoundInThisFolder": false,
+    "qualification": "Only thisknowncodegeo cachefolder was inventoried; no whole-workspace absence claim. No2004/2006file retrieved or inferred. The2012book itself contains old7Novembre/ElAhdElJadid names."
+  },
+  "cases": [
+    {
+      "rank": 6,
+      "ids": [
+        "osm:relation:7189451",
+        "osm:relation:7189452"
+      ],
+      "label": "Amdoun sector labels versus Zahret Medien",
+      "sourceObjects": [
+        {
+          "id": "osm:relation:7189451",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون الجنوبية",
+            "name:ar": "عمدون الجنوبية",
+            "name:fr": "Amdoun Sud",
+            "ref:tn:codegeo": "215352"
+          },
+          "originalBbox": [
+            9.052248,
+            36.73371,
+            9.139952,
+            36.7867
+          ],
+          "current": {
+            "name": "عمدون الجنوبية",
+            "kind": "sector",
+            "lat": 36.76026,
+            "lng": 9.087709,
+            "parentName": "معتمدية عمدون",
+            "governorateId": 356,
+            "delegationId": 515,
+            "pickerGroupId": "osm:relation:7189451"
+          },
+          "official2024Record": {
+            "governorateCode": "21",
+            "governorateFr": "Beja",
+            "governorateAr": "باجة",
+            "delegationCode": "2153",
+            "delegationFr": "Amdoun",
+            "delegationAr": "عمدون",
+            "sectorCode": "215352",
+            "sectorFr": "Zahret medien sud",
+            "sectorAr": "زهرة مدين الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20672,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 924,
+              "Nombre_de_menages_par_Secteurs.xlsx": 923
+            }
+          },
+          "sourceParentScope": [
+            {
+              "id": "osm:relation:7189391",
+              "tags": {
+                "admin_level": "5",
+                "boundary": "administrative",
+                "long_name": "معتمدية عمدون",
+                "long_name:ar": "معتمدية عمدون",
+                "long_name:fr": "Délégation d'Amdoun",
+                "name": "معتمدية عمدون",
+                "name:ar": "معتمدية عمدون",
+                "name:fr": "Délégation Amdoun",
+                "ref:tn:codegeo": "2153",
+                "ref:tn:hasc_2": "TN.BJ.AM",
+                "sorting_name": "عمدون",
+                "sorting_name:ar": "عمدون",
+                "sorting_name:fr": "Amdoun",
+                "wikidata": "Q2842503",
+                "wikipedia": "ar:معتمدية عمدون",
+                "wikipedia:ar": "معتمدية عمدون"
+              },
+              "originalParentCoversOriginalObject": true
+            }
+          ],
+          "children": [
+            {
+              "currentRaw": {
+                "id": "osm:node:4099579144",
+                "sourceId": "osm",
+                "name": "عمدون",
+                "aliases": [
+                  "Amdoun",
+                  "Zahret Medien",
+                  "زهرة مدين",
+                  "Zahret Median"
+                ],
+                "kind": "town",
+                "parentName": "عمدون الجنوبية",
+                "contextAliases": [
+                  "Amdoun Sud",
+                  "Délégation Amdoun",
+                  "عمدون الجنوبية",
+                  "معتمدية عمدون"
+                ],
+                "governorateId": 356,
+                "lat": 36.7686376,
+                "lng": 9.0894667,
+                "delegationId": 515,
+                "hasBoundary": false,
+                "pickerGroupId": "delegation:515"
+              },
+              "source": {
+                "id": "osm:node:4099579144",
+                "kind": "town",
+                "tags": {
+                  "alt_name": "زهرة مدين",
+                  "alt_name:ar": "زهرة مدين",
+                  "alt_name:fr": "Zahret Median",
+                  "name": "عمدون",
+                  "name:ar": "عمدون",
+                  "name:en": "Zahret Medien",
+                  "name:fr": "Amdoun",
+                  "name:ur": "عمدون",
+                  "place": "town",
+                  "wikidata": "Q2842514",
+                  "wikipedia": "ar:عمدون",
+                  "wikipedia:ar": "عمدون"
+                },
+                "lat": 36.7686376,
+                "lng": 9.0894667
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            }
+          ]
+        },
+        {
+          "id": "osm:relation:7189452",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون",
+            "name:ar": "عمدون",
+            "name:fr": "Amdoun",
+            "ref:tn:codegeo": "215351"
+          },
+          "originalBbox": [
+            9.055601,
+            36.76293,
+            9.109579,
+            36.80082
+          ],
+          "current": {
+            "name": "عمدون",
+            "kind": "sector",
+            "lat": 36.78194,
+            "lng": 9.088968,
+            "parentName": "معتمدية عمدون",
+            "governorateId": 356,
+            "delegationId": 515,
+            "pickerGroupId": "osm:relation:7189452"
+          },
+          "official2024Record": {
+            "governorateCode": "21",
+            "governorateFr": "Beja",
+            "governorateAr": "باجة",
+            "delegationCode": "2153",
+            "delegationFr": "Amdoun",
+            "delegationAr": "عمدون",
+            "sectorCode": "215351",
+            "sectorFr": "Zahret medien",
+            "sectorAr": "زهرة مدين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20638,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 922,
+              "Nombre_de_menages_par_Secteurs.xlsx": 921
+            }
+          },
+          "sourceParentScope": [
+            {
+              "id": "osm:relation:7189391",
+              "tags": {
+                "admin_level": "5",
+                "boundary": "administrative",
+                "long_name": "معتمدية عمدون",
+                "long_name:ar": "معتمدية عمدون",
+                "long_name:fr": "Délégation d'Amdoun",
+                "name": "معتمدية عمدون",
+                "name:ar": "معتمدية عمدون",
+                "name:fr": "Délégation Amdoun",
+                "ref:tn:codegeo": "2153",
+                "ref:tn:hasc_2": "TN.BJ.AM",
+                "sorting_name": "عمدون",
+                "sorting_name:ar": "عمدون",
+                "sorting_name:fr": "Amdoun",
+                "wikidata": "Q2842503",
+                "wikipedia": "ar:معتمدية عمدون",
+                "wikipedia:ar": "معتمدية عمدون"
+              },
+              "originalParentCoversOriginalObject": true
+            }
+          ],
+          "children": []
+        }
+      ],
+      "officialMaps": [
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/608",
+          "observedTitle": "زهرة مدين.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين.pdf",
+          "cachedPdfMatches": [],
+          "pageStatus": "PDFnotlocatedinboundedmanifestcache; pagecount/scope not inspected",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        },
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/609",
+          "observedTitle": "زهرة مدين الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين الجنوبية.pdf",
+          "cachedPdfMatches": [],
+          "pageStatus": "PDFnotlocatedinboundedmanifestcache; pagecount/scope not inspected",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        }
+      ],
+      "oldOfficialCodeRows": [
+        {
+          "code": "215352",
+          "pdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+            "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+            "bytes": 749971
+          },
+          "officialUrl": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+          "pdfPageOneBased": 61,
+          "printedPage": 61,
+          "literalDecodedLine": "Zahret Medien Sud 21 53 52 ﺔﻴﺑﻮﻨﺠﻟﺍ ﻦﻳﺪﻣ ﺓﺮﻫﺯ",
+          "nfkcVisualOrderLine": "Zahret Medien Sud 21 53 52 ةيبونجلا نيدم ةرهز",
+          "pagePersonallyViewed": true,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\ins2012-page-61.png",
+            "sha256": "84bf72e9703ca3ffba0b2e9d0724a2a40c1566969e125abfa6cc071fd5f107ae",
+            "bytes": 99092
+          }
+        },
+        {
+          "code": "215351",
+          "pdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+            "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+            "bytes": 749971
+          },
+          "officialUrl": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+          "pdfPageOneBased": 61,
+          "printedPage": 61,
+          "literalDecodedLine": "Zahret Medien 21 53 51 ﻦﻳﺪﻣ ﺓﺮﻫﺯ",
+          "nfkcVisualOrderLine": "Zahret Medien 21 53 51 نيدم ةرهز",
+          "pagePersonallyViewed": true,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\ins2012-page-61.png",
+            "sha256": "84bf72e9703ca3ffba0b2e9d0724a2a40c1566969e125abfa6cc071fd5f107ae",
+            "bytes": 99092
+          }
+        }
+      ],
+      "remainingGap": "2012and2024 already listZahretMedien, while OSMusesAmdoun. This is not an established2012-to2024rename. Review both official maps to tie actual sourcepolygons to the named sectors; distinguish delegation/town aliases."
+    },
+    {
+      "rank": 7,
+      "ids": [
+        "osm:relation:7115584"
+      ],
+      "label": "7 Novembre versus Ettadhamen4",
+      "sourceObjects": [
+        {
+          "id": "osm:relation:7115584",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "7 نوفمبر",
+            "name:ar": "7 نوفمبر",
+            "name:fr": "7 Novembre",
+            "ref:tn:codegeo": "125657"
+          },
+          "originalBbox": [
+            10.0926365,
+            36.8309952,
+            10.1027082,
+            36.8397438
+          ],
+          "current": {
+            "name": "7 نوفمبر",
+            "kind": "sector",
+            "lat": 36.835375,
+            "lng": 10.097386,
+            "parentName": "معتمدية حي التضامن",
+            "governorateId": 358,
+            "delegationId": 534,
+            "pickerGroupId": "osm:relation:7115584"
+          },
+          "official2024Record": {
+            "governorateCode": "12",
+            "governorateFr": "Ariana",
+            "governorateAr": "أريانة",
+            "delegationCode": "1256",
+            "delegationFr": "Cite ettadhamen",
+            "delegationAr": "حي التضامن",
+            "sectorCode": "125657",
+            "sectorFr": "Ettadhamen 4",
+            "sectorAr": "التضامن 4",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6903,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 230,
+              "Nombre_de_menages_par_Secteurs.xlsx": 230
+            }
+          },
+          "sourceParentScope": [
+            {
+              "id": "osm:relation:4156579",
+              "tags": {
+                "admin_level": "5",
+                "alt_name:fr": "Ettadhamen",
+                "boundary": "administrative",
+                "name": "معتمدية حي التضامن",
+                "name:ar": "معتمدية حي التضامن",
+                "name:fr": "Délégation Cité Ettadhamen",
+                "ref:tn:codegeo": "1256",
+                "ref:tn:hasc_2": "TN.AN.ET",
+                "wikidata": "Q3059378"
+              },
+              "originalParentCoversOriginalObject": true
+            }
+          ],
+          "children": []
+        }
+      ],
+      "officialMaps": [
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/19",
+          "observedTitle": "التضامن 4.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/التضامن 4.pdf",
+          "cachedPdfMatches": [],
+          "pageStatus": "PDFnotlocatedinboundedmanifestcache; pagecount/scope not inspected",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        }
+      ],
+      "oldOfficialCodeRows": [
+        {
+          "code": "125657",
+          "pdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+            "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+            "bytes": 749971
+          },
+          "officialUrl": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+          "pdfPageOneBased": 39,
+          "printedPage": 39,
+          "literalDecodedLine": "7 Novembre 12 56 57 ﺮﺒﻤﻓﻮﻧ 7",
+          "nfkcVisualOrderLine": "7 Novembre 12 56 57 ربمفون 7",
+          "pagePersonallyViewed": true,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\ins2012-page-39.png",
+            "sha256": "356a3727179b8572c5489c51ac6fef430a6f79d5cb40e9aa100be91a119568cb",
+            "bytes": 101308
+          }
+        }
+      ],
+      "savedNewNameQueries": [
+        {
+          "artifact": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7115584-1.json",
+            "sha256": "706d66595e840cbb90b31b1727a9e5f35c39b12d3eacc3a3cfcf2faa95979efd",
+            "bytes": 1601
+          },
+          "screenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7115584-1.png",
+            "sha256": "7fd8a27e338c936dd3f7ef2b427027c47b11a96f62ae9674265f8e1fe17c5d9d",
+            "bytes": 983359
+          },
+          "exactQuery": "التضامن 4 أريانة Tunisia",
+          "parserVersion": null,
+          "status": "candidate_observed",
+          "synchronizationOutcome": null,
+          "titles": [
+            "مدرسة ابتدائية حي التضامن 4 مكرر, شارع الشريف الادريسي حي 18 جانفي"
+          ]
+        }
+      ],
+      "nameHistoryFinding": "Visually verified2012 code-list title equals original OSM title under the exact same code/parent; currentRGPH2024 row has newer bilingual title. This establishes historical same-code naming continuity, not date/legalcause of rename or unchanged geography."
+    },
+    {
+      "rank": 8,
+      "ids": [
+        "osm:relation:7113315"
+      ],
+      "label": "El Ahd El Jadid versus Hammam Maarouf Riadh",
+      "sourceObjects": [
+        {
+          "id": "osm:relation:7113315",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العهد الجديد",
+            "name:ar": "العهد الجديد",
+            "name:fr": "El Ahd El Jadid",
+            "ref:tn:codegeo": "315256"
+          },
+          "originalBbox": [
+            10.5791523,
+            35.7981195,
+            10.6143095,
+            35.8252928
+          ],
+          "current": {
+            "name": "العهد الجديد",
+            "kind": "sector",
+            "lat": 35.811559,
+            "lng": 10.595204,
+            "parentName": "معتمدية سوسة الرياض",
+            "governorateId": 348,
+            "delegationId": 443,
+            "pickerGroupId": "osm:relation:7113315"
+          },
+          "official2024Record": {
+            "governorateCode": "31",
+            "governorateFr": "Sousse",
+            "governorateAr": "سوسة",
+            "delegationCode": "3152",
+            "delegationFr": "Sousse riadh",
+            "delegationAr": "سوسة الرياض",
+            "sectorCode": "315256",
+            "sectorFr": "Hammem maarouf er-riadh",
+            "sectorAr": "حمام معروف الرياض",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32639,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1537,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1536
+            }
+          },
+          "sourceParentScope": [
+            {
+              "id": "osm:relation:7150108",
+              "tags": {
+                "admin_level": "5",
+                "alt_name:fr": "Sousse Riadh",
+                "boundary": "administrative",
+                "name": "معتمدية سوسة الرياض",
+                "name:ar": "معتمدية سوسة الرياض",
+                "name:fr": "Délégation Sousse Erriadh",
+                "ref:tn:codegeo": "3152",
+                "ref:tn:hasc_2": "TN.SS.SR",
+                "wikidata": "Q3492192"
+              },
+              "originalParentCoversOriginalObject": true
+            }
+          ],
+          "children": [
+            {
+              "currentRaw": {
+                "id": "osm:node:1567848345",
+                "sourceId": "osm",
+                "name": "حي الرياض",
+                "aliases": [
+                  "Cité Riadh",
+                  "Hay Riadh",
+                  "Cité Erriadh"
+                ],
+                "kind": "suburb",
+                "parentName": "العهد الجديد",
+                "contextAliases": [
+                  "Délégation Sousse Erriadh",
+                  "El Ahd El Jadid",
+                  "Sousse Riadh",
+                  "العهد الجديد",
+                  "معتمدية سوسة الرياض"
+                ],
+                "governorateId": 348,
+                "lat": 35.804617,
+                "lng": 10.6050818,
+                "delegationId": 621,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:1567848345"
+              },
+              "source": {
+                "id": "osm:node:1567848345",
+                "kind": "suburb",
+                "tags": {
+                  "addr:governorate": "Sousse",
+                  "alt_name": "Cité Erriadh",
+                  "int_name": "Sousse Riadh",
+                  "name": "حي الرياض",
+                  "name:ar": "حي الرياض",
+                  "name:en": "Hay Riadh",
+                  "name:fr": "Cité Riadh",
+                  "place": "suburb"
+                },
+                "lat": 35.804617,
+                "lng": 10.6050818
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            }
+          ]
+        }
+      ],
+      "officialMaps": [
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/1390",
+          "observedTitle": "حمام معروف الرياض 1.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf",
+          "cachedPdfMatches": [],
+          "pageStatus": "PDFnotlocatedinboundedmanifestcache; pagecount/scope not inspected",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        },
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/1391",
+          "observedTitle": "حمام معروف الرياض 2.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf",
+          "cachedPdfMatches": [],
+          "pageStatus": "PDFnotlocatedinboundedmanifestcache; pagecount/scope not inspected",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        }
+      ],
+      "oldOfficialCodeRows": [
+        {
+          "code": "315256",
+          "pdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+            "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+            "bytes": 749971
+          },
+          "officialUrl": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+          "pdfPageOneBased": 77,
+          "printedPage": 77,
+          "literalDecodedLine": "El Ahd El Jadid 31 52 56 ﺪﻳﺪﺠﻟﺍ ﺪﻬﻌﻟﺍ",
+          "nfkcVisualOrderLine": "El Ahd El Jadid 31 52 56 ديدجلا دهعلا",
+          "pagePersonallyViewed": true,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\ins2012-page-77.png",
+            "sha256": "db30b344b89b8bab65efc412b94d2aec58b1b345e5c3f798b313d8c9c8490cac",
+            "bytes": 110081
+          }
+        }
+      ],
+      "savedNewNameQueries": [
+        {
+          "artifact": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7113315-1.json",
+            "sha256": "e2bf386e5c86a4f880a75468210fa1cafeb4f585c386ec49444013724d8b6d12",
+            "bytes": 698
+          },
+          "screenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7113315-1.png",
+            "sha256": "e82fa6a69e23df3040f6f07b3925086fd9112f13dc5aeccf428e068ce4066a77",
+            "bytes": 925523
+          },
+          "exactQuery": "حمام معروف الرياض سوسة Tunisia",
+          "parserVersion": null,
+          "status": "needs_visual_review",
+          "synchronizationOutcome": null,
+          "titles": []
+        }
+      ],
+      "nameHistoryFinding": "Visually verified2012 code-list title equals original OSM title under the exact same code/parent; currentRGPH2024 row has newer bilingual title. This establishes historical same-code naming continuity, not date/legalcause of rename or unchanged geography."
+    },
+    {
+      "rank": 9,
+      "ids": [
+        "osm:relation:7147644"
+      ],
+      "label": "Gremdi island versus official En-Najet sector",
+      "sourceObjects": [
+        {
+          "id": "osm:relation:7147644",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جزيرة قرمدي",
+            "name:ar": "جزيرة قرمدي",
+            "name:fr": "Îlot Gremdi",
+            "ref:tn:codegeo": "346656"
+          },
+          "originalBbox": [
+            11.3054866,
+            34.7442116,
+            11.3431037,
+            34.7604746
+          ],
+          "current": {
+            "name": "جزيرة قرمدي",
+            "kind": "sector",
+            "lat": 34.752319,
+            "lng": 11.313686,
+            "parentName": "قرقنة",
+            "governorateId": 359,
+            "delegationId": 543,
+            "pickerGroupId": "osm:relation:7147644"
+          },
+          "official2024Record": {
+            "governorateCode": "34",
+            "governorateFr": "Sfax",
+            "governorateAr": "صفاقس",
+            "delegationCode": "3466",
+            "delegationFr": "Kerkenah",
+            "delegationAr": "قرقنة",
+            "sectorCode": "346656",
+            "sectorFr": "En-najet",
+            "sectorAr": "النجا ة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 46171,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2219,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2215
+            }
+          },
+          "sourceParentScope": [
+            {
+              "id": "osm:relation:273483",
+              "tags": {
+                "admin_level": "5",
+                "alt_name:fr": "Kerkennah",
+                "boundary": "administrative",
+                "name": "قرقنة",
+                "name:ar": "قرقنة",
+                "name:en": "Kerkennah",
+                "name:fr": "Kerkennah",
+                "name:it": "Kerkennah",
+                "official_name": "معتمدية قرقنة",
+                "official_name:ar": "معتمدية قرقنة",
+                "place": "island",
+                "population": "15501",
+                "population:date": "2014",
+                "ref:tn:codegeo": "3466",
+                "ref:tn:hasc_2": "TN.SF.KE",
+                "wikidata": "Q761460",
+                "wikipedia": "ar:قرقنة"
+              },
+              "originalParentCoversOriginalObject": true
+            }
+          ],
+          "children": []
+        }
+      ],
+      "officialMaps": [
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/1627",
+          "observedTitle": "النجاة - (قرقنة).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/صفاقس 1/قرقنة/النجاة - (قرقنة).pdf",
+          "cachedPdfMatches": [
+            {
+              "manifest": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-next-conflicts\\manifest.json",
+                "sha256": "b3d7c35f6cb13b0e954c684947483e36a1b55095504b8f3cb1996ec903122eff",
+                "bytes": 4939
+              },
+              "record": {
+                "key": "kerkennah-najet",
+                "name": "النجاة - (قرقنة)",
+                "parent": "قرقنة",
+                "code": "346656",
+                "sourceOsmIds": [
+                  "osm:relation:7147644",
+                  "osm:relation:11001627"
+                ],
+                "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B5%D9%81%D8%A7%D9%82%D8%B3%201/%D9%82%D8%B1%D9%82%D9%86%D8%A9/%D8%A7%D9%84%D9%86%D8%AC%D8%A7%D8%A9%20-%20%28%D9%82%D8%B1%D9%82%D9%86%D8%A9%29.pdf",
+                "file": "kerkennah-najet.pdf",
+                "sha256": "ee2c2fec3420c7f140ec62330d1d82cc40ef0471420db5dc2df77469f708cc08"
+              },
+              "pdf": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-next-conflicts\\kerkennah-najet.pdf",
+                "sha256": "ee2c2fec3420c7f140ec62330d1d82cc40ef0471420db5dc2df77469f708cc08",
+                "bytes": 879125
+              },
+              "pdfPageOneBased": 1
+            }
+          ],
+          "pageStatus": "Confirmed localPDFpage1",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        },
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/1624",
+          "observedTitle": "القراطن.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/صفاقس 1/قرقنة/القراطن.pdf",
+          "cachedPdfMatches": [
+            {
+              "manifest": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-next-conflicts\\manifest.json",
+                "sha256": "b3d7c35f6cb13b0e954c684947483e36a1b55095504b8f3cb1996ec903122eff",
+                "bytes": 4939
+              },
+              "record": {
+                "key": "kerkennah-kraten",
+                "name": "القراطن",
+                "parent": "قرقنة",
+                "code": "346659",
+                "sourceOsmIds": [
+                  "osm:relation:7147644",
+                  "osm:relation:11001627"
+                ],
+                "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B5%D9%81%D8%A7%D9%82%D8%B3%201/%D9%82%D8%B1%D9%82%D9%86%D8%A9/%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%B7%D9%86.pdf",
+                "file": "kerkennah-kraten.pdf",
+                "sha256": "18093ba2d049ea7b7330bcd1ee8b16575bbd448e9dfa9bba8315e028dac3fcf9"
+              },
+              "pdf": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-next-conflicts\\kerkennah-kraten.pdf",
+                "sha256": "18093ba2d049ea7b7330bcd1ee8b16575bbd448e9dfa9bba8315e028dac3fcf9",
+                "bytes": 903593
+              },
+              "pdfPageOneBased": 1
+            }
+          ],
+          "pageStatus": "Confirmed localPDFpage1",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        }
+      ],
+      "oldOfficialCodeRows": [
+        {
+          "code": "346656",
+          "pdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+            "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+            "bytes": 749971
+          },
+          "officialUrl": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+          "pdfPageOneBased": 96,
+          "printedPage": 96,
+          "literalDecodedLine": "En-Najet 34 66 56 ﺓ ﺎﺠﻨﻟﺍ",
+          "nfkcVisualOrderLine": "En-Najet 34 66 56 ة اجنلا",
+          "pagePersonallyViewed": true,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\ins2012-page-96.png",
+            "sha256": "0fcbc06f9e967c3c65f5e90ec44e82eb2404192e9cc53dbe67494ce77061eb71",
+            "bytes": 35444
+          }
+        }
+      ],
+      "existingLocalIdentityReview": {
+        "json": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-identity-review-isie2023-decisions.json",
+          "sha256": "6b3ac1a843d38208d6d4a01aac4742a805a56fb281014270e8f4dabd5b8d8953",
+          "bytes": 52492
+        },
+        "jsonPointer": "/gremdiComponentIdentity",
+        "summary": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-identity-review-isie2023-decisions.md",
+          "sha256": "07316abd34bc5ccab01f4d450c05e98e06dfae0d7942004b565f68efadf76a4f",
+          "bytes": 2106
+        },
+        "finding": "Existing review identifies Gremdi as realislandcomponent onKraten346659 map, notNajet346656 norwholeKraten. Independent Gremdiagent owns currentadjudication."
+      }
+    },
+    {
+      "rank": 10,
+      "ids": [
+        "osm:node:287613682",
+        "osm:relation:7133850"
+      ],
+      "label": "Midoun town versus namesake sector",
+      "sourceObjects": [
+        {
+          "id": "osm:node:287613682",
+          "kind": "town",
+          "originalTags": {
+            "name": "ميدون",
+            "name:ar": "ميدون",
+            "name:ca": "Midoun",
+            "name:de": "Midoun",
+            "name:en": "Midoun",
+            "name:fr": "Midoun",
+            "name:it": "Midoun",
+            "name:kab": "Midun",
+            "name:pl": "Midun",
+            "name:pt": "Midoun",
+            "name:ru": "Мидун",
+            "name:uk": "Мідун",
+            "name:zu": "Midoun",
+            "place": "town",
+            "wikidata": "Q687088",
+            "wikimedia_commons": "Category:Midoun",
+            "wikipedia": "ar:ميدون (تونس)"
+          },
+          "originalBbox": [
+            10.9910666,
+            33.8074152,
+            10.9910666,
+            33.8074152
+          ],
+          "current": {
+            "name": "ميدون",
+            "kind": "town",
+            "lat": 33.8074152,
+            "lng": 10.9910666,
+            "parentName": "آركو",
+            "governorateId": 353,
+            "delegationId": 492,
+            "pickerGroupId": "osm:node:287613682"
+          },
+          "official2024Record": null,
+          "sourceParentScope": [],
+          "children": [
+            {
+              "currentRaw": {
+                "id": "osm:node:10996632224",
+                "sourceId": "osm",
+                "name": "طريفة",
+                "aliases": [
+                  "Trifa"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8279267,
+                "lng": 10.9899878,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:10996632224"
+              },
+              "source": {
+                "id": "osm:node:10996632224",
+                "kind": "quarter",
+                "tags": {
+                  "name": "طريفة",
+                  "name:aeb": "طريفة",
+                  "name:ar": "طريفة",
+                  "name:en": "Trifa",
+                  "place": "quarter"
+                },
+                "lat": 33.8279267,
+                "lng": 10.9899878
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:11180251348",
+                "sourceId": "osm",
+                "name": "Fadhloun",
+                "aliases": [],
+                "kind": "hamlet",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8221166,
+                "lng": 10.959814,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:11180251348"
+              },
+              "source": {
+                "id": "osm:node:11180251348",
+                "kind": "hamlet",
+                "tags": {
+                  "name": "Fadhloun",
+                  "place": "hamlet"
+                },
+                "lat": 33.8221166,
+                "lng": 10.959814
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:11180282351",
+                "sourceId": "osm",
+                "name": "أولاد عمر",
+                "aliases": [
+                  "Ouled Amor"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8292343,
+                "lng": 10.9764147,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:11180282351"
+              },
+              "source": {
+                "id": "osm:node:11180282351",
+                "kind": "village",
+                "tags": {
+                  "name": "أولاد عمر",
+                  "name:aeb": "أولاد عمر",
+                  "name:ar": "أولاد عمر",
+                  "name:en": "Ouled Amor",
+                  "place": "village"
+                },
+                "lat": 33.8292343,
+                "lng": 10.9764147
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:11233689762",
+                "sourceId": "osm",
+                "name": "Bahbah",
+                "aliases": [],
+                "kind": "hamlet",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.806027,
+                "lng": 10.973093,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:11233689762"
+              },
+              "source": {
+                "id": "osm:node:11233689762",
+                "kind": "hamlet",
+                "tags": {
+                  "name": "Bahbah",
+                  "place": "hamlet"
+                },
+                "lat": 33.806027,
+                "lng": 10.973093
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:12293313489",
+                "sourceId": "osm",
+                "name": "المقارسة",
+                "aliases": [
+                  "Mgarssa"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8169826,
+                "lng": 11.0027005,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:12293313489"
+              },
+              "source": {
+                "id": "osm:node:12293313489",
+                "kind": "village",
+                "tags": {
+                  "name": "المقارسة",
+                  "name:aeb": "المقارسة",
+                  "name:ar": "المقارسة",
+                  "name:fr": "Mgarssa",
+                  "place": "village"
+                },
+                "lat": 33.8169826,
+                "lng": 11.0027005
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:12764581668",
+                "sourceId": "osm",
+                "name": "تاقرماس",
+                "aliases": [
+                  "Taguermess"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8201365,
+                "lng": 11.0335882,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:12764581668"
+              },
+              "source": {
+                "id": "osm:node:12764581668",
+                "kind": "village",
+                "tags": {
+                  "name": "تاقرماس",
+                  "name:ar": "تاقرماس",
+                  "name:en": "Taguermess",
+                  "name:fr": "Taguermess",
+                  "place": "village"
+                },
+                "lat": 33.8201365,
+                "lng": 11.0335882
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:13141822280",
+                "sourceId": "osm",
+                "name": "Ouled Amor el Qadima",
+                "aliases": [],
+                "kind": "neighbourhood",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8356934,
+                "lng": 10.9791703,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:13141822280"
+              },
+              "source": {
+                "id": "osm:node:13141822280",
+                "kind": "neighbourhood",
+                "tags": {
+                  "name": "Ouled Amor el Qadima",
+                  "place": "neighbourhood"
+                },
+                "lat": 33.8356934,
+                "lng": 10.9791703
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:4333774784",
+                "sourceId": "osm",
+                "name": "خزرون",
+                "aliases": [
+                  "Khazroun"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8152479,
+                "lng": 10.9647061,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:4333774784"
+              },
+              "source": {
+                "id": "osm:node:4333774784",
+                "kind": "village",
+                "tags": {
+                  "name": "خزرون",
+                  "name:en": "Khazroun",
+                  "name:fr": "Khazroun",
+                  "place": "village"
+                },
+                "lat": 33.8152479,
+                "lng": 10.9647061
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:7648224726",
+                "sourceId": "osm",
+                "name": "سيدي يأتي",
+                "aliases": [
+                  "Sidi Yati"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8157134,
+                "lng": 11.0175983,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:7648224726"
+              },
+              "source": {
+                "id": "osm:node:7648224726",
+                "kind": "village",
+                "tags": {
+                  "name": "سيدي يأتي",
+                  "name:ar": "سيدي يأتي",
+                  "name:en": "Sidi Yati",
+                  "name:fr": "Sidi Yati",
+                  "place": "village"
+                },
+                "lat": 33.8157134,
+                "lng": 11.0175983
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:7648224727",
+                "sourceId": "osm",
+                "name": "الفيتوري",
+                "aliases": [
+                  "Fetouri"
+                ],
+                "kind": "hamlet",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.81845,
+                "lng": 11.0267948,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:7648224727"
+              },
+              "source": {
+                "id": "osm:node:7648224727",
+                "kind": "hamlet",
+                "tags": {
+                  "name": "الفيتوري",
+                  "name:ar": "الفيتوري",
+                  "name:en": "Fetouri",
+                  "name:fr": "Fetouri",
+                  "place": "hamlet"
+                },
+                "lat": 33.81845,
+                "lng": 11.0267948
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:9244088817",
+                "sourceId": "osm",
+                "name": "حي منازل جربة",
+                "aliases": [
+                  "Cité Mnezel Djerba"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8150309,
+                "lng": 10.9886264,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:9244088817"
+              },
+              "source": {
+                "id": "osm:node:9244088817",
+                "kind": "quarter",
+                "tags": {
+                  "name": "حي منازل جربة",
+                  "name:ar": "حي منازل جربة",
+                  "name:fr": "Cité Mnezel Djerba",
+                  "place": "quarter"
+                },
+                "lat": 33.8150309,
+                "lng": 10.9886264
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:9415158599",
+                "sourceId": "osm",
+                "name": "حي الوردية",
+                "aliases": [
+                  "Cité Ourdia"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8048362,
+                "lng": 10.9841298,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:9415158599"
+              },
+              "source": {
+                "id": "osm:node:9415158599",
+                "kind": "quarter",
+                "tags": {
+                  "name": "حي الوردية",
+                  "name:ar": "حي الوردية",
+                  "name:fr": "Cité Ourdia",
+                  "place": "quarter"
+                },
+                "lat": 33.8048362,
+                "lng": 10.9841298
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:9415158600",
+                "sourceId": "osm",
+                "name": "حي الزياتين",
+                "aliases": [
+                  "Cité Ziatine"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8161665,
+                "lng": 10.9853347,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:9415158600"
+              },
+              "source": {
+                "id": "osm:node:9415158600",
+                "kind": "quarter",
+                "tags": {
+                  "name": "حي الزياتين",
+                  "name:fr": "Cité Ziatine",
+                  "place": "quarter"
+                },
+                "lat": 33.8161665,
+                "lng": 10.9853347
+              },
+              "originalObjectContainsChildPoint": null,
+              "curation": null
+            }
+          ]
+        },
+        {
+          "id": "osm:relation:7133850",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ميدون",
+            "name:ar": "ميدون",
+            "name:fr": "Midoun",
+            "ref:tn:codegeo": "525751",
+            "wikidata": "Q687088",
+            "wikipedia": "ar:ميدون (تونس)"
+          },
+          "originalBbox": [
+            10.9477104,
+            33.798263,
+            11.0514371,
+            33.8512275
+          ],
+          "current": {
+            "name": "ميدون",
+            "kind": "sector",
+            "lat": 33.824557,
+            "lng": 11.006924,
+            "parentName": "معتمدية جربة ميدون",
+            "governorateId": 353,
+            "delegationId": 492,
+            "pickerGroupId": "osm:relation:7133850"
+          },
+          "official2024Record": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5257",
+            "delegationFr": "Djerba midoun",
+            "delegationAr": "جربة ميدون",
+            "sectorCode": "525751",
+            "sectorFr": "Midoun",
+            "sectorAr": "ميدون",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62592,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3076,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3070
+            }
+          },
+          "sourceParentScope": [
+            {
+              "id": "osm:relation:7133841",
+              "tags": {
+                "admin_level": "5",
+                "alt_name:fr": "Djerba - Midoun",
+                "boundary": "administrative",
+                "name": "معتمدية جربة ميدون",
+                "name:ar": "معتمدية جربة ميدون",
+                "name:fr": "Délégation Djerba Midoun",
+                "ref:tn:codegeo": "5257",
+                "ref:tn:hasc_2": "TN.ME.DM",
+                "wikidata": "Q3032898"
+              },
+              "originalParentCoversOriginalObject": true
+            }
+          ],
+          "children": [
+            {
+              "currentRaw": {
+                "id": "osm:node:10996632224",
+                "sourceId": "osm",
+                "name": "طريفة",
+                "aliases": [
+                  "Trifa"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8279267,
+                "lng": 10.9899878,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:10996632224"
+              },
+              "source": {
+                "id": "osm:node:10996632224",
+                "kind": "quarter",
+                "tags": {
+                  "name": "طريفة",
+                  "name:aeb": "طريفة",
+                  "name:ar": "طريفة",
+                  "name:en": "Trifa",
+                  "place": "quarter"
+                },
+                "lat": 33.8279267,
+                "lng": 10.9899878
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:11180251348",
+                "sourceId": "osm",
+                "name": "Fadhloun",
+                "aliases": [],
+                "kind": "hamlet",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8221166,
+                "lng": 10.959814,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:11180251348"
+              },
+              "source": {
+                "id": "osm:node:11180251348",
+                "kind": "hamlet",
+                "tags": {
+                  "name": "Fadhloun",
+                  "place": "hamlet"
+                },
+                "lat": 33.8221166,
+                "lng": 10.959814
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:11180282351",
+                "sourceId": "osm",
+                "name": "أولاد عمر",
+                "aliases": [
+                  "Ouled Amor"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8292343,
+                "lng": 10.9764147,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:11180282351"
+              },
+              "source": {
+                "id": "osm:node:11180282351",
+                "kind": "village",
+                "tags": {
+                  "name": "أولاد عمر",
+                  "name:aeb": "أولاد عمر",
+                  "name:ar": "أولاد عمر",
+                  "name:en": "Ouled Amor",
+                  "place": "village"
+                },
+                "lat": 33.8292343,
+                "lng": 10.9764147
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:11233689762",
+                "sourceId": "osm",
+                "name": "Bahbah",
+                "aliases": [],
+                "kind": "hamlet",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.806027,
+                "lng": 10.973093,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:11233689762"
+              },
+              "source": {
+                "id": "osm:node:11233689762",
+                "kind": "hamlet",
+                "tags": {
+                  "name": "Bahbah",
+                  "place": "hamlet"
+                },
+                "lat": 33.806027,
+                "lng": 10.973093
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:12293313489",
+                "sourceId": "osm",
+                "name": "المقارسة",
+                "aliases": [
+                  "Mgarssa"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8169826,
+                "lng": 11.0027005,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:12293313489"
+              },
+              "source": {
+                "id": "osm:node:12293313489",
+                "kind": "village",
+                "tags": {
+                  "name": "المقارسة",
+                  "name:aeb": "المقارسة",
+                  "name:ar": "المقارسة",
+                  "name:fr": "Mgarssa",
+                  "place": "village"
+                },
+                "lat": 33.8169826,
+                "lng": 11.0027005
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:12764581668",
+                "sourceId": "osm",
+                "name": "تاقرماس",
+                "aliases": [
+                  "Taguermess"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8201365,
+                "lng": 11.0335882,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:12764581668"
+              },
+              "source": {
+                "id": "osm:node:12764581668",
+                "kind": "village",
+                "tags": {
+                  "name": "تاقرماس",
+                  "name:ar": "تاقرماس",
+                  "name:en": "Taguermess",
+                  "name:fr": "Taguermess",
+                  "place": "village"
+                },
+                "lat": 33.8201365,
+                "lng": 11.0335882
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:13141822280",
+                "sourceId": "osm",
+                "name": "Ouled Amor el Qadima",
+                "aliases": [],
+                "kind": "neighbourhood",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8356934,
+                "lng": 10.9791703,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:13141822280"
+              },
+              "source": {
+                "id": "osm:node:13141822280",
+                "kind": "neighbourhood",
+                "tags": {
+                  "name": "Ouled Amor el Qadima",
+                  "place": "neighbourhood"
+                },
+                "lat": 33.8356934,
+                "lng": 10.9791703
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:4333774784",
+                "sourceId": "osm",
+                "name": "خزرون",
+                "aliases": [
+                  "Khazroun"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8152479,
+                "lng": 10.9647061,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:4333774784"
+              },
+              "source": {
+                "id": "osm:node:4333774784",
+                "kind": "village",
+                "tags": {
+                  "name": "خزرون",
+                  "name:en": "Khazroun",
+                  "name:fr": "Khazroun",
+                  "place": "village"
+                },
+                "lat": 33.8152479,
+                "lng": 10.9647061
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:7648224726",
+                "sourceId": "osm",
+                "name": "سيدي يأتي",
+                "aliases": [
+                  "Sidi Yati"
+                ],
+                "kind": "village",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8157134,
+                "lng": 11.0175983,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:7648224726"
+              },
+              "source": {
+                "id": "osm:node:7648224726",
+                "kind": "village",
+                "tags": {
+                  "name": "سيدي يأتي",
+                  "name:ar": "سيدي يأتي",
+                  "name:en": "Sidi Yati",
+                  "name:fr": "Sidi Yati",
+                  "place": "village"
+                },
+                "lat": 33.8157134,
+                "lng": 11.0175983
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:7648224727",
+                "sourceId": "osm",
+                "name": "الفيتوري",
+                "aliases": [
+                  "Fetouri"
+                ],
+                "kind": "hamlet",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.81845,
+                "lng": 11.0267948,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:7648224727"
+              },
+              "source": {
+                "id": "osm:node:7648224727",
+                "kind": "hamlet",
+                "tags": {
+                  "name": "الفيتوري",
+                  "name:ar": "الفيتوري",
+                  "name:en": "Fetouri",
+                  "name:fr": "Fetouri",
+                  "place": "hamlet"
+                },
+                "lat": 33.81845,
+                "lng": 11.0267948
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:9244088817",
+                "sourceId": "osm",
+                "name": "حي منازل جربة",
+                "aliases": [
+                  "Cité Mnezel Djerba"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8150309,
+                "lng": 10.9886264,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:9244088817"
+              },
+              "source": {
+                "id": "osm:node:9244088817",
+                "kind": "quarter",
+                "tags": {
+                  "name": "حي منازل جربة",
+                  "name:ar": "حي منازل جربة",
+                  "name:fr": "Cité Mnezel Djerba",
+                  "place": "quarter"
+                },
+                "lat": 33.8150309,
+                "lng": 10.9886264
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:9415158599",
+                "sourceId": "osm",
+                "name": "حي الوردية",
+                "aliases": [
+                  "Cité Ourdia"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8048362,
+                "lng": 10.9841298,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:9415158599"
+              },
+              "source": {
+                "id": "osm:node:9415158599",
+                "kind": "quarter",
+                "tags": {
+                  "name": "حي الوردية",
+                  "name:ar": "حي الوردية",
+                  "name:fr": "Cité Ourdia",
+                  "place": "quarter"
+                },
+                "lat": 33.8048362,
+                "lng": 10.9841298
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            },
+            {
+              "currentRaw": {
+                "id": "osm:node:9415158600",
+                "sourceId": "osm",
+                "name": "حي الزياتين",
+                "aliases": [
+                  "Cité Ziatine"
+                ],
+                "kind": "quarter",
+                "parentName": "ميدون",
+                "contextAliases": [
+                  "Djerba - Midoun",
+                  "Délégation Djerba Midoun",
+                  "Midoun",
+                  "معتمدية جربة ميدون",
+                  "ميدون"
+                ],
+                "governorateId": 353,
+                "lat": 33.8161665,
+                "lng": 10.9853347,
+                "delegationId": 492,
+                "hasBoundary": false,
+                "pickerGroupId": "osm:node:9415158600"
+              },
+              "source": {
+                "id": "osm:node:9415158600",
+                "kind": "quarter",
+                "tags": {
+                  "name": "حي الزياتين",
+                  "name:fr": "Cité Ziatine",
+                  "place": "quarter"
+                },
+                "lat": 33.8161665,
+                "lng": 10.9853347
+              },
+              "originalObjectContainsChildPoint": true,
+              "curation": null
+            }
+          ]
+        }
+      ],
+      "officialMaps": [
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/1956",
+          "observedTitle": "ميدون.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/ميدون.pdf",
+          "cachedPdfMatches": [],
+          "pageStatus": "PDFnotlocatedinboundedmanifestcache; pagecount/scope not inspected",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        },
+        {
+          "observedIndex": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "jsonPointer": "/1950",
+          "observedTitle": "اركو.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/اركو.pdf",
+          "cachedPdfMatches": [],
+          "pageStatus": "PDFnotlocatedinboundedmanifestcache; pagecount/scope not inspected",
+          "scopeQualification": "Linktitle identifies an electoral map; it does not prove whole current administrative-sector extent. Numbered parts require joint scope review."
+        }
+      ],
+      "oldOfficialCodeRows": [
+        {
+          "code": "525751",
+          "pdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+            "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+            "bytes": 749971
+          },
+          "officialUrl": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+          "pdfPageOneBased": 118,
+          "printedPage": 118,
+          "literalDecodedLine": "Midoun 52 57 51 ﻥﻭﺪﻴﻣ",
+          "nfkcVisualOrderLine": "Midoun 52 57 51 نوديم",
+          "pagePersonallyViewed": true,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\ins2012-page-118.png",
+            "sha256": "e080bde4f2be22ff67f5d5b2850d596c8e081468eb01fe4003f410d12a7d2716",
+            "bytes": 104278
+          }
+        }
+      ],
+      "remainingGap": "Townpoint outside namesake sector in originalsource, currentparentArkou.2012lists separateMidoun525751/Arkou525752. Compare exacttwo officialmaps before deciding geography; no duplicate merge inferred from sharednames/Wikidata."
+    }
+  ],
+  "sousseMunicipalCorroboration": [
+    {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-boundaries\\sousse-quartier-8.geojson",
+        "sha256": "5acc173075bea7cf5b0482b63868b6c45c10919671c78caaaffa26f2ba28980d",
+        "bytes": 298398
+      },
+      "jsonPointer": "/features/48",
+      "properties": {
+        "OBJECTID": 49,
+        "الرمز": 0,
+        "المسمي": "حمام معروف",
+        "Lieux_Dits": "hammam Maarouf",
+        "المساحة_م2": 0,
+        "المحيط": 0,
+        "Shape__Area": 6291134.9443359375,
+        "Shape__Length": 10995.72545171535,
+        "GlobalID": "1ff2ff18-0cac-40cc-a119-32cab25eb630",
+        "CreationDate": 1618483012151,
+        "Creator": "Mun.Sousse",
+        "EditDate": 1618483012151,
+        "Editor": "Mun.Sousse"
+      },
+      "sourceSectorAreaOverlapFractionPlanarDegrees": 0.7373991794960216,
+      "containsCurrentSectorAnchor": true,
+      "url": "https://services5.arcgis.com/jrt7qLvyaz5L9bhT/arcgis/rest/services/Quartier/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson",
+      "qualification": "Municipal neighborhood geography corroboratesHammamMaarouf location but is not an imada/electoralpart boundary and does not cover the whole originalsector. No importproposed."
+    },
+    {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-boundaries\\sousse-quartiers-9.geojson",
+        "sha256": "3e47a0364e235843ac69a445e843d7d4e7e941589f88fc0c3b25359ebf9d1d67",
+        "bytes": 290531
+      },
+      "jsonPointer": "/features/53",
+      "properties": {
+        "FID": 55,
+        "code": 53,
+        "Arrond": "Riadh",
+        "ID_Arrond": 13,
+        "Quartier_F": "Hammam Maarouf",
+        "Quartier_A": "حمام معروف",
+        "Arrond_A": "الرياض",
+        "Perimetre": 8.92,
+        "Surface": 413,
+        "POPULATION": 4067,
+        "NBR_MENAGE": 982,
+        "NBR_LOGEME": 1178,
+        "DELEGATION": "RIADH",
+        "Shape__Area": 4126913.6013183594,
+        "Shape__Length": 8917.201361825977,
+        "GlobalID": "8614e08a-f64f-4323-a2dc-5deb2c80545b"
+      },
+      "sourceSectorAreaOverlapFractionPlanarDegrees": 0.7369117584233144,
+      "containsCurrentSectorAnchor": true,
+      "url": "https://services5.arcgis.com/jrt7qLvyaz5L9bhT/arcgis/rest/services/QUARTIERS/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson",
+      "qualification": "Municipal neighborhood geography corroboratesHammamMaarouf location but is not an imada/electoralpart boundary and does not cover the whole originalsector. No importproposed."
+    }
+  ],
+  "boundedCacheScreen": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\cached-manifest-screen.json",
+    "sha256": "522c957b1dbcd5665d077fd2358a5ba51a0150e85b0f8a7eec650f60337149b1",
+    "bytes": 8398
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\prepare-index.py",
+    "sha256": "a402ed2a803ebb08d692fcac0d44acd62ed901f56f34e3b953a9e771d968840d",
+    "bytes": 9396
+  },
+  "savedParentIndexSubset": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\isie-exact-parent-subsets.json",
+    "sha256": "d006f86495628a407fd99e92b144243d159ba1473d38b9760eb6e67185bd29fe",
+    "bytes": 20941
+  },
+  "nativeConclusions": [
+    {
+      "rank": 7,
+      "finding": "Historical same-code title linkage now established by visually read official2012page39 plus directly verified RGPH2024row125657. Geography/scope review of officialEttadhamen4PDF remains separate. No political cause/date asserted.",
+      "nextOwner": "/root/android_geocoder_option/saved_group_restore_review",
+      "noNewMapsRequired": true
+    },
+    {
+      "rank": 8,
+      "finding": "Historical same-code title linkage now established by visually read official2012page77 plus directly verified RGPH2024row315256. Exactly2HammamMaarouf numbered links appear within the completecachedSousseRiadh parentindex; review both. Municipalquartier overlap is corroboration, not a replacement for electoral/imada geometry.",
+      "nextOwner": "/root/android_geocoder_option/saved_group_restore_review",
+      "noNewMapsRequired": true
+    },
+    {
+      "rank": 6,
+      "finding": "2012and2024 both already nameZahretMedien/North andSouth; sourceAmdoun labels need exact2map geography comparison. Root primaryleads support generic townalias only.",
+      "nextExactMapIndexPointers": [
+        "/608",
+        "/609"
+      ]
+    },
+    {
+      "rank": 9,
+      "finding": "Existing localreview already identifies Gremdi asKratenislandcomponent and flagswrongNajetcode. Preserve that evidence and leave currentclassification/geometryadjudication to the assignedagent.",
+      "nextOwner": "/root/android_geocoder_option"
+    },
+    {
+      "rank": 10,
+      "finding": "Names alreadymatch. Official2012page118 distinguishesMidoun525751 andArkou525752. Compare exact2maps against the towncoordinate and namesakesector; sharedWikidata is not mergeproof.",
+      "nextExactMapIndexPointers": [
+        "/1956",
+        "/1950"
+      ]
+    }
+  ],
+  "rootReportedPrimaryLeads": {
+    "provenance": "URLs and concise findings supplied by root during this task; this subagent made no browser/network retrieval of these sources. Treat as qualified primary leads, not local captured document contents or sector-footprint proof.",
+    "caseRank": 6,
+    "leads": [
+      {
+        "url": "https://www.arru.nat.tn/details_appels_offre/28",
+        "rootFinding": "Official tender52/2024 explicitly calls Amdoun(ZahretMedien).",
+        "rootReportsPageOpened": true
+      },
+      {
+        "url": "https://odno.nat.tn/wp-content/uploads/2026/04/Brochure-beja-2026_compressed.pdf",
+        "rootFinding": "2026table distinguishes delegationAmdoun andcommuneZahretMedien.",
+        "rootReportsPageOpened": true
+      },
+      {
+        "url": "https://www.fao.org/gender/news/news-detail/Future-regained-in-Tunisia/fr",
+        "rootFinding": "2019field account calls village by two names.",
+        "rootReportsPageOpened": null
+      }
+    ]
+  },
+  "modelAudit": {
+    "calls": 1,
+    "reasoning": "max",
+    "request": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\deepseek-job.json",
+      "sha256": "cb287ee8fded6f5c472fdca718118442a7b53b0b7129305e6307c4658f390ef2",
+      "bytes": 1391
+    },
+    "response": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\five-held-local-official-evidence-20260920\\result.json",
+      "sha256": "d8b193bbcb63431617748aada8bd0ac833a5a445ed3ea89fcd954fb2a2fa507e",
+      "bytes": 71991
+    },
+    "decodedReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\model-review.json",
+      "sha256": "931a5fd935dcd1b65e62d28ca9caeec3648dcfb99e501ecf131e5fc5b70fc3ba",
+      "bytes": 16597
+    },
+    "nativeQualifications": [
+      "Role differences between a town and sector are not automatically catalog errors.",
+      "Municipal overlap fractions refer to polygon area in planar coordinate units, not to an anchor; anchorcontainment is a separateboolean.",
+      "Cachedmanifest sourceOsmIds are localreviewassociations rather than officiallegalcode assertions.",
+      "The namehistory links are specific same-code documentary continuity; no cause/date/fixedboundary claim is made."
+    ]
+  },
+  "validation": {
+    "selectedSevenRawRowsExactlyMatchInstalledD396": true,
+    "currentMetadataPinned": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "d396925c0a7adb85010fb1a2b3f839ffcea939bc12b59a0da6c04d23c57d79a4",
+      "bytes": 1866360
+    },
+    "fiveRelevantINS2012PagesPersonallyViewed": [
+      39,
+      61,
+      77,
+      96,
+      118
+    ],
+    "allSourceIndexPointersResolvedUniquely": true,
+    "cachedNajetAndKratenPdfPageCountsVerified": 1,
+    "fullSavedIndexParentCounts": {
+      "Amdoun": 14,
+      "CiteEttadhamen": 9,
+      "SousseRiadh": 5,
+      "Kerkennah": 10,
+      "DjerbaMidoun": 7
+    },
+    "newResearchBrowserOrGoogleCalls": 0,
+    "deviceCalls": 0,
+    "productionMutations": 0,
+    "generationOrBuildOrTests": 0
+  },
+  "producerFinal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\finalize.py",
+    "sha256": "6986d1c87fca75ebd8b0d5603e906bea79e1420d2d1876f137ef046a3cf4d38b",
+    "bytes": 6414
+  }
+}

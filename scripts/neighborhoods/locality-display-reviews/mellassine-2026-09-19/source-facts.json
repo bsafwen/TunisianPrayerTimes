@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_FACTS_REVIEWED_PENDING_PRODUCT_PROPOSAL",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineQueue": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\catalog-next-actions-after-sijoumi-omrane-20260919.json",
+    "sha256": "d21483db9c58855b0db4f200eb95c74f53087559b9c7af22d17e7189c0b3a7a1"
+  },
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "02852b1e444f1efd071e4505b12bb4ec555f3f48da7539a13b98bd89dc061537"
+  },
+  "inventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119"
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "currentLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "36f0a2b7e031e04cf48094592b259fc9cb0511b840da7e06cfb52bdf6e727e65"
+  },
+  "members": [
+    {
+      "id": "osm:relation:7201552",
+      "expectedMetadata": {
+        "id": "osm:relation:7201552",
+        "sourceId": "osm",
+        "name": "الملاسين",
+        "aliases": [
+          "Mellassine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السيجومي",
+        "contextAliases": [
+          "Délégation Essijoumi",
+          "Séjoumi",
+          "معتمدية السيجومي"
+        ],
+        "governorateId": 342,
+        "lat": 36.79515,
+        "lng": 10.151589,
+        "delegationId": 405,
+        "hasBoundary": true,
+        "bbox": [
+          10.148176,
+          36.792249,
+          10.155965,
+          36.798075
+        ],
+        "areaKm2": 0.2826324764088639
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الملاسين",
+        "name:ar": "الملاسين",
+        "name:fr": "Mellassine",
+        "ref:tn:codegeo": "116156"
+      },
+      "expectedEffectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الملاسين",
+        "name:ar": "الملاسين",
+        "name:fr": "Mellassine",
+        "ref:tn:codegeo": "116156"
+      },
+      "expectedCuration": null,
+      "originalGeometrySha256": "c81f891bb30978b01457c90e9ea45bc7171819ebaa66b4acb77579b7bf92f7ab",
+      "packedGeometrySha256": "29b762a6454608c2b2fa654e74ea2532d92c1ef51ccfaa5fecd0984cd7cf9a57"
+    },
+    {
+      "id": "osm:node:1143501777",
+      "expectedMetadata": {
+        "id": "osm:node:1143501777",
+        "sourceId": "osm",
+        "name": "الملاسين",
+        "aliases": [
+          "El Mellassine",
+          "Al Malasin"
+        ],
+        "kind": "suburb",
+        "parentName": "علي البلهوان",
+        "contextAliases": [
+          "Ali Belhouane",
+          "Délégation Essijoumi",
+          "Séjoumi",
+          "علي البلهوان",
+          "معتمدية السيجومي"
+        ],
+        "governorateId": 342,
+        "lat": 36.7986702,
+        "lng": 10.1598749,
+        "delegationId": 405,
+        "hasBoundary": false
+      },
+      "expectedOriginalTags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "name": "الملاسين",
+        "name:ar": "الملاسين",
+        "name:en": "Al Malasin",
+        "name:fr": "El Mellassine",
+        "place": "suburb"
+      },
+      "expectedEffectiveTags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "name": "الملاسين",
+        "name:ar": "الملاسين",
+        "name:en": "Al Malasin",
+        "name:fr": "El Mellassine",
+        "place": "suburb"
+      },
+      "expectedCuration": null,
+      "originalGeometrySha256": "7c50448076bc9d95f46509e887aed5502c6d4296d34073d2cea33ee485e961a5",
+      "packedGeometrySha256": null
+    }
+  ],
+  "currentMetadata": [
+    {
+      "id": "osm:relation:7201552",
+      "sourceId": "osm",
+      "name": "الملاسين",
+      "aliases": [
+        "Mellassine"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية السيجومي",
+      "contextAliases": [
+        "Délégation Essijoumi",
+        "Séjoumi",
+        "معتمدية السيجومي"
+      ],
+      "governorateId": 342,
+      "lat": 36.79515,
+      "lng": 10.151589,
+      "delegationId": 405,
+      "hasBoundary": true,
+      "bbox": [
+        10.148176,
+        36.792249,
+        10.155965,
+        36.798075
+      ],
+      "areaKm2": 0.2826324764088639,
+      "pickerGroupId": "osm:relation:7201552",
+      "offset": 5158104,
+      "length": 620
+    },
+    {
+      "id": "osm:node:1143501777",
+      "sourceId": "osm",
+      "name": "الملاسين",
+      "aliases": [
+        "El Mellassine",
+        "Al Malasin"
+      ],
+      "kind": "suburb",
+      "parentName": "علي البلهوان",
+      "contextAliases": [
+        "Ali Belhouane",
+        "Délégation Essijoumi",
+        "Séjoumi",
+        "علي البلهوان",
+        "معتمدية السيجومي"
+      ],
+      "governorateId": 342,
+      "lat": 36.7986702,
+      "lng": 10.1598749,
+      "delegationId": 405,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1143501777"
+    }
+  ],
+  "codedParent": {
+    "id": "osm:relation:4130348",
+    "expectedKind": "delegation",
+    "expectedTags": {
+      "admin_level": "5",
+      "alt_name:fr": "Séjoumi",
+      "boundary": "administrative",
+      "name": "معتمدية السيجومي",
+      "name:ar": "معتمدية السيجومي",
+      "name:fr": "Délégation Essijoumi",
+      "ref:tn:codegeo": "1161",
+      "ref:tn:hasc_2": "TN.TU.SI",
+      "wikidata": "Q3510596"
+    },
+    "originalGeometrySha256": "9c3147d81b0e8c0af9b9896ff39722f1dccdd0605e09dad1183aa47ffcc45e94"
+  },
+  "pointContext": {
+    "id": "osm:relation:7201551",
+    "expectedKind": "sector",
+    "expectedTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "علي البلهوان",
+      "name:ar": "علي البلهوان",
+      "name:fr": "Ali Belhouane",
+      "ref:tn:codegeo": "116152"
+    },
+    "originalGeometrySha256": "f9fb8e161a0609825f4a40a588f643fab5e07e6726060804fe3b5efc7473f058"
+  },
+  "officialSectorRecord": {
+    "governorateCode": "11",
+    "governorateFr": "Tunis",
+    "governorateAr": "تونس",
+    "delegationCode": "1161",
+    "delegationFr": "Sijoumi",
+    "delegationAr": "السيجومي",
+    "sectorCode": "116156",
+    "sectorFr": "Mellassine",
+    "sectorAr": "الملاسين",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3028,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 93,
+      "Nombre_de_menages_par_Secteurs.xlsx": 93
+    }
+  },
+  "pointContextOfficialRecord": {
+    "governorateCode": "11",
+    "governorateFr": "Tunis",
+    "governorateAr": "تونس",
+    "delegationCode": "1161",
+    "delegationFr": "Sijoumi",
+    "delegationAr": "السيجومي",
+    "sectorCode": "116152",
+    "sectorFr": "Ali belhouane - ( essijoumi )",
+    "sectorAr": "علي البلهوان – ( السيجومي )",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2892,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 89,
+      "Nombre_de_menages_par_Secteurs.xlsx": 89
+    }
+  },
+  "expectedSourceNamePeerIds": [
+    "osm:node:1143501777",
+    "osm:relation:7201552"
+  ],
+  "spatialRelationship": {
+    "pointOutsideSector": true,
+    "representativeDistanceKm": 0.8351891308497986
+  },
+  "manualSelection": {
+    "representativeId": "osm:node:1143501777",
+    "lat": 36.7986702,
+    "lng": 10.1598749,
+    "expectedNearestSourceId": 405
+  },
+  "phoneEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7201552-1.json",
+      "sha256": "d7e72f0dede2125810ab6249c7d07f6018e7ff37afb777e3dacddf3688d87548"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1143501777-2.json",
+      "sha256": "e77a3087a6cd5d8e275365efdbdb58b071c16ad642f0467974bf407b0fa2b4e3"
+    }
+  ],
+  "phoneScreenshots": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7201552-1.png",
+      "sha256": "0d5f3c05ef7a6fd2090bdff3d15799eecaa55e50966a4ef1ca23d18bcc60a8df"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1143501777-2.png",
+      "sha256": "9859c01592fa740230f54e0051634b7c3804cac63d7e3632da8e03505bf4fe95"
+    }
+  ],
+  "freshSources": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mellassine-source-review-20260919\\relation-7201552.json",
+      "sha256": "fbcddc64d6781a223b70d9c61ea527f6303677671c11e0366d2267dba6e95dc6"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mellassine-source-review-20260919\\node-1143501777.json",
+      "sha256": "76e31f925f9c12bf37f9d428a3db58ea42b6f997e97f91af83c9fddd556b65e9"
+    }
+  ],
+  "qualifications": [
+    "Display-only candidate; no boundary certification.",
+    "Fresh relation snapshot confirms tags, not complete geometry."
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\prepare_mellassine_source_facts_20260919.py",
+    "sha256": "8ee8388284c0bf12dea36966762e69f9e0271dfa106ae0d33277d407eca92a88"
+  }
+}

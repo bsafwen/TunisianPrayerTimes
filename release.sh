@@ -34,6 +34,54 @@ if [[ "$RELEASE_MSG" =~ [^[:ascii:]] ]]; then
   exit 1
 fi
 
+# ── Refuse to start if `git add -A` below would commit Quran media or huge files ──
+# The recitations and page scans ship through Play Asset Delivery and the quran-cdn
+# Worker; GitHub also rejects any file over 100 MB. Checked before anything is modified.
+TOO_BIG=()
+QURAN_MEDIA=()
+while IFS= read -r -d '' entry; do
+  status="${entry:0:2}"
+  path="${entry:3}"
+  # A rename or copy is followed by its original path as a separate record.
+  if [[ "$status" == R* || "$status" == C* ]]; then
+    IFS= read -r -d '' _ || true
+  fi
+  [[ -f "$path" ]] || continue
+  if [[ "$path" =~ ^android-app/(app/src/main/assets/quran|quran-packs)/.*\.(mp3|webp)$ ]]; then
+    QURAN_MEDIA+=("$path")
+  elif (( $(wc -c < "$path") > 50 * 1024 * 1024 )); then
+    TOO_BIG+=("$path")
+  fi
+done < <(git status --porcelain=v1 -z --untracked-files=all)
+if (( ${#QURAN_MEDIA[@]} > 0 )); then
+  echo "✗ Quran media would be committed (${#QURAN_MEDIA[@]} files, e.g. ${QURAN_MEDIA[0]})." >&2
+  echo "  Move it out with: python3 scripts/quran_assets.py stage --from-dir <folder>" >&2
+  exit 1
+fi
+if (( ${#TOO_BIG[@]} > 0 )); then
+  echo "✗ Files over 50 MB would be committed: ${TOO_BIG[*]}" >&2
+  exit 1
+fi
+
+# ── Does this release build the AAB? (only android-app changes count, not the version bump) ──
+LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+ANDROID_CHANGED=false
+if [[ -z "$LAST_TAG" ]]; then
+    ANDROID_CHANGED=true
+elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
+    ANDROID_CHANGED=true
+elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
+    ANDROID_CHANGED=true
+fi
+
+# ── Building it needs Python to stage the Quran packs; check before bumping the version ──
+QURAN_PACKS=false
+if [[ "$SKIP_LOCAL_BUILD" == "false" && "$ANDROID_CHANGED" == "true" && -f "$APP_DIR/quran-assets/manifest.tsv" ]]; then
+  QURAN_PACKS=true
+  source "$SCRIPT_DIR/scripts/find-python.sh"
+  find_python || exit 1
+fi
+
 # ── Read current version from build.gradle.kts ──
 CURRENT_CODE=$(grep -m1 'versionCode' "$GRADLE_FILE" | sed 's/[^0-9]//g')
 CURRENT_NAME=$(grep -m1 'versionName' "$GRADLE_FILE" | sed 's/.*"\(.*\)".*/\1/')
@@ -61,25 +109,21 @@ mv "$GRADLE_FILE.tmp" "$GRADLE_FILE"
 echo "✓ Bumped version in build.gradle.kts"
 
 # ── Build signed AAB locally (only if android-app source changed, not just version bump) ──
-LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-ANDROID_CHANGED=false
-if [[ -z "$LAST_TAG" ]]; then
-    ANDROID_CHANGED=true
-elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
-    ANDROID_CHANGED=true
-elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
-    ANDROID_CHANGED=true
-fi
 
 if [[ "$SKIP_LOCAL_BUILD" == "true" ]]; then
     echo ""
-    echo "Skipping local AAB build; GitHub Actions will build and sign the release."
+    echo "Skipping the local AAB build: this release has no bundle for Google Play."
+    echo "GitHub Actions still builds and publishes the APK and desktop apps."
 elif [[ "$ANDROID_CHANGED" == "false" ]]; then
     echo ""
     echo "⏭ No android-app changes since $LAST_TAG — skipping AAB build."
 else
     echo ""
     echo "Building signed release AAB..."
+    # The bundle carries the Quran packs; fetch any that are not staged yet (cached after the first time).
+    if [[ "$QURAN_PACKS" == "true" ]]; then
+        "${PYTHON[@]}" "$SCRIPT_DIR/scripts/quran_assets.py" stage
+    fi
     cd "$APP_DIR"
     ./gradlew clean bundleRelease --no-daemon
 
@@ -90,6 +134,7 @@ else
     fi
     echo "✓ Signed AAB: $APP_DIR/$AAB"
     echo "  Size: $(du -h "$AAB" | cut -f1)"
+    echo "  Upload it to the Google Play Console yourself; GitHub Releases cannot hold it."
     cd "$SCRIPT_DIR"
 fi
 

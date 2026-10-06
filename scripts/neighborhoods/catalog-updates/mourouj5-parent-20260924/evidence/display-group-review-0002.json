@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "caseId": "mourouj5-display-group-20260924",
+  "status": "ACCEPTED_DISPLAY_GROUP_ONLY",
+  "decision": {
+    "id": "osm:node:332247375",
+    "beforePickerGroupId": "osm:node:332247375",
+    "afterPickerGroupId": "osm:relation:7174576",
+    "sectorId": "osm:relation:7174576",
+    "fieldsChanged": [
+      "pickerGroupId"
+    ],
+    "rawPickerGroupCountBefore": 3334,
+    "rawPickerGroupCountAfter": 3333
+  },
+  "identity": {
+    "nameAr": "المروج 5",
+    "parentName": "معتمدية المروج",
+    "governorateId": 349,
+    "delegationId": 447,
+    "matching2025IsieLocalityCode": "304004",
+    "matching2025IsieDelegationCode": "BA04",
+    "currentRawAndSectorFeatureHashes": {
+      "osm:node:332247375": "e0aaab57ed6e5357961395bb4ed8a6f9905dd02b671b90e5ca5cbc9e1a174a52",
+      "osm:relation:7174576": "9bc1144a20c330d61ef3591563e1f5c262c35c9d6d5a796f3ef8e16f31c9e483"
+    },
+    "parentCorrectionRevision": {
+      "revisionId": "mourouj5-parent-delegation-20260924",
+      "revisionFileSha256": "fe8ec6b7d5890e05e09b7d84bd22c5cbcd1cc64a7c21ddabeebf1e84b46608f1",
+      "reviewFileSha256": "61ff4953322a16e7cb6e87588b338fd0647a55a3d26629ad86bafa4e0bbaf607",
+      "officialCsvSha256": "933a06439f01b9c11008dcc14ecd52169f91599a654aaf3d6555c52edf30a4f3"
+    }
+  },
+  "officialMapEvidence": {
+    "provider": "ISIE",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بن عروس/المروج/المروج 5.pdf",
+    "pdfFile": "catalog-updates/mourouj5-parent-20260924/evidence/isie-mourouj5-map-2023.pdf",
+    "pdfSha256": "dc67a5bd7dc4bba8381523cb46532dab96b4e9ed3d72a51ac4d43df546cc83f0",
+    "pageCount": 1,
+    "pageTitleAr": "المروج 5",
+    "extractionFile": "catalog-updates/mourouj5-parent-20260924/evidence/isie-mourouj5-geopdf-extraction.json",
+    "extractionSha256": "ba2d43b3772e2bbe60b19e664d43e74be59d6f57a361dce467eca11dbae019b1",
+    "extractionManifestSha256": "d0243c799828fadedd8edfb50ea59c34bfc06b3a7e598f90aa37aba891705d76",
+    "singleClosedRedRing": {
+      "drawingIndex": 433,
+      "valid": true,
+      "vertices": 555,
+      "sourceVisualReview": "pending"
+    },
+    "skippedBoundaryPathCount": 9
+  },
+  "spatialComparisonContext": {
+    "method": "Independent EPSG:4326 to EPSG:32632 comparison supplied by the task root",
+    "officialRingContainsNode": false,
+    "officialRingDistanceMeters": 36.352498,
+    "shippedSectorContainsNode": false,
+    "shippedSectorDistanceMeters": 35.651209,
+    "officialVsShippedIntersectionOverUnion": 0.994787,
+    "officialAreaKm2": 5.11936,
+    "shippedAreaKm2": 5.11278,
+    "interpretation": "The node is outside both polygons. The extraction has nine skipped boundary paths. These measurements are context only and do not establish boundary completeness, point containment or boundary accuracy."
+  },
+  "preservation": {
+    "rawPointCoordinates": {
+      "lat": 36.7133259,
+      "lng": 10.2045405
+    },
+    "sectorCoordinates": {
+      "lat": 36.704885,
+      "lng": 10.216152
+    },
+    "delegationId": 447,
+    "geometrySha256BeforeAndAfter": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "otherFeatureFieldsChanged": false,
+    "scopeNote": "The point and sector remain separate raw records with their source coordinates, sector geometry and prayer source data. Only the point's pickerGroupId changes."
+  },
+  "reviewedOutput": {
+    "baseMetadataSha256": "cc1de4682da3b216008b329c5b350a133b0dbe907b4b28aed477761e8704581b",
+    "afterMetadataSha256": "dce183ded4f6a8db5801e7d216a29495046aafd426adccbbc3f8976cc946ed90",
+    "baseGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "afterGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+  }
+}

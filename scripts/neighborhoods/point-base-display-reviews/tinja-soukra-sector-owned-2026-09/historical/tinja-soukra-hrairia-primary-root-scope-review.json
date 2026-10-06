@@ -1,0 +1,146 @@
+{
+  "status": "BOUNDED_PRIMARY_SCOPE_REVIEW_COMPLETE_NO_DATA_CHANGE",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-hrairia-point-source-review.json",
+    "sha256": "acb85d738ea62d1bfb216420b004148070c1a73bd73d1bc9e9ead385c5b13c60"
+  },
+  "historicalSourceMetadataSha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a"
+  },
+  "phoneScopeReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-hrairia-phone-scope-review-20260912.json",
+    "sha256": "9d2979685d6d53865da080460cc7c78391affeb849d34044ac052715406f2f92"
+  },
+  "checks": [
+    {
+      "id": "osm:node:1109384824",
+      "baseId": 565,
+      "rawPointAndSectorOwnerUnchanged": true,
+      "originalNodeHistoryAndCacheMatch": true,
+      "existingSectorGroup": "delegation:565",
+      "sectorOwnerId": "osm:relation:7119649",
+      "currentNearestPrayerDefault": 565,
+      "primaryEvidence": [
+        {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\interior-tinja-city-article.html",
+            "sha256": "cbdbd3274bad4e07bc780c41d595a4ccdbe219633f775139eee4809e24cd21e7"
+          },
+          "role": "official_inhabited_city_identity",
+          "boundedClaimChecked": true
+        },
+        {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-urban-planning.html",
+            "sha256": "c3170bececcf41da05792e76e7d9fdc12194f0b83cf26291e7e0ebf58479e108"
+          },
+          "role": "official_urban_agglomeration_context",
+          "boundedClaimChecked": true
+        }
+      ],
+      "identityDisposition": "BROAD_PLACE_NAME_SUPPORTED_PENDING_FINITE_DISPLAY_CONTRACT",
+      "geometryDisposition": "NO_POINT_BOUNDARY_PROVEN"
+    },
+    {
+      "id": "osm:node:7390818324",
+      "baseId": 532,
+      "rawPointAndSectorOwnerUnchanged": true,
+      "originalNodeHistoryAndCacheMatch": true,
+      "existingSectorGroup": "delegation:532",
+      "sectorOwnerId": "osm:relation:7114900",
+      "currentNearestPrayerDefault": 532,
+      "primaryEvidence": [
+        {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-atlas.pdf",
+            "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800"
+          },
+          "role": "official_locality_identity_and_scope",
+          "boundedClaimChecked": true
+        }
+      ],
+      "identityDisposition": "BROAD_PLACE_NAME_SUPPORTED_PENDING_FINITE_DISPLAY_CONTRACT",
+      "geometryDisposition": "NO_POINT_BOUNDARY_PROVEN"
+    },
+    {
+      "id": "osm:node:3145829327",
+      "baseId": 397,
+      "rawPointAndSectorOwnerUnchanged": true,
+      "originalNodeHistoryAndCacheMatch": true,
+      "existingSectorGroup": "delegation:397",
+      "sectorOwnerId": "osm:relation:7201587",
+      "currentNearestPrayerDefault": 398,
+      "primaryEvidence": [
+        {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html",
+            "sha256": "cfd0c25c6699121dd29ab1723ad48aeae8082b7f8f8bcc43d9b98049de8b2fcd"
+          },
+          "role": "official_administrative_scope_distinction",
+          "boundedClaimChecked": true
+        }
+      ],
+      "identityDisposition": "HOLD_EXACT_INHABITED_LOCALITY_IDENTITY",
+      "geometryDisposition": "NO_POINT_BOUNDARY_PROVEN"
+    }
+  ],
+  "completeAtlasPages": [
+    {
+      "physicalPage": 39,
+      "printedPage": 34,
+      "wholeText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-page-39.txt",
+        "sha256": "42008b6880090e677a02ee8c345e7d4a0b4184a85c4152a93bd487c14bf52e47"
+      },
+      "wholeImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-page-39.png",
+        "sha256": "8f1679e48b06f12c9c655e9b0a23e26a557af051f97a61e3c9de03cea2749628"
+      },
+      "rootViewedCompleteImage": true
+    },
+    {
+      "physicalPage": 71,
+      "printedPage": 66,
+      "wholeText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-page-71.txt",
+        "sha256": "a83b389b65051cf4755fe2a2a0252acd8ff8471e74bb0d1e38613a4274f4f254"
+      },
+      "wholeImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-page-71.png",
+        "sha256": "919f89b135ace60f9412044c6f9257e44fe410f2852853707f3acb223f7b5edd"
+      },
+      "rootViewedCompleteImage": true
+    },
+    {
+      "physicalPage": 72,
+      "printedPage": 67,
+      "wholeText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-page-72.txt",
+        "sha256": "d05ecfa2525374dda08d6405496cf5941b6bc5b27bbbbb0d085a3b0dc2ca782d"
+      },
+      "wholeImage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-page-72.png",
+        "sha256": "7cd4fca944465f6ab8022f7b14586a0867eb1f971ac4f00a43715e2b45a7e50e"
+      },
+      "rootViewedCompleteImage": true
+    }
+  ],
+  "rootVisualEvidence": "Whole page images personally read in root view_image batch: physical39/printed34,71/66,72/67. Native primary HTML locality/hierarchy wording read separately. The earlier three complete phone images are recorded in the linked root phone review.",
+  "qualifiedConclusions": [
+    "Tinja has explicit inhabited-city wording in a primary source. Its broader urban planning area uses municipal territories, not an exact town polygon.",
+    "The Ariana atlas uses Soukra as a locality in a delegation-oriented context. Its administrative and land-use maps distinguish Soukra and Bassatine sectors. This supports broad place-name usage, not equality with one sector or a surveyed point position.",
+    "Tinja and Soukra name cards are consistent with broad places. Their current sector-owned base groups must be preserved by a complete finite identity proposal before changing display membership.",
+    "Hrairia remains unresolved at the inhabited-quarter level. A delegation card and nearby El Agba result do not establish an alias or justify replacing nearest prayer reference398 with397."
+  ],
+  "currentCatalogRowsChanged": 0,
+  "phoneLedgerChanged": false,
+  "productExecuted": false,
+  "testsBuildGeneration": false,
+  "completeCatalogOrBoundaryCertification": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_three_namesake_primary_scope_root.py",
+    "sha256": "8364706c5f89dd940915069f5110aca3ae5b362d8cd74a34a9e82476f3c81438"
+  }
+}

@@ -1,0 +1,1758 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_SCOPED_REFERENCE_CORRECTIONS_PENDING_GENERATION",
+  "createdAtUtc": "2026-09-21T08:46:58.674704+00:00",
+  "sourceIds": [
+    486
+  ],
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputFiles": {
+    "compiler": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "gouvernorats.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+    "neighborhoods.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "neighborhoods.bin": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "retired-localities.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+    "locality-display-names.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+    "prayer-source-coordinates.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+    "catalog-curation.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "reviewed-boundaries.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "reviewed-picker-groups.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "municipal-sources.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\municipal-sources.json",
+    "final-exclusions.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\final-exclusions.json",
+    "coverage.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+    "reviewed-catalog-updates.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-catalog-updates.json"
+  },
+  "inputPins": {
+    "compiler": "caaf78f4b2dc0823fdf86620c8b842408c5401ded386ba5658c08e88efb193fe",
+    "gouvernorats.json": "6d0214a8870529acbe50e086a77d769b4dcaf6e31f9b31a816854fd31f51a051",
+    "neighborhoods.json": "540a48c17888518d28a9b5e586f3e7ec7c8d7f7051c8b9f03564e7e262bdfff8",
+    "neighborhoods.bin": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "retired-localities.json": "aa93494c3e81d5af7a07618cf2dd5a03bcfdeeb6302501cf0250d514290243c7",
+    "locality-display-names.json": "a65709c1d970b38b0003c76a0b29a7d962f36dd780458cc75a2be9fd243265a2",
+    "prayer-source-coordinates.json": "ebda5190694d7af3372c82edbe87af2ff4afe3768c1bdd4fffa67f246e1421bc",
+    "catalog-curation.json": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0",
+    "reviewed-boundaries.json": "d4986a089d0409e5bd77f682091a1d6462ad082326f05a3ad81b7f9505330890",
+    "reviewed-picker-groups.json": "7d6c7ca8f9872e55c4c5a4f75dfd216d64ae9882644eb1abfe4c0b9cee39f4c6",
+    "municipal-sources.json": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+    "final-exclusions.json": "a9c77bd87a5231e5bd9d308f5b8edafc6f48b5737a77ae3a4c8a0c336a0349c7",
+    "coverage.json": "045132c00c0fddf9ce564b057f0c39cec9fdfa45bc69b160850d131d48b7747d",
+    "reviewed-catalog-updates.json": "7cdf8c24d4deac4c68f3df4b75059d6551e4af65a1f3b607bbe9084edfa8ee1f"
+  },
+  "evidence": {
+    "geographicReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\geography-review.json",
+      "sha256": "c84671258f3ffee70e52b3b878032f6df45a8d6d7ff82452c0709b0d051ab0d8"
+    },
+    "mapsReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\maps-review.json",
+      "sha256": "7ed88bab1bff7ebe7cb291a0dd133ab8e27fd9bb2a349fa7758d3f297522da5f"
+    },
+    "impactReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\impact.json",
+      "sha256": "fcde9926a7b0652748f7733f91668374fabef85a02efb1308bf8ee55f8696610"
+    },
+    "pairedInmReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\paired-stage-compatible.json",
+      "sha256": "2927382dbd829eb2fd73f9b44a82270d801d8d68e29d82b9e6fa91e6b7b2b9d2"
+    },
+    "rootVisualReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\root-visual-review.json",
+      "sha256": "5c4173c1a4dc6e52081aafbf64c319b905f9ecadda83c774b17a2a0f017565bf"
+    }
+  },
+  "expectedRawChanges": [
+    {
+      "id": "osm:node:10044670149",
+      "before": 406,
+      "after": 387
+    },
+    {
+      "id": "osm:node:10118270176",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12534865868",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:1256204446",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:node:12563677142",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:1257403631",
+      "before": 402,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1260351290",
+      "before": 615,
+      "after": 391
+    },
+    {
+      "id": "osm:node:1261495436",
+      "before": 615,
+      "after": 391
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1374298108",
+      "before": 457,
+      "after": 462
+    },
+    {
+      "id": "osm:node:14090213947",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2519121789",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:429661517",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:443160128",
+      "before": 547,
+      "after": 540
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:6513256947",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:6672532618",
+      "before": 425,
+      "after": 541
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:6917823081",
+      "before": 425,
+      "after": 426
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7037664472",
+      "before": 547,
+      "after": 540
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7855480158",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7875668083",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:8027679311",
+      "before": 553,
+      "after": 550
+    },
+    {
+      "id": "osm:node:8719488025",
+      "before": 527,
+      "after": 528
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7079365",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7095859",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7097977",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7098803",
+      "before": 455,
+      "after": 469
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103009",
+      "before": 468,
+      "after": 460
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103328",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7104938",
+      "before": 463,
+      "after": 464
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7106464",
+      "before": 439,
+      "after": 436
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114421",
+      "before": 535,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114550",
+      "before": 533,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7115584",
+      "before": 534,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7117932",
+      "before": 406,
+      "after": 388
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118032",
+      "before": 393,
+      "after": 534
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7124829",
+      "before": 538,
+      "after": 529
+    },
+    {
+      "id": "osm:relation:7125598",
+      "before": 525,
+      "after": 414
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7126584",
+      "before": 502,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7127890",
+      "before": 425,
+      "after": 536
+    },
+    {
+      "id": "osm:relation:7134300",
+      "before": 500,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7139127",
+      "before": 500,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147577",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147600",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:relation:7147601",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152258",
+      "before": 425,
+      "after": 541
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7152290",
+      "before": 424,
+      "after": 425
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165008",
+      "before": 573,
+      "after": 587
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7165333",
+      "before": 527,
+      "after": 528
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7174559",
+      "before": 453,
+      "after": 450
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174591",
+      "before": 448,
+      "after": 401
+    },
+    {
+      "id": "osm:relation:7174606",
+      "before": 449,
+      "after": 454
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7189448",
+      "before": 518,
+      "after": 516
+    },
+    {
+      "id": "osm:relation:7198150",
+      "before": 421,
+      "after": 589
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201439",
+      "before": 404,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201440",
+      "before": 404,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201445",
+      "before": 402,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201454",
+      "before": 404,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201455",
+      "before": 615,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201457",
+      "before": 615,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201458",
+      "before": 404,
+      "after": 615
+    },
+    {
+      "id": "osm:relation:7201472",
+      "before": 395,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201552",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201555",
+      "before": 399,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:relation:7201652",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202774",
+      "before": 404,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7202776",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202778",
+      "before": 399,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202779",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202850",
+      "before": 401,
+      "after": 399
+    },
+    {
+      "id": "osm:relation:7202852",
+      "before": 401,
+      "after": 399
+    },
+    {
+      "id": "osm:relation:7202853",
+      "before": 401,
+      "after": 399
+    },
+    {
+      "id": "osm:relation:8893246",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:100982074",
+      "before": 406,
+      "after": 387
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:144034984",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:173445090",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:way:174739936",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:way:176000341",
+      "before": 459,
+      "after": 460
+    },
+    {
+      "id": "osm:way:177575268",
+      "before": 463,
+      "after": 464
+    },
+    {
+      "id": "osm:way:180268046",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:184685843",
+      "before": 463,
+      "after": 464
+    },
+    {
+      "id": "osm:way:192752617",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:way:26289690",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:way:278418536",
+      "before": 463,
+      "after": 464
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:way:861326316",
+      "before": 553,
+      "after": 550
+    },
+    {
+      "id": "osm:way:89006660",
+      "before": 532,
+      "after": 386
+    }
+  ],
+  "expectedManualChanges": [
+    {
+      "id": "delegation:468",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "delegation:548",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "delegation:598",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7079365",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7097977",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7098803",
+      "before": 455,
+      "after": 469
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103009",
+      "before": 468,
+      "after": 460
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103328",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7104938",
+      "before": 463,
+      "after": 464
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7106464",
+      "before": 439,
+      "after": 436
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114421",
+      "before": 535,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114550",
+      "before": 533,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7115584",
+      "before": 534,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7117932",
+      "before": 406,
+      "after": 388
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118032",
+      "before": 393,
+      "after": 534
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7124829",
+      "before": 538,
+      "after": 529
+    },
+    {
+      "id": "osm:relation:7125598",
+      "before": 525,
+      "after": 414
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7126584",
+      "before": 502,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7127890",
+      "before": 425,
+      "after": 536
+    },
+    {
+      "id": "osm:relation:7134300",
+      "before": 500,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7139127",
+      "before": 500,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147577",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147600",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152258",
+      "before": 425,
+      "after": 541
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7152290",
+      "before": 424,
+      "after": 425
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165008",
+      "before": 573,
+      "after": 587
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7165333",
+      "before": 527,
+      "after": 528
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7174559",
+      "before": 453,
+      "after": 450
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174591",
+      "before": 448,
+      "after": 401
+    },
+    {
+      "id": "osm:relation:7174606",
+      "before": 449,
+      "after": 454
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7189448",
+      "before": 518,
+      "after": 516
+    },
+    {
+      "id": "osm:relation:7198150",
+      "before": 421,
+      "after": 589
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201439",
+      "before": 404,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201440",
+      "before": 404,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201445",
+      "before": 402,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201454",
+      "before": 404,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201455",
+      "before": 615,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201457",
+      "before": 615,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201458",
+      "before": 404,
+      "after": 615
+    },
+    {
+      "id": "osm:relation:7201472",
+      "before": 395,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201555",
+      "before": 399,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:relation:7201652",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202774",
+      "before": 404,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7202776",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202778",
+      "before": 399,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202779",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7202850",
+      "before": 401,
+      "after": 399
+    },
+    {
+      "id": "osm:relation:7202852",
+      "before": 401,
+      "after": 399
+    },
+    {
+      "id": "osm:relation:7202853",
+      "before": 401,
+      "after": 399
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:100982074",
+      "before": 406,
+      "after": 387
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:144034984",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:184685843",
+      "before": 463,
+      "after": 464
+    },
+    {
+      "id": "osm:way:278418536",
+      "before": 463,
+      "after": 464
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:way:861326316",
+      "before": 553,
+      "after": 550
+    },
+    {
+      "id": "osm:node:10044670149",
+      "before": 406,
+      "after": 387
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12534865868",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:1256204446",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:node:12563677142",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:1257403631",
+      "before": 402,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1260351290",
+      "before": 615,
+      "after": 391
+    },
+    {
+      "id": "osm:node:1261495436",
+      "before": 615,
+      "after": 391
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1374298108",
+      "before": 457,
+      "after": 462
+    },
+    {
+      "id": "osm:node:14090213947",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2519121789",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:429661517",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:443160128",
+      "before": 547,
+      "after": 540
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:6513256947",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:6672532618",
+      "before": 425,
+      "after": 541
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:6917823081",
+      "before": 425,
+      "after": 426
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7037664472",
+      "before": 547,
+      "after": 540
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7855480158",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7875668083",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:8027679311",
+      "before": 553,
+      "after": 550
+    },
+    {
+      "id": "osm:node:8719488025",
+      "before": 527,
+      "after": 528
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    }
+  ],
+  "expectedCurrentRawChanges": [],
+  "expectedCurrentManualChanges": [],
+  "decisionBasis": "Replace the undocumented legacy486 reference with exact paired INM published coordinates after wider Google Maps context resolved the former close-view hold. No locality mapping or spatial feature changes.",
+  "rootVisualReview": {
+    "coordinateScreenshotsViewed": 2,
+    "acceptedCoordinateScreenshots": 2,
+    "newMapsCaptureCount": 3,
+    "exceptionsAndFindings": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\root-visual-review.json",
+      "sha256": "5c4173c1a4dc6e52081aafbf64c319b905f9ecadda83c774b17a2a0f017565bf"
+    }
+  },
+  "geographicQualifications": [
+    "No display names, locality representative points, owner grouping, governorate assignment or polygon bytes change.",
+    "Published response coordinates do not certify INM internal calculation inputs.",
+    "Town point context does not certify boundaries of any neighborhood or administrative sector.",
+    "Reference source changes follow geographic distance among sources with available bundled timetables."
+  ],
+  "protectedSourceIds": [
+    392,
+    409,
+    476,
+    487,
+    567,
+    622,
+    631
+  ],
+  "preserveExistingCorrectionCount": 243,
+  "expectedCorrectionCount": 244,
+  "preserveFinalExclusion": "osm:way:658923544",
+  "validation": "Preserve243previous corrections, all catalog bytes/names/geometry/groups and seven held sources. Verify zero current mapping changes and cumulative170raw/160manual changes after final exclusion. No text rebase or compiler change. Compile Android only after verified installation."
+}

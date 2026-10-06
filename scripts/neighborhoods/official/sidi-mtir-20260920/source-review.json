@@ -1,0 +1,96 @@
+{
+  "status": "SOURCE_GEOMETRY_AND_WHOLE_IMADA_SCOPE_STAGED_NOT_INSTALLED",
+  "rootReview": {
+    "file": "official/sidi-mtir-20260920/evidence/root-cross-governorate-review.json",
+    "sha256": "b1536cc521b3fc75c61ac2dcef3379b5e7ae69e836752d6b3f64fb6f8c0e8e45"
+  },
+  "boundary": {
+    "file": "official/sidi-mtir-20260920/sidi-mtir-source.geojson",
+    "sha256": "4d8069110dc7c8720f7904c85596789d11da79a2bb9c740c7b4ff3d95a8349e9"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7105456",
+      "officialRecord": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3161",
+        "delegationFr": "Bouficha",
+        "delegationAr": "بوفيشة",
+        "sectorCode": "316159",
+        "sectorFr": "Sidi m'tir",
+        "sectorAr": "سيدي مطير",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34645,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1631,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1630
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي مطير",
+        "name:ar": "سيدي مطير",
+        "name:fr": "Sidi Mtir",
+        "ref:tn:codegeo": "316159"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 345,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "c86ef7a672fba608129954d5417f0792fc23afc60f71601c5365cba9abd8ed5e",
+        "segmentCount": 323,
+        "seqno": 353,
+        "sourceOrigin": "connected-official-maps",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 324,
+        "vertexCount": 324
+      }
+    }
+  ],
+  "decree": {
+    "file": "official/sidi-mtir-20260920/evidence/decree.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "pageImages": [
+    {
+      "file": "official/sidi-mtir-20260920/evidence/decree-page-049.png",
+      "sha256": "f64fd041ad54a174f81e9770fade154c37072b66d56eb1149ac9f65228c67a76"
+    },
+    {
+      "file": "official/sidi-mtir-20260920/evidence/decree-page-050.png",
+      "sha256": "fa9c9e401a0d459bfc3011f682891cc3bdc76b4817a795aab673157cc1b1ffd6"
+    }
+  ],
+  "registry": {
+    "file": "official/sidi-mtir-20260920/evidence/registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "sourcePdf": {
+    "file": "official/sidi-mtir-20260920/evidence/sidi-mtir.pdf",
+    "sha256": "c86ef7a672fba608129954d5417f0792fc23afc60f71601c5365cba9abd8ed5e"
+  },
+  "sourceImage": {
+    "file": "official/sidi-mtir-20260920/evidence/sidi-mtir.png",
+    "sha256": "bb8012c1511e735421e987760f07d742af864d252bf4267eda0d968e429d0ac9"
+  },
+  "inspector": {
+    "file": "official/sidi-mtir-20260920/evidence/native-map-inspection.json",
+    "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200"
+  },
+  "limitations": [
+    "Source ring copied exactly; no inferred edge, repair, crop or snapping.",
+    "Scope is whole imada316159; tourist/residential names do not establish the same administrative extent.",
+    "Source seams with neighboring reviewed maps and full-catalog changes still require integration review.",
+    "No phone observation or entire catalog certification is implied."
+  ]
+}

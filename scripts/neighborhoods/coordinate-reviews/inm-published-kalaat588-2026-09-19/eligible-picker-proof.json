@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/source-facts.json",
+    "sha256": "066503ce5fc24a1fdf2d54ed3c41276d47646ba4232f120aa01857c6400c36dc"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7129263",
+      "name": "قلعة سنان",
+      "status": "eligible_proposal",
+      "targetDelegationId": 588,
+      "governorateId": 363,
+      "basePoint": {
+        "lat": 35.768,
+        "lng": 8.342
+      },
+      "existingTargetGroupMembers": [
+        "delegation:588"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7129263",
+          "name": "قلعة سنان",
+          "kind": "sector",
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "originalContainsDisplayReference": true,
+          "packagedContainsDisplayReference": true,
+          "originalGeometrySha256": "29e01a34261160ada5c9284dccee04b96f0cb92d7860305c9cf89466530cbd3a",
+          "packedGeometrySha256": "9563bc3e6e1ec2d58a7c380bbc65b2c8f5ddaaf4467153c48a5d953c2aca708e"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7129263",
+          "code": "235651",
+          "currentOfficialRecord": {
+            "governorateCode": "23",
+            "governorateFr": "Le kef",
+            "governorateAr": "الكاف",
+            "delegationCode": "2356",
+            "delegationFr": "Kalaat snan",
+            "delegationAr": "قلعة سنان",
+            "sectorCode": "235651",
+            "sectorFr": "Kalaat snan",
+            "sectorAr": "قلعة سنان",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 27879,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1309,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1308
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قلعة سنان",
+            "name:ar": "قلعة سنان",
+            "name:fr": "Kalâat Snan",
+            "ref:tn:codegeo": "235651",
+            "wikidata": "Q3100254",
+            "wikipedia": "ar:قلعة سنان"
+          },
+          "effectiveOriginalGeometrySha256": "29e01a34261160ada5c9284dccee04b96f0cb92d7860305c9cf89466530cbd3a"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:4752889",
+          "code": "2356",
+          "name": "معتمدية قلعة سنان",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kalaat Senan",
+            "boundary": "administrative",
+            "name": "معتمدية قلعة سنان",
+            "name:ar": "معتمدية قلعة سنان",
+            "name:fr": "Délégation Kalaat Senan",
+            "official_name": "معتمدية قلعة سنان",
+            "official_name:ar": "معتمدية قلعة سنان",
+            "official_name:fr": "Délégation de Kalaat Senan",
+            "ref:tn:codegeo": "2356",
+            "ref:tn:hasc_2": "TN.KF.KS",
+            "wikidata": "Q3192066",
+            "wikipedia": "ar:معتمدية قلعة سنان"
+          },
+          "effectiveOriginalGeometrySha256": "7b1a34c9662259657d163f6363a818850079c40e08302af6f18e6db0272d0d8c",
+          "currentOfficialRecord": {
+            "governorateCode": "23",
+            "governorateFr": "Le kef",
+            "governorateAr": "الكاف",
+            "delegationCode": "2356",
+            "delegationFr": "Kalaat snan",
+            "delegationAr": "قلعة سنان"
+          }
+        }
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7129263",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قلعة سنان",
+            "name:ar": "قلعة سنان",
+            "name:fr": "Kalâat Snan",
+            "ref:tn:codegeo": "235651",
+            "wikidata": "Q3100254",
+            "wikipedia": "ar:قلعة سنان"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:501803032",
+          "nameTags": {
+            "name": "قلعة سنان",
+            "name:ar": "قلعة سنان",
+            "name:fr": "Kalâat Snan"
+          },
+          "reason": "Preserve every original locality name and alias while selecting its existing contained town501803032 as the manual location. The Ministry paired-name article and coded current sector/parent establish one display identity with the differently spelled INM588 label; neither prayer coordinates nor administrative polygons define the inhabited town extent. Device GPS and both source/packed sector geometry stay unchanged.",
+          "evidence": [
+            {
+              "source": "Pinned source/coded identity, exact public town witness, current whole-country nearest-source calculation, and accurately labelled Ministry web text capture.",
+              "reviewFiles": [
+                {
+                  "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/source-and-design-note.json",
+                  "sha256": "617a6e0f31e3c5cfcb53c1172689f5e99395b300ac5f87e306268a81c1f3bd05"
+                },
+                {
+                  "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/culture-primary-web-excerpts.json",
+                  "sha256": "120213c2f00b129862dc4616a9bc21deb863c299442af884ea10b78977aa87d1"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "scope": "One exact current coded Kalaat Senan settlement display identity, with the original local and published prayer spellings retained. Manual choice deliberately uses the existing contained town point through an identity-preserving name_tags/manualPointId curation. Administrative geometry and device GPS remain independent of the prayer reference and are unchanged.",
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/retained-display-review.json",
+          "sha256": "ea072719b668812ea1b209f006709972cb3d68816e8f533e3ba13b200870055e"
+        }
+      }
+    }
+  ]
+}

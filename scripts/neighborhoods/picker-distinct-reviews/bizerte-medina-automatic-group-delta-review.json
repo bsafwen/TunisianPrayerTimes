@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOCK_UNREVIEWED_ALIAS_ONLY_OLD_TOWN_TO_SECTOR_DISPLAY_MERGE",
+  "stagedInputs": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bizerte-three-final-generated-stage\\assets\\neighborhoods.json",
+      "sha256": "4afc5f24768eee8261db36a8e17399f0abbd9a3fcc97f3b572e8ae56692fe3fb"
+    },
+    "geometry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bizerte-three-final-generated-stage\\assets\\neighborhoods.bin",
+      "sha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272"
+    }
+  },
+  "actualDataAudit": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bizerte-three-staged-data-independent-review.json",
+    "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197"
+  },
+  "generator": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bizerte-three-source-stage\\scripts\\generate_neighborhoods.py",
+    "sha256": "8b67bca534c275ea1da9b2cfd1a52ee84638ab689baf10f659320e69b78fc72b"
+  },
+  "originalSourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "originalSourceTags": {
+    "osm:relation:7118630": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "المؤتمر",
+      "name:ar": "المؤتمر",
+      "name:fr": "El Mootamar",
+      "ref:tn:codegeo": "175160"
+    },
+    "osm:relation:7118631": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "المدينة",
+      "name:ar": "المدينة",
+      "name:fr": "El Medina",
+      "ref:tn:codegeo": "175154"
+    },
+    "osm:relation:7118632": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "الشيخ ادريس",
+      "name:ar": "الشيخ ادريس",
+      "name:fr": "Cheikh Dris",
+      "ref:tn:codegeo": "175155"
+    },
+    "osm:way:256615867": {
+      "landuse": "residential",
+      "long_name:ar": "المدينة العتيقة",
+      "name": "المدينة العتيقة",
+      "name:ar": "المدينة العتيقة",
+      "name:en": "La Medina",
+      "name:fr": "La Medina",
+      "place": "suburb"
+    },
+    "osm:way:164467494": {
+      "landuse": "residential",
+      "name": "القصبة",
+      "name:ar": "القصبة",
+      "name:fr": "La Ksiba"
+    },
+    "osm:way:275008604": {
+      "name": "oued laassal",
+      "place": "neighbourhood"
+    },
+    "osm:way:1026778596": {
+      "landuse": "residential",
+      "name": "حي الهناء",
+      "name:aeb": "حي الهناء",
+      "name:ar": "حي الهناء",
+      "name:fr": "cité el hana"
+    }
+  },
+  "exactPair": {
+    "osm:relation:7118631": {
+      "id": "osm:relation:7118631",
+      "sourceId": "isie-local-sectors-2023-bizerte-three-review",
+      "name": "المدينة",
+      "aliases": [
+        "La medina",
+        "El Medina"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "contextAliases": [
+        "Delegación de Bizerta Norte",
+        "Délégation Bizerte Nord",
+        "معتمدية بنزرت الشمالية"
+      ],
+      "governorateId": 361,
+      "lat": 37.277486,
+      "lng": 9.874602,
+      "delegationId": 634,
+      "hasBoundary": true,
+      "bbox": [
+        9.870129,
+        37.273246,
+        9.890754,
+        37.28217
+      ],
+      "areaKm2": 0.5259507173314892,
+      "pickerGroupId": "osm:relation:7118631",
+      "offset": 985904,
+      "length": 1052
+    },
+    "osm:way:256615867": {
+      "id": "osm:way:256615867",
+      "sourceId": "osm",
+      "name": "المدينة العتيقة",
+      "aliases": [
+        "La Medina"
+      ],
+      "kind": "suburb",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "contextAliases": [
+        "Delegación de Bizerta Norte",
+        "Délégation Bizerte Nord",
+        "معتمدية بنزرت الشمالية"
+      ],
+      "governorateId": 361,
+      "lat": 37.276147,
+      "lng": 9.871712,
+      "delegationId": 634,
+      "hasBoundary": true,
+      "bbox": [
+        9.869733,
+        37.27227,
+        9.877023,
+        37.279959
+      ],
+      "areaKm2": 0.25201607265795595,
+      "pickerGroupId": "osm:relation:7118631",
+      "offset": 5363900,
+      "length": 684
+    }
+  },
+  "mechanism": {
+    "nameComparison": "same_picker_name matches the shared normalized alias lamedina from official La medina and old-town La Medina; current primary Arabic names remain distinct.",
+    "spatialComparison": "assign_picker_groups.spatial_match only requires positive area between two polygons. It does not require equal geometry or containment for this path.",
+    "canonicalChoice": "The deterministic canonical choice prefers kind sector, so the suburb old-town row loses its separate picker choice.",
+    "sourceLines": {
+      "same_picker_name": 1089,
+      "assign_picker_groups": 1242,
+      "spatial_match": 1259,
+      "alias_join_loop": 1296,
+      "canonical_preference": 1336
+    },
+    "stricterPrimarySectorGroupingUsed": false
+  },
+  "geometryFacts": {
+    "projection": "EPSG:32632",
+    "sectorAreaM2": 524652.6026379067,
+    "oldTownAreaM2": 251394.07183457265,
+    "overlapM2": 132074.6147458552,
+    "oldTownOutsideSectorM2": 119319.45898738314,
+    "oldTownOutsideSectorPercent": 47.46311562426186,
+    "sectorOutsideOldTownM2": 392577.9859435615,
+    "sectorFullyContainsOldTown": false,
+    "oldTownFullyContainsSector": false
+  },
+  "identityDecision": "No primary source review establishes the whole-imada المدينة and the historic suburb المدينة العتيقة as the same display locality. Different exact primary names and substantially different footprints remain significant; a shared broad French translation plus partial overlap is insufficient.",
+  "minimumCorrection": {
+    "keepSeparatePickerIds": [
+      "osm:relation:7118631",
+      "osm:way:256615867"
+    ],
+    "preserve": [
+      "Both valid names and French aliases",
+      "Every original raw footprint and saved ID",
+      "All coordinates and prayer source634",
+      "The corrected official imada outline"
+    ],
+    "scope": "Prevent this source-identified pair from automatic alias-only joining, with an explicit guarded display distinction or a separately reviewed grouping rule. Do not strip valid source translations, rename the old town to the sector, or clip either shape. A global heuristic change needs a separate nationwide delta review."
+  },
+  "derivedContextChanges": [
+    {
+      "id": "osm:way:164467494",
+      "delta": {
+        "contextAliases": {
+          "before": [
+            "Delegación de Bizerta Norte",
+            "Délégation Bizerte Nord",
+            "El Mootamar",
+            "المؤتمر",
+            "معتمدية بنزرت الشمالية"
+          ],
+          "after": [
+            "Delegación de Bizerta Norte",
+            "Délégation Bizerte Nord",
+            "El Medina",
+            "La medina",
+            "المدينة",
+            "معتمدية بنزرت الشمالية"
+          ]
+        },
+        "parentName": {
+          "before": "المؤتمر",
+          "after": "المدينة"
+        }
+      },
+      "newOfficialRelationships": [
+        {
+          "id": "osm:relation:7118630",
+          "fullyContainsChild": false,
+          "positiveIntersectionAreaM2": 0.0
+        },
+        {
+          "id": "osm:relation:7118631",
+          "fullyContainsChild": true,
+          "positiveIntersectionAreaM2": 13567.078403307183
+        },
+        {
+          "id": "osm:relation:7118632",
+          "fullyContainsChild": false,
+          "positiveIntersectionAreaM2": 0.0
+        }
+      ]
+    },
+    {
+      "id": "osm:way:275008604",
+      "delta": {
+        "contextAliases": {
+          "before": [
+            "Cheikh Dris",
+            "Delegación de Bizerta Norte",
+            "Délégation Bizerte Nord",
+            "الشيخ ادريس",
+            "معتمدية بنزرت الشمالية"
+          ],
+          "after": [
+            "Delegación de Bizerta Norte",
+            "Délégation Bizerte Nord",
+            "معتمدية بنزرت الشمالية"
+          ]
+        },
+        "parentName": {
+          "before": "الشيخ ادريس",
+          "after": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "newOfficialRelationships": [
+        {
+          "id": "osm:relation:7118630",
+          "fullyContainsChild": false,
+          "positiveIntersectionAreaM2": 174472.6360655632
+        },
+        {
+          "id": "osm:relation:7118631",
+          "fullyContainsChild": false,
+          "positiveIntersectionAreaM2": 0.0
+        },
+        {
+          "id": "osm:relation:7118632",
+          "fullyContainsChild": false,
+          "positiveIntersectionAreaM2": 0.0
+        }
+      ]
+    }
+  ],
+  "derivedContextInterpretation": "Kasba is fully contained by the corrected Medina source and receives that parent. Oued Laassal is no longer fully contained by corrected Cheikh and falls back to the containing Bizerte Nord delegation; no new imada is invented. These changes are metadata context consequences, not shape modifications.",
+  "hanaPreserved": {
+    "id": "osm:way:1026778596",
+    "before": {
+      "id": "osm:way:1026778596",
+      "sourceId": "osm",
+      "name": "حي الهناء",
+      "aliases": [
+        "cité el hana"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "contextAliases": [
+        "Delegación de Bizerta Norte",
+        "Délégation Bizerte Nord",
+        "معتمدية بنزرت الشمالية"
+      ],
+      "governorateId": 361,
+      "lat": 37.284579,
+      "lng": 9.865234,
+      "delegationId": 634,
+      "hasBoundary": true,
+      "bbox": [
+        9.859846,
+        37.281907,
+        9.87109,
+        37.287956
+      ],
+      "areaKm2": 0.2594681978019382,
+      "pickerGroupId": "osm:relation:7118636",
+      "offset": 5197176,
+      "length": 52
+    },
+    "after": {
+      "id": "osm:way:1026778596",
+      "sourceId": "osm",
+      "name": "حي الهناء",
+      "aliases": [
+        "cité el hana"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "contextAliases": [
+        "Delegación de Bizerta Norte",
+        "Délégation Bizerte Nord",
+        "معتمدية بنزرت الشمالية"
+      ],
+      "governorateId": 361,
+      "lat": 37.284579,
+      "lng": 9.865234,
+      "delegationId": 634,
+      "hasBoundary": true,
+      "bbox": [
+        9.859846,
+        37.281907,
+        9.87109,
+        37.287956
+      ],
+      "areaKm2": 0.2594681978019382,
+      "pickerGroupId": "osm:relation:7118636",
+      "offset": 5198212,
+      "length": 52
+    },
+    "fields": {
+      "offset": {
+        "before": 5197176,
+        "after": 5198212
+      }
+    },
+    "packedBytesUnchanged": true
+  },
+  "auditQualification": "All four audit errors describe this single unexpected group transition. Raw old-town ID/name/coordinates and packed bytes remain intact. Every other audit check passed, including all3 target shapes,2723 untouched retained polygon slices,905 points,34 prior imports,114 old curations,prayer-byte/default preservation,52 reviewed names and16 retirements.",
+  "unchangedFrozenAudit": true,
+  "repeatedCatalogGeneration": false,
+  "implementationPerformed": false
+}

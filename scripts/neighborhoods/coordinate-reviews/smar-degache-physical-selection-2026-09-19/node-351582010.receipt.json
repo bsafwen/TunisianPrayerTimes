@@ -1,0 +1,25 @@
+{
+  "url": "https://api.openstreetmap.org/api/0.6/node/351582010.json",
+  "status": 200,
+  "retrievedAtUtc": "2026-09-19T13:07:14.771832+00:00",
+  "headers": {
+    "Connection": "close",
+    "content-encoding": "identity",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "cache-control": "private, max-age=0, must-revalidate",
+    "content-type": "application/json; charset=utf-8",
+    "server": "Apache",
+    "Accept-Ranges": "bytes",
+    "Date": "Sat, 19 Sep 2026 13:07:15 GMT",
+    "Via": "1.1 varnish",
+    "X-Served-By": "cache-par-lfpb1150064-PAR, cache-par-lfpb1150064-PAR",
+    "X-Cache": "MISS, MISS",
+    "X-Cache-Hits": "0, 0",
+    "X-Timer": "S1789823235.026551,VS0,VE61",
+    "Vary": "Accept-Encoding",
+    "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+    "transfer-encoding": "chunked"
+  },
+  "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar-degache-physical-reference-review-20260919\\node-351582010.json",
+  "sha256": "ba1c8adf3e2fb92fda1225cfbfd1f98cba83061aea092e090d8e9fce916903c3"
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "status": "PAIRED_PRIMARY_REFERENCES_AND_DISPLAY_IDENTITY_REVIEWED",
+  "baselineMetadataSha256": "205c1b002111007fc90cb799794d3284517606a29229de51569117a1f6fa2169",
+  "expectedGovernorateId": 362,
+  "delegationId": 576,
+  "references": [
+    {
+      "serviceDate": "2026-09-12",
+      "kind": "prayer",
+      "reference": {
+        "lat": 35.545,
+        "lng": 9.072
+      },
+      "source": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/sbiba-prayer-2026-09-12.json",
+        "sha256": "18d0c09a370a0d0011205ebfba2dcc1634001d44a9446c630ddf06a53280f3bf"
+      }
+    },
+    {
+      "serviceDate": "2026-09-12",
+      "kind": "sun",
+      "reference": {
+        "lat": 35.545,
+        "lng": 9.072
+      },
+      "source": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/sbiba-sun-2026-09-12.json",
+        "sha256": "f3022c108949960c4cd278074ff1ccd42ac1aec78149788dc7a4d8cce2e99de4"
+      }
+    },
+    {
+      "serviceDate": "2026-09-19",
+      "kind": "prayer",
+      "reference": {
+        "lat": 35.545,
+        "lng": 9.072
+      },
+      "source": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/sbiba-prayer-2026-09-19.json",
+        "sha256": "6ec7b78f5b23532472dc3700a54086ad2a315861f8105b379125b30cc8cbb9c9"
+      }
+    },
+    {
+      "serviceDate": "2026-09-19",
+      "kind": "sun",
+      "reference": {
+        "lat": 35.545,
+        "lng": 9.072
+      },
+      "source": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/sbiba-sun-2026-09-19.json",
+        "sha256": "7ec25820720f8438225d30e0bcc9acbbe4879e0786fd2abfc9af22d1db4da7c6"
+      }
+    }
+  ],
+  "allFourResponsesSameNumericReference": true,
+  "nodeSourceMatchesFreshCurrentVersion": 8,
+  "scope": "Adopt published INM reference576. The separately established Sbiba town identity is supported by the current official sector/parent, original footprint, authentic named village and qualified public phone context. Published reference fields do not independently certify locality identity or surveyed borders.",
+  "fullCountryNearestChanges": [
+    {
+      "id": "osm:relation:7164921",
+      "field": "delegationId",
+      "before": 576,
+      "after": 575
+    }
+  ],
+  "phoneContext": [
+    {
+      "record": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-1.json",
+        "sha256": "52ee1ca79f77e3f1d417c8036cd5def03666a238db5517b29a9f49e6453b2ef6"
+      },
+      "screenshot": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-1.png",
+        "sha256": "966c473c2da9e0e769f799063c8c97465df0e40d8732c7af2434109ff43e7d69"
+      },
+      "visualReviewBy": "root",
+      "finding": "Root personally viewed exact Sbiba/سبيبة town card, labelled urban road grid and public outline. Identity context only; no polygon copied or certified."
+    },
+    {
+      "record": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-2.json",
+        "sha256": "22ce49a65c690f667ab7e1fda514710666ca33acd2e5f9ba890ab1bdf5c3883c"
+      },
+      "screenshot": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-2.png",
+        "sha256": "0b7840e06032f2f086902201bca555b470f78c4ccd0171dfb4e7cdcab9a17971"
+      },
+      "visualReviewBy": "root",
+      "finding": "Coordinate intent selected Cafe Fatma, Rue Habib Thamer, Sbiba1270; no visible coordinate query. Nearby town-context only, not exact coordinate or boundary proof."
+    }
+  ],
+  "independentReview": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/next-locality-candidates-20260919/independent-candidate-review.json",
+    "sha256": "1a8c2fd501067750af435c693ce7806260928962ef32f79800fc8950bee5b2e7",
+    "bytes": 34002
+  }
+}

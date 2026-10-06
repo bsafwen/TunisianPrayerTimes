@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "cachedExtractionSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "historicalSourceFacts": {
+    "file": "residential-base-display-reviews/current-two-pair-source-facts.json",
+    "sha256": "130694e6ec4b259697fd992724165a2c9ad33ec41eab6dd9a7109e96b4d480ed"
+  },
+  "sourceReview": {
+    "file": "residential-base-display-reviews/bourouis-jerissa-display-identity-review.json",
+    "sha256": "a2d640370fd801439fd0ff7b67dd92cca0293d0a68115c68faccfcd3208393fc"
+  },
+  "records": {
+    "osm:way:179549823": {
+      "kind": "residential",
+      "tags": {
+        "landuse": "residential",
+        "name": "الجريصة",
+        "name:ar": "الجريصة",
+        "name:ca": "Jerissa",
+        "name:en": "Jérissa",
+        "name:fr": "Jérissa"
+      },
+      "geometrySha256": "4e9360572925f469ebceb787e5d4c3aa9f61a3c941b06354552becf3abeceaa4",
+      "metadata": {
+        "id": "osm:way:179549823",
+        "sourceId": "osm",
+        "name": "الجريصة",
+        "aliases": [
+          "Jerissa",
+          "Jérissa",
+          "Джериса"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.845263,
+        "lng": 8.637432,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.616681,
+          35.836246,
+          8.654295,
+          35.854215
+        ],
+        "areaKm2": 3.058875260709983,
+        "pickerGroupId": "osm:way:179549823"
+      },
+      "packedGeometrySha256": "33ad97f77875419ddd4958c6de6ed997a6078f804d82d5aa1121467bad8bb652"
+    },
+    "osm:node:1899219943": {
+      "kind": "town",
+      "tags": {
+        "name": "الجريصة",
+        "name:ar": "الجريصة",
+        "name:en": "Jérissa",
+        "name:fr": "Jérissa",
+        "name:ru": "Джериса",
+        "place": "town",
+        "population": "11298",
+        "population:date": "2004",
+        "wikidata": "Q2717622",
+        "wikimedia_commons": "Category:Jerissa",
+        "wikipedia": "ar:الجريصة",
+        "wikipedia:ar": "الجريصة"
+      },
+      "geometrySha256": "9c10ff309f594591cb80ef392833e6a9d83b280f1a93b1dfa6d34692adf210a6"
+    },
+    "osm:relation:4752900": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "long_name": "معتمدية الجريصة",
+        "long_name:ar": "معتمدية الجريصة",
+        "long_name:fr": "Délégation de Jérissa",
+        "name": "معتمدية الجريصة",
+        "name:ar": "معتمدية الجريصة",
+        "name:fr": "Délégation Djérissa",
+        "ref:tn:codegeo": "2358",
+        "ref:tn:hasc_2": "TN.KF.JE",
+        "sorting_name": "الجريصة",
+        "sorting_name:ar": "الجريصة",
+        "sorting_name:fr": "Djérissa",
+        "wikidata": "Q3190677",
+        "wikipedia": "ar:معتمدية الجريصة",
+        "wikipedia:ar": "معتمدية الجريصة"
+      },
+      "geometrySha256": "806ea1c86bcfa2e087c7aa5b6f5d0c0b9472bf8c4f1041364871d12e510a45a9"
+    },
+    "osm:relation:1435838": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-33",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Kef",
+        "boundary": "administrative",
+        "name": "ولاية الكاف",
+        "name:ar": "ولاية الكاف",
+        "name:az": "Kef (vilayət)",
+        "name:be": "Эль-Кеф (вілает)",
+        "name:be-tarask": "Эль-Кеф (вілает)",
+        "name:bg": "Кеф (област)",
+        "name:ca": "Governació del Kef",
+        "name:ceb": "Gouvernorat de Kef",
+        "name:cy": "El Kef (talaith)",
+        "name:de": "Al-Kaf",
+        "name:el": "Αλ Καφ (Κυβερνείο)",
+        "name:en": "Al Kaf",
+        "name:es": "Gobernación de Al-Kāf",
+        "name:fa": "کاف",
+        "name:fi": "Kef (kuvernementti)",
+        "name:fr": "Gouvernorat Le Kef",
+        "name:frr": "Kef (Guwernement)",
+        "name:id": "Kegubernuran Kef",
+        "name:it": "Le Kef",
+        "name:ja": "ケフ県",
+        "name:ko": "케프주 (튀니지)",
+        "name:ms": "Kawasan kegabenoran Kef",
+        "name:nl": "Kef (gouvernement)",
+        "name:no": "Kef (guvernement)",
+        "name:pl": "Gubernatorstwo Al-Kaf",
+        "name:pt": "Kef (província)",
+        "name:ro": "Guvernoratul Kef",
+        "name:ru": "Эль-Кеф (вилайет)",
+        "name:sco": "Kef Govrenorate",
+        "name:sh": "Kef (vilajet)",
+        "name:tr": "Kâf ili",
+        "name:uk": "Ель-Кеф (вілаєт)",
+        "name:ur": "کاف",
+        "name:zh": "卡夫省",
+        "name:zu": "Kef Governorate",
+        "official_name": "ولاية الكاف",
+        "official_name:ar": "ولاية الكاف",
+        "official_name:en": "El Kef Governorate",
+        "official_name:fr": "Gouvernorat du Kef",
+        "official_name:it": "Governatorato del Kef",
+        "population": "258790",
+        "population:date": "2004",
+        "ref:tn:codegeo": "23",
+        "wikidata": "Q328199",
+        "wikipedia": "ar:ولاية الكاف"
+      },
+      "geometrySha256": "a05ac1c3ce0ca8c52ff1923978f6572743d4befbdfc73ded8254762f6ac2e155"
+    },
+    "osm:relation:7140824": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجريصة الجنوبية",
+        "name:ar": "الجريصة الجنوبية",
+        "name:fr": "Djerissa Sud",
+        "ref:tn:codegeo": "235853"
+      },
+      "geometrySha256": "67dd93c0734bcb7da42f7240936fc503ffc4f388c219edcf6e46211c20ec8bef",
+      "metadata": {
+        "id": "osm:relation:7140824",
+        "sourceId": "osm",
+        "name": "الجريصة الجنوبية",
+        "aliases": [
+          "Djerissa Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.837998,
+        "lng": 8.62396,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.613313,
+          35.831097,
+          8.637425,
+          35.844874
+        ],
+        "areaKm2": 1.697093449351963,
+        "pickerGroupId": "osm:relation:7140824"
+      },
+      "packedGeometrySha256": "a9915b5b79ebb1676e142649185a7e6e7912bc4b429c86222f5c1b33c4e70b99"
+    },
+    "osm:relation:7140825": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجريصة الشمالية",
+        "name:ar": "الجريصة الشمالية",
+        "name:fr": "Djerissa Nord",
+        "ref:tn:codegeo": "235852"
+      },
+      "geometrySha256": "32eda9a9eee02d1853a01a7f999e74ee19e6fef06ed6de00b878f1bcc3a8f1e4",
+      "metadata": {
+        "id": "osm:relation:7140825",
+        "sourceId": "osm",
+        "name": "الجريصة الشمالية",
+        "aliases": [
+          "Djerissa Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.845315,
+        "lng": 8.645301,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.630816,
+          35.837553,
+          8.656748,
+          35.85306
+        ],
+        "areaKm2": 2.0644499872629267,
+        "pickerGroupId": "osm:relation:7140825"
+      },
+      "packedGeometrySha256": "bb781289a628071fc4635323c5a5ba33e776419742cc93f88b4f8a263870e518"
+    },
+    "osm:relation:7140826": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجريصة المركزية",
+        "name:ar": "الجريصة المركزية",
+        "name:fr": "Djerissa Centre",
+        "ref:tn:codegeo": "235851"
+      },
+      "geometrySha256": "99e051fa654ba00b5414cc42b18adfde469fe03bbc816d4e9e24cebdba9f5106",
+      "metadata": {
+        "id": "osm:relation:7140826",
+        "sourceId": "osm",
+        "name": "الجريصة المركزية",
+        "aliases": [
+          "Djerissa Centre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.844715,
+        "lng": 8.620155,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.604153,
+          35.837812,
+          8.639303,
+          35.851756
+        ],
+        "areaKm2": 1.9565590605198124,
+        "pickerGroupId": "osm:relation:7140826"
+      },
+      "packedGeometrySha256": "2cb3d41b74351410e50ccb5e97ce775fb4ca1dcd559792943ff5e2f609380610"
+    },
+    "osm:relation:7140827": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النعايم",
+        "name:ar": "النعايم",
+        "name:fr": "Enneayem",
+        "ref:tn:codegeo": "235856"
+      },
+      "geometrySha256": "a3db20c6924658264d63d5d124426088cf64ea410f53e6d1e083a3dcb4249caa",
+      "metadata": {
+        "id": "osm:relation:7140827",
+        "sourceId": "osm",
+        "name": "النعايم",
+        "aliases": [
+          "Enneayem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.781677,
+        "lng": 8.634745,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.594669,
+          35.743062,
+          8.6749,
+          35.819366
+        ],
+        "areaKm2": 35.30854890419142,
+        "pickerGroupId": "osm:relation:7140827"
+      },
+      "packedGeometrySha256": "4ec48003e3a1a92f6a61e419444cd909ace6db32933ca9c8b780c8b25fb2393a"
+    },
+    "osm:relation:7140828": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بسريانة",
+        "name:ar": "بسريانة",
+        "name:fr": "Besseriana",
+        "ref:tn:codegeo": "235854"
+      },
+      "geometrySha256": "de000e54cdeadef63e4d11179ec51dd2a30e033419cb3a345f008817d4807740",
+      "metadata": {
+        "id": "osm:relation:7140828",
+        "sourceId": "osm",
+        "name": "بسريانة",
+        "aliases": [
+          "Besseriana"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.821254,
+        "lng": 8.585198,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.536962,
+          35.790761,
+          8.636538,
+          35.851686
+        ],
+        "areaKm2": 35.602873036652966,
+        "pickerGroupId": "osm:relation:7140828"
+      },
+      "packedGeometrySha256": "dc4b34d29413f669fa7629a989992220d374f39b1ca0bb08aecbdc87ea5b8e02"
+    },
+    "osm:relation:7140829": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "فج التمر",
+        "name:ar": "فج التمر",
+        "name:fr": "Fej Ettamer",
+        "ref:tn:codegeo": "235855"
+      },
+      "geometrySha256": "4fa598079df1b21bc81428d6e3242e79738638cf634148a1c744bb94533c6233",
+      "metadata": {
+        "id": "osm:relation:7140829",
+        "sourceId": "osm",
+        "name": "فج التمر",
+        "aliases": [
+          "Fej Ettamer"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.836353,
+        "lng": 8.682871,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.601684,
+          35.783258,
+          8.761837,
+          35.88885
+        ],
+        "areaKm2": 96.91125232049434,
+        "pickerGroupId": "osm:relation:7140829"
+      },
+      "packedGeometrySha256": "7a48ef35ca2ea7bd49cd45e4791a1f0ceffb9e12ee8556b7d6428221b0dbdfa5"
+    }
+  },
+  "sourceNamePeerIds": [
+    "osm:node:1899219943",
+    "osm:way:179549823"
+  ],
+  "qualification": "Exact cached original source geometry/tag facts; no new PBF pass or guessed perimeter. Metadata is independently pinned at proposal assembly."
+}

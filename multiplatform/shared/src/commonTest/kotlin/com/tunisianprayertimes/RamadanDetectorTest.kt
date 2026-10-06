@@ -2,11 +2,26 @@ package com.tunisianprayertimes
 
 import java.time.chrono.HijrahDate
 import java.time.LocalDate
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertTrue
 import kotlin.test.assertFalse
 
 class RamadanDetectorTest {
+
+    private lateinit var testEnvironment: OfficialDateTestEnvironment
+
+    @BeforeTest
+    fun setup() {
+        testEnvironment = OfficialDateTestEnvironment()
+        RamadanOverrideChecker.testDateOverride = LocalDate.of(2026, 2, 17)
+    }
+
+    @AfterTest
+    fun cleanup() {
+        testEnvironment.close()
+    }
 
     @Test
     fun ramadanMonthIsDetected() {

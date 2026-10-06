@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "status": "TWO_WHOLE_IMADA_ROWS_VISUALLY_VERIFIED",
+  "primarySource": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "bytes": 10636520,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "date": "2023-09-21",
+    "jortPublicationDate": "2023-09-22",
+    "jortNumber": 108
+  },
+  "pageEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\decree-page-23.png",
+      "sha256": "ef3bd88d648f684abc587b7a4d5ffa9e570baf4f7a9de616837dc9cc3ce4be63",
+      "bytes": 438443
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\decree-page-24.png",
+      "sha256": "e06480118d35d0c46f9ba556f83860178e65be5164ce08ec2221ab40f0d01d76",
+      "bytes": 320919
+    }
+  ],
+  "records": [
+    {
+      "id": "osm:relation:7189452",
+      "officialCode": "215351",
+      "conclusion": "whole_imada",
+      "pdfPage": 24,
+      "jortPage": 5121,
+      "imadaName": "زهرة مدين",
+      "circleName": "زهرة مدين",
+      "delegationCode": "2153",
+      "delegationName": "عمدون",
+      "governorateCode": "21",
+      "governorateName": "باجة",
+      "visibleImadaCellSpan": 1,
+      "circleCount": 1,
+      "seats": 1,
+      "parentNameContinuesFromPdfPage": 23,
+      "parentNameContinuesFromJortPage": 5120,
+      "annex": 1,
+      "table": "A",
+      "personallyViewed": true,
+      "registry": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2153",
+        "delegationFr": "Amdoun",
+        "delegationAr": "عمدون",
+        "sectorCode": "215351",
+        "sectorFr": "Zahret medien",
+        "sectorAr": "زهرة مدين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20638,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 922,
+          "Nombre_de_menages_par_Secteurs.xlsx": 921
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7189451",
+      "officialCode": "215352",
+      "conclusion": "whole_imada",
+      "pdfPage": 24,
+      "jortPage": 5121,
+      "imadaName": "زهرة مدين الجنوبية",
+      "circleName": "زهرة مدين الجنوبية",
+      "delegationCode": "2153",
+      "delegationName": "عمدون",
+      "governorateCode": "21",
+      "governorateName": "باجة",
+      "visibleImadaCellSpan": 1,
+      "circleCount": 1,
+      "seats": 1,
+      "parentNameContinuesFromPdfPage": 23,
+      "parentNameContinuesFromJortPage": 5120,
+      "annex": 1,
+      "table": "A",
+      "personallyViewed": true,
+      "registry": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2153",
+        "delegationFr": "Amdoun",
+        "delegationAr": "عمدون",
+        "sectorCode": "215352",
+        "sectorFr": "Zahret medien sud",
+        "sectorAr": "زهرة مدين الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20672,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 924,
+          "Nombre_de_menages_par_Secteurs.xlsx": 923
+        }
+      }
+    }
+  ],
+  "method": "Personally read the whole page23 parent block عمدون continuing at top of page24. The adjacent زهرة مدين and زهرة مدين الجنوبية imada cells each span exactly one identically named electoral circle row; both seat values1. Exact six-digit codes come from the previously pinned registry, not the scanned decree. Page25 was a locator only and is not needed to prove the target scope.",
+  "qualification": "2023 decree links these whole imada identities to the respective official electoral maps; it does not prove survey accuracy, present-day legal currency or agreement with OSM neighbors.",
+  "priorReviewReference": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-source-and-geometry-review.json",
+    "sha256": "6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b",
+    "bytes": 29736
+  }
+}

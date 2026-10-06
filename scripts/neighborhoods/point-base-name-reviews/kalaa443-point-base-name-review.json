@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed_exact_point_base_name_identity",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "pointId": "osm:node:1495587105",
+  "baseId": 443,
+  "pointNameAr": "القلعة الصغرى",
+  "baseNameAr": "القلعة الصغيرة",
+  "expectedGovernor": {
+    "id": 348,
+    "nomFr": "Sousse",
+    "nomAr": "سوسة",
+    "nomEn": "Sousse",
+    "lat": 35.8254,
+    "lng": 10.6369
+  },
+  "sourceProposal": {
+    "file": "point-base-name-reviews/kalaa443-point-base-identity-proposal.json",
+    "sha256": "0da277cc3036585472dbcdcee54bd4fe7335403253c336c8d9f45949567d98d4"
+  },
+  "correctionSha256": "10f7c2e028ff405635dc2a744a01b38429143e710aa205190d7af5b2c453cffc",
+  "correctionBinding": "Compare the exact443 object in the separately validated current manifest, not a whole-manifest historical hash. All29 current corrections remain unchanged.",
+  "sourceNode": {
+    "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-node-1495587105.json",
+    "sha256": "81af96007b5cdcdd4abacbf0e0ab3ccc0ae1dda7d3da02df4917dddfeff8e932"
+  },
+  "primaryMinistryPage": {
+    "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-social-local-unit.html",
+    "sha256": "bc67ec4f968c43d7877d07075a5f0e16c90c7c97b87be7e2e1bf62899683ca94"
+  },
+  "coordinateSourceReview": {
+    "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-source-review.json",
+    "sha256": "e0303bf691ed72ce846395f6c3cd3ac2cbd64c56ed520277ceab4433ff5adbfb"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "3165",
+  "sourceInterpretation": "The approved443 correction explicitly binds the exact named source village; INS/ministry confirm its primary spelling. Their evidence supports this pair only. No fuzzy name rule, boundary correction, or INM calculation-coordinate certification.",
+  "historicalProposalQualification": "The source proposal was frozen before the unrelated Bembla import. Its entire point/base/correction443/five-imada records remain byte/object equal at the current b13ac2a5 checkpoint. Its historical whole-file hashes are not current runtime dependencies."
+}

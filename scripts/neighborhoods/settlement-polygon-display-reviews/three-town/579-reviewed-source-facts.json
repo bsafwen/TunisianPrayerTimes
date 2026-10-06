@@ -1,0 +1,1986 @@
+{
+  "schemaVersion": 1,
+  "baselineMetadataSha256": "b50f62fba68c6ba0989f3a4cb673a0cfad820dcd059164b26a0ac208467c9600",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baseId": 579,
+  "polygonId": "osm:way:543781477",
+  "sourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/tibar-ayoun-source-review.json",
+    "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25"
+  },
+  "originalFrozenSourceFacts": {
+    "file": "settlement-polygon-display-reviews/three-town/579-current-source-facts.json",
+    "sha256": "3507068e4e8340b34172c2182100e3b88b7f8c212819348ec7eae97c17dddbec"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "sourceReviewBinding": {
+    "status": "BOUNDED_CURRENT_SOURCE_TRIAGE_COMPLETE_NOT_IMPLEMENTED",
+    "selector": [
+      "records",
+      1
+    ],
+    "record": {
+      "baseId": 579,
+      "baseCurrent": {
+        "id": 579,
+        "nomFr": "El Ayoun",
+        "nomAr": "العيون",
+        "nomEn": "El Ayoun",
+        "lat": 35.5341,
+        "lng": 8.8694,
+        "governorateId": 362
+      },
+      "sectorId": "osm:relation:7164958",
+      "settlementId": "osm:way:543781477",
+      "sourceSettlementPoint": {
+        "id": "osm:node:5316229408",
+        "tags": {
+          "addr:city": "العيون",
+          "addr:postcode": "1216",
+          "name": "العيون",
+          "name:ar": "العيون",
+          "name:en": "El Ayoun",
+          "name:fr": "El Ayoun",
+          "place": "village",
+          "postal_code": "1216",
+          "wikidata": "Q3049722",
+          "wikipedia": "ar:العيون (تونس)"
+        },
+        "lat": 35.5402671,
+        "lng": 8.8836602
+      },
+      "sourcePointAbsentFromRaw": true,
+      "currentRawMembers": [
+        {
+          "currentMetadata": {
+            "id": "osm:relation:7164958",
+            "sourceId": "osm",
+            "name": "العيون",
+            "aliases": [
+              "El Ayoun"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.53483,
+            "lng": 8.857928,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.775711,
+              35.49804,
+              8.935946,
+              35.57091
+            ],
+            "areaKm2": 70.60716148975733,
+            "pickerGroupId": "osm:relation:7164958",
+            "offset": 3296372,
+            "length": 1756
+          },
+          "packedGeometrySha256": "bb95ba2ca45a4f7f5a29ca910e0d3e56bd5c1e83a60db6dcc0ad76853deb4b39"
+        },
+        {
+          "currentMetadata": {
+            "id": "osm:way:543781477",
+            "sourceId": "osm",
+            "name": "العيون",
+            "aliases": [
+              "El Ayoun"
+            ],
+            "kind": "village",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "العيون",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.540705,
+            "lng": 8.883288,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.879452,
+              35.537452,
+              8.88807,
+              35.54359
+            ],
+            "areaKm2": 0.2935188380899148,
+            "pickerGroupId": "osm:relation:7164958",
+            "offset": 5412216,
+            "length": 204
+          },
+          "packedGeometrySha256": "04445274d5d12b4e398d0b400a8709a92218acc0435b39ff74e02631a1d7dece"
+        }
+      ],
+      "currentMembersAllSemanticFieldsAndPackedBytesExactSincePriorScopeReview": true,
+      "priorScopeAssessment": {
+        "decision": "Separate administrative scope from the village footprint; hold a village/base link until the base reference relationship is qualified.",
+        "finding": "Village543781477 and source village5316229408 share name and postcode1216; the point is inside the small village footprint. Both are distinct objects from imada425851 even though their labels and source579 agree. Base579 is outside the village footprint. Another El Ayoun in Sidi Bouzid is unrelated.",
+        "missingLink": "Establish whether the base is a coarse town reference rather than an outlying locality. Do not move it into the village to pass containment; official sector scope alone cannot answer the settlement question."
+      },
+      "reusedGeometricFacts": {
+        "sector": {
+          "containsBase": true,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 0.0,
+          "originalContainsBase": true,
+          "originalContainsSourceSettlementPoint": true
+        },
+        "settlement": {
+          "containsBase": false,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 1101.9483129331863,
+          "originalContainsBase": false,
+          "originalContainsSourceSettlementPoint": true,
+          "percentageOutsideSourceSector": 0.0
+        }
+      },
+      "geometryCalculationNotRepeated": "Current complete semantic records and packed bytes equal the historical scope evidence; geometric predicates are carried forward.",
+      "originalExactNamePeers": [
+        {
+          "id": "osm:node:5316229408",
+          "kind": "village",
+          "tags": {
+            "addr:city": "العيون",
+            "addr:postcode": "1216",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:en": "El Ayoun",
+            "name:fr": "El Ayoun",
+            "place": "village",
+            "postal_code": "1216",
+            "wikidata": "Q3049722",
+            "wikipedia": "ar:العيون (تونس)"
+          },
+          "rawPresent": false,
+          "currentGroup": null
+        },
+        {
+          "id": "osm:node:7179613734",
+          "kind": "hamlet",
+          "tags": {
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:en": "El Ayoun",
+            "name:fr": "El Ayoun",
+            "place": "hamlet"
+          },
+          "rawPresent": true,
+          "currentGroup": "osm:node:7179613734",
+          "currentGovernorateId": 365,
+          "currentDefaultSourceId": 604,
+          "currentPrimaryName": "العيون"
+        },
+        {
+          "id": "osm:relation:1614575",
+          "kind": "subdistrict",
+          "tags": {
+            "admin_level": "8",
+            "boundary": "administrative",
+            "long_name": "بلدية العيون",
+            "long_name:ar": "بلدية العيون",
+            "long_name:fr": "commune El Aioun",
+            "name": "El Aioun ⵍⴻⵄⵢⵓⵏ العيون",
+            "name:ar": "العيون",
+            "name:ber": "ⵍⴻⵄⵢⵓⵏ",
+            "name:en": "El Aioun",
+            "name:fr": "El Aioun",
+            "name:kab": "Leɛyun",
+            "population": "5347",
+            "population:date": "2008",
+            "ref": "3607",
+            "ref:ONS": "3607",
+            "source:population": "الديوان الوطني للإحصائيات (الجزائر)",
+            "wikidata": "Q3049682",
+            "wikipedia": "ar:العيون (ولاية الطارف)"
+          },
+          "rawPresent": false,
+          "currentGroup": null
+        },
+        {
+          "id": "osm:relation:7154907",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:fr": "El Ayoun",
+            "ref:tn:codegeo": "625455"
+          },
+          "rawPresent": true,
+          "currentGroup": "osm:relation:7154907",
+          "currentGovernorateId": 352,
+          "currentDefaultSourceId": 477,
+          "currentPrimaryName": "العيون"
+        },
+        {
+          "id": "osm:relation:7164958",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:fr": "El Ayoun",
+            "ref:tn:codegeo": "425851",
+            "wikidata": "Q3049722",
+            "wikipedia": "ar:العيون (تونس)"
+          },
+          "rawPresent": true,
+          "currentGroup": "osm:relation:7164958",
+          "currentGovernorateId": 362,
+          "currentDefaultSourceId": 579,
+          "currentPrimaryName": "العيون"
+        },
+        {
+          "id": "osm:relation:7165022",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "El Ayoun",
+            "boundary": "administrative",
+            "name": "معتمدية العيون",
+            "name:ar": "معتمدية العيون",
+            "name:fr": "Délégation El Ayoun",
+            "official_name": "معتمدية العيون",
+            "official_name:ar": "معتمدية العيون",
+            "ref:tn:codegeo": "4258",
+            "ref:tn:hasc_2": "TN.KS.AY",
+            "wikidata": "Q12243830",
+            "wikipedia": "ar:معتمدية العيون"
+          },
+          "rawPresent": false,
+          "currentGroup": null
+        },
+        {
+          "id": "osm:relation:7169616",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:fr": "El Ayoun",
+            "ref:tn:codegeo": "435455"
+          },
+          "rawPresent": true,
+          "currentGroup": "osm:relation:7169616",
+          "currentGovernorateId": 355,
+          "currentDefaultSourceId": 575,
+          "currentPrimaryName": "العيون"
+        },
+        {
+          "id": "osm:way:543781477",
+          "kind": "village",
+          "tags": {
+            "addr:postcode": "1216",
+            "landuse": "residential",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:en": "El Ayoun",
+            "name:fr": "El Ayoun",
+            "place": "village"
+          },
+          "rawPresent": true,
+          "currentGroup": "osm:relation:7164958",
+          "currentGovernorateId": 362,
+          "currentDefaultSourceId": 579,
+          "currentPrimaryName": "العيون"
+        }
+      ],
+      "completeCachedImadas": [
+        {
+          "id": "osm:relation:7164958",
+          "code": "425851",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العيون",
+            "name:ar": "العيون",
+            "name:fr": "El Ayoun",
+            "ref:tn:codegeo": "425851",
+            "wikidata": "Q3049722",
+            "wikipedia": "ar:العيون (تونس)"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "42",
+              "governorateFr": "Kasserine",
+              "governorateAr": "القصرين",
+              "delegationCode": "4258",
+              "delegationFr": "El ayoun",
+              "delegationAr": "العيون",
+              "sectorCode": "425851",
+              "sectorFr": "El ayoun",
+              "sectorAr": "العيون",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51883,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2520,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2515
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7164958",
+            "sourceId": "osm",
+            "name": "العيون",
+            "aliases": [
+              "El Ayoun"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.53483,
+            "lng": 8.857928,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.775711,
+              35.49804,
+              8.935946,
+              35.57091
+            ],
+            "areaKm2": 70.60716148975733,
+            "pickerGroupId": "osm:relation:7164958",
+            "offset": 3296372,
+            "length": 1756
+          },
+          "packedGeometrySha256": "bb95ba2ca45a4f7f5a29ca910e0d3e56bd5c1e83a60db6dcc0ad76853deb4b39"
+        },
+        {
+          "id": "osm:relation:7164954",
+          "code": "425852",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القرين",
+            "name:ar": "القرين",
+            "name:fr": "El Grine",
+            "ref:tn:codegeo": "425852"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "42",
+              "governorateFr": "Kasserine",
+              "governorateAr": "القصرين",
+              "delegationCode": "4258",
+              "delegationFr": "El ayoun",
+              "delegationAr": "العيون",
+              "sectorCode": "425852",
+              "sectorFr": "El grine",
+              "sectorAr": "القرين",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51917,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2522,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2517
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7164954",
+            "sourceId": "osm",
+            "name": "القرين",
+            "aliases": [
+              "El Grine"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.41019,
+            "lng": 8.847973,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.803338,
+              35.36246,
+              8.915876,
+              35.45668
+            ],
+            "areaKm2": 56.28956648192294,
+            "pickerGroupId": "osm:relation:7164954",
+            "offset": 3290192,
+            "length": 1364
+          },
+          "packedGeometrySha256": "05b3ca0459b4c775245f639212b5391bd875cb60654df34889aa8b0be692543f"
+        },
+        {
+          "id": "osm:relation:7164953",
+          "code": "425853",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البرك",
+            "name:ar": "البرك",
+            "name:fr": "El Brek",
+            "ref:tn:codegeo": "425853"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "42",
+              "governorateFr": "Kasserine",
+              "governorateAr": "القصرين",
+              "delegationCode": "4258",
+              "delegationFr": "El ayoun",
+              "delegationAr": "العيون",
+              "sectorCode": "425853",
+              "sectorFr": "El brek",
+              "sectorAr": "البرك",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51951,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2524,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2519
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7164953",
+            "sourceId": "osm",
+            "name": "البرك",
+            "aliases": [
+              "El Brek"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.47146,
+            "lng": 8.841217,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.80048,
+              35.43245,
+              8.887663,
+              35.511
+            ],
+            "areaKm2": 41.402243597792086,
+            "pickerGroupId": "osm:relation:7164953",
+            "offset": 3288692,
+            "length": 1500
+          },
+          "packedGeometrySha256": "30db942bf3daeb0f7678f376801c69f771973b735a20eb53375abcb117ac22d5"
+        },
+        {
+          "id": "osm:relation:7164951",
+          "code": "425854",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البواجر",
+            "name:ar": "البواجر",
+            "name:fr": "El Baouajer",
+            "ref:tn:codegeo": "425854"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "42",
+              "governorateFr": "Kasserine",
+              "governorateAr": "القصرين",
+              "delegationCode": "4258",
+              "delegationFr": "El ayoun",
+              "delegationAr": "العيون",
+              "sectorCode": "425854",
+              "sectorFr": "El baouajer",
+              "sectorAr": "البواجر",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51985,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2526,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2521
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7164951",
+            "sourceId": "osm",
+            "name": "البواجر",
+            "aliases": [
+              "El Baouajer"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.57768,
+            "lng": 8.841307,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.758392,
+              35.5435,
+              8.921328,
+              35.61458
+            ],
+            "areaKm2": 69.38454940286692,
+            "pickerGroupId": "osm:relation:7164951",
+            "offset": 3283900,
+            "length": 2924
+          },
+          "packedGeometrySha256": "848d1fb35910ebc3a2adf4cd2e67245974c680ea1346a9f074eecd7ae9346581"
+        },
+        {
+          "id": "osm:relation:7164909",
+          "code": "425855",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "توشة",
+            "name:ar": "توشة",
+            "name:fr": "Tiwicha",
+            "ref:tn:codegeo": "425855"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "42",
+              "governorateFr": "Kasserine",
+              "governorateAr": "القصرين",
+              "delegationCode": "4258",
+              "delegationFr": "El ayoun",
+              "delegationAr": "العيون",
+              "sectorCode": "425855",
+              "sectorFr": "Tiwicha",
+              "sectorAr": "توشة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 52019,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2527,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2522
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7164909",
+            "sourceId": "osm",
+            "name": "توشة",
+            "aliases": [
+              "Tiwicha"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.48391,
+            "lng": 8.947932,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.861469,
+              35.42516,
+              9.017764,
+              35.54236
+            ],
+            "areaKm2": 116.34420706860571,
+            "pickerGroupId": "osm:relation:7164909",
+            "offset": 3177668,
+            "length": 2540
+          },
+          "packedGeometrySha256": "06e5cc3f2b5da054effe58ddc1b6c42c7105542676d797bf6cb9cadf65aefc5e"
+        },
+        {
+          "id": "osm:relation:7164907",
+          "code": "425856",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين السلسلة",
+            "name:ar": "عين السلسلة",
+            "name:fr": "Ain Esselsela",
+            "ref:tn:codegeo": "425856"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "42",
+              "governorateFr": "Kasserine",
+              "governorateAr": "القصرين",
+              "delegationCode": "4258",
+              "delegationFr": "El ayoun",
+              "delegationAr": "العيون",
+              "sectorCode": "425856",
+              "sectorFr": "Ain esselsela",
+              "sectorAr": "عين السلسلة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 52053,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2529,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2524
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7164907",
+            "sourceId": "osm",
+            "name": "عين السلسلة",
+            "aliases": [
+              "Ain Esselsela"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.572655,
+            "lng": 8.96302,
+            "delegationId": 581,
+            "hasBoundary": true,
+            "bbox": [
+              8.889074,
+              35.52821,
+              9.005518,
+              35.61756
+            ],
+            "areaKm2": 58.46114315591408,
+            "pickerGroupId": "osm:relation:7164907",
+            "offset": 3174060,
+            "length": 2516
+          },
+          "packedGeometrySha256": "f075f0d8f5ed21620206577a0c55694ee5ab2ece761be7ba4d35461d8929f463"
+        }
+      ],
+      "currentOfficialImadaCount": 6,
+      "existingCuration": [],
+      "ownCoordinateCorrections": [],
+      "beforeGroups": {
+        "osm:relation:7164958": [
+          "osm:relation:7164958",
+          "osm:way:543781477"
+        ],
+        "delegation:579": [
+          "delegation:579"
+        ]
+      },
+      "conditionalAfterGroups": {
+        "osm:relation:7164958": [
+          "osm:relation:7164958"
+        ],
+        "delegation:579": [
+          "delegation:579",
+          "osm:way:543781477"
+        ]
+      },
+      "conditionalRawFieldChanges": [
+        {
+          "id": "osm:way:543781477",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7164958",
+          "after": "delegation:579"
+        }
+      ],
+      "decision": "SOURCE_SUPPORTED_SETTLEMENT_DISPLAY_CANDIDATE_KEEP_IMADA_SEPARATE_NOT_IMPLEMENTATION_READY",
+      "newEvidence": "MEHAT regional planning report printedp64/PDF74 explicitly describes ElAyoun as a local population centre and delegation seat. This provides settlement-level evidence independent of imada425851 and corroborates the same-named village point/footprint pair withpostcode1216.",
+      "requiredQualification": "Base579 remains its distinct historical settlement reference outside the small village polygon. No source certifies it as a centre; no coordinate relocation is proposed.",
+      "remainingImplementationFacts": [
+        "The exact source node5316229408 and polygon543781477 are both village, with postcode1216 and Arabic/French correspondence. Preserve both kinds; do not rewrite the polygon to residential to satisfy a guard.",
+        "Pin exact source node API metadata if the eventual reviewed method requires it, all6 current official imadas, other homonyms in SidiBouzid/Tozeur and the Algerian subdistrict cache peer1614575 absent from the raw catalog. The current noncoincident branch hardcodes5 imadas and needs an explicit complete-count proof for6.",
+        "Use a typed polygonal-village noncoincident display proof and distinct-pair guard for7164958/543781477. The existing town/residential-only branch cannot accept the real source representation unchanged."
+      ],
+      "primaryEvidence": [
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tibar-ayoun-borj-current-scope-triage\\kasserine-regional-plan-2016.pdf",
+          "sha256": "3ef06816a2832d54c82fa6a737b04575ab4fddc5894b99ed31c77dab31e367af",
+          "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/RapportPhase3SDADkasserineNov2016fr.pdf",
+          "pdfPage": 74,
+          "printedPage": 64,
+          "personallyViewed": true,
+          "scope": "Historical settlement/chef-lieu identity only. The report municipal-status statement belongs to its historical demographic discussion and is not asserted as current."
+        }
+      ]
+    }
+  },
+  "records": {
+    "osm:node:5316229408": {
+      "id": "osm:node:5316229408",
+      "kind": "village",
+      "originalSourceId": null,
+      "originalTags": {
+        "addr:city": "العيون",
+        "addr:postcode": "1216",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village",
+        "postal_code": "1216",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      },
+      "originalGeometrySha256": "0cdb5ccdd5b5955ef9f428f54deb8aa7e13db007b0bcae268540c1530fe8a4a1",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "addr:city": "العيون",
+        "addr:postcode": "1216",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village",
+        "postal_code": "1216",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      },
+      "effectiveGeometrySha256": "0cdb5ccdd5b5955ef9f428f54deb8aa7e13db007b0bcae268540c1530fe8a4a1",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:node:7179613734": {
+      "id": "osm:node:7179613734",
+      "kind": "hamlet",
+      "originalSourceId": null,
+      "originalTags": {
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "hamlet"
+      },
+      "originalGeometrySha256": "8eb8dbe17b6e9df960ec55aa98ffde136509fa66098bc50ebee6c28e316bd267",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "hamlet"
+      },
+      "effectiveGeometrySha256": "8eb8dbe17b6e9df960ec55aa98ffde136509fa66098bc50ebee6c28e316bd267",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:node:7179613734",
+        "sourceId": "osm",
+        "name": "العيون",
+        "aliases": [
+          "El Ayoun"
+        ],
+        "kind": "hamlet",
+        "parentName": "تابديت",
+        "contextAliases": [
+          "Délégation Redeyef",
+          "Redeyef",
+          "Tabdit",
+          "تابديت",
+          "تبديت",
+          "معتمدية الرديف"
+        ],
+        "governorateId": 365,
+        "lat": 34.4265725,
+        "lng": 8.2899115,
+        "delegationId": 604,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:7179613734"
+      },
+      "packedGeometrySha256": null
+    },
+    "osm:relation:1434949": {
+      "id": "osm:relation:1434949",
+      "kind": "governorate",
+      "originalSourceId": null,
+      "originalTags": {
+        "ISO3166-2": "TN-42",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية القصرين",
+        "name:ar": "ولاية القصرين",
+        "name:az": "Kasserin (vilayət)",
+        "name:azb": "القصرین",
+        "name:be": "Касерын (вілает)",
+        "name:be-tarask": "Касэрын (вілает)",
+        "name:bg": "Касерин (област)",
+        "name:ca": "Governació de Kasserine",
+        "name:ceb": "Gouvernorat de Kasserine",
+        "name:cy": "Kasserine (talaith)",
+        "name:de": "Gouvernement Kasserine",
+        "name:el": "Αλ Κασράυν (Κυβερνείο)",
+        "name:en": "Kasserine",
+        "name:es": "Gobernación de Kasserine",
+        "name:fa": "القصرین",
+        "name:fr": "Gouvernorat Kasserine",
+        "name:frr": "Kasserine (Guwernement)",
+        "name:id": "Kegubernuran Kasserine",
+        "name:it": "Kasserine",
+        "name:ja": "カスリーヌ県",
+        "name:ko": "카세린주",
+        "name:ms": "Kawasan kegabenoran Kasserine",
+        "name:nl": "Kasserine (gouvernement)",
+        "name:no": "Kasserine (guvernement)",
+        "name:pl": "Gubernatorstwo Al-Kasrajn",
+        "name:pt": "Kasserine (província)",
+        "name:ro": "Guvernoratul Kasserine",
+        "name:ru": "Кассерин (вилайет)",
+        "name:sco": "Kasserine Govrenorate",
+        "name:sh": "Kasserine (vilajet)",
+        "name:tr": "Kassarin ili",
+        "name:uk": "Касерін (вілаєт)",
+        "name:ur": "قصرین",
+        "name:zh": "卡塞林省",
+        "name:zu": "Kasserine Governorate",
+        "official_name": "ولاية القصرين",
+        "official_name:ar": "ولاية القصرين",
+        "official_name:en": "Kasserine Governorate",
+        "official_name:fa": "استان قصرین",
+        "official_name:fr": "Gouvernorat de Kasserine",
+        "official_name:it": "Governatorato di Kasserine",
+        "official_name:ur": "ولایت قصرین",
+        "population": "439243",
+        "population:date": "2014",
+        "ref:tn:codegeo": "42",
+        "wikidata": "Q388047",
+        "wikipedia": "ar:ولاية القصرين"
+      },
+      "originalGeometrySha256": "b6b2fdb301241a1cafa3b3b2068080c55abc0425506ceb89720b1950903dbaa5",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "ISO3166-2": "TN-42",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية القصرين",
+        "name:ar": "ولاية القصرين",
+        "name:az": "Kasserin (vilayət)",
+        "name:azb": "القصرین",
+        "name:be": "Касерын (вілает)",
+        "name:be-tarask": "Касэрын (вілает)",
+        "name:bg": "Касерин (област)",
+        "name:ca": "Governació de Kasserine",
+        "name:ceb": "Gouvernorat de Kasserine",
+        "name:cy": "Kasserine (talaith)",
+        "name:de": "Gouvernement Kasserine",
+        "name:el": "Αλ Κασράυν (Κυβερνείο)",
+        "name:en": "Kasserine",
+        "name:es": "Gobernación de Kasserine",
+        "name:fa": "القصرین",
+        "name:fr": "Gouvernorat Kasserine",
+        "name:frr": "Kasserine (Guwernement)",
+        "name:id": "Kegubernuran Kasserine",
+        "name:it": "Kasserine",
+        "name:ja": "カスリーヌ県",
+        "name:ko": "카세린주",
+        "name:ms": "Kawasan kegabenoran Kasserine",
+        "name:nl": "Kasserine (gouvernement)",
+        "name:no": "Kasserine (guvernement)",
+        "name:pl": "Gubernatorstwo Al-Kasrajn",
+        "name:pt": "Kasserine (província)",
+        "name:ro": "Guvernoratul Kasserine",
+        "name:ru": "Кассерин (вилайет)",
+        "name:sco": "Kasserine Govrenorate",
+        "name:sh": "Kasserine (vilajet)",
+        "name:tr": "Kassarin ili",
+        "name:uk": "Касерін (вілаєт)",
+        "name:ur": "قصرین",
+        "name:zh": "卡塞林省",
+        "name:zu": "Kasserine Governorate",
+        "official_name": "ولاية القصرين",
+        "official_name:ar": "ولاية القصرين",
+        "official_name:en": "Kasserine Governorate",
+        "official_name:fa": "استان قصرین",
+        "official_name:fr": "Gouvernorat de Kasserine",
+        "official_name:it": "Governatorato di Kasserine",
+        "official_name:ur": "ولایت قصرین",
+        "population": "439243",
+        "population:date": "2014",
+        "ref:tn:codegeo": "42",
+        "wikidata": "Q388047",
+        "wikipedia": "ar:ولاية القصرين"
+      },
+      "effectiveGeometrySha256": "b6b2fdb301241a1cafa3b3b2068080c55abc0425506ceb89720b1950903dbaa5",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:1614575": {
+      "id": "osm:relation:1614575",
+      "kind": "subdistrict",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "8",
+        "boundary": "administrative",
+        "long_name": "بلدية العيون",
+        "long_name:ar": "بلدية العيون",
+        "long_name:fr": "commune El Aioun",
+        "name": "El Aioun ⵍⴻⵄⵢⵓⵏ العيون",
+        "name:ar": "العيون",
+        "name:ber": "ⵍⴻⵄⵢⵓⵏ",
+        "name:en": "El Aioun",
+        "name:fr": "El Aioun",
+        "name:kab": "Leɛyun",
+        "population": "5347",
+        "population:date": "2008",
+        "ref": "3607",
+        "ref:ONS": "3607",
+        "source:population": "الديوان الوطني للإحصائيات (الجزائر)",
+        "wikidata": "Q3049682",
+        "wikipedia": "ar:العيون (ولاية الطارف)"
+      },
+      "originalGeometrySha256": "4ad46e9420eff4ae1229be2fb4750965e9bd2c04287f5c84b350d74576816644",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "8",
+        "boundary": "administrative",
+        "long_name": "بلدية العيون",
+        "long_name:ar": "بلدية العيون",
+        "long_name:fr": "commune El Aioun",
+        "name": "El Aioun ⵍⴻⵄⵢⵓⵏ العيون",
+        "name:ar": "العيون",
+        "name:ber": "ⵍⴻⵄⵢⵓⵏ",
+        "name:en": "El Aioun",
+        "name:fr": "El Aioun",
+        "name:kab": "Leɛyun",
+        "population": "5347",
+        "population:date": "2008",
+        "ref": "3607",
+        "ref:ONS": "3607",
+        "source:population": "الديوان الوطني للإحصائيات (الجزائر)",
+        "wikidata": "Q3049682",
+        "wikipedia": "ar:العيون (ولاية الطارف)"
+      },
+      "effectiveGeometrySha256": "4ad46e9420eff4ae1229be2fb4750965e9bd2c04287f5c84b350d74576816644",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7154907": {
+      "id": "osm:relation:7154907",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "625455"
+      },
+      "originalGeometrySha256": "df6c1217ae26a54e4b3de1545b29214533dbfad8bd2bfcfc9cf67d3a70b0ab2d",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "625455"
+      },
+      "effectiveGeometrySha256": "df6c1217ae26a54e4b3de1545b29214533dbfad8bd2bfcfc9cf67d3a70b0ab2d",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7154907",
+        "sourceId": "osm",
+        "name": "العيون",
+        "aliases": [
+          "El Ayoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفطة",
+        "contextAliases": [
+          "Délégation Nefta",
+          "Nefta",
+          "معتمدية نفطة"
+        ],
+        "governorateId": 352,
+        "lat": 33.675485,
+        "lng": 7.991699,
+        "delegationId": 477,
+        "hasBoundary": true,
+        "bbox": [
+          7.847054,
+          33.506932,
+          8.144824,
+          33.87025
+        ],
+        "areaKm2": 678.6894079043768,
+        "pickerGroupId": "osm:relation:7154907"
+      },
+      "packedGeometrySha256": "c211204cffd333c27af8df5329440b903e69e809f7bffd8e4072404d395c2991"
+    },
+    "osm:relation:7164907": {
+      "id": "osm:relation:7164907",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين السلسلة",
+        "name:ar": "عين السلسلة",
+        "name:fr": "Ain Esselsela",
+        "ref:tn:codegeo": "425856"
+      },
+      "originalGeometrySha256": "0739233847781aea6cbd36e3cc42c612cd106f4c8cde8dff57eee929fdf6bf0f",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين السلسلة",
+        "name:ar": "عين السلسلة",
+        "name:fr": "Ain Esselsela",
+        "ref:tn:codegeo": "425856"
+      },
+      "effectiveGeometrySha256": "0739233847781aea6cbd36e3cc42c612cd106f4c8cde8dff57eee929fdf6bf0f",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7164907",
+        "sourceId": "osm",
+        "name": "عين السلسلة",
+        "aliases": [
+          "Ain Esselsela"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.572655,
+        "lng": 8.96302,
+        "delegationId": 581,
+        "hasBoundary": true,
+        "bbox": [
+          8.889074,
+          35.52821,
+          9.005518,
+          35.61756
+        ],
+        "areaKm2": 58.46114315591408,
+        "pickerGroupId": "osm:relation:7164907"
+      },
+      "packedGeometrySha256": "f075f0d8f5ed21620206577a0c55694ee5ab2ece761be7ba4d35461d8929f463"
+    },
+    "osm:relation:7164909": {
+      "id": "osm:relation:7164909",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "توشة",
+        "name:ar": "توشة",
+        "name:fr": "Tiwicha",
+        "ref:tn:codegeo": "425855"
+      },
+      "originalGeometrySha256": "4bf6a70c39ed4f094536b6c02bd9ff194240bc2b2e088a3bec96c884bb0c896d",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "توشة",
+        "name:ar": "توشة",
+        "name:fr": "Tiwicha",
+        "ref:tn:codegeo": "425855"
+      },
+      "effectiveGeometrySha256": "4bf6a70c39ed4f094536b6c02bd9ff194240bc2b2e088a3bec96c884bb0c896d",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7164909",
+        "sourceId": "osm",
+        "name": "توشة",
+        "aliases": [
+          "Tiwicha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.48391,
+        "lng": 8.947932,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.861469,
+          35.42516,
+          9.017764,
+          35.54236
+        ],
+        "areaKm2": 116.34420706860571,
+        "pickerGroupId": "osm:relation:7164909"
+      },
+      "packedGeometrySha256": "06e5cc3f2b5da054effe58ddc1b6c42c7105542676d797bf6cb9cadf65aefc5e"
+    },
+    "osm:relation:7164951": {
+      "id": "osm:relation:7164951",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البواجر",
+        "name:ar": "البواجر",
+        "name:fr": "El Baouajer",
+        "ref:tn:codegeo": "425854"
+      },
+      "originalGeometrySha256": "fafadb5dd499843408b6460e5c279a5eecbe8aee29782b7d54eb82801c4c5677",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البواجر",
+        "name:ar": "البواجر",
+        "name:fr": "El Baouajer",
+        "ref:tn:codegeo": "425854"
+      },
+      "effectiveGeometrySha256": "fafadb5dd499843408b6460e5c279a5eecbe8aee29782b7d54eb82801c4c5677",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7164951",
+        "sourceId": "osm",
+        "name": "البواجر",
+        "aliases": [
+          "El Baouajer"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.57768,
+        "lng": 8.841307,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.758392,
+          35.5435,
+          8.921328,
+          35.61458
+        ],
+        "areaKm2": 69.38454940286692,
+        "pickerGroupId": "osm:relation:7164951"
+      },
+      "packedGeometrySha256": "848d1fb35910ebc3a2adf4cd2e67245974c680ea1346a9f074eecd7ae9346581"
+    },
+    "osm:relation:7164953": {
+      "id": "osm:relation:7164953",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البرك",
+        "name:ar": "البرك",
+        "name:fr": "El Brek",
+        "ref:tn:codegeo": "425853"
+      },
+      "originalGeometrySha256": "c688a7cc8879fe9be39cca454b4c46cdb22b348a0edacb441f4e1f63cc8144a7",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البرك",
+        "name:ar": "البرك",
+        "name:fr": "El Brek",
+        "ref:tn:codegeo": "425853"
+      },
+      "effectiveGeometrySha256": "c688a7cc8879fe9be39cca454b4c46cdb22b348a0edacb441f4e1f63cc8144a7",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7164953",
+        "sourceId": "osm",
+        "name": "البرك",
+        "aliases": [
+          "El Brek"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.47146,
+        "lng": 8.841217,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.80048,
+          35.43245,
+          8.887663,
+          35.511
+        ],
+        "areaKm2": 41.402243597792086,
+        "pickerGroupId": "osm:relation:7164953"
+      },
+      "packedGeometrySha256": "30db942bf3daeb0f7678f376801c69f771973b735a20eb53375abcb117ac22d5"
+    },
+    "osm:relation:7164954": {
+      "id": "osm:relation:7164954",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القرين",
+        "name:ar": "القرين",
+        "name:fr": "El Grine",
+        "ref:tn:codegeo": "425852"
+      },
+      "originalGeometrySha256": "2a17447a2f5670895fb19cc6b47b06c2c9cd617f37675984b9b27f345bfbe51e",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القرين",
+        "name:ar": "القرين",
+        "name:fr": "El Grine",
+        "ref:tn:codegeo": "425852"
+      },
+      "effectiveGeometrySha256": "2a17447a2f5670895fb19cc6b47b06c2c9cd617f37675984b9b27f345bfbe51e",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7164954",
+        "sourceId": "osm",
+        "name": "القرين",
+        "aliases": [
+          "El Grine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.41019,
+        "lng": 8.847973,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.803338,
+          35.36246,
+          8.915876,
+          35.45668
+        ],
+        "areaKm2": 56.28956648192294,
+        "pickerGroupId": "osm:relation:7164954"
+      },
+      "packedGeometrySha256": "05b3ca0459b4c775245f639212b5391bd875cb60654df34889aa8b0be692543f"
+    },
+    "osm:relation:7164958": {
+      "id": "osm:relation:7164958",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "425851",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      },
+      "originalGeometrySha256": "48646d745fb147e50375245bd75a0dfffd5b5b2bed9672fdc304af56eecbb971",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "425851",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      },
+      "effectiveGeometrySha256": "48646d745fb147e50375245bd75a0dfffd5b5b2bed9672fdc304af56eecbb971",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7164958",
+        "sourceId": "osm",
+        "name": "العيون",
+        "aliases": [
+          "El Ayoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.53483,
+        "lng": 8.857928,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.775711,
+          35.49804,
+          8.935946,
+          35.57091
+        ],
+        "areaKm2": 70.60716148975733,
+        "pickerGroupId": "osm:relation:7164958"
+      },
+      "packedGeometrySha256": "bb95ba2ca45a4f7f5a29ca910e0d3e56bd5c1e83a60db6dcc0ad76853deb4b39"
+    },
+    "osm:relation:7165022": {
+      "id": "osm:relation:7165022",
+      "kind": "delegation",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "El Ayoun",
+        "boundary": "administrative",
+        "name": "معتمدية العيون",
+        "name:ar": "معتمدية العيون",
+        "name:fr": "Délégation El Ayoun",
+        "official_name": "معتمدية العيون",
+        "official_name:ar": "معتمدية العيون",
+        "ref:tn:codegeo": "4258",
+        "ref:tn:hasc_2": "TN.KS.AY",
+        "wikidata": "Q12243830",
+        "wikipedia": "ar:معتمدية العيون"
+      },
+      "originalGeometrySha256": "96ff309ba4caf50ed2f06c3eba99f9c794e6de56f0531084a6a270036910a827",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "5",
+        "alt_name:fr": "El Ayoun",
+        "boundary": "administrative",
+        "name": "معتمدية العيون",
+        "name:ar": "معتمدية العيون",
+        "name:fr": "Délégation El Ayoun",
+        "official_name": "معتمدية العيون",
+        "official_name:ar": "معتمدية العيون",
+        "ref:tn:codegeo": "4258",
+        "ref:tn:hasc_2": "TN.KS.AY",
+        "wikidata": "Q12243830",
+        "wikipedia": "ar:معتمدية العيون"
+      },
+      "effectiveGeometrySha256": "96ff309ba4caf50ed2f06c3eba99f9c794e6de56f0531084a6a270036910a827",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7169616": {
+      "id": "osm:relation:7169616",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "435455"
+      },
+      "originalGeometrySha256": "dd04a581333daf512d169f9d2d477d51f3af676083ee32871bc5b550d1d9b593",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "435455"
+      },
+      "effectiveGeometrySha256": "dd04a581333daf512d169f9d2d477d51f3af676083ee32871bc5b550d1d9b593",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7169616",
+        "sourceId": "osm",
+        "name": "العيون",
+        "aliases": [
+          "El Ayoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سبالة أولاد عسكر",
+        "contextAliases": [
+          "Cebbala Ouled Asker",
+          "Délégation Cebalet Ouled Asker",
+          "معتمدية سبالة أولاد عسكر"
+        ],
+        "governorateId": 355,
+        "lat": 35.316769,
+        "lng": 9.213206,
+        "delegationId": 575,
+        "hasBoundary": true,
+        "bbox": [
+          9.150073,
+          35.260769,
+          9.266885,
+          35.373939
+        ],
+        "areaKm2": 72.41001482630023,
+        "pickerGroupId": "osm:relation:7169616"
+      },
+      "packedGeometrySha256": "f3cdad6ddee4b65177cdd32c490e16d2230f15d70bfaea937e3b7e1822c6821a"
+    },
+    "osm:way:218369508": {
+      "id": "osm:way:218369508",
+      "kind": "residential",
+      "originalSourceId": null,
+      "originalTags": {
+        "addr:city": "القرين",
+        "addr:postcode": "1234",
+        "landuse": "residential",
+        "name": "القرين",
+        "name:ar": "القرين"
+      },
+      "originalGeometrySha256": "e367b6674deedc8f15e704b9a9cd8e310aad3bea2f22931dae064e9b95f7ca7d",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "addr:city": "القرين",
+        "addr:postcode": "1234",
+        "landuse": "residential",
+        "name": "القرين",
+        "name:ar": "القرين"
+      },
+      "effectiveGeometrySha256": "e367b6674deedc8f15e704b9a9cd8e310aad3bea2f22931dae064e9b95f7ca7d",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:218369508",
+        "sourceId": "osm",
+        "name": "القرين",
+        "aliases": [
+          "El Grine"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "El Grine",
+          "القرين",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.389656,
+        "lng": 8.859342,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.857866,
+          35.38758,
+          8.861784,
+          35.391566
+        ],
+        "areaKm2": 0.0642023888178047,
+        "pickerGroupId": "osm:relation:7164954"
+      },
+      "packedGeometrySha256": "234f31dad452e13bc2d72db24d4966784ed3b74ed655e384c911b14b7f120be2"
+    },
+    "osm:way:543781477": {
+      "id": "osm:way:543781477",
+      "kind": "village",
+      "originalSourceId": null,
+      "originalTags": {
+        "addr:postcode": "1216",
+        "landuse": "residential",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village"
+      },
+      "originalGeometrySha256": "d211247934eb8eedb81634069247c6a6e45cec11cfd22f9acffba68a6a600b92",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "addr:postcode": "1216",
+        "landuse": "residential",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village"
+      },
+      "effectiveGeometrySha256": "d211247934eb8eedb81634069247c6a6e45cec11cfd22f9acffba68a6a600b92",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:543781477",
+        "sourceId": "osm",
+        "name": "العيون",
+        "aliases": [
+          "El Ayoun"
+        ],
+        "kind": "village",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "العيون",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.540705,
+        "lng": 8.883288,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.879452,
+          35.537452,
+          8.88807,
+          35.54359
+        ],
+        "areaKm2": 0.2935188380899148,
+        "pickerGroupId": "osm:relation:7164958"
+      },
+      "packedGeometrySha256": "04445274d5d12b4e398d0b400a8709a92218acc0435b39ff74e02631a1d7dece"
+    },
+    "osm:way:560461423": {
+      "id": "osm:way:560461423",
+      "kind": "residential",
+      "originalSourceId": null,
+      "originalTags": {
+        "ele": "920",
+        "landuse": "residential",
+        "name": "El Brek البرك",
+        "name:ar": "البرك",
+        "name:fr": "El Brek"
+      },
+      "originalGeometrySha256": "bd9919f5965f3810dbbb402c1c9c41adbfd3cc7b9506e6fb03a0aad032143bf3",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "ele": "920",
+        "landuse": "residential",
+        "name": "El Brek البرك",
+        "name:ar": "البرك",
+        "name:fr": "El Brek"
+      },
+      "effectiveGeometrySha256": "bd9919f5965f3810dbbb402c1c9c41adbfd3cc7b9506e6fb03a0aad032143bf3",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:560461423",
+        "sourceId": "osm",
+        "name": "البرك",
+        "aliases": [
+          "El Brek البرك",
+          "El Brek"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية العيون",
+        "contextAliases": [
+          "Délégation El Ayoun",
+          "El Ayoun",
+          "El Brek",
+          "البرك",
+          "معتمدية العيون"
+        ],
+        "governorateId": 362,
+        "lat": 35.471806,
+        "lng": 8.814463,
+        "delegationId": 579,
+        "hasBoundary": true,
+        "bbox": [
+          8.812946,
+          35.470475,
+          8.816101,
+          35.473124
+        ],
+        "areaKm2": 0.036345874276352684,
+        "pickerGroupId": "osm:relation:7164953"
+      },
+      "packedGeometrySha256": "ad04c90003f31dc32605236b8691b0017b8d7adf77228ae3cebd4dbc37b231f2"
+    }
+  },
+  "expected": {
+    "baseCurrent": {
+      "id": 579,
+      "nomFr": "El Ayoun",
+      "nomAr": "العيون",
+      "nomEn": "El Ayoun",
+      "lat": 35.5341,
+      "lng": 8.8694
+    },
+    "governorCurrent": {
+      "id": 362,
+      "nomFr": "Kasserine",
+      "nomAr": "القصرين",
+      "nomEn": "Kasserine",
+      "lat": 35.1676,
+      "lng": 8.8365
+    },
+    "pointId": "osm:node:5316229408",
+    "sourcePointCoordinates": {
+      "lat": 35.5402671,
+      "lng": 8.8836602
+    },
+    "separateSectorId": "osm:relation:7164958",
+    "parentSourceId": "osm:relation:7165022",
+    "governorSourceId": "osm:relation:1434949",
+    "preservedImadas": [
+      {
+        "id": "osm:relation:7164958",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425851",
+          "sectorFr": "El ayoun",
+          "sectorAr": "العيون",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51883,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2520,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2515
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164954",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425852",
+          "sectorFr": "El grine",
+          "sectorAr": "القرين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51917,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2522,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2517
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164953",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425853",
+          "sectorFr": "El brek",
+          "sectorAr": "البرك",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51951,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2524,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2519
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164951",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425854",
+          "sectorFr": "El baouajer",
+          "sectorAr": "البواجر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51985,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2526,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2521
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164909",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425855",
+          "sectorFr": "Tiwicha",
+          "sectorAr": "توشة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 52019,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2527,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2522
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164907",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425856",
+          "sectorFr": "Ain esselsela",
+          "sectorAr": "عين السلسلة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 52053,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2529,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2524
+          }
+        }
+      }
+    ],
+    "protectedRawIds": [
+      "osm:node:7179613734",
+      "osm:relation:7154907",
+      "osm:relation:7164907",
+      "osm:relation:7164909",
+      "osm:relation:7164951",
+      "osm:relation:7164953",
+      "osm:relation:7164954",
+      "osm:relation:7164958",
+      "osm:relation:7169616",
+      "osm:way:218369508",
+      "osm:way:543781477",
+      "osm:way:560461423"
+    ],
+    "originalNamePeerIds": [
+      "osm:node:5316229408",
+      "osm:node:7179613734",
+      "osm:relation:1614575",
+      "osm:relation:7154907",
+      "osm:relation:7164958",
+      "osm:relation:7165022",
+      "osm:relation:7169616",
+      "osm:way:543781477"
+    ],
+    "effectiveNamePeerIds": [
+      "osm:node:5316229408",
+      "osm:node:7179613734",
+      "osm:relation:1614575",
+      "osm:relation:7154907",
+      "osm:relation:7164958",
+      "osm:relation:7165022",
+      "osm:relation:7169616",
+      "osm:way:543781477"
+    ],
+    "nameQueries": [
+      "elayoun",
+      "العيون"
+    ],
+    "currentWholeGroups": {
+      "osm:node:7179613734": [
+        "osm:node:7179613734"
+      ],
+      "osm:relation:7154907": [
+        "osm:relation:7154907"
+      ],
+      "osm:relation:7164907": [
+        "osm:relation:7164907"
+      ],
+      "osm:relation:7164909": [
+        "osm:relation:7164909"
+      ],
+      "osm:relation:7164951": [
+        "osm:relation:7164951"
+      ],
+      "osm:relation:7164953": [
+        "osm:relation:7164953",
+        "osm:way:560461423"
+      ],
+      "osm:relation:7164954": [
+        "osm:relation:7164954",
+        "osm:way:218369508"
+      ],
+      "osm:relation:7164958": [
+        "osm:relation:7164958",
+        "osm:way:543781477"
+      ],
+      "osm:relation:7169616": [
+        "osm:relation:7169616"
+      ],
+      "delegation:579": [
+        "delegation:579"
+      ]
+    },
+    "requiredGroupsAfterDistinctGuard": {
+      "osm:node:7179613734": [
+        "osm:node:7179613734"
+      ],
+      "osm:relation:7154907": [
+        "osm:relation:7154907"
+      ],
+      "osm:relation:7164907": [
+        "osm:relation:7164907"
+      ],
+      "osm:relation:7164909": [
+        "osm:relation:7164909"
+      ],
+      "osm:relation:7164951": [
+        "osm:relation:7164951"
+      ],
+      "osm:relation:7164953": [
+        "osm:relation:7164953",
+        "osm:way:560461423"
+      ],
+      "osm:relation:7164954": [
+        "osm:relation:7164954",
+        "osm:way:218369508"
+      ],
+      "osm:relation:7164958": [
+        "osm:relation:7164958"
+      ],
+      "osm:relation:7169616": [
+        "osm:relation:7169616"
+      ],
+      "delegation:579": [
+        "delegation:579"
+      ],
+      "osm:way:543781477": [
+        "osm:way:543781477"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "osm:node:7179613734": [
+        "osm:node:7179613734"
+      ],
+      "osm:relation:7154907": [
+        "osm:relation:7154907"
+      ],
+      "osm:relation:7164907": [
+        "osm:relation:7164907"
+      ],
+      "osm:relation:7164909": [
+        "osm:relation:7164909"
+      ],
+      "osm:relation:7164951": [
+        "osm:relation:7164951"
+      ],
+      "osm:relation:7164953": [
+        "osm:relation:7164953",
+        "osm:way:560461423"
+      ],
+      "osm:relation:7164954": [
+        "osm:relation:7164954",
+        "osm:way:218369508"
+      ],
+      "osm:relation:7164958": [
+        "osm:relation:7164958"
+      ],
+      "osm:relation:7169616": [
+        "osm:relation:7169616"
+      ],
+      "delegation:579": [
+        "delegation:579",
+        "osm:way:543781477"
+      ]
+    },
+    "distinctPair": {
+      "ids": [
+        "osm:relation:7164958",
+        "osm:way:543781477"
+      ],
+      "reviewEvidence": {
+        "file": "settlement-polygon-display-reviews/three-town/579-distinct.json",
+        "sha256": "f4a95492e4047b25011b7344758b07a0d9da6d437245c971b98e747a6fd8fcfe"
+      }
+    },
+    "baseInsideSettlementPolygon": {
+      "original": false,
+      "effective": false,
+      "packed": false
+    },
+    "coordinatePolicy": "preserve_all_reference_and_raw_coordinates",
+    "reviewedNoncontainmentReason": "Base579 remains its distinct historical settlement reference outside the small village polygon. No source certifies it as a centre; no coordinate relocation is proposed.",
+    "namesakeSectorReferenceContainment": {
+      "original": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "effective": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "packed": {
+        "base": true,
+        "sourcePoint": true
+      }
+    },
+    "settlementWithinNamesakeSector": {
+      "original": true,
+      "effective": true,
+      "packed": true
+    },
+    "coordinateCorrections": [],
+    "nearestReferenceIds": {
+      "base": 579,
+      "settlementPolygon": 579,
+      "sourcePoint": 579,
+      "separateSector": 579
+    },
+    "publicNodeElement": {
+      "type": "node",
+      "id": 5316229408,
+      "lat": 35.5402671,
+      "lon": 8.8836602,
+      "timestamp": "2020-07-18T08:00:31Z",
+      "version": 3,
+      "changeset": 88169690,
+      "user": "Anis Ben Makhlouf",
+      "uid": 10001069,
+      "tags": {
+        "addr:city": "العيون",
+        "addr:postcode": "1216",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village",
+        "postal_code": "1216",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      }
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:543781477",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7164958",
+        "after": "delegation:579"
+      }
+    ]
+  },
+  "primaryEvidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/kasserine-regional-plan-2016.pdf",
+      "sha256": "3ef06816a2832d54c82fa6a737b04575ab4fddc5894b99ed31c77dab31e367af",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/RapportPhase3SDADkasserineNov2016fr.pdf",
+      "pdfPage": 74,
+      "printedPage": 64,
+      "personallyViewed": true,
+      "scope": "Historical settlement/chef-lieu identity only. The report municipal-status statement belongs to its historical demographic discussion and is not asserted as current."
+    }
+  ]
+}

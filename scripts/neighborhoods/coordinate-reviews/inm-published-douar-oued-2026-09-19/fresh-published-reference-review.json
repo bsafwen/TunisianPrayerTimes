@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_FRESH_PRIMARY_REFERENCE_AND_NUMERIC_DEPENDENCY_REVIEW_ONLY",
+  "createdAtUtc": "2026-09-19T10:42:43.595242+00:00",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+      "bytes": 1850804
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568",
+      "bytes": 5536120
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "bytes": 54585
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "351c6f2aca1766d045f05225992b28dfcea23e0d042c15517af70c842bb47b11",
+      "bytes": 592989
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "905550368c9b05f903bbdb66031cf64d0a70ca53689f9009988f696039b66ac1",
+      "bytes": 411641
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "2c67379cea3fe8c12c79ae8febb354694a139dc54b579fa5a6ef55c1f74d2a7e",
+      "bytes": 633160
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zouaouine-kalaat-root-projection-20260919.json",
+      "sha256": "c6431aa1d87d011d201f190cde4ab7b5272ded0b5671c6f875afdc01e4d3ac09",
+      "bytes": 5520
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zouaouine-kalaat-combined-proposal-20260919\\proposal.json",
+      "sha256": "2bd9af5e07a2164d5dcbf498c3aaccd72f5aa26961c09785d07cb78594fc213e",
+      "bytes": 68124
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zouaouine-kalaat-combined-proposal-20260919\\expected-neighborhoods.json",
+      "sha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+      "bytes": 1850894
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\douar-hicher-oued-ellil-name-review-20260919\\sourcefacts-and-design.json",
+      "sha256": "854596665f20b7bb9249aa495b07ef9fe03d24f8303ee449884f18d553180b75",
+      "bytes": 45740
+    }
+  ],
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-douar-fresh-reference-review-20260919\\retrievals.json",
+    "sha256": "44dcbcb55d9eccc8067c1cfe10d7c7e9b87304046656e9a6ce1cedc27d5c26c8",
+    "bytes": 3973
+  },
+  "freshPublishedSources": [
+    {
+      "id": 553,
+      "governorateId": 360,
+      "baseCurrent": {
+        "id": 553,
+        "nomFr": "Oued Ellil",
+        "nomAr": "واد الليل",
+        "nomEn": "Oued Ellil",
+        "lat": 36.8427,
+        "lng": 10.0388
+      },
+      "publishedPoint": {
+        "lat": 36.836,
+        "lng": 10.041
+      },
+      "responses": {
+        "prayer": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-douar-fresh-reference-review-20260919\\553-prayer-2026-09-19.json",
+            "sha256": "db311a68bedb26f0e2ec45ca2eea9e6d7f189533443e3c477853b0cc5af43b42",
+            "bytes": 568
+          },
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/553/",
+          "point": {
+            "lat": 36.836,
+            "lng": 10.041
+          },
+          "delegation": {
+            "id": 553,
+            "intituleFr": "Oued Ellil",
+            "intituleAr": "واد الليل",
+            "intituleAn": "Oued Ellil",
+            "parent": {
+              "id": 360,
+              "intituleFr": "Manouba",
+              "intituleAr": "منوبة",
+              "intituleAn": "Manouba"
+            }
+          }
+        },
+        "sun": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-douar-fresh-reference-review-20260919\\553-sun-2026-09-19.json",
+            "sha256": "7d0a7f77f515d61c9810b97b4192f658e819a737fa295818003e35c1fbf027ee",
+            "bytes": 537
+          },
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/553/",
+          "point": {
+            "lat": 36.836,
+            "lng": 10.041
+          },
+          "delegation": {
+            "id": 553,
+            "intituleFr": "Oued Ellil",
+            "intituleAr": "واد الليل",
+            "intituleAn": "Oued Ellil",
+            "parent": {
+              "id": 360,
+              "intituleFr": "Manouba",
+              "intituleAr": "منوبة",
+              "intituleAn": "Manouba"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 554,
+      "governorateId": 360,
+      "baseCurrent": {
+        "id": 554,
+        "nomFr": "Douar Hicher",
+        "nomAr": "دوار هيشر",
+        "nomEn": "Douar Hicher",
+        "lat": 36.8306,
+        "lng": 10.0863
+      },
+      "publishedPoint": {
+        "lat": 36.828,
+        "lng": 10.089
+      },
+      "responses": {
+        "prayer": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-douar-fresh-reference-review-20260919\\554-prayer-2026-09-19.json",
+            "sha256": "1784e47de1291d98a998ac055ca7ec15ef071028e492350724af68fc6dca95cf",
+            "bytes": 572
+          },
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/554/",
+          "point": {
+            "lat": 36.828,
+            "lng": 10.089
+          },
+          "delegation": {
+            "id": 554,
+            "intituleFr": "Douar Hicher",
+            "intituleAr": "دوار هيشر",
+            "intituleAn": "Douar Hicher",
+            "parent": {
+              "id": 360,
+              "intituleFr": "Manouba",
+              "intituleAr": "منوبة",
+              "intituleAn": "Manouba"
+            }
+          }
+        },
+        "sun": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-douar-fresh-reference-review-20260919\\554-sun-2026-09-19.json",
+            "sha256": "58855ab8c1a3cc8e070184653f9045b4afe4a6c559463dfe44a88c23ccf26922",
+            "bytes": 541
+          },
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/554/",
+          "point": {
+            "lat": 36.828,
+            "lng": 10.089
+          },
+          "delegation": {
+            "id": 554,
+            "intituleFr": "Douar Hicher",
+            "intituleAr": "دوار هيشر",
+            "intituleAn": "Douar Hicher",
+            "parent": {
+              "id": 360,
+              "intituleFr": "Manouba",
+              "intituleAr": "منوبة",
+              "intituleAn": "Manouba"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "numericResults": [
+    {
+      "catalog": "installed_gobaa_property_v2",
+      "metadataSha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+      "rawCount": 3523,
+      "allCurrentNearestDefaultsVerified": true,
+      "scenarios": [
+        {
+          "changedReferenceIds": [
+            553
+          ],
+          "allRawRowsRecomputed": 3523,
+          "nearestChanges": [
+            {
+              "id": "osm:relation:7095859",
+              "name": "القباعة",
+              "kind": "sector",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.820863,
+              "lng": 10.060016,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 3.0759376995555114,
+                  "afterKm": 2.386962288519103
+                },
+                "554": {
+                  "beforeKm": 2.5778606057231648,
+                  "afterKm": 2.5778606057231648
+                }
+              }
+            },
+            {
+              "id": "osm:way:456466522",
+              "name": "القباعة",
+              "kind": "village",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.824277,
+              "lng": 10.060474,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 2.813783825443968,
+                  "afterKm": 2.168708129509508
+                },
+                "554": {
+                  "beforeKm": 2.4037745114425695,
+                  "afterKm": 2.4037745114425695
+                }
+              }
+            }
+          ]
+        },
+        {
+          "changedReferenceIds": [
+            554
+          ],
+          "allRawRowsRecomputed": 3523,
+          "nearestChanges": []
+        },
+        {
+          "changedReferenceIds": [
+            553,
+            554
+          ],
+          "allRawRowsRecomputed": 3523,
+          "nearestChanges": [
+            {
+              "id": "osm:relation:7095859",
+              "name": "القباعة",
+              "kind": "sector",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.820863,
+              "lng": 10.060016,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 3.0759376995555114,
+                  "afterKm": 2.386962288519103
+                },
+                "554": {
+                  "beforeKm": 2.5778606057231648,
+                  "afterKm": 2.699135899708704
+                }
+              }
+            },
+            {
+              "id": "osm:way:456466522",
+              "name": "القباعة",
+              "kind": "village",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.824277,
+              "lng": 10.060474,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 2.813783825443968,
+                  "afterKm": 2.168708129509508
+                },
+                "554": {
+                  "beforeKm": 2.4037745114425695,
+                  "afterKm": 2.5725376469181636
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catalog": "projected_zouaouine_kalaat",
+      "metadataSha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+      "rawCount": 3523,
+      "allCurrentNearestDefaultsVerified": true,
+      "scenarios": [
+        {
+          "changedReferenceIds": [
+            553
+          ],
+          "allRawRowsRecomputed": 3523,
+          "nearestChanges": [
+            {
+              "id": "osm:relation:7095859",
+              "name": "القباعة",
+              "kind": "sector",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.820863,
+              "lng": 10.060016,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 3.0759376995555114,
+                  "afterKm": 2.386962288519103
+                },
+                "554": {
+                  "beforeKm": 2.5778606057231648,
+                  "afterKm": 2.5778606057231648
+                }
+              }
+            },
+            {
+              "id": "osm:way:456466522",
+              "name": "القباعة",
+              "kind": "village",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.824277,
+              "lng": 10.060474,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 2.813783825443968,
+                  "afterKm": 2.168708129509508
+                },
+                "554": {
+                  "beforeKm": 2.4037745114425695,
+                  "afterKm": 2.4037745114425695
+                }
+              }
+            }
+          ]
+        },
+        {
+          "changedReferenceIds": [
+            554
+          ],
+          "allRawRowsRecomputed": 3523,
+          "nearestChanges": []
+        },
+        {
+          "changedReferenceIds": [
+            553,
+            554
+          ],
+          "allRawRowsRecomputed": 3523,
+          "nearestChanges": [
+            {
+              "id": "osm:relation:7095859",
+              "name": "القباعة",
+              "kind": "sector",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.820863,
+              "lng": 10.060016,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 3.0759376995555114,
+                  "afterKm": 2.386962288519103
+                },
+                "554": {
+                  "beforeKm": 2.5778606057231648,
+                  "afterKm": 2.699135899708704
+                }
+              }
+            },
+            {
+              "id": "osm:way:456466522",
+              "name": "القباعة",
+              "kind": "village",
+              "pickerGroupId": "osm:way:456466522",
+              "lat": 36.824277,
+              "lng": 10.060474,
+              "field": "delegationId",
+              "before": 554,
+              "after": 553,
+              "referenceDistances": {
+                "553": {
+                  "beforeKm": 2.813783825443968,
+                  "afterKm": 2.168708129509508
+                },
+                "554": {
+                  "beforeKm": 2.4037745114425695,
+                  "afterKm": 2.5725376469181636
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sameImpactsOnBothCatalogs": true,
+  "gobaaDependencies": {
+    "appliesToReference553OrBoth": true,
+    "recordLocation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "351c6f2aca1766d045f05225992b28dfcea23e0d042c15517af70c842bb47b11",
+      "pointer": "/localRecords/8"
+    },
+    "minimumCurrentGuardValueChanges": [
+      {
+        "path": "/localRecords/8/members/0/expectedMetadata/delegationId",
+        "id": "osm:relation:7095859",
+        "before": 554,
+        "after": 553
+      },
+      {
+        "path": "/localRecords/8/members/1/expectedMetadata/delegationId",
+        "id": "osm:way:456466522",
+        "before": 554,
+        "after": 553
+      },
+      {
+        "path": "/localRecords/8/manualSelection/expectedNearestSourceId",
+        "before": 554,
+        "after": 553
+      }
+    ],
+    "eligibleEvidence": [
+      {
+        "source": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\locality-group-reviews\\gobaa-village-owner-2026-09-19\\eligible-local-group-proof.json",
+          "sha256": "e6602ee409050335db7f9a61546f1c5ead089657a20a91f0789913d8868f1ec3",
+          "bytes": 8026
+        },
+        "pointer": "/records/0",
+        "exactRecordEqualsManifest": true
+      }
+    ],
+    "guard": "validate_reviewed_complete_locality_group_owner requires exact member expectedMetadata (including delegationId), independently checks each nearest source, and checks manualSelection.expectedNearestSourceId. Its final preservation application then protects the updated metadata.",
+    "recordAndEligibleProofMustRemainExactlyEqual": true,
+    "sourceReview": {
+      "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+      "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+    },
+    "sourceReviewQualification": "The current source review is valid historical identity/geometry evidence. The helper consumes its source hash/member IDs/canonicalName/proposedOwnerId, not its historical raw nearest values; preserve it as history and add an honestly dated reference-impact successor/addendum when proposing the new active record. Do not silently rewrite originals.",
+    "preserveGobaaDisplayIdentity": "Both Gobaa raw IDs remain grouped under osm:way:456466522, using the same actual village coordinate. Changing nearest prayer553 does not merge Gobaa into delegation553, relocate its manual representative, rename it, or alter either polygon.",
+    "wholePickerDependencies": "Because the active local record and its eligible evidence must change for553, update the existing Dar624/485 and Beni Mhira whole-picker bindings against the then-current selected manifest. Verify whether any embedded records actually change; do not replace unrelated historical references.",
+    "coordinateManifestDependencies": "A future reference correction needs exact fresh prayer/sun pins, original governor asset evidence and current shared coordinate review hashes. These are not prepared by this research task.",
+    "standalone554": "No raw default changes in either catalog; no Gobaa local-record change follows from the554 correction alone."
+  },
+  "limitations": [
+    "Published endpoint coordinates are independently observed service references, not certified server calculation inputs or town boundaries.",
+    "The slight reference updates may move nearest-source boundaries for arbitrary GPS fixes; checking all packaged representative defaults is not a claim that every possible GPS answer stays identical.",
+    "This task does not resolve name equivalence or authorize grouping for Oued Ellil/Douar Hicher; retain the separate source-design qualifications.",
+    "Only exact Gobaa active guards and standard whole-picker dependencies were inspected here; final selected-manifest closure and generation remain root-owned."
+  ],
+  "operations": {
+    "freshPrimaryHttpGetResponses": 4,
+    "webToolOpensAttempted": 2,
+    "phone": 0,
+    "compilerExecutionOrImport": 0,
+    "generation": 0,
+    "tests": 0,
+    "build": 0,
+    "liveRepositoryWrites": 0,
+    "implementationOrManifestPreparation": 0
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_oued_douar_fresh_references_20260919.py",
+    "sha256": "b53b1bd30a887f8de5028bc7d054ba9073fe26977ea1976deb4ae85710ffcf10",
+    "bytes": 10357
+  }
+}

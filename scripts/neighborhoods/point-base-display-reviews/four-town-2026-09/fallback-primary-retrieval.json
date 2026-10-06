@@ -1,0 +1,35 @@
+[
+  {
+    "url": "https://intranet.mehat.gov.tn/geao.nsf/AvisAR.xsp?action=openDocument&documentId=E70D41196681C88741257CE60046F295",
+    "retrievedAt": "2026-09-08T15:32:35.550589+00:00",
+    "curlExit": 0,
+    "response": "https://intranet.mehat.gov.tn/geao.nsf/AvisAR.xsp?action=openDocument&documentId=E70D41196681C88741257CE60046F295\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\sers-mehat-city-flood-protection.html",
+    "sha256": "6d19849b7f1143ff275e6921589927ee24ca71201c64dc2a139e318b57c628b8",
+    "bytes": 33548
+  },
+  {
+    "url": "https://www.nabeul.gov.tn/ar/%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D8%A7%D9%84%D8%AF%D9%88%D8%B1%D8%A9-35-%D9%84%D9%85%D9%87%D8%B1%D8%AC%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D8%A8%D9%8A%D8%B9-%D8%A8%D8%A8%D9%86%D9%8A-%D8%AE%D9%84%D8%A7/",
+    "retrievedAt": "2026-09-08T15:32:35.550589+00:00",
+    "curlExit": 0,
+    "response": "https://www.nabeul.gov.tn/ar/%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D8%A7%D9%84%D8%AF%D9%88%D8%B1%D8%A9-35-%D9%84%D9%85%D9%87%D8%B1%D8%AC%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D8%A8%D9%8A%D8%B9-%D8%A8%D8%A8%D9%86%D9%8A-%D8%AE%D9%84%D8%A7/\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\beni-khalled-governorate-city-festival.html",
+    "sha256": "ff6d2a18d92790a062bcf683895a7f8b6dbbad2e03e7325e449d6938c16c8119",
+    "bytes": 121467
+  },
+  {
+    "url": "https://www.social.gov.tn/en/node/2747",
+    "retrievedAt": "2026-09-08T15:32:35.552591+00:00",
+    "curlExit": 0,
+    "response": "https://www.social.gov.tn/en/node/2747\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\meknassy-social-ministry-neighborhood.html",
+    "sha256": "db48e129f183454ce594cdd5c78f132ab82b265f07011541863b6fff950ed86b",
+    "bytes": 65907
+  }
+]

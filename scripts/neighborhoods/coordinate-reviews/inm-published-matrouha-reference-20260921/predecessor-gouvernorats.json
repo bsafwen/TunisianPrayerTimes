@@ -1,0 +1,2316 @@
+{
+  "gouvernorats": [
+    {
+      "id": 342,
+      "nomFr": "Tunis",
+      "nomAr": "تونس",
+      "nomEn": "Tunis",
+      "delegations": [
+        {
+          "id": 386,
+          "nomFr": "La Marsa",
+          "nomAr": "المرسى",
+          "nomEn": "La Marsa",
+          "lat": 36.876,
+          "lng": 10.325
+        },
+        {
+          "id": 387,
+          "nomFr": "Carthage",
+          "nomAr": "قرطاج",
+          "nomEn": "Carthage",
+          "lat": 36.853,
+          "lng": 10.329
+        },
+        {
+          "id": 388,
+          "nomFr": "La Goulette",
+          "nomAr": "حلق الوادي",
+          "nomEn": "Goulette",
+          "lat": 36.8181,
+          "lng": 10.305
+        },
+        {
+          "id": 389,
+          "nomFr": "Cite El Khadhra",
+          "nomAr": "حي الخضراء",
+          "nomEn": "Cite El Khadhra",
+          "lat": 36.83,
+          "lng": 10.197
+        },
+        {
+          "id": 390,
+          "nomFr": "El Menzah",
+          "nomAr": "المنزه",
+          "nomEn": "El Menzah",
+          "lat": 36.84,
+          "lng": 10.18
+        },
+        {
+          "id": 391,
+          "nomFr": "Omrane",
+          "nomAr": "العمران",
+          "nomEn": "Omrane",
+          "lat": 36.818,
+          "lng": 10.168
+        },
+        {
+          "id": 392,
+          "nomFr": "Omrane Superieur",
+          "nomAr": "العمران الأعلى",
+          "nomEn": "Omrane Superieur",
+          "lat": 36.835,
+          "lng": 10.1283
+        },
+        {
+          "id": 393,
+          "nomFr": "Ettahrir",
+          "nomAr": "التحرير",
+          "nomEn": "Ettahrir",
+          "lat": 36.823,
+          "lng": 10.133
+        },
+        {
+          "id": 394,
+          "nomFr": "Bardo",
+          "nomAr": "باردو",
+          "nomEn": "Bardo",
+          "lat": 36.814,
+          "lng": 10.141
+        },
+        {
+          "id": 395,
+          "nomFr": "Bab Souika",
+          "nomAr": "باب سويقة",
+          "nomEn": "Bab Souika",
+          "lat": 36.809,
+          "lng": 10.166
+        },
+        {
+          "id": 396,
+          "nomFr": "Ezzouhour",
+          "nomAr": "الزهور",
+          "nomEn": "Ezzouhour",
+          "lat": 36.799,
+          "lng": 10.135
+        },
+        {
+          "id": 397,
+          "nomFr": "El Hrairia",
+          "nomAr": "الحرايرية",
+          "nomEn": "El Hrairia",
+          "lat": 36.79,
+          "lng": 10.107
+        },
+        {
+          "id": 398,
+          "nomFr": "Sidi Hassine",
+          "nomAr": "سيدي حسين",
+          "nomEn": "Sidi Hassine",
+          "lat": 36.77,
+          "lng": 10.116
+        },
+        {
+          "id": 399,
+          "nomFr": "El Ouardia",
+          "nomAr": "الوردية",
+          "nomEn": "El Ouardia",
+          "lat": 36.766,
+          "lng": 10.19
+        },
+        {
+          "id": 400,
+          "nomFr": "El Kabaria",
+          "nomAr": "كبارية",
+          "nomEn": "El Kabaria",
+          "lat": 36.76,
+          "lng": 10.191
+        },
+        {
+          "id": 401,
+          "nomFr": "Jebel Jelloud",
+          "nomAr": "جبل جلود",
+          "nomEn": "Jebel Jelloud",
+          "lat": 36.767,
+          "lng": 10.209
+        },
+        {
+          "id": 402,
+          "nomFr": "Sidi El Bechir",
+          "nomAr": "سيدي البشير",
+          "nomEn": "Sidi El Bechir",
+          "lat": 36.793,
+          "lng": 10.179
+        },
+        {
+          "id": 403,
+          "nomFr": "La Medina",
+          "nomAr": "المدينة",
+          "nomEn": "La Medina",
+          "lat": 36.798,
+          "lng": 10.172
+        },
+        {
+          "id": 404,
+          "nomFr": "Bab Bhar",
+          "nomAr": "باب بحر",
+          "nomEn": "Bab Bhar",
+          "lat": 36.797,
+          "lng": 10.177
+        },
+        {
+          "id": 405,
+          "nomFr": "Sijoumi",
+          "nomAr": "السيجومي",
+          "nomEn": "Sijoumi",
+          "lat": 36.785,
+          "lng": 10.165
+        },
+        {
+          "id": 406,
+          "nomFr": "Le Kram",
+          "nomAr": "الكرم",
+          "nomEn": "Le Kram",
+          "lat": 36.833,
+          "lng": 10.317
+        },
+        {
+          "id": 615,
+          "nomFr": "Tunis",
+          "nomAr": "مدينة تونس",
+          "nomEn": "Tunis",
+          "lat": 36.8,
+          "lng": 10.183
+        }
+      ],
+      "lat": 36.8065,
+      "lng": 10.1815
+    },
+    {
+      "id": 343,
+      "nomFr": "Zaghouan",
+      "nomAr": "زغوان",
+      "nomEn": "Zaghouan",
+      "delegations": [
+        {
+          "id": 409,
+          "nomFr": "Zeriba",
+          "nomAr": "الزريبة",
+          "nomEn": "Zeriba",
+          "lat": 36.32,
+          "lng": 10.25
+        },
+        {
+          "id": 410,
+          "nomFr": "Bir Mcherga",
+          "nomAr": "بئر مشارقة",
+          "nomEn": "Bir Mcherga",
+          "lat": 36.517,
+          "lng": 9.957
+        },
+        {
+          "id": 411,
+          "nomFr": "El Fahs",
+          "nomAr": "الفحص",
+          "nomEn": "El Fahs",
+          "lat": 36.377,
+          "lng": 9.91
+        },
+        {
+          "id": 412,
+          "nomFr": "Nadhour",
+          "nomAr": "الناظور",
+          "nomEn": "Nadhour",
+          "lat": 36.12,
+          "lng": 10.094
+        },
+        {
+          "id": 413,
+          "nomFr": "Saouaf",
+          "nomAr": "صواف",
+          "nomEn": "Saouaf",
+          "lat": 36.227,
+          "lng": 10.17
+        },
+        {
+          "id": 616,
+          "nomFr": "Zaghouan",
+          "nomAr": "زغوان",
+          "nomEn": "Zaghouan",
+          "lat": 36.399,
+          "lng": 10.147
+        }
+      ],
+      "lat": 36.4029,
+      "lng": 10.1429
+    },
+    {
+      "id": 344,
+      "nomFr": "Siliana",
+      "nomAr": "سليانة",
+      "nomEn": "Siliana",
+      "delegations": [
+        {
+          "id": 414,
+          "nomFr": "Kesra",
+          "nomAr": "كسرى",
+          "nomEn": "Kesra",
+          "lat": 35.814,
+          "lng": 9.365
+        },
+        {
+          "id": 415,
+          "nomFr": "Makther",
+          "nomAr": "مكثر",
+          "nomEn": "Makther",
+          "lat": 35.861,
+          "lng": 9.206
+        },
+        {
+          "id": 416,
+          "nomFr": "Rouhia",
+          "nomAr": "الروحية",
+          "nomEn": "Rouhia",
+          "lat": 35.651431,
+          "lng": 9.0563411
+        },
+        {
+          "id": 417,
+          "nomFr": "Bargou",
+          "nomAr": "برقو",
+          "nomEn": "Bargou",
+          "lat": 36.0914446,
+          "lng": 9.5667337
+        },
+        {
+          "id": 418,
+          "nomFr": "Gaafour",
+          "nomAr": "قعفور",
+          "nomEn": "Gaafour",
+          "lat": 36.32,
+          "lng": 9.32
+        },
+        {
+          "id": 419,
+          "nomFr": "El Aroussa",
+          "nomAr": "العروسة",
+          "nomEn": "El Aroussa",
+          "lat": 36.379,
+          "lng": 9.452
+        },
+        {
+          "id": 420,
+          "nomFr": "Bouarada",
+          "nomAr": "بوعرادة",
+          "nomEn": "Bouarada",
+          "lat": 36.351,
+          "lng": 9.622
+        },
+        {
+          "id": 421,
+          "nomFr": "Le Krib",
+          "nomAr": "الكريب",
+          "nomEn": "Le Krib",
+          "lat": 36.328,
+          "lng": 9.136
+        },
+        {
+          "id": 422,
+          "nomFr": "Sidi Bou Rouis",
+          "nomAr": "بورويس",
+          "nomEn": "Sidi Bou Rouis",
+          "lat": 36.177,
+          "lng": 9.126
+        },
+        {
+          "id": 617,
+          "nomFr": "Siliana",
+          "nomAr": "سليانة",
+          "nomEn": "Siliana",
+          "lat": 36.085,
+          "lng": 9.371
+        }
+      ],
+      "lat": 36.0849,
+      "lng": 9.3708
+    },
+    {
+      "id": 345,
+      "nomFr": "Mahdia",
+      "nomAr": "المهدية",
+      "nomEn": "Mahdia",
+      "delegations": [
+        {
+          "id": 423,
+          "nomFr": "Ksour Essef",
+          "nomAr": "قصور الساف",
+          "nomEn": "Ksour Essef",
+          "lat": 35.421,
+          "lng": 10.987
+        },
+        {
+          "id": 424,
+          "nomFr": "Chebba",
+          "nomAr": "الشابة",
+          "nomEn": "Chebba",
+          "lat": 35.234,
+          "lng": 11.111
+        },
+        {
+          "id": 425,
+          "nomFr": "Malloulech",
+          "nomAr": "ملولش",
+          "nomEn": "Malloulech",
+          "lat": 35.166,
+          "lng": 11.034
+        },
+        {
+          "id": 426,
+          "nomFr": "Sidi Alouane",
+          "nomAr": "سيدي علوان",
+          "nomEn": "Sidi Alouane",
+          "lat": 35.376,
+          "lng": 10.937
+        },
+        {
+          "id": 427,
+          "nomFr": "Boumerdes",
+          "nomAr": "بومرداس",
+          "nomEn": "Boumerdes",
+          "lat": 35.46,
+          "lng": 10.727
+        },
+        {
+          "id": 428,
+          "nomFr": "Souassi",
+          "nomAr": "السواسي",
+          "nomEn": "Souassi",
+          "lat": 35.341,
+          "lng": 10.549
+        },
+        {
+          "id": 429,
+          "nomFr": "Chorbane",
+          "nomAr": "شربان",
+          "nomEn": "Chorbane",
+          "lat": 35.285,
+          "lng": 10.386
+        },
+        {
+          "id": 430,
+          "nomFr": "Hbira",
+          "nomAr": "هبيرة",
+          "nomEn": "Hbira",
+          "lat": 35.17,
+          "lng": 10.23
+        },
+        {
+          "id": 431,
+          "nomFr": "Ouled Chamekh",
+          "nomAr": "أولاد شامخ",
+          "nomEn": "Ouled Chamekh",
+          "lat": 35.491,
+          "lng": 10.319
+        },
+        {
+          "id": 618,
+          "nomFr": "Mahdia",
+          "nomAr": "المهدية",
+          "nomEn": "Mahdia",
+          "lat": 35.5047,
+          "lng": 11.0622
+        },
+        {
+          "id": 619,
+          "nomFr": "El Jem",
+          "nomAr": "الجم",
+          "nomEn": "El Jem",
+          "lat": 35.301,
+          "lng": 10.708
+        },
+        {
+          "id": 1084,
+          "nomFr": "Rejiche",
+          "nomAr": "الرجيش",
+          "nomEn": "Rejiche",
+          "lat": 35.4655214,
+          "lng": 11.0416985
+        }
+      ],
+      "lat": 35.5047,
+      "lng": 11.0622
+    },
+    {
+      "id": 347,
+      "nomFr": "Gabes",
+      "nomAr": "قابس",
+      "nomEn": "Gabes",
+      "delegations": [
+        {
+          "id": 620,
+          "nomFr": "Gabes",
+          "nomAr": "قابس",
+          "nomEn": "Gabes",
+          "lat": 33.893,
+          "lng": 10.103
+        },
+        {
+          "id": 1019,
+          "nomFr": "Ghannouch",
+          "nomAr": "غنوش",
+          "nomEn": "Ghannouch",
+          "lat": 33.939816,
+          "lng": 10.0650345
+        },
+        {
+          "id": 1020,
+          "nomFr": "Mareth",
+          "nomAr": "مارث",
+          "nomEn": "Mareth",
+          "lat": 33.617159,
+          "lng": 10.2882317
+        },
+        {
+          "id": 1021,
+          "nomFr": "Menzel Habib",
+          "nomAr": "منزل حبيب",
+          "nomEn": "Menzel Habib",
+          "lat": 34.23,
+          "lng": 9.597
+        },
+        {
+          "id": 1022,
+          "nomFr": "Matmata",
+          "nomAr": "مطماطا",
+          "nomEn": "Matmata",
+          "lat": 33.5457377,
+          "lng": 9.9671116
+        },
+        {
+          "id": 1023,
+          "nomFr": "Matmata Nouvelle",
+          "nomAr": "مطماطة الجديدة",
+          "nomEn": "Matmata Nouvelle",
+          "lat": 33.67,
+          "lng": 9.99
+        },
+        {
+          "id": 1024,
+          "nomFr": "El Hamma",
+          "nomAr": "الحامة",
+          "nomEn": "El Hamma",
+          "lat": 33.8894378,
+          "lng": 9.7997111
+        },
+        {
+          "id": 1025,
+          "nomFr": "Metouia",
+          "nomAr": "المطوية",
+          "nomEn": "Metouia",
+          "lat": 33.959,
+          "lng": 10.005
+        }
+      ],
+      "lat": 33.8815,
+      "lng": 10.0982
+    },
+    {
+      "id": 348,
+      "nomFr": "Sousse",
+      "nomAr": "سوسة",
+      "nomEn": "Sousse",
+      "delegations": [
+        {
+          "id": 433,
+          "nomFr": "Bouficha",
+          "nomAr": "بوفيشة",
+          "nomEn": "Bouficha",
+          "lat": 36.299,
+          "lng": 10.454
+        },
+        {
+          "id": 434,
+          "nomFr": "Enfida",
+          "nomAr": "النفيضة",
+          "nomEn": "Enfida",
+          "lat": 36.1341194,
+          "lng": 10.3779916
+        },
+        {
+          "id": 435,
+          "nomFr": "Hergla",
+          "nomAr": "هرقلة",
+          "nomEn": "Hergla",
+          "lat": 36.029,
+          "lng": 10.507
+        },
+        {
+          "id": 436,
+          "nomFr": "Sidi Bouali",
+          "nomAr": "سيدي بوعلي",
+          "nomEn": "Sidi Bouali",
+          "lat": 35.9563486,
+          "lng": 10.470397
+        },
+        {
+          "id": 437,
+          "nomFr": "Akouda",
+          "nomAr": "أكودة",
+          "nomEn": "Akouda",
+          "lat": 35.871,
+          "lng": 10.569
+        },
+        {
+          "id": 438,
+          "nomFr": "Hammam Sousse",
+          "nomAr": "حمام سوسة",
+          "nomEn": "Hammam Sousse",
+          "lat": 35.858,
+          "lng": 10.594
+        },
+        {
+          "id": 439,
+          "nomFr": "Kalaa Kebira",
+          "nomAr": "القلعة الكبيرة",
+          "nomEn": "Kalaa Kebira",
+          "lat": 35.867,
+          "lng": 10.533
+        },
+        {
+          "id": 440,
+          "nomFr": "Msaken",
+          "nomAr": "مساكن",
+          "nomEn": "Msaken",
+          "lat": 35.733,
+          "lng": 10.583
+        },
+        {
+          "id": 441,
+          "nomFr": "Sidi Elheni",
+          "nomAr": "سيدي الهاني",
+          "nomEn": "Sidi Elheni",
+          "lat": 35.681,
+          "lng": 10.31
+        },
+        {
+          "id": 442,
+          "nomFr": "Koundar",
+          "nomAr": "كندار",
+          "nomEn": "Koundar",
+          "lat": 35.932,
+          "lng": 10.3
+        },
+        {
+          "id": 443,
+          "nomFr": "Kalaa Seghira",
+          "nomAr": "القلعة الصغيرة",
+          "nomEn": "Kalaa Seghira",
+          "lat": 35.8241499,
+          "lng": 10.5610794
+        },
+        {
+          "id": 621,
+          "nomFr": "Sousse",
+          "nomAr": "سوسة",
+          "nomEn": "Sousse",
+          "lat": 35.833,
+          "lng": 10.639
+        }
+      ],
+      "lat": 35.8254,
+      "lng": 10.6369
+    },
+    {
+      "id": 349,
+      "nomFr": "Ben Arous",
+      "nomAr": "بن عروس",
+      "nomEn": "Ben Arous",
+      "delegations": [
+        {
+          "id": 444,
+          "nomFr": "Mornag",
+          "nomAr": "مرناق",
+          "nomEn": "Mornag",
+          "lat": 36.685,
+          "lng": 10.288
+        },
+        {
+          "id": 445,
+          "nomFr": "Mohamedia",
+          "nomAr": "المحمدية",
+          "nomEn": "Mohamedia",
+          "lat": 36.68,
+          "lng": 10.156
+        },
+        {
+          "id": 446,
+          "nomFr": "Fouchana",
+          "nomAr": "فوشانة",
+          "nomEn": "Fouchana",
+          "lat": 36.7,
+          "lng": 10.169
+        },
+        {
+          "id": 447,
+          "nomFr": "El Mourouj",
+          "nomAr": "المروج",
+          "nomEn": "El Mourouj",
+          "lat": 36.721,
+          "lng": 10.216
+        },
+        {
+          "id": 448,
+          "nomFr": "Megrine",
+          "nomAr": "مقرين",
+          "nomEn": "Megrine",
+          "lat": 36.766,
+          "lng": 10.233
+        },
+        {
+          "id": 449,
+          "nomFr": "Rades",
+          "nomAr": "رادس",
+          "nomEn": "Rades",
+          "lat": 36.767,
+          "lng": 10.283
+        },
+        {
+          "id": 450,
+          "nomFr": "Ezzahra",
+          "nomAr": "الزهرة",
+          "nomEn": "Ezzahra",
+          "lat": 36.743,
+          "lng": 10.308
+        },
+        {
+          "id": 451,
+          "nomFr": "Hammam Lif",
+          "nomAr": "حمام الأنف",
+          "nomEn": "Hammam Lif",
+          "lat": 36.733,
+          "lng": 10.333
+        },
+        {
+          "id": 452,
+          "nomFr": "Hammam Chatt",
+          "nomAr": "حمام الشط",
+          "nomEn": "Hammam Chatt",
+          "lat": 36.718,
+          "lng": 10.369
+        },
+        {
+          "id": 453,
+          "nomFr": "Boumhel Bassatine",
+          "nomAr": "بومهل البساتين",
+          "nomEn": "Boumhel Bassatine",
+          "lat": 36.709,
+          "lng": 10.29
+        },
+        {
+          "id": 454,
+          "nomFr": "Medina Jedida",
+          "nomAr": "المدينة الجديدة",
+          "nomEn": "Medina Jedida",
+          "lat": 36.745,
+          "lng": 10.246
+        },
+        {
+          "id": 622,
+          "nomFr": "Ben Arous",
+          "nomAr": "بن عروس",
+          "nomEn": "Ben Arous",
+          "lat": 36.7533,
+          "lng": 10.2282
+        }
+      ],
+      "lat": 36.7533,
+      "lng": 10.2282
+    },
+    {
+      "id": 350,
+      "nomFr": "Nabeul",
+      "nomAr": "نابل",
+      "nomEn": "Nabeul",
+      "delegations": [
+        {
+          "id": 455,
+          "nomFr": "Kelibia",
+          "nomAr": "قليبية",
+          "nomEn": "Kelibia",
+          "lat": 36.85,
+          "lng": 11.1
+        },
+        {
+          "id": 456,
+          "nomFr": "Menzel Temime",
+          "nomAr": "منزل تميم",
+          "nomEn": "Menzel Temime",
+          "lat": 36.784,
+          "lng": 10.986
+        },
+        {
+          "id": 457,
+          "nomFr": "El Mida",
+          "nomAr": "الميدة",
+          "nomEn": "El Mida",
+          "lat": 36.725,
+          "lng": 10.855
+        },
+        {
+          "id": 458,
+          "nomFr": "Menzel Bouzelfa",
+          "nomAr": "منزل بوزلفة",
+          "nomEn": "Menzel Bouzelfa",
+          "lat": 36.685,
+          "lng": 10.585
+        },
+        {
+          "id": 459,
+          "nomFr": "Korba",
+          "nomAr": "قربة",
+          "nomEn": "Korba",
+          "lat": 36.581,
+          "lng": 10.862
+        },
+        {
+          "id": 460,
+          "nomFr": "Beni Khiar",
+          "nomAr": "بني خيار ",
+          "nomEn": "Beni Khiar",
+          "lat": 36.467,
+          "lng": 10.782
+        },
+        {
+          "id": 461,
+          "nomFr": "Hammamet",
+          "nomAr": "الحمامات",
+          "nomEn": "Hammamet",
+          "lat": 36.401,
+          "lng": 10.615
+        },
+        {
+          "id": 462,
+          "nomFr": "Takelsa",
+          "nomAr": "تاكلسة",
+          "nomEn": "Takelsa",
+          "lat": 36.792,
+          "lng": 10.629
+        },
+        {
+          "id": 463,
+          "nomFr": "Bou Argoub",
+          "nomAr": "بوعرقوب",
+          "nomEn": "Bou Argoub",
+          "lat": 36.535,
+          "lng": 10.552
+        },
+        {
+          "id": 464,
+          "nomFr": "Grombalia",
+          "nomAr": "قرمبالية",
+          "nomEn": "Grombalia",
+          "lat": 36.6,
+          "lng": 10.5
+        },
+        {
+          "id": 465,
+          "nomFr": "Slimane",
+          "nomAr": "سليمان",
+          "nomEn": "Slimane",
+          "lat": 36.699,
+          "lng": 10.489
+        },
+        {
+          "id": 466,
+          "nomFr": "El Haouaria",
+          "nomAr": "الهوارية",
+          "nomEn": "El Haouaria",
+          "lat": 37.055,
+          "lng": 11.013
+        },
+        {
+          "id": 467,
+          "nomFr": "Beni Khalled",
+          "nomAr": "بني خلاد",
+          "nomEn": "Beni Khalled",
+          "lat": 36.649,
+          "lng": 10.592
+        },
+        {
+          "id": 468,
+          "nomFr": "Dar Chaabane Elfehri",
+          "nomAr": "دار شعبان الفهري",
+          "nomEn": "Dar Chaabane Elfehri",
+          "lat": 36.463,
+          "lng": 10.747
+        },
+        {
+          "id": 469,
+          "nomFr": "Hammam Ghezaz",
+          "nomAr": "حمام الغزاز",
+          "nomEn": "Hammam Ghezaz",
+          "lat": 36.873986,
+          "lng": 11.1082328
+        },
+        {
+          "id": 623,
+          "nomFr": "Nabeul",
+          "nomAr": "نابل",
+          "nomEn": "Nabeul",
+          "lat": 36.451,
+          "lng": 10.735
+        }
+      ],
+      "lat": 36.4561,
+      "lng": 10.7376
+    },
+    {
+      "id": 351,
+      "nomFr": "Tataouine",
+      "nomAr": "تطاوين",
+      "nomEn": "Tataouine",
+      "delegations": [
+        {
+          "id": 470,
+          "nomFr": "Dehiba",
+          "nomAr": "الذهيبة",
+          "nomEn": "Dehiba",
+          "lat": 32.01,
+          "lng": 10.702
+        },
+        {
+          "id": 471,
+          "nomFr": "Remada",
+          "nomAr": "رمادة",
+          "nomEn": "Remada",
+          "lat": 32.316,
+          "lng": 10.4
+        },
+        {
+          "id": 472,
+          "nomFr": "Smar",
+          "nomAr": "السمار",
+          "nomEn": "Smar",
+          "lat": 32.9946554,
+          "lng": 10.8222443
+        },
+        {
+          "id": 473,
+          "nomFr": "Ghomrassen",
+          "nomAr": "غمراسن",
+          "nomEn": "Ghomrassen",
+          "lat": 33.067,
+          "lng": 10.33
+        },
+        {
+          "id": 474,
+          "nomFr": "Bir Lahmar",
+          "nomAr": "بئر الأحمر",
+          "nomEn": "Bir Lahmar",
+          "lat": 33.179,
+          "lng": 10.442
+        },
+        {
+          "id": 475,
+          "nomFr": "Borj El Khadra",
+          "nomAr": "برج الخضراء",
+          "nomEn": "Borj El Khadra",
+          "lat": 30.25,
+          "lng": 9.555
+        },
+        {
+          "id": 476,
+          "nomFr": "El Borma",
+          "nomAr": "البرمة",
+          "nomEn": "El Borma",
+          "lat": 31.6916,
+          "lng": 9.2043
+        },
+        {
+          "id": 624,
+          "nomFr": "Tataouine",
+          "nomAr": "تطاوين",
+          "nomEn": "Tataouine",
+          "lat": 32.933,
+          "lng": 10.45
+        },
+        {
+          "id": 1524,
+          "nomFr": "Bni Mhira",
+          "nomAr": "بني مهيرة",
+          "nomEn": "Bni Mhira",
+          "lat": 32.869,
+          "lng": 10.818
+        }
+      ],
+      "lat": 32.9297,
+      "lng": 10.4518
+    },
+    {
+      "id": 352,
+      "nomFr": "Tozeur",
+      "nomAr": "توزر",
+      "nomEn": "Tozeur",
+      "delegations": [
+        {
+          "id": 477,
+          "nomFr": "Nefta",
+          "nomAr": "نفطة",
+          "nomEn": "Nefta",
+          "lat": 33.877,
+          "lng": 7.884
+        },
+        {
+          "id": 478,
+          "nomFr": "Degueche",
+          "nomAr": "دقاش",
+          "nomEn": "Degueche",
+          "lat": 33.9841058,
+          "lng": 8.2154584
+        },
+        {
+          "id": 479,
+          "nomFr": "Hazoua",
+          "nomAr": "حزوة",
+          "nomEn": "Hazoua",
+          "lat": 33.738,
+          "lng": 7.603
+        },
+        {
+          "id": 480,
+          "nomFr": "Tameghza",
+          "nomAr": "تمغزة",
+          "nomEn": "Tameghza",
+          "lat": 34.3863938,
+          "lng": 7.9334946
+        },
+        {
+          "id": 481,
+          "nomFr": "Hammat Al Jarid",
+          "nomAr": "حامة الجريد",
+          "nomEn": "Hammat Al Jarid",
+          "lat": 33.999,
+          "lng": 8.161
+        },
+        {
+          "id": 625,
+          "nomFr": "Tozeur",
+          "nomAr": "توزر",
+          "nomEn": "Tozeur",
+          "lat": 33.924,
+          "lng": 8.131
+        }
+      ],
+      "lat": 33.9197,
+      "lng": 8.1335
+    },
+    {
+      "id": 353,
+      "nomFr": "Medenine",
+      "nomAr": "مدنين",
+      "nomEn": "Medenine",
+      "delegations": [
+        {
+          "id": 488,
+          "nomFr": "Ben Guerdene",
+          "nomAr": "بن قردان",
+          "nomEn": "Ben Guerdene",
+          "lat": 33.1403223,
+          "lng": 11.2170109
+        },
+        {
+          "id": 489,
+          "nomFr": "Beni Khedach",
+          "nomAr": "بني خداش",
+          "nomEn": "Beni Khedach",
+          "lat": 33.246,
+          "lng": 10.204
+        },
+        {
+          "id": 490,
+          "nomFr": "Zarzis",
+          "nomAr": "جرجيس",
+          "nomEn": "Zarzis",
+          "lat": 33.503,
+          "lng": 11.115
+        },
+        {
+          "id": 491,
+          "nomFr": "Djerba El May",
+          "nomAr": "جربة الماي",
+          "nomEn": "Djerba El May",
+          "lat": 33.802,
+          "lng": 10.882
+        },
+        {
+          "id": 492,
+          "nomFr": "Djerba Midoun",
+          "nomAr": "جربة ميدون",
+          "nomEn": "Djerba Midoun",
+          "lat": 33.821,
+          "lng": 10.997
+        },
+        {
+          "id": 493,
+          "nomFr": "Djerba Ajim",
+          "nomAr": "جربة آجيم",
+          "nomEn": "Djerba Ajim",
+          "lat": 33.725,
+          "lng": 10.749
+        },
+        {
+          "id": 494,
+          "nomFr": "Djerba Houmt Souk",
+          "nomAr": "جربة حومة السوق",
+          "nomEn": "Djerba Houmt Souk",
+          "lat": 33.866,
+          "lng": 10.85
+        },
+        {
+          "id": 495,
+          "nomFr": "Arram",
+          "nomAr": "العرام",
+          "nomEn": "Arram",
+          "lat": 33.3399,
+          "lng": 10.4959
+        },
+        {
+          "id": 496,
+          "nomFr": "Sidi Makhlouf",
+          "nomAr": "سيدي مخلوف",
+          "nomEn": "Sidi Makhlouf",
+          "lat": 33.506,
+          "lng": 10.479
+        },
+        {
+          "id": 626,
+          "nomFr": "Medenine",
+          "nomAr": "مدنين",
+          "nomEn": "Medenine",
+          "lat": 33.345,
+          "lng": 10.494
+        }
+      ],
+      "lat": 33.3399,
+      "lng": 10.5055
+    },
+    {
+      "id": 354,
+      "nomFr": "Jendouba",
+      "nomAr": "جندوبة",
+      "nomEn": "Jendouba",
+      "delegations": [
+        {
+          "id": 497,
+          "nomFr": "Tabarka",
+          "nomAr": "طبرقة",
+          "nomEn": "Tabarka",
+          "lat": 36.952,
+          "lng": 8.758
+        },
+        {
+          "id": 498,
+          "nomFr": "Ain Drahem",
+          "nomAr": "عين دراهم",
+          "nomEn": "Ain Drahem",
+          "lat": 36.776,
+          "lng": 8.686
+        },
+        {
+          "id": 499,
+          "nomFr": "Bou Salem",
+          "nomAr": "بوسالم",
+          "nomEn": "Bou Salem",
+          "lat": 36.607408,
+          "lng": 8.9696535
+        },
+        {
+          "id": 500,
+          "nomFr": "Oued Mliz",
+          "nomAr": "واد مليز",
+          "nomEn": "Oued Mliz",
+          "lat": 36.4678121,
+          "lng": 8.5500007
+        },
+        {
+          "id": 501,
+          "nomFr": "Ghardimaou",
+          "nomAr": "غار الدماء",
+          "nomEn": "Ghardimaou",
+          "lat": 36.448,
+          "lng": 8.436
+        },
+        {
+          "id": 502,
+          "nomFr": "Fernana",
+          "nomAr": "فرنانة",
+          "nomEn": "Fernana",
+          "lat": 36.657,
+          "lng": 8.693
+        },
+        {
+          "id": 503,
+          "nomFr": "Balta Bou Aouane",
+          "nomAr": "بلطة بوعوان",
+          "nomEn": "Balta Bou Aouane",
+          "lat": 36.706,
+          "lng": 8.944
+        },
+        {
+          "id": 627,
+          "nomFr": "Jendouba",
+          "nomAr": "جندوبة",
+          "nomEn": "Jendouba",
+          "lat": 36.5,
+          "lng": 8.783
+        }
+      ],
+      "lat": 36.5012,
+      "lng": 8.7802
+    },
+    {
+      "id": 355,
+      "nomFr": "Sidi Bouzid",
+      "nomAr": "سيدي بوزيد",
+      "nomEn": "Sidi Bouzid",
+      "delegations": [
+        {
+          "id": 504,
+          "nomFr": "Regueb",
+          "nomAr": "الرقاب",
+          "nomEn": "Regueb",
+          "lat": 34.859,
+          "lng": 9.787
+        },
+        {
+          "id": 505,
+          "nomFr": "Meknassi",
+          "nomAr": "المكناسي",
+          "nomEn": "Meknassi",
+          "lat": 34.607,
+          "lng": 9.607
+        },
+        {
+          "id": 506,
+          "nomFr": "Jelma",
+          "nomAr": "جلمة",
+          "nomEn": "Jelma",
+          "lat": 35.274,
+          "lng": 9.425
+        },
+        {
+          "id": 507,
+          "nomFr": "Sabbalet Ouled Asker",
+          "nomAr": "سبالة أولاد عسكر",
+          "nomEn": "Sabbalet Ouled Asker",
+          "lat": 35.177,
+          "lng": 9.278
+        },
+        {
+          "id": 508,
+          "nomFr": "Bir El Hafey",
+          "nomAr": "بئر الحفي",
+          "nomEn": "Bir El Hafey",
+          "lat": 34.932,
+          "lng": 9.196
+        },
+        {
+          "id": 509,
+          "nomFr": "Sidi Ali Ben Aoun",
+          "nomAr": "سيدي علي بن عون",
+          "nomEn": "Sidi Ali Ben Aoun",
+          "lat": 34.853,
+          "lng": 9.145
+        },
+        {
+          "id": 510,
+          "nomFr": "Menzel Bouzayane",
+          "nomAr": "منزل بو زيان",
+          "nomEn": "Menzel Bouzayane",
+          "lat": 34.5731138,
+          "lng": 9.4269175
+        },
+        {
+          "id": 511,
+          "nomFr": "Mezouna",
+          "nomAr": "المزونة",
+          "nomEn": "Mezouna",
+          "lat": 34.581,
+          "lng": 9.843
+        },
+        {
+          "id": 512,
+          "nomFr": "Ouled Haffouz",
+          "nomAr": "أولاد حفوز",
+          "nomEn": "Ouled Haffouz",
+          "lat": 35.082,
+          "lng": 9.872
+        },
+        {
+          "id": 513,
+          "nomFr": "Souk Jedid",
+          "nomAr": "سوق الجديد",
+          "nomEn": "Souk Jedid",
+          "lat": 34.944,
+          "lng": 9.565
+        },
+        {
+          "id": 628,
+          "nomFr": "Sidi Bouzid",
+          "nomAr": "سيدي بوزيد",
+          "nomEn": "Sidi Bouzid",
+          "lat": 35.036,
+          "lng": 9.485
+        },
+        {
+          "id": 1522,
+          "nomFr": "Hichria",
+          "nomAr": "الهيشرية",
+          "nomEn": "Hichria",
+          "lat": 34.8742313,
+          "lng": 9.435056
+        }
+      ],
+      "lat": 35.0382,
+      "lng": 9.4849
+    },
+    {
+      "id": 356,
+      "nomFr": "Béja",
+      "nomAr": "باجة",
+      "nomEn": "Beja",
+      "delegations": [
+        {
+          "id": 514,
+          "nomFr": "Nefza",
+          "nomAr": "نفزة",
+          "nomEn": "Nefza",
+          "lat": 36.976,
+          "lng": 9.081
+        },
+        {
+          "id": 515,
+          "nomFr": "Amdoun",
+          "nomAr": "عمدون",
+          "nomEn": "Amdoun",
+          "lat": 36.768,
+          "lng": 9.089
+        },
+        {
+          "id": 516,
+          "nomFr": "Tibar",
+          "nomAr": "تيبار",
+          "nomEn": "Tibar",
+          "lat": 36.522,
+          "lng": 9.106
+        },
+        {
+          "id": 517,
+          "nomFr": "Testour",
+          "nomAr": "تستور",
+          "nomEn": "Testour",
+          "lat": 36.552,
+          "lng": 9.443
+        },
+        {
+          "id": 518,
+          "nomFr": "Teboursouk",
+          "nomAr": "تبرسق",
+          "nomEn": "Teboursouk",
+          "lat": 36.459,
+          "lng": 9.246
+        },
+        {
+          "id": 519,
+          "nomFr": "Goubellat",
+          "nomAr": "قبلاط",
+          "nomEn": "Goubellat",
+          "lat": 36.542,
+          "lng": 9.663
+        },
+        {
+          "id": 520,
+          "nomFr": "Mejez El Bab",
+          "nomAr": "مجاز الباب",
+          "nomEn": "Mejez El Bab",
+          "lat": 36.653,
+          "lng": 9.611
+        },
+        {
+          "id": 629,
+          "nomFr": "Beja",
+          "nomAr": "باجة",
+          "nomEn": "Beja",
+          "lat": 36.726,
+          "lng": 9.192
+        }
+      ],
+      "lat": 36.7256,
+      "lng": 9.1817
+    },
+    {
+      "id": 357,
+      "nomFr": "Kairouan",
+      "nomAr": "القيروان",
+      "nomEn": "Kairouan",
+      "delegations": [
+        {
+          "id": 521,
+          "nomFr": "Sebikha",
+          "nomAr": "السبيخة",
+          "nomEn": "Sebikha",
+          "lat": 35.933,
+          "lng": 10.022
+        },
+        {
+          "id": 522,
+          "nomFr": "Chebika",
+          "nomAr": "الشبيكة",
+          "nomEn": "Chebika",
+          "lat": 35.619,
+          "lng": 9.926
+        },
+        {
+          "id": 523,
+          "nomFr": "Haffouz",
+          "nomAr": "حفوز",
+          "nomEn": "Haffouz",
+          "lat": 35.637,
+          "lng": 9.676
+        },
+        {
+          "id": 524,
+          "nomFr": "El Alaa ",
+          "nomAr": "العلاء",
+          "nomEn": "El Alaa ",
+          "lat": 35.615,
+          "lng": 9.562
+        },
+        {
+          "id": 525,
+          "nomFr": "Oueslatia",
+          "nomAr": "الوسلاتية",
+          "nomEn": "Oueslatia",
+          "lat": 35.849,
+          "lng": 9.592
+        },
+        {
+          "id": 526,
+          "nomFr": "Hajeb El Ayoun",
+          "nomAr": "حاجب العيون",
+          "nomEn": "Hajeb El Ayoun",
+          "lat": 35.397,
+          "lng": 9.543
+        },
+        {
+          "id": 527,
+          "nomFr": "Nasrallah",
+          "nomAr": "نصرالله",
+          "nomEn": "Nasrallah",
+          "lat": 35.356,
+          "lng": 9.829
+        },
+        {
+          "id": 528,
+          "nomFr": "Bou Hajla",
+          "nomAr": "بوحجلة",
+          "nomEn": "Bou Hajla",
+          "lat": 35.395,
+          "lng": 10.05
+        },
+        {
+          "id": 529,
+          "nomFr": "Chrarda",
+          "nomAr": "الشراردة",
+          "nomEn": "Chrarda",
+          "lat": 35.119,
+          "lng": 10.032
+        },
+        {
+          "id": 630,
+          "nomFr": "Kairouan",
+          "nomAr": "القيروان",
+          "nomEn": "Kairouan",
+          "lat": 35.677,
+          "lng": 10.097
+        }
+      ],
+      "lat": 35.6781,
+      "lng": 10.0963
+    },
+    {
+      "id": 358,
+      "nomFr": "Ariana",
+      "nomAr": "اريانة",
+      "nomEn": "Ariana",
+      "delegations": [
+        {
+          "id": 530,
+          "nomFr": "Kalaat El Andalous  ",
+          "nomAr": "قلعة الأندلس",
+          "nomEn": "Kalaat El Andalous  ",
+          "lat": 37.062,
+          "lng": 10.118
+        },
+        {
+          "id": 531,
+          "nomFr": "Raoued",
+          "nomAr": "رواد",
+          "nomEn": "Raoued",
+          "lat": 36.953,
+          "lng": 10.188
+        },
+        {
+          "id": 532,
+          "nomFr": "Soukra",
+          "nomAr": "سكرة",
+          "nomEn": "Soukra",
+          "lat": 36.868,
+          "lng": 10.265
+        },
+        {
+          "id": 533,
+          "nomFr": "Mnihla",
+          "nomAr": "المنيهلة",
+          "nomEn": "Mnihla",
+          "lat": 36.875,
+          "lng": 10.113
+        },
+        {
+          "id": 534,
+          "nomFr": "Attadhamon",
+          "nomAr": "التضامن",
+          "nomEn": "Attadhamon",
+          "lat": 36.831,
+          "lng": 10.111
+        },
+        {
+          "id": 535,
+          "nomFr": "Sidi Thabet",
+          "nomAr": "سيدي ثابت",
+          "nomEn": "Sidi Thabet",
+          "lat": 36.908,
+          "lng": 10.042
+        },
+        {
+          "id": 631,
+          "nomFr": "Ariana",
+          "nomAr": "اريانة",
+          "nomEn": "Ariana",
+          "lat": 36.8625,
+          "lng": 10.1956
+        }
+      ],
+      "lat": 36.8625,
+      "lng": 10.1956
+    },
+    {
+      "id": 359,
+      "nomFr": "Sfax",
+      "nomAr": "صفاقس",
+      "nomEn": "Sfax",
+      "delegations": [
+        {
+          "id": 536,
+          "nomFr": "Jebiniana",
+          "nomAr": "جبنيانة",
+          "nomEn": "Jebiniana",
+          "lat": 35.035,
+          "lng": 10.907
+        },
+        {
+          "id": 537,
+          "nomFr": "Mahres",
+          "nomAr": "المحرس",
+          "nomEn": "Mahres",
+          "lat": 34.526,
+          "lng": 10.49
+        },
+        {
+          "id": 538,
+          "nomFr": "Bir Ali Ben Khelifa",
+          "nomAr": "بئر علي بن خليفة",
+          "nomEn": "Bir Ali Ben Khelifa",
+          "lat": 34.735,
+          "lng": 10.093
+        },
+        {
+          "id": 539,
+          "nomFr": "Ghraiba",
+          "nomAr": "الغريبة",
+          "nomEn": "Ghraiba",
+          "lat": 34.5,
+          "lng": 10.204
+        },
+        {
+          "id": 540,
+          "nomFr": "Agareb",
+          "nomAr": "عقارب",
+          "nomEn": "Agareb",
+          "lat": 34.742,
+          "lng": 10.527
+        },
+        {
+          "id": 541,
+          "nomFr": "El Hencha",
+          "nomAr": "الحنشة",
+          "nomEn": "El Hencha",
+          "lat": 35.121,
+          "lng": 10.742
+        },
+        {
+          "id": 542,
+          "nomFr": "Menzel Chaker",
+          "nomAr": "منزل شاكر",
+          "nomEn": "Menzel Chaker",
+          "lat": 34.970059,
+          "lng": 10.3715504
+        },
+        {
+          "id": 543,
+          "nomFr": "Kerkennah El Attaya",
+          "nomAr": "قرقنة العطايا",
+          "nomEn": "Kerkennah El Attaya",
+          "lat": 34.744,
+          "lng": 11.294
+        },
+        {
+          "id": 544,
+          "nomFr": "Kerkennah Mellita",
+          "nomAr": "قرقنة مليتة",
+          "nomEn": "Kerkennah Mellita",
+          "lat": 34.65,
+          "lng": 11.034
+        },
+        {
+          "id": 545,
+          "nomFr": "El Amra",
+          "nomAr": "العامرة",
+          "nomEn": "El Amra",
+          "lat": 34.983,
+          "lng": 10.898
+        },
+        {
+          "id": 546,
+          "nomFr": "Skhira",
+          "nomAr": "الصخيرة",
+          "nomEn": "Skhira",
+          "lat": 34.2988183,
+          "lng": 10.0690355
+        },
+        {
+          "id": 547,
+          "nomFr": "Sakiet Ezzit",
+          "nomAr": "ساقية الزيت",
+          "nomEn": "Sakiet Ezzit",
+          "lat": 34.8,
+          "lng": 10.77
+        },
+        {
+          "id": 548,
+          "nomFr": "Sakiet Eddaier",
+          "nomAr": "ساقية الداير",
+          "nomEn": "Sakiet Eddaier",
+          "lat": 34.793,
+          "lng": 10.806
+        },
+        {
+          "id": 549,
+          "nomFr": "Tina",
+          "nomAr": "تينة",
+          "nomEn": "Tina",
+          "lat": 34.686,
+          "lng": 10.706
+        },
+        {
+          "id": 632,
+          "nomFr": "Sfax",
+          "nomAr": "صفاقس",
+          "nomEn": "Sfax",
+          "lat": 34.733,
+          "lng": 10.75
+        }
+      ],
+      "lat": 34.7406,
+      "lng": 10.7603
+    },
+    {
+      "id": 360,
+      "nomFr": "Manouba",
+      "nomAr": "منوبة",
+      "nomEn": "Manouba",
+      "delegations": [
+        {
+          "id": 550,
+          "nomFr": "Jedaida",
+          "nomAr": "الجديدة",
+          "nomEn": "Jedaida",
+          "lat": 36.85,
+          "lng": 9.935
+        },
+        {
+          "id": 551,
+          "nomFr": "El Battan",
+          "nomAr": "البطان",
+          "nomEn": "El Battan",
+          "lat": 36.804353,
+          "lng": 9.844442
+        },
+        {
+          "id": 552,
+          "nomFr": "Borj El Amri",
+          "nomAr": "برج العامري",
+          "nomEn": "Borj El Amri",
+          "lat": 36.713,
+          "lng": 9.882
+        },
+        {
+          "id": 553,
+          "nomFr": "Oued Ellil",
+          "nomAr": "واد الليل",
+          "nomEn": "Oued Ellil",
+          "lat": 36.836,
+          "lng": 10.041
+        },
+        {
+          "id": 554,
+          "nomFr": "Douar Hicher",
+          "nomAr": "دوار هيشر",
+          "nomEn": "Douar Hicher",
+          "lat": 36.828,
+          "lng": 10.089
+        },
+        {
+          "id": 555,
+          "nomFr": "Mornaguia",
+          "nomAr": "المرناقية",
+          "nomEn": "Mornaguia",
+          "lat": 36.761,
+          "lng": 10.016
+        },
+        {
+          "id": 556,
+          "nomFr": "Tebourba",
+          "nomAr": "طبربة",
+          "nomEn": "Tebourba",
+          "lat": 36.833,
+          "lng": 9.833
+        },
+        {
+          "id": 633,
+          "nomFr": "Manouba",
+          "nomAr": "منوبة",
+          "nomEn": "Manouba",
+          "lat": 36.824,
+          "lng": 10.069
+        }
+      ],
+      "lat": 36.8081,
+      "lng": 10.0863
+    },
+    {
+      "id": 361,
+      "nomFr": "Bizerte",
+      "nomAr": "بنزرت",
+      "nomEn": "Bizerte",
+      "delegations": [
+        {
+          "id": 557,
+          "nomFr": "Sejnane",
+          "nomAr": "سجنان",
+          "nomEn": "Sejnane",
+          "lat": 37.06,
+          "lng": 9.24
+        },
+        {
+          "id": 558,
+          "nomFr": "Joumine",
+          "nomAr": "جومين",
+          "nomEn": "Joumine",
+          "lat": 36.926,
+          "lng": 9.387
+        },
+        {
+          "id": 559,
+          "nomFr": "Mateur",
+          "nomAr": "ماطر",
+          "nomEn": "Mateur",
+          "lat": 37.04,
+          "lng": 9.665
+        },
+        {
+          "id": 560,
+          "nomFr": "Ghezala",
+          "nomAr": "غزالة",
+          "nomEn": "Ghezala",
+          "lat": 37.075,
+          "lng": 9.537
+        },
+        {
+          "id": 561,
+          "nomFr": "Menzel Jemil",
+          "nomAr": "منزل جميل",
+          "nomEn": "Menzel Jemil",
+          "lat": 37.235,
+          "lng": 9.91
+        },
+        {
+          "id": 562,
+          "nomFr": "Menzel Bourguiba",
+          "nomAr": "منزل برقيبة",
+          "nomEn": "Menzel Bourguiba",
+          "lat": 37.15,
+          "lng": 9.783
+        },
+        {
+          "id": 563,
+          "nomFr": "Ghar El Melh",
+          "nomAr": "غار الملح",
+          "nomEn": "Ghar El Melh",
+          "lat": 37.169,
+          "lng": 10.187
+        },
+        {
+          "id": 564,
+          "nomFr": "Ras Jebel",
+          "nomAr": "رأس الجبل",
+          "nomEn": "Ras Jebel",
+          "lat": 37.215,
+          "lng": 10.12
+        },
+        {
+          "id": 565,
+          "nomFr": "Tinja",
+          "nomAr": "تينجة",
+          "nomEn": "Tinja",
+          "lat": 37.16,
+          "lng": 9.764
+        },
+        {
+          "id": 566,
+          "nomFr": "El Alia",
+          "nomAr": "العالية",
+          "nomEn": "El Alia",
+          "lat": 37.167,
+          "lng": 10.033
+        },
+        {
+          "id": 567,
+          "nomFr": "Utique",
+          "nomAr": "أوتيك",
+          "nomEn": "Utique",
+          "lat": 37.0734,
+          "lng": 10.0472
+        },
+        {
+          "id": 568,
+          "nomFr": "Zarzouna",
+          "nomAr": "جرزونة",
+          "nomEn": "Zarzouna",
+          "lat": 37.259,
+          "lng": 9.877
+        },
+        {
+          "id": 569,
+          "nomFr": "Al Matlin ",
+          "nomAr": "المتلين",
+          "nomEn": "Al Matlin ",
+          "lat": 37.2441137,
+          "lng": 10.047511
+        },
+        {
+          "id": 570,
+          "nomFr": "Zouaouine",
+          "nomAr": "الزواوين",
+          "nomEn": "Zouaouine",
+          "lat": 37.127,
+          "lng": 10.057
+        },
+        {
+          "id": 571,
+          "nomFr": "Aousja",
+          "nomAr": "عوسجة",
+          "nomEn": "Aousja",
+          "lat": 37.142,
+          "lng": 10.102
+        },
+        {
+          "id": 572,
+          "nomFr": "Al Khitmin",
+          "nomAr": "الختمين",
+          "nomEn": "Al Khitmin",
+          "lat": 37.145,
+          "lng": 9.986
+        },
+        {
+          "id": 634,
+          "nomFr": "Bizerte",
+          "nomAr": "بنزرت",
+          "nomEn": "Bizerte",
+          "lat": 37.276,
+          "lng": 9.873
+        }
+      ],
+      "lat": 37.2744,
+      "lng": 9.8739
+    },
+    {
+      "id": 362,
+      "nomFr": "Kasserine",
+      "nomAr": "القصرين",
+      "nomEn": "Kasserine",
+      "delegations": [
+        {
+          "id": 573,
+          "nomFr": "Tala",
+          "nomAr": "تالة",
+          "nomEn": "Tala",
+          "lat": 35.572,
+          "lng": 8.67
+        },
+        {
+          "id": 574,
+          "nomFr": "Hidra",
+          "nomAr": "حيدرة",
+          "nomEn": "Hidra",
+          "lat": 35.568,
+          "lng": 8.443
+        },
+        {
+          "id": 575,
+          "nomFr": "Sbitla",
+          "nomAr": "سبيطلة",
+          "nomEn": "Sbitla",
+          "lat": 35.23,
+          "lng": 9.129
+        },
+        {
+          "id": 576,
+          "nomFr": "Sbiba",
+          "nomAr": "سبيبة",
+          "nomEn": "Sbiba",
+          "lat": 35.545,
+          "lng": 9.072
+        },
+        {
+          "id": 577,
+          "nomFr": "Feriana",
+          "nomAr": "فريانة",
+          "nomEn": "Feriana",
+          "lat": 34.943,
+          "lng": 8.555
+        },
+        {
+          "id": 578,
+          "nomFr": "Foussana",
+          "nomAr": "فوسانة",
+          "nomEn": "Foussana",
+          "lat": 35.348,
+          "lng": 8.63
+        },
+        {
+          "id": 579,
+          "nomFr": "El Ayoun",
+          "nomAr": "العيون",
+          "nomEn": "El Ayoun",
+          "lat": 35.541,
+          "lng": 8.884
+        },
+        {
+          "id": 580,
+          "nomFr": "Majel Bel Abbes",
+          "nomAr": "ماجل بلعباس",
+          "nomEn": "Majel Bel Abbes",
+          "lat": 34.748,
+          "lng": 8.52
+        },
+        {
+          "id": 581,
+          "nomFr": "Jedliane",
+          "nomAr": "جدليان",
+          "nomEn": "Jedliane",
+          "lat": 35.593,
+          "lng": 9.059
+        },
+        {
+          "id": 582,
+          "nomFr": "Hassi Ferid",
+          "nomAr": "حاسي الفريد",
+          "nomEn": "Hassi Ferid",
+          "lat": 34.978,
+          "lng": 8.949
+        },
+        {
+          "id": 635,
+          "nomFr": "Kasserine",
+          "nomAr": "القصرين",
+          "nomEn": "Kasserine",
+          "lat": 35.1687646,
+          "lng": 8.8365654
+        }
+      ],
+      "lat": 35.1676,
+      "lng": 8.8365
+    },
+    {
+      "id": 363,
+      "nomFr": "Le kef",
+      "nomAr": "الكاف",
+      "nomEn": "Le kef",
+      "delegations": [
+        {
+          "id": 583,
+          "nomFr": "El Ksour",
+          "nomAr": "القصور",
+          "nomEn": "El Ksour",
+          "lat": 35.899,
+          "lng": 8.881
+        },
+        {
+          "id": 584,
+          "nomFr": "Le Sers",
+          "nomAr": "السرس",
+          "nomEn": "Le Sers",
+          "lat": 36.078,
+          "lng": 9.021
+        },
+        {
+          "id": 585,
+          "nomFr": "Jerissa",
+          "nomAr": "الجريصة",
+          "nomEn": "Jerissa",
+          "lat": 35.8466,
+          "lng": 8.6353
+        },
+        {
+          "id": 586,
+          "nomFr": "Tejerouine",
+          "nomAr": "تاجروين",
+          "nomEn": "Tejerouine",
+          "lat": 35.8913691,
+          "lng": 8.5530477
+        },
+        {
+          "id": 587,
+          "nomFr": "Kalâa El Khasba",
+          "nomAr": "القلعة الخصبة",
+          "nomEn": "Kalâa El Khasba",
+          "lat": 35.666,
+          "lng": 8.584
+        },
+        {
+          "id": 588,
+          "nomFr": "Kalaat Sinane",
+          "nomAr": "قلعة السنان",
+          "nomEn": "Kalaat Sinane",
+          "lat": 35.768,
+          "lng": 8.342
+        },
+        {
+          "id": 589,
+          "nomFr": "Nebeur",
+          "nomAr": "نبر",
+          "nomEn": "Nebeur",
+          "lat": 36.298,
+          "lng": 8.768
+        },
+        {
+          "id": 590,
+          "nomFr": "Dahmani",
+          "nomAr": "الدهماني",
+          "nomEn": "Dahmani",
+          "lat": 35.944,
+          "lng": 8.828
+        },
+        {
+          "id": 591,
+          "nomFr": "Sakiet Sidi Youssef",
+          "nomAr": "ساقية سيدي يوسف",
+          "nomEn": "Sakiet Sidi Youssef",
+          "lat": 36.224,
+          "lng": 8.355
+        },
+        {
+          "id": 636,
+          "nomFr": "Le Kef",
+          "nomAr": "الكاف",
+          "nomEn": "Le Kef",
+          "lat": 36.184,
+          "lng": 8.715
+        },
+        {
+          "id": 1523,
+          "nomFr": "Tourief",
+          "nomAr": "الطويرف",
+          "nomEn": "Tourief",
+          "lat": 36.339,
+          "lng": 8.58
+        }
+      ],
+      "lat": 36.1747,
+      "lng": 8.7049
+    },
+    {
+      "id": 364,
+      "nomFr": "Monastir",
+      "nomAr": "المنستير",
+      "nomEn": "Monastir",
+      "delegations": [
+        {
+          "id": 592,
+          "nomFr": "Sahline",
+          "nomAr": "الساحلين",
+          "nomEn": "Sahline",
+          "lat": 35.751,
+          "lng": 10.711
+        },
+        {
+          "id": 593,
+          "nomFr": "Ouerdanine",
+          "nomAr": "الوردانين",
+          "nomEn": "Ouerdanine",
+          "lat": 35.708,
+          "lng": 10.675
+        },
+        {
+          "id": 594,
+          "nomFr": "Teboulba",
+          "nomAr": "طبلبة",
+          "nomEn": "Teboulba",
+          "lat": 35.64,
+          "lng": 10.965
+        },
+        {
+          "id": 595,
+          "nomFr": "Jammel",
+          "nomAr": "جمال",
+          "nomEn": "Jammel",
+          "lat": 35.628,
+          "lng": 10.759
+        },
+        {
+          "id": 596,
+          "nomFr": "Zeramdine",
+          "nomAr": "زرمدين",
+          "nomEn": "Zeramdine",
+          "lat": 35.5791762,
+          "lng": 10.7379156
+        },
+        {
+          "id": 597,
+          "nomFr": "Beni Hassan",
+          "nomAr": "بني حسان",
+          "nomEn": "Beni Hassan",
+          "lat": 35.569,
+          "lng": 10.81
+        },
+        {
+          "id": 598,
+          "nomFr": "Moknine",
+          "nomAr": "المكنين",
+          "nomEn": "Moknine",
+          "lat": 35.632,
+          "lng": 10.901
+        },
+        {
+          "id": 599,
+          "nomFr": "Ksibet Medyouni",
+          "nomAr": "قصيبة المديوني",
+          "nomEn": "Ksibet Medyouni",
+          "lat": 35.689,
+          "lng": 10.842
+        },
+        {
+          "id": 600,
+          "nomFr": "Sayada Lamta Bouhjar",
+          "nomAr": "صيادة",
+          "nomEn": "Sayada Lamta Bouhjar",
+          "lat": 35.666,
+          "lng": 10.888
+        },
+        {
+          "id": 601,
+          "nomFr": "Bekalta",
+          "nomAr": "البقالطة",
+          "nomEn": "Bekalta",
+          "lat": 35.617,
+          "lng": 11.0
+        },
+        {
+          "id": 602,
+          "nomFr": "Ksar Helal",
+          "nomAr": "قصر هلال",
+          "nomEn": "Ksar Helal",
+          "lat": 35.65,
+          "lng": 10.9
+        },
+        {
+          "id": 603,
+          "nomFr": "Benbla",
+          "nomAr": "بنبلة",
+          "nomEn": "Benbla",
+          "lat": 35.6919328,
+          "lng": 10.7921125
+        },
+        {
+          "id": 637,
+          "nomFr": "Monastir",
+          "nomAr": "المنستير",
+          "nomEn": "Monastir",
+          "lat": 35.775,
+          "lng": 10.831
+        }
+      ],
+      "lat": 35.7643,
+      "lng": 10.8113
+    },
+    {
+      "id": 365,
+      "nomFr": "Gafsa",
+      "nomAr": "قفصة",
+      "nomEn": "Gafsa",
+      "delegations": [
+        {
+          "id": 604,
+          "nomFr": "Moulares",
+          "nomAr": "أم العرايس",
+          "nomEn": "Moulares",
+          "lat": 34.485737,
+          "lng": 8.2733836
+        },
+        {
+          "id": 605,
+          "nomFr": "Redyef",
+          "nomAr": "الرديف",
+          "nomEn": "Redyef",
+          "lat": 34.383,
+          "lng": 8.15
+        },
+        {
+          "id": 606,
+          "nomFr": "Metlaoui",
+          "nomAr": "المتلوي",
+          "nomEn": "Metlaoui",
+          "lat": 34.316,
+          "lng": 8.402
+        },
+        {
+          "id": 607,
+          "nomFr": "Mdhilla",
+          "nomAr": "المظيلة",
+          "nomEn": "Mdhilla",
+          "lat": 34.293,
+          "lng": 8.751
+        },
+        {
+          "id": 608,
+          "nomFr": "El Ksar",
+          "nomAr": "القصر",
+          "nomEn": "El Ksar",
+          "lat": 34.3978553,
+          "lng": 8.8045119
+        },
+        {
+          "id": 609,
+          "nomFr": "Sened",
+          "nomAr": "السند",
+          "nomEn": "Sened",
+          "lat": 34.540278,
+          "lng": 9.2513281
+        },
+        {
+          "id": 610,
+          "nomFr": "Sidi Aich",
+          "nomAr": "سيدي عيش",
+          "nomEn": "Sidi Aich",
+          "lat": 34.7328584,
+          "lng": 8.7827624
+        },
+        {
+          "id": 611,
+          "nomFr": "El Guettar",
+          "nomAr": "القطار",
+          "nomEn": "El Guettar",
+          "lat": 34.3394652,
+          "lng": 8.950364
+        },
+        {
+          "id": 612,
+          "nomFr": "Belkhir",
+          "nomAr": "بلخير",
+          "nomEn": "Belkhir",
+          "lat": 34.2742071,
+          "lng": 9.3914392
+        },
+        {
+          "id": 638,
+          "nomFr": "Gafsa",
+          "nomAr": "قفصة",
+          "nomEn": "Gafsa",
+          "lat": 34.421,
+          "lng": 8.787
+        }
+      ],
+      "lat": 34.425,
+      "lng": 8.7842
+    },
+    {
+      "id": 1012,
+      "nomFr": "Kébili",
+      "nomAr": "قبلي",
+      "nomEn": "Kebili",
+      "delegations": [
+        {
+          "id": 482,
+          "nomFr": "Kebili",
+          "nomAr": "قبلي",
+          "nomEn": "Kebili",
+          "lat": 33.687,
+          "lng": 8.97
+        },
+        {
+          "id": 483,
+          "nomFr": "Souk El Ahad",
+          "nomAr": "سوق الأحد",
+          "nomEn": "Souk El Ahad",
+          "lat": 33.7783142,
+          "lng": 8.8525855
+        },
+        {
+          "id": 484,
+          "nomFr": "Douz",
+          "nomAr": "دوز",
+          "nomEn": "Douz",
+          "lat": 33.461,
+          "lng": 9.029
+        },
+        {
+          "id": 485,
+          "nomFr": "El Faouar",
+          "nomAr": "الفوار",
+          "nomEn": "El Faouar",
+          "lat": 33.364,
+          "lng": 8.676
+        },
+        {
+          "id": 486,
+          "nomFr": "Matrouha",
+          "nomAr": "المطروحة",
+          "nomEn": "Matrouha",
+          "lat": 33.3497,
+          "lng": 7.7825
+        },
+        {
+          "id": 487,
+          "nomFr": "Rjim Maatoug",
+          "nomAr": "رجيم معتوق",
+          "nomEn": "Rjim Maatoug",
+          "lat": 33.32,
+          "lng": 8.033
+        }
+      ],
+      "lat": 33.7072,
+      "lng": 8.9697
+    }
+  ]
+}

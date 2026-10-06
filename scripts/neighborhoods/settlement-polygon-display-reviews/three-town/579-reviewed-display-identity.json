@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_explicit_settlement_polygon_base_display_identity",
+    "id": "osm:way:543781477",
+    "targetDelegationId": 579
+  },
+  "conclusion": "same_named_settlement_display_only",
+  "sourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/tibar-ayoun-source-review.json",
+    "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25"
+  },
+  "sourceFacts": {
+    "file": "settlement-polygon-display-reviews/three-town/579-reviewed-source-facts.json",
+    "sha256": "6701834d28665e48512a40d82135a1abc7e8dcaecce21d21d5bcdd94189b16ed"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "independentSourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/independent-source-review.json",
+    "sha256": "88297770c4116ad4c7011ba9d745a5d184b9a274a298901751c6256afb261a70"
+  },
+  "primaryEvidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/kasserine-regional-plan-2016.pdf",
+      "sha256": "3ef06816a2832d54c82fa6a737b04575ab4fddc5894b99ed31c77dab31e367af",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/RapportPhase3SDADkasserineNov2016fr.pdf",
+      "pdfPage": 74,
+      "printedPage": 64,
+      "personallyViewed": true,
+      "scope": "Historical settlement/chef-lieu identity only. The report municipal-status statement belongs to its historical demographic discussion and is not asserted as current."
+    }
+  ],
+  "publicNode": {
+    "file": "settlement-polygon-display-reviews/three-town/node-5316229408.json",
+    "sha256": "09f03b558121b85e4b587ff9e91b7357f795ffe570301d602c8c9eff0c2c47b6",
+    "url": "https://api.openstreetmap.org/api/0.6/node/5316229408.json",
+    "retrievedAt": "2026-09-08T12:56:43.854918+00:00"
+  },
+  "expected": {
+    "baseCurrent": {
+      "id": 579,
+      "nomFr": "El Ayoun",
+      "nomAr": "العيون",
+      "nomEn": "El Ayoun",
+      "lat": 35.5341,
+      "lng": 8.8694
+    },
+    "governorCurrent": {
+      "id": 362,
+      "nomFr": "Kasserine",
+      "nomAr": "القصرين",
+      "nomEn": "Kasserine",
+      "lat": 35.1676,
+      "lng": 8.8365
+    },
+    "pointId": "osm:node:5316229408",
+    "sourcePointCoordinates": {
+      "lat": 35.5402671,
+      "lng": 8.8836602
+    },
+    "separateSectorId": "osm:relation:7164958",
+    "parentSourceId": "osm:relation:7165022",
+    "governorSourceId": "osm:relation:1434949",
+    "preservedImadas": [
+      {
+        "id": "osm:relation:7164958",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425851",
+          "sectorFr": "El ayoun",
+          "sectorAr": "العيون",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51883,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2520,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2515
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164954",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425852",
+          "sectorFr": "El grine",
+          "sectorAr": "القرين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51917,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2522,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2517
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164953",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425853",
+          "sectorFr": "El brek",
+          "sectorAr": "البرك",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51951,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2524,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2519
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164951",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425854",
+          "sectorFr": "El baouajer",
+          "sectorAr": "البواجر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51985,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2526,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2521
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164909",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425855",
+          "sectorFr": "Tiwicha",
+          "sectorAr": "توشة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 52019,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2527,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2522
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7164907",
+        "official": {
+          "governorateCode": "42",
+          "governorateFr": "Kasserine",
+          "governorateAr": "القصرين",
+          "delegationCode": "4258",
+          "delegationFr": "El ayoun",
+          "delegationAr": "العيون",
+          "sectorCode": "425856",
+          "sectorFr": "Ain esselsela",
+          "sectorAr": "عين السلسلة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 52053,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2529,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2524
+          }
+        }
+      }
+    ],
+    "protectedRawIds": [
+      "osm:node:7179613734",
+      "osm:relation:7154907",
+      "osm:relation:7164907",
+      "osm:relation:7164909",
+      "osm:relation:7164951",
+      "osm:relation:7164953",
+      "osm:relation:7164954",
+      "osm:relation:7164958",
+      "osm:relation:7169616",
+      "osm:way:218369508",
+      "osm:way:543781477",
+      "osm:way:560461423"
+    ],
+    "originalNamePeerIds": [
+      "osm:node:5316229408",
+      "osm:node:7179613734",
+      "osm:relation:1614575",
+      "osm:relation:7154907",
+      "osm:relation:7164958",
+      "osm:relation:7165022",
+      "osm:relation:7169616",
+      "osm:way:543781477"
+    ],
+    "effectiveNamePeerIds": [
+      "osm:node:5316229408",
+      "osm:node:7179613734",
+      "osm:relation:1614575",
+      "osm:relation:7154907",
+      "osm:relation:7164958",
+      "osm:relation:7165022",
+      "osm:relation:7169616",
+      "osm:way:543781477"
+    ],
+    "nameQueries": [
+      "elayoun",
+      "العيون"
+    ],
+    "currentWholeGroups": {
+      "osm:node:7179613734": [
+        "osm:node:7179613734"
+      ],
+      "osm:relation:7154907": [
+        "osm:relation:7154907"
+      ],
+      "osm:relation:7164907": [
+        "osm:relation:7164907"
+      ],
+      "osm:relation:7164909": [
+        "osm:relation:7164909"
+      ],
+      "osm:relation:7164951": [
+        "osm:relation:7164951"
+      ],
+      "osm:relation:7164953": [
+        "osm:relation:7164953",
+        "osm:way:560461423"
+      ],
+      "osm:relation:7164954": [
+        "osm:relation:7164954",
+        "osm:way:218369508"
+      ],
+      "osm:relation:7164958": [
+        "osm:relation:7164958",
+        "osm:way:543781477"
+      ],
+      "osm:relation:7169616": [
+        "osm:relation:7169616"
+      ],
+      "delegation:579": [
+        "delegation:579"
+      ]
+    },
+    "requiredGroupsAfterDistinctGuard": {
+      "osm:node:7179613734": [
+        "osm:node:7179613734"
+      ],
+      "osm:relation:7154907": [
+        "osm:relation:7154907"
+      ],
+      "osm:relation:7164907": [
+        "osm:relation:7164907"
+      ],
+      "osm:relation:7164909": [
+        "osm:relation:7164909"
+      ],
+      "osm:relation:7164951": [
+        "osm:relation:7164951"
+      ],
+      "osm:relation:7164953": [
+        "osm:relation:7164953",
+        "osm:way:560461423"
+      ],
+      "osm:relation:7164954": [
+        "osm:relation:7164954",
+        "osm:way:218369508"
+      ],
+      "osm:relation:7164958": [
+        "osm:relation:7164958"
+      ],
+      "osm:relation:7169616": [
+        "osm:relation:7169616"
+      ],
+      "delegation:579": [
+        "delegation:579"
+      ],
+      "osm:way:543781477": [
+        "osm:way:543781477"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "osm:node:7179613734": [
+        "osm:node:7179613734"
+      ],
+      "osm:relation:7154907": [
+        "osm:relation:7154907"
+      ],
+      "osm:relation:7164907": [
+        "osm:relation:7164907"
+      ],
+      "osm:relation:7164909": [
+        "osm:relation:7164909"
+      ],
+      "osm:relation:7164951": [
+        "osm:relation:7164951"
+      ],
+      "osm:relation:7164953": [
+        "osm:relation:7164953",
+        "osm:way:560461423"
+      ],
+      "osm:relation:7164954": [
+        "osm:relation:7164954",
+        "osm:way:218369508"
+      ],
+      "osm:relation:7164958": [
+        "osm:relation:7164958"
+      ],
+      "osm:relation:7169616": [
+        "osm:relation:7169616"
+      ],
+      "delegation:579": [
+        "delegation:579",
+        "osm:way:543781477"
+      ]
+    },
+    "distinctPair": {
+      "ids": [
+        "osm:relation:7164958",
+        "osm:way:543781477"
+      ],
+      "reviewEvidence": {
+        "file": "settlement-polygon-display-reviews/three-town/579-distinct.json",
+        "sha256": "f4a95492e4047b25011b7344758b07a0d9da6d437245c971b98e747a6fd8fcfe"
+      }
+    },
+    "baseInsideSettlementPolygon": {
+      "original": false,
+      "effective": false,
+      "packed": false
+    },
+    "coordinatePolicy": "preserve_all_reference_and_raw_coordinates",
+    "reviewedNoncontainmentReason": "Base579 remains its distinct historical settlement reference outside the small village polygon. No source certifies it as a centre; no coordinate relocation is proposed.",
+    "namesakeSectorReferenceContainment": {
+      "original": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "effective": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "packed": {
+        "base": true,
+        "sourcePoint": true
+      }
+    },
+    "settlementWithinNamesakeSector": {
+      "original": true,
+      "effective": true,
+      "packed": true
+    },
+    "coordinateCorrections": [],
+    "nearestReferenceIds": {
+      "base": 579,
+      "settlementPolygon": 579,
+      "sourcePoint": 579,
+      "separateSector": 579
+    },
+    "publicNodeElement": {
+      "type": "node",
+      "id": 5316229408,
+      "lat": 35.5402671,
+      "lon": 8.8836602,
+      "timestamp": "2020-07-18T08:00:31Z",
+      "version": 3,
+      "changeset": 88169690,
+      "user": "Anis Ben Makhlouf",
+      "uid": 10001069,
+      "tags": {
+        "addr:city": "العيون",
+        "addr:postcode": "1216",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village",
+        "postal_code": "1216",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      }
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:543781477",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7164958",
+        "after": "delegation:579"
+      }
+    ]
+  }
+}

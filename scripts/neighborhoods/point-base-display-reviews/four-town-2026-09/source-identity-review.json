@@ -1,0 +1,277 @@
+{
+  "status": "SOURCE_IDENTITY_SUPPORTED_FOUR_DISPLAY_ASSOCIATIONS_PENDING_INDEPENDENT_GEOGRAPHY_AND_PACKAGE_GATES",
+  "baselineMetadataSha256": "0a5157a80a85612dde242e7ab4a99c09aeec0669fee29bbf28a0d2b9d2d21104",
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "0a5157a80a85612dde242e7ab4a99c09aeec0669fee29bbf28a0d2b9d2d21104"
+  },
+  "currentGenerator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738"
+  },
+  "currentCuration": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "a6248cdddecdd0e80e2c445caa5ed53c7a678f258c2f71258fe2d04b38499675"
+  },
+  "historicalCandidateQueue": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-four-town-base-source-candidate-queue.json",
+    "sha256": "3794b1675e0546c01eda18486d0b803a16175c8d6e210c015efb4fdbe78e7319"
+  },
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\exact-four-source-and-current-facts.json",
+    "sha256": "dce437b25ff092792216e7a1412fdc76106afd1f78a9ee0ec4ef7dba89735633"
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "retrievals": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\retrieval.json",
+      "sha256": "995e927b851af4baca02b3e65bbcaadf6953f7f384ce208cc974f69ec85f5ee3"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\fallback-primary-retrieval.json",
+      "sha256": "ac4673c7027676f5c59ec315fe3fc375dc18dcb8f07bc5862d5ff757d35bcd25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\atlas-retrieval.json",
+      "sha256": "52e91b50f73170e507ff5660eb2ae05110564982ef2f3e1dd4d2bf87e7284e09"
+    }
+  ],
+  "primaryEvidence": {
+    "505": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\meknassy-social-ministry-neighborhood.html",
+      "sha256": "db48e129f183454ce594cdd5c78f132ab82b265f07011541863b6fff950ed86b",
+      "url": "https://www.social.gov.tn/en/node/2747",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "حي الانطلاقة المكناسي 9140سيدي بوزيد"
+      ],
+      "qualification": "Official inhabited-neighborhood address in Meknassy/Sidi Bouzid. The separate MEHAT atlas page70 explicitly identifies the city; the office map coordinate is not the town or INM anchor."
+    },
+    "514": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\nefza-social-ministry-city-address.html",
+      "sha256": "5c8d78f42904d6cd607d9d1f94b31206760934ac3958754df6dd070b77b2f9aa",
+      "url": "https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A5%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D9%86%D9%81%D8%B2%D8%A9-%D8%A8%D8%A7%D8%AC%D8%A9",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "مدينة نفزة 9010 نفزة"
+      ],
+      "qualification": "Official ministry address expressly names Nefza city in Beja. This identifies the settlement name; it does not certify its outline, sector boundary or either reference coordinate."
+    },
+    "584": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\sers-mehat-city-flood-protection.html",
+      "sha256": "6d19849b7f1143ff275e6921589927ee24ca71201c64dc2a139e318b57c628b8",
+      "url": "https://intranet.mehat.gov.tn/geao.nsf/AvisAR.xsp?action=openDocument&documentId=E70D41196681C88741257CE60046F295",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "8 / DHU / 2014",
+        "&#1605;&#1583;&#1610;&#1606;&#1577; &#1575;&#1604;&#1587;&#1585;&#1587;"
+      ],
+      "qualification": "Official public urban-water tender identifies flood-protection works for Le Sers city, rather than a municipal office. The Arabic name is encoded as numeric HTML entities in the authentic payload.",
+      "decodedRequiredText": "مدينة السرس"
+    },
+    "467": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\beni-khalled-governorate-city-festival.html",
+      "sha256": "ff6d2a18d92790a062bcf683895a7f8b6dbbad2e03e7325e449d6938c16c8119",
+      "url": "https://www.nabeul.gov.tn/ar/%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D8%A7%D9%84%D8%AF%D9%88%D8%B1%D8%A9-35-%D9%84%D9%85%D9%87%D8%B1%D8%AC%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D8%A8%D9%8A%D8%B9-%D8%A8%D8%A8%D9%86%D9%8A-%D8%AE%D9%84%D8%A7/",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "وسط مدينة بني خلاد",
+        "16 مارس 2019"
+      ],
+      "qualification": "Governorate first-party account locates a public civic festival in central Beni Khalled city. This supports inhabited-town identity separately from the six-imada delegation, not exact extent or coordinates."
+    }
+  },
+  "meknassyAtlas": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\meknassy-mehat-sidi-bouzid-atlas.pdf",
+    "sha256": "174bb321509a5bbcef05e6db83f3160438e58cb4584834e24b63c605d1405c18",
+    "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSidiBouzidAr.pdf",
+    "sourceYear": 2019,
+    "pdfPage": 70,
+    "printedPage": 69,
+    "personallyViewedRender": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\meknassy-atlas-page70.png",
+      "sha256": "acb246020ea342f2b3391010b68a2cc0b3e17ba0c1f425c8df0ce94b2e057524"
+    },
+    "derivedText": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\atlas-page70.txt",
+      "sha256": "89ca734d13671a08ca297bf443ccd5e29265e6d596de5c08221bd59ea724422f"
+    },
+    "support": "The urban hierarchy chapter explicitly distinguishes Meknassy city as a subregional centre. Use only settlement identity and broad Sidi Bouzid location; no historic population, area, map point or urban extent is imported.",
+    "renderQualification": "Poppler returned0 with generic unavailable-font warnings; the selected Arabic paragraph and map labels are clearly legible in the personally viewed render."
+  },
+  "sersHistory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-2017271470-history.json",
+    "sha256": "ece287679ac3ddedbdc54c574765419ff9c6eb38585c5b0bfec79ce8677d3a64",
+    "versions": 10,
+    "firstTimestamp": "2012-11-16T22:24:43Z",
+    "currentTimestamp": "2023-11-30T19:22:38Z",
+    "allVersionsPlaceVillage": true,
+    "noOfficeGovernmentBuildingAmenityTagInAnyVersion": true,
+    "municipalOfficialNameFirstVersion": 8,
+    "coordinateHistory": [
+      {
+        "version": 1,
+        "timestamp": "2012-11-16T22:24:43Z",
+        "lat": 36.0762341,
+        "lon": 9.0234793
+      },
+      {
+        "version": 2,
+        "timestamp": "2014-09-14T09:41:13Z",
+        "lat": 36.0762341,
+        "lon": 9.0234793
+      },
+      {
+        "version": 3,
+        "timestamp": "2016-11-20T21:47:58Z",
+        "lat": 36.0762341,
+        "lon": 9.0234793
+      },
+      {
+        "version": 4,
+        "timestamp": "2017-09-10T06:48:47Z",
+        "lat": 36.0762341,
+        "lon": 9.0234793
+      },
+      {
+        "version": 5,
+        "timestamp": "2019-03-04T05:02:51Z",
+        "lat": 36.0762341,
+        "lon": 9.0234793
+      },
+      {
+        "version": 6,
+        "timestamp": "2019-12-19T14:56:10Z",
+        "lat": 36.0733461,
+        "lon": 9.0194962
+      },
+      {
+        "version": 7,
+        "timestamp": "2019-12-19T15:28:59Z",
+        "lat": 36.0733461,
+        "lon": 9.0194962
+      },
+      {
+        "version": 8,
+        "timestamp": "2019-12-22T17:35:00Z",
+        "lat": 36.0733461,
+        "lon": 9.0194962
+      },
+      {
+        "version": 9,
+        "timestamp": "2020-07-17T11:00:07Z",
+        "lat": 36.0734659,
+        "lon": 9.0192905
+      },
+      {
+        "version": 10,
+        "timestamp": "2023-11-30T19:22:38Z",
+        "lat": 36.0734659,
+        "lon": 9.0192905
+      }
+    ],
+    "conclusion": "The municipal-name alias alone is not office identity. This source was a named settlement before that alias appeared."
+  },
+  "pairs": [
+    {
+      "id": "osm:node:2876921759",
+      "baseId": 505,
+      "sourceDecision": "SUPPORTED_NAMED_SETTLEMENT_DISPLAY_IDENTITY_ONLY",
+      "reason": "Supports the named Meknassy settlement/base display identity, preserving raw Meknassy and base Meknassi spellings. MEHAT2019 atlas PDF70/printed69 calls Meknassy a city and a subregional urban centre; the ministry address independently locates Hay El Intilaka in Meknassy. Nine imadas remain separate.",
+      "proposedOnlyRawChange": {
+        "id": "osm:node:2876921759",
+        "field": "pickerGroupId",
+        "before": "osm:node:2876921759",
+        "after": "delegation:505"
+      },
+      "remainingChecks": [
+        "Independent geography/schema feasibility, complete original/effective phase and group closure.",
+        "Root-owned actual source-package, one-generation and preservation gates if implementation is authorized."
+      ]
+    },
+    {
+      "id": "osm:node:1432078789",
+      "baseId": 514,
+      "sourceDecision": "SUPPORTED_NAMED_SETTLEMENT_DISPLAY_IDENTITY_ONLY",
+      "reason": "Supports the named Nefza settlement/base display identity. Official wording expressly calls Nefza a city; source addr:city and matching Arabic/French base names agree. Sixteen imadas and their complete groups remain separate.",
+      "proposedOnlyRawChange": {
+        "id": "osm:node:1432078789",
+        "field": "pickerGroupId",
+        "before": "osm:node:1432078789",
+        "after": "delegation:514"
+      },
+      "remainingChecks": [
+        "Independent geography/schema feasibility, complete original/effective phase and group closure.",
+        "Root-owned actual source-package, one-generation and preservation gates if implementation is authorized."
+      ]
+    },
+    {
+      "id": "osm:node:2017271470",
+      "baseId": 584,
+      "sourceDecision": "SUPPORTED_NAMED_SETTLEMENT_DISPLAY_IDENTITY_ONLY",
+      "reason": "Supports Le Sers as an inhabited settlement, not an exclusion candidate. All10 source versions are village records; the municipal official_name was added at v8 without changing the settlement type. The public MEHAT tender separately names the city. Preserve the alias, coordinates and all9 imadas.",
+      "proposedOnlyRawChange": {
+        "id": "osm:node:2017271470",
+        "field": "pickerGroupId",
+        "before": "osm:node:2017271470",
+        "after": "delegation:584"
+      },
+      "remainingChecks": [
+        "Independent geography/schema feasibility, complete original/effective phase and group closure.",
+        "Root-owned actual source-package, one-generation and preservation gates if implementation is authorized."
+      ]
+    },
+    {
+      "id": "osm:node:1124133881",
+      "baseId": 467,
+      "sourceDecision": "SUPPORTED_NAMED_SETTLEMENT_DISPLAY_IDENTITY_ONLY",
+      "reason": "Supports Beni Khalled city/base display identity independently of the compound administrative scope. The governorate account explicitly describes central city public activity. Preserve all6 imadas and all3 accepted source replacements; current delegation-level context and original/effective membership differences require Hubble’s separate exact phase review.",
+      "proposedOnlyRawChange": {
+        "id": "osm:node:1124133881",
+        "field": "pickerGroupId",
+        "before": "osm:node:1124133881",
+        "after": "delegation:467"
+      },
+      "remainingChecks": [
+        "Independent geography/schema feasibility, complete original/effective phase and group closure.",
+        "Root-owned actual source-package, one-generation and preservation gates if implementation is authorized."
+      ]
+    }
+  ],
+  "failedPrimaryAcquisition": [
+    {
+      "url": "https://www.commune-meknassy.gov.tn/ar/ville.php",
+      "curlExit": 28,
+      "response": "https://www.commune-meknassy.gov.tn/ar/ville.php\r\n000\r\n0",
+      "error": "curl: (28) Failed to connect to www.commune-meknassy.gov.tn:443 after 21171 ms: Could not connect to server\r\n"
+    },
+    {
+      "url": "https://www.commune-sers.gov.tn/page_2.html",
+      "curlExit": 35,
+      "response": "https://www.commune-sers.gov.tn/page_2.html\r\n000\r\n0",
+      "error": "curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate has expired.\r\n"
+    },
+    {
+      "url": "https://www.commune-benikhalled.gov.tn/index.php?Itemid=135&id=9&lang=ar&option=com_content&view=article",
+      "curlExit": 28,
+      "response": "https://www.commune-benikhalled.gov.tn/index.php?Itemid=135&id=9&lang=ar&option=com_content&view=article\r\n000\r\n0",
+      "error": "curl: (28) Failed to connect to www.commune-benikhalled.gov.tn:443 after 21156 ms: Could not connect to server\r\n"
+    }
+  ],
+  "failedAcquisitionPolicy": "Three indexed municipal pages could not be obtained through verified TLS. Their snippets are discovery leads only, not frozen primary evidence. No TLS bypass was used; successful ministry/governorate sources replace them.",
+  "scopeLimits": [
+    "Town/base identity is a source-backed display inference using the unique names, authentic settlement objects and primary city/inhabited-address evidence. It is not proof that a timetable anchor, point label or administrative polygon has the same extent.",
+    "Preserve every current name/alias/kind/coordinate/default/context and all separate imadas. No geometry or institutional exclusion is proposed.",
+    "No phone/ledger content was read. Root’s public observations are separate supplemental evidence, not inputs to this source determination.",
+    "No live repository/source changes, generator/helper imports or execution, tests, Android builds or device use."
+  ],
+  "geoReviewOwner": "/root/mapping_audit",
+  "independentIdentityReviewOwner": "/root/picker_display_fix",
+  "assembler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_next_four_town_source_identity_review.py",
+    "sha256": "3f56f17be45bdd13bf5f1893cebfd80732cea48eaed8297d8e0b5b47d40d3a7b"
+  }
+}

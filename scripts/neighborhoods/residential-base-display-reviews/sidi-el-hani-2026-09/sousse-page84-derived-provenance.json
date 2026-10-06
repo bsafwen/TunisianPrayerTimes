@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "originalPdf": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020.pdf",
+    "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9"
+  },
+  "originalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+  "sourceReport": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "originalRetrievalProvenance": {
+    "sourceReport": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-second-point-source-review.json",
+      "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab",
+      "bytes": 80619
+    },
+    "sourceField": "primaryIdentityEvidence.source",
+    "originalRetrieval": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "retrievedAt": "2026-09-12T09:13:58.977509+00:00",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 30603494,
+      "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+      "originalResponseBytesPreserved": true
+    }
+  },
+  "derivedText": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sousse-atlas-full-page84-derived.txt",
+    "sha256": "a2f1ad433e2640c09eb62fe945c8383b4231c8797fbfa5f09184cfec0e9d5923"
+  },
+  "pdfPageOneBased": 84,
+  "printedPage": 84,
+  "completePage": true,
+  "derivation": "PyMuPDF page.get_text(\"text\", sort=False), entire page, no trimming/reflow/normalization/manual correction; Path.write_text UTF8 on Windows translates LF to CRLF.",
+  "pymupdfVersion": "1.28.2",
+  "derivedTextIsOriginalHttpResponseBytes": false,
+  "originalSourceReviewFullPageRendering": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\sousse-page84.png",
+    "sha256": "d93bb5e9240970e084fd9ad14fe70a5f1bd34d0d3277b0720e7a425119319fe0",
+    "bytes": 1263560
+  },
+  "rootPersonallyViewedCompletePage": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-residential-root-scope-review-v2.json",
+    "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098"
+  },
+  "qualification": "The complete atlas page describes the inhabited town; it does not certify the retained residential footprint or the legacy prayer reference as a city centre."
+}

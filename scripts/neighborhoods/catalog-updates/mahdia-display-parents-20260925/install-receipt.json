@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "status": "installed",
+  "date": "2026-09-25",
+  "scope": "Seven Mahdia parentName fields only; dated Ministry snapshot display-parent alignment, with cross-source parent conflicts retained as caveats.",
+  "base": {
+    "catalogPath": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "catalogSha256": "8e065ceec567aaa943d3ea30dc00ab46758c56e3b4856970496afd46c364cb98",
+    "binPath": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "binSha256": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd"
+  },
+  "after": {
+    "catalogSha256": "d0bcd450fdb00f1328be3f8fb49872bf7d1718a6fa7b1a544b48bdf85cf9e977",
+    "binSha256": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd"
+  },
+  "backups": {
+    "catalogPath": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-updates\\mahdia-display-parents-20260925\\backups\\neighborhoods.json.before",
+    "catalogSha256": "8e065ceec567aaa943d3ea30dc00ab46758c56e3b4856970496afd46c364cb98",
+    "binPath": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-updates\\mahdia-display-parents-20260925\\backups\\neighborhoods.bin.before",
+    "binSha256": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd"
+  },
+  "counts": {
+    "targetRows": 7,
+    "parentNameFieldsChanged": 7,
+    "otherFeatureFieldsChanged": 0,
+    "geometryOrBoundaryChanges": 0,
+    "idsChanged": 0,
+    "delegationIdChanges": 0,
+    "pickerGroupIdChanges": 0,
+    "contextAliasesChanges": 0,
+    "packedBinChanged": false
+  },
+  "changes": [
+    {
+      "featureId": "osm:relation:7152268",
+      "name": "رجيش",
+      "parentNameBefore": "معتمدية رجيش",
+      "parentNameAfter": "معتمدية المهدية",
+      "delegationIdPreserved": 1084,
+      "pickerGroupIdPreserved": "osm:relation:7152268",
+      "contextAliasesPreserved": true,
+      "coordinatesPreserved": true,
+      "boundaryDataPreserved": true
+    },
+    {
+      "featureId": "osm:relation:7152267",
+      "name": "رجيش الجنوبية",
+      "parentNameBefore": "معتمدية رجيش",
+      "parentNameAfter": "معتمدية المهدية",
+      "delegationIdPreserved": 1084,
+      "pickerGroupIdPreserved": "osm:relation:7152267",
+      "contextAliasesPreserved": true,
+      "coordinatesPreserved": true,
+      "boundaryDataPreserved": true
+    },
+    {
+      "featureId": "osm:relation:7152197",
+      "name": "الغضابنة",
+      "parentNameBefore": "معتمدية الشابة",
+      "parentNameAfter": "معتمدية قصور الساف",
+      "delegationIdPreserved": 424,
+      "pickerGroupIdPreserved": "osm:relation:7152197",
+      "contextAliasesPreserved": true,
+      "coordinatesPreserved": true,
+      "boundaryDataPreserved": true
+    },
+    {
+      "featureId": "osm:relation:7152185",
+      "name": "الرشارشة",
+      "parentNameBefore": "معتمدية البرادعة",
+      "parentNameAfter": "معتمدية قصور الساف",
+      "delegationIdPreserved": 426,
+      "pickerGroupIdPreserved": "osm:relation:7152185",
+      "contextAliasesPreserved": true,
+      "coordinatesPreserved": true,
+      "boundaryDataPreserved": true
+    },
+    {
+      "featureId": "osm:relation:7152182",
+      "name": "الحسينات",
+      "parentNameBefore": "معتمدية البرادعة",
+      "parentNameAfter": "معتمدية قصور الساف",
+      "delegationIdPreserved": 426,
+      "pickerGroupIdPreserved": "osm:relation:7152182",
+      "contextAliasesPreserved": true,
+      "coordinatesPreserved": true,
+      "boundaryDataPreserved": true
+    },
+    {
+      "featureId": "osm:relation:7152200",
+      "name": "البرادعة الجنوبية",
+      "parentNameBefore": "معتمدية البرادعة",
+      "parentNameAfter": "معتمدية قصور الساف",
+      "delegationIdPreserved": 426,
+      "pickerGroupIdPreserved": "osm:relation:7152200",
+      "contextAliasesPreserved": true,
+      "coordinatesPreserved": true,
+      "boundaryDataPreserved": true
+    },
+    {
+      "featureId": "osm:relation:7152199",
+      "name": "البرادعة الشمالية",
+      "parentNameBefore": "معتمدية البرادعة",
+      "parentNameAfter": "معتمدية قصور الساف",
+      "delegationIdPreserved": 426,
+      "pickerGroupIdPreserved": "osm:relation:7152199",
+      "contextAliasesPreserved": true,
+      "coordinatesPreserved": true,
+      "boundaryDataPreserved": true
+    }
+  ],
+  "checks": {
+    "baseHashesVerified": true,
+    "exactSevenFieldSemanticDiff": true,
+    "byteExactBackupsVerified": true,
+    "liveBaseRecheckedImmediatelyBeforeReplace": true,
+    "binUnchanged": true,
+    "prayerSourcesChanged": false
+  },
+  "impactPath": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-updates\\mahdia-display-parents-20260925\\impact.md",
+  "impactSha256": "8c7e03f5b9fcbd2b162716f56ed966925f67dfdb569d0c628e08049f2b9dd94d"
+}

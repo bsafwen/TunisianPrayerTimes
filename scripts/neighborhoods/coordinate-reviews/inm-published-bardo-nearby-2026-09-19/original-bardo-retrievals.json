@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "status": "ORIGINAL_PUBLIC_HTTP_RESPONSES",
+  "responses": [
+    {
+      "file": "394-prayer-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/394/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/394/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:23:28 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "519",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "startedAtUtc": "2026-09-19T11:23:29.211969+00:00",
+      "retrievedAtUtc": "2026-09-19T11:23:29.460984+00:00",
+      "sha256": "cdea280043eef09a507ec6e2890c4997779d8bce4a402b9b892984125b633e17",
+      "bytes": 519
+    },
+    {
+      "file": "394-sun-2026-09-19.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/394/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/394/",
+      "status": 200,
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:23:28 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "488",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "startedAtUtc": "2026-09-19T11:23:29.212968+00:00",
+      "retrievedAtUtc": "2026-09-19T11:23:29.460984+00:00",
+      "sha256": "ef127cdc4f1b41c4befef8bf35eeb5839e48ffa3b69af78d7e4a7b54bfc24e0b",
+      "bytes": 488
+    },
+    {
+      "file": "town-287558953-current.json",
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/287558953.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/287558953.json",
+      "status": 200,
+      "responseHeaders": {
+        "Connection": "close",
+        "content-type": "application/json; charset=utf-8",
+        "content-encoding": "identity",
+        "server": "Apache",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "cache-control": "private, max-age=0, must-revalidate",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 19 Sep 2026 11:23:29 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150090-PAR, cache-par-lfpb1150090-PAR",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1789817010.543443,VS0,VE66",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "startedAtUtc": "2026-09-19T11:23:29.212968+00:00",
+      "retrievedAtUtc": "2026-09-19T11:23:29.372631+00:00",
+      "sha256": "8c0bcaebc4e5739a498c63163ec5c4626068db35247488a731f35248f707f35a",
+      "bytes": 622
+    }
+  ],
+  "noApiKey": true
+}

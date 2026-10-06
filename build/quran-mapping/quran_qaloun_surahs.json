@@ -1,0 +1,577 @@
+{
+  "source": "C:/Users/barou/Downloads/Quran_Qaloun_pages",
+  "indexing": "1-based source image file index; printed Quran folio is sourcePage + 1",
+  "verification": "Every surah title visually checked against supplied scans; sources 604-621 are appendices. Source585 and602 read in full because skew prevented line detection.",
+  "surahs": [
+    {
+      "number": 1,
+      "sourcePage": 1,
+      "printedPage": 2
+    },
+    {
+      "number": 2,
+      "sourcePage": 1,
+      "printedPage": 2
+    },
+    {
+      "number": 3,
+      "sourcePage": 49,
+      "printedPage": 50
+    },
+    {
+      "number": 4,
+      "sourcePage": 76,
+      "printedPage": 77
+    },
+    {
+      "number": 5,
+      "sourcePage": 105,
+      "printedPage": 106
+    },
+    {
+      "number": 6,
+      "sourcePage": 127,
+      "printedPage": 128
+    },
+    {
+      "number": 7,
+      "sourcePage": 150,
+      "printedPage": 151
+    },
+    {
+      "number": 8,
+      "sourcePage": 176,
+      "printedPage": 177
+    },
+    {
+      "number": 9,
+      "sourcePage": 186,
+      "printedPage": 187
+    },
+    {
+      "number": 10,
+      "sourcePage": 207,
+      "printedPage": 208
+    },
+    {
+      "number": 11,
+      "sourcePage": 220,
+      "printedPage": 221
+    },
+    {
+      "number": 12,
+      "sourcePage": 234,
+      "printedPage": 235
+    },
+    {
+      "number": 13,
+      "sourcePage": 248,
+      "printedPage": 249
+    },
+    {
+      "number": 14,
+      "sourcePage": 254,
+      "printedPage": 255
+    },
+    {
+      "number": 15,
+      "sourcePage": 261,
+      "printedPage": 262
+    },
+    {
+      "number": 16,
+      "sourcePage": 266,
+      "printedPage": 267
+    },
+    {
+      "number": 17,
+      "sourcePage": 281,
+      "printedPage": 282
+    },
+    {
+      "number": 18,
+      "sourcePage": 292,
+      "printedPage": 293
+    },
+    {
+      "number": 19,
+      "sourcePage": 304,
+      "printedPage": 305
+    },
+    {
+      "number": 20,
+      "sourcePage": 311,
+      "printedPage": 312
+    },
+    {
+      "number": 21,
+      "sourcePage": 321,
+      "printedPage": 322
+    },
+    {
+      "number": 22,
+      "sourcePage": 331,
+      "printedPage": 332
+    },
+    {
+      "number": 23,
+      "sourcePage": 341,
+      "printedPage": 342
+    },
+    {
+      "number": 24,
+      "sourcePage": 349,
+      "printedPage": 350
+    },
+    {
+      "number": 25,
+      "sourcePage": 358,
+      "printedPage": 359
+    },
+    {
+      "number": 26,
+      "sourcePage": 366,
+      "printedPage": 367
+    },
+    {
+      "number": 27,
+      "sourcePage": 376,
+      "printedPage": 377
+    },
+    {
+      "number": 28,
+      "sourcePage": 384,
+      "printedPage": 385
+    },
+    {
+      "number": 29,
+      "sourcePage": 395,
+      "printedPage": 396
+    },
+    {
+      "number": 30,
+      "sourcePage": 403,
+      "printedPage": 404
+    },
+    {
+      "number": 31,
+      "sourcePage": 410,
+      "printedPage": 411
+    },
+    {
+      "number": 32,
+      "sourcePage": 414,
+      "printedPage": 415
+    },
+    {
+      "number": 33,
+      "sourcePage": 417,
+      "printedPage": 418
+    },
+    {
+      "number": 34,
+      "sourcePage": 427,
+      "printedPage": 428
+    },
+    {
+      "number": 35,
+      "sourcePage": 433,
+      "printedPage": 434
+    },
+    {
+      "number": 36,
+      "sourcePage": 439,
+      "printedPage": 440
+    },
+    {
+      "number": 37,
+      "sourcePage": 445,
+      "printedPage": 446
+    },
+    {
+      "number": 38,
+      "sourcePage": 452,
+      "printedPage": 453
+    },
+    {
+      "number": 39,
+      "sourcePage": 457,
+      "printedPage": 458
+    },
+    {
+      "number": 40,
+      "sourcePage": 466,
+      "printedPage": 467
+    },
+    {
+      "number": 41,
+      "sourcePage": 476,
+      "printedPage": 477
+    },
+    {
+      "number": 42,
+      "sourcePage": 482,
+      "printedPage": 483
+    },
+    {
+      "number": 43,
+      "sourcePage": 488,
+      "printedPage": 489
+    },
+    {
+      "number": 44,
+      "sourcePage": 495,
+      "printedPage": 496
+    },
+    {
+      "number": 45,
+      "sourcePage": 498,
+      "printedPage": 499
+    },
+    {
+      "number": 46,
+      "sourcePage": 501,
+      "printedPage": 502
+    },
+    {
+      "number": 47,
+      "sourcePage": 506,
+      "printedPage": 507
+    },
+    {
+      "number": 48,
+      "sourcePage": 510,
+      "printedPage": 511
+    },
+    {
+      "number": 49,
+      "sourcePage": 514,
+      "printedPage": 515
+    },
+    {
+      "number": 50,
+      "sourcePage": 517,
+      "printedPage": 518
+    },
+    {
+      "number": 51,
+      "sourcePage": 519,
+      "printedPage": 520
+    },
+    {
+      "number": 52,
+      "sourcePage": 522,
+      "printedPage": 523
+    },
+    {
+      "number": 53,
+      "sourcePage": 525,
+      "printedPage": 526
+    },
+    {
+      "number": 54,
+      "sourcePage": 527,
+      "printedPage": 528
+    },
+    {
+      "number": 55,
+      "sourcePage": 530,
+      "printedPage": 531
+    },
+    {
+      "number": 56,
+      "sourcePage": 533,
+      "printedPage": 534
+    },
+    {
+      "number": 57,
+      "sourcePage": 536,
+      "printedPage": 537
+    },
+    {
+      "number": 58,
+      "sourcePage": 541,
+      "printedPage": 542
+    },
+    {
+      "number": 59,
+      "sourcePage": 544,
+      "printedPage": 545
+    },
+    {
+      "number": 60,
+      "sourcePage": 548,
+      "printedPage": 549
+    },
+    {
+      "number": 61,
+      "sourcePage": 550,
+      "printedPage": 551
+    },
+    {
+      "number": 62,
+      "sourcePage": 552,
+      "printedPage": 553
+    },
+    {
+      "number": 63,
+      "sourcePage": 553,
+      "printedPage": 554
+    },
+    {
+      "number": 64,
+      "sourcePage": 555,
+      "printedPage": 556
+    },
+    {
+      "number": 65,
+      "sourcePage": 557,
+      "printedPage": 558
+    },
+    {
+      "number": 66,
+      "sourcePage": 559,
+      "printedPage": 560
+    },
+    {
+      "number": 67,
+      "sourcePage": 561,
+      "printedPage": 562
+    },
+    {
+      "number": 68,
+      "sourcePage": 563,
+      "printedPage": 564
+    },
+    {
+      "number": 69,
+      "sourcePage": 565,
+      "printedPage": 566
+    },
+    {
+      "number": 70,
+      "sourcePage": 567,
+      "printedPage": 568
+    },
+    {
+      "number": 71,
+      "sourcePage": 569,
+      "printedPage": 570
+    },
+    {
+      "number": 72,
+      "sourcePage": 571,
+      "printedPage": 572
+    },
+    {
+      "number": 73,
+      "sourcePage": 573,
+      "printedPage": 574
+    },
+    {
+      "number": 74,
+      "sourcePage": 574,
+      "printedPage": 575
+    },
+    {
+      "number": 75,
+      "sourcePage": 576,
+      "printedPage": 577
+    },
+    {
+      "number": 76,
+      "sourcePage": 577,
+      "printedPage": 578
+    },
+    {
+      "number": 77,
+      "sourcePage": 579,
+      "printedPage": 580
+    },
+    {
+      "number": 78,
+      "sourcePage": 581,
+      "printedPage": 582
+    },
+    {
+      "number": 79,
+      "sourcePage": 582,
+      "printedPage": 583
+    },
+    {
+      "number": 80,
+      "sourcePage": 584,
+      "printedPage": 585
+    },
+    {
+      "number": 81,
+      "sourcePage": 585,
+      "printedPage": 586
+    },
+    {
+      "number": 82,
+      "sourcePage": 586,
+      "printedPage": 587
+    },
+    {
+      "number": 83,
+      "sourcePage": 586,
+      "printedPage": 587
+    },
+    {
+      "number": 84,
+      "sourcePage": 588,
+      "printedPage": 589
+    },
+    {
+      "number": 85,
+      "sourcePage": 589,
+      "printedPage": 590
+    },
+    {
+      "number": 86,
+      "sourcePage": 590,
+      "printedPage": 591
+    },
+    {
+      "number": 87,
+      "sourcePage": 590,
+      "printedPage": 591
+    },
+    {
+      "number": 88,
+      "sourcePage": 591,
+      "printedPage": 592
+    },
+    {
+      "number": 89,
+      "sourcePage": 592,
+      "printedPage": 593
+    },
+    {
+      "number": 90,
+      "sourcePage": 593,
+      "printedPage": 594
+    },
+    {
+      "number": 91,
+      "sourcePage": 594,
+      "printedPage": 595
+    },
+    {
+      "number": 92,
+      "sourcePage": 594,
+      "printedPage": 595
+    },
+    {
+      "number": 93,
+      "sourcePage": 595,
+      "printedPage": 596
+    },
+    {
+      "number": 94,
+      "sourcePage": 595,
+      "printedPage": 596
+    },
+    {
+      "number": 95,
+      "sourcePage": 596,
+      "printedPage": 597
+    },
+    {
+      "number": 96,
+      "sourcePage": 596,
+      "printedPage": 597
+    },
+    {
+      "number": 97,
+      "sourcePage": 597,
+      "printedPage": 598
+    },
+    {
+      "number": 98,
+      "sourcePage": 597,
+      "printedPage": 598
+    },
+    {
+      "number": 99,
+      "sourcePage": 598,
+      "printedPage": 599
+    },
+    {
+      "number": 100,
+      "sourcePage": 598,
+      "printedPage": 599
+    },
+    {
+      "number": 101,
+      "sourcePage": 599,
+      "printedPage": 600
+    },
+    {
+      "number": 102,
+      "sourcePage": 599,
+      "printedPage": 600
+    },
+    {
+      "number": 103,
+      "sourcePage": 600,
+      "printedPage": 601
+    },
+    {
+      "number": 104,
+      "sourcePage": 600,
+      "printedPage": 601
+    },
+    {
+      "number": 105,
+      "sourcePage": 600,
+      "printedPage": 601
+    },
+    {
+      "number": 106,
+      "sourcePage": 601,
+      "printedPage": 602
+    },
+    {
+      "number": 107,
+      "sourcePage": 601,
+      "printedPage": 602
+    },
+    {
+      "number": 108,
+      "sourcePage": 601,
+      "printedPage": 602
+    },
+    {
+      "number": 109,
+      "sourcePage": 602,
+      "printedPage": 603
+    },
+    {
+      "number": 110,
+      "sourcePage": 602,
+      "printedPage": 603
+    },
+    {
+      "number": 111,
+      "sourcePage": 602,
+      "printedPage": 603
+    },
+    {
+      "number": 112,
+      "sourcePage": 603,
+      "printedPage": 604
+    },
+    {
+      "number": 113,
+      "sourcePage": 603,
+      "printedPage": 604
+    },
+    {
+      "number": 114,
+      "sourcePage": 603,
+      "printedPage": 604
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_exact_institution_property_exclusion",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "5091eeda71d0faf75219e2cef90b157f5269e2872239ba76ee78def137e4273d",
+  "generatorSha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+  "independentSourceAndFiniteReview": {
+    "file": "exclusion-reviews/ras-tabia-training-centre-2026-09/training-centre-independent-source-impact-review.json",
+    "sha256": "22401bf1cb2f82c37b53ba477c743fb2f5d92259080fa2dd4c17ce3bd8e378ba",
+    "bytes": 19541
+  },
+  "researchProvenance": {
+    "sourceReviewTitle": "ras-tabia-training-centre-source-scope-review.json",
+    "sourceReviewSha256": "7527a9dc586ec42232277f7ec3e8a2c9c5fd8475a17632260baf70f9637e9fe3",
+    "exactFactsTitle": "exact-source-finite-facts.json",
+    "exactFactsSha256": "aae9d81ef8d2b001756e9d3dc1b59a04a8cb3012a0cb3c0c4f996c0a0cd78da4",
+    "retrievalManifestSha256": "3c58800b660190d5d7b67d05d226da3e3989a5a0881868b9a151de6141d026c9",
+    "historicalMetadataSha256": "558c204bf93b595d340d75102848f25c8321e3117150bcb809874901b2a181b2",
+    "currentMetadataSha256": "5091eeda71d0faf75219e2cef90b157f5269e2872239ba76ee78def137e4273d",
+    "explicitCarry": "Historical558c target carried to current5091 with only offset5410468 to5410384 after the separate SOS and monastery exclusions; its76 packed bytes and all semantic fields are identical."
+  },
+  "supplementaryPublicMapsReview": {
+    "reportTitle": "institutional-phone-scope-review-20260912.json",
+    "reportSha256": "daf69b0cb06f6fe8fff7194a5ed7f591def27b6a9e64257bbfb12cca08b9a7df",
+    "id": "osm:way:499554192",
+    "query": "36.819996,10.140355",
+    "qualifiedFinding": "Building card 1 Rue de Fes lists the clothing sector vocational training centre as a training institution. Supports institutional context, without certifying footprint vertices or current jurisdiction.",
+    "qualification": "Root personally viewed the public building1RueFes listing for the clothing training institution. This corroborates institution context, not property vertices, licensing or current operating status. No Google geometry or phone image is included."
+  },
+  "records": [
+    {
+      "id": "osm:way:499554192",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "addr:postcode": "2000",
+        "landuse": "residential",
+        "name": "مركز التدريب القطاعي ملابس تونس",
+        "name:ar": "مركز التدريب القطاعي ملابس تونس",
+        "name:en": "Center Sectorial Training Clothing De Tunis"
+      },
+      "currentRaw": {
+        "id": "osm:way:499554192",
+        "sourceId": "osm",
+        "name": "مركز التدريب القطاعي ملابس تونس",
+        "aliases": [
+          "Center Sectorial Training Clothing De Tunis"
+        ],
+        "kind": "residential",
+        "parentName": "رأس الطابية",
+        "contextAliases": [
+          "Délégation El Omrane",
+          "El Omrane",
+          "Ras Tabia",
+          "رأس الطابية",
+          "معتمدية العمران"
+        ],
+        "governorateId": 342,
+        "lat": 36.819996,
+        "lng": 10.140355,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.139765,
+          36.819532,
+          10.141256,
+          36.820435
+        ],
+        "areaKm2": 0.006598054528889894,
+        "pickerGroupId": "osm:way:499554192",
+        "offset": 5410384,
+        "length": 76
+      },
+      "currentWholeRawRecordSha256": "87443e18ee99c8fbdc14a1c0297a15bb688f26d0b8a7feacb3bad97e7d2e25b0",
+      "currentRawRecordHashConvention": "Canonical UTF-8 JSON, ensure_ascii=False, sorted keys and compact separators.",
+      "completeCurrentRawGroup": [
+        "osm:way:499554192"
+      ],
+      "cachedGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.1397653,
+                36.820119
+              ],
+              [
+                10.1404265,
+                36.8195682
+              ],
+              [
+                10.1405378,
+                36.8195317
+              ],
+              [
+                10.1412556,
+                36.8197211
+              ],
+              [
+                10.1411687,
+                36.8200469
+              ],
+              [
+                10.1408525,
+                36.8199452
+              ],
+              [
+                10.1403171,
+                36.8204345
+              ],
+              [
+                10.1397653,
+                36.820119
+              ]
+            ]
+          ]
+        ]
+      },
+      "cachedGeometryJsonSha256": "857d914e9b29dc69b3a7795e2b13dd97ae5f79334b9adf34ee3d84510799b192",
+      "packedGeometrySha256": "75b40cb0405895c131d00861ccc800ab2b66e72f62ab6f565bd18d693ecd55be",
+      "packedBytes": 76,
+      "currentWay": {
+        "file": "exclusion-reviews/ras-tabia-training-centre-2026-09/way-499554192-current.json",
+        "sha256": "56def09632be7325530ca3e946b04ddc9e4e42beefd808fa8c224f200516ce24",
+        "bytes": 793,
+        "url": "https://api.openstreetmap.org/api/0.6/way/499554192.json",
+        "retrievedAt": "2026-09-12T14:47:45.587221+00:00",
+        "byteProvenance": "Exact public response body after curl --compressed HTTP content decoding; no JSON or PDF conversion."
+      },
+      "wayHistory": {
+        "file": "exclusion-reviews/ras-tabia-training-centre-2026-09/way-499554192-history.json",
+        "sha256": "d9045db90e81f1ad09da77ad4f42ed37601b00dc5764035851f730afd912185b",
+        "bytes": 1646,
+        "url": "https://api.openstreetmap.org/api/0.6/way/499554192/history.json",
+        "retrievedAt": "2026-09-12T14:47:45.588218+00:00",
+        "byteProvenance": "Exact public response body after curl --compressed HTTP content decoding; no JSON or PDF conversion."
+      },
+      "currentFullWay": {
+        "file": "exclusion-reviews/ras-tabia-training-centre-2026-09/way-499554192-full.json",
+        "sha256": "aea29da404a98515d5683dd005680ba8ef645633f927140781cc415cd6ff7b1d",
+        "bytes": 1975,
+        "url": "https://api.openstreetmap.org/api/0.6/way/499554192/full.json",
+        "retrievedAt": "2026-09-12T14:47:45.588218+00:00",
+        "byteProvenance": "Exact public response body after curl --compressed HTTP content decoding; no JSON or PDF conversion."
+      },
+      "currentAndFullAndLastHistoryElementEqual": true,
+      "currentTagsEqualFrozenCache": true,
+      "currentFullWayGeometryEqualsFrozenCacheTopology": true,
+      "sourceHistoryFinding": "All three way versions consistently identify the clothing vocational training centre since2017. Currentv3 is dated2020-12-06; equal historical node-reference lists do not certify historical node coordinates.",
+      "primaryEvidence": [
+        {
+          "file": "exclusion-reviews/ras-tabia-training-centre-2026-09/world-bank-274980TN.pdf",
+          "sha256": "fe8dcec2d00566c0f30fef80b46a4ecb629d1604dd61099b303b0b19f5d27613",
+          "bytes": 149974,
+          "url": "https://documents1.worldbank.org/curated/en/906961468761397662/pdf/274980TN.pdf",
+          "retrievedAt": "2026-09-12T14:47:45.587221+00:00",
+          "byteProvenance": "Exact public response body after curl --compressed HTTP content decoding; no JSON or PDF conversion."
+        }
+      ],
+      "primaryFinding": {
+        "reportNumber": "27498",
+        "reportDate": "2003-12-23",
+        "title": "Implementation Completion Report: Tunisia Second Training and Employment Project",
+        "attribution": "Physical27 introduces AdditionalAnnex8, the Tunisian BorrowerReport embedded in the World Bank report.",
+        "physicalPage33Printed29": "Table3 identifies Habillement RasTabiaTunis as a centre created by the project, entering operation inDecember2001, with plannedcapacity840.",
+        "physicalPage34Printed30": "Table4 lists the same centre among new centres, with capacity840.",
+        "qualification": "Historical institution and broad RasTabiaTunis identity only. The report does not provide the streetaddress, exact coordinates, cadastral vertices or current operating/licensing status. Residentiel training contrasts with in-enterprise alternance; it does not describe a residential neighborhood."
+      },
+      "sourceScopeDecision": "Exclude the exact named training-centre property from locality choices. Consistent authentic source identity, the historical primary training-centre record and root public coordinate/address observation support institutional scope. This does not exclude RasTabia or imply the absence of student housing.",
+      "savedLocalityDisposition": {
+        "retireId": "osm:way:499554192",
+        "replacementId": null
+      },
+      "directExistingCuration": null,
+      "directExistingPickerSelector": null,
+      "existingCurationReceiptCount": 0,
+      "coveredCachedLocalityNodes": {
+        "source": [],
+        "packed": []
+      }
+    }
+  ],
+  "preservedSurroundingLocalityIds": [
+    "osm:relation:7201481"
+  ],
+  "preservation": {
+    "noNewlySurfacedCachedNodes": true,
+    "noOtherRawRepresentativeInside": true,
+    "keepExisting173CurationDecisions": true,
+    "keepExisting360CurationReceipts": true,
+    "keepExisting308DuplicateReceiptsAnd318RegisteredConflicts": true,
+    "keepAllOtherRawSourceGeometryNamesGroupsCoordinatesAndPrayerReferences": true,
+    "gpsQualification": "At the target GPS fix the nearest timetable source is393. RasTabia sector representative default391 is different; the current GPS resolver overrides the contained display row from the actual fix. Exclusion changes neither reference coordinates nor that algorithm."
+  },
+  "limitations": [
+    "Exact source-object classification only; no cadastral, occupancy or present operating certification.",
+    "A vocational campus may contain housing without its institution name becoming a general locality name.",
+    "Only way499554192 is excluded. No generic institution filter, replacement locality, alias merge, polygon edit or timetable-reference change is introduced."
+  ]
+}

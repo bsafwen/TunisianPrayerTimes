@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_IDENTITY_SUPPORTS_SAME_NAMED_TOWN_DISPLAY_ONLY_NO_STAGE",
+  "createdAt": "2026-09-12T09:19:39.372620+00:00",
+  "baselineMetadataSha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea",
+  "curationSha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80",
+  "curationDecisions": 158,
+  "generatorSha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+  "pointId": "osm:node:559400503",
+  "baseId": 1025,
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\exact-metouia-town-source-facts.json",
+    "sha256": "6d6ff31fca3ca562be8b3f3b82690d5a8b3563c98aebbeee75a161a76ed52ea1",
+    "bytes": 47544
+  },
+  "retrievals": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\retrievals.json",
+    "sha256": "ecdfd0d6a9f850edec53cf273fdba0be186df0dbdeda5a3e95fbe30a18524d21",
+    "bytes": 2811
+  },
+  "sourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\osm-node-559400503-current.json",
+    "sha256": "66d45ffdcfae450e812c84588d052bf3195c9aaa6bbf9e1f7b55f47d2e9aa35e",
+    "bytes": 657,
+    "url": "https://api.openstreetmap.org/api/0.6/node/559400503.json"
+  },
+  "sourceHistory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\osm-node-559400503-history.json",
+    "sha256": "6424969bf512193556017b12a973c5ca78bccc8ca7ab5ccc58fdbd5329e76489",
+    "bytes": 5689,
+    "url": "https://api.openstreetmap.org/api/0.6/node/559400503/history.json"
+  },
+  "primaryEvidence": [
+    {
+      "placeId": "osm:node:559400503",
+      "publisher": "Commune de Métouia, public producer profile on Tunisia national open-data portal",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\metouia-national-catalog-producer.html",
+        "sha256": "f673f9c4552273d60d1c7b154d1547a1ce4c576b214986144aa030d7918f0052",
+        "bytes": 47648
+      },
+      "url": "https://catalog.data.gov.tn/ar/producteurs-de-donnees/about/metouia",
+      "role": "official_settlement_identity",
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "requiredText": [
+        "El Métouia est une ville",
+        "Commune de Métouia",
+        "ولاية قابس"
+      ],
+      "finding": "The bilingual public-producer profile explicitly identifies El Métouia as an oasis town north of Gabes and as a municipality/delegation center. This identifies a named settlement and distinguishes its civic/administrative role without equating it with either north/south sector.",
+      "sourceLimitations": "Publisher-profile identity evidence only. It supplies no usable precise town border, survey coordinate or certified prayer-calculation anchor. Founding date and population are not imported.",
+      "inspectionText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\municipal-producer-derived-visible-text.txt",
+        "sha256": "b75fb5cdef7e58c574ad1688d2f0e88df54d1c6719f6fb5f6771b5ade98f58c4",
+        "bytes": 4229
+      },
+      "inspectionTextProvenance": "Derived readable text from this exact HTML using stdlib HTMLParser, skipping script/style and collapsing whitespace. The operative evidence remains the original full HTML bytes, not this derived file.",
+      "requiredTextLocations": [
+        {
+          "phrase": "El Métouia est une ville",
+          "firstCharacterOffset": 27932,
+          "firstUtf8ByteOffset": 28792,
+          "occurrences": 1
+        },
+        {
+          "phrase": "Commune de Métouia",
+          "firstCharacterOffset": 619,
+          "firstUtf8ByteOffset": 622,
+          "occurrences": 3
+        },
+        {
+          "phrase": "ولاية قابس",
+          "firstCharacterOffset": 25499,
+          "firstUtf8ByteOffset": 26199,
+          "occurrences": 2
+        }
+      ]
+    }
+  ],
+  "identityFinding": "The current OSM point and base1025 refer to the same named settlement Métouia/المطوية for manual display purposes. The point has17 consecutive named settlement versions, while the public municipal producer profile explicitly calls Métouia a town in Gabes. It is not a source record for El Metouia Nord or Sud.",
+  "identityQualifications": [
+    "All17 source versions retain place=village, despite the civic profile using town/city language. Keep raw kind village.",
+    "Coordinates moved during earlier mapping edits; the current point has remained exact since version13 on2020-07-11. This history does not certify a surveyed center or the legacy meteo anchor.",
+    "Version7 in2012 incorrectly said is_in:governorate=Sfax; version8 in2013 changed it to Gabès, and the field was subsequently removed. The current cache and exact endpoint agree and contain no such governorate tag.",
+    "The point and prayer base coordinates remain distinct. Same display identity does not merge their coordinates, create a city boundary or prove any imada equals the whole city."
+  ],
+  "separateAdministrativeIdentities": {
+    "officialCurrentDelegationCode": "5155",
+    "currentOfficialSectorCount": 3,
+    "sectorIdentities": [
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515555",
+        "sectorFr": "El akarit",
+        "sectorAr": "العكاريت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58580,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2870,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2864
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515552",
+        "sectorFr": "El metouia sud",
+        "sectorAr": "المطوية الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2862
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515551",
+        "sectorFr": "El metouia nord",
+        "sectorAr": "المطوية الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2860
+        }
+      }
+    ],
+    "exactSectorSpellingObservations": [
+      {
+        "id": "osm:relation:7145440",
+        "officialCode": "515552",
+        "currentArabic": "المطورية الجنوبية",
+        "officialArabic": "المطوية الجنوبية",
+        "difference": "Current source/raw text has an extra ر after و. The raw town parentName and contextAliases inherit this text."
+      },
+      {
+        "id": "osm:relation:7145441",
+        "officialCode": "515551",
+        "currentArabic": "المطويةالشمالية",
+        "officialArabic": "المطوية الشمالية",
+        "difference": "Current source/raw text omits the space before الشمالية."
+      }
+    ],
+    "spellingDecision": "Record the exact discrepancies for a separate narrowly reviewed correction; no names, aliases or context strings changed in this source review.",
+    "existingTransferredSectorIds": [
+      "osm:relation:7145422",
+      "osm:relation:7145437",
+      "osm:relation:7145442",
+      "osm:relation:7145449"
+    ],
+    "transferQualification": "Four old5155 sectors are already curated into Ouedhref5162. Preserve those existing decisions; this research does not restore the former parent or change delegation geometry."
+  },
+  "currentSourceState": {
+    "pointSingleton": true,
+    "pointHasBoundary": false,
+    "currentPrayerDelegationId": 1025,
+    "threeCurrentSectorGroupsSeparate": true,
+    "pointOrCurrentThreeSectorCurations": [],
+    "acceptedBoundaryReplacements": [],
+    "touchingPickerRecords": [],
+    "completeProtectedRawRows": 5,
+    "completeSourceStates": 7,
+    "existingMultiMemberGroup": {
+      "groupId": "osm:relation:7145378",
+      "members": [
+        "osm:relation:7145378",
+        "osm:way:158297973"
+      ],
+      "qualification": "El Akarit sector and residential way158297973 already share one group. Preserve the entire group; plain singleton-sector proof format is insufficient."
+    },
+    "sourceSchemaLead": {
+      "method": "reviewed_explicit_point_base_display_identity",
+      "extension": "townPreservationExtension",
+      "reason": "Three separate current imadas include one sector/residential group of two raw members. The existing typed town extension can preserve the full5raw/7source closure; there are no local active curations or accepted replacements. This lead is not a completed finite-schema proof."
+    }
+  },
+  "failedSupplementaryLead": {
+    "url": "https://www.commune-metouia.gov.tn/2018/04/11/%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D8%B7%D9%88%D9%8A%D8%A9/",
+    "title": "مدينة المطوية - الموقع الرسمي لبلدية المطوية",
+    "publicationDate": "2018-04-11",
+    "discovery": "Web search indexed the municipal city page and town description.",
+    "archivalStatus": "Direct HTTP archive attempt timed out; no original municipal-page bytes are asserted or used as operative proof. The successfully archived national municipal producer profile is the primary source."
+  },
+  "existingReferenceInspection": {
+    "activeFiles": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80",
+        "bytes": 256077
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427",
+        "bytes": 554337
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+        "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+        "bytes": 80850
+      }
+    ],
+    "priorDirectoryLead": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\noncoincident-town-display-reviews\\primary-indexed-response.json",
+      "sha256": "fd9539ff07d8e28787c684e83697a7cb9ee98f74f72044b002c2cf17121770b9",
+      "bytes": 32256
+    },
+    "qualification": "The old indexed directory includes the municipality website entry only. It is not new original HTTP evidence and is not needed for the substantive town finding."
+  },
+  "nextRequirements": [
+    "Independent source acceptance and bounded current geography/schema review before any display staging.",
+    "Root may bind its supplementary public phone observation separately; this report does not use a phone ledger or certify a map outline.",
+    "If staged, preserve the original point/base coordinates, three separately coded current sectors, four existing Ouedhref administrative-context decisions, and all names/geometry except any separately authorized, explicitly reviewed spelling correction."
+  ],
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ],
+  "operations": {
+    "liveEdits": false,
+    "staging": false,
+    "generatorOrProductHelpers": false,
+    "tests": false,
+    "build": false,
+    "phoneControl": false,
+    "ledgerObservationUsed": false,
+    "accessException": "An initial broad rg -l filename lookup under outputs inadvertently included phone-ledger files in its search scope. It returned filenames only; no ledger content was printed, interpreted or used. Subsequent reads were restricted to named non-phone source artifacts."
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_metouia_town_source_review.py",
+    "sha256": "9cf910863473898c4f34a5b824420aef476dc9bcdafc4839b1f0a361a6dace3d",
+    "bytes": 17391
+  }
+}

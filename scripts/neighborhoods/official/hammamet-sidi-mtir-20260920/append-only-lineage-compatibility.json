@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_append_only_boundary_extension",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "previousManifest": {
+    "file": "official/hammamet-nine-20260920/evidence/boundarymanifest.json",
+    "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421"
+  },
+  "addedSources": [
+    {
+      "id": "isie-local-sectors-2023-hammamet-nine",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "sha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7105070",
+          "officialCode": "156651",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الجديدي",
+            "name:ar": "سيدي الجديدي",
+            "name:fr": "Sidi Ejdidi",
+            "ref:tn:codegeo": "156651"
+          },
+          "aliases": [
+            "Sidi Ejdidi",
+            "Sidi Jadidi"
+          ]
+        },
+        {
+          "id": "osm:relation:7144606",
+          "officialCode": "156652",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الاطرش",
+            "name:ar": "الاطرش",
+            "name:fr": "Latrach",
+            "ref:tn:codegeo": "156652"
+          },
+          "aliases": [
+            "Latrach"
+          ]
+        },
+        {
+          "id": "osm:relation:7104926",
+          "officialCode": "156653",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بير بورقبة",
+            "name:ar": "بير بورقبة",
+            "name:fr": "Bir Bouregba",
+            "ref:tn:codegeo": "156653",
+            "wikidata": "Q2904332"
+          },
+          "aliases": [
+            "Bir Bouregba",
+            "بير بورقبة"
+          ]
+        },
+        {
+          "id": "osm:relation:7104931",
+          "officialCode": "156654",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منارة الحمامات",
+            "name:aeb": "براكة الساحل",
+            "name:ar": "منارة الحمامات",
+            "name:fr": "Manaret El Hammamet",
+            "ref:tn:codegeo": "156654"
+          },
+          "aliases": [
+            "Manaret El Hammamet",
+            "Mnaret El Hammamet",
+            "منارة الحمامات"
+          ]
+        },
+        {
+          "id": "osm:relation:7104927",
+          "officialCode": "156655",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الجوفية",
+            "name:ar": "الحمامات الجوفية",
+            "name:fr": "Hammamet Nord",
+            "ref:tn:codegeo": "156655"
+          },
+          "aliases": [
+            "Hammamet Nord"
+          ]
+        },
+        {
+          "id": "osm:relation:7104929",
+          "officialCode": "156656",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الشرقية",
+            "name:ar": "الحمامات الشرقية",
+            "name:fr": "Hammamet Est",
+            "ref:tn:codegeo": "156656"
+          },
+          "aliases": [
+            "Hammamet Est"
+          ]
+        },
+        {
+          "id": "osm:relation:7104930",
+          "officialCode": "156657",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الغربية",
+            "name:ar": "الحمامات الغربية",
+            "name:fr": "Hammamet Ouest",
+            "ref:tn:codegeo": "156657"
+          },
+          "aliases": [
+            "Hammamet Ouest"
+          ]
+        },
+        {
+          "id": "osm:relation:7104928",
+          "officialCode": "156658",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المرازقة",
+            "name:ar": "المرازقة",
+            "name:fr": "El Mrezga",
+            "ref:tn:codegeo": "156658"
+          },
+          "aliases": [
+            "El Mrezga"
+          ]
+        },
+        {
+          "id": "osm:relation:7104932",
+          "officialCode": "156659",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ياسمين الحمامات",
+            "name:ar": "ياسمين الحمامات",
+            "name:fr": "Yasmine Hammamet",
+            "ref:tn:codegeo": "156659"
+          },
+          "aliases": [
+            "Yasmine Hammamet"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/hammamet-nine-20260920/source-review.json",
+        "evidenceSha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8",
+        "geometryPolicy": "Existing source geometry is copied exactly, including previously reviewed zero-area Hammamet Nord normalization; no new geometry operation.",
+        "namePolicy": "Registry primary names with individually approved aliases; no territorial equivalence inferred from aliases.",
+        "qualification": "Source stage only; integration, point choices and external source seams remain to be reviewed."
+      },
+      "manualPointReview": {
+        "file": "official/hammamet-nine-20260920/manual-point-review.json",
+        "sha256": "d0043877ef4aca2ca916e064e035db336c673eec4463b6efd0c21cab17c73c84"
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-sidi-mtir-bouficha",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/sidi-mtir-20260920/sidi-mtir-source.geojson",
+      "sha256": "4d8069110dc7c8720f7904c85596789d11da79a2bb9c740c7b4ff3d95a8349e9",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7105456",
+          "officialCode": "316159",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي مطير",
+            "name:ar": "سيدي مطير",
+            "name:fr": "Sidi Mtir",
+            "ref:tn:codegeo": "316159"
+          },
+          "aliases": [
+            "Sidi Mtir"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/sidi-mtir-20260920/source-review.json",
+        "evidenceSha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6",
+        "geometryPolicy": "Exact reviewed source drawing345, no new geometry operation.",
+        "namePolicy": "Registry names for code316159 with existing Sidi Mtir alias retained.",
+        "qualification": "Prepared source fragment; no installed catalog or certified border claim."
+      },
+      "manualPointReview": {
+        "file": "official/sidi-mtir-20260920/manual-point-review.json",
+        "sha256": "9436401420068fcfb32c58eddf26bef11c3a3d87478745e2c601e515b5e7b19d"
+      }
+    }
+  ],
+  "scopeSuccessor": {
+    "file": "official/hammamet-sidi-mtir-20260920/accepted-scope.json",
+    "sha256": "416486916c70abb7252648c9199218aeb1813d6b4881495a4ece4b0710173a24"
+  },
+  "evidence": [
+    {
+      "file": "official/hammamet-nine-20260920/evidence/root-source-stage-checked.json",
+      "sha256": "acc52c536fd817049d3b12633ffe8e834837336dd46b2c6db34393e643c5190c"
+    },
+    {
+      "file": "official/hammamet-nine-20260920/source-review.json",
+      "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+    },
+    {
+      "file": "official/sidi-mtir-20260920/source-review.json",
+      "sha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6"
+    }
+  ]
+}

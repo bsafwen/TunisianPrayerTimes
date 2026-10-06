@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_SCOPED_REFERENCE_CORRECTION_PENDING_GENERATION",
+  "delegationId": 544,
+  "governorateId": 359,
+  "before": {"lat": 34.6722, "lng": 11.0888},
+  "proposed": {"lat": 34.65, "lng": 11.034},
+  "referenceKind": "inm_published_reference",
+  "decision": "Use the paired INM-published reference for Kerkennah Mellita. It is corroborated by the authentic named Mellita village point and current public Maps context. Keep every locality display position, identity, alias, group and polygon unchanged. Recompute nearest-source assignments using the existing rule.",
+  "basis": [
+    "Paired original prayer/sun responses for source544/Sfax agree on name, identity, service date and coordinates; their original HTTP receipts and response bytes remain unchanged.",
+    "Original village node475589445 is explicitly named مليتة/Mellita and lies within the source Kerkennah delegation and Mellita sector. Published point is about234m away; old point is about5.668km from that village point.",
+    "Root reviewed the corrected current-point screenshot: exact34.672200,11.088800 coordinate card, coastal sparse buildings near Medina Hotel Resort and plus-code address Dar 'Izz ad Din.",
+    "Root reviewed published-point screenshot: exact34.650000,11.034000 coordinate card within town streets, plus-code address Mellita. This corroborates context, not an exact boundary.",
+    "Official INM2026 Sfax Ramadan booklet page9 names مدينة قرقنة مليتة. Government Sfax atlas2013 printedpage104, map77, names Mellita within Kerkennah. Neither document establishes the service calculation input."
+  ],
+  "expectedMetadataChanges": {
+    "osm:relation:7147638": {"delegationId": {"before": 544, "after": 543}},
+    "osm:node:12189397654": {"delegationId": {"before": 544, "after": 543}},
+    "osm:node:475591250": {"delegationId": {"before": 544, "after": 543}}
+  },
+  "limits": [
+    "No assertion that these fields are the INM server's internal calculation coordinates.",
+    "No new locality boundary, administrative equivalence, duplicate merge or manual display relocation.",
+    "The mistaken36.6722 current-point capture is excluded from evidence; only the separately captured34.6722 point is accepted.",
+    "The three expected nearest-source changes and all unchanged fields must be confirmed by isolated generation before installation."
+  ],
+  "inputPins": {
+    "neighborhoods.json": "cb893bfa2d446214e4f6aa50b77c68d952d31f23620ee2441832467ac52c6b7c",
+    "gouvernorats.json": "a651245f8c0ca8bc06df90d2047462a51daa1ca55ae79e647058d13b6a88b99e",
+    "prayer-source-coordinates.json": "bbe49b94878d664068ab9cf5afe8db0d55b210320e73abc4d9a67ef82f7a3e6a",
+    "impactReport": "8ed8ad9162eb2af09e38f3d43992ca82d27fc8fbf52b8561e925201b1b5b86be",
+    "publishedCapture": "2034afd6ad99f6c05013e16eabf76a3b523e21020cd21f99288ec2d7dd154878",
+    "correctedCurrentCapture": "8db61353e374af60201ca72a0ad417d1c3adc275e948ab4b9a0138dba1940575"
+  }
+}

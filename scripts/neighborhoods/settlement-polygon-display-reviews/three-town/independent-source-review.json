@@ -1,0 +1,160 @@
+{
+  "status": "PASS",
+  "scope": "Independent source identity prerequisites only; staged validator/proof review remains separate.",
+  "baselineMetadataSha256": "b50f62fba68c6ba0989f3a4cb673a0cfad820dcd059164b26a0ac208467c9600",
+  "sourceReports": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bargou-beni-khiar-hazoua-current-display-triage.json",
+      "sha256": "f99e8ceb81f8127db54b253d1c5c3405a27772869c05b165ed520f36a031676c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tibar-ayoun-borj-current-scope-triage.json",
+      "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25"
+    }
+  ],
+  "exactTibarAyounSourceInputs": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tibar-ayoun-two-display-source-inputs-readiness.json",
+    "sha256": "c04353fa0f8084312732eac786a3d044d2474335d7b9f870a91c83d8dd00008f"
+  },
+  "findings": [],
+  "decision": "Support the three exact settlement/base display associations, preserving independently coded imadas and unchanged legacy base references.",
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:way:97396877",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7103009",
+      "after": "delegation:460"
+    },
+    {
+      "id": "osm:way:278951683",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7189438",
+      "after": "delegation:516"
+    },
+    {
+      "id": "osm:way:543781477",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7164958",
+      "after": "delegation:579"
+    }
+  ],
+  "identityFindings": [
+    {
+      "baseId": 460,
+      "settlementId": "osm:way:97396877",
+      "sourcePointId": "osm:node:1128018620",
+      "basis": "Nabeul governorate distinguishes Beni Khiar town from its five-imada delegation and neighboring towns. Social Ministry street address and office point lie in the named town polygon; cached town and residential identities agree.",
+      "qualification": "Preserve base460 at36.46/10.78, including its Arabic trailing whitespace and negative town-footprint containment (~6.5m). Sector7103009 default468 differs legitimately from town default460."
+    },
+    {
+      "baseId": 516,
+      "settlementId": "osm:way:278951683",
+      "sourcePointId": "osm:node:2832036076",
+      "basis": "HAICOP Tender99641 explicitly links MUNICIPALITE TIBAR, Commune de Thibar, Arabicتيبار and postcode9022. Social Ministry gives Ibn Khaldoun street, Tibar9022, Beja. The bilingual village inside the residential footprint supplies the exact source connection.",
+      "qualification": "Keep raw residential nameThibar and baseArabicتيبار, village source kind and all4 imadas. Base516 remains outside the footprint by about331m; that negative containment is not positive identity evidence."
+    },
+    {
+      "baseId": 579,
+      "settlementId": "osm:way:543781477",
+      "sourcePointId": "osm:node:5316229408",
+      "basis": "MEHAT Kasserine regional plan PDF74/printed64 personally viewed: El Ayoun is a local population centre and delegation seat. Polygonal village and contained village point share Arabic/French identity and postcode1216.",
+      "qualification": "Keep polygon village kind and all6 imadas. Base579 remains outside by about1102m. Historical municipal-status discussion is not a claim about present status."
+    }
+  ],
+  "primaryContentIndependentlyRead": true,
+  "elAyounPersonallyViewedRender": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-display-identity-el-ayoun-p74-independent.png",
+    "sha256": "6083008a96971300101b3357811fb509f2231f1c42b2990fc9f14339538b8664"
+  },
+  "exactSourceNodes": [
+    {
+      "id": "osm:node:1128018620",
+      "version": 17,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "changeset": 143134733,
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\beni-khiar-node-1128018620.json",
+        "sha256": "a34fc261be8423a9ee6a11f0c8b1b8c1765656900b4dbb37c7f4c25f51a84d91"
+      }
+    },
+    {
+      "id": "osm:node:2832036076",
+      "version": 7,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "changeset": 143134733,
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tibar-ayoun-two-display-proof-inputs\\node-2832036076.json",
+        "sha256": "6a75055ab4be5c1fd3f2673aa5ba509aa1d6fd68dd79ec05a1032ddbff2ba104",
+        "url": "https://api.openstreetmap.org/api/0.6/node/2832036076.json",
+        "retrievedAt": "2026-09-08T12:56:43.763967+00:00"
+      }
+    },
+    {
+      "id": "osm:node:5316229408",
+      "version": 3,
+      "timestamp": "2020-07-18T08:00:31Z",
+      "changeset": 88169690,
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tibar-ayoun-two-display-proof-inputs\\node-5316229408.json",
+        "sha256": "09f03b558121b85e4b587ff9e91b7357f795ffe570301d602c8c9eff0c2c47b6",
+        "url": "https://api.openstreetmap.org/api/0.6/node/5316229408.json",
+        "retrievedAt": "2026-09-08T12:56:43.854918+00:00"
+      }
+    }
+  ],
+  "completeProtection": {
+    "imadaCount": 15,
+    "imadaGroupRawRows": 24,
+    "additionalUnrelatedRawAyounNamesakes": 3,
+    "totalProtectedRawRows": 27,
+    "originalSourceRecordsChecked": 37,
+    "rawIds": [
+      "osm:node:7179613734",
+      "osm:relation:7102854",
+      "osm:relation:7102855",
+      "osm:relation:7103009",
+      "osm:relation:7103011",
+      "osm:relation:7103012",
+      "osm:relation:7154907",
+      "osm:relation:7164907",
+      "osm:relation:7164909",
+      "osm:relation:7164951",
+      "osm:relation:7164953",
+      "osm:relation:7164954",
+      "osm:relation:7164958",
+      "osm:relation:7169616",
+      "osm:relation:7189425",
+      "osm:relation:7189438",
+      "osm:relation:7189445",
+      "osm:relation:7189468",
+      "osm:way:174740047",
+      "osm:way:176000340",
+      "osm:way:176000341",
+      "osm:way:218369508",
+      "osm:way:278951683",
+      "osm:way:543781477",
+      "osm:way:560461423",
+      "osm:way:609966860",
+      "osm:way:97396877"
+    ],
+    "extraExistingGroupedMembers": [
+      "osm:way:609966860",
+      "osm:way:218369508",
+      "osm:way:560461423"
+    ]
+  },
+  "implementationPrerequisites": [
+    "Typed exact representations: Beni residential/town, Tibar residential/village, Ayoun village/village; do not normalize source kinds or rename to fit old validators.",
+    "Bind complete original/effective name peers, source-only contexts, all15 imadas and all27 protected raw records with complete groups; preserve foreign/nonraw and unrelated Ayoun namesakes.",
+    "Distinct-pair guard must separate only each target settlement before late base association, with exact complete before/after membership checks.",
+    "Preserve every raw name, alias, coordinate, default, geometry and base record. The only intended catalog deltas are three pickerGroupId fields.",
+    "Legacy coordinate provenance and footprint noncontainment remain explicit; no imada-to-town scope equivalence, station/centroid certification or Maps-outline equality claim."
+  ],
+  "notPerformed": [
+    "generator/helper execution",
+    "source stage or repository edits",
+    "tests/builds",
+    "phone/ledger access",
+    "new network requests"
+  ]
+}

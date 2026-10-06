@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "MECHANICAL_BASE_METADATA_REBASE_AFTER_DISPLAY_GROUP_REVISION",
+  "catalogRevisionId": "mourouj5-display-group-20260924",
+  "previousManifestSha256": "fd2c92c77690b244019f5a5287ca3eeba2233e447f67bbb4d7b0874b27981c55",
+  "previousManifestEvidence": "catalog-updates/mourouj5-parent-20260924/evidence/reviewed-manual-points-before-picker-group.json",
+  "rebasedManifestSha256": "2bc30e0993e16caf68e12ea24a6504a3bd4298e21b7676ec2dfd22b8529b705b",
+  "rebasedManifest": "scripts/neighborhoods/reviewed-manual-points.json",
+  "baseMetadataSha256Before": "cc1de4682da3b216008b329c5b350a133b0dbe907b4b28aed477761e8704581b",
+  "baseMetadataSha256After": "dce183ded4f6a8db5801e7d216a29495046aafd426adccbbc3f8976cc946ed90",
+  "baseGeometrySha256Unchanged": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+  "decisionsSha256Before": "0e2feaa3f5eb6b9d5cc128c949794588853c0e63c88ab1b343c167c0526bcd34",
+  "decisionsSha256After": "0e2feaa3f5eb6b9d5cc128c949794588853c0e63c88ab1b343c167c0526bcd34",
+  "evidenceSha256Before": "9dbb8eaebba9e1bad6b42628cabb8b4c9fa35bfc77544a483a514771544cbfed",
+  "evidenceSha256After": "9dbb8eaebba9e1bad6b42628cabb8b4c9fa35bfc77544a483a514771544cbfed",
+  "preservedDecisionCount": 3,
+  "scope": "Only the base metadata pin changed. All reviewed pins, expected feature/member hashes, decisions, evidence and geometry are unchanged."
+}

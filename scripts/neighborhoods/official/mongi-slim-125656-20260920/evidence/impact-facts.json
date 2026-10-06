@@ -1,0 +1,758 @@
+{
+  "status": "READ_ONLY_ONE_SOURCE_IMPACT_FACTS",
+  "analysisOnly": true,
+  "networkDevicesApiTestsApkBuildControlLedgerProductionWrites": false,
+  "targetId": "osm:relation:7115583",
+  "officialCode": "125656",
+  "sourceId": "isie-local-sector-2023-mongi-slim-ettadhamen",
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+      "bytes": 5590876
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "1d3c4413fb2b41cf02c35cced9deb0e013461f6a417969e685d95ab5fec9a517",
+      "bytes": 1229291
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "bytes": 446748
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57",
+      "bytes": 108873
+    },
+    "generator": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+      "bytes": 776658
+    },
+    "areas": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "scope": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/scope-facts.json",
+      "sha256": "93b351d8d54745deb844e636e51558f51bb9d6735640845f7f5fc4781535786b",
+      "bytes": 2741
+    },
+    "native": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/native-geometry-diagnostic.json",
+      "sha256": "6410a32c5cf2ad585dfb3fe644c8e666ef2c6fd9d5d34d75d6e2f376532de133",
+      "bytes": 10929
+    },
+    "facts": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/geometry-facts.json",
+      "sha256": "a4cecc798a255080c4d84c2cf1ca49cc15df0fedd1139b745203c07945af1d96",
+      "bytes": 24678
+    },
+    "pdf": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/mongi-slim-ettadhamen-isie2023.pdf",
+      "sha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21",
+      "bytes": 2088356
+    },
+    "receipt": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/official-map-receipt.json",
+      "sha256": "fc7fc20bcd455a7c5fb8b86eacd4e4d29230a33784bc06240329905d142b4e1b",
+      "bytes": 877
+    }
+  },
+  "targetCurrentRaw": {
+    "id": "osm:relation:7115583",
+    "sourceId": "osm",
+    "name": "المنجي سليم",
+    "aliases": [
+      "Mongi Slim"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية حي التضامن",
+    "contextAliases": [
+      "Délégation Cité Ettadhamen",
+      "Ettadhamen",
+      "معتمدية حي التضامن"
+    ],
+    "governorateId": 358,
+    "lat": 36.840745,
+    "lng": 10.097937,
+    "delegationId": 534,
+    "hasBoundary": true,
+    "bbox": [
+      10.093929,
+      36.838136,
+      10.101868,
+      36.843401
+    ],
+    "areaKm2": 0.18481391242187414,
+    "pickerGroupId": "osm:relation:7115583",
+    "offset": 1041748,
+    "length": 260
+  },
+  "nativeDiagnostic": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/native-geometry-diagnostic.json",
+    "sha256": "6410a32c5cf2ad585dfb3fe644c8e666ef2c6fd9d5d34d75d6e2f376532de133",
+    "drawingIndex": 4,
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\mongi-slim-ettadhamen-isie2023.pdf",
+      "sha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21",
+      "bytes": 2088356
+    },
+    "receipt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\official-map-receipt.json",
+      "sha256": "fc7fc20bcd455a7c5fb8b86eacd4e4d29230a33784bc06240329905d142b4e1b",
+      "bytes": 877
+    }
+  },
+  "comparisons": {
+    "packedVsNative": {
+      "aAreaKm2": 0.1843579751049144,
+      "bAreaKm2": 0.18245382837654633,
+      "intersectionKm2": 0.18121588398639993,
+      "iou": 0.9764001518966192,
+      "aCoveredByB": 0.982956576102952,
+      "bCoveredByA": 0.9932150265019841,
+      "aOutsideBKm2": 0.003142091118538541,
+      "bOutsideAKm2": 0.0012379443901528626,
+      "hausdorffMeters": 6.460852282123028,
+      "centroidDistanceMeters": 2.5654968692168447
+    },
+    "packedVsRounded": {
+      "aAreaKm2": 0.1843579751049144,
+      "bAreaKm2": 0.18246212772551007,
+      "intersectionKm2": 0.18122933165006402,
+      "iou": 0.9764996960647072,
+      "aCoveredByB": 0.983029519319303,
+      "bCoveredByA": 0.9932435509175876,
+      "aOutsideBKm2": 0.0031286434548548968,
+      "bOutsideAKm2": 0.0012327960754695178,
+      "hausdorffMeters": 6.461482636390409,
+      "centroidDistanceMeters": 2.555605612484816
+    },
+    "nativeVsRounded": {
+      "aAreaKm2": 0.18245382837654633,
+      "bAreaKm2": 0.18246212772551007,
+      "intersectionKm2": 0.18244027685090697,
+      "iou": 0.9998059883904539,
+      "aCoveredByB": 0.9999257262740938,
+      "bCoveredByA": 0.9998802443286423,
+      "aOutsideBKm2": 1.3551525638602653e-05,
+      "bOutsideAKm2": 2.1850874595926306e-05,
+      "hausdorffMeters": 0.061079339230366986,
+      "centroidDistanceMeters": 0.011383334097633112
+    }
+  },
+  "coverage": {
+    "packedVsNative": {
+      "variant": "native",
+      "oldAreaKm2": 0.1843579751049144,
+      "variantAreaKm2": 0.18245382837654633,
+      "gainKm2": 0.0012379443901528626,
+      "lossKm2": 0.003142091118538541,
+      "oldOutsideOtherSectorsKm2": 0.1833754384427448,
+      "oldOutsideAllRemainingPolygonsKm2": 0.1833754384427448,
+      "variantOutsideOtherSectorsKm2": 0.18121934554703145,
+      "variantOutsideAllRemainingPolygonsKm2": 0.18121934554703145,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.002159554456402624,
+      "lossNotCoveredByOtherSectorKm2": 0.002159554456402624,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.0012344828295143134,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.0012344828295143134,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    },
+    "packedVsRounded": {
+      "variant": "rounded",
+      "oldAreaKm2": 0.1843579751049144,
+      "variantAreaKm2": 0.18246212772551007,
+      "gainKm2": 0.0012327960754695178,
+      "lossKm2": 0.0031286434548548968,
+      "oldOutsideOtherSectorsKm2": 0.1833754384427448,
+      "oldOutsideAllRemainingPolygonsKm2": 0.1833754384427448,
+      "variantOutsideOtherSectorsKm2": 0.18123321230393902,
+      "variantOutsideAllRemainingPolygonsKm2": 0.18123321230393902,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.0021461067927026596,
+      "lossNotCoveredByOtherSectorKm2": 0.0021461067927026596,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.0012289154215884936,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.0012289154215884936,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    }
+  },
+  "intersectionRecords": {
+    "packedVsNative": [
+      {
+        "id": "osm:relation:7090954",
+        "name": "حي الشباب",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 0.0,
+        "gainM2": 0.0,
+        "lossM2": 0.0
+      },
+      {
+        "id": "osm:relation:7115406",
+        "name": "البساتين",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 983.6634469200759,
+        "gainM2": 983.663446920076,
+        "lossM2": 0.0
+      },
+      {
+        "id": "osm:relation:7115501",
+        "name": "خير الدين باشا",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 97.00842705206614,
+        "gainM2": 97.00842705015879,
+        "lossM2": 9.011559079790017e-11
+      },
+      {
+        "id": "osm:relation:7115582",
+        "name": "مارس 2",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 153.8109555440797,
+        "gainM2": 153.8109555440796,
+        "lossM2": 4.311998685142728e-09
+      },
+      {
+        "id": "osm:relation:7115584",
+        "name": "التضامن 4",
+        "kind": "sector",
+        "beforeM2": 982.5366621552184,
+        "afterM2": 0.0,
+        "gainM2": 0.0,
+        "lossM2": 982.5366621441585
+      }
+    ],
+    "packedVsRounded": [
+      {
+        "id": "osm:relation:7090954",
+        "name": "حي الشباب",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 0.0,
+        "gainM2": 0.0,
+        "lossM2": 0.0
+      },
+      {
+        "id": "osm:relation:7115406",
+        "name": "البساتين",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 977.2915656222146,
+        "gainM2": 977.2915656198829,
+        "lossM2": 4.151562649212792e-09
+      },
+      {
+        "id": "osm:relation:7115501",
+        "name": "خير الدين باشا",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 99.52760118982911,
+        "gainM2": 99.52760118982911,
+        "lossM2": 3.420995112218177e-09
+      },
+      {
+        "id": "osm:relation:7115582",
+        "name": "مارس 2",
+        "kind": "sector",
+        "beforeM2": 0.0,
+        "afterM2": 152.09625478472194,
+        "gainM2": 152.0962547809255,
+        "lossM2": 0.0
+      },
+      {
+        "id": "osm:relation:7115584",
+        "name": "التضامن 4",
+        "kind": "sector",
+        "beforeM2": 982.5366621552184,
+        "afterM2": 0.0,
+        "gainM2": 0.0,
+        "lossM2": 982.536662159359
+      }
+    ]
+  },
+  "incidentSectorConflicts": [
+    {
+      "peerId": "osm:relation:7115406",
+      "peerName": "البساتين",
+      "oldM2": 0.0,
+      "nativeM2": 983.6734869180633,
+      "roundedM2": 977.300912475057,
+      "oldKm2": 0.0,
+      "nativeKm2": 0.0009836734869180634,
+      "roundedKm2": 0.000977300912475057,
+      "nativeMinusOldM2": 983.6734869180633,
+      "roundedMinusNativeM2": -6.372574443006329,
+      "roundedMinusOldM2": 977.300912475057,
+      "sample": {
+        "lat": 36.842583780908264,
+        "lng": 10.098392144663443
+      }
+    },
+    {
+      "peerId": "osm:relation:7115501",
+      "peerName": "خير الدين باشا",
+      "oldM2": 0.0,
+      "nativeM2": 97.0073870317903,
+      "roundedM2": 99.52655260074823,
+      "oldKm2": 0.0,
+      "nativeKm2": 9.70073870317903e-05,
+      "roundedKm2": 9.952655260074824e-05,
+      "nativeMinusOldM2": 97.0073870317903,
+      "roundedMinusNativeM2": 2.5191655689579306,
+      "roundedMinusOldM2": 99.52655260074823,
+      "sample": {
+        "lat": 36.843074035579825,
+        "lng": 10.100414159954072
+      }
+    },
+    {
+      "peerId": "osm:relation:7115582",
+      "peerName": "مارس 2",
+      "oldM2": 0.0,
+      "nativeM2": 153.81053649594324,
+      "roundedM2": 152.09580128475784,
+      "oldKm2": 0.0,
+      "nativeKm2": 0.00015381053649594323,
+      "roundedKm2": 0.00015209580128475785,
+      "nativeMinusOldM2": 153.81053649594324,
+      "roundedMinusNativeM2": -1.714735211185399,
+      "roundedMinusOldM2": 152.09580128475784,
+      "sample": {
+        "lat": 36.84006989724193,
+        "lng": 10.099404351128035
+      }
+    },
+    {
+      "peerId": "osm:relation:7115584",
+      "peerName": "التضامن 4",
+      "oldM2": 982.5194843236119,
+      "nativeM2": 0.0,
+      "roundedM2": 0.0,
+      "oldKm2": 0.0009825194843236119,
+      "nativeKm2": 0.0,
+      "roundedKm2": 0.0,
+      "nativeMinusOldM2": -982.5194843236119,
+      "roundedMinusNativeM2": 0.0,
+      "roundedMinusOldM2": -982.5194843236119,
+      "sample": {
+        "lat": 36.83904925329244,
+        "lng": 10.094894017325856
+      }
+    }
+  ],
+  "storedIncidentConflictComparison": {
+    "storedRecords": [
+      {
+        "ids": [
+          "osm:relation:7115583",
+          "osm:relation:7115584"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0009849778983988349,
+        "sample": {
+          "lat": 36.839049,
+          "lng": 10.094894356574759
+        }
+      }
+    ],
+    "computedOldPairIdSets": [
+      [
+        "osm:relation:7115583",
+        "osm:relation:7115584"
+      ]
+    ],
+    "storedPairIdSets": [
+      [
+        "osm:relation:7115583",
+        "osm:relation:7115584"
+      ]
+    ],
+    "pairIdSetsMatch": true
+  },
+  "parentGovernorateOriginalSourceDiscrepancy": {
+    "target": {
+      "id": "osm:relation:7115583",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المنجي سليم",
+        "name:ar": "المنجي سليم",
+        "name:fr": "Mongi Slim",
+        "ref:tn:codegeo": "125656"
+      }
+    },
+    "parent": {
+      "id": "osm:relation:4156579",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ettadhamen",
+        "boundary": "administrative",
+        "name": "معتمدية حي التضامن",
+        "name:ar": "معتمدية حي التضامن",
+        "name:fr": "Délégation Cité Ettadhamen",
+        "ref:tn:codegeo": "1256",
+        "ref:tn:hasc_2": "TN.AN.ET",
+        "wikidata": "Q3059378"
+      },
+      "comparisons": {
+        "original": {
+          "aAreaKm2": 0.1843765490269597,
+          "bAreaKm2": 3.397533114960863,
+          "intersectionKm2": 0.18437654902695969,
+          "iou": 0.05426777099392115,
+          "aCoveredByB": 0.9999999999999999,
+          "bCoveredByA": 0.05426777099392115,
+          "aOutsideBKm2": 0.0,
+          "bOutsideAKm2": 3.2131565659339043,
+          "hausdorffMeters": 1993.8084662170168,
+          "centroidDistanceMeters": 982.0817314109305
+        },
+        "currentPacked": {
+          "aAreaKm2": 0.1843579751049144,
+          "bAreaKm2": 3.397533114960863,
+          "intersectionKm2": 0.1843521181379895,
+          "iou": 0.05426048668203681,
+          "aCoveredByB": 0.9999682304661809,
+          "bCoveredByA": 0.0542605802210446,
+          "aOutsideBKm2": 5.856966929972695e-06,
+          "bOutsideAKm2": 3.2131809968228815,
+          "hausdorffMeters": 1993.8587219902645,
+          "centroidDistanceMeters": 982.0790472903541
+        },
+        "native": {
+          "aAreaKm2": 0.18245382837654633,
+          "bAreaKm2": 3.397533114960863,
+          "intersectionKm2": 0.18146664548323857,
+          "iou": 0.053395780980862666,
+          "aCoveredByB": 0.9945894098134767,
+          "bCoveredByA": 0.053411295590956705,
+          "aOutsideBKm2": 0.0009871828933232356,
+          "bOutsideAKm2": 3.216066469477631,
+          "hausdorffMeters": 1994.4707690985538,
+          "centroidDistanceMeters": 982.153027484972
+        },
+        "rounded": {
+          "aAreaKm2": 0.18246212772551007,
+          "bAreaKm2": 3.397533114960863,
+          "intersectionKm2": 0.18148130852108044,
+          "iou": 0.05340019550799821,
+          "aCoveredByB": 0.9946245326816251,
+          "bCoveredByA": 0.05341561138048568,
+          "aOutsideBKm2": 0.0009808192044066762,
+          "bOutsideAKm2": 3.216051806439762,
+          "hausdorffMeters": 1994.451771649511,
+          "centroidDistanceMeters": 982.1471085162699
+        }
+      }
+    },
+    "governorate": {
+      "id": "osm:relation:1435830",
+      "tags": {
+        "ISO3166-2": "TN-12",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية أريانة",
+        "name:ar": "ولاية أريانة",
+        "name:az": "Aryana",
+        "name:azb": "اریانه",
+        "name:bar": "Gouvernement Ariana",
+        "name:be": "Арыяна",
+        "name:be-tarask": "Арыяна (вілает)",
+        "name:bg": "Ариана",
+        "name:ca": "Governació d'Ariana",
+        "name:ce": "Арьяна",
+        "name:ceb": "Gouvernorat de l'Ariana",
+        "name:cy": "Ariana",
+        "name:de": "Gouvernement Ariana",
+        "name:el": "Αρυάνα",
+        "name:en": "Ariana",
+        "name:eo": "Arjana",
+        "name:fa": "اریانه",
+        "name:fi": "Ariana",
+        "name:fr": "Gouvernorat Ariana",
+        "name:frr": "Ariana",
+        "name:he": "אריאנה (מחוז)",
+        "name:hu": "Arjána kormányzóság",
+        "name:id": "Kegubernuran Ariana",
+        "name:it": "Ariana",
+        "name:ja": "アリアナ県",
+        "name:ka": "არიანის ვილაიეთი",
+        "name:ko": "아리아나주",
+        "name:lt": "Arianos vilajetas",
+        "name:ms": "Kawasan kegabenoran Ariana",
+        "name:nl": "Ariana",
+        "name:no": "Ariana",
+        "name:pl": "Arjana",
+        "name:pnb": "آریانہ",
+        "name:pt": "Ariana",
+        "name:ro": "Guvernoratul Ariana",
+        "name:ru": "Арьяна",
+        "name:sco": "Ariana Govrenorate",
+        "name:sh": "Ariana",
+        "name:sv": "Ariana",
+        "name:tr": "Aryana ili",
+        "name:uk": "Ар'яна",
+        "name:ur": "آریانہ",
+        "name:vi": "Ariana",
+        "name:zh": "艾爾亞內省",
+        "name:zu": "Ariana Governorate",
+        "official_name": "ولاية أريانة",
+        "official_name:ar": "ولاية أريانة",
+        "official_name:en": "Ariana Governorate",
+        "official_name:eo": "Gubernio de Arjana",
+        "official_name:fa": "استان اریانه",
+        "official_name:fr": "Gouvernorat de Ariana",
+        "official_name:it": "Governatorato di Ariana",
+        "official_name:pl": "Gubernatorstwo Arjana",
+        "official_name:ur": "ولایت آریانہ",
+        "population": "576088",
+        "population:date": "2014",
+        "ref:tn:codegeo": "12",
+        "wikidata": "Q233116",
+        "wikipedia": "ar:ولاية أريانة"
+      },
+      "comparisons": {
+        "original": {
+          "aAreaKm2": 0.1843765490269597,
+          "bAreaKm2": 454.87173301965373,
+          "intersectionKm2": 0.18437654902695974,
+          "iou": 0.0004053374515118377,
+          "aCoveredByB": 1.0000000000000002,
+          "bCoveredByA": 0.0004053374515118383,
+          "aOutsideBKm2": 0.0,
+          "bOutsideAKm2": 454.68735647062744,
+          "hausdorffMeters": 31468.782779187903,
+          "centroidDistanceMeters": 12521.73322818193
+        },
+        "currentPacked": {
+          "aAreaKm2": 0.1843579751049144,
+          "bAreaKm2": 454.87173301965373,
+          "intersectionKm2": 0.1843579751049144,
+          "iou": 0.00040529661819400936,
+          "aCoveredByB": 1.0,
+          "bCoveredByA": 0.00040529661819401034,
+          "aOutsideBKm2": 0.0,
+          "bOutsideAKm2": 454.68737504454987,
+          "hausdorffMeters": 31468.75417067031,
+          "centroidDistanceMeters": 12521.724384824402
+        },
+        "native": {
+          "aAreaKm2": 0.18245382837654633,
+          "bAreaKm2": 454.87173301965373,
+          "intersectionKm2": 0.18245382837654636,
+          "iou": 0.0004011105002399932,
+          "aCoveredByB": 1.0000000000000002,
+          "bCoveredByA": 0.0004011105002399941,
+          "aOutsideBKm2": 0.0,
+          "bOutsideAKm2": 454.6892791912783,
+          "hausdorffMeters": 31468.238388747402,
+          "centroidDistanceMeters": 12519.490202806708
+        },
+        "rounded": {
+          "aAreaKm2": 0.18246212772551007,
+          "bAreaKm2": 454.87173301965373,
+          "intersectionKm2": 0.18246212772551,
+          "iou": 0.00040112874571088345,
+          "aCoveredByB": 0.9999999999999996,
+          "bCoveredByA": 0.0004011287457108844,
+          "aOutsideBKm2": 0.0,
+          "bOutsideAKm2": 454.6892708919293,
+          "hausdorffMeters": 31468.267982066805,
+          "centroidDistanceMeters": 12519.501586097147
+        }
+      }
+    }
+  },
+  "rawRepresentativeContainmentChanges": [],
+  "currentChildContextDependencies": [],
+  "pickerGroupClosure": {
+    "groups": [
+      "osm:relation:7115406",
+      "osm:relation:7115501",
+      "osm:relation:7115582",
+      "osm:relation:7115583",
+      "osm:relation:7115584"
+    ],
+    "rows": [
+      {
+        "id": "osm:relation:7115406",
+        "sourceId": "osm",
+        "name": "البساتين",
+        "aliases": [
+          "El Bassatine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منيهلة",
+        "contextAliases": [
+          "Délégation Mnihla",
+          "Mnihla",
+          "معتمدية منيهلة"
+        ],
+        "governorateId": 358,
+        "lat": 36.845672,
+        "lng": 10.100881,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.090303,
+          36.839744,
+          10.109341,
+          36.85157
+        ],
+        "areaKm2": 0.9389091797184815,
+        "pickerGroupId": "osm:relation:7115406",
+        "offset": 1037388,
+        "length": 524
+      },
+      {
+        "id": "osm:relation:7115501",
+        "sourceId": "osm",
+        "name": "خير الدين باشا",
+        "aliases": [
+          "Kheireddine Pacha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي التضامن",
+        "contextAliases": [
+          "Délégation Cité Ettadhamen",
+          "Ettadhamen",
+          "معتمدية حي التضامن"
+        ],
+        "governorateId": 358,
+        "lat": 36.842508,
+        "lng": 10.10518,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.100049,
+          36.839509,
+          10.109804,
+          36.845381
+        ],
+        "areaKm2": 0.29873279534655056,
+        "pickerGroupId": "osm:relation:7115501",
+        "offset": 1040916,
+        "length": 396
+      },
+      {
+        "id": "osm:relation:7115582",
+        "sourceId": "osm",
+        "name": "مارس 2",
+        "aliases": [
+          "2 Mars"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي التضامن",
+        "contextAliases": [
+          "Délégation Cité Ettadhamen",
+          "Ettadhamen",
+          "معتمدية حي التضامن"
+        ],
+        "governorateId": 358,
+        "lat": 36.837472,
+        "lng": 10.101498,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.096508,
+          36.833796,
+          10.10688,
+          36.841503
+        ],
+        "areaKm2": 0.3712356284803312,
+        "pickerGroupId": "osm:relation:7115582",
+        "offset": 1041312,
+        "length": 436
+      },
+      {
+        "id": "osm:relation:7115583",
+        "sourceId": "osm",
+        "name": "المنجي سليم",
+        "aliases": [
+          "Mongi Slim"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي التضامن",
+        "contextAliases": [
+          "Délégation Cité Ettadhamen",
+          "Ettadhamen",
+          "معتمدية حي التضامن"
+        ],
+        "governorateId": 358,
+        "lat": 36.840745,
+        "lng": 10.097937,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.093929,
+          36.838136,
+          10.101868,
+          36.843401
+        ],
+        "areaKm2": 0.18481391242187414,
+        "pickerGroupId": "osm:relation:7115583",
+        "offset": 1041748,
+        "length": 260
+      },
+      {
+        "id": "osm:relation:7115584",
+        "sourceId": "isie-local-sector-2023-ettadhamen4-historical-rename",
+        "name": "التضامن 4",
+        "aliases": [
+          "Ettadhamen 4",
+          "7 نوفمبر",
+          "7 Novembre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي التضامن",
+        "contextAliases": [
+          "Délégation Cité Ettadhamen",
+          "Ettadhamen",
+          "معتمدية حي التضامن"
+        ],
+        "governorateId": 358,
+        "lat": 36.835375,
+        "lng": 10.097386,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.092621,
+          36.831994,
+          10.101515,
+          36.839786
+        ],
+        "areaKm2": 0.3476425081448895,
+        "pickerGroupId": "osm:relation:7115584",
+        "offset": 1042008,
+        "length": 372
+      }
+    ],
+    "groupsMergedOrRetired": [],
+    "pickerGroupsUnchanged": true
+  },
+  "proposedNameOrContextEdits": [],
+  "noProposedNameContextEdits": true,
+  "qualifications": {
+    "afterConflictsAndIntersections": "Prepacking projection using untouched native geometry against current packed peers; not an exact generated/packed app prediction.",
+    "roundedProjection": "Separate normal app set_precision(1e-6) projection; not the native source artifact.",
+    "noSnapQuantizeBufferClipRepairForNativeSource": true,
+    "allCatalogInvariantClaimed": false,
+    "incidentPairDefinition": "Positive-area intersection in original straight lon/lat geometry, then projected to UTM for areas; prevents projection-induced changes in pair membership.",
+    "combinedGenerationLaterValidatesActualEffects": true,
+    "representativePointAloneNotGenerationProof": true
+  }
+}

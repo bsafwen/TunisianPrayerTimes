@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "qualification": "Original bytes and paths inside source records preserved; these files are relocated copies.",
+  "files": [
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plan-manifest.json",
+      "file": "originals/plan-manifest.json",
+      "sha256": "b8fff826f0e8908b0b541378f93dc4854769c708edef7f34ec49098e49b993e9"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\batch-summary.json",
+      "file": "originals/captures/four-town-current-5554-20260921/batch-summary.json",
+      "sha256": "32dd04f373faa0973d82d59fd7ab50b615033b77e76f4de2527e76d97bd3df18"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\batch-summary.json",
+      "file": "originals/captures/four-town-current-5558-20260921/batch-summary.json",
+      "sha256": "d3f9e256b6d0beec4d1a6de12b37ef2211adb04980df67cd265c49b8fa36373b"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\batch-summary.json",
+      "file": "originals/captures/four-town-published-5556-20260921/batch-summary.json",
+      "sha256": "d939fac8798c83e229113f0c709f6de3b66f11c6f96bc6a977540bed7c2603a8"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\batch-summary.json",
+      "file": "originals/captures/four-town-published-5560-20260921/batch-summary.json",
+      "sha256": "a5c4ca75a0af6d2a8ada6a347990f18a3cef9c381a56c8299460dd104229afaa"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_441-2.json",
+      "file": "originals/captures/four-town-current-5554-20260921/delegation_441-2.json",
+      "sha256": "395a0b65fad59c4d3229f45460ff4e4966930f689f098a9e11698e2645627c57"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_468-2.json",
+      "file": "originals/captures/four-town-current-5554-20260921/delegation_468-2.json",
+      "sha256": "5995fadd7c29b50fe667391f7dfaed400d9e45ce2f8c666e5a5cff7f1816a972"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_516-2.json",
+      "file": "originals/captures/four-town-current-5558-20260921/delegation_516-2.json",
+      "sha256": "cba429beea45f86ffa8e08defb3e35216d674a2ecc84e338e1c4981fdb6d8bf2"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_579-2.json",
+      "file": "originals/captures/four-town-current-5558-20260921/delegation_579-2.json",
+      "sha256": "eef29d3a89c2c000ac8f78087adc050f35ccbc97caff45eb66fc1fd8e9456dc8"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_441-2.json",
+      "file": "originals/captures/four-town-published-5556-20260921/delegation_441-2.json",
+      "sha256": "db8be1d37d4d340540e178a1d9b83c50703babfab67ddaead92d90052e2f1108"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_468-2.json",
+      "file": "originals/captures/four-town-published-5556-20260921/delegation_468-2.json",
+      "sha256": "1bcd83d7910fb50e6721b4860c62ebbd99cdc2c23b0e68b51c53cef76c984a92"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_516-2.json",
+      "file": "originals/captures/four-town-published-5560-20260921/delegation_516-2.json",
+      "sha256": "986676975c972e78fc8b3c27d781fdec96a2558389486ff205293537b58cc5ab"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_579-2.json",
+      "file": "originals/captures/four-town-published-5560-20260921/delegation_579-2.json",
+      "sha256": "dd2ac09a9357a501d382260379c59d798ad0a6be4d9def14e417cba87c82cc36"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_441-2.png",
+      "file": "originals/captures/four-town-current-5554-20260921/delegation_441-2.png",
+      "sha256": "5904f12df1aad74f1d4e3ff755756c101bec6bbfd2021593624c0f3243370178"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_468-2.png",
+      "file": "originals/captures/four-town-current-5554-20260921/delegation_468-2.png",
+      "sha256": "8e64173b7b51861edc07a059d17692a62c9a0ad6e81040e3bcccc7fe9a3a240d"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_516-2.png",
+      "file": "originals/captures/four-town-current-5558-20260921/delegation_516-2.png",
+      "sha256": "b4aaae358e45efc5fec265e8be247031ccfc6824cf1a16095f006ba59d4f79eb"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_579-2.png",
+      "file": "originals/captures/four-town-current-5558-20260921/delegation_579-2.png",
+      "sha256": "5724fc5174e71bc17abcc70dbb8be9d748ffdfc0dd33433c8f150ab81813afbe"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_441-2.png",
+      "file": "originals/captures/four-town-published-5556-20260921/delegation_441-2.png",
+      "sha256": "bc3474154302751c4328ff4197fcf551b271fc00bf501d326cb2b3c4215b98c3"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_468-2.png",
+      "file": "originals/captures/four-town-published-5556-20260921/delegation_468-2.png",
+      "sha256": "45a70349d3c85f7e666423b16c50825bff50001a0f935e5b39c0b6d86ac87641"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_516-2.png",
+      "file": "originals/captures/four-town-published-5560-20260921/delegation_516-2.png",
+      "sha256": "9edebba0cb2029a8997348fe1cde1a2d2cfa4b9b8c2a73f9ccfcba7cf0d523f4"
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_579-2.png",
+      "file": "originals/captures/four-town-published-5560-20260921/delegation_579-2.png",
+      "sha256": "88cc7d6cc97d36e77266b76b76a022e12532a9887ce1a7cd22a90f324a734f02"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7143816",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "غمراسن",
+        "name:ar": "غمراسن",
+        "name:fr": "GHOMRASSEN",
+        "ref:tn:codegeo": "535551"
+      },
+      "originalGeometrySha256": "da9953fd28a83fb3db987e46293fdbc9db3d927aba4378bbd9b9791273fa3ef9",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "غمراسن",
+        "name:ar": "غمراسن",
+        "name:fr": "GHOMRASSEN",
+        "ref:tn:codegeo": "535551"
+      },
+      "effectiveGeometrySha256": "da9953fd28a83fb3db987e46293fdbc9db3d927aba4378bbd9b9791273fa3ef9",
+      "expectedMetadata": {
+        "name": "غمراسن",
+        "aliases": [
+          "GHOMRASSEN"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية غمراسن",
+        "governorateId": 351,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:relation:15063268",
+      "originalKind": "residential",
+      "originalTags": {
+        "landuse": "residential",
+        "name": "غمراسن",
+        "name:ar": "غمراسن",
+        "name:fr": "Ghomrassen",
+        "name:zgh": "ⵖⵎⵔⴰⵙⵏ",
+        "population": "11300",
+        "postal_code": "3220"
+      },
+      "originalGeometrySha256": "ac27e08c391854a7f5f2e929b0d452a200a80fe63aa4427f24445f543e77d83a",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "غمراسن",
+        "name:ar": "غمراسن",
+        "name:fr": "Ghomrassen",
+        "name:zgh": "ⵖⵎⵔⴰⵙⵏ",
+        "population": "11300",
+        "postal_code": "3220"
+      },
+      "effectiveGeometrySha256": "ac27e08c391854a7f5f2e929b0d452a200a80fe63aa4427f24445f543e77d83a",
+      "expectedMetadata": {
+        "name": "غمراسن",
+        "aliases": [
+          "Ghomrassen",
+          "Гумрасен",
+          "ⵖⵎⵔⴰⵙⵏ"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية تطاوين",
+        "governorateId": 351,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "three-city-source-facts.json",
+      "sha256": "e733c1e54fd534e91c5779c892ea07c1f6dd9f1c1a0b0cc5de57da1d634afd30"
+    }
+  ],
+  "scope": "Preserve the same-name town residential and independently coded imada as different browsing identities. This guard alone splits an old automatic group; the paired reviewed city/base association restores the intended two final choices."
+}

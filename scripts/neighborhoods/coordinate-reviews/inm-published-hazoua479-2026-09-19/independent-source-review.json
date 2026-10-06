@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "createdAtUtc": "2026-09-19T09:24:20.567715+00:00",
+  "reviewer": "point_pairs_check",
+  "scope": "Independent source/primary/geometry and finite reference-impact review; not a compiler-contract or generated-output approval.",
+  "baselineMetadataSha256": "5fead87cca66a9f6be73b14259f2dbb796f5001e2339327be5ff2c2000b1ac9b",
+  "sourceReports": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\sourcefacts-and-design.json",
+      "sha256": "01e96d6aecbf98c8407c751551dfa287b287cbee1206fd393c9d92e8ec7570e4"
+    }
+  ],
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\sourcefacts-and-design.json",
+    "sha256": "01e96d6aecbf98c8407c751551dfa287b287cbee1206fd393c9d92e8ec7570e4"
+  },
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7154917",
+      "field": "delegationId",
+      "before": 479,
+      "after": 477
+    },
+    {
+      "id": "osm:relation:7154916",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7154916",
+      "after": "delegation:479"
+    },
+    {
+      "id": "osm:way:207579215",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7154916",
+      "after": "delegation:479"
+    }
+  ],
+  "checks": {
+    "pin:neighborhoods.json": true,
+    "pin:neighborhoods.bin": true,
+    "pin:gouvernorats.json": true,
+    "pin:catalog-curation.json": true,
+    "pin:reviewed-picker-groups.json": true,
+    "pin:prayer-source-coordinates.json": true,
+    "pin:current-official-sector-registry.json": true,
+    "pin:coverage.json": true,
+    "pin:generate_neighborhoods.py": true,
+    "pin:soliman-current-original-source-inventory-20260912.json": true,
+    "pin:sidi-khitmin-catalog-checkpoint-20260919.json": true,
+    "pin:hazoua-smar-coordinate-phone-review-20260919.json": true,
+    "pin:prayer-2026-09-19.json": true,
+    "pin:sun-2026-09-19.json": true,
+    "pin:node-1566167629-current.json": true,
+    "pin:social-hazoua-town.html": true,
+    "retrieval:prayer-2026-09-19.json": true,
+    "retrieval:sun-2026-09-19.json": true,
+    "retrieval:node-1566167629-current.json": true,
+    "retrieval:node-1566167629-history.json": true,
+    "retrieval:way-207579215-current.json": true,
+    "retrieval:social-hazoua-town.html": true,
+    "available_reference_count": true,
+    "exact_base": true,
+    "fresh_matching_primary_references": true,
+    "no_existing479_correction": true,
+    "exact_original_and_public_witness": true,
+    "witness_absorbed": true,
+    "source_kind_tags_geometry:osm:node:1566167629": true,
+    "current_curation:osm:node:1566167629": true,
+    "current_metadata:osm:node:1566167629": true,
+    "post_reference_metadata:osm:node:1566167629": true,
+    "complete_group:osm:node:1566167629": true,
+    "source_kind_tags_geometry:osm:relation:1435826": true,
+    "current_curation:osm:relation:1435826": true,
+    "current_metadata:osm:relation:1435826": true,
+    "post_reference_metadata:osm:relation:1435826": true,
+    "complete_group:osm:relation:1435826": true,
+    "source_kind_tags_geometry:osm:relation:7154891": true,
+    "current_curation:osm:relation:7154891": true,
+    "current_metadata:osm:relation:7154891": true,
+    "post_reference_metadata:osm:relation:7154891": true,
+    "complete_group:osm:relation:7154891": true,
+    "source_kind_tags_geometry:osm:relation:7154916": true,
+    "current_curation:osm:relation:7154916": true,
+    "current_metadata:osm:relation:7154916": true,
+    "post_reference_metadata:osm:relation:7154916": true,
+    "complete_group:osm:relation:7154916": true,
+    "packed_hash:osm:relation:7154916": true,
+    "source_kind_tags_geometry:osm:relation:7154917": true,
+    "current_curation:osm:relation:7154917": true,
+    "current_metadata:osm:relation:7154917": true,
+    "post_reference_metadata:osm:relation:7154917": true,
+    "complete_group:osm:relation:7154917": true,
+    "packed_hash:osm:relation:7154917": true,
+    "source_kind_tags_geometry:osm:relation:7154925": true,
+    "current_curation:osm:relation:7154925": true,
+    "current_metadata:osm:relation:7154925": true,
+    "post_reference_metadata:osm:relation:7154925": true,
+    "complete_group:osm:relation:7154925": true,
+    "packed_hash:osm:relation:7154925": true,
+    "source_kind_tags_geometry:osm:way:207579215": true,
+    "current_curation:osm:way:207579215": true,
+    "current_metadata:osm:way:207579215": true,
+    "post_reference_metadata:osm:way:207579215": true,
+    "complete_group:osm:way:207579215": true,
+    "packed_hash:osm:way:207579215": true,
+    "complete_name_peer_ids": true,
+    "official_current6255_inventory": true,
+    "official625551": true,
+    "original6255_sectors": true,
+    "packed_length:osm:relation:7154916": true,
+    "all_point_containment:osm:relation:7154916": true,
+    "whole_parent_containment:osm:relation:7154916": true,
+    "packed_length:osm:way:207579215": true,
+    "all_point_containment:osm:way:207579215": true,
+    "whole_parent_containment:osm:way:207579215": true,
+    "only_hattem_changes": true,
+    "manual_reference_retained": true,
+    "complete_target_before": true,
+    "primary_address_text": true,
+    "primary_occupied_address_coordinate": true,
+    "three_projected_fields": true,
+    "combined_reference_changes_exact_union": true
+  },
+  "all3524ExistingNearestDefaultsVerified": true,
+  "fullCountryReferenceImpacts": [
+    {
+      "id": "osm:relation:7154917",
+      "name": "حطام",
+      "field": "delegationId",
+      "before": 479,
+      "after": 477,
+      "coordinates": {
+        "lat": 33.956571,
+        "lng": 7.642963
+      }
+    }
+  ],
+  "geometryResults": [
+    {
+      "id": "osm:relation:7154916",
+      "points": {
+        "legacyReference": {
+          "original": true,
+          "packed": true
+        },
+        "publishedReference": {
+          "original": true,
+          "packed": true
+        },
+        "sourceWitness": {
+          "original": true,
+          "packed": true
+        },
+        "manualVillageRepresentative": {
+          "original": true,
+          "packed": true
+        }
+      },
+      "wholeParent": {
+        "originalParentCoversOriginal": true,
+        "originalParentCoversPacked": false,
+        "quantizedParentCoversPacked": true,
+        "packedOutsideOriginalParentAreaSquareDegrees": 5.423675044686938e-09
+      }
+    },
+    {
+      "id": "osm:way:207579215",
+      "points": {
+        "legacyReference": {
+          "original": false,
+          "packed": false
+        },
+        "publishedReference": {
+          "original": false,
+          "packed": false
+        },
+        "sourceWitness": {
+          "original": true,
+          "packed": true
+        },
+        "manualVillageRepresentative": {
+          "original": true,
+          "packed": true
+        }
+      },
+      "wholeParent": {
+        "originalParentCoversOriginal": true,
+        "originalParentCoversPacked": true,
+        "quantizedParentCoversPacked": true,
+        "packedOutsideOriginalParentAreaSquareDegrees": 0.0
+      }
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "url": "https://www.social.gov.tn/en/node/2973",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\social-hazoua-town.html",
+      "sha256": "06129c0754b8595f00bacb1db9c20551e8a2bae157a9745e7f1f0a2b6fc8b838",
+      "verifiedAddress": "حزوة المدينة حي النخيل 2223",
+      "publishedOccupiedAddressCoordinate": {
+        "lat": 33.738606,
+        "lng": 7.60091
+      },
+      "coordinateContainment": {
+        "osm:relation:7154916": {
+          "original": true,
+          "packed": true
+        },
+        "osm:way:207579215": {
+          "original": true,
+          "packed": true
+        }
+      }
+    }
+  ],
+  "retrievedOriginalEvidence": [
+    {
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/352/479/",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\prayer-2026-09-19.json",
+      "sha256": "4c72a64bb879536e66834b777aabc94353cd5b1600de186ead70ceaf2678faac"
+    },
+    {
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/352/479/",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\sun-2026-09-19.json",
+      "sha256": "bb2e3a7ddee0b5e07a0e52ab169c01bef828451e4dc7afa532e2f2b774754b3c"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/node/1566167629.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\node-1566167629-current.json",
+      "sha256": "2e04c832bb70023ea9704bfac28f1ca6d3d4690ebd7e6ae35aca957054d0e1e1"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/node/1566167629/history.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\node-1566167629-history.json",
+      "sha256": "40d14f786356f7280881bb7aac2d8bb573d292d0bcc7e3071bb7b06b8f97c45c"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/way/207579215.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\way-207579215-current.json",
+      "sha256": "7733655fcb295f7ba7379d88b43b0d2a450d357208166fc5ec5a4720e604a4d5"
+    },
+    {
+      "url": "https://www.social.gov.tn/en/node/2973",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\social-hazoua-town.html",
+      "sha256": "06129c0754b8595f00bacb1db9c20551e8a2bae157a9745e7f1f0a2b6fc8b838"
+    }
+  ],
+  "identityConclusion": "Exact HazouaArabic/Latin original village, sector625551, parent6255, sourcepoint and base479 agree. The official Social Affairs occupied-address record independently names Hazoua town and has a coordinate inside both source/packed village and sector. This supports the bounded display identity, not polygon extent certification.",
+  "retainedRepresentative": {
+    "representativeId": "osm:way:207579215",
+    "lat": 33.740709,
+    "lng": 7.599514,
+    "expectedNearestSourceId": 479,
+    "qualification": "Runtime already ranks village before sector. Preserve its existing raw representative; witnesspoint is identity support, not a substituted coordinate."
+  },
+  "combinedWithSmarReferenceOnly": {
+    "changedRawCount": 18,
+    "exactUnionOfIndependentImpactLists": true,
+    "smarReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\independent-source-review.json",
+      "sha256": "908d753e3c0f3a1d1a2df90a9328c676b9e9d19725312a85ce8e3a7e82f49441"
+    }
+  },
+  "qualifications": [
+    "The published INM479point33.738,7.603 is outside the village polygon and inside the sector; it is a prayer reference, not an instruction to move locality coordinates.",
+    "The unchanged village representative33.740709,7.599514 is preferred by existing runtime priority and stays nearest479. Sourcewitness1566167629 remains absorbed.",
+    "Original parent covers both native member polygons. The packed sector has a measured tiny spill against unrounded parent while quantized parent covers it; retain this qualification.",
+    "Current indexed registry provides625551/625552 while original sources also include625553. Preserve the latter; this index is not evidence of an exhaustive present-day sector inventory.",
+    "Phone-result descriptions were read as a pinned root review only; no screenshot or live phone was inspected by this independent review."
+  ],
+  "operations": {
+    "generatorOrCompilerExecution": 0,
+    "liveWrites": 0,
+    "phone": 0,
+    "network": 0,
+    "tests": 0,
+    "build": 0
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\independent_review_hazoua479_20260919.py",
+    "sha256": "d10c3b284d838ea90570cb1e364041162b0e7a9456f253c65964fa5fd860669f"
+  },
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "priorIndependentReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\independent-source-review.json",
+    "sha256": "8f7e82f7ec016f863c24421b7a6bfae368538809c581fdea9c014e2d0123687b",
+    "qualification": "Adds explicit verified PBF sourceSha256 for the uniform strict proof schema; source findings and projections unchanged."
+  }
+}

@@ -1,0 +1,2077 @@
+{
+  "version": 1,
+  "retrieved": "2026-10-02",
+  "reciterId": "hosary-qaloun",
+  "numbering": "madani-later",
+  "sourceReadId": 270,
+  "sourceAudioBase": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/",
+  "verification": "All 114 local-file MD5 digests equal source HTTP ETags; every source Content-Length equals local file size. Surah 1 additionally verified byte-identical by a complete source download and SHA-256.",
+  "endpointAdjustments": [
+    {
+      "surah": 108,
+      "ayah": 3,
+      "sourceEndMs": 26901,
+      "endMs": 26619
+    },
+    {
+      "surah": 112,
+      "ayah": 4,
+      "sourceEndMs": 29337,
+      "endMs": 28970
+    }
+  ],
+  "files": [
+    {
+      "surah": 1,
+      "file": "001.mp3",
+      "bytes": 850752,
+      "sha256": "d4bc059e8def368207c9f3b403b55ae019e1a5e3e8c0a971a0bb916203b03466",
+      "durationMs": 52741,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=1&read=270",
+      "timingSourceSha256": "03b2a2043d1192f54750b4bbbbe9ad14f996b71a296b1eabce1bd790a392b148",
+      "sourceAudioVerification": {
+        "surah": 1,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/001.mp3",
+        "localBytes": 850752,
+        "remoteBytes": 850752,
+        "localMd5": "b9d59896d38f415e3d186a6cd2ff8e0e",
+        "sourceETag": "b9d59896d38f415e3d186a6cd2ff8e0e",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 2,
+      "file": "002.mp3",
+      "bytes": 168398468,
+      "sha256": "b2dcd5e44afee568ed28d82ae5d49b7381db80f20890cf6348c1b1ffce0941f6",
+      "durationMs": 10524473,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=2&read=270",
+      "timingSourceSha256": "579bc1f1326955678e1d5d48000a3c2e415fad232309d01ff5638770de5af33f",
+      "sourceAudioVerification": {
+        "surah": 2,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/002.mp3",
+        "localBytes": 168398468,
+        "remoteBytes": 168398468,
+        "localMd5": "b235bb180eb4ec1fc0e34ef5fd920927",
+        "sourceETag": "b235bb180eb4ec1fc0e34ef5fd920927",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 3,
+      "file": "003.mp3",
+      "bytes": 94916226,
+      "sha256": "8a406ebd20ad97d694863b059bf4bb9358580f6fa2c888b4d722b2afa0bed39b",
+      "durationMs": 5931833,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=3&read=270",
+      "timingSourceSha256": "3f75e8109d57e6249aed03804d97fa5d07dfb103ffeea4e979c0fbddbd3cd995",
+      "sourceAudioVerification": {
+        "surah": 3,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/003.mp3",
+        "localBytes": 94916226,
+        "remoteBytes": 94916226,
+        "localMd5": "0082b85b29cea277e9ddeb1f6af342f2",
+        "sourceETag": "0082b85b29cea277e9ddeb1f6af342f2",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 4,
+      "file": "004.mp3",
+      "bytes": 108777842,
+      "sha256": "a1e6af4accf22cf03772320efbeb1f5b01cb7df31c27e920fca42b9c1b1a721f",
+      "durationMs": 6798184,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=4&read=270",
+      "timingSourceSha256": "c5dff05450f24162098bdd0b918a5633f51fe59490842cfaaf92d32c80d675ee",
+      "sourceAudioVerification": {
+        "surah": 4,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/004.mp3",
+        "localBytes": 108777842,
+        "remoteBytes": 108777842,
+        "localMd5": "593e435427a7ecefbef56ebb7888503b",
+        "sourceETag": "593e435427a7ecefbef56ebb7888503b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 5,
+      "file": "005.mp3",
+      "bytes": 82693848,
+      "sha256": "b89e19dfb3ff84a108f00250ddeecf4e8acd6d8052433a1a69dd41a899761e23",
+      "durationMs": 5167935,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=5&read=270",
+      "timingSourceSha256": "054e7a4c377966ae9e891d1ed0c53c699257308a77d1506065534ff6e4119467",
+      "sourceAudioVerification": {
+        "surah": 5,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/005.mp3",
+        "localBytes": 82693848,
+        "remoteBytes": 82693848,
+        "localMd5": "61850f947683390f7078dfc13373ba77",
+        "sourceETag": "61850f947683390f7078dfc13373ba77",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 6,
+      "file": "006.mp3",
+      "bytes": 94502028,
+      "sha256": "758b0e78e202135c1f9b165360515940053ea1d1b151cfd2c560f84663c11d85",
+      "durationMs": 5905946,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=6&read=270",
+      "timingSourceSha256": "8a7d49b9b86264a0d54950297270020952c2c89e7bf552426080a0fcd6251db1",
+      "sourceAudioVerification": {
+        "surah": 6,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/006.mp3",
+        "localBytes": 94502028,
+        "remoteBytes": 94502028,
+        "localMd5": "85632752114e6b99dfcb38206441093e",
+        "sourceETag": "85632752114e6b99dfcb38206441093e",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 7,
+      "file": "007.mp3",
+      "bytes": 96807909,
+      "sha256": "b275a539ac4e8cfa4217d088a6b831a2e183d561edc5b1fc870fb94ad353b5a9",
+      "durationMs": 6050064,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=7&read=270",
+      "timingSourceSha256": "df42c6c6506e00733c2be4f83cefeccf8fc512121f180996507c1f7e4d33f724",
+      "sourceAudioVerification": {
+        "surah": 7,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/007.mp3",
+        "localBytes": 96807909,
+        "remoteBytes": 96807909,
+        "localMd5": "47d428ceb966206073c33fdf517028c6",
+        "sourceETag": "47d428ceb966206073c33fdf517028c6",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 8,
+      "file": "008.mp3",
+      "bytes": 36965349,
+      "sha256": "0483527cf36b059cc440748d718bbf32a8ebd5d9fcfeb8d79e5d75ab5bff0c62",
+      "durationMs": 2309904,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=8&read=270",
+      "timingSourceSha256": "f297465a4b6043df978e0bb66a6f76e3cb5cb097329d269371039637bc413ae7",
+      "sourceAudioVerification": {
+        "surah": 8,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/008.mp3",
+        "localBytes": 36965349,
+        "remoteBytes": 36965349,
+        "localMd5": "730967539b2e69f3802b8ac8b14a0f7a",
+        "sourceETag": "730967539b2e69f3802b8ac8b14a0f7a",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 9,
+      "file": "009.mp3",
+      "bytes": 74569556,
+      "sha256": "ebf82218c2b43201312c5bbdbae0fd171a0fcb4ce2c7f9f3a3fdc67a145aab5b",
+      "durationMs": 4660166,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=9&read=270",
+      "timingSourceSha256": "69fc0ab26f6e445bd03cf5798713b52337a5ec4bebdced2037f2b7ea5571c414",
+      "sourceAudioVerification": {
+        "surah": 9,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/009.mp3",
+        "localBytes": 74569556,
+        "remoteBytes": 74569556,
+        "localMd5": "4d6cb5de73b75d5b78052658464f99fa",
+        "sourceETag": "4d6cb5de73b75d5b78052658464f99fa",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 10,
+      "file": "010.mp3",
+      "bytes": 48699550,
+      "sha256": "6199d577353922e276509e6871c4e08c4ed6685947e783420bd48a95bd3f30a4",
+      "durationMs": 3043291,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=10&read=270",
+      "timingSourceSha256": "e10c7851eaa2efbc98540715f008ba11dde2a88ced40cf157541a4a4eaf6594b",
+      "sourceAudioVerification": {
+        "surah": 10,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/010.mp3",
+        "localBytes": 48699550,
+        "remoteBytes": 48699550,
+        "localMd5": "1aa30f63682661dd4f9e64cbc9b1c4e7",
+        "sourceETag": "1aa30f63682661dd4f9e64cbc9b1c4e7",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 11,
+      "file": "011.mp3",
+      "bytes": 51491935,
+      "sha256": "a3f4494ffefc35abdd8993a37d731f09f6e1572d066d4f2495d17490d9df2847",
+      "durationMs": 3217816,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=11&read=270",
+      "timingSourceSha256": "0afb0fb566f81e4a1e3c37995f627c5b491c191a2668efeea56b20a0f9590f8e",
+      "sourceAudioVerification": {
+        "surah": 11,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/011.mp3",
+        "localBytes": 51491935,
+        "remoteBytes": 51491935,
+        "localMd5": "590390ad81de66c45a7a8aed0415fb43",
+        "sourceETag": "590390ad81de66c45a7a8aed0415fb43",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 12,
+      "file": "012.mp3",
+      "bytes": 48808638,
+      "sha256": "9452723e779bb59a1a0996f571c40fa5589e1e6cb43b9a9c7505356391be090f",
+      "durationMs": 3050109,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=12&read=270",
+      "timingSourceSha256": "19166d93660654fa5d3b7df50978f8cf757d62533378e3698cf97d205a573552",
+      "sourceAudioVerification": {
+        "surah": 12,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/012.mp3",
+        "localBytes": 48808638,
+        "remoteBytes": 48808638,
+        "localMd5": "6233edcea4fe381af6ca14f837cec3b2",
+        "sourceETag": "6233edcea4fe381af6ca14f837cec3b2",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 13,
+      "file": "013.mp3",
+      "bytes": 22828715,
+      "sha256": "5b74f37ad177375b5bf2c998478b7a97f5d2107dfa539ca5117a82b81dd91698",
+      "durationMs": 1426364,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=13&read=270",
+      "timingSourceSha256": "3635305ac6900712bc7f1f6676b2ab2bd2990b61a6758f410352c63b10e39b39",
+      "sourceAudioVerification": {
+        "surah": 13,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/013.mp3",
+        "localBytes": 22828715,
+        "remoteBytes": 22828715,
+        "localMd5": "cfd34355cc9c2766b72b6fe8c52adb13",
+        "sourceETag": "cfd34355cc9c2766b72b6fe8c52adb13",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 14,
+      "file": "014.mp3",
+      "bytes": 23984372,
+      "sha256": "aa84d4c73364f244decf64c13e2f3d2f4f736e269ceed5405af33d2cd6b4b89b",
+      "durationMs": 1498593,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=14&read=270",
+      "timingSourceSha256": "60c9753bdd01cbf350df057eed49f6cb86239dcc5f20900afe1f7808c568dba6",
+      "sourceAudioVerification": {
+        "surah": 14,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/014.mp3",
+        "localBytes": 23984372,
+        "remoteBytes": 23984372,
+        "localMd5": "f8854252a0a29fbebb6dee2e7ef1945c",
+        "sourceETag": "f8854252a0a29fbebb6dee2e7ef1945c",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 15,
+      "file": "015.mp3",
+      "bytes": 19504685,
+      "sha256": "5d8d49351fb20521a6aa9f95c5a0f109d6689d6baeeae7ec727670b3461d4a89",
+      "durationMs": 1218612,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=15&read=270",
+      "timingSourceSha256": "4806a4b29ff0afef6642143b311a4dd5c29e8ae7fe7f4eb9783fb61a3a05669c",
+      "sourceAudioVerification": {
+        "surah": 15,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/015.mp3",
+        "localBytes": 19504685,
+        "remoteBytes": 19504685,
+        "localMd5": "5292ad0ff0e7ca4f0a626667663fc45e",
+        "sourceETag": "5292ad0ff0e7ca4f0a626667663fc45e",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 16,
+      "file": "016.mp3",
+      "bytes": 51957544,
+      "sha256": "47d0f0f0354bdec3ee63c3dc812ec195e92254b7b98f9a960828b68a5cec3e91",
+      "durationMs": 3246916,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=16&read=270",
+      "timingSourceSha256": "901a1dd8fbf57a0c00f36b72312f343669b7b51fd609079be989a39f6229fd3b",
+      "sourceAudioVerification": {
+        "surah": 16,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/016.mp3",
+        "localBytes": 51957544,
+        "remoteBytes": 51957544,
+        "localMd5": "8c6720962b40787e2684851008135392",
+        "sourceETag": "8c6720962b40787e2684851008135392",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 17,
+      "file": "017.mp3",
+      "bytes": 41136163,
+      "sha256": "dba5575a0a90dec9d12a8ddc77e984a441157b5196a1467c9977897c7a1fab36",
+      "durationMs": 2570580,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=17&read=270",
+      "timingSourceSha256": "534334ec6bb59d0a80285eb5f4aee9ab10ff5c99f81ff4a7ecd2b7273c78bb4d",
+      "sourceAudioVerification": {
+        "surah": 17,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/017.mp3",
+        "localBytes": 41136163,
+        "remoteBytes": 41136163,
+        "localMd5": "e4b5b2a1b3baeda439714a60b3adf3b5",
+        "sourceETag": "e4b5b2a1b3baeda439714a60b3adf3b5",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 18,
+      "file": "018.mp3",
+      "bytes": 41097293,
+      "sha256": "4a3b985ac60c36e8acefad57ec8d5c189487cc7ddf1b6c9b8c0a2ecdd72f8027",
+      "durationMs": 2568150,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=18&read=270",
+      "timingSourceSha256": "84541e813a0622d520b5654e5a5920a2b16c09797cbe70bae1a156c1453a9c29",
+      "sourceAudioVerification": {
+        "surah": 18,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/018.mp3",
+        "localBytes": 41097293,
+        "remoteBytes": 41097293,
+        "localMd5": "85f1be2572ec989ec5aac944eeddffcb",
+        "sourceETag": "85f1be2572ec989ec5aac944eeddffcb",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 19,
+      "file": "019.mp3",
+      "bytes": 24081338,
+      "sha256": "65fe0481cf69c926c7fa4d1094b59dd405f1325f7845ff3e180538b35355d4e4",
+      "durationMs": 1504653,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=19&read=270",
+      "timingSourceSha256": "873f13dce5a325d6e9cfd1f175c963d3c3634b0d8c18d3d63c076cda5be59860",
+      "sourceAudioVerification": {
+        "surah": 19,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/019.mp3",
+        "localBytes": 24081338,
+        "remoteBytes": 24081338,
+        "localMd5": "a942c1d2d3298a2dd02bd50e7f55614f",
+        "sourceETag": "a942c1d2d3298a2dd02bd50e7f55614f",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 20,
+      "file": "020.mp3",
+      "bytes": 37801684,
+      "sha256": "fb039705a16970138fe630e0ca01fddbe10d3637e41fa8afa7f6af6a93443a26",
+      "durationMs": 2362175,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=20&read=270",
+      "timingSourceSha256": "affd25dc44a62fcd1a411539a2b852aa8bee9bbd263b810b1520b0019942dfa9",
+      "sourceAudioVerification": {
+        "surah": 20,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/020.mp3",
+        "localBytes": 37801684,
+        "remoteBytes": 37801684,
+        "localMd5": "c913e5eba7d7415bf404a67868919c90",
+        "sourceETag": "c913e5eba7d7415bf404a67868919c90",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 21,
+      "file": "021.mp3",
+      "bytes": 36644777,
+      "sha256": "844462bd53a84bfe99897628b3eaf4f75f15422d4919a340fa0267599891e003",
+      "durationMs": 2289868,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=21&read=270",
+      "timingSourceSha256": "da3e8768d9735f771c73ce08df2a17863f2a3bac50658fbd679b97934b218955",
+      "sourceAudioVerification": {
+        "surah": 21,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/021.mp3",
+        "localBytes": 36644777,
+        "remoteBytes": 36644777,
+        "localMd5": "a1c9fd274d957f3c9e459a9cce9c4ba9",
+        "sourceETag": "a1c9fd274d957f3c9e459a9cce9c4ba9",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 22,
+      "file": "022.mp3",
+      "bytes": 37096170,
+      "sha256": "8b67f25d1c0315ed4b5bc267296327b8f4b7054a9d634af2bf76eef3b7999da5",
+      "durationMs": 2318080,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=22&read=270",
+      "timingSourceSha256": "417b0ca068b3ddb9134734e832b04744284b8871b5415a4adbaae434a4e5d9b1",
+      "sourceAudioVerification": {
+        "surah": 22,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/022.mp3",
+        "localBytes": 37096170,
+        "remoteBytes": 37096170,
+        "localMd5": "4aed54ca4c473dcca7a7681c883bfcdf",
+        "sourceETag": "4aed54ca4c473dcca7a7681c883bfcdf",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 23,
+      "file": "023.mp3",
+      "bytes": 30116255,
+      "sha256": "d2190793904a505dde96e48f2e541e8f6bdc1ef818872ddf3cc9d443cf8954e9",
+      "durationMs": 1881835,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=23&read=270",
+      "timingSourceSha256": "4f08c14aa2112ab4e6acdb7e5ed8b176f4d75c1345baaa4b052aa4afc467475a",
+      "sourceAudioVerification": {
+        "surah": 23,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/023.mp3",
+        "localBytes": 30116255,
+        "remoteBytes": 30116255,
+        "localMd5": "c011388df11fb33aacfcc87fdd66a3b0",
+        "sourceETag": "c011388df11fb33aacfcc87fdd66a3b0",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 24,
+      "file": "024.mp3",
+      "bytes": 40909210,
+      "sha256": "f068ec1c53fd68948310540975ebdbe17c5bee620613b0b79af5696aed531def",
+      "durationMs": 2556395,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=24&read=270",
+      "timingSourceSha256": "d6aa0023f37a0c2caf41d5ea17cbbed41fe78a307f781b87eb6c8fc86c32e373",
+      "sourceAudioVerification": {
+        "surah": 24,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/024.mp3",
+        "localBytes": 40909210,
+        "remoteBytes": 40909210,
+        "localMd5": "9733510cd114e984507ea45d44f5d8a9",
+        "sourceETag": "9733510cd114e984507ea45d44f5d8a9",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 25,
+      "file": "025.mp3",
+      "bytes": 25557572,
+      "sha256": "e147572dd892325151a550486298be32bf30e843d5940497383efa9bf320614b",
+      "durationMs": 1596918,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=25&read=270",
+      "timingSourceSha256": "c54c5af7c59ae7e886d059ddd95194abd2b0f6ed8288096b79333bd3f96918be",
+      "sourceAudioVerification": {
+        "surah": 25,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/025.mp3",
+        "localBytes": 25557572,
+        "remoteBytes": 25557572,
+        "localMd5": "badac71d668bf41095082545dcbbed02",
+        "sourceETag": "badac71d668bf41095082545dcbbed02",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 26,
+      "file": "026.mp3",
+      "bytes": 36792736,
+      "sha256": "de98927c0d4017f1d247e8d8d44c1969cd02cc4a75b619308ba97edbb909e507",
+      "durationMs": 2299115,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=26&read=270",
+      "timingSourceSha256": "692b0950c63bb1fba40dbb091c7262164a4619e94696a53c149c3b127876cec8",
+      "sourceAudioVerification": {
+        "surah": 26,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/026.mp3",
+        "localBytes": 36792736,
+        "remoteBytes": 36792736,
+        "localMd5": "be2aa774c94a416e0c03da69027373b9",
+        "sourceETag": "be2aa774c94a416e0c03da69027373b9",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 27,
+      "file": "027.mp3",
+      "bytes": 31688614,
+      "sha256": "3610cd5549463b3bc345a694ccc6e64591ca6058f6709a3776210afda6713a29",
+      "durationMs": 1980108,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=27&read=270",
+      "timingSourceSha256": "e09243b7e9b62d2a3b10d620b9ff9e3c38af314a5145d0932763a5c5cd4788ea",
+      "sourceAudioVerification": {
+        "surah": 27,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/027.mp3",
+        "localBytes": 31688614,
+        "remoteBytes": 31688614,
+        "localMd5": "a78c14de9171b0b107929f0c6c72395b",
+        "sourceETag": "a78c14de9171b0b107929f0c6c72395b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 28,
+      "file": "028.mp3",
+      "bytes": 39124526,
+      "sha256": "92a00d55edc85adfc6ba82f7ffc3a4037d5d5a63376f5327169e92cc307dd6df",
+      "durationMs": 2444852,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=28&read=270",
+      "timingSourceSha256": "7fd94d41bb0e30a7ac30c156dc51e93e6cbe2731932a03fcc742e932d62cec4b",
+      "sourceAudioVerification": {
+        "surah": 28,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/028.mp3",
+        "localBytes": 39124526,
+        "remoteBytes": 39124526,
+        "localMd5": "83a5e65ce4fd569c78e6f7f19e4fc566",
+        "sourceETag": "83a5e65ce4fd569c78e6f7f19e4fc566",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 29,
+      "file": "029.mp3",
+      "bytes": 28026877,
+      "sha256": "86e08b36a3cde220dcbc97dbf209d11d6876b6bd5dd9724784593015ab67b948",
+      "durationMs": 1751249,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=29&read=270",
+      "timingSourceSha256": "8286a2f226f3c2fc9a200f3675e20dc61c2e8d8dad46d5c17bf764eba737b6ae",
+      "sourceAudioVerification": {
+        "surah": 29,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/029.mp3",
+        "localBytes": 28026877,
+        "remoteBytes": 28026877,
+        "localMd5": "ea4c342f1ede61ba2a4e58f535437f79",
+        "sourceETag": "ea4c342f1ede61ba2a4e58f535437f79",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 30,
+      "file": "030.mp3",
+      "bytes": 24292409,
+      "sha256": "af203173db46342209f761ee324e6b61f9e926d5ac94fc6c3fa28494a23aa1e0",
+      "durationMs": 1517845,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=30&read=270",
+      "timingSourceSha256": "d0d83e80d3aec7150f524754b027433749ba70373c8d380aa724e913d6a2db8d",
+      "sourceAudioVerification": {
+        "surah": 30,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/030.mp3",
+        "localBytes": 24292409,
+        "remoteBytes": 24292409,
+        "localMd5": "78e9a33c12576a89213c70f9439c9377",
+        "sourceETag": "78e9a33c12576a89213c70f9439c9377",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 31,
+      "file": "031.mp3",
+      "bytes": 15049420,
+      "sha256": "238762a3e42f6e7a14a073beefa52d693ed18d552b3024f610badff1afbe8030",
+      "durationMs": 939102,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=31&read=270",
+      "timingSourceSha256": "55b04572e2c40d872711dcee0d8135dca977d1b4586a042075b74697651fc282",
+      "sourceAudioVerification": {
+        "surah": 31,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/031.mp3",
+        "localBytes": 15049420,
+        "remoteBytes": 15049420,
+        "localMd5": "6d2dfbafe9b9d9bb4ed6800cc5955ee9",
+        "sourceETag": "6d2dfbafe9b9d9bb4ed6800cc5955ee9",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 32,
+      "file": "032.mp3",
+      "bytes": 10920643,
+      "sha256": "51cad6fea9f6c7f7147725151ff48670c69a166a4e208a7b8bb5cfa7f13905d2",
+      "durationMs": 682109,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=32&read=270",
+      "timingSourceSha256": "d94be3df84ce0424880a5f4a933ff5a137fe7685f4b485a9fb13f3e46f5befae",
+      "sourceAudioVerification": {
+        "surah": 32,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/032.mp3",
+        "localBytes": 10920643,
+        "remoteBytes": 10920643,
+        "localMd5": "efa02957642b3b67c6b6df3aa0a05041",
+        "sourceETag": "efa02957642b3b67c6b6df3aa0a05041",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 33,
+      "file": "033.mp3",
+      "bytes": 39476449,
+      "sha256": "cec7bc8d63891cc478dec446753ea11e3b14a134c597ae23321fea288c047fea",
+      "durationMs": 2466847,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=33&read=270",
+      "timingSourceSha256": "79084865e498f0737d62c47f249d3c646f7bdb72006fe061e1e9c9dcb4a30d5b",
+      "sourceAudioVerification": {
+        "surah": 33,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/033.mp3",
+        "localBytes": 39476449,
+        "remoteBytes": 39476449,
+        "localMd5": "538a624827d17d135dc4dd95e14eb1b5",
+        "sourceETag": "538a624827d17d135dc4dd95e14eb1b5",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 34,
+      "file": "034.mp3",
+      "bytes": 25711795,
+      "sha256": "4fd05b161169217d8ab09c985f068e338d9fab88fbf89c825404d3cd36baaf65",
+      "durationMs": 1606557,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=34&read=270",
+      "timingSourceSha256": "f5abb926a370a9151ef50e66dcf226a617ac3c2d1f6e731b500de9b2971075b9",
+      "sourceAudioVerification": {
+        "surah": 34,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/034.mp3",
+        "localBytes": 25711795,
+        "remoteBytes": 25711795,
+        "localMd5": "df65f0b310c0e153be1e2b44544033e0",
+        "sourceETag": "df65f0b310c0e153be1e2b44544033e0",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 35,
+      "file": "035.mp3",
+      "bytes": 24032017,
+      "sha256": "e39b8922b487ba06f4ca806a2ed4c531dd70f9c435b197466551ceebac135d91",
+      "durationMs": 1501571,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=35&read=270",
+      "timingSourceSha256": "eeba2f1337dbda9f944ddd753a0d8adc1c8a0aa3a6adc157d000f1883d90af68",
+      "sourceAudioVerification": {
+        "surah": 35,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/035.mp3",
+        "localBytes": 24032017,
+        "remoteBytes": 24032017,
+        "localMd5": "ef470d168e9bc05d8fade477f504bdff",
+        "sourceETag": "ef470d168e9bc05d8fade477f504bdff",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 36,
+      "file": "036.mp3",
+      "bytes": 21275161,
+      "sha256": "026612eb03f15e79cb164c5bb1beaa6d547185113c5eeed40c46d42dbb54ded6",
+      "durationMs": 1329267,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=36&read=270",
+      "timingSourceSha256": "694efe7bb4eda544bcb6f28ad7d2e99ec80acbdf167c816caf9ae855c7b0b646",
+      "sourceAudioVerification": {
+        "surah": 36,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/036.mp3",
+        "localBytes": 21275161,
+        "remoteBytes": 21275161,
+        "localMd5": "ccd89a4711891724c9072680cf01a425",
+        "sourceETag": "ccd89a4711891724c9072680cf01a425",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 37,
+      "file": "037.mp3",
+      "bytes": 27057628,
+      "sha256": "54ed4a949d04f0fb5f587aea34eeda0a059588a0e6373d4ff0bf03ee2fc7f774",
+      "durationMs": 1690671,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=37&read=270",
+      "timingSourceSha256": "c80372559d8c4442773897068b374c5c23ec527a6910c9f0b06e6ba4ce772984",
+      "sourceAudioVerification": {
+        "surah": 37,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/037.mp3",
+        "localBytes": 27057628,
+        "remoteBytes": 27057628,
+        "localMd5": "5acd89964762aa2b20141c2227a22396",
+        "sourceETag": "5acd89964762aa2b20141c2227a22396",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 38,
+      "file": "038.mp3",
+      "bytes": 21512557,
+      "sha256": "0d3d2f68ad18ceb16618a3d88300721c5bff3069110476b21ea168437332091d",
+      "durationMs": 1344104,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=38&read=270",
+      "timingSourceSha256": "54990beb9928f257b9c06dad2632c228e72b6b3d547c7fbaa9d5e75834bf2dbc",
+      "sourceAudioVerification": {
+        "surah": 38,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/038.mp3",
+        "localBytes": 21512557,
+        "remoteBytes": 21512557,
+        "localMd5": "cf407e73b4dec66183e31c9ce8e4fe43",
+        "sourceETag": "cf407e73b4dec66183e31c9ce8e4fe43",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 39,
+      "file": "039.mp3",
+      "bytes": 32458913,
+      "sha256": "42ca977803898e0a7c9ee52a62a300b2bd97669cb63aeaddcf9a211aff734090",
+      "durationMs": 2028251,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=39&read=270",
+      "timingSourceSha256": "cfccd5362f1135d5f229966227c3a2fa5d2c0f3cc1c85e89a9beb71fe7116ea3",
+      "sourceAudioVerification": {
+        "surah": 39,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/039.mp3",
+        "localBytes": 32458913,
+        "remoteBytes": 32458913,
+        "localMd5": "1a99ae0aa64e8b7126ef84f45a26781e",
+        "sourceETag": "1a99ae0aa64e8b7126ef84f45a26781e",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 40,
+      "file": "040.mp3",
+      "bytes": 33580714,
+      "sha256": "aaf9a6a50a5ccd2d33de109619f3e8b3deefc1154e0fcd8cb844e4d7e8b71c1d",
+      "durationMs": 2098364,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=40&read=270",
+      "timingSourceSha256": "506e55e2eb0e7127f397318c9304836fcc350439cb2652d68fdae89a2a547030",
+      "sourceAudioVerification": {
+        "surah": 40,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/040.mp3",
+        "localBytes": 33580714,
+        "remoteBytes": 33580714,
+        "localMd5": "58e70bfc883e9d3834bb7a294729ff42",
+        "sourceETag": "58e70bfc883e9d3834bb7a294729ff42",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 41,
+      "file": "041.mp3",
+      "bytes": 23434757,
+      "sha256": "db14ca4c331f8a0e3bea3d8767aa9140a5d8f282a90bdc4a7c35a729fc31bc1b",
+      "durationMs": 1464242,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=41&read=270",
+      "timingSourceSha256": "e12d424f112c7cd986879088b9de8717f05006c6807b4a5c360bcb33222a6ec4",
+      "sourceAudioVerification": {
+        "surah": 41,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/041.mp3",
+        "localBytes": 23434757,
+        "remoteBytes": 23434757,
+        "localMd5": "ac6dbb0110907b43d27ec4ca3fd062eb",
+        "sourceETag": "ac6dbb0110907b43d27ec4ca3fd062eb",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 42,
+      "file": "042.mp3",
+      "bytes": 20744354,
+      "sha256": "28b8fc8c6f417d4feea14d33918d11fffd7a7693ea52bc6f0a2ae3d9087d0f03",
+      "durationMs": 1296091,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=42&read=270",
+      "timingSourceSha256": "323687558dc65412eb316b1cb9d04bc173a4d5465485945babc51b9734191fe9",
+      "sourceAudioVerification": {
+        "surah": 42,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/042.mp3",
+        "localBytes": 20744354,
+        "remoteBytes": 20744354,
+        "localMd5": "6941cc9846c19f23e19b4b5a4c49e2e7",
+        "sourceETag": "6941cc9846c19f23e19b4b5a4c49e2e7",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 43,
+      "file": "043.mp3",
+      "bytes": 23662964,
+      "sha256": "2714769a2b9f49ab2d0e4cfa1c5c386d0a1cc6137aa548e115778a5d7294b732",
+      "durationMs": 1478504,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=43&read=270",
+      "timingSourceSha256": "3d65b4e4cd45f4fc3d10a17f8ad3bed4188a5264942e89d776aebb7225565dc9",
+      "sourceAudioVerification": {
+        "surah": 43,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/043.mp3",
+        "localBytes": 23662964,
+        "remoteBytes": 23662964,
+        "localMd5": "28941a75530ec6dc8c4edb94d2677f2b",
+        "sourceETag": "28941a75530ec6dc8c4edb94d2677f2b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 44,
+      "file": "044.mp3",
+      "bytes": 11333585,
+      "sha256": "892f45f0a96396adc4e4e43631d115e61a6be39ad00278626d639c63737a91a6",
+      "durationMs": 707918,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=44&read=270",
+      "timingSourceSha256": "5a74cd384f0bad274d8f586b22391d45df599ca6a7b216c53b43a03222bedf74",
+      "sourceAudioVerification": {
+        "surah": 44,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/044.mp3",
+        "localBytes": 11333585,
+        "remoteBytes": 11333585,
+        "localMd5": "ac98285c84ffcf4b3c42952fd40842b6",
+        "sourceETag": "ac98285c84ffcf4b3c42952fd40842b6",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 45,
+      "file": "045.mp3",
+      "bytes": 14593668,
+      "sha256": "aa9339780392cb65af08396927c39ccc95319de8928af8f276086251a574b832",
+      "durationMs": 911673,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=45&read=270",
+      "timingSourceSha256": "edb9d4309eeed0d0eda4b022806bbebe1d07d65cfcb74d00e42b381c6216ecf6",
+      "sourceAudioVerification": {
+        "surah": 45,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/045.mp3",
+        "localBytes": 14593668,
+        "remoteBytes": 14593668,
+        "localMd5": "33359c47957300fe9d2a5cdff0e18c93",
+        "sourceETag": "33359c47957300fe9d2a5cdff0e18c93",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 46,
+      "file": "046.mp3",
+      "bytes": 18467312,
+      "sha256": "1c936ea2a2564093f778d97c99778ba939792396b0f7d005c2c60860e7a7f294",
+      "durationMs": 1153776,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=46&read=270",
+      "timingSourceSha256": "33fc317dd3800097092f0aacf90f2ac4eb1803bcc0024c62bdd9dd8c357b75a9",
+      "sourceAudioVerification": {
+        "surah": 46,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/046.mp3",
+        "localBytes": 18467312,
+        "remoteBytes": 18467312,
+        "localMd5": "95ae262aa7969a4ef5f8bad5481dd698",
+        "sourceETag": "95ae262aa7969a4ef5f8bad5481dd698",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 47,
+      "file": "047.mp3",
+      "bytes": 17671935,
+      "sha256": "d45cc4474a89aa458008fe59527b3a761a62bcf44783d288e21e7204c067e3b9",
+      "durationMs": 1104065,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=47&read=270",
+      "timingSourceSha256": "ad7b96df59f46596375738f27f5ccf74f8b5819c7eb38e16b2e3cc739afb46b8",
+      "sourceAudioVerification": {
+        "surah": 47,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/047.mp3",
+        "localBytes": 17671935,
+        "remoteBytes": 17671935,
+        "localMd5": "41019814ac292e50a662657af15c498b",
+        "sourceETag": "41019814ac292e50a662657af15c498b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 48,
+      "file": "048.mp3",
+      "bytes": 15669492,
+      "sha256": "30cd10218e6b78fcc242aafa608c68606bc32157e076078bf63a728b32521bdc",
+      "durationMs": 978913,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=48&read=270",
+      "timingSourceSha256": "a22f02c87b8e77cbab85eaffbad99da68e387fa50611d514d0bdba681b4f17e2",
+      "sourceAudioVerification": {
+        "surah": 48,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/048.mp3",
+        "localBytes": 15669492,
+        "remoteBytes": 15669492,
+        "localMd5": "4a5e808467654f4d1c59b8265fcffc4c",
+        "sourceETag": "4a5e808467654f4d1c59b8265fcffc4c",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 49,
+      "file": "049.mp3",
+      "bytes": 11435986,
+      "sha256": "79659a6e425b89c418f35e0d633ded60fa03fb98d7f3c38ebc8f31f11acbac83",
+      "durationMs": 714318,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=49&read=270",
+      "timingSourceSha256": "381c2276a3b9f109b0cb1519e8e6ab48c7520354f9da664d2c3084b54a4b24aa",
+      "sourceAudioVerification": {
+        "surah": 49,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/049.mp3",
+        "localBytes": 11435986,
+        "remoteBytes": 11435986,
+        "localMd5": "934d22317eb74f8f09b1948197e26eb6",
+        "sourceETag": "934d22317eb74f8f09b1948197e26eb6",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 50,
+      "file": "050.mp3",
+      "bytes": 11204430,
+      "sha256": "cc4cd706c4c024792d01a735b710ecb3403d28b8febde77b39e8fe0c45744e19",
+      "durationMs": 699846,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=50&read=270",
+      "timingSourceSha256": "9e1eb4e923b0872563201ec2a6c138e943974075da04ddc8665edccc42fada7e",
+      "sourceAudioVerification": {
+        "surah": 50,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/050.mp3",
+        "localBytes": 11204430,
+        "remoteBytes": 11204430,
+        "localMd5": "35cc4c4388dcafb76062aa816ed307c6",
+        "sourceETag": "35cc4c4388dcafb76062aa816ed307c6",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 51,
+      "file": "051.mp3",
+      "bytes": 10052124,
+      "sha256": "2f65461f4d8d8c10dd9c90be6bb7a38bad0e2f7e6ff0ba35b433cf3ecbbc4be0",
+      "durationMs": 627827,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=51&read=270",
+      "timingSourceSha256": "072585fee768405d9e34172498bf9f3f09e3c79e49993ec6656fb376161addc5",
+      "sourceAudioVerification": {
+        "surah": 51,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/051.mp3",
+        "localBytes": 10052124,
+        "remoteBytes": 10052124,
+        "localMd5": "8bdd8585d91ecea886d5383a4ec3bc39",
+        "sourceETag": "8bdd8585d91ecea886d5383a4ec3bc39",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 52,
+      "file": "052.mp3",
+      "bytes": 9785044,
+      "sha256": "98ae8381a3da3dfbff90fa4ee17d678af63b7af43a1a7cfa106def484a8a5361",
+      "durationMs": 611135,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=52&read=270",
+      "timingSourceSha256": "fe897ccbe973ab9991250623ce7c5a9a4c5a13c66b654b93a1f3ff3698234bd6",
+      "sourceAudioVerification": {
+        "surah": 52,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/052.mp3",
+        "localBytes": 9785044,
+        "remoteBytes": 9785044,
+        "localMd5": "dd5bc784cfca209c7e77efe18dbcf6b6",
+        "sourceETag": "dd5bc784cfca209c7e77efe18dbcf6b6",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 53,
+      "file": "053.mp3",
+      "bytes": 11023458,
+      "sha256": "92bf5ce3afadab237e5d048f75d626c837fdade623991b965c462613a11fe036",
+      "durationMs": 688536,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=53&read=270",
+      "timingSourceSha256": "a436f28a1b4fd9cbce76a9f5c66e943b22ea64c3dc07850967650f7133472097",
+      "sourceAudioVerification": {
+        "surah": 53,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/053.mp3",
+        "localBytes": 11023458,
+        "remoteBytes": 11023458,
+        "localMd5": "6621cf841352dc879ee438ecb70d2305",
+        "sourceETag": "6621cf841352dc879ee438ecb70d2305",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 54,
+      "file": "054.mp3",
+      "bytes": 10580004,
+      "sha256": "30b1dc22e5bd6eb5edc5ef2d4159e48ed0d8aa4a74fd8a579db5ddbc7e5c1599",
+      "durationMs": 660820,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=54&read=270",
+      "timingSourceSha256": "744a1b792a4914fca211a8733ab1fcf8418eff6a1b0ebcdb4c63cd5a7e6fc268",
+      "sourceAudioVerification": {
+        "surah": 54,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/054.mp3",
+        "localBytes": 10580004,
+        "remoteBytes": 10580004,
+        "localMd5": "739616cd5c3693588f1068def889ff4b",
+        "sourceETag": "739616cd5c3693588f1068def889ff4b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 55,
+      "file": "055.mp3",
+      "bytes": 13430905,
+      "sha256": "7a3e489c59ccaa071ebafbfdfa5b8ee10e86cca7f9082f8f44dbb7d301be1b10",
+      "durationMs": 839001,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=55&read=270",
+      "timingSourceSha256": "cb58f57dfa16eb15da3b2f4519f64745178a8b2388388699cf3ff70e050fa3d7",
+      "sourceAudioVerification": {
+        "surah": 55,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/055.mp3",
+        "localBytes": 13430905,
+        "remoteBytes": 13430905,
+        "localMd5": "0a740a5690cfc3f459a85c1bc13b65f6",
+        "sourceETag": "0a740a5690cfc3f459a85c1bc13b65f6",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 56,
+      "file": "056.mp3",
+      "bytes": 13534142,
+      "sha256": "814118a377c5ae7c3951c60dcf24b0a70e5d56ce6a774dde04fe2e0616ed17ae",
+      "durationMs": 845453,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=56&read=270",
+      "timingSourceSha256": "acfcf5b96c169592d07e092c203c6e2da6b61f0828ed6bdb26ffcc8fcd074abe",
+      "sourceAudioVerification": {
+        "surah": 56,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/056.mp3",
+        "localBytes": 13534142,
+        "remoteBytes": 13534142,
+        "localMd5": "e1d24036606df173b6a67fc2e0cad00d",
+        "sourceETag": "e1d24036606df173b6a67fc2e0cad00d",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 57,
+      "file": "057.mp3",
+      "bytes": 16361215,
+      "sha256": "e0304ac3607cb42476643214d193bcb088894f191f9b533727756055cdadc515",
+      "durationMs": 1022145,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=57&read=270",
+      "timingSourceSha256": "e7998499ae4aa798c24f29f0d7559adc5f3416e3567b59acceb907f1c820342f",
+      "sourceAudioVerification": {
+        "surah": 57,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/057.mp3",
+        "localBytes": 16361215,
+        "remoteBytes": 16361215,
+        "localMd5": "adbb86d1af2977ae375d24ee3c4bce24",
+        "sourceETag": "adbb86d1af2977ae375d24ee3c4bce24",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 58,
+      "file": "058.mp3",
+      "bytes": 13942908,
+      "sha256": "b1a85de2d14f097137304bea4c0ca1f089aec345d3b6319029e5752082d411e9",
+      "durationMs": 871001,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=58&read=270",
+      "timingSourceSha256": "f9067e7408ec29b53fae50345d2f65f5d845d4eedf570a1081a52e6956a51f77",
+      "sourceAudioVerification": {
+        "surah": 58,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/058.mp3",
+        "localBytes": 13942908,
+        "remoteBytes": 13942908,
+        "localMd5": "ce3ac8db834315bfa2dce276361a543b",
+        "sourceETag": "ce3ac8db834315bfa2dce276361a543b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 59,
+      "file": "059.mp3",
+      "bytes": 14417759,
+      "sha256": "f43760ae3643198ce3bb7e91c4a947a0f25c446e450df7d0f638d4636907cab9",
+      "durationMs": 901094,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=59&read=270",
+      "timingSourceSha256": "a846cd88d4486ff9ca2181df3a1272ecb52f56f3d76ab06e6c086f1ed0b882d3",
+      "sourceAudioVerification": {
+        "surah": 59,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/059.mp3",
+        "localBytes": 14417759,
+        "remoteBytes": 14417759,
+        "localMd5": "1987228b293d475119245eb9276f4ee9",
+        "sourceETag": "1987228b293d475119245eb9276f4ee9",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 60,
+      "file": "060.mp3",
+      "bytes": 11114161,
+      "sha256": "4925321a0745b62d713cf0aabdd55e4033747771383d227eba5260e4b4fc6e9e",
+      "durationMs": 694204,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=60&read=270",
+      "timingSourceSha256": "81a46ed6dbc1e0f3de4005a95a15dbccc51cd6968c8ffe452240fbd544ae1fc4",
+      "sourceAudioVerification": {
+        "surah": 60,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/060.mp3",
+        "localBytes": 11114161,
+        "remoteBytes": 11114161,
+        "localMd5": "775edaf721e23d3f0e4ced23dddf252a",
+        "sourceETag": "775edaf721e23d3f0e4ced23dddf252a",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 61,
+      "file": "061.mp3",
+      "bytes": 6801652,
+      "sha256": "29730f1eaf57a380127430aa6f4dd6f223ec769d3a967fe389e2cfe7a4aa50aa",
+      "durationMs": 424673,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=61&read=270",
+      "timingSourceSha256": "81679474b990a26886ad14194c665113f6a4d6657453cc6900d793ae86717c71",
+      "sourceAudioVerification": {
+        "surah": 61,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/061.mp3",
+        "localBytes": 6801652,
+        "remoteBytes": 6801652,
+        "localMd5": "7f46daf86e227ec4db42de960795ad7b",
+        "sourceETag": "7f46daf86e227ec4db42de960795ad7b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 62,
+      "file": "062.mp3",
+      "bytes": 5372653,
+      "sha256": "33ece35cbcb07f92ee0c84e6cc0f8074ba311e5303092fefa7a88430bc201edd",
+      "durationMs": 335360,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=62&read=270",
+      "timingSourceSha256": "8b442349bd8c9516523f0c45b37b80f69fceec0aa40d290a74a3b845b0b03db2",
+      "sourceAudioVerification": {
+        "surah": 62,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/062.mp3",
+        "localBytes": 5372653,
+        "remoteBytes": 5372653,
+        "localMd5": "608195870fcf5c012234424ca40a03f2",
+        "sourceETag": "608195870fcf5c012234424ca40a03f2",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 63,
+      "file": "063.mp3",
+      "bytes": 5815691,
+      "sha256": "54540b2dbcd00e1ea2cce23bbfc109bc7e2ee205f01fd17948215c8bf98bd96b",
+      "durationMs": 363050,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=63&read=270",
+      "timingSourceSha256": "52876d75d6a84850e5df750d7d2edec99f8db2e6aec80208365c419326d3d764",
+      "sourceAudioVerification": {
+        "surah": 63,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/063.mp3",
+        "localBytes": 5815691,
+        "remoteBytes": 5815691,
+        "localMd5": "c1cd5098e6f5bb717b30189df581bf69",
+        "sourceETag": "c1cd5098e6f5bb717b30189df581bf69",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 64,
+      "file": "064.mp3",
+      "bytes": 7699014,
+      "sha256": "5d47f5919fea06fe0687f217a4146a90f3cab3247334d8f339aa89e18f62bc17",
+      "durationMs": 480758,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=64&read=270",
+      "timingSourceSha256": "e1b2f147a0425d8bf5a9a5b5d2f4702033bbb8179003aa1fd4df0d0ecd4900fe",
+      "sourceAudioVerification": {
+        "surah": 64,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/064.mp3",
+        "localBytes": 7699014,
+        "remoteBytes": 7699014,
+        "localMd5": "3c9857d8a8be595822dc17a697109255",
+        "sourceETag": "3c9857d8a8be595822dc17a697109255",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 65,
+      "file": "065.mp3",
+      "bytes": 7434861,
+      "sha256": "f9f5e526d375687f454d3b9441b8a9137d10fe9e8ae688737dd117c45779d4fa",
+      "durationMs": 464248,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=65&read=270",
+      "timingSourceSha256": "95cf7dc21c4f05a724b4b8ed023910897c7952f2fffacb65b52037f47cc65411",
+      "sourceAudioVerification": {
+        "surah": 65,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/065.mp3",
+        "localBytes": 7434861,
+        "remoteBytes": 7434861,
+        "localMd5": "7773fbecadf88ecbb82022de2db47d95",
+        "sourceETag": "7773fbecadf88ecbb82022de2db47d95",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 66,
+      "file": "066.mp3",
+      "bytes": 7767140,
+      "sha256": "2d426a48eab9c263b2e8cb626f5821f0475183a019509c3a45219fdd46ea63da",
+      "durationMs": 485016,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=66&read=270",
+      "timingSourceSha256": "9bb60e47c992605007643abaea7521430d7e6c3cf470636e107b122b78b56088",
+      "sourceAudioVerification": {
+        "surah": 66,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/066.mp3",
+        "localBytes": 7767140,
+        "remoteBytes": 7767140,
+        "localMd5": "535cf68229592f127483689324f0f929",
+        "sourceETag": "535cf68229592f127483689324f0f929",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 67,
+      "file": "067.mp3",
+      "bytes": 9527582,
+      "sha256": "9083999af77d7a3823d81cac2e1dcb48f10598fd7e6270c2b7bafebc1f8845c0",
+      "durationMs": 595043,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=67&read=270",
+      "timingSourceSha256": "aa2fd76e4b2d05f52432ff7d6112debc0246fcbbad5e2d3b98eb6e4515829bb3",
+      "sourceAudioVerification": {
+        "surah": 67,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/067.mp3",
+        "localBytes": 9527582,
+        "remoteBytes": 9527582,
+        "localMd5": "6d3e052c8703d950c789da350fe1f27d",
+        "sourceETag": "6d3e052c8703d950c789da350fe1f27d",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 68,
+      "file": "068.mp3",
+      "bytes": 9415570,
+      "sha256": "970f85727699ebb9222bc58462699b96dabff58fcefd4e3a572f10aa78494ade",
+      "durationMs": 588042,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=68&read=270",
+      "timingSourceSha256": "138e7d580fb496a75eedc40e6cb932880943ffd769a7dd845a71c1375b56df91",
+      "sourceAudioVerification": {
+        "surah": 68,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/068.mp3",
+        "localBytes": 9415570,
+        "remoteBytes": 9415570,
+        "localMd5": "e53224356a33295377ae64a804fe3c73",
+        "sourceETag": "e53224356a33295377ae64a804fe3c73",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 69,
+      "file": "069.mp3",
+      "bytes": 7995345,
+      "sha256": "02b57d6da1ca710d47aef61d5be70a073d71bfe94f51e73e9389f1ec507770ca",
+      "durationMs": 499278,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=69&read=270",
+      "timingSourceSha256": "15a5624da9a8b559933281120268d5b8926a8447c6a902b252c051820953c95f",
+      "sourceAudioVerification": {
+        "surah": 69,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/069.mp3",
+        "localBytes": 7995345,
+        "remoteBytes": 7995345,
+        "localMd5": "ce7c2ba2dc9e8a0087aa60152a990a74",
+        "sourceETag": "ce7c2ba2dc9e8a0087aa60152a990a74",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 70,
+      "file": "070.mp3",
+      "bytes": 6760695,
+      "sha256": "b84b9839607642c2ea05dbcc295ef7bcbcded8e8443c8d9f20adc71b2da3496c",
+      "durationMs": 422113,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=70&read=270",
+      "timingSourceSha256": "06ebea812a4c1f43b9ed8b579e58168ae4120c45903bd60b06f95901e88c3e43",
+      "sourceAudioVerification": {
+        "surah": 70,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/070.mp3",
+        "localBytes": 6760695,
+        "remoteBytes": 6760695,
+        "localMd5": "083a8c0d1e8aa1e101f62bc6e6604c75",
+        "sourceETag": "083a8c0d1e8aa1e101f62bc6e6604c75",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 71,
+      "file": "071.mp3",
+      "bytes": 6745642,
+      "sha256": "e685f9de280daddb7506ac213245f574c876a7160b982b7911f69f9ab54cd1cb",
+      "durationMs": 421172,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=71&read=270",
+      "timingSourceSha256": "a22c4a46cf3db1a7d5dcb88bcaf089c83809a227c81754fd54cc660ec665f4dc",
+      "sourceAudioVerification": {
+        "surah": 71,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/071.mp3",
+        "localBytes": 6745642,
+        "remoteBytes": 6745642,
+        "localMd5": "a69ff6640e8e7f5c7d0512b0a4b3ec31",
+        "sourceETag": "a69ff6640e8e7f5c7d0512b0a4b3ec31",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 72,
+      "file": "072.mp3",
+      "bytes": 7731611,
+      "sha256": "8deb758a1315979c5c4d131beda950d3f0e492931a9f0fa5a8bcbb665eb9897d",
+      "durationMs": 482795,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=72&read=270",
+      "timingSourceSha256": "75e318b17e14bfa9c034c5a2bd0df628940ae4a5766f8137062aa6cb6b03283f",
+      "sourceAudioVerification": {
+        "surah": 72,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/072.mp3",
+        "localBytes": 7731611,
+        "remoteBytes": 7731611,
+        "localMd5": "e3c23a7b2340ae7eaad0799858650a0c",
+        "sourceETag": "e3c23a7b2340ae7eaad0799858650a0c",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 73,
+      "file": "073.mp3",
+      "bytes": 5831574,
+      "sha256": "263e83a357ed569e10a1aaedfdd789cfcfd0751489cc75ca5e0298a6e044caa2",
+      "durationMs": 364042,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=73&read=270",
+      "timingSourceSha256": "a3c0ce15595174cb1424b8cef152fed60597c8910930d237385849bbd069077d",
+      "sourceAudioVerification": {
+        "surah": 73,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/073.mp3",
+        "localBytes": 5831574,
+        "remoteBytes": 5831574,
+        "localMd5": "34495ed17d880eb842774ffe5929f4d7",
+        "sourceETag": "34495ed17d880eb842774ffe5929f4d7",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 74,
+      "file": "074.mp3",
+      "bytes": 7862439,
+      "sha256": "ff140f4aa90f677c47c24812d68939401792fbd4ce6871520c9ac24b4cd487eb",
+      "durationMs": 490971,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=74&read=270",
+      "timingSourceSha256": "108c34cb135518516e94a7d0a6af564a37845a1b6de8e7591d849e9f46fcec53",
+      "sourceAudioVerification": {
+        "surah": 74,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/074.mp3",
+        "localBytes": 7862439,
+        "remoteBytes": 7862439,
+        "localMd5": "65e68ed565abcd737b730b85af003e94",
+        "sourceETag": "65e68ed565abcd737b730b85af003e94",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 75,
+      "file": "075.mp3",
+      "bytes": 4555124,
+      "sha256": "ba18c1f6af8229a6f19302d81c5318c7667748f0a8947da48317216b5f513957",
+      "durationMs": 284264,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=75&read=270",
+      "timingSourceSha256": "dd52b6f3ea2c4a7dc86e46b00d11bcb5d9797ce6e2eb0a8436c849791de6b426",
+      "sourceAudioVerification": {
+        "surah": 75,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/075.mp3",
+        "localBytes": 4555124,
+        "remoteBytes": 4555124,
+        "localMd5": "343fdb4f9c018cd2afcb06bb07814fc4",
+        "sourceETag": "343fdb4f9c018cd2afcb06bb07814fc4",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 76,
+      "file": "076.mp3",
+      "bytes": 7494211,
+      "sha256": "89a4ffb1d7b7ce0ba0510db657eb26d0d2b2f567c740c9f36efc65f7aa3eef4f",
+      "durationMs": 467958,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=76&read=270",
+      "timingSourceSha256": "0c1b8a000d1f2b11e02807828c13c648df1dd00ad472792b66dd6037fb39ee97",
+      "sourceAudioVerification": {
+        "surah": 76,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/076.mp3",
+        "localBytes": 7494211,
+        "remoteBytes": 7494211,
+        "localMd5": "34da1f9f1c9420cc236ada6820960532",
+        "sourceETag": "34da1f9f1c9420cc236ada6820960532",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 77,
+      "file": "077.mp3",
+      "bytes": 6305538,
+      "sha256": "ca42bd5ff67cdde6c36245afe4a7530b9376e931c1a295b20d4342378da28987",
+      "durationMs": 393665,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=77&read=270",
+      "timingSourceSha256": "1475abcccc776a7d5689964823bcd9cf3a64bfd7c1ab20cc14e48f7c821503cd",
+      "sourceAudioVerification": {
+        "surah": 77,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/077.mp3",
+        "localBytes": 6305538,
+        "remoteBytes": 6305538,
+        "localMd5": "b6fba01ef95bf31419a93b9429fb0198",
+        "sourceETag": "b6fba01ef95bf31419a93b9429fb0198",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 78,
+      "file": "078.mp3",
+      "bytes": 6168863,
+      "sha256": "9de5c7da844db28e33dc640342fbc008a202ae8ee6195312a58239df7a5f8ec3",
+      "durationMs": 385123,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=78&read=270",
+      "timingSourceSha256": "015bf7008a3dad0dbd90cdc2f0b7163d39f5e2cc6cf91fa396fe0513a549b3f8",
+      "sourceAudioVerification": {
+        "surah": 78,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/078.mp3",
+        "localBytes": 6168863,
+        "remoteBytes": 6168863,
+        "localMd5": "14bb614b609a3b71258d8b4d97a95f14",
+        "sourceETag": "14bb614b609a3b71258d8b4d97a95f14",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 79,
+      "file": "079.mp3",
+      "bytes": 5938569,
+      "sha256": "33fb462e7594e8b9d7088f81735ff2860c9b2b15f5ee4e59e56e1808ab28e038",
+      "durationMs": 370730,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=79&read=270",
+      "timingSourceSha256": "efd2bc68fdd87d8f8ad0c0966a2777c3357834485009e5fd0168a0d00ddc3921",
+      "sourceAudioVerification": {
+        "surah": 79,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/079.mp3",
+        "localBytes": 5938569,
+        "remoteBytes": 5938569,
+        "localMd5": "412c0d63b98c756069fe97ebb24edc0e",
+        "sourceETag": "412c0d63b98c756069fe97ebb24edc0e",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 80,
+      "file": "080.mp3",
+      "bytes": 4584795,
+      "sha256": "96776627edfc63aea030ac93ca2e2cd54ebf2c80f45737e2630ecb7f650d59f8",
+      "durationMs": 286119,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=80&read=270",
+      "timingSourceSha256": "a73abf5ce0ecddf6b1827fc00f0381902e0b6930a8c383d34888f2abaa74dab6",
+      "sourceAudioVerification": {
+        "surah": 80,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/080.mp3",
+        "localBytes": 4584795,
+        "remoteBytes": 4584795,
+        "localMd5": "7153f1ba61db184e775c645c1f478fb3",
+        "sourceETag": "7153f1ba61db184e775c645c1f478fb3",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 81,
+      "file": "081.mp3",
+      "bytes": 3303754,
+      "sha256": "72482ddcdedeadc6362de870531aa027f64436a86b1dad572b1e8ae76c030d83",
+      "durationMs": 206054,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=81&read=270",
+      "timingSourceSha256": "389544bab525a218e1672f657078432b331a628c7b9ef3a88e969282409bb891",
+      "sourceAudioVerification": {
+        "surah": 81,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/081.mp3",
+        "localBytes": 3303754,
+        "remoteBytes": 3303754,
+        "localMd5": "102b09f8ebcb19a93354d0bbda9215d2",
+        "sourceETag": "102b09f8ebcb19a93354d0bbda9215d2",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 82,
+      "file": "082.mp3",
+      "bytes": 2687265,
+      "sha256": "7c6fac4efb1735ea443422327adebe47383c80c4fa76607e88fec64f46a46c40",
+      "durationMs": 167523,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=82&read=270",
+      "timingSourceSha256": "aafcc8d0968a2a0513866419b95870c60dfcd680b39539525498c83b02a0958d",
+      "sourceAudioVerification": {
+        "surah": 82,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/082.mp3",
+        "localBytes": 2687265,
+        "remoteBytes": 2687265,
+        "localMd5": "de5a663b544c4701a6c4abedfc48bf0e",
+        "sourceETag": "de5a663b544c4701a6c4abedfc48bf0e",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 83,
+      "file": "083.mp3",
+      "bytes": 5931885,
+      "sha256": "250afcd273da5114e8121852b79a3c4044d68e0aaaad53968013614a48ab30fa",
+      "durationMs": 370312,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=83&read=270",
+      "timingSourceSha256": "1790ef44a06a3cefdd73ff2cf7aa64f9c097d37a3f97672a182082961091b2ad",
+      "sourceAudioVerification": {
+        "surah": 83,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/083.mp3",
+        "localBytes": 5931885,
+        "remoteBytes": 5931885,
+        "localMd5": "fcb5d048051e9ca4c48e864a44a32645",
+        "sourceETag": "fcb5d048051e9ca4c48e864a44a32645",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 84,
+      "file": "084.mp3",
+      "bytes": 3646900,
+      "sha256": "8c1e34eb52d521c6d7454c2cd5e2128ff03c5d1d53b5a5a2267dd20e7666dbe4",
+      "durationMs": 227500,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=84&read=270",
+      "timingSourceSha256": "05c478b69b7f1af61c92f9be91fbad71319b14038ec59e36f71443c82f54e9f6",
+      "sourceAudioVerification": {
+        "surah": 84,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/084.mp3",
+        "localBytes": 3646900,
+        "remoteBytes": 3646900,
+        "localMd5": "a8e1c918a2e4e44d446f6c06cc785ab9",
+        "sourceETag": "a8e1c918a2e4e44d446f6c06cc785ab9",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 85,
+      "file": "085.mp3",
+      "bytes": 3353072,
+      "sha256": "16b4edcf18b723fc1255b796d9a83822a9db30bbfbb653aacd404282fe180e16",
+      "durationMs": 209136,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=85&read=270",
+      "timingSourceSha256": "2935baf316c3dbcb771c02b8e2c91186e8044cd51e6b6b48fe85525a3d1c7b7d",
+      "sourceAudioVerification": {
+        "surah": 85,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/085.mp3",
+        "localBytes": 3353072,
+        "remoteBytes": 3353072,
+        "localMd5": "7a6e76268cf45cd4fb34c79ca7b9508d",
+        "sourceETag": "7a6e76268cf45cd4fb34c79ca7b9508d",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 86,
+      "file": "086.mp3",
+      "bytes": 2132631,
+      "sha256": "f34f4b71bc46e252f576abee79d80e21813ed7ebc5f92426a9e795d2eac908d8",
+      "durationMs": 132859,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=86&read=270",
+      "timingSourceSha256": "896238a19d63d522d52c9838a20f81623d8894339b0a8843c56a6699eaf6c818",
+      "sourceAudioVerification": {
+        "surah": 86,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/086.mp3",
+        "localBytes": 2132631,
+        "remoteBytes": 2132631,
+        "localMd5": "6f35a39ef76549ccba12a28396e2ab8d",
+        "sourceETag": "6f35a39ef76549ccba12a28396e2ab8d",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 87,
+      "file": "087.mp3",
+      "bytes": 2437740,
+      "sha256": "0910535f5956930f20f4a131f9a7b44808a92f840a4d651203999cb24b1569bb",
+      "durationMs": 151928,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=87&read=270",
+      "timingSourceSha256": "485175a9f22fcd5d385bbba6952ea8b29793ccaa2f82211186a65468c4e11a9a",
+      "sourceAudioVerification": {
+        "surah": 87,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/087.mp3",
+        "localBytes": 2437740,
+        "remoteBytes": 2437740,
+        "localMd5": "deb450f034418c35d80048875e89fed4",
+        "sourceETag": "deb450f034418c35d80048875e89fed4",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 88,
+      "file": "088.mp3",
+      "bytes": 3159143,
+      "sha256": "17e8b0e5e766a0fef2e92abb44dbdebb209834e7af6902ef87d09182d5fe743f",
+      "durationMs": 197016,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=88&read=270",
+      "timingSourceSha256": "b43ab83d2861bfef1c60c6d4646b68afa864c5983ba21a21e6f39eb3aa69559f",
+      "sourceAudioVerification": {
+        "surah": 88,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/088.mp3",
+        "localBytes": 3159143,
+        "remoteBytes": 3159143,
+        "localMd5": "277504f02b408e886919099675a03569",
+        "sourceETag": "277504f02b408e886919099675a03569",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 89,
+      "file": "089.mp3",
+      "bytes": 4473619,
+      "sha256": "659d4c1b10ea1610846381613d0391102a18ceae4890f1a5ef22bfa1a998e625",
+      "durationMs": 279171,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=89&read=270",
+      "timingSourceSha256": "9122e21a062cc0428250a2324e1229cf24a0b3cf46d618ef596c4f47a372683b",
+      "sourceAudioVerification": {
+        "surah": 89,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/089.mp3",
+        "localBytes": 4473619,
+        "remoteBytes": 4473619,
+        "localMd5": "963850cadda4db8b6b10f185d2aa9a81",
+        "sourceETag": "963850cadda4db8b6b10f185d2aa9a81",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 90,
+      "file": "090.mp3",
+      "bytes": 2381735,
+      "sha256": "72c0641f5c5b397d8d5786638454af2fb14c87af9ec8148c4431a7dff814cdef",
+      "durationMs": 148428,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=90&read=270",
+      "timingSourceSha256": "10e2b1e396a2395ec5d6ccad7956c073d02d61867ae1e752b023d8fdfc5ee52b",
+      "sourceAudioVerification": {
+        "surah": 90,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/090.mp3",
+        "localBytes": 2381735,
+        "remoteBytes": 2381735,
+        "localMd5": "df968ff0a7e7e0ce6a129a62d367e882",
+        "sourceETag": "df968ff0a7e7e0ce6a129a62d367e882",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 91,
+      "file": "091.mp3",
+      "bytes": 2019783,
+      "sha256": "9746f186de41c7ad717f49b067767a7abae31bf6b7388651e5440f2240cd818b",
+      "durationMs": 125806,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=91&read=270",
+      "timingSourceSha256": "b2b6810ffc9db576bea17d41463156a4fddc7f229e2f4c9ec3f6c2a2e834a865",
+      "sourceAudioVerification": {
+        "surah": 91,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/091.mp3",
+        "localBytes": 2019783,
+        "remoteBytes": 2019783,
+        "localMd5": "d31ab29bcd4e821b8f8908e88cfb9cf5",
+        "sourceETag": "d31ab29bcd4e821b8f8908e88cfb9cf5",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 92,
+      "file": "092.mp3",
+      "bytes": 2603670,
+      "sha256": "d0c5ded9f5c3a510304c152a50c0acade160d6c411c4652cc5988aabe2b2a3cd",
+      "durationMs": 162299,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=92&read=270",
+      "timingSourceSha256": "684400ca9d94b591d9bd1a56cf898225bdce33cbedf999ce29cfda7380ceb1d0",
+      "sourceAudioVerification": {
+        "surah": 92,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/092.mp3",
+        "localBytes": 2603670,
+        "remoteBytes": 2603670,
+        "localMd5": "10b73f5b9e1843c927ec8334ea6d10a5",
+        "sourceETag": "10b73f5b9e1843c927ec8334ea6d10a5",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 93,
+      "file": "093.mp3",
+      "bytes": 1451356,
+      "sha256": "d7b608b422769277fb75412852e523b9aa42b0390c666eaca2c16909241880e6",
+      "durationMs": 90279,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=93&read=270",
+      "timingSourceSha256": "d5a0354e9c74b7c2475f5076d104913632e686b7ad0f1172451060996fb3af1c",
+      "sourceAudioVerification": {
+        "surah": 93,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/093.mp3",
+        "localBytes": 1451356,
+        "remoteBytes": 1451356,
+        "localMd5": "7d0581affd94a7622fcf83e5f8578df8",
+        "sourceETag": "7d0581affd94a7622fcf83e5f8578df8",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 94,
+      "file": "094.mp3",
+      "bytes": 880008,
+      "sha256": "dc61b919be3e64b3d378ebbee1d8bbae54a0a3a6f0947639465925ee98bfefce",
+      "durationMs": 54570,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=94&read=270",
+      "timingSourceSha256": "9996de7eccc72c33efe0e8172b4d9088cf0f125c29e5045211849dff425270f0",
+      "sourceAudioVerification": {
+        "surah": 94,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/094.mp3",
+        "localBytes": 880008,
+        "remoteBytes": 880008,
+        "localMd5": "f965928336b94de3368fab44e4637aeb",
+        "sourceETag": "f965928336b94de3368fab44e4637aeb",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 95,
+      "file": "095.mp3",
+      "bytes": 1165053,
+      "sha256": "4bf86683e8abe470e578daafe8cda065eefe86e39e6d1fd48f44bb75f51f3834",
+      "durationMs": 72385,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=95&read=270",
+      "timingSourceSha256": "da99dcd95c6116821e0669236fff6fce49df04a3bc22ee48257ce0f721bf1240",
+      "sourceAudioVerification": {
+        "surah": 95,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/095.mp3",
+        "localBytes": 1165053,
+        "remoteBytes": 1165053,
+        "localMd5": "0385de6871cedd2bf99b23dd8ed4b2ad",
+        "sourceETag": "0385de6871cedd2bf99b23dd8ed4b2ad",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 96,
+      "file": "096.mp3",
+      "bytes": 2247152,
+      "sha256": "934caa43909de7d4cef76c31c141dc85acf7fc9655396117736198d903016e0e",
+      "durationMs": 140016,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=96&read=270",
+      "timingSourceSha256": "488d0fa2330b864a01c482bae559ce22d2ef682957b015b4d2bec2b323093bde",
+      "sourceAudioVerification": {
+        "surah": 96,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/096.mp3",
+        "localBytes": 2247152,
+        "remoteBytes": 2247152,
+        "localMd5": "64c469dbcbc4ee5e0dfe408a46351d70",
+        "sourceETag": "64c469dbcbc4ee5e0dfe408a46351d70",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 97,
+      "file": "097.mp3",
+      "bytes": 951477,
+      "sha256": "5e5d1d39f7aeb575efd92e0b2772ed06bcd0757a013f0a57e0bf140b08dc8cec",
+      "durationMs": 59037,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=97&read=270",
+      "timingSourceSha256": "ab7e829e0afe742fbbdbc4f6b7f693d46271d8b096a1692970716a17a6b6c740",
+      "sourceAudioVerification": {
+        "surah": 97,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/097.mp3",
+        "localBytes": 951477,
+        "remoteBytes": 951477,
+        "localMd5": "4edcb27da7940d03a4d15c334cf2abfe",
+        "sourceETag": "4edcb27da7940d03a4d15c334cf2abfe",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 98,
+      "file": "098.mp3",
+      "bytes": 2972314,
+      "sha256": "eb54a10f95c1d71160de4a4153f1e19590c385ee6763d3872e26df613dd4fa88",
+      "durationMs": 185339,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=98&read=270",
+      "timingSourceSha256": "ff7627e95d407ebd42a6d6954c90c97233ae34f3dd10014d4c861d2a9ec85da6",
+      "sourceAudioVerification": {
+        "surah": 98,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/098.mp3",
+        "localBytes": 2972314,
+        "remoteBytes": 2972314,
+        "localMd5": "4c3ee9ad9b6b2194701b31b91136d410",
+        "sourceETag": "4c3ee9ad9b6b2194701b31b91136d410",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 99,
+      "file": "099.mp3",
+      "bytes": 1300895,
+      "sha256": "f5e12779d78dbcb6e70452f0b4a40216d7bc1a1267512e25df3239599c924d08",
+      "durationMs": 80875,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=99&read=270",
+      "timingSourceSha256": "42cb3cd3927012ac053aeca128b6b288d9df2b4f59d4c6ddf9aace60df3ee68d",
+      "sourceAudioVerification": {
+        "surah": 99,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/099.mp3",
+        "localBytes": 1300895,
+        "remoteBytes": 1300895,
+        "localMd5": "4412be5f571d9618e778bafb9cab6cd4",
+        "sourceETag": "4412be5f571d9618e778bafb9cab6cd4",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 100,
+      "file": "100.mp3",
+      "bytes": 1398279,
+      "sha256": "461f6ab1352be90960510a03fc7f04b0edc5882850508be4046537c17c1253f4",
+      "durationMs": 86962,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=100&read=270",
+      "timingSourceSha256": "7cefc6a7053e3d148c5d79484beaf68f945f944096cf1cf1d5d044019f7ed198",
+      "sourceAudioVerification": {
+        "surah": 100,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/100.mp3",
+        "localBytes": 1398279,
+        "remoteBytes": 1398279,
+        "localMd5": "dcd4ae7140e572f603f9c474a0c3cc3b",
+        "sourceETag": "dcd4ae7140e572f603f9c474a0c3cc3b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 101,
+      "file": "101.mp3",
+      "bytes": 1305492,
+      "sha256": "cc2857b2ab9b01aa72e6b4af5974d103aeb6017af594ace22225f6aae41be688",
+      "durationMs": 81162,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=101&read=270",
+      "timingSourceSha256": "215da899d4e26166d30e064d6c5c65c17b125417408f2a70750a335fba8b1d45",
+      "sourceAudioVerification": {
+        "surah": 101,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/101.mp3",
+        "localBytes": 1305492,
+        "remoteBytes": 1305492,
+        "localMd5": "27fb6c19d0406c1adc91df55eff922d0",
+        "sourceETag": "27fb6c19d0406c1adc91df55eff922d0",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 102,
+      "file": "102.mp3",
+      "bytes": 1088572,
+      "sha256": "36de1cbc70b883fae16858b6553183848041b061142c85c04688f7247a81af20",
+      "durationMs": 67605,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=102&read=270",
+      "timingSourceSha256": "2dc291b838070a8429f51f153f3c03f9e9796f36058264c97ea39aa75c9326af",
+      "sourceAudioVerification": {
+        "surah": 102,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/102.mp3",
+        "localBytes": 1088572,
+        "remoteBytes": 1088572,
+        "localMd5": "c6c92dd2e5d20135be171120e4772482",
+        "sourceETag": "c6c92dd2e5d20135be171120e4772482",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 103,
+      "file": "103.mp3",
+      "bytes": 615856,
+      "sha256": "9663f49b9f128d4cbb91705f638f3137ce25ab7e04a47632bd5ab7fee3b67d80",
+      "durationMs": 38060,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=103&read=270",
+      "timingSourceSha256": "d7cea0a8c2f065b7f32b785168dd6a2766e34de93df75eaa84e0ea0ddf65a32b",
+      "sourceAudioVerification": {
+        "surah": 103,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/103.mp3",
+        "localBytes": 615856,
+        "remoteBytes": 615856,
+        "localMd5": "5c5c30d78497583c15b645aa8f10054f",
+        "sourceETag": "5c5c30d78497583c15b645aa8f10054f",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 104,
+      "file": "104.mp3",
+      "bytes": 1247395,
+      "sha256": "523392949b8b9fd54da0009a221138596546b072d3924e99e1923f930ab6bff8",
+      "durationMs": 77531,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=104&read=270",
+      "timingSourceSha256": "cfa2beae348be06b0863ce9c59ce3acf57e34be9e229d92505b19d5ec50b47e9",
+      "sourceAudioVerification": {
+        "surah": 104,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/104.mp3",
+        "localBytes": 1247395,
+        "remoteBytes": 1247395,
+        "localMd5": "5eee6f659653b132d6462f52cfa6e34b",
+        "sourceETag": "5eee6f659653b132d6462f52cfa6e34b",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 105,
+      "file": "105.mp3",
+      "bytes": 858689,
+      "sha256": "b81ec00e4eeb750570929a5d28486858aa65b2546b60442712baa4316e4bae8b",
+      "durationMs": 53238,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=105&read=270",
+      "timingSourceSha256": "4daaec464c7655b839204baf834b8612691f4256c5bd0720cce02b586c76bd74",
+      "sourceAudioVerification": {
+        "surah": 105,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/105.mp3",
+        "localBytes": 858689,
+        "remoteBytes": 858689,
+        "localMd5": "c1cbf579c67c3be1e2ad1f1a4f189cb9",
+        "sourceETag": "c1cbf579c67c3be1e2ad1f1a4f189cb9",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 106,
+      "file": "106.mp3",
+      "bytes": 698612,
+      "sha256": "0624d9d6688dd331ceb25af0fcbd7ae09f760b3d24edbb26e21a996471d812b8",
+      "durationMs": 43233,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=106&read=270",
+      "timingSourceSha256": "d3f1d678fcc154b63dc02e99846cfe2215760651a8bbcb73db78d1f7438b9897",
+      "sourceAudioVerification": {
+        "surah": 106,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/106.mp3",
+        "localBytes": 698612,
+        "remoteBytes": 698612,
+        "localMd5": "c71bb7121562c9af710f98495f7c870c",
+        "sourceETag": "c71bb7121562c9af710f98495f7c870c",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 107,
+      "file": "107.mp3",
+      "bytes": 859109,
+      "sha256": "bd6d0b2f841e2225b34bcf37a3d75599e810a316500a2f968348255ca58c07e8",
+      "durationMs": 53264,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=107&read=270",
+      "timingSourceSha256": "9b770fa1570cfc2d02d59d8c9c4f734bd68953ca721c1000381e4f114c1ec948",
+      "sourceAudioVerification": {
+        "surah": 107,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/107.mp3",
+        "localBytes": 859109,
+        "remoteBytes": 859109,
+        "localMd5": "aedd26197cad1aa59bee7a26b0b794ef",
+        "sourceETag": "aedd26197cad1aa59bee7a26b0b794ef",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 108,
+      "file": "108.mp3",
+      "bytes": 432793,
+      "sha256": "d35714954f87044ab5e90553e81817ec403cf2a3f8a6f37fb062795db6abdfd5",
+      "durationMs": 26619,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=108&read=270",
+      "timingSourceSha256": "04c6453ccef4370b5f98f6f2cd57111c242027155a038c0daa9a3811e3ca2a24",
+      "sourceAudioVerification": {
+        "surah": 108,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/108.mp3",
+        "localBytes": 432793,
+        "remoteBytes": 432793,
+        "localMd5": "a95ee04c44562235ad3cc92034acfbb3",
+        "sourceETag": "a95ee04c44562235ad3cc92034acfbb3",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 109,
+      "file": "109.mp3",
+      "bytes": 783461,
+      "sha256": "1569a949a9520167007a5a2e320ce1b1d8b9834f47c1831988bd00c26cba4157",
+      "durationMs": 48536,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=109&read=270",
+      "timingSourceSha256": "88a506c14b06d6222d8e96fd62ba2ff035783614f34d59216de019494f17260d",
+      "sourceAudioVerification": {
+        "surah": 109,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/109.mp3",
+        "localBytes": 783461,
+        "remoteBytes": 783461,
+        "localMd5": "5b3ba92feec123fac8ee15e86af9c16f",
+        "sourceETag": "5b3ba92feec123fac8ee15e86af9c16f",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 110,
+      "file": "110.mp3",
+      "bytes": 663921,
+      "sha256": "14abd5ab24722ddf290115baf0f39e761eae544e8eee52abe349f00f0079d4e2",
+      "durationMs": 41064,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=110&read=270",
+      "timingSourceSha256": "3e44dd13da8416c45b6c150ebfdcab5f0d6206af75b85ae6f22188ced8b23efc",
+      "sourceAudioVerification": {
+        "surah": 110,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/110.mp3",
+        "localBytes": 663921,
+        "remoteBytes": 663921,
+        "localMd5": "c1b3f4b95e0bf241ff329c015a49c387",
+        "sourceETag": "c1b3f4b95e0bf241ff329c015a49c387",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 111,
+      "file": "111.mp3",
+      "bytes": 727452,
+      "sha256": "481d732a5b0a6511e4a20b6877d0207a20c26c0663e1e4749e48c44d8daebe8e",
+      "durationMs": 45035,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=111&read=270",
+      "timingSourceSha256": "12fa082a87afe948b233b7731d2488fbb9ba321d8b91b7a471e7710300788a6c",
+      "sourceAudioVerification": {
+        "surah": 111,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/111.mp3",
+        "localBytes": 727452,
+        "remoteBytes": 727452,
+        "localMd5": "6b30cc7950fa6413eeb6401b5f33214c",
+        "sourceETag": "6b30cc7950fa6413eeb6401b5f33214c",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 112,
+      "file": "112.mp3",
+      "bytes": 470408,
+      "sha256": "ccf1f644bde95fb450e0c635848e2fe9865f6feeb3a7120eb951cfd60f327f65",
+      "durationMs": 28970,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=112&read=270",
+      "timingSourceSha256": "973328f81b0d260e729acce0bab44403c7fb371e29ee84ba016a3b01fa0cac65",
+      "sourceAudioVerification": {
+        "surah": 112,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/112.mp3",
+        "localBytes": 470408,
+        "remoteBytes": 470408,
+        "localMd5": "a43bb92e1ca83648c980f89239854efa",
+        "sourceETag": "a43bb92e1ca83648c980f89239854efa",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 113,
+      "file": "113.mp3",
+      "bytes": 659743,
+      "sha256": "1cb1f25e536cf98930e820bb66ef661063421292e1b7c5835b494bb9b576e2d1",
+      "durationMs": 40803,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=113&read=270",
+      "timingSourceSha256": "a1a162f1d622a5a5a539ba036ceb8ca5631036d60a73fb0d5e9fbf02b0d2a8a1",
+      "sourceAudioVerification": {
+        "surah": 113,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/113.mp3",
+        "localBytes": 659743,
+        "remoteBytes": 659743,
+        "localMd5": "e3a567b8d2fed2fef90b5a8c47ffaec4",
+        "sourceETag": "e3a567b8d2fed2fef90b5a8c47ffaec4",
+        "etagMatchesMd5": true
+      }
+    },
+    {
+      "surah": 114,
+      "file": "114.mp3",
+      "bytes": 835284,
+      "sha256": "58fd4658dae929162b44acf2b0f706cb65da642df2ee7388ad0d8bc6f0287458",
+      "durationMs": 51775,
+      "timingSource": "https://www.mp3quran.net/api/v3/ayat_timing?surah=114&read=270",
+      "timingSourceSha256": "6b594b1a8acc4f3de4329db2cab2f7f7146d1482303c0b87bf8af19e45ed7b6d",
+      "sourceAudioVerification": {
+        "surah": 114,
+        "url": "https://server13.mp3quran.net/husr/Rewayat-Qalon-A-n-Nafi/114.mp3",
+        "localBytes": 835284,
+        "remoteBytes": 835284,
+        "localMd5": "7d2bb6daa7122e5af225a5e1e5d89cf6",
+        "sourceETag": "7d2bb6daa7122e5af225a5e1e5d89cf6",
+        "etagMatchesMd5": true
+      }
+    }
+  ]
+}

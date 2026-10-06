@@ -11,6 +11,7 @@ import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.WakeMainAlarmMode
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -31,6 +32,7 @@ class WakeAlarmSilenceSuppressionTest {
     @Before
     fun setup() {
         context = ApplicationProvider.getApplicationContext()
+        runBlocking { PrayerWakeRepository(context).clearAllWakeConfigs() }
         context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE)
             .edit()
             .clear()
@@ -51,7 +53,7 @@ class WakeAlarmSilenceSuppressionTest {
 
     @Test
     fun wakeAlarmWithoutSilenceStartsPlaybackService() {
-        WakeAlarmReceiver().onReceive(context, wakeAlarmIntent(wakeMainEventId("normal-alarm")))
+        context.deliverWakeBroadcast(WakeAlarmReceiver(), wakeAlarmIntent(wakeMainEventId("normal-alarm")))
 
         assertStartedPlaybackService()
     }
@@ -60,7 +62,7 @@ class WakeAlarmSilenceSuppressionTest {
     fun wakeAlarmDuringAutoSilenceDoesNotStartPlaybackService() {
         markAutoSilenceActive()
 
-        WakeAlarmReceiver().onReceive(context, wakeAlarmIntent(wakeMainEventId("auto-silenced-alarm")))
+        context.deliverWakeBroadcast(WakeAlarmReceiver(), wakeAlarmIntent(wakeMainEventId("auto-silenced-alarm")))
 
         assertNoStartedService("Wake alarm should not start playback during auto-silence")
     }
@@ -69,7 +71,7 @@ class WakeAlarmSilenceSuppressionTest {
     fun wakeAlarmDuringManualSilenceDoesNotStartPlaybackService() {
         assertTrue(SilenceModeController.setManualSilent(context))
 
-        WakeAlarmReceiver().onReceive(context, wakeAlarmIntent(wakeMainEventId("manual-silenced-alarm")))
+        context.deliverWakeBroadcast(WakeAlarmReceiver(), wakeAlarmIntent(wakeMainEventId("manual-silenced-alarm")))
 
         assertNoStartedService("Wake alarm should not start playback during manual silence")
     }
@@ -78,7 +80,7 @@ class WakeAlarmSilenceSuppressionTest {
     fun wakeAlarmDuringOtherWakeSilenceDoesNotStartPlaybackService() {
         assertTrue(WakeAlarmScheduler.activateSilenceUntilAlarm(context, "other-alarm"))
 
-        WakeAlarmReceiver().onReceive(context, wakeAlarmIntent(wakeMainEventId("unrelated-alarm")))
+        context.deliverWakeBroadcast(WakeAlarmReceiver(), wakeAlarmIntent(wakeMainEventId("unrelated-alarm")))
 
         assertNoStartedService("Wake alarm should not start playback during another wake-silence window")
     }
@@ -88,7 +90,7 @@ class WakeAlarmSilenceSuppressionTest {
         val alarmId = "self-silenced-alarm"
         assertTrue(WakeAlarmScheduler.activateSilenceUntilAlarm(context, alarmId))
 
-        WakeAlarmReceiver().onReceive(context, wakeAlarmIntent(wakeMainEventId(alarmId)))
+        context.deliverWakeBroadcast(WakeAlarmReceiver(), wakeAlarmIntent(wakeMainEventId(alarmId)))
 
         assertStartedPlaybackService()
     }
@@ -99,7 +101,7 @@ class WakeAlarmSilenceSuppressionTest {
         assertTrue(WakeAlarmScheduler.activateSilenceUntilAlarm(context, alarmId))
         markAutoSilenceActive()
 
-        WakeAlarmReceiver().onReceive(context, wakeAlarmIntent(wakeMainEventId(alarmId)))
+        context.deliverWakeBroadcast(WakeAlarmReceiver(), wakeAlarmIntent(wakeMainEventId(alarmId)))
 
         assertNoStartedService("Wake alarm should stay suppressed if auto-silence remains after releasing its own wake silence")
     }
@@ -113,7 +115,7 @@ class WakeAlarmSilenceSuppressionTest {
         )
         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
 
-        WakeAlarmReceiver().onReceive(context, wakeAlarmIntent(wakeMainEventId("stale-auto-flag-alarm")))
+        context.deliverWakeBroadcast(WakeAlarmReceiver(), wakeAlarmIntent(wakeMainEventId("stale-auto-flag-alarm")))
 
         assertStartedPlaybackService()
     }
@@ -133,7 +135,7 @@ class WakeAlarmSilenceSuppressionTest {
             snoreTrackingEnabled = false,
             awakeCheckEnabled = false,
             isSubAlarm = false,
-        )
+        ).setAction(eventId)
 
     private fun markAutoSilenceActive() {
         PrefsManager.markAutoSilenceActive(

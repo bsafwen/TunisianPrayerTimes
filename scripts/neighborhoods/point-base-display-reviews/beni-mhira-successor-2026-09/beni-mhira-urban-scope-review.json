@@ -1,0 +1,667 @@
+{
+  "status": "QUALIFIED_BROAD_TOWN_DISPLAY_IDENTITY_SUPPORTED_ADMINISTRATIVE_LINEAGE_STILL_REQUIRED",
+  "reviewedAt": "2026-09-12T11:57:46.367243+00:00",
+  "scope": {
+    "pointId": "osm:node:5239666199",
+    "baseId": 1524,
+    "decisionQuestion": "Whether the two unqualified Beni Mhira labels identify the same broad inhabited town for display only.",
+    "notAProductApproval": true,
+    "noBoundaryCertification": true
+  },
+  "previousSourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-town-point-source-review.json",
+    "sha256": "a5e9978f0390c05e1230c3cb2f05510cdaac2e3e441e73465b148ede87da2391",
+    "bytes": 9937
+  },
+  "previousRootHold": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-borma-root-scope-holds-20260912.json",
+    "sha256": "d4e5df986785630e710959b05c46c4a02c119a9a3f4fdbfd0509e2fd77db4777",
+    "bytes": 4132
+  },
+  "previousFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\bounded-source-identity-facts.json",
+    "sha256": "70994adfa92466a8a705a58e9cbddba37ed1d0a6a470ad4bf0e3bc9f6c016c70",
+    "bytes": 29890
+  },
+  "currentApplicability": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+      "bytes": 1883642
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94",
+      "bytes": 275518
+    },
+    "curationCount": 167,
+    "factsOriginalMetadataSha256": "c5d895dd8e1c5cd35e99dcce1790a468f3438aa90658c55c11bcdb2a34eba4e9",
+    "pointAndSevenProtectedRawRecordsEqualOriginalFacts": true,
+    "protectedRawIds": [
+      "osm:relation:7143818",
+      "osm:relation:7143819",
+      "osm:relation:7143820",
+      "osm:relation:7143821",
+      "osm:relation:7143822",
+      "osm:node:1980186910",
+      "osm:node:5239666199"
+    ],
+    "qualification": "Only the finite seven-row metadata closure was compared here. Earlier facts retain their original c5d895dd baseline; no whole-catalog geography or proof migration was performed."
+  },
+  "unchangedIdentity": {
+    "sourceNode": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-current.json",
+      "sha256": "b8376fbc4cefd88fb9a76e9629636bd4b9d5740a8eec27113f2bad6842c769af",
+      "bytes": 536
+    },
+    "history": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-history.json",
+      "sha256": "437de0f92ede40d47846800e3450d99828aaff7dee1f43ad5668066308d308de",
+      "bytes": 1905
+    },
+    "exactElement": {
+      "type": "node",
+      "id": 5239666199,
+      "lat": 32.8634378,
+      "lon": 10.8172175,
+      "timestamp": "2025-08-06T07:32:02Z",
+      "version": 6,
+      "changeset": 170041603,
+      "user": "Wüstenrose",
+      "uid": 1900013,
+      "tags": {
+        "name": "Beni Mhira",
+        "name:ar": "بني مهيرة",
+        "name:fr": "Beni Mhira",
+        "place": "village"
+      }
+    },
+    "base": {
+      "id": 1524,
+      "nomFr": "Bni Mhira",
+      "nomAr": "بني مهيرة",
+      "nomEn": "Bni Mhira",
+      "lat": 32.868,
+      "lng": 10.8113
+    },
+    "rawPoint": {
+      "id": "osm:node:5239666199",
+      "sourceId": "osm",
+      "name": "بني مهيرة",
+      "aliases": [
+        "Beni Mhira"
+      ],
+      "kind": "village",
+      "parentName": "قصر مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "Ksar Mehira",
+        "بني مهيرة",
+        "قصر مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.8634378,
+      "lng": 10.8172175,
+      "delegationId": 1524,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:5239666199"
+    },
+    "finding": "The village node has no old/new qualifier and its six archived versions consistently describe a village. The existing base name is likewise unqualified Bni Mhira / بني مهيرة.",
+    "baseReferenceQualification": "The existing app reference coordinates are preserved as input. Their original prayer-calculation semantics are not newly certified by this review."
+  },
+  "primaryPlanningEvidence": [
+    {
+      "url": "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/activites/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html",
+        "sha256": "344191b6aed8fe5a53aef108190d7c622cea7806efbdfd597f52f22b5763e0b6",
+        "bytes": 183788
+      },
+      "finding": "The approved-plan table identifies bni Mhira as the zone, Smar as the commune, and approval publication on 29 December 2023. Commune is not delegation. Its row does not link a plan document."
+    },
+    {
+      "url": "https://www.mehat.gov.tn/2024/03/المصادقة-على-أمثلة-التهيئة-العمرانية/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\mehat-approval-announcement.html",
+        "sha256": "8d917eaa93bb5c1697376d00c6e3adcd5df82f40e3465687a790cc03f7eecccc",
+        "bytes": 168653
+      },
+      "publishedDate": "2024-03-09",
+      "updatedDate": "2024-03-12",
+      "finding": "The ministry announces approval of planning documents for Remada municipality and the Bir Thlathin and Beni Mhira zones. This independently supports a named Beni Mhira urban locality; the announcement does not bind either candidate coordinate to a town footprint."
+    },
+    {
+      "url": "https://www.arp.tn/loi/project/4305",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-municipality-proposal-page.html",
+        "sha256": "2f44a94dad67f7ffb01ea1ba39c35d56c10717be727762c5a5d9dbad2f6a32d8",
+        "bytes": 188519
+      },
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-municipality-proposal-2026-032.pdf",
+        "sha256": "6a10defc0b1526b827084396528afe8366f1551600c50c7999589712ddf59e5a",
+        "bytes": 1817903
+      },
+      "originalPdfUrl": "https://www.arp.tn/document/download/119158",
+      "document": "Proposed law 2026/032, submitted 4 May 2026; committee referral 7 May 2026.",
+      "visualInspection": {
+        "substantivePages": [
+          1,
+          2
+        ],
+        "additionalPagesViewed": [
+          3,
+          4,
+          5,
+          6,
+          17,
+          18,
+          19
+        ],
+        "rendering": "PyMuPDF full-page PNGs at Matrix(1.3,1.3); original PDF is scanned and has no embedded text. No OCR text is represented as original response content."
+      },
+      "finding": "The proposal describes local population/economic growth and proposes a Beni Mhira municipality. Article 2 leaves territorial delimitation to a later ministerial decision. Inspected substantive pages do not distinguish old/new towns or locate the candidate points.",
+      "qualification": "A parliamentary proposal is not an enacted municipal boundary or current delegation record. Pages 7 through 16 were not visually reviewed; no claim of absence across all 19 pages is made."
+    }
+  ],
+  "historicSiteEvidence": {
+    "projectContext": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-home.html",
+      "sha256": "3ac3034c07dc18f29df06772c103c8f6ca8ed6586f324f0efc3feec833e8d016",
+      "bytes": 102728
+    },
+    "authorityQualification": "GMG project field inventory, whose pages identify ONM Tunisia and CNR Italy among project partners. This is primary heritage-site context, not an approved urban plan or a current administrative register. The project warns that entries may remain incomplete.",
+    "monuments": [
+      {
+        "name": "Gasr Beni Mhira (Elataya)",
+        "url": "https://www.dahargmg.info/fr/histoire-de-l-homme/gsour/gsour-de-colline/gasr-beni-mhira-elataya",
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-elataya.html",
+          "sha256": "98691cf82f8a45bba0abd97b33ca00081514735e862be29c2cded6b2d4687119",
+          "bytes": 81240
+        },
+        "publishedDms": {
+          "latitudeDegrees": 32,
+          "latitudeMinutes": 52.365,
+          "latitudeHemisphere": "N",
+          "longitudeDegrees": 10,
+          "longitudeMinutes": 49.217,
+          "longitudeHemisphere": "E"
+        },
+        "derivedDecimalCoordinates": {
+          "lat": 32.87275,
+          "lng": 10.820283333333334
+        },
+        "derivedDistancesKm": {
+          "toVillageSourcePoint": 1.0743309959801477,
+          "toExistingBaseReference": 0.9913909207471207
+        },
+        "coordinateQualification": "Project field-survey monument position; not a town centre, polygon, or prayer calculation reference.",
+        "finding": "The field inventory describes this granary complex as near the village of Beni Mhira, rather than identifying the granary itself as the village.",
+        "administrativeQualification": "The page retains Smar as its delegation label. This historical label is not used to override current Beni Mhira delegation 5358."
+      },
+      {
+        "name": "Gasr Beni Mhira (Zorgan)",
+        "url": "https://www.dahargmg.info/fr/histoire-de-l-homme/gsour/gsour-de-colline/gasr-beni-mhira-zorgan",
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-zorgan.html",
+          "sha256": "f9ff3516f5674488a1b60467e2a93c3695556921a024f65f81a2ff8e84434751",
+          "bytes": 81245
+        },
+        "publishedDms": {
+          "latitudeDegrees": 32,
+          "latitudeMinutes": 52.435,
+          "latitudeHemisphere": "N",
+          "longitudeDegrees": 10,
+          "longitudeMinutes": 49.558,
+          "longitudeHemisphere": "E"
+        },
+        "derivedDecimalCoordinates": {
+          "lat": 32.873916666666666,
+          "lng": 10.825966666666666
+        },
+        "derivedDistancesKm": {
+          "toVillageSourcePoint": 1.4231586469626503,
+          "toExistingBaseReference": 1.519558900829803
+        },
+        "coordinateQualification": "Project field-survey monument position; not a town centre, polygon, or prayer calculation reference.",
+        "finding": "The field inventory describes this granary complex as near the village of Beni Mhira, rather than identifying the granary itself as the village.",
+        "administrativeQualification": "The page retains Smar as its delegation label. This historical label is not used to override current Beni Mhira delegation 5358."
+      }
+    ],
+    "interpretation": "Exact monument coordinates and the separate near-village descriptions remove the assumption that the generic Beni Mhira base necessarily names only a historic granary. They do not establish a legal town edge or prove old/new neighborhood synonymy."
+  },
+  "officialMapCheck": {
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/بني%20مهيرة/قصر%20مهيرة.pdf",
+    "original": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\isie-ksar-mhira-2023-original.pdf",
+      "sha256": "7e95f7c36177f2c0ae1b9daa6bbf850d79f88e5bf121db181f87da424dfa8f39",
+      "bytes": 831736
+    },
+    "provenance": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\isie-ksar-mhira-retrieval-derivation-provenance.json",
+      "sha256": "0c63f67fec6f4e4da6cde0047dccd6ed82da10e7bcb3f69801db15aaacf784f1",
+      "bytes": 2107
+    },
+    "fullPageVisuallyReviewed": true,
+    "finding": "The Ksar Mhira electoral map shows Beni Mhira delegation, Ksar Mhira and Beni Mhira Est sectors, roads and administrative limits. Its legend expressly describes governorate, delegation and sector/electoral boundaries. It does not define a town polygon or resolve old/new inhabited components.",
+    "geometryImportedOrGeoreferenced": false
+  },
+  "publicPlanningPortalOutcome": {
+    "officialPublicLinkPage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\mehat-geopau-link.html",
+      "sha256": "16b305b3e8d3b86b228c3766824759e6abb6adaa7000dcad72f1dc38d09e18c8",
+      "bytes": 153162
+    },
+    "publicAppUrl": "https://geopau.gov.tn/app_sig_pau_tunisie_public/",
+    "publicMapItem": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-webmap-info.json",
+      "sha256": "65a6e1f7707f6a17df77cea4d3ab09b6b5cbd764951d604f18b1988003269af4",
+      "bytes": 1162
+    },
+    "publicMapModified": "2020-01-09T15:22:55+00:00",
+    "targetedQueries": [
+      {
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-beni-mhira-name-query-simple.json",
+          "sha256": "d1333b5bc9fd504dfadb2c882f2843252475d5d8041c688e6f0ca9f6bb2f1665",
+          "bytes": 575
+        },
+        "outcome": "A successful simple name query returned no features for its particular Mhira/Mehira spellings."
+      },
+      {
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-beni-mhira-plan-query.json",
+          "sha256": "a84421cbafb3748a22cab107d392c932151a69ce77dfe8cfb544e2d5609b14ad",
+          "bytes": 80
+        },
+        "outcome": "ArcGIS returned query error 500; this is not an empty result."
+      },
+      {
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-beni-mhira-point-plan-query.json",
+          "sha256": "a84421cbafb3748a22cab107d392c932151a69ce77dfe8cfb544e2d5609b14ad",
+          "bytes": 80
+        },
+        "outcome": "ArcGIS returned query error 500; no point containment conclusion."
+      }
+    ],
+    "lastAttempt": "A further bounded name-variant query timed out after 30 seconds; a planned subsequent point-attributes request was not run.",
+    "scanService": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-scans-service.json",
+      "sha256": "940829aa806783e6f3954e0cb988a0bcb0881551317bd85e935be449c9cc5400",
+      "bytes": 26139
+    },
+    "scanFinding": "The exposed Tataouine scan group has Ghomrassen and Tataouine layers. No linked Beni Mhira scan was obtained from the reviewed public pages/configuration.",
+    "conclusion": "The approved 2023 Beni Mhira plan was not obtained. An older public webmap, missing name result, or query failure cannot establish that the plan or a locality polygon does not exist."
+  },
+  "supplementaryPhoneContext": {
+    "earlierRootReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-beni-mhira-borma-phone-review-20260912.json",
+      "sha256": "f37127f65189ec3c112ac08b33950b740a30fee26abfb8a4a11eec15175a7ecc",
+      "bytes": 7604
+    },
+    "newBaseCoordinateObservation": {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-2.json",
+        "sha256": "1afcaa3647c0f4c10a4cc6c8ca5ee63588172ee33b8822b662b86d98f54d2462",
+        "bytes": 1113
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-2.png",
+        "sha256": "5e872ddee5f118218d9dee9e0ec42de221b3c51b8b723d0e493f1233be41edd5",
+        "bytes": 545388
+      },
+      "query": "32.868,10.8113",
+      "rootQueryAttribution": true,
+      "queryVisibleInScreenshot": false,
+      "screenshotIndependentlyViewedHere": true,
+      "finding": "The screenshot shows a shop card and streets beneath the broad BENI M’HIRA label, with Ksar Beni Mhira (El Ataya) separately labelled northeast. The card is not itself a town-identity result; attribution to the queried base coordinate comes from the recorded root action.",
+      "boundaryVerified": false
+    },
+    "combinedQualification": "Earlier exact-node phone context near the new Beni Mhira school and this base context support both unqualified entries belonging to the broad village. Google context is supplementary and neither its labels nor outlines become dataset polygons."
+  },
+  "reassessment": {
+    "oldNewConcern": "The ISIE school list distinguishes the eastern sector and a new/western school in Ksar Mhira. Those are valid school/sector distinctions; they are not affirmative evidence that the two unqualified candidate town labels denote different towns.",
+    "positiveCombinedEvidence": [
+      "Primary ministry sources recognize the broad Beni Mhira planning locality.",
+      "The Social Affairs office publishes an occupied Beni Mhira delegation-seat address near the village node.",
+      "The source node consistently denotes the unqualified inhabited village, and the existing base carries the same broad name.",
+      "New exact-base and earlier exact-node public map contexts support inhabited Beni Mhira streets; the historic granaries are separately identified by primary heritage-site descriptions and coordinates."
+    ],
+    "qualifiedDecision": "The combined evidence supports a display-only association of osm:node:5239666199 with base 1524 as the broad town of Beni Mhira. This is an inference from the cited primary identity evidence plus coordinate context, not a single authoritative point-to-plan crosswalk.",
+    "notRequiredForThisLimitedDisplayQuestion": "A common certified town footprint is not necessary to group two broad town labels while all finer raw localities and sector boundaries are preserved.",
+    "notEstablished": [
+      "An exact urban-plan polygon or legal municipal boundary.",
+      "Equivalence or erasure of eastern, western, new, historic or sector-specific names.",
+      "That Beni Mhira village occupies the entire delegation or any entire sector.",
+      "A new source point, prayer anchor, or INM calculation coordinate."
+    ],
+    "remainingImplementationPrerequisite": "Any later display proof must explicitly bind the original Smar-era source-code phase to the current Beni Mhira delegation 5358 phase and preserve all five sector identities and geometry. The cache lacks a current 5358 delegation polygon; a straightforward original-phase same-delegation assertion would be false.",
+    "preservedSectorIdentities": [
+      {
+        "id": "osm:relation:7143818",
+        "originalSourceCode": "535358",
+        "currentOfficialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5358",
+          "delegationFr": "Beni mhira",
+          "delegationAr": "بنى مهيرة",
+          "sectorCode": "535855",
+          "sectorFr": "Beni mehira est",
+          "sectorAr": "بني مهيرة الشرقية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65508,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3216,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3210
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7143819",
+        "originalSourceCode": "535357",
+        "currentOfficialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5358",
+          "delegationFr": "Beni mhira",
+          "delegationAr": "بنى مهيرة",
+          "sectorCode": "535854",
+          "sectorFr": "Ksar mehira",
+          "sectorAr": "قصر مهيرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65474,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3214,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3208
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7143820",
+        "originalSourceCode": "535356",
+        "currentOfficialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5358",
+          "delegationFr": "Beni mhira",
+          "delegationAr": "بنى مهيرة",
+          "sectorCode": "535853",
+          "sectorFr": "Ksar aoun",
+          "sectorAr": "قصر عون",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65440,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3212,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3206
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7143821",
+        "originalSourceCode": "535355",
+        "currentOfficialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5358",
+          "delegationFr": "Beni mhira",
+          "delegationAr": "بنى مهيرة",
+          "sectorCode": "535852",
+          "sectorFr": "El morra",
+          "sectorAr": "المرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65406,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3211,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3205
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7143822",
+        "originalSourceCode": "535354",
+        "currentOfficialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5358",
+          "delegationFr": "Beni mhira",
+          "delegationAr": "بنى مهيرة",
+          "sectorCode": "535851",
+          "sectorFr": "Errahech",
+          "sectorAr": "الرهاش",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65373,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3209,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3203
+          }
+        }
+      }
+    ],
+    "authorization": "Source research only. No stage, curation, compiler support, geometry change or product import is approved or performed by this report."
+  },
+  "artifactInventory": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-municipality-proposal-2026-032.pdf",
+      "sha256": "6a10defc0b1526b827084396528afe8366f1551600c50c7999589712ddf59e5a",
+      "bytes": 1817903
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-municipality-proposal-page.html",
+      "sha256": "2f44a94dad67f7ffb01ea1ba39c35d56c10717be727762c5a5d9dbad2f6a32d8",
+      "bytes": 188519
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-1.png",
+      "sha256": "3c63b2b560b1f96600c5e3b09358ac199457eeaf771bc8fd793171cdd0c5ccc8",
+      "bytes": 425732
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-17.png",
+      "sha256": "fbacee18e28ce2527148cb6afa06054313eb33dd227c9ffe8332a2b2e305f62a",
+      "bytes": 233088
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-18.png",
+      "sha256": "4db36564c6f9649c991bbdcda84aafd00a0447ba7bc83dd0427f0c843c28dc39",
+      "bytes": 214511
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-19.png",
+      "sha256": "a536aebe41e2df2a6fb6d7a9dc2c4f1b80c7aa6c8d844ebb0311d09a89a6cab4",
+      "bytes": 229146
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-2.png",
+      "sha256": "aec4d2b5e7e065b02abd074b82abb0a8957c66b1e64a2f9b05abf6f4f44b268c",
+      "bytes": 484405
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-3.png",
+      "sha256": "d03f8f05cc9de979f573aa48faa5598dac8dc897f3582a45016de607bde152ad",
+      "bytes": 657956
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-4.png",
+      "sha256": "f864a9a185fe6b2bb8c141aa5194ca739559335388ee27669d65dc8a6a9e0391",
+      "bytes": 609440
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-5.png",
+      "sha256": "b42be6d754f12696c0f319f8e6cb95c5b4f77999b5438f42b90279a7f845dd3f",
+      "bytes": 603179
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\arp-proposal-page-6.png",
+      "sha256": "b75698ac38381ef4de0f7f623116fd28e457e5fc91ffaf80c757bf33db16fd8f",
+      "bytes": 535130
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-beni-mhira-name-query-simple.json",
+      "sha256": "d1333b5bc9fd504dfadb2c882f2843252475d5d8041c688e6f0ca9f6bb2f1665",
+      "bytes": 575
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-beni-mhira-plan-query.json",
+      "sha256": "a84421cbafb3748a22cab107d392c932151a69ce77dfe8cfb544e2d5609b14ad",
+      "bytes": 80
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-beni-mhira-point-plan-query.json",
+      "sha256": "a84421cbafb3748a22cab107d392c932151a69ce77dfe8cfb544e2d5609b14ad",
+      "bytes": 80
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-landing.html",
+      "sha256": "235d30f762586ec833201ad3be24e7ba978f6c53c2154bbbe108b2142aef10e6",
+      "bytes": 10015
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-pau-layer69.json",
+      "sha256": "8f30180171fe73cb7955db1eed0f121d6147a2cb7696d423c377859e93aae7e6",
+      "bytes": 3112
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-app.html",
+      "sha256": "937c900a38c11abd27aa799093dc302dc0ee732696e33cac9fb5de65561266b4",
+      "bytes": 4000
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-config.json",
+      "sha256": "f240cf94cf1638bf2b2e62ae665d0e7a2bd577787b4287d379ae4261ed635025",
+      "bytes": 14281
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-env.js",
+      "sha256": "0623e78b6772fd375cfb57fbd0ff75dda6e890c400c9d33cbc8e8353eaeeb786",
+      "bytes": 11131
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-init.js",
+      "sha256": "37c152639f76b6870c17903d803f73bd151ec80172414bcfb3b93976cb64c745",
+      "bytes": 7744
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-scans.html",
+      "sha256": "3a909ad1b05d6ffa57da061f77adeac991b6c72162b74bd324b573bf1be33e84",
+      "bytes": 17114
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-search-config.json",
+      "sha256": "d5b184fe2ac16308b9b6e41bb3afbd9e9170191b92e7f551c8d36adc0f499071",
+      "bytes": 5255
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-webmap-data.json",
+      "sha256": "c4eebe987b47873add148c4dcb496da31fbca0812ee6a3746bc45e4ba53fd186",
+      "bytes": 38883
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-public-webmap-info.json",
+      "sha256": "65a6e1f7707f6a17df77cea4d3ab09b6b5cbd764951d604f18b1988003269af4",
+      "bytes": 1162
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\geopau-scans-service.json",
+      "sha256": "940829aa806783e6f3954e0cb988a0bcb0881551317bd85e935be449c9cc5400",
+      "bytes": 26139
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-elataya.html",
+      "sha256": "98691cf82f8a45bba0abd97b33ca00081514735e862be29c2cded6b2d4687119",
+      "bytes": 81240
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-home.html",
+      "sha256": "3ac3034c07dc18f29df06772c103c8f6ca8ed6586f324f0efc3feec833e8d016",
+      "bytes": 102728
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\gmg-zorgan.html",
+      "sha256": "f9ff3516f5674488a1b60467e2a93c3695556921a024f65f81a2ff8e84434751",
+      "bytes": 81245
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\isie-ksar-mhira-2023-original.pdf",
+      "sha256": "7e95f7c36177f2c0ae1b9daa6bbf850d79f88e5bf121db181f87da424dfa8f39",
+      "bytes": 831736
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\isie-ksar-mhira-2023-page1-derived.txt",
+      "sha256": "49d477adc60476be8e3ddfcfbc313ca1792dfb9ea9fea4c68437d62c1c3063fd",
+      "bytes": 1209
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\isie-ksar-mhira-2023-page1.png",
+      "sha256": "6a38892be759e2d5c57855b903702494f1c6f9c39c59f16bf59ef9728750f5e8",
+      "bytes": 1427941
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\isie-ksar-mhira-retrieval-derivation-provenance.json",
+      "sha256": "0c63f67fec6f4e4da6cde0047dccd6ed82da10e7bcb3f69801db15aaacf784f1",
+      "bytes": 2107
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\mehat-approval-announcement.html",
+      "sha256": "8d917eaa93bb5c1697376d00c6e3adcd5df82f40e3465687a790cc03f7eecccc",
+      "bytes": 168653
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\mehat-geopau-link.html",
+      "sha256": "16b305b3e8d3b86b228c3766824759e6abb6adaa7000dcad72f1dc38d09e18c8",
+      "bytes": 153162
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-geopau-config.json",
+      "sha256": "c239f2714e352034ea03228388a4563cb97c9852c37716fbc6c5ada1f45ec989",
+      "bytes": 523
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-geopau-js.json",
+      "sha256": "b10365118802a10fe5dc4658b9388416c69ab4baa9d837089a42b0368467cc8a",
+      "bytes": 938
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-geopau-map.json",
+      "sha256": "eca2786a2ebdf3af50ac1bcad6897fb6b2e8697684592107e8c172243d00b49c",
+      "bytes": 1837
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-geopau-narrow-rechecks.json",
+      "sha256": "2180a6d352167c654e74beb2fffa5b9dc6fe3a6ea8d62b76dd975f860bdea47f",
+      "bytes": 1818
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-geopau-public.json",
+      "sha256": "d7aa36d464b0b76c971dc5708a1ff0f48ad7bc7ac4c4e1dac193aadb34455bb8",
+      "bytes": 975
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-geopau-scan-gmg.json",
+      "sha256": "ae539fd2c719cbfc9cf41b092f4277b5a91de15856ee629210d1cb40dad9a77c",
+      "bytes": 2040
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-geopau-target-query.json",
+      "sha256": "19d7f6674cd0972d8ff7396699bba03157b4a7224c47c363d4f455adcbe6d60e",
+      "bytes": 1544
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\retrieval-manifest-initial.json",
+      "sha256": "87996770018cc704dfe1528e8d4fbce0e8a23c1319cda62faef8307fe1d7e3e6",
+      "bytes": 6819
+    }
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-urban-scope-review\\freeze_findings.py",
+    "sha256": "c0b5b4e6b73ffd1696a7bf9f0a8f3054a270ce0d69192c55519b81fc0121fb18",
+    "bytes": 14463
+  },
+  "productChanges": false,
+  "phoneActions": false,
+  "ledgerChanges": false,
+  "testsOrBuildOrGeneration": false
+}

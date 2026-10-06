@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "captureKind": "selected_verbatim_excerpts_from_web_tool_extracted_primary_page_text",
+  "url": "https://www.culture.gov.tn/?p=33647",
+  "retrievedDate": "2026-09-19",
+  "tool": "web.run",
+  "request": {"open": [{"ref_id": "https://www.culture.gov.tn/?p=33647"}], "response_length": "long"},
+  "toolResultReference": "turn624view0",
+  "toolReportedContentType": "text/html",
+  "toolReportedCrawlDate": "today",
+  "toolReportedLineCount": 92,
+  "title": "تظاهرة 24 ساعة مسرح تحتفي بمائدة يوغرطة",
+  "articlePublishedDate": "2018-03-13",
+  "articleUpdatedDate": "2018-03-13",
+  "excerpts": [
+    {"toolLine": 21, "text": "الواقعة بمعتمدية قلعة سنان"},
+    {"toolLine": 22, "text": "تقع “مائدة يوغرطة” في مدينة “قلعة السنان”"}
+  ],
+  "supportedNames": ["قلعة سنان", "قلعة السنان"],
+  "interpretation": "Adjacent body paragraphs of the same Ministry of Cultural Affairs article use the two spellings for the delegation/city in the same Jugurtha Tableland geographic context. This is direct primary-source paired-name usage. Geographic display identity still requires the separately pinned sector, town, administrative context, and official registry evidence.",
+  "limitations": [
+    "This file records selected text delivered by the web extraction tool. It is not a raw HTTP response or reconstructed HTML.",
+    "The article identifies delegation/city context; it does not establish equality of administrative and inhabited-settlement extents.",
+    "No coordinate, polygon boundary, manual location precision, or legal name replacement is certified by these excerpts.",
+    "The direct urllib response preserved separately is a splash page and must not be cited as containing the article."
+  ],
+  "failedRawCapture": {"file": "culture-33647.html", "sha256": "e0b69dfd3c85403012725d0dee2097ac188548ddd1c77ecb982a0453d67bcd46", "bytes": 2969},
+  "reproduction": "Open the exact URL with the web extraction tool and inspect the article title, date and adjacent body paragraphs. Line numbers are capture-specific and may change. Direct urllib and REST fetches in this environment returned a splash page instead."
+}

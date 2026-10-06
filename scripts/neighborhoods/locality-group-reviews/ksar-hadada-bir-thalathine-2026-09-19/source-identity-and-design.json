@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_IDENTITY_AND_EXISTING_MECHANISM_REVIEWED",
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceCalculations": {
+    "file": "locality-group-reviews/ksar-hadada-bir-thalathine-2026-09-19/source-calculations.json",
+    "sha256": "85d045d3d0d85ca21f0cbdcc0d1d7c766a4cd16d89026708f03a61f97fd08eaa"
+  },
+  "primaryPublicCentreDirectory": {
+    "file": "locality-group-reviews/ksar-hadada-bir-thalathine-2026-09-19/original-source/isie-public-centre-list.html",
+    "sha256": "51b0bc6fbdba170a189401ec1f2f80477fa0fa257ebebaa7d722cd4c21858d92",
+    "url": "https://www.isie.tn/ar/presidentielle-pv-centre-de-vote/",
+    "requiredText": [
+      "بئر الثلاثين",
+      "م إبتدائية بئر ثلاثين تطاوين",
+      "قصر الحدادة",
+      "م إبتدائية قصر الحدادة غمراسن"
+    ]
+  },
+  "primaryEvidenceQualification": "The ISIE public directory explicitly nests the Bir school spelling without the article beneath the official sector spelling with the article. It independently confirms the official Ksar sector and Ghomrassen school context, but does not provide the article-free Ksar spelling; that spelling is independently present in the original/fresh village source and frozen public Maps card. No paired official Ksar synonym declaration or certified boundary is claimed.",
+  "identityFindings": [
+    {
+      "sectorId": "osm:relation:7143839",
+      "officialSectorName": "قصر الحدادة",
+      "canonicalDisplayName": "قصر حدادة",
+      "identityConclusion": "The contained village and its namesake sector support one manual display identity. The sector remains a separately coded broader administrative extent.",
+      "freshSourcePoint": {
+        "file": "locality-group-reviews/ksar-hadada-bir-thalathine-2026-09-19/original-source/ksar-village-297761849.json",
+        "sha256": "54f329d5c8ad181db2002134d7df6259936a066e7e42df77b366102963f12553",
+        "url": "https://api.openstreetmap.org/api/0.6/node/297761849.json"
+      },
+      "exactPublicElement": {
+        "type": "node",
+        "id": 297761849,
+        "lat": 33.1004153,
+        "lon": 10.3119203,
+        "timestamp": "2026-01-17T03:23:17Z",
+        "version": 13,
+        "changeset": 177322068,
+        "user": "user_16642036",
+        "uid": 16642036,
+        "tags": {
+          "name": "قصر حدادة",
+          "name:ar": "قصر حدادة",
+          "name:en": "Ksar Hadada",
+          "name:fr": "Ksar Haddada",
+          "place": "village"
+        }
+      },
+      "samePublicTagsAndPointAsOriginal": true,
+      "originalPointAbsorption": "The smaller settlement polygon remains the smallest same-name polygon containing the point, so its existing aliases and the absence of a raw point row remain unchanged.",
+      "sourceShapeEquivalenceClaimed": false
+    },
+    {
+      "sectorId": "osm:relation:7143857",
+      "officialSectorName": "بئر الثلاثين",
+      "canonicalDisplayName": "بئر ثلاثين",
+      "identityConclusion": "The contained village and its namesake sector support one manual display identity. The sector remains a separately coded broader administrative extent.",
+      "freshSourcePoint": {
+        "file": "locality-group-reviews/ksar-hadada-bir-thalathine-2026-09-19/original-source/bir-village-8655345739.json",
+        "sha256": "23111d798fc2be25ba47f17c96074f86abf1a90a170545b1041bca562be9e346",
+        "url": "https://api.openstreetmap.org/api/0.6/node/8655345739.json"
+      },
+      "exactPublicElement": {
+        "type": "node",
+        "id": 8655345739,
+        "lat": 32.6945027,
+        "lon": 10.3302325,
+        "timestamp": "2024-01-19T04:22:18Z",
+        "version": 4,
+        "changeset": 146427807,
+        "user": "Petr Jenč",
+        "uid": 15169703,
+        "tags": {
+          "name": "Bir Thlathine",
+          "name:ar": "بئر ثلاثين",
+          "name:fr": "Bir Thlatine",
+          "place": "village"
+        }
+      },
+      "samePublicTagsAndPointAsOriginal": true,
+      "originalPointAbsorption": "The smaller settlement polygon remains the smallest same-name polygon containing the point, so its existing aliases and the absence of a raw point row remain unchanged.",
+      "sourceShapeEquivalenceClaimed": false
+    }
+  ],
+  "publicPhoneContext": {
+    "review": {
+      "file": "locality-group-reviews/ksar-hadada-bir-thalathine-2026-09-19/public-phone-name-context-review.json",
+      "sha256": "df58c2b71debfb2b66d3533fc83eeb2503fb11321c47d95804d94c85f29a7599"
+    },
+    "qualification": "Root-viewed public name cards supply contextual naming only. Their displayed outline is not imported, certified or treated as equivalent to either source polygon."
+  },
+  "manualSelections": [
+    {
+      "representativeId": "osm:relation:7143839",
+      "sourcePointId": "osm:node:297761849",
+      "lat": 33.1004153,
+      "lng": 10.3119203,
+      "expectedNearestSourceId": 473
+    },
+    {
+      "representativeId": "osm:relation:7143857",
+      "sourcePointId": "osm:node:8655345739",
+      "lat": 32.6945027,
+      "lng": 10.3302325,
+      "expectedNearestSourceId": 624
+    }
+  ],
+  "exactRawFieldChanges": [
+    {
+      "id": "osm:relation:7143839",
+      "field": "name",
+      "before": "قصر الحدادة",
+      "after": "قصر حدادة"
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "aliases",
+      "before": [
+        "Ksar El Haddada"
+      ],
+      "after": [
+        "Ksar El Haddada",
+        "قصر الحدادة"
+      ]
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "lat",
+      "before": 33.110282,
+      "after": 33.1004153
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "lng",
+      "before": 10.3048,
+      "after": 10.3119203
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:297761849"
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "parentName",
+      "before": "قصر الحدادة",
+      "after": "معتمدية غمراسن"
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Ghomrassen",
+        "Ghomrassen",
+        "Ksar El Haddada",
+        "قصر الحدادة",
+        "معتمدية غمراسن"
+      ],
+      "after": [
+        "Délégation Ghomrassen",
+        "Ghomrassen",
+        "Ksar El Haddada",
+        "قصر الحدادة",
+        "قصر حدادة",
+        "معتمدية غمراسن"
+      ]
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "pickerGroupId",
+      "before": "osm:way:321991676",
+      "after": "osm:relation:7143839"
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "name",
+      "before": "بئر الثلاثين",
+      "after": "بئر ثلاثين"
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "aliases",
+      "before": [
+        "BIR THALATHINE"
+      ],
+      "after": [
+        "BIR THALATHINE",
+        "بئر الثلاثين"
+      ]
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "lat",
+      "before": 32.691982,
+      "after": 32.6945027
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "lng",
+      "before": 10.346146,
+      "after": 10.3302325
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:8655345739"
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "parentName",
+      "before": "بئر الثلاثين",
+      "after": "معتمدية تطاوين الجنوبية"
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "contextAliases",
+      "before": [
+        "BIR THALATHINE",
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "بئر الثلاثين",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "after": [
+        "BIR THALATHINE",
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "بئر الثلاثين",
+        "بئر ثلاثين",
+        "معتمدية تطاوين الجنوبية"
+      ]
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "pickerGroupId",
+      "before": "osm:way:154906508",
+      "after": "osm:relation:7143857"
+    }
+  ],
+  "savedNameAdditions": [
+    {
+      "id": "osm:relation:7143839",
+      "name": "قصر حدادة",
+      "kind": "sector"
+    },
+    {
+      "id": "osm:relation:7143857",
+      "name": "بئر ثلاثين",
+      "kind": "sector"
+    }
+  ],
+  "compilerContract": {
+    "nameAndManualPoint": "Existing sector name_tags/manualPointId requires exact original consumed name tags, normalized primary agreement with unchanged source node, and source plus packed sector containment.",
+    "automaticGrouping": "Existing same-name matching plus positive polygon overlap; exact three source-name peers, only two existing raw polygons, no blocked pair. Sector remains deterministic local owner.",
+    "childContext": "Equal sector/child primary suppresses the redundant sector subtitle; existing containing delegation becomes parentName, with both spellings kept in contextAliases.",
+    "nearest": "Both original and authentic manual points retain sources473/624; every current3523 raw default independently verified.",
+    "sourcePointAbsorption": "Point remains absent; smaller contained same-name polygon receives the same aliases as before."
+  },
+  "qualifications": [
+    "All six original source identities and original tags preserved as source evidence; only two derived sector display name sets are curated.",
+    "No administrative boundary certification, no source kind change, no new raw locality, no new point or inferred polygon.",
+    "No global normalizer or compiler change. No prayer-reference coordinate change in this component.",
+    "Saved IDs remain; only the two reviewed sector display names enter the small saved-name update index.",
+    "No compiler import/execution, tests, build, phone or live writes."
+  ]
+}

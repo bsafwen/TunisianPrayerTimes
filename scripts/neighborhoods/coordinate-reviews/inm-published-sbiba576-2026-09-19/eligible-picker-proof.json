@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/sbiba-source-facts.json",
+    "sha256": "11d5e254860cc6dde4d12e43964cea0556393bbb8b0e8936405652c92a64ab66"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7164981",
+      "targetBaseId": "delegation:576",
+      "targetDelegationId": 576,
+      "name": "سبيبة",
+      "governorateId": 362,
+      "governorate": "القصرين",
+      "basePoint": {
+        "lat": 35.545,
+        "lng": 9.072
+      },
+      "status": "eligible_proposal",
+      "reasons": [],
+      "members": [
+        {
+          "id": "osm:relation:7164981",
+          "name": "سبيبة",
+          "kind": "sector",
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سبيبة",
+            "name:ar": "سبيبة",
+            "name:fr": "Sbiba",
+            "ref:tn:codegeo": "425651"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 576,
+          "independentNearestPrayerSource": 576,
+          "reasons": []
+        },
+        {
+          "id": "osm:way:283529700",
+          "name": "سبيبة",
+          "kind": "residential",
+          "sourceTags": {
+            "landuse": "residential",
+            "name": "سبيبة",
+            "name:ar": "سبيبة",
+            "name:en": "Sbiba",
+            "name:fr": "Sbiba",
+            "name:it": "Sbiba"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 576,
+          "independentNearestPrayerSource": 576,
+          "reasons": []
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7164981",
+          "code": "425651",
+          "currentOfficialRecord": {
+            "governorateCode": "42",
+            "governorateFr": "Kasserine",
+            "governorateAr": "القصرين",
+            "delegationCode": "4256",
+            "delegationFr": "Sbiba",
+            "delegationAr": "سبيبة",
+            "sectorCode": "425651",
+            "sectorFr": "Sbiba",
+            "sectorAr": "سبيبة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51475,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2498,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2493
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سبيبة",
+            "name:ar": "سبيبة",
+            "name:fr": "Sbiba",
+            "ref:tn:codegeo": "425651"
+          },
+          "effectiveOriginalGeometrySha256": "d6c534ac99123b79ae8630a7f6f5eacfa1351d02dc73bf45ac497fbd490fbb19"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7164915",
+          "code": "4256",
+          "name": "معتمدية سبيبة",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sbiba",
+            "boundary": "administrative",
+            "name": "معتمدية سبيبة",
+            "name:ar": "معتمدية سبيبة",
+            "name:fr": "Délégation Sbiba",
+            "ref:tn:codegeo": "4256",
+            "ref:tn:hasc_2": "TN.KS.SB",
+            "wikidata": "Q12243940"
+          },
+          "effectiveOriginalGeometrySha256": "ba090763c9a812114ff1a1f6c2c28a8b16c79bfd14cc1b152a70a8defc7b5c5b",
+          "currentOfficialRecord": {
+            "governorateCode": "42",
+            "governorateFr": "Kasserine",
+            "governorateAr": "القصرين",
+            "delegationCode": "4256",
+            "delegationFr": "Sbiba",
+            "delegationAr": "سبيبة"
+          }
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:576"
+      ],
+      "proposedBehavior": "Join the existing two-member Sbiba group to the base display; preserve each raw ID, shape, name, aliases, coordinate and nearest source576. The manual display representative remains the residential town point, not the published reference.",
+      "existingMemberCuration": [],
+      "phoneContext": [
+        {
+          "record": {
+            "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-1.json",
+            "sha256": "52ee1ca79f77e3f1d417c8036cd5def03666a238db5517b29a9f49e6453b2ef6"
+          },
+          "screenshot": {
+            "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-1.png",
+            "sha256": "966c473c2da9e0e769f799063c8c97465df0e40d8732c7af2434109ff43e7d69"
+          },
+          "visualReviewBy": "root",
+          "finding": "Root personally viewed exact Sbiba/سبيبة town card, labelled urban road grid and public outline. Identity context only; no polygon copied or certified."
+        },
+        {
+          "record": {
+            "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-2.json",
+            "sha256": "22ce49a65c690f667ab7e1fda514710666ca33acd2e5f9ba890ab1bdf5c3883c"
+          },
+          "screenshot": {
+            "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/phone-context/osm_relation_7164981-2.png",
+            "sha256": "0b7840e06032f2f086902201bca555b470f78c4ccd0171dfb4e7cdcab9a17971"
+          },
+          "visualReviewBy": "root",
+          "finding": "Coordinate intent selected Cafe Fatma, Rue Habib Thamer, Sbiba1270; no visible coordinate query. Nearby town-context only, not exact coordinate or boundary proof."
+        }
+      ]
+    }
+  ]
+}

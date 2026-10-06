@@ -526,10 +526,11 @@ class SilenceSchedulerIntegrationTest {
     @Test
     fun tomorrowFajr_dec31_fallsBackToPreviousYear() {
         PrefsManager.setEnabled(context, true)
+        val lastYear = PrayerTimesRepository.SUPPORTED_YEARS.last
 
-        // Simulate Dec 31 at 23:00 — tomorrow is Jan 1 of a year with no data (2027)
+        // Simulate Dec 31 at 23:00 of the last supported year — tomorrow has no data
         val dec31 = Calendar.getInstance().apply {
-            set(Calendar.YEAR, 2026)
+            set(Calendar.YEAR, lastYear)
             set(Calendar.MONTH, Calendar.DECEMBER)
             set(Calendar.DAY_OF_MONTH, 31)
             set(Calendar.HOUR_OF_DAY, 23)
@@ -538,17 +539,17 @@ class SilenceSchedulerIntegrationTest {
             set(Calendar.MILLISECOND, 0)
         }
 
-        // Verify 2027 data doesn't exist but 2026 data does
+        // Verify next year's data doesn't exist but the last supported year's does
         assertNull(
-            "2027 data should not exist",
-            PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2027, 1, 1)
+            "${lastYear + 1} data should not exist",
+            PrayerTimesRepository.loadDayPrayerTimes(context, 615, lastYear + 1, 1, 1)
         )
         assertNotNull(
-            "2026 Jan 1 data should exist as fallback",
-            PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 1, 1)
+            "$lastYear Jan 1 data should exist as fallback",
+            PrayerTimesRepository.loadDayPrayerTimes(context, 615, lastYear, 1, 1)
         )
 
-        // Call scheduleTomorrowPrayers with Dec 31 — should use 2026 fallback
+        // Call scheduleTomorrowPrayers with Dec 31 — should use the previous-year fallback
         SilenceScheduler.scheduleTomorrowPrayers(context, 615, dec31)
 
         val alarms = shadowAlarmManager.scheduledAlarms
@@ -557,11 +558,11 @@ class SilenceSchedulerIntegrationTest {
             alarms.isNotEmpty()
         )
 
-        // Verify the alarm is set for Jan 1 2027 (correct date) using 2026 Fajr times
-        val fallbackTimes = PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 1, 1)!!
+        // Verify the alarm is set for Jan 1 of next year (correct date) using the fallback Fajr time
+        val fallbackTimes = PrayerTimesRepository.loadDayPrayerTimes(context, 615, lastYear, 1, 1)!!
         val config = PrefsManager.getConfig(context, Prayer.FAJR)
         val expectedSilence = Calendar.getInstance().apply {
-            set(Calendar.YEAR, 2027)
+            set(Calendar.YEAR, lastYear + 1)
             set(Calendar.MONTH, Calendar.JANUARY)
             set(Calendar.DAY_OF_MONTH, 1)
             set(Calendar.HOUR_OF_DAY, fallbackTimes.fajr.hour)
@@ -573,8 +574,44 @@ class SilenceSchedulerIntegrationTest {
 
         val triggerTimes = alarms.map { it.triggerAtTime }
         assertTrue(
-            "Alarm should fire at Jan 1 2027 Fajr time from 2026 fallback data",
+            "Alarm should fire at next year's Jan 1 Fajr time from fallback data",
             triggerTimes.contains(expectedSilence.timeInMillis)
+        )
+    }
+
+    @Test
+    fun tomorrowFajr_dec31_usesComputedNextYear() {
+        PrefsManager.setEnabled(context, true)
+
+        // Dec 31 2026 at 23:00 — 2027 prayer times are computed, no fallback needed
+        val dec31 = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 2026)
+            set(Calendar.MONTH, Calendar.DECEMBER)
+            set(Calendar.DAY_OF_MONTH, 31)
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        SilenceScheduler.scheduleTomorrowPrayers(context, 615, dec31)
+
+        val jan1Times = PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2027, 1, 1)!!
+        val config = PrefsManager.getConfig(context, Prayer.FAJR)
+        val expectedSilence = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 2027)
+            set(Calendar.MONTH, Calendar.JANUARY)
+            set(Calendar.DAY_OF_MONTH, 1)
+            set(Calendar.HOUR_OF_DAY, jan1Times.fajr.hour)
+            set(Calendar.MINUTE, jan1Times.fajr.minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+            add(Calendar.MINUTE, config.delayMinutes)
+        }
+
+        assertTrue(
+            "Alarm should fire at the computed Jan 1 2027 Fajr time",
+            shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }.contains(expectedSilence.timeInMillis)
         )
     }
 

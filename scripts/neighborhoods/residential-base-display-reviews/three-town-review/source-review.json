@@ -1,0 +1,3081 @@
+{
+  "schemaVersion": 1,
+  "status": "THREE_RESIDENTIAL_TOWN_IDENTITIES_SUPPORTED_SOURCE_ONLY_NO_IMPLEMENTATION",
+  "createdAt": "2026-09-08T02:59:38.296236+00:00",
+  "baselineMetadataSha256": "ccf451d89b276141ebc3e66ec519d52ad1756e82cafd9e993f9934e7230cc2d4",
+  "repositoryPins": {
+    "android-app/app/src/main/assets/neighborhoods.json": "ccf451d89b276141ebc3e66ec519d52ad1756e82cafd9e993f9934e7230cc2d4",
+    "android-app/app/src/main/assets/neighborhoods.bin": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "android-app/app/src/main/assets/gouvernorats.json": "b9d9934dce62166196290261b2510c02b08548e3bf1b14ec857191d781ec30c1",
+    "android-app/app/src/main/assets/retired-localities.json": "b5f2b493079d0d626578bd72217f25941ca6ffe9f088004469fc68780cfc6f51",
+    "scripts/neighborhoods/prayer-source-coordinates.json": "8315b7883e7d4e228f7f2a79e6bcccfdba6c0797e70d127cd220628428a740e8",
+    "scripts/neighborhoods/catalog-curation.json": "193239d60f7b55f6d057127533c08ebb71ef83df6aa843fceeb4e834ae8a3961",
+    "scripts/neighborhoods/reviewed-picker-groups.json": "e3aaa31eb79dbb57af9930415e336bc37fdbb1324ecd6683f53a12c0507ffdef",
+    "scripts/generate_neighborhoods.py": "a6756d18e745cc9b5c562a9cfccb5cc6720e24e56256cd136a5520900c8cfc39"
+  },
+  "taskEvidencePins": {
+    "outputs/two-town-reference30-current-cross-group-base-alias-screen.json": "b7abff97da9d3892dee2b2c92849d1635ed08f950b43ebd63f26332335985801",
+    "work/geo/osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "work/source-coordinates/osm-city-nodes.json": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda",
+    "work/source-coordinates/candidate-place-nodes-second-live.json": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5",
+    "outputs/current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "outputs/prayer-source-coordinate-second-application.json": "622182b3664453ca92d4dee28daadb0b89389a3858d29d4cf7d619698ed6f368",
+    "outputs/phone-source-point-second-review-first-eight.json": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+    "outputs/phone-source-point-second-review-last-seven.json": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+    "work/three-residential-town-source-triage/primary-download-manifest.json": "204b00497f7d82c2e38b37cd19912eb1d932f83193e30ca25885b62eda057148",
+    "work/three-residential-town-source-triage/municipal-browser-source-responses.json": "6bf20b2c7c9d8febcf46224de644ec9dfdbef4243b38c6057775db51dce25786",
+    "work/three-residential-town-source-triage/municipal-indexed-excerpts-response.json": "1e67b850f5dcfa7b56ca6a86e66cbbbfa8bc179dcab49d3119c04fc196eef35e"
+  },
+  "scope": "Only596/139010911,461/234090258,488/26303952. Mdhila207473651 explicitly excluded.",
+  "counts": {
+    "reviewedPairs": 3,
+    "supportedSameTownDisplayIdentities": 3,
+    "implementationApprovedByThisReport": 0,
+    "preservedImadas": 26,
+    "proposedCoordinateMoves": 0,
+    "proposedDefaultMoves": 0
+  },
+  "candidates": [
+    {
+      "baseId": 596,
+      "rawId": "osm:way:139010911",
+      "classification": "SUPPORTED_SAME_TOWN_DISPLAY_IDENTITY_SOURCE_ONLY",
+      "base": {
+        "id": 596,
+        "nomFr": "Zeramdine",
+        "nomAr": "زرامدين",
+        "nomEn": "Zeramdine",
+        "lat": 35.5791762,
+        "lng": 10.7379156
+      },
+      "governorate": {
+        "id": 364,
+        "nomFr": "Monastir",
+        "nomAr": "المنستير",
+        "nomEn": "Monastir",
+        "lat": 35.7643,
+        "lng": 10.8113
+      },
+      "residential": {
+        "id": "osm:way:139010911",
+        "tags": {
+          "addr:city": "Zéramdine",
+          "addr:country": "TN",
+          "addr:governorate": "Monastir",
+          "addr:postcode": "5040",
+          "landuse": "residential",
+          "name": "زرمدين",
+          "name:ar": "زرمدين",
+          "name:fr": "Zéramdine",
+          "wikipedia": "fr:Zéramdine"
+        },
+        "sourceGeometrySha256": "a7e562a33b7d912fb9faede5f7149dfb6e5def895f4babb82f78ea37f7c5f2a0",
+        "sourceBounds": [
+          10.7124441,
+          35.5621496,
+          10.7509131,
+          35.5911723
+        ],
+        "current": {
+          "id": "osm:way:139010911",
+          "sourceId": "osm",
+          "name": "زرمدين",
+          "aliases": [
+            "Zéramdine"
+          ],
+          "kind": "residential",
+          "parentName": "ولاية المنستير",
+          "contextAliases": [],
+          "governorateId": 364,
+          "lat": 35.576512,
+          "lng": 10.731244,
+          "delegationId": 596,
+          "hasBoundary": true,
+          "bbox": [
+            10.712444,
+            35.56215,
+            10.750913,
+            35.591172
+          ],
+          "areaKm2": 4.679754201247533,
+          "pickerGroupId": "osm:way:139010911",
+          "offset": 5225104,
+          "length": 1180
+        },
+        "packedGeometrySha256": "b2e636557ef44e8eac7f26322412a40776a1722b7dc2fccb1237b51186efc019"
+      },
+      "supportingPlace": {
+        "frozenLivePayload": {
+          "type": "node",
+          "id": 1165832678,
+          "lat": 35.5791762,
+          "lon": 10.7379156,
+          "timestamp": "2023-11-30T19:22:38Z",
+          "version": 15,
+          "changeset": 144637436,
+          "user": "tg4567",
+          "uid": 12500589,
+          "tags": {
+            "addr:governorate": "Monastir",
+            "addr:postcode": "5040",
+            "name": "زرمدين",
+            "name:ar": "زرمدين",
+            "name:de": "Zéramdine",
+            "name:en": "Zéramdine",
+            "name:fr": "Zéramdine",
+            "place": "village",
+            "wikidata": "Q2600574",
+            "wikimedia_commons": "Category:Zéramdine",
+            "wikipedia": "fr:Zéramdine"
+          }
+        },
+        "frozenPayloadMatchesCachedTagsAndCoordinates": true,
+        "exactCurrentCorrection": {
+          "delegationId": 596,
+          "expectedGovernorateId": 364,
+          "expectedNames": {
+            "nomAr": "زرامدين",
+            "nomFr": "Zeramdine",
+            "nomEn": "Zeramdine"
+          },
+          "reviewedDate": "2026-09-07",
+          "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+          "original": {
+            "lat": 35.61,
+            "lng": 10.72
+          },
+          "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+          "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+          "proposed": {
+            "lat": 35.5791762,
+            "lng": 10.7379156
+          },
+          "movedKm": 3.7909778459453523,
+          "osm": {
+            "id": "osm:node:1165832678",
+            "url": "https://www.openstreetmap.org/node/1165832678",
+            "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1165832678.json",
+            "version": 15,
+            "timestamp": "2023-11-30T19:22:38Z",
+            "name": "زرمدين",
+            "place": "village"
+          },
+          "osmEvidence": {
+            "retrieved": "2026-09-07",
+            "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+            "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+          },
+          "geonames": {
+            "id": 2472838,
+            "name": "Zeramedine",
+            "lat": 35.57525,
+            "lng": 10.73456,
+            "featureCode": "PPL",
+            "modified": "2024-07-23",
+            "url": "https://www.geonames.org/2472838",
+            "distanceToProposedKm": 0.5316893868058561,
+            "featureClass": "P"
+          },
+          "phoneVisualReview": {
+            "reviewedDate": "2026-09-07",
+            "decision": "approved_settlement_reference",
+            "report": "outputs/phone-source-point-second-review-last-seven.json",
+            "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+            "proposedObservation": "Pin is at a junction within a dense urban road network. The selected location card is Zaramidin, Tunisia.",
+            "originalObservation": "Pin is in the sparse northern road/garden area near L1551, with Unnamed location, Near Zeramdine Nord.",
+            "limitation": "The differing transliteration Zaramidin/Zeramdine is consistent with the same town in the proposal evidence. GeoNames is about 532m away, so no exact center is claimed.",
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false,
+            "observations": [
+              {
+                "role": "proposed",
+                "point": {
+                  "lat": 35.5791762,
+                  "lng": 10.7379156
+                },
+                "requestedQuery": "35.5791762,10.7379156",
+                "observedAt": "2026-09-07T06:27:29.458965+00:00",
+                "screenshot": "outputs/phone-maps-review/delegation_596-2.png",
+                "screenshotSha256": "29b30a8fbcb87f1e1c776e57d1336f19e9c9428994dcd534754679ebea91d194",
+                "observationJson": "outputs/phone-maps-review/delegation_596-2.json",
+                "observationJsonSha256": "2fb6ae56d458bed4004341791f3ab31da064ddb0d9bb123ef6daedf837a4c145",
+                "visuallyReviewed": true,
+                "exactCoordinateCertified": false,
+                "boundaryVerified": false
+              },
+              {
+                "role": "original",
+                "point": {
+                  "lat": 35.61,
+                  "lng": 10.72
+                },
+                "requestedQuery": "35.61,10.72",
+                "observedAt": "2026-09-07T06:27:36.510847+00:00",
+                "screenshot": "outputs/phone-maps-review/delegation_596-3.png",
+                "screenshotSha256": "2f3687e4ee8d0a086dad1a8b63317092b0cb5a13257e365f5cc0cc3f1d323490",
+                "observationJson": "outputs/phone-maps-review/delegation_596-3.json",
+                "observationJsonSha256": "3884951cbdf19dfcd4baf54c5d0328caab5ad17fcf166439c6b9f985083e9c83",
+                "visuallyReviewed": true,
+                "exactCoordinateCertified": false,
+                "boundaryVerified": false
+              }
+            ]
+          }
+        },
+        "lineage": "Original village/town is included by PLACES, lies in its same-named residential polygon, and is absent from current raw rows. Existing collector absorption and transferred aliases support the lineage; no new point is proposed."
+      },
+      "currentGroups": {
+        "delegation:596": [
+          "delegation:596"
+        ],
+        "osm:way:139010911": [
+          "osm:way:139010911"
+        ]
+      },
+      "identityArgument": "Addressed Zéramdine residential footprint, sole contained bilingual village and already approved exact source596 node form one town identity. The Arabic base spelling زرامدين differs from official زرمدين; the latter is current INS and municipal usage, not a second settlement.",
+      "spellingReview": {
+        "preferredOfficialArabic": "زرمدين",
+        "currentRawAlreadyUsesPreferredName": true,
+        "legacyBaseArabic": "زرامدين",
+        "recommendation": "Retain both as searchable spellings for any reviewed display association. An eventual visible base-label normalization to زرمدين is supported but is a separate metadata/proof change; no source row is renamed here."
+      },
+      "geographicChecks": {
+        "originalAndPackedShapesValid": true,
+        "currentBaseInsideOriginalAndPackedResidential": true,
+        "supportPointInsideOriginalAndPackedResidential": true,
+        "sameNamedContainingCompiledPolygonsAtSupportingPoint": [
+          {
+            "id": "osm:way:139010911",
+            "name": "زرمدين",
+            "kind": "residential",
+            "areaKm2": 4.679754201247533
+          }
+        ],
+        "cachedDelegation": {
+          "id": "osm:relation:7154979",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Zéramdine",
+            "boundary": "administrative",
+            "name": "معتمدية زرمدين",
+            "name:ar": "معتمدية زرمدين",
+            "name:fr": "Délégation Zeramdine",
+            "ref:tn:codegeo": "3254",
+            "ref:tn:hasc_2": "TN.MS.ZA",
+            "wikidata": "Q12243935"
+          },
+          "sourceGeometrySha256": "abe433815565505ffc659ba7faf3936ba8cf04db575bfb96c53c9a15f11ed01c",
+          "sourceBounds": [
+            10.4930635,
+            35.4702964,
+            10.7614258,
+            35.6498248
+          ],
+          "current": null,
+          "packedGeometrySha256": null
+        },
+        "residentialFullyInsideCachedDelegation": false,
+        "residentialAreaOutsideCachedDelegationM2": 9804.935701387412,
+        "qualification": "Source identity and exact current point/polygon containment only. Neither the residential extent nor inherited OSM administrative borders are certified as a complete official town boundary. Noncontainment is recorded rather than fabricated away."
+      },
+      "officialDelegationCode": "3254",
+      "preservedImadaCount": 5,
+      "preservedImadas": [
+        {
+          "official": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3254",
+            "delegationFr": "Zeramdine",
+            "delegationAr": "زرمدين",
+            "sectorCode": "325451",
+            "sectorFr": "Mezaougha",
+            "sectorAr": "المزاوغة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36617,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1729,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1727
+            }
+          },
+          "id": "osm:relation:7114432",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المزاوغة",
+            "name:ar": "المزاوغة",
+            "name:fr": "Mezaougha",
+            "ref:tn:codegeo": "325451"
+          },
+          "sourceGeometrySha256": "21f60e5a62a3712ef51288a3b3745ea6537f9ee150ab2bed36797e4fbfd660b8",
+          "sourceBounds": [
+            10.5230783,
+            35.5404734,
+            10.6178824,
+            35.6498248
+          ],
+          "current": {
+            "id": "osm:relation:7114432",
+            "sourceId": "osm",
+            "name": "المزاوغة",
+            "aliases": [
+              "Mezaougha"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Zéramdine",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.597031,
+            "lng": 10.563759,
+            "delegationId": 440,
+            "hasBoundary": true,
+            "bbox": [
+              10.523078,
+              35.540473,
+              10.617882,
+              35.649825
+            ],
+            "areaKm2": 60.04081156096141,
+            "pickerGroupId": "osm:relation:7114432",
+            "offset": 877060,
+            "length": 1028
+          },
+          "packedGeometrySha256": "4bc714a13da1483bfb7d394692dc5b1f9d582dc16fa1bdb5d35bcfff602440c5",
+          "completeGroupMemberIds": [
+            "osm:relation:7114432"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3254",
+            "delegationFr": "Zeramdine",
+            "delegationAr": "زرمدين",
+            "sectorCode": "325452",
+            "sectorFr": "Menzel hayet",
+            "sectorAr": "منزل الحياة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36651,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1731,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1729
+            }
+          },
+          "id": "osm:relation:7114434",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل حياة",
+            "name:ar": "منزل حياة",
+            "name:fr": "Menzel Hayet",
+            "ref:tn:codegeo": "325452"
+          },
+          "sourceGeometrySha256": "3b1461360c0c675021bd5db410caff0eeaffdc060ba0581d6c382af94acc825f",
+          "sourceBounds": [
+            10.5914887,
+            35.4743709,
+            10.6520591,
+            35.5661046
+          ],
+          "current": {
+            "id": "osm:relation:7114434",
+            "sourceId": "osm",
+            "name": "منزل حياة",
+            "aliases": [
+              "Menzel Hayet"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Zéramdine",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.520472,
+            "lng": 10.627599,
+            "delegationId": 596,
+            "hasBoundary": true,
+            "bbox": [
+              10.591489,
+              35.474371,
+              10.652059,
+              35.566105
+            ],
+            "areaKm2": 28.225618094190033,
+            "pickerGroupId": "osm:relation:7114434",
+            "offset": 880348,
+            "length": 1924
+          },
+          "packedGeometrySha256": "2264307c3d4a6e9a653ca48282bbd99abcbf8010617933965c8e9697e7ce73da",
+          "completeGroupMemberIds": [
+            "osm:relation:7114434"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3254",
+            "delegationFr": "Zeramdine",
+            "delegationAr": "زرمدين",
+            "sectorCode": "325453",
+            "sectorFr": "Melichet",
+            "sectorAr": "المليشات",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36685,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1733,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1731
+            }
+          },
+          "id": "osm:relation:7114433",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المليشيات",
+            "name:ar": "المليشيات",
+            "name:fr": "Melichet",
+            "ref:tn:codegeo": "325453"
+          },
+          "sourceGeometrySha256": "54e71d10f465cd72f44f65743eeb2a6fa7bf33301d9b8b35da8c49259801cb7b",
+          "sourceBounds": [
+            10.4930635,
+            35.4702964,
+            10.6125052,
+            35.5696803
+          ],
+          "current": {
+            "id": "osm:relation:7114433",
+            "sourceId": "osm",
+            "name": "المليشات",
+            "aliases": [
+              "Melichet",
+              "Mlichette",
+              "المليشيات"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Zéramdine",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.51208,
+            "lng": 10.5316808,
+            "delegationId": 428,
+            "hasBoundary": true,
+            "bbox": [
+              10.493064,
+              35.470296,
+              10.612505,
+              35.56968
+            ],
+            "areaKm2": 70.25271562267092,
+            "manualPointId": "osm:node:10118270176",
+            "pickerGroupId": "osm:relation:7114433",
+            "offset": 878088,
+            "length": 2260
+          },
+          "packedGeometrySha256": "3885f9f3caa7f5f4810745c74170977f020c50239f77b3baf0c35a7c76c2fd99",
+          "completeGroupMemberIds": [
+            "osm:relation:7114433",
+            "osm:node:10118270176"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3254",
+            "delegationFr": "Zeramdine",
+            "delegationAr": "زرمدين",
+            "sectorCode": "325454",
+            "sectorFr": "Zeramdine nord",
+            "sectorAr": "زرمدين الشمالية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36719,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1735,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1733
+            }
+          },
+          "id": "osm:relation:7114248",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زرمدين الشمالية",
+            "name:ar": "زرمدين الشمالية",
+            "name:fr": "Zéramdine Nord",
+            "ref:tn:codegeo": "325454"
+          },
+          "sourceGeometrySha256": "4f5d77c3a070540177ad3ef0fb7b0f5c4fc4b58bb0fea933f0187f3a3492a232",
+          "sourceBounds": [
+            10.6383712,
+            35.5356887,
+            10.7423305,
+            35.6262886
+          ],
+          "current": {
+            "id": "osm:relation:7114248",
+            "sourceId": "osm",
+            "name": "زرمدين الشمالية",
+            "aliases": [
+              "Zéramdine Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Zéramdine",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.581276,
+            "lng": 10.700223,
+            "delegationId": 596,
+            "hasBoundary": true,
+            "bbox": [
+              10.638371,
+              35.535689,
+              10.742331,
+              35.626289
+            ],
+            "areaKm2": 46.467095739347016,
+            "pickerGroupId": "osm:relation:7114248",
+            "offset": 849464,
+            "length": 1644
+          },
+          "packedGeometrySha256": "da593a243b15269d63caceacd6d01c5293f9a4ae82af748af4dce382c046bf89",
+          "completeGroupMemberIds": [
+            "osm:relation:7114248"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3254",
+            "delegationFr": "Zeramdine",
+            "delegationAr": "زرمدين",
+            "sectorCode": "325455",
+            "sectorFr": "Zeramdine sud",
+            "sectorAr": "زرمدين الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36753,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1737,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1735
+            }
+          },
+          "id": "osm:relation:7114249",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زرميدين الجنوبية",
+            "name:ar": "زرميدين الجنوبية",
+            "name:fr": "Zéramdine Sud",
+            "ref:tn:codegeo": "325455"
+          },
+          "sourceGeometrySha256": "aa541320e0cca977197118756f57e29c479d4a0566caee05e14757b61ec7d9a5",
+          "sourceBounds": [
+            10.6463573,
+            35.501266,
+            10.7614258,
+            35.5891818
+          ],
+          "current": {
+            "id": "osm:relation:7114249",
+            "sourceId": "osm",
+            "name": "زرميدين الجنوبية",
+            "aliases": [
+              "Zéramdine Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Zéramdine",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.545063,
+            "lng": 10.69833,
+            "delegationId": 596,
+            "hasBoundary": true,
+            "bbox": [
+              10.646357,
+              35.501266,
+              10.761426,
+              35.589182
+            ],
+            "areaKm2": 47.59482246292234,
+            "pickerGroupId": "osm:relation:7114249",
+            "offset": 851108,
+            "length": 3196
+          },
+          "packedGeometrySha256": "7065fa0b0fbc75405ac4673e4a4368d63526a89ddbc2b86e8e3417c337db38c3",
+          "completeGroupMemberIds": [
+            "osm:relation:7114249"
+          ]
+        }
+      ],
+      "matchingSourceInventory": {
+        "queryNormalizedNames": [
+          "zeramdine",
+          "زرامدين",
+          "زرمدين"
+        ],
+        "cachedAreas": [
+          {
+            "id": "osm:way:139010911",
+            "tags": {
+              "addr:city": "Zéramdine",
+              "addr:country": "TN",
+              "addr:governorate": "Monastir",
+              "addr:postcode": "5040",
+              "landuse": "residential",
+              "name": "زرمدين",
+              "name:ar": "زرمدين",
+              "name:fr": "Zéramdine",
+              "wikipedia": "fr:Zéramdine"
+            },
+            "sourceGeometrySha256": "a7e562a33b7d912fb9faede5f7149dfb6e5def895f4babb82f78ea37f7c5f2a0",
+            "sourceBounds": [
+              10.7124441,
+              35.5621496,
+              10.7509131,
+              35.5911723
+            ],
+            "current": {
+              "id": "osm:way:139010911",
+              "sourceId": "osm",
+              "name": "زرمدين",
+              "aliases": [
+                "Zéramdine"
+              ],
+              "kind": "residential",
+              "parentName": "ولاية المنستير",
+              "contextAliases": [],
+              "governorateId": 364,
+              "lat": 35.576512,
+              "lng": 10.731244,
+              "delegationId": 596,
+              "hasBoundary": true,
+              "bbox": [
+                10.712444,
+                35.56215,
+                10.750913,
+                35.591172
+              ],
+              "areaKm2": 4.679754201247533,
+              "pickerGroupId": "osm:way:139010911",
+              "offset": 5225104,
+              "length": 1180
+            },
+            "packedGeometrySha256": "b2e636557ef44e8eac7f26322412a40776a1722b7dc2fccb1237b51186efc019"
+          },
+          {
+            "id": "osm:relation:7154979",
+            "tags": {
+              "admin_level": "5",
+              "alt_name:fr": "Zéramdine",
+              "boundary": "administrative",
+              "name": "معتمدية زرمدين",
+              "name:ar": "معتمدية زرمدين",
+              "name:fr": "Délégation Zeramdine",
+              "ref:tn:codegeo": "3254",
+              "ref:tn:hasc_2": "TN.MS.ZA",
+              "wikidata": "Q12243935"
+            },
+            "sourceGeometrySha256": "abe433815565505ffc659ba7faf3936ba8cf04db575bfb96c53c9a15f11ed01c",
+            "sourceBounds": [
+              10.4930635,
+              35.4702964,
+              10.7614258,
+              35.6498248
+            ],
+            "current": null,
+            "packedGeometrySha256": null
+          }
+        ],
+        "cachedNodes": [
+          {
+            "id": "osm:node:1165832678",
+            "tags": {
+              "addr:governorate": "Monastir",
+              "addr:postcode": "5040",
+              "name": "زرمدين",
+              "name:ar": "زرمدين",
+              "name:de": "Zéramdine",
+              "name:en": "Zéramdine",
+              "name:fr": "Zéramdine",
+              "place": "village",
+              "wikidata": "Q2600574",
+              "wikimedia_commons": "Category:Zéramdine",
+              "wikipedia": "fr:Zéramdine"
+            },
+            "lat": 35.5791762,
+            "lng": 10.7379156,
+            "current": null
+          }
+        ],
+        "supplementalCities": [],
+        "scope": "Exact normalized primary/alias names across existing cached source inventories; no fuzzy matching, proximity discovery, PBF scan or global collector change."
+      },
+      "possibleFutureTransition": {
+        "id": "osm:way:139010911",
+        "field": "pickerGroupId",
+        "before": "osm:way:139010911",
+        "after": "delegation:596",
+        "conditions": [
+          "Independent source/code review before implementation; no automatic application is authorized by this triage.",
+          "Preserve complete singleton groups, all raw IDs, original and packed polygon geometry, current names/aliases/contexts, source default and existing base coordinates.",
+          "Do not recreate an absorbed/excluded supporting point or attach any separately coded imada/other fine locality to the base group.",
+          "Use explicit evidence-bound town identity; do not generalize from French aliases or containment alone."
+        ]
+      },
+      "coordinateOrDefaultMovesProposed": false
+    },
+    {
+      "baseId": 461,
+      "rawId": "osm:way:234090258",
+      "classification": "SUPPORTED_SAME_TOWN_DISPLAY_IDENTITY_SOURCE_ONLY",
+      "base": {
+        "id": 461,
+        "nomFr": "Hammamet",
+        "nomAr": "الحمامات",
+        "nomEn": "Hammamet",
+        "lat": 36.404,
+        "lng": 10.612
+      },
+      "governorate": {
+        "id": 350,
+        "nomFr": "Nabeul",
+        "nomAr": "نابل",
+        "nomEn": "Nabeul",
+        "lat": 36.4561,
+        "lng": 10.7376
+      },
+      "residential": {
+        "id": "osm:way:234090258",
+        "tags": {
+          "addr:city": "الحمامات",
+          "addr:country": "TN",
+          "landuse": "residential",
+          "name": "Hammamet"
+        },
+        "sourceGeometrySha256": "1a9c99e10bee3e1ee59df622b697513242587d0250472c7d051b689706f4f649",
+        "sourceBounds": [
+          10.5539178,
+          36.387736,
+          10.6422789,
+          36.4173601
+        ],
+        "current": {
+          "id": "osm:way:234090258",
+          "sourceId": "osm",
+          "name": "Hammamet",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.402568,
+          "lng": 10.621605,
+          "delegationId": 461,
+          "hasBoundary": true,
+          "bbox": [
+            10.553918,
+            36.387736,
+            10.642279,
+            36.41736
+          ],
+          "areaKm2": 9.709992130967194,
+          "pickerGroupId": "osm:way:234090258",
+          "offset": 5339776,
+          "length": 4076
+        },
+        "packedGeometrySha256": "f678e9736a979cc30eeffbf0ca5b397baeab7c159095a6a117cfb215d528a05a"
+      },
+      "supportingPlace": {
+        "supplementalCachedCityNode": {
+          "id": "osm:node:287583296",
+          "tags": {
+            "name": "الحمامات",
+            "name:ar": "الحمامات",
+            "name:de": "Al-Hammamat",
+            "name:en": "Hammamet",
+            "name:fa": "حمامات",
+            "name:fr": "Hammamet",
+            "name:kab": "Ḥemmamat",
+            "name:ml": "ഹമ്മാമാത്ത്",
+            "name:ru": "Хаммамет",
+            "place": "city",
+            "population": "97579",
+            "wikidata": "Q339535",
+            "wikimedia_commons": "Category:Hammamet",
+            "wikipedia": "ar:الحمامات (تونس)"
+          },
+          "lat": 36.4006557,
+          "lng": 10.6190626
+        },
+        "lineage": "This city is excluded by the collector PLACES set, not absorbed. It is only a supporting cached city reference; no exact PBF/version provenance is claimed for this supplemental file.",
+        "primaryProofDoesNotDependOnSupplementalNode": "Residential tags directly bind name=Hammamet to addr:city=الحمامات; official Nabeul page independently uses the same city identity."
+      },
+      "currentGroups": {
+        "delegation:461": [
+          "delegation:461"
+        ],
+        "osm:way:234090258": [
+          "osm:way:234090258"
+        ]
+      },
+      "identityArgument": "The polygon itself explicitly binds French Hammamet to Arabic addr:city=الحمامات. Both legacy source461 and the supplemental city point lie inside its original and packaged shape. Primary governorate text independently identifies الحمامات as the city. This is a town display association, not equality with the nine-imada delegation extent.",
+      "spellingReview": {
+        "preferredOfficialArabic": "الحمامات",
+        "currentRawFrench": "Hammamet",
+        "recommendation": "French Hammamet is valid, not an erroneous locality. Arabic display الحمامات is supported by its own addr:city and official sources; an Arabic name-only change is optional and requires its own scoped transition."
+      },
+      "geographicChecks": {
+        "originalAndPackedShapesValid": true,
+        "currentBaseInsideOriginalAndPackedResidential": true,
+        "supportPointInsideOriginalAndPackedResidential": true,
+        "sameNamedContainingCompiledPolygonsAtSupportingPoint": [
+          {
+            "id": "osm:way:234090258",
+            "name": "Hammamet",
+            "kind": "residential",
+            "areaKm2": 9.709992130967194
+          }
+        ],
+        "cachedDelegation": {
+          "id": "osm:relation:7145835",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Hammamet",
+            "boundary": "administrative",
+            "name": "معتمدية الحمامات",
+            "name:ar": "معتمدية الحمامات",
+            "name:fr": "Délégation Hammamet",
+            "ref:tn:codegeo": "1566",
+            "ref:tn:hasc_2": "TN.NB.HM",
+            "wikidata": "Q3126509"
+          },
+          "sourceGeometrySha256": "a4cb48143692c93e0316282b2a4a174049de25483130bd3a3f44be736a293ddc",
+          "sourceBounds": [
+            10.3440937,
+            36.3084451,
+            10.6856364,
+            36.5113263
+          ],
+          "current": null,
+          "packedGeometrySha256": null
+        },
+        "residentialFullyInsideCachedDelegation": true,
+        "residentialAreaOutsideCachedDelegationM2": 0.0,
+        "qualification": "Source identity and exact current point/polygon containment only. Neither the residential extent nor inherited OSM administrative borders are certified as a complete official town boundary. Noncontainment is recorded rather than fabricated away."
+      },
+      "officialDelegationCode": "1566",
+      "preservedImadaCount": 9,
+      "preservedImadas": [
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156651",
+            "sectorFr": "Sidi djedidi",
+            "sectorAr": "سيدي الجديدي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14485,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 602,
+              "Nombre_de_menages_par_Secteurs.xlsx": 601
+            }
+          },
+          "id": "osm:relation:7105070",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الجديدي",
+            "name:ar": "سيدي الجديدي",
+            "name:fr": "Sidi Ejdidi",
+            "ref:tn:codegeo": "156651"
+          },
+          "sourceGeometrySha256": "1acb9fa3051fc6a30a4277f510aa712d1a00ad2746547f353334f27a857738a5",
+          "sourceBounds": [
+            10.3440937,
+            36.3534766,
+            10.5387801,
+            36.4905884
+          ],
+          "current": {
+            "id": "osm:relation:7105070",
+            "sourceId": "osm",
+            "name": "سيدي الجديدي",
+            "aliases": [
+              "Sidi Ejdidi",
+              "Sidi Jadidi"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.421917,
+            "lng": 10.427507,
+            "delegationId": 433,
+            "hasBoundary": true,
+            "bbox": [
+              10.344094,
+              36.353477,
+              10.53878,
+              36.490588
+            ],
+            "areaKm2": 153.50185465440399,
+            "pickerGroupId": "osm:relation:7105070",
+            "offset": 418436,
+            "length": 2492
+          },
+          "packedGeometrySha256": "f2243f137566579c209969f0e29d38cccb4b369c1344f4abb4d89cea5ddc0ffc",
+          "completeGroupMemberIds": [
+            "osm:relation:7105070"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156652",
+            "sectorFr": "El atrach",
+            "sectorAr": "الاطرش",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14519,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 604,
+              "Nombre_de_menages_par_Secteurs.xlsx": 603
+            }
+          },
+          "id": "osm:relation:7144606",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الاطرش",
+            "name:ar": "الاطرش",
+            "name:fr": "Latrach",
+            "ref:tn:codegeo": "156652"
+          },
+          "sourceGeometrySha256": "feb9550e017814532b828f723d143178d27c15f60feba864ec8c15dc7133c430",
+          "sourceBounds": [
+            10.3981894,
+            36.4385517,
+            10.5359847,
+            36.5113263
+          ],
+          "current": {
+            "id": "osm:relation:7144606",
+            "sourceId": "osm",
+            "name": "الاطرش",
+            "aliases": [
+              "Latrach"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.474958,
+            "lng": 10.484984,
+            "delegationId": 463,
+            "hasBoundary": true,
+            "bbox": [
+              10.398189,
+              36.438552,
+              10.535985,
+              36.511326
+            ],
+            "areaKm2": 41.13070350001682,
+            "pickerGroupId": "osm:relation:7144606",
+            "offset": 2163220,
+            "length": 1644
+          },
+          "packedGeometrySha256": "379b0ae4f264040a6e8d1e91a053b3a99350089e4b4f790d6a3b975728363016",
+          "completeGroupMemberIds": [
+            "osm:relation:7144606",
+            "osm:way:238137076"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156653",
+            "sectorFr": "Bir bou regba",
+            "sectorAr": "بئر بورقبة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14553,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 605,
+              "Nombre_de_menages_par_Secteurs.xlsx": 604
+            }
+          },
+          "id": "osm:relation:7104926",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بير بورقبة",
+            "name:ar": "بير بورقبة",
+            "name:fr": "Bir Bouregba",
+            "ref:tn:codegeo": "156653",
+            "wikidata": "Q2904332"
+          },
+          "sourceGeometrySha256": "a1dfd4c0f2350b28364e9bfe76d5c3efb8d91d35b0ed492c2a418529a584ab83",
+          "sourceBounds": [
+            10.4957789,
+            36.4177859,
+            10.6158359,
+            36.4941188
+          ],
+          "current": {
+            "id": "osm:relation:7104926",
+            "sourceId": "osm",
+            "name": "بير بورقبة",
+            "aliases": [
+              "Bir Bouregba",
+              "بئر بورقبة"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.455911,
+            "lng": 10.559755,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.495779,
+              36.417786,
+              10.615836,
+              36.494119
+            ],
+            "areaKm2": 47.03409599001534,
+            "pickerGroupId": "osm:relation:7104926",
+            "offset": 401380,
+            "length": 2300
+          },
+          "packedGeometrySha256": "0b8d0abbe5cc6db45eeafb3fa48e796c5e7b61258a51b3fe980f1db5975e9420",
+          "completeGroupMemberIds": [
+            "osm:relation:7104926"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156654",
+            "sectorFr": "Barraket essahel",
+            "sectorAr": "براكة الساحل",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14587,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 607,
+              "Nombre_de_menages_par_Secteurs.xlsx": 606
+            }
+          },
+          "id": "osm:relation:7104931",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منارة الحمامات",
+            "name:aeb": "براكة الساحل",
+            "name:ar": "منارة الحمامات",
+            "name:fr": "Manaret El Hammamet",
+            "ref:tn:codegeo": "156654"
+          },
+          "sourceGeometrySha256": "d6f22c1ece8b596de34a7456bafeca464342689db389c0d15b8afd771a46ab69",
+          "sourceBounds": [
+            10.4958326,
+            36.3528271,
+            10.5763481,
+            36.4397467
+          ],
+          "current": {
+            "id": "osm:relation:7104931",
+            "sourceId": "osm",
+            "name": "منارة الحمامات",
+            "aliases": [
+              "Manaret El Hammamet",
+              "Mnaret El Hammamet",
+              "براكة الساحل"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.396361,
+            "lng": 10.544,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.495833,
+              36.352827,
+              10.576348,
+              36.439747
+            ],
+            "areaKm2": 28.356014609587717,
+            "pickerGroupId": "osm:relation:7104931",
+            "offset": 410064,
+            "length": 3532
+          },
+          "packedGeometrySha256": "e066d430a473443cef570b486b8233ff5c6ad4ce055dc7a2ddb0172cd33db07f",
+          "completeGroupMemberIds": [
+            "osm:relation:7104931"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156655",
+            "sectorFr": "Hammamet nord",
+            "sectorAr": "الحمامات الجوفية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14621,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 609,
+              "Nombre_de_menages_par_Secteurs.xlsx": 608
+            }
+          },
+          "id": "osm:relation:7104927",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الجوفية",
+            "name:ar": "الحمامات الجوفية",
+            "name:fr": "Hammamet Nord",
+            "ref:tn:codegeo": "156655"
+          },
+          "sourceGeometrySha256": "792d12925bb5a1c12d9e55a47e5fd116b2d796bae20388d11e12564c760017d6",
+          "sourceBounds": [
+            10.5884938,
+            36.4028219,
+            10.6781242,
+            36.4687886
+          ],
+          "current": {
+            "id": "osm:relation:7104927",
+            "sourceId": "osm",
+            "name": "الحمامات الجوفية",
+            "aliases": [
+              "Hammamet Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.435638,
+            "lng": 10.632269,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.588494,
+              36.402822,
+              10.678124,
+              36.468789
+            ],
+            "areaKm2": 35.720243645497604,
+            "pickerGroupId": "osm:relation:7104927",
+            "offset": 403680,
+            "length": 1892
+          },
+          "packedGeometrySha256": "bbc8d1a2f2ca580a2c0e5fb520c67e9e99ace03f1dc9f9fa77db834d736439ff",
+          "completeGroupMemberIds": [
+            "osm:relation:7104927"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156656",
+            "sectorFr": "Hammamet est",
+            "sectorAr": "الحمامات الشرقية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14655,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 611,
+              "Nombre_de_menages_par_Secteurs.xlsx": 610
+            }
+          },
+          "id": "osm:relation:7104929",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الشرقية",
+            "name:ar": "الحمامات الشرقية",
+            "name:fr": "Hammamet Est",
+            "ref:tn:codegeo": "156656"
+          },
+          "sourceGeometrySha256": "646f76e1052bd662411b2b92b6b7306912c86f1bc858e64aa3ea39ab2f0bfcdd",
+          "sourceBounds": [
+            10.6103906,
+            36.3921377,
+            10.6418701,
+            36.4077147
+          ],
+          "current": {
+            "id": "osm:relation:7104929",
+            "sourceId": "osm",
+            "name": "الحمامات الشرقية",
+            "aliases": [
+              "Hammamet Est"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.399951,
+            "lng": 10.621608,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.610391,
+              36.392138,
+              10.64187,
+              36.407715
+            ],
+            "areaKm2": 2.7137582933247657,
+            "pickerGroupId": "osm:relation:7104929",
+            "offset": 407096,
+            "length": 1260
+          },
+          "packedGeometrySha256": "6c83480ef381177f84b90de4be126f91cca994ee3f40a1ade556bef3cc4f03c7",
+          "completeGroupMemberIds": [
+            "osm:relation:7104929"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156657",
+            "sectorFr": "Hammamet ouest",
+            "sectorAr": "الحمامات الغربية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14689,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 612,
+              "Nombre_de_menages_par_Secteurs.xlsx": 611
+            }
+          },
+          "id": "osm:relation:7104930",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الغربية",
+            "name:ar": "الحمامات الغربية",
+            "name:fr": "Hammamet Ouest",
+            "ref:tn:codegeo": "156657"
+          },
+          "sourceGeometrySha256": "ff776da71821884b3da9c6a0bc97ce45e31dc7f74a473d33e2ea84416dc9cb09",
+          "sourceBounds": [
+            10.567579,
+            36.3979401,
+            10.6124459,
+            36.4272602
+          ],
+          "current": {
+            "id": "osm:relation:7104930",
+            "sourceId": "osm",
+            "name": "الحمامات الغربية",
+            "aliases": [
+              "Hammamet Ouest"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.412834,
+            "lng": 10.582532,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.567579,
+              36.39794,
+              10.612446,
+              36.42726
+            ],
+            "areaKm2": 6.775994653364434,
+            "pickerGroupId": "osm:relation:7104930",
+            "offset": 408356,
+            "length": 1708
+          },
+          "packedGeometrySha256": "73ebe9248da3697dcf0b53a9d22773cd79af04bda10eee456c949c4891196657",
+          "completeGroupMemberIds": [
+            "osm:relation:7104930"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156658",
+            "sectorFr": "Mrezga",
+            "sectorAr": "المرازقة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14723,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 613,
+              "Nombre_de_menages_par_Secteurs.xlsx": 612
+            }
+          },
+          "id": "osm:relation:7104928",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المرازقة",
+            "name:ar": "المرازقة",
+            "name:fr": "El Mrezga",
+            "ref:tn:codegeo": "156658"
+          },
+          "sourceGeometrySha256": "c6d8f97e5693f66749f7c9ab8449d76d74b341a993683ad11bdb13db43c9934d",
+          "sourceBounds": [
+            10.6455605,
+            36.4046229,
+            10.6856364,
+            36.4396094
+          ],
+          "current": {
+            "id": "osm:relation:7104928",
+            "sourceId": "osm",
+            "name": "المرازقة",
+            "aliases": [
+              "El Mrezga"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.422055,
+            "lng": 10.662188,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.645561,
+              36.404623,
+              10.685636,
+              36.439609
+            ],
+            "areaKm2": 5.653714164875306,
+            "pickerGroupId": "osm:relation:7104928",
+            "offset": 405572,
+            "length": 1524
+          },
+          "packedGeometrySha256": "ea9f4c5506e0820884721fdf331f550305cc5057e54916f94de8d9393581e5c1",
+          "completeGroupMemberIds": [
+            "osm:relation:7104928"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1566",
+            "delegationFr": "Hammamet",
+            "delegationAr": "الحمامات",
+            "sectorCode": "156659",
+            "sectorFr": "Yasmin hammamet",
+            "sectorAr": "ياسمين الحمامات",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14757,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 615,
+              "Nombre_de_menages_par_Secteurs.xlsx": 614
+            }
+          },
+          "id": "osm:relation:7104932",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ياسمين الحمامات",
+            "name:ar": "ياسمين الحمامات",
+            "name:fr": "Yasmine Hammamet",
+            "ref:tn:codegeo": "156659"
+          },
+          "sourceGeometrySha256": "59d70b780e12d2658bf9b1f50fd0058ce3ada4e9339e921373cea770db8aa9e1",
+          "sourceBounds": [
+            10.4944539,
+            36.3084451,
+            10.5295291,
+            36.3565312
+          ],
+          "current": {
+            "id": "osm:relation:7104932",
+            "sourceId": "osm",
+            "name": "ياسمين الحمامات",
+            "aliases": [
+              "Yasmine Hammamet"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.332443,
+            "lng": 10.511143,
+            "delegationId": 433,
+            "hasBoundary": true,
+            "bbox": [
+              10.494454,
+              36.308445,
+              10.529529,
+              36.356531
+            ],
+            "areaKm2": 5.206642318925503,
+            "pickerGroupId": "osm:relation:7104932",
+            "offset": 413596,
+            "length": 716
+          },
+          "packedGeometrySha256": "3cc983f7d4ea7ec6a31c62fb84f06417c487492c88572ed0aa0b7312122f3aca",
+          "completeGroupMemberIds": [
+            "osm:relation:7104932"
+          ]
+        }
+      ],
+      "matchingSourceInventory": {
+        "queryNormalizedNames": [
+          "alhammamat",
+          "hammamet",
+          "hemmamat",
+          "хаммамет",
+          "الحمامات",
+          "حمامات",
+          "ഹമമമതത"
+        ],
+        "cachedAreas": [
+          {
+            "id": "osm:way:234090258",
+            "tags": {
+              "addr:city": "الحمامات",
+              "addr:country": "TN",
+              "landuse": "residential",
+              "name": "Hammamet"
+            },
+            "sourceGeometrySha256": "1a9c99e10bee3e1ee59df622b697513242587d0250472c7d051b689706f4f649",
+            "sourceBounds": [
+              10.5539178,
+              36.387736,
+              10.6422789,
+              36.4173601
+            ],
+            "current": {
+              "id": "osm:way:234090258",
+              "sourceId": "osm",
+              "name": "Hammamet",
+              "aliases": [],
+              "kind": "residential",
+              "parentName": "معتمدية الحمامات",
+              "contextAliases": [
+                "Délégation Hammamet",
+                "Hammamet",
+                "معتمدية الحمامات"
+              ],
+              "governorateId": 350,
+              "lat": 36.402568,
+              "lng": 10.621605,
+              "delegationId": 461,
+              "hasBoundary": true,
+              "bbox": [
+                10.553918,
+                36.387736,
+                10.642279,
+                36.41736
+              ],
+              "areaKm2": 9.709992130967194,
+              "pickerGroupId": "osm:way:234090258",
+              "offset": 5339776,
+              "length": 4076
+            },
+            "packedGeometrySha256": "f678e9736a979cc30eeffbf0ca5b397baeab7c159095a6a117cfb215d528a05a"
+          },
+          {
+            "id": "osm:relation:7145835",
+            "tags": {
+              "admin_level": "5",
+              "alt_name:fr": "Hammamet",
+              "boundary": "administrative",
+              "name": "معتمدية الحمامات",
+              "name:ar": "معتمدية الحمامات",
+              "name:fr": "Délégation Hammamet",
+              "ref:tn:codegeo": "1566",
+              "ref:tn:hasc_2": "TN.NB.HM",
+              "wikidata": "Q3126509"
+            },
+            "sourceGeometrySha256": "a4cb48143692c93e0316282b2a4a174049de25483130bd3a3f44be736a293ddc",
+            "sourceBounds": [
+              10.3440937,
+              36.3084451,
+              10.6856364,
+              36.5113263
+            ],
+            "current": null,
+            "packedGeometrySha256": null
+          }
+        ],
+        "cachedNodes": [],
+        "supplementalCities": [
+          {
+            "id": "osm:node:287583296",
+            "tags": {
+              "name": "الحمامات",
+              "name:ar": "الحمامات",
+              "name:de": "Al-Hammamat",
+              "name:en": "Hammamet",
+              "name:fa": "حمامات",
+              "name:fr": "Hammamet",
+              "name:kab": "Ḥemmamat",
+              "name:ml": "ഹമ്മാമാത്ത്",
+              "name:ru": "Хаммамет",
+              "place": "city",
+              "population": "97579",
+              "wikidata": "Q339535",
+              "wikimedia_commons": "Category:Hammamet",
+              "wikipedia": "ar:الحمامات (تونس)"
+            },
+            "lat": 36.4006557,
+            "lng": 10.6190626,
+            "current": null
+          }
+        ],
+        "scope": "Exact normalized primary/alias names across existing cached source inventories; no fuzzy matching, proximity discovery, PBF scan or global collector change."
+      },
+      "possibleFutureTransition": {
+        "id": "osm:way:234090258",
+        "field": "pickerGroupId",
+        "before": "osm:way:234090258",
+        "after": "delegation:461",
+        "conditions": [
+          "Independent source/code review before implementation; no automatic application is authorized by this triage.",
+          "Preserve complete singleton groups, all raw IDs, original and packed polygon geometry, current names/aliases/contexts, source default and existing base coordinates.",
+          "Do not recreate an absorbed/excluded supporting point or attach any separately coded imada/other fine locality to the base group.",
+          "Use explicit evidence-bound town identity; do not generalize from French aliases or containment alone."
+        ]
+      },
+      "coordinateOrDefaultMovesProposed": false
+    },
+    {
+      "baseId": 488,
+      "rawId": "osm:way:26303952",
+      "classification": "SUPPORTED_SAME_TOWN_DISPLAY_IDENTITY_SOURCE_ONLY",
+      "base": {
+        "id": 488,
+        "nomFr": "Ben Guerdene",
+        "nomAr": "بن قردان",
+        "nomEn": "Ben Guerdene",
+        "lat": 33.1403223,
+        "lng": 11.2170109
+      },
+      "governorate": {
+        "id": 353,
+        "nomFr": "Medenine",
+        "nomAr": "مدنين",
+        "nomEn": "Medenine",
+        "lat": 33.3399,
+        "lng": 10.5055
+      },
+      "residential": {
+        "id": "osm:way:26303952",
+        "tags": {
+          "addr:city": "بنقردان",
+          "addr:city:ar": "بنقردان",
+          "alt_name": "بن قردان",
+          "alt_name:ar": "بن قردان",
+          "landuse": "residential",
+          "name": "بنقردان",
+          "name:ar": "بنقردان",
+          "name:azb": "بن قردان",
+          "name:en": "Ben Gardane",
+          "name:fa": "بن قردان",
+          "name:fr": "Ben Gardane",
+          "name:ur": "بن قردان",
+          "population": "58000"
+        },
+        "sourceGeometrySha256": "766106a4c6fc454a84e68f27f0b48c89dd21bea9a3f0a3a4af38a0677412d4fc",
+        "sourceBounds": [
+          11.1485547,
+          33.0744408,
+          11.2570233,
+          33.1801346
+        ],
+        "current": {
+          "id": "osm:way:26303952",
+          "sourceId": "osm",
+          "name": "بنقردان",
+          "aliases": [
+            "Ben Gardanas",
+            "Ben Gardane",
+            "Ben Guerdane",
+            "Bin Kirdan",
+            "Μπεν Γκερντάν",
+            "Бен Кардан",
+            "Бен-Гардан",
+            "בן גרדאן",
+            "بن قردان",
+            "مدينة بنقردان",
+            "ベンカルダン",
+            "本加爾丹",
+            "벤가르단"
+          ],
+          "kind": "residential",
+          "parentName": "معتمدية بنقردان",
+          "contextAliases": [
+            "Ben Gardane",
+            "Délégation Ben Gardane",
+            "معتمدية بن قردان",
+            "معتمدية بنقردان"
+          ],
+          "governorateId": 353,
+          "lat": 33.127308,
+          "lng": 11.203432,
+          "delegationId": 488,
+          "hasBoundary": true,
+          "bbox": [
+            11.148555,
+            33.074441,
+            11.257023,
+            33.180135
+          ],
+          "areaKm2": 55.569214920640555,
+          "pickerGroupId": "osm:way:26303952",
+          "offset": 5360760,
+          "length": 6156
+        },
+        "packedGeometrySha256": "723660ad8e99cbc73f94f128995d0f857d21ed2c7e9cef7356c8bdcf72ea4107"
+      },
+      "supportingPlace": {
+        "frozenLivePayload": {
+          "type": "node",
+          "id": 287588734,
+          "lat": 33.1403223,
+          "lon": 11.2170109,
+          "timestamp": "2025-09-14T10:19:40Z",
+          "version": 20,
+          "changeset": 171909432,
+          "user": "tg4567",
+          "uid": 12500589,
+          "tags": {
+            "alt_name": "بن قردان",
+            "alt_name:ar": "بن قردان",
+            "name": "بن قردان",
+            "name:ar": "بن قردان",
+            "name:azb": "بن قردان",
+            "name:ca": "Ben Gardane",
+            "name:cs": "Ben Gardane",
+            "name:cy": "Ben Guerdane",
+            "name:da": "Ben Gardane",
+            "name:de": "Ben Gardane",
+            "name:el": "Μπεν Γκερντάν",
+            "name:en": "Ben Gardane",
+            "name:es": "Ben Gardane",
+            "name:fa": "بن قردان",
+            "name:fi": "Ben Gardane",
+            "name:fr": "Ben Gardane",
+            "name:he": "בן גרדאן",
+            "name:hu": "Ben Gardane",
+            "name:it": "Ben Gardane",
+            "name:ja": "ベンカルダン",
+            "name:kab": "Ben Gardane",
+            "name:ko": "벤가르단",
+            "name:lt": "Ben Gardanas",
+            "name:nl": "Ben Gardane",
+            "name:pl": "Bin Kirdan",
+            "name:pt": "Ben Gardane",
+            "name:ro": "Ben Gardane",
+            "name:ru": "Бен-Гардан",
+            "name:tr": "Ben Gardane",
+            "name:uk": "Бен Кардан",
+            "name:ur": "بن قردان",
+            "name:zh": "本加爾丹",
+            "name:zu": "Ben Gardane",
+            "official_name": "مدينة بنقردان",
+            "official_name:ar": "مدينة بنقردان",
+            "place": "town",
+            "population": "58000",
+            "wikidata": "Q1143002",
+            "wikimedia_commons": "Category:Ben Gardane",
+            "wikipedia": "ar:بنقردان",
+            "wikipedia:ar": "بنقردان"
+          }
+        },
+        "frozenPayloadMatchesCachedTagsAndCoordinates": true,
+        "exactCurrentCorrection": {
+          "delegationId": 488,
+          "expectedGovernorateId": 353,
+          "expectedNames": {
+            "nomAr": "بن قردان",
+            "nomFr": "Ben Guerdene",
+            "nomEn": "Ben Guerdene"
+          },
+          "reviewedDate": "2026-09-07",
+          "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+          "original": {
+            "lat": 33.17,
+            "lng": 11.22
+          },
+          "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+          "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+          "proposed": {
+            "lat": 33.1403223,
+            "lng": 11.2170109
+          },
+          "movedKm": 3.3117204707469865,
+          "osm": {
+            "id": "osm:node:287588734",
+            "url": "https://www.openstreetmap.org/node/287588734",
+            "apiUrl": "https://api.openstreetmap.org/api/0.6/node/287588734.json",
+            "version": 20,
+            "timestamp": "2025-09-14T10:19:40Z",
+            "name": "بن قردان",
+            "place": "town"
+          },
+          "osmEvidence": {
+            "retrieved": "2026-09-07",
+            "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+            "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+          },
+          "geonames": {
+            "id": 2472431,
+            "name": "Ben Gardane",
+            "lat": 33.13783,
+            "lng": 11.21965,
+            "featureCode": "PPL",
+            "modified": "2026-07-28",
+            "url": "https://www.geonames.org/2472431",
+            "distanceToProposedKm": 0.3703801398291166,
+            "featureClass": "P"
+          },
+          "phoneVisualReview": {
+            "reviewedDate": "2026-09-07",
+            "decision": "approved_settlement_reference",
+            "report": "outputs/phone-source-point-second-review-first-eight.json",
+            "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+            "proposedObservation": "The proposed capture shows the pin within the Ben Gardane / بن قردان street network. The selected market card explicitly says Cente ville Ben Gardane and its address is in Ben Gardane.",
+            "originalObservation": "The original view has sparse roads around an Unnamed location near Ben Gardane, with C110 at the western side of the capture.",
+            "limitation": "The market card may be a nearby snapped result. The sourced OSM place coordinate remains the proposed reference.",
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false,
+            "observations": [
+              {
+                "role": "proposed",
+                "point": {
+                  "lat": 33.1403223,
+                  "lng": 11.2170109
+                },
+                "requestedQuery": "33.1403223,11.2170109",
+                "observedAt": "2026-09-07T06:26:18.199872+00:00",
+                "screenshot": "outputs/phone-maps-review/delegation_488-2.png",
+                "screenshotSha256": "b005a51113b6d1642120785824b30c92b019f52d35eedf66ee2dd334f1a627be",
+                "observationJson": "outputs/phone-maps-review/delegation_488-2.json",
+                "observationJsonSha256": "71d6c6f39cb89388a08adc110b09e20f4ff45322a41e087eabc6021cbbc738d9",
+                "visuallyReviewed": true,
+                "exactCoordinateCertified": false,
+                "boundaryVerified": false
+              },
+              {
+                "role": "original",
+                "point": {
+                  "lat": 33.17,
+                  "lng": 11.22
+                },
+                "requestedQuery": "33.17,11.22",
+                "observedAt": "2026-09-07T06:26:25.073055+00:00",
+                "screenshot": "outputs/phone-maps-review/delegation_488-3.png",
+                "screenshotSha256": "2e46f53c038f103e1808e24db44aecad82d87a07aea206b72625bfe4fbd68bd8",
+                "observationJson": "outputs/phone-maps-review/delegation_488-3.json",
+                "observationJsonSha256": "f59c244b106635cbdf8bf203fb2be5e5d5d5cf4e2aa702e9dc7b6cafcca40243",
+                "visuallyReviewed": true,
+                "exactCoordinateCertified": false,
+                "boundaryVerified": false
+              }
+            ]
+          }
+        },
+        "lineage": "Original village/town is included by PLACES, lies in its same-named residential polygon, and is absent from current raw rows. Existing collector absorption and transferred aliases support the lineage; no new point is proposed."
+      },
+      "currentGroups": {
+        "delegation:488": [
+          "delegation:488"
+        ],
+        "osm:way:26303952": [
+          "osm:way:26303952"
+        ]
+      },
+      "identityArgument": "The addressed Ben Gardane residential polygon explicitly lists بن قردان as alias of بنقردان and contains the already approved exact source488 town node. The bilingual node and polygon name/address identity agree; no evidence indicates separate towns.",
+      "spellingReview": {
+        "preferredOfficialArabic": "بنقردان",
+        "currentRawAlreadyUsesPreferredName": true,
+        "legacyBaseArabic": "بن قردان",
+        "recommendation": "The space variant is explicitly sourced as an alias. No mandatory name correction is needed; preserve both."
+      },
+      "geographicChecks": {
+        "originalAndPackedShapesValid": true,
+        "currentBaseInsideOriginalAndPackedResidential": true,
+        "supportPointInsideOriginalAndPackedResidential": true,
+        "sameNamedContainingCompiledPolygonsAtSupportingPoint": [
+          {
+            "id": "osm:way:26303952",
+            "name": "بنقردان",
+            "kind": "residential",
+            "areaKm2": 55.569214920640555
+          }
+        ],
+        "cachedDelegation": {
+          "id": "osm:relation:7142942",
+          "tags": {
+            "admin_level": "5",
+            "alt_name": "معتمدية بن قردان",
+            "alt_name:ar": "معتمدية بن قردان",
+            "alt_name:fr": "Ben Gardane",
+            "boundary": "administrative",
+            "name": "معتمدية بنقردان",
+            "name:ar": "معتمدية بنقردان",
+            "name:fr": "Délégation Ben Gardane",
+            "ref:tn:codegeo": "5254",
+            "ref:tn:hasc_2": "TN.ME.BG",
+            "sorting_name": "بنقردان",
+            "sorting_name:ar": "بنقردان",
+            "wikidata": "Q2895427",
+            "wikipedia": "ar:معتمدية بنقردان",
+            "wikipedia:ar": "معتمدية بنقردان"
+          },
+          "sourceGeometrySha256": "91b02f172b0f29304f96119645ae3e6319bd089f2de4987634b997a3acf78cba",
+          "sourceBounds": [
+            10.5235355,
+            32.2499202,
+            11.5999351,
+            33.3743417
+          ],
+          "current": null,
+          "packedGeometrySha256": null
+        },
+        "residentialFullyInsideCachedDelegation": true,
+        "residentialAreaOutsideCachedDelegationM2": 0.0,
+        "qualification": "Source identity and exact current point/polygon containment only. Neither the residential extent nor inherited OSM administrative borders are certified as a complete official town boundary. Noncontainment is recorded rather than fabricated away."
+      },
+      "officialDelegationCode": "5254",
+      "preservedImadaCount": 12,
+      "preservedImadas": [
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525451",
+            "sectorFr": "Ben guerdane nord",
+            "sectorAr": "بنقردان الشمالية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61266,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3009,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3003
+            }
+          },
+          "id": "osm:relation:7142922",
+          "tags": {
+            "admin_level": "6",
+            "alt_name": "بن قردان الشمالية",
+            "alt_name:ar": "بن قردان الشمالية",
+            "boundary": "administrative",
+            "name": "بنقردان الشمالية",
+            "name:ar": "بنقردان الشمالية",
+            "name:fr": "Ben Gardane Nord",
+            "ref:tn:codegeo": "525451"
+          },
+          "sourceGeometrySha256": "37b7b5e62845d097978f6609e1ac3513bfdfe159d07d9bfa4efda2f69c803fb9",
+          "sourceBounds": [
+            11.191667,
+            33.1345222,
+            11.2273465,
+            33.1538121
+          ],
+          "current": {
+            "id": "osm:relation:7142922",
+            "sourceId": "osm",
+            "name": "بنقردان الشمالية",
+            "aliases": [
+              "Ben Gardane Nord",
+              "بن قردان الشمالية"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.143742,
+            "lng": 11.216684,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.191667,
+              33.134522,
+              11.227347,
+              33.153812
+            ],
+            "areaKm2": 2.8621225059743316,
+            "pickerGroupId": "osm:relation:7142922",
+            "offset": 1850236,
+            "length": 620
+          },
+          "packedGeometrySha256": "eb8aa109ef741d19f3705f382600b1f6b096676b1aac169a221413ad7b4695f0",
+          "completeGroupMemberIds": [
+            "osm:relation:7142922"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525452",
+            "sectorFr": "Ben guerdane sud",
+            "sectorAr": "بنقردان الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61300,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3010,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3004
+            }
+          },
+          "id": "osm:relation:7142923",
+          "tags": {
+            "admin_level": "6",
+            "alt_name": "بن قردان الجنوبية",
+            "alt_name:ar": "بن قردان الجنوبية",
+            "boundary": "administrative",
+            "name": "بنقردان الجنوبية",
+            "name:ar": "بنقردان الجنوبية",
+            "name:fr": "Ben Gardane Sud",
+            "ref:tn:codegeo": "525452"
+          },
+          "sourceGeometrySha256": "5c4ecd7f17aa39b3c31e977da0aca6d85c5c5126ea27e0c043f66ae4ffea6f01",
+          "sourceBounds": [
+            11.2061905,
+            33.121445,
+            11.2356281,
+            33.1537621
+          ],
+          "current": {
+            "id": "osm:relation:7142923",
+            "sourceId": "osm",
+            "name": "بنقردان الجنوبية",
+            "aliases": [
+              "Ben Gardane Sud",
+              "بن قردان الجنوبية"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.137597,
+            "lng": 11.224834,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.206191,
+              33.121445,
+              11.235628,
+              33.153762
+            ],
+            "areaKm2": 4.183616053197875,
+            "pickerGroupId": "osm:relation:7142923",
+            "offset": 1850856,
+            "length": 740
+          },
+          "packedGeometrySha256": "856c30b7a808dc68eb7c5ea2daefbdb31089ea2b4d94853e4361537e41f2aa6c",
+          "completeGroupMemberIds": [
+            "osm:relation:7142923"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525453",
+            "sectorFr": "Essayah",
+            "sectorAr": "الصياح",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61334,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3011,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3005
+            }
+          },
+          "id": "osm:relation:7142917",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الصياح",
+            "name:ar": "الصياح",
+            "name:fr": "Essayah",
+            "ref:tn:codegeo": "525453"
+          },
+          "sourceGeometrySha256": "d0b038bdbe002a2d5933795bd81ddbd1152435cbae9f5f109b63293e26d7fbbf",
+          "sourceBounds": [
+            11.2125306,
+            33.1389922,
+            11.5615932,
+            33.2670516
+          ],
+          "current": {
+            "id": "osm:relation:7142917",
+            "sourceId": "osm",
+            "name": "الصياح",
+            "aliases": [
+              "Essayah"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.203044,
+            "lng": 11.243523,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.212531,
+              33.138992,
+              11.561593,
+              33.267052
+            ],
+            "areaKm2": 145.62102693567053,
+            "pickerGroupId": "osm:relation:7142917",
+            "offset": 1797424,
+            "length": 45596
+          },
+          "packedGeometrySha256": "01bcf36225b289070614811eb87dc10fa71b410732e72eac2f92ce93b3e319b2",
+          "completeGroupMemberIds": [
+            "osm:relation:7142917"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525454",
+            "sectorFr": "Jmilla",
+            "sectorAr": "جميلة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61368,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3013,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3007
+            }
+          },
+          "id": "osm:relation:7142924",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جميلة",
+            "name:ar": "جميلة",
+            "name:fr": "Jamila",
+            "ref:tn:codegeo": "525454"
+          },
+          "sourceGeometrySha256": "35352428ab4ea52206aa32e49a24aba5ca06fddec0795e4b657f8b1f5f467998",
+          "sourceBounds": [
+            11.2269855,
+            32.770065,
+            11.5605019,
+            33.158766
+          ],
+          "current": {
+            "id": "osm:relation:7142924",
+            "sourceId": "osm",
+            "name": "جميلة",
+            "aliases": [
+              "Jamila"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 32.963734,
+            "lng": 11.444014,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.226986,
+              32.770065,
+              11.560502,
+              33.158766
+            ],
+            "areaKm2": 553.4182429246171,
+            "pickerGroupId": "osm:relation:7142924",
+            "offset": 1851596,
+            "length": 1964
+          },
+          "packedGeometrySha256": "cb7594daa6ed5e6d3d56757320c5930f328ff06193b54dbe944f1b9834b61502",
+          "completeGroupMemberIds": [
+            "osm:relation:7142924"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525455",
+            "sectorFr": "El maamerat",
+            "sectorAr": "المعمرات",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61402,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3015,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3009
+            }
+          },
+          "id": "osm:relation:7142926",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المعمرات",
+            "name:ar": "المعمرات",
+            "name:fr": "El Maamerat",
+            "ref:tn:codegeo": "525455"
+          },
+          "sourceGeometrySha256": "22bf4e684b75fc54b58dd909eaba0b6801c10ca06bb90339e5b8db7a4c1c44c4",
+          "sourceBounds": [
+            11.1552927,
+            32.2499202,
+            11.5999351,
+            33.1266912
+          ],
+          "current": {
+            "id": "osm:relation:7142926",
+            "sourceId": "osm",
+            "name": "المعمرات",
+            "aliases": [
+              "El Maamerat"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 32.68868,
+            "lng": 11.366596,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.155293,
+              32.24992,
+              11.599935,
+              33.126691
+            ],
+            "areaKm2": 1750.8984000634173,
+            "pickerGroupId": "osm:relation:7142926",
+            "offset": 1856676,
+            "length": 4212
+          },
+          "packedGeometrySha256": "e256da814e2fb37b01a222a77b04454add21bc4f48c7b803c565cb8faa5a469a",
+          "completeGroupMemberIds": [
+            "osm:relation:7142926"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525456",
+            "sectorFr": "El amria",
+            "sectorAr": "العامرية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61436,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3017,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3011
+            }
+          },
+          "id": "osm:relation:7142928",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العامرية",
+            "name:ar": "العامرية",
+            "name:fr": "El Amria",
+            "ref:tn:codegeo": "525456"
+          },
+          "sourceGeometrySha256": "ba1038db2de3a3afb7372778ed44d6af7e482b126914dd5aa3e50b1bb9f1751e",
+          "sourceBounds": [
+            11.0848235,
+            32.3767436,
+            11.3418515,
+            33.1282409
+          ],
+          "current": {
+            "id": "osm:relation:7142928",
+            "sourceId": "osm",
+            "name": "العامرية",
+            "aliases": [
+              "El Amria"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 32.752528,
+            "lng": 11.182154,
+            "delegationId": 1524,
+            "hasBoundary": true,
+            "bbox": [
+              11.084824,
+              32.376744,
+              11.341852,
+              33.128241
+            ],
+            "areaKm2": 925.0556559836017,
+            "pickerGroupId": "osm:relation:7142928",
+            "offset": 1862940,
+            "length": 4108
+          },
+          "packedGeometrySha256": "b8720aeda94c58fcce747c9f3c732d7ceb1f98332c56a9ac902be52d74633cff",
+          "completeGroupMemberIds": [
+            "osm:relation:7142928"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525457",
+            "sectorFr": "Ettabai",
+            "sectorAr": "الطابعي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61470,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3019,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3013
+            }
+          },
+          "id": "osm:relation:7142956",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الطابعي",
+            "name:ar": "الطابعي",
+            "name:fr": "Ettabai",
+            "ref:tn:codegeo": "525457"
+          },
+          "sourceGeometrySha256": "4daee9654006d115bcb99a8171acf0844318eb46272e4d655ced63147a820713",
+          "sourceBounds": [
+            11.0214835,
+            32.9132526,
+            11.2112229,
+            33.129444
+          ],
+          "current": {
+            "id": "osm:relation:7142956",
+            "sourceId": "osm",
+            "name": "الطابعي",
+            "aliases": [
+              "Ettabai"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.020902,
+            "lng": 11.082841,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.021484,
+              32.913253,
+              11.211223,
+              33.129444
+            ],
+            "areaKm2": 139.42725720250718,
+            "pickerGroupId": "osm:relation:7142956",
+            "offset": 1946592,
+            "length": 2740
+          },
+          "packedGeometrySha256": "bfde91b5d3075023a18fe5fa9d49e7aabcd2761ac86a968e566b12406e972ac0",
+          "completeGroupMemberIds": [
+            "osm:relation:7142956"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525458",
+            "sectorFr": "Ourasnia",
+            "sectorAr": "الوراسنية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61504,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3021,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3015
+            }
+          },
+          "id": "osm:relation:7142953",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الوراسنية",
+            "name:ar": "الوراسنية",
+            "name:fr": "Ourasnia",
+            "ref:tn:codegeo": "525458"
+          },
+          "sourceGeometrySha256": "cd3fedd46f15f02aee240149981709bac056625b43217b416fe89cfc61851e88",
+          "sourceBounds": [
+            10.9703465,
+            33.1338722,
+            11.2136015,
+            33.2699019
+          ],
+          "current": {
+            "id": "osm:relation:7142953",
+            "sourceId": "osm",
+            "name": "الوراسنية",
+            "aliases": [
+              "Ourasnia",
+              "Wrasnia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.201722,
+            "lng": 11.051129,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              10.970347,
+              33.133872,
+              11.213602,
+              33.269902
+            ],
+            "areaKm2": 152.38787468839624,
+            "pickerGroupId": "osm:relation:7142953",
+            "offset": 1932580,
+            "length": 1684
+          },
+          "packedGeometrySha256": "5d62444a2012c54c76ad59925a9f172c0382b22d42d3c3bad76bc8a43b0cd818",
+          "completeGroupMemberIds": [
+            "osm:relation:7142953"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525459",
+            "sectorFr": "Jallel",
+            "sectorAr": "جلال",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61538,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3023,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3017
+            }
+          },
+          "id": "osm:relation:7142960",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جلال",
+            "name:ar": "جلال",
+            "name:fr": "Jallel",
+            "ref:tn:codegeo": "525459"
+          },
+          "sourceGeometrySha256": "97a5d3a23192aabf78cecf5cfe4fb4ebd89b7aa1b4c2ae183390ca551512187a",
+          "sourceBounds": [
+            10.8976225,
+            33.0591823,
+            11.2076001,
+            33.1862621
+          ],
+          "current": {
+            "id": "osm:relation:7142960",
+            "sourceId": "osm",
+            "name": "جلال",
+            "aliases": [
+              "Jallel"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.122641,
+            "lng": 11.049454,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              10.897623,
+              33.059182,
+              11.2076,
+              33.186262
+            ],
+            "areaKm2": 167.67493078334806,
+            "pickerGroupId": "osm:relation:7142960",
+            "offset": 1957976,
+            "length": 1580
+          },
+          "packedGeometrySha256": "2ac66dd3fbbcd5acb21b749a1f63e81a14ccfce8c6fdbc15412e5b02469b918f",
+          "completeGroupMemberIds": [
+            "osm:relation:7142960"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525460",
+            "sectorFr": "Neffatia",
+            "sectorAr": "النفاتية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61572,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3025,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3019
+            }
+          },
+          "id": "osm:relation:7142961",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النفاتية",
+            "name:ar": "النفاتية",
+            "name:fr": "Neffatia",
+            "ref:tn:codegeo": "525460"
+          },
+          "sourceGeometrySha256": "0110866a860ec5d93cf8ba7c1eadcf51d5dc79ad7ba3a8e2f20e3c8f47b52459",
+          "sourceBounds": [
+            10.7199965,
+            33.0825623,
+            11.0169625,
+            33.3349318
+          ],
+          "current": {
+            "id": "osm:relation:7142961",
+            "sourceId": "osm",
+            "name": "النفاتية",
+            "aliases": [
+              "Ennafatia",
+              "Neffatia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.205582,
+            "lng": 10.914081,
+            "delegationId": 472,
+            "hasBoundary": true,
+            "bbox": [
+              10.719997,
+              33.082562,
+              11.016963,
+              33.334932
+            ],
+            "areaKm2": 328.81897826349535,
+            "pickerGroupId": "osm:relation:7142961",
+            "offset": 1959556,
+            "length": 2068
+          },
+          "packedGeometrySha256": "ae3801c4dca37be90b09bbab1066ca8888dfb20871c3fc36693e199c8c1e40f4",
+          "completeGroupMemberIds": [
+            "osm:relation:7142961"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525461",
+            "sectorFr": "Chahbania",
+            "sectorAr": "الشهبانية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61606,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3027,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3021
+            }
+          },
+          "id": "osm:relation:7142925",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الشهبانية",
+            "name:ar": "الشهبانية",
+            "name:fr": "Chahbania",
+            "ref:tn:codegeo": "525461"
+          },
+          "sourceGeometrySha256": "0112dcfe0c04fe434fbed1ca9a5028e68a5e8e6d081e1a977baaf04123bf27ba",
+          "sourceBounds": [
+            10.5235355,
+            33.0961223,
+            10.8899675,
+            33.3743417
+          ],
+          "current": {
+            "id": "osm:relation:7142925",
+            "sourceId": "osm",
+            "name": "الشهبانية",
+            "aliases": [
+              "Chahbania",
+              "Chehbania"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.235192,
+            "lng": 10.755632,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.523536,
+              33.096122,
+              10.889968,
+              33.374342
+            ],
+            "areaKm2": 504.29358491194654,
+            "pickerGroupId": "osm:relation:7142925",
+            "offset": 1853560,
+            "length": 3116
+          },
+          "packedGeometrySha256": "69827f90faa262694668aa363bb2ef6c246ab6053c5bedd23231839831f57034",
+          "completeGroupMemberIds": [
+            "osm:relation:7142925"
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "52",
+            "governorateFr": "Mednine",
+            "governorateAr": "مدنين",
+            "delegationCode": "5254",
+            "delegationFr": "Ben guerdane",
+            "delegationAr": "بنقردان",
+            "sectorCode": "525462",
+            "sectorFr": "Chareb errajel",
+            "sectorAr": "شارب الراجل",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61640,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3029,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3023
+            }
+          },
+          "id": "osm:relation:7142955",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "شارب الراجل",
+            "name:ar": "شارب الراجل",
+            "name:fr": "Chareb Errajel",
+            "ref:tn:codegeo": "525462"
+          },
+          "sourceGeometrySha256": "5d0add57636c041a8f8e1b9dbdbdfc6a9f492667445f7c39da938c74de26fde7",
+          "sourceBounds": [
+            10.9398375,
+            33.1499722,
+            11.2141755,
+            33.3221218
+          ],
+          "current": {
+            "id": "osm:relation:7142955",
+            "sourceId": "osm",
+            "name": "شارب الراجل",
+            "aliases": [
+              "Chareb Errajel"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.235986,
+            "lng": 11.115134,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              10.939838,
+              33.149972,
+              11.214176,
+              33.322122
+            ],
+            "areaKm2": 144.78692095876255,
+            "pickerGroupId": "osm:relation:7142955",
+            "offset": 1938452,
+            "length": 8140
+          },
+          "packedGeometrySha256": "fc05311de493fa4cc605c6c11f028f63bfdeab5d2be5f4d5523edd4b4a5c53d1",
+          "completeGroupMemberIds": [
+            "osm:relation:7142955"
+          ]
+        }
+      ],
+      "matchingSourceInventory": {
+        "queryNormalizedNames": [
+          "bengardanas",
+          "bengardane",
+          "benguerdane",
+          "benguerdene",
+          "binkirdan",
+          "μπενγκερνταν",
+          "бенгардан",
+          "бенкардан",
+          "בןגרדאן",
+          "بنقردان",
+          "مدينةبنقردان",
+          "벤가르단",
+          "ヘンカルタン",
+          "本加爾丹"
+        ],
+        "cachedAreas": [
+          {
+            "id": "osm:way:26303952",
+            "tags": {
+              "addr:city": "بنقردان",
+              "addr:city:ar": "بنقردان",
+              "alt_name": "بن قردان",
+              "alt_name:ar": "بن قردان",
+              "landuse": "residential",
+              "name": "بنقردان",
+              "name:ar": "بنقردان",
+              "name:azb": "بن قردان",
+              "name:en": "Ben Gardane",
+              "name:fa": "بن قردان",
+              "name:fr": "Ben Gardane",
+              "name:ur": "بن قردان",
+              "population": "58000"
+            },
+            "sourceGeometrySha256": "766106a4c6fc454a84e68f27f0b48c89dd21bea9a3f0a3a4af38a0677412d4fc",
+            "sourceBounds": [
+              11.1485547,
+              33.0744408,
+              11.2570233,
+              33.1801346
+            ],
+            "current": {
+              "id": "osm:way:26303952",
+              "sourceId": "osm",
+              "name": "بنقردان",
+              "aliases": [
+                "Ben Gardanas",
+                "Ben Gardane",
+                "Ben Guerdane",
+                "Bin Kirdan",
+                "Μπεν Γκερντάν",
+                "Бен Кардан",
+                "Бен-Гардан",
+                "בן גרדאן",
+                "بن قردان",
+                "مدينة بنقردان",
+                "ベンカルダン",
+                "本加爾丹",
+                "벤가르단"
+              ],
+              "kind": "residential",
+              "parentName": "معتمدية بنقردان",
+              "contextAliases": [
+                "Ben Gardane",
+                "Délégation Ben Gardane",
+                "معتمدية بن قردان",
+                "معتمدية بنقردان"
+              ],
+              "governorateId": 353,
+              "lat": 33.127308,
+              "lng": 11.203432,
+              "delegationId": 488,
+              "hasBoundary": true,
+              "bbox": [
+                11.148555,
+                33.074441,
+                11.257023,
+                33.180135
+              ],
+              "areaKm2": 55.569214920640555,
+              "pickerGroupId": "osm:way:26303952",
+              "offset": 5360760,
+              "length": 6156
+            },
+            "packedGeometrySha256": "723660ad8e99cbc73f94f128995d0f857d21ed2c7e9cef7356c8bdcf72ea4107"
+          },
+          {
+            "id": "osm:relation:7142942",
+            "tags": {
+              "admin_level": "5",
+              "alt_name": "معتمدية بن قردان",
+              "alt_name:ar": "معتمدية بن قردان",
+              "alt_name:fr": "Ben Gardane",
+              "boundary": "administrative",
+              "name": "معتمدية بنقردان",
+              "name:ar": "معتمدية بنقردان",
+              "name:fr": "Délégation Ben Gardane",
+              "ref:tn:codegeo": "5254",
+              "ref:tn:hasc_2": "TN.ME.BG",
+              "sorting_name": "بنقردان",
+              "sorting_name:ar": "بنقردان",
+              "wikidata": "Q2895427",
+              "wikipedia": "ar:معتمدية بنقردان",
+              "wikipedia:ar": "معتمدية بنقردان"
+            },
+            "sourceGeometrySha256": "91b02f172b0f29304f96119645ae3e6319bd089f2de4987634b997a3acf78cba",
+            "sourceBounds": [
+              10.5235355,
+              32.2499202,
+              11.5999351,
+              33.3743417
+            ],
+            "current": null,
+            "packedGeometrySha256": null
+          }
+        ],
+        "cachedNodes": [
+          {
+            "id": "osm:node:287588734",
+            "tags": {
+              "alt_name": "بن قردان",
+              "alt_name:ar": "بن قردان",
+              "name": "بن قردان",
+              "name:ar": "بن قردان",
+              "name:azb": "بن قردان",
+              "name:ca": "Ben Gardane",
+              "name:cs": "Ben Gardane",
+              "name:cy": "Ben Guerdane",
+              "name:da": "Ben Gardane",
+              "name:de": "Ben Gardane",
+              "name:el": "Μπεν Γκερντάν",
+              "name:en": "Ben Gardane",
+              "name:es": "Ben Gardane",
+              "name:fa": "بن قردان",
+              "name:fi": "Ben Gardane",
+              "name:fr": "Ben Gardane",
+              "name:he": "בן גרדאן",
+              "name:hu": "Ben Gardane",
+              "name:it": "Ben Gardane",
+              "name:ja": "ベンカルダン",
+              "name:kab": "Ben Gardane",
+              "name:ko": "벤가르단",
+              "name:lt": "Ben Gardanas",
+              "name:nl": "Ben Gardane",
+              "name:pl": "Bin Kirdan",
+              "name:pt": "Ben Gardane",
+              "name:ro": "Ben Gardane",
+              "name:ru": "Бен-Гардан",
+              "name:tr": "Ben Gardane",
+              "name:uk": "Бен Кардан",
+              "name:ur": "بن قردان",
+              "name:zh": "本加爾丹",
+              "name:zu": "Ben Gardane",
+              "official_name": "مدينة بنقردان",
+              "official_name:ar": "مدينة بنقردان",
+              "place": "town",
+              "population": "58000",
+              "wikidata": "Q1143002",
+              "wikimedia_commons": "Category:Ben Gardane",
+              "wikipedia": "ar:بنقردان",
+              "wikipedia:ar": "بنقردان"
+            },
+            "lat": 33.1403223,
+            "lng": 11.2170109,
+            "current": null
+          }
+        ],
+        "supplementalCities": [],
+        "scope": "Exact normalized primary/alias names across existing cached source inventories; no fuzzy matching, proximity discovery, PBF scan or global collector change."
+      },
+      "possibleFutureTransition": {
+        "id": "osm:way:26303952",
+        "field": "pickerGroupId",
+        "before": "osm:way:26303952",
+        "after": "delegation:488",
+        "conditions": [
+          "Independent source/code review before implementation; no automatic application is authorized by this triage.",
+          "Preserve complete singleton groups, all raw IDs, original and packed polygon geometry, current names/aliases/contexts, source default and existing base coordinates.",
+          "Do not recreate an absorbed/excluded supporting point or attach any separately coded imada/other fine locality to the base group.",
+          "Use explicit evidence-bound town identity; do not generalize from French aliases or containment alone."
+        ]
+      },
+      "coordinateOrDefaultMovesProposed": false
+    }
+  ],
+  "registrySources": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "primaryCorroboration": [
+    {
+      "baseId": 596,
+      "url": "https://www.commune-zeramdine.gov.tn/ar/en_bref.php",
+      "provider": "Zeramdine municipality",
+      "title": "زرمدين في سطور",
+      "evidenceType": "Search-indexed primary-page text, separately pinned; direct HTTPS and browser open timed out. Not a downloaded original HTML.",
+      "file": "work/three-residential-town-source-triage/municipal-indexed-excerpts-response.json",
+      "shortQuote": "تقع مدينة زرمدين وسط الساحل التونسي",
+      "supports": "Official town spelling and Monastir locality description. Current INS independently corroborates spelling.",
+      "limit": "Identity corroboration only; no area/administrative extent inferred from municipal descriptive figures."
+    },
+    {
+      "baseId": 461,
+      "url": "https://www.nabeul.gov.tn/ar/%D8%A8%D8%A7%D9%86%D9%88%D8%B1%D8%A7%D9%85%D8%A7-%D8%A7%D9%84%D9%85%D8%B9%D8%AA%D9%85%D8%AF%D9%8A%D8%A7%D8%AA-2/",
+      "provider": "Governorate of Nabeul",
+      "evidence": {
+        "file": "work/three-residential-town-source-triage/hammamet-governorate.html",
+        "sha256": "f1e05febaf66a2c1a7461f2643a427ad3622794c8b13d2b35ed417dc74cc85fa",
+        "bytes": 175347
+      },
+      "evidenceType": "Complete primary HTML via verified Schannel HTTPS",
+      "supports": "Names الحمامات as an urban city and separately describes its municipalities/imadas.",
+      "limit": "The collated page uses historical/inconsistent imada wording, including الحمامات الشمالية where current INS has الحمامات الغربية. Preserve current exact INS nine-imada inventory, not that descriptive list."
+    },
+    {
+      "baseId": 488,
+      "url": "https://www.commune-bengardene.gov.tn/?page_id=1283",
+      "provider": "Ben Gardane municipality",
+      "title": "تعريف المدينة",
+      "evidenceType": "Search-indexed primary-page text, separately pinned; direct HTTPS and browser open timed out. Not a downloaded original HTML.",
+      "file": "work/three-residential-town-source-triage/municipal-indexed-excerpts-response.json",
+      "shortQuote": "تقع مدينة بنقردان في الجنوب الشرقي للبلاد التونسية",
+      "supports": "Explicit Ben Gardane town identity under Medenine and joined Arabic spelling.",
+      "limit": "Page mixes city/municipal/wider regional scope and lists nine regions with old population figures. It does not replace the12 current INS imadas or validate the55.57km2 residential polygon."
+    }
+  ],
+  "referenceQualification": "596 and488 already use reviewed named-settlement reference points. They are not certified INM calculation coordinates; this review does not move them.461 is preserved as a legacy reference inside the town polygon, with no claim that it needs correction.",
+  "implementationReadinessLimits": [
+    "Zeramdine residential footprint is not fully contained in its cached delegation polygon; retain its current governorate-only context and report the mismatch. Do not invent containment or require a boundary alteration to express a supported town display identity.",
+    "Hammamet supplemental city-node file is evidence-only without a newly established live/PBF lineage in this task. Direct source address tags and official city evidence already support identity. Any later helper that consumes that exact city node must pin its provenance honestly, as done for previous city-only bridges.",
+    "Municipal primary snippets for596/488 are explicitly index captures, not byte-pinned successful HTTP bodies. Existing coordinate and INS proofs remain the main exact source bindings; a future runtime proof must not label snippets as original HTML.",
+    "No full configuration, helper, final name change or automatic merge has been prepared."
+  ],
+  "notPerformed": [
+    "app/repository edits",
+    "full configuration or curation proposal",
+    "generator or helper execution",
+    "numeric nearest-source matrix",
+    "tests",
+    "build",
+    "phone/device or ledger I/O",
+    "new coordinate correction",
+    "PBF rescan",
+    "official polygon import"
+  ],
+  "script": {
+    "file": "work/triage_three_residential_town_identities.py",
+    "sha256": "f49ddbd2954b45a25ad8fcc322c07fdfd7777f878dc24890835a65c000ca8211"
+  }
+}

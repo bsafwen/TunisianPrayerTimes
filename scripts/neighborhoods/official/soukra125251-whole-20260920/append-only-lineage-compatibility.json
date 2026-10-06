@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_append_only_boundary_extension",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "previousManifest": {
+    "file": "official/soukra125251-whole-20260920/evidence/boundarymanifest-before-soukra125251-whole.json",
+    "sha256": "f8dfbaf57cdd8a043eb417f237575fd092c6a77d1cfb0768ba016c6835500f11"
+  },
+  "addedSources": [
+    {
+      "id": "isie-local-sector-2023-soukra125251-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/سكرة/سكرة.pdf",
+      "file": "official/soukra125251-whole-20260920/soukra125251-whole-source.geojson",
+      "sha256": "69e9681041dbae1b712ba75fd56210ce4c484ea33b381c36f9330f1d59eecf1b",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7114900",
+          "officialCode": "125251",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "int_name": "Soukra",
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:fr": "Soukra",
+            "ref:tn:codegeo": "125251"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/soukra125251-whole-20260920/manual-point-review.json",
+        "sha256": "57ba25370c2eec35ac1b64ee7799d54ec137f93491d68cae96e9cf4a00e2c3d4"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "One complete unchanged native whole-imada vector; no repair, snapping, clipping or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary name and Soukra French name preserved exactly; no curation supersession.",
+        "evidenceFile": "official/soukra125251-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "eed9586210c7771d19b4e72342b9937356f3b4eabed74b27633ea4937374a0dc",
+        "uncertainty": "Native shared registration overlap, actual conflicts/gaps retained; no survey or present-day currency certification."
+      }
+    }
+  ],
+  "scopeSuccessor": {
+    "file": "official/soukra125251-whole-20260920/accepted-whole-scope-successor.json",
+    "sha256": "5bdd0d56c6b86f7899aa7e9d2c683bc432229d0b6b5a7a235a91898f19a24dd5",
+    "bytes": 181661
+  },
+  "evidence": [
+    {
+      "file": "official/hammamet-nine-20260920/evidence/root-source-stage-checked.json",
+      "sha256": "acc52c536fd817049d3b12633ffe8e834837336dd46b2c6db34393e643c5190c"
+    },
+    {
+      "file": "official/hammamet-nine-20260920/source-review.json",
+      "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+    },
+    {
+      "file": "official/sidi-mtir-20260920/source-review.json",
+      "sha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/source-review.json",
+      "sha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+      "sha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/source-acceptance-review.json",
+      "sha256": "0e2e76ca70259fd1b665f8bfd95cdcae087f281f4be41e6155292f41fe35fc48"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/source-package-acceptance-review.json",
+      "sha256": "fdfe1ccd641a17f659472c8d3a4cc19162010085346e5200f29a057142d91483"
+    },
+    {
+      "file": "official/soukra-amra-two-whole-20260920/source-acceptance-review.json",
+      "sha256": "abbc835ceaf5f4ee5702d5baf9ded19963a228f3a18ed6c15b073542fd331c32",
+      "bytes": 21681
+    },
+    {
+      "file": "official/soukra125251-whole-20260920/source-acceptance-review.json",
+      "sha256": "eed9586210c7771d19b4e72342b9937356f3b4eabed74b27633ea4937374a0dc"
+    }
+  ]
+}

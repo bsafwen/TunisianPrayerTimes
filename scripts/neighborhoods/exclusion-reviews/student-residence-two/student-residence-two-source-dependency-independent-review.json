@@ -1,0 +1,295 @@
+{
+  "status": "PASS",
+  "scope": "Independent source identity, current-baseline qualification and operative dependency gate for exactly two student institutions.",
+  "baselineMetadataSha256": "d80d8836fb2774d4669cb957b99ae9304af873c15e18f871d5a8f820c17a4281",
+  "sourceHistoricalMetadataSha256": "552b098b4e8da9201c1fa46d3315e7fe627fcb251dcaf569b9ef87c1b19f03a4",
+  "historicalBaselineQualification": "Both source-report rows retain every field except the mechanical 328-byte offset shift after the separately installed diplomatic exclusions. Current full rows and slices agree with the finite report.",
+  "generatorSha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\student-residence-two-source-scope-review.json",
+    "sha256": "96eb0c1877c0a3357e85f9aa7ae37c40ca47ad28a75f1428916fb4f3d7a50ffc"
+  },
+  "finiteImpactReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\student-residence-two-finite-impact-review.json",
+    "sha256": "ea2e1352999b8d5761c36e380dab495a84092bb4165cf5118c148663db2966c8"
+  },
+  "cases": [
+    {
+      "id": "osm:way:372846719",
+      "status": "SUPPORTED_EXACT_INSTITUTIONAL_PROPERTY_EXCLUSION",
+      "currentRawRecord": {
+        "id": "osm:way:372846719",
+        "sourceId": "osm",
+        "name": "Foyer Universitaire Chaouki - Menzah 7",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "النصر 1",
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "Nasr 1",
+          "النصر 1",
+          "معتمدية أريانة المدينة"
+        ],
+        "governorateId": 358,
+        "lat": 36.854879,
+        "lng": 10.164639,
+        "delegationId": 390,
+        "hasBoundary": true,
+        "bbox": [
+          10.164061,
+          36.854445,
+          10.165252,
+          36.855475
+        ],
+        "areaKm2": 0.005867662724921569,
+        "pickerGroupId": "osm:way:372846719",
+        "offset": 5392100,
+        "length": 84
+      },
+      "originalTags": {
+        "landuse": "residential",
+        "name": "Foyer Universitaire Chaouki - Menzah 7",
+        "residential": "university"
+      },
+      "currentOsm": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372846719.json",
+        "sha256": "67c3f7f3db921e9ce7467093726fec4f17b244590da4e1bf43d257bca57c26ee"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372846719-history.json",
+        "sha256": "a707d26e9595c26c7cef9eb98198f1110ac0dff0228dd88b58c2d4a532d528b1"
+      },
+      "oneVersionComparedExactly": true,
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\ministry-higher-education-budget.pdf",
+        "sha256": "6cf39127d0c8f40ac2cd84c7c8014f815100cae5f988f9fe0f391a400395602d",
+        "url": "https://www.finances.gov.tn/sites/default/files/2019-02/3.pdf",
+        "document": "Ministry of Finance, 2018 budget, Higher Education chapter; cover dated October 2017",
+        "pdfPageOneBased": 60,
+        "printedPage": 51,
+        "visuallyReviewedFullPopplerPage": true,
+        "pageRender": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\budget-page60.png",
+          "sha256": "7642664db8d18e4be60a58b7bdfbb608295a749ce6bed824ee791258926a65ba"
+        },
+        "identityText": "المبيت الجامعي شوقي بالمنزه السابع",
+        "context": "Named in a list of university service institutions receiving refurbishment work, explicitly including dormitories, restaurants and university residences.",
+        "qualification": "The 2019 URL directory is an upload path, not the budget year. This supports named institution identity, not current occupancy, ownership or cadastral parcel limits."
+      },
+      "primaryPageIndependentlyViewed": true,
+      "scopeReason": "The exact university housing name is corroborated in an official institutional-services document. This identifies the individual dormitory institution, without equating it to the surrounding inhabited quarter.",
+      "limits": [
+        "No present occupancy, ownership or exact parcel certification.",
+        "No current boundary-node coordinates or their histories were fetched.",
+        "No inference that student housing is uninhabited or that all residential campuses should be excluded."
+      ],
+      "packedRemoval": {
+        "offset": 5392100,
+        "length": 84,
+        "sha256": "a58de9f39cf4930cdad526b699357f05b21562ea3269ca6eab3992fbfd6f70c2"
+      },
+      "gpsAfter": {
+        "id": "osm:relation:7115050",
+        "name": "النصر 1",
+        "kind": "sector",
+        "parentName": "معتمدية أريانة المدينة",
+        "governorateId": 358,
+        "delegationId": 631,
+        "pickerGroupId": "osm:relation:7115050"
+      },
+      "gpsInteriorOutcomeFractions": {
+        "osm:relation:7115050": 1.0000000000000002
+      }
+    },
+    {
+      "id": "osm:way:372736528",
+      "status": "SUPPORTED_EXACT_INSTITUTIONAL_PROPERTY_EXCLUSION",
+      "currentRawRecord": {
+        "id": "osm:way:372736528",
+        "sourceId": "osm",
+        "name": "Cité Universitaire le Foyer 2 Mars Ariana",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "معتمدية أريانة المدينة",
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "معتمدية أريانة المدينة"
+        ],
+        "governorateId": 358,
+        "lat": 36.857949,
+        "lng": 10.194774,
+        "delegationId": 631,
+        "hasBoundary": true,
+        "bbox": [
+          10.193856,
+          36.857015,
+          10.195814,
+          36.858543
+        ],
+        "areaKm2": 0.014109212853775704,
+        "pickerGroupId": "osm:way:372736528",
+        "offset": 5391956,
+        "length": 84
+      },
+      "originalTags": {
+        "landuse": "residential",
+        "name": "Cité Universitaire le Foyer 2 Mars Ariana"
+      },
+      "currentOsm": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372736528.json",
+        "sha256": "eb5f541625f3bb341f0ff29cd71d59d1e1e00638d391ea2473ef2a1f7af4a084"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372736528-history.json",
+        "sha256": "f0371edd9c8db7c15c2c65ca0ece99814402629b87f31374fb23becfaeb492a4"
+      },
+      "oneVersionComparedExactly": true,
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\isteub-university-services.pdf",
+        "sha256": "67ca8e6cc7058cafa07499b3fa7cddcc16098408d8f3aad2ba5c9437ceb69f6d",
+        "url": "https://pmo.ucar.rnu.tn/web/content/3192?download=true&unique=017eacc282d8208a555a8f16a029bdcb3592724c",
+        "document": "University of Carthage institutional booklet, ISTEUB entry, with 2022–2023 statistics",
+        "pdfPageOneBased": 90,
+        "visuallyReviewedFullPopplerPage": true,
+        "pageRender": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\isteub-page90.png",
+          "sha256": "948e4567acb17193bf2c9c8891942f3ec384644a31ac6e0ad38b8ad9b567c439"
+        },
+        "identityText": "Foyer universitaire 2 Mars pour filles, V55V+5WJ, Ariana",
+        "context": "Listed in the student services panel under university housing, separately from university restaurants.",
+        "qualification": "This supports the named housing institution in Ariana. The published short Plus Code is context, not a surveyed coordinate or certified match to every OSM parcel vertex."
+      },
+      "primaryPageIndependentlyViewed": true,
+      "scopeReason": "The exact university housing name is corroborated in an official institutional-services document. This identifies the individual dormitory institution, without equating it to the surrounding inhabited quarter.",
+      "limits": [
+        "No present occupancy, ownership or exact parcel certification.",
+        "No current boundary-node coordinates or their histories were fetched.",
+        "No inference that student housing is uninhabited or that all residential campuses should be excluded."
+      ],
+      "packedRemoval": {
+        "offset": 5391956,
+        "length": 84,
+        "sha256": "ada0d0495f2ed162adc6ffb3effde0f9afdb05c2ad40ac96c1cc1033be7ddc2b"
+      },
+      "gpsAfter": {
+        "id": "osm:relation:7115055",
+        "name": "الياسمينة",
+        "kind": "sector",
+        "parentName": "معتمدية أريانة المدينة",
+        "governorateId": 358,
+        "delegationId": 631,
+        "pickerGroupId": "osm:relation:7115055"
+      },
+      "gpsInteriorOutcomeFractions": {
+        "osm:relation:7115054": 0.02050291742695816,
+        "osm:relation:7115055": 0.9794970825735045
+      }
+    }
+  ],
+  "preservedCompleteGroups": {
+    "osm:relation:7115050": [
+      "osm:relation:7115050",
+      "osm:way:152926563"
+    ],
+    "osm:relation:7115055": [
+      "osm:relation:7115055"
+    ],
+    "osm:relation:7115054": [
+      "osm:relation:7115054"
+    ],
+    "osm:node:2161965264": [
+      "osm:node:2161965264"
+    ]
+  },
+  "sourceDependencyAssessment": {
+    "activeTargetReferences": [],
+    "historicalOnlyReferences": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-choice-staged-data-independent-review.json",
+        "sha256": "56121c5cfb3ea4c02df6156f80138f969f921ac989a0ebfff2dd06e43b927fe7"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\picker-distinct-reviews\\bizerte-three-staged-data-independent-review.json",
+        "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\before-neighborhoods.json",
+        "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0"
+      }
+    ],
+    "priorConsumerReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\diplomatic-residence-two-source-dependency-independent-review-v2.json",
+      "sha256": "561ec62e1d7f75b540486f691edcfc3d8453fbb699180580bee1bd39f9b41754"
+    },
+    "reason": "Unchanged411a consumers index only the Chenini point/sector pairs and Bizerte distinct pair. Historical full snapshots and offset-delta reports remain evidence; they do not require these two institutional rows to remain current.",
+    "proofOrEngineChangesRequired": [],
+    "onlyExistingSourceChange": "Append two exact exclude decisions to catalog-curation.json; keep all153 old decisions and all historical evidence unchanged."
+  },
+  "finiteImpactAssessment": {
+    "noSurfacedSourcePoints": true,
+    "conflictsUnchanged": 318,
+    "removedBytes": 168,
+    "independentlyReproducedExpectedData": {
+      "metadataSha256": "82b8f2f4d8d716e4bc354a2f72dea37ec7df36bea4a97c2bd527917fe4a3aa6e",
+      "binarySha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069",
+      "tinySha256": "2790c3a912dabe64f9509373d2da93fb9829b6695d6b1bcb0af7bdc659ffa5b2"
+    },
+    "expectedCounts": {
+      "raw": {
+        "before": 3625,
+        "after": 3623
+      },
+      "polygons": {
+        "before": 2721,
+        "after": 2719
+      },
+      "points": {
+        "before": 904,
+        "after": 904
+      },
+      "rawGroups": {
+        "before": 3492,
+        "after": 3490
+      },
+      "pickerChoices": {
+        "before": 3568,
+        "after": 3566
+      },
+      "curations": {
+        "before": 153,
+        "after": 155
+      },
+      "conflicts": {
+        "before": 318,
+        "after": 318
+      },
+      "savedNames": {
+        "before": 103,
+        "after": 103
+      },
+      "retiredIds": {
+        "before": 22,
+        "after": 24
+      },
+      "savedReplacements": {
+        "before": 1,
+        "after": 1
+      },
+      "geometryBytes": {
+        "before": 5501716,
+        "removed": 168,
+        "after": 5501548
+      }
+    },
+    "gpsQualification": "Chaouki falls back to Nasr1. The 2Mars footprint falls predominantly in Yasmina and partly in ArianaVille; preserve this existing split rather than inventing one replacement parent. These are locality-label outcomes, not prayer-source relocations.",
+    "savedSelection": "Retire only these two stable IDs. Existing read-time sanitization clears locality ID/name/kind and preserves the saved prayer delegation and fromGps; no replacement is introduced.",
+    "all103ReviewedNamesAndExistingReplacementPreserved": true
+  },
+  "coveragePolicy": "Compare the complete expected JSON object and every ordered array. Do not predict a raw coverage hash from set-derived evidence-map insertion order; pin actual bytes only after generation.",
+  "findings": [],
+  "noPhoneOrLedgerAccess": true,
+  "noGeneratorHelpersTestsOrBuilds": true,
+  "noLiveOrStageWrites": true
+}

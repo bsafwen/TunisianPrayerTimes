@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "status": "EASTERN_NEW_CHENINI_IDENTITY_SUPPORTED_NAME_IMPLEMENTATION_HELD_FOR_EXPLICIT_PAIR_TRANSITION_REVIEW",
+  "reviewedAt": "2026-09-07T18:39:31.797688+00:00",
+  "purpose": "Separate source-only display-name addendum. No alteration to the frozen western context-only proposal or its source proof.",
+  "checkpoint": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "e4847923c9d5ae90104520b153bbcc118721e89cad297e33dc31938584958ae4"
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850"
+    },
+    "prayerSources": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e"
+    }
+  },
+  "frozenPreviousReview": {
+    "report": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-current-node-identity-review.json",
+      "sha256": "7ffb1b3d727c7f0fce022905850de1bbcceccb42e41f62b539c7d538056a58c4"
+    },
+    "sourceProof": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\chenini-exact-node-context-source-proof.json",
+      "sha256": "ab1461afe3044aec5c7ef66f4ee62c978e9c1664ce50f50b4bf20efb7f431a1b"
+    },
+    "freezeManifest": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\freeze-manifest.json",
+      "sha256": "5878250f65b1a463e3c871d38d8c45a2d542eb65bb6a943571e2bc3f618277ee"
+    },
+    "allPreviouslyPinnedFilesVerifiedUnchanged": true
+  },
+  "exactSourceNode": {
+    "id": "osm:node:1975899618",
+    "version": 10,
+    "timestamp": "2025-09-14 10:19:40+00:00",
+    "tags": {
+      "addr:city": "شنني",
+      "name": "شنني",
+      "name:ar": "شنني",
+      "name:en": "Chenini",
+      "name:fr": "Chenini",
+      "place": "village",
+      "wikidata": "Q2317502",
+      "wikimedia_commons": "Category:Chenini",
+      "wikipedia": "ar:شنني (تطاوين)"
+    },
+    "lat": 32.9147021,
+    "lng": 10.2781706,
+    "sourceURL": "https://www.openstreetmap.org/node/1975899618",
+    "freshPbfFacts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\fresh-pbf-identity-facts.json",
+      "sha256": "a5a0257054959568f6e509b54172c3190cb3007399655e7836febd0ce45df8a7"
+    },
+    "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd"
+  },
+  "expectedCurrentFeature": {
+    "id": "osm:node:1975899618",
+    "sourceId": "osm",
+    "name": "شنني",
+    "aliases": [
+      "Chenini"
+    ],
+    "kind": "village",
+    "parentName": "شنني الجديدة",
+    "contextAliases": [
+      "Délégation Tataouine Sud",
+      "Nouvelle Chnini",
+      "Tataouine Sud",
+      "شنني الجديدة",
+      "معتمدية تطاوين الجنوبية"
+    ],
+    "governorateId": 351,
+    "lat": 32.9147021,
+    "lng": 10.2781706,
+    "delegationId": 624,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1975899618"
+  },
+  "sourceSupportedNameProposal": {
+    "primaryName": "شنني الجديدة",
+    "aliases": [
+      "Chenini",
+      "شنني"
+    ],
+    "inference": "The official 2023 map places the exact eastern settlement safely within New Chenini and excludes it from Chenini; primary IRA/IRD fieldwork identifies the two imadas as old and new villages, while separately named/addressed school and postal nodes identify this eastern built-up settlement as New Chenini. The inference combines these sources; no primary source publishes the OSM village-node ID.",
+    "sourceRawTagsRemainEvidenceUnmodified": true,
+    "noInventedFrenchOrEnglishQualifiedAlias": true
+  },
+  "primaryFieldStudy": {
+    "pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\ira-ird-chenini-2018.pdf",
+      "sha256": "8a9d3350aa878ed3e6f1750f146f42c6db10e0f59631f71313a2460603cbf164"
+    },
+    "pageRender": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\ira-ird-chenini-2018-page2.png",
+      "sha256": "0ec725823e3795933345b441c3e2b92a4ea283f17ed1526ee12ac3ce4ce5eaa6"
+    },
+    "URL": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers19-10/010076861.pdf",
+    "title": "Analyse de jeux acteurs pour la conservation et la valorisation du patrimoine local. Cas du village berbère de Chenini (Sud-est tunisien)",
+    "authors": [
+      "Hatem Khattali (Institut des Régions Arides)",
+      "Mongi Sghaier (Institut des Régions Arides)",
+      "Frédéric Sandron (IRD)"
+    ],
+    "publication": "Revue des Régions Arides n°44 (1/2018)",
+    "PDFPage": 2,
+    "printedPage": 166,
+    "quote": "elle est divisée en deux Imadas (ancien et nouveau village)",
+    "quoteEditorialNote": "Superscript footnote marker 16 omitted; wording otherwise unchanged.",
+    "supports": "The distinction between old and new Chenini villages and their two administrative imadas.",
+    "doesNotSupport": "Exact village-node coordinates or a neighborhood boundary. No coordinate is extracted from the unregistered study figure."
+  },
+  "freshPublicLandmarks": [
+    {
+      "id": "osm:node:9818200933",
+      "version": 1,
+      "timestamp": "2022-06-14 21:39:48+00:00",
+      "tags": {
+        "amenity": "post_office",
+        "name": "مكتب بريد شنني الجديدة"
+      },
+      "lat": 32.9150121,
+      "lng": 10.2788404,
+      "sourceURL": "https://www.openstreetmap.org/node/9818200933",
+      "distanceFromEasternVillageMeters": 71.45168786267413,
+      "distanceFromWesternVillageMeters": 1685.9948779975487,
+      "insideOfficialNewChenini": true,
+      "insideOfficialChenini": false,
+      "sourceRole": "Public OSM address/place-name corroboration; not an independently geocoded official directory or a replacement village coordinate."
+    },
+    {
+      "id": "osm:node:9818208998",
+      "version": 3,
+      "timestamp": "2024-03-28 19:09:31+00:00",
+      "tags": {
+        "addr:city": "شنني الجديدة",
+        "addr:postcode": "3222",
+        "addr:street": "فاطمة الزهراء",
+        "amenity": "school",
+        "name": "المدرسة الابتدائية شنني الجديدة",
+        "name:ar": "المدرسة الابتدائية شنني الجديدة",
+        "name:fr": "École Primaire Chenini Jadida"
+      },
+      "lat": 32.9131165,
+      "lng": 10.2792426,
+      "sourceURL": "https://www.openstreetmap.org/node/9818208998",
+      "distanceFromEasternVillageMeters": 202.38566451188055,
+      "distanceFromWesternVillageMeters": 1676.0177146225567,
+      "insideOfficialNewChenini": true,
+      "insideOfficialChenini": false,
+      "sourceRole": "Public OSM address/place-name corroboration; not an independently geocoded official directory or a replacement village coordinate."
+    },
+    {
+      "id": "osm:node:9818200934",
+      "version": 1,
+      "timestamp": "2022-06-14 21:39:48+00:00",
+      "tags": {
+        "amenity": "post_office",
+        "name": "مكتب بريد شنني القديمة"
+      },
+      "lat": 32.9108544,
+      "lng": 10.2610004,
+      "sourceURL": "https://www.openstreetmap.org/node/9818200934",
+      "distanceFromEasternVillageMeters": 1661.5292057407942,
+      "distanceFromWesternVillageMeters": 54.23556509086039,
+      "insideOfficialNewChenini": false,
+      "insideOfficialChenini": true,
+      "sourceRole": "Public OSM address/place-name corroboration; not an independently geocoded official directory or a replacement village coordinate."
+    },
+    {
+      "id": "osm:node:9818212833",
+      "version": 1,
+      "timestamp": "2022-06-14 21:33:59+00:00",
+      "tags": {
+        "addr:city": "شنني",
+        "addr:postcode": "3222",
+        "amenity": "school",
+        "name": "المدرسة الإبتدائية 1957 بشنني القديمة"
+      },
+      "lat": 32.9105601,
+      "lng": 10.2599161,
+      "sourceURL": "https://www.openstreetmap.org/node/9818212833",
+      "distanceFromEasternVillageMeters": 1767.9269601245846,
+      "distanceFromWesternVillageMeters": 153.81027530215042,
+      "insideOfficialNewChenini": false,
+      "insideOfficialChenini": true,
+      "sourceRole": "Public OSM address/place-name corroboration; not an independently geocoded official directory or a replacement village coordinate."
+    }
+  ],
+  "officialWholeImadaEvidence": {
+    "proof": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\chenini-exact-node-context-source-proof.json",
+      "sha256": "ab1461afe3044aec5c7ef66f4ee62c978e9c1664ce50f50b4bf20efb7f431a1b"
+    },
+    "geometryEvidenceOnly": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\official-two-sector-context-evidence.geojson",
+      "sha256": "fd875eca09776380339b20663d7061b285bf12c350856b4773d0b1a3247212ba"
+    },
+    "records": [
+      {
+        "code": "535259",
+        "name": "شنني",
+        "sourceSectorId": "osm:relation:7143881",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\maps\\chenini.pdf",
+          "sha256": "6de89fef69504d0be66d75e07cacc9b4c135b2fffa64ff1bb9d74fb74ac8f4f5"
+        },
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A.pdf",
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\maps\\chenini.png",
+          "sha256": "dc17b8779525f5193c4e4e3e51449bfbeaf4fc937a6d0486a37cf36ec78591b5"
+        },
+        "drawingIndex": 664,
+        "maxControlResidualMeters": 0.28848494539735153,
+        "scope": {
+          "semantics": "WHOLE_IMADA_CIRCLE_CONFIRMED_IN_ANNEX_A",
+          "sourceURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "sourceSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "PDFPage": 33,
+          "JORTPage": 5130,
+          "parentStartsPDFPage": 32,
+          "circleNameAr": "شنني",
+          "imadaNameAr": "شنني",
+          "parentAr": "تطاوين الجنوبية",
+          "expectedCircleCount": 1,
+          "personallyViewed": true
+        },
+        "easternNodeClaim": {
+          "id": "osm:node:1975899618",
+          "sourceContains": false,
+          "quantizedContains": false,
+          "sourceBoundaryDistanceMeters": 499.252194499842,
+          "quantizedBoundaryDistanceMeters": 499.22541294245076,
+          "originalOsmSectorContains": false
+        }
+      },
+      {
+        "code": "535258",
+        "name": "شنني الجديدة",
+        "sourceSectorId": "osm:relation:7143823",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\maps\\new-chenini.pdf",
+          "sha256": "c91ebd050f74d8a97dbe38a2a69cfe505ba92166f1918c3a5b300d2ee74355cb"
+        },
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.pdf",
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\maps\\new-chenini.png",
+          "sha256": "5fd66ee2d0c06e9bfc995e14352580d4ee5b289bd6fb90cf159a773f395dc558"
+        },
+        "drawingIndex": 541,
+        "maxControlResidualMeters": 0.27919972482508126,
+        "scope": {
+          "semantics": "WHOLE_IMADA_CIRCLE_CONFIRMED_IN_ANNEX_A",
+          "sourceURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "sourceSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "PDFPage": 33,
+          "JORTPage": 5130,
+          "parentStartsPDFPage": 32,
+          "circleNameAr": "شنني الجديدة",
+          "imadaNameAr": "شنني الجديدة",
+          "parentAr": "تطاوين الجنوبية",
+          "expectedCircleCount": 1,
+          "personallyViewed": true
+        },
+        "easternNodeClaim": {
+          "id": "osm:node:1975899618",
+          "sourceContains": true,
+          "quantizedContains": true,
+          "sourceBoundaryDistanceMeters": 505.0849594648145,
+          "quantizedBoundaryDistanceMeters": 505.06523532133883,
+          "originalOsmSectorContains": true
+        }
+      }
+    ],
+    "noAppBoundaryImportProposed": true
+  },
+  "independentWesternContrast": {
+    "node": {
+      "id": "osm:node:297760994",
+      "version": 13,
+      "timestamp": "2025-09-14 10:19:40+00:00",
+      "tags": {
+        "addr:city": "Chenini",
+        "name": "شنني",
+        "name:ar": "شنني",
+        "name:en": "Chenini",
+        "name:fr": "Chenini",
+        "place": "village",
+        "wikidata": "Q2317502",
+        "wikimedia_commons": "Category:Chenini",
+        "wikipedia": "ar:شنني (تطاوين)"
+      },
+      "lat": 32.9107032,
+      "lng": 10.2615519
+    },
+    "distanceBetweenVillageNodesMeters": 1616.2542861496706,
+    "primaryGmgLandmarks": [
+      {
+        "name": "GMG troglodyte village",
+        "lat": 32.91246666666667,
+        "lng": 10.261916666666666,
+        "scope": "village reference, not a boundary or exact OSM-node correspondence",
+        "distancesToSourceNodesMeters": {
+          "osm:node:1975899618": 1540.1922268176845,
+          "osm:node:297760994": 198.48264916646076
+        }
+      },
+      {
+        "name": "GMG Boughrara oil mill",
+        "lat": 32.910983333333334,
+        "lng": 10.263894444444444,
+        "scope": "explicitly in oldCheninni village",
+        "distancesToSourceNodesMeters": {
+          "osm:node:1975899618": 1397.3799477783664,
+          "osm:node:297760994": 221.27903831860365
+        }
+      },
+      {
+        "name": "GMG OuledAli oil mill",
+        "lat": 32.911477777777776,
+        "lng": 10.260616666666667,
+        "scope": "explicitly in oldCheninni village",
+        "distancesToSourceNodesMeters": {
+          "osm:node:1975899618": 1680.1816403724843,
+          "osm:node:297760994": 122.583069891892
+        }
+      },
+      {
+        "name": "GMG third oil mill",
+        "lat": 32.91204166666667,
+        "lng": 10.260525,
+        "scope": "explicitly in oldCheninni village",
+        "distancesToSourceNodesMeters": {
+          "osm:node:1975899618": 1676.4306642001852,
+          "osm:node:297760994": 176.77154020260954
+        }
+      }
+    ],
+    "conclusion": "The two source villages describe separate settlement locations. Shared generic names, Wikidata or Google Maps cards do not justify merging their IDs."
+  },
+  "requiredPreservation": {
+    "rawId": "osm:node:1975899618",
+    "coordinates": {
+      "lat": 32.9147021,
+      "lng": 10.2781706
+    },
+    "kind": "village",
+    "governorateId": 351,
+    "defaultPrayerSourceId": 624,
+    "defaultPrayerSource": {
+      "id": 624,
+      "nomFr": "Tataouine",
+      "nomAr": "تطاوين",
+      "nomEn": "Tataouine",
+      "lat": 32.9297,
+      "lng": 10.4518
+    },
+    "hasBoundary": false,
+    "currentPickerGroupId": "osm:node:1975899618",
+    "currentContextMustRemainUnlessSeparatelyApproved": {
+      "parentName": "شنني الجديدة",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Nouvelle Chnini",
+        "Tataouine Sud",
+        "شنني الجديدة",
+        "معتمدية تطاوين الجنوبية"
+      ]
+    },
+    "allOtherRawIdsAndAllGeometryBytes": "unchanged",
+    "westernContextProposal": "independent and unchanged"
+  },
+  "existingSameNamedSector": {
+    "currentFeature": {
+      "id": "osm:relation:7143823",
+      "sourceId": "osm",
+      "name": "شنني الجديدة",
+      "aliases": [
+        "Nouvelle Chnini"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تطاوين الجنوبية",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.911087,
+      "lng": 10.009609,
+      "delegationId": 473,
+      "hasBoundary": true,
+      "bbox": [
+        9.930962,
+        32.859987,
+        10.342622,
+        32.962276
+      ],
+      "areaKm2": 204.7316422458039,
+      "pickerGroupId": "osm:relation:7143823",
+      "offset": 2047168,
+      "length": 948
+    },
+    "defaultPrayerSource": {
+      "id": 473,
+      "nomFr": "Ghomrassen",
+      "nomAr": "غمراسن",
+      "nomEn": "Ghomrassen",
+      "lat": 33.06,
+      "lng": 10.34
+    },
+    "currentRawOsmPolygonContainsEastPoint": true,
+    "sourcePointToSectorManualReferenceMeters": 25119.280308039204,
+    "currentSectorGroupSingleton": true,
+    "currentEasternPointGroupSingleton": true,
+    "beforeRenameSamePrimaryNewCheniniRows": 1,
+    "postGroupRenameOnlySamePrimaryNewCheniniRows": 2,
+    "interpretation": "The village and the namesake administrative sector remain distinct raw identities. A display rename alone introduces a second New Chenini row, whose manual selection currently uses a substantially different reference coordinate and default prayer source."
+  },
+  "implementationRisks": [
+    {
+      "risk": "EARLY_NAME_TAGS_ABSORBS_SELECTABLE_POINT",
+      "evidence": "The current compiler queries containing polygons and same_picker_name before retaining point-only places. The old New Chenini sector contains this exact point and already has the proposed primary. An ordinary early name_tags action therefore creates a matching polygon. Without a separately valid preserve_point action, the node is not retained.",
+      "code": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+        "sha256": "d03e4af6d4bef8bfd780b71c3b2a1690abc3354713f1683afcf972f7caf6b698"
+      },
+      "lines": [
+        1910,
+        1929
+      ],
+      "consequence": "Loss of the selectable node ID, its exact manual reference coordinate and source624; polygon canonical currently uses source473."
+    },
+    {
+      "risk": "POST_GROUP_NAME_ONLY_LEAVES_TWO_IDENTICAL_PRIMARY_ROWS",
+      "evidence": "Current point and sector have distinct singleton pickerGroupIds, which runtime groupPickerLocalities respects.",
+      "consequence": "Preserving grouping while renaming the point gives two New Chenini labels; point context also equals its new primary and requires an explicit subtitle decision."
+    },
+    {
+      "risk": "UNREVIEWED_GROUP_CAN_SELECT_WRONG_MANUAL_REFERENCE",
+      "evidence": "Canonical sector coordinate is about25km west of the village; groupPickerLocalities takes the canonical row coordinate. Nearest-source selection then uses that coordinate.",
+      "consequence": "Merely retaining the raw point while grouping to an unchanged sector canonical does not guarantee that selecting the visible row still uses point624."
+    }
+  ],
+  "transitionChoices": [
+    {
+      "choice": "DEFER_RENAME_KEEP_FOUR_CONTEXT_CHANGES_INDEPENDENT",
+      "decision": "Recommended for this checkpoint; accepted by root pending further pair review.",
+      "changes": "None to eastern node or its sector.",
+      "missingWork": "None for the independent context corrections."
+    },
+    {
+      "choice": "EXACT_POST_GROUP_DISPLAY_RENAME_WITH_DISTINCT_ROWS",
+      "decision": "Source-supported but not approved in this addendum.",
+      "requirements": [
+        "Pin exact before feature, source tags and coordinates; run after absorption/grouping, preserve raw ID, point624 and current group.",
+        "Deliberately review both New Chenini rows and subtitle semantics; update saved-name index without broad alias matching."
+      ],
+      "remainingIssue": "Two same-primary choices with different manual references remain."
+    },
+    {
+      "choice": "REVIEWED_SECTOR_AND_SETTLEMENT_DISPLAY_GROUP_WITH_EXACT_MANUAL_POINT",
+      "decision": "Potential complete follow-up; requires explicit identity/group/reference review before implementation.",
+      "requirements": [
+        "Prove unique namesake settlement and exact sector membership using the current official whole-imada evidence and all source peers, not proximity or shared generic aliases.",
+        "Retain both raw IDs and all geometry; explicitly preserve the eastern village point through compilation.",
+        "Choose the displayed canonical and manual reference deliberately; if sector canonical is used, a reviewed manualPointId must point to1975899618 so manual source remains624.",
+        "Preserve saved selections for both IDs, verify search/name migration, and keep GPS containment independent of manual reference.",
+        "Quantify every grouping/reference/source delta; never merge western297760994 or sector535259."
+      ],
+      "expectedReferenceChangeIfSectorAnchoredToVillage": {
+        "sectorId": "osm:relation:7143823",
+        "oldDefaultPrayerSource": 473,
+        "proposedDefaultPrayerSource": 624,
+        "status": "NOT_APPROVED_NOT_APPLIED"
+      }
+    }
+  ],
+  "limits": [
+    "Fresh OSM school and post-office names are corroboration from the same public map dataset, not a national authoritative geocoded address registry.",
+    "Official sector containment alone does not prove a settlement name; the field-study and exact eastern address/landmark cluster supply the additional identity evidence.",
+    "The old installed sector polygons have known substantial disagreement with the official maps; no polygon is corrected or certified here.",
+    "No extraction from Google Maps or shared Wikidata is used as identity proof."
+  ],
+  "operations": {
+    "repoEdits": 0,
+    "appEdits": 0,
+    "generatorExecutions": 0,
+    "phoneActions": 0,
+    "ledgerEdits": 0,
+    "tests": 0,
+    "builds": 0,
+    "additionalSourceFetches": 0
+  }
+}

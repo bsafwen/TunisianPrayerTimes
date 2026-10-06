@@ -1,0 +1,100 @@
+{
+  "status": "FIVE_NAMED_PUBLIC_LOCALITY_CARDS_REVIEWED_NOT_POLYGON_CERTIFICATION",
+  "createdAt": "2026-09-19T09:52:37.046740+00:00",
+  "metadataSha256": "94d9472c144b0df6ea2d473ad0018ef79dc18c1fedca5a64291849c117c14066",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_7118020-2\\ledger.json",
+    "sha256": "9c6bf2e6af0a29724ba196ba8193a6e345167eb871ee5fcaeb8fbccadf6d0974"
+  },
+  "afterLedgerSha256": "9e8128629c5484b5a7cf603fd2281e5c2e81b775ffaa71ae92101770d3e62301",
+  "observations": [
+    {
+      "id": "osm:relation:7118020",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118020-2.json",
+        "sha256": "c2fb65cdbf5ca304da8af46f87babcbcd67e72c08e6ef662c7ebd4ca04aa8f3d"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118020-2.png",
+        "sha256": "fe152ca54880b1a24a14bd5c7761d6678b2cccb860c1b04678c1aba0db32eaa8"
+      },
+      "visuallyReviewed": true,
+      "visibleTitle": [
+        "باردو"
+      ],
+      "qualification": "Named public Maps locality card and broad outline support place-name context only. They do not establish equivalence with every narrower catalog feature or certify stored polygons."
+    },
+    {
+      "id": "osm:way:321991676",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_321991676-1.json",
+        "sha256": "f36d52717628552f935a7fd448bbf5a001b3c127b8910b90ecd3bb8694b99fe6"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_321991676-1.png",
+        "sha256": "079c979562510607da395ef136c7a4fd7717745b2050336a3eaf2537b5c68f64"
+      },
+      "visuallyReviewed": true,
+      "visibleTitle": [
+        "قصر حدادة"
+      ],
+      "qualification": "Named public Maps locality card and broad outline support place-name context only. They do not establish equivalence with every narrower catalog feature or certify stored polygons."
+    },
+    {
+      "id": "osm:way:154906508",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_154906508-1.json",
+        "sha256": "0ce52a8e2acebc15c643e44863ed00d0d139389ca8068a96aa6ee3b42c3d89fd"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_154906508-1.png",
+        "sha256": "148de43cdc2566178ad218743abbd5b1b1d336bf292c386452b15ea407ae4834"
+      },
+      "visuallyReviewed": true,
+      "visibleTitle": [
+        "بئر الثلاثين"
+      ],
+      "qualification": "Named public Maps locality card and broad outline support place-name context only. They do not establish equivalence with every narrower catalog feature or certify stored polygons."
+    },
+    {
+      "id": "osm:relation:7202851",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7202851-1.json",
+        "sha256": "d4532d2532a462b6244d33a0d85beabfad2e05d3efb6c1ad1adc99104c219cc8"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7202851-1.png",
+        "sha256": "53df61032825f164cc57ff4ac4fc53e745ef08bffc30d6e31277f8fc95cc1564"
+      },
+      "visuallyReviewed": true,
+      "visibleTitle": [
+        "جبل الجلود"
+      ],
+      "qualification": "Named public Maps locality card and broad outline support place-name context only. They do not establish equivalence with every narrower catalog feature or certify stored polygons."
+    },
+    {
+      "id": "osm:node:2419847402",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2419847402-1.json",
+        "sha256": "ec5acb5b5eb0fdad87648838a810ccff6f8634f5c58e19f03d44448734eeddf6"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2419847402-1.png",
+        "sha256": "55c593af73c53bd795887c90d4a8927dbc318b578bf223f68801be5c5b1eef25"
+      },
+      "visuallyReviewed": true,
+      "visibleTitle": [
+        "وادي الزبيب"
+      ],
+      "qualification": "Named public Maps locality card and broad outline support place-name context only. They do not establish equivalence with every narrower catalog feature or certify stored polygons."
+    }
+  ],
+  "all1261PriorObservationsPreserved": true,
+  "totalObservations": 1266,
+  "currentRowsWithObservations": 776,
+  "statuses": {
+    "pending": 3017,
+    "observed_needs_review": 426
+  },
+  "catalogFilesChanged": false
+}

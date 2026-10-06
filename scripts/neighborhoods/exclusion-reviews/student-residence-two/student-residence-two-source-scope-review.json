@@ -1,0 +1,342 @@
+{
+  "status": "SOURCE_SCOPE_SUPPORTED_TWO_INSTITUTIONS_NO_STAGE",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "552b098b4e8da9201c1fa46d3315e7fe627fcb251dcaf569b9ef87c1b19f03a4"
+  },
+  "baselineMetadataSha256": "552b098b4e8da9201c1fa46d3315e7fe627fcb251dcaf569b9ef87c1b19f03a4",
+  "sourceScreen": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-source-tag-scope-priority-screen6.json",
+    "sha256": "78c639a73ad305fbb7a67ffc0cd6347c9e454a1fab495e09bd7641adc87f8560"
+  },
+  "sourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738"
+  },
+  "curation": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "1b5857848336e1b60f3ca7836898fa963e41f231c0a302d36dff24b94ba4b529"
+  },
+  "cases": [
+    {
+      "id": "osm:way:372846719",
+      "currentRaw": {
+        "id": "osm:way:372846719",
+        "sourceId": "osm",
+        "name": "Foyer Universitaire Chaouki - Menzah 7",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "النصر 1",
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "Nasr 1",
+          "النصر 1",
+          "معتمدية أريانة المدينة"
+        ],
+        "governorateId": 358,
+        "lat": 36.854879,
+        "lng": 10.164639,
+        "delegationId": 390,
+        "hasBoundary": true,
+        "bbox": [
+          10.164061,
+          36.854445,
+          10.165252,
+          36.855475
+        ],
+        "areaKm2": 0.005867662724921569,
+        "pickerGroupId": "osm:way:372846719",
+        "offset": 5392428,
+        "length": 84
+      },
+      "currentCompleteGroup": [
+        "osm:way:372846719"
+      ],
+      "currentOsm": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372846719.json",
+        "sha256": "67c3f7f3db921e9ce7467093726fec4f17b244590da4e1bf43d257bca57c26ee"
+      },
+      "osmHistory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372846719-history.json",
+        "sha256": "a707d26e9595c26c7cef9eb98198f1110ac0dff0228dd88b58c2d4a532d528b1"
+      },
+      "sourceTags": {
+        "landuse": "residential",
+        "name": "Foyer Universitaire Chaouki - Menzah 7",
+        "residential": "university"
+      },
+      "tagsExactlyMatchCache": true,
+      "version": 1,
+      "timestamp": "2015-09-29T15:47:33Z",
+      "changeset": 34328429,
+      "closedNodeReferences": [
+        3764072131,
+        3764072132,
+        3764072133,
+        3764072134,
+        3764072135,
+        3764072136,
+        3764072138,
+        3764072137,
+        3764072131
+      ],
+      "historyFinding": "One available way version, with the same institutional name and tags from creation in September 2015. Node coordinate histories were not fetched; way version parity does not certify unchanged coordinates.",
+      "scopeConclusion": "The named object is a particular university housing institution. No broader inhabited-neighborhood identity was established in these bounded sources.",
+      "recommendedScopeDecision": "Support an exact-ID institutional-property exclusion, conditional on the separate finite removal/absorption/saved-ID/dependency review. This is not a blanket exclusion of student housing or private residential land.",
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\ministry-higher-education-budget.pdf",
+        "sha256": "6cf39127d0c8f40ac2cd84c7c8014f815100cae5f988f9fe0f391a400395602d",
+        "url": "https://www.finances.gov.tn/sites/default/files/2019-02/3.pdf",
+        "document": "Ministry of Finance, 2018 budget, Higher Education chapter; cover dated October 2017",
+        "pdfPageOneBased": 60,
+        "printedPage": 51,
+        "visuallyReviewedFullPopplerPage": true,
+        "pageRender": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\budget-page60.png",
+          "sha256": "7642664db8d18e4be60a58b7bdfbb608295a749ce6bed824ee791258926a65ba"
+        },
+        "identityText": "المبيت الجامعي شوقي بالمنزه السابع",
+        "context": "Named in a list of university service institutions receiving refurbishment work, explicitly including dormitories, restaurants and university residences.",
+        "qualification": "The 2019 URL directory is an upload path, not the budget year. This supports named institution identity, not current occupancy, ownership or cadastral parcel limits."
+      }
+    },
+    {
+      "id": "osm:way:372736528",
+      "currentRaw": {
+        "id": "osm:way:372736528",
+        "sourceId": "osm",
+        "name": "Cité Universitaire le Foyer 2 Mars Ariana",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "معتمدية أريانة المدينة",
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "معتمدية أريانة المدينة"
+        ],
+        "governorateId": 358,
+        "lat": 36.857949,
+        "lng": 10.194774,
+        "delegationId": 631,
+        "hasBoundary": true,
+        "bbox": [
+          10.193856,
+          36.857015,
+          10.195814,
+          36.858543
+        ],
+        "areaKm2": 0.014109212853775704,
+        "pickerGroupId": "osm:way:372736528",
+        "offset": 5392284,
+        "length": 84
+      },
+      "currentCompleteGroup": [
+        "osm:way:372736528"
+      ],
+      "currentOsm": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372736528.json",
+        "sha256": "eb5f541625f3bb341f0ff29cd71d59d1e1e00638d391ea2473ef2a1f7af4a084"
+      },
+      "osmHistory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\way-372736528-history.json",
+        "sha256": "f0371edd9c8db7c15c2c65ca0ece99814402629b87f31374fb23becfaeb492a4"
+      },
+      "sourceTags": {
+        "landuse": "residential",
+        "name": "Cité Universitaire le Foyer 2 Mars Ariana"
+      },
+      "tagsExactlyMatchCache": true,
+      "version": 1,
+      "timestamp": "2015-09-28T17:31:55Z",
+      "changeset": 34309087,
+      "closedNodeReferences": [
+        3762871731,
+        3762871732,
+        3762871733,
+        3762871734,
+        3762871735,
+        3762871736,
+        3762871737,
+        3762871738,
+        3762871731
+      ],
+      "historyFinding": "One available way version, with the same institutional name and tags from creation in September 2015. Node coordinate histories were not fetched; way version parity does not certify unchanged coordinates.",
+      "scopeConclusion": "The named object is a particular university housing institution. No broader inhabited-neighborhood identity was established in these bounded sources.",
+      "recommendedScopeDecision": "Support an exact-ID institutional-property exclusion, conditional on the separate finite removal/absorption/saved-ID/dependency review. This is not a blanket exclusion of student housing or private residential land.",
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\isteub-university-services.pdf",
+        "sha256": "67ca8e6cc7058cafa07499b3fa7cddcc16098408d8f3aad2ba5c9437ceb69f6d",
+        "url": "https://pmo.ucar.rnu.tn/web/content/3192?download=true&unique=017eacc282d8208a555a8f16a029bdcb3592724c",
+        "document": "University of Carthage institutional booklet, ISTEUB entry, with 2022–2023 statistics",
+        "pdfPageOneBased": 90,
+        "visuallyReviewedFullPopplerPage": true,
+        "pageRender": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\isteub-page90.png",
+          "sha256": "948e4567acb17193bf2c9c8891942f3ec384644a31ac6e0ad38b8ad9b567c439"
+        },
+        "identityText": "Foyer universitaire 2 Mars pour filles, V55V+5WJ, Ariana",
+        "context": "Listed in the student services panel under university housing, separately from university restaurants.",
+        "qualification": "This supports the named housing institution in Ariana. The published short Plus Code is context, not a surveyed coordinate or certified match to every OSM parcel vertex."
+      }
+    }
+  ],
+  "retainedLocalityExamples": [
+    {
+      "id": "osm:relation:7115050",
+      "sourceId": "osm",
+      "name": "النصر 1",
+      "aliases": [
+        "Nasr 1"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية أريانة المدينة",
+      "contextAliases": [
+        "Ariana Ville",
+        "Délégation Ariana Ville",
+        "معتمدية أريانة المدينة"
+      ],
+      "governorateId": 358,
+      "lat": 36.85945,
+      "lng": 10.169895,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.146157,
+        36.850366,
+        10.178957,
+        36.868603
+      ],
+      "areaKm2": 2.2324283616519423,
+      "pickerGroupId": "osm:relation:7115050",
+      "offset": 942228,
+      "length": 676
+    },
+    {
+      "id": "osm:way:152926563",
+      "sourceId": "osm",
+      "name": "النصر 1",
+      "aliases": [
+        "Ennasr 1",
+        "حي النصر 1"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية أريانة المدينة",
+      "contextAliases": [
+        "Ariana Ville",
+        "Délégation Ariana Ville",
+        "معتمدية أريانة المدينة"
+      ],
+      "governorateId": 358,
+      "lat": 36.863163,
+      "lng": 10.170087,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.163036,
+        36.857899,
+        10.177569,
+        36.868438
+      ],
+      "areaKm2": 0.6503215300161918,
+      "pickerGroupId": "osm:relation:7115050",
+      "offset": 5242792,
+      "length": 468
+    },
+    {
+      "id": "osm:node:2161965264",
+      "sourceId": "osm",
+      "name": "المنزه 7",
+      "aliases": [
+        "El Menzah 7"
+      ],
+      "kind": "suburb",
+      "parentName": "النصر 1",
+      "contextAliases": [
+        "Ariana Ville",
+        "Délégation Ariana Ville",
+        "Nasr 1",
+        "النصر 1",
+        "معتمدية أريانة المدينة"
+      ],
+      "governorateId": 358,
+      "lat": 36.8541206,
+      "lng": 10.1626718,
+      "delegationId": 390,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:2161965264"
+    },
+    {
+      "id": "osm:relation:7115054",
+      "sourceId": "osm",
+      "name": "أريانة المدينة",
+      "aliases": [
+        "Ariana Ville"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية أريانة المدينة",
+      "contextAliases": [
+        "Ariana Ville",
+        "Délégation Ariana Ville",
+        "معتمدية أريانة المدينة"
+      ],
+      "governorateId": 358,
+      "lat": 36.869069,
+      "lng": 10.184634,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.176676,
+        36.856775,
+        10.1977,
+        36.880805
+      ],
+      "areaKm2": 0.8737195092199482,
+      "pickerGroupId": "osm:relation:7115054",
+      "offset": 944428,
+      "length": 772
+    }
+  ],
+  "retainedCompleteGroups": {
+    "osm:relation:7115050": [
+      "osm:relation:7115050",
+      "osm:way:152926563"
+    ],
+    "osm:node:2161965264": [
+      "osm:node:2161965264"
+    ],
+    "osm:relation:7115054": [
+      "osm:relation:7115054"
+    ]
+  },
+  "retrievalRecords": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\osm-retrievals.json",
+      "sha256": "d541c541a674a9e7f437a35d67ffa1d3b946ce391d2b688db5e1295fde632048"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\primary-retrievals.json",
+      "sha256": "07fc7585d908efe9f98caeae670fcd26fc89552cbb87c7c9ba3a83dbfe1865f4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\student-residence-two-source-review\\budget-retrieval.json",
+      "sha256": "060398b8cfcc834ea0118c9257f3c674594b0cd48cd56b9d3d63d0802db6a8f9"
+    }
+  ],
+  "failedRetrievalQualification": "The 1988 JORT lead failed with a connection reset and a separate university directory failed TLS verification. Neither is accepted as fetched documentary evidence; successful Finance and University of Carthage PDFs are used instead.",
+  "nextRequiredChecks": [
+    "Before any exclusion, derive exact removed slices, cells/conflicts and any named source points that would reappear under the existing generator.",
+    "Verify retained GPS locality coverage and full surviving groups; preserve all genuine neighborhoods and every nontarget source/default/coordinate.",
+    "Check active proof dependencies and explicit saved-ID retirement without an invented replacement."
+  ],
+  "limits": [
+    "This is an institution-versus-neighborhood scope review, not a statement that student residences are uninhabited.",
+    "No cadastral boundary, present occupancy, ownership or access restrictions are certified.",
+    "No current full-node geometry or node coordinate history was fetched.",
+    "No stage, curation, generator, application, phone or ledger change was made; no generator/product helper/test was executed."
+  ]
+}

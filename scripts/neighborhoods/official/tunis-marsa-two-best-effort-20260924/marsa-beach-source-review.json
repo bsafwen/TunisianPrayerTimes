@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "status": "provisional_best_effort_boundary_candidate",
+  "targetId": "osm:relation:7062337",
+  "officialCode": "117151",
+  "ministryParent": "المرسى",
+  "ministryName": "المرسى الشاطئ",
+  "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D9%85%D8%B1%D8%B3%D9%89/%D8%A7%D9%84%D9%85%D8%B1%D8%B3%D9%89%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B7%D8%A6.pdf",
+  "sourcePdfSha256": "384892c462c26173b31c487b5fe943d76cc9085a36e51ea5e70a3e88c038eaf9",
+  "sourceGeojsonSha256": "b8c3b9faa6d862cc24dcba12ceee5a80b26708b6b783fe1cdbb4a579a48d1a6e",
+  "sourceFeatureId": "osm:relation:7062337",
+  "sourceOsmSnapshotSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "identityEvidence": {
+    "sectorOsmId": "osm:relation:7062337",
+    "sectorOsmCode": "117151",
+    "sectorNameAr": "المرسى الشاطئ",
+    "delegationOsmCode": "1171",
+    "delegationNameAr": "معتمدية المرسى",
+    "appParentName": "معتمدية المرسى",
+    "governorateId": 342
+  },
+  "candidateEvidence": {
+    "sourceCandidateCollectionSha256": "86427a6bbf87dddd918d06c398ef73b8f40b00bed160c2db156b3b788f601abd",
+    "sourceCandidateCollectionFile": "work/interior-imada-triage-20260924/marsa-beach-official-candidates.geojson",
+    "reviewFileSha256": "6c75f03e514454e4cbdc1b295984efe3dfdec7e7759bf94db65f69f533640639",
+    "reviewFile": "work/interior-imada-triage-20260924/tunis-marsa-border-review.json",
+    "combinedBorderAuditSha256": "2f437feac9b053206b129aa30f998bd8a6df7986d695253254b28494f235e456",
+    "combinedBorderAuditFile": "work/interior-imada-triage-20260924/qammart-marsa-combined-review.json",
+    "drawingIndex": 648,
+    "qualifyingPathCount": 2,
+    "controlMaxResidualMeters": 0.13389572971162042,
+    "candidateValid": true,
+    "candidateAreaKm2": 9.147750828806473,
+    "oldTargetIntersectionKm2": 7.961312767633755,
+    "oldTargetSymmetricDifferenceKm2": 1.3467582847923567,
+    "labelCenterInside": false,
+    "labelCenterDistancePagePoints": 25.113022926437928,
+    "labelBoxIntersects": true
+  },
+  "combinedBorderReview": {
+    "oldUnionKm2": 14.899470859550059,
+    "newUnionKm2": 15.51271568179688,
+    "oldOnlyKm2": 0.23509735142705626,
+    "newOnlyKm2": 0.8483421736740093,
+    "pairwiseOverlapBeforeKm2": 0.12425402977259181,
+    "pairwiseOverlapAfterKm2": 0.04940838848842861,
+    "interpretation": "Pairwise overlap is a consistency check, not a boundary accuracy or identity certificate."
+  },
+  "googleMapsCheck": "Public Google Maps search returned a beach point of interest; this is not boundary corroboration.",
+  "uncertainty": "The selected Marsa Beach label box intersects drawing 648, but its center is 25.113 PDF points outside the path. Drawing 648 is the strong match to the coded app sector; the alternative qualifying drawing 650 has only about 0.0014 km² intersection with the old sector. The source is a 2023 electoral-circle map, not a surveyed current legal imada boundary. Google Maps returned a beach point of interest only and is not geographic corroboration. The PDF background includes Google imagery, which is excluded from this source package; only the red vector boundary path is stored."
+}

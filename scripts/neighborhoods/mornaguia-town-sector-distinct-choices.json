@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7102308",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المرناقية",
+        "name:ar": "المرناقية",
+        "name:fr": "Mornaguia",
+        "ref:tn:codegeo": "145451"
+      },
+      "originalGeometrySha256": "382d868e0227343b09445e5e3fa188698c4081c65af95bae8ebf6d92b81a1065",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المرناقية",
+        "name:ar": "المرناقية",
+        "name:fr": "Mornaguia",
+        "ref:tn:codegeo": "145451"
+      },
+      "effectiveGeometrySha256": "382d868e0227343b09445e5e3fa188698c4081c65af95bae8ebf6d92b81a1065",
+      "expectedMetadata": {
+        "name": "المرناقية",
+        "aliases": [
+          "Mornaguia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرناقية",
+        "governorateId": 360,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:142985514",
+      "originalKind": "residential",
+      "originalTags": {
+        "addr:city": "المرناقية",
+        "addr:city:ar": "المرناقية",
+        "landuse": "residential",
+        "name": "المرناقية",
+        "name:ar": "المرناقية",
+        "name:de": "Al Murnaqiyya",
+        "name:en": "Al Murnaqiyya",
+        "name:fr": "Mornaguia"
+      },
+      "originalGeometrySha256": "e1cff0f3db2f247ac794889386f28d9105413d02db869449d0b2ff290959dcee",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "addr:city": "المرناقية",
+        "addr:city:ar": "المرناقية",
+        "landuse": "residential",
+        "name": "المرناقية",
+        "name:ar": "المرناقية",
+        "name:de": "Al Murnaqiyya",
+        "name:en": "Al Murnaqiyya",
+        "name:fr": "Mornaguia"
+      },
+      "effectiveGeometrySha256": "e1cff0f3db2f247ac794889386f28d9105413d02db869449d0b2ff290959dcee",
+      "expectedMetadata": {
+        "name": "المرناقية",
+        "aliases": [
+          "Al Murnaqiyya",
+          "La Mornaghia",
+          "Mornaguia"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية المرناقية",
+        "governorateId": 360,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "three-city-source-facts.json",
+      "sha256": "e733c1e54fd534e91c5779c892ea07c1f6dd9f1c1a0b0cc5de57da1d634afd30"
+    }
+  ],
+  "scope": "Preserve the same-name town residential and independently coded imada as different browsing identities. This guard alone splits an old automatic group; the paired reviewed city/base association restores the intended two final choices."
+}

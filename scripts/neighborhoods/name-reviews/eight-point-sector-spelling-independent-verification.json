@@ -1,0 +1,1970 @@
+{
+  "geometrySha256": "6e1cef46ba7b353741317850ade4b24505d44a0f9dd1f31723ba01f37c5fc168",
+  "records": [
+    {
+      "pointId": "osm:node:10002024787",
+      "sectorId": "osm:relation:7126202",
+      "pointSourceTags": {
+        "name": "عين زريق",
+        "name:ar": "عين زريق",
+        "name:fr": "Ain Zerig",
+        "place": "hamlet"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين الزريق",
+        "name:ar": "عين الزريق",
+        "name:fr": "Ain Ezrig",
+        "ref:tn:codegeo": "245454"
+      },
+      "officialCode": "245454",
+      "sourceCodeClaimants": [
+        "osm:relation:7126202"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2454",
+          "delegationFr": "Gaafour",
+          "delegationAr": "قعفور",
+          "sectorCode": "245454",
+          "sectorFr": "Ain zerig",
+          "sectorAr": "عين زريق",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30361,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1424,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1423
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 2326.938203624256,
+      "currentMetadataPoint": {
+        "id": "osm:node:10002024787",
+        "sourceId": "osm",
+        "name": "عين زريق",
+        "aliases": [
+          "Ain Zerig"
+        ],
+        "kind": "hamlet",
+        "parentName": "عين الزريق",
+        "contextAliases": [
+          "Ain Ezrig",
+          "Délégation Gaafour",
+          "Gaâfour",
+          "عين الزريق",
+          "معتمدية قعفور"
+        ],
+        "governorateId": 344,
+        "lat": 36.163799,
+        "lng": 9.4505751,
+        "delegationId": 417,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:10002024787"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7126202",
+        "sourceId": "osm",
+        "name": "عين الزريق",
+        "aliases": [
+          "Ain Ezrig"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قعفور",
+        "contextAliases": [
+          "Délégation Gaafour",
+          "Gaâfour",
+          "معتمدية قعفور"
+        ],
+        "governorateId": 344,
+        "lat": 36.194513,
+        "lng": 9.408184,
+        "delegationId": 617,
+        "hasBoundary": true,
+        "bbox": [
+          9.304138,
+          36.139706,
+          9.527004,
+          36.24815
+        ],
+        "areaKm2": 143.28465814422051,
+        "pickerGroupId": "osm:relation:7126202",
+        "offset": 1414372,
+        "length": 3708
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7154135",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Gaâfour",
+            "boundary": "administrative",
+            "name": "معتمدية قعفور",
+            "name:ar": "معتمدية قعفور",
+            "name:fr": "Délégation Gaafour",
+            "ref:tn:codegeo": "2454",
+            "ref:tn:hasc_2": "TN.SL.GA",
+            "wikidata": "Q3099816"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7154135",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Gaâfour",
+            "boundary": "administrative",
+            "name": "معتمدية قعفور",
+            "name:ar": "معتمدية قعفور",
+            "name:fr": "Délégation Gaafour",
+            "ref:tn:codegeo": "2454",
+            "ref:tn:hasc_2": "TN.SL.GA",
+            "wikidata": "Q3099816"
+          },
+          "containsPoint": true,
+          "coversSector": true,
+          "overlapSectorRatio": 1.0000000000000004
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7126202",
+        "name": "عين الزريق",
+        "aliases": [
+          "Ain Ezrig"
+        ],
+        "sourceCode": "245454",
+        "currentParentName": "معتمدية قعفور",
+        "currentGovernorateId": 344,
+        "officialRows": [
+          {
+            "code": "245454",
+            "nameFr": "Aïn Zerig",
+            "nameAr": "عين زريق",
+            "delegationHeading": "Delegation Gaafour",
+            "page": 74
+          }
+        ],
+        "status": "name_review_required",
+        "bestNameSimilarity": 0.875,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "الأحواز الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الأحواز الجنوبية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الأحواز الجنوبية.pdf"
+        },
+        {
+          "text": "الأحواز الشمالية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الأحواز الشمالية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الأحواز الشمالية.pdf"
+        },
+        {
+          "text": "الاخوات.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الاخوات.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الاخوات.pdf"
+        },
+        {
+          "text": "الاقصاب.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الاقصاب.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/الاقصاب.pdf"
+        },
+        {
+          "text": "عين زريق.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/عين زريق.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/عين زريق.pdf"
+        },
+        {
+          "text": "قعفور الشرقية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/قعفور الشرقية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/قعفور الشرقية.pdf"
+        },
+        {
+          "text": "قعفور الغربية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/قعفور الغربية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/قعفور الغربية.pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 30361,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "عين زريق",
+            "sectorFr": "Ain zerig",
+            "delegationAr": "قعفور",
+            "delegationFr": "Gaafour",
+            "delegationCode": "2454",
+            "sectorCode": "245454"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1424,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "عين زريق",
+            "sectorFr": "Ain zerig",
+            "delegationAr": "قعفور",
+            "delegationFr": "Gaafour",
+            "delegationCode": "2454",
+            "sectorCode": "245454"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1423,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "عين زريق",
+            "sectorFr": "Ain zerig",
+            "delegationAr": "قعفور",
+            "delegationFr": "Gaafour",
+            "delegationCode": "2454",
+            "sectorCode": "245454"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    },
+    {
+      "pointId": "osm:node:10010935167",
+      "sectorId": "osm:relation:7150193",
+      "pointSourceTags": {
+        "name": "العمايمية",
+        "name:ar": "العمايمية",
+        "name:fr": "El Amaimia",
+        "place": "hamlet"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العمايمة",
+        "name:ar": "العمايمة",
+        "name:fr": "El Amaima",
+        "ref:tn:codegeo": "615253"
+      },
+      "officialCode": "615253",
+      "sourceCodeClaimants": [
+        "osm:relation:7150193"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6152",
+          "delegationFr": "Sidi aich",
+          "delegationAr": "سيدي عيش",
+          "sectorCode": "615253",
+          "sectorFr": "El amaima",
+          "sectorAr": "العمايمية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65848,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3236,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3230
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 3385.704484639415,
+      "currentMetadataPoint": {
+        "id": "osm:node:10010935167",
+        "sourceId": "osm",
+        "name": "العمايمية",
+        "aliases": [
+          "El Amaimia"
+        ],
+        "kind": "hamlet",
+        "parentName": "العمايمة",
+        "contextAliases": [
+          "Délégation Sidi Aïch",
+          "El Amaima",
+          "Sidi Aïch",
+          "العمايمة",
+          "معتمدية سيدي عيش"
+        ],
+        "governorateId": 365,
+        "lat": 34.6363366,
+        "lng": 8.7014249,
+        "delegationId": 610,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:10010935167"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7150193",
+        "sourceId": "osm",
+        "name": "العمايمة",
+        "aliases": [
+          "El Amaima"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي عيش",
+        "contextAliases": [
+          "Délégation Sidi Aïch",
+          "Sidi Aïch",
+          "معتمدية سيدي عيش"
+        ],
+        "governorateId": 365,
+        "lat": 34.66169,
+        "lng": 8.698633,
+        "delegationId": 610,
+        "hasBoundary": true,
+        "bbox": [
+          8.624783,
+          34.59264,
+          8.782025,
+          34.72886
+        ],
+        "areaKm2": 120.68670939084262,
+        "pickerGroupId": "osm:relation:7150193",
+        "offset": 2716684,
+        "length": 1492
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7150163",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sidi Aïch",
+            "boundary": "administrative",
+            "name": "معتمدية سيدي عيش",
+            "name:ar": "معتمدية سيدي عيش",
+            "name:fr": "Délégation Sidi Aïch",
+            "ref:tn:codegeo": "6152",
+            "ref:tn:hasc_2": "TN.GF.SA",
+            "wikidata": "Q3483188"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7150163",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sidi Aïch",
+            "boundary": "administrative",
+            "name": "معتمدية سيدي عيش",
+            "name:ar": "معتمدية سيدي عيش",
+            "name:fr": "Délégation Sidi Aïch",
+            "ref:tn:codegeo": "6152",
+            "ref:tn:hasc_2": "TN.GF.SA",
+            "wikidata": "Q3483188"
+          },
+          "containsPoint": true,
+          "coversSector": true,
+          "overlapSectorRatio": 0.9999999999999999
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7150193",
+        "name": "العمايمة",
+        "aliases": [
+          "El Amaima"
+        ],
+        "sourceCode": "615253",
+        "currentParentName": "معتمدية سيدي عيش",
+        "currentGovernorateId": 365,
+        "officialRows": [
+          {
+            "code": "615253",
+            "nameFr": "El Amaïma",
+            "nameAr": "العمايمة",
+            "delegationHeading": "Delegation Sidi Aich",
+            "page": 123
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [
+          {
+            "governorate": "قفصة",
+            "delegation": "سيدي عيش",
+            "sector": "العمايمة",
+            "pages": [
+              56
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "السوينية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/السوينية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/السوينية.pdf"
+        },
+        {
+          "text": "العمايمية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/العمايمية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/العمايمية.pdf"
+        },
+        {
+          "text": "القرية - (سيدي عيش).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/القرية - (سيدي عيش).pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/القرية - (سيدي عيش).pdf"
+        },
+        {
+          "text": "سيدي عيش.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/سيدي عيش.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/سيدي عيش.pdf"
+        },
+        {
+          "text": "سيدي عيش الشرقية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/سيدي عيش الشرقية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/سيدي عيش الشرقية.pdf"
+        },
+        {
+          "text": "منزل القمودي.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/منزل القمودي.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/منزل القمودي.pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 65848,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "العمايمية",
+            "sectorFr": "El amaima",
+            "delegationAr": "سيدي عيش",
+            "delegationFr": "Sidi aich",
+            "delegationCode": "6152",
+            "sectorCode": "615253"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3236,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "العمايمية",
+            "sectorFr": "El amaima",
+            "delegationAr": "سيدي عيش",
+            "delegationFr": "Sidi aich",
+            "delegationCode": "6152",
+            "sectorCode": "615253"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3230,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "العمايمية",
+            "sectorFr": "El amaima",
+            "delegationAr": "سيدي عيش",
+            "delegationFr": "Sidi aich",
+            "delegationCode": "6152",
+            "sectorCode": "615253"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    },
+    {
+      "pointId": "osm:node:10021286069",
+      "sectorId": "osm:relation:7152195",
+      "pointSourceTags": {
+        "name": "الطواهرة",
+        "name:ar": "الطواهرة",
+        "name:fr": "Ettouahra",
+        "place": "village"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطواهرية",
+        "name:ar": "الطواهرية",
+        "name:fr": "Touahria",
+        "ref:tn:codegeo": "335757"
+      },
+      "officialCode": "335757",
+      "sourceCodeClaimants": [
+        "osm:relation:7152195"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "33",
+          "governorateFr": "Mahdia",
+          "governorateAr": "المهدية",
+          "delegationCode": "3357",
+          "delegationFr": "El djem",
+          "delegationAr": "الجم",
+          "sectorCode": "335757",
+          "sectorFr": "Touahra",
+          "sectorAr": "الطواهرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 40731,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1946,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1942
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 830.2387930926742,
+      "currentMetadataPoint": {
+        "id": "osm:node:10021286069",
+        "sourceId": "osm",
+        "name": "الطواهرة",
+        "aliases": [
+          "Ettouahra"
+        ],
+        "kind": "village",
+        "parentName": "الطواهرية",
+        "contextAliases": [
+          "Délégation El Jem",
+          "El Jem",
+          "Touahria",
+          "الطواهرية",
+          "معتمدية الجم"
+        ],
+        "governorateId": 345,
+        "lat": 35.3238175,
+        "lng": 10.7987315,
+        "delegationId": 619,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:10021286069"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7152195",
+        "sourceId": "osm",
+        "name": "الطواهرية",
+        "aliases": [
+          "Touahria"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الجم",
+        "contextAliases": [
+          "Délégation El Jem",
+          "El Jem",
+          "معتمدية الجم"
+        ],
+        "governorateId": 345,
+        "lat": 35.32134,
+        "lng": 10.795887,
+        "delegationId": 619,
+        "hasBoundary": true,
+        "bbox": [
+          10.72787,
+          35.30071,
+          10.828518,
+          35.34229
+        ],
+        "areaKm2": 13.500698077403289,
+        "pickerGroupId": "osm:relation:7152195",
+        "offset": 2881880,
+        "length": 2028
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7152230",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "El Jem",
+            "boundary": "administrative",
+            "name": "معتمدية الجم",
+            "name:ar": "معتمدية الجم",
+            "name:fr": "Délégation El Jem",
+            "ref:tn:codegeo": "3357",
+            "ref:tn:hasc_2": "TN.MH.JE",
+            "wikidata": "Q12243798"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7152230",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "El Jem",
+            "boundary": "administrative",
+            "name": "معتمدية الجم",
+            "name:ar": "معتمدية الجم",
+            "name:fr": "Délégation El Jem",
+            "ref:tn:codegeo": "3357",
+            "ref:tn:hasc_2": "TN.MH.JE",
+            "wikidata": "Q12243798"
+          },
+          "containsPoint": true,
+          "coversSector": true,
+          "overlapSectorRatio": 0.9999999999999993
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7152195",
+        "name": "الطواهرية",
+        "aliases": [
+          "Touahria"
+        ],
+        "sourceCode": "335757",
+        "currentParentName": "معتمدية الجم",
+        "currentGovernorateId": 345,
+        "officialRows": [
+          {
+            "code": "335757",
+            "nameFr": "Touahria",
+            "nameAr": "الطواهرية",
+            "delegationHeading": "Delegation El Djem",
+            "page": 88
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [
+          {
+            "governorate": "المهدية",
+            "delegation": "الجم",
+            "sector": "الطواهرية",
+            "pages": [
+              64
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "التلالسة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/التلالسة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/التلالسة.pdf"
+        },
+        {
+          "text": "الزاوية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الزاوية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الزاوية.pdf"
+        },
+        {
+          "text": "الزغابنة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الزغابنة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الزغابنة.pdf"
+        },
+        {
+          "text": "الطواهرة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الطواهرة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الطواهرة.pdf"
+        },
+        {
+          "text": "العبابسة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/العبابسة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/العبابسة.pdf"
+        },
+        {
+          "text": "العشابة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/العشابة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/العشابة.pdf"
+        },
+        {
+          "text": "العيثة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/العيثة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/العيثة.pdf"
+        },
+        {
+          "text": "المرابطين.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/المرابطين.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/المرابطين.pdf"
+        },
+        {
+          "text": "المشالات.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/المشالات.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/المشالات.pdf"
+        },
+        {
+          "text": "رياض بوهلال.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/رياض بوهلال.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/رياض بوهلال.pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 40731,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "الطواهرة",
+            "sectorFr": "Touahra",
+            "delegationAr": "الجم",
+            "delegationFr": "El djem",
+            "delegationCode": "3357",
+            "sectorCode": "335757"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1946,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "الطواهرة",
+            "sectorFr": "Touahra",
+            "delegationAr": "الجم",
+            "delegationFr": "El djem",
+            "delegationCode": "3357",
+            "sectorCode": "335757"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1942,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "الطواهرة",
+            "sectorFr": "Touahra",
+            "delegationAr": "الجم",
+            "delegationFr": "El djem",
+            "delegationCode": "3357",
+            "sectorCode": "335757"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    },
+    {
+      "pointId": "osm:node:10118270176",
+      "sectorId": "osm:relation:7114433",
+      "pointSourceTags": {
+        "name": "المليشات",
+        "name:ar": "المليشات",
+        "name:fr": "Mlichette",
+        "place": "village"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المليشيات",
+        "name:ar": "المليشيات",
+        "name:fr": "Melichet",
+        "ref:tn:codegeo": "325453"
+      },
+      "officialCode": "325453",
+      "sourceCodeClaimants": [
+        "osm:relation:7114433"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "32",
+          "governorateFr": "Monastir",
+          "governorateAr": "المنستير",
+          "delegationCode": "3254",
+          "delegationFr": "Zeramdine",
+          "delegationAr": "زرمدين",
+          "sectorCode": "325453",
+          "sectorFr": "Melichet",
+          "sectorAr": "المليشات",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36685,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1733,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1731
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 3005.265709669358,
+      "currentMetadataPoint": {
+        "id": "osm:node:10118270176",
+        "sourceId": "osm",
+        "name": "المليشات",
+        "aliases": [
+          "Mlichette"
+        ],
+        "kind": "village",
+        "parentName": "المليشيات",
+        "contextAliases": [
+          "Délégation Zeramdine",
+          "Melichet",
+          "Zéramdine",
+          "المليشيات",
+          "معتمدية زرمدين"
+        ],
+        "governorateId": 364,
+        "lat": 35.51208,
+        "lng": 10.5316808,
+        "delegationId": 428,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:10118270176"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7114433",
+        "sourceId": "osm",
+        "name": "المليشيات",
+        "aliases": [
+          "Melichet"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية زرمدين",
+        "contextAliases": [
+          "Délégation Zeramdine",
+          "Zéramdine",
+          "معتمدية زرمدين"
+        ],
+        "governorateId": 364,
+        "lat": 35.520479,
+        "lng": 10.550962,
+        "delegationId": 596,
+        "hasBoundary": true,
+        "bbox": [
+          10.493064,
+          35.470296,
+          10.612505,
+          35.56968
+        ],
+        "areaKm2": 70.25271562267092,
+        "pickerGroupId": "osm:relation:7114433",
+        "offset": 888256,
+        "length": 2260
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7154979",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Zéramdine",
+            "boundary": "administrative",
+            "name": "معتمدية زرمدين",
+            "name:ar": "معتمدية زرمدين",
+            "name:fr": "Délégation Zeramdine",
+            "ref:tn:codegeo": "3254",
+            "ref:tn:hasc_2": "TN.MS.ZA",
+            "wikidata": "Q12243935"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7154979",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Zéramdine",
+            "boundary": "administrative",
+            "name": "معتمدية زرمدين",
+            "name:ar": "معتمدية زرمدين",
+            "name:fr": "Délégation Zeramdine",
+            "ref:tn:codegeo": "3254",
+            "ref:tn:hasc_2": "TN.MS.ZA",
+            "wikidata": "Q12243935"
+          },
+          "containsPoint": true,
+          "coversSector": true,
+          "overlapSectorRatio": 0.9999999999999999
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7114433",
+        "name": "المليشيات",
+        "aliases": [
+          "Melichet"
+        ],
+        "sourceCode": "325453",
+        "currentParentName": "معتمدية زرمدين",
+        "currentGovernorateId": 364,
+        "officialRows": [],
+        "status": "code_absent_INS2012",
+        "bestNameSimilarity": 0,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "المزاوغة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/المزاوغة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/المزاوغة.pdf"
+        },
+        {
+          "text": "المليشات.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/المليشات.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/المليشات.pdf"
+        },
+        {
+          "text": "زرمدين الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/زرمدين الجنوبية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/زرمدين الجنوبية.pdf"
+        },
+        {
+          "text": "زرمدين الشمالية..pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/زرمدين الشمالية..pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/زرمدين الشمالية..pdf"
+        },
+        {
+          "text": "منزل الحياة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/منزل الحياة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/منزل الحياة.pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 36685,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "المليشات",
+            "sectorFr": "Melichet",
+            "delegationAr": "زرمدين",
+            "delegationFr": "Zeramdine",
+            "delegationCode": "3254",
+            "sectorCode": "325453"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1733,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "المليشات",
+            "sectorFr": "Melichet",
+            "delegationAr": "زرمدين",
+            "delegationFr": "Zeramdine",
+            "delegationCode": "3254",
+            "sectorCode": "325453"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1731,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "المليشات",
+            "sectorFr": "Melichet",
+            "delegationAr": "زرمدين",
+            "delegationFr": "Zeramdine",
+            "delegationCode": "3254",
+            "sectorCode": "325453"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    },
+    {
+      "pointId": "osm:node:349303622",
+      "sectorId": "osm:relation:7095632",
+      "pointSourceTags": {
+        "name": "غيدمة",
+        "name:ar": "غيدمة",
+        "name:en": "Ghidma",
+        "name:fr": "Ghidma",
+        "place": "village"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قايدمة",
+        "name:ar": "قايدمة",
+        "name:fr": "Gueïdma",
+        "ref:tn:codegeo": "635654"
+      },
+      "officialCode": "635654",
+      "sourceCodeClaimants": [
+        "osm:relation:7095632"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "63",
+          "governorateFr": "Kebili",
+          "governorateAr": "قبلي",
+          "delegationCode": "6356",
+          "delegationFr": "El faouar",
+          "delegationAr": "الفوار",
+          "sectorCode": "635654",
+          "sectorFr": "Gueidma",
+          "sectorAr": "غيدمة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70593,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3464,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3457
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 2468.1689817165866,
+      "currentMetadataPoint": {
+        "id": "osm:node:349303622",
+        "sourceId": "osm",
+        "name": "غيدمة",
+        "aliases": [
+          "Ghidma"
+        ],
+        "kind": "village",
+        "parentName": "قايدمة",
+        "contextAliases": [
+          "Délégation El Faouar",
+          "Faouar",
+          "Gueïdma",
+          "قايدمة",
+          "معتمدية الفوار"
+        ],
+        "governorateId": 1012,
+        "lat": 33.4316482,
+        "lng": 8.8159209,
+        "delegationId": 485,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:349303622"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7095632",
+        "sourceId": "osm",
+        "name": "قايدمة",
+        "aliases": [
+          "Gueïdma"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الفوار",
+        "contextAliases": [
+          "Délégation El Faouar",
+          "Faouar",
+          "معتمدية الفوار"
+        ],
+        "governorateId": 1012,
+        "lat": 33.410448,
+        "lng": 8.798065,
+        "delegationId": 485,
+        "hasBoundary": true,
+        "bbox": [
+          8.731224,
+          33.334122,
+          8.863735,
+          33.464381
+        ],
+        "areaKm2": 88.97019359085873,
+        "pickerGroupId": "osm:relation:7095632",
+        "offset": 110352,
+        "length": 172
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7108012",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Douz Sud",
+            "boundary": "administrative",
+            "name": "معتمدية دوز الجنوبية",
+            "name:ar": "معتمدية دوز الجنوبية",
+            "name:fr": "Délégation Douz Sud",
+            "ref:tn:codegeo": "6355",
+            "ref:tn:hasc_2": "TN.KB.DS",
+            "wikidata": "Q12243928"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7107872",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Faouar",
+            "boundary": "administrative",
+            "name": "معتمدية الفوار",
+            "name:ar": "معتمدية الفوار",
+            "name:fr": "Délégation El Faouar",
+            "ref:tn:codegeo": "6356",
+            "ref:tn:hasc_2": "TN.KB.FA",
+            "wikidata": "Q12243833"
+          },
+          "containsPoint": false,
+          "coversSector": false,
+          "overlapSectorRatio": 0.0
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7095632",
+        "name": "قايدمة",
+        "aliases": [
+          "Gueïdma"
+        ],
+        "sourceCode": "635654",
+        "currentParentName": "معتمدية الفوار",
+        "currentGovernorateId": 1012,
+        "officialRows": [
+          {
+            "code": "635654",
+            "nameFr": "Gueïdma",
+            "nameAr": "غيدمة",
+            "delegationHeading": "Delegation Faouar",
+            "page": 130
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [
+          {
+            "governorate": "قبلي",
+            "delegation": "فوار",
+            "sector": "غيدمة",
+            "pages": [
+              59
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "الصابرية الشرقية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/الصابرية الشرقية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/الصابرية الشرقية.pdf"
+        },
+        {
+          "text": "الصابرية الغربية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/الصابرية الغربية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/الصابرية الغربية.pdf"
+        },
+        {
+          "text": "بشني - الدرجين.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/بشني - الدرجين.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/بشني - الدرجين.pdf"
+        },
+        {
+          "text": "غريب.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/غريب.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/غريب.pdf"
+        },
+        {
+          "text": "غيدمة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/غيدمة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/غيدمة.pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 70593,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "غيدمة",
+            "sectorFr": "Gueidma",
+            "delegationAr": "الفوار",
+            "delegationFr": "El faouar",
+            "delegationCode": "6356",
+            "sectorCode": "635654"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3464,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "غيدمة",
+            "sectorFr": "Gueidma",
+            "delegationAr": "الفوار",
+            "delegationFr": "El faouar",
+            "delegationCode": "6356",
+            "sectorCode": "635654"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3457,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "غيدمة",
+            "sectorFr": "Gueidma",
+            "delegationAr": "الفوار",
+            "delegationFr": "El faouar",
+            "delegationCode": "6356",
+            "sectorCode": "635654"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    },
+    {
+      "pointId": "osm:node:8035791884",
+      "sectorId": "osm:relation:7124231",
+      "pointSourceTags": {
+        "name": "الذواودة",
+        "name:ar": "الذواودة",
+        "name:en": "Edhewewda",
+        "name:fr": "Edhewewda",
+        "place": "village"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ذواودة",
+        "name:ar": "ذواودة",
+        "name:fr": "Dhouaouda",
+        "ref:tn:codegeo": "175753"
+      },
+      "officialCode": "175753",
+      "sourceCodeClaimants": [
+        "osm:relation:7124231"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "17",
+          "governorateFr": "Bizerte",
+          "governorateAr": "بنزرت",
+          "delegationCode": "1757",
+          "delegationFr": "Ghezala",
+          "delegationAr": "غزالة",
+          "sectorCode": "175753",
+          "sectorFr": "Dheouaouda",
+          "sectorAr": "الذواودة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18292,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 796,
+            "Nombre_de_menages_par_Secteurs.xlsx": 795
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 932.3644261267877,
+      "currentMetadataPoint": {
+        "id": "osm:node:8035791884",
+        "sourceId": "osm",
+        "name": "الذواودة",
+        "aliases": [
+          "Edhewewda"
+        ],
+        "kind": "village",
+        "parentName": "ذواودة",
+        "contextAliases": [
+          "Dhouaouda",
+          "Délégation Ghezala",
+          "Ghezala",
+          "ذواودة",
+          "معتمدية غزالة"
+        ],
+        "governorateId": 361,
+        "lat": 37.0331728,
+        "lng": 9.4336813,
+        "delegationId": 560,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:8035791884"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7124231",
+        "sourceId": "osm",
+        "name": "ذواودة",
+        "aliases": [
+          "Dhouaouda"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية غزالة",
+        "contextAliases": [
+          "Délégation Ghezala",
+          "Ghezala",
+          "معتمدية غزالة"
+        ],
+        "governorateId": 361,
+        "lat": 37.020819,
+        "lng": 9.402634,
+        "delegationId": 558,
+        "hasBoundary": true,
+        "bbox": [
+          9.348369,
+          36.993723,
+          9.464369,
+          37.047977
+        ],
+        "areaKm2": 43.64854164630693,
+        "pickerGroupId": "osm:relation:7124231",
+        "offset": 1233688,
+        "length": 1420
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7151754",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Ghezala",
+            "boundary": "administrative",
+            "name": "معتمدية غزالة",
+            "name:ar": "معتمدية غزالة",
+            "name:fr": "Délégation Ghezala",
+            "ref:tn:codegeo": "1757",
+            "ref:tn:hasc_2": "TN.BZ.GH",
+            "wikidata": "Q3104844"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7151754",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Ghezala",
+            "boundary": "administrative",
+            "name": "معتمدية غزالة",
+            "name:ar": "معتمدية غزالة",
+            "name:fr": "Délégation Ghezala",
+            "ref:tn:codegeo": "1757",
+            "ref:tn:hasc_2": "TN.BZ.GH",
+            "wikidata": "Q3104844"
+          },
+          "containsPoint": true,
+          "coversSector": true,
+          "overlapSectorRatio": 1.0000000000000007
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7124231",
+        "name": "ذواودة",
+        "aliases": [
+          "Dhouaouda"
+        ],
+        "sourceCode": "175753",
+        "currentParentName": "معتمدية غزالة",
+        "currentGovernorateId": 361,
+        "officialRows": [
+          {
+            "code": "175753",
+            "nameFr": "Dheouaouda",
+            "nameAr": "الذواودة",
+            "delegationHeading": "Delegation Guezala",
+            "page": 57
+          }
+        ],
+        "status": "name_review_required",
+        "bestNameSimilarity": 0.9473684210526315,
+        "isie2022NameMatches": [
+          {
+            "governorate": "بي رت",
+            "delegation": "غزالة",
+            "sector": "الذواودة",
+            "pages": [
+              25
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "أولاد الماي.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/أولاد الماي.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/أولاد الماي.pdf"
+        },
+        {
+          "text": "الذواودة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/الذواودة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/الذواودة.pdf"
+        },
+        {
+          "text": "العرب - (غزالة).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/العرب - (غزالة).pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/العرب - (غزالة).pdf"
+        },
+        {
+          "text": "بوجرير.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/بوجرير.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/بوجرير.pdf"
+        },
+        {
+          "text": "حشاد - (غزالة).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/حشاد - (غزالة).pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/حشاد - (غزالة).pdf"
+        },
+        {
+          "text": "ركب.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/ركب.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/ركب.pdf"
+        },
+        {
+          "text": "سيدي عيسى.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/سيدي عيسى.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/سيدي عيسى.pdf"
+        },
+        {
+          "text": "سيدي منصور - (غزالة).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/سيدي منصور - (غزالة).pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/سيدي منصور - (غزالة).pdf"
+        },
+        {
+          "text": "غزالة - (غزالة).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/غزالة - (غزالة).pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/غزالة - (غزالة).pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 18292,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "الذواودة",
+            "sectorFr": "Dheouaouda",
+            "delegationAr": "غزالة",
+            "delegationFr": "Ghezala",
+            "delegationCode": "1757",
+            "sectorCode": "175753"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 796,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "الذواودة",
+            "sectorFr": "Dheouaouda",
+            "delegationAr": "غزالة",
+            "delegationFr": "Ghezala",
+            "delegationCode": "1757",
+            "sectorCode": "175753"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 795,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "الذواودة",
+            "sectorFr": "Dheouaouda",
+            "delegationAr": "غزالة",
+            "delegationFr": "Ghezala",
+            "delegationCode": "1757",
+            "sectorCode": "175753"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    },
+    {
+      "pointId": "osm:node:9945093900",
+      "sectorId": "osm:relation:7082748",
+      "pointSourceTags": {
+        "name": "بني محمد",
+        "name:ar": "بني محمد",
+        "name:fr": "Beni Mhammad",
+        "place": "village"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بن محمد",
+        "name:ar": "بن محمد",
+        "name:fr": "Ben Mehemed",
+        "ref:tn:codegeo": "635158"
+      },
+      "officialCode": "635158",
+      "sourceCodeClaimants": [
+        "osm:relation:7082748"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "63",
+          "governorateFr": "Kebili",
+          "governorateAr": "قبلي",
+          "delegationCode": "6351",
+          "delegationFr": "Kebili sud",
+          "delegationAr": "قبلي الجنوبية",
+          "sectorCode": "635158",
+          "sectorFr": "Beni mehemed",
+          "sectorAr": "بني محمّد",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69505,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3409,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3402
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 2639.1020523076295,
+      "currentMetadataPoint": {
+        "id": "osm:node:9945093900",
+        "sourceId": "osm",
+        "name": "بني محمد",
+        "aliases": [
+          "Beni Mhammad"
+        ],
+        "kind": "village",
+        "parentName": "بن محمد",
+        "contextAliases": [
+          "Ben Mehemed",
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "بن محمد",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.5724927,
+        "lng": 8.8865999,
+        "delegationId": 482,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:9945093900"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7082748",
+        "sourceId": "osm",
+        "name": "بن محمد",
+        "aliases": [
+          "Ben Mehemed"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.571308,
+        "lng": 8.897374,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.813472,
+          33.519749,
+          8.973724,
+          33.623874
+        ],
+        "areaKm2": 87.21418668107206,
+        "pickerGroupId": "osm:relation:7082748",
+        "offset": 90328,
+        "length": 1716
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7110466",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Sud",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الجنوبية",
+            "name:ar": "معتمدية قبلي الجنوبية",
+            "name:fr": "Délégation Kébili Sud",
+            "official_name": "معتمدية قبلي الجنوبية",
+            "official_name:ar": "معتمدية قبلي الجنوبية",
+            "ref:tn:codegeo": "6351",
+            "ref:tn:hasc_2": "TN.KB.KS",
+            "wikidata": "Q3201086",
+            "wikipedia": "ar:معتمدية قبلي الجنوبية"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7110466",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Sud",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الجنوبية",
+            "name:ar": "معتمدية قبلي الجنوبية",
+            "name:fr": "Délégation Kébili Sud",
+            "official_name": "معتمدية قبلي الجنوبية",
+            "official_name:ar": "معتمدية قبلي الجنوبية",
+            "ref:tn:codegeo": "6351",
+            "ref:tn:hasc_2": "TN.KB.KS",
+            "wikidata": "Q3201086",
+            "wikipedia": "ar:معتمدية قبلي الجنوبية"
+          },
+          "containsPoint": true,
+          "coversSector": true,
+          "overlapSectorRatio": 1.0000000000000002
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7082748",
+        "name": "بن محمد",
+        "aliases": [
+          "Ben Mehemed"
+        ],
+        "sourceCode": "635158",
+        "currentParentName": "معتمدية قبلي الجنوبية",
+        "currentGovernorateId": 1012,
+        "officialRows": [
+          {
+            "code": "635158",
+            "nameFr": "Beni Mehemed",
+            "nameAr": "بني مح ّمد",
+            "delegationHeading": "Delegation Kébeli Sud Code secteur",
+            "page": 129
+          }
+        ],
+        "status": "name_review_required",
+        "bestNameSimilarity": 0.9523809523809523,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "البليدات.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/البليدات.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/البليدات.pdf"
+        },
+        {
+          "text": "بازمة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بازمة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بازمة.pdf"
+        },
+        {
+          "text": "بشلى.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بشلى.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بشلى.pdf"
+        },
+        {
+          "text": "بني محمد - (قبلي الجنوبية).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بني محمد - (قبلي الجنوبية).pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بني محمد - (قبلي الجنوبية).pdf"
+        },
+        {
+          "text": "جرسين.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جرسين.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جرسين.pdf"
+        },
+        {
+          "text": "جمنة الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الجنوبية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الجنوبية.pdf"
+        },
+        {
+          "text": "جمنة الشمالية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الشمالية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الشمالية.pdf"
+        },
+        {
+          "text": "جنعورة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جنعورة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جنعورة.pdf"
+        },
+        {
+          "text": "قبلي الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/قبلي الجنوبية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/قبلي الجنوبية.pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 69505,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "بني محمّد",
+            "sectorFr": "Beni mehemed",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635158"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3409,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "بني محمّد",
+            "sectorFr": "Beni mehemed",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635158"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3402,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "بني محمّد",
+            "sectorFr": "Beni mehemed",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635158"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    },
+    {
+      "pointId": "osm:node:9947246733",
+      "sectorId": "osm:relation:7082714",
+      "pointSourceTags": {
+        "name": "جرسين",
+        "name:ar": "جرسين",
+        "name:fr": "Zarsin",
+        "place": "village"
+      },
+      "sectorSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جرسین",
+        "name:fr": "Jersine",
+        "ref:tn:codegeo": "635156"
+      },
+      "officialCode": "635156",
+      "sourceCodeClaimants": [
+        "osm:relation:7082714"
+      ],
+      "registryCodeMatches": [
+        {
+          "governorateCode": "63",
+          "governorateFr": "Kebili",
+          "governorateAr": "قبلي",
+          "delegationCode": "6351",
+          "delegationFr": "Kebili sud",
+          "delegationAr": "قبلي الجنوبية",
+          "sectorCode": "635156",
+          "sectorFr": "Jersine",
+          "sectorAr": "جرسين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69437,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3405,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3398
+          }
+        }
+      ],
+      "pointStrictlyInsideSourceSector": true,
+      "pointDistanceFromSourceSectorBoundaryMeters": 1817.8933549727615,
+      "currentMetadataPoint": {
+        "id": "osm:node:9947246733",
+        "sourceId": "osm",
+        "name": "جرسين",
+        "aliases": [
+          "Zarsin"
+        ],
+        "kind": "village",
+        "parentName": "جرسین",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Jersine",
+          "Kébili Sud",
+          "جرسین",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.530208,
+        "lng": 8.8273725,
+        "delegationId": 484,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:9947246733"
+      },
+      "currentMetadataSector": {
+        "id": "osm:relation:7082714",
+        "sourceId": "osm",
+        "name": "جرسین",
+        "aliases": [
+          "Jersine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.62152,
+        "lng": 8.721267,
+        "delegationId": 483,
+        "hasBoundary": true,
+        "bbox": [
+          8.590938,
+          33.508813,
+          8.883406,
+          33.72973
+        ],
+        "areaKm2": 149.95089209376042,
+        "pickerGroupId": "osm:relation:7082714",
+        "offset": 88824,
+        "length": 852
+      },
+      "containingSourceDelegations": [
+        {
+          "id": "osm:relation:7110466",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Sud",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الجنوبية",
+            "name:ar": "معتمدية قبلي الجنوبية",
+            "name:fr": "Délégation Kébili Sud",
+            "official_name": "معتمدية قبلي الجنوبية",
+            "official_name:ar": "معتمدية قبلي الجنوبية",
+            "ref:tn:codegeo": "6351",
+            "ref:tn:hasc_2": "TN.KB.KS",
+            "wikidata": "Q3201086",
+            "wikipedia": "ar:معتمدية قبلي الجنوبية"
+          }
+        }
+      ],
+      "sourceDelegationCodeMatches": [
+        {
+          "id": "osm:relation:7110466",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Sud",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الجنوبية",
+            "name:ar": "معتمدية قبلي الجنوبية",
+            "name:fr": "Délégation Kébili Sud",
+            "official_name": "معتمدية قبلي الجنوبية",
+            "official_name:ar": "معتمدية قبلي الجنوبية",
+            "ref:tn:codegeo": "6351",
+            "ref:tn:hasc_2": "TN.KB.KS",
+            "wikidata": "Q3201086",
+            "wikipedia": "ar:معتمدية قبلي الجنوبية"
+          },
+          "containsPoint": true,
+          "coversSector": true,
+          "overlapSectorRatio": 1.0000000000000002
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7082714",
+        "name": "جرسین",
+        "aliases": [
+          "Jersine"
+        ],
+        "sourceCode": "635156",
+        "currentParentName": "معتمدية قبلي الجنوبية",
+        "currentGovernorateId": 1012,
+        "officialRows": [
+          {
+            "code": "635156",
+            "nameFr": "Jersine",
+            "nameAr": "جرسين",
+            "delegationHeading": "Delegation Kébeli Sud Code secteur",
+            "page": 129
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023ParentMapIndex": [
+        {
+          "text": "البليدات.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/البليدات.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/البليدات.pdf"
+        },
+        {
+          "text": "بازمة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بازمة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بازمة.pdf"
+        },
+        {
+          "text": "بشلى.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بشلى.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بشلى.pdf"
+        },
+        {
+          "text": "بني محمد - (قبلي الجنوبية).pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بني محمد - (قبلي الجنوبية).pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بني محمد - (قبلي الجنوبية).pdf"
+        },
+        {
+          "text": "جرسين.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جرسين.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جرسين.pdf"
+        },
+        {
+          "text": "جمنة الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الجنوبية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الجنوبية.pdf"
+        },
+        {
+          "text": "جمنة الشمالية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الشمالية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جمنة الشمالية.pdf"
+        },
+        {
+          "text": "جنعورة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جنعورة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جنعورة.pdf"
+        },
+        {
+          "text": "قبلي الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/قبلي الجنوبية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/قبلي الجنوبية.pdf"
+        }
+      ],
+      "currentShippedPolygonContainsPoint": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 69437,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "جرسين",
+            "sectorFr": "Jersine",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635156"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3405,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "جرسين",
+            "sectorFr": "Jersine",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635156"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3398,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "جرسين",
+            "sectorFr": "Jersine",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635156"
+          },
+          "matchesRegistry": true
+        }
+      ]
+    }
+  ]
+}

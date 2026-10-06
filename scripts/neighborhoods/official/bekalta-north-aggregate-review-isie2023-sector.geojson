@@ -1,0 +1,1562 @@
+{
+  "type": "FeatureCollection",
+  "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+  "reviewedDate": "2026-09-07",
+  "status": "SOURCE_FAITHFUL_EXHAUSTIVE_AGGREGATE_PENDING_INDEPENDENT_REVIEW",
+  "provenance": {
+    "rawSourceGeometrySnapshotSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "sourcePartsFileSha256": "7a4966f8ae07440cd7d77db733c22adfb0eec4af6fccf74d1facf36c5b34f509",
+    "decreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "osm:relation:7111933",
+      "properties": {
+        "id": "osm:relation:7111933",
+        "kind": "sector",
+        "officialCode": "325951",
+        "nameAr": "البقالطة الشمالية",
+        "nameFr": "Bekalta nord",
+        "governorateCode": "32",
+        "governorateAr": "المنستير",
+        "governorateFr": "Monastir",
+        "delegationCode": "3259",
+        "parentAr": "البقالطة",
+        "parentFr": "Bekalta",
+        "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+        "sourceParts": [
+          {
+            "circleId": "bekalta-north-1",
+            "circleNameAr": "البقالطة الشمالية 1",
+            "parentImadaCode": "325951",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9.pdf",
+            "sourcePdfSha256": "44da4d4631854a63048c32acf144bb49e5dc583f8dd4b4b492675432430b7bbf",
+            "sourcePdfFile": "work/isie-sector-maps-next-conflicts/bekalta-north.pdf",
+            "sourcePdfPage": 1,
+            "sourceDrawingIndex": 237,
+            "sourceVectorLayer": "circonscription_isie2023",
+            "sourceGeometrySha256": "d0e62b8f72da802caf5254fadea9f9b9a0854041d98c9bd042a1252dbe67f809",
+            "sourceGeometryVertices": 177,
+            "sourceCrsEpsg": 32632,
+            "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+            "sourceControlPointMaxResidualMeters": 0.32085106418361614,
+            "sourceControlPointsLatLon": [
+              [
+                35.61174,
+                10.98032
+              ],
+              [
+                35.6447,
+                10.98114
+              ],
+              [
+                35.64374,
+                11.03894
+              ],
+              [
+                35.61077,
+                11.0381
+              ]
+            ],
+            "sourceLocalControlPoints": [
+              [
+                0.0,
+                1.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ],
+            "sourceViewportBBox": [
+              4.31908,
+              590.46173,
+              841.50095,
+              5.38791
+            ],
+            "sourcePageTransformationMatrix": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0,
+              0.0,
+              595.5023803710938
+            ],
+            "sourceAffineMetersFromPagePoints": [
+              [
+                6.254404802685647,
+                -7.97662263352125e-05
+              ],
+              [
+                -0.000727733277471998,
+                -6.252782655174087
+              ],
+              [
+                679337.388510424,
+                3946381.024358182
+              ]
+            ],
+            "sourceClipPaths": [
+              {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      841.8609008789062,
+                      0.0
+                    ],
+                    [
+                      841.8609008789062,
+                      596.2352294921875
+                    ],
+                    [
+                      0.0,
+                      596.2352294921875
+                    ],
+                    [
+                      0.0,
+                      0.0
+                    ]
+                  ]
+                ]
+              },
+              {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      4.319079875946045,
+                      5.0406494140625
+                    ],
+                    [
+                      841.8609008789062,
+                      5.0406494140625
+                    ],
+                    [
+                      841.8609008789062,
+                      590.4745483398438
+                    ],
+                    [
+                      4.319079875946045,
+                      590.4745483398438
+                    ],
+                    [
+                      4.319079875946045,
+                      5.0406494140625
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "sourceClipReview": {
+              "explicitlyClosed": true,
+              "activeClipCount": 2,
+              "outsideActiveClipsAreaPoints2": [
+                0.0,
+                0.0
+              ],
+              "outsideViewportAreaPoints2": 0.0,
+              "distanceFromViewportPoints": 38.15187883377075
+            },
+            "visualReview": "Complete North1 ring identified by its title, distinct northern/coastal footprint and shared border with North2. The neighboring North2 label on this page is displaced across the divider; it is not used as a ring-identity test.",
+            "matchingNumberedPageLabels": [
+              {
+                "text": "1 اﻟﺑﻘﺎﻟطﺔ اﻟﺷﻣﺎﻟﯾﺔ",
+                "normalizedForward": "1البقالطةالشمالية",
+                "normalizedReverse": "ةيلامشلاةطلاقبلا1",
+                "colors": [
+                  15073280
+                ],
+                "bounds": [
+                  176.72239685058594,
+                  192.5795440673828,
+                  371.4988098144531,
+                  245.86410522460938
+                ],
+                "point": [
+                  274.11060333251953,
+                  219.2218246459961
+                ]
+              },
+              {
+                "text": "1 اﻟﺑﻘﺎﻟطﺔ اﻟﺷﻣﺎﻟﯾﺔ",
+                "normalizedForward": "1البقالطةالشمالية",
+                "normalizedReverse": "ةيلامشلاةطلاقبلا1",
+                "colors": [
+                  15073280
+                ],
+                "bounds": [
+                  691.4129028320312,
+                  36.847808837890625,
+                  858.4664916992188,
+                  82.52029418945312
+                ],
+                "point": [
+                  774.939697265625,
+                  59.684051513671875
+                ]
+              }
+            ],
+            "validation": {
+              "valid": true,
+              "countryFullyContains": true,
+              "noRepairSnappingBufferClippingOrSimplification": true
+            }
+          },
+          {
+            "circleId": "bekalta-north-2",
+            "circleNameAr": "البقالطة الشمالية 2",
+            "parentImadaCode": "325951",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9%20%282%29.pdf",
+            "sourcePdfSha256": "c2f5d298778222de1ef8a4cd19b41c58653b8a247c6d7197c1d653eb80018252",
+            "sourcePdfFile": "work/isie-sector-maps-next-conflicts/bekalta-north-detail.pdf",
+            "sourcePdfPage": 1,
+            "sourceDrawingIndex": 146,
+            "sourceVectorLayer": "circonscription_isie2023",
+            "sourceGeometrySha256": "8c9d7948345a1201e02abbeff2ab5008e595154590cde720aed9270944bd615e",
+            "sourceGeometryVertices": 88,
+            "sourceCrsEpsg": 32632,
+            "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+            "sourceControlPointMaxResidualMeters": 0.22829289759060906,
+            "sourceControlPointsLatLon": [
+              [
+                35.6131,
+                10.96535
+              ],
+              [
+                35.63458,
+                10.96588
+              ],
+              [
+                35.63396,
+                11.00355
+              ],
+              [
+                35.61248,
+                11.00302
+              ]
+            ],
+            "sourceLocalControlPoints": [
+              [
+                0.0,
+                1.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ],
+            "sourceViewportBBox": [
+              4.31908,
+              590.46173,
+              841.50095,
+              5.38791
+            ],
+            "sourcePageTransformationMatrix": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0,
+              0.0,
+              595.5023803710938
+            ],
+            "sourceAffineMetersFromPagePoints": [
+              [
+                4.0770374012864785,
+                9.590952415881612e-05
+              ],
+              [
+                0.00014534807769450708,
+                -4.07423583389027
+              ],
+              [
+                677987.347361655,
+                3945219.394368721
+              ]
+            ],
+            "sourceClipPaths": [
+              {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      841.8609008789062,
+                      0.0
+                    ],
+                    [
+                      841.8609008789062,
+                      596.2352294921875
+                    ],
+                    [
+                      0.0,
+                      596.2352294921875
+                    ],
+                    [
+                      0.0,
+                      0.0
+                    ]
+                  ]
+                ]
+              },
+              {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      4.319079875946045,
+                      5.0406494140625
+                    ],
+                    [
+                      841.8609008789062,
+                      5.0406494140625
+                    ],
+                    [
+                      841.8609008789062,
+                      590.4745483398438
+                    ],
+                    [
+                      4.319079875946045,
+                      590.4745483398438
+                    ],
+                    [
+                      4.319079875946045,
+                      5.0406494140625
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "sourceClipReview": {
+              "explicitlyClosed": true,
+              "activeClipCount": 2,
+              "outsideActiveClipsAreaPoints2": [
+                0.0,
+                0.0
+              ],
+              "outsideViewportAreaPoints2": 0.0,
+              "distanceFromViewportPoints": 26.643310546875004
+            },
+            "visualReview": "Complete North2 ring identified by its title, interior numbered label and southwestern footprint, east of the Teboulba boundary and north of Bekalta South.",
+            "matchingNumberedPageLabels": [
+              {
+                "text": "2 ﺔﯾﻟﺎﻣﺷﻟا ﺔطﻟﺎﻘﺑﻟا",
+                "normalizedForward": "2ةيلامشلاةطلاقبلا",
+                "normalizedReverse": "البقالطةالشمالية2",
+                "colors": [
+                  15073280
+                ],
+                "bounds": [
+                  223.51243591308594,
+                  331.197021484375,
+                  418.28887939453125,
+                  384.4815979003906
+                ],
+                "point": [
+                  320.9006576538086,
+                  357.8393096923828
+                ]
+              },
+              {
+                "text": "2 ﺔﯾﻟﺎﻣﺷﻟا ﺔطﻟﺎﻘﺑﻟا",
+                "normalizedForward": "2ةيلامشلاةطلاقبلا",
+                "normalizedReverse": "البقالطةالشمالية2",
+                "colors": [
+                  15073280
+                ],
+                "bounds": [
+                  691.4129028320312,
+                  36.847808837890625,
+                  858.4664916992188,
+                  82.52029418945312
+                ],
+                "point": [
+                  774.939697265625,
+                  59.684051513671875
+                ]
+              }
+            ],
+            "validation": {
+              "valid": true,
+              "countryFullyContains": true,
+              "noRepairSnappingBufferClippingOrSimplification": true
+            }
+          }
+        ],
+        "sourceGeometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e",
+        "sourceGeometryVertices": 254,
+        "scopeReview": {
+          "classification": "EXHAUSTIVE_PARTS_AGGREGATE_FOR_ONE_IMADA",
+          "wholeCircleEqualsWholeImada": false,
+          "wholeAggregateEqualsWholeImadaIdentity": true,
+          "officialImadaCode": "325951",
+          "officialImadaNameAr": "البقالطة الشمالية",
+          "exactRequiredCircleNamesAr": [
+            "البقالطة الشمالية 1",
+            "البقالطة الشمالية 2"
+          ],
+          "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "decreeAnnex": 1,
+          "decreeTable": "A",
+          "decreePDFPage": 15,
+          "decreeJORTPage": 5112,
+          "reviewedEvidenceFile": "outputs/bekalta-pending-clusters-electoral-semantics-review.json",
+          "guardRequirement": "Accept only this exact imada ID/code and both exact named parts with pinned PDF and geometry digests. Neither part alone, an extra part, a different source code, or a broad name match is sufficient."
+        },
+        "aggregationReview": {
+          "operation": "Exact Shapely/GEOS union of both unrounded WGS84 source polygons; no buffering/snapping, smoothing, gap filling, clipping or simplified borders.",
+          "partIds": [
+            "bekalta-north-1",
+            "bekalta-north-2"
+          ],
+          "partGeometrySha256": [
+            "d0e62b8f72da802caf5254fadea9f9b9a0854041d98c9bd042a1252dbe67f809",
+            "8c9d7948345a1201e02abbeff2ab5008e595154590cde720aed9270944bd615e"
+          ],
+          "sourcePartsFile": "outputs/bekalta-north-aggregate-source-parts.geojson",
+          "sourcePartsFileSha256": "7a4966f8ae07440cd7d77db733c22adfb0eec4af6fccf74d1facf36c5b34f509",
+          "inputOverlapMeters2": 583.0395295198193,
+          "internalGapCount": 4,
+          "internalGapAreasMeters2": [
+            23.233201590541682,
+            77.23789121160836,
+            4.589248110349907,
+            139.03635904411195
+          ],
+          "internalGapTotalMeters2": 244.0966999566119,
+          "sourcePolygonsDistanceMeters": 0.0,
+          "gapTreatment": "All four uncovered interior gaps are preserved as holes. No boundary was invented to connect or fill them. Gap inventory measures enclosed holes only; no claim of zero open-edge discrepancy against the unknown survey boundary.",
+          "intersectionVertices": "Union can split original boundary segments at their mutual intersections. These computed intersection vertices are inherent in the exact set union, not snapped or manually invented links."
+        },
+        "currentOfficialIdentity": {
+          "governorateCode": "32",
+          "governorateFr": "Monastir",
+          "governorateAr": "المنستير",
+          "delegationCode": "3259",
+          "delegationFr": "Bekalta",
+          "delegationAr": "البقالطة",
+          "sectorCode": "325951",
+          "sectorFr": "Bekalta nord",
+          "sectorAr": "البقالطة الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37909,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1801,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1798
+          }
+        },
+        "sourceAssertion": {
+          "id": "osm:relation:7111933",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طبلبة",
+            "name:ar": "طبلبة",
+            "name:fr": "Téboulba",
+            "ref:tn:codegeo": "325951"
+          }
+        },
+        "manualIdentityQualification": "INS2012 and INS2024 identify325951 as Bekalta North; decree590 annexA explicitly assigns North1 and North2 to that single imada. Each complete original map target was re-read and independently georeferenced. The exhaustive aggregate, not either electoral part, supplies the whole-imada identity. The old Teboulba name is unsupported for this source ID and must be removed rather than carried forward as an alias.",
+        "validation": {
+          "valid": true,
+          "finite2d": true,
+          "countryFullyContains": true,
+          "countryOutsideAreaMeters2": 0.0,
+          "noSnappingBufferClippingOrSimplification": true,
+          "exactUnionOfRequiredUnchangedParts": true,
+          "unfilledInternalGapCount": 4
+        },
+        "quantizationReview": {
+          "gridDegrees": 1e-06,
+          "valid": true,
+          "countryFullyContains": true,
+          "geometryType": "Polygon",
+          "internalGapCount": 4,
+          "internalGapAreasMeters2": [
+            22.0678832307392,
+            80.73034080208845,
+            4.789246278222436,
+            129.4664125237831
+          ],
+          "symmetricDifferenceMeters2": 350.1567418595585,
+          "hausdorffMeters": 87.13743027602197,
+          "note": "Quantization checked on a separate copy; exported union and part polygons retain original georeferenced precision."
+        },
+        "osmComparison": {
+          "id": "osm:relation:7111933",
+          "iou": 0.7559259446632041,
+          "officialCoveredByOsm": 0.9863774578391671,
+          "osmCoveredByOfficial": 0.7639009563320014,
+          "hausdorffMeters": 1275.1369907540823
+        },
+        "recommendedChange": {
+          "replaceGeometry": true,
+          "retainSourceCode": true,
+          "replacePrimaryNames": true,
+          "removeIncorrectNames": [
+            "طبلبة",
+            "Téboulba"
+          ],
+          "requiredLoaderChange": "Explicit exhaustive-parts scope guard; existing whole-circle-only guard must reject this candidate until deliberately extended."
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.994964644615989,
+              35.61896388017093
+            ],
+            [
+              10.995000837702573,
+              35.61905556031799
+            ],
+            [
+              10.994965380995469,
+              35.618974261066555
+            ],
+            [
+              10.994912864534534,
+              35.61881644378181
+            ],
+            [
+              10.994233695024798,
+              35.61886735010512
+            ],
+            [
+              10.993941544281478,
+              35.618845733966126
+            ],
+            [
+              10.993237335790113,
+              35.61854000584887
+            ],
+            [
+              10.992910178242477,
+              35.61841317503711
+            ],
+            [
+              10.99223902011399,
+              35.618133342385875
+            ],
+            [
+              10.99130614188163,
+              35.61775203751854
+            ],
+            [
+              10.989652571466031,
+              35.61705202277172
+            ],
+            [
+              10.989390527583717,
+              35.61693733272433
+            ],
+            [
+              10.989341292281752,
+              35.61691169729117
+            ],
+            [
+              10.989642763630442,
+              35.61665547089473
+            ],
+            [
+              10.989737964701014,
+              35.616574556795975
+            ],
+            [
+              10.989754158471227,
+              35.61657428957642
+            ],
+            [
+              10.98880707930571,
+              35.61627254119367
+            ],
+            [
+              10.988790885587001,
+              35.616272808283995
+            ],
+            [
+              10.98872545719598,
+              35.61624744078538
+            ],
+            [
+              10.988431029807005,
+              35.616133281541984
+            ],
+            [
+              10.988414836112666,
+              35.61613354858087
+            ],
+            [
+              10.987710670026582,
+              35.61582778658109
+            ],
+            [
+              10.98506121179299,
+              35.61481352379552
+            ],
+            [
+              10.984488898944006,
+              35.6145981379068
+            ],
+            [
+              10.983391232908104,
+              35.614100468215675
+            ],
+            [
+              10.98076010646872,
+              35.6138263430342
+            ],
+            [
+              10.979362414819457,
+              35.61496009872591
+            ],
+            [
+              10.976856410693639,
+              35.616482280533006
+            ],
+            [
+              10.975004858682908,
+              35.61761020279471
+            ],
+            [
+              10.973589183728974,
+              35.61801687405663
+            ],
+            [
+              10.973385183879945,
+              35.619607076765035
+            ],
+            [
+              10.973882047230061,
+              35.620048555554
+            ],
+            [
+              10.97413986287052,
+              35.61999143918024
+            ],
+            [
+              10.974616675017723,
+              35.620935750045774
+            ],
+            [
+              10.975561566516184,
+              35.622467463230564
+            ],
+            [
+              10.975731309791971,
+              35.622782055287274
+            ],
+            [
+              10.975254221379457,
+              35.623146915896335
+            ],
+            [
+              10.975543501161921,
+              35.62371080148488
+            ],
+            [
+              10.97559630831091,
+              35.62388184678724
+            ],
+            [
+              10.975713572641691,
+              35.624038611978975
+            ],
+            [
+              10.97584670742215,
+              35.62418189196441
+            ],
+            [
+              10.975914087246283,
+              35.62428657886019
+            ],
+            [
+              10.975997987506112,
+              35.62440421885328
+            ],
+            [
+              10.975970143294726,
+              35.62458980845925
+            ],
+            [
+              10.975845125644097,
+              35.624776991641
+            ],
+            [
+              10.975881413857113,
+              35.62493508246708
+            ],
+            [
+              10.975967913012708,
+              35.625158470946744
+            ],
+            [
+              10.976554251381959,
+              35.62594229097761
+            ],
+            [
+              10.976832828371979,
+              35.62606996258996
+            ],
+            [
+              10.977275964584319,
+              35.62630072485632
+            ],
+            [
+              10.977602155669759,
+              35.62638794214465
+            ],
+            [
+              10.978220136241625,
+              35.62582240250777
+            ],
+            [
+              10.97879641822926,
+              35.626196437114274
+            ],
+            [
+              10.97862639496019,
+              35.626529824341695
+            ],
+            [
+              10.978708350100622,
+              35.626568149859146
+            ],
+            [
+              10.979528555358069,
+              35.62697784897904
+            ],
+            [
+              10.979739752394664,
+              35.62700082900005
+            ],
+            [
+              10.980101595511188,
+              35.627219692693245
+            ],
+            [
+              10.980294971086877,
+              35.627176845065165
+            ],
+            [
+              10.98047605695868,
+              35.627292884310926
+            ],
+            [
+              10.980527575017716,
+              35.62741105285868
+            ],
+            [
+              10.9809921343658,
+              35.62785303105217
+            ],
+            [
+              10.981077674146663,
+              35.62803675965556
+            ],
+            [
+              10.981373112144704,
+              35.62819059004058
+            ],
+            [
+              10.981596601472223,
+              35.62805467947651
+            ],
+            [
+              10.982389657593037,
+              35.62867638540614
+            ],
+            [
+              10.981753209572728,
+              35.629149682638676
+            ],
+            [
+              10.980993043970125,
+              35.62986303788347
+            ],
+            [
+              10.979451270237911,
+              35.63107850685329
+            ],
+            [
+              10.982423393192166,
+              35.63333061585647
+            ],
+            [
+              10.983478421953246,
+              35.63246097269585
+            ],
+            [
+              10.98592854508036,
+              35.63636387799877
+            ],
+            [
+              10.986295612385854,
+              35.63712901889931
+            ],
+            [
+              10.987161772316664,
+              35.63697265677279
+            ],
+            [
+              10.988149642045963,
+              35.636712801953294
+            ],
+            [
+              10.989805372273269,
+              35.636320130606975
+            ],
+            [
+              10.990330220574341,
+              35.636433219671005
+            ],
+            [
+              10.990681132106467,
+              35.6365491822015
+            ],
+            [
+              10.990930627524342,
+              35.63658564420314
+            ],
+            [
+              10.991358616135592,
+              35.63680180513691
+            ],
+            [
+              10.991630935392795,
+              35.636756708826724
+            ],
+            [
+              10.992393633228014,
+              35.63643966156427
+            ],
+            [
+              10.993251156339749,
+              35.63593838759198
+            ],
+            [
+              10.993915969684645,
+              35.635683836502736
+            ],
+            [
+              10.994162927427412,
+              35.63561885997724
+            ],
+            [
+              10.99438858632008,
+              35.63569630110938
+            ],
+            [
+              10.995382503092772,
+              35.63567982451697
+            ],
+            [
+              10.996054918198851,
+              35.635729555536344
+            ],
+            [
+              10.99712947136564,
+              35.6359552641459
+            ],
+            [
+              10.997606152546451,
+              35.63613000500909
+            ],
+            [
+              10.998035681575113,
+              35.63640699894257
+            ],
+            [
+              10.998525071632194,
+              35.63708889228664
+            ],
+            [
+              10.997791305976554,
+              35.63756785414215
+            ],
+            [
+              10.997972356627907,
+              35.63784897481512
+            ],
+            [
+              10.99840697660202,
+              35.63832883020094
+            ],
+            [
+              10.998486096194041,
+              35.638510168997726
+            ],
+            [
+              10.999228059419892,
+              35.63935022197956
+            ],
+            [
+              10.999586623388096,
+              35.63977045211151
+            ],
+            [
+              10.999445599802147,
+              35.63910307055022
+            ],
+            [
+              10.999827417459084,
+              35.63846759023091
+            ],
+            [
+              11.000804576964512,
+              35.63778162193894
+            ],
+            [
+              11.001539852344097,
+              35.637363501088394
+            ],
+            [
+              11.00235119195961,
+              35.63700499267968
+            ],
+            [
+              11.003090018995113,
+              35.6367288666263
+            ],
+            [
+              11.004101655746146,
+              35.636427896532204
+            ],
+            [
+              11.005656879882128,
+              35.63599609259716
+            ],
+            [
+              11.006599057113542,
+              35.63589920670682
+            ],
+            [
+              11.006847535681406,
+              35.63589506311099
+            ],
+            [
+              11.007319132374443,
+              35.635866902690644
+            ],
+            [
+              11.007914459370388,
+              35.63581638123284
+            ],
+            [
+              11.008338912406948,
+              35.635890477051525
+            ],
+            [
+              11.008813063956774,
+              35.63596374173949
+            ],
+            [
+              11.009410942605681,
+              35.636014643866524
+            ],
+            [
+              11.010158420030463,
+              35.63608333712947
+            ],
+            [
+              11.010482975622544,
+              35.63613879930327
+            ],
+            [
+              11.011404901399299,
+              35.636224866547266
+            ],
+            [
+              11.012523051576094,
+              35.63620617164732
+            ],
+            [
+              11.013440372519606,
+              35.636109647952885
+            ],
+            [
+              11.014306971193971,
+              35.63597337866842
+            ],
+            [
+              11.015124383477824,
+              35.63585821982725
+            ],
+            [
+              11.015769396877996,
+              35.63580682752272
+            ],
+            [
+              11.016066544032775,
+              35.63576126025133
+            ],
+            [
+              11.017157272782057,
+              35.63564150835327
+            ],
+            [
+              11.0181232511207,
+              35.635503544127054
+            ],
+            [
+              11.019139429875937,
+              35.635385024571015
+            ],
+            [
+              11.01990764835092,
+              35.63529095350152
+            ],
+            [
+              11.020500901305056,
+              35.63515922776509
+            ],
+            [
+              11.020968891957757,
+              35.63498901179774
+            ],
+            [
+              11.021564714475769,
+              35.634958709352176
+            ],
+            [
+              11.02330145096224,
+              35.63482804799378
+            ],
+            [
+              11.024514845163361,
+              35.63464528325726
+            ],
+            [
+              11.025678024100772,
+              35.63444305871707
+            ],
+            [
+              11.026294565899414,
+              35.63425002692956
+            ],
+            [
+              11.026739236590828,
+              35.63414106538696
+            ],
+            [
+              11.028869364095284,
+              35.63384134079202
+            ],
+            [
+              11.031192056247942,
+              35.63329479469215
+            ],
+            [
+              11.031584438793429,
+              35.63308522477846
+            ],
+            [
+              11.031903312681148,
+              35.6329174857851
+            ],
+            [
+              11.0322490937658,
+              35.63283046838897
+            ],
+            [
+              11.032820563500705,
+              35.63282081637894
+            ],
+            [
+              11.03356595839883,
+              35.6328082227299
+            ],
+            [
+              11.03393761744701,
+              35.632761352470744
+            ],
+            [
+              11.034083593994039,
+              35.632637117407235
+            ],
+            [
+              11.03427512621846,
+              35.63234975680448
+            ],
+            [
+              11.03449357184368,
+              35.632143117700544
+            ],
+            [
+              11.034690273239567,
+              35.632058613612756
+            ],
+            [
+              11.034938735609412,
+              35.63205441246282
+            ],
+            [
+              11.035386480891393,
+              35.63206713504687
+            ],
+            [
+              11.036007636516446,
+              35.63205662761999
+            ],
+            [
+              11.034279316476383,
+              35.6305637620126
+            ],
+            [
+              11.03405673839615,
+              35.63060811349987
+            ],
+            [
+              11.033499281015835,
+              35.63019134872798
+            ],
+            [
+              11.032891617387087,
+              35.62975513471625
+            ],
+            [
+              11.032106426927692,
+              35.62917985103456
+            ],
+            [
+              11.03164991965112,
+              35.628822256596926
+            ],
+            [
+              11.030635464164895,
+              35.62802759359776
+            ],
+            [
+              11.030605458415726,
+              35.627825155054225
+            ],
+            [
+              11.029740614550109,
+              35.62704825425097
+            ],
+            [
+              11.029760816737582,
+              35.6268652615799
+            ],
+            [
+              11.029379378490477,
+              35.62652668658838
+            ],
+            [
+              11.028870111704494,
+              35.626048202653095
+            ],
+            [
+              11.028888253345835,
+              35.62578406613843
+            ],
+            [
+              11.028760422441087,
+              35.62564415837443
+            ],
+            [
+              11.028562698682038,
+              35.62568808058333
+            ],
+            [
+              11.028410543853916,
+              35.62556887709051
+            ],
+            [
+              11.026982568789796,
+              35.62512615998322
+            ],
+            [
+              11.025982625880657,
+              35.624899462534856
+            ],
+            [
+              11.025055676681632,
+              35.62461064272151
+            ],
+            [
+              11.02442788659771,
+              35.62435737331986
+            ],
+            [
+              11.023773199353288,
+              35.624023375798465
+            ],
+            [
+              11.022284286183666,
+              35.62313514318262
+            ],
+            [
+              11.022107811303881,
+              35.62303663478848
+            ],
+            [
+              11.021552522544136,
+              35.62270095473907
+            ],
+            [
+              11.020694491531795,
+              35.622187702850326
+            ],
+            [
+              11.020365880124457,
+              35.62196997770552
+            ],
+            [
+              11.019627465910935,
+              35.621272057437324
+            ],
+            [
+              11.018688265252106,
+              35.62049632127883
+            ],
+            [
+              11.017194347389717,
+              35.61940516157213
+            ],
+            [
+              11.016915441834824,
+              35.619186593517256
+            ],
+            [
+              11.016259294462985,
+              35.618791693919874
+            ],
+            [
+              11.016031614963811,
+              35.618633151530204
+            ],
+            [
+              11.015676651927864,
+              35.61835497017825
+            ],
+            [
+              11.015651297519291,
+              35.6183351000381
+            ],
+            [
+              11.014993113324278,
+              35.61785904839323
+            ],
+            [
+              11.014942405169313,
+              35.61781930779479
+            ],
+            [
+              11.014563631082078,
+              35.617582111117144
+            ],
+            [
+              11.014160019355568,
+              35.61734533055967
+            ],
+            [
+              11.01413517735155,
+              35.61734574626422
+            ],
+            [
+              11.014034274266306,
+              35.61728655045745
+            ],
+            [
+              11.013302605521837,
+              35.61685230658157
+            ],
+            [
+              11.012723572352568,
+              35.61655757088596
+            ],
+            [
+              11.011948367510124,
+              35.61636758368372
+            ],
+            [
+              11.011748102441063,
+              35.616310046745646
+            ],
+            [
+              11.010549571923804,
+              35.61608653552491
+            ],
+            [
+              11.010126244259641,
+              35.61605301813234
+            ],
+            [
+              11.010076050262526,
+              35.616033561602
+            ],
+            [
+              11.009926489663723,
+              35.61601576437439
+            ],
+            [
+              11.00972775638891,
+              35.61601908277783
+            ],
+            [
+              11.009479339749731,
+              35.61602323032157
+            ],
+            [
+              11.008857279323614,
+              35.6159930243861
+            ],
+            [
+              11.008782754321512,
+              35.61599426816376
+            ],
+            [
+              11.00793558880499,
+              35.61590692969636
+            ],
+            [
+              11.00738958438352,
+              35.6159363317072
+            ],
+            [
+              11.00627731751564,
+              35.61617811907467
+            ],
+            [
+              11.005980747327376,
+              35.61624394639975
+            ],
+            [
+              11.00546212664782,
+              35.616374355565256
+            ],
+            [
+              11.004525777679804,
+              35.616694374878634
+            ],
+            [
+              11.0032416340887,
+              35.61702017422113
+            ],
+            [
+              11.003217300969583,
+              35.6170408739985
+            ],
+            [
+              11.002500441935798,
+              35.61719486618617
+            ],
+            [
+              11.002377250844864,
+              35.617237505269394
+            ],
+            [
+              11.002278390958203,
+              35.61725944467322
+            ],
+            [
+              11.001932635216633,
+              35.61734637513167
+            ],
+            [
+              11.000845680767197,
+              35.6176079865922
+            ],
+            [
+              11.000598784828336,
+              35.61767297330074
+            ],
+            [
+              11.000499923853912,
+              35.61769491127586
+            ],
+            [
+              10.999857582278935,
+              35.61784764932443
+            ],
+            [
+              10.999585840249214,
+              35.61791304851892
+            ],
+            [
+              10.999289255323365,
+              35.61797885976364
+            ],
+            [
+              10.999091533857346,
+              35.61802273349428
+            ],
+            [
+              10.99886896755144,
+              35.61806701778655
+            ],
+            [
+              10.997904174375194,
+              35.61824539487689
+            ],
+            [
+              10.997063589545602,
+              35.618421703469004
+            ],
+            [
+              10.996939883946002,
+              35.61844405076991
+            ],
+            [
+              10.996098280246692,
+              35.61857977993896
+            ],
+            [
+              10.995677477226666,
+              35.618647642350695
+            ],
+            [
+              10.994910903957782,
+              35.61880241401844
+            ],
+            [
+              10.994964644615989,
+              35.61896388017093
+            ]
+          ],
+          [
+            [
+              10.994912918260333,
+              35.621866890026595
+            ],
+            [
+              10.994793096692975,
+              35.622266343269345
+            ],
+            [
+              10.994907622468759,
+              35.621871230786354
+            ],
+            [
+              10.995089110953504,
+              35.62115077851361
+            ],
+            [
+              10.994912918260333,
+              35.621866890026595
+            ]
+          ],
+          [
+            [
+              10.993912034004014,
+              35.62458267750283
+            ],
+            [
+              10.993602250240597,
+              35.625115437428846
+            ],
+            [
+              10.993905292090497,
+              35.62457224361701
+            ],
+            [
+              10.994236877165497,
+              35.62381796667133
+            ],
+            [
+              10.993912034004014,
+              35.62458267750283
+            ]
+          ],
+          [
+            [
+              10.992690544364832,
+              35.62642943783443
+            ],
+            [
+              10.992269155415741,
+              35.62682120832493
+            ],
+            [
+              10.992687584153368,
+              35.626430483524366
+            ],
+            [
+              10.992770625145978,
+              35.62633557257587
+            ],
+            [
+              10.992690544364832,
+              35.62642943783443
+            ]
+          ],
+          [
+            [
+              10.988209500110504,
+              35.63013631206466
+            ],
+            [
+              10.987399171069631,
+              35.630535298288
+            ],
+            [
+              10.986295724627134,
+              35.63114206396831
+            ],
+            [
+              10.985092368452678,
+              35.631730172987616
+            ],
+            [
+              10.984158781340156,
+              35.63217175884307
+            ],
+            [
+              10.984157500245228,
+              35.6321722704056
+            ],
+            [
+              10.985089807617989,
+              35.6317263309805
+            ],
+            [
+              10.98629052784314,
+              35.63113793014002
+            ],
+            [
+              10.987393722350413,
+              35.63053790252213
+            ],
+            [
+              10.988217315584343,
+              35.630131813849744
+            ],
+            [
+              10.988209500110504,
+              35.63013631206466
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

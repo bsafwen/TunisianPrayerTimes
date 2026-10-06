@@ -1,0 +1,40 @@
+{
+  "key": "menzel-bouzelfa-ouest",
+  "currentRawId": "osm:relation:7101606",
+  "currentCode": "156255",
+  "officialName": "منزل بوزلفة الغربية",
+  "officialRegistryRow": {
+    "governorateCode": "15",
+    "governorateFr": "Nabeul",
+    "governorateAr": "نابل",
+    "delegationCode": "1562",
+    "delegationFr": "Menzel bouzelfa",
+    "delegationAr": "منزل بوزلفة",
+    "sectorCode": "156255",
+    "sectorFr": "Menzel bou zelfa ouest",
+    "sectorAr": "منزل بوزلفة الغربية",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13703,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 556,
+      "Nombre_de_menages_par_Secteurs.xlsx": 555
+    }
+  },
+  "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+  "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+  "retrievedAt": "2026-09-12T16:37:47.514784+00:00",
+  "exitCode": 0,
+  "httpStatus": "200",
+  "response": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/menzel-bouzelfa-ouest.pdf",
+    "sha256": "925c149e026c36ed48c3101eca887c5a7bc0d8bd3eb39dd36e5dd3a907c6142f",
+    "bytes": 1273530
+  },
+  "headers": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/menzel-bouzelfa-ouest.headers",
+    "sha256": "60eeb4aba8d202b05ea9a1c1cd0859b356aac794872f9ebb2b15e34098ced584",
+    "bytes": 560
+  },
+  "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.21M 100  1.21M   0      0  4.22M      0                              0\n100  1.21M 100  1.21M   0      0  4.21M      0                              0\n100  1.21M 100  1.21M   0      0  4.21M      0                              0\n",
+  "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+  "success": true
+}

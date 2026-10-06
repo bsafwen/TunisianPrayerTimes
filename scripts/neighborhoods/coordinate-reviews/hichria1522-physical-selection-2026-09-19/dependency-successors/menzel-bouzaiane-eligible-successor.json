@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "status": "INACTIVE_TEMPLATE_REQUIRES_FINAL_SOURCE_AND_COMPILER_PINS",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/dependency-successors/menzel-bouzaiane-source-facts-successor.json",
+    "sha256": "1435f5a66e1ad8c3c8f86c4dc3e089dd710970db27f6b807a2a6f6ff52405faa"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7169630",
+      "targetBaseId": "delegation:510",
+      "targetDelegationId": 510,
+      "name": "منزل بوزيان",
+      "governorateId": 355,
+      "governorate": "سيدي بوزيد",
+      "basePoint": {
+        "lat": 34.5731138,
+        "lng": 9.4269175
+      },
+      "status": "eligible_proposal",
+      "reasons": [],
+      "members": [
+        {
+          "id": "osm:relation:7169630",
+          "name": "منزل بوزيان",
+          "kind": "sector",
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزيان",
+            "name:ar": "منزل بوزيان",
+            "name:fr": "Menzel Bouzaiane",
+            "name:kab": "Menzel Buzeyyan",
+            "ref:tn:codegeo": "435751"
+          },
+          "officialSource": null,
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 510,
+          "independentNearestPrayerSource": 510,
+          "reasons": []
+        },
+        {
+          "id": "osm:way:170079232",
+          "name": "منزل بوزيان",
+          "kind": "residential",
+          "sourceTags": {
+            "landuse": "residential",
+            "name": "منزل بوزيان",
+            "name:ar": "منزل بوزيان",
+            "name:fr": "Menzel Bouzaiane",
+            "name:kab": "Menzel Buzeyyan"
+          },
+          "officialSource": null,
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 510,
+          "independentNearestPrayerSource": 510,
+          "reasons": []
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7169630",
+          "code": "435751",
+          "currentOfficialRecord": {
+            "governorateCode": "43",
+            "governorateFr": "Sidi bouzid",
+            "governorateAr": "سيدي بوزيد",
+            "delegationCode": "4357",
+            "delegationFr": "Menzel bouzaienne",
+            "delegationAr": "منزل بوزيان",
+            "sectorCode": "435751",
+            "sectorFr": "Menzel bouzaiane",
+            "sectorAr": "منزل بوزيان",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55622,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2716,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2711
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزيان",
+            "name:ar": "منزل بوزيان",
+            "name:fr": "Menzel Bouzaiane",
+            "name:kab": "Menzel Buzeyyan",
+            "ref:tn:codegeo": "435751"
+          },
+          "effectiveOriginalGeometrySha256": "9231731be21ecae196af031655a401e9cae4e28d8074a2b1ac8b6439c70c6674"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7169593",
+          "code": "4357",
+          "name": "معتمدية منزل بوزيان",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Menzel Bouzaiane",
+            "boundary": "administrative",
+            "name": "معتمدية منزل بوزيان",
+            "name:ar": "معتمدية منزل بوزيان",
+            "name:fr": "Délégation Menzel Bouzaïane",
+            "ref:tn:codegeo": "4357",
+            "ref:tn:hasc_2": "TN.SZ.MB",
+            "wikidata": "Q3306137"
+          },
+          "effectiveOriginalGeometrySha256": "6cd5b188f07dc6457a79ee830b69180ce23cc76bb895df481e576ee55b558a4c",
+          "currentOfficialRecord": {
+            "governorateCode": "43",
+            "governorateAr": "سيدي بوزيد",
+            "governorateFr": "Sidi bouzid",
+            "delegationCode": "4357",
+            "delegationAr": "منزل بوزيان",
+            "delegationFr": "Menzel bouzaienne"
+          }
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:510"
+      ],
+      "reviewedSpellingEquivalence": {
+        "schemaVersion": 1,
+        "method": "reviewed_menzel_bouzaiane_spelling_equivalence",
+        "reviewEvidence": {
+          "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/dependency-successors/menzel-bouzaiane-protected-prayer-successor.json",
+          "sha256": "0f0a66deef8d5d6aa514140c1e386f70cf1ac4d0cb17e8fa5ef60d499782ba68"
+        }
+      },
+      "scope": "Only consolidate the already paired residential/sector display under existing base510. Preserve both stored spellings, all raw geometries, the absorbed source village, and seven distinct official sectors."
+    }
+  ]
+}

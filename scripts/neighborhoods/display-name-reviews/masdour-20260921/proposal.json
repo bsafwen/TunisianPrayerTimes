@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "proposedOnly": true,
+  "action": "display_only_correction",
+  "id": "osm:node:1212270314",
+  "currentName": "مَزدُور",
+  "proposedNameArabic": "المصدور",
+  "preservedFrenchAlias": [
+    "Mazdour"
+  ],
+  "preservedParent": "المصدور",
+  "preservedVillageScope": {
+    "kind": "village",
+    "governorateId": 364,
+    "delegationId": 593,
+    "lat": 35.6819517,
+    "lng": 10.7278001,
+    "pickerGroupId": "osm:node:1212270314"
+  },
+  "searchAliasHandling": {
+    "add": [
+      "مَزدُور"
+    ],
+    "reason": "Keep the old vocalized spelling searchable; preserve French alias in neighborhoods row."
+  },
+  "evidence": {
+    "proofFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\masdour-name-review-20260921\\masdour-name-proof.json",
+    "proofSha256": "ba954408807dfb52af13f35b823b69108a00308b5d8ce3141111e55e493a016e",
+    "leadFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\masdour-name-lead-20260921\\lead.json",
+    "leadSha256": "4bdecb4c65f078974ee8b6fd30450e4eddd8f2dfba5177992ee51dae17f5d2e7",
+    "mapsLimitation": "Saved Maps result classification='parent_or_broader_place'; finding='Parent/broader card; target Mazdour appears only in query/locator; no child identity or boundary proof.'. It remains a parent/broader-place limitation, not proof of child identity or boundary."
+  },
+  "livePins": {
+    "neighborhoodsSha256": "cb893bfa2d446214e4f6aa50b77c68d952d31f23620ee2441832467ac52c6b7c",
+    "displayNamesSha256": "c287581ef8d1610708e11e67861dcd93ed4f7231f2faaa4a47a0794eafaf981e"
+  },
+  "scope": "Correct the point display spelling only; do not merge the village into the parent sector, change coordinates, geometry, prayer source, IDs, or source aliases."
+}

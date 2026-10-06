@@ -1,0 +1,32 @@
+{
+  "observedAt": "2026-09-07T06:08:07.915492+00:00",
+  "query": "كندار سوسة Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Kondar"
+  ],
+  "publicUiText": [
+    "Kondar",
+    "كندار",
+    "Tunisia",
+    "Directions to Kondar",
+    "Directions",
+    "Share Kondar",
+    "Share",
+    "Save Kondar to lists",
+    "Save",
+    "Photo",
+    "Close",
+    "كندار سوسة Tunisia",
+    "Clear",
+    "Restaurants",
+    "Hotels",
+    "Attractions"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "كندار"
+  ],
+  "screenshot": "delegation_442-1.png",
+  "boundaryVerified": false
+}

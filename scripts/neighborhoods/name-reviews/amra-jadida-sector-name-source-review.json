@@ -1,0 +1,823 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPPORTED_EXACT_SECTOR_NAME_CORRECTION_WITH_EXISTING_POINT_PRESERVED_SOURCE_ONLY",
+  "reviewedAt": "2026-09-08T04:53:29.982295+00:00",
+  "baselineMetadataSha256": "3974fb1b01dbd735f4954fe07eb824e97a01d7c7d7f283399663d805f544973c",
+  "sourceCode": "525259",
+  "sourceParentCode": "5252",
+  "sourceGovernorateCode": "52",
+  "inputPins": {
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": "3974fb1b01dbd735f4954fe07eb824e97a01d7c7d7f283399663d805f544973c",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json": "ab3648f30c443e7ec05fab7d4415e5b27c600ffc5ea3e298f87ba500eecbc347",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json": "1fe910d95d14662eeba887d7934851be92b65c9e8729135d694d9dab4f5712a1",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py": "e0787b055678b23b2b9fd47adea60c5b2e6af013ae5d02eeaa7a4be1c9e46276",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\isie-2022-sector-membership.json": "f535fef2b28f6616381cbd7ab18e1fab8a04e2a20b96e11a27f10a94fafaee15"
+  },
+  "exactOriginalSource": {
+    "id": "osm:relation:7142958",
+    "tags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "عمر الجديدة",
+      "name:ar": "عمر الجديدة",
+      "name:fr": "Nouvelle Amra",
+      "ref:tn:codegeo": "525259"
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              10.5183615,
+              33.3833217
+            ],
+            [
+              10.5203585,
+              33.3834617
+            ],
+            [
+              10.5239635,
+              33.3831817
+            ],
+            [
+              10.5269015,
+              33.3827617
+            ],
+            [
+              10.5274885,
+              33.3824817
+            ],
+            [
+              10.5287825,
+              33.3825317
+            ],
+            [
+              10.5312295,
+              33.3838617
+            ],
+            [
+              10.5321035,
+              33.3845917
+            ],
+            [
+              10.5337705,
+              33.3859517
+            ],
+            [
+              10.5360085,
+              33.3876417
+            ],
+            [
+              10.5374765,
+              33.3884817
+            ],
+            [
+              10.5404725,
+              33.3898717
+            ],
+            [
+              10.5416005,
+              33.3901917
+            ],
+            [
+              10.5451125,
+              33.3913617
+            ],
+            [
+              10.5474585,
+              33.3920217
+            ],
+            [
+              10.5505035,
+              33.3936417
+            ],
+            [
+              10.5585735,
+              33.3965117
+            ],
+            [
+              10.5642655,
+              33.3990817
+            ],
+            [
+              10.5675495,
+              33.4009017
+            ],
+            [
+              10.5679815,
+              33.4009417
+            ],
+            [
+              10.5685955,
+              33.4006917
+            ],
+            [
+              10.5756225,
+              33.4085917
+            ],
+            [
+              10.5909575,
+              33.4173417
+            ],
+            [
+              10.6190115,
+              33.4369116
+            ],
+            [
+              10.6213935,
+              33.4392316
+            ],
+            [
+              10.6225745,
+              33.4399916
+            ],
+            [
+              10.6226615,
+              33.4400416
+            ],
+            [
+              10.6323105,
+              33.4498916
+            ],
+            [
+              10.6408005,
+              33.4638816
+            ],
+            [
+              10.6459585,
+              33.4739915
+            ],
+            [
+              10.6467915,
+              33.4756215
+            ],
+            [
+              10.6470015,
+              33.4760315
+            ],
+            [
+              10.6521555,
+              33.4845115
+            ],
+            [
+              10.6538795,
+              33.4879015
+            ],
+            [
+              10.6593015,
+              33.4887115
+            ],
+            [
+              10.6650995,
+              33.4935015
+            ],
+            [
+              10.6708965,
+              33.4980015
+            ],
+            [
+              10.700516,
+              33.5223666
+            ],
+            [
+              10.7001981,
+              33.5229178
+            ],
+            [
+              10.699836,
+              33.5233136
+            ],
+            [
+              10.699321,
+              33.5239173
+            ],
+            [
+              10.6988382,
+              33.5243914
+            ],
+            [
+              10.6988951,
+              33.5248474
+            ],
+            [
+              10.6985748,
+              33.5250914
+            ],
+            [
+              10.6980765,
+              33.5255005
+            ],
+            [
+              10.6971514,
+              33.5261968
+            ],
+            [
+              10.6967619,
+              33.5264337
+            ],
+            [
+              10.6965922,
+              33.5265335
+            ],
+            [
+              10.6964887,
+              33.5265997
+            ],
+            [
+              10.6964127,
+              33.5267206
+            ],
+            [
+              10.6961025,
+              33.5269821
+            ],
+            [
+              10.6958527,
+              33.5271216
+            ],
+            [
+              10.6831045,
+              33.5152915
+            ],
+            [
+              10.6790615,
+              33.5129615
+            ],
+            [
+              10.6762075,
+              33.5102815
+            ],
+            [
+              10.6733295,
+              33.5070315
+            ],
+            [
+              10.6706995,
+              33.5044915
+            ],
+            [
+              10.6682745,
+              33.5029815
+            ],
+            [
+              10.6637535,
+              33.5016515
+            ],
+            [
+              10.6592465,
+              33.4998315
+            ],
+            [
+              10.6567945,
+              33.4981615
+            ],
+            [
+              10.6541085,
+              33.4947215
+            ],
+            [
+              10.6516925,
+              33.4934615
+            ],
+            [
+              10.6489065,
+              33.4922115
+            ],
+            [
+              10.6471345,
+              33.4919015
+            ],
+            [
+              10.6440035,
+              33.4919415
+            ],
+            [
+              10.6399995,
+              33.4931315
+            ],
+            [
+              10.6305155,
+              33.4828215
+            ],
+            [
+              10.6282605,
+              33.4803515
+            ],
+            [
+              10.6229285,
+              33.4745115
+            ],
+            [
+              10.6212145,
+              33.4726516
+            ],
+            [
+              10.6171465,
+              33.4697716
+            ],
+            [
+              10.6083745,
+              33.4634116
+            ],
+            [
+              10.6082465,
+              33.4633216
+            ],
+            [
+              10.5990835,
+              33.4567016
+            ],
+            [
+              10.5961575,
+              33.4545916
+            ],
+            [
+              10.5945545,
+              33.4534316
+            ],
+            [
+              10.5820075,
+              33.4443516
+            ],
+            [
+              10.5783315,
+              33.4415716
+            ],
+            [
+              10.5660735,
+              33.4313116
+            ],
+            [
+              10.5623235,
+              33.4281516
+            ],
+            [
+              10.5615455,
+              33.4275016
+            ],
+            [
+              10.5550255,
+              33.4220416
+            ],
+            [
+              10.5479555,
+              33.4161517
+            ],
+            [
+              10.5461085,
+              33.4145917
+            ],
+            [
+              10.5426895,
+              33.4117317
+            ],
+            [
+              10.5345955,
+              33.4049317
+            ],
+            [
+              10.5292255,
+              33.4004617
+            ],
+            [
+              10.5263825,
+              33.3980617
+            ],
+            [
+              10.5258975,
+              33.3976117
+            ],
+            [
+              10.5252525,
+              33.3968617
+            ],
+            [
+              10.5245365,
+              33.3958417
+            ],
+            [
+              10.5241785,
+              33.3951217
+            ],
+            [
+              10.5236945,
+              33.3941417
+            ],
+            [
+              10.5227345,
+              33.3921917
+            ],
+            [
+              10.5205725,
+              33.3878617
+            ],
+            [
+              10.5187155,
+              33.3841317
+            ],
+            [
+              10.5183645,
+              33.3834217
+            ],
+            [
+              10.5183615,
+              33.3833217
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "originalGeometrySha256": "a66975a7f9de8c385e62bdc1523467e1e86cf87a2968b95bd58f8b178992bd24",
+  "originalGeometryValid": true,
+  "originalCodeClaimCount": 1,
+  "officialRegistryRecord": {
+    "governorateCode": "52",
+    "governorateFr": "Mednine",
+    "governorateAr": "مدنين",
+    "delegationCode": "5252",
+    "delegationFr": "Medenine sud",
+    "delegationAr": "مدنين الجنوبية",
+    "sectorCode": "525259",
+    "sectorFr": "Nouvelle amra",
+    "sectorAr": "عمرة الجديدة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60756,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 2986,
+      "Nombre_de_menages_par_Secteurs.xlsx": 2980
+    }
+  },
+  "originalWorkbookRows": {
+    "evidence": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amra-jadida-name-review\\original-ins-row-read.json",
+      "sha256": "5312a8574e4dc9091db1e1f948cfdbd043b1efada1915df3da4b003c165542b3"
+    },
+    "rows": [
+      {
+        "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "sheet": "Population",
+        "worksheetPart": "xl/worksheets/sheet3.xml",
+        "row": 60756,
+        "values": {
+          "A60756": "5",
+          "B60756": "District 5",
+          "C60756": "إقليم 5",
+          "D60756": "52",
+          "E60756": "Mednine",
+          "F60756": "مدنين",
+          "G60756": "5252",
+          "H60756": "Medenine sud",
+          "I60756": "مدنين الجنوبية",
+          "J60756": "525259",
+          "K60756": "Nouvelle amra",
+          "L60756": "عمرة الجديدة",
+          "M60756": "525259-Nouvelle amra",
+          "N60756": "525259-عمرة الجديدة",
+          "O60756": "M",
+          "P60756": " Masculin",
+          "Q60756": " ذكر",
+          "R60756": "1",
+          "S60756": "00-04",
+          "T60756": "00-04",
+          "U60756": "146"
+        }
+      },
+      {
+        "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "sheet": "Logements",
+        "worksheetPart": "xl/worksheets/sheet3.xml",
+        "row": 2986,
+        "values": {
+          "A2986": "5",
+          "B2986": "District 5",
+          "C2986": "إقليم 5",
+          "D2986": "52",
+          "E2986": "Mednine",
+          "F2986": "مدنين",
+          "G2986": "5252",
+          "H2986": "Medenine sud",
+          "I2986": "مدنين الجنوبية",
+          "J2986": "Nouvelle amra",
+          "K2986": "عمرة الجديدة",
+          "L2986": "525259",
+          "M2986": "525259-Nouvelle amra",
+          "N2986": "525259-عمرة الجديدة",
+          "O2986": "1",
+          "P2986": "Urbain",
+          "Q2986": "حضري",
+          "R2986": "97",
+          "S2986": "62"
+        }
+      },
+      {
+        "file": "Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "sheet": "Ménages",
+        "worksheetPart": "xl/worksheets/sheet3.xml",
+        "row": 2980,
+        "values": {
+          "A2980": "5",
+          "B2980": "District 5",
+          "C2980": "إقليم 5",
+          "D2980": "52",
+          "E2980": "Mednine",
+          "F2980": "مدنين",
+          "G2980": "5252",
+          "H2980": "Medenine sud",
+          "I2980": "مدنين الجنوبية",
+          "J2980": "Nouvelle amra",
+          "K2980": "عمرة الجديدة",
+          "L2980": "525259",
+          "M2980": "525259-Nouvelle amra",
+          "N2980": "525259-عمرة الجديدة",
+          "O2980": "1",
+          "P2980": "Urbain",
+          "Q2980": "حضري",
+          "R2980": "63"
+        }
+      }
+    ]
+  },
+  "primaryNameCorroboration": [
+    {
+      "url": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+      "publisher": "Ministry of Interior",
+      "observedVia": "indexed primary table",
+      "finding": "Lists عمرة الجديدة among the ten Medenine Sud imadas."
+    },
+    {
+      "url": "https://www.commune-medenine.gov.tn/index.php/2022-12-15-11-11-04",
+      "publisher": "Medenine municipality",
+      "observedVia": "indexed primary page",
+      "finding": "Lists عمرة الجديدة in its second municipal district together with Medenine Sud, Hassi Medenine, El Labba and Medenine Est."
+    },
+    {
+      "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf",
+      "publisher": "ISIE",
+      "cachedMembershipRows": [
+        {
+          "governorate": "مدنير",
+          "delegation": "مدنير الجنوبية",
+          "sector": "عمرة الجديدة",
+          "pages": [
+            84
+          ]
+        }
+      ],
+      "qualification": "Cached text contains OCR errors مدنير for Medenine; the exact sector name is clear. The raw PDF was not reopened."
+    },
+    {
+      "publisher": "ISIE",
+      "cachedExactIndexLink": {
+        "text": "عمرة الجديدة.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/مدنين الجنوبية/عمرة الجديدة.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/مدنين الجنوبية/عمرة الجديدة.pdf"
+      },
+      "qualification": "Index title/path identify the intended named electoral map. No PDF polygon was downloaded, extracted or accepted in this name review."
+    }
+  ],
+  "protectedCurrentRecords": {
+    "osm:relation:7142958": {
+      "currentMetadata": {
+        "id": "osm:relation:7142958",
+        "sourceId": "osm",
+        "name": "عمر الجديدة",
+        "aliases": [
+          "Nouvelle Amra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مدنين الجنوبية",
+        "contextAliases": [
+          "Délégation Medenine Sud",
+          "Médenine Sud",
+          "معتمدية مدنين االجنوبية",
+          "معتمدية مدنين الجنوبية"
+        ],
+        "governorateId": 353,
+        "lat": 33.455647,
+        "lng": 10.616712,
+        "delegationId": 496,
+        "hasBoundary": true,
+        "bbox": [
+          10.518362,
+          33.382482,
+          10.700516,
+          33.527122
+        ],
+        "areaKm2": 41.832555060733235,
+        "pickerGroupId": "osm:relation:7142958",
+        "offset": 1951840,
+        "length": 804
+      },
+      "completeRawGroup": [
+        "osm:relation:7142958"
+      ],
+      "packedGeometrySha256": "d4f13c71ef9839346fc6bba5855e9458c998cdcaea319d7b01f2a0289d166089"
+    },
+    "osm:node:9347210382": {
+      "currentMetadata": {
+        "id": "osm:node:9347210382",
+        "sourceId": "osm",
+        "name": "عمرة الجديدة",
+        "aliases": [
+          "Nouvelle Amra"
+        ],
+        "kind": "village",
+        "parentName": "عمرة",
+        "contextAliases": [
+          "Amra",
+          "Délégation Sidi Makhlouf",
+          "Sidi Makhlouf",
+          "عمرة",
+          "معتمدية سيدي مخلوف"
+        ],
+        "governorateId": 353,
+        "lat": 33.4313067,
+        "lng": 10.565757,
+        "delegationId": 496,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:9347210382"
+      },
+      "completeRawGroup": [
+        "osm:node:9347210382"
+      ],
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7142938": {
+      "currentMetadata": {
+        "id": "osm:relation:7142938",
+        "sourceId": "osm",
+        "name": "عمرة",
+        "aliases": [
+          "Amra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي مخلوف",
+        "contextAliases": [
+          "Délégation Sidi Makhlouf",
+          "Sidi Makhlouf",
+          "معتمدية سيدي مخلوف"
+        ],
+        "governorateId": 353,
+        "lat": 33.434207,
+        "lng": 10.537065,
+        "delegationId": 496,
+        "hasBoundary": true,
+        "bbox": [
+          10.453399,
+          33.374202,
+          10.64,
+          33.493421
+        ],
+        "areaKm2": 62.00422413054415,
+        "pickerGroupId": "osm:relation:7142938",
+        "offset": 1891940,
+        "length": 1788
+      },
+      "completeRawGroup": [
+        "osm:relation:7142938"
+      ],
+      "packedGeometrySha256": "0e05ab2bafc86548eb9b8448fb389f9cf500419c238dc833d76338925b757343"
+    }
+  },
+  "nameAndGroupingImpact": {
+    "completeCurrentMatchingPeersBefore": [
+      "osm:node:9347210382"
+    ],
+    "completeCurrentMatchingPeersAfter": [
+      "osm:node:9347210382"
+    ],
+    "completeCachedNamePeerIds": [
+      "osm:relation:7142958",
+      "osm:node:9347210382"
+    ],
+    "noNewMatchingRelationship": true,
+    "sharedExistingKey": "Nouvelle Amra",
+    "currentBaseNameMatches": [],
+    "currentDependentParentOrContextRows": [],
+    "sourcePoint": {
+      "id": "osm:node:9347210382",
+      "tags": {
+        "name": "عمرة الجديدة",
+        "name:ar": "عمرة الجديدة",
+        "name:fr": "Nouvelle Amra",
+        "place": "village"
+      },
+      "lat": 33.4313067,
+      "lng": 10.565757
+    },
+    "pointOutsideOriginalSectorM": 20.477644857363895,
+    "pointOutsidePackedSectorM": 20.479311907173443,
+    "pointCurrentlyContainingPackedPolygons": [
+      "osm:relation:7142938"
+    ],
+    "pointAbsorptionConclusion": "Existing same_picker_name already matches the two French aliases, but both target outlines exclude the village point. Changing the Arabic primary while retaining both old names adds no matching pair and cannot absorb this point with these exact shapes.",
+    "existingDirectCurationIds": [],
+    "noActiveDirectPickerRuleForTargetOrPoint": true,
+    "sourceDefaultPreserved": {
+      "id": 496,
+      "base": {
+        "id": 496,
+        "nomFr": "Sidi Makhlouf",
+        "nomAr": "سيدي مخلوف",
+        "nomEn": "Sidi Makhlouf",
+        "lat": 33.5021,
+        "lng": 10.479
+      }
+    },
+    "scopeQualification": "The nearby namesake village is currently assigned to Amra7142938/Sidi Makhlouf and lies about20.48m beyond the older525259 outline. This separate boundary/context disagreement is not resolved by a spelling correction. Do not join rows, move coordinates or infer a new boundary."
+  },
+  "supportedFutureNameTags": {
+    "name": "عمرة الجديدة",
+    "name:ar": "عمرة الجديدة",
+    "name:fr": "Nouvelle Amra",
+    "alt_name:ar": "عمر الجديدة"
+  },
+  "exactExpectedRawFieldChanges": [
+    {
+      "id": "osm:relation:7142958",
+      "field": "name",
+      "before": "عمر الجديدة",
+      "after": "عمرة الجديدة"
+    },
+    {
+      "id": "osm:relation:7142958",
+      "field": "aliases",
+      "before": [
+        "Nouvelle Amra"
+      ],
+      "after": [
+        "Nouvelle Amra",
+        "عمر الجديدة"
+      ]
+    }
+  ],
+  "expectedTinyReviewedNameAddition": {
+    "id": "osm:relation:7142958",
+    "name": "عمرة الجديدة",
+    "kind": "sector"
+  },
+  "preservation": {
+    "rawIdsGroupsCoordinatesDefaultsGeometriesContextUnchanged": true,
+    "existingPointRemainsRawAndSeparate": true,
+    "noPointRetentionRuleRequiredForCurrentExactGeometry": true,
+    "childrenChanged": 0,
+    "sourceCodeUnchanged": true,
+    "noBaseAssetChanges": true
+  },
+  "parentCorrectionIndependence": "The separate Medenine parent correction is now installed at 3974fb1b. The target differs from verified historical BA5 only in parentName. This future two-field name/alias correction and one saved-name addition retain the installed parent; the approximately 20.48 m village/sector boundary disagreement remains separate, with no merge or geometry recommendation.",
+  "supplementaryPhoneEvidenceFromRoot": {
+    "providedBy": "root; not re-read or re-captured by this agent",
+    "requestedQuery": "عمرة الجديدة مدنين تونس",
+    "observedSelectedTitle": "Amra al jadida / عمرة الجديدة",
+    "screenshot": {
+      "file": "outputs/phone-maps-review/osm_relation_7142958-1.png",
+      "sha256": "a3af7319cd4948ca34cbfbfe0f6f3c9b23b482481c8c8d11a4cf16cf6e7d7836"
+    },
+    "observationJson": {
+      "file": "outputs/phone-maps-review/osm_relation_7142958-1.json",
+      "sha256": "6363249ae1c68c39ae666d3e3f90543fd70176279a374abe01f6699ed6b538cd"
+    },
+    "qualification": "Root personally viewed the Maps name card. Dotted Google boundaries were not extracted or certified; this corroborates the name only."
+  },
+  "execution": {
+    "sourceOnly": true,
+    "generatorOrExistingHelperExecuted": false,
+    "appOrFrozenStageChanged": false,
+    "testsOrBuild": false,
+    "phoneOrLedgerIo": false,
+    "pbfScan": false,
+    "rawGeometryModified": false,
+    "fullNumericMatrixRerun": false
+  },
+  "limitations": [
+    "No full official boundary acceptance or village administrative-context correction is claimed.",
+    "Expected name/alias/tiny output remains subject to the future one actual generation and exact field audit.",
+    "Initial optional openpyxl read was unavailable; standard-library XLSX parsing used the workbook relationship to the actual source sheet, and all three row values were then verified."
+  ],
+  "historicalBA5Comparison": {
+    "evidence": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\medenine-parent-source-stage-readiness.json",
+      "sha256": "851b1b36a86f0cc2a15f6d2ca16f60e7181b39787f50232ddc09ff1531d8905f"
+    },
+    "historicalMetadataSha256": "ba5c7d5d1ca246ecedaae4fa87898c9e2d74d6b28856e1436da64cd0ab206b7a",
+    "currentMetadataSha256": "3974fb1b01dbd735f4954fe07eb824e97a01d7c7d7f283399663d805f544973c",
+    "onlyTargetChangeSinceBA5": {
+      "id": "osm:relation:7142958",
+      "field": "parentName",
+      "before": "معتمدية مدنين االجنوبية",
+      "after": "معتمدية مدنين الجنوبية"
+    },
+    "allOtherTargetFieldsAndPackedGeometryUnchanged": true,
+    "nameGroupAndTinyProposalRebasedOntoInstalledParent": true
+  }
+}

@@ -1,0 +1,1013 @@
+{
+  "schemaVersion": 1,
+  "status": "qualified-cached-evidence-correction-skeletons",
+  "sourcePairedReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-review-20260921\\paired-inm.json",
+    "sha256": "d6513816cbc9b11d268bba992ca31682d06a1448752e6d45f8bf086f24dacd65"
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+    "sha256": "5ef18afd6eded9e9a5b91424b51a0f7eef83908444e16d3628c6beb853c3912c"
+  },
+  "unverifiedTransportFacts": [
+    "Live HTTP transport was not re-fetched; status, URLs, and checksums are verified only from the preserved retrieval manifest and cached response files."
+  ],
+  "records": [
+    {
+      "delegationId": 482,
+      "name": {
+        "id": 482,
+        "lat": "33.7072",
+        "lng": "8.9697",
+        "nomAr": "قبلي",
+        "nomEn": "Kebili",
+        "nomFr": "Kebili"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 1012,
+      "expectedNames": {
+        "nomFr": "Kebili",
+        "nomAr": "قبلي",
+        "nomEn": "Kebili"
+      },
+      "original": {
+        "lat": "33.7072",
+        "lng": "8.9697"
+      },
+      "proposed": {
+        "lat": "33.687",
+        "lng": "8.97"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/482/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\482-prayer-attempt01-1ec80ba0e176230d.json",
+          "sha256": "1ec80ba0e176230dacf41a810ffc22e521c2c3f62c2859752404a7b74f4593a6"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/482/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\482-sun-attempt01-ad1562ae6d00201b.json",
+          "sha256": "ad1562ae6d00201bd64c687c8f5746993c51fb2493a570ecc8cd2d806256f19a"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/482/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/482/",
+          "status": 200,
+          "sha256": "1ec80ba0e176230dacf41a810ffc22e521c2c3f62c2859752404a7b74f4593a6",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/482/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/482/",
+          "status": 200,
+          "sha256": "ad1562ae6d00201bd64c687c8f5746993c51fb2493a570ecc8cd2d806256f19a",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 1025,
+      "name": {
+        "id": 1025,
+        "lat": "33.96",
+        "lng": "9.99",
+        "nomAr": "المطوية",
+        "nomEn": "Metouia",
+        "nomFr": "Metouia"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 347,
+      "expectedNames": {
+        "nomFr": "Metouia",
+        "nomAr": "المطوية",
+        "nomEn": "Metouia"
+      },
+      "original": {
+        "lat": "33.96",
+        "lng": "9.99"
+      },
+      "proposed": {
+        "lat": "33.959",
+        "lng": "10.005"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/347/1025/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\1025-prayer-attempt01-5d802780e04f434f.json",
+          "sha256": "5d802780e04f434f840428012aabe141dce0741836d25657ec11ace158e2f92c"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/347/1025/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\1025-sun-attempt01-ccde8b7e0ad16090.json",
+          "sha256": "ccde8b7e0ad16090e4e231910990d9ab03b323b838374d729a3116d3687f20e5"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/347/1025/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/347/1025/",
+          "status": 200,
+          "sha256": "5d802780e04f434f840428012aabe141dce0741836d25657ec11ace158e2f92c",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/347/1025/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/347/1025/",
+          "status": 200,
+          "sha256": "ccde8b7e0ad16090e4e231910990d9ab03b323b838374d729a3116d3687f20e5",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 636,
+      "name": {
+        "id": 636,
+        "lat": "36.1747",
+        "lng": "8.7049",
+        "nomAr": "الكاف",
+        "nomEn": "Le Kef",
+        "nomFr": "Le Kef"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 363,
+      "expectedNames": {
+        "nomFr": "Le Kef",
+        "nomAr": "الكاف",
+        "nomEn": "Le Kef"
+      },
+      "original": {
+        "lat": "36.1747",
+        "lng": "8.7049"
+      },
+      "proposed": {
+        "lat": "36.184",
+        "lng": "8.715"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/636/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\636-prayer-attempt01-592bcc9d1359d181.json",
+          "sha256": "592bcc9d1359d18121753d895296839fd12febb78cee8362659b63a99faa446d"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/636/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\636-sun-attempt01-f45ff86132694624.json",
+          "sha256": "f45ff861326946249a9e820d7f7576ac9d57172f606138ba12ae2cac698d2aae"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/636/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/636/",
+          "status": 200,
+          "sha256": "592bcc9d1359d18121753d895296839fd12febb78cee8362659b63a99faa446d",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/636/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/636/",
+          "status": 200,
+          "sha256": "f45ff861326946249a9e820d7f7576ac9d57172f606138ba12ae2cac698d2aae",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 532,
+      "name": {
+        "id": 532,
+        "lat": "36.8791",
+        "lng": "10.2656",
+        "nomAr": "سكرة",
+        "nomEn": "Soukra",
+        "nomFr": "Soukra"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 358,
+      "expectedNames": {
+        "nomFr": "Soukra",
+        "nomAr": "سكرة",
+        "nomEn": "Soukra"
+      },
+      "original": {
+        "lat": "36.8791",
+        "lng": "10.2656"
+      },
+      "proposed": {
+        "lat": "36.868",
+        "lng": "10.265"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/532/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\532-prayer-attempt01-93e450a5f98cb639.json",
+          "sha256": "93e450a5f98cb639168389816e5a0c673c0ed3d717a80a706972b78a9957c77b"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/532/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\532-sun-attempt01-9f13248f32930ba3.json",
+          "sha256": "9f13248f32930ba3d81835fbb519e04bf72a0f1bcd53211d24f5284b42d9287f"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/532/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/532/",
+          "status": 200,
+          "sha256": "93e450a5f98cb639168389816e5a0c673c0ed3d717a80a706972b78a9957c77b",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/532/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/532/",
+          "status": 200,
+          "sha256": "9f13248f32930ba3d81835fbb519e04bf72a0f1bcd53211d24f5284b42d9287f",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 555,
+      "name": {
+        "id": 555,
+        "lat": "36.752",
+        "lng": "10.008",
+        "nomAr": "المرناقية",
+        "nomEn": "Mornaguia",
+        "nomFr": "Mornaguia"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 360,
+      "expectedNames": {
+        "nomFr": "Mornaguia",
+        "nomAr": "المرناقية",
+        "nomEn": "Mornaguia"
+      },
+      "original": {
+        "lat": "36.752",
+        "lng": "10.008"
+      },
+      "proposed": {
+        "lat": "36.761",
+        "lng": "10.016"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/555/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\555-prayer-attempt01-e834b171316cbf1f.json",
+          "sha256": "e834b171316cbf1ffb392c980e14bc9e5f85c99069c31fd6ef61d0efc6a122b5"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/555/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\555-sun-attempt01-be4e0ade249d8364.json",
+          "sha256": "be4e0ade249d8364e340ad9dfcb60d931f66ca6b80df5e2aef8db850bb8a5e70"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/555/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/555/",
+          "status": 200,
+          "sha256": "e834b171316cbf1ffb392c980e14bc9e5f85c99069c31fd6ef61d0efc6a122b5",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/555/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/555/",
+          "status": 200,
+          "sha256": "be4e0ade249d8364e340ad9dfcb60d931f66ca6b80df5e2aef8db850bb8a5e70",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 473,
+      "name": {
+        "id": 473,
+        "lat": "33.06",
+        "lng": "10.34",
+        "nomAr": "غمراسن",
+        "nomEn": "Ghomrassen",
+        "nomFr": "Ghomrassen"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 351,
+      "expectedNames": {
+        "nomFr": "Ghomrassen",
+        "nomAr": "غمراسن",
+        "nomEn": "Ghomrassen"
+      },
+      "original": {
+        "lat": "33.06",
+        "lng": "10.34"
+      },
+      "proposed": {
+        "lat": "33.067",
+        "lng": "10.33"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/473/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\473-prayer-attempt01-006cf7a926932040.json",
+          "sha256": "006cf7a926932040fa2ab30e574d0be0e269802248ba4b405f51cadac96d712d"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/473/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\473-sun-attempt01-ea9fed8b8e93b1c6.json",
+          "sha256": "ea9fed8b8e93b1c6fe0caa8ddd922c418a1e3ba652cc84935bcccc676bf70f0a"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/473/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/473/",
+          "status": 200,
+          "sha256": "006cf7a926932040fa2ab30e574d0be0e269802248ba4b405f51cadac96d712d",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/473/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/473/",
+          "status": 200,
+          "sha256": "ea9fed8b8e93b1c6fe0caa8ddd922c418a1e3ba652cc84935bcccc676bf70f0a",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 584,
+      "name": {
+        "id": 584,
+        "lat": "36.07",
+        "lng": "9.03",
+        "nomAr": "السرس",
+        "nomEn": "Le Sers",
+        "nomFr": "Le Sers"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 363,
+      "expectedNames": {
+        "nomFr": "Le Sers",
+        "nomAr": "السرس",
+        "nomEn": "Le Sers"
+      },
+      "original": {
+        "lat": "36.07",
+        "lng": "9.03"
+      },
+      "proposed": {
+        "lat": "36.078",
+        "lng": "9.021"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/584/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\584-prayer-attempt01-40a78353e2022884.json",
+          "sha256": "40a78353e2022884356c37d12f139a03d0449a13bab055fbd14d42e7f987d317"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/584/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\584-sun-attempt01-5d47bae3ad5f3fc9.json",
+          "sha256": "5d47bae3ad5f3fc986f50350ade4dae7a06af89740dcb81cd7b73b2c287ffdf6"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/584/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/584/",
+          "status": 200,
+          "sha256": "40a78353e2022884356c37d12f139a03d0449a13bab055fbd14d42e7f987d317",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/584/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/584/",
+          "status": 200,
+          "sha256": "5d47bae3ad5f3fc986f50350ade4dae7a06af89740dcb81cd7b73b2c287ffdf6",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 514,
+      "name": {
+        "id": 514,
+        "lat": "36.97",
+        "lng": "9.07",
+        "nomAr": "نفزة",
+        "nomEn": "Nefza",
+        "nomFr": "Nefza"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 356,
+      "expectedNames": {
+        "nomFr": "Nefza",
+        "nomAr": "نفزة",
+        "nomEn": "Nefza"
+      },
+      "original": {
+        "lat": "36.97",
+        "lng": "9.07"
+      },
+      "proposed": {
+        "lat": "36.976",
+        "lng": "9.081"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/356/514/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\514-prayer-attempt01-d198e7388fd217d9.json",
+          "sha256": "d198e7388fd217d988fb4d52bb8f3bdbd28b73c048104a20dff1710f83b39eff"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/356/514/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\514-sun-attempt01-cd8fd966cd1a49c9.json",
+          "sha256": "cd8fd966cd1a49c992d6103e4d8ab63ca997c3a87c24ae6bb0a5e3c38e8d2ae4"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/356/514/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/356/514/",
+          "status": 200,
+          "sha256": "d198e7388fd217d988fb4d52bb8f3bdbd28b73c048104a20dff1710f83b39eff",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/356/514/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/356/514/",
+          "status": 200,
+          "sha256": "cd8fd966cd1a49c992d6103e4d8ab63ca997c3a87c24ae6bb0a5e3c38e8d2ae4",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 467,
+      "name": {
+        "id": 467,
+        "lat": "36.65",
+        "lng": "10.58",
+        "nomAr": "بني خلاد",
+        "nomEn": "Beni Khalled",
+        "nomFr": "Beni Khalled"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 350,
+      "expectedNames": {
+        "nomFr": "Beni Khalled",
+        "nomAr": "بني خلاد",
+        "nomEn": "Beni Khalled"
+      },
+      "original": {
+        "lat": "36.65",
+        "lng": "10.58"
+      },
+      "proposed": {
+        "lat": "36.649",
+        "lng": "10.592"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/350/467/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\467-prayer-attempt01-66348dfbe13e4309.json",
+          "sha256": "66348dfbe13e4309f95b4abf048edb02bdd3f9d9104ed844b27c2ca60035fb00"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/350/467/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\467-sun-attempt01-1b9bfa8fd52d3653.json",
+          "sha256": "1b9bfa8fd52d36538a3a8f3b1a4fd145a92c729db3a9b8377f53a1d2bae8acf9"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/350/467/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/350/467/",
+          "status": 200,
+          "sha256": "66348dfbe13e4309f95b4abf048edb02bdd3f9d9104ed844b27c2ca60035fb00",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/350/467/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/350/467/",
+          "status": 200,
+          "sha256": "1b9bfa8fd52d36538a3a8f3b1a4fd145a92c729db3a9b8377f53a1d2bae8acf9",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 561,
+      "name": {
+        "id": 561,
+        "lat": "37.24",
+        "lng": "9.92",
+        "nomAr": "منزل جميل",
+        "nomEn": "Menzel Jemil",
+        "nomFr": "Menzel Jemil"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 361,
+      "expectedNames": {
+        "nomFr": "Menzel Jemil",
+        "nomAr": "منزل جميل",
+        "nomEn": "Menzel Jemil"
+      },
+      "original": {
+        "lat": "37.24",
+        "lng": "9.92"
+      },
+      "proposed": {
+        "lat": "37.235",
+        "lng": "9.91"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/561/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\561-prayer-attempt01-faa186685b6af127.json",
+          "sha256": "faa186685b6af127a4eeb888085891d37f39ae0d347d79896fdd5a0f50231f92"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/561/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\561-sun-attempt01-d1ace3d041b47710.json",
+          "sha256": "d1ace3d041b47710a72ab9203ef228e84d5704c22a8d90405b17e2c8c7075603"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/561/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/561/",
+          "status": 200,
+          "sha256": "faa186685b6af127a4eeb888085891d37f39ae0d347d79896fdd5a0f50231f92",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/561/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/561/",
+          "status": 200,
+          "sha256": "d1ace3d041b47710a72ab9203ef228e84d5704c22a8d90405b17e2c8c7075603",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    },
+    {
+      "delegationId": 505,
+      "name": {
+        "id": 505,
+        "lat": "34.6",
+        "lng": "9.6",
+        "nomAr": "المكناسي",
+        "nomEn": "Meknassi",
+        "nomFr": "Meknassi"
+      },
+      "referenceKind": "inm_published_reference",
+      "expectedGovernorateId": 355,
+      "expectedNames": {
+        "nomFr": "Meknassi",
+        "nomAr": "المكناسي",
+        "nomEn": "Meknassi"
+      },
+      "original": {
+        "lat": "34.6",
+        "lng": "9.6"
+      },
+      "proposed": {
+        "lat": "34.607",
+        "lng": "9.607"
+      },
+      "INMevidence": {
+        "prayer": {
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/355/505/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\505-prayer-attempt01-60ab2c226c4d5aee.json",
+          "sha256": "60ab2c226c4d5aee19372505fe68ff144f7d9b8d55b3b3154bd670654394eeba"
+        },
+        "sun": {
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/355/505/",
+          "date": "2026-09-19 00:00",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\505-sun-attempt01-77cf2b86e9d78fb6.json",
+          "sha256": "77cf2b86e9d78fb6c38a4bcdf525c6f0e281d295b48b5cbc720ae4cfe500f86e"
+        }
+      },
+      "transport": {
+        "prayer": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/355/505/",
+          "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/355/505/",
+          "status": 200,
+          "sha256": "60ab2c226c4d5aee19372505fe68ff144f7d9b8d55b3b3154bd670654394eeba",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        },
+        "sun": {
+          "manifestFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+          "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/355/505/",
+          "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/355/505/",
+          "status": 200,
+          "sha256": "77cf2b86e9d78fb6c38a4bcdf525c6f0e281d295b48b5cbc720ae4cfe500f86e",
+          "checks": {
+            "manifestEntryPresent": true,
+            "serviceEndpointMatches": true,
+            "urlPathMatchesExpected": true,
+            "finalUrlMatchesRequested": true,
+            "statusIs200": true,
+            "manifestHashMatchesCachedFile": true
+          }
+        }
+      },
+      "checks": {
+        "payloadFieldTypesValid": true,
+        "bothDatesEqualExpected": true,
+        "bothDatesEqualEachOther": true,
+        "currentOriginalCoordinatesMatch": true,
+        "proposedCoordinatesExact": true,
+        "allCoordinatesFiniteAndTunisian": true,
+        "numericIdsAreInt": true,
+        "activeIsBool": true,
+        "allThreeDelegationNamesMatch": true,
+        "governorateIdentityMatchesCurrent": true,
+        "delegationIdentityMatchesCandidate": true,
+        "wrapperMethodIsGET": true,
+        "retrievalManifestChecksPass": true,
+        "alreadyInCurrent52Corrections": false
+      },
+      "qualification": true,
+      "approval": "none; correction skeleton only"
+    }
+  ],
+  "summary": {
+    "candidateCount": 11,
+    "qualifiedSkeletonCount": 11,
+    "alreadyInCurrent52Corrections": [],
+    "failedById": {}
+  }
+}

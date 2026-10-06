@@ -1,0 +1,1662 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:1109384824",
+  "baseId": 565,
+  "rawCurrent": {
+    "id": "osm:node:1109384824",
+    "sourceId": "osm",
+    "name": "تينجة",
+    "aliases": [
+      "Tinja"
+    ],
+    "kind": "village",
+    "parentName": "قنقلة",
+    "contextAliases": [
+      "Délégation Tinja",
+      "Guengla",
+      "Tinja",
+      "قنقلة",
+      "معتمدية تينجة"
+    ],
+    "governorateId": 361,
+    "lat": 37.1639232,
+    "lng": 9.7705573,
+    "delegationId": 565,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1109384824"
+  },
+  "baseCurrent": {
+    "id": 565,
+    "nomFr": "Tinja",
+    "nomAr": "تينجة",
+    "nomEn": "Tinja",
+    "lat": 37.1634,
+    "lng": 9.7651
+  },
+  "expectedGovernor": {
+    "id": 361,
+    "nomFr": "Bizerte",
+    "nomAr": "بنزرت",
+    "nomEn": "Bizerte",
+    "lat": 37.2744,
+    "lng": 9.8739
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1109384824",
+    "tags": {
+      "addr:governorate": "Bizerte",
+      "name": "تينجة",
+      "name:ar": "تينجة",
+      "name:en": "Tinja",
+      "name:fr": "Tinja",
+      "place": "village"
+    },
+    "lat": 37.1639232,
+    "lng": 9.7705573
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-current.json",
+    "sha256": "763557e325f2fa49bb0495ff740eb9b56d156541c52d65f54314e11db49a6cfb",
+    "bytes": 572,
+    "url": "https://api.openstreetmap.org/api/0.6/node/1109384824.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1109384824.json",
+    "sha256": "763557e325f2fa49bb0495ff740eb9b56d156541c52d65f54314e11db49a6cfb",
+    "exactElement": {
+      "type": "node",
+      "id": 1109384824,
+      "lat": 37.1639232,
+      "lon": 9.7705573,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "version": 7,
+      "changeset": 98539602,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "addr:governorate": "Bizerte",
+        "name": "تينجة",
+        "name:ar": "تينجة",
+        "name:en": "Tinja",
+        "name:fr": "Tinja",
+        "place": "village"
+      }
+    }
+  },
+  "sourceHistory": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-history.json",
+    "sha256": "7d63522df1f0209d887032debb4e62d1a4c81528dcce2f1b17e1562d47b1abd2",
+    "bytes": 2708,
+    "url": "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json"
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/two-settlement-current-source-identity.json",
+    "sha256": "2564fed259bf78254b6a57911b8b0adeae31135597a189f019d6a692c4a0a038",
+    "bytes": 9559
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+    "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+    "bytes": 7728
+  },
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-canonical-response-provenance.json",
+    "sha256": "fab8ccca36d8f076d1d70336cc393bab809266235c5414168514b61711530965",
+    "bytes": 11292
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/interior-tinja-city-article.html",
+      "sha256": "cbdbd3274bad4e07bc780c41d595a4ccdbe219633f775139eee4809e24cd21e7",
+      "bytes": 51445,
+      "url": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "مدينة تينجة"
+      ],
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "qualification": "2020 public incident article used only for locality wording, not incident details or boundary assertions."
+    },
+    {
+      "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-urban-planning.html",
+      "sha256": "c3170bececcf41da05792e76e7d9fdc12194f0b83cf26291e7e0ebf58479e108",
+      "bytes": 181081,
+      "url": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "L'agglomération urbaine de Menzel Bourguiba - Tinja"
+      ],
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "qualification": "The planning area is stated in terms of municipal territories; it is not a polygon of the inhabited Tinja town."
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7119647",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الزعرور",
+        "name:ar": "الزعرور",
+        "name:fr": "Zaarour",
+        "ref:tn:codegeo": "175953"
+      },
+      "sourceGeometrySha256": "c58ec724ce1ffa3cc53bc4c72c3090997b3646121b039be8b12ac30b807074cb",
+      "expectedCuration": null,
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1759",
+        "delegationFr": "Tinja",
+        "delegationAr": "تينجة",
+        "sectorCode": "175953",
+        "sectorFr": "Ez-zarour",
+        "sectorAr": "الزعرور",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18870,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 825,
+          "Nombre_de_menages_par_Secteurs.xlsx": 824
+        }
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7119647",
+        "sourceId": "osm",
+        "name": "الزعرور",
+        "aliases": [
+          "Zaarour",
+          "زعرور"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تينجة",
+        "contextAliases": [
+          "Délégation Tinja",
+          "Tinja",
+          "معتمدية تينجة"
+        ],
+        "governorateId": 361,
+        "lat": 37.107037,
+        "lng": 9.747301,
+        "delegationId": 565,
+        "hasBoundary": true,
+        "bbox": [
+          9.615156,
+          37.071957,
+          9.779396,
+          37.142889
+        ],
+        "areaKm2": 47.963323798746444,
+        "pickerGroupId": "osm:relation:7119647",
+        "offset": 1119388,
+        "length": 1372
+      },
+      "packedGeometrySha256": "b0ef7022233a3d5de3e94328437412d3cf6a1fd064311236a430f786d34dae6f"
+    },
+    {
+      "id": "osm:relation:7119648",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قنقلة",
+        "name:ar": "قنقلة",
+        "name:fr": "Guengla",
+        "ref:tn:codegeo": "175952"
+      },
+      "sourceGeometrySha256": "341437d489070d32b88142222440ccce5f9c86186912ef3dcbfc5cd44126909e",
+      "expectedCuration": null,
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1759",
+        "delegationFr": "Tinja",
+        "delegationAr": "تينجة",
+        "sectorCode": "175952",
+        "sectorFr": "Guengla",
+        "sectorAr": "قنقلة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18836,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 823,
+          "Nombre_de_menages_par_Secteurs.xlsx": 822
+        }
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7119648",
+        "sourceId": "osm",
+        "name": "قنقلة",
+        "aliases": [
+          "Guengla"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تينجة",
+        "contextAliases": [
+          "Délégation Tinja",
+          "Tinja",
+          "معتمدية تينجة"
+        ],
+        "governorateId": 361,
+        "lat": 37.172654,
+        "lng": 9.776252,
+        "delegationId": 565,
+        "hasBoundary": true,
+        "bbox": [
+          9.75984,
+          37.159146,
+          9.787983,
+          37.186339
+        ],
+        "areaKm2": 3.4948811706220595,
+        "pickerGroupId": "osm:relation:7119648",
+        "offset": 1120760,
+        "length": 996
+      },
+      "packedGeometrySha256": "9cef9c9bfeef2b8106515638b38787c5a27bf482712bc43005f72f207c7a4b92"
+    },
+    {
+      "id": "osm:relation:7119649",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تينجة",
+        "name:ar": "تينجة",
+        "name:fr": "Tinja",
+        "ref:tn:codegeo": "175951"
+      },
+      "sourceGeometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f",
+      "expectedCuration": null,
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1759",
+        "delegationFr": "Tinja",
+        "delegationAr": "تينجة",
+        "sectorCode": "175951",
+        "sectorFr": "Tinja",
+        "sectorAr": "تينجة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18802,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 822,
+          "Nombre_de_menages_par_Secteurs.xlsx": 821
+        }
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7119649",
+        "sourceId": "osm",
+        "name": "تينجة",
+        "aliases": [
+          "Tinja"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تينجة",
+        "contextAliases": [
+          "Délégation Tinja",
+          "Tinja",
+          "معتمدية تينجة"
+        ],
+        "governorateId": 361,
+        "lat": 37.148433,
+        "lng": 9.762066,
+        "delegationId": 565,
+        "hasBoundary": true,
+        "bbox": [
+          9.748119,
+          37.125312,
+          9.777491,
+          37.171361
+        ],
+        "areaKm2": 6.902821611661433,
+        "pickerGroupId": "delegation:565",
+        "offset": 1121756,
+        "length": 580
+      },
+      "packedGeometrySha256": "544f4a7913a643e769d5f57a9b086fcf71e95c3d4bd464cd292f02e212cf7fc9"
+    }
+  ],
+  "contexts": {
+    "osm:relation:1435827": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-23",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Bizerte",
+        "boundary": "administrative",
+        "name": "ولاية بنزرت",
+        "name:ar": "ولاية بنزرت",
+        "name:az": "Bizerta (vilayət)",
+        "name:azb": "بنزرت",
+        "name:be": "Бізерта (вілает)",
+        "name:be-tarask": "Бізэрта (вілает)",
+        "name:bg": "Бизерта (област)",
+        "name:ca": "Governació de Bizerta",
+        "name:ceb": "Gouvernorat de Bizerte",
+        "name:cy": "Bizerte (talaith)",
+        "name:de": "Binzart",
+        "name:el": "Μπιζέρτα (Κυβερνείο)",
+        "name:en": "Bizerte",
+        "name:es": "Gobernación de Bizerta",
+        "name:fa": "بنزرت",
+        "name:fi": "Bizerte (kuvernementti)",
+        "name:fr": "Gouvernorat Bizerte",
+        "name:frr": "Bizerte (Guwernement)",
+        "name:hu": "Bizerte kormányzóság",
+        "name:id": "Kegubernuran Bizerte",
+        "name:it": "Biserta",
+        "name:ja": "ビゼルト県",
+        "name:ka": "ბიზერტის ვილაიეთი",
+        "name:ko": "비제르테주",
+        "name:ks": "بنزرت",
+        "name:lt": "Bizertos vilajetas",
+        "name:ms": "Kawasan kegabenoran Bizerte",
+        "name:nl": "Bizerte (gouvernement)",
+        "name:no": "Bizerte (guvernement)",
+        "name:pl": "Gubernatorstwo Bizerta",
+        "name:pnb": "بنزرت",
+        "name:pt": "Bizerta (província)",
+        "name:ro": "Guvernoratul Bizerte",
+        "name:ru": "Бизерта (вилайет)",
+        "name:sco": "Bizerte Govrenorate",
+        "name:sh": "Bizerta (vilajet)",
+        "name:sv": "Bizerte (guvernement)",
+        "name:tr": "Bizerte (vilayet)",
+        "name:uk": "Бізерта (вілаєт)",
+        "name:ur": "بنزرت",
+        "name:zh": "比塞大省",
+        "name:zu": "Bizerte Governorate",
+        "official_name": "ولاية بنزرت",
+        "official_name:ar": "ولاية بنزرت",
+        "official_name:en": "Bizerte Governorate",
+        "official_name:es": "Gobernación de Bizerta",
+        "official_name:fa": "استان بنزرت",
+        "official_name:fr": "Gouvernorat de Bizerte",
+        "official_name:it": "Governatorato di Biserta",
+        "official_name:ur": "ولایت بنزرت",
+        "population": "568219",
+        "population:date": "2014",
+        "ref:tn:codegeo": "17",
+        "wikidata": "Q241129",
+        "wikipedia": "ar:ولاية بنزرت",
+        "wikipedia:es": "Gobernación de Bizerta"
+      },
+      "sourceGeometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4"
+    },
+    "osm:relation:7151752": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Tinja",
+        "boundary": "administrative",
+        "name": "معتمدية تينجة",
+        "name:ar": "معتمدية تينجة",
+        "name:fr": "Délégation Tinja",
+        "ref:tn:codegeo": "1759",
+        "ref:tn:hasc_2": "TN.BZ.TI",
+        "wikidata": "Q3529188"
+      },
+      "sourceGeometrySha256": "0187eb28b3139acae59d90ab9f73219fe5284999c3f35a6b302a48ea696c894e"
+    }
+  },
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1109384824",
+      "tags": {
+        "addr:governorate": "Bizerte",
+        "name": "تينجة",
+        "name:ar": "تينجة",
+        "name:en": "Tinja",
+        "name:fr": "Tinja",
+        "place": "village"
+      },
+      "kind": "village"
+    },
+    {
+      "id": "osm:relation:7119649",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تينجة",
+        "name:ar": "تينجة",
+        "name:fr": "Tinja",
+        "ref:tn:codegeo": "175951"
+      },
+      "kind": "sector"
+    },
+    {
+      "id": "osm:relation:7151752",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Tinja",
+        "boundary": "administrative",
+        "name": "معتمدية تينجة",
+        "name:ar": "معتمدية تينجة",
+        "name:fr": "Délégation Tinja",
+        "ref:tn:codegeo": "1759",
+        "ref:tn:hasc_2": "TN.BZ.TI",
+        "wikidata": "Q3529188"
+      },
+      "kind": "delegation"
+    }
+  ],
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1109384824",
+    "field": "pickerGroupId",
+    "before": "osm:node:1109384824",
+    "after": "delegation:565"
+  },
+  "displayPhaseCoordinateChanges": [],
+  "completePickerGroups": {
+    "before": {
+      "delegation:565": [
+        "delegation:565",
+        "osm:relation:7119649"
+      ],
+      "osm:node:1109384824": [
+        "osm:node:1109384824"
+      ],
+      "osm:node:1201923151": [
+        "osm:node:1201923151"
+      ],
+      "osm:node:1201923189": [
+        "osm:node:1201923189"
+      ],
+      "osm:node:1201923313": [
+        "osm:node:1201923313"
+      ],
+      "osm:relation:7119647": [
+        "osm:relation:7119647"
+      ],
+      "osm:relation:7119648": [
+        "osm:relation:7119648"
+      ]
+    },
+    "after": {
+      "delegation:565": [
+        "delegation:565",
+        "osm:node:1109384824",
+        "osm:relation:7119649"
+      ],
+      "osm:node:1201923151": [
+        "osm:node:1201923151"
+      ],
+      "osm:node:1201923189": [
+        "osm:node:1201923189"
+      ],
+      "osm:node:1201923313": [
+        "osm:node:1201923313"
+      ],
+      "osm:relation:7119647": [
+        "osm:relation:7119647"
+      ],
+      "osm:relation:7119648": [
+        "osm:relation:7119648"
+      ]
+    }
+  },
+  "sectorOwnedSettlementPreservation": {
+    "schemaVersion": 1,
+    "strictOwner": {
+      "recordId": "osm:relation:7119649",
+      "expectedRecord": {
+        "id": "osm:relation:7119649",
+        "targetDelegationId": 565,
+        "expectedGovernorateId": 361,
+        "expectedBase": {
+          "nomAr": "تينجة",
+          "lat": 37.1634,
+          "lng": 9.7651
+        },
+        "expectedExistingMemberIds": [
+          "osm:relation:7119649"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:565"
+        ],
+        "members": [
+          {
+            "id": "osm:relation:7119649",
+            "expectedKind": "sector",
+            "expectedSourceId": "osm",
+            "expectedName": "تينجة",
+            "expectedParentName": "معتمدية تينجة",
+            "expectedDelegationId": 565,
+            "expectedLat": 37.148433,
+            "expectedLng": 9.762066,
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "تينجة",
+              "name:ar": "تينجة",
+              "name:fr": "Tinja",
+              "ref:tn:codegeo": "175951"
+            },
+            "originalGeometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f",
+            "packedGeometrySha256": "544f4a7913a643e769d5f57a9b086fcf71e95c3d4bd464cd292f02e212cf7fc9"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "method": "current_coded_sector",
+            "id": "osm:relation:7119649",
+            "code": "175951",
+            "currentOfficialRecord": {
+              "governorateCode": "17",
+              "governorateFr": "Bizerte",
+              "governorateAr": "بنزرت",
+              "delegationCode": "1759",
+              "delegationFr": "Tinja",
+              "delegationAr": "تينجة",
+              "sectorCode": "175951",
+              "sectorFr": "Tinja",
+              "sectorAr": "تينجة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18802,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 822,
+                "Nombre_de_menages_par_Secteurs.xlsx": 821
+              }
+            },
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "تينجة",
+              "name:ar": "تينجة",
+              "name:fr": "Tinja",
+              "ref:tn:codegeo": "175951"
+            },
+            "effectiveOriginalGeometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f"
+          },
+          {
+            "method": "current_coded_namesake_administrative_parent",
+            "id": "osm:relation:7151752",
+            "code": "1759",
+            "name": "معتمدية تينجة",
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Tinja",
+              "boundary": "administrative",
+              "name": "معتمدية تينجة",
+              "name:ar": "معتمدية تينجة",
+              "name:fr": "Délégation Tinja",
+              "ref:tn:codegeo": "1759",
+              "ref:tn:hasc_2": "TN.BZ.TI",
+              "wikidata": "Q3529188"
+            },
+            "effectiveOriginalGeometrySha256": "0187eb28b3139acae59d90ab9f73219fe5284999c3f35a6b302a48ea696c894e",
+            "currentOfficialRecord": {
+              "governorateCode": "17",
+              "governorateAr": "بنزرت",
+              "governorateFr": "Bizerte",
+              "delegationCode": "1759",
+              "delegationAr": "تينجة",
+              "delegationFr": "Tinja"
+            }
+          }
+        ]
+      },
+      "reviewEvidence": {
+        "file": "reviews/base-locality110-strict-proposal.json",
+        "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+      },
+      "proofRecordObjectSha256": "bc205b831b3e3df26aff040575917e7bd820bbc6298d376970663481d1279485",
+      "expectedAppliedReceipt": {
+        "pickerGroupId": "delegation:565",
+        "ids": [
+          "osm:relation:7119649"
+        ]
+      }
+    },
+    "officialDelegationCodes": [
+      "1759"
+    ],
+    "localProtectedRawIds": [
+      "osm:node:1109384824",
+      "osm:node:1201923151",
+      "osm:node:1201923189",
+      "osm:node:1201923313",
+      "osm:relation:7119647",
+      "osm:relation:7119648",
+      "osm:relation:7119649"
+    ],
+    "readOnlyRawNamePeers": [],
+    "sourceOnlyAbsorbedPoints": [
+      {
+        "id": "osm:node:7366238620",
+        "original": {
+          "tags": {
+            "name": "زعرور",
+            "name:ar": "زعرور",
+            "name:en": "Zaarour",
+            "name:fr": "Zaarour",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "e0c5d5060fc35ccdaaf042c011df8bdbfdc95c9b3fc4f9753f22f246519daea2"
+        },
+        "effective": {
+          "tags": {
+            "name": "زعرور",
+            "name:ar": "زعرور",
+            "name:en": "Zaarour",
+            "name:fr": "Zaarour",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "e0c5d5060fc35ccdaaf042c011df8bdbfdc95c9b3fc4f9753f22f246519daea2"
+        },
+        "exactCachedSource": {
+          "id": "osm:node:7366238620",
+          "tags": {
+            "name": "زعرور",
+            "name:ar": "زعرور",
+            "name:en": "Zaarour",
+            "name:fr": "Zaarour",
+            "place": "village"
+          },
+          "lat": 37.119693,
+          "lng": 9.7455131
+        },
+        "expectedCuration": null,
+        "expectedRawPresence": false,
+        "expectedGroupPresence": false,
+        "matchingPackedRawReceiverIds": [
+          "osm:relation:7119647"
+        ],
+        "sourceSectorCoveringIds": [
+          "osm:relation:7119647"
+        ],
+        "absorbedBySectorId": "osm:relation:7119647",
+        "receiverOriginalSourceNameIntersection": [
+          "zaarour"
+        ],
+        "qualification": "Existing point absorption is independently consistent with unique source-name intersection and original/packed containment. Keep source point absent and receiver aliases/geometry unchanged."
+      }
+    ],
+    "rawContextClosure": {
+      "baselineMetadata": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json",
+        "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+        "bytes": 1883630
+      },
+      "governorateId": 361,
+      "administrativeParentName": "معتمدية تينجة",
+      "expectedRawIds": [
+        "osm:node:1109384824",
+        "osm:node:1201923151",
+        "osm:node:1201923189",
+        "osm:node:1201923313",
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649"
+      ],
+      "sourceSectorIds": {
+        "original": [
+          "osm:relation:7119647",
+          "osm:relation:7119648",
+          "osm:relation:7119649"
+        ],
+        "effective": [
+          "osm:relation:7119647",
+          "osm:relation:7119648",
+          "osm:relation:7119649"
+        ]
+      },
+      "fullRowRepresentativeSectorCoverage": {
+        "original": [
+          "osm:node:1109384824",
+          "osm:node:1201923151",
+          "osm:node:1201923189",
+          "osm:node:1201923313",
+          "osm:relation:7119647",
+          "osm:relation:7119648",
+          "osm:relation:7119649"
+        ],
+        "effective": [
+          "osm:node:1109384824",
+          "osm:node:1201923151",
+          "osm:node:1201923189",
+          "osm:node:1201923313",
+          "osm:relation:7119647",
+          "osm:relation:7119648",
+          "osm:relation:7119649"
+        ]
+      },
+      "fullSourcePointCoverage": {
+        "original": [
+          "osm:node:1109384824",
+          "osm:node:1201923151",
+          "osm:node:1201923189",
+          "osm:node:1201923313",
+          "osm:node:7366238620"
+        ],
+        "effective": [
+          "osm:node:1109384824",
+          "osm:node:1201923151",
+          "osm:node:1201923189",
+          "osm:node:1201923313",
+          "osm:node:7366238620"
+        ]
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:1109384824",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:1109384824",
+          "sourceId": "osm",
+          "name": "تينجة",
+          "aliases": [
+            "Tinja"
+          ],
+          "kind": "village",
+          "parentName": "قنقلة",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Guengla",
+            "Tinja",
+            "قنقلة",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.1639232,
+          "lng": 9.7705573,
+          "delegationId": 565,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1109384824"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:node:1201923151",
+        "kind": "hamlet",
+        "currentMetadata": {
+          "id": "osm:node:1201923151",
+          "sourceId": "osm",
+          "name": "دوار الفدام",
+          "aliases": [
+            "Douar El Feddam"
+          ],
+          "kind": "hamlet",
+          "parentName": "الزعرور",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Tinja",
+            "Zaarour",
+            "الزعرور",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.11523,
+          "lng": 9.666757,
+          "delegationId": 559,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1201923151"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:node:1201923189",
+        "kind": "hamlet",
+        "currentMetadata": {
+          "id": "osm:node:1201923189",
+          "sourceId": "osm",
+          "name": "دوار عبد القادر",
+          "aliases": [
+            "Douar Abdelkader",
+            "Dawar Abd al-Qadir"
+          ],
+          "kind": "hamlet",
+          "parentName": "الزعرور",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Tinja",
+            "Zaarour",
+            "الزعرور",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.1219282,
+          "lng": 9.675329,
+          "delegationId": 565,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1201923189"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:node:1201923313",
+        "kind": "hamlet",
+        "currentMetadata": {
+          "id": "osm:node:1201923313",
+          "sourceId": "osm",
+          "name": "دوار نشمايا",
+          "aliases": [
+            "Douar Nechmaya"
+          ],
+          "kind": "hamlet",
+          "parentName": "الزعرور",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Tinja",
+            "Zaarour",
+            "الزعرور",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.1253,
+          "lng": 9.6819071,
+          "delegationId": 565,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1201923313"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7119647",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7119647",
+          "sourceId": "osm",
+          "name": "الزعرور",
+          "aliases": [
+            "Zaarour",
+            "زعرور"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تينجة",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Tinja",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.107037,
+          "lng": 9.747301,
+          "delegationId": 565,
+          "hasBoundary": true,
+          "bbox": [
+            9.615156,
+            37.071957,
+            9.779396,
+            37.142889
+          ],
+          "areaKm2": 47.963323798746444,
+          "pickerGroupId": "osm:relation:7119647",
+          "offset": 1119388,
+          "length": 1372
+        },
+        "packedGeometrySha256": "b0ef7022233a3d5de3e94328437412d3cf6a1fd064311236a430f786d34dae6f"
+      },
+      {
+        "id": "osm:relation:7119648",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7119648",
+          "sourceId": "osm",
+          "name": "قنقلة",
+          "aliases": [
+            "Guengla"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تينجة",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Tinja",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.172654,
+          "lng": 9.776252,
+          "delegationId": 565,
+          "hasBoundary": true,
+          "bbox": [
+            9.75984,
+            37.159146,
+            9.787983,
+            37.186339
+          ],
+          "areaKm2": 3.4948811706220595,
+          "pickerGroupId": "osm:relation:7119648",
+          "offset": 1120760,
+          "length": 996
+        },
+        "packedGeometrySha256": "9cef9c9bfeef2b8106515638b38787c5a27bf482712bc43005f72f207c7a4b92"
+      },
+      {
+        "id": "osm:relation:7119649",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7119649",
+          "sourceId": "osm",
+          "name": "تينجة",
+          "aliases": [
+            "Tinja"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تينجة",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Tinja",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.148433,
+          "lng": 9.762066,
+          "delegationId": 565,
+          "hasBoundary": true,
+          "bbox": [
+            9.748119,
+            37.125312,
+            9.777491,
+            37.171361
+          ],
+          "areaKm2": 6.902821611661433,
+          "pickerGroupId": "delegation:565",
+          "offset": 1121756,
+          "length": 580
+        },
+        "packedGeometrySha256": "544f4a7913a643e769d5f57a9b086fcf71e95c3d4bd464cd292f02e212cf7fc9"
+      }
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:1109384824",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "addr:governorate": "Bizerte",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:en": "Tinja",
+            "name:fr": "Tinja",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "563d24efb60129d276c3d48dfd8dde04dd36c4ec8102e5a9952dca924116732a"
+        },
+        "effective": {
+          "tags": {
+            "addr:governorate": "Bizerte",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:en": "Tinja",
+            "name:fr": "Tinja",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "563d24efb60129d276c3d48dfd8dde04dd36c4ec8102e5a9952dca924116732a"
+        }
+      },
+      {
+        "id": "osm:node:1201923151",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "name": "دوار الفدام",
+            "name:ar": "دوار الفدام",
+            "name:en": "Douar El Feddam",
+            "name:fr": "Douar El Feddam",
+            "place": "hamlet"
+          },
+          "kind": "hamlet",
+          "sourceId": null,
+          "geometrySha256": "77dcc89b3ff5090f891c3ce30177de5c7419ce3a23a389db49300a03176a488a"
+        },
+        "effective": {
+          "tags": {
+            "name": "دوار الفدام",
+            "name:ar": "دوار الفدام",
+            "name:en": "Douar El Feddam",
+            "name:fr": "Douar El Feddam",
+            "place": "hamlet"
+          },
+          "kind": "hamlet",
+          "sourceId": "osm",
+          "geometrySha256": "77dcc89b3ff5090f891c3ce30177de5c7419ce3a23a389db49300a03176a488a"
+        }
+      },
+      {
+        "id": "osm:node:1201923189",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "name": "دوار عبد القادر",
+            "name:ar": "دوار عبد القادر",
+            "name:de": "Dawar Abd al-Qadir",
+            "name:en": "Dawar Abd al-Qadir",
+            "name:fr": "Douar Abdelkader",
+            "place": "hamlet"
+          },
+          "kind": "hamlet",
+          "sourceId": null,
+          "geometrySha256": "e2ac6a392963a91831ef5118ced026f3756e31a7967d8cd6b96fd61ce44437c3"
+        },
+        "effective": {
+          "tags": {
+            "name": "دوار عبد القادر",
+            "name:ar": "دوار عبد القادر",
+            "name:de": "Dawar Abd al-Qadir",
+            "name:en": "Dawar Abd al-Qadir",
+            "name:fr": "Douar Abdelkader",
+            "place": "hamlet"
+          },
+          "kind": "hamlet",
+          "sourceId": "osm",
+          "geometrySha256": "e2ac6a392963a91831ef5118ced026f3756e31a7967d8cd6b96fd61ce44437c3"
+        }
+      },
+      {
+        "id": "osm:node:1201923313",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "name": "دوار نشمايا",
+            "name:ar": "دوار نشمايا",
+            "name:en": "Douar Nechmaya",
+            "name:fr": "Douar Nechmaya",
+            "place": "hamlet"
+          },
+          "kind": "hamlet",
+          "sourceId": null,
+          "geometrySha256": "7684ff1145e0418b600d41d0aea8870a80b85f159e7ec80c99a4e754b29c8b72"
+        },
+        "effective": {
+          "tags": {
+            "name": "دوار نشمايا",
+            "name:ar": "دوار نشمايا",
+            "name:en": "Douar Nechmaya",
+            "name:fr": "Douar Nechmaya",
+            "place": "hamlet"
+          },
+          "kind": "hamlet",
+          "sourceId": "osm",
+          "geometrySha256": "7684ff1145e0418b600d41d0aea8870a80b85f159e7ec80c99a4e754b29c8b72"
+        }
+      },
+      {
+        "id": "osm:node:7366238620",
+        "rawPresent": false,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "name": "زعرور",
+            "name:ar": "زعرور",
+            "name:en": "Zaarour",
+            "name:fr": "Zaarour",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "e0c5d5060fc35ccdaaf042c011df8bdbfdc95c9b3fc4f9753f22f246519daea2"
+        },
+        "effective": {
+          "tags": {
+            "name": "زعرور",
+            "name:ar": "زعرور",
+            "name:en": "Zaarour",
+            "name:fr": "Zaarour",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "e0c5d5060fc35ccdaaf042c011df8bdbfdc95c9b3fc4f9753f22f246519daea2"
+        }
+      },
+      {
+        "id": "osm:relation:1435827",
+        "rawPresent": false,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-23",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Bizerte",
+            "boundary": "administrative",
+            "name": "ولاية بنزرت",
+            "name:ar": "ولاية بنزرت",
+            "name:az": "Bizerta (vilayət)",
+            "name:azb": "بنزرت",
+            "name:be": "Бізерта (вілает)",
+            "name:be-tarask": "Бізэрта (вілает)",
+            "name:bg": "Бизерта (област)",
+            "name:ca": "Governació de Bizerta",
+            "name:ceb": "Gouvernorat de Bizerte",
+            "name:cy": "Bizerte (talaith)",
+            "name:de": "Binzart",
+            "name:el": "Μπιζέρτα (Κυβερνείο)",
+            "name:en": "Bizerte",
+            "name:es": "Gobernación de Bizerta",
+            "name:fa": "بنزرت",
+            "name:fi": "Bizerte (kuvernementti)",
+            "name:fr": "Gouvernorat Bizerte",
+            "name:frr": "Bizerte (Guwernement)",
+            "name:hu": "Bizerte kormányzóság",
+            "name:id": "Kegubernuran Bizerte",
+            "name:it": "Biserta",
+            "name:ja": "ビゼルト県",
+            "name:ka": "ბიზერტის ვილაიეთი",
+            "name:ko": "비제르테주",
+            "name:ks": "بنزرت",
+            "name:lt": "Bizertos vilajetas",
+            "name:ms": "Kawasan kegabenoran Bizerte",
+            "name:nl": "Bizerte (gouvernement)",
+            "name:no": "Bizerte (guvernement)",
+            "name:pl": "Gubernatorstwo Bizerta",
+            "name:pnb": "بنزرت",
+            "name:pt": "Bizerta (província)",
+            "name:ro": "Guvernoratul Bizerte",
+            "name:ru": "Бизерта (вилайет)",
+            "name:sco": "Bizerte Govrenorate",
+            "name:sh": "Bizerta (vilajet)",
+            "name:sv": "Bizerte (guvernement)",
+            "name:tr": "Bizerte (vilayet)",
+            "name:uk": "Бізерта (вілаєт)",
+            "name:ur": "بنزرت",
+            "name:zh": "比塞大省",
+            "name:zu": "Bizerte Governorate",
+            "official_name": "ولاية بنزرت",
+            "official_name:ar": "ولاية بنزرت",
+            "official_name:en": "Bizerte Governorate",
+            "official_name:es": "Gobernación de Bizerta",
+            "official_name:fa": "استان بنزرت",
+            "official_name:fr": "Gouvernorat de Bizerte",
+            "official_name:it": "Governatorato di Biserta",
+            "official_name:ur": "ولایت بنزرت",
+            "population": "568219",
+            "population:date": "2014",
+            "ref:tn:codegeo": "17",
+            "wikidata": "Q241129",
+            "wikipedia": "ar:ولاية بنزرت",
+            "wikipedia:es": "Gobernación de Bizerta"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-23",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Bizerte",
+            "boundary": "administrative",
+            "name": "ولاية بنزرت",
+            "name:ar": "ولاية بنزرت",
+            "name:az": "Bizerta (vilayət)",
+            "name:azb": "بنزرت",
+            "name:be": "Бізерта (вілает)",
+            "name:be-tarask": "Бізэрта (вілает)",
+            "name:bg": "Бизерта (област)",
+            "name:ca": "Governació de Bizerta",
+            "name:ceb": "Gouvernorat de Bizerte",
+            "name:cy": "Bizerte (talaith)",
+            "name:de": "Binzart",
+            "name:el": "Μπιζέρτα (Κυβερνείο)",
+            "name:en": "Bizerte",
+            "name:es": "Gobernación de Bizerta",
+            "name:fa": "بنزرت",
+            "name:fi": "Bizerte (kuvernementti)",
+            "name:fr": "Gouvernorat Bizerte",
+            "name:frr": "Bizerte (Guwernement)",
+            "name:hu": "Bizerte kormányzóság",
+            "name:id": "Kegubernuran Bizerte",
+            "name:it": "Biserta",
+            "name:ja": "ビゼルト県",
+            "name:ka": "ბიზერტის ვილაიეთი",
+            "name:ko": "비제르테주",
+            "name:ks": "بنزرت",
+            "name:lt": "Bizertos vilajetas",
+            "name:ms": "Kawasan kegabenoran Bizerte",
+            "name:nl": "Bizerte (gouvernement)",
+            "name:no": "Bizerte (guvernement)",
+            "name:pl": "Gubernatorstwo Bizerta",
+            "name:pnb": "بنزرت",
+            "name:pt": "Bizerta (província)",
+            "name:ro": "Guvernoratul Bizerte",
+            "name:ru": "Бизерта (вилайет)",
+            "name:sco": "Bizerte Govrenorate",
+            "name:sh": "Bizerta (vilajet)",
+            "name:sv": "Bizerte (guvernement)",
+            "name:tr": "Bizerte (vilayet)",
+            "name:uk": "Бізерта (вілаєт)",
+            "name:ur": "بنزرت",
+            "name:zh": "比塞大省",
+            "name:zu": "Bizerte Governorate",
+            "official_name": "ولاية بنزرت",
+            "official_name:ar": "ولاية بنزرت",
+            "official_name:en": "Bizerte Governorate",
+            "official_name:es": "Gobernación de Bizerta",
+            "official_name:fa": "استان بنزرت",
+            "official_name:fr": "Gouvernorat de Bizerte",
+            "official_name:it": "Governatorato di Biserta",
+            "official_name:ur": "ولایت بنزرت",
+            "population": "568219",
+            "population:date": "2014",
+            "ref:tn:codegeo": "17",
+            "wikidata": "Q241129",
+            "wikipedia": "ar:ولاية بنزرت",
+            "wikipedia:es": "Gobernación de Bizerta"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4"
+        }
+      },
+      {
+        "id": "osm:relation:7119647",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزعرور",
+            "name:ar": "الزعرور",
+            "name:fr": "Zaarour",
+            "ref:tn:codegeo": "175953"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "c58ec724ce1ffa3cc53bc4c72c3090997b3646121b039be8b12ac30b807074cb"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزعرور",
+            "name:ar": "الزعرور",
+            "name:fr": "Zaarour",
+            "ref:tn:codegeo": "175953"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "c58ec724ce1ffa3cc53bc4c72c3090997b3646121b039be8b12ac30b807074cb"
+        }
+      },
+      {
+        "id": "osm:relation:7119648",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قنقلة",
+            "name:ar": "قنقلة",
+            "name:fr": "Guengla",
+            "ref:tn:codegeo": "175952"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "341437d489070d32b88142222440ccce5f9c86186912ef3dcbfc5cd44126909e"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قنقلة",
+            "name:ar": "قنقلة",
+            "name:fr": "Guengla",
+            "ref:tn:codegeo": "175952"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "341437d489070d32b88142222440ccce5f9c86186912ef3dcbfc5cd44126909e"
+        }
+      },
+      {
+        "id": "osm:relation:7119649",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:fr": "Tinja",
+            "ref:tn:codegeo": "175951"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:fr": "Tinja",
+            "ref:tn:codegeo": "175951"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f"
+        }
+      },
+      {
+        "id": "osm:relation:7151752",
+        "rawPresent": false,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Tinja",
+            "boundary": "administrative",
+            "name": "معتمدية تينجة",
+            "name:ar": "معتمدية تينجة",
+            "name:fr": "Délégation Tinja",
+            "ref:tn:codegeo": "1759",
+            "ref:tn:hasc_2": "TN.BZ.TI",
+            "wikidata": "Q3529188"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "0187eb28b3139acae59d90ab9f73219fe5284999c3f35a6b302a48ea696c894e"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Tinja",
+            "boundary": "administrative",
+            "name": "معتمدية تينجة",
+            "name:ar": "معتمدية تينجة",
+            "name:fr": "Délégation Tinja",
+            "ref:tn:codegeo": "1759",
+            "ref:tn:hasc_2": "TN.BZ.TI",
+            "wikidata": "Q3529188"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "0187eb28b3139acae59d90ab9f73219fe5284999c3f35a6b302a48ea696c894e"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:node:1109384824": null,
+      "osm:node:1201923151": null,
+      "osm:node:1201923189": null,
+      "osm:node:1201923313": null,
+      "osm:node:7366238620": null,
+      "osm:relation:1435827": null,
+      "osm:relation:7119647": null,
+      "osm:relation:7119648": null,
+      "osm:relation:7119649": null,
+      "osm:relation:7151752": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:1109384824",
+        "osm:relation:7119649",
+        "osm:relation:7151752"
+      ],
+      "effective": [
+        "osm:node:1109384824",
+        "osm:relation:7119649",
+        "osm:relation:7151752"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:7119647": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7119648": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7119649": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:1435827": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7151752": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "expectedBeforeRawGroups": {
+      "delegation:565": [
+        "osm:relation:7119649"
+      ],
+      "osm:node:1109384824": [
+        "osm:node:1109384824"
+      ],
+      "osm:node:1201923151": [
+        "osm:node:1201923151"
+      ],
+      "osm:node:1201923189": [
+        "osm:node:1201923189"
+      ],
+      "osm:node:1201923313": [
+        "osm:node:1201923313"
+      ],
+      "osm:relation:7119647": [
+        "osm:relation:7119647"
+      ],
+      "osm:relation:7119648": [
+        "osm:relation:7119648"
+      ]
+    },
+    "expectedAfterRawGroups": {
+      "delegation:565": [
+        "osm:node:1109384824",
+        "osm:relation:7119649"
+      ],
+      "osm:node:1201923151": [
+        "osm:node:1201923151"
+      ],
+      "osm:node:1201923189": [
+        "osm:node:1201923189"
+      ],
+      "osm:node:1201923313": [
+        "osm:node:1201923313"
+      ],
+      "osm:relation:7119647": [
+        "osm:relation:7119647"
+      ],
+      "osm:relation:7119648": [
+        "osm:relation:7119648"
+      ]
+    },
+    "completePickerGroups": {
+      "before": {
+        "delegation:565": [
+          "delegation:565",
+          "osm:relation:7119649"
+        ],
+        "osm:node:1109384824": [
+          "osm:node:1109384824"
+        ],
+        "osm:node:1201923151": [
+          "osm:node:1201923151"
+        ],
+        "osm:node:1201923189": [
+          "osm:node:1201923189"
+        ],
+        "osm:node:1201923313": [
+          "osm:node:1201923313"
+        ],
+        "osm:relation:7119647": [
+          "osm:relation:7119647"
+        ],
+        "osm:relation:7119648": [
+          "osm:relation:7119648"
+        ]
+      },
+      "after": {
+        "delegation:565": [
+          "delegation:565",
+          "osm:node:1109384824",
+          "osm:relation:7119649"
+        ],
+        "osm:node:1201923151": [
+          "osm:node:1201923151"
+        ],
+        "osm:node:1201923189": [
+          "osm:node:1201923189"
+        ],
+        "osm:node:1201923313": [
+          "osm:node:1201923313"
+        ],
+        "osm:relation:7119647": [
+          "osm:relation:7119647"
+        ],
+        "osm:relation:7119648": [
+          "osm:relation:7119648"
+        ]
+      }
+    },
+    "onlyRawChange": {
+      "id": "osm:node:1109384824",
+      "field": "pickerGroupId",
+      "before": "osm:node:1109384824",
+      "after": "delegation:565"
+    }
+  },
+  "currentSourcePhaseCarry": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-f05e-source-group-carry.json",
+    "sha256": "f0c772b7d0ffbcf76228baf50f3118155811a2451e9cf6c2e820ae96b1a4ffd3",
+    "bytes": 21438
+  },
+  "finiteSourceReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-finite-facts-independent-review.json",
+    "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62",
+    "bytes": 15797
+  },
+  "compilerIndependentReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-sector-owned-compiler-independent-review-v2.json",
+    "sha256": "0768fa25f652282fa0e2b750c1432f385be8f037f322ccbd4600796d9e9cb8f4",
+    "bytes": 13016
+  },
+  "compilerSchema": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/sector-owned-settlement-schema.json",
+    "sha256": "65bdcf606018eb5233423f5a4f8782cc7c57d93042ebe47c76688674ec124c87",
+    "bytes": 145829
+  },
+  "orderingReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-finite-facts-ordering-addendum.json",
+    "sha256": "a77f2f15c5683d4e7b8c6ce9727a384f774d107a08b6523aa79171f8f205b4a6",
+    "bytes": 4740
+  },
+  "strictOwnerReceiptPolicy": "The old strict one-sector receipt/proof stays unchanged; only the retained point receives its own preserve_point and picker_base_display receipts.",
+  "geometryScope": "Point and base remain in their different actual sectors; this is a broad display identity only. GPS polygons, point kinds, all source identities and nearest defaults remain unchanged."
+}

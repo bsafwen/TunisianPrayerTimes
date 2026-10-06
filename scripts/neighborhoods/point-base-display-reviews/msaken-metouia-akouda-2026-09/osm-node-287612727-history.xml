@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3498736 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="287612727" visible="true" version="1" changeset="222752" timestamp="2008-08-13T15:16:01Z" user="Peilscheibe" uid="35560" lat="35.7299889" lon="10.5799001">
+  <tag k="created_by" v="Potlatch 0.10b"/>
+  <tag k="is_in" v="Tunisia"/>
+  <tag k="name" v="(M'Saken) مساكن"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="287612727" visible="true" version="2" changeset="309106" timestamp="2008-08-18T18:37:32Z" user="Peilscheibe" uid="35560" lat="35.7299914" lon="10.5798984">
+  <tag k="created_by" v="Potlatch 0.10b"/>
+  <tag k="is_in" v="Tunisia"/>
+  <tag k="name" v="M'Saken مساكن"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="287612727" visible="true" version="3" changeset="695070" timestamp="2008-09-25T16:24:42Z" user="Randbewohner" uid="35787" lat="35.7299921" lon="10.5798914">
+  <tag k="created_by" v="Potlatch 0.10b"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse Tunisia"/>
+  <tag k="name" v="Masakin مساكن"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="4" changeset="2348191" timestamp="2009-09-02T13:17:44Z" user="Chdoula" uid="54304" lat="35.7299935" lon="10.5798900">
+  <tag k="created_by" v="Potlatch 0.10b"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="تونس"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Masakin"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="5" changeset="7455964" timestamp="2011-03-04T17:05:42Z" user="Toyota_79" uid="344903" lat="35.7299935" lon="10.5798900">
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="تونس"/>
+  <tag k="name" v="مساكن / M'saken"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Masakin"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="6" changeset="7514442" timestamp="2011-03-10T14:07:22Z" user="Chdoula" uid="54304" lat="35.7299935" lon="10.5798900">
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="تونس"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Masakin"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="7" changeset="9377664" timestamp="2011-09-23T15:49:37Z" user="ulrichm" uid="192829" lat="35.7299935" lon="10.5798900">
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Masakin"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="8" changeset="10099690" timestamp="2011-12-12T14:52:32Z" user="ulrichm" uid="192829" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="Masakin"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Masakin"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="9" changeset="10126167" timestamp="2011-12-15T18:54:32Z" user="Toyota_79" uid="344903" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="Msaken"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="Msaken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Msaken"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="10" changeset="10294569" timestamp="2012-01-04T19:48:39Z" user="Toyota_79" uid="344903" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="11" changeset="14761800" timestamp="2013-01-23T20:33:13Z" user="utique" uid="992512" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="M'saken"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="12" changeset="15559276" timestamp="2013-03-31T20:34:16Z" user="Chdoula" uid="54304" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="13" changeset="18351022" timestamp="2013-10-14T14:11:35Z" user="Toyota_79" uid="344903" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="M'Saken"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="14" changeset="43227816" timestamp="2016-10-27T19:52:39Z" user="Batareikin" uid="127299" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="M'Saken"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="name:ru" v="Мсакен"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="15" changeset="43833104" timestamp="2016-11-20T21:46:40Z" user="DenisCarriere" uid="472018" lat="35.7299935" lon="10.5798900">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="M'Saken"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="name:ru" v="Мсакен"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="16" changeset="53810590" timestamp="2017-11-15T17:28:05Z" user="elacheche" uid="1222969" lat="35.7330411" lon="10.5751923">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="M'Saken"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="name:ru" v="Мсакен"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="17" changeset="140856852" timestamp="2023-09-05T15:40:34Z" user="user_18023081" uid="18023081" lat="35.7330411" lon="10.5751923">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse; Tunisia; Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="M'Saken"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="name:ru" v="Мсакен"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="18" changeset="174097666" timestamp="2025-11-02T11:21:25Z" user="Jobigutenburg" uid="10504312" lat="35.7330411" lon="10.5751923">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="is_in" v="Sousse;Tunisia;Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Sousse"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="M'Saken"/>
+  <tag k="name:fa" v="مساكن"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="name:ru" v="Мсакен"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+ <node id="287612727" visible="true" version="19" changeset="179509225" timestamp="2026-03-07T20:28:17Z" user="Johnwhelan" uid="186592" lat="35.7330411" lon="10.5751923">
+  <tag k="addr:city" v="M'saken"/>
+  <tag k="addr:governorate" v="Sousse"/>
+  <tag k="int_name" v="M'saken"/>
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="M'Saken"/>
+  <tag k="name:fa" v="مساكن"/>
+  <tag k="name:fr" v="M'saken"/>
+  <tag k="name:ru" v="Мсакен"/>
+  <tag k="place" v="town"/>
+  <tag k="population" v="56000"/>
+ </node>
+</osm>

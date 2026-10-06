@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 17:21:31 GMT
+X-Backend: web1-10.10.117.2
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Last-Modified: Tue, 17 Oct 2023 00:41:40 GMT
+ETag: "156da6-607dec9339900"
+Accept-Ranges: bytes
+Content-Length: 1404326
+X-Content-Type-Options: nosniff
+Content-Security-Policy: frame-ancestors 'self';
+Content-Type: application/pdf
+

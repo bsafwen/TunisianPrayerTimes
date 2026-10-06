@@ -1,0 +1,2295 @@
+{
+  "schemaVersion": 1,
+  "status": "SAME_TOWN_DISPLAY_IDENTITY_SUPPORTED_PENDING_INDEPENDENT_AND_FINITE_GROUP_REVIEW",
+  "createdAt": "2026-09-12T09:18:01.393727+00:00",
+  "baselineMetadataSha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea",
+  "curationCount": 158,
+  "scope": "Only second M’saken point6681328578 versus pre-existing town point287612727 and prayer base440; source research, not an import approval.",
+  "currentPairAudit": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-picker-name-audit.json",
+      "sha256": "6b5503d6c312eb46ec7367743ef21a531a940a020d80369ca952520f783f7aa4",
+      "bytes": 128162
+    },
+    "pair": {
+      "governorateId": 348,
+      "governorate": "سوسة",
+      "normalizedName": "مساكن",
+      "classification": "ambiguous_base_or_point_namesakes",
+      "rows": [
+        {
+          "id": "delegation:440",
+          "name": "مساكن",
+          "kind": "delegation",
+          "subtitle": "",
+          "lat": 35.73,
+          "lng": 10.58,
+          "members": [
+            "delegation:440",
+            "osm:node:287612727"
+          ]
+        },
+        {
+          "id": "osm:node:6681328578",
+          "name": "مساكن",
+          "kind": "village",
+          "subtitle": "التوارة الجنوبية",
+          "lat": 35.7252583,
+          "lng": 10.5832842,
+          "members": [
+            "osm:node:6681328578"
+          ]
+        }
+      ],
+      "evidence": {
+        "sameSubtitle": false,
+        "representativeDistanceKm": 0.6049,
+        "geometryType": "point/point",
+        "relation": "separate points; extent unknown"
+      }
+    }
+  },
+  "existingEvidenceInspection": {
+    "directActiveCurationForEitherNode": [],
+    "reviewedPickerManifestContainsEitherExactNode": false,
+    "inspectedReferences": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427",
+        "bytes": 554337
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviews\\base-locality110-strict-proposal.json",
+        "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3",
+        "bytes": 374063
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-name-reviews\\legacy-batch-2026-09-07\\reviewed-legacy-point-base-name-identities.json",
+        "sha256": "25d69a5d57e6532831f92ed381afcd68b865beef1a3b8ff4411dd42be8ebbe73",
+        "bytes": 3775
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\current-same-subtitle10-next-checks.json",
+        "sha256": "a37de6162af1edd9cc9cc9c43825aa6fba410283282b209d6293471fbf201163",
+        "bytes": 82537
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\current-same-subtitle12-source-review.json",
+        "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7",
+        "bytes": 66601
+      }
+    ],
+    "finding": "No exact-node display identity decision was reopened; the existing town/base grouping is retained as baseline data."
+  },
+  "sourceRecords": [
+    {
+      "id": "osm:node:6681328578",
+      "currentRaw": {
+        "id": "osm:node:6681328578",
+        "sourceId": "osm",
+        "name": "مساكن",
+        "aliases": [
+          "Msaken"
+        ],
+        "kind": "village",
+        "parentName": "التوارة الجنوبية",
+        "contextAliases": [
+          "Délégation Msaken",
+          "Ettouara Sud",
+          "M'saken",
+          "التوارة الجنوبية",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.7252583,
+        "lng": 10.5832842,
+        "delegationId": 440,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:6681328578"
+      },
+      "cachedExactSource": {
+        "id": "osm:node:6681328578",
+        "tags": {
+          "name": "مساكن",
+          "name:ar": "مساكن",
+          "name:en": "Msaken",
+          "name:fr": "Msaken",
+          "place": "village",
+          "postal_code": "4099"
+        },
+        "lat": 35.7252583,
+        "lng": 10.5832842
+      },
+      "currentSource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-6681328578-current.json",
+        "url": "https://api.openstreetmap.org/api/0.6/node/6681328578.json",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/6681328578.json",
+        "retrievedAt": "2026-09-12T09:12:14.401604+00:00",
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "bytes": 567,
+        "sha256": "fc552c28bdb39e71a5d36dc9cbf69acfed079ce2e80ddc64bc38cb30e200860a",
+        "originalResponseBytesPreserved": true
+      },
+      "exactCurrentElement": {
+        "type": "node",
+        "id": 6681328578,
+        "lat": 35.7252583,
+        "lon": 10.5832842,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "version": 3,
+        "changeset": 98539602,
+        "user": "user_11422772",
+        "uid": 11422772,
+        "tags": {
+          "name": "مساكن",
+          "name:ar": "مساكن",
+          "name:en": "Msaken",
+          "name:fr": "Msaken",
+          "place": "village",
+          "postal_code": "4099"
+        }
+      },
+      "historySource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-6681328578-history.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/node/6681328578/history",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/6681328578/history",
+        "retrievedAt": "2026-09-12T09:12:14.550103+00:00",
+        "status": 200,
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 1350,
+        "sha256": "c146c6fcd38a8a8aedbcee1d831dcde7a5512df0fb5c65141b9b888d47b826e0",
+        "originalResponseBytesPreserved": true
+      },
+      "completeHistory": [
+        {
+          "id": 6681328578,
+          "version": 1,
+          "timestamp": "2019-08-04T12:46:07Z",
+          "changeset": 72989127,
+          "lat": 35.7252583,
+          "lon": 10.5832842,
+          "visible": "true",
+          "user": "Anis Ben Makhlouf",
+          "uid": 10001069,
+          "tags": {
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Msaken",
+            "place": "village"
+          }
+        },
+        {
+          "id": 6681328578,
+          "version": 2,
+          "timestamp": "2020-03-21T12:12:37Z",
+          "changeset": 82458263,
+          "lat": 35.7252583,
+          "lon": 10.5832842,
+          "visible": "true",
+          "user": "Anis Ben Makhlouf",
+          "uid": 10001069,
+          "tags": {
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Msaken",
+            "place": "village",
+            "postal_code": "4099"
+          }
+        },
+        {
+          "id": 6681328578,
+          "version": 3,
+          "timestamp": "2021-02-02T00:59:52Z",
+          "changeset": 98539602,
+          "lat": 35.7252583,
+          "lon": 10.5832842,
+          "visible": "true",
+          "user": "user_11422772",
+          "uid": 11422772,
+          "tags": {
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "Msaken",
+            "name:fr": "Msaken",
+            "place": "village",
+            "postal_code": "4099"
+          }
+        }
+      ],
+      "historyVersions": 3,
+      "currentExactlyMatchesCacheAndRawCoordinate": true,
+      "finalHistoryExactlyMatchesCurrentJson": true,
+      "institutionPropertyOrBusinessTagsInAnyVersion": false,
+      "allHistoricalCoordinatePairs": [
+        [
+          35.7252583,
+          10.5832842
+        ]
+      ]
+    },
+    {
+      "id": "osm:node:287612727",
+      "currentRaw": {
+        "id": "osm:node:287612727",
+        "sourceId": "osm",
+        "name": "مساكن",
+        "aliases": [
+          "M'saken",
+          "M'Saken",
+          "Мсакен"
+        ],
+        "kind": "town",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.7330411,
+        "lng": 10.5751923,
+        "delegationId": 440,
+        "hasBoundary": false,
+        "pickerGroupId": "delegation:440"
+      },
+      "cachedExactSource": {
+        "id": "osm:node:287612727",
+        "tags": {
+          "addr:city": "M'saken",
+          "addr:governorate": "Sousse",
+          "int_name": "M'saken",
+          "name": "مساكن",
+          "name:ar": "مساكن",
+          "name:en": "M'Saken",
+          "name:fa": "مساكن",
+          "name:fr": "M'saken",
+          "name:ru": "Мсакен",
+          "place": "town",
+          "population": "56000"
+        },
+        "lat": 35.7330411,
+        "lng": 10.5751923
+      },
+      "currentSource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-287612727-current.json",
+        "url": "https://api.openstreetmap.org/api/0.6/node/287612727.json",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287612727.json",
+        "retrievedAt": "2026-09-12T09:12:14.644804+00:00",
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "bytes": 681,
+        "sha256": "c5cafff1e78ee2a6cf0bc403477ccdc698b526ed0f0c3dfc200c9c4b2d5b8f25",
+        "originalResponseBytesPreserved": true
+      },
+      "exactCurrentElement": {
+        "type": "node",
+        "id": 287612727,
+        "lat": 35.7330411,
+        "lon": 10.5751923,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "version": 19,
+        "changeset": 179509225,
+        "user": "Johnwhelan",
+        "uid": 186592,
+        "tags": {
+          "addr:city": "M'saken",
+          "addr:governorate": "Sousse",
+          "int_name": "M'saken",
+          "name": "مساكن",
+          "name:ar": "مساكن",
+          "name:en": "M'Saken",
+          "name:fa": "مساكن",
+          "name:fr": "M'saken",
+          "name:ru": "Мсакен",
+          "place": "town",
+          "population": "56000"
+        }
+      },
+      "historySource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-287612727-history.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/node/287612727/history",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287612727/history",
+        "retrievedAt": "2026-09-12T09:12:14.728034+00:00",
+        "status": 200,
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 11248,
+        "sha256": "0c70eff236f632090ca42d27e1c5f3989b8ee44a1588e221b710824c47930d67",
+        "originalResponseBytesPreserved": true
+      },
+      "completeHistory": [
+        {
+          "id": 287612727,
+          "version": 1,
+          "timestamp": "2008-08-13T15:16:01Z",
+          "changeset": 222752,
+          "lat": 35.7299889,
+          "lon": 10.5799001,
+          "visible": "true",
+          "user": "Peilscheibe",
+          "uid": 35560,
+          "tags": {
+            "created_by": "Potlatch 0.10b",
+            "is_in": "Tunisia",
+            "name": "(M'Saken) مساكن",
+            "place": "town"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 2,
+          "timestamp": "2008-08-18T18:37:32Z",
+          "changeset": 309106,
+          "lat": 35.7299914,
+          "lon": 10.5798984,
+          "visible": "true",
+          "user": "Peilscheibe",
+          "uid": 35560,
+          "tags": {
+            "created_by": "Potlatch 0.10b",
+            "is_in": "Tunisia",
+            "name": "M'Saken مساكن",
+            "place": "town"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 3,
+          "timestamp": "2008-09-25T16:24:42Z",
+          "changeset": 695070,
+          "lat": 35.7299921,
+          "lon": 10.5798914,
+          "visible": "true",
+          "user": "Randbewohner",
+          "uid": 35787,
+          "tags": {
+            "created_by": "Potlatch 0.10b",
+            "int_name": "M'saken",
+            "is_in": "Sousse Tunisia",
+            "name": "Masakin مساكن",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 4,
+          "timestamp": "2009-09-02T13:17:44Z",
+          "changeset": 2348191,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Chdoula",
+          "uid": 54304,
+          "tags": {
+            "created_by": "Potlatch 0.10b",
+            "int_name": "M'saken",
+            "is_in": "تونس",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Masakin",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 5,
+          "timestamp": "2011-03-04T17:05:42Z",
+          "changeset": 7455964,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Toyota_79",
+          "uid": 344903,
+          "tags": {
+            "int_name": "M'saken",
+            "is_in": "تونس",
+            "name": "مساكن / M'saken",
+            "name:ar": "مساكن",
+            "name:fr": "Masakin",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 6,
+          "timestamp": "2011-03-10T14:07:22Z",
+          "changeset": 7514442,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Chdoula",
+          "uid": 54304,
+          "tags": {
+            "int_name": "M'saken",
+            "is_in": "تونس",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Masakin",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 7,
+          "timestamp": "2011-09-23T15:49:37Z",
+          "changeset": 9377664,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "ulrichm",
+          "uid": 192829,
+          "tags": {
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Masakin",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 8,
+          "timestamp": "2011-12-12T14:52:32Z",
+          "changeset": 10099690,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "ulrichm",
+          "uid": 192829,
+          "tags": {
+            "addr:city": "Masakin",
+            "addr:country": "TN",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Masakin",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 9,
+          "timestamp": "2011-12-15T18:54:32Z",
+          "changeset": 10126167,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Toyota_79",
+          "uid": 344903,
+          "tags": {
+            "addr:city": "Msaken",
+            "addr:country": "TN",
+            "addr:governorate": "Sousse",
+            "int_name": "Msaken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Msaken",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 10,
+          "timestamp": "2012-01-04T19:48:39Z",
+          "changeset": 10294569,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Toyota_79",
+          "uid": 344903,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:country": "TN",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "M'saken",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 11,
+          "timestamp": "2013-01-23T20:33:13Z",
+          "changeset": 14761800,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "utique",
+          "uid": 992512,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:country": "TN",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "M'saken",
+            "name:ar": "مساكن",
+            "name:fr": "M'saken",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 12,
+          "timestamp": "2013-03-31T20:34:16Z",
+          "changeset": 15559276,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Chdoula",
+          "uid": 54304,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:country": "TN",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "M'saken",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 13,
+          "timestamp": "2013-10-14T14:11:35Z",
+          "changeset": 18351022,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Toyota_79",
+          "uid": 344903,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:country": "TN",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fr": "M'saken",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 14,
+          "timestamp": "2016-10-27T19:52:39Z",
+          "changeset": 43227816,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "Batareikin",
+          "uid": 127299,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:country": "TN",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 15,
+          "timestamp": "2016-11-20T21:46:40Z",
+          "changeset": 43833104,
+          "lat": 35.7299935,
+          "lon": 10.57989,
+          "visible": "true",
+          "user": "DenisCarriere",
+          "uid": 472018,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 16,
+          "timestamp": "2017-11-15T17:28:05Z",
+          "changeset": 53810590,
+          "lat": 35.7330411,
+          "lon": 10.5751923,
+          "visible": "true",
+          "user": "elacheche",
+          "uid": 1222969,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 17,
+          "timestamp": "2023-09-05T15:40:34Z",
+          "changeset": 140856852,
+          "lat": 35.7330411,
+          "lon": 10.5751923,
+          "visible": "true",
+          "user": "user_18023081",
+          "uid": 18023081,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse; Tunisia; Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 18,
+          "timestamp": "2025-11-02T11:21:25Z",
+          "changeset": 174097666,
+          "lat": 35.7330411,
+          "lon": 10.5751923,
+          "visible": "true",
+          "user": "Jobigutenburg",
+          "uid": 10504312,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "is_in": "Sousse;Tunisia;Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Sousse",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fa": "مساكن",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          }
+        },
+        {
+          "id": 287612727,
+          "version": 19,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "changeset": 179509225,
+          "lat": 35.7330411,
+          "lon": 10.5751923,
+          "visible": "true",
+          "user": "Johnwhelan",
+          "uid": 186592,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fa": "مساكن",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          }
+        }
+      ],
+      "historyVersions": 19,
+      "currentExactlyMatchesCacheAndRawCoordinate": true,
+      "finalHistoryExactlyMatchesCurrentJson": true,
+      "institutionPropertyOrBusinessTagsInAnyVersion": false,
+      "allHistoricalCoordinatePairs": [
+        [
+          35.7299889,
+          10.5799001
+        ],
+        [
+          35.7299914,
+          10.5798984
+        ],
+        [
+          35.7299921,
+          10.5798914
+        ],
+        [
+          35.7299935,
+          10.57989
+        ],
+        [
+          35.7330411,
+          10.5751923
+        ]
+      ]
+    }
+  ],
+  "relevantChangesets": [
+    {
+      "id": 72989127,
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-72989127.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/72989127?include_discussion=true",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/72989127?include_discussion=true",
+        "retrievedAt": "2026-09-12T09:13:10.411094+00:00",
+        "status": 200,
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 869,
+        "sha256": "869911c15fc70c999c8148d8aa88604e45f40f2433067e8e43be3c665b48cb18",
+        "originalResponseBytesPreserved": true
+      },
+      "attributes": {
+        "id": "72989127",
+        "created_at": "2019-08-04T12:46:07Z",
+        "open": "false",
+        "comments_count": "0",
+        "changes_count": "7",
+        "created_count": "1",
+        "modified_count": "6",
+        "deleted_count": "0",
+        "closed_at": "2019-08-04T12:46:08Z",
+        "min_lat": "35.6231677",
+        "min_lon": "10.5825130",
+        "max_lat": "35.8046170",
+        "max_lon": "10.7811966",
+        "uid": "10001069",
+        "user": "Anis Ben Makhlouf"
+      },
+      "tags": {
+        "changesets_count": "853",
+        "comment": "CONTRIBUTION OSM",
+        "created_by": "iD 2.15.4",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "Bing aerial imagery",
+        "locale": "fr"
+      },
+      "discussion": "<discussion>\n  </discussion>\n",
+      "downloadSource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-72989127-download.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/72989127/download",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/72989127/download",
+        "retrievedAt": "2026-09-12T09:13:58.974467+00:00",
+        "status": 200,
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 4520,
+        "sha256": "f1426c440ebf4f0ffd52c0d6bc2cff6fb6c3958daa6f8a44947a53a71904a422",
+        "originalResponseBytesPreserved": true
+      },
+      "operations": [
+        {
+          "operation": "create",
+          "type": "node",
+          "attributes": {
+            "id": "6681328578",
+            "visible": "true",
+            "version": "1",
+            "changeset": "72989127",
+            "timestamp": "2019-08-04T12:46:07Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.7252583",
+            "lon": "10.5832842"
+          },
+          "tags": {
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Msaken",
+            "place": "village"
+          }
+        },
+        {
+          "operation": "modify",
+          "type": "way",
+          "attributes": {
+            "id": "539263865",
+            "visible": "true",
+            "version": "2",
+            "changeset": "72989127",
+            "timestamp": "2019-08-04T12:46:07Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069"
+          },
+          "tags": {
+            "amenity": "marketplace",
+            "building": "yes",
+            "name": "Marché Municipal",
+            "name:ar": "السوق البلدية"
+          }
+        },
+        {
+          "operation": "modify",
+          "type": "node",
+          "attributes": {
+            "id": "1567848386",
+            "visible": "true",
+            "version": "4",
+            "changeset": "72989127",
+            "timestamp": "2019-08-04T12:46:07Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.7937867",
+            "lon": "10.5845496"
+          },
+          "tags": {
+            "addr:city": "Cité Ezzehour",
+            "addr:governorate": "Sousse",
+            "addr:postcode": "4031",
+            "int_name": "Sousse",
+            "is_in": "Sousse;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Sousse",
+            "name": "حي الزهور",
+            "name:ar": "حي الزهور",
+            "name:fr": "Cité Ezzohour",
+            "place": "suburb"
+          }
+        },
+        {
+          "operation": "modify",
+          "type": "node",
+          "attributes": {
+            "id": "1567848345",
+            "visible": "true",
+            "version": "5",
+            "changeset": "72989127",
+            "timestamp": "2019-08-04T12:46:07Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.8046170",
+            "lon": "10.6050818"
+          },
+          "tags": {
+            "addr:governorate": "Sousse",
+            "alt_name": "Cité Erriadh",
+            "int_name": "Sousse Riadh",
+            "is_in": "Sousse;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Sousse",
+            "name": "حي الرياض",
+            "name:ar": "حي الرياض",
+            "name:fr": "Cité Riadh",
+            "place": "suburb"
+          }
+        },
+        {
+          "operation": "modify",
+          "type": "node",
+          "attributes": {
+            "id": "1574569459",
+            "visible": "true",
+            "version": "5",
+            "changeset": "72989127",
+            "timestamp": "2019-08-04T12:46:07Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.7003388",
+            "lon": "10.5908583"
+          },
+          "tags": {
+            "addr:city": "Beni Khaltoum",
+            "addr:governorate": "Sousse",
+            "is_in": "Sousse;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Sousse",
+            "name": "بني كلثوم",
+            "name:ar": "بني كلثوم",
+            "name:fr": "Beni Khaltoum",
+            "place": "village"
+          }
+        },
+        {
+          "operation": "modify",
+          "type": "node",
+          "attributes": {
+            "id": "1217721026",
+            "visible": "true",
+            "version": "7",
+            "changeset": "72989127",
+            "timestamp": "2019-08-04T12:46:07Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.6985021",
+            "lon": "10.7811966"
+          },
+          "tags": {
+            "addr:city": "M'Nara",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "منارة",
+            "name:ar": "منارة",
+            "name:fr": "Mnara",
+            "place": "village"
+          }
+        },
+        {
+          "operation": "modify",
+          "type": "node",
+          "attributes": {
+            "id": "558826611",
+            "visible": "true",
+            "version": "10",
+            "changeset": "72989127",
+            "timestamp": "2019-08-04T12:46:07Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.6232026",
+            "lon": "10.6661453"
+          },
+          "tags": {
+            "addr:city": "Menzel Kamel",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "منزل كامل",
+            "name:ar": "منزل كامل",
+            "name:fr": "Menzel Kamel",
+            "place": "village"
+          }
+        }
+      ]
+    },
+    {
+      "id": 82458263,
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-82458263.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/82458263?include_discussion=true",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/82458263?include_discussion=true",
+        "retrievedAt": "2026-09-12T09:13:10.538518+00:00",
+        "status": 200,
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 870,
+        "sha256": "ae91122a460a5c78d8452810b3f9d7780409040e8b426f438d586daf647d05ef",
+        "originalResponseBytesPreserved": true
+      },
+      "attributes": {
+        "id": "82458263",
+        "created_at": "2020-03-21T12:12:37Z",
+        "open": "false",
+        "comments_count": "0",
+        "changes_count": "2",
+        "created_count": "1",
+        "modified_count": "1",
+        "deleted_count": "0",
+        "closed_at": "2020-03-21T12:12:37Z",
+        "min_lat": "35.7252583",
+        "min_lon": "10.5822874",
+        "max_lat": "35.7268738",
+        "max_lon": "10.5832842",
+        "uid": "10001069",
+        "user": "Anis Ben Makhlouf"
+      },
+      "tags": {
+        "changesets_count": "2151",
+        "comment": "CONTRIBUTION OSM",
+        "created_by": "iD 2.17.2",
+        "host": "https://www.openstreetmap.org/edit",
+        "imagery_used": "Bing aerial imagery",
+        "locale": "fr"
+      },
+      "discussion": "<discussion>\n  </discussion>\n",
+      "downloadSource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-82458263-download.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/82458263/download",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/82458263/download",
+        "retrievedAt": "2026-09-12T09:13:58.976517+00:00",
+        "status": 200,
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 1184,
+        "sha256": "1894580286b99adde4f61e6af5ad08b869bee83988e18b5c121eb8c6cf25772a",
+        "originalResponseBytesPreserved": true
+      },
+      "operations": [
+        {
+          "operation": "create",
+          "type": "node",
+          "attributes": {
+            "id": "7315054335",
+            "visible": "true",
+            "version": "1",
+            "changeset": "82458263",
+            "timestamp": "2020-03-21T12:12:37Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.7268738",
+            "lon": "10.5822874"
+          },
+          "tags": {
+            "addr:city": "مساكن",
+            "addr:postcode": "4099",
+            "amenity": "post_office",
+            "name": "مكتب بريد مساكن 4099",
+            "name:ar": "مكتب بريد مساكن 4099",
+            "name:fr": "Bureau de Poste Msaken 4099"
+          }
+        },
+        {
+          "operation": "modify",
+          "type": "node",
+          "attributes": {
+            "id": "6681328578",
+            "visible": "true",
+            "version": "2",
+            "changeset": "82458263",
+            "timestamp": "2020-03-21T12:12:37Z",
+            "user": "Anis Ben Makhlouf",
+            "uid": "10001069",
+            "lat": "35.7252583",
+            "lon": "10.5832842"
+          },
+          "tags": {
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:fr": "Msaken",
+            "place": "village",
+            "postal_code": "4099"
+          }
+        }
+      ]
+    },
+    {
+      "id": 53810590,
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-53810590.xml",
+        "url": "https://api.openstreetmap.org/api/0.6/changeset/53810590?include_discussion=true",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/53810590?include_discussion=true",
+        "retrievedAt": "2026-09-12T09:13:10.645516+00:00",
+        "status": 200,
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 864,
+        "sha256": "ebc16714d7171587dbb80f76a735951a0b0daf92a28f2d87257cb7caf197e7d8",
+        "originalResponseBytesPreserved": true
+      },
+      "attributes": {
+        "id": "53810590",
+        "created_at": "2017-11-15T17:28:04Z",
+        "open": "false",
+        "comments_count": "0",
+        "changes_count": "93",
+        "created_count": "9",
+        "modified_count": "78",
+        "deleted_count": "6",
+        "closed_at": "2017-11-15T17:28:07Z",
+        "min_lat": "35.7281688",
+        "min_lon": "10.5730601",
+        "max_lat": "35.7362449",
+        "max_lon": "10.5849348",
+        "uid": "1222969",
+        "user": "elacheche"
+      },
+      "tags": {
+        "changesets_count": "62",
+        "comment": "Changes in M'saken",
+        "created_by": "iD 2.5.0",
+        "host": "http://www.openstreetmap.org/edit",
+        "imagery_used": "Bing aerial imagery",
+        "locale": "en-US"
+      },
+      "discussion": "<discussion>\n  </discussion>\n"
+    }
+  ],
+  "supplementaryRootPhoneReview": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-metouia-akouda-phone-review-20260912.json",
+      "sha256": "c1a1604b1f55ccdca9fdc40cb5aa9ca42e040779001af78fed919469a387a794",
+      "bytes": 5268
+    },
+    "finding": {
+      "id": "osm:node:6681328578",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_6681328578-1.json",
+        "sha256": "259220729c23f215a9d025d4d296a2bf392f4c3c87eb66306dd2e04b3b0fa484"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_6681328578-1.png",
+        "sha256": "2b2eabd4b81abaa2aac3b18a2e6a164f61bea2386d7f9c99b423e73b45c07657"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Coordinate search produced a dropped pin and address مساكن، تونس in the urban street network near Souk El Kdim. This supports city context, not a separate locality identity, official administrative boundary or exact settlement centre."
+    },
+    "thisReviewerAccessedPhoneOrLedger": false,
+    "thisReviewerPersonallyViewedScreenshot": false,
+    "qualification": "Root-reported dropped-pin city address only; supplementary city context, no independent city extent or coordinate certification and no imported Google geometry."
+  },
+  "primaryIdentityEvidence": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "retrievedAt": "2026-09-12T09:13:58.977509+00:00",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 30603494,
+      "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+      "originalResponseBytesPreserved": true
+    },
+    "publisher": "Tunisian Ministry of Equipment and Housing, DGAT; SUMER study office",
+    "title": "Sousse digital atlas",
+    "sourceDateQualification": "URL filename says Dec2020; the personally inspected page81 footer says2021. Neither is treated as current population or administrative scope certification.",
+    "pdfPages": 129,
+    "personallyViewedCompletePdfPage": 81,
+    "printedPage": 81,
+    "renderedPage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020-page81.png",
+      "sha256": "e65d852628cb21fe90e10df2870d6bf3c05253f00688b0c82f4fda968e6a06b8",
+      "bytes": 399948
+    },
+    "findings": [
+      "Section1.2.2 explicitly describes M’saken as an inhabited city, including its historic founding, dense center, surrounding neighborhoods, road junctions and services.",
+      "The same city description separately names northern and southern municipal districts. It does not identify a second village named M’saken or equate the town with an imada."
+    ],
+    "noCoordinatesOrBoundariesImported": true,
+    "derivedCompletePageText": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020-page81.txt",
+      "sha256": "d2061cb8938b522c392e0223094e12a64d470b17e05039f781ae3fc6d69a7ac3",
+      "bytes": 7485,
+      "artifactKind": "derived_complete_page_text",
+      "isOriginalHttpResponseBytes": false,
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "bytes": 30603494
+      },
+      "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "sourcePdfPageOneBased": 81,
+      "sourcePdfPageZeroBased": 80,
+      "method": "PyMuPDF page.get_text(\"text\", sort=False), complete page, UTF8 encoding; no trimming, reflow, normalization or manual corrections.",
+      "pymupdfVersion": "1.28.2",
+      "mupdfVersion": "1.28.2",
+      "requiredText": [
+        "مدينة مساكن",
+        "دائرة مساكن الجنوبية",
+        "دائرة مساكن الشمالية"
+      ],
+      "requiredTextLocations": [
+        {
+          "phrase": "مدينة مساكن",
+          "firstCharacterOffset": 339,
+          "firstUtf8ByteOffset": 463,
+          "firstLineOneBased": 16
+        },
+        {
+          "phrase": "دائرة مساكن الجنوبية",
+          "firstCharacterOffset": 1847,
+          "firstUtf8ByteOffset": 3074,
+          "firstLineOneBased": 99
+        },
+        {
+          "phrase": "دائرة مساكن الشمالية",
+          "firstCharacterOffset": 1870,
+          "firstUtf8ByteOffset": 3116,
+          "firstLineOneBased": 100
+        }
+      ],
+      "urlQualification": "URL identifies the original PDF, not a hosted TXT response."
+    }
+  },
+  "sourceInterpretation": {
+    "sameTown": "Supported as the best source interpretation: both complete node histories consistently use the unqualified settlement name; the official primary source describes the inhabited city, including its central and surrounding neighborhoods. No source evidence identifies a second distinct locality.",
+    "wrongProperty": "Not supported. Neither node was ever tagged as an institution/property. The4099 post office is a separate exact object7315054335, created when the postcode was added to the second settlement point.",
+    "wrongCoordinate": "Not established. The second point has never moved; the older town point moved in2017. Changeset comments supply no surveyed center or authoritative anchor evidence. Preserve all three coordinates.",
+    "postalCode": "4099 is not accepted as a locality identifier: the exact adding changeset binds it to a separate local post-office object. The municipal4070 address is not used to declare4099 wrong.",
+    "limitations": [
+      "This is a semantic source inference, not proof of a surveyed town center or exact city boundary.",
+      "Proximity and shared prayer default are supporting baseline facts only; neither was used as sufficient identity evidence.",
+      "The Atlas population/district descriptions are dated context, not imported data.",
+      "Third-party Mapcarta/GeoNames/Wikidata search associations were not adopted as primary identity evidence.",
+      "Direct municipal historic-page retrieval returned503; commune directory retrieval timed out. Indexed snippets are discovery only, not archived primary response bytes."
+    ]
+  },
+  "recommendedAction": {
+    "decision": "Proceed to independent source-identity review and bounded finite display-group feasibility; retain both raw nodes.",
+    "conditionalOnlyRawChange": {
+      "id": "osm:node:6681328578",
+      "field": "pickerGroupId",
+      "before": "osm:node:6681328578",
+      "after": "delegation:440"
+    },
+    "requiredCompletePickerGroups": {
+      "before": [
+        [
+          "delegation:440",
+          "osm:node:287612727"
+        ],
+        [
+          "osm:node:6681328578"
+        ]
+      ],
+      "after": [
+        [
+          "delegation:440",
+          "osm:node:287612727",
+          "osm:node:6681328578"
+        ]
+      ]
+    },
+    "unapprovedActions": [
+      "Retire/delete the second point",
+      "Change either raw kind/name/alias/context or coordinate",
+      "Use postcode as a neighborhood name",
+      "Change base440 coordinates or prayer source",
+      "Merge any coded imada",
+      "Import any atlas/Google geometry"
+    ],
+    "remainingGates": [
+      "Independent reviewer must assess same-town inference and exact source provenance.",
+      "Finite review must bind both raw points, existing base440 group, three current references and all17 separate official sectors; ordinary singleton-point/base assumptions do not apply.",
+      "Root public phone review is pinned as supplementary city context; it does not replace source identity or finite group review."
+    ]
+  },
+  "preservedScope": {
+    "baseCurrent": {
+      "id": 440,
+      "nomFr": "Msaken",
+      "nomAr": "مساكن",
+      "nomEn": "Msaken",
+      "lat": 35.73,
+      "lng": 10.58
+    },
+    "existingBaseGroupRawMembers": [
+      "osm:node:287612727"
+    ],
+    "administrativeContext": {
+      "id": "osm:relation:7150924",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "M'saken",
+        "boundary": "administrative",
+        "name": "معتمدية مساكن",
+        "name:ar": "معتمدية مساكن",
+        "name:fr": "Délégation Msaken",
+        "ref:tn:codegeo": "3164",
+        "ref:tn:hasc_2": "TN.SS.MS",
+        "wikidata": "Q3272359"
+      }
+    },
+    "officialSectorCount": 17,
+    "sectors": [
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316451",
+          "sectorFr": "Ettouara nord",
+          "sectorAr": "التوارة الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35121,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1655,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1654
+          }
+        },
+        "rawId": "osm:relation:7111282",
+        "currentRaw": {
+          "id": "osm:relation:7111282",
+          "sourceId": "osm",
+          "name": "التوارة الشمالية",
+          "aliases": [
+            "Ettouara Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.747771,
+          "lng": 10.594691,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.588897,
+            35.741961,
+            10.611272,
+            35.753953
+          ],
+          "areaKm2": 1.0980299400923619,
+          "pickerGroupId": "osm:relation:7111282",
+          "offset": 696388,
+          "length": 204
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316452",
+          "sectorFr": "Touara el janoubia",
+          "sectorAr": "التوارة الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35155,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1656,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1655
+          }
+        },
+        "rawId": "osm:relation:7111279",
+        "currentRaw": {
+          "id": "osm:relation:7111279",
+          "sourceId": "osm",
+          "name": "التوارة الجنوبية",
+          "aliases": [
+            "Ettouara Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.731926,
+          "lng": 10.583697,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.570505,
+            35.71882,
+            10.603226,
+            35.746743
+          ],
+          "areaKm2": 3.971524494244016,
+          "pickerGroupId": "osm:relation:7111279",
+          "offset": 695224,
+          "length": 300
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316453",
+          "sectorFr": "Jedidine",
+          "sectorAr": "الجديدين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35189,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1657,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1656
+          }
+        },
+        "rawId": "osm:relation:7111280",
+        "currentRaw": {
+          "id": "osm:relation:7111280",
+          "sourceId": "osm",
+          "name": "الجديدين",
+          "aliases": [
+            "Jedidine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.75934,
+          "lng": 10.572642,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.555143,
+            35.735083,
+            10.592798,
+            35.783912
+          ],
+          "areaKm2": 10.722437580059296,
+          "pickerGroupId": "osm:relation:7111280",
+          "offset": 695524,
+          "length": 484
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316454",
+          "sectorFr": "Jebline",
+          "sectorAr": "الجبليين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35223,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1659,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1658
+          }
+        },
+        "rawId": "osm:relation:7151556",
+        "currentRaw": {
+          "id": "osm:relation:7151556",
+          "sourceId": "osm",
+          "name": "الجبليين",
+          "aliases": [
+            "El Jebline"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.729242,
+          "lng": 10.575101,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.570919,
+            35.725325,
+            10.579636,
+            35.733514
+          ],
+          "areaKm2": 0.35890383056941727,
+          "pickerGroupId": "osm:relation:7151556",
+          "offset": 2861540,
+          "length": 220
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316455",
+          "sectorFr": "Habib thameur",
+          "sectorAr": "الحبيب ثامر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35257,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1660,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1659
+          }
+        },
+        "rawId": "osm:relation:7111278",
+        "currentRaw": {
+          "id": "osm:relation:7111278",
+          "sourceId": "osm",
+          "name": "حبيب ثامر",
+          "aliases": [
+            "Habib Thameur"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.736174,
+          "lng": 10.484494,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.381157,
+            35.69173,
+            10.5712,
+            35.780423
+          ],
+          "areaKm2": 81.55039906558966,
+          "pickerGroupId": "osm:relation:7111278",
+          "offset": 694380,
+          "length": 844
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316456",
+          "sectorFr": "Mouredine",
+          "sectorAr": "الموردين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35291,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1662,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1661
+          }
+        },
+        "rawId": "osm:relation:7111276",
+        "currentRaw": {
+          "id": "osm:relation:7111276",
+          "sourceId": "osm",
+          "name": "الموردين",
+          "aliases": [
+            "Moureddine",
+            "Муреддин"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.770768,
+          "lng": 10.5209,
+          "delegationId": 443,
+          "hasBoundary": true,
+          "bbox": [
+            10.476771,
+            35.74874,
+            10.574661,
+            35.790874
+          ],
+          "areaKm2": 28.544547929726523,
+          "pickerGroupId": "osm:relation:7111276",
+          "offset": 692988,
+          "length": 652
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316457",
+          "sectorFr": "Mneaema",
+          "sectorAr": "المناعمة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35325,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1664,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1663
+          }
+        },
+        "rawId": "osm:relation:7111284",
+        "currentRaw": {
+          "id": "osm:relation:7111284",
+          "sourceId": "osm",
+          "name": "مناعمة",
+          "aliases": [
+            "Mnaema"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.70107,
+          "lng": 10.531898,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.438465,
+            35.678572,
+            10.577892,
+            35.723429
+          ],
+          "areaKm2": 22.77653017589497,
+          "pickerGroupId": "osm:relation:7111284",
+          "offset": 697476,
+          "length": 476
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316458",
+          "sectorFr": "El gharbine",
+          "sectorAr": "الغربيين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35359,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1666,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1665
+          }
+        },
+        "rawId": "osm:relation:7151555",
+        "currentRaw": {
+          "id": "osm:relation:7151555",
+          "sourceId": "osm",
+          "name": "El Gharbine",
+          "aliases": [
+            "الغربيين"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.724011,
+          "lng": 10.575233,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.571015,
+            35.719989,
+            10.580493,
+            35.72837
+          ],
+          "areaKm2": 0.41408949629366404,
+          "pickerGroupId": "osm:relation:7151555",
+          "offset": 2861208,
+          "length": 332
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316459",
+          "sectorFr": "El kenaies",
+          "sectorAr": "الكنائس",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35393,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1667,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1666
+          }
+        },
+        "rawId": "osm:relation:7111277",
+        "currentRaw": {
+          "id": "osm:relation:7111277",
+          "sourceId": "osm",
+          "name": "الكنايس",
+          "aliases": [
+            "El Knaies",
+            "Knaïs"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.649267,
+          "lng": 10.481401,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.413137,
+            35.591697,
+            10.542834,
+            35.705354
+          ],
+          "areaKm2": 68.80375701939853,
+          "pickerGroupId": "osm:relation:7111277",
+          "offset": 693640,
+          "length": 740
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316460",
+          "sectorFr": "El kebline",
+          "sectorAr": "القبليين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35427,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1669,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1668
+          }
+        },
+        "rawId": "osm:relation:7111283",
+        "currentRaw": {
+          "id": "osm:relation:7111283",
+          "sourceId": "osm",
+          "name": "القبليين",
+          "aliases": [
+            "Kebiline"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.709324,
+          "lng": 10.621065,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.594742,
+            35.685634,
+            10.642263,
+            35.733025
+          ],
+          "areaKm2": 12.064934209679961,
+          "pickerGroupId": "osm:relation:7111283",
+          "offset": 696592,
+          "length": 884
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316461",
+          "sectorFr": "Ennour",
+          "sectorAr": "النور",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35461,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1671,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1670
+          }
+        },
+        "rawId": "osm:relation:7111281",
+        "currentRaw": {
+          "id": "osm:relation:7111281",
+          "sourceId": "osm",
+          "name": "النور",
+          "aliases": [
+            "Ennour"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.740569,
+          "lng": 10.604138,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.589346,
+            35.729213,
+            10.623373,
+            35.750694
+          ],
+          "areaKm2": 4.928545204370063,
+          "pickerGroupId": "osm:relation:7111281",
+          "offset": 696008,
+          "length": 380
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316462",
+          "sectorFr": "El frady",
+          "sectorAr": "الفرداي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35495,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1673,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1672
+          }
+        },
+        "rawId": "osm:relation:7111289",
+        "currentRaw": {
+          "id": "osm:relation:7111289",
+          "sourceId": "osm",
+          "name": "الفرادي",
+          "aliases": [
+            "El Fradi"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.587041,
+          "lng": 10.513723,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.494636,
+            35.556841,
+            10.53892,
+            35.617396
+          ],
+          "areaKm2": 13.29240131513004,
+          "pickerGroupId": "osm:relation:7111289",
+          "offset": 700376,
+          "length": 332
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316463",
+          "sectorFr": "Borgine",
+          "sectorAr": "البرجين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35529,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1675,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1674
+          }
+        },
+        "rawId": "osm:relation:7111288",
+        "currentRaw": {
+          "id": "osm:relation:7111288",
+          "sourceId": "osm",
+          "name": "البرجين",
+          "aliases": [
+            "Borjine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.634872,
+          "lng": 10.534473,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.496391,
+            35.59681,
+            10.618868,
+            35.672664
+          ],
+          "areaKm2": 37.56584409654675,
+          "pickerGroupId": "osm:relation:7111288",
+          "offset": 699724,
+          "length": 652
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316464",
+          "sectorFr": "Beni rabiaa",
+          "sectorAr": "بني ربيعة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35563,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1677,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1676
+          }
+        },
+        "rawId": "osm:relation:7111287",
+        "currentRaw": {
+          "id": "osm:relation:7111287",
+          "sourceId": "osm",
+          "name": "بني ربيعة",
+          "aliases": [
+            "Beni Rabiaa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.675884,
+          "lng": 10.569126,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.536792,
+            35.662488,
+            10.602236,
+            35.687139
+          ],
+          "areaKm2": 10.852964573117541,
+          "pickerGroupId": "osm:relation:7111287",
+          "offset": 699488,
+          "length": 236
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316465",
+          "sectorFr": "Beni khalthoum",
+          "sectorAr": "بني كلثوم",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35597,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1679,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1678
+          }
+        },
+        "rawId": "osm:relation:7111286",
+        "currentRaw": {
+          "id": "osm:relation:7111286",
+          "sourceId": "osm",
+          "name": "بني كلثوم",
+          "aliases": [
+            "Beni Kalthoum",
+            "Beni Khaltoum"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.675505,
+          "lng": 10.609663,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.577041,
+            35.639057,
+            10.638623,
+            35.711204
+          ],
+          "areaKm2": 16.489891399014432,
+          "pickerGroupId": "osm:relation:7111286",
+          "offset": 698892,
+          "length": 596
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316466",
+          "sectorFr": "Nejajra",
+          "sectorAr": "النجاجرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35631,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1681,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1680
+          }
+        },
+        "rawId": "osm:relation:7111285",
+        "currentRaw": {
+          "id": "osm:relation:7111285",
+          "sourceId": "osm",
+          "name": "النجاجرة",
+          "aliases": [
+            "Enjara"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.690276,
+          "lng": 10.564221,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.546884,
+            35.655458,
+            10.648501,
+            35.724758
+          ],
+          "areaKm2": 14.690056189815294,
+          "pickerGroupId": "osm:relation:7111285",
+          "offset": 697952,
+          "length": 940
+        },
+        "currentCuration": []
+      },
+      {
+        "officialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3164",
+          "delegationFr": "M'saken",
+          "delegationAr": "مساكن",
+          "sectorCode": "316467",
+          "sectorFr": "Messadine",
+          "sectorAr": "المسعدين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35665,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1683,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1682
+          }
+        },
+        "rawId": "osm:relation:7113134",
+        "currentRaw": {
+          "id": "osm:relation:7113134",
+          "sourceId": "osm",
+          "name": "المسعدين",
+          "aliases": [
+            "El Messaadine",
+            "Messadine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.764983,
+          "lng": 10.60247,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.580971,
+            35.750893,
+            10.622261,
+            35.779699
+          ],
+          "areaKm2": 6.1097454264865725,
+          "pickerGroupId": "osm:relation:7113134",
+          "offset": 782476,
+          "length": 444
+        },
+        "currentCuration": []
+      }
+    ],
+    "geometryMembershipOrGlobalDistanceMatrixRecomputed": false
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\retrievals.json",
+    "sha256": "500b2aded4cc93289c3e48371c8e88c4be2a4c8b00e15868174a32beb5a7ce7c",
+    "bytes": 6950
+  },
+  "inputsUnchanged": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea",
+      "bytes": 1883684
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069",
+      "bytes": 5501548
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "bytes": 54579
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "2790c3a912dabe64f9509373d2da93fb9829b6695d6b1bcb0af7bdc659ffa5b2",
+      "bytes": 8495
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80",
+      "bytes": 256077
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427",
+      "bytes": 554337
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25",
+      "bytes": 106368
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+      "bytes": 459609
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    }
+  ],
+  "operations": {
+    "liveRepoEdits": false,
+    "productImports": false,
+    "generator": false,
+    "tests": false,
+    "build": false,
+    "phone": false,
+    "ledger": false,
+    "newSourceGeometry": false,
+    "boundedSourceFilesOnly": true
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\write-source-review.py",
+    "sha256": "7187c95c8fb1edcff5871a64b9f6dafb5eba9ea72d2faeb348f7387457acb6d1",
+    "bytes": 12731
+  }
+}

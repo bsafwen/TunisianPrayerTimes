@@ -41,17 +41,45 @@ jobs:
     name: Check Islamic date announcements
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      BRANCH_NAME: automation/ramadan-aid-overrides
+      BASE_BRANCH: ${{ github.event.repository.default_branch }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
+          # Even manual runs execute the default branch's detector/helper code.
+          ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+
+      - name: Preserve pending official-date changes
+        id: pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          pr_number="$(gh pr list --repo "$GITHUB_REPOSITORY" --state open \
+            --head "$BRANCH_NAME" --base "$BASE_BRANCH" --json number --jq '.[0].number // empty')"
+          remote_head="$(git ls-remote origin "refs/heads/$BRANCH_NAME" | cut -f1)"
+          echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
+          echo "remote_head=$remote_head" >> "$GITHUB_OUTPUT"
+          if [[ -n "$pr_number" ]]; then
+            if [[ -z "$remote_head" ]]; then
+              echo "The pending PR branch is missing; refusing to replace it." >&2
+              exit 1
+            fi
+            git fetch --no-tags origin "$remote_head"
+            gh pr view "$pr_number" --repo "$GITHUB_REPOSITORY" --json body --jq .body \
+              > .github/previous-islamic-date-pr.md
+            # Read only JSON blobs from this immutable head. Never execute PR code.
+            python3 scripts/prepare_islamic_date_pr.py prepare --pending-ref "$remote_head"
+          fi
 
       - name: Detect Tunisian Ramadan/Aid dates
         env:
@@ -67,31 +95,46 @@ jobs:
 
       - name: Check for override changes
         id: diff
+        env:
+          PENDING_PR: ${{ steps.pending.outputs.pr_number }}
+          PENDING_HEAD: ${{ steps.pending.outputs.remote_head }}
         run: |
-          if [[ -n "$(git status --porcelain -- data/official-islamic-dates)" ]]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          changed="$(python3 scripts/prepare_islamic_date_pr.py changed --ref HEAD)"
+          if [[ "$changed" == true && -n "$PENDING_PR" ]]; then
+            # Keeping an identical pending result avoids needless force pushes
+            # and invalidating an in-progress human review every two hours.
+            changed="$(python3 scripts/prepare_islamic_date_pr.py changed --ref "$PENDING_HEAD")"
           fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
 
       - name: Create or update pull request
         if: steps.diff.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          BRANCH_NAME: automation/ramadan-aid-overrides
-          BASE_BRANCH: ${{ github.ref_name }}
+          EXPECTED_HEAD: ${{ steps.pending.outputs.remote_head }}
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git fetch origin "$BRANCH_NAME" || true
           git checkout -B "$BRANCH_NAME"
-          git add data/official-islamic-dates/*.json
+          git add -A -- data/official-islamic-dates
           git commit -m "Update Tunisian official Islamic date JSON"
-          git push --force-with-lease origin "$BRANCH_NAME"
+          git push --force-with-lease="refs/heads/$BRANCH_NAME:$EXPECTED_HEAD" \
+            origin "HEAD:refs/heads/$BRANCH_NAME"
 
-          if gh pr view "$BRANCH_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh pr edit "$BRANCH_NAME" \
+          if [[ -s .github/previous-islamic-date-pr.md ]]; then
+            {
+              printf '\n<details>\n<summary>Previous review context</summary>\n\n'
+              cat .github/previous-islamic-date-pr.md
+              printf '\n</details>\n'
+            } >> .github/ramadan-aid-detection-pr.md
+          fi
+          pr_number="$(gh pr list --repo "$GITHUB_REPOSITORY" --state open \
+            --head "$BRANCH_NAME" --base "$BASE_BRANCH" --json number --jq '.[0].number // empty')"
+          if [[ -n "$pr_number" ]]; then
+            gh pr edit "$pr_number" \
               --repo "$GITHUB_REPOSITORY" \
               --title "Update Tunisian official Islamic date JSON" \
               --body-file .github/ramadan-aid-detection-pr.md

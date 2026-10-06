@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "createdAtUtc": "2026-09-19T09:21:29.053734+00:00",
+  "reviewer": "point_pairs_check",
+  "scope": "Independent original/current/primary evidence and finite source-reference projection review; not a compiler-contract or generated-output approval.",
+  "baselineMetadataSha256": "5fead87cca66a9f6be73b14259f2dbb796f5001e2339327be5ff2c2000b1ac9b",
+  "sourceReports": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\sourcefacts-and-design.json",
+      "sha256": "4d8b2b7ceba4b0544b7ae310c65e166155a04d169ee7f39eb4291e82769c43aa"
+    }
+  ],
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\sourcefacts-and-design.json",
+    "sha256": "4d8b2b7ceba4b0544b7ae310c65e166155a04d169ee7f39eb4291e82769c43aa"
+  },
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7142926",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7142928",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7142961",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143859",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143861",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:1392451611",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:187313004",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:791334742",
+      "field": "delegationId",
+      "before": 472,
+      "after": 624
+    },
+    {
+      "id": "osm:node:11820052133",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:9052889223",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7143872",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/472/",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\smar-prayer-2026-09-19.json",
+      "sha256": "f3287c6837cb0ad3b0666b75ecff9a477ef023535eefb01832a49b533479364c"
+    },
+    {
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/472/",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\smar-sun-2026-09-19.json",
+      "sha256": "bc4f109bbb02fa615f01a4c18de041d084ca3b8d27bbe780c7a12fcf404a6a23"
+    },
+    {
+      "url": "http://www.commune-smar.gov.tn/",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\municipality-home.html",
+      "sha256": "c1c92592efe8a021859e4a51a508a5ed74631be384b5c720a202f2410777aae7"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/node/1980279372.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\town-current.json",
+      "sha256": "bda47b04ddc354a552076382e20f408c62186a9a554fe0a7ad682b19904944b1"
+    },
+    {
+      "url": "http://www.commune-smar.gov.tn/?page_id=34264",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\municipality-about.html",
+      "sha256": "336fbb734d309ad83cf4d0142799760a7b0d0fc316a7c1e2f11a8bf597be3d14"
+    },
+    {
+      "url": "https://www.interieur.gov.tn/actualite/20115/%D8%A7%D9%84%D8%B5%D9%85%D8%A7%D8%B1-%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86-%D8%B6%D8%A8%D8%B7-%D8%B3%D9%8A%D8%A7%D8%B1%D8%AA%D9%8A%D9%86-%D9%85%D8%AD%D9%85%D9%84%D8%A9-%D8%A8%D8%A8%D8%B6%D8%A7%D8%B9%D8%A9-%D9%85%D9%87%D8%B1%D8%A8%D8%A9",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar472-review-20260919\\interior-name-equivalence.html",
+      "sha256": "6be2ffcb5e88acf01d86cc7205daa9e5a4c36046521f1c7eaca4d453f97879a1"
+    }
+  ],
+  "checks": {
+    "pin:neighborhoods.json": true,
+    "pin:gouvernorats.json": true,
+    "pin:coverage.json": true,
+    "pin:catalog-curation.json": true,
+    "pin:reviewed-picker-groups.json": true,
+    "pin:prayer-source-coordinates.json": true,
+    "pin:soliman-current-original-source-inventory-20260912.json": true,
+    "pin:current-official-sector-registry.json": true,
+    "pin:smar-prayer-2026-09-19.json": true,
+    "pin:smar-sun-2026-09-19.json": true,
+    "pin:town-current.json": true,
+    "pin:neighborhoods.bin": true,
+    "pin:retrievals.json": true,
+    "pin:retrievals-name-evidence.json": true,
+    "pin:municipality-home.html": true,
+    "pin:municipality-about.html": true,
+    "pin:interior-name-equivalence.html": true,
+    "pin:generate_neighborhoods.py": true,
+    "retrieval:smar-prayer-2026-09-19.json": true,
+    "retrieval:smar-sun-2026-09-19.json": true,
+    "retrieval:municipality-home.html": true,
+    "retrieval:town-current.json": true,
+    "retrieval:municipality-about.html": true,
+    "retrieval:interior-name-equivalence.html": true,
+    "available_source_inventory": true,
+    "base_exact": true,
+    "fresh_prayer_and_sun_exact": true,
+    "fresh_primary_identity_and_coordinates": true,
+    "authentic_town_original_and_retrieved_current": true,
+    "town_stays_absorbed": true,
+    "parent_exact": true,
+    "packed_byte_length:osm:relation:7143872": true,
+    "member_exact:osm:relation:7143872": true,
+    "original_hash:osm:relation:7143872": true,
+    "packed_hash:osm:relation:7143872": true,
+    "containment:osm:relation:7143872:Witness": true,
+    "containment:osm:relation:7143872:Published": true,
+    "containment:osm:relation:7143872:CurrentBase": true,
+    "parent_containment:osm:relation:7143872": true,
+    "parent_quantization_spill:osm:relation:7143872": true,
+    "packed_byte_length:osm:way:187313013": true,
+    "member_exact:osm:way:187313013": true,
+    "original_hash:osm:way:187313013": true,
+    "packed_hash:osm:way:187313013": true,
+    "containment:osm:way:187313013:Witness": true,
+    "containment:osm:way:187313013:Published": true,
+    "containment:osm:way:187313013:CurrentBase": true,
+    "parent_containment:osm:way:187313013": true,
+    "parent_quantization_spill:osm:way:187313013": true,
+    "complete_current_official_parent": true,
+    "complete_original_name_peers": true,
+    "admin_containment:authenticTown": true,
+    "admin_containment:publishedPrayerPoint": true,
+    "published_in_original_ksar_aoun_not_smar": true,
+    "exact_seventeen_changed_ids_and_defaults": true,
+    "all_seventeen_distances": true,
+    "all_base_anchor_impacts": true,
+    "protected_raw:osm:node:11820052133": true,
+    "protected_raw:osm:node:5239666199": true,
+    "protected_raw:osm:relation:7143861": true,
+    "protected_raw:osm:relation:7143870": true,
+    "protected_raw:osm:relation:7143872": true,
+    "protected_raw:osm:way:187313004": true,
+    "protected_raw:osm:way:187313013": true,
+    "protected_raw:osm:way:385166772": true,
+    "protected_group:delegation:1524": true,
+    "protected_group:osm:node:11820052133": true,
+    "protected_group:osm:relation:7143861": true,
+    "protected_group:osm:relation:7143870": true,
+    "curation:osm:node:5239666199": true,
+    "complete_target_group_before": true,
+    "retained_manual_representative": true,
+    "same_primary_article_arabic_spelling_pair": true,
+    "municipal_scope_qualified": true,
+    "exact_nineteen_raw_fields": true
+  },
+  "all3524ExistingNearestDefaultsVerified": true,
+  "fullCountryReferenceImpacts": [
+    {
+      "id": "osm:relation:7142926",
+      "name": "المعمرات",
+      "lat": 32.68868,
+      "lng": 11.366596,
+      "before": 488,
+      "after": 472,
+      "beforeDistanceKm": 52.12533324288604,
+      "afterDistanceKm": 48.99717467745592
+    },
+    {
+      "id": "osm:relation:7142928",
+      "name": "العامرية",
+      "lat": 32.752528,
+      "lng": 11.182154,
+      "before": 1524,
+      "after": 472,
+      "beforeDistanceKm": 36.960430332228434,
+      "afterDistanceKm": 30.363313721097967
+    },
+    {
+      "id": "osm:relation:7142961",
+      "name": "النفاتية",
+      "lat": 33.205582,
+      "lng": 10.914081,
+      "before": 472,
+      "after": 488,
+      "beforeDistanceKm": 24.80253893438938,
+      "afterDistanceKm": 29.113337332420084
+    },
+    {
+      "id": "osm:relation:7143818",
+      "name": "بني مهيرة الشرقية",
+      "lat": 32.613337,
+      "lng": 10.990805,
+      "before": 1524,
+      "after": 472,
+      "beforeDistanceKm": 32.920099582075586,
+      "afterDistanceKm": 30.267804421373782
+    },
+    {
+      "id": "osm:relation:7143819",
+      "name": "قصر مهيرة",
+      "lat": 32.591027,
+      "lng": 10.964091,
+      "before": 1524,
+      "after": 472,
+      "beforeDistanceKm": 33.952644357088396,
+      "afterDistanceKm": 32.00219798562333
+    },
+    {
+      "id": "osm:relation:7143820",
+      "name": "قصر عون",
+      "lat": 32.621677,
+      "lng": 11.040689,
+      "before": 1524,
+      "after": 472,
+      "beforeDistanceKm": 34.79162635295071,
+      "afterDistanceKm": 31.198951920310662
+    },
+    {
+      "id": "osm:relation:7143821",
+      "name": "المرة",
+      "lat": 32.604003,
+      "lng": 11.100558,
+      "before": 1524,
+      "after": 472,
+      "beforeDistanceKm": 39.92139001398439,
+      "afterDistanceKm": 35.71948693261618
+    },
+    {
+      "id": "osm:relation:7143822",
+      "name": "الرهاش",
+      "lat": 32.917932,
+      "lng": 10.953256,
+      "before": 1524,
+      "after": 472,
+      "beforeDistanceKm": 14.37019366651841,
+      "afterDistanceKm": 7.80810628165643
+    },
+    {
+      "id": "osm:relation:7143859",
+      "name": "المعونة",
+      "lat": 33.038977,
+      "lng": 10.66858,
+      "before": 472,
+      "after": 1524,
+      "beforeDistanceKm": 15.329225378795694,
+      "afterDistanceKm": 23.21155584232177
+    },
+    {
+      "id": "osm:relation:7143861",
+      "name": "كرشاو",
+      "lat": 33.03986,
+      "lng": 10.773711,
+      "before": 472,
+      "after": 1524,
+      "beforeDistanceKm": 6.844212915345564,
+      "afterDistanceKm": 19.429132414666782
+    },
+    {
+      "id": "osm:way:1392451611",
+      "name": "قصر بحير",
+      "lat": 32.966612,
+      "lng": 10.674163,
+      "before": 472,
+      "after": 1524,
+      "beforeDistanceKm": 14.395118864426369,
+      "afterDistanceKm": 16.855124206523026
+    },
+    {
+      "id": "osm:way:187313004",
+      "name": "كرشاو",
+      "lat": 33.032398,
+      "lng": 10.797439,
+      "before": 472,
+      "after": 1524,
+      "beforeDistanceKm": 4.821537022758075,
+      "afterDistanceKm": 18.325919430812235
+    },
+    {
+      "id": "osm:way:187313013",
+      "name": "الصمار",
+      "lat": 32.99975,
+      "lng": 10.818201,
+      "before": 472,
+      "after": 1524,
+      "beforeDistanceKm": 0.7612185286316249,
+      "afterDistanceKm": 14.664081416808928
+    },
+    {
+      "id": "osm:way:791334742",
+      "name": "Maison Agricole dr Ahmed GHADNOUR",
+      "lat": 33.016928,
+      "lng": 10.630036,
+      "before": 472,
+      "after": 624,
+      "beforeDistanceKm": 18.298750616618268,
+      "afterDistanceKm": 19.248891535606482
+    },
+    {
+      "id": "osm:node:11820052133",
+      "name": "Ksar Karrouz",
+      "lat": 33.0211915,
+      "lng": 10.8365297,
+      "before": 472,
+      "after": 1524,
+      "beforeDistanceKm": 3.065706884501876,
+      "afterDistanceKm": 17.19604199941421
+    },
+    {
+      "id": "osm:node:1980186910",
+      "name": "بئر مرة",
+      "lat": 32.8145833,
+      "lng": 11.0933403,
+      "before": 1524,
+      "after": 472,
+      "beforeDistanceKm": 27.010297365163165,
+      "afterDistanceKm": 20.04046419026937
+    },
+    {
+      "id": "osm:node:9052889223",
+      "name": "وادي الربايع",
+      "lat": 33.2009194,
+      "lng": 10.9417342,
+      "before": 472,
+      "after": 488,
+      "beforeDistanceKm": 25.313913664084147,
+      "afterDistanceKm": 26.492613557923637
+    }
+  ],
+  "unchangedRawDefaults": 3507,
+  "baseAnchorImpacts": [
+    {
+      "id": 472,
+      "name": "السمار",
+      "before": 472,
+      "after": 1524
+    }
+  ],
+  "geometryResults": [
+    {
+      "id": "osm:relation:7143872",
+      "authenticTownInsideBoth": true,
+      "publishedOutsideBoth": true,
+      "packedOutsideOriginalParentDegreeArea": 5.3745061678666665e-08
+    },
+    {
+      "id": "osm:way:187313013",
+      "authenticTownInsideBoth": true,
+      "publishedOutsideBoth": true,
+      "packedOutsideOriginalParentDegreeArea": 0.0
+    }
+  ],
+  "identityConclusion": {
+    "supported": true,
+    "primaryArabicPair": "السمار / الصمار",
+    "primaryArticle": "https://www.interieur.gov.tn/actualite/20115/",
+    "basis": "One Interior Ministry article title and body use the two Arabic names for Smar in Tataouine; INM id472 and official5353/535352 share LatinSmar and governorateTataouine. Exact source town, sector and residential records corroborate the bounded identity.",
+    "limitation": "This supports the named locality identity, not cadastral/built-up extent or a surveyed municipal town coordinate."
+  },
+  "settlementWitness": {
+    "id": "osm:node:1980279372",
+    "kind": "town",
+    "tags": {
+      "addr:city": "الصمار",
+      "name": "الصمار",
+      "name:aeb": "الصمار",
+      "name:ar": "الصمار",
+      "name:ber": "ⵍⵚⵎⴰⵔ",
+      "name:en": "Smar",
+      "name:fr": "Smar",
+      "place": "town"
+    },
+    "lat": 32.9946554,
+    "lng": 10.8222443
+  },
+  "retainedRepresentative": {
+    "id": "osm:way:187313013",
+    "lat": 32.99975,
+    "lng": 10.818201,
+    "kind": "residential",
+    "nearestAfterPublishedReference": 1524
+  },
+  "protectedSeparateGroups": [
+    {
+      "id": "delegation:1524",
+      "memberIds": [
+        "osm:node:5239666199"
+      ]
+    },
+    {
+      "id": "osm:node:11820052133",
+      "memberIds": [
+        "osm:node:11820052133"
+      ]
+    },
+    {
+      "id": "osm:relation:7143861",
+      "memberIds": [
+        "osm:relation:7143861",
+        "osm:way:187313004"
+      ]
+    },
+    {
+      "id": "osm:relation:7143870",
+      "memberIds": [
+        "osm:relation:7143870",
+        "osm:way:385166772"
+      ]
+    }
+  ],
+  "qualifications": [
+    "Published INM47232.872,10.890 is a prayer reference inside original KsarAoun535356, not the Smar town/residential footprint. Neither the reference nor a broad municipality description licenses merging KsarKarrouz or BeniMhira.",
+    "The unchanged residential representative remains32.99975,10.818201. Its nearest available source after the472reference correction is1524; group identity472 must not force its manual prayer choice to472.",
+    "Original sector geometry is covered by its original parent. Quantized sector has the explicitly measured tiny spill against the unrounded parent; do not claim strict packed-versus-original containment.",
+    "The current BeniMhira proof pins protected sector defaults affected by this independent reference correction. It needs an exact successor/reference-impact treatment before generation; identity/name/geometry/group preservation must remain intact.",
+    "No primary municipal numeric town anchor was established. The town witness is the exact unchanged OSM point supported by its original/current source identity and containment."
+  ],
+  "dependentExistingProof": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\beni-mhira-successor-2026-09\\1524-reviewed-point-base-display-identity-v2.json",
+    "affectedProtectedSectorIds": [
+      "osm:relation:7143818",
+      "osm:relation:7143819",
+      "osm:relation:7143820",
+      "osm:relation:7143821",
+      "osm:relation:7143822"
+    ]
+  },
+  "operations": {
+    "generatorOrCompilerExecution": 0,
+    "liveWrites": 0,
+    "phone": 0,
+    "network": 0,
+    "tests": 0,
+    "build": 0
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\independent_review_smar472_20260919.py",
+    "sha256": "01a933bacf96eecf21be943eb050abef35bd3886e01d835098667a4240ea113e"
+  }
+}

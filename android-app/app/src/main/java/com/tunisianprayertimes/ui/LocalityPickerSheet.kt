@@ -3,7 +3,7 @@ package com.tunisianprayertimes.ui
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,9 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -28,14 +30,32 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Locality
+import com.tunisianprayertimes.LocalityKindClass
+import com.tunisianprayertimes.LocalityPickerCatalog
+import com.tunisianprayertimes.LocalitySearchQuery
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.localityKindClass
 import com.tunisianprayertimes.searchLocalities
 import com.tunisianprayertimes.ui.theme.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.withContext
+
+private class LocalitySearchRequest(
+    val catalog: LocalityPickerCatalog,
+    val query: LocalitySearchQuery,
+    val governorateNames: Map<Int, String>,
+)
+
+private class LocalityGroupResult(
+    val request: LocalitySearchRequest,
+    val groups: List<Triple<Int, String, List<Locality>>>,
+)
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun LocalityPickerSheet(
-    catalog: List<Locality>,
+    catalog: LocalityPickerCatalog,
     gouvernorats: List<Gouvernorat>,
     selectedId: String,
     onDismiss: () -> Unit,
@@ -43,30 +63,44 @@ internal fun LocalityPickerSheet(
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    val listState = rememberLazyListState()
+    val initialIndex = remember(catalog, selectedId) { catalog.selectionScrollIndex(selectedId) }
+    val listState = rememberLazyListState(initialFirstVisibleItemIndex = initialIndex)
+    val scrollGuard = rememberSheetScrollGuard(listState)
     val focusRequester = remember { FocusRequester() }
-    val groups = remember(catalog, query, gouvernorats) {
-        val matches = searchLocalities(catalog, query).groupBy { it.governorateId }
-        val names = gouvernorats.associate { it.id to it.nomAr }
-        (gouvernorats.map { it.id } + matches.keys.filter { it !in names }).mapNotNull { id ->
-            matches[id]?.let { rows -> Triple(id, names[id] ?: rows.first().parentName, rows) }
+    val governorateNames = remember(gouvernorats) { gouvernorats.associate { it.id to it.nomAr } }
+    val search = remember(query) { LocalitySearchQuery.parse(query) }
+    val request = remember(catalog, search, governorateNames) {
+        LocalitySearchRequest(catalog, search, governorateNames)
+    }
+    val preparedGroups = remember(catalog, governorateNames) {
+        catalog.groups.map { group ->
+            Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, group.rows)
         }
     }
-    LaunchedEffect(query, catalog) {
-        var selectedIndex = 0
-        if (query.isBlank()) {
-            for ((_, _, rows) in groups) {
-                val index = rows.indexOfFirst { it.id == selectedId }
-                if (index >= 0) {
-                    // Leave one item above the selection so the sticky header cannot cover it.
-                    selectedIndex += index
-                    break
+    val searchResult by produceState<LocalityGroupResult?>(null, catalog, search, governorateNames) {
+        value = null
+        if (!search.isEmpty) {
+            val groups = withContext(Dispatchers.Default) {
+                val scope = this
+                catalog.groups.mapNotNull { group ->
+                    val rows = searchLocalities(group.rows, search) { scope.ensureActive() }
+                    if (rows.isEmpty()) null
+                    else Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, rows)
                 }
-                selectedIndex += rows.size + 1
             }
-            if (selectedIndex >= groups.sumOf { it.third.size + 1 }) selectedIndex = 0
+            ensureActive()
+            value = LocalityGroupResult(request, groups)
         }
-        listState.scrollToItem(selectedIndex)
+    }
+    val currentResult = searchResult?.takeIf { it.request === request }
+    val groups = when {
+        search.isEmpty -> preparedGroups
+        currentResult != null -> currentResult.groups
+        else -> emptyList()
+    }
+    val isSearchPending = !search.isEmpty && currentResult == null
+    LaunchedEffect(query, catalog) {
+        listState.scrollToItem(if (query.isBlank()) catalog.selectionScrollIndex(selectedId) else 0)
     }
     LaunchedEffect(Unit) { focusRequester.requestFocus() }
 
@@ -98,14 +132,22 @@ internal fun LocalityPickerSheet(
                 )
             }
             Spacer(Modifier.height(8.dp))
-            if (groups.isEmpty()) {
+            if (isSearchPending) {
+                Box(
+                    modifier = Modifier.fillMaxWidth().padding(24.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                }
+            } else if (groups.isEmpty()) {
                 Text(
                     stringResource(R.string.locality_no_results),
                     modifier = Modifier.fillMaxWidth().padding(24.dp),
                     textAlign = TextAlign.Center, color = TextMuted, fontSize = 14.sp,
                 )
             } else {
-                LazyColumn(state = listState, modifier = Modifier.fillMaxWidth().weight(1f).testTag("locality_list")) {
+                LazyColumn(state = listState, modifier = Modifier.fillMaxWidth().weight(1f)
+                    .nestedScroll(scrollGuard).testTag("locality_list")) {
                     groups.forEach { (governorId, governorName, rows) ->
                         stickyHeader(key = "governorate:$governorId") {
                             Text(
@@ -116,10 +158,17 @@ internal fun LocalityPickerSheet(
                             )
                         }
                         items(rows, key = { it.id }, contentType = { "locality" }) { locality ->
-                            val selected = locality.id == selectedId
+                            val selected = locality.representsSelection(selectedId)
+                            val parent = locality.parentName.takeIf {
+                                it.isNotBlank() && it != locality.name && it != governorName
+                            }
+                            val type = if (locality.id in catalog.typeContextIds) {
+                                stringResource(localityKindLabel(locality.kind))
+                            } else null
+                            val subtitle = listOfNotNull(type, parent).joinToString(" · ")
                             Row(
                                 modifier = Modifier.fillMaxWidth().testTag("locality_row_${locality.id}")
-                                    .clickable { onSelect(locality) }
+                                    .selectable(selected = selected, role = Role.RadioButton, onClick = { onSelect(locality) })
                                     .background(if (selected) GoldLight.copy(alpha = 0.2f) else Color.Transparent)
                                     .padding(horizontal = 28.dp, vertical = 12.dp),
                                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -131,9 +180,8 @@ internal fun LocalityPickerSheet(
                                         color = if (selected) GreenPrimaryDark else TextDark,
                                         fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
                                     )
-                                    if (locality.parentName.isNotBlank() && locality.parentName != locality.name &&
-                                        locality.parentName != governorName) {
-                                        Text(locality.parentName, fontSize = 12.sp, color = TextMuted)
+                                    if (subtitle.isNotBlank()) {
+                                        Text(subtitle, fontSize = 12.sp, color = TextMuted)
                                     }
                                 }
                                 if (selected) Icon(
@@ -148,4 +196,16 @@ internal fun LocalityPickerSheet(
             }
         }
     }
+}
+
+private fun localityKindLabel(kind: String): Int = when (localityKindClass(kind)) {
+    LocalityKindClass.DELEGATION -> R.string.locality_kind_delegation
+    LocalityKindClass.SECTOR -> R.string.locality_kind_sector
+    LocalityKindClass.MUNICIPALITY -> R.string.locality_kind_municipality
+    LocalityKindClass.TOWN -> R.string.locality_kind_town
+    LocalityKindClass.VILLAGE -> R.string.locality_kind_village
+    LocalityKindClass.HAMLET -> R.string.locality_kind_hamlet
+    LocalityKindClass.NEIGHBORHOOD -> R.string.locality_kind_neighborhood
+    LocalityKindClass.RESIDENTIAL -> R.string.locality_kind_residential
+    LocalityKindClass.AREA -> R.string.locality_kind_area
 }

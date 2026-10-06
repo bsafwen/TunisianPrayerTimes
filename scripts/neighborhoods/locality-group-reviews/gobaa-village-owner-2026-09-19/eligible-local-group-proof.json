@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+    "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+  },
+  "researchReview": {
+    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-and-design-review.json",
+    "sha256": "70b65161c4f6a15fb7f6966f79db0feae8ce969558ac9eec0210970f66f87f35"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7095859",
+      "status": "eligible_proposal",
+      "method": "reviewed_complete_locality_group_owner",
+      "targetPickerGroupId": "osm:way:456466522",
+      "expectedExistingMemberIds": [
+        "osm:relation:7095859",
+        "osm:way:456466522"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7095859",
+          "expectedMetadata": {
+            "id": "osm:relation:7095859",
+            "sourceId": "osm",
+            "name": "القباعة",
+            "aliases": [
+              "El Kobbâa",
+              "القبعة"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية وادي اللیل",
+            "contextAliases": [
+              "Délégation Oued Ellil",
+              "Oued Ellil",
+              "معتمدية وادي اللیل"
+            ],
+            "governorateId": 360,
+            "lat": 36.820863,
+            "lng": 10.060016,
+            "delegationId": 554,
+            "hasBoundary": true,
+            "bbox": [
+              10.049056,
+              36.814471,
+              10.075316,
+              36.827278
+            ],
+            "areaKm2": 1.5520591353122575
+          },
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القبعة",
+            "name:ar": "القبعة",
+            "name:fr": "El Kobbâa",
+            "ref:tn:codegeo": "145357"
+          },
+          "expectedEffectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "ref:tn:codegeo": "145357",
+            "name": "القباعة",
+            "name:ar": "القباعة",
+            "name:fr": "El Kobbâa",
+            "alt_name:ar": "القبعة"
+          },
+          "expectedCuration": {
+            "id": "osm:relation:7095859",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "القبعة",
+              "name:ar": "القبعة",
+              "name:fr": "El Kobbâa",
+              "ref:tn:codegeo": "145357"
+            },
+            "action": "name_tags",
+            "nameTags": {
+              "name": "القباعة",
+              "name:ar": "القباعة",
+              "name:fr": "El Kobbâa",
+              "alt_name:ar": "القبعة"
+            },
+            "reason": "Use the exact official145357 sector spelling القباعة, preserving prior source spelling القبعة as an Arabic search alias and retaining the original French name. Join its established village depiction through a separately reviewed complete-group village owner; keep every original raw coordinate and polygon.",
+            "evidence": [
+              {
+                "source": "Current official sector145357, original village polygon, exact partial-overlap measurements and saved public locality-card context.",
+                "reviewFiles": [
+                  {
+                    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+                    "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+                  }
+                ]
+              }
+            ]
+          },
+          "originalGeometrySha256": "be44bfe04652989e3627373fd70485258d7b6de19ff9f5d0acf607aaad7263f8",
+          "packedGeometrySha256": "b3791b37cc3b6ab8a0a8633234ee956d1ad06885dc7549e57ddb22985b9978b0"
+        },
+        {
+          "id": "osm:way:456466522",
+          "expectedMetadata": {
+            "id": "osm:way:456466522",
+            "sourceId": "osm",
+            "name": "القباعة",
+            "aliases": [
+              "Gobaâ",
+              "Gobaa",
+              "Al-Qaba'a"
+            ],
+            "kind": "village",
+            "parentName": "ولاية منوبة",
+            "contextAliases": [],
+            "governorateId": 360,
+            "lat": 36.824277,
+            "lng": 10.060474,
+            "delegationId": 554,
+            "hasBoundary": true,
+            "bbox": [
+              10.053807,
+              36.82147,
+              10.067282,
+              36.827161
+            ],
+            "areaKm2": 0.47739231418602934
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "القباعة",
+            "name:ar": "القباعة",
+            "name:de": "Al-Qaba'a",
+            "name:en": "Gobaa",
+            "name:fr": "Gobaâ",
+            "place": "village"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "القباعة",
+            "name:ar": "القباعة",
+            "name:de": "Al-Qaba'a",
+            "name:en": "Gobaa",
+            "name:fr": "Gobaâ",
+            "place": "village"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "6556ad1a9c8fa6bd7327b31a5dafaebca1e688d799073cf82e248184f8afd237",
+          "packedGeometrySha256": "924cd4b669a22f0efdc958bd93b6ec7060c34ab4f37709788ae68e6016bdaa2c"
+        }
+      ],
+      "expectedGovernorateId": 360,
+      "canonicalName": "القباعة",
+      "officialRegistry": {
+        "file": "residential-base-display-reviews/current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "officialSectorRecord": {
+        "governorateCode": "14",
+        "governorateFr": "Manouba",
+        "governorateAr": "منوبة",
+        "delegationCode": "1453",
+        "delegationFr": "Oued ellil",
+        "delegationAr": "وادي الليل",
+        "sectorCode": "145357",
+        "sectorFr": "El kobbaa",
+        "sectorAr": "القباعة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10337,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 364,
+          "Nombre_de_menages_par_Secteurs.xlsx": 363
+        }
+      },
+      "expectedSourceNamePeerIds": [
+        "osm:relation:7095859",
+        "osm:way:456466522"
+      ],
+      "overlap": {
+        "original": {
+          "sectorCoversVillage": false,
+          "villageCoversSector": false,
+          "villageFractionInsideSector": 0.991689598751558,
+          "sectorFractionInsideVillage": 0.3050503458823904
+        },
+        "packed": {
+          "sectorCoversVillage": false,
+          "villageCoversSector": false,
+          "villageFractionInsideSector": 0.9916669951249593,
+          "sectorFractionInsideVillage": 0.3050369096768278
+        }
+      },
+      "manualSelection": {
+        "representativeId": "osm:way:456466522",
+        "lat": 36.824277,
+        "lng": 10.060474,
+        "expectedNearestSourceId": 554
+      },
+      "sourceReview": {
+        "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+        "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+      },
+      "qualifications": {
+        "polygonsHaveDifferentExtents": true,
+        "noBoundaryCertification": true,
+        "allRawCoordinatesRetained": true,
+        "prayerSourceIsNotDisplayIdentity": true,
+        "ownerIsExistingVillagePolygon": true
+      }
+    }
+  ]
+}

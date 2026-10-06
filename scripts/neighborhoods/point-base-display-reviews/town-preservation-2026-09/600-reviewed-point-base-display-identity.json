@@ -1,0 +1,1267 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:558816759",
+  "baseId": 600,
+  "rawCurrent": {
+    "id": "osm:node:558816759",
+    "sourceId": "osm",
+    "name": "صيادة",
+    "aliases": [
+      "Sayada",
+      "صیاده"
+    ],
+    "kind": "village",
+    "parentName": "صيادة الشرقية",
+    "contextAliases": [
+      "Délégation Sayada-Lamta-Bou Hjar",
+      "Sayada Est",
+      "Sayada-Lamta-Bou Hajar",
+      "صيادة الشرقية",
+      "معتمدية صيادة - لمطة - بوحجر"
+    ],
+    "governorateId": 364,
+    "lat": 35.6682749,
+    "lng": 10.8913213,
+    "delegationId": 600,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:558816759"
+  },
+  "baseCurrent": {
+    "id": 600,
+    "nomFr": "Sayada Lamta Bouhjar",
+    "nomAr": "صيادة",
+    "nomEn": "Sayada Lamta Bouhjar",
+    "lat": 35.67,
+    "lng": 10.89
+  },
+  "expectedGovernor": {
+    "id": 364,
+    "nomFr": "Monastir",
+    "nomAr": "المنستير",
+    "nomEn": "Monastir",
+    "lat": 35.7643,
+    "lng": 10.8113
+  },
+  "originalSourceNode": {
+    "id": "osm:node:558816759",
+    "tags": {
+      "addr:city": "صيادة",
+      "name": "صيادة",
+      "name:ar": "صيادة",
+      "name:azb": "صیاده",
+      "name:en": "Sayada",
+      "name:fa": "صیاده",
+      "name:fr": "Sayada",
+      "place": "village",
+      "wikidata": "Q2539054",
+      "wikimedia_commons": "Category:Sayada",
+      "wikipedia": "ar:صيادة"
+    },
+    "lat": 35.6682749,
+    "lng": 10.8913213
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-identity-review.json",
+    "sha256": "9152e9be8763f75128ceecb4cc557ccbc2756a4ccc2eb1a46475a6ea3c8ed766"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/town-preservation-2026-09/independent-source-review.json",
+    "sha256": "8c40557610a4a84c9c544a3e96e84dd179a0160888b588d32d2ada95aaaf1ec0"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/town-preservation-2026-09/node-558816759.json",
+    "sha256": "9c8dfdf4f9019e785d3a53236fd986c17feadba0424613a30b5cca371bfc0e76",
+    "url": "https://api.openstreetmap.org/api/0.6/node/558816759.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/558816759.json",
+    "sha256": "9c8dfdf4f9019e785d3a53236fd986c17feadba0424613a30b5cca371bfc0e76",
+    "exactElement": {
+      "type": "node",
+      "id": 558816759,
+      "lat": 35.6682749,
+      "lon": 10.8913213,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 17,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:city": "صيادة",
+        "name": "صيادة",
+        "name:ar": "صيادة",
+        "name:azb": "صیاده",
+        "name:en": "Sayada",
+        "name:fa": "صیاده",
+        "name:fr": "Sayada",
+        "place": "village",
+        "wikidata": "Q2539054",
+        "wikimedia_commons": "Category:Sayada",
+        "wikipedia": "ar:صيادة"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/three-town-2026-09/interior-municipal-directory.html",
+      "sha256": "e920362ac113c9deaab49014e1b5dd3c9bf1f8ee2cf945e91c4dd750baf9bb66",
+      "url": "https://opendata.interieur.gov.tn/fr/catalog/annuaire-des-municipalites",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "صيادة",
+        "5053"
+      ],
+      "qualification": "Official municipality/civic-address name usage only. The reviewed Lamta PDF separately establishes Sayada city and distinguishes Lamta and Bouhjar; preserve legacy compound base labels."
+    }
+  ],
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/town-preservation-2026-09/lamta-governorate-geography.pdf",
+      "sha256": "0e8f7740d311b5baf5dfc261197063f11046d7337e891f136363b1fee966e694",
+      "url": "https://g-monastir.tn/images/pdf_files/lamta.pdf",
+      "role": "contextual_primary_settlement_identity",
+      "pdfPage": 4,
+      "support": "The geographical account names Sayada city south of Lamta and Bouhjar to the west, treating those settlements distinctly.",
+      "qualification": "Visual reading used because the PDF text encoding is damaged. This supports Sayada as an inhabited city, not equivalence with Lamta, Bouhjar or the compound delegation. Binary source PDF is page-qualified evidence, not a UTF-8 response."
+    }
+  ],
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-retrieval.json",
+    "sha256": "84e514139b4ec6f6000248e916ab162799cf5ddeb14d5f78565a68b70c378ac8"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7110096",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3263",
+        "delegationFr": "Sayada-lamta bou-hja",
+        "delegationAr": "صيادة - لمطة - بوحجر",
+        "sectorCode": "326351",
+        "sectorFr": "Sayada est",
+        "sectorAr": "صيادة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38521,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1833,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1829
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صيادة الشرقية",
+        "name:ar": "صيادة الشرقية",
+        "name:fr": "Sayada Est",
+        "ref:tn:codegeo": "326351"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7110096",
+        "sourceId": "osm",
+        "name": "صيادة الشرقية",
+        "aliases": [
+          "Sayada Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صيادة - لمطة - بوحجر",
+        "contextAliases": [
+          "Délégation Sayada-Lamta-Bou Hjar",
+          "Sayada-Lamta-Bou Hajar",
+          "معتمدية صيادة - لمطة - بوحجر"
+        ],
+        "governorateId": 364,
+        "lat": 35.666933,
+        "lng": 10.907856,
+        "delegationId": 600,
+        "hasBoundary": true,
+        "bbox": [
+          10.886761,
+          35.657539,
+          10.934,
+          35.67643
+        ],
+        "areaKm2": 2.7391643360003815,
+        "pickerGroupId": "osm:relation:7110096",
+        "offset": 606568,
+        "length": 2492
+      },
+      "sourceGeometrySha256": "6caec4d43bf4f2dca7017166a619e84eb605f1103a176ecb16c31842f4709775",
+      "packedGeometrySha256": "1eac6c7344c9cac6b1f0ef3bbfea5902facb8decc48e803f55812121f3ed9179",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7110097",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3263",
+        "delegationFr": "Sayada-lamta bou-hja",
+        "delegationAr": "صيادة - لمطة - بوحجر",
+        "sectorCode": "326352",
+        "sectorFr": "Sayada ouest",
+        "sectorAr": "صيادة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38555,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1835,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1831
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صيادة الغربية",
+        "name:ar": "صيادة الغربية",
+        "name:fr": "Sayada Ouest",
+        "ref:tn:codegeo": "326352"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7110097",
+        "sourceId": "osm",
+        "name": "صيادة الغربية",
+        "aliases": [
+          "Sayada Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صيادة - لمطة - بوحجر",
+        "contextAliases": [
+          "Délégation Sayada-Lamta-Bou Hjar",
+          "Sayada-Lamta-Bou Hajar",
+          "معتمدية صيادة - لمطة - بوحجر"
+        ],
+        "governorateId": 364,
+        "lat": 35.660836,
+        "lng": 10.904707,
+        "delegationId": 600,
+        "hasBoundary": true,
+        "bbox": [
+          10.883289,
+          35.650769,
+          10.932133,
+          35.670611
+        ],
+        "areaKm2": 3.8692111969991423,
+        "pickerGroupId": "osm:relation:7110097",
+        "offset": 609060,
+        "length": 1396
+      },
+      "sourceGeometrySha256": "2da5e584f682499f27909e1a1f36025dcf739d42eeb80f59a2894e524116f8f5",
+      "packedGeometrySha256": "f988ef62c83e59ba4338efef1369a6a2c07ed7037f975e5019c719be8f875849",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7109801",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3263",
+        "delegationFr": "Sayada-lamta bou-hja",
+        "delegationAr": "صيادة - لمطة - بوحجر",
+        "sectorCode": "326353",
+        "sectorFr": "Lamta",
+        "sectorAr": "لمطة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38589,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1837,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1833
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "لمطة",
+        "name:ar": "لمطة",
+        "name:fr": "Lamta",
+        "ref:tn:codegeo": "326353"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109801",
+        "sourceId": "osm",
+        "name": "لمطة",
+        "aliases": [
+          "Lamta",
+          "لمطه"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صيادة - لمطة - بوحجر",
+        "contextAliases": [
+          "Délégation Sayada-Lamta-Bou Hjar",
+          "Sayada-Lamta-Bou Hajar",
+          "معتمدية صيادة - لمطة - بوحجر"
+        ],
+        "governorateId": 364,
+        "lat": 35.669842,
+        "lng": 10.878907,
+        "delegationId": 600,
+        "hasBoundary": true,
+        "bbox": [
+          10.869928,
+          35.660978,
+          10.890199,
+          35.678777
+        ],
+        "areaKm2": 1.9219780696457518,
+        "pickerGroupId": "osm:relation:7109801",
+        "offset": 599068,
+        "length": 2140
+      },
+      "sourceGeometrySha256": "bab748984f6717d2fbfbb277682d7ff4efca6e3aaad4cf8faf1ea2e5b615283a",
+      "packedGeometrySha256": "f4e4dbf56b7cfba76636ba0f2c74d446f28620dbc3d458ec62510a902e9a2de1",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7109667",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3263",
+        "delegationFr": "Sayada-lamta bou-hja",
+        "delegationAr": "صيادة - لمطة - بوحجر",
+        "sectorCode": "326354",
+        "sectorFr": "Bou-hjar",
+        "sectorAr": "بوحجر",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38623,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1838,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1834
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوحجر",
+        "name:ar": "بوحجر",
+        "name:fr": "Bou Hjar",
+        "ref:tn:codegeo": "326354"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109667",
+        "sourceId": "osm",
+        "name": "بوحجر",
+        "aliases": [
+          "Bou Hjar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صيادة - لمطة - بوحجر",
+        "contextAliases": [
+          "Délégation Sayada-Lamta-Bou Hjar",
+          "Sayada-Lamta-Bou Hajar",
+          "معتمدية صيادة - لمطة - بوحجر"
+        ],
+        "governorateId": 364,
+        "lat": 35.669443,
+        "lng": 10.861814,
+        "delegationId": 599,
+        "hasBoundary": true,
+        "bbox": [
+          10.849158,
+          35.654957,
+          10.876508,
+          35.683897
+        ],
+        "areaKm2": 4.357633207088065,
+        "pickerGroupId": "osm:relation:7109667",
+        "offset": 597120,
+        "length": 1948
+      },
+      "sourceGeometrySha256": "00466bf7609973a3eb856b2d0574c7b6b2c37b3e4ff0831f1a2d4524f07f6fa7",
+      "packedGeometrySha256": "7893e065b35c54fd7106a6130bdca31dc84e89fed387809151b4fa4af2586047",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:558816759",
+      "kind": "village",
+      "tags": {
+        "addr:city": "صيادة",
+        "name": "صيادة",
+        "name:ar": "صيادة",
+        "name:azb": "صیاده",
+        "name:en": "Sayada",
+        "name:fa": "صیاده",
+        "name:fr": "Sayada",
+        "place": "village",
+        "wikidata": "Q2539054",
+        "wikimedia_commons": "Category:Sayada",
+        "wikipedia": "ar:صيادة"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434954": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-52",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Monastir",
+        "boundary": "administrative",
+        "long_name": "ولاية المنستير",
+        "long_name:ar": "ولاية المنستير",
+        "long_name:en": "Monastir Governorate",
+        "long_name:fr": "Gouvernorat de Monastir",
+        "long_name:it": "Governatorato di Monastir",
+        "name": "ولاية المنستير",
+        "name:ar": "ولاية المنستير",
+        "name:az": "Monastir (vilayət)",
+        "name:be": "Манасцір (вілает)",
+        "name:be-tarask": "Манастыр (вілает)",
+        "name:bg": "Монастир (област)",
+        "name:ca": "Governació de Monastir",
+        "name:ceb": "Gouvernorat de Monastir",
+        "name:cy": "Monastir (talaith)",
+        "name:de": "Al-Munastir",
+        "name:el": "Μοναστίρ (Κυβερνείο)",
+        "name:en": "Monastir",
+        "name:es": "Gobernación de Monastir",
+        "name:fa": "استان منستیر",
+        "name:fi": "Monastir (kuvernementti)",
+        "name:fr": "Gouvernorat Monastir",
+        "name:frr": "Monastir (Guwernement)",
+        "name:hr": "Monastir",
+        "name:id": "Kegubernuran Monastir",
+        "name:it": "Monastir",
+        "name:ja": "モナスティル県",
+        "name:ka": "მონასტირის ვილაიეთი",
+        "name:ko": "모나스티르주",
+        "name:ms": "Kawasan kegabenoran Monastir",
+        "name:nl": "Monastir (gouvernement)",
+        "name:no": "Monastir (guvernement)",
+        "name:pl": "Gubernatorstwo Monastyr",
+        "name:pt": "Monastir (província)",
+        "name:ro": "Guvernoratul Monastir",
+        "name:ru": "Монастир (вилайет)",
+        "name:sco": "Monastir Govrenorate",
+        "name:sh": "Monastir (vilajet)",
+        "name:sq": "Monastir",
+        "name:tr": "Munastır (vilayet)",
+        "name:uk": "Монастір (вілаєт)",
+        "name:ur": "ولایت منستیر",
+        "name:zh": "莫納斯提爾省",
+        "name:zu": "Monastir Governorate",
+        "population": "455590",
+        "ref:tn:codegeo": "32",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q318102",
+        "wikipedia": "ar:ولاية المنستير"
+      },
+      "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+    },
+    "osm:relation:7154980": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Sayada-Lamta-Bou Hajar",
+        "boundary": "administrative",
+        "name": "معتمدية صيادة - لمطة - بوحجر",
+        "name:ar": "معتمدية صيادة - لمطة - بوحجر",
+        "name:fr": "Délégation Sayada-Lamta-Bou Hjar",
+        "ref:tn:codegeo": "3263",
+        "ref:tn:hasc_2": "TN.MS.SL",
+        "wikidata": "Q3474714"
+      },
+      "sourceGeometrySha256": "48af44f0762223185915bbe5c789c18e49e841a2cd5bf28baa2962aeb538316a"
+    }
+  },
+  "townPreservationExtension": {
+    "schemaVersion": 1,
+    "officialDelegationCodes": [
+      "3263"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:558816759",
+        "original": {
+          "tags": {
+            "addr:city": "صيادة",
+            "name": "صيادة",
+            "name:ar": "صيادة",
+            "name:azb": "صیاده",
+            "name:en": "Sayada",
+            "name:fa": "صیاده",
+            "name:fr": "Sayada",
+            "place": "village",
+            "wikidata": "Q2539054",
+            "wikimedia_commons": "Category:Sayada",
+            "wikipedia": "ar:صيادة"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "23ed13be98741fb6381f3f1bd9745f004a9b7de148b65f7e4757e6969c6bbf04"
+        },
+        "effective": {
+          "tags": {
+            "addr:city": "صيادة",
+            "name": "صيادة",
+            "name:ar": "صيادة",
+            "name:azb": "صیاده",
+            "name:en": "Sayada",
+            "name:fa": "صیاده",
+            "name:fr": "Sayada",
+            "place": "village",
+            "wikidata": "Q2539054",
+            "wikimedia_commons": "Category:Sayada",
+            "wikipedia": "ar:صيادة"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "23ed13be98741fb6381f3f1bd9745f004a9b7de148b65f7e4757e6969c6bbf04"
+        }
+      },
+      {
+        "id": "osm:relation:1434954",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-52",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Monastir",
+            "boundary": "administrative",
+            "long_name": "ولاية المنستير",
+            "long_name:ar": "ولاية المنستير",
+            "long_name:en": "Monastir Governorate",
+            "long_name:fr": "Gouvernorat de Monastir",
+            "long_name:it": "Governatorato di Monastir",
+            "name": "ولاية المنستير",
+            "name:ar": "ولاية المنستير",
+            "name:az": "Monastir (vilayət)",
+            "name:be": "Манасцір (вілает)",
+            "name:be-tarask": "Манастыр (вілает)",
+            "name:bg": "Монастир (област)",
+            "name:ca": "Governació de Monastir",
+            "name:ceb": "Gouvernorat de Monastir",
+            "name:cy": "Monastir (talaith)",
+            "name:de": "Al-Munastir",
+            "name:el": "Μοναστίρ (Κυβερνείο)",
+            "name:en": "Monastir",
+            "name:es": "Gobernación de Monastir",
+            "name:fa": "استان منستیر",
+            "name:fi": "Monastir (kuvernementti)",
+            "name:fr": "Gouvernorat Monastir",
+            "name:frr": "Monastir (Guwernement)",
+            "name:hr": "Monastir",
+            "name:id": "Kegubernuran Monastir",
+            "name:it": "Monastir",
+            "name:ja": "モナスティル県",
+            "name:ka": "მონასტირის ვილაიეთი",
+            "name:ko": "모나스티르주",
+            "name:ms": "Kawasan kegabenoran Monastir",
+            "name:nl": "Monastir (gouvernement)",
+            "name:no": "Monastir (guvernement)",
+            "name:pl": "Gubernatorstwo Monastyr",
+            "name:pt": "Monastir (província)",
+            "name:ro": "Guvernoratul Monastir",
+            "name:ru": "Монастир (вилайет)",
+            "name:sco": "Monastir Govrenorate",
+            "name:sh": "Monastir (vilajet)",
+            "name:sq": "Monastir",
+            "name:tr": "Munastır (vilayet)",
+            "name:uk": "Монастір (вілаєт)",
+            "name:ur": "ولایت منستیر",
+            "name:zh": "莫納斯提爾省",
+            "name:zu": "Monastir Governorate",
+            "population": "455590",
+            "ref:tn:codegeo": "32",
+            "source:population": "INS TN 2004",
+            "wikidata": "Q318102",
+            "wikipedia": "ar:ولاية المنستير"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-52",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Monastir",
+            "boundary": "administrative",
+            "long_name": "ولاية المنستير",
+            "long_name:ar": "ولاية المنستير",
+            "long_name:en": "Monastir Governorate",
+            "long_name:fr": "Gouvernorat de Monastir",
+            "long_name:it": "Governatorato di Monastir",
+            "name": "ولاية المنستير",
+            "name:ar": "ولاية المنستير",
+            "name:az": "Monastir (vilayət)",
+            "name:be": "Манасцір (вілает)",
+            "name:be-tarask": "Манастыр (вілает)",
+            "name:bg": "Монастир (област)",
+            "name:ca": "Governació de Monastir",
+            "name:ceb": "Gouvernorat de Monastir",
+            "name:cy": "Monastir (talaith)",
+            "name:de": "Al-Munastir",
+            "name:el": "Μοναστίρ (Κυβερνείο)",
+            "name:en": "Monastir",
+            "name:es": "Gobernación de Monastir",
+            "name:fa": "استان منستیر",
+            "name:fi": "Monastir (kuvernementti)",
+            "name:fr": "Gouvernorat Monastir",
+            "name:frr": "Monastir (Guwernement)",
+            "name:hr": "Monastir",
+            "name:id": "Kegubernuran Monastir",
+            "name:it": "Monastir",
+            "name:ja": "モナスティル県",
+            "name:ka": "მონასტირის ვილაიეთი",
+            "name:ko": "모나스티르주",
+            "name:ms": "Kawasan kegabenoran Monastir",
+            "name:nl": "Monastir (gouvernement)",
+            "name:no": "Monastir (guvernement)",
+            "name:pl": "Gubernatorstwo Monastyr",
+            "name:pt": "Monastir (província)",
+            "name:ro": "Guvernoratul Monastir",
+            "name:ru": "Монастир (вилайет)",
+            "name:sco": "Monastir Govrenorate",
+            "name:sh": "Monastir (vilajet)",
+            "name:sq": "Monastir",
+            "name:tr": "Munastır (vilayet)",
+            "name:uk": "Монастір (вілаєт)",
+            "name:ur": "ولایت منستیر",
+            "name:zh": "莫納斯提爾省",
+            "name:zu": "Monastir Governorate",
+            "population": "455590",
+            "ref:tn:codegeo": "32",
+            "source:population": "INS TN 2004",
+            "wikidata": "Q318102",
+            "wikipedia": "ar:ولاية المنستير"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+        }
+      },
+      {
+        "id": "osm:relation:7109667",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بوحجر",
+            "name:ar": "بوحجر",
+            "name:fr": "Bou Hjar",
+            "ref:tn:codegeo": "326354"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "00466bf7609973a3eb856b2d0574c7b6b2c37b3e4ff0831f1a2d4524f07f6fa7"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بوحجر",
+            "name:ar": "بوحجر",
+            "name:fr": "Bou Hjar",
+            "ref:tn:codegeo": "326354"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "00466bf7609973a3eb856b2d0574c7b6b2c37b3e4ff0831f1a2d4524f07f6fa7"
+        }
+      },
+      {
+        "id": "osm:relation:7109801",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "لمطة",
+            "name:ar": "لمطة",
+            "name:fr": "Lamta",
+            "ref:tn:codegeo": "326353"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "bab748984f6717d2fbfbb277682d7ff4efca6e3aaad4cf8faf1ea2e5b615283a"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "لمطة",
+            "name:ar": "لمطة",
+            "name:fr": "Lamta",
+            "ref:tn:codegeo": "326353"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "bab748984f6717d2fbfbb277682d7ff4efca6e3aaad4cf8faf1ea2e5b615283a"
+        }
+      },
+      {
+        "id": "osm:relation:7110096",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صيادة الشرقية",
+            "name:ar": "صيادة الشرقية",
+            "name:fr": "Sayada Est",
+            "ref:tn:codegeo": "326351"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "6caec4d43bf4f2dca7017166a619e84eb605f1103a176ecb16c31842f4709775"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صيادة الشرقية",
+            "name:ar": "صيادة الشرقية",
+            "name:fr": "Sayada Est",
+            "ref:tn:codegeo": "326351"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "6caec4d43bf4f2dca7017166a619e84eb605f1103a176ecb16c31842f4709775"
+        }
+      },
+      {
+        "id": "osm:relation:7110097",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صيادة الغربية",
+            "name:ar": "صيادة الغربية",
+            "name:fr": "Sayada Ouest",
+            "ref:tn:codegeo": "326352"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "2da5e584f682499f27909e1a1f36025dcf739d42eeb80f59a2894e524116f8f5"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صيادة الغربية",
+            "name:ar": "صيادة الغربية",
+            "name:fr": "Sayada Ouest",
+            "ref:tn:codegeo": "326352"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "2da5e584f682499f27909e1a1f36025dcf739d42eeb80f59a2894e524116f8f5"
+        }
+      },
+      {
+        "id": "osm:relation:7154980",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sayada-Lamta-Bou Hajar",
+            "boundary": "administrative",
+            "name": "معتمدية صيادة - لمطة - بوحجر",
+            "name:ar": "معتمدية صيادة - لمطة - بوحجر",
+            "name:fr": "Délégation Sayada-Lamta-Bou Hjar",
+            "ref:tn:codegeo": "3263",
+            "ref:tn:hasc_2": "TN.MS.SL",
+            "wikidata": "Q3474714"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "48af44f0762223185915bbe5c789c18e49e841a2cd5bf28baa2962aeb538316a"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sayada-Lamta-Bou Hajar",
+            "boundary": "administrative",
+            "name": "معتمدية صيادة - لمطة - بوحجر",
+            "name:ar": "معتمدية صيادة - لمطة - بوحجر",
+            "name:fr": "Délégation Sayada-Lamta-Bou Hjar",
+            "ref:tn:codegeo": "3263",
+            "ref:tn:hasc_2": "TN.MS.SL",
+            "wikidata": "Q3474714"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "48af44f0762223185915bbe5c789c18e49e841a2cd5bf28baa2962aeb538316a"
+        }
+      },
+      {
+        "id": "osm:way:26289690",
+        "original": {
+          "tags": {
+            "addr:city": "بوحجر",
+            "addr:city:ar": "بوحجر",
+            "landuse": "residential",
+            "name": "بوحجر",
+            "name:ar": "بوحجر",
+            "name:azb": "بوحجر",
+            "name:fa": "بوحجر",
+            "wikidata": "Q967840",
+            "wikimedia_commons": "Category:Bouhjar",
+            "wikipedia": "ar:بوحجر",
+            "wikipedia:ar": "بوحجر"
+          },
+          "kind": "residential",
+          "sourceId": null,
+          "geometrySha256": "c376cb60f3c7d981293baf4ea96a45afc03582c8be7e334738a388313fda63f2"
+        },
+        "effective": {
+          "tags": {
+            "addr:city": "بوحجر",
+            "addr:city:ar": "بوحجر",
+            "landuse": "residential",
+            "name": "بوحجر",
+            "name:ar": "بوحجر",
+            "name:azb": "بوحجر",
+            "name:fa": "بوحجر",
+            "wikidata": "Q967840",
+            "wikimedia_commons": "Category:Bouhjar",
+            "wikipedia": "ar:بوحجر",
+            "wikipedia:ar": "بوحجر"
+          },
+          "kind": "residential",
+          "sourceId": "osm",
+          "geometrySha256": "c376cb60f3c7d981293baf4ea96a45afc03582c8be7e334738a388313fda63f2"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1434954": null,
+      "osm:relation:7109667": null,
+      "osm:relation:7109801": null,
+      "osm:relation:7110096": null,
+      "osm:relation:7110097": null,
+      "osm:relation:7154980": null,
+      "osm:way:26289690": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:558816759"
+      ],
+      "effective": [
+        "osm:node:558816759"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1434954": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7109667": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109801": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7110096": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7110097": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7154980": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:558816759",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:558816759",
+          "sourceId": "osm",
+          "name": "صيادة",
+          "aliases": [
+            "Sayada",
+            "صیاده"
+          ],
+          "kind": "village",
+          "parentName": "صيادة الشرقية",
+          "contextAliases": [
+            "Délégation Sayada-Lamta-Bou Hjar",
+            "Sayada Est",
+            "Sayada-Lamta-Bou Hajar",
+            "صيادة الشرقية",
+            "معتمدية صيادة - لمطة - بوحجر"
+          ],
+          "governorateId": 364,
+          "lat": 35.6682749,
+          "lng": 10.8913213,
+          "delegationId": 600,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:558816759"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7109667",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109667",
+          "sourceId": "osm",
+          "name": "بوحجر",
+          "aliases": [
+            "Bou Hjar"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية صيادة - لمطة - بوحجر",
+          "contextAliases": [
+            "Délégation Sayada-Lamta-Bou Hjar",
+            "Sayada-Lamta-Bou Hajar",
+            "معتمدية صيادة - لمطة - بوحجر"
+          ],
+          "governorateId": 364,
+          "lat": 35.669443,
+          "lng": 10.861814,
+          "delegationId": 599,
+          "hasBoundary": true,
+          "bbox": [
+            10.849158,
+            35.654957,
+            10.876508,
+            35.683897
+          ],
+          "areaKm2": 4.357633207088065,
+          "pickerGroupId": "osm:relation:7109667",
+          "offset": 597120,
+          "length": 1948
+        },
+        "packedGeometrySha256": "7893e065b35c54fd7106a6130bdca31dc84e89fed387809151b4fa4af2586047"
+      },
+      {
+        "id": "osm:relation:7109801",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109801",
+          "sourceId": "osm",
+          "name": "لمطة",
+          "aliases": [
+            "Lamta",
+            "لمطه"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية صيادة - لمطة - بوحجر",
+          "contextAliases": [
+            "Délégation Sayada-Lamta-Bou Hjar",
+            "Sayada-Lamta-Bou Hajar",
+            "معتمدية صيادة - لمطة - بوحجر"
+          ],
+          "governorateId": 364,
+          "lat": 35.669842,
+          "lng": 10.878907,
+          "delegationId": 600,
+          "hasBoundary": true,
+          "bbox": [
+            10.869928,
+            35.660978,
+            10.890199,
+            35.678777
+          ],
+          "areaKm2": 1.9219780696457518,
+          "pickerGroupId": "osm:relation:7109801",
+          "offset": 599068,
+          "length": 2140
+        },
+        "packedGeometrySha256": "f4e4dbf56b7cfba76636ba0f2c74d446f28620dbc3d458ec62510a902e9a2de1"
+      },
+      {
+        "id": "osm:relation:7110096",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7110096",
+          "sourceId": "osm",
+          "name": "صيادة الشرقية",
+          "aliases": [
+            "Sayada Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية صيادة - لمطة - بوحجر",
+          "contextAliases": [
+            "Délégation Sayada-Lamta-Bou Hjar",
+            "Sayada-Lamta-Bou Hajar",
+            "معتمدية صيادة - لمطة - بوحجر"
+          ],
+          "governorateId": 364,
+          "lat": 35.666933,
+          "lng": 10.907856,
+          "delegationId": 600,
+          "hasBoundary": true,
+          "bbox": [
+            10.886761,
+            35.657539,
+            10.934,
+            35.67643
+          ],
+          "areaKm2": 2.7391643360003815,
+          "pickerGroupId": "osm:relation:7110096",
+          "offset": 606568,
+          "length": 2492
+        },
+        "packedGeometrySha256": "1eac6c7344c9cac6b1f0ef3bbfea5902facb8decc48e803f55812121f3ed9179"
+      },
+      {
+        "id": "osm:relation:7110097",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7110097",
+          "sourceId": "osm",
+          "name": "صيادة الغربية",
+          "aliases": [
+            "Sayada Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية صيادة - لمطة - بوحجر",
+          "contextAliases": [
+            "Délégation Sayada-Lamta-Bou Hjar",
+            "Sayada-Lamta-Bou Hajar",
+            "معتمدية صيادة - لمطة - بوحجر"
+          ],
+          "governorateId": 364,
+          "lat": 35.660836,
+          "lng": 10.904707,
+          "delegationId": 600,
+          "hasBoundary": true,
+          "bbox": [
+            10.883289,
+            35.650769,
+            10.932133,
+            35.670611
+          ],
+          "areaKm2": 3.8692111969991423,
+          "pickerGroupId": "osm:relation:7110097",
+          "offset": 609060,
+          "length": 1396
+        },
+        "packedGeometrySha256": "f988ef62c83e59ba4338efef1369a6a2c07ed7037f975e5019c719be8f875849"
+      },
+      {
+        "id": "osm:way:26289690",
+        "kind": "residential",
+        "currentMetadata": {
+          "id": "osm:way:26289690",
+          "sourceId": "osm",
+          "name": "بوحجر",
+          "aliases": [
+            "Bouhjar"
+          ],
+          "kind": "residential",
+          "parentName": "معتمدية صيادة - لمطة - بوحجر",
+          "contextAliases": [
+            "Bou Hjar",
+            "Délégation Sayada-Lamta-Bou Hjar",
+            "Sayada-Lamta-Bou Hajar",
+            "بوحجر",
+            "معتمدية صيادة - لمطة - بوحجر"
+          ],
+          "governorateId": 364,
+          "lat": 35.668929,
+          "lng": 10.862495,
+          "delegationId": 599,
+          "hasBoundary": true,
+          "bbox": [
+            10.854964,
+            35.663232,
+            10.869959,
+            35.674772
+          ],
+          "areaKm2": 1.1973617715861757,
+          "pickerGroupId": "osm:relation:7109667",
+          "offset": 5368960,
+          "length": 500
+        },
+        "packedGeometrySha256": "069bb2ee341d80053bdacb21f0fa83cdf3569082cc6ff75e6b6243e23d003900"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:558816759": [
+        "osm:node:558816759"
+      ],
+      "osm:relation:7109667": [
+        "osm:relation:7109667",
+        "osm:way:26289690"
+      ],
+      "osm:relation:7109801": [
+        "osm:relation:7109801"
+      ],
+      "osm:relation:7110096": [
+        "osm:relation:7110096"
+      ],
+      "osm:relation:7110097": [
+        "osm:relation:7110097"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7109667": [
+        "osm:relation:7109667",
+        "osm:way:26289690"
+      ],
+      "osm:relation:7109801": [
+        "osm:relation:7109801"
+      ],
+      "osm:relation:7110096": [
+        "osm:relation:7110096"
+      ],
+      "osm:relation:7110097": [
+        "osm:relation:7110097"
+      ],
+      "delegation:600": [
+        "osm:node:558816759"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:558816759",
+    "field": "pickerGroupId",
+    "before": "osm:node:558816759",
+    "after": "delegation:600"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:558816759"
+      ],
+      [
+        "delegation:600"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:600",
+        "osm:node:558816759"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "One exact town/village point joins its empty raw timetable display group. Every imada and complete existing group remains separate, with all names, aliases, current contexts, coordinates, defaults and geometry retained.",
+  "coordinatePolicy": "Preserve both recorded reference coordinates. Source city identity does not certify a legacy INM calculation anchor or exact settlement boundary.",
+  "sourcePhasePolicy": "Typed original/effective records bind existing name-only changes or accepted official replacements, with existing manual/context effects retained independently. No new source transition or ownership is authorized.",
+  "geometryHashConvention": "Generator aggregate mapping geometry, compact unsorted JSON/default ensure_ascii. Original provider null; effective osm or exact current official provider.",
+  "dependencyPolicy": "Operational references are relative to scripts/neighborhoods. Absolute research paths inside unchanged frozen reports are provenance only.",
+  "baseLabelInterpretation": "Arabic صيادة is the named town reference. Preserve French/English Sayada Lamta Bouhjar literally; no equivalence between the three towns, their imadas or the compound delegation is asserted."
+}

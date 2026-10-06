@@ -1,0 +1,914 @@
+{
+  "schemaVersion": 2,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_source_bound_residential_base_display_identity",
+    "id": "osm:way:26303952",
+    "targetDelegationId": 488
+  },
+  "conclusion": "reviewed_source_bound_residential_base_display_identity",
+  "expected": {
+    "application": {
+      "method": "reviewed_source_bound_residential_base_display_identity",
+      "id": "osm:way:26303952",
+      "targetDelegationId": 488
+    },
+    "proposedProofSchemaVersion": 2,
+    "identityMode": "explicit_residential_alias_to_extracted_place",
+    "currentBase": {
+      "id": 488,
+      "nomFr": "Ben Guerdene",
+      "nomAr": "بن قردان",
+      "nomEn": "Ben Guerdene",
+      "lat": 33.1403223,
+      "lng": 11.2170109
+    },
+    "preservedGovernorate": {
+      "id": 353,
+      "nomFr": "Medenine",
+      "nomAr": "مدنين",
+      "nomEn": "Medenine",
+      "lat": 33.3399,
+      "lng": 10.5055
+    },
+    "currentRaw": {
+      "id": "osm:way:26303952",
+      "sourceId": "osm",
+      "name": "بنقردان",
+      "aliases": [
+        "Ben Gardanas",
+        "Ben Gardane",
+        "Ben Guerdane",
+        "Bin Kirdan",
+        "Μπεν Γκερντάν",
+        "Бен Кардан",
+        "Бен-Гардан",
+        "בן גרדאן",
+        "بن قردان",
+        "مدينة بنقردان",
+        "ベンカルダン",
+        "本加爾丹",
+        "벤가르단"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية بنقردان",
+      "contextAliases": [
+        "Ben Gardane",
+        "Délégation Ben Gardane",
+        "معتمدية بن قردان",
+        "معتمدية بنقردان"
+      ],
+      "governorateId": 353,
+      "lat": 33.127308,
+      "lng": 11.203432,
+      "delegationId": 488,
+      "hasBoundary": true,
+      "bbox": [
+        11.148555,
+        33.074441,
+        11.257023,
+        33.180135
+      ],
+      "areaKm2": 55.569214920640555,
+      "pickerGroupId": "osm:way:26303952"
+    },
+    "sourceAssertionIds": [
+      "osm:node:287588734",
+      "osm:relation:1434952",
+      "osm:relation:7142917",
+      "osm:relation:7142922",
+      "osm:relation:7142923",
+      "osm:relation:7142924",
+      "osm:relation:7142925",
+      "osm:relation:7142926",
+      "osm:relation:7142928",
+      "osm:relation:7142942",
+      "osm:relation:7142953",
+      "osm:relation:7142955",
+      "osm:relation:7142956",
+      "osm:relation:7142960",
+      "osm:relation:7142961",
+      "osm:way:26303952"
+    ],
+    "protectedRawIds": [
+      "osm:relation:7142917",
+      "osm:relation:7142922",
+      "osm:relation:7142923",
+      "osm:relation:7142924",
+      "osm:relation:7142925",
+      "osm:relation:7142926",
+      "osm:relation:7142928",
+      "osm:relation:7142953",
+      "osm:relation:7142955",
+      "osm:relation:7142956",
+      "osm:relation:7142960",
+      "osm:relation:7142961",
+      "osm:way:26303952"
+    ],
+    "beforeGroups": {
+      "delegation:488": [
+        "delegation:488"
+      ],
+      "osm:way:26303952": [
+        "osm:way:26303952"
+      ],
+      "osm:relation:7142922": [
+        "osm:relation:7142922"
+      ],
+      "osm:relation:7142923": [
+        "osm:relation:7142923"
+      ],
+      "osm:relation:7142917": [
+        "osm:relation:7142917"
+      ],
+      "osm:relation:7142924": [
+        "osm:relation:7142924"
+      ],
+      "osm:relation:7142926": [
+        "osm:relation:7142926"
+      ],
+      "osm:relation:7142928": [
+        "osm:relation:7142928"
+      ],
+      "osm:relation:7142956": [
+        "osm:relation:7142956"
+      ],
+      "osm:relation:7142953": [
+        "osm:relation:7142953"
+      ],
+      "osm:relation:7142960": [
+        "osm:relation:7142960"
+      ],
+      "osm:relation:7142961": [
+        "osm:relation:7142961"
+      ],
+      "osm:relation:7142925": [
+        "osm:relation:7142925"
+      ],
+      "osm:relation:7142955": [
+        "osm:relation:7142955"
+      ]
+    },
+    "afterGroups": {
+      "delegation:488": [
+        "delegation:488",
+        "osm:way:26303952"
+      ],
+      "osm:relation:7142922": [
+        "osm:relation:7142922"
+      ],
+      "osm:relation:7142923": [
+        "osm:relation:7142923"
+      ],
+      "osm:relation:7142917": [
+        "osm:relation:7142917"
+      ],
+      "osm:relation:7142924": [
+        "osm:relation:7142924"
+      ],
+      "osm:relation:7142926": [
+        "osm:relation:7142926"
+      ],
+      "osm:relation:7142928": [
+        "osm:relation:7142928"
+      ],
+      "osm:relation:7142956": [
+        "osm:relation:7142956"
+      ],
+      "osm:relation:7142953": [
+        "osm:relation:7142953"
+      ],
+      "osm:relation:7142960": [
+        "osm:relation:7142960"
+      ],
+      "osm:relation:7142961": [
+        "osm:relation:7142961"
+      ],
+      "osm:relation:7142925": [
+        "osm:relation:7142925"
+      ],
+      "osm:relation:7142955": [
+        "osm:relation:7142955"
+      ]
+    },
+    "placeEvidence": {
+      "role": "absorbed_extracted_town",
+      "id": "osm:node:287588734",
+      "requiredForIdentity": true,
+      "fullResponse": {
+        "root": "REPO",
+        "file": "scripts/neighborhoods/point-base-name-reviews/legacy-batch-2026-09-07/candidate-place-nodes-second-live.json",
+        "sha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "exactResponseElement": {
+        "type": "node",
+        "id": 287588734,
+        "lat": 33.1403223,
+        "lon": 11.2170109,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "version": 20,
+        "changeset": 171909432,
+        "user": "tg4567",
+        "uid": 12500589,
+        "tags": {
+          "alt_name": "بن قردان",
+          "alt_name:ar": "بن قردان",
+          "name": "بن قردان",
+          "name:ar": "بن قردان",
+          "name:azb": "بن قردان",
+          "name:ca": "Ben Gardane",
+          "name:cs": "Ben Gardane",
+          "name:cy": "Ben Guerdane",
+          "name:da": "Ben Gardane",
+          "name:de": "Ben Gardane",
+          "name:el": "Μπεν Γκερντάν",
+          "name:en": "Ben Gardane",
+          "name:es": "Ben Gardane",
+          "name:fa": "بن قردان",
+          "name:fi": "Ben Gardane",
+          "name:fr": "Ben Gardane",
+          "name:he": "בן גרדאן",
+          "name:hu": "Ben Gardane",
+          "name:it": "Ben Gardane",
+          "name:ja": "ベンカルダン",
+          "name:kab": "Ben Gardane",
+          "name:ko": "벤가르단",
+          "name:lt": "Ben Gardanas",
+          "name:nl": "Ben Gardane",
+          "name:pl": "Bin Kirdan",
+          "name:pt": "Ben Gardane",
+          "name:ro": "Ben Gardane",
+          "name:ru": "Бен-Гардан",
+          "name:tr": "Ben Gardane",
+          "name:uk": "Бен Кардан",
+          "name:ur": "بن قردان",
+          "name:zh": "本加爾丹",
+          "name:zu": "Ben Gardane",
+          "official_name": "مدينة بنقردان",
+          "official_name:ar": "مدينة بنقردان",
+          "place": "town",
+          "population": "58000",
+          "wikidata": "Q1143002",
+          "wikimedia_commons": "Category:Ben Gardane",
+          "wikipedia": "ar:بنقردان",
+          "wikipedia:ar": "بنقردان"
+        }
+      },
+      "expectedOriginalAndEffectivePresence": true,
+      "expectedRawPresence": false
+    },
+    "officialDelegationCode": "5254",
+    "officialRecords": [
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525451",
+        "sectorFr": "Ben guerdane nord",
+        "sectorAr": "بنقردان الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61266,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3009,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3003
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525452",
+        "sectorFr": "Ben guerdane sud",
+        "sectorAr": "بنقردان الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61300,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3010,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3004
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525453",
+        "sectorFr": "Essayah",
+        "sectorAr": "الصياح",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61334,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3011,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3005
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525454",
+        "sectorFr": "Jmilla",
+        "sectorAr": "جميلة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61368,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3013,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3007
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525455",
+        "sectorFr": "El maamerat",
+        "sectorAr": "المعمرات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61402,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3015,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3009
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525456",
+        "sectorFr": "El amria",
+        "sectorAr": "العامرية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61436,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3017,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3011
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525457",
+        "sectorFr": "Ettabai",
+        "sectorAr": "الطابعي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61470,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3019,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3013
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525458",
+        "sectorFr": "Ourasnia",
+        "sectorAr": "الوراسنية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61504,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3021,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3015
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525459",
+        "sectorFr": "Jallel",
+        "sectorAr": "جلال",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61538,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3023,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3017
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525460",
+        "sectorFr": "Neffatia",
+        "sectorAr": "النفاتية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61572,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3025,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3019
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525461",
+        "sectorFr": "Chahbania",
+        "sectorAr": "الشهبانية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61606,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3027,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3021
+        }
+      },
+      {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5254",
+        "delegationFr": "Ben guerdane",
+        "delegationAr": "بنقردان",
+        "sectorCode": "525462",
+        "sectorFr": "Chareb errajel",
+        "sectorAr": "شارب الراجل",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 61640,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3029,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3023
+        }
+      }
+    ],
+    "officialRegistry": {
+      "root": "REPO",
+      "file": "scripts/neighborhoods/residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "exactReviewedContainment": {
+      "originalAndPackedShapesValid": true,
+      "currentBaseInsideOriginalAndPackedResidential": true,
+      "supportPointInsideOriginalAndPackedResidential": true,
+      "sameNamedContainingCompiledPolygonsAtSupportingPoint": [
+        {
+          "id": "osm:way:26303952",
+          "name": "بنقردان",
+          "kind": "residential",
+          "areaKm2": 55.569214920640555
+        }
+      ],
+      "cachedDelegation": {
+        "id": "osm:relation:7142942",
+        "tags": {
+          "admin_level": "5",
+          "alt_name": "معتمدية بن قردان",
+          "alt_name:ar": "معتمدية بن قردان",
+          "alt_name:fr": "Ben Gardane",
+          "boundary": "administrative",
+          "name": "معتمدية بنقردان",
+          "name:ar": "معتمدية بنقردان",
+          "name:fr": "Délégation Ben Gardane",
+          "ref:tn:codegeo": "5254",
+          "ref:tn:hasc_2": "TN.ME.BG",
+          "sorting_name": "بنقردان",
+          "sorting_name:ar": "بنقردان",
+          "wikidata": "Q2895427",
+          "wikipedia": "ar:معتمدية بنقردان",
+          "wikipedia:ar": "معتمدية بنقردان"
+        },
+        "sourceGeometrySha256": "91b02f172b0f29304f96119645ae3e6319bd089f2de4987634b997a3acf78cba",
+        "sourceBounds": [
+          10.5235355,
+          32.2499202,
+          11.5999351,
+          33.3743417
+        ],
+        "current": null,
+        "packedGeometrySha256": null
+      },
+      "residentialFullyInsideCachedDelegation": true,
+      "residentialAreaOutsideCachedDelegationM2": 0.0,
+      "qualification": "Source identity and exact current point/polygon containment only. Neither the residential extent nor inherited OSM administrative borders are certified as a complete official town boundary. Noncontainment is recorded rather than fabricated away."
+    },
+    "parentMetadataMustRemain": {
+      "parentName": "معتمدية بنقردان",
+      "contextAliases": [
+        "Ben Gardane",
+        "Délégation Ben Gardane",
+        "معتمدية بن قردان",
+        "معتمدية بنقردان"
+      ]
+    },
+    "sourceNamePeerInventory": {
+      "queryNormalizedNames": [
+        "bengardanas",
+        "bengardane",
+        "benguerdane",
+        "benguerdene",
+        "binkirdan",
+        "μπενγκερνταν",
+        "бенгардан",
+        "бенкардан",
+        "בןגרדאן",
+        "بنقردان",
+        "مدينةبنقردان",
+        "벤가르단",
+        "ヘンカルタン",
+        "本加爾丹"
+      ],
+      "cachedAreas": [
+        {
+          "id": "osm:way:26303952",
+          "tags": {
+            "addr:city": "بنقردان",
+            "addr:city:ar": "بنقردان",
+            "alt_name": "بن قردان",
+            "alt_name:ar": "بن قردان",
+            "landuse": "residential",
+            "name": "بنقردان",
+            "name:ar": "بنقردان",
+            "name:azb": "بن قردان",
+            "name:en": "Ben Gardane",
+            "name:fa": "بن قردان",
+            "name:fr": "Ben Gardane",
+            "name:ur": "بن قردان",
+            "population": "58000"
+          },
+          "sourceGeometrySha256": "766106a4c6fc454a84e68f27f0b48c89dd21bea9a3f0a3a4af38a0677412d4fc",
+          "sourceBounds": [
+            11.1485547,
+            33.0744408,
+            11.2570233,
+            33.1801346
+          ],
+          "current": {
+            "id": "osm:way:26303952",
+            "sourceId": "osm",
+            "name": "بنقردان",
+            "aliases": [
+              "Ben Gardanas",
+              "Ben Gardane",
+              "Ben Guerdane",
+              "Bin Kirdan",
+              "Μπεν Γκερντάν",
+              "Бен Кардан",
+              "Бен-Гардан",
+              "בן גרדאן",
+              "بن قردان",
+              "مدينة بنقردان",
+              "ベンカルダン",
+              "本加爾丹",
+              "벤가르단"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.127308,
+            "lng": 11.203432,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.148555,
+              33.074441,
+              11.257023,
+              33.180135
+            ],
+            "areaKm2": 55.569214920640555,
+            "pickerGroupId": "osm:way:26303952",
+            "offset": 5360760,
+            "length": 6156
+          },
+          "packedGeometrySha256": "723660ad8e99cbc73f94f128995d0f857d21ed2c7e9cef7356c8bdcf72ea4107"
+        },
+        {
+          "id": "osm:relation:7142942",
+          "tags": {
+            "admin_level": "5",
+            "alt_name": "معتمدية بن قردان",
+            "alt_name:ar": "معتمدية بن قردان",
+            "alt_name:fr": "Ben Gardane",
+            "boundary": "administrative",
+            "name": "معتمدية بنقردان",
+            "name:ar": "معتمدية بنقردان",
+            "name:fr": "Délégation Ben Gardane",
+            "ref:tn:codegeo": "5254",
+            "ref:tn:hasc_2": "TN.ME.BG",
+            "sorting_name": "بنقردان",
+            "sorting_name:ar": "بنقردان",
+            "wikidata": "Q2895427",
+            "wikipedia": "ar:معتمدية بنقردان",
+            "wikipedia:ar": "معتمدية بنقردان"
+          },
+          "sourceGeometrySha256": "91b02f172b0f29304f96119645ae3e6319bd089f2de4987634b997a3acf78cba",
+          "sourceBounds": [
+            10.5235355,
+            32.2499202,
+            11.5999351,
+            33.3743417
+          ],
+          "current": null,
+          "packedGeometrySha256": null
+        }
+      ],
+      "cachedNodes": [
+        {
+          "id": "osm:node:287588734",
+          "tags": {
+            "alt_name": "بن قردان",
+            "alt_name:ar": "بن قردان",
+            "name": "بن قردان",
+            "name:ar": "بن قردان",
+            "name:azb": "بن قردان",
+            "name:ca": "Ben Gardane",
+            "name:cs": "Ben Gardane",
+            "name:cy": "Ben Guerdane",
+            "name:da": "Ben Gardane",
+            "name:de": "Ben Gardane",
+            "name:el": "Μπεν Γκερντάν",
+            "name:en": "Ben Gardane",
+            "name:es": "Ben Gardane",
+            "name:fa": "بن قردان",
+            "name:fi": "Ben Gardane",
+            "name:fr": "Ben Gardane",
+            "name:he": "בן גרדאן",
+            "name:hu": "Ben Gardane",
+            "name:it": "Ben Gardane",
+            "name:ja": "ベンカルダン",
+            "name:kab": "Ben Gardane",
+            "name:ko": "벤가르단",
+            "name:lt": "Ben Gardanas",
+            "name:nl": "Ben Gardane",
+            "name:pl": "Bin Kirdan",
+            "name:pt": "Ben Gardane",
+            "name:ro": "Ben Gardane",
+            "name:ru": "Бен-Гардан",
+            "name:tr": "Ben Gardane",
+            "name:uk": "Бен Кардан",
+            "name:ur": "بن قردان",
+            "name:zh": "本加爾丹",
+            "name:zu": "Ben Gardane",
+            "official_name": "مدينة بنقردان",
+            "official_name:ar": "مدينة بنقردان",
+            "place": "town",
+            "population": "58000",
+            "wikidata": "Q1143002",
+            "wikimedia_commons": "Category:Ben Gardane",
+            "wikipedia": "ar:بنقردان",
+            "wikipedia:ar": "بنقردان"
+          },
+          "lat": 33.1403223,
+          "lng": 11.2170109,
+          "current": null
+        }
+      ],
+      "supplementalCities": [],
+      "scope": "Exact normalized primary/alias names across existing cached source inventories; no fuzzy matching, proximity discovery, PBF scan or global collector change."
+    },
+    "coordinateCorrectionBefore": {
+      "delegationId": 488,
+      "expectedGovernorateId": 353,
+      "expectedNames": {
+        "nomAr": "بن قردان",
+        "nomFr": "Ben Guerdene",
+        "nomEn": "Ben Guerdene"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 33.17,
+        "lng": 11.22
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 33.1403223,
+        "lng": 11.2170109
+      },
+      "movedKm": 3.3117204707469865,
+      "osm": {
+        "id": "osm:node:287588734",
+        "url": "https://www.openstreetmap.org/node/287588734",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/287588734.json",
+        "version": 20,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "بن قردان",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2472431,
+        "name": "Ben Gardane",
+        "lat": 33.13783,
+        "lng": 11.21965,
+        "featureCode": "PPL",
+        "modified": "2026-07-28",
+        "url": "https://www.geonames.org/2472431",
+        "distanceToProposedKm": 0.3703801398291166,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture shows the pin within the Ben Gardane / بن قردان street network. The selected market card explicitly says Cente ville Ben Gardane and its address is in Ben Gardane.",
+        "originalObservation": "The original view has sparse roads around an Unnamed location near Ben Gardane, with C110 at the western side of the capture.",
+        "limitation": "The market card may be a nearby snapped result. The sourced OSM place coordinate remains the proposed reference.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 33.1403223,
+              "lng": 11.2170109
+            },
+            "requestedQuery": "33.1403223,11.2170109",
+            "observedAt": "2026-09-07T06:26:18.199872+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_488-2.png",
+            "screenshotSha256": "b005a51113b6d1642120785824b30c92b019f52d35eedf66ee2dd334f1a627be",
+            "observationJson": "outputs/phone-maps-review/delegation_488-2.json",
+            "observationJsonSha256": "71d6c6f39cb89388a08adc110b09e20f4ff45322a41e087eabc6021cbbc738d9",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 33.17,
+              "lng": 11.22
+            },
+            "requestedQuery": "33.17,11.22",
+            "observedAt": "2026-09-07T06:26:25.073055+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_488-3.png",
+            "screenshotSha256": "2e46f53c038f103e1808e24db44aecad82d87a07aea206b72625bfe4fbd68bd8",
+            "observationJson": "outputs/phone-maps-review/delegation_488-3.json",
+            "observationJsonSha256": "f59c244b106635cbdf8bf203fb2be5e5d5d5cf4e2aa702e9dc7b6cafcca40243",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    "coordinateCorrectionAfter": {
+      "delegationId": 488,
+      "expectedGovernorateId": 353,
+      "expectedNames": {
+        "nomAr": "بن قردان",
+        "nomFr": "Ben Guerdene",
+        "nomEn": "Ben Guerdene"
+      },
+      "reviewedDate": "2026-09-07",
+      "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+      "original": {
+        "lat": 33.17,
+        "lng": 11.22
+      },
+      "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+      "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+      "proposed": {
+        "lat": 33.1403223,
+        "lng": 11.2170109
+      },
+      "movedKm": 3.3117204707469865,
+      "osm": {
+        "id": "osm:node:287588734",
+        "url": "https://www.openstreetmap.org/node/287588734",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/287588734.json",
+        "version": 20,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "بن قردان",
+        "place": "town"
+      },
+      "osmEvidence": {
+        "retrieved": "2026-09-07",
+        "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+        "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+      },
+      "geonames": {
+        "id": 2472431,
+        "name": "Ben Gardane",
+        "lat": 33.13783,
+        "lng": 11.21965,
+        "featureCode": "PPL",
+        "modified": "2026-07-28",
+        "url": "https://www.geonames.org/2472431",
+        "distanceToProposedKm": 0.3703801398291166,
+        "featureClass": "P"
+      },
+      "phoneVisualReview": {
+        "reviewedDate": "2026-09-07",
+        "decision": "approved_settlement_reference",
+        "report": "outputs/phone-source-point-second-review-first-eight.json",
+        "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+        "proposedObservation": "The proposed capture shows the pin within the Ben Gardane / بن قردان street network. The selected market card explicitly says Cente ville Ben Gardane and its address is in Ben Gardane.",
+        "originalObservation": "The original view has sparse roads around an Unnamed location near Ben Gardane, with C110 at the western side of the capture.",
+        "limitation": "The market card may be a nearby snapped result. The sourced OSM place coordinate remains the proposed reference.",
+        "exactCoordinateCertified": false,
+        "boundaryVerified": false,
+        "observations": [
+          {
+            "role": "proposed",
+            "point": {
+              "lat": 33.1403223,
+              "lng": 11.2170109
+            },
+            "requestedQuery": "33.1403223,11.2170109",
+            "observedAt": "2026-09-07T06:26:18.199872+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_488-2.png",
+            "screenshotSha256": "b005a51113b6d1642120785824b30c92b019f52d35eedf66ee2dd334f1a627be",
+            "observationJson": "outputs/phone-maps-review/delegation_488-2.json",
+            "observationJsonSha256": "71d6c6f39cb89388a08adc110b09e20f4ff45322a41e087eabc6021cbbc738d9",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          },
+          {
+            "role": "original",
+            "point": {
+              "lat": 33.17,
+              "lng": 11.22
+            },
+            "requestedQuery": "33.17,11.22",
+            "observedAt": "2026-09-07T06:26:25.073055+00:00",
+            "screenshot": "outputs/phone-maps-review/delegation_488-3.png",
+            "screenshotSha256": "2e46f53c038f103e1808e24db44aecad82d87a07aea206b72625bfe4fbd68bd8",
+            "observationJson": "outputs/phone-maps-review/delegation_488-3.json",
+            "observationJsonSha256": "f59c244b106635cbdf8bf203fb2be5e5d5d5cf4e2aa702e9dc7b6cafcca40243",
+            "visuallyReviewed": true,
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        ]
+      }
+    },
+    "primaryGrounds": "The addressed Ben Gardane residential polygon explicitly lists بن قردان as alias of بنقردان and contains the already approved exact source488 town node. The bilingual node and polygon name/address identity agree; no evidence indicates separate towns.",
+    "primaryCorroboration": {
+      "baseId": 488,
+      "url": "https://www.commune-bengardene.gov.tn/?page_id=1283",
+      "provider": "Ben Gardane municipality",
+      "title": "تعريف المدينة",
+      "evidenceType": "Search-indexed primary-page text, separately pinned; direct HTTPS and browser open timed out. Not a downloaded original HTML.",
+      "file": "work/three-residential-town-source-triage/municipal-indexed-excerpts-response.json",
+      "shortQuote": "تقع مدينة بنقردان في الجنوب الشرقي للبلاد التونسية",
+      "supports": "Explicit Ben Gardane town identity under Medenine and joined Arabic spelling.",
+      "limit": "Page mixes city/municipal/wider regional scope and lists nine regions with old population figures. It does not replace the12 current INS imadas or validate the55.57km2 residential polygon."
+    },
+    "exactIdentityBindings": {
+      "residentialNameArAndAddrCity": "بنقردان",
+      "residentialAltNameAr": "بن قردان",
+      "baseNomAr": "بن قردان",
+      "placeNameAr": "بن قردان",
+      "residentialAndPlaceNameFr": "Ben Gardane",
+      "population": "58000",
+      "noGlobalWhitespaceEquivalenceRule": true
+    }
+  },
+  "sourceReview": {
+    "file": "residential-base-display-reviews/three-town-review/source-review.json",
+    "sha256": "e0a418a9cf369db73de7539983d8adff6487134bbefc56e870b22d5514038ce0"
+  },
+  "sourceFacts": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/dependency-successors/ben-guerdane-protected-source-facts.json",
+    "sha256": "5a0fce5f46d57f84295d4da570fd5b51dcd84ec9e0ed8454d0d67decf9b9576c"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "primarySources": [
+    {
+      "file": "residential-base-display-reviews/three-town-review/municipal-indexed-excerpts-response.json",
+      "sha256": "1e67b850f5dcfa7b56ca6a86e66cbbbfa8bc179dcab49d3119c04fc196eef35e"
+    }
+  ],
+  "qualification": "Retain Ben Guerdane display identity, all polygons, points and imada groups. Three preserved-sector prayer defaults change with the authentic Smar reference. Original identity and primary evidence remain unchanged.",
+  "placeResponse": {
+    "file": "point-base-name-reviews/legacy-batch-2026-09-07/candidate-place-nodes-second-live.json",
+    "sha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+  }
+}

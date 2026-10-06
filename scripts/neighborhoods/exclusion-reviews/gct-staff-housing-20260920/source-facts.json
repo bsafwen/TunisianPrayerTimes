@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "status": "WORK_ONLY_SOURCE_FACTS",
+  "id": "osm:way:391586656",
+  "sourceId": "osm",
+  "name": "حي إطارات المجمع الكيميائي التونسي",
+  "aliases": [
+    "Cité des Cadres GCT"
+  ],
+  "kind": "residential",
+  "parentName": "سكرة",
+  "contextAliases": [
+    "Délégation Sfax Ouest",
+    "Sfax Ouest",
+    "Soukra",
+    "سكرة",
+    "معتمدية صفاقس الغربية"
+  ],
+  "governorateId": 359,
+  "delegationId": 632,
+  "lat": 34.730761,
+  "lng": 10.744798,
+  "hasBoundary": true,
+  "bbox": [
+    10.743675,
+    34.729706,
+    10.745935,
+    34.731855
+  ],
+  "areaKm2": 0.02544226139357494,
+  "pickerGroupId": "osm:way:391586656",
+  "currentRow": {
+    "id": "osm:way:391586656",
+    "sourceId": "osm",
+    "name": "حي إطارات المجمع الكيميائي التونسي",
+    "aliases": [
+      "Cité des Cadres GCT"
+    ],
+    "kind": "residential",
+    "parentName": "سكرة",
+    "contextAliases": [
+      "Délégation Sfax Ouest",
+      "Sfax Ouest",
+      "Soukra",
+      "سكرة",
+      "معتمدية صفاقس الغربية"
+    ],
+    "governorateId": 359,
+    "lat": 34.730761,
+    "lng": 10.744798,
+    "delegationId": 632,
+    "hasBoundary": true,
+    "bbox": [
+      10.743675,
+      34.729706,
+      10.745935,
+      34.731855
+    ],
+    "areaKm2": 0.02544226139357494,
+    "pickerGroupId": "osm:way:391586656",
+    "offset": 5495304,
+    "length": 92
+  },
+  "originalRecord": {
+    "id": "osm:way:391586656",
+    "kind": "residential",
+    "tags": {
+      "landuse": "residential",
+      "name": "حي إطارات المجمع الكيميائي التونسي",
+      "name:ar": "حي إطارات المجمع الكيميائي التونسي",
+      "name:fr": "Cité des Cadres GCT"
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              10.7436748,
+              34.7310152
+            ],
+            [
+              10.7449289,
+              34.7297055
+            ],
+            [
+              10.7450627,
+              34.7299566
+            ],
+            [
+              10.7452,
+              34.7301583
+            ],
+            [
+              10.745464,
+              34.7305063
+            ],
+            [
+              10.7459353,
+              34.7310658
+            ],
+            [
+              10.7459242,
+              34.7312957
+            ],
+            [
+              10.7454,
+              34.7318165
+            ],
+            [
+              10.7451769,
+              34.731855
+            ],
+            [
+              10.7436748,
+              34.7310152
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "originalAuthoritativeInventory": {
+    "name": "soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997,
+    "scope": "Immutable original extracted source inventory; originalRecord is its exact selected row."
+  },
+  "currentMetadata": {
+    "repositoryPath": "android-app/app/src/main/assets/neighborhoods.json",
+    "sha256": "b8b1145eba4936916ddf9c750641a21000bde898c9a70975257cd98064cd30b9",
+    "bytes": 1860726
+  },
+  "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "priorReview": {
+    "workRelative": "gct-staff-primary-check-20260920/final-review.json",
+    "sha256": "6d21de3da16f461095eb37ab8212340d90b8a18d3083d590ce274425ec8be077",
+    "bytes": 11860,
+    "qualifiedConclusion": "EXCLUDE_FROM_LOCALITY_PICKER_AND_GPS_LABELS_SUPPORTED_FOR_ROOT_DECISION",
+    "qualification": "Work-only product-scope recommendation; no primary operator/parcel link; no negative existence inference."
+  },
+  "externalBodyRequired": false,
+  "qualifications": [
+    "No primary operator/parcel link to the exact bbox was established.",
+    "Failed operator search is not negative identity evidence.",
+    "Exclusion is product-scope only, not nonexistence or certified ownership."
+  ]
+}

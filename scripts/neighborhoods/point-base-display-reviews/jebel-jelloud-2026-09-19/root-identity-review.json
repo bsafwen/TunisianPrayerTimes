@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "ROOT_APPROVED_EXACT_POINT_BASE_DISPLAY_ONLY",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jebel-point-base-preparation-20260919\\sourcefacts.json",
+    "sha256": "403a0f8a931b2f738b9ca047494cec721b1c15289c785ff06bf13bc81b512fa0"
+  },
+  "decision": "Associate the existing Jebel Jelloud settlement point with base401 as one broad manual display choice. Preserve the smaller namesake sector separately and all other six sectors.",
+  "reasoning": [
+    "Unique original village point, current API identity, current official1168parent and exact original parent/governorate containment independently agree.",
+    "Official Interior Ministry article31303 uses both Arabic spellings for the same named geographic subject; this supports the existing base/point naming relationship, not polygon equivalence.",
+    "Both retained physical representatives independently choose available prayer source401. Raw coordinates and references need no changes.",
+    "Complete original name-peer inventory has exactly point3148875770, parent4134869 and sector7202851. The namesake sector is explicitly preserved, not silently absorbed."
+  ],
+  "expectedRawChanges": [
+    {
+      "id": "osm:node:3148875770",
+      "field": "pickerGroupId",
+      "before": "osm:node:3148875770",
+      "after": "delegation:401"
+    }
+  ],
+  "displayRowsBefore": 3433,
+  "displayRowsAfter": 3432,
+  "manualSourceBeforeAfter": 401,
+  "sevenSectorsRemainExact": true,
+  "compilerChangeRequired": false,
+  "fullJebelScopeCertified": false,
+  "remainingWork": "Review how to distinguish the retained narrower sector in the picker and verify its full boundary provenance. No triple merge is approved.",
+  "workerAdjudication": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jebel-point-base-preparation-20260919\\worker-adjudication.json",
+    "sha256": "fff142ead370f7db8e30b195aeca26852e9061f20b1e1b7af09eed34d686d0c7"
+  },
+  "boundaryCertification": false
+}

@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "status": "QUALIFICATION_ONLY_NO_APPROVAL",
+  "inputPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "540a48c17888518d28a9b5e586f3e7ec7c8d7f7051c8b9f03564e7e262bdfff8"
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+    },
+    "governors": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "839302205eac4d5a3f41e35949a1c39ed979f80c87d89b2bef80e2a16587696f"
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "candidates": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rjim-ariana-reference-context-20260921\\candidates-current.json",
+      "sha256": "420b000e8bb6d51134602f13c5e77ab72370416f1fee098bc4d3da01a372d265"
+    },
+    "compiler": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "caaf78f4b2dc0823fdf86620c8b842408c5401ded386ba5658c08e88efb193fe"
+    },
+    "receipts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+      "sha256": "5ef18afd6eded9e9a5b91424b51a0f7eef83908444e16d3628c6beb853c3912c"
+    },
+    "adapter": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\reference-pair-automation-20260921\\qualify_reference_pairs.py",
+      "sha256": "9cc51d32e7ed6dc1d071a205473e491faf6a86be3d6e1f5d47454c43069cdc5c"
+    }
+  },
+  "summary": {
+    "candidateCount": 2,
+    "qualifiedCount": 2,
+    "failedCount": 0
+  },
+  "records": [
+    {
+      "delegationId": 487,
+      "qualified": true,
+      "failure": null,
+      "originalEvidence": {
+        "prayer": {
+          "body": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\487-prayer-attempt01-06629e97e51d7498.json",
+            "sha256": "06629e97e51d7498138e13dc2b9046dbb13b93c3e6998d6f6d9e082c3e7d763e"
+          },
+          "retrieval": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\receipts\\487-prayer-attempt01.json",
+            "sha256": "39a58ba103c7e2d52f902f5f88823ae565020b4d2405078b2a2efc37c8d10748"
+          },
+          "disposition": "fresh"
+        },
+        "sun": {
+          "body": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\487-sun-attempt01-56d7b6ec80967b69.json",
+            "sha256": "56d7b6ec80967b695cd15bc5fb0eb280672167e34a5b3fc3060aaac7e0133010"
+          },
+          "retrieval": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\receipts\\487-sun-attempt01.json",
+            "sha256": "5454ab8baed78a1fde6d99d3c979e8c8074f984951e884f9a1b798edc3c403bc"
+          },
+          "disposition": "fresh"
+        }
+      },
+      "approval": "none",
+      "correction": {
+        "delegationId": 487,
+        "expectedGovernorateId": 1012,
+        "expectedNames": {
+          "nomAr": "رجيم معتوق",
+          "nomFr": "Rjim Maatoug",
+          "nomEn": "Rjim Maatoug"
+        },
+        "referenceKind": "inm_published_reference",
+        "original": {
+          "lat": 33.32,
+          "lng": 8.033
+        },
+        "proposed": {
+          "lat": 33.325,
+          "lng": 8.014
+        },
+        "inmEvidence": {
+          "serviceDate": "2026-09-19",
+          "prayer": {
+            "file": "evidence/487-prayer.json",
+            "sha256": "06629e97e51d7498138e13dc2b9046dbb13b93c3e6998d6f6d9e082c3e7d763e",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/487/"
+          },
+          "sun": {
+            "file": "evidence/487-sun.json",
+            "sha256": "56d7b6ec80967b695cd15bc5fb0eb280672167e34a5b3fc3060aaac7e0133010",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/487/"
+          },
+          "retrievalManifest": {
+            "file": "retrieval-manifest.json",
+            "sha256": "a124262df361ed1f068e54c7a81db4f7d9aac360cc5ec7c47c024a8523c925df"
+          }
+        }
+      },
+      "validatedReference": {
+        "delegationId": 487,
+        "governorateId": 1012,
+        "lat": 33.325,
+        "lng": 8.014,
+        "serviceDate": "2026-09-19",
+        "sourceEvidence": {
+          "prayer": {
+            "file": "evidence/487-prayer.json",
+            "sha256": "06629e97e51d7498138e13dc2b9046dbb13b93c3e6998d6f6d9e082c3e7d763e",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/487/"
+          },
+          "sun": {
+            "file": "evidence/487-sun.json",
+            "sha256": "56d7b6ec80967b695cd15bc5fb0eb280672167e34a5b3fc3060aaac7e0133010",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/487/"
+          },
+          "retrievalManifest": {
+            "file": "retrieval-manifest.json",
+            "sha256": "a124262df361ed1f068e54c7a81db4f7d9aac360cc5ec7c47c024a8523c925df"
+          }
+        }
+      }
+    },
+    {
+      "delegationId": 631,
+      "qualified": true,
+      "failure": null,
+      "originalEvidence": {
+        "prayer": {
+          "body": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\631-prayer-attempt01-8aa46d0045a66b0d.json",
+            "sha256": "8aa46d0045a66b0d397e432a123d64660b43d75d7fed68dd87487ae246b0f765"
+          },
+          "retrieval": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\receipts\\631-prayer-attempt01.json",
+            "sha256": "8213148c8af881c6fe80ab2ad233b79f662ef508ded53c1fb97a003ee8328a30"
+          },
+          "disposition": "fresh"
+        },
+        "sun": {
+          "body": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\631-sun-attempt01-47fa2f5a75395b79.json",
+            "sha256": "47fa2f5a75395b79c29fecab7f53728283676e7f156b170eb70bce38da53b25a"
+          },
+          "retrieval": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\receipts\\631-sun-attempt01.json",
+            "sha256": "8f7f30c1dc3a23de319ed9de525819424cb2730ec7980c0344b1667d5dfbfd95"
+          },
+          "disposition": "fresh"
+        }
+      },
+      "approval": "none",
+      "correction": {
+        "delegationId": 631,
+        "expectedGovernorateId": 358,
+        "expectedNames": {
+          "nomAr": "اريانة",
+          "nomFr": "Ariana",
+          "nomEn": "Ariana"
+        },
+        "referenceKind": "inm_published_reference",
+        "original": {
+          "lat": 36.8625,
+          "lng": 10.1956
+        },
+        "proposed": {
+          "lat": 36.891,
+          "lng": 10.182
+        },
+        "inmEvidence": {
+          "serviceDate": "2026-09-19",
+          "prayer": {
+            "file": "evidence/631-prayer.json",
+            "sha256": "8aa46d0045a66b0d397e432a123d64660b43d75d7fed68dd87487ae246b0f765",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/631/"
+          },
+          "sun": {
+            "file": "evidence/631-sun.json",
+            "sha256": "47fa2f5a75395b79c29fecab7f53728283676e7f156b170eb70bce38da53b25a",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/631/"
+          },
+          "retrievalManifest": {
+            "file": "retrieval-manifest.json",
+            "sha256": "a124262df361ed1f068e54c7a81db4f7d9aac360cc5ec7c47c024a8523c925df"
+          }
+        }
+      },
+      "validatedReference": {
+        "delegationId": 631,
+        "governorateId": 358,
+        "lat": 36.891,
+        "lng": 10.182,
+        "serviceDate": "2026-09-19",
+        "sourceEvidence": {
+          "prayer": {
+            "file": "evidence/631-prayer.json",
+            "sha256": "8aa46d0045a66b0d397e432a123d64660b43d75d7fed68dd87487ae246b0f765",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/631/"
+          },
+          "sun": {
+            "file": "evidence/631-sun.json",
+            "sha256": "47fa2f5a75395b79c29fecab7f53728283676e7f156b170eb70bce38da53b25a",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/631/"
+          },
+          "retrievalManifest": {
+            "file": "retrieval-manifest.json",
+            "sha256": "a124262df361ed1f068e54c7a81db4f7d9aac360cc5ec7c47c024a8523c925df"
+          }
+        }
+      }
+    }
+  ],
+  "qualification": "Cached source identity/date/time/coordinate checks only; no new HTTP fetch or geographic approval."
+}

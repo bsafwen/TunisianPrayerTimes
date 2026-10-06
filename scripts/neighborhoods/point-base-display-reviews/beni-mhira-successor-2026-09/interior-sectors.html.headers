@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 11:21:03 GMT
+Server: Apache
+Set-Cookie: data-mi-cookie=5466o8fcd4ck1o0kqpi7u029g3; expires=Sat, 12-Sep-2026 15:21:03 GMT; Max-Age=14400; path=/; secure; HttpOnly
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Cache-Control: max-age=600
+Expires: Sat, 12 Sep 2026 11:31:03 GMT
+Content-Type: text/html; charset=UTF-8
+Set-Cookie: cookiesession1=678A8C32C6E7CF6B7D222BC1C5D46399;Expires=Sun, 12 Sep 2027 11:24:44 GMT;Path=/;HttpOnly
+Content-Length: 38382
+

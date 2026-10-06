@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "reviewed_residential_base_display_identity",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_residential_base_display_identity",
+    "id": "osm:way:43944790",
+    "targetDelegationId": 441
+  },
+  "sourceReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-source-identity-wrapper-sidi-only-stage.json",
+    "sha256": "c76da19443f4db74929bd3317fa12c361ce34fe8e9e85e5048e09580885ac79e"
+  },
+  "sourceReviewRecordBaseId": 441,
+  "sourceFacts": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/441-exact-source-and-current-facts.json",
+    "sha256": "fdc8f9be73d62b1fc178189a183f4c8d2a1949cbf8d7d04b51676bab7477dd80"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "governorate": {
+    "id": 348,
+    "nomAr": "سوسة",
+    "nomFr": "Sousse"
+  },
+  "governorSourceId": "osm:relation:3152094",
+  "primarySources": [
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020.pdf",
+      "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "artifactKind": "original_pdf_response",
+      "role": "official_inhabited_town_identity"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sousse-atlas-full-page84-derived.txt",
+      "sha256": "a2f1ad433e2640c09eb62fe945c8383b4231c8797fbfa5f09184cfec0e9d5923",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf#page=84",
+      "artifactKind": "derived_full_page_utf8",
+      "role": "official_inhabited_town_identity",
+      "provenance": {
+        "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sousse-page84-derived-provenance.json",
+        "sha256": "44f9be105d8bad7a6051574d715134649313aae486c5b5491c885533a047d574"
+      },
+      "isOriginalHttpResponseBytes": false
+    }
+  ],
+  "independentSourceReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-residential-root-scope-review-v2.json",
+    "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098"
+  },
+  "finiteSchemaReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-residential-display-feasibility.json",
+    "sha256": "7dcfc576c5872a0877d67dd5dea7c7c3455e22c922b26fe8c91a690c2b2437ef"
+  },
+  "baselineMetadataSha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+  "retainedSourceResponses": {
+    "current": {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-current.json",
+      "sha256": "e1754be7c3da529217123e453347be5f002b65df205c8f6f7676664624d32c87"
+    },
+    "history": {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-history.json",
+      "sha256": "b17d13e9ab2dd83338ecd6e541d39f0bc12a77d8cd9e0a365c2f1105e1f10c54"
+    },
+    "full": {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-full.json",
+      "sha256": "9eec413e62e05432b077237395d19a57c9ba3c2b19cbcc80c7108d33f1df2d62"
+    }
+  },
+  "sourceResponseProvenance": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sidi-el-hani-original-response-provenance.json",
+    "sha256": "461324c0b708d15f66dd6b78575a6fa72a24585b31859794b7d1ef7cb07814e6"
+  },
+  "noBaseNameCorrection": true,
+  "onlyRawChange": {
+    "id": "osm:way:43944790",
+    "field": "pickerGroupId",
+    "before": "osm:way:43944790",
+    "after": "delegation:441"
+  },
+  "scope": "Preserve one exact inhabited-town residential footprint while associating its display choice with441. The six sector groups stay separate; the source village point stays absent. The existing base is outside the footprint and in a different sector, but both points remain in the same reviewed delegation/governorate."
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="OpenStreetMap server" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+<changeset id="145942126" created_at="2024-01-06T01:32:34Z" open="false" comments_count="0" changes_count="44" created_count="12" modified_count="29" deleted_count="3" closed_at="2024-01-06T01:32:34Z" min_lat="32.7881751" min_lon="10.5142529" max_lat="32.8005590" max_lon="10.5274954" uid="15169703" user="Petr Jenč">
+  <tag k="changesets_count" v="3959"/>
+  <tag k="comment" v="supplementation of information, line correction"/>
+  <tag k="created_by" v="iD 2.27.3"/>
+  <tag k="host" v="https://www.openstreetmap.org/edit"/>
+  <tag k="imagery_used" v="Bing Maps Aerial"/>
+  <tag k="locale" v="cs"/>
+  <tag k="source" v="aerial imagery;survey"/>
+  <discussion>
+  </discussion>
+</changeset>
+</osm>

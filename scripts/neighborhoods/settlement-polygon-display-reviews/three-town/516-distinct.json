@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7189438",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:fr": "Tibar",
+        "ref:tn:codegeo": "215651"
+      },
+      "originalGeometrySha256": "4a24f9de4309b4beb1d4f907b010836a5041d49109281d6d73f4284d785a09db",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:fr": "Tibar",
+        "ref:tn:codegeo": "215651"
+      },
+      "effectiveGeometrySha256": "4a24f9de4309b4beb1d4f907b010836a5041d49109281d6d73f4284d785a09db",
+      "expectedMetadata": {
+        "name": "تيبار",
+        "aliases": [
+          "Tibar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تيبار",
+        "governorateId": 356,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:278951683",
+      "originalKind": "residential",
+      "originalTags": {
+        "landuse": "residential",
+        "name": "Thibar"
+      },
+      "originalGeometrySha256": "8bc411f078c4585a906c4fd0ba09a76c82a533a99ad5ee8f162c59e2c7d8c9a2",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "Thibar"
+      },
+      "effectiveGeometrySha256": "8bc411f078c4585a906c4fd0ba09a76c82a533a99ad5ee8f162c59e2c7d8c9a2",
+      "expectedMetadata": {
+        "name": "Thibar",
+        "aliases": [
+          "تيبار"
+        ],
+        "kind": "residential",
+        "parentName": "تيبار",
+        "governorateId": 356,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/tibar-ayoun-source-review.json",
+      "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/516-current-source-facts.json",
+      "sha256": "b9061ccb6895a8ad7613230e2e0a5cd3fe134df54ace8393bf08f6b58951c81f"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/independent-source-review.json",
+      "sha256": "88297770c4116ad4c7011ba9d745a5d184b9a274a298901751c6256afb261a70"
+    }
+  ],
+  "scope": "The independently coded imada remains a separate choice. Only this exact inhabited settlement polygon may later join its unchanged timetable base; all names, references and geometry remain."
+}

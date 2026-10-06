@@ -1,0 +1,47 @@
+{
+  "currentName": "مَزدُور",
+  "exactPointBinding": {
+    "checks": {
+      "coordinate": true,
+      "delegation": true,
+      "governorate": true,
+      "ownerId": true,
+      "parent": true,
+      "villageKind": true
+    },
+    "delegationId": 593,
+    "governorateId": 364,
+    "hasBoundary": false,
+    "id": "osm:node:1212270314",
+    "kind": "village",
+    "lat": 35.6819517,
+    "lng": 10.7278001,
+    "parentName": "المصدور",
+    "verifiedUnchanged": true
+  },
+  "preservedFrenchAlias": "Mazdour",
+  "preservedParent": "المصدور",
+  "proposedNameArabic": "المصدور",
+  "recommendation": "display_only_correction",
+  "remainingGap": "Saved Maps result classification='parent_or_broader_place'; finding='Parent/broader card; target Mazdour appears only in query/locator; no child identity or boundary proof.'. It remains a parent/broader-place limitation, not proof of child identity or boundary.",
+  "sameWordEvidence": {
+    "agree": true,
+    "arabicRoot": "المصدور",
+    "frenchRoot": "Mazdour",
+    "municipalityDirectory": {
+      "finding": "المصدور منزل حرب; address شارع الشهداء المصدور",
+      "matches": true,
+      "url": "https://opendata.interieur.gov.tn/fr/catalog/annuaire-des-municipalites"
+    },
+    "officialJournalArabic": {
+      "finding": "Recruitment table refers to المصدور منزل حرب",
+      "matches": true,
+      "url": "https://www.emploi.rn.tn/fichiers/20260306063707.pdf"
+    },
+    "officialJournalFrench": {
+      "finding": "Page 400 refers to commune Mazdour Menzel Harb",
+      "matches": true,
+      "url": "https://lake.jort.tn/journal-officiel/fr/2023/018.pdf"
+    }
+  }
+}

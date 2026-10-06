@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/tunis-souk-jedid-five-boundaries-20260924/build_best_effort_overlay.py",
+  "evidencePins": {
+    "tunisMarsaBorderReview": {
+      "file": "work/interior-imada-triage-20260924/tunis-marsa-border-review.json",
+      "sha256": "6c75f03e514454e4cbdc1b295984efe3dfdec7e7759bf94db65f69f533640639"
+    },
+    "qammartMarsaCombinedReview": {
+      "file": "work/interior-imada-triage-20260924/qammart-marsa-combined-review.json",
+      "sha256": "2f437feac9b053206b129aa30f998bd8a6df7986d695253254b28494f235e456"
+    },
+    "baieDesSingesReview": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/review-evidence.json",
+      "sha256": "89ba588735fdf4fc97e27068e7690d1a95da30facfc0b591b37dac68719e585a"
+    },
+    "baieDesSingesPriorTriage": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/prior-triage-extract.json",
+      "sha256": "fc7d8f35179007e994b574cc0c8df80c8cdb82bb17f26e71301f3ef36d3bbbef"
+    }
+  },
+  "sources": [
+    {
+      "id": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/candidate-source.geojson",
+      "geojsonSha256": "e52492ec65b98af53affb7d29ae2487cc13cd0b730cf1aabf01b3a3e79be8622",
+      "reviewFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/source-review.json",
+      "reviewSha256": "0393bcc9cbeb0c84a746d6862dda40f8fa140736b415cb44d63059d9a73de41e"
+    },
+    {
+      "id": "isie-best-effort-imada-tunis-qammart-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/qammart-candidate-source.geojson",
+      "geojsonSha256": "461ee4a806347f01eedfe9de59deba6354fa9172ecd9f2a14c95aba5223330e3",
+      "reviewFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/qammart-source-review.json",
+      "reviewSha256": "1ec0bf3e9d2cbed17ce92a5aa76a9662981e3337b062c79297a52b382d75fe64"
+    },
+    {
+      "id": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/marsa-beach-candidate-source.geojson",
+      "geojsonSha256": "b8c3b9faa6d862cc24dcba12ceee5a80b26708b6b783fe1cdbb4a579a48d1a6e",
+      "reviewFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/marsa-beach-source-review.json",
+      "reviewSha256": "4c4fae3c51e173bb3dbf22d8bd6b691e00f8f49182804780abcd938dbfe99700"
+    }
+  ],
+  "records": [
+    {
+      "action": "replace",
+      "id": "osm:relation:7117932",
+      "sourceId": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "sourceFeatureId": "osm:relation:7117932",
+      "officialCode": "116954",
+      "ministryName": "الطيب المهيري",
+      "ministryParent": "حلق الوادي",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الطيب المهيري",
+        "aliases": [
+          "Taieb Mhiri",
+          "الطيب مهيري"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7117932"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7062758",
+      "sourceId": "isie-best-effort-imada-tunis-qammart-20260924",
+      "sourceFeatureId": "osm:relation:7062758",
+      "officialCode": "117157",
+      "ministryName": "قمرت",
+      "ministryParent": "المرسى",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "قمرت",
+        "aliases": [
+          "Gammarth"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7062758"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7062337",
+      "sourceId": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+      "sourceFeatureId": "osm:relation:7062337",
+      "officialCode": "117151",
+      "ministryName": "المرسى الشاطئ",
+      "ministryParent": "المرسى",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "المرسى الشاطئ",
+        "aliases": [
+          "La Marsa Plage"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7062337"
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "osm:way:825272931",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Amendier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825272931"
+      },
+      "packedGeometrySha256": "1179fe854665eb25fe59e365483591d481a9982e8839e1a47c9a31528d8eed55",
+      "reason": "Tiny French-only OSM residential parcel wholly inside the reviewed Qammart imada; unsupported as a separate selectable locality.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/review-evidence.json",
+          "sha256": "3e4154f2e7c2f0ac739d2424abfa59c13057f7f7cd8866412d57696aa0f89c10"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/osm-tag-snapshot.json",
+          "sha256": "2e47b838c589e941f923fdcf206c4307ee553f240b805f9b4940869e6bde00a4"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/build_evidence.py",
+          "sha256": "61eb11cfdf2090b264f215bb99b20718c575c44e8255a31f5332fc97d53e5158"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:825272932",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Poirier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825272932"
+      },
+      "packedGeometrySha256": "49166a0516a7d4f3215b4b2565cb3146fc32bf3c9e8934d8443ca3ef1ce54008",
+      "reason": "Tiny French-only OSM residential parcel wholly inside the reviewed Qammart imada; unsupported as a separate selectable locality.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/review-evidence.json",
+          "sha256": "3e4154f2e7c2f0ac739d2424abfa59c13057f7f7cd8866412d57696aa0f89c10"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/osm-tag-snapshot.json",
+          "sha256": "2e47b838c589e941f923fdcf206c4307ee553f240b805f9b4940869e6bde00a4"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/build_evidence.py",
+          "sha256": "61eb11cfdf2090b264f215bb99b20718c575c44e8255a31f5332fc97d53e5158"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:825505201",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Palmier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825505201"
+      },
+      "packedGeometrySha256": "2cd92b7f9c5a202e90a65c03f08a3d39d3ef015ffa56eee810a5a95d9ec5a02f",
+      "reason": "Tiny French-only OSM residential parcel wholly inside the reviewed Qammart imada; unsupported as a separate selectable locality.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/review-evidence.json",
+          "sha256": "3e4154f2e7c2f0ac739d2424abfa59c13057f7f7cd8866412d57696aa0f89c10"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/osm-tag-snapshot.json",
+          "sha256": "2e47b838c589e941f923fdcf206c4307ee553f240b805f9b4940869e6bde00a4"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/build_evidence.py",
+          "sha256": "61eb11cfdf2090b264f215bb99b20718c575c44e8255a31f5332fc97d53e5158"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:128232827",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Baie des Singes",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المرسى الشاطئ",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:128232827"
+      },
+      "packedGeometrySha256": "c95295492ee8d7f80b417573f1cd1069233079a633e78728d339bac81ae40ff3",
+      "reason": "Tiny Latin-only OSM residential parcel lacks separate neighborhood identity or Arabic primary; current sector 117151 overlaps 98.68%, not full containment.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/review-evidence.json",
+          "sha256": "89ba588735fdf4fc97e27068e7690d1a95da30facfc0b591b37dac68719e585a"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/osm-tag-snapshot.json",
+          "sha256": "bd7b30482d40b885c40ecb95d35dd0ee17e30bbfcf7e268ee86c824ae40d8fdb"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/prior-triage-extract.json",
+          "sha256": "fc7d8f35179007e994b574cc0c8df80c8cdb82bb17f26e71301f3ef36d3bbbef"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/build_evidence.py",
+          "sha256": "caffe5d757160ddcdbdf61f1e5d4dc8cf94f358d5f135bb5143827ef3395f8b6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/build_base_snapshot.py",
+  "sources": [
+    {
+      "id": "isie-zahra-native-preservation-20260925",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/el-zahra-native-candidate.geojson",
+      "geojsonSha256": "ec9676c4a9d01a16815b183ee08763424e220f49b08bf8dc0c70458087135785",
+      "reviewFile": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/source-review.json",
+      "reviewSha256": "e10fa9067ef2671f8b89eb1b9f7bd00cc58c2a7e21bb0b50acb6bb7162627f64"
+    }
+  ],
+  "records": [],
+  "clips": [
+    {
+      "id": "osm:relation:7152287",
+      "clipById": "osm:relation:7152283",
+      "sourceId": "osm-isie-reviewed-clip-zahra-hiboun-seam-20260925",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الزهراء",
+        "kind": "sector",
+        "parentName": "معتمدية المهدية",
+        "governorateId": 345,
+        "delegationId": 618,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7152287"
+      },
+      "expectedClipper": {
+        "sourceId": "isie-local-sectors-2023-hiboun-review",
+        "name": "هيبون",
+        "kind": "sector",
+        "parentName": "معتمدية المهدية",
+        "governorateId": 345,
+        "delegationId": 618,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7152283"
+      },
+      "expectedPackedGeometrySha256": "153c1529eccf0788ab0cc43021d2790f6601b9235d37b415c27f917e0903b843",
+      "expectedClipperGeometrySha256": "5abd181a1ea59c3e890e9388ea2e47257bceff496958e32b0bb25927e87e205c",
+      "minRemovedAreaKm2": 0.019,
+      "maxRemovedAreaKm2": 0.022,
+      "minPreservedOverlapKm2": 0.002,
+      "maxPreservedOverlapKm2": 0.005,
+      "maxPreserveGeometryMismatchM2": 50.0,
+      "preserveBufferGridUnits": 1,
+      "preserveOverlapSource": {
+        "sourceId": "isie-zahra-native-preservation-20260925",
+        "featureId": "osm:relation:7152287"
+      },
+      "reason": "The ISIE 2023 Zahra map draws a red northern divider against Hiboun. The installed Hiboun ring is separately source-reviewed. Remove only the part of the older OSM Zahra polygon that crosses the Hiboun ring outside Zahra's closed native red ring, while preserving the small source-supported residual with one app-grid-unit margin. A wholesale Zahra replacement would overlap the installed Zgana polygon by about 8.23 km2. This local seam is best effort, and its ground accuracy and residual overlap remain unverified.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/source-review.json",
+          "sha256": "e10fa9067ef2671f8b89eb1b9f7bd00cc58c2a7e21bb0b50acb6bb7162627f64"
+        },
+        {
+          "file": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/el-zahra-native-candidate.geojson",
+          "sha256": "ec9676c4a9d01a16815b183ee08763424e220f49b08bf8dc0c70458087135785"
+        },
+        {
+          "file": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/el-zahra.pdf",
+          "sha256": "d3095e2cb8ef1b65bdbf6a9bf3f932a2a25655fb39dde089366cb7970e74ce55"
+        },
+        {
+          "file": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/hiboun.pdf",
+          "sha256": "4c93df7b54f7b9aa7356f3936ced541336cba298e17aa41c6c0d3e7fe57bfa50"
+        }
+      ]
+    }
+  ]
+}

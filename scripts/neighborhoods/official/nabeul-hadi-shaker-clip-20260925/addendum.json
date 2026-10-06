@@ -1,0 +1,802 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "nabeul-hadi-shaker-connected-overlap-cluster-20260925",
+  "status": "candidate_staged_for_review_no_live_changes",
+  "catalogPin": {
+    "path": "work\\ariana-five-device-first-pass-20260924\\taamir-ariana-seam\\rebase-6209b298\\staged\\assets\\neighborhoods.json",
+    "binPath": "work\\ariana-five-device-first-pass-20260924\\taamir-ariana-seam\\rebase-6209b298\\staged\\assets\\neighborhoods.bin",
+    "sha256": {
+      "catalogJson": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4",
+      "catalogBin": "2291a7edd788f260f87705ed083aac5a55420332891e1e912af91e62ebebda54",
+      "queueJson": "b4cae9746a7e47b0364b180fc7ee2830624cf4ff2a9a8a66a7e40874900a3218"
+    },
+    "matchesPriorReview": true
+  },
+  "queuePin": {
+    "path": "work\\official-imada-evidence-20260924-v2\\national-boundary-risk\\national-overlap-risk-queue.json",
+    "sha256": "b4cae9746a7e47b0364b180fc7ee2830624cf4ff2a9a8a66a7e40874900a3218"
+  },
+  "generator": {
+    "path": "work\\official-imada-evidence-20260924-v2\\06-nabeul\\boundary-risk\\build_hadi_shaker_connected_candidate.py",
+    "sha256": "a5d6cc84cd85325793258d2cf5656448e3842b7975b318e58b1bbb82237aa122"
+  },
+  "candidateGeoJson": {
+    "path": "work\\official-imada-evidence-20260924-v2\\06-nabeul\\boundary-risk\\nabeul-hadi-shaker-connected-cluster-candidate.geojson",
+    "sha256": "e51846e0a63c0e7f530117e14db649ebb711ce8ef5e672fee5745d33033288be",
+    "featureCount": 5
+  },
+  "cluster": {
+    "hadiId": "osm:relation:7103327",
+    "hadiNameAr": "الهادي شاكر",
+    "directPeerCount": 7,
+    "directOsmPeerCount": 5,
+    "directOfficialPeerCountHeld": 2,
+    "directPairs": [
+      {
+        "peerId": "osm:relation:7103328",
+        "nameAr": "النور",
+        "parent": "معتمدية نابل",
+        "sourceId": "osm",
+        "delegationId": 468,
+        "pairCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 1.362673494054332,
+        "smallerSectorFraction": 0.2307359970855739,
+        "sample": {
+          "lat": 36.487769,
+          "lng": 10.70651291967742
+        },
+        "automaticGpsNearestSourceAtSample": {
+          "id": 468,
+          "nameAr": "دار شعبان الفهري"
+        },
+        "currentAreaKm2LocalApprox": 5.9039185971953065,
+        "candidateAreaKm2LocalApprox": 4.5411024598311185,
+        "removedAreaKm2LocalApprox": 1.3628165109207304,
+        "catalogAreaKm2": 5.905768979553512,
+        "candidateGeometry": {
+          "type": "Polygon",
+          "valid": true,
+          "validityReason": "Valid Geometry",
+          "components": 1,
+          "holes": 0,
+          "empty": false
+        },
+        "storedManualAnchor": {
+          "lat": 36.475725,
+          "lng": 10.715641
+        },
+        "storedManualAnchorInsideCandidate": true,
+        "newRepresentativePointIfRegenerated": {
+          "lat": 36.47531,
+          "lng": 10.715812
+        },
+        "manualSourceIdIfExistingRowMetadataRetained": 468,
+        "sampleInsideHadiAfter": true,
+        "sampleInsidePeerAfter": false,
+        "precisionGuardInsetMeters": 0.1,
+        "hadiBoundaryClearanceMetersApprox": 533.6466188048373,
+        "binarySliceSha256": "6871434f5cee76f22f5d59ef1be228fb43c7aa60d46640d980945a54d2b39c4a"
+      },
+      {
+        "peerId": "osm:relation:7103329",
+        "nameAr": "بئر شلّوف",
+        "parent": "معتمدية نابل",
+        "sourceId": "osm",
+        "delegationId": 623,
+        "pairCategory": "same_delegation_display",
+        "queueIntersectionKm2": 1.2737096660249667,
+        "smallerSectorFraction": 0.13241017672805097,
+        "sample": {
+          "lat": 36.4814075,
+          "lng": 10.698338228679237
+        },
+        "automaticGpsNearestSourceAtSample": {
+          "id": 623,
+          "nameAr": "نابل"
+        },
+        "currentAreaKm2LocalApprox": 9.615214936578418,
+        "candidateAreaKm2LocalApprox": 8.341555816103527,
+        "removedAreaKm2LocalApprox": 1.2736649977650563,
+        "catalogAreaKm2": 9.619424258008202,
+        "candidateGeometry": {
+          "type": "Polygon",
+          "valid": true,
+          "validityReason": "Valid Geometry",
+          "components": 1,
+          "holes": 0,
+          "empty": false
+        },
+        "storedManualAnchor": {
+          "lat": 36.466089,
+          "lng": 10.706422
+        },
+        "storedManualAnchorInsideCandidate": true,
+        "newRepresentativePointIfRegenerated": {
+          "lat": 36.460772,
+          "lng": 10.707372
+        },
+        "manualSourceIdIfExistingRowMetadataRetained": 623,
+        "sampleInsideHadiAfter": true,
+        "sampleInsidePeerAfter": false,
+        "precisionGuardInsetMeters": 0.1,
+        "hadiBoundaryClearanceMetersApprox": 359.69484434264626,
+        "binarySliceSha256": "c61d2b7db288dcb639d070d76d24debef35292dccc193ae8965a500c482f04f6"
+      },
+      {
+        "peerId": "osm:relation:7103334",
+        "nameAr": "عمرون",
+        "parent": "معتمدية دار شعبان الفهري",
+        "sourceId": "osm",
+        "delegationId": 468,
+        "pairCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 0.2019614936709742,
+        "smallerSectorFraction": 0.006009432210654132,
+        "sample": {
+          "lat": 36.5000665,
+          "lng": 10.697968482373756
+        },
+        "automaticGpsNearestSourceAtSample": {
+          "id": 468,
+          "nameAr": "دار شعبان الفهري"
+        },
+        "currentAreaKm2LocalApprox": 33.61402491771954,
+        "candidateAreaKm2LocalApprox": 33.41179122461245,
+        "removedAreaKm2LocalApprox": 0.20222793535511818,
+        "catalogAreaKm2": 33.60741690586281,
+        "candidateGeometry": {
+          "type": "Polygon",
+          "valid": true,
+          "validityReason": "Valid Geometry",
+          "components": 1,
+          "holes": 0,
+          "empty": false
+        },
+        "storedManualAnchor": {
+          "lat": 36.515219,
+          "lng": 10.71816
+        },
+        "storedManualAnchorInsideCandidate": true,
+        "newRepresentativePointIfRegenerated": {
+          "lat": 36.515219,
+          "lng": 10.71816
+        },
+        "manualSourceIdIfExistingRowMetadataRetained": 468,
+        "sampleInsideHadiAfter": true,
+        "sampleInsidePeerAfter": false,
+        "precisionGuardInsetMeters": 0.1,
+        "hadiBoundaryClearanceMetersApprox": 67.30056867646827,
+        "binarySliceSha256": "769ddda039d92d67adcf4f3edb8fca8186ff64bf2f51f15e78e5e6baa2821908"
+      },
+      {
+        "peerId": "osm:relation:7103337",
+        "nameAr": "الفرينين",
+        "parent": "معتمدية دار شعبان الفهري",
+        "sourceId": "osm",
+        "delegationId": 463,
+        "pairCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 2.3382239044940287,
+        "smallerSectorFraction": 0.08683488217288507,
+        "sample": {
+          "lat": 36.528023000000005,
+          "lng": 10.653256652909825
+        },
+        "automaticGpsNearestSourceAtSample": {
+          "id": 463,
+          "nameAr": "بوعرقوب"
+        },
+        "currentAreaKm2LocalApprox": 26.94639530828447,
+        "candidateAreaKm2LocalApprox": 24.606948710378166,
+        "removedAreaKm2LocalApprox": 2.3394561709161446,
+        "catalogAreaKm2": 26.927242209400486,
+        "candidateGeometry": {
+          "type": "Polygon",
+          "valid": true,
+          "validityReason": "Valid Geometry",
+          "components": 1,
+          "holes": 0,
+          "empty": false
+        },
+        "storedManualAnchor": {
+          "lat": 36.555001,
+          "lng": 10.663173
+        },
+        "storedManualAnchorInsideCandidate": true,
+        "newRepresentativePointIfRegenerated": {
+          "lat": 36.56163,
+          "lng": 10.668889
+        },
+        "manualSourceIdIfExistingRowMetadataRetained": 463,
+        "sampleInsideHadiAfter": true,
+        "sampleInsidePeerAfter": false,
+        "precisionGuardInsetMeters": 0.1,
+        "hadiBoundaryClearanceMetersApprox": 734.5692487544754,
+        "binarySliceSha256": "2fc7c93d063c7fa0e92ab583c5f71a7edd89e9df10e8b4e6cce90424893f9ffe"
+      },
+      {
+        "peerId": "osm:relation:7103684",
+        "nameAr": "بلّي",
+        "parent": "معتمدية بو عرقوب",
+        "sourceId": "osm",
+        "delegationId": 463,
+        "pairCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 0.7286818376837091,
+        "smallerSectorFraction": 0.055301832982134175,
+        "sample": {
+          "lat": 36.527402499999994,
+          "lng": 10.641551669799776
+        },
+        "automaticGpsNearestSourceAtSample": {
+          "id": 463,
+          "nameAr": "بوعرقوب"
+        },
+        "currentAreaKm2LocalApprox": 13.185217281586626,
+        "candidateAreaKm2LocalApprox": 12.456095506379555,
+        "removedAreaKm2LocalApprox": 0.7291083719970736,
+        "catalogAreaKm2": 13.176450008792967,
+        "candidateGeometry": {
+          "type": "Polygon",
+          "valid": true,
+          "validityReason": "Valid Geometry",
+          "components": 1,
+          "holes": 0,
+          "empty": false
+        },
+        "storedManualAnchor": {
+          "lat": 36.551455,
+          "lng": 10.607997
+        },
+        "storedManualAnchorInsideCandidate": true,
+        "newRepresentativePointIfRegenerated": {
+          "lat": 36.553552,
+          "lng": 10.605149
+        },
+        "manualSourceIdIfExistingRowMetadataRetained": 463,
+        "sampleInsideHadiAfter": true,
+        "sampleInsidePeerAfter": false,
+        "precisionGuardInsetMeters": 0.1,
+        "hadiBoundaryClearanceMetersApprox": 242.27701079414038,
+        "binarySliceSha256": "c54606e14c5664d71a41fe5b1edcf767879cd50da73c8b2d2b29388d8bc4fe0c"
+      },
+      {
+        "peerId": "osm:relation:7103679",
+        "nameAr": "برج حفيظ",
+        "parent": "معتمدية بو عرقوب",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "delegationId": 463,
+        "pairCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 0.005567037505742797,
+        "smallerSectorFraction": 0.00022070016096467846,
+        "sample": {
+          "lat": 36.4819365,
+          "lng": 10.620059571770053
+        },
+        "automaticGpsNearestSourceAtSample": {
+          "id": 463,
+          "nameAr": "بوعرقوب"
+        },
+        "currentAreaKm2LocalApprox": 25.222489776949946,
+        "candidateAreaKm2LocalApprox": null,
+        "removedAreaKm2LocalApprox": 0,
+        "candidateGeometry": null,
+        "heldUnchangedReason": "Both sides have reviewed ISIE-source geometry; the saved evidence does not establish which official line owns the disagreement.",
+        "sampleInsideHadi": true,
+        "sampleInsidePeer": true,
+        "hadiBoundaryClearanceMetersApprox": 1.8084348563701202,
+        "binarySliceSha256": "4ef5174d4084fed9ad9a3486bcea24bba4cf6ff7aaeb9f053fc6f668ebfc67da"
+      },
+      {
+        "peerId": "osm:relation:7104927",
+        "nameAr": "الحمامات الجوفية",
+        "parent": "معتمدية الحمامات",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine",
+        "delegationId": 461,
+        "pairCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 0.001419603725875615,
+        "smallerSectorFraction": 5.4250629143879806e-05,
+        "sample": {
+          "lat": 36.46823031449751,
+          "lng": 10.630166417306715
+        },
+        "automaticGpsNearestSourceAtSample": {
+          "id": 461,
+          "nameAr": "الحمامات"
+        },
+        "currentAreaKm2LocalApprox": 26.145978059106668,
+        "candidateAreaKm2LocalApprox": null,
+        "removedAreaKm2LocalApprox": 0,
+        "candidateGeometry": null,
+        "heldUnchangedReason": "Both sides have reviewed ISIE-source geometry; the saved evidence does not establish which official line owns the disagreement.",
+        "sampleInsideHadi": true,
+        "sampleInsidePeer": true,
+        "hadiBoundaryClearanceMetersApprox": 0.8887491515818545,
+        "binarySliceSha256": "c4a4edffadd564b0678ac63d448aaeeca00056905f3ce7e8db79137b530a367a"
+      }
+    ],
+    "sampleLookups": [
+      {
+        "peerId": "osm:relation:7103328",
+        "sample": {
+          "lat": 36.487769,
+          "lng": 10.70651291967742
+        },
+        "before": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7103328"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7103328"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "afterCandidate": {
+          "containingLocalities": [
+            "osm:relation:7103327"
+          ],
+          "conflictFlaggedIds": [],
+          "selectedLocalityId": "osm:relation:7103327",
+          "selectedLocalityName": "الهادي شاكر"
+        },
+        "automaticGpsSource": {
+          "id": 468,
+          "nameAr": "دار شعبان الفهري"
+        },
+        "gpsSourceUnaffectedByClip": true
+      },
+      {
+        "peerId": "osm:relation:7103329",
+        "sample": {
+          "lat": 36.4814075,
+          "lng": 10.698338228679237
+        },
+        "before": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7103329"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7103329"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "afterCandidate": {
+          "containingLocalities": [
+            "osm:relation:7103327"
+          ],
+          "conflictFlaggedIds": [],
+          "selectedLocalityId": "osm:relation:7103327",
+          "selectedLocalityName": "الهادي شاكر"
+        },
+        "automaticGpsSource": {
+          "id": 623,
+          "nameAr": "نابل"
+        },
+        "gpsSourceUnaffectedByClip": true
+      },
+      {
+        "peerId": "osm:relation:7103334",
+        "sample": {
+          "lat": 36.5000665,
+          "lng": 10.697968482373756
+        },
+        "before": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7103334"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7103334"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "afterCandidate": {
+          "containingLocalities": [
+            "osm:relation:7103327"
+          ],
+          "conflictFlaggedIds": [],
+          "selectedLocalityId": "osm:relation:7103327",
+          "selectedLocalityName": "الهادي شاكر"
+        },
+        "automaticGpsSource": {
+          "id": 468,
+          "nameAr": "دار شعبان الفهري"
+        },
+        "gpsSourceUnaffectedByClip": true
+      },
+      {
+        "peerId": "osm:relation:7103337",
+        "sample": {
+          "lat": 36.528023000000005,
+          "lng": 10.653256652909825
+        },
+        "before": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7103337"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7103337"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "afterCandidate": {
+          "containingLocalities": [
+            "osm:relation:7103327"
+          ],
+          "conflictFlaggedIds": [],
+          "selectedLocalityId": "osm:relation:7103327",
+          "selectedLocalityName": "الهادي شاكر"
+        },
+        "automaticGpsSource": {
+          "id": 463,
+          "nameAr": "بوعرقوب"
+        },
+        "gpsSourceUnaffectedByClip": true
+      },
+      {
+        "peerId": "osm:relation:7103679",
+        "sample": {
+          "lat": 36.4819365,
+          "lng": 10.620059571770053
+        },
+        "before": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7103679"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7103679"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "afterCandidate": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7103679"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7103679"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "automaticGpsSource": {
+          "id": 463,
+          "nameAr": "بوعرقوب"
+        },
+        "gpsSourceUnaffectedByClip": true
+      },
+      {
+        "peerId": "osm:relation:7103684",
+        "sample": {
+          "lat": 36.527402499999994,
+          "lng": 10.641551669799776
+        },
+        "before": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7103684"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7103684"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "afterCandidate": {
+          "containingLocalities": [
+            "osm:relation:7103327"
+          ],
+          "conflictFlaggedIds": [],
+          "selectedLocalityId": "osm:relation:7103327",
+          "selectedLocalityName": "الهادي شاكر"
+        },
+        "automaticGpsSource": {
+          "id": 463,
+          "nameAr": "بوعرقوب"
+        },
+        "gpsSourceUnaffectedByClip": true
+      },
+      {
+        "peerId": "osm:relation:7104927",
+        "sample": {
+          "lat": 36.46823031449751,
+          "lng": 10.630166417306715
+        },
+        "before": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7104927"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7104927"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "afterCandidate": {
+          "containingLocalities": [
+            "osm:relation:7103327",
+            "osm:relation:7104927"
+          ],
+          "conflictFlaggedIds": [
+            "osm:relation:7103327",
+            "osm:relation:7104927"
+          ],
+          "selectedLocalityId": null,
+          "selectedLocalityName": null
+        },
+        "automaticGpsSource": {
+          "id": 461,
+          "nameAr": "الحمامات"
+        },
+        "gpsSourceUnaffectedByClip": true
+      }
+    ],
+    "peerConflictDependencies": [
+      {
+        "ids": [
+          "osm:relation:7103327",
+          "osm:relation:7103337"
+        ],
+        "namesAr": [
+          "الهادي شاكر",
+          "الفرينين"
+        ],
+        "sourceIds": [
+          "isie-local-sectors-2023-hammamet-nine-neighbours",
+          "osm"
+        ],
+        "priorityCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 2.3382239044940287,
+        "beforeIntersectionKm2LocalApprox": 2.339070717868278,
+        "afterIntersectionKm2LocalApprox": 0.0,
+        "pairOverlapRemainsAfterCandidate": false
+      },
+      {
+        "ids": [
+          "osm:relation:7103327",
+          "osm:relation:7103328"
+        ],
+        "namesAr": [
+          "الهادي شاكر",
+          "النور"
+        ],
+        "sourceIds": [
+          "isie-local-sectors-2023-hammamet-nine-neighbours",
+          "osm"
+        ],
+        "priorityCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 1.362673494054332,
+        "beforeIntersectionKm2LocalApprox": 1.3624583106479171,
+        "afterIntersectionKm2LocalApprox": 0.0,
+        "pairOverlapRemainsAfterCandidate": false
+      },
+      {
+        "ids": [
+          "osm:relation:7103327",
+          "osm:relation:7103684"
+        ],
+        "namesAr": [
+          "الهادي شاكر",
+          "بلّي"
+        ],
+        "sourceIds": [
+          "isie-local-sectors-2023-hammamet-nine-neighbours",
+          "osm"
+        ],
+        "priorityCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 0.7286818376837091,
+        "beforeIntersectionKm2LocalApprox": 0.7289398904130068,
+        "afterIntersectionKm2LocalApprox": 0.0,
+        "pairOverlapRemainsAfterCandidate": false
+      },
+      {
+        "ids": [
+          "osm:relation:7103327",
+          "osm:relation:7103334"
+        ],
+        "namesAr": [
+          "الهادي شاكر",
+          "عمرون"
+        ],
+        "sourceIds": [
+          "isie-local-sectors-2023-hammamet-nine-neighbours",
+          "osm"
+        ],
+        "priorityCategory": "cross_prayer_delegation",
+        "queueIntersectionKm2": 0.2019614936709742,
+        "beforeIntersectionKm2LocalApprox": 0.20196166712207317,
+        "afterIntersectionKm2LocalApprox": 0.0,
+        "pairOverlapRemainsAfterCandidate": false
+      },
+      {
+        "ids": [
+          "osm:relation:7103327",
+          "osm:relation:7103329"
+        ],
+        "namesAr": [
+          "الهادي شاكر",
+          "بئر شلّوف"
+        ],
+        "sourceIds": [
+          "isie-local-sectors-2023-hammamet-nine-neighbours",
+          "osm"
+        ],
+        "priorityCategory": "same_delegation_display",
+        "queueIntersectionKm2": 1.2737096660249667,
+        "beforeIntersectionKm2LocalApprox": 1.2734039663440464,
+        "afterIntersectionKm2LocalApprox": 0.0,
+        "pairOverlapRemainsAfterCandidate": false
+      },
+      {
+        "ids": [
+          "osm:relation:7103679",
+          "osm:relation:7103684"
+        ],
+        "namesAr": [
+          "برج حفيظ",
+          "بلّي"
+        ],
+        "sourceIds": [
+          "isie-local-sectors-2023-hammamet-nine-neighbours",
+          "osm"
+        ],
+        "priorityCategory": "same_delegation_display",
+        "queueIntersectionKm2": 0.012648721132366036,
+        "beforeIntersectionKm2LocalApprox": 0.01265319903216828,
+        "afterIntersectionKm2LocalApprox": 0.012552444083608092,
+        "pairOverlapRemainsAfterCandidate": true
+      }
+    ],
+    "uniqueAffectedConflictPairCount": 8,
+    "removedPatchDependencies": [
+      {
+        "clippedPeerId": "osm:relation:7103328",
+        "otherFeatureId": "osm:relation:7103334",
+        "otherName": "عمرون",
+        "otherSourceId": "osm",
+        "otherDelegationId": 468,
+        "removedPatchIntersectionKm2LocalApprox": 2.4216302852676106e-06
+      },
+      {
+        "clippedPeerId": "osm:relation:7103329",
+        "otherFeatureId": "osm:relation:7103328",
+        "otherName": "النور",
+        "otherSourceId": "osm",
+        "otherDelegationId": 468,
+        "removedPatchIntersectionKm2LocalApprox": 9.690951015995779e-07
+      },
+      {
+        "clippedPeerId": "osm:relation:7103684",
+        "otherFeatureId": "osm:relation:7103679",
+        "otherName": "برج حفيظ",
+        "otherSourceId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "otherDelegationId": 463,
+        "removedPatchIntersectionKm2LocalApprox": 9.876222009853769e-05
+      }
+    ],
+    "removedPatchUnionKm2LocalApprox": 5.9072742260303315,
+    "removedPatchSumKm2LocalApprox": 5.907273986954123
+  },
+  "sourceEvidence": {
+    "hadiScopeAndCandidateReview": {
+      "providerId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+      "candidateGeoJson": "scripts/neighborhoods/official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+      "candidateGeoJsonSha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696",
+      "sourceReview": "scripts/neighborhoods/official/hammamet-nine-neighbours-20260920/source-review.json",
+      "sourceReviewSha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667",
+      "sourceReviewStatus": "SOURCE_GEOMETRY_AND_WHOLE_IMADA_SCOPE_STAGED_NOT_INSTALLED",
+      "acceptedScope": "scripts/neighborhoods/official/hammamet-nineteen-20260920/accepted-scope.json",
+      "acceptedScopeSha256": "9979a1f2a10a5c9a5ce6420006ae03315ad7138b95a5c3420e3d5bbc1f676d4e",
+      "scopeConclusion": "whole_imada",
+      "officialSectorCode": "155156",
+      "decreePage": 78,
+      "jortPage": 5175,
+      "mapPdf": "scripts/neighborhoods/official/hammamet-nine-neighbours-20260920/evidence/source-pdf-hedi-chaker.pdf",
+      "mapPdfSha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+      "sourceGeometrySha256": "e627b222e6f8920dcf19f8c99b8c20c123c900f9d145d0f2c5c19848dd36cb64",
+      "ringReview": {
+        "valid": true,
+        "explicitlyClosed": true,
+        "viewportCoversCompleteRing": true,
+        "vertexCount": 762
+      },
+      "pairedPeerOfficialMapsSaved": false
+    },
+    "currentAppliedCoverageEvidence": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "2c705ecc1d0c34b40ad22f20d6a68780428bcc8d811cc74afba4b5d192a97ad4",
+      "application": {
+        "id": "osm:relation:7103327",
+        "action": "replace",
+        "officialCode": "155156",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours"
+      },
+      "currentAppAssetHashes": {
+        "json": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4",
+        "bin": "2291a7edd788f260f87705ed083aac5a55420332891e1e912af91e62ebebda54"
+      },
+      "assetHashesMatchPinnedCatalog": true,
+      "chronologyNote": "The older source-review status says staged-not-installed, but current coverage.json records the replacement and the current app asset hashes match the reviewed pin. The staged status therefore predates the current catalog application; the exact intervening install date/receipt is not established by the files reviewed here."
+    },
+    "savedArtifactSha256": {
+      "hadiSourceGeoJson": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696",
+      "hadiSourceReview": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667",
+      "hadiMapPdf": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+      "borjHafizMapPdf": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+      "hammametSourceGeoJson": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "hammametSourceReview": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8",
+      "hammametNordMapPdf": "b401485272352ae9c6eba464a2361098361b8ef1606a710e99ff3d8e06e3a66d",
+      "hammametAcceptedScope": "098069df24113491cb8fc90342f6941cce69b1af85183ad2d4d953254c0efaed"
+    },
+    "officialPeerStatuses": {
+      "borjHafiz": "Current pinned source is ISIE; previous review identified reviewed whole-imada scope and valid source ring. It overlaps Hadi by 0.005567 km2; keep both sides unresolved.",
+      "hammametAlJawfiyya": "Current pinned source is ISIE; saved Hammamet package/map has a separate reviewed scope. It overlaps Hadi by 0.001420 km2; keep both sides unresolved."
+    },
+    "provenanceBlockers": [
+      "The old Hadi source-review status is superseded by current coverage.json, which records the replacement; its exact transition date/receipt remains untraced and should be recorded in future provenance.",
+      "Whole-imada scope acceptance does not certify georeferencing or shared-line positional accuracy.",
+      "No paired official polygons are saved for the five OSM peers; the proposed clip uses Hadi as a best-effort precedence mask, not proof of those peer edges.",
+      "This staged pass assigns the five OSM-plus-ISIE candidates a composite derived source record. That record remains provisional and does not authorize installation.",
+      "The two official-source pairs have equal-source standing in the saved evidence and require paired linework or other direct seam evidence; one-sided clipping is not justified."
+    ]
+  },
+  "method": {
+    "candidateOperation": "Each of the five OSM peer polygons minus a 0.1 m local-metric buffer around the unchanged pinned Hadi polygon, then snapped to the catalog's 1e-6 degree coordinate scale. The tiny guard is to prevent precision rounding from reintroducing overlap; it creates a narrow unassigned seam.",
+    "metricArea": "Local equirectangular approximation centered at 36.5 degrees north, with 111,320 m per latitude degree and cosine-adjusted longitude scale; catalog and risk-queue areas are retained separately. This is not a geodetic accuracy claim.",
+    "lookupReplay": "Uses the catalog grid-cell shortlist and saved pair-conflict list, substituting only the five candidate geometries; this is a point-sample replay, not a full runtime/device validation.",
+    "notProven": [
+      "survey accuracy",
+      "official edge accuracy",
+      "Google Maps boundary agreement",
+      "all points in the overlap patches"
+    ]
+  },
+  "decision": {
+    "recommendation": "Keep a reviewable five-OSM-side candidate for release discussion; hold the two ISIE-to-ISIE seams. Do not install from this report alone.",
+    "gpsEffect": "For the five OSM conflict samples, candidate geometry resolves the locality label to Hadi; automatic prayer-source selection remains nearest-to-user-GPS and unchanged. The Bir Shalouf case shares delegation 623, so only the label changes there. Freinin/Belli/Omaroun/Nour samples continue to choose their recorded nearest source IDs 463/463/468/468 respectively even when the displayed candidate label becomes Hadi.",
+    "officialSeams": "At the two held ISIE samples, both shapes still contain the point and the conflict-aware locality label remains null. Automatic GPS timetable sources remain 463 (بوعرقوب) and 461 (الحمامات) respectively.",
+    "manualPicker": "Existing row delegation IDs remain as recorded if catalog metadata is retained. The report flags whether each saved representative coordinate survives the clipped shape and provides a recomputed point-on-surface; if a generator changes that point, its nearest prayer-source ID must be recomputed and reviewed before install.",
+    "liveAssetChanged": false,
+    "emulatorUsed": false
+  },
+  "derivedSource": {
+    "id": "derived-nabeul-hadi-shaker-osm-isie-mask-20260925",
+    "status": "provisional_best_effort_boundary_candidate",
+    "scopeKind": "osm_peer_minus_reviewed_isie_best_effort_mask",
+    "scopeEvidence": {
+      "path": "scripts/neighborhoods/official/hammamet-nineteen-20260920/accepted-scope.json",
+      "sha256": "9979a1f2a10a5c9a5ce6420006ae03315ad7138b95a5c3420e3d5bbc1f676d4e",
+      "conclusion": "whole_imada"
+    },
+    "maskEvidence": {
+      "path": "scripts/neighborhoods/coverage.json",
+      "sha256": "2c705ecc1d0c34b40ad22f20d6a68780428bcc8d811cc74afba4b5d192a97ad4",
+      "featureId": "osm:relation:7103327",
+      "maskSourceId": "isie-local-sectors-2023-hammamet-nine-neighbours"
+    },
+    "boundaryAccuracyVerified": false,
+    "candidateFeatureIds": [
+      "osm:relation:7103328",
+      "osm:relation:7103329",
+      "osm:relation:7103334",
+      "osm:relation:7103337",
+      "osm:relation:7103684"
+    ],
+    "uiCreditText": null
+  }
+}

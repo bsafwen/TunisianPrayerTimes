@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_product_scope_residential_property_exclusion",
+  "id": "osm:way:129273870",
+  "originalSource": {
+    "kind": "residential",
+    "tags": {
+      "addr:city": "طبرقة",
+      "landuse": "residential",
+      "name": "إقامة البلفيدير",
+      "name:ar": "إقامة البلفيدير",
+      "name:en": "Belvedere Residence",
+      "name:fr": "Résidence La Bélvèdere"
+    }
+  },
+  "currentIdentity": {
+    "id": "osm:way:129273870",
+    "display": "إقامة البلفيدير",
+    "sourceName": "إقامة البلفيدير",
+    "aliases": [
+      "Résidence La Bélvèdere",
+      "Belvedere Residence"
+    ],
+    "kind": "residential",
+    "parent": "الحامدية",
+    "governorateId": 354,
+    "prayerSource": 497,
+    "lat": 36.955528,
+    "lng": 8.796477,
+    "areaM2": 55510.550977151994,
+    "geometry": {
+      "currentAreaKm2": 0.055510550977152,
+      "currentBbox": [
+        8.794527,
+        36.954366,
+        8.799795,
+        36.95652
+      ],
+      "currentHasBoundary": true,
+      "originalType": "MultiPolygon",
+      "originalVertexCount": 36
+    },
+    "original": {
+      "kind": "residential",
+      "tags": {
+        "addr:city": "طبرقة",
+        "landuse": "residential",
+        "name": "إقامة البلفيدير",
+        "name:ar": "إقامة البلفيدير",
+        "name:en": "Belvedere Residence",
+        "name:fr": "Résidence La Bélvèdere"
+      }
+    },
+    "owners": [
+      {
+        "catalogId": "osm:way:129273870",
+        "members": [
+          "osm:way:129273870"
+        ],
+        "name": "إقامة البلفيدير",
+        "ownerId": "osm:way:129273870"
+      }
+    ],
+    "exactSourceNamePeers": []
+  },
+  "decision": {
+    "action": "exclude",
+    "classification": "Named co-owned residential estate outside locality product scope",
+    "authority": "Root explicitly approved this product-scope decision after reviewing the primary notice and qualified target linkage.",
+    "current27BatchUnchanged": true
+  },
+  "primaryNotice": {
+    "url": "https://lake.jort.tn/annonces-legales/fr/2020/089.pdf",
+    "sha256": "c1e9328fd1ee0d19626f780f78de86b18cbc2d309e2fb15410d806661d7115ef",
+    "bytes": 953085,
+    "pdfPageZeroBased": 16,
+    "printedPage": 2701,
+    "finding": "The published notice identifies Copropriétaires de la résidence Belvédère TABARKA and a co-ownership assembly with syndic governance."
+  },
+  "secondaryAddressContext": "The secondary public Villa N40 address places Résidence Belvédère on Route Touristique in Tabarka; original bilingual source identity and the previously captured road/housing-loop context agree. The direct listing request returned 403; no bypass or invented coordinates.",
+  "targetLinkQualification": "Qualified same-name, same-town and road/context linkage. No independently verified numeric operator point, certified parcel extent, certified ownership or equivalence between source polygon and legal property boundary.",
+  "reviewDisagreement": {
+    "deepseekVerdict": "UNKNOWN",
+    "nativeRecommendation": "REMOVE_RECOMMENDED_PRODUCT_SCOPE",
+    "rootDisposition": "APPROVED_PRODUCT_SCOPE_EXCLUSION_FOR_NEXT_BATCH",
+    "difference": "The model retained a geographic-link concern. Root accepted the specific original bilingual identity, Tabarka location, primary co-ownership notice and secondary road-address/context conjunction for product classification, while preserving the geographic limitations."
+  },
+  "provenance": {
+    "acceptedProposalSha256": "e7b3f51388acdee0ed5f0a061184f13d19ffeb591cfc6ed222383c3bcce2e4e4",
+    "acceptedProposalOriginalWorkPath": "work/residential-five-public-source-review-20260920/belvedere-next-batch-evidence-proposal.json",
+    "directOriginalEvidence": [
+      {
+        "originalWorkPath": "work/residential-five-public-source-review-20260920/primary/belvedere-jort2020-089.pdf",
+        "sha256": "c1e9328fd1ee0d19626f780f78de86b18cbc2d309e2fb15410d806661d7115ef",
+        "bytes": 953085
+      },
+      {
+        "originalWorkPath": "work/residential-five-public-source-review-20260920/new-primary-evidence-facts.json",
+        "sha256": "ff1b94e2104a644c97f0e7aa81f4d0baed97b7a2f648cf0b9659868bcdc00ea3",
+        "bytes": 7029
+      }
+    ],
+    "originalsPreserved": true,
+    "originalEvidenceIsHistoricalNotRewritten": true
+  },
+  "scopeQualification": "Product-scope exclusion, not a nonexistence claim, legal ownership determination or certified source-polygon/property-boundary match. No replacement locality is invented."
+}

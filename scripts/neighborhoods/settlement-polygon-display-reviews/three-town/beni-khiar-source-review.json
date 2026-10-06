@@ -1,0 +1,154 @@
+{
+  "status": "BENI_KHIAR_TOWN_ONLY_DISPLAY_SOURCE_SUPPORTED_NOT_IMPLEMENTED",
+  "baselineMetadataSha256": "b50f62fba68c6ba0989f3a4cb673a0cfad820dcd059164b26a0ac208467c9600",
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\exact-current-source-facts.json",
+    "sha256": "5166ae5a38c93739a94300e3516b36b77f69ddcefa762d71796c75bff4a461a3"
+  },
+  "primaryEvidence": [
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/node/1128018620.json",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\beni-khiar-node-1128018620.json",
+        "sha256": "a34fc261be8423a9ee6a11f0c8b1b8c1765656900b4dbb37c7f4c25f51a84d91"
+      },
+      "bytes": 733
+    },
+    {
+      "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببني-خيار-نابل",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\beni-khiar-social-unit.html",
+        "sha256": "d455d1280b402e395b1bd302ebe322d6f890fae5e86fb4f5186573ff108c4682"
+      },
+      "bytes": 67204
+    },
+    {
+      "url": "https://www.nabeul.gov.tn/ar/بانوراما-المعتمديات-2/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\nabeul-delegations.html",
+        "sha256": "8db10a1b820b26c7378f45d2b5c15b0fa2d8568afdd9579f23f8076795dbdf79"
+      },
+      "bytes": 175347
+    }
+  ],
+  "sourceDecision": {
+    "baseId": 460,
+    "settlementId": "osm:way:97396877",
+    "sourceTownId": "osm:node:1128018620",
+    "separateImadaId": "osm:relation:7103009",
+    "finding": "The Nabeul governorate explicitly distinguishes Beni Khiar town from its five-imada delegation and two neighboring towns. The Social Ministry publishes a local street-address office inside the named town polygon. Current OSM town and residential sources share bilingual identity and Wikidata Q2737310; the live node exactly matches cache. This supports associating the timetable locality with the town while retaining the separate imada scope.",
+    "coordinatePolicy": "Preserve legacy base460 36.46/10.78 and every raw coordinate. Its approximately6.5m polygon noncontainment is explicit, not a reason to move it or expand a border. No original INM coordinate provenance is claimed.",
+    "currentWholeGroups": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009",
+        "osm:way:97396877"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460",
+        "osm:way:97396877"
+      ]
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:97396877",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7103009",
+        "after": "delegation:460"
+      }
+    ],
+    "preservedNamesAliasesCoordinatesAndDefaults": true,
+    "sectorDefaultMustRemain": 468,
+    "townDefaultMustRemain": 460,
+    "allFiveImadasPreserved": [
+      "osm:relation:7102854",
+      "osm:relation:7102855",
+      "osm:relation:7103009",
+      "osm:relation:7103011",
+      "osm:relation:7103012"
+    ],
+    "missingImplementationProofs": [
+      "Distinct ownership must separate only residential97396877 before a late explicit town/base association; complete prior/final groups and all five imadas remain bound.",
+      "Existing388 validator requires namesake-sector default==base, five imadas, town kind and addr:city/name-change patterns; existing596 validator is also not a truthful drop-in. A separate explicit method must preserve old validation branches and allow this documented different sector default without treating it as a town reference.",
+      "Freeze and independently review the new source/proof/guard package before one actual generation."
+    ]
+  },
+  "otherCases": [
+    {
+      "baseId": 417,
+      "decision": "RETAIN_DISTINCT_TIMETABLE_SETTLEMENT_AND_IMADA",
+      "facts": "Corrected base417 is exactly named village1278517274. That source point is absent raw after normal absorption; visible7125182 is a coded imada and not a second independent town polygon. Shared Wikidata/name and small extent do not prove whole-imada scope equals settlement.",
+      "preserveImadas": [
+        "osm:relation:7125182",
+        "osm:relation:7125183",
+        "osm:relation:7125184",
+        "osm:relation:7125185",
+        "osm:relation:7125186",
+        "osm:relation:7125187",
+        "osm:relation:7125188",
+        "osm:relation:7125189"
+      ],
+      "boundaryQualification": "Previously reviewed own map differs materially from current OSM (IoU0.508732); this is separate boundary research, not permission to merge or import."
+    },
+    {
+      "baseId": 479,
+      "decision": "HOLD_DIRECT_BASE_VILLAGE_ASSOCIATION_PRESERVE_ALL_EXISTING_ROWS",
+      "facts": "Village207579215 and absorbed1566167629 establish a southwest settlement distinct in footprint from89km2 imada7154916. Legacy base479 is3.565km from that named point and2.49km outside the village. No new primary evidence in this bounded review resolves whether its timetable locality denotes that village or a different Hazoua center.",
+      "preserveSourceImadas": [
+        "osm:relation:7154916",
+        "osm:relation:7154917",
+        "osm:relation:7154925"
+      ],
+      "registryGap": "INS current census registry has625551 and625552; cached/current625553 is separately retained. Prior2023 decree review records Hazoua electoral exceptions/combined circles, so missing census row or a single electoral map cannot justify removal or whole-imada reconstruction."
+    }
+  ],
+  "limits": [
+    "Names and point containment support display identity; no polygon vertices or municipal/imada equivalence are certified.",
+    "The Social Ministry office point is address corroboration, not a new timetable coordinate.",
+    "Existing old source reports are retained; this source-only proposal changes no app data."
+  ],
+  "actions": {
+    "repoWritten": false,
+    "generatorOrHelperExecuted": false,
+    "testsRun": false,
+    "phoneOrLedgerAccess": false,
+    "sourceFetches": 3
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "conclusion": "reviewed_noncoincident_town_residential_base_identity",
+  "application": {
+    "method": "reviewed_noncoincident_town_residential_base_identity",
+    "id": "osm:way:93164500",
+    "targetDelegationId": 388
+  },
+  "sourceProposal": {
+    "file": "noncoincident-town-display-reviews/source-proposal.json",
+    "sha256": "b3ae87a84f65059bb5d45daf26fa52264e9d32e4893a4da00e66f45e54f49d82"
+  },
+  "sourceReview": {
+    "file": "noncoincident-town-display-reviews/source-identity-review.json",
+    "sha256": "8bad7b5b75c3f6c3b5630d59e7f118cd193d9918dac6c34e0d7a70dd9e031409"
+  },
+  "sourceFacts": {
+    "file": "noncoincident-town-display-reviews/frozen-source-facts.json",
+    "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc"
+  },
+  "primaryEvidence": {
+    "file": "noncoincident-town-display-reviews/primary-indexed-response.json",
+    "sha256": "fd9539ff07d8e28787c684e83697a7cb9ee98f74f72044b002c2cf17121770b9"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "expected": {
+    "targetBaseId": 388,
+    "residentialId": "osm:way:93164500",
+    "separateSectorId": "osm:relation:7117933",
+    "sourceTownId": "osm:node:283645091",
+    "decision": "SOURCE_SUPPORTED_EXACT_DISPLAY_TRANSITION_NO_NUMERIC_CHANGE",
+    "currentWholeGroups": {
+      "delegation:388": [
+        "delegation:388"
+      ],
+      "osm:relation:7117890": [
+        "osm:relation:7117890"
+      ],
+      "osm:relation:7117891": [
+        "osm:relation:7117891"
+      ],
+      "osm:relation:7117889": [
+        "osm:relation:7117889"
+      ],
+      "osm:relation:7117933": [
+        "osm:relation:7117933",
+        "osm:way:93164500"
+      ],
+      "osm:relation:7117932": [
+        "osm:relation:7117932"
+      ]
+    },
+    "requiredGroupsAfterDistinctGuardBeforeDisplay": {
+      "delegation:388": [
+        "delegation:388"
+      ],
+      "osm:relation:7117890": [
+        "osm:relation:7117890"
+      ],
+      "osm:relation:7117891": [
+        "osm:relation:7117891"
+      ],
+      "osm:relation:7117889": [
+        "osm:relation:7117889"
+      ],
+      "osm:relation:7117933": [
+        "osm:relation:7117933"
+      ],
+      "osm:relation:7117932": [
+        "osm:relation:7117932"
+      ],
+      "osm:way:93164500": [
+        "osm:way:93164500"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "delegation:388": [
+        "delegation:388",
+        "osm:way:93164500"
+      ],
+      "osm:relation:7117890": [
+        "osm:relation:7117890"
+      ],
+      "osm:relation:7117891": [
+        "osm:relation:7117891"
+      ],
+      "osm:relation:7117889": [
+        "osm:relation:7117889"
+      ],
+      "osm:relation:7117933": [
+        "osm:relation:7117933"
+      ],
+      "osm:relation:7117932": [
+        "osm:relation:7117932"
+      ]
+    },
+    "newDistinctPair": {
+      "ids": [
+        "osm:relation:7117933",
+        "osm:way:93164500"
+      ],
+      "requiredConclusion": "distinct_locality_choices"
+    },
+    "baseBefore": {
+      "id": 388,
+      "nomFr": "La Goulette",
+      "nomAr": "حلق الواد",
+      "nomEn": "Goulette",
+      "lat": 36.8181,
+      "lng": 10.305
+    },
+    "baseAfter": {
+      "id": 388,
+      "nomFr": "La Goulette",
+      "nomAr": "حلق الوادي",
+      "nomEn": "Goulette",
+      "lat": 36.8181,
+      "lng": 10.305
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:93164500",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7117933",
+        "after": "delegation:388"
+      },
+      {
+        "id": "osm:way:93164500",
+        "field": "aliases",
+        "before": [
+          "La Goulette"
+        ],
+        "after": [
+          "La Goulette",
+          "حلق الواد"
+        ]
+      }
+    ],
+    "exactTinyNameAppend": {
+      "id": "delegation:388",
+      "name": "حلق الوادي",
+      "kind": "delegation"
+    },
+    "preservedImadas": [
+      {
+        "official": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1169",
+          "delegationFr": "La goulette",
+          "delegationAr": "حلق الوادي",
+          "sectorCode": "116951",
+          "sectorFr": "La goulette",
+          "sectorAr": "حلق الوادي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4795,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 150,
+            "Nombre_de_menages_par_Secteurs.xlsx": 150
+          }
+        },
+        "sourceId": "osm:relation:7117933"
+      },
+      {
+        "official": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1169",
+          "delegationFr": "La goulette",
+          "delegationAr": "حلق الوادي",
+          "sectorCode": "116952",
+          "sectorFr": "La goulette casino",
+          "sectorAr": "حلق الوادي كازينو",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4829,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 152,
+            "Nombre_de_menages_par_Secteurs.xlsx": 152
+          }
+        },
+        "sourceId": "osm:relation:7117889"
+      },
+      {
+        "official": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1169",
+          "delegationFr": "La goulette",
+          "delegationAr": "حلق الوادي",
+          "sectorCode": "116953",
+          "sectorFr": "Kheireddine",
+          "sectorAr": "خير الدين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4863,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 153,
+            "Nombre_de_menages_par_Secteurs.xlsx": 153
+          }
+        },
+        "sourceId": "osm:relation:7117890"
+      },
+      {
+        "official": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1169",
+          "delegationFr": "La goulette",
+          "delegationAr": "حلق الوادي",
+          "sectorCode": "116954",
+          "sectorFr": "Taieb mhiri",
+          "sectorAr": "الطيب المهيري",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4897,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 154,
+            "Nombre_de_menages_par_Secteurs.xlsx": 154
+          }
+        },
+        "sourceId": "osm:relation:7117932"
+      },
+      {
+        "official": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1169",
+          "delegationFr": "La goulette",
+          "delegationAr": "حلق الوادي",
+          "sectorCode": "116955",
+          "sectorFr": "Cite essalama",
+          "sectorAr": "حي السلامة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4931,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 155,
+            "Nombre_de_menages_par_Secteurs.xlsx": 155
+          }
+        },
+        "sourceId": "osm:relation:7117891"
+      }
+    ],
+    "protectedRawIds": [
+      "osm:relation:7117889",
+      "osm:relation:7117890",
+      "osm:relation:7117891",
+      "osm:relation:7117932",
+      "osm:relation:7117933",
+      "osm:way:93164500"
+    ],
+    "expectedRawMetadataSource": {
+      "file": "work\\la-goulette-new-matmata-display-review\\frozen-c5-source-facts.json",
+      "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc",
+      "key": "records[id].currentMetadata",
+      "currentRowsExactlyEqualHistoricalC5": true
+    },
+    "beforeDisplayRawMetadataOverrides": {
+      "osm:way:93164500": {
+        "pickerGroupId": "osm:way:93164500"
+      }
+    },
+    "retainedSourceTown": {
+      "id": "osm:node:283645091",
+      "rawPresenceBeforeAfter": false,
+      "pointCoordinates": {
+        "lat": 36.8159278,
+        "lng": 10.3042378
+      },
+      "currentAbsorptionHost": "osm:relation:7117933",
+      "doNotRestoreOrMovePoint": true,
+      "aliasPolicy": "Preserve all current raw alias lists, including aliases absorbed into the original host; add only the old base Arabic variant to the residential row late."
+    },
+    "identityEvidence": {
+      "requiredOriginalSourceNames": {
+        "residentialTags": {
+          "addr:city": "حلق الوادي",
+          "landuse": "residential",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:fr": "La Goulette"
+        },
+        "sourceTownTags": {
+          "addr:city": "حلق الوادي",
+          "addr:postcode": "2060",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:azb": "حلق الوادی",
+          "name:de": "Ḥalq al-Wādī",
+          "name:en": "La Goulette",
+          "name:es": "La Goleta",
+          "name:fa": "حلق الوادی",
+          "name:fr": "La Goulette",
+          "name:he": "לה גולט",
+          "name:it": "La Goletta",
+          "name:ru": "Хальк-эль-Уэд",
+          "place": "town",
+          "wikidata": "Q798445",
+          "wikimedia_commons": "Category:La Goulette",
+          "wikipedia": "ar:حلق الوادي",
+          "wikipedia:es": "La Goleta"
+        }
+      },
+      "exactTownArabic": "حلق الوادي",
+      "exactLatinCorrespondence": {
+        "baseNomFr": "La Goulette",
+        "residentialNameFr": "La Goulette",
+        "townNameFr": "La Goulette"
+      },
+      "requiredSourcePeerIds": [
+        "osm:node:283645091",
+        "osm:relation:4134886",
+        "osm:relation:7117933",
+        "osm:way:93164500"
+      ],
+      "officialIdentityRows": "The complete five INS rows above have three independent source-workbook row indices and distinguish the namesake imada from its four peers.",
+      "primaryCorroboration": [
+        {
+          "url": "https://www.collectiviteslocales.gov.tn/site_web_communes/",
+          "type": "Indexed official directory",
+          "support": "Municipality1114 La Goulette/حلق الوادي; municipality5118 Nouvelle Matmata/مطماطة الجديدة and6044 address, distinct from5117 old Matmata."
+        },
+        {
+          "url": "https://www.commune-lagoulette.gov.tn/index.php/ar/9-uncategorised?limit=3&start=36",
+          "type": "Indexed municipal city description",
+          "support": "Explicit urban identity and official حلق الوادي spelling; not imada boundary equality."
+        }
+      ],
+      "identityInference": "The addressed residential and unique source place=town name the same settlement as the bilingual base. This is supported by exact named source objects and official town/INS names, not inferred from distances or equal timetable IDs."
+    },
+    "explicitReferencePolicy": {
+      "policy": "PRESERVE_LEGACY_BASE_COORDINATES_AND_ALL_RAW_DEFAULTS",
+      "baseInsideOriginalAndPackedResidential": true,
+      "reviewedBaseDistanceOutsideResidentialM": 0.0,
+      "reviewedBaseToTownNodeKm": 0.25088628007772085,
+      "baseInsideOriginalAndPackedNamesakeSector": true,
+      "baseInsideOriginalDelegation": true,
+      "sourceTownInsideOriginalAndPackedResidential": true,
+      "rawAndTownNearestExistingUsableBase": 388,
+      "distanceDefaultQualification": "Distances and nearest-source agreement are preservation checks only. They do not establish settlement identity, validate the legacy base as a surveyed town centre, or justify moving it.",
+      "requiredNoncontainmentEvidence": [],
+      "referenceRelocationDecision": "No relocation is proposed or needed for this display identity. A future move would require a separately qualified settlement-reference and full mapping-impact review."
+    },
+    "wholeTownVsSectorScope": {
+      "residentialAreaKm2": 2.1205906386256106,
+      "sectorAreaKm2": 1.7649760805297365,
+      "residentialOutsideSectorM2": 427947.3338636723,
+      "boundaryCertification": false
+    }
+  },
+  "parentSourceId": "osm:relation:4134886",
+  "governorSourceId": "osm:relation:1435835",
+  "sourceKinds": {
+    "osm:node:283645091": "town",
+    "osm:relation:1435835": "governorate",
+    "osm:relation:4134886": "delegation",
+    "osm:relation:7117889": "sector",
+    "osm:relation:7117890": "sector",
+    "osm:relation:7117891": "sector",
+    "osm:relation:7117932": "sector",
+    "osm:relation:7117933": "sector",
+    "osm:way:93164500": "residential"
+  },
+  "scope": "Exact settlement display identity and reviewed historical search name only. Legacy base coordinates are preserved; no new polygon, source point or prayer reference is created. Indexed official response is corroboration, not a downloaded primary-page or surveyed reference certification.",
+  "sourcePhaseLineage": {
+    "file": "noncoincident-town-display-reviews/388-accepted-boundary-lineage-beni-saouaf-twelve.json",
+    "sha256": "4bb26dae6cc0fcc7579b8c7032c58e565e439ceca701b6cc4ab4a85d1bcd1914"
+  }
+}

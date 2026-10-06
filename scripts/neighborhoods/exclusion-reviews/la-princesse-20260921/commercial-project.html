@@ -1,0 +1,3305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf-token" content="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G">
+<link rel="icon" type="image/png" href="https://www.elyssimmo-neuf.com/public/ely-icon.png">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W94RFZLX');</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CDW90R9RE2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+    gtag('config', 'G-CDW90R9RE2');
+  </script>
+
+
+
+
+<meta name="google-site-verification" content="gVgVrPz97RKnNMJyWUXpJ41sqrkNy6VauGPgJpUsfS0" />
+   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfWi3UtAAAAAFmIp5Fx1sfkW2gupSuxB1zslctz"></script>
+  <!-- Your code --><title>LA PRINCESSE DE LA MER | ELYSSIMMO</title>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcWv3MtAAAAAGkGtl7XAYFuSRKCQuQSTQHbkd3s"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Intercept all forms that have a g-recaptcha-response input
+          document.querySelectorAll('form').forEach(function(form) {
+              if (form.querySelector('.g-recaptcha-response')) {
+                  form.addEventListener('submit', function(e) {
+                      e.preventDefault();
+                      grecaptcha.ready(function() {
+                          grecaptcha.execute('6LcWv3MtAAAAAGkGtl7XAYFuSRKCQuQSTQHbkd3s', {action: 'submit'}).then(function(token) {
+                              form.querySelector('.g-recaptcha-response').value = token;
+                              form.submit();
+                          });
+                      });
+                  });
+              }
+          });
+      });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                screens: { xs: '480px' },
+                fontFamily: { outfit: ['Outfit', 'sans-serif'], inter: ['Inter', 'sans-serif'] },
+                colors: { gold: { DEFAULT: '#d4af37', dark: '#b8860b', light: '#f1e4bc' } },
+                spacing: {
+                    '4.5': '1.125rem', // 18px
+                    '5.5': '1.375rem', // 22px
+                    '6.5': '1.625rem', // 26px
+                    '7.5': '1.875rem', // 30px
+                    '13': '3.25rem', // 52px
+                    '15': '3.75rem', // 60px
+                    '16.5': '4.125rem', // 66px
+                    '30': '7.5rem', // 120px
+                    '55': '13.75rem', // 220px
+                    '130': '32.5rem', // 520px
+                },
+                fontSize: {
+                    '2xs': '10px',
+                    '1.5xs': '11px',
+                },
+                maxWidth: {
+                    'container': '1140px',
+                    'modal': '480px',
+                }
+            }
+        }
+    }
+</script>
+<style>
+body {
+  font-family: 'Albert Sans', system-ui, sans-serif !important;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    .sim-dur {
+      flex: 1;
+      background: #f7f7f5;
+      border: 1.5px solid var(--border, #e5e5e5);
+      border-radius: 9px;
+      padding: 10px;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .sim-dur:hover {
+      border-color: #003B7A;
+      background: #f0f5fa;
+      color: #003B7A;
+    }
+
+    .sim-dur-on {
+      background: #003B7A !important;
+      border-color: #003B7A !important;
+      color: #fff !important;
+    }
+
+    /* ── Responsive fixes ── */
+    @media (max-width: 767px) {
+
+      /* Action buttons bar: smooth horizontal scroll */
+      .action-btns-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 4px;
+      }
+
+      .action-btns-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Tabs: horizontal scroll */
+      .tabs-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .tabs-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* CTA alert block */
+      .cta-alert-block {
+        padding: 20px 18px !important;
+        gap: 16px !important;
+      }
+
+      .cta-alert-block .cta-alert-icon {
+        font-size: 28px !important;
+      }
+
+      .cta-alert-block .cta-alert-title {
+        font-size: 15px !important;
+      }
+
+      .cta-alert-block .cta-alert-desc {
+        font-size: 12.5px !important;
+      }
+
+      .cta-alert-block .cta-alert-btn {
+        padding: 12px 20px !important;
+        font-size: 13px !important;
+        white-space: normal !important;
+        text-align: center;
+        width: 100%;
+      }
+
+      /* Key figures grid */
+      .key-figures-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      .key-figures-promoter {
+        grid-column: span 2;
+        border-top: 1px solid #E5E5E5;
+      }
+
+      /* Sidebar form on mobile: full-width adjustments */
+      .sidebar-form-inputs .grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .share-btns-wrap .share-btn-text {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-[#111] antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W94RFZLX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LfWi3UtAAAAAFmIp5Fx1sfkW2gupSuxB1zslctz', {action: 'LOGIN'});
+    });
+  }
+</script>    <!-- TOPBAR -->
+<!-- 
+<div class="bg-[#F2C649] px-4 md:px-10 py-2.5 flex justify-between items-center font-sans">
+  <div class="flex gap-6 text-sm text-black/60">
+    <span>Tunisie · Portail Immobilier Neuf</span>
+    <span>Lun – Sam · 9h – 18h</span>
+    <a href="https://www.elyssimmo-neuf.com/public/marche/tunisie"
+      class="text-inherit underline font-bold">🇹🇳
+      TN</a>
+    <a href="https://www.elyssimmo-neuf.com/public/marche/international"
+      class="text-inherit no-underline font-normal">🌍
+      Int</a>
+  </div>
+  <a href="tel:+21671XXXXXX" class="flex items-center gap-1.5 bg-[#111] text-white text-sm font-bold px-3.5 py-1.5 rounded-full no-underline">📞 +216 71 XXX XXX</a>
+</div>
+-->
+<!-- HEADER -->
+<header class="bg-white border-b border-[#E5E5E5] sticky top-0 z-[100] font-sans">
+  <div class="w-full mx-auto px-5 h-[66px] flex items-center justify-between">
+    <!-- Desktop Header Layout -->
+    <div class="hidden xl:flex w-full items-center justify-between gap-6 h-full">
+      <!-- LEFT: Logo -->
+      <a href="https://www.elyssimmo-neuf.com/public" class="flex items-center shrink-0">
+        <img src="https://www.elyssimmo-neuf.com/public/logo.jpeg" alt="Elyssimmo Neuf"
+          class="h-[44px] w-40 object-contain shrink-0 rounded-[4px]">
+      </a>
+
+      <!-- CENTER: Nav Content -->
+      <nav class="flex-1 flex items-center justify-start gap-1 px-4">
+        <!-- MENU DROPDOWN -->
+        <div
+          class="group relative flex items-center gap-1.5 py-2 px-3 rounded-lg text-[13px] font-medium text-[#444] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline cursor-pointer whitespace-nowrap">
+          ☰ Menu <span
+            class="text-[10px] opacity-40 transition-transform duration-200 group-hover:rotate-180">▾</span>
+          <div
+            class="hidden group-hover:block absolute top-full left-0 bg-white border border-[#E5E5E5] rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.1)] min-w-[240px] p-1.5 z-[999]">
+            <!-- Programmes Neuf (sub-dropdown) -->
+            <div class="group/sub relative">
+              <div
+                class="px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all whitespace-nowrap cursor-pointer flex items-center justify-between">
+                🏢 Programmes Neuf
+                <span class="text-[9px] opacity-40">→</span>
+              </div>
+              <div
+                class="hidden group-hover/sub:block absolute left-full top-0 bg-white border border-[#E5E5E5] rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.1)] min-w-[230px] p-1.5 ml-1">
+                <a href="https://www.elyssimmo-neuf.com/public/programmes"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🏢 Tous les Programmes</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?type=villa"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🏡 Villas & Terrains</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?type=luxe"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">💎 Immobilier de luxe</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?type=vacances"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🌴 Résidences de Vacances</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?type=premier_logement"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🔑 Programmes 1er Logement</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?type=bureau"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">💼 Bureaux & Locaux</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?type=perle_du_lac"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">✨ La Perle du Lac</a>
+              </div>
+            </div>
+
+            <!-- Programmes Anciens (sub-dropdown) -->
+            <div class="group/sub relative">
+              <div
+                class="px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all whitespace-nowrap cursor-pointer flex items-center justify-between">
+                🏘️ Programmes Anciens
+                <span class="text-[9px] opacity-40">→</span>
+              </div>
+              <div
+                class="hidden group-hover/sub:block absolute left-full top-0 bg-white border border-[#E5E5E5] rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.1)] min-w-[230px] p-1.5 ml-1">
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?program_state=ancien"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🏘️ Tous les Programmes</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?tab=revente"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🏡 Reventes</a>
+                <a href="https://www.elyssimmo-neuf.com/public/programmes?tab=location_neuf"
+                  class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🔑 Location</a>
+              </div>
+            </div>
+            <div class="h-px bg-[#E5E5E5] my-1"></div>
+            <a href="https://www.elyssimmo-neuf.com/public/bons-plans"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🔥 Bons Plans</a>
+            <a href="https://www.elyssimmo-neuf.com/public/bons-plans"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">⚡ Déstockage</a>
+            <a href="https://www.elyssimmo-neuf.com/public/bons-plans"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🎁 Promotions</a>
+            <div class="h-px bg-[#E5E5E5] my-1"></div>
+            <a href="https://www.elyssimmo-neuf.com/public/experience"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">✨ L'Expérience Elyssimmo Neuf</a>
+            <a href="https://www.elyssimmo-neuf.com/public/services/tre"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">🌍 Diaspora Tunisienne (TRE)</a>
+            <a href="https://www.elyssimmo-neuf.com/public/promoteurs"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">📖 Annuaire Promoteurs</a>
+            <a href="https://www.elyssimmo-neuf.com/public/architectes"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">📐 Annuaire Architectes</a>
+            <a href="https://www.elyssimmo-neuf.com/public/devenir-promoteur"
+              class="block px-3 py-2 rounded-lg text-[13px] text-[#555] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline">💼 Offres Promoteurs</a>
+          </div>
+        </div>
+
+        <!-- Featured direct links -->
+        <a href="https://www.elyssimmo-neuf.com/public/bons-plans"
+          class="group relative flex items-center gap-1.5 py-2 px-3 rounded-lg text-[13px] font-semibold text-[#E02020] hover:bg-[#FEF2F2] transition-all no-underline cursor-pointer whitespace-nowrap">🔥
+          Bons Plans</a>
+        <a href="https://www.elyssimmo-neuf.com/public/promoteurs"
+          class="group relative flex items-center gap-1.5 py-2 px-3 rounded-lg text-[13px] font-medium text-[#444] hover:bg-[#F7F7F5] hover:text-[#111] transition-all no-underline cursor-pointer whitespace-nowrap">📖
+          Annuaire Promoteurs</a>
+
+      </nav>
+
+      <!-- RIGHT: Icons -->
+      <div class="flex items-center justify-end gap-2 shrink-0">
+        <a href="https://www.elyssimmo-neuf.com/public/projet-sur-mesure"
+          class="h-[38px] px-4 rounded-lg bg-pink-500 text-white font-bold hover:bg-pink-600 transition-all duration-200 flex items-center justify-center gap-2 shrink-0 text-sm">
+          <i class="fas fa-magic text-[13px]"></i>
+          <span class="whitespace-nowrap">Votre projet sur mesure</span>
+        </a>
+
+        <a href="https://www.elyssimmo-neuf.com/public/devenir-promoteur"
+          class="h-[38px] px-4 rounded-lg bg-[#F2C649] border border-[#F2C649] text-[#111] hover:bg-[#D4A830] hover:border-[#D4A830] font-bold transition-all duration-200 flex items-center justify-center gap-2 shrink-0 text-sm"
+          title="Espace Promoteur">
+          <span class="whitespace-nowrap">Espace Promoteur</span>
+        </a>
+
+                  <a href="https://www.elyssimmo-neuf.com/public/login"
+            class="h-9 px-2.5 rounded-xl bg-[#F7F7F5] border border-slate-200/60 text-slate-700 hover:bg-[#F2C649] hover:border-[#F2C649] hover:text-[#111] flex items-center justify-center gap-2 transition-all duration-200 shrink-0"
+            title="Connexion Client">
+            <i class="far fa-user text-[14px]"></i>
+          </a>
+
+        
+        <!-- Market Switcher Dropdown for Desktop -->
+        <div class="relative group shrink-0 z-[100]">
+          <button
+            class="h-8 px-3 rounded-lg bg-slate-100/80 text-slate-800 text-xs font-bold transition-all flex items-center gap-1.5 border border-slate-200/50 hover:bg-slate-200/60 cursor-pointer">
+                          <span>🇹🇳</span>
+                        <span class="text-[8px] opacity-40">▼</span>
+          </button>
+
+          <!-- Dropdown list on hover -->
+          <div
+            class="hidden group-hover:block absolute top-full right-0 bg-white border border-[#E5E5E5] rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.1)] min-w-[140px] p-1.5 mt-1">
+            <a href="https://www.elyssimmo-neuf.com/public/marche/tunisie"
+              class="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-950 no-underline whitespace-nowrap">
+              <span>🇹🇳</span>
+            </a>
+            <div class="h-px bg-slate-100 my-1"></div>
+            <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=fr"
+              class="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-950 no-underline whitespace-nowrap">
+              <span>🇫🇷</span>
+            </a>
+            <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=ca"
+              class="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-950 no-underline whitespace-nowrap">
+              <span>🇨🇦</span>
+            </a>
+            <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=ci"
+              class="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-950 no-underline whitespace-nowrap">
+              <span>🇨🇮</span>
+            </a>
+            <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=be"
+              class="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-950 no-underline whitespace-nowrap">
+              <span>🇧🇪</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- WhatsApp Link for Desktop -->
+        <a href="https://wa.me/21623211000" target="_blank" rel="noopener noreferrer"
+          class="shrink-0 w-8 h-8 rounded-lg bg-slate-100/80 text-slate-600 hover:text-white hover:bg-[#25D366] hover:border-[#25D366] transition-all border border-slate-200/50 flex items-center justify-center no-underline cursor-pointer"
+          title="Contactez-nous sur WhatsApp">
+          <i class="fab fa-whatsapp text-[13px]"></i>
+        </a>
+
+       
+      </div>
+    </div>
+
+    <!-- Mobile Header Layout -->
+    <div class="flex flex-1 xl:hidden w-full items-center justify-between h-full relative px-5">
+      <!-- Left: Logo -->
+      <a href="https://www.elyssimmo-neuf.com/public" class="flex items-center z-10 shrink-0">
+        <img src="https://www.elyssimmo-neuf.com/public/logo.jpeg" alt="Elyssimmo Neuf"
+          class="h-9 md:h-10 object-contain rounded-sm max-w-[130px]">
+      </a>
+
+      <!-- Right: Icons + Burger Menu -->
+      <div class="flex items-center gap-2 z-10">
+        <!-- WhatsApp Icon -->
+        <a href="https://wa.me/21623211000" target="_blank" rel="noopener noreferrer"
+          class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center text-[#25D366] transition-all hover:bg-[#25D366] hover:text-white shrink-0"
+          title="WhatsApp">
+          <i class="fab fa-whatsapp text-[15px] sm:text-[16px]"></i>
+        </a>
+
+        <!-- Search Icon -->
+        <a href="https://www.elyssimmo-neuf.com/public/programmes"
+          class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-50 border border-slate-200/50 flex items-center justify-center text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-900 shrink-0"
+          title="Rechercher">
+          <i class="fas fa-search text-[14px]"></i>
+        </a>
+
+        <!-- Login/Profile Icon -->
+                  <a href="https://www.elyssimmo-neuf.com/public/login"
+            class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-50 border border-slate-200/50 flex items-center justify-center text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-900 shrink-0"
+            title="Connexion">
+            <i class="far fa-user text-[13px] sm:text-[14px]"></i>
+          </a>
+        
+        <!-- Burger Menu -->
+        <button class="w-9 h-9 sm:w-10 sm:h-10 ml-0.5 sm:ml-1 rounded-xl bg-slate-100 border border-slate-200/60 flex items-center justify-center text-slate-800 transition-all hover:bg-slate-200 hover:text-black cursor-pointer shrink-0" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars text-[16px] sm:text-[18px]"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU OUTSIDE HEADER -->
+<div
+  class="mobile-menu-overlay fixed inset-0 bg-black/50 z-[1000] opacity-0 invisible transition-all duration-300 ease-in-out"
+  id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+<div
+  class="mobile-menu-panel fixed top-0 bottom-0 -right-[320px] w-[320px] bg-white z-[1001] shadow-2xl transition-[right] duration-300 ease-in-out flex flex-col"
+  id="mobilePanel">
+  
+  <div class="p-5 flex justify-between items-center border-b border-slate-100 bg-slate-50/80 backdrop-blur shrink-0">
+    <img src="https://www.elyssimmo-neuf.com/public/logo.jpeg" alt="Elyssimmo Neuf" class="h-9 rounded object-contain">
+    <button onclick="toggleMobileMenu()"
+      class="w-9 h-9 rounded-xl bg-slate-100/60 hover:bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 border border-slate-200/40 transition-all cursor-pointer">
+      <i class="fas fa-times text-sm"></i>
+    </button>
+  </div>
+
+  
+  <div class="p-4 flex flex-col gap-3 overflow-y-auto flex-1">
+    
+    <div class="relative shrink-0">
+      <div onclick="const list = this.nextElementSibling; list.classList.toggle('hidden');"
+        class="bg-gradient-to-r from-slate-50 to-slate-100 border border-slate-200/60 p-3 rounded-lg flex justify-between items-center cursor-pointer text-slate-800 text-[12.5px] font-bold hover:from-slate-100 hover:to-slate-200 transition-all">
+        <span class="flex items-center gap-2.5">
+                      <span class="text-lg">🇹🇳</span>
+                    <span class="text-slate-600">Changer le marché</span>
+        </span>
+        <i class="fas fa-chevron-down text-[9px] opacity-40"></i>
+      </div>
+      <!-- Countries list for Mobile -->
+      <div
+        class="hidden flex flex-col gap-1 p-1.5 bg-white border border-slate-200 rounded-lg mt-1.5 absolute left-0 right-0 z-[10] shadow-lg">
+        <a href="https://www.elyssimmo-neuf.com/public/marche/tunisie"
+          class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-bold text-slate-700 hover:bg-slate-50 no-underline">🇹🇳 Tunisie</a>
+        <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=fr"
+          class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-bold text-slate-700 hover:bg-slate-50 no-underline">🇫🇷 France</a>
+        <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=ca"
+          class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-bold text-slate-700 hover:bg-slate-50 no-underline">🇨🇦 Canada</a>
+        <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=ci"
+          class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-bold text-slate-700 hover:bg-slate-50 no-underline">🇨🇮 Côte d'Ivoire</a>
+        <a href="https://www.elyssimmo-neuf.com/public/marche/international?country=be"
+          class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-bold text-slate-700 hover:bg-slate-50 no-underline">🇧🇪 Belgique</a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="h-px bg-slate-200"></div>
+
+    
+    <!-- Programmes Neuf (with sub-menu) -->
+    <div class="space-y-1.5">
+      <div
+        class="bg-slate-50 border border-slate-200/50 text-slate-800 text-[13px] font-bold flex justify-between items-center p-3 rounded-lg hover:bg-slate-100 transition-all cursor-pointer"
+        onclick="toggleSub(this)">
+        <span class="flex items-center gap-2.5">🏢 Programmes Neuf</span>
+        <i class="fas fa-chevron-down text-[9px] opacity-40 transition-transform duration-200"></i>
+      </div>
+      <div class="hidden flex-col gap-1 pl-6 border-l-2 border-slate-300 py-1">
+        <a href="https://www.elyssimmo-neuf.com/public/programmes"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Tous les Programmes</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?type=villa"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Villas & Terrains</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?type=luxe"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Immobilier de luxe</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?type=vacances"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Résidences de Vacances</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?type=premier_logement"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Programmes 1er Logement</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?type=bureau"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Bureaux & Locaux</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?type=perle_du_lac"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• La Perle du Lac</a>
+      </div>
+    </div>
+
+    <!-- Programmes Anciens (with sub-menu) -->
+    <div class="space-y-1.5">
+      <div
+        class="bg-slate-50 border border-slate-200/50 text-slate-800 text-[13px] font-bold flex justify-between items-center p-3 rounded-lg hover:bg-slate-100 transition-all cursor-pointer"
+        onclick="toggleSub(this)">
+        <span class="flex items-center gap-2.5">🏘️ Programmes Anciens</span>
+        <i class="fas fa-chevron-down text-[9px] opacity-40 transition-transform duration-200"></i>
+      </div>
+      <div class="hidden flex-col gap-1 pl-6 border-l-2 border-slate-300 py-1">
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?program_state=ancien"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Tous les Programmes</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?tab=revente"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Reventes</a>
+        <a href="https://www.elyssimmo-neuf.com/public/programmes?tab=location_neuf"
+          class="text-[12px] font-medium text-slate-600 hover:text-[#111] transition-colors no-underline px-3 py-2 rounded-md hover:bg-slate-50">• Location</a>
+      </div>
+    </div>
+
+    
+    <a href="https://www.elyssimmo-neuf.com/public/bons-plans"
+      class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-red-50/60 hover:bg-red-100 border border-red-200/40 text-[#E02020] transition-all no-underline cursor-pointer">
+      <span class="text-lg">🔥</span> Bons Plans
+    </a>
+
+    
+    <div class="space-y-1.5">
+      <a href="https://www.elyssimmo-neuf.com/public/bons-plans"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">⚡</span> Déstockage
+      </a>
+      <a href="https://www.elyssimmo-neuf.com/public/bons-plans"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">🎁</span> Promotions
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="h-px bg-slate-200"></div>
+
+    
+    <div class="space-y-1.5">
+      <a href="https://www.elyssimmo-neuf.com/public/experience"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">✨</span> Expérience
+      </a>
+      <a href="https://www.elyssimmo-neuf.com/public/services/tre"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">🌍</span> Diaspora (TRE)
+      </a>
+      <a href="https://www.elyssimmo-neuf.com/public/promoteurs"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">📖</span> 	Annuaire Promoteurs
+      </a>
+      <a href="https://www.elyssimmo-neuf.com/public/architectes"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">📐</span>Annuaire Architectes
+      </a>
+      <a href="https://www.elyssimmo-neuf.com/public/deposer-un-bien"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">📢</span> Déposez votre annonce
+      </a>
+      <a href="https://www.elyssimmo-neuf.com/public/services/terrain"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">🏗️</span> Déposer votre terrain
+      </a>
+      <a href="https://www.elyssimmo-neuf.com/public/devenir-promoteur"
+        class="text-[13px] font-bold flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/50 text-slate-800 transition-all no-underline cursor-pointer">
+        <span class="text-lg">💼</span> Offres Promoteurs
+      </a>
+    </div>
+
+    <a href="https://www.elyssimmo-neuf.com/public/projet-sur-mesure"
+      class="mt-3 flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-xl text-[13px] transition-all no-underline shadow-sm">
+      <i class="fas fa-magic"></i> Votre projet sur mesure
+    </a>
+    <a href="https://www.elyssimmo-neuf.com/public/devenir-promoteur"
+      class="mt-3 flex items-center justify-center gap-2 bg-[#F2C649] hover:brightness-105 text-[#111] font-bold py-3 px-4 rounded-xl text-[13px] transition-all no-underline shadow-sm">
+      💼 Offres Promoteurs
+    </a>
+    <a href="https://www.elyssimmo-neuf.com/public/login"
+      class="mt-2 flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 px-4 rounded-xl text-[13px] transition-all no-underline border border-slate-200/50">
+      🔑 Login Promoteur
+    </a>
+
+    
+
+  </div>
+
+  
+  <div class="p-6 pt-4 border-t border-slate-100 space-y-4 shrink-0 bg-white pb-8">
+          <a href="https://www.elyssimmo-neuf.com/public/login"
+        class="flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-widest transition-all no-underline">
+        <i class="fas fa-right-to-bracket text-xs"></i> Se connecter
+      </a>
+    
+  
+  </div>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobileOverlay');
+    const panel = document.getElementById('mobilePanel');
+
+    overlay.classList.toggle('opacity-0');
+    overlay.classList.toggle('invisible');
+    overlay.classList.toggle('opacity-100');
+    overlay.classList.toggle('visible');
+
+    panel.classList.toggle('-right-[320px]');
+    panel.classList.toggle('right-0');
+
+    if (panel.classList.contains('right-0')) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }
+  function toggleSub(el) {
+    const sub = el.nextElementSibling;
+    sub.classList.toggle('hidden');
+    sub.classList.toggle('flex');
+    const icon = el.querySelector('i');
+    icon.classList.toggle('rotate-180');
+  }
+</script>
+    <main>
+        
+          
+  <div class="prog-detail text-[#111]">
+
+    
+    
+    
+    <div class="bg-[#F7F7F5] border-b border-[#E5E5E5] px-5 lg:px-10 py-7">
+      <div class="max-w-[1140px] mx-auto">
+        <div class="flex items-center gap-4 mb-[18px]">
+
+          <div>
+            <div class="flex items-center gap-[7px] text-[12px] text-[#6B7280] mb-1 flex-wrap">
+              <a href="https://www.elyssimmo-neuf.com/public" class="hover:text-[#111]">Accueil</a><span class="opacity-[0.35]">›</span>
+              <a href="https://www.elyssimmo-neuf.com/public/programmes" class="hover:text-[#111]">Programmes Neufs</a><span
+                class="opacity-[0.35]">›</span>
+              <a href="https://www.elyssimmo-neuf.com/public/programmes?city=NABEUL%20DAR%20CHAABANE"
+                class="hover:text-[#111]">NABEUL DAR CHAABANE</a><span class="opacity-[0.35]">›</span>
+            </div>
+            <strong class="text-[#111] font-semibold text-[15px]">LA PRINCESSE DE LA MER</strong>
+          </div>
+        </div>
+        <div class="flex justify-between items-start gap-5">
+          <div class="flex-1">
+            <div class="flex gap-2 mb-3.5 flex-wrap share-btns-wrap">
+              <a class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-md border-[1.5px] border-[#1877F2] text-[12px] font-semibold bg-white text-[#1877F2] transition-all hover:bg-[#1877F2] hover:text-white"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.elyssimmo-neuf.com%2Fpublic%2Fprogrammes%2Fla-princesse-de-la-mer" target="_blank"><i
+                  class="fab fa-facebook-f"></i> <span class="share-btn-text">Partager sur Facebook</span></a>
+              <a class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-md border-[1.5px] border-[#E5E5E5] text-[12px] font-semibold bg-white text-[#444] transition-all hover:border-[#111] hover:text-[#111]"
+                href="mailto:?subject=LA+PRINCESSE+DE+LA+MER&body=https%3A%2F%2Fwww.elyssimmo-neuf.com%2Fpublic%2Fprogrammes%2Fla-princesse-de-la-mer"><i
+                  class="far fa-envelope"></i> <span class="share-btn-text">Envoyer par mail</span></a>
+              <button
+                class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-md border-[1.5px] border-[#E5E5E5] text-[12px] font-semibold bg-white text-[#444] transition-all hover:border-[#111] hover:text-[#111]"
+                type="button" onclick="window.print()"><i class="fas fa-print"></i> <span
+                  class="share-btn-text">Imprimer</span></button>
+            </div>
+                          <h1 class="text-[clamp(28px,4vw,44px)] font-black tracking-[-1.5px] text-[#111] leading-[1.05] mb-2.5">
+                LA PRINCESSE DE LA MER
+              </h1>
+            
+            <div class="flex items-center gap-[18px] flex-wrap">
+              <span class="text-[14px] text-[#6B7280] flex items-center gap-[5px]"><i
+                  class="fas fa-map-marker-alt text-[#d4af37]"></i>
+                NABEUL DAR CHAABANE, NABEUL - HAMMAMET</span>
+              <span
+                class="text-[12px] text-[#6B7280] flex items-center gap-1 bg-[#F7F7F5] border border-[#E5E5E5] px-2.5 py-1 rounded-[20px]"><i
+                  class="far fa-clock"></i> Mis à jour le 20/09/2026</span>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    
+    
+    <div class="bg-white overflow-hidden">
+      <div class="max-w-[1140px] mx-auto px-5 lg:px-10 pt-2 pb-3.5">
+                <style>
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        </style>
+        <div
+          class="flex sm:grid grid-cols-2 lg:grid-cols-2 lg:grid-rows-1 h-[280px] sm:h-[350px] lg:h-[420px] gap-2 rounded-xl overflow-x-auto sm:overflow-hidden snap-x snap-mandatory sm:snap-none hide-scrollbar">
+                      <div class="relative flex items-center justify-center overflow-hidden cursor-pointer flex-shrink-0 w-[90%] sm:w-auto snap-center
+                                      
+                                      "
+              onclick="openLightbox('https://www.elyssimmo-neuf.com/public/storage/programs/156/5447.jpg', 0)">
+              <img src="https://www.elyssimmo-neuf.com/public/storage/programs/156/5447.jpg" alt="LA PRINCESSE DE LA MER - Image principale"
+                class="w-full h-full object-cover">
+                          </div>
+                      <div class="relative flex items-center justify-center overflow-hidden cursor-pointer flex-shrink-0 w-[90%] sm:w-auto snap-center
+                                      
+                                      "
+              onclick="openLightbox('https://www.elyssimmo-neuf.com/public/storage/programs/156/5447.jpg', 1)">
+              <img src="https://www.elyssimmo-neuf.com/public/storage/programs/156/5447.jpg" alt="LA PRINCESSE DE LA MER"
+                class="w-full h-full object-cover">
+                          </div>
+                  </div>
+        <div class="flex items-center justify-between pt-2.5 gap-2.5 flex-wrap w-full">
+          <div
+            style="display:flex; align-items:center; justify-content:space-between; padding:10px 4px 14px; width: 100%;">
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                              <button onclick="openLightbox(null, 0)"
+                  style="background:#0F2847;color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;font-family:inherit;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.2);"
+                  onmouseover="this.style.background='#1A3A6C'" onmouseout="this.style.background='#0F2847'">📸 Voir les
+                  2 photos</button>
+              
+              
+              
+                          </div>
+            <span
+              style="font-size:11px;color:rgba(255,255,255,0.4);white-space:nowrap;">1 / 2 photos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="bg-white border-b border-[#E5E5E5] px-5 lg:px-10">
+      <div class="max-w-[1140px] mx-auto grid grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_auto] key-figures-grid">
+        <div class="px-5 py-6 border-r border-b lg:border-b-0 border-[#E5E5E5] transition-colors hover:bg-[#F7F7F5]">
+          <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#6B7280] mb-2">Typologie</div>
+          <div class="text-[16px] font-black text-[#111] tracking-[-0.8px] leading-[1.1]">
+            Appartements
+          </div>
+        </div>
+        <div class="px-5 py-6 border-r border-b lg:border-b-0 border-[#E5E5E5] transition-colors hover:bg-[#F7F7F5]">
+                      <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#6B7280] mb-2">Prix</div>
+            <div class="text-[16px] font-black text-[#D4A830] tracking-[-0.8px] leading-[1.1]">
+              Nous consulter
+            </div>
+                  </div>
+        <div class="px-5 py-6 border-r border-b lg:border-b-0 border-[#E5E5E5] transition-colors hover:bg-[#F7F7F5]">
+          <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#6B7280] mb-2">Livraison</div>
+          <div class="text-[16px] font-black text-[#111] tracking-[-0.8px] leading-[1.1]">
+            Nous consulter
+          </div>
+        </div>
+        <div class="px-5 py-6 border-r border-b lg:border-b-0 border-[#E5E5E5] transition-colors hover:bg-[#F7F7F5]">
+          <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#6B7280] mb-2">État du chantier</div>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#F2C649] shrink-0 animate-pulse"></span>
+            <div class="text-[16px] font-black text-[#111] tracking-[-0.8px] leading-[1.1]">Travaux en cours
+            </div>
+          </div>
+        </div>
+                  <a href="https://www.elyssimmo-neuf.com/public/promoteurs/tourism-building-branch"
+            class="px-6 py-5 flex flex-col items-center justify-center gap-1.5 col-span-2 lg:col-span-1 hover:bg-[#F7F7F5] transition-colors group cursor-pointer no-underline key-figures-promoter">
+            <div
+              class="w-[72px] h-[72px] rounded-xl bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] flex items-center justify-center text-[24px] font-black text-[#D4A830] overflow-hidden group-hover:border-[#D4A830] transition-colors">
+              <img src="https://www.elyssimmo-neuf.com/public/storage/promoters/123-tourism-building-branch.jpg"
+                alt="TOURISM BUILDING BRANCH"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">            </div>
+            <div class="text-[11px] font-bold text-[#111] text-center group-hover:text-[#D4A830] transition-colors">
+              TOURISM BUILDING BRANCH
+            </div>
+          </a>
+              </div>
+    </div>
+
+    
+    
+    
+    <div class="bg-white border-b border-[#E5E5E5] px-5 lg:px-10 py-4">
+      <div
+        class="max-w-[1140px] mx-auto flex gap-2.5 items-center flex-nowrap lg:flex-wrap overflow-x-auto action-btns-scroll">
+        <!-- Boutons actifs (toujours visibles) -->
+        <a class="shrink-0 flex items-center gap-[7px] px-[18px] py-[11px] rounded-[9px] text-[13px] font-bold whitespace-nowrap transition-all bg-[#F2C649] text-[#111] shadow-[0_4px_14px_rgba(212,168,48,0.3)] hover:bg-[#D4A830] hover:-translate-y-px"
+          href="#sidebar-form"><i class="fas fa-phone"></i> Être rappelé</a>
+        <button
+          class="shrink-0 flex items-center gap-[7px] px-[18px] py-[11px] rounded-[9px] text-[13px] font-bold whitespace-nowrap transition-all bg-[#111] text-white hover:bg-[#333]"
+          type="button"
+          onclick="toggleModal('rdv-modal', 156, 123)"><i
+            class="far fa-calendar-alt"></i> Prendre Rendez-vous</button>
+
+
+        
+                            <a class="shrink-0 flex items-center gap-[7px] px-[18px] py-[11px] rounded-[9px] text-[13px] font-bold whitespace-nowrap transition-all bg-[#F7F7F5] text-[#111] border-[1.5px] border-[#E5E5E5] hover:border-[#F2C649] hover:bg-[#FEFAE8]"
+            href="#sidebar-form"><i class="far fa-envelope"></i> Contacter le Promoteur</a>
+                        </div>
+    </div>
+
+    <!-- ═══ BLOC INCITATION REVENTE/LOCATION ═══ -->
+    <div class="bg-white px-4 md:px-5 lg:px-10">
+      <div class="max-w-7xl mx-auto py-4">
+        <div
+          class="bg-gradient-to-br from-[#0F2847] to-[#1A3A6C] rounded-[14px] p-5 sm:p-6 flex flex-col lg:flex-row items-center justify-between gap-5 border-[1.5px] border-[#234066]">
+          <div
+            class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-4 w-full lg:w-auto">
+            <div class="text-[28px] sm:text-[30px] shrink-0 leading-none">🔑</div>
+            <div>
+              <div class="text-[15px] sm:text-[15.5px] font-black text-white tracking-[-0.3px] mb-1.5 sm:mb-1">Vous avez
+                acheté ou investi dans LA PRINCESSE DE LA MER ?</div>
+              <div class="text-[12.5px] sm:text-[13px] text-white/70 leading-relaxed max-w-xl">Confiez-nous la revente ou
+                la mise en location de votre lot — diffusion immédiate sur la fiche de cette résidence.</div>
+            </div>
+          </div>
+          <a href="https://www.elyssimmo-neuf.com/public/deposer-un-bien"
+            class="flex items-center justify-center gap-2 bg-[#F2C649] text-[#111] hover:bg-white rounded-xl px-5 sm:px-6 py-3 sm:py-3.5 text-[12.5px] sm:text-[13.5px] font-extrabold shrink-0 transition-colors w-full lg:w-auto text-center sm:whitespace-nowrap">
+            🏡 Confier mon bien en Location ou Revente
+          </a>
+        </div>
+      </div>
+    </div>
+
+    
+    <div
+      class="container max-w-7xl mx-auto px-5 lg:px-10 pt-9 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 items-start">
+      <div class="min-w-0">
+        
+        <div class="flex border-b-[1.5px] border-[#E5E5E5] mb-7 tabs-scroll">
+                              <button class="tab-btn shrink-0 px-[18px] py-3 text-[13px] font-semibold text-[#6B7280] border-b-[2.5px] border-transparent -mb-[1.5px] transition-all whitespace-nowrap hover:text-[#111] [&amp;.on]:text-[#111] [&amp;.on]:border-[#F2C649] on" data-tab-btn="programme" onclick="showProgTab(this,'programme')">🏠 Le
+            Programme</button>
+                              
+                              <button class="tab-btn shrink-0 px-[18px] py-3 text-[13px] font-semibold text-[#6B7280] border-b-[2.5px] border-transparent -mb-[1.5px] transition-all whitespace-nowrap hover:text-[#111] [&amp;.on]:text-[#111] [&amp;.on]:border-[#F2C649]" data-tab-btn="avancee" onclick="showProgTab(this,'avancee')">🏗️ Avancée</button>
+        </div>
+
+        
+        <div id="tab-programme" class="tab-content on hidden [&.on]:block">
+          <div class="mb-9">
+            <div
+              class="text-[16px] font-extrabold text-[#111] tracking-[-0.3px] mb-3.5 flex items-center gap-2.5 after:content-[''] after:flex-1 after:h-px after:bg-[#E5E5E5]">
+              📝 Présentation du programme</div>
+            <p class="text-[14px] text-[#444] leading-[1.8]">
+              La résidence &quot;La princesse de la mer&quot; est une résidence pieds dans l&#039;eau, se trouvant au coeur de la zone touristique de Nabeul, située à environ 2km du centre historique de Nabeul, au bord de la plage de Dar Chaabane el Fehri dans un quartier luxueux, limitrophe à de grands hôtels.<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+La résidence &quot;La princesse de la mer&quot; est une résidence pieds dans l&#039;eau, se trouvant au coeur de la zone touristique de Nabeul, située à environ 2km du centre historique de Nabeul, au bord de la plage de Dar Chaabane el Fehri dans un quartier luxueux, limitrophe à de grands hôtels.
+            </p>
+          </div>
+
+          <!-- CTA ALERTE -->
+          <div class="cta-alert-block"
+            style="background:linear-gradient(135deg,#0F2847,#1A3A6C); border-radius:16px; padding:28px 32px; margin:32px 0; display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+            <div class="cta-alert-icon" style="font-size:36px; flex-shrink:0;">🔔</div>
+            <div style="flex:1; min-width:200px;">
+              <div class="cta-alert-title"
+                style="font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:6px;">Un lot précis
+                vous intéresse ?</div>
+              <div class="cta-alert-desc" style="font-size:13.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Créez
+                votre alerte et soyez notifié dès qu'un appartement, une villa ou un terrain se libère dans <strong
+                  style="color:#fff;">LA PRINCESSE DE LA MER</strong>.</div>
+            </div>
+            <button class="cta-alert-btn" onclick="ouvrirAlerteResidence('LA PRINCESSE DE LA MER')"
+              style="display:flex;align-items:center;justify-content:center;gap:9px;background:#F2C649;color:#111;border:none;border-radius:10px;padding:14px 26px;font-family:'Albert Sans',sans-serif;font-size:14px;font-weight:800;white-space:nowrap;flex-shrink:0;box-shadow:0 4px 16px rgba(242,198,73,0.35);cursor:pointer;transition:all 0.2s;"
+              onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">🔔 Créer mon
+              alerte</button>
+          </div>
+
+          
+          
+          
+          <div class="mt-12 pt-8 border-t-[1.5px] border-[#E5E5E5]">
+              <div class="text-[20px] font-extrabold text-[#111] tracking-[-0.5px] mb-6 flex items-center gap-2.5">
+                📋 Disponibilités
+              </div>
+              <div class="mb-9">
+              
+
+               
+                                  <p class="text-[14px] text-[#6B7280]">La grille des lots sera publiée prochainement. Contactez-nous pour les
+                    disponibilités.</p>
+                              </div>
+
+              
+
+            </div>
+          
+          
+          <div id="contact-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+              
+              <div class="flex items-center justify-between p-6 border-b border-[#E5E5E5]">
+                <h3 class="text-[18px] font-extrabold text-[#111]">Demander des informations</h3>
+                <button type="button" class="text-[#999] hover:text-[#111] transition-colors" onclick="closeContactModal()">
+                  <i class="fas fa-times text-[18px]"></i>
+                </button>
+              </div>
+
+              
+              <form class="p-6 space-y-4" onsubmit="handleContactSubmit(event)">
+                
+                <input type="hidden" id="modal-lot-number" name="lot_number">
+                <input type="hidden" id="modal-lot-typology" name="lot_typology">
+                <input type="hidden" id="modal-lot-block" name="lot_block">
+                <input type="hidden" name="program_id" value="156">
+                <input type="hidden" name="type" value="contact">
+
+                
+                <div id="lot-info" class="hidden bg-[#F7F7F5] p-3.5 rounded-lg border-[1.5px] border-[#E5E5E5] mb-4">
+                  <div class="text-[12px] font-bold text-[#666] mb-2">📍 Lot sélectionné:</div>
+                  <div class="flex items-center gap-2 text-[13px] flex-wrap">
+                    <span class="font-bold text-[#111]">N° <span id="modal-lot-display"></span></span>
+                    <span class="text-[#999]">—</span>
+                    <span id="modal-type-display" class="text-[#666]"></span>
+                    <span class="text-[#999]">—</span>
+                    <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[11px] font-bold">🧱 <span id="modal-block-display"></span></span>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-[12px] font-bold uppercase tracking-[0.5px] text-[#666] mb-2">Nom complet <span class="text-red-600">*</span></label>
+                  <input type="text" name="full_name" required class="w-full px-3.5 py-2.5 text-[13px] border-[1.5px] border-[#E5E5E5] rounded-lg focus:border-[#D4A830] focus:ring-2 focus:ring-[#D4A830]/20 outline-none transition-all" placeholder="Votre nom complet">
+                </div>
+
+                <div>
+                  <label class="block text-[12px] font-bold uppercase tracking-[0.5px] text-[#666] mb-2">Téléphone <span class="text-red-600">*</span></label>
+                  <input type="tel" name="phone" required class="w-full px-3.5 py-2.5 text-[13px] border-[1.5px] border-[#E5E5E5] rounded-lg focus:border-[#D4A830] focus:ring-2 focus:ring-[#D4A830]/20 outline-none transition-all" placeholder="+216 ...">
+                </div>
+
+                <div>
+                  <label class="block text-[12px] font-bold uppercase tracking-[0.5px] text-[#666] mb-2">Email</label>
+                  <input type="email" name="email" class="w-full px-3.5 py-2.5 text-[13px] border-[1.5px] border-[#E5E5E5] rounded-lg focus:border-[#D4A830] focus:ring-2 focus:ring-[#D4A830]/20 outline-none transition-all" placeholder="votre@email.com">
+                </div>
+
+                <button type="submit" class="w-full mt-6 bg-[#111] text-white font-bold py-2.5 rounded-lg hover:bg-[#D4A830] transition-colors">
+                  Envoyer
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <script>
+            function openContactModal(lotNumber = null, typology = null, block = null) {
+              const modal = document.getElementById('contact-modal');
+              const lotInfo = document.getElementById('lot-info');
+
+              // Remplir les champs cachés
+              if (lotNumber) {
+                document.getElementById('modal-lot-number').value = lotNumber;
+                document.getElementById('modal-lot-typology').value = typology || '';
+                document.getElementById('modal-lot-block').value = block || '';
+
+                // Afficher les informations du lot
+                document.getElementById('modal-lot-display').textContent = lotNumber;
+                document.getElementById('modal-type-display').textContent = typology || '—';
+                document.getElementById('modal-block-display').textContent = block || '—';
+                lotInfo.classList.remove('hidden');
+              } else {
+                lotInfo.classList.add('hidden');
+              }
+
+              modal.classList.remove('hidden');
+              document.body.style.overflow = 'hidden';
+            }
+
+            function closeContactModal() {
+              document.getElementById('contact-modal').classList.add('hidden');
+              document.body.style.overflow = 'auto';
+            }
+
+            function handleContactSubmit(e) {
+              e.preventDefault();
+              const form = e.target;
+              const formData = new FormData(form);
+
+              // Envoyer via AJAX
+              fetch('https://www.elyssimmo-neuf.com/public/contact/lead', {
+                method: 'POST',
+                headers: {
+                  'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                  'Accept': 'application/json',
+                },
+                body: formData
+              })
+              .then(response => response.json())
+              .then(data => {
+                alert('✅ Merci! Nous vous contacterons bientôt.');
+                closeContactModal();
+                form.reset();
+              })
+              .catch(error => {
+                console.error('Erreur:', error);
+                alert('❌ Erreur de connexion');
+              });
+            }
+
+            // Fermer la modale en cliquant en dehors
+            document.getElementById('contact-modal')?.addEventListener('click', (e) => {
+              if (e.target.id === 'contact-modal') {
+                closeContactModal();
+              }
+            });
+          </script>
+
+          
+                    <!-- ═══ SIMULATEUR DE FINANCEMENT BTK BANK ═══ -->
+          <div
+            class="bg-white border-[1.5px] border-[#e5e5e5] rounded-[18px] overflow-hidden my-10 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+            <!-- Header -->
+            <div
+              class="bg-gradient-to-br from-[#003B7A] to-[#005BBB] px-5 py-5 md:px-7 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-3.5">
+                <div class="text-2xl">💰</div>
+                <div class="text-center sm:text-left">
+                  <div class="text-[11px] font-extrabold tracking-[2px] uppercase text-white/55 mb-1">Partenaire
+                    Financement Exclusif</div>
+                  <div class="text-[17px] font-black text-white tracking-[-0.5px]">Simulez votre crédit immobilier</div>
+                </div>
+              </div>
+              <!-- Logo BTK Bank placeholder -->
+              <div class="bg-white rounded-[10px] px-4 py-2 flex items-center justify-center min-w-[100px] h-[44px]">
+                <span class="text-[13px] font-black text-[#003B7A] tracking-[1px]">BTK BANK</span>
+              </div>
+            </div>
+
+            <!-- Corps -->
+            <div class="px-5 py-6 md:px-7">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                <!-- COLONNE GAUCHE : Formulaire simulateur -->
+                <div class="lg:col-span-7">
+                  <!-- Prix du bien (pré-rempli) -->
+                  <div class="mb-4">
+                    <label class="text-[9.5px] font-extrabold tracking-[1.8px] uppercase text-[#aaa] block mb-1.5">Prix du
+                      bien</label>
+                    <div
+                      class="bg-[#f7f7f5] border-[1.5px] border-[#e5e5e5] rounded-[9px] px-3.5 py-2.5 text-[15px] font-extrabold text-[#111]">
+                      435 000 TND
+                    </div>
+                  </div>
+
+                  <!-- Apport personnel -->
+                  <div class="mb-4">
+                    <label class="text-[9.5px] font-extrabold tracking-[1.8px] uppercase text-[#aaa] block mb-1.5">Votre
+                      apport personnel</label>
+                    <input id="sim-apport" type="number" value="87000"
+                      min="0" max="435000" step="5000"
+                      class="w-full bg-white border-[1.5px] border-[#e5e5e5] rounded-[9px] px-3.5 py-2.5 font-sans text-[14px] font-bold text-[#111] outline-none transition-colors focus:border-[#003B7A]"
+                      oninput="calculerCredit()">
+                    <div class="text-[11px] text-[#6b7280] mt-1">Apport minimum recommandé : 20% du prix</div>
+                  </div>
+
+                  <!-- Durée -->
+                  <div class="mb-4">
+                    <label class="text-[9.5px] font-extrabold tracking-[1.8px] uppercase text-[#aaa] block mb-2">Durée du
+                      crédit</label>
+                    <div class="flex flex-wrap gap-2" id="sim-durees">
+                      <button onclick="setDuree(this,10)" class="sim-dur" type="button">10 ans</button>
+                      <button onclick="setDuree(this,15)" class="sim-dur sim-dur-on" type="button">15 ans</button>
+                      <button onclick="setDuree(this,20)" class="sim-dur" type="button">20 ans</button>
+                      <button onclick="setDuree(this,25)" class="sim-dur" type="button">25 ans</button>
+                    </div>
+                  </div>
+
+                  <!-- Taux BTK -->
+                  <div
+                    class="bg-[#fefae8] border-[1.5px] border-[#f2c649] rounded-[9px] px-3.5 py-2.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                    <div>
+                      <div class="text-[10px] font-extrabold tracking-[1.5px] uppercase text-[#d4a830]">Taux BTK Bank
+                      </div>
+                      <div class="text-[11.5px] text-[#555] mt-0.5">Taux préférentiel partenaire Elyssimmo</div>
+                    </div>
+                    <div class="text-[24px] font-black text-[#003B7A] tracking-[-1px]">6,5%</div>
+                  </div>
+                </div>
+
+                <!-- COLONNE DROITE : Résultat -->
+                <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+
+                  <!-- OVERLAY DE VERROUILLAGE -->
+                  <div id="sim-result-overlay"
+                    class="absolute -inset-2.5 bg-white/85 backdrop-blur-md z-10 flex flex-col justify-center items-center rounded-2xl p-6 border border-[#E5E5E5] shadow-[0_8px_30px_rgba(0,0,0,0.05)]">
+                    <div
+                      class="w-10 h-10 bg-[#003B7A] text-white rounded-full flex items-center justify-center text-[18px] mb-3">
+                      🔒</div>
+                    <h4 class="text-[16px] font-black text-[#111] mb-2 text-center tracking-[-0.5px]">Découvrez votre
+                      mensualité</h4>
+                    <p class="text-[12px] text-[#555] text-center mb-4 leading-relaxed">Renseignez vos coordonnées pour
+                      afficher immédiatement le résultat de votre simulation BTK Bank.</p>
+
+                    <form id="unlock-sim-form" onsubmit="unlockSimulation(event)" class="w-full flex flex-col gap-2">
+                      <input type="text" name="full_name" placeholder="Nom & Prénom *" required
+                        class="w-full px-3.5 py-3 border-[1.5px] border-[#E5E5E5] rounded-lg text-[13px] outline-none transition-colors focus:border-[#003B7A]">
+                      <input type="email" name="email" placeholder="Adresse e-mail *" required
+                        class="w-full px-3.5 py-3 border-[1.5px] border-[#E5E5E5] rounded-lg text-[13px] outline-none transition-colors focus:border-[#003B7A]">
+                      <input type="tel" name="phone" placeholder="Téléphone *" required
+                        class="w-full px-3.5 py-3 border-[1.5px] border-[#E5E5E5] rounded-lg text-[13px] outline-none transition-colors focus:border-[#003B7A]">
+
+                      <button type="submit"
+                        class="w-full bg-[#F2C649] text-[#111] border-none rounded-lg p-3 text-[13px] font-extrabold cursor-pointer mt-1 hover:bg-[#D4A830] transition-transform active:scale-95">
+                        🔓 Afficher ma mensualité
+                      </button>
+                    </form>
+                    <div id="sim-unlock-loading" class="hidden text-[12px] font-bold text-[#003B7A] mt-3">Validation en
+                      cours...</div>
+                  </div>
+
+                  <!-- CONTENU RESULTAT (Flouté initialement) -->
+                  <div id="sim-result-content"
+                    class="blur-md opacity-60 pointer-events-none transition-all duration-500 ease-in-out">
+                    <!-- Résultat mensualité -->
+                    <div class="bg-gradient-to-br from-[#003B7A] to-[#005BBB] rounded-2xl p-6 text-center mb-4 shadow-lg">
+                      <div class="text-[11px] font-extrabold tracking-[2px] uppercase text-white/55 mb-2">Mensualité
+                        estimée</div>
+                      <div id="sim-mensualite" class="text-[38px] font-black text-white tracking-[-2px] leading-none">-
+                      </div>
+                      <div class="text-[14px] text-white/65 mt-1">TND / mois</div>
+                    </div>
+
+                    <!-- Détail -->
+                    <div class="flex flex-col gap-2 mb-4">
+                      <div class="flex justify-between items-center px-3 py-2.5 bg-[#f7f7f5] rounded-lg">
+                        <span class="text-[12.5px] text-[#6b7280]">Montant emprunté</span>
+                        <span id="sim-montant" class="text-[12.5px] font-extrabold text-[#111]">-</span>
+                      </div>
+                      <div class="flex justify-between items-center px-3 py-2.5 bg-[#f7f7f5] rounded-lg">
+                        <span class="text-[12.5px] text-[#6b7280]">Coût total du crédit</span>
+                        <span id="sim-cout" class="text-[12.5px] font-extrabold text-[#111]">-</span>
+                      </div>
+                      <div class="flex justify-between items-center px-3 py-2.5 bg-[#f7f7f5] rounded-lg">
+                        <span class="text-[12.5px] text-[#6b7280]">Durée</span>
+                        <span id="sim-duree-label" class="text-[12.5px] font-extrabold text-[#111]">15 ans</span>
+                      </div>
+                    </div>
+
+                    <!-- CTA BTK -->
+                    <button onclick="ouvrirContactBTK()"
+                      class="w-full bg-[#003B7A] hover:bg-[#005BBB] text-white rounded-[10px] p-3.5 font-sans text-[14px] font-extrabold cursor-pointer transition-colors flex items-center justify-center gap-2 mb-2.5"
+                      type="button">
+                      🏦 Être contacté par BTK Bank
+                    </button>
+                    <div class="text-center text-[11px] text-[#6b7280] leading-relaxed">
+                      Simulation non contractuelle · Taux susceptible de varier<br>
+                      <strong class="text-[#003B7A]">Offre réservée aux clients Elyssimmo Neuf</strong>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div><!-- Footer BTK -->
+            <div
+              class="bg-[#f7f7f5] border-t-[1.5px] border-[#e5e5e5] px-5 py-3.5 md:px-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-5">
+                <span class="text-[12px] text-[#6b7280] flex items-center gap-1.5"><i
+                    class="fas fa-check text-[#16A34A]"></i> Crédit TRE disponible</span>
+                <span class="text-[12px] text-[#6b7280] flex items-center gap-1.5"><i
+                    class="fas fa-check text-[#16A34A]"></i> Réponse sous 48h</span>
+                <span class="text-[12px] text-[#6b7280] flex items-center gap-1.5"><i
+                    class="fas fa-check text-[#16A34A]"></i> Sans frais de dossier</span>
+              </div>
+              <a href="#" class="text-[12px] font-bold text-[#003B7A] hover:underline whitespace-nowrap">En savoir plus
+                sur BTK Bank →</a>
+            </div>
+          </div>
+        </div>
+
+        
+        
+        <style>
+          .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+          }
+          .service-item {
+            background: #F7F7F5;
+            border: 1.5px solid #E5E5E5;
+            border-radius: 12px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+          }
+          .service-item:hover {
+            border-color: #D4A830;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          }
+          .service-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+          }
+          .service-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #111;
+            line-height: 1.4;
+          }
+        </style>
+
+        
+        <div id="tab-services" class="tab-content hidden [&.on]:block">
+          <div class="mb-9">
+            <div
+              class="text-[16px] font-extrabold text-[#111] tracking-[-0.3px] mb-3.5 flex items-center gap-2.5 after:content-[''] after:flex-1 after:h-px after:bg-[#E5E5E5]">
+              ✨ Équipements & services du domaine</div>
+                          <p class="text-[14px] text-[#6B7280]">Les services et parties communes seront communiqués prochainement.</p>
+                      </div>
+        </div>
+
+
+
+        
+        
+        
+        <div id="tab-quartier" class="tab-content hidden [&.on]:block">
+          <div class="mb-9">
+            <div
+              class="text-[16px] font-extrabold text-[#111] tracking-[-0.3px] mb-3.5 flex items-center gap-2.5 after:content-[''] after:flex-1 after:h-px after:bg-[#E5E5E5]">
+              🗺️ Le Quartier</div>
+            <div id="map" class="h-[300px] rounded-xl overflow-hidden border-[1.5px] border-[#E5E5E5]"></div>
+            <p class="text-[12px] text-[#6B7280] mt-2.5"><i class="fas fa-map-marker-alt text-[#d4af37]"></i>
+              NABEUL DAR CHAABANE, NABEUL - HAMMAMET
+            </p>
+          </div>
+        </div>
+
+        
+        <div id="tab-avancee" class="tab-content hidden [&.on]:block">
+          <div class="mb-9">
+            <div
+              class="text-[16px] font-extrabold text-[#111] tracking-[-0.3px] mb-3.5 flex items-center gap-2.5 after:content-[''] after:flex-1 after:h-px after:bg-[#E5E5E5]">
+              🏗️ Avancée du chantier — 100%</div>
+            <div class="relative my-7">
+              <div class="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-0 relative">
+                <div class="hidden md:block absolute top-4 left-[8%] right-[8%] h-[3px] bg-[#E5E5E5] z-0"></div>
+                <div
+                  class="hidden md:block absolute top-4 left-[8%] h-[3px] bg-gradient-to-r from-[#F2C649] to-[#D4A830] z-[1] transition-all"
+                  style="width: calc(100% * 0.84);"></div>
+                                                    <div class="flex flex-col items-center gap-2.5 relative z-[2]">
+                    <div
+                      class="w-8 h-8 rounded-full border-[2.5px] flex items-center justify-center text-[13px] transition-all bg-[#F2C649] border-[#D4A830]">
+                      🚀
+                    </div>
+                    <div class="text-[10px] text-center leading-[1.3] max-w-[80px] text-[#D4A830]">Lancement</div>
+                  </div>
+                                                    <div class="flex flex-col items-center gap-2.5 relative z-[2]">
+                    <div
+                      class="w-8 h-8 rounded-full border-[2.5px] flex items-center justify-center text-[13px] transition-all bg-[#F2C649] border-[#D4A830]">
+                      🏗️
+                    </div>
+                    <div class="text-[10px] text-center leading-[1.3] max-w-[80px] text-[#D4A830]">Fondations</div>
+                  </div>
+                                                    <div class="flex flex-col items-center gap-2.5 relative z-[2]">
+                    <div
+                      class="w-8 h-8 rounded-full border-[2.5px] flex items-center justify-center text-[13px] transition-all bg-[#F2C649] border-[#D4A830]">
+                      🧱
+                    </div>
+                    <div class="text-[10px] text-center leading-[1.3] max-w-[80px] text-[#D4A830]">Gros œuvre</div>
+                  </div>
+                                                    <div class="flex flex-col items-center gap-2.5 relative z-[2]">
+                    <div
+                      class="w-8 h-8 rounded-full border-[2.5px] flex items-center justify-center text-[13px] transition-all bg-[#F2C649] border-[#D4A830]">
+                      🔧
+                    </div>
+                    <div class="text-[10px] text-center leading-[1.3] max-w-[80px] text-[#D4A830]">Second œuvre</div>
+                  </div>
+                                                    <div class="flex flex-col items-center gap-2.5 relative z-[2]">
+                    <div
+                      class="w-8 h-8 rounded-full border-[2.5px] flex items-center justify-center text-[13px] transition-all bg-[#F2C649] border-[#D4A830]">
+                      🎨
+                    </div>
+                    <div class="text-[10px] text-center leading-[1.3] max-w-[80px] text-[#D4A830]">Finitions</div>
+                  </div>
+                                                    <div class="flex flex-col items-center gap-2.5 relative z-[2]">
+                    <div
+                      class="w-8 h-8 rounded-full border-[2.5px] flex items-center justify-center text-[13px] transition-all bg-[#111] border-[#111] text-white shadow-[0_0_0_4px_rgba(17,17,17,0.1)]">
+                      🔑
+                    </div>
+                    <div class="text-[10px] text-center leading-[1.3] max-w-[80px] text-[#111] font-extrabold">Livraison</div>
+                  </div>
+                              </div>
+            </div>
+            <p class="text-[13px] text-[#6B7280] mt-4">Statut actuel : <strong
+                class="text-[#111]">Travaux en cours</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      
+      <aside class="flex flex-col gap-[18px] lg:sticky lg:top-[90px]">
+        
+        <div
+          class="bg-white border-[1.5px] border-[#E5E5E5] rounded-[14px] overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.07)]"
+          id="sidebar-form">
+          <div class="bg-[#111] px-5 py-[18px]">
+            <div class="text-[15px] font-extrabold text-white mb-1 tracking-[-0.3px]">
+              Demander une information
+            </div>
+            <div class="text-[12px] text-white/50">
+              Réponse rapide d&#039;un conseiller Elyssimmo
+            </div>
+          </div>
+          <div class="p-5">
+            <form action="https://www.elyssimmo-neuf.com/public/contact/lead" method="POST">
+              <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">              <input type="hidden" name="type" value="brochure">
+              <input type="hidden" name="program_id" value="156">
+              
+                              <input type="hidden" name="promoter_id" value="123">
+              
+              
+              <div class="flex flex-col gap-1 mb-2.5"><label
+                  class="text-[9.5px] font-extrabold tracking-[1.5px] uppercase text-[#aaa]">Nom complet *</label><input
+                  type="text" name="full_name" placeholder="Votre nom" required
+                  class="bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-lg px-[11px] py-[9px] text-[13px] text-[#111] focus:outline-none focus:border-[#111] transition-colors">
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                <div class="flex flex-col gap-1"><label
+                    class="text-[9.5px] font-extrabold tracking-[1.5px] uppercase text-[#aaa]">Téléphone *</label><input
+                    type="tel" name="phone" placeholder="+216 …" required
+                    class="bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-lg px-[11px] py-[9px] text-[13px] text-[#111] focus:outline-none focus:border-[#111] transition-colors">
+                </div>
+                <div class="flex flex-col gap-1"><label
+                    class="text-[9.5px] font-extrabold tracking-[1.5px] uppercase text-[#aaa]">Email</label><input
+                    type="email" name="email" placeholder="email@…"
+                    class="bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-lg px-[11px] py-[9px] text-[13px] text-[#111] focus:outline-none focus:border-[#111] transition-colors">
+                </div>
+              </div>
+              <label class="flex items-start gap-[7px] text-[11px] text-[#6B7280] mt-3 mb-3"><input type="checkbox"
+                  required class="accent-[#111] mt-0.5"> J'accepte d'être recontacté au sujet de ce programme.</label>
+
+              <div class="mb-3 flex flex-col items-center">
+                <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                              </div>
+
+              <button
+                class="w-full bg-[#F2C649] text-[#111] rounded-lg py-3.5 text-[14px] font-extrabold hover:bg-[#D4A830] transition-colors"
+                type="submit"><i class="fas fa-paper-plane"></i>
+                Recevoir les prix &amp; plans</button>
+            </form>
+                      </div>
+        </div>
+
+        
+        
+        
+        
+        
+        <div class="bg-white border-[1.5px] border-[#E5E5E5] rounded-[14px] p-5">
+          <div class="flex items-center gap-3 mb-3.5">
+            <div
+              class="w-[52px] h-[52px] rounded-[10px] bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] flex items-center justify-center text-[18px] font-black text-[#D4A830] overflow-hidden">
+              <img src="https://www.elyssimmo-neuf.com/public/storage/promoters/123-tourism-building-branch.jpg"
+                alt="TOURISM BUILDING BRANCH"
+              class="w-full h-full object-cover">            </div>
+            <div>
+              <div class="text-[14px] font-extrabold text-[#111]">TOURISM BUILDING BRANCH</div>
+              <div class="flex flex-wrap items-center gap-1.5 mt-[3px]">
+                              </div>
+              <div class="text-[#F2C649] text-[12px] mt-1">
+                
+                <span class="text-[#111] font-bold ml-1">0.0/5</span>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="bg-[#F7F7F5] rounded-lg p-2.5 text-center">
+              <div class="text-[20px] font-black text-[#111] tracking-[-0.8px]">
+                1
+              </div>
+              <div class="text-[10px] text-[#6B7280] mt-0.5">Livrés</div>
+            </div>
+            <div class="bg-[#F7F7F5] rounded-lg p-2.5 text-center">
+              <div class="text-[20px] font-black text-[#111] tracking-[-0.8px]">
+                0
+              </div>
+              <div class="text-[10px] text-[#6B7280] mt-0.5">En cours</div>
+            </div>
+            <div class="bg-[#F7F7F5] rounded-lg p-2.5 text-center">
+              <div class="text-[20px] font-black text-[#111] tracking-[-0.8px]">0
+              </div>
+              <div class="text-[10px] text-[#6B7280] mt-0.5">Ans d'exp.</div>
+            </div>
+            <div class="bg-[#F7F7F5] rounded-lg p-2.5 text-center">
+              <div class="text-[20px] font-black text-[#111] tracking-[-0.8px]">0
+              </div>
+              <div class="text-[10px] text-[#6B7280] mt-0.5">Avis</div>
+            </div>
+          </div>
+                      <a href="https://www.elyssimmo-neuf.com/public/promoteurs/tourism-building-branch"
+              class="block text-center w-full mt-3 bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-lg py-2.5 text-[13px] font-bold text-[#111] hover:bg-[#111] hover:text-white hover:border-[#111] transition-all">Voir
+              la fiche promoteur →</a>
+                              </div>
+
+                        
+                  <div class="bg-[#F7F7F5] border-2 border-dashed border-[#E5E5E5] rounded-xl px-4 py-5 text-center min-h-[240px] flex flex-col items-center justify-center gap-2.5 ">
+        <div class="text-[22px] opacity-40">📢</div>
+        <div class="text-[11px] font-extrabold tracking-[1.5px] uppercase text-[#bbb]">Bannière publicitaire</div>
+        <a href="https://www.elyssimmo-neuf.com/public/contact" class="text-[11px] font-bold text-[#6B7280] underline underline-offset-[3px] mt-1.5">Réserver cet espace →</a>
+    </div>
+                  </aside>
+    </div>
+
+    
+          <div class="max-w-[1140px] mx-auto px-5 lg:px-10 mt-12 mb-8">
+        <div
+          class="rounded-[16px] bg-[#F4F3EB] p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
+          <div class="flex-1 max-w-2xl">
+            <h3 class="text-[22px] lg:text-[26px] font-extrabold text-[#111] mb-3">
+              Ce programme vous intéresse ?
+            </h3>
+
+            <p class="text-[15px] text-[#555] leading-[1.6] font-medium mb-6 max-w-xl">
+              Téléchargez la brochure complète (appartements, villas, terrains) avec plans et grille tarifaire. Notre équipe
+              vous accompagne quel que soit votre projet.
+            </p>
+
+                      </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto shrink-0">
+            <button
+              class="flex items-center justify-center gap-2.5 bg-[#EFBF4B] hover:bg-[#E5B646] text-[#111] px-6 py-3.5 rounded-lg font-bold text-[14px] transition-all shadow-[0_2px_8px_rgba(239,191,75,0.3)]"
+              type="button" onclick="toggleBrochureModal('#sidebar-form')">
+              <i class="fas fa-file-alt text-white/80 text-[16px]"></i>
+              Télécharger la brochure
+            </button>
+            <a href="#sidebar-form"
+              class="flex items-center justify-center gap-2.5 bg-white hover:bg-gray-50 text-[#111] px-6 py-3.5 rounded-lg font-bold text-[14px] transition-all shadow-sm border border-gray-100">
+              <i class="fas fa-phone-alt text-[#D41C64] transform -scale-x-100 text-[16px]"></i>
+              Être rappelé
+            </a>
+          </div>
+        </div>
+      </div>
+    
+
+          <p class="text-[13px] text-[#6B7280]">Aucun avis pour ce promoteur pour le moment. Soyez le premier à partager votre
+        expérience.</p>
+      </div>
+
+  
+
+  
+  
+  </div>
+
+  
+  <div id="lightbox" class="fixed inset-0 z-[999] hidden items-center justify-center p-6 bg-black/90"
+    onclick="closeLightbox()">
+    <button type="button" onclick="event.stopPropagation();closeLightbox()" aria-label="Fermer"
+      class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white text-xl flex items-center justify-center transition-colors">&times;</button>
+
+    <button type="button" id="lb-prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Photo précédente"
+      class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl flex items-center justify-center transition-colors">&#8249;</button>
+
+    <img id="lightbox-img" src="" alt="" class="max-w-[92%] max-h-[88vh] rounded-xl select-none"
+      onclick="event.stopPropagation()">
+
+    <button type="button" id="lb-next" onclick="event.stopPropagation();lbNav(1)" aria-label="Photo suivante"
+      class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl flex items-center justify-center transition-colors">&#8250;</button>
+
+    <div id="lb-counter"
+      class="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[12px] font-semibold px-3 py-1.5 rounded-full">
+    </div>
+  </div>
+
+  
+  
+  
+  <div id="brochure-modal"
+    class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity opacity-0"
+    onclick="closeBrochureModal()">
+    <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl scale-95 transition-transform"
+      onclick="event.stopPropagation()">
+      <div class="bg-[#F7F7F5] border-b border-[#E5E5E5] px-6 py-4 flex items-center justify-between">
+        <h3 class="text-[17px] font-extrabold text-[#111] tracking-tight">Recevoir la brochure</h3>
+        <button type="button" onclick="closeBrochureModal()"
+          class="w-8 h-8 rounded-full bg-white border border-[#E5E5E5] text-[#111] flex items-center justify-center hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="p-6">
+        <p class="text-[13px] text-[#555] mb-5">Veuillez renseigner votre adresse e-mail pour recevoir et télécharger
+          immédiatement la brochure complète du programme.</p>
+        <form id="brochure-form" onsubmit="submitBrochure(event)" class="flex flex-col gap-4">
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Adresse e-mail
+              *</label>
+            <input type="email" id="brochure-email" required placeholder="vous@email.com"
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors">
+          </div>
+          <div class="mb-2">
+            <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+          </div>
+          <button type="submit"
+            class="w-full bg-[#111] text-white rounded-[9px] px-5 py-3 text-[14px] font-bold hover:bg-[#F2C649] hover:text-[#111] transition-colors mt-2 flex items-center justify-center gap-2">
+            <i class="fas fa-download"></i> Télécharger maintenant
+          </button>
+          <div id="brochure-success"
+            class="hidden bg-green-50 text-green-700 border border-green-200 rounded-lg p-3 text-[12px] font-medium mt-2 flex-col gap-2">
+            <div>✅ Merci ! La brochure a été envoyée sur votre e-mail et le téléchargement va démarrer.</div>
+            <a href="#" id="brochure-dl-link" target="_blank"
+              class="text-green-800 font-bold underline text-center mt-2">Cliquez ici si le téléchargement ne démarre
+              pas</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="plan-modal"
+    class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity opacity-0"
+    onclick="closePlanModal()">
+    <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl scale-95 transition-transform"
+      onclick="event.stopPropagation()">
+      <div class="bg-[#F7F7F5] border-b border-[#E5E5E5] px-6 py-4 flex items-center justify-between">
+        <h3 class="text-[17px] font-extrabold text-[#111] tracking-tight">Recevoir le plan</h3>
+        <button type="button" onclick="closePlanModal()"
+          class="w-8 h-8 rounded-full bg-white border border-[#E5E5E5] text-[#111] flex items-center justify-center hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="p-6">
+        <p class="text-[13px] text-[#555] mb-5">Veuillez renseigner vos coordonnées pour recevoir le plan détaillé du lot
+          <strong id="plan-lot-number"></strong> par email.
+        </p>
+        <form id="plan-form" method="POST" action="" class="flex flex-col gap-4">
+          <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Nom Complet
+              *</label>
+            <input type="text" name="full_name" required placeholder="Votre nom"
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Adresse e-mail
+              *</label>
+            <input type="email" name="email" required placeholder="vous@email.com"
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Téléphone *</label>
+            <input type="tel" name="phone" required placeholder="Votre numéro"
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors">
+          </div>
+          <button type="submit"
+            class="w-full bg-[#111] text-white rounded-[9px] px-5 py-3 text-[14px] font-bold hover:bg-[#F2C649] hover:text-[#111] transition-colors mt-2 flex items-center justify-center gap-2">
+            <i class="fas fa-paper-plane"></i> Recevoir le plan
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Contact Revente -->
+  <div id="revente-modal"
+    class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity opacity-0"
+    onclick="closeReventeModal()">
+    <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl scale-95 transition-transform"
+      onclick="event.stopPropagation()">
+      <div class="bg-[#111] px-6 py-4 flex items-center justify-between">
+        <div>
+          <h3 class="text-[16px] font-extrabold text-white tracking-tight">Service Revente Elyssimmo</h3>
+          <div class="text-[12px] text-white/70 mt-1">Contact direct avec nos conseillers</div>
+        </div>
+        <button type="button" onclick="closeReventeModal()"
+          class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="p-6">
+        <form action="https://www.elyssimmo-neuf.com/public/contact/lead" method="POST" class="flex flex-col gap-4">
+          <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">          <input type="hidden" name="type" value="contact">
+          <input type="hidden" name="program_id" value="156">
+          <input type="hidden" name="source" value="Pop-up Contact Revente - LA PRINCESSE DE LA MER">
+
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Nom Complet
+              *</label>
+            <input type="text" name="full_name" required placeholder="Votre nom"
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Adresse e-mail
+              *</label>
+            <input type="email" name="email" required placeholder="vous@email.com"
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Téléphone *</label>
+            <input type="tel" name="phone" required placeholder="Votre numéro"
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1.5">Message</label>
+            <textarea name="message" rows="3" placeholder="Bonjour, je souhaite avoir plus d'informations..."
+              class="w-full bg-[#F7F7F5] border-[1.5px] border-[#E5E5E5] rounded-[9px] px-3.5 py-2.5 text-[14px] text-[#111] focus:bg-white focus:border-[#F2C649] outline-none transition-colors resize-none"></textarea>
+          </div>
+          <div class="mb-2">
+            <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+          </div>
+          <button type="submit"
+            class="w-full bg-[#F2C649] text-[#111] rounded-[9px] px-5 py-3 text-[14px] font-bold hover:bg-[#D4A830] transition-colors mt-2 flex items-center justify-center gap-2">
+            <i class="fas fa-paper-plane"></i> Envoyer ma demande
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <!-- Modal d'Alerte Résidence (Inclus depuis les partials) -->
+  <!-- ══════════════════════════════════
+                 MODAL ALERTE RÉSIDENCE
+            ══════════════════════════════════ -->
+  <div id="modal-alerte" style="
+              display:none; position:fixed; inset:0; z-index:1000;
+              background:rgba(15,40,71,0.65); backdrop-filter:blur(4px);
+              align-items:center; justify-content:center; padding:20px;
+            ">
+    <div style="
+                background:#fff; border-radius:20px; width:100%; max-width:520px;
+                box-shadow:0 24px 80px rgba(0,0,0,0.25); overflow:hidden;
+                animation:slideUp 0.3s ease;
+              ">
+
+      <!-- Header modal -->
+      <div
+        style="background:linear-gradient(135deg,#0F2847,#1A3A5C); padding:22px 28px; display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <div
+            style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">
+            🔔 Alerte Résidence</div>
+          <div style="font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;">Créer mon alerte revente /
+            location</div>
+        </div>
+        <button onclick="closeModal()"
+          style="width:34px;height:34px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;flex-shrink:0;"
+          onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+          onmouseout="this.style.background='rgba(255,255,255,0.1)'">✕</button>
+      </div>
+
+      <!-- Corps du formulaire -->
+      <form action="https://www.elyssimmo-neuf.com/public/contact/lead" method="POST" style="padding:28px;">
+        <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">        <!-- Résidence ciblée -->
+        <div style="margin-bottom:16px;">
+          <label
+            style="font-size:9.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#aaa;display:block;margin-bottom:6px;">Résidence
+            ciblée *</label>
+          <input id="modal-residence" name="residence" required type="text"
+            placeholder="Ex : Résidence Les Pins, Jardins de Carthage…" style="
+                      width:100%;background:var(--soft);border:1.5px solid var(--border);
+                      border-radius:9px;padding:11px 13px;font-family:'Albert Sans',sans-serif;
+                      font-size:13.5px;color:#111;outline:none;transition:border-color 0.15s;
+                    " onfocus="this.style.borderColor='#0F2847'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+
+        <!-- Votre projet : boutons radio -->
+        <div style="margin-bottom:16px;">
+          <label
+            style="font-size:9.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#aaa;display:block;margin-bottom:8px;">Votre
+            projet *</label>
+          <div style="display:flex;gap:8px;">
+            <button type="button" onclick="setProjet(this,'Achat / Revente')" class="modal-pill modal-pill-on">🏠 Achat
+              / Revente</button>
+            <button type="button" onclick="setProjet(this,'Location')" class="modal-pill">🔑 Location</button>
+          </div>
+          <input type="hidden" id="project_type_input" name="project_type" value="Achat / Revente">
+        </div>
+
+        <!-- Nom & Prénom -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div>
+            <label
+              style="font-size:9.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#aaa;display:block;margin-bottom:6px;">Nom
+              *</label>
+            <input type="text" name="last_name" required placeholder="Votre nom"
+              style="width:100%;background:var(--soft);border:1.5px solid var(--border);border-radius:9px;padding:11px 13px;font-family:'Albert Sans',sans-serif;font-size:13.5px;color:#111;outline:none;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='#0F2847'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div>
+            <label
+              style="font-size:9.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#aaa;display:block;margin-bottom:6px;">Prénom
+              *</label>
+            <input type="text" name="first_name" required placeholder="Votre prénom"
+              style="width:100%;background:var(--soft);border:1.5px solid var(--border);border-radius:9px;padding:11px 13px;font-family:'Albert Sans',sans-serif;font-size:13.5px;color:#111;outline:none;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='#0F2847'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+        </div>
+
+        <!-- Téléphone & Email -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+          <div>
+            <label
+              style="font-size:9.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#aaa;display:block;margin-bottom:6px;">📱
+              Tél / WhatsApp *</label>
+            <input type="tel" name="phone" required placeholder="+216 XX XXX XXX"
+              style="width:100%;background:var(--soft);border:1.5px solid var(--border);border-radius:9px;padding:11px 13px;font-family:'Albert Sans',sans-serif;font-size:13.5px;color:#111;outline:none;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='#0F2847'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div>
+            <label
+              style="font-size:9.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#aaa;display:block;margin-bottom:6px;">✉️
+              Email *</label>
+            <input type="email" name="email" required placeholder="email@exemple.com"
+              style="width:100%;background:var(--soft);border:1.5px solid var(--border);border-radius:9px;padding:11px 13px;font-family:'Albert Sans',sans-serif;font-size:13.5px;color:#111;outline:none;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='#0F2847'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+        </div>
+
+        <!-- Tags CRM cachés -->
+        <input type="hidden" name="type" value="alerte_residence">
+        <input type="hidden" name="source" value="ALERTE_RESIDENCE_REVENTE">
+
+        <!-- Bouton submit -->
+        <button type="submit" style="
+                    width:100%;background:var(--gold);color:#111;border:none;
+                    border-radius:10px;padding:14px;font-family:'Albert Sans',sans-serif;
+                    font-size:14.5px;font-weight:800;cursor:pointer;
+                    transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;
+                  " onmouseover="this.style.background='#0F2847';this.style.color='#fff'"
+          onmouseout="this.style.background='var(--gold)';this.style.color='#111'">
+          🔔 Valider mon alerte résidence
+        </button>
+        <p style="font-size:11px;color:#bbb;text-align:center;margin-top:10px;">Vous serez alerté dès qu'un bien
+          correspond à votre recherche. 100% gratuit.</p>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .modal-pill {
+      padding: 9px 18px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .modal-pill-on {
+      background: #0F2847;
+      border-color: #0F2847;
+      color: #fff;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <script>
+    function openModal(residence) {
+      const modal = document.getElementById('modal-alerte');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      const input = document.getElementById('modal-residence');
+      if (residence) {
+        input.value = residence;
+        input.setAttribute('readonly', true);
+        input.style.background = '#F0EAD8';
+        input.style.color = '#555';
+      } else {
+        input.value = '';
+        input.removeAttribute('readonly');
+        input.style.background = 'var(--soft)';
+        input.style.color = '#111';
+      }
+    }
+    function closeModal() {
+      document.getElementById('modal-alerte').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    // Fermer en cliquant en dehors
+    document.getElementById('modal-alerte').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+    function setProjet(btn, val) {
+      document.querySelectorAll('.modal-pill').forEach(p => {
+        p.classList.remove('modal-pill-on');
+        p.style.background = '#fff';
+        p.style.borderColor = 'var(--border)';
+        p.style.color = 'var(--muted)';
+      });
+      btn.classList.add('modal-pill-on');
+      btn.style.background = '#0F2847';
+      btn.style.borderColor = '#0F2847';
+      btn.style.color = '#fff';
+
+      const hiddenInput = document.getElementById('project_type_input');
+      if (hiddenInput) {
+        hiddenInput.value = val;
+      }
+    }
+  </script>
+
+  <!-- 3D/Plan de masse Modal -->
+  <div id="model3d-modal" class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/90 p-4"
+    onclick="closeModel3DModal()">
+    <div class="relative w-full max-w-5xl h-[80vh] bg-black rounded-xl overflow-hidden shadow-2xl"
+      onclick="event.stopPropagation()" id="model3d-modal-inner">
+      <button type="button" onclick="closeModel3DModal()"
+        class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur transition-all">
+        <i class="fas fa-times text-[18px]"></i>
+      </button>
+      <iframe id="model3d-iframe" src="" class="w-full h-full border-0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+<footer class="bg-[#0F2847] text-white">
+  <!-- ===== REJOIGNEZ-NOUS ===== -->
+  <div class="bg-[#F2C649] py-[28px] px-[20px] sm:py-[38px] sm:px-[32px]">
+    <div class="max-w-[1180px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8 flex-wrap">
+      <div class="max-w-[480px]">
+        <h3 class="text-[20px] font-extrabold text-[#0F2847] tracking-tight mb-2">Rejoignez-nous</h3>
+        <p class="text-[13.5px] text-[#0F2847]/80 leading-[1.6] font-medium">Suivez nos pages pour ne rater aucune nouveauté : avant-premières, bons plans et offres exclusives sur les meilleurs programmes neufs de Tunisie.</p>
+      </div>
+      <div class="flex flex-wrap gap-2.5 max-w-[600px]">
+        <a class="inline-flex items-center gap-[9px] bg-[#0F2847] text-white py-[9px] pr-[15px] pl-[10px] rounded-full text-[12.5px] font-bold hover:bg-[#081729] transition-colors" href="https://www.facebook.com/share/18s3tnQ4hb/" target="_blank" rel="noopener">
+          <span class="w-[26px] h-[26px] rounded-full bg-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" class="w-[14px] h-[14px] fill-[#0F2847]"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span> Elyssimmo Neuf
+        </a>
+        <a class="inline-flex items-center gap-[9px] bg-[#0F2847] text-white py-[9px] pr-[15px] pl-[10px] rounded-full text-[12.5px] font-bold hover:bg-[#081729] transition-colors" href="https://www.facebook.com/share/1WaxBiSHWa/" target="_blank" rel="noopener">
+          <span class="w-[26px] h-[26px] rounded-full bg-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" class="w-[14px] h-[14px] fill-[#0F2847]"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span> Les Bons Plans du Neuf by Elyssimmo
+        </a>
+        <a class="inline-flex items-center gap-[9px] bg-[#0F2847] text-white py-[9px] pr-[15px] pl-[10px] rounded-full text-[12.5px] font-bold hover:bg-[#081729] transition-colors" href="https://www.facebook.com/share/19REbRbj63/" target="_blank" rel="noopener">
+          <span class="w-[26px] h-[26px] rounded-full bg-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" class="w-[14px] h-[14px] fill-[#0F2847]"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span> Les Villas de Carthage
+        </a>
+        <a class="inline-flex items-center gap-[9px] bg-[#0F2847] text-white py-[9px] pr-[15px] pl-[10px] rounded-full text-[12.5px] font-bold hover:bg-[#081729] transition-colors" href="https://www.facebook.com/share/1GcX1DWt12/" target="_blank" rel="noopener">
+          <span class="w-[26px] h-[26px] rounded-full bg-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" class="w-[14px] h-[14px] fill-[#0F2847]"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span> Jasmin Résidences & Vacances
+        </a>
+        <a class="inline-flex items-center gap-[9px] bg-[#0F2847] text-white py-[9px] pr-[15px] pl-[10px] rounded-full text-[12.5px] font-bold hover:bg-[#081729] transition-colors" href="https://www.facebook.com/Bureauxlocaux.Tunisie?mibextid=ZbWKwL" target="_blank" rel="noopener">
+          <span class="w-[26px] h-[26px] rounded-full bg-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" class="w-[14px] h-[14px] fill-[#0F2847]"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span> Bureaux & Locaux by Elyssimmo
+        </a>
+        <a class="inline-flex items-center gap-[9px] bg-[#0F2847] text-white py-[9px] pr-[15px] pl-[10px] rounded-full text-[12.5px] font-bold hover:bg-[#081729] transition-colors" href="https://www.facebook.com/share/1EtibSFuXP/" target="_blank" rel="noopener">
+          <span class="w-[26px] h-[26px] rounded-full bg-white flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" class="w-[14px] h-[14px] fill-[#0F2847]"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span> Terrains Promoteurs by Elyssimmo
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-4 lg:px-10 pt-10">
+    <div class="max-w-[1140px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+      <div>
+        <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#F2C649] mb-4">Société</div>
+        <div class="flex flex-col gap-2.5">
+          <a href="https://www.elyssimmo-neuf.com/public/page/qui-sommes-nous" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Qui sommes-nous ?</a>
+          <a href="https://www.elyssimmo-neuf.com/public/contact" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Contact & Bureaux</a>
+          <a href="https://www.elyssimmo-neuf.com/public/plan-du-site" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Plan du site</a>
+          <a href="https://www.elyssimmo-neuf.com/public/page/conditions-generales" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Conditions générales</a>
+          <a href="https://www.elyssimmo-neuf.com/public/page/politique-de-cookies" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Politique de cookies</a>
+        </div>
+      </div>
+      <div>
+        <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#F2C649] mb-4">Particuliers</div>
+        <div class="flex flex-col gap-2.5">
+          <a href="https://www.elyssimmo-neuf.com/public/programmes" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏢 Programmes Neufs</a>
+          <a href="https://www.elyssimmo-neuf.com/public/programmes?program_state=ancien" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏢 Programmes Anciens</a>
+          <a href="https://www.elyssimmo-neuf.com/public/bons-plans" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏢 Bons Plans</a>
+          <a href="https://www.elyssimmo-neuf.com/public/experience" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏢 L'Expérience Elyssimmo Neuf</a>
+          <a href="https://www.elyssimmo-neuf.com/public/services/tre" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏢 Diaspora Tunisienne (TRE)</a>
+          <a href="https://www.elyssimmo-neuf.com/public/promoteurs" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">📖 Annuaire des Promoteurs</a>
+          <a href="https://www.elyssimmo-neuf.com/public/architectes" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">📐 Annuaire des Architectes</a>
+          <a href="https://www.elyssimmo-neuf.com/public/programmes?tab=revente" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏡 Achat dans l'ancien (Revente)</a>
+          <a href="https://www.elyssimmo-neuf.com/public/programmes?tab=location_neuf" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🔑 Louer dans le neuf</a>
+          <a href="https://www.elyssimmo-neuf.com/public/deposer-un-bien" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏗️ Déposer votre annonce</a>
+          <a href="https://www.elyssimmo-neuf.com/public/services/terrain" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🏗️ Déposer votre terrain</a>
+          <a href="https://www.elyssimmo-neuf.com/public/projet-sur-mesure" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">🎯 Votre Projet Immobilier sur mesure</a>
+        </div>
+      </div>
+      <div>
+        <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#F2C649] mb-4">Promoteurs</div>
+        <div class="flex flex-col gap-2.5">
+          <a href="https://www.elyssimmo-neuf.com/public/devenir-promoteur" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Services aux Promoteurs</a>
+          <a href="https://www.elyssimmo-neuf.com/public/promoteurs" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Annuaire des Promoteurs</a>
+          <a href="https://www.elyssimmo-neuf.com/public/offres" class="text-[13px] text-white/70 hover:text-white transition-colors cursor-pointer">Découvrir nos offres</a>
+        </div>
+      </div>
+      <div>
+        <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-[#F2C649] mb-4">Newsletter</div>
+        <p class="text-[12px] text-white/70 mb-4 leading-relaxed">
+          Recevez nos offres exclusives et nos derniers lancements directement par e-mail.
+        </p>
+        <form action="https://www.elyssimmo-neuf.com/public/newsletter/subscribe" method="POST" class="flex flex-col gap-2" id="newsletter-form">
+          <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">          <div class="relative w-full group">
+            <input type="email" name="email" placeholder="Votre adresse e-mail" required class="w-full bg-white/5 border border-white/10 rounded-[8px] px-4 py-2.5 text-[13px] text-white placeholder-white/40 focus:outline-none focus:bg-white/10 focus:border-[#F2C649] transition-all pr-12">
+            <button type="submit" id="nl-submit-btn" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-[#F2C649] text-[#111] rounded-[6px] font-bold text-[12px] hover:bg-[#D4A830] transition-colors flex items-center justify-center cursor-pointer disabled:opacity-50">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const nlForm = document.getElementById('newsletter-form');
+        if(nlForm) {
+            nlForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = document.getElementById('nl-submit-btn');
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                btn.disabled = true;
+
+                fetch(nlForm.action, {
+                    method: 'POST',
+                    body: new FormData(nlForm),
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(async res => {
+                    if(!res.ok && res.status === 422) throw new Error("Adresse e-mail invalide.");
+                    return res.json();
+                })
+                .then(data => {
+                    btn.innerHTML = originalHtml;
+                    btn.disabled = false;
+                    if(data.type === 'success') nlForm.reset();
+                    showToast(data.message, data.type);
+                })
+                .catch(err => {
+                    btn.innerHTML = originalHtml;
+                    btn.disabled = false;
+                    showToast(err.message || 'Une erreur est survenue, veuillez réessayer.', 'error');
+                });
+            });
+        }
+
+        function showToast(msg, type) {
+            let bgClass = type === 'success' ? 'bg-[#16A34A]' : (type === 'error' ? 'bg-[#DC2626]' : 'bg-[#3B82F6]');
+            let iconClass = type === 'success' ? 'fa-check-circle' : (type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle');
+            
+            let popup = document.createElement('div');
+            popup.className = `fixed top-24 right-6 z-[200] ${bgClass} text-white px-8 py-4 rounded-2xl shadow-2xl text-sm font-bold animate-fadeIn flex items-center gap-3 transition-all duration-300`;
+            popup.innerHTML = `<i class="fas ${iconClass}"></i> ${msg}`;
+            document.body.appendChild(popup);
+            
+            setTimeout(() => {
+                popup.style.opacity = '0';
+                popup.style.transform = 'translateY(-10px)';
+                setTimeout(() => popup.remove(), 300);
+            }, 4000);
+        }
+    });
+    </script>
+
+    
+    <div class="max-w-[1140px] mx-auto py-8 border-b border-white/10">
+      <div class="text-[10px] font-extrabold tracking-[2px] uppercase text-white/50 mb-4">🏠 Immobilier neuf en Tunisie</div>
+      <div id="seo-block" class="text-[12.5px] leading-[1.85] text-white/60 space-y-3 max-h-[85px] overflow-hidden transition-all duration-500 relative" style="mask-image: linear-gradient(to bottom, black 60%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);">
+        <p>Pour votre <strong>immobilier en Tunisie</strong>, trouvez sur <strong>Elyssimmo-neuf.com</strong>, le <strong>promoteur immobilier en Tunisie</strong> qui réalise le projet que vous souhaitez. Nous mettons à votre disposition toutes les informations sur les projets d'<strong>immobilier neuf</strong>.</p>
+        <p>Notre site propose la <strong>vente d'immobilier en Tunisie</strong>, aussi bien la <strong>vente de maison en Tunisie</strong> que la <strong>vente de villa en Tunisie</strong>. Si vous cherchez un annuaire de <strong>promotion immobilière en Tunisie</strong> pour l'<strong>achat d'une maison en Tunisie</strong> ou l'<strong>achat d'un appartement en Tunisie</strong>, nous vous conseillons de consulter notre rubrique dédiée.</p>
+        <p>Vous cherchez un <strong>immobilier neuf en Tunisie</strong>, à <strong>Tunis</strong>, <strong>Sousse</strong> ou encore à <strong>Hammamet</strong> ? Notre site, vous propose la <strong>vente d'immobilier en Tunisie</strong>, en vous proposant une liste de <strong>promoteur immobilier à Tunis</strong> ou dans d'autres quartiers et grandes villes.</p>
+        <p>Vous pouvez consulter en ligne l'<strong>annuaire des promoteurs</strong> pour trouver leurs coordonnées et effectuer votre <strong>achat d'immobilier en Tunisie</strong>.</p>
+        <p>En plus de la <strong>vente de villa en Tunisie</strong> et appartements, nous mettons à votre disposition un outil de financement qui vous permet de simuler votre <strong>crédit immobilier</strong> et de contacter les organismes de crédit pour l'<strong>achat d'un appartement à Tunis</strong> ou l'<strong>achat d'une villa en Tunisie</strong>.</p>
+        <p><strong>N'hésitez pas à nous <a href="https://www.elyssimmo-neuf.com/public/contact" class="underline hover:text-white transition-colors">contacter</a></strong> pour toute question concernant votre projet immobilier en Tunisie !</p>
+      </div>
+      <button type="button" id="seo-toggle"
+        class="mt-3 text-[11px] font-bold text-[#F2C649] hover:text-[#D9AE2F] transition-colors flex items-center gap-1.5"
+        onclick="toggleSeoBlock()">
+        <span id="seo-toggle-label">Lire la suite</span>
+        <i id="seo-toggle-icon" class="fas fa-chevron-down text-[9px] transition-transform duration-300"></i>
+      </button>
+    </div>
+
+    <div class="max-w-[1140px] mx-auto py-5 flex justify-between items-center flex-wrap gap-5">
+      <div class="text-xs text-white/50">© 2026 Elyssimmo Neuf · L'immobilier à prix direct promoteur · Tunisie</div>
+      <div class="flex gap-2">
+        <div class="w-8 h-8 bg-white/10 rounded-md flex items-center justify-center text-xs font-extrabold text-white/60 hover:bg-[#F2C649] hover:text-[#0F2847] transition-all cursor-pointer"><i class="fab fa-facebook-f"></i></div>
+        <div class="w-8 h-8 bg-white/10 rounded-md flex items-center justify-center text-xs font-extrabold text-white/60 hover:bg-[#F2C649] hover:text-[#0F2847] transition-all cursor-pointer"><i class="fab fa-linkedin-in"></i></div>
+        <div class="w-8 h-8 bg-white/10 rounded-md flex items-center justify-center text-xs font-extrabold text-white/60 hover:bg-[#F2C649] hover:text-[#0F2847] transition-all cursor-pointer"><i class="fab fa-youtube"></i></div>
+        <div class="w-8 h-8 bg-white/10 rounded-md flex items-center justify-center text-xs font-extrabold text-white/60 hover:bg-[#F2C649] hover:text-[#0F2847] transition-all cursor-pointer"><i class="fab fa-instagram"></i></div>
+      </div>
+    </div>
+  </div>
+</footer>
+    <div class="fixed bottom-8 right-8 z-[120]" id="ai-chat-widget">
+    <!-- Trigger Button -->
+    <button id="chat-trigger-btn" onclick="toggleChat()"
+        class="hidden w-16 h-16 bg-[#0b1329] text-gold rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 relative border border-gold/20 group">
+        <span
+            class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white animate-pulse"></span>
+        <i class="fas fa-robot text-2xl group-hover:rotate-12 transition-transform"></i>
+    </button>
+
+    <!-- Centered Chat Modal Overlay -->
+    <div id="chat-panel" class="hidden fixed inset-0 z-[150] flex items-center justify-center p-4">
+        <!-- Backdrop overlay -->
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleChat()"></div>
+
+        <!-- Modal Card Content -->
+        <div
+            class="bg-white rounded-[2.5rem] shadow-2xl border border-slate-100/80 overflow-hidden flex flex-col w-full max-w-2xl relative z-10 animate-fadeIn transition-all duration-300">
+
+            <!-- Header -->
+            <div class="bg-[#0b1329] p-6 text-white flex justify-between items-center relative overflow-hidden">
+                <!-- Decorative blur -->
+                <div class="absolute -top-10 -left-10 w-24 h-24 bg-gold/10 rounded-full blur-xl"></div>
+
+                <div class="flex items-center gap-3 relative z-10">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold border border-gold/20">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-outfit text-base tracking-wide">elyssimou <span
+                                class="text-gold font-normal">| IA</span></h4>
+                        <p class="text-[10px] text-slate-400 font-semibold mt-0.5">Votre assistante intelligente
+                            ELYSSIMMO</p>
+                    </div>
+                </div>
+
+                <button onclick="toggleChat()"
+                    class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 text-white/70 hover:text-white flex items-center justify-center transition">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Chat History -->
+            <div id="chat-history"
+                class="h-[420px] p-6 bg-slate-50/50 overflow-y-auto text-xs space-y-4 flex-grow no-scrollbar">
+                <!-- Messages will be injected dynamically -->
+            </div>
+
+            <!-- Typing Indicator -->
+            <div id="chat-typing"
+                class="hidden px-6 py-2 bg-slate-50/50 text-slate-400 text-[10px] font-semibold flex items-center gap-2">
+                <span class="flex gap-1">
+                    <span class="w-1 h-1 bg-gold rounded-full animate-bounce"></span>
+                    <span class="w-1 h-1 bg-gold rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                    <span class="w-1 h-1 bg-gold rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                </span>
+                <span>elyssimou étudie votre demande...</span>
+            </div>
+
+            <!-- Footer Input Form -->
+            <div class="p-6 bg-white border-t border-slate-100 flex items-center gap-3">
+                <input type="text" id="chat-input"
+                    placeholder="Posez votre question à elyssimou (ex: Appartement à Sousse, budget...)"
+                    class="flex-grow p-4 text-xs bg-slate-50 border-none rounded-2xl focus:ring-1 focus:ring-gold focus:outline-none outline-none font-medium text-slate-800"
+                    onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()"
+                    class="w-12 h-12 bg-gold hover:bg-gold-dark text-[#0b1329] rounded-2xl flex items-center justify-center shadow-lg shadow-gold/10 transition active:scale-95 shrink-0">
+                    <i class="fas fa-paper-plane text-sm"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // State management for chat
+    let chatStep = 'init';
+    let chatMessages = [];
+
+    // Retrieve or initialize session ID in localStorage
+    if (!localStorage.getItem('ai_chat_session_id')) {
+        localStorage.setItem('ai_chat_session_id', 'sess_' + Math.random().toString(36).substr(2, 9));
+    }
+    const chatSessionId = localStorage.getItem('ai_chat_session_id');
+
+    // Run initial bot greeting when panel is opened for the first time
+    let isInitialized = false;
+    function toggleChat() {
+        const panel = document.getElementById('chat-panel');
+        panel.classList.toggle('hidden');
+
+        if (!panel.classList.contains('hidden') && !isInitialized) {
+            bootChat();
+        }
+    }
+
+    function bootChat() {
+        isInitialized = true;
+        showTyping(true);
+
+        // Trigger initial greet
+        fetch('/ai/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({
+                message: 'Hello',
+                session_id: chatSessionId,
+                messages: [],
+                step: 'init'
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                showTyping(false);
+                chatStep = data.step;
+                chatMessages = data.messages;
+                renderMessages();
+            })
+            .catch(err => {
+                showTyping(false);
+                appendSystemMessage("Erreur de connexion avec l'agent IA.");
+            });
+    }
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        input.value = '';
+
+        // Append user message instantly
+        chatMessages.push({ sender: 'user', text: text });
+        renderMessages();
+
+        showTyping(true);
+
+        // Send payload to backend
+        fetch('/ai/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({
+                message: text,
+                session_id: chatSessionId,
+                messages: chatMessages.slice(0, -1), // History except the latest user one (which will be processed by backend)
+                step: chatStep,
+                program_id: window.currentProgramId || null
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                showTyping(false);
+                chatStep = data.step;
+                chatMessages = data.messages;
+                renderMessages();
+            })
+            .catch(err => {
+                showTyping(false);
+                appendSystemMessage("Une erreur est survenue lors de l'envoi.");
+            });
+    }
+
+    function showTyping(show) {
+        const typing = document.getElementById('chat-typing');
+        if (show) {
+            typing.classList.remove('hidden');
+        } else {
+            typing.classList.add('hidden');
+        }
+        scrollToBottom();
+    }
+
+    function appendSystemMessage(text) {
+        const history = document.getElementById('chat-history');
+        const bubble = document.createElement('div');
+        bubble.className = 'text-center text-[10px] text-red-500 font-bold bg-red-50 py-2 rounded-xl';
+        bubble.textContent = text;
+        history.appendChild(bubble);
+        scrollToBottom();
+    }
+
+    function renderMessages() {
+        const history = document.getElementById('chat-history');
+        history.innerHTML = '';
+
+        chatMessages.forEach(msg => {
+            const wrapper = document.createElement('div');
+            wrapper.className = msg.sender === 'user' ? 'flex justify-end' : 'flex justify-start';
+
+            const bubble = document.createElement('div');
+            bubble.className = msg.sender === 'user'
+                ? 'bg-slate-900 text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-[80%] font-semibold'
+                : 'bg-white border border-slate-100 text-slate-800 rounded-2xl rounded-tl-none px-4 py-3 max-w-[85%] font-medium shadow-sm';
+
+            // Format text spacing, markdown bold, and markdown links
+            const formattedText = msg.text
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-gold hover:text-amber-500 font-extrabold underline block my-2 text-center bg-slate-900/5 py-2.5 rounded-xl border border-gold/10 hover:bg-gold/5 transition" target="_blank">$1</a>');
+
+            bubble.innerHTML = formattedText;
+            wrapper.appendChild(bubble);
+            history.appendChild(wrapper);
+
+            // If the bot returned matching programs, render them right under the bubble!
+            if (msg.sender === 'bot' && msg.programs && msg.programs.length > 0) {
+                const programsWrapper = document.createElement('div');
+                programsWrapper.className = 'grid gap-3 pt-2 max-w-[85%]';
+
+                msg.programs.forEach(prog => {
+                    const card = document.createElement('a');
+                    card.href = '/programmes/' + prog.slug;
+                    card.target = '_blank';
+                    card.className = 'bg-white border border-slate-100 rounded-2xl overflow-hidden hover:border-gold hover:shadow-md transition flex gap-3 p-2.5';
+
+                    card.innerHTML = `
+                        <img src="${prog.cover}" class="w-14 h-14 rounded-xl object-cover shrink-0">
+                        <div class="space-y-0.5 min-w-0">
+                            <span class="text-[8px] font-bold text-gold uppercase tracking-wider block">${prog.type}</span>
+                            <h5 class="text-[10px] font-bold text-slate-900 truncate">${prog.name}</h5>
+                            <p class="text-[10px] text-slate-400 font-semibold"><i class="fas fa-map-marker-alt text-gold/80 mr-1"></i>${prog.city}</p>
+                            <p class="text-[10px] font-bold text-[#0b1329] pt-1">${prog.price}</p>
+                        </div>
+                    `;
+                    programsWrapper.appendChild(card);
+                });
+
+                history.appendChild(programsWrapper);
+            }
+        });
+
+        scrollToBottom();
+    }
+
+    function scrollToBottom() {
+        const history = document.getElementById('chat-history');
+        history.scrollTop = history.scrollHeight;
+    }
+</script>    <div id="rdv-modal" class="hidden fixed inset-0 z-[200] flex justify-end">
+    <!-- Backdrop overlay -->
+    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300" onclick="toggleModal('rdv-modal')"></div>
+    
+    <!-- Drawer Panel -->
+    <div class="relative bg-white w-full max-w-md h-full p-8 sm:p-10 shadow-2xl flex flex-col justify-between overflow-y-auto z-10">
+        
+        <div>
+            <!-- Close button and Icon Header -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="w-12 h-12 bg-gold/10 text-gold rounded-full flex items-center justify-center text-xl">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <button type="button" onclick="toggleModal('rdv-modal')" class="w-10 h-10 bg-slate-50 hover:bg-slate-100 text-slate-500 rounded-full flex items-center justify-center transition-colors border-none cursor-pointer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="mb-6">
+                <h2 class="text-2xl font-extrabold font-outfit text-slate-900 tracking-tight">Parlez-nous de votre projet</h2>
+                <p class="text-slate-500 text-xs mt-2">Un conseiller vous recontactera rapidement pour vous accompagner.</p>
+            </div>
+            
+            <form action="https://www.elyssimmo-neuf.com/public/contact/lead" method="POST" class="space-y-4">
+                <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">                <input type="hidden" name="type" value="rdv">
+                <input type="hidden" name="program_id" id="rdv-modal-program-id" value="">
+                <input type="hidden" name="promoter_id" id="rdv-modal-promoter-id" value="">
+                
+                <div>
+                    <input type="text" name="full_name" placeholder="Votre nom complet *" required 
+                           class="w-full p-4 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <input type="tel" name="phone" placeholder="Numéro de téléphone *" required 
+                           class="w-full p-4 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                    <input type="email" name="email" placeholder="Adresse e-mail" 
+                           class="w-full p-4 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="relative">
+                        <span class="absolute top-1/2 left-4 -translate-y-1/2 text-slate-400 text-xs"><i class="far fa-calendar"></i></span>
+                        <input type="date" name="rdv_date" class="w-full p-4 pl-10 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs text-slate-500 focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                    </div>
+                    <div class="relative">
+                        <span class="absolute top-1/2 left-4 -translate-y-1/2 text-slate-400 text-xs"><i class="far fa-clock"></i></span>
+                        <input type="time" name="rdv_time" class="w-full p-4 pl-10 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs text-slate-500 focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                    </div>
+                </div>
+                
+                <textarea name="message" placeholder="Votre message ou précisions (optionnel)" 
+                          class="w-full p-4 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs h-28 resize-none focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"></textarea>
+                
+                <div class="mb-4">
+                    <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                </div>
+
+                <button type="submit" class="w-full bg-slate-950 text-white font-bold py-4 rounded-2xl hover:bg-gold hover:text-slate-950 transition-colors duration-300 shadow-lg text-xs uppercase tracking-widest mt-2 border-none cursor-pointer">
+                    Envoyer ma demande
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    #rdv-modal:not(.hidden) .relative {
+        animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes slideInRight {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0); }
+    }
+</style>
+    <div id="credit-modal" class="hidden fixed inset-0 z-[200] flex justify-end">
+    <!-- Backdrop overlay -->
+    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300" onclick="toggleCreditModal()"></div>
+    
+    <!-- Drawer Panel -->
+    <div class="relative bg-white w-full max-w-md h-full p-8 sm:p-10 shadow-2xl flex flex-col justify-between overflow-y-auto z-10">
+        
+        <div>
+            <!-- Close button and Icon Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="w-12 h-12 bg-gold/10 text-gold rounded-full flex items-center justify-center text-xl">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <button type="button" onclick="toggleCreditModal()" class="w-10 h-10 bg-slate-50 hover:bg-slate-100 text-slate-500 rounded-full flex items-center justify-center transition-colors border-none cursor-pointer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="mb-6">
+                <h2 class="text-2xl font-extrabold font-outfit text-slate-900 tracking-tight">Simulateur de Crédit</h2>
+                <p class="text-slate-500 text-xs mt-2">Estimez vos mensualités et déposez votre demande de financement.</p>
+            </div>
+            
+            <!-- Calculator Inputs -->
+            <div class="space-y-4 mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Montant du Projet (DT)</label>
+                    <input type="number" id="calc-project-amount" value="250000" oninput="runCreditCalculation()"
+                           class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-semibold focus:border-gold outline-none transition-all">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Apport Personnel (DT)</label>
+                        <input type="number" id="calc-down-payment" value="50000" oninput="runCreditCalculation()"
+                               class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-semibold focus:border-gold outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Durée (Années)</label>
+                        <select id="calc-duration" onchange="runCreditCalculation()"
+                                class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-semibold focus:border-gold outline-none transition-all cursor-pointer">
+                            <option value="5">5 ans</option>
+                            <option value="10">10 ans</option>
+                            <option value="15" selected>15 ans</option>
+                            <option value="20">20 ans</option>
+                            <option value="25">25 ans</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Banque Partenaire</label>
+                        <select id="calc-bank-id" onchange="updateBankRate()"
+                                class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-semibold focus:border-gold outline-none transition-all cursor-pointer">
+                            <option value="" data-rate="7.5">Autre / Non spécifié</option>
+                                                                                        <option value="1" data-rate="9.50">Amen Bank</option>
+                                                            <option value="3" data-rate="9.60">Attijari Bank</option>
+                                                            <option value="2" data-rate="9.25">BIAT</option>
+                                                    </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Taux d'intérêt (%)</label>
+                        <input type="number" step="0.01" id="calc-rate" value="6.50" oninput="runCreditCalculation()"
+                               class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-semibold focus:border-gold outline-none transition-all">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Result display -->
+            <div class="bg-gold/10 border border-gold/25 rounded-2xl p-5 mb-6 text-center">
+                <p class="text-[10px] font-extrabold uppercase text-slate-500 tracking-wider">Mensualité Estimée (Hors assurance)</p>
+                <div class="text-3xl font-black text-slate-900 mt-1" id="calc-monthly-payment">0 DT / mois</div>
+                <p class="text-[10px] text-slate-400 mt-1">Montant du crédit : <span id="calc-credit-amount" class="font-bold text-slate-600">0 DT</span></p>
+            </div>
+
+            <!-- Lead Form submission -->
+            <form action="https://www.elyssimmo-neuf.com/public/contact/lead" method="POST" onsubmit="prefillCreditMessage()" class="space-y-4">
+                <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">                <input type="hidden" name="type" value="rdv">
+                <input type="hidden" name="program_id" id="credit-program-id" value="">
+                <input type="hidden" name="promoter_id" id="credit-promoter-id" value="">
+                <input type="hidden" name="message" id="credit-submitted-message" value="">
+                
+                <div>
+                    <input type="text" name="full_name" placeholder="Votre nom complet *" required 
+                           class="w-full p-4 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <input type="tel" name="phone" placeholder="Numéro de téléphone *" required 
+                           class="w-full p-4 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                    <input type="email" name="email" placeholder="Adresse e-mail" 
+                           class="w-full p-4 bg-slate-50/50 border border-slate-100 rounded-2xl text-xs focus:bg-white focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                </div>
+                
+                <button type="submit" class="w-full bg-slate-950 text-white font-bold py-4 rounded-2xl hover:bg-gold hover:text-slate-950 transition-colors duration-300 shadow-lg text-xs uppercase tracking-widest mt-2 border-none cursor-pointer">
+                    Demander ce financement
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    #credit-modal:not(.hidden) .relative {
+        animation: slideInRightCredit 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes slideInRightCredit {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0); }
+    }
+</style>
+
+<script>
+    function toggleCreditModal(bankId = null, rate = null, programId = null, promoterId = null) {
+        const modal = document.getElementById('credit-modal');
+        if (!modal) return;
+
+        if (modal.classList.contains('hidden')) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            if (bankId) {
+                const bankSelect = document.getElementById('calc-bank-id');
+                if (bankSelect) {
+                    bankSelect.value = bankId;
+                }
+            }
+
+            if (rate) {
+                const rateInput = document.getElementById('calc-rate');
+                if (rateInput) {
+                    rateInput.value = parseFloat(rate).toFixed(2);
+                }
+            }
+
+            if (programId) {
+                document.getElementById('credit-program-id').value = programId;
+            }
+            if (promoterId) {
+                document.getElementById('credit-promoter-id').value = promoterId;
+            }
+
+            runCreditCalculation();
+        } else {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function updateBankRate() {
+        const bankSelect = document.getElementById('calc-bank-id');
+        if (!bankSelect) return;
+        const selectedOption = bankSelect.options[bankSelect.selectedIndex];
+        const rate = selectedOption.getAttribute('data-rate');
+        const rateInput = document.getElementById('calc-rate');
+        if (rateInput && rate) {
+            rateInput.value = parseFloat(rate).toFixed(2);
+        }
+        runCreditCalculation();
+    }
+
+    function runCreditCalculation() {
+        const projectAmount = parseFloat(document.getElementById('calc-project-amount').value) || 0;
+        const downPayment = parseFloat(document.getElementById('calc-down-payment').value) || 0;
+        const durationYears = parseFloat(document.getElementById('calc-duration').value) || 15;
+        const ratePercent = parseFloat(document.getElementById('calc-rate').value) || 7.5;
+
+        const creditAmount = Math.max(0, projectAmount - downPayment);
+        document.getElementById('calc-credit-amount').innerText = creditAmount.toLocaleString('fr-FR') + ' DT';
+
+        let monthlyPayment = 0;
+        if (creditAmount > 0 && ratePercent > 0) {
+            const monthlyRate = (ratePercent / 100) / 12;
+            const totalMonths = durationYears * 12;
+            monthlyPayment = creditAmount * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -totalMonths)));
+        } else if (creditAmount > 0) {
+            monthlyPayment = creditAmount / (durationYears * 12);
+        }
+
+        document.getElementById('calc-monthly-payment').innerText = Math.round(monthlyPayment).toLocaleString('fr-FR') + ' DT / mois';
+    }
+
+    function prefillCreditMessage() {
+        const projectAmount = document.getElementById('calc-project-amount').value;
+        const downPayment = document.getElementById('calc-down-payment').value;
+        const durationYears = document.getElementById('calc-duration').value;
+        const ratePercent = document.getElementById('calc-rate').value;
+        const bankSelect = document.getElementById('calc-bank-id');
+        const bankName = bankSelect.options[bankSelect.selectedIndex].text;
+        const monthly = document.getElementById('calc-monthly-payment').innerText;
+
+        const msg = `Simulation de Crédit :\nProjet : ${projectAmount} DT\nApport : ${downPayment} DT\nDurée : ${durationYears} ans\nTaux : ${ratePercent} %\nBanque : ${bankName}\nMensualité estimée : ${monthly}`;
+        document.getElementById('credit-submitted-message').value = msg;
+    }
+</script>
+    <div id="review-modal" class="hidden fixed inset-0 z-[200] flex items-center justify-center px-6">
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-md" onclick="toggleModal('review-modal')"></div>
+    <div class="relative bg-white w-full max-w-xl rounded-[3rem] p-10 lg:p-14 shadow-2xl">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold font-outfit mb-3 tracking-tight">Laisser un avis</h2>
+            <p class="text-slate-500 text-sm">Votre avis sera publié après vérification par notre équipe.</p>
+        </div>
+        <form action="https://www.elyssimmo-neuf.com/public/avis" method="POST" class="space-y-4">
+            <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">            <input type="hidden" name="promoter_id" id="review-modal-promoter-id" value="">
+
+            <div class="space-y-2">
+                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Votre note</label>
+                <div class="flex gap-2 text-2xl" id="review-stars">
+                                        <i class="fas fa-star cursor-pointer review-star text-gold" data-value="1" onclick="setReviewRating(1)"></i>
+                                        <i class="fas fa-star cursor-pointer review-star text-gold" data-value="2" onclick="setReviewRating(2)"></i>
+                                        <i class="fas fa-star cursor-pointer review-star text-gold" data-value="3" onclick="setReviewRating(3)"></i>
+                                        <i class="fas fa-star cursor-pointer review-star text-gold" data-value="4" onclick="setReviewRating(4)"></i>
+                                        <i class="fas fa-star cursor-pointer review-star text-gold" data-value="5" onclick="setReviewRating(5)"></i>
+                                    </div>
+                <input type="hidden" name="rating" id="review-modal-rating" value="5" required>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" name="author_name" placeholder="Votre nom" required class="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-1 focus:ring-gold outline-none">
+                <input type="text" name="author_role" placeholder="Ex : Propriétaire, Investisseur…" class="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-1 focus:ring-gold outline-none">
+            </div>
+            <textarea name="comment" placeholder="Partagez votre expérience avec ce promoteur…" required class="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm h-32 focus:ring-1 focus:ring-gold outline-none"></textarea>
+            <button type="submit" class="w-full bg-gold text-white font-bold py-5 rounded-2xl shadow-xl shadow-gold/20 hover:brightness-110 transition-all text-sm uppercase tracking-widest mt-4">Publier mon avis</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function setReviewRating(value) {
+    document.getElementById('review-modal-rating').value = value;
+    document.querySelectorAll('#review-stars .review-star').forEach(function (star) {
+        star.classList.toggle('text-gold', parseInt(star.dataset.value, 10) <= value);
+        star.classList.toggle('text-slate-200', parseInt(star.dataset.value, 10) > value);
+    });
+}
+</script>
+    <div id="alert-residence-modal" class="hidden fixed inset-0 z-[200] flex items-center justify-center px-6">
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-md" onclick="closeAlertModal()"></div>
+    <div class="relative bg-white w-full max-w-xl rounded-[3rem] p-10 lg:p-14 shadow-2xl">
+        <button type="button" onclick="closeAlertModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-50 hover:bg-slate-100 flex items-center justify-center text-slate-500">✕</button>
+        <div class="text-center mb-10">
+            <span class="inline-block text-[10px] font-extrabold tracking-[2px] uppercase text-[#F0A500] mb-2">🔔 Alerte Résidence</span>
+            <h2 class="text-3xl font-bold font-outfit mb-3 tracking-tight">Créer mon alerte</h2>
+            <p class="text-slate-500 text-sm">Soyez prévenu dès qu'une opportunité de revente ou de location correspond à votre recherche.</p>
+        </div>
+        <form action="https://www.elyssimmo-neuf.com/public/contact/lead" method="POST" class="space-y-4">
+            <input type="hidden" name="_token" value="654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G" autocomplete="off">            <input type="hidden" name="type" value="alerte_residence">
+            <input type="hidden" name="source" value="ALERTE_RESIDENCE_REVENTE">
+            <input type="hidden" name="program_id" id="alert-modal-program-id" value="">
+
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-extrabold tracking-[1.5px] uppercase text-slate-400">Résidence ciblée</label>
+                <input type="text" name="residence" id="alert-modal-residence" placeholder="Nom de la résidence" required
+                       class="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-1 focus:ring-gold outline-none read-only:text-slate-500 read-only:bg-slate-100">
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-extrabold tracking-[1.5px] uppercase text-slate-400">Votre projet *</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="flex items-center justify-center gap-2 text-[13px] font-semibold text-[#444] bg-slate-50 border-[1.5px] border-slate-100 rounded-xl px-3 py-3 cursor-pointer has-[:checked]:border-gold has-[:checked]:bg-gold/10 has-[:checked]:text-[#111] transition-colors">
+                        <input type="radio" name="project_type" value="Achat / Revente" required class="accent-gold"> Achat / Revente
+                    </label>
+                    <label class="flex items-center justify-center gap-2 text-[13px] font-semibold text-[#444] bg-slate-50 border-[1.5px] border-slate-100 rounded-xl px-3 py-3 cursor-pointer has-[:checked]:border-gold has-[:checked]:bg-gold/10 has-[:checked]:text-[#111] transition-colors">
+                        <input type="radio" name="project_type" value="Location" required class="accent-gold"> Location
+                    </label>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" name="full_name" placeholder="Nom & Prénom" required class="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-1 focus:ring-gold outline-none">
+                <input type="tel" name="phone" placeholder="Téléphone / WhatsApp" required class="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-1 focus:ring-gold outline-none">
+            </div>
+            <input type="email" name="email" placeholder="Adresse e-mail" required class="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-1 focus:ring-gold outline-none">
+
+            <button type="submit" class="w-full bg-gold text-white font-bold py-5 rounded-2xl shadow-xl shadow-gold/20 hover:brightness-110 transition-all text-sm uppercase tracking-widest mt-4">Créer mon alerte</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function openAlertModal(residenceName, programId) {
+    const modal = document.getElementById('alert-residence-modal');
+    const residenceInput = document.getElementById('alert-modal-residence');
+    const programIdInput = document.getElementById('alert-modal-program-id');
+    if (!modal || !residenceInput) return;
+
+    if (residenceName) {
+        residenceInput.value = residenceName;
+        residenceInput.readOnly = true;
+    } else {
+        residenceInput.value = '';
+        residenceInput.readOnly = false;
+    }
+    programIdInput.value = programId || '';
+
+    modal.classList.remove('hidden');
+}
+
+function closeAlertModal() {
+    document.getElementById('alert-residence-modal')?.classList.add('hidden');
+}
+</script>
+    <div id="cookie-consent" class="hidden fixed inset-x-0 bottom-0 z-[300] p-4 sm:p-5">
+  <div class="max-w-[1140px] mx-auto bg-white border-[1.5px] border-[#E5E5E5] rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+    <div class="text-[13px] sm:text-[14px] text-[#333] leading-[1.6] flex-1">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="text-[18px]">🍪</span>
+        <span class="font-extrabold text-[#111] text-[14px]">Nous respectons votre vie privée</span>
+      </div>
+      Nous utilisons des cookies pour améliorer votre expérience, mesurer l'audience du site et vous proposer des contenus adaptés, conformément au RGPD. Vous pouvez accepter, refuser ou en savoir plus sur notre
+      <a href="https://www.elyssimmo-neuf.com/public/page/politique-de-cookies" class="text-[#F0A500] font-semibold underline">politique de cookies</a>.
+    </div>
+    <div class="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
+      <button type="button" onclick="cookieConsentSet('refused')" class="flex-1 sm:flex-none bg-white border-[1.5px] border-[#E5E5E5] text-[#111] font-bold text-[13px] px-5 py-3 rounded-xl hover:border-[#111] transition-colors whitespace-nowrap">
+        Refuser
+      </button>
+      <button type="button" onclick="cookieConsentSet('accepted')" class="flex-1 sm:flex-none bg-[#111] text-white font-bold text-[13px] px-5 py-3 rounded-xl hover:bg-[#F0A500] hover:text-[#111] transition-colors whitespace-nowrap">
+        Accepter
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'elyssimmo_cookie_consent';
+
+  window.cookieConsentSet = function (value) {
+    try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    document.cookie = STORAGE_KEY + '=' + value + ';path=/;max-age=' + (60 * 60 * 24 * 365) + ';SameSite=Lax';
+    document.getElementById('cookie-consent')?.classList.add('hidden');
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cookie_consent_update',
+      cookie_consent: value,
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var stored = null;
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (!stored) {
+      document.getElementById('cookie-consent')?.classList.remove('hidden');
+    }
+  });
+})();
+</script>
+
+    <script>
+        function toggleChat() { document.getElementById('chat-panel')?.classList.toggle('hidden'); }
+        function toggleModal(id, programId, promoterId) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.toggle('hidden');
+            if (id === 'rdv-modal') {
+                const programInput = document.getElementById('rdv-modal-program-id');
+                const promoterInput = document.getElementById('rdv-modal-promoter-id');
+                if (programInput) programInput.value = programId || '';
+                if (promoterInput) promoterInput.value = promoterId || '';
+            }
+            if (id === 'review-modal') {
+                const promoterInput = document.getElementById('review-modal-promoter-id');
+                if (promoterInput) promoterInput.value = promoterId || '';
+            }
+        }
+        
+        function setTab(el) {
+          const group = el.closest('.bg-white') || document;
+          group.querySelectorAll('.stab').forEach(t => t.classList.remove('on'));
+          el.classList.add('on');
+
+          // Onglets Neuf / Revente : filtrent la recherche immédiatement, sans
+          // avoir à cliquer sur "Rechercher" (l'onglet "Location Neuf" n'a pas
+          // encore de filtre dédié et reste purement visuel pour le moment).
+          const tab = el.dataset.tab;
+          if (!tab) return;
+          const form = group.querySelector('form');
+          if (!form) return;
+          let hidden = form.querySelector('input[name="tab"]');
+          if (!hidden) {
+            hidden = document.createElement('input');
+            hidden.type = 'hidden';
+            hidden.name = 'tab';
+            form.appendChild(hidden);
+          }
+          hidden.value = tab;
+          form.requestSubmit ? form.requestSubmit() : form.submit();
+        }
+        let advOpen = false;
+        function toggleAdv() {
+          advOpen = !advOpen;
+          const panel = document.getElementById('adv-panel');
+          if (panel) {
+              panel.classList.toggle('open', advOpen);
+              document.getElementById('adv-icon').textContent = advOpen ? '−' : '+';
+              document.getElementById('adv-lbl').textContent = advOpen ? 'Réduire les filtres' : 'Filtres avancés';
+          }
+        }
+        function setBp(el, filter) {
+          document.querySelectorAll('.bp-pill').forEach(p => p.classList.remove('on'));
+          el.classList.add('on');
+          
+          if (!filter) return;
+          
+          document.querySelectorAll('.deal-item').forEach(item => {
+              if (filter === 'all') {
+                  item.style.display = 'flex';
+              } else {
+                  const label = item.getAttribute('data-label') || '';
+                  if (label.includes(filter)) {
+                      item.style.display = 'flex';
+                  } else {
+                      item.style.display = 'none';
+                  }
+              }
+          });
+        }
+        function setRc(el) {
+          document.querySelectorAll('.rc-toggle-btn').forEach(b => b.classList.remove('on'));
+          el.classList.add('on');
+        }
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1024 && this.querySelector('.nav-drop')) {
+              // e.preventDefault();
+              this.classList.toggle('active');
+            }
+          });
+        });
+        function toggleSeoBlock() {
+          const block = document.getElementById('seo-block');
+          const label = document.getElementById('seo-toggle-label');
+          const icon = document.getElementById('seo-toggle-icon');
+          if (!block) return;
+          const isOpen = block.style.maxHeight && block.style.maxHeight !== '85px';
+          if (isOpen) {
+            block.style.maxHeight = '85px';
+            block.style.maskImage = 'linear-gradient(to bottom, black 60%, transparent 100%)';
+            block.style.webkitMaskImage = 'linear-gradient(to bottom, black 60%, transparent 100%)';
+            if (label) label.textContent = 'Lire la suite';
+            if (icon) icon.style.transform = 'rotate(0deg)';
+          } else {
+            block.style.maxHeight = block.scrollHeight + 'px';
+            block.style.maskImage = 'none';
+            block.style.webkitMaskImage = 'none';
+            if (label) label.textContent = 'Réduire';
+            if (icon) icon.style.transform = 'rotate(180deg)';
+          }
+        }
+    </script>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    function openReventeModal() {
+      const modal = document.getElementById('revente-modal');
+      const inner = modal.querySelector('div');
+      modal.style.display = 'flex';
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        inner.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closeReventeModal() {
+      const modal = document.getElementById('revente-modal');
+      const inner = modal.querySelector('div');
+      modal.classList.add('opacity-0');
+      inner.classList.add('scale-95');
+      setTimeout(() => { modal.style.display = 'none'; }, 200);
+    }
+
+    function openPlanModal(unitId, lotNumber) {
+      const modal = document.getElementById('plan-modal');
+      const inner = modal.querySelector('div');
+
+      // Update form action dynamically
+      const form = document.getElementById('plan-form');
+      form.action = `/units/${unitId}/request-plan`;
+
+      // Update Lot Number in text
+      document.getElementById('plan-lot-number').textContent = lotNumber;
+
+      modal.style.display = 'flex';
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        inner.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closePlanModal() {
+      const modal = document.getElementById('plan-modal');
+      const inner = modal.querySelector('div');
+      modal.classList.add('opacity-0');
+      inner.classList.add('scale-95');
+      setTimeout(() => { modal.style.display = 'none'; }, 200);
+    }
+
+    let progMap = null;
+
+    function showProgTab(btn, name) {
+      document.querySelectorAll('.prog-detail .tab-btn').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.prog-detail .tab-content').forEach(c => c.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById('tab-' + name).classList.add('on');
+      if (name === 'quartier') initProgMap();
+    }
+
+    function initProgMap() {
+      const el = document.getElementById('map');
+      if (!el) return;
+      if (progMap) { setTimeout(() => progMap.invalidateSize(), 100); return; }
+      const lat = parseFloat('36.8065') || 36.8065;
+      const lng = parseFloat('10.1815') || 10.1815;
+      progMap = L.map('map', { center: [lat, lng], zoom: 14, scrollWheelZoom: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap, &copy; CARTO', subdomains: 'abcd', maxZoom: 20
+      }).addTo(progMap);
+      L.marker([lat, lng]).addTo(progMap).bindPopup('LA PRINCESSE DE LA MER').openPopup();
+      setTimeout(() => progMap.invalidateSize(), 150);
+    }
+
+    // Lightbox / Slider
+    const progPhotos = ["https:\/\/www.elyssimmo-neuf.com\/public\/storage\/programs\/156\/5447.jpg"];
+    let lbList = [];
+    let lbIndex = 0;
+
+    // src : URL de l'image cliquée ; index : position dans la galerie complète (optionnel).
+    // Avec un index → mode slider sur toutes les photos du programme ; sinon image seule (ex : plan).
+    function openLightbox(src, index) {
+      const slider = typeof index === 'number' && progPhotos.length > 0;
+      lbList = slider ? progPhotos : [src];
+      lbIndex = slider ? index : 0;
+      renderLightbox();
+      document.getElementById('lightbox').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function renderLightbox() {
+      document.getElementById('lightbox-img').src = lbList[lbIndex] || '';
+      const multi = lbList.length > 1;
+      document.getElementById('lb-prev').style.display = multi ? 'flex' : 'none';
+      document.getElementById('lb-next').style.display = multi ? 'flex' : 'none';
+      const counter = document.getElementById('lb-counter');
+      counter.style.display = multi ? 'block' : 'none';
+      counter.textContent = multi ? `${lbIndex + 1} / ${lbList.length}` : '';
+    }
+    function lbNav(dir) {
+      if (lbList.length < 2) return;
+      lbIndex = (lbIndex + dir + lbList.length) % lbList.length;
+      renderLightbox();
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('lightbox').style.display !== 'flex') return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') lbNav(-1);
+      else if (e.key === 'ArrowRight') lbNav(1);
+    });
+
+    function openModel3DModal(url) {
+      const modal = document.getElementById('model3d-modal');
+      const iframe = document.getElementById('model3d-iframe');
+      if (modal && iframe) {
+        iframe.src = url;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModel3DModal() {
+      const modal = document.getElementById('model3d-modal');
+      const iframe = document.getElementById('model3d-iframe');
+      if (modal && iframe) {
+        modal.style.display = 'none';
+        iframe.src = '';
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Video Modal Logic
+    function openVideoModal() {
+      const modal = document.getElementById('video-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          document.getElementById('video-modal-inner').classList.remove('scale-95');
+        }, 10);
+      }
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('video-modal');
+      if (modal) {
+        modal.classList.add('opacity-0');
+        document.getElementById('video-modal-inner').classList.add('scale-95');
+
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+
+          // Stop video playback when closing
+          const iframe = document.getElementById('video-iframe');
+          if (iframe) {
+            const src = iframe.src;
+            iframe.src = src; // Reloads the iframe to stop playback
+          }
+          const video = document.getElementById('video-player');
+          if (video) {
+            video.pause();
+          }
+        }, 200);
+      }
+    }
+
+    // Brochure Modal Logic
+    let brochureUrlToDownload = '';
+
+    function toggleBrochureModal(url) {
+      if (url === '#sidebar-form') {
+        window.location.hash = '#sidebar-form';
+        return;
+      }
+      brochureUrlToDownload = url;
+      const modal = document.getElementById('brochure-modal');
+      const inner = modal.querySelector('div');
+      modal.style.display = 'flex';
+
+      const form = document.getElementById('brochure-form');
+      const btn = form.querySelector('button[type="submit"]');
+      btn.style.display = 'flex';
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-download"></i> Télécharger maintenant';
+
+      document.getElementById('brochure-success').classList.add('hidden');
+      document.getElementById('brochure-success').classList.remove('flex');
+
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        inner.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closeBrochureModal() {
+      const modal = document.getElementById('brochure-modal');
+      const inner = modal.querySelector('div');
+      modal.classList.add('opacity-0');
+      inner.classList.add('scale-95');
+      setTimeout(() => { modal.style.display = 'none'; }, 200);
+    }
+
+    function submitBrochure(e) {
+      e.preventDefault();
+
+      if (typeof grecaptcha !== 'undefined') {
+        const response = grecaptcha.getResponse();
+        if (!response) {
+          alert("Veuillez cocher la case 'Je ne suis pas un robot'.");
+          return;
+        }
+      }
+
+      const email = document.getElementById('brochure-email').value;
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Traitement...';
+
+      // Simulation AJAX
+      setTimeout(() => {
+        btn.style.display = 'none';
+        const success = document.getElementById('brochure-success');
+        success.classList.remove('hidden');
+        success.classList.add('flex');
+
+        const dlLink = document.getElementById('brochure-dl-link');
+        dlLink.href = brochureUrlToDownload;
+
+        // Auto-download
+        window.open(brochureUrlToDownload, '_blank');
+      }, 800);
+    }
+
+    // Countdown
+    (function () {
+      const cd = document.querySelector('.bon-plan-countdown');
+      if (!cd || !cd.dataset.end) return;
+      const end = new Date(cd.dataset.end + 'T23:59:59').getTime();
+      function tick() {
+        const diff = end - new Date().getTime();
+        if (diff <= 0) { document.getElementById('cd-j').textContent = '0'; document.getElementById('cd-h').textContent = '0'; document.getElementById('cd-m').textContent = '0'; return; }
+        const j = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('cd-j').textContent = j;
+        document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+        document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      }
+      tick();
+      setInterval(tick, 30000);
+    })();
+    // ═══ Dynamic lots table ═══
+    (function () {
+      const tbodies = document.querySelectorAll('.lots-tbody');
+      if (tbodies.length === 0) return;
+
+      const searchInput = document.getElementById('lot-search');
+      const filterType = document.getElementById('filter-type');
+      const filterFloor = document.getElementById('filter-floor');
+      const filterStatus = document.getElementById('filter-status');
+      const lotCount = document.getElementById('lot-count');
+      const emptyMsg = document.getElementById('lots-empty');
+      const resetBtn = document.getElementById('reset-filters');
+
+      let debounceTimer = null;
+
+      // ── Filter logic ──
+      function applyFilters() {
+        const search = (searchInput?.value || '').toLowerCase().trim();
+        const type = (filterType?.value || '').toLowerCase();
+        const floor = filterFloor?.value || '';
+        const status = filterStatus?.value || '';
+
+        const typeMap = {
+          'appart': 'appartement',
+          'villa': 'villa',
+          'terrain': 'terrain'
+        };
+        const activePills = [...document.querySelectorAll('.type-pill.on')].map(p => typeMap[p.dataset.type] || p.dataset.type);
+        const hasPills = document.querySelectorAll('.type-pill').length > 0;
+
+        const rows = document.querySelectorAll('.lot-row');
+        let globalVisible = 0;
+
+        rows.forEach(row => {
+          let show = true;
+
+          if (search && !(row.dataset.search || '').includes(search)) show = false;
+          if (show && type && (row.dataset.type || '') !== type) show = false;
+          if (show && floor && (row.dataset.floor || '') !== floor) show = false;
+          if (show && status && (row.dataset.status || '') !== status) show = false;
+
+          if (show && hasPills) {
+            const rowCategory = row.closest('.category-block')?.dataset?.category;
+            if (rowCategory && !activePills.includes(rowCategory)) {
+              show = false;
+            }
+          }
+
+          if (show) {
+            row.style.display = '';
+            row.style.opacity = '1';
+            globalVisible++;
+          } else {
+            row.style.display = 'none';
+            row.style.opacity = '0';
+          }
+        });
+
+        document.querySelectorAll('.category-block').forEach(block => {
+          let catRows = Array.from(block.querySelectorAll('.lot-row'));
+          let visibleInCat = catRows.filter(r => r.style.display !== 'none').length;
+          block.style.display = visibleInCat > 0 ? 'block' : 'none';
+          let cntLabel = block.querySelector('.cat-count');
+          if (cntLabel) cntLabel.textContent = visibleInCat;
+        });
+
+        if (lotCount) lotCount.textContent = globalVisible + ' lot(s)';
+        if (emptyMsg) {
+          emptyMsg.classList.toggle('hidden', globalVisible > 0);
+        }
+
+        const hasFilters = search || type || floor || status;
+        if (resetBtn) resetBtn.classList.toggle('hidden', !hasFilters);
+      }
+
+      // ── Sort logic ──
+      window.sortLotsTable = function (key, th) {
+        const table = th.closest('table');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('.lot-row'));
+
+        let currentSortKey = table.dataset.sortKey || null;
+        let currentSortDir = parseInt(table.dataset.sortDir || '0');
+
+        if (currentSortKey === key) {
+          currentSortDir = currentSortDir === 1 ? -1 : (currentSortDir === -1 ? 0 : 1);
+        } else {
+          currentSortKey = key;
+          currentSortDir = 1;
+        }
+
+        table.dataset.sortKey = currentSortKey;
+        table.dataset.sortDir = currentSortDir.toString();
+
+        table.querySelectorAll('[data-sort-key]').forEach(header => {
+          const icon = header.querySelector('[data-sort-icon]');
+          if (!icon) return;
+          if (header.dataset.sortKey === key) {
+            icon.style.opacity = currentSortDir === 0 ? '' : '1';
+            icon.textContent = currentSortDir === 1 ? '↑' : (currentSortDir === -1 ? '↓' : '↕');
+            icon.style.color = currentSortDir !== 0 ? '#D4A830' : '';
+          } else {
+            icon.style.opacity = '';
+            icon.textContent = '↕';
+            icon.style.color = '';
+          }
+        });
+
+        if (currentSortDir === 0) {
+          rows.sort((a, b) => parseInt(a.dataset.originalIndex) - parseInt(b.dataset.originalIndex));
+        } else {
+          rows.sort((a, b) => {
+            let va = a.dataset[key] || '';
+            let vb = b.dataset[key] || '';
+            if (['surface', 'price', 'floor'].includes(key)) {
+              va = parseFloat(va) || 0;
+              vb = parseFloat(vb) || 0;
+              return currentSortDir * (va - vb);
+            }
+            return currentSortDir * va.localeCompare(vb, 'fr', { numeric: true });
+          });
+        }
+
+        rows.forEach((row, i) => {
+          row.style.transition = 'opacity 0.15s ease';
+          row.style.opacity = '0.5';
+          setTimeout(() => {
+            tbody.appendChild(row);
+            row.style.opacity = '1';
+          }, i * 15);
+        });
+      };
+
+      // ── Reset ──
+      window.resetLotFilters = function () {
+        if (searchInput) searchInput.value = '';
+        if (filterType) filterType.value = '';
+        if (filterFloor) filterFloor.value = '';
+        if (filterStatus) filterStatus.value = '';
+
+        // Reset sort
+        currentSort = { key: null, dir: 0 };
+        document.querySelectorAll('[data-sort-icon]').forEach(icon => {
+          icon.style.opacity = '';
+          icon.textContent = '↕';
+          icon.style.color = '';
+        });
+
+        applyFilters();
+      };
+
+      // ── Event listeners ──
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(applyFilters, 150);
+        });
+      }
+      if (filterType) filterType.addEventListener('change', applyFilters);
+      if (filterFloor) filterFloor.addEventListener('change', applyFilters);
+      if (filterStatus) filterStatus.addEventListener('change', applyFilters);
+    })();
+
+    // ── Simulateur BTK Bank ──
+    let currentDuree = 15; // default 15 years
+    const simPrice = 435000;
+
+    function setDuree(btn, years) {
+      document.querySelectorAll('#sim-durees .sim-dur').forEach(b => b.classList.remove('sim-dur-on'));
+      btn.classList.add('sim-dur-on');
+      currentDuree = years;
+      calculerCredit();
+    }
+
+    function calculerCredit() {
+      const apportInput = document.getElementById('sim-apport');
+      if (!apportInput) return;
+
+      let apport = parseFloat(apportInput.value) || 0;
+      if (apport < 0) apport = 0;
+      if (apport > simPrice) apport = simPrice;
+
+      const montantEmprunte = Math.max(0, simPrice - apport);
+
+      // Update UI for borrowed amount
+      document.getElementById('sim-montant').textContent = new Intl.NumberFormat('fr-FR').format(montantEmprunte) + ' TND';
+
+      const tauxAnnuel = 6.5; // 6.5%
+      const tauxMensuel = (tauxAnnuel / 100) / 12;
+      const nbMensualites = currentDuree * 12;
+
+      let mensualite = 0;
+      let coutTotal = 0;
+
+      if (montantEmprunte > 0) {
+        mensualite = (montantEmprunte * tauxMensuel) / (1 - Math.pow(1 + tauxMensuel, -nbMensualites));
+        coutTotal = (mensualite * nbMensualites) - montantEmprunte;
+      }
+
+      // Update UI for mensualité
+      document.getElementById('sim-mensualite').textContent = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(mensualite));
+
+      // Update UI for cost of credit
+      document.getElementById('sim-cout').textContent = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(coutTotal)) + ' TND';
+
+      // Update UI for duration label
+      document.getElementById('sim-duree-label').textContent = `${currentDuree} ans · ${nbMensualites} mensualités`;
+    }
+
+    function unlockSimulation(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const loading = document.getElementById('sim-unlock-loading');
+
+      submitBtn.style.display = 'none';
+      loading.style.display = 'block';
+
+      const formData = new FormData(form);
+      formData.append('_token', '654rJ2G7KQNPEuqrY03wxp75qpG8kpN5FQcwY60G');
+      formData.append('program_id', '156');
+      formData.append('type', 'simulation_btk');
+      formData.append('source', 'PAGE_PROGRAMME_SIMULATEUR');
+
+      const apport = document.getElementById('sim-apport').value;
+      formData.append('message', `Demande de simulation BTK.\nApport personnel : ${apport} TND\nDurée souhaitée : ${currentDuree} ans\nMontant du bien : ${simPrice} TND`);
+
+      fetch('https://www.elyssimmo-neuf.com/public/contact/lead', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+        .then(response => {
+          // Unlock the UI regardless of success to not block the user, 
+          // or handle errors if needed. For now, we unlock.
+          document.getElementById('sim-result-overlay').style.opacity = '0';
+          document.getElementById('sim-result-overlay').style.pointerEvents = 'none';
+
+          const content = document.getElementById('sim-result-content');
+          content.style.filter = 'none';
+          content.style.opacity = '1';
+          content.style.pointerEvents = 'auto';
+
+          setTimeout(() => {
+            document.getElementById('sim-result-overlay').style.display = 'none';
+          }, 300);
+
+          calculerCredit();
+        })
+        .catch(error => {
+          console.error('Erreur lors de l\'enregistrement du lead:', error);
+          submitBtn.style.display = 'block';
+          loading.style.display = 'none';
+          alert('Une erreur est survenue, veuillez réessayer.');
+        });
+    }
+
+    function ouvrirContactBTK() {
+      const sidebarForm = document.getElementById('sidebar-form');
+      if (sidebarForm) {
+        sidebarForm.scrollIntoView({ behavior: 'smooth' });
+        const inputNom = sidebarForm.querySelector('input[name="full_name"]');
+        if (inputNom) {
+          setTimeout(() => inputNom.focus(), 800);
+        }
+      }
+    }
+
+    // Initial calculation on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      calculerCredit();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_SOURCE_COMPONENTS_COMBINED_FOR_ISOLATED_GENERATION",
+  "baselineMetadataSha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+  "componentProposals": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/zouaouine570-component-proposal-20260919/proposal.json",
+      "sha256": "9436f6ba21a41f59825473f3e641bbc5233ec786b6b509e8aac0b0381c4ecc4a",
+      "bytes": 218088
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/kalaat588-component-proposal-20260919/proposal.json",
+      "sha256": "b8263ec01eca3dd6f8cc17c86c7815cc2cdc1c9d1caac5e7748c18e622ebb006",
+      "bytes": 23424
+    }
+  ],
+  "rootNumericProjection": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/zouaouine-kalaat-root-projection-20260919.json",
+    "sha256": "c6431aa1d87d011d201f190cde4ab7b5272ded0b5671c6f875afdc01e4d3ac09",
+    "bytes": 5520
+  },
+  "referenceIds": [
+    570,
+    588
+  ],
+  "exactRawChanges": [
+    {
+      "id": "osm:relation:7121325",
+      "field": "name",
+      "before": "زواوين",
+      "after": "الزواوين"
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "aliases",
+      "before": [
+        "Zouaouine",
+        "الزواوين"
+      ],
+      "after": [
+        "Zouaouine",
+        "زواوين"
+      ]
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "lat",
+      "before": 37.11603,
+      "after": 37.128421
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "lng",
+      "before": 10.027253,
+      "after": 10.0581544
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:3771493269"
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7121325",
+      "after": "delegation:570"
+    },
+    {
+      "id": "osm:node:1870317876",
+      "field": "parentName",
+      "before": "زواوين",
+      "after": "الزواوين"
+    },
+    {
+      "id": "osm:node:1870317876",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "Zouaouine",
+        "زواوين",
+        "معتمدية غار الملح"
+      ],
+      "after": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "Zouaouine",
+        "الزواوين",
+        "زواوين",
+        "معتمدية غار الملح"
+      ]
+    },
+    {
+      "id": "osm:relation:7129263",
+      "field": "lat",
+      "before": 35.769282,
+      "after": 35.7672773
+    },
+    {
+      "id": "osm:relation:7129263",
+      "field": "lng",
+      "before": 8.347248,
+      "after": 8.3438119
+    },
+    {
+      "id": "osm:relation:7129263",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:501803032"
+    },
+    {
+      "id": "osm:relation:7129263",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7129263",
+      "after": "delegation:588"
+    }
+  ],
+  "scope": "Authentic source village/town manual references remain separate from published daily INM references. Every nearest default and polygon byte remains unchanged."
+}

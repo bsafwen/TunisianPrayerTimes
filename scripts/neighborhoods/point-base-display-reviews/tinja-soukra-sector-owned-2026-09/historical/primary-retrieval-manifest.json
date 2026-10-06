@@ -1,0 +1,149 @@
+{
+  "sources": [
+    {
+      "requestedUrl": "http://www.commune-menzelbourguiba.gov.tn/fr/histoire-ville",
+      "retrievedAt": "2026-09-12T12:22:50.865986+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "90",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\menzelbourguiba-history-http.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\menzelbourguiba-history-http.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "http://www.commune-menzelbourguiba.gov.tn/fr/histoire-ville"
+      ],
+      "exitCode": 60,
+      "httpStatus": "301",
+      "effectiveUrl": "https://www.commune-menzelbourguiba.gov.tn/fr/histoire-ville",
+      "stderr": "curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is incorrect.\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the webpage mentioned above.\n",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no certificate bypass or body rewriting. Explicit HTTP URLs are public unencrypted sources.",
+      "response": null,
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\menzelbourguiba-history-http.html.headers",
+        "sha256": "7be6e1ec0e263c18404760fad4c340a4b5d272f2619abe0e49910a9c16377ff8",
+        "bytes": 228
+      }
+    },
+    {
+      "requestedUrl": "http://www.commune-soukra.tn/",
+      "retrievedAt": "2026-09-12T12:22:50.865986+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "90",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\soukra-home-http.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\soukra-home-http.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "http://www.commune-soukra.tn/"
+      ],
+      "exitCode": 60,
+      "httpStatus": "301",
+      "effectiveUrl": "https://www.commune-soukra.tn/",
+      "stderr": "curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is incorrect.\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the webpage mentioned above.\n",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no certificate bypass or body rewriting. Explicit HTTP URLs are public unencrypted sources.",
+      "response": null,
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\soukra-home-http.html.headers",
+        "sha256": "00f9ab1f870408ce5b5f64a4e212868262622d480d886d8f3a89dd330a7e6857",
+        "bytes": 214
+      }
+    },
+    {
+      "requestedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf",
+      "retrievedAt": "2026-09-12T12:22:51.182988+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "90",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-atlas.pdf.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-atlas.pdf",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no certificate bypass or body rewriting. Explicit HTTP URLs are public unencrypted sources.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-atlas.pdf",
+        "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800",
+        "bytes": 15340414
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-atlas.pdf.headers",
+        "sha256": "d329ee7d180e4c1f1e8eb0f901ebc4817f70cd775b2f1ff65628c9fae165043d",
+        "bytes": 631
+      }
+    },
+    {
+      "requestedUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/",
+      "retrievedAt": "2026-09-12T12:22:51.697595+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "90",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-urban-planning.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-urban-planning.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no certificate bypass or body rewriting. Explicit HTTP URLs are public unencrypted sources.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-urban-planning.html",
+        "sha256": "c3170bececcf41da05792e76e7d9fdc12194f0b83cf26291e7e0ebf58479e108",
+        "bytes": 181081
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-urban-planning.html.headers",
+        "sha256": "4a9d37763b8e6468ba425e6ede36ad9d76245af820b620e86e2cd7c932247edb",
+        "bytes": 794
+      }
+    }
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\fetch_tinja_soukra_hrairia_primary_sources.py",
+    "sha256": "077a79a9fceac6617c16346f3fabc5ada243548dafe50df1d5ef3f479c40e3b8",
+    "bytes": 2232
+  }
+}

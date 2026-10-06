@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "camp-serviere-source-cache/1",
+  "retrievedAtUtc": "2026-09-20T22:36:45.259137+00:00",
+  "sources": [
+    {
+      "url": "https://www.fichier-pdf.fr/2018/11/16/camp-servieres-fff-/camp-servieres-fff-.pdf",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\sources\\camp-servieres-fff-.pdf",
+      "sha256": "760919f6f21333b1644fbca5eb9bfdc5f80fb2e38ef7dc59d55b54c97eb80372",
+      "bytes": 1360274
+    },
+    {
+      "url": "https://defense.tn/academie-militaire/?lang=fr",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\sources\\academie-militaire-fr.html",
+      "sha256": "f5603fc057c3cfe8d1b720a3a3161691925c48628f31143aa17c4cccde93295f",
+      "bytes": 105190
+    }
+  ]
+}

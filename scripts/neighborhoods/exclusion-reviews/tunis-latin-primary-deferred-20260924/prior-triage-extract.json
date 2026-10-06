@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "work/interior-imada-triage-20260924/tunis-latin-name-triage-20260924.json",
+  "sourceSha256": "8d08610c2127a3d2d8d103a5dd79f0213e735433e0e88f3f1aa82a051fe00439",
+  "method": "Read exact installed feature metadata; inspect the corresponding pinned OSM snapshot objects; decode current NPOL packed geometries from neighborhoods.bin; project pairs to EPSG:32632 for overlap-area ratios; compare parent identity to the INS 2082-code sector registry. Polygon overlap percentages are geometric source checks, not legal-boundary determinations. OSM tag/record snapshot digests are SHA-256 over UTF-8 canonical JSON (sorted keys, compact separators).",
+  "features": [
+    {
+      "id": "osm:way:1188266987",
+      "displayName": "B HAMZA",
+      "aliases": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "hasBoundary": true,
+      "parentName": "معتمدية سيدي حسين",
+      "contextAliases": [
+        "Délégation Sidi Hassine",
+        "Sidi Hassine",
+        "معتمدية سيدي حسين"
+      ],
+      "governorateId": 342,
+      "prayerDelegationId": 398,
+      "appMetadata": {
+        "lat": 36.759337,
+        "lng": 10.113029,
+        "areaKm2": 0.10472318598522062,
+        "bbox": [
+          10.111095,
+          36.757315,
+          10.115031,
+          36.762121
+        ],
+        "pickerGroupId": "osm:way:1188266987"
+      },
+      "osmSource": {
+        "id": "osm:way:1188266987",
+        "tags": {
+          "landuse": "residential",
+          "name": "B HAMZA"
+        },
+        "geometryType": "MultiPolygon",
+        "point": null,
+        "tagsSha256": "71c61b4ca4b79f309369e1352358ec831899afa066d780b380ca85426d90ba93",
+        "recordSha256": "63b03963148f17fb4e093d2011649adfe65e9fbb6f023bde000f2eb42430e34c"
+      },
+      "administrativeContext": {
+        "delegationCode": "1164",
+        "delegationArabic": "سيدي حسين",
+        "sectorCode": "116454",
+        "sectorArabic": "عطار",
+        "sectorId": "osm:relation:7116970",
+        "insRegistryRecord": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1164",
+          "delegationFr": "Sidi hassine",
+          "delegationAr": "سيدي حسين",
+          "sectorCode": "116454",
+          "sectorFr": "Attar",
+          "sectorAr": "عطار",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3674,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 114,
+            "Nombre_de_menages_par_Secteurs.xlsx": 114
+          }
+        },
+        "osmSectorSnapshot": {
+          "id": "osm:relation:7116970",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عطار",
+            "name:ar": "عطار",
+            "name:fr": "Attar",
+            "ref:tn:codegeo": "116454"
+          },
+          "tagsSha256": "d74b84bfdf954ab6d50a72cb10f303411c2b697c2c8756dc1262745ff969994e",
+          "recordSha256": "9e783829d30f756a3405fd7e19cd2a7abf5d0b70c06e9487720442aff0e369c2",
+          "osmGeometryType": "MultiPolygon",
+          "installedCatalogSourceId": "osm"
+        }
+      },
+      "prayerMappingInterpretation": "delegationId 398 resolves to Sidi Hassine; this is also the administrative parent delegation, while the target is mostly but not fully within Attar sector.",
+      "geometryAudit": {
+        "method": "current packed app geometries projected to UTM 32N for area ratios",
+        "targetAreaKm2": 0.10446320139365999,
+        "parentIntersectionKm2": 0.1015073451992529,
+        "targetOverlapPercent": 97.17043307598031,
+        "parentCoversTarget": false,
+        "parentGeometryId": "osm:relation:7116970",
+        "rawOsmTargetAreaKm2": 0.10444991277247186
+      },
+      "classification": "unresolved",
+      "recommendation": "Do not supply an Arabic primary name yet; preserve as unresolved pending a municipality or other authoritative locality source.",
+      "reason": "OSM provides only landuse=residential and Latin name B HAMZA. No Arabic name, place=neighbourhood, or independent official locality entry was found. The geometry is valid, but about 2.83% falls outside current official Attar geometry, so exact identity/extent needs review.",
+      "evidenceGap": "An Arabic official/local-authority name and a map or boundary tying B Hamza to this polygon, including resolution of its edge relationship to Attar 116454.",
+      "priorEvidence": "Google Maps search for B HAMZA returned an unrelated doctor POI; this does not establish locality identity or geometry."
+    },
+    {
+      "id": "osm:way:1363528887",
+      "displayName": "Cité Essalem",
+      "aliases": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "hasBoundary": true,
+      "parentName": "حي السلام",
+      "contextAliases": [
+        "Délégation Cité El Khadra",
+        "Hay Es Salem",
+        "la cité El Khadra",
+        "حي السلام",
+        "معتمدية حي الخضراء"
+      ],
+      "governorateId": 342,
+      "prayerDelegationId": 390,
+      "appMetadata": {
+        "lat": 36.846773,
+        "lng": 10.186003,
+        "areaKm2": 0.03299503958035913,
+        "bbox": [
+          10.18475,
+          36.845525,
+          10.187639,
+          36.847519
+        ],
+        "pickerGroupId": "osm:way:1363528887"
+      },
+      "osmSource": {
+        "id": "osm:way:1363528887",
+        "tags": {
+          "landuse": "residential",
+          "name": "Cité Essalem",
+          "official_name": "Cité Essalem",
+          "residential": "urban"
+        },
+        "geometryType": "MultiPolygon",
+        "point": null,
+        "tagsSha256": "4602c085e848b5deee39d69948e6056ade6e5f6d3c6324004920cf643e3a9460",
+        "recordSha256": "2fdc0b38f5f4c6e59bed32aa21175f0cd85ee8ec26a7f4987fc160273b537671"
+      },
+      "administrativeContext": {
+        "delegationCode": "1159",
+        "delegationArabic": "حي الخضراء",
+        "sectorCode": "115958",
+        "sectorArabic": "حي السلام",
+        "sectorId": "osm:relation:7201236",
+        "insRegistryRecord": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1159",
+          "delegationFr": "Cite el khadhra",
+          "delegationAr": "حي الخضراء",
+          "sectorCode": "115958",
+          "sectorFr": "Hay es salem",
+          "sectorAr": "حي السلام",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2348,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 73,
+            "Nombre_de_menages_par_Secteurs.xlsx": 73
+          }
+        },
+        "osmSectorSnapshot": {
+          "id": "osm:relation:7201236",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حي السلام",
+            "name:ar": "حي السلام",
+            "name:fr": "Hay Es Salem",
+            "ref:tn:codegeo": "115958"
+          },
+          "tagsSha256": "d4521dc7ea0e5a248b432a892d62302449fa246211cbe51b16c8dfa6747627ac",
+          "recordSha256": "880200bd360558acf133282ff4c719d32f07d904ffe1aa1d6581f199bc4d23c9",
+          "osmGeometryType": "MultiPolygon",
+          "installedCatalogSourceId": "osm"
+        }
+      },
+      "prayerMappingInterpretation": "delegationId 390 resolves to El Menzah in app prayer/meteo settings; the administrative delegation is code 1159 Cité El Khadra and the official sector is 115958 Hay es Salem.",
+      "geometryAudit": {
+        "method": "current packed app geometries projected to UTM 32N for area ratios",
+        "targetAreaKm2": 0.03291500203410428,
+        "parentIntersectionKm2": 0.03291500203410428,
+        "targetOverlapPercent": 100.0,
+        "parentCoversTarget": true,
+        "parentGeometryId": "osm:relation:7201236",
+        "rawOsmTargetAreaKm2": 0.0329050452255192,
+        "rawOsmParentCoversTarget": true,
+        "rawOsmTargetOverlapPercent": 100.0
+      },
+      "classification": "unresolved",
+      "recommendation": "Do not use حي السلام as the primary name for this smaller polygon without evidence that the two identities are the same; keep unresolved.",
+      "reason": "The official INS/OSM sector named حي السلام (code 115958) covers this polygon completely, but the target is only a 0.033 km² landuse=residential subarea without a code or place=neighbourhood tag. Its OSM official_name=Cité Essalem is a community-maintained tag, not independent proof of a distinct official neighborhood. The same Arabic label could refer to the larger sector or to a subarea.",
+      "evidenceGap": "A municipal or other authoritative address/map source naming Cité Essalem as a separate locality and clarifying whether it has an Arabic name distinct from the enclosing حي السلام sector. If it is merely a residential subarea of that sector, retire it as a duplicate picker identity.",
+      "priorEvidence": "Google Maps search showed a housing complex and a residential-area result; neither establishes this polygon boundary or its Arabic name."
+    },
+    {
+      "id": "osm:node:10044670149",
+      "displayName": "Cité el Bank",
+      "aliases": [],
+      "kind": "neighbourhood",
+      "sourceId": "osm",
+      "hasBoundary": false,
+      "parentName": "سيدي عمر",
+      "contextAliases": [
+        "Kram",
+        "Le Kram",
+        "Sidi Amor",
+        "الكرم",
+        "سيدي عمر"
+      ],
+      "governorateId": 342,
+      "prayerDelegationId": 387,
+      "appMetadata": {
+        "lat": 36.8502352,
+        "lng": 10.3083211,
+        "pickerGroupId": "osm:node:10044670149"
+      },
+      "osmSource": {
+        "id": "osm:node:10044670149",
+        "tags": {
+          "name": "Cité el Bank",
+          "place": "neighbourhood"
+        },
+        "geometryType": null,
+        "point": [
+          36.8502352,
+          10.3083211
+        ],
+        "tagsSha256": "76d5d218d8307413121daeee495ae99538ab856c878a9d67bc63c84ab18f0dbc",
+        "recordSha256": "d67b90d492c2e9c78f8482d47f143daf3b31117bb9c27c48ee578b1f5b39f416"
+      },
+      "administrativeContext": {
+        "delegationCode": "1170",
+        "delegationArabic": "الكرم",
+        "sectorCode": "117056",
+        "sectorArabic": "سيدي عمر",
+        "sectorId": "osm:relation:7079355",
+        "insRegistryRecord": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1170",
+          "delegationFr": "Le kram",
+          "delegationAr": "الكرم",
+          "sectorCode": "117056",
+          "sectorFr": "Sidi amor",
+          "sectorAr": "سيدي عمر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5135,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 161,
+            "Nombre_de_menages_par_Secteurs.xlsx": 161
+          }
+        },
+        "osmSectorSnapshot": {
+          "id": "osm:relation:7079355",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي عمر",
+            "name:ar": "سيدي عمر",
+            "name:fr": "Sidi Amor",
+            "ref:tn:codegeo": "117056"
+          },
+          "tagsSha256": "8328e77be10126c92cc7b3fda818cae90c1adfb7ab5f46724ba0612b519bec5f",
+          "recordSha256": "17ad419697a0a3d975806999e869b57fb2a4f6f4fc8c456a85a64638a7116f79",
+          "osmGeometryType": "MultiPolygon",
+          "installedCatalogSourceId": "isie-local-sectors-2023-le-kram"
+        }
+      },
+      "prayerMappingInterpretation": "delegationId 387 resolves to Carthage in the app; administrative location is Le Kram (code 1170), within sector Sidi Amor (117056). Do not treat the prayer delegation as the administrative parent.",
+      "geometryAudit": {
+        "targetIsPoint": true,
+        "hasBoundary": false,
+        "currentPointCoveredBySector": true,
+        "sectorId": "osm:relation:7079355",
+        "sectorOverlapAreaNotApplicable": true
+      },
+      "classification": "unresolved",
+      "recommendation": "Keep the explicit OSM neighbourhood point unresolved as a Latin-only selectable point; do not assign a speculative Arabic spelling.",
+      "reason": "OSM explicitly tags place=neighbourhood and gives a single point, but provides no name:ar and no polygon boundary. INS confirms only the containing official sector Sidi Amor (117056), not Cité el Bank as a separately coded sector. Existing audit shows GPS can resolve only to Sidi Amor at this point.",
+      "evidenceGap": "An Arabic municipality/local-authority name source for Cité el Bank and, if boundary-based GPS is required, a reviewed neighborhood polygon rather than an assumed buffer around this point.",
+      "priorEvidence": "Google Maps name search for Cité el Bank/Le Kram returned bank results; these do not establish an Arabic toponym or boundary. Prior reliability audit row says coverageStatus=sector only and current GPS label سيدي عمر."
+    }
+  ],
+  "overall": "All three are deferred unresolved. This package records insufficient evidence for first-release identity/naming; it does not assert that any locality is false or absent."
+}

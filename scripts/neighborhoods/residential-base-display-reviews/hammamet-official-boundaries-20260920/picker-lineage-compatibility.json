@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_picker_proof_successor",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "previousManifest": {
+    "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/picker-before.json",
+    "sha256": "241997a87947a36123390789d7e95da5bb51f1d81fad3d8a6855ccc4953c0c27"
+  },
+  "changes": [
+    {
+      "section": "residentialDisplayAssociations",
+      "id": "osm:way:234090258",
+      "previousRecord": {
+        "method": "reviewed_source_bound_residential_base_display_identity",
+        "id": "osm:way:234090258",
+        "targetDelegationId": 461,
+        "reviewEvidence": {
+          "file": "residential-base-display-reviews/three-town-review/461-proof.json",
+          "sha256": "c072a241da01f7e4bee2f1549090615489c56b8c166b35c17022c1732ff3481c"
+        }
+      },
+      "activeRecord": {
+        "method": "reviewed_source_bound_residential_base_display_identity",
+        "id": "osm:way:234090258",
+        "targetDelegationId": 461,
+        "reviewEvidence": {
+          "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/461-proof.json",
+          "sha256": "4c8e56b25240eaecbcc8196ba4a956ef9ab3f1b3aa303dd4764c5c64a2498dba"
+        }
+      },
+      "historicalProof": {
+        "file": "residential-base-display-reviews/three-town-review/461-proof.json",
+        "sha256": "c072a241da01f7e4bee2f1549090615489c56b8c166b35c17022c1732ff3481c"
+      },
+      "successorProof": {
+        "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/461-proof.json",
+        "sha256": "4c8e56b25240eaecbcc8196ba4a956ef9ab3f1b3aa303dd4764c5c64a2498dba"
+      }
+    }
+  ],
+  "qualification": "Only the Hammamet461 residential source-review reference changes. Its explicit source-bound successor reviews nine official imada replacements, the northern Yasmine member and the Latrach context alias. All other picker decisions stay identical; source, metadata, geometry and group validators remain mandatory. Southern Yasmine is not merged or administratively certified by this transition."
+}

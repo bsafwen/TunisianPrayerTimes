@@ -42,16 +42,16 @@ class LocalityRepositoryTest {
     }
 
     @Test fun `locality selection persists independently of prayer source`() {
-        val rows = LocalityRepository.loadAll(context).filter { it.delegationId == 394 }
-        val first = rows.first { it.name == "بوشوشة" }
-        val second = rows.first { it.name == "خزندار" }
+        val rows = LocalityRepository.loadAll(context)
+        val first = rows.single { it.id == "osm:relation:7118029" }
+        val second = rows.single { it.id == "osm:relation:7118023" }
         PrefsManager.setLocality(context, first)
         assertEquals(first.id, LocalityRepository.selected(context)?.id)
-        PrefsManager.setDelegationId(context, 394)
+        PrefsManager.setDelegationId(context, first.delegationId)
         assertEquals(first.id, LocalityRepository.selected(context)?.id)
         PrefsManager.setLocality(context, second)
         assertEquals(second.id, LocalityRepository.selected(context)?.id)
-        assertEquals(394, PrefsManager.getDelegationId(context))
+        assertEquals(second.delegationId, PrefsManager.getDelegationId(context))
         PrefsManager.setDelegationId(context, 615)
         assertNull(LocalityRepository.selected(context))
     }
@@ -62,8 +62,165 @@ class LocalityRepositoryTest {
         assertNull(LocalityRepository.selected(context))
     }
 
+    @Test fun `new grouped manual selection keeps its reference and source after reload`() {
+        val sources = GouvernoratRepository.loadAllDelegations(context)
+        val row = LocalityRepository.preparePicker(context, sources).localities
+            .single { it.id == "osm:relation:7201552" }
+        val chosen = requireNotNull(withAvailablePrayerSource(row, sources))
+        assertEquals("osm:node:1143501777", chosen.manualReferenceId)
+        assertEquals(403, chosen.delegationId)
+        PrefsManager.setLocality(context, chosen)
+
+        val saved = PrefsManager.getLocationSelection(context)
+        val restored = requireNotNull(LocalityRepository.manualSelection(
+            context, requireNotNull(saved.localityId), saved.manualReferenceId,
+        ))
+        val repaired = requireNotNull(withAvailablePrayerSource(restored, sources))
+        assertEquals(chosen.id, repaired.id)
+        assertEquals(chosen.lat, repaired.lat)
+        assertEquals(chosen.lng, repaired.lng)
+        assertEquals(chosen.delegationId, repaired.delegationId)
+        assertFalse(saved.fromGps)
+    }
+
+    @Test fun `legacy raw manual selection retains its original reference`() {
+        val raw = requireNotNull(LocalityRepository.manualSelection(context, "osm:relation:7201552"))
+        PrefsManager.setLocality(context, raw)
+        val saved = PrefsManager.getLocationSelection(context)
+        assertNull(saved.manualReferenceId)
+        val restored = requireNotNull(LocalityRepository.manualSelection(
+            context, requireNotNull(saved.localityId), saved.manualReferenceId,
+        ))
+        assertEquals(raw.lat, restored.lat)
+        assertEquals(raw.lng, restored.lng)
+    }
+
+    @Test fun `GPS selection clears a manual reference without changing its prayer source`() {
+        val sources = GouvernoratRepository.loadAllDelegations(context)
+        val row = LocalityRepository.preparePicker(context, sources).localities
+            .single { it.id == "osm:relation:7201552" }
+        PrefsManager.setLocality(context, row)
+        assertNotNull(PrefsManager.getLocationSelection(context).manualReferenceId)
+
+        val source = sources.single { it.id == 403 }
+        PrefsManager.setGpsLocation(context, DelegationLocationResult.Success(source, null))
+        val saved = PrefsManager.getLocationSelection(context)
+        assertTrue(saved.fromGps)
+        assertEquals(403, saved.delegationId)
+        assertNull(saved.localityId)
+        assertNull(saved.manualReferenceId)
+    }
+
     @Test fun `unknown query does not guess a location`() {
         assertTrue(searchLocalities(LocalityRepository.loadAll(context), "zzzznonexistent").isEmpty())
+    }
+
+    @Test fun `Megrine picker has one row per repeated place and keeps Sidi Rezig 2 separate`() {
+        val rows = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        val matches = searchLocalities(rows, "megrine")
+        listOf("مقرين", "جوهرة", "مقرين الرياض", "سيدي رزيق", "سيدي رزيق 2", "منزل مبروك").forEach { name ->
+            assertEquals("Repeated or missing $name", 1, matches.count { it.name == name })
+        }
+        listOf("جوهرة", "مقرين الرياض", "سيدي رزيق").forEach { name ->
+            assertEquals("معتمدية مقرين", matches.single { it.name == name }.parentName)
+        }
+        assertEquals(matches.map { it.id }, searchLocalities(rows, "Mégrine").map { it.id })
+        val expectedNames = setOf("مقرين", "جوهرة", "مقرين الرياض", "سيدي رزيق", "سيدي رزيق 2", "منزل مبروك")
+        val expectedIds = matches.filter { it.name in expectedNames }.map { it.id }.toSet()
+        val arabicMatches = searchLocalities(rows, "مقرين")
+        expectedNames.forEach { name ->
+            assertEquals("Repeated or missing Arabic result $name", 1, arabicMatches.count { it.name == name })
+        }
+        assertEquals(expectedIds, arabicMatches.filter { it.name in expectedNames }.map { it.id }.toSet())
+    }
+
+    @Test fun `both original Megrine polygon selections highlight their single picker row`() {
+        val all = LocalityRepository.loadAll(context)
+        val picker = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        listOf(
+            "osm:relation:7174626" to "osm:way:124689902",
+            "osm:relation:7174613" to "osm:way:103565487",
+        ).forEach { (sectorId, suburbId) ->
+            val row = picker.single { it.id == sectorId }
+            assertTrue(row.representsSelection(sectorId))
+            assertTrue(row.representsSelection(suburbId))
+            assertTrue(all.any { it.id == sectorId && it.hasBoundary })
+            val suburb = all.single { it.id == suburbId && it.hasBoundary }
+            PrefsManager.setLocality(context, suburb)
+            assertEquals(suburbId, LocalityRepository.selected(context)?.id)
+            assertTrue(row.representsSelection(LocalityRepository.selected(context)!!.id))
+        }
+    }
+
+    @Test fun `grouping preserves aliases but never merges unverified homonyms`() {
+        val sector = Locality("sector", "Same name", "Parent", 1, 1, "same name official")
+        val suburb = sector.copy(id = "suburb", searchText = "same name local alias", pickerGroupId = "sector")
+        val separatePlace = sector.copy(id = "elsewhere", searchText = "same name elsewhere")
+        val rows = groupPickerLocalities(listOf(sector, suburb, separatePlace))
+        assertEquals(listOf("sector", "elsewhere"), rows.map { it.id })
+        assertEquals("sector", searchLocalities(rows, "local alias").single().id)
+        assertTrue(rows.first().representsSelection("suburb"))
+        assertFalse(rows.last().representsSelection("suburb"))
+    }
+
+    @Test fun `Mahdia namesake imadas select their sectors without duplicate delegation rows`() {
+        val all = LocalityRepository.loadAll(context)
+        val sources = GouvernoratRepository.loadAllDelegations(context)
+        val picker = LocalityRepository.loadAvailable(context, sources)
+        listOf(
+            Triple("osm:relation:7152189", "delegation:429", "شربان"),
+            Triple("osm:relation:7152235", "delegation:430", "هبيرة"),
+            Triple("osm:relation:7152253", "delegation:428", "السواسي"),
+        ).forEach { (sectorId, delegationId, name) ->
+            val row = picker.single { it.id == sectorId }
+            assertEquals(name, row.name)
+            assertEquals("sector", row.kind)
+            assertTrue(row.hasBoundary)
+            assertEquals(1, picker.count { it.governorateId == 345 && it.name == name })
+            assertTrue(row.representsSelection(delegationId))
+            val savedDelegation = LocalityRepository.manualSelection(context, delegationId)!!
+            assertEquals(delegationId, savedDelegation.id)
+            assertEquals(
+                withAvailablePrayerSource(savedDelegation, sources)?.delegationId,
+                withAvailablePrayerSource(row, sources)?.delegationId,
+            )
+        }
+        val sectorIds = all.filter { it.kind == "sector" }.mapTo(mutableSetOf()) { it.id }
+        assertEquals(sectorIds, picker.filter { it.kind == "sector" }.mapTo(mutableSetOf()) { it.id })
+        assertEquals(sectorIds.size, picker.count { it.id in sectorIds })
+    }
+
+    @Test fun `different sector and delegation names remain separate choices`() {
+        val picker = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        val sector = picker.single { it.id == "osm:relation:7095862" }
+        val delegation = picker.single { it.id == "delegation:553" }
+        assertEquals("وادي الليل", sector.name)
+        assertEquals("واد الليل", delegation.name)
+        assertFalse(delegation.representsSelection(sector.id))
+    }
+
+    @Test fun `namesake village and suburb groups keep official sector IDs`() {
+        val picker = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        listOf(
+            Triple("osm:relation:7095859", "osm:way:456466522", "القباعة"),
+            Triple("osm:relation:7201552", "osm:node:1143501777", "الملاسين"),
+        ).forEach { (sectorId, oldPointId, name) ->
+            val row = picker.single { it.id == sectorId }
+            assertEquals(name, row.name)
+            assertEquals("sector", row.kind)
+            assertTrue(row.representsSelection(oldPointId))
+            assertFalse(picker.any { it.id == oldPointId })
+        }
+    }
+
+    @Test fun `nearest timetable name does not make a place part of its delegation in search`() {
+        val source = Delegation(id = 1, nomAr = "مصدر قريب", nomFr = "Nearby source", nomEn = "Nearby source", lat = 36.8, lng = 10.1)
+        val governor = Gouvernorat(id = 1, nomAr = "ولاية", nomFr = "Governorate", nomEn = "Governorate", delegations = listOf(source))
+        val place = Locality("test", "Actual place", "Actual parent", 1, 1, "actual place actual parent", lat = 36.8, lng = 10.1)
+        val rows = enrichLocalityCatalog(listOf(place), listOf(governor))
+        assertTrue(searchLocalities(rows, "Nearby source").isEmpty())
+        assertEquals(place.id, searchLocalities(rows, "Actual parent").single().id)
+        assertEquals(1, withAvailablePrayerSource(rows.single(), listOf(source))?.delegationId)
     }
 
     @Test fun `manual place uses nearest available source regardless of its stored parent`() {
@@ -159,7 +316,11 @@ class LocalityRepositoryTest {
         val invalidSources = sources.map { it.copy(lat = 0.0, lng = 0.0) }
         val unavailable = LocalityRepository.loadAvailable(context, invalidSources)
         assertTrue(unavailable.all { it.lat == null && it.lng == null })
-        assertEquals(sources.size, unavailable.size)
+        // Timetable references merged into coordinate-bearing places are
+        // unavailable when every coordinate source is unusable. The remaining
+        // direct source retains its identity and survives input reordering.
+        assertEquals(listOf("delegation:387"), unavailable.map { it.id })
+        assertSame(unavailable, LocalityRepository.loadAvailable(context, invalidSources.reversed()))
         assertEquals(catalog, LocalityRepository.loadAvailable(context, sources))
         assertTrue(LocalityRepository.loadAvailable(context, emptyList()).isEmpty())
     }

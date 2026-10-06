@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_SOURCE_QUALIFIED_EXACT_TRAINING_CENTRE_EXCLUSION",
+  "reviewedAt": "2026-09-12T15:01:41.544376+00:00",
+  "baselineMetadataSha256": "5091eeda71d0faf75219e2cef90b157f5269e2872239ba76ee78def137e4273d",
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "5091eeda71d0faf75219e2cef90b157f5269e2872239ba76ee78def137e4273d",
+      "bytes": 1882313
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "239baa9b42e283c2c45d6c82e3235dff42992212777dbc3505907eb1066f7c7d",
+      "bytes": 5501324
+    },
+    "tiny": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/retired-localities.json",
+      "sha256": "9e01a2bcbb073cf560ee98335124f1d5769e0041978a347409f699212e5f1611",
+      "bytes": 8708
+    },
+    "governors": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "9876cff3f813c9cf7ee7c186cd02f41bc495653188ce1fddb281a3cb8f7b63b5",
+      "bytes": 287544
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+      "bytes": 555201
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "c0e9bc39972e52b5cf3741c7f20b9c6df50a13d01f3501884e1abead575bd0fc",
+      "bytes": 899265
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+      "bytes": 543279
+    },
+    "cache": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "nameAudit": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/current-picker-name-audit.json",
+      "sha256": "b1ff4319d189cc3322991df063995358fa3060c8e66d2ac144bfd83fd46661d9",
+      "bytes": 115118
+    },
+    "prefs": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/PrefsManager.kt",
+      "sha256": "91ca89263e11f86913e186b95a9f1629365742ba1ce4d5523e6b271df354505f",
+      "bytes": 23162
+    },
+    "gpsResolver": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/DelegationLocator.kt",
+      "sha256": "08b0e71b6ea14a071a6928d71138d32785d563904f61f33e13627e545dd68609",
+      "bytes": 19321
+    }
+  },
+  "sourceAuthorReport": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/ras-tabia-training-centre-source-scope-review.json",
+    "sha256": "7527a9dc586ec42232277f7ec3e8a2c9c5fd8475a17632260baf70f9637e9fe3",
+    "bytes": 9388
+  },
+  "sourceAuthorFactsIndependentlyReconstructed": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/exact-source-finite-facts.json",
+    "sha256": "aae9d81ef8d2b001756e9d3dc1b59a04a8cb3012a0cb3c0c4f996c0a0cd78da4",
+    "bytes": 39721
+  },
+  "retrievals": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/retrievals.json",
+    "sha256": "3c58800b660190d5d7b67d05d226da3e3989a5a0881868b9a151de6141d026c9",
+    "bytes": 4751
+  },
+  "currentRawRecord": {
+    "id": "osm:way:499554192",
+    "sourceId": "osm",
+    "name": "مركز التدريب القطاعي ملابس تونس",
+    "aliases": [
+      "Center Sectorial Training Clothing De Tunis"
+    ],
+    "kind": "residential",
+    "parentName": "رأس الطابية",
+    "contextAliases": [
+      "Délégation El Omrane",
+      "El Omrane",
+      "Ras Tabia",
+      "رأس الطابية",
+      "معتمدية العمران"
+    ],
+    "governorateId": 342,
+    "lat": 36.819996,
+    "lng": 10.140355,
+    "delegationId": 393,
+    "hasBoundary": true,
+    "bbox": [
+      10.139765,
+      36.819532,
+      10.141256,
+      36.820435
+    ],
+    "areaKm2": 0.006598054528889894,
+    "pickerGroupId": "osm:way:499554192",
+    "offset": 5410384,
+    "length": 76
+  },
+  "currentRawRecordSha256": "87443e18ee99c8fbdc14a1c0297a15bb688f26d0b8a7feacb3bad97e7d2e25b0",
+  "sourceCacheRecord": {
+    "id": "osm:way:499554192",
+    "tags": {
+      "addr:city": "تونس",
+      "addr:city:ar": "تونس",
+      "addr:postcode": "2000",
+      "landuse": "residential",
+      "name": "مركز التدريب القطاعي ملابس تونس",
+      "name:ar": "مركز التدريب القطاعي ملابس تونس",
+      "name:en": "Center Sectorial Training Clothing De Tunis"
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              10.1397653,
+              36.820119
+            ],
+            [
+              10.1404265,
+              36.8195682
+            ],
+            [
+              10.1405378,
+              36.8195317
+            ],
+            [
+              10.1412556,
+              36.8197211
+            ],
+            [
+              10.1411687,
+              36.8200469
+            ],
+            [
+              10.1408525,
+              36.8199452
+            ],
+            [
+              10.1403171,
+              36.8204345
+            ],
+            [
+              10.1397653,
+              36.820119
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "authenticOsmEvidence": {
+    "responses": {
+      "current": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/way-499554192-current.json",
+        "sha256": "56def09632be7325530ca3e946b04ddc9e4e42beefd808fa8c224f200516ce24",
+        "bytes": 793
+      },
+      "history": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/way-499554192-history.json",
+        "sha256": "d9045db90e81f1ad09da77ad4f42ed37601b00dc5764035851f730afd912185b",
+        "bytes": 1646
+      },
+      "full": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/way-499554192-full.json",
+        "sha256": "aea29da404a98515d5683dd005680ba8ef645633f927140781cc415cd6ff7b1d",
+        "bytes": 1975
+      }
+    },
+    "currentFullAndLastHistoryExactlyEqual": true,
+    "currentSourceTagsEqualCache": true,
+    "currentVersion": 3,
+    "historyVersions": 3,
+    "sourceHistory": [
+      {
+        "version": 1,
+        "timestamp": "2017-06-10T22:34:32Z",
+        "changeset": 49430333,
+        "tags": {
+          "addr:city": "Tunis",
+          "addr:postcode": "2000",
+          "landuse": "residential",
+          "name": "Center Sectorial Training Clothing De Tunis"
+        }
+      },
+      {
+        "version": 2,
+        "timestamp": "2018-01-12T11:43:31Z",
+        "changeset": 55377539,
+        "tags": {
+          "addr:city": "تونس",
+          "addr:postcode": "2000",
+          "landuse": "residential",
+          "name": "مركز التدريب القطاعي ملابس تونس",
+          "name:ar": "مركز التدريب القطاعي ملابس تونس",
+          "name:en": "Center Sectorial Training Clothing De Tunis"
+        }
+      },
+      {
+        "version": 3,
+        "timestamp": "2020-12-06T16:29:14Z",
+        "changeset": 95372525,
+        "tags": {
+          "addr:city": "تونس",
+          "addr:city:ar": "تونس",
+          "addr:postcode": "2000",
+          "landuse": "residential",
+          "name": "مركز التدريب القطاعي ملابس تونس",
+          "name:ar": "مركز التدريب القطاعي ملابس تونس",
+          "name:en": "Center Sectorial Training Clothing De Tunis"
+        }
+      }
+    ],
+    "fullWayRingReconstructedIndependentlyFromOriginalNodeSequence": true,
+    "publicRingEqualsCacheGeometry": true,
+    "sourceSymmetricDifferenceSquareDegrees": 0.0,
+    "packedGeometrySha256": "75b40cb0405895c131d00861ccc800ab2b66e72f62ab6f565bd18d693ecd55be",
+    "packedBytes": 76
+  },
+  "originalPrimaryPdfReview": {
+    "source": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/world-bank-274980TN.pdf",
+      "sha256": "fe8dcec2d00566c0f30fef80b46a4ecb629d1604dd61099b303b0b19f5d27613",
+      "bytes": 149974
+    },
+    "url": "https://documents1.worldbank.org/curated/en/906961468761397662/pdf/274980TN.pdf",
+    "derivedTextProvenance": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/world-bank-derived-page-provenance.json",
+      "sha256": "c6f0b0db64707a275ddbf40d8c2c412387c1c2ca7a370f7af586b2d79a754dd9",
+      "bytes": 4575
+    },
+    "allFourCompletePageTextsIndependentlyReproduced": [
+      {
+        "physicalPage": 1,
+        "derivedText": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/world-bank-page-1.txt",
+          "sha256": "34a2c3e141611371a9ae55bfc3c7b6230dcb76cfa6c7626e85308252d50af59e",
+          "bytes": 484
+        },
+        "originalCompletePageReproducedExactly": true
+      },
+      {
+        "physicalPage": 27,
+        "derivedText": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/world-bank-page-27.txt",
+          "sha256": "79382c2378921cb40306b782b67fde164abd9eb2565eede23bfa3dea321c3836",
+          "bytes": 771
+        },
+        "originalCompletePageReproducedExactly": true
+      },
+      {
+        "physicalPage": 33,
+        "derivedText": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/world-bank-page-33.txt",
+          "sha256": "4291b6f859a57a4043451b5efe4465601ff355866657c8c622c27fe52cf456f9",
+          "bytes": 2464
+        },
+        "originalCompletePageReproducedExactly": true
+      },
+      {
+        "physicalPage": 34,
+        "derivedText": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ras-tabia-training-centre-source-review/world-bank-page-34.txt",
+          "sha256": "f5ffd656a2bfc3a6b0d20b38202039776d2f0ed8a2731095938c1c66d6fb0da6",
+          "bytes": 3187
+        },
+        "originalCompletePageReproducedExactly": true
+      }
+    ],
+    "document": "World Bank report27498, Implementation Completion Report for the Second Training and Employment Project, Republic of Tunisia,23December2003.",
+    "personalVisualReview": "Independently rendered the original PDF with PyMuPDF at1.5x and viewed every complete physical page1/27/33/34; no source-author renderer/helper imported.",
+    "pages": [
+      {
+        "physicalPage": 1,
+        "finding": "Cover establishes report identity and23December2003 date."
+      },
+      {
+        "physicalPage": 27,
+        "printedPage": 23,
+        "finding": "AdditionalAnnex8 is explicitly the Borrower Report; attribution is to the project borrower annex reproduced in the World Bank completion report."
+      },
+      {
+        "physicalPage": 33,
+        "printedPage": 29,
+        "table": 3,
+        "finding": "Habillement RasTabiaTunis is listed among training centres created by the project; entry into operation December2001,537learners,97in-company learners, planned capacity840 and potential capacity1142.",
+        "footnoteQualification": "Capacity840 uses25percent alternance;1142 is a scenario using70percent alternance. These are historical training-capacity figures, not population or present occupancy."
+      },
+      {
+        "physicalPage": 34,
+        "printedPage": 30,
+        "table": 4,
+        "finding": "The same centre appears under new centres with840additional and840total training capacity. The residential-equivalent discussion is a training-mode calculation and cannot establish residential-neighborhood identity."
+      }
+    ],
+    "scope": "Primary historical institution identity in RasTabia; no present operating status, street-address certificate, parcel boundary or coordinate certification is claimed."
+  },
+  "currentEpochCarry": {
+    "oldSnapshot": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/before-institutional-two-exclusion-20260912/repo/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "558c204bf93b595d340d75102848f25c8321e3117150bcb809874901b2a181b2",
+      "bytes": 1883620
+    },
+    "oldOffset": 5410468,
+    "currentOffset": 5410384,
+    "allOtherTargetFieldsExactlyUnchanged": true,
+    "samePackedGeometrySha256": "75b40cb0405895c131d00861ccc800ab2b66e72f62ab6f565bd18d693ecd55be",
+    "reason": "SOS exclusion before this polygon shortened earlier packed bytes by84; the later monastery exclusion did not affect this offset."
+  },
+  "finiteImpact": {
+    "currentGroupMembers": [
+      "osm:way:499554192"
+    ],
+    "newlySurfacedCachedLocalityPoints": [],
+    "allCachedLocalityPointsCoveredBySourceOrPacked": [],
+    "otherRawRepresentativePointsCovered": [],
+    "currentConflicts": [],
+    "currentCurationApplications": [],
+    "directCurationPickerBoundarySelectors": [],
+    "alreadyRetiredOrReplaced": false,
+    "wholeFootprintRemainingContainer": {
+      "raw": {
+        "id": "osm:relation:7201481",
+        "sourceId": "osm",
+        "name": "رأس الطابية",
+        "aliases": [
+          "Ras Tabia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العمران",
+        "contextAliases": [
+          "Délégation El Omrane",
+          "El Omrane",
+          "معتمدية العمران"
+        ],
+        "governorateId": 342,
+        "lat": 36.820068,
+        "lng": 10.145248,
+        "delegationId": 391,
+        "hasBoundary": true,
+        "bbox": [
+          10.138212,
+          36.813249,
+          10.154027,
+          36.826857
+        ],
+        "areaKm2": 1.0295925780221795,
+        "pickerGroupId": "osm:relation:7201481",
+        "offset": 5091608,
+        "length": 596
+      },
+      "rawSha256": "e66b914971351323440a8e08c90ed025cbd7af92fd99fc33d98270927dcc44b3",
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "رأس الطابية",
+        "name:ar": "رأس الطابية",
+        "name:fr": "Ras Tabia",
+        "ref:tn:codegeo": "115554"
+      },
+      "packedGeometrySha256": "b3d3527c53785cdcaaf0eb754e68a14aeffa27a2282fd5710c3dc5dd26133d49"
+    },
+    "uncoveredCurrentFootprintAfterExclusionSquareDegrees": 0.0,
+    "newlySurfacedAliasesOrAbsorbedPointIds": []
+  },
+  "projectedCountsForOneExactExcludeDecision": {
+    "rawRecords": [
+      3621,
+      3620
+    ],
+    "polygons": [
+      2717,
+      2716
+    ],
+    "points": [
+      904,
+      904
+    ],
+    "rawPickerGroups": [
+      3485,
+      3484
+    ],
+    "pickerRows": [
+      3548,
+      3547
+    ],
+    "curations": [
+      173,
+      174
+    ],
+    "curationApplications": [
+      360,
+      360
+    ],
+    "retiredIds": [
+      26,
+      27
+    ],
+    "conflicts": [
+      318,
+      318
+    ],
+    "duplicateGroupReports": [
+      308,
+      308
+    ],
+    "reviewedSavedNames": [
+      105,
+      105
+    ],
+    "savedReplacements": [
+      1,
+      1
+    ],
+    "binaryBytesRemoved": 76
+  },
+  "recommendation": "Append one exact499554192 exclude decision with full current source tags/expected residential kind and this specific source evidence. It removes a named institutional property from a locality picker; it does not reclassify all residential land use or all training-centre accommodation.",
+  "preservation": "Preserve all173 previous curations and all360 receipts/order; all other metadata values and polygon bytes remain exact apart from mechanical offsets/cell indices/country offset. Retire exactly499554192 without a replacement; retain RasTabia7201481 and all current source/provider/group proofs. Historical reports/full-catalog snapshots mentioning the old row remain historical, unchanged.",
+  "savedAndGpsEffects": "Existing tiny-index cleanup makes a saved retired property return no localityId/name/kind while preserving its saved prayer delegation and GPS flag. GPS lookup after exclusion can display RasTabia but resolves prayer times from the actual fix. The sector representative default391 must not replace the training-centre default393 or a user actual-fix nearest source; no coordinates/defaults are being corrected.",
+  "phoneCorroboration": {
+    "report": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/institutional-phone-scope-review-20260912.json",
+      "sha256": "daf69b0cb06f6fe8fff7194a5ed7f591def27b6a9e64257bbfb12cca08b9a7df",
+      "bytes": 5446
+    },
+    "finding": "Building card 1 Rue de Fes lists the clothing sector vocational training centre as a training institution. Supports institutional context, without certifying footprint vertices or current jurisdiction.",
+    "qualification": "Only the root frozen phone review was read; no phone or screenshot was accessed by this reviewer. The1RueFes building/card corroborates an institution and does not certify the whole polygon."
+  },
+  "qualification": "The combined historical primary training identity, stable exact named OSM property/current-full geometry and qualified root site observation support this exact institutional exclusion. Authoritative current operations/address and legal parcel extent remain unverified; no polygon certification is implied.",
+  "execution": {
+    "productImports": false,
+    "generatorTestsBuilds": false,
+    "liveOrSourceEdits": false,
+    "phoneOrLedgerAccess": false,
+    "newNetworkRetrieval": false
+  }
+}

@@ -1,0 +1,26 @@
+.gradle/
+**/.gradle/
+**/.idea/
+**/.kotlin/
+**/build/
+
+# Build artifacts
+*.apk
+*.aab
+*.jks
+*.keystore
+*.hprof
+hs_err_pid*.log
+replay_pid*.log
+
+# Module local state
+android-app/local.properties
+multiplatform/local.properties
+tv-app/local.properties
+qaloon-app/local.properties
+
+# Generated Android folders
+android-app/keystore.properties
+multiplatform/keystore.properties
+tv-app/keystore.properties
+qaloon-app/keystore.properties

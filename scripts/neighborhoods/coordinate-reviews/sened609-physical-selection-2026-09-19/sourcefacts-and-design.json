@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_AND_NUMERIC_REVIEW_FOR_ISOLATED_GENERATION",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "2b060e0f598ecbec6680d929f97352f2dedb5e9db172258df0abab17e79d290d",
+  "priorCoordinateManifest": {
+    "file": "coordinate-reviews/sened609-physical-selection-2026-09-19/before-prayer-source-coordinates.json",
+    "sha256": "f69e15011dfc2fa2dd2436134e9351bda80c21fab6919b0e20a18fab952f0f3e"
+  },
+  "priorGovernorAsset": {
+    "file": "coordinate-reviews/sened609-physical-selection-2026-09-19/before-gouvernorats.json",
+    "sha256": "7bbec58ccdad296eff14653ec55db760e8d9b29e6cc55fa20254b32cc2eaed20"
+  },
+  "freshSourceComparison": {
+    "file": "coordinate-reviews/sened609-physical-selection-2026-09-19/original-and-fresh-node-comparison.json",
+    "sha256": "04b292eeeaded6bb2cfd470363598288740c7876bc6302f362a2163abf0b3892"
+  },
+  "qualifiedPhoneReview": {
+    "file": "coordinate-reviews/sened609-physical-selection-2026-09-19/qualified-phone-review.json",
+    "sha256": "e42eacf220c83f3adf33a7734668e70a41002d8da46334b37d285afb63d7264b"
+  },
+  "counterfactual": {
+    "file": "coordinate-reviews/sened609-physical-selection-2026-09-19/full-catalog-counterfactual.json",
+    "sha256": "89d47c452d4d8ececfbdac12b490cf46713fa3a1db5c67d68a53ff80a36538fd"
+  },
+  "exactInstalledRawFieldChanges": [
+    {
+      "id": "osm:relation:7150211",
+      "field": "delegationId",
+      "before": 609,
+      "after": 612
+    },
+    {
+      "id": "osm:relation:7150239",
+      "field": "delegationId",
+      "before": 509,
+      "after": 609
+    },
+    {
+      "id": "osm:relation:7169625",
+      "field": "delegationId",
+      "before": 510,
+      "after": 609
+    },
+    {
+      "id": "osm:way:285155889",
+      "field": "delegationId",
+      "before": 609,
+      "after": 612
+    },
+    {
+      "id": "osm:node:10008679396",
+      "field": "delegationId",
+      "before": 609,
+      "after": 510
+    },
+    {
+      "id": "osm:node:10008679398",
+      "field": "delegationId",
+      "before": 609,
+      "after": 612
+    }
+  ],
+  "targetSourcePoints": {
+    "609": {
+      "lat": 34.540278,
+      "lng": 9.2513281
+    }
+  },
+  "preservation": "Only six installed raw delegationId fields change; the two source609 lat/lng changes are in the separate governorate asset. All raw IDs, polygon bytes, grouping, display names and saved names remain exact.",
+  "qualification": "Phone cards establish place context only. The original OSM node 2178146164 provides the physical Sened selection coordinate. Published INM coordinates remain archived, not asserted to be the physical settlement centre. Hichria reference 1522 is not part of this batch."
+}

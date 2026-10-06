@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-09-24T13:26:41Z",
+  "termsUrl": "https://www.isie.tn/tos",
+  "termsPageSha256": "3921e957275fa4d8c053d30eabfab89fdeda0ad52ce25378fece4e0dd31d670d",
+  "termsPageLastUpdated": "September 2026",
+  "relevantArticles": [1, 2, 3, 4, 5, 8],
+  "assessment": "The ISIE terms permit free copying, adaptation, transformation, and inclusion of ISIE-owned published content in applications, including commercial applications. Attribution is recommended but optional, and is not required for official documents. Modified geometry must not be represented as an official ISIE document or as endorsed by ISIE. The terms do not license content owned by third parties, and may change.",
+  "boundaryReuseDecision": "Proceed with a best-effort vector extracted from the labeled ISIE map boundary. The reviewed ISIE PDFs visibly contain a Google basemap credited © 2023 Google; do not copy that raster basemap or other third-party imagery into app assets. Record the map PDF and extraction evidence internally; do not add user-facing credits solely for these terms.",
+  "uncertainty": "The terms do not establish that every layer embedded in each PDF belongs to ISIE or that an electoral-circle outline is a surveyed current legal imada boundary. Check the specific extracted vector and retain the best-effort label."
+}

@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 12:24:25 GMT
+Server: Apache
+Set-Cookie: PORTAILKF=u72kv7q82cec3aee89qo0i4r32; path=/; secure; HttpOnly
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: csrfToken=a33a59f33d99c9409f2dc69357516d21f6a0ebb0c3e5c127803a16b2475ad321ded4c17ed66de6a473fd113e38b270caf4d3edebce793d67f6ed3bf031f0bdfb; path=/
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Type: text/html; charset=UTF-8
+Set-Cookie: cookiesession1=678A8C3234738B7D618E2C290E0436DF;Expires=Sun, 12 Sep 2027 12:28:07 GMT;Path=/;HttpOnly
+Content-Length: 14710
+

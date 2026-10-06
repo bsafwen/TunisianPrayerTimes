@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "sourceReport": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "sourceReviewRecordSelector": [
+    "sourceRecords",
+    1
+  ],
+  "originalResponseRefs": {
+    "current": {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-current.json",
+      "sha256": "e1754be7c3da529217123e453347be5f002b65df205c8f6f7676664624d32c87"
+    },
+    "history": {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-history.json",
+      "sha256": "b17d13e9ab2dd83338ecd6e541d39f0bc12a77d8cd9e0a365c2f1105e1f10c54"
+    },
+    "full": {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-full.json",
+      "sha256": "9eec413e62e05432b077237395d19a57c9ba3c2b19cbcc80c7108d33f1df2d62"
+    }
+  },
+  "originalRetrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\retrieval-manifest.json",
+      "sha256": "89e171faf61a1a85a331966a48f527928df04f238061c5f4116dfe61ea54a740",
+      "bytes": 22145
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\supplement-retrieval-manifest.json",
+      "sha256": "6107b8ce17b58890b8600cd83fd0e706adf0a9fb92da35e8dc2078b5b684768d",
+      "bytes": 11826
+    }
+  ],
+  "exactSourceVersion": {
+    "type": "way",
+    "id": 43944790,
+    "version": 5,
+    "timestamp": "2022-06-09T19:02:29Z",
+    "changeset": 122179847,
+    "tags": {
+      "landuse": "residential",
+      "name": "سيدي الهاني",
+      "name:ar": "سيدي الهاني"
+    }
+  },
+  "sourceGeometryParity": {
+    "method": "Construct Polygon from authentic full response ordered way node references and exact lon/lat values; assert cached source is a single-component MultiPolygon without holes, then compare its single Polygon using Shapely normalize().equals_exact(...,0) plus complete topology equality. No rounding, simplification, clipping, coordinate replacement or product helper.",
+    "shapelyVersion": "2.1.2",
+    "exactAfterRingNormalization": true,
+    "topologicallyEqual": true,
+    "valid": true,
+    "sourceBounds": [
+      10.3027077,
+      35.676573,
+      10.3202238,
+      35.6855144
+    ],
+    "originalGeometrySha256": "6e6065ecfd090b2b5f1ceaae814323e0668490097139cee70b80ef047b555b81"
+  },
+  "copiedEvidence": [
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-43944790-current.json",
+        "sha256": "e1754be7c3da529217123e453347be5f002b65df205c8f6f7676664624d32c87"
+      },
+      "stagedRelative": "scripts/neighborhoods/residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-current.json",
+      "sha256": "e1754be7c3da529217123e453347be5f002b65df205c8f6f7676664624d32c87",
+      "bytes": 1074,
+      "method": "Exact original bytes copied without rewriting."
+    },
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-43944790-history.json",
+        "sha256": "b17d13e9ab2dd83338ecd6e541d39f0bc12a77d8cd9e0a365c2f1105e1f10c54"
+      },
+      "stagedRelative": "scripts/neighborhoods/residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-history.json",
+      "sha256": "b17d13e9ab2dd83338ecd6e541d39f0bc12a77d8cd9e0a365c2f1105e1f10c54",
+      "bytes": 3078,
+      "method": "Exact original bytes copied without rewriting."
+    },
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-43944790-full.json",
+        "sha256": "9eec413e62e05432b077237395d19a57c9ba3c2b19cbcc80c7108d33f1df2d62"
+      },
+      "stagedRelative": "scripts/neighborhoods/residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-full.json",
+      "sha256": "9eec413e62e05432b077237395d19a57c9ba3c2b19cbcc80c7108d33f1df2d62",
+      "bytes": 9479,
+      "method": "Exact original bytes copied without rewriting."
+    }
+  ],
+  "qualification": "These are copied authentic way current/history/full responses. Historical source report paths stay unchanged. The separate absorbed village point remains evidence from the pinned source extraction; no converted or fabricated public node response is supplied."
+}

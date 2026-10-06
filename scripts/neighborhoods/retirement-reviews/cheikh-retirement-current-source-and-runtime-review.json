@@ -1,0 +1,2079 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_REDUNDANCY_SUPPORTED_BUT_RETIREMENT_ONLY_NOT_A_COMPLETE_GPS_FIX",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "378899b486efa44f93cd07ed9ee558529cb7bad11165a52cbe6e860b3e7edddc",
+    "bytes": 1841527
+  },
+  "baselineGeometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "8c0a2f48c73e927ea357c0f7696e33ff91d38587a1649e071d80cc0dca801ad2",
+    "bytes": 5497748
+  },
+  "sourceEvidence": {
+    "freshPbfFacts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\cheikh-retirement-current-review\\direct-pbf-source-facts.json",
+      "sha256": "5bc6bfb074a533f8b389b15bdd52744637bb992bf67e6517d17588f53cd0a396",
+      "bytes": 6071
+    },
+    "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "cache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "frozenRetirementProposal": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bizerte-uncoded-cheikh-retirement-proposal.json",
+      "sha256": "039ebd05c83dc69749a66d7d47b98567dc17f95d16a4d701988024896fcdab4e",
+      "bytes": 4082
+    },
+    "frozenCloneDiagnosis": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bizerte-medina-cheikh-source-clone-diagnosis.json",
+      "sha256": "c1ac9235a969f8c5717e5bf7f3ba6e21c76d071c5a98351575e96d2624d15cae",
+      "bytes": 30294
+    },
+    "officialRegistry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "candidatePackage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bizerte-three-review-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+      "bytes": 118572
+    },
+    "officialPdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-cheikh-idris\\cheikh-idris.pdf",
+      "sha256": "02256a2b0f869788dae9d36c456caa3b8b4da02ea16a9dc4ac6fe6f3993c0130",
+      "bytes": 1698442
+    },
+    "officialMapRender": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-cheikh-idris\\cheikh-idris.png",
+      "sha256": "4cb09fa15773e47e7eea37bf59a585319e0a914441bea3ee92b916c831ebd729",
+      "bytes": 3439832
+    },
+    "decree": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "bytes": 10636520
+    },
+    "decreeRender": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-29.png",
+      "sha256": "8992306a876a31161bc60c727997c48397127470199ce2b81273bd8c841625c4",
+      "bytes": 298750
+    }
+  },
+  "sourceIdentity": {
+    "retiredId": "osm:relation:7152490",
+    "replacementId": "osm:relation:7118632",
+    "officialRecord": {
+      "governorateCode": "17",
+      "governorateFr": "Bizerte",
+      "governorateAr": "بنزرت",
+      "delegationCode": "1751",
+      "delegationFr": "Bizerte nord",
+      "delegationAr": "بنزرت الشمالية",
+      "sectorCode": "175155",
+      "sectorFr": "Cheikh Driss",
+      "sectorAr": "الشيخ إدريس",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16558,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 710,
+        "Nombre_de_menages_par_Secteurs.xlsx": 709
+      }
+    },
+    "allRawCodeClaims": {
+      "175160": [
+        "osm:relation:7118630"
+      ],
+      "175154": [
+        "osm:relation:7118631"
+      ],
+      "175155": [
+        "osm:relation:7118632"
+      ]
+    },
+    "rawFactsMatchExistingExtractedSource": true,
+    "uncodedCheikhAndCodedMedinaOriginalGeometryDictionariesIdentical": true,
+    "uncodedCheikhAndCodedMedinaPackedBytesIdentical": true,
+    "sourceTags": {
+      "osm:relation:7118630": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المؤتمر",
+        "name:ar": "المؤتمر",
+        "name:fr": "El Mootamar",
+        "ref:tn:codegeo": "175160"
+      },
+      "osm:relation:7118631": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المدينة",
+        "name:ar": "المدينة",
+        "name:fr": "El Medina",
+        "ref:tn:codegeo": "175154"
+      },
+      "osm:relation:7118632": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الشيخ ادريس",
+        "name:ar": "الشيخ ادريس",
+        "name:fr": "Cheikh Dris",
+        "ref:tn:codegeo": "175155"
+      },
+      "osm:relation:7152490": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "loc_name": "الشيخ ادريس",
+        "loc_name:ar": "الشيخ ادريس",
+        "name": "الشيخ إدريس",
+        "name:ar": "الشيخ إدريس",
+        "name:fr": "Cheikh Dris"
+      }
+    },
+    "currentFeatures": {
+      "osm:relation:7118632": {
+        "id": "osm:relation:7118632",
+        "sourceId": "osm",
+        "name": "الشيخ ادريس",
+        "aliases": [
+          "Cheikh Dris"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بنزرت الشمالية",
+        "contextAliases": [
+          "Delegación de Bizerta Norte",
+          "Délégation Bizerte Nord",
+          "معتمدية بنزرت الشمالية"
+        ],
+        "governorateId": 361,
+        "lat": 37.274933,
+        "lng": 9.859211,
+        "delegationId": 634,
+        "hasBoundary": true,
+        "bbox": [
+          9.855046,
+          37.266843,
+          9.869246,
+          37.283315
+        ],
+        "areaKm2": 1.0855583941499596,
+        "pickerGroupId": "osm:relation:7118632",
+        "offset": 985972,
+        "length": 244
+      },
+      "osm:relation:7152490": {
+        "id": "osm:relation:7152490",
+        "sourceId": "osm",
+        "name": "الشيخ إدريس",
+        "aliases": [
+          "Cheikh Dris",
+          "الشيخ ادريس"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بنزرت الشمالية",
+        "contextAliases": [
+          "Delegación de Bizerta Norte",
+          "Délégation Bizerte Nord",
+          "معتمدية بنزرت الشمالية"
+        ],
+        "governorateId": 361,
+        "lat": 37.274271,
+        "lng": 9.871494,
+        "delegationId": 634,
+        "hasBoundary": true,
+        "bbox": [
+          9.869684,
+          37.272,
+          9.873568,
+          37.276465
+        ],
+        "areaKm2": 0.1121431583697665,
+        "pickerGroupId": "osm:relation:7152490",
+        "offset": 3109772,
+        "length": 84
+      },
+      "osm:relation:7118631": {
+        "id": "osm:relation:7118631",
+        "sourceId": "osm",
+        "name": "المدينة",
+        "aliases": [
+          "El Medina"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بنزرت الشمالية",
+        "contextAliases": [
+          "Delegación de Bizerta Norte",
+          "Délégation Bizerte Nord",
+          "معتمدية بنزرت الشمالية"
+        ],
+        "governorateId": 361,
+        "lat": 37.274271,
+        "lng": 9.871494,
+        "delegationId": 634,
+        "hasBoundary": true,
+        "bbox": [
+          9.869684,
+          37.272,
+          9.873568,
+          37.276465
+        ],
+        "areaKm2": 0.1121431583697665,
+        "pickerGroupId": "osm:relation:7118631",
+        "offset": 985888,
+        "length": 84
+      }
+    },
+    "currentWholePickerGroups": {
+      "osm:relation:7118632": [
+        "osm:relation:7118632"
+      ],
+      "osm:relation:7152490": [
+        "osm:relation:7152490"
+      ]
+    },
+    "officialScope": {
+      "sourceURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+      "sourceSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "PDFPage": 29,
+      "JORTPage": 5126,
+      "table": "AnnexA",
+      "imadaAr": "الشيخ إدريس",
+      "circleAr": "الشيخ إدريس",
+      "parentAr": "بنزرت الشمالية",
+      "semantics": "WHOLE_IMADA_CIRCLE_CONFIRMED_IN_ANNEX_A",
+      "reviewImageFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-29.png",
+      "reviewImageSha256": "8992306a876a31161bc60c727997c48397127470199ce2b81273bd8c841625c4",
+      "method": "Full decree page visually inspected: distinct one-to-one imada/circle row, no subdivided imada cell."
+    },
+    "officialSourceGeometrySha256": "11be5c5ff854b019407fbf2ec2ccbeccd1eca58bba8ae423811adb0fa82e3583",
+    "officialPackedGeometrySha256": "94fc46b85c991bdd3fe83de2ab2adafec35f9e1a6b16e08ffa3d636d8122aa38",
+    "rawGeometryHashQualification": "Fresh PBF GeoJSONFactory yields a MultiPolygon wrapper; historical cache uses its simplified single Polygon representation. Original fresh/cache shapes are exactly equal as geometric sets; hashes must be bound to their specified serialization, not interchanged.",
+    "retiredRepresentativeWithinOfficialCheikh": true,
+    "codedOldOutlineIntersectsOfficialCheikh": false,
+    "officialCheikhFractionInsideOldMedina": 0.9452065602620148,
+    "fullMapAndDecreePersonallyViewed": true,
+    "interpretation": "The uncoded administrative feature names the unique official175155 imada; there is no distinct current imada or source code supporting a second sector. Its exact clone of the misassigned Medina geometry is a source error, not proof that Medina and Cheikh are aliases."
+  },
+  "scenarios": [
+    {
+      "name": "retirement_only",
+      "allConflictCount": 184,
+      "conflictsTouchingCodedCheikh": [],
+      "actualRawCoordinatesInRelevantFootprintUnion": [
+        {
+          "id": "osm:relation:7118631",
+          "name": "المدينة",
+          "kind": "sector",
+          "hasBoundary": true,
+          "lat": 37.274271,
+          "lng": 9.871494,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": true
+        },
+        {
+          "id": "osm:relation:7118632",
+          "name": "الشيخ ادريس",
+          "kind": "sector",
+          "hasBoundary": true,
+          "lat": 37.274933,
+          "lng": 9.859211,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": false
+        },
+        {
+          "id": "osm:relation:7152490",
+          "name": "الشيخ إدريس",
+          "kind": "sector",
+          "hasBoundary": true,
+          "lat": 37.274271,
+          "lng": 9.871494,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": true
+        },
+        {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "hasBoundary": true,
+          "lat": 37.276147,
+          "lng": 9.871712,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": true
+        },
+        {
+          "id": "osm:way:275008604",
+          "name": "oued laassal",
+          "kind": "neighbourhood",
+          "hasBoundary": true,
+          "lat": 37.275356,
+          "lng": 9.858418,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": false
+        }
+      ],
+      "actualRegionInteriorSamples": [
+        {
+          "region": "officialCheikhWithinOldMedina",
+          "component": 0,
+          "areaMeters2": 84162.12255728975,
+          "lat": 37.2742625,
+          "lng": 9.871518863298903,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        },
+        {
+          "region": "oldCloneOutsideOfficialCheikh",
+          "component": 0,
+          "areaMeters2": 9226.387526694527,
+          "lat": 37.2741245,
+          "lng": 9.869904003615328,
+          "before": {
+            "winner": null,
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        },
+        {
+          "region": "oldCloneOutsideOfficialCheikh",
+          "component": 1,
+          "areaMeters2": 18478.41866478484,
+          "lat": 37.275137,
+          "lng": 9.873023943986453,
+          "before": {
+            "winner": null,
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        },
+        {
+          "region": "officialCheikhOutsideOldClone",
+          "component": 0,
+          "areaMeters2": 4662.2353825957425,
+          "lat": 37.272997000000004,
+          "lng": 9.872337598010326,
+          "before": {
+            "winner": {
+              "id": "osm:relation:7118628",
+              "name": "بوبكر باكير",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118628",
+                "name": "بوبكر باكير",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118628",
+              "name": "بوبكر باكير",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118628",
+                "name": "بوبكر باكير",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        },
+        {
+          "region": "officialCheikhOutsideOldClone",
+          "component": 1,
+          "areaMeters2": 216.6304132962047,
+          "lat": 37.276396500000004,
+          "lng": 9.870129982993195,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118630",
+                "name": "المؤتمر",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118630",
+                "name": "المؤتمر",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        },
+        {
+          "region": "oldCodedCheikhFootprint",
+          "component": 0,
+          "areaMeters2": 1082858.9669732477,
+          "lat": 37.2749325,
+          "lng": 9.85921107310492,
+          "before": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        }
+      ],
+      "geometryReplacedIds": [],
+      "removedRawIds": [
+        "osm:relation:7152490"
+      ]
+    },
+    {
+      "name": "single_complete_official_Cheikh_and_retirement",
+      "allConflictCount": 188,
+      "conflictsTouchingCodedCheikh": [
+        {
+          "ids": [
+            "osm:relation:7118628",
+            "osm:relation:7118632"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.003868109032613844,
+          "sample": {
+            "lat": 37.27243072126626,
+            "lng": 9.87138812518699
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7118630",
+            "osm:relation:7118632"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.0006595230543979411,
+          "sample": {
+            "lat": 37.273703720484306,
+            "lng": 9.872927870753866
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7118631",
+            "osm:relation:7118632"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.08436969682131029,
+          "sample": {
+            "lat": 37.2742625,
+            "lng": 9.871518863298903
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7118632",
+            "osm:relation:7152489"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.00036319591854802255,
+          "sample": {
+            "lat": 37.273334,
+            "lng": 9.872847284079786
+          }
+        }
+      ],
+      "actualRawCoordinatesInRelevantFootprintUnion": [
+        {
+          "id": "osm:relation:7118631",
+          "name": "المدينة",
+          "kind": "sector",
+          "hasBoundary": true,
+          "lat": 37.274271,
+          "lng": 9.871494,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7118632"
+              ]
+            ]
+          },
+          "winnerChanged": false
+        },
+        {
+          "id": "osm:relation:7118632",
+          "name": "الشيخ ادريس",
+          "kind": "sector",
+          "hasBoundary": true,
+          "lat": 37.274933,
+          "lng": 9.859211,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": false
+        },
+        {
+          "id": "osm:relation:7152490",
+          "name": "الشيخ إدريس",
+          "kind": "sector",
+          "hasBoundary": true,
+          "lat": 37.274271,
+          "lng": 9.871494,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7118632"
+              ]
+            ]
+          },
+          "winnerChanged": false
+        },
+        {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "hasBoundary": true,
+          "lat": 37.276147,
+          "lng": 9.871712,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": true
+        },
+        {
+          "id": "osm:way:275008604",
+          "name": "oued laassal",
+          "kind": "neighbourhood",
+          "hasBoundary": true,
+          "lat": 37.275356,
+          "lng": 9.858418,
+          "delegationId": 634,
+          "before": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "winnerChanged": false
+        }
+      ],
+      "actualRegionInteriorSamples": [
+        {
+          "region": "officialCheikhWithinOldMedina",
+          "component": 0,
+          "areaMeters2": 84162.12255728975,
+          "lat": 37.2742625,
+          "lng": 9.871518863298903,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7118632"
+              ]
+            ]
+          }
+        },
+        {
+          "region": "oldCloneOutsideOfficialCheikh",
+          "component": 0,
+          "areaMeters2": 9226.387526694527,
+          "lat": 37.2741245,
+          "lng": 9.869904003615328,
+          "before": {
+            "winner": null,
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        },
+        {
+          "region": "oldCloneOutsideOfficialCheikh",
+          "component": 1,
+          "areaMeters2": 18478.41866478484,
+          "lat": 37.275137,
+          "lng": 9.873023943986453,
+          "before": {
+            "winner": null,
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7152490",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118631",
+                "osm:relation:7152490"
+              ]
+            ]
+          },
+          "after": {
+            "winner": {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118631",
+                "name": "المدينة",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        },
+        {
+          "region": "officialCheikhOutsideOldClone",
+          "component": 0,
+          "areaMeters2": 4662.2353825957425,
+          "lat": 37.272997000000004,
+          "lng": 9.872337598010326,
+          "before": {
+            "winner": {
+              "id": "osm:relation:7118628",
+              "name": "بوبكر باكير",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118628",
+                "name": "بوبكر باكير",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": null,
+            "candidates": [
+              {
+                "id": "osm:relation:7118628",
+                "name": "بوبكر باكير",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118628",
+                "name": "بوبكر باكير",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118628",
+                "osm:relation:7118632"
+              ]
+            ]
+          }
+        },
+        {
+          "region": "officialCheikhOutsideOldClone",
+          "component": 1,
+          "areaMeters2": 216.6304132962047,
+          "lat": 37.276396500000004,
+          "lng": 9.870129982993195,
+          "before": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118630",
+                "name": "المؤتمر",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              },
+              {
+                "id": "osm:way:256615867",
+                "name": "المدينة العتيقة",
+                "kind": "suburb",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118630",
+                "name": "المؤتمر",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [
+              {
+                "id": "osm:relation:7118630",
+                "name": "المؤتمر",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ إدريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+              }
+            ],
+            "activeConflicts": [
+              [
+                "osm:relation:7118630",
+                "osm:relation:7118632"
+              ]
+            ]
+          }
+        },
+        {
+          "region": "oldCodedCheikhFootprint",
+          "component": 0,
+          "areaMeters2": 1082858.9669732477,
+          "lat": 37.2749325,
+          "lng": 9.85921107310492,
+          "before": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:relation:7118632",
+                "name": "الشيخ ادريس",
+                "kind": "sector",
+                "parentName": "معتمدية بنزرت الشمالية",
+                "sourceId": "osm"
+              },
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          },
+          "after": {
+            "winner": {
+              "id": "osm:way:275008604",
+              "name": "oued laassal",
+              "kind": "neighbourhood",
+              "parentName": "الشيخ ادريس",
+              "sourceId": "osm"
+            },
+            "candidates": [
+              {
+                "id": "osm:way:275008604",
+                "name": "oued laassal",
+                "kind": "neighbourhood",
+                "parentName": "الشيخ ادريس",
+                "sourceId": "osm"
+              }
+            ],
+            "excluded": [],
+            "activeConflicts": []
+          }
+        }
+      ],
+      "geometryReplacedIds": [
+        "osm:relation:7118632"
+      ],
+      "removedRawIds": [
+        "osm:relation:7152490"
+      ]
+    }
+  ],
+  "runtimeCode": {
+    "compiler": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "6700d8a64d869464afa639d296a44f70cdc84de28a85cfd54da2df2eaae50d70",
+      "bytes": 159907
+    },
+    "preferences": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\PrefsManager.kt",
+      "sha256": "ef5c6a747932b1b9f5c9a88e0eb9c64a8bf5c5e25cdafaa455918064cd37fa9e",
+      "bytes": 21311
+    },
+    "localityRepository": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\LocalityRepository.kt",
+      "sha256": "f669062cea7140b132c3952b4a9c2cc26742de6b5cffd1adfe10efe8b4545544",
+      "bytes": 9955
+    },
+    "pickerAndManualRepair": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\ui\\MainScreen.kt",
+      "sha256": "a433891af929480e0f0e5a6395c28285801a977a7d533f9e625fcb4bb426f899",
+      "bytes": 307817
+    },
+    "gpsBoundaryLookup": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\NeighborhoodRepository.kt",
+      "sha256": "7e2cfd150952f0339412306efff028ec3853db4e50d65b99037591190d6247a3",
+      "bytes": 12339
+    },
+    "gpsPrayerMapping": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\DelegationLocator.kt",
+      "sha256": "08b0e71b6ea14a071a6928d71138d32785d563904f61f33e13627e545dd68609",
+      "bytes": 19321
+    }
+  },
+  "operations": {
+    "repositoryEdits": 0,
+    "catalogGenerations": 0,
+    "phoneActions": 0,
+    "ledgerWrites": 0,
+    "tests": 0,
+    "builds": 0
+  },
+  "script": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_current_cheikh_retirement.py",
+    "sha256": "63a6b5724f273995fe5bdc5d70983a6cb72d76f756228b3c0be300dbeaacbb63",
+    "bytes": 11570
+  }
+}

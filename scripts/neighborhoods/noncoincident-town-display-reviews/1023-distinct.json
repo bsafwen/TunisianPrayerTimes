@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7145430",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مطماطة الجديدة",
+        "name:ar": "مطماطة الجديدة",
+        "name:fr": "Nouvelle Matmata",
+        "ref:tn:codegeo": "515951"
+      },
+      "originalGeometrySha256": "f8a0ee5f8a54e2663e2cbee42d8e9667b530a0dd847ecbe452af6ff99b3b0f6d",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مطماطة الجديدة",
+        "name:ar": "مطماطة الجديدة",
+        "name:fr": "Nouvelle Matmata",
+        "ref:tn:codegeo": "515951"
+      },
+      "effectiveGeometrySha256": "f8a0ee5f8a54e2663e2cbee42d8e9667b530a0dd847ecbe452af6ff99b3b0f6d",
+      "expectedMetadata": {
+        "name": "مطماطة الجديدة",
+        "aliases": [
+          "Nouvelle Matmata"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "governorateId": 347,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:186705198",
+      "originalKind": "residential",
+      "originalTags": {
+        "addr:city": "مطماطة الجديدة",
+        "addr:postcode": "6044",
+        "landuse": "residential",
+        "name": "مطماطة الجديدة",
+        "name:ar": "مطماطة الجديدة",
+        "name:fr": "Matmata Nouvelle"
+      },
+      "originalGeometrySha256": "38a07883fbda9788aea0f286c35aef573a4d90b00ea0d623cbbbdb1fdf5c4e0f",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "addr:city": "مطماطة الجديدة",
+        "addr:postcode": "6044",
+        "landuse": "residential",
+        "name": "مطماطة الجديدة",
+        "name:ar": "مطماطة الجديدة",
+        "name:fr": "Matmata Nouvelle"
+      },
+      "effectiveGeometrySha256": "38a07883fbda9788aea0f286c35aef573a4d90b00ea0d623cbbbdb1fdf5c4e0f",
+      "expectedMetadata": {
+        "name": "مطماطة الجديدة",
+        "aliases": [
+          "Matmata Nouvelle",
+          "New Matmata",
+          "Nouvelle Matmata"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "governorateId": 347,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "noncoincident-town-display-reviews/source-proposal.json",
+      "sha256": "b3ae87a84f65059bb5d45daf26fa52264e9d32e4893a4da00e66f45e54f49d82"
+    },
+    {
+      "file": "noncoincident-town-display-reviews/source-identity-review.json",
+      "sha256": "8bad7b5b75c3f6c3b5630d59e7f118cd193d9918dac6c34e0d7a70dd9e031409"
+    },
+    {
+      "file": "noncoincident-town-display-reviews/frozen-source-facts.json",
+      "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc"
+    }
+  ],
+  "scope": "The addressed town residential and independently coded imada are separate choices. Full raw footprints and current names remain. A separately validated late residential application may add the exact old base alias."
+}

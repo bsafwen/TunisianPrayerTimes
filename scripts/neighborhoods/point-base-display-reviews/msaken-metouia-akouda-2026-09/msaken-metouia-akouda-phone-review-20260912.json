@@ -1,0 +1,95 @@
+{
+  "status": "FOUR_PUBLIC_PHONE_RESULTS_REVIEWED_NO_FACET_PROMOTION",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea"
+  },
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_node_6681328578-1\\ledger.json",
+    "sha256": "9e0af377f8cdbaa2e5904483f01dfc8972bb29bc831c5c7f304f789ba063c577"
+  },
+  "afterLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "1a75dd580e124dddeffb0438123dfd9f852c2b27ca1d163a605f5a8056474db9"
+  },
+  "counts": {
+    "currentRows": 3563,
+    "historicalRows": 183,
+    "currentRowsWithObservations": 649,
+    "currentObservations": 789,
+    "historicalObservations": 172
+  },
+  "records": [
+    {
+      "id": "osm:node:6681328578",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_6681328578-1.json",
+        "sha256": "259220729c23f215a9d025d4d296a2bf392f4c3c87eb66306dd2e04b3b0fa484"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_6681328578-1.png",
+        "sha256": "2b2eabd4b81abaa2aac3b18a2e6a164f61bea2386d7f9c99b423e73b45c07657"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Coordinate search produced a dropped pin and address مساكن، تونس in the urban street network near Souk El Kdim. This supports city context, not a separate locality identity, official administrative boundary or exact settlement centre."
+    },
+    {
+      "id": "osm:node:559400503",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_559400503-1.json",
+        "sha256": "043e36a834cebd1c33af733d6b4907a414e71243919c458e2d27c7e6b0c25b1d"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_559400503-1.png",
+        "sha256": "c1d8a8a03e843c26d303e84dcdb60bd6fd4cd3096d6179415b75654b6cf61dfc"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Coordinate search produced a P15 street card with address Metouia, Tunisia. The map showed المطوية and METOUIA labels. This supports town context, not a North/South sector perimeter or exact settlement centre."
+    },
+    {
+      "id": "osm:node:1184918055",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1184918055-1.json",
+        "sha256": "2f8f8e1c0f9376a0a30e09ae8def60407a8ad26da0f1601ef22c744c9f946bb2"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1184918055-1.png",
+        "sha256": "89deccf1f1045cef0113282813927a3c2889719c7b24b891fd74ba5719729fa1"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Coordinate search opened the nearby Rond-point la municipalite POI, categorized as a park, with Akouda address. The pin appeared on C48 near Oued El Hammam. This is not a city identity match and is not grounds to reclassify or remove the OSM settlement node."
+    },
+    {
+      "id": "osm:node:1184918055",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1184918055-2.json",
+        "sha256": "b18eb3c57b779638ff0ebc28d8b207a556968b2fa1e8dc38813e2bef3b646f5a"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1184918055-2.png",
+        "sha256": "ae011f122ce69b1caa640e6e4b56aec3559559987c0c8b435436d794b275d7e0"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Explicit town search opened the أكودة / Akouda city card and dotted urban outline. This supports city identity but does not certify the exact OSM point, a legal sector boundary or equivalence between the city and an individual sector."
+    }
+  ],
+  "prior957ObservationsPreserved": true,
+  "catalogFacetsPromoted": false,
+  "geometryVerticesCopied": false,
+  "connection": "Fresh connected Pixel6 and unlocked Maps foreground confirmed before the first query; foreground guarded before captures.",
+  "notPerformed": [
+    "API-key use",
+    "map edits",
+    "directions",
+    "sharing",
+    "saved-place interaction",
+    "core changes",
+    "tests",
+    "build",
+    "APK/AAB"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_msaken_metouia_akouda_phone_review.py",
+    "sha256": "f1f0421c59d93df7fbadb63c789c22bdb328c56c56fccf00735851a61952c022"
+  }
+}

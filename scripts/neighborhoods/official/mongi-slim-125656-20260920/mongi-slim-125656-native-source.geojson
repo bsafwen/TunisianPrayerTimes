@@ -1,0 +1,343 @@
+{
+  "type": "FeatureCollection",
+  "sourceId": "isie-local-sector-2023-mongi-slim-ettadhamen",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "osm:relation:7115583",
+      "properties": {
+        "id": "osm:relation:7115583",
+        "kind": "sector",
+        "officialCode": "125656",
+        "nameAr": "المنجي سليم",
+        "nameFr": "Mongi Slim",
+        "aliases": [],
+        "governorateCode": "12",
+        "governorateAr": "أريانة",
+        "governorateFr": "Ariana",
+        "delegationCode": "1256",
+        "parentAr": "حي التضامن",
+        "parentFr": "Cite ettadhamen",
+        "sourceId": "isie-local-sector-2023-mongi-slim-ettadhamen",
+        "sourceGeometrySha256": "8e4bed8a54407ecf27bf8b78b8e565a504a31ec1e16d606a084c02e813a15d59",
+        "currentOfficialIdentity": {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1256",
+          "delegationFr": "Cite ettadhamen",
+          "delegationAr": "حي التضامن",
+          "sectorCode": "125656",
+          "sectorFr": "El mongi slim",
+          "sectorAr": "المنجي سليم",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6869,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 229,
+            "Nombre_de_menages_par_Secteurs.xlsx": 229
+          }
+        },
+        "originalSourceNameIdentity": {
+          "originalName": "Mongi Slim",
+          "officialRegistrySectorFr": "El mongi slim",
+          "sameIdentity": true,
+          "newAliasAuthorized": false,
+          "qualification": "Source originalName MongiSlim and official registry El mongi slim are same identity; no new alias authorized."
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المنجي سليم",
+          "name:ar": "المنجي سليم",
+          "name:fr": "Mongi Slim",
+          "ref:tn:codegeo": "125656"
+        },
+        "identityPolicy": "Preserve current display/aliases exactly as root authorized; official registry El mongi slim is recorded as source identity evidence but no new search alias/name edit.",
+        "boundaryQualifications": [
+          "Decree row supplies whole-sector correspondence, not survey certification.",
+          "Native map control residuals do not measure real-world positional error."
+        ],
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%AD%D9%8A%20%D8%A7%D9%84%D8%AA%D8%B6%D8%A7%D9%85%D9%86/%D8%A7%D9%84%D9%85%D9%86%D8%AC%D9%8A%20%D8%B3%D9%84%D9%8A%D9%85.pdf",
+        "sourcePdfPage": 1,
+        "sourcePdfFile": "official/mongi-slim-125656-20260920/sources/mongi-slim-ettadhamen-isie2023.pdf",
+        "originalSourcePdfFile": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/mongi-slim-ettadhamen-isie2023.pdf",
+        "sourcePdfSha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21",
+        "sourceDrawingIndex": 4,
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceGeometryVertices": 25,
+        "sourceCrsEpsg": 32632,
+        "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+        "sourceControlPointsLatLon": [
+          [
+            36.83795,
+            10.0927
+          ],
+          [
+            36.84375,
+            10.09279
+          ],
+          [
+            36.84366,
+            10.10312
+          ],
+          [
+            36.83785,
+            10.10304
+          ]
+        ],
+        "sourceLocalControlPoints": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "sourceViewportBBox": [
+          4.31908,
+          590.46173,
+          841.50095,
+          5.38791
+        ],
+        "sourceAffineMetersFromPagePoints": [
+          [
+            1.1008961399964645,
+            6.0102376136272636e-05
+          ],
+          [
+            -0.00030609111718149506,
+            -1.1008369194023544
+          ],
+          [
+            597427.4287316203,
+            4078102.294176176
+          ]
+        ],
+        "sourceControlResidualsMeters": [
+          0.3674241270523473,
+          0.3674241258890051,
+          0.3674241269351114,
+          0.36742412422265003
+        ],
+        "sourceControlPointMaxResidualMeters": 0.3674241270523473,
+        "sourceClipReview": {
+          "assertions": {
+            "onePage": true,
+            "oneViewport": true,
+            "epsg32632FromWkt": true,
+            "affineRank3": true,
+            "straightLineItemsOnly": true,
+            "continuousClosedPath": true,
+            "polygonValid": true,
+            "allRingsClosedSimple": true,
+            "insideViewport": true,
+            "layerAndRedColor": true
+          },
+          "activeClipChecks": [
+            {
+              "level": 0,
+              "outsideAreaPoints2": 0.0,
+              "minMarginPoints": 32.0440673828125
+            },
+            {
+              "level": 1,
+              "outsideAreaPoints2": 0.0,
+              "minMarginPoints": 27.003417968749996
+            }
+          ]
+        },
+        "redLabels": [
+          {
+            "raw": "( )اﻟﻣﻧﯾﮭﻠﺔ- اﻟﺑﺳﺎﺗﯾن",
+            "normalized": "( )المنیھلة- البساتین",
+            "reversedNormalized": "نیتاسبلا -ةلھینملا) (",
+            "centerInsideTarget": false,
+            "bbox": [
+              35.272499084472656,
+              67.28370666503906,
+              244.45045471191406,
+              120.56827545166016
+            ]
+          },
+          {
+            "raw": "( )ﺣﻲ اﻟﺗﺿﺎﻣن- اﻟﻣﻧﺟﻲ ﺳﻠﯾم",
+            "normalized": "( )حي التضامن- المنجي سلیم",
+            "reversedNormalized": "میلس يجنملا -نماضتلا يح) (",
+            "centerInsideTarget": true,
+            "bbox": [
+              94.8398208618164,
+              364.3211669921875,
+              385.028076171875,
+              417.6057434082031
+            ]
+          },
+          {
+            "raw": "( )ﺣﻲ اﻟﺗﺿﺎﻣن- ﻣﺎرس2",
+            "normalized": "( )حي التضامن- مارس2",
+            "reversedNormalized": "2سرام -نماضتلا يح) (",
+            "centerInsideTarget": false,
+            "bbox": [
+              205.51626586914062,
+              541.8236083984375,
+              445.2981872558594,
+              595.1082153320312
+            ]
+          },
+          {
+            "raw": "4 نﻣﺎﺿﺗﻟا",
+            "normalized": "4 نماضتلا",
+            "reversedNormalized": "التضامن 4",
+            "centerInsideTarget": true,
+            "bbox": [
+              135.51116943359375,
+              430.92962646484375,
+              255.757080078125,
+              484.21417236328125
+            ]
+          },
+          {
+            "raw": " اﻟداﺋرة اﻻﻧﺗﺧﺎﺑﯾﺔ",
+            "normalized": " الدائرة الانتخابیة",
+            "reversedNormalized": "ةیباختنلاا ةرئادلا ",
+            "centerInsideTarget": false,
+            "bbox": [
+              695.7319946289062,
+              -3.117218017578125,
+              847.6636962890625,
+              42.555267333984375
+            ]
+          },
+          {
+            "raw": "(نﻣﺎﺿﺗﻟا ﻲﺣ) - مﯾﻠ",
+            "normalized": "(نماضتلا يح) - میل",
+            "reversedNormalized": "لیم - )حي التضامن(",
+            "centerInsideTarget": false,
+            "bbox": [
+              691.4129028320312,
+              36.847808837890625,
+              864.9468383789062,
+              82.52029418945312
+            ]
+          }
+        ],
+        "registrationQualification": "Rounded embedded control points; fit residuals are not survey accuracy. Complete original vector retained without repair, snapping, clipping or smoothing."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.1018468338559,
+              36.84151130922137
+            ],
+            [
+              10.101250578013374,
+              36.84115595677736
+            ],
+            [
+              10.100842464559724,
+              36.8409024781852
+            ],
+            [
+              10.099990962586771,
+              36.840413705564835
+            ],
+            [
+              10.099515475538752,
+              36.840110824217824
+            ],
+            [
+              10.099278257478282,
+              36.83999510535402
+            ],
+            [
+              10.099014066754188,
+              36.839858198010724
+            ],
+            [
+              10.098602048054168,
+              36.839640475484096
+            ],
+            [
+              10.098166036994774,
+              36.839301496934034
+            ],
+            [
+              10.097416291060096,
+              36.83877961500079
+            ],
+            [
+              10.096518783220667,
+              36.83818048317829
+            ],
+            [
+              10.095120806774883,
+              36.83891143955921
+            ],
+            [
+              10.094720600972794,
+              36.839197358739526
+            ],
+            [
+              10.09431218340053,
+              36.83952979791198
+            ],
+            [
+              10.093973811243952,
+              36.839790138175196
+            ],
+            [
+              10.094355967067743,
+              36.8400938976363
+            ],
+            [
+              10.095073768363477,
+              36.8405589272188
+            ],
+            [
+              10.096159425060472,
+              36.84125995389559
+            ],
+            [
+              10.09693187427574,
+              36.84181379011146
+            ],
+            [
+              10.097321997608336,
+              36.842053155943255
+            ],
+            [
+              10.100003933232903,
+              36.84341830027083
+            ],
+            [
+              10.100504607885634,
+              36.84301353613096
+            ],
+            [
+              10.100863352689823,
+              36.84262794183239
+            ],
+            [
+              10.101261034652781,
+              36.84217053182474
+            ],
+            [
+              10.1018468338559,
+              36.84151130922137
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

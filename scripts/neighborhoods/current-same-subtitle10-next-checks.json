@@ -1,0 +1,1890 @@
+{
+  "schemaVersion": 1,
+  "status": "bounded_review_complete_proposals_not_applied",
+  "metadataSha256": "90fa0fe47a6cfda3d8b45c03a82a9294ab5145e6dbaafa600cee22d891488321",
+  "binarySha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputAudit": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-picker-name-audit.json",
+    "sha256": "adf40d340ae8b4a29e056bf721fc2465f0f5086598e443612209625dadc5cf66"
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "counts": {
+    "sameSubtitlePairs": 10,
+    "identityClusters": 8,
+    "deeplyInvestigatedClusters": 2,
+    "reviewableDisplayProposals": 2,
+    "proposedPairReduction": 2,
+    "heldPairsOutsideProposals": 8,
+    "appliedChanges": 0
+  },
+  "records": [
+    {
+      "cluster": "bizerte_cheikh",
+      "pairCount": 1,
+      "currentPairIds": [
+        [
+          "osm:relation:7118632",
+          "osm:relation:7152490"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:relation:7118632",
+        "osm:relation:7152490"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:relation:7118632",
+          "sourceId": "osm",
+          "name": "الشيخ ادريس",
+          "aliases": [
+            "Cheikh Dris"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية",
+          "contextAliases": [
+            "Delegación de Bizerta Norte",
+            "Délégation Bizerte Nord",
+            "معتمدية بنزرت الشمالية"
+          ],
+          "governorateId": 361,
+          "lat": 37.274933,
+          "lng": 9.859211,
+          "delegationId": 634,
+          "hasBoundary": true,
+          "bbox": [
+            9.855046,
+            37.266843,
+            9.869246,
+            37.283315
+          ],
+          "areaKm2": 1.0855583941499596,
+          "pickerGroupId": "osm:relation:7118632",
+          "offset": 985972,
+          "length": 244
+        },
+        {
+          "id": "osm:relation:7152490",
+          "sourceId": "osm",
+          "name": "الشيخ إدريس",
+          "aliases": [
+            "Cheikh Dris",
+            "الشيخ ادريس"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية",
+          "contextAliases": [
+            "Delegación de Bizerta Norte",
+            "Délégation Bizerte Nord",
+            "معتمدية بنزرت الشمالية"
+          ],
+          "governorateId": 361,
+          "lat": 37.274271,
+          "lng": 9.871494,
+          "delegationId": 634,
+          "hasBoundary": true,
+          "bbox": [
+            9.869684,
+            37.272,
+            9.873568,
+            37.276465
+          ],
+          "areaKm2": 0.1121431583697665,
+          "pickerGroupId": "osm:relation:7152490",
+          "offset": 3108452,
+          "length": 84
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle15-review.json",
+        "sha256": "cc70cb2ae11c9996a6eaf097738bb35f6f347d4093dfc75f5b505c811b12700a",
+        "recordSelector": {
+          "memberIds": [
+            "osm:relation:7118632",
+            "osm:relation:7152490"
+          ]
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle15-source-facts.json",
+        "sha256": "cd86eb81ded05772b6f8882a0deaaddee228d3a8a6a0adae731b22cca997b946"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/20",
+          "id": "osm:relation:7118632",
+          "query": "الشيخ ادريس بنزرت الشمالية بنزرت Tunisia",
+          "observationIndex": 2,
+          "classification": "ambiguous_same_name_locality",
+          "finding": "Cheik Driss / الشيخ إدريس locality card in Bizerte with Avenue Hassen Nouri and Rue de la République context. Both source sectors return the same title; this does not identify which coded source polygon the card represents or prove the two source sectors are equivalent.",
+          "screenshot": "outputs/phone-maps-review/osm_relation_7118632-2.png",
+          "screenshotSha256": "ec86f09d8787e60a7fcba2ab33b2e7960732747adf6f4880cad4cb6760994e05",
+          "captureSha256": "e00597f88a53756c1f4f510ef4d4ad1dfb352abbbf71d234f60c4a9c4d96de5e",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/21",
+          "id": "osm:relation:7152490",
+          "query": "الشيخ إدريس بنزرت الشمالية بنزرت Tunisia",
+          "observationIndex": 2,
+          "classification": "ambiguous_same_name_locality",
+          "finding": "The other sector also returns Cheik Driss in Bizerte, at a different zoom with the old port and Avenue Hassen Nouri visible. Lower card content is still loading in the screenshot. The title does not establish a distinct second sector or source-polygon equivalence; the raw accessibility search spelling omits a hamza from the requested name.",
+          "screenshot": "outputs/phone-maps-review/osm_relation_7152490-2.png",
+          "screenshotSha256": "d5820d2d86b8dc88aa4e3a719176ec1e0765959a4ff21e10db4c6ec612d1a4e0",
+          "captureSha256": "e0bb3a36f807adf2a79a51bf4e9909aa24aad0f37d6816a31422be7aa763aadb",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Complete the separately reviewed coded Cheikh replacement and redundant uncoded-ID transition with the coherent Bizerte urban boundary decision. This is a known source-identity problem, not evidence of two homonymous sectors.",
+      "status": "held",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities.",
+      "separatelyFrozenProposal": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bizerte-three-retirement-proposal-review.json",
+        "sha256": "3c6d4cf9910e9d83379ca3d91e7714135eda7a29a9be02ccd036e818270ee534"
+      }
+    },
+    {
+      "cluster": "chenini",
+      "pairCount": 1,
+      "currentPairIds": [
+        [
+          "osm:node:1975899618",
+          "osm:node:297760994"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:node:1975899618",
+        "osm:node:297760994"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:node:1975899618",
+          "sourceId": "osm",
+          "name": "شنني",
+          "aliases": [
+            "Chenini"
+          ],
+          "kind": "village",
+          "parentName": "شنني الجديدة",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Nouvelle Chnini",
+            "Tataouine Sud",
+            "شنني الجديدة",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.9147021,
+          "lng": 10.2781706,
+          "delegationId": 624,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1975899618"
+        },
+        {
+          "id": "osm:node:297760994",
+          "sourceId": "osm",
+          "name": "شنني",
+          "aliases": [
+            "Chenini"
+          ],
+          "kind": "village",
+          "parentName": "شنني الجديدة",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Nouvelle Chnini",
+            "Tataouine Sud",
+            "شنني الجديدة",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.9107032,
+          "lng": 10.2615519,
+          "delegationId": 624,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:297760994"
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle15-review.json",
+        "sha256": "cc70cb2ae11c9996a6eaf097738bb35f6f347d4093dfc75f5b505c811b12700a",
+        "recordSelector": {
+          "memberIds": [
+            "osm:node:1975899618",
+            "osm:node:297760994"
+          ]
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle15-source-facts.json",
+        "sha256": "cd86eb81ded05772b6f8882a0deaaddee228d3a8a6a0adae731b22cca997b946"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/0",
+          "id": "osm:node:1975899618",
+          "query": "شنني شنني الجديدة تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "ambiguous_same_name_locality",
+          "finding": "Chenini / شنني locality card with a modern street grid and ملعب شنني الجديدة nearby. It is visually the same card/map as the other Chenini source point; the result does not distinguish the two source villages or establish old versus new Chenini. Historic village photos do not resolve that ambiguity.",
+          "screenshot": "outputs/phone-maps-review/osm_node_1975899618-1.png",
+          "screenshotSha256": "4b8edf8c753270f8f800f347b5b609c37cea2725bc1af815f20aeba81d8ce177",
+          "captureSha256": "1ce9c59d22541ec2280a3da49c57a984190fe2707c67681fdd13574b14c28e73",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/1",
+          "id": "osm:node:297760994",
+          "query": "شنني شنني الجديدة تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "ambiguous_same_name_locality",
+          "finding": "Chenini / شنني locality card shows the same modern street grid and ملعب شنني الجديدة context as the other source point. It does not independently identify this western source point as a separate old village; identical returned cards do not justify merging the two source nodes.",
+          "screenshot": "outputs/phone-maps-review/osm_node_297760994-1.png",
+          "screenshotSha256": "7c4b474ea693f97b2c81db19386df3355988b54d2621f891773cf3b01fceb2f9",
+          "captureSha256": "3282ab1048f38d911f7e0e45a28feba2136643444f265f3780377b76da00cef2",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Bind each exact node to old or new Chenini using an authoritative locality map/address and the distinct current535258 NewChenini/535259 Chenini identities. Shared Wikidata/Wikipedia and identical Maps cards do not resolve which source node has which identity.",
+      "status": "held",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities."
+    },
+    {
+      "cluster": "haf_oulad_hamed",
+      "pairCount": 3,
+      "currentPairIds": [
+        [
+          "osm:way:1187366129",
+          "osm:way:1187366130"
+        ],
+        [
+          "osm:node:11522289870",
+          "osm:way:1187366129"
+        ],
+        [
+          "osm:node:11522289870",
+          "osm:way:1187366130"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:node:11522289870",
+        "osm:way:1187366129",
+        "osm:way:1187366130"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:node:11522289870",
+          "sourceId": "osm",
+          "name": "حاف أولاد حامد",
+          "aliases": [
+            "Oualed Hamed"
+          ],
+          "kind": "hamlet",
+          "parentName": "رأس الوادي",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Ras El Oued",
+            "Tataouine Sud",
+            "رأس الوادي",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.7922759,
+          "lng": 10.2297856,
+          "delegationId": 624,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:11522289870"
+        },
+        {
+          "id": "osm:way:1187366129",
+          "sourceId": "osm",
+          "name": "حاف أولاد حامد",
+          "aliases": [
+            "Oualed Hamed"
+          ],
+          "kind": "residential",
+          "parentName": "رأس الوادي",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Ras El Oued",
+            "Tataouine Sud",
+            "رأس الوادي",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.791897,
+          "lng": 10.229528,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.228894,
+            32.791342,
+            10.230043,
+            32.792479
+          ],
+          "areaKm2": 0.0018914142146176324,
+          "pickerGroupId": "osm:way:1187366129",
+          "offset": 5205100,
+          "length": 324
+        },
+        {
+          "id": "osm:way:1187366130",
+          "sourceId": "osm",
+          "name": "حاف أولاد حامد",
+          "aliases": [
+            "Oualed Hamed"
+          ],
+          "kind": "residential",
+          "parentName": "رأس الوادي",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Ras El Oued",
+            "Tataouine Sud",
+            "رأس الوادي",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.793267,
+          "lng": 10.22938,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.229145,
+            32.793068,
+            10.229524,
+            32.79344
+          ],
+          "areaKm2": 0.0007227356008872879,
+          "pickerGroupId": "osm:way:1187366130",
+          "offset": 5205424,
+          "length": 124
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle12-source-review.json",
+        "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7",
+        "recordSelector": {
+          "cluster": "haf_oulad_hamed"
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/4",
+          "id": "osm:way:1187366129",
+          "query": "حاف أولاد حامد رأس الوادي تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "same_name_poi",
+          "finding": "A Haf Oulad Hamed / حاف اولاد حامد point card is categorized Historical landmark. It corroborates a same-name POI, not the exact residential fragment or the spatial relationship between the three source rows.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1187366129-1.png",
+          "screenshotSha256": "13c7314dcfee9e8927d5907baa30f5b199f4870dad73ceddabc33e651da4e01e",
+          "captureSha256": "14a0846cc4f84cd569f14804d37947376d6c9b7420bef2c7c6a60a93a4ea6a95",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/5",
+          "id": "osm:way:1187366130",
+          "query": "حاف أولاد حامد رأس الوادي تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "same_name_poi",
+          "finding": "The second residential fragment returns the same Haf Oulad Hamed Historical landmark point card. No separate area identity or fragment extent is established.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1187366130-1.png",
+          "screenshotSha256": "f39f791b0e74bd4ea3f9fb98661f212b2949b23c611952026a6064322e476dc3",
+          "captureSha256": "88ea402372a0f6852dc9006504d6de9aae485e410f7f7012b9c640c0664be77d",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/6",
+          "id": "osm:node:11522289870",
+          "query": "حاف أولاد حامد رأس الوادي تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "same_name_poi",
+          "finding": "The source hamlet point also returns the same Haf Oulad Hamed Historical landmark card as both residential fragments. Name agreement does not establish equivalence or a complete locality extent.",
+          "screenshot": "outputs/phone-maps-review/osm_node_11522289870-1.png",
+          "screenshotSha256": "4d7102385e726fe773af05a2912ebe7d984daf0bdac19887bc36a15639b81085",
+          "captureSha256": "5c55d73159cdcec6b3d76546a720f52b0b1c0651459dc7c21b5b2d9363c41e22",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle8-followup-visual-review.json",
+            "sha256": "85e93218271a410c0a4e512da9fe9db3a34a1e9f6d81b5d3257b964966c77939"
+          },
+          "jsonPointer": "/reviews/3",
+          "id": "osm:node:11522289870",
+          "query": "Oualed Hamed Tataouine Tunisia",
+          "observationIndex": 2,
+          "classification": "unrelated_results",
+          "finding": "The existing alias Oualed Hamed returns a mixed list headed by Ahmed Ben Hamed condominium complex and Ksar Ouled Debbab locality, with another differently named entry below. No visible result gives the intended full Haf Oulad Hamed locality identity; the earlier same-name landmark remains historical evidence only.",
+          "screenshot": "outputs/phone-maps-review/osm_node_11522289870-2.png",
+          "screenshotSha256": "abec3daf4f226d8303a41a331a86ced7e153ddabc5fd73a93af41a0bdb7183a2",
+          "captureSha256": "ad567baa7f123be75d281da5f733728bfc37cb822dcd6bc2fcfbe0c7a4d3c310",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Find a primary locality reference or explicit source/address relationship binding the one hamlet and both exact residential fragments as a complete three-row identity. The same-name historic landmark and shorter Oualed Hamed search do not supply that relationship. No full-village polygon is mandatory.",
+      "status": "held",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities."
+    },
+    {
+      "cluster": "ksar_ouled_soltane",
+      "pairCount": 1,
+      "currentPairIds": [
+        [
+          "osm:way:1264348269",
+          "osm:way:1264348270"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:way:1264348269",
+        "osm:way:1264348270"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:way:1264348269",
+          "sourceId": "osm",
+          "name": "قصر أولاد سلطان",
+          "aliases": [
+            "Ksar Ouled Soltane"
+          ],
+          "kind": "residential",
+          "parentName": "القلعة الشرقية",
+          "contextAliases": [
+            "Délégation Tataouine Nord",
+            "El Galaa Est",
+            "القلعة الشرقية",
+            "معتمدية تطاوين الشمالية"
+          ],
+          "governorateId": 351,
+          "lat": 32.792254,
+          "lng": 10.518313,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.516506,
+            32.789897,
+            10.521192,
+            32.794528
+          ],
+          "areaKm2": 0.11053746530568001,
+          "pickerGroupId": "osm:way:1264348269",
+          "offset": 5212208,
+          "length": 764
+        },
+        {
+          "id": "osm:way:1264348270",
+          "sourceId": "osm",
+          "name": "قصر أولاد سلطان",
+          "aliases": [
+            "Ksar Ouled Soltane"
+          ],
+          "kind": "residential",
+          "parentName": "القلعة الشرقية",
+          "contextAliases": [
+            "Délégation Tataouine Nord",
+            "El Galaa Est",
+            "القلعة الشرقية",
+            "معتمدية تطاوين الشمالية"
+          ],
+          "governorateId": 351,
+          "lat": 32.788021,
+          "lng": 10.519467,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.514313,
+            32.786085,
+            10.520198,
+            32.789881
+          ],
+          "areaKm2": 0.064808399523089,
+          "pickerGroupId": "osm:way:1264348270",
+          "offset": 5212972,
+          "length": 740
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle12-source-review.json",
+        "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7",
+        "recordSelector": {
+          "cluster": "ksar_ouled_soltane"
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/7",
+          "id": "osm:way:1264348269",
+          "query": "قصر أولاد سلطان القلعة الشرقية تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "same_name_poi",
+          "finding": "The first residential fragment returns the rated Ksar Ouled Soltane / قصر أولاد سلطان Historical landmark attraction, with a point pin on the landmark building. This is not a distinct residential-area result.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1264348269-1.png",
+          "screenshotSha256": "fdb6ccf9869080987c9985447de315e50b2a27b42bb38a90fcf17a513556536f",
+          "captureSha256": "710b4a0f363eec2e1544bdfe481a9d2e68c6aabcb80162398d7382feec783afc",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/8",
+          "id": "osm:way:1264348270",
+          "query": "قصر أولاد سلطان القلعة الشرقية تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "same_name_poi",
+          "finding": "The second residential fragment returns the same rated Ksar Ouled Soltane Historical landmark attraction. It does not distinguish the two residential polygons or establish a common complete settlement boundary.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1264348270-1.png",
+          "screenshotSha256": "e429c9a85bbf6f77c2bb6cf5e16bbbf7a200e20d08bad361e7d8c32afc42b761",
+          "captureSha256": "bc290685f6923dd03415b2f0e9be5fff24a368f084ee0c39d4c6911674f93bf6",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle8-followup-visual-review.json",
+            "sha256": "85e93218271a410c0a4e512da9fe9db3a34a1e9f6d81b5d3257b964966c77939"
+          },
+          "jsonPointer": "/reviews/4",
+          "id": "osm:way:1264348269",
+          "query": "Ksar Ouled Soltane Tataouine Tunisia",
+          "observationIndex": 2,
+          "classification": "same_name_poi",
+          "finding": "The shorter alias query still returns the rated Ksar Ouled Soltane Historical landmark point card. The landmark name does not establish either residential fragment or a complete settlement boundary.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1264348269-2.png",
+          "screenshotSha256": "f05fb92f6b47a802fb24e55536e24885fcdedd7613cb39d51259424586c2a502",
+          "captureSha256": "2cb84158a9dee1f6d5e3d5dc73eb8a505dfbac31ff8c6e1e9aa7a07a46b6d3de",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Establish that the northern residential fragment belongs to the same inhabited village represented in the southern fragment, separately from the named historic monument. A local address, primary settlement map or source mapping relation could establish this without a whole-village boundary.",
+      "status": "held",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities."
+    },
+    {
+      "cluster": "el_adbech",
+      "pairCount": 1,
+      "currentPairIds": [
+        [
+          "osm:way:1265702650",
+          "osm:way:1265702651"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:way:1265702650",
+        "osm:way:1265702651",
+        "osm:way:189085992"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:way:1265702650",
+          "sourceId": "osm",
+          "name": "El Adbech",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "عين تونين",
+          "contextAliases": [
+            "Ain Tounine",
+            "Dkhilet Toujane",
+            "دخيلة توجان",
+            "عين تونين",
+            "معتمدية دخيلة توجان"
+          ],
+          "governorateId": 347,
+          "lat": 33.480734,
+          "lng": 10.082918,
+          "delegationId": 1022,
+          "hasBoundary": true,
+          "bbox": [
+            10.080554,
+            33.478131,
+            10.083967,
+            33.483146
+          ],
+          "areaKm2": 0.05228457126955565,
+          "pickerGroupId": "osm:way:1265702650",
+          "offset": 5213712,
+          "length": 636
+        },
+        {
+          "id": "osm:way:1265702651",
+          "sourceId": "osm",
+          "name": "El Adbech",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "عين تونين",
+          "contextAliases": [
+            "Ain Tounine",
+            "Dkhilet Toujane",
+            "دخيلة توجان",
+            "عين تونين",
+            "معتمدية دخيلة توجان"
+          ],
+          "governorateId": 347,
+          "lat": 33.48056,
+          "lng": 10.085204,
+          "delegationId": 1022,
+          "hasBoundary": true,
+          "bbox": [
+            10.084576,
+            33.479842,
+            10.085687,
+            33.481344
+          ],
+          "areaKm2": 0.010069491066740944,
+          "pickerGroupId": "osm:way:1265702651",
+          "offset": 5214348,
+          "length": 164
+        },
+        {
+          "id": "osm:way:189085992",
+          "sourceId": "osm",
+          "name": "الأدباش",
+          "aliases": [
+            "El Adbech"
+          ],
+          "kind": "residential",
+          "parentName": "ولاية قابس",
+          "contextAliases": [],
+          "governorateId": 347,
+          "lat": 33.485609,
+          "lng": 10.086235,
+          "delegationId": 1022,
+          "hasBoundary": true,
+          "bbox": [
+            10.083056,
+            33.482979,
+            10.095571,
+            33.488208
+          ],
+          "areaKm2": 0.29550161938013964,
+          "pickerGroupId": "osm:way:189085992",
+          "offset": 5291536,
+          "length": 316
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle12-source-review.json",
+        "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7",
+        "recordSelector": {
+          "cluster": "el_adbech"
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/9",
+          "id": "osm:way:1265702650",
+          "query": "El Adbech عين تونين قابس Tunisia",
+          "observationIndex": 1,
+          "classification": "unrelated_poi",
+          "finding": "El Adbech with Ain Tounine/Gabes context returns the rated tourist attraction Aïn Anba / كاف عين العنبة. The requested El Adbech locality name is absent from the card; no residential identity is established.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1265702650-1.png",
+          "screenshotSha256": "a660eb700342dc34c88ddd8215fbce53c94f31e079f54d3ae41eca269dbd96cc",
+          "captureSha256": "dd0ce754477e9974a3effbcf69b92e8b4e52e353a292c7d0e4d6caac12f1c651",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/10",
+          "id": "osm:way:1265702651",
+          "query": "El Adbech عين تونين قابس Tunisia",
+          "observationIndex": 1,
+          "classification": "unrelated_poi",
+          "finding": "The second El Adbech fragment returns the same differently named Aïn Anba tourist attraction. This provides no evidence of either fragment's identity or equivalence.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1265702651-1.png",
+          "screenshotSha256": "b590a48cb557657b94d8e85cfdf89036ff934cc8dc4bf3d26267f26079b4545b",
+          "captureSha256": "2e76ff12b413b906068dd54e9ee0a0388d4208706ff74fd7023b9795d8aa01d8",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle8-followup-visual-review.json",
+            "sha256": "85e93218271a410c0a4e512da9fe9db3a34a1e9f6d81b5d3257b964966c77939"
+          },
+          "jsonPointer": "/reviews/1",
+          "id": "osm:way:1265702650",
+          "query": "El Adbech Gabes Tunisia",
+          "observationIndex": 2,
+          "classification": "unrelated_results",
+          "finding": "El Adbech Gabes Tunisia returns a list headed by El Bacha Restaurant and Cafétéria El Becha in Gabes. Neither visible result names El Adbech, so the source locality remains uncorroborated.",
+          "screenshot": "outputs/phone-maps-review/osm_way_1265702650-2.png",
+          "screenshotSha256": "50ed0f704b7c7a313d62b251e7ee0fca0788fa8aab01029fcce1cdf928fe6df7",
+          "captureSha256": "fe401e013f6d071247eaae101c31764ec059d9ba946a6636a2a9b50da17d342e",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Bind both English residential fragments individually to the third Arabic locality row, while preserving the documented mixed sector context. Existing INP/ARP evidence identifies the locality and its monument but does not distinguish each fragment. No full-village polygon is mandatory.",
+      "status": "held",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities.",
+      "latestPrimaryIdentityReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tijma-adbech-display-identity-review.json",
+        "sha256": "180f0b0b8720d7407d862c6e36d8486c9bc8d8d368213f6ecfa4c7137a31c4cf"
+      }
+    },
+    {
+      "cluster": "essfaya",
+      "pairCount": 1,
+      "currentPairIds": [
+        [
+          "osm:node:1432323476",
+          "osm:way:129895999"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:node:1432323476",
+        "osm:way:129895999"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:node:1432323476",
+          "sourceId": "osm",
+          "name": "الصفاية",
+          "aliases": [
+            "Essfaya"
+          ],
+          "kind": "hamlet",
+          "parentName": "الغرابة",
+          "contextAliases": [
+            "Béja Nord",
+            "Délégation Béja Nord",
+            "El Ghraba",
+            "الغرابة",
+            "معتمدية باجة الشمالية"
+          ],
+          "governorateId": 356,
+          "lat": 36.9084743,
+          "lng": 9.1788288,
+          "delegationId": 514,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1432323476"
+        },
+        {
+          "id": "osm:way:129895999",
+          "sourceId": "osm",
+          "name": "الصفاية",
+          "aliases": [
+            "Essfaya"
+          ],
+          "kind": "residential",
+          "parentName": "الغرابة",
+          "contextAliases": [
+            "Béja Nord",
+            "Délégation Béja Nord",
+            "El Ghraba",
+            "الغرابة",
+            "معتمدية باجة الشمالية"
+          ],
+          "governorateId": 356,
+          "lat": 36.910262,
+          "lng": 9.178116,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.176499,
+            36.907132,
+            9.181714,
+            36.913705
+          ],
+          "areaKm2": 0.06916678699487354,
+          "pickerGroupId": "osm:way:129895999",
+          "offset": 5216432,
+          "length": 380
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle12-source-review.json",
+        "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7",
+        "recordSelector": {
+          "cluster": "essfaya"
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/11",
+          "id": "osm:way:129895999",
+          "query": "الصفاية الغرابة باجة Tunisia",
+          "observationIndex": 1,
+          "classification": "unrelated_poi",
+          "finding": "الصفاية with El Ghraba/Beja context returns a rated Farm named Beji. The card does not name Essfaya/الصفاية and provides no evidence of the residential source identity.",
+          "screenshot": "outputs/phone-maps-review/osm_way_129895999-1.png",
+          "screenshotSha256": "2b8305366e5cfbc41b0bf3a01dcc02b974a81645c17338bfb9320d15ef8085a6",
+          "captureSha256": "075e54fc8bf5a2bb5da168710d2f758a638792c389d92d48001d6f83f10b8cfe",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/12",
+          "id": "osm:node:1432323476",
+          "query": "الصفاية الغرابة باجة Tunisia",
+          "observationIndex": 1,
+          "classification": "unrelated_poi",
+          "finding": "The source hamlet point also returns the same rated Beji Farm rather than Essfaya/الصفاية. The two source rows are not distinguished or corroborated by this result.",
+          "screenshot": "outputs/phone-maps-review/osm_node_1432323476-1.png",
+          "screenshotSha256": "4d7c76f723c0a3273a5013cac64665b3e495a900682333368a22ed1dda157a5c",
+          "captureSha256": "ca6624b892838883c0d8d0d318d2881eb94978f547a7dea38850a0e7bc1ccfd5",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle8-followup-visual-review.json",
+            "sha256": "85e93218271a410c0a4e512da9fe9db3a34a1e9f6d81b5d3257b964966c77939"
+          },
+          "jsonPointer": "/reviews/2",
+          "id": "osm:node:1432323476",
+          "query": "Essfaya Béja Tunisia",
+          "observationIndex": 2,
+          "classification": "ambiguous_results",
+          "finding": "Essfaya Béja Tunisia returns a mixed list: Beja locality, a neighborhood called حي الصفايا, and the Medina of Beja landmark. The wide map includes Tunis and Hammamet. The differently written neighborhood is not selected or assumed to be the source Essfaya hamlet; neither implicated source row is precisely identified.",
+          "screenshot": "outputs/phone-maps-review/osm_node_1432323476-2.png",
+          "screenshotSha256": "799c81d12e1c71317724dc61d5a406ca8af8cde8884138efd6ba7dc1d99afec3",
+          "captureSha256": "6b924d12131fd45f9953288b29040d34ea1f4f9dd4525fbe28b89f09f2b51acd",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Independently review this exact two-ID display proposal, including the ODNO village/map context and full source competitor inventory. If stronger identity proof is required, seek a primary locality/address map linking the named residential settlement and hamlet; do not require an invented extent or rely on the6.5m gap.",
+      "status": "proposed_exact_display_review",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities."
+    },
+    {
+      "cluster": "ksar_jouamaa",
+      "pairCount": 1,
+      "currentPairIds": [
+        [
+          "osm:node:11230028572",
+          "osm:way:377116351"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:node:11230028572",
+        "osm:way:377116351"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:node:11230028572",
+          "sourceId": "osm",
+          "name": "قصر الجؤامع",
+          "aliases": [
+            "Ksar Jouamaa"
+          ],
+          "kind": "village",
+          "parentName": "رحالة",
+          "contextAliases": [
+            "Beni Khedache",
+            "Délégation Beni Khedech",
+            "Rahala",
+            "رحالة",
+            "معتمدية بني خداش"
+          ],
+          "governorateId": 353,
+          "lat": 33.2538427,
+          "lng": 10.2529122,
+          "delegationId": 489,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:11230028572"
+        },
+        {
+          "id": "osm:way:377116351",
+          "sourceId": "osm",
+          "name": "قصر الجؤامع",
+          "aliases": [
+            "Ksar Jouamaa"
+          ],
+          "kind": "residential",
+          "parentName": "رحالة",
+          "contextAliases": [
+            "Beni Khedache",
+            "Délégation Beni Khedech",
+            "Rahala",
+            "رحالة",
+            "معتمدية بني خداش"
+          ],
+          "governorateId": 353,
+          "lat": 33.254487,
+          "lng": 10.253962,
+          "delegationId": 489,
+          "hasBoundary": true,
+          "bbox": [
+            10.251712,
+            33.253768,
+            10.255851,
+            33.255249
+          ],
+          "areaKm2": 0.031242931025491163,
+          "pickerGroupId": "osm:way:377116351",
+          "offset": 5391092,
+          "length": 260
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle12-source-review.json",
+        "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7",
+        "recordSelector": {
+          "cluster": "ksar_jouamaa"
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/13",
+          "id": "osm:way:377116351",
+          "query": "قصر الجؤامع رحالة مدنين Tunisia",
+          "observationIndex": 1,
+          "classification": "poi_results_only",
+          "finding": "The residential source query shows a list of two mosques and a rated Ksar Jouamaa Historical landmark. The place name appears in related POI names, but no locality card identifies this residential polygon. No list result was selected.",
+          "screenshot": "outputs/phone-maps-review/osm_way_377116351-1.png",
+          "screenshotSha256": "2317c65ea976556a7d16d2af895b5d1228b9f05d7d550da72d667ba400d39e83",
+          "captureSha256": "697ca0bdce4264dede13837bf5cb1d4286a384f4086cb04a34b1b3de75eda166",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/14",
+          "id": "osm:node:11230028572",
+          "query": "قصر الجؤامع رحالة مدنين Tunisia",
+          "observationIndex": 1,
+          "classification": "poi_results_only",
+          "finding": "The source village point shows the same mosque and Ksar Jouamaa Historical landmark list. This supports only related POI-name evidence and does not distinguish or merge the source point and residential fragment.",
+          "screenshot": "outputs/phone-maps-review/osm_node_11230028572-1.png",
+          "screenshotSha256": "7f0f8ff6500ecd90a61becbbcab69d4e772b40a584d1f7e9fc1d871b32af2658",
+          "captureSha256": "6884e5e2bbdf6d02fc778c9eadff8718864366a9c44881cef4681df482a80292",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle8-followup-visual-review.json",
+            "sha256": "85e93218271a410c0a4e512da9fe9db3a34a1e9f6d81b5d3257b964966c77939"
+          },
+          "jsonPointer": "/reviews/6",
+          "id": "osm:node:11230028572",
+          "query": "Ksar Jouamaa Medenine Tunisia",
+          "observationIndex": 2,
+          "classification": "same_name_poi",
+          "finding": "Ksar Jouamaa Medenine Tunisia returns the rated Ksar Jouamaa Historical landmark, marked temporarily closed. It is a same-name POI, not a village-area result or proof that the source point and residential polygon are equivalent.",
+          "screenshot": "outputs/phone-maps-review/osm_node_11230028572-2.png",
+          "screenshotSha256": "6d0c3187319f184fae33fa57fb4a1886b6d122585b6ded38969755f46d0dea8a",
+          "captureSha256": "6b62142db532ad18aeb1719871fcf8d18ddc3717fce9166bbe7e4b6f6cc43fb2",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Independently review this exact two-ID display proposal, including the primary village-versus-fortress distinction and full source competitor inventory. Preserve the source Arabic spelling for this display decision; a separate per-ID spelling correction can use the primary قصر الجوامع spelling.",
+      "status": "proposed_exact_display_review",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities."
+    },
+    {
+      "cluster": "touil_oulad_zayed",
+      "pairCount": 1,
+      "currentPairIds": [
+        [
+          "osm:node:11525318199",
+          "osm:way:377996284"
+        ]
+      ],
+      "completeIdentityCandidateIds": [
+        "osm:node:11525318199",
+        "osm:way:377996284"
+      ],
+      "currentMembers": [
+        {
+          "id": "osm:node:11525318199",
+          "sourceId": "osm",
+          "name": "طويل أولاد زايد",
+          "aliases": [
+            "Touil Ouled Zayed"
+          ],
+          "kind": "hamlet",
+          "parentName": "رأس الوادي",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Ras El Oued",
+            "Tataouine Sud",
+            "رأس الوادي",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.7671737,
+          "lng": 10.2628336,
+          "delegationId": 624,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:11525318199"
+        },
+        {
+          "id": "osm:way:377996284",
+          "sourceId": "osm",
+          "name": "طويل أولاد زايد",
+          "aliases": [
+            "Touil Ouled Zayed"
+          ],
+          "kind": "residential",
+          "parentName": "رأس الوادي",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Ras El Oued",
+            "Tataouine Sud",
+            "رأس الوادي",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.766158,
+          "lng": 10.265125,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.262448,
+            32.764912,
+            10.266663,
+            32.7675
+          ],
+          "areaKm2": 0.026324605121398816,
+          "pickerGroupId": "osm:way:377996284",
+          "offset": 5393928,
+          "length": 620
+        }
+      ],
+      "priorSourceReview": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-same-subtitle12-source-review.json",
+        "sha256": "ef4d73b4bced5e7a2d6287d017ba2b09ef185e323b7fe6c7762bcbc4340fcff7",
+        "recordSelector": {
+          "cluster": "touil_oulad_zayed"
+        }
+      },
+      "priorSourceFacts": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+      },
+      "historicalPhoneEvidence": [
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/15",
+          "id": "osm:way:377996284",
+          "query": "طويل أولاد زايد رأس الوادي تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "same_name_poi",
+          "finding": "Touil Oulad Zayed / طويل اولاد زايد is a rated Religious destination point card, not a residential-area card. Its same-name label does not establish the fragment extent.",
+          "screenshot": "outputs/phone-maps-review/osm_way_377996284-1.png",
+          "screenshotSha256": "b82ea91cee381f32cc7cf84b72971149fd37affa19eb2943bb71ee34ae11f57d",
+          "captureSha256": "8b82e1519047951383878d29b0bb58cd9cc76173246ef7cf72a783f10fd583b3",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle13-visual-review.json",
+            "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc"
+          },
+          "jsonPointer": "/reviews/16",
+          "id": "osm:node:11525318199",
+          "query": "طويل أولاد زايد رأس الوادي تطاوين Tunisia",
+          "observationIndex": 1,
+          "classification": "same_name_poi",
+          "finding": "The source hamlet point returns the same Touil Oulad Zayed Religious destination card. It does not prove that the source point and residential polygon represent the same complete locality.",
+          "screenshot": "outputs/phone-maps-review/osm_node_11525318199-1.png",
+          "screenshotSha256": "1c4e5ded66d6a41af72d763dd0d81a8388d95b08a71168fca4b14b5ad90af921",
+          "captureSha256": "50f3de673543882b517f09ac9c83e2a9e6e5a2223d15aa35369eed2bba1e730a",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        },
+        {
+          "report": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-same-subtitle8-followup-visual-review.json",
+            "sha256": "85e93218271a410c0a4e512da9fe9db3a34a1e9f6d81b5d3257b964966c77939"
+          },
+          "jsonPointer": "/reviews/5",
+          "id": "osm:node:11525318199",
+          "query": "Touil Ouled Zayed Tataouine Tunisia",
+          "observationIndex": 2,
+          "classification": "ambiguous_results",
+          "finding": "The list contains the same-name Touil Oulad Zayed Religious destination and a shorter Touil candidate at a separate map pin near Chenini. No result is selected, and neither candidate is assumed to define the full source hamlet or residential fragment.",
+          "screenshot": "outputs/phone-maps-review/osm_node_11525318199-2.png",
+          "screenshotSha256": "0e0a48ba637d89304a7b19f0476e901476365ad053783965130638cb72d93a6d",
+          "captureSha256": "ba812e631e77146e40445d2b1a97d843e37b050e1893e6ea6285f554b0fbaf63",
+          "evidenceScope": "Existing historical visual review only; no new phone or ledger access, no boundary certification."
+        }
+      ],
+      "nextConcreteCheck": "Obtain a primary settlement/address reference that separates the inhabited hamlet from the same-name peak/religious destination and binds the exact residential fragment to that hamlet. The shorter Touil phone candidate remains ambiguous; no full-village polygon is mandatory.",
+      "status": "held",
+      "sourceAuditLabelCaveat": "Disjoint geometry does not by itself establish separate homonymous localities."
+    }
+  ],
+  "proposals": [
+    {
+      "status": "proposed_for_independent_display_identity_review",
+      "applied": false,
+      "method": "reviewed_primary_source_named_settlement",
+      "id": "osm:way:129895999",
+      "targetPickerGroupId": "osm:node:1432323476",
+      "expectedExistingMemberIds": [
+        "osm:way:129895999"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:1432323476"
+      ],
+      "expectedGovernorateId": 356,
+      "expectedParentName": "الغرابة",
+      "expectedContextAliases": [
+        "Béja Nord",
+        "Délégation Béja Nord",
+        "El Ghraba",
+        "الغرابة",
+        "معتمدية باجة الشمالية"
+      ],
+      "expectedDelegationId": 514,
+      "members": [
+        {
+          "id": "osm:way:129895999",
+          "current": {
+            "id": "osm:way:129895999",
+            "sourceId": "osm",
+            "name": "الصفاية",
+            "aliases": [
+              "Essfaya"
+            ],
+            "kind": "residential",
+            "parentName": "الغرابة",
+            "contextAliases": [
+              "Béja Nord",
+              "Délégation Béja Nord",
+              "El Ghraba",
+              "الغرابة",
+              "معتمدية باجة الشمالية"
+            ],
+            "governorateId": 356,
+            "lat": 36.910262,
+            "lng": 9.178116,
+            "delegationId": 514,
+            "hasBoundary": true,
+            "bbox": [
+              9.176499,
+              36.907132,
+              9.181714,
+              36.913705
+            ],
+            "areaKm2": 0.06916678699487354,
+            "pickerGroupId": "osm:way:129895999",
+            "offset": 5216432,
+            "length": 380
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:fr": "Essfaya"
+          },
+          "originalGeometrySha256": "a973914972b3655e7de0d654ec5b6ab61ee3f9ad0833c68c543a45e82ffa7ad3",
+          "effectiveOriginalGeometrySha256": "a973914972b3655e7de0d654ec5b6ab61ee3f9ad0833c68c543a45e82ffa7ad3",
+          "packedGeometrySha256": "a44dcb637d7d13b16bb1a51a8109cc07dfd59390cb4e97d5de5032caa40eefc0",
+          "independentNearestPrayerSource": 514
+        },
+        {
+          "id": "osm:node:1432323476",
+          "current": {
+            "id": "osm:node:1432323476",
+            "sourceId": "osm",
+            "name": "الصفاية",
+            "aliases": [
+              "Essfaya"
+            ],
+            "kind": "hamlet",
+            "parentName": "الغرابة",
+            "contextAliases": [
+              "Béja Nord",
+              "Délégation Béja Nord",
+              "El Ghraba",
+              "الغرابة",
+              "معتمدية باجة الشمالية"
+            ],
+            "governorateId": 356,
+            "lat": 36.9084743,
+            "lng": 9.1788288,
+            "delegationId": 514,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:1432323476"
+          },
+          "expectedOriginalTags": {
+            "addr:governorate": "Béja",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:en": "Essfaya",
+            "name:fr": "Essfaya",
+            "place": "hamlet"
+          },
+          "originalGeometrySha256": "19ebe22e908889217152bbd630946b77a4a49bad8a65f2f882c98e5cb93ad1c9",
+          "effectiveOriginalGeometrySha256": "19ebe22e908889217152bbd630946b77a4a49bad8a65f2f882c98e5cb93ad1c9",
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 514
+        }
+      ],
+      "exactNameEvidence": {
+        "arabic": "الصفاية",
+        "latin": "Essfaya",
+        "arabicTag": "name:ar",
+        "latinTag": "name:fr"
+      },
+      "codedContext": {
+        "id": "osm:relation:7189408",
+        "current": {
+          "id": "osm:relation:7189408",
+          "sourceId": "osm",
+          "name": "الغرابة",
+          "aliases": [
+            "El Ghraba"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية باجة الشمالية",
+          "contextAliases": [
+            "Béja Nord",
+            "Délégation Béja Nord",
+            "معتمدية باجة الشمالية"
+          ],
+          "governorateId": 356,
+          "lat": 36.89209,
+          "lng": 9.206346,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.142816,
+            36.86225,
+            9.275024,
+            36.92198
+          ],
+          "areaKm2": 41.8043428558259,
+          "pickerGroupId": "osm:relation:7189408",
+          "offset": 4534708,
+          "length": 7956
+        },
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الغرابة",
+          "name:ar": "الغرابة",
+          "name:fr": "El Ghraba",
+          "ref:tn:codegeo": "215163"
+        },
+        "originalGeometrySha256": "cecb1b99c0ae6fefa5a418520ec326421da2869d5ee3c6d28f339e155b668520",
+        "packedGeometrySha256": "19974f9060ece1f24d06d874b49442b2ad90c35aa13f58659a14b17ecd7a7ec9",
+        "currentOfficialRecord": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2151",
+          "delegationFr": "Beja nord",
+          "delegationAr": "باجة الشمالية",
+          "sectorCode": "215163",
+          "sectorFr": "El ghraba",
+          "sectorAr": "الغرابة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20264,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 901,
+            "Nombre_de_menages_par_Secteurs.xlsx": 900
+          }
+        },
+        "originalAndPackagedContainBothMembers": true
+      },
+      "competitorInventory": {
+        "source": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\direct-pbf-context-inventory.json",
+          "sha256": "0b874f17a6f69d73e8cc18b40ad0b592307a3f6723f70296e0e72e228e430271"
+        },
+        "matchingPlaceIds": [
+          "osm:node:1432323476"
+        ],
+        "matchingResidentialIds": [
+          "osm:way:129895999"
+        ],
+        "otherSameNameSourceObjects": [],
+        "allNamedContextObjects": [
+          {
+            "id": "osm:node:1432323476",
+            "tags": {
+              "addr:governorate": "Béja",
+              "name": "الصفاية",
+              "name:ar": "الصفاية",
+              "name:en": "Essfaya",
+              "name:fr": "Essfaya",
+              "place": "hamlet"
+            }
+          },
+          {
+            "id": "osm:relation:7189408",
+            "tags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الغرابة",
+              "name:ar": "الغرابة",
+              "name:fr": "El Ghraba",
+              "ref:tn:codegeo": "215163"
+            }
+          },
+          {
+            "id": "osm:way:129895999",
+            "tags": {
+              "landuse": "residential",
+              "name": "الصفاية",
+              "name:ar": "الصفاية",
+              "name:fr": "Essfaya"
+            }
+          }
+        ]
+      },
+      "pointOutsideResidential": {
+        "original": true,
+        "packaged": true,
+        "originalGapMeters": 6.54652473414073,
+        "usedAsIdentityRule": false
+      },
+      "proposedMutation": {
+        "id": "osm:way:129895999",
+        "field": "pickerGroupId",
+        "before": "osm:way:129895999",
+        "after": "osm:node:1432323476"
+      },
+      "preservation": [
+        "Both raw stable IDs, raw names/aliases, coordinates, kinds, parent/context and manual prayer defaults.",
+        "Existing residential polygon bytes; no point relocation, missing-extent synthesis, hull, buffer or snapping.",
+        "No observation becomes fresh and no Google result is treated as source identity or boundary certification."
+      ],
+      "reviewerInference": "The exact matching source objects represent one named inhabited settlement, supported by a primary village reference, a unique complete source settlement inventory and unchanged administrative/prayer context. This is a reviewed display-identity inference, not external certification of either geometry.",
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\official\\odno-tourism-circuits-2020.pdf",
+        "sha256": "44f9bceb487754e554c4b96885f5eff183380eb9d9edfd9ea3976f1e94159d60",
+        "url": "https://odno.nat.tn/wp-content/uploads/2026/04/ODNO_04_tourisme-aletrnatif-Phase-2-Rapp-final-octobre-2020-circuits_compressed.pdf",
+        "pages": [
+          63,
+          64
+        ],
+        "finding": "ODNO names Essfaya among the circuit villages and marks it between Jemil and El Koussa in the northern Beja corridor. The source is a regional tourism map, not a cadastral or settlement-extent map.",
+        "visuallyReviewedRenders": [
+          {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\official\\odno-page-63.png",
+            "sha256": "4d6b0ef81f64840c75fee8110ddd28ffa410cb4b9cb243d9e58e7918c5c3f2e9"
+          },
+          {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\official\\odno-page-64.png",
+            "sha256": "eeccd3a467d6ca796cabda88bf72fbe29490e79e0fd65c034568eecd977a157b"
+          }
+        ]
+      },
+      "limitations": [
+        "The regional map does not independently resolve the6.5m point/ring gap or identify source object IDs; it supplies locality identity and regional context.",
+        "No explicit addr:place/shared persistent locality reference exists on both objects. Acceptance therefore requires review of the complete named-settlement evidence, not the already-supported Tijma address method.",
+        "Houch Essefaya is a differently named source hamlet outside this sector; Kef/SidiBouzid namesakes are not this Beja location."
+      ]
+    },
+    {
+      "status": "proposed_for_independent_display_identity_review",
+      "applied": false,
+      "method": "reviewed_primary_source_named_settlement",
+      "id": "osm:way:377116351",
+      "targetPickerGroupId": "osm:node:11230028572",
+      "expectedExistingMemberIds": [
+        "osm:way:377116351"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:11230028572"
+      ],
+      "expectedGovernorateId": 353,
+      "expectedParentName": "رحالة",
+      "expectedContextAliases": [
+        "Beni Khedache",
+        "Délégation Beni Khedech",
+        "Rahala",
+        "رحالة",
+        "معتمدية بني خداش"
+      ],
+      "expectedDelegationId": 489,
+      "members": [
+        {
+          "id": "osm:way:377116351",
+          "current": {
+            "id": "osm:way:377116351",
+            "sourceId": "osm",
+            "name": "قصر الجؤامع",
+            "aliases": [
+              "Ksar Jouamaa"
+            ],
+            "kind": "residential",
+            "parentName": "رحالة",
+            "contextAliases": [
+              "Beni Khedache",
+              "Délégation Beni Khedech",
+              "Rahala",
+              "رحالة",
+              "معتمدية بني خداش"
+            ],
+            "governorateId": 353,
+            "lat": 33.254487,
+            "lng": 10.253962,
+            "delegationId": 489,
+            "hasBoundary": true,
+            "bbox": [
+              10.251712,
+              33.253768,
+              10.255851,
+              33.255249
+            ],
+            "areaKm2": 0.031242931025491163,
+            "pickerGroupId": "osm:way:377116351",
+            "offset": 5391092,
+            "length": 260
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "قصر الجؤامع",
+            "name:aeb": "قصر الجؤامع",
+            "name:ar": "قصر الجؤامع",
+            "name:en": "Ksar Jouamaa"
+          },
+          "originalGeometrySha256": "73874f1d151f36304b7a7bc17b40b5a51b9cb76ff9f9d7ec464f4bcd5a2f5b50",
+          "effectiveOriginalGeometrySha256": "73874f1d151f36304b7a7bc17b40b5a51b9cb76ff9f9d7ec464f4bcd5a2f5b50",
+          "packedGeometrySha256": "6e24821a504961d2e7c280fff260858d387ec767d66d0b5c8ed00aacb2afba6d",
+          "independentNearestPrayerSource": 489
+        },
+        {
+          "id": "osm:node:11230028572",
+          "current": {
+            "id": "osm:node:11230028572",
+            "sourceId": "osm",
+            "name": "قصر الجؤامع",
+            "aliases": [
+              "Ksar Jouamaa"
+            ],
+            "kind": "village",
+            "parentName": "رحالة",
+            "contextAliases": [
+              "Beni Khedache",
+              "Délégation Beni Khedech",
+              "Rahala",
+              "رحالة",
+              "معتمدية بني خداش"
+            ],
+            "governorateId": 353,
+            "lat": 33.2538427,
+            "lng": 10.2529122,
+            "delegationId": 489,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11230028572"
+          },
+          "expectedOriginalTags": {
+            "name": "قصر الجؤامع",
+            "name:aeb": "قصر الجؤامع",
+            "name:ar": "قصر الجؤامع",
+            "name:en": "Ksar Jouamaa",
+            "place": "village"
+          },
+          "originalGeometrySha256": "9d1578f8a2336059be6cb9eea1486d96761227c312c30be6480fddc2a25ef39c",
+          "effectiveOriginalGeometrySha256": "9d1578f8a2336059be6cb9eea1486d96761227c312c30be6480fddc2a25ef39c",
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 489
+        }
+      ],
+      "exactNameEvidence": {
+        "arabic": "قصر الجؤامع",
+        "latin": "Ksar Jouamaa",
+        "arabicTag": "name:ar",
+        "latinTag": "name:en"
+      },
+      "codedContext": {
+        "id": "osm:relation:7142977",
+        "current": {
+          "id": "osm:relation:7142977",
+          "sourceId": "osm",
+          "name": "رحالة",
+          "aliases": [
+            "Rahala"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية بني خداش",
+          "contextAliases": [
+            "Beni Khedache",
+            "Délégation Beni Khedech",
+            "معتمدية بني خداش"
+          ],
+          "governorateId": 353,
+          "lat": 33.236867,
+          "lng": 10.264415,
+          "delegationId": 489,
+          "hasBoundary": true,
+          "bbox": [
+            10.223343,
+            33.204252,
+            10.299397,
+            33.269492
+          ],
+          "areaKm2": 30.494456613710096,
+          "pickerGroupId": "osm:relation:7142977",
+          "offset": 2013928,
+          "length": 1324
+        },
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "رحالة",
+          "name:ar": "رحالة",
+          "name:fr": "Rahala",
+          "ref:tn:codegeo": "525352"
+        },
+        "originalGeometrySha256": "5adc3b140b52b5fa7593dd3adf89a260ced10a466d47158f04bbd36007af2993",
+        "packedGeometrySha256": "661a5fb8a48d2866e368ad869261a03d3b88ed7a2f922547f94c13470b7a2163",
+        "currentOfficialRecord": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5253",
+          "delegationFr": "Beni khedech",
+          "delegationAr": "بني خداش",
+          "sectorCode": "525352",
+          "sectorFr": "Rahala",
+          "sectorAr": "رحالة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60858,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2992,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2986
+          }
+        },
+        "originalAndPackagedContainBothMembers": true
+      },
+      "competitorInventory": {
+        "source": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\direct-pbf-context-inventory.json",
+          "sha256": "0b874f17a6f69d73e8cc18b40ad0b592307a3f6723f70296e0e72e228e430271"
+        },
+        "matchingPlaceIds": [
+          "osm:node:11230028572"
+        ],
+        "matchingResidentialIds": [
+          "osm:way:377116351"
+        ],
+        "otherSameNameSourceObjects": [
+          {
+            "id": "osm:node:10204325737",
+            "tags": {
+              "name": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa",
+              "tourism": "hotel"
+            }
+          },
+          {
+            "id": "osm:node:10204327795",
+            "tags": {
+              "amenity": "restaurant",
+              "name": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa"
+            }
+          },
+          {
+            "id": "osm:way:375936003",
+            "tags": {
+              "building": "yes",
+              "historic": "ruins",
+              "name": "قصر الجؤامع",
+              "name:aeb": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:fr": "Ksar Jouamaa",
+              "name:it": "kshar jouamaa"
+            }
+          }
+        ],
+        "allNamedContextObjects": [
+          {
+            "id": "osm:node:10204325737",
+            "tags": {
+              "name": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa",
+              "tourism": "hotel"
+            }
+          },
+          {
+            "id": "osm:node:10204327795",
+            "tags": {
+              "amenity": "restaurant",
+              "name": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa"
+            }
+          },
+          {
+            "id": "osm:node:11230028572",
+            "tags": {
+              "name": "قصر الجؤامع",
+              "name:aeb": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa",
+              "place": "village"
+            }
+          },
+          {
+            "id": "osm:node:11539356608",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "historic:civilization": "modern",
+              "name": "El Souima ruines"
+            }
+          },
+          {
+            "id": "osm:node:11539356615",
+            "tags": {
+              "access": "yes",
+              "historic:civilization": "modern",
+              "name": "Oum ez Ziana",
+              "place": "locality"
+            }
+          },
+          {
+            "id": "osm:node:11539356616",
+            "tags": {
+              "name": "Sidi Said ben Salah",
+              "place": "hamlet"
+            }
+          },
+          {
+            "id": "osm:node:11539366343",
+            "tags": {
+              "name": "Taouerlane",
+              "place": "locality"
+            }
+          },
+          {
+            "id": "osm:relation:7142977",
+            "tags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "رحالة",
+              "name:ar": "رحالة",
+              "name:fr": "Rahala",
+              "ref:tn:codegeo": "525352"
+            }
+          },
+          {
+            "id": "osm:way:1180568054",
+            "tags": {
+              "access": "yes",
+              "historic": "ruins",
+              "name": "Ksar",
+              "ruins": "fortress"
+            }
+          },
+          {
+            "id": "osm:way:1185182509",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "Draa Kaid ruines 01"
+            }
+          },
+          {
+            "id": "osm:way:1185182516",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "Draa Kaid ruines 02"
+            }
+          },
+          {
+            "id": "osm:way:1185395766",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "ruines près de la Tsmed 01"
+            }
+          },
+          {
+            "id": "osm:way:1185395767",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "ruines près de la Tsmed 02"
+            }
+          },
+          {
+            "id": "osm:way:1185399595",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "Ksar El Guesirate - runines 01"
+            }
+          },
+          {
+            "id": "osm:way:1185399596",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "Ksar El Guesirate - runines 02"
+            }
+          },
+          {
+            "id": "osm:way:1219110441",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "ruines"
+            }
+          },
+          {
+            "id": "osm:way:1241876119",
+            "tags": {
+              "access": "yes",
+              "historic": "archaeological_site",
+              "name": "Sidi Said ben Salah ruines"
+            }
+          },
+          {
+            "id": "osm:way:375936003",
+            "tags": {
+              "building": "yes",
+              "historic": "ruins",
+              "name": "قصر الجؤامع",
+              "name:aeb": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:fr": "Ksar Jouamaa",
+              "name:it": "kshar jouamaa"
+            }
+          },
+          {
+            "id": "osm:way:377116351",
+            "tags": {
+              "landuse": "residential",
+              "name": "قصر الجؤامع",
+              "name:aeb": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa"
+            }
+          },
+          {
+            "id": "osm:way:403828939",
+            "tags": {
+              "amenity": "school",
+              "barrier": "wall",
+              "name": "مدرسة قمانة",
+              "name:ar": "مدرسة قمانة",
+              "name:fr": "École Primaire Gmana"
+            }
+          }
+        ]
+      },
+      "pointOutsideResidential": {
+        "original": true,
+        "packaged": true,
+        "originalGapMeters": 2.834604018778866,
+        "usedAsIdentityRule": false
+      },
+      "proposedMutation": {
+        "id": "osm:way:377116351",
+        "field": "pickerGroupId",
+        "before": "osm:way:377116351",
+        "after": "osm:node:11230028572"
+      },
+      "preservation": [
+        "Both raw stable IDs, raw names/aliases, coordinates, kinds, parent/context and manual prayer defaults.",
+        "Existing residential polygon bytes; no point relocation, missing-extent synthesis, hull, buffer or snapping.",
+        "No observation becomes fresh and no Google result is treated as source identity or boundary certification."
+      ],
+      "reviewerInference": "The exact matching source objects represent one named inhabited settlement, supported by a primary village reference, a unique complete source settlement inventory and unchanged administrative/prayer context. This is a reviewed display-identity inference, not external certification of either geometry.",
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\dahar-ksar-jouamaa.html",
+        "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832",
+        "url": "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa",
+        "finding": "The GMG field inventory explicitly distinguishes the inhabited Ksar Jouamaa village from the nearby fortress in Beni Khedache. It names a school and clinic in the vicinity; the source PBF separately identifies the village/residential pair and hotel/restaurant/ruins.",
+        "publishedGpsScope": "Fortress, never village point or polygon vertices.",
+        "publishedFortressPoint": {
+          "lng": 10.2586,
+          "lat": 33.25131944444445
+        },
+        "fortressPointInsideSeparateRuins": false,
+        "fortressPointDistancesMeters": {
+          "osm:way:377116351": 431.2746136299644,
+          "osm:node:11230028572": 599.2292408091604,
+          "osm:way:375936003": 3.4118283371745797
+        }
+      },
+      "limitations": [
+        "The field inventory describes the village-to-fortress relationship but does not list OSM IDs or certify the residential ring.",
+        "No explicit addr:place/shared persistent locality reference exists on both objects. The unique source settlement identity and separate POI inventory are the proposed basis; a2.8m gap alone is not.",
+        "Source Arabic الجؤامع differs from primary الجوامع. Preserve both current names for this proposed display link; any spelling correction needs its own reviewed per-ID decision."
+      ]
+    }
+  ],
+  "process": {
+    "newPbfProcessExitCode": 0,
+    "newPbfObjects": 25,
+    "noPhoneOrLedgerAccess": true,
+    "noRepoEditsOrGeneration": true,
+    "noTestsOrBuild": true
+  },
+  "scope": "Two candidate display identities, separately from missing full-locality boundaries. Preserve the eight other pair relationships as held. Exact primary names, types and source inventory are reviewed, never a global proximity merge rule."
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sector-2023-ettadhamen4-historical-rename",
+  "boundarySource": {
+    "file": "official/two-historical-sectors-20260920/ettadhamen4-source.geojson",
+    "sha256": "5ecc75bf902793294f2edd27ac0f6c3f066867f3ea50c99373436411aeb429c9"
+  },
+  "baselineMetadata": {
+    "file": "official/two-historical-sectors-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "d396925c0a7adb85010fb1a2b3f839ffcea939bc12b59a0da6c04d23c57d79a4"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7115584",
+      "officialCode": "125657",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7115584",
+        "sourceId": "osm",
+        "name": "7 نوفمبر",
+        "aliases": [
+          "7 Novembre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي التضامن",
+        "contextAliases": [
+          "Délégation Cité Ettadhamen",
+          "Ettadhamen",
+          "معتمدية حي التضامن"
+        ],
+        "governorateId": 358,
+        "lat": 36.835375,
+        "lng": 10.097386,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.092637,
+          36.830995,
+          10.102708,
+          36.839744
+        ],
+        "areaKm2": 0.4094399263261814,
+        "pickerGroupId": "osm:relation:7115584",
+        "offset": 1041396,
+        "length": 612
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.835375,
+        "lng": 10.097386
+      },
+      "expectedNearestId": 534
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/geometry-facts.json",
+      "sha256": "6b659d39e27c85659831a60ef2485e1f1b04d1b22b8ac761433fb0212e0f11bb"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/impact-facts.json",
+      "sha256": "70215bbff849dd22f3659dc343a0471780e1ceae9471bc8ff3539044c162581f"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/decree-scope-facts.json",
+      "sha256": "edb81f7eefa75a6082e6b86874778228abd10f604ac173376f0faeae6e4b4733"
+    }
+  ]
+}

@@ -1,0 +1,3327 @@
+{
+  "schemaVersion": 1,
+  "status": "FRESH_FOUR_PRIMARY_REFERENCES_AND_BOUNDED_JOINT_NUMERIC_PROJECTION",
+  "createdAtUtc": "2026-09-19T11:29:21.882479+00:00",
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+      "bytes": 1851425
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568",
+      "bytes": 5536120
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "bytes": 54578
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "5674700028ce7e29dd44b1239264d3abab44c5d762eb82ce452fb7831edeee21",
+      "bytes": 13162
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "55cb693c58e7da2c6c680869a30fbcb31bbb4abea4c49867600387471ee3141e",
+      "bytes": 419286
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "edc9b5f969bdb1387c9b8fca93e1ef999cb2af444d1921e9b34ea241633419a2",
+      "bytes": 615989
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "533e1acd0a898e9eb05aa343897c1e5eeae5a818604ad9e9f0f7480941e6c9bc",
+      "bytes": 155840
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "7f4a47f43695272401599976f64f74aba5ad3867d2226ce0f394190bc446a4a1",
+      "bytes": 642686
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-source-design-20260919\\sourcefacts-and-design.json",
+      "sha256": "bd9896d395bfcb9760dd21461042fb39da5170112fda695c9f0fd1a3873b1dcc",
+      "bytes": 29489
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bardo-coordinate-phone-review-20260919.json",
+      "sha256": "7b8f6eb0cfa1f7b111602561079b57b4e904afbbacc88a10a8213befd9a9ec91",
+      "bytes": 3592
+    }
+  ],
+  "originalRetrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\retrievals.json",
+      "sha256": "9dde0dd90159e3416ec82811dda3f78f1af3fd1775e619810cf813465320512d",
+      "bytes": 3383
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\adjacent-retrievals.json",
+      "sha256": "4e213bf9b7675dc0516aae283a5c06367c552e55e8df0d50932b5481150581e6",
+      "bytes": 6128
+    }
+  ],
+  "freshPublishedSources": [
+    {
+      "id": 391,
+      "governorateId": 342,
+      "baseCurrent": {
+        "id": 391,
+        "nomFr": "Omrane",
+        "nomAr": "العمران",
+        "nomEn": "Omrane",
+        "lat": 36.82,
+        "lng": 10.155
+      },
+      "publishedPoint": {
+        "lat": 36.818,
+        "lng": 10.168
+      },
+      "responses": {
+        "prayer": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\391-prayer-2026-09-19.json",
+            "sha256": "064de7dffdda425774e3aed4697698703bfac9c5b76aed75806371d4b5d8ec73",
+            "bytes": 533
+          },
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/391/",
+          "point": {
+            "lat": 36.818,
+            "lng": 10.168
+          }
+        },
+        "sun": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\391-sun-2026-09-19.json",
+            "sha256": "8422d73488b49a5730330d2604c01a97816b6b30af92f08cecd0ccd20a73f5be",
+            "bytes": 502
+          },
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/391/",
+          "point": {
+            "lat": 36.818,
+            "lng": 10.168
+          }
+        }
+      }
+    },
+    {
+      "id": 393,
+      "governorateId": 342,
+      "baseCurrent": {
+        "id": 393,
+        "nomFr": "Ettahrir",
+        "nomAr": "التحرير",
+        "nomEn": "Ettahrir",
+        "lat": 36.8244,
+        "lng": 10.1283
+      },
+      "publishedPoint": {
+        "lat": 36.823,
+        "lng": 10.133
+      },
+      "responses": {
+        "prayer": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\393-prayer-2026-09-19.json",
+            "sha256": "29f95ede13475726e30c437326360ed2c4703ee6091716adc28a9ece744c78f1",
+            "bytes": 537
+          },
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/393/",
+          "point": {
+            "lat": 36.823,
+            "lng": 10.133
+          }
+        },
+        "sun": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\393-sun-2026-09-19.json",
+            "sha256": "be1387cd8a76bfa003031a8d3ceb253d012b01e051adf37a8fb312cc38b2ed09",
+            "bytes": 506
+          },
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/393/",
+          "point": {
+            "lat": 36.823,
+            "lng": 10.133
+          }
+        }
+      }
+    },
+    {
+      "id": 394,
+      "governorateId": 342,
+      "baseCurrent": {
+        "id": 394,
+        "nomFr": "Bardo",
+        "nomAr": "باردو",
+        "nomEn": "Bardo",
+        "lat": 36.8092,
+        "lng": 10.1364
+      },
+      "publishedPoint": {
+        "lat": 36.814,
+        "lng": 10.141
+      },
+      "responses": {
+        "prayer": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\394-prayer-2026-09-19.json",
+            "sha256": "cdea280043eef09a507ec6e2890c4997779d8bce4a402b9b892984125b633e17",
+            "bytes": 519
+          },
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/394/",
+          "point": {
+            "lat": 36.814,
+            "lng": 10.141
+          }
+        },
+        "sun": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\394-sun-2026-09-19.json",
+            "sha256": "ef127cdc4f1b41c4befef8bf35eeb5839e48ffa3b69af78d7e4a7b54bfc24e0b",
+            "bytes": 488
+          },
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/394/",
+          "point": {
+            "lat": 36.814,
+            "lng": 10.141
+          }
+        }
+      }
+    },
+    {
+      "id": 396,
+      "governorateId": 342,
+      "baseCurrent": {
+        "id": 396,
+        "nomFr": "Ezzouhour",
+        "nomAr": "الزهور",
+        "nomEn": "Ezzouhour",
+        "lat": 36.7967,
+        "lng": 10.1332
+      },
+      "publishedPoint": {
+        "lat": 36.799,
+        "lng": 10.135
+      },
+      "responses": {
+        "prayer": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\396-prayer-2026-09-19.json",
+            "sha256": "9619ccf6fd8b379f1871b4cc3b7924fa04f46af9687a3d92227adefb27c1b89c",
+            "bytes": 533
+          },
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/396/",
+          "point": {
+            "lat": 36.799,
+            "lng": 10.135
+          }
+        },
+        "sun": {
+          "source": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\396-sun-2026-09-19.json",
+            "sha256": "5507f31572962898354f27980cfff60379031ff889401462499d847ae87caf9f",
+            "bytes": 502
+          },
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/396/",
+          "point": {
+            "lat": 36.799,
+            "lng": 10.135
+          }
+        }
+      }
+    }
+  ],
+  "freshPublicTownNode": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\town-287558953-current.json",
+      "sha256": "8c0bcaebc4e5739a498c63163ec5c4626068db35247488a731f35248f707f35a",
+      "bytes": 622
+    },
+    "url": "https://api.openstreetmap.org/api/0.6/node/287558953.json",
+    "exactElement": {
+      "type": "node",
+      "id": 287558953,
+      "lat": 36.8139969,
+      "lon": 10.1363018,
+      "timestamp": "2025-12-27T23:04:23Z",
+      "version": 26,
+      "changeset": 176507655,
+      "user": "Yovân El-Mekh",
+      "uid": 23638457,
+      "tags": {
+        "name": "باردو",
+        "name:ar": "باردو",
+        "name:en": "Le Bardo",
+        "name:fa": "باردو",
+        "name:fr": "Le Bardo",
+        "name:he": "בארדו",
+        "name:ru": "Ле Бардо",
+        "place": "town"
+      }
+    },
+    "equalToOriginalTagsAndCoordinates": true
+  },
+  "sourceEligibility": {
+    "availableCount": 258,
+    "rejectedIds": [
+      495
+    ],
+    "oneIndependentlyValidatedCompleteMonthPerAvailableSource": [
+      {
+        "delegationId": 386,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\386\\2026\\01.csv",
+          "sha256": "76ca64e871a6e4bbb200d450ac6162d5dba8ced87c5ad8f85603cce7f8c761e9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 387,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\387\\2026\\01.csv",
+          "sha256": "90ad1360eaf7fca3279fbef563dd3771314938c388accba51256066268bcaae4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 388,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\388\\2026\\01.csv",
+          "sha256": "eaf2c767d99ec259aafcbe3aa960be396c5f4b529a732a2c23c04e7644b475c8",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 389,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\389\\2026\\01.csv",
+          "sha256": "344e4705ce36026b191de3c0d3e3168e46924ef4b3e1bbb5c7067ca66baa6e78",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 390,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\390\\2026\\01.csv",
+          "sha256": "4fb43dba699e2294dacfbf7b0eb2110062c88bb895ca767c83f685ae7cb1724e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 391,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\391\\2026\\01.csv",
+          "sha256": "5f8b7eee6f64c8b8bba03c7ac111ba456df34c35d620f06641aaf83c1926e309",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 392,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\392\\2026\\01.csv",
+          "sha256": "4be22e7a67d08e29eb894f940a23cefb44bf0584bf37122d1c4f7903b7324fae",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 393,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\393\\2026\\01.csv",
+          "sha256": "37f1585032021a208387212813971df30a19771b405841f7edc406dd857c2e0d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 394,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\394\\2026\\01.csv",
+          "sha256": "21a4256a232ad37f44bf7b254dd0d8bb191e27721089d6261ab669bca56535a4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 395,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\395\\2026\\01.csv",
+          "sha256": "4ba26841ef170e52e924e46a79fad935694d0b383d85004879c6e9a6c7242da2",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 396,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\396\\2026\\01.csv",
+          "sha256": "bb44ce4657a2fe6635187782065c5325e166affb29c0f9caca5b09b261ab9396",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 397,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\397\\2026\\01.csv",
+          "sha256": "414652b0a9eb58b37b726778b91758a9b4e612776e1423158e56187c9c00bd75",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 398,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\398\\2026\\01.csv",
+          "sha256": "157c4aacc082d597ced9fb9067ad56dad140b04ec52bca0a657a4c7e1c6d2999",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 399,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\399\\2026\\01.csv",
+          "sha256": "776dfd42a3d9cafc80a42f8685344fc7f2df7efd11005df6b4a7c93c3a90ddf6",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 400,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\400\\2026\\01.csv",
+          "sha256": "88c7157119d6f0e9924ea3cd21ff93246c1412aacc7f1215c6f6436e5c9b8f2c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 401,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\401\\2026\\01.csv",
+          "sha256": "d864c0c9bce33a735a273eff531eacab37706efa56b8cf3e3665ef69e2d0fa41",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 402,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\402\\2026\\01.csv",
+          "sha256": "23b40a2dd01312096fda0dea47bd69b652f0a964970c7042096d87be208e8e34",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 403,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\403\\2026\\01.csv",
+          "sha256": "6e5290d97c9080575da430b3491e2f33f90dc0f1510a7878ae8db8e1f551a347",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 404,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\404\\2026\\01.csv",
+          "sha256": "fcf1d6c16ea698b3af4e1c54c6cbf91d2cbb693505b42755daf0dcd4120dbdc9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 405,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\405\\2026\\01.csv",
+          "sha256": "0fe1c54354872c56d37246399812800426f87a90a7d33b52ed65402cce508650",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 406,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\406\\2026\\01.csv",
+          "sha256": "58ccebe4a168f04148c6096243fd14d794a0d8326a91f5a8ccd88f314894cf74",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 615,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\615\\2026\\01.csv",
+          "sha256": "f924e5d84a877470c1f8531838572a2471a8af00209cf9c6e358ad45bfaee705",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 409,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\409\\2026\\01.csv",
+          "sha256": "52c16f51047f4d7cfea895904c377e67460c100e2eed41d5dcfbce518c06b7b9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 410,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\410\\2026\\01.csv",
+          "sha256": "0a37fa7ef022481120a8756adcbbb83622ef5f8bf2b2cb618e818d4c4ebb393f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 411,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\411\\2026\\01.csv",
+          "sha256": "c3e161886d7d13152768575b2d5c3bcc7115882fab200fa8e9ecd3e792a67222",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 412,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\412\\2026\\01.csv",
+          "sha256": "aae93645301e333e12ae19efd15a9821649d09c7a808eb50366cddb84435df3d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 413,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\413\\2026\\01.csv",
+          "sha256": "2ecd1faf73dda10c9c2f4819d522310de9532948a2785b94ec66af59d522277c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 616,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\616\\2026\\01.csv",
+          "sha256": "54cd0535d068a879078dfeadd4054268860f8d43e7e31f353c5bf9400ec33632",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 414,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\414\\2026\\01.csv",
+          "sha256": "00abee259e09a16b675babddeadab62442f45377469c641ab08fd07887bc8d5a",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 415,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\415\\2026\\01.csv",
+          "sha256": "64ed3ab41a1aa01e5c015893fe44bcb60dd6affcb519d156df349a509b7ffdb6",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 416,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\416\\2026\\01.csv",
+          "sha256": "29b66a68962fada4995a1b5ef30fe5d98d9690f8e4dcf12343dc237c047945db",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 417,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\417\\2026\\01.csv",
+          "sha256": "b38c9f92e275502e869defd3405dab74a8ef05b5c3c1478e1e62e8a6b9185517",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 418,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\418\\2026\\01.csv",
+          "sha256": "f60aa97fef4b8e4071f70f5a6af38176a4438c9835b1d32cad63331688c65b4e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 419,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\419\\2026\\01.csv",
+          "sha256": "bd3619dc9010dc10810215edb4aa0d26246ddf6ea978ca72e49a250026858347",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 420,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\420\\2026\\01.csv",
+          "sha256": "257505ebdae8e1f09d998968cd090b5649d5e1676fea67cae6f001976f257c56",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 421,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\421\\2026\\01.csv",
+          "sha256": "d1e69eaa0e6b680214f0a08da3421567f88b35392837682c59c7e510b08f3ba5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 422,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\422\\2026\\01.csv",
+          "sha256": "db54f47214177fc4a278d6caf203603853a603a37b8cad5f2cda6f642462c8ad",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 617,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\617\\2026\\01.csv",
+          "sha256": "7d9fa1702dacac8d4deeb91207044aa334ad53049ceb30737487507fc7ed8bab",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 423,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\423\\2026\\01.csv",
+          "sha256": "343b9616efadcb7bdf2c5d9360cedb0985d2c61596a54d9c4547b9d6547ef017",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 424,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\424\\2026\\01.csv",
+          "sha256": "36ea483fd99a2f53ebb6c1a5379d89d1107d96899bb769f8c4d0f3843a9010ef",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 425,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\425\\2026\\01.csv",
+          "sha256": "81fc9fbbc64f3c037f730e3708cf5c7802fcf040acf7a57878578145ac1399cd",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 426,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\426\\2026\\01.csv",
+          "sha256": "a24d1eeeb8cf55fe35aadc4a039ca507596115c3ed9d35e3153abbbdee41695f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 427,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\427\\2026\\01.csv",
+          "sha256": "afbeaed43c5b7daa1b487b71ac9e07070476cc8857bc91a348b36886d6a84ad7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 428,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\428\\2026\\01.csv",
+          "sha256": "54e298242396f2e357baabf5e7420f44e94b568ade497c189f710b58f8b4ade7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 429,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\429\\2026\\01.csv",
+          "sha256": "9c6c67f549aa425ec82ebf8c1fe5dbda55326ed9e63ef67da6b19ea2207f59e7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 430,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\430\\2026\\01.csv",
+          "sha256": "aacd8f293bd698eef451af949a5bd1c9e62438fed194fffed90d612d57a919c5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 431,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\431\\2026\\01.csv",
+          "sha256": "a335781bdffbc94bb8b9c33c5e1b2cd5775ade490d246059e414b650f2bb69a1",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 618,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\618\\2026\\01.csv",
+          "sha256": "9338b6dbe946530b332bcb2558269782d92a54c01d5f84a35d57913ed9dafd2d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 619,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\619\\2026\\01.csv",
+          "sha256": "50bb8960aae50b2291569650a2f9bf7ad0b4da338c5c1c9c016a261e4a0ebcb0",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1084,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1084\\2026\\01.csv",
+          "sha256": "eaa03edd5bc1cf3616494629b5866cab8d796ca4f2f4baaa08be68a4e5a13959",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 620,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\620\\2026\\01.csv",
+          "sha256": "09b7d8584b3f558a39c78f1e0ef5470783212f91fd7f62432cf80a6bac6849d5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1019,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1019\\2026\\01.csv",
+          "sha256": "74d7f33fd6b4c61b90d15ad625ead406f887015427585181f589a7bd426fcabf",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1020,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1020\\2026\\01.csv",
+          "sha256": "54270831047a554a708cf7759940671bf9860282aa208ad9bca93074d91a2bbe",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1021,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1021\\2026\\01.csv",
+          "sha256": "077c84b727e4cf52f89fe98554dcd70009bf8bc0ae23e6a03824e47fe35a2352",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1022,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1022\\2026\\01.csv",
+          "sha256": "ce62d9b9f1cc0cc7a5650ffe190215eccadf1f4788d1cc080936659009100054",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1023,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1023\\2026\\01.csv",
+          "sha256": "d3a6045b72bbb54718d234be50d9544fa39c8765f02298e873126683363add47",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1024,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1024\\2026\\01.csv",
+          "sha256": "052831342c4196194c9124019e1cec2e01c05d38ecba15756856f5b626764491",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1025,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1025\\2026\\01.csv",
+          "sha256": "a129899876ce4ddd403ab19ffd629bb8a6e1025c9048284135462a6f3219a333",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 433,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\433\\2026\\01.csv",
+          "sha256": "352ed249b40a622730ebfd1a7f0d0edfb9ac1464f9c8e7ac4ef6c3043c49d3fb",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 434,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\434\\2026\\01.csv",
+          "sha256": "199eb9b8b8ba763c02f8ec4dece64fc39f13bbf8d1c7e37f36c25f04b45d4ac7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 435,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\435\\2026\\01.csv",
+          "sha256": "a01db65a8d2a085045ef049a54396040bf93e0b5871dbb2436e6f3666d01298a",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 436,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\436\\2026\\01.csv",
+          "sha256": "9336971642aba30237326176b70a94c9bcb25aeb7c14e61dd62c495fd42de490",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 437,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\437\\2026\\01.csv",
+          "sha256": "8c7a6f4ac98225460eef175bc8cc8b564d329644ed8004aacb51ff9834bf72db",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 438,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\438\\2026\\01.csv",
+          "sha256": "c0251ceceeb2e375582af139a3e571eb9bbb19c11319090843df27372eac1ad8",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 439,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\439\\2026\\01.csv",
+          "sha256": "832bc3e1b086c26a0ff442c437a1f5e2846b4585748e8f7de27ef3167f4b7498",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 440,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\440\\2026\\01.csv",
+          "sha256": "3023abecd76a95f03bf9f49c1432c7403ac55f68c65ec6c8bc20aa974306aa91",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 441,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\441\\2026\\01.csv",
+          "sha256": "d2692f8cf3216d90877d5c2cd98c5dea3e19f4d040492e1316443889da7c9916",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 442,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\442\\2026\\01.csv",
+          "sha256": "29dd8bb6e64f2857b60b8c640b3e19f6d45f1c82dfbe3720172cf61bad63b129",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 443,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\443\\2026\\01.csv",
+          "sha256": "0c99234b7145f97a2c9b9d31dd12be03f347e4468c4d03b93b18db68dcb93baf",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 621,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\621\\2026\\01.csv",
+          "sha256": "fcaa963e54d3807956465816025bf97b2967aa0edb0b0fb47284707718c8a17d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 444,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\444\\2026\\01.csv",
+          "sha256": "6eed255c74730e140f326f9f533b2457175219c8fb11b6bc95854b2f99e8d5c0",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 445,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\445\\2026\\01.csv",
+          "sha256": "2f358b72b423785bab26e135c22ab3b94a811540e0604c0fdf18db83de6ef5b4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 446,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\446\\2026\\01.csv",
+          "sha256": "26ca3a4806003d0836dc447f2c425a55dcae37e95999aff15b11ce3642c28157",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 447,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\447\\2026\\01.csv",
+          "sha256": "8e55f36a0985302b73a620c14830cd6984734f4cd0f3b2c6ed3fb3ba393878f5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 448,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\448\\2026\\01.csv",
+          "sha256": "29fea5684c62dbb72b1a299f5e98d6ae144758339775dd1a5071799461251ad1",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 449,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\449\\2026\\01.csv",
+          "sha256": "eb81eb91d4b1870cdf84eb1a7b635f2e275a6098570469c90f32bda6fb38a139",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 450,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\450\\2026\\01.csv",
+          "sha256": "f68bd92a85b24a51c6afd3c4c659560352143497c4ac420b5e6295b05c7ff85f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 451,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\451\\2026\\01.csv",
+          "sha256": "dd0b225d7af66e44edf89094d73a47834bb86533d0a35d3a6eac6fe3d598d57c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 452,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\452\\2026\\01.csv",
+          "sha256": "743257348b57d39b42999f2dad5151a08ae62bd8642d8cff25cf359fdd39e5cb",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 453,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\453\\2026\\01.csv",
+          "sha256": "b9ba9ee545f6e177b78ba543601c07fbbac88c1c8bf743ef4520aef604c180aa",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 454,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\454\\2026\\01.csv",
+          "sha256": "3134348b12e13229832f9c290e0b369107a03c7c29608be1f64eda3b3cb98a3f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 622,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\622\\2026\\01.csv",
+          "sha256": "e02106881444689dae7ad8fc7307acffc54ca42738ab004934e3c329a7011673",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 455,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\455\\2026\\01.csv",
+          "sha256": "c39ef8ca5499dc0d8f21b53da2c3654233a0221362957922d58bcf6f6328c511",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 456,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\456\\2026\\01.csv",
+          "sha256": "b433871d54ef11a51a996646606ded8efcf7719fea847b27d9bff2f20a9049fd",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 457,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\457\\2026\\01.csv",
+          "sha256": "d163cdd2badae6aed2dba3b45c14cbc7623d508b473b5bcc8b818cfd62d35fc4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 458,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\458\\2026\\01.csv",
+          "sha256": "b755974a929c39762623f9ef9c25c2e50029ffea8c5cd0fe30d369d9b7c12823",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 459,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\459\\2026\\01.csv",
+          "sha256": "58ba46c7fdffe95aed6d5c4167d55248c97d2f482e64ac6c5a11b68122c1cd91",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 460,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\460\\2026\\01.csv",
+          "sha256": "32cf09d3dc4d1fb1685a629157446e76f05522c821ab76ec375dfeec397846de",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 461,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\461\\2026\\01.csv",
+          "sha256": "148b1c0a58cce9b5de4d03cd6711eb312f883702ae6af11f61118d3d5537d1a9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 462,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\462\\2026\\01.csv",
+          "sha256": "f6e81cacb4902c7fb509ce372d20def5e4696952f992c8db3e4434b05207721a",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 463,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\463\\2026\\01.csv",
+          "sha256": "dc6600ded90f273640c32507d7e83228f807f81a95df0a1d0cb9b7e1208dc9f3",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 464,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\464\\2026\\01.csv",
+          "sha256": "181c3f5fa36780f4fde17cf63366ee92800314bebfe2ebf7761107abe522ce61",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 465,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\465\\2026\\01.csv",
+          "sha256": "7b092efcf87d313195e6afffefaf6ad7c64f58213d41fb789a24cee79e329323",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 466,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\466\\2026\\01.csv",
+          "sha256": "974feb29ef8eddd39f48b387acbc1099587e538503ea542ab67b65eb0f0d73f0",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 467,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\467\\2026\\01.csv",
+          "sha256": "5b4333d219a09d94250d2d565c9e4ec00325a5aca5ec4e0dd837774dfb8beed1",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 468,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\468\\2026\\01.csv",
+          "sha256": "990c0646d500735165af1052b68ea18f2ca2640abd6b2456330c368b95718429",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 469,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\469\\2026\\01.csv",
+          "sha256": "7f35f0caa2468fec6e35e2f04b3c448eca601c87ed3d7c179e9e669c87edab3a",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 623,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\623\\2026\\01.csv",
+          "sha256": "02b61d66861d27fe77ccddd28fcb7043141e5581c64638d067b208b5e0ca67fe",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 470,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\470\\2026\\01.csv",
+          "sha256": "197d8bf71ba1e3c353ff6c6cf8abcb832d0b5014b79d2325a9085f6eec36ec29",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 471,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\471\\2026\\01.csv",
+          "sha256": "3849f9cb9b457bd8582ecae67119a19ec8b0b560b93806bba7f2a96f2cb24d79",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 472,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\472\\2026\\01.csv",
+          "sha256": "92ee01f6b4a43ac47c2b5d955b474158509db81e3ae790c78f47053933651717",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 473,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\473\\2026\\01.csv",
+          "sha256": "fc7c119af035b0642425c710ab4e332cbd06a740769df66de1440ffef1feb085",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 474,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\474\\2026\\01.csv",
+          "sha256": "e9db9eae2f272e01eaccc235d55bd09a62918f99f82999942eff64a3f8c3e146",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 475,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\475\\2026\\01.csv",
+          "sha256": "3da017d7c3e8b12e60a2a6832195a8c7536a7b9f515d7c8ffbc5fd36eabd699e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 476,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\476\\2026\\01.csv",
+          "sha256": "9642bf109d06e6246ca43dfbcc30edffba76bf727fb8bc75b3150d696a53d068",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 624,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\624\\2026\\01.csv",
+          "sha256": "dc62e414e7aa21a0a33f648e759c2e5f1d57be179088f2c48becdb9293e22e5b",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1524,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1524\\2026\\01.csv",
+          "sha256": "183363bfa4328be35e0ca840437bc50de170885ba7e847777df758c945846e0f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 477,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\477\\2026\\01.csv",
+          "sha256": "2dcda22e794153f609f0fe6c6abbbbbb3a72e4446cd6b781d6ee029c24cf36fd",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 478,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\478\\2026\\01.csv",
+          "sha256": "533cffb57b397ced7a0f71d9f06d3a813e1ff7e03d68b0548213ef67f19be5d4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 479,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\479\\2026\\01.csv",
+          "sha256": "1d2ec5195650900a7e164d3e2d4fba23e172ab72687fb64205ef16f394112ae9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 480,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\480\\2026\\01.csv",
+          "sha256": "c89bfb3920ad2d6d24a24a642148a8850634a09e74964aa1fedccd0096e48f29",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 481,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\481\\2026\\01.csv",
+          "sha256": "45a5088c22cf8b673f53325dc61e3ef8e836f3f23d5438daa1f1a5473f8c561b",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 625,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\625\\2026\\01.csv",
+          "sha256": "cb28c887d0304abb00f11a7a63843ab7c7178d779b8f4fc6aae846bf08c8a112",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 488,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\488\\2026\\01.csv",
+          "sha256": "1d027be1938ec9fdf09e4a0c51648d21ca2ff95de6b89b4817ce7f179cd3ab6b",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 489,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\489\\2026\\01.csv",
+          "sha256": "98c1aa1f353ac5e718061d3dd466c5bc92ed8f8af9a3f1cafb67fdc86e038f53",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 490,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\490\\2026\\01.csv",
+          "sha256": "74c23f3263f6ab571b8e18dc3ba11fa26f3d03598541d6c7caaaf87fa78a39f5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 491,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\491\\2026\\01.csv",
+          "sha256": "5683dd2132709583d5f11e30746574a9e20815bae495d340bf2e160cbad53cf3",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 492,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\492\\2026\\01.csv",
+          "sha256": "635bb02fe5e96c79af8f4f246072c2c5ed94de814135c22d2c9589d90b145ddf",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 493,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\493\\2026\\01.csv",
+          "sha256": "4fb1852b5df606d0acd96598936dc891518535b464f7abe0e2f1a8c467430a82",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 494,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\494\\2026\\01.csv",
+          "sha256": "07be5c3e75cd82aea037103f8a745ff21c959b32e44b3492c3bfcbac50196665",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 496,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\496\\2026\\01.csv",
+          "sha256": "442ba8c0ffd742a302513a9a46cb335cd4603eaa974b27cbfaa11bb54b59f622",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 626,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\626\\2026\\01.csv",
+          "sha256": "3235bca521f16317a265c6aa687c8e4e7e40474db3b1f4118c7325ccee4d1551",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 497,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\497\\2026\\01.csv",
+          "sha256": "529f40e1d31acc85a3ef2bcb088e8b26078c1f20780ebc1eb1526c753626a528",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 498,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\498\\2026\\01.csv",
+          "sha256": "b4aa99e55a715eba52c72e902dae26aab465f0089aecf589d0b45e86f3324293",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 499,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\499\\2026\\01.csv",
+          "sha256": "ce7d2d7e5523365de6ea2549fdcc53b72c29b7d2780aa3d14d2e3a7a9d2c74b5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 500,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\500\\2026\\01.csv",
+          "sha256": "08c6bb51936864854093c71137ba37aa76b371020cb7514314fc02ab1cee8a45",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 501,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\501\\2026\\01.csv",
+          "sha256": "2a48485a11023a6096f01b6fcf06dad2bdf7095078d21dc431ef22f41e7b1cfd",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 502,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\502\\2026\\01.csv",
+          "sha256": "b22d901634e92bcd2c8fcb001cfcae72d069f0137055c0ac9851a949da966e46",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 503,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\503\\2026\\01.csv",
+          "sha256": "8d24d71fc38dad91947b110e9b23e7566935aad87a198abe04d70bb7f410e615",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 627,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\627\\2026\\01.csv",
+          "sha256": "94f79d8b6cb950604167391ed27c04d56dd724a497ff05344da22980bc78d5c0",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 504,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\504\\2026\\01.csv",
+          "sha256": "e15550d289d847d7d465e34ce1c47548c720f2fcec68b04ebc74ded3c1be6796",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 505,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\505\\2026\\01.csv",
+          "sha256": "a234e2fa154d9cf4e84ca6e3327f1ed7dbac5a1e0521aebef96a0b427b3bf66e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 506,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\506\\2026\\01.csv",
+          "sha256": "7d0e1f3861035315d5af79d229b5be04cabeb613cfc86508f592b9bbb86f0a57",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 507,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\507\\2026\\01.csv",
+          "sha256": "9889553729f246e24941a7efa8670b32f3f2bc6b266a7e3f3822f913c9e68c08",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 508,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\508\\2026\\01.csv",
+          "sha256": "0a585b9c1b4f6e44db89ce5da36c9b97959b19ec751a16405a1afcd7b4b8578c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 509,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\509\\2026\\01.csv",
+          "sha256": "1e3db006b1281cbf688d9414aa0e8a05c6f2db766ac58a743ae80940029b028f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 510,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\510\\2026\\01.csv",
+          "sha256": "f943cabb5502d01633b39121e6b5d151746dda165325fd64b62a0c30527f7f9e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 511,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\511\\2026\\01.csv",
+          "sha256": "6b3ed55458f1c91c0c82075fc2cec63cdc01b430bc78c8f549ea6ef09dbc5802",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 512,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\512\\2026\\01.csv",
+          "sha256": "7eb5d21c3d8eca6dce336411213a9d8356233a4fc3c4884130eb4bea1a84897f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 513,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\513\\2026\\01.csv",
+          "sha256": "4e32c977417939783fd3dbcfb74265af30ca78d888a9b3582838f3fcdefc732a",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 628,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\628\\2026\\01.csv",
+          "sha256": "f4126cfbcbb0830828cd285ccf6d539ced726dda7f2adfeafec6ba7b91eb887e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1522,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1522\\2026\\01.csv",
+          "sha256": "eeee3320281ceb1d72c26cd05be682220ed0c90a7b55dae4e1442db57c11a34f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 514,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\514\\2026\\01.csv",
+          "sha256": "b7842451c161670abb47372defcd75e8806a9e44850e32755fed23efc0a1c3c2",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 515,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\515\\2026\\01.csv",
+          "sha256": "a4c2b6b128324ed2dd272c1db089c21e616a1cc60543bb5a6bbc52a2da157c17",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 516,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\516\\2026\\01.csv",
+          "sha256": "f979c80fd768a9c4aa05b22a4c66de154bf959802cb360c68b21bdc3da87d96d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 517,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\517\\2026\\01.csv",
+          "sha256": "f67d80ce6ea85271ecae8b08f3a166af7975c2f194af02a61c91bb4bff54a13d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 518,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\518\\2026\\01.csv",
+          "sha256": "51b18f0f8b4c293c238cb2a2324d66dd8700a6306409f73147fc0397c6d5ea52",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 519,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\519\\2026\\01.csv",
+          "sha256": "4dd0c9a9ae6656d442cd511c1265547ad458ec119ec8881cdf5626f5548db90b",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 520,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\520\\2026\\01.csv",
+          "sha256": "cbbb5fd9d042f93f3a8e62addbc4ca427b85bcac11d0f6849f23e99cdbde72e1",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 629,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\629\\2026\\01.csv",
+          "sha256": "843dd9e05018e4e58e9dedb604173d9aa112c029b613d4be981adf02a98e025b",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 521,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\521\\2026\\01.csv",
+          "sha256": "56a68784e39b2b511713d7d210c9cbb08ac23e47d95ddfb96e85ac65c9f1b173",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 522,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\522\\2026\\01.csv",
+          "sha256": "24c2744ba5349fed0391fdddeecde85514cb9dd7e311e3e2f9781ae18fd9d639",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 523,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\523\\2026\\01.csv",
+          "sha256": "fff64d1c0f3475e7d75794ee71b46035b686e3b130ff31756a054f96b72fc97f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 524,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\524\\2026\\01.csv",
+          "sha256": "37bbefa4e3a32f3f71661ec7655c94a4bdfa68f285a2e1e407debc8465070c1d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 525,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\525\\2026\\01.csv",
+          "sha256": "a11a31470d26e9edd9a597db0238e74eba7e0e7a4235401c07736acb72d21cf5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 526,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\526\\2026\\01.csv",
+          "sha256": "cfc2ff1349412aa188369b7ee71744c9b4e74aff8794d8542cc7072fe2f871ab",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 527,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\527\\2026\\01.csv",
+          "sha256": "1f1dc19dd08d40ecbbf873a70e12818e0ce0740d521fd3ea57166bdc77fea219",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 528,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\528\\2026\\01.csv",
+          "sha256": "36a24bac58ec800f7055bf4c33e980fe1a9a9804f7412e0ddfc0d75d2e3fbef1",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 529,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\529\\2026\\01.csv",
+          "sha256": "7bc04ee27714bdf33e4a73285c9466c68e14b12d6e426501439e849bd181faa8",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 630,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\630\\2026\\01.csv",
+          "sha256": "dd6c7c2d53aea6d9fdff0a04a3a1518901014fa2b86efac879f408909a011510",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 530,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\530\\2026\\01.csv",
+          "sha256": "8e0b974e2396675bc0419d7d3ed39892902a0aaa4369981bc1b37e46004fc901",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 531,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\531\\2026\\01.csv",
+          "sha256": "e0e6bd8e7ed8eeef017fe704415cf5c04e2c9d12e5a6c6594fc3d0b856c61e19",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 532,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\532\\2026\\01.csv",
+          "sha256": "ff464bd6be7a841d07012413d5240615bebe44f2edc11630a0f3bf7e432bb249",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 533,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\533\\2026\\01.csv",
+          "sha256": "e38580f2ab7bfbd2b684918869a380e9a31a991ee879701146038a6b44f839f0",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 534,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\534\\2026\\01.csv",
+          "sha256": "121dcfff1a6412c52d9b9aee834016f9f90cfedbe4a23632da7afcaea8501a6f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 535,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\535\\2026\\01.csv",
+          "sha256": "23f475af9312930338cc15b19c6367776443ef48ad04cafb0f8151e76968ac56",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 631,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\631\\2026\\01.csv",
+          "sha256": "fbba1b36c8c0bb498ca1d102b7dbfcc5cf6dec8eb9b778196f9b4e60a121b2c6",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 536,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\536\\2026\\01.csv",
+          "sha256": "c9df5f0c337ccb08095480ba8ca8783e939ec3ee2caede3bf539839ef0e4a451",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 537,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\537\\2026\\01.csv",
+          "sha256": "e4e92368e1cc777caf9c905f1668b77a851bc69ad54b18791054a0bf55e5b9b0",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 538,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\538\\2026\\01.csv",
+          "sha256": "c6c489c34c265f4ad0d4080000a4253f839c63c75a6e7ed1597eb28529191706",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 539,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\539\\2026\\01.csv",
+          "sha256": "7e8ccdb8748f9ea7bdbe1db424294ea7e160d27277ffe4a3cc335d1b5cb4ea68",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 540,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\540\\2026\\01.csv",
+          "sha256": "fc7286b291943d74328335c48f37796713d87ae39b647144e5569bebd4df9035",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 541,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\541\\2026\\01.csv",
+          "sha256": "4c237bc395ce0f60b3dacde25df688b33976400ed013612fdb54f4ed9c1a3430",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 542,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\542\\2026\\01.csv",
+          "sha256": "85d3ea63eb731a28a0673376e4122cfd668050234a93fb195496a1f07102abc0",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 543,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\543\\2026\\01.csv",
+          "sha256": "bf48d0bf5291e7f840d4d42581985fd3208ac8d892f8e7c28b45109e2dcd7162",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 544,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\544\\2026\\01.csv",
+          "sha256": "4dac9291f4d32497d6c159c0b95af3b1a318a0e974964685d059cfc4652c8e72",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 545,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\545\\2026\\01.csv",
+          "sha256": "0cbf777d57d30ad66d9ae495b76ecbc3208a2fe8002a436ec0aea9c82e0cb096",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 546,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\546\\2026\\01.csv",
+          "sha256": "f736224cc20147b9b44ae06b7b5e2796c0e31819bc6a7a3dde1e371890ddc1d5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 547,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\547\\2026\\01.csv",
+          "sha256": "92c68eae3a2867e85ef3a540cd1467fc72ee84fc171050ddf2eab29301495120",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 548,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\548\\2026\\01.csv",
+          "sha256": "14523a0df346dce27edd35d69fa6e3579082576f1b2acf9cd51dd59e1a40af33",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 549,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\549\\2026\\01.csv",
+          "sha256": "ac6cfcd29e74d74eafaffdce9854b3f38dd185b43faff2f9c7ce83132826a61f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 632,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\632\\2026\\01.csv",
+          "sha256": "b2b52355163ce931c7d3c2bdcc319ded66caabad7c8f9e548e23e6e75662d355",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 550,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\550\\2026\\01.csv",
+          "sha256": "3bd248c52e00f8f476e6816b8b7cec6f6a8b566a908a527a5f4a3f419d2bf9ec",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 551,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\551\\2026\\01.csv",
+          "sha256": "81b38dead13e27b461f49ffdadcd5531a0075d2613836aa9ec4b12eafd864612",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 552,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\552\\2026\\01.csv",
+          "sha256": "9662f28dd52b85187053a340e09ad2a828b72c5fadecad9c7813c5b2abd5f38e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 553,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\553\\2026\\01.csv",
+          "sha256": "a581cd1c0e42ece3f48d309d0fa9e6bb5e5b26eede887fd558a3ca9d62afde51",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 554,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\554\\2026\\01.csv",
+          "sha256": "64a0d62a7b834d60ee8d383846ca84281956abd75cf0e83cbe6bd5b879a9d418",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 555,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\555\\2026\\01.csv",
+          "sha256": "900e57a00d368701fb5fd087f47eb6534c6a9670ae4a980a0f5176a98c38cc31",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 556,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\556\\2026\\01.csv",
+          "sha256": "3ae2d5d367b3c6ec28e37223a458aa085618a8ee977b66387606f982caeb5c24",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 633,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\633\\2026\\01.csv",
+          "sha256": "0e0c3ff8a5655cf58098a5d3a1dd57997912331bc4bedf438916e07146d2c3dc",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 557,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\557\\2026\\01.csv",
+          "sha256": "bb2fd7a201ab960d90241109c98d5af57e389b08aa1abe92c98540afc8fa05d4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 558,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\558\\2026\\01.csv",
+          "sha256": "a539de6e9c0480ddaf436fced0c5e8d583e9535185cd4c08b627b02d240afd01",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 559,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\559\\2026\\01.csv",
+          "sha256": "e69cddc73711a595032ae8e524de064034d08a8886fe3c154e243b59ca2ac4b4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 560,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\560\\2026\\01.csv",
+          "sha256": "7f868bbedc6490fd781bdedcb6c96dcde74d519f4c20fa23fdddbe28093657a3",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 561,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\561\\2026\\01.csv",
+          "sha256": "67842c74fbb320fdc2c1e9a59e86dcd4d7b1305aefaf9a9610b6b57fd751fa8e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 562,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\562\\2026\\01.csv",
+          "sha256": "f896c8b1a31f1f76d32326b5a16de3f2b65bf001f05618d9d113095bd748c71c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 563,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\563\\2026\\01.csv",
+          "sha256": "efa009f696bff109e74c64270560ce708785287aaafc32df6284a48fbe4b7d75",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 564,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\564\\2026\\01.csv",
+          "sha256": "654c319d906d381e17ecb6638ebf6caf16f6ebf6270d7275a8fd215ff783e080",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 565,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\565\\2026\\01.csv",
+          "sha256": "ab6d1cfb61f9ba8a4b5d0a2150e686ffacf15e767ff375ee8d4560bd8804c98c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 566,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\566\\2026\\01.csv",
+          "sha256": "b102e9b37076338151940dd4bc1c20247a750b9b496c9b4c6b24342d7b01f578",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 567,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\567\\2026\\01.csv",
+          "sha256": "98fabd0b4cfbff1756965101ada167683a767a4a0f76a4b7ec7a9c51005926ed",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 568,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\568\\2026\\01.csv",
+          "sha256": "38fb62926bde03bacad7884a8f2553ce5e877cdb795bfbea2a8d3f1fafca550c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 569,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\569\\2026\\01.csv",
+          "sha256": "6048a53c2792e2044e3648967e1dfc97f67d07600ec9f2939ee344ee670014e5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 570,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\570\\2026\\01.csv",
+          "sha256": "d7bdda9335caf741732a83bbf98e0125f06872539e0ddb2d8b77ab2487795ace",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 571,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\571\\2026\\01.csv",
+          "sha256": "5148f469a5578efa31ebe3d66605435779e7d6dd51fa8fc20fb66eaff4d0cc5c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 572,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\572\\2026\\01.csv",
+          "sha256": "397e66718cf187d61847b31d646b69c5b00307662fd932258c4bd0d14e2bbabe",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 634,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\634\\2026\\01.csv",
+          "sha256": "50001f4001ae6b7e7aa2346da2c3f78970b67f7864be1da54cd9d98c58a16ec8",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 573,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\573\\2026\\01.csv",
+          "sha256": "1f799da3201fa4b41eef02e96f197d7ea5f2478761baf470187413bddbd2089a",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 574,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\574\\2026\\01.csv",
+          "sha256": "d5b0ee6499ff8eabde7fe20390fb29f59cac6b3084dc3f7af7b371edb6b24ca3",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 575,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\575\\2026\\01.csv",
+          "sha256": "10e7e04466a627e4a50f88d558c9b0843d629d1a20d6c0ffe7caaeb4858b0e4d",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 576,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\576\\2026\\01.csv",
+          "sha256": "f6855f3d36a8e23004d81b3282f9426ed23b26fc4e7a0c32f936a302dcdd08fe",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 577,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\577\\2026\\01.csv",
+          "sha256": "0a1dcaf82560a2a7c55336ad527db13a609692f0864e849873a01009c6b977a7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 578,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\578\\2026\\01.csv",
+          "sha256": "0a7f924e11f22a84ee66cd93bb4c6acf12abbfbca03a45acc0ddd253500d3c27",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 579,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\579\\2026\\01.csv",
+          "sha256": "5709c00a4e3786f12ef47315106199ae71ee0023b3776bdd0afdd6d5adb05fb9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 580,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\580\\2026\\01.csv",
+          "sha256": "16366a89b80980f642aafa8d858fc653c539dc62cf43866371960b371bce3055",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 581,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\581\\2026\\01.csv",
+          "sha256": "a65a721281b8e2cc53e250d5993dec3cabb6cb632567a05e95048a6ebd7a8e12",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 582,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\582\\2026\\01.csv",
+          "sha256": "a5fdd4bdd8ecea9ec48827360c4652603f40b4904e7d5bad3e0825c429574b34",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 635,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\635\\2026\\01.csv",
+          "sha256": "e670814484e0e631508e55dd9754d193b6f7abcafd43705dbcd5d833e863dc87",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 583,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\583\\2026\\01.csv",
+          "sha256": "51e63134997bb7fec5f69e130ba7e0f7e6beecd11ea74db002933933d60b4c5e",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 584,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\584\\2026\\01.csv",
+          "sha256": "8608c14656eb26dfa49798bcddd4648f6e1e69ad155abd99fa8b68aa3ba967eb",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 585,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\585\\2026\\01.csv",
+          "sha256": "2fe3e4e0e6e163c77ac494aa9b739c1be93eb1b5ee0def3ef278e5c6749b6e8b",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 586,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\586\\2026\\01.csv",
+          "sha256": "a4bc8285bb70f687d4a5222bf7af492d314945f6a4384585f3ded771a78bf999",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 587,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\587\\2026\\01.csv",
+          "sha256": "cf3204d49f29d41f8696cbe07c0693928a677c63ced31d0cad64011352a60601",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 588,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\588\\2026\\01.csv",
+          "sha256": "c4a00c5a9ec5aaeb0904d6718ba8d50df32b6a583f0571acac01cb8353cacde7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 589,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\589\\2026\\01.csv",
+          "sha256": "241768c031daa5f4c77f8a0a63adf08f517fa897182263a24dfb79b03cad528c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 590,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\590\\2026\\01.csv",
+          "sha256": "225b988cca40e66cfe26620c5823945cc45739d90882b9abf5099cb8a2b1a1d5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 591,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\591\\2026\\01.csv",
+          "sha256": "fee6f78e15d1b1c14098fd5d9e905529e5182f619e7e75d0610b00529ebdac78",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 636,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\636\\2026\\01.csv",
+          "sha256": "9d34d99be61a1dddfe7cef5035af047fcf81c987bbeb9b70cb26b273f958d55f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 1523,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\1523\\2026\\01.csv",
+          "sha256": "843cf05de008135dcbc3b84572e103450b45e3977c3857b11d488bd9a7bd4dbd",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 592,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\592\\2026\\01.csv",
+          "sha256": "adea4bc86b0d7cf7711888a1a0bf4ebcb46f242aa72f5de6bb117e7e04dc0eb5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 593,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\593\\2026\\01.csv",
+          "sha256": "a1249c3eba0e0fd4dec5bf58029b50ce98341b8177f98f82b660072503c76467",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 594,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\01.csv",
+          "sha256": "7391717628e16ce6439c69184d324b4088f68be379b17c19e82cbb2a893781e7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 595,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\595\\2026\\01.csv",
+          "sha256": "c55d3cbb13511bd6737edb28f7964f835e56d282c7eaa0e487c86ce64fe3ad4c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 596,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\596\\2026\\01.csv",
+          "sha256": "d2bab166f556a819a2d256f7e57b3e467955b43f2839b11924bede40c59e3bf9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 597,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\597\\2026\\01.csv",
+          "sha256": "b8f3c419dde3870cceb82121f56a1313ffe02cefbed96146fb83a5d4a18c9659",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 598,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\598\\2026\\01.csv",
+          "sha256": "f88bd466a60ea8a4b0fde9ec3669850beb618e21610b6c9d091ef3e306398ff4",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 599,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\599\\2026\\01.csv",
+          "sha256": "3e489d523393b72fb030b3b5fe1bec25104058f73bed0f7e09588d8d27318ca7",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 600,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\600\\2026\\01.csv",
+          "sha256": "3761f4c21305e8ae5609eb270d0aa7e036a99cc494d6af27f409903aef8464e2",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 601,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\601\\2026\\01.csv",
+          "sha256": "7cd5e88728e29da6051dc039d5e03ef528f906beabc41ed9b34fb59071395e1c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 602,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\602\\2026\\01.csv",
+          "sha256": "23176d056f979aed4adec7b87f739639b5762cacab515e8476d5123d7562d309",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 603,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\603\\2026\\01.csv",
+          "sha256": "ff8e057c3439857b48783134659d9489b6690101230efa3733145c6d410dd04f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 637,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\637\\2026\\01.csv",
+          "sha256": "cf72a5aa36ce38c42806f54b87aed46b7fbc79137ed0f32cfd74f99ebd677471",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 604,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\604\\2026\\01.csv",
+          "sha256": "f3bc5df4537d08eae8ab96c01f9a84beff7ca7a944ecce66f15d04dc21d7515c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 605,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\605\\2026\\01.csv",
+          "sha256": "343dbc7263a4dc70863ad51805ad8b690457a2af873271405ba4f97af89ecd57",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 606,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\606\\2026\\01.csv",
+          "sha256": "571bd955ee42cb0c8e6ae7e53785aba0c80e00b3bb9530c92b1463bc111b80ed",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 607,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\607\\2026\\01.csv",
+          "sha256": "d31e0a86e31e767f7960f521294eea9d1c8ce2c7556d7a2e3b309c6184c20166",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 608,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\608\\2026\\01.csv",
+          "sha256": "4a750eaa433b1f831953c8fb09eac32c87553d2e44ab0b1f211e10d6d4602b8c",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 609,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\609\\2026\\01.csv",
+          "sha256": "8a29cdecb53b8f8d6621f08a9ce876e8c3beafdb711624d7a04d16cc7ff3c131",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 610,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\610\\2026\\01.csv",
+          "sha256": "c1dd806385dbd7abd53ce22ff4310928ba24bdc5e80a50cb08df6ccda43dd20b",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 611,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\611\\2026\\01.csv",
+          "sha256": "97841971283fdb008303a61754d22349358649cb8755f7601d7c4fd4861b5de5",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 612,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\612\\2026\\01.csv",
+          "sha256": "49d01929030802e254d3846d6ab97b957a47ea714dd2ba81b79cabf54495bed6",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 638,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\638\\2026\\01.csv",
+          "sha256": "e2d14404cc3eeedfd456211499f597d6579d0fe1ca7c1f6ccc74f3a97f392cf9",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 482,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\482\\2026\\01.csv",
+          "sha256": "56dc63553999f756a6fb9c6c3f18e68ce755a9765f1ebf309ef93f1acc664f52",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 483,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\483\\2026\\01.csv",
+          "sha256": "1cc461368705e76eed274b821021846d8ee11b6ff357f2fcfa0b02f6a90335ba",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 484,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\484\\2026\\01.csv",
+          "sha256": "36e4825381894b7dff8ba8a2f7cf43cf414321385dd6cf8e1d7f368b2a17523a",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 485,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\485\\2026\\01.csv",
+          "sha256": "7ba7d377a7b1ad547a31f0b3e4250f27f1d10462a4cf0beb909d42694474340f",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 486,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\486\\2026\\01.csv",
+          "sha256": "656a18e5ec907682bbc4e2112bebc804d761fed3782313043c2a45312ac01293",
+          "bytes": 1247
+        }
+      },
+      {
+        "delegationId": 487,
+        "oneCompleteMonth": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\487\\2026\\01.csv",
+          "sha256": "e5aa87439752c1277c6a719a791b76e56243364334e469de069b0ed1639c479a",
+          "bytes": 1247
+        }
+      }
+    ],
+    "qualification": "Finite source eligibility read, not a product/compiler execution or test run; no month files changed."
+  },
+  "all3523InstalledNearestDefaultsVerified": true,
+  "numericScenarios": [
+    {
+      "changedReferenceIds": [
+        394
+      ],
+      "rawCountRecomputed": 3523,
+      "nearestChanges": [
+        {
+          "id": "osm:relation:7118023",
+          "name": "خزندار",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118023",
+          "lat": 36.805274,
+          "lng": 10.126553,
+          "field": "delegationId",
+          "before": 394,
+          "after": 396,
+          "distancesKm": {
+            "394": {
+              "before": 0.9793478624747626,
+              "after": 1.6111061413805199
+            },
+            "396": {
+              "before": 1.122139959599666,
+              "after": 1.122139959599666
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7118026",
+          "name": "باردو الجنوبية",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118026",
+          "lat": 36.803686,
+          "lng": 10.135602,
+          "field": "delegationId",
+          "before": 394,
+          "after": 396,
+          "distancesKm": {
+            "394": {
+              "before": 0.6172312830530461,
+              "after": 1.2434803567867574
+            },
+            "396": {
+              "before": 0.8057104781750135,
+              "after": 0.8057104781750135
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7118027",
+          "name": "الحديقة",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118027",
+          "lat": 36.803672,
+          "lng": 10.141856,
+          "field": "delegationId",
+          "before": 394,
+          "after": 396,
+          "distancesKm": {
+            "394": {
+              "before": 0.7834462272300667,
+              "after": 1.1509469062604887
+            },
+            "396": {
+              "before": 1.09316050722501,
+              "after": 1.09316050722501
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201481",
+          "name": "رأس الطابية",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201481",
+          "lat": 36.820068,
+          "lng": 10.145248,
+          "field": "delegationId",
+          "before": 391,
+          "after": 394,
+          "distancesKm": {
+            "391": {
+              "before": 0.8680971691553386,
+              "after": 0.8680971691553386
+            },
+            "394": {
+              "before": 1.4424928295815143,
+              "after": 0.7734702298519851
+            }
+          }
+        },
+        {
+          "id": "osm:node:1099411041",
+          "name": "حشاد",
+          "kind": "suburb",
+          "pickerGroupId": "osm:node:1099411041",
+          "lat": 36.8193511,
+          "lng": 10.136907,
+          "field": "delegationId",
+          "before": 393,
+          "after": 394,
+          "distancesKm": {
+            "393": {
+              "before": 0.9498056254881216,
+              "after": 0.9498056254881216
+            },
+            "394": {
+              "before": 1.1296527980742888,
+              "after": 0.6977063132007497
+            }
+          }
+        }
+      ]
+    },
+    {
+      "changedReferenceIds": [
+        391
+      ],
+      "rawCountRecomputed": 3523,
+      "nearestChanges": [
+        {
+          "id": "osm:relation:7201456",
+          "name": "الطيب المهيري",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201456",
+          "lat": 36.818975,
+          "lng": 10.179926,
+          "field": "delegationId",
+          "before": 615,
+          "after": 391,
+          "distancesKm": {
+            "391": {
+              "before": 2.221703478422489,
+              "after": 1.0671235914751411
+            },
+            "615": {
+              "before": 1.3942158115391625,
+              "after": 1.3942158115391625
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201480",
+          "name": "العمران",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201480",
+          "lat": 36.814933,
+          "lng": 10.1676,
+          "field": "delegationId",
+          "before": 395,
+          "after": 391,
+          "distancesKm": {
+            "391": {
+              "before": 1.2551751132142501,
+              "after": 0.34288866735582113
+            },
+            "395": {
+              "before": 0.7678789621125601,
+              "after": 0.7678789621125601
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201481",
+          "name": "رأس الطابية",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201481",
+          "lat": 36.820068,
+          "lng": 10.145248,
+          "field": "delegationId",
+          "before": 391,
+          "after": 394,
+          "distancesKm": {
+            "391": {
+              "before": 0.8680971691553386,
+              "after": 2.038284927483938
+            },
+            "394": {
+              "before": 1.4424928295815143,
+              "after": 1.4424928295815143
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201543",
+          "name": "جوان 01",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201543",
+          "lat": 36.828677,
+          "lng": 10.17313,
+          "field": "delegationId",
+          "before": 390,
+          "after": 391,
+          "distancesKm": {
+            "390": {
+              "before": 1.3996630616807535,
+              "after": 1.3996630616807535
+            },
+            "391": {
+              "before": 1.8801717188537617,
+              "after": 1.2720119804803591
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201546",
+          "name": "المنار 1",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201546",
+          "lat": 36.833619,
+          "lng": 10.147174,
+          "field": "delegationId",
+          "before": 391,
+          "after": 392,
+          "distancesKm": {
+            "391": {
+              "before": 1.6668819894337532,
+              "after": 2.5401549051389676
+            },
+            "392": {
+              "before": 1.686740819380538,
+              "after": 1.686740819380538
+            }
+          }
+        },
+        {
+          "id": "osm:way:980164288",
+          "name": "Nour Hilton",
+          "kind": "residential",
+          "pickerGroupId": "osm:way:980164288",
+          "lat": 36.81898,
+          "lng": 10.14709,
+          "field": "delegationId",
+          "before": 391,
+          "after": 394,
+          "distancesKm": {
+            "391": {
+              "before": 0.7131818837841015,
+              "after": 1.8645067938785969
+            },
+            "394": {
+              "before": 1.445071781035383,
+              "after": 1.445071781035383
+            }
+          }
+        },
+        {
+          "id": "osm:node:12925453903",
+          "name": "فرانسفيل",
+          "kind": "suburb",
+          "pickerGroupId": "osm:node:12925453903",
+          "lat": 36.8167451,
+          "lng": 10.1672949,
+          "field": "delegationId",
+          "before": 395,
+          "after": 391,
+          "distancesKm": {
+            "391": {
+              "before": 1.1527335360924178,
+              "after": 0.15300509497235437
+            },
+            "395": {
+              "before": 0.9694385974582372,
+              "after": 0.9694385974582372
+            }
+          }
+        }
+      ]
+    },
+    {
+      "changedReferenceIds": [
+        393
+      ],
+      "rawCountRecomputed": 3523,
+      "nearestChanges": [
+        {
+          "id": "osm:relation:7095908",
+          "name": "قصر سعيد",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7095908",
+          "lat": 36.816656,
+          "lng": 10.110834,
+          "field": "delegationId",
+          "before": 393,
+          "after": 534,
+          "distancesKm": {
+            "393": {
+              "before": 1.7772447483183367,
+              "after": 2.0953993249649354
+            },
+            "534": {
+              "before": 1.987992814877919,
+              "after": 1.987992814877919
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7118022",
+          "name": "البساتين",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118022",
+          "lat": 36.818502,
+          "lng": 10.137718,
+          "field": "delegationId",
+          "before": 394,
+          "after": 393,
+          "distancesKm": {
+            "393": {
+              "before": 1.0643716902025113,
+              "after": 0.6530884674420151
+            },
+            "394": {
+              "before": 1.0409685993760354,
+              "after": 1.0409685993760354
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201531",
+          "name": "التحرير الثاني",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201531",
+          "lat": 36.829179,
+          "lng": 10.123594,
+          "field": "delegationId",
+          "before": 393,
+          "after": 392,
+          "distancesKm": {
+            "392": {
+              "before": 0.7709569085107015,
+              "after": 0.7709569085107015
+            },
+            "393": {
+              "before": 0.6766332577551737,
+              "after": 1.0830384799718182
+            }
+          }
+        }
+      ]
+    },
+    {
+      "changedReferenceIds": [
+        396
+      ],
+      "rawCountRecomputed": 3523,
+      "nearestChanges": [
+        {
+          "id": "osm:relation:7118026",
+          "name": "باردو الجنوبية",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118026",
+          "lat": 36.803686,
+          "lng": 10.135602,
+          "field": "delegationId",
+          "before": 394,
+          "after": 396,
+          "distancesKm": {
+            "394": {
+              "before": 0.6172312830530461,
+              "after": 0.6172312830530461
+            },
+            "396": {
+              "before": 0.8057104781750135,
+              "after": 0.523808964672682
+            }
+          }
+        }
+      ]
+    },
+    {
+      "changedReferenceIds": [
+        391,
+        393,
+        394,
+        396
+      ],
+      "rawCountRecomputed": 3523,
+      "nearestChanges": [
+        {
+          "id": "osm:relation:7095908",
+          "name": "قصر سعيد",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7095908",
+          "lat": 36.816656,
+          "lng": 10.110834,
+          "field": "delegationId",
+          "before": 393,
+          "after": 534,
+          "distancesKm": {
+            "391": {
+              "before": 3.949023419148553,
+              "after": 5.090946451120157
+            },
+            "393": {
+              "before": 1.7772447483183367,
+              "after": 2.0953993249649354
+            },
+            "394": {
+              "before": 2.4222448268502323,
+              "after": 2.701551987239734
+            },
+            "396": {
+              "before": 2.9814425239397826,
+              "after": 2.9125826024141457
+            },
+            "534": {
+              "before": 1.987992814877919,
+              "after": 1.987992814877919
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7118023",
+          "name": "خزندار",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118023",
+          "lat": 36.805274,
+          "lng": 10.126553,
+          "field": "delegationId",
+          "before": 394,
+          "after": 396,
+          "distancesKm": {
+            "391": {
+              "before": 3.015699033942998,
+              "after": 3.951808711671674
+            },
+            "393": {
+              "before": 2.1323927839612358,
+              "after": 2.0528966671753435
+            },
+            "394": {
+              "before": 0.9793478624747626,
+              "after": 1.6111061413805199
+            },
+            "396": {
+              "before": 1.122139959599666,
+              "after": 1.0258249625320197
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7118026",
+          "name": "باردو الجنوبية",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118026",
+          "lat": 36.803686,
+          "lng": 10.135602,
+          "field": "delegationId",
+          "before": 394,
+          "after": 396,
+          "distancesKm": {
+            "391": {
+              "before": 2.5045610947148127,
+              "after": 3.294246686190829
+            },
+            "393": {
+              "before": 2.3932598787384167,
+              "after": 2.1600743396301914
+            },
+            "394": {
+              "before": 0.6172312830530461,
+              "after": 1.2434803567867574
+            },
+            "396": {
+              "before": 0.8057104781750135,
+              "after": 0.523808964672682
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7118027",
+          "name": "الحديقة",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7118027",
+          "lat": 36.803672,
+          "lng": 10.141856,
+          "field": "delegationId",
+          "before": 394,
+          "after": 396,
+          "distancesKm": {
+            "391": {
+              "before": 2.1599912425676844,
+              "after": 2.820525353152696
+            },
+            "393": {
+              "before": 2.6016562331880144,
+              "after": 2.2892123814273764
+            },
+            "394": {
+              "before": 0.7834462272300667,
+              "after": 1.1509469062604887
+            },
+            "396": {
+              "before": 1.09316050722501,
+              "after": 0.8015649877973162
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201456",
+          "name": "الطيب المهيري",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201456",
+          "lat": 36.818975,
+          "lng": 10.179926,
+          "field": "delegationId",
+          "before": 615,
+          "after": 391,
+          "distancesKm": {
+            "391": {
+              "before": 2.221703478422489,
+              "after": 1.0671235914751411
+            },
+            "393": {
+              "before": 4.634760116851893,
+              "after": 4.200926644693197
+            },
+            "394": {
+              "before": 4.024288307389239,
+              "after": 3.5089983703995147
+            },
+            "396": {
+              "before": 4.841475265550203,
+              "after": 4.574966408981329
+            },
+            "615": {
+              "before": 1.3942158115391625,
+              "after": 1.3942158115391625
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201480",
+          "name": "العمران",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201480",
+          "lat": 36.814933,
+          "lng": 10.1676,
+          "field": "delegationId",
+          "before": 395,
+          "after": 391,
+          "distancesKm": {
+            "391": {
+              "before": 1.2551751132142501,
+              "after": 0.34288866735582113
+            },
+            "393": {
+              "before": 3.65321827560739,
+              "after": 3.2078921534254907
+            },
+            "394": {
+              "before": 2.8497414446654195,
+              "after": 2.3702153964982124
+            },
+            "395": {
+              "before": 0.7678789621125601,
+              "after": 0.7678789621125601
+            },
+            "396": {
+              "before": 3.672906298488439,
+              "after": 3.4003603244096814
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201481",
+          "name": "رأس الطابية",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201481",
+          "lat": 36.820068,
+          "lng": 10.145248,
+          "field": "delegationId",
+          "before": 391,
+          "after": 394,
+          "distancesKm": {
+            "391": {
+              "before": 0.8680971691553386,
+              "after": 2.038284927483938
+            },
+            "393": {
+              "before": 1.5836038041382217,
+              "after": 1.1379256479747926
+            },
+            "394": {
+              "before": 1.4424928295815143,
+              "after": 0.7734702298519851
+            },
+            "396": {
+              "before": 2.8110810557543777,
+              "after": 2.514039760587124
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201531",
+          "name": "التحرير الثاني",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201531",
+          "lat": 36.829179,
+          "lng": 10.123594,
+          "field": "delegationId",
+          "before": 393,
+          "after": 392,
+          "distancesKm": {
+            "391": {
+              "before": 2.975909900028241,
+              "after": 4.143426538894769
+            },
+            "392": {
+              "before": 0.7709569085107015,
+              "after": 0.7709569085107015
+            },
+            "393": {
+              "before": 0.6766332577551737,
+              "after": 1.0830384799718182
+            },
+            "394": {
+              "before": 2.496952980031364,
+              "after": 2.2911208256058466
+            },
+            "396": {
+              "before": 3.711362220470642,
+              "after": 3.506002004293391
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201543",
+          "name": "جوان 01",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201543",
+          "lat": 36.828677,
+          "lng": 10.17313,
+          "field": "delegationId",
+          "before": 390,
+          "after": 391,
+          "distancesKm": {
+            "390": {
+              "before": 1.3996630616807535,
+              "after": 1.3996630616807535
+            },
+            "391": {
+              "before": 1.8801717188537617,
+              "after": 1.2720119804803591
+            },
+            "393": {
+              "before": 4.01839899748487,
+              "after": 3.6272114007473637
+            },
+            "394": {
+              "before": 3.9217688410561875,
+              "after": 3.2928526831513896
+            },
+            "396": {
+              "before": 5.027776020923665,
+              "after": 4.7340624655937775
+            }
+          }
+        },
+        {
+          "id": "osm:relation:7201546",
+          "name": "المنار 1",
+          "kind": "sector",
+          "pickerGroupId": "osm:relation:7201546",
+          "lat": 36.833619,
+          "lng": 10.147174,
+          "field": "delegationId",
+          "before": 391,
+          "after": 392,
+          "distancesKm": {
+            "391": {
+              "before": 1.6668819894337532,
+              "after": 2.5401549051389676
+            },
+            "392": {
+              "before": 1.686740819380538,
+              "after": 1.686740819380538
+            },
+            "393": {
+              "before": 1.9679296713340741,
+              "after": 1.727929728570202
+            },
+            "394": {
+              "before": 2.879653315110231,
+              "after": 2.2496860322050667
+            },
+            "396": {
+              "before": 4.289539556417443,
+              "after": 3.999093041597687
+            }
+          }
+        },
+        {
+          "id": "osm:way:980164287",
+          "name": "إقامة فل ياسمين",
+          "kind": "residential",
+          "pickerGroupId": "osm:way:980164287",
+          "lat": 36.821021,
+          "lng": 10.149416,
+          "field": "delegationId",
+          "before": 391,
+          "after": 394,
+          "distancesKm": {
+            "391": {
+              "before": 0.5098516238375059,
+              "after": 1.6880092095685053
+            },
+            "393": {
+              "before": 1.916739868206468,
+              "after": 1.47769249813056
+            },
+            "394": {
+              "before": 1.7522214903723918,
+              "after": 1.0820082900505334
+            },
+            "396": {
+              "before": 3.065580633181361,
+              "after": 2.7645715059188367
+            }
+          }
+        },
+        {
+          "id": "osm:way:980164288",
+          "name": "Nour Hilton",
+          "kind": "residential",
+          "pickerGroupId": "osm:way:980164288",
+          "lat": 36.81898,
+          "lng": 10.14709,
+          "field": "delegationId",
+          "before": 391,
+          "after": 394,
+          "distancesKm": {
+            "391": {
+              "before": 0.7131818837841015,
+              "after": 1.8645067938785969
+            },
+            "393": {
+              "before": 1.7778067012009116,
+              "after": 1.3314682585495645
+            },
+            "394": {
+              "before": 1.445071781035383,
+              "after": 0.7749413955027875
+            },
+            "396": {
+              "before": 2.7688998845336537,
+              "after": 2.4686703732048434
+            }
+          }
+        },
+        {
+          "id": "osm:node:12925453903",
+          "name": "فرانسفيل",
+          "kind": "suburb",
+          "pickerGroupId": "osm:node:12925453903",
+          "lat": 36.8167451,
+          "lng": 10.1672949,
+          "field": "delegationId",
+          "before": 395,
+          "after": 391,
+          "distancesKm": {
+            "391": {
+              "before": 1.1527335360924178,
+              "after": 0.15300509497235437
+            },
+            "393": {
+              "before": 3.573908190006913,
+              "after": 3.1309597496738757
+            },
+            "394": {
+              "before": 2.875448666857221,
+              "after": 2.3605742553353117
+            },
+            "395": {
+              "before": 0.9694385974582372,
+              "after": 0.9694385974582372
+            },
+            "396": {
+              "before": 3.765901304734786,
+              "after": 3.487103498112832
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "published394Containment": {
+    "osm:relation:7118020": {
+      "original": true,
+      "packed": true
+    },
+    "osm:way:103825771": {
+      "original": true,
+      "packed": true
+    }
+  },
+  "jointNameAndReferenceProjection": {
+    "referenceIds": [
+      391,
+      393,
+      394,
+      396
+    ],
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:relation:7118020",
+        "field": "name",
+        "before": "عمادة باردو",
+        "after": "باردو"
+      },
+      {
+        "id": "osm:relation:7118020",
+        "field": "aliases",
+        "before": [
+          "Bardo"
+        ],
+        "after": [
+          "Bardo",
+          "Le Bardo",
+          "Ле Бардо",
+          "בארדו",
+          "عمادة باردو"
+        ]
+      },
+      {
+        "id": "osm:relation:7118020",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7118020",
+        "after": "delegation:394"
+      },
+      {
+        "id": "osm:way:103825771",
+        "field": "aliases",
+        "before": [
+          "Le Bardo",
+          "Ле Бардо",
+          "בארדו"
+        ],
+        "after": [
+          "Le Bardo",
+          "Ле Бардо"
+        ]
+      },
+      {
+        "id": "osm:relation:7095908",
+        "field": "delegationId",
+        "before": 393,
+        "after": 534
+      },
+      {
+        "id": "osm:relation:7118023",
+        "field": "delegationId",
+        "before": 394,
+        "after": 396
+      },
+      {
+        "id": "osm:relation:7118026",
+        "field": "delegationId",
+        "before": 394,
+        "after": 396
+      },
+      {
+        "id": "osm:relation:7118027",
+        "field": "delegationId",
+        "before": 394,
+        "after": 396
+      },
+      {
+        "id": "osm:relation:7201456",
+        "field": "delegationId",
+        "before": 615,
+        "after": 391
+      },
+      {
+        "id": "osm:relation:7201480",
+        "field": "delegationId",
+        "before": 395,
+        "after": 391
+      },
+      {
+        "id": "osm:relation:7201481",
+        "field": "delegationId",
+        "before": 391,
+        "after": 394
+      },
+      {
+        "id": "osm:relation:7201531",
+        "field": "delegationId",
+        "before": 393,
+        "after": 392
+      },
+      {
+        "id": "osm:relation:7201543",
+        "field": "delegationId",
+        "before": 390,
+        "after": 391
+      },
+      {
+        "id": "osm:relation:7201546",
+        "field": "delegationId",
+        "before": 391,
+        "after": 392
+      },
+      {
+        "id": "osm:way:980164287",
+        "field": "delegationId",
+        "before": 391,
+        "after": 394
+      },
+      {
+        "id": "osm:way:980164288",
+        "field": "delegationId",
+        "before": 391,
+        "after": 394
+      },
+      {
+        "id": "osm:node:12925453903",
+        "field": "delegationId",
+        "before": 395,
+        "after": 391
+      }
+    ],
+    "nameAliasGroupFieldCount": 4,
+    "nearestSourceFieldCount": 13,
+    "projectedMetadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\projected-joint-neighborhoods.json",
+      "sha256": "1d80b28c86db122f136d5e1bc9aa83c0272fc9a5c9d10a7666fd06d01cb8abaa",
+      "bytes": 1851461
+    },
+    "projectedRetired": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\projected-joint-retired-localities.json",
+      "sha256": "329f7c4b40a9b3819ad6f1177bb1d53e4476060b3d74851efc0d4418e8851886",
+      "bytes": 13228
+    },
+    "savedNameAddition": {
+      "id": "osm:relation:7118020",
+      "name": "باردو",
+      "kind": "sector"
+    },
+    "rawCount": 3523,
+    "rawIdsUnchanged": true,
+    "displayCountBefore": 3437,
+    "displayCountAfter": 3436,
+    "polygonBytesUnchanged": true,
+    "rawCoordinatesUnchanged": true,
+    "bardoManualRepresentative": {
+      "id": "osm:way:103825771",
+      "lat": 36.814275,
+      "lng": 10.137426,
+      "expectedNearestSourceId": 394
+    },
+    "all3523ProjectedNearestDefaultsVerified": true
+  },
+  "dependencies": "Independent reviewer owns exact current active proof closure for all changed raw IDs; the current coordinate-manifest hash consumers require honest successors. This file is numerical/source evidence and does not claim those successors are prepared.",
+  "qualifications": [
+    "Fresh published endpoints are independently observed prayer-reference coordinates, not certified internal computation points or settlement polygons.",
+    "The fresh node agrees with the original authentic consumed town point; no new point row or shape is introduced.",
+    "Source394-only changes five defaults; the independently supported four-reference joint scenario is recorded separately without silently treating legacy competitors as verified.",
+    "All3523 representative checks do not certify unchanged nearest-source answers at every possible GPS coordinate.",
+    "Root phone card/context is not a boundary or exact coordinate certification.",
+    "Namesake sector/town retain their distinct extents; the four metadata effects and moved node alias receiver are explicit in the immutable source design."
+  ],
+  "operations": {
+    "primaryInmHttpResponses": 8,
+    "freshPublicOsmResponses": 1,
+    "compilerExecutionOrImport": 0,
+    "generation": 0,
+    "tests": 0,
+    "build": 0,
+    "phoneOperations": 0,
+    "liveRepositoryWrites": 0
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_bardo_fresh_references_20260919.py",
+    "sha256": "7d2c201a4426d0df10467d35fa78b929103878c4cf3dfab7767b55a7e6358da1",
+    "bytes": 11831
+  }
+}

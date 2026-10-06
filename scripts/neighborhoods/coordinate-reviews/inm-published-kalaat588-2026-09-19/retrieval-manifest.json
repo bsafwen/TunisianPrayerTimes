@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "qualification": "Portable selected response index. requestedUrl preserves the original recorded url field; response bytes, finalUrl, status, checksum and retrieval timestamps are unchanged. The original complete retrieval list is retained separately.",
+  "responses": [
+    {
+      "file": "kalaat-senan-prayer-2026-09-19.json",
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/",
+      "status": 200,
+      "sha256": "0219d0eb3f55cdc74a522dc43deefeb9a500c189497cd9bf4f0c8aaf47067f1f",
+      "bytes": 582,
+      "retrievedAtUtc": "2026-09-19T09:47:55.145962+00:00",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/"
+    },
+    {
+      "file": "kalaat-senan-sun-2026-09-19.json",
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/",
+      "status": 200,
+      "sha256": "946d7819efaa46f005a62366a884d05cd63cd234b5d80f142faaf553aab64da7",
+      "bytes": 551,
+      "retrievedAtUtc": "2026-09-19T09:47:55.140956+00:00",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/"
+    },
+    {
+      "file": "town-501803032-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/501803032.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/501803032.json",
+      "status": 200,
+      "sha256": "b4818f0135f89f14516b1a8bbda1d25493ebd201c941f1275fa0fb53818604e4",
+      "bytes": 739,
+      "retrievedAtUtc": "2026-09-19T09:47:55.245673+00:00",
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/501803032.json"
+    }
+  ]
+}

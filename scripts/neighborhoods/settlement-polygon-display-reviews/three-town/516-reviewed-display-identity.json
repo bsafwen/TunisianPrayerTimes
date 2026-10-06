@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_explicit_settlement_polygon_base_display_identity",
+    "id": "osm:way:278951683",
+    "targetDelegationId": 516
+  },
+  "conclusion": "same_named_settlement_display_only",
+  "sourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/tibar-ayoun-source-review.json",
+    "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25"
+  },
+  "sourceFacts": {
+    "file": "settlement-polygon-display-reviews/three-town/516-reviewed-source-facts.json",
+    "sha256": "21c1e64072a826c741403c1fa937873b0ce0b1036c88f8c78809a6c192850020"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "independentSourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/independent-source-review.json",
+    "sha256": "88297770c4116ad4c7011ba9d745a5d184b9a274a298901751c6256afb261a70"
+  },
+  "primaryEvidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/tibar-haicop.html",
+      "sha256": "89cd33a1853972dbe4883945b9b28cb3ed5b70b351de5866e83c409c0f1a171c",
+      "url": "https://www.marchespublics.gov.tn/fr/appels-doffres/Tender-99641"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/tibar-social-ministry.html",
+      "sha256": "e872b770183db65e1a48c988e863db654ba7b508d8da76ff1e04b471cb93891b",
+      "url": "https://www.social.gov.tn/ar/societes?categorie=35&keyword=&page=9&service=All&type=All&ville=All"
+    }
+  ],
+  "publicNode": {
+    "file": "settlement-polygon-display-reviews/three-town/node-2832036076.json",
+    "sha256": "6a75055ab4be5c1fd3f2673aa5ba509aa1d6fd68dd79ec05a1032ddbff2ba104",
+    "url": "https://api.openstreetmap.org/api/0.6/node/2832036076.json",
+    "retrievedAt": "2026-09-08T12:56:43.763967+00:00"
+  },
+  "expected": {
+    "baseCurrent": {
+      "id": 516,
+      "nomFr": "Tibar",
+      "nomAr": "تيبار",
+      "nomEn": "Tibar",
+      "lat": 36.5301,
+      "lng": 9.1124
+    },
+    "governorCurrent": {
+      "id": 356,
+      "nomFr": "Béja",
+      "nomAr": "باجة",
+      "nomEn": "Beja",
+      "lat": 36.7256,
+      "lng": 9.1817
+    },
+    "pointId": "osm:node:2832036076",
+    "sourcePointCoordinates": {
+      "lat": 36.5218222,
+      "lng": 9.1049848
+    },
+    "separateSectorId": "osm:relation:7189438",
+    "parentSourceId": "osm:relation:7189390",
+    "governorSourceId": "osm:relation:1435833",
+    "preservedImadas": [
+      {
+        "id": "osm:relation:7189438",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215651",
+          "sectorFr": "Tibar",
+          "sectorAr": "تيبار",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21997,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 999,
+            "Nombre_de_menages_par_Secteurs.xlsx": 998
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7189445",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215652",
+          "sectorFr": "Djebba",
+          "sectorAr": "دجبة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22031,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1001,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1000
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7189468",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215653",
+          "sectorFr": "Ain ed-defali",
+          "sectorAr": "عين الدفالي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22065,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1003,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1002
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7189425",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215654",
+          "sectorFr": "En-nechima",
+          "sectorAr": "النشيمة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22099,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1004,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1003
+          }
+        }
+      }
+    ],
+    "protectedRawIds": [
+      "osm:relation:7189425",
+      "osm:relation:7189438",
+      "osm:relation:7189445",
+      "osm:relation:7189468",
+      "osm:way:278951683",
+      "osm:way:609966860"
+    ],
+    "originalNamePeerIds": [
+      "osm:node:2832036076",
+      "osm:relation:7189438",
+      "osm:way:278951683"
+    ],
+    "effectiveNamePeerIds": [
+      "osm:node:2832036076",
+      "osm:relation:7189438",
+      "osm:way:278951683"
+    ],
+    "nameQueries": [
+      "thibar",
+      "tibar",
+      "تيبار"
+    ],
+    "currentWholeGroups": {
+      "osm:relation:7189425": [
+        "osm:relation:7189425"
+      ],
+      "osm:relation:7189438": [
+        "osm:relation:7189438",
+        "osm:way:278951683"
+      ],
+      "osm:relation:7189445": [
+        "osm:relation:7189445",
+        "osm:way:609966860"
+      ],
+      "osm:relation:7189468": [
+        "osm:relation:7189468"
+      ],
+      "delegation:516": [
+        "delegation:516"
+      ]
+    },
+    "requiredGroupsAfterDistinctGuard": {
+      "osm:relation:7189425": [
+        "osm:relation:7189425"
+      ],
+      "osm:relation:7189438": [
+        "osm:relation:7189438"
+      ],
+      "osm:relation:7189445": [
+        "osm:relation:7189445",
+        "osm:way:609966860"
+      ],
+      "osm:relation:7189468": [
+        "osm:relation:7189468"
+      ],
+      "delegation:516": [
+        "delegation:516"
+      ],
+      "osm:way:278951683": [
+        "osm:way:278951683"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "osm:relation:7189425": [
+        "osm:relation:7189425"
+      ],
+      "osm:relation:7189438": [
+        "osm:relation:7189438"
+      ],
+      "osm:relation:7189445": [
+        "osm:relation:7189445",
+        "osm:way:609966860"
+      ],
+      "osm:relation:7189468": [
+        "osm:relation:7189468"
+      ],
+      "delegation:516": [
+        "delegation:516",
+        "osm:way:278951683"
+      ]
+    },
+    "distinctPair": {
+      "ids": [
+        "osm:relation:7189438",
+        "osm:way:278951683"
+      ],
+      "reviewEvidence": {
+        "file": "settlement-polygon-display-reviews/three-town/516-distinct.json",
+        "sha256": "638a3022618e67a845cf57f84e08dad2e7c1c0238bacecf405570720b3d20c16"
+      }
+    },
+    "baseInsideSettlementPolygon": {
+      "original": false,
+      "effective": false,
+      "packed": false
+    },
+    "coordinatePolicy": "preserve_all_reference_and_raw_coordinates",
+    "reviewedNoncontainmentReason": "Base516 is an unchanged legacy settlement reference, not a certified centre or boundary point. Its331m-scale outside-footprint relation is preserved explicitly, never used as positive identity evidence.",
+    "namesakeSectorReferenceContainment": {
+      "original": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "effective": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "packed": {
+        "base": true,
+        "sourcePoint": true
+      }
+    },
+    "settlementWithinNamesakeSector": {
+      "original": true,
+      "effective": true,
+      "packed": true
+    },
+    "coordinateCorrections": [],
+    "nearestReferenceIds": {
+      "base": 516,
+      "settlementPolygon": 516,
+      "sourcePoint": 516,
+      "separateSector": 516
+    },
+    "publicNodeElement": {
+      "type": "node",
+      "id": 2832036076,
+      "lat": 36.5218222,
+      "lon": 9.1049848,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 7,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:postcode": "9022",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:en": "Thibar",
+        "name:fr": "Thibar",
+        "place": "village",
+        "population": "3334",
+        "wikidata": "Q3523994",
+        "wikimedia_commons": "Category:Thibar",
+        "wikipedia": "ar:تيبار (تونس)",
+        "wikipedia:ar": "تيبار (تونس)"
+      }
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:278951683",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7189438",
+        "after": "delegation:516"
+      }
+    ]
+  }
+}

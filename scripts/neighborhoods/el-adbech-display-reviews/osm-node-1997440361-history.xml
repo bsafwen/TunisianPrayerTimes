@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (244684 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1997440361" visible="true" version="1" changeset="13751366" timestamp="2012-11-04T18:32:35Z" user="ulrichm" uid="192829" lat="33.4858657" lon="10.0914315">
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabes; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="hamlet"/>
+ </node>
+ <node id="1997440361" visible="true" version="2" changeset="21155947" timestamp="2014-03-17T14:33:23Z" user="Wüstenrose" uid="1900013" lat="33.4858657" lon="10.0914315">
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="int_name" v="El Adbech"/>
+  <tag k="is_in" v="Gabes; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="hamlet"/>
+ </node>
+ <node id="1997440361" visible="true" version="3" changeset="43833104" timestamp="2016-11-20T21:44:43Z" user="DenisCarriere" uid="472018" lat="33.4858657" lon="10.0914315">
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="int_name" v="El Adbech"/>
+  <tag k="is_in" v="Gabes; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="hamlet"/>
+ </node>
+ <node id="1997440361" visible="true" version="4" changeset="83272065" timestamp="2020-04-08T21:03:20Z" user="Anis Ben Makhlouf" uid="10001069" lat="33.4858657" lon="10.0914315">
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="int_name" v="El Adbech"/>
+  <tag k="is_in" v="Gabes;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="الأدباش"/>
+  <tag k="name:en" v="الأدباش"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="hamlet"/>
+ </node>
+ <node id="1997440361" visible="true" version="5" changeset="94393307" timestamp="2020-11-18T20:16:40Z" user="user_9535554" uid="9535554" lat="33.4858657" lon="10.0914315">
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="name" v="الأدباش"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="hamlet"/>
+ </node>
+ <node id="1997440361" visible="true" version="6" changeset="98609845" timestamp="2021-02-03T02:11:00Z" user="user_11422772" uid="11422772" lat="33.4858657" lon="10.0914315">
+  <tag k="name" v="الأدباش"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="hamlet"/>
+ </node>
+ <node id="1997440361" visible="true" version="7" changeset="138528828" timestamp="2023-07-15T02:15:35Z" user="Petr Jenč" uid="15169703" lat="33.4858657" lon="10.0914315">
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="hamlet"/>
+ </node>
+ <node id="1997440361" visible="true" version="8" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4859590" lon="10.0910266">
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="1997440361" visible="true" version="9" changeset="175468652" timestamp="2025-12-04T00:47:11Z" user="user_18913526" uid="18913526" lat="33.4859590" lon="10.0910266">
+  <tag k="name" v="الأدباش"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+  <tag k="place" v="village"/>
+ </node>
+</osm>

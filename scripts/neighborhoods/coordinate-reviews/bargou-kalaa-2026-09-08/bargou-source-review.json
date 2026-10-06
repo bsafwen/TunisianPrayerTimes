@@ -1,0 +1,204 @@
+{
+  "status": "PRIMARY_EVIDENCE_SUPPORTS_SETTLEMENT_REFERENCE_PENDING_CHANGE_REVIEW",
+  "sourceId": 417,
+  "sources": [
+    {
+      "key": "social-unit",
+      "requestedUrl": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببرقو",
+      "responseUrl": "https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%A8%D8%A8%D8%B1%D9%82%D9%88",
+      "transport": "Windows curl 8.21.0 Schannel with default certificate validation; Python certifi requests previously failed before saving either HTML page.",
+      "retrievedAt": "2026-09-07T23:42:52.236997+00:00",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\social-unit.html",
+      "sha256": "6f4f927273a9370525552d5127d7cc8b783b037d919b9a8f0c33d4d3a19ffb52",
+      "publishedPointsLngLat": [
+        [
+          "9.5667337",
+          "36.0914446"
+        ]
+      ]
+    },
+    {
+      "key": "municipal-geography",
+      "requestedUrl": "https://www.commune-bargou.gov.tn/index.php/2022-03-29-08-57-12/2022-03-29-11-21-25",
+      "responseUrl": "https://www.commune-bargou.gov.tn/index.php/2022-03-29-08-57-12/2022-03-29-11-21-25",
+      "transport": "Windows curl 8.21.0 Schannel with default certificate validation; Python certifi requests previously failed before saving either HTML page.",
+      "retrievedAt": "2026-09-07T23:43:16.289037+00:00",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\municipal-geography.html",
+      "sha256": "5aebaaaf2e7023b8774471d7087fc9aa7d46c754e1ee71f26f6db4c844dc9173",
+      "publishedPointsLngLat": []
+    }
+  ],
+  "existingSourceEvidence": {
+    "priority": 1,
+    "sourceId": 417,
+    "currentSource": {
+      "id": 417,
+      "nomFr": "Bargou",
+      "nomAr": "برقو",
+      "nomEn": "Bargou",
+      "lat": 36.09,
+      "lng": 9.53,
+      "governorateId": 344,
+      "governorateName": "سليانة"
+    },
+    "classification": "plausible_legacy_coordinate_error",
+    "currentlyMappedRawLocalities": 19,
+    "sourceCoordinateIsReviewedCorrection": false,
+    "namedOsmCandidate": {
+      "id": "osm:node:1278517274",
+      "tags": {
+        "alt_name": "البرقو",
+        "alt_name:ar": "البرقو",
+        "name": "برقو",
+        "name:ar": "برقو",
+        "name:en": "Bargou",
+        "name:fr": "Bargou",
+        "old_name": "ربع أولاد يحيى",
+        "old_name:ar": "ربع أولاد يحيى",
+        "place": "village",
+        "postal_code": "6170",
+        "wikidata": "Q2884486",
+        "wikimedia_commons": "Category:Bargou",
+        "wikipedia": "ar:برقو"
+      },
+      "lat": 36.0914446,
+      "lng": 9.5667337
+    },
+    "distanceToNamedNodeKm": 3.304612336423831,
+    "savedGeoNamesCandidates": [],
+    "relatedCurrentLocalities": [
+      {
+        "current": {
+          "id": "osm:relation:7125182",
+          "sourceId": "osm",
+          "name": "برقو",
+          "aliases": [
+            "Bargou",
+            "البرقو"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية برقو",
+          "contextAliases": [
+            "Bargou",
+            "Délégation Bargou",
+            "معتمدية برقو"
+          ],
+          "governorateId": 344,
+          "lat": 36.092062,
+          "lng": 9.567854,
+          "delegationId": 417,
+          "hasBoundary": true,
+          "bbox": [
+            9.561146,
+            36.084866,
+            9.573184,
+            36.099448
+          ],
+          "areaKm2": 0.8950270822781998,
+          "pickerGroupId": "osm:relation:7125182",
+          "offset": 1290128,
+          "length": 244
+        },
+        "packedGeometrySha256": "edd48d5e7e06a0af91022d6bd0ba903c82ae06361bb3ffef07c6bae023d30f2b",
+        "currentFootprintCoversStoredSource": false
+      }
+    ],
+    "officialRegistryRecords": [
+      {
+        "governorateCode": "24",
+        "governorateFr": "Siliana",
+        "governorateAr": "سليانة",
+        "delegationCode": "2460",
+        "delegationFr": "Bargou",
+        "delegationAr": "برقو",
+        "sectorCode": "246051",
+        "sectorFr": "Bargou",
+        "sectorAr": "برقو",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31959,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1511,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1510
+        }
+      }
+    ],
+    "indexedOfficialPdfUrls": [
+      "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/برقو/أحواز برقو.pdf",
+      "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/برقو/برقو.pdf",
+      "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/برقو/سيدي سعيد - (برقو).pdf"
+    ],
+    "issue": "Source is 3.305 km west of the named village and outside the current namesake sector. The earlier screen already flagged this; it has no independent corroborating settlement point.",
+    "nextEvidenceAcquisitionWithoutPhone": "Acquire an official municipal or ministry address/map for Bargou and the indexed Bargou map; use the map for location/administration, not as an INM calculation-coordinate claim.",
+    "proposedReplacementApproved": false,
+    "evidencePaths": [
+      "outputs/prayer-source-coordinate-review.json",
+      "work/geo/osm-areas.json",
+      "outputs/current-official-sector-registry.json",
+      "work/current-official-catalog/isie-local-boundary-index-links.json"
+    ]
+  },
+  "officialMap": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\bargou.pdf",
+    "sha256": "01edad25d3ae9c8d4ac3d0e6bf9a452b527b8cde76daf11d745948d8d8b0dc2b",
+    "extractionFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bargou-reference-geopdf-data.json",
+    "extractionSha256": "fefdad74eaf0aa27878e49369a5ce8fe5b52a0e9406bab6f70815c984fd88d55",
+    "personallyViewedPage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-reference-review\\bargou.png",
+    "pngSha256": "dac4bcdec4e60e441638c01ff6edeccd85930351bd7b512d31fa490b1a2edd07",
+    "targetDrawingIndex": 211,
+    "controlFitResidualMeters": 0.24254353956127786,
+    "currentSectorOverlap": [
+      {
+        "id": "osm:relation:7125182",
+        "sourceName": "برقو",
+        "sourceCode": "246051",
+        "iou": 0.5087323078958503,
+        "officialCoveredByOsm": 0.5597208456370725,
+        "osmCoveredByOfficial": 0.8481293507629217,
+        "hausdorffMeters": 886.2265232497294
+      },
+      {
+        "id": "osm:relation:7125189",
+        "sourceName": "أولاد فرج",
+        "sourceCode": "246053",
+        "iou": 0.014411433203986874,
+        "officialCoveredByOsm": 0.7255076674347511,
+        "osmCoveredByOfficial": 0.01449044228781457,
+        "hausdorffMeters": 11269.649978033674
+      },
+      {
+        "id": "osm:relation:7125188",
+        "sourceName": "أحواز برقو",
+        "sourceCode": "246052",
+        "iou": 0.0042115481598917984,
+        "officialCoveredByOsm": 0.2744923325652463,
+        "osmCoveredByOfficial": 0.004258956722400991,
+        "hausdorffMeters": 10657.97408854417
+      }
+    ],
+    "positions": {
+      "legacyReference": {
+        "lat": 36.09,
+        "lng": 9.53,
+        "insideOfficialTargetRing": false,
+        "outsideDistanceMeters": 2606.9569478111343
+      },
+      "namedSettlement": {
+        "lat": 36.0914446,
+        "lng": 9.5667337,
+        "insideOfficialTargetRing": true,
+        "outsideDistanceMeters": 0.0
+      }
+    }
+  },
+  "legacyToNamedPointDistanceMeters": 3312.1292659476453,
+  "interpretation": "The ministry publishes exactly the cached named-village point. The official map places that point in the Bargou target ring; the legacy source is outside it. The municipal page corroborates city/delegation identity and its eight imadas.",
+  "limits": [
+    "Identical ministry and OSM coordinates may share an upstream geocoder; they are not claimed as independent coordinate measurements.",
+    "Neither the ministry location nor the electoral map identifies an INM prayer-calculation point.",
+    "This is a candidate settlement reference correction only. Full electoral-to-imada semantics and neighboring topology have not been approved for boundary import.",
+    "No existing prayer mappings have been modified, and the effect of a coordinate correction has not been generated."
+  ],
+  "phoneAccess": false,
+  "repositoryChanges": false,
+  "testsRun": false,
+  "apkOrAabGenerated": false
+}

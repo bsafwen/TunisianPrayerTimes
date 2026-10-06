@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "status": "ACCEPTED_SCOPED_CATALOG_UPDATE",
+  "revisionSha256": "4a2c3f9732cb4a2ceb3db47f0cad854157981eb34f40827e1210ab6e5066f8c2",
+  "afterMetadataSha256": "a47dee7a3ab33ddb06cd3d8909fb6a83c6ee967106c67626e82751da389b335e",
+  "afterGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+}

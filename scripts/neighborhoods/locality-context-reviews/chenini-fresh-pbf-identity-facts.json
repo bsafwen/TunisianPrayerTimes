@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "extraction": "Fresh complete PBF pass for exact two nodes, all named nodes in a fixed surrounding bbox, and all5352/535258/535259 relation code claims. No edits or area repair.",
+  "nodes": [
+    {
+      "id": "osm:node:297760994",
+      "version": 13,
+      "timestamp": "2025-09-14 10:19:40+00:00",
+      "tags": {
+        "addr:city": "Chenini",
+        "name": "شنني",
+        "name:ar": "شنني",
+        "name:en": "Chenini",
+        "name:fr": "Chenini",
+        "place": "village",
+        "wikidata": "Q2317502",
+        "wikimedia_commons": "Category:Chenini",
+        "wikipedia": "ar:شنني (تطاوين)"
+      },
+      "lat": 32.9107032,
+      "lng": 10.2615519
+    },
+    {
+      "id": "osm:node:297762086",
+      "version": 7,
+      "timestamp": "2025-09-14 10:19:40+00:00",
+      "tags": {
+        "access": "yes",
+        "addr:city": "شنني",
+        "historic": "ruins",
+        "name": "Ksar Chenini",
+        "ruins": "village",
+        "wikidata": "Q73805419",
+        "wikimedia_commons": "Category:Ksar Chenini",
+        "wikipedia": "en:Ksar Chenini"
+      },
+      "lat": 32.9123499,
+      "lng": 10.2623479
+    },
+    {
+      "id": "osm:node:1975899618",
+      "version": 10,
+      "timestamp": "2025-09-14 10:19:40+00:00",
+      "tags": {
+        "addr:city": "شنني",
+        "name": "شنني",
+        "name:ar": "شنني",
+        "name:en": "Chenini",
+        "name:fr": "Chenini",
+        "place": "village",
+        "wikidata": "Q2317502",
+        "wikimedia_commons": "Category:Chenini",
+        "wikipedia": "ar:شنني (تطاوين)"
+      },
+      "lat": 32.9147021,
+      "lng": 10.2781706
+    },
+    {
+      "id": "osm:node:7056532641",
+      "version": 2,
+      "timestamp": "2021-06-12 08:20:28+00:00",
+      "tags": {
+        "addr:city": "شنني",
+        "addr:postcode": "3222",
+        "name": "كنزة",
+        "name:ar": "كنزة",
+        "name:fr": "Kenza",
+        "phone": "+216 97 284 086",
+        "tourism": "hotel"
+      },
+      "lat": 32.9114294,
+      "lng": 10.2638773
+    },
+    {
+      "id": "osm:node:7056532642",
+      "version": 2,
+      "timestamp": "2022-06-14 11:59:19+00:00",
+      "tags": {
+        "addr:city": "شنني",
+        "addr:postcode": "3222",
+        "amenity": "cafe",
+        "name": "مقهى أبو نواس",
+        "name:ar": "مقهى أبو نواس",
+        "phone": "+216 22 222 222"
+      },
+      "lat": 32.9111317,
+      "lng": 10.2621328
+    },
+    {
+      "id": "osm:node:7056532643",
+      "version": 3,
+      "timestamp": "2025-04-04 14:27:39+00:00",
+      "tags": {
+        "addr:city": "شنني",
+        "amenity": "restaurant",
+        "name": "مطعم مبروك",
+        "name:ar": "مطعم مبروك",
+        "name:fr": "Restaurant Mabrouk",
+        "phone": "+216 98 282 400"
+      },
+      "lat": 32.9105079,
+      "lng": 10.2607816
+    },
+    {
+      "id": "osm:node:9818004439",
+      "version": 3,
+      "timestamp": "2022-06-16 19:05:04+00:00",
+      "tags": {
+        "addr:city": "شنني",
+        "addr:postcode": "3222",
+        "addr:street": "chenini tataouine",
+        "amenity": "hospital",
+        "healthcare": "yes",
+        "name": "مركز الصحة الأساسية بشنني",
+        "name:ar": "مركز الصحة الأساسية بشنني",
+        "name:fr": "Centre de santé de base à Chenini"
+      },
+      "lat": 32.9105272,
+      "lng": 10.2605246
+    },
+    {
+      "id": "osm:node:9818200933",
+      "version": 1,
+      "timestamp": "2022-06-14 21:39:48+00:00",
+      "tags": {
+        "amenity": "post_office",
+        "name": "مكتب بريد شنني الجديدة"
+      },
+      "lat": 32.9150121,
+      "lng": 10.2788404
+    },
+    {
+      "id": "osm:node:9818200934",
+      "version": 1,
+      "timestamp": "2022-06-14 21:39:48+00:00",
+      "tags": {
+        "amenity": "post_office",
+        "name": "مكتب بريد شنني القديمة"
+      },
+      "lat": 32.9108544,
+      "lng": 10.2610004
+    },
+    {
+      "id": "osm:node:9818208998",
+      "version": 3,
+      "timestamp": "2024-03-28 19:09:31+00:00",
+      "tags": {
+        "addr:city": "شنني الجديدة",
+        "addr:postcode": "3222",
+        "addr:street": "فاطمة الزهراء",
+        "amenity": "school",
+        "name": "المدرسة الابتدائية شنني الجديدة",
+        "name:ar": "المدرسة الابتدائية شنني الجديدة",
+        "name:fr": "École Primaire Chenini Jadida"
+      },
+      "lat": 32.9131165,
+      "lng": 10.2792426
+    },
+    {
+      "id": "osm:node:9818212833",
+      "version": 1,
+      "timestamp": "2022-06-14 21:33:59+00:00",
+      "tags": {
+        "addr:city": "شنني",
+        "addr:postcode": "3222",
+        "amenity": "school",
+        "name": "المدرسة الإبتدائية 1957 بشنني القديمة"
+      },
+      "lat": 32.9105601,
+      "lng": 10.2599161
+    },
+    {
+      "id": "osm:node:11812615736",
+      "version": 1,
+      "timestamp": "2024-04-12 21:08:20+00:00",
+      "tags": {
+        "name": "Chenini - site paléontologique",
+        "tourism": "attraction"
+      },
+      "lat": 32.9152075,
+      "lng": 10.2699897
+    },
+    {
+      "id": "osm:node:11842458988",
+      "version": 1,
+      "timestamp": "2024-04-23 22:23:15+00:00",
+      "tags": {
+        "addr:city": "Ksar Chenini",
+        "name": "Huilerie 03",
+        "tourism": "attraction"
+      },
+      "lat": 32.9119977,
+      "lng": 10.2606146
+    },
+    {
+      "id": "osm:node:11842458989",
+      "version": 1,
+      "timestamp": "2024-04-23 22:23:15+00:00",
+      "tags": {
+        "addr:city": "Ksar Chenini",
+        "name": "Huilerie Ouled Ali",
+        "tourism": "attraction"
+      },
+      "lat": 32.911494,
+      "lng": 10.26065
+    },
+    {
+      "id": "osm:node:11842458990",
+      "version": 1,
+      "timestamp": "2024-04-23 22:28:09+00:00",
+      "tags": {
+        "addr:city": "Ksar Chenini",
+        "name": "Huilerie 02",
+        "tourism": "attraction"
+      },
+      "lat": 32.9118162,
+      "lng": 10.2630683
+    },
+    {
+      "id": "osm:node:11842458991",
+      "version": 1,
+      "timestamp": "2024-04-23 22:28:09+00:00",
+      "tags": {
+        "addr:city": "Chenini",
+        "name": "Huilerie de Boughrara",
+        "tourism": "attraction"
+      },
+      "lat": 32.9109771,
+      "lng": 10.2638969
+    }
+  ],
+  "relations": [
+    {
+      "id": "osm:relation:7143823",
+      "version": 1,
+      "timestamp": "2017-04-08 11:42:17+00:00",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "شنني الجديدة",
+        "name:ar": "شنني الجديدة",
+        "name:fr": "Nouvelle Chnini",
+        "ref:tn:codegeo": "535258",
+        "type": "boundary"
+      },
+      "members": [
+        {
+          "type": "w",
+          "ref": 485498516,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498708,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498726,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498747,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498746,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498517,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 482671573,
+          "role": "outer"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7143863",
+      "version": 6,
+      "timestamp": "2024-03-18 14:49:15+00:00",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Tataouine Sud",
+        "boundary": "administrative",
+        "name": "معتمدية تطاوين الجنوبية",
+        "name:ar": "معتمدية تطاوين الجنوبية",
+        "name:fr": "Délégation Tataouine Sud",
+        "official_name": "معتمدية تطاوين الجنوبية",
+        "official_name:ar": "معتمدية تطاوين الجنوبية",
+        "ref:tn:codegeo": "5352",
+        "ref:tn:hasc_2": "TN.TA.TS",
+        "type": "boundary",
+        "wikidata": "Q3516011",
+        "wikipedia": "ar:معتمدية تطاوين الجنوبية"
+      },
+      "members": [
+        {
+          "type": "w",
+          "ref": 485498519,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498689,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498662,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498661,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498665,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498664,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498663,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498731,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498642,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498643,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498612,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498639,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498608,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498656,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498657,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498658,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498650,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498651,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498632,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498631,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498630,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498582,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498581,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498580,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498744,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498745,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498714,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498712,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498710,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498515,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498516,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 482671573,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498517,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 482671568,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498518,
+          "role": "outer"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7143881",
+      "version": 1,
+      "timestamp": "2017-04-08 11:42:33+00:00",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "شنني",
+        "name:ar": "شنني",
+        "name:fr": "Chenini",
+        "ref:tn:codegeo": "535259",
+        "type": "boundary"
+      },
+      "members": [
+        {
+          "type": "w",
+          "ref": 485498515,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498708,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498707,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498717,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498714,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498712,
+          "role": "outer"
+        },
+        {
+          "type": "w",
+          "ref": 485498710,
+          "role": "outer"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "status": "INHABITED_BENI_MHIRA_AND_CURRENT_ADMINISTRATION_SUPPORTED_DUPLICATE_ASSOCIATION_HELD",
+  "reviewedAt": "2026-09-12T11:30:29.283383+00:00",
+  "scope": {
+    "pointId": "osm:node:5239666199",
+    "baseId": 1524,
+    "noProductChange": true
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\bounded-source-identity-facts.json",
+    "sha256": "70994adfa92466a8a705a58e9cbddba37ed1d0a6a470ad4bf0e3bc9f6c016c70",
+    "bytes": 29890
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\retrieval-manifest.json",
+    "sha256": "afa76c374caf480fe0dfd937615a02941c60eeb892ef53bdbab4a97280a51ab8",
+    "bytes": 11317
+  },
+  "primaryEvidence": [
+    {
+      "role": "official_current_administrative_membership",
+      "url": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html",
+        "sha256": "cfd0c25c6699121dd29ab1723ad48aeae8082b7f8f8bcc43d9b98049de8b2fcd",
+        "bytes": 119531
+      },
+      "requiredText": [
+        "بني مهيرة",
+        "قصر مهيرة",
+        "بني مهيرة الشرقية",
+        "قصر عون",
+        "المرة",
+        "الرهاش"
+      ],
+      "finding": "Interior Ministry directory lists exactly five Beni Mhira sectors, independently corroborating the active administrative_context decisions. No polygon coordinates or authoritative source-ID crosswalk supplied."
+    },
+    {
+      "role": "official_urban_locality_identity",
+      "url": "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/activites/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html",
+        "sha256": "344191b6aed8fe5a53aef108190d7c622cea7806efbdfd597f52f22b5763e0b6",
+        "bytes": 183788
+      },
+      "requiredText": [
+        "Smar",
+        "bni Mhira",
+        "29 Décembre 2023"
+      ],
+      "finding": "MEHAT approved-urban-plan table has Commune=Smar and Zone=bni Mhira, approval publication29Dec2023. This establishes a named urban planning locality; commune is not delegation and cannot override Beni Mhira administrative membership."
+    },
+    {
+      "role": "official_occupied_local_address",
+      "url": "https://www.social.gov.tn/en/local-social-advancement-unit-beni-mhira-tataouine",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\social-beni-mhira-unit.html",
+        "sha256": "781be1c8bef6729d009e050e02d67609219f56b8e86a52eb7a5646e082202f23",
+        "bytes": 65289
+      },
+      "requiredText": [
+        "بني مهيرة مقر المعتمدية تطاوين",
+        "POINT (10.813318 32.860964)"
+      ],
+      "finding": "Social Affairs identifies its local office at the Beni Mhira delegation seat and publishes an institution point near the western/new-school context. The point identifies the office, not a town boundary, OSM point equality, or INM calculation anchor."
+    }
+  ],
+  "cachedPrimaryDirectory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\isie-page87-derivation-provenance.json",
+    "sha256": "3082c148c5ed41cc2f4798c63eee10a396d624b7876f20897284a916043f3434",
+    "bytes": 2003
+  },
+  "supplementaryPhoneContext": {
+    "report": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-beni-mhira-borma-phone-review-20260912.json",
+      "sha256": "f37127f65189ec3c112ac08b33950b740a30fee26abfb8a4a11eec15175a7ecc",
+      "bytes": 7604
+    },
+    "observations": [
+      {
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-1.json",
+          "sha256": "b17312144a46aec8b129d82fc9f402966f1094e365306e7392c40c8c2dcf25ab"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-1.png",
+          "sha256": "4783df9f2139cf23c2278ecc7c8f8ecf43a6f93b11984712eceea09482dc341b"
+        },
+        "query": "32.8634378,10.8172175",
+        "rootVisualConclusion": "Named Beni M'hira card at the pin amid local streets, beside a school labeled for new Beni Mhira. This does not establish equivalence of old/new settlement components or their boundaries.",
+        "rootViewed": true
+      },
+      {
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-2.json",
+          "sha256": "682a8579ee6ae64fec8e2a5ac5d99e6b2a012abfcf24265786ecec114086e120"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-2.png",
+          "sha256": "897ceece4a2f68e198a96f7991c34667edd78fa13e1323a1ae5a621742575064"
+        },
+        "query": "بني مهيرة تطاوين تونس",
+        "rootVisualConclusion": "Multiple results: Beni M'hira, an eastern administrative area and a medical centre. It is not a unique locality identity result.",
+        "rootViewed": true
+      }
+    ],
+    "qualification": "Root visually inspected both screenshots; this agent read the pinned observation descriptions only. School proximity and a multi-result name query do not prove old/new-town equivalence."
+  },
+  "findings": [
+    "Authentic current OSM node5239666199 v6 matches cached source and current raw tags/coordinate. Every historical version since2017 identifies a village Beni Mhira, without an old/new qualifier or POI role. The2025 coordinate edit is about52m, not a change from an ancient-site node to a settlement node.",
+    "Official MEHAT identifies a Bni Mhira urban-plan zone, and Social Affairs locates its office at the delegation seat. This supports an inhabited locality rather than a purely administrative or archaeological name.",
+    "ISIE p87 distinguishes the Beni Mhira eastern school from El Jadida/western schools in Ksar Mehira. It does not establish whether old and new components form a single settlement identity or precise locality boundary.",
+    "The five transferred source sectors retain old Smar source codes535354–535358. Current INS rows use Beni Mhira delegation5358, sector codes535851–535855. Existing administrative_context decisions are independently corroborated and must not be reverted.",
+    "Smar in the MEHAT table is explicitly the commune column. Municipality jurisdiction and delegation membership are different source claims. It is not evidence to restore old Smar delegation labels."
+  ],
+  "holds": [
+    {
+      "reason": "Old/new component identity remains unresolved",
+      "neededEvidence": "A primary urban/local history or plan locating the inhabited old and new Beni Mhira components and explaining their naming scope, sufficient to bind this exact village point to the timetable display name without removing a meaningful locality distinction."
+    },
+    {
+      "reason": "Transferred-sector proof closure needs explicit identity lineage",
+      "neededEvidence": "Preserve all five current rows and administrative_context rules, bind exact old-code to current5358 identity mapping, account for absent5358 source delegation polygon and all dependent point/group states. Ordinary townPreservationExtension demands original source sector code=registry code and therefore does not directly represent this transfer."
+    }
+  ],
+  "recommendedAction": "Hold node5239666199→delegation1524 display association. Retain the current point, both coordinates, five distinct sectors, Beni Mhira administration and existing picker groups. Do not fabricate a delegation polygon, change source codes to satisfy a validator, or claim same identity from proximity.",
+  "limitations": [
+    "Cached sector polygons are not independently certified by this identity review. Interior membership and election directory establish administration, not borders.",
+    "Institution coordinates identify an office; no official prayer anchor or town centre is inferred.",
+    "Official primary-school web endpoint failed verified TLS via curl and Python requests. Failures are preserved; indexed snippets are not operative primary evidence. No TLS verification was disabled.",
+    "The reviewed registry Arabic spelling بنى مهيرة differs from source بني مهيرة; exact delegation code5358 selects the current five-sector inventory.",
+    "No Google API key, live phone access, ledger write, source stage, product edit, compiler import/execution, generator, tests, build, APK or AAB."
+  ],
+  "failedSchoolRetrieval": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\education-python-retrieval.json",
+    "sha256": "fc051e1ca596b06f78159e3d61a7adb489fb0a45dcd900788fe3a323b796b693",
+    "bytes": 643
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\assemble_review.py",
+    "sha256": "c10a52466fd27201d974130d20333f662a397feb8571f51a455c4cf338c58594",
+    "bytes": 13998
+  }
+}

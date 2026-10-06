@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_PROPERTY_SCOPE_EXCLUSION_PROPOSED",
+  "id": "osm:way:791334742",
+  "baselineMetadataSha256": "94d9472c144b0df6ea2d473ad0018ef79dc18c1fedca5a64291849c117c14066",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "currentRaw": {
+    "id": "osm:way:791334742",
+    "sourceId": "osm",
+    "name": "Maison Agricole dr Ahmed GHADNOUR",
+    "aliases": [],
+    "kind": "residential",
+    "parentName": "وادي الغار",
+    "contextAliases": [
+      "Délégation Tataouine Nord",
+      "Oued El Ghar",
+      "معتمدية تطاوين الشمالية",
+      "وادي الغار"
+    ],
+    "governorateId": 351,
+    "lat": 33.016928,
+    "lng": 10.630036,
+    "delegationId": 624,
+    "hasBoundary": true,
+    "bbox": [
+      10.629868,
+      33.016796,
+      10.630144,
+      33.016976
+    ],
+    "areaKm2": 0.0002480730769364998,
+    "pickerGroupId": "osm:way:791334742",
+    "offset": 5470656,
+    "length": 52
+  },
+  "originalCachedSource": {
+    "id": "osm:way:791334742",
+    "tags": {
+      "landuse": "residential",
+      "name": "Maison Agricole dr Ahmed GHADNOUR"
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              10.6298678,
+              33.0168664
+            ],
+            [
+              10.6299161,
+              33.0167955
+            ],
+            [
+              10.630144,
+              33.0168799
+            ],
+            [
+              10.6300542,
+              33.0169755
+            ],
+            [
+              10.6298678,
+              33.0168664
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "originalInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "bytes": 25378903
+  },
+  "freshPrimaryEvidence": {
+    "way791334742-current.json": {
+      "file": "exclusion-reviews/maison-agricole791334742-20260919/way791334742-current.json",
+      "sha256": "08bd8da064df6b5366ba28d524f3785bcaec16dbe78caa15826da1c9ffe0400d",
+      "bytes": 551
+    },
+    "way791334742-history.json": {
+      "file": "exclusion-reviews/maison-agricole791334742-20260919/way791334742-history.json",
+      "sha256": "997381c7c7259bb3858115cf5edf4f13b22582b37eec370b7d3e78f53a3766df",
+      "bytes": 551
+    },
+    "way791334742-full.json": {
+      "file": "exclusion-reviews/maison-agricole791334742-20260919/way791334742-full.json",
+      "sha256": "24185dc524b9f76acd27d25ae08405865a536335fa8f71f3ec13c13ff5d94214",
+      "bytes": 1275
+    },
+    "changeset83472658.json": {
+      "file": "exclusion-reviews/maison-agricole791334742-20260919/changeset83472658.json",
+      "sha256": "35467d62441402f8653efa12766d12554e170b348a3f66d3e8c483473a3eb645",
+      "bytes": 785
+    },
+    "changeset83472658.osc": {
+      "file": "exclusion-reviews/maison-agricole791334742-20260919/changeset83472658.osc",
+      "sha256": "737cb0e2469caabd18024191f345c6eeef265fe5f77ce82cae6e5ef89d4ed7c0",
+      "bytes": 66383
+    }
+  },
+  "retrievalIndex": {
+    "file": "exclusion-reviews/maison-agricole791334742-20260919/retrieval-index.json",
+    "sha256": "3957897a3a719787ecf7136ad978a0df89272eba2e09c4904f920ebe034906f2",
+    "bytes": 1398
+  },
+  "originalWayElement": {
+    "type": "way",
+    "id": 791334742,
+    "timestamp": "2020-04-13T11:17:34Z",
+    "version": 1,
+    "changeset": 83472658,
+    "user": "mohamed amine GHANDOUR",
+    "uid": 10616377,
+    "nodes": [
+      7397873744,
+      7397873745,
+      7397873746,
+      7397873747,
+      7397873744
+    ],
+    "tags": {
+      "landuse": "residential",
+      "name": "Maison Agricole dr Ahmed GHADNOUR"
+    }
+  },
+  "exactPublicGeometryMatchesOriginal": true,
+  "originalCreation": {
+    "changesetId": 83472658,
+    "comment": "Modification OpenstreetMap.tn",
+    "qualification": "The comment is generic; it does not explicitly assert private ownership or house classification.",
+    "wayCreatedWithExactCurrentTagsAndFourBoundaryNodes": true,
+    "separateSameChangesetAgriculturalWays": [
+      {
+        "id": "osm:way:791334735",
+        "tags": {
+          "landuse": "farmland",
+          "name": "Draiena Projet"
+        }
+      },
+      {
+        "id": "osm:way:791334736",
+        "tags": {
+          "landuse": "farmland",
+          "name": "Draiena Projet 2"
+        }
+      }
+    ]
+  },
+  "sameNameSourceIds": [
+    "osm:way:791334742"
+  ],
+  "originalContexts": [
+    {
+      "id": "osm:relation:7143860",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي الغار",
+        "name:ar": "وادي الغار",
+        "name:fr": "Oued El Ghar",
+        "ref:tn:codegeo": "535157"
+      },
+      "fullOriginalContainment": true
+    },
+    {
+      "id": "osm:relation:7143811",
+      "tags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "name": "معتمدية تطاوين الشمالية",
+        "name:ar": "معتمدية تطاوين الشمالية",
+        "name:fr": "Délégation Tataouine Nord",
+        "ref:tn:codegeo": "5351",
+        "ref:tn:hasc_2": "TN.TA.TN",
+        "sorting_name": "تطاوين الشمالية",
+        "sorting_name:ar": "تطاوين الشمالية",
+        "sorting_name:fr": "Tataouine Nord",
+        "wikidata": "Q3516010",
+        "wikipedia": "ar:معتمدية تطاوين الشمالية",
+        "wikipedia:ar": "معتمدية تطاوين الشمالية"
+      },
+      "fullOriginalContainment": true
+    },
+    {
+      "id": "osm:relation:1434953",
+      "tags": {
+        "ISO3166-2": "TN-83",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية تطاوين",
+        "name:ar": "ولاية تطاوين",
+        "name:be": "Татавін (вілает)",
+        "name:be-tarask": "Татаўін (вілает)",
+        "name:bg": "Татауин (област)",
+        "name:ca": "Governació de Tataouine",
+        "name:ceb": "Tataouine (lalawigan)",
+        "name:cy": "Tataouine (talaith)",
+        "name:de": "Gouvernement Tataouine",
+        "name:el": "Ταταουίν (Κυβερνείο)",
+        "name:en": "Tataouine",
+        "name:es": "Gobernación de Tataouine",
+        "name:fa": "تطاوین",
+        "name:fi": "Tataouine (kuvernementti)",
+        "name:fr": "Gouvernorat Tataouine",
+        "name:frr": "Tataouine (Guwernement)",
+        "name:id": "Kegubernuran Tataouine",
+        "name:it": "Tataouine",
+        "name:ja": "タタウイヌ県",
+        "name:ko": "타타우인주",
+        "name:ms": "Kawasan kegabenoran Tataouine",
+        "name:nl": "Tataouine (gouvernement)",
+        "name:no": "Tataouine (guvernement)",
+        "name:pl": "Gubernatorstwo Tatawin",
+        "name:pt": "Tataouine (província)",
+        "name:ro": "Guvernoratul Tataouine",
+        "name:ru": "Татавин (вилайет)",
+        "name:sco": "Tataouine Govrenorate",
+        "name:sh": "Tataouine (vilajet)",
+        "name:sv": "Tataouine (guvernement)",
+        "name:tr": "Tatavin ili",
+        "name:uk": "Татауїн (вілаєт)",
+        "name:ur": "تطاوین",
+        "name:zh": "泰塔溫省",
+        "name:zu": "Tataouine Governorate",
+        "official_name": "ولاية تطاوين",
+        "official_name:ar": "ولاية تطاوين",
+        "official_name:en": "Tataouine Governorate",
+        "official_name:fa": "استان تطاوین",
+        "official_name:fr": "Gouvernorat de Tataouine",
+        "official_name:it": "Governatorato di Tataouine",
+        "official_name:ur": "ولایت تطاوین",
+        "population": "143524",
+        "population:date": "2004",
+        "ref:tn:codegeo": "53",
+        "wikidata": "Q327045",
+        "wikipedia": "ar:ولاية تطاوين"
+      },
+      "fullOriginalContainment": true
+    }
+  ],
+  "preservedEnclosingLocality": {
+    "id": "osm:relation:7143860",
+    "sourceId": "osm",
+    "name": "وادي الغار",
+    "aliases": [
+      "Oued El Ghar"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية تطاوين الشمالية",
+    "contextAliases": [
+      "Délégation Tataouine Nord",
+      "معتمدية تطاوين الشمالية"
+    ],
+    "governorateId": 351,
+    "lat": 33.005377,
+    "lng": 10.548977,
+    "delegationId": 624,
+    "hasBoundary": true,
+    "bbox": [
+      10.45827,
+      32.928117,
+      10.63897,
+      33.082587
+    ],
+    "areaKm2": 187.2125786794487,
+    "pickerGroupId": "osm:relation:7143860",
+    "offset": 2148732,
+    "length": 2052
+  },
+  "originalGeometrySha256": "3fb510ef750acf27c5564714f7f3f19fe3d39c306444adef3c31dd38cd21b452",
+  "packedGeometrySha256": "4a0318bb064c1eeff0ee18c07a37186485f6a2c3cadb8e490d7d055c2a8ab29c",
+  "areaM2": 248.07307693649977,
+  "classification": "Exclude this exact 248.07 m2 agricultural-house/property annotation from neighborhood choices. Its original unchanged source name explicitly describes an agricultural house and its authentic four-corner v1 geometry remains the same in current OSM. It has no settlement or administrative identity tags and no same-name source point. The same creation changeset separately maps the larger Draiena farm projects. This is a limited feature-scope classification, not a claim about current ownership, occupancy, nonexistence or a certified building/cadastral boundary. The nearby Google garden card is context only; the unrelated partial name-search match is not identity evidence. Preserve the enclosing Oued El Ghar locality, all other source features and every prayer reference; retire this ID without inventing a replacement.",
+  "secondarySearchQualification": "Exact-name web hits derive their feature/classification directly from OSM way791334742; they are not independent corroboration and no missing-search inference is used.",
+  "phoneContext": {
+    "file": "exclusion-reviews/maison-agricole791334742-20260919/phone-context-review.json",
+    "sha256": "5240b475d31001873b205577496ad5aff38a03ab02c4f518c2a3897f1e600a23",
+    "bytes": 3127
+  },
+  "phoneEvidenceQualification": "Root personally viewed the three observations. Only surrounding garden/property context is relevant; no exact matching identity, private ownership or boundary is certified.",
+  "dependencyReview": {
+    "candidateReferences": [
+      {
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/combined-reference-and-display-source-review.json",
+        "sha256": "1545bf8c2c2db35d002abea25014d2e7f231e9e1fa0ebfb250aa7b1d8fa2de76"
+      },
+      {
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/beni-mhira-context-nearest-reference-projection.json",
+        "sha256": "cc44917580b054ad09b0003b8cbf3bf562cbfbd299e74aa2c26eed538fc1bb5f"
+      },
+      {
+        "file": "coordinate-reviews/inm-published-smar472-2026-09-19/independent-source-review.json",
+        "sha256": "908d753e3c0f3a1d1a2df90a9328c676b9e9d19725312a85ce8e3a7e82f49441"
+      },
+      {
+        "file": "coordinate-reviews/inm-published-smar472-2026-09-19/retained-display-reference-proof.json",
+        "sha256": "28a7ea69ae75e785a3ab380bc8eaae911ecf235b86ee3ea66a288900bfd146e7"
+      },
+      {
+        "file": "coordinate-reviews/inm-published-smar472-2026-09-19/sourcefacts-and-design.json",
+        "sha256": "4d8b2b7ceba4b0544b7ae310c65e166155a04d169ee7f39eb4291e82769c43aa"
+      },
+      {
+        "file": "official/chenini-two-choice-staged-data-independent-review.json",
+        "sha256": "56121c5cfb3ea4c02df6156f80138f969f921ac989a0ebfff2dd06e43b927fe7"
+      },
+      {
+        "file": "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+        "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197"
+      },
+      {
+        "file": "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-el-hani-neighborhoods.json",
+        "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a"
+      },
+      {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json",
+        "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b"
+      },
+      {
+        "file": "point-retention-reviews/before-neighborhoods.json",
+        "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0"
+      }
+    ],
+    "activeCurrentRawGuardForCandidate": false,
+    "smarRetainedProof": {
+      "file": "coordinate-reviews/inm-published-smar472-2026-09-19/retained-display-reference-proof.json",
+      "sha256": "28a7ea69ae75e785a3ab380bc8eaae911ecf235b86ee3ea66a288900bfd146e7"
+    },
+    "smarCandidateReferenceRole": "Historical exactRawFieldChanges entry from the already applied Hazoua/Smar reference correction; candidate is absent from that proof current protected metadata, sources, nearest-member map and final groups.",
+    "otherReferences": "Historical acquisition/review/full-catalog snapshots, or source-only review records. Preserve byte-exactly. Beni historical context is queried by its explicit protected IDs, which do not include this feature.",
+    "sharedManifestChangesIfStandalone": [
+      "Append one exact-source exclude decision to catalog-curation.json."
+    ],
+    "compilerChanges": false,
+    "pickerManifestChanges": false
+  },
+  "qualifications": {
+    "currentOwnershipEstablished": false,
+    "currentOccupancyEstablished": false,
+    "buildingBoundaryCertified": false,
+    "neighborhoodNonexistenceClaimed": false,
+    "googleGeometryCopied": false,
+    "genericHouseNameFilterAdded": false
+  }
+}

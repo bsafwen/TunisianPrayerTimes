@@ -1,0 +1,430 @@
+{
+  "status": "APPROVE_TWO_NAME_ONLY_SOURCE_IDENTITIES_PENDING_INDEPENDENT_REVIEW_AND_ACTUAL_GENERATION",
+  "createdAt": "2026-09-07T23:25:36.301511+00:00",
+  "metadataSha256": "5555e696b7cac1b1adbccbb7d88fdf1f42f598be22dc637f7633df4ce39dcc6d",
+  "geometrySha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+  "scope": "Two name_tags records only; no app, generator, tests, phone, fresh source scan or boundary import.",
+  "sourceFacts": {
+    "file": "name-reviews/sahloul-remil-cached-source-facts.json",
+    "sha256": "914d9d1f25a8a4e61419919cceec1b4af8ce0405f4e4705744a390c5f0895a8f"
+  },
+  "recordIds": [
+    "osm:relation:7106871",
+    "osm:relation:7125148"
+  ],
+  "nameDecisions": [
+    {
+      "id": "osm:relation:7106871",
+      "before": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سهلول",
+        "name:ar": "سهلول",
+        "name:fr": "Sahloul",
+        "ref:tn:codegeo": "315356"
+      },
+      "after": {
+        "name": "سهلول جوهرة",
+        "name:ar": "سهلول جوهرة",
+        "name:fr": "Sahloul jawhara"
+      }
+    },
+    {
+      "id": "osm:relation:7125148",
+      "before": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الزميل",
+        "name:ar": "الزميل",
+        "name:fr": "Ezzmil",
+        "ref:tn:codegeo": "246153"
+      },
+      "after": {
+        "name": "الرميل",
+        "name:ar": "الرميل",
+        "name:fr": "Er remil"
+      }
+    }
+  ],
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "sources": [
+      {
+        "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+          "ETag": "\"8d1a5c-636842926ae2a\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "9247324",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 9247324,
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sheet": "Population"
+      },
+      {
+        "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+          "ETag": "\"b8855-6433d8623825d\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "755797",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 755797,
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sheet": "Logements"
+      },
+      {
+        "file": "Nombre_de_menages_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+          "ETag": "\"9ea73-6433d95004ce0\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "649843",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 649843,
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sheet": "Ménages"
+      }
+    ]
+  },
+  "decreeSource": {
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "pageCount": 190
+  },
+  "identityBasis": "Unique unchanged six-digit source codes agree with current official INS identities and parent codes; exact legal one-imada/one-circle rows agree with the red labels geographically located in the corresponding original and packed polygons. Sahloul additionally has95.19% native-ring/source IoU. Er Remil has no complete target ring; this limit does not negate the code/name/location identity evidence.",
+  "aliasesPolicy": "Use exact official Arabic/French nameTags only. Unsupported typo aliases and ambiguous unqualified Sahloul are preserved in evidence, not search aliases.",
+  "predictedMetadataChanges": [
+    {
+      "id": "osm:relation:7106871",
+      "fields": [
+        "name",
+        "aliases"
+      ]
+    },
+    {
+      "id": "osm:relation:7125148",
+      "fields": [
+        "name",
+        "aliases"
+      ]
+    },
+    {
+      "id": "osm:node:3160236048",
+      "fields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "before": {
+        "id": "osm:node:3160236048",
+        "sourceId": "osm",
+        "name": "تلالة",
+        "aliases": [
+          "Telalla"
+        ],
+        "kind": "hamlet",
+        "parentName": "الزميل",
+        "contextAliases": [
+          "Aroussa",
+          "El Aroussa",
+          "Ezzmil",
+          "الزميل",
+          "العروسة"
+        ],
+        "governorateId": 344,
+        "lat": 36.3284661,
+        "lng": 9.539707,
+        "delegationId": 420,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:3160236048"
+      },
+      "expectedParentName": "الرميل",
+      "expectedContextAliases": [
+        "Aroussa",
+        "El Aroussa",
+        "Er remil",
+        "الرميل",
+        "العروسة"
+      ]
+    }
+  ],
+  "predictedOtherChanges": {
+    "reviewedNamesIncrease": 2,
+    "expectedReviewedNamesBefore": 52,
+    "expectedReviewedNamesAfter": 54,
+    "rawIdsAddedOrRemoved": 0,
+    "geometryBytesChanged": false,
+    "pickerGroupsChanged": false,
+    "coordinatesChanged": false,
+    "prayerDefaultsChanged": false,
+    "governoratesChanged": false,
+    "currentSourceDefaults": {
+      "osm:relation:7106871": 438,
+      "osm:relation:7125148": 419,
+      "osm:node:3160236048": 420
+    }
+  },
+  "existingCurrentPrimaryNamesCollidingWithNewNames": [],
+  "matchingCachedPlaceNodes": [],
+  "separateSahloulChoicePreserved": "osm:relation:7106543",
+  "geometryEvidenceLimits": {
+    "osm:relation:7106871": {
+      "scope": "Identity/location corroboration only; no candidate boundary exported or approved here.",
+      "independentlyReconstructedControlResidualMeters": 0.02267100386398511,
+      "crsEpsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          4.21055483606074,
+          -6.434322361748193e-05
+        ],
+        [
+          0.00012625662748178001,
+          -4.210065262062926
+        ],
+        [
+          642721.0318465861,
+          3968127.646987832
+        ]
+      ],
+      "labels": [
+        {
+          "sourceText": "ةرھوﺟ لوﻠﮭﺳ",
+          "colors": [
+            15073280
+          ],
+          "pageBBox": [
+            465.74090576171875,
+            296.99273681640625,
+            594.9882202148438,
+            350.27728271484375
+          ],
+          "pageCenter": [
+            530.3645629882812,
+            323.635009765625
+          ],
+          "wgs84Center": [
+            10.60490535466852,
+            35.83435602518577
+          ],
+          "insideOriginal": true,
+          "insidePacked": true,
+          "fullLabelBoxInsideOriginal": true,
+          "containingCachedSectorIds": [
+            "osm:relation:7106871"
+          ]
+        },
+        {
+          "sourceText": "ةرھوﺟ لوﻠﮭﺳ",
+          "colors": [
+            15073280
+          ],
+          "pageBBox": [
+            691.4129028320312,
+            36.847808837890625,
+            802.2987670898438,
+            82.52029418945312
+          ],
+          "pageCenter": [
+            746.8558349609375,
+            59.684051513671875
+          ],
+          "wgs84Center": [
+            10.61519695074561,
+            35.8442359737982
+          ],
+          "insideOriginal": false,
+          "insidePacked": false,
+          "fullLabelBoxInsideOriginal": false,
+          "containingCachedSectorIds": [
+            "osm:relation:7106867"
+          ]
+        }
+      ],
+      "selectedGeographicLabel": {
+        "sourceText": "ةرھوﺟ لوﻠﮭﺳ",
+        "colors": [
+          15073280
+        ],
+        "pageBBox": [
+          465.74090576171875,
+          296.99273681640625,
+          594.9882202148438,
+          350.27728271484375
+        ],
+        "pageCenter": [
+          530.3645629882812,
+          323.635009765625
+        ],
+        "wgs84Center": [
+          10.60490535466852,
+          35.83435602518577
+        ],
+        "insideOriginal": true,
+        "insidePacked": true,
+        "fullLabelBoxInsideOriginal": true,
+        "containingCachedSectorIds": [
+          "osm:relation:7106871"
+        ]
+      },
+      "nativeTargetComplete": true,
+      "partialCircleImported": false,
+      "nativeDrawingIndex": 391,
+      "nativeVertexCount": 117,
+      "officialToCurrentSourceIoU": 0.9519188518025608,
+      "existingExtractionOutsideViewportArea": 0.0,
+      "existingExtractionOutsideClipAreas": [
+        0.0,
+        0.0
+      ],
+      "limit": "A near-matching complete ring corroborates this identity; it remains a separate unimported boundary candidate, and neighboring labels can extend across their outlines."
+    },
+    "osm:relation:7125148": {
+      "scope": "Identity/location corroboration only; no candidate boundary exported or approved here.",
+      "independentlyReconstructedControlResidualMeters": 0.2253651417102656,
+      "crsEpsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          26.825011228599813,
+          0.00021394736127104553
+        ],
+        [
+          0.0003047714017156977,
+          -26.8148489034902
+        ],
+        [
+          533991.5425423939,
+          4026201.9053521096
+        ]
+      ],
+      "labels": [
+        {
+          "sourceText": "لﯾﻣرﻟا",
+          "colors": [
+            15073280
+          ],
+          "pageBBox": [
+            316.3726806640625,
+            318.59539794921875,
+            394.49346923828125,
+            371.8799743652344
+          ],
+          "pageCenter": [
+            355.4330749511719,
+            345.23768615722656
+          ],
+          "wgs84Center": [
+            9.484758346570572,
+            36.29650029623873
+          ],
+          "insideOriginal": true,
+          "insidePacked": true,
+          "fullLabelBoxInsideOriginal": true,
+          "containingCachedSectorIds": [
+            "osm:relation:7125148"
+          ]
+        },
+        {
+          "sourceText": "لﯾﻣرﻟا",
+          "colors": [
+            15073280
+          ],
+          "pageBBox": [
+            691.4129028320312,
+            36.847808837890625,
+            758.3735961914062,
+            82.52029418945312
+          ],
+          "pageCenter": [
+            724.8932495117188,
+            59.684051513671875
+          ],
+          "wgs84Center": [
+            9.595655768733025,
+            36.36503080374079
+          ],
+          "insideOriginal": false,
+          "insidePacked": false,
+          "fullLabelBoxInsideOriginal": false,
+          "containingCachedSectorIds": [
+            "osm:relation:7125035"
+          ]
+        }
+      ],
+      "selectedGeographicLabel": {
+        "sourceText": "لﯾﻣرﻟا",
+        "colors": [
+          15073280
+        ],
+        "pageBBox": [
+          316.3726806640625,
+          318.59539794921875,
+          394.49346923828125,
+          371.8799743652344
+        ],
+        "pageCenter": [
+          355.4330749511719,
+          345.23768615722656
+        ],
+        "wgs84Center": [
+          9.484758346570572,
+          36.29650029623873
+        ],
+        "insideOriginal": true,
+        "insidePacked": true,
+        "fullLabelBoxInsideOriginal": true,
+        "containingCachedSectorIds": [
+          "osm:relation:7125148"
+        ]
+      },
+      "nativeTargetComplete": false,
+      "partialCircleImported": false,
+      "limit": "The target outline continues beyond the bottom of the map viewport. Its visible red label is independently georeferenced inside the exact uniquely coded original polygon. No complete ring, full containment of an official shape, or boundary accuracy is claimed."
+    }
+  },
+  "inputPins": {
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": "5555e696b7cac1b1adbccbb7d88fdf1f42f598be22dc637f7633df4ce39dcc6d",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json": "e145a22fc9e4253fbf032db27702d3f794258fa575a21c768bd7cd9792bcca9c",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\manifest.json": "080b4090f87a3dbeb9b5c0e6b6ce00becbc6aa3bff19360c13d6a8a6fa4cf115",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\sahloul-remil-sector-geopdf-data.json": "9a3179ff782c82d698199290b10981c505575182b9943732a54f28d1be325e1d",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree-source.json": "4d32d381e259cbecab67ac7b2d268cb8e7892a2ffd6c36531f2e82236cbb5dae",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\sahloul-jawhara.pdf": "ffe6914c9bfdc448a9a7299d1077541d2e33f02d5b16176775aa12c7dd957eab",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\sahloul-jawhara.png": "4adc50bb607170dab4cb37148dfccbbccf9222d18938bfd7fa063a28274e41d2",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\decree-page-51.png": "fcaa99922af3de2d639a0df19abd7ed56b91c9df2acb1ce32c2ff99eafe014c4",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\er-remil.pdf": "4894cd9a8f431cd055816832eef785d02742a9112286b16a6028ef05c6656836",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\er-remil.png": "4c8493b63410ee8a267fabe8efebbb8ed8bb29e657af82063b5916fba8b47168",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahloul-remil-label-review\\decree-page-46.png": "350e8002f3ab09f8d378e9f9a91252c423932df375a3083c666d16ffc606663c"
+  },
+  "executionLimits": "Only this evidence builder was run. No generator/helper/test execution, PBF scan, network request, source edits or new map downloads."
+}

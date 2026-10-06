@@ -1,0 +1,23 @@
+{
+  "status": "ROOT_ACCEPTED_PRODUCT_SCOPE_EXCLUSION_PENDING_STAGING",
+  "at": "2026-09-20T22:40:28.872351+00:00",
+  "ownerId": "osm:node:1190877566",
+  "action": "exclude_from_locality_picker_and_gps_labels",
+  "reason": "The exact legacy hamlet point is inside the named military academy site in the pinned source. The historical account directly identifies Camp Serviere as the former academy site name, while the current Defense Ministry identifies the institution as the military academy at Fondouk Jedid. Together these support a legacy facility/site label rather than a distinct current neighborhood for this product.",
+  "spatialEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\osm-context.json",
+    "sha256": "a0924f57a9f23263fdb99262e2dee687b0787bea0852fa3f3a033795a7e69267",
+    "nodeId": 1190877566,
+    "wayId": 679795363,
+    "originalRingVertexCount": 17,
+    "validWithoutRepair": true,
+    "containsExactNode": true
+  },
+  "qualifications": [
+    "This is a product-scope classification, not proof that the historical place never existed.",
+    "The academy polygon is contextual source evidence, not a certified official boundary to ship.",
+    "Do not merge the camp point with a surrounding locality or move prayer source coordinates.",
+    "Preserve nearby Fondouk Jedid and saved prayer delegation via existing retired-locality migration."
+  ],
+  "liveAppEdits": false
+}

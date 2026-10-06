@@ -1,0 +1,85 @@
+{
+  "status": "QUALIFIED_INHABITED_WORKER_LOCALITY_IDENTITY; HOLD_NEW_DISPLAY_ASSOCIATION_PENDING_SCOPE_REVIEW",
+  "pointId": "osm:node:500182808",
+  "baseId": 476,
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c5d895dd8e1c5cd35e99dcce1790a468f3438aa90658c55c11bcdb2a34eba4e9"
+  },
+  "sourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "currentCuration": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "2d1c80ef35b9066249461c2824aad9ae277d06d718b7537c0c68f76e348e5f55"
+  },
+  "currentBoundaries": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\finite-source-context-facts.json",
+    "sha256": "3185feb80c30638fd48a4973ee3d343576903b27f1bef10f4f355b9c3c9399ff"
+  },
+  "retrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\retrieval-initial.json",
+      "sha256": "0159ec3c34cb9de6e22f14407d8ec09ac4c24c4622f12179c5c431468c1e4b91"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\retrieval-social-field.json",
+      "sha256": "c799227e5372429099c7c44765e2b45ef97b6affeb883b91481bab06a617d38e"
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-social.html",
+        "sha256": "c43e2230e6a10bba8b16643eea25e60ff948bc6f2b718f5f6df2c69976f21e82"
+      },
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=5",
+      "supports": "The operator explicitly describes a residential camp with sports facilities and a medical centre at its El Borma base. Inhabited worker locality is supported; a general civilian town and exact point or residential footprint are not certified."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-field.html",
+        "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51"
+      },
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+      "supports": "The operator locates its El Borma oil/gas production field in southwestern Tunisia near the Tunisian-Algerian border. This is the Tunisian industrial locality, not proof about the Algerian namesake municipality."
+    }
+  ],
+  "findings": [
+    "Authentic OSM versions 1 through 9 consistently classify the Tunisian point as village since 2009; current v9 changes only the name tag from cached v8. Coordinates have remained identical since v6 in 2020. No raw update is applied.",
+    "SITEP directly confirms habitation at its base through residential-camp infrastructure. Oilfield association alone is not a valid reason to remove the place.",
+    "Both stored point and base fall within cached Remada delegation 5357 and Remada Ouest sector 535752; the official INS registry recognizes those divisions but has no El Borma delegation or sector. The registry confirms names/codes, not point containment or legal boundary accuracy.",
+    "The app base476 is a named prayer-time reference; it must not be presented as evidence that El Borma is a current Tunisian moaatamdiya.",
+    "Nearby airport, concession, production centre, residential camp and locality are related but distinct geographical scopes. Generic Google namesake results and OSM-derived sites cannot resolve exact display association alone."
+  ],
+  "decision": "Retain current locality and source semantics. Qualified settlement identity is supported as an inhabited worker locality. Hold any new point-to-base display merge until independently reviewing the narrower locality/base identity and schema treatment for a prayer reference that has no same-name official delegation. No deletion, boundary drawing, coordinate change or reclassification is justified by this bounded review.",
+  "preciseGap": "No primary polygon or primary statement ties node500182808 coordinates or base476 anchor to the exact residential-camp footprint. No primary evidence reviewed establishes a general civilian municipality named El Borma within Tunisia.",
+  "nextConcreteStep": "Review this primary residential-base evidence and the standard display-proof contract for different locality/delegation names; preserve six distinct Remada sectors and keep the source point coordinates. Additional source expansion is not required before that scope decision.",
+  "limitations": [
+    "Current administration containment here comes from cached OSM geometry and registry name/code correspondence, not a freshly certified legal boundary.",
+    "HTTPS SITEP handshake failed; original public HTTP response bytes and exact retrieval provenance were retained. Initial OSM bodies without retrieval metadata are excluded in favour of the confirmed request bodies.",
+    "Phone evidence was supplied by root; this worker did not inspect or operate the phone and does not certify its exact coordinate identity."
+  ],
+  "notPerformed": [
+    "live product edits",
+    "stage assembly",
+    "generation",
+    "tests",
+    "build",
+    "phone",
+    "ledger"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\freeze_review.py",
+    "sha256": "21bd4f38c7f53225896a04a0ee4fc467014d1d08c7c23f9f3d7f9257f081d697"
+  }
+}

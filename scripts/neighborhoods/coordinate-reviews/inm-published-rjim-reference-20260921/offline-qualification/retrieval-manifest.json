@@ -1,0 +1,37 @@
+{
+  "responses": [
+    {
+      "file": "evidence/487-prayer.json",
+      "sha256": "06629e97e51d7498138e13dc2b9046dbb13b93c3e6998d6f6d9e082c3e7d763e",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/487/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/487/",
+      "status": 200,
+      "originalProvenanceFile": "evidence/487-prayer-receipt-original.json"
+    },
+    {
+      "file": "evidence/487-sun.json",
+      "sha256": "56d7b6ec80967b695cd15bc5fb0eb280672167e34a5b3fc3060aaac7e0133010",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/487/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/487/",
+      "status": 200,
+      "originalProvenanceFile": "evidence/487-sun-receipt-original.json"
+    },
+    {
+      "file": "evidence/631-prayer.json",
+      "sha256": "8aa46d0045a66b0d397e432a123d64660b43d75d7fed68dd87487ae246b0f765",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/631/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/631/",
+      "status": 200,
+      "originalProvenanceFile": "evidence/631-prayer-receipt-original.json"
+    },
+    {
+      "file": "evidence/631-sun.json",
+      "sha256": "47fa2f5a75395b79c29fecab7f53728283676e7f156b170eb70bce38da53b25a",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/631/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/631/",
+      "status": 200,
+      "originalProvenanceFile": "evidence/631-sun-receipt-original.json"
+    }
+  ],
+  "qualification": "Derived relocation manifest; original retrieval bytes preserved separately."
+}

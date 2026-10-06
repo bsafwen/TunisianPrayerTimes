@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed_settlement_reference_sources_staged_only",
+  "scope": "Exactly source417 and source443 named settlement reference corrections, no boundary or INM coordinate certification.",
+  "reviewedDate": "2026-09-08",
+  "originalSourceAssetSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+  "reviewedSourceAssetSha256": "bbe085d70eec30dbe9c356b7ea1c7534d98e6d0489cdf65788d5b9b0aaf531f7",
+  "sourceIds": [
+    417,
+    443
+  ],
+  "evidence": [
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-source-review.json",
+      "sha256": "68744f5473660733b91c79906af10802f856c20e3775141eac197caf72e8d2f6"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-independent-review.json",
+      "sha256": "175ed4b3731bb8f2b52bd76bcf56287c1d42b025a1027d32d5e9265465585ca7"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-source-review.json",
+      "sha256": "e0303bf691ed72ce846395f6c3cd3ac2cbd64c56ed520277ceab4433ff5adbfb"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-node-1278517274.json",
+      "sha256": "a69256e76e59ff545e94a9c1fbdd595802eb2a658e515891794fed444d75cea4"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-live-response-manifest.json",
+      "sha256": "122e2e447a918e50bb926e4789b179f154aeefab2b56399366281adbb6d0ceb5"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-node-1495587105.json",
+      "sha256": "81af96007b5cdcdd4abacbf0e0ab3ccc0ae1dda7d3da02df4917dddfeff8e932"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-retrieval-manifest.json",
+      "sha256": "d254d5455d815f2dd8d3e4be4379ac4f0a0e811349159411533adf6f49f1a5b8"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-social-unit.html",
+      "sha256": "6f4f927273a9370525552d5127d7cc8b783b037d919b9a8f0c33d4d3a19ffb52"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-municipal-geography.html",
+      "sha256": "5aebaaaf2e7023b8774471d7087fc9aa7d46c754e1ee71f26f6db4c844dc9173"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/kalaa-social-local-unit.html",
+      "sha256": "bc67ec4f968c43d7877d07075a5f0e16c90c7c97b87be7e2e1bf62899683ca94"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-isie2023.pdf",
+      "sha256": "01edad25d3ae9c8d4ac3d0e6bf9a452b527b8cde76daf11d745948d8d8b0dc2b"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-isie2023.png",
+      "sha256": "dac4bcdec4e60e441638c01ff6edeccd85930351bd7b512d31fa490b1a2edd07"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/decree-page-47.png",
+      "sha256": "33e40d866b510062a29b9b76f743a01aac361209215205e392a5f0e0d9e4614b"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/bargou-geopdf-extraction.json",
+      "sha256": "fefdad74eaf0aa27878e49369a5ce8fe5b52a0e9406bab6f70815c984fd88d55"
+    },
+    {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/historical-reference-change-preview.json",
+      "sha256": "47d32476be4f9967ac68dee2b2ee34ac458911062b9bf50cb203f01409c66668"
+    }
+  ],
+  "sharedExistingEvidence": [
+    {
+      "file": "point-retention-reviews/decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+      "scope": "Annex A PDF47/JORT5144, whole Bargou imada"
+    },
+    {
+      "file": "point-retention-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "url": "https://ins.tn/enquetes/recensement-general-de-la-population-et-de-lhabitat-2024",
+      "scope": "Existing exact original-workbook registry records and primary workbook URLs; no boundary geometry"
+    }
+  ],
+  "officialBargouPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/برقو/برقو.pdf",
+  "sourceEvidenceUrls": [
+    "https://api.openstreetmap.org/api/0.6/node/1278517274.json",
+    "https://api.openstreetmap.org/api/0.6/node/1495587105.json",
+    "https://www.openstreetmap.org/node/1278517274",
+    "https://www.openstreetmap.org/node/1495587105",
+    "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببرقو",
+    "https://www.commune-bargou.gov.tn/index.php/2022-03-29-08-57-12/2022-03-29-11-21-25",
+    "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-القلعة-الصغرى-سوسة"
+  ],
+  "frozenDocumentsQualification": "Copied source reports retain their original historical absolute citations and baseline hashes byte-for-byte. This wrapper supplies portable relative pins for the actual retained evidence; historical documents are not rewritten as current audits.",
+  "mappingPreview": {
+    "evidence": {
+      "file": "coordinate-reviews/bargou-kalaa-2026-09-08/historical-reference-change-preview.json",
+      "sha256": "47d32476be4f9967ac68dee2b2ee34ac458911062b9bf50cb203f01409c66668"
+    },
+    "sourceMetadataSha256": "34135e143e509842fc5673d290fbc6571c334bc26739eb2c03a17e5c6ac73d17",
+    "currentMetadataSha256": "454aa824d70e9bbcd3ef339971c9124ef269c7b824d758bf8e85024ca23fd15f",
+    "allSixStoredCoordinatesNamesGroupsAndDefaultsStillExact": true,
+    "changedRawDefaults": 6,
+    "changedPickerChoices": 5
+  },
+  "manualAnchorAddendum": {
+    "sectorId": "osm:relation:7126202",
+    "pointId": "osm:node:10002024787",
+    "coordinate": {
+      "lat": 36.163799,
+      "lng": 9.4505751
+    },
+    "historicalNearestSource": 417,
+    "proposedNearestSource": 617,
+    "preservedHistoricalProofs": [
+      {
+        "file": "name-reviews/eight-point-sector-spelling-review.json",
+        "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+      },
+      {
+        "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+        "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+      },
+      {
+        "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+        "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+      }
+    ],
+    "interpretation": "The old reports record source417 under their old reference asset. The reviewed identity and exact manual point remain valid. The existing compiler chooses the nearest source dynamically at that point, so the pair changes together to617; no current source-default guard is removed or rewritten."
+  },
+  "limits": [
+    "No boundary is imported: the Bargou official map still has substantial mixed-source topology disagreements.",
+    "The Kalaa legacy point has not been proved outside the entire built-up town.",
+    "Ministry/OSM coordinate agreement may share an upstream geocoder.",
+    "The numeric preview is at stored representative points, not GPS coverage or user counts.",
+    "A future actual generation must pass all existing source/group guards; no generator or helper has been executed in this stage preparation."
+  ]
+}

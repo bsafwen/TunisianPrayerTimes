@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/tunis-souk-jedid-five-boundaries-20260924/build_best_effort_overlay.py",
+  "sources": [
+    {
+      "id": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/candidate-source.geojson",
+      "geojsonSha256": "e52492ec65b98af53affb7d29ae2487cc13cd0b730cf1aabf01b3a3e79be8622",
+      "reviewFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/source-review.json",
+      "reviewSha256": "0393bcc9cbeb0c84a746d6862dda40f8fa140736b415cb44d63059d9a73de41e"
+    }
+  ],
+  "records": [
+    {
+      "action": "replace",
+      "id": "osm:relation:7117932",
+      "sourceId": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "sourceFeatureId": "osm:relation:7117932",
+      "officialCode": "116954",
+      "ministryName": "الطيب المهيري",
+      "ministryParent": "حلق الوادي",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الطيب المهيري",
+        "aliases": ["Taieb Mhiri", "الطيب مهيري"],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": ["Delegación de La Goleta", "Délégation La Goulette", "حلق الوادي", "معتمدية حلق الوادي"],
+        "governorateId": 342,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7117932"
+      }
+    }
+  ]
+}

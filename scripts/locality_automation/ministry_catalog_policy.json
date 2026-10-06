@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "excludedEntries": [
+    {
+      "governorate": "زغوان",
+      "delegation": "زغوان",
+      "name": "عين الصابون",
+      "reason": "User authorized skipping this Ministry entry because it is a water source.",
+      "authority": "Direct user instruction on 2026-10-02",
+      "catalogueTableRow": "79",
+      "nameIndexInDelegation": "8"
+    }
+  ],
+  "existenceSources": ["ISIE", "GoogleMaps", "OpenStreetMap"],
+  "existenceRule": "One documented match permits further review. Skip after all three documented no-match checks. Unavailable or unchecked sources do not prove absence.",
+  "qualification": "Eligibility policy only. Preserve the original Ministry catalogue, existing independent map features, and all source/GPS/identity qualifications. No alias, geography or prayer-source credit follows from eligibility."
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "file": "sitep-social.html",
+    "url": "http://www.sitep.com.tn/page.php?r=1&sr=5",
+    "finalUrl": "http://www.sitep.com.tn/page.php?r=1&sr=5",
+    "status": 200,
+    "sha256": "c43e2230e6a10bba8b16643eea25e60ff948bc6f2b718f5f6df2c69976f21e82",
+    "bytes": 10721,
+    "retrievedAt": "2026-09-12T11:28:43.427869+00:00",
+    "headers": {
+      "Date": "Sat, 12 Sep 2026 11:28:37 GMT",
+      "Server": "Apache",
+      "X-Powered-By": "PHP/5.2.6-1+lenny16",
+      "Set-Cookie": "PHPSESSID=53606559a0493f8eaadc0382e60d25d2; path=/",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "Content-Length": "3039",
+      "Keep-Alive": "timeout=5, max=100",
+      "Connection": "Keep-Alive",
+      "Content-Type": "text/html"
+    }
+  },
+  {
+    "file": "sitep-field.html",
+    "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+    "finalUrl": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+    "status": 200,
+    "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51",
+    "bytes": 9668,
+    "retrievedAt": "2026-09-12T11:28:43.548342+00:00",
+    "headers": {
+      "Date": "Sat, 12 Sep 2026 11:28:37 GMT",
+      "Server": "Apache",
+      "X-Powered-By": "PHP/5.2.6-1+lenny16",
+      "Set-Cookie": "PHPSESSID=96ad1746a6f0d5f37232a2dbc1fecf01; path=/",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "Content-Length": "2773",
+      "Keep-Alive": "timeout=5, max=100",
+      "Connection": "Keep-Alive",
+      "Content-Type": "text/html"
+    }
+  }
+]

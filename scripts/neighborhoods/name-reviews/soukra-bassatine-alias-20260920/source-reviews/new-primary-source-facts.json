@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "status": "NEW_PRIMARY_IDENTITY_AND_SCOPE_EVIDENCE",
+  "frozenInput": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\frozen-facts.json",
+    "sha256": "e5adc3caed4d475d51f919c219995800bc79d7f131c614b09cf53510dd8899c4",
+    "bytes": 109532
+  },
+  "officialMapFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\geometry-facts.json",
+    "sha256": "c68e2bf955990e88198d8d10d515c5d0bbf0e962cd863b240703608e441263fd",
+    "bytes": 26099
+  },
+  "officialMapRetrievals": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\source-receipts.json",
+    "sha256": "395d3f51bd52164eae4751a09d503ae6c12bd7a82da6fc3527170c85abfd0e86",
+    "bytes": 2393
+  },
+  "workbookRows": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\original-workbook-rows.json",
+    "sha256": "7d5044edcaa4d2cb21f4d5bd40797a37c1afc575386cd691dd6d9af5c8f65bc5",
+    "bytes": 12278
+  },
+  "workbookChecks": [
+    {
+      "id": "osm:relation:7169582",
+      "source": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "row": 54297,
+      "allNineIdentityFieldsEqual": true
+    },
+    {
+      "id": "osm:relation:7114902",
+      "source": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "row": 5917,
+      "allNineIdentityFieldsEqual": true
+    },
+    {
+      "id": "osm:relation:7169582",
+      "source": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "row": 2641,
+      "allNineIdentityFieldsEqual": true
+    },
+    {
+      "id": "osm:relation:7114902",
+      "source": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "row": 186,
+      "allNineIdentityFieldsEqual": true
+    },
+    {
+      "id": "osm:relation:7169582",
+      "source": "Nombre_de_menages_par_Secteurs.xlsx",
+      "row": 2636,
+      "allNineIdentityFieldsEqual": true
+    },
+    {
+      "id": "osm:relation:7114902",
+      "source": "Nombre_de_menages_par_Secteurs.xlsx",
+      "row": 186,
+      "allNineIdentityFieldsEqual": true
+    }
+  ],
+  "ins2012": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+    "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+    "bytes": 749971,
+    "url": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+    "personallyViewedPages": [
+      {
+        "pdfPage": 38,
+        "printedPage": 38,
+        "code": "125253",
+        "parent": "Soukra / سكرة",
+        "name": "El Bessatine / البساتين",
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\ins2012-page38.png",
+          "sha256": "583622019eb5b9bab48e97f67421dc0f06c7ceeb698d195f9433ea9b1acd19f3",
+          "bytes": 106374
+        }
+      },
+      {
+        "pdfPage": 107,
+        "printedPage": 107,
+        "code": "435255",
+        "parent": "Sidi Bouzid Est / سيدي بوزيد الشرقية",
+        "name": "EL Amra / العامرة",
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\ins2012-page107.png",
+          "sha256": "e4456111440b21e21c7ad34441362b37e990cecfbfa60c0323c9ee2ca0bb4c7b",
+          "bytes": 109082
+        }
+      }
+    ]
+  },
+  "jort590": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "bytes": 10636520,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "publishedDate": "2023-09-22",
+    "annex": 1,
+    "table": "A",
+    "personallyViewedRows": [
+      {
+        "pdfPage": 4,
+        "jortPage": 5101,
+        "parent": "سكرة",
+        "imada": "البساتين",
+        "electoralCircle": "البساتين - (سكرة)",
+        "circleCount": 1,
+        "seats": 1,
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-4.png",
+          "sha256": "b8e8fc68b00f827b24e923eff75740f13bb2d2ea5bc5c180bc03f02a583828cb",
+          "bytes": 522191
+        }
+      },
+      {
+        "pdfPage": 56,
+        "jortPage": 5153,
+        "parent": "سيدي بوزيد الشرقية",
+        "imada": "العامرة",
+        "electoralCircle": "العامرة - (سيدي بوزيد الشرقية)",
+        "circleCount": 1,
+        "seats": 1,
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-56.png",
+          "sha256": "b2ef12ed62155271b681d819263f1f44a580e9836fc06006dadfb9d026c7eed5",
+          "bytes": 295505
+        }
+      }
+    ],
+    "codeLinkQualification": "Six-digit codes do not appear in the decree. They are joined through exact parent and imada names in INS2012 and the original source code; INS2024 same code/parent supplies the Boustan spelling variant."
+  },
+  "downstreamAndFutureGeometryScreen": [
+    {
+      "id": "osm:relation:7169582",
+      "sameNameParentScreenQualification": "The frozen field called inheritedChildren was a discovery screen matching parentName alone, not an assertion of lineage. Spatial/context checks below exclude unrelated homonyms.",
+      "sameNameParentScreen": [
+        {
+          "id": "osm:node:10006741366",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "العامرة",
+          "currentContextAliases": [
+            "Cebbala Ouled Asker",
+            "Délégation Cebalet Ouled Asker",
+            "El Amra",
+            "العامرة",
+            "معتمدية سبالة أولاد عسكر"
+          ]
+        },
+        {
+          "id": "osm:node:2876213834",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "العامرة",
+          "currentContextAliases": [
+            "Cebbala Ouled Asker",
+            "Délégation Cebalet Ouled Asker",
+            "El Amra",
+            "العامرة",
+            "معتمدية سبالة أولاد عسكر"
+          ]
+        },
+        {
+          "id": "osm:node:7856369371",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "العامرة",
+          "currentContextAliases": [
+            "Délégation El Amra",
+            "El Amra",
+            "العامرة",
+            "معتمدية العامرة"
+          ]
+        },
+        {
+          "id": "osm:node:7856369372",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "العامرة",
+          "currentContextAliases": [
+            "Délégation El Amra",
+            "El Amra",
+            "العامرة",
+            "معتمدية العامرة"
+          ]
+        }
+      ],
+      "allCurrentRawAnchorsChangingContainment": []
+    },
+    {
+      "id": "osm:relation:7114902",
+      "sameNameParentScreenQualification": "The frozen field called inheritedChildren was a discovery screen matching parentName alone, not an assertion of lineage. Spatial/context checks below exclude unrelated homonyms.",
+      "sameNameParentScreen": [
+        {
+          "id": "osm:way:1545457711",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Kasserine Nord",
+            "El Bassatine",
+            "Kasserine Nord",
+            "البساتين",
+            "معتمدية القصرين الشمالية"
+          ]
+        },
+        {
+          "id": "osm:way:738813565",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Sfax Ville",
+            "El Bassatine",
+            "Sfax Ville",
+            "البساتين",
+            "معتمدية صفاقس المدينة"
+          ]
+        },
+        {
+          "id": "osm:node:10021286089",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Sidi Alouane",
+            "El Bassatine",
+            "Sidi Alouane",
+            "البساتين",
+            "معتمدية سيدي علوان"
+          ]
+        },
+        {
+          "id": "osm:node:10021286328",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Sidi Alouane",
+            "El Bassatine",
+            "Sidi Alouane",
+            "البساتين",
+            "معتمدية سيدي علوان"
+          ]
+        },
+        {
+          "id": "osm:node:10168309795",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Sfax Ville",
+            "El Bassatine",
+            "Sfax Ville",
+            "البساتين",
+            "معتمدية صفاقس المدينة"
+          ]
+        },
+        {
+          "id": "osm:node:10168309796",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Sfax Ville",
+            "El Bassatine",
+            "Sfax Ville",
+            "البساتين",
+            "معتمدية صفاقس المدينة"
+          ]
+        },
+        {
+          "id": "osm:node:1099411041",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": false,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Le Bardo",
+            "El Bassatine",
+            "البساتين",
+            "معتمدية باردو"
+          ]
+        },
+        {
+          "id": "osm:node:7390818324",
+          "sameDisplayParentOnly": true,
+          "originalTargetCoversAnchor": true,
+          "officialTargetCoversAnchor": false,
+          "currentParentName": "البساتين",
+          "currentContextAliases": [
+            "Délégation Soukra",
+            "El Bassatine",
+            "La Soukra",
+            "البساتين",
+            "معتمدية سكرة"
+          ]
+        }
+      ],
+      "allCurrentRawAnchorsChangingContainment": [
+        {
+          "id": "osm:node:7390818324",
+          "name": "سكرة",
+          "kind": "village",
+          "lat": 36.8749751,
+          "lng": 10.2454267,
+          "parentName": "البساتين",
+          "groupId": "delegation:532",
+          "beforeInside": true,
+          "afterInside": false
+        }
+      ]
+    }
+  ],
+  "activeSoukraPreservationDependency": {
+    "curationIndexAtFrozenBaseline": 170,
+    "pointId": "osm:node:7390818324",
+    "proof": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\dependency-successors\\soliman-native-20260912\\node-7390818324-boundary-proof.json",
+      "sha256": "82b5e59d06a0bfe2f08dd75075e9bacf2d92d0e5132bd97a480880c84da19fc9",
+      "bytes": 105363
+    },
+    "carry": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\tinja-soukra-sector-owned-2026-09\\current-f05e-source-group-carry.json",
+      "sha256": "f0c772b7d0ffbcf76228baf50f3118155811a2451e9cf6c2e820ae96b1a4ffd3",
+      "bytes": 21438
+    },
+    "rawCurrentPointContextPinned": true,
+    "sectorAliasesAndExpectedCurationPinned": true,
+    "originalSourceTagsAndShapesMustRemainIntact": true,
+    "pointInsideOriginalBassatine": true,
+    "pointInsideOfficialBassatine": false,
+    "distanceToOfficialBoundaryMeters": "See geometry-only addendum; no point relocation proposed.",
+    "requiredAliasOnlySuccessorLeaves": [
+      "rawCurrent.contextAliases for7390818324",
+      "preservedSectors[7114902].expectedCuration and currentMetadata.aliases",
+      "sectorOwnedSettlementPreservation.sourceStates[7114902].expectedCuration and effective.tags",
+      "sectorOwnedSettlementPreservation.curationBindings[7114902]",
+      "sectorOwnedSettlementPreservation.protectedRawRecords currentMetadata for7114902 and7390818324",
+      "honest currentSourcePhaseCarry successor for the same exact changes if actively bound; preserve all membership/coordinate/geometry guards"
+    ]
+  },
+  "productionWrites": false,
+  "devicesUsed": false
+}

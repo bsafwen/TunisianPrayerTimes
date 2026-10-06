@@ -1,0 +1,1717 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_FACTS_AND_CANDIDATE_DESIGN_ONLY",
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "baselineCompilerSha256": "7f4a47f43695272401599976f64f74aba5ad3867d2226ce0f394190bc446a4a1",
+  "sourceInputs": [
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+      "bytes": 1851425
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "bytes": 54578
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "55cb693c58e7da2c6c680869a30fbcb31bbb4abea4c49867600387471ee3141e",
+      "bytes": 419286
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "edc9b5f969bdb1387c9b8fca93e1ef999cb2af444d1921e9b34ea241633419a2",
+      "bytes": 615989
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/next-five-localities-phone-review-20260919.json",
+      "sha256": "df58c2b71debfb2b66d3533fc83eeb2503fb11321c47d95804d94c85f29a7599",
+      "bytes": 5403
+    }
+  ],
+  "all3523CurrentNearestVerified": true,
+  "records": [
+    {
+      "sectorId": "osm:relation:7143839",
+      "localityId": "osm:way:321991676",
+      "absorbedPointId": "osm:node:297761849",
+      "officialRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5355",
+        "delegationFr": "Ghomrassen",
+        "delegationAr": "غمراسن",
+        "sectorCode": "535557",
+        "sectorFr": "Ksar el haddada",
+        "sectorAr": "قصر الحدادة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64967,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3190,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3184
+        }
+      },
+      "sourceRecords": {
+        "osm:relation:7143839": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قصر الحدادة",
+            "name:ar": "قصر الحدادة",
+            "name:fr": "Ksar El Haddada",
+            "ref:tn:codegeo": "535557"
+          },
+          "geometrySha256": "a2b119fc8da4d9fcb80fadb4e0d4e7eaf180505ba4c396937242c0e11ea37228",
+          "currentMetadata": {
+            "id": "osm:relation:7143839",
+            "sourceId": "osm",
+            "name": "قصر الحدادة",
+            "aliases": [
+              "Ksar El Haddada"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية غمراسن",
+            "contextAliases": [
+              "Délégation Ghomrassen",
+              "Ghomrassen",
+              "معتمدية غمراسن"
+            ],
+            "governorateId": 351,
+            "lat": 33.110282,
+            "lng": 10.3048,
+            "delegationId": 473,
+            "hasBoundary": true,
+            "bbox": [
+              10.24518,
+              33.067217,
+              10.348368,
+              33.153822
+            ],
+            "areaKm2": 48.06115218896891,
+            "pickerGroupId": "osm:relation:7143839",
+            "offset": 2121556,
+            "length": 1076
+          }
+        },
+        "osm:way:321991676": {
+          "kind": "residential",
+          "tags": {
+            "landuse": "residential",
+            "name": "قصر حدادة",
+            "name:ar": "قصر حدادة",
+            "name:en": "Ksar Hadada",
+            "residential": "village"
+          },
+          "geometrySha256": "6038c1bbdd9b2e1048d24902457da6ead003747f3b592543f492c8e1e2fe485c",
+          "currentMetadata": {
+            "id": "osm:way:321991676",
+            "sourceId": "osm",
+            "name": "قصر حدادة",
+            "aliases": [
+              "Ksar Hadada",
+              "Ksar Haddada"
+            ],
+            "kind": "residential",
+            "parentName": "قصر الحدادة",
+            "contextAliases": [
+              "Délégation Ghomrassen",
+              "Ghomrassen",
+              "Ksar El Haddada",
+              "قصر الحدادة",
+              "معتمدية غمراسن"
+            ],
+            "governorateId": 351,
+            "lat": 33.100565,
+            "lng": 10.314326,
+            "delegationId": 473,
+            "hasBoundary": true,
+            "bbox": [
+              10.308424,
+              33.095923,
+              10.320576,
+              33.10509
+            ],
+            "areaKm2": 0.4264290920053917,
+            "pickerGroupId": "osm:way:321991676",
+            "offset": 5428256,
+            "length": 652
+          }
+        },
+        "osm:node:297761849": {
+          "kind": "village",
+          "tags": {
+            "name": "قصر حدادة",
+            "name:ar": "قصر حدادة",
+            "name:en": "Ksar Hadada",
+            "name:fr": "Ksar Haddada",
+            "place": "village"
+          },
+          "geometrySha256": "13e65a321b6b23fd40ac818cc1569ec77321604c621a9699c6dc73dd09ce5eea",
+          "currentMetadata": null,
+          "lat": 33.1004153,
+          "lng": 10.3119203
+        },
+        "osm:relation:7143858": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Ghomrassen",
+            "boundary": "administrative",
+            "name": "معتمدية غمراسن",
+            "name:ar": "معتمدية غمراسن",
+            "name:fr": "Délégation Ghomrassen",
+            "ref:tn:codegeo": "5355",
+            "ref:tn:hasc_2": "TN.TA.GH",
+            "wikidata": "Q3104928"
+          },
+          "geometrySha256": "fcbe2ff2b0437a4942953790d23136c88ab25088da8d6318206e7225d1598ea4",
+          "currentMetadata": null
+        },
+        "osm:relation:1434953": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-83",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية تطاوين",
+            "name:ar": "ولاية تطاوين",
+            "name:be": "Татавін (вілает)",
+            "name:be-tarask": "Татаўін (вілает)",
+            "name:bg": "Татауин (област)",
+            "name:ca": "Governació de Tataouine",
+            "name:ceb": "Tataouine (lalawigan)",
+            "name:cy": "Tataouine (talaith)",
+            "name:de": "Gouvernement Tataouine",
+            "name:el": "Ταταουίν (Κυβερνείο)",
+            "name:en": "Tataouine",
+            "name:es": "Gobernación de Tataouine",
+            "name:fa": "تطاوین",
+            "name:fi": "Tataouine (kuvernementti)",
+            "name:fr": "Gouvernorat Tataouine",
+            "name:frr": "Tataouine (Guwernement)",
+            "name:id": "Kegubernuran Tataouine",
+            "name:it": "Tataouine",
+            "name:ja": "タタウイヌ県",
+            "name:ko": "타타우인주",
+            "name:ms": "Kawasan kegabenoran Tataouine",
+            "name:nl": "Tataouine (gouvernement)",
+            "name:no": "Tataouine (guvernement)",
+            "name:pl": "Gubernatorstwo Tatawin",
+            "name:pt": "Tataouine (província)",
+            "name:ro": "Guvernoratul Tataouine",
+            "name:ru": "Татавин (вилайет)",
+            "name:sco": "Tataouine Govrenorate",
+            "name:sh": "Tataouine (vilajet)",
+            "name:sv": "Tataouine (guvernement)",
+            "name:tr": "Tatavin ili",
+            "name:uk": "Татауїн (вілаєт)",
+            "name:ur": "تطاوین",
+            "name:zh": "泰塔溫省",
+            "name:zu": "Tataouine Governorate",
+            "official_name": "ولاية تطاوين",
+            "official_name:ar": "ولاية تطاوين",
+            "official_name:en": "Tataouine Governorate",
+            "official_name:fa": "استان تطاوین",
+            "official_name:fr": "Gouvernorat de Tataouine",
+            "official_name:it": "Governatorato di Tataouine",
+            "official_name:ur": "ولایت تطاوین",
+            "population": "143524",
+            "population:date": "2004",
+            "ref:tn:codegeo": "53",
+            "wikidata": "Q327045",
+            "wikipedia": "ar:ولاية تطاوين"
+          },
+          "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0",
+          "currentMetadata": null
+        }
+      },
+      "geometry": {
+        "originalSectorCoversLocality": true,
+        "packedSectorCoversLocality": true,
+        "originalOverlapRatioOfLocality": 0.9999999999999993,
+        "packedOverlapRatioOfLocality": 0.9999999999999996,
+        "originalOverlapRatioOfSector": 0.00887145990410213,
+        "pointWithinOriginalSector": true,
+        "pointWithinPackedSector": true,
+        "pointWithinOriginalLocality": true,
+        "pointWithinPackedLocality": true,
+        "pointWithinOriginalParent": true,
+        "sectorAnchorWithinLocality": false,
+        "sectorAnchorToVillageKm": 1.2820074849310215,
+        "localityAnchorToVillageKm": 0.22470727217044967,
+        "packedHashes": {
+          "osm:relation:7143839": "a4ea0d7d6175d2134deacd4b69060d072aab8395bd286aa601b2b634ee30a87f",
+          "osm:way:321991676": "b6e7ad02a2c988e4a6e049d2056ecb6463522d98af32fab451f3dc7fe9cf7763"
+        }
+      },
+      "sourceNamePeerInventory": [
+        {
+          "id": "osm:way:321991676",
+          "kind": "residential",
+          "tags": {
+            "landuse": "residential",
+            "name": "قصر حدادة",
+            "name:ar": "قصر حدادة",
+            "name:en": "Ksar Hadada",
+            "residential": "village"
+          },
+          "geometrySha256": "6038c1bbdd9b2e1048d24902457da6ead003747f3b592543f492c8e1e2fe485c",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7143839",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قصر الحدادة",
+            "name:ar": "قصر الحدادة",
+            "name:fr": "Ksar El Haddada",
+            "ref:tn:codegeo": "535557"
+          },
+          "geometrySha256": "a2b119fc8da4d9fcb80fadb4e0d4e7eaf180505ba4c396937242c0e11ea37228",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:node:297761849",
+          "kind": "village",
+          "tags": {
+            "name": "قصر حدادة",
+            "name:ar": "قصر حدادة",
+            "name:en": "Ksar Hadada",
+            "name:fr": "Ksar Haddada",
+            "place": "village"
+          },
+          "geometrySha256": "13e65a321b6b23fd40ac818cc1569ec77321604c621a9699c6dc73dd09ce5eea",
+          "rawPresent": false
+        }
+      ],
+      "rawNamePeerInventory": [
+        {
+          "id": "osm:relation:7143839",
+          "sourceId": "osm",
+          "name": "قصر الحدادة",
+          "aliases": [
+            "Ksar El Haddada"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية غمراسن",
+          "contextAliases": [
+            "Délégation Ghomrassen",
+            "Ghomrassen",
+            "معتمدية غمراسن"
+          ],
+          "governorateId": 351,
+          "lat": 33.110282,
+          "lng": 10.3048,
+          "delegationId": 473,
+          "hasBoundary": true,
+          "bbox": [
+            10.24518,
+            33.067217,
+            10.348368,
+            33.153822
+          ],
+          "areaKm2": 48.06115218896891,
+          "pickerGroupId": "osm:relation:7143839",
+          "offset": 2121556,
+          "length": 1076
+        },
+        {
+          "id": "osm:way:321991676",
+          "sourceId": "osm",
+          "name": "قصر حدادة",
+          "aliases": [
+            "Ksar Hadada",
+            "Ksar Haddada"
+          ],
+          "kind": "residential",
+          "parentName": "قصر الحدادة",
+          "contextAliases": [
+            "Délégation Ghomrassen",
+            "Ghomrassen",
+            "Ksar El Haddada",
+            "قصر الحدادة",
+            "معتمدية غمراسن"
+          ],
+          "governorateId": 351,
+          "lat": 33.100565,
+          "lng": 10.314326,
+          "delegationId": 473,
+          "hasBoundary": true,
+          "bbox": [
+            10.308424,
+            33.095923,
+            10.320576,
+            33.10509
+          ],
+          "areaKm2": 0.4264290920053917,
+          "pickerGroupId": "osm:way:321991676",
+          "offset": 5428256,
+          "length": 652
+        }
+      ],
+      "currentContextsDependingOnSectorName": [
+        {
+          "id": "osm:way:321991676",
+          "sourceId": "osm",
+          "name": "قصر حدادة",
+          "aliases": [
+            "Ksar Hadada",
+            "Ksar Haddada"
+          ],
+          "kind": "residential",
+          "parentName": "قصر الحدادة",
+          "contextAliases": [
+            "Délégation Ghomrassen",
+            "Ghomrassen",
+            "Ksar El Haddada",
+            "قصر الحدادة",
+            "معتمدية غمراسن"
+          ],
+          "governorateId": 351,
+          "lat": 33.100565,
+          "lng": 10.314326,
+          "delegationId": 473,
+          "hasBoundary": true,
+          "bbox": [
+            10.308424,
+            33.095923,
+            10.320576,
+            33.10509
+          ],
+          "areaKm2": 0.4264290920053917,
+          "pickerGroupId": "osm:way:321991676",
+          "offset": 5428256,
+          "length": 652
+        }
+      ],
+      "currentGroups": [
+        {
+          "groupId": "osm:relation:7143839",
+          "members": [
+            "osm:relation:7143839"
+          ]
+        },
+        {
+          "groupId": "osm:way:321991676",
+          "members": [
+            "osm:way:321991676"
+          ]
+        }
+      ],
+      "nearestReferences": {
+        "sector": [
+          {
+            "id": 473,
+            "name": "غمراسن",
+            "km": 6.481908646968571
+          },
+          {
+            "id": 474,
+            "name": "بئر الأحمر",
+            "km": 14.874408199911818
+          },
+          {
+            "id": 489,
+            "name": "بني خداش",
+            "km": 17.83843394231782
+          }
+        ],
+        "locality": [
+          {
+            "id": 473,
+            "name": "غمراسن",
+            "km": 5.105655410139939
+          },
+          {
+            "id": 474,
+            "name": "بئر الأحمر",
+            "km": 14.735295900761317
+          },
+          {
+            "id": 489,
+            "name": "بني خداش",
+            "km": 19.2277721667427
+          }
+        ],
+        "authenticVillagePoint": [
+          {
+            "id": 473,
+            "name": "غمراسن",
+            "km": 5.200038744416593
+          },
+          {
+            "id": 474,
+            "name": "بئر الأحمر",
+            "km": 14.926062856670747
+          },
+          {
+            "id": 489,
+            "name": "بني خداش",
+            "km": 19.119992232902426
+          }
+        ]
+      },
+      "candidateDesign": {
+        "method": "existing name_tags plus manualPointId with automatic overlapping same-name group",
+        "proposedNameTags": {
+          "name": "قصر حدادة",
+          "name:ar": "قصر حدادة",
+          "name:fr": "Ksar El Haddada",
+          "alt_name:ar": "قصر الحدادة"
+        },
+        "manualPointId": "osm:node:297761849",
+        "canonicalPickerId": "osm:relation:7143839",
+        "sourceVillageRemainsAbsorbed": true,
+        "exactRawFieldChanges": [
+          {
+            "id": "osm:relation:7143839",
+            "field": "name",
+            "before": "قصر الحدادة",
+            "after": "قصر حدادة"
+          },
+          {
+            "id": "osm:relation:7143839",
+            "field": "aliases",
+            "before": [
+              "Ksar El Haddada"
+            ],
+            "after": [
+              "Ksar El Haddada",
+              "قصر الحدادة"
+            ]
+          },
+          {
+            "id": "osm:relation:7143839",
+            "field": "lat",
+            "before": 33.110282,
+            "after": 33.1004153
+          },
+          {
+            "id": "osm:relation:7143839",
+            "field": "lng",
+            "before": 10.3048,
+            "after": 10.3119203
+          },
+          {
+            "id": "osm:relation:7143839",
+            "field": "manualPointId",
+            "before": null,
+            "after": "osm:node:297761849"
+          },
+          {
+            "id": "osm:way:321991676",
+            "field": "parentName",
+            "before": "قصر الحدادة",
+            "after": "معتمدية غمراسن"
+          },
+          {
+            "id": "osm:way:321991676",
+            "field": "contextAliases",
+            "before": [
+              "Délégation Ghomrassen",
+              "Ghomrassen",
+              "Ksar El Haddada",
+              "قصر الحدادة",
+              "معتمدية غمراسن"
+            ],
+            "after": [
+              "Délégation Ghomrassen",
+              "Ghomrassen",
+              "Ksar El Haddada",
+              "قصر الحدادة",
+              "قصر حدادة",
+              "معتمدية غمراسن"
+            ]
+          },
+          {
+            "id": "osm:way:321991676",
+            "field": "pickerGroupId",
+            "before": "osm:way:321991676",
+            "after": "osm:relation:7143839"
+          }
+        ],
+        "geometryChanges": false,
+        "sourcePointNameChanges": false,
+        "referenceChanges": false
+      }
+    },
+    {
+      "sectorId": "osm:relation:7143857",
+      "localityId": "osm:way:154906508",
+      "absorbedPointId": "osm:node:8655345739",
+      "officialRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5352",
+        "delegationFr": "Tataouine sud",
+        "delegationAr": "تطاوين الجنوبية",
+        "sectorCode": "535264",
+        "sectorFr": "Bir thalathine",
+        "sectorAr": "بئر الثلاثين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64359,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3163,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3157
+        }
+      },
+      "sourceRecords": {
+        "osm:relation:7143857": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر الثلاثين",
+            "name:ar": "بئر الثلاثين",
+            "name:fr": "BIR THALATHINE",
+            "ref:tn:codegeo": "535264"
+          },
+          "geometrySha256": "e48c419724c70958fdf05cc0c7cab7e6ff1659ef03c56c6ff8097d771874a019",
+          "currentMetadata": {
+            "id": "osm:relation:7143857",
+            "sourceId": "osm",
+            "name": "بئر الثلاثين",
+            "aliases": [
+              "BIR THALATHINE"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تطاوين الجنوبية",
+            "contextAliases": [
+              "Délégation Tataouine Sud",
+              "Tataouine Sud",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "governorateId": 351,
+            "lat": 32.691982,
+            "lng": 10.346146,
+            "delegationId": 624,
+            "hasBoundary": true,
+            "bbox": [
+              10.244042,
+              32.577717,
+              10.453585,
+              32.821057
+            ],
+            "areaKm2": 309.7804284965693,
+            "pickerGroupId": "osm:relation:7143857",
+            "offset": 2145828,
+            "length": 1124
+          }
+        },
+        "osm:way:154906508": {
+          "kind": "hamlet",
+          "tags": {
+            "addr:city": "Bir Thlathine",
+            "landuse": "residential",
+            "name": "بئر ثلاثين",
+            "name:ar": "بئر ثلاثين",
+            "name:fr": "Bir Thlathine",
+            "place": "hamlet"
+          },
+          "geometrySha256": "cf66e3b0f810959f0df377509a0d0b966801b713efae67216b6561752f1ce106",
+          "currentMetadata": {
+            "id": "osm:way:154906508",
+            "sourceId": "osm",
+            "name": "بئر ثلاثين",
+            "aliases": [
+              "Bir Thlathine",
+              "Bir Thlatine"
+            ],
+            "kind": "hamlet",
+            "parentName": "بئر الثلاثين",
+            "contextAliases": [
+              "BIR THALATHINE",
+              "Délégation Tataouine Sud",
+              "Tataouine Sud",
+              "بئر الثلاثين",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "governorateId": 351,
+            "lat": 32.694971,
+            "lng": 10.329557,
+            "delegationId": 624,
+            "hasBoundary": true,
+            "bbox": [
+              10.326786,
+              32.692397,
+              10.332369,
+              32.698044
+            ],
+            "areaKm2": 0.16491931757663444,
+            "pickerGroupId": "osm:way:154906508",
+            "offset": 5285024,
+            "length": 164
+          }
+        },
+        "osm:node:8655345739": {
+          "kind": "village",
+          "tags": {
+            "name": "Bir Thlathine",
+            "name:ar": "بئر ثلاثين",
+            "name:fr": "Bir Thlatine",
+            "place": "village"
+          },
+          "geometrySha256": "15ee464574db56b6e6fa78ba6d19a34b9c109075e3eb9e8ebd8cbb98656ef71f",
+          "currentMetadata": null,
+          "lat": 32.6945027,
+          "lng": 10.3302325
+        },
+        "osm:relation:7143863": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Tataouine Sud",
+            "boundary": "administrative",
+            "name": "معتمدية تطاوين الجنوبية",
+            "name:ar": "معتمدية تطاوين الجنوبية",
+            "name:fr": "Délégation Tataouine Sud",
+            "official_name": "معتمدية تطاوين الجنوبية",
+            "official_name:ar": "معتمدية تطاوين الجنوبية",
+            "ref:tn:codegeo": "5352",
+            "ref:tn:hasc_2": "TN.TA.TS",
+            "wikidata": "Q3516011",
+            "wikipedia": "ar:معتمدية تطاوين الجنوبية"
+          },
+          "geometrySha256": "ffd8ed92ecd69d4f8d535cb5dc67d87a1c05d49ada36315b2ee71f8392e9dc21",
+          "currentMetadata": null
+        },
+        "osm:relation:1434953": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-83",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية تطاوين",
+            "name:ar": "ولاية تطاوين",
+            "name:be": "Татавін (вілает)",
+            "name:be-tarask": "Татаўін (вілает)",
+            "name:bg": "Татауин (област)",
+            "name:ca": "Governació de Tataouine",
+            "name:ceb": "Tataouine (lalawigan)",
+            "name:cy": "Tataouine (talaith)",
+            "name:de": "Gouvernement Tataouine",
+            "name:el": "Ταταουίν (Κυβερνείο)",
+            "name:en": "Tataouine",
+            "name:es": "Gobernación de Tataouine",
+            "name:fa": "تطاوین",
+            "name:fi": "Tataouine (kuvernementti)",
+            "name:fr": "Gouvernorat Tataouine",
+            "name:frr": "Tataouine (Guwernement)",
+            "name:id": "Kegubernuran Tataouine",
+            "name:it": "Tataouine",
+            "name:ja": "タタウイヌ県",
+            "name:ko": "타타우인주",
+            "name:ms": "Kawasan kegabenoran Tataouine",
+            "name:nl": "Tataouine (gouvernement)",
+            "name:no": "Tataouine (guvernement)",
+            "name:pl": "Gubernatorstwo Tatawin",
+            "name:pt": "Tataouine (província)",
+            "name:ro": "Guvernoratul Tataouine",
+            "name:ru": "Татавин (вилайет)",
+            "name:sco": "Tataouine Govrenorate",
+            "name:sh": "Tataouine (vilajet)",
+            "name:sv": "Tataouine (guvernement)",
+            "name:tr": "Tatavin ili",
+            "name:uk": "Татауїн (вілаєт)",
+            "name:ur": "تطاوین",
+            "name:zh": "泰塔溫省",
+            "name:zu": "Tataouine Governorate",
+            "official_name": "ولاية تطاوين",
+            "official_name:ar": "ولاية تطاوين",
+            "official_name:en": "Tataouine Governorate",
+            "official_name:fa": "استان تطاوین",
+            "official_name:fr": "Gouvernorat de Tataouine",
+            "official_name:it": "Governatorato di Tataouine",
+            "official_name:ur": "ولایت تطاوین",
+            "population": "143524",
+            "population:date": "2004",
+            "ref:tn:codegeo": "53",
+            "wikidata": "Q327045",
+            "wikipedia": "ar:ولاية تطاوين"
+          },
+          "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0",
+          "currentMetadata": null
+        }
+      },
+      "geometry": {
+        "originalSectorCoversLocality": true,
+        "packedSectorCoversLocality": true,
+        "originalOverlapRatioOfLocality": 0.9999999999999998,
+        "packedOverlapRatioOfLocality": 1.0000000000000002,
+        "originalOverlapRatioOfSector": 0.0005324370969175576,
+        "pointWithinOriginalSector": true,
+        "pointWithinPackedSector": true,
+        "pointWithinOriginalLocality": true,
+        "pointWithinPackedLocality": true,
+        "pointWithinOriginalParent": true,
+        "sectorAnchorWithinLocality": false,
+        "sectorAnchorToVillageKm": 1.5153147157525946,
+        "localityAnchorToVillageKm": 0.08189773491609222,
+        "packedHashes": {
+          "osm:relation:7143857": "f866876f40c8560f2d1773a36e60eef84cc4737a08ce629ce4b1acdbe8b9457f",
+          "osm:way:154906508": "826f03f498448ec1424757d883b6caddd65a9ee882b89a37fb7fab4290145f6b"
+        }
+      },
+      "sourceNamePeerInventory": [
+        {
+          "id": "osm:way:154906508",
+          "kind": "hamlet",
+          "tags": {
+            "addr:city": "Bir Thlathine",
+            "landuse": "residential",
+            "name": "بئر ثلاثين",
+            "name:ar": "بئر ثلاثين",
+            "name:fr": "Bir Thlathine",
+            "place": "hamlet"
+          },
+          "geometrySha256": "cf66e3b0f810959f0df377509a0d0b966801b713efae67216b6561752f1ce106",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7143857",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر الثلاثين",
+            "name:ar": "بئر الثلاثين",
+            "name:fr": "BIR THALATHINE",
+            "ref:tn:codegeo": "535264"
+          },
+          "geometrySha256": "e48c419724c70958fdf05cc0c7cab7e6ff1659ef03c56c6ff8097d771874a019",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:node:8655345739",
+          "kind": "village",
+          "tags": {
+            "name": "Bir Thlathine",
+            "name:ar": "بئر ثلاثين",
+            "name:fr": "Bir Thlatine",
+            "place": "village"
+          },
+          "geometrySha256": "15ee464574db56b6e6fa78ba6d19a34b9c109075e3eb9e8ebd8cbb98656ef71f",
+          "rawPresent": false
+        }
+      ],
+      "rawNamePeerInventory": [
+        {
+          "id": "osm:relation:7143857",
+          "sourceId": "osm",
+          "name": "بئر الثلاثين",
+          "aliases": [
+            "BIR THALATHINE"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تطاوين الجنوبية",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Tataouine Sud",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.691982,
+          "lng": 10.346146,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.244042,
+            32.577717,
+            10.453585,
+            32.821057
+          ],
+          "areaKm2": 309.7804284965693,
+          "pickerGroupId": "osm:relation:7143857",
+          "offset": 2145828,
+          "length": 1124
+        },
+        {
+          "id": "osm:way:154906508",
+          "sourceId": "osm",
+          "name": "بئر ثلاثين",
+          "aliases": [
+            "Bir Thlathine",
+            "Bir Thlatine"
+          ],
+          "kind": "hamlet",
+          "parentName": "بئر الثلاثين",
+          "contextAliases": [
+            "BIR THALATHINE",
+            "Délégation Tataouine Sud",
+            "Tataouine Sud",
+            "بئر الثلاثين",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.694971,
+          "lng": 10.329557,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.326786,
+            32.692397,
+            10.332369,
+            32.698044
+          ],
+          "areaKm2": 0.16491931757663444,
+          "pickerGroupId": "osm:way:154906508",
+          "offset": 5285024,
+          "length": 164
+        }
+      ],
+      "currentContextsDependingOnSectorName": [
+        {
+          "id": "osm:way:154906508",
+          "sourceId": "osm",
+          "name": "بئر ثلاثين",
+          "aliases": [
+            "Bir Thlathine",
+            "Bir Thlatine"
+          ],
+          "kind": "hamlet",
+          "parentName": "بئر الثلاثين",
+          "contextAliases": [
+            "BIR THALATHINE",
+            "Délégation Tataouine Sud",
+            "Tataouine Sud",
+            "بئر الثلاثين",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.694971,
+          "lng": 10.329557,
+          "delegationId": 624,
+          "hasBoundary": true,
+          "bbox": [
+            10.326786,
+            32.692397,
+            10.332369,
+            32.698044
+          ],
+          "areaKm2": 0.16491931757663444,
+          "pickerGroupId": "osm:way:154906508",
+          "offset": 5285024,
+          "length": 164
+        }
+      ],
+      "currentGroups": [
+        {
+          "groupId": "osm:relation:7143857",
+          "members": [
+            "osm:relation:7143857"
+          ]
+        },
+        {
+          "groupId": "osm:way:154906508",
+          "members": [
+            "osm:way:154906508"
+          ]
+        }
+      ],
+      "nearestReferences": {
+        "sector": [
+          {
+            "id": 624,
+            "name": "تطاوين",
+            "km": 28.21700828851774
+          },
+          {
+            "id": 473,
+            "name": "غمراسن",
+            "km": 40.92575933952088
+          },
+          {
+            "id": 471,
+            "name": "رمادة",
+            "km": 41.56644035928506
+          }
+        ],
+        "locality": [
+          {
+            "id": 624,
+            "name": "تطاوين",
+            "km": 28.491298953907936
+          },
+          {
+            "id": 473,
+            "name": "غمراسن",
+            "km": 40.60108669181722
+          },
+          {
+            "id": 471,
+            "name": "رمادة",
+            "km": 42.07834988677842
+          }
+        ],
+        "authenticVillagePoint": [
+          {
+            "id": 624,
+            "name": "تطاوين",
+            "km": 28.513810644198564
+          },
+          {
+            "id": 473,
+            "name": "غمراسن",
+            "km": 40.65167999598073
+          },
+          {
+            "id": 471,
+            "name": "رمادة",
+            "km": 42.01825852030212
+          }
+        ]
+      },
+      "candidateDesign": {
+        "method": "existing name_tags plus manualPointId with automatic overlapping same-name group",
+        "proposedNameTags": {
+          "name": "بئر ثلاثين",
+          "name:ar": "بئر ثلاثين",
+          "name:fr": "BIR THALATHINE",
+          "alt_name:ar": "بئر الثلاثين"
+        },
+        "manualPointId": "osm:node:8655345739",
+        "canonicalPickerId": "osm:relation:7143857",
+        "sourceVillageRemainsAbsorbed": true,
+        "exactRawFieldChanges": [
+          {
+            "id": "osm:relation:7143857",
+            "field": "name",
+            "before": "بئر الثلاثين",
+            "after": "بئر ثلاثين"
+          },
+          {
+            "id": "osm:relation:7143857",
+            "field": "aliases",
+            "before": [
+              "BIR THALATHINE"
+            ],
+            "after": [
+              "BIR THALATHINE",
+              "بئر الثلاثين"
+            ]
+          },
+          {
+            "id": "osm:relation:7143857",
+            "field": "lat",
+            "before": 32.691982,
+            "after": 32.6945027
+          },
+          {
+            "id": "osm:relation:7143857",
+            "field": "lng",
+            "before": 10.346146,
+            "after": 10.3302325
+          },
+          {
+            "id": "osm:relation:7143857",
+            "field": "manualPointId",
+            "before": null,
+            "after": "osm:node:8655345739"
+          },
+          {
+            "id": "osm:way:154906508",
+            "field": "parentName",
+            "before": "بئر الثلاثين",
+            "after": "معتمدية تطاوين الجنوبية"
+          },
+          {
+            "id": "osm:way:154906508",
+            "field": "contextAliases",
+            "before": [
+              "BIR THALATHINE",
+              "Délégation Tataouine Sud",
+              "Tataouine Sud",
+              "بئر الثلاثين",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "after": [
+              "BIR THALATHINE",
+              "Délégation Tataouine Sud",
+              "Tataouine Sud",
+              "بئر الثلاثين",
+              "بئر ثلاثين",
+              "معتمدية تطاوين الجنوبية"
+            ]
+          },
+          {
+            "id": "osm:way:154906508",
+            "field": "pickerGroupId",
+            "before": "osm:way:154906508",
+            "after": "osm:relation:7143857"
+          }
+        ],
+        "geometryChanges": false,
+        "sourcePointNameChanges": false,
+        "referenceChanges": false
+      }
+    }
+  ],
+  "exactCombinedCandidateRawFieldChanges": [
+    {
+      "id": "osm:relation:7143839",
+      "field": "name",
+      "before": "قصر الحدادة",
+      "after": "قصر حدادة"
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "aliases",
+      "before": [
+        "Ksar El Haddada"
+      ],
+      "after": [
+        "Ksar El Haddada",
+        "قصر الحدادة"
+      ]
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "lat",
+      "before": 33.110282,
+      "after": 33.1004153
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "lng",
+      "before": 10.3048,
+      "after": 10.3119203
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:297761849"
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "parentName",
+      "before": "قصر الحدادة",
+      "after": "معتمدية غمراسن"
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Ghomrassen",
+        "Ghomrassen",
+        "Ksar El Haddada",
+        "قصر الحدادة",
+        "معتمدية غمراسن"
+      ],
+      "after": [
+        "Délégation Ghomrassen",
+        "Ghomrassen",
+        "Ksar El Haddada",
+        "قصر الحدادة",
+        "قصر حدادة",
+        "معتمدية غمراسن"
+      ]
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "pickerGroupId",
+      "before": "osm:way:321991676",
+      "after": "osm:relation:7143839"
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "name",
+      "before": "بئر الثلاثين",
+      "after": "بئر ثلاثين"
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "aliases",
+      "before": [
+        "BIR THALATHINE"
+      ],
+      "after": [
+        "BIR THALATHINE",
+        "بئر الثلاثين"
+      ]
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "lat",
+      "before": 32.691982,
+      "after": 32.6945027
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "lng",
+      "before": 10.346146,
+      "after": 10.3302325
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:8655345739"
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "parentName",
+      "before": "بئر الثلاثين",
+      "after": "معتمدية تطاوين الجنوبية"
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "contextAliases",
+      "before": [
+        "BIR THALATHINE",
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "بئر الثلاثين",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "after": [
+        "BIR THALATHINE",
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "بئر الثلاثين",
+        "بئر ثلاثين",
+        "معتمدية تطاوين الجنوبية"
+      ]
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "pickerGroupId",
+      "before": "osm:way:154906508",
+      "after": "osm:relation:7143857"
+    }
+  ],
+  "exactIdMentionScreen": [
+    {
+      "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/dependency-successors/624-picker-proof.json",
+      "sha256": "8e35ad216a89c8727a991485d59b3bcead8f002bc0fafec3cf645c8be6c1658e",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "coordinate-reviews/inm-published-douar-oued-batch-2026-09-19/dependency-successors/624-picker-binding-proof.json",
+      "sha256": "583e8e57ab19c282f4db4e3d1df1929bb8376f979314aa8b443905a0d8b4d967",
+      "bytes": 259113,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/624-picker-proof.json",
+      "sha256": "5cff732155e7e9e7a30ada434aee0a9adb3ea0bd792bab0d561d4113e8017287",
+      "bytes": 259113,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/beni-mhira-context-nearest-reference-projection.json",
+      "sha256": "cc44917580b054ad09b0003b8cbf3bf562cbfbd299e74aa2c26eed538fc1bb5f",
+      "bytes": 1883630,
+      "exactIdLocations": [
+        "$.features[1028].id",
+        "$.features[1028].pickerGroupId",
+        "$.features[1044].id",
+        "$.features[1044].pickerGroupId",
+        "$.features[2215].id",
+        "$.features[2215].pickerGroupId",
+        "$.features[2416].id",
+        "$.features[2416].pickerGroupId"
+      ],
+      "totalLocations": 8
+    },
+    {
+      "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/dependency-successors/624-picker-proof.json",
+      "sha256": "81449f30457abffdf6bc05430008c6670e27e92c4808f0358ad50a27f4b0b493",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/dependency-successors/624-picker-proof.json",
+      "sha256": "e8bb955f0ce125cc3767d44b3cd14e730115c8540b2b5460a174369a5502f763",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/dependency-successors/624-picker-proof.json",
+      "sha256": "f8c3e2eb450a5f60d7aa676349efa4ec6e9077ad42f8c9bcc6bc433704005237",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "coordinate-reviews/inm-published-sened609-2026-09-13/dependency-successors/624-picker-proof.json",
+      "sha256": "a338f58da1d31955adf7dbb80e1631f0d93a46d1bd854bfb8a997bcbf24d53c7",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "coordinate-reviews/inm-published-zouaouine-kalaat-senan-2026-09-19/dependency-successors/624-picker-binding-proof.json",
+      "sha256": "92ec2f49f7ba3693706e6ab5b8780fc2efcb17760b93809e9f2121c64c5c59e2",
+      "bytes": 259113,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "dar-chaabane-reviews/nearest-manual-20260913/624-picker-proof.json",
+      "sha256": "502e2887102398c4ed628752afa7a591b49501bcbc407c81f65dd617e5c29a75",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "dependency-successors/soliman-native-20260912/node-264885332-boundary-proof.json",
+      "sha256": "0409d3714d43eb9974269f90fa00009dc2789a7cac0c44e94268ccc48758d162",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "dependency-successors/soliman-native-20260912/node-264885332-final-picker-proof.json",
+      "sha256": "7e06dc853d4d6d86742285aec9d124d2bd754531415f2d277e25e654ce4024df",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "direct-pbf-source-facts.json",
+      "sha256": "ec3f10fea74bebd597211981cf729d4d2c073b8d117477c0e4e31483d5f0a878",
+      "bytes": 349098,
+      "exactIdLocations": [
+        "$.administrativeCodeClaims.535557[0]",
+        "$.administrativeCodeClaims.535264[0]"
+      ],
+      "totalLocations": 2
+    },
+    {
+      "file": "display-review-successors/sidi-khitmin-20260919/624-picker-proof.json",
+      "sha256": "215e2018718882551869d4ca0394b6efd64fa6e70f144cf225ced14260fdc354",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "ksar-two-patch-reviews/direct-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "bytes": 529199,
+      "exactIdLocations": [
+        "$.administrativeCodeClaims.535557[0]",
+        "$.administrativeCodeClaims.535264[0]"
+      ],
+      "totalLocations": 2
+    },
+    {
+      "file": "locality-context-reviews/haf-direct-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "bytes": 529199,
+      "exactIdLocations": [
+        "$.administrativeCodeClaims.535557[0]",
+        "$.administrativeCodeClaims.535264[0]"
+      ],
+      "totalLocations": 2
+    },
+    {
+      "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/624-picker-binding-proof.json",
+      "sha256": "1d0cd5a02fe4f40b81da9efa009f3bf650e7a31687475c713ec5b8ca232a015b",
+      "bytes": 259113,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/smar-after-property-exclusion/counterfactual-before-smar-neighborhoods.json",
+      "sha256": "d3c334ca94f18e8a970568bb562676de57e7880762a7619cba9f6ce6c9902439",
+      "bytes": 1850817,
+      "exactIdLocations": [
+        "$.features[1028].id",
+        "$.features[1028].pickerGroupId",
+        "$.features[1044].id",
+        "$.features[1044].pickerGroupId",
+        "$.features[2210].id",
+        "$.features[2210].pickerGroupId",
+        "$.features[2410].id",
+        "$.features[2410].pickerGroupId"
+      ],
+      "totalLocations": 8
+    },
+    {
+      "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/smar-after-property-exclusion/projected-after-smar-neighborhoods.json",
+      "sha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+      "bytes": 1850804,
+      "exactIdLocations": [
+        "$.features[1028].id",
+        "$.features[1028].pickerGroupId",
+        "$.features[1044].id",
+        "$.features[1044].pickerGroupId",
+        "$.features[2210].id",
+        "$.features[2210].pickerGroupId",
+        "$.features[2410].id",
+        "$.features[2410].pickerGroupId"
+      ],
+      "totalLocations": 8
+    },
+    {
+      "file": "official/chenini-two-choice-staged-data-independent-review.json",
+      "sha256": "56121c5cfb3ea4c02df6156f80138f969f921ac989a0ebfff2dd06e43b927fe7",
+      "bytes": 314070,
+      "exactIdLocations": [
+        "$.allChangedFieldsIncludingOffsets[15].id",
+        "$.allChangedFieldsIncludingOffsets[31].id",
+        "$.allChangedFieldsIncludingOffsets[1205].id",
+        "$.allChangedFieldsIncludingOffsets[1406].id"
+      ],
+      "totalLocations": 4
+    },
+    {
+      "file": "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+      "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197",
+      "bytes": 440669,
+      "exactIdLocations": [
+        "$.allMetadataChangesIncludingOffsets[459].id",
+        "$.allMetadataChangesIncludingOffsets[475].id",
+        "$.allMetadataChangesIncludingOffsets[1648].id",
+        "$.allMetadataChangesIncludingOffsets[1849].id"
+      ],
+      "totalLocations": 4
+    },
+    {
+      "file": "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-el-hani-neighborhoods.json",
+      "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+      "bytes": 1883636,
+      "exactIdLocations": [
+        "$.features[1028].id",
+        "$.features[1028].pickerGroupId",
+        "$.features[1044].id",
+        "$.features[1044].pickerGroupId",
+        "$.features[2215].id",
+        "$.features[2215].pickerGroupId",
+        "$.features[2416].id",
+        "$.features[2416].pickerGroupId"
+      ],
+      "totalLocations": 8
+    },
+    {
+      "file": "point-base-display-reviews/beni-teboursouk-picker-manifest-successors/624-reviewed-point-base-display-identity.json",
+      "sha256": "d8d59df24440e7521f92394f20e05cb200177d7cd4b038d208ea9ad9d2672f43",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "point-base-display-reviews/sidi-el-hani-picker-manifest-successors/624-reviewed-point-base-display-identity.json",
+      "sha256": "bf98865c0918c287dc0b89c8ea1980372c7533c2917996309f7c4f92bb806ab6",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json",
+      "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+      "bytes": 1883630,
+      "exactIdLocations": [
+        "$.features[1028].id",
+        "$.features[1028].pickerGroupId",
+        "$.features[1044].id",
+        "$.features[1044].pickerGroupId",
+        "$.features[2215].id",
+        "$.features[2215].pickerGroupId",
+        "$.features[2416].id",
+        "$.features[2416].pickerGroupId"
+      ],
+      "totalLocations": 8
+    },
+    {
+      "file": "point-base-display-reviews/town-preservation-2026-09/624-official463526-reference32-reviewed-point-base-display-identity.json",
+      "sha256": "3db53b05e1f5ef89c8da5a5bfb1176b1dee1283960bfba83fe1aed09bf6a554d",
+      "bytes": 259111,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "point-base-display-reviews/town-preservation-2026-09/624-reviewed-point-base-display-identity.json",
+      "sha256": "51dc4e65ae7dfd47fe7d878292a0dbb4f5775f049edb8386aa320c10aefc5285",
+      "bytes": 258123,
+      "exactIdLocations": [
+        "$.preservedSectors[28].id",
+        "$.preservedSectors[28].currentMetadata.id",
+        "$.preservedSectors[28].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.sourceStates[20].id",
+        "$.townPreservationExtension.curationBindings.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.coordinateContextMembership.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.protectedRawRecords[18].id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.id",
+        "$.townPreservationExtension.protectedRawRecords[18].currentMetadata.pickerGroupId",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedBeforeGroups.osm:relation:7143857[0]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857 [key]",
+        "$.townPreservationExtension.expectedAfterGroups.osm:relation:7143857[0]"
+      ],
+      "totalLocations": 13
+    },
+    {
+      "file": "point-retention-reviews/before-neighborhoods.json",
+      "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+      "bytes": 1839172,
+      "exactIdLocations": [
+        "$.features[1029].id",
+        "$.features[1029].pickerGroupId",
+        "$.features[1045].id",
+        "$.features[1045].pickerGroupId",
+        "$.features[2219].id",
+        "$.features[2219].pickerGroupId",
+        "$.features[2420].id",
+        "$.features[2420].pickerGroupId"
+      ],
+      "totalLocations": 8
+    },
+    {
+      "file": "touil-reviews/original-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "bytes": 529199,
+      "exactIdLocations": [
+        "$.administrativeCodeClaims.535557[0]",
+        "$.administrativeCodeClaims.535264[0]"
+      ],
+      "totalLocations": 2
+    }
+  ],
+  "qualification": "Both polygons retain different geographic extents. Candidate display grouping does not assert equivalent boundaries or certified administrative completeness. No compiler import/execution, live changes, tests, Android build, API key or phone access."
+}

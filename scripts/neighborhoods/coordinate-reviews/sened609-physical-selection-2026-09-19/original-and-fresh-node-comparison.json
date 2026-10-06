@@ -1,0 +1,123 @@
+{
+  "status": "EXACT_SOURCE_MATCH",
+  "originalInventorySha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+  "nodes": [
+    {
+      "sourceReferenceId": 609,
+      "sourceId": "osm:node:2178146164",
+      "freshNodeFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sened-hichria-identity-review-20260919\\osm-node-2178146164.json",
+      "freshNodeSha256": "1c64c6fcec957590849e184b6e68a49e7fa5a1f7c3b5135ef825fc0260667fd5",
+      "exactTagsAndCoordinatesMatchOriginal": true,
+      "originalNode": {
+        "id": "osm:node:2178146164",
+        "kind": "town",
+        "tags": {
+          "addr:postcode": "2190",
+          "alt_name": "As Snad",
+          "name": "السند",
+          "name:ar": "السند",
+          "name:en": "Sened",
+          "name:fr": "Sened",
+          "name:ru": "Сенед",
+          "place": "town",
+          "population": "8931",
+          "wikidata": "Q2736042",
+          "wikipedia": "ar:السند (تونس)"
+        },
+        "lat": 34.540278,
+        "lng": 9.2513281
+      },
+      "freshNode": {
+        "type": "node",
+        "id": 2178146164,
+        "lat": 34.540278,
+        "lon": 9.2513281,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "version": 13,
+        "changeset": 179509225,
+        "user": "Johnwhelan",
+        "uid": 186592,
+        "tags": {
+          "addr:postcode": "2190",
+          "alt_name": "As Snad",
+          "name": "السند",
+          "name:ar": "السند",
+          "name:en": "Sened",
+          "name:fr": "Sened",
+          "name:ru": "Сенед",
+          "place": "town",
+          "population": "8931",
+          "wikidata": "Q2736042",
+          "wikipedia": "ar:السند (تونس)"
+        }
+      },
+      "containingOriginalNamedArea": {
+        "id": "osm:way:270160718",
+        "tags": {
+          "addr:postcode": "2190",
+          "alt_name": "As Snad",
+          "landuse": "residential",
+          "name": "السند",
+          "name:ar": "السند",
+          "name:en": "Sened",
+          "name:fr": "Sened",
+          "name:ru": "Сенед",
+          "place": "town"
+        },
+        "coversOriginalNode": true
+      },
+      "qualification": "Original-source fidelity and containment, not independent certification of real-world geometry."
+    },
+    {
+      "sourceReferenceId": 1522,
+      "sourceId": "osm:node:7938334046",
+      "freshNodeFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sened-hichria-identity-review-20260919\\osm-node-7938334046.json",
+      "freshNodeSha256": "cc7b98d2ac8bc3ef86b2cf8d70b783d47476f2b3dde8fb1d7c38aa8757ebccbd",
+      "exactTagsAndCoordinatesMatchOriginal": true,
+      "originalNode": {
+        "id": "osm:node:7938334046",
+        "kind": "village",
+        "tags": {
+          "name": "الهيشرية",
+          "name:ar": "الهيشرية",
+          "name:en": "El Hichria",
+          "name:fr": "El Hichria",
+          "place": "village"
+        },
+        "lat": 34.8742313,
+        "lng": 9.435056
+      },
+      "freshNode": {
+        "type": "node",
+        "id": 7938334046,
+        "lat": 34.8742313,
+        "lon": 9.435056,
+        "timestamp": "2021-04-15T11:46:15Z",
+        "version": 3,
+        "changeset": 102992417,
+        "user": "Anis Ben Makhlouf",
+        "uid": 10001069,
+        "tags": {
+          "name": "الهيشرية",
+          "name:ar": "الهيشرية",
+          "name:en": "El Hichria",
+          "name:fr": "El Hichria",
+          "place": "village"
+        }
+      },
+      "containingOriginalNamedArea": {
+        "id": "osm:relation:7169598",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الهيشرية",
+          "name:ar": "الهيشرية",
+          "name:fr": "El Hichria",
+          "ref:tn:codegeo": "435154"
+        },
+        "coversOriginalNode": true
+      },
+      "qualification": "Original-source fidelity and containment, not independent certification of real-world geometry."
+    }
+  ]
+}

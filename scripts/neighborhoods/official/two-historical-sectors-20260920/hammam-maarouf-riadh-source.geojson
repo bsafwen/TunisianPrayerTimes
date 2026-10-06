@@ -1,0 +1,903 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "osm:relation:7113315",
+      "properties": {
+        "id": "osm:relation:7113315",
+        "kind": "sector",
+        "officialCode": "315256",
+        "nameAr": "حمام معروف الرياض",
+        "nameFr": "Hammem maarouf er-riadh",
+        "governorateCode": "31",
+        "governorateAr": "سوسة",
+        "governorateFr": "Sousse",
+        "delegationCode": "3152",
+        "parentAr": "سوسة الرياض",
+        "parentFr": "Sousse riadh",
+        "sourceId": "isie-local-sector-2023-hammam-maarouf-riadh-exhaustive-parts",
+        "sourceGeometrySha256": "ebabb97d5444371309fccd83f9e153d8d947b782c091478f7b5d44871dc93606",
+        "currentOfficialIdentity": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3152",
+          "delegationFr": "Sousse riadh",
+          "delegationAr": "سوسة الرياض",
+          "sectorCode": "315256",
+          "sectorFr": "Hammem maarouf er-riadh",
+          "sectorAr": "حمام معروف الرياض",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32639,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1537,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1536
+          }
+        },
+        "historicalNameAliases": [
+          "العهد الجديد",
+          "El Ahd El Jadid"
+        ],
+        "historicalIdentityQualification": "Exact same six-digit code and parent in INS2012 and current INS registry establish the historical rename; old Arabic and French names remain search aliases. This does not certify survey boundaries or later legal currency.",
+        "sourceParts": [
+          {
+            "circleId": "hammam-maarouf-riadh-1",
+            "circleNameAr": "حمام معروف الرياض 1",
+            "parentImadaCode": "315256",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf",
+            "sourcePdfSha256": "974ebe24f0dee0a2701db768d6dd160554c9a492c5601b2978df6c710ad81025",
+            "sourcePdfFile": "official/two-historical-sectors-20260920/sources/hammam-maarouf-riadh1.pdf",
+            "originalSourcePdfFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh1.pdf",
+            "sourcePdfPage": 1,
+            "sourceDrawingIndex": 292,
+            "sourceVectorLayer": "circonscription_isie2023",
+            "sourceGeometrySha256": "1ad6c2e7aff464fdbae5d27d46d026c02f296536409c1fe689ba18d5f5a3df66",
+            "sourceGeometryVertices": 29,
+            "sourceCrsEpsg": 32632,
+            "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+            "sourceControlPointsLatLon": [
+              [
+                35.79802,
+                10.59875
+              ],
+              [
+                35.80952,
+                10.59899
+              ],
+              [
+                35.80925,
+                10.61919
+              ],
+              [
+                35.79775,
+                10.61896
+              ]
+            ],
+            "sourceLocalControlPoints": [
+              [
+                0.0,
+                1.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ],
+            "sourceViewportBBox": [
+              4.31908,
+              590.46173,
+              841.50095,
+              5.38791
+            ],
+            "sourceAffineMetersFromPagePoints": [
+              [
+                2.181429953376482,
+                6.224770414706948e-05
+              ],
+              [
+                -0.0004668350525207643,
+                -2.180896347737871
+              ],
+              [
+                644455.184308887,
+                3964012.3941261508
+              ]
+            ],
+            "sourceControlPointMaxResidualMeters": 0.29169979272402036,
+            "sourceClipReview": {
+              "explicitlyClosed": true,
+              "fullyInsideViewport": true,
+              "activeClipChecks": [
+                {
+                  "level": 0,
+                  "wholeNativePathInsideClip": true
+                },
+                {
+                  "level": 1,
+                  "wholeNativePathInsideClip": true
+                }
+              ]
+            },
+            "visualReview": {
+              "pdf": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh1.pdf",
+                "sha256": "974ebe24f0dee0a2701db768d6dd160554c9a492c5601b2978df6c710ad81025"
+              },
+              "render": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh1.png",
+                "sha256": "085039128eeafd81e228434d22d2f0d91259553172ae3e8621c3d189f89908c1"
+              },
+              "titleAndTargetPersonallyViewed": true,
+              "legendPersonallyViewed": {
+                "black": "الولاية",
+                "blue": "المعتمدية",
+                "red": "الدائرة / العمادة"
+              },
+              "scope": "Whole target election district outline is complete. Numbered Sousse maps are different constituent districts, not page tiles.",
+              "activeClipChecks": [
+                {
+                  "level": 0,
+                  "wholeNativePathInsideClip": true
+                },
+                {
+                  "level": 1,
+                  "wholeNativePathInsideClip": true
+                }
+              ],
+              "redLabels": [
+                {
+                  "text": "1 زاویة سوسة",
+                  "color": 15073280,
+                  "bbox": [
+                    480.1378479003906,
+                    480.6158447265625,
+                    634.9483642578125,
+                    533.9004516601562
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": true
+                },
+                {
+                  "text": "1 حمام معروف الریاض",
+                  "color": 15073280,
+                  "bbox": [
+                    534.84619140625,
+                    384.12371826171875,
+                    765.6265869140625,
+                    437.40826416015625
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": true
+                },
+                {
+                  "text": " ةیباختنلاا ةرئادلا",
+                  "color": 15073280,
+                  "bbox": [
+                    695.7319946289062,
+                    -3.117218017578125,
+                    847.6636962890625,
+                    42.555267333984375
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": false
+                },
+                {
+                  "text": "1  معروف الریاض",
+                  "color": 15073280,
+                  "bbox": [
+                    691.4129028320312,
+                    36.847808837890625,
+                    858.466552734375,
+                    82.52029418945312
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": false
+                }
+              ],
+              "labelExtractionCorrection": "PDF labels use color15073280 (0xe60000), not pure16711680; initial insideRedLabels empty does not mean no label. Part1 label bounding rectangle extends outside its target; title/source and rendered boundary identify the path."
+            },
+            "registrationQualification": "Rounded embedded control points; fit residuals are not survey accuracy. Complete original vector retained without repair, snapping, clipping or smoothing."
+          },
+          {
+            "circleId": "hammam-maarouf-riadh-2",
+            "circleNameAr": "حمام معروف الرياض 2",
+            "parentImadaCode": "315256",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf",
+            "sourcePdfSha256": "377144831315b1197c2f4aefdc0f4aee2bf5db4ba20d7c99a24c401d70ff7eaf",
+            "sourcePdfFile": "official/two-historical-sectors-20260920/sources/hammam-maarouf-riadh2.pdf",
+            "originalSourcePdfFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh2.pdf",
+            "sourcePdfPage": 1,
+            "sourceDrawingIndex": 383,
+            "sourceVectorLayer": "circonscription_isie2023",
+            "sourceGeometrySha256": "153566aebfdd6461ba3a4b15b33f6e69420c173ec6600d47b174feb41af0c74d",
+            "sourceGeometryVertices": 95,
+            "sourceCrsEpsg": 32632,
+            "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+            "sourceControlPointsLatLon": [
+              [
+                35.80099,
+                10.56911
+              ],
+              [
+                35.82713,
+                10.56963
+              ],
+              [
+                35.82652,
+                10.61558
+              ],
+              [
+                35.80038,
+                10.61505
+              ]
+            ],
+            "sourceLocalControlPoints": [
+              [
+                0.0,
+                1.0
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ],
+            "sourceViewportBBox": [
+              4.31908,
+              590.46173,
+              841.50095,
+              5.38791
+            ],
+            "sourceAffineMetersFromPagePoints": [
+              [
+                4.959780562249537,
+                -0.0001665099757635475
+              ],
+              [
+                -0.0004576252290462435,
+                -4.957230727939532
+              ],
+              [
+                641759.218647522,
+                3965936.8556825058
+              ]
+            ],
+            "sourceControlPointMaxResidualMeters": 0.11515680474513314,
+            "sourceClipReview": {
+              "explicitlyClosed": true,
+              "fullyInsideViewport": true,
+              "activeClipChecks": [
+                {
+                  "level": 0,
+                  "wholeNativePathInsideClip": true
+                },
+                {
+                  "level": 1,
+                  "wholeNativePathInsideClip": true
+                }
+              ]
+            },
+            "visualReview": {
+              "pdf": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh2.pdf",
+                "sha256": "377144831315b1197c2f4aefdc0f4aee2bf5db4ba20d7c99a24c401d70ff7eaf"
+              },
+              "render": {
+                "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh2.png",
+                "sha256": "81f4bb31efb518e6f06a5a9142c431ffc9384e5b33f512d5f278223d505dad1f"
+              },
+              "titleAndTargetPersonallyViewed": true,
+              "legendPersonallyViewed": {
+                "black": "الولاية",
+                "blue": "المعتمدية",
+                "red": "الدائرة / العمادة"
+              },
+              "scope": "Whole target election district outline is complete. Numbered Sousse maps are different constituent districts, not page tiles.",
+              "activeClipChecks": [
+                {
+                  "level": 0,
+                  "wholeNativePathInsideClip": true
+                },
+                {
+                  "level": 1,
+                  "wholeNativePathInsideClip": true
+                }
+              ],
+              "redLabels": [
+                {
+                  "text": "بوحسینة",
+                  "color": 15073280,
+                  "bbox": [
+                    486.616455078125,
+                    104.00834655761719,
+                    585.2598876953125,
+                    157.29290771484375
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": true
+                },
+                {
+                  "text": "2 حمام معروف الریاض",
+                  "color": 15073280,
+                  "bbox": [
+                    331.8493957519531,
+                    376.562744140625,
+                    562.6298217773438,
+                    429.8473205566406
+                  ],
+                  "centerInsideTarget": true,
+                  "bboxIntersectsTarget": true
+                },
+                {
+                  "text": "القلعة الصغرى الشرقیة",
+                  "color": 15073280,
+                  "bbox": [
+                    41.03126907348633,
+                    183.9384307861328,
+                    271.8115539550781,
+                    237.22299194335938
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": false
+                },
+                {
+                  "text": "( )سوسة جوھرة- حشاد",
+                  "color": 15073280,
+                  "bbox": [
+                    578.0369873046875,
+                    27.318679809570312,
+                    810.2579345703125,
+                    80.6032485961914
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": false
+                },
+                {
+                  "text": "ةرھوج لولھس",
+                  "color": 15073280,
+                  "bbox": [
+                    412.47222900390625,
+                    -6.8856048583984375,
+                    541.7194213867188,
+                    46.398963928222656
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": false
+                },
+                {
+                  "text": " الدائرة الانتخابیة",
+                  "color": 15073280,
+                  "bbox": [
+                    695.7319946289062,
+                    -3.117218017578125,
+                    847.6636962890625,
+                    42.555267333984375
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": false
+                },
+                {
+                  "text": "2  معروف الریاض",
+                  "color": 15073280,
+                  "bbox": [
+                    691.4129028320312,
+                    36.847808837890625,
+                    858.466552734375,
+                    82.52029418945312
+                  ],
+                  "centerInsideTarget": false,
+                  "bboxIntersectsTarget": false
+                }
+              ],
+              "labelExtractionCorrection": "PDF labels use color15073280 (0xe60000), not pure16711680; initial insideRedLabels empty does not mean no label. Part1 label bounding rectangle extends outside its target; title/source and rendered boundary identify the path."
+            },
+            "registrationQualification": "Rounded embedded control points; fit residuals are not survey accuracy. Complete original vector retained without repair, snapping, clipping or smoothing."
+          }
+        ],
+        "aggregationReview": {
+          "operation": "Exact ordered unrounded WGS84 union of both complete native source paths, with no repair, snapping, clipping, buffer or gap filling.",
+          "sourceParts": {
+            "file": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-source-parts.geojson",
+            "sha256": "5b8ec0bedd84174e59a697d0a44c301142cd2a263bfb48a176f16e7ffabeb6b9"
+          },
+          "inputOverlapMeters2": 288.32156703618216,
+          "sourcePartsDistanceMeters": 0.0,
+          "registrationSeamRetained": true,
+          "intersectionVertices": "Set union can split input segments at their mutual intersections; source parts remain unchanged."
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.609296652675111,
+              35.80886590624827
+            ],
+            [
+              10.611413536282457,
+              35.80572997760168
+            ],
+            [
+              10.613154324424805,
+              35.80417763545701
+            ],
+            [
+              10.614271379641028,
+              35.80314330935666
+            ],
+            [
+              10.614331169755696,
+              35.80309295624774
+            ],
+            [
+              10.614390813216374,
+              35.80303552560675
+            ],
+            [
+              10.613163963292166,
+              35.80210340267429
+            ],
+            [
+              10.61314630048976,
+              35.80208948157042
+            ],
+            [
+              10.612307036181347,
+              35.801414073840256
+            ],
+            [
+              10.612165301703367,
+              35.80128147364764
+            ],
+            [
+              10.6115188899903,
+              35.800688423730854
+            ],
+            [
+              10.61085815629169,
+              35.800244218164885
+            ],
+            [
+              10.610452801236569,
+              35.79996648653328
+            ],
+            [
+              10.608908272344921,
+              35.79921553893788
+            ],
+            [
+              10.60731947584208,
+              35.798422687452444
+            ],
+            [
+              10.606567474542635,
+              35.79989096927101
+            ],
+            [
+              10.606384174435853,
+              35.800275673189425
+            ],
+            [
+              10.60619276374038,
+              35.80068880054167
+            ],
+            [
+              10.605733201533859,
+              35.80158686655038
+            ],
+            [
+              10.605716406001106,
+              35.801615406051674
+            ],
+            [
+              10.605691068365715,
+              35.80165113834371
+            ],
+            [
+              10.60553280950614,
+              35.80198595546152
+            ],
+            [
+              10.60510378207229,
+              35.802910933829885
+            ],
+            [
+              10.604464592101532,
+              35.80254957506544
+            ],
+            [
+              10.604384619525693,
+              35.802502373290494
+            ],
+            [
+              10.604084466714106,
+              35.80231330442788
+            ],
+            [
+              10.604064391512042,
+              35.80229748239967
+            ],
+            [
+              10.604004491246675,
+              35.80226610243105
+            ],
+            [
+              10.603488067446179,
+              35.802128192579076
+            ],
+            [
+              10.603192794960137,
+              35.802180410814906
+            ],
+            [
+              10.602858025633871,
+              35.80223315611318
+            ],
+            [
+              10.602546252385855,
+              35.80244649816666
+            ],
+            [
+              10.602063550462669,
+              35.80300002004415
+            ],
+            [
+              10.60194472505721,
+              35.80298551653028
+            ],
+            [
+              10.600409040876322,
+              35.80226585577713
+            ],
+            [
+              10.600349145352144,
+              35.80223447390396
+            ],
+            [
+              10.599890354814463,
+              35.80201532707578
+            ],
+            [
+              10.599710659492182,
+              35.80192118068703
+            ],
+            [
+              10.599332493339183,
+              35.801781408921144
+            ],
+            [
+              10.597500652737155,
+              35.80401021240084
+            ],
+            [
+              10.596190326150776,
+              35.8056527929005
+            ],
+            [
+              10.595786889718038,
+              35.806221327062026
+            ],
+            [
+              10.59491332052944,
+              35.80600767908277
+            ],
+            [
+              10.594813919060806,
+              35.8059768197778
+            ],
+            [
+              10.59421816023391,
+              35.80582383592799
+            ],
+            [
+              10.593881104067025,
+              35.805763953305195
+            ],
+            [
+              10.591580001260983,
+              35.80529570465433
+            ],
+            [
+              10.589457971071091,
+              35.804889400793
+            ],
+            [
+              10.589200245257842,
+              35.80484454418788
+            ],
+            [
+              10.588466250201908,
+              35.8046933616212
+            ],
+            [
+              10.586934188121168,
+              35.80415047411909
+            ],
+            [
+              10.5852531476083,
+              35.80406006926865
+            ],
+            [
+              10.583825652418273,
+              35.8038053878711
+            ],
+            [
+              10.583192354819861,
+              35.80374938906487
+            ],
+            [
+              10.580548362347301,
+              35.80391297979183
+            ],
+            [
+              10.580094743014286,
+              35.803951137396155
+            ],
+            [
+              10.575794753051484,
+              35.802302112168434
+            ],
+            [
+              10.575085026475234,
+              35.802375796172115
+            ],
+            [
+              10.57506527670373,
+              35.802376055511985
+            ],
+            [
+              10.575501376895014,
+              35.802450780988266
+            ],
+            [
+              10.575641289998586,
+              35.80352700767553
+            ],
+            [
+              10.575744196869747,
+              35.80373483302966
+            ],
+            [
+              10.57582927188454,
+              35.804039433144034
+            ],
+            [
+              10.575929942361311,
+              35.80413465382581
+            ],
+            [
+              10.576031572528295,
+              35.80427813346388
+            ],
+            [
+              10.576328470915639,
+              35.804306413092945
+            ],
+            [
+              10.577237082916088,
+              35.80529207987886
+            ],
+            [
+              10.577970199747977,
+              35.806392682097396
+            ],
+            [
+              10.578356035675087,
+              35.80691859188066
+            ],
+            [
+              10.5785634744648,
+              35.807414667277
+            ],
+            [
+              10.57858717170183,
+              35.808605052332815
+            ],
+            [
+              10.578849709085503,
+              35.808891224912195
+            ],
+            [
+              10.579230757705371,
+              35.80917583651503
+            ],
+            [
+              10.579970427697644,
+              35.80861901977014
+            ],
+            [
+              10.58096621592656,
+              35.80802664045666
+            ],
+            [
+              10.582042597673684,
+              35.8075136426524
+            ],
+            [
+              10.582973796657642,
+              35.80962530017493
+            ],
+            [
+              10.5840280597991,
+              35.81196058973668
+            ],
+            [
+              10.585086245593784,
+              35.814488902657644
+            ],
+            [
+              10.585531945420634,
+              35.81602769526802
+            ],
+            [
+              10.58606580991714,
+              35.81703433473959
+            ],
+            [
+              10.586439724989146,
+              35.81794654452296
+            ],
+            [
+              10.586643381948118,
+              35.818249569661155
+            ],
+            [
+              10.586668287727456,
+              35.818506686639324
+            ],
+            [
+              10.587100835890789,
+              35.81938593726383
+            ],
+            [
+              10.587849046490044,
+              35.82122643457573
+            ],
+            [
+              10.588494003425506,
+              35.82284302739149
+            ],
+            [
+              10.588789923506816,
+              35.82380453289768
+            ],
+            [
+              10.588980945093779,
+              35.824461708523515
+            ],
+            [
+              10.589188498344772,
+              35.824957762710696
+            ],
+            [
+              10.589459840105695,
+              35.82567823479399
+            ],
+            [
+              10.589714084294759,
+              35.82554614091206
+            ],
+            [
+              10.590047671719127,
+              35.82542908494619
+            ],
+            [
+              10.590558413936028,
+              35.825277497548825
+            ],
+            [
+              10.590993362529588,
+              35.82528781822382
+            ],
+            [
+              10.59133017696237,
+              35.82533162053239
+            ],
+            [
+              10.591628451162816,
+              35.82542420480763
+            ],
+            [
+              10.593122183815177,
+              35.82305516950504
+            ],
+            [
+              10.594759935378235,
+              35.820973827775056
+            ],
+            [
+              10.59649184589608,
+              35.81964746112051
+            ],
+            [
+              10.596821187321453,
+              35.81932126716297
+            ],
+            [
+              10.596898907781771,
+              35.819255870447876
+            ],
+            [
+              10.597290099625239,
+              35.819057576707344
+            ],
+            [
+              10.599851257693253,
+              35.81770402319205
+            ],
+            [
+              10.60088780761955,
+              35.817175299377595
+            ],
+            [
+              10.601943450246875,
+              35.81661412807884
+            ],
+            [
+              10.602741956269787,
+              35.81604029647059
+            ],
+            [
+              10.604104830013759,
+              35.81504055939921
+            ],
+            [
+              10.605930332658073,
+              35.813471451659055
+            ],
+            [
+              10.607534572153712,
+              35.81171219563595
+            ],
+            [
+              10.609294638592276,
+              35.80887277005545
+            ],
+            [
+              10.607881212924271,
+              35.807912670869534
+            ],
+            [
+              10.609296652675111,
+              35.80886590624827
+            ]
+          ],
+          [
+            [
+              10.604432493086493,
+              35.80554298936796
+            ],
+            [
+              10.603565380044612,
+              35.80497516676494
+            ],
+            [
+              10.603569383838233,
+              35.80497126293751
+            ],
+            [
+              10.604432493086493,
+              35.80554298936796
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

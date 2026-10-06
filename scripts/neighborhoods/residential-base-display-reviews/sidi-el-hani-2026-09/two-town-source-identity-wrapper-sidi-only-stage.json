@@ -1,0 +1,997 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_SUPPORTED_TWO_SETTLEMENT_BASE_ASSOCIATIONS_PENDING_EXPLICIT_GUARDED_IMPLEMENTATION",
+  "scope": "Two qualified source identities from the frozen review, but ONLY Sidi El Hani441 is included in this source stage. Téboursouk518 remains held for its complete Ain Jemala group contract; no second application is staged.",
+  "stageBaseIds": [
+    441
+  ],
+  "deferredBaseIds": [
+    518
+  ],
+  "metadataSha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+  "originalSourceReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "independentRootReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-residential-root-scope-review-v2.json",
+    "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098"
+  },
+  "finiteSchemaReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-residential-display-feasibility.json",
+    "sha256": "7dcfc576c5872a0877d67dd5dea7c7c3455e22c922b26fe8c91a690c2b2437ef"
+  },
+  "finiteFacts": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/finite-source-schema-facts.json",
+    "sha256": "e8163672bd26da8e5c280c6ee0110986dab20dc543e3c6ab06ef140fddd27707"
+  },
+  "historicalEpochQualification": "Original reports retain their5e metadata epoch and original bytes. The finite facts explicitly carry the eighteen reported raw rows unchanged to2fbb and discover the extra Ain Jemala group member; no historical report is relabelled current.",
+  "sourcePins": [
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+      "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-residential-root-scope-review-v2.json",
+      "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/finite-source-schema-facts.json",
+      "sha256": "e8163672bd26da8e5c280c6ee0110986dab20dc543e3c6ab06ef140fddd27707"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-residential-display-feasibility.json",
+      "sha256": "7dcfc576c5872a0877d67dd5dea7c7c3455e22c922b26fe8c91a690c2b2437ef"
+    },
+    {
+      "file": "residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020.pdf",
+      "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sousse-atlas-full-page84-derived.txt",
+      "sha256": "a2f1ad433e2640c09eb62fe945c8383b4231c8797fbfa5f09184cfec0e9d5923"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sousse-page84-derived-provenance.json",
+      "sha256": "44f9be105d8bad7a6051574d715134649313aae486c5b5491c885533a047d574"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-current.json",
+      "sha256": "e1754be7c3da529217123e453347be5f002b65df205c8f6f7676664624d32c87"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-history.json",
+      "sha256": "b17d13e9ab2dd83338ecd6e541d39f0bc12a77d8cd9e0a365c2f1105e1f10c54"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/osm-way-43944790-full.json",
+      "sha256": "9eec413e62e05432b077237395d19a57c9ba3c2b19cbcc80c7108d33f1df2d62"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sidi-el-hani-original-response-provenance.json",
+      "sha256": "461324c0b708d15f66dd6b78575a6fa72a24585b31859794b7d1ef7cb07814e6"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    }
+  ],
+  "cachePinQualification": "The original extraction file remains an externally supplied, byte-pinned source cache. It is not an HTTP node response and is not copied again into the product evidence tree.",
+  "records": [
+    {
+      "baseId": 518,
+      "residentialId": "osm:way:96369466",
+      "absorbedSettlementEvidenceId": "osm:node:1116804955",
+      "sourceDelegationId": "osm:relation:7189388",
+      "officialDelegationCode": "2155",
+      "decision": "SUPPORT_EXACT_SETTLEMENT_DISPLAY_ASSOCIATION; source identity only; complete Ain Jemala group-preservation extension remains required before implementation.",
+      "currentBase": {
+        "id": 518,
+        "nomFr": "Teboursouk",
+        "nomAr": "تبرسق",
+        "nomEn": "Teboursouk",
+        "lat": 36.46,
+        "lng": 9.24
+      },
+      "currentRaw": {
+        "id": "osm:way:96369466",
+        "sourceId": "osm",
+        "name": "تبرسق",
+        "aliases": [
+          "Tabursuq",
+          "Téboursouk",
+          "Тебурсук"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.457368,
+        "lng": 9.246191,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.231327,
+          36.443317,
+          9.267215,
+          36.471907
+        ],
+        "areaKm2": 2.7421180825607117,
+        "pickerGroupId": "osm:way:96369466",
+        "offset": 5451760,
+        "length": 1860
+      },
+      "originalResidentialTags": {
+        "addr:city": "تبرسق",
+        "addr:city:ar": "تبرسق",
+        "addr:postcode": "9040",
+        "landuse": "residential",
+        "name": "تبرسق",
+        "name:ar": "تبرسق",
+        "name:azb": "تبرسق",
+        "name:en": "Téboursouk",
+        "name:fa": "تبرسق",
+        "name:fr": "Téboursouk",
+        "wikidata": "Q1890362",
+        "wikimedia_commons": "Category:Téboursouk",
+        "wikipedia": "ar:تبرسق",
+        "wikipedia:ar": "تبرسق"
+      },
+      "originalGeometrySha256": "045e6b0d39a6e238bc9caaf007b536138e9e45b237c16d013f5730df03457791",
+      "packedGeometrySha256": "7bb866ba623b9c0a24894789c0d8dafd48d8877f0765ab8357b676876c71b0e6",
+      "settlementSource": {
+        "id": "osm:node:1116804955",
+        "tags": {
+          "addr:postcode": "9040",
+          "name": "تبرسق",
+          "name:ar": "تبرسق",
+          "name:azb": "تبرسق",
+          "name:ca": "Téboursouk",
+          "name:de": "Téboursouk",
+          "name:en": "Téboursouk",
+          "name:fa": "تبرسق",
+          "name:fr": "Téboursouk",
+          "name:hu": "Téboursouk",
+          "name:kab": "Tabursuq",
+          "name:uk": "Тебурсук",
+          "name:zu": "Téboursouk",
+          "place": "town",
+          "wikidata": "Q1890362",
+          "wikimedia_commons": "Category:Téboursouk",
+          "wikipedia": "ar:تبرسق",
+          "wikipedia:ar": "تبرسق"
+        },
+        "lat": 36.4615073,
+        "lng": 9.2426211
+      },
+      "officialSectorInventory": [
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215551",
+          "sectorFr": "Teboursouk ville",
+          "sectorAr": "تبرسق المدينة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21658,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 981,
+            "Nombre_de_menages_par_Secteurs.xlsx": 980
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215552",
+          "sectorFr": "Ain el karma",
+          "sectorAr": "عين الكرمة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21692,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 982,
+            "Nombre_de_menages_par_Secteurs.xlsx": 981
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215553",
+          "sectorFr": "El menchia",
+          "sectorAr": "المنشية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21726,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 984,
+            "Nombre_de_menages_par_Secteurs.xlsx": 983
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215554",
+          "sectorFr": "Dougga",
+          "sectorAr": "دقة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21760,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 986,
+            "Nombre_de_menages_par_Secteurs.xlsx": 985
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215555",
+          "sectorFr": "Rihana",
+          "sectorAr": "ريحانة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21794,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 988,
+            "Nombre_de_menages_par_Secteurs.xlsx": 987
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215556",
+          "sectorFr": "Ain el melliti",
+          "sectorAr": "عين المليتي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21828,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 990,
+            "Nombre_de_menages_par_Secteurs.xlsx": 989
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215557",
+          "sectorFr": "Fadden es-souk",
+          "sectorAr": "فدان السوق",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21862,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 992,
+            "Nombre_de_menages_par_Secteurs.xlsx": 991
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215558",
+          "sectorFr": "Ain el hammam",
+          "sectorAr": "عين الحمام",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21896,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 994,
+            "Nombre_de_menages_par_Secteurs.xlsx": 993
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215559",
+          "sectorFr": "Ain djammala",
+          "sectorAr": "عين جمالة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21929,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 995,
+            "Nombre_de_menages_par_Secteurs.xlsx": 994
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215560",
+          "sectorFr": "Bir ettouta",
+          "sectorAr": "بئر التوتة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21963,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 997,
+            "Nombre_de_menages_par_Secteurs.xlsx": 996
+          }
+        }
+      ],
+      "preservedCurrentSectorIds": [
+        "osm:relation:7189423",
+        "osm:relation:7189429",
+        "osm:relation:7189435",
+        "osm:relation:7189446",
+        "osm:relation:7189448",
+        "osm:relation:7189467",
+        "osm:relation:7189469",
+        "osm:relation:7189470",
+        "osm:relation:7189471",
+        "osm:relation:7189476"
+      ],
+      "beforeGroups": {
+        "osm:relation:7189423": [
+          "osm:relation:7189423"
+        ],
+        "osm:relation:7189429": [
+          "osm:relation:7189429"
+        ],
+        "osm:relation:7189435": [
+          "osm:relation:7189435"
+        ],
+        "osm:relation:7189446": [
+          "osm:relation:7189446"
+        ],
+        "osm:relation:7189448": [
+          "osm:relation:7189448"
+        ],
+        "osm:relation:7189467": [
+          "osm:relation:7189467"
+        ],
+        "osm:relation:7189469": [
+          "osm:relation:7189469"
+        ],
+        "osm:relation:7189470": [
+          "osm:relation:7189470"
+        ],
+        "osm:relation:7189471": [
+          "osm:relation:7189471",
+          "osm:way:218868212"
+        ],
+        "osm:relation:7189476": [
+          "osm:relation:7189476"
+        ],
+        "osm:way:96369466": [
+          "osm:way:96369466"
+        ],
+        "delegation:518": [
+          "delegation:518"
+        ]
+      },
+      "proposedGroups": {
+        "osm:relation:7189423": [
+          "osm:relation:7189423"
+        ],
+        "osm:relation:7189429": [
+          "osm:relation:7189429"
+        ],
+        "osm:relation:7189435": [
+          "osm:relation:7189435"
+        ],
+        "osm:relation:7189446": [
+          "osm:relation:7189446"
+        ],
+        "osm:relation:7189448": [
+          "osm:relation:7189448"
+        ],
+        "osm:relation:7189467": [
+          "osm:relation:7189467"
+        ],
+        "osm:relation:7189469": [
+          "osm:relation:7189469"
+        ],
+        "osm:relation:7189470": [
+          "osm:relation:7189470"
+        ],
+        "osm:relation:7189471": [
+          "osm:relation:7189471",
+          "osm:way:218868212"
+        ],
+        "osm:relation:7189476": [
+          "osm:relation:7189476"
+        ],
+        "delegation:518": [
+          "delegation:518",
+          "osm:way:96369466"
+        ]
+      },
+      "exactProposedRawFieldDelta": [
+        {
+          "id": "osm:way:96369466",
+          "field": "pickerGroupId",
+          "before": "osm:way:96369466",
+          "after": "delegation:518"
+        }
+      ],
+      "rawPointRestoration": false,
+      "allOtherRawFieldsRemainExact": true,
+      "prayerSourceUnchanged": 518,
+      "baseAndSourceContainment": {
+        "legacyBase": {
+          "nativeContains": false,
+          "packedContains": false
+        },
+        "absorbedSettlement": {
+          "nativeContains": true,
+          "packedContains": true
+        },
+        "actualFacts": {
+          "absorbedSettlement": {
+            "original": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "effective": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "packed": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "coveringScopedSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "nearestAmongAllCoordinateReferences": {
+              "id": 518,
+              "distanceKm": 0.2881613079266824,
+              "comparedReferenceCount": 259
+            }
+          },
+          "rawRepresentative": {
+            "original": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "effective": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "packed": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "coveringScopedSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "nearestAmongAllCoordinateReferences": {
+              "id": 518,
+              "distanceKm": 0.6262670755240227,
+              "comparedReferenceCount": 259
+            }
+          },
+          "legacyBase": {
+            "original": {
+              "residentialContains": false,
+              "residentialCovers": false,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "effective": {
+              "residentialContains": false,
+              "residentialCovers": false,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "packed": {
+              "residentialContains": false,
+              "residentialCovers": false,
+              "coveringScopedSectorIds": [
+                "osm:relation:7189435"
+              ]
+            },
+            "nearestAmongAllCoordinateReferences": {
+              "id": 518,
+              "distanceKm": 0.0,
+              "comparedReferenceCount": 259
+            }
+          }
+        },
+        "fieldNamingQualification": "Legacy nativeContains/packedContains field names bind covers in this validator; actual contains/covers results are separately recorded."
+      },
+      "identityReasoning": [
+        "OSM v1 explicitly tagged this footprint place=village and Teboursouk. Later edits removed place but retained town names, and v11 added town Wikidata/Wikipedia links. Latest tags and exact ring coordinates match the frozen source.",
+        "MEHAT Béja atlas physicalpage60/printed59 describes the inhabited town, its old medina and adjoining colonial fabric, and expressly distinguishes nearby Dougga ruins. It is a town description, not just a municipality-name listing.",
+        "The Finance Ministry lists Recette des Finances Teboursouk at Avenue de la république, postcode9040, coordinate36.4608712,9.2444394 inside this exact residential polygon. This is an official office-location cross-check, not the prayer reference or surveyed town center.",
+        "Root coordinate check selected the town card within its street network. Supplementary only."
+      ],
+      "administrativeScope": "The residential footprint remains a retained source footprint of the inhabited town; it is not certified as the entire town, municipality, delegation or any sector.",
+      "nameDecision": {
+        "baseNameChange": null,
+        "rawNameChange": null,
+        "aliasesChange": null
+      },
+      "sourceSchemaAssessment": "BLOCKED_BY_EXISTING_SINGLETON_SECTOR_GROUP_GUARD",
+      "implementationIncludedInThisStage": false,
+      "implementationHold": "The existing ordinary method requires groups[sectorId] == {sectorId}, exactly sectorCount+4 source records, and final sector singleton groups. Ain Jemala sector7189471 has a legitimate additional residential member218868212; preserve that complete group and all its metadata/geometry. A narrow explicit complete-group extension is needed for this pair.",
+      "completeSectorGroups": {
+        "osm:relation:7189423": [
+          "osm:relation:7189423"
+        ],
+        "osm:relation:7189429": [
+          "osm:relation:7189429"
+        ],
+        "osm:relation:7189435": [
+          "osm:relation:7189435"
+        ],
+        "osm:relation:7189446": [
+          "osm:relation:7189446"
+        ],
+        "osm:relation:7189448": [
+          "osm:relation:7189448"
+        ],
+        "osm:relation:7189467": [
+          "osm:relation:7189467"
+        ],
+        "osm:relation:7189469": [
+          "osm:relation:7189469"
+        ],
+        "osm:relation:7189470": [
+          "osm:relation:7189470"
+        ],
+        "osm:relation:7189471": [
+          "osm:relation:7189471",
+          "osm:way:218868212"
+        ],
+        "osm:relation:7189476": [
+          "osm:relation:7189476"
+        ]
+      }
+    },
+    {
+      "baseId": 441,
+      "residentialId": "osm:way:43944790",
+      "absorbedSettlementEvidenceId": "osm:node:558855437",
+      "sourceDelegationId": "osm:relation:7150740",
+      "officialDelegationCode": "3163",
+      "decision": "SUPPORT_EXACT_SETTLEMENT_DISPLAY_ASSOCIATION; inhabited-town identity supported; retain each independent imada and all coordinates.",
+      "currentBase": {
+        "id": 441,
+        "nomFr": "Sidi Elheni",
+        "nomAr": "سيدي الهاني",
+        "nomEn": "Sidi Elheni",
+        "lat": 35.6792,
+        "lng": 10.3231
+      },
+      "currentRaw": {
+        "id": "osm:way:43944790",
+        "sourceId": "osm",
+        "name": "سيدي الهاني",
+        "aliases": [
+          "Sidi El Heni"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.680877,
+        "lng": 10.311315,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.302708,
+          35.676573,
+          10.320224,
+          35.685514
+        ],
+        "areaKm2": 0.6345806885521329,
+        "pickerGroupId": "osm:way:43944790",
+        "offset": 5406988,
+        "length": 428
+      },
+      "originalResidentialTags": {
+        "landuse": "residential",
+        "name": "سيدي الهاني",
+        "name:ar": "سيدي الهاني"
+      },
+      "originalGeometrySha256": "742842961a0e5f84af189333522832e680e639ffc13a51abba7d05c687eb58c7",
+      "packedGeometrySha256": "c884949514a482950341e6e98fdffeb125904faba575597775c4d14a009fad8e",
+      "settlementSource": {
+        "id": "osm:node:558855437",
+        "tags": {
+          "name": "سيدي الهاني",
+          "name:ar": "سيدي الهاني",
+          "name:en": "Sidi El Heni",
+          "name:fr": "Sidi El Heni",
+          "place": "village"
+        },
+        "lat": 35.6809917,
+        "lng": 10.3118167
+      },
+      "officialSectorInventory": [
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316351",
+          "sectorFr": "Sidi el heni centre",
+          "sectorAr": "سيدي الهاني المركزية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34917,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1644,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1643
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316352",
+          "sectorFr": "Sidi el heni ouest",
+          "sectorAr": "سيدي الهاني الغربية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34951,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1646,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1645
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316353",
+          "sectorFr": "Sidi el heni sud",
+          "sectorAr": "سيدي الهاني الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34985,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1648,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1647
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316354",
+          "sectorFr": "Ouled ali belhani",
+          "sectorAr": "أولاد علي بلهاني",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35019,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1650,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1649
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316355",
+          "sectorFr": "Kroussia ouest",
+          "sectorAr": "كروسية الغربية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35053,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1651,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1650
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316356",
+          "sectorFr": "Kroussia centrale",
+          "sectorAr": "كروسية المركزية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35087,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1653,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1652
+          }
+        }
+      ],
+      "preservedCurrentSectorIds": [
+        "osm:relation:7113806",
+        "osm:relation:7113807",
+        "osm:relation:7113808",
+        "osm:relation:7113809",
+        "osm:relation:7113811",
+        "osm:relation:7135672"
+      ],
+      "beforeGroups": {
+        "osm:relation:7113806": [
+          "osm:relation:7113806"
+        ],
+        "osm:relation:7113807": [
+          "osm:relation:7113807"
+        ],
+        "osm:relation:7113808": [
+          "osm:relation:7113808"
+        ],
+        "osm:relation:7113809": [
+          "osm:relation:7113809"
+        ],
+        "osm:relation:7113811": [
+          "osm:relation:7113811"
+        ],
+        "osm:relation:7135672": [
+          "osm:relation:7135672"
+        ],
+        "osm:way:43944790": [
+          "osm:way:43944790"
+        ],
+        "delegation:441": [
+          "delegation:441"
+        ]
+      },
+      "proposedGroups": {
+        "osm:relation:7113806": [
+          "osm:relation:7113806"
+        ],
+        "osm:relation:7113807": [
+          "osm:relation:7113807"
+        ],
+        "osm:relation:7113808": [
+          "osm:relation:7113808"
+        ],
+        "osm:relation:7113809": [
+          "osm:relation:7113809"
+        ],
+        "osm:relation:7113811": [
+          "osm:relation:7113811"
+        ],
+        "osm:relation:7135672": [
+          "osm:relation:7135672"
+        ],
+        "delegation:441": [
+          "delegation:441",
+          "osm:way:43944790"
+        ]
+      },
+      "exactProposedRawFieldDelta": [
+        {
+          "id": "osm:way:43944790",
+          "field": "pickerGroupId",
+          "before": "osm:way:43944790",
+          "after": "delegation:441"
+        }
+      ],
+      "rawPointRestoration": false,
+      "allOtherRawFieldsRemainExact": true,
+      "prayerSourceUnchanged": 441,
+      "baseAndSourceContainment": {
+        "legacyBase": {
+          "nativeContains": false,
+          "packedContains": false
+        },
+        "absorbedSettlement": {
+          "nativeContains": true,
+          "packedContains": true
+        },
+        "actualFacts": {
+          "absorbedSettlement": {
+            "original": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7113809"
+              ]
+            },
+            "effective": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7113809"
+              ]
+            },
+            "packed": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "coveringScopedSectorIds": [
+                "osm:relation:7113809"
+              ]
+            },
+            "nearestAmongAllCoordinateReferences": {
+              "id": 441,
+              "distanceKm": 1.0384221572440449,
+              "comparedReferenceCount": 259
+            }
+          },
+          "rawRepresentative": {
+            "original": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7113809"
+              ]
+            },
+            "effective": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7113809"
+              ]
+            },
+            "packed": {
+              "residentialContains": true,
+              "residentialCovers": true,
+              "coveringScopedSectorIds": [
+                "osm:relation:7113809"
+              ]
+            },
+            "nearestAmongAllCoordinateReferences": {
+              "id": 441,
+              "distanceKm": 1.080656937511995,
+              "comparedReferenceCount": 259
+            }
+          },
+          "legacyBase": {
+            "original": {
+              "residentialContains": false,
+              "residentialCovers": false,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7113806"
+              ]
+            },
+            "effective": {
+              "residentialContains": false,
+              "residentialCovers": false,
+              "delegationContains": true,
+              "delegationCovers": true,
+              "governorateContains": true,
+              "governorateCovers": true,
+              "coveringSectorIds": [
+                "osm:relation:7113806"
+              ]
+            },
+            "packed": {
+              "residentialContains": false,
+              "residentialCovers": false,
+              "coveringScopedSectorIds": [
+                "osm:relation:7113806"
+              ]
+            },
+            "nearestAmongAllCoordinateReferences": {
+              "id": 441,
+              "distanceKm": 0.0,
+              "comparedReferenceCount": 259
+            }
+          }
+        },
+        "fieldNamingQualification": "Legacy nativeContains/packedContains field names bind covers in this validator; actual contains/covers results are separately recorded."
+      },
+      "identityReasoning": [
+        "OSM v1-v4 were unnamed residential landuse; v5 added only the town Arabic name in2022. No source neighborhood alternative or POI tag exists. The French output alias is not separate source proof.",
+        "MEHAT Sousse atlas physical/printedpage84 section4.4.2 explicitly describes the inhabited Sidi El Hani town, RN12 access toward Kairouan, schools and health services, and urban-growth limits. It does not certify this0.634581km2 boundary.",
+        "Root coordinate observation gives P12 urban-building context; separate explicit name query selected the town card around the same network. The unnamed building itself is not a locality identity."
+      ],
+      "administrativeScope": "The residential footprint remains a retained source footprint of the inhabited town; it is not certified as the entire town, municipality, delegation or any sector.",
+      "nameDecision": {
+        "baseNameChange": null,
+        "rawNameChange": null,
+        "aliasesChange": null
+      },
+      "sourceSchemaAssessment": "SUPPORTED_BY_EXISTING_ORDINARY_RESIDENTIAL_DISPLAY_CONTRACT",
+      "implementationIncludedInThisStage": true
+    }
+  ],
+  "primaryPublicEvidenceForStagedBase441": [
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020.pdf",
+      "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "artifactKind": "original_pdf_response",
+      "role": "official_inhabited_town_identity"
+    },
+    {
+      "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sousse-atlas-full-page84-derived.txt",
+      "sha256": "a2f1ad433e2640c09eb62fe945c8383b4231c8797fbfa5f09184cfec0e9d5923",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf#page=84",
+      "artifactKind": "derived_full_page_utf8",
+      "role": "official_inhabited_town_identity",
+      "provenance": {
+        "file": "residential-base-display-reviews/sidi-el-hani-2026-09/sousse-page84-derived-provenance.json",
+        "sha256": "44f9be105d8bad7a6051574d715134649313aae486c5b5491c885533a047d574"
+      },
+      "isOriginalHttpResponseBytes": false
+    }
+  ],
+  "limits": "Town display identity only; preserve exact source polygons, source points as absent evidence, all sector choices, names, aliases, coordinates and nearest usable prayer sources."
+}

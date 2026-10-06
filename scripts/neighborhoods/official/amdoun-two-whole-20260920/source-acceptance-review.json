@@ -1,0 +1,595 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_PACKAGE_PROPOSAL_PENDING_ROOT_IMPACT_ACCEPTANCE",
+  "targetIds": [
+    "osm:relation:7189452",
+    "osm:relation:7189451"
+  ],
+  "sourceId": "isie-local-sectors-2023-amdoun-two-whole",
+  "scope": "Two exact whole-imada native paths only; names, aliases, IDs, kind, coordinates, picker ownership and prayer source intended unchanged.",
+  "sourceRef": {
+    "file": "official/amdoun-two-whole-20260920/amdoun-two-whole-source.geojson",
+    "sha256": "7c1c4cd8f0043bec348c9b9467d8b194d4318daedd4656f7b72f48d43538c34d"
+  },
+  "scopeRef": {
+    "file": "official/amdoun-two-whole-20260920/whole-scope-additions.json",
+    "sha256": "5b2f670fec9c937a7f6991998399f679e7c2d1c1c258242856be673e8d07f72f"
+  },
+  "manualRef": {
+    "file": "official/amdoun-two-whole-20260920/manual-point-review.json",
+    "sha256": "5067bbfa1410937d96159d325cab98e782dc4eedf609b79e203bb77036cf8bca"
+  },
+  "dependencies": {
+    "file": "official/amdoun-two-whole-20260920/dependency-review.json",
+    "sha256": "69c9aa51cca692e55937d076ad74ce5148f25b410e10218fcf248ea23462967a"
+  },
+  "jointCoverage": {
+    "oldUnionKm2": 28.185888428865432,
+    "newUnionKm2": 28.685572282122056,
+    "gainKm2": 1.0478986974068625,
+    "lossKm2": 0.5482148441499014,
+    "gainPreviouslyUncoveredAllLayersKm2": 0.0,
+    "lossUncoveredAllLayersKm2": 0.5482148441499038,
+    "gainOverlapsUnchangedPolygonsKm2": 1.0478986974068638,
+    "lossUncoveredSectorLayerKm2": 0.5482148441499038,
+    "method": "Joint union old pair versus new pair, with both targets removed from unchanged peers; no double counting or stale other-target geometry."
+  },
+  "targetPair": {
+    "oldOverlapM2": 0.0,
+    "nativeOverlapM2": 2424.4073931095145,
+    "packedOverlapM2": 2448.5708443139033,
+    "unchangedNativePaths": true
+  },
+  "incidentConflicts": {
+    "oldStoredAndRecomputed": [],
+    "nativeJointReplacement": [
+      {
+        "ids": [
+          "osm:relation:7189410",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.016837983386967313,
+        "sample": {
+          "lat": 36.74789867660306,
+          "lng": 9.107019995596648
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189416",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.4584833964048614,
+        "sample": {
+          "lat": 36.74067738883812,
+          "lng": 9.084690201678075
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189452"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0024311787674335976,
+        "sample": {
+          "lat": 36.76512263613692,
+          "lng": 9.065970879294182
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0014935483520958125,
+        "sample": {
+          "lat": 36.78261637272514,
+          "lng": 9.114767500565282
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189466"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.11044837278218918,
+        "sample": {
+          "lat": 36.7664295926393,
+          "lng": 9.13244822020795
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189472"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0015900518003103528,
+        "sample": {
+          "lat": 36.78016995701014,
+          "lng": 9.13905677184772
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189474"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.38004642500997754,
+        "sample": {
+          "lat": 36.78136114200434,
+          "lng": 9.130873044705513
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 1.8505966475718249e-06,
+        "sample": {
+          "lat": 36.76854392827417,
+          "lng": 9.05586680621481
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.07786226236991697,
+        "sample": {
+          "lat": 36.78648312647084,
+          "lng": 9.103501744860994
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0039852674338214655,
+        "sample": {
+          "lat": 36.76915177791642,
+          "lng": 9.060313818508998
+        }
+      }
+    ],
+    "packedCopyJointReplacement": [
+      {
+        "ids": [
+          "osm:relation:7189410",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.016837647531836912,
+        "sample": {
+          "lat": 36.747899000000004,
+          "lng": 9.107020382409974
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189416",
+          "osm:relation:7189451"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.45849439376383605,
+        "sample": {
+          "lat": 36.740677500000004,
+          "lng": 9.084690335445803
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189452"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0024554102829616926,
+        "sample": {
+          "lat": 36.765122500000004,
+          "lng": 9.06597125636683
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0014991589667945695,
+        "sample": {
+          "lat": 36.7826165,
+          "lng": 9.114767555122777
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189466"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.1104427605205102,
+        "sample": {
+          "lat": 36.7664295,
+          "lng": 9.132448114733432
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189472"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.001588369579349192,
+        "sample": {
+          "lat": 36.78017,
+          "lng": 9.13905637855478
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189474"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.3800465370967913,
+        "sample": {
+          "lat": 36.78136087383022,
+          "lng": 9.13087306817173
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189451",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 1.9954578326234587e-06,
+        "sample": {
+          "lat": 36.768544155244996,
+          "lng": 9.055866714055528
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189465"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.07784766544719957,
+        "sample": {
+          "lat": 36.786483000000004,
+          "lng": 9.103502009746917
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7189452",
+          "osm:relation:7189484"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.003991112204637531,
+        "sample": {
+          "lat": 36.76915180593677,
+          "lng": 9.060313701027189
+        }
+      }
+    ],
+    "oldAllCatalogCount": 428,
+    "projectedPackedAllCatalogCount": 438,
+    "cohortIds": [
+      "osm:relation:7189410",
+      "osm:relation:7189416",
+      "osm:relation:7189417",
+      "osm:relation:7189451",
+      "osm:relation:7189452",
+      "osm:relation:7189465",
+      "osm:relation:7189466",
+      "osm:relation:7189472",
+      "osm:relation:7189474",
+      "osm:relation:7189484"
+    ]
+  },
+  "parents": {
+    "osm:relation:7189452": {
+      "delegation": {
+        "id": "osm:relation:7189391",
+        "code": "2153",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 0.0,
+        "sourceTags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "long_name": "معتمدية عمدون",
+          "long_name:ar": "معتمدية عمدون",
+          "long_name:fr": "Délégation d'Amdoun",
+          "name": "معتمدية عمدون",
+          "name:ar": "معتمدية عمدون",
+          "name:fr": "Délégation Amdoun",
+          "ref:tn:codegeo": "2153",
+          "ref:tn:hasc_2": "TN.BJ.AM",
+          "sorting_name": "عمدون",
+          "sorting_name:ar": "عمدون",
+          "sorting_name:fr": "Amdoun",
+          "wikidata": "Q2842503",
+          "wikipedia": "ar:معتمدية عمدون",
+          "wikipedia:ar": "معتمدية عمدون"
+        }
+      },
+      "governorate": {
+        "id": "osm:relation:1435833",
+        "code": "21",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 0.0,
+        "sourceTags": {
+          "ISO3166-2": "TN-31",
+          "admin_level": "4",
+          "alt_name:fa": "استان باجه",
+          "alt_name:ur": "ولایت باجہ",
+          "boundary": "administrative",
+          "name": "ولاية باجة",
+          "name:ar": "ولاية باجة",
+          "name:az": "Beca (vilayət)",
+          "name:azb": "باجه",
+          "name:be": "Беджа (вілает)",
+          "name:be-tarask": "Бэджа (вілает)",
+          "name:bg": "Бежа (област)",
+          "name:ca": "Governació de Béja",
+          "name:ceb": "Gouvernorat de Béja",
+          "name:cy": "Béja (talaith)",
+          "name:de": "Gouvernement Beja",
+          "name:el": "Μπετζά (Κυβερνείο)",
+          "name:en": "Béja",
+          "name:es": "Gobernación de Béja",
+          "name:fa": "باجه",
+          "name:fi": "Béja (kuvernoraatti)",
+          "name:fr": "Gouvernorat Béja",
+          "name:frr": "Béja (Guwernement)",
+          "name:hu": "Béja kormányzóság",
+          "name:id": "Kegubernuran Béja",
+          "name:it": "Béja",
+          "name:ja": "ベジャ県",
+          "name:ka": "ბეჯის ვილაიეთი",
+          "name:ko": "베자주",
+          "name:lt": "Badžos vilajetas",
+          "name:ms": "Kawasan kegabenoran Béja",
+          "name:nl": "Béja (gouvernement)",
+          "name:no": "Béja (guvernement)",
+          "name:pl": "Gubernatorstwo Badża",
+          "name:pt": "Béja (província)",
+          "name:ro": "Guvernoratul Béja",
+          "name:ru": "Беджа (вилайет)",
+          "name:sco": "Béja Govrenorate",
+          "name:sh": "Béja (vilajet)",
+          "name:tr": "Bace ili",
+          "name:uk": "Беджа (вілаєт)",
+          "name:ur": "باجہ",
+          "name:zh": "巴傑省",
+          "name:zu": "Béja Governorate",
+          "official_name": "ولاية باجة",
+          "official_name:ar": "ولاية باجة",
+          "official_name:en": "Béja Governorate",
+          "official_name:fr": "Gouvernorat de Béja",
+          "official_name:it": "Governatorato di Béja",
+          "population": "304501",
+          "ref:tn:codegeo": "21",
+          "wikidata": "Q276576",
+          "wikipedia": "ar:ولاية باجة"
+        }
+      }
+    },
+    "osm:relation:7189451": {
+      "delegation": {
+        "id": "osm:relation:7189391",
+        "code": "2153",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 128543.78670567618,
+        "sourceTags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "long_name": "معتمدية عمدون",
+          "long_name:ar": "معتمدية عمدون",
+          "long_name:fr": "Délégation d'Amdoun",
+          "name": "معتمدية عمدون",
+          "name:ar": "معتمدية عمدون",
+          "name:fr": "Délégation Amdoun",
+          "ref:tn:codegeo": "2153",
+          "ref:tn:hasc_2": "TN.BJ.AM",
+          "sorting_name": "عمدون",
+          "sorting_name:ar": "عمدون",
+          "sorting_name:fr": "Amdoun",
+          "wikidata": "Q2842503",
+          "wikipedia": "ar:معتمدية عمدون",
+          "wikipedia:ar": "معتمدية عمدون"
+        }
+      },
+      "governorate": {
+        "id": "osm:relation:1435833",
+        "code": "21",
+        "oldOutsideM2": 0.0,
+        "newOutsideM2": 0.0,
+        "sourceTags": {
+          "ISO3166-2": "TN-31",
+          "admin_level": "4",
+          "alt_name:fa": "استان باجه",
+          "alt_name:ur": "ولایت باجہ",
+          "boundary": "administrative",
+          "name": "ولاية باجة",
+          "name:ar": "ولاية باجة",
+          "name:az": "Beca (vilayət)",
+          "name:azb": "باجه",
+          "name:be": "Беджа (вілает)",
+          "name:be-tarask": "Бэджа (вілает)",
+          "name:bg": "Бежа (област)",
+          "name:ca": "Governació de Béja",
+          "name:ceb": "Gouvernorat de Béja",
+          "name:cy": "Béja (talaith)",
+          "name:de": "Gouvernement Beja",
+          "name:el": "Μπετζά (Κυβερνείο)",
+          "name:en": "Béja",
+          "name:es": "Gobernación de Béja",
+          "name:fa": "باجه",
+          "name:fi": "Béja (kuvernoraatti)",
+          "name:fr": "Gouvernorat Béja",
+          "name:frr": "Béja (Guwernement)",
+          "name:hu": "Béja kormányzóság",
+          "name:id": "Kegubernuran Béja",
+          "name:it": "Béja",
+          "name:ja": "ベジャ県",
+          "name:ka": "ბეჯის ვილაიეთი",
+          "name:ko": "베자주",
+          "name:lt": "Badžos vilajetas",
+          "name:ms": "Kawasan kegabenoran Béja",
+          "name:nl": "Béja (gouvernement)",
+          "name:no": "Béja (guvernement)",
+          "name:pl": "Gubernatorstwo Badża",
+          "name:pt": "Béja (província)",
+          "name:ro": "Guvernoratul Béja",
+          "name:ru": "Беджа (вилайет)",
+          "name:sco": "Béja Govrenorate",
+          "name:sh": "Béja (vilajet)",
+          "name:tr": "Bace ili",
+          "name:uk": "Беджа (вілаєт)",
+          "name:ur": "باجہ",
+          "name:zh": "巴傑省",
+          "name:zu": "Béja Governorate",
+          "official_name": "ولاية باجة",
+          "official_name:ar": "ولاية باجة",
+          "official_name:en": "Béja Governorate",
+          "official_name:fr": "Gouvernorat de Béja",
+          "official_name:it": "Governatorato di Béja",
+          "population": "304501",
+          "ref:tn:codegeo": "21",
+          "wikidata": "Q276576",
+          "wikipedia": "ar:ولاية باجة"
+        }
+      }
+    }
+  },
+  "quantization": {
+    "osm:relation:7189452": {
+      "coordinateScale": 1000000,
+      "packedGeometrySha256": "49deae0d15e1c3ccdf74ded24019fa3cf9568e14d95fa260963212b306843219",
+      "packedLength": 2996,
+      "nativeValid": true,
+      "packedValid": true,
+      "nativeAndPackedContainCurrentAnchor": true,
+      "anchor": {
+        "lat": 36.78194,
+        "lng": 9.088968
+      },
+      "sourceBoundaryDistanceM": 925.1525654002706,
+      "symmetricDifferenceM2": 297.1337978343469,
+      "hausdorffM": 0.07047603556209149,
+      "nativeHoles": 0,
+      "packedHoles": 0
+    },
+    "osm:relation:7189451": {
+      "coordinateScale": 1000000,
+      "packedGeometrySha256": "7ac5bb56ebeaaf68b040a48925ebb48fb374316f0b584aadf0da5fd06f63397b",
+      "packedLength": 4132,
+      "nativeValid": true,
+      "packedValid": true,
+      "nativeAndPackedContainCurrentAnchor": true,
+      "anchor": {
+        "lat": 36.76026,
+        "lng": 9.087709
+      },
+      "sourceBoundaryDistanceM": 484.7773939765363,
+      "symmetricDifferenceM2": 457.08237848787155,
+      "hausdorffM": 0.06366501049044587,
+      "nativeHoles": 0,
+      "packedHoles": 0
+    }
+  },
+  "evidence": [
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/impact-facts.json",
+      "sha256": "7a52055ff03c166ce51e5d6e6adcc102369b81a2dc0136b3a149f6c674a88457"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/impact-summary.json",
+      "sha256": "85ef1141cf9e909533a55cf55b978e6506b46dcd9cbc914b92b1179ade628080"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/decree-scope-addendum.json",
+      "sha256": "ca3711e4ccde56dabcd9c520fa5b62785379cf74cc03dc95233da1514dd01da4"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/frozen-context.json",
+      "sha256": "92e77236546e2a82dda4b65fbeb53d624e1d87f28c0287a38232db6ebd88be30"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/next-actions-selected.json",
+      "sha256": "b6f040456a40af1729db32dc9383004e3904a3b5e95d51232bc8c15c7ea20347"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/deepseek-source-verdict.json",
+      "sha256": "a36d16d4a2c4c8235b065760e00a4328c94066dc8fd7a69e8a9925580e3d1f52"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/impact-reviewed.py",
+      "sha256": "bc3f8b12a40863a35ea7bd0a96fad8a190d31a861418915ef906a5ab27fa4706"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/native-impact-corrections.diff",
+      "sha256": "07735f65ea78b2133753c4a47a76eb2e3b8ec5984279c6ba7a575ee86f61ed31"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/prior-source-and-geometry-review.json",
+      "sha256": "6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/prior-geometry-facts.json",
+      "sha256": "baa703fd7ca7f8ed502b2bc9afab552cbc3b401c867684f44ab1463cc630dcb9"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/source-targets-and-parents.json",
+      "sha256": "be9828dc3b3126235b317e3a7e83c8729f762e17d1cd3ceb2dd34e3f2a08f322"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/before-catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/original-installed-name-proof.json",
+      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/decree-page-23.png",
+      "sha256": "ef3bd88d648f684abc587b7a4d5ffa9e570baf4f7a9de616837dc9cc3ce4be63"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/decree-page-24.png",
+      "sha256": "e06480118d35d0c46f9ba556f83860178e65be5164ce08ec2221ab40f0d01d76"
+    }
+  ],
+  "wholeImadaProof": "Pinned decree annex1 tableA PDF24/JORT5121, parentcontinuation PDF23/JORT5120; exact INS codes mapped through independent current registry.",
+  "nativeWorkerCorrections": [
+    "Pin frozen context, source parents and new decree addendum explicitly.",
+    "Compute the two adjacent replacements simultaneously, not each against the other obsolete target.",
+    "Compute union-level coverage without double counting; include all catalog layers and all unchanged peers.",
+    "Reuse pinned runtime conflict metric/strict samples on native joint and correctly quantized joint copies.",
+    "Use actual set_precision and existing NPOL encoder, not independent Python rounding.",
+    "Limit inherited contexts to exact sector-name references or whole-footprint containment; nearest prayer-source equality is not parent identity."
+  ],
+  "preservedSourceTruth": [
+    "Original independently transformed paths and2,424m2 mutual registration overlap.",
+    "All0.548214844km2 lostall-layercoverage and10incidentconflicts recorded; no neighbor changes or gapfill.",
+    "South original-parent discrepancy remains0.128543787km2; official code establishes parent identity without certifying the old OSM parent shape."
+  ],
+  "runtimeQualification": "Conflicted locality labels are withheld according to the existing GPS accuracy rules; current-position/name-unavailable fallback does not restore missing exact polygon coverage. GPS prayer mapping still uses actual coordinates.",
+  "curationSupersessionRequired": true,
+  "noGenerationInstallationOrCurrentControlChanges": true
+}

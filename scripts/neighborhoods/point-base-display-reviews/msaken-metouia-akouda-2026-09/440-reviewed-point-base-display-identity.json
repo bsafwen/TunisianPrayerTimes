@@ -1,0 +1,3626 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:6681328578",
+  "baseId": 440,
+  "rawCurrent": {
+    "id": "osm:node:6681328578",
+    "sourceId": "osm",
+    "name": "مساكن",
+    "aliases": [
+      "Msaken"
+    ],
+    "kind": "village",
+    "parentName": "التوارة الجنوبية",
+    "contextAliases": [
+      "Délégation Msaken",
+      "Ettouara Sud",
+      "M'saken",
+      "التوارة الجنوبية",
+      "معتمدية مساكن"
+    ],
+    "governorateId": 348,
+    "lat": 35.7252583,
+    "lng": 10.5832842,
+    "delegationId": 440,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:6681328578"
+  },
+  "baseCurrent": {
+    "id": 440,
+    "nomFr": "Msaken",
+    "nomAr": "مساكن",
+    "nomEn": "Msaken",
+    "lat": 35.73,
+    "lng": 10.58
+  },
+  "expectedGovernor": {
+    "id": 348,
+    "nomFr": "Sousse",
+    "nomAr": "سوسة",
+    "nomEn": "Sousse",
+    "lat": 35.8254,
+    "lng": 10.6369
+  },
+  "originalSourceNode": {
+    "id": "osm:node:6681328578",
+    "tags": {
+      "name": "مساكن",
+      "name:ar": "مساكن",
+      "name:en": "Msaken",
+      "name:fr": "Msaken",
+      "place": "village",
+      "postal_code": "4099"
+    },
+    "lat": 35.7252583,
+    "lng": 10.5832842
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-second-point-source-review.json",
+    "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-source-identity-independent-review.json",
+    "sha256": "9b89c7a0f7d1b8a77d42e6936e431821714804b0b3c5f41c138a369e4f8e6bd1"
+  },
+  "independentPrimaryFinding": "same M’saken settlement display; retain existing town node287612727",
+  "sourceNode": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/osm-node-6681328578-current.json",
+    "sha256": "fc552c28bdb39e71a5d36dc9cbf69acfed079ce2e80ddc64bc38cb30e200860a",
+    "url": "https://api.openstreetmap.org/api/0.6/node/6681328578.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/6681328578.json",
+    "sha256": "fc552c28bdb39e71a5d36dc9cbf69acfed079ce2e80ddc64bc38cb30e200860a",
+    "exactElement": {
+      "type": "node",
+      "id": 6681328578,
+      "lat": 35.7252583,
+      "lon": 10.5832842,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "version": 3,
+      "changeset": 98539602,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "name": "مساكن",
+        "name:ar": "مساكن",
+        "name:en": "Msaken",
+        "name:fr": "Msaken",
+        "place": "village",
+        "postal_code": "4099"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020-page81.txt",
+      "sha256": "d2061cb8938b522c392e0223094e12a64d470b17e05039f781ae3fc6d69a7ac3",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "مدينة مساكن",
+        "دائرة مساكن الجنوبية",
+        "دائرة مساكن الشمالية"
+      ],
+      "artifactKind": "derived_complete_page_text",
+      "isOriginalHttpResponseBytes": false,
+      "originalPdf": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020.pdf",
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf"
+      },
+      "derivationReview": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/complete-primary-page-text-provenance.json",
+        "sha256": "8f01b8462608cacad70114ff19643e93d8a82626a9057102f52212911b17bdcd"
+      },
+      "pdfPage": 81,
+      "printedPage": 81,
+      "urlQualification": "The URL identifies the original PDF. The pinned UTF8 file is an explicitly derived complete page, not the original HTTP response."
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-retrievals.json",
+      "sha256": "500b2aded4cc93289c3e48371c8e88c4be2a4c8b00e15868174a32beb5a7ce7c"
+    },
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-second-point-source-review.json",
+      "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/osm-node-6681328578-history.xml",
+    "sha256": "c146c6fcd38a8a8aedbcee1d831dcde7a5512df0fb5c65141b9b888d47b826e0",
+    "url": "https://api.openstreetmap.org/api/0.6/node/6681328578/history"
+  },
+  "sourceIdentityQualifications": {
+    "sameTown": "Supported as the best source interpretation: both complete node histories consistently use the unqualified settlement name; the official primary source describes the inhabited city, including its central and surrounding neighborhoods. No source evidence identifies a second distinct locality.",
+    "wrongProperty": "Not supported. Neither node was ever tagged as an institution/property. The4099 post office is a separate exact object7315054335, created when the postcode was added to the second settlement point.",
+    "wrongCoordinate": "Not established. The second point has never moved; the older town point moved in2017. Changeset comments supply no surveyed center or authoritative anchor evidence. Preserve all three coordinates.",
+    "postalCode": "4099 is not accepted as a locality identifier: the exact adding changeset binds it to a separate local post-office object. The municipal4070 address is not used to declare4099 wrong.",
+    "limitations": [
+      "This is a semantic source inference, not proof of a surveyed town center or exact city boundary.",
+      "Proximity and shared prayer default are supporting baseline facts only; neither was used as sufficient identity evidence.",
+      "The Atlas population/district descriptions are dated context, not imported data.",
+      "Third-party Mapcarta/GeoNames/Wikidata search associations were not adopted as primary identity evidence.",
+      "Direct municipal historic-page retrieval returned503; commune directory retrieval timed out. Indexed snippets are discovery only, not archived primary response bytes."
+    ]
+  },
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-geography-feasibility.json",
+    "sha256": "c7bc28495156a20e25b01565adbf9d80999717b7ff16008669dc540b22414f57"
+  },
+  "baselineGeographyFacts": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/finite-source-group-facts.json",
+    "sha256": "91f4f5e8678cc03d814cd850b40e8a5d9d4bfa27a767d8a7b2da6f2edf2caf57"
+  },
+  "projectedSourcePhaseFacts": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-projected-finite-facts-v2.json",
+    "sha256": "bfa50eb03d1f1f1793e5ecf73fa81d85ffc4856223bab193ca1f738d1e7c8472"
+  },
+  "supplementaryPhoneReview": {
+    "reference": {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-phone-review-20260912.json",
+      "sha256": "c1a1604b1f55ccdca9fdc40cb5aa9ca42e040779001af78fed919469a387a794"
+    },
+    "qualification": "Public search/card observations only. No coordinate, North/South identity, city perimeter or survey certification."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7111282",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316451",
+        "sectorFr": "Ettouara nord",
+        "sectorAr": "التوارة الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35121,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1655,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1654
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التوارة الشمالية",
+        "name:ar": "التوارة الشمالية",
+        "name:fr": "Ettouara Nord",
+        "ref:tn:codegeo": "316451"
+      },
+      "sourceGeometrySha256": "0761d7ed1fbb986f00bc518fde3239f1bab1ff0700fe128ec0404b5a73f53d7c",
+      "currentMetadata": {
+        "id": "osm:relation:7111282",
+        "sourceId": "osm",
+        "name": "التوارة الشمالية",
+        "aliases": [
+          "Ettouara Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.747771,
+        "lng": 10.594691,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.588897,
+          35.741961,
+          10.611272,
+          35.753953
+        ],
+        "areaKm2": 1.0980299400923619,
+        "pickerGroupId": "osm:relation:7111282",
+        "offset": 696388,
+        "length": 204
+      },
+      "packedGeometrySha256": "245031f0fbe35a74e79457861155b4d5dc7404f8d6d01fade40f1144c70e3391",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111279",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316452",
+        "sectorFr": "Touara el janoubia",
+        "sectorAr": "التوارة الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35155,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1656,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1655
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التوارة الجنوبية",
+        "name:ar": "التوارة الجنوبية",
+        "name:fr": "Ettouara Sud",
+        "ref:tn:codegeo": "316452"
+      },
+      "sourceGeometrySha256": "2f7af19bced53ecb054867c5633de7ace21d8919abba24fc5f9ba3e867cf63b7",
+      "currentMetadata": {
+        "id": "osm:relation:7111279",
+        "sourceId": "osm",
+        "name": "التوارة الجنوبية",
+        "aliases": [
+          "Ettouara Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.731926,
+        "lng": 10.583697,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.570505,
+          35.71882,
+          10.603226,
+          35.746743
+        ],
+        "areaKm2": 3.971524494244016,
+        "pickerGroupId": "osm:relation:7111279",
+        "offset": 695224,
+        "length": 300
+      },
+      "packedGeometrySha256": "ba982392ddaf979849ff7da948609fda989af80c1d71f1ab5694e98a883ad079",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111280",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316453",
+        "sectorFr": "Jedidine",
+        "sectorAr": "الجديدين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35189,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1657,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1656
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجديدين",
+        "name:ar": "الجديدين",
+        "name:fr": "Jedidine",
+        "ref:tn:codegeo": "316453"
+      },
+      "sourceGeometrySha256": "0a35e3c947c866b2f1c529bfb76877b01108c5161ad4420a7870ff7ff18cfaa5",
+      "currentMetadata": {
+        "id": "osm:relation:7111280",
+        "sourceId": "osm",
+        "name": "الجديدين",
+        "aliases": [
+          "Jedidine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.75934,
+        "lng": 10.572642,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.555143,
+          35.735083,
+          10.592798,
+          35.783912
+        ],
+        "areaKm2": 10.722437580059296,
+        "pickerGroupId": "osm:relation:7111280",
+        "offset": 695524,
+        "length": 484
+      },
+      "packedGeometrySha256": "272ff50a97d41f9e6d996c784d5ba951c88ef36848272782c70d0bdba69564fa",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7151556",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316454",
+        "sectorFr": "Jebline",
+        "sectorAr": "الجبليين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35223,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1659,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1658
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجبليين",
+        "name:ar": "الجبليين",
+        "name:fr": "El Jebline",
+        "ref:tn:codegeo": "316454"
+      },
+      "sourceGeometrySha256": "830472f4b40ba39629fbb6ec7ef777ff39dc0e9f4122108434734a01ca00ff11",
+      "currentMetadata": {
+        "id": "osm:relation:7151556",
+        "sourceId": "osm",
+        "name": "الجبليين",
+        "aliases": [
+          "El Jebline"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.729242,
+        "lng": 10.575101,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.570919,
+          35.725325,
+          10.579636,
+          35.733514
+        ],
+        "areaKm2": 0.35890383056941727,
+        "pickerGroupId": "osm:relation:7151556",
+        "offset": 2861540,
+        "length": 220
+      },
+      "packedGeometrySha256": "708ef87b57f1157bae98e15f3e7d5934d6b3d42dc867c856579bdbee137b9ba6",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111278",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316455",
+        "sectorFr": "Habib thameur",
+        "sectorAr": "الحبيب ثامر",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35257,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1660,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1659
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حبيب ثامر",
+        "name:ar": "حبيب ثامر",
+        "name:fr": "Habib Thameur",
+        "ref:tn:codegeo": "316455"
+      },
+      "sourceGeometrySha256": "7ef378807ad1069a4c7b3323a8201219c41dc31d79d09c98245c471098a26662",
+      "currentMetadata": {
+        "id": "osm:relation:7111278",
+        "sourceId": "osm",
+        "name": "حبيب ثامر",
+        "aliases": [
+          "Habib Thameur"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.736174,
+        "lng": 10.484494,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.381157,
+          35.69173,
+          10.5712,
+          35.780423
+        ],
+        "areaKm2": 81.55039906558966,
+        "pickerGroupId": "osm:relation:7111278",
+        "offset": 694380,
+        "length": 844
+      },
+      "packedGeometrySha256": "dfa77396bf855ad8ced1c807f59f9fc1ad84d12ebe66936b4f451fa4e74f1ed9",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111276",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316456",
+        "sectorFr": "Mouredine",
+        "sectorAr": "الموردين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35291,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1662,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1661
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الموردين",
+        "name:ar": "الموردين",
+        "name:fr": "Moureddine",
+        "ref:tn:codegeo": "316456"
+      },
+      "sourceGeometrySha256": "76a42f7fcf73bed5593c68b27b9fb192c4e1198f4a9d387626782e40a2ea95fb",
+      "currentMetadata": {
+        "id": "osm:relation:7111276",
+        "sourceId": "osm",
+        "name": "الموردين",
+        "aliases": [
+          "Moureddine",
+          "Муреддин"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.770768,
+        "lng": 10.5209,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.476771,
+          35.74874,
+          10.574661,
+          35.790874
+        ],
+        "areaKm2": 28.544547929726523,
+        "pickerGroupId": "osm:relation:7111276",
+        "offset": 692988,
+        "length": 652
+      },
+      "packedGeometrySha256": "7852530ff305230b3614c09be8cf36a4a286332f065b1dd2b4357f08cdaf23de",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111284",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316457",
+        "sectorFr": "Mneaema",
+        "sectorAr": "المناعمة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35325,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1664,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1663
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مناعمة",
+        "name:ar": "مناعمة",
+        "name:fr": "Mnaema",
+        "ref:tn:codegeo": "316457"
+      },
+      "sourceGeometrySha256": "738b1214534e441c94e3a6a63ad7ce849289ce534e108eac8ba0d3bd4bb918ed",
+      "currentMetadata": {
+        "id": "osm:relation:7111284",
+        "sourceId": "osm",
+        "name": "مناعمة",
+        "aliases": [
+          "Mnaema"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.70107,
+        "lng": 10.531898,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.438465,
+          35.678572,
+          10.577892,
+          35.723429
+        ],
+        "areaKm2": 22.77653017589497,
+        "pickerGroupId": "osm:relation:7111284",
+        "offset": 697476,
+        "length": 476
+      },
+      "packedGeometrySha256": "8fef31aebd22e888899203b0be79e26757aaa8b77ff473f36a82de2facb4b6ed",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7151555",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316458",
+        "sectorFr": "El gharbine",
+        "sectorAr": "الغربيين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35359,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1666,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1665
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الغربيين",
+        "name:ar": "El Gharbine",
+        "name:en": "El Gharbine",
+        "name:fr": "El Gharbine",
+        "ref:tn:codegeo": "316458"
+      },
+      "sourceGeometrySha256": "32470047c7bbafa9df139ca1be34eb1d9db7914e06ff90ea5f2b19a6f241ba64",
+      "currentMetadata": {
+        "id": "osm:relation:7151555",
+        "sourceId": "osm",
+        "name": "El Gharbine",
+        "aliases": [
+          "الغربيين"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.724011,
+        "lng": 10.575233,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.571015,
+          35.719989,
+          10.580493,
+          35.72837
+        ],
+        "areaKm2": 0.41408949629366404,
+        "pickerGroupId": "osm:relation:7151555",
+        "offset": 2861208,
+        "length": 332
+      },
+      "packedGeometrySha256": "928d40f42985b006205ae4634131aa33b4726e83d2095b81fdad627a1f2db0bc",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111277",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316459",
+        "sectorFr": "El kenaies",
+        "sectorAr": "الكنائس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35393,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1667,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1666
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الكنايس",
+        "name:ar": "الكنايس",
+        "name:fr": "El Knaies",
+        "ref:tn:codegeo": "316459",
+        "wikidata": "Q12191859"
+      },
+      "sourceGeometrySha256": "d29a9f48ed8d9a951749d212738e9693642810e84785fb0125df6efbee0fa6ed",
+      "currentMetadata": {
+        "id": "osm:relation:7111277",
+        "sourceId": "osm",
+        "name": "الكنايس",
+        "aliases": [
+          "El Knaies",
+          "Knaïs"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.649267,
+        "lng": 10.481401,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.413137,
+          35.591697,
+          10.542834,
+          35.705354
+        ],
+        "areaKm2": 68.80375701939853,
+        "pickerGroupId": "osm:relation:7111277",
+        "offset": 693640,
+        "length": 740
+      },
+      "packedGeometrySha256": "de5d22bd2b14480f6e7cd38079134493d69215f2efdc16c5336edadc667f33b8",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111283",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316460",
+        "sectorFr": "El kebline",
+        "sectorAr": "القبليين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35427,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1669,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1668
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القبليين",
+        "name:ar": "القبليين",
+        "name:fr": "Kebiline",
+        "ref:tn:codegeo": "316460"
+      },
+      "sourceGeometrySha256": "45e010e35afbb6add3dd6bb0862ef3c2a2b54c912dea2c274c740326140f0be3",
+      "currentMetadata": {
+        "id": "osm:relation:7111283",
+        "sourceId": "osm",
+        "name": "القبليين",
+        "aliases": [
+          "Kebiline"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.709324,
+        "lng": 10.621065,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.594742,
+          35.685634,
+          10.642263,
+          35.733025
+        ],
+        "areaKm2": 12.064934209679961,
+        "pickerGroupId": "osm:relation:7111283",
+        "offset": 696592,
+        "length": 884
+      },
+      "packedGeometrySha256": "92c6425ae4b3c12071b2e4483265a5e0af4a7ac60b35b6af7efddd4b98efb039",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111281",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316461",
+        "sectorFr": "Ennour",
+        "sectorAr": "النور",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35461,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1671,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1670
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النور",
+        "name:ar": "النور",
+        "name:fr": "Ennour",
+        "ref:tn:codegeo": "316461"
+      },
+      "sourceGeometrySha256": "fb72628747da97eea279c261da3ed6d748717b7cf743c4f11de5107adfe27980",
+      "currentMetadata": {
+        "id": "osm:relation:7111281",
+        "sourceId": "osm",
+        "name": "النور",
+        "aliases": [
+          "Ennour"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.740569,
+        "lng": 10.604138,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.589346,
+          35.729213,
+          10.623373,
+          35.750694
+        ],
+        "areaKm2": 4.928545204370063,
+        "pickerGroupId": "osm:relation:7111281",
+        "offset": 696008,
+        "length": 380
+      },
+      "packedGeometrySha256": "7987f65d06b014662d009d6bea95c026e9fa1fa4591c52e2d0162760454c8822",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111289",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316462",
+        "sectorFr": "El frady",
+        "sectorAr": "الفرداي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35495,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1673,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1672
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الفرادي",
+        "name:ar": "الفرادي",
+        "name:fr": "El Fradi",
+        "ref:tn:codegeo": "316462"
+      },
+      "sourceGeometrySha256": "2c52c6f92502c60845019b8efd9eea93a8f22e5b15f1158e6496b877fbf3bd0e",
+      "currentMetadata": {
+        "id": "osm:relation:7111289",
+        "sourceId": "osm",
+        "name": "الفرادي",
+        "aliases": [
+          "El Fradi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.587041,
+        "lng": 10.513723,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.494636,
+          35.556841,
+          10.53892,
+          35.617396
+        ],
+        "areaKm2": 13.29240131513004,
+        "pickerGroupId": "osm:relation:7111289",
+        "offset": 700376,
+        "length": 332
+      },
+      "packedGeometrySha256": "5d79dc67173df59ca3fd983eb9cc47f9b72d649126ff725b7aca089ded874381",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111288",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316463",
+        "sectorFr": "Borgine",
+        "sectorAr": "البرجين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35529,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1675,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1674
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البرجين",
+        "name:ar": "البرجين",
+        "name:fr": "Borjine",
+        "ref:tn:codegeo": "316463"
+      },
+      "sourceGeometrySha256": "0f5b54ab3df4ce5b313b374a7dcbdcce7c781676a28343cce20a5a3d7ed1fa8b",
+      "currentMetadata": {
+        "id": "osm:relation:7111288",
+        "sourceId": "osm",
+        "name": "البرجين",
+        "aliases": [
+          "Borjine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.634872,
+        "lng": 10.534473,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.496391,
+          35.59681,
+          10.618868,
+          35.672664
+        ],
+        "areaKm2": 37.56584409654675,
+        "pickerGroupId": "osm:relation:7111288",
+        "offset": 699724,
+        "length": 652
+      },
+      "packedGeometrySha256": "b8947f0210ba0f3c6228650e5572609e2af241703173ad0d173353da8dcf466e",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111287",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316464",
+        "sectorFr": "Beni rabiaa",
+        "sectorAr": "بني ربيعة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35563,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1677,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1676
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني ربيعة",
+        "name:ar": "بني ربيعة",
+        "name:fr": "Beni Rabiaa",
+        "ref:tn:codegeo": "316464"
+      },
+      "sourceGeometrySha256": "a5d1c43a06c2826a92108418fb960794a1affe93af582e48f21778f7e9282442",
+      "currentMetadata": {
+        "id": "osm:relation:7111287",
+        "sourceId": "osm",
+        "name": "بني ربيعة",
+        "aliases": [
+          "Beni Rabiaa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.675884,
+        "lng": 10.569126,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.536792,
+          35.662488,
+          10.602236,
+          35.687139
+        ],
+        "areaKm2": 10.852964573117541,
+        "pickerGroupId": "osm:relation:7111287",
+        "offset": 699488,
+        "length": 236
+      },
+      "packedGeometrySha256": "58e63a6c4727f281fd07d57aab7072be11c47bee2a40407d1bbc9495718ceb7b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111286",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316465",
+        "sectorFr": "Beni khalthoum",
+        "sectorAr": "بني كلثوم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35597,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1679,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1678
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني كلثوم",
+        "name:ar": "بني كلثوم",
+        "name:fr": "Beni Khaltoum",
+        "ref:tn:codegeo": "316465"
+      },
+      "sourceGeometrySha256": "fee1e575b97fd222472804747fe1426f43e79bb3adaca8925b77a4e156d15434",
+      "currentMetadata": {
+        "id": "osm:relation:7111286",
+        "sourceId": "osm",
+        "name": "بني كلثوم",
+        "aliases": [
+          "Beni Kalthoum",
+          "Beni Khaltoum"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.675505,
+        "lng": 10.609663,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.577041,
+          35.639057,
+          10.638623,
+          35.711204
+        ],
+        "areaKm2": 16.489891399014432,
+        "pickerGroupId": "osm:relation:7111286",
+        "offset": 698892,
+        "length": 596
+      },
+      "packedGeometrySha256": "e5cb5fb2c74cb31ad3032145b7f8a2ec05a14b81a6881d973f280900c3a6483d",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111285",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316466",
+        "sectorFr": "Nejajra",
+        "sectorAr": "النجاجرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35631,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1681,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1680
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النجاجرة",
+        "name:ar": "النجاجرة",
+        "name:fr": "Enjara",
+        "ref:tn:codegeo": "316466"
+      },
+      "sourceGeometrySha256": "5e458bbddf17900f205077c178f6a050f4f7198fcb258a712bba0caaca50eb0d",
+      "currentMetadata": {
+        "id": "osm:relation:7111285",
+        "sourceId": "osm",
+        "name": "النجاجرة",
+        "aliases": [
+          "Enjara"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.690276,
+        "lng": 10.564221,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.546884,
+          35.655458,
+          10.648501,
+          35.724758
+        ],
+        "areaKm2": 14.690056189815294,
+        "pickerGroupId": "osm:relation:7111285",
+        "offset": 697952,
+        "length": 940
+      },
+      "packedGeometrySha256": "5fb23a666b65bda6e7c32d6a2b74f480b3367ad82bf66b12eb327d62662a607b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7113134",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3164",
+        "delegationFr": "M'saken",
+        "delegationAr": "مساكن",
+        "sectorCode": "316467",
+        "sectorFr": "Messadine",
+        "sectorAr": "المسعدين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35665,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1683,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1682
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المسعدين",
+        "name:ar": "المسعدين",
+        "name:fr": "El Messaadine",
+        "ref:tn:codegeo": "316467"
+      },
+      "sourceGeometrySha256": "966963bcd10f3b9108342f5d954b7880ac34625e873b6259fdb2b78d79717cd7",
+      "currentMetadata": {
+        "id": "osm:relation:7113134",
+        "sourceId": "osm",
+        "name": "المسعدين",
+        "aliases": [
+          "El Messaadine",
+          "Messadine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.764983,
+        "lng": 10.60247,
+        "delegationId": 440,
+        "hasBoundary": true,
+        "bbox": [
+          10.580971,
+          35.750893,
+          10.622261,
+          35.779699
+        ],
+        "areaKm2": 6.1097454264865725,
+        "pickerGroupId": "osm:relation:7113134",
+        "offset": 782476,
+        "length": 444
+      },
+      "packedGeometrySha256": "042bba11772242e4d011eae0f29f89d504719aad177805cc54447d10db865c67",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:287612727",
+      "kind": "town",
+      "tags": {
+        "addr:city": "M'saken",
+        "addr:governorate": "Sousse",
+        "int_name": "M'saken",
+        "name": "مساكن",
+        "name:ar": "مساكن",
+        "name:en": "M'Saken",
+        "name:fa": "مساكن",
+        "name:fr": "M'saken",
+        "name:ru": "Мсакен",
+        "place": "town",
+        "population": "56000"
+      }
+    },
+    {
+      "id": "osm:node:6681328578",
+      "kind": "village",
+      "tags": {
+        "name": "مساكن",
+        "name:ar": "مساكن",
+        "name:en": "Msaken",
+        "name:fr": "Msaken",
+        "place": "village",
+        "postal_code": "4099"
+      }
+    },
+    {
+      "id": "osm:relation:7150924",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "M'saken",
+        "boundary": "administrative",
+        "name": "معتمدية مساكن",
+        "name:ar": "معتمدية مساكن",
+        "name:fr": "Délégation Msaken",
+        "ref:tn:codegeo": "3164",
+        "ref:tn:hasc_2": "TN.SS.MS",
+        "wikidata": "Q3272359"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:3152094": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-51",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية سوسة",
+        "name:ar": "ولاية سوسة",
+        "name:azb": "سوسه",
+        "name:be": "Сус (вілает)",
+        "name:be-tarask": "Сус (вілает)",
+        "name:bg": "Сус (област)",
+        "name:ca": "Governació de Sussa",
+        "name:ceb": "Gouvernorat de Sousse",
+        "name:ckb": "سوسە",
+        "name:cy": "Sousse (talaith)",
+        "name:de": "Gouvernement Sousse",
+        "name:el": "Σούσα (Κυβερνείο)",
+        "name:en": "Sousse",
+        "name:es": "Gobernación de Susa",
+        "name:fa": "سوسه",
+        "name:fi": "Sousse (kuvernementti)",
+        "name:fr": "Gouvernorat Sousse",
+        "name:frr": "Sousse (Guwernement)",
+        "name:he": "סוסה (מחוז)",
+        "name:id": "Kegubernuran Sousse",
+        "name:it": "Susa",
+        "name:ja": "スース県",
+        "name:ko": "수스주",
+        "name:ks": "سوسہ",
+        "name:lt": "Suso vilajetas",
+        "name:ms": "Kawasan kegabenoran Sousse",
+        "name:nl": "Sousse (gouvernement)",
+        "name:no": "Sousse (guvernement)",
+        "name:ota": "سوسه",
+        "name:pl": "Gubernatorstwo Susa",
+        "name:pt": "Susa (província)",
+        "name:ro": "Guvernoratul Sousse",
+        "name:ru": "Сус (вилайет)",
+        "name:sco": "Sousse Govrenorate",
+        "name:sh": "Sousse (vilajet)",
+        "name:tr": "Susa ili",
+        "name:uk": "Сус (вілаєт)",
+        "name:ur": "سوسہ",
+        "name:zh": "蘇塞省",
+        "name:zu": "Sousse Governorate",
+        "official_name": "ولاية سوسة",
+        "official_name:ar": "ولاية سوسة",
+        "official_name:en": "Sousse Governorate",
+        "official_name:es": "Gobernación de Susa",
+        "official_name:fa": "استان سوسه",
+        "official_name:fr": "Gouvernorat de Sousse",
+        "official_name:ur": "ولایت سوسہ",
+        "population": "674971",
+        "population:date": "2014",
+        "ref:tn:codegeo": "31",
+        "wikidata": "Q276565",
+        "wikipedia": "ar:ولاية سوسة"
+      },
+      "sourceGeometrySha256": "138e1cc0a156a36479032ee061f4428058d06d9c813103f8cc21cc6fddd5bd52"
+    },
+    "osm:relation:7150924": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "M'saken",
+        "boundary": "administrative",
+        "name": "معتمدية مساكن",
+        "name:ar": "معتمدية مساكن",
+        "name:fr": "Délégation Msaken",
+        "ref:tn:codegeo": "3164",
+        "ref:tn:hasc_2": "TN.SS.MS",
+        "wikidata": "Q3272359"
+      },
+      "sourceGeometrySha256": "09d9f3e7ee8bd80672526ec5e93903cb3e7ac0259a57d6a557c8845b6d6bc2cd"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:6681328578",
+    "field": "pickerGroupId",
+    "before": "osm:node:6681328578",
+    "after": "delegation:440"
+  },
+  "completePickerGroups": {
+    "before": {
+      "delegation:440": [
+        "osm:node:287612727"
+      ],
+      "osm:node:6681328578": [
+        "osm:node:6681328578"
+      ],
+      "osm:relation:7111276": [
+        "osm:relation:7111276"
+      ],
+      "osm:relation:7111277": [
+        "osm:relation:7111277"
+      ],
+      "osm:relation:7111278": [
+        "osm:relation:7111278"
+      ],
+      "osm:relation:7111279": [
+        "osm:relation:7111279"
+      ],
+      "osm:relation:7111280": [
+        "osm:relation:7111280"
+      ],
+      "osm:relation:7111281": [
+        "osm:relation:7111281"
+      ],
+      "osm:relation:7111282": [
+        "osm:relation:7111282"
+      ],
+      "osm:relation:7111283": [
+        "osm:relation:7111283"
+      ],
+      "osm:relation:7111284": [
+        "osm:relation:7111284"
+      ],
+      "osm:relation:7111285": [
+        "osm:relation:7111285"
+      ],
+      "osm:relation:7111286": [
+        "osm:relation:7111286"
+      ],
+      "osm:relation:7111287": [
+        "osm:relation:7111287"
+      ],
+      "osm:relation:7111288": [
+        "osm:relation:7111288"
+      ],
+      "osm:relation:7111289": [
+        "osm:relation:7111289"
+      ],
+      "osm:relation:7113134": [
+        "osm:relation:7113134"
+      ],
+      "osm:relation:7151555": [
+        "osm:relation:7151555"
+      ],
+      "osm:relation:7151556": [
+        "osm:relation:7151556"
+      ]
+    },
+    "after": {
+      "delegation:440": [
+        "osm:node:287612727",
+        "osm:node:6681328578"
+      ],
+      "osm:relation:7111276": [
+        "osm:relation:7111276"
+      ],
+      "osm:relation:7111277": [
+        "osm:relation:7111277"
+      ],
+      "osm:relation:7111278": [
+        "osm:relation:7111278"
+      ],
+      "osm:relation:7111279": [
+        "osm:relation:7111279"
+      ],
+      "osm:relation:7111280": [
+        "osm:relation:7111280"
+      ],
+      "osm:relation:7111281": [
+        "osm:relation:7111281"
+      ],
+      "osm:relation:7111282": [
+        "osm:relation:7111282"
+      ],
+      "osm:relation:7111283": [
+        "osm:relation:7111283"
+      ],
+      "osm:relation:7111284": [
+        "osm:relation:7111284"
+      ],
+      "osm:relation:7111285": [
+        "osm:relation:7111285"
+      ],
+      "osm:relation:7111286": [
+        "osm:relation:7111286"
+      ],
+      "osm:relation:7111287": [
+        "osm:relation:7111287"
+      ],
+      "osm:relation:7111288": [
+        "osm:relation:7111288"
+      ],
+      "osm:relation:7111289": [
+        "osm:relation:7111289"
+      ],
+      "osm:relation:7113134": [
+        "osm:relation:7113134"
+      ],
+      "osm:relation:7151555": [
+        "osm:relation:7151555"
+      ],
+      "osm:relation:7151556": [
+        "osm:relation:7151556"
+      ]
+    }
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "This display decision changes only the candidate point pickerGroupId. All source geometries, points, separate coded imadas, other raw identities, aliases and prayer defaults are preserved. Métouia separately binds the two explicit name corrections in the same source package.",
+  "coordinatePolicy": "All existing point and base coordinates remain unchanged and uncertified. No original INM calculation anchor is established.",
+  "sourcePhaseQualification": "Current411a requires an empty target base group; preserve its existing automatic town owner and attach only the second village display. Root delegated optional schema implementation separately.",
+  "retainedTownSourceHistory": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/osm-node-287612727-history.xml",
+    "sha256": "0c70eff236f632090ca42d27e1c5f3989b8ee44a1588e221b710824c47930d67",
+    "url": "https://api.openstreetmap.org/api/0.6/node/287612727/history"
+  },
+  "compilerImplementationReview": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-retained-town-compiler-stage-review-v2.json",
+    "sha256": "8faac9586aa63d25d7240568ac8d957be35c7677ea0e6112f544d2bf35a5fd96"
+  },
+  "independentCompilerReview": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-retained-town-compiler-independent-review-v2.json",
+    "sha256": "bf4d32d0621016fd71d102bd1abcc9b9c673a9e199e9df07494245278c469d6b"
+  },
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "3164"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:287612727",
+        "original": {
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fa": "مساكن",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          },
+          "kind": "town",
+          "sourceId": null,
+          "geometrySha256": "81e7584fd6f6cbe4c91c5b4ca81a76d63088d6cd81b7316ec1f2bd387e41050f"
+        },
+        "effective": {
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fa": "مساكن",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          },
+          "kind": "town",
+          "sourceId": "osm",
+          "geometrySha256": "81e7584fd6f6cbe4c91c5b4ca81a76d63088d6cd81b7316ec1f2bd387e41050f"
+        }
+      },
+      {
+        "id": "osm:node:6681328578",
+        "original": {
+          "tags": {
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "Msaken",
+            "name:fr": "Msaken",
+            "place": "village",
+            "postal_code": "4099"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "6563643621378ced9010d8f34f51952eed8262e8371f52d5ca3bae619accc33b"
+        },
+        "effective": {
+          "tags": {
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "Msaken",
+            "name:fr": "Msaken",
+            "place": "village",
+            "postal_code": "4099"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "6563643621378ced9010d8f34f51952eed8262e8371f52d5ca3bae619accc33b"
+        }
+      },
+      {
+        "id": "osm:relation:3152094",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-51",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية سوسة",
+            "name:ar": "ولاية سوسة",
+            "name:azb": "سوسه",
+            "name:be": "Сус (вілает)",
+            "name:be-tarask": "Сус (вілает)",
+            "name:bg": "Сус (област)",
+            "name:ca": "Governació de Sussa",
+            "name:ceb": "Gouvernorat de Sousse",
+            "name:ckb": "سوسە",
+            "name:cy": "Sousse (talaith)",
+            "name:de": "Gouvernement Sousse",
+            "name:el": "Σούσα (Κυβερνείο)",
+            "name:en": "Sousse",
+            "name:es": "Gobernación de Susa",
+            "name:fa": "سوسه",
+            "name:fi": "Sousse (kuvernementti)",
+            "name:fr": "Gouvernorat Sousse",
+            "name:frr": "Sousse (Guwernement)",
+            "name:he": "סוסה (מחוז)",
+            "name:id": "Kegubernuran Sousse",
+            "name:it": "Susa",
+            "name:ja": "スース県",
+            "name:ko": "수스주",
+            "name:ks": "سوسہ",
+            "name:lt": "Suso vilajetas",
+            "name:ms": "Kawasan kegabenoran Sousse",
+            "name:nl": "Sousse (gouvernement)",
+            "name:no": "Sousse (guvernement)",
+            "name:ota": "سوسه",
+            "name:pl": "Gubernatorstwo Susa",
+            "name:pt": "Susa (província)",
+            "name:ro": "Guvernoratul Sousse",
+            "name:ru": "Сус (вилайет)",
+            "name:sco": "Sousse Govrenorate",
+            "name:sh": "Sousse (vilajet)",
+            "name:tr": "Susa ili",
+            "name:uk": "Сус (вілаєт)",
+            "name:ur": "سوسہ",
+            "name:zh": "蘇塞省",
+            "name:zu": "Sousse Governorate",
+            "official_name": "ولاية سوسة",
+            "official_name:ar": "ولاية سوسة",
+            "official_name:en": "Sousse Governorate",
+            "official_name:es": "Gobernación de Susa",
+            "official_name:fa": "استان سوسه",
+            "official_name:fr": "Gouvernorat de Sousse",
+            "official_name:ur": "ولایت سوسہ",
+            "population": "674971",
+            "population:date": "2014",
+            "ref:tn:codegeo": "31",
+            "wikidata": "Q276565",
+            "wikipedia": "ar:ولاية سوسة"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "138e1cc0a156a36479032ee061f4428058d06d9c813103f8cc21cc6fddd5bd52"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-51",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية سوسة",
+            "name:ar": "ولاية سوسة",
+            "name:azb": "سوسه",
+            "name:be": "Сус (вілает)",
+            "name:be-tarask": "Сус (вілает)",
+            "name:bg": "Сус (област)",
+            "name:ca": "Governació de Sussa",
+            "name:ceb": "Gouvernorat de Sousse",
+            "name:ckb": "سوسە",
+            "name:cy": "Sousse (talaith)",
+            "name:de": "Gouvernement Sousse",
+            "name:el": "Σούσα (Κυβερνείο)",
+            "name:en": "Sousse",
+            "name:es": "Gobernación de Susa",
+            "name:fa": "سوسه",
+            "name:fi": "Sousse (kuvernementti)",
+            "name:fr": "Gouvernorat Sousse",
+            "name:frr": "Sousse (Guwernement)",
+            "name:he": "סוסה (מחוז)",
+            "name:id": "Kegubernuran Sousse",
+            "name:it": "Susa",
+            "name:ja": "スース県",
+            "name:ko": "수스주",
+            "name:ks": "سوسہ",
+            "name:lt": "Suso vilajetas",
+            "name:ms": "Kawasan kegabenoran Sousse",
+            "name:nl": "Sousse (gouvernement)",
+            "name:no": "Sousse (guvernement)",
+            "name:ota": "سوسه",
+            "name:pl": "Gubernatorstwo Susa",
+            "name:pt": "Susa (província)",
+            "name:ro": "Guvernoratul Sousse",
+            "name:ru": "Сус (вилайет)",
+            "name:sco": "Sousse Govrenorate",
+            "name:sh": "Sousse (vilajet)",
+            "name:tr": "Susa ili",
+            "name:uk": "Сус (вілаєт)",
+            "name:ur": "سوسہ",
+            "name:zh": "蘇塞省",
+            "name:zu": "Sousse Governorate",
+            "official_name": "ولاية سوسة",
+            "official_name:ar": "ولاية سوسة",
+            "official_name:en": "Sousse Governorate",
+            "official_name:es": "Gobernación de Susa",
+            "official_name:fa": "استان سوسه",
+            "official_name:fr": "Gouvernorat de Sousse",
+            "official_name:ur": "ولایت سوسہ",
+            "population": "674971",
+            "population:date": "2014",
+            "ref:tn:codegeo": "31",
+            "wikidata": "Q276565",
+            "wikipedia": "ar:ولاية سوسة"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "138e1cc0a156a36479032ee061f4428058d06d9c813103f8cc21cc6fddd5bd52"
+        }
+      },
+      {
+        "id": "osm:relation:7111276",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الموردين",
+            "name:ar": "الموردين",
+            "name:fr": "Moureddine",
+            "ref:tn:codegeo": "316456"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "76a42f7fcf73bed5593c68b27b9fb192c4e1198f4a9d387626782e40a2ea95fb"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الموردين",
+            "name:ar": "الموردين",
+            "name:fr": "Moureddine",
+            "ref:tn:codegeo": "316456"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "76a42f7fcf73bed5593c68b27b9fb192c4e1198f4a9d387626782e40a2ea95fb"
+        }
+      },
+      {
+        "id": "osm:relation:7111277",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الكنايس",
+            "name:ar": "الكنايس",
+            "name:fr": "El Knaies",
+            "ref:tn:codegeo": "316459",
+            "wikidata": "Q12191859"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "d29a9f48ed8d9a951749d212738e9693642810e84785fb0125df6efbee0fa6ed"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الكنايس",
+            "name:ar": "الكنايس",
+            "name:fr": "El Knaies",
+            "ref:tn:codegeo": "316459",
+            "wikidata": "Q12191859"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "d29a9f48ed8d9a951749d212738e9693642810e84785fb0125df6efbee0fa6ed"
+        }
+      },
+      {
+        "id": "osm:relation:7111278",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حبيب ثامر",
+            "name:ar": "حبيب ثامر",
+            "name:fr": "Habib Thameur",
+            "ref:tn:codegeo": "316455"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "7ef378807ad1069a4c7b3323a8201219c41dc31d79d09c98245c471098a26662"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حبيب ثامر",
+            "name:ar": "حبيب ثامر",
+            "name:fr": "Habib Thameur",
+            "ref:tn:codegeo": "316455"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "7ef378807ad1069a4c7b3323a8201219c41dc31d79d09c98245c471098a26662"
+        }
+      },
+      {
+        "id": "osm:relation:7111279",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التوارة الجنوبية",
+            "name:ar": "التوارة الجنوبية",
+            "name:fr": "Ettouara Sud",
+            "ref:tn:codegeo": "316452"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "2f7af19bced53ecb054867c5633de7ace21d8919abba24fc5f9ba3e867cf63b7"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التوارة الجنوبية",
+            "name:ar": "التوارة الجنوبية",
+            "name:fr": "Ettouara Sud",
+            "ref:tn:codegeo": "316452"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "2f7af19bced53ecb054867c5633de7ace21d8919abba24fc5f9ba3e867cf63b7"
+        }
+      },
+      {
+        "id": "osm:relation:7111280",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجديدين",
+            "name:ar": "الجديدين",
+            "name:fr": "Jedidine",
+            "ref:tn:codegeo": "316453"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "0a35e3c947c866b2f1c529bfb76877b01108c5161ad4420a7870ff7ff18cfaa5"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجديدين",
+            "name:ar": "الجديدين",
+            "name:fr": "Jedidine",
+            "ref:tn:codegeo": "316453"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "0a35e3c947c866b2f1c529bfb76877b01108c5161ad4420a7870ff7ff18cfaa5"
+        }
+      },
+      {
+        "id": "osm:relation:7111281",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النور",
+            "name:ar": "النور",
+            "name:fr": "Ennour",
+            "ref:tn:codegeo": "316461"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "fb72628747da97eea279c261da3ed6d748717b7cf743c4f11de5107adfe27980"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النور",
+            "name:ar": "النور",
+            "name:fr": "Ennour",
+            "ref:tn:codegeo": "316461"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "fb72628747da97eea279c261da3ed6d748717b7cf743c4f11de5107adfe27980"
+        }
+      },
+      {
+        "id": "osm:relation:7111282",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التوارة الشمالية",
+            "name:ar": "التوارة الشمالية",
+            "name:fr": "Ettouara Nord",
+            "ref:tn:codegeo": "316451"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "0761d7ed1fbb986f00bc518fde3239f1bab1ff0700fe128ec0404b5a73f53d7c"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التوارة الشمالية",
+            "name:ar": "التوارة الشمالية",
+            "name:fr": "Ettouara Nord",
+            "ref:tn:codegeo": "316451"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "0761d7ed1fbb986f00bc518fde3239f1bab1ff0700fe128ec0404b5a73f53d7c"
+        }
+      },
+      {
+        "id": "osm:relation:7111283",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القبليين",
+            "name:ar": "القبليين",
+            "name:fr": "Kebiline",
+            "ref:tn:codegeo": "316460"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "45e010e35afbb6add3dd6bb0862ef3c2a2b54c912dea2c274c740326140f0be3"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القبليين",
+            "name:ar": "القبليين",
+            "name:fr": "Kebiline",
+            "ref:tn:codegeo": "316460"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "45e010e35afbb6add3dd6bb0862ef3c2a2b54c912dea2c274c740326140f0be3"
+        }
+      },
+      {
+        "id": "osm:relation:7111284",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مناعمة",
+            "name:ar": "مناعمة",
+            "name:fr": "Mnaema",
+            "ref:tn:codegeo": "316457"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "738b1214534e441c94e3a6a63ad7ce849289ce534e108eac8ba0d3bd4bb918ed"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مناعمة",
+            "name:ar": "مناعمة",
+            "name:fr": "Mnaema",
+            "ref:tn:codegeo": "316457"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "738b1214534e441c94e3a6a63ad7ce849289ce534e108eac8ba0d3bd4bb918ed"
+        }
+      },
+      {
+        "id": "osm:relation:7111285",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النجاجرة",
+            "name:ar": "النجاجرة",
+            "name:fr": "Enjara",
+            "ref:tn:codegeo": "316466"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "5e458bbddf17900f205077c178f6a050f4f7198fcb258a712bba0caaca50eb0d"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النجاجرة",
+            "name:ar": "النجاجرة",
+            "name:fr": "Enjara",
+            "ref:tn:codegeo": "316466"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "5e458bbddf17900f205077c178f6a050f4f7198fcb258a712bba0caaca50eb0d"
+        }
+      },
+      {
+        "id": "osm:relation:7111286",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني كلثوم",
+            "name:ar": "بني كلثوم",
+            "name:fr": "Beni Khaltoum",
+            "ref:tn:codegeo": "316465"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "fee1e575b97fd222472804747fe1426f43e79bb3adaca8925b77a4e156d15434"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني كلثوم",
+            "name:ar": "بني كلثوم",
+            "name:fr": "Beni Khaltoum",
+            "ref:tn:codegeo": "316465"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "fee1e575b97fd222472804747fe1426f43e79bb3adaca8925b77a4e156d15434"
+        }
+      },
+      {
+        "id": "osm:relation:7111287",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني ربيعة",
+            "name:ar": "بني ربيعة",
+            "name:fr": "Beni Rabiaa",
+            "ref:tn:codegeo": "316464"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "a5d1c43a06c2826a92108418fb960794a1affe93af582e48f21778f7e9282442"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني ربيعة",
+            "name:ar": "بني ربيعة",
+            "name:fr": "Beni Rabiaa",
+            "ref:tn:codegeo": "316464"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "a5d1c43a06c2826a92108418fb960794a1affe93af582e48f21778f7e9282442"
+        }
+      },
+      {
+        "id": "osm:relation:7111288",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البرجين",
+            "name:ar": "البرجين",
+            "name:fr": "Borjine",
+            "ref:tn:codegeo": "316463"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "0f5b54ab3df4ce5b313b374a7dcbdcce7c781676a28343cce20a5a3d7ed1fa8b"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البرجين",
+            "name:ar": "البرجين",
+            "name:fr": "Borjine",
+            "ref:tn:codegeo": "316463"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "0f5b54ab3df4ce5b313b374a7dcbdcce7c781676a28343cce20a5a3d7ed1fa8b"
+        }
+      },
+      {
+        "id": "osm:relation:7111289",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الفرادي",
+            "name:ar": "الفرادي",
+            "name:fr": "El Fradi",
+            "ref:tn:codegeo": "316462"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "2c52c6f92502c60845019b8efd9eea93a8f22e5b15f1158e6496b877fbf3bd0e"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الفرادي",
+            "name:ar": "الفرادي",
+            "name:fr": "El Fradi",
+            "ref:tn:codegeo": "316462"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "2c52c6f92502c60845019b8efd9eea93a8f22e5b15f1158e6496b877fbf3bd0e"
+        }
+      },
+      {
+        "id": "osm:relation:7113134",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المسعدين",
+            "name:ar": "المسعدين",
+            "name:fr": "El Messaadine",
+            "ref:tn:codegeo": "316467"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "966963bcd10f3b9108342f5d954b7880ac34625e873b6259fdb2b78d79717cd7"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المسعدين",
+            "name:ar": "المسعدين",
+            "name:fr": "El Messaadine",
+            "ref:tn:codegeo": "316467"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "966963bcd10f3b9108342f5d954b7880ac34625e873b6259fdb2b78d79717cd7"
+        }
+      },
+      {
+        "id": "osm:relation:7150924",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "M'saken",
+            "boundary": "administrative",
+            "name": "معتمدية مساكن",
+            "name:ar": "معتمدية مساكن",
+            "name:fr": "Délégation Msaken",
+            "ref:tn:codegeo": "3164",
+            "ref:tn:hasc_2": "TN.SS.MS",
+            "wikidata": "Q3272359"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "09d9f3e7ee8bd80672526ec5e93903cb3e7ac0259a57d6a557c8845b6d6bc2cd"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "M'saken",
+            "boundary": "administrative",
+            "name": "معتمدية مساكن",
+            "name:ar": "معتمدية مساكن",
+            "name:fr": "Délégation Msaken",
+            "ref:tn:codegeo": "3164",
+            "ref:tn:hasc_2": "TN.SS.MS",
+            "wikidata": "Q3272359"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "09d9f3e7ee8bd80672526ec5e93903cb3e7ac0259a57d6a557c8845b6d6bc2cd"
+        }
+      },
+      {
+        "id": "osm:relation:7151555",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الغربيين",
+            "name:ar": "El Gharbine",
+            "name:en": "El Gharbine",
+            "name:fr": "El Gharbine",
+            "ref:tn:codegeo": "316458"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "32470047c7bbafa9df139ca1be34eb1d9db7914e06ff90ea5f2b19a6f241ba64"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الغربيين",
+            "name:ar": "El Gharbine",
+            "name:en": "El Gharbine",
+            "name:fr": "El Gharbine",
+            "ref:tn:codegeo": "316458"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "32470047c7bbafa9df139ca1be34eb1d9db7914e06ff90ea5f2b19a6f241ba64"
+        }
+      },
+      {
+        "id": "osm:relation:7151556",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجبليين",
+            "name:ar": "الجبليين",
+            "name:fr": "El Jebline",
+            "ref:tn:codegeo": "316454"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "830472f4b40ba39629fbb6ec7ef777ff39dc0e9f4122108434734a01ca00ff11"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجبليين",
+            "name:ar": "الجبليين",
+            "name:fr": "El Jebline",
+            "ref:tn:codegeo": "316454"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "830472f4b40ba39629fbb6ec7ef777ff39dc0e9f4122108434734a01ca00ff11"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:node:287612727": null,
+      "osm:relation:3152094": null,
+      "osm:relation:7111276": null,
+      "osm:relation:7111277": null,
+      "osm:relation:7111278": null,
+      "osm:relation:7111279": null,
+      "osm:relation:7111280": null,
+      "osm:relation:7111281": null,
+      "osm:relation:7111282": null,
+      "osm:relation:7111283": null,
+      "osm:relation:7111284": null,
+      "osm:relation:7111285": null,
+      "osm:relation:7111286": null,
+      "osm:relation:7111287": null,
+      "osm:relation:7111288": null,
+      "osm:relation:7111289": null,
+      "osm:relation:7113134": null,
+      "osm:relation:7150924": null,
+      "osm:relation:7151555": null,
+      "osm:relation:7151556": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "coordinateContextMembership": {
+      "osm:relation:3152094": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7111276": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111277": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111278": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111279": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7111280": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111281": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111282": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111283": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111284": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111285": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111286": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111287": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111288": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111289": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7113134": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7150924": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7151555": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7151556": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          },
+          "retainedTown": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:287612727",
+        "kind": "town",
+        "currentMetadata": {
+          "id": "osm:node:287612727",
+          "sourceId": "osm",
+          "name": "مساكن",
+          "aliases": [
+            "M'saken",
+            "M'Saken",
+            "Мсакен"
+          ],
+          "kind": "town",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.7330411,
+          "lng": 10.5751923,
+          "delegationId": 440,
+          "hasBoundary": false,
+          "pickerGroupId": "delegation:440"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:node:6681328578",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:6681328578",
+          "sourceId": "osm",
+          "name": "مساكن",
+          "aliases": [
+            "Msaken"
+          ],
+          "kind": "village",
+          "parentName": "التوارة الجنوبية",
+          "contextAliases": [
+            "Délégation Msaken",
+            "Ettouara Sud",
+            "M'saken",
+            "التوارة الجنوبية",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.7252583,
+          "lng": 10.5832842,
+          "delegationId": 440,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:6681328578"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7111276",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111276",
+          "sourceId": "osm",
+          "name": "الموردين",
+          "aliases": [
+            "Moureddine",
+            "Муреддин"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.770768,
+          "lng": 10.5209,
+          "delegationId": 443,
+          "hasBoundary": true,
+          "bbox": [
+            10.476771,
+            35.74874,
+            10.574661,
+            35.790874
+          ],
+          "areaKm2": 28.544547929726523,
+          "pickerGroupId": "osm:relation:7111276",
+          "offset": 692988,
+          "length": 652
+        },
+        "packedGeometrySha256": "7852530ff305230b3614c09be8cf36a4a286332f065b1dd2b4357f08cdaf23de"
+      },
+      {
+        "id": "osm:relation:7111277",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111277",
+          "sourceId": "osm",
+          "name": "الكنايس",
+          "aliases": [
+            "El Knaies",
+            "Knaïs"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.649267,
+          "lng": 10.481401,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.413137,
+            35.591697,
+            10.542834,
+            35.705354
+          ],
+          "areaKm2": 68.80375701939853,
+          "pickerGroupId": "osm:relation:7111277",
+          "offset": 693640,
+          "length": 740
+        },
+        "packedGeometrySha256": "de5d22bd2b14480f6e7cd38079134493d69215f2efdc16c5336edadc667f33b8"
+      },
+      {
+        "id": "osm:relation:7111278",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111278",
+          "sourceId": "osm",
+          "name": "حبيب ثامر",
+          "aliases": [
+            "Habib Thameur"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.736174,
+          "lng": 10.484494,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.381157,
+            35.69173,
+            10.5712,
+            35.780423
+          ],
+          "areaKm2": 81.55039906558966,
+          "pickerGroupId": "osm:relation:7111278",
+          "offset": 694380,
+          "length": 844
+        },
+        "packedGeometrySha256": "dfa77396bf855ad8ced1c807f59f9fc1ad84d12ebe66936b4f451fa4e74f1ed9"
+      },
+      {
+        "id": "osm:relation:7111279",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111279",
+          "sourceId": "osm",
+          "name": "التوارة الجنوبية",
+          "aliases": [
+            "Ettouara Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.731926,
+          "lng": 10.583697,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.570505,
+            35.71882,
+            10.603226,
+            35.746743
+          ],
+          "areaKm2": 3.971524494244016,
+          "pickerGroupId": "osm:relation:7111279",
+          "offset": 695224,
+          "length": 300
+        },
+        "packedGeometrySha256": "ba982392ddaf979849ff7da948609fda989af80c1d71f1ab5694e98a883ad079"
+      },
+      {
+        "id": "osm:relation:7111280",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111280",
+          "sourceId": "osm",
+          "name": "الجديدين",
+          "aliases": [
+            "Jedidine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.75934,
+          "lng": 10.572642,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.555143,
+            35.735083,
+            10.592798,
+            35.783912
+          ],
+          "areaKm2": 10.722437580059296,
+          "pickerGroupId": "osm:relation:7111280",
+          "offset": 695524,
+          "length": 484
+        },
+        "packedGeometrySha256": "272ff50a97d41f9e6d996c784d5ba951c88ef36848272782c70d0bdba69564fa"
+      },
+      {
+        "id": "osm:relation:7111281",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111281",
+          "sourceId": "osm",
+          "name": "النور",
+          "aliases": [
+            "Ennour"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.740569,
+          "lng": 10.604138,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.589346,
+            35.729213,
+            10.623373,
+            35.750694
+          ],
+          "areaKm2": 4.928545204370063,
+          "pickerGroupId": "osm:relation:7111281",
+          "offset": 696008,
+          "length": 380
+        },
+        "packedGeometrySha256": "7987f65d06b014662d009d6bea95c026e9fa1fa4591c52e2d0162760454c8822"
+      },
+      {
+        "id": "osm:relation:7111282",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111282",
+          "sourceId": "osm",
+          "name": "التوارة الشمالية",
+          "aliases": [
+            "Ettouara Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.747771,
+          "lng": 10.594691,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.588897,
+            35.741961,
+            10.611272,
+            35.753953
+          ],
+          "areaKm2": 1.0980299400923619,
+          "pickerGroupId": "osm:relation:7111282",
+          "offset": 696388,
+          "length": 204
+        },
+        "packedGeometrySha256": "245031f0fbe35a74e79457861155b4d5dc7404f8d6d01fade40f1144c70e3391"
+      },
+      {
+        "id": "osm:relation:7111283",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111283",
+          "sourceId": "osm",
+          "name": "القبليين",
+          "aliases": [
+            "Kebiline"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.709324,
+          "lng": 10.621065,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.594742,
+            35.685634,
+            10.642263,
+            35.733025
+          ],
+          "areaKm2": 12.064934209679961,
+          "pickerGroupId": "osm:relation:7111283",
+          "offset": 696592,
+          "length": 884
+        },
+        "packedGeometrySha256": "92c6425ae4b3c12071b2e4483265a5e0af4a7ac60b35b6af7efddd4b98efb039"
+      },
+      {
+        "id": "osm:relation:7111284",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111284",
+          "sourceId": "osm",
+          "name": "مناعمة",
+          "aliases": [
+            "Mnaema"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.70107,
+          "lng": 10.531898,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.438465,
+            35.678572,
+            10.577892,
+            35.723429
+          ],
+          "areaKm2": 22.77653017589497,
+          "pickerGroupId": "osm:relation:7111284",
+          "offset": 697476,
+          "length": 476
+        },
+        "packedGeometrySha256": "8fef31aebd22e888899203b0be79e26757aaa8b77ff473f36a82de2facb4b6ed"
+      },
+      {
+        "id": "osm:relation:7111285",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111285",
+          "sourceId": "osm",
+          "name": "النجاجرة",
+          "aliases": [
+            "Enjara"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.690276,
+          "lng": 10.564221,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.546884,
+            35.655458,
+            10.648501,
+            35.724758
+          ],
+          "areaKm2": 14.690056189815294,
+          "pickerGroupId": "osm:relation:7111285",
+          "offset": 697952,
+          "length": 940
+        },
+        "packedGeometrySha256": "5fb23a666b65bda6e7c32d6a2b74f480b3367ad82bf66b12eb327d62662a607b"
+      },
+      {
+        "id": "osm:relation:7111286",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111286",
+          "sourceId": "osm",
+          "name": "بني كلثوم",
+          "aliases": [
+            "Beni Kalthoum",
+            "Beni Khaltoum"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.675505,
+          "lng": 10.609663,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.577041,
+            35.639057,
+            10.638623,
+            35.711204
+          ],
+          "areaKm2": 16.489891399014432,
+          "pickerGroupId": "osm:relation:7111286",
+          "offset": 698892,
+          "length": 596
+        },
+        "packedGeometrySha256": "e5cb5fb2c74cb31ad3032145b7f8a2ec05a14b81a6881d973f280900c3a6483d"
+      },
+      {
+        "id": "osm:relation:7111287",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111287",
+          "sourceId": "osm",
+          "name": "بني ربيعة",
+          "aliases": [
+            "Beni Rabiaa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.675884,
+          "lng": 10.569126,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.536792,
+            35.662488,
+            10.602236,
+            35.687139
+          ],
+          "areaKm2": 10.852964573117541,
+          "pickerGroupId": "osm:relation:7111287",
+          "offset": 699488,
+          "length": 236
+        },
+        "packedGeometrySha256": "58e63a6c4727f281fd07d57aab7072be11c47bee2a40407d1bbc9495718ceb7b"
+      },
+      {
+        "id": "osm:relation:7111288",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111288",
+          "sourceId": "osm",
+          "name": "البرجين",
+          "aliases": [
+            "Borjine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.634872,
+          "lng": 10.534473,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.496391,
+            35.59681,
+            10.618868,
+            35.672664
+          ],
+          "areaKm2": 37.56584409654675,
+          "pickerGroupId": "osm:relation:7111288",
+          "offset": 699724,
+          "length": 652
+        },
+        "packedGeometrySha256": "b8947f0210ba0f3c6228650e5572609e2af241703173ad0d173353da8dcf466e"
+      },
+      {
+        "id": "osm:relation:7111289",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111289",
+          "sourceId": "osm",
+          "name": "الفرادي",
+          "aliases": [
+            "El Fradi"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.587041,
+          "lng": 10.513723,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.494636,
+            35.556841,
+            10.53892,
+            35.617396
+          ],
+          "areaKm2": 13.29240131513004,
+          "pickerGroupId": "osm:relation:7111289",
+          "offset": 700376,
+          "length": 332
+        },
+        "packedGeometrySha256": "5d79dc67173df59ca3fd983eb9cc47f9b72d649126ff725b7aca089ded874381"
+      },
+      {
+        "id": "osm:relation:7113134",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7113134",
+          "sourceId": "osm",
+          "name": "المسعدين",
+          "aliases": [
+            "El Messaadine",
+            "Messadine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.764983,
+          "lng": 10.60247,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.580971,
+            35.750893,
+            10.622261,
+            35.779699
+          ],
+          "areaKm2": 6.1097454264865725,
+          "pickerGroupId": "osm:relation:7113134",
+          "offset": 782476,
+          "length": 444
+        },
+        "packedGeometrySha256": "042bba11772242e4d011eae0f29f89d504719aad177805cc54447d10db865c67"
+      },
+      {
+        "id": "osm:relation:7151555",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7151555",
+          "sourceId": "osm",
+          "name": "El Gharbine",
+          "aliases": [
+            "الغربيين"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.724011,
+          "lng": 10.575233,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.571015,
+            35.719989,
+            10.580493,
+            35.72837
+          ],
+          "areaKm2": 0.41408949629366404,
+          "pickerGroupId": "osm:relation:7151555",
+          "offset": 2861208,
+          "length": 332
+        },
+        "packedGeometrySha256": "928d40f42985b006205ae4634131aa33b4726e83d2095b81fdad627a1f2db0bc"
+      },
+      {
+        "id": "osm:relation:7151556",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7151556",
+          "sourceId": "osm",
+          "name": "الجبليين",
+          "aliases": [
+            "El Jebline"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مساكن",
+          "contextAliases": [
+            "Délégation Msaken",
+            "M'saken",
+            "معتمدية مساكن"
+          ],
+          "governorateId": 348,
+          "lat": 35.729242,
+          "lng": 10.575101,
+          "delegationId": 440,
+          "hasBoundary": true,
+          "bbox": [
+            10.570919,
+            35.725325,
+            10.579636,
+            35.733514
+          ],
+          "areaKm2": 0.35890383056941727,
+          "pickerGroupId": "osm:relation:7151556",
+          "offset": 2861540,
+          "length": 220
+        },
+        "packedGeometrySha256": "708ef87b57f1157bae98e15f3e7d5934d6b3d42dc867c856579bdbee137b9ba6"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "delegation:440": [
+        "osm:node:287612727"
+      ],
+      "osm:node:6681328578": [
+        "osm:node:6681328578"
+      ],
+      "osm:relation:7111276": [
+        "osm:relation:7111276"
+      ],
+      "osm:relation:7111277": [
+        "osm:relation:7111277"
+      ],
+      "osm:relation:7111278": [
+        "osm:relation:7111278"
+      ],
+      "osm:relation:7111279": [
+        "osm:relation:7111279"
+      ],
+      "osm:relation:7111280": [
+        "osm:relation:7111280"
+      ],
+      "osm:relation:7111281": [
+        "osm:relation:7111281"
+      ],
+      "osm:relation:7111282": [
+        "osm:relation:7111282"
+      ],
+      "osm:relation:7111283": [
+        "osm:relation:7111283"
+      ],
+      "osm:relation:7111284": [
+        "osm:relation:7111284"
+      ],
+      "osm:relation:7111285": [
+        "osm:relation:7111285"
+      ],
+      "osm:relation:7111286": [
+        "osm:relation:7111286"
+      ],
+      "osm:relation:7111287": [
+        "osm:relation:7111287"
+      ],
+      "osm:relation:7111288": [
+        "osm:relation:7111288"
+      ],
+      "osm:relation:7111289": [
+        "osm:relation:7111289"
+      ],
+      "osm:relation:7113134": [
+        "osm:relation:7113134"
+      ],
+      "osm:relation:7151555": [
+        "osm:relation:7151555"
+      ],
+      "osm:relation:7151556": [
+        "osm:relation:7151556"
+      ]
+    },
+    "expectedAfterGroups": {
+      "delegation:440": [
+        "osm:node:287612727",
+        "osm:node:6681328578"
+      ],
+      "osm:relation:7111276": [
+        "osm:relation:7111276"
+      ],
+      "osm:relation:7111277": [
+        "osm:relation:7111277"
+      ],
+      "osm:relation:7111278": [
+        "osm:relation:7111278"
+      ],
+      "osm:relation:7111279": [
+        "osm:relation:7111279"
+      ],
+      "osm:relation:7111280": [
+        "osm:relation:7111280"
+      ],
+      "osm:relation:7111281": [
+        "osm:relation:7111281"
+      ],
+      "osm:relation:7111282": [
+        "osm:relation:7111282"
+      ],
+      "osm:relation:7111283": [
+        "osm:relation:7111283"
+      ],
+      "osm:relation:7111284": [
+        "osm:relation:7111284"
+      ],
+      "osm:relation:7111285": [
+        "osm:relation:7111285"
+      ],
+      "osm:relation:7111286": [
+        "osm:relation:7111286"
+      ],
+      "osm:relation:7111287": [
+        "osm:relation:7111287"
+      ],
+      "osm:relation:7111288": [
+        "osm:relation:7111288"
+      ],
+      "osm:relation:7111289": [
+        "osm:relation:7111289"
+      ],
+      "osm:relation:7113134": [
+        "osm:relation:7113134"
+      ],
+      "osm:relation:7151555": [
+        "osm:relation:7151555"
+      ],
+      "osm:relation:7151556": [
+        "osm:relation:7151556"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "schemaVersion": 1,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:287612727",
+        "osm:node:6681328578",
+        "osm:relation:7150924"
+      ],
+      "effective": [
+        "osm:node:287612727",
+        "osm:node:6681328578",
+        "osm:relation:7150924"
+      ]
+    },
+    "retainedTownPoint": {
+      "id": "osm:node:287612727",
+      "sourceNode": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/osm-node-287612727-current.json",
+        "sha256": "c5cafff1e78ee2a6cf0bc403477ccdc698b526ed0f0c3dfc200c9c4b2d5b8f25",
+        "url": "https://api.openstreetmap.org/api/0.6/node/287612727.json"
+      },
+      "sourceNodeIdentity": {
+        "url": "https://api.openstreetmap.org/api/0.6/node/287612727.json",
+        "sha256": "c5cafff1e78ee2a6cf0bc403477ccdc698b526ed0f0c3dfc200c9c4b2d5b8f25",
+        "exactElement": {
+          "type": "node",
+          "id": 287612727,
+          "lat": 35.7330411,
+          "lon": 10.5751923,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "version": 19,
+          "changeset": 179509225,
+          "user": "Johnwhelan",
+          "uid": 186592,
+          "tags": {
+            "addr:city": "M'saken",
+            "addr:governorate": "Sousse",
+            "int_name": "M'saken",
+            "name": "مساكن",
+            "name:ar": "مساكن",
+            "name:en": "M'Saken",
+            "name:fa": "مساكن",
+            "name:fr": "M'saken",
+            "name:ru": "Мсакен",
+            "place": "town",
+            "population": "56000"
+          }
+        }
+      }
+    }
+  }
+}

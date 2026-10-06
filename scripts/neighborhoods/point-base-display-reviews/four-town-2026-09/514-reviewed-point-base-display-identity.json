@@ -1,0 +1,3213 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:1432078789",
+  "baseId": 514,
+  "rawCurrent": {
+    "id": "osm:node:1432078789",
+    "sourceId": "osm",
+    "name": "نفزة",
+    "aliases": [
+      "Nefza"
+    ],
+    "kind": "village",
+    "parentName": "نفزة الغربية",
+    "contextAliases": [
+      "Délégation Nefza",
+      "Délégation de Nefza",
+      "Nefza",
+      "Nefza Ouest",
+      "معتمدية نفزة",
+      "نفزة الغربية"
+    ],
+    "governorateId": 356,
+    "lat": 36.9748659,
+    "lng": 9.0748388,
+    "delegationId": 514,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1432078789"
+  },
+  "baseCurrent": {
+    "id": 514,
+    "nomFr": "Nefza",
+    "nomAr": "نفزة",
+    "nomEn": "Nefza",
+    "lat": 36.97,
+    "lng": 9.07
+  },
+  "expectedGovernor": {
+    "id": 356,
+    "nomFr": "Béja",
+    "nomAr": "باجة",
+    "nomEn": "Beja",
+    "lat": 36.7256,
+    "lng": 9.1817
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1432078789",
+    "tags": {
+      "addr:city": "نفزة",
+      "name": "نفزة",
+      "name:ar": "نفزة",
+      "name:en": "Nefza",
+      "name:fr": "Nefza",
+      "place": "village",
+      "wikidata": "Q3177403",
+      "wikimedia_commons": "Category:Nefza",
+      "wikipedia": "ar:نفزة (ولاية باجة)"
+    },
+    "lat": 36.9748659,
+    "lng": 9.0748388
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/four-town-2026-09/source-identity-review.json",
+    "sha256": "19389ee363b1edc90b69c1585afee9dd335927ca65b448e1907cd3977c5314c0"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/four-town-2026-09/independent-source-review.json",
+    "sha256": "8b4790794fd4c906710e7d7e38e425bbf068910ca30c34d90c4df1407b3be065"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/four-town-2026-09/node-1432078789.json",
+    "sha256": "be638b54c0e0558cadb2294fd127e26d2d0428de5d18b4dee9adf8d3a7f5732f",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1432078789.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1432078789.json",
+    "sha256": "be638b54c0e0558cadb2294fd127e26d2d0428de5d18b4dee9adf8d3a7f5732f",
+    "exactElement": {
+      "type": "node",
+      "id": 1432078789,
+      "lat": 36.9748659,
+      "lon": 9.0748388,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 14,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:city": "نفزة",
+        "name": "نفزة",
+        "name:ar": "نفزة",
+        "name:en": "Nefza",
+        "name:fr": "Nefza",
+        "place": "village",
+        "wikidata": "Q3177403",
+        "wikimedia_commons": "Category:Nefza",
+        "wikipedia": "ar:نفزة (ولاية باجة)"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/nefza-social-ministry-city-address.html",
+      "sha256": "5c8d78f42904d6cd607d9d1f94b31206760934ac3958754df6dd070b77b2f9aa",
+      "url": "https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A5%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D9%86%D9%81%D8%B2%D8%A9-%D8%A8%D8%A7%D8%AC%D8%A9",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "مدينة نفزة 9010 نفزة"
+      ],
+      "qualification": "Official ministry address expressly names Nefza city in Beja. This identifies the settlement name; it does not certify its outline, sector boundary or either reference coordinate."
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/retrieval.json",
+      "sha256": "995e927b851af4baca02b3e65bbcaadf6953f7f384ce208cc974f69ec85f5ee3"
+    },
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/fallback-primary-retrieval.json",
+      "sha256": "ac4673c7027676f5c59ec315fe3fc375dc18dcb8f07bc5862d5ff757d35bcd25"
+    },
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/atlas-retrieval.json",
+      "sha256": "52e91b50f73170e507ff5660eb2ae05110564982ef2f3e1dd4d2bf87e7284e09"
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7189491",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215451",
+        "sectorFr": "Nefza est",
+        "sectorAr": "نفزة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21114,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 949,
+          "Nombre_de_menages_par_Secteurs.xlsx": 948
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "نفزة الشرقية",
+        "name:ar": "نفزة الشرقية",
+        "name:fr": "Nefza Est",
+        "ref:tn:codegeo": "215451"
+      },
+      "sourceGeometrySha256": "f8c3572225073a17cd93c4a2b5198cca96a8f8d9e822ee5d9f83721ca8f5d574",
+      "currentMetadata": {
+        "id": "osm:relation:7189491",
+        "sourceId": "osm",
+        "name": "نفزة الشرقية",
+        "aliases": [
+          "Nefza Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.988895,
+        "lng": 9.083428,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.064459,
+          36.96947,
+          9.12232,
+          37.00832
+        ],
+        "areaKm2": 10.928759980233606,
+        "pickerGroupId": "osm:relation:7189491",
+        "offset": 4859224,
+        "length": 2604
+      },
+      "packedGeometrySha256": "7fd906ea571c969f3cf06083c8867530d6bd8f9af4ed67789260a22aa844d038",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189492",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215452",
+        "sectorFr": "Nefza ouest",
+        "sectorAr": "نفزة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21148,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 951,
+          "Nombre_de_menages_par_Secteurs.xlsx": 950
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "نفزة الغربية",
+        "name:ar": "نفزة الغربية",
+        "name:fr": "Nefza Ouest",
+        "ref:tn:codegeo": "215452"
+      },
+      "sourceGeometrySha256": "378f6c2b6e408ade75f912d5be6ec3fdff29f47849cf30d70813e6bf70a8a271",
+      "currentMetadata": {
+        "id": "osm:relation:7189492",
+        "sourceId": "osm",
+        "name": "نفزة الغربية",
+        "aliases": [
+          "Nefza Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.982127,
+        "lng": 9.04811,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.005666,
+          36.94713,
+          9.08377,
+          37.01714
+        ],
+        "areaKm2": 27.26450653206588,
+        "pickerGroupId": "osm:relation:7189492",
+        "offset": 4861828,
+        "length": 5180
+      },
+      "packedGeometrySha256": "4f9d955c4175ab38f7f761c21df8a4624819c1a35afe7ab95943354001ba5fdb",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189495",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215453",
+        "sectorFr": "Ouachtata",
+        "sectorAr": "وشتاتة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21182,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 953,
+          "Nombre_de_menages_par_Secteurs.xlsx": 952
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وشتاتة",
+        "name:ar": "وشتاتة",
+        "name:fr": "Ouechtata",
+        "ref:tn:codegeo": "215453"
+      },
+      "sourceGeometrySha256": "9ce52a13430c677e6d7cb4df5032071dd6d38924d95934e7eedf5af25620a1ff",
+      "currentMetadata": {
+        "id": "osm:relation:7189495",
+        "sourceId": "osm",
+        "name": "وشتاتة",
+        "aliases": [
+          "Ouechtata"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.9353,
+        "lng": 8.957788,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          8.926351,
+          36.905589,
+          9.007334,
+          36.96492
+        ],
+        "areaKm2": 28.85315516939318,
+        "pickerGroupId": "osm:relation:7189495",
+        "offset": 4878008,
+        "length": 2708
+      },
+      "packedGeometrySha256": "edeae4d59230e5dd0dfd1f536b204c8336b265241def64929c2f745ea15ed683",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189483",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215454",
+        "sectorFr": "Kap negro",
+        "sectorAr": "كاب النيقرو",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21216,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 955,
+          "Nombre_de_menages_par_Secteurs.xlsx": 954
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كاب النيقرو",
+        "name:ar": "كاب النيقرو",
+        "name:fr": "Cap Negro",
+        "ref:tn:codegeo": "215454"
+      },
+      "sourceGeometrySha256": "307b1fb7926d89331d52b6d80a3c3c023c4ab2c46e3c32f57007783e264e9c3d",
+      "currentMetadata": {
+        "id": "osm:relation:7189483",
+        "sourceId": "osm",
+        "name": "كاب النيقرو",
+        "aliases": [
+          "Cap Negro"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 37.08997,
+        "lng": 9.03277,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          8.978512,
+          37.02306,
+          9.137989,
+          37.157108
+        ],
+        "areaKm2": 86.74108107041485,
+        "pickerGroupId": "osm:relation:7189483",
+        "offset": 4824568,
+        "length": 9220
+      },
+      "packedGeometrySha256": "311ca278140755c1e5f1043bb91d5c87c3fdc4661b9832f41d06c852fdd1859b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189402",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215455",
+        "sectorFr": "Ezzouaraa",
+        "sectorAr": "الزوارع",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21250,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 957,
+          "Nombre_de_menages_par_Secteurs.xlsx": 956
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الزوارع",
+        "name:ar": "الزوارع",
+        "name:fr": "Ezzouaraa",
+        "ref:tn:codegeo": "215455"
+      },
+      "sourceGeometrySha256": "e7553b1faf7e33aa9f980bafbb739b494018ace61a849aea337c6bb180cef127",
+      "currentMetadata": {
+        "id": "osm:relation:7189402",
+        "sourceId": "osm",
+        "name": "الزوارع",
+        "aliases": [
+          "Ezzouaraa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.995665,
+        "lng": 8.958391,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          8.884787,
+          36.956723,
+          9.024293,
+          37.034749
+        ],
+        "areaKm2": 62.28559298287248,
+        "pickerGroupId": "osm:relation:7189402",
+        "offset": 4511892,
+        "length": 3324
+      },
+      "packedGeometrySha256": "252e3b7a2c236b0feab9afbba1029c67a6b66570fe8f8a44187cb24bfcd24df7",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189434",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215456",
+        "sectorFr": "Bou-zenna",
+        "sectorAr": "بوزنة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21284,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 959,
+          "Nombre_de_menages_par_Secteurs.xlsx": 958
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوزنة",
+        "name:ar": "بوزنة",
+        "name:fr": "Bou-Zenna",
+        "ref:tn:codegeo": "215456"
+      },
+      "sourceGeometrySha256": "6d5d154e8f2d310ceaa754d5f94a579d4e9465eedd1d17d1d6f120a4d38b0158",
+      "currentMetadata": {
+        "id": "osm:relation:7189434",
+        "sourceId": "osm",
+        "name": "بوزنة",
+        "aliases": [
+          "Bou-Zenna"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.983079,
+        "lng": 9.168455,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.121214,
+          36.95803,
+          9.216944,
+          37.00782
+        ],
+        "areaKm2": 29.33090653435194,
+        "pickerGroupId": "osm:relation:7189434",
+        "offset": 4631820,
+        "length": 5084
+      },
+      "packedGeometrySha256": "d27179763ca99a7f74b991c979c3a26d08ede8bda0f7843c8883918f3a792f74",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189490",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215457",
+        "sectorFr": "Maktaa hadid",
+        "sectorAr": "مقطع حديد",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21318,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 961,
+          "Nombre_de_menages_par_Secteurs.xlsx": 960
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مقطع حديد",
+        "name:ar": "مقطع حديد",
+        "name:fr": "Maktaa Hadid",
+        "ref:tn:codegeo": "215457"
+      },
+      "sourceGeometrySha256": "a395c292ffb3ec5ba2364d5110b4a730c508643d915b90360e2a5d07fb8adeb8",
+      "currentMetadata": {
+        "id": "osm:relation:7189490",
+        "sourceId": "osm",
+        "name": "مقطع حديد",
+        "aliases": [
+          "Maktaa Hadid"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 37.052392,
+        "lng": 8.9959,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          8.919467,
+          37.01328,
+          9.050468,
+          37.091526
+        ],
+        "areaKm2": 63.387946477004135,
+        "pickerGroupId": "osm:relation:7189490",
+        "offset": 4855260,
+        "length": 3964
+      },
+      "packedGeometrySha256": "d762fece365fc2edd73e29f4d1e5b479073c1a6ac3cc44393fe825844f8df99b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189432",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215458",
+        "sectorFr": "Bellif",
+        "sectorAr": "بالليف",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21352,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 963,
+          "Nombre_de_menages_par_Secteurs.xlsx": 962
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بالليف",
+        "name:ar": "بالليف",
+        "name:fr": "Bellif",
+        "ref:tn:codegeo": "215458"
+      },
+      "sourceGeometrySha256": "2be8fc4c316fc7814ef8d61fd8027c69162848d819c1b2a099b144bcbf277927",
+      "currentMetadata": {
+        "id": "osm:relation:7189432",
+        "sourceId": "osm",
+        "name": "بالليف",
+        "aliases": [
+          "Bellif"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 37.02396,
+        "lng": 9.06918,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.025795,
+          36.99655,
+          9.105686,
+          37.05135
+        ],
+        "areaKm2": 24.361081369192352,
+        "pickerGroupId": "osm:relation:7189432",
+        "offset": 4624876,
+        "length": 2220
+      },
+      "packedGeometrySha256": "448e142521682751c0dc209924f25ace155f9abb1204922f85ac6f418814e6c1",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189439",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215459",
+        "sectorFr": "Djebel ediss",
+        "sectorAr": "جبل الديس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21386,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 965,
+          "Nombre_de_menages_par_Secteurs.xlsx": 964
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جبل الديس",
+        "name:ar": "جبل الديس",
+        "name:fr": "Djebel Ediss",
+        "ref:tn:codegeo": "215459"
+      },
+      "sourceGeometrySha256": "0eb5992ee91b7b94043f4ebf2929673eb0bb2104a4d7f456da3cfca562c78a34",
+      "currentMetadata": {
+        "id": "osm:relation:7189439",
+        "sourceId": "osm",
+        "name": "جبل الديس",
+        "aliases": [
+          "Djebel Ediss"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 37.020182,
+        "lng": 9.155042,
+        "delegationId": 557,
+        "hasBoundary": true,
+        "bbox": [
+          9.086142,
+          36.98495,
+          9.209126,
+          37.055283
+        ],
+        "areaKm2": 49.12089076567495,
+        "pickerGroupId": "osm:relation:7189439",
+        "offset": 4651280,
+        "length": 3908
+      },
+      "packedGeometrySha256": "6062a32c9bc8bb01fae5eca72871c387d34ce68dd6bb94175bbbf49e67d9766e",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189477",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215460",
+        "sectorFr": "Fatnassa",
+        "sectorAr": "فطناسة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21420,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 967,
+          "Nombre_de_menages_par_Secteurs.xlsx": 966
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "فطناسة",
+        "name:ar": "فطناسة",
+        "name:fr": "Fatnassa",
+        "ref:tn:codegeo": "215460"
+      },
+      "sourceGeometrySha256": "4d7caf58c2e0de93be950ba6305c3ef10552b15c49eafc35055d9ca09677dbce",
+      "currentMetadata": {
+        "id": "osm:relation:7189477",
+        "sourceId": "osm",
+        "name": "فطناسة",
+        "aliases": [
+          "Fatnassa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.940096,
+        "lng": 9.215214,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.17939,
+          36.91093,
+          9.260244,
+          36.96887
+        ],
+        "areaKm2": 25.819126818815892,
+        "pickerGroupId": "osm:relation:7189477",
+        "offset": 4802056,
+        "length": 6668
+      },
+      "packedGeometrySha256": "ecb0bce12b7c5a1c6a5b9301b89988dddf1ed6ac10a54018453bc4eb3bdccbd2",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189475",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215461",
+        "sectorFr": "Ghayadha",
+        "sectorAr": "غياضة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21454,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 969,
+          "Nombre_de_menages_par_Secteurs.xlsx": 968
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "غياضة",
+        "name:ar": "غياضة",
+        "name:fr": "Ghayadha",
+        "ref:tn:codegeo": "215461"
+      },
+      "sourceGeometrySha256": "21130cee660dc99be74012eaa99c212517974b6a80e46784c6d7a3bad23c97ad",
+      "currentMetadata": {
+        "id": "osm:relation:7189475",
+        "sourceId": "osm",
+        "name": "غياضة",
+        "aliases": [
+          "Ghayadha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.93582,
+        "lng": 9.153628,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.121554,
+          36.90113,
+          9.201954,
+          36.97051
+        ],
+        "areaKm2": 31.151015703610778,
+        "pickerGroupId": "osm:relation:7189475",
+        "offset": 4795088,
+        "length": 4212
+      },
+      "packedGeometrySha256": "df6318bff80443e2a75af25386443f184c615cf8393fe625e40c552c8c50d09d",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189449",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215462",
+        "sectorFr": "Zaga",
+        "sectorAr": "زاقة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21488,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 971,
+          "Nombre_de_menages_par_Secteurs.xlsx": 970
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "زاقة",
+        "name:ar": "زاقة",
+        "name:de": "Zaqa",
+        "name:en": "Zaqa",
+        "name:fr": "Zaga",
+        "ref:tn:codegeo": "215462"
+      },
+      "sourceGeometrySha256": "a09dfaeb416e76dffea2d3f02076d8b38d0f763513795ba35653bfd1070b25c8",
+      "currentMetadata": {
+        "id": "osm:relation:7189449",
+        "sourceId": "osm",
+        "name": "زاقة",
+        "aliases": [
+          "Zaga",
+          "Zaqa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.924205,
+        "lng": 9.02607,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          8.971318,
+          36.88448,
+          9.065423,
+          36.96433
+        ],
+        "areaKm2": 34.06525593223911,
+        "pickerGroupId": "osm:relation:7189449",
+        "offset": 4688768,
+        "length": 3860
+      },
+      "packedGeometrySha256": "cc10d7e9117ac8cddf5c7817b41567a538dbd2c621bb72e40343d976da083498",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189405",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215463",
+        "sectorFr": "Tebaba",
+        "sectorAr": "الطبابة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21522,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 973,
+          "Nombre_de_menages_par_Secteurs.xlsx": 972
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطبابة",
+        "name:ar": "الطبابة",
+        "name:fr": "Tebaba",
+        "ref:tn:codegeo": "215463"
+      },
+      "sourceGeometrySha256": "285634b5eed10ecd1f59736cf758c03130c15cc5e3cc56f62e03cac3159be166",
+      "currentMetadata": {
+        "id": "osm:relation:7189405",
+        "sourceId": "osm",
+        "name": "الطبابة",
+        "aliases": [
+          "Tebaba"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.88853,
+        "lng": 9.0764,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.018666,
+          36.85244,
+          9.162582,
+          36.92462
+        ],
+        "areaKm2": 44.916097899555346,
+        "pickerGroupId": "osm:relation:7189405",
+        "offset": 4523680,
+        "length": 9068
+      },
+      "packedGeometrySha256": "02ad130eecca158ec19f26944909814515d0b0c041937b7dd18330dbc4a24322",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189494",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215464",
+        "sectorFr": "Oued el maaden",
+        "sectorAr": "وادي المعدن",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21556,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 975,
+          "Nombre_de_menages_par_Secteurs.xlsx": 974
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي المعدن",
+        "name:ar": "وادي المعدن",
+        "name:fr": "Oued El Maaden",
+        "ref:tn:codegeo": "215464"
+      },
+      "sourceGeometrySha256": "bd98c76d011e09610327fa1ad1468605b10047a811bf94df7861acb89b4f50b2",
+      "currentMetadata": {
+        "id": "osm:relation:7189494",
+        "sourceId": "osm",
+        "name": "وادي المعدن",
+        "aliases": [
+          "Oued El Maaden"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.856115,
+        "lng": 9.119229,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.063473,
+          36.81885,
+          9.180381,
+          36.89397
+        ],
+        "areaKm2": 35.14481053827268,
+        "pickerGroupId": "osm:relation:7189494",
+        "offset": 4870116,
+        "length": 7892
+      },
+      "packedGeometrySha256": "56a3279716176576d1498dfc8ec70216eea686653b3efd252e951a35e9ca6a10",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189397",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215465",
+        "sectorFr": "Djamila",
+        "sectorAr": "الجميلة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21590,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 977,
+          "Nombre_de_menages_par_Secteurs.xlsx": 976
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجميلة",
+        "name:ar": "الجميلة",
+        "name:fr": "Djamila",
+        "ref:tn:codegeo": "215465"
+      },
+      "sourceGeometrySha256": "3ffbb4f68cd927b698f7f9f77c2da81554fc29fbddd40490b8d7fb2cd2ea4d01",
+      "currentMetadata": {
+        "id": "osm:relation:7189397",
+        "sourceId": "osm",
+        "name": "الجميلة",
+        "aliases": [
+          "Djamila"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.9446,
+        "lng": 9.071989,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.036795,
+          36.91543,
+          9.108975,
+          36.973694
+        ],
+        "areaKm2": 26.984297006545063,
+        "pickerGroupId": "osm:relation:7189397",
+        "offset": 4495856,
+        "length": 5372
+      },
+      "packedGeometrySha256": "94b75de0820d32ea6b84f9014571ad6c526ac86010b62a6e4f807ae77b38c651",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7189407",
+      "officialIdentity": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215466",
+        "sectorFr": "Dehiret",
+        "sectorAr": "الظهيرات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21624,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 979,
+          "Nombre_de_menages_par_Secteurs.xlsx": 978
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الظهيرات",
+        "name:ar": "الظهيرات",
+        "name:fr": "Dehiret",
+        "ref:tn:codegeo": "215466"
+      },
+      "sourceGeometrySha256": "3f92f32cf0a901aae529667de370bc8797cd9eca481be431a3f584b3795fcf87",
+      "currentMetadata": {
+        "id": "osm:relation:7189407",
+        "sourceId": "osm",
+        "name": "الظهيرات",
+        "aliases": [
+          "Dehiret"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفزة",
+        "contextAliases": [
+          "Délégation Nefza",
+          "Délégation de Nefza",
+          "Nefza",
+          "معتمدية نفزة"
+        ],
+        "governorateId": 356,
+        "lat": 36.9431,
+        "lng": 9.119588,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.08377,
+          36.90345,
+          9.145269,
+          36.98266
+        ],
+        "areaKm2": 20.347447290961277,
+        "pickerGroupId": "osm:relation:7189407",
+        "offset": 4535992,
+        "length": 4484
+      },
+      "packedGeometrySha256": "ad902fd69ffb76b195ab3ae61b08dbd2ebc1549ed9219e97dee718da29aa6058",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1432078789",
+      "kind": "village",
+      "tags": {
+        "addr:city": "نفزة",
+        "name": "نفزة",
+        "name:ar": "نفزة",
+        "name:en": "Nefza",
+        "name:fr": "Nefza",
+        "place": "village",
+        "wikidata": "Q3177403",
+        "wikimedia_commons": "Category:Nefza",
+        "wikipedia": "ar:نفزة (ولاية باجة)"
+      }
+    },
+    {
+      "id": "osm:relation:7189394",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Nefza",
+        "boundary": "administrative",
+        "name": "معتمدية نفزة",
+        "name:ar": "معتمدية نفزة",
+        "name:fr": "Délégation Nefza",
+        "official_name": "معتمدية نفزة",
+        "official_name:ar": "معتمدية نفزة",
+        "official_name:fr": "Délégation de Nefza",
+        "ref:tn:codegeo": "2154",
+        "ref:tn:hasc_2": "TN.BJ.NE",
+        "wikidata": "Q3337741",
+        "wikipedia": "ar:معتمدية نفزة"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1435833": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-31",
+        "admin_level": "4",
+        "alt_name:fa": "استان باجه",
+        "alt_name:ur": "ولایت باجہ",
+        "boundary": "administrative",
+        "name": "ولاية باجة",
+        "name:ar": "ولاية باجة",
+        "name:az": "Beca (vilayət)",
+        "name:azb": "باجه",
+        "name:be": "Беджа (вілает)",
+        "name:be-tarask": "Бэджа (вілает)",
+        "name:bg": "Бежа (област)",
+        "name:ca": "Governació de Béja",
+        "name:ceb": "Gouvernorat de Béja",
+        "name:cy": "Béja (talaith)",
+        "name:de": "Gouvernement Beja",
+        "name:el": "Μπετζά (Κυβερνείο)",
+        "name:en": "Béja",
+        "name:es": "Gobernación de Béja",
+        "name:fa": "باجه",
+        "name:fi": "Béja (kuvernoraatti)",
+        "name:fr": "Gouvernorat Béja",
+        "name:frr": "Béja (Guwernement)",
+        "name:hu": "Béja kormányzóság",
+        "name:id": "Kegubernuran Béja",
+        "name:it": "Béja",
+        "name:ja": "ベジャ県",
+        "name:ka": "ბეჯის ვილაიეთი",
+        "name:ko": "베자주",
+        "name:lt": "Badžos vilajetas",
+        "name:ms": "Kawasan kegabenoran Béja",
+        "name:nl": "Béja (gouvernement)",
+        "name:no": "Béja (guvernement)",
+        "name:pl": "Gubernatorstwo Badża",
+        "name:pt": "Béja (província)",
+        "name:ro": "Guvernoratul Béja",
+        "name:ru": "Беджа (вилайет)",
+        "name:sco": "Béja Govrenorate",
+        "name:sh": "Béja (vilajet)",
+        "name:tr": "Bace ili",
+        "name:uk": "Беджа (вілаєт)",
+        "name:ur": "باجہ",
+        "name:zh": "巴傑省",
+        "name:zu": "Béja Governorate",
+        "official_name": "ولاية باجة",
+        "official_name:ar": "ولاية باجة",
+        "official_name:en": "Béja Governorate",
+        "official_name:fr": "Gouvernorat de Béja",
+        "official_name:it": "Governatorato di Béja",
+        "population": "304501",
+        "ref:tn:codegeo": "21",
+        "wikidata": "Q276576",
+        "wikipedia": "ar:ولاية باجة"
+      },
+      "sourceGeometrySha256": "5307dbee8c626f75a89063083fc65c30d5e8bc3a2d52deac08407154b9091e15"
+    },
+    "osm:relation:7189394": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Nefza",
+        "boundary": "administrative",
+        "name": "معتمدية نفزة",
+        "name:ar": "معتمدية نفزة",
+        "name:fr": "Délégation Nefza",
+        "official_name": "معتمدية نفزة",
+        "official_name:ar": "معتمدية نفزة",
+        "official_name:fr": "Délégation de Nefza",
+        "ref:tn:codegeo": "2154",
+        "ref:tn:hasc_2": "TN.BJ.NE",
+        "wikidata": "Q3337741",
+        "wikipedia": "ar:معتمدية نفزة"
+      },
+      "sourceGeometrySha256": "d1f5b8cb7124b6f980cb01f46cc8cc477ba11f9fc4f1bb4135b08d4a24b4a358"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1432078789",
+    "field": "pickerGroupId",
+    "before": "osm:node:1432078789",
+    "after": "delegation:514"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1432078789"
+      ],
+      [
+        "delegation:514"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:514",
+        "osm:node:1432078789"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "Exact settlement display association only. Preserve every imada, complete existing group, source kind, name, alias, context, coordinate, prayer default and packed geometry.",
+  "coordinatePolicy": "Both legacy timetable anchor and distinct cached OSM point are preserved. No original INM-anchor, exact settlement boundary or common administrative extent is claimed.",
+  "sourcePhaseQualification": "Complete existing imada/residential groups require the installed typed closure; no source transition or plural-parent exception is needed.",
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "2154"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:1432078789",
+        "original": {
+          "tags": {
+            "addr:city": "نفزة",
+            "name": "نفزة",
+            "name:ar": "نفزة",
+            "name:en": "Nefza",
+            "name:fr": "Nefza",
+            "place": "village",
+            "wikidata": "Q3177403",
+            "wikimedia_commons": "Category:Nefza",
+            "wikipedia": "ar:نفزة (ولاية باجة)"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "0bf6e1310e655290cd22d81927dfdd0feb89ad7046266acd5142c74e14ca20e2"
+        },
+        "effective": {
+          "tags": {
+            "addr:city": "نفزة",
+            "name": "نفزة",
+            "name:ar": "نفزة",
+            "name:en": "Nefza",
+            "name:fr": "Nefza",
+            "place": "village",
+            "wikidata": "Q3177403",
+            "wikimedia_commons": "Category:Nefza",
+            "wikipedia": "ar:نفزة (ولاية باجة)"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "0bf6e1310e655290cd22d81927dfdd0feb89ad7046266acd5142c74e14ca20e2"
+        }
+      },
+      {
+        "id": "osm:relation:1435833",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-31",
+            "admin_level": "4",
+            "alt_name:fa": "استان باجه",
+            "alt_name:ur": "ولایت باجہ",
+            "boundary": "administrative",
+            "name": "ولاية باجة",
+            "name:ar": "ولاية باجة",
+            "name:az": "Beca (vilayət)",
+            "name:azb": "باجه",
+            "name:be": "Беджа (вілает)",
+            "name:be-tarask": "Бэджа (вілает)",
+            "name:bg": "Бежа (област)",
+            "name:ca": "Governació de Béja",
+            "name:ceb": "Gouvernorat de Béja",
+            "name:cy": "Béja (talaith)",
+            "name:de": "Gouvernement Beja",
+            "name:el": "Μπετζά (Κυβερνείο)",
+            "name:en": "Béja",
+            "name:es": "Gobernación de Béja",
+            "name:fa": "باجه",
+            "name:fi": "Béja (kuvernoraatti)",
+            "name:fr": "Gouvernorat Béja",
+            "name:frr": "Béja (Guwernement)",
+            "name:hu": "Béja kormányzóság",
+            "name:id": "Kegubernuran Béja",
+            "name:it": "Béja",
+            "name:ja": "ベジャ県",
+            "name:ka": "ბეჯის ვილაიეთი",
+            "name:ko": "베자주",
+            "name:lt": "Badžos vilajetas",
+            "name:ms": "Kawasan kegabenoran Béja",
+            "name:nl": "Béja (gouvernement)",
+            "name:no": "Béja (guvernement)",
+            "name:pl": "Gubernatorstwo Badża",
+            "name:pt": "Béja (província)",
+            "name:ro": "Guvernoratul Béja",
+            "name:ru": "Беджа (вилайет)",
+            "name:sco": "Béja Govrenorate",
+            "name:sh": "Béja (vilajet)",
+            "name:tr": "Bace ili",
+            "name:uk": "Беджа (вілаєт)",
+            "name:ur": "باجہ",
+            "name:zh": "巴傑省",
+            "name:zu": "Béja Governorate",
+            "official_name": "ولاية باجة",
+            "official_name:ar": "ولاية باجة",
+            "official_name:en": "Béja Governorate",
+            "official_name:fr": "Gouvernorat de Béja",
+            "official_name:it": "Governatorato di Béja",
+            "population": "304501",
+            "ref:tn:codegeo": "21",
+            "wikidata": "Q276576",
+            "wikipedia": "ar:ولاية باجة"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "5307dbee8c626f75a89063083fc65c30d5e8bc3a2d52deac08407154b9091e15"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-31",
+            "admin_level": "4",
+            "alt_name:fa": "استان باجه",
+            "alt_name:ur": "ولایت باجہ",
+            "boundary": "administrative",
+            "name": "ولاية باجة",
+            "name:ar": "ولاية باجة",
+            "name:az": "Beca (vilayət)",
+            "name:azb": "باجه",
+            "name:be": "Беджа (вілает)",
+            "name:be-tarask": "Бэджа (вілает)",
+            "name:bg": "Бежа (област)",
+            "name:ca": "Governació de Béja",
+            "name:ceb": "Gouvernorat de Béja",
+            "name:cy": "Béja (talaith)",
+            "name:de": "Gouvernement Beja",
+            "name:el": "Μπετζά (Κυβερνείο)",
+            "name:en": "Béja",
+            "name:es": "Gobernación de Béja",
+            "name:fa": "باجه",
+            "name:fi": "Béja (kuvernoraatti)",
+            "name:fr": "Gouvernorat Béja",
+            "name:frr": "Béja (Guwernement)",
+            "name:hu": "Béja kormányzóság",
+            "name:id": "Kegubernuran Béja",
+            "name:it": "Béja",
+            "name:ja": "ベジャ県",
+            "name:ka": "ბეჯის ვილაიეთი",
+            "name:ko": "베자주",
+            "name:lt": "Badžos vilajetas",
+            "name:ms": "Kawasan kegabenoran Béja",
+            "name:nl": "Béja (gouvernement)",
+            "name:no": "Béja (guvernement)",
+            "name:pl": "Gubernatorstwo Badża",
+            "name:pt": "Béja (província)",
+            "name:ro": "Guvernoratul Béja",
+            "name:ru": "Беджа (вилайет)",
+            "name:sco": "Béja Govrenorate",
+            "name:sh": "Béja (vilajet)",
+            "name:tr": "Bace ili",
+            "name:uk": "Беджа (вілаєт)",
+            "name:ur": "باجہ",
+            "name:zh": "巴傑省",
+            "name:zu": "Béja Governorate",
+            "official_name": "ولاية باجة",
+            "official_name:ar": "ولاية باجة",
+            "official_name:en": "Béja Governorate",
+            "official_name:fr": "Gouvernorat de Béja",
+            "official_name:it": "Governatorato di Béja",
+            "population": "304501",
+            "ref:tn:codegeo": "21",
+            "wikidata": "Q276576",
+            "wikipedia": "ar:ولاية باجة"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "5307dbee8c626f75a89063083fc65c30d5e8bc3a2d52deac08407154b9091e15"
+        }
+      },
+      {
+        "id": "osm:relation:7189394",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Nefza",
+            "boundary": "administrative",
+            "name": "معتمدية نفزة",
+            "name:ar": "معتمدية نفزة",
+            "name:fr": "Délégation Nefza",
+            "official_name": "معتمدية نفزة",
+            "official_name:ar": "معتمدية نفزة",
+            "official_name:fr": "Délégation de Nefza",
+            "ref:tn:codegeo": "2154",
+            "ref:tn:hasc_2": "TN.BJ.NE",
+            "wikidata": "Q3337741",
+            "wikipedia": "ar:معتمدية نفزة"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "d1f5b8cb7124b6f980cb01f46cc8cc477ba11f9fc4f1bb4135b08d4a24b4a358"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Nefza",
+            "boundary": "administrative",
+            "name": "معتمدية نفزة",
+            "name:ar": "معتمدية نفزة",
+            "name:fr": "Délégation Nefza",
+            "official_name": "معتمدية نفزة",
+            "official_name:ar": "معتمدية نفزة",
+            "official_name:fr": "Délégation de Nefza",
+            "ref:tn:codegeo": "2154",
+            "ref:tn:hasc_2": "TN.BJ.NE",
+            "wikidata": "Q3337741",
+            "wikipedia": "ar:معتمدية نفزة"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "d1f5b8cb7124b6f980cb01f46cc8cc477ba11f9fc4f1bb4135b08d4a24b4a358"
+        }
+      },
+      {
+        "id": "osm:relation:7189397",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجميلة",
+            "name:ar": "الجميلة",
+            "name:fr": "Djamila",
+            "ref:tn:codegeo": "215465"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "3ffbb4f68cd927b698f7f9f77c2da81554fc29fbddd40490b8d7fb2cd2ea4d01"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجميلة",
+            "name:ar": "الجميلة",
+            "name:fr": "Djamila",
+            "ref:tn:codegeo": "215465"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "3ffbb4f68cd927b698f7f9f77c2da81554fc29fbddd40490b8d7fb2cd2ea4d01"
+        }
+      },
+      {
+        "id": "osm:relation:7189402",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزوارع",
+            "name:ar": "الزوارع",
+            "name:fr": "Ezzouaraa",
+            "ref:tn:codegeo": "215455"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "e7553b1faf7e33aa9f980bafbb739b494018ace61a849aea337c6bb180cef127"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزوارع",
+            "name:ar": "الزوارع",
+            "name:fr": "Ezzouaraa",
+            "ref:tn:codegeo": "215455"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "e7553b1faf7e33aa9f980bafbb739b494018ace61a849aea337c6bb180cef127"
+        }
+      },
+      {
+        "id": "osm:relation:7189405",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الطبابة",
+            "name:ar": "الطبابة",
+            "name:fr": "Tebaba",
+            "ref:tn:codegeo": "215463"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "285634b5eed10ecd1f59736cf758c03130c15cc5e3cc56f62e03cac3159be166"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الطبابة",
+            "name:ar": "الطبابة",
+            "name:fr": "Tebaba",
+            "ref:tn:codegeo": "215463"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "285634b5eed10ecd1f59736cf758c03130c15cc5e3cc56f62e03cac3159be166"
+        }
+      },
+      {
+        "id": "osm:relation:7189407",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الظهيرات",
+            "name:ar": "الظهيرات",
+            "name:fr": "Dehiret",
+            "ref:tn:codegeo": "215466"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "3f92f32cf0a901aae529667de370bc8797cd9eca481be431a3f584b3795fcf87"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الظهيرات",
+            "name:ar": "الظهيرات",
+            "name:fr": "Dehiret",
+            "ref:tn:codegeo": "215466"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "3f92f32cf0a901aae529667de370bc8797cd9eca481be431a3f584b3795fcf87"
+        }
+      },
+      {
+        "id": "osm:relation:7189432",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بالليف",
+            "name:ar": "بالليف",
+            "name:fr": "Bellif",
+            "ref:tn:codegeo": "215458"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "2be8fc4c316fc7814ef8d61fd8027c69162848d819c1b2a099b144bcbf277927"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بالليف",
+            "name:ar": "بالليف",
+            "name:fr": "Bellif",
+            "ref:tn:codegeo": "215458"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "2be8fc4c316fc7814ef8d61fd8027c69162848d819c1b2a099b144bcbf277927"
+        }
+      },
+      {
+        "id": "osm:relation:7189434",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بوزنة",
+            "name:ar": "بوزنة",
+            "name:fr": "Bou-Zenna",
+            "ref:tn:codegeo": "215456"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "6d5d154e8f2d310ceaa754d5f94a579d4e9465eedd1d17d1d6f120a4d38b0158"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بوزنة",
+            "name:ar": "بوزنة",
+            "name:fr": "Bou-Zenna",
+            "ref:tn:codegeo": "215456"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "6d5d154e8f2d310ceaa754d5f94a579d4e9465eedd1d17d1d6f120a4d38b0158"
+        }
+      },
+      {
+        "id": "osm:relation:7189439",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جبل الديس",
+            "name:ar": "جبل الديس",
+            "name:fr": "Djebel Ediss",
+            "ref:tn:codegeo": "215459"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "0eb5992ee91b7b94043f4ebf2929673eb0bb2104a4d7f456da3cfca562c78a34"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جبل الديس",
+            "name:ar": "جبل الديس",
+            "name:fr": "Djebel Ediss",
+            "ref:tn:codegeo": "215459"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "0eb5992ee91b7b94043f4ebf2929673eb0bb2104a4d7f456da3cfca562c78a34"
+        }
+      },
+      {
+        "id": "osm:relation:7189449",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زاقة",
+            "name:ar": "زاقة",
+            "name:de": "Zaqa",
+            "name:en": "Zaqa",
+            "name:fr": "Zaga",
+            "ref:tn:codegeo": "215462"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "a09dfaeb416e76dffea2d3f02076d8b38d0f763513795ba35653bfd1070b25c8"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زاقة",
+            "name:ar": "زاقة",
+            "name:de": "Zaqa",
+            "name:en": "Zaqa",
+            "name:fr": "Zaga",
+            "ref:tn:codegeo": "215462"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "a09dfaeb416e76dffea2d3f02076d8b38d0f763513795ba35653bfd1070b25c8"
+        }
+      },
+      {
+        "id": "osm:relation:7189475",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غياضة",
+            "name:ar": "غياضة",
+            "name:fr": "Ghayadha",
+            "ref:tn:codegeo": "215461"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "21130cee660dc99be74012eaa99c212517974b6a80e46784c6d7a3bad23c97ad"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غياضة",
+            "name:ar": "غياضة",
+            "name:fr": "Ghayadha",
+            "ref:tn:codegeo": "215461"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "21130cee660dc99be74012eaa99c212517974b6a80e46784c6d7a3bad23c97ad"
+        }
+      },
+      {
+        "id": "osm:relation:7189477",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فطناسة",
+            "name:ar": "فطناسة",
+            "name:fr": "Fatnassa",
+            "ref:tn:codegeo": "215460"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "4d7caf58c2e0de93be950ba6305c3ef10552b15c49eafc35055d9ca09677dbce"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فطناسة",
+            "name:ar": "فطناسة",
+            "name:fr": "Fatnassa",
+            "ref:tn:codegeo": "215460"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "4d7caf58c2e0de93be950ba6305c3ef10552b15c49eafc35055d9ca09677dbce"
+        }
+      },
+      {
+        "id": "osm:relation:7189483",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كاب النيقرو",
+            "name:ar": "كاب النيقرو",
+            "name:fr": "Cap Negro",
+            "ref:tn:codegeo": "215454"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "307b1fb7926d89331d52b6d80a3c3c023c4ab2c46e3c32f57007783e264e9c3d"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كاب النيقرو",
+            "name:ar": "كاب النيقرو",
+            "name:fr": "Cap Negro",
+            "ref:tn:codegeo": "215454"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "307b1fb7926d89331d52b6d80a3c3c023c4ab2c46e3c32f57007783e264e9c3d"
+        }
+      },
+      {
+        "id": "osm:relation:7189490",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مقطع حديد",
+            "name:ar": "مقطع حديد",
+            "name:fr": "Maktaa Hadid",
+            "ref:tn:codegeo": "215457"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "a395c292ffb3ec5ba2364d5110b4a730c508643d915b90360e2a5d07fb8adeb8"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مقطع حديد",
+            "name:ar": "مقطع حديد",
+            "name:fr": "Maktaa Hadid",
+            "ref:tn:codegeo": "215457"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "a395c292ffb3ec5ba2364d5110b4a730c508643d915b90360e2a5d07fb8adeb8"
+        }
+      },
+      {
+        "id": "osm:relation:7189491",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نفزة الشرقية",
+            "name:ar": "نفزة الشرقية",
+            "name:fr": "Nefza Est",
+            "ref:tn:codegeo": "215451"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "f8c3572225073a17cd93c4a2b5198cca96a8f8d9e822ee5d9f83721ca8f5d574"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نفزة الشرقية",
+            "name:ar": "نفزة الشرقية",
+            "name:fr": "Nefza Est",
+            "ref:tn:codegeo": "215451"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "f8c3572225073a17cd93c4a2b5198cca96a8f8d9e822ee5d9f83721ca8f5d574"
+        }
+      },
+      {
+        "id": "osm:relation:7189492",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نفزة الغربية",
+            "name:ar": "نفزة الغربية",
+            "name:fr": "Nefza Ouest",
+            "ref:tn:codegeo": "215452"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "378f6c2b6e408ade75f912d5be6ec3fdff29f47849cf30d70813e6bf70a8a271"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نفزة الغربية",
+            "name:ar": "نفزة الغربية",
+            "name:fr": "Nefza Ouest",
+            "ref:tn:codegeo": "215452"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "378f6c2b6e408ade75f912d5be6ec3fdff29f47849cf30d70813e6bf70a8a271"
+        }
+      },
+      {
+        "id": "osm:relation:7189494",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي المعدن",
+            "name:ar": "وادي المعدن",
+            "name:fr": "Oued El Maaden",
+            "ref:tn:codegeo": "215464"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "bd98c76d011e09610327fa1ad1468605b10047a811bf94df7861acb89b4f50b2"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي المعدن",
+            "name:ar": "وادي المعدن",
+            "name:fr": "Oued El Maaden",
+            "ref:tn:codegeo": "215464"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "bd98c76d011e09610327fa1ad1468605b10047a811bf94df7861acb89b4f50b2"
+        }
+      },
+      {
+        "id": "osm:relation:7189495",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وشتاتة",
+            "name:ar": "وشتاتة",
+            "name:fr": "Ouechtata",
+            "ref:tn:codegeo": "215453"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "9ce52a13430c677e6d7cb4df5032071dd6d38924d95934e7eedf5af25620a1ff"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وشتاتة",
+            "name:ar": "وشتاتة",
+            "name:fr": "Ouechtata",
+            "ref:tn:codegeo": "215453"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "9ce52a13430c677e6d7cb4df5032071dd6d38924d95934e7eedf5af25620a1ff"
+        }
+      },
+      {
+        "id": "osm:way:129896001",
+        "original": {
+          "tags": {
+            "landuse": "residential",
+            "name": "تبابة",
+            "name:ar": "تبابة",
+            "name:fr": "Tebaba"
+          },
+          "kind": "residential",
+          "sourceId": null,
+          "geometrySha256": "5b75883fab8d593da18b98129120d9573fdfc760db1bb2a423ec336f55f613af"
+        },
+        "effective": {
+          "tags": {
+            "landuse": "residential",
+            "name": "تبابة",
+            "name:ar": "تبابة",
+            "name:fr": "Tebaba"
+          },
+          "kind": "residential",
+          "sourceId": "osm",
+          "geometrySha256": "5b75883fab8d593da18b98129120d9573fdfc760db1bb2a423ec336f55f613af"
+        }
+      },
+      {
+        "id": "osm:way:609907339",
+        "original": {
+          "tags": {
+            "landuse": "residential",
+            "name": "Cap Negro",
+            "wikidata": "Q11912075",
+            "wikimedia_commons": "Category:Cape Negro",
+            "wikipedia": "fr:Cap Negro"
+          },
+          "kind": "residential",
+          "sourceId": null,
+          "geometrySha256": "915f49828842804b0b6cf4c1f2b2a8329f3c2a7e9d150e782084cd3b80e87128"
+        },
+        "effective": {
+          "tags": {
+            "landuse": "residential",
+            "name": "Cap Negro",
+            "wikidata": "Q11912075",
+            "wikimedia_commons": "Category:Cape Negro",
+            "wikipedia": "fr:Cap Negro"
+          },
+          "kind": "residential",
+          "sourceId": "osm",
+          "geometrySha256": "915f49828842804b0b6cf4c1f2b2a8329f3c2a7e9d150e782084cd3b80e87128"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1435833": null,
+      "osm:relation:7189394": null,
+      "osm:relation:7189397": null,
+      "osm:relation:7189402": null,
+      "osm:relation:7189405": null,
+      "osm:relation:7189407": null,
+      "osm:relation:7189432": null,
+      "osm:relation:7189434": null,
+      "osm:relation:7189439": null,
+      "osm:relation:7189449": null,
+      "osm:relation:7189475": null,
+      "osm:relation:7189477": null,
+      "osm:relation:7189483": null,
+      "osm:relation:7189490": null,
+      "osm:relation:7189491": null,
+      "osm:relation:7189492": null,
+      "osm:relation:7189494": null,
+      "osm:relation:7189495": null,
+      "osm:way:129896001": null,
+      "osm:way:609907339": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:1432078789",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:1432078789",
+          "sourceId": "osm",
+          "name": "نفزة",
+          "aliases": [
+            "Nefza"
+          ],
+          "kind": "village",
+          "parentName": "نفزة الغربية",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "Nefza Ouest",
+            "معتمدية نفزة",
+            "نفزة الغربية"
+          ],
+          "governorateId": 356,
+          "lat": 36.9748659,
+          "lng": 9.0748388,
+          "delegationId": 514,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1432078789"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7189397",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189397",
+          "sourceId": "osm",
+          "name": "الجميلة",
+          "aliases": [
+            "Djamila"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.9446,
+          "lng": 9.071989,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.036795,
+            36.91543,
+            9.108975,
+            36.973694
+          ],
+          "areaKm2": 26.984297006545063,
+          "pickerGroupId": "osm:relation:7189397",
+          "offset": 4495856,
+          "length": 5372
+        },
+        "packedGeometrySha256": "94b75de0820d32ea6b84f9014571ad6c526ac86010b62a6e4f807ae77b38c651"
+      },
+      {
+        "id": "osm:relation:7189402",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189402",
+          "sourceId": "osm",
+          "name": "الزوارع",
+          "aliases": [
+            "Ezzouaraa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.995665,
+          "lng": 8.958391,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            8.884787,
+            36.956723,
+            9.024293,
+            37.034749
+          ],
+          "areaKm2": 62.28559298287248,
+          "pickerGroupId": "osm:relation:7189402",
+          "offset": 4511892,
+          "length": 3324
+        },
+        "packedGeometrySha256": "252e3b7a2c236b0feab9afbba1029c67a6b66570fe8f8a44187cb24bfcd24df7"
+      },
+      {
+        "id": "osm:relation:7189405",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189405",
+          "sourceId": "osm",
+          "name": "الطبابة",
+          "aliases": [
+            "Tebaba"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.88853,
+          "lng": 9.0764,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.018666,
+            36.85244,
+            9.162582,
+            36.92462
+          ],
+          "areaKm2": 44.916097899555346,
+          "pickerGroupId": "osm:relation:7189405",
+          "offset": 4523680,
+          "length": 9068
+        },
+        "packedGeometrySha256": "02ad130eecca158ec19f26944909814515d0b0c041937b7dd18330dbc4a24322"
+      },
+      {
+        "id": "osm:relation:7189407",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189407",
+          "sourceId": "osm",
+          "name": "الظهيرات",
+          "aliases": [
+            "Dehiret"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.9431,
+          "lng": 9.119588,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.08377,
+            36.90345,
+            9.145269,
+            36.98266
+          ],
+          "areaKm2": 20.347447290961277,
+          "pickerGroupId": "osm:relation:7189407",
+          "offset": 4535992,
+          "length": 4484
+        },
+        "packedGeometrySha256": "ad902fd69ffb76b195ab3ae61b08dbd2ebc1549ed9219e97dee718da29aa6058"
+      },
+      {
+        "id": "osm:relation:7189432",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189432",
+          "sourceId": "osm",
+          "name": "بالليف",
+          "aliases": [
+            "Bellif"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 37.02396,
+          "lng": 9.06918,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.025795,
+            36.99655,
+            9.105686,
+            37.05135
+          ],
+          "areaKm2": 24.361081369192352,
+          "pickerGroupId": "osm:relation:7189432",
+          "offset": 4624876,
+          "length": 2220
+        },
+        "packedGeometrySha256": "448e142521682751c0dc209924f25ace155f9abb1204922f85ac6f418814e6c1"
+      },
+      {
+        "id": "osm:relation:7189434",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189434",
+          "sourceId": "osm",
+          "name": "بوزنة",
+          "aliases": [
+            "Bou-Zenna"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.983079,
+          "lng": 9.168455,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.121214,
+            36.95803,
+            9.216944,
+            37.00782
+          ],
+          "areaKm2": 29.33090653435194,
+          "pickerGroupId": "osm:relation:7189434",
+          "offset": 4631820,
+          "length": 5084
+        },
+        "packedGeometrySha256": "d27179763ca99a7f74b991c979c3a26d08ede8bda0f7843c8883918f3a792f74"
+      },
+      {
+        "id": "osm:relation:7189439",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189439",
+          "sourceId": "osm",
+          "name": "جبل الديس",
+          "aliases": [
+            "Djebel Ediss"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 37.020182,
+          "lng": 9.155042,
+          "delegationId": 557,
+          "hasBoundary": true,
+          "bbox": [
+            9.086142,
+            36.98495,
+            9.209126,
+            37.055283
+          ],
+          "areaKm2": 49.12089076567495,
+          "pickerGroupId": "osm:relation:7189439",
+          "offset": 4651280,
+          "length": 3908
+        },
+        "packedGeometrySha256": "6062a32c9bc8bb01fae5eca72871c387d34ce68dd6bb94175bbbf49e67d9766e"
+      },
+      {
+        "id": "osm:relation:7189449",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189449",
+          "sourceId": "osm",
+          "name": "زاقة",
+          "aliases": [
+            "Zaga",
+            "Zaqa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.924205,
+          "lng": 9.02607,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            8.971318,
+            36.88448,
+            9.065423,
+            36.96433
+          ],
+          "areaKm2": 34.06525593223911,
+          "pickerGroupId": "osm:relation:7189449",
+          "offset": 4688768,
+          "length": 3860
+        },
+        "packedGeometrySha256": "cc10d7e9117ac8cddf5c7817b41567a538dbd2c621bb72e40343d976da083498"
+      },
+      {
+        "id": "osm:relation:7189475",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189475",
+          "sourceId": "osm",
+          "name": "غياضة",
+          "aliases": [
+            "Ghayadha"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.93582,
+          "lng": 9.153628,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.121554,
+            36.90113,
+            9.201954,
+            36.97051
+          ],
+          "areaKm2": 31.151015703610778,
+          "pickerGroupId": "osm:relation:7189475",
+          "offset": 4795088,
+          "length": 4212
+        },
+        "packedGeometrySha256": "df6318bff80443e2a75af25386443f184c615cf8393fe625e40c552c8c50d09d"
+      },
+      {
+        "id": "osm:relation:7189477",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189477",
+          "sourceId": "osm",
+          "name": "فطناسة",
+          "aliases": [
+            "Fatnassa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.940096,
+          "lng": 9.215214,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.17939,
+            36.91093,
+            9.260244,
+            36.96887
+          ],
+          "areaKm2": 25.819126818815892,
+          "pickerGroupId": "osm:relation:7189477",
+          "offset": 4802056,
+          "length": 6668
+        },
+        "packedGeometrySha256": "ecb0bce12b7c5a1c6a5b9301b89988dddf1ed6ac10a54018453bc4eb3bdccbd2"
+      },
+      {
+        "id": "osm:relation:7189483",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189483",
+          "sourceId": "osm",
+          "name": "كاب النيقرو",
+          "aliases": [
+            "Cap Negro"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 37.08997,
+          "lng": 9.03277,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            8.978512,
+            37.02306,
+            9.137989,
+            37.157108
+          ],
+          "areaKm2": 86.74108107041485,
+          "pickerGroupId": "osm:relation:7189483",
+          "offset": 4824568,
+          "length": 9220
+        },
+        "packedGeometrySha256": "311ca278140755c1e5f1043bb91d5c87c3fdc4661b9832f41d06c852fdd1859b"
+      },
+      {
+        "id": "osm:relation:7189490",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189490",
+          "sourceId": "osm",
+          "name": "مقطع حديد",
+          "aliases": [
+            "Maktaa Hadid"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 37.052392,
+          "lng": 8.9959,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            8.919467,
+            37.01328,
+            9.050468,
+            37.091526
+          ],
+          "areaKm2": 63.387946477004135,
+          "pickerGroupId": "osm:relation:7189490",
+          "offset": 4855260,
+          "length": 3964
+        },
+        "packedGeometrySha256": "d762fece365fc2edd73e29f4d1e5b479073c1a6ac3cc44393fe825844f8df99b"
+      },
+      {
+        "id": "osm:relation:7189491",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189491",
+          "sourceId": "osm",
+          "name": "نفزة الشرقية",
+          "aliases": [
+            "Nefza Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.988895,
+          "lng": 9.083428,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.064459,
+            36.96947,
+            9.12232,
+            37.00832
+          ],
+          "areaKm2": 10.928759980233606,
+          "pickerGroupId": "osm:relation:7189491",
+          "offset": 4859224,
+          "length": 2604
+        },
+        "packedGeometrySha256": "7fd906ea571c969f3cf06083c8867530d6bd8f9af4ed67789260a22aa844d038"
+      },
+      {
+        "id": "osm:relation:7189492",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189492",
+          "sourceId": "osm",
+          "name": "نفزة الغربية",
+          "aliases": [
+            "Nefza Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.982127,
+          "lng": 9.04811,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.005666,
+            36.94713,
+            9.08377,
+            37.01714
+          ],
+          "areaKm2": 27.26450653206588,
+          "pickerGroupId": "osm:relation:7189492",
+          "offset": 4861828,
+          "length": 5180
+        },
+        "packedGeometrySha256": "4f9d955c4175ab38f7f761c21df8a4624819c1a35afe7ab95943354001ba5fdb"
+      },
+      {
+        "id": "osm:relation:7189494",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189494",
+          "sourceId": "osm",
+          "name": "وادي المعدن",
+          "aliases": [
+            "Oued El Maaden"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.856115,
+          "lng": 9.119229,
+          "delegationId": 515,
+          "hasBoundary": true,
+          "bbox": [
+            9.063473,
+            36.81885,
+            9.180381,
+            36.89397
+          ],
+          "areaKm2": 35.14481053827268,
+          "pickerGroupId": "osm:relation:7189494",
+          "offset": 4870116,
+          "length": 7892
+        },
+        "packedGeometrySha256": "56a3279716176576d1498dfc8ec70216eea686653b3efd252e951a35e9ca6a10"
+      },
+      {
+        "id": "osm:relation:7189495",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7189495",
+          "sourceId": "osm",
+          "name": "وشتاتة",
+          "aliases": [
+            "Ouechtata"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.9353,
+          "lng": 8.957788,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            8.926351,
+            36.905589,
+            9.007334,
+            36.96492
+          ],
+          "areaKm2": 28.85315516939318,
+          "pickerGroupId": "osm:relation:7189495",
+          "offset": 4878008,
+          "length": 2708
+        },
+        "packedGeometrySha256": "edeae4d59230e5dd0dfd1f536b204c8336b265241def64929c2f745ea15ed683"
+      },
+      {
+        "id": "osm:way:129896001",
+        "kind": "residential",
+        "currentMetadata": {
+          "id": "osm:way:129896001",
+          "sourceId": "osm",
+          "name": "تبابة",
+          "aliases": [
+            "Tebaba"
+          ],
+          "kind": "residential",
+          "parentName": "معتمدية نفزة",
+          "contextAliases": [
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 36.906887,
+          "lng": 9.144279,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            9.141577,
+            36.90498,
+            9.149448,
+            36.908825
+          ],
+          "areaKm2": 0.08512944252409492,
+          "pickerGroupId": "osm:relation:7189405",
+          "offset": 5222580,
+          "length": 428
+        },
+        "packedGeometrySha256": "b57fd97da2c047384b323da1ca4cdb108258fa27bf6cd8c15838fe8a149d92cf"
+      },
+      {
+        "id": "osm:way:609907339",
+        "kind": "residential",
+        "currentMetadata": {
+          "id": "osm:way:609907339",
+          "sourceId": "osm",
+          "name": "Cap Negro",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "كاب النيقرو",
+          "contextAliases": [
+            "Cap Negro",
+            "Délégation Nefza",
+            "Délégation de Nefza",
+            "Nefza",
+            "كاب النيقرو",
+            "معتمدية نفزة"
+          ],
+          "governorateId": 356,
+          "lat": 37.104046,
+          "lng": 8.983387,
+          "delegationId": 514,
+          "hasBoundary": true,
+          "bbox": [
+            8.982052,
+            37.102358,
+            8.98655,
+            37.105578
+          ],
+          "areaKm2": 0.05121043313057453,
+          "pickerGroupId": "osm:relation:7189483",
+          "offset": 5416540,
+          "length": 132
+        },
+        "packedGeometrySha256": "300e6ee42344ad24a1b68f817ccf214ed740654e3c142b3ea760bb27424c7c4b"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:1432078789": [
+        "osm:node:1432078789"
+      ],
+      "osm:relation:7189397": [
+        "osm:relation:7189397"
+      ],
+      "osm:relation:7189402": [
+        "osm:relation:7189402"
+      ],
+      "osm:relation:7189405": [
+        "osm:relation:7189405",
+        "osm:way:129896001"
+      ],
+      "osm:relation:7189407": [
+        "osm:relation:7189407"
+      ],
+      "osm:relation:7189432": [
+        "osm:relation:7189432"
+      ],
+      "osm:relation:7189434": [
+        "osm:relation:7189434"
+      ],
+      "osm:relation:7189439": [
+        "osm:relation:7189439"
+      ],
+      "osm:relation:7189449": [
+        "osm:relation:7189449"
+      ],
+      "osm:relation:7189475": [
+        "osm:relation:7189475"
+      ],
+      "osm:relation:7189477": [
+        "osm:relation:7189477"
+      ],
+      "osm:relation:7189483": [
+        "osm:relation:7189483",
+        "osm:way:609907339"
+      ],
+      "osm:relation:7189490": [
+        "osm:relation:7189490"
+      ],
+      "osm:relation:7189491": [
+        "osm:relation:7189491"
+      ],
+      "osm:relation:7189492": [
+        "osm:relation:7189492"
+      ],
+      "osm:relation:7189494": [
+        "osm:relation:7189494"
+      ],
+      "osm:relation:7189495": [
+        "osm:relation:7189495"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7189397": [
+        "osm:relation:7189397"
+      ],
+      "osm:relation:7189402": [
+        "osm:relation:7189402"
+      ],
+      "osm:relation:7189405": [
+        "osm:relation:7189405",
+        "osm:way:129896001"
+      ],
+      "osm:relation:7189407": [
+        "osm:relation:7189407"
+      ],
+      "osm:relation:7189432": [
+        "osm:relation:7189432"
+      ],
+      "osm:relation:7189434": [
+        "osm:relation:7189434"
+      ],
+      "osm:relation:7189439": [
+        "osm:relation:7189439"
+      ],
+      "osm:relation:7189449": [
+        "osm:relation:7189449"
+      ],
+      "osm:relation:7189475": [
+        "osm:relation:7189475"
+      ],
+      "osm:relation:7189477": [
+        "osm:relation:7189477"
+      ],
+      "osm:relation:7189483": [
+        "osm:relation:7189483",
+        "osm:way:609907339"
+      ],
+      "osm:relation:7189490": [
+        "osm:relation:7189490"
+      ],
+      "osm:relation:7189491": [
+        "osm:relation:7189491"
+      ],
+      "osm:relation:7189492": [
+        "osm:relation:7189492"
+      ],
+      "osm:relation:7189494": [
+        "osm:relation:7189494"
+      ],
+      "osm:relation:7189495": [
+        "osm:relation:7189495"
+      ],
+      "delegation:514": [
+        "osm:node:1432078789"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "schemaVersion": 1,
+    "reviewedBoundaries": null,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:1432078789",
+        "osm:relation:7189394"
+      ],
+      "effective": [
+        "osm:node:1432078789",
+        "osm:relation:7189394"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1435833": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7189394": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7189397": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189402": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189405": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189407": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189432": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189434": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189439": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189449": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189475": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189477": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189483": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189490": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189491": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189492": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7189494": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7189495": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      }
+    }
+  }
+}

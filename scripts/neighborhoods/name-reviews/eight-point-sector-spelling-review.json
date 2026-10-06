@@ -1,0 +1,1099 @@
+{
+  "scope": "Independent identity/spelling review of eight point/containing-sector leads; metadata only, no polygon correction or boundary-certification claim.",
+  "reviewedDate": "2026-09-07",
+  "acceptedNameCorrections": 8,
+  "rejectedNameCorrections": 0,
+  "directWorkbookRowsVerified": 24,
+  "allEightCurrentBinaryContainmentsVerified": true,
+  "decisions": [
+    {
+      "sectorId": "osm:relation:7126202",
+      "pointId": "osm:node:10002024787",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "245454",
+      "officialArabic": "عين زريق",
+      "officialFrench": "Ain zerig",
+      "parentCode": "2454",
+      "parentArabic": "قعفور",
+      "reason": "The source adds the Arabic definite article to Zerig and has a French transliteration variant. Both INS2012 p74 and all three INS2024 workbooks name this unique Gaafour sector Ain Zerig/عين زريق; the contained point uses that same spelling.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "عين الزريق",
+        "Ain Ezrig"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "عين الزريق",
+          "name:ar": "عين الزريق",
+          "name:fr": "Ain Ezrig",
+          "ref:tn:codegeo": "245454"
+        }
+      },
+      "pointAssertions": {
+        "name": "عين زريق",
+        "name:ar": "عين زريق",
+        "name:fr": "Ain Zerig",
+        "place": "hamlet"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "245454",
+          "parent": "قعفور",
+          "name": "عين زريق"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7126202",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 2326.938203624256,
+      "currentParentMetadata": "معتمدية قعفور",
+      "rawDelegationGeometryMatchesOfficialParent": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 30361,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "عين زريق",
+            "sectorFr": "Ain zerig",
+            "delegationAr": "قعفور",
+            "delegationFr": "Gaafour",
+            "delegationCode": "2454",
+            "sectorCode": "245454"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1424,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "عين زريق",
+            "sectorFr": "Ain zerig",
+            "delegationAr": "قعفور",
+            "delegationFr": "Gaafour",
+            "delegationCode": "2454",
+            "sectorCode": "245454"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1423,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "عين زريق",
+            "sectorFr": "Ain zerig",
+            "delegationAr": "قعفور",
+            "delegationFr": "Gaafour",
+            "delegationCode": "2454",
+            "sectorCode": "245454"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7126202",
+        "name": "عين الزريق",
+        "aliases": [
+          "Ain Ezrig"
+        ],
+        "sourceCode": "245454",
+        "currentParentName": "معتمدية قعفور",
+        "currentGovernorateId": 344,
+        "officialRows": [
+          {
+            "code": "245454",
+            "nameFr": "Aïn Zerig",
+            "nameAr": "عين زريق",
+            "delegationHeading": "Delegation Gaafour",
+            "page": 74
+          }
+        ],
+        "status": "name_review_required",
+        "bestNameSimilarity": 0.875,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "عين زريق.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/عين زريق.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سليانة/قعفور/عين زريق.pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": true,
+        "pointTimetableId": 417,
+        "sectorTimetableId": 617,
+        "note": "Current picker canonicalization chooses sector metadata. A new click changes representative source for this group; retain point IDs and explicitly decide this UI behavior."
+      }
+    },
+    {
+      "sectorId": "osm:relation:7150193",
+      "pointId": "osm:node:10010935167",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "615253",
+      "officialArabic": "العمايمية",
+      "officialFrench": "El amaima",
+      "parentCode": "6152",
+      "parentArabic": "سيدي عيش",
+      "reason": "INS2012 p123 and ISIE2022 p56 explicitly used العمايمة/El Amaima. The ISIE2023 map index and all three INS2024 workbooks use العمايمية with the same unique code615253 and Sidi Aich parent. This is a harmless historical spelling variant; retain the old Arabic and French forms as aliases.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "العمايمة",
+        "El Amaima"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "العمايمة",
+          "name:ar": "العمايمة",
+          "name:fr": "El Amaima",
+          "ref:tn:codegeo": "615253"
+        }
+      },
+      "pointAssertions": {
+        "name": "العمايمية",
+        "name:ar": "العمايمية",
+        "name:fr": "El Amaimia",
+        "place": "hamlet"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "615253",
+          "parent": "سيدي عيش",
+          "name": "العمايمية"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7150193",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 3385.704484639415,
+      "currentParentMetadata": "معتمدية سيدي عيش",
+      "rawDelegationGeometryMatchesOfficialParent": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 65848,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "العمايمية",
+            "sectorFr": "El amaima",
+            "delegationAr": "سيدي عيش",
+            "delegationFr": "Sidi aich",
+            "delegationCode": "6152",
+            "sectorCode": "615253"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3236,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "العمايمية",
+            "sectorFr": "El amaima",
+            "delegationAr": "سيدي عيش",
+            "delegationFr": "Sidi aich",
+            "delegationCode": "6152",
+            "sectorCode": "615253"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3230,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "العمايمية",
+            "sectorFr": "El amaima",
+            "delegationAr": "سيدي عيش",
+            "delegationFr": "Sidi aich",
+            "delegationCode": "6152",
+            "sectorCode": "615253"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7150193",
+        "name": "العمايمة",
+        "aliases": [
+          "El Amaima"
+        ],
+        "sourceCode": "615253",
+        "currentParentName": "معتمدية سيدي عيش",
+        "currentGovernorateId": 365,
+        "officialRows": [
+          {
+            "code": "615253",
+            "nameFr": "El Amaïma",
+            "nameAr": "العمايمة",
+            "delegationHeading": "Delegation Sidi Aich",
+            "page": 123
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [
+          {
+            "governorate": "قفصة",
+            "delegation": "سيدي عيش",
+            "sector": "العمايمة",
+            "pages": [
+              56
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "العمايمية.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/العمايمية.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قفصة/سيدي عيش/العمايمية.pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": false,
+        "pointTimetableId": 610,
+        "sectorTimetableId": 610,
+        "note": "Point and sector currently share the same timetable source."
+      }
+    },
+    {
+      "sectorId": "osm:relation:7152195",
+      "pointId": "osm:node:10021286069",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "335757",
+      "officialArabic": "الطواهرة",
+      "officialFrench": "Touahra",
+      "parentCode": "3357",
+      "parentArabic": "الجم",
+      "reason": "INS2012 p88 and ISIE2022 p64 explicitly used الطواهرية/Touahria. The ISIE2023 map index and all three INS2024 workbooks now use الطواهرة/Touahra for the same unique El Djem code335757. Retain the earlier official forms as aliases.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "الطواهرية",
+        "Touahria"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطواهرية",
+          "name:ar": "الطواهرية",
+          "name:fr": "Touahria",
+          "ref:tn:codegeo": "335757"
+        }
+      },
+      "pointAssertions": {
+        "name": "الطواهرة",
+        "name:ar": "الطواهرة",
+        "name:fr": "Ettouahra",
+        "place": "village"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "335757",
+          "parent": "الجم",
+          "name": "الطواهرة"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7152195",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 830.2387930926742,
+      "currentParentMetadata": "معتمدية الجم",
+      "rawDelegationGeometryMatchesOfficialParent": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 40731,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "الطواهرة",
+            "sectorFr": "Touahra",
+            "delegationAr": "الجم",
+            "delegationFr": "El djem",
+            "delegationCode": "3357",
+            "sectorCode": "335757"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1946,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "الطواهرة",
+            "sectorFr": "Touahra",
+            "delegationAr": "الجم",
+            "delegationFr": "El djem",
+            "delegationCode": "3357",
+            "sectorCode": "335757"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1942,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "الطواهرة",
+            "sectorFr": "Touahra",
+            "delegationAr": "الجم",
+            "delegationFr": "El djem",
+            "delegationCode": "3357",
+            "sectorCode": "335757"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7152195",
+        "name": "الطواهرية",
+        "aliases": [
+          "Touahria"
+        ],
+        "sourceCode": "335757",
+        "currentParentName": "معتمدية الجم",
+        "currentGovernorateId": 345,
+        "officialRows": [
+          {
+            "code": "335757",
+            "nameFr": "Touahria",
+            "nameAr": "الطواهرية",
+            "delegationHeading": "Delegation El Djem",
+            "page": 88
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [
+          {
+            "governorate": "المهدية",
+            "delegation": "الجم",
+            "sector": "الطواهرية",
+            "pages": [
+              64
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "الطواهرة.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الطواهرة.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المهدية/الجم/الطواهرة.pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": false,
+        "pointTimetableId": 619,
+        "sectorTimetableId": 619,
+        "note": "Point and sector currently share the same timetable source."
+      }
+    },
+    {
+      "sectorId": "osm:relation:7114433",
+      "pointId": "osm:node:10118270176",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "325453",
+      "officialArabic": "المليشات",
+      "officialFrench": "Melichet",
+      "parentCode": "3254",
+      "parentArabic": "زرمدين",
+      "reason": "The Arabic source contains an extra ي; its French Melichet already agrees with INS2024, and the contained village name agrees with the current official Arabic. All three2024 workbooks and the2023 indexed map identify المليشات under Zeramdine. The saved INS2012 extraction has no row for325453, so it is not cited as corroboration for this case.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "المليشيات"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المليشيات",
+          "name:ar": "المليشيات",
+          "name:fr": "Melichet",
+          "ref:tn:codegeo": "325453"
+        }
+      },
+      "pointAssertions": {
+        "name": "المليشات",
+        "name:ar": "المليشات",
+        "name:fr": "Mlichette",
+        "place": "village"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "325453",
+          "parent": "زرمدين",
+          "name": "المليشات"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7114433",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 3005.265709669358,
+      "currentParentMetadata": "معتمدية زرمدين",
+      "rawDelegationGeometryMatchesOfficialParent": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 36685,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "المليشات",
+            "sectorFr": "Melichet",
+            "delegationAr": "زرمدين",
+            "delegationFr": "Zeramdine",
+            "delegationCode": "3254",
+            "sectorCode": "325453"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1733,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "المليشات",
+            "sectorFr": "Melichet",
+            "delegationAr": "زرمدين",
+            "delegationFr": "Zeramdine",
+            "delegationCode": "3254",
+            "sectorCode": "325453"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1731,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "المليشات",
+            "sectorFr": "Melichet",
+            "delegationAr": "زرمدين",
+            "delegationFr": "Zeramdine",
+            "delegationCode": "3254",
+            "sectorCode": "325453"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7114433",
+        "name": "المليشيات",
+        "aliases": [
+          "Melichet"
+        ],
+        "sourceCode": "325453",
+        "currentParentName": "معتمدية زرمدين",
+        "currentGovernorateId": 364,
+        "officialRows": [],
+        "status": "code_absent_INS2012",
+        "bestNameSimilarity": 0,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "المليشات.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/المليشات.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/زرمدين/المليشات.pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": true,
+        "pointTimetableId": 428,
+        "sectorTimetableId": 596,
+        "note": "Current picker canonicalization chooses sector metadata. A new click changes representative source for this group; retain point IDs and explicitly decide this UI behavior."
+      }
+    },
+    {
+      "sectorId": "osm:relation:7095632",
+      "pointId": "osm:node:349303622",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "635654",
+      "officialArabic": "غيدمة",
+      "officialFrench": "Gueidma",
+      "parentCode": "6356",
+      "parentArabic": "الفوار",
+      "reason": "French Gueïdma/Gueidma, the contained point غيدمة, INS2012 p130, ISIE2022 p59, the2023 Faouar map index and all three INS2024 workbooks identify the same unique sector635654. The source Arabic قايدمة is a spelling/transliteration variant. Preserve the existing reviewed Faouar membership correction; source delegation geometry still wrongly contains this sector wholly within Douz Sud. This name review does not certify those borders.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "قايدمة",
+        "Gueïdma"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "قايدمة",
+          "name:ar": "قايدمة",
+          "name:fr": "Gueïdma",
+          "ref:tn:codegeo": "635654"
+        }
+      },
+      "pointAssertions": {
+        "name": "غيدمة",
+        "name:ar": "غيدمة",
+        "name:en": "Ghidma",
+        "name:fr": "Ghidma",
+        "place": "village"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "635654",
+          "parent": "الفوار",
+          "name": "غيدمة"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7095632",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 2468.1689817165866,
+      "currentParentMetadata": "معتمدية الفوار",
+      "rawDelegationGeometryMatchesOfficialParent": false,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 70593,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "غيدمة",
+            "sectorFr": "Gueidma",
+            "delegationAr": "الفوار",
+            "delegationFr": "El faouar",
+            "delegationCode": "6356",
+            "sectorCode": "635654"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3464,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "غيدمة",
+            "sectorFr": "Gueidma",
+            "delegationAr": "الفوار",
+            "delegationFr": "El faouar",
+            "delegationCode": "6356",
+            "sectorCode": "635654"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3457,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "غيدمة",
+            "sectorFr": "Gueidma",
+            "delegationAr": "الفوار",
+            "delegationFr": "El faouar",
+            "delegationCode": "6356",
+            "sectorCode": "635654"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7095632",
+        "name": "قايدمة",
+        "aliases": [
+          "Gueïdma"
+        ],
+        "sourceCode": "635654",
+        "currentParentName": "معتمدية الفوار",
+        "currentGovernorateId": 1012,
+        "officialRows": [
+          {
+            "code": "635654",
+            "nameFr": "Gueïdma",
+            "nameAr": "غيدمة",
+            "delegationHeading": "Delegation Faouar",
+            "page": 130
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [
+          {
+            "governorate": "قبلي",
+            "delegation": "فوار",
+            "sector": "غيدمة",
+            "pages": [
+              59
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "غيدمة.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/غيدمة.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/الفوار/غيدمة.pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": false,
+        "pointTimetableId": 485,
+        "sectorTimetableId": 485,
+        "note": "Point and sector currently share the same timetable source."
+      }
+    },
+    {
+      "sectorId": "osm:relation:7124231",
+      "pointId": "osm:node:8035791884",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "175753",
+      "officialArabic": "الذواودة",
+      "officialFrench": "Dheouaouda",
+      "parentCode": "1757",
+      "parentArabic": "غزالة",
+      "reason": "Only the Arabic definite article and French transliteration differ. INS2012 p57, ISIE2022 p25, the2023 indexed map and all three INS2024 workbooks support الذواودة/Dheouaouda under Ghezala, code175753.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "ذواودة",
+        "Dhouaouda"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "ذواودة",
+          "name:ar": "ذواودة",
+          "name:fr": "Dhouaouda",
+          "ref:tn:codegeo": "175753"
+        }
+      },
+      "pointAssertions": {
+        "name": "الذواودة",
+        "name:ar": "الذواودة",
+        "name:en": "Edhewewda",
+        "name:fr": "Edhewewda",
+        "place": "village"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "175753",
+          "parent": "غزالة",
+          "name": "الذواودة"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7124231",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 932.3644261267877,
+      "currentParentMetadata": "معتمدية غزالة",
+      "rawDelegationGeometryMatchesOfficialParent": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 18292,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "الذواودة",
+            "sectorFr": "Dheouaouda",
+            "delegationAr": "غزالة",
+            "delegationFr": "Ghezala",
+            "delegationCode": "1757",
+            "sectorCode": "175753"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 796,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "الذواودة",
+            "sectorFr": "Dheouaouda",
+            "delegationAr": "غزالة",
+            "delegationFr": "Ghezala",
+            "delegationCode": "1757",
+            "sectorCode": "175753"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 795,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "الذواودة",
+            "sectorFr": "Dheouaouda",
+            "delegationAr": "غزالة",
+            "delegationFr": "Ghezala",
+            "delegationCode": "1757",
+            "sectorCode": "175753"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7124231",
+        "name": "ذواودة",
+        "aliases": [
+          "Dhouaouda"
+        ],
+        "sourceCode": "175753",
+        "currentParentName": "معتمدية غزالة",
+        "currentGovernorateId": 361,
+        "officialRows": [
+          {
+            "code": "175753",
+            "nameFr": "Dheouaouda",
+            "nameAr": "الذواودة",
+            "delegationHeading": "Delegation Guezala",
+            "page": 57
+          }
+        ],
+        "status": "name_review_required",
+        "bestNameSimilarity": 0.9473684210526315,
+        "isie2022NameMatches": [
+          {
+            "governorate": "بي رت",
+            "delegation": "غزالة",
+            "sector": "الذواودة",
+            "pages": [
+              25
+            ]
+          }
+        ],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "الذواودة.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/الذواودة.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بنزرت/غزالة/الذواودة.pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": true,
+        "pointTimetableId": 560,
+        "sectorTimetableId": 558,
+        "note": "Current picker canonicalization chooses sector metadata. A new click changes representative source for this group; retain point IDs and explicitly decide this UI behavior."
+      }
+    },
+    {
+      "sectorId": "osm:relation:7082748",
+      "pointId": "osm:node:9945093900",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "635158",
+      "officialArabic": "بني محمّد",
+      "officialFrench": "Beni mehemed",
+      "parentCode": "6351",
+      "parentArabic": "قبلي الجنوبية",
+      "reason": "The source drops ي in بني and writes Ben instead of Beni. INS2012 p129, the parent-qualified2023 indexed map and all three INS2024 workbooks identify the unique Kebili Sud sector635158 as بني محمّد/Beni mehemed. The contained village بني محمد agrees after removing the pronunciation mark. No code transfer or directional-name conflation is needed.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "بن محمد",
+        "Ben Mehemed"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بن محمد",
+          "name:ar": "بن محمد",
+          "name:fr": "Ben Mehemed",
+          "ref:tn:codegeo": "635158"
+        }
+      },
+      "pointAssertions": {
+        "name": "بني محمد",
+        "name:ar": "بني محمد",
+        "name:fr": "Beni Mhammad",
+        "place": "village"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "225956",
+          "parent": "بلطة بوعوان",
+          "name": "بني محمد"
+        },
+        {
+          "code": "635158",
+          "parent": "قبلي الجنوبية",
+          "name": "بني محمّد"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7082748",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 2639.1020523076295,
+      "currentParentMetadata": "معتمدية قبلي الجنوبية",
+      "rawDelegationGeometryMatchesOfficialParent": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 69505,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "بني محمّد",
+            "sectorFr": "Beni mehemed",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635158"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3409,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "بني محمّد",
+            "sectorFr": "Beni mehemed",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635158"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3402,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "بني محمّد",
+            "sectorFr": "Beni mehemed",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635158"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7082748",
+        "name": "بن محمد",
+        "aliases": [
+          "Ben Mehemed"
+        ],
+        "sourceCode": "635158",
+        "currentParentName": "معتمدية قبلي الجنوبية",
+        "currentGovernorateId": 1012,
+        "officialRows": [
+          {
+            "code": "635158",
+            "nameFr": "Beni Mehemed",
+            "nameAr": "بني مح ّمد",
+            "delegationHeading": "Delegation Kébeli Sud Code secteur",
+            "page": 129
+          }
+        ],
+        "status": "name_review_required",
+        "bestNameSimilarity": 0.9523809523809523,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "بني محمد - (قبلي الجنوبية).pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بني محمد - (قبلي الجنوبية).pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/بني محمد - (قبلي الجنوبية).pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": false,
+        "pointTimetableId": 482,
+        "sectorTimetableId": 482,
+        "note": "Point and sector currently share the same timetable source."
+      }
+    },
+    {
+      "sectorId": "osm:relation:7082714",
+      "pointId": "osm:node:9947246733",
+      "decision": "ACCEPT_METADATA_ONLY_REVIEWED_NAME_CORRECTION",
+      "officialCode": "635156",
+      "officialArabic": "جرسين",
+      "officialFrench": "Jersine",
+      "parentCode": "6351",
+      "parentArabic": "قبلي الجنوبية",
+      "reason": "The Arabic source uses Persian Yeh U+06CC where the official name uses Arabic Yeh U+064A. French Jersine already agrees. INS2012 p129, the2023 indexed map and all three INS2024 workbooks identify the unique Kebili Sud code635156. This is a character correction; preserve the old form for existing searches.",
+      "harmlessOldNamesToRetainAsAliases": [
+        "جرسین"
+      ],
+      "preservePointId": true,
+      "sourceAssertions": {
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جرسین",
+          "name:fr": "Jersine",
+          "ref:tn:codegeo": "635156"
+        }
+      },
+      "pointAssertions": {
+        "name": "جرسين",
+        "name:ar": "جرسين",
+        "name:fr": "Zarsin",
+        "place": "village"
+      },
+      "sourceCodeUnique": true,
+      "registryCodeUnique": true,
+      "sameNameCodeUniqueWithinOfficialParent": true,
+      "nationwideOfficialHomonyms": [
+        {
+          "code": "635156",
+          "parent": "قبلي الجنوبية",
+          "name": "جرسين"
+        }
+      ],
+      "soleContainingSourceSector": "osm:relation:7082714",
+      "pointStrictlyInsideSourceAndCurrentShippedSector": true,
+      "pointDistanceFromSourceBorderMeters": 1817.8933549727615,
+      "currentParentMetadata": "معتمدية قبلي الجنوبية",
+      "rawDelegationGeometryMatchesOfficialParent": true,
+      "directWorkbookChecks": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 69437,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "actual": {
+            "sectorAr": "جرسين",
+            "sectorFr": "Jersine",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635156"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 3405,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "actual": {
+            "sectorAr": "جرسين",
+            "sectorFr": "Jersine",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635156"
+          },
+          "matchesRegistry": true
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 3398,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "actual": {
+            "sectorAr": "جرسين",
+            "sectorFr": "Jersine",
+            "delegationAr": "قبلي الجنوبية",
+            "delegationFr": "Kebili sud",
+            "delegationCode": "6351",
+            "sectorCode": "635156"
+          },
+          "matchesRegistry": true
+        }
+      ],
+      "INS2012": {
+        "id": "osm:relation:7082714",
+        "name": "جرسین",
+        "aliases": [
+          "Jersine"
+        ],
+        "sourceCode": "635156",
+        "currentParentName": "معتمدية قبلي الجنوبية",
+        "currentGovernorateId": 1012,
+        "officialRows": [
+          {
+            "code": "635156",
+            "nameFr": "Jersine",
+            "nameAr": "جرسين",
+            "delegationHeading": "Delegation Kébeli Sud Code secteur",
+            "page": 129
+          }
+        ],
+        "status": "exact_normalized_name_match",
+        "bestNameSimilarity": 1.0,
+        "isie2022NameMatches": [],
+        "isie2022MatchAmbiguous": false
+      },
+      "isie2023IndexedMap": {
+        "text": "جرسين.pdf",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جرسين.pdf",
+        "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/قبلي/قبلي الجنوبية/جرسين.pdf"
+      },
+      "groupingQualification": {
+        "savedPointIdMustRemain": true,
+        "gpsMappingMustContinueToUseActualCoordinates": true,
+        "newCanonicalSectorClickChangesRepresentativeTimetable": true,
+        "pointTimetableId": 484,
+        "sectorTimetableId": 483,
+        "note": "Current picker canonicalization chooses sector metadata. A new click changes representative source for this group; retain point IDs and explicitly decide this UI behavior."
+      }
+    }
+  ],
+  "qualification": "Approval applies to exact name corrections and preservation of source point IDs. Four newly merged rows currently select a different sector representative timetable; this behavior needs a separate deliberate decision. Ghidma requires preserving its existing reviewed Faouar parent override and boundary disagreement.",
+  "provenance": {
+    "rawSourceSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "currentAssetGeometrySha256": "6e1cef46ba7b353741317850ade4b24505d44a0f9dd1f31723ba01f37c5fc168",
+    "currentRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "rawEvidenceFile": "outputs/eight-point-sector-spelling-independent-verification.json",
+    "ISIEIndexURL": "https://www.isie.tn/ar/الدوائر-المحلية/",
+    "INS2012URL": "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf"
+  }
+}

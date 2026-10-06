@@ -1,0 +1,95 @@
+{
+  "status": "READ_ONLY_ONE_SOURCE_IMPACT_FACTS",
+  "targetId": "osm:relation:7115583",
+  "factsFile": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/impact-facts.json",
+  "summaryFile": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/remaining-mongi-teboulba-20260920/impact-summary.json",
+  "counts": {
+    "currentRawRows": 3523,
+    "currentBoundaryRows": 2619,
+    "intersectionRecordsNative": 5,
+    "intersectionRecordsRounded": 5,
+    "incidentSectorConflicts": 4,
+    "storedIncidentConflicts": 1,
+    "rawRepresentativeContainmentChanges": 0,
+    "currentChildContextDependencies": 0,
+    "pickerGroups": 5,
+    "pickerClosureRows": 5
+  },
+  "comparisons": {
+    "packedVsNative": {
+      "aAreaKm2": 0.1843579751049144,
+      "bAreaKm2": 0.18245382837654633,
+      "intersectionKm2": 0.18121588398639993,
+      "iou": 0.9764001518966192,
+      "aCoveredByB": 0.982956576102952,
+      "bCoveredByA": 0.9932150265019841,
+      "aOutsideBKm2": 0.003142091118538541,
+      "bOutsideAKm2": 0.0012379443901528626,
+      "hausdorffMeters": 6.460852282123028,
+      "centroidDistanceMeters": 2.5654968692168447
+    },
+    "packedVsRounded": {
+      "aAreaKm2": 0.1843579751049144,
+      "bAreaKm2": 0.18246212772551007,
+      "intersectionKm2": 0.18122933165006402,
+      "iou": 0.9764996960647072,
+      "aCoveredByB": 0.983029519319303,
+      "bCoveredByA": 0.9932435509175876,
+      "aOutsideBKm2": 0.0031286434548548968,
+      "bOutsideAKm2": 0.0012327960754695178,
+      "hausdorffMeters": 6.461482636390409,
+      "centroidDistanceMeters": 2.555605612484816
+    },
+    "nativeVsRounded": {
+      "aAreaKm2": 0.18245382837654633,
+      "bAreaKm2": 0.18246212772551007,
+      "intersectionKm2": 0.18244027685090697,
+      "iou": 0.9998059883904539,
+      "aCoveredByB": 0.9999257262740938,
+      "bCoveredByA": 0.9998802443286423,
+      "aOutsideBKm2": 1.3551525638602653e-05,
+      "bOutsideAKm2": 2.1850874595926306e-05,
+      "hausdorffMeters": 0.061079339230366986,
+      "centroidDistanceMeters": 0.011383334097633112
+    }
+  },
+  "coverage": {
+    "packedVsNative": {
+      "variant": "native",
+      "oldAreaKm2": 0.1843579751049144,
+      "variantAreaKm2": 0.18245382837654633,
+      "gainKm2": 0.0012379443901528626,
+      "lossKm2": 0.003142091118538541,
+      "oldOutsideOtherSectorsKm2": 0.1833754384427448,
+      "oldOutsideAllRemainingPolygonsKm2": 0.1833754384427448,
+      "variantOutsideOtherSectorsKm2": 0.18121934554703145,
+      "variantOutsideAllRemainingPolygonsKm2": 0.18121934554703145,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.002159554456402624,
+      "lossNotCoveredByOtherSectorKm2": 0.002159554456402624,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.0012344828295143134,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.0012344828295143134,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    },
+    "packedVsRounded": {
+      "variant": "rounded",
+      "oldAreaKm2": 0.1843579751049144,
+      "variantAreaKm2": 0.18246212772551007,
+      "gainKm2": 0.0012327960754695178,
+      "lossKm2": 0.0031286434548548968,
+      "oldOutsideOtherSectorsKm2": 0.1833754384427448,
+      "oldOutsideAllRemainingPolygonsKm2": 0.1833754384427448,
+      "variantOutsideOtherSectorsKm2": 0.18123321230393902,
+      "variantOutsideAllRemainingPolygonsKm2": 0.18123321230393902,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.0021461067927026596,
+      "lossNotCoveredByOtherSectorKm2": 0.0021461067927026596,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.0012289154215884936,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.0012289154215884936,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    }
+  },
+  "qualification": "Prepacking projection using untouched native geometry against current packed peers; not an exact generated/packed app prediction."
+}

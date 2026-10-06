@@ -1,0 +1,44 @@
+[
+  {
+    "file": "social-local-unit.html",
+    "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-القلعة-الصغرى-سوسة",
+    "requestedAt": "2026-09-07T23:37:12.931366+00:00",
+    "successful": false,
+    "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='www.social.gov.tn', port=443): Max retries exceeded with url: /ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%A7%D9%84%D9%82%D9%84%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D8%BA%D8%B1%D9%89-%D8%B3%D9%88%D8%B3%D8%A9 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))\"))"
+  },
+  {
+    "file": "osm-node-1495587105.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1495587105.json",
+    "requestedAt": "2026-09-07T23:37:12.933366+00:00",
+    "status": 200,
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1495587105.json",
+    "headers": {
+      "Connection": "keep-alive",
+      "Server": "Apache",
+      "Content-Encoding": "gzip",
+      "Cache-Control": "private, max-age=0, must-revalidate",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Content-Type": "application/json; charset=utf-8",
+      "Accept-Ranges": "bytes",
+      "Date": "Mon, 07 Sep 2026 23:37:13 GMT",
+      "Via": "1.1 varnish",
+      "X-Served-By": "cache-par-lfpb1150083-PAR",
+      "X-Cache": "MISS",
+      "X-Cache-Hits": "0",
+      "X-Timer": "S1788824233.147886,VS0,VE34",
+      "Vary": "Accept-Encoding",
+      "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+      "transfer-encoding": "chunked"
+    },
+    "bytes": 663,
+    "sha256": "81af96007b5cdcdd4abacbf0e0ab3ccc0ae1dda7d3da02df4917dddfeff8e932",
+    "successful": true
+  },
+  {
+    "file": "municipality-home.html",
+    "url": "https://www.commune-kalaasghira.gov.tn/",
+    "requestedAt": "2026-09-07T23:37:12.933366+00:00",
+    "successful": false,
+    "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.commune-kalaasghira.gov.tn', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.commune-kalaasghira.gov.tn', port=443) at 0x1fe2966a7e0>, 'Connection to www.commune-kalaasghira.gov.tn timed out. (connect timeout=25)'))\"))"
+  }
+]

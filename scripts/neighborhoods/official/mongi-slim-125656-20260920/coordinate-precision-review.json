@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "osm:relation:7115583",
+      "coordinateScale": 1000000,
+      "nativeGeometrySha256": "8e4bed8a54407ecf27bf8b78b8e565a504a31ec1e16d606a084c02e813a15d59",
+      "packedGeometrySha256": "5d189608e222125169565fe1e5d631a30495cc24c9a0afba0dbb7ea4d2a3d168",
+      "packedLength": 212,
+      "valid": true,
+      "countryCovers": true,
+      "anchorPreservedAndContained": true,
+      "nativeGeometryType": "Polygon",
+      "quantizedGeometryType": "Polygon",
+      "nativeInteriorRings": 0,
+      "quantizedInteriorRings": 0,
+      "symmetricDifferenceMeters2": 35.40240023452891,
+      "hausdorffMeters": 0.061079339230366986,
+      "qualification": "Only the existing app precision is applied to a separate copy. Exported sources retain full unrounded coordinates; this is source packing assessment, not catalog generation."
+    }
+  ],
+  "generatorHelperPin": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+    "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1"
+  },
+  "noCatalogGeneration": true
+}

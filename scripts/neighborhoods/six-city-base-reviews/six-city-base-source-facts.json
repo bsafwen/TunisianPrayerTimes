@@ -1,0 +1,1693 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceReview": {
+    "file": "six-city-base-reviews/six-city-base-source-review.json",
+    "sha256": "b42385f1d9867fa650e593fb8d6a7211c7036238d16633b4feff40af279fa163"
+  },
+  "sourceCacheEvidence": {
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "historicalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json"
+  },
+  "baselineMetadataSha256": "34135e143e509842fc5673d290fbc6571c334bc26739eb2c03a17e5c6ac73d17",
+  "records": [
+    {
+      "id": "osm:way:98620323",
+      "sourceReviewRecord": {
+        "baseId": 386,
+        "id": "osm:way:98620323",
+        "name": "المرسى",
+        "reasonStillSeparate": [
+          "no_independently_supported_namesake_identity"
+        ],
+        "currentGroupMembers": [
+          "osm:way:98620323"
+        ],
+        "currentBaseGroupMembers": [
+          "delegation:386"
+        ],
+        "primaryNameMatchesBase": true,
+        "governorateId": 342,
+        "currentParentName": "ولاية تونس",
+        "manualReference": {
+          "lat": 36.887334,
+          "lng": 10.315339,
+          "storedSource": 386,
+          "nearestEligibleSource": 386
+        },
+        "baseReference": {
+          "nomAr": "المرسى",
+          "nomFr": "La Marsa",
+          "lat": 36.8783,
+          "lng": 10.3247
+        },
+        "baseInsideOriginalAndPacked": true,
+        "rawSourceTags": {
+          "addr:city": "المرسى",
+          "addr:country": "TN",
+          "addr:postcode": "2070",
+          "landuse": "residential",
+          "name": "المرسى",
+          "name:ar": "المرسى",
+          "name:fr": "La Marsa"
+        },
+        "originalGeometrySha256": "bb1163ac99ffdc38fdd71578870206eba30ce8fd8ce9cc71ffc8a294c99e3b02",
+        "packedGeometrySha256": "efb341e83c47d01a3a49aee1a9a982749e9445a9efa75856dfacd9868d00609c",
+        "geometryMatchesPriorHeldReview": true,
+        "sourceSettlement": {
+          "id": "osm:node:287547219",
+          "tags": {
+            "name": "المرسى",
+            "name:ar": "المرسى",
+            "name:en": "La Marsa",
+            "name:fa": "مرسا",
+            "name:fr": "La Marsa",
+            "name:he": "לה מרסה",
+            "name:ru": "Эль-Марса",
+            "place": "town",
+            "wikidata": "Q27230",
+            "wikimedia_commons": "Category:La Marsa",
+            "wikipedia": "en:La Marsa"
+          },
+          "lat": 36.8790882,
+          "lng": 10.327678,
+          "sourceFile": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+            "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+          },
+          "insideOriginalAndPackedResidential": true,
+          "nearestEligibleSource": 386,
+          "baseCoordinateDistanceMeters": 279.0036008109,
+          "rawCatalogAbsent": true,
+          "compilerDisposition": "retained source node absorbed into a containing matching label",
+          "sourceProvenanceQualification": "Existing pinned PBF extraction; no new scan."
+        },
+        "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+        "existingMethodReady": false,
+        "existingMethodBlockers": [
+          "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+          "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+          "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+        ],
+        "nextAction": "Prepare a separate exact settlement/base display proof using this contained town and the existing addr:city/name evidence. Keep point kind and differing base coordinate explicit; do not relax the existing Bousalem or Dar rule.",
+        "specificAdditionalCheck": "Bind the exact member, base and source settlement plus complete matching source/context inventory in the new proof; La Marsa must explicitly retain the distant same-name Djerba hamlet as a separate identity.",
+        "proposedOnlyDelta": {
+          "id": "osm:way:98620323",
+          "field": "pickerGroupId",
+          "before": "osm:way:98620323",
+          "after": "delegation:386"
+        },
+        "noPrayerOrCoordinateCorrectionRequired": true,
+        "geonamesContextReuse": [
+          {
+            "id": "2473540",
+            "name": "La Marsa",
+            "featureCode": "PPLA2",
+            "lat": 36.87818,
+            "lng": 10.32466,
+            "sameGovernorate": true
+          }
+        ],
+        "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+      },
+      "expectedBase": {
+        "id": 386,
+        "nomFr": "La Marsa",
+        "nomAr": "المرسى",
+        "nomEn": "La Marsa",
+        "lat": 36.8783,
+        "lng": 10.3247
+      },
+      "expectedGovernorateId": 342,
+      "expectedMetadata": {
+        "id": "osm:way:98620323",
+        "sourceId": "osm",
+        "name": "المرسى",
+        "aliases": [
+          "La Marsa",
+          "Эль-Марса",
+          "לה מרסה",
+          "مرسا"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية تونس",
+        "contextAliases": [],
+        "governorateId": 342,
+        "lat": 36.887334,
+        "lng": 10.315339,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "bbox": [
+          10.299101,
+          36.869228,
+          10.341486,
+          36.905305
+        ],
+        "areaKm2": 6.490816377382122,
+        "pickerGroupId": "osm:way:98620323"
+      },
+      "packedGeometrySha256": "efb341e83c47d01a3a49aee1a9a982749e9445a9efa75856dfacd9868d00609c",
+      "sourceAssertions": [
+        {
+          "id": "osm:node:2677320377",
+          "kind": "hamlet",
+          "tags": {
+            "name": "المرسى",
+            "name:ar": "المرسى",
+            "name:de": "Al-Marsa",
+            "name:en": "Al Marsa",
+            "name:fr": "Al-Marsa",
+            "place": "hamlet"
+          },
+          "geometrySha256": "4f24444dffaf5e2404943319e05b622b60abec2b61a76234f28d603366cf5405"
+        },
+        {
+          "id": "osm:node:287547219",
+          "kind": "town",
+          "tags": {
+            "name": "المرسى",
+            "name:ar": "المرسى",
+            "name:en": "La Marsa",
+            "name:fa": "مرسا",
+            "name:fr": "La Marsa",
+            "name:he": "לה מרסה",
+            "name:ru": "Эль-Марса",
+            "place": "town",
+            "wikidata": "Q27230",
+            "wikimedia_commons": "Category:La Marsa",
+            "wikipedia": "en:La Marsa"
+          },
+          "geometrySha256": "b4e3940295ce2d7665712d042b06ab31a717590ef4b4380d108e1846e9c7baca"
+        },
+        {
+          "id": "osm:relation:1435835",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-11",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Tunis",
+            "alt_name:ko": "튀니스주",
+            "alt_name:ru": "Тунис (вилайет)",
+            "boundary": "administrative",
+            "long_name:ar": "ولاية تونس",
+            "long_name:en": "Tunis Governorate",
+            "long_name:fr": "Gouvernorat de Tunis",
+            "long_name:it": "Governatorato di Tunisi",
+            "name": "ولاية تونس",
+            "name:ar": "ولاية تونس",
+            "name:be": "Туніс (вілает)",
+            "name:be-tarask": "Туніс (вілает)",
+            "name:bg": "Тунис (област)",
+            "name:ca": "Governació de Tunis",
+            "name:ceb": "Gouvernorat de Tunis",
+            "name:cy": "Tiwnis (talaith)",
+            "name:de": "Tunis",
+            "name:en": "Tunis",
+            "name:es": "Gobernación de Túnez",
+            "name:fa": "استان تونس",
+            "name:fr": "Gouvernorat Tunis",
+            "name:id": "Kegubernuran Tunis",
+            "name:it": "Tunisi",
+            "name:ja": "チュニス県",
+            "name:ko": "튀니스",
+            "name:ms": "Kawasan kegabenoran Tunis",
+            "name:nl": "Tunis (gouvernement)",
+            "name:no": "Tunis (guvernement)",
+            "name:pl": "Gubernatorstwo Tunis",
+            "name:pt": "Túnis (província)",
+            "name:ro": "Guvernoratul Tunis",
+            "name:ru": "Тунис",
+            "name:sco": "Tunis Govrenorate",
+            "name:sh": "Tunis (vilajet)",
+            "name:sv": "Tunis (guvernement)",
+            "name:tr": "Tunus ili",
+            "name:uk": "Туніс (вілаєт)",
+            "name:ur": "ولایت تونس",
+            "name:zh": "突尼斯省",
+            "name:zu": "Tunis Governorate",
+            "population": "983861",
+            "ref:tn:codegeo": "11",
+            "source:population": "INS TN 2004",
+            "wikidata": "Q328109",
+            "wikipedia": "ar:ولاية تونس"
+          },
+          "geometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468"
+        },
+        {
+          "id": "osm:relation:4135056",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "La Marsa",
+            "boundary": "administrative",
+            "name": "معتمدية المرسى",
+            "name:ar": "معتمدية المرسى",
+            "name:de": "Al-Marsa",
+            "name:en": "Al Marsa",
+            "name:fr": "Délégation La Marsa",
+            "ref:tn:codegeo": "1171",
+            "ref:tn:hasc_2": "TN.TU.LM",
+            "wikidata": "Q3210585"
+          },
+          "geometrySha256": "81d3244ab2fdd455f58d9b1dcb17e7107644162bf175b74c1f481e375dc67c4c"
+        },
+        {
+          "id": "osm:way:98620323",
+          "kind": "residential",
+          "tags": {
+            "addr:city": "المرسى",
+            "addr:country": "TN",
+            "addr:postcode": "2070",
+            "landuse": "residential",
+            "name": "المرسى",
+            "name:ar": "المرسى",
+            "name:fr": "La Marsa"
+          },
+          "geometrySha256": "bb1163ac99ffdc38fdd71578870206eba30ce8fd8ce9cc71ffc8a294c99e3b02"
+        }
+      ],
+      "governorSourceId": "osm:relation:1435835",
+      "peerNameValues": [
+        "La Marsa",
+        "المرسى"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:node:2677320377",
+        "osm:node:287547219",
+        "osm:relation:4135056",
+        "osm:way:98620323"
+      ],
+      "settlement": {
+        "id": "osm:node:287547219",
+        "tags": {
+          "name": "المرسى",
+          "name:ar": "المرسى",
+          "name:en": "La Marsa",
+          "name:fa": "مرسا",
+          "name:fr": "La Marsa",
+          "name:he": "לה מרסה",
+          "name:ru": "Эль-Марса",
+          "place": "town",
+          "wikidata": "Q27230",
+          "wikimedia_commons": "Category:La Marsa",
+          "wikipedia": "en:La Marsa"
+        },
+        "lat": 36.8790882,
+        "lng": 10.327678,
+        "kind": "town"
+      },
+      "matchingSupplementalCityIds": [],
+      "liveSourceBridge": null,
+      "rawAndBaseCoordinatesDiffer": true
+    },
+    {
+      "id": "osm:way:604767502",
+      "sourceReviewRecord": {
+        "baseId": 617,
+        "id": "osm:way:604767502",
+        "name": "سليانة",
+        "reasonStillSeparate": [
+          "no_independently_supported_namesake_identity"
+        ],
+        "currentGroupMembers": [
+          "osm:way:604767502"
+        ],
+        "currentBaseGroupMembers": [
+          "delegation:617"
+        ],
+        "primaryNameMatchesBase": true,
+        "governorateId": 344,
+        "currentParentName": "ولاية سليانة",
+        "manualReference": {
+          "lat": 36.08714,
+          "lng": 9.371878,
+          "storedSource": 617,
+          "nearestEligibleSource": 617
+        },
+        "baseReference": {
+          "nomAr": "سليانة",
+          "nomFr": "Siliana",
+          "lat": 36.0849,
+          "lng": 9.3708
+        },
+        "baseInsideOriginalAndPacked": true,
+        "rawSourceTags": {
+          "addr:city": "Siliana",
+          "addr:governorate": "Siliana",
+          "alt_name": "Seliana",
+          "landuse": "residential",
+          "name": "سليانة",
+          "name:ar": "سليانة",
+          "name:en": "Siliana",
+          "name:fr": "Siliana",
+          "name:ru": "Сильяна"
+        },
+        "originalGeometrySha256": "0e786f666099bda984324210acb749b8b8adabf43ff5ca6ada7eca6059c0461c",
+        "packedGeometrySha256": "92c8ef5943840073b047e057ad568c0d2f960a77c41464939131e787cdd8d4b6",
+        "geometryMatchesPriorHeldReview": true,
+        "sourceSettlement": {
+          "id": "osm:node:2930586474",
+          "tags": {
+            "addr:governorate": "Siliana",
+            "alt_name": "Seliana",
+            "name": "سليانة",
+            "name:ar": "سليانة",
+            "name:en": "Siliana",
+            "name:fa": "سليانه",
+            "name:fr": "Siliana",
+            "name:he": "סיליאנה",
+            "name:kab": "Silyana",
+            "name:ru": "Сильяна",
+            "place": "city",
+            "population": "24243",
+            "source:name": "GNS",
+            "wikidata": "Q27216",
+            "wikimedia_commons": "Category:Siliana",
+            "wikipedia": "ar:سليانة"
+          },
+          "lat": 36.0846651,
+          "lng": 9.3743733,
+          "sourceFile": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\osm-city-nodes.json",
+            "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+          },
+          "insideOriginalAndPackedResidential": true,
+          "nearestEligibleSource": 617,
+          "baseCoordinateDistanceMeters": 322.16365807453093,
+          "rawCatalogAbsent": true,
+          "compilerDisposition": "excluded place=city kind; not absorbed",
+          "sourceProvenanceQualification": "Existing historical city-node cache and coordinate audit agree; this cache is not itself a fresh exact-PBF/source-version assertion."
+        },
+        "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+        "existingMethodReady": false,
+        "existingMethodBlockers": [
+          "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+          "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+          "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+        ],
+        "nextAction": "For a separate exact city/base display method, pin this already known city-node source object as evidence without globally admitting city nodes or restoring raw choices; keep source617 and both base/representative coordinates unchanged.",
+        "specificAdditionalCheck": "Bind the city-node cached tags/coordinate to the exact pinned PBF or a byte-pinned original source response and complete same-name/context inventory before compiler integration.",
+        "proposedOnlyDelta": {
+          "id": "osm:way:604767502",
+          "field": "pickerGroupId",
+          "before": "osm:way:604767502",
+          "after": "delegation:617"
+        },
+        "noPrayerOrCoordinateCorrectionRequired": true,
+        "geonamesContextReuse": [
+          {
+            "id": "2465030",
+            "name": "Siliana",
+            "featureCode": "PPLA",
+            "lat": 36.08497,
+            "lng": 9.37082,
+            "sameGovernorate": true
+          }
+        ],
+        "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+      },
+      "expectedBase": {
+        "id": 617,
+        "nomFr": "Siliana",
+        "nomAr": "سليانة",
+        "nomEn": "Siliana",
+        "lat": 36.0849,
+        "lng": 9.3708
+      },
+      "expectedGovernorateId": 344,
+      "expectedMetadata": {
+        "id": "osm:way:604767502",
+        "sourceId": "osm",
+        "name": "سليانة",
+        "aliases": [
+          "Siliana",
+          "Seliana",
+          "Сильяна"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية سليانة",
+        "contextAliases": [],
+        "governorateId": 344,
+        "lat": 36.08714,
+        "lng": 9.371878,
+        "delegationId": 617,
+        "hasBoundary": true,
+        "bbox": [
+          9.350401,
+          36.072523,
+          9.380807,
+          36.101774
+        ],
+        "areaKm2": 4.089449628850801,
+        "pickerGroupId": "osm:way:604767502"
+      },
+      "packedGeometrySha256": "92c8ef5943840073b047e057ad568c0d2f960a77c41464939131e787cdd8d4b6",
+      "sourceAssertions": [
+        {
+          "id": "osm:relation:1435829",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-34",
+            "admin_level": "4",
+            "alt_name:en": "Siliana Governorate",
+            "alt_name:es": "Gobernación de Siliana",
+            "alt_name:it": "Governatorato di Siliana",
+            "alt_name:ur": "ولایت سلیانہ",
+            "boundary": "administrative",
+            "name": "ولاية سليانة",
+            "name:ar": "ولاية سليانة",
+            "name:be": "Сільяна",
+            "name:be-tarask": "Сільяна",
+            "name:bg": "Силиана (област)",
+            "name:ca": "Governació de Siliana",
+            "name:ceb": "Gouvernorat de Siliana",
+            "name:cy": "Siliana (talaith)",
+            "name:de": "Gouvernement Siliana",
+            "name:el": "Σιλγιάνα",
+            "name:en": "Siliana",
+            "name:fa": "سلیانه",
+            "name:fi": "Siliana",
+            "name:fr": "Gouvernorat Siliana",
+            "name:frr": "Siliana",
+            "name:id": "Kegubernuran Siliana",
+            "name:it": "Siliana",
+            "name:ja": "シリアナ県",
+            "name:ko": "실리아나주",
+            "name:ms": "Kawasan kegabenoran Siliana",
+            "name:nl": "Siliana",
+            "name:no": "Siliana",
+            "name:pl": "Gubernatorstwo Siljana",
+            "name:pt": "Siliana",
+            "name:ro": "Guvernoratul Siliana",
+            "name:ru": "Сильяна",
+            "name:sco": "Siliana Govrenorate",
+            "name:sh": "Siliana",
+            "name:tr": "Silyana ili",
+            "name:uk": "Сільяна",
+            "name:ur": "سلیانہ",
+            "name:zh": "錫勒亞奈省",
+            "name:zu": "Siliana Governorate",
+            "official_name": "ولاية سليانة",
+            "official_name:ar": "ولاية سليانة",
+            "official_name:en": "Siliana Governorate",
+            "official_name:fr": "Gouvernorat de Siliana",
+            "official_name:it": "Governatorato di Siliana",
+            "population": "233985",
+            "population:date": "2004",
+            "ref:tn:codegeo": "24",
+            "wikidata": "Q328115",
+            "wikipedia": "ar:ولاية سليانة"
+          },
+          "geometrySha256": "582177f1d9663eaa55f23b0a3b5e96b2ee68102c689481083954edb96d6960f8"
+        },
+        {
+          "id": "osm:way:604767502",
+          "kind": "residential",
+          "tags": {
+            "addr:city": "Siliana",
+            "addr:governorate": "Siliana",
+            "alt_name": "Seliana",
+            "landuse": "residential",
+            "name": "سليانة",
+            "name:ar": "سليانة",
+            "name:en": "Siliana",
+            "name:fr": "Siliana",
+            "name:ru": "Сильяна"
+          },
+          "geometrySha256": "0e786f666099bda984324210acb749b8b8adabf43ff5ca6ada7eca6059c0461c"
+        }
+      ],
+      "governorSourceId": "osm:relation:1435829",
+      "peerNameValues": [
+        "Siliana",
+        "سليانة"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:relation:1435829",
+        "osm:way:604767502"
+      ],
+      "settlement": {
+        "id": "osm:node:2930586474",
+        "tags": {
+          "addr:governorate": "Siliana",
+          "alt_name": "Seliana",
+          "name": "سليانة",
+          "name:ar": "سليانة",
+          "name:en": "Siliana",
+          "name:fa": "سليانه",
+          "name:fr": "Siliana",
+          "name:he": "סיליאנה",
+          "name:kab": "Silyana",
+          "name:ru": "Сильяна",
+          "place": "city",
+          "population": "24243",
+          "source:name": "GNS",
+          "wikidata": "Q27216",
+          "wikimedia_commons": "Category:Siliana",
+          "wikipedia": "ar:سليانة"
+        },
+        "lat": 36.0846651,
+        "lng": 9.3743733,
+        "kind": "city"
+      },
+      "matchingSupplementalCityIds": [
+        "osm:node:2930586474"
+      ],
+      "liveSourceBridge": {
+        "report": {
+          "file": "six-city-base-reviews/source-bridge/live-node-source-bridge.json",
+          "sha256": "9e3e9caa3b45838abfdf448815d60d66611fe58c8d3a36dadc881265b6d6335b"
+        },
+        "responses": [
+          {
+            "id": "osm:node:2930586474",
+            "file": "six-city-base-reviews/source-bridge/node-2930586474.xml",
+            "sha256": "5e68d1a7d34484acf3dabd864a0f8ebf0083d09cf766958dd179ea3129a4a5d1"
+          },
+          {
+            "id": "osm:node:287622372",
+            "file": "six-city-base-reviews/source-bridge/node-287622372.xml",
+            "sha256": "e8a016c444fe74398c3632d83e1f49c4752acbd881c69c9296689a8cf8420c34"
+          },
+          {
+            "id": "osm:node:287545859",
+            "file": "six-city-base-reviews/source-bridge/node-287545859.xml",
+            "sha256": "97acc9e975a943ad6d1f45d0896e0dd750391598e343fabcc9cc6ba84a8af3f4"
+          }
+        ],
+        "cachedCitySources": {
+          "file": "six-city-base-reviews/source-bridge/osm-city-nodes.json",
+          "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+        }
+      },
+      "rawAndBaseCoordinatesDiffer": true
+    },
+    {
+      "id": "osm:way:207294838",
+      "sourceReviewRecord": {
+        "baseId": 458,
+        "id": "osm:way:207294838",
+        "name": "منزل بوزلفة",
+        "reasonStillSeparate": [
+          "no_independently_supported_namesake_identity"
+        ],
+        "currentGroupMembers": [
+          "osm:way:207294838"
+        ],
+        "currentBaseGroupMembers": [
+          "delegation:458"
+        ],
+        "primaryNameMatchesBase": true,
+        "governorateId": 350,
+        "currentParentName": "ولاية نابل",
+        "manualReference": {
+          "lat": 36.681832,
+          "lng": 10.583044,
+          "storedSource": 458,
+          "nearestEligibleSource": 458
+        },
+        "baseReference": {
+          "nomAr": "منزل بوزلفة",
+          "nomFr": "Menzel Bouzelfa",
+          "lat": 36.685,
+          "lng": 10.58
+        },
+        "baseInsideOriginalAndPacked": true,
+        "rawSourceTags": {
+          "addr:city": "Menzel Bouzelfa",
+          "addr:country": "TN",
+          "addr:governorate": "Nabeul",
+          "landuse": "residential",
+          "name": "منزل بوزلفة",
+          "name:ar": "منزل بوزلفة",
+          "name:fr": "Menzel Bouzelfa"
+        },
+        "originalGeometrySha256": "6f49d9c83562cdaf329e4adf386e111007606c423321f97541709a4fd04985e5",
+        "packedGeometrySha256": "2fc16a471e30b2d300486c698106f11a933d3cc13626d7f9537308c195132b11",
+        "geometryMatchesPriorHeldReview": true,
+        "sourceSettlement": {
+          "id": "osm:node:1124136154",
+          "tags": {
+            "addr:governorate": "Nabeul",
+            "name": "منزل بوزلفة",
+            "name:ar": "منزل بوزلفة",
+            "name:en": "Menzel Bou Zelfa",
+            "name:fr": "Menzel Bou Zelfa",
+            "place": "village"
+          },
+          "lat": 36.6821495,
+          "lng": 10.5846752,
+          "sourceFile": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+            "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+          },
+          "insideOriginalAndPackedResidential": true,
+          "nearestEligibleSource": 458,
+          "baseCoordinateDistanceMeters": 523.70707056227,
+          "rawCatalogAbsent": true,
+          "compilerDisposition": "retained source node absorbed into a containing matching label",
+          "sourceProvenanceQualification": "Existing pinned PBF extraction; no new scan."
+        },
+        "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+        "existingMethodReady": false,
+        "existingMethodBlockers": [
+          "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+          "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+          "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+        ],
+        "nextAction": "Prepare a separate exact settlement/base display proof using this contained village and the existing addr:city/name evidence. Keep point kind and differing base coordinate explicit; do not relax the existing Bousalem or Dar rule.",
+        "specificAdditionalCheck": "Bind the exact member, base and source settlement plus complete matching source/context inventory in the new proof.",
+        "proposedOnlyDelta": {
+          "id": "osm:way:207294838",
+          "field": "pickerGroupId",
+          "before": "osm:way:207294838",
+          "after": "delegation:458"
+        },
+        "noPrayerOrCoordinateCorrectionRequired": true,
+        "geonamesContextReuse": [
+          {
+            "id": "2469262",
+            "name": "Mennzel Bou Zelfa",
+            "featureCode": "PPL",
+            "lat": 36.68312,
+            "lng": 10.58431,
+            "sameGovernorate": true
+          }
+        ],
+        "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+      },
+      "expectedBase": {
+        "id": 458,
+        "nomFr": "Menzel Bouzelfa",
+        "nomAr": "منزل بوزلفة",
+        "nomEn": "Menzel Bouzelfa",
+        "lat": 36.685,
+        "lng": 10.58
+      },
+      "expectedGovernorateId": 350,
+      "expectedMetadata": {
+        "id": "osm:way:207294838",
+        "sourceId": "osm",
+        "name": "منزل بوزلفة",
+        "aliases": [
+          "Menzel Bou Zelfa",
+          "Menzel Bouzelfa"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية نابل",
+        "contextAliases": [],
+        "governorateId": 350,
+        "lat": 36.681832,
+        "lng": 10.583044,
+        "delegationId": 458,
+        "hasBoundary": true,
+        "bbox": [
+          10.569733,
+          36.669603,
+          10.595502,
+          36.694169
+        ],
+        "areaKm2": 2.0962102191336647,
+        "pickerGroupId": "osm:way:207294838"
+      },
+      "packedGeometrySha256": "2fc16a471e30b2d300486c698106f11a933d3cc13626d7f9537308c195132b11",
+      "sourceAssertions": [
+        {
+          "id": "osm:node:1124136154",
+          "kind": "village",
+          "tags": {
+            "addr:governorate": "Nabeul",
+            "name": "منزل بوزلفة",
+            "name:ar": "منزل بوزلفة",
+            "name:en": "Menzel Bou Zelfa",
+            "name:fr": "Menzel Bou Zelfa",
+            "place": "village"
+          },
+          "geometrySha256": "85ffce32871b586530683385602fdb8ebf79eeba0e131c139fde19ca452140bf"
+        },
+        {
+          "id": "osm:relation:1435825",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-21",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية نابل",
+            "name:ar": "ولاية نابل",
+            "name:az": "Nabul (vilayət)",
+            "name:be": "Набуль (вілает)",
+            "name:be-tarask": "Набуль (вілает)",
+            "name:bg": "Набил (област)",
+            "name:ca": "Governació de Nabeul",
+            "name:ceb": "Gouvernorat de Nabeul",
+            "name:cy": "Nabeul (talaith)",
+            "name:de": "Gouvernement Nabeul",
+            "name:el": "Ναμπέλ (Κυβερνείο)",
+            "name:en": "Nabeul",
+            "name:es": "Gobernación de Nabeul",
+            "name:fa": "نابل",
+            "name:fi": "Nabeul (kuvernementti)",
+            "name:fr": "Gouvernorat Nabeul",
+            "name:frr": "Nabeul (Guwernement)",
+            "name:id": "Kegubernuran Nabeul",
+            "name:it": "Nabeul",
+            "name:ja": "ナブール県",
+            "name:ko": "나뵐주",
+            "name:ks": "نابل",
+            "name:ms": "Kawasan kegabenoran Nabeul",
+            "name:nl": "Nabeul (gouvernement)",
+            "name:no": "Nabeul (guvernement)",
+            "name:pl": "Gubernatorstwo Nabul",
+            "name:pt": "Nabeul (província)",
+            "name:ro": "Guvernoratul Nabeul",
+            "name:ru": "Набуль (вилайет)",
+            "name:sco": "Nabeul Govrenorate",
+            "name:sh": "Nabeul (vilajet)",
+            "name:tr": "Nabil ili",
+            "name:uk": "Набуль (вілаєт)",
+            "name:ur": "نابل",
+            "name:zh": "納布勒省",
+            "name:zu": "Nabeul Governorate",
+            "official_name": "ولاية نابل",
+            "official_name:ar": "ولاية نابل",
+            "official_name:en": "Nabeul Governorate",
+            "official_name:fa": "استان نابل",
+            "official_name:fr": "Gouvernorat de Nabeul",
+            "official_name:it": "Governatorato di Nabeul",
+            "official_name:ur": "ولاية نابل",
+            "population": "787920",
+            "population:date": "2014",
+            "ref:tn:codegeo": "15",
+            "wikidata": "Q328145",
+            "wikipedia": "ar:ولاية نابل"
+          },
+          "geometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700"
+        },
+        {
+          "id": "osm:relation:7145839",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Menzel Bouzelfa",
+            "boundary": "administrative",
+            "name": "معتمدية منزل بوزلفة",
+            "name:ar": "معتمدية منزل بوزلفة",
+            "name:fr": "Délégation Menzel Bouzelfa",
+            "ref:tn:codegeo": "1562",
+            "ref:tn:hasc_2": "TN.NB.MB",
+            "wikidata": "Q3306140"
+          },
+          "geometrySha256": "0f832c04c7d79df7fcd1959c6d3a90872b63bce297bf1ed021b215827fcca8b7"
+        },
+        {
+          "id": "osm:way:207294838",
+          "kind": "residential",
+          "tags": {
+            "addr:city": "Menzel Bouzelfa",
+            "addr:country": "TN",
+            "addr:governorate": "Nabeul",
+            "landuse": "residential",
+            "name": "منزل بوزلفة",
+            "name:ar": "منزل بوزلفة",
+            "name:fr": "Menzel Bouzelfa"
+          },
+          "geometrySha256": "6f49d9c83562cdaf329e4adf386e111007606c423321f97541709a4fd04985e5"
+        }
+      ],
+      "governorSourceId": "osm:relation:1435825",
+      "peerNameValues": [
+        "Menzel Bou Zelfa",
+        "Menzel Bouzelfa",
+        "منزل بوزلفة"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:node:1124136154",
+        "osm:relation:7145839",
+        "osm:way:207294838"
+      ],
+      "settlement": {
+        "id": "osm:node:1124136154",
+        "tags": {
+          "addr:governorate": "Nabeul",
+          "name": "منزل بوزلفة",
+          "name:ar": "منزل بوزلفة",
+          "name:en": "Menzel Bou Zelfa",
+          "name:fr": "Menzel Bou Zelfa",
+          "place": "village"
+        },
+        "lat": 36.6821495,
+        "lng": 10.5846752,
+        "kind": "village"
+      },
+      "matchingSupplementalCityIds": [],
+      "liveSourceBridge": null,
+      "rawAndBaseCoordinatesDiffer": true
+    },
+    {
+      "id": "osm:way:256592014",
+      "sourceReviewRecord": {
+        "baseId": 568,
+        "id": "osm:way:256592014",
+        "name": "جرزونة",
+        "reasonStillSeparate": [
+          "no_independently_supported_namesake_identity"
+        ],
+        "currentGroupMembers": [
+          "osm:way:256592014"
+        ],
+        "currentBaseGroupMembers": [
+          "delegation:568"
+        ],
+        "primaryNameMatchesBase": true,
+        "governorateId": 361,
+        "currentParentName": "ولاية بنزرت",
+        "manualReference": {
+          "lat": 37.255597,
+          "lng": 9.875276,
+          "storedSource": 568,
+          "nearestEligibleSource": 568
+        },
+        "baseReference": {
+          "nomAr": "جرزونة",
+          "nomFr": "Zarzouna",
+          "lat": 37.2642,
+          "lng": 9.8768
+        },
+        "baseInsideOriginalAndPacked": true,
+        "rawSourceTags": {
+          "addr:city": "جرزونة",
+          "addr:country": "TN",
+          "addr:postcode": "7021",
+          "landuse": "residential",
+          "name": "جرزونة",
+          "name:ar": "جرزونة",
+          "name:de": "Dscharzuna",
+          "name:en": "Jarzuna",
+          "name:fr": "Zarzouna",
+          "population": "24428",
+          "wikipedia": "ar:جرزونة"
+        },
+        "originalGeometrySha256": "6d831c39bdef8d73dd358d85679faee1a2f2db317471b0ded32b065965c5584d",
+        "packedGeometrySha256": "f534a1dfba16797e90ae9fac789e947e666844cbf3884866678921c2fd91071e",
+        "geometryMatchesPriorHeldReview": true,
+        "sourceSettlement": {
+          "id": "osm:node:2622426837",
+          "tags": {
+            "addr:postcode": "7021",
+            "name": "جرزونة",
+            "name:ar": "جرزونة",
+            "name:de": "Dscharzuna",
+            "name:en": "Jarzuna",
+            "name:fr": "Zarzouna",
+            "place": "village",
+            "population": "24428",
+            "wikidata": "Q3574882",
+            "wikipedia": "ar:جرزونة"
+          },
+          "lat": 37.2649034,
+          "lng": 9.8854698,
+          "sourceFile": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+            "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+          },
+          "insideOriginalAndPackedResidential": true,
+          "nearestEligibleSource": 568,
+          "baseCoordinateDistanceMeters": 771.2042309820573,
+          "rawCatalogAbsent": true,
+          "compilerDisposition": "retained source node absorbed into a containing matching label",
+          "sourceProvenanceQualification": "Existing pinned PBF extraction; no new scan."
+        },
+        "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+        "existingMethodReady": false,
+        "existingMethodBlockers": [
+          "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+          "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+          "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+        ],
+        "nextAction": "Prepare a separate exact settlement/base display proof using this contained village and the existing addr:city/name evidence. Keep point kind and differing base coordinate explicit; do not relax the existing Bousalem or Dar rule.",
+        "specificAdditionalCheck": "Bind the exact member, base and source settlement plus complete matching source/context inventory in the new proof.",
+        "proposedOnlyDelta": {
+          "id": "osm:way:256592014",
+          "field": "pickerGroupId",
+          "before": "osm:way:256592014",
+          "after": "delegation:568"
+        },
+        "noPrayerOrCoordinateCorrectionRequired": true,
+        "geonamesContextReuse": [
+          {
+            "id": "2463967",
+            "name": "Zarzouna",
+            "featureCode": "PPL",
+            "lat": 37.26424,
+            "lng": 9.8767,
+            "sameGovernorate": true
+          }
+        ],
+        "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+      },
+      "expectedBase": {
+        "id": 568,
+        "nomFr": "Zarzouna",
+        "nomAr": "جرزونة",
+        "nomEn": "Zarzouna",
+        "lat": 37.2642,
+        "lng": 9.8768
+      },
+      "expectedGovernorateId": 361,
+      "expectedMetadata": {
+        "id": "osm:way:256592014",
+        "sourceId": "osm",
+        "name": "جرزونة",
+        "aliases": [
+          "Dscharzuna",
+          "Jarzuna",
+          "Zarzouna"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية بنزرت",
+        "contextAliases": [],
+        "governorateId": 361,
+        "lat": 37.255597,
+        "lng": 9.875276,
+        "delegationId": 568,
+        "hasBoundary": true,
+        "bbox": [
+          9.86378,
+          37.243847,
+          9.887961,
+          37.269327
+        ],
+        "areaKm2": 2.923362851493896,
+        "pickerGroupId": "osm:way:256592014"
+      },
+      "packedGeometrySha256": "f534a1dfba16797e90ae9fac789e947e666844cbf3884866678921c2fd91071e",
+      "sourceAssertions": [
+        {
+          "id": "osm:node:2622426837",
+          "kind": "village",
+          "tags": {
+            "addr:postcode": "7021",
+            "name": "جرزونة",
+            "name:ar": "جرزونة",
+            "name:de": "Dscharzuna",
+            "name:en": "Jarzuna",
+            "name:fr": "Zarzouna",
+            "place": "village",
+            "population": "24428",
+            "wikidata": "Q3574882",
+            "wikipedia": "ar:جرزونة"
+          },
+          "geometrySha256": "3278367fecfb152a433958dfe2758b507abeddcf6c391bc5b05a43f78a08a79e"
+        },
+        {
+          "id": "osm:relation:1435827",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-23",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Bizerte",
+            "boundary": "administrative",
+            "name": "ولاية بنزرت",
+            "name:ar": "ولاية بنزرت",
+            "name:az": "Bizerta (vilayət)",
+            "name:azb": "بنزرت",
+            "name:be": "Бізерта (вілает)",
+            "name:be-tarask": "Бізэрта (вілает)",
+            "name:bg": "Бизерта (област)",
+            "name:ca": "Governació de Bizerta",
+            "name:ceb": "Gouvernorat de Bizerte",
+            "name:cy": "Bizerte (talaith)",
+            "name:de": "Binzart",
+            "name:el": "Μπιζέρτα (Κυβερνείο)",
+            "name:en": "Bizerte",
+            "name:es": "Gobernación de Bizerta",
+            "name:fa": "بنزرت",
+            "name:fi": "Bizerte (kuvernementti)",
+            "name:fr": "Gouvernorat Bizerte",
+            "name:frr": "Bizerte (Guwernement)",
+            "name:hu": "Bizerte kormányzóság",
+            "name:id": "Kegubernuran Bizerte",
+            "name:it": "Biserta",
+            "name:ja": "ビゼルト県",
+            "name:ka": "ბიზერტის ვილაიეთი",
+            "name:ko": "비제르테주",
+            "name:ks": "بنزرت",
+            "name:lt": "Bizertos vilajetas",
+            "name:ms": "Kawasan kegabenoran Bizerte",
+            "name:nl": "Bizerte (gouvernement)",
+            "name:no": "Bizerte (guvernement)",
+            "name:pl": "Gubernatorstwo Bizerta",
+            "name:pnb": "بنزرت",
+            "name:pt": "Bizerta (província)",
+            "name:ro": "Guvernoratul Bizerte",
+            "name:ru": "Бизерта (вилайет)",
+            "name:sco": "Bizerte Govrenorate",
+            "name:sh": "Bizerta (vilajet)",
+            "name:sv": "Bizerte (guvernement)",
+            "name:tr": "Bizerte (vilayet)",
+            "name:uk": "Бізерта (вілаєт)",
+            "name:ur": "بنزرت",
+            "name:zh": "比塞大省",
+            "name:zu": "Bizerte Governorate",
+            "official_name": "ولاية بنزرت",
+            "official_name:ar": "ولاية بنزرت",
+            "official_name:en": "Bizerte Governorate",
+            "official_name:es": "Gobernación de Bizerta",
+            "official_name:fa": "استان بنزرت",
+            "official_name:fr": "Gouvernorat de Bizerte",
+            "official_name:it": "Governatorato di Biserta",
+            "official_name:ur": "ولایت بنزرت",
+            "population": "568219",
+            "population:date": "2014",
+            "ref:tn:codegeo": "17",
+            "wikidata": "Q241129",
+            "wikipedia": "ar:ولاية بنزرت",
+            "wikipedia:es": "Gobernación de Bizerta"
+          },
+          "geometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4"
+        },
+        {
+          "id": "osm:relation:7151759",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Zarzouna",
+            "boundary": "administrative",
+            "name": "معتمدية جرزونة",
+            "name:ar": "معتمدية جرزونة",
+            "name:fr": "Délégation Jarzouna",
+            "ref:tn:codegeo": "1752",
+            "ref:tn:hasc_2": "TN.BZ.JA",
+            "wikidata": "Q3574881"
+          },
+          "geometrySha256": "7d4bf0ede7c26933374df22a603f900ae7f63d50e40eb3f2fc8f5d3f1ee62260"
+        },
+        {
+          "id": "osm:way:256592014",
+          "kind": "residential",
+          "tags": {
+            "addr:city": "جرزونة",
+            "addr:country": "TN",
+            "addr:postcode": "7021",
+            "landuse": "residential",
+            "name": "جرزونة",
+            "name:ar": "جرزونة",
+            "name:de": "Dscharzuna",
+            "name:en": "Jarzuna",
+            "name:fr": "Zarzouna",
+            "population": "24428",
+            "wikipedia": "ar:جرزونة"
+          },
+          "geometrySha256": "6d831c39bdef8d73dd358d85679faee1a2f2db317471b0ded32b065965c5584d"
+        }
+      ],
+      "governorSourceId": "osm:relation:1435827",
+      "peerNameValues": [
+        "Zarzouna",
+        "جرزونة"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:node:2622426837",
+        "osm:relation:7151759",
+        "osm:way:256592014"
+      ],
+      "settlement": {
+        "id": "osm:node:2622426837",
+        "tags": {
+          "addr:postcode": "7021",
+          "name": "جرزونة",
+          "name:ar": "جرزونة",
+          "name:de": "Dscharzuna",
+          "name:en": "Jarzuna",
+          "name:fr": "Zarzouna",
+          "place": "village",
+          "population": "24428",
+          "wikidata": "Q3574882",
+          "wikipedia": "ar:جرزونة"
+        },
+        "lat": 37.2649034,
+        "lng": 9.8854698,
+        "kind": "village"
+      },
+      "matchingSupplementalCityIds": [],
+      "liveSourceBridge": null,
+      "rawAndBaseCoordinatesDiffer": true
+    },
+    {
+      "id": "osm:way:179056480",
+      "sourceReviewRecord": {
+        "baseId": 636,
+        "id": "osm:way:179056480",
+        "name": "الكاف",
+        "reasonStillSeparate": [
+          "no_independently_supported_namesake_identity"
+        ],
+        "currentGroupMembers": [
+          "osm:way:179056480"
+        ],
+        "currentBaseGroupMembers": [
+          "delegation:636"
+        ],
+        "primaryNameMatchesBase": true,
+        "governorateId": 363,
+        "currentParentName": "ولاية الكاف",
+        "manualReference": {
+          "lat": 36.17076,
+          "lng": 8.703368,
+          "storedSource": 636,
+          "nearestEligibleSource": 636
+        },
+        "baseReference": {
+          "nomAr": "الكاف",
+          "nomFr": "Le Kef",
+          "lat": 36.1747,
+          "lng": 8.7049
+        },
+        "baseInsideOriginalAndPacked": true,
+        "rawSourceTags": {
+          "addr:city": "الكاف",
+          "addr:city:ar": "الكاف",
+          "landuse": "residential",
+          "name": "الكاف",
+          "name:ar": "الكاف",
+          "name:de": "Al-Kaf",
+          "name:en": "Al-Kaf",
+          "name:fr": "Le Kef"
+        },
+        "originalGeometrySha256": "9539c63b1c2c288ec7d50cc83b6c5fbc0a8718c25c59dec0d7cdb0872d170824",
+        "packedGeometrySha256": "1da2bad68abe4e34bd03f1ccb177b190655f233feb74837878758eb315fc0ef2",
+        "geometryMatchesPriorHeldReview": true,
+        "sourceSettlement": {
+          "id": "osm:node:287622372",
+          "tags": {
+            "name": "الكاف",
+            "name:ar": "الكاف",
+            "name:azb": "الکاف",
+            "name:de": "Al-Kaf",
+            "name:en": "Al-Kaf",
+            "name:fa": "الکاف",
+            "name:fr": "Le Kef",
+            "name:he": "אל-כאף",
+            "name:kab": "Lkaf",
+            "name:ks": "الکاف",
+            "name:ru": "Эль-Кеф",
+            "name:ur": "الکاف",
+            "place": "city",
+            "population": "73710",
+            "wikidata": "Q27155",
+            "wikimedia_commons": "Category:Le Kef",
+            "wikipedia": "ar:الكاف"
+          },
+          "lat": 36.1784491,
+          "lng": 8.707347,
+          "sourceFile": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\osm-city-nodes.json",
+            "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+          },
+          "insideOriginalAndPackedResidential": true,
+          "nearestEligibleSource": 636,
+          "baseCoordinateDistanceMeters": 471.19963883372554,
+          "rawCatalogAbsent": true,
+          "compilerDisposition": "excluded place=city kind; not absorbed",
+          "sourceProvenanceQualification": "Existing historical city-node cache and coordinate audit agree; this cache is not itself a fresh exact-PBF/source-version assertion."
+        },
+        "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+        "existingMethodReady": false,
+        "existingMethodBlockers": [
+          "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+          "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+          "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+        ],
+        "nextAction": "For a separate exact city/base display method, pin this already known city-node source object as evidence without globally admitting city nodes or restoring raw choices; keep source636 and both base/representative coordinates unchanged.",
+        "specificAdditionalCheck": "Bind the city-node cached tags/coordinate to the exact pinned PBF or a byte-pinned original source response and complete same-name/context inventory before compiler integration.",
+        "proposedOnlyDelta": {
+          "id": "osm:way:179056480",
+          "field": "pickerGroupId",
+          "before": "osm:way:179056480",
+          "after": "delegation:636"
+        },
+        "noPrayerOrCoordinateCorrectionRequired": true,
+        "geonamesContextReuse": [
+          {
+            "id": "2473634",
+            "name": "El Kef",
+            "featureCode": "PPLA",
+            "lat": 36.17424,
+            "lng": 8.70486,
+            "sameGovernorate": true
+          }
+        ],
+        "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+      },
+      "expectedBase": {
+        "id": 636,
+        "nomFr": "Le Kef",
+        "nomAr": "الكاف",
+        "nomEn": "Le Kef",
+        "lat": 36.1747,
+        "lng": 8.7049
+      },
+      "expectedGovernorateId": 363,
+      "expectedMetadata": {
+        "id": "osm:way:179056480",
+        "sourceId": "osm",
+        "name": "الكاف",
+        "aliases": [
+          "Le Kef",
+          "Al-Kaf"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية الكاف",
+        "contextAliases": [],
+        "governorateId": 363,
+        "lat": 36.17076,
+        "lng": 8.703368,
+        "delegationId": 636,
+        "hasBoundary": true,
+        "bbox": [
+          8.676595,
+          36.148707,
+          8.733244,
+          36.192656
+        ],
+        "areaKm2": 9.870303481504838,
+        "pickerGroupId": "osm:way:179056480"
+      },
+      "packedGeometrySha256": "1da2bad68abe4e34bd03f1ccb177b190655f233feb74837878758eb315fc0ef2",
+      "sourceAssertions": [
+        {
+          "id": "osm:relation:1435838",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-33",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Kef",
+            "boundary": "administrative",
+            "name": "ولاية الكاف",
+            "name:ar": "ولاية الكاف",
+            "name:az": "Kef (vilayət)",
+            "name:be": "Эль-Кеф (вілает)",
+            "name:be-tarask": "Эль-Кеф (вілает)",
+            "name:bg": "Кеф (област)",
+            "name:ca": "Governació del Kef",
+            "name:ceb": "Gouvernorat de Kef",
+            "name:cy": "El Kef (talaith)",
+            "name:de": "Al-Kaf",
+            "name:el": "Αλ Καφ (Κυβερνείο)",
+            "name:en": "Al Kaf",
+            "name:es": "Gobernación de Al-Kāf",
+            "name:fa": "کاف",
+            "name:fi": "Kef (kuvernementti)",
+            "name:fr": "Gouvernorat Le Kef",
+            "name:frr": "Kef (Guwernement)",
+            "name:id": "Kegubernuran Kef",
+            "name:it": "Le Kef",
+            "name:ja": "ケフ県",
+            "name:ko": "케프주 (튀니지)",
+            "name:ms": "Kawasan kegabenoran Kef",
+            "name:nl": "Kef (gouvernement)",
+            "name:no": "Kef (guvernement)",
+            "name:pl": "Gubernatorstwo Al-Kaf",
+            "name:pt": "Kef (província)",
+            "name:ro": "Guvernoratul Kef",
+            "name:ru": "Эль-Кеф (вилайет)",
+            "name:sco": "Kef Govrenorate",
+            "name:sh": "Kef (vilajet)",
+            "name:tr": "Kâf ili",
+            "name:uk": "Ель-Кеф (вілаєт)",
+            "name:ur": "کاف",
+            "name:zh": "卡夫省",
+            "name:zu": "Kef Governorate",
+            "official_name": "ولاية الكاف",
+            "official_name:ar": "ولاية الكاف",
+            "official_name:en": "El Kef Governorate",
+            "official_name:fr": "Gouvernorat du Kef",
+            "official_name:it": "Governatorato del Kef",
+            "population": "258790",
+            "population:date": "2004",
+            "ref:tn:codegeo": "23",
+            "wikidata": "Q328199",
+            "wikipedia": "ar:ولاية الكاف"
+          },
+          "geometrySha256": "a05ac1c3ce0ca8c52ff1923978f6572743d4befbdfc73ded8254762f6ac2e155"
+        },
+        {
+          "id": "osm:way:179056480",
+          "kind": "residential",
+          "tags": {
+            "addr:city": "الكاف",
+            "addr:city:ar": "الكاف",
+            "landuse": "residential",
+            "name": "الكاف",
+            "name:ar": "الكاف",
+            "name:de": "Al-Kaf",
+            "name:en": "Al-Kaf",
+            "name:fr": "Le Kef"
+          },
+          "geometrySha256": "9539c63b1c2c288ec7d50cc83b6c5fbc0a8718c25c59dec0d7cdb0872d170824"
+        }
+      ],
+      "governorSourceId": "osm:relation:1435838",
+      "peerNameValues": [
+        "Le Kef",
+        "الكاف"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:relation:1435838",
+        "osm:way:179056480"
+      ],
+      "settlement": {
+        "id": "osm:node:287622372",
+        "tags": {
+          "name": "الكاف",
+          "name:ar": "الكاف",
+          "name:azb": "الکاف",
+          "name:de": "Al-Kaf",
+          "name:en": "Al-Kaf",
+          "name:fa": "الکاف",
+          "name:fr": "Le Kef",
+          "name:he": "אל-כאף",
+          "name:kab": "Lkaf",
+          "name:ks": "الکاف",
+          "name:ru": "Эль-Кеф",
+          "name:ur": "الکاف",
+          "place": "city",
+          "population": "73710",
+          "wikidata": "Q27155",
+          "wikimedia_commons": "Category:Le Kef",
+          "wikipedia": "ar:الكاف"
+        },
+        "lat": 36.1784491,
+        "lng": 8.707347,
+        "kind": "city"
+      },
+      "matchingSupplementalCityIds": [
+        "osm:node:287622372"
+      ],
+      "liveSourceBridge": {
+        "report": {
+          "file": "six-city-base-reviews/source-bridge/live-node-source-bridge.json",
+          "sha256": "9e3e9caa3b45838abfdf448815d60d66611fe58c8d3a36dadc881265b6d6335b"
+        },
+        "responses": [
+          {
+            "id": "osm:node:2930586474",
+            "file": "six-city-base-reviews/source-bridge/node-2930586474.xml",
+            "sha256": "5e68d1a7d34484acf3dabd864a0f8ebf0083d09cf766958dd179ea3129a4a5d1"
+          },
+          {
+            "id": "osm:node:287622372",
+            "file": "six-city-base-reviews/source-bridge/node-287622372.xml",
+            "sha256": "e8a016c444fe74398c3632d83e1f49c4752acbd881c69c9296689a8cf8420c34"
+          },
+          {
+            "id": "osm:node:287545859",
+            "file": "six-city-base-reviews/source-bridge/node-287545859.xml",
+            "sha256": "97acc9e975a943ad6d1f45d0896e0dd750391598e343fabcc9cc6ba84a8af3f4"
+          }
+        ],
+        "cachedCitySources": {
+          "file": "six-city-base-reviews/source-bridge/osm-city-nodes.json",
+          "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+        }
+      },
+      "rawAndBaseCoordinatesDiffer": true
+    },
+    {
+      "id": "osm:way:206318231",
+      "sourceReviewRecord": {
+        "baseId": 638,
+        "id": "osm:way:206318231",
+        "name": "قفصة",
+        "reasonStillSeparate": [
+          "no_independently_supported_namesake_identity"
+        ],
+        "currentGroupMembers": [
+          "osm:way:206318231"
+        ],
+        "currentBaseGroupMembers": [
+          "delegation:638"
+        ],
+        "primaryNameMatchesBase": true,
+        "governorateId": 365,
+        "currentParentName": "ولاية قفصة",
+        "manualReference": {
+          "lat": 34.430663,
+          "lng": 8.786524,
+          "storedSource": 638,
+          "nearestEligibleSource": 638
+        },
+        "baseReference": {
+          "nomAr": "قفصة",
+          "nomFr": "Gafsa",
+          "lat": 34.425,
+          "lng": 8.7842
+        },
+        "baseInsideOriginalAndPacked": true,
+        "rawSourceTags": {
+          "int_name": "Qafsa",
+          "landuse": "residential",
+          "name": "قفصة",
+          "name:ar": "قفصة",
+          "name:en": "Qafsa",
+          "name:fr": "Gafsa"
+        },
+        "originalGeometrySha256": "70b3495a030f750bfc8b58456f748127c90c002456d5fc0fe98a4c6f427eae4b",
+        "packedGeometrySha256": "380062174bc02bfd354d9a9de0a3f4b3e883787f0a41dde6d94fddee1dd2e22c",
+        "geometryMatchesPriorHeldReview": true,
+        "sourceSettlement": {
+          "id": "osm:node:287545859",
+          "tags": {
+            "alt_name:tr": "Gafsa",
+            "int_name": "Qafsa",
+            "name": "قفصة",
+            "name:ar": "قفصة",
+            "name:en": "Gafsa",
+            "name:fr": "Gafsa",
+            "name:he": "גאפסה",
+            "name:ru": "Гафса",
+            "name:tr": "Kafsa",
+            "place": "city",
+            "population": "111170",
+            "wikidata": "Q466006",
+            "wikimedia_commons": "Category:Gafsa",
+            "wikipedia": "ar:قفصة"
+          },
+          "lat": 34.4224374,
+          "lng": 8.7843862,
+          "sourceFile": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\osm-city-nodes.json",
+            "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+          },
+          "insideOriginalAndPackedResidential": true,
+          "nearestEligibleSource": 638,
+          "baseCoordinateDistanceMeters": 285.45947703749385,
+          "rawCatalogAbsent": true,
+          "compilerDisposition": "excluded place=city kind; not absorbed",
+          "sourceProvenanceQualification": "Existing historical city-node cache and coordinate audit agree; this cache is not itself a fresh exact-PBF/source-version assertion."
+        },
+        "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+        "existingMethodReady": false,
+        "existingMethodBlockers": [
+          "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+          "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+          "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+        ],
+        "nextAction": "For a separate exact city/base display method, pin this already known city-node source object as evidence without globally admitting city nodes or restoring raw choices; keep source638 and both base/representative coordinates unchanged.",
+        "specificAdditionalCheck": "Bind the city-node cached tags/coordinate to the exact pinned PBF or a byte-pinned original source response and complete same-name/context inventory before compiler integration.",
+        "proposedOnlyDelta": {
+          "id": "osm:way:206318231",
+          "field": "pickerGroupId",
+          "before": "osm:way:206318231",
+          "after": "delegation:638"
+        },
+        "noPrayerOrCoordinateCorrectionRequired": true,
+        "geonamesContextReuse": [
+          {
+            "id": "2468353",
+            "name": "Gafsa",
+            "featureCode": "PPLA",
+            "lat": 34.425,
+            "lng": 8.78417,
+            "sameGovernorate": true
+          }
+        ],
+        "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+      },
+      "expectedBase": {
+        "id": 638,
+        "nomFr": "Gafsa",
+        "nomAr": "قفصة",
+        "nomEn": "Gafsa",
+        "lat": 34.425,
+        "lng": 8.7842
+      },
+      "expectedGovernorateId": 365,
+      "expectedMetadata": {
+        "id": "osm:way:206318231",
+        "sourceId": "osm",
+        "name": "قفصة",
+        "aliases": [
+          "Gafsa",
+          "Qafsa"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية قفصة",
+        "contextAliases": [],
+        "governorateId": 365,
+        "lat": 34.430663,
+        "lng": 8.786524,
+        "delegationId": 638,
+        "hasBoundary": true,
+        "bbox": [
+          8.741575,
+          34.409422,
+          8.802238,
+          34.451905
+        ],
+        "areaKm2": 11.501009287557887,
+        "pickerGroupId": "osm:way:206318231"
+      },
+      "packedGeometrySha256": "380062174bc02bfd354d9a9de0a3f4b3e883787f0a41dde6d94fddee1dd2e22c",
+      "sourceAssertions": [
+        {
+          "id": "osm:relation:1434951",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-71",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قفصة",
+            "name:ar": "ولاية قفصة",
+            "name:az": "Qafsa (vilayət)",
+            "name:azb": "قفصه",
+            "name:be": "Гафса (вілает)",
+            "name:be-tarask": "Гафса (вілает)",
+            "name:bg": "Гафса (област)",
+            "name:ca": "Governació de Gafsa",
+            "name:ceb": "Gafsa Governorate",
+            "name:cy": "Gafsa (talaith)",
+            "name:de": "Gouvernement Gafsa",
+            "name:el": "Κάφσα (Κυβερνείο)",
+            "name:en": "Gafsa",
+            "name:es": "Gobernación de Gafsa",
+            "name:fa": "قفصه",
+            "name:fi": "Gafsa (kuvernementti)",
+            "name:fr": "Gouvernorat Gafsa",
+            "name:frr": "Gafsa (Guwernement)",
+            "name:hu": "Gafsza kormányzóság",
+            "name:id": "Kegubernuran Gafsa",
+            "name:it": "Gafsa",
+            "name:ja": "ガフサ県",
+            "name:kab": "قفصة",
+            "name:ko": "가프사주",
+            "name:lt": "Gafsos vilajetas",
+            "name:ms": "Kawasan kegabenoran Gafsa",
+            "name:nl": "Gafsa (gouvernement)",
+            "name:no": "Gafsa (guvernement)",
+            "name:pl": "Gubernatorstwo Kafsa",
+            "name:pt": "Gafsa (província)",
+            "name:ro": "Guvernoratul Gafsa",
+            "name:ru": "Гафса (вилайет)",
+            "name:sco": "Gafsa Govrenorate",
+            "name:sh": "Gafsa (vilajet)",
+            "name:tr": "Kafsa ili",
+            "name:uk": "Гафса (вілаєт)",
+            "name:ur": "قفصہ",
+            "name:zh": "加夫薩省",
+            "name:zu": "Gafsa Governorate",
+            "official_name": "ولاية قفصة",
+            "official_name:ar": "ولاية قفصة",
+            "official_name:en": "Gafsa Governorate",
+            "official_name:fa": "استان قفصه",
+            "official_name:fr": "Gouvernorat de Gafsa",
+            "official_name:it": "Governatorato di Gafsa",
+            "official_name:ur": "ولایت قفصہ",
+            "population": "337331",
+            "population:date": "2014",
+            "ref:tn:codegeo": "61",
+            "wikidata": "Q269968",
+            "wikipedia": "ar:ولاية قفصة"
+          },
+          "geometrySha256": "34ab56cac90244458fd888a37bffee4d335ae97ab72481bee07baf2971382918"
+        },
+        {
+          "id": "osm:way:206318231",
+          "kind": "residential",
+          "tags": {
+            "int_name": "Qafsa",
+            "landuse": "residential",
+            "name": "قفصة",
+            "name:ar": "قفصة",
+            "name:en": "Qafsa",
+            "name:fr": "Gafsa"
+          },
+          "geometrySha256": "70b3495a030f750bfc8b58456f748127c90c002456d5fc0fe98a4c6f427eae4b"
+        }
+      ],
+      "governorSourceId": "osm:relation:1434951",
+      "peerNameValues": [
+        "Gafsa",
+        "قفصة"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:relation:1434951",
+        "osm:way:206318231"
+      ],
+      "settlement": {
+        "id": "osm:node:287545859",
+        "tags": {
+          "alt_name:tr": "Gafsa",
+          "int_name": "Qafsa",
+          "name": "قفصة",
+          "name:ar": "قفصة",
+          "name:en": "Gafsa",
+          "name:fr": "Gafsa",
+          "name:he": "גאפסה",
+          "name:ru": "Гафса",
+          "name:tr": "Kafsa",
+          "place": "city",
+          "population": "111170",
+          "wikidata": "Q466006",
+          "wikimedia_commons": "Category:Gafsa",
+          "wikipedia": "ar:قفصة"
+        },
+        "lat": 34.4224374,
+        "lng": 8.7843862,
+        "kind": "city"
+      },
+      "matchingSupplementalCityIds": [
+        "osm:node:287545859"
+      ],
+      "liveSourceBridge": {
+        "report": {
+          "file": "six-city-base-reviews/source-bridge/live-node-source-bridge.json",
+          "sha256": "9e3e9caa3b45838abfdf448815d60d66611fe58c8d3a36dadc881265b6d6335b"
+        },
+        "responses": [
+          {
+            "id": "osm:node:2930586474",
+            "file": "six-city-base-reviews/source-bridge/node-2930586474.xml",
+            "sha256": "5e68d1a7d34484acf3dabd864a0f8ebf0083d09cf766958dd179ea3129a4a5d1"
+          },
+          {
+            "id": "osm:node:287622372",
+            "file": "six-city-base-reviews/source-bridge/node-287622372.xml",
+            "sha256": "e8a016c444fe74398c3632d83e1f49c4752acbd881c69c9296689a8cf8420c34"
+          },
+          {
+            "id": "osm:node:287545859",
+            "file": "six-city-base-reviews/source-bridge/node-287545859.xml",
+            "sha256": "97acc9e975a943ad6d1f45d0896e0dd750391598e343fabcc9cc6ba84a8af3f4"
+          }
+        ],
+        "cachedCitySources": {
+          "file": "six-city-base-reviews/source-bridge/osm-city-nodes.json",
+          "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+        }
+      },
+      "rawAndBaseCoordinatesDiffer": true
+    }
+  ],
+  "sourceScope": "Original/effective assertions bind current PBF extraction. City nodes bind only their explicit byte-pinned public API responses, never a claimed PBF origin."
+}

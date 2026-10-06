@@ -13,7 +13,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * Compose UI tests for the OnboardingActivity's 6-step flow.
+ * Compose UI tests for the OnboardingActivity's 8-step flow.
  */
 @RunWith(AndroidJUnit4::class)
 class OnboardingActivityInstrumentedTest {

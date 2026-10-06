@@ -1,0 +1,158 @@
+{
+  "status": "PASS_SOURCE_FAITHFUL_EXHAUSTIVE_AGGREGATE_WITH_EXPLICIT_INTEGRATION_HOLDS",
+  "reviewedDate": "2026-09-07",
+  "candidatePath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+  "candidateSha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+  "sourcePartsSha256": "7a4966f8ae07440cd7d77db733c22adfb0eec4af6fccf74d1facf36c5b34f509",
+  "sourceSnapshotSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "registrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+  "decreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+  "decreeVisualEvidence": {
+    "image": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\page-15.png",
+    "PDFPage": 15,
+    "JORTPage": 5112,
+    "decision": "The Bekalta North imada cell spans exactly North1 and North2 rows in annexA. Both exhaustive pieces, and no other imada or circle, form325951. Separate neighboring BekaltaSouth/East and Baghdadi rows remain distinct."
+  },
+  "partChecks": [
+    {
+      "id": "bekalta-north-1",
+      "name": "البقالطة الشمالية 1",
+      "pdfPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-next-conflicts\\bekalta-north.pdf",
+      "pdfSha256": "44da4d4631854a63048c32acf144bb49e5dc583f8dd4b4b492675432430b7bbf",
+      "drawingIndex": 237,
+      "vertices": 177,
+      "originalSegmentCount": 176,
+      "controlResidualMeters": 0.32085106418361614,
+      "independentlyReconstructedGeometryExactlyEqual": true,
+      "allOriginalSegmentsAndClosurePreserved": true,
+      "activeClipsContainWholePart": true,
+      "bounds": [
+        10.983469620374652,
+        35.61590692969636,
+        11.036007636516446,
+        35.63977045211151
+      ],
+      "areaMeters2": 6734240.573074654,
+      "countryContains": true,
+      "visualReview": "Full source page independently viewed; numbered title, footprint and adjoining boundaries identify this part. North2 label on the North1 overview is displaced; the North2 dedicated page supplies its independent identity."
+    },
+    {
+      "id": "bekalta-north-2",
+      "name": "البقالطة الشمالية 2",
+      "pdfPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-sector-maps-next-conflicts\\bekalta-north-detail.pdf",
+      "pdfSha256": "c2f5d298778222de1ef8a4cd19b41c58653b8a247c6d7197c1d653eb80018252",
+      "drawingIndex": 146,
+      "vertices": 88,
+      "originalSegmentCount": 87,
+      "controlResidualMeters": 0.22829289759060906,
+      "independentlyReconstructedGeometryExactlyEqual": true,
+      "allOriginalSegmentsAndClosurePreserved": true,
+      "activeClipsContainWholePart": true,
+      "bounds": [
+        10.973385183879945,
+        35.6138263430342,
+        10.995333002311991,
+        35.63333061585647
+      ],
+      "areaMeters2": 2543234.9161091456,
+      "countryContains": true,
+      "visualReview": "Full source page independently viewed; numbered title, footprint and adjoining boundaries identify this part. North2 label on the North1 overview is displaced; the North2 dedicated page supplies its independent identity."
+    }
+  ],
+  "aggregateChecks": {
+    "exactRequiredParts": true,
+    "exactUnroundedSetUnion": true,
+    "sourceAndUnionValid": true,
+    "allPartsAndUnionInsideCountry": true,
+    "originalInteriorGapCount": 4,
+    "sourceAreaMeters2": 9276892.438539421,
+    "inputOverlapMeters2": 583.0395295198193,
+    "originalInteriorGapAreaMeters2": 244.0966999566119,
+    "noManualGapFillOrSnap": true
+  },
+  "quantization": {
+    "gridDegrees": 1e-06,
+    "quantizedValidAndCountryContained": true,
+    "interiorGapCountStill4": true,
+    "exteriorHausdorffMeters": 0.06164800090210324,
+    "allBoundaryHausdorffMeters": 87.13743027602197,
+    "symmetricDifferenceMeters2": 350.1567418595585,
+    "holes": [
+      {
+        "sourceHoleIndex": 1,
+        "sourceAreaMeters2": 23.233201590541682,
+        "quantizedAreaMeters2": 22.0678832307392,
+        "gapFilledByQuantizationMeters2": 1.6669433936460778,
+        "newlyExcludedByQuantizationMeters2": 0.5015899144153384,
+        "boundaryHausdorffMeters": 0.03908084681769629,
+        "sourceVertices": 5,
+        "quantizedVertices": 5
+      },
+      {
+        "sourceHoleIndex": 2,
+        "sourceAreaMeters2": 77.23789121160836,
+        "quantizedAreaMeters2": 80.73034080208845,
+        "gapFilledByQuantizationMeters2": 1.1124221632770235,
+        "newlyExcludedByQuantizationMeters2": 4.60468522728911,
+        "boundaryHausdorffMeters": 0.05356680784602147,
+        "sourceVertices": 5,
+        "quantizedVertices": 5
+      },
+      {
+        "sourceHoleIndex": 3,
+        "sourceAreaMeters2": 4.589248110349907,
+        "quantizedAreaMeters2": 4.789246278222436,
+        "gapFilledByQuantizationMeters2": 0.9087274776491885,
+        "newlyExcludedByQuantizationMeters2": 1.1071912652510585,
+        "boundaryHausdorffMeters": 0.05832735821409683,
+        "sourceVertices": 5,
+        "quantizedVertices": 5
+      },
+      {
+        "sourceHoleIndex": 4,
+        "sourceAreaMeters2": 139.03635904411195,
+        "quantizedAreaMeters2": 129.4664125237831,
+        "gapFilledByQuantizationMeters2": 11.548646010359661,
+        "newlyExcludedByQuantizationMeters2": 1.9798618653885645,
+        "boundaryHausdorffMeters": 87.13743027602197,
+        "sourceVertices": 11,
+        "quantizedVertices": 7
+      }
+    ],
+    "interpretation": "A narrow branch of one internal hole collapses under the existing coordinate grid. This produces about87m boundary Hausdorff although the exterior changes about6cm. Four hole components survive, but their exact uncovered area does not; retain this caveat."
+  },
+  "allPeerOverlaps": [
+    {
+      "id": "osm:relation:7111785",
+      "name": "الفضلين",
+      "overlapMeters2": 2815569.91386182,
+      "interiorSampleDepthMeters": 485.9146287486736
+    },
+    {
+      "id": "osm:relation:7111784",
+      "name": "العيايشة",
+      "overlapMeters2": 57096.423086651754,
+      "interiorSampleDepthMeters": 0.9961436109416162
+    },
+    {
+      "id": "osm:relation:7111931",
+      "name": "البقالطة الجنوبية",
+      "overlapMeters2": 49430.37309017528,
+      "interiorSampleDepthMeters": 29.47956424469768
+    },
+    {
+      "id": "osm:relation:7111932",
+      "name": "البقالطة الشرقية",
+      "overlapMeters2": 14333.451782129516,
+      "interiorSampleDepthMeters": 2.786499038869733
+    }
+  ],
+  "currentPendingCandidatesIntersectingAggregate": [],
+  "nameIdentityDecision": "Keep source ID7111933/code325951 but replace incorrect Teboulba names with official BekaltaNorth. Do not retain Teboulba as an alias. Both source circle geometries and their exact union must remain in provenance.",
+  "integrationHolds": [
+    "Explicit loader support must require this code/identity and exactly both pinned parts; the existing whole-circle guard cannot accept either part alone.",
+    "Fadhalin overlap2.816km² remains a substantive conflicting older footprint; Ayaicha, BekaltaSouth and BekaltaEast also need connected review.",
+    "Normal1e-6-degree quantization measurably fills thin portions of source gaps; do not say every source gap is preserved exactly in packed form. Root must explicitly accept this effect or preserve greater precision."
+  ],
+  "scope": "Independent read-only reconstruction, visual/legal review and geometry analysis. No exporter rerun, source edit, repository/app mutation, phone, tests or builds."
+}

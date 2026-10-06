@@ -1,0 +1,33 @@
+{
+  "observedAt": "2026-09-07T06:13:41.558025+00:00",
+  "query": "سوق الجديد سيدي بوزيد Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Souk Jedid"
+  ],
+  "publicUiText": [
+    "Souk Jedid",
+    "السوق الجديد",
+    "Tunisia",
+    "Directions to Souk Jedid",
+    "Directions",
+    "Share Souk Jedid",
+    "Share",
+    "Save Souk Jedid to lists",
+    "Save",
+    "Photo",
+    "Close",
+    "سوق الجديد سيدي بوزيد Tunisia",
+    "Clear",
+    "Restaurants",
+    "Hotels",
+    "Attractions"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "Souk Jedid",
+    "Souk Jedid"
+  ],
+  "screenshot": "delegation_513-1.png",
+  "boundaryVerified": false
+}

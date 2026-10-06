@@ -1,0 +1,115 @@
+{
+  "status": "PASS_QUALIFIED_OFFICIAL_PUBLISHED_REFERENCE_COORDINATES",
+  "reviewedAt": "2026-09-12T10:20:59.398822+00:00",
+  "scope": "Read-only independent source review for Bou Argoub463 and Hajeb El Ayoun526; source meaning and root two-reference impact preview only.",
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-reference-independent-review\\exact-source-semantics-facts.json",
+    "sha256": "cceeef4554191aa493191454c5da85365a7f5632d5143fc50331be7ce21df31d"
+  },
+  "verifiedPublishedCoordinates": [
+    {
+      "delegationId": 463,
+      "name": "Bou Argoub",
+      "governorateId": 350,
+      "lat": 36.535,
+      "lng": 10.552
+    },
+    {
+      "delegationId": 526,
+      "name": "Hajeb El Ayoun",
+      "governorateId": 357,
+      "lat": 35.397,
+      "lng": 9.543
+    }
+  ],
+  "sourceIdentityVerdict": "All four original responses match their requested date, delegation ID, exact Arabic/French names and expected governorate ID/name. Each delegation parent equals the returned governorate. Prayer/sun coordinates agree exactly as raw strings for each ID. Records are active for2026 and date2026-09-12. Both public pages contain these exact selected IDs as nondeleted Refastronomiedelegation children under their expected governorates.",
+  "semanticFindings": {
+    "justified": "These are lat/lng values published by INM alongside the selected daily prayer and sunrise timetable records. They can be described as the official published coordinates associated with each timetable reference.",
+    "frontendUse": "Both inspected first-party modules request data using date/governorate/delegation IDs and render returned time fields. Neither reads lat/lng, initializes a map or passes coordinates to an astronomical calculation. No data.lat/data.lng access was found across the seven distinct linked first-party JS files inspected.",
+    "mapReferenceClaim": "Not established. The inspected prayer/sun modules do not use these coordinates as a map reference.",
+    "actualCalculationInputClaim": "Not established. The frontend supplies no coordinates; the server may use internal coordinates or precomputed times, but these responses and scripts do not document how the backend calculated the published times.",
+    "cityOrBoundaryClaim": "No city-center, imada, delegation or municipal polygon boundary meaning is established by these coordinate fields."
+  },
+  "recommendation": {
+    "verdict": "SOURCE_QUALIFIED_SUPPORT_FOR_OFFLINE_NEAREST_TIMETABLE_REFERENCE_USE",
+    "reason": "For an app selecting the nearest official timetable by distance, using coordinates published with the corresponding INM timetable IDs is better supported than retaining undocumented legacy coordinates. Preserve the distinction between place geometry/display identity and timetable-source reference location.",
+    "proposedReferenceUpdates": [
+      {
+        "delegationId": 463,
+        "before": {
+          "lat": 36.55,
+          "lng": 10.55
+        },
+        "after": {
+          "lat": 36.535,
+          "lng": 10.552
+        }
+      },
+      {
+        "delegationId": 526,
+        "before": {
+          "lat": 35.39,
+          "lng": 9.57
+        },
+        "after": {
+          "lat": 35.397,
+          "lng": 9.543
+        }
+      }
+    ],
+    "implementationQualification": "This review approves the source characterization only. The pending broader inventory may supersede the final coordinate batch and impact. Any implementation must migrate affected active proof references and recompute nearest-source consequences, retaining timetable IDs and administrative/place geometry."
+  },
+  "concernsAndLimits": [
+    "No pair-specific placeholder/wrong-record signal found: exact IDs/names/parents/date agree, both astronomical resources agree, and the two numeric coordinates are distinct, nonzero and within Tunisia. This is not a guarantee that INM records are error-free.",
+    "Only the frozen2026-09-12 records were verified. Temporal stability across other dates/years and all other IDs is outside this review.",
+    "Hajeb El Ayoun longitude is the raw string \" 9.543\" with a leading space in both responses. Preserve original bytes; parsing to the numerical longitude9.543 requires only normal numeric whitespace handling.",
+    "The meaning of lat/lng as the precise internal astronomical calculation inputs is undocumented in the inspected primary material.",
+    "Nearest timetable selection remains a geographic approximation. No exact neighborhood or administrative boundary should be inferred from the selected reference."
+  ],
+  "rootImpactPreviewReview": {
+    "report": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\official463526-reference-impact-preview.json",
+      "sha256": "a143e7a4dba14bfb6ffbed8c9a5fca29114366792e18f77aa74756b1738a8c55"
+    },
+    "fullComparisonArtifact": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-reference-impact\\nearest-reference-matrix.json",
+      "sha256": "1861d99d91ae1d59afee5f2b7672bb3d190c36391caf5d12ece8310cc3bd98a8"
+    },
+    "reviewLevel": "Verified hashes, exact proposed coordinate/source values and internally stated bounded result; read the complete preview. Did not rerun the full distance matrix or generator.",
+    "reportedBaselineRows": 3623,
+    "reportedReferences": 258,
+    "reportedBaselineMismatches": 0,
+    "reportedChangedNearestCount": 1,
+    "reportedChangedNearest": {
+      "id": "osm:relation:7169663",
+      "name": "باطن الغزال الشمالية",
+      "kind": "sector",
+      "governorateId": 355,
+      "pickerGroupId": "osm:relation:7169663",
+      "lat": 35.447035,
+      "lng": 9.33574,
+      "storedDelegationId": 506,
+      "beforeNearest": {
+        "id": 506,
+        "km": 21.105161679667447
+      },
+      "afterNearest": {
+        "id": 526,
+        "km": 19.587283173099856
+      }
+    },
+    "limitation": "This is the two-reference-only preview, not the impact of the pending full official inventory."
+  },
+  "actions": {
+    "productOrStageWrites": false,
+    "wholeInventoryFetch": false,
+    "phoneOrLedgerAccess": false,
+    "generatorOrProductHelperRun": false,
+    "testsOrBuild": false,
+    "writtenArtifacts": "Only the assigned independent-review work directory and this output report."
+  },
+  "reviewProducer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official463526-reference-independent-review\\freeze_review.py",
+    "sha256": "e1275774e9494ac76320498356a609c94f03605f4831be981659e3cc510456de"
+  }
+}

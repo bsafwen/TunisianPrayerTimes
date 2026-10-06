@@ -1,0 +1,128 @@
+{
+  "status": "SAME_INHABITED_BEKALTA_TOWN_IDENTITY_SUPPORTED_NO_STAGE",
+  "reviewedAt": "2026-09-12T11:01:30.022698+00:00",
+  "scope": {
+    "pointId": "osm:node:558814858",
+    "baseId": 601,
+    "governorateId": 364,
+    "displayIdentityOnly": true
+  },
+  "inputPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2",
+      "bytes": 1883660
+    },
+    "governorateAsset": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "3be47aac507d34a9088a1dd26e3e71d844cdb36d3fc91259f57d17092dc877a9",
+      "bytes": 267555
+    },
+    "registry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "reviewedBoundaries": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    }
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\retrieval-manifest.json",
+    "sha256": "ab72387fe428c386efb8d5c192f361bd552bbef23e7db21841fde7dba09914b0",
+    "bytes": 6443
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\source-identity-facts.json",
+    "sha256": "eff6cf8be916dbf7f6cc1ac6344ca6b765eff9b5cafd9f39bfd7e8346ebeef1f",
+    "bytes": 21365
+  },
+  "primaryEvidence": [
+    {
+      "role": "official_settlement_identity",
+      "url": "https://www.commune-bekalta.gov.tn/news-ar/165-proprete",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\municipal-city-cleaning.html",
+        "sha256": "e445ef4b80ade97a6f7ac38ac9e447f1446fa214ef5a6a3d3352aaa0a1b8c654",
+        "bytes": 78052
+      },
+      "requiredText": [
+        "مدينة البقالطة",
+        "بشارع البيئة"
+      ],
+      "finding": "The municipal report describes an actual street-cleaning operation on17July2025 and calls the inhabited place the city of Bekalta. It supplies town identity rather than merely an administrative name."
+    },
+    {
+      "role": "official_locality_context",
+      "url": "https://www.commune-bekalta.gov.tn/bekalta/ville/localisation",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\municipal-geography.html",
+        "sha256": "c816d5f6f1929d6df59cd26571dbdee04ddc046cb0a3fe2d9a24a532e6d08e9d",
+        "bytes": 62531
+      },
+      "requiredText": [
+        "بلدية البقالطة",
+        "لولاية المنستير"
+      ],
+      "finding": "The municipality locates Bekalta in southeastern Monastir, south of Teboulba. Municipal geographic extent is contextual only; no boundary or iframe coordinates were extracted."
+    },
+    {
+      "role": "official_inhabited_municipality_context",
+      "url": "https://www.commune-bekalta.gov.tn/bekalta/municipalite/date-de-fondation",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\municipal-foundation.html",
+        "sha256": "e06e477a818ffab6fd713c777723f3962d7391c19e6c9bc209786e7273bfe8c9",
+        "bytes": 62483
+      },
+      "requiredText": [
+        "أحدثت بلدية البقالطة",
+        "عدد السكان"
+      ],
+      "finding": "The municipality describes foundation in1957 and resident/housing figures. The figures have no explicit contemporary census date here and are not treated as current population estimates."
+    }
+  ],
+  "findings": [
+    "Exact current OSM node558814858 version17 matches the cache and app point coordinates/tags. All17 historical versions identify the same named settlement as a village; there is no POI, building or historic-site role in its history. The current coordinate has been stable since version14 inJune2022.",
+    "The official municipal street report explicitly identifies the inhabited city of Bekalta. Municipal geographic and inhabited-municipality pages corroborate Monastir locality context. These primary facts support the exact Arabic/French town identity carried by both source node and timetable base601.",
+    "Current point and base are two separate picker rows for this supported town identity. The base currently has no raw members. Display-only association is source-supported while retaining the source point, base coordinate and all official sectors.",
+    "Official INS registry has four distinct sectors325951North,325952South,325953Baghdadi,325954East. All four current polygons are accepted ISIE replacements and must remain separate. The source point current parent is BekaltaNorth; its old Teboulba source label is a previously corrected sector error, not evidence that this node denotes Teboulba."
+  ],
+  "recommendation": {
+    "identityVerdict": "SUPPORTED_SAME_NAMED_SETTLEMENT_DISPLAY_ONLY",
+    "candidateChange": {
+      "id": "osm:node:558814858",
+      "field": "pickerGroupId",
+      "before": "osm:node:558814858",
+      "after": "delegation:601"
+    },
+    "coordinateChanges": [],
+    "retireRawIds": [],
+    "mergeSectorIds": [],
+    "readiness": "Source identity is supported. Before any stage, independent review and a finite original/effective proof closure must preserve all four accepted sector replacements and relevant dependencies; that assembly was outside this bounded task."
+  },
+  "qualifications": [
+    "The municipal city description is not a survey or an official town polygon. It does not certify an OSM point coordinate, settlement extent or astronomical calculation input.",
+    "OSM place=village is retained despite municipal use of the word city; no kind recategorization is proposed.",
+    "OSM addr:postcode5009 differs from municipality contact postcode5090. This source-tag discrepancy is not exposed in the current picker row and does not establish a different locality. No tag correction was performed.",
+    "Only the existing name-card observation was read as historical supplementary data. Root owns fresh targeted phone checks; none was performed or presumed in this report.",
+    "The separate four-sector and cluster boundary reviews retain their existing scope/uncertainty. Their geometry was not regenerated, reimported or newly certified here.",
+    "No primary-page iframe coordinates or Google key were used. No stage, live edits, ledger, compiler execution, generation, test, APK or build."
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\assemble_review.py",
+    "sha256": "6373f23129948dd8092bea5ba80a5321054eb7abf2b815ee5fd6ccbb65a6162f",
+    "bytes": 10439
+  }
+}

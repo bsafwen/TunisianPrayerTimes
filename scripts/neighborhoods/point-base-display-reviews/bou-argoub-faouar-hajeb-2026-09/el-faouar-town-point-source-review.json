@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_IDENTITY_AND_EXISTING_TOWN_PRESERVATION_SCHEMA_SUPPORT_DISPLAY_ONLY_ASSOCIATION_PENDING_INDEPENDENT_REVIEW",
+  "baselineMetadataSha256": "ad68201de32928467232f1aeb07675e84e993aaad79212406444a65634da1c87",
+  "generatorSha256": "5c608285466bf95a6ac35236907155a17a207911791317978e1a54710866235d",
+  "curationSha256": "aca4098fcc0104e5ff101ae1d160ff7788f5553a54a558f014d21d24e1eb4f39",
+  "curationDecisions": 163,
+  "id": "osm:node:560792911",
+  "baseId": 485,
+  "currentRaw": {
+    "id": "osm:node:560792911",
+    "sourceId": "osm",
+    "name": "الفوار",
+    "aliases": [
+      "El Faouar"
+    ],
+    "kind": "village",
+    "parentName": "غريب",
+    "contextAliases": [
+      "Délégation El Faouar",
+      "Faouar",
+      "Gharib",
+      "غريب",
+      "معتمدية الفوار"
+    ],
+    "governorateId": 1012,
+    "lat": 33.355963,
+    "lng": 8.6732515,
+    "delegationId": 485,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:560792911"
+  },
+  "currentBase": {
+    "id": 485,
+    "nomFr": "El Faouar",
+    "nomAr": "الفوار",
+    "nomEn": "El Faouar",
+    "lat": 33.3643,
+    "lng": 8.6766
+  },
+  "expectedGovernor": {
+    "id": 1012,
+    "nomFr": "Kébili",
+    "nomAr": "قبلي",
+    "nomEn": "Kebili",
+    "lat": 33.7072,
+    "lng": 8.9697
+  },
+  "cachedExactSource": {
+    "id": "osm:node:560792911",
+    "tags": {
+      "name": "الفوار",
+      "name:ar": "الفوار",
+      "name:en": "El Faouar",
+      "name:fr": "El Faouar",
+      "place": "village"
+    },
+    "lat": 33.355963,
+    "lng": 8.6732515
+  },
+  "exactCurrentNode": {
+    "type": "node",
+    "id": 560792911,
+    "lat": 33.355963,
+    "lon": 8.6732515,
+    "timestamp": "2021-02-02T00:59:52Z",
+    "version": 9,
+    "changeset": 98539602,
+    "user": "user_11422772",
+    "uid": 11422772,
+    "tags": {
+      "name": "الفوار",
+      "name:ar": "الفوار",
+      "name:en": "El Faouar",
+      "name:fr": "El Faouar",
+      "place": "village"
+    }
+  },
+  "sourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\osm-node-560792911-current.json",
+    "sha256": "fdb150fc934c0bcbb196ce191103d3ca96f939edfd02852cab1bd30caaf48ad8",
+    "url": "https://api.openstreetmap.org/api/0.6/node/560792911.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/560792911.json",
+    "sha256": "fdb150fc934c0bcbb196ce191103d3ca96f939edfd02852cab1bd30caaf48ad8",
+    "exactElement": {
+      "type": "node",
+      "id": 560792911,
+      "lat": 33.355963,
+      "lon": 8.6732515,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "version": 9,
+      "changeset": 98539602,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "name": "الفوار",
+        "name:ar": "الفوار",
+        "name:en": "El Faouar",
+        "name:fr": "El Faouar",
+        "place": "village"
+      }
+    }
+  },
+  "historyEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\osm-node-560792911-history.json",
+    "sha256": "e15cd5ac3b4e64b822b7af0b56155592e0ea5e64d6349ec96f2496f98b753a70"
+  },
+  "retrievalEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\osm-node-560792911-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/560792911.json",
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/560792911.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "retrievedAt": "2026-09-12T09:56:56.110770+00:00",
+      "sha256": "fdb150fc934c0bcbb196ce191103d3ca96f939edfd02852cab1bd30caaf48ad8",
+      "bytes": 554,
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\osm-node-560792911-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/560792911/history.json",
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/560792911/history.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "retrievedAt": "2026-09-12T09:56:56.114762+00:00",
+      "sha256": "e15cd5ac3b4e64b822b7af0b56155592e0ea5e64d6349ec96f2496f98b753a70",
+      "bytes": 3396,
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-sud-ouest.pdf",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasSDARECOsudOuestFR.pdf",
+      "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasSDARECOsudOuestFR.pdf",
+      "status": 200,
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-09-12T09:58:30.431996+00:00",
+      "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598",
+      "bytes": 21066388,
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\arru-faouar-housing-rehabilitation.html",
+      "url": "https://www.arru.nat.tn/index.php/details_appels_offre/217",
+      "resolvedUrl": "https://www.arru.nat.tn/index.php/details_appels_offre/217",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "retrievedAt": "2026-09-12T09:58:30.372565+00:00",
+      "sha256": "17275910606ca509b50e0e75db0dc7aa119ac397b6c4ec59a8962c9e72bc7931",
+      "bytes": 24664,
+      "originalResponseBytesPreserved": true
+    }
+  ],
+  "sourceHistoryFinding": {
+    "versionsReviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "firstTimestamp": "2009-11-11T15:42:43Z",
+    "lastTimestamp": "2021-02-02T00:59:52Z",
+    "namedVillageThroughout": true,
+    "institutionOrAdministrativeRetagFound": false,
+    "coordinateEpochs": [
+      {
+        "lat": 33.364865,
+        "lng": 8.676866,
+        "versions": [
+          1
+        ]
+      },
+      {
+        "lat": 33.3648651,
+        "lng": 8.6768659,
+        "versions": [
+          2
+        ]
+      },
+      {
+        "lat": 33.3606088,
+        "lng": 8.6752894,
+        "versions": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "lat": 33.355963,
+        "lng": 8.6732515,
+        "versions": [
+          8,
+          9
+        ]
+      }
+    ],
+    "historicalQualification": "Versions 3 through 6 carried Gabes address/is_in governorate tags. Those were removed in version 7; no current metadata or administrative inference relies on them. Coordinates are preserved as source representatives, not certified centers."
+  },
+  "primaryEvidence": [
+    {
+      "role": "official_settlement_identity",
+      "publisher": "Tunisian Ministry of Equipment, Housing and Spatial Planning; DGAT",
+      "title": "Schema directeur d amenagement de la region economique du Sud-Ouest, Atlas cartographique",
+      "documentDate": "May 2010",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasSDARECOsudOuestFR.pdf",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-sud-ouest.pdf",
+        "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598"
+      },
+      "pdfPage": 38,
+      "printedPage": 37,
+      "section": "VII/ Le reseau urbain regional",
+      "derivedUtf8Evidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-38.txt",
+        "sha256": "19f8370de49deb920ffb5d82211302fd42040e143ab06efb1bec40f1d64a7dea"
+      },
+      "requiredText": [
+        "Les agglomérations se sont alors étendues",
+        "frontières et sahariennes : Hezoua, El Faouar,",
+        "VII/ LE RESEAU URBAIN REGIONAL"
+      ],
+      "finding": "The regional urban-network chapter explicitly names El Faouar among the settlements that expanded toward the Saharan/frontier zone. Its definition of agglomeration includes cities, villages and small towns regardless of communal status. This supports inhabited-settlement identity, not equivalence with any sector, municipality or delegation territory."
+    }
+  ],
+  "sourceDerivations": [
+    {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-sud-ouest.pdf",
+        "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598"
+      },
+      "derivedCompletePageText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-1.txt",
+        "sha256": "196b62344c496ada8999fb93a7d9895458f5b075304fa129036cbe2200278751"
+      },
+      "pdfPage": 1,
+      "printedPage": 0,
+      "isOriginalHttpResponseBytes": false,
+      "extractor": {
+        "library": "PyMuPDF",
+        "version": "1.28.2",
+        "operation": "document[page-1].get_text('text').encode('utf8')",
+        "normalization": "none",
+        "scope": "complete page"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-1.png",
+        "sha256": "5f6275440cf1b6574e815a523538d6049660b7e503936f75b62296dddf22042c"
+      },
+      "personallyViewed": true
+    },
+    {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-sud-ouest.pdf",
+        "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598"
+      },
+      "derivedCompletePageText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-38.txt",
+        "sha256": "19f8370de49deb920ffb5d82211302fd42040e143ab06efb1bec40f1d64a7dea"
+      },
+      "pdfPage": 38,
+      "printedPage": 37,
+      "isOriginalHttpResponseBytes": false,
+      "extractor": {
+        "library": "PyMuPDF",
+        "version": "1.28.2",
+        "operation": "document[page-1].get_text('text').encode('utf8')",
+        "normalization": "none",
+        "scope": "complete page"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-38.png",
+        "sha256": "eead08510d289fb13eeb4f348835b25aefd2ff8f3a1688501b98d0e6248ca732"
+      },
+      "personallyViewed": true
+    }
+  ],
+  "supplementaryOfficialEvidence": {
+    "reference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\arru-faouar-housing-rehabilitation.html",
+      "sha256": "17275910606ca509b50e0e75db0dc7aa119ac397b6c4ec59a8962c9e72bc7931"
+    },
+    "url": "https://www.arru.nat.tn/index.php/details_appels_offre/217",
+    "publisher": "Agence de Rehabilitation et de Renovation Urbaine",
+    "finding": "The 2026 residential-neighborhood rehabilitation notice distinguishes quartier El Faouar, commune El Faouar and Kebili governorate. It corroborates inhabited-place usage; it does not define the whole settlement footprint or establish that the neighborhood equals the municipality."
+  },
+  "finiteFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\finite-source-group-facts.json",
+    "sha256": "089f3760164fb5a6ad2a595e4c0c9554b2642b266b8b7049881a69832eb45d58"
+  },
+  "preservationCounts": {
+    "currentOfficialSectors": 5,
+    "protectedRawRows": 7,
+    "sourceStates": 9,
+    "existingNonNullBindings": 2,
+    "neighborTransferredSectors": 2,
+    "neighborCompleteRawRows": 4,
+    "otherUnchangedFaouarContextRows": 3
+  },
+  "schemaAssessment": {
+    "method": "reviewed_explicit_point_base_display_identity",
+    "extension": "townPreservationExtension",
+    "retainedTownPoint": false,
+    "status": "EXISTING_EXTENSION_FEASIBLE_PENDING_INDEPENDENT_SOURCE_AND_ASSEMBLED_REVIEW",
+    "reason": "Five sectors, seven raw rows and nine source states. Existing Ghidma sector administrative_context/name/manual-point transformation and preserved grouped village are explicitly bound. Two prior picker records for Matrouha and Rejim Maatoug reference the original Faouar delegation and must be bound through the active manifest. No accepted replacement or existing base485 owner. No compiler change is needed."
+  },
+  "conclusion": "The stable inhabited-place source node and official urban-settlement description support a single picker display association with El Faouar base485. Retain village kind, coordinates, raw names/aliases/context, prayer reference485, five sectors and all existing Ghidma/manual-point and Rejim Maatoug transfer decisions. This is no polygon or city-sector identity claim.",
+  "materialQualifications": [
+    "Ghidma has a pre-existing source polygon/delegation disagreement, explicitly documented by its active administrative_context curation. Preserve that reviewed metadata and the unmodified source polygon; it does not justify changing the proposed Faouar city association.",
+    "Two historical Faouar-coded sectors are current Rejim Maatoug sectors. Their existing transfer decisions and complete groups remain unchanged.",
+    "No exact GPS coordinate, inhabited perimeter or municipal boundary is certified by this display review.",
+    "Phone evidence is handled separately by root; this report does not claim to have viewed the phone."
+  ],
+  "nextRequiredAction": "Independently review this source identity and finite closure, then assemble the existing townPreservationExtension with exact Ghidma bindings and all five sectors. Use explicit derived UTF8 page text with original PDF provenance. No compiler modification is required by the finite facts.",
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ad68201de32928467232f1aeb07675e84e993aaad79212406444a65634da1c87"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "aca4098fcc0104e5ff101ae1d160ff7788f5553a54a558f014d21d24e1eb4f39"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "6486ca1bdbba5557b9f2559dc16f260cab4e3ff88dea7fdbafc763671cac6647"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "5c608285466bf95a6ac35236907155a17a207911791317978e1a54710866235d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ],
+  "actions": {
+    "liveEdits": false,
+    "stageAssembly": false,
+    "generation": false,
+    "productHelper": false,
+    "tests": false,
+    "build": false,
+    "phone": false,
+    "ledger": false
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\review.py",
+    "sha256": "419e1c507442a1ec411219c2ac82515b794adad9773ced140598d548995a031c"
+  }
+}

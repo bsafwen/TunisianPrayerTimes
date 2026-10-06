@@ -1,0 +1,26 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-12T18:53:45.062965+00:00",
+  "query": "Résidence Panoramique Jardin El Menzah 2",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [],
+  "publicUiText": [
+    "الطبقات",
+    "Résidence Panoramique Jardin El Menzah 2",
+    "إغلاق",
+    "فلاتر إضافية",
+    "مفتوح الآن",
+    "الأعلى تقييمًا",
+    "أكثر من 3 مراجعات",
+    "الاتجاهات",
+    "مشاركة",
+    "حفظ",
+    "هل تبحث عن مكان آخر؟",
+    "إضافة مكان غير مدرج على الخريطة",
+    "محو"
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "osm_way_237115723-1.png",
+  "boundaryVerified": false
+}

@@ -1,0 +1,4357 @@
+{
+ "version": 1,
+ "cdn": "https://tunisian-quran-cdn.baroudi-safwen.workers.dev/",
+ "packs": [
+  {
+   "name": "quran_pages",
+   "kind": "pages",
+   "delivery": "play",
+   "bytes": 184660886,
+   "files": [
+    {
+     "path": "quran/pages/page_001.webp",
+     "bytes": 285804
+    },
+    {
+     "path": "quran/pages/page_002.webp",
+     "bytes": 291206
+    },
+    {
+     "path": "quran/pages/page_003.webp",
+     "bytes": 269606
+    },
+    {
+     "path": "quran/pages/page_004.webp",
+     "bytes": 267156
+    },
+    {
+     "path": "quran/pages/page_005.webp",
+     "bytes": 271834
+    },
+    {
+     "path": "quran/pages/page_006.webp",
+     "bytes": 286798
+    },
+    {
+     "path": "quran/pages/page_007.webp",
+     "bytes": 266516
+    },
+    {
+     "path": "quran/pages/page_008.webp",
+     "bytes": 275414
+    },
+    {
+     "path": "quran/pages/page_009.webp",
+     "bytes": 258780
+    },
+    {
+     "path": "quran/pages/page_010.webp",
+     "bytes": 272766
+    },
+    {
+     "path": "quran/pages/page_011.webp",
+     "bytes": 267348
+    },
+    {
+     "path": "quran/pages/page_012.webp",
+     "bytes": 284746
+    },
+    {
+     "path": "quran/pages/page_013.webp",
+     "bytes": 264214
+    },
+    {
+     "path": "quran/pages/page_014.webp",
+     "bytes": 256476
+    },
+    {
+     "path": "quran/pages/page_015.webp",
+     "bytes": 267382
+    },
+    {
+     "path": "quran/pages/page_016.webp",
+     "bytes": 261192
+    },
+    {
+     "path": "quran/pages/page_017.webp",
+     "bytes": 293534
+    },
+    {
+     "path": "quran/pages/page_018.webp",
+     "bytes": 274384
+    },
+    {
+     "path": "quran/pages/page_019.webp",
+     "bytes": 316816
+    },
+    {
+     "path": "quran/pages/page_020.webp",
+     "bytes": 276904
+    },
+    {
+     "path": "quran/pages/page_021.webp",
+     "bytes": 301102
+    },
+    {
+     "path": "quran/pages/page_022.webp",
+     "bytes": 292428
+    },
+    {
+     "path": "quran/pages/page_023.webp",
+     "bytes": 329090
+    },
+    {
+     "path": "quran/pages/page_024.webp",
+     "bytes": 293902
+    },
+    {
+     "path": "quran/pages/page_025.webp",
+     "bytes": 304478
+    },
+    {
+     "path": "quran/pages/page_026.webp",
+     "bytes": 271876
+    },
+    {
+     "path": "quran/pages/page_027.webp",
+     "bytes": 273520
+    },
+    {
+     "path": "quran/pages/page_028.webp",
+     "bytes": 289422
+    },
+    {
+     "path": "quran/pages/page_029.webp",
+     "bytes": 334916
+    },
+    {
+     "path": "quran/pages/page_030.webp",
+     "bytes": 228926
+    },
+    {
+     "path": "quran/pages/page_031.webp",
+     "bytes": 284884
+    },
+    {
+     "path": "quran/pages/page_032.webp",
+     "bytes": 323368
+    },
+    {
+     "path": "quran/pages/page_033.webp",
+     "bytes": 282554
+    },
+    {
+     "path": "quran/pages/page_034.webp",
+     "bytes": 317004
+    },
+    {
+     "path": "quran/pages/page_035.webp",
+     "bytes": 306982
+    },
+    {
+     "path": "quran/pages/page_036.webp",
+     "bytes": 312124
+    },
+    {
+     "path": "quran/pages/page_037.webp",
+     "bytes": 299038
+    },
+    {
+     "path": "quran/pages/page_038.webp",
+     "bytes": 286060
+    },
+    {
+     "path": "quran/pages/page_039.webp",
+     "bytes": 270556
+    },
+    {
+     "path": "quran/pages/page_040.webp",
+     "bytes": 238280
+    },
+    {
+     "path": "quran/pages/page_041.webp",
+     "bytes": 282268
+    },
+    {
+     "path": "quran/pages/page_042.webp",
+     "bytes": 313238
+    },
+    {
+     "path": "quran/pages/page_043.webp",
+     "bytes": 282856
+    },
+    {
+     "path": "quran/pages/page_044.webp",
+     "bytes": 273572
+    },
+    {
+     "path": "quran/pages/page_045.webp",
+     "bytes": 265452
+    },
+    {
+     "path": "quran/pages/page_046.webp",
+     "bytes": 257598
+    },
+    {
+     "path": "quran/pages/page_047.webp",
+     "bytes": 289778
+    },
+    {
+     "path": "quran/pages/page_048.webp",
+     "bytes": 281492
+    },
+    {
+     "path": "quran/pages/page_049.webp",
+     "bytes": 297068
+    },
+    {
+     "path": "quran/pages/page_050.webp",
+     "bytes": 276342
+    },
+    {
+     "path": "quran/pages/page_051.webp",
+     "bytes": 265758
+    },
+    {
+     "path": "quran/pages/page_052.webp",
+     "bytes": 303062
+    },
+    {
+     "path": "quran/pages/page_053.webp",
+     "bytes": 280266
+    },
+    {
+     "path": "quran/pages/page_054.webp",
+     "bytes": 314428
+    },
+    {
+     "path": "quran/pages/page_055.webp",
+     "bytes": 264576
+    },
+    {
+     "path": "quran/pages/page_056.webp",
+     "bytes": 288954
+    },
+    {
+     "path": "quran/pages/page_057.webp",
+     "bytes": 295568
+    },
+    {
+     "path": "quran/pages/page_058.webp",
+     "bytes": 297678
+    },
+    {
+     "path": "quran/pages/page_059.webp",
+     "bytes": 312424
+    },
+    {
+     "path": "quran/pages/page_060.webp",
+     "bytes": 277896
+    },
+    {
+     "path": "quran/pages/page_061.webp",
+     "bytes": 271394
+    },
+    {
+     "path": "quran/pages/page_062.webp",
+     "bytes": 292270
+    },
+    {
+     "path": "quran/pages/page_063.webp",
+     "bytes": 267576
+    },
+    {
+     "path": "quran/pages/page_064.webp",
+     "bytes": 317380
+    },
+    {
+     "path": "quran/pages/page_065.webp",
+     "bytes": 278188
+    },
+    {
+     "path": "quran/pages/page_066.webp",
+     "bytes": 314464
+    },
+    {
+     "path": "quran/pages/page_067.webp",
+     "bytes": 314334
+    },
+    {
+     "path": "quran/pages/page_068.webp",
+     "bytes": 262678
+    },
+    {
+     "path": "quran/pages/page_069.webp",
+     "bytes": 290834
+    },
+    {
+     "path": "quran/pages/page_070.webp",
+     "bytes": 286258
+    },
+    {
+     "path": "quran/pages/page_071.webp",
+     "bytes": 275676
+    },
+    {
+     "path": "quran/pages/page_072.webp",
+     "bytes": 270220
+    },
+    {
+     "path": "quran/pages/page_073.webp",
+     "bytes": 281710
+    },
+    {
+     "path": "quran/pages/page_074.webp",
+     "bytes": 293872
+    },
+    {
+     "path": "quran/pages/page_075.webp",
+     "bytes": 266100
+    },
+    {
+     "path": "quran/pages/page_076.webp",
+     "bytes": 297170
+    },
+    {
+     "path": "quran/pages/page_077.webp",
+     "bytes": 237700
+    },
+    {
+     "path": "quran/pages/page_078.webp",
+     "bytes": 244810
+    },
+    {
+     "path": "quran/pages/page_079.webp",
+     "bytes": 288496
+    },
+    {
+     "path": "quran/pages/page_080.webp",
+     "bytes": 271962
+    },
+    {
+     "path": "quran/pages/page_081.webp",
+     "bytes": 227610
+    },
+    {
+     "path": "quran/pages/page_082.webp",
+     "bytes": 282772
+    },
+    {
+     "path": "quran/pages/page_083.webp",
+     "bytes": 271576
+    },
+    {
+     "path": "quran/pages/page_084.webp",
+     "bytes": 299726
+    },
+    {
+     "path": "quran/pages/page_085.webp",
+     "bytes": 277220
+    },
+    {
+     "path": "quran/pages/page_086.webp",
+     "bytes": 275164
+    },
+    {
+     "path": "quran/pages/page_087.webp",
+     "bytes": 250584
+    },
+    {
+     "path": "quran/pages/page_088.webp",
+     "bytes": 262812
+    },
+    {
+     "path": "quran/pages/page_089.webp",
+     "bytes": 327898
+    },
+    {
+     "path": "quran/pages/page_090.webp",
+     "bytes": 261900
+    },
+    {
+     "path": "quran/pages/page_091.webp",
+     "bytes": 292688
+    },
+    {
+     "path": "quran/pages/page_092.webp",
+     "bytes": 271016
+    },
+    {
+     "path": "quran/pages/page_093.webp",
+     "bytes": 301936
+    },
+    {
+     "path": "quran/pages/page_094.webp",
+     "bytes": 309420
+    },
+    {
+     "path": "quran/pages/page_095.webp",
+     "bytes": 256872
+    },
+    {
+     "path": "quran/pages/page_096.webp",
+     "bytes": 284304
+    },
+    {
+     "path": "quran/pages/page_097.webp",
+     "bytes": 279492
+    },
+    {
+     "path": "quran/pages/page_098.webp",
+     "bytes": 287068
+    },
+    {
+     "path": "quran/pages/page_099.webp",
+     "bytes": 282218
+    },
+    {
+     "path": "quran/pages/page_100.webp",
+     "bytes": 288224
+    },
+    {
+     "path": "quran/pages/page_101.webp",
+     "bytes": 320150
+    },
+    {
+     "path": "quran/pages/page_102.webp",
+     "bytes": 291960
+    },
+    {
+     "path": "quran/pages/page_103.webp",
+     "bytes": 310252
+    },
+    {
+     "path": "quran/pages/page_104.webp",
+     "bytes": 279344
+    },
+    {
+     "path": "quran/pages/page_105.webp",
+     "bytes": 261132
+    },
+    {
+     "path": "quran/pages/page_106.webp",
+     "bytes": 289750
+    },
+    {
+     "path": "quran/pages/page_107.webp",
+     "bytes": 282604
+    },
+    {
+     "path": "quran/pages/page_108.webp",
+     "bytes": 214384
+    },
+    {
+     "path": "quran/pages/page_109.webp",
+     "bytes": 280810
+    },
+    {
+     "path": "quran/pages/page_110.webp",
+     "bytes": 282736
+    },
+    {
+     "path": "quran/pages/page_111.webp",
+     "bytes": 301410
+    },
+    {
+     "path": "quran/pages/page_112.webp",
+     "bytes": 300302
+    },
+    {
+     "path": "quran/pages/page_113.webp",
+     "bytes": 261918
+    },
+    {
+     "path": "quran/pages/page_114.webp",
+     "bytes": 299784
+    },
+    {
+     "path": "quran/pages/page_115.webp",
+     "bytes": 293082
+    },
+    {
+     "path": "quran/pages/page_116.webp",
+     "bytes": 294174
+    },
+    {
+     "path": "quran/pages/page_117.webp",
+     "bytes": 303476
+    },
+    {
+     "path": "quran/pages/page_118.webp",
+     "bytes": 307542
+    },
+    {
+     "path": "quran/pages/page_119.webp",
+     "bytes": 296102
+    },
+    {
+     "path": "quran/pages/page_120.webp",
+     "bytes": 286262
+    },
+    {
+     "path": "quran/pages/page_121.webp",
+     "bytes": 258558
+    },
+    {
+     "path": "quran/pages/page_122.webp",
+     "bytes": 300516
+    },
+    {
+     "path": "quran/pages/page_123.webp",
+     "bytes": 281134
+    },
+    {
+     "path": "quran/pages/page_124.webp",
+     "bytes": 279070
+    },
+    {
+     "path": "quran/pages/page_125.webp",
+     "bytes": 277572
+    },
+    {
+     "path": "quran/pages/page_126.webp",
+     "bytes": 321008
+    },
+    {
+     "path": "quran/pages/page_127.webp",
+     "bytes": 314908
+    },
+    {
+     "path": "quran/pages/page_128.webp",
+     "bytes": 276668
+    },
+    {
+     "path": "quran/pages/page_129.webp",
+     "bytes": 339542
+    },
+    {
+     "path": "quran/pages/page_130.webp",
+     "bytes": 317438
+    },
+    {
+     "path": "quran/pages/page_131.webp",
+     "bytes": 287738
+    },
+    {
+     "path": "quran/pages/page_132.webp",
+     "bytes": 300648
+    },
+    {
+     "path": "quran/pages/page_133.webp",
+     "bytes": 312394
+    },
+    {
+     "path": "quran/pages/page_134.webp",
+     "bytes": 302666
+    },
+    {
+     "path": "quran/pages/page_135.webp",
+     "bytes": 309264
+    },
+    {
+     "path": "quran/pages/page_136.webp",
+     "bytes": 314412
+    },
+    {
+     "path": "quran/pages/page_137.webp",
+     "bytes": 279466
+    },
+    {
+     "path": "quran/pages/page_138.webp",
+     "bytes": 304884
+    },
+    {
+     "path": "quran/pages/page_139.webp",
+     "bytes": 310856
+    },
+    {
+     "path": "quran/pages/page_140.webp",
+     "bytes": 308834
+    },
+    {
+     "path": "quran/pages/page_141.webp",
+     "bytes": 319324
+    },
+    {
+     "path": "quran/pages/page_142.webp",
+     "bytes": 297750
+    },
+    {
+     "path": "quran/pages/page_143.webp",
+     "bytes": 277460
+    },
+    {
+     "path": "quran/pages/page_144.webp",
+     "bytes": 251630
+    },
+    {
+     "path": "quran/pages/page_145.webp",
+     "bytes": 297074
+    },
+    {
+     "path": "quran/pages/page_146.webp",
+     "bytes": 267124
+    },
+    {
+     "path": "quran/pages/page_147.webp",
+     "bytes": 284742
+    },
+    {
+     "path": "quran/pages/page_148.webp",
+     "bytes": 250858
+    },
+    {
+     "path": "quran/pages/page_149.webp",
+     "bytes": 326768
+    },
+    {
+     "path": "quran/pages/page_150.webp",
+     "bytes": 301768
+    },
+    {
+     "path": "quran/pages/page_151.webp",
+     "bytes": 326550
+    },
+    {
+     "path": "quran/pages/page_152.webp",
+     "bytes": 304474
+    },
+    {
+     "path": "quran/pages/page_153.webp",
+     "bytes": 305996
+    },
+    {
+     "path": "quran/pages/page_154.webp",
+     "bytes": 321312
+    },
+    {
+     "path": "quran/pages/page_155.webp",
+     "bytes": 307910
+    },
+    {
+     "path": "quran/pages/page_156.webp",
+     "bytes": 270588
+    },
+    {
+     "path": "quran/pages/page_157.webp",
+     "bytes": 313244
+    },
+    {
+     "path": "quran/pages/page_158.webp",
+     "bytes": 249272
+    },
+    {
+     "path": "quran/pages/page_159.webp",
+     "bytes": 297158
+    },
+    {
+     "path": "quran/pages/page_160.webp",
+     "bytes": 259944
+    },
+    {
+     "path": "quran/pages/page_161.webp",
+     "bytes": 295680
+    },
+    {
+     "path": "quran/pages/page_162.webp",
+     "bytes": 275344
+    },
+    {
+     "path": "quran/pages/page_163.webp",
+     "bytes": 311690
+    },
+    {
+     "path": "quran/pages/page_164.webp",
+     "bytes": 307716
+    },
+    {
+     "path": "quran/pages/page_165.webp",
+     "bytes": 278050
+    },
+    {
+     "path": "quran/pages/page_166.webp",
+     "bytes": 286164
+    },
+    {
+     "path": "quran/pages/page_167.webp",
+     "bytes": 299622
+    },
+    {
+     "path": "quran/pages/page_168.webp",
+     "bytes": 280952
+    },
+    {
+     "path": "quran/pages/page_169.webp",
+     "bytes": 307242
+    },
+    {
+     "path": "quran/pages/page_170.webp",
+     "bytes": 287738
+    },
+    {
+     "path": "quran/pages/page_171.webp",
+     "bytes": 308226
+    },
+    {
+     "path": "quran/pages/page_172.webp",
+     "bytes": 276982
+    },
+    {
+     "path": "quran/pages/page_173.webp",
+     "bytes": 331724
+    },
+    {
+     "path": "quran/pages/page_174.webp",
+     "bytes": 313456
+    },
+    {
+     "path": "quran/pages/page_175.webp",
+     "bytes": 316598
+    },
+    {
+     "path": "quran/pages/page_176.webp",
+     "bytes": 323292
+    },
+    {
+     "path": "quran/pages/page_177.webp",
+     "bytes": 283334
+    },
+    {
+     "path": "quran/pages/page_178.webp",
+     "bytes": 268824
+    },
+    {
+     "path": "quran/pages/page_179.webp",
+     "bytes": 280520
+    },
+    {
+     "path": "quran/pages/page_180.webp",
+     "bytes": 296112
+    },
+    {
+     "path": "quran/pages/page_181.webp",
+     "bytes": 279100
+    },
+    {
+     "path": "quran/pages/page_182.webp",
+     "bytes": 275228
+    },
+    {
+     "path": "quran/pages/page_183.webp",
+     "bytes": 279924
+    },
+    {
+     "path": "quran/pages/page_184.webp",
+     "bytes": 288000
+    },
+    {
+     "path": "quran/pages/page_185.webp",
+     "bytes": 288064
+    },
+    {
+     "path": "quran/pages/page_186.webp",
+     "bytes": 298848
+    },
+    {
+     "path": "quran/pages/page_187.webp",
+     "bytes": 272280
+    },
+    {
+     "path": "quran/pages/page_188.webp",
+     "bytes": 309886
+    },
+    {
+     "path": "quran/pages/page_189.webp",
+     "bytes": 274810
+    },
+    {
+     "path": "quran/pages/page_190.webp",
+     "bytes": 239912
+    },
+    {
+     "path": "quran/pages/page_191.webp",
+     "bytes": 304640
+    },
+    {
+     "path": "quran/pages/page_192.webp",
+     "bytes": 277684
+    },
+    {
+     "path": "quran/pages/page_193.webp",
+     "bytes": 263252
+    },
+    {
+     "path": "quran/pages/page_194.webp",
+     "bytes": 233082
+    },
+    {
+     "path": "quran/pages/page_195.webp",
+     "bytes": 254634
+    },
+    {
+     "path": "quran/pages/page_196.webp",
+     "bytes": 303454
+    },
+    {
+     "path": "quran/pages/page_197.webp",
+     "bytes": 277112
+    },
+    {
+     "path": "quran/pages/page_198.webp",
+     "bytes": 303332
+    },
+    {
+     "path": "quran/pages/page_199.webp",
+     "bytes": 272636
+    },
+    {
+     "path": "quran/pages/page_200.webp",
+     "bytes": 309748
+    },
+    {
+     "path": "quran/pages/page_201.webp",
+     "bytes": 283908
+    },
+    {
+     "path": "quran/pages/page_202.webp",
+     "bytes": 312688
+    },
+    {
+     "path": "quran/pages/page_203.webp",
+     "bytes": 295408
+    },
+    {
+     "path": "quran/pages/page_204.webp",
+     "bytes": 289998
+    },
+    {
+     "path": "quran/pages/page_205.webp",
+     "bytes": 304962
+    },
+    {
+     "path": "quran/pages/page_206.webp",
+     "bytes": 273272
+    },
+    {
+     "path": "quran/pages/page_207.webp",
+     "bytes": 316690
+    },
+    {
+     "path": "quran/pages/page_208.webp",
+     "bytes": 305668
+    },
+    {
+     "path": "quran/pages/page_209.webp",
+     "bytes": 298898
+    },
+    {
+     "path": "quran/pages/page_210.webp",
+     "bytes": 304788
+    },
+    {
+     "path": "quran/pages/page_211.webp",
+     "bytes": 317708
+    },
+    {
+     "path": "quran/pages/page_212.webp",
+     "bytes": 345092
+    },
+    {
+     "path": "quran/pages/page_213.webp",
+     "bytes": 318432
+    },
+    {
+     "path": "quran/pages/page_214.webp",
+     "bytes": 305536
+    },
+    {
+     "path": "quran/pages/page_215.webp",
+     "bytes": 283858
+    },
+    {
+     "path": "quran/pages/page_216.webp",
+     "bytes": 328344
+    },
+    {
+     "path": "quran/pages/page_217.webp",
+     "bytes": 318710
+    },
+    {
+     "path": "quran/pages/page_218.webp",
+     "bytes": 303520
+    },
+    {
+     "path": "quran/pages/page_219.webp",
+     "bytes": 320236
+    },
+    {
+     "path": "quran/pages/page_220.webp",
+     "bytes": 319012
+    },
+    {
+     "path": "quran/pages/page_221.webp",
+     "bytes": 309508
+    },
+    {
+     "path": "quran/pages/page_222.webp",
+     "bytes": 310856
+    },
+    {
+     "path": "quran/pages/page_223.webp",
+     "bytes": 314378
+    },
+    {
+     "path": "quran/pages/page_224.webp",
+     "bytes": 315582
+    },
+    {
+     "path": "quran/pages/page_225.webp",
+     "bytes": 316326
+    },
+    {
+     "path": "quran/pages/page_226.webp",
+     "bytes": 292370
+    },
+    {
+     "path": "quran/pages/page_227.webp",
+     "bytes": 323388
+    },
+    {
+     "path": "quran/pages/page_228.webp",
+     "bytes": 276584
+    },
+    {
+     "path": "quran/pages/page_229.webp",
+     "bytes": 304608
+    },
+    {
+     "path": "quran/pages/page_230.webp",
+     "bytes": 301480
+    },
+    {
+     "path": "quran/pages/page_231.webp",
+     "bytes": 282794
+    },
+    {
+     "path": "quran/pages/page_232.webp",
+     "bytes": 283616
+    },
+    {
+     "path": "quran/pages/page_233.webp",
+     "bytes": 254964
+    },
+    {
+     "path": "quran/pages/page_234.webp",
+     "bytes": 329912
+    },
+    {
+     "path": "quran/pages/page_235.webp",
+     "bytes": 313446
+    },
+    {
+     "path": "quran/pages/page_236.webp",
+     "bytes": 254310
+    },
+    {
+     "path": "quran/pages/page_237.webp",
+     "bytes": 281372
+    },
+    {
+     "path": "quran/pages/page_238.webp",
+     "bytes": 297750
+    },
+    {
+     "path": "quran/pages/page_239.webp",
+     "bytes": 304446
+    },
+    {
+     "path": "quran/pages/page_240.webp",
+     "bytes": 300240
+    },
+    {
+     "path": "quran/pages/page_241.webp",
+     "bytes": 328596
+    },
+    {
+     "path": "quran/pages/page_242.webp",
+     "bytes": 306308
+    },
+    {
+     "path": "quran/pages/page_243.webp",
+     "bytes": 301382
+    },
+    {
+     "path": "quran/pages/page_244.webp",
+     "bytes": 287266
+    },
+    {
+     "path": "quran/pages/page_245.webp",
+     "bytes": 294576
+    },
+    {
+     "path": "quran/pages/page_246.webp",
+     "bytes": 303230
+    },
+    {
+     "path": "quran/pages/page_247.webp",
+     "bytes": 309802
+    },
+    {
+     "path": "quran/pages/page_248.webp",
+     "bytes": 324088
+    },
+    {
+     "path": "quran/pages/page_249.webp",
+     "bytes": 295182
+    },
+    {
+     "path": "quran/pages/page_250.webp",
+     "bytes": 335960
+    },
+    {
+     "path": "quran/pages/page_251.webp",
+     "bytes": 321370
+    },
+    {
+     "path": "quran/pages/page_252.webp",
+     "bytes": 286934
+    },
+    {
+     "path": "quran/pages/page_253.webp",
+     "bytes": 319664
+    },
+    {
+     "path": "quran/pages/page_254.webp",
+     "bytes": 277772
+    },
+    {
+     "path": "quran/pages/page_255.webp",
+     "bytes": 270842
+    },
+    {
+     "path": "quran/pages/page_256.webp",
+     "bytes": 256416
+    },
+    {
+     "path": "quran/pages/page_257.webp",
+     "bytes": 282870
+    },
+    {
+     "path": "quran/pages/page_258.webp",
+     "bytes": 273160
+    },
+    {
+     "path": "quran/pages/page_259.webp",
+     "bytes": 303694
+    },
+    {
+     "path": "quran/pages/page_260.webp",
+     "bytes": 301168
+    },
+    {
+     "path": "quran/pages/page_261.webp",
+     "bytes": 286380
+    },
+    {
+     "path": "quran/pages/page_262.webp",
+     "bytes": 315148
+    },
+    {
+     "path": "quran/pages/page_263.webp",
+     "bytes": 326854
+    },
+    {
+     "path": "quran/pages/page_264.webp",
+     "bytes": 314878
+    },
+    {
+     "path": "quran/pages/page_265.webp",
+     "bytes": 329016
+    },
+    {
+     "path": "quran/pages/page_266.webp",
+     "bytes": 292040
+    },
+    {
+     "path": "quran/pages/page_267.webp",
+     "bytes": 276032
+    },
+    {
+     "path": "quran/pages/page_268.webp",
+     "bytes": 283246
+    },
+    {
+     "path": "quran/pages/page_269.webp",
+     "bytes": 243976
+    },
+    {
+     "path": "quran/pages/page_270.webp",
+     "bytes": 293204
+    },
+    {
+     "path": "quran/pages/page_271.webp",
+     "bytes": 317760
+    },
+    {
+     "path": "quran/pages/page_272.webp",
+     "bytes": 291848
+    },
+    {
+     "path": "quran/pages/page_273.webp",
+     "bytes": 301520
+    },
+    {
+     "path": "quran/pages/page_274.webp",
+     "bytes": 288454
+    },
+    {
+     "path": "quran/pages/page_275.webp",
+     "bytes": 275018
+    },
+    {
+     "path": "quran/pages/page_276.webp",
+     "bytes": 324838
+    },
+    {
+     "path": "quran/pages/page_277.webp",
+     "bytes": 276348
+    },
+    {
+     "path": "quran/pages/page_278.webp",
+     "bytes": 284796
+    },
+    {
+     "path": "quran/pages/page_279.webp",
+     "bytes": 323298
+    },
+    {
+     "path": "quran/pages/page_280.webp",
+     "bytes": 292816
+    },
+    {
+     "path": "quran/pages/page_281.webp",
+     "bytes": 322152
+    },
+    {
+     "path": "quran/pages/page_282.webp",
+     "bytes": 334294
+    },
+    {
+     "path": "quran/pages/page_283.webp",
+     "bytes": 287218
+    },
+    {
+     "path": "quran/pages/page_284.webp",
+     "bytes": 272912
+    },
+    {
+     "path": "quran/pages/page_285.webp",
+     "bytes": 296040
+    },
+    {
+     "path": "quran/pages/page_286.webp",
+     "bytes": 304992
+    },
+    {
+     "path": "quran/pages/page_287.webp",
+     "bytes": 275884
+    },
+    {
+     "path": "quran/pages/page_288.webp",
+     "bytes": 277528
+    },
+    {
+     "path": "quran/pages/page_289.webp",
+     "bytes": 272600
+    },
+    {
+     "path": "quran/pages/page_290.webp",
+     "bytes": 276502
+    },
+    {
+     "path": "quran/pages/page_291.webp",
+     "bytes": 293082
+    },
+    {
+     "path": "quran/pages/page_292.webp",
+     "bytes": 337740
+    },
+    {
+     "path": "quran/pages/page_293.webp",
+     "bytes": 269638
+    },
+    {
+     "path": "quran/pages/page_294.webp",
+     "bytes": 283004
+    },
+    {
+     "path": "quran/pages/page_295.webp",
+     "bytes": 316584
+    },
+    {
+     "path": "quran/pages/page_296.webp",
+     "bytes": 260852
+    },
+    {
+     "path": "quran/pages/page_297.webp",
+     "bytes": 287396
+    },
+    {
+     "path": "quran/pages/page_298.webp",
+     "bytes": 299862
+    },
+    {
+     "path": "quran/pages/page_299.webp",
+     "bytes": 293650
+    },
+    {
+     "path": "quran/pages/page_300.webp",
+     "bytes": 282354
+    },
+    {
+     "path": "quran/pages/page_301.webp",
+     "bytes": 330842
+    },
+    {
+     "path": "quran/pages/page_302.webp",
+     "bytes": 331390
+    },
+    {
+     "path": "quran/pages/page_303.webp",
+     "bytes": 300926
+    },
+    {
+     "path": "quran/pages/page_304.webp",
+     "bytes": 283914
+    },
+    {
+     "path": "quran/pages/page_305.webp",
+     "bytes": 306834
+    },
+    {
+     "path": "quran/pages/page_306.webp",
+     "bytes": 278900
+    },
+    {
+     "path": "quran/pages/page_307.webp",
+     "bytes": 325404
+    },
+    {
+     "path": "quran/pages/page_308.webp",
+     "bytes": 344314
+    },
+    {
+     "path": "quran/pages/page_309.webp",
+     "bytes": 291434
+    },
+    {
+     "path": "quran/pages/page_310.webp",
+     "bytes": 291472
+    },
+    {
+     "path": "quran/pages/page_311.webp",
+     "bytes": 330372
+    },
+    {
+     "path": "quran/pages/page_312.webp",
+     "bytes": 322210
+    },
+    {
+     "path": "quran/pages/page_313.webp",
+     "bytes": 333124
+    },
+    {
+     "path": "quran/pages/page_314.webp",
+     "bytes": 283528
+    },
+    {
+     "path": "quran/pages/page_315.webp",
+     "bytes": 339542
+    },
+    {
+     "path": "quran/pages/page_316.webp",
+     "bytes": 306820
+    },
+    {
+     "path": "quran/pages/page_317.webp",
+     "bytes": 318992
+    },
+    {
+     "path": "quran/pages/page_318.webp",
+     "bytes": 323494
+    },
+    {
+     "path": "quran/pages/page_319.webp",
+     "bytes": 312098
+    },
+    {
+     "path": "quran/pages/page_320.webp",
+     "bytes": 330582
+    },
+    {
+     "path": "quran/pages/page_321.webp",
+     "bytes": 291794
+    },
+    {
+     "path": "quran/pages/page_322.webp",
+     "bytes": 329108
+    },
+    {
+     "path": "quran/pages/page_323.webp",
+     "bytes": 282442
+    },
+    {
+     "path": "quran/pages/page_324.webp",
+     "bytes": 268614
+    },
+    {
+     "path": "quran/pages/page_325.webp",
+     "bytes": 294270
+    },
+    {
+     "path": "quran/pages/page_326.webp",
+     "bytes": 278428
+    },
+    {
+     "path": "quran/pages/page_327.webp",
+     "bytes": 279776
+    },
+    {
+     "path": "quran/pages/page_328.webp",
+     "bytes": 275642
+    },
+    {
+     "path": "quran/pages/page_329.webp",
+     "bytes": 271856
+    },
+    {
+     "path": "quran/pages/page_330.webp",
+     "bytes": 270476
+    },
+    {
+     "path": "quran/pages/page_331.webp",
+     "bytes": 308160
+    },
+    {
+     "path": "quran/pages/page_332.webp",
+     "bytes": 291446
+    },
+    {
+     "path": "quran/pages/page_333.webp",
+     "bytes": 286972
+    },
+    {
+     "path": "quran/pages/page_334.webp",
+     "bytes": 304892
+    },
+    {
+     "path": "quran/pages/page_335.webp",
+     "bytes": 293100
+    },
+    {
+     "path": "quran/pages/page_336.webp",
+     "bytes": 312344
+    },
+    {
+     "path": "quran/pages/page_337.webp",
+     "bytes": 283952
+    },
+    {
+     "path": "quran/pages/page_338.webp",
+     "bytes": 307204
+    },
+    {
+     "path": "quran/pages/page_339.webp",
+     "bytes": 254696
+    },
+    {
+     "path": "quran/pages/page_340.webp",
+     "bytes": 275298
+    },
+    {
+     "path": "quran/pages/page_341.webp",
+     "bytes": 336574
+    },
+    {
+     "path": "quran/pages/page_342.webp",
+     "bytes": 333698
+    },
+    {
+     "path": "quran/pages/page_343.webp",
+     "bytes": 308128
+    },
+    {
+     "path": "quran/pages/page_344.webp",
+     "bytes": 309678
+    },
+    {
+     "path": "quran/pages/page_345.webp",
+     "bytes": 314714
+    },
+    {
+     "path": "quran/pages/page_346.webp",
+     "bytes": 311892
+    },
+    {
+     "path": "quran/pages/page_347.webp",
+     "bytes": 314694
+    },
+    {
+     "path": "quran/pages/page_348.webp",
+     "bytes": 266198
+    },
+    {
+     "path": "quran/pages/page_349.webp",
+     "bytes": 330110
+    },
+    {
+     "path": "quran/pages/page_350.webp",
+     "bytes": 300434
+    },
+    {
+     "path": "quran/pages/page_351.webp",
+     "bytes": 306290
+    },
+    {
+     "path": "quran/pages/page_352.webp",
+     "bytes": 278548
+    },
+    {
+     "path": "quran/pages/page_353.webp",
+     "bytes": 329020
+    },
+    {
+     "path": "quran/pages/page_354.webp",
+     "bytes": 286110
+    },
+    {
+     "path": "quran/pages/page_355.webp",
+     "bytes": 325886
+    },
+    {
+     "path": "quran/pages/page_356.webp",
+     "bytes": 327696
+    },
+    {
+     "path": "quran/pages/page_357.webp",
+     "bytes": 278908
+    },
+    {
+     "path": "quran/pages/page_358.webp",
+     "bytes": 323514
+    },
+    {
+     "path": "quran/pages/page_359.webp",
+     "bytes": 320512
+    },
+    {
+     "path": "quran/pages/page_360.webp",
+     "bytes": 298078
+    },
+    {
+     "path": "quran/pages/page_361.webp",
+     "bytes": 299888
+    },
+    {
+     "path": "quran/pages/page_362.webp",
+     "bytes": 315708
+    },
+    {
+     "path": "quran/pages/page_363.webp",
+     "bytes": 285138
+    },
+    {
+     "path": "quran/pages/page_364.webp",
+     "bytes": 286436
+    },
+    {
+     "path": "quran/pages/page_365.webp",
+     "bytes": 290158
+    },
+    {
+     "path": "quran/pages/page_366.webp",
+     "bytes": 351888
+    },
+    {
+     "path": "quran/pages/page_367.webp",
+     "bytes": 331858
+    },
+    {
+     "path": "quran/pages/page_368.webp",
+     "bytes": 322150
+    },
+    {
+     "path": "quran/pages/page_369.webp",
+     "bytes": 329050
+    },
+    {
+     "path": "quran/pages/page_370.webp",
+     "bytes": 327248
+    },
+    {
+     "path": "quran/pages/page_371.webp",
+     "bytes": 303414
+    },
+    {
+     "path": "quran/pages/page_372.webp",
+     "bytes": 332794
+    },
+    {
+     "path": "quran/pages/page_373.webp",
+     "bytes": 346584
+    },
+    {
+     "path": "quran/pages/page_374.webp",
+     "bytes": 313878
+    },
+    {
+     "path": "quran/pages/page_375.webp",
+     "bytes": 291626
+    },
+    {
+     "path": "quran/pages/page_376.webp",
+     "bytes": 358576
+    },
+    {
+     "path": "quran/pages/page_377.webp",
+     "bytes": 320390
+    },
+    {
+     "path": "quran/pages/page_378.webp",
+     "bytes": 316304
+    },
+    {
+     "path": "quran/pages/page_379.webp",
+     "bytes": 332350
+    },
+    {
+     "path": "quran/pages/page_380.webp",
+     "bytes": 316666
+    },
+    {
+     "path": "quran/pages/page_381.webp",
+     "bytes": 293820
+    },
+    {
+     "path": "quran/pages/page_382.webp",
+     "bytes": 297740
+    },
+    {
+     "path": "quran/pages/page_383.webp",
+     "bytes": 309094
+    },
+    {
+     "path": "quran/pages/page_384.webp",
+     "bytes": 322276
+    },
+    {
+     "path": "quran/pages/page_385.webp",
+     "bytes": 303192
+    },
+    {
+     "path": "quran/pages/page_386.webp",
+     "bytes": 295438
+    },
+    {
+     "path": "quran/pages/page_387.webp",
+     "bytes": 283240
+    },
+    {
+     "path": "quran/pages/page_388.webp",
+     "bytes": 276530
+    },
+    {
+     "path": "quran/pages/page_389.webp",
+     "bytes": 282266
+    },
+    {
+     "path": "quran/pages/page_390.webp",
+     "bytes": 270314
+    },
+    {
+     "path": "quran/pages/page_391.webp",
+     "bytes": 295354
+    },
+    {
+     "path": "quran/pages/page_392.webp",
+     "bytes": 332756
+    },
+    {
+     "path": "quran/pages/page_393.webp",
+     "bytes": 324206
+    },
+    {
+     "path": "quran/pages/page_394.webp",
+     "bytes": 284340
+    },
+    {
+     "path": "quran/pages/page_395.webp",
+     "bytes": 299972
+    },
+    {
+     "path": "quran/pages/page_396.webp",
+     "bytes": 294206
+    },
+    {
+     "path": "quran/pages/page_397.webp",
+     "bytes": 278976
+    },
+    {
+     "path": "quran/pages/page_398.webp",
+     "bytes": 276022
+    },
+    {
+     "path": "quran/pages/page_399.webp",
+     "bytes": 274408
+    },
+    {
+     "path": "quran/pages/page_400.webp",
+     "bytes": 274828
+    },
+    {
+     "path": "quran/pages/page_401.webp",
+     "bytes": 278930
+    },
+    {
+     "path": "quran/pages/page_402.webp",
+     "bytes": 310376
+    },
+    {
+     "path": "quran/pages/page_403.webp",
+     "bytes": 286288
+    },
+    {
+     "path": "quran/pages/page_404.webp",
+     "bytes": 279636
+    },
+    {
+     "path": "quran/pages/page_405.webp",
+     "bytes": 308866
+    },
+    {
+     "path": "quran/pages/page_406.webp",
+     "bytes": 280198
+    },
+    {
+     "path": "quran/pages/page_407.webp",
+     "bytes": 292840
+    },
+    {
+     "path": "quran/pages/page_408.webp",
+     "bytes": 294444
+    },
+    {
+     "path": "quran/pages/page_409.webp",
+     "bytes": 319834
+    },
+    {
+     "path": "quran/pages/page_410.webp",
+     "bytes": 318264
+    },
+    {
+     "path": "quran/pages/page_411.webp",
+     "bytes": 324044
+    },
+    {
+     "path": "quran/pages/page_412.webp",
+     "bytes": 276854
+    },
+    {
+     "path": "quran/pages/page_413.webp",
+     "bytes": 282316
+    },
+    {
+     "path": "quran/pages/page_414.webp",
+     "bytes": 298154
+    },
+    {
+     "path": "quran/pages/page_415.webp",
+     "bytes": 272160
+    },
+    {
+     "path": "quran/pages/page_416.webp",
+     "bytes": 301478
+    },
+    {
+     "path": "quran/pages/page_417.webp",
+     "bytes": 272640
+    },
+    {
+     "path": "quran/pages/page_418.webp",
+     "bytes": 302406
+    },
+    {
+     "path": "quran/pages/page_419.webp",
+     "bytes": 333096
+    },
+    {
+     "path": "quran/pages/page_420.webp",
+     "bytes": 319710
+    },
+    {
+     "path": "quran/pages/page_421.webp",
+     "bytes": 280482
+    },
+    {
+     "path": "quran/pages/page_422.webp",
+     "bytes": 342272
+    },
+    {
+     "path": "quran/pages/page_423.webp",
+     "bytes": 314416
+    },
+    {
+     "path": "quran/pages/page_424.webp",
+     "bytes": 283354
+    },
+    {
+     "path": "quran/pages/page_425.webp",
+     "bytes": 302820
+    },
+    {
+     "path": "quran/pages/page_426.webp",
+     "bytes": 323040
+    },
+    {
+     "path": "quran/pages/page_427.webp",
+     "bytes": 319670
+    },
+    {
+     "path": "quran/pages/page_428.webp",
+     "bytes": 325638
+    },
+    {
+     "path": "quran/pages/page_429.webp",
+     "bytes": 320352
+    },
+    {
+     "path": "quran/pages/page_430.webp",
+     "bytes": 329656
+    },
+    {
+     "path": "quran/pages/page_431.webp",
+     "bytes": 325600
+    },
+    {
+     "path": "quran/pages/page_432.webp",
+     "bytes": 329328
+    },
+    {
+     "path": "quran/pages/page_433.webp",
+     "bytes": 327436
+    },
+    {
+     "path": "quran/pages/page_434.webp",
+     "bytes": 312946
+    },
+    {
+     "path": "quran/pages/page_435.webp",
+     "bytes": 337114
+    },
+    {
+     "path": "quran/pages/page_436.webp",
+     "bytes": 316558
+    },
+    {
+     "path": "quran/pages/page_437.webp",
+     "bytes": 286328
+    },
+    {
+     "path": "quran/pages/page_438.webp",
+     "bytes": 342916
+    },
+    {
+     "path": "quran/pages/page_439.webp",
+     "bytes": 324328
+    },
+    {
+     "path": "quran/pages/page_440.webp",
+     "bytes": 313010
+    },
+    {
+     "path": "quran/pages/page_441.webp",
+     "bytes": 289304
+    },
+    {
+     "path": "quran/pages/page_442.webp",
+     "bytes": 324856
+    },
+    {
+     "path": "quran/pages/page_443.webp",
+     "bytes": 295540
+    },
+    {
+     "path": "quran/pages/page_444.webp",
+     "bytes": 275582
+    },
+    {
+     "path": "quran/pages/page_445.webp",
+     "bytes": 333690
+    },
+    {
+     "path": "quran/pages/page_446.webp",
+     "bytes": 302200
+    },
+    {
+     "path": "quran/pages/page_447.webp",
+     "bytes": 296360
+    },
+    {
+     "path": "quran/pages/page_448.webp",
+     "bytes": 341400
+    },
+    {
+     "path": "quran/pages/page_449.webp",
+     "bytes": 297854
+    },
+    {
+     "path": "quran/pages/page_450.webp",
+     "bytes": 293228
+    },
+    {
+     "path": "quran/pages/page_451.webp",
+     "bytes": 321052
+    },
+    {
+     "path": "quran/pages/page_452.webp",
+     "bytes": 308810
+    },
+    {
+     "path": "quran/pages/page_453.webp",
+     "bytes": 312560
+    },
+    {
+     "path": "quran/pages/page_454.webp",
+     "bytes": 318508
+    },
+    {
+     "path": "quran/pages/page_455.webp",
+     "bytes": 293754
+    },
+    {
+     "path": "quran/pages/page_456.webp",
+     "bytes": 325052
+    },
+    {
+     "path": "quran/pages/page_457.webp",
+     "bytes": 303090
+    },
+    {
+     "path": "quran/pages/page_458.webp",
+     "bytes": 314896
+    },
+    {
+     "path": "quran/pages/page_459.webp",
+     "bytes": 336608
+    },
+    {
+     "path": "quran/pages/page_460.webp",
+     "bytes": 324930
+    },
+    {
+     "path": "quran/pages/page_461.webp",
+     "bytes": 257668
+    },
+    {
+     "path": "quran/pages/page_462.webp",
+     "bytes": 273918
+    },
+    {
+     "path": "quran/pages/page_463.webp",
+     "bytes": 292060
+    },
+    {
+     "path": "quran/pages/page_464.webp",
+     "bytes": 286828
+    },
+    {
+     "path": "quran/pages/page_465.webp",
+     "bytes": 292608
+    },
+    {
+     "path": "quran/pages/page_466.webp",
+     "bytes": 290644
+    },
+    {
+     "path": "quran/pages/page_467.webp",
+     "bytes": 287046
+    },
+    {
+     "path": "quran/pages/page_468.webp",
+     "bytes": 263304
+    },
+    {
+     "path": "quran/pages/page_469.webp",
+     "bytes": 284560
+    },
+    {
+     "path": "quran/pages/page_470.webp",
+     "bytes": 253116
+    },
+    {
+     "path": "quran/pages/page_471.webp",
+     "bytes": 252724
+    },
+    {
+     "path": "quran/pages/page_472.webp",
+     "bytes": 268900
+    },
+    {
+     "path": "quran/pages/page_473.webp",
+     "bytes": 257044
+    },
+    {
+     "path": "quran/pages/page_474.webp",
+     "bytes": 269926
+    },
+    {
+     "path": "quran/pages/page_475.webp",
+     "bytes": 250500
+    },
+    {
+     "path": "quran/pages/page_476.webp",
+     "bytes": 309286
+    },
+    {
+     "path": "quran/pages/page_477.webp",
+     "bytes": 269252
+    },
+    {
+     "path": "quran/pages/page_478.webp",
+     "bytes": 303484
+    },
+    {
+     "path": "quran/pages/page_479.webp",
+     "bytes": 294060
+    },
+    {
+     "path": "quran/pages/page_480.webp",
+     "bytes": 286552
+    },
+    {
+     "path": "quran/pages/page_481.webp",
+     "bytes": 301864
+    },
+    {
+     "path": "quran/pages/page_482.webp",
+     "bytes": 342832
+    },
+    {
+     "path": "quran/pages/page_483.webp",
+     "bytes": 295672
+    },
+    {
+     "path": "quran/pages/page_484.webp",
+     "bytes": 311968
+    },
+    {
+     "path": "quran/pages/page_485.webp",
+     "bytes": 304686
+    },
+    {
+     "path": "quran/pages/page_486.webp",
+     "bytes": 335816
+    },
+    {
+     "path": "quran/pages/page_487.webp",
+     "bytes": 287662
+    },
+    {
+     "path": "quran/pages/page_488.webp",
+     "bytes": 306536
+    },
+    {
+     "path": "quran/pages/page_489.webp",
+     "bytes": 291594
+    },
+    {
+     "path": "quran/pages/page_490.webp",
+     "bytes": 312100
+    },
+    {
+     "path": "quran/pages/page_491.webp",
+     "bytes": 301674
+    },
+    {
+     "path": "quran/pages/page_492.webp",
+     "bytes": 292772
+    },
+    {
+     "path": "quran/pages/page_493.webp",
+     "bytes": 305558
+    },
+    {
+     "path": "quran/pages/page_494.webp",
+     "bytes": 299266
+    },
+    {
+     "path": "quran/pages/page_495.webp",
+     "bytes": 324142
+    },
+    {
+     "path": "quran/pages/page_496.webp",
+     "bytes": 320278
+    },
+    {
+     "path": "quran/pages/page_497.webp",
+     "bytes": 269066
+    },
+    {
+     "path": "quran/pages/page_498.webp",
+     "bytes": 355926
+    },
+    {
+     "path": "quran/pages/page_499.webp",
+     "bytes": 278984
+    },
+    {
+     "path": "quran/pages/page_500.webp",
+     "bytes": 330598
+    },
+    {
+     "path": "quran/pages/page_501.webp",
+     "bytes": 309054
+    },
+    {
+     "path": "quran/pages/page_502.webp",
+     "bytes": 287276
+    },
+    {
+     "path": "quran/pages/page_503.webp",
+     "bytes": 295832
+    },
+    {
+     "path": "quran/pages/page_504.webp",
+     "bytes": 312206
+    },
+    {
+     "path": "quran/pages/page_505.webp",
+     "bytes": 315914
+    },
+    {
+     "path": "quran/pages/page_506.webp",
+     "bytes": 338822
+    },
+    {
+     "path": "quran/pages/page_507.webp",
+     "bytes": 336206
+    },
+    {
+     "path": "quran/pages/page_508.webp",
+     "bytes": 296920
+    },
+    {
+     "path": "quran/pages/page_509.webp",
+     "bytes": 324908
+    },
+    {
+     "path": "quran/pages/page_510.webp",
+     "bytes": 309894
+    },
+    {
+     "path": "quran/pages/page_511.webp",
+     "bytes": 317830
+    },
+    {
+     "path": "quran/pages/page_512.webp",
+     "bytes": 278580
+    },
+    {
+     "path": "quran/pages/page_513.webp",
+     "bytes": 286904
+    },
+    {
+     "path": "quran/pages/page_514.webp",
+     "bytes": 337532
+    },
+    {
+     "path": "quran/pages/page_515.webp",
+     "bytes": 302928
+    },
+    {
+     "path": "quran/pages/page_516.webp",
+     "bytes": 335550
+    },
+    {
+     "path": "quran/pages/page_517.webp",
+     "bytes": 313712
+    },
+    {
+     "path": "quran/pages/page_518.webp",
+     "bytes": 320730
+    },
+    {
+     "path": "quran/pages/page_519.webp",
+     "bytes": 302046
+    },
+    {
+     "path": "quran/pages/page_520.webp",
+     "bytes": 309048
+    },
+    {
+     "path": "quran/pages/page_521.webp",
+     "bytes": 347610
+    },
+    {
+     "path": "quran/pages/page_522.webp",
+     "bytes": 337332
+    },
+    {
+     "path": "quran/pages/page_523.webp",
+     "bytes": 332038
+    },
+    {
+     "path": "quran/pages/page_524.webp",
+     "bytes": 297354
+    },
+    {
+     "path": "quran/pages/page_525.webp",
+     "bytes": 357312
+    },
+    {
+     "path": "quran/pages/page_526.webp",
+     "bytes": 343028
+    },
+    {
+     "path": "quran/pages/page_527.webp",
+     "bytes": 310104
+    },
+    {
+     "path": "quran/pages/page_528.webp",
+     "bytes": 324158
+    },
+    {
+     "path": "quran/pages/page_529.webp",
+     "bytes": 312602
+    },
+    {
+     "path": "quran/pages/page_530.webp",
+     "bytes": 325462
+    },
+    {
+     "path": "quran/pages/page_531.webp",
+     "bytes": 344086
+    },
+    {
+     "path": "quran/pages/page_532.webp",
+     "bytes": 306398
+    },
+    {
+     "path": "quran/pages/page_533.webp",
+     "bytes": 305306
+    },
+    {
+     "path": "quran/pages/page_534.webp",
+     "bytes": 315834
+    },
+    {
+     "path": "quran/pages/page_535.webp",
+     "bytes": 307022
+    },
+    {
+     "path": "quran/pages/page_536.webp",
+     "bytes": 317748
+    },
+    {
+     "path": "quran/pages/page_537.webp",
+     "bytes": 339836
+    },
+    {
+     "path": "quran/pages/page_538.webp",
+     "bytes": 315934
+    },
+    {
+     "path": "quran/pages/page_539.webp",
+     "bytes": 319962
+    },
+    {
+     "path": "quran/pages/page_540.webp",
+     "bytes": 313060
+    },
+    {
+     "path": "quran/pages/page_541.webp",
+     "bytes": 312524
+    },
+    {
+     "path": "quran/pages/page_542.webp",
+     "bytes": 305512
+    },
+    {
+     "path": "quran/pages/page_543.webp",
+     "bytes": 320802
+    },
+    {
+     "path": "quran/pages/page_544.webp",
+     "bytes": 326412
+    },
+    {
+     "path": "quran/pages/page_545.webp",
+     "bytes": 294126
+    },
+    {
+     "path": "quran/pages/page_546.webp",
+     "bytes": 314146
+    },
+    {
+     "path": "quran/pages/page_547.webp",
+     "bytes": 275120
+    },
+    {
+     "path": "quran/pages/page_548.webp",
+     "bytes": 340280
+    },
+    {
+     "path": "quran/pages/page_549.webp",
+     "bytes": 331786
+    },
+    {
+     "path": "quran/pages/page_550.webp",
+     "bytes": 303726
+    },
+    {
+     "path": "quran/pages/page_551.webp",
+     "bytes": 344094
+    },
+    {
+     "path": "quran/pages/page_552.webp",
+     "bytes": 330842
+    },
+    {
+     "path": "quran/pages/page_553.webp",
+     "bytes": 341122
+    },
+    {
+     "path": "quran/pages/page_554.webp",
+     "bytes": 272084
+    },
+    {
+     "path": "quran/pages/page_555.webp",
+     "bytes": 328542
+    },
+    {
+     "path": "quran/pages/page_556.webp",
+     "bytes": 272602
+    },
+    {
+     "path": "quran/pages/page_557.webp",
+     "bytes": 341916
+    },
+    {
+     "path": "quran/pages/page_558.webp",
+     "bytes": 305896
+    },
+    {
+     "path": "quran/pages/page_559.webp",
+     "bytes": 348812
+    },
+    {
+     "path": "quran/pages/page_560.webp",
+     "bytes": 309884
+    },
+    {
+     "path": "quran/pages/page_561.webp",
+     "bytes": 285812
+    },
+    {
+     "path": "quran/pages/page_562.webp",
+     "bytes": 311754
+    },
+    {
+     "path": "quran/pages/page_563.webp",
+     "bytes": 320708
+    },
+    {
+     "path": "quran/pages/page_564.webp",
+     "bytes": 355698
+    },
+    {
+     "path": "quran/pages/page_565.webp",
+     "bytes": 317606
+    },
+    {
+     "path": "quran/pages/page_566.webp",
+     "bytes": 306162
+    },
+    {
+     "path": "quran/pages/page_567.webp",
+     "bytes": 343678
+    },
+    {
+     "path": "quran/pages/page_568.webp",
+     "bytes": 320476
+    },
+    {
+     "path": "quran/pages/page_569.webp",
+     "bytes": 317700
+    },
+    {
+     "path": "quran/pages/page_570.webp",
+     "bytes": 338932
+    },
+    {
+     "path": "quran/pages/page_571.webp",
+     "bytes": 322556
+    },
+    {
+     "path": "quran/pages/page_572.webp",
+     "bytes": 329798
+    },
+    {
+     "path": "quran/pages/page_573.webp",
+     "bytes": 322902
+    },
+    {
+     "path": "quran/pages/page_574.webp",
+     "bytes": 327740
+    },
+    {
+     "path": "quran/pages/page_575.webp",
+     "bytes": 356692
+    },
+    {
+     "path": "quran/pages/page_576.webp",
+     "bytes": 327850
+    },
+    {
+     "path": "quran/pages/page_577.webp",
+     "bytes": 353380
+    },
+    {
+     "path": "quran/pages/page_578.webp",
+     "bytes": 335834
+    },
+    {
+     "path": "quran/pages/page_579.webp",
+     "bytes": 316198
+    },
+    {
+     "path": "quran/pages/page_580.webp",
+     "bytes": 338976
+    },
+    {
+     "path": "quran/pages/page_581.webp",
+     "bytes": 326466
+    },
+    {
+     "path": "quran/pages/page_582.webp",
+     "bytes": 318144
+    },
+    {
+     "path": "quran/pages/page_583.webp",
+     "bytes": 321688
+    },
+    {
+     "path": "quran/pages/page_584.webp",
+     "bytes": 341664
+    },
+    {
+     "path": "quran/pages/page_585.webp",
+     "bytes": 318586
+    },
+    {
+     "path": "quran/pages/page_586.webp",
+     "bytes": 336306
+    },
+    {
+     "path": "quran/pages/page_587.webp",
+     "bytes": 300728
+    },
+    {
+     "path": "quran/pages/page_588.webp",
+     "bytes": 319910
+    },
+    {
+     "path": "quran/pages/page_589.webp",
+     "bytes": 318240
+    },
+    {
+     "path": "quran/pages/page_590.webp",
+     "bytes": 326938
+    },
+    {
+     "path": "quran/pages/page_591.webp",
+     "bytes": 321902
+    },
+    {
+     "path": "quran/pages/page_592.webp",
+     "bytes": 309478
+    },
+    {
+     "path": "quran/pages/page_593.webp",
+     "bytes": 304606
+    },
+    {
+     "path": "quran/pages/page_594.webp",
+     "bytes": 322858
+    },
+    {
+     "path": "quran/pages/page_595.webp",
+     "bytes": 323088
+    },
+    {
+     "path": "quran/pages/page_596.webp",
+     "bytes": 321872
+    },
+    {
+     "path": "quran/pages/page_597.webp",
+     "bytes": 328234
+    },
+    {
+     "path": "quran/pages/page_598.webp",
+     "bytes": 298008
+    },
+    {
+     "path": "quran/pages/page_599.webp",
+     "bytes": 298914
+    },
+    {
+     "path": "quran/pages/page_600.webp",
+     "bytes": 307266
+    },
+    {
+     "path": "quran/pages/page_601.webp",
+     "bytes": 305948
+    },
+    {
+     "path": "quran/pages/page_602.webp",
+     "bytes": 289662
+    },
+    {
+     "path": "quran/pages/page_603.webp",
+     "bytes": 275420
+    },
+    {
+     "path": "quran/pages/page_604.webp",
+     "bytes": 199158
+    },
+    {
+     "path": "quran/pages/page_605.webp",
+     "bytes": 186216
+    },
+    {
+     "path": "quran/pages/page_606.webp",
+     "bytes": 199146
+    },
+    {
+     "path": "quran/pages/page_607.webp",
+     "bytes": 196810
+    },
+    {
+     "path": "quran/pages/page_608.webp",
+     "bytes": 222860
+    },
+    {
+     "path": "quran/pages/page_609.webp",
+     "bytes": 249762
+    },
+    {
+     "path": "quran/pages/page_610.webp",
+     "bytes": 219866
+    },
+    {
+     "path": "quran/pages/page_611.webp",
+     "bytes": 255220
+    },
+    {
+     "path": "quran/pages/page_612.webp",
+     "bytes": 266994
+    },
+    {
+     "path": "quran/pages/page_613.webp",
+     "bytes": 241300
+    },
+    {
+     "path": "quran/pages/page_614.webp",
+     "bytes": 193146
+    },
+    {
+     "path": "quran/pages/page_615.webp",
+     "bytes": 193948
+    },
+    {
+     "path": "quran/pages/page_616.webp",
+     "bytes": 213436
+    },
+    {
+     "path": "quran/pages/page_617.webp",
+     "bytes": 203584
+    },
+    {
+     "path": "quran/pages/page_618.webp",
+     "bytes": 260004
+    },
+    {
+     "path": "quran/pages/page_619.webp",
+     "bytes": 191628
+    },
+    {
+     "path": "quran/pages/page_620.webp",
+     "bytes": 177780
+    },
+    {
+     "path": "quran/pages/page_621.webp",
+     "bytes": 178840
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_pages-30d05c055b21.zip",
+    "bytes": 184739154,
+    "sha256": "30d05c055b2177d57a30ce679324efeab81349c014c305802c99ead3bf4d6d79"
+   }
+  },
+  {
+   "name": "quran_ayoub_01",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    1,
+    2
+   ],
+   "bytes": 47047992,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/001.mp3",
+     "bytes": 239281
+    },
+    {
+     "path": "quran/audio/ayoub/002.mp3",
+     "bytes": 46808711
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_01-13f5ba3f2ad5.zip",
+    "bytes": 47048266,
+    "sha256": "13f5ba3f2ad565c679dc7a5e3b706c46823f2f78ed3d31ebffefd6b14c415a71"
+   }
+  },
+  {
+   "name": "quran_ayoub_02",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    3,
+    4
+   ],
+   "bytes": 54285164,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/003.mp3",
+     "bytes": 27199947
+    },
+    {
+     "path": "quran/audio/ayoub/004.mp3",
+     "bytes": 27085217
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_02-41a50258e4e2.zip",
+    "bytes": 54285438,
+    "sha256": "41a50258e4e2a5f4e0b95f5dd87836eeb4f33f46702deb65f07b6b20c8c3cce7"
+   }
+  },
+  {
+   "name": "quran_ayoub_03",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    5,
+    7
+   ],
+   "bytes": 66700641,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/005.mp3",
+     "bytes": 20071862
+    },
+    {
+     "path": "quran/audio/ayoub/006.mp3",
+     "bytes": 21977756
+    },
+    {
+     "path": "quran/audio/ayoub/007.mp3",
+     "bytes": 24651023
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_03-bfea52acfd58.zip",
+    "bytes": 66701041,
+    "sha256": "bfea52acfd58664c2cf229a47959ed9b88a356e8ada945544cfda3424be664d0"
+   }
+  },
+  {
+   "name": "quran_ayoub_04",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    8,
+    12
+   ],
+   "bytes": 69204635,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/008.mp3",
+     "bytes": 8977136
+    },
+    {
+     "path": "quran/audio/ayoub/009.mp3",
+     "bytes": 18829479
+    },
+    {
+     "path": "quran/audio/ayoub/010.mp3",
+     "bytes": 13547728
+    },
+    {
+     "path": "quran/audio/ayoub/011.mp3",
+     "bytes": 14171115
+    },
+    {
+     "path": "quran/audio/ayoub/012.mp3",
+     "bytes": 13679177
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_04-712c1d992f51.zip",
+    "bytes": 69205287,
+    "sha256": "712c1d992f51a77f351facaaba561b510987edde208b1d53209301b3405e45ed"
+   }
+  },
+  {
+   "name": "quran_ayoub_05",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    13,
+    20
+   ],
+   "bytes": 74148462,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/013.mp3",
+     "bytes": 6862471
+    },
+    {
+     "path": "quran/audio/ayoub/014.mp3",
+     "bytes": 6699049
+    },
+    {
+     "path": "quran/audio/ayoub/015.mp3",
+     "bytes": 5289691
+    },
+    {
+     "path": "quran/audio/ayoub/016.mp3",
+     "bytes": 14588656
+    },
+    {
+     "path": "quran/audio/ayoub/017.mp3",
+     "bytes": 12055823
+    },
+    {
+     "path": "quran/audio/ayoub/018.mp3",
+     "bytes": 11786448
+    },
+    {
+     "path": "quran/audio/ayoub/019.mp3",
+     "bytes": 7071869
+    },
+    {
+     "path": "quran/audio/ayoub/020.mp3",
+     "bytes": 9794455
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_05-f475c9621de6.zip",
+    "bytes": 74149492,
+    "sha256": "f475c9621de68d2473fb32da55357ba9f5ed80aea5d530f390bdc175f6fbebcf"
+   }
+  },
+  {
+   "name": "quran_ayoub_06",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    21,
+    28
+   ],
+   "bytes": 74007819,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/021.mp3",
+     "bytes": 8869302
+    },
+    {
+     "path": "quran/audio/ayoub/022.mp3",
+     "bytes": 9551412
+    },
+    {
+     "path": "quran/audio/ayoub/023.mp3",
+     "bytes": 8493139
+    },
+    {
+     "path": "quran/audio/ayoub/024.mp3",
+     "bytes": 10317322
+    },
+    {
+     "path": "quran/audio/ayoub/025.mp3",
+     "bytes": 6895072
+    },
+    {
+     "path": "quran/audio/ayoub/026.mp3",
+     "bytes": 9949518
+    },
+    {
+     "path": "quran/audio/ayoub/027.mp3",
+     "bytes": 9115271
+    },
+    {
+     "path": "quran/audio/ayoub/028.mp3",
+     "bytes": 10816783
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_06-e485394de8a6.zip",
+    "bytes": 74008849,
+    "sha256": "e485394de8a6dfff4627b530e6c98c636a6350c529d4e501d023af6ef9091e70"
+   }
+  },
+  {
+   "name": "quran_ayoub_07",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    29,
+    39
+   ],
+   "bytes": 71938295,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/029.mp3",
+     "bytes": 7800372
+    },
+    {
+     "path": "quran/audio/ayoub/030.mp3",
+     "bytes": 6210664
+    },
+    {
+     "path": "quran/audio/ayoub/031.mp3",
+     "bytes": 4185234
+    },
+    {
+     "path": "quran/audio/ayoub/032.mp3",
+     "bytes": 2984855
+    },
+    {
+     "path": "quran/audio/ayoub/033.mp3",
+     "bytes": 10618044
+    },
+    {
+     "path": "quran/audio/ayoub/034.mp3",
+     "bytes": 6177854
+    },
+    {
+     "path": "quran/audio/ayoub/035.mp3",
+     "bytes": 6089665
+    },
+    {
+     "path": "quran/audio/ayoub/036.mp3",
+     "bytes": 5853309
+    },
+    {
+     "path": "quran/audio/ayoub/037.mp3",
+     "bytes": 7542909
+    },
+    {
+     "path": "quran/audio/ayoub/038.mp3",
+     "bytes": 5692813
+    },
+    {
+     "path": "quran/audio/ayoub/039.mp3",
+     "bytes": 8782576
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_07-388911ea182c.zip",
+    "bytes": 71939703,
+    "sha256": "388911ea182c818b9eee7ec2720f5bef4a43939e967ff86fd9a0dc552ed272e2"
+   }
+  },
+  {
+   "name": "quran_ayoub_08",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    40,
+    56
+   ],
+   "bytes": 72504623,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/040.mp3",
+     "bytes": 9190295
+    },
+    {
+     "path": "quran/audio/ayoub/041.mp3",
+     "bytes": 6333335
+    },
+    {
+     "path": "quran/audio/ayoub/042.mp3",
+     "bytes": 6452035
+    },
+    {
+     "path": "quran/audio/ayoub/043.mp3",
+     "bytes": 6851604
+    },
+    {
+     "path": "quran/audio/ayoub/044.mp3",
+     "bytes": 2922370
+    },
+    {
+     "path": "quran/audio/ayoub/045.mp3",
+     "bytes": 3818684
+    },
+    {
+     "path": "quran/audio/ayoub/046.mp3",
+     "bytes": 4767660
+    },
+    {
+     "path": "quran/audio/ayoub/047.mp3",
+     "bytes": 3833312
+    },
+    {
+     "path": "quran/audio/ayoub/048.mp3",
+     "bytes": 4273214
+    },
+    {
+     "path": "quran/audio/ayoub/049.mp3",
+     "bytes": 2767098
+    },
+    {
+     "path": "quran/audio/ayoub/050.mp3",
+     "bytes": 3138455
+    },
+    {
+     "path": "quran/audio/ayoub/051.mp3",
+     "bytes": 2784444
+    },
+    {
+     "path": "quran/audio/ayoub/052.mp3",
+     "bytes": 2623529
+    },
+    {
+     "path": "quran/audio/ayoub/053.mp3",
+     "bytes": 2800117
+    },
+    {
+     "path": "quran/audio/ayoub/054.mp3",
+     "bytes": 2695836
+    },
+    {
+     "path": "quran/audio/ayoub/055.mp3",
+     "bytes": 3645648
+    },
+    {
+     "path": "quran/audio/ayoub/056.mp3",
+     "bytes": 3606987
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_08-c0cb842825e6.zip",
+    "bytes": 72506787,
+    "sha256": "c0cb842825e6696e92dd6031cce73a45e2e2b235298752d615819cbb1ccd5ddb"
+   }
+  },
+  {
+   "name": "quran_ayoub_09",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    57,
+    114
+   ],
+   "bytes": 71974004,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/057.mp3",
+     "bytes": 4656692
+    },
+    {
+     "path": "quran/audio/ayoub/058.mp3",
+     "bytes": 3735928
+    },
+    {
+     "path": "quran/audio/ayoub/059.mp3",
+     "bytes": 3844388
+    },
+    {
+     "path": "quran/audio/ayoub/060.mp3",
+     "bytes": 3032293
+    },
+    {
+     "path": "quran/audio/ayoub/061.mp3",
+     "bytes": 1897952
+    },
+    {
+     "path": "quran/audio/ayoub/062.mp3",
+     "bytes": 1381146
+    },
+    {
+     "path": "quran/audio/ayoub/063.mp3",
+     "bytes": 1641743
+    },
+    {
+     "path": "quran/audio/ayoub/064.mp3",
+     "bytes": 1968169
+    },
+    {
+     "path": "quran/audio/ayoub/065.mp3",
+     "bytes": 2264084
+    },
+    {
+     "path": "quran/audio/ayoub/066.mp3",
+     "bytes": 2166909
+    },
+    {
+     "path": "quran/audio/ayoub/067.mp3",
+     "bytes": 2729064
+    },
+    {
+     "path": "quran/audio/ayoub/068.mp3",
+     "bytes": 2640248
+    },
+    {
+     "path": "quran/audio/ayoub/069.mp3",
+     "bytes": 2367738
+    },
+    {
+     "path": "quran/audio/ayoub/070.mp3",
+     "bytes": 1941002
+    },
+    {
+     "path": "quran/audio/ayoub/071.mp3",
+     "bytes": 1847379
+    },
+    {
+     "path": "quran/audio/ayoub/072.mp3",
+     "bytes": 2009547
+    },
+    {
+     "path": "quran/audio/ayoub/073.mp3",
+     "bytes": 1658671
+    },
+    {
+     "path": "quran/audio/ayoub/074.mp3",
+     "bytes": 2148101
+    },
+    {
+     "path": "quran/audio/ayoub/075.mp3",
+     "bytes": 1501936
+    },
+    {
+     "path": "quran/audio/ayoub/076.mp3",
+     "bytes": 2290834
+    },
+    {
+     "path": "quran/audio/ayoub/077.mp3",
+     "bytes": 1938285
+    },
+    {
+     "path": "quran/audio/ayoub/078.mp3",
+     "bytes": 1982171
+    },
+    {
+     "path": "quran/audio/ayoub/079.mp3",
+     "bytes": 1637773
+    },
+    {
+     "path": "quran/audio/ayoub/080.mp3",
+     "bytes": 1376339
+    },
+    {
+     "path": "quran/audio/ayoub/081.mp3",
+     "bytes": 1010416
+    },
+    {
+     "path": "quran/audio/ayoub/082.mp3",
+     "bytes": 795376
+    },
+    {
+     "path": "quran/audio/ayoub/083.mp3",
+     "bytes": 1683121
+    },
+    {
+     "path": "quran/audio/ayoub/084.mp3",
+     "bytes": 959634
+    },
+    {
+     "path": "quran/audio/ayoub/085.mp3",
+     "bytes": 1058063
+    },
+    {
+     "path": "quran/audio/ayoub/086.mp3",
+     "bytes": 587859
+    },
+    {
+     "path": "quran/audio/ayoub/087.mp3",
+     "bytes": 660584
+    },
+    {
+     "path": "quran/audio/ayoub/088.mp3",
+     "bytes": 814602
+    },
+    {
+     "path": "quran/audio/ayoub/089.mp3",
+     "bytes": 1243637
+    },
+    {
+     "path": "quran/audio/ayoub/090.mp3",
+     "bytes": 679810
+    },
+    {
+     "path": "quran/audio/ayoub/091.mp3",
+     "bytes": 544182
+    },
+    {
+     "path": "quran/audio/ayoub/092.mp3",
+     "bytes": 690677
+    },
+    {
+     "path": "quran/audio/ayoub/093.mp3",
+     "bytes": 422347
+    },
+    {
+     "path": "quran/audio/ayoub/094.mp3",
+     "bytes": 221727
+    },
+    {
+     "path": "quran/audio/ayoub/095.mp3",
+     "bytes": 324963
+    },
+    {
+     "path": "quran/audio/ayoub/096.mp3",
+     "bytes": 604368
+    },
+    {
+     "path": "quran/audio/ayoub/097.mp3",
+     "bytes": 278569
+    },
+    {
+     "path": "quran/audio/ayoub/098.mp3",
+     "bytes": 728502
+    },
+    {
+     "path": "quran/audio/ayoub/099.mp3",
+     "bytes": 372192
+    },
+    {
+     "path": "quran/audio/ayoub/100.mp3",
+     "bytes": 389328
+    },
+    {
+     "path": "quran/audio/ayoub/101.mp3",
+     "bytes": 331859
+    },
+    {
+     "path": "quran/audio/ayoub/102.mp3",
+     "bytes": 316604
+    },
+    {
+     "path": "quran/audio/ayoub/103.mp3",
+     "bytes": 145658
+    },
+    {
+     "path": "quran/audio/ayoub/104.mp3",
+     "bytes": 336039
+    },
+    {
+     "path": "quran/audio/ayoub/105.mp3",
+     "bytes": 233221
+    },
+    {
+     "path": "quran/audio/ayoub/106.mp3",
+     "bytes": 226115
+    },
+    {
+     "path": "quran/audio/ayoub/107.mp3",
+     "bytes": 269583
+    },
+    {
+     "path": "quran/audio/ayoub/108.mp3",
+     "bytes": 119954
+    },
+    {
+     "path": "quran/audio/ayoub/109.mp3",
+     "bytes": 217756
+    },
+    {
+     "path": "quran/audio/ayoub/110.mp3",
+     "bytes": 202292
+    },
+    {
+     "path": "quran/audio/ayoub/111.mp3",
+     "bytes": 216920
+    },
+    {
+     "path": "quran/audio/ayoub/112.mp3",
+     "bytes": 124969
+    },
+    {
+     "path": "quran/audio/ayoub/113.mp3",
+     "bytes": 201665
+    },
+    {
+     "path": "quran/audio/ayoub/114.mp3",
+     "bytes": 303020
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_09-b1ea61a6818d.zip",
+    "bytes": 71981334,
+    "sha256": "b1ea61a6818da7464950b1c5b862f80b1cd40300cb21d00aff6ae66549cbfaf3"
+   }
+  },
+  {
+   "name": "quran_hosary_01",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    1,
+    3
+   ],
+   "bytes": 132073010,
+   "files": [
+    {
+     "path": "quran/audio/hosary/001.mp3",
+     "bytes": 422138
+    },
+    {
+     "path": "quran/audio/hosary/002.mp3",
+     "bytes": 84195996
+    },
+    {
+     "path": "quran/audio/hosary/003.mp3",
+     "bytes": 47454876
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_01-b18170ad4782.zip",
+    "bytes": 132073416,
+    "sha256": "b18170ad4782f347656bd93a6322cccd590489a788cdf5e6b482d31d6037f2c8"
+   }
+  },
+  {
+   "name": "quran_hosary_02",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    4,
+    5
+   ],
+   "bytes": 95729370,
+   "files": [
+    {
+     "path": "quran/audio/hosary/004.mp3",
+     "bytes": 54385684
+    },
+    {
+     "path": "quran/audio/hosary/005.mp3",
+     "bytes": 41343686
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_02-581dbdac4ada.zip",
+    "bytes": 95729648,
+    "sha256": "581dbdac4adab2af03d5483224908035c401cd87d8e0f42f78db952b06858347"
+   }
+  },
+  {
+   "name": "quran_hosary_03",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    6,
+    8
+   ],
+   "bytes": 114127933,
+   "files": [
+    {
+     "path": "quran/audio/hosary/006.mp3",
+     "bytes": 47247777
+    },
+    {
+     "path": "quran/audio/hosary/007.mp3",
+     "bytes": 48400718
+    },
+    {
+     "path": "quran/audio/hosary/008.mp3",
+     "bytes": 18479438
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_03-1b3b2f178ef1.zip",
+    "bytes": 114128339,
+    "sha256": "1b3b2f178ef104bcdeafed4096b90b23b044a0152a0486cc29c58787dc9389ce"
+   }
+  },
+  {
+   "name": "quran_hosary_04",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    9,
+    14
+   ],
+   "bytes": 135171969,
+   "files": [
+    {
+     "path": "quran/audio/hosary/009.mp3",
+     "bytes": 37281541
+    },
+    {
+     "path": "quran/audio/hosary/010.mp3",
+     "bytes": 24346540
+    },
+    {
+     "path": "quran/audio/hosary/011.mp3",
+     "bytes": 25742733
+    },
+    {
+     "path": "quran/audio/hosary/012.mp3",
+     "bytes": 24401084
+    },
+    {
+     "path": "quran/audio/hosary/013.mp3",
+     "bytes": 11411121
+    },
+    {
+     "path": "quran/audio/hosary/014.mp3",
+     "bytes": 11988950
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_04-a599e9d7b02c.zip",
+    "bytes": 135172759,
+    "sha256": "a599e9d7b02cf86c2c5e0a146d1a3b506f18a9841d1c1ca1de8b99018fdcb0b0"
+   }
+  },
+  {
+   "name": "quran_hosary_05",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    15,
+    21
+   ],
+   "bytes": 126089087,
+   "files": [
+    {
+     "path": "quran/audio/hosary/015.mp3",
+     "bytes": 9749106
+    },
+    {
+     "path": "quran/audio/hosary/016.mp3",
+     "bytes": 25975536
+    },
+    {
+     "path": "quran/audio/hosary/017.mp3",
+     "bytes": 20564845
+    },
+    {
+     "path": "quran/audio/hosary/018.mp3",
+     "bytes": 20545410
+    },
+    {
+     "path": "quran/audio/hosary/019.mp3",
+     "bytes": 12037433
+    },
+    {
+     "path": "quran/audio/hosary/020.mp3",
+     "bytes": 18897606
+    },
+    {
+     "path": "quran/audio/hosary/021.mp3",
+     "bytes": 18319151
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_05-193e6724c3ca.zip",
+    "bytes": 126090005,
+    "sha256": "193e6724c3ca3e40ec550f65011eea6fa357ffc3ac336a7a0dde1b9621dcc321"
+   }
+  },
+  {
+   "name": "quran_hosary_06",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    22,
+    29
+   ],
+   "bytes": 134630081,
+   "files": [
+    {
+     "path": "quran/audio/hosary/022.mp3",
+     "bytes": 18544848
+    },
+    {
+     "path": "quran/audio/hosary/023.mp3",
+     "bytes": 15054889
+    },
+    {
+     "path": "quran/audio/hosary/024.mp3",
+     "bytes": 20451369
+    },
+    {
+     "path": "quran/audio/hosary/025.mp3",
+     "bytes": 12775549
+    },
+    {
+     "path": "quran/audio/hosary/026.mp3",
+     "bytes": 18393129
+    },
+    {
+     "path": "quran/audio/hosary/027.mp3",
+     "bytes": 15841071
+    },
+    {
+     "path": "quran/audio/hosary/028.mp3",
+     "bytes": 19559026
+    },
+    {
+     "path": "quran/audio/hosary/029.mp3",
+     "bytes": 14010200
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_06-9ed7dce9b4f6.zip",
+    "bytes": 134631127,
+    "sha256": "9ed7dce9b4f66a900489cb1da11d78839a1f7c8c75207daaa0259df699298449"
+   }
+  },
+  {
+   "name": "quran_hosary_07",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    30,
+    39
+   ],
+   "bytes": 120852684,
+   "files": [
+    {
+     "path": "quran/audio/hosary/030.mp3",
+     "bytes": 12142968
+    },
+    {
+     "path": "quran/audio/hosary/031.mp3",
+     "bytes": 7513025
+    },
+    {
+     "path": "quran/audio/hosary/032.mp3",
+     "bytes": 5457084
+    },
+    {
+     "path": "quran/audio/hosary/033.mp3",
+     "bytes": 19734987
+    },
+    {
+     "path": "quran/audio/hosary/034.mp3",
+     "bytes": 12852662
+    },
+    {
+     "path": "quran/audio/hosary/035.mp3",
+     "bytes": 12012773
+    },
+    {
+     "path": "quran/audio/hosary/036.mp3",
+     "bytes": 10634344
+    },
+    {
+     "path": "quran/audio/hosary/037.mp3",
+     "bytes": 13525577
+    },
+    {
+     "path": "quran/audio/hosary/038.mp3",
+     "bytes": 10753044
+    },
+    {
+     "path": "quran/audio/hosary/039.mp3",
+     "bytes": 16226220
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_07-09d441039882.zip",
+    "bytes": 120853986,
+    "sha256": "09d441039882c6a7b2e8b7f4a6c4c6a079f0a2748c3bf9468e8af2a5dad22fca"
+   }
+  },
+  {
+   "name": "quran_hosary_08",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    40,
+    56
+   ],
+   "bytes": 135047410,
+   "files": [
+    {
+     "path": "quran/audio/hosary/040.mp3",
+     "bytes": 16787121
+    },
+    {
+     "path": "quran/audio/hosary/041.mp3",
+     "bytes": 11714142
+    },
+    {
+     "path": "quran/audio/hosary/042.mp3",
+     "bytes": 10368940
+    },
+    {
+     "path": "quran/audio/hosary/043.mp3",
+     "bytes": 11828244
+    },
+    {
+     "path": "quran/audio/hosary/044.mp3",
+     "bytes": 5663555
+    },
+    {
+     "path": "quran/audio/hosary/045.mp3",
+     "bytes": 7293596
+    },
+    {
+     "path": "quran/audio/hosary/046.mp3",
+     "bytes": 9230419
+    },
+    {
+     "path": "quran/audio/hosary/047.mp3",
+     "bytes": 8832731
+    },
+    {
+     "path": "quran/audio/hosary/048.mp3",
+     "bytes": 7831510
+    },
+    {
+     "path": "quran/audio/hosary/049.mp3",
+     "bytes": 5714755
+    },
+    {
+     "path": "quran/audio/hosary/050.mp3",
+     "bytes": 5598981
+    },
+    {
+     "path": "quran/audio/hosary/051.mp3",
+     "bytes": 5022824
+    },
+    {
+     "path": "quran/audio/hosary/052.mp3",
+     "bytes": 4889286
+    },
+    {
+     "path": "quran/audio/hosary/053.mp3",
+     "bytes": 5508493
+    },
+    {
+     "path": "quran/audio/hosary/054.mp3",
+     "bytes": 5286765
+    },
+    {
+     "path": "quran/audio/hosary/055.mp3",
+     "bytes": 6712215
+    },
+    {
+     "path": "quran/audio/hosary/056.mp3",
+     "bytes": 6763833
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_08-f9885303cf68.zip",
+    "bytes": 135049608,
+    "sha256": "f9885303cf684b815a63ea5752e61b5c289f38832eadd33903f6bd88fc465244"
+   }
+  },
+  {
+   "name": "quran_hosary_09",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    57,
+    114
+   ],
+   "bytes": 127510128,
+   "files": [
+    {
+     "path": "quran/audio/hosary/057.mp3",
+     "bytes": 8177371
+    },
+    {
+     "path": "quran/audio/hosary/058.mp3",
+     "bytes": 6968215
+    },
+    {
+     "path": "quran/audio/hosary/059.mp3",
+     "bytes": 7208960
+    },
+    {
+     "path": "quran/audio/hosary/060.mp3",
+     "bytes": 5553841
+    },
+    {
+     "path": "quran/audio/hosary/061.mp3",
+     "bytes": 3397590
+    },
+    {
+     "path": "quran/audio/hosary/062.mp3",
+     "bytes": 2683088
+    },
+    {
+     "path": "quran/audio/hosary/063.mp3",
+     "bytes": 2904607
+    },
+    {
+     "path": "quran/audio/hosary/064.mp3",
+     "bytes": 3846269
+    },
+    {
+     "path": "quran/audio/hosary/065.mp3",
+     "bytes": 3714194
+    },
+    {
+     "path": "quran/audio/hosary/066.mp3",
+     "bytes": 3880333
+    },
+    {
+     "path": "quran/audio/hosary/067.mp3",
+     "bytes": 4760555
+    },
+    {
+     "path": "quran/audio/hosary/068.mp3",
+     "bytes": 4704548
+    },
+    {
+     "path": "quran/audio/hosary/069.mp3",
+     "bytes": 3994435
+    },
+    {
+     "path": "quran/audio/hosary/070.mp3",
+     "bytes": 3377110
+    },
+    {
+     "path": "quran/audio/hosary/071.mp3",
+     "bytes": 3369586
+    },
+    {
+     "path": "quran/audio/hosary/072.mp3",
+     "bytes": 3862569
+    },
+    {
+     "path": "quran/audio/hosary/073.mp3",
+     "bytes": 2912548
+    },
+    {
+     "path": "quran/audio/hosary/074.mp3",
+     "bytes": 3927980
+    },
+    {
+     "path": "quran/audio/hosary/075.mp3",
+     "bytes": 2274324
+    },
+    {
+     "path": "quran/audio/hosary/076.mp3",
+     "bytes": 3743869
+    },
+    {
+     "path": "quran/audio/hosary/077.mp3",
+     "bytes": 3149531
+    },
+    {
+     "path": "quran/audio/hosary/078.mp3",
+     "bytes": 3081195
+    },
+    {
+     "path": "quran/audio/hosary/079.mp3",
+     "bytes": 2966047
+    },
+    {
+     "path": "quran/audio/hosary/080.mp3",
+     "bytes": 2289162
+    },
+    {
+     "path": "quran/audio/hosary/081.mp3",
+     "bytes": 1648640
+    },
+    {
+     "path": "quran/audio/hosary/082.mp3",
+     "bytes": 1340395
+    },
+    {
+     "path": "quran/audio/hosary/083.mp3",
+     "bytes": 2962703
+    },
+    {
+     "path": "quran/audio/hosary/084.mp3",
+     "bytes": 1820212
+    },
+    {
+     "path": "quran/audio/hosary/085.mp3",
+     "bytes": 1673299
+    },
+    {
+     "path": "quran/audio/hosary/086.mp3",
+     "bytes": 1063079
+    },
+    {
+     "path": "quran/audio/hosary/087.mp3",
+     "bytes": 1215634
+    },
+    {
+     "path": "quran/audio/hosary/088.mp3",
+     "bytes": 1576333
+    },
+    {
+     "path": "quran/audio/hosary/089.mp3",
+     "bytes": 2233573
+    },
+    {
+     "path": "quran/audio/hosary/090.mp3",
+     "bytes": 1187631
+    },
+    {
+     "path": "quran/audio/hosary/091.mp3",
+     "bytes": 1006654
+    },
+    {
+     "path": "quran/audio/hosary/092.mp3",
+     "bytes": 1298599
+    },
+    {
+     "path": "quran/audio/hosary/093.mp3",
+     "bytes": 722442
+    },
+    {
+     "path": "quran/audio/hosary/094.mp3",
+     "bytes": 436767
+    },
+    {
+     "path": "quran/audio/hosary/095.mp3",
+     "bytes": 579291
+    },
+    {
+     "path": "quran/audio/hosary/096.mp3",
+     "bytes": 1120339
+    },
+    {
+     "path": "quran/audio/hosary/097.mp3",
+     "bytes": 472502
+    },
+    {
+     "path": "quran/audio/hosary/098.mp3",
+     "bytes": 1482919
+    },
+    {
+     "path": "quran/audio/hosary/099.mp3",
+     "bytes": 647209
+    },
+    {
+     "path": "quran/audio/hosary/100.mp3",
+     "bytes": 695902
+    },
+    {
+     "path": "quran/audio/hosary/101.mp3",
+     "bytes": 649508
+    },
+    {
+     "path": "quran/audio/hosary/102.mp3",
+     "bytes": 541048
+    },
+    {
+     "path": "quran/audio/hosary/103.mp3",
+     "bytes": 304692
+    },
+    {
+     "path": "quran/audio/hosary/104.mp3",
+     "bytes": 620460
+    },
+    {
+     "path": "quran/audio/hosary/105.mp3",
+     "bytes": 426109
+    },
+    {
+     "path": "quran/audio/hosary/106.mp3",
+     "bytes": 346070
+    },
+    {
+     "path": "quran/audio/hosary/107.mp3",
+     "bytes": 426318
+    },
+    {
+     "path": "quran/audio/hosary/108.mp3",
+     "bytes": 213159
+    },
+    {
+     "path": "quran/audio/hosary/109.mp3",
+     "bytes": 388493
+    },
+    {
+     "path": "quran/audio/hosary/110.mp3",
+     "bytes": 328724
+    },
+    {
+     "path": "quran/audio/hosary/111.mp3",
+     "bytes": 360489
+    },
+    {
+     "path": "quran/audio/hosary/112.mp3",
+     "bytes": 231967
+    },
+    {
+     "path": "quran/audio/hosary/113.mp3",
+     "bytes": 326635
+    },
+    {
+     "path": "quran/audio/hosary/114.mp3",
+     "bytes": 414406
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_09-6ab85c394b25.zip",
+    "bytes": 127517574,
+    "sha256": "6ab85c394b251909ccbd2662e4ee0a04b90f62c0e357c92a4f0fad7115ab84a0"
+   }
+  },
+  {
+   "name": "quran_trabelsi_01",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    1,
+    2
+   ],
+   "bytes": 75484263,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/001.mp3",
+     "bytes": 392254
+    },
+    {
+     "path": "quran/audio/trabelsi/002.mp3",
+     "bytes": 75092009
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_01-d3d6f6015e45.zip",
+    "bytes": 75484549,
+    "sha256": "d3d6f6015e45a752033e80a09c07ec9fc19ad3f8959d8a01421dcc5a0452ae17"
+   }
+  },
+  {
+   "name": "quran_trabelsi_02",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    3,
+    4
+   ],
+   "bytes": 90205204,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/003.mp3",
+     "bytes": 45736437
+    },
+    {
+     "path": "quran/audio/trabelsi/004.mp3",
+     "bytes": 44468767
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_02-34fa40aa98a6.zip",
+    "bytes": 90205490,
+    "sha256": "34fa40aa98a68c4cc7e9bdfb6d989f386c6e7b1253069a7683706712dc7e226d"
+   }
+  },
+  {
+   "name": "quran_trabelsi_03",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    5,
+    7
+   ],
+   "bytes": 113237263,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/005.mp3",
+     "bytes": 33687510
+    },
+    {
+     "path": "quran/audio/trabelsi/006.mp3",
+     "bytes": 37221982
+    },
+    {
+     "path": "quran/audio/trabelsi/007.mp3",
+     "bytes": 42327771
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_03-b510188bbc1b.zip",
+    "bytes": 113237681,
+    "sha256": "b510188bbc1b536de48bfee07c62a72f816cad8e9b9ca59a0378ba56d89aae70"
+   }
+  },
+  {
+   "name": "quran_trabelsi_04",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    8,
+    12
+   ],
+   "bytes": 113689284,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/008.mp3",
+     "bytes": 15959353
+    },
+    {
+     "path": "quran/audio/trabelsi/009.mp3",
+     "bytes": 31240568
+    },
+    {
+     "path": "quran/audio/trabelsi/010.mp3",
+     "bytes": 22032091
+    },
+    {
+     "path": "quran/audio/trabelsi/011.mp3",
+     "bytes": 23157655
+    },
+    {
+     "path": "quran/audio/trabelsi/012.mp3",
+     "bytes": 21299617
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_04-8d10037b8812.zip",
+    "bytes": 113689966,
+    "sha256": "8d10037b8812daebb5c67348e3ab2f7b8f72dd53e766513315a9caea1df612e7"
+   }
+  },
+  {
+   "name": "quran_trabelsi_05",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    13,
+    20
+   ],
+   "bytes": 112307718,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/013.mp3",
+     "bytes": 10000509
+    },
+    {
+     "path": "quran/audio/trabelsi/014.mp3",
+     "bytes": 9840431
+    },
+    {
+     "path": "quran/audio/trabelsi/015.mp3",
+     "bytes": 7599542
+    },
+    {
+     "path": "quran/audio/trabelsi/016.mp3",
+     "bytes": 20665782
+    },
+    {
+     "path": "quran/audio/trabelsi/017.mp3",
+     "bytes": 18112052
+    },
+    {
+     "path": "quran/audio/trabelsi/018.mp3",
+     "bytes": 18515382
+    },
+    {
+     "path": "quran/audio/trabelsi/019.mp3",
+     "bytes": 12289462
+    },
+    {
+     "path": "quran/audio/trabelsi/020.mp3",
+     "bytes": 15284558
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_05-139bf92c5b5c.zip",
+    "bytes": 112308796,
+    "sha256": "139bf92c5b5cd5aea8d252b5df8d357e534f8289b7974436019869cd4adf65a5"
+   }
+  },
+  {
+   "name": "quran_trabelsi_06",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    21,
+    27
+   ],
+   "bytes": 96239903,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/021.mp3",
+     "bytes": 14175085
+    },
+    {
+     "path": "quran/audio/trabelsi/022.mp3",
+     "bytes": 15984848
+    },
+    {
+     "path": "quran/audio/trabelsi/023.mp3",
+     "bytes": 12303046
+    },
+    {
+     "path": "quran/audio/trabelsi/024.mp3",
+     "bytes": 15698128
+    },
+    {
+     "path": "quran/audio/trabelsi/025.mp3",
+     "bytes": 10078249
+    },
+    {
+     "path": "quran/audio/trabelsi/026.mp3",
+     "bytes": 14152515
+    },
+    {
+     "path": "quran/audio/trabelsi/027.mp3",
+     "bytes": 13848032
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_06-464cdbf9d34c.zip",
+    "bytes": 96240849,
+    "sha256": "464cdbf9d34ca24ce720b4a10e71f47f984dc1a305a8d6e08251609dbeb94b12"
+   }
+  },
+  {
+   "name": "quran_trabelsi_07",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    28,
+    38
+   ],
+   "bytes": 112233739,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/028.mp3",
+     "bytes": 17928568
+    },
+    {
+     "path": "quran/audio/trabelsi/029.mp3",
+     "bytes": 11682377
+    },
+    {
+     "path": "quran/audio/trabelsi/030.mp3",
+     "bytes": 9676591
+    },
+    {
+     "path": "quran/audio/trabelsi/031.mp3",
+     "bytes": 6027180
+    },
+    {
+     "path": "quran/audio/trabelsi/032.mp3",
+     "bytes": 4674664
+    },
+    {
+     "path": "quran/audio/trabelsi/033.mp3",
+     "bytes": 16128835
+    },
+    {
+     "path": "quran/audio/trabelsi/034.mp3",
+     "bytes": 9378168
+    },
+    {
+     "path": "quran/audio/trabelsi/035.mp3",
+     "bytes": 9166471
+    },
+    {
+     "path": "quran/audio/trabelsi/036.mp3",
+     "bytes": 8563565
+    },
+    {
+     "path": "quran/audio/trabelsi/037.mp3",
+     "bytes": 10442083
+    },
+    {
+     "path": "quran/audio/trabelsi/038.mp3",
+     "bytes": 8565237
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_07-1406a372b714.zip",
+    "bytes": 112235213,
+    "sha256": "1406a372b714464ac13080256111a6331391f0c9f1974f3611de4770bd2d0731"
+   }
+  },
+  {
+   "name": "quran_trabelsi_08",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    39,
+    54
+   ],
+   "bytes": 111506278,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/039.mp3",
+     "bytes": 13582419
+    },
+    {
+     "path": "quran/audio/trabelsi/040.mp3",
+     "bytes": 14595552
+    },
+    {
+     "path": "quran/audio/trabelsi/041.mp3",
+     "bytes": 10017645
+    },
+    {
+     "path": "quran/audio/trabelsi/042.mp3",
+     "bytes": 9788186
+    },
+    {
+     "path": "quran/audio/trabelsi/043.mp3",
+     "bytes": 10072398
+    },
+    {
+     "path": "quran/audio/trabelsi/044.mp3",
+     "bytes": 4283245
+    },
+    {
+     "path": "quran/audio/trabelsi/045.mp3",
+     "bytes": 5546736
+    },
+    {
+     "path": "quran/audio/trabelsi/046.mp3",
+     "bytes": 6950661
+    },
+    {
+     "path": "quran/audio/trabelsi/047.mp3",
+     "bytes": 6125400
+    },
+    {
+     "path": "quran/audio/trabelsi/048.mp3",
+     "bytes": 6165315
+    },
+    {
+     "path": "quran/audio/trabelsi/049.mp3",
+     "bytes": 3900604
+    },
+    {
+     "path": "quran/audio/trabelsi/050.mp3",
+     "bytes": 4239360
+    },
+    {
+     "path": "quran/audio/trabelsi/051.mp3",
+     "bytes": 4153260
+    },
+    {
+     "path": "quran/audio/trabelsi/052.mp3",
+     "bytes": 3759751
+    },
+    {
+     "path": "quran/audio/trabelsi/053.mp3",
+     "bytes": 4154096
+    },
+    {
+     "path": "quran/audio/trabelsi/054.mp3",
+     "bytes": 4171650
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_08-3e4045cc2b5a.zip",
+    "bytes": 111508412,
+    "sha256": "3e4045cc2b5afd74d0c85770324f2fc76aabadae0f2f42ec03679ae9c88d2679"
+   }
+  },
+  {
+   "name": "quran_trabelsi_09",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    55,
+    114
+   ],
+   "bytes": 110073072,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/055.mp3",
+     "bytes": 5315186
+    },
+    {
+     "path": "quran/audio/trabelsi/056.mp3",
+     "bytes": 5319993
+    },
+    {
+     "path": "quran/audio/trabelsi/057.mp3",
+     "bytes": 6814824
+    },
+    {
+     "path": "quran/audio/trabelsi/058.mp3",
+     "bytes": 5547781
+    },
+    {
+     "path": "quran/audio/trabelsi/059.mp3",
+     "bytes": 5776404
+    },
+    {
+     "path": "quran/audio/trabelsi/060.mp3",
+     "bytes": 4528169
+    },
+    {
+     "path": "quran/audio/trabelsi/061.mp3",
+     "bytes": 2557283
+    },
+    {
+     "path": "quran/audio/trabelsi/062.mp3",
+     "bytes": 2074331
+    },
+    {
+     "path": "quran/audio/trabelsi/063.mp3",
+     "bytes": 2248202
+    },
+    {
+     "path": "quran/audio/trabelsi/064.mp3",
+     "bytes": 2718406
+    },
+    {
+     "path": "quran/audio/trabelsi/065.mp3",
+     "bytes": 3322148
+    },
+    {
+     "path": "quran/audio/trabelsi/066.mp3",
+     "bytes": 3332179
+    },
+    {
+     "path": "quran/audio/trabelsi/067.mp3",
+     "bytes": 3753691
+    },
+    {
+     "path": "quran/audio/trabelsi/068.mp3",
+     "bytes": 3794860
+    },
+    {
+     "path": "quran/audio/trabelsi/069.mp3",
+     "bytes": 3347435
+    },
+    {
+     "path": "quran/audio/trabelsi/070.mp3",
+     "bytes": 2746409
+    },
+    {
+     "path": "quran/audio/trabelsi/071.mp3",
+     "bytes": 2723004
+    },
+    {
+     "path": "quran/audio/trabelsi/072.mp3",
+     "bytes": 3208254
+    },
+    {
+     "path": "quran/audio/trabelsi/073.mp3",
+     "bytes": 2343079
+    },
+    {
+     "path": "quran/audio/trabelsi/074.mp3",
+     "bytes": 3173564
+    },
+    {
+     "path": "quran/audio/trabelsi/075.mp3",
+     "bytes": 1909864
+    },
+    {
+     "path": "quran/audio/trabelsi/076.mp3",
+     "bytes": 3131768
+    },
+    {
+     "path": "quran/audio/trabelsi/077.mp3",
+     "bytes": 2407444
+    },
+    {
+     "path": "quran/audio/trabelsi/078.mp3",
+     "bytes": 2186135
+    },
+    {
+     "path": "quran/audio/trabelsi/079.mp3",
+     "bytes": 2221244
+    },
+    {
+     "path": "quran/audio/trabelsi/080.mp3",
+     "bytes": 1744352
+    },
+    {
+     "path": "quran/audio/trabelsi/081.mp3",
+     "bytes": 1198915
+    },
+    {
+     "path": "quran/audio/trabelsi/082.mp3",
+     "bytes": 922226
+    },
+    {
+     "path": "quran/audio/trabelsi/083.mp3",
+     "bytes": 2009129
+    },
+    {
+     "path": "quran/audio/trabelsi/084.mp3",
+     "bytes": 1225874
+    },
+    {
+     "path": "quran/audio/trabelsi/085.mp3",
+     "bytes": 1295882
+    },
+    {
+     "path": "quran/audio/trabelsi/086.mp3",
+     "bytes": 773851
+    },
+    {
+     "path": "quran/audio/trabelsi/087.mp3",
+     "bytes": 846576
+    },
+    {
+     "path": "quran/audio/trabelsi/088.mp3",
+     "bytes": 1085857
+    },
+    {
+     "path": "quran/audio/trabelsi/089.mp3",
+     "bytes": 1577168
+    },
+    {
+     "path": "quran/audio/trabelsi/090.mp3",
+     "bytes": 917002
+    },
+    {
+     "path": "quran/audio/trabelsi/091.mp3",
+     "bytes": 701544
+    },
+    {
+     "path": "quran/audio/trabelsi/092.mp3",
+     "bytes": 881684
+    },
+    {
+     "path": "quran/audio/trabelsi/093.mp3",
+     "bytes": 509283
+    },
+    {
+     "path": "quran/audio/trabelsi/094.mp3",
+     "bytes": 318693
+    },
+    {
+     "path": "quran/audio/trabelsi/095.mp3",
+     "bytes": 413570
+    },
+    {
+     "path": "quran/audio/trabelsi/096.mp3",
+     "bytes": 777404
+    },
+    {
+     "path": "quran/audio/trabelsi/097.mp3",
+     "bytes": 320992
+    },
+    {
+     "path": "quran/audio/trabelsi/098.mp3",
+     "bytes": 1069557
+    },
+    {
+     "path": "quran/audio/trabelsi/099.mp3",
+     "bytes": 479399
+    },
+    {
+     "path": "quran/audio/trabelsi/100.mp3",
+     "bytes": 497371
+    },
+    {
+     "path": "quran/audio/trabelsi/101.mp3",
+     "bytes": 459546
+    },
+    {
+     "path": "quran/audio/trabelsi/102.mp3",
+     "bytes": 394135
+    },
+    {
+     "path": "quran/audio/trabelsi/103.mp3",
+     "bytes": 193515
+    },
+    {
+     "path": "quran/audio/trabelsi/104.mp3",
+     "bytes": 394971
+    },
+    {
+     "path": "quran/audio/trabelsi/105.mp3",
+     "bytes": 310961
+    },
+    {
+     "path": "quran/audio/trabelsi/106.mp3",
+     "bytes": 249939
+    },
+    {
+     "path": "quran/audio/trabelsi/107.mp3",
+     "bytes": 351712
+    },
+    {
+     "path": "quran/audio/trabelsi/108.mp3",
+     "bytes": 155271
+    },
+    {
+     "path": "quran/audio/trabelsi/109.mp3",
+     "bytes": 292989
+    },
+    {
+     "path": "quran/audio/trabelsi/110.mp3",
+     "bytes": 247222
+    },
+    {
+     "path": "quran/audio/trabelsi/111.mp3",
+     "bytes": 270419
+    },
+    {
+     "path": "quran/audio/trabelsi/112.mp3",
+     "bytes": 156734
+    },
+    {
+     "path": "quran/audio/trabelsi/113.mp3",
+     "bytes": 236982
+    },
+    {
+     "path": "quran/audio/trabelsi/114.mp3",
+     "bytes": 290690
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_09-b7f3e86bf91b.zip",
+    "bytes": 110081014,
+    "sha256": "b7f3e86bf91b79f332fd0300c5cc49c81dde34ef1aeb7208ce9282a62873702c"
+   }
+  }
+ ]
+}

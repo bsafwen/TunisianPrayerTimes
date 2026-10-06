@@ -1,0 +1,473 @@
+{
+  "status": "REVIEWED_OFFICIAL_NEIGHBOR_SECTORS",
+  "exportPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\neighbor-review-isie2023-sectors.geojson",
+  "exportSha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+  "currentAssetMetadataSha256": "f9655d2654c440cdba887d015951279acada92c50c149333e9b409e384bd35f0",
+  "records": [
+    {
+      "id": "osm:relation:7103676",
+      "code": "156353",
+      "name": "زاوية الجديدي",
+      "drawingIndices": [
+        329
+      ],
+      "repair": {
+        "applied": false
+      },
+      "osmComparison": {
+        "iou": 0.3732686645011774,
+        "officialCoveredByOsm": 0.9782180479960043,
+        "osmCoveredByOfficial": 0.37639711250740304,
+        "oldAreaMeters2": 28962429.214588076,
+        "newAreaMeters2": 11144115.312433423,
+        "hausdorffMeters": 6475.095949984311
+      },
+      "clipReview": {
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 26.643310546875004,
+        "activeClips": [
+          {
+            "sequence": 337,
+            "outsideActiveClipAreasPoints2": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "qualification": "Title and in-map red Zaouiet Jdidi label identify the single complete target ring west of the Beni Khalled town-side eastern boundary. The Beni Khalled Joufia text label extends across that boundary; the whole page distinguishes the two, so incidental other-label containment does not change identity. The southern farming extension of the old source lies in the separately published Beni Khalled Keblia sector."
+    },
+    {
+      "id": "osm:relation:7165010",
+      "code": "425959",
+      "name": "زلفان",
+      "drawingIndices": [
+        267
+      ],
+      "repair": {
+        "applied": true,
+        "operation": "make_valid followed by explicitly reviewed separation of one positive-area polygon from one zero-area retraced line",
+        "approved": true,
+        "shapelyVersion": "2.1.2",
+        "rawValidityIssue": "Self-intersection[561.840454101562 144.378234863281]",
+        "polygonAreaMeters2": 45351271.17224469,
+        "areaDifferenceMeters2": -7.450580596923828e-09,
+        "exactAreaEqualityProof": {
+          "coordinateSystem": "PDF page coordinates, exact rational arithmetic from the stored binary floats",
+          "twiceAreaNumerator": 199487160635603,
+          "twiceAreaDenominator": 1073741824,
+          "sourceAndResultEqual": true,
+          "affinePreservesAreaEquality": true,
+          "floatingProjectedAreaCaveat": "Any ~1e-8 square metre difference in separately summed floating point shoelace areas is rounding; exact source edge inventory and rational source area are unchanged."
+        },
+        "newVertices": 0,
+        "newBoundarySegments": 0,
+        "removedRetracedSegmentOccurrences": 2,
+        "removedSegmentPagePoints": [
+          [
+            561.8404541015625,
+            144.0181884765625
+          ],
+          [
+            561.8404541015625,
+            144.37823486328125
+          ]
+        ],
+        "nonArealComponentType": "LineString",
+        "nonArealComponentLengthMeters": 7.954129630172319,
+        "nonArealComponentGeometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              8.803952074293251,
+              35.45264182012264
+            ],
+            [
+              8.803951897846085,
+              35.45271354022333
+            ]
+          ]
+        },
+        "qualification": "Every positive-area component retained. The original retraced line and complete source path remain in provenance; no buffering, snapping or invented boundary segment."
+      },
+      "osmComparison": {
+        "iou": 0.8081269432968253,
+        "officialCoveredByOsm": 0.9489051166462916,
+        "osmCoveredByOfficial": 0.8448920148675266,
+        "oldAreaMeters2": 50934382.74298793,
+        "newAreaMeters2": 45351271.172245115,
+        "hausdorffMeters": 3110.3314979991555
+      },
+      "clipReview": {
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 26.643310546875004,
+        "activeClips": [
+          {
+            "sequence": 275,
+            "outsideActiveClipAreasPoints2": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "qualification": "Title and in-map red Zelfan label identify the complete eastern Thala sector around Zelfan medical centre, bounded by Oued Rachah to the west, El Ayoun to the east and Khmouda South to the south. The separate complete ring264 belongs to Oued Rachah and must not be substituted."
+    },
+    {
+      "id": "osm:relation:7164966",
+      "code": "426152",
+      "name": "فوسانة الأحواز",
+      "drawingIndices": [
+        421,
+        422
+      ],
+      "repair": {
+        "applied": false
+      },
+      "osmComparison": {
+        "iou": 0.7836942244893333,
+        "officialCoveredByOsm": 0.9262660816678218,
+        "osmCoveredByOfficial": 0.8358377230108155,
+        "oldAreaMeters2": 81435863.62047118,
+        "newAreaMeters2": 73485543.91346507,
+        "hausdorffMeters": 2218.5444550997336
+      },
+      "clipReview": {
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 26.643310546875004,
+        "activeClips": [
+          {
+            "sequence": 429,
+            "outsideActiveClipAreasPoints2": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "sequence": 430,
+            "outsideActiveClipAreasPoints2": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "qualification": "The official Foussana Ahwaz title and internal label identify the wrapping sector north/east/south of the distinct Foussana city footprint. Drawings421 and422 form one continuous boundary with exactly equal reversed endpoints; concatenation uses every existing segment and adds none. The resulting valid ring excludes city drawing423 and agrees with the outer surrounding boundary shown on the full page."
+    },
+    {
+      "id": "osm:relation:7164967",
+      "code": "426151",
+      "name": "فوسانة",
+      "drawingIndices": [
+        423
+      ],
+      "repair": {
+        "applied": false
+      },
+      "osmComparison": {
+        "iou": 0.6514746791777228,
+        "officialCoveredByOsm": 0.715927140181372,
+        "osmCoveredByOfficial": 0.8785887880291566,
+        "oldAreaMeters2": 21945034.18351872,
+        "newAreaMeters2": 26931037.956839554,
+        "hausdorffMeters": 1640.264795835494
+      },
+      "clipReview": {
+        "outsideViewportAreaPoints2": 0.0,
+        "distanceFromViewportPoints": 139.6976318359375,
+        "activeClips": [
+          {
+            "sequence": 431,
+            "outsideActiveClipAreasPoints2": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "qualification": "The full Ahwaz page separately labels Foussana city inside its complete explicitly closed valid ring423. This is the city sector, not the surrounding Ahwaz sector or the blue delegation label. The original OSM source and current INS2024 registry both identify code426151 as Foussana; code426152 is the surrounding Ahwaz. The city ring shares the same georeferencing as the accepted Ahwaz ring, is disjoint in area and preserves exact shared source edges. The map title refers to Ahwaz, so city identity relies on the distinct in-map red label, complete outline and code/source review, not a false title match."
+    }
+  ],
+  "targetConflictEffects": [
+    {
+      "ids": [
+        "osm:relation:7102674",
+        "osm:relation:7103676"
+      ],
+      "beforeOverlapMeters2": 9387539.704108672,
+      "afterFirstNeighborOnlyOverlapMeters2": 9387539.704108672,
+      "afterOverlapMeters2": 180.69201705096282,
+      "afterGapMeters": 0.0
+    },
+    {
+      "ids": [
+        "osm:relation:7164980",
+        "osm:relation:7165010"
+      ],
+      "beforeOverlapMeters2": 3229595.166774642,
+      "afterFirstNeighborOnlyOverlapMeters2": 3229595.166774642,
+      "afterOverlapMeters2": 9244.165663001442,
+      "afterGapMeters": 0.0
+    },
+    {
+      "ids": [
+        "osm:relation:7164965",
+        "osm:relation:7164966"
+      ],
+      "beforeOverlapMeters2": 2486198.9685474383,
+      "afterFirstNeighborOnlyOverlapMeters2": 2486198.9685474383,
+      "afterOverlapMeters2": 12977.65928424342,
+      "afterGapMeters": 0.0
+    },
+    {
+      "ids": [
+        "osm:relation:7164966",
+        "osm:relation:7164967"
+      ],
+      "beforeOverlapMeters2": 0.0,
+      "afterFirstNeighborOnlyOverlapMeters2": 2657521.450998899,
+      "afterOverlapMeters2": 0.0,
+      "afterGapMeters": 0.0
+    }
+  ],
+  "allProspectiveNeighborConflicts": [
+    {
+      "ids": [
+        "osm:relation:7164966",
+        "osm:relation:7164983"
+      ],
+      "names": [
+        "فوسانة الأحواز",
+        "الرطيبات"
+      ],
+      "overlapMeters2": 984997.9788826463,
+      "fractionFirst": 0.01340398066890234,
+      "fractionSecond": 0.033122218082381576,
+      "representativeMinimumDepthMeters": 86.31357593185452
+    },
+    {
+      "ids": [
+        "osm:relation:7164966",
+        "osm:relation:7164962"
+      ],
+      "names": [
+        "فوسانة الأحواز",
+        "أولاد محفوظ"
+      ],
+      "overlapMeters2": 360835.86937443586,
+      "fractionFirst": 0.004910301463996963,
+      "fractionSecond": 0.0036556079622202097,
+      "representativeMinimumDepthMeters": 223.32246524101865
+    },
+    {
+      "ids": [
+        "osm:relation:7164966",
+        "osm:relation:7164971"
+      ],
+      "names": [
+        "فوسانة الأحواز",
+        "الأجرد"
+      ],
+      "overlapMeters2": 239034.85033961508,
+      "fractionFirst": 0.00325281734768706,
+      "fractionSecond": 0.001981488930584632,
+      "representativeMinimumDepthMeters": 48.66131772984975
+    },
+    {
+      "ids": [
+        "osm:relation:7165010",
+        "osm:relation:7164954"
+      ],
+      "names": [
+        "زلفان",
+        "القرين"
+      ],
+      "overlapMeters2": 125769.99812442066,
+      "fractionFirst": 0.002773242194450849,
+      "fractionSecond": 0.0022411661357074806,
+      "representativeMinimumDepthMeters": 101.2584087546412
+    },
+    {
+      "ids": [
+        "osm:relation:7164967",
+        "osm:relation:7164962"
+      ],
+      "names": [
+        "فوسانة",
+        "أولاد محفوظ"
+      ],
+      "overlapMeters2": 101315.62912134467,
+      "fractionFirst": 0.003762039474685926,
+      "fractionSecond": 0.0010264229583257084,
+      "representativeMinimumDepthMeters": 96.38901163751265
+    },
+    {
+      "ids": [
+        "osm:relation:7103676",
+        "osm:relation:7102534"
+      ],
+      "names": [
+        "زاوية الجديدي",
+        "بو شراي"
+      ],
+      "overlapMeters2": 56519.878915450514,
+      "fractionFirst": 0.005071737099096558,
+      "fractionSecond": 0.0022330558877467327,
+      "representativeMinimumDepthMeters": 11.326410426765417
+    },
+    {
+      "ids": [
+        "osm:relation:7164967",
+        "osm:relation:7164977"
+      ],
+      "names": [
+        "فوسانة",
+        "المزيرعة"
+      ],
+      "overlapMeters2": 24418.77551426881,
+      "fractionFirst": 0.0009067149679162369,
+      "fractionSecond": 0.00033870462618062173,
+      "representativeMinimumDepthMeters": 0.9937811940975686
+    },
+    {
+      "ids": [
+        "osm:relation:7164966",
+        "osm:relation:7164965"
+      ],
+      "names": [
+        "فوسانة الأحواز",
+        "خمودة الشمالية"
+      ],
+      "overlapMeters2": 12977.659284243404,
+      "fractionFirst": 0.00017660167625006305,
+      "fractionSecond": 0.00024332492248489072,
+      "representativeMinimumDepthMeters": 1.483546987315175
+    },
+    {
+      "ids": [
+        "osm:relation:7164966",
+        "osm:relation:7164977"
+      ],
+      "names": [
+        "فوسانة الأحواز",
+        "المزيرعة"
+      ],
+      "overlapMeters2": 9597.326611531165,
+      "fractionFirst": 0.00013060166937604682,
+      "fractionSecond": 0.00013312129104886992,
+      "representativeMinimumDepthMeters": 1.7969806758997766
+    },
+    {
+      "ids": [
+        "osm:relation:7165010",
+        "osm:relation:7164980"
+      ],
+      "names": [
+        "زلفان",
+        "خمودة الجنوبية"
+      ],
+      "overlapMeters2": 9244.165663001444,
+      "fractionFirst": 0.00020383486245875623,
+      "fractionSecond": 0.0001861806352240468,
+      "representativeMinimumDepthMeters": 0.14752125887088186
+    },
+    {
+      "ids": [
+        "osm:relation:7165010",
+        "osm:relation:7164996"
+      ],
+      "names": [
+        "زلفان",
+        "وادي الرشح"
+      ],
+      "overlapMeters2": 7070.827779002805,
+      "fractionFirst": 0.0001559125247583054,
+      "fractionSecond": 0.000409379404153131,
+      "representativeMinimumDepthMeters": 1.9678591028158288
+    },
+    {
+      "ids": [
+        "osm:relation:7165010",
+        "osm:relation:7164994"
+      ],
+      "names": [
+        "زلفان",
+        "الجوى"
+      ],
+      "overlapMeters2": 6720.865748154521,
+      "fractionFirst": 0.00014819582375745103,
+      "fractionSecond": 7.20614290836734e-05,
+      "representativeMinimumDepthMeters": 1.1995701228148405
+    },
+    {
+      "ids": [
+        "osm:relation:7103676",
+        "osm:relation:7103677"
+      ],
+      "names": [
+        "زاوية الجديدي",
+        "القبة الكبيرة"
+      ],
+      "overlapMeters2": 4985.801196390959,
+      "fractionFirst": 0.00044739432181521466,
+      "fractionSecond": 0.0004505831606375944,
+      "representativeMinimumDepthMeters": 3.0621019092738595
+    },
+    {
+      "ids": [
+        "osm:relation:7165010",
+        "osm:relation:7164983"
+      ],
+      "names": [
+        "زلفان",
+        "الرطيبات"
+      ],
+      "overlapMeters2": 4439.530476324514,
+      "fractionFirst": 9.78921318605238e-05,
+      "fractionSecond": 0.00014928669882856608,
+      "representativeMinimumDepthMeters": 1.7170290324116984
+    },
+    {
+      "ids": [
+        "osm:relation:7103676",
+        "osm:relation:7102675"
+      ],
+      "names": [
+        "زاوية الجديدي",
+        "بني خلاد الجوفية"
+      ],
+      "overlapMeters2": 2257.6848051399847,
+      "fractionFirst": 0.00020259038065923598,
+      "fractionSecond": 0.0003285556783803427,
+      "representativeMinimumDepthMeters": 0.6836983485245712
+    },
+    {
+      "ids": [
+        "osm:relation:7165010",
+        "osm:relation:7164953"
+      ],
+      "names": [
+        "زلفان",
+        "البرك"
+      ],
+      "overlapMeters2": 414.1061580403148,
+      "fractionFirst": 9.131086010856397e-06,
+      "fractionSecond": 1.003225335878014e-05,
+      "representativeMinimumDepthMeters": 2.4703330166672917
+    },
+    {
+      "ids": [
+        "osm:relation:7103676",
+        "osm:relation:7102674"
+      ],
+      "names": [
+        "زاوية الجديدي",
+        "بني خلاد القبلية"
+      ],
+      "overlapMeters2": 180.69201705096273,
+      "fractionFirst": 1.621416082222778e-05,
+      "fractionSecond": 7.849447143270778e-06,
+      "representativeMinimumDepthMeters": 0.44173938087696973
+    }
+  ]
+}

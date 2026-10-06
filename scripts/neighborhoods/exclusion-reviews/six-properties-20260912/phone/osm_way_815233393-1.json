@@ -1,0 +1,35 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-12T18:46:13.595828+00:00",
+  "query": "Résidence Riadh Soukra Aouina",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Résidence Riadh Soukra, V749+M74, Av. Khaled Ibn El Walid"
+  ],
+  "publicUiText": [
+    "Résidence Riadh Soukra",
+    "مجمع سكني",
+    "الاتجاهات إلى Résidence Riadh Soukra, V749+M74, Av. Khaled Ibn El Walid",
+    "الاتجاهات",
+    "الدليل",
+    "مشاركة Résidence Riadh Soukra",
+    "مشاركة",
+    "حفظ Résidence Riadh Soukra في القوائم",
+    "حفظ",
+    "نظرة عامة",
+    "آخر الأخبار",
+    "لمحة",
+    "عرض المزيد",
+    "التقييم والمراجعة",
+    "إغلاق",
+    "Résidence Riadh Soukra Aouina",
+    "محو",
+    "عرض أماكن مشابهة"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "Résidence Riadh Soukra"
+  ],
+  "screenshot": "osm_way_815233393-1.png",
+  "boundaryVerified": false
+}

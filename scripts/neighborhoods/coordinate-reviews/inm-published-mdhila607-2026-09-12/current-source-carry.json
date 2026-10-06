@@ -1,0 +1,750 @@
+{
+  "status": "CURRENT_SOURCE_CARRY_AND_EXACT_MDHILA_PROJECTION",
+  "historicalProposal": {
+    "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/source-proposal.json",
+    "sha256": "359db0f9cb423ff3cb57208e066ed149132d9e701144d78c646a14792c3486f5"
+  },
+  "historicalMetadataSha256": "c173c3051ca1ab9ec6ba077c5b86a52b4e78aa695820d8caf3e2ad3d170250e9",
+  "baselineMetadataSha256": "96636d1bb317ead866e3f52562f280b3512d95876f51dd202f7ff63bb1710ea7",
+  "snapshot": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-mdhila-reference-20260912\\snapshot.json",
+    "sha256": "3e537b0a3f0ed30c8690f5ebff6ed1b69c75053be40166905c4c3560c9007c74",
+    "bytes": 202988
+  },
+  "protectedRecords": [
+    {
+      "id": "osm:relation:7150173",
+      "currentRaw": {
+        "id": "osm:relation:7150173",
+        "sourceId": "osm",
+        "name": "الحي العمالي",
+        "aliases": [
+          "Cite Des Travailleurs"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.306,
+        "lng": 8.744621,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.711522,
+          34.28624,
+          8.762878,
+          34.32578
+        ],
+        "areaKm2": 11.94397418689016,
+        "pickerGroupId": "osm:relation:7150173",
+        "offset": 2672716,
+        "length": 3148
+      },
+      "expectedMetadata": {
+        "id": "osm:relation:7150173",
+        "sourceId": "osm",
+        "name": "الحي العمالي",
+        "aliases": [
+          "Cite Des Travailleurs"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.306,
+        "lng": 8.744621,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.711522,
+          34.28624,
+          8.762878,
+          34.32578
+        ],
+        "areaKm2": 11.94397418689016,
+        "pickerGroupId": "osm:relation:7150173",
+        "offset": 2672716,
+        "length": 3148
+      },
+      "packedSha256": "ac4ffb0dc842bb1fdaefc6158b335aa11eadfdd82848de0ef8cf7e0b4d15ee2f",
+      "packedBytes": 3148,
+      "beforeRawMembers": [
+        "osm:relation:7150173"
+      ]
+    },
+    {
+      "id": "osm:relation:7150183",
+      "currentRaw": {
+        "id": "osm:relation:7150183",
+        "sourceId": "osm",
+        "name": "السقي",
+        "aliases": [
+          "El Segui"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.14815,
+        "lng": 8.729242,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.586467,
+          34.06044,
+          8.885177,
+          34.23582
+        ],
+        "areaKm2": 356.3784740837107,
+        "pickerGroupId": "osm:relation:7150183",
+        "offset": 2708764,
+        "length": 9852
+      },
+      "expectedMetadata": {
+        "id": "osm:relation:7150183",
+        "sourceId": "osm",
+        "name": "السقي",
+        "aliases": [
+          "El Segui"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.14815,
+        "lng": 8.729242,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.586467,
+          34.06044,
+          8.885177,
+          34.23582
+        ],
+        "areaKm2": 356.3784740837107,
+        "pickerGroupId": "osm:relation:7150183",
+        "offset": 2708764,
+        "length": 9852
+      },
+      "packedSha256": "59eeb22c0e43598315526f2616a415be010ca2827a61f088ba06554a019e1458",
+      "packedBytes": 9852,
+      "beforeRawMembers": [
+        "osm:relation:7150183"
+      ]
+    },
+    {
+      "id": "osm:relation:7150192",
+      "currentRaw": {
+        "id": "osm:relation:7150192",
+        "sourceId": "osm",
+        "name": "العقيلة",
+        "aliases": [
+          "El Aguila"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قفصة الجنوبية",
+        "contextAliases": [
+          "Délégation Gafsa Sud",
+          "Gafsa Sud",
+          "معتمدية قفصة الجنوبية"
+        ],
+        "governorateId": 365,
+        "lat": 34.35918,
+        "lng": 8.622134,
+        "delegationId": 638,
+        "hasBoundary": true,
+        "bbox": [
+          8.473178,
+          34.23044,
+          8.743848,
+          34.48789
+        ],
+        "areaKm2": 381.7891940535483,
+        "pickerGroupId": "osm:relation:7150192",
+        "offset": 2748400,
+        "length": 10908
+      },
+      "expectedMetadata": {
+        "id": "osm:relation:7150192",
+        "sourceId": "osm",
+        "name": "العقيلة",
+        "aliases": [
+          "El Aguila"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قفصة الجنوبية",
+        "contextAliases": [
+          "Délégation Gafsa Sud",
+          "Gafsa Sud",
+          "معتمدية قفصة الجنوبية"
+        ],
+        "governorateId": 365,
+        "lat": 34.35918,
+        "lng": 8.622134,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.473178,
+          34.23044,
+          8.743848,
+          34.48789
+        ],
+        "areaKm2": 381.7891940535483,
+        "pickerGroupId": "osm:relation:7150192",
+        "offset": 2748400,
+        "length": 10908
+      },
+      "packedSha256": "0ddd9279bd12ec27861cd2cfe699f342dc3eed9690292abdbbb4dc9a4c6e321f",
+      "packedBytes": 10908,
+      "beforeRawMembers": [
+        "osm:relation:7150192"
+      ]
+    },
+    {
+      "id": "osm:relation:7150207",
+      "currentRaw": {
+        "id": "osm:relation:7150207",
+        "sourceId": "osm",
+        "name": "المظيلة المركز",
+        "aliases": [
+          "Mdhila Centre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.30605,
+        "lng": 8.800521,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.732205,
+          34.27089,
+          8.846701,
+          34.34123
+        ],
+        "areaKm2": 44.96680292163741,
+        "pickerGroupId": "osm:relation:7150207",
+        "offset": 2789812,
+        "length": 2996
+      },
+      "expectedMetadata": {
+        "id": "osm:relation:7150207",
+        "sourceId": "osm",
+        "name": "المظيلة المركز",
+        "aliases": [
+          "Mdhila Centre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.30605,
+        "lng": 8.800521,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.732205,
+          34.27089,
+          8.846701,
+          34.34123
+        ],
+        "areaKm2": 44.96680292163741,
+        "pickerGroupId": "osm:relation:7150207",
+        "offset": 2789812,
+        "length": 2996
+      },
+      "packedSha256": "9128fc8abce914682927b7369c2b4b8c4c561634359ed4cb85ae5c941f04601f",
+      "packedBytes": 2996,
+      "beforeRawMembers": [
+        "osm:relation:7150207"
+      ]
+    },
+    {
+      "id": "osm:relation:7150226",
+      "currentRaw": {
+        "id": "osm:relation:7150226",
+        "sourceId": "osm",
+        "name": "صهيب",
+        "aliases": [
+          "Sahib"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.260045,
+        "lng": 8.664989,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.509568,
+          34.19551,
+          8.802662,
+          34.32457
+        ],
+        "areaKm2": 232.72499624039236,
+        "pickerGroupId": "osm:relation:7150226",
+        "offset": 2843816,
+        "length": 6964
+      },
+      "expectedMetadata": {
+        "id": "osm:relation:7150226",
+        "sourceId": "osm",
+        "name": "صهيب",
+        "aliases": [
+          "Sahib"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.260045,
+        "lng": 8.664989,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.509568,
+          34.19551,
+          8.802662,
+          34.32457
+        ],
+        "areaKm2": 232.72499624039236,
+        "pickerGroupId": "osm:relation:7150226",
+        "offset": 2843816,
+        "length": 6964
+      },
+      "packedSha256": "6e22733dab046a5b14a678eda93487e89243dd2bcdb507ebbe71d7306136508a",
+      "packedBytes": 6964,
+      "beforeRawMembers": [
+        "osm:relation:7150226"
+      ]
+    },
+    {
+      "id": "osm:way:206448894",
+      "currentRaw": {
+        "id": "osm:way:206448894",
+        "sourceId": "osm",
+        "name": "البرج",
+        "aliases": [
+          "El Borj"
+        ],
+        "kind": "village",
+        "parentName": "صهيب",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "Sahib",
+          "صهيب",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.260658,
+        "lng": 8.736522,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.724025,
+          34.255861,
+          8.740922,
+          34.265437
+        ],
+        "areaKm2": 0.6752867871097544,
+        "pickerGroupId": "osm:way:206448894",
+        "offset": 5363168,
+        "length": 1308
+      },
+      "expectedMetadata": {
+        "id": "osm:way:206448894",
+        "sourceId": "osm",
+        "name": "البرج",
+        "aliases": [
+          "El Borj"
+        ],
+        "kind": "village",
+        "parentName": "صهيب",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "Sahib",
+          "صهيب",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.260658,
+        "lng": 8.736522,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.724025,
+          34.255861,
+          8.740922,
+          34.265437
+        ],
+        "areaKm2": 0.6752867871097544,
+        "pickerGroupId": "osm:way:206448894",
+        "offset": 5363168,
+        "length": 1308
+      },
+      "packedSha256": "730e38ac0b15cf66393c115563ac2b97bb00b136f794964b992a5096b35bf025",
+      "packedBytes": 1308,
+      "beforeRawMembers": [
+        "osm:way:206448894"
+      ]
+    },
+    {
+      "id": "osm:way:207473651",
+      "currentRaw": {
+        "id": "osm:way:207473651",
+        "sourceId": "osm",
+        "name": "Mdhila",
+        "aliases": [
+          "Lemḍila",
+          "Mdhilla",
+          "Мдилла",
+          "المظيلة"
+        ],
+        "kind": "town",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.289909,
+        "lng": 8.753445,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.737824,
+          34.276942,
+          8.766019,
+          34.302988
+        ],
+        "areaKm2": 2.8955570024692756,
+        "pickerGroupId": "osm:way:207473651",
+        "offset": 5372064,
+        "length": 924
+      },
+      "expectedMetadata": {
+        "id": "osm:way:207473651",
+        "sourceId": "osm",
+        "name": "المظيلة",
+        "aliases": [
+          "Lemḍila",
+          "Mdhila",
+          "Mdhilla",
+          "Мдилла"
+        ],
+        "kind": "town",
+        "parentName": "معتمدية المظيلة",
+        "contextAliases": [
+          "Délégation Mdhila",
+          "Mdhilla",
+          "معتمدية المضيلة",
+          "معتمدية المظيلة"
+        ],
+        "governorateId": 365,
+        "lat": 34.289909,
+        "lng": 8.753445,
+        "delegationId": 607,
+        "hasBoundary": true,
+        "bbox": [
+          8.737824,
+          34.276942,
+          8.766019,
+          34.302988
+        ],
+        "areaKm2": 2.8955570024692756,
+        "pickerGroupId": "delegation:607",
+        "offset": 5372064,
+        "length": 924
+      },
+      "packedSha256": "e7c9730cc84bce27d49bb43f68291fd797753c74c95d623fda09b8f4395d850c",
+      "packedBytes": 924,
+      "beforeRawMembers": [
+        "osm:way:207473651"
+      ]
+    }
+  ],
+  "all3524CurrentDefaultsReproduced": true,
+  "exactMetadataFieldChanges": [
+    {
+      "id": "osm:way:207473651",
+      "field": "name",
+      "before": "Mdhila",
+      "after": "المظيلة"
+    },
+    {
+      "id": "osm:way:207473651",
+      "field": "aliases",
+      "before": [
+        "Lemḍila",
+        "Mdhilla",
+        "Мдилла",
+        "المظيلة"
+      ],
+      "after": [
+        "Lemḍila",
+        "Mdhila",
+        "Mdhilla",
+        "Мдилла"
+      ]
+    },
+    {
+      "id": "osm:way:207473651",
+      "field": "pickerGroupId",
+      "before": "osm:way:207473651",
+      "after": "delegation:607"
+    },
+    {
+      "id": "osm:relation:7150192",
+      "field": "delegationId",
+      "before": 638,
+      "after": 607
+    }
+  ],
+  "preservedSourcePhases": "Original full PBF/OSM town, absorbed node, four sectors and active parent name rule retain the frozen identities. Only declared name_tags applies to town.",
+  "originalEvidence": {
+    "inm-prayer-607-2026-09-12.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/inm-prayer-607-2026-09-12.json",
+      "sha256": "cdf5da5a76fd38d2b7afba892ba12445c22ef0da50df453df42e517b611a84f2"
+    },
+    "inm-sun-607-2026-09-12.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/inm-sun-607-2026-09-12.json",
+      "sha256": "5870f50370a213668643f86f34fec8385035b916022d70dd4ea9845e5dc3c069"
+    },
+    "retrieval-manifest.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/retrieval-manifest.json",
+      "sha256": "9e8ab961edaf86e158f71e91bff9017b7f6f0860179deabf080e5b00e63cc8bc"
+    },
+    "way-207473651-current.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/way-207473651-current.json",
+      "sha256": "aeb6d222a7d9d7e8046fca3b4355f66348ac0eaa586e27d966466b4fbf9a8f62"
+    },
+    "way-207473651-history.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/way-207473651-history.json",
+      "sha256": "4b7c7e56d3245fcede02a3c18118b321064a45dd90bbb3761c0eba91de296d18"
+    },
+    "way-207473651-full.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/way-207473651-full.json",
+      "sha256": "9aaf2d6ed1c664cb20776d80ebeed659dcc72f1ef7d40930d32b44d6d17c1cac"
+    },
+    "node-2177279829-current.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/node-2177279829-current.json",
+      "sha256": "6b7c1973cf6ecb9bd803854e9e9f3d6b406c1b31c1f216776cf5cfa9cc2e9820"
+    },
+    "node-2177279829-history.json": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/node-2177279829-history.json",
+      "sha256": "579fc5b345b24867b6c26545aef0ab065937f9597a88fe91c5ce900a7443d445"
+    },
+    "mdhila-mssa.html": {
+      "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/mdhila-mssa.html",
+      "sha256": "1f29f75312cdf48029acb70c47d6b218ad0c53f7d30242e14edbda11e9e836a9"
+    }
+  },
+  "originalOsmRetrievalProvenance": {
+    "historicalManifest": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\retrieval-manifest.json",
+      "sha256": "4c27c25e5b84fa6a9cb5c30adff5ec8f5501daf88f4ed2e59f1d146c19238b9d",
+      "bytes": 36257
+    },
+    "selectedUnchangedOriginalRecords": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\way-207473651-current.json",
+        "sha256": "aeb6d222a7d9d7e8046fca3b4355f66348ac0eaa586e27d966466b4fbf9a8f62",
+        "bytes": 1845,
+        "url": "https://api.openstreetmap.org/api/0.6/way/207473651.json",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/way/207473651.json",
+        "retrievedAtUtc": "2026-09-12T21:00:54.530175+00:00",
+        "statusCode": 200,
+        "tlsVerification": true,
+        "headers": {
+          "Connection": "keep-alive",
+          "Server": "Apache",
+          "Content-Encoding": "gzip",
+          "Cache-Control": "private, max-age=0, must-revalidate",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept-Ranges": "bytes",
+          "Date": "Sat, 12 Sep 2026 21:00:54 GMT",
+          "Via": "1.1 varnish",
+          "X-Served-By": "cache-par-lfpb1150044-PAR",
+          "X-Cache": "MISS",
+          "X-Cache-Hits": "0",
+          "X-Timer": "S1789246855.824962,VS0,VE43",
+          "Vary": "Accept-Encoding",
+          "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+          "transfer-encoding": "chunked"
+        },
+        "provenance": "Original successful JSON HTTP response bytes, unchanged."
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\way-207473651-history.json",
+        "sha256": "4b7c7e56d3245fcede02a3c18118b321064a45dd90bbb3761c0eba91de296d18",
+        "bytes": 16437,
+        "url": "https://api.openstreetmap.org/api/0.6/way/207473651/history.json",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/way/207473651/history.json",
+        "retrievedAtUtc": "2026-09-12T21:00:54.548174+00:00",
+        "statusCode": 200,
+        "tlsVerification": true,
+        "headers": {
+          "Connection": "keep-alive",
+          "Server": "Apache",
+          "Content-Encoding": "gzip",
+          "Cache-Control": "private, max-age=0, must-revalidate",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept-Ranges": "bytes",
+          "Date": "Sat, 12 Sep 2026 21:00:54 GMT",
+          "Via": "1.1 varnish",
+          "X-Served-By": "cache-par-lfpb1150086-PAR",
+          "X-Cache": "MISS",
+          "X-Cache-Hits": "0",
+          "X-Timer": "S1789246855.834375,VS0,VE51",
+          "Vary": "Accept-Encoding",
+          "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+          "transfer-encoding": "chunked"
+        },
+        "provenance": "Original successful JSON HTTP response bytes, unchanged."
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\way-207473651-full.json",
+        "sha256": "9aaf2d6ed1c664cb20776d80ebeed659dcc72f1ef7d40930d32b44d6d17c1cac",
+        "bytes": 20735,
+        "url": "https://api.openstreetmap.org/api/0.6/way/207473651/full.json",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/way/207473651/full.json",
+        "retrievedAtUtc": "2026-09-12T21:00:54.541175+00:00",
+        "statusCode": 200,
+        "tlsVerification": true,
+        "headers": {
+          "Connection": "keep-alive",
+          "Server": "Apache",
+          "Content-Encoding": "gzip",
+          "Cache-Control": "private, max-age=0, must-revalidate",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept-Ranges": "bytes",
+          "Date": "Sat, 12 Sep 2026 21:00:54 GMT",
+          "Via": "1.1 varnish",
+          "X-Served-By": "cache-par-lfpb1150045-PAR",
+          "X-Cache": "MISS",
+          "X-Cache-Hits": "0",
+          "X-Timer": "S1789246855.828185,VS0,VE51",
+          "Vary": "Accept-Encoding",
+          "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+          "transfer-encoding": "chunked"
+        },
+        "provenance": "Original successful JSON HTTP response bytes, unchanged."
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\node-2177279829-current.json",
+        "sha256": "6b7c1973cf6ecb9bd803854e9e9f3d6b406c1b31c1f216776cf5cfa9cc2e9820",
+        "bytes": 749,
+        "url": "https://api.openstreetmap.org/api/0.6/node/2177279829.json",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/2177279829.json",
+        "retrievedAtUtc": "2026-09-12T21:00:54.730328+00:00",
+        "statusCode": 200,
+        "tlsVerification": true,
+        "headers": {
+          "Connection": "keep-alive",
+          "Server": "Apache",
+          "Content-Encoding": "gzip",
+          "Cache-Control": "private, max-age=0, must-revalidate",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept-Ranges": "bytes",
+          "Date": "Sat, 12 Sep 2026 21:00:55 GMT",
+          "Via": "1.1 varnish",
+          "X-Served-By": "cache-par-lfpb1150083-PAR",
+          "X-Cache": "MISS",
+          "X-Cache-Hits": "0",
+          "X-Timer": "S1789246855.018451,VS0,VE49",
+          "Vary": "Accept-Encoding",
+          "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+          "transfer-encoding": "chunked"
+        },
+        "provenance": "Original successful JSON HTTP response bytes, unchanged."
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\node-2177279829-history.json",
+        "sha256": "579fc5b345b24867b6c26545aef0ab065937f9597a88fe91c5ce900a7443d445",
+        "bytes": 5386,
+        "url": "https://api.openstreetmap.org/api/0.6/node/2177279829/history.json",
+        "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/2177279829/history.json",
+        "retrievedAtUtc": "2026-09-12T21:00:54.867058+00:00",
+        "statusCode": 200,
+        "tlsVerification": true,
+        "headers": {
+          "Connection": "keep-alive",
+          "Server": "Apache",
+          "Content-Encoding": "gzip",
+          "Cache-Control": "private, max-age=0, must-revalidate",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept-Ranges": "bytes",
+          "Date": "Sat, 12 Sep 2026 21:00:55 GMT",
+          "Via": "1.1 varnish",
+          "X-Served-By": "cache-par-lfpb1150082-PAR",
+          "X-Cache": "MISS",
+          "X-Cache-Hits": "0",
+          "X-Timer": "S1789246855.147383,VS0,VE48",
+          "Vary": "Accept-Encoding",
+          "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+          "transfer-encoding": "chunked"
+        },
+        "provenance": "Original successful JSON HTTP response bytes, unchanged."
+      }
+    ]
+  },
+  "rootSurroundingsPhoneScope": {
+    "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/surroundings-phone-scope-review.json",
+    "sha256": "2ed3178972fa27a7b7e49b4ab1cf17474fca268679fcf67ea94edc8b95b1c1c0"
+  },
+  "noGoogleGeometry": true,
+  "scope": "Explicit current carry from the historicalc173 facts; root source assembly only. Final data must reproduce these exact field/group expectations."
+}

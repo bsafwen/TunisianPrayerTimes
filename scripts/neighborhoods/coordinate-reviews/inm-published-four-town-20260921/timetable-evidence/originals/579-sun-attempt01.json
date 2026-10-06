@@ -1,0 +1,30 @@
+{
+  "key": "579-sun",
+  "delegationId": 579,
+  "governorateId": 362,
+  "kind": "sun",
+  "disposition": "fresh",
+  "attempt": 1,
+  "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/579/",
+  "startedAtUtc": "2026-09-19T11:45:38.648724+00:00",
+  "status": 200,
+  "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/579/",
+  "responseHeaders": {
+    "Date": "Sat, 19 Sep 2026 11:45:38 GMT",
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "must-revalidate, no-cache, private",
+    "X-UA-Compatible": "IE=edge",
+    "Content-language": "fr",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+    "Vary": "",
+    "Content-Length": "552",
+    "Content-Type": "application/json",
+    "Connection": "close"
+  },
+  "finishedAtUtc": "2026-09-19T11:45:38.831282+00:00",
+  "elapsedSeconds": 0.172,
+  "responseFile": "responses\\579-sun-attempt01-a4a61139c68cd037.json",
+  "sha256": "a4a61139c68cd0379178ec2e51b77342e34ad5b23d984aedc7b780b8fd7f4408",
+  "bytes": 552
+}

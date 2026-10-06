@@ -1,0 +1,184 @@
+{
+  "status": "QUALIFIED_PUBLIC_PLACE_SCOPE_OBSERVATIONS",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64"
+  },
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_way_129273831-1\\ledger.json",
+    "sha256": "51b09f11b7a2a63e313432bb430ce063e853495657c34d32e18a88bc6c08f2b3"
+  },
+  "ledger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "21dabac22d0526516d1fcc55046dd5dc323e7227e8cdf1637c2d3772ba8e48ff"
+  },
+  "newObservations": 12,
+  "priorObservationsPreservedExactly": 1063,
+  "totalObservations": 1075,
+  "records": [
+    {
+      "id": "osm:way:129273831",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_129273831-1.json",
+        "sha256": "a8dd8004507d605658a83f6a65089218d8620ccdaa77077ceb5e27f0efedc569"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_129273831-1.png",
+        "sha256": "3982a477d1a7976a0d9608eda295754a3b8ac4608eca05cac9cc036c56d8c698"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Named search gives Mehari Tabarka Hotel & Residence, four-star hotel; main named pin lies north of the road."
+    },
+    {
+      "id": "osm:way:129273831",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_129273831-2.json",
+        "sha256": "5a6b1f8be521edca72688682d5e70c5f87ec0fab99f6cdaa4173aabaed639685"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_129273831-2.png",
+        "sha256": "dc6b352e883d6e31d791a045001b017033a92ea167596fdd41a3bd494b619fd7"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate query gives an unnamed pin near El Hamdia, south of the road by the golf area. It does not establish the named hotel entrance or exact property boundary."
+    },
+    {
+      "id": "osm:way:1430310523",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_1430310523-1.json",
+        "sha256": "8609e6538042de644d633b7ba4801d8ddc6743da89dd589bdc15a2434bd9df68"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_1430310523-1.png",
+        "sha256": "368e09a81495e9d928f74f3f9cccc335e487b2c1ec3e4682e29abf71ed9200f2"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Two spatially separated Bel Horizon results: holiday home west of Tabarka and holiday apartments east with address XQ2H+2W. These are not treated as equivalent."
+    },
+    {
+      "id": "osm:way:1430310523",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_1430310523-2.json",
+        "sha256": "7d20cca1a3f8dc649f955b9698664c09bf01c60b8bdd6099f08a7454d0341742"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_1430310523-2.png",
+        "sha256": "1f594c67e8eb6593127285781f60ff63c7d34aaa6e2efb16ef7950154177fe3c"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate query gives XQ2H+2W building card with Imm azur tabarka housing complex. Corroborates property context, not full source polygon or all name variants."
+    },
+    {
+      "id": "osm:way:815233393",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_815233393-1.json",
+        "sha256": "f593b111393f3db64faf3e03faddbc2185ed89cfc59ce0f6cdd1af9662e731e2"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_815233393-1.png",
+        "sha256": "426a8798221969640eeacf54a4f90a6005cd1693a350dffc0d1a55bb4cb845cf"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Exact Residence Riadh Soukra housing-complex card, V749+M74 Av Khaled Ibn El Walid; L-shaped compound highlighted. No vertices copied."
+    },
+    {
+      "id": "osm:way:815233393",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_815233393-2.json",
+        "sha256": "68de13901bd8d61d70b5f40702ce63d56d1eb65ea7e209d0af2a536b36b30eed"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_815233393-2.png",
+        "sha256": "3b69143180fcdd3cadb097bdd14ee77eb401b0a6ef0d3315f4492b94049fa79d"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate query opens formi.tn gift-shop card beside the residence label within the compound. This is business context, not an independent neighborhood boundary."
+    },
+    {
+      "id": "osm:way:522478927",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_522478927-1.json",
+        "sha256": "fe5ee9468f7489d668af98342d82a20d2ace15728bd24d1478fc98eb8fd9843b"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_522478927-1.png",
+        "sha256": "8f12ad6c5b33987040b1fb8ca529ced82f9439ab9b61e093b2be1be54cc93acc"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Broad named search returns Residence El Mesk and other nearby residences, without establishing exact Diar El Mesk identity."
+    },
+    {
+      "id": "osm:way:522478927",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_522478927-2.json",
+        "sha256": "b89064764b55633be8c9d89c5582078dfbc6be3045f51fea2f6a028af5b5580e"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_522478927-2.png",
+        "sha256": "01fcd9d789ff8acf614b8f99b8b382c365c93829bcb5b5dc5db169f617acac0a"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate query opens Siege Social Com&Dev Tn, an office card whose address includes Residence Misk. Map context is near Carrefour Cite Wahat. This does not certify the exact residence name or parcel."
+    },
+    {
+      "id": "osm:way:525479443",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_525479443-1.json",
+        "sha256": "766b4eef8ba8559238c79cc7eb4011e74aed3ed51293e7712314265352004b0c"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_525479443-1.png",
+        "sha256": "e0587852db0942b793414ba96bc97b31b6feadd77922343124142c2b59eac5be"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Exact Residence Sourour card at 88 Av Khaled Ibn El Walid, highlighted individual building and directory of occupants."
+    },
+    {
+      "id": "osm:way:525479443",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_525479443-2.json",
+        "sha256": "a349ca8021af9d4ed2bedfdc00f97d8b42a5585837e4e2db15ab77b89340c053"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_525479443-2.png",
+        "sha256": "3ee62447f8cacfeab283f040f8a3d04a59dfd91ee0e8d0653021178d3b629bee"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate query gives Residence SOUROUR 2 at the same street address, categorized as hotel, with an apartment exterior photo. Category differences do not establish legal use or exact phase identity."
+    },
+    {
+      "id": "osm:way:237115723",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_237115723-1.json",
+        "sha256": "7a3db140fba05b83deabada9594c5eb7edd176119b749408743f7efa9548fbc7"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_237115723-1.png",
+        "sha256": "437b7e90474e974806c0bd00a7e0bd1f593ee8311a816a05f772aabdd0748ae8"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Three separate Panorama/Panoramique results: lodging in Jardins Menzah 2, apartment complex in Jardins Menzah 1 and a social center. Do not equate their identities."
+    },
+    {
+      "id": "osm:way:237115723",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_237115723-2.json",
+        "sha256": "1e0108f28986bbb70a71c95ce097472ed843e8c172edb42fdb5d54bc52302719"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_237115723-2.png",
+        "sha256": "ea3640d62ee0b7dd1d2d3b762d4d4a39e4cbdedae78275f09efb5a3cbd362514"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate query gives اقامة الحدائق و البانوراميك housing complex, V43J+8V9, 1 نهج خالد بن الوليد, with broader Jardins Menzah 1 context. It supports compound scope without certifying source geometry or the developer-ad identity."
+    }
+  ],
+  "boundaryOrIdentityFacetsPromoted": false,
+  "liveCatalogChanged": false,
+  "testsBuildsOrPackagesRun": false,
+  "qualification": "Supplementary property-context checks only. Exact source-object classification relies on source history and topology. No Google polygon geometry was copied.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\record_six_properties_phone_review_20260912.py",
+    "sha256": "5cdb84ab9994665d95ee9ae72d8bef1464bf78b04e8aba4af66de4402c04d8ff"
+  }
+}

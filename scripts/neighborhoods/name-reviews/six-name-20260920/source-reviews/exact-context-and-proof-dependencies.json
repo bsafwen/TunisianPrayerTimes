@@ -1,0 +1,4851 @@
+{
+  "status": "WORK_ONLY_EXACT_INHERITED_CONTEXT_PROJECTION_NOT_GENERATED",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+    "bytes": 1871324
+  },
+  "compiler": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+    "bytes": 776658
+  },
+  "helperMethod": "Pinned names/clean/norm helpers only; no compiler import or generation. Existing eighteen exact parentName/context consumers remain on unchanged footprints. New parent primary does not duplicate any child own normalized name. Context is the compiler sorted union of administrative source names; all old names retained.",
+  "targetNameTagProposals": [
+    {
+      "id": "osm:relation:7142943",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المغزاوية",
+        "name:ar": "المغزاوية",
+        "name:fr": "El Maghzaouia",
+        "ref:tn:codegeo": "525953"
+      },
+      "proposedNameTagsOnly": {
+        "name": "المغراوية",
+        "name:ar": "المغراوية",
+        "alt_name:ar": "المغزاوية"
+      },
+      "currentDisplayAliasesToKeep": [
+        "El Maghzaouia"
+      ],
+      "originalSourceNameSet": [
+        "المغزاوية",
+        "El Maghzaouia"
+      ],
+      "proposedSourceNameSet": [
+        "المغراوية",
+        "El Maghzaouia",
+        "المغزاوية"
+      ],
+      "geometryChange": false,
+      "qualification": "Display aliases contributed by contained matching points remain on the existing target. They are not invented as source aliases or propagated to child context."
+    },
+    {
+      "id": "osm:relation:7165270",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الدريعات",
+        "name:ar": "الدريعات",
+        "name:fr": "Edheriaat",
+        "ref:tn:codegeo": "415456"
+      },
+      "proposedNameTagsOnly": {
+        "name": "الذريعات",
+        "name:ar": "الذريعات",
+        "alt_name:ar": "الدريعات",
+        "alt_name:fr": "Ed-dheriaat"
+      },
+      "currentDisplayAliasesToKeep": [
+        "Edheriaat"
+      ],
+      "originalSourceNameSet": [
+        "الدريعات",
+        "Edheriaat"
+      ],
+      "proposedSourceNameSet": [
+        "الذريعات",
+        "Edheriaat",
+        "الدريعات",
+        "Ed-dheriaat"
+      ],
+      "geometryChange": false,
+      "qualification": "Display aliases contributed by contained matching points remain on the existing target. They are not invented as source aliases or propagated to child context."
+    },
+    {
+      "id": "osm:relation:7169564",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الدويبات الجنوبية",
+        "name:ar": "الدويبات الجنوبية",
+        "name:fr": "Dheouibet Sud",
+        "ref:tn:codegeo": "436252"
+      },
+      "proposedNameTagsOnly": {
+        "name": "الذويبات الجنوبية",
+        "name:ar": "الذويبات الجنوبية",
+        "alt_name:ar": "الدويبات الجنوبية"
+      },
+      "currentDisplayAliasesToKeep": [
+        "Dheouibet Sud"
+      ],
+      "originalSourceNameSet": [
+        "الدويبات الجنوبية",
+        "Dheouibet Sud"
+      ],
+      "proposedSourceNameSet": [
+        "الذويبات الجنوبية",
+        "Dheouibet Sud",
+        "الدويبات الجنوبية"
+      ],
+      "geometryChange": false,
+      "qualification": "Display aliases contributed by contained matching points remain on the existing target. They are not invented as source aliases or propagated to child context."
+    },
+    {
+      "id": "osm:relation:7127889",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بلطش",
+        "name:ar": "‫بلطش‬",
+        "name:fr": "Baltech",
+        "ref:tn:codegeo": "345853"
+      },
+      "proposedNameTagsOnly": {
+        "name": "بلتش",
+        "name:ar": "بلتش",
+        "alt_name:ar": "بلطش"
+      },
+      "currentDisplayAliasesToKeep": [
+        "Baltech"
+      ],
+      "originalSourceNameSet": [
+        "بلطش",
+        "Baltech"
+      ],
+      "proposedSourceNameSet": [
+        "بلتش",
+        "Baltech",
+        "بلطش"
+      ],
+      "geometryChange": false,
+      "qualification": "Display aliases contributed by contained matching points remain on the existing target. They are not invented as source aliases or propagated to child context."
+    },
+    {
+      "id": "osm:relation:7133851",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سدويكش",
+        "name:ar": "سدويكش",
+        "name:fr": "Sedouikech",
+        "ref:tn:codegeo": "525755"
+      },
+      "proposedNameTagsOnly": {
+        "name": "سدويكش",
+        "name:ar": "سدويكش",
+        "alt_name:ar": "صدويكش"
+      },
+      "currentDisplayAliasesToKeep": [
+        "Sedouikech"
+      ],
+      "originalSourceNameSet": [
+        "سدويكش",
+        "Sedouikech"
+      ],
+      "proposedSourceNameSet": [
+        "سدويكش",
+        "Sedouikech",
+        "صدويكش"
+      ],
+      "geometryChange": false,
+      "qualification": "Display aliases contributed by contained matching points remain on the existing target. They are not invented as source aliases or propagated to child context."
+    },
+    {
+      "id": "osm:relation:7143844",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "ref:tn:codegeo": "535754"
+      },
+      "proposedNameTagsOnly": {
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "alt_name:ar": "كنبوت",
+        "alt_name:fr": "Kenbout"
+      },
+      "currentDisplayAliasesToKeep": [
+        "Kambout",
+        "ⴽⵎⴱⵓⵜ"
+      ],
+      "originalSourceNameSet": [
+        "كمبوت",
+        "Kambout"
+      ],
+      "proposedSourceNameSet": [
+        "كمبوت",
+        "Kambout",
+        "كنبوت",
+        "Kenbout"
+      ],
+      "geometryChange": false,
+      "qualification": "Display aliases contributed by contained matching points remain on the existing target. They are not invented as source aliases or propagated to child context."
+    }
+  ],
+  "childContextChanges": [
+    {
+      "id": "osm:node:352753595",
+      "sourceSectorId": "osm:relation:7142943",
+      "pickerOwner": "osm:node:352753595",
+      "pickerMembers": [
+        "osm:node:352753595"
+      ],
+      "ownNamePreserved": "مغراوية",
+      "before": {
+        "parentName": "المغزاوية",
+        "contextAliases": [
+          "Délégation Sidi Makhlouf",
+          "El Maghzaouia",
+          "Sidi Makhlouf",
+          "المغزاوية",
+          "معتمدية سيدي مخلوف"
+        ]
+      },
+      "after": {
+        "parentName": "المغراوية",
+        "contextAliases": [
+          "Délégation Sidi Makhlouf",
+          "El Maghzaouia",
+          "Sidi Makhlouf",
+          "المغراوية",
+          "المغزاوية",
+          "معتمدية سيدي مخلوف"
+        ]
+      },
+      "changedFields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:352753595",
+        "sourceId": "osm",
+        "name": "مغراوية",
+        "aliases": [
+          "Maghraouia"
+        ],
+        "kind": "hamlet",
+        "governorateId": 353,
+        "lat": 33.6490516,
+        "lng": 10.6141292,
+        "delegationId": 493,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:352753595"
+      }
+    },
+    {
+      "id": "osm:way:951284044",
+      "sourceSectorId": "osm:relation:7165270",
+      "pickerOwner": "osm:way:951284044",
+      "pickerMembers": [
+        "osm:way:951284044"
+      ],
+      "ownNamePreserved": "العبادلية",
+      "before": {
+        "parentName": "الدريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "after": {
+        "parentName": "الذريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Ed-dheriaat",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "الذريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "changedFields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:way:951284044",
+        "sourceId": "osm",
+        "name": "العبادلية",
+        "aliases": [
+          "Abadlia"
+        ],
+        "kind": "residential",
+        "governorateId": 357,
+        "lat": 35.969749,
+        "lng": 10.097308,
+        "delegationId": 521,
+        "hasBoundary": true,
+        "bbox": [
+          10.092757,
+          35.966684,
+          10.099881,
+          35.972745
+        ],
+        "areaKm2": 0.1903022267760857,
+        "pickerGroupId": "osm:way:951284044",
+        "offset": 5539980,
+        "length": 164
+      }
+    },
+    {
+      "id": "osm:way:951326265",
+      "sourceSectorId": "osm:relation:7165270",
+      "pickerOwner": "osm:way:951326265",
+      "pickerMembers": [
+        "osm:way:951326265"
+      ],
+      "ownNamePreserved": "الرواونة",
+      "before": {
+        "parentName": "الدريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "after": {
+        "parentName": "الذريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Ed-dheriaat",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "الذريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "changedFields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:way:951326265",
+        "sourceId": "osm",
+        "name": "الرواونة",
+        "aliases": [
+          "Rwawna"
+        ],
+        "kind": "residential",
+        "governorateId": 357,
+        "lat": 35.979898,
+        "lng": 10.099737,
+        "delegationId": 521,
+        "hasBoundary": true,
+        "bbox": [
+          10.097927,
+          35.977928,
+          10.101593,
+          35.981809
+        ],
+        "areaKm2": 0.08227844770184185,
+        "pickerGroupId": "osm:way:951326265",
+        "offset": 5540144,
+        "length": 260
+      }
+    },
+    {
+      "id": "osm:way:951326266",
+      "sourceSectorId": "osm:relation:7165270",
+      "pickerOwner": "osm:way:951326266",
+      "pickerMembers": [
+        "osm:way:951326266"
+      ],
+      "ownNamePreserved": "أولاد الجلاصي",
+      "before": {
+        "parentName": "الدريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "after": {
+        "parentName": "الذريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Ed-dheriaat",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "الذريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "changedFields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:way:951326266",
+        "sourceId": "osm",
+        "name": "أولاد الجلاصي",
+        "aliases": [
+          "Aulád Alyalási",
+          "Aulád Yalási",
+          "Awled Jlassi",
+          "Ouled Jlassi"
+        ],
+        "kind": "residential",
+        "governorateId": 357,
+        "lat": 35.968125,
+        "lng": 10.11592,
+        "delegationId": 521,
+        "hasBoundary": true,
+        "bbox": [
+          10.11408,
+          35.966394,
+          10.118386,
+          35.970134
+        ],
+        "areaKm2": 0.08876692158240251,
+        "pickerGroupId": "osm:way:951326266",
+        "offset": 5540404,
+        "length": 172
+      }
+    },
+    {
+      "id": "osm:node:2203976293",
+      "sourceSectorId": "osm:relation:7165270",
+      "pickerOwner": "osm:node:2203976293",
+      "pickerMembers": [
+        "osm:node:2203976293"
+      ],
+      "ownNamePreserved": "سيدي بلال",
+      "before": {
+        "parentName": "الدريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "after": {
+        "parentName": "الذريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Ed-dheriaat",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "الذريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "changedFields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:2203976293",
+        "sourceId": "osm",
+        "name": "سيدي بلال",
+        "aliases": [
+          "Sidi Belal"
+        ],
+        "kind": "village",
+        "governorateId": 357,
+        "lat": 35.9748077,
+        "lng": 10.1541859,
+        "delegationId": 521,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2203976293"
+      }
+    },
+    {
+      "id": "osm:node:7433415028",
+      "sourceSectorId": "osm:relation:7165270",
+      "pickerOwner": "osm:node:7433415028",
+      "pickerMembers": [
+        "osm:node:7433415028"
+      ],
+      "ownNamePreserved": "هندي الزيتونة",
+      "before": {
+        "parentName": "الدريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "after": {
+        "parentName": "الذريعات",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Ed-dheriaat",
+          "Edheriaat",
+          "Sbikha",
+          "الدريعات",
+          "الذريعات",
+          "معتمدية السبيخة"
+        ]
+      },
+      "changedFields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:7433415028",
+        "sourceId": "osm",
+        "name": "هندي الزيتونة",
+        "aliases": [
+          "Hendi Zitouna"
+        ],
+        "kind": "village",
+        "governorateId": 357,
+        "lat": 35.9993803,
+        "lng": 10.0969483,
+        "delegationId": 521,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:7433415028"
+      }
+    },
+    {
+      "id": "osm:node:6916227160",
+      "sourceSectorId": "osm:relation:7169564",
+      "pickerOwner": "osm:node:6916227160",
+      "pickerMembers": [
+        "osm:node:6916227160"
+      ],
+      "ownNamePreserved": "الذويبات",
+      "before": {
+        "parentName": "الدويبات الجنوبية",
+        "contextAliases": [
+          "Dheouibet Sud",
+          "Délégation Ouled Haffouz",
+          "Ouled Haffouz",
+          "الدويبات الجنوبية",
+          "معتمدية أولاد حفوز"
+        ]
+      },
+      "after": {
+        "parentName": "الذويبات الجنوبية",
+        "contextAliases": [
+          "Dheouibet Sud",
+          "Délégation Ouled Haffouz",
+          "Ouled Haffouz",
+          "الدويبات الجنوبية",
+          "الذويبات الجنوبية",
+          "معتمدية أولاد حفوز"
+        ]
+      },
+      "changedFields": [
+        "parentName",
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:6916227160",
+        "sourceId": "osm",
+        "name": "الذويبات",
+        "aliases": [
+          "Dhouibet"
+        ],
+        "kind": "village",
+        "governorateId": 355,
+        "lat": 35.0905554,
+        "lng": 9.9425111,
+        "delegationId": 512,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:6916227160"
+      }
+    },
+    {
+      "id": "osm:way:183799954",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:way:183799954",
+      "pickerMembers": [
+        "osm:way:183799954"
+      ],
+      "ownNamePreserved": "ورسيغن",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:way:183799954",
+        "sourceId": "osm",
+        "name": "ورسيغن",
+        "aliases": [
+          "Ouersighen"
+        ],
+        "kind": "residential",
+        "governorateId": 353,
+        "lat": 33.729341,
+        "lng": 10.883718,
+        "delegationId": 491,
+        "hasBoundary": true,
+        "bbox": [
+          10.877606,
+          33.724946,
+          10.8911,
+          33.733741
+        ],
+        "areaKm2": 0.6706416606924408,
+        "pickerGroupId": "osm:way:183799954",
+        "offset": 5379280,
+        "length": 1884
+      }
+    },
+    {
+      "id": "osm:node:11256424282",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:11256424282",
+      "pickerMembers": [
+        "osm:node:11256424282"
+      ],
+      "ownNamePreserved": "غرداية",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:11256424282",
+        "sourceId": "osm",
+        "name": "غرداية",
+        "aliases": [
+          "Ghardaia"
+        ],
+        "kind": "village",
+        "governorateId": 353,
+        "lat": 33.7163618,
+        "lng": 10.9358141,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:11256424282"
+      }
+    },
+    {
+      "id": "osm:node:11256425588",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:11256425588",
+      "pickerMembers": [
+        "osm:node:11256425588"
+      ],
+      "ownNamePreserved": "المحاميد",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:11256425588",
+        "sourceId": "osm",
+        "name": "المحاميد",
+        "aliases": [
+          "El Mhamid"
+        ],
+        "kind": "hamlet",
+        "governorateId": 353,
+        "lat": 33.6940052,
+        "lng": 10.9119599,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:11256425588"
+      }
+    },
+    {
+      "id": "osm:node:11256425593",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:11256425593",
+      "pickerMembers": [
+        "osm:node:11256425593"
+      ],
+      "ownNamePreserved": "Tala",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:11256425593",
+        "sourceId": "osm",
+        "name": "Tala",
+        "aliases": [],
+        "kind": "hamlet",
+        "governorateId": 353,
+        "lat": 33.707639,
+        "lng": 10.9117752,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:11256425593"
+      }
+    },
+    {
+      "id": "osm:node:11256427632",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:11256427632",
+      "pickerMembers": [
+        "osm:node:11256427632"
+      ],
+      "ownNamePreserved": "Talbet",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:11256427632",
+        "sourceId": "osm",
+        "name": "Talbet",
+        "aliases": [],
+        "kind": "hamlet",
+        "governorateId": 353,
+        "lat": 33.7126979,
+        "lng": 10.9244903,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:11256427632"
+      }
+    },
+    {
+      "id": "osm:node:12171078159",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:12171078159",
+      "pickerMembers": [
+        "osm:node:12171078159"
+      ],
+      "ownNamePreserved": "تافرطاست",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:12171078159",
+        "sourceId": "osm",
+        "name": "تافرطاست",
+        "aliases": [
+          "Tafertasset"
+        ],
+        "kind": "village",
+        "governorateId": 353,
+        "lat": 33.7418591,
+        "lng": 10.9041383,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:12171078159"
+      }
+    },
+    {
+      "id": "osm:node:12198018912",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:12198018912",
+      "pickerMembers": [
+        "osm:node:12198018912"
+      ],
+      "ownNamePreserved": "Teghalla",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:12198018912",
+        "sourceId": "osm",
+        "name": "Teghalla",
+        "aliases": [],
+        "kind": "neighbourhood",
+        "governorateId": 353,
+        "lat": 33.7463022,
+        "lng": 10.9246649,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:12198018912"
+      }
+    },
+    {
+      "id": "osm:node:12198018913",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:12198018913",
+      "pickerMembers": [
+        "osm:node:12198018913"
+      ],
+      "ownNamePreserved": "Tmasset",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:12198018913",
+        "sourceId": "osm",
+        "name": "Tmasset",
+        "aliases": [],
+        "kind": "neighbourhood",
+        "governorateId": 353,
+        "lat": 33.7432886,
+        "lng": 10.9135474,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:12198018913"
+      }
+    },
+    {
+      "id": "osm:node:12211699220",
+      "sourceSectorId": "osm:relation:7133851",
+      "pickerOwner": "osm:node:12211699220",
+      "pickerMembers": [
+        "osm:node:12211699220"
+      ],
+      "ownNamePreserved": "Tamgret",
+      "before": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "after": {
+        "parentName": "سدويكش",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "Sedouikech",
+          "سدويكش",
+          "صدويكش",
+          "معتمدية جربة ميدون"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:12211699220",
+        "sourceId": "osm",
+        "name": "Tamgret",
+        "aliases": [],
+        "kind": "neighbourhood",
+        "governorateId": 353,
+        "lat": 33.7512184,
+        "lng": 10.9202687,
+        "delegationId": 491,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:12211699220"
+      }
+    },
+    {
+      "id": "osm:way:186750635",
+      "sourceSectorId": "osm:relation:7143844",
+      "pickerOwner": "osm:way:186750635",
+      "pickerMembers": [
+        "osm:way:186750635"
+      ],
+      "ownNamePreserved": "Borj Bourguiba",
+      "before": {
+        "parentName": "كمبوت",
+        "contextAliases": [
+          "Délégation Remada",
+          "Kambout",
+          "Remada",
+          "كمبوت",
+          "معتمدية رمادة"
+        ]
+      },
+      "after": {
+        "parentName": "كمبوت",
+        "contextAliases": [
+          "Délégation Remada",
+          "Kambout",
+          "Kenbout",
+          "Remada",
+          "كمبوت",
+          "كنبوت",
+          "معتمدية رمادة"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:way:186750635",
+        "sourceId": "osm",
+        "name": "Borj Bourguiba",
+        "aliases": [],
+        "kind": "residential",
+        "governorateId": 351,
+        "lat": 32.207308,
+        "lng": 10.030953,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          10.029008,
+          32.205619,
+          10.032324,
+          32.208956
+        ],
+        "areaKm2": 0.04640696403370559,
+        "pickerGroupId": "osm:way:186750635",
+        "offset": 5386192,
+        "length": 204
+      }
+    },
+    {
+      "id": "osm:node:1974940233",
+      "sourceSectorId": "osm:relation:7143844",
+      "pickerOwner": "osm:node:1974940233",
+      "pickerMembers": [
+        "osm:node:1974940233"
+      ],
+      "ownNamePreserved": "برج بورقيبة",
+      "before": {
+        "parentName": "كمبوت",
+        "contextAliases": [
+          "Délégation Remada",
+          "Kambout",
+          "Remada",
+          "كمبوت",
+          "معتمدية رمادة"
+        ]
+      },
+      "after": {
+        "parentName": "كمبوت",
+        "contextAliases": [
+          "Délégation Remada",
+          "Kambout",
+          "Kenbout",
+          "Remada",
+          "كمبوت",
+          "كنبوت",
+          "معتمدية رمادة"
+        ]
+      },
+      "changedFields": [
+        "contextAliases"
+      ],
+      "allOtherCurrentRowFieldsPreserved": {
+        "id": "osm:node:1974940233",
+        "sourceId": "osm",
+        "name": "برج بورقيبة",
+        "aliases": [
+          "ⴱⵔⵊ ⴱⵓⵔⵇⵉⴱⴰ برج بورقيبة",
+          "Bordj Bourguiba",
+          "Borj Bourguiba",
+          "ⴱⵔⵊ ⴱⵓⵔⵇⵉⴱⴰ"
+        ],
+        "kind": "village",
+        "governorateId": 351,
+        "lat": 32.2046642,
+        "lng": 10.0302214,
+        "delegationId": 471,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1974940233"
+      }
+    }
+  ],
+  "counts": {
+    "childRows": 18,
+    "childParentNameChanges": 7,
+    "childContextAliasChanges": 18,
+    "childOwnPrimaryNameChanges": 0
+  },
+  "concreteProtectedDependency": {
+    "target": "osm:relation:7143844",
+    "activeRuleId": "osm:node:500182808",
+    "activeCuration": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "bytes": 446748
+    },
+    "activeRulePickerBaseDisplayReview": {
+      "file": "point-base-display-reviews/el-borma-2026-09/476-reviewed-point-base-display-identity.json",
+      "sha256": "c4848d85ea1db340ef1c61422c6e58cb09458331c957033da6d0de05b808f78d"
+    },
+    "proof": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\el-borma-2026-09\\476-reviewed-point-base-display-identity.json",
+      "sha256": "c4848d85ea1db340ef1c61422c6e58cb09458331c957033da6d0de05b808f78d",
+      "bytes": 54924
+    },
+    "protectedRecord": {
+      "id": "osm:relation:7143844",
+      "officialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535754",
+        "sectorFr": "Kenbout",
+        "sectorAr": "كنبوت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3199
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "ref:tn:codegeo": "535754"
+      },
+      "sourceGeometrySha256": "c44305ceffceab88ad1b6e89c9edcdf58e99f767eb1e57ffdce1b79afaccfbfe",
+      "currentMetadata": {
+        "id": "osm:relation:7143844",
+        "sourceId": "osm",
+        "name": "كمبوت",
+        "aliases": [
+          "Kambout",
+          "ⴽⵎⴱⵓⵜ"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.198026,
+        "lng": 10.07295,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          9.844184,
+          31.976627,
+          10.35943,
+          32.418207
+        ],
+        "areaKm2": 1093.2821259218051,
+        "pickerGroupId": "osm:relation:7143844",
+        "offset": 2084896,
+        "length": 2268
+      },
+      "packedGeometrySha256": "f90a1a1c72c56eb9cbdad816338b11f67e1229af4da4517668d5aa2176ad1aed",
+      "expectedCuration": null
+    },
+    "guardLocations": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+        "line": 3912,
+        "meaning": "original/effective sector tags, geometry and expected curation pinned; new name_tags conflicts with expectedCuration:null"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+        "line": 3925,
+        "meaning": "final preservation includes currentMetadata and packed geometry"
+      }
+    ],
+    "requiredFutureHandling": "Scoped reviewed successor preserving old proof bytes and explicit alias-only delta, using supported review format or a separately reviewed narrow extension if necessary. No blind repinning, no bypass. Not implemented."
+  },
+  "exactIdDependencyInventory": [
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\direct-pbf-source-facts.json",
+        "sha256": "ec3f10fea74bebd597211981cf729d4d2c073b8d117477c0e4e31483d5f0a878",
+        "bytes": 349098
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/administrativeCodeClaims/525755/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/administrativeCodeClaims/525953/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/administrativeCodeClaims/535754/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/administrativeCodeClaims/415456/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/administrativeCodeClaims/436252/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/administrativeCodeClaims/345853/0",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\picker-distinct-reviews\\bizerte-three-staged-data-independent-review.json",
+        "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197",
+        "bytes": 440669
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/allMetadataChangesIncludingOffsets/246/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/allMetadataChangesIncludingOffsets/268/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/allMetadataChangesIncludingOffsets/395/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/allMetadataChangesIncludingOffsets/463/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/allMetadataChangesIncludingOffsets/1002/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/allMetadataChangesIncludingOffsets/1101/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/allMetadataChangesIncludingOffsets/1717/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/allMetadataChangesIncludingOffsets/1727/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/allMetadataChangesIncludingOffsets/2135/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/allMetadataChangesIncludingOffsets/2136/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/allMetadataChangesIncludingOffsets/2137/id",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+        "sha256": "1d3c4413fb2b41cf02c35cced9deb0e013461f6a417969e685d95ab5fec9a517",
+        "bytes": 1229291
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/pointOnlyPlaces/114/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/pointOnlyPlaces/115/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/pointOnlyPlaces/116/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/pointOnlyPlaces/117/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/pointOnlyPlaces/210/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/pointOnlyPlaces/220/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/pointOnlyPlaces/221/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/pointOnlyPlaces/227/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/pointOnlyPlaces/381/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/pointOnlyPlaces/414/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/pointOnlyPlaces/535/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/pointOnlyPlaces/670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/pointOnlyPlaces/763/id",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\touil-reviews\\original-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+        "bytes": 529199
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/administrativeCodeClaims/525755/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/administrativeCodeClaims/525953/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/administrativeCodeClaims/535754/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/administrativeCodeClaims/415456/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/administrativeCodeClaims/436252/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/administrativeCodeClaims/345853/0",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\ksar-two-patch-reviews\\direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+        "bytes": 529199
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/administrativeCodeClaims/525755/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/administrativeCodeClaims/525953/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/administrativeCodeClaims/535754/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/administrativeCodeClaims/415456/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/administrativeCodeClaims/436252/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/administrativeCodeClaims/345853/0",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\original-sector-point-reviews\\oued-zbib-2026-09\\baseline-neighborhoods.json",
+        "sha256": "2730affeae7809067a0901059052979be0a807f7d47e2a2b14cc72d55830716c",
+        "bytes": 1851659
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\settlement-polygon-display-reviews\\three-town\\tibar-ayoun-source-review.json",
+        "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25",
+        "bytes": 65444
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/records/2/completeCachedImadas/3/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/records/2/completeCachedImadas/3/currentMetadata/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/records/2/completeCachedImadas/3/currentMetadata/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-choice-staged-data-independent-review.json",
+        "sha256": "56121c5cfb3ea4c02df6156f80138f969f921ac989a0ebfff2dd06e43b927fe7",
+        "bytes": 314070
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/allChangedFieldsIncludingOffsets/19/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/allChangedFieldsIncludingOffsets/559/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/allChangedFieldsIncludingOffsets/658/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/allChangedFieldsIncludingOffsets/1274/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/allChangedFieldsIncludingOffsets/1284/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/allChangedFieldsIncludingOffsets/1692/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/allChangedFieldsIncludingOffsets/1693/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/allChangedFieldsIncludingOffsets/1694/id",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\two-historical-sectors-20260920\\evidence\\baseline-neighborhoods.json",
+        "sha256": "d396925c0a7adb85010fb1a2b3f839ffcea939bc12b59a0da6c04d23c57d79a4",
+        "bytes": 1866360
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coordinate-reviews\\inm-published-hazoua-smar-2026-09-19\\dependency-successors\\beni-mhira-context-nearest-reference-projection.json",
+        "sha256": "cc44917580b054ad09b0003b8cbf3bf562cbfbd299e74aa2c26eed538fc1bb5f",
+        "bytes": 1883630
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\locality-group-reviews\\gobaa-property-batch-2026-09-19\\dependency-successors\\smar-after-property-exclusion\\projected-after-smar-neighborhoods.json",
+        "sha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+        "bytes": 1850804
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coordinate-reviews\\smar-degache-physical-selection-2026-09-19\\dependency-successors\\beni-mhira-pre-display-prayer-projection.json",
+        "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+        "bytes": 1883636
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\locality-group-reviews\\gobaa-property-batch-2026-09-19\\dependency-successors\\smar-after-property-exclusion\\counterfactual-before-smar-neighborhoods.json",
+        "sha256": "d3c334ca94f18e8a970568bb562676de57e7880762a7619cba9f6ce6c9902439",
+        "bytes": 1850817
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coordinate-reviews\\oued-meliz-2026-09-08\\two-reference-phone-visual-review.json",
+        "sha256": "a5e3b9975a84fc6f1607d2ff9c9004414becc831a6de41b5a59feb3af94877a3",
+        "bytes": 303121
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/artifactChecks/487/rowId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\locality-context-reviews\\haf-direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+        "bytes": 529199
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/administrativeCodeClaims/525755/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/administrativeCodeClaims/525953/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/administrativeCodeClaims/535754/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/administrativeCodeClaims/415456/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/administrativeCodeClaims/436252/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/administrativeCodeClaims/345853/0",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\sidi-mtir-20260920\\evidence\\currentmetadata.json",
+        "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348",
+        "bytes": 1852065
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\hammamet-nine-neighbours-20260920\\evidence\\baseline-neighborhoods.json",
+        "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348",
+        "bytes": 1852065
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\before-neighborhoods.json",
+        "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+        "bytes": 1839172
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/816/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/816/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/838/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/838/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/965/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/965/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1573/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1573/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1672/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1672/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2288/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2288/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2298/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2298/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2706/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2706/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2707/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2707/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2708/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2708/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2841/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2841/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2842/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2842/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2843/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2843/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2844/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2844/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2937/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2937/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2947/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2947/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2948/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2948/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2954/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2954/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3108/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3108/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3141/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3141/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3262/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3262/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3398/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3398/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3491/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3491/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\hammamet-nine-20260920\\evidence\\currentmetadata.json",
+        "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348",
+        "bytes": 1852065
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2279/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2598/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2599/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2600/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2733/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2734/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2735/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2736/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2829/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2839/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2840/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2846/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3000/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3033/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3154/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3289/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3382/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\el-borma-2026-09\\el-borma-root-display-scope-review.json",
+        "sha256": "52400db186b7e7eca19cb1ff6b039ad39e3fdafe61be7aa28691112cd7bde13c",
+        "bytes": 11512
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/preservedSectorIds/0",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\hammamet-nine-20260920\\evidence\\comparison.json",
+        "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7",
+        "bytes": 22744272
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/candidates/117/catalogPeerIntersections/sectorPeers/0/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/candidates/117/catalogPeerIntersections/sectorPeers/0/metadataFeatureId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\el-borma-2026-09\\el-borma-display-scope-feasibility.json",
+        "sha256": "aa8c49a1b54264ddbf1da92c27c8f26de012e411548da1824dbd8f4e629a1bd8",
+        "bytes": 7962
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/sectorsPreserved/0/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/sectorsPreserved/0/group",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\el-borma-2026-09\\476-reviewed-point-base-display-identity.json",
+        "sha256": "c4848d85ea1db340ef1c61422c6e58cb09458331c957033da6d0de05b808f78d",
+        "bytes": 54924
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/preservedSectors/0/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/preservedSectors/0/currentMetadata/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/preservedSectors/0/currentMetadata/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/sourceStates/3/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/curationBindings/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/coordinateContextMembership/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/protectedRawRecords/1/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/protectedRawRecords/1/currentMetadata/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/protectedRawRecords/1/currentMetadata/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/expectedBeforeGroups/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/expectedBeforeGroups/osm:relation:7143844/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/expectedAfterGroups/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/townPreservationExtension/expectedAfterGroups/osm:relation:7143844/0",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\tinja-soukra-sector-owned-2026-09\\current-baseline-neighborhoods-f05e.json",
+        "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+        "bytes": 1883630
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\el-borma-2026-09\\finite-source-group-facts.json",
+        "sha256": "83f9b3c04049276c98d83a5571938988029e09423fbe38e779f74ca45139b997",
+        "bytes": 122838
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/preservedSectors/0/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/preservedSectors/0/currentMetadata/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/preservedSectors/0/currentMetadata/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/sourceStates/3/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/curationBindings/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/protectedRawRecords/1/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/protectedRawRecords/1/currentMetadata/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/protectedRawRecords/1/currentMetadata/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/coordinateContextMembership/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/packedCoordinateContextMembership/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/expectedBeforeGroups/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/expectedBeforeGroups/osm:relation:7143844/0",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/expectedAfterGroups/osm:relation:7143844",
+          "occurrence": "key"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/candidate/expectedAfterGroups/osm:relation:7143844/0",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\el-borma-2026-09\\finite-source-context-facts.json",
+        "sha256": "3185feb80c30638fd48a4973ee3d343576903b27f1bef10f4f355b9c3c9399ff",
+        "bytes": 31820
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/allRemadaSourceAreaStates/4/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/relevantCurrentRawRows/0/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/relevantCurrentRawRows/0/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\beni-mhira-successor-2026-09\\post-sidi-el-hani-neighborhoods.json",
+        "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+        "bytes": 1883636
+      },
+      "exactIdPointers": [
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7127889",
+          "pointer": "/features/815/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7133851",
+          "pointer": "/features/837/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7142943",
+          "pointer": "/features/964/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7143844",
+          "pointer": "/features/1032/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7165270",
+          "pointer": "/features/1571/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:relation:7169564",
+          "pointer": "/features/1670/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:183799954",
+          "pointer": "/features/2284/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:186750635",
+          "pointer": "/features/2294/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951284044",
+          "pointer": "/features/2698/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326265",
+          "pointer": "/features/2699/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:way:951326266",
+          "pointer": "/features/2700/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256424282",
+          "pointer": "/features/2833/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425588",
+          "pointer": "/features/2834/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256425593",
+          "pointer": "/features/2835/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:11256427632",
+          "pointer": "/features/2836/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12171078159",
+          "pointer": "/features/2929/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018912",
+          "pointer": "/features/2939/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12198018913",
+          "pointer": "/features/2940/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:12211699220",
+          "pointer": "/features/2946/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:1974940233",
+          "pointer": "/features/3100/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:2203976293",
+          "pointer": "/features/3133/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:352753595",
+          "pointer": "/features/3254/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:6916227160",
+          "pointer": "/features/3389/pickerGroupId",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/id",
+          "occurrence": "value"
+        },
+        {
+          "id": "osm:node:7433415028",
+          "pointer": "/features/3482/pickerGroupId",
+          "occurrence": "value"
+        }
+      ],
+      "classification": "Finite exact-ID inventory only. Presence in historical snapshot does not prove active guard dependency."
+    }
+  ],
+  "limitations": [
+    "All eighteen child own primary names, aliases, geometries, coordinates, groups and prayer sources are preserved by this proposal.",
+    "Target display alias ordering and full aggregate source-phase closure remain for a future authorized isolated candidate.",
+    "This proposal does not import any of six native outlines.",
+    "Existing spelling variants are retained; official coded Arabic, not Latin transliteration assumptions, justifies four primary choices."
+  ]
+}

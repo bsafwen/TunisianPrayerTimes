@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "status": "provisionally_accepted_for_first_release",
+  "policy": "Best defensible offline imada footprints with explicit uncertainty; no per-record decree-scope review required for this source.",
+  "reviewedBoundariesSha256": "733b94b5e71b9b891e5ae319ca7939d94ce38bb2a3120d31bcedcb77061a0c14",
+  "sourceGeojsonSha256": "225c7633750678391d0f0adc211f0273bb9baf81e7bb1a0c2ef19e4f467fa92e",
+  "records": [
+    "isie:sector:115653",
+    "osm:relation:7201523",
+    "osm:relation:7201520",
+    "isie:sector:435958",
+    "osm:relation:7169675"
+  ],
+  "installedAssets": {
+    "neighborhoodsJsonSha256": "c7daff647e40080dad98d4296b90f67e17198fb2349051f159a38a0ba136f5db",
+    "neighborhoodsBinSha256": "8c0c1a6c5d2bc310dae01a487a47ed5967449f8826730959bdbcb0afdfb5c94e",
+    "distinctSectorIds": 2085,
+    "distinctSectorPickerGroups": 2085
+  },
+  "checks": {
+    "unrelatedPackedPolygonPayloadsPreserved": 2575,
+    "pointOnlyRowsPreserved": 903,
+    "invalidPackedPolygons": 0,
+    "conflictSamplesPassing": 474,
+    "newSectorsWinningAtSafeInteriorPoints": 2,
+    "androidCompileAndAssetMerge": "passed",
+    "tunisNameCorrectionRows": 14,
+    "tunisPreviousArabicPrimaryNamesPreservedAsAliases": 14,
+    "tunisNameCorrectionFieldsOnly": true,
+    "tunisNameCorrectionGeometryUnchanged": true,
+    "sejoumiAliBelhouanePreserved": true
+  },
+  "exceptions": [
+    "ISIE electoral-circle vectors are not certified current surveyed imada boundaries.",
+    "The Hay Ben Khaldoun II map label center is offset from the selected outline; its association remains provisional.",
+    "The Ahmed Tlili path association relies on map title and fit to the coded sector.",
+    "Rmeiliya is derived from the old OSM polygon minus the Ouled El Faleh candidate, rather than the native ISIE Rmeiliya outline.",
+    "Source-map redistribution terms have not been verified.",
+    "Registry name, parent and code ambiguities outside these five records remain under review."
+  ],
+  "tunisNameCorrections": {
+    "reviewFile": "tunis-primary-name-corrections-review.json",
+    "reviewSha256": "f699e05118cc11e8fc4202e7befb85879ea146f1824c9dd54b95304c0ee0d313",
+    "recordCount": 14,
+    "ids": [
+      "osm:relation:7116451",
+      "osm:relation:7201543",
+      "osm:relation:7201238",
+      "osm:relation:7118021",
+      "osm:relation:7118026",
+      "osm:relation:7118032",
+      "osm:relation:7118033",
+      "osm:relation:7201655",
+      "osm:relation:7202751",
+      "osm:relation:7202756",
+      "osm:relation:7117889",
+      "osm:relation:7062770",
+      "osm:relation:7062740",
+      "osm:relation:7062769"
+    ],
+    "insCodes": [
+      "115153",
+      "115851",
+      "115955",
+      "116052",
+      "116053",
+      "116060",
+      "116064",
+      "116457",
+      "116656",
+      "116657",
+      "116952",
+      "117152",
+      "117153",
+      "117154"
+    ],
+    "fieldsChanged": [
+      "aliases",
+      "name"
+    ],
+    "previousArabicPrimaryNamesPreservedAsAliases": 14,
+    "packedGeometryUnchanged": true,
+    "protectedDistinctIdentityId": "osm:relation:7201551"
+  }
+}

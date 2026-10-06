@@ -1,0 +1,25 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-12T18:51:37.380719+00:00",
+  "query": "Residence Diar El Mesk Aouina",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [],
+  "publicUiText": [
+    "الطبقات",
+    "Residence Diar El Mesk Aouina",
+    "إغلاق",
+    "فلاتر إضافية",
+    "مفتوح الآن",
+    "الأعلى تقييمًا",
+    "أكثر من 3 مراجعات",
+    "مشاركة",
+    "حفظ",
+    "الاتجاهات",
+    "الاتصال",
+    "محو"
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "osm_way_522478927-1.png",
+  "boundaryVerified": false
+}

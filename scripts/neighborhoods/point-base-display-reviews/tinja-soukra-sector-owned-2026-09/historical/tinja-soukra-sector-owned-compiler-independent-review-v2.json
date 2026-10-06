@@ -1,0 +1,227 @@
+{
+  "status": "PASS_STATIC_REVIEW",
+  "createdAt": "2026-09-12T14:09:22.079226+00:00",
+  "inputs": {
+    "baseline": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\baseline\\generate_neighborhoods.py",
+      "sha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9",
+      "bytes": 498918
+    },
+    "compiler": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal-v2\\scripts\\generate_neighborhoods.py",
+      "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+      "bytes": 543279
+    },
+    "diff": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-compiler-v2-independent-review\\baseline-to-v2.diff",
+      "sha256": "1e8d14da069053407ec64b74735f86396e446ff1f2ecf79cfeec0501146b322a",
+      "bytes": 48766
+    },
+    "schema": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\sector-owned-settlement-schema.json",
+      "sha256": "65bdcf606018eb5233423f5a4f8782cc7c57d93042ebe47c76688674ec124c87",
+      "bytes": 145829
+    },
+    "facts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\finite-source-group-facts.json",
+      "sha256": "70c565a5c47e9e6b62fa7d809a3d447fc1c0c1c1c2468ca25b07f2862a51f499",
+      "bytes": 137856
+    },
+    "design": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\sector-owned-settlement-contract-design.json",
+      "sha256": "64804d3b6357ea428b18d95a433ccd72b3ad862dad9c8273f6c66561ed3d28fc",
+      "bytes": 155052
+    },
+    "independentCarry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-post-beni-teboursouk-carry-independent-review.json",
+      "sha256": "0c8d7c77e3924016fa3add0a742bbcdf1f134f830e9eead8ba6823e414b7897d",
+      "bytes": 13251
+    },
+    "orderingAddendum": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-finite-facts-ordering-addendum.json",
+      "sha256": "a77f2f15c5683d4e7b8c6ce9727a384f774d107a08b6523aa79171f8f205b4a6",
+      "bytes": 4740
+    },
+    "previousSelfReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\compiler-self-review.json",
+      "sha256": "ab9c2a417da58c44710d57609346ac6255b624a5dacfa569234ade723c7b10ed",
+      "bytes": 7693
+    },
+    "correctionSelfReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-sector-owned-compiler-v2-self-review.json",
+      "sha256": "d90b613605de90a49cf0e61238a5b2a9c50c95598e13ce425925cda2852b104e",
+      "bytes": 5688
+    }
+  },
+  "currentInstalledCompilerUnchanged": true,
+  "reviewMethod": "Personally read the exact governor-name comparison delta and existing normalization helper; rechecked authentic source/app spelling in pinned finite facts. Independently compared complete baseline/v1/v2 AST and function bytes, verified the literal single replacement, unchanged module statements, and all three absent-option AST restorations. The prior full-diff and unchanged schema/source review is carried explicitly; no product code was imported or executed.",
+  "scope": {
+    "changedExistingDefinitions": [
+      "build",
+      "validate_reviewed_point_base_display",
+      "verify_reviewed_point_base_names"
+    ],
+    "addedDefinitions": [
+      "apply_sector_owned_settlement_proposals",
+      "derive_sector_owned_settlement_closure",
+      "reserve_sector_owned_settlement_proposals",
+      "sector_owned_reservation_ids",
+      "sector_owned_source_state",
+      "validate_sector_owned_settlement_preservation",
+      "verify_sector_owned_settlement_state"
+    ],
+    "removedDefinitions": [],
+    "allOtherDefinitionBytesAndAstExact": true,
+    "otherModuleAstExact": true,
+    "readableDiffMatchesWholeFiles": true,
+    "allThreeNoOptionAstsRestoreExactBaseline": true,
+    "syntaxCompiledWithoutExecution": false,
+    "syntaxParsedWithoutExecution": true
+  },
+  "schemaExamples": [
+    {
+      "pointId": "osm:node:1109384824",
+      "baseId": 565,
+      "rawRecords": 7,
+      "sourceStates": 10,
+      "localSectors": 3,
+      "foreignRawPeers": 0,
+      "sourceOnlyAbsorbedPoints": 1
+    },
+    {
+      "pointId": "osm:node:7390818324",
+      "baseId": 532,
+      "rawRecords": 16,
+      "sourceStates": 18,
+      "localSectors": 7,
+      "foreignRawPeers": 1,
+      "sourceOnlyAbsorbedPoints": 0
+    }
+  ],
+  "manualFindings": [
+    {
+      "topic": "Common identity gate",
+      "lines": [
+        2912,
+        3018
+      ],
+      "finding": "New option remains restricted to the explicit town/village method and exact preserve_point rule. Mixed old extensions fail. Existing authentic node JSON, primary text, governor/base, coordinate/default and source checksum checks run before dispatch."
+    },
+    {
+      "topic": "Typed and complete source preservation",
+      "lines": [
+        1278,
+        1640
+      ],
+      "finding": "Exact key sets, sorted unique IDs, real source dictionaries and registry completeness bind every raw/source state. Complete local administrative rows, both-phase sector coverage, source-point coverage and global name peers are independently derived, then all actual group members are added to closure. Supplied lists cannot hide an extra current member."
+    },
+    {
+      "topic": "Accepted transformations",
+      "lines": [
+        1409,
+        1495
+      ],
+      "finding": "Original/effective states must equal actual loader objects. The one official sector replacement binds active manifest, provider, original tags, exact feature hash, loader receipt and provider evidence; existing Charguia name tags bind current curation and reproduce the accounted name transformation. No unaccounted kind/geometry/name/provider change is accepted."
+    },
+    {
+      "topic": "Source-only and foreign locality",
+      "lines": [
+        1517,
+        1601
+      ],
+      "finding": "Zaarour uses an explicit cached-source descriptor, remains absent, and has one original/effective/packed receiver. Sfax Soukra stays a separate coded raw sector and group, with exact metadata/default/geometry and negative candidate coordinate membership."
+    },
+    {
+      "topic": "Cross-contract reservations",
+      "lines": [
+        1709,
+        1795
+      ],
+      "finding": "Before either pending point dispatcher, claims cover all point descriptors, manifest strict/local/city/residential records, full residential/city/split result protections, and original deferred hamlets. New write/target claims are compared bidirectionally against old/new protected IDs. Shared read-only contexts are allowed. Only the exact own strict sector/base record overlap is exempted; its active proof and single receipt remain required."
+    },
+    {
+      "topic": "Application and final checks",
+      "lines": [
+        1643,
+        1818
+      ],
+      "finding": "All new before-states are rechecked before any new assignment. Only the point group and explicit owner map change. Final verification re-derives complete source/raw/groups, checks every retained metadata field and packed polygon, both explicit/raw owner sets, source-only absence and distinct foreign peer. The existing strict receipt is never rewritten."
+    },
+    {
+      "topic": "Build ordering and no-option path",
+      "lines": [
+        7274,
+        7341
+      ],
+      "finding": "Shared reservation follows existing strict/local/context/hamlet/residential work and precedes the old pending point dispatcher. New application follows the old dispatcher; all final verifiers remain after both. Subsequent saved replacement validation does not mutate locality/group fields; serialization only adds packed offsets. Existing Beni/Teboursouk and old deferred helpers are byte-identical."
+    }
+  ],
+  "sourceAssemblyRequirements": [
+    "Schema example references are source descriptors, not an executable source stage. Copy exact evidence bytes and relocate every operative file/hash path under the source root; the unchanged aggregate_review_file rejects escaping absolute references.",
+    "Preserved-sector top-level objects must be supplied in the exact new validator shape, bound to each schema source/raw state and complete registry identity.",
+    "Keep strict owner records/proofs/receipts unchanged and use a separate new point curation/receipt."
+  ],
+  "receiptOrderingForFutureActualAudit": "Each new point preserve_point receipt occurs during source node iteration. Its picker_base_display receipt is appended later, after the existing deferred dispatcher. Two receipts per new decision; existing receipt object/order preservation must be audited separately.",
+  "issues": [],
+  "limitations": [
+    "Static approval of the isolated v2 compiler only; live 5680 remains unchanged.",
+    "No product execution, imports, generation, tests, build, phone or ledger access.",
+    "Source-stage acceptance and actual-data review remain separate gates. No polygon or surveyed-reference certification."
+  ],
+  "auditScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_tinja_soukra_sector_owned_compiler_independent_v2.py",
+    "sha256": "31822531eb1739b1a552077501ac74cda8fe5013feedd91b825e91cad7b48027",
+    "bytes": 9054
+  },
+  "previousReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-sector-owned-compiler-independent-review.json",
+    "sha256": "2457e63ebd7521be9fbf539a3f4a9d1054f2d11fb1a55e79f7e5c170ef307c39",
+    "bytes": 9690
+  },
+  "correctionReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-sector-owned-compiler-v2-self-review.json",
+    "sha256": "d90b613605de90a49cf0e61238a5b2a9c50c95598e13ce425925cda2852b104e",
+    "bytes": 5688
+  },
+  "correction": {
+    "reason": "Exact source name ولاية أريانة differs from app governor spelling اريانة; the original optional branch rejected the truthful Soukra source context.",
+    "changedDefinitionFromV1": [
+      "validate_sector_owned_settlement_preservation"
+    ],
+    "v1Compiler": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\scripts\\generate_neighborhoods.py",
+      "sha256": "44284f49f11daedf4f0b0918510f98d623f1966d8b6e953b9fa8e6317c0fb29b",
+      "bytes": 543211
+    },
+    "v2Compiler": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal-v2\\scripts\\generate_neighborhoods.py",
+      "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+      "bytes": 543279
+    },
+    "exactCorrectionDiff": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-compiler-v2-independent-review\\v1-to-v2.diff",
+      "sha256": "727329f88facae42220186f2e87c72def7a9a6524f7a6c1221e87103c9533e20",
+      "bytes": 930
+    },
+    "sourceAndAppNames": [
+      {
+        "pointId": "osm:node:1109384824",
+        "governorSourceId": "osm:relation:1435827",
+        "sourceNameAr": "ولاية بنزرت",
+        "appNameAr": "بنزرت",
+        "sourceAdministrativeCode": "17"
+      },
+      {
+        "pointId": "osm:node:7390818324",
+        "governorSourceId": "osm:relation:1435830",
+        "sourceNameAr": "ولاية أريانة",
+        "appNameAr": "اريانة",
+        "sourceAdministrativeCode": "12"
+      }
+    ],
+    "finding": "Only the new optional governor-name comparison uses the unchanged picker_review_name_key on both sides. The name:ar default is the empty string, which cannot match the nonempty governor title; missing/empty Arabic remains rejected. Word boundaries and numbers remain significant. Source tags, administrative codes, governor identity pins, real context geometry, default mappings, and ordinary branches remain exact.",
+    "syntaxParsedWithoutExecution": true,
+    "allMappingAndBuildBytesUnchangedFromV1": true
+  },
+  "inheritedManualFindingsApplicability": "Original line ranges refer to frozen v1 44284. All those bodies remain exact except the explicitly reviewed new governor comparison; later line positions may shift."
+}

@@ -1,0 +1,171 @@
+{
+  "comparison": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\onehundredfiftyone-current-name-review-20260920.json",
+    "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7"
+  },
+  "scope": "Nine whole Hammamet sectors, integration planning only",
+  "sectorCountScanned": 2084,
+  "rows": [
+    {
+      "id": "osm:relation:7104932",
+      "code": "156659",
+      "name": "ياسمين الحمامات",
+      "currentPointInsideNew": false,
+      "externalSectorPeers": [
+        {
+          "id": "osm:relation:7105456",
+          "name": "سيدي مطير",
+          "newVsOldAreaM2": 17879.024685582706,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 2929.021966928612
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7104931",
+      "code": "156654",
+      "name": "منارة الحمامات",
+      "currentPointInsideNew": false,
+      "externalSectorPeers": []
+    },
+    {
+      "id": "osm:relation:7105070",
+      "code": "156651",
+      "name": "سيدي الجديدي",
+      "currentPointInsideNew": true,
+      "externalSectorPeers": [
+        {
+          "id": "osm:relation:7105455",
+          "name": "سيدي سعيد",
+          "newVsOldAreaM2": 1422376.9294325828,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 9518.839713613963
+        },
+        {
+          "id": "osm:relation:7104940",
+          "name": "جبل طريف",
+          "newVsOldAreaM2": 616532.204296347,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 5002.936363345403
+        },
+        {
+          "id": "osm:relation:7109196",
+          "name": "وادي الزيت",
+          "newVsOldAreaM2": 225279.67395470422,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 22968.536758298822
+        },
+        {
+          "id": "osm:relation:7105456",
+          "name": "سيدي مطير",
+          "newVsOldAreaM2": 33330.16250528854,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 10365.26905661832
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7104926",
+      "code": "156653",
+      "name": "بير بورقبة",
+      "currentPointInsideNew": true,
+      "externalSectorPeers": [
+        {
+          "id": "osm:relation:7103679",
+          "name": "برج حفيظ",
+          "newVsOldAreaM2": 1041527.2922287388,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 7687.555778716829
+        },
+        {
+          "id": "osm:relation:7103680",
+          "name": "بو عرقوب الجنوبية",
+          "newVsOldAreaM2": 105706.2690109885,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 2755.998962976846
+        },
+        {
+          "id": "osm:relation:7103327",
+          "name": "الهادي شاكر",
+          "newVsOldAreaM2": 55065.95487193096,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 0.0
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7144606",
+      "code": "156652",
+      "name": "الاطرش",
+      "currentPointInsideNew": true,
+      "externalSectorPeers": [
+        {
+          "id": "osm:relation:7104938",
+          "name": "عين طبرنق",
+          "newVsOldAreaM2": 1293732.9235370595,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 6956.276386064121
+        },
+        {
+          "id": "osm:relation:7104940",
+          "name": "جبل طريف",
+          "newVsOldAreaM2": 386761.6845248352,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 3467.5675077651304
+        },
+        {
+          "id": "osm:relation:7103680",
+          "name": "بو عرقوب الجنوبية",
+          "newVsOldAreaM2": 122318.46387420126,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 9326.806674187463
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7104930",
+      "code": "156657",
+      "name": "الحمامات الغربية",
+      "currentPointInsideNew": true,
+      "externalSectorPeers": []
+    },
+    {
+      "id": "osm:relation:7104929",
+      "code": "156656",
+      "name": "الحمامات الشرقية",
+      "currentPointInsideNew": true,
+      "externalSectorPeers": []
+    },
+    {
+      "id": "osm:relation:7104927",
+      "code": "156655",
+      "name": "الحمامات الجوفية",
+      "currentPointInsideNew": true,
+      "externalSectorPeers": [
+        {
+          "id": "osm:relation:7103327",
+          "name": "الهادي شاكر",
+          "newVsOldAreaM2": 710609.4462431045,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 1399.0542934324312
+        },
+        {
+          "id": "osm:relation:7103679",
+          "name": "برج حفيظ",
+          "newVsOldAreaM2": 42232.07010437316,
+          "reviewedProposalAvailable": true,
+          "newVsNewAreaM2": 509.6587494478166
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7104928",
+      "code": "156658",
+      "name": "المرازقة",
+      "currentPointInsideNew": true,
+      "externalSectorPeers": []
+    }
+  ],
+  "noGeometryModified": true,
+  "appChanges": false
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "ariana-ministry-identity-cleanup-20260924-current-live",
+  "baseMetadataSha256": "63908a83db9b024bddbd8ff75e11806e987a95742cde1571ac7c0286b46460e7",
+  "baseGeometrySha256": "d098fadb5cebac0c8c04d245ca3e9a526064b18c71162d9331c38df6e7b3d347",
+  "evidence": [
+    {
+      "file": "catalog-updates/ariana-ministry-identity-cleanup-20260924/evidence/identity-exceptions.json",
+      "sha256": "1762c4d1630c60354b315a35b2f165e085002101da168c14f0f2831d77641136"
+    },
+    {
+      "file": "catalog-updates/ariana-ministry-identity-cleanup-20260924/evidence/code-verification.json",
+      "sha256": "4af377555ead21df09ccf5d5313e61cfe5b6f3cd0f6dbf1323c43f4de1192a14"
+    },
+    {
+      "file": "catalog-updates/ariana-ministry-identity-cleanup-20260924/evidence/ministry-imada-inventory.csv",
+      "sha256": "2ddaafc9afbb054781b69ddc66f1b0b4a138dbf92acbd7cc5f7c82e96867a871"
+    }
+  ],
+  "newSources": {},
+  "updates": [
+    {
+      "id": "osm:relation:7115051",
+      "expectedFeatureSha256": "39985f19d0de841e6dfc65356498acbc9eb11d347c2916278866aae357536d80",
+      "set": {
+        "name": "المنزه الخامس",
+        "aliases": [
+          "El Menzah 5",
+          "المنزه 5"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7115052",
+      "expectedFeatureSha256": "8b2ac396b12639d5a26efcb9cba340f0bef2880cbc5e19edde09b5f77b65ac18",
+      "set": {
+        "name": "المنزه السادس",
+        "aliases": [
+          "El Menzah 6",
+          "المنزه 6"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7114421",
+      "expectedFeatureSha256": "f92c98f90966f34c971711f52eb515bfb2bf090a1c61ccf3d15b97d572399e53",
+      "set": {
+        "name": "بوحنش",
+        "aliases": [
+          "Bou Hannech",
+          "بو حناش"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7115582",
+      "expectedFeatureSha256": "3ddd8feae2b49b361bed0ab721797e832c286279cabf0d80f44a22cc845425e0",
+      "set": {
+        "name": "2 مارس",
+        "aliases": [
+          "2 Mars",
+          "مارس 2"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7115407",
+      "expectedFeatureSha256": "b93a26ce16d9941fced65f66bd68aa01fca8c8a8f006901ef88e9a6763bf6bf7",
+      "set": {
+        "parentName": "معتمدية المنيهلة"
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7115408",
+      "expectedFeatureSha256": "521c91a24cd95800eb3b990f6db3c9cc52f01883b29e0990f9aa6fc180c9731e",
+      "set": {
+        "parentName": "معتمدية المنيهلة"
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7115409",
+      "expectedFeatureSha256": "2ac1052b27ce05a8a89724c778e56b91d64e035e67d15167f306294649a0dbe4",
+      "set": {
+        "parentName": "معتمدية المنيهلة"
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7115406",
+      "expectedFeatureSha256": "c94a1a09102f42e6fdc6bb95e210381bd1c5a1ca3d64dbc7ff41974fe185b83c",
+      "set": {
+        "parentName": "معتمدية المنيهلة"
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7115405",
+      "expectedFeatureSha256": "2a6102e8abc74ee54ced6febcc1a0c51fb7049a06dde93e2dcebdbcacd57c3f8",
+      "set": {
+        "parentName": "معتمدية المنيهلة"
+      },
+      "geometry": null
+    }
+  ],
+  "scopeNote": "Apply nine code-anchored Ariana identity corrections from the saved Ministry imada inventory, corroborated by the uniquely matching saved INS registry codes/names/parents. Update only Ministry-form display names and delegation parents; preserve prior Arabic primary spellings as searchable aliases where names change. No identity change for قلعة الأندلس الشرقية; no claim about polygon reliability; preserve all IDs, timetable delegation IDs, points, geometry and unrelated rows."
+}

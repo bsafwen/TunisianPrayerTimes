@@ -1,0 +1,186 @@
+{
+  "status": "QUALIFIED_FOUR_POINT_NAME_REVIEW_ONE_SUPPORTED_ARABIC_SPELLING_PROPOSAL",
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\exact-four-point-name-source-facts.json",
+    "sha256": "ed6dfb0d0cbc40e121efaa4a2f605b82935c31aba0dbb129b68ad3fac973f2ed",
+    "bytes": 55043
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_four_soliman_point_name_review.py",
+    "sha256": "6fa6a4f7eab4d2d88439e02490d5c2cd1a66a8ab6734d6ccb3e53916cd2e923b",
+    "bytes": 14403
+  },
+  "scope": "Exactly four inhabited point names. Source-only recommendations; no exclusion, merge, relocation, source-stage or live change. The accepted thirteen-boundary source package is a separate parent-owned operation.",
+  "decisions": [
+    {
+      "id": "osm:node:2173790702",
+      "recommendation": "KEEP_NAME_AND_POINT",
+      "currentName": "بدار",
+      "supportedName": "بدار",
+      "primaryEvidence": [
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\baddar-governorate-village-2016.html",
+            "sha256": "7b2b35ae9facfa169e4c132f05e11f7fb7c1e8d44ecf3c2dc5e557c9e75bab3b",
+            "bytes": 114615
+          },
+          "url": "https://www.nabeul.gov.tn/ar/%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86%D9%8A%D8%A9-%D9%84%D9%85%D8%B9%D8%AA%D9%85%D8%AF%D9%8A%D8%A9-%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/"
+        },
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\baddar-governorate-arima-2022.html",
+            "sha256": "c11bfbad49d0098ca907520839be9c629b079ca892b661bee88123f806d79f19",
+            "bytes": 126625
+          },
+          "url": "https://www.nabeul.gov.tn/ar/%D9%85%D8%AA%D8%A7%D8%A8%D8%B9%D8%A9-%D8%A7%D9%84%D9%88%D8%B6%D8%B9-%D8%A7%D9%84%D8%A8%D9%8A%D8%A6%D9%8A-%D8%A8%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9-%D8%A8%D9%85/"
+        }
+      ],
+      "finding": "Nabeul governorate describes its 13 October 2016 visit to Baddar as a village and inhabited neighborhood in Takelsa. Its 5 August 2022 inspection places Baddar in the El Arima area of Takelsa. This positively supports the existing Arabic spelling and broad administrative context; the current pre-import Mraissa/Soliman context is not affirmed by these sources.",
+      "limit": "No equivalence between the village and the El Arima sector polygon. Google بدر alone does not override the primary بدار spelling. The separate boundary cohort owns any containment-derived parent change."
+    },
+    {
+      "id": "osm:node:2191295540",
+      "recommendation": "KEEP_NAME_AND_POINT",
+      "currentName": "العيثة",
+      "supportedName": "العيثة",
+      "primaryEvidence": [
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\aitha-governorate-inhabited-2024.html",
+            "sha256": "2533f47b73bf13f01cb4f96ba850eb907c590f887808e19aa65d02c3dcb867f3",
+            "bytes": 139297
+          },
+          "url": "https://www.nabeul.gov.tn/ar/%D9%88%D8%A7%D9%84%D9%8A%D8%A9-%D9%86%D8%A7%D8%A8%D9%84-%D9%81%D9%8A-%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86%D9%8A%D8%A9-%D9%84%D9%85%D8%B9%D8%AA%D9%85%D8%AF%D9%8A%D8%A9-%D9%85/"
+        }
+      ],
+      "finding": "Nabeul governorate reports a 28 September 2024 visit in Menzel Bouzelfa, identifying the El Aitha health center and residents of the named area whose homes lacked sewer connections. This directly supports an inhabited El Aitha locality and its current Arabic spelling.",
+      "limit": "The health center is contextual evidence, not the hamlet point or boundary. The source does not independently identify an imada polygon; canonical sector spelling and membership remain the separate boundary cohort matter."
+    },
+    {
+      "id": "osm:node:2778243022",
+      "recommendation": "PROPOSE_NARROW_ARABIC_DISPLAY_SPELLING_CORRECTION",
+      "currentName": "الخرمية",
+      "proposedName": "الكرمية",
+      "currentFrench": "El Kharmia",
+      "primaryFrenchSpelling": "El Karmia",
+      "primaryEvidence": [
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\kharmia-governorate-historical-name.html",
+            "sha256": "32e6b9a5288ed960b054b99774755681e0a86fff57173a21563f83f2eae99d76",
+            "bytes": 113373
+          },
+          "url": "https://www.nabeul.gov.tn/ar/%D9%85%D8%B9%D9%85%D8%A7%D8%B1-%D8%B9%D9%87%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9/"
+        },
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\inp-grombalia-2010.pdf",
+            "sha256": "5257f8e9ffa2d32c0dba536cba62c1f34d97ca6176bfd1ab53e7cf38de3ea17b",
+            "bytes": 1673260
+          },
+          "url": "https://www.inp2020.tn/cartes/029Grombalia.pdf"
+        },
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\inp-site-inventory-2012.pdf",
+            "sha256": "58b4eccc1d61c84254d302c2b9a4b579dcef239cdc1445cfed62acd8538cd9e1",
+            "bytes": 12652671
+          },
+          "url": "https://www.inp2020.tn/inventaire/Sites_Archeologiques_Tunisie_2012.pdf"
+        },
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\arp-proceedings-112323.pdf",
+            "sha256": "bded5d09542b391fe37bf2e1cdba136475d2d03b2604d301fb84834d11ed779f",
+            "bytes": 7754316
+          },
+          "url": "https://www.arp.tn/document/download/112323"
+        }
+      ],
+      "finding": "Nabeul’s historical account spells the modern name الكرمية and associates it with earlier El Kalbia. INP 2010 explicitly describes El Karmia as a village in Grombalia near a college. In the 12 May 2025 parliamentary proceedings, MP Mohamed Ali Fnira includes كرمية among Grombalia villages. These independent primary name/context sources, combined with the root’s exact-coordinate school/stadium/cafe labels, support correcting خ to ك for this retained hamlet.",
+      "sourceHistoryQualification": "The original 2014 source used only El Kharmia. Arabic الخرمية first appeared in version 4 in 2017; version 6 made it the primary name in 2021. The point has not moved since version 2 in 2014. This establishes chronology, not the editor’s motive or proof that the historic spelling never existed.",
+      "suggestedImplementationScope": {
+        "name": "الكرمية",
+        "name:ar": "الكرمية",
+        "retainCurrentFrenchSearchVariant": "El Kharmia",
+        "optionalAdditionalFrenchSearchSpelling": "El Karmia",
+        "requiresSeparateReviewedCurationBeforeImplementation": true
+      },
+      "limit": "No independent legal canonical-name register was found for the exact hamlet point. This is a supported local display spelling correction, not an official renaming certificate. Do not substitute a stadium, school, heritage site, old El Kalbia estate, or imada for the hamlet; no new polygon, merge, or coordinate follows."
+    },
+    {
+      "id": "osm:node:2778243023",
+      "recommendation": "KEEP_NAME_AND_POINT",
+      "currentName": "السبالة",
+      "supportedName": "السبالة",
+      "primaryEvidence": [
+        {
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baddar-aitha-kharmia-essabala-source-review\\arp-proceedings-112323.pdf",
+            "sha256": "bded5d09542b391fe37bf2e1cdba136475d2d03b2604d301fb84834d11ed779f",
+            "bytes": 7754316
+          },
+          "url": "https://www.arp.tn/document/download/112323"
+        }
+      ],
+      "finding": "The 12 May 2025 ARP proceedings record MP Mohamed Ali Fnira listing السبالة among Grombalia villages while discussing residential subdivisions. This is positive primary local testimony for the inhabited name, consistent with the source hamlet history.",
+      "limit": "The testimony is a parliamentary statement, not a ministerial survey or exact point certificate. Root Maps supplied inhabited vicinity but no exact Essabala name; its nearby mosque جامع السبيل is not a hamlet alias. Keep the point and name; no exclusion or merge is supported."
+    }
+  ],
+  "primaryReadingQualifications": {
+    "inp2010": {
+      "physicalPage": 21,
+      "printedPage": 16,
+      "titleDate": "Tunis 2010",
+      "scope": "Historical heritage inventory used for village name and local description only."
+    },
+    "inp2012": {
+      "physicalPages": [
+        1,
+        39
+      ],
+      "scope": "Matching site inventory plus coordinate-system introduction; no boundary inference."
+    },
+    "arp": {
+      "physicalPage": 40,
+      "printedPage": 3992,
+      "sessionDate": "2025-05-12",
+      "sessionNumber": 52,
+      "speaker": "Mohamed Ali Fnira / محمد علي فنيرة",
+      "scope": "Public parliamentary testimony, not ministerial certification. Arabic PDF extraction misdecodes some numerals; date, pagination and speaker were read from full original rendered pages. Text derivatives remain uncorrected."
+    }
+  },
+  "sourceEqualityChecks": {
+    "authenticCurrentAndLatestHistoryExact": 4,
+    "totalHistoryVersions": 22,
+    "sourceCacheTagsAndCoordinatesExact": 4,
+    "singletonGroups": 4,
+    "targetReceipts": 0,
+    "directCurationPickerBoundaryOccurrences": 0
+  },
+  "phoneReviews": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\baddar-aitha-phone-scope-review-20260912.json",
+      "sha256": "464911db6b97c263514f33bca8bcb8b22932bb1dbe8b081403e33e9e37971d92",
+      "bytes": 6982
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\kharmia-essabala-phone-scope-review-20260912.json",
+      "sha256": "e5445497f08f08e8150c7d114bf8ea07e78e68420114e4c7ed668459d7e048b8",
+      "bytes": 6847
+    }
+  ],
+  "remainingNeeds": "No further research is required to keep the other three points. For implementation of the one Arabic spelling proposal, independently review these sources and exact name-tag consequences after the boundary cohort settles; preserve original tags/history and all raw/source identities. Exact hamlet outlines remain unprovided, and this review supplies none.",
+  "notPerformed": [
+    "live edit",
+    "curation or source-stage assembly",
+    "compiler change or import",
+    "generator or product helper execution",
+    "tests or build",
+    "phone access",
+    "ledger access",
+    "new boundary download"
+  ],
+  "freshInputHashesStillExact": true
+}

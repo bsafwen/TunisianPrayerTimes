@@ -1,0 +1,328 @@
+{
+  "status": "PASS",
+  "scope": "Independent finite facts and proposed invariants review; no implementation approval or polygon certification.",
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\finite-source-group-facts.json",
+    "sha256": "70c565a5c47e9e6b62fa7d809a3d447fc1c0c1c1c2468ca25b07f2862a51f499"
+  },
+  "design": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\sector-owned-settlement-contract-design.json",
+    "sha256": "64804d3b6357ea428b18d95a433ccd72b3ad862dad9c8273f6c66561ed3d28fc"
+  },
+  "sourceIdentityReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-hrairia-point-source-review.json",
+    "sha256": "acb85d738ea62d1bfb216420b004148070c1a73bd73d1bc9e9ead385c5b13c60",
+    "bytes": 62389
+  },
+  "rootPrimaryScope": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-hrairia-primary-root-scope-review.json",
+    "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+    "bytes": 7728
+  },
+  "baselineMetadataSha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+  "baselineRelocation": {
+    "metadata": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+        "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+        "bytes": 1883636
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+        "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a"
+      }
+    },
+    "binary": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+        "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069",
+        "bytes": 5501548
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+        "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+      }
+    },
+    "governorates": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+        "bytes": 54583
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+      }
+    },
+    "curation": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "eedfb8c82b98b6ca62de798ff31eff50722c3ec779a8c41cd7b823bc04c83cf4",
+        "bytes": 277515
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "eedfb8c82b98b6ca62de798ff31eff50722c3ec779a8c41cd7b823bc04c83cf4"
+      }
+    },
+    "picker": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "8e79c6d3ebb080fc85e6e8fcd8cbdac65d70ef5c0d5a09f378407a89ea3cd246",
+        "bytes": 554707
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "8e79c6d3ebb080fc85e6e8fcd8cbdac65d70ef5c0d5a09f378407a89ea3cd246"
+      }
+    },
+    "boundaries": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+        "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+        "bytes": 80850
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\reviewed-boundaries.json",
+        "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+      }
+    },
+    "municipal": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\municipal-sources.json",
+        "sha256": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+        "bytes": 1324
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\municipal-sources.json",
+        "sha256": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238"
+      }
+    },
+    "coordinates": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+        "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193",
+        "bytes": 113816
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+        "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+      }
+    },
+    "coverage": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+        "sha256": "7525fd5eee9bee86b14abeebcae95d352606fea06a258f2e5fb8fc67aae8ebd3",
+        "bytes": 873140
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\neighborhoods\\coverage.json",
+        "sha256": "7525fd5eee9bee86b14abeebcae95d352606fea06a258f2e5fb8fc67aae8ebd3"
+      }
+    },
+    "compiler": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+        "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+        "bytes": 473357
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-beni-teboursouk-display-import\\repo\\scripts\\generate_neighborhoods.py",
+        "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263"
+      }
+    },
+    "cache": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+        "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+        "bytes": 25378903
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+        "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+      }
+    },
+    "registry": {
+      "originalReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+        "bytes": 1133114
+      },
+      "readFrom": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      }
+    }
+  },
+  "baselinePolicy": "Read exact pinned28fb/e9 baseline from root preserved before-Beni/Teboursouk snapshot. A later installed epoch is not implicitly carried or relabelled.",
+  "candidates": [
+    {
+      "pointId": "osm:node:1109384824",
+      "baseId": 565,
+      "strictOwnerId": "osm:relation:7119649",
+      "localRawIds": [
+        "osm:node:1109384824",
+        "osm:node:1201923151",
+        "osm:node:1201923189",
+        "osm:node:1201923313",
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649"
+      ],
+      "protectedRawIds": [
+        "osm:node:1109384824",
+        "osm:node:1201923151",
+        "osm:node:1201923189",
+        "osm:node:1201923313",
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649"
+      ],
+      "sourceIds": [
+        "osm:node:1109384824",
+        "osm:node:1201923151",
+        "osm:node:1201923189",
+        "osm:node:1201923313",
+        "osm:node:7366238620",
+        "osm:relation:1435827",
+        "osm:relation:7119647",
+        "osm:relation:7119648",
+        "osm:relation:7119649",
+        "osm:relation:7151752"
+      ],
+      "sourceOnlyAbsentIds": [
+        "osm:node:7366238620"
+      ],
+      "foreignRawPeerIds": [],
+      "sourceStatesWithNonProviderChanges": [],
+      "sectors": 3,
+      "rawRows": 7,
+      "sourceObjects": 10,
+      "fullRawAndSourceCoverageDerived": true,
+      "allMetadataAndPackedSlicesExact": true,
+      "completeGroupMapsAndStrictOwnerReceiptExact": true,
+      "pointSectorIds": [
+        "osm:relation:7119648"
+      ],
+      "baseSectorIds": [
+        "osm:relation:7119649"
+      ]
+    },
+    {
+      "pointId": "osm:node:7390818324",
+      "baseId": 532,
+      "strictOwnerId": "osm:relation:7114900",
+      "localRawIds": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:way:1346769253",
+        "osm:way:93676034"
+      ],
+      "protectedRawIds": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:relation:7147558",
+        "osm:way:1346769253",
+        "osm:way:93676034"
+      ],
+      "sourceIds": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324",
+        "osm:relation:1435830",
+        "osm:relation:4184709",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:relation:7147558",
+        "osm:way:1346769253",
+        "osm:way:93676034"
+      ],
+      "sourceOnlyAbsentIds": [],
+      "foreignRawPeerIds": [
+        "osm:relation:7147558"
+      ],
+      "sourceStatesWithNonProviderChanges": [
+        "osm:node:2157169857",
+        "osm:relation:7114904"
+      ],
+      "sectors": 7,
+      "rawRows": 16,
+      "sourceObjects": 18,
+      "fullRawAndSourceCoverageDerived": true,
+      "allMetadataAndPackedSlicesExact": true,
+      "completeGroupMapsAndStrictOwnerReceiptExact": true,
+      "pointSectorIds": [
+        "osm:relation:7114902"
+      ],
+      "baseSectorIds": [
+        "osm:relation:7114900"
+      ]
+    }
+  ],
+  "combined": {
+    "protectedRawRows": 23,
+    "sourceObjects": 28,
+    "distinctLocalSectors": 10,
+    "foreignNamesakeSectors": 1,
+    "sourceOnlyAbsorbedPoints": 1,
+    "proposedRawFieldChanges": 2
+  },
+  "designAssessment": {
+    "status": "NO_BLOCKER_FOR_BOUNDED_IMPLEMENTATION_DESIGN",
+    "supportedInvariants": [
+      "Separate optional explicit settlement contract preserves village source types and strict sector ownership.",
+      "Exact phase-aware source and raw closure includes three Tinja hamlets, source-only Zaarour, five other Soukra points, two residential patches and separate Sfax namesake.",
+      "Current accepted7114904 provider/geometry/name and existing2157169857 name_tags are explicit and must remain exact.",
+      "Deferred assignment preserves strict owner expected-target receipt; only one target point joins each existing group.",
+      "Final full-row closure, source-name peer and covered-source-point derivation rejects hidden or lost members and protects absence.",
+      "Current point and base lie in different sectors in both cases; retaining those coordinates is compatible with qualified broad place-name display identity."
+    ],
+    "implementationReviewRequirements": [
+      "Verify the new option dispatch bypasses both early assignment and old exact-pair final guard only for this explicit validated option.",
+      "Do not mix local sector closure with the foreign Sfax peer; preserve code345253, governorate359, default632 and independent group.",
+      "After any new catalog epoch, prove exact relevant closure carry and refresh operative dependency references before source staging.",
+      "The design has no runtime implementation yet; malformed-proof rejection, final reservations and no-option behavior still require independent compiler review."
+    ]
+  },
+  "actionableIssues": [],
+  "limitations": [
+    "Town-name source scope is the qualified primary finding in acb85d73/root8c5f274a, not a surveyed town, municipality or delegation polygon.",
+    "Read-only source geometry operations reconstructed the requested two finite scopes; no nationwide distance matrix, product generator or helper import.",
+    "Nearest arithmetic fields were not recalculated in this review; defaults/base coordinates and coordinate-correction arrays are source input preservation constraints, not proof of calculation semantics.",
+    "No live writes, source stage, compiler edits, tests, build, phone or ledger access."
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_tinja_soukra_finite_facts_independent.py",
+    "sha256": "351d87605c0d416add925b5116d1b042f1d8621d42c19e55131abf623a4a29dd"
+  }
+}

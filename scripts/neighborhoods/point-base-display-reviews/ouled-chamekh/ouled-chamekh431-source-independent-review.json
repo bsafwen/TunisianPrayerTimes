@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_SOURCE_IDENTITY_FOR_EXACT_NONCOINCIDENT_TOWN_DISPLAY_ASSOCIATION",
+  "createdAt": "2026-09-08T02:12:28.903826+00:00",
+  "proposal": {
+    "file": "outputs\\ouled-chamekh431-current-source-identity-proposal.json",
+    "sha256": "a33a3fb0181a4b82390f2a0ed66fd60e556a0997ad4a3fd6e589497cdc4f4d4d"
+  },
+  "baselineMetadataSha256": "689cbf3993f7fa01297dc1ee2f2f70f46d75fa8ff41e901441de0a051a3adb38",
+  "sourcePinsChecked": {
+    "municipalTownPage": {
+      "file": "work\\ouled-chamekh431-source-review\\alternate-official-downloads\\municipal-location-http.html",
+      "sha256": "e6e53caf25616af5eab6f75b98d2caed085ebfd11f377a297a7b53a6e7c7fcae"
+    },
+    "socialMinistryLocalUnit": {
+      "file": "work\\ouled-chamekh431-source-review\\social-local-unit.html",
+      "sha256": "c70c63a82aaf44c7d47137aa5946ea8b021ea97762faf4a40a841c83dd7d5367"
+    },
+    "liveOsmNode": {
+      "file": "work\\ouled-chamekh431-source-review\\osm-node-1127119919.json",
+      "sha256": "a5bbaf3dea6defc42cd26938850f6727eccc52a9dc6517762896e65d0ae2284f"
+    },
+    "cachedOriginalSource": {
+      "file": "work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "currentOfficialRegistry": {
+      "file": "outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "priorTriage": {
+      "file": "outputs\\three-remaining-point-base-alias-candidate-triage.json",
+      "sha256": "bf63ffdeaee90436fe80c3e537d6a5bf0971e326ca79cadf5fa54276fe8d4b38"
+    },
+    "primaryDirectoryDiscovery": {
+      "file": "work\\ouled-chamekh431-source-review\\official-discovery-and-transport.json",
+      "sha256": "690b087cd024740e2d749c8054387bd56cd22d9118253e9bf9f8901326be14a5"
+    }
+  },
+  "decision": {
+    "pointId": "osm:node:1127119919",
+    "targetBaseId": 431,
+    "allowedChange": {
+      "id": "osm:node:1127119919",
+      "field": "pickerGroupId",
+      "before": "osm:node:1127119919",
+      "after": "delegation:431"
+    },
+    "keepBaseCoordinate": {
+      "lat": 35.4915,
+      "lng": 10.3189
+    },
+    "keepNodeCoordinate": {
+      "lat": 35.4915017,
+      "lng": 10.314841
+    },
+    "keepRawDefault": 431,
+    "referenceRelocationSupportedOrNeeded": false
+  },
+  "independentSourceFindings": [
+    "Personally read municipal HTML line305 explicitly identifying أولاد الشامخ as a city in Mahdia. This is an explicit township statement, not just a namesake delegation.",
+    "Personally read ministry title/address/geolocation at lines907/1025/1033. It corroborates a local office in the named municipal locality; the office coordinates are not an INM/reference-point authority.",
+    "Current village tags contain addr:city=Ouled Chamekh, addr:governorate=Mahdia, bilingual town names; every tag/coordinate matches the pinned current version11 API element and cache.",
+    "Base431 shares exact French/English Ouled Chamekh; INS3353 explicitly supplies its Arabic أولاد شامخ while town and North/South sector labels use أولاد الشامخ. This supports a per-ID spelling relation without global article deletion.",
+    "Exact current source/node/base objects and source singleton group were checked. All eight current INS imadas, source tags, raw metadata and singleton groups agree with the frozen proposal."
+  ],
+  "preservedEightImadas": [
+    {
+      "id": "osm:relation:7152206",
+      "code": "335356",
+      "pickerGroupId": "osm:relation:7152206",
+      "defaultId": 431,
+      "packedSha256": "8cc58e07ebf8dc699985b673cdad68b6fb5e83be275af77d701d8a628cbd5eed"
+    },
+    {
+      "id": "osm:relation:7152232",
+      "code": "335351",
+      "pickerGroupId": "osm:relation:7152232",
+      "defaultId": 431,
+      "packedSha256": "1b0ec5da1d1dab24748fd58e5203564b7d7fb86a0f377ee2b1026deb09323f00"
+    },
+    {
+      "id": "osm:relation:7152204",
+      "code": "335358",
+      "pickerGroupId": "osm:relation:7152204",
+      "defaultId": 431,
+      "packedSha256": "23d3123a8c3db1255ff5ebb7fa6654cd697db7f3a34753e2b7a26def438650e8"
+    },
+    {
+      "id": "osm:relation:7152226",
+      "code": "335355",
+      "pickerGroupId": "osm:relation:7152226",
+      "defaultId": 431,
+      "packedSha256": "1239f7e546373489bb9bcad8b414508185d608caacfb85b4a9be6dcced4f28ec"
+    },
+    {
+      "id": "osm:relation:7152228",
+      "code": "335354",
+      "pickerGroupId": "osm:relation:7152228",
+      "defaultId": 431,
+      "packedSha256": "1177f5a847463925267589c412eb281b86aac04de1e84aed8eb3db62cdad8907"
+    },
+    {
+      "id": "osm:relation:7152229",
+      "code": "335353",
+      "pickerGroupId": "osm:relation:7152229",
+      "defaultId": 431,
+      "packedSha256": "a7531dd1b49e2d5ca15d4590b7322dc3e7ff6736cd1bf57d5b6b64746ed309d2"
+    },
+    {
+      "id": "osm:relation:7152205",
+      "code": "335357",
+      "pickerGroupId": "osm:relation:7152205",
+      "defaultId": 431,
+      "packedSha256": "21d4c355c08852659e359dac42550d227c88c7b98eaf163bca0f6a82b42349d9"
+    },
+    {
+      "id": "osm:relation:7152231",
+      "code": "335352",
+      "pickerGroupId": "osm:relation:7152231",
+      "defaultId": 431,
+      "packedSha256": "592b946912a5ab096591435dc52b8ff08c2a969cdf43ce45ce8a20ad89c68fd3"
+    }
+  ],
+  "sourceLimitations": [
+    "Municipal bytes came from HTTP after HTTPS timeout and do not have a TLS authenticity guarantee. Official-host discovery, exact city statement and separate official-ministry context are combined; copied-template comments do not establish source identity.",
+    "No full municipal or inhabited-town boundary is asserted. The367m separation is not the reason for grouping, and no arbitrary distance threshold is approved.",
+    "This approves only the exact source/display identity. Future code must pin both coordinates, names, governorate, source431, complete groups and eight imadas; preserve existing coincident-reference guards and saved-source behavior.",
+    "No phone screenshots/ledger were opened, no network source fetched, and no PBF scan or generator/helper executed."
+  ],
+  "compatibilityWithReference500": {
+    "previewFile": "outputs\\oued-meliz-reference-impact-preview.json",
+    "sha256": "1a6e7211dbc899ba3d847641197f8ba3b43b9075516361dbb78050261f32faff",
+    "pointAndAllEightDefaultChanges": 0,
+    "method": "Read the already completed one-shot500 preview; no new distance matrix or preview run."
+  },
+  "execution": {
+    "sourceFetch": false,
+    "phoneOrLedgerAccess": false,
+    "appEdits": false,
+    "generatorOrHelperExecuted": false,
+    "testsOrBuild": false
+  }
+}

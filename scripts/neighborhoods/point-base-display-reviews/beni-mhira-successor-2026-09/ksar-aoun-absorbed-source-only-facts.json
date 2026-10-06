@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "sourceExtraction": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "bytes": 25378903
+  },
+  "artifactKind": "derived_exact_cache_record",
+  "isPublicApiResponse": false,
+  "exactCachedRecord": {
+    "id": "osm:node:9022801628",
+    "tags": {
+      "name": "قصر عون",
+      "name:aeb": "قصر عون",
+      "name:ar": "قصر عون",
+      "name:fr": "Ksar Aoun",
+      "place": "village"
+    },
+    "lat": 32.869559,
+    "lng": 10.8838257
+  },
+  "originalAndEffectiveAssertion": {
+    "id": "osm:node:9022801628",
+    "original": {
+      "tags": {
+        "name": "قصر عون",
+        "name:aeb": "قصر عون",
+        "name:ar": "قصر عون",
+        "name:fr": "Ksar Aoun",
+        "place": "village"
+      },
+      "kind": "village",
+      "sourceId": null,
+      "geometrySha256": "400e21744de7d507c8a531b26e38b43076761b07bd798df8646272f5b867d488"
+    },
+    "effective": {
+      "tags": {
+        "name": "قصر عون",
+        "name:aeb": "قصر عون",
+        "name:ar": "قصر عون",
+        "name:fr": "Ksar Aoun",
+        "place": "village"
+      },
+      "kind": "village",
+      "sourceId": "osm",
+      "geometrySha256": "400e21744de7d507c8a531b26e38b43076761b07bd798df8646272f5b867d488"
+    },
+    "expectedCuration": null,
+    "absorbedBySectorId": "osm:relation:7143820",
+    "expectedRawPresence": false
+  },
+  "currentRawPresence": false,
+  "currentDirectCuration": null,
+  "absorptionReceiverId": "osm:relation:7143820",
+  "qualification": "A frozen extracted village point retained only as source evidence. No fake raw row, API response, restored picker choice or new geometry is created."
+}

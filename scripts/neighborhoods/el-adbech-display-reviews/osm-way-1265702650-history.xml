@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (244700 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="1265702650" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+  <nd ref="11757105558"/>
+  <nd ref="11757105559"/>
+  <nd ref="11757105560"/>
+  <nd ref="11757105561"/>
+  <nd ref="11757105562"/>
+  <nd ref="11757105563"/>
+  <nd ref="11757105564"/>
+  <nd ref="11757105565"/>
+  <nd ref="11757105566"/>
+  <nd ref="11757105567"/>
+  <nd ref="11757105568"/>
+  <nd ref="11757120669"/>
+  <nd ref="11757120670"/>
+  <nd ref="11757120671"/>
+  <nd ref="11757120672"/>
+  <nd ref="11757120673"/>
+  <nd ref="11757120674"/>
+  <nd ref="11757120675"/>
+  <nd ref="11757120676"/>
+  <nd ref="11757120677"/>
+  <nd ref="11757120678"/>
+  <nd ref="11757120679"/>
+  <nd ref="11757120680"/>
+  <nd ref="11757120681"/>
+  <nd ref="11757120682"/>
+  <nd ref="11757120683"/>
+  <nd ref="11757120684"/>
+  <nd ref="11757120685"/>
+  <nd ref="11757120686"/>
+  <nd ref="11757120687"/>
+  <nd ref="11757120688"/>
+  <nd ref="11757120689"/>
+  <nd ref="11757120690"/>
+  <nd ref="11757120691"/>
+  <nd ref="11757120692"/>
+  <nd ref="11757120693"/>
+  <nd ref="11757120694"/>
+  <nd ref="11757120695"/>
+  <nd ref="11757120696"/>
+  <nd ref="11757120697"/>
+  <nd ref="11757120729"/>
+  <nd ref="11757120730"/>
+  <nd ref="11757120698"/>
+  <nd ref="11757120699"/>
+  <nd ref="11757120731"/>
+  <nd ref="11757120700"/>
+  <nd ref="11757120701"/>
+  <nd ref="11757120702"/>
+  <nd ref="11757120703"/>
+  <nd ref="11757120704"/>
+  <nd ref="11757120732"/>
+  <nd ref="11757120733"/>
+  <nd ref="11757120705"/>
+  <nd ref="11757120706"/>
+  <nd ref="11757120707"/>
+  <nd ref="11757120708"/>
+  <nd ref="11757120734"/>
+  <nd ref="11757120709"/>
+  <nd ref="11757120710"/>
+  <nd ref="11757120735"/>
+  <nd ref="11757120711"/>
+  <nd ref="11757120712"/>
+  <nd ref="11757120713"/>
+  <nd ref="11757120736"/>
+  <nd ref="11757120714"/>
+  <nd ref="11757120715"/>
+  <nd ref="11757120716"/>
+  <nd ref="11757120717"/>
+  <nd ref="11757120718"/>
+  <nd ref="11757120719"/>
+  <nd ref="11757120720"/>
+  <nd ref="11757120721"/>
+  <nd ref="11757120722"/>
+  <nd ref="11757120723"/>
+  <nd ref="11757120724"/>
+  <nd ref="11757120725"/>
+  <nd ref="11757120726"/>
+  <nd ref="11757105558"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="El Adbech"/>
+  <tag k="residential" v="rural"/>
+ </way>
+</osm>

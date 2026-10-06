@@ -1,0 +1,607 @@
+{
+  "schemaVersion": 1,
+  "metadataSha256": "5ae35db94082c5f7ef5706c6f5136a655fa50879b4b67f294d0853056b685510",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\direct-pbf-context-inventory.json",
+    "sha256": "61ef7c5d06737930d86e3f8239801fc96c904b0c05172b07b4368013e7646490",
+    "objectCount": 162
+  },
+  "scope": "Two Tijma rows and all three El Adbech rows, with whole source-sector competitor inventories and global matching-name/address objects. No app, phone, ledger, tests, builds or generation.",
+  "proposals": [
+    {
+      "schemaVersion": 1,
+      "status": "eligible_proposal",
+      "method": "explicit_addressed_village",
+      "id": "osm:way:379743528",
+      "targetPickerGroupId": "osm:node:1997440362",
+      "expectedExistingMemberIds": [
+        "osm:way:379743528"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:1997440362"
+      ],
+      "expectedGovernorateId": 347,
+      "expectedParentName": "مطماطة الجديدة",
+      "expectedDelegationId": 1022,
+      "members": [
+        {
+          "id": "osm:way:379743528",
+          "current": {
+            "id": "osm:way:379743528",
+            "sourceId": "osm",
+            "name": "تيجمة",
+            "aliases": [
+              "Tijma"
+            ],
+            "kind": "residential",
+            "parentName": "مطماطة الجديدة",
+            "contextAliases": [
+              "Délégation Nouvelle Matmata",
+              "Nouvelle Matmata",
+              "مطماطة الجديدة",
+              "معتمدية مطماطة الجديدة"
+            ],
+            "governorateId": 347,
+            "lat": 33.583446,
+            "lng": 9.98215,
+            "delegationId": 1022,
+            "hasBoundary": true,
+            "bbox": [
+              9.981424,
+              33.582811,
+              9.982816,
+              33.584084
+            ],
+            "areaKm2": 0.009800497762583134,
+            "pickerGroupId": "osm:way:379743528",
+            "offset": 5396856,
+            "length": 156
+          },
+          "expectedOriginalTags": {
+            "addr:place": "تيجمة",
+            "landuse": "residential",
+            "name": "تيجمة",
+            "name:aeb": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma"
+          },
+          "originalGeometrySha256": "08917a124d0dbdd1287ea833cca376a1a698f1fb1f580b06822e06064991e624",
+          "effectiveOriginalGeometrySha256": "08917a124d0dbdd1287ea833cca376a1a698f1fb1f580b06822e06064991e624",
+          "packedGeometrySha256": "cab36ca98c0d81dbeb0fb775c337a833baab1fad06b1324f29dbe366dc89e3de",
+          "independentNearestPrayerSource": 1022
+        },
+        {
+          "id": "osm:node:1997440362",
+          "current": {
+            "id": "osm:node:1997440362",
+            "sourceId": "osm",
+            "name": "تيجمة",
+            "aliases": [
+              "Tidjma",
+              "Tijma"
+            ],
+            "kind": "village",
+            "parentName": "مطماطة الجديدة",
+            "contextAliases": [
+              "Délégation Nouvelle Matmata",
+              "Nouvelle Matmata",
+              "مطماطة الجديدة",
+              "معتمدية مطماطة الجديدة"
+            ],
+            "governorateId": 347,
+            "lat": 33.5810179,
+            "lng": 9.9780968,
+            "delegationId": 1022,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:1997440362"
+          },
+          "expectedOriginalTags": {
+            "addr:place": "تيجمة",
+            "name": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma",
+            "name:fr": "Tidjma",
+            "place": "village"
+          },
+          "originalGeometrySha256": "bf53f64e4c12181dfb0d67da2f51df9b587ef70f2fe8ac486d0cd7e1d7bba5b7",
+          "effectiveOriginalGeometrySha256": "bf53f64e4c12181dfb0d67da2f51df9b587ef70f2fe8ac486d0cd7e1d7bba5b7",
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 1022
+        }
+      ],
+      "villagePointId": "osm:node:1997440362",
+      "nameEvidence": {
+        "arabic": "تيجمة",
+        "latin": "Tijma",
+        "addressTag": "addr:place",
+        "arabicNameTag": "name:ar",
+        "latinNameTag": "name:en"
+      },
+      "codedContext": {
+        "id": "osm:relation:7145430",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "مطماطة الجديدة",
+          "name:ar": "مطماطة الجديدة",
+          "name:fr": "Nouvelle Matmata",
+          "ref:tn:codegeo": "515951"
+        },
+        "originalGeometrySha256": "f8a0ee5f8a54e2663e2cbee42d8e9667b530a0dd847ecbe452af6ff99b3b0f6d",
+        "effectiveOriginalGeometrySha256": "f8a0ee5f8a54e2663e2cbee42d8e9667b530a0dd847ecbe452af6ff99b3b0f6d",
+        "packedGeometrySha256": "0edc2ec85cdef52d90b285ba42f4bfddeb9295809290d4314de32bb41337f3ee",
+        "currentOfficialRecord": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5159",
+          "delegationFr": "Nouvelle matmata",
+          "delegationAr": "مطماطة الجديدة",
+          "sectorCode": "515951",
+          "sectorFr": "Nouvelle matmata",
+          "sectorAr": "مطماطة الجديدة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59226,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2905,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2899
+          }
+        },
+        "current": {
+          "id": "osm:relation:7145430",
+          "sourceId": "osm",
+          "name": "مطماطة الجديدة",
+          "aliases": [
+            "Nouvelle Matmata"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية مطماطة الجديدة",
+          "contextAliases": [
+            "Délégation Nouvelle Matmata",
+            "معتمدية مطماطة الجديدة"
+          ],
+          "governorateId": 347,
+          "lat": 33.654405,
+          "lng": 9.980098,
+          "delegationId": 1023,
+          "hasBoundary": true,
+          "bbox": [
+            9.943657,
+            33.571235,
+            10.061625,
+            33.737595
+          ],
+          "areaKm2": 111.7649425377035,
+          "pickerGroupId": "osm:relation:7145430",
+          "offset": 2358032,
+          "length": 2556
+        },
+        "originalContainsEveryMember": true,
+        "packagedContainsEveryMember": true
+      },
+      "expectedMatchingVillageSourceIds": [
+        "osm:node:1997440362"
+      ],
+      "change": {
+        "id": "osm:way:379743528",
+        "field": "pickerGroupId",
+        "before": "osm:way:379743528",
+        "after": "osm:node:1997440362"
+      },
+      "identityFinding": "The residential source explicitly gives its locality address as تيجمة; the unique source village has the same address and exact Arabic/English names. INP independently identifies the dispersed rural locality at this location and assigns it to Nouvelle Matmata. No source competitor claims a second matching village in this context.",
+      "limits": [
+        "Display grouping only; the residential fragment remains its existing small polygon and the village remains its existing point.",
+        "No requirement or claim that the village point lies inside the residential fragment.",
+        "Preserve both stable IDs, raw names/aliases, coordinates, prayer1022, parent context and polygon bytes.",
+        "No full locality extent is created, downloaded from Google, inferred from a hull or treated as certified.",
+        "The address relationship is reviewed for these exact IDs, not a general proximity or alias-only merge rule."
+      ]
+    }
+  ],
+  "tijma": {
+    "decision": "supported_exact_display_merge",
+    "matchingVillageSourceIds": [
+      "osm:node:1997440362"
+    ],
+    "exactNameOrAddressObjects": [
+      {
+        "id": "osm:node:1997440362",
+        "tags": {
+          "addr:place": "تيجمة",
+          "name": "تيجمة",
+          "name:ar": "تيجمة",
+          "name:en": "Tijma",
+          "name:fr": "Tidjma",
+          "place": "village"
+        }
+      },
+      {
+        "id": "osm:node:3830724524",
+        "tags": {
+          "addr:place": "تيجمة",
+          "name": "maison souterraine",
+          "tourism": "attraction"
+        }
+      },
+      {
+        "id": "osm:way:379743520",
+        "tags": {
+          "addr:place": "تيجمة",
+          "building": "yes"
+        }
+      },
+      {
+        "id": "osm:way:379743528",
+        "tags": {
+          "addr:place": "تيجمة",
+          "landuse": "residential",
+          "name": "تيجمة",
+          "name:aeb": "تيجمة",
+          "name:ar": "تيجمة",
+          "name:en": "Tijma"
+        }
+      }
+    ],
+    "sourcePlaceCompetitors": [
+      {
+        "id": "osm:node:11495762803",
+        "tags": {
+          "name": "maisons souterraines",
+          "place": "locality"
+        }
+      },
+      {
+        "id": "osm:node:11495869191",
+        "tags": {
+          "name": "Sidi Chiha",
+          "place": "locality"
+        }
+      },
+      {
+        "id": "osm:node:11495869193",
+        "tags": {
+          "name": "ruines (maisons souterraines)",
+          "place": "locality"
+        }
+      },
+      {
+        "id": "osm:node:11497694718",
+        "tags": {
+          "name": "maisons souterraines",
+          "place": "locality"
+        }
+      },
+      {
+        "id": "osm:node:11789313809",
+        "tags": {
+          "name": "maisons souterraines",
+          "place": "locality"
+        }
+      },
+      {
+        "id": "osm:node:1997440362",
+        "tags": {
+          "addr:place": "تيجمة",
+          "name": "تيجمة",
+          "name:ar": "تيجمة",
+          "name:en": "Tijma",
+          "name:fr": "Tidjma",
+          "place": "village"
+        }
+      },
+      {
+        "id": "osm:node:352752196",
+        "tags": {
+          "name": "Douiouira",
+          "name:ar": "الدويويرة",
+          "name:en": "Douiouira",
+          "name:fr": "Douiouira",
+          "place": "hamlet"
+        }
+      },
+      {
+        "id": "osm:node:352752197",
+        "tags": {
+          "name": "مطماطة الجديدة",
+          "name:aeb": "مطماطة الجديدة",
+          "name:ar": "مطماطة الجديدة",
+          "name:en": "New Matmata",
+          "name:fr": "Nouvelle Matmata",
+          "place": "town",
+          "population": "30000",
+          "wikipedia": "ar:مطماطة الجديدة"
+        }
+      }
+    ],
+    "authorityFinding": "INP detailed inventory p1447 describes Tijma as a rural locality with houses dispersed among small hills. Its separate summary p22 (printed19), under the delegation column established on p6, assigns Tijma168.014 and Sidi Touati168.015 to MATMATA NOUVELLE. TAP26May2025 also names Tijma among villages in new Matmata.",
+    "locationCrossCheck": "The source named cemetery Tijma - Sidi Touati is approximately4.84m from the INP Sidi Touati point after documented datum conversion. This corroborates geographic context; it does not certify the cemetery or locality border."
+  },
+  "elAdbech": {
+    "decision": "held_complete_three_row_identity",
+    "members": [
+      {
+        "id": "osm:way:1265702650",
+        "current": {
+          "id": "osm:way:1265702650",
+          "sourceId": "osm",
+          "name": "El Adbech",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "عين تونين",
+          "contextAliases": [
+            "Ain Tounine",
+            "Dkhilet Toujane",
+            "دخيلة توجان",
+            "عين تونين",
+            "معتمدية دخيلة توجان"
+          ],
+          "governorateId": 347,
+          "lat": 33.480734,
+          "lng": 10.082918,
+          "delegationId": 1022,
+          "hasBoundary": true,
+          "bbox": [
+            10.080554,
+            33.478131,
+            10.083967,
+            33.483146
+          ],
+          "areaKm2": 0.05228457126955565,
+          "pickerGroupId": "osm:way:1265702650",
+          "offset": 5213712,
+          "length": 636
+        },
+        "expectedOriginalTags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        },
+        "originalGeometrySha256": "17d8f420f4fd340f9f131c0950efc792f066543cc06f38b4a195d4c72868ef00",
+        "effectiveOriginalGeometrySha256": "17d8f420f4fd340f9f131c0950efc792f066543cc06f38b4a195d4c72868ef00",
+        "packedGeometrySha256": "1814bfc260fa32d92d9535dcf1b041c37f51da07626ec1aa4fc05a66ac0141a5",
+        "independentNearestPrayerSource": 1022
+      },
+      {
+        "id": "osm:way:1265702651",
+        "current": {
+          "id": "osm:way:1265702651",
+          "sourceId": "osm",
+          "name": "El Adbech",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "عين تونين",
+          "contextAliases": [
+            "Ain Tounine",
+            "Dkhilet Toujane",
+            "دخيلة توجان",
+            "عين تونين",
+            "معتمدية دخيلة توجان"
+          ],
+          "governorateId": 347,
+          "lat": 33.48056,
+          "lng": 10.085204,
+          "delegationId": 1022,
+          "hasBoundary": true,
+          "bbox": [
+            10.084576,
+            33.479842,
+            10.085687,
+            33.481344
+          ],
+          "areaKm2": 0.010069491066740944,
+          "pickerGroupId": "osm:way:1265702651",
+          "offset": 5214348,
+          "length": 164
+        },
+        "expectedOriginalTags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        },
+        "originalGeometrySha256": "1a32bd584c9dda4d2de1e255c91037e07ae4d2feb676a6a7117823d32747f9b1",
+        "effectiveOriginalGeometrySha256": "1a32bd584c9dda4d2de1e255c91037e07ae4d2feb676a6a7117823d32747f9b1",
+        "packedGeometrySha256": "3c22b92008dcd73b49c0f8dfcefe9abe3ee03ff7482dbf424bf37d98329fdb11",
+        "independentNearestPrayerSource": 1022
+      },
+      {
+        "id": "osm:way:189085992",
+        "current": {
+          "id": "osm:way:189085992",
+          "sourceId": "osm",
+          "name": "الأدباش",
+          "aliases": [
+            "El Adbech"
+          ],
+          "kind": "residential",
+          "parentName": "ولاية قابس",
+          "contextAliases": [],
+          "governorateId": 347,
+          "lat": 33.485609,
+          "lng": 10.086235,
+          "delegationId": 1022,
+          "hasBoundary": true,
+          "bbox": [
+            10.083056,
+            33.482979,
+            10.095571,
+            33.488208
+          ],
+          "areaKm2": 0.29550161938013964,
+          "pickerGroupId": "osm:way:189085992",
+          "offset": 5291536,
+          "length": 316
+        },
+        "expectedOriginalTags": {
+          "addr:city": "El Adbech",
+          "landuse": "residential",
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:fr": "El Adbech"
+        },
+        "originalGeometrySha256": "0e713d30d888dbe3a02a332292db08dfe54ed383a39fb05a1c28ac389a76c2f9",
+        "effectiveOriginalGeometrySha256": "0e713d30d888dbe3a02a332292db08dfe54ed383a39fb05a1c28ac389a76c2f9",
+        "packedGeometrySha256": "ea4928df3a3da3b1615392c3379d24859c2ceda0dd1d54d855912b5bc887e202",
+        "independentNearestPrayerSource": 1022
+      }
+    ],
+    "absorbedVillageSourceId": "osm:node:1997440361",
+    "newEvidence": "INP identifies Ladbech as a dispersed rural locality at site168.100 and locates Henchir el Guesirat168.099 within it. The latter converted point falls inside the separately tagged Castellum El Adbech ruins. Parliament publishes a2024 Health Ministry response naming the Adbech health center in Dkhilet Toujane.",
+    "heldReason": "These sources support one named locality and distinguish its monument, but the two English residential fragments lack a shared addr:place/ref or enclosing named village footprint. Their individual membership in the third Arabic row remains inferred. Keep all three until that exact relationship is independently reviewed; do not require or invent a whole-locality polygon.",
+    "parentCaveat": "The Arabic residential footprint crosses Beni Zelten515955 and Ain Tounine legacy516064 source boundaries; its current governorate-only context differs from the two English rows. No parent change is proposed."
+  },
+  "primarySources": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\official\\inp-matmata168.html",
+      "url": "https://www.inp2020.tn/carte_archeo/html/168_fr.html",
+      "sha256": "2e21a7bdb21ded887118855d60b7c6f945e454929facd4f133b08018a48ef46d",
+      "bytes": 62473,
+      "retrievedAt": "2026-09-07T11:10:51.453005+00:00"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\official\\inp-carta-2012.pdf",
+      "url": "https://www.inp2020.tn/inventaire/carta-2012.pdf",
+      "sha256": "d6e84c72668266540565c7bba6c094123284cd8bbfa4a441f44121ec5d6cdf95",
+      "bytes": 2468031,
+      "retrievedAt": "2026-09-07T11:10:52.734679+00:00"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\official\\arp-2024-47.pdf",
+      "url": "https://arp.tn/document/download/103921",
+      "sha256": "80792eff9d2316662dad73ebf9ca97c4594f3d5fc3a2d16032a5eae07f6d424f",
+      "bytes": 2578220,
+      "retrievedAt": "2026-09-07T11:10:53.183533+00:00"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\official\\tap-dahar-visit-2025.html",
+      "url": "https://www.tap.info.tn/en/Portal-Top-News-EN/18813591-dahar-geopark",
+      "sha256": "a87f2899c014491b90eae6bc37fb56937c6e002f2a5706b3a9ccf4ca0bf45f3a",
+      "bytes": 30315,
+      "retrievedAt": "2026-09-07T11:10:53.638810+00:00"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\inp-touslessites.pdf",
+      "url": "https://www.inp2020.tn/inventaire/Touslessites.pdf",
+      "sha256": "780035dfd174a6f128b01ba2c1be0626e20a28672e2047eaf86b1c7bed5977bc"
+    }
+  ],
+  "visuallyReviewedPages": [
+    {
+      "file": "official\\inp-carta-2012-page-22.png",
+      "sha256": "06b3d3b71104fd172b02e9c715e89eb8b4d3a3f3298511fc250250f662f7606b"
+    },
+    {
+      "file": "official\\inp-inventory-page-1490.png",
+      "sha256": "8d654b98cc3f0f60b7c254a3329d1b2ef7fde8cfdfe1e2378a06a2912999f630"
+    },
+    {
+      "file": "official\\arp-2024-47-page-80.png",
+      "sha256": "345d0d51f0574d421ce0f9fd187fc412be2d6e8c77b570c2d474dc75639f8390"
+    }
+  ],
+  "officialSiteCoordinates": [
+    {
+      "site": "Tijma",
+      "id": "168.014",
+      "sourceX": 590527.1721,
+      "sourceY": 3716171.12918,
+      "pdfPage": 1447,
+      "longitude": 9.976045771314789,
+      "latitude": 33.585530216215936,
+      "sourceDistancesMeters": [
+        {
+          "id": "osm:way:379743528",
+          "distance": 557.8540213232064
+        },
+        {
+          "id": "osm:node:1997440362",
+          "distance": 535.3183518487034
+        }
+      ]
+    },
+    {
+      "site": "Sidi Touati",
+      "id": "168.015",
+      "sourceX": 590936.23526,
+      "sourceY": 3715428.72377,
+      "pdfPage": 1447,
+      "longitude": 9.980377686506758,
+      "latitude": 33.57880023929531,
+      "sourceDistancesMeters": [
+        {
+          "id": "osm:way:379743528",
+          "distance": 474.1204177724056
+        },
+        {
+          "id": "osm:node:1997440362",
+          "distance": 324.4650224970253
+        }
+      ]
+    },
+    {
+      "site": "Henchir el Guesirat",
+      "id": "168.099",
+      "sourceX": 600702.45624,
+      "sourceY": 3704582.92469,
+      "pdfPage": 1489,
+      "longitude": 10.084376025177285,
+      "latitude": 33.48011517649046,
+      "sourceDistancesMeters": [
+        {
+          "id": "osm:way:1265702650",
+          "distance": 94.68996906226232
+        },
+        {
+          "id": "osm:way:1265702651",
+          "distance": 23.74230712247817
+        },
+        {
+          "id": "osm:way:189085992",
+          "distance": 348.3994421030785
+        },
+        {
+          "id": "osm:node:1997440361",
+          "distance": 895.3913510702271
+        }
+      ]
+    },
+    {
+      "site": "Ladbech",
+      "id": "168.100",
+      "sourceX": 600697.3711,
+      "sourceY": 3705280.92687,
+      "pdfPage": 1490,
+      "longitude": 10.084399739708427,
+      "latitude": 33.48641024724098,
+      "sourceDistancesMeters": [
+        {
+          "id": "osm:way:1265702650",
+          "distance": 466.8515332503101
+        },
+        {
+          "id": "osm:way:1265702651",
+          "distance": 563.9334516257312
+        },
+        {
+          "id": "osm:way:189085992",
+          "distance": 17.762813486251478
+        },
+        {
+          "id": "osm:node:1997440361",
+          "distance": 617.7434016780268
+        }
+      ]
+    }
+  ],
+  "coordinateOperation": {
+    "sourceCrs": "EPSG:22332 Carthage / UTM zone32N",
+    "targetCrs": "EPSG:4326",
+    "operation": "Inverse of UTM zone 32N + Carthage to WGS 84 (2) (with axis order normalized for visualization)",
+    "operationReportedAccuracyMeters": 1.0,
+    "limitation": "Transformation accuracy is not the accuracy of the original field positions. Site positions are context evidence, not polygon vertices or merge distance thresholds."
+  },
+  "registry": {
+    "file": "current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "mapAvailability": "The INP Matmata168 source page supplies the139-site inventory and marks its PDF map menu en cours. No locality polygon or photos were inferred from that placeholder."
+}

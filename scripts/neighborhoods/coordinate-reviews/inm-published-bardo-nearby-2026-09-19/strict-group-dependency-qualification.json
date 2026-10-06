@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "status": "NEXT_BATCH_DEPENDENCY_QUALIFICATION_NOT_IMPLEMENTATION_APPROVAL",
+  "sourceReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-source-design-20260919\\sourcefacts-and-design.json",
+    "sha256": "bd9896d395bfcb9760dd21461042fb39da5170112fda695c9f0fd1a3873b1dcc",
+    "bytes": 29489
+  },
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "manifestInputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "edc9b5f969bdb1387c9b8fca93e1ef999cb2af444d1921e9b34ea241633419a2",
+      "bytes": 615989
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "55cb693c58e7da2c6c680869a30fbcb31bbb4abea4c49867600387471ee3141e",
+      "bytes": 419286
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "533e1acd0a898e9eb05aa343897c1e5eeae5a818604ad9e9f0f7480941e6c9bc",
+      "bytes": 155840
+    }
+  ],
+  "directRecursiveManifestTargetOrMemberHits": [],
+  "currentGroupInventory": {
+    "delegation:394": [
+      "delegation:394",
+      "osm:way:103825771"
+    ],
+    "osm:relation:7118020": [
+      "osm:relation:7118020"
+    ]
+  },
+  "prospectiveGroupInventory": {
+    "delegation:394": [
+      "delegation:394",
+      "osm:relation:7118020",
+      "osm:way:103825771"
+    ]
+  },
+  "exactQualification": "No explicit numeric394, delegation:394 string, or candidate source/member ID occurs inside the current curation, picker or coordinate manifest bodies. This finite body scan does not establish that transitive active proof files lack a strict current-group or metadata assertion. Automatic grouping happens before reviewed group validation, so a name-only rule must not be assumed to bypass that validation.",
+  "requiredBeforeComponentFreeze": [
+    "Independently inspect the active picker proof/reference closure and any current Bardo394 complete-member or protected-metadata assertion.",
+    "If a strict existing proof asserts the prior complete group, create an honest successor with the exact new member inventory and four alias/name/group transitions, preserving historical evidence.",
+    "If no relevant strict assertion exists, record the exact evidence inventory that establishes this; do not invent a new record or compiler branch merely to duplicate the existing automatic grouping."
+  ],
+  "independentReviewer": "catalog_duplicate_screen/point_pairs_check owns this proof-closure check after receiving the frozen source report.",
+  "implementationPrepared": false,
+  "compilerExecuted": false,
+  "liveRepositoryWrites": false
+}

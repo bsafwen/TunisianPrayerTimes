@@ -1,0 +1,625 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_SOURCE_IDENTITY_AND_REVIEWED_SETTLEMENT_REFERENCE",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\oued-meliz-reference-source-review.json",
+    "sha256": "aae7ce5d7c5463f32f948e210a339468616ed0c37b8b6bdb016b082e01a9f737"
+  },
+  "sourceFreeze": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\freeze-manifest.json",
+    "sha256": "13e9f877b7dcd40404d1ac504288cdafb9a9f297e1c719640253c41a90b89c1e"
+  },
+  "baselineMetadataSha256": "689cbf3993f7fa01297dc1ee2f2f70f46d75fa8ff41e901441de0a051a3adb38",
+  "decision": {
+    "delegationId": 500,
+    "pointId": "osm:node:2840204369",
+    "before": {
+      "lat": 36.4539,
+      "lng": 8.5501
+    },
+    "after": {
+      "lat": 36.4678121,
+      "lng": 8.5500007
+    },
+    "referenceCorrectionSupported": true,
+    "exactPointBaseDisplayIdentitySupported": true,
+    "boundaryImportSupportedOrNeeded": false
+  },
+  "verifiedFileCount": 30,
+  "verifiedPins": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\oued-meliz-reference-source-review.json",
+      "sha256": "aae7ce5d7c5463f32f948e210a339468616ed0c37b8b6bdb016b082e01a9f737"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\current-source-facts.json",
+      "sha256": "38f3e5e6afc1364b6dd595e5db661b35e3aa5fc7a0c87ebb476146dc0790450a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\isie-oued-meliz-east-full.png",
+      "sha256": "61b525c80bec7c4b1ccdc66ece5fe41f484cff5c5c714f80825619c84e030113"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\isie-oued-meliz-east-text.txt",
+      "sha256": "e1999e8b1c23379bc8f38434ff29c470d13443517cab60e825c421173e3f1e12"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\isie-oued-meliz-east.pdf",
+      "sha256": "982825f69ed8fa02dcbc5fcc27227b2f1e42fb476ca7c6b3cb520da075c8f312"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\map-position-review-data.json",
+      "sha256": "a82ad1b6218b014a5fa250876ede28122e363a1c05bbf32f6bbb9fe5df2e4cc7"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-all-text.txt",
+      "sha256": "0108c5698b4470a53e8abdae3c82f22583afb33f052b7b34c62515bfe3d17717"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+      "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-page9-administrative-map.png",
+      "sha256": "6ad83af64dfc4479251121cf4bbb969464214cc6b5f181e1559cbdb3cfaceb21"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\ministry-social-local-unit-text.txt",
+      "sha256": "e9c2a5527565ab868fc467535d8501f7ca94e226d99874d6f76cf0075c0530ee"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\ministry-social-local-unit.html",
+      "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\oldBase500-map-context.png",
+      "sha256": "6eb67599c60b5f4b664e1d3739bb9fe2528c72d991048cad9e288533f8b2c71e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\osm-node-2840204369.xml",
+      "sha256": "46f916a7fa28a88e8ef3b7c13f699745aa897963f8b1058ed9b9e979d3a0763e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\proposedVillage2840204369-map-context.png",
+      "sha256": "5bc684e5f6ad0fe16d6cac5f69d64109b636d8baab684857376310545fe8ffad"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\source-retrievals.json",
+      "sha256": "038626e330b406d0afe0b65200f842e6415fff799db106e33eee6f4960d87b2a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_oued_meliz_reference_review.py",
+      "sha256": "8ec5b0b05471cf3ffa4ac06add716880efb2b5e6df2f92304c74d4e02c071ecf"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\fetch_oued_meliz_reference_sources.py",
+      "sha256": "50ecabc1a4bbf0a2b0aee10368ada8b464286ea4ee62a931c2a6c7e58bdb62f7"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_oued_meliz_reference_map.py",
+      "sha256": "2b09171e5e39f2b1bbd724d2d2a810352c913726bae01a7b518aa796096cd4cc"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "689cbf3993f7fa01297dc1ee2f2f70f46d75fa8ff41e901441de0a051a3adb38"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "b5f2b493079d0d626578bd72217f25941ca6ffe9f088004469fc68780cfc6f51"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "20cdb11ccc5eb4f4eb07198b222a16bd1f5493224487185e6f3a6cf593857084"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\rejiche-metline-catalog-checkpoint.json",
+      "sha256": "3c3c2b7c017f6a74e178db6fd7e8933caed27ff473785a7f0b9eae1d1f1a3eb2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "c901a7cc582ddf8f0a99e4b93db891e07f785490d5e4e836c3995a312c20e407"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "eb39f173f7cc4da349c8e98bdbedb50518d5b7bcad018430107d89d991e141b9"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "726b1c6480a0d6c1a46f11bfd5e2fd8b39de2f52badd979f2089e0e8b9f8926b"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "14ea87aa0a2bcff26007668803c04d7ed2420dba4b6ed7452966767b658b7e98"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    }
+  ],
+  "actualXml": {
+    "version": "8",
+    "timestamp": "2020-07-17T08:38:41Z",
+    "changeset": "88131134",
+    "allTagsAndCoordinatesMatch": true
+  },
+  "officialCoordinate": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\ministry-social-local-unit.html",
+      "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2"
+    },
+    "longitude": 8.5500007,
+    "latitude": 36.4678121,
+    "equalNamedSourcePoint": true,
+    "qualification": "Published social-service geolocation may reuse a town geocode. It is direct official settlement-reference corroboration, not an independently surveyed centroid or certified INM calculation anchor."
+  },
+  "currentPointAndBaseExact": true,
+  "preservedAdministrativeIds": [
+    "osm:relation:7138842",
+    "osm:relation:7138843",
+    "osm:relation:7138844",
+    "osm:relation:7138845",
+    "osm:relation:7138846"
+  ],
+  "originalWorkbookRowsReopened": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "row": 25941,
+      "sectorCode": "225851",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "225851",
+        "Oued meliz est",
+        "وادي مليز الشرقية",
+        "225851-Oued meliz est",
+        "225851-وادي مليز الشرقية",
+        "M",
+        " Masculin",
+        " ذكر",
+        "1",
+        "00-04",
+        "00-04",
+        "134"
+      ]
+    },
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "row": 25975,
+      "sectorCode": "225852",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "225852",
+        "Oued meliz ouest",
+        "وادي مليز الغربية",
+        "225852-Oued meliz ouest",
+        "225852-وادي مليز الغربية",
+        "M",
+        " Masculin",
+        " ذكر",
+        "1",
+        "00-04",
+        "00-04",
+        "68"
+      ]
+    },
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "row": 26009,
+      "sectorCode": "225853",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "225853",
+        "Dkhailia",
+        "الدخايلية",
+        "225853-Dkhailia",
+        "225853-الدخايلية",
+        "M",
+        " Masculin",
+        " ذكر",
+        "1",
+        "00-04",
+        "00-04",
+        "102"
+      ]
+    },
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "row": 26043,
+      "sectorCode": "225854",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "225854",
+        "Hakim nord",
+        "حكيم الشمالية",
+        "225854-Hakim nord",
+        "225854-حكيم الشمالية",
+        "M",
+        " Masculin",
+        " ذكر",
+        "1",
+        "00-04",
+        "00-04",
+        "19"
+      ]
+    },
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "row": 26077,
+      "sectorCode": "225855",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "225855",
+        "Hakim sud",
+        "حكيم الجنوبية",
+        "225855-Hakim sud",
+        "225855-حكيم الجنوبية",
+        "M",
+        " Masculin",
+        " ذكر",
+        "1",
+        "00-04",
+        "00-04",
+        "103"
+      ]
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "row": 1214,
+      "sectorCode": "225851",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Oued meliz est",
+        "وادي مليز الشرقية",
+        "225851",
+        "225851-Oued meliz est",
+        "225851-وادي مليز الشرقية",
+        "1",
+        "Urbain",
+        "حضري",
+        "14",
+        "14"
+      ]
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "row": 1216,
+      "sectorCode": "225852",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Oued meliz ouest",
+        "وادي مليز الغربية",
+        "225852",
+        "225852-Oued meliz ouest",
+        "225852-وادي مليز الغربية",
+        "1",
+        "Urbain",
+        "حضري",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "row": 1218,
+      "sectorCode": "225853",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Dkhailia",
+        "الدخايلية",
+        "225853",
+        "225853-Dkhailia",
+        "225853-الدخايلية",
+        "1",
+        "Urbain",
+        "حضري",
+        "11",
+        "11"
+      ]
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "row": 1220,
+      "sectorCode": "225854",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Hakim nord",
+        "حكيم الشمالية",
+        "225854",
+        "225854-Hakim nord",
+        "225854-حكيم الشمالية",
+        "1",
+        "Urbain",
+        "حضري",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "row": 1222,
+      "sectorCode": "225855",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Hakim sud",
+        "حكيم الجنوبية",
+        "225855",
+        "225855-Hakim sud",
+        "225855-حكيم الجنوبية",
+        "1",
+        "Urbain",
+        "حضري",
+        "13",
+        "13"
+      ]
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "row": 1213,
+      "sectorCode": "225851",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Oued meliz est",
+        "وادي مليز الشرقية",
+        "225851",
+        "225851-Oued meliz est",
+        "225851-وادي مليز الشرقية",
+        "1",
+        "Urbain",
+        "حضري",
+        "13"
+      ]
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "row": 1215,
+      "sectorCode": "225852",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Oued meliz ouest",
+        "وادي مليز الغربية",
+        "225852",
+        "225852-Oued meliz ouest",
+        "225852-وادي مليز الغربية",
+        "1",
+        "Urbain",
+        "حضري",
+        "5"
+      ]
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "row": 1217,
+      "sectorCode": "225853",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Dkhailia",
+        "الدخايلية",
+        "225853",
+        "225853-Dkhailia",
+        "225853-الدخايلية",
+        "1",
+        "Urbain",
+        "حضري",
+        "10"
+      ]
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "row": 1219,
+      "sectorCode": "225854",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Hakim nord",
+        "حكيم الشمالية",
+        "225854",
+        "225854-Hakim nord",
+        "225854-حكيم الشمالية",
+        "1",
+        "Urbain",
+        "حضري",
+        "3"
+      ]
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "row": 1221,
+      "sectorCode": "225855",
+      "values": [
+        "1",
+        "District 1",
+        "إقليم 1",
+        "22",
+        "Jendouba",
+        "جندوبة",
+        "2258",
+        "Oued meliz",
+        "وادي مليز",
+        "Hakim sud",
+        "حكيم الجنوبية",
+        "225855",
+        "225855-Hakim sud",
+        "225855-حكيم الجنوبية",
+        "1",
+        "Urbain",
+        "حضري",
+        "12"
+      ]
+    }
+  ],
+  "mapReconstruction": {
+    "crs": "EPSG:32632",
+    "controlCount": 4,
+    "fitMaxResidualMeters": 0.11330422874707287,
+    "actualPoints": [
+      {
+        "role": "oldBase500",
+        "pageCoordinates": [
+          372.4585619865304,
+          254.00426148361566
+        ]
+      },
+      {
+        "role": "proposedVillage2840204369",
+        "pageCoordinates": [
+          372.3725971696067,
+          173.7788746548151
+        ]
+      }
+    ]
+  },
+  "personalVisualReview": {
+    "images": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\isie-oued-meliz-east-full.png",
+        "sha256": "61b525c80bec7c4b1ccdc66ece5fe41f484cff5c5c714f80825619c84e030113"
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\oldBase500-map-context.png",
+        "sha256": "6eb67599c60b5f4b664e1d3739bb9fe2528c72d991048cad9e288533f8b2c71e"
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\proposedVillage2840204369-map-context.png",
+        "sha256": "5bc684e5f6ad0fe16d6cac5f69d64109b636d8baab684857376310545fe8ffad"
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-page9-administrative-map.png",
+        "sha256": "6ad83af64dfc4479251121cf4bbb969464214cc6b5f181e1559cbdb3cfaceb21"
+      }
+    ],
+    "finding": "The proposed point maps to the named town around the railway/P6 road junction; the old location lies south amid agricultural land, with the exact old point obscured by the large sector-name text. The 2018 overview distinguishes the Oued Mliz commune from its East/West sectors.",
+    "limits": "No parcel, complete settlement perimeter, municipal boundary or whole-imada geometry is certified. ISIE basemap and other name/coordinate sources may share upstream data."
+  },
+  "implementationConditions": [
+    "Keep timetable500 and the actual-GPS-fix nearest available source policy; preserve all five current imadas and every packed geometry.",
+    "Retain the existing village raw ID/name/aliases/context/coordinates and permit only its exact reviewed group to base500; baseArabic is already an explicit source alias, not a generic normalization rule.",
+    "Appending the reviewed reference requires the separately owned impact preview and exact live dependency update; this independent source review does not repeat or pre-approve the resulting nearest-source changes.",
+    "Do not remap a saved GPS location using a representative point when no original GPS coordinates were stored."
+  ],
+  "phoneEvidence": "No phone/ledger files accessed. Root independently owns current phone review; no POI card is required for this source conclusion.",
+  "errors": [],
+  "readerRecovery": "Initial independent reader stopped on the separately listed delegation source4742499 whose currentMetadata is explicitly null. The corrected reader verifies that source is absent from raw catalog and separately checks all five sector metadata/packed slices; no generator or source artifact was rerun or changed.",
+  "executionScope": "Local evidence and two map positions only; no network, PBF scan, generator, tests, build, app edits or device I/O."
+}

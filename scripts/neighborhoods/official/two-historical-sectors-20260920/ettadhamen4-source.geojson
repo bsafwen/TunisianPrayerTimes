@@ -1,0 +1,380 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "osm:relation:7115584",
+      "properties": {
+        "id": "osm:relation:7115584",
+        "kind": "sector",
+        "officialCode": "125657",
+        "nameAr": "التضامن 4",
+        "nameFr": "Ettadhamen 4",
+        "governorateCode": "12",
+        "governorateAr": "أريانة",
+        "governorateFr": "Ariana",
+        "delegationCode": "1256",
+        "parentAr": "حي التضامن",
+        "parentFr": "Cite ettadhamen",
+        "sourceId": "isie-local-sector-2023-ettadhamen4-historical-rename",
+        "sourceGeometrySha256": "a04e16182e749f097495175471fcb78f786f3c683311e3ad39b37eba2ab5529f",
+        "currentOfficialIdentity": {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1256",
+          "delegationFr": "Cite ettadhamen",
+          "delegationAr": "حي التضامن",
+          "sectorCode": "125657",
+          "sectorFr": "Ettadhamen 4",
+          "sectorAr": "التضامن 4",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6903,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 230,
+            "Nombre_de_menages_par_Secteurs.xlsx": 230
+          }
+        },
+        "historicalNameAliases": [
+          "7 نوفمبر",
+          "7 Novembre"
+        ],
+        "historicalIdentityQualification": "Exact same six-digit code and parent in INS2012 and current INS registry establish the historical rename; old Arabic and French names remain search aliases. This does not certify survey boundaries or later legal currency.",
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/التضامن 4.pdf",
+        "sourcePdfSha256": "ba9d75ba467a055e07f96c810263e4502a9b3273697414303eab8edb19d11c38",
+        "sourcePdfFile": "official/two-historical-sectors-20260920/sources/ettadhamen4.pdf",
+        "originalSourcePdfFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\ettadhamen4.pdf",
+        "sourcePdfPage": 1,
+        "sourceDrawingIndex": 4,
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceGeometryVertices": 45,
+        "sourceCrsEpsg": 32632,
+        "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+        "sourceControlPointsLatLon": [
+          [
+            36.83167,
+            10.0894
+          ],
+          [
+            36.84021,
+            10.08952
+          ],
+          [
+            36.84007,
+            10.10473
+          ],
+          [
+            36.83153,
+            10.10461
+          ]
+        ],
+        "sourceLocalControlPoints": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "sourceViewportBBox": [
+          4.31908,
+          590.46173,
+          841.50095,
+          5.38791
+        ],
+        "sourceAffineMetersFromPagePoints": [
+          [
+            1.6202907890521632,
+            4.815007765939738e-05
+          ],
+          [
+            0.0003011508533745655,
+            -1.6194809735061426
+          ],
+          [
+            597138.3054569641,
+            4077708.590863708
+          ]
+        ],
+        "sourceControlPointMaxResidualMeters": 0.03770291086293665,
+        "sourceClipReview": {
+          "explicitlyClosed": true,
+          "fullyInsideViewport": true,
+          "activeClipChecks": [
+            {
+              "level": 0,
+              "wholeNativePathInsideClip": true
+            },
+            {
+              "level": 1,
+              "wholeNativePathInsideClip": true
+            }
+          ]
+        },
+        "visualReview": {
+          "pdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\ettadhamen4.pdf",
+            "sha256": "ba9d75ba467a055e07f96c810263e4502a9b3273697414303eab8edb19d11c38"
+          },
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\ettadhamen4.png",
+            "sha256": "3c1429c083833312c848348737a8e5266975f499c53da251396ac4a746bad3d2"
+          },
+          "titleAndTargetPersonallyViewed": true,
+          "legendPersonallyViewed": {
+            "black": "الولاية",
+            "blue": "المعتمدية",
+            "red": "الدائرة / العمادة"
+          },
+          "scope": "Whole target election district outline is complete. Numbered Sousse maps are different constituent districts, not page tiles.",
+          "activeClipChecks": [
+            {
+              "level": 0,
+              "wholeNativePathInsideClip": true
+            },
+            {
+              "level": 1,
+              "wholeNativePathInsideClip": true
+            }
+          ],
+          "redLabels": [
+            {
+              "text": "4 نماضتلا",
+              "color": 15073280,
+              "bbox": [
+                244.92788696289062,
+                378.36297607421875,
+                365.173828125,
+                431.6475524902344
+              ],
+              "centerInsideTarget": true,
+              "bboxIntersectsTarget": true
+            },
+            {
+              "text": " ةیباختنلاا ةرئادلا",
+              "color": 15073280,
+              "bbox": [
+                695.7319946289062,
+                -3.117218017578125,
+                847.6636962890625,
+                42.555267333984375
+              ],
+              "centerInsideTarget": false,
+              "bboxIntersectsTarget": false
+            },
+            {
+              "text": "4 نماضتلا",
+              "color": 15073280,
+              "bbox": [
+                691.4129028320312,
+                36.847808837890625,
+                794.3782958984375,
+                82.52029418945312
+              ],
+              "centerInsideTarget": false,
+              "bboxIntersectsTarget": false
+            }
+          ],
+          "labelExtractionCorrection": "PDF labels use color15073280 (0xe60000), not pure16711680; initial insideRedLabels empty does not mean no label. Part1 label bounding rectangle extends outside its target; title/source and rendered boundary identify the path."
+        },
+        "registrationQualification": "Rounded embedded control points; fit residuals are not survey accuracy. Complete original vector retained without repair, snapping, clipping or smoothing."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.096521856002681,
+              36.83817477075927
+            ],
+            [
+              10.097326378542215,
+              36.8377153446302
+            ],
+            [
+              10.098189301122613,
+              36.83722383898767
+            ],
+            [
+              10.098507135693346,
+              36.83703694777412
+            ],
+            [
+              10.099341740669887,
+              36.836393269024676
+            ],
+            [
+              10.099862281321156,
+              36.836204504342724
+            ],
+            [
+              10.100316836479601,
+              36.83597429796487
+            ],
+            [
+              10.100835446223877,
+              36.8356488893191
+            ],
+            [
+              10.101515304160042,
+              36.83516430688458
+            ],
+            [
+              10.101290677660055,
+              36.83500344424479
+            ],
+            [
+              10.101309331082119,
+              36.83493494288262
+            ],
+            [
+              10.10122328563954,
+              36.83486215328217
+            ],
+            [
+              10.10041722823626,
+              36.834280919049654
+            ],
+            [
+              10.100356969991394,
+              36.834181609881604
+            ],
+            [
+              10.099493407912089,
+              36.833695509066736
+            ],
+            [
+              10.097392198462662,
+              36.83262686747973
+            ],
+            [
+              10.097384847147035,
+              36.832569118268914
+            ],
+            [
+              10.097428329435237,
+              36.83240578029647
+            ],
+            [
+              10.095938040298314,
+              36.83199375057464
+            ],
+            [
+              10.095864147847204,
+              36.83232030618101
+            ],
+            [
+              10.095705101479254,
+              36.83263713239188
+            ],
+            [
+              10.094688687483377,
+              36.83383959960961
+            ],
+            [
+              10.094444479484705,
+              36.83414669407164
+            ],
+            [
+              10.094129297620695,
+              36.83452276862253
+            ],
+            [
+              10.09407764867352,
+              36.834570547461254
+            ],
+            [
+              10.094058767934467,
+              36.83462328113647
+            ],
+            [
+              10.093458598127524,
+              36.835664233903515
+            ],
+            [
+              10.093266987125585,
+              36.8359918677109
+            ],
+            [
+              10.092621463078613,
+              36.83706476866231
+            ],
+            [
+              10.092629179061781,
+              36.83714879475876
+            ],
+            [
+              10.092662764532134,
+              36.83767934955779
+            ],
+            [
+              10.092680476873763,
+              36.83801031926919
+            ],
+            [
+              10.092682536335891,
+              36.83815747015205
+            ],
+            [
+              10.092710980688393,
+              36.83878793702018
+            ],
+            [
+              10.092719211890751,
+              36.838908750908985
+            ],
+            [
+              10.092719285448007,
+              36.83891400631277
+            ],
+            [
+              10.092831705704375,
+              36.83900232889661
+            ],
+            [
+              10.093148540521943,
+              36.839209666036346
+            ],
+            [
+              10.093247588446994,
+              36.83927708655351
+            ],
+            [
+              10.093927850075545,
+              36.839749146022136
+            ],
+            [
+              10.093974141648852,
+              36.83978551366653
+            ],
+            [
+              10.094310583974387,
+              36.83952487817396
+            ],
+            [
+              10.094724465200581,
+              36.83918994539941
+            ],
+            [
+              10.095119461832184,
+              36.83890774503631
+            ],
+            [
+              10.096521856002681,
+              36.83817477075927
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

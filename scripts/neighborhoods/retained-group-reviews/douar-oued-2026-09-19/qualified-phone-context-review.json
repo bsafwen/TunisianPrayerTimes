@@ -1,0 +1,88 @@
+{
+  "status": "FOUR_PUBLIC_PHONE_OBSERVATIONS_RECORDED_AND_QUALIFIED",
+  "createdAtUtc": "2026-09-19T10:54:00.328960+00:00",
+  "metadataSha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_7090957-2\\ledger.json",
+    "sha256": "3d42cf6833b65c7ccb54d96cd13e25d48bd2866edd620f71e1afb97512d947d2"
+  },
+  "afterLedgerSha256": "e6d86a9eec1eab8318f80870a44e8ce841daf3a5b02676662debe13fb318a42f",
+  "totalObservationsBefore": 1269,
+  "totalObservationsAfter": 1273,
+  "allPriorObservationsPreserved": true,
+  "reviews": [
+    {
+      "id": "osm:relation:7090957",
+      "query": "36.8237415,10.0960637",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-2.json",
+        "sha256": "6a9f50eaf78f6499cd239d4dd651f7f1f50a3abf3fb9c14063801a69eb207fcb"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-2.png",
+        "sha256": "e39bcfdc5a8c717580bc905035e3769464f3ef8ab190648aa5faa743e75d063d"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Authentic Douar Hicher town-coordinate query resolves to a shop POI named Manouba douar hicher, with Cite Nasr address, in the street grid near Monoprix. This supplies vicinity context only; it is not a locality identity or exact coordinate/polygon certification.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7090957",
+      "query": "36.828,10.089",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-3.json",
+        "sha256": "8dc18dde9a49ae8b8a352c17e52f264055dd73c5eb2d622d160c9d62183bb615"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-3.png",
+        "sha256": "1db1679cd181b9fd4f1aee26ea5499c4ff24765e9f742345bef6bc999be49d50"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Published Douar Hicher prayer-reference query yields a dropped pin labelled حي النسيم. This corroborates the independently computed surrounding-sector context and the need to keep the prayer reference separate from the named town representative. No stored polygon is certified by this card.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7095862",
+      "query": "36.8376735,10.0422381",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-2.json",
+        "sha256": "c46ad9b8f82b861c847e4d16d0619f8cc167dbae416564c3e1efb6a5e563ec8b"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-2.png",
+        "sha256": "f143ca02e81de47088b2788aa2fb27dd1782cee74b326a8e916235c8ec63771d"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Authentic Oued Ellil town-coordinate query yields a dropped pin labelled وادي الليل in its street grid near Oued Ellil Park. The Arabic name and vicinity are supported, not a surveyed position or polygon boundary.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7095862",
+      "query": "36.836,10.041",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-3.json",
+        "sha256": "0bf35132dcb247a9e27238bd09a3f9ec678afcfd1cde9a9ecaed8531e7c5a0f0"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-3.png",
+        "sha256": "37b48e7b89b8b3a619354ca5b6c50aad621e930ebe95f58919cd83a242cb80e0"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Published Oued Ellil prayer-reference query resolves to a fuel-station POI card named Clef Ahmed, addressed Oued Ellil, with surrounding وادي الليل label. It is vicinity context only, not exact POI/locality identity or boundary proof.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    }
+  ],
+  "captures": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\douar-oued-phone-point-captures-20260919.json",
+    "sha256": "9ca278ee1f972dde5cea1ffec8b2751034481b30a6844923633aec9d70615b31"
+  },
+  "qualifications": "Phone observations supply geographic context. Exact manual point identities and polygon containment come from independently pinned source records; none of these screenshots certifies source polygons or every alias.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_douar_oued_points_20260919.py",
+    "sha256": "37df96b7d170b7b592c03c96ca95537b9f1edae954f1eb4a3a53d41a4f528d21"
+  }
+}

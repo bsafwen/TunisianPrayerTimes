@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "status": "INDEPENDENTLY_REVIEWED_SOURCE_COMPONENTS_COMBINED",
+  "baselineMetadataSha256": "5fead87cca66a9f6be73b14259f2dbb796f5001e2339327be5ff2c2000b1ac9b",
+  "componentProposals": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/hazoua-retained-display-proposal-20260919/proposal.json",
+      "sha256": "f5cba1c33188acf86e687f128964a29dfdfab4a37010bce419317fe56b0bda82",
+      "bytes": 18959
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar472-component-proposal-20260919/proposal.json",
+      "sha256": "b84f571afe4646ba9187e40030dd751d1b397ec3c1c8197dd4ce02b7b3e9b2f3",
+      "bytes": 23293
+    }
+  ],
+  "rootNumericProjection": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/hazoua-smar-root-projection-20260919.json",
+    "sha256": "d291bbba6f2dce77d055afa51a7d02badba09801ba55b7ac6a0e0e3f5ca1b86c",
+    "bytes": 6690
+  },
+  "referenceIds": [
+    479,
+    472
+  ],
+  "exactRawChanges": [
+    {
+      "id": "osm:relation:7142926",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7142928",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7142961",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143859",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143861",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7154917",
+      "field": "delegationId",
+      "before": 479,
+      "after": 477
+    },
+    {
+      "id": "osm:way:1392451611",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:187313004",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:791334742",
+      "field": "delegationId",
+      "before": 472,
+      "after": 624
+    },
+    {
+      "id": "osm:node:11820052133",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:9052889223",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7154916",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7154916",
+      "after": "delegation:479"
+    },
+    {
+      "id": "osm:way:207579215",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7154916",
+      "after": "delegation:479"
+    },
+    {
+      "id": "osm:relation:7143872",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    }
+  ],
+  "scope": "Published prayer references remain separate from unchanged raw settlements and polygons. Existing groups join their named base display; actual manual selection still uses nearest available source at the existing representative."
+}

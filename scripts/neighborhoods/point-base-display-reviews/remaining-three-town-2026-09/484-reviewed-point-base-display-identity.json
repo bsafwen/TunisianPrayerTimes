@@ -1,0 +1,2297 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:264881676",
+  "baseId": 484,
+  "rawCurrent": {
+    "id": "osm:node:264881676",
+    "sourceId": "osm",
+    "name": "دوز",
+    "aliases": [
+      "Douz",
+      "Duz",
+      "Дуз"
+    ],
+    "kind": "town",
+    "parentName": "العبادلة",
+    "contextAliases": [
+      "Douz Nord",
+      "Délégation Douz Nord",
+      "Elabadla",
+      "العبادلة",
+      "معتمدية دوز الشمالية"
+    ],
+    "governorateId": 1012,
+    "lat": 33.4571102,
+    "lng": 9.0249829,
+    "delegationId": 484,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:264881676"
+  },
+  "baseCurrent": {
+    "id": 484,
+    "nomFr": "Douz",
+    "nomAr": "دوز",
+    "nomEn": "Douz",
+    "lat": 33.46,
+    "lng": 9.02
+  },
+  "expectedGovernor": {
+    "id": 1012,
+    "nomFr": "Kébili",
+    "nomAr": "قبلي",
+    "nomEn": "Kebili",
+    "lat": 33.7072,
+    "lng": 8.9697
+  },
+  "originalSourceNode": {
+    "id": "osm:node:264881676",
+    "tags": {
+      "name": "دوز",
+      "name:ar": "دوز",
+      "name:en": "Douz",
+      "name:eo": "Douz",
+      "name:fr": "Douz",
+      "name:kab": "Duz",
+      "name:pl": "Duz",
+      "name:ru": "Дуз",
+      "place": "town",
+      "wikidata": "Q1009268",
+      "wikimedia_commons": "Category:Douz",
+      "wikipedia": "ar:دوز"
+    },
+    "lat": 33.4571102,
+    "lng": 9.0249829
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/source-identity-review.json",
+    "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08"
+  },
+  "sourceFacts": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/exact-three-town-source-phase-facts.json",
+    "sha256": "c44993431b48653f60a0004320a3498c477dc49e6c845e73b7b88a55ed5d012f"
+  },
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/geography-schema-feasibility.json",
+    "sha256": "13787c850f50e80077b3ed92ec644e6247b3cee5ef9401313b35768955332402"
+  },
+  "geographyFacts": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/exact-three-geography-source-phase-facts.json",
+    "sha256": "ecbd81f7849d241c492af45b212cce0c19e1c00dc1d392048bfb34e58ef48dde"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/independent-source-prerequisites-review.json",
+    "sha256": "3cd6d48f2c02cebfdc02f90caca830ade6566fa9897903dd04f8e0aeea5fe169"
+  },
+  "independentSourceInspection": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/independent-source-inspection.json",
+    "sha256": "dedf72c24cd431dae504e179f03d51049ed7bf2656446da08e90f17cec7c2077"
+  },
+  "independentPrimaryFinding": {
+    "id": "osm:node:264881676",
+    "finding": "ACTE town profile explicitly identifies Douz in Kebili; ANME programme document PDF6 confirms Douz among the pilot communes. Original HTML and full ANME page were independently inspected.",
+    "administrativeQualification": "Obsolete Gabes is_in tags existed in older versions and were removed in version20. Neither Douz North nor Douz South or their sectors is equated with the whole town."
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/osm-node-264881676-current.json",
+    "sha256": "6bab854494f3c0a35f5c18824090875f512103a89e91a27e17444cbf38f530e3",
+    "url": "https://api.openstreetmap.org/api/0.6/node/264881676.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/264881676.json",
+    "sha256": "6bab854494f3c0a35f5c18824090875f512103a89e91a27e17444cbf38f530e3",
+    "exactElement": {
+      "type": "node",
+      "id": 264881676,
+      "lat": 33.4571102,
+      "lon": 9.0249829,
+      "timestamp": "2025-09-14T10:19:40Z",
+      "version": 24,
+      "changeset": 171909432,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "name": "دوز",
+        "name:ar": "دوز",
+        "name:en": "Douz",
+        "name:eo": "Douz",
+        "name:fr": "Douz",
+        "name:kab": "Duz",
+        "name:pl": "Duz",
+        "name:ru": "Дуз",
+        "place": "town",
+        "wikidata": "Q1009268",
+        "wikimedia_commons": "Category:Douz",
+        "wikipedia": "ar:دوز"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/remaining-three-town-2026-09/douz-acte.html",
+      "sha256": "dc68ea69dd2526b8198f6be02744ede41e1971f284d83f94fe63f783c25f32d1",
+      "url": "https://acte.tn/fr/commune/commune-douz",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "Douz est une ville",
+        "gouvernorat de Kébili"
+      ],
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/remaining-three-town-2026-09/retrievals.json",
+      "sha256": "fea3dbec3427db6511db994b5bc72a5cb82cf7f7579eb29e83b29f77d29a44bc"
+    },
+    {
+      "file": "point-base-display-reviews/remaining-three-town-2026-09/remaining-three-town-exact-json-source-review.json",
+      "sha256": "3422357065b29d1f05000da99eb17cfa40652ae63c166a17cbbfa27f8406e6bd"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/osm-node-264881676-history.xml",
+    "sha256": "cda1332e0f5e4c2577d453979958ca7f294544aeda143c12a60b3869be4c3e3e"
+  },
+  "comparedOriginalXml": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/osm-node-264881676-current.xml",
+    "sha256": "7ed039e0afe4457a057431b2070e3986599f24be49a64baa417dd44e426b5152"
+  },
+  "sourceIdentityQualifications": [
+    "Version1 was an unnamed point; versions2-24 identify the town. Versions10-19 carried obsolete Gabes address/is_in tags; version20 removed those in2020. The current cache does not carry them, and the primary ACTE profile explicitly places the town in Kebili.",
+    "The town is not equated with either Douz North or Douz South delegation or their imadas."
+  ],
+  "supplementaryPhoneReview": {
+    "references": [
+      {
+        "file": "point-base-display-reviews/remaining-three-town-2026-09/two-village-three-town-phone-review-20260912.json",
+        "sha256": "74eb8a8fcea72088ac4210792fe2848e23257b0ff0e5cdf482c36d529b9a101b"
+      }
+    ],
+    "qualification": "Public search/card observations only. No coordinate, city perimeter or survey certification."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7107072",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6354",
+        "delegationFr": "Douz nord",
+        "delegationAr": "دوز  الشمالية",
+        "sectorCode": "635451",
+        "sectorFr": "Douz est",
+        "sectorAr": "دوز الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70151,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3440,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3433
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دوز الشرقية",
+        "name:ar": "دوز الشرقية",
+        "name:fr": "Douz Est",
+        "ref:tn:codegeo": "635451"
+      },
+      "sourceGeometrySha256": "61d08cd4fba8f7ed2bb6c26d772ea7ddb55cdfef951c8aebd698de814b708e72",
+      "currentMetadata": {
+        "id": "osm:relation:7107072",
+        "sourceId": "osm",
+        "name": "دوز الشرقية",
+        "aliases": [
+          "Douz Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الشمالية",
+        "contextAliases": [
+          "Douz Nord",
+          "Délégation Douz Nord",
+          "معتمدية دوز الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.26421,
+        "lng": 9.575041,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          9.110943,
+          32.961422,
+          10.011664,
+          33.554129
+        ],
+        "areaKm2": 1568.908877002232,
+        "pickerGroupId": "osm:relation:7107072",
+        "offset": 516724,
+        "length": 1588
+      },
+      "packedGeometrySha256": "7a2320ddb1d7ffff0e8b0ed15f2ffe56bf580dbf27873079da4a1741696570d4",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107714",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6354",
+        "delegationFr": "Douz nord",
+        "delegationAr": "دوز  الشمالية",
+        "sectorCode": "635452",
+        "sectorFr": "El golaa",
+        "sectorAr": "القلعة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70185,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3442,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3435
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القلعة",
+        "name:ar": "القلعة",
+        "name:fr": "El Golaa",
+        "ref:tn:codegeo": "635452"
+      },
+      "sourceGeometrySha256": "21c096827bb17da95a9f66725297fb935cbd369414b27b6f3195f5fd2095e278",
+      "currentMetadata": {
+        "id": "osm:relation:7107714",
+        "sourceId": "osm",
+        "name": "القلعة",
+        "aliases": [
+          "El Golaa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الشمالية",
+        "contextAliases": [
+          "Douz Nord",
+          "Délégation Douz Nord",
+          "معتمدية دوز الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.487067,
+        "lng": 8.988472,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.924355,
+          33.454303,
+          9.085996,
+          33.520098
+        ],
+        "areaKm2": 52.71854696162434,
+        "pickerGroupId": "osm:relation:7107714",
+        "offset": 542200,
+        "length": 1100
+      },
+      "packedGeometrySha256": "eb014613201d60551aeff2edd59df049af889203fde75775da44a24679e78ba1",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107233",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6354",
+        "delegationFr": "Douz nord",
+        "delegationAr": "دوز  الشمالية",
+        "sectorCode": "635453",
+        "sectorFr": "Ouina nord",
+        "sectorAr": "العوينة الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70219,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3444,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3437
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العوينة الشمالية",
+        "name:ar": "العوينة الشمالية",
+        "name:fr": "El Aouina Nord",
+        "ref:tn:codegeo": "635453"
+      },
+      "sourceGeometrySha256": "ab0036a66e4ae3624ec1cfad0d9769ee9a034876fc3fffde8539e712dcdafc0f",
+      "currentMetadata": {
+        "id": "osm:relation:7107233",
+        "sourceId": "osm",
+        "name": "العوينة الشمالية",
+        "aliases": [
+          "El Aouina Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الشمالية",
+        "contextAliases": [
+          "Douz Nord",
+          "Délégation Douz Nord",
+          "معتمدية دوز الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.172786,
+        "lng": 9.515519,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          9.047596,
+          32.888505,
+          9.963547,
+          33.444933
+        ],
+        "areaKm2": 654.6340226609764,
+        "pickerGroupId": "osm:relation:7107233",
+        "offset": 520228,
+        "length": 500
+      },
+      "packedGeometrySha256": "610493d872d4c01b271369c9cdbc7a78cdc089c2fb1d566a1d9da201ce3678fe",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107232",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6354",
+        "delegationFr": "Douz nord",
+        "delegationAr": "دوز  الشمالية",
+        "sectorCode": "635454",
+        "sectorFr": "El aouina sud",
+        "sectorAr": "العوينة الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70253,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3446,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3439
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العوينة الجنوبية",
+        "name:ar": "العوينة الجنوبية",
+        "name:fr": "El Aouina Sud",
+        "ref:tn:codegeo": "635454"
+      },
+      "sourceGeometrySha256": "a6da026cb502c8afd51ebd5260cc1b948eb84e4feabf10e574f8849a2d624a99",
+      "currentMetadata": {
+        "id": "osm:relation:7107232",
+        "sourceId": "osm",
+        "name": "العوينة الجنوبية",
+        "aliases": [
+          "El Aouina Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الشمالية",
+        "contextAliases": [
+          "Douz Nord",
+          "Délégation Douz Nord",
+          "معتمدية دوز الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.119878,
+        "lng": 9.443692,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          9.007241,
+          32.810833,
+          9.97139,
+          33.430497
+        ],
+        "areaKm2": 848.0537469086778,
+        "pickerGroupId": "osm:relation:7107232",
+        "offset": 518312,
+        "length": 1916
+      },
+      "packedGeometrySha256": "80f1cc9e66094d1b4d52912bcf61bfde59fd320776648e685f95cd62810b722f",
+      "expectedCuration": {
+        "id": "osm:relation:7107232",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "العوينة الجنوبية",
+          "ref:tn:codegeo": "635454"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110404",
+        "reason": "ISIE lists El Aouina Sud in Douz Nord. Conflicting source geometry places it in Douz Sud.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7107054",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6354",
+        "delegationFr": "Douz nord",
+        "delegationAr": "دوز  الشمالية",
+        "sectorCode": "635455",
+        "sectorFr": "El abadla",
+        "sectorAr": "العبادلة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70287,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3448,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3441
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العبادلة",
+        "name:ar": "العبادلة",
+        "name:fr": "Elabadla",
+        "ref:tn:codegeo": "635455"
+      },
+      "sourceGeometrySha256": "a81884be666f07af2bf03272118aef451b05f6e0e852e1bde02bb82963b97392",
+      "currentMetadata": {
+        "id": "osm:relation:7107054",
+        "sourceId": "osm",
+        "name": "العبادلة",
+        "aliases": [
+          "Elabadla"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الشمالية",
+        "contextAliases": [
+          "Douz Nord",
+          "Délégation Douz Nord",
+          "معتمدية دوز الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.515313,
+        "lng": 9.283726,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.996513,
+          33.428927,
+          9.61677,
+          33.601909
+        ],
+        "areaKm2": 380.55345227635036,
+        "pickerGroupId": "osm:relation:7107054",
+        "offset": 515200,
+        "length": 1524
+      },
+      "packedGeometrySha256": "e2315a05c4134edbea9fbc6c068bedd2517e46b3913de00249840b113e9305b6",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107488",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6355",
+        "delegationFr": "Douz sud",
+        "delegationAr": "دوز الجنوبية",
+        "sectorCode": "635551",
+        "sectorFr": "Douz ouest",
+        "sectorAr": "دوز الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70321,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3449,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3442
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دوز الغربية",
+        "name:ar": "دوز الغربية",
+        "name:fr": "Douz Ouest",
+        "ref:tn:codegeo": "635551"
+      },
+      "sourceGeometrySha256": "039310b46ae18c1c1d28db61d2c5613640ab8b87d597b4a562112d44fb218ddb",
+      "currentMetadata": {
+        "id": "osm:relation:7107488",
+        "sourceId": "osm",
+        "name": "دوز الغربية",
+        "aliases": [
+          "Douz Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الجنوبية",
+        "contextAliases": [
+          "Douz Sud",
+          "Délégation Douz Sud",
+          "معتمدية دوز الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.027893,
+        "lng": 9.404895,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.995634,
+          32.647563,
+          9.965607,
+          33.400227
+        ],
+        "areaKm2": 1418.416962619996,
+        "pickerGroupId": "osm:relation:7107488",
+        "offset": 532308,
+        "length": 2356
+      },
+      "packedGeometrySha256": "3732d9517650cf3c4223df85a73d690b5b54605a759a25c676bc94204951ac4f",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107486",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6355",
+        "delegationFr": "Douz sud",
+        "delegationAr": "دوز الجنوبية",
+        "sectorCode": "635552",
+        "sectorFr": "El adhara",
+        "sectorAr": "العذارة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70355,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3451,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3444
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العذارة",
+        "name:ar": "العذارة",
+        "name:fr": "El Adhara",
+        "ref:tn:codegeo": "635552"
+      },
+      "sourceGeometrySha256": "e2807cd29cd18124ecc23fab44e2a494e195ef01d1c385b5eba23c7a1feb9202",
+      "currentMetadata": {
+        "id": "osm:relation:7107486",
+        "sourceId": "osm",
+        "name": "العذارة",
+        "aliases": [
+          "El Adhara"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الجنوبية",
+        "contextAliases": [
+          "Douz Sud",
+          "Délégation Douz Sud",
+          "معتمدية دوز الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.03521,
+        "lng": 8.992322,
+        "delegationId": 485,
+        "hasBoundary": true,
+        "bbox": [
+          8.850861,
+          32.624298,
+          9.259136,
+          33.465772
+        ],
+        "areaKm2": 1270.4784011891466,
+        "pickerGroupId": "osm:relation:7107486",
+        "offset": 530340,
+        "length": 892
+      },
+      "packedGeometrySha256": "0372e0a60ceb724d61b6137dee3db728ebc7b8c310086d3fc9bae03dd6b3f82c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107487",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6355",
+        "delegationFr": "Douz sud",
+        "delegationAr": "دوز الجنوبية",
+        "sectorCode": "635553",
+        "sectorFr": "Ghlicia",
+        "sectorAr": "غليسية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70389,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3453,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3446
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "غليسية",
+        "name:ar": "غليسية",
+        "name:fr": "Ghlissia",
+        "ref:tn:codegeo": "635553"
+      },
+      "sourceGeometrySha256": "b729af5909ab67dc3bb8f0f853478e6172fca46ad287bed55741e9e779da223e",
+      "currentMetadata": {
+        "id": "osm:relation:7107487",
+        "sourceId": "osm",
+        "name": "غليسية",
+        "aliases": [
+          "Ghlissia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الجنوبية",
+        "contextAliases": [
+          "Douz Sud",
+          "Délégation Douz Sud",
+          "معتمدية دوز الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.060647,
+        "lng": 9.169088,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.927978,
+          32.659574,
+          9.559543,
+          33.472028
+        ],
+        "areaKm2": 1549.1716491909756,
+        "pickerGroupId": "osm:relation:7107487",
+        "offset": 531232,
+        "length": 1076
+      },
+      "packedGeometrySha256": "3fc2bd167ce68481ed0364ee75d22f501e13d4a0334a4480f845c9d798fc604a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7107484",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6355",
+        "delegationFr": "Douz sud",
+        "delegationAr": "دوز الجنوبية",
+        "sectorCode": "635554",
+        "sectorFr": "Nouil nord",
+        "sectorAr": "نويل الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70423,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3455,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3448
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "نويل الشمالية",
+        "name:ar": "نويل الشمالية",
+        "name:fr": "Nouil Nord",
+        "ref:tn:codegeo": "635554"
+      },
+      "sourceGeometrySha256": "466275729c9e5abb3ce0a780f040821ebf147d8893fa8adcec259ad8a0d12dba",
+      "currentMetadata": {
+        "id": "osm:relation:7107484",
+        "sourceId": "osm",
+        "name": "نويل الشمالية",
+        "aliases": [
+          "Nouil Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الجنوبية",
+        "contextAliases": [
+          "Douz Sud",
+          "Délégation Douz Sud",
+          "معتمدية دوز الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.506286,
+        "lng": 8.882169,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.829537,
+          33.478236,
+          8.934191,
+          33.531661
+        ],
+        "areaKm2": 29.659948988503288,
+        "pickerGroupId": "osm:relation:7107484",
+        "offset": 529788,
+        "length": 252
+      },
+      "packedGeometrySha256": "748367d58b4e8a85e4b98bdebad1a0c1e0cfd936557d362f38f40369e1d0234a",
+      "expectedCuration": {
+        "id": "osm:relation:7107484",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "نويل الشمالية",
+          "ref:tn:codegeo": "635554"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7108012",
+        "reason": "ISIE lists Nouil Nord in Douz Sud. Conflicting source geometry places it in Kebili Sud.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7107485",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6355",
+        "delegationFr": "Douz sud",
+        "delegationAr": "دوز الجنوبية",
+        "sectorCode": "635555",
+        "sectorFr": "Nouil sud",
+        "sectorAr": "نويل الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70457,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3457,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3450
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "نويل الجنوبية",
+        "name:ar": "نويل الجنوبية",
+        "name:fr": "Nouil Sud",
+        "ref:tn:codegeo": "635555"
+      },
+      "sourceGeometrySha256": "4f5d25beb7fdc25daa8aff828dd879974185e846946f08e8d4f6beff5ceedc34",
+      "currentMetadata": {
+        "id": "osm:relation:7107485",
+        "sourceId": "osm",
+        "name": "نويل الجنوبية",
+        "aliases": [
+          "Nouil Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوز الجنوبية",
+        "contextAliases": [
+          "Douz Sud",
+          "Délégation Douz Sud",
+          "معتمدية دوز الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.475132,
+        "lng": 8.907434,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.843823,
+          33.442461,
+          8.960541,
+          33.505192
+        ],
+        "areaKm2": 41.966726302053,
+        "pickerGroupId": "osm:relation:7107485",
+        "offset": 530040,
+        "length": 300
+      },
+      "packedGeometrySha256": "3755d8ecd1bdef6fa7f8cc05ebff8b60021f7b958e6be636c11d824529f7f24f",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:264881676",
+      "kind": "town",
+      "tags": {
+        "name": "دوز",
+        "name:ar": "دوز",
+        "name:en": "Douz",
+        "name:eo": "Douz",
+        "name:fr": "Douz",
+        "name:kab": "Duz",
+        "name:pl": "Duz",
+        "name:ru": "Дуз",
+        "place": "town",
+        "wikidata": "Q1009268",
+        "wikimedia_commons": "Category:Douz",
+        "wikipedia": "ar:دوز"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434950": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-73",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية قبلي",
+        "name:ar": "ولاية قبلي",
+        "name:az": "Kebili (vilayət)",
+        "name:be": "Кебілі (вілает)",
+        "name:be-tarask": "Кебілі (вілает)",
+        "name:bg": "Кебили (област)",
+        "name:ca": "Governació de Kébili",
+        "name:ceb": "Gouvernorat de Kébili",
+        "name:cy": "Kébili (talaith)",
+        "name:de": "Gouvernement Kebili",
+        "name:el": "Κεμπιλί (Κυβερνείο)",
+        "name:en": "Kébili",
+        "name:eo": "Kebili",
+        "name:es": "Gobernación de Kebili",
+        "name:fa": "قبلی",
+        "name:fr": "Gouvernorat Kébili",
+        "name:frr": "Kébili (Guwernement)",
+        "name:id": "Kegubernuran Kebili",
+        "name:it": "Kébili",
+        "name:ja": "ケビリ県",
+        "name:ko": "케빌리주",
+        "name:ks": "قبلی",
+        "name:ms": "Kawasan kegabenoran Kebili",
+        "name:nl": "Kébili (gouvernement)",
+        "name:no": "Kebili (guvernement)",
+        "name:pl": "Kibili",
+        "name:pt": "Kebili (província)",
+        "name:ro": "Guvernoratul Kebili",
+        "name:ru": "Кебили (вилайет)",
+        "name:sco": "Kebili Govrenorate",
+        "name:sh": "Kébili (vilajet)",
+        "name:tr": "Kabili ili",
+        "name:uk": "Кебілі (вілаєт)",
+        "name:ur": "قبلی",
+        "name:zh": "吉比利省",
+        "name:zu": "Kebili Governorate",
+        "official_name": "ولاية قبلي",
+        "official_name:ar": "ولاية قبلي",
+        "official_name:en": "Kebili Governorate",
+        "official_name:eo": "Gubernio de Kebili",
+        "official_name:fa": "استان قبلی",
+        "official_name:fr": "Gouvernorat de Kébili",
+        "official_name:it": "Governatorato di Kébili",
+        "official_name:pl": "Gubernatorstwo Kibili",
+        "official_name:ur": "ولایت قبلی",
+        "population": "156961",
+        "population:date": "2014",
+        "ref:tn:codegeo": "63",
+        "wikidata": "Q286063",
+        "wikipedia": "ar:ولاية قبلي"
+      },
+      "sourceGeometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+    },
+    "osm:relation:7108012": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Douz Sud",
+        "boundary": "administrative",
+        "name": "معتمدية دوز الجنوبية",
+        "name:ar": "معتمدية دوز الجنوبية",
+        "name:fr": "Délégation Douz Sud",
+        "ref:tn:codegeo": "6355",
+        "ref:tn:hasc_2": "TN.KB.DS",
+        "wikidata": "Q12243928"
+      },
+      "sourceGeometrySha256": "7d0e847a20ae0006af62a49b854b38aaa78d4fbdb068e4653d1f30bde035d973"
+    },
+    "osm:relation:7110404": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Douz Nord",
+        "boundary": "administrative",
+        "name": "معتمدية دوز الشمالية",
+        "name:ar": "معتمدية دوز الشمالية",
+        "name:fr": "Délégation Douz Nord",
+        "ref:tn:codegeo": "6354",
+        "ref:tn:hasc_2": "TN.KB.DN",
+        "wikidata": "Q12243930"
+      },
+      "sourceGeometrySha256": "8ce74825b8049980f87ec7c531cea7dcb8513f13f134530da02463d8e8794605"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:264881676",
+    "field": "pickerGroupId",
+    "before": "osm:node:264881676",
+    "after": "delegation:484"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:264881676"
+      ],
+      [
+        "delegation:484"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:484",
+        "osm:node:264881676"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "Display association only. Preserve all raw IDs, kinds, names, aliases, coordinates, contexts, prayer defaults, coded imadas and packed geometry.",
+  "coordinatePolicy": "Both existing coordinates remain unchanged and uncertified. No original INM calculation anchor is established.",
+  "sourcePhaseQualification": "Plural administrative scopes and existing administrative_context curations must be preserved exactly, independently of geometric containment.",
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "6354",
+      "6355"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:264881676",
+        "original": {
+          "tags": {
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:kab": "Duz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town",
+            "wikidata": "Q1009268",
+            "wikimedia_commons": "Category:Douz",
+            "wikipedia": "ar:دوز"
+          },
+          "kind": "town",
+          "sourceId": null,
+          "geometrySha256": "f0d5710b442aefb8503ccd5a83b050d15df4d10b1c6d0db8c7db0193fce88964"
+        },
+        "effective": {
+          "tags": {
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:kab": "Duz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town",
+            "wikidata": "Q1009268",
+            "wikimedia_commons": "Category:Douz",
+            "wikipedia": "ar:دوز"
+          },
+          "kind": "town",
+          "sourceId": "osm",
+          "geometrySha256": "f0d5710b442aefb8503ccd5a83b050d15df4d10b1c6d0db8c7db0193fce88964"
+        }
+      },
+      {
+        "id": "osm:relation:1434950",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-73",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قبلي",
+            "name:ar": "ولاية قبلي",
+            "name:az": "Kebili (vilayət)",
+            "name:be": "Кебілі (вілает)",
+            "name:be-tarask": "Кебілі (вілает)",
+            "name:bg": "Кебили (област)",
+            "name:ca": "Governació de Kébili",
+            "name:ceb": "Gouvernorat de Kébili",
+            "name:cy": "Kébili (talaith)",
+            "name:de": "Gouvernement Kebili",
+            "name:el": "Κεμπιλί (Κυβερνείο)",
+            "name:en": "Kébili",
+            "name:eo": "Kebili",
+            "name:es": "Gobernación de Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Gouvernorat Kébili",
+            "name:frr": "Kébili (Guwernement)",
+            "name:id": "Kegubernuran Kebili",
+            "name:it": "Kébili",
+            "name:ja": "ケビリ県",
+            "name:ko": "케빌리주",
+            "name:ks": "قبلی",
+            "name:ms": "Kawasan kegabenoran Kebili",
+            "name:nl": "Kébili (gouvernement)",
+            "name:no": "Kebili (guvernement)",
+            "name:pl": "Kibili",
+            "name:pt": "Kebili (província)",
+            "name:ro": "Guvernoratul Kebili",
+            "name:ru": "Кебили (вилайет)",
+            "name:sco": "Kebili Govrenorate",
+            "name:sh": "Kébili (vilajet)",
+            "name:tr": "Kabili ili",
+            "name:uk": "Кебілі (вілаєт)",
+            "name:ur": "قبلی",
+            "name:zh": "吉比利省",
+            "name:zu": "Kebili Governorate",
+            "official_name": "ولاية قبلي",
+            "official_name:ar": "ولاية قبلي",
+            "official_name:en": "Kebili Governorate",
+            "official_name:eo": "Gubernio de Kebili",
+            "official_name:fa": "استان قبلی",
+            "official_name:fr": "Gouvernorat de Kébili",
+            "official_name:it": "Governatorato di Kébili",
+            "official_name:pl": "Gubernatorstwo Kibili",
+            "official_name:ur": "ولایت قبلی",
+            "population": "156961",
+            "population:date": "2014",
+            "ref:tn:codegeo": "63",
+            "wikidata": "Q286063",
+            "wikipedia": "ar:ولاية قبلي"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-73",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قبلي",
+            "name:ar": "ولاية قبلي",
+            "name:az": "Kebili (vilayət)",
+            "name:be": "Кебілі (вілает)",
+            "name:be-tarask": "Кебілі (вілает)",
+            "name:bg": "Кебили (област)",
+            "name:ca": "Governació de Kébili",
+            "name:ceb": "Gouvernorat de Kébili",
+            "name:cy": "Kébili (talaith)",
+            "name:de": "Gouvernement Kebili",
+            "name:el": "Κεμπιλί (Κυβερνείο)",
+            "name:en": "Kébili",
+            "name:eo": "Kebili",
+            "name:es": "Gobernación de Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Gouvernorat Kébili",
+            "name:frr": "Kébili (Guwernement)",
+            "name:id": "Kegubernuran Kebili",
+            "name:it": "Kébili",
+            "name:ja": "ケビリ県",
+            "name:ko": "케빌리주",
+            "name:ks": "قبلی",
+            "name:ms": "Kawasan kegabenoran Kebili",
+            "name:nl": "Kébili (gouvernement)",
+            "name:no": "Kebili (guvernement)",
+            "name:pl": "Kibili",
+            "name:pt": "Kebili (província)",
+            "name:ro": "Guvernoratul Kebili",
+            "name:ru": "Кебили (вилайет)",
+            "name:sco": "Kebili Govrenorate",
+            "name:sh": "Kébili (vilajet)",
+            "name:tr": "Kabili ili",
+            "name:uk": "Кебілі (вілаєт)",
+            "name:ur": "قبلی",
+            "name:zh": "吉比利省",
+            "name:zu": "Kebili Governorate",
+            "official_name": "ولاية قبلي",
+            "official_name:ar": "ولاية قبلي",
+            "official_name:en": "Kebili Governorate",
+            "official_name:eo": "Gubernio de Kebili",
+            "official_name:fa": "استان قبلی",
+            "official_name:fr": "Gouvernorat de Kébili",
+            "official_name:it": "Governatorato di Kébili",
+            "official_name:pl": "Gubernatorstwo Kibili",
+            "official_name:ur": "ولایت قبلی",
+            "population": "156961",
+            "population:date": "2014",
+            "ref:tn:codegeo": "63",
+            "wikidata": "Q286063",
+            "wikipedia": "ar:ولاية قبلي"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+        }
+      },
+      {
+        "id": "osm:relation:7107054",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العبادلة",
+            "name:ar": "العبادلة",
+            "name:fr": "Elabadla",
+            "ref:tn:codegeo": "635455"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "a81884be666f07af2bf03272118aef451b05f6e0e852e1bde02bb82963b97392"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العبادلة",
+            "name:ar": "العبادلة",
+            "name:fr": "Elabadla",
+            "ref:tn:codegeo": "635455"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "a81884be666f07af2bf03272118aef451b05f6e0e852e1bde02bb82963b97392"
+        }
+      },
+      {
+        "id": "osm:relation:7107072",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوز الشرقية",
+            "name:ar": "دوز الشرقية",
+            "name:fr": "Douz Est",
+            "ref:tn:codegeo": "635451"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "61d08cd4fba8f7ed2bb6c26d772ea7ddb55cdfef951c8aebd698de814b708e72"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوز الشرقية",
+            "name:ar": "دوز الشرقية",
+            "name:fr": "Douz Est",
+            "ref:tn:codegeo": "635451"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "61d08cd4fba8f7ed2bb6c26d772ea7ddb55cdfef951c8aebd698de814b708e72"
+        }
+      },
+      {
+        "id": "osm:relation:7107232",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العوينة الجنوبية",
+            "name:ar": "العوينة الجنوبية",
+            "name:fr": "El Aouina Sud",
+            "ref:tn:codegeo": "635454"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "a6da026cb502c8afd51ebd5260cc1b948eb84e4feabf10e574f8849a2d624a99"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العوينة الجنوبية",
+            "name:ar": "العوينة الجنوبية",
+            "name:fr": "El Aouina Sud",
+            "ref:tn:codegeo": "635454"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "a6da026cb502c8afd51ebd5260cc1b948eb84e4feabf10e574f8849a2d624a99"
+        }
+      },
+      {
+        "id": "osm:relation:7107233",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العوينة الشمالية",
+            "name:ar": "العوينة الشمالية",
+            "name:fr": "El Aouina Nord",
+            "ref:tn:codegeo": "635453"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "ab0036a66e4ae3624ec1cfad0d9769ee9a034876fc3fffde8539e712dcdafc0f"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العوينة الشمالية",
+            "name:ar": "العوينة الشمالية",
+            "name:fr": "El Aouina Nord",
+            "ref:tn:codegeo": "635453"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "ab0036a66e4ae3624ec1cfad0d9769ee9a034876fc3fffde8539e712dcdafc0f"
+        }
+      },
+      {
+        "id": "osm:relation:7107484",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نويل الشمالية",
+            "name:ar": "نويل الشمالية",
+            "name:fr": "Nouil Nord",
+            "ref:tn:codegeo": "635554"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "466275729c9e5abb3ce0a780f040821ebf147d8893fa8adcec259ad8a0d12dba"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نويل الشمالية",
+            "name:ar": "نويل الشمالية",
+            "name:fr": "Nouil Nord",
+            "ref:tn:codegeo": "635554"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "466275729c9e5abb3ce0a780f040821ebf147d8893fa8adcec259ad8a0d12dba"
+        }
+      },
+      {
+        "id": "osm:relation:7107485",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نويل الجنوبية",
+            "name:ar": "نويل الجنوبية",
+            "name:fr": "Nouil Sud",
+            "ref:tn:codegeo": "635555"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "4f5d25beb7fdc25daa8aff828dd879974185e846946f08e8d4f6beff5ceedc34"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نويل الجنوبية",
+            "name:ar": "نويل الجنوبية",
+            "name:fr": "Nouil Sud",
+            "ref:tn:codegeo": "635555"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "4f5d25beb7fdc25daa8aff828dd879974185e846946f08e8d4f6beff5ceedc34"
+        }
+      },
+      {
+        "id": "osm:relation:7107486",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العذارة",
+            "name:ar": "العذارة",
+            "name:fr": "El Adhara",
+            "ref:tn:codegeo": "635552"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "e2807cd29cd18124ecc23fab44e2a494e195ef01d1c385b5eba23c7a1feb9202"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العذارة",
+            "name:ar": "العذارة",
+            "name:fr": "El Adhara",
+            "ref:tn:codegeo": "635552"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "e2807cd29cd18124ecc23fab44e2a494e195ef01d1c385b5eba23c7a1feb9202"
+        }
+      },
+      {
+        "id": "osm:relation:7107487",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غليسية",
+            "name:ar": "غليسية",
+            "name:fr": "Ghlissia",
+            "ref:tn:codegeo": "635553"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "b729af5909ab67dc3bb8f0f853478e6172fca46ad287bed55741e9e779da223e"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غليسية",
+            "name:ar": "غليسية",
+            "name:fr": "Ghlissia",
+            "ref:tn:codegeo": "635553"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "b729af5909ab67dc3bb8f0f853478e6172fca46ad287bed55741e9e779da223e"
+        }
+      },
+      {
+        "id": "osm:relation:7107488",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوز الغربية",
+            "name:ar": "دوز الغربية",
+            "name:fr": "Douz Ouest",
+            "ref:tn:codegeo": "635551"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "039310b46ae18c1c1d28db61d2c5613640ab8b87d597b4a562112d44fb218ddb"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوز الغربية",
+            "name:ar": "دوز الغربية",
+            "name:fr": "Douz Ouest",
+            "ref:tn:codegeo": "635551"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "039310b46ae18c1c1d28db61d2c5613640ab8b87d597b4a562112d44fb218ddb"
+        }
+      },
+      {
+        "id": "osm:relation:7107714",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القلعة",
+            "name:ar": "القلعة",
+            "name:fr": "El Golaa",
+            "ref:tn:codegeo": "635452"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "21c096827bb17da95a9f66725297fb935cbd369414b27b6f3195f5fd2095e278"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القلعة",
+            "name:ar": "القلعة",
+            "name:fr": "El Golaa",
+            "ref:tn:codegeo": "635452"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "21c096827bb17da95a9f66725297fb935cbd369414b27b6f3195f5fd2095e278"
+        }
+      },
+      {
+        "id": "osm:relation:7108012",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Douz Sud",
+            "boundary": "administrative",
+            "name": "معتمدية دوز الجنوبية",
+            "name:ar": "معتمدية دوز الجنوبية",
+            "name:fr": "Délégation Douz Sud",
+            "ref:tn:codegeo": "6355",
+            "ref:tn:hasc_2": "TN.KB.DS",
+            "wikidata": "Q12243928"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "7d0e847a20ae0006af62a49b854b38aaa78d4fbdb068e4653d1f30bde035d973"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Douz Sud",
+            "boundary": "administrative",
+            "name": "معتمدية دوز الجنوبية",
+            "name:ar": "معتمدية دوز الجنوبية",
+            "name:fr": "Délégation Douz Sud",
+            "ref:tn:codegeo": "6355",
+            "ref:tn:hasc_2": "TN.KB.DS",
+            "wikidata": "Q12243928"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "7d0e847a20ae0006af62a49b854b38aaa78d4fbdb068e4653d1f30bde035d973"
+        }
+      },
+      {
+        "id": "osm:relation:7110404",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Douz Nord",
+            "boundary": "administrative",
+            "name": "معتمدية دوز الشمالية",
+            "name:ar": "معتمدية دوز الشمالية",
+            "name:fr": "Délégation Douz Nord",
+            "ref:tn:codegeo": "6354",
+            "ref:tn:hasc_2": "TN.KB.DN",
+            "wikidata": "Q12243930"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "8ce74825b8049980f87ec7c531cea7dcb8513f13f134530da02463d8e8794605"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Douz Nord",
+            "boundary": "administrative",
+            "name": "معتمدية دوز الشمالية",
+            "name:ar": "معتمدية دوز الشمالية",
+            "name:fr": "Délégation Douz Nord",
+            "ref:tn:codegeo": "6354",
+            "ref:tn:hasc_2": "TN.KB.DN",
+            "wikidata": "Q12243930"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "8ce74825b8049980f87ec7c531cea7dcb8513f13f134530da02463d8e8794605"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1434950": null,
+      "osm:relation:7107054": null,
+      "osm:relation:7107072": null,
+      "osm:relation:7107232": {
+        "id": "osm:relation:7107232",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "العوينة الجنوبية",
+          "ref:tn:codegeo": "635454"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110404",
+        "reason": "ISIE lists El Aouina Sud in Douz Nord. Conflicting source geometry places it in Douz Sud.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      },
+      "osm:relation:7107233": null,
+      "osm:relation:7107484": {
+        "id": "osm:relation:7107484",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "نويل الشمالية",
+          "ref:tn:codegeo": "635554"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7108012",
+        "reason": "ISIE lists Nouil Nord in Douz Sud. Conflicting source geometry places it in Kebili Sud.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      },
+      "osm:relation:7107485": null,
+      "osm:relation:7107486": null,
+      "osm:relation:7107487": null,
+      "osm:relation:7107488": null,
+      "osm:relation:7107714": null,
+      "osm:relation:7108012": null,
+      "osm:relation:7110404": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:264881676",
+        "kind": "town",
+        "currentMetadata": {
+          "id": "osm:node:264881676",
+          "sourceId": "osm",
+          "name": "دوز",
+          "aliases": [
+            "Douz",
+            "Duz",
+            "Дуз"
+          ],
+          "kind": "town",
+          "parentName": "العبادلة",
+          "contextAliases": [
+            "Douz Nord",
+            "Délégation Douz Nord",
+            "Elabadla",
+            "العبادلة",
+            "معتمدية دوز الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.4571102,
+          "lng": 9.0249829,
+          "delegationId": 484,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:264881676"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7107054",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107054",
+          "sourceId": "osm",
+          "name": "العبادلة",
+          "aliases": [
+            "Elabadla"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الشمالية",
+          "contextAliases": [
+            "Douz Nord",
+            "Délégation Douz Nord",
+            "معتمدية دوز الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.515313,
+          "lng": 9.283726,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.996513,
+            33.428927,
+            9.61677,
+            33.601909
+          ],
+          "areaKm2": 380.55345227635036,
+          "pickerGroupId": "osm:relation:7107054",
+          "offset": 515200,
+          "length": 1524
+        },
+        "packedGeometrySha256": "e2315a05c4134edbea9fbc6c068bedd2517e46b3913de00249840b113e9305b6"
+      },
+      {
+        "id": "osm:relation:7107072",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107072",
+          "sourceId": "osm",
+          "name": "دوز الشرقية",
+          "aliases": [
+            "Douz Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الشمالية",
+          "contextAliases": [
+            "Douz Nord",
+            "Délégation Douz Nord",
+            "معتمدية دوز الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.26421,
+          "lng": 9.575041,
+          "delegationId": 1022,
+          "hasBoundary": true,
+          "bbox": [
+            9.110943,
+            32.961422,
+            10.011664,
+            33.554129
+          ],
+          "areaKm2": 1568.908877002232,
+          "pickerGroupId": "osm:relation:7107072",
+          "offset": 516724,
+          "length": 1588
+        },
+        "packedGeometrySha256": "7a2320ddb1d7ffff0e8b0ed15f2ffe56bf580dbf27873079da4a1741696570d4"
+      },
+      {
+        "id": "osm:relation:7107232",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107232",
+          "sourceId": "osm",
+          "name": "العوينة الجنوبية",
+          "aliases": [
+            "El Aouina Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الشمالية",
+          "contextAliases": [
+            "Douz Nord",
+            "Délégation Douz Nord",
+            "معتمدية دوز الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.119878,
+          "lng": 9.443692,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            9.007241,
+            32.810833,
+            9.97139,
+            33.430497
+          ],
+          "areaKm2": 848.0537469086778,
+          "pickerGroupId": "osm:relation:7107232",
+          "offset": 518312,
+          "length": 1916
+        },
+        "packedGeometrySha256": "80f1cc9e66094d1b4d52912bcf61bfde59fd320776648e685f95cd62810b722f"
+      },
+      {
+        "id": "osm:relation:7107233",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107233",
+          "sourceId": "osm",
+          "name": "العوينة الشمالية",
+          "aliases": [
+            "El Aouina Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الشمالية",
+          "contextAliases": [
+            "Douz Nord",
+            "Délégation Douz Nord",
+            "معتمدية دوز الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.172786,
+          "lng": 9.515519,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            9.047596,
+            32.888505,
+            9.963547,
+            33.444933
+          ],
+          "areaKm2": 654.6340226609764,
+          "pickerGroupId": "osm:relation:7107233",
+          "offset": 520228,
+          "length": 500
+        },
+        "packedGeometrySha256": "610493d872d4c01b271369c9cdbc7a78cdc089c2fb1d566a1d9da201ce3678fe"
+      },
+      {
+        "id": "osm:relation:7107484",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107484",
+          "sourceId": "osm",
+          "name": "نويل الشمالية",
+          "aliases": [
+            "Nouil Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الجنوبية",
+          "contextAliases": [
+            "Douz Sud",
+            "Délégation Douz Sud",
+            "معتمدية دوز الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.506286,
+          "lng": 8.882169,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.829537,
+            33.478236,
+            8.934191,
+            33.531661
+          ],
+          "areaKm2": 29.659948988503288,
+          "pickerGroupId": "osm:relation:7107484",
+          "offset": 529788,
+          "length": 252
+        },
+        "packedGeometrySha256": "748367d58b4e8a85e4b98bdebad1a0c1e0cfd936557d362f38f40369e1d0234a"
+      },
+      {
+        "id": "osm:relation:7107485",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107485",
+          "sourceId": "osm",
+          "name": "نويل الجنوبية",
+          "aliases": [
+            "Nouil Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الجنوبية",
+          "contextAliases": [
+            "Douz Sud",
+            "Délégation Douz Sud",
+            "معتمدية دوز الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.475132,
+          "lng": 8.907434,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.843823,
+            33.442461,
+            8.960541,
+            33.505192
+          ],
+          "areaKm2": 41.966726302053,
+          "pickerGroupId": "osm:relation:7107485",
+          "offset": 530040,
+          "length": 300
+        },
+        "packedGeometrySha256": "3755d8ecd1bdef6fa7f8cc05ebff8b60021f7b958e6be636c11d824529f7f24f"
+      },
+      {
+        "id": "osm:relation:7107486",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107486",
+          "sourceId": "osm",
+          "name": "العذارة",
+          "aliases": [
+            "El Adhara"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الجنوبية",
+          "contextAliases": [
+            "Douz Sud",
+            "Délégation Douz Sud",
+            "معتمدية دوز الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.03521,
+          "lng": 8.992322,
+          "delegationId": 485,
+          "hasBoundary": true,
+          "bbox": [
+            8.850861,
+            32.624298,
+            9.259136,
+            33.465772
+          ],
+          "areaKm2": 1270.4784011891466,
+          "pickerGroupId": "osm:relation:7107486",
+          "offset": 530340,
+          "length": 892
+        },
+        "packedGeometrySha256": "0372e0a60ceb724d61b6137dee3db728ebc7b8c310086d3fc9bae03dd6b3f82c"
+      },
+      {
+        "id": "osm:relation:7107487",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107487",
+          "sourceId": "osm",
+          "name": "غليسية",
+          "aliases": [
+            "Ghlissia"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الجنوبية",
+          "contextAliases": [
+            "Douz Sud",
+            "Délégation Douz Sud",
+            "معتمدية دوز الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.060647,
+          "lng": 9.169088,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.927978,
+            32.659574,
+            9.559543,
+            33.472028
+          ],
+          "areaKm2": 1549.1716491909756,
+          "pickerGroupId": "osm:relation:7107487",
+          "offset": 531232,
+          "length": 1076
+        },
+        "packedGeometrySha256": "3fc2bd167ce68481ed0364ee75d22f501e13d4a0334a4480f845c9d798fc604a"
+      },
+      {
+        "id": "osm:relation:7107488",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107488",
+          "sourceId": "osm",
+          "name": "دوز الغربية",
+          "aliases": [
+            "Douz Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الجنوبية",
+          "contextAliases": [
+            "Douz Sud",
+            "Délégation Douz Sud",
+            "معتمدية دوز الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.027893,
+          "lng": 9.404895,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.995634,
+            32.647563,
+            9.965607,
+            33.400227
+          ],
+          "areaKm2": 1418.416962619996,
+          "pickerGroupId": "osm:relation:7107488",
+          "offset": 532308,
+          "length": 2356
+        },
+        "packedGeometrySha256": "3732d9517650cf3c4223df85a73d690b5b54605a759a25c676bc94204951ac4f"
+      },
+      {
+        "id": "osm:relation:7107714",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7107714",
+          "sourceId": "osm",
+          "name": "القلعة",
+          "aliases": [
+            "El Golaa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية دوز الشمالية",
+          "contextAliases": [
+            "Douz Nord",
+            "Délégation Douz Nord",
+            "معتمدية دوز الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.487067,
+          "lng": 8.988472,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.924355,
+            33.454303,
+            9.085996,
+            33.520098
+          ],
+          "areaKm2": 52.71854696162434,
+          "pickerGroupId": "osm:relation:7107714",
+          "offset": 542200,
+          "length": 1100
+        },
+        "packedGeometrySha256": "eb014613201d60551aeff2edd59df049af889203fde75775da44a24679e78ba1"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:264881676": [
+        "osm:node:264881676"
+      ],
+      "osm:relation:7107054": [
+        "osm:relation:7107054"
+      ],
+      "osm:relation:7107072": [
+        "osm:relation:7107072"
+      ],
+      "osm:relation:7107232": [
+        "osm:relation:7107232"
+      ],
+      "osm:relation:7107233": [
+        "osm:relation:7107233"
+      ],
+      "osm:relation:7107484": [
+        "osm:relation:7107484"
+      ],
+      "osm:relation:7107485": [
+        "osm:relation:7107485"
+      ],
+      "osm:relation:7107486": [
+        "osm:relation:7107486"
+      ],
+      "osm:relation:7107487": [
+        "osm:relation:7107487"
+      ],
+      "osm:relation:7107488": [
+        "osm:relation:7107488"
+      ],
+      "osm:relation:7107714": [
+        "osm:relation:7107714"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7107054": [
+        "osm:relation:7107054"
+      ],
+      "osm:relation:7107072": [
+        "osm:relation:7107072"
+      ],
+      "osm:relation:7107232": [
+        "osm:relation:7107232"
+      ],
+      "osm:relation:7107233": [
+        "osm:relation:7107233"
+      ],
+      "osm:relation:7107484": [
+        "osm:relation:7107484"
+      ],
+      "osm:relation:7107485": [
+        "osm:relation:7107485"
+      ],
+      "osm:relation:7107486": [
+        "osm:relation:7107486"
+      ],
+      "osm:relation:7107487": [
+        "osm:relation:7107487"
+      ],
+      "osm:relation:7107488": [
+        "osm:relation:7107488"
+      ],
+      "osm:relation:7107714": [
+        "osm:relation:7107714"
+      ],
+      "delegation:484": [
+        "osm:node:264881676"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "schemaVersion": 1,
+    "reviewedBoundaries": null,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:264881676"
+      ],
+      "effective": [
+        "osm:node:264881676"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1434950": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7107054": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7107072": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107232": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107233": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107484": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107485": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107486": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107487": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107488": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107714": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7108012": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7110404": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    }
+  },
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/remaining-three-town-2026-09/anme-acte-2023-programme-authority.pdf",
+      "sha256": "d60b99a3008293db02273942e1f5017fb02909671576c44d1f88949c8e451536",
+      "url": "https://www.anme.tn/sites/default/files/2024-10/cahier_des_charges_ao_5acte-2023.pdf",
+      "pdfPage": 6,
+      "role": "official_programme_authority",
+      "qualification": "ANME implementation of ACTE and Douz pilot membership only."
+    }
+  ]
+}

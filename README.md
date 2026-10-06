@@ -16,7 +16,7 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 | **CSV export** | Generates per-month CSV files in Mawaqit format, downloadable as a ZIP |
 | **Prayer calendar** | Interactive monthly calendar view in the browser |
 | **Mawaqit push** | Push prayer times directly to mawaqit.net from the browser via a Cloudflare Worker proxy |
-| **Android app** | Auto-silence phone during prayer times with per-delegation schedules, GPS auto-detect, boot reschedule |
+| **Android app** | Auto-silence phone during prayer times with per-delegation schedules, GPS auto-detect, boot reschedule; prayer times computed on-device with [INM's formula](scripts/prayer_formula/README.md) |
 | **Desktop app** | Cross-platform (Windows/macOS/Linux) Compose Multiplatform app with the same prayer time & silence features |
 | **Qaloon model** | Fine-tuned Whisper ASR model for Qaloon (Nafi' riwaya) Quran recitation |
 | **Qaloon app** | Android app for on-device Qaloon recitation recognition with word-level error detection |
@@ -51,6 +51,7 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 │   └── data/             # Audio segments, metadata, text references
 ├── qaloon-app/           # Qaloon recitation Android app (Kotlin + C++ Whisper)
 ├── worker/               # Cloudflare Worker — mawaqit proxy + contributions API
+├── quran-cdn/            # Cloudflare Worker — serves the Quran media packs from R2
 ├── .github/workflows/    # CI/CD (ingest, release, android-tests, desktop-tests)
 ├── release.sh            # Local release: bump version, build, tag, publish
 └── fix.sh                # RTL/LTR layout fixer for Android XML layouts
@@ -103,10 +104,37 @@ Requires Android SDK and JDK 17+.
 ```bash
 cd android-app
 ./gradlew assembleRelease    # Build APK
-./gradlew bundleRelease      # Build AAB for Play Store
+./gradlew bundleRelease      # Build AAB for Play Store (stage the Quran packs first, see below)
 ```
 
+#### Quran pages and recitations
+
+The mushaf page scans and the recitations are in neither git nor the base app. Recitations are
+64 kbps mono MP3 at a constant bitrate (Al-Husary's Qaloun recitation is about 1.1 GB), made from
+the published recordings by `scripts/quran_assets.py convert`. The script groups the media into
+packs, described by `android-app/quran-assets/manifest.tsv` and the app asset `quran/packs.json`:
+
+- The page scans and the first ten reciters (9 packs each) are Play Asset Delivery packs, one
+  Gradle module each under `android-app/quran-packs/`. Google Play installs receive them through
+  Play when the reader needs them.
+- The [`quran-cdn`](quran-cdn/README.md) Worker serves every pack. Installs from elsewhere (the
+  GitHub APK, Android Studio runs) download all of them from it; Play installs download only the
+  reciters after the tenth from it.
+
+```bash
+python3 scripts/quran_assets.py stage   # fetch every Play pack into android-app/quran-packs (cached in ~/.cache/quran-assets)
+cd android-app
+./gradlew bundleRelease                 # the AAB carries every Play pack; refuses to run until they are staged
+./test-asset-packs.sh                   # install with locally served packs (bundletool --local-testing)
+```
+
+`assembleRelease` builds the APK without any pack. The AAB is too large for GitHub Releases, so
+`release.sh` builds it locally and you upload it to the Play Console yourself.
+
+To add a reciter, follow [docs/adding-a-quran-reciter.md](docs/adding-a-quran-reciter.md).
+
 **Key capabilities:**
+- Prayer times computed on the device with INM's formula ([scripts/prayer_formula](scripts/prayer_formula/README.md)), matching meteo.tn to the minute for any year
 - Auto-silence / Do Not Disturb during prayer times
 - GPS-based delegation auto-detection
 - Reschedules alarms on device boot
@@ -188,11 +216,11 @@ Four GitHub Actions workflows automate the project:
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
 | `ingest.yml` | Jan 1 yearly + manual | Fetch prayer data for the new year, commit CSVs |
-| `release.yml` | Tag push (`v*`) | Build Android APK/AAB + desktop installers (macOS/Windows/Linux), publish GitHub Release |
+| `release.yml` | Push to `main` with a `v…` commit message | Build the Android APK + desktop installers (macOS/Windows/Linux), publish GitHub Release |
 | `android-tests.yml` | Push / PR | Unit tests (Robolectric) + instrumented tests on emulator (API 26/30/33/34) |
 | `desktop-tests.yml` | Push / PR | Desktop build verification |
 
-Local releases can also be created with `./release.sh "description"`, which bumps the version, builds all artifacts, tags, and publishes.
+Releases are created with `./release.sh "description"`, which bumps the version, builds the Play bundle locally, tags, and pushes; CI then publishes the APK and desktop installers.
 
 ---
 
@@ -280,7 +308,7 @@ All prayer times are sourced from the **Institut National de la Météorologie**
 
 ## Privacy
 
-The Android app collects **no analytics and no device identifiers**. The only network request is an hourly check to GitHub Pages for official Ramadan/Eid date overrides, made only during a narrow window around moon-sighting dates (a few days per year). All prayer data is bundled in the APK. See [`docs/privacy-policy.html`](docs/privacy-policy.html) for the full privacy policy.
+The Android app collects **no analytics and no device identifiers**. The only network request is an hourly check to GitHub Pages for official Ramadan/Eid date overrides, made only during a narrow window around moon-sighting dates (a few days per year). Prayer times are computed on the device from bundled delegation data (see [`scripts/prayer_formula`](scripts/prayer_formula/README.md)). See [`docs/privacy-policy.html`](docs/privacy-policy.html) for the full privacy policy.
 
 ---
 

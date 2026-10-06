@@ -1,0 +1,92 @@
+{
+  "status": "PASS_STATIC_DELTA_REQUIRES_INDEPENDENT_REVIEW",
+  "createdAt": "2026-09-12T14:08:22.935562+00:00",
+  "proposedCompiler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal-v2\\scripts\\generate_neighborhoods.py",
+    "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+    "bytes": 543279
+  },
+  "previousCompiler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\scripts\\generate_neighborhoods.py",
+    "sha256": "44284f49f11daedf4f0b0918510f98d623f1966d8b6e953b9fa8e6317c0fb29b",
+    "bytes": 543211
+  },
+  "installedCompiler": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9",
+    "bytes": 498918
+  },
+  "schemaUnchanged": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\sector-owned-settlement-schema.json",
+    "sha256": "65bdcf606018eb5233423f5a4f8782cc7c57d93042ebe47c76688674ec124c87",
+    "bytes": 145829
+  },
+  "historicalCompilerReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-sector-owned-compiler-independent-review.json",
+    "sha256": "2457e63ebd7521be9fbf539a3f4a9d1054f2d11fb1a55e79f7e5c170ef307c39",
+    "bytes": 9690
+  },
+  "historicalSourceStageReadiness": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-display-stage-readiness.json",
+    "sha256": "08a6eb624ab5abc6ff0dcc7489f7d81eb83c10f681632e36bd2940155b79ccc7",
+    "bytes": 103390
+  },
+  "sourceStageHold": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-display-source-stage-independent-review.json",
+    "sha256": "ec0e820e48e92a472f19bd1b3deef082ddc6b595210eb61606fa0830f5fa149f",
+    "bytes": 4627
+  },
+  "readableDelta": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal-v2\\compiler-v1-to-v2.diff",
+    "sha256": "f65eb411eb15e444845e4c8a499751fe4f1fb1ca513580ed91c542ee101ef02a",
+    "bytes": 970
+  },
+  "wholeDiffFromInstalled": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal-v2\\compiler-from-installed-5680.diff",
+    "sha256": "cef4f904eaf166127045ee609bcf8b627c2d887ffa11142c5ae1efa1366a723c",
+    "bytes": 48797
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\prepare_tinja_soukra_compiler_v2.py",
+    "sha256": "03804adde38c71cbb236515e52fd012f5d6bd8e09c97b24550c4b990e8a3ae0d",
+    "bytes": 8507
+  },
+  "changedDefinitionsFromV1": [
+    "validate_sector_owned_settlement_preservation"
+  ],
+  "changedExistingDefinitionsFromInstalled": [
+    "build",
+    "validate_reviewed_point_base_display",
+    "verify_reviewed_point_base_names"
+  ],
+  "addedDefinitionsFromInstalled": [
+    "apply_sector_owned_settlement_proposals",
+    "derive_sector_owned_settlement_closure",
+    "reserve_sector_owned_settlement_proposals",
+    "sector_owned_reservation_ids",
+    "sector_owned_source_state",
+    "validate_sector_owned_settlement_preservation",
+    "verify_sector_owned_settlement_state"
+  ],
+  "exactExpressionBefore": "            or contexts[governor_id]['tags'].get('name:ar') != 'ولاية ' + review['expectedGovernor']['nomAr']):",
+  "exactExpressionAfter": "            or picker_review_name_key(contexts[governor_id]['tags'].get('name:ar', ''))\n                != picker_review_name_key('ولاية ' + review['expectedGovernor']['nomAr'])):",
+  "allOtherDefinitionsAndModuleStatementsByteOrAstExact": true,
+  "reversingSoleExpressionRestoresExactV1Bytes": true,
+  "existingNormalizerByteAndAstExactFromInstalled": true,
+  "olderTownGovernorComparisonAndEntireFunctionUnchanged": true,
+  "all42HistoricalStageFilesPreservedByteExact": true,
+  "sourceValuesUnchanged": {
+    "authenticGovernorId": "osm:relation:1435830",
+    "authenticGovernorArabicName": "ولاية أريانة",
+    "appGovernorNomAr": "اريانة"
+  },
+  "scopeQualification": "Only the new sector-owned settlement governor-name comparison uses the existing word-boundary and number-preserving normalizer. Both original spelling values, context IDs, source full tags, geographic codes, expected governor identity, metadata pins, boundary providers, curation bindings and strict owner records remain exact. This is not a name-based locality merge or an alteration of source evidence.",
+  "noOptionBehavior": "The sole changed expression is inside the newly optional validator. All three existing modified definitions and the other six new helpers are byte-identical to v1; v1 no-option restoration review therefore carries unchanged. Older town support is untouched.",
+  "syntaxCompilePassedWithoutExecution": true,
+  "productImportsOrExecution": false,
+  "generationPerformed": false,
+  "testsOrBuildsPerformed": false,
+  "liveWrites": false,
+  "sourceStageOrManifestWritten": false,
+  "nextGate": "Independent v2 delta review and mapping-preparation carry amendment, followed by a separately versioned source-stage delta and independent source successor review. No generation authorized by this report."
+}

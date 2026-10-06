@@ -1,0 +1,166 @@
+{
+  "status": "SOURCE_QUALIFIED_DERIVED_RETRIEVAL_MANIFEST",
+  "responses": [
+    {
+      "file": "inm-prayer-607-2026-09-12.json",
+      "sha256": "cdf5da5a76fd38d2b7afba892ba12445c22ef0da50df453df42e517b611a84f2",
+      "bytes": 535,
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/607/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/607/",
+      "status": 200,
+      "retrievedAtUtc": "2026-09-12T10:17:38.470275+00:00",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:37 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "535",
+        "Keep-Alive": "timeout=5, max=46",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "tlsVerification": true,
+      "originalRetrievalInventory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\reference-inventory.json",
+        "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401",
+        "bytes": 1665727
+      },
+      "originalRetrievalRecord": {
+        "expected": {
+          "governorateId": 365,
+          "delegationId": 607,
+          "governorate": {
+            "id": 365,
+            "nomFr": "Gafsa",
+            "nomAr": "قفصة",
+            "nomEn": "Gafsa",
+            "lat": 34.425,
+            "lng": 8.7842
+          },
+          "delegation": {
+            "id": 607,
+            "nomFr": "Mdhilla",
+            "nomAr": "المظيلة",
+            "nomEn": "Mdhilla",
+            "lat": 34.25,
+            "lng": 8.76
+          },
+          "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/607/"
+        },
+        "attempt": 1,
+        "retrievedAt": "2026-09-12T10:17:38.470275+00:00",
+        "reused": false,
+        "status": 200,
+        "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/607/",
+        "headers": {
+          "Date": "Sat, 12 Sep 2026 10:17:37 GMT",
+          "X-Content-Type-Options": "nosniff, nosniff",
+          "Cache-Control": "must-revalidate, no-cache, private",
+          "X-UA-Compatible": "IE=edge",
+          "Content-language": "fr",
+          "X-Frame-Options": "SAMEORIGIN",
+          "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+          "Vary": "",
+          "Content-Length": "535",
+          "Keep-Alive": "timeout=5, max=46",
+          "Connection": "Keep-Alive",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-607-2026-09-12.json",
+          "sha256": "cdf5da5a76fd38d2b7afba892ba12445c22ef0da50df453df42e517b611a84f2",
+          "bytes": 535
+        },
+        "provenance": "Original HTTP response body bytes after content decoding; not rewritten.",
+        "analysis": {
+          "classification": "VALID_DAILY_REFERENCE",
+          "actual": {
+            "dailyRecordId": 853492,
+            "gouvernorat": {
+              "id": 365,
+              "intituleFr": "Gafsa",
+              "intituleAr": "قفصة",
+              "intituleAn": "Gafsa"
+            },
+            "delegation": {
+              "id": 607,
+              "intituleFr": "Mdhilla",
+              "intituleAr": "المظيلة",
+              "intituleAn": "Mdhilla",
+              "parent": {
+                "id": 365,
+                "intituleFr": "Gafsa",
+                "intituleAr": "قفصة",
+                "intituleAn": "Gafsa"
+              }
+            },
+            "date": "2026-09-12 00:00",
+            "year": 2026,
+            "active": true,
+            "method": "GET",
+            "lat": "34.293",
+            "lng": " 8.751",
+            "times": {
+              "sobh": "04:38",
+              "dhohr": "12:28",
+              "aser": "15:54",
+              "magreb": "18:41",
+              "isha": "20:04"
+            }
+          },
+          "validationErrors": [],
+          "nameDifferences": [],
+          "coordinateComparison": {
+            "numeric": {
+              "lat": "34.293",
+              "lng": "8.751"
+            },
+            "matchesCurrentAppNumbersExactly": false,
+            "currentApp": {
+              "lat": 34.25,
+              "lng": 8.76
+            }
+          }
+        },
+        "accessChallengeSuspected": false,
+        "completedAt": "2026-09-12T10:17:38.706506+00:00"
+      },
+      "provenance": "Derived retrieval descriptor for an exact-byte relocation. Original response body and original retrieval record remain pinned; descriptor is not an HTTP response."
+    },
+    {
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/607/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/607/",
+      "status": 200,
+      "file": "inm-sun-607-2026-09-12.json",
+      "sha256": "5870f50370a213668643f86f34fec8385035b916022d70dd4ea9845e5dc3c069",
+      "bytes": 504,
+      "retrievedAtUtc": "2026-09-12T21:22:06.616400+00:00",
+      "tlsVerification": true,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 21:22:06 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "504",
+        "Keep-Alive": "timeout=5, max=88",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "provenance": "Derived retrieval descriptor for an exact-byte relocation. Original response body and original retrieval record remain pinned; descriptor is not an HTTP response.",
+      "originalRetrievalRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-latin-primary-arabic-alias-review-20260912\\inm-sun-607-retrieval.json",
+        "sha256": "483989fbe101d16579afb07cf311f95e9e56ae39fc4166002ca2167603813f90",
+        "bytes": 991
+      }
+    }
+  ],
+  "scope": "Exact daily prayer/sun responses for607 only; no broad INM inventory migration."
+}

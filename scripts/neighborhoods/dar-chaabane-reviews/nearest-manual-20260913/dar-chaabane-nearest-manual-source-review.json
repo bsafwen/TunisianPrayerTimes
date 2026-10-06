@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "status": "source_review_complete_policy_proposal_only",
+  "primarySources": [
+    {
+      "url": "https://www.nabeul.gov.tn/fr/panorama-des-villes/",
+      "resolvedUrl": "https://www.nabeul.gov.tn/fr/panorama-des-villes/",
+      "statusCode": 200,
+      "retrievedAt": "2026-09-07T21:14:32.326381+00:00",
+      "contentType": "text/html; charset=UTF-8",
+      "lastModified": null,
+      "artifact": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\dar-chaabane-current-identity-review\\nabeul-panorama.html",
+        "sha256": "6a149fea33192d62ddd6da095c85ebf19ec465bbf3d843443de6e6b91d110653",
+        "bytes": 128593
+      },
+      "role": "Governorate primary city description: two named settlements form the combined town; not a boundary source."
+    },
+    {
+      "url": "https://www.nabeul.gov.tn/fr/administration-du-gouvernorat/les-municipalites-2/",
+      "resolvedUrl": "https://www.nabeul.gov.tn/fr/administration-du-gouvernorat/les-municipalites-2/",
+      "statusCode": 200,
+      "retrievedAt": "2026-09-07T21:14:33.558012+00:00",
+      "contentType": "text/html; charset=UTF-8",
+      "lastModified": null,
+      "artifact": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\dar-chaabane-current-identity-review\\nabeul-municipalities.html",
+        "sha256": "9e4a2e8b9593a0ebbcae7344e61b53bf1e288601814c605fa9e6e1e47c2619ee",
+        "bytes": 170132
+      },
+      "role": "Governorate primary directory identifies municipality and delegation under the combined name."
+    },
+    {
+      "url": "https://www.nabeul.gov.tn/fr/les-pierres-de-taile-de-dar-chaabane/",
+      "resolvedUrl": "https://www.nabeul.gov.tn/fr/les-pierres-de-taile-de-dar-chaabane/",
+      "statusCode": 200,
+      "retrievedAt": "2026-09-07T21:14:34.725697+00:00",
+      "contentType": "text/html; charset=UTF-8",
+      "lastModified": null,
+      "artifact": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\dar-chaabane-current-identity-review\\nabeul-stonecraft.html",
+        "sha256": "8d9cf075ed4e18b54bb3f770d10bc741305020e39dd20c66203167a8230d286a",
+        "bytes": 107498
+      },
+      "role": "Independent page from same primary publisher corroborates two villages forming the same town."
+    }
+  ],
+  "primaryFindings": [
+    {
+      "source": "nabeul-panorama.html",
+      "shortQuote": "Ces deux villages formant une ville : Dar Châabane et El Fehry.",
+      "finding": "Primary governorate prose explicitly describes the combined city; no boundary supplied."
+    },
+    {
+      "source": "nabeul-stonecraft.html",
+      "finding": "A separate page by the same primary publisher independently reiterates both villages form the same town."
+    },
+    {
+      "source": "nabeul-municipalities.html",
+      "finding": "Official directory uses Dar Chaabane El Fehri for municipality and delegation; does not assert their boundaries equal the town residential."
+    }
+  ],
+  "identity": {
+    "residentialId": "osm:way:174739936",
+    "absorbedTownNodeId": "osm:node:1851671410",
+    "townBaseId": "delegation:468",
+    "distinctSectorId": "osm:relation:7103335",
+    "cityArabic": "دار شعبان الفهري",
+    "sectorArabic": "دار شعبان",
+    "cityNodeAndResidentialSharedWikidata": "Q2478232",
+    "cityArabicExactAcrossBaseResidentialNode": true,
+    "perIdLatinEquivalence": "Residential Dar Chaâbane El Fehri and base Dar Chaabane Elfehri refer to the combined city; absorbed town node uses short Dar Chaâbane/Dar Chaabane. Exact Arabic/source identity plus primary city prose supports this one equivalence, not a global alias merge.",
+    "uniqueSourceNamePeerIds": [
+      "osm:node:1851671410",
+      "osm:relation:7103335",
+      "osm:relation:7103336",
+      "osm:relation:7145300",
+      "osm:way:174739936"
+    ],
+    "uniqueCurrentCodeClaims": {
+      "155251": [
+        "osm:relation:7103335"
+      ],
+      "155252": [
+        "osm:relation:7103336"
+      ],
+      "1552": [
+        "osm:relation:7145300"
+      ]
+    },
+    "uniqueExactArabicBaseIds": [
+      "delegation:468"
+    ],
+    "DarRawMetadataUnchangedSincePriorReview": true,
+    "noCurrentCurationOrOfficialBoundaryOverride": true
+  },
+  "sourceAssertions": [
+    {
+      "id": "osm:way:174739936",
+      "originalKind": "residential",
+      "originalTags": {
+        "landuse": "residential",
+        "name": "دار شعبان الفهري",
+        "name:ar": "دار شعبان الفهري",
+        "name:fr": "Dar Chaâbane El Fehri",
+        "wikidata": "Q2478232",
+        "wikimedia_commons": "Category:Dar Chaâbane",
+        "wikipedia": "ar:دار شعبان الفهري"
+      },
+      "originalGeometrySha256": "352372b42bb57863998ec3e5e3de90e79c7370ff3a26462daa10bc2c7a0f3f04",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "دار شعبان الفهري",
+        "name:ar": "دار شعبان الفهري",
+        "name:fr": "Dar Chaâbane El Fehri",
+        "wikidata": "Q2478232",
+        "wikimedia_commons": "Category:Dar Chaâbane",
+        "wikipedia": "ar:دار شعبان الفهري"
+      },
+      "effectiveGeometrySha256": "352372b42bb57863998ec3e5e3de90e79c7370ff3a26462daa10bc2c7a0f3f04",
+      "freshSourceEqualsCachedSource": true,
+      "expectedCuration": null,
+      "expectedMetadata": {
+        "id": "osm:way:174739936",
+        "sourceId": "osm",
+        "name": "دار شعبان الفهري",
+        "aliases": [
+          "Dar Caɛban",
+          "Dar Chaabane",
+          "Dar Chaâbane",
+          "Dar Chaâbane El Fehri",
+          "Дар-Шаабан"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية نابل",
+        "contextAliases": [],
+        "governorateId": 350,
+        "lat": 36.465982,
+        "lng": 10.74479,
+        "delegationId": 623,
+        "hasBoundary": true,
+        "bbox": [
+          10.73136,
+          36.456459,
+          10.758713,
+          36.475599
+        ],
+        "areaKm2": 3.1749449639112854,
+        "pickerGroupId": "osm:relation:7103335",
+        "offset": 5260804,
+        "length": 788
+      },
+      "packedGeometrySha256": "2f06a184fc3bb7dae0a2e17bd955eea485af27b66619be0daf11d19e40a33f58"
+    },
+    {
+      "id": "osm:relation:7103335",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دار شعبان",
+        "name:ar": "دار شعبان",
+        "name:fr": "Dar Chaabane",
+        "ref:tn:codegeo": "155251"
+      },
+      "originalGeometrySha256": "3176dcdd680c683123e26a8474d17a9fde549e913a451c87ef865e30009d53b4",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دار شعبان",
+        "name:ar": "دار شعبان",
+        "name:fr": "Dar Chaabane",
+        "ref:tn:codegeo": "155251"
+      },
+      "effectiveGeometrySha256": "3176dcdd680c683123e26a8474d17a9fde549e913a451c87ef865e30009d53b4",
+      "freshSourceEqualsCachedSource": true,
+      "expectedCuration": null,
+      "expectedMetadata": {
+        "id": "osm:relation:7103335",
+        "sourceId": "osm",
+        "name": "دار شعبان",
+        "aliases": [
+          "Dar Chaabane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دار شعبان الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.469825,
+        "lng": 10.748533,
+        "delegationId": 468,
+        "hasBoundary": true,
+        "bbox": [
+          10.721101,
+          36.455763,
+          10.768015,
+          36.484163
+        ],
+        "areaKm2": 5.5608663602413095,
+        "pickerGroupId": "osm:relation:7103335",
+        "offset": 387420,
+        "length": 884
+      },
+      "packedGeometrySha256": "300ac61140a0fe78bcf8f06f6d797f0881d53347548d6fff3a5f1ab48f9d4d82"
+    },
+    {
+      "id": "osm:relation:7103336",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الفهري",
+        "name:ar": "الفهري",
+        "name:fr": "El Fehri",
+        "ref:tn:codegeo": "155252"
+      },
+      "originalGeometrySha256": "ca2d8ee0fce72d1f38fd75ac4d88a66f51c4c893a955c9c8fc71197cc2a9f4fe",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الفهري",
+        "name:ar": "الفهري",
+        "name:fr": "El Fehri",
+        "ref:tn:codegeo": "155252"
+      },
+      "effectiveGeometrySha256": "ca2d8ee0fce72d1f38fd75ac4d88a66f51c4c893a955c9c8fc71197cc2a9f4fe",
+      "freshSourceEqualsCachedSource": true,
+      "expectedCuration": null,
+      "expectedMetadata": {
+        "id": "osm:relation:7103336",
+        "sourceId": "osm",
+        "name": "الفهري",
+        "aliases": [
+          "El Fehri"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دار شعبان الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.4533,
+        "lng": 10.758472,
+        "delegationId": 468,
+        "hasBoundary": true,
+        "bbox": [
+          10.744748,
+          36.44429,
+          10.770937,
+          36.462491
+        ],
+        "areaKm2": 2.8148434433263523,
+        "pickerGroupId": "osm:relation:7103336",
+        "offset": 388304,
+        "length": 868
+      },
+      "packedGeometrySha256": "019e1552949342515cf581ab23243fe665ee098bfa04dcafee1458e4f045fd30"
+    },
+    {
+      "id": "osm:relation:7145300",
+      "originalKind": "delegation",
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Dar Châabane El Fehri",
+        "boundary": "administrative",
+        "name": "معتمدية دار شعبان الفهري",
+        "name:ar": "معتمدية دار شعبان الفهري",
+        "name:fr": "Délégation Dar Chaabane El Fehri",
+        "ref:tn:codegeo": "1552",
+        "ref:tn:hasc_2": "TN.NB.DC",
+        "wikidata": "Q3015928"
+      },
+      "originalGeometrySha256": "fb0f0a47c339f7238e56ad0739a4d9415082ed8c61dabe7952434982d2e75750",
+      "effectiveKind": "delegation",
+      "effectiveTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Dar Châabane El Fehri",
+        "boundary": "administrative",
+        "name": "معتمدية دار شعبان الفهري",
+        "name:ar": "معتمدية دار شعبان الفهري",
+        "name:fr": "Délégation Dar Chaabane El Fehri",
+        "ref:tn:codegeo": "1552",
+        "ref:tn:hasc_2": "TN.NB.DC",
+        "wikidata": "Q3015928"
+      },
+      "effectiveGeometrySha256": "fb0f0a47c339f7238e56ad0739a4d9415082ed8c61dabe7952434982d2e75750",
+      "freshSourceEqualsCachedSource": true,
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:node:1851671410",
+      "originalKind": "town",
+      "originalTags": {
+        "name": "دار شعبان الفهري",
+        "name:ar": "دار شعبان الفهري",
+        "name:en": "Dar Chaabane",
+        "name:fr": "Dar Chaâbane",
+        "name:kab": "Dar Caɛban",
+        "name:ru": "Дар-Шаабан",
+        "place": "town",
+        "wikidata": "Q2478232",
+        "wikimedia_commons": "Category:Dar Chaâbane",
+        "wikipedia": "en:Dar Chaabane"
+      },
+      "originalGeometrySha256": "7cb7aab7d056aed46e3f271a348c16f9f962bdf06c8a6dae7d65d70878f3924a",
+      "effectiveKind": "town",
+      "effectiveTags": {
+        "name": "دار شعبان الفهري",
+        "name:ar": "دار شعبان الفهري",
+        "name:en": "Dar Chaabane",
+        "name:fr": "Dar Chaâbane",
+        "name:kab": "Dar Caɛban",
+        "name:ru": "Дар-Шаабан",
+        "place": "town",
+        "wikidata": "Q2478232",
+        "wikimedia_commons": "Category:Dar Chaâbane",
+        "wikipedia": "en:Dar Chaabane"
+      },
+      "effectiveGeometrySha256": "7cb7aab7d056aed46e3f271a348c16f9f962bdf06c8a6dae7d65d70878f3924a",
+      "freshSourceEqualsCachedSource": true,
+      "expectedCuration": null
+    }
+  ],
+  "context": {
+    "currentOfficialRecords": [
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1552",
+        "delegationFr": "Dar chaabane el fehr",
+        "delegationAr": "دار شعبان الفهري",
+        "sectorCode": "155251",
+        "sectorFr": "Dar chaabane",
+        "sectorAr": "دار شعبان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11561,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 431,
+          "Nombre_de_menages_par_Secteurs.xlsx": 430
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1552",
+        "delegationFr": "Dar chaabane el fehr",
+        "delegationAr": "دار شعبان الفهري",
+        "sectorCode": "155252",
+        "sectorFr": "El fehri",
+        "sectorAr": "الفهري",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11595,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 433,
+          "Nombre_de_menages_par_Secteurs.xlsx": 432
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1552",
+        "delegationFr": "Dar chaabane el fehr",
+        "delegationAr": "دار شعبان الفهري",
+        "sectorCode": "155253",
+        "sectorFr": "El frinine",
+        "sectorAr": "الفرينين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11629,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 435,
+          "Nombre_de_menages_par_Secteurs.xlsx": 434
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1552",
+        "delegationFr": "Dar chaabane el fehr",
+        "delegationAr": "دار شعبان الفهري",
+        "sectorCode": "155254",
+        "sectorFr": "Amroun",
+        "sectorAr": "عمرون",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11663,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 436,
+          "Nombre_de_menages_par_Secteurs.xlsx": 435
+        }
+      }
+    ],
+    "officialWorkbookSources": [
+      {
+        "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+          "ETag": "\"8d1a5c-636842926ae2a\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "9247324",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 9247324,
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sheet": "Population"
+      },
+      {
+        "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+          "ETag": "\"b8855-6433d8623825d\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "755797",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 755797,
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sheet": "Logements"
+      },
+      {
+        "file": "Nombre_de_menages_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+          "ETag": "\"9ea73-6433d95004ce0\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "649843",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 649843,
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sheet": "Ménages"
+      }
+    ],
+    "originalDelegationSource": {
+      "id": "osm:relation:7145300",
+      "originalKind": "delegation",
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Dar Châabane El Fehri",
+        "boundary": "administrative",
+        "name": "معتمدية دار شعبان الفهري",
+        "name:ar": "معتمدية دار شعبان الفهري",
+        "name:fr": "Délégation Dar Chaabane El Fehri",
+        "ref:tn:codegeo": "1552",
+        "ref:tn:hasc_2": "TN.NB.DC",
+        "wikidata": "Q3015928"
+      },
+      "originalGeometrySha256": "fb0f0a47c339f7238e56ad0739a4d9415082ed8c61dabe7952434982d2e75750",
+      "effectiveKind": "delegation",
+      "effectiveTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Dar Châabane El Fehri",
+        "boundary": "administrative",
+        "name": "معتمدية دار شعبان الفهري",
+        "name:ar": "معتمدية دار شعبان الفهري",
+        "name:fr": "Délégation Dar Chaabane El Fehri",
+        "ref:tn:codegeo": "1552",
+        "ref:tn:hasc_2": "TN.NB.DC",
+        "wikidata": "Q3015928"
+      },
+      "effectiveGeometrySha256": "fb0f0a47c339f7238e56ad0739a4d9415082ed8c61dabe7952434982d2e75750",
+      "freshSourceEqualsCachedSource": true,
+      "expectedCuration": null
+    },
+    "fullResidentialCoveredBySourceDelegation": false,
+    "originalResidentialOutsideSourceDelegationMeters2": 582348.6770379124,
+    "originalResidentialOutsideSourceDelegationFraction": 0.18382160348137527,
+    "allFourReferencePointsCoveredBySourceDelegation": true,
+    "scopeLimit": "Residential crosses the current source delegation outline; do not assert whole-footprint context equality. The named node and all references share1552 context, while shared exact city identity is the display association basis."
+  },
+  "currentBase": {
+    "id": 468,
+    "nomFr": "Dar Chaabane Elfehri",
+    "nomAr": "دار شعبان الفهري",
+    "nomEn": "Dar Chaabane Elfehri",
+    "lat": 36.46,
+    "lng": 10.76,
+    "governorateId": 350
+  },
+  "geometryAndPrayerFacts": {
+    "referencePoints": [
+      {
+        "role": "raw_residential_manual_reference",
+        "lat": 36.465982,
+        "lng": 10.74479,
+        "nearestUsableSources": [
+          {
+            "id": 623,
+            "name": "نابل",
+            "distanceKm": 1.2731349096201334
+          },
+          {
+            "id": 468,
+            "name": "دار شعبان الفهري",
+            "distanceKm": 1.514124138655302
+          },
+          {
+            "id": 460,
+            "name": "بني خيار ",
+            "distanceKm": 3.218233710446823
+          }
+        ],
+        "containment": {
+          "osm:way:174739936": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0,
+            "packedCovers": true,
+            "packedDistanceOutsideMeters": 0.0
+          },
+          "osm:relation:7103335": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0,
+            "packedCovers": true,
+            "packedDistanceOutsideMeters": 0.0
+          },
+          "osm:relation:7103336": {
+            "originalCovers": false,
+            "originalDistanceOutsideMeters": 983.3165895111046,
+            "packedCovers": false,
+            "packedDistanceOutsideMeters": 983.3534434831023
+          },
+          "osm:relation:7145300": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0
+          }
+        }
+      },
+      {
+        "role": "raw_sector_manual_reference",
+        "lat": 36.469825,
+        "lng": 10.748533,
+        "nearestUsableSources": [
+          {
+            "id": 468,
+            "name": "دار شعبان الفهري",
+            "distanceKm": 1.4983529516036393
+          },
+          {
+            "id": 623,
+            "name": "نابل",
+            "distanceKm": 1.8124718866525071
+          },
+          {
+            "id": 460,
+            "name": "بني خيار ",
+            "distanceKm": 3.0185799418477703
+          }
+        ],
+        "containment": {
+          "osm:way:174739936": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0,
+            "packedCovers": true,
+            "packedDistanceOutsideMeters": 0.0
+          },
+          "osm:relation:7103335": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0,
+            "packedCovers": true,
+            "packedDistanceOutsideMeters": 0.0
+          },
+          "osm:relation:7103336": {
+            "originalCovers": false,
+            "originalDistanceOutsideMeters": 1228.5905153600406,
+            "packedCovers": false,
+            "packedDistanceOutsideMeters": 1228.5891418692388
+          },
+          "osm:relation:7145300": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0
+          }
+        }
+      },
+      {
+        "role": "absorbed_town_node",
+        "lat": 36.4666209,
+        "lng": 10.7478479,
+        "nearestUsableSources": [
+          {
+            "id": 468,
+            "name": "دار شعبان الفهري",
+            "distanceKm": 1.3126243357780665
+          },
+          {
+            "id": 623,
+            "name": "نابل",
+            "distanceKm": 1.4861031889242506
+          },
+          {
+            "id": 460,
+            "name": "بني خيار ",
+            "distanceKm": 2.968027186464792
+          }
+        ],
+        "containment": {
+          "osm:way:174739936": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0,
+            "packedCovers": true,
+            "packedDistanceOutsideMeters": 0.0
+          },
+          "osm:relation:7103335": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0,
+            "packedCovers": true,
+            "packedDistanceOutsideMeters": 0.0
+          },
+          "osm:relation:7103336": {
+            "originalCovers": false,
+            "originalDistanceOutsideMeters": 930.850766627467,
+            "packedCovers": false,
+            "packedDistanceOutsideMeters": 930.8597826937054
+          },
+          "osm:relation:7145300": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0
+          }
+        }
+      },
+      {
+        "role": "existing_meteo_base468",
+        "lat": 36.46,
+        "lng": 10.76,
+        "nearestUsableSources": [
+          {
+            "id": 468,
+            "name": "دار شعبان الفهري",
+            "distanceKm": 0.0
+          },
+          {
+            "id": 460,
+            "name": "بني خيار ",
+            "distanceKm": 1.7886191604806476
+          },
+          {
+            "id": 623,
+            "name": "نابل",
+            "distanceKm": 2.049704229025012
+          }
+        ],
+        "containment": {
+          "osm:way:174739936": {
+            "originalCovers": false,
+            "originalDistanceOutsideMeters": 412.44561476959973,
+            "packedCovers": false,
+            "packedDistanceOutsideMeters": 412.4618319009318
+          },
+          "osm:relation:7103335": {
+            "originalCovers": false,
+            "originalDistanceOutsideMeters": 93.70527549682521,
+            "packedCovers": false,
+            "packedDistanceOutsideMeters": 93.7490744276129
+          },
+          "osm:relation:7103336": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0,
+            "packedCovers": true,
+            "packedDistanceOutsideMeters": 0.0
+          },
+          "osm:relation:7145300": {
+            "originalCovers": true,
+            "originalDistanceOutsideMeters": 0.0
+          }
+        }
+      }
+    ],
+    "metricCrs": "EPSG:32632",
+    "nearestMethod": "Haversine6371km over258 sources eligible in every currently audited2026 month; tie ID. Existing monthly audit reused, no tests rerun.",
+    "outsideSectorFraction": 0.19042041621479602,
+    "hypotheticalTownManualReferenceShiftMeters": 283.0726251094415,
+    "base468InReviewedCoordinateCorrections": false,
+    "baseCoordinateProvenance": "Unchanged legacy bundled coordinate; no authoritative-centre claim."
+  },
+  "reviewedAt": "2026-09-13",
+  "historicalPolicyReview": {
+    "file": "dar-chaabane-reviews/dar-chaabane-complete-display-transition-review.json",
+    "sha256": "fc535dce2f0268940743580ec2aab381d3f196f887c57efdfdef669efdc2e09e"
+  },
+  "inputPins": {
+    "sourcePbf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+      "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "bytes": 84083153
+    },
+    "sourceFacts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\dar-chaabane-complete-transition-review\\direct-pbf-source-facts.json",
+      "sha256": "455683e0a6c82d563e5513f32f1b80d8b8faf41eea87081d3b7ed52eb3461da8",
+      "bytes": 77812
+    },
+    "officialRegistry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    }
+  },
+  "historicalInputPinQualification": "These three immutable source pins are retained from the historical review. No historical metadata, governor or whole-picker hash is relabeled as the final post-Sened active source epoch.",
+  "recommendedPolicy": {
+    "method": "reviewed_city_display_association",
+    "sourceIdentitySupported": true,
+    "requiresRootPolicyAcceptance": true,
+    "scope": "Exact city display identity with nearest available prayer selection at its retained raw locality representative.",
+    "preserveRawRepresentativeAndDefault": true,
+    "preserveCanonicalDisplayIdentity": true,
+    "selectNearestAvailableAtRetainedRepresentative": true,
+    "recomputeSavedManualCanonicalIds": true,
+    "preserveSavedRawManual623AndGpsSources": true,
+    "basePointOutsideResidentialAcknowledged": true,
+    "historicalFixed468PolicySuperseded": true,
+    "townNodeIsIdentityEvidenceOnly": true,
+    "notACompleteTownBoundaryClaim": true,
+    "noGenericOrTransitiveNameMatching": true
+  },
+  "manualPrayerSelection": {
+    "method": "nearest_available_at_retained_locality",
+    "displayGroupId": "delegation:468",
+    "representativeId": "osm:way:174739936",
+    "representative": {
+      "lat": 36.465982,
+      "lng": 10.74479
+    },
+    "expectedCurrentNearestSourceId": 623,
+    "expectedNearestSourceCoordinates": {
+      "lat": 36.4561,
+      "lng": 10.7376
+    },
+    "expectedNearestDistanceKm": 1.2731349096201334,
+    "historicalCanonicalSourceId": 468,
+    "distanceMetric": "haversine_6371km_distance_then_id",
+    "savedManualCanonicalIdsRecompute": true,
+    "savedRawLocalityIdsPreserved": true,
+    "gpsUsesActualFix": true
+  },
+  "completeTransition": {
+    "beforeGroups": [
+      {
+        "id": "osm:relation:7103335",
+        "memberIds": [
+          "osm:relation:7103335",
+          "osm:way:174739936"
+        ],
+        "canonicalName": "دار شعبان",
+        "manualSource": 468
+      },
+      {
+        "id": "delegation:468",
+        "memberIds": [
+          "delegation:468"
+        ],
+        "canonicalName": "دار شعبان الفهري",
+        "manualSource": 468
+      }
+    ],
+    "afterGroups": [
+      {
+        "id": "osm:relation:7103335",
+        "memberIds": [
+          "osm:relation:7103335"
+        ],
+        "canonicalName": "دار شعبان",
+        "manualSource": 468
+      },
+      {
+        "id": "delegation:468",
+        "memberIds": [
+          "delegation:468",
+          "osm:way:174739936"
+        ],
+        "canonicalName": "دار شعبان الفهري",
+        "manualSource": 623
+      }
+    ],
+    "rawChanges": [
+      {
+        "id": "osm:way:174739936",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7103335",
+        "after": "delegation:468"
+      }
+    ],
+    "afterDistinctSourceMemberIds": [
+      "osm:way:174739936"
+    ],
+    "targetMemberIdsBefore": [
+      "delegation:468"
+    ],
+    "noNewRawIds": true,
+    "allRawNamesAliasesContextsCoordinatesDefaultsPreserved": true,
+    "allPackedBytesPreserved": true,
+    "nodeRemainsAbsorbed": true,
+    "retirementReplacementReviewedNameChanges": false
+  },
+  "transitionQualification": "beforeGroups and rawChanges describe the immutable original distinct-city grouping transition. afterGroups now states the approved nearest-source manual policy; this successor itself changes no raw metadata or groups.",
+  "savedSelectionAndGpsConsequences": [
+    {
+      "savedId": "osm:way:174739936",
+      "origin": "manual",
+      "sourceBefore": 623,
+      "sourceAfter": 623,
+      "reason": "Resolve the same saved raw ID at its unchanged representative. An explicit canonical city-row tap now also chooses623."
+    },
+    {
+      "savedId": "osm:relation:7103335",
+      "origin": "manual",
+      "sourceBefore": 468,
+      "sourceAfter": 468,
+      "reason": "The separate sector and its representative/default remain unchanged."
+    },
+    {
+      "savedId": "delegation:468",
+      "origin": "manual",
+      "sourceBefore": 468,
+      "sourceAfter": 623,
+      "reason": "Keep the canonical display ID/name; evaluate its retained residential representative against currently available source coordinates."
+    },
+    {
+      "savedId": "any retained raw ID",
+      "origin": "GPS",
+      "sourceBefore": "source selected from actual GPS fix",
+      "sourceAfter": "same persisted source",
+      "reason": "MainScreen skips manual-source repair for GPS; selected() copies the stored delegation source. New GPS fixes ignore picker grouping and calculate nearest source from actual coordinates."
+    }
+  ],
+  "existingRuntimeQualification": "The approved runtime successor resolves merged canonical manual choices at authentic retained raw coordinates and repairs saved canonical IDs. Saved raw IDs and actual-GPS source/identity remain unchanged.",
+  "implementationRequirements": [
+    "Preserve the exact DarChaabane city/residential versus official-sector distinct choices and every raw geographic field.",
+    "Accept only the explicit nearest-at-retained-locality policy and the exact retained way174739936 point; never substitute the absorbed town point or prayer source coordinate.",
+    "Recompute the nearest complete-source winner with distance then source-ID ordering; require current623, exact retained point and source623 coordinate/distance facts.",
+    "Keep immutable historical proof/source review and beforeGroups. Only the active after/manual source for delegation468 becomes623.",
+    "Assemble against root-supplied final post-Sened picker/curation pins. Preserve all other picker values, all prior curation objects/tokens except the two operative624/485 proof references, and all historical owner proofs.",
+    "This policy package requires the approved two-file runtime patch; it does not implement runtime behavior by rewriting metadata defaults."
+  ],
+  "limitations": [
+    "The residential polygon is not certified as the full town or municipality; its source delegation noncontainment is explicit.",
+    "Legacy base468 is outside the residential by412.46m; no source here certifies an authoritative town centre or warrants moving it.",
+    "The absorbed town node corroborates city identity; its coordinate is not substituted for any manual or timetable source.",
+    "Current source-name inventory covers catalog-eligible administrative/place/residential objects, not every address or facility object. All five matching eligible source identities are accounted for.",
+    "No official electoral-part geometry import is proposed. Dar/ElFehri boundary research is separate from this identity-only association.",
+    "Source and compiler proposal only, not installed. Final source-manifest hashes are deliberately unbound until the separate Sened batch completes."
+  ]
+}

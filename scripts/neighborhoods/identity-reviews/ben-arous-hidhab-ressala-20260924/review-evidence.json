@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-24",
+  "status": "retain_distinct_neighborhood_labels_boundary_provisional",
+  "scope": "Two optional Ben Arous neighborhood polygons contained within larger same-named official imadas",
+  "catalogSha256": "d5a2ed14e35705414490667bbf161fdd632b8a170d6fd669aaa090b7bdd571f5",
+  "method": "Compare current app feature areas and containment; search each public place on separate existing Android emulators in Google Maps; inspect result title, category context, and displayed dotted place outline. No Google vector or raster content is copied into the app.",
+  "rows": [
+    {
+      "appId": "osm:way:244105513",
+      "name": "حي الهضاب",
+      "appKind": "residential",
+      "appAreaKm2": 1.195032085840042,
+      "containingOfficialImadaId": "osm:relation:7174581",
+      "containingOfficialImadaName": "الهضاب",
+      "officialImadaAreaKm2": 8.947859698405512,
+      "appPolygonPercentInsideOfficialImada": 99.99816,
+      "appPolygonAsPercentOfOfficialImadaAreaApprox": 13.36,
+      "mapsDevice": "emulator-5554",
+      "mapsQuery": "حي الهضاب فوشانة",
+      "mapsVisibleResult": "Cité El Hidhab / حي الهضاب, Fouchana, Tunisia",
+      "mapsOutlineObserved": "Dotted place boundary surrounds a smaller urban neighborhood; it is not a residence or single building result.",
+      "screenshotTaskWorkPath": "work/ben-arous-nonsectors-review-20260924/hidhab-google-maps.png",
+      "screenshotSha256": "79286ac0a09fc889163ae96167bb74d482d9df457738167119316fa8b3bf0ffb",
+      "decision": "Retain as a separate neighborhood in the picker and GPS catalog. One-way containment in the larger official imada does not make this a duplicate."
+    },
+    {
+      "appId": "osm:way:35085613",
+      "name": "حي الرسالة",
+      "appKind": "residential",
+      "appAreaKm2": 0.23876492063214,
+      "containingOfficialImadaId": "osm:relation:7174562",
+      "containingOfficialImadaName": "الرسالة",
+      "officialImadaAreaKm2": 37.93678925927476,
+      "appPolygonPercentInsideOfficialImada": 100.0,
+      "appPolygonAsPercentOfOfficialImadaAreaApprox": 0.63,
+      "mapsDevice": "emulator-5556",
+      "mapsQuery": "حي الرسالة مرناق",
+      "mapsVisibleResult": "حي الرسالة, Tunisia",
+      "mapsOutlineObserved": "Dotted place boundary surrounds a smaller neighborhood around the Crétéville area; it is not a residence or single building result.",
+      "screenshotTaskWorkPath": "work/ben-arous-nonsectors-review-20260924/ressala-google-maps.png",
+      "screenshotSha256": "720ce904865b4edf08aadf38ed6c3cb94151ea438d721cd9a8b66ae5291e8160",
+      "decision": "Retain as a separate neighborhood in the picker and GPS catalog. It is a small named place within the much larger official imada."
+    }
+  ],
+  "limits": "The Google screenshots confirm public place identity and show a displayed outline. This review does not extract the Google outline coordinates or quantify agreement with the installed OSM polygons. The official imada boundaries also remain provisional where sourced from OSM."
+}

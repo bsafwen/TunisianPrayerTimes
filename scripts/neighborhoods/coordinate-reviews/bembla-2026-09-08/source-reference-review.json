@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "supported_settlement_reference_and_exact_existing_point_base_association",
+  "baselineMetadataSha256": "454aa824d70e9bbcd3ef339971c9124ef269c7b824d758bf8e85024ca23fd15f",
+  "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineGovernorAssetSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+  "baselineCoordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+  "sourceNode": {
+    "cached": {
+      "id": "osm:node:1212253279",
+      "tags": {
+        "addr:city": "Bembla",
+        "addr:governorate": "Monastir",
+        "name": "بنبلة",
+        "name:ar": "بنبلة",
+        "name:en": "Bembla",
+        "name:fr": "Bembla",
+        "place": "village",
+        "wikidata": "Q816364",
+        "wikipedia": "en:Bembla"
+      },
+      "lat": 35.6919328,
+      "lng": 10.7921125
+    },
+    "liveAttributes": {
+      "id": "1212253279",
+      "visible": "true",
+      "version": "16",
+      "changeset": "179509225",
+      "timestamp": "2026-03-07T20:28:17Z",
+      "user": "Johnwhelan",
+      "uid": "186592",
+      "lat": "35.6919328",
+      "lon": "10.7921125"
+    },
+    "allTagsAndCoordinatesEqual": true,
+    "provenanceDistinction": "The fresh public API response corroborates the cached source; it is not relabeled as a PBF extract."
+  },
+  "sourceReferenceId": 603,
+  "expectedBase": {
+    "id": 603,
+    "nomFr": "Benbla",
+    "nomAr": "بنبلة",
+    "nomEn": "Benbla",
+    "lat": 35.682,
+    "lng": 10.7662
+  },
+  "proposedReference": {
+    "lat": 35.6919328,
+    "lng": 10.7921125
+  },
+  "liveApi": {
+    "file": "node-1212253279.xml",
+    "sha256": "c714e00a970df2e910604a858d008bb84e68797be7d545203372529e12262b4f",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1212253279"
+  },
+  "ministrySource": {
+    "file": "social-local-unit.html",
+    "sha256": "82d415020c4e7b8c28f6918fff57e82cb11897bc4ddd5a14d198f1e39f50b721",
+    "url": "https://www.social.gov.tn/en/node/3189",
+    "finding": {
+      "title": "الوحدة المحلية للنهوض الاجتماعي ببنبلة المنستير",
+      "address": "شارع 14 جانفي طريق المكنين بنبلة",
+      "lat": 35.691389,
+      "lng": 10.793066,
+      "supports": "A named addressed Bembla facility close to the village; these facility coordinates are not the proposed source anchor."
+    }
+  },
+  "currentRawRecords": [
+    {
+      "id": "osm:node:1212253279",
+      "sourceId": "osm",
+      "name": "بنبلة",
+      "aliases": [
+        "Bembla"
+      ],
+      "kind": "village",
+      "parentName": "بنبلة الغربية",
+      "contextAliases": [
+        "Bembla",
+        "Bembla Ouest",
+        "Délégation Bembla",
+        "بنبلة الغربية",
+        "معتمدية بنبلة"
+      ],
+      "governorateId": 364,
+      "lat": 35.6919328,
+      "lng": 10.7921125,
+      "delegationId": 603,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1212253279"
+    },
+    {
+      "id": "osm:relation:7107801",
+      "sourceId": "osm",
+      "name": "بنبلة",
+      "aliases": [
+        "Bembla"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بنبلة",
+      "contextAliases": [
+        "Bembla",
+        "Délégation Bembla",
+        "معتمدية بنبلة"
+      ],
+      "governorateId": 364,
+      "lat": 35.702766,
+      "lng": 10.776488,
+      "delegationId": 603,
+      "hasBoundary": true,
+      "bbox": [
+        10.762786,
+        35.691679,
+        10.819712,
+        35.713684
+      ],
+      "areaKm2": 5.5963351252293565,
+      "pickerGroupId": "osm:relation:7107801",
+      "offset": 553636,
+      "length": 2124
+    },
+    {
+      "id": "osm:relation:7107800",
+      "sourceId": "osm",
+      "name": "بنبلة الغربية",
+      "aliases": [
+        "Bembla Ouest"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بنبلة",
+      "contextAliases": [
+        "Bembla",
+        "Délégation Bembla",
+        "معتمدية بنبلة"
+      ],
+      "governorateId": 364,
+      "lat": 35.680442,
+      "lng": 10.790572,
+      "delegationId": 603,
+      "hasBoundary": true,
+      "bbox": [
+        10.750726,
+        35.65795,
+        10.812704,
+        35.702911
+      ],
+      "areaKm2": 10.760132651783506,
+      "pickerGroupId": "osm:relation:7107800",
+      "offset": 549648,
+      "length": 3988
+    }
+  ],
+  "officialMapIdentityAndPlacement": [
+    {
+      "id": "osm:relation:7107801",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3257",
+        "delegationFr": "Bembla",
+        "delegationAr": "بنبلة",
+        "sectorCode": "325751",
+        "sectorFr": "Bembla",
+        "sectorAr": "بنبلة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37263,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1765,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1763
+        }
+      },
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bembla-reference-review\\bembla.pdf",
+        "sha256": "7f7bad2f2522e2365f2d78d3479a748cd1e97aeb815a90dc624b1e29866c0cc7"
+      },
+      "image": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bembla-reference-review\\bembla.png",
+        "sha256": "79cf8e636a78dc87f3c32a29f5cd07fb4354c4afca9171e51eb68448c45af1f2"
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A8%D9%86%D8%A8%D9%84%D8%A9/%D8%A8%D9%86%D8%A8%D9%84%D8%A9.pdf",
+      "drawingIndex": 484,
+      "sourceGeometrySha256": "67c71ab8c0846fb3e5a4afaf82160136059d0572c30d5cbdf172bdabc065ba8e",
+      "sourceGeometryReconstructedExactly": true,
+      "nativeValid": true,
+      "withinViewportAndActiveClips": true,
+      "controlResidualMeters": 0.14491923570456627,
+      "pointPlacement": {
+        "legacy603": {
+          "inside": false,
+          "distanceToBoundaryMeters": 2931.692410699049
+        },
+        "village": {
+          "inside": false,
+          "distanceToBoundaryMeters": 493.0590333354892
+        },
+        "ministryFacility": {
+          "inside": false,
+          "distanceToBoundaryMeters": 412.41132648119066
+        }
+      },
+      "wholeImada": {
+        "conclusion": "whole_imada",
+        "pdfPage": 16,
+        "jortPage": 5113,
+        "imadaName": "بنبلة",
+        "circleName": "بنبلة"
+      }
+    },
+    {
+      "id": "osm:relation:7107800",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3257",
+        "delegationFr": "Bembla",
+        "delegationAr": "بنبلة",
+        "sectorCode": "325752",
+        "sectorFr": "Bembla ouest",
+        "sectorAr": "بنبلة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37297,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1767,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1765
+        }
+      },
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bembla-reference-review\\bembla-ouest.pdf",
+        "sha256": "96942571e3a51de0848eda272687c4f7284fb3d04b99f64faded14d05f460c2e"
+      },
+      "image": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bembla-reference-review\\bembla-ouest.png",
+        "sha256": "c52df3c31c14d9b44c99184c5bf5097d69340b82baadf996065aeb41166844d7"
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A8%D9%86%D8%A8%D9%84%D8%A9/%D8%A8%D9%86%D8%A8%D9%84%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "drawingIndex": 736,
+      "sourceGeometrySha256": "679709cda4a4f7a69fa7a400b26ef07887c0dc345544ce20244716a57f47bdc4",
+      "sourceGeometryReconstructedExactly": true,
+      "nativeValid": true,
+      "withinViewportAndActiveClips": true,
+      "controlResidualMeters": 0.19461849246270635,
+      "pointPlacement": {
+        "legacy603": {
+          "inside": false,
+          "distanceToBoundaryMeters": 371.69030953848124
+        },
+        "village": {
+          "inside": true,
+          "distanceToBoundaryMeters": 274.5846015727313
+        },
+        "ministryFacility": {
+          "inside": true,
+          "distanceToBoundaryMeters": 379.8806698645485
+        }
+      },
+      "wholeImada": {
+        "conclusion": "whole_imada",
+        "pdfPage": 17,
+        "jortPage": 5114,
+        "imadaName": "بنبلة الغربية",
+        "circleName": "بنبلة الغربية"
+      }
+    }
+  ],
+  "decree": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "completeBemblaImadaInventory": [
+      "المصدور",
+      "المنارة",
+      "بنبلة",
+      "بنبلة الغربية",
+      "منزل النور",
+      "منزل حرب"
+    ],
+    "excludedLocatorPages": [
+      53,
+      54
+    ]
+  },
+  "independentReview": {
+    "historicalTaskArtifact": "outputs/bembla-reference-source-independent-review.json",
+    "sha256": "dfeec395c67e355a15a3202f7004bde400b518ca09770d7cdbe12d4932b6a7ea"
+  },
+  "requiredFutureNeighborReview": [
+    {
+      "id": "osm:relation:7105910",
+      "sourceName": "خنيس الشمالية",
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3251",
+        "delegationFr": "Monastir",
+        "delegationAr": "المنستير",
+        "sectorCode": "325159",
+        "sectorFr": "Khenis Nord",
+        "sectorAr": "خنيس الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36243,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1710,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1708
+        }
+      },
+      "indexMapLinks": [
+        {
+          "text": "خنيس الشمالية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/المنستير/خنيس الشمالية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/المنستير/خنيس الشمالية.pdf"
+        }
+      ],
+      "scope": "Existing extraction intersects this old sector above the extractor 1-percent area threshold. This is a minimum review list, not a complete neighboring-boundary acceptance inventory."
+    },
+    {
+      "id": "osm:relation:7105911",
+      "sourceName": "خنيس",
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3251",
+        "delegationFr": "Monastir",
+        "delegationAr": "المنستير",
+        "sectorCode": "325158",
+        "sectorFr": "Khenis sud",
+        "sectorAr": "خنيس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36209,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1709,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1707
+        }
+      },
+      "indexMapLinks": [
+        {
+          "text": "خنيس.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/المنستير/خنيس.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/المنستير/خنيس.pdf"
+        }
+      ],
+      "scope": "Existing extraction intersects this old sector above the extractor 1-percent area threshold. This is a minimum review list, not a complete neighboring-boundary acceptance inventory."
+    },
+    {
+      "id": "osm:relation:7107799",
+      "sourceName": "المنارة",
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3257",
+        "delegationFr": "Bembla",
+        "delegationAr": "بنبلة",
+        "sectorCode": "325753",
+        "sectorFr": "El manara",
+        "sectorAr": "المنارة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37331,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1769,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1767
+        }
+      },
+      "indexMapLinks": [
+        {
+          "text": "المنارة.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/بنبلة/المنارة.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/بنبلة/المنارة.pdf"
+        }
+      ],
+      "scope": "Existing extraction intersects this old sector above the extractor 1-percent area threshold. This is a minimum review list, not a complete neighboring-boundary acceptance inventory."
+    },
+    {
+      "id": "osm:relation:7107974",
+      "sourceName": "منزل النور",
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3257",
+        "delegationFr": "Bembla",
+        "delegationAr": "بنبلة",
+        "sectorCode": "325754",
+        "sectorFr": "Menzel en-nour",
+        "sectorAr": "منزل النور",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37365,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1771,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1769
+        }
+      },
+      "indexMapLinks": [
+        {
+          "text": "منزل النور.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/بنبلة/منزل النور.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/بنبلة/منزل النور.pdf"
+        }
+      ],
+      "scope": "Existing extraction intersects this old sector above the extractor 1-percent area threshold. This is a minimum review list, not a complete neighboring-boundary acceptance inventory."
+    },
+    {
+      "id": "osm:relation:7109599",
+      "sourceName": "بوضر",
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3262",
+        "delegationFr": "Ksibet el mediouni",
+        "delegationAr": "قصيبة المديوني",
+        "sectorCode": "326255",
+        "sectorFr": "Bodher",
+        "sectorAr": "بوضر",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38487,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1831,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1827
+        }
+      },
+      "indexMapLinks": [
+        {
+          "text": "بوضر.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/قصيبة المديوني/بوضر.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/المنستير/قصيبة المديوني/بوضر.pdf"
+        }
+      ],
+      "scope": "Existing extraction intersects this old sector above the extractor 1-percent area threshold. This is a minimum review list, not a complete neighboring-boundary acceptance inventory."
+    }
+  ],
+  "limits": [
+    "This is a settlement reference, not a certified INM calculation origin or a whole-city outline.",
+    "Both legal imadas remain independently named and coded; matching Bembla names do not identify equal administrative and settlement scope.",
+    "Boundary import remains held: two native outlines overlap about2235m2 and disagree materially with old sectors. No clipping, gap fill, invented connectors or priority rule is authorized.",
+    "Neighbor list comes from existing extractor thresholded overlaps; small peers and gaps require a future full boundary-impact screen.",
+    "No source fetch, PBF scan, generator/helper run, tests, phone/ledger action or app write occurred."
+  ],
+  "pathPolicy": "The two source response files are packaged siblings. Historical task artifact paths and PDF/image paths inside quoted source findings are provenance only; published URLs and hashes are retained, and no missing local artifact is a runtime dependency.",
+  "scope": "No geometry, sector identity, raw point coordinate or source name changes. Proposed603 reference uses the exact existing village point, not the nearby facility and not a claimed INM origin."
+}

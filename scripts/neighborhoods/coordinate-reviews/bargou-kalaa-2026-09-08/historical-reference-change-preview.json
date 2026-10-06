@@ -1,0 +1,215 @@
+{
+  "status": "READ_ONLY_PROPOSED_REFERENCE_IMPACT_PREVIEW",
+  "metadataSha256": "34135e143e509842fc5673d290fbc6571c334bc26739eb2c03a17e5c6ac73d17",
+  "governorateAssetSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+  "generatorSha256": "ef609927bc10233a78af78fa73bc97553ca0ea8efd7190fd4e07b369c94ec58b",
+  "proposedReferences": {
+    "417": {
+      "lat": 36.0914446,
+      "lng": 9.5667337
+    },
+    "443": {
+      "lat": 35.8241499,
+      "lng": 10.5610794
+    }
+  },
+  "rawRowsComparedPerScenario": 3631,
+  "usableSources": 258,
+  "scenarios": {
+    "bargou_only": {
+      "changedRawChoices": 2,
+      "transitions": {
+        "417->617": 2
+      },
+      "rows": [
+        {
+          "id": "osm:relation:7126202",
+          "name": "عين زريق",
+          "parentName": "معتمدية قعفور",
+          "pickerGroupId": "osm:relation:7126202",
+          "storedLat": 36.163799,
+          "storedLng": 9.4505751,
+          "before": 417,
+          "after": 617,
+          "distanceToProposedChoiceKm": 11.327287358844643,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 13.174471792376252,
+          "nearestRunnerUpMarginMeters": 1847.184433531609
+        },
+        {
+          "id": "osm:node:10002024787",
+          "name": "عين زريق",
+          "parentName": "معتمدية قعفور",
+          "pickerGroupId": "osm:relation:7126202",
+          "storedLat": 36.163799,
+          "storedLng": 9.4505751,
+          "before": 417,
+          "after": 617,
+          "distanceToProposedChoiceKm": 11.327287358844643,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 13.174471792376252,
+          "nearestRunnerUpMarginMeters": 1847.184433531609
+        }
+      ]
+    },
+    "kalaa_sghira_only": {
+      "changedRawChoices": 4,
+      "transitions": {
+        "443->621": 2,
+        "439->443": 1,
+        "443->440": 1
+      },
+      "rows": [
+        {
+          "id": "osm:relation:7108094",
+          "name": "زاوية سوسة",
+          "parentName": "الزاوية قصيبة الثريات",
+          "pickerGroupId": "osm:relation:7108094",
+          "storedLat": 35.785785,
+          "storedLng": 10.617344,
+          "before": 443,
+          "after": 621,
+          "distanceToProposedChoiceKm": 4.744896513094192,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 6.629011583990274,
+          "nearestRunnerUpMarginMeters": 1884.1150708960822
+        },
+        {
+          "id": "osm:relation:7108097",
+          "name": "القلعة الصغرى حشاد",
+          "parentName": "معتمدية القلعة الصغرى",
+          "pickerGroupId": "osm:relation:7108097",
+          "storedLat": 35.831642,
+          "storedLng": 10.532696,
+          "before": 439,
+          "after": 443,
+          "distanceToProposedChoiceKm": 2.6910876614655432,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 4.825659303580038,
+          "nearestRunnerUpMarginMeters": 2134.5716421144953
+        },
+        {
+          "id": "osm:node:1544651749",
+          "name": "القصيبة",
+          "parentName": "قصيبة سوسة",
+          "pickerGroupId": "osm:node:1544651749",
+          "storedLat": 35.7696159,
+          "storedLng": 10.6245659,
+          "before": 443,
+          "after": 440,
+          "distanceToProposedChoiceKm": 5.964846485328023,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 8.34002705999271,
+          "nearestRunnerUpMarginMeters": 337.0193528073342
+        },
+        {
+          "id": "osm:node:1567848345",
+          "name": "حي الرياض",
+          "parentName": "العهد الجديد",
+          "pickerGroupId": "osm:node:1567848345",
+          "storedLat": 35.804617,
+          "storedLng": 10.6050818,
+          "before": 443,
+          "after": 621,
+          "distanceToProposedChoiceKm": 3.683996384428417,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 4.523269773850264,
+          "nearestRunnerUpMarginMeters": 839.2733894218467
+        }
+      ]
+    },
+    "both": {
+      "changedRawChoices": 6,
+      "transitions": {
+        "443->621": 2,
+        "439->443": 1,
+        "417->617": 2,
+        "443->440": 1
+      },
+      "rows": [
+        {
+          "id": "osm:relation:7108094",
+          "name": "زاوية سوسة",
+          "parentName": "الزاوية قصيبة الثريات",
+          "pickerGroupId": "osm:relation:7108094",
+          "storedLat": 35.785785,
+          "storedLng": 10.617344,
+          "before": 443,
+          "after": 621,
+          "distanceToProposedChoiceKm": 4.744896513094192,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 6.629011583990274,
+          "nearestRunnerUpMarginMeters": 1884.1150708960822
+        },
+        {
+          "id": "osm:relation:7108097",
+          "name": "القلعة الصغرى حشاد",
+          "parentName": "معتمدية القلعة الصغرى",
+          "pickerGroupId": "osm:relation:7108097",
+          "storedLat": 35.831642,
+          "storedLng": 10.532696,
+          "before": 439,
+          "after": 443,
+          "distanceToProposedChoiceKm": 2.6910876614655432,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 4.825659303580038,
+          "nearestRunnerUpMarginMeters": 2134.5716421144953
+        },
+        {
+          "id": "osm:relation:7126202",
+          "name": "عين زريق",
+          "parentName": "معتمدية قعفور",
+          "pickerGroupId": "osm:relation:7126202",
+          "storedLat": 36.163799,
+          "storedLng": 9.4505751,
+          "before": 417,
+          "after": 617,
+          "distanceToProposedChoiceKm": 11.327287358844643,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 13.174471792376252,
+          "nearestRunnerUpMarginMeters": 1847.184433531609
+        },
+        {
+          "id": "osm:node:10002024787",
+          "name": "عين زريق",
+          "parentName": "معتمدية قعفور",
+          "pickerGroupId": "osm:relation:7126202",
+          "storedLat": 36.163799,
+          "storedLng": 9.4505751,
+          "before": 417,
+          "after": 617,
+          "distanceToProposedChoiceKm": 11.327287358844643,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 13.174471792376252,
+          "nearestRunnerUpMarginMeters": 1847.184433531609
+        },
+        {
+          "id": "osm:node:1544651749",
+          "name": "القصيبة",
+          "parentName": "قصيبة سوسة",
+          "pickerGroupId": "osm:node:1544651749",
+          "storedLat": 35.7696159,
+          "storedLng": 10.6245659,
+          "before": 443,
+          "after": 440,
+          "distanceToProposedChoiceKm": 5.964846485328023,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 8.34002705999271,
+          "nearestRunnerUpMarginMeters": 337.0193528073342
+        },
+        {
+          "id": "osm:node:1567848345",
+          "name": "حي الرياض",
+          "parentName": "العهد الجديد",
+          "pickerGroupId": "osm:node:1567848345",
+          "storedLat": 35.804617,
+          "storedLng": 10.6050818,
+          "before": 443,
+          "after": 621,
+          "distanceToProposedChoiceKm": 3.683996384428417,
+          "distanceToPreviousChoiceWithProposedReferencesKm": 4.523269773850264,
+          "nearestRunnerUpMarginMeters": 839.2733894218467
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "These are hypothetical nearest choices at stored locality representative points, not GPS-area coverage or user-impact counts.",
+    "Coordinates and every app record remain unchanged. An actual generation is still required for a proposed implementation.",
+    "The existing audited 258-source availability is reused; CSV validation and previous audits were not rerun.",
+    "Changed choices require review against display-group source proofs before installation."
+  ],
+  "testsRun": false,
+  "catalogGenerated": false,
+  "repositoryChanges": false,
+  "phoneAccess": false
+}

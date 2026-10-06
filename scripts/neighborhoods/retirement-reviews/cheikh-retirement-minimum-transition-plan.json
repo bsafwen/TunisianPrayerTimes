@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_REDUNDANT_ID_RETIREMENT_SUPPORTED_WITH_REVIEWED_CODED_CHEIKH_AND_BOUNDED_NEIGHBOR_CORRECTION",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "378899b486efa44f93cd07ed9ee558529cb7bad11165a52cbe6e860b3e7edddc",
+    "bytes": 1841527
+  },
+  "baselineGeometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "8c0a2f48c73e927ea357c0f7696e33ff91d38587a1649e071d80cc0dca801ad2",
+    "bytes": 5497748
+  },
+  "independentSourceAndRuntimeReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\cheikh-retirement-current-source-and-runtime-review.json",
+    "sha256": "8e95264357a57efe50907f3bc247322d5a5d65ddedff97a47a703d98a1fcc351",
+    "bytes": 74443
+  },
+  "freshPbfFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\cheikh-retirement-current-review\\direct-pbf-source-facts.json",
+    "sha256": "5bc6bfb074a533f8b389b15bdd52744637bb992bf67e6517d17588f53cd0a396",
+    "bytes": 6071
+  },
+  "rootThreeBoundaryEffectReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bizerte-three-current-packed-coverage-review.json",
+    "sha256": "fa7aa663741e88ea14f218fe356b10e1d107e1f8de85f345a965c432999477c7",
+    "bytes": 87311
+  },
+  "decision": {
+    "sourceIdentityRetirementSupported": true,
+    "mustImportAllPendingBizerteNeighbors": false,
+    "retirementAloneRecommended": false,
+    "singleCheikhBoundaryPlusRetirementSufficientForCompleteLocalGpsFix": false,
+    "minimumReviewedCorrectionPackageToEvaluate": [
+      "osm:relation:7118632",
+      "osm:relation:7118631",
+      "osm:relation:7118630"
+    ],
+    "excludedDuplicateId": "osm:relation:7152490",
+    "reason": "The unique current official Cheikh imada175155 and full primary map support the uncoded feature as a redundant record of that identity. This is a reviewed source-identity inference, not an official decree retiring an OSM ID. Both smaller real-data scenarios expose the known misassigned old Medina claim; the complete three-source set resolves that connected identity displacement without requiring the full pending Bizerte batch."
+  },
+  "scopeAndLimitations": [
+    "Root independently measured the three-source scenario against the same current baseline; this review does not repeat or certify that full scan. Its documented191 conflicts and old-only coverage gaps remain an explicit bounded import acceptance decision.",
+    "Keep all complete official footprints unchanged. Use existing strict-interior conflict suppression; do not favor a provider, clip a neighbor, swap codes or invent separating lines.",
+    "Three existing finer locality polygons and their raw IDs must remain. Regeneration must audit inherited parent names because the old coded Cheikh footprint is displaced; this read-only scenario holds unrelated metadata constant.",
+    "No duplicate merging or retirement is authorized for any other ID by this result. Historical phone observations are supporting context only; no phone or ledger access was needed."
+  ],
+  "minimumCompilerCurationPlan": [
+    {
+      "step": 1,
+      "action": "Import the three already frozen full source footprints under their existing coded stable IDs, exact original tags, unique current INS code and whole-imada scope assertions. Keep the source package and declaration row hashes pinned; provide complete ordinary whole-imada scope inventory for the resulting accepted set."
+    },
+    {
+      "step": 2,
+      "action": "Add an exact exclude decision only for osm:relation:7152490. In addition to full original tags/kind, validate original geometry against its named serialization hash and bind the exclusion to the required installed corrected target175155 and approved source package hash. Ordinary unguarded exclude validation currently checks only a subset of expected tags and has no mandatory target dependency; extend a specific reviewed retirement wrapper rather than treating a prose evidence field as executable validation."
+    },
+    {
+      "step": 3,
+      "action": "Preserve official Arabic target الشيخ إدريس and prior unaccented الشيخ ادريس plus Cheikh Dris search names. Append the canonical target ID/name/kind to the tiny reviewedNames index and emit the exact replacement record below. No geometry copy of the retired record remains eligible for GPS."
+    },
+    {
+      "step": 4,
+      "action": "Use the generated official target interior representative and nearest available source634. The actual quantized candidate representative is lat37.274263,lng9.871519; both existing rows currently use634. This is a polygon representative, not a newly asserted settlement point or Google coordinate."
+    },
+    {
+      "step": 5,
+      "action": "Audit actual generated deltas before installation: exactly one excluded raw ID, current targets preserved, all905 raw point IDs/coordinates retained, intended aliases/contexts, conflict changes and unmodified unrelated packed slices. Direct removal alone predicts raw3632→3631, polygons2727→2726, retired15→16 and picker3614→3613; boundary-driven grouping changes must be checked from real generated data rather than assumed."
+    }
+  ],
+  "savedSelectionTransition": {
+    "tinyAsset": "retired-localities.json",
+    "schemaVersion": 1,
+    "replacement": {
+      "id": "osm:relation:7152490",
+      "replacementId": "osm:relation:7118632",
+      "name": "الشيخ إدريس",
+      "kind": "sector"
+    },
+    "requiredTargetReviewedName": {
+      "id": "osm:relation:7118632",
+      "name": "الشيخ إدريس",
+      "kind": "sector"
+    },
+    "sourceMustBeRetired": true,
+    "targetMustNotBeRetired": true,
+    "exactUniqueIds": true,
+    "readResolution": "Resolve the exact reviewed replacement before testing retirement in both getLocalityId and getLocationSelection. LocalityRepository.selected uses the resolved ID. Return a copied selection with only localityId/name/kind changed; do not persist a preferences write.",
+    "preserveExactly": [
+      "saved delegationId",
+      "saved fromGps"
+    ],
+    "historicalGps": "Never recompute a saved GPS prayer source from the replacement representative: no historical GPS coordinates are stored. A later fresh GPS action continues its independent nearest-source lookup.",
+    "manualSelections": "Existing MainScreen repair may recompute a manual target source after full catalog availability; here both former and canonical source are634. The ID/name transition itself must not call setLocality or reset fromGps.",
+    "otherRetiredIds": "Retain current clear-label behavior for all pre-existing retired IDs without a replacement.",
+    "damagedMetadata": "Any malformed retirement/name/replacement metadata yields the existing empty update index, preserving the saved ID/name/kind/source/fromGps rather than guessing a replacement. No fallback name matching.",
+    "noCyclesOrChains": "Every replacement source is retired and every target is not retired, so no target can be another replacement source; reject duplicate source and target IDs.",
+    "currentCodeFindings": {
+      "PrefsManager": "getLocalityId lines66-67 currently returns null for a retired ID; getLocationSelection108-111 clears localityId/name/kind while preserving source/fromGps.",
+      "LocalityRepository": "savedLocalityUpdates129-159 parses only retired IDs and reviewedNames. reviewedNames cannot target a retired source. selected201 resolves getLocalityId then loads the raw current target; no redirect exists yet.",
+      "MainScreen": "1493-1511 skips manual-source repair for fromGps; absent retired localityId prevents repair.1652-1655 falls back to current-position or original delegation text when retirement clears the label."
+    }
+  },
+  "operations": {
+    "repositoryEdits": 0,
+    "catalogGenerations": 0,
+    "phoneActions": 0,
+    "ledgerWrites": 0,
+    "tests": 0,
+    "builds": 0
+  }
+}

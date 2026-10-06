@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "snapshot": "tunisia-260905.osm.pbf",
+  "snapshotSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "extractedAreasSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "features": [
+    {"id": "osm:way:825272931", "tags": {"landuse": "residential", "name": "Amendier"}},
+    {"id": "osm:way:825272932", "tags": {"landuse": "residential", "name": "Poirier"}},
+    {"id": "osm:way:825505201", "tags": {"landuse": "residential", "name": "Palmier"}}
+  ]
+}

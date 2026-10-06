@@ -1,0 +1,22 @@
+{
+  "scope": "display spelling only; parent/broader Maps evidence does not establish child boundary",
+  "before": {
+    "neighborhoodsSha256": "cb893bfa2d446214e4f6aa50b77c68d952d31f23620ee2441832467ac52c6b7c",
+    "displayNamesSha256": "c287581ef8d1610708e11e67861dcd93ed4f7231f2faaa4a47a0794eafaf981e"
+  },
+  "after": {
+    "displayNamesSha256": "7d8948be912901002f81d31e08e4e86ca31752e5ba975a2e6cd2dc77077b16a4",
+    "neighborhoodsSha256": "cb893bfa2d446214e4f6aa50b77c68d952d31f23620ee2441832467ac52c6b7c"
+  },
+  "added": {
+    "id": "osm:node:1212270314",
+    "nameAr": "المصدور",
+    "searchAliases": [
+      "مَزدُور"
+    ]
+  },
+  "conservation": {
+    "metadataUnchanged": true,
+    "oneAdditionalDisplayRow": true
+  }
+}

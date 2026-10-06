@@ -1,0 +1,5632 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "decision": "QUALIFIED_EXACT_ENUMERATED_BUILDING_BLOCK_CLUSTER_EXCLUSION",
+  "createdAt": "2026-09-12T16:10:37.224921+00:00",
+  "baselineMetadataSha256": "fbd93249d69e9f05d1e713a5924241c38503224adf1b5baab98ac5f44effc4e6",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\soliman-numeric-cluster-and-named-localities-source-review.json",
+    "sha256": "d062ad2867675fa67a91d33161b7a5fb99e58a0fdab9c2688599fe30ba50d454",
+    "bytes": 22271
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\exact-cluster-source-finite-facts.json",
+    "sha256": "034120b991c5b5ea10a67b0dd0a6c47ac716e455e5e14c1485c13690b86d67f6",
+    "bytes": 426482
+  },
+  "currentInputs": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "fbd93249d69e9f05d1e713a5924241c38503224adf1b5baab98ac5f44effc4e6",
+      "bytes": 1880801
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "4beb6839b037a4bd07d8583b9b70a3993d6d848c2cd89bf8cf44e9f44e7eca1b",
+      "bytes": 5501144
+    },
+    "tiny": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "d417f3a709f8eee7577764116180f214f4d85f5d00b21f657fb2016978a08f8e",
+      "bytes": 8770
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "7a73b9914b70ad1d425dd1a7cb2feba161f97d96d1e938a0b890340ccdb7908a",
+      "bytes": 290979
+    },
+    "picker": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+      "bytes": 555201
+    },
+    "boundaries": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "coordinates": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193",
+      "bytes": 113816
+    },
+    "coverage": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "cdbe2f97e06e182f2f453a73008d30a6fa91788786d2ee60cfa2e307b2aadb78",
+      "bytes": 902824
+    },
+    "compiler": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+      "bytes": 543279
+    },
+    "cache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "governors": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "distinctSoliman": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\soliman-town-sector-distinct-choices.json",
+      "sha256": "72716d8bc66bbbcb19d1d3288563d5c658ae1997f3bb85da1ec5745e17148d10",
+      "bytes": 2738
+    },
+    "prefs": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\PrefsManager.kt",
+      "sha256": "91ca89263e11f86913e186b95a9f1629365742ba1ce4d5523e6b271df354505f",
+      "bytes": 23162
+    },
+    "gpsResolver": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\DelegationLocator.kt",
+      "sha256": "08b0e71b6ea14a071a6928d71138d32785d563904f61f33e13627e545dd68609",
+      "bytes": 19321
+    }
+  },
+  "scope": "Independent exact 88-way source-object and finite catalog review. No numeric-name rule or whole Soliman boundary replacement.",
+  "independence": "Independently parsed original responses and current live/cache bytes; reconstructed rings and decoded packed geometry without importing product code or executing the source producer.",
+  "sourceConclusion": "This enumerated local set is supportable for exclusion from locality choices: its unchanged sequential labels, two-tag residential source role, concentrated creation history, explicit building-addition comments for 86 objects and shared named-parent context identify a building/block enumeration. This is a qualified catalog scope decision, not proof that these labels can never be used in an address or a cadastral classification.",
+  "originalEvidence": {
+    "retrievalManifests": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\initial-retrievals.json",
+        "sha256": "6526b91a427deb92099c570befaaaed5cf51fc754243e1515e45d233146ecd47",
+        "bytes": 6509
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\bulk-json-retrieval.json",
+        "sha256": "94b39301453de143f118951643d7cb549add80c15b6c4ea9013bc70304d178d5",
+        "bytes": 3229
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\topology-intent-retrievals.json",
+        "sha256": "f31be1602d7c316be1602921f1f73f4e440a1ecbea4def6f152d96eaaff6a699",
+        "bytes": 29909
+      }
+    ],
+    "verifiedOriginalResponseCount": 23,
+    "responsePins": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\cluster-88-current-ways.json",
+        "sha256": "0a0b01d0bd18bc43518cd1e27cc3fd9dcffe97abe6bff3d9c5ab696fd0bc62e4",
+        "bytes": 31256
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\parent-640629366-current.json",
+        "sha256": "11f0a454c76ae75ef384550a61ae834e0d3479a116ef444440708ee526789a34",
+        "bytes": 1044
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\parent-640629366-history.json",
+        "sha256": "bb1db24eda2f4693a139d383b9beb4e4114ad2d8121c355919c2f28c3bc68d93",
+        "bytes": 5915
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\parent-640629366-full.json",
+        "sha256": "e3dfecb3237b680603920351b499f8b5ca5b3838d240b22703f405cfb48507b0",
+        "bytes": 9577
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\cluster-88-current-ways-v2.json",
+        "sha256": "4dd0561a98de4953fc32463ff82bec00a09bb1d1318723f429dc54fde176255f",
+        "bytes": 22126
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\cluster-current-nodes-1.json",
+        "sha256": "4265f89ea5823fdc9ef1837c486d356759212d97c228ddb088641bbadbcb214a",
+        "bytes": 48866
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\cluster-current-nodes-2.json",
+        "sha256": "13028ca4d6cedc60bfdd9f91a606d9d4fedfbf6b6e0867914b7b1e3b3e232533",
+        "bytes": 24260
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70766154.json",
+        "sha256": "f467f01d44f953ebf35bdfe6f0b81c048eb92bd5796b88ec23cbc61370d6b9ba",
+        "bytes": 712
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70766244.json",
+        "sha256": "3026c9d7f55630894556f62a8311f8ef24999daf1223695434615069c6f419e2",
+        "bytes": 710
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70766550.json",
+        "sha256": "b64c9674606b66ff6be42a552109bc323193b339f702041a0578d09e6749a8d8",
+        "bytes": 713
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70766849.json",
+        "sha256": "47c7c93bb92e697d9094a2e042a591857f489867e41f88955fb8ac111499a733",
+        "bytes": 713
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70796795.json",
+        "sha256": "992a36d0ab965175a2303de14f72f93a88c02e436a52b8b62668548943bdb40a",
+        "bytes": 712
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70797100.json",
+        "sha256": "dcf7d927c453177e1a8b0ec49d89333901a68b90fcb9bdb1c500c188f2f05c0e",
+        "bytes": 713
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70799602.json",
+        "sha256": "639e10727cce7e0ff3bd6e6ea198f4a7b97d376931f44b8615f1fe3d11ba48ae",
+        "bytes": 711
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70799736.json",
+        "sha256": "820771d277bae409c9a0e3338133b38e045660eaeb83582c2e9ea63b328b4f5d",
+        "bytes": 711
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70805620.json",
+        "sha256": "a86fba82c42b539b3208e51c31077eff78d4f7a7263748723fc6fc033c657fbe",
+        "bytes": 710
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-70881202.json",
+        "sha256": "4741a7b04f772d97ac96ca835d38828d9a3b29a366f753b5172590eb7c380522",
+        "bytes": 705
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\changeset-134772775.json",
+        "sha256": "8ed867f70aa6a5475d843065b710499d163fa097c28b3e72b3e9532fe2172cc1",
+        "bytes": 767
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\way-693515797-history.json",
+        "sha256": "ce80d963bd1f2eff7c539c3d8085a9627bb4291dd682ca9e388298e7698e6b32",
+        "bytes": 656
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\way-693683548-history.json",
+        "sha256": "01dc39eff6079af40d242dd73aedcabf9ed22da663ad3d10d3bc9276df0d87c8",
+        "bytes": 502
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\way-693689970-history.json",
+        "sha256": "691f93fa7bdc49070748add23bcba17da276f2fc4fe86771360c524e1cfdb7b1",
+        "bytes": 972
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\way-693690340-history.json",
+        "sha256": "b08bd54a292c8ad840da80a01c5a810feab0870be8e20521efd2059b52105fd8",
+        "bytes": 969
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\way-694251074-history.json",
+        "sha256": "6eca10fdcd02c5ac72b53fdf1a2871cecc709c945231364e1e2062dc1673ef35",
+        "bytes": 502
+      }
+    ],
+    "currentWayCount": 88,
+    "currentNodeCount": 448,
+    "currentWayVersions": {
+      "1": 86,
+      "2": 2
+    },
+    "currentNodeVersions": {
+      "1": 442,
+      "2": 6
+    },
+    "currentWayAndNodeTopologyExactlyEqualsCache": true,
+    "allOriginalLabelsUnchanged": true,
+    "creationCommentsByWay": {
+      "bâtiments ajoutés": 86,
+      "RAS": 2
+    },
+    "creationTimestampRange": [
+      "2019-05-30T11:34:27Z",
+      "2019-06-03T10:48:58Z"
+    ],
+    "formatQualification": "Initial bulk body is original XML with a misleading .json filename. Its way tags, versions and node references independently match the later authentic JSON body; no conversion is treated as original HTTP evidence.",
+    "historyQualification": "Version-1 current responses establish one recorded way version; two modified ways have complete archived history. No certification of historic node coordinates or private property data."
+  },
+  "records": [
+    {
+      "id": "osm:way:693516878",
+      "currentRaw": {
+        "id": "osm:way:693516878",
+        "sourceId": "osm",
+        "name": "S1",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.734484,
+        "lng": 10.47282,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.47232,
+          36.73375,
+          10.473337,
+          36.735256
+        ],
+        "areaKm2": 0.0050975513140101535,
+        "pickerGroupId": "osm:way:693516878",
+        "offset": 5426244,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693516878",
+        "tags": {
+          "landuse": "residential",
+          "name": "S1"
+        }
+      },
+      "sourceGeometrySha256": "8c91e5f563e093f3e97334953b06092741b2e062e8ba3070baef11dfb5641131",
+      "packedGeometrySha256": "19353cfd87cb06ee11544ecc452b59f484b37241069266f887b35033f7bbf0a3",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:36:49Z",
+      "creationChangesetId": 70766244,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693516878"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.3550862771973256
+    },
+    {
+      "id": "osm:way:693515797",
+      "currentRaw": {
+        "id": "osm:way:693515797",
+        "sourceId": "osm",
+        "name": "S2",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.734056,
+        "lng": 10.474046,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.473234,
+          36.733122,
+          10.474468,
+          36.735018
+        ],
+        "areaKm2": 0.008203484050901978,
+        "pickerGroupId": "osm:way:693515797",
+        "offset": 5426020,
+        "length": 164
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693515797",
+        "tags": {
+          "landuse": "residential",
+          "name": "S2"
+        }
+      },
+      "sourceGeometrySha256": "79beef32fde0ef1d5670176eccac9e63224052ffc9e25b264b1b5d2bb43003ba",
+      "packedGeometrySha256": "5620fd7300e6af221f0b411b8b7204562886d8012753bf46986ddfe7bedb5d43",
+      "packedBytes": 164,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:34:27Z",
+      "creationChangesetId": 70766154,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693515797"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.269679828137514
+    },
+    {
+      "id": "osm:way:693516877",
+      "currentRaw": {
+        "id": "osm:way:693516877",
+        "sourceId": "osm",
+        "name": "S3",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.734323,
+        "lng": 10.473306,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472919,
+          36.733851,
+          10.473836,
+          36.734583
+        ],
+        "areaKm2": 0.003422606991922051,
+        "pickerGroupId": "osm:way:693516877",
+        "offset": 5426184,
+        "length": 60
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693516877",
+        "tags": {
+          "landuse": "residential",
+          "name": "S3"
+        }
+      },
+      "sourceGeometrySha256": "7109b9f7d7981277cb1a26ece6397bfea039531f86cf6bd21cfbfe5afef62741",
+      "packedGeometrySha256": "f09fd809a2f1f53ae23d8f209d149e1cdc28152915731cbfc2ca0f0e10d39a42",
+      "packedBytes": 60,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:36:49Z",
+      "creationChangesetId": 70766244,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693516877"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.321872047033376
+    },
+    {
+      "id": "osm:way:693516879",
+      "currentRaw": {
+        "id": "osm:way:693516879",
+        "sourceId": "osm",
+        "name": "S4",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.73377,
+        "lng": 10.473232,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472716,
+          36.733465,
+          10.473749,
+          36.734086
+        ],
+        "areaKm2": 0.003375244202795396,
+        "pickerGroupId": "osm:way:693516879",
+        "offset": 5426296,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693516879",
+        "tags": {
+          "landuse": "residential",
+          "name": "S4"
+        }
+      },
+      "sourceGeometrySha256": "4f1d017a2b84b426dd37545cd32e04f7fb1a28be32da3a335b34db57d0c54db0",
+      "packedGeometrySha256": "cb31f5b2a10cbe5ce73001d23ffb251af4fcc3019bbd286951f953f17b3aa954",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:36:49Z",
+      "creationChangesetId": 70766244,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693516879"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.267662136261982
+    },
+    {
+      "id": "osm:way:693518225",
+      "currentRaw": {
+        "id": "osm:way:693518225",
+        "sourceId": "osm",
+        "name": "S5",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.732931,
+        "lng": 10.47201,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.47147,
+          36.732131,
+          10.47255,
+          36.73374
+        ],
+        "areaKm2": 0.005016881867180604,
+        "pickerGroupId": "osm:way:693518225",
+        "offset": 5426348,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518225",
+        "tags": {
+          "landuse": "residential",
+          "name": "S5"
+        }
+      },
+      "sourceGeometrySha256": "cfb5b02bcb578986007319f3a57bd5465d839ffc4a32f7f65fb80dff764a53b2",
+      "packedGeometrySha256": "ce6cdccb5d366d4b0dfd6b207aa8989b43774624dffa92cd60681dadfa841615",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518225"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.2270099557003493
+    },
+    {
+      "id": "osm:way:693518227",
+      "currentRaw": {
+        "id": "osm:way:693518227",
+        "sourceId": "osm",
+        "name": "S6",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.733344,
+        "lng": 10.472754,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472404,
+          36.733012,
+          10.473098,
+          36.73367
+        ],
+        "areaKm2": 0.002565242532750937,
+        "pickerGroupId": "osm:way:693518227",
+        "offset": 5426400,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518227",
+        "tags": {
+          "landuse": "residential",
+          "name": "S6"
+        }
+      },
+      "sourceGeometrySha256": "a4d40d2de1243974c644f9436657cb759dda0e3df0b259b732483bfea090c952",
+      "packedGeometrySha256": "dc32fd96bcdd4e105426b47296ba22887adfd8fa31e362618cf1ae74fffec230",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518227"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.241122960757142
+    },
+    {
+      "id": "osm:way:693518229",
+      "currentRaw": {
+        "id": "osm:way:693518229",
+        "sourceId": "osm",
+        "name": "S7",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.73317,
+        "lng": 10.473572,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.473064,
+          36.732839,
+          10.47408,
+          36.733486
+        ],
+        "areaKm2": 0.0034347945996035557,
+        "pickerGroupId": "osm:way:693518229",
+        "offset": 5426452,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518229",
+        "tags": {
+          "landuse": "residential",
+          "name": "S7"
+        }
+      },
+      "sourceGeometrySha256": "bef3d8e9eeb7fa5850b64e0dfcb408b7af4079e3e28f9119369742a18a0613a8",
+      "packedGeometrySha256": "7a7daa27ab8bac33b83508c80854f628118138e92e98bbc7df00f8e4333e7d0d",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518229"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1944137357451137
+    },
+    {
+      "id": "osm:way:693518231",
+      "currentRaw": {
+        "id": "osm:way:693518231",
+        "sourceId": "osm",
+        "name": "S8",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.732263,
+        "lng": 10.474249,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.473567,
+          36.731417,
+          10.474465,
+          36.733161
+        ],
+        "areaKm2": 0.007296706975979941,
+        "pickerGroupId": "osm:way:693518231",
+        "offset": 5426504,
+        "length": 116
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518231",
+        "tags": {
+          "landuse": "residential",
+          "name": "S8"
+        }
+      },
+      "sourceGeometrySha256": "1fd838764015fb98b410749de7d863105fdca52642815db24d68620857386c13",
+      "packedGeometrySha256": "72f254ede122606299335ef720d2f514f7fc5f809c71a487dd113f67d8bcfe93",
+      "packedBytes": 116,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518231"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0780838745824175
+    },
+    {
+      "id": "osm:way:693518243",
+      "currentRaw": {
+        "id": "osm:way:693518243",
+        "sourceId": "osm",
+        "name": "S9",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.732339,
+        "lng": 10.473697,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.473311,
+          36.732062,
+          10.474093,
+          36.732615
+        ],
+        "areaKm2": 0.002245768656178645,
+        "pickerGroupId": "osm:way:693518243",
+        "offset": 5426828,
+        "length": 60
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518243",
+        "tags": {
+          "landuse": "residential",
+          "name": "S9"
+        }
+      },
+      "sourceGeometrySha256": "d2af06d6140fe20687abcdbbd20a4d2bcdcd2cb1bfa936ba7a2ca8b01392a4eb",
+      "packedGeometrySha256": "22f0713b5683acfbf31500fc3b69cb1675c3c34e98cc08998fa6c59e7391be00",
+      "packedBytes": 60,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518243"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.105052547821056
+    },
+    {
+      "id": "osm:way:693518238",
+      "currentRaw": {
+        "id": "osm:way:693518238",
+        "sourceId": "osm",
+        "name": "S10",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.732773,
+        "lng": 10.473109,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472769,
+          36.732385,
+          10.47374,
+          36.732919
+        ],
+        "areaKm2": 0.0026483036829396565,
+        "pickerGroupId": "osm:way:693518238",
+        "offset": 5426724,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518238",
+        "tags": {
+          "landuse": "residential",
+          "name": "S10"
+        }
+      },
+      "sourceGeometrySha256": "5f32d11441cb0d836c90161e2b535830dc6435070b1269dc9d1435f9e98c61fe",
+      "packedGeometrySha256": "86f2d4996dcbbe2d442eaad43330a00de9e1e8787e1a0d2d3091794796a16147",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518238"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.17025793233609
+    },
+    {
+      "id": "osm:way:693518234",
+      "currentRaw": {
+        "id": "osm:way:693518234",
+        "sourceId": "osm",
+        "name": "S11",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.73253,
+        "lng": 10.47231,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.471838,
+          36.731969,
+          10.472784,
+          36.733111
+        ],
+        "areaKm2": 0.004817259857466943,
+        "pickerGroupId": "osm:way:693518234",
+        "offset": 5426620,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518234",
+        "tags": {
+          "landuse": "residential",
+          "name": "S11"
+        }
+      },
+      "sourceGeometrySha256": "039f29bd8527f41a3aeae8761c9a1502c93156a58dad5855ccf5f8725ba99712",
+      "packedGeometrySha256": "db1e36029782155df00f48c4957744f62603f8b5c32caa5f8c8d6c8e13c1dd40",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518234"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.175273387979187
+    },
+    {
+      "id": "osm:way:693518236",
+      "currentRaw": {
+        "id": "osm:way:693518236",
+        "sourceId": "osm",
+        "name": "S12",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.732118,
+        "lng": 10.472599,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472351,
+          36.731933,
+          10.473094,
+          36.732454
+        ],
+        "areaKm2": 0.001614192145894323,
+        "pickerGroupId": "osm:way:693518236",
+        "offset": 5426672,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518236",
+        "tags": {
+          "landuse": "residential",
+          "name": "S12"
+        }
+      },
+      "sourceGeometrySha256": "ecca59d1c335319e8817c9542b87cd3b30a52a907b799ebd10515786e15c2cd1",
+      "packedGeometrySha256": "962a4d032ae57b117e8edbb58bea7f55872fc86cc9da96eae3437f651cef72d4",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518236"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1228548738958097
+    },
+    {
+      "id": "osm:way:693518241",
+      "currentRaw": {
+        "id": "osm:way:693518241",
+        "sourceId": "osm",
+        "name": "S13",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.731814,
+        "lng": 10.472984,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472659,
+          36.731662,
+          10.473462,
+          36.732261
+        ],
+        "areaKm2": 0.002380714787898307,
+        "pickerGroupId": "osm:way:693518241",
+        "offset": 5426776,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518241",
+        "tags": {
+          "landuse": "residential",
+          "name": "S13"
+        }
+      },
+      "sourceGeometrySha256": "f95186d9da693c2494c86eb79937e532c8fce5330d49c90ba981f654b470b542",
+      "packedGeometrySha256": "2c0d6cd869de9e4836711353f71822f7a8510b7911db6e603598a23582ec85e2",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:49Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518241"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0777131676666145
+    },
+    {
+      "id": "osm:way:693518245",
+      "currentRaw": {
+        "id": "osm:way:693518245",
+        "sourceId": "osm",
+        "name": "S14",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.731597,
+        "lng": 10.473362,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472951,
+          36.731291,
+          10.473772,
+          36.731903
+        ],
+        "areaKm2": 0.002503814167526154,
+        "pickerGroupId": "osm:way:693518245",
+        "offset": 5426888,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518245",
+        "tags": {
+          "landuse": "residential",
+          "name": "S14"
+        }
+      },
+      "sourceGeometrySha256": "bca81372e76fc84866e56587f284113de45f052d98c96b2cdab12287474eebd0",
+      "packedGeometrySha256": "86eee3a7344057045558dc9ec91befbcc4080eb08de6146129fa11bf05a839cb",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:50Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518245"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.041725443578134
+    },
+    {
+      "id": "osm:way:693518247",
+      "currentRaw": {
+        "id": "osm:way:693518247",
+        "sourceId": "osm",
+        "name": "S15",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.731292,
+        "lng": 10.473633,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.473255,
+          36.730971,
+          10.473998,
+          36.731557
+        ],
+        "areaKm2": 0.002035386882552762,
+        "pickerGroupId": "osm:way:693518247",
+        "offset": 5426940,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693518247",
+        "tags": {
+          "landuse": "residential",
+          "name": "S15"
+        }
+      },
+      "sourceGeometrySha256": "a91f5653d85c3e6ffa1205b650e24854e1f670354a0e038f2f39d5f508367ec7",
+      "packedGeometrySha256": "247c5fb91a2a9bc0ca7201a6df3e612f57e63ec51f630f306064079e8e5c3e7a",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:45:50Z",
+      "creationChangesetId": 70766550,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693518247"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0008629459497462
+    },
+    {
+      "id": "osm:way:693519901",
+      "currentRaw": {
+        "id": "osm:way:693519901",
+        "sourceId": "osm",
+        "name": "S16",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.731119,
+        "lng": 10.472892,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472388,
+          36.730613,
+          10.473388,
+          36.731561
+        ],
+        "areaKm2": 0.004550602945275417,
+        "pickerGroupId": "osm:way:693519901",
+        "offset": 5426992,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519901",
+        "tags": {
+          "landuse": "residential",
+          "name": "S16"
+        }
+      },
+      "sourceGeometrySha256": "e4f1d2f963a991ac7abe37930e1cbf7f9f5ae2c6ef8f03053898912a454e27c1",
+      "packedGeometrySha256": "12f59580edde534cbf282dbf6c061cc2492b9db55a032d112c5555866fc2a5bd",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519901"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0113075251472274
+    },
+    {
+      "id": "osm:way:693519904",
+      "currentRaw": {
+        "id": "osm:way:693519904",
+        "sourceId": "osm",
+        "name": "S17",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730322,
+        "lng": 10.472475,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.472208,
+          36.730155,
+          10.472907,
+          36.730803
+        ],
+        "areaKm2": 0.0021456903068225093,
+        "pickerGroupId": "osm:way:693519904",
+        "offset": 5427096,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519904",
+        "tags": {
+          "landuse": "residential",
+          "name": "S17"
+        }
+      },
+      "sourceGeometrySha256": "b3044f1e74ddd7513d21bee8bada21bb1f7ea20d23674a77898e3f8ec70d2d11",
+      "packedGeometrySha256": "168af24e5fddab0646a59b90db64245be2da0887e45c155730f27c317dbbe899",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519904"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9483465378546705
+    },
+    {
+      "id": "osm:way:693519902",
+      "currentRaw": {
+        "id": "osm:way:693519902",
+        "sourceId": "osm",
+        "name": "S18",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730912,
+        "lng": 10.472211,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.471757,
+          36.730525,
+          10.472667,
+          36.731261
+        ],
+        "areaKm2": 0.0034513425457190737,
+        "pickerGroupId": "osm:way:693519902",
+        "offset": 5427044,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519902",
+        "tags": {
+          "landuse": "residential",
+          "name": "S18"
+        }
+      },
+      "sourceGeometrySha256": "fe5e981fb2bbdfa0580501e331d74ef97207f6a059b940e709190d668a320937",
+      "packedGeometrySha256": "c54d7e2eb756a76069ffa5afbf166ca068b0774cf0598cf2b72b9eb9e87cdeb4",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519902"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0174920663855285
+    },
+    {
+      "id": "osm:way:693519906",
+      "currentRaw": {
+        "id": "osm:way:693519906",
+        "sourceId": "osm",
+        "name": "S19",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.731488,
+        "lng": 10.472151,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.471453,
+          36.731028,
+          10.472835,
+          36.731932
+        ],
+        "areaKm2": 0.005032881689284358,
+        "pickerGroupId": "osm:way:693519906",
+        "offset": 5427148,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519906",
+        "tags": {
+          "landuse": "residential",
+          "name": "S19"
+        }
+      },
+      "sourceGeometrySha256": "8886da79e0b34cd06f1f05f6d9ba7914a1ceb3923d12e99e7616df524445210d",
+      "packedGeometrySha256": "3d691b569a46c993a559ce1454e8c3a9ce4402a9b561931a088bf8fd1a7ac2d4",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519906"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0771445796605326
+    },
+    {
+      "id": "osm:way:693519908",
+      "currentRaw": {
+        "id": "osm:way:693519908",
+        "sourceId": "osm",
+        "name": "S20",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.73174,
+        "lng": 10.471661,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.471169,
+          36.731414,
+          10.472155,
+          36.732043
+        ],
+        "areaKm2": 0.0029854679458594952,
+        "pickerGroupId": "osm:way:693519908",
+        "offset": 5427200,
+        "length": 60
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519908",
+        "tags": {
+          "landuse": "residential",
+          "name": "S20"
+        }
+      },
+      "sourceGeometrySha256": "6a64e8b330e11ca4690116e07a063c0435117ce254b6a02d9ecd725163787ab6",
+      "packedGeometrySha256": "8354b9659374446463f9ca51197ef08d97709ddd2a8873a89335d8bb46b968e4",
+      "packedBytes": 60,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519908"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1217741023768433
+    },
+    {
+      "id": "osm:way:693519921",
+      "currentRaw": {
+        "id": "osm:way:693519921",
+        "sourceId": "osm",
+        "name": "S21",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.731513,
+        "lng": 10.470368,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.469098,
+          36.730787,
+          10.471615,
+          36.73215
+        ],
+        "areaKm2": 0.006939939278730434,
+        "pickerGroupId": "osm:way:693519921",
+        "offset": 5427572,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519921",
+        "tags": {
+          "landuse": "residential",
+          "name": "S21"
+        }
+      },
+      "sourceGeometrySha256": "f3e2c9f9fb738e4314b97d3a6f1aee42a84f8e23c7abc7e544d9e6903071bb0a",
+      "packedGeometrySha256": "56d657cd7dcd82b3224dd9d37dd64ff8ea9364a96e9f20bf95e207e089ee9c25",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:01Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519921"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1534485377159394
+    },
+    {
+      "id": "osm:way:693519910",
+      "currentRaw": {
+        "id": "osm:way:693519910",
+        "sourceId": "osm",
+        "name": "S22",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730777,
+        "lng": 10.471517,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.470687,
+          36.729786,
+          10.472379,
+          36.731651
+        ],
+        "areaKm2": 0.009838797185783168,
+        "pickerGroupId": "osm:way:693519910",
+        "offset": 5427260,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519910",
+        "tags": {
+          "landuse": "residential",
+          "name": "S22"
+        }
+      },
+      "sourceGeometrySha256": "6014760d04c46bbe941773fa273994f09c6af6a0738ea706fd63659a8dc21be6",
+      "packedGeometrySha256": "a71fe780b2c6ce4ec7d7d8c5e3c1afebfb39770c93497031f969dc50634c69b7",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519910"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.032667976511766
+    },
+    {
+      "id": "osm:way:693519914",
+      "currentRaw": {
+        "id": "osm:way:693519914",
+        "sourceId": "osm",
+        "name": "S23",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730039,
+        "lng": 10.471408,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.470904,
+          36.729292,
+          10.471905,
+          36.730549
+        ],
+        "areaKm2": 0.004873377064518711,
+        "pickerGroupId": "osm:way:693519914",
+        "offset": 5427364,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519914",
+        "tags": {
+          "landuse": "residential",
+          "name": "S23"
+        }
+      },
+      "sourceGeometrySha256": "67cc4a5385012d713bdf99dfeeb0ee30ae2f7667afed5d76a093a3a87e73cf91",
+      "packedGeometrySha256": "f0a89c8d1bf7af4fa52022332ba5ccfb12e7e7772fd537561126064d4cd619b3",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519914"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9651653501853854
+    },
+    {
+      "id": "osm:way:693519912",
+      "currentRaw": {
+        "id": "osm:way:693519912",
+        "sourceId": "osm",
+        "name": "S24",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730867,
+        "lng": 10.470725,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.470209,
+          36.730382,
+          10.471262,
+          36.731349
+        ],
+        "areaKm2": 0.004162093695892305,
+        "pickerGroupId": "osm:way:693519912",
+        "offset": 5427312,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519912",
+        "tags": {
+          "landuse": "residential",
+          "name": "S24"
+        }
+      },
+      "sourceGeometrySha256": "dd7cc5b1ba167c2519003bbae88193207688721c85869b4d162f79b123c0acfc",
+      "packedGeometrySha256": "f6b47632719ba2cedba150fe6a45ecd6e969e951228c4016d355c3cf3d720360",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519912"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0752026374483816
+    },
+    {
+      "id": "osm:way:693519916",
+      "currentRaw": {
+        "id": "osm:way:693519916",
+        "sourceId": "osm",
+        "name": "S25",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730746,
+        "lng": 10.469792,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.469208,
+          36.730337,
+          10.470373,
+          36.731135
+        ],
+        "areaKm2": 0.003962487130216341,
+        "pickerGroupId": "osm:way:693519916",
+        "offset": 5427416,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519916",
+        "tags": {
+          "landuse": "residential",
+          "name": "S25"
+        }
+      },
+      "sourceGeometrySha256": "0af978c6f5584874e15d4f8b7803d0c431ca2eec3f851638739cdf399c4c5dee",
+      "packedGeometrySha256": "ce5aff57e464b50e2cffa5fbd255c302a8a90d1965725fa621da99ba76e2ac73",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519916"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1048894052794473
+    },
+    {
+      "id": "osm:way:693519918",
+      "currentRaw": {
+        "id": "osm:way:693519918",
+        "sourceId": "osm",
+        "name": "S26",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730396,
+        "lng": 10.47006,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.469471,
+          36.730016,
+          10.470649,
+          36.730785
+        ],
+        "areaKm2": 0.0038539805485900283,
+        "pickerGroupId": "osm:way:693519918",
+        "offset": 5427468,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519918",
+        "tags": {
+          "landuse": "residential",
+          "name": "S26"
+        }
+      },
+      "sourceGeometrySha256": "adbfd2b22eb7c35a0a6dd1fc5973a6f18a74f299352ee109c318d6945df95ade",
+      "packedGeometrySha256": "097d6b5af16c89eed5eddf5ab5ee7c5d27f6439674a446b61ca534564a7dba15",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:00Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519918"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0592337623541486
+    },
+    {
+      "id": "osm:way:693519919",
+      "currentRaw": {
+        "id": "osm:way:693519919",
+        "sourceId": "osm",
+        "name": "S27",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730054,
+        "lng": 10.470351,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.469767,
+          36.729649,
+          10.470934,
+          36.730453
+        ],
+        "areaKm2": 0.004055380504285527,
+        "pickerGroupId": "osm:way:693519919",
+        "offset": 5427520,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519919",
+        "tags": {
+          "landuse": "residential",
+          "name": "S27"
+        }
+      },
+      "sourceGeometrySha256": "f3277a65d2f106f6e7168374d2497cccd0687e1ae1587f12cff444487a3de396",
+      "packedGeometrySha256": "d9aed5ae7ed42df32c1558e269f8683c1cc8323ffb49ee72405329c90729597f",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:01Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519919"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0133041309985704
+    },
+    {
+      "id": "osm:way:693519923",
+      "currentRaw": {
+        "id": "osm:way:693519923",
+        "sourceId": "osm",
+        "name": "S28",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729704,
+        "lng": 10.470634,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.470037,
+          36.729304,
+          10.471232,
+          36.730098
+        ],
+        "areaKm2": 0.004075396824343124,
+        "pickerGroupId": "osm:way:693519923",
+        "offset": 5427624,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519923",
+        "tags": {
+          "landuse": "residential",
+          "name": "S28"
+        }
+      },
+      "sourceGeometrySha256": "94283539287a41b623903ebc5777d26e63101c3acb64a25ec83beff2a180079e",
+      "packedGeometrySha256": "753df4f3a12dd912e9dcd714ced35cabb90b8cd671a44c51f983fd92703373b2",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:01Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519923"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9669717688095907
+    },
+    {
+      "id": "osm:way:693519924",
+      "currentRaw": {
+        "id": "osm:way:693519924",
+        "sourceId": "osm",
+        "name": "S29",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729379,
+        "lng": 10.471248,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.470814,
+          36.72878,
+          10.471687,
+          36.72975
+        ],
+        "areaKm2": 0.00401348855743285,
+        "pickerGroupId": "osm:way:693519924",
+        "offset": 5427676,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519924",
+        "tags": {
+          "landuse": "residential",
+          "name": "S29"
+        }
+      },
+      "sourceGeometrySha256": "393cdb6475ac2b29ce903529c7661127866d7eb07c0e3c2769122aa3835f7215",
+      "packedGeometrySha256": "96c5e941e329de1cd5f7f75b4b3175c217919dc02f3f38f92c85660d3cf5cb7e",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:01Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519924"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.908231324513732
+    },
+    {
+      "id": "osm:way:693519926",
+      "currentRaw": {
+        "id": "osm:way:693519926",
+        "sourceId": "osm",
+        "name": "S30",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728997,
+        "lng": 10.47085,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.470321,
+          36.728288,
+          10.471375,
+          36.729483
+        ],
+        "areaKm2": 0.005266699495907457,
+        "pickerGroupId": "osm:way:693519926",
+        "offset": 5427728,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693519926",
+        "tags": {
+          "landuse": "residential",
+          "name": "S30"
+        }
+      },
+      "sourceGeometrySha256": "f601552a0cf854ac8017c07a985e84a73158e525857ac6902645b33accded256",
+      "packedGeometrySha256": "6e77ffb082a54f3e2c5d6f57d24d7e81bfa9fc10dfb806f77755d95a137e03bf",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-30T11:54:01Z",
+      "creationChangesetId": 70766849,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693519926"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8895372749552832
+    },
+    {
+      "id": "osm:way:693682670",
+      "currentRaw": {
+        "id": "osm:way:693682670",
+        "sourceId": "osm",
+        "name": "S31",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728864,
+        "lng": 10.470272,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.468741,
+          36.727832,
+          10.470997,
+          36.730596
+        ],
+        "areaKm2": 0.013496327250281102,
+        "pickerGroupId": "osm:way:693682670",
+        "offset": 5427780,
+        "length": 156
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693682670",
+        "tags": {
+          "landuse": "residential",
+          "name": "S31"
+        }
+      },
+      "sourceGeometrySha256": "e47a993a99489f80c6d52a6ca07edaf96fddba413fa52d1f140c49ba562b8cc8",
+      "packedGeometrySha256": "790bbd5041eff9c5928e27d8f41abf2ec5ce8eff09a5d68b8ddef7dbbb0d9b0d",
+      "packedBytes": 156,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:35:22Z",
+      "creationChangesetId": 70796795,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693682670"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9037705533848253
+    },
+    {
+      "id": "osm:way:693683555",
+      "currentRaw": {
+        "id": "osm:way:693683555",
+        "sourceId": "osm",
+        "name": "32",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.73025,
+        "lng": 10.467963,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.467083,
+          36.729707,
+          10.468836,
+          36.730778
+        ],
+        "areaKm2": 0.0048418897776667585,
+        "pickerGroupId": "osm:way:693683555",
+        "offset": 5428300,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683555",
+        "tags": {
+          "landuse": "residential",
+          "name": "32"
+        }
+      },
+      "sourceGeometrySha256": "01fb64159c3b561d4f5f543259f8c1296170481568922ae36072d94653715397",
+      "packedGeometrySha256": "ab015ede5f174990532ccafd2fb6a5ea03425f14aa49944e56e66f3236c19ae1",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683555"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.144781519789582
+    },
+    {
+      "id": "osm:way:693683548",
+      "currentRaw": {
+        "id": "osm:way:693683548",
+        "sourceId": "osm",
+        "name": "33",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729948,
+        "lng": 10.468374,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.467777,
+          36.729513,
+          10.468967,
+          36.730358
+        ],
+        "areaKm2": 0.004807857488694864,
+        "pickerGroupId": "osm:way:693683548",
+        "offset": 5427936,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683548",
+        "tags": {
+          "landuse": "residential",
+          "name": "33"
+        }
+      },
+      "sourceGeometrySha256": "af701076cc5bc65e698afedd90b8ce9efe7a4d59c2a6c068091231496c7ba990",
+      "packedGeometrySha256": "25fe779f9722e25789ba2b602c6a156c86bf7c119836e5473a77c2b1d4c8ba60",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683548"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0965586342022786
+    },
+    {
+      "id": "osm:way:693683549",
+      "currentRaw": {
+        "id": "osm:way:693683549",
+        "sourceId": "osm",
+        "name": "34",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.72951,
+        "lng": 10.46874,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.468144,
+          36.729078,
+          10.469334,
+          36.72993
+        ],
+        "areaKm2": 0.004846470354248098,
+        "pickerGroupId": "osm:way:693683549",
+        "offset": 5427988,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683549",
+        "tags": {
+          "landuse": "residential",
+          "name": "34"
+        }
+      },
+      "sourceGeometrySha256": "58b49320fa298c75031c196b8013985f1baedd2a7f6eb7c78d32d57ccb9ab2de",
+      "packedGeometrySha256": "fe9f8d4bab6afe3bc52e5195304547f8240fe00a29e6d6f11c29d39c5b6535c4",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683549"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.037943373614834
+    },
+    {
+      "id": "osm:way:693683550",
+      "currentRaw": {
+        "id": "osm:way:693683550",
+        "sourceId": "osm",
+        "name": "35",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.72907,
+        "lng": 10.469093,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.468507,
+          36.728633,
+          10.469675,
+          36.729485
+        ],
+        "areaKm2": 0.00473934221781921,
+        "pickerGroupId": "osm:way:693683550",
+        "offset": 5428040,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683550",
+        "tags": {
+          "landuse": "residential",
+          "name": "35"
+        }
+      },
+      "sourceGeometrySha256": "e9a63690cffd1ec64b62c0166ece5b82e2d9693824bef5930561ce9bbcbefe57",
+      "packedGeometrySha256": "bcf2032e4850910e131aff3b9eab82f910abd05aa41bc840096f7a61aec33897",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683550"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.979780230846668
+    },
+    {
+      "id": "osm:way:693683551",
+      "currentRaw": {
+        "id": "osm:way:693683551",
+        "sourceId": "osm",
+        "name": "36",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728625,
+        "lng": 10.469452,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.468862,
+          36.728206,
+          10.470043,
+          36.729054
+        ],
+        "areaKm2": 0.004772199964784769,
+        "pickerGroupId": "osm:way:693683551",
+        "offset": 5428092,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683551",
+        "tags": {
+          "landuse": "residential",
+          "name": "36"
+        }
+      },
+      "sourceGeometrySha256": "8539f7af8b9710b27d8259ecc79818ed28f95a71be4361075126c68c9b2aa74b",
+      "packedGeometrySha256": "e8d308208c3adbc470696b48b11b61d4f09b130117b9dd9003d7da83ece9d75d",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683551"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9208585727538905
+    },
+    {
+      "id": "osm:way:693683552",
+      "currentRaw": {
+        "id": "osm:way:693683552",
+        "sourceId": "osm",
+        "name": "37",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728192,
+        "lng": 10.469811,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.46922,
+          36.727771,
+          10.470401,
+          36.728616
+        ],
+        "areaKm2": 0.004762900658331882,
+        "pickerGroupId": "osm:way:693683552",
+        "offset": 5428144,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683552",
+        "tags": {
+          "landuse": "residential",
+          "name": "37"
+        }
+      },
+      "sourceGeometrySha256": "ad7d386d527d8c287ce9db9e11a409fb318d496cc1d4ad3bd1931002d01a827d",
+      "packedGeometrySha256": "724a2cfcae539cf3f62d8c88368a0debe4bb8eae79dc5a2a766ba333e774a275",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683552"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8630505320578417
+    },
+    {
+      "id": "osm:way:693683554",
+      "currentRaw": {
+        "id": "osm:way:693683554",
+        "sourceId": "osm",
+        "name": "38",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727576,
+        "lng": 10.470522,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.470056,
+          36.727376,
+          10.470803,
+          36.728158
+        ],
+        "areaKm2": 0.002847031628763998,
+        "pickerGroupId": "osm:way:693683554",
+        "offset": 5428248,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683554",
+        "tags": {
+          "landuse": "residential",
+          "name": "38"
+        }
+      },
+      "sourceGeometrySha256": "b22884d777b089562997ec83ace2530217937d81ce2116d33ca52a2548ff8db7",
+      "packedGeometrySha256": "6d1dde52354a59b42a7b6b6c7cd748b2f39918cf366b4d8c7565d98fafbbd8c7",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683554"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.771021675690283
+    },
+    {
+      "id": "osm:way:693683553",
+      "currentRaw": {
+        "id": "osm:way:693683553",
+        "sourceId": "osm",
+        "name": "39",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727515,
+        "lng": 10.470039,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.46957,
+          36.726909,
+          10.470519,
+          36.727925
+        ],
+        "areaKm2": 0.004260171727967687,
+        "pickerGroupId": "osm:way:693683553",
+        "offset": 5428196,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683553",
+        "tags": {
+          "landuse": "residential",
+          "name": "39"
+        }
+      },
+      "sourceGeometrySha256": "9236367a643e88f914fd8014e945653975119afeda92c073552d632ed1026a57",
+      "packedGeometrySha256": "b274da6c9396dc05bd7f29eedf6d0fbd7adc62432a46557b2dc31b6f9c93156a",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683553"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.7891347263147974
+    },
+    {
+      "id": "osm:way:693683560",
+      "currentRaw": {
+        "id": "osm:way:693683560",
+        "sourceId": "osm",
+        "name": "40",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726915,
+        "lng": 10.469793,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.469373,
+          36.726306,
+          10.470212,
+          36.727277
+        ],
+        "areaKm2": 0.003837642917975313,
+        "pickerGroupId": "osm:way:693683560",
+        "offset": 5428456,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683560",
+        "tags": {
+          "landuse": "residential",
+          "name": "40"
+        }
+      },
+      "sourceGeometrySha256": "909d288a1eebeeafa80ca852ab886ccecf2a83617a155d08826dfae02a069aa5",
+      "packedGeometrySha256": "a02387eaedc09eba99b0c298e62e98b046c80149a23287cddc2fe554d83132f5",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683560"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.746568826219831
+    },
+    {
+      "id": "osm:way:693683558",
+      "currentRaw": {
+        "id": "osm:way:693683558",
+        "sourceId": "osm",
+        "name": "41",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727569,
+        "lng": 10.469272,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.468787,
+          36.727099,
+          10.469771,
+          36.728018
+        ],
+        "areaKm2": 0.004076284845382958,
+        "pickerGroupId": "osm:way:693683558",
+        "offset": 5428404,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683558",
+        "tags": {
+          "landuse": "residential",
+          "name": "41"
+        }
+      },
+      "sourceGeometrySha256": "92470d66064d306611f342825fee54bfd89333257bf8a0bcbf6a48637008d842",
+      "packedGeometrySha256": "d81b9ee5274f937658ece2ba54dca0475a0c64a0a5a800821e2e00984c415268",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683558"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.83276866036881
+    },
+    {
+      "id": "osm:way:693683557",
+      "currentRaw": {
+        "id": "osm:way:693683557",
+        "sourceId": "osm",
+        "name": "42",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728847,
+        "lng": 10.468195,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.46724,
+          36.72786,
+          10.469137,
+          36.729847
+        ],
+        "areaKm2": 0.01115496834534289,
+        "pickerGroupId": "osm:way:693683557",
+        "offset": 5428352,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693683557",
+        "tags": {
+          "landuse": "residential",
+          "name": "42"
+        }
+      },
+      "sourceGeometrySha256": "95e11ee90ae38906abd8f80156f07f21593bf49433bba1b48a26f3cb7923a48c",
+      "packedGeometrySha256": "a1be980dfbbea17ef1c766b97d6626112e4731795fe05665474d2702e601baac",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T07:40:55Z",
+      "creationChangesetId": 70797100,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693683557"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0042307609451213
+    },
+    {
+      "id": "osm:way:693689970",
+      "currentRaw": {
+        "id": "osm:way:693689970",
+        "sourceId": "osm",
+        "name": "43",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.730041,
+        "lng": 10.46633,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.46479,
+          36.72935,
+          10.467302,
+          36.730546
+        ],
+        "areaKm2": 0.0067412817112611646,
+        "pickerGroupId": "osm:way:693689970",
+        "offset": 5430588,
+        "length": 132
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689970",
+        "tags": {
+          "landuse": "residential",
+          "name": "43"
+        }
+      },
+      "sourceGeometrySha256": "1b1abdbe6788e924288f16d8e73ea19662e803b5f05160a8e509937c2fb2c78b",
+      "packedGeometrySha256": "157575ff36418c989442504cf110f1b8cfb7e90b4c132bcaf996410aa0218346",
+      "packedBytes": 132,
+      "currentVersion": 2,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689970"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.208830743569774
+    },
+    {
+      "id": "osm:way:693689933",
+      "currentRaw": {
+        "id": "osm:way:693689933",
+        "sourceId": "osm",
+        "name": "44",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729669,
+        "lng": 10.466358,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464997,
+          36.728946,
+          10.466948,
+          36.729939
+        ],
+        "areaKm2": 0.008261428594331354,
+        "pickerGroupId": "osm:way:693689933",
+        "offset": 5428508,
+        "length": 68
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689933",
+        "tags": {
+          "landuse": "residential",
+          "name": "44"
+        }
+      },
+      "sourceGeometrySha256": "fd772c0a6927f3566d1e88b7731f07bd4235189990f4b6159e18af3b0a52f185",
+      "packedGeometrySha256": "7ad1541cdc07c04c5717aaaa4c3819930a78728da24328b1df5f3c25c217c140",
+      "packedBytes": 68,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:50Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689933"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.173987369434333
+    },
+    {
+      "id": "osm:way:693689934",
+      "currentRaw": {
+        "id": "osm:way:693689934",
+        "sourceId": "osm",
+        "name": "45",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728998,
+        "lng": 10.466044,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465679,
+          36.728723,
+          10.466407,
+          36.729251
+        ],
+        "areaKm2": 0.002101251950119531,
+        "pickerGroupId": "osm:way:693689934",
+        "offset": 5428576,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689934",
+        "tags": {
+          "landuse": "residential",
+          "name": "45"
+        }
+      },
+      "sourceGeometrySha256": "0788ffd49e0977fcee5e708c3ff3a6952b6a93751ad902f6997f9bad017b5fdc",
+      "packedGeometrySha256": "a09256410fb5b7e309078ce0818eda749f69eb67e6fc8f3ee7da9964cae47763",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:50Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689934"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1312835889826216
+    },
+    {
+      "id": "osm:way:693689935",
+      "currentRaw": {
+        "id": "osm:way:693689935",
+        "sourceId": "osm",
+        "name": "46",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728905,
+        "lng": 10.467058,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465966,
+          36.728326,
+          10.467612,
+          36.729452
+        ],
+        "areaKm2": 0.007853390815491879,
+        "pickerGroupId": "osm:way:693689935",
+        "offset": 5428628,
+        "length": 68
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689935",
+        "tags": {
+          "landuse": "residential",
+          "name": "46"
+        }
+      },
+      "sourceGeometrySha256": "76eb62572dc1204a8f3e81c0bece8d686b567c3c3531c95ae398cf71a747956f",
+      "packedGeometrySha256": "5bb164b0ae0d6fa9625e1f75814a0314212558f4f3388f4150ddaa4071946434",
+      "packedBytes": 68,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:50Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689935"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0685898077168647
+    },
+    {
+      "id": "osm:way:693689936",
+      "currentRaw": {
+        "id": "osm:way:693689936",
+        "sourceId": "osm",
+        "name": "47",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.7285,
+        "lng": 10.467687,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.467242,
+          36.728088,
+          10.468132,
+          36.728867
+        ],
+        "areaKm2": 0.003419877029581144,
+        "pickerGroupId": "osm:way:693689936",
+        "offset": 5428696,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689936",
+        "tags": {
+          "landuse": "residential",
+          "name": "47"
+        }
+      },
+      "sourceGeometrySha256": "a56ebeb8c5eebc7067f02fcec95fb78329ca668e7091621bd27b96aece00900d",
+      "packedGeometrySha256": "b0ea2fdab44ce26914844b6e8e132f20c0a23ddd11a836e2c4586fdda8ec336b",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:50Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689936"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9991234166436693
+    },
+    {
+      "id": "osm:way:693689940",
+      "currentRaw": {
+        "id": "osm:way:693689940",
+        "sourceId": "osm",
+        "name": "48",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727552,
+        "lng": 10.468461,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.467796,
+          36.726892,
+          10.469115,
+          36.72822
+        ],
+        "areaKm2": 0.006895667145390737,
+        "pickerGroupId": "osm:way:693689940",
+        "offset": 5428904,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689940",
+        "tags": {
+          "landuse": "residential",
+          "name": "48"
+        }
+      },
+      "sourceGeometrySha256": "275796c78deb99f1cbf173e9ebb0c6f6f7db82218b49ca34593963296c1d6d19",
+      "packedGeometrySha256": "cd344c8197a94b4fec7ff7b56f1f0c6e6dc88f1c7ee06c2b8d8b62aecae8ac20",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689940"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8733132186051438
+    },
+    {
+      "id": "osm:way:693689971",
+      "currentRaw": {
+        "id": "osm:way:693689971",
+        "sourceId": "osm",
+        "name": "49",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.72581,
+        "lng": 10.468588,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.4675,
+          36.724544,
+          10.469794,
+          36.727071
+        ],
+        "areaKm2": 0.0290442630752279,
+        "pickerGroupId": "osm:way:693689971",
+        "offset": 5430720,
+        "length": 116
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689971",
+        "tags": {
+          "landuse": "residential",
+          "name": "49"
+        }
+      },
+      "sourceGeometrySha256": "bfa8b9b4de39545f4a49f8a3fc6446819b4acb94ba72d900dc0122e787ff5809",
+      "packedGeometrySha256": "f2290ecb1d4d6555e2ae6d83172bfd549a6eefc37c8a46780cdb3d3fff417774",
+      "packedBytes": 116,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689971"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.712374318633918
+    },
+    {
+      "id": "osm:way:693689941",
+      "currentRaw": {
+        "id": "osm:way:693689941",
+        "sourceId": "osm",
+        "name": "50",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727295,
+        "lng": 10.467942,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.467287,
+          36.726649,
+          10.468599,
+          36.72794
+        ],
+        "areaKm2": 0.0067170051812205575,
+        "pickerGroupId": "osm:way:693689941",
+        "offset": 5428956,
+        "length": 60
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689941",
+        "tags": {
+          "landuse": "residential",
+          "name": "50"
+        }
+      },
+      "sourceGeometrySha256": "a2b1f243bcab3786168baf77e9cccc08757804c356b3c3e97489fc690182f8b1",
+      "packedGeometrySha256": "0c07fbcc66b8c2128ee94d5f4b80a2186402ef46d3be7a05f9e1fb44f742ece8",
+      "packedBytes": 60,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689941"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8780869558724995
+    },
+    {
+      "id": "osm:way:693689937",
+      "currentRaw": {
+        "id": "osm:way:693689937",
+        "sourceId": "osm",
+        "name": "51",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728249,
+        "lng": 10.46721,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466771,
+          36.727829,
+          10.467665,
+          36.728633
+        ],
+        "areaKm2": 0.0034440529232487977,
+        "pickerGroupId": "osm:way:693689937",
+        "offset": 5428748,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689937",
+        "tags": {
+          "landuse": "residential",
+          "name": "51"
+        }
+      },
+      "sourceGeometrySha256": "832ddf9a60ce48402c57795b259701d1d162b508ea7e22138c4eb7cb3b34d2bf",
+      "packedGeometrySha256": "b150f3c0514c382a797dd9500bd1fcd754150c017549c9b664a73a247e67d17a",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:50Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689937"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.002031940023044
+    },
+    {
+      "id": "osm:way:693689938",
+      "currentRaw": {
+        "id": "osm:way:693689938",
+        "sourceId": "osm",
+        "name": "52",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727943,
+        "lng": 10.466227,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465886,
+          36.727776,
+          10.466857,
+          36.728426
+        ],
+        "areaKm2": 0.0029940380058002605,
+        "pickerGroupId": "osm:way:693689938",
+        "offset": 5428800,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689938",
+        "tags": {
+          "landuse": "residential",
+          "name": "52"
+        }
+      },
+      "sourceGeometrySha256": "53dbd55ed0176acd7f0fa3595dfe0b93420f0c7b732c2f1764ebf25922399736",
+      "packedGeometrySha256": "3d84bb1812ab1229a30e60cbd9b22ba90b9d8193a4596a3ac3474621ce2a81e5",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:50Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689938"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.029009736246434
+    },
+    {
+      "id": "osm:way:693689939",
+      "currentRaw": {
+        "id": "osm:way:693689939",
+        "sourceId": "osm",
+        "name": "53",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727765,
+        "lng": 10.466666,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466165,
+          36.727415,
+          10.467169,
+          36.728121
+        ],
+        "areaKm2": 0.0032897939208938903,
+        "pickerGroupId": "osm:way:693689939",
+        "offset": 5428852,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689939",
+        "tags": {
+          "landuse": "residential",
+          "name": "53"
+        }
+      },
+      "sourceGeometrySha256": "80862c6702b24bd8b549fdce7eecda00f9be59a26acdd73fb49f2e386dea4869",
+      "packedGeometrySha256": "a5b9375b74cddf9cac3645d48142b95cac42327fab3396ec02a930b983c0e35c",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:50Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689939"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9891363564971027
+    },
+    {
+      "id": "osm:way:693689942",
+      "currentRaw": {
+        "id": "osm:way:693689942",
+        "sourceId": "osm",
+        "name": "54",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727123,
+        "lng": 10.467387,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466841,
+          36.72658,
+          10.467939,
+          36.727664
+        ],
+        "areaKm2": 0.0046679603982900915,
+        "pickerGroupId": "osm:way:693689942",
+        "offset": 5429016,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689942",
+        "tags": {
+          "landuse": "residential",
+          "name": "54"
+        }
+      },
+      "sourceGeometrySha256": "d81f26cca53bf690fd208a60388d9424e39ac75ec5a421ab66ddc6047bd7776e",
+      "packedGeometrySha256": "d5eb34c6a7c8639476dc2b6a3fbdafabd8db6aeae5751308dbdc661f782d6695",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689942"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8932826372553544
+    },
+    {
+      "id": "osm:way:693689944",
+      "currentRaw": {
+        "id": "osm:way:693689944",
+        "sourceId": "osm",
+        "name": "55",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.72626,
+        "lng": 10.467562,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466886,
+          36.725802,
+          10.468242,
+          36.726709
+        ],
+        "areaKm2": 0.004824486667619551,
+        "pickerGroupId": "osm:way:693689944",
+        "offset": 5429120,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689944",
+        "tags": {
+          "landuse": "residential",
+          "name": "55"
+        }
+      },
+      "sourceGeometrySha256": "e81bcefef91d4dbf9f4b8668499b90d5a83f9cbe547d85f4a54b8d71b6567d2a",
+      "packedGeometrySha256": "8a3f0f7bd6a492f2b1cb7f57704b4a7d0f68105f3f6e81e0481531fbf101c846",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689944"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8087008668713342
+    },
+    {
+      "id": "osm:way:693689954",
+      "currentRaw": {
+        "id": "osm:way:693689954",
+        "sourceId": "osm",
+        "name": "56",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725413,
+        "lng": 10.46696,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.46626,
+          36.724946,
+          10.467652,
+          36.725861
+        ],
+        "areaKm2": 0.004950403658902476,
+        "pickerGroupId": "osm:way:693689954",
+        "offset": 5429676,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689954",
+        "tags": {
+          "landuse": "residential",
+          "name": "56"
+        }
+      },
+      "sourceGeometrySha256": "920db205c4dd0b8b5b0d272d72f8787523bc1fc0f71c35ecc396e7d9b57e9b4f",
+      "packedGeometrySha256": "d500e2550bf3de838099426960bc380ee202214e23ff9afdd1f2c5ead268405e",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689954"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.7715736644530033
+    },
+    {
+      "id": "osm:way:693689943",
+      "currentRaw": {
+        "id": "osm:way:693689943",
+        "sourceId": "osm",
+        "name": "57",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726889,
+        "lng": 10.466924,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466369,
+          36.726334,
+          10.467476,
+          36.727428
+        ],
+        "areaKm2": 0.004839077342957776,
+        "pickerGroupId": "osm:way:693689943",
+        "offset": 5429068,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689943",
+        "tags": {
+          "landuse": "residential",
+          "name": "57"
+        }
+      },
+      "sourceGeometrySha256": "7caed984dca5be9d179c2498e30b86b27a8085d8459b01364d8d280094de40e9",
+      "packedGeometrySha256": "5afec6c3f620d6378b6db729752520b1a8fda937813ee7890034afe31c147d05",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689943"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.898838855403268
+    },
+    {
+      "id": "osm:way:693689955",
+      "currentRaw": {
+        "id": "osm:way:693689955",
+        "sourceId": "osm",
+        "name": "58",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728629,
+        "lng": 10.465536,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464746,
+          36.727825,
+          10.466089,
+          36.729032
+        ],
+        "areaKm2": 0.007460106234444896,
+        "pickerGroupId": "osm:way:693689955",
+        "offset": 5429728,
+        "length": 68
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689955",
+        "tags": {
+          "landuse": "residential",
+          "name": "58"
+        }
+      },
+      "sourceGeometrySha256": "8c1fcb868d62cea4d060580a411b1126afc7e08e7f5e3e7fe32479cf0c32ae93",
+      "packedGeometrySha256": "bb5c6af338bb756695d57c89503df108875399b6b219b879586c16bd7612f3ad",
+      "packedBytes": 68,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689955"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1270449858106026
+    },
+    {
+      "id": "osm:way:693689957",
+      "currentRaw": {
+        "id": "osm:way:693689957",
+        "sourceId": "osm",
+        "name": "59",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728916,
+        "lng": 10.464655,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464197,
+          36.728615,
+          10.465111,
+          36.729224
+        ],
+        "areaKm2": 0.002853050386661601,
+        "pickerGroupId": "osm:way:693689957",
+        "offset": 5429848,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689957",
+        "tags": {
+          "landuse": "residential",
+          "name": "59"
+        }
+      },
+      "sourceGeometrySha256": "66b8454910dcd992d7c35297d000655abde6bc33e3eec9a1c821064e5f6c79e6",
+      "packedGeometrySha256": "ca55bfc3b9364ad8362adc7a936fe5e1ac80d6a815583164152caf7704fd34fd",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689957"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.2013552733245465
+    },
+    {
+      "id": "osm:way:693689956",
+      "currentRaw": {
+        "id": "osm:way:693689956",
+        "sourceId": "osm",
+        "name": "60",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728511,
+        "lng": 10.464852,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464474,
+          36.728215,
+          10.465229,
+          36.728792
+        ],
+        "areaKm2": 0.0023812542104446758,
+        "pickerGroupId": "osm:way:693689956",
+        "offset": 5429796,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689956",
+        "tags": {
+          "landuse": "residential",
+          "name": "60"
+        }
+      },
+      "sourceGeometrySha256": "103806b5712f266b818e5406c30c101f13d311610820fa0216f1df3f1d6666f4",
+      "packedGeometrySha256": "46315d913f5e71e2a26a6df8ea949f887fb7ce70c13f1fae3b8ee5a5b3b7b110",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689956"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.155476032274147
+    },
+    {
+      "id": "osm:way:693689962",
+      "currentRaw": {
+        "id": "osm:way:693689962",
+        "sourceId": "osm",
+        "name": "61",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727444,
+        "lng": 10.465214,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464765,
+          36.727231,
+          10.466052,
+          36.728068
+        ],
+        "areaKm2": 0.005066801914490403,
+        "pickerGroupId": "osm:way:693689962",
+        "offset": 5430124,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689962",
+        "tags": {
+          "landuse": "residential",
+          "name": "61"
+        }
+      },
+      "sourceGeometrySha256": "4d20cc9d959393ee0047a7fb1a6f96fe6e744559fe2d964ea67579ca03dde5e6",
+      "packedGeometrySha256": "3cfa4a872c8cdbe67132b4c467e15febc7769784684d79179fee4dda8082566e",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689962"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0440825368694333
+    },
+    {
+      "id": "osm:way:693689963",
+      "currentRaw": {
+        "id": "osm:way:693689963",
+        "sourceId": "osm",
+        "name": "62",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727284,
+        "lng": 10.46575,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.46516,
+          36.726876,
+          10.46634,
+          36.727688
+        ],
+        "areaKm2": 0.0041508509935730565,
+        "pickerGroupId": "osm:way:693689963",
+        "offset": 5430176,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689963",
+        "tags": {
+          "landuse": "residential",
+          "name": "62"
+        }
+      },
+      "sourceGeometrySha256": "5e68cea3551ab9e176d763807ae7d05658312d9d0fa4300b9a88287aaba4dd49",
+      "packedGeometrySha256": "1b8cf80e2fa551e2a111f4e7e4e6f9d989cffd25dfe48c93f6050d7c9254342e",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689963"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9995273321099485
+    },
+    {
+      "id": "osm:way:693689945",
+      "currentRaw": {
+        "id": "osm:way:693689945",
+        "sourceId": "osm",
+        "name": "63",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726752,
+        "lng": 10.465862,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465171,
+          36.726296,
+          10.466549,
+          36.727196
+        ],
+        "areaKm2": 0.00496659631703182,
+        "pickerGroupId": "osm:way:693689945",
+        "offset": 5429172,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689945",
+        "tags": {
+          "landuse": "residential",
+          "name": "63"
+        }
+      },
+      "sourceGeometrySha256": "21424ee988663705fa7eaf0634102a8456686b8a1b3b1c63cb065110471f58fb",
+      "packedGeometrySha256": "94a1452836a3e53ba9efa38bf4fe23f81771bfaed148d27fa7d98b1e0229c542",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689945"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9480987904618923
+    },
+    {
+      "id": "osm:way:693689946",
+      "currentRaw": {
+        "id": "osm:way:693689946",
+        "sourceId": "osm",
+        "name": "64",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726458,
+        "lng": 10.466608,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466178,
+          36.726076,
+          10.467046,
+          36.72682
+        ],
+        "areaKm2": 0.00318512873972404,
+        "pickerGroupId": "osm:way:693689946",
+        "offset": 5429224,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689946",
+        "tags": {
+          "landuse": "residential",
+          "name": "64"
+        }
+      },
+      "sourceGeometrySha256": "c6181fa741e10922e49e4b15277f1584d7fb0e73f32178409ddbcf46156fa8da",
+      "packedGeometrySha256": "e62c6e54b0ad966d446dd9c6f1dc6c5cdea549a72dc4487d3ca7d5e8b45b668e",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689946"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8800201953204256
+    },
+    {
+      "id": "osm:way:693689949",
+      "currentRaw": {
+        "id": "osm:way:693689949",
+        "sourceId": "osm",
+        "name": "65",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725631,
+        "lng": 10.466377,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465687,
+          36.725174,
+          10.467055,
+          36.726073
+        ],
+        "areaKm2": 0.004886385195109216,
+        "pickerGroupId": "osm:way:693689949",
+        "offset": 5429380,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689949",
+        "tags": {
+          "landuse": "residential",
+          "name": "65"
+        }
+      },
+      "sourceGeometrySha256": "10365fa1e790066d44406e18791e84cd4c13417d69d2d2939a0cf5c30c94d8f0",
+      "packedGeometrySha256": "b86d9dc98435aab3cd9ab88419175c1939baf9346e1c1cd71a388a286287a9d9",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689949"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.824191446978608
+    },
+    {
+      "id": "osm:way:693689947",
+      "currentRaw": {
+        "id": "osm:way:693689947",
+        "sourceId": "osm",
+        "name": "66",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726207,
+        "lng": 10.466137,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465716,
+          36.725809,
+          10.466566,
+          36.726581
+        ],
+        "areaKm2": 0.003258797305745162,
+        "pickerGroupId": "osm:way:693689947",
+        "offset": 5429276,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689947",
+        "tags": {
+          "landuse": "residential",
+          "name": "66"
+        }
+      },
+      "sourceGeometrySha256": "80ab1d7d3eccdba245597d11e63b7cf6c7cb2f947f861b5a49311bc98713efc1",
+      "packedGeometrySha256": "4af28609655021726cea75fd67ae8eb694fe2a1122339520d018dacb959bbfde",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689947"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8863110856929235
+    },
+    {
+      "id": "osm:way:693689948",
+      "currentRaw": {
+        "id": "osm:way:693689948",
+        "sourceId": "osm",
+        "name": "67",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725933,
+        "lng": 10.465644,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465194,
+          36.725537,
+          10.466096,
+          36.726323
+        ],
+        "areaKm2": 0.003564810197782268,
+        "pickerGroupId": "osm:way:693689948",
+        "offset": 5429328,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689948",
+        "tags": {
+          "landuse": "residential",
+          "name": "67"
+        }
+      },
+      "sourceGeometrySha256": "70b6cd6060c616385d6efc7499cec73bae172f6fc59a0b5f01d7dbcbf855064a",
+      "packedGeometrySha256": "91b12bdc58a30b35be2748d6ab5f960e2a43ee7e842d6c473ba49f20a3859b45",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689948"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8928953015487893
+    },
+    {
+      "id": "osm:way:693689950",
+      "currentRaw": {
+        "id": "osm:way:693689950",
+        "sourceId": "osm",
+        "name": "68",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725695,
+        "lng": 10.465102,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464592,
+          36.724925,
+          10.465871,
+          36.726575
+        ],
+        "areaKm2": 0.008550451832667404,
+        "pickerGroupId": "osm:way:693689950",
+        "offset": 5429432,
+        "length": 116
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689950",
+        "tags": {
+          "landuse": "residential",
+          "name": "68"
+        }
+      },
+      "sourceGeometrySha256": "f07c2832402f3f8b7b19f4ac1b4dcc57d9503861f4f22ecf8010d79220279ec7",
+      "packedGeometrySha256": "17bac548a9c029036c98908eb897ffb5c70c10bcb56436ef4a654146333bc3d6",
+      "packedBytes": 116,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689950"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.9063597094869036
+    },
+    {
+      "id": "osm:way:693689953",
+      "currentRaw": {
+        "id": "osm:way:693689953",
+        "sourceId": "osm",
+        "name": "69",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.724762,
+        "lng": 10.465729,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464998,
+          36.724288,
+          10.46645,
+          36.725214
+        ],
+        "areaKm2": 0.005320064354564211,
+        "pickerGroupId": "osm:way:693689953",
+        "offset": 5429624,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689953",
+        "tags": {
+          "landuse": "residential",
+          "name": "69"
+        }
+      },
+      "sourceGeometrySha256": "38e5e0a0623e521fdad9cef5dadde013bf02409b38f151cce8b78ce3ea4d3597",
+      "packedGeometrySha256": "5fb8a738efe1e8747e68d9e05c057290bf4a3db5bc6f471af9caf3d549d86b14",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689953"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.7927510974019767
+    },
+    {
+      "id": "osm:way:693689951",
+      "currentRaw": {
+        "id": "osm:way:693689951",
+        "sourceId": "osm",
+        "name": "70",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725281,
+        "lng": 10.464786,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464477,
+          36.724654,
+          10.465404,
+          36.725867
+        ],
+        "areaKm2": 0.004996558326963668,
+        "pickerGroupId": "osm:way:693689951",
+        "offset": 5429548,
+        "length": 76
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689951",
+        "tags": {
+          "landuse": "residential",
+          "name": "70"
+        }
+      },
+      "sourceGeometrySha256": "afccb2d2f78fbd1cd2ad2c5a0e1be5ea52e1bc2dc4c3ce9d41e27b7560e34721",
+      "packedGeometrySha256": "26c49cc81fff91ae0529d4c095254a91f850ebe7232288ebb57d3ed5dbab2ae7",
+      "packedBytes": 76,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:51Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689951"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.8927258125623054
+    },
+    {
+      "id": "osm:way:693689964",
+      "currentRaw": {
+        "id": "osm:way:693689964",
+        "sourceId": "osm",
+        "name": "71",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726993,
+        "lng": 10.463951,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463458,
+          36.726455,
+          10.465333,
+          36.727322
+        ],
+        "areaKm2": 0.006209330873250037,
+        "pickerGroupId": "osm:way:693689964",
+        "offset": 5430228,
+        "length": 84
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689964",
+        "tags": {
+          "landuse": "residential",
+          "name": "71"
+        }
+      },
+      "sourceGeometrySha256": "f29f61be4bbb7e292231818177ef85213d4839f6b088e815b605f13fb5bfd060",
+      "packedGeometrySha256": "e98fdc7390909f9dc0e6dac9afc6d64a01550ae192bcb6f56300805152bba545",
+      "packedBytes": 84,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689964"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0818096271404287
+    },
+    {
+      "id": "osm:way:693689961",
+      "currentRaw": {
+        "id": "osm:way:693689961",
+        "sourceId": "osm",
+        "name": "72",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727274,
+        "lng": 10.464534,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464025,
+          36.726865,
+          10.465045,
+          36.72762
+        ],
+        "areaKm2": 0.004053307481517948,
+        "pickerGroupId": "osm:way:693689961",
+        "offset": 5430072,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689961",
+        "tags": {
+          "landuse": "residential",
+          "name": "72"
+        }
+      },
+      "sourceGeometrySha256": "e5162a77c4e3036fafbf556abaf11a85a0582daba94ef88f56c7da5b78b08fb3",
+      "packedGeometrySha256": "9f0cc9710954470d533f84c091d8e28e8d8b5c7f932942e0d8379c42ba5e016c",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689961"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0698651821612386
+    },
+    {
+      "id": "osm:way:693689960",
+      "currentRaw": {
+        "id": "osm:way:693689960",
+        "sourceId": "osm",
+        "name": "73",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727764,
+        "lng": 10.464271,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463698,
+          36.727421,
+          10.464844,
+          36.728116
+        ],
+        "areaKm2": 0.003903276686794506,
+        "pickerGroupId": "osm:way:693689960",
+        "offset": 5430020,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689960",
+        "tags": {
+          "landuse": "residential",
+          "name": "73"
+        }
+      },
+      "sourceGeometrySha256": "86c26733c415daa39d7c5eeb30a1890d4bb19501d23c835d11927aacc5ba2437",
+      "packedGeometrySha256": "34d0abfd665b034ab7ecd7b443d597b22f0bc467384be1638ab3fea59535fd9a",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689960"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.126153071849126
+    },
+    {
+      "id": "osm:way:693689959",
+      "currentRaw": {
+        "id": "osm:way:693689959",
+        "sourceId": "osm",
+        "name": "74",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728261,
+        "lng": 10.464261,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463949,
+          36.728007,
+          10.464582,
+          36.728521
+        ],
+        "areaKm2": 0.0018214411854103065,
+        "pickerGroupId": "osm:way:693689959",
+        "offset": 5429968,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689959",
+        "tags": {
+          "landuse": "residential",
+          "name": "74"
+        }
+      },
+      "sourceGeometrySha256": "b6483533439e5b65c19e53301ee12aee87cc02dd53849f40cbe1eee0bcbc7ce0",
+      "packedGeometrySha256": "ef6dd1607306575c4a7459a00e84a4a7963e5cbe7e968862aeffddecba9a5130",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689959"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.168348204129589
+    },
+    {
+      "id": "osm:way:693689958",
+      "currentRaw": {
+        "id": "osm:way:693689958",
+        "sourceId": "osm",
+        "name": "75",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728187,
+        "lng": 10.463652,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463114,
+          36.727815,
+          10.464313,
+          36.728894
+        ],
+        "areaKm2": 0.006040622482918658,
+        "pickerGroupId": "osm:way:693689958",
+        "offset": 5429900,
+        "length": 68
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689958",
+        "tags": {
+          "landuse": "residential",
+          "name": "75"
+        }
+      },
+      "sourceGeometrySha256": "3c65d045de38118e65d24faa74e9d87e4ed919f48221534370a7fb62625e7124",
+      "packedGeometrySha256": "bb40b1e14568631ca72cc226d6b99e733f757949c31db97de0e4da185823543c",
+      "packedBytes": 68,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689958"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.1979477656885447
+    },
+    {
+      "id": "osm:way:693689966",
+      "currentRaw": {
+        "id": "osm:way:693689966",
+        "sourceId": "osm",
+        "name": "76",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728021,
+        "lng": 10.463073,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.462593,
+          36.72759,
+          10.463565,
+          36.728425
+        ],
+        "areaKm2": 0.0037800758507361017,
+        "pickerGroupId": "osm:way:693689966",
+        "offset": 5430380,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689966",
+        "tags": {
+          "landuse": "residential",
+          "name": "76"
+        }
+      },
+      "sourceGeometrySha256": "b06017b60dc8af22a05109c8691d056f0989575e180c521fcf6162486035bcdb",
+      "packedGeometrySha256": "82ec4e3e5be49715351e6f75bed37f16e41f8b42271e75d9e9b0b369f07927a9",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689966"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.218863521775234
+    },
+    {
+      "id": "osm:way:693689965",
+      "currentRaw": {
+        "id": "osm:way:693689965",
+        "sourceId": "osm",
+        "name": "77",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.727616,
+        "lng": 10.46354,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.462056,
+          36.727193,
+          10.463885,
+          36.728215
+        ],
+        "areaKm2": 0.005422490555234109,
+        "pickerGroupId": "osm:way:693689965",
+        "offset": 5430312,
+        "length": 68
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689965",
+        "tags": {
+          "landuse": "residential",
+          "name": "77"
+        }
+      },
+      "sourceGeometrySha256": "7512c3a9747541d9f8595ce610818c0225098b7bfb4cce139fd2695025f3960c",
+      "packedGeometrySha256": "db12ffeed673abe514a7c53225ac4f88f820248caf3272c32f1f5cff41f18748",
+      "packedBytes": 68,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689965"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.157542979657367
+    },
+    {
+      "id": "osm:way:693689967",
+      "currentRaw": {
+        "id": "osm:way:693689967",
+        "sourceId": "osm",
+        "name": "78",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728405,
+        "lng": 10.462526,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.462079,
+          36.728151,
+          10.462967,
+          36.728651
+        ],
+        "areaKm2": 0.001677462842453066,
+        "pickerGroupId": "osm:way:693689967",
+        "offset": 5430432,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689967",
+        "tags": {
+          "landuse": "residential",
+          "name": "78"
+        }
+      },
+      "sourceGeometrySha256": "c180d758001b9374eb8764a035209952a6e0dc08f6e9b340c2c05cff3c740d04",
+      "packedGeometrySha256": "663d4e46ede6f3637de4256fe19aae0859e4bff141499c5610c97216981ad152",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689967"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.2832949826197133
+    },
+    {
+      "id": "osm:way:693689968",
+      "currentRaw": {
+        "id": "osm:way:693689968",
+        "sourceId": "osm",
+        "name": "79",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.728852,
+        "lng": 10.463542,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.462993,
+          36.728545,
+          10.464061,
+          36.729127
+        ],
+        "areaKm2": 0.0021425829448830074,
+        "pickerGroupId": "osm:way:693689968",
+        "offset": 5430484,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689968",
+        "tags": {
+          "landuse": "residential",
+          "name": "79"
+        }
+      },
+      "sourceGeometrySha256": "7cfcc74c2f4da037e47c09b3769db835d5c12644df998c347169f9db244f1e6b",
+      "packedGeometrySha256": "6a59766b973d18ef55ceb5050f38325afef5b5b3a27f4350a47a93ce8a5a4f0e",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689968"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.2599724721687102
+    },
+    {
+      "id": "osm:way:693689969",
+      "currentRaw": {
+        "id": "osm:way:693689969",
+        "sourceId": "osm",
+        "name": "80",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729211,
+        "lng": 10.464442,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.464013,
+          36.728975,
+          10.464877,
+          36.72946
+        ],
+        "areaKm2": 0.0015869056613943744,
+        "pickerGroupId": "osm:way:693689969",
+        "offset": 5430536,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689969",
+        "tags": {
+          "landuse": "residential",
+          "name": "80"
+        }
+      },
+      "sourceGeometrySha256": "4b4a4df7cfd377214dad6bcdf385f1aeb2fdea40bae27c10554dc4b50788c2bb",
+      "packedGeometrySha256": "da7dd2e1d0c8b2e6f0688049fac7c142001b75e57abd6a6e3d8d23b6bd2cd077",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689969"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.2387462545970593
+    },
+    {
+      "id": "osm:way:693689972",
+      "currentRaw": {
+        "id": "osm:way:693689972",
+        "sourceId": "osm",
+        "name": "81",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726759,
+        "lng": 10.463664,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463243,
+          36.726245,
+          10.464305,
+          36.72708
+        ],
+        "areaKm2": 0.0030478375500984103,
+        "pickerGroupId": "osm:way:693689972",
+        "offset": 5430836,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689972",
+        "tags": {
+          "landuse": "residential",
+          "name": "81"
+        }
+      },
+      "sourceGeometrySha256": "3c39569a4808ca99a6ae3754ffc94e4c84c14b8a4683c88ee8df77fd03ae12ca",
+      "packedGeometrySha256": "528e252c227643da1b27d73c46e35c76f063a40a7f1c9b8104640edc0c2fd4a1",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689972"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0803996135460814
+    },
+    {
+      "id": "osm:way:693689973",
+      "currentRaw": {
+        "id": "osm:way:693689973",
+        "sourceId": "osm",
+        "name": "82",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725894,
+        "lng": 10.464311,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463932,
+          36.725591,
+          10.464534,
+          36.726443
+        ],
+        "areaKm2": 0.0025734571950524823,
+        "pickerGroupId": "osm:way:693689973",
+        "offset": 5430888,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693689973",
+        "tags": {
+          "landuse": "residential",
+          "name": "82"
+        }
+      },
+      "sourceGeometrySha256": "c3f102649209ddcfd87a5c66ef47e726ea4d31ab9dda553658ead7cd79911014",
+      "packedGeometrySha256": "d6f9eea2633d1b548823c98d07b924dba2b2b60c17e1f7405e5e63942f68ab7b",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:24:52Z",
+      "creationChangesetId": 70799602,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693689973"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.971089033560056
+    },
+    {
+      "id": "osm:way:693690337",
+      "currentRaw": {
+        "id": "osm:way:693690337",
+        "sourceId": "osm",
+        "name": "83",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725063,
+        "lng": 10.467225,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466533,
+          36.724625,
+          10.467925,
+          36.725528
+        ],
+        "areaKm2": 0.004832155244826947,
+        "pickerGroupId": "osm:way:693690337",
+        "offset": 5430940,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693690337",
+        "tags": {
+          "landuse": "residential",
+          "name": "83"
+        }
+      },
+      "sourceGeometrySha256": "bb40884cb1bbd95ed278a31bce192ef9e416c63b041a642cd790ff5fd1acefbd",
+      "packedGeometrySha256": "0193509761ed1b1cd066cdec82d66de5acb02511ae4df32ad7d4fa7327c4ce61",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:28:49Z",
+      "creationChangesetId": 70799736,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693690337"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.726766539211263
+    },
+    {
+      "id": "osm:way:693690338",
+      "currentRaw": {
+        "id": "osm:way:693690338",
+        "sourceId": "osm",
+        "name": "84",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.724666,
+        "lng": 10.467271,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.466822,
+          36.72424,
+          10.467632,
+          36.72493
+        ],
+        "areaKm2": 0.002338802622394909,
+        "pickerGroupId": "osm:way:693690338",
+        "offset": 5430992,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693690338",
+        "tags": {
+          "landuse": "residential",
+          "name": "84"
+        }
+      },
+      "sourceGeometrySha256": "043ab84defe15ec8bb93bc656a677db6da25893e4341b7935fc3782519817351",
+      "packedGeometrySha256": "15bbf7f9cbabf0c66412bd03cb0196c8deaf2ebb00ca84b151ccbf02a45fee5c",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:28:49Z",
+      "creationChangesetId": 70799736,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693690338"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.6911231498425496
+    },
+    {
+      "id": "osm:way:693690339",
+      "currentRaw": {
+        "id": "osm:way:693690339",
+        "sourceId": "osm",
+        "name": "85",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.724451,
+        "lng": 10.467724,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.467117,
+          36.723855,
+          10.46834,
+          36.725171
+        ],
+        "areaKm2": 0.006473742414720773,
+        "pickerGroupId": "osm:way:693690339",
+        "offset": 5431044,
+        "length": 84
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693690339",
+        "tags": {
+          "landuse": "residential",
+          "name": "85"
+        }
+      },
+      "sourceGeometrySha256": "2af40f0eec61184ea87d1fa368f613709e82f6c6684d820bf7b76b65278f8676",
+      "packedGeometrySha256": "2c2695b9abef3a68f11566cab3c44b30b092a2889481266405a26a6a56256f71",
+      "packedBytes": 84,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-05-31T08:28:49Z",
+      "creationChangesetId": 70799736,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693690339"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.646360171330968
+    },
+    {
+      "id": "osm:way:693690340",
+      "currentRaw": {
+        "id": "osm:way:693690340",
+        "sourceId": "osm",
+        "name": "86",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.723844,
+        "lng": 10.46646,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.465237,
+          36.722809,
+          10.468515,
+          36.724873
+        ],
+        "areaKm2": 0.02682345853415152,
+        "pickerGroupId": "osm:way:693690340",
+        "offset": 5431128,
+        "length": 140
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:693690340",
+        "tags": {
+          "landuse": "residential",
+          "name": "86"
+        }
+      },
+      "sourceGeometrySha256": "6b65b5b1837fefeec8e1d776b8d33c15b4027079639f93b9d26ad21629bd757f",
+      "packedGeometrySha256": "620cf06887d4e6174db5e6d86dd0e1f82b31cb8026186c012c005d3c2fef60fc",
+      "packedBytes": 140,
+      "currentVersion": 2,
+      "creationTimestamp": "2019-05-31T08:28:49Z",
+      "creationChangesetId": 70799736,
+      "creationComment": "bâtiments ajoutés",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:693690340"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 2.674183507672642
+    },
+    {
+      "id": "osm:way:694251073",
+      "currentRaw": {
+        "id": "osm:way:694251073",
+        "sourceId": "osm",
+        "name": "87",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.726502,
+        "lng": 10.463413,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463118,
+          36.726199,
+          10.463716,
+          36.7268
+        ],
+        "areaKm2": 0.0014263664264502806,
+        "pickerGroupId": "osm:way:694251073",
+        "offset": 5431268,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:694251073",
+        "tags": {
+          "landuse": "residential",
+          "name": "87"
+        }
+      },
+      "sourceGeometrySha256": "200df2da638c5673b4c74a3a7ef175ad68db6944230971cfbb15c871f64626ef",
+      "packedGeometrySha256": "bb3312f4908b163adeb8d07eda0bad1b9746c466c7cb835f425c1d7e4fa0c4e1",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-06-03T10:48:58Z",
+      "creationChangesetId": 70881202,
+      "creationComment": "RAS",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:694251073"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.075350379797474
+    },
+    {
+      "id": "osm:way:694251074",
+      "currentRaw": {
+        "id": "osm:way:694251074",
+        "sourceId": "osm",
+        "name": "88",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.725997,
+        "lng": 10.463569,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463187,
+          36.72571,
+          10.463948,
+          36.726252
+        ],
+        "areaKm2": 0.001979101521499606,
+        "pickerGroupId": "osm:way:694251074",
+        "offset": 5431320,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:694251074",
+        "tags": {
+          "landuse": "residential",
+          "name": "88"
+        }
+      },
+      "sourceGeometrySha256": "4172ebe77c843a59993b98edf33084d0f0e958b43a8e20f2889d50d50e3c01ad",
+      "packedGeometrySha256": "9659a4c52ef25084f438c01148a19f7b36ba1fddad9a2a9af19071e9356ded98",
+      "packedBytes": 52,
+      "currentVersion": 1,
+      "creationTimestamp": "2019-06-03T10:48:58Z",
+      "creationChangesetId": 70881202,
+      "creationComment": "RAS",
+      "authenticCurrentGeometryEqualsCache": true,
+      "sourceAndPackedValid": true,
+      "coveredCachedLocalityNodes": [],
+      "completeCurrentGroup": [
+        "osm:way:694251074"
+      ],
+      "nearestCurrentAvailablePrayerSourceId": 465,
+      "nearestKm": 3.0255847269908758
+    }
+  ],
+  "finiteImpact": {
+    "parent": {
+      "currentRaw": {
+        "id": "osm:way:640629366",
+        "sourceId": "osm",
+        "name": "Soliman Plage",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729159,
+        "lng": 10.467951,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.461613,
+          36.72263,
+          10.474738,
+          36.735505
+        ],
+        "areaKm2": 0.6349783269213604,
+        "pickerGroupId": "osm:way:640629366",
+        "offset": 5417228,
+        "length": 436
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:640629366",
+        "tags": {
+          "landuse": "residential",
+          "name": "Soliman Plage"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.4616134,
+                  36.7264811
+                ],
+                [
+                  10.4618924,
+                  36.7258534
+                ],
+                [
+                  10.4621391,
+                  36.7257072
+                ],
+                [
+                  10.4628794,
+                  36.7260254
+                ],
+                [
+                  10.4636733,
+                  36.7251569
+                ],
+                [
+                  10.4640918,
+                  36.7253976
+                ],
+                [
+                  10.4647891,
+                  36.7246409
+                ],
+                [
+                  10.4664944,
+                  36.7226304
+                ],
+                [
+                  10.4674223,
+                  36.7233113
+                ],
+                [
+                  10.4682055,
+                  36.7239295
+                ],
+                [
+                  10.4687779,
+                  36.7245187
+                ],
+                [
+                  10.4696275,
+                  36.7256101
+                ],
+                [
+                  10.4699604,
+                  36.7258854
+                ],
+                [
+                  10.4702341,
+                  36.7262533
+                ],
+                [
+                  10.4704048,
+                  36.7268222
+                ],
+                [
+                  10.4707438,
+                  36.7273775
+                ],
+                [
+                  10.4723282,
+                  36.7297839
+                ],
+                [
+                  10.4729926,
+                  36.7303791
+                ],
+                [
+                  10.4732661,
+                  36.7300502
+                ],
+                [
+                  10.4741389,
+                  36.730306
+                ],
+                [
+                  10.4740608,
+                  36.7310786
+                ],
+                [
+                  10.474432,
+                  36.731397
+                ],
+                [
+                  10.4745558,
+                  36.7315954
+                ],
+                [
+                  10.4747056,
+                  36.7320913
+                ],
+                [
+                  10.4747382,
+                  36.7330257
+                ],
+                [
+                  10.47466,
+                  36.7335111
+                ],
+                [
+                  10.4744907,
+                  36.7340279
+                ],
+                [
+                  10.4742497,
+                  36.734409
+                ],
+                [
+                  10.4738589,
+                  36.7349414
+                ],
+                [
+                  10.4736895,
+                  36.7350824
+                ],
+                [
+                  10.4730707,
+                  36.7355052
+                ],
+                [
+                  10.4712079,
+                  36.73218
+                ],
+                [
+                  10.4672907,
+                  36.7301356
+                ],
+                [
+                  10.4672004,
+                  36.7302807
+                ],
+                [
+                  10.4672154,
+                  36.7303834
+                ],
+                [
+                  10.4672271,
+                  36.7304443
+                ],
+                [
+                  10.4671692,
+                  36.7304576
+                ],
+                [
+                  10.4669836,
+                  36.7305085
+                ],
+                [
+                  10.4668248,
+                  36.7305247
+                ],
+                [
+                  10.4666595,
+                  36.7304798
+                ],
+                [
+                  10.4665671,
+                  36.730427
+                ],
+                [
+                  10.4664941,
+                  36.7303408
+                ],
+                [
+                  10.4664586,
+                  36.7301643
+                ],
+                [
+                  10.4649778,
+                  36.7295781
+                ],
+                [
+                  10.4629933,
+                  36.7287394
+                ],
+                [
+                  10.4618402,
+                  36.7282388
+                ],
+                [
+                  10.4619251,
+                  36.7279808
+                ],
+                [
+                  10.4622289,
+                  36.7277514
+                ],
+                [
+                  10.4623523,
+                  36.7276439
+                ],
+                [
+                  10.4627285,
+                  36.7270997
+                ],
+                [
+                  10.4626112,
+                  36.7269971
+                ],
+                [
+                  10.4617207,
+                  36.7266187
+                ],
+                [
+                  10.4616134,
+                  36.7264811
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "packedGeometrySha256": "c8055deca3310383b2d1370acf310b40bc329b7eeefac2f1d43e9ea4c59ef488",
+      "sourceCurrentEqualsHistoryAndFull": true
+    },
+    "sector": {
+      "currentRaw": {
+        "id": "osm:relation:7100693",
+        "sourceId": "osm",
+        "name": "سليمان",
+        "aliases": [
+          "Soliman"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.720223,
+        "lng": 10.482011,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.403797,
+          36.687246,
+          10.54891,
+          36.753043
+        ],
+        "areaKm2": 42.290533211050594,
+        "pickerGroupId": "osm:relation:7100693",
+        "offset": 289116,
+        "length": 2836
+      },
+      "sourceGeometrySha256": "ff67378af9b0cf4bc0559ebd4557bf7698c8bbd75d78ca3ae93bed4906a4bb79",
+      "packedGeometrySha256": "3b83009c9ef208de7170a8e446eec1da239a6e0189b60111850001a0c157681f"
+    },
+    "wholeSourcePolygonsInsideParent": 87,
+    "crossingParent": [
+      {
+        "id": "osm:way:693689970",
+        "name": "43",
+        "fractionInsideParent": 0.8466840537771825
+      }
+    ],
+    "allRepresentativesWithinParent": true,
+    "allWholeSourceAndPackedPolygonsWithinCurrentSector": true,
+    "nonClusterRawRepresentativesInside": [
+      {
+        "id": "osm:way:693683557",
+        "otherRawIds": [
+          "osm:way:640629366"
+        ]
+      }
+    ],
+    "cachedLocalityNodesCoveredOrNewlySurfaced": [],
+    "directManifestMentions": {
+      "curation": false,
+      "picker": false,
+      "boundaries": false,
+      "coordinates": false,
+      "tiny": false
+    },
+    "targetCurationReceipts": [],
+    "targetDuplicateReports": [],
+    "conflictsRemovedOnly": [
+      {
+        "ids": [
+          "osm:way:640629366",
+          "osm:way:693689970"
+        ],
+        "reason": "crossing_local_areas",
+        "intersectionKm2": 0.0057005421234569646,
+        "sample": {
+          "lat": 36.730041,
+          "lng": 10.466370612333158
+        },
+        "names": [
+          "Soliman Plage",
+          "43"
+        ]
+      }
+    ],
+    "sourceUnionAreaM2": 440095.7392520851,
+    "packedBytesRemoved": 5352,
+    "projectedBinary": {
+      "bytes": 5495792,
+      "sha256": "b7ac659019ec21f24d0fa518d09be46edd75034aba764ea204b437ee087933be",
+      "everyRetainedGeometrySliceByteExact": true
+    },
+    "all88CurrentRepresentativeNearestSources": 465,
+    "availabilityBasis": "All 258 current available references from pinned governor asset and coverage exclusion of 495; no new national distance matrix or monthly CSV audit."
+  },
+  "primaryParentContext": {
+    "original": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\apal-soliman-coastal-study.pdf",
+      "sha256": "f979563be1e9416cb35a6e7cbded98117dd43ccb31429627457071d83bfa3514",
+      "bytes": 1213921
+    },
+    "retrieval": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\apal-retrieval.json",
+      "sha256": "d55e55fe332db2b6faadca2a76db63905fd921f0a496c030fd0bd424e0489a99",
+      "bytes": 1022
+    },
+    "url": "https://rsis.ramsar.org/RISapp/files/29374310/documents/TN1713_lit1501.pdf?language=en",
+    "completePagesPersonallyViewed": [
+      {
+        "physicalPage": 1,
+        "reproducedWholePageText": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\apal-page-1.txt",
+          "sha256": "85769c3850662afb431f1e93337ac3cdf01439f62faf1c93d2ceda6f52af8e0b",
+          "bytes": 520
+        },
+        "serialization": "Complete PyMuPDF LF page text encoded UTF-8 with Windows CRLF line endings; no content changes.",
+        "independentlyRenderedFullPage": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-independent-review\\apal-full-page-1.png",
+          "sha256": "4a277e1324af0475d41e5d22a69819a017248a48abaf6e2556aac92ca0a82430",
+          "bytes": 50950
+        }
+      },
+      {
+        "physicalPage": 77,
+        "reproducedWholePageText": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-source-review\\apal-page-77.txt",
+          "sha256": "aa9d7e2e5247e7298ff8dd1cb8fb4d16c2245589ec34f1b17411143a0a74ec7d",
+          "bytes": 4225
+        },
+        "serialization": "Complete PyMuPDF LF page text encoded UTF-8 with Windows CRLF line endings; no content changes.",
+        "independentlyRenderedFullPage": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-independent-review\\apal-full-page-77.png",
+          "sha256": "cb338ab12690a8e5a1f02fc38a4581904af970f8de4be5786518359fc3988e7f",
+          "bytes": 213710
+        }
+      }
+    ],
+    "finding": "APAL November 2002 study page 77 describes inhabited Soliman Plage as a municipal subdivision and uses U21-U24 planning blocks. It supports historical named-parent identity only.",
+    "limits": "No match to S1-S31 or 32-88 is present. The official planning blocks are different codes. No current parcel, legal ownership or occupancy claim."
+  },
+  "supplementaryPhone": {
+    "report": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\soliman-numbered-blocks-phone-scope-review-20260912.json",
+      "sha256": "08db5c6b0177b4655b14e87a256d9e907590c9cbe05f86bbd1a3e116758608e8",
+      "bytes": 9032
+    },
+    "basis": "Read root frozen report only; no phone or ledger access. Generic Soliman responses and missing code results establish neither nonexistence nor exact parcel identity."
+  },
+  "preservationContract": {
+    "removeOnlyIds": [
+      "osm:way:693516878",
+      "osm:way:693515797",
+      "osm:way:693516877",
+      "osm:way:693516879",
+      "osm:way:693518225",
+      "osm:way:693518227",
+      "osm:way:693518229",
+      "osm:way:693518231",
+      "osm:way:693518243",
+      "osm:way:693518238",
+      "osm:way:693518234",
+      "osm:way:693518236",
+      "osm:way:693518241",
+      "osm:way:693518245",
+      "osm:way:693518247",
+      "osm:way:693519901",
+      "osm:way:693519904",
+      "osm:way:693519902",
+      "osm:way:693519906",
+      "osm:way:693519908",
+      "osm:way:693519921",
+      "osm:way:693519910",
+      "osm:way:693519914",
+      "osm:way:693519912",
+      "osm:way:693519916",
+      "osm:way:693519918",
+      "osm:way:693519919",
+      "osm:way:693519923",
+      "osm:way:693519924",
+      "osm:way:693519926",
+      "osm:way:693682670",
+      "osm:way:693683555",
+      "osm:way:693683548",
+      "osm:way:693683549",
+      "osm:way:693683550",
+      "osm:way:693683551",
+      "osm:way:693683552",
+      "osm:way:693683554",
+      "osm:way:693683553",
+      "osm:way:693683560",
+      "osm:way:693683558",
+      "osm:way:693683557",
+      "osm:way:693689970",
+      "osm:way:693689933",
+      "osm:way:693689934",
+      "osm:way:693689935",
+      "osm:way:693689936",
+      "osm:way:693689940",
+      "osm:way:693689971",
+      "osm:way:693689941",
+      "osm:way:693689937",
+      "osm:way:693689938",
+      "osm:way:693689939",
+      "osm:way:693689942",
+      "osm:way:693689944",
+      "osm:way:693689954",
+      "osm:way:693689943",
+      "osm:way:693689955",
+      "osm:way:693689957",
+      "osm:way:693689956",
+      "osm:way:693689962",
+      "osm:way:693689963",
+      "osm:way:693689945",
+      "osm:way:693689946",
+      "osm:way:693689949",
+      "osm:way:693689947",
+      "osm:way:693689948",
+      "osm:way:693689950",
+      "osm:way:693689953",
+      "osm:way:693689951",
+      "osm:way:693689964",
+      "osm:way:693689961",
+      "osm:way:693689960",
+      "osm:way:693689959",
+      "osm:way:693689958",
+      "osm:way:693689966",
+      "osm:way:693689965",
+      "osm:way:693689967",
+      "osm:way:693689968",
+      "osm:way:693689969",
+      "osm:way:693689972",
+      "osm:way:693689973",
+      "osm:way:693690337",
+      "osm:way:693690338",
+      "osm:way:693690339",
+      "osm:way:693690340",
+      "osm:way:694251073",
+      "osm:way:694251074"
+    ],
+    "keepAllOtherRawSemanticFields": true,
+    "keepParent640629366AndSector7100693AndTown177385463": true,
+    "keepAll176OldCurationObjectsTokensExteriorAndPendingReviews": true,
+    "appendOnly88ExactExcludeDecisionsWithFullCurrentTags": true,
+    "keepAll360CurationReceiptsInOrder": true,
+    "keepAll308DuplicateReports": true,
+    "removeOnlyConflict": [
+      {
+        "ids": [
+          "osm:way:640629366",
+          "osm:way:693689970"
+        ],
+        "reason": "crossing_local_areas",
+        "intersectionKm2": 0.0057005421234569646,
+        "sample": {
+          "lat": 36.730041,
+          "lng": 10.466370612333158
+        },
+        "names": [
+          "Soliman Plage",
+          "43"
+        ]
+      }
+    ],
+    "keepAllOther317ConflictsAndAllReviewedPickerProofs": true,
+    "keepGeometryBytesOfEveryRemainingPolygon": true,
+    "retireOnly88IdsWithoutReplacement": true,
+    "keep29PriorRetiredIds105ReviewedNamesAndOneReplacement": true,
+    "packedBytesRemoved": 5352,
+    "noSurfacedCachedPlaceNodes": true,
+    "allCoordinatesGovernoratesAndPrayerReferencesUnchanged": true,
+    "savedSelectionBehavior": "Pinned PrefsManager lines 118-119 clears retired locality ID/name/kind while retaining the stored delegation and GPS preference. No invented parent replacement.",
+    "gpsBehavior": "Pinned DelegationLocator lines 191-202 selects nearest timetable from the actual GPS fix and overrides visible locality delegation. Excluding blocks does not transfer their prayer source to an administrative representative.",
+    "onlyMechanicalChangesElsewhere": "Offsets, cell indices and aggregate counts reflect removal; all other raw semantic fields and retained geometry slices must remain exact."
+  },
+  "projectedCounts": {
+    "rawRecords": {
+      "before": 3618,
+      "after": 3530
+    },
+    "polygons": {
+      "before": 2714,
+      "after": 2626
+    },
+    "points": {
+      "before": 904,
+      "after": 904
+    },
+    "rawGroups": {
+      "before": 3482,
+      "after": 3394
+    },
+    "pickerRows": {
+      "before": 3545,
+      "after": 3457
+    },
+    "eligiblePickerRows": {
+      "before": 3544,
+      "after": 3456
+    },
+    "curationDecisions": {
+      "before": 176,
+      "after": 264
+    },
+    "retiredIds": {
+      "before": 29,
+      "after": 117
+    },
+    "reviewedSavedNames": {
+      "before": 105,
+      "after": 105
+    },
+    "curationApplications": {
+      "before": 360,
+      "after": 360
+    },
+    "duplicateGroupReceipts": {
+      "before": 308,
+      "after": 308
+    },
+    "registeredPolygonConflicts": {
+      "before": 318,
+      "after": 317
+    },
+    "binaryBytes": {
+      "before": 5501144,
+      "after": 5495792
+    }
+  },
+  "boundarySeparation": {
+    "holdReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\soliman-whole-boundary-independent-impact-review.json",
+      "sha256": "867b6e7f3b34f1d984b2007132d9c91ee729e1bb125042102809ddee27af2bda",
+      "bytes": 28180
+    },
+    "finding": "The held native Soliman map is not imported or used to remap these objects. Named parent, town, sector and all three secondary named points remain unchanged."
+  },
+  "limitations": [
+    "Not a legal parcel, exact roof, current ownership or occupancy certification.",
+    "Not an automatic residential-only or numeric-name filter.",
+    "No reliance on Google result absence as a deletion criterion.",
+    "Counts are a finite projection; actual generated outputs still need independent comparison."
+  ],
+  "notPerformed": [
+    "source stage or live writes",
+    "product imports or generator execution",
+    "tests or Android build",
+    "phone or ledger access",
+    "private-resident investigation"
+  ],
+  "priorReviewerAttempt": {
+    "script": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-independent-review\\review_exact_cluster.py",
+      "sha256": "83924579a2ca4a92194bc3f95dd3b951cb6ff99405a0a09441c3736838e83764",
+      "bytes": 18858
+    },
+    "outcome": "Stopped at conflict representation equality before report creation. Coverage adds names to the same metadata conflict; successor verifies all shared fields exactly and independently binds the names to current raw records. No product data changed."
+  },
+  "secondReviewerAttempt": {
+    "script": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-independent-review\\review_exact_cluster_v2.py",
+      "sha256": "2a418bd5fa136bf2d4809da26e7bd58c6af81af2e7b803986c9f148bb2481ef5",
+      "bytes": 19607
+    },
+    "outcome": "Stopped at derived TXT byte parity. Exact source page text was serialized with CRLF by Windows; successor reproduces precisely that serialization. Original PDF and derived artifacts remain unchanged."
+  },
+  "reviewerScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-numeric-cluster-independent-review\\review_exact_cluster_v3.py",
+    "sha256": "82cc4d1285adad78a8958959f4cfdc8ab96fa4bc47f4b9449000280896ebe241",
+    "bytes": 21138
+  }
+}

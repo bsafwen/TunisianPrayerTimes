@@ -1,0 +1,26 @@
+{
+  "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/المريسة.pdf",
+  "finalUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%A7%D9%84%D9%85%D8%B1%D9%8A%D8%B3%D8%A9.pdf",
+  "retrievedAt": "2026-09-12T15:51:04.866112+00:00",
+  "status": 200,
+  "headers": {
+    "Date": "Sat, 12 Sep 2026 15:51:04 GMT",
+    "X-Backend": "web2-10.10.117.3",
+    "Last-Modified": "Tue, 17 Oct 2023 00:44:06 GMT",
+    "ETag": "\"11a793-607ded1e76180\"",
+    "Accept-Ranges": "bytes",
+    "Content-Length": "1157011",
+    "X-Content-Type-Options": "nosniff",
+    "Content-Security-Policy": "frame-ancestors 'self';",
+    "Keep-Alive": "timeout=5, max=99",
+    "Connection": "Keep-Alive",
+    "Content-Type": "application/pdf"
+  },
+  "bodyFile": "mraissa.pdf",
+  "sha256": "444feebb83c9c559fc645d590cda0824752ce91b2fc3f65539233eca7dacce2f",
+  "exactDiscoveryEntry": {
+    "text": "المريسة.pdf",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/المريسة.pdf",
+    "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/المريسة.pdf"
+  }
+}

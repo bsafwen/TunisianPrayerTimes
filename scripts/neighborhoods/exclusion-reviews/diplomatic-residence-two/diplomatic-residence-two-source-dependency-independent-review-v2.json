@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Independent institutional identity and active source dependency review; prospective catalog exclusions only.",
+  "baselineMetadataSha256": "552b098b4e8da9201c1fa46d3315e7fe627fcb251dcaf569b9ef87c1b19f03a4",
+  "generatorSha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\diplomatic-residence-two-source-review.json",
+    "sha256": "dc4c7c6b1411c90655a61dc10ea3e2126970efe8f2aa78e7812a9ad30efa5b74"
+  },
+  "records": [
+    {
+      "id": "osm:way:131384751",
+      "status": "SUPPORTED_INSTITUTIONAL_PROPERTY_EXCLUSION_SCOPE",
+      "name": "سكن السفير الفرنسي",
+      "currentRawRecordSha256": "acbb2ad220d79304b297bab79088a503917d21349ad9d319e1c36ad2304e0b7a",
+      "sourceTags": {
+        "access": "private",
+        "barrier": "wall",
+        "country": "FR",
+        "diplomatic": "embassy",
+        "embassy": "residence",
+        "landuse": "residential",
+        "name": "سكن السفير الفرنسي",
+        "name:ar": "سكن السفير الفرنسي",
+        "name:en": "Residence of the French Ambassador",
+        "name:fr": "Résidence de l'ambassadeur de France",
+        "office": "diplomatic",
+        "target": "TN"
+      },
+      "sourceGeometrySha256": "2c4618f3fe0625692a64a73774ace7d89a4840bee4945c9a2ea612f486e029d8",
+      "packedGeometrySha256": "403bd7cb090fdeaf9410c789123ab19982a0db5cfdd2b1b39a394c6660df172e",
+      "packedBytes": 188,
+      "completeRawGroup": [
+        "osm:way:131384751"
+      ],
+      "parentSectorToPreserve": {
+        "id": "osm:relation:7062337",
+        "name": "المرسى الشاطئ",
+        "wholeRawRecordSha256": "3488c615154739b2f91bc56cbcd129e64a13f0dd5ddef16c55e6b3a20d8ed713",
+        "completeRawGroup": [
+          "osm:relation:7062337"
+        ]
+      },
+      "currentApi": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-131384751.json",
+        "sha256": "268d67a35508b0f11830505657b42076a3cdf9e3f8424f60b3680e8d35299860"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-131384751-history.json",
+        "sha256": "bd8564ce07d50d436d4fe43522ada283f9d8237034ccce09ac4422b425be4384"
+      },
+      "versionsIndependentlyCompared": 8,
+      "proposedAction": "Exact exclude decision, expectedKind residential and full original expectedTags; no replacement, rename or boundary substitute.",
+      "limits": [
+        "Public institutional identity corroboration does not certify the exact OSM parcel boundary or its current occupancy.",
+        "The fresh way API establishes current tags and node references only; boundary-node coordinates were not fetched or matched to the cached geometry.",
+        "No resident identities or private addresses were sought or used."
+      ]
+    },
+    {
+      "id": "osm:way:149824801",
+      "status": "SUPPORTED_INSTITUTIONAL_PROPERTY_EXCLUSION_SCOPE",
+      "name": "سكن السفير البريطاني",
+      "currentRawRecordSha256": "1753777afb82764de59b0c22854ac9cf00c32c6924ae050a028144c38de17829",
+      "sourceTags": {
+        "access": "private",
+        "barrier": "wall",
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "سكن السفير البريطاني",
+        "name:ar": "سكن السفير البريطاني",
+        "name:en": "Residence of the British Ambassador to Tunisia"
+      },
+      "sourceGeometrySha256": "23a5d047d5790df693e79f887d3580506913787ad20ecebcd7f014785b3cb0ac",
+      "packedGeometrySha256": "e54315f2f105d95b9e9afcbe81af00bf61141d841af39e0cd8b274cb7c33cbdf",
+      "packedBytes": 140,
+      "completeRawGroup": [
+        "osm:way:149824801"
+      ],
+      "parentSectorToPreserve": {
+        "id": "osm:relation:7062421",
+        "name": "المرسى المنتزه",
+        "wholeRawRecordSha256": "9def19c25ebf099bdc9049dcf2c172e57499c06f15d94205068dcc700f05e949",
+        "completeRawGroup": [
+          "osm:relation:7062421"
+        ]
+      },
+      "currentApi": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-149824801.json",
+        "sha256": "41412f846fa938e1177e8decbb3da3a796fe5c3585b857671077b12a37afa0dd"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-149824801-history.json",
+        "sha256": "ab33665d2f16b6ab7f465cf5c914cadc3f01186b51fa79f4c0f842076e9f4889"
+      },
+      "versionsIndependentlyCompared": 5,
+      "proposedAction": "Exact exclude decision, expectedKind residential and full original expectedTags; no replacement, rename or boundary substitute.",
+      "limits": [
+        "Public institutional identity corroboration does not certify the exact OSM parcel boundary or its current occupancy.",
+        "The fresh way API establishes current tags and node references only; boundary-node coordinates were not fetched or matched to the cached geometry.",
+        "No resident identities or private addresses were sought or used."
+      ]
+    }
+  ],
+  "primaryEvidenceAssessment": {
+    "france": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\france-afe-institutional-estate-response.html",
+        "sha256": "431bea7ce01fcd5af2169ad83e08d0999bb657179ce53adec09152ded340792e"
+      },
+      "url": "https://www.assemblee-afe.fr/question/vente-de-la-maison-du-consul-sise-avec-dautres-maisons-sur-le-terrain-de-la-residence-de-france-a-tunis/",
+      "decision": "The dated ministry estate response independently supports a diplomatic residence property. Its 6.5-hectare park is not asserted equal to the cached 4.487-hectare polygon."
+    },
+    "britain": {
+      "sources": [
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\britain-gac-residence-institution.html",
+          "sha256": "6530db53d7ad2925438c25f6f08672bbd7a96c526e1bced777d1e96c66ee3920"
+        },
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\britain-gac-institutional-estates-2018-2019.pdf",
+          "sha256": "0750e601ddc5d0435833386ebe2c557108133b0c8c1acc2a73d8bcbd596c2f80"
+        }
+      ],
+      "urls": [
+        "https://artcollection.dcms.gov.uk/artwork/17675/",
+        "https://artcollection.dcms.gov.uk/wp-content/uploads/2021/03/GAC_Annual-Report-2018-2019.pdf"
+      ],
+      "pdfPage": 10,
+      "pageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\britain-gac-p10.png",
+        "sha256": "ca22e22b544f94f9854645679d5baf2aa35092fc577a433208e1827a84ebf94d"
+      },
+      "pageIndependentlyViewed": true,
+      "decision": "The government annual report describes the Tunis ambassador residence as an FCO Estates building. The 1927 collection title is historical context only."
+    },
+    "combinedInference": "Persistent exact private/walled institutional names and the public property descriptions support excluding these two individual properties from the locality catalog. This is not a rule against residential land use, gardens or residential projects.",
+    "notClaimed": [
+      "current occupancy or resident identity",
+      "exact parcel or full estate equivalence",
+      "absence of other inhabited localities",
+      "Google Maps list results as deletion evidence"
+    ]
+  },
+  "activeDependencyReview": {
+    "directTargetReferencesInCurrentCurationPickerBoundaryManifests": [],
+    "allInstalledJsonLiteralTargetReferences": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-choice-staged-data-independent-review.json",
+        "sha256": "56121c5cfb3ea4c02df6156f80138f969f921ac989a0ebfff2dd06e43b927fe7",
+        "relativePath": "official/chenini-two-choice-staged-data-independent-review.json",
+        "exactReferencePaths": [
+          {
+            "path": "$.allChangedFieldsIncludingOffsets[1168].id",
+            "id": "osm:way:131384751"
+          },
+          {
+            "path": "$.allChangedFieldsIncludingOffsets[1197].id",
+            "id": "osm:way:149824801"
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\picker-distinct-reviews\\bizerte-three-staged-data-independent-review.json",
+        "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197",
+        "relativePath": "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+        "exactReferencePaths": [
+          {
+            "path": "$.allMetadataChangesIncludingOffsets[1611].id",
+            "id": "osm:way:131384751"
+          },
+          {
+            "path": "$.allMetadataChangesIncludingOffsets[1640].id",
+            "id": "osm:way:149824801"
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\before-neighborhoods.json",
+        "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+        "relativePath": "point-retention-reviews/before-neighborhoods.json",
+        "exactReferencePaths": [
+          {
+            "path": "$.features[2182].id",
+            "id": "osm:way:131384751"
+          },
+          {
+            "path": "$.features[2182].pickerGroupId",
+            "id": "osm:way:131384751"
+          },
+          {
+            "path": "$.features[2211].id",
+            "id": "osm:way:149824801"
+          },
+          {
+            "path": "$.features[2211].pickerGroupId",
+            "id": "osm:way:149824801"
+          }
+        ]
+      }
+    ],
+    "cheniniHistoricalBaselineConsumer": {
+      "proof": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\chenini-saved-point-retention-review.json",
+        "sha256": "bb47133ab6690be51508a21e375e1fa627284b04697aaeb6d67cf10fc0c5fa36"
+      },
+      "function": "load_reviewed_point_retentions",
+      "sourceLines": [
+        643,
+        787
+      ],
+      "finding": "The immutable old full metadata/binary are verified as historical evidence. Runtime comparison selects only the two Chenini point/sector pairs and their before groups; neither residence is a required current row."
+    },
+    "bizerteHistoricalEvidenceConsumer": {
+      "proof": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\picker-distinct-reviews\\medina-old-town-distinct-choices.json",
+        "sha256": "9d8c986bcd3b64b0342f61cc02b85e688267f88f44adc68848c47ce1e5c4d614"
+      },
+      "function": "load_reviewed_distinct_picker_pairs",
+      "sourceLines": [
+        2375,
+        2449
+      ],
+      "finding": "The old full delta report is hash-checked supporting evidence. Current exact metadata/group guards cover only Bizerte Medina relation7118631 and way256615867."
+    },
+    "marsaChildInventory": {
+      "review": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\marsa-four-sector-identity-source-review.json",
+        "sha256": "e9bd0abf2aaa56c963e809cb2e8575788c4fb63ce2d9bba591ec5dfb7f0649b9"
+      },
+      "targetPaths": [
+        {
+          "path": "$.records[0].rawChildContextRecords[3].id",
+          "id": "osm:way:131384751"
+        },
+        {
+          "path": "$.records[0].rawChildContextRecords[3].pickerGroupId",
+          "id": "osm:way:131384751"
+        },
+        {
+          "path": "$.records[1].rawChildContextRecords[2].id",
+          "id": "osm:way:149824801"
+        },
+        {
+          "path": "$.records[1].rawChildContextRecords[2].pickerGroupId",
+          "id": "osm:way:149824801"
+        }
+      ],
+      "finding": "These child rows were correctly preserved in the historical sector-name review. The TASK report is not an active compiler current-child completeness contract. Keep it unchanged and record this later exclusion separately."
+    },
+    "requiredHistoricalProofRewrites": [],
+    "requiredGeneratorChanges": [],
+    "requiredExistingManifestChange": "Append two exclude decisions to catalog-curation.json only, preserving all 151 old decisions. No picker/boundary or source-phase proof migration is indicated."
+  },
+  "savedSelectionCodeAssessment": {
+    "prefsSource": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\PrefsManager.kt",
+      "sha256": "91ca89263e11f86913e186b95a9f1629365742ba1ce4d5523e6b271df354505f"
+    },
+    "retiredMetadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "5790a4aadc0f0ab09574a8c876da5a9d0e2700499070677e19ef31dafbf20e1a"
+    },
+    "finding": "Existing retirement reads clear the returned saved locality ID/name/kind while preserving the selected prayer delegation and fromGps. They do not infer a replacement locality or erase stored preferences on read. Both targets currently have no reviewed name or replacement entry.",
+    "constraint": "Retire exactly the two IDs; keep all 103 reviewed names and existing replacements unchanged. Finite byte/GPS/absorption effects are delegated to the independent impact review."
+  },
+  "finiteImpactReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\diplomatic-residence-two-finite-impact-review.json",
+    "sha256": "01378b1c2ac55f67b21f1b47054821100bb9a76538f346438b7906e11b179fd4"
+  },
+  "notPerformed": [
+    "catalog generation or product-helper execution",
+    "tests or app build",
+    "phone or ledger access",
+    "live repository or source-stage mutation",
+    "new source fetch",
+    "resident or private-address research"
+  ]
+}

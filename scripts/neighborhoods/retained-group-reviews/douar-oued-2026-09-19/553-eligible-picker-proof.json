@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "retained-group-reviews/douar-oued-2026-09-19/source-facts.json",
+    "sha256": "a9097fab0952ea482fc955359c113f334e46510c1e65a62da4f58674e0177fe4"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7095862",
+      "name": "وادي الليل",
+      "status": "eligible_proposal",
+      "targetDelegationId": 553,
+      "governorateId": 360,
+      "basePoint": {
+        "lat": 36.836,
+        "lng": 10.041
+      },
+      "existingTargetGroupMembers": [
+        "delegation:553"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7095862",
+          "name": "وادي الليل",
+          "kind": "sector",
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "originalContainsDisplayReference": true,
+          "packagedContainsDisplayReference": true,
+          "originalGeometrySha256": "b037018c23c3f714875cdcce8097d5dbce48e0dd571b6263128dd3f744a18f11",
+          "packedGeometrySha256": "0b064a645eb609301d21cde29161d80281d5ee0fe467c80f609d01de2cd4ce03"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7095862",
+          "code": "145351",
+          "currentOfficialRecord": {
+            "governorateCode": "14",
+            "governorateFr": "Manouba",
+            "governorateAr": "منوبة",
+            "delegationCode": "1453",
+            "delegationFr": "Oued ellil",
+            "delegationAr": "وادي الليل",
+            "sectorCode": "145351",
+            "sectorFr": "Oued ellil",
+            "sectorAr": "وادي الليل",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10133,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 352,
+              "Nombre_de_menages_par_Secteurs.xlsx": 351
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي اللیل",
+            "name:ar": "وادي اللیل‬",
+            "name:fr": "Oued Ellil",
+            "ref:tn:codegeo": "145351"
+          },
+          "effectiveOriginalGeometrySha256": "b037018c23c3f714875cdcce8097d5dbce48e0dd571b6263128dd3f744a18f11"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7204582",
+          "code": "1453",
+          "name": "معتمدية وادي الليل",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Oued Ellil",
+            "boundary": "administrative",
+            "name": "معتمدية وادي اللیل",
+            "name:ar": "معتمدية وادي اللیل‬",
+            "name:fr": "Délégation Oued Ellil",
+            "ref:tn:codegeo": "1453",
+            "ref:tn:hasc_2": "TN.MN.OE",
+            "wikidata": "Q3358013"
+          },
+          "effectiveOriginalGeometrySha256": "fe97fa2e53f05980fdfe501d952fe9dc7bb21737cbf880b632430f7749ee148e",
+          "currentOfficialRecord": {
+            "governorateCode": "14",
+            "governorateFr": "Manouba",
+            "governorateAr": "منوبة",
+            "delegationCode": "1453",
+            "delegationFr": "Oued ellil",
+            "delegationAr": "وادي الليل"
+          }
+        }
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7095862",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي اللیل",
+            "name:ar": "وادي اللیل‬",
+            "name:fr": "Oued Ellil",
+            "ref:tn:codegeo": "145351"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:287619187",
+          "nameTags": {
+            "name": "وادي الليل",
+            "name:ar": "وادي الليل",
+            "name:fr": "Oued Ellil",
+            "alt_name:ar": "وادي اللیل"
+          },
+          "reason": "Use the exact official-sector and authentic contained town Arabic spelling, preserving the original source spelling as a searchable alias. Use the original town point for manual locality selection while retaining the unchanged sector polygon for GPS containment.",
+          "evidence": [
+            {
+              "source": "Original PBF source town and sector, current official sector identity, exact containment and fresh independent published service references.",
+              "reviewFiles": [
+                {
+                  "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/source-facts.json",
+                  "sha256": "efa6ffbefde62754a327df1bc74b7b8f016b3125a12d1f4bac7dae4c1704a56c"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "scope": "One exact current coded settlement display identity, backed by the original absorbed town and official namesake sector/delegation. The authentic town supplies manual coordinates. Exact source spelling curation preserves all existing search names and inherited context; the independent published prayer reference and all source/packed boundaries retain their separate meanings. Gobaa remains a distinct village-owner group.",
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "retained-group-reviews/douar-oued-2026-09-19/553-retained-display-review.json",
+          "sha256": "f4ebd0f2bf18bfd76470a73e89c5f3cd211129dc7b3736afc9c10ba541cf8f03"
+        }
+      }
+    }
+  ]
+}

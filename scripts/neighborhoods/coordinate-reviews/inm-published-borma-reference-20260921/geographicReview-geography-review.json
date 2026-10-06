@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "sourceIds": [
+    476
+  ],
+  "approvedFor": "INM_PUBLISHED_REFERENCE_COORDINATE_ONLY",
+  "rootReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\root-476-visual-review.json",
+    "sha256": "6bb9e63374a8b54da3e701c3bcf5029e658e9cb4191a0dcd71528298c2a4a613"
+  },
+  "measurement": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-measurement.json",
+    "sha256": "499600fc192053618c7adac5896adc4a984cf47296f0c06f1890a7a92068cd39"
+  },
+  "findings": "Current and proposed points are within cached Tunisia/Tataouine/RemadaOuest areas. Proposed point is approximately2.571km inside cached country geometry; current approximately1.993km. Public Maps expanded exact card independently identifies Tunisia.",
+  "limitations": [
+    "Cached OSM border is not a surveyed boundary certification.",
+    "No geometry or locality-point changes approved."
+  ]
+}

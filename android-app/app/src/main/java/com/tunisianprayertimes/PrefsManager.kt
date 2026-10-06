@@ -15,6 +15,7 @@ data class SavedLocationSelection(
     val name: String?,
     val kind: String?,
     val fromGps: Boolean,
+    val manualReferenceId: String? = null,
 )
 
 object PrefsManager {
@@ -24,6 +25,7 @@ object PrefsManager {
     private const val KEY_LOCALITY_NAME = "locality_name"
     private const val KEY_LOCALITY_KIND = "locality_kind"
     private const val KEY_LOCATION_FROM_GPS = "location_from_gps"
+    private const val KEY_MANUAL_REFERENCE_ID = "manual_reference_id"
     private const val KEY_ENABLED = "silence_enabled"
     private const val KEY_FIRST_LAUNCH = "first_launch_done"
     private const val KEY_AUTO_SILENCE_ACTIVE = "auto_silence_active"
@@ -43,6 +45,7 @@ object PrefsManager {
     private const val KEY_AUTO_LOCATION_UPDATE = "auto_location_update"
     private const val KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS = "auto_silence_dismissed_until_millis"
     private const val KEY_AUTO_SILENCE_DISMISSED_PRAYER = "auto_silence_dismissed_prayer"
+    private const val KEY_QIBLA_METHOD = "qibla_method"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
 
@@ -59,11 +62,16 @@ object PrefsManager {
         val edit = settings.edit().putInt(KEY_DELEGATION_ID, id)
         if (getDelegationId(context) != id) {
             edit.remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME).remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS)
+                .remove(KEY_MANUAL_REFERENCE_ID)
         }
         edit.apply()
     }
 
     fun getLocalityId(context: Context): String? = prefs(context).getString(KEY_LOCALITY_ID, null)
+        ?.let { id ->
+            LocalityRepository.reviewedReplacement(context, id)?.replacementId
+                ?: id.takeUnless { LocalityRepository.isRetired(context, it) }
+        }
 
     fun setLocality(context: Context, locality: Locality) {
         prefs(context).edit()
@@ -72,12 +80,13 @@ object PrefsManager {
             .putString(KEY_LOCALITY_NAME, locality.name)
             .putString(KEY_LOCALITY_KIND, locality.kind)
             .putBoolean(KEY_LOCATION_FROM_GPS, false)
+            .putString(KEY_MANUAL_REFERENCE_ID, locality.manualReferenceId)
             .apply()
     }
 
     fun clearLocality(context: Context) {
         prefs(context).edit().remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME)
-            .remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS).apply()
+            .remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS).remove(KEY_MANUAL_REFERENCE_ID).apply()
     }
 
     /** The label and the timetable are independent results of the same GPS fix. */
@@ -88,23 +97,49 @@ object PrefsManager {
             .putString(KEY_LOCALITY_NAME, result.locality?.name)
             .putString(KEY_LOCALITY_KIND, result.locality?.kind)
             .putBoolean(KEY_LOCATION_FROM_GPS, true)
+            .remove(KEY_MANUAL_REFERENCE_ID)
             .apply()
     }
 
     fun getLocationSelection(context: Context): SavedLocationSelection {
         val values = prefs(context).all
-        return SavedLocationSelection(
+        val selection = SavedLocationSelection(
             delegationId = values[KEY_DELEGATION_ID] as? Int ?: DEFAULT_DELEGATION_ID,
             localityId = values[KEY_LOCALITY_ID] as? String,
             name = values[KEY_LOCALITY_NAME] as? String,
             kind = values[KEY_LOCALITY_KIND] as? String,
             fromGps = values[KEY_LOCATION_FROM_GPS] as? Boolean ?: false,
+            manualReferenceId = if (values[KEY_LOCATION_FROM_GPS] == true) null else values[KEY_MANUAL_REFERENCE_ID] as? String,
         )
+        val localityId = selection.localityId ?: return selection
+        // Apply only reviewed stable-ID label changes. GPS selections keep the
+        // timetable chosen from their actual fix; no representative point is used.
+        // Missing or damaged update metadata preserves the saved selection.
+        val replacement = LocalityRepository.reviewedReplacement(context, localityId)
+        val resolved = if (replacement != null) {
+            selection.copy(
+                localityId = replacement.replacementId,
+                name = replacement.name,
+                kind = replacement.kind,
+            )
+        } else if (LocalityRepository.isRetired(context, localityId)) {
+            selection.copy(localityId = null, name = null, kind = null)
+        } else {
+            (LocalityRepository.reviewedName(context, localityId)?.let { reviewed ->
+                selection.copy(name = reviewed.name, kind = reviewed.kind)
+            }) ?: selection
+        }
+        // Localize last, by the final stable ID. A retired row or an absent
+        // display-name row stays exactly as resolved above.
+        val resolvedLocalityId = resolved.localityId ?: return resolved
+        return LocalityDisplayNames.nameAr(context, resolvedLocalityId)
+            ?.let { resolved.copy(name = it) }
+            ?: resolved
     }
 
     fun observeLocationSelection(context: Context, onChanged: () -> Unit): () -> Unit {
         val settings = prefs(context)
-        val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS)
+        val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS, KEY_MANUAL_REFERENCE_ID)
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
             if (key == null || key in keys) onChanged()
         }
@@ -326,6 +361,16 @@ object PrefsManager {
         prefs(context).edit().putBoolean(KEY_AUTO_LOCATION_UPDATE, enabled).apply()
     }
 
+    fun getQiblaMethod(context: Context): QiblaMethod {
+        return prefs(context).getString(KEY_QIBLA_METHOD, null)
+            ?.let { raw -> runCatching { QiblaMethod.valueOf(raw) }.getOrNull() }
+            ?: QiblaMethod.GreatCircle
+    }
+
+    fun setQiblaMethod(context: Context, method: QiblaMethod) {
+        prefs(context).edit().putString(KEY_QIBLA_METHOD, method.name).apply()
+    }
+
     private const val RAMADAN_ISHA_MINUTES = 90
     private const val KEY_RAMADAN_OVERRIDE_APPLIED = "ramadan_isha_override_hijri_year"
 
@@ -363,6 +408,9 @@ object PrefsManager {
         val current = getAfterMinutes(context, Prayer.ISHA)
         if (current < RAMADAN_ISHA_MINUTES) {
             setAfterMinutes(context, Prayer.ISHA, RAMADAN_ISHA_MINUTES)
+            // An explicit adhan-relative end would otherwise keep overriding the
+            // legacy duration this override relies on.
+            setEndOffsetMinutes(context, Prayer.ISHA, null)
         }
         prefs(context).edit().putInt(KEY_RAMADAN_OVERRIDE_APPLIED, hijriYear).apply()
     }
@@ -440,6 +488,25 @@ object PrefsManager {
             .apply()
     }
 
+    // --- Independent adhan-relative end offset (null = legacy duration end) ---
+
+    private const val NO_END_OFFSET = Int.MIN_VALUE
+
+    fun getEndOffsetMinutes(context: Context, prayer: Prayer): Int? {
+        val stored = prefs(context).getInt("end_offset_${prayer.name}", NO_END_OFFSET)
+        return stored.takeIf { it != NO_END_OFFSET }
+    }
+
+    fun setEndOffsetMinutes(context: Context, prayer: Prayer, minutes: Int?) {
+        val edit = prefs(context).edit()
+        if (minutes == null) {
+            edit.remove("end_offset_${prayer.name}")
+        } else {
+            edit.putInt("end_offset_${prayer.name}", minutes)
+        }
+        edit.apply()
+    }
+
     fun getConfig(context: Context, prayer: Prayer): PrayerSilenceConfig {
         return PrayerSilenceConfig(
             mode = getSilenceMode(context, prayer),
@@ -449,8 +516,65 @@ object PrefsManager {
             delayMode = getDelayMode(context, prayer),
             delayMinutes = getDelayMinutes(context, prayer),
             delayFixedHour = getDelayFixedHour(context, prayer),
-            delayFixedMinute = getDelayFixedMinute(context, prayer)
+            delayFixedMinute = getDelayFixedMinute(context, prayer),
+            endOffsetMinutes = getEndOffsetMinutes(context, prayer)
         )
+    }
+
+    /** Publish the whole window together so readers never observe half of an edit. */
+    fun setConfig(context: Context, prayer: Prayer, config: PrayerSilenceConfig) {
+        val edit = prefs(context).edit()
+            .putString("mode_${prayer.name}", config.mode.name)
+            .putInt("after_${prayer.name}", config.afterMinutes)
+            .putInt("fixed_hour_${prayer.name}", config.fixedHour)
+            .putInt("fixed_minute_${prayer.name}", config.fixedMinute)
+            .putString("delay_mode_${prayer.name}", config.delayMode.name)
+            .putInt("delay_${prayer.name}", config.delayMinutes)
+            .putInt("delay_fixed_hour_${prayer.name}", config.delayFixedHour)
+            .putInt("delay_fixed_minute_${prayer.name}", config.delayFixedMinute)
+        // Local val: cross-module properties are not smart-castable.
+        val endOffsetMinutes = config.endOffsetMinutes
+        if (endOffsetMinutes == null) {
+            edit.remove("end_offset_${prayer.name}")
+        } else {
+            edit.putInt("end_offset_${prayer.name}", endOffsetMinutes)
+        }
+        edit.apply()
+    }
+
+    fun observeConfigChanges(context: Context, prayer: Prayer, onChanged: () -> Unit): () -> Unit {
+        val settings = prefs(context)
+        val keys = listOf(
+            "mode", "after", "fixed_hour", "fixed_minute", "delay_mode", "delay",
+            "delay_fixed_hour", "delay_fixed_minute", "end_offset",
+        ).mapTo(mutableSetOf()) { "${it}_${prayer.name}" }
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            if (key == null || key in keys) onChanged()
+        }
+        settings.registerOnSharedPreferenceChangeListener(listener)
+        return { settings.unregisterOnSharedPreferenceChangeListener(listener) }
+    }
+
+    // --- Per-prayer silence enable (independent of the global auto-silence switch) ---
+
+    private fun prayerEnabledKey(prayer: Prayer) = "enabled_${prayer.name}"
+
+    fun isPrayerSilenceEnabled(context: Context, prayer: Prayer): Boolean {
+        return prefs(context).getBoolean(prayerEnabledKey(prayer), true)
+    }
+
+    fun setPrayerSilenceEnabled(context: Context, prayer: Prayer, enabled: Boolean) {
+        prefs(context).edit().putBoolean(prayerEnabledKey(prayer), enabled).apply()
+    }
+
+    fun observePrayerEnabledChanges(context: Context, prayer: Prayer, onChanged: () -> Unit): () -> Unit {
+        val settings = prefs(context)
+        val key = prayerEnabledKey(prayer)
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, changedKey ->
+            if (changedKey == null || changedKey == key) onChanged()
+        }
+        settings.registerOnSharedPreferenceChangeListener(listener)
+        return { settings.unregisterOnSharedPreferenceChangeListener(listener) }
     }
 
     // --- Jomoaa custom time (defaults to -1 = use Dhuhr time) ---

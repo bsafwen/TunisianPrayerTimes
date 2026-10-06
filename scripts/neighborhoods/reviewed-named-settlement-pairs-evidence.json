@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "named-settlement-pair-source-facts.json",
+    "sha256": "70ce2fc7f3a0b1a61834a3f9ba31a4cda665b5b59387c6a92071135b7078f92d"
+  },
+  "reviewedMetadataSha256": "90fa0fe47a6cfda3d8b45c03a82a9294ab5145e6dbaafa600cee22d891488321",
+  "researchReview": {
+    "file": "current-same-subtitle10-next-checks.json",
+    "sha256": "a37de6162af1edd9cc9cc9c43825aa6fba410283282b209d6293471fbf201163"
+  },
+  "records": [
+    {
+      "id": "osm:way:129895999",
+      "method": "reviewed_primary_source_named_settlement",
+      "targetPickerGroupId": "osm:node:1432323476",
+      "expectedExistingMemberIds": [
+        "osm:way:129895999"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:1432323476"
+      ],
+      "expectedGovernorateId": 356,
+      "expectedParentName": "الغرابة",
+      "expectedContextAliases": [
+        "Béja Nord",
+        "Délégation Béja Nord",
+        "El Ghraba",
+        "الغرابة",
+        "معتمدية باجة الشمالية"
+      ],
+      "expectedDelegationId": 514,
+      "status": "eligible_proposal",
+      "approvalScope": "Staged for independent review; no installed change or generation authorized by this file.",
+      "members": [
+        {
+          "id": "osm:way:129895999",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "الصفاية",
+          "expectedAliases": [
+            "Essfaya"
+          ],
+          "expectedContextAliases": [
+            "Béja Nord",
+            "Délégation Béja Nord",
+            "El Ghraba",
+            "الغرابة",
+            "معتمدية باجة الشمالية"
+          ],
+          "expectedLat": 36.910262,
+          "expectedLng": 9.178116,
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:fr": "Essfaya"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:fr": "Essfaya"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "a973914972b3655e7de0d654ec5b6ab61ee3f9ad0833c68c543a45e82ffa7ad3",
+          "effectiveOriginalGeometrySha256": "a973914972b3655e7de0d654ec5b6ab61ee3f9ad0833c68c543a45e82ffa7ad3",
+          "packedGeometrySha256": "a44dcb637d7d13b16bb1a51a8109cc07dfd59390cb4e97d5de5032caa40eefc0"
+        },
+        {
+          "id": "osm:node:1432323476",
+          "expectedKind": "hamlet",
+          "expectedSourceId": "osm",
+          "expectedName": "الصفاية",
+          "expectedAliases": [
+            "Essfaya"
+          ],
+          "expectedContextAliases": [
+            "Béja Nord",
+            "Délégation Béja Nord",
+            "El Ghraba",
+            "الغرابة",
+            "معتمدية باجة الشمالية"
+          ],
+          "expectedLat": 36.9084743,
+          "expectedLng": 9.1788288,
+          "expectedOriginalTags": {
+            "addr:governorate": "Béja",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:en": "Essfaya",
+            "name:fr": "Essfaya",
+            "place": "hamlet"
+          },
+          "expectedEffectiveTags": {
+            "addr:governorate": "Béja",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:en": "Essfaya",
+            "name:fr": "Essfaya",
+            "place": "hamlet"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "19ebe22e908889217152bbd630946b77a4a49bad8a65f2f882c98e5cb93ad1c9",
+          "effectiveOriginalGeometrySha256": "19ebe22e908889217152bbd630946b77a4a49bad8a65f2f882c98e5cb93ad1c9",
+          "packedGeometrySha256": null
+        }
+      ],
+      "settlementPointId": "osm:node:1432323476",
+      "expectedPointKind": "hamlet",
+      "expectedContextRole": "sector",
+      "nameEvidence": {
+        "arabic": "الصفاية",
+        "originalArabic": "الصفاية",
+        "latin": "Essfaya",
+        "arabicNameTag": "name:ar",
+        "latinNameTag": "name:fr"
+      },
+      "codedContext": {
+        "id": "osm:relation:7189408",
+        "expectedKind": "sector",
+        "expectedSourceId": "osm",
+        "expectedName": "الغرابة",
+        "expectedAliases": [
+          "El Ghraba"
+        ],
+        "expectedContextAliases": [
+          "Béja Nord",
+          "Délégation Béja Nord",
+          "معتمدية باجة الشمالية"
+        ],
+        "expectedLat": 36.89209,
+        "expectedLng": 9.206346,
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الغرابة",
+          "name:ar": "الغرابة",
+          "name:fr": "El Ghraba",
+          "ref:tn:codegeo": "215163"
+        },
+        "expectedEffectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الغرابة",
+          "name:ar": "الغرابة",
+          "name:fr": "El Ghraba",
+          "ref:tn:codegeo": "215163"
+        },
+        "expectedCuration": null,
+        "expectedParentName": "معتمدية باجة الشمالية",
+        "expectedDelegationId": 514,
+        "originalGeometrySha256": "cecb1b99c0ae6fefa5a418520ec326421da2869d5ee3c6d28f339e155b668520",
+        "effectiveOriginalGeometrySha256": "cecb1b99c0ae6fefa5a418520ec326421da2869d5ee3c6d28f339e155b668520",
+        "packedGeometrySha256": "19974f9060ece1f24d06d874b49442b2ad90c35aa13f58659a14b17ecd7a7ec9",
+        "currentOfficialRecord": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2151",
+          "delegationFr": "Beja nord",
+          "delegationAr": "باجة الشمالية",
+          "sectorCode": "215163",
+          "sectorFr": "El ghraba",
+          "sectorAr": "الغرابة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20264,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 901,
+            "Nombre_de_menages_par_Secteurs.xlsx": 900
+          }
+        },
+        "originalContainsEveryMember": true,
+        "packagedContainsEveryMember": true
+      },
+      "expectedGlobalMatchingPlaceSourceIds": [
+        "osm:node:1432323476"
+      ],
+      "expectedContextMatchingPlaceSourceIds": [
+        "osm:node:1432323476"
+      ],
+      "expectedGlobalMatchingResidentialSourceIds": [
+        "osm:way:129895999"
+      ],
+      "expectedContextMatchingResidentialSourceIds": [
+        "osm:way:129895999"
+      ],
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\official\\odno-tourism-circuits-2020.pdf",
+        "sha256": "44f9bceb487754e554c4b96885f5eff183380eb9d9edfd9ea3976f1e94159d60",
+        "url": "https://odno.nat.tn/wp-content/uploads/2026/04/ODNO_04_tourisme-aletrnatif-Phase-2-Rapp-final-octobre-2020-circuits_compressed.pdf",
+        "pages": [
+          63,
+          64
+        ],
+        "finding": "ODNO names Essfaya among the circuit villages and marks it between Jemil and El Koussa in the northern Beja corridor. The source is a regional tourism map, not a cadastral or settlement-extent map.",
+        "visuallyReviewedRenders": [
+          {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\official\\odno-page-63.png",
+            "sha256": "4d6b0ef81f64840c75fee8110ddd28ffa410cb4b9cb243d9e58e7918c5c3f2e9"
+          },
+          {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\official\\odno-page-64.png",
+            "sha256": "eeccd3a467d6ca796cabda88bf72fbe29490e79e0fd65c034568eecd977a157b"
+          }
+        ]
+      },
+      "reviewerInference": "The exact matching source objects represent one named inhabited settlement, supported by a primary village reference, a unique complete source settlement inventory and unchanged administrative/prayer context. This is a reviewed display-identity inference, not external certification of either geometry.",
+      "limitations": [
+        "The regional map does not independently resolve the6.5m point/ring gap or identify source object IDs; it supplies locality identity and regional context.",
+        "No explicit addr:place/shared persistent locality reference exists on both objects. Acceptance therefore requires review of the complete named-settlement evidence, not the already-supported Tijma address method.",
+        "Houch Essefaya is a differently named source hamlet outside this sector; Kef/SidiBouzid namesakes are not this Beja location.",
+        "Both raw stable IDs, raw names/aliases, coordinates, kinds, parent/context and manual prayer defaults.",
+        "Existing residential polygon bytes; no point relocation, missing-extent synthesis, hull, buffer or snapping.",
+        "No observation becomes fresh and no Google result is treated as source identity or boundary certification."
+      ]
+    },
+    {
+      "id": "osm:way:377116351",
+      "method": "reviewed_primary_source_named_settlement",
+      "targetPickerGroupId": "osm:node:11230028572",
+      "expectedExistingMemberIds": [
+        "osm:way:377116351"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:11230028572"
+      ],
+      "expectedGovernorateId": 353,
+      "expectedParentName": "رحالة",
+      "expectedContextAliases": [
+        "Beni Khedache",
+        "Délégation Beni Khedech",
+        "Rahala",
+        "رحالة",
+        "معتمدية بني خداش"
+      ],
+      "expectedDelegationId": 489,
+      "status": "eligible_proposal",
+      "approvalScope": "Staged for independent review; no installed change or generation authorized by this file.",
+      "members": [
+        {
+          "id": "osm:way:377116351",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "قصر الجوامع",
+          "expectedAliases": [
+            "Ksar Jouamaa",
+            "قصر الجؤامع"
+          ],
+          "expectedContextAliases": [
+            "Beni Khedache",
+            "Délégation Beni Khedech",
+            "Rahala",
+            "رحالة",
+            "معتمدية بني خداش"
+          ],
+          "expectedLat": 33.254487,
+          "expectedLng": 10.253962,
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "قصر الجؤامع",
+            "name:aeb": "قصر الجؤامع",
+            "name:ar": "قصر الجؤامع",
+            "name:en": "Ksar Jouamaa"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "قصر الجوامع",
+            "name:aeb": "قصر الجوامع",
+            "name:ar": "قصر الجوامع",
+            "name:en": "Ksar Jouamaa",
+            "alt_name": "قصر الجؤامع"
+          },
+          "expectedCuration": {
+            "id": "osm:way:377116351",
+            "expectedKind": "residential",
+            "expectedTags": {
+              "landuse": "residential",
+              "name": "قصر الجؤامع",
+              "name:aeb": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa"
+            },
+            "action": "name_tags",
+            "nameTags": {
+              "name": "قصر الجوامع",
+              "name:aeb": "قصر الجوامع",
+              "name:ar": "قصر الجوامع",
+              "name:en": "Ksar Jouamaa",
+              "alt_name": "قصر الجؤامع"
+            },
+            "reason": "Correct the exact source Arabic spelling قصر الجؤامع to the primary field-inventory village name قصر الجوامع. Preserve the old Arabic as an alternate search name and the original Ksar Jouamaa Latin name. This changes naming metadata only; the village point and residential polygon remain distinct geographic records.",
+            "evidence": [
+              {
+                "source": "Primary GMG Arabic inhabited-village reference, separately identified fortress, and fresh exact PBF identities",
+                "reviewFiles": [
+                  {
+                    "file": "name-reviews/ksar-jouamaa-source-spelling-review.json",
+                    "sha256": "33b1782f0dea72b7c7580788b03640dfe6f203ef62000ddccdbadcf89afa874c"
+                  },
+                  {
+                    "file": "name-reviews/ksar-jouamaa-primary-source.html",
+                    "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832"
+                  }
+                ]
+              },
+              "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa"
+            ],
+            "unresolved": [
+              "The primary locality name does not certify the residential extent. Published fortress coordinates remain separate and are not substituted for the village point."
+            ]
+          },
+          "originalGeometrySha256": "73874f1d151f36304b7a7bc17b40b5a51b9cb76ff9f9d7ec464f4bcd5a2f5b50",
+          "effectiveOriginalGeometrySha256": "73874f1d151f36304b7a7bc17b40b5a51b9cb76ff9f9d7ec464f4bcd5a2f5b50",
+          "packedGeometrySha256": "6e24821a504961d2e7c280fff260858d387ec767d66d0b5c8ed00aacb2afba6d"
+        },
+        {
+          "id": "osm:node:11230028572",
+          "expectedKind": "village",
+          "expectedSourceId": "osm",
+          "expectedName": "قصر الجوامع",
+          "expectedAliases": [
+            "Ksar Jouamaa",
+            "قصر الجؤامع"
+          ],
+          "expectedContextAliases": [
+            "Beni Khedache",
+            "Délégation Beni Khedech",
+            "Rahala",
+            "رحالة",
+            "معتمدية بني خداش"
+          ],
+          "expectedLat": 33.2538427,
+          "expectedLng": 10.2529122,
+          "expectedOriginalTags": {
+            "name": "قصر الجؤامع",
+            "name:aeb": "قصر الجؤامع",
+            "name:ar": "قصر الجؤامع",
+            "name:en": "Ksar Jouamaa",
+            "place": "village"
+          },
+          "expectedEffectiveTags": {
+            "name": "قصر الجوامع",
+            "name:aeb": "قصر الجوامع",
+            "name:ar": "قصر الجوامع",
+            "name:en": "Ksar Jouamaa",
+            "place": "village",
+            "alt_name": "قصر الجؤامع"
+          },
+          "expectedCuration": {
+            "id": "osm:node:11230028572",
+            "expectedKind": "village",
+            "expectedTags": {
+              "name": "قصر الجؤامع",
+              "name:aeb": "قصر الجؤامع",
+              "name:ar": "قصر الجؤامع",
+              "name:en": "Ksar Jouamaa",
+              "place": "village"
+            },
+            "action": "name_tags",
+            "nameTags": {
+              "name": "قصر الجوامع",
+              "name:aeb": "قصر الجوامع",
+              "name:ar": "قصر الجوامع",
+              "name:en": "Ksar Jouamaa",
+              "alt_name": "قصر الجؤامع"
+            },
+            "reason": "Correct the exact source Arabic spelling قصر الجؤامع to the primary field-inventory village name قصر الجوامع. Preserve the old Arabic as an alternate search name and the original Ksar Jouamaa Latin name. This changes naming metadata only; the village point and residential polygon remain distinct geographic records.",
+            "evidence": [
+              {
+                "source": "Primary GMG Arabic inhabited-village reference, separately identified fortress, and fresh exact PBF identities",
+                "reviewFiles": [
+                  {
+                    "file": "name-reviews/ksar-jouamaa-source-spelling-review.json",
+                    "sha256": "33b1782f0dea72b7c7580788b03640dfe6f203ef62000ddccdbadcf89afa874c"
+                  },
+                  {
+                    "file": "name-reviews/ksar-jouamaa-primary-source.html",
+                    "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832"
+                  }
+                ]
+              },
+              "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa"
+            ],
+            "unresolved": [
+              "The primary locality name does not certify the residential extent. Published fortress coordinates remain separate and are not substituted for the village point."
+            ]
+          },
+          "originalGeometrySha256": "9d1578f8a2336059be6cb9eea1486d96761227c312c30be6480fddc2a25ef39c",
+          "effectiveOriginalGeometrySha256": "9d1578f8a2336059be6cb9eea1486d96761227c312c30be6480fddc2a25ef39c",
+          "packedGeometrySha256": null
+        }
+      ],
+      "settlementPointId": "osm:node:11230028572",
+      "expectedPointKind": "village",
+      "expectedContextRole": "sector",
+      "nameEvidence": {
+        "arabic": "قصر الجوامع",
+        "originalArabic": "قصر الجؤامع",
+        "latin": "Ksar Jouamaa",
+        "arabicNameTag": "name:ar",
+        "latinNameTag": "name:en"
+      },
+      "codedContext": {
+        "id": "osm:relation:7142977",
+        "expectedKind": "sector",
+        "expectedSourceId": "osm",
+        "expectedName": "رحالة",
+        "expectedAliases": [
+          "Rahala"
+        ],
+        "expectedContextAliases": [
+          "Beni Khedache",
+          "Délégation Beni Khedech",
+          "معتمدية بني خداش"
+        ],
+        "expectedLat": 33.236867,
+        "expectedLng": 10.264415,
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "رحالة",
+          "name:ar": "رحالة",
+          "name:fr": "Rahala",
+          "ref:tn:codegeo": "525352"
+        },
+        "expectedEffectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "رحالة",
+          "name:ar": "رحالة",
+          "name:fr": "Rahala",
+          "ref:tn:codegeo": "525352"
+        },
+        "expectedCuration": null,
+        "expectedParentName": "معتمدية بني خداش",
+        "expectedDelegationId": 489,
+        "originalGeometrySha256": "5adc3b140b52b5fa7593dd3adf89a260ced10a466d47158f04bbd36007af2993",
+        "effectiveOriginalGeometrySha256": "5adc3b140b52b5fa7593dd3adf89a260ced10a466d47158f04bbd36007af2993",
+        "packedGeometrySha256": "661a5fb8a48d2866e368ad869261a03d3b88ed7a2f922547f94c13470b7a2163",
+        "currentOfficialRecord": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5253",
+          "delegationFr": "Beni khedech",
+          "delegationAr": "بني خداش",
+          "sectorCode": "525352",
+          "sectorFr": "Rahala",
+          "sectorAr": "رحالة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60858,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2992,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2986
+          }
+        },
+        "originalContainsEveryMember": true,
+        "packagedContainsEveryMember": true
+      },
+      "expectedGlobalMatchingPlaceSourceIds": [
+        "osm:node:11230028572"
+      ],
+      "expectedContextMatchingPlaceSourceIds": [
+        "osm:node:11230028572"
+      ],
+      "expectedGlobalMatchingResidentialSourceIds": [
+        "osm:way:377116351"
+      ],
+      "expectedContextMatchingResidentialSourceIds": [
+        "osm:way:377116351"
+      ],
+      "primaryEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\dahar-ksar-jouamaa.html",
+        "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832",
+        "url": "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa",
+        "finding": "The GMG field inventory explicitly distinguishes the inhabited Ksar Jouamaa village from the nearby fortress in Beni Khedache. It names a school and clinic in the vicinity; the source PBF separately identifies the village/residential pair and hotel/restaurant/ruins.",
+        "publishedGpsScope": "Fortress, never village point or polygon vertices.",
+        "publishedFortressPoint": {
+          "lng": 10.2586,
+          "lat": 33.25131944444445
+        },
+        "fortressPointInsideSeparateRuins": false,
+        "fortressPointDistancesMeters": {
+          "osm:way:377116351": 431.2746136299644,
+          "osm:node:11230028572": 599.2292408091604,
+          "osm:way:375936003": 3.4118283371745797
+        }
+      },
+      "reviewerInference": "The exact matching source objects represent one named inhabited settlement, supported by a primary village reference, a unique complete source settlement inventory and unchanged administrative/prayer context. This is a reviewed display-identity inference, not external certification of either geometry.",
+      "limitations": [
+        "The field inventory describes the village-to-fortress relationship but does not list OSM IDs or certify the residential ring.",
+        "No explicit addr:place/shared persistent locality reference exists on both objects. The unique source settlement identity and separate POI inventory are the proposed basis; a2.8m gap alone is not.",
+        "Source Arabic الجؤامع differs from primary الجوامع. Preserve both current names for this proposed display link; any spelling correction needs its own reviewed per-ID decision.",
+        "Both raw stable IDs, raw names/aliases, coordinates, kinds, parent/context and manual prayer defaults.",
+        "Existing residential polygon bytes; no point relocation, missing-extent synthesis, hull, buffer or snapping.",
+        "No observation becomes fresh and no Google result is treated as source identity or boundary certification."
+      ]
+    }
+  ]
+}

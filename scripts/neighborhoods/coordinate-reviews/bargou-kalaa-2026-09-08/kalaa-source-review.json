@@ -1,0 +1,778 @@
+{
+  "status": "SUPPORTED_NAMED_SETTLEMENT_REFERENCE_PROPOSAL_NO_IMPORT",
+  "createdAt": "2026-09-07T23:44:47.097092+00:00",
+  "scope": "One source443 only. No app edits, generator run, tests, broad audit, PBF rescan, phone/device or Google API use.",
+  "observedMetadataSha256": "34135e143e509842fc5673d290fbc6571c334bc26739eb2c03a17e5c6ac73d17",
+  "geographicBaselineMetadataSha256": "5555e696b7cac1b1adbccbb7d88fdf1f42f598be22dc637f7633df4ce39dcc6d",
+  "observedGeometrySha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+  "metadataQualification": "Sahloul/Remil names were installed during this source review. Source443, its named node, binary and all source-coordinate inputs remain unchanged.",
+  "currentSource": {
+    "id": 443,
+    "nomFr": "Kalaa Seghira",
+    "nomAr": "القلعة الصغيرة",
+    "nomEn": "Kalaa Seghira",
+    "lat": 35.805,
+    "lng": 10.575,
+    "governorateId": 348,
+    "governorateName": "سوسة"
+  },
+  "proposedReference": {
+    "lat": 35.8241499,
+    "lng": 10.5610794,
+    "sourceId": "osm:node:1495587105",
+    "name": "القلعة الصغرى",
+    "scope": "A documented named settlement reference used for nearest timetable selection, not certified INM calculation coordinates."
+  },
+  "osmEvidence": {
+    "cachedRecord": {
+      "id": "osm:node:1495587105",
+      "tags": {
+        "addr:city": "Kalaa Sghira",
+        "addr:governorate": "Sousse",
+        "name": "القلعة الصغرى",
+        "name:ar": "القلعة الصغرى",
+        "name:en": "Kalaa Sghira",
+        "name:fr": "Kalaa Sghira",
+        "name:nl": "Kalaa Sghira",
+        "place": "village"
+      },
+      "lat": 35.8241499,
+      "lng": 10.5610794
+    },
+    "cachedSourceSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "liveUrl": "https://api.openstreetmap.org/api/0.6/node/1495587105.json",
+    "liveResponseFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\kalaa-sghira-443-review\\osm-node-1495587105.json",
+    "liveResponseSha256": "81af96007b5cdcdd4abacbf0e0ab3ccc0ae1dda7d3da02df4917dddfeff8e932",
+    "version": 8,
+    "timestamp": "2026-03-07T20:28:17Z",
+    "changeset": 179509225,
+    "allCachedTagsAndCoordinatesEqualLive": true,
+    "identity": "Explicit place=village with Arabic القلعة الصغرى, Latin Kalaa Sghira, addr:city=Kalaa Sghira and addr:governorate=Sousse. This is a named settlement point, not a nearby business or facility."
+  },
+  "primaryCorroboration": {
+    "provider": "Tunisian Ministry of Social Affairs",
+    "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-القلعة-الصغرى-سوسة",
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\kalaa-sghira-443-review\\social-local-unit.html",
+    "sha256": "bc67ec4f968c43d7877d07075a5f0e16c90c7c97b87be7e2e1bf62899683ca94",
+    "stableContentNode": "3059",
+    "title": "الوحدة المحلية للنهوض الاجتماعي القلعة الصغرى سوسة",
+    "publishedAddress": "نهج الطيب المهيري –القلعة الصغرى سوسة",
+    "publishedPoint": {
+      "lat": 35.823752,
+      "lng": 10.564552
+    },
+    "visiblePageLastUpdate": "09/07/2026 - 14:20",
+    "exactSameAsOsmPoint": false,
+    "scope": "The ministry publishes a public local administrative facility address and coordinates. It corroborates the settlement neighborhood and name; it does not independently measure the OSM village point or provide its boundary."
+  },
+  "officialAdministrativeIdentity": [
+    {
+      "governorateCode": "31",
+      "governorateFr": "Sousse",
+      "governorateAr": "سوسة",
+      "delegationCode": "3165",
+      "delegationFr": "Kalaa seghira",
+      "delegationAr": "القلعة الصغرى",
+      "sectorCode": "316551",
+      "sectorFr": "Kalaa seghira est",
+      "sectorAr": "القلعة الصغرى الشرقية",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35699,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1684,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1683
+      }
+    },
+    {
+      "governorateCode": "31",
+      "governorateFr": "Sousse",
+      "governorateAr": "سوسة",
+      "delegationCode": "3165",
+      "delegationFr": "Kalaa seghira",
+      "delegationAr": "القلعة الصغرى",
+      "sectorCode": "316552",
+      "sectorFr": "Kalaa seghira hached",
+      "sectorAr": "القلعة الصغرى حشاد",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35733,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1685,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1684
+      }
+    },
+    {
+      "governorateCode": "31",
+      "governorateFr": "Sousse",
+      "governorateAr": "سوسة",
+      "delegationCode": "3165",
+      "delegationFr": "Kalaa seghira",
+      "delegationAr": "القلعة الصغرى",
+      "sectorCode": "316553",
+      "sectorFr": "Kalaa seghira ville",
+      "sectorAr": "القلعة الصغرى المدينة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35767,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1687,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1686
+      }
+    },
+    {
+      "governorateCode": "31",
+      "governorateFr": "Sousse",
+      "governorateAr": "سوسة",
+      "delegationCode": "3165",
+      "delegationFr": "Kalaa seghira",
+      "delegationAr": "القلعة الصغرى",
+      "sectorCode": "316554",
+      "sectorFr": "En-nagr",
+      "sectorAr": "النقر",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35801,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1689,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1688
+      }
+    },
+    {
+      "governorateCode": "31",
+      "governorateFr": "Sousse",
+      "governorateAr": "سوسة",
+      "delegationCode": "3165",
+      "delegationFr": "Kalaa seghira",
+      "delegationAr": "القلعة الصغرى",
+      "sectorCode": "316555",
+      "sectorFr": "Oued leya",
+      "sectorAr": "وادي لاية",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35835,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 1691,
+        "Nombre_de_menages_par_Secteurs.xlsx": 1690
+      }
+    }
+  ],
+  "geoNamesCorroboration": {
+    "id": "2473481",
+    "name": "Kalaa Srira",
+    "aliases": [
+      "Al Qal`ah as Saghirah",
+      "Al Qal`ah as Sughra",
+      "Al Qal‘ah aş Şaghīrah",
+      "Al Qal‘ah aş Şughrá",
+      "Kalaa Seghira",
+      "Kalaa Srira",
+      "Kalaa-Sghira",
+      "Kalâa Seghira",
+      "Srireh"
+    ],
+    "lat": 35.82244,
+    "lng": 10.55739,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "modified": "2026-06-23"
+  },
+  "distanceKm": {
+    "legacyToNamedNode": 2.47179885632233,
+    "ministryFacilityToNamedNode": 0.31619688589754913,
+    "legacyToMinistryFacility": 2.2880773771013114,
+    "geoNamesToNamedNode": 0.38314031528403664,
+    "legacyToGeoNames": 2.506409789517671
+  },
+  "administrativeContainmentAgainstCachedSources": [
+    {
+      "id": "osm:relation:7108097",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القلعة الصغرى حشاد",
+        "name:ar": "القلعة الصغرى حشاد",
+        "name:fr": "El Kalaa Essghira Hached",
+        "ref:tn:codegeo": "316552"
+      },
+      "coversLegacyPoint": false,
+      "coversNamedNode": false,
+      "coversMinistryFacility": false
+    },
+    {
+      "id": "osm:relation:7108096",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النقر",
+        "name:ar": "النقر",
+        "name:fr": "Ennagr",
+        "ref:tn:codegeo": "316554"
+      },
+      "coversLegacyPoint": false,
+      "coversNamedNode": false,
+      "coversMinistryFacility": false
+    },
+    {
+      "id": "osm:relation:7108098",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القلعة الصغرى المدينة",
+        "name:ar": "القلعة الصغرى المدينة",
+        "name:fr": "El Kalaa Essghira Ville",
+        "ref:tn:codegeo": "316553"
+      },
+      "coversLegacyPoint": false,
+      "coversNamedNode": false,
+      "coversMinistryFacility": false
+    },
+    {
+      "id": "osm:relation:7108095",
+      "tags": {
+        "admin_level": "6",
+        "alt_name": "واد لاية",
+        "alt_name:ar": "واد لاية",
+        "boundary": "administrative",
+        "name": "وادي لاية",
+        "name:ar": "وادي لاية",
+        "name:fr": "Oued Leya",
+        "ref:tn:codegeo": "316555"
+      },
+      "coversLegacyPoint": false,
+      "coversNamedNode": false,
+      "coversMinistryFacility": false
+    },
+    {
+      "id": "osm:relation:7108099",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القلعة الصغرى الشرقية",
+        "name:ar": "القلعة الصغرى الشرقية",
+        "name:fr": "El Kalaa Essghira Est",
+        "ref:tn:codegeo": "316551"
+      },
+      "coversLegacyPoint": true,
+      "coversNamedNode": true,
+      "coversMinistryFacility": true
+    },
+    {
+      "id": "osm:relation:7150923",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Kalâa Seghira",
+        "boundary": "administrative",
+        "name": "معتمدية القلعة الصغرى",
+        "name:ar": "معتمدية القلعة الصغرى",
+        "name:fr": "Délégation Kalaa Sghira",
+        "ref:tn:codegeo": "3165",
+        "ref:tn:hasc_2": "TN.SS.KS",
+        "wikidata": "Q3192284"
+      },
+      "coversLegacyPoint": true,
+      "coversNamedNode": true,
+      "coversMinistryFacility": true
+    },
+    {
+      "id": "osm:relation:3152094",
+      "tags": {
+        "ISO3166-2": "TN-51",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية سوسة",
+        "name:ar": "ولاية سوسة",
+        "name:azb": "سوسه",
+        "name:be": "Сус (вілает)",
+        "name:be-tarask": "Сус (вілает)",
+        "name:bg": "Сус (област)",
+        "name:ca": "Governació de Sussa",
+        "name:ceb": "Gouvernorat de Sousse",
+        "name:ckb": "سوسە",
+        "name:cy": "Sousse (talaith)",
+        "name:de": "Gouvernement Sousse",
+        "name:el": "Σούσα (Κυβερνείο)",
+        "name:en": "Sousse",
+        "name:es": "Gobernación de Susa",
+        "name:fa": "سوسه",
+        "name:fi": "Sousse (kuvernementti)",
+        "name:fr": "Gouvernorat Sousse",
+        "name:frr": "Sousse (Guwernement)",
+        "name:he": "סוסה (מחוז)",
+        "name:id": "Kegubernuran Sousse",
+        "name:it": "Susa",
+        "name:ja": "スース県",
+        "name:ko": "수스주",
+        "name:ks": "سوسہ",
+        "name:lt": "Suso vilajetas",
+        "name:ms": "Kawasan kegabenoran Sousse",
+        "name:nl": "Sousse (gouvernement)",
+        "name:no": "Sousse (guvernement)",
+        "name:ota": "سوسه",
+        "name:pl": "Gubernatorstwo Susa",
+        "name:pt": "Susa (província)",
+        "name:ro": "Guvernoratul Sousse",
+        "name:ru": "Сус (вилайет)",
+        "name:sco": "Sousse Govrenorate",
+        "name:sh": "Sousse (vilajet)",
+        "name:tr": "Susa ili",
+        "name:uk": "Сус (вілаєт)",
+        "name:ur": "سوسہ",
+        "name:zh": "蘇塞省",
+        "name:zu": "Sousse Governorate",
+        "official_name": "ولاية سوسة",
+        "official_name:ar": "ولاية سوسة",
+        "official_name:en": "Sousse Governorate",
+        "official_name:es": "Gobernación de Susa",
+        "official_name:fa": "استان سوسه",
+        "official_name:fr": "Gouvernorat de Sousse",
+        "official_name:ur": "ولایت سوسہ",
+        "population": "674971",
+        "population:date": "2014",
+        "ref:tn:codegeo": "31",
+        "wikidata": "Q276565",
+        "wikipedia": "ar:ولاية سوسة"
+      },
+      "coversLegacyPoint": true,
+      "coversNamedNode": true,
+      "coversMinistryFacility": true
+    }
+  ],
+  "settlementExtentFinding": {
+    "namedNodeIdentitySupported": true,
+    "legacyOutsideEntireNamedSettlementEstablished": false,
+    "reason": "There is no reviewed complete settlement/built-up footprint for Kalaa Sghira in the existing catalog evidence. Both points lie within the broad namesake administrative area. A facility, village node and sector boundary cannot establish the entire extent of the built-up settlement.",
+    "allowedClaim": "Legacy reference is2.472km from the explicitly named village point; two other sources corroborate the northern town context.",
+    "disallowedClaims": [
+      "Legacy point is conclusively outside the entire town",
+      "OSM village node is the INM prayer-calculation origin",
+      "Administrative sector extent is the full settlement footprint"
+    ]
+  },
+  "recommendation": {
+    "decision": "Recommend the exact OSM node as the more explicitly documented settlement reference for a separately reviewed source443 coordinate correction.",
+    "coordinates": {
+      "lat": 35.8241499,
+      "lng": 10.5610794
+    },
+    "justification": "The source name spelling variants resolve to the official municipality/delegation identity, and the public node is corroborated by nearby ministry and GeoNames locations. The current rounded legacy point has no recorded per-coordinate source provenance.",
+    "limits": "Recommendation is based on reference-point provenance, not an unproved outside-town claim. No change is made here; a source443-only mapping and guarded picker-association impact review is required before installation.",
+    "preserve": [
+      "source ID443",
+      "source names and governorate",
+      "all raw locality geometry and coordinates",
+      "unrelated source references"
+    ]
+  },
+  "mappingScope": {
+    "currentlyMappedRawCount": 14,
+    "currentlyMappedRawLocalities": [
+      {
+        "id": "osm:relation:7108094",
+        "sourceId": "osm",
+        "name": "زاوية سوسة",
+        "aliases": [
+          "Zaouiet Sousse",
+          "Zawia Sousse"
+        ],
+        "kind": "sector",
+        "parentName": "الزاوية قصيبة الثريات",
+        "contextAliases": [
+          "Zaouia Ksibet Thrayet",
+          "Zaouiet Ksibet Thrayet",
+          "الزاوية قصيبة الثريات"
+        ],
+        "governorateId": 348,
+        "lat": 35.785785,
+        "lng": 10.617344,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.575065,
+          35.768896,
+          10.658517,
+          35.802688
+        ],
+        "areaKm2": 15.729542524220497,
+        "pickerGroupId": "osm:relation:7108094",
+        "offset": 559616,
+        "length": 604
+      },
+      {
+        "id": "osm:relation:7108095",
+        "sourceId": "osm",
+        "name": "وادي لاية",
+        "aliases": [
+          "Oued Leya",
+          "واد لاية"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية القلعة الصغرى",
+        "contextAliases": [
+          "Délégation Kalaa Sghira",
+          "Kalâa Seghira",
+          "معتمدية القلعة الصغرى"
+        ],
+        "governorateId": 348,
+        "lat": 35.785791,
+        "lng": 10.427134,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.367074,
+          35.745084,
+          10.485915,
+          35.827346
+        ],
+        "areaKm2": 52.02078553680338,
+        "pickerGroupId": "osm:relation:7108095",
+        "offset": 560220,
+        "length": 860
+      },
+      {
+        "id": "osm:relation:7108096",
+        "sourceId": "osm",
+        "name": "النقر",
+        "aliases": [
+          "Ennagr"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية القلعة الصغرى",
+        "contextAliases": [
+          "Délégation Kalaa Sghira",
+          "Kalâa Seghira",
+          "معتمدية القلعة الصغرى"
+        ],
+        "governorateId": 348,
+        "lat": 35.802291,
+        "lng": 10.498086,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.45897,
+          35.782602,
+          10.537729,
+          35.821535
+        ],
+        "areaKm2": 16.59259020496013,
+        "pickerGroupId": "osm:relation:7108096",
+        "offset": 561080,
+        "length": 692
+      },
+      {
+        "id": "osm:relation:7108098",
+        "sourceId": "osm",
+        "name": "القلعة الصغرى المدينة",
+        "aliases": [
+          "El Kalaa Essghira Ville"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية القلعة الصغرى",
+        "contextAliases": [
+          "Délégation Kalaa Sghira",
+          "Kalâa Seghira",
+          "معتمدية القلعة الصغرى"
+        ],
+        "governorateId": 348,
+        "lat": 35.80796,
+        "lng": 10.545596,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.51346,
+          35.789252,
+          10.566879,
+          35.826437
+        ],
+        "areaKm2": 9.742490029433165,
+        "pickerGroupId": "osm:relation:7108098",
+        "offset": 562560,
+        "length": 948
+      },
+      {
+        "id": "osm:relation:7108099",
+        "sourceId": "osm",
+        "name": "القلعة الصغرى الشرقية",
+        "aliases": [
+          "El Kalaa Essghira Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية القلعة الصغرى",
+        "contextAliases": [
+          "Délégation Kalaa Sghira",
+          "Kalâa Seghira",
+          "معتمدية القلعة الصغرى"
+        ],
+        "governorateId": 348,
+        "lat": 35.820984,
+        "lng": 10.576294,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.557314,
+          35.795083,
+          10.591459,
+          35.846762
+        ],
+        "areaKm2": 9.710004412401837,
+        "pickerGroupId": "osm:relation:7108099",
+        "offset": 563508,
+        "length": 644
+      },
+      {
+        "id": "osm:relation:7111276",
+        "sourceId": "osm",
+        "name": "الموردين",
+        "aliases": [
+          "Moureddine",
+          "Муреддин"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مساكن",
+        "contextAliases": [
+          "Délégation Msaken",
+          "M'saken",
+          "معتمدية مساكن"
+        ],
+        "governorateId": 348,
+        "lat": 35.770768,
+        "lng": 10.5209,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.476771,
+          35.74874,
+          10.574661,
+          35.790874
+        ],
+        "areaKm2": 28.544547929726523,
+        "pickerGroupId": "osm:relation:7111276",
+        "offset": 699088,
+        "length": 652
+      },
+      {
+        "id": "osm:relation:7113315",
+        "sourceId": "osm",
+        "name": "العهد الجديد",
+        "aliases": [
+          "El Ahd El Jadid"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سوسة الرياض",
+        "contextAliases": [
+          "Délégation Sousse Erriadh",
+          "Sousse Riadh",
+          "معتمدية سوسة الرياض"
+        ],
+        "governorateId": 348,
+        "lat": 35.811559,
+        "lng": 10.595204,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.579152,
+          35.79812,
+          10.61431,
+          35.825293
+        ],
+        "areaKm2": 4.129890475630522,
+        "pickerGroupId": "osm:relation:7113315",
+        "offset": 811732,
+        "length": 340
+      },
+      {
+        "id": "osm:relation:7113316",
+        "sourceId": "osm",
+        "name": "حي الرياض",
+        "aliases": [
+          "Erriadh"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سوسة الرياض",
+        "contextAliases": [
+          "Délégation Sousse Erriadh",
+          "Sousse Riadh",
+          "معتمدية سوسة الرياض"
+        ],
+        "governorateId": 348,
+        "lat": 35.799625,
+        "lng": 10.591835,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.573231,
+          35.79279,
+          10.607232,
+          35.80632
+        ],
+        "areaKm2": 2.4786746460288556,
+        "pickerGroupId": "osm:relation:7113316",
+        "offset": 812072,
+        "length": 164
+      },
+      {
+        "id": "osm:relation:7113317",
+        "sourceId": "osm",
+        "name": "الزهور",
+        "aliases": [
+          "Ezzouhour"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سوسة الرياض",
+        "contextAliases": [
+          "Délégation Sousse Erriadh",
+          "Sousse Riadh",
+          "معتمدية سوسة الرياض"
+        ],
+        "governorateId": 348,
+        "lat": 35.792404,
+        "lng": 10.574734,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.54927,
+          35.783753,
+          10.595125,
+          35.80113
+        ],
+        "areaKm2": 3.4696149045580236,
+        "pickerGroupId": "osm:relation:7113317",
+        "offset": 812236,
+        "length": 244
+      },
+      {
+        "id": "osm:way:1503923521",
+        "sourceId": "osm",
+        "name": "الرحبة",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "معتمدية القلعة الصغرى",
+        "contextAliases": [
+          "Délégation Kalaa Sghira",
+          "Kalâa Seghira",
+          "معتمدية القلعة الصغرى"
+        ],
+        "governorateId": 348,
+        "lat": 35.825259,
+        "lng": 10.556981,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.55602,
+          35.824677,
+          10.557759,
+          35.826052
+        ],
+        "areaKm2": 0.011761700719500097,
+        "pickerGroupId": "osm:way:1503923521",
+        "offset": 5239236,
+        "length": 60
+      },
+      {
+        "id": "osm:node:1495587105",
+        "sourceId": "osm",
+        "name": "القلعة الصغرى",
+        "aliases": [
+          "Kalaa Sghira"
+        ],
+        "kind": "village",
+        "parentName": "القلعة الصغرى الشرقية",
+        "contextAliases": [
+          "Délégation Kalaa Sghira",
+          "El Kalaa Essghira Est",
+          "Kalâa Seghira",
+          "القلعة الصغرى الشرقية",
+          "معتمدية القلعة الصغرى"
+        ],
+        "governorateId": 348,
+        "lat": 35.8241499,
+        "lng": 10.5610794,
+        "delegationId": 443,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1495587105"
+      },
+      {
+        "id": "osm:node:1544651749",
+        "sourceId": "osm",
+        "name": "القصيبة",
+        "aliases": [
+          "Ksiba"
+        ],
+        "kind": "village",
+        "parentName": "قصيبة سوسة",
+        "contextAliases": [
+          "Ksibet Sousse",
+          "Zaouia Ksibet Thrayet",
+          "Zaouiet Ksibet Thrayet",
+          "الزاوية قصيبة الثريات",
+          "قصيبة سوسة"
+        ],
+        "governorateId": 348,
+        "lat": 35.7696159,
+        "lng": 10.6245659,
+        "delegationId": 443,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1544651749"
+      },
+      {
+        "id": "osm:node:1567848345",
+        "sourceId": "osm",
+        "name": "حي الرياض",
+        "aliases": [
+          "Cité Riadh",
+          "Hay Riadh",
+          "Cité Erriadh"
+        ],
+        "kind": "suburb",
+        "parentName": "العهد الجديد",
+        "contextAliases": [
+          "Délégation Sousse Erriadh",
+          "El Ahd El Jadid",
+          "Sousse Riadh",
+          "العهد الجديد",
+          "معتمدية سوسة الرياض"
+        ],
+        "governorateId": 348,
+        "lat": 35.804617,
+        "lng": 10.6050818,
+        "delegationId": 443,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1567848345"
+      },
+      {
+        "id": "osm:node:1567848386",
+        "sourceId": "osm",
+        "name": "حي الزهور",
+        "aliases": [
+          "Cité Ezzohour",
+          "Hay Ezzohour"
+        ],
+        "kind": "suburb",
+        "parentName": "الزهور",
+        "contextAliases": [
+          "Délégation Sousse Erriadh",
+          "Ezzouhour",
+          "Sousse Riadh",
+          "الزهور",
+          "معتمدية سوسة الرياض"
+        ],
+        "governorateId": 348,
+        "lat": 35.793814,
+        "lng": 10.5845431,
+        "delegationId": 443,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1567848386"
+      }
+    ],
+    "originalBasePickerId": "delegation:443",
+    "hypotheticalReassignmentComputed": false,
+    "qualification": "These14 rows currently select443; they are not claimed to be the full or exact affected set of a coordinate correction. No prior443 coordinate-change scenario was available, and the broad numeric audit was not rerun."
+  },
+  "failedOrLimitedAcquisition": {
+    "pythonMinistryRequest": "Certificate trust-store failure, later resolved through validated OS downloader",
+    "municipalityHomepage": "Connection timeout; no municipal page evidence claimed",
+    "webAtlasOpen": "Official French atlas exceeded browser PDF size limit; no atlas geometry or claim was imported"
+  },
+  "inputPins": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\kalaa-sghira-443-review\\osm-node-1495587105.json": "81af96007b5cdcdd4abacbf0e0ab3ccc0ae1dda7d3da02df4917dddfeff8e932",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": "34135e143e509842fc5673d290fbc6571c334bc26739eb2c03a17e5c6ac73d17",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\kalaa-sghira-443-review\\social-local-unit.html": "bc67ec4f968c43d7877d07075a5f0e16c90c7c97b87be7e2e1bf62899683ca94",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\TN-geonames.zip": "0bf00a026ba0772c64f95e2893d52f7b58d40846653db1b996386bae6f128fae",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\kalaa-sghira-443-review\\retrieval-manifest.json": "d254d5455d815f2dd8d3e4be4379ac4f0a0e811349159411533adf6f49f1a5b8",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\prayer-source-mapping-audit.json": "5689766ce5ec072c3bdca377c226a401ecaec2f677ff759524d10bd29df39fd4"
+  }
+}

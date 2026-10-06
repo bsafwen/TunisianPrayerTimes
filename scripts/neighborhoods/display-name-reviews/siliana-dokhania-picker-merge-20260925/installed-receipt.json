@@ -1,0 +1,190 @@
+{
+  "status": "installed_dokhania_residential_picker_merge",
+  "installedAtUtc": "2026-09-25T00:05:08.665807+00:00",
+  "beforeSha256": {
+    "neighborhoods.json": "fb5ac069d93d57ffb0d3d9c286a7460e4b51417a18962568ea71c178a40ff1de",
+    "neighborhoods.bin": "a8745844d40d2314c3cd14bb4ca295593d1263ad84c13da8e521dc361211e45b",
+    "locality-display-names.json": "e4637d42ce9deb04c2407ca5477c13647fd09bda5984faa8203a4cfbfa14f834"
+  },
+  "afterSha256": {
+    "neighborhoods.json": "e3ff4c5543b023b8846d61dcf3031b0e4504598b9227a02a50a441ca4d8339e4",
+    "neighborhoods.bin": "a8745844d40d2314c3cd14bb4ca295593d1263ad84c13da8e521dc361211e45b",
+    "locality-display-names.json": "e4637d42ce9deb04c2407ca5477c13647fd09bda5984faa8203a4cfbfa14f834"
+  },
+  "identityProofSha256": "072d163145a821b63ca8d72e03e6938975899d9ae1fe1933671c67a607ea00ce",
+  "featureId": "osm:way:184043911",
+  "fieldChanged": "pickerGroupId",
+  "beforeValue": "osm:way:184043911",
+  "afterValue": "osm:relation:7126320",
+  "displayAliasAdded": false,
+  "binaryGeometryChanged": false,
+  "featureOrderUnchanged": true,
+  "expectedQueryPickerRows": [
+    "osm:relation:7126320",
+    "osm:node:7867290340"
+  ],
+  "identityProof": {
+    "change": {
+      "featureId": "osm:way:184043911",
+      "field": "pickerGroupId",
+      "before": "osm:way:184043911",
+      "after": "osm:relation:7126320"
+    },
+    "canonicalPickerRow": "osm:relation:7126320",
+    "mergedPickerMembers": [
+      "osm:relation:7126320",
+      "osm:way:184043911"
+    ],
+    "mergedGroupSearchContains": "الدخانية",
+    "searchSource": "The residential member retains its source name; groupPickerLocalities concatenates member searchText into the canonical sector row.",
+    "distinctHamlet": {
+      "featureId": "osm:node:7867290340",
+      "name": "دوار الدخانية",
+      "pickerGroupId": "osm:node:7867290340",
+      "hasBoundary": false,
+      "searchAlsoMatchesThisDistinctRow": true
+    },
+    "exactAliasCandidatesBeforeGrouping": [
+      "osm:way:184043911"
+    ],
+    "directSearchCandidateFeatureIdsBeforeGrouping": [
+      "osm:node:7867290340",
+      "osm:way:184043911"
+    ],
+    "resultingPickerRowIdsForQuery": [
+      "osm:node:7867290340",
+      "osm:relation:7126320"
+    ],
+    "sectorIdentityBefore": {
+      "id": "osm:relation:7126320",
+      "sourceId": "osm",
+      "name": "دخانية",
+      "aliases": [
+        "Dokhania"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الكريب",
+      "contextAliases": [
+        "Délégation El Krib",
+        "El Krib",
+        "معتمدية الكريب"
+      ],
+      "governorateId": 344,
+      "lat": 36.338738,
+      "lng": 9.219186,
+      "delegationId": 421,
+      "hasBoundary": true,
+      "bbox": [
+        9.134871,
+        36.291825,
+        9.270074,
+        36.384412
+      ],
+      "areaKm2": 64.43455795861662,
+      "offset": 1545232,
+      "length": 1884,
+      "pickerGroupId": "osm:relation:7126320"
+    },
+    "sectorIdentityAfter": {
+      "id": "osm:relation:7126320",
+      "sourceId": "osm",
+      "name": "دخانية",
+      "aliases": [
+        "Dokhania"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الكريب",
+      "contextAliases": [
+        "Délégation El Krib",
+        "El Krib",
+        "معتمدية الكريب"
+      ],
+      "governorateId": 344,
+      "lat": 36.338738,
+      "lng": 9.219186,
+      "delegationId": 421,
+      "hasBoundary": true,
+      "bbox": [
+        9.134871,
+        36.291825,
+        9.270074,
+        36.384412
+      ],
+      "areaKm2": 64.43455795861662,
+      "offset": 1545232,
+      "length": 1884,
+      "pickerGroupId": "osm:relation:7126320"
+    },
+    "residentialIdentityBefore": {
+      "id": "osm:way:184043911",
+      "sourceId": "osm",
+      "name": "الدخانية",
+      "aliases": [
+        "Doukhania"
+      ],
+      "kind": "residential",
+      "parentName": "دخانية",
+      "contextAliases": [
+        "Dokhania",
+        "Délégation El Krib",
+        "El Krib",
+        "دخانية",
+        "معتمدية الكريب"
+      ],
+      "governorateId": 344,
+      "lat": 36.349248,
+      "lng": 9.228128,
+      "delegationId": 421,
+      "hasBoundary": true,
+      "bbox": [
+        9.224977,
+        36.34617,
+        9.231133,
+        36.352005
+      ],
+      "areaKm2": 0.18597401178266976,
+      "offset": 5385788,
+      "length": 124,
+      "pickerGroupId": "osm:way:184043911"
+    },
+    "residentialIdentityAfter": {
+      "id": "osm:way:184043911",
+      "sourceId": "osm",
+      "name": "الدخانية",
+      "aliases": [
+        "Doukhania"
+      ],
+      "kind": "residential",
+      "parentName": "دخانية",
+      "contextAliases": [
+        "Dokhania",
+        "Délégation El Krib",
+        "El Krib",
+        "دخانية",
+        "معتمدية الكريب"
+      ],
+      "governorateId": 344,
+      "lat": 36.349248,
+      "lng": 9.228128,
+      "delegationId": 421,
+      "hasBoundary": true,
+      "bbox": [
+        9.224977,
+        36.34617,
+        9.231133,
+        36.352005
+      ],
+      "areaKm2": 0.18597401178266976,
+      "offset": 5385788,
+      "length": 124,
+      "pickerGroupId": "osm:relation:7126320"
+    },
+    "hamletIdentityUnchanged": true,
+    "featureCount": 3474,
+    "featureOrderSha256": "a1ef1eb6ddd9ccba31fe5764298127da446f45f4ca06af46c36311a27742ed42",
+    "featureOrderUnchanged": true,
+    "sectorContainsResidentialByBbox": true,
+    "geometryAreaAndPackedOffsetsUnchanged": true,
+    "aliasAddedToDisplayOverride": false
+  }
+}

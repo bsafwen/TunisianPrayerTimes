@@ -1,0 +1,282 @@
+{
+  "status": "ACCEPTED_OFFICIAL2023_EXTRACTION_FOR_EXPLICIT_REPLACEMENT",
+  "exportPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\identity-review-isie2023-sectors.geojson",
+  "exportSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+  "featureCount": 10,
+  "records": [
+    {
+      "key": "ksar-ayed",
+      "id": "osm:relation:7110676",
+      "nameAr": "عياد",
+      "nameFr": "Ayed",
+      "officialCode": "326151",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D9%82%D8%B5%D8%B1%20%D9%87%D9%84%D8%A7%D9%84/%D8%B9%D9%8A%D8%A7%D8%AF.pdf",
+      "sourcePdfSha256": "ca6d68f5c0106728c4377d1311c5401c562cb6c6eed297c193709e110edd3b89",
+      "drawingIndex": 311,
+      "iou": 0.8666376025235967,
+      "officialCoveredByOsm": 0.985666708339162,
+      "osmCoveredByOfficial": 0.8776987158441979,
+      "hausdorffMeters": 1267.452927474033,
+      "controlResidualMeters": 0.3139974608762045,
+      "areaKm2": 4.347621543509781,
+      "qualification": "The official red Ayed label is inside the complete ring. The map places Soua1 southwest and the blue Ksar Hellal boundary to the north/east; source326151 is the overwhelmingly matching footprint. Correct city-name primary to Ayed; retain code.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "ksar-bouzouita",
+      "id": "osm:relation:7110673",
+      "nameAr": "بوزويتة",
+      "nameFr": "Bouzouita",
+      "officialCode": "326153",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D9%82%D8%B5%D8%B1%20%D9%87%D9%84%D8%A7%D9%84/%D8%A8%D9%88%D8%B2%D9%88%D9%8A%D8%AA%D8%A9.pdf",
+      "sourcePdfSha256": "56cbd21deeaa6ef4b2dcf3e1a001c97325e9e5f34ab6401f432da2028348f1be",
+      "drawingIndex": 471,
+      "iou": 0.18470483751942068,
+      "officialCoveredByOsm": 0.7961762679346954,
+      "osmCoveredByOfficial": 0.1938720875776254,
+      "hausdorffMeters": 2893.3244960424945,
+      "controlResidualMeters": 0.04241530133972101,
+      "areaKm2": 1.5529517011609164,
+      "qualification": "The complete official Bouzouita ring sits south of Soua1, east of Soua2 and west/north of the blue Moknine boundary. Source326153 covers a much larger area; only19.39% of that source is covered by official Bouzouita. Replace the footprint and label together; a label-only fix would mislabel the excess area.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "khmouda-north",
+      "id": "osm:relation:7164965",
+      "nameAr": "خمودة الشمالية",
+      "nameFr": "Khmouda nord",
+      "officialCode": "426153",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%82%D8%B5%D8%B1%D9%8A%D9%86/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9/%D8%AE%D9%85%D9%88%D8%AF%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9.pdf",
+      "sourcePdfSha256": "c3677035b8ab6ab4e9b6c5a79eb000c4918a5ce29e58b63a3ba9ba34454167ef",
+      "drawingIndex": 393,
+      "iou": 0.8810402449509249,
+      "officialCoveredByOsm": 0.9185302021448132,
+      "osmCoveredByOfficial": 0.9557249870093898,
+      "hausdorffMeters": 1453.8235004755222,
+      "controlResidualMeters": 0.15345999942144606,
+      "areaKm2": 53.33474808280141,
+      "qualification": "The official north label and legend identify the complete N17-centred ring southwest of the official south sector. The source carrying426153 matches this ring, despite being labelled south in OSM. The official names are not inferred from relative compass position. Correct the source name, retain code.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "khmouda-south",
+      "id": "osm:relation:7164980",
+      "nameAr": "خمودة الجنوبية",
+      "nameFr": "Khmouda sud",
+      "officialCode": "426154",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%82%D8%B5%D8%B1%D9%8A%D9%86/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9/%D8%AE%D9%85%D9%88%D8%AF%D8%A9%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+      "sourcePdfSha256": "339e160b270d0d9d9534ea4a6846be05bc3b2f80ef6eae9dd31f10cfdd17d246",
+      "drawingIndex": 323,
+      "iou": 0.7805433640178505,
+      "officialCoveredByOsm": 0.9138027510817124,
+      "osmCoveredByOfficial": 0.8425801366661482,
+      "hausdorffMeters": 2850.9316664816442,
+      "controlResidualMeters": 0.08801858616819998,
+      "areaKm2": 49.65154436699045,
+      "qualification": "The official south label is inside the complete sector east/northeast of the town, including Benana school context and bounded by Thala/El Ayoun/Sbeitla boundaries. Source426154 matches this shape but is labelled north. Correct the source name, retain code.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "beni-khalled-north",
+      "id": "osm:relation:7102675",
+      "nameAr": "بني خلاد الجوفية",
+      "nameFr": "Beni khalled nord",
+      "officialCode": "156351",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "sourcePdfSha256": "affb1499274fab446db642d46a1549ea3e6e74391a39ee4362d82b4e21a7eec9",
+      "drawingIndex": 381,
+      "iou": 0.9223074330376011,
+      "officialCoveredByOsm": 0.9485718731967938,
+      "osmCoveredByOfficial": 0.9708541850332072,
+      "hausdorffMeters": 415.84533940088136,
+      "controlResidualMeters": 0.2507855059200035,
+      "areaKm2": 6.871571389000498,
+      "qualification": "Official الجوفية lies west of the eastern sector and extends through the town along the mapped roads, with Zaouiet Jedidi southwest. Its source156351 footprint matches closely. Northern/الشمالية is a compatible variant; use the official primary without confusing it with156352.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "beni-khalled-south",
+      "id": "osm:relation:7102674",
+      "nameAr": "بني خلاد القبلية",
+      "nameFr": "Beni khalled sud (toumi)",
+      "officialCode": "156352",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF%20%D8%A7%D9%84%D9%82%D8%A8%D9%84%D9%8A%D8%A9.pdf",
+      "sourcePdfSha256": "8d89c60f8e6461ea28b36e0c19c51667665d777d149297294aecc511fc7f0825",
+      "drawingIndex": 533,
+      "iou": 0.5464969880735707,
+      "officialCoveredByOsm": 0.5869803778551854,
+      "osmCoveredByOfficial": 0.8879403399599771,
+      "hausdorffMeters": 2847.481810002436,
+      "controlResidualMeters": 0.14478279234759553,
+      "areaKm2": 23.019747259723346,
+      "qualification": "Official القبلية is the full southern farming/town sector around Sidi Toumi, south of the eastern sector and north of Bouargoub. Source156352 strongly overlaps this region and has French Sud, but incorrect Arabic الجوفية. Correct Arabic to القبلية and retain code; the source boundary itself is materially smaller/different.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "taamir-ariana",
+      "id": "osm:relation:7115053",
+      "nameAr": "التعمير",
+      "nameFr": "Etaamir",
+      "officialCode": "125156",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9/%D8%A7%D9%84%D8%AA%D8%B9%D9%85%D9%8A%D8%B1.pdf",
+      "sourcePdfSha256": "79c24d6ce54a7485d865fbbc229bf56422334cc6922958ad9749332f75538823",
+      "drawingIndex": 489,
+      "iou": 0.7879247153317469,
+      "officialCoveredByOsm": 0.9483175146399282,
+      "osmCoveredByOfficial": 0.8232772414742274,
+      "hausdorffMeters": 356.95281721077964,
+      "controlResidualMeters": 0.15294903866204593,
+      "areaKm2": 1.0196418795688067,
+      "qualification": "The official generic التعمير label identifies the complete Ariana Ville ring west of the N8/blue Soukra boundary. The source125156 matches, while the distinct Soukra125257 is elsewhere. Correct primary to التعمير; numeric2/II is unsupported for this official sector.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "taamir-soukra",
+      "id": "osm:relation:7114904",
+      "nameAr": "التعمير الخامس",
+      "nameFr": "Etaamir kamesse",
+      "officialCode": "125257",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%B3%D9%83%D8%B1%D8%A9/%D8%A7%D9%84%D8%AA%D8%B9%D9%85%D9%8A%D8%B1%20%D8%A7%D9%84%D8%AE%D8%A7%D9%85%D8%B3.pdf",
+      "sourcePdfSha256": "ab87d2a83df8c79a6bbf64aec89f9a8420520c7260dfff733a41ece4be8b6346",
+      "drawingIndex": 251,
+      "iou": 0.9657760618599196,
+      "officialCoveredByOsm": 0.9911921350813798,
+      "osmCoveredByOfficial": 0.9741361119194537,
+      "hausdorffMeters": 38.572534462556625,
+      "controlResidualMeters": 0.04773945948139555,
+      "areaKm2": 2.0043757073768225,
+      "qualification": "The official map title and red التعمير الخامس text identify the single complete target ring in Soukra. The red text straddles its eastern boundary, so its text-centre is outside: identity is manually established from the map, label-box intersection, unique full ring and96.58% source overlap, not falsely claimed centre containment. Correct primary to التعمير الخامس; retain125257.",
+      "labelCenterContainmentPassed": false,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "kerkennah-frej",
+      "id": "osm:relation:7147636",
+      "nameAr": "سيدي فرج",
+      "nameFr": "Sidi frej",
+      "officialCode": "346653",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B5%D9%81%D8%A7%D9%82%D8%B3%201/%D9%82%D8%B1%D9%82%D9%86%D8%A9/%D8%B3%D9%8A%D8%AF%D9%8A%20%D9%81%D8%B1%D8%AC%20-%20%28%D9%82%D8%B1%D9%82%D9%86%D8%A9%29.pdf",
+      "sourcePdfSha256": "a1d6e86d61db5ce95fb2368f19cdf3d3018d9b4de70de7b23d5fc9cfca90d04a",
+      "drawingIndex": 279,
+      "iou": 0.8216632382905105,
+      "officialCoveredByOsm": 0.9876007945146014,
+      "osmCoveredByOfficial": 0.830227768361304,
+      "hausdorffMeters": 1293.9459735242422,
+      "controlResidualMeters": 0.09086899313416706,
+      "areaKm2": 7.716168596490929,
+      "qualification": "The official Sidi Frej ring includes the western Sidi Fredj coast and lies west/south of the separately labelled Ouled Kacem sector. It matches source346653, which incorrectly says Ouled Kacem. Correct names, retain code; some source boundary differences remain.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "kerkennah-kacem",
+      "id": "osm:relation:7147638",
+      "nameAr": "أولاد قاسم",
+      "nameFr": "Ouled kacem",
+      "officialCode": "346660",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B5%D9%81%D8%A7%D9%82%D8%B3%201/%D9%82%D8%B1%D9%82%D9%86%D8%A9/%D8%A3%D9%88%D9%84%D8%A7%D8%AF%20%D9%82%D8%A7%D8%B3%D9%85.pdf",
+      "sourcePdfSha256": "285c64d3457eceb76940b7e1bf63a82f6645380cc82b13ea1a0a6936461cf111",
+      "drawingIndex": 166,
+      "iou": 0.5894956302735207,
+      "officialCoveredByOsm": 0.8818879108851416,
+      "osmCoveredByOfficial": 0.640026845494215,
+      "hausdorffMeters": 1672.0295471089535,
+      "controlResidualMeters": 0.08185730445565308,
+      "areaKm2": 5.63573851417152,
+      "qualification": "Official Ouled Kacem is the complete eastern/coastal ring below Ramla and east of the Sidi Frej boundary. Source346660 matches that area but incorrectly says Sidi Fraj. Correct names, retain code; the source is substantially larger than the official footprint.",
+      "labelCenterContainmentPassed": true,
+      "countryFullyContains": true,
+      "activeClipOutsideAreaPoints2": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "crossMapSameParentComparisons": [
+    {
+      "ids": [
+        "osm:relation:7110676",
+        "osm:relation:7110673"
+      ],
+      "positiveOverlapMeters2": 592.0559745914454,
+      "distanceMeters": 0.0,
+      "relativeOverlapSmaller": 0.00038124558165524556
+    },
+    {
+      "ids": [
+        "osm:relation:7164965",
+        "osm:relation:7164980"
+      ],
+      "positiveOverlapMeters2": 11014.614264484038,
+      "distanceMeters": 0.0,
+      "relativeOverlapSmaller": 0.00022183830140451335
+    },
+    {
+      "ids": [
+        "osm:relation:7102675",
+        "osm:relation:7102674"
+      ],
+      "positiveOverlapMeters2": 1448.7611093017526,
+      "distanceMeters": 0.0,
+      "relativeOverlapSmaller": 0.00021083403304534206
+    },
+    {
+      "ids": [
+        "osm:relation:7147636",
+        "osm:relation:7147638"
+      ],
+      "positiveOverlapMeters2": 942.408975156403,
+      "distanceMeters": 0.0,
+      "relativeOverlapSmaller": 0.00016722013854734253
+    }
+  ],
+  "limitations": [
+    "Official2023 map geometry is not certified for changes after publication.",
+    "Five-decimal-degree geospatial controls impose finite georeferencing precision; residual is fit consistency, not external survey accuracy.",
+    "Cross-map boundaries may show small gaps or overlaps from independently rounded controls. Do not invent snapped borders to conceal them.",
+    "Several source polygons differ materially; the evidence supports replacing footprints along with names, not merely relabeling excess land."
+  ]
+}

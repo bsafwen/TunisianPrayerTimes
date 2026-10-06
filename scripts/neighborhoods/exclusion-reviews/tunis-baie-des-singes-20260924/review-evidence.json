@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "decision": "retire_baie_des_singes_as_unsupported_separate_selectable_locality",
+  "reason": "The 0.0074 km² object is a Latin-only OSM landuse=residential polygon, with no Arabic name, place=neighbourhood tag, or official_name tag. It has no INS sector identity; its administrative parent is official sector 117151 المرسى الشاطئ. The current installed official-sector geometry overlaps about 98.68% of the target polygon but does not fully contain it. No distinct locality identity or defensible Arabic primary is supported by reviewed sources.",
+  "uncertainty": "This review establishes the pinned OSM tags/geometry and spatial overlap only; it does not establish what is on the parcel or a legal neighborhood boundary. The older pinned OSM parent-sector geometry covered the polygon fully, while the current installed ISIE boundary covers 98.6776%; do not claim full containment. A locality-specific official or municipal source could change this decision.",
+  "inputAssetSha256": {
+    "neighborhoodsJson": "9940982ec572277c4940c03490c1a523c77cfad9f074138691869b1cc6f3a051",
+    "neighborhoodsBin": "44858cfc2ac13adb09200b94b36d3b01882fea5f830c3031847e5adfd99ba204"
+  },
+  "priorTriage": {
+    "file": "work/interior-imada-triage-20260924/tunis-latin-name-triage-20260924.json",
+    "sha256": "8d08610c2127a3d2d8d103a5dd79f0213e735433e0e88f3f1aa82a051fe00439",
+    "embeddedExtractFile": "prior-triage-extract.json",
+    "embeddedExtractSha256": "fc7d8f35179007e994b574cc0c8df80c8cdb82bb17f26e71301f3ef36d3bbbef"
+  },
+  "osmSource": {
+    "snapshot": "tunisia-260905.osm.pbf",
+    "pbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "extractedAreasSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "embeddedSnapshotFile": "osm-tag-snapshot.json",
+    "embeddedSnapshotSha256": "bd7b30482d40b885c40ecb95d35dd0ee17e30bbfcf7e268ee86c824ae40d8fdb",
+    "targetTags": {
+      "landuse": "residential",
+      "name": "Baie des Singes"
+    },
+    "targetTagsSha256": "4a478cdba6f158317e8c285e97dd4c8aa7e8f4308db13732afde8a6c7dae9c63",
+    "targetSourceGeometrySha256": "01ba945e15f03e56287d431c9b69770f20b2f6eb59c1d5dbd2f6c75d553b40fe",
+    "targetSourceRecordSha256": "cd4368e4cf296d94a58f00b991254fee4d86567229be96e83db5b46681968b23"
+  },
+  "baselineTarget": {
+    "id": "osm:way:128232827",
+    "expectedCurrent": {
+      "sourceId": "osm",
+      "name": "Baie des Singes",
+      "aliases": [],
+      "kind": "residential",
+      "parentName": "المرسى الشاطئ",
+      "governorateId": 342,
+      "delegationId": 386,
+      "hasBoundary": true,
+      "pickerGroupId": "osm:way:128232827"
+    },
+    "expectedCurrentSha256": "e0469b408439a19e55dd735a74967c22bb8f1e55b3984839f2ddc18cd4e8afe3",
+    "catalogMetadataWithoutOffsetsSha256": "4032ca7c312fb5a2614e072b8916a8e696f421f96a3cad6e57fe836192ea2b18",
+    "packedGeometrySha256": "c95295492ee8d7f80b417573f1cd1069233079a633e78728d339bac81ae40ff3",
+    "packedGeometryBytes": 76,
+    "appAreaKm2": 0.007401809356934251,
+    "projectedPackedAreaKm2": 0.007384365844637261
+  },
+  "officialParent": {
+    "id": "osm:relation:7062337",
+    "officialCode": "117151",
+    "nameArabic": "المرسى الشاطئ",
+    "administrativeDelegationCode": "1171",
+    "administrativeDelegationArabic": "المرسى",
+    "currentCatalogSourceId": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+    "sourceTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "المرسى الشاطئ",
+      "name:ar": "المرسى الشاطئ",
+      "name:fr": "La Marsa Plage",
+      "ref:tn:codegeo": "117151"
+    },
+    "sourceTagsSha256": "918e5d124000e530e2049a49282fbe117c7dddc883906aaf974c539777e2adcc",
+    "currentSectorPackedGeometrySha256": "eef1d9ed5d4ab179bf1b6fd24ae5a1851c7565e8c7800b1a13b793781b93e662"
+  },
+  "geometryReview": {
+    "projection": "EPSG:32632",
+    "currentInstalledTargetIntersectionKm2": 0.007286715449761512,
+    "currentInstalledTargetOverlapPercent": 98.67760621656272,
+    "currentInstalledParentCoversTarget": false,
+    "pinnedOldOsmTargetAreaKm2": 0.007382839861841874,
+    "pinnedOldOsmParentIntersectionKm2": 0.007382839861841875,
+    "pinnedOldOsmTargetOverlapPercent": 100.00000000000003,
+    "pinnedOldOsmParentCoversTarget": true
+  },
+  "retiredLocalityIdsPreserved": [
+    "osm:way:825272931",
+    "osm:way:825272932",
+    "osm:way:825505201"
+  ]
+}

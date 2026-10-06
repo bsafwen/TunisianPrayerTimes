@@ -1,0 +1,345 @@
+# Locality automation
+
+## Reusing completed independent boundary reviews
+
+`run_sealed_boundary_queue.py --manifest MANIFEST` executes a finite released
+queue through separate guarded preflight and unchanged stock recorder phases.
+The manifest pins the helpers, original independent reports, exact live assets,
+owner, iteration and UTC window. Run from the declared existing producer cwd.
+`--dry-run` checks the finite queue without launching phases. Actual execution
+holds one exclusive queue lock, preserves each fresh phase receipt, verifies
+both live ledger links and unchanged assets, and stops at the first failure.
+It does not interpret new sources or replace any source/QA acceptance gate.
+Partially produced outputs require explicit reconciliation before a new run.
+
+`extend_accepted_body_registry.py --manifest MANIFEST --output NEW_FILE` preserves
+the previous heterogeneous bindings verbatim and joins additional actual full
+NoOp receipts, source proofs and current asset bytes. Its output is reference
+lineage only: historical behavioral scopes and dates remain unchanged, and no
+fresh GPS behavior or geographic credit is claimed.
+
+`prepare_boundary_map_audit.py --manifest MANIFEST` prepares a finite map audit
+in an existing empty output directory. It extracts the exact map JavaScript
+and reuses the established offline UI harness. Run the resulting `verify-map.cjs`
+with Node as its own guarded leaf, then run
+`verify_boundary_publication.py --manifest MANIFEST --output NEW_FILE` as another
+guarded leaf. The final verifier checks report code/count unions, retained
+acceptance history, every current packed map body, NEW visibility, actual
+GeoJSON/KML exports, source qualifications and exact adopted ring equivalence.
+Each manifest explicitly pins its baseline, publication, map, UI source,
+harness and independent coordinate primitives. No private Google configuration
+or network is accessed. These checks do not assert browser authentication or
+map rendering. Use the existing per-phase UTC guard and map time reserve.
+
+These programs replace repeated mechanical orchestration and per-window script
+generation. They add no credit by themselves; genuine qualified acceptance
+remains the measure of progress.
+
+`plan_cached_boundary_families.py --manifest MANIFEST --output NEW_FILE --limit 12`
+joins pinned Ministry/INS/current/cached-OSM inventories by literal names and
+codes, excludes conflicts and previously validated places, and ranks neighboring
+delegation families. Positive documented source presence permits preparation;
+unchecked ISIE/Google searches remain unknown. It creates no source approval.
+
+`prepare_cached_osm_sources.py --manifest MANIFEST` downloads the finite released
+relation pool through explicit HTTP/HTTPS proxy `127.0.0.1:8888`, preserves every
+original response and failure, and applies pinned existing literal-native and
+production-packing routines. It records literal assembly separately from the
+production representation and current bytes. These are root-authored source
+preparations requiring disjoint review, with no scope/GPS/acceptance credit.
+
+`packed_decode_cache.py` provides bounded serial call-scoped reuse of identical
+immutable decoded slices. The complete decoder input bytes, identifier and
+scale form the key. Bounds, changed bytes, current metadata, physical reads,
+hashes, source/identity/scope guards and GPS policies still run. Original
+functions are restored on exit. It caches no QA or acceptance result.
+`benchmark_boundary_reader.py` compares the entire stock reader output;
+`benchmark_report_publication.py` runs the complete original publisher into
+isolated output directories and compares every generated report/map/HTML byte
+at a fixed fixture clock. Private Google configuration is never copied/read.
+
+`refresh_report_with_decode_reuse.py --manifest MANIFEST --receipt NEW_FILE`
+is an explicit opt-in sole-root publication wrapper retaining the original
+app's exclusive publication lock and fail-closed checks. Use it only with exact
+verified consumer/decoder/cache pins and the separate map UTC guard/time reserve.
+The original report app and reader remain unmodified.
+
+`packed_decode_cache_caf_v1.py` is a separate versioned CAF compatibility
+candidate. It keeps the complete original record body and adds exact reader
+pin checking/scoped decode reuse at its existing dynamic-loader boundary.
+`benchmark_caf_consumer.py` tests the full CAF/A4 tail on authentic isolated
+ledger copies, verifies both replacements/backups and unchanged live assets,
+and compares all output after narrowly declared fixture-path normalization.
+This candidate has no automatic live recorder activation.
+
+`record_with_decode_reuse.py` offers an explicit per-case recorder adapter with
+the standard recorder arguments, plus pinned `--manifest` and fresh
+`--cache-receipt`. It checks the exact active writer, per-case report/ledger
+paths, immutable helpers/assets, current intake UTC margin, and both actual
+ledger receipt links. It retains the complete standard CAF record tail. A
+future window must explicitly release each input; no generic batch or new
+source/QA acceptance is inferred from the adapter verification.
+
+`prepare_source_family_context.py --manifest MANIFEST --output NEW_FILE` joins
+literal nodes and member ways across a finite source-preparation family. It
+rejects changed shared elements, records common-way roles and projected raw
+pair areas, and leaves neighbor/scope/ownership acceptance unclaimed. Use these
+facts to focus the next disjoint review, including adjoining official sheets
+where label or boundary placement is ambiguous.
+
+`summarize_work_window.py --manifest MANIFEST --output NEW_FILE` computes
+qualified geographic/full-body/correction gains from pinned baseline and
+current publications, observes guarded child spans, counts concurrent process
+time once, and summarizes complete-output counterbalanced benchmarks. It never
+credits source preparation or tooling, or infers model attention/user wait
+time from child receipts.
+
+## Offline review preparation
+
+### Artifact-first planning and source reconciliation
+
+`plan_source_review_actions.py --manifest MANIFEST --output NEW_FILE` verifies
+the current report epoch, filters already complete locations before reopening
+their source payloads, and records the actual source author. It supports the
+historical nested and flat source-index schemas without guessing paths. A
+root-authored preparation remains pending disjoint review; this planner cannot
+approve source facts, assign a reviewer or create an acceptance packet.
+
+`audit_source_face_reconciliation.py --manifest MANIFEST --output NEW_FILE
+--geojson NEW_FILE` compares the explicitly released source-only faces with
+current packed bodies and nearby source/current neighbors. Exact gain, loss,
+intersection and unique neighbor-covered area are diagnostics. Cross-sheet
+intersection does not prove official overlap. The helper checks pinned inputs,
+uses the current root/control release and never repairs or installs geometry.
+
+`render_source_reconciliation.py --manifest MANIFEST --output NEW_FILE` creates
+an offline comparison page with current/source/gain/loss layers and links to
+the original pages. `verify_source_reconciliation_ui.cjs HTML SHA256 PROOF` checks
+its coordinates and controls in an offline synthetic DOM. That check is not a
+browser rendering test. Browser policy must be respected; do not serve or open
+the page through another surface to work around a rejected preview.
+
+`plot_source_reconciliation.py --manifest MANIFEST --output NEW_PNG --proof
+NEW_JSON` renders the eight pinned diagnostic coordinate comparisons directly
+with a standard plotting library. This is a standalone scientific artifact,
+separate from HTML/browser content, with exact current/source gain/loss layers
+and pending qualifications. Review the saved PNG visually before sharing it.
+
+`append_phase_tasks.py --manifest MANIFEST --output NEW_FILE` batches activity
+events through the unchanged report app's append function and exclusive lock.
+It accepts only finite real successful guarded process receipts from the
+current window, keeps actual UTC spans and makes an exclusive before-events
+backup. Run the original locked publisher once afterwards with fresh live
+pins. Shared per-location process clocks are not individual labor measurements.
+No source/acceptance ledger or app asset is changed by the activity batch.
+
+`verify_retained_activity_publication.py --manifest MANIFEST --output NEW_FILE`
+checks a zero-addition refresh against its pinned baseline. All accepted history
+and map data remain exact; only the map publication clock may change. New graph
+hours must remain flat, and new textual unverified claims must belong to the
+finite activity batch with zero credit. Every published task retains its actual
+start/end, attribution, status and result. This is separate from packed-coordinate
+and export checks, and does not assert browser rendering.
+
+`oracle_clearance_reuse.py` and `benchmark_oracle_clearance_reuse.py` are
+**inactive experiments**. Their exact finite oracle outputs matched, but the
+counterbalanced window-016 trial gained only 0.4%, within run variation. They
+were rejected for live use. The benchmark is not a full CAF/A4 or GPS review.
+
+The current source/GPS review helpers can reuse five focused commands without
+launching validation or changing assets. Run these from the repository root
+with the configured Python runtime:
+
+- `python -m scripts.locality_automation.review_preflight`: check an explicitly
+  chosen frozen source package and its declared pins. Required arguments are
+  `--package`, `--base`, one or more `--allow-root`, and a fresh `--output`.
+  Use `--reference-root PREFIX=DIR` for a known legacy namespace such as
+  `official`; there is no fallback path guessing or recursive opening of
+  referenced JSON. Optional `--live-json` and `--live-bin` must appear together;
+  add `--live-names` when the bundle pins display names. `--expected-code` can
+  repeat to bind the exact assigned cluster. Missing packages and holds return
+  exit code 2. A bookkeeping PASS adds zero geographic credit.
+- `python -m scripts.locality_automation.review_checkpoint`: inspect current
+  `--repo`, `--run`, `--handoff`, and `--report` plus optional repeated
+  `--pending-package` paths. Explicit `--validation-state paused|active` is the
+  caller's goal state, not a process-liveness probe. Save to a fresh `--output`.
+  The command verifies current receipt/report file versions and records the
+  existing scoped/full counts without accepting or refreshing anything.
+- `python -m scripts.locality_automation.review_jobs --spec SPEC --output PLAN`:
+  prepare a write-once plan for the existing engine. The spec contains
+  `schemaVersion: 1`, `governorate`, `inputScope: source-only|live-assets`, and
+  `jobs`. Each offline job explicitly declares `id`, `kind`, `argv`, absolute
+  `cwd`, `inputs`, `outputs`, `deps`, `resources`, and
+  `executableDependencies` file/SHA256 pins. Imported results require actual
+  `importedOutputs` pins. Declare all imported/local program dependencies;
+  this adapter does not infer import closure or inspect result status strings.
+- `python -m scripts.locality_automation.review_candidate_queue`: filter an
+  explicitly selected `--triage` cache against `--report`, `--live-json` and
+  `--live-bin` immediately before dispatch. Repeat `--assigned-code` for active
+  cases and save to a fresh `--output`. Already complete source codes are
+  excluded even if old triage recommends them. Unchanged packed slices remain
+  warm leads requiring fresh source/identity/GPS review; compact metadata's
+  absent official codes are disclosed rather than invented. Partial geographic
+  validations can still need complete-source review. Report/receipt/file drift
+  returns HOLD with no queue. Source alternatives are retained, grouped by full
+  path and parent, and no ownership or acceptance is inferred.
+- `python -m scripts.locality_automation.scope_references`: create an immutable
+  canonical companion for an explicitly pinned complete scope before native/GPS
+  review. Supply `--scope`, `--scope-sha`, `--base`, repeated `--allow-root`,
+  explicit `--reference-root PREFIX=DIR`, fresh `--output` and `--receipt`.
+  Optional `--bindings` plus `--bindings-sha` declares exact JSON-pointer,
+  original file/SHA and same-hash target bindings. Every inline explicit pin is
+  checked; referenced JSON files are not hydrated. Original facts, hashes,
+  geometry, styles, qualification and gates remain unchanged. Conflicts, stale
+  references and unequal hashes HOLD; no guessed search or historical-pin
+  demotion. Complete scope preflight and final independent QA both remain
+  required. Existing outputs reject before work, and failed publication does
+  not publish a canonical scope.
+
+Run source directory preparation from an existing repository/evidence parent.
+Do not use a new output directory as the command's `cwd` before creating it.
+The prepared job adapter validates existing cwd and declared outputs; the new
+scope companion validates complete explicit evidence references early. Neither
+tool creates geographic credit.
+
+Prepare later stages only after their input files have real hashes. Keep job
+input sets narrow, with source-only and current GPS dependencies distinct.
+Changed definitions require a new revision/job ID; `contentKey` is a prepared
+identity, not an automatically enabled GPS cache. Independent jobs use the
+existing dependency/resource scheduler. Execute prepared plans only through
+the pause-aware `run-plan` command with its existing workspace lock after
+validation has been resumed. Preparation never resumes the workspace, runs
+supplied commands or grants source/GPS acceptance. Keep the guarded root
+receipt/install helpers as the separate final step.
+
+## Review the completed automatic pass
+
+The full automatic pass has finished. Its recorded cases and issue lines are
+investigation inputs, not geographic certifications. The post-run reviewer
+builds an ordered queue for **one governorate at a time**, starting with Ben
+Arous. It groups explicitly linked boundary cases, puts current user problem
+reports first, and sends only concrete high-priority questions to GPT-6 Luna
+at **max** reasoning. Boundary links without source-supported diagnostics stay
+in the human queue: the first two Luna boundary reviews added no verified
+geographic checks. New review requests do not use DeepSeek.
+
+From the repository folder, double-click **Review locality reports with
+Luna.cmd**. It publishes the Ben Arous queue, reviews at most eight eligible
+units with up to three concurrent Luna workers, and prints the saved output
+paths. Repeating the command reuses content-addressed results; uncertain paid
+requests are not silently retried. To inspect the queue without making model
+requests, run:
+
+```text
+$taskRoot = 'C:\Users\barou\Documents\Codex\2026-09-06\the-android-app-app-currently-allows'
+& "$taskRoot\work\geo\venv\Scripts\python.exe" -B -X utf8 scripts\run_locality_review.py --config "$taskRoot\work\locality-automation-luna-resume.json" prepare
+```
+
+Run that PowerShell command from the Git repository. An explicit `--governorate "ولاية"`
+before `prepare` or `run` selects the next governorate. The generated JSON
+and HTML are in `work/locality-automation/review/`; focused advisory receipts
+are in its `advisories/` directory. The HTML links back to the existing manual
+locality tool and verified cached official PDFs and map thumbnails. It also
+flags exact duplicate picker labels using a read-only point-versus-polygon
+audit in `display-collisions-current.json`; that audit does not merge entries.
+Model findings never change the app catalog,
+award verification, or resolve a case by themselves. A human disposition
+applies only to its exact source fingerprint.
+
+## Original automatic-pass launcher (completed)
+
+From the repository folder, double-click **Run locality automation.cmd**.
+
+It configures itself on the first launch, resumes its own work queue, and processes the current governorate (Ben Arous). Leave its window open. It finishes when the finite automatic pass is recorded, including cases reported for later investigation. It opens the report when done.
+
+Send **work/locality-automation/report/run-summary.json** from the Codex task folder back to Codex. The companion **investigations.json** lists unresolved cases. All detailed evidence and logs remain on this computer.
+
+Double-click **Show locality report.cmd** to refresh the report without starting investigations. **Pause locality automation.cmd** stops new dispatches and lets running jobs finish. Starting Run again resumes saved work; failed or uncertain paid requests are not retried automatically.
+
+**Original delivery status:** the full-run program was written and statically
+checked before delivery because the user asked not to run it then. The user
+later ran the automatic pass to completion; the review process above handles
+its resulting reports. Keep the original reports and logs for audit.
+
+## What runs automatically
+
+- Read the latest accepted handoff pointers, preserve the existing scores, and select work within one governorate. New user problem reports take priority; explicit border dependencies are tracked separately.
+- Reuse existing map observations and official PDF caches. Collect missing public Maps observations across up to five connected, configured emulators, with one owner per device.
+- Download uniquely matched official source maps, extract polygon candidates, produce source-page images and overlays, and report ambiguous source matches without blocking other cases.
+- For a unique eligible polygon hypothesis, prepare diagnostic geometry, compare old/new coverage, overlaps and GPS witness points, measure overlap widths, check uniquely matched official centre assignments, and pack a diagnostic catalog using the existing generator routines.
+- Check Arabic display names, repeated aliases, duplicate candidates, residential-complex terms, coordinates, current monthly timetable availability, and nearest available prayer references.
+- Send bounded evidence packets to DeepSeek V4.1 Flash, retain its advisory findings, and cache responses. Uncertain identities and other issues go into a follow-up report. No model result alone becomes an accepted geographic claim.
+- Produce reports with distinct places processed, accepted checklist scores, unresolved issues, saved evidence links, task outcomes, and indicative model costs.
+- Install compatible validated packages from `work/locality-automation/ready-to-install`, with fingerprint preconditions, backups, an Android compilation, selectable-catalog refresh, conservative score invalidation, and rollback on failure. Installation runs after the automatic governorate pass. No further approval prompt is required.
+
+Ambiguous identities, competing rings, split-path repairs without a recorded decision, disputed geographic scope, unavailable sources, and incompatible input fingerprints are reported. Independent work continues. A program cannot establish 100% geographic reliability from label matching, polygon validity, or point containment.
+
+The saved 41-boundary proposal is retained as prior diagnostic work. It is **not** automatically relabeled as installation-ready. New per-case proposals compare against the installed catalog; joint reconciliation of competing proposals remains an explicit investigation item.
+
+## Requirements and spending
+
+The launcher uses the existing task-local Python environment, audited helpers, cached evidence, and Windows-encrypted DeepSeek credential. It does not contain API keys. Internet access is needed for new official downloads and model requests. Emulators are only needed for observations that are missing; if none are connected, their cases are reported and other work continues. Existing manual-review links require that server to be running; saved PDF/overlay packets open directly without it.
+
+DeepSeek uses `deepseek-flash` (V4.1 Flash), maximum reasoning, and the existing 393,216-token maximum output allowance. There is no artificial spending cap. Ordinary processing, caching, comparisons and reports run locally. Google API calls are disabled in this program.
+
+Illustrative **runtime** cost: 100 advisory requests producing 30,000–100,000 output tokens each would cost about **$1.80–$12 in output tokens**, plus input tokens. If all 100 responses reached the maximum output allowance, output alone could approach **$47.19 at peak pricing**. These are scenarios, not predictions or caps. Cached responses avoid new calls. Actual provider billing is authoritative. Rates checked September 22, 2026: <https://api-docs.deepseek.com/quick_start/pricing/>.
+
+No OpenAI model is called by default. Optional OpenAI-compatible fallbacks can be configured in `model.fallbacks`, with `name`, `kind: "openai_compatible"`, `baseUrl`, `model`, `apiKeyEnv`, and optional `reasoningEffort` / `timeoutSeconds`. Credentials stay in environment variables. Each configured provider gets at most one attempt for a packet; failures are recorded. Do not add providers unless their extra spending is intended.
+
+## Advanced commands
+
+The task folder is currently:
+
+`C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows`
+
+The first launcher run creates `work/locality-automation-config.json`. The CLI is `scripts/run_locality_automation.py`, executed using `work/geo/venv/Scripts/python.exe`.
+
+```text
+python scripts/run_locality_automation.py --config CONFIG report
+python scripts/run_locality_automation.py --config CONFIG pause
+python scripts/run_locality_automation.py --config CONFIG resume
+python scripts/run_locality_automation.py --config CONFIG run --once
+python scripts/run_locality_automation.py --config CONFIG run --all-governorates
+```
+
+`--all-governorates` continues one governorate at a time after each automatic pass, keeping unresolved cases for investigation. It can incur substantially more API usage than the default Ben Arous run. A completed automatic pass does not mark the geographic validation goal complete.
+
+### Resume the saved full run with GPT-6 Luna
+
+The task-local config can select `model.provider: "codex_cli"`, `model.name: "gpt-6-luna"`, and `model.reasoning: "max"`. This uses the signed-in Codex CLI in a read-only, ephemeral session for each new evidence packet; it does not require an OpenAI API key. Pause the running queue before changing the config. The completed case ledger is preserved. A partially finished DeepSeek batch receives a separate Luna revision, so a few unrecorded cases may receive a second advisory review. Paid/usage-uncertain requests are not silently retried.
+
+After the config is changed, resume with the commands above and use `run --all-governorates`. Luna usage consumes the signed-in Codex account's allowance. The report keeps the historical DeepSeek dollar estimate separate from Luna token counts; it does not infer a dollar cost for Codex usage. If the Codex backend becomes unavailable, new dispatches pause and the current batch remains unrecorded for review.
+
+For this saved task, double-click **Run remaining locality automation with Luna.cmd** in the repository folder. It uses `work/locality-automation-luna-resume.json` and continues from the paused Gabes governorate through the remaining governorates.
+
+`helper-plan` prepares a pinned plan for existing acquisition, extraction, exact-chain/retrace, append, impact, overlap-width, centre, matrix, diagnostic-stage, prayer, metric-publication and queue helpers. It does not execute it. `run-plan` executes such a plan after resume. Supply explicit result paths where a helper has several outputs. Configured exact-path repairs and metric publication require their existing evidence/review inputs; model advice is never converted into those inputs automatically.
+
+## Installation package contract
+
+The installation queue takes an exact manifest with `schemaVersion: 1`, `files`, and a pinned `validation` JSON. Every file entry supplies a pinned staged `source`, repository-relative `destination`, and `beforeSha256` (null only for a new file). The validation receipt must have `status: "READY_TO_INSTALL"`, a qualification, an exact matching list of `{sourceSha256,destination,beforeSha256}`, and empty `issues` / `unresolvedCaseIds` for the included changes. Unrelated unresolved localities do not prevent an independently validated package from installing.
+
+Only the locality assets and JSON/GeoJSON data under `scripts/neighborhoods` are permitted destinations. Model advice and `DIAGNOSTIC_NOT_INSTALLABLE` geometry outputs cannot enter this queue on their own. There is no automatic promotion of a proposal merely because it compiles.
+
+Backups and journals live under `work/locality-automation/transactions`. Conflicting external edits are reported rather than force-restored. Locks coordinate this program's runners; avoid editing the same catalog files during installation. A refreshed local snapshot invalidates affected checklist evidence; the existing manual-review server may need a later refresh, and its saved answers are preserved.
+
+## Durable outputs
+
+```text
+work/locality-automation/
+  control.json                  pause state
+  case-ledger.json               completed automatic passes, not certifications
+  batches/                      plans, process logs, source packets and comparisons
+  models/                       cached requests, attempt markers and advisory results
+  prayer-sources/                monthly source availability cache
+  ready-to-install/              validated packages only
+  install-receipts/              installation outcomes
+  transactions/                 backups and recovery journals
+  report/report.html            readable dashboard
+  report/run-summary.json       report to send back
+  report/investigations.json     unresolved issues
+  review/gov-*.json              ordered one-governorate review queues
+  review/gov-*.html              readable review queues and evidence links
+  review/advisories/             focused Luna advisory receipts
+```
+
+The program has no recurring scheduler and does not use Codex while running. Reports update after each batch. It does not commit, push, create releases, run Android tests, or publish data.

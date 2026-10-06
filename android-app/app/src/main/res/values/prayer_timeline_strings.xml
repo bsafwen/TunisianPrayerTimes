@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prayer_timeline_interval">صامت %1$s – %2$s</string>
+    <string name="prayer_timeline_exact_edit">تعديل الأوقات بدقة</string>
+    <string name="prayer_timeline_move_window">تحريك فترة الصمت</string>
+    <string name="prayer_timeline_start_handle">بداية الصمت: %1$s</string>
+    <string name="prayer_timeline_end_handle">نهاية الصمت: %1$s</string>
+    <string name="prayer_timeline_move_earlier">تحريك الفترة دقيقة إلى وقت أبكر</string>
+    <string name="prayer_timeline_move_later">تحريك الفترة دقيقة إلى وقت لاحق</string>
+    <string name="prayer_timeline_start_earlier">تقديم البداية دقيقة</string>
+    <string name="prayer_timeline_start_later">تأخير البداية دقيقة</string>
+    <string name="prayer_timeline_end_earlier">تقديم النهاية دقيقة</string>
+    <string name="prayer_timeline_end_later">تأخير النهاية دقيقة</string>
+    <string name="prayer_timeline_drag_hint">المقبض الأيسر للبداية، والأيمن للنهاية.</string>
+    <string name="prayer_timeline_done">تم</string>
+    <string name="prayer_timeline_previous_day">اليوم السابق</string>
+    <string name="prayer_timeline_next_day">اليوم التالي</string>
+    <string name="prayer_timeline_days_earlier">قبل %1$d أيام</string>
+    <string name="prayer_timeline_days_later">بعد %1$d أيام</string>
+    <string name="prayer_timeline_fixed_start">تبدأ عند وقت ثابت</string>
+    <string name="prayer_timeline_fixed_end">تنتهي عند وقت ثابت</string>
+    <string name="prayer_timeline_before_prayer">تبدأ قبل الأذان بـ %1$d د</string>
+    <string name="prayer_timeline_after_prayer">تبدأ بعد الأذان بـ %1$d د</string>
+    <string name="prayer_timeline_at_prayer">تبدأ مع الأذان</string>
+    <string name="prayer_timeline_duration">لمدة %1$d د</string>
+    <string name="prayer_timeline_daily_mode">يومياً: %1$s · %2$s</string>
+    <string name="prayer_timeline_friday_mode">كل جمعة: %1$s · %2$s</string>
+    <string name="prayer_timeline_eid_mode">يوم العيد: %1$s · %2$s</string>
+</resources>

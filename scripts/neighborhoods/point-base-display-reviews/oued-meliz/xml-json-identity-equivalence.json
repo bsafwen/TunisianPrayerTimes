@@ -1,0 +1,39 @@
+{
+  "url": "https://api.openstreetmap.org/api/0.6/node/2840204369.json",
+  "retrievedAt": "2026-09-08T02:21:10.752836+00:00",
+  "statusCode": 200,
+  "finalUrl": "https://api.openstreetmap.org/api/0.6/node/2840204369.json",
+  "file": "node-2840204369.json",
+  "sha256": "cb0799e40da804c2fbcf5744d07aaacae52381d5b867dd77be56d36bccebeea7",
+  "transport": "Direct official public OSM API JSON; one new format-specific request, not derived from XML.",
+  "exactElement": {
+    "type": "node",
+    "id": 2840204369,
+    "lat": 36.4678121,
+    "lon": 8.5500007,
+    "timestamp": "2020-07-17T08:38:41Z",
+    "version": 8,
+    "changeset": 88131134,
+    "user": "Anis Ben Makhlouf",
+    "uid": 10001069,
+    "tags": {
+      "alt_name:ar": "واد مليز",
+      "name": "وادي مليز",
+      "name:ar": "وادي مليز",
+      "name:de": "Wadi Maliz",
+      "name:en": "Oued Melliz",
+      "name:fr": "Oued Meliz",
+      "place": "village",
+      "postal_code": "8115",
+      "wikidata": "Q3136209",
+      "wikipedia": "ar:وادي مليز"
+    }
+  },
+  "priorXml": {
+    "file": "work\\oued-meliz-reference-review\\osm-node-2840204369.xml",
+    "sha256": "46f916a7fa28a88e8ef3b7c13f699745aa897963f8b1058ed9b9e979d3a0763e"
+  },
+  "fullElementMatchesFrozenXml": true,
+  "priorXmlVisible": "true",
+  "comparison": "All JSON node fields equal corresponding typed XML attributes and complete tags. XML-only visible=true retained separately; transport envelopes intentionally differ."
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "status": "DERIVED_ALIAS_ONLY_BEFORE_DISPLAY_VERIFICATION_SNAPSHOT",
+  "scope": "Soukra532 existing preservation contract after one sector search-alias addition. The derived full snapshot is counterfactual verification input, not an actual historical deployed catalog.",
+  "historicalProof": {
+    "file": "dependency-successors/soliman-native-20260912/node-7390818324-boundary-proof.json",
+    "sha256": "82b5e59d06a0bfe2f08dd75075e9bacf2d92d0e5132bd97a480880c84da19fc9"
+  },
+  "historicalSourceCarry": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-f05e-source-group-carry.json",
+    "sha256": "f0c772b7d0ffbcf76228baf50f3118155811a2451e9cf6c2e820ae96b1a4ffd3",
+    "bytes": 21438
+  },
+  "historicalBaselineMetadata": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json",
+    "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+    "bytes": 1883630
+  },
+  "derivedBaselineMetadata": {
+    "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/derived-pre-display-baseline.json",
+    "sha256": "9fa05631adfb20bdbbb0c8574e7bf75608c9506f7e479fe2ac4e34d95616a07b",
+    "bytes": 2837248
+  },
+  "sourceAliasProof": {
+    "file": "name-reviews/soukra-bassatine-alias-20260920/proof.json",
+    "sha256": "d117e0bdcd0b61facb990b027a5207e7172a7dd8600c02ad2f01dfca88e5daaf",
+    "bytes": 9457
+  },
+  "newSectorCuration": {
+    "id": "osm:relation:7114902",
+    "action": "name_tags",
+    "expectedKind": "sector",
+    "expectedTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "البساتين",
+      "name:ar": "البساتين",
+      "name:fr": "El Bassatine",
+      "ref:tn:codegeo": "125253"
+    },
+    "nameTags": {
+      "name": "البساتين",
+      "name:ar": "البساتين",
+      "name:fr": "El Bassatine",
+      "alt_name:ar": "البستان",
+      "alt_name:fr": "El bousten"
+    },
+    "reason": "Retain البساتين / El Bassatine for original Soukra code125253, supported by INS2012 and ISIE/JORT2023. Add the exact INS2024 same-code/parent variants البستان / El bousten as search aliases. Preserve original polygon, identity, primary name, coordinates, source532 and existing groups; the village inherits only the new search context.",
+    "evidence": [
+      {
+        "source": "Reviewed exact Soukra sector125253 identity across original source, INS2012/2024 and ISIE/JORT2023; alias-only correction.",
+        "reviewFiles": [
+          {
+            "file": "name-reviews/soukra-bassatine-alias-20260920/proof.json",
+            "sha256": "d117e0bdcd0b61facb990b027a5207e7172a7dd8600c02ad2f01dfca88e5daaf",
+            "bytes": 9457
+          }
+        ]
+      }
+    ]
+  },
+  "exactDerivedSnapshotChanges": [
+    {
+      "id": "osm:relation:7114902",
+      "field": "aliases",
+      "before": [
+        "El Bassatine"
+      ],
+      "after": [
+        "El Bassatine",
+        "البستان",
+        "El bousten"
+      ]
+    },
+    {
+      "id": "osm:node:7390818324",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "La Soukra",
+        "البساتين",
+        "معتمدية سكرة"
+      ],
+      "after": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "El bousten",
+        "La Soukra",
+        "البساتين",
+        "البستان",
+        "معتمدية سكرة"
+      ]
+    }
+  ],
+  "preserved": "All historical snapshot fields except the two specified arrays, including pre-display groups and original storage offsets. All authentic source tags/geometries remain intact; effective source adds exactly two verified aliases. The original carry and every historical proof remain unchanged.",
+  "qualification": "The two arrays also change in the actual current catalog projection, with the already-installed delegation:532 group retained. This is source/name support, not boundary adoption or certification."
+}

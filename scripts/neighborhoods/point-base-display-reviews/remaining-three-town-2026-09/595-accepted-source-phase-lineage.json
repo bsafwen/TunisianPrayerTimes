@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_boundary_source_phase_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "pointId": "osm:node:1165828361",
+  "baseId": 595,
+  "originalNamePeerIds": [
+    "osm:node:1165828361",
+    "osm:relation:7154978"
+  ],
+  "effectiveNamePeerIds": [
+    "osm:node:1165828361",
+    "osm:relation:7154978"
+  ],
+  "sourceStates": [
+    {
+      "id": "osm:node:1165828361",
+      "original": {
+        "tags": {
+          "name": "جمال",
+          "name:ar": "جمال",
+          "name:en": "Jemmal",
+          "name:fr": "Jemmel",
+          "place": "village",
+          "population": "65420",
+          "source:population": "English Wikipedia",
+          "wikidata": "Q2545445",
+          "wikimedia_commons": "Category:Jemmal",
+          "wikipedia": "en:Jemmal"
+        },
+        "kind": "village",
+        "sourceId": null,
+        "geometrySha256": "0e89fa928d834b4fd625420f0777b161c5792f6bc278ef8a3f255141639153dc"
+      },
+      "effective": {
+        "tags": {
+          "name": "جمال",
+          "name:ar": "جمال",
+          "name:en": "Jemmal",
+          "name:fr": "Jemmel",
+          "place": "village",
+          "population": "65420",
+          "source:population": "English Wikipedia",
+          "wikidata": "Q2545445",
+          "wikimedia_commons": "Category:Jemmal",
+          "wikipedia": "en:Jemmal"
+        },
+        "kind": "village",
+        "sourceId": "osm",
+        "geometrySha256": "0e89fa928d834b4fd625420f0777b161c5792f6bc278ef8a3f255141639153dc"
+      }
+    },
+    {
+      "id": "osm:relation:7112769",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زاوية قنطش",
+          "name:ar": "زاوية قنطش",
+          "name:fr": "Zaouiet Kontoch",
+          "ref:tn:codegeo": "325655",
+          "wikidata": "Q3574794"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "9c2f67c9bd0c01ab28428fbc751d9a07c9b6cfa3f0aa8cfd4e55d82da1b19def"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زاوية قنطش",
+          "name:ar": "زاوية قنطش",
+          "name:fr": "Zaouiet Kontoch",
+          "ref:tn:codegeo": "325655",
+          "wikidata": "Q3574794"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "9c2f67c9bd0c01ab28428fbc751d9a07c9b6cfa3f0aa8cfd4e55d82da1b19def"
+      }
+    },
+    {
+      "id": "osm:relation:7113920",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطيايرة",
+          "name:ar": "الطيايرة",
+          "name:fr": "Et-Teyaïra",
+          "ref:tn:codegeo": "325659"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "975a49d1495609fba869743ba63e4c972bc88774c405899dca87df95de9db4cd"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325659",
+          "name:ar": "الطيايرة",
+          "name:fr": "Et-Teyaïra",
+          "alt_name": "Et-Teyaïra"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-jammel",
+        "geometrySha256": "a2995afea8a7d185d2e4bbabf19260b052f8e369b7fea82c2b2675c891d6cd72"
+      }
+    },
+    {
+      "id": "osm:relation:7113921",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال الجوفية",
+          "name:ar": "جمال الجوفية",
+          "name:fr": "Jammel Nord",
+          "ref:tn:codegeo": "325652"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "49d95c2c2ba68a0b35241c7f758c52d6f686a9df8e185a239884e01ab74d077f"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال الجوفية",
+          "name:ar": "جمال الجوفية",
+          "name:fr": "Jammel Nord",
+          "ref:tn:codegeo": "325652"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "49d95c2c2ba68a0b35241c7f758c52d6f686a9df8e185a239884e01ab74d077f"
+      }
+    },
+    {
+      "id": "osm:relation:7113922",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال الشرقية",
+          "name:ar": "جمال الشرقية",
+          "name:fr": "Jammel Est",
+          "ref:tn:codegeo": "325653"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "33d2568cd864eedf979f5801f599aa91d485684d10e4eb0cf7c15a7d3c2e84e4"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال الشرقية",
+          "name:ar": "جمال الشرقية",
+          "name:fr": "Jammel Est",
+          "ref:tn:codegeo": "325653"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "33d2568cd864eedf979f5801f599aa91d485684d10e4eb0cf7c15a7d3c2e84e4"
+      }
+    },
+    {
+      "id": "osm:relation:7113923",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال الغربية",
+          "name:ar": "جمال الغربية",
+          "name:fr": "Jammel Ouest",
+          "ref:tn:codegeo": "325654"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "56caed31fc03899a0b1d9ed0e005f5d505aa17a7a0ad1df84666d844e8748268"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325654",
+          "name:ar": "جمال الغربية",
+          "name:fr": "Jammel Ouest",
+          "alt_name": "Jammel Ouest"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-jammel",
+        "geometrySha256": "42f60a88cabc93977992219024ce5391a3ed474e11725f9b4c1250e4997f8f98"
+      }
+    },
+    {
+      "id": "osm:relation:7113924",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال القبلية",
+          "name:ar": "جمال القبلية",
+          "name:fr": "Jammel Sud",
+          "ref:tn:codegeo": "325651"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "b17ddb7598493bb240066d7fc5dd832153117bb11d125cadb703b55831185320"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال القبلية",
+          "name:ar": "جمال القبلية",
+          "name:fr": "Jammel Sud",
+          "ref:tn:codegeo": "325651"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "b17ddb7598493bb240066d7fc5dd832153117bb11d125cadb703b55831185320"
+      }
+    },
+    {
+      "id": "osm:relation:7114360",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الهدادرة",
+          "name:ar": "الهدادرة",
+          "name:fr": "El Hdadra",
+          "ref:tn:codegeo": "325658"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "2fc43eccd8dfbcd29d7d174ca3cae54dbbe32f6a59f1839a417f1d255e91ba14"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الهدادرة",
+          "name:ar": "الهدادرة",
+          "name:fr": "El Hdadra",
+          "ref:tn:codegeo": "325658"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "2fc43eccd8dfbcd29d7d174ca3cae54dbbe32f6a59f1839a417f1d255e91ba14"
+      }
+    },
+    {
+      "id": "osm:relation:7114361",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بئر الطيب",
+          "name:ar": "بئر الطيب",
+          "name:fr": "Bir Taïeb",
+          "ref:tn:codegeo": "325656"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "b6a53218746b550295edca7cf5c7c7161c87ab9bf1a92a1a783fd9576fc98586"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بئر الطيب",
+          "name:ar": "بئر الطيب",
+          "name:fr": "Bir Taïeb",
+          "ref:tn:codegeo": "325656"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "b6a53218746b550295edca7cf5c7c7161c87ab9bf1a92a1a783fd9576fc98586"
+      }
+    },
+    {
+      "id": "osm:relation:7114362",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "منزل كامل",
+          "name:ar": "منزل كامل",
+          "name:fr": "Menzel Kamel",
+          "ref:tn:codegeo": "325657"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "af4a63ca6c0b81176ae190767209d8b27e583a0d724e4a9a2414b1dc9fefbbf1"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "منزل كامل",
+          "name:ar": "منزل كامل",
+          "name:fr": "Menzel Kamel",
+          "ref:tn:codegeo": "325657"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "af4a63ca6c0b81176ae190767209d8b27e583a0d724e4a9a2414b1dc9fefbbf1"
+      }
+    },
+    {
+      "id": "osm:relation:7154978",
+      "original": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Jemmal",
+          "boundary": "administrative",
+          "name": "معتمدية جمّال",
+          "name:ar": "معتمدية جمّال",
+          "name:fr": "Délégation Jammel",
+          "ref:tn:codegeo": "3256",
+          "ref:tn:hasc_2": "TN.MS.JA",
+          "wikidata": "Q3176963"
+        },
+        "kind": "delegation",
+        "sourceId": null,
+        "geometrySha256": "61b99af01b9269f01f8b96587dbd0c77b0aa362322c24304e4fb9bcedbad6072"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Jemmal",
+          "boundary": "administrative",
+          "name": "معتمدية جمّال",
+          "name:ar": "معتمدية جمّال",
+          "name:fr": "Délégation Jammel",
+          "ref:tn:codegeo": "3256",
+          "ref:tn:hasc_2": "TN.MS.JA",
+          "wikidata": "Q3176963"
+        },
+        "kind": "delegation",
+        "sourceId": "osm",
+        "geometrySha256": "61b99af01b9269f01f8b96587dbd0c77b0aa362322c24304e4fb9bcedbad6072"
+      }
+    }
+  ],
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+  },
+  "acceptedReplacements": [
+    {
+      "id": "osm:relation:7113920",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-jammel",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/jammel-isie2023-two-sectors.geojson",
+        "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7113923",
+            "officialCode": "325654",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "جمال الغربية",
+              "name:ar": "جمال الغربية",
+              "name:fr": "Jammel Ouest",
+              "ref:tn:codegeo": "325654"
+            },
+            "aliases": [
+              "Jammel Ouest"
+            ]
+          },
+          {
+            "id": "osm:relation:7113920",
+            "officialCode": "325659",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الطيايرة",
+              "name:ar": "الطيايرة",
+              "name:fr": "Et-Teyaïra",
+              "ref:tn:codegeo": "325659"
+            },
+            "aliases": [
+              "Et-Teyaïra"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/next-three-interface-native-source-review.json",
+            "sha256": "c25fc986791c27e9c69f768dc93917c42202b5bb150371bb993bd94e5a651d70"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/next-three-interface-native-source-independent-review.json",
+            "sha256": "dba9679c52e264442b900caafe3e6b6bfe8fa734af9a3bf9901f43004b8f6277"
+          },
+          "nativeCandidate": {
+            "root": "task",
+            "file": "outputs/next-three-interface-native-source-candidates.geojson",
+            "sha256": "a107c120d8c4f1ea81c54aff450832624f6b7d7d0339d50015f2a7af69690f60"
+          },
+          "namePolicy": "Preserve the four exact current Arabic primaries and source French names/aliases; no name normalization.",
+          "geometryPolicy": "Complete qualified native coordinate arrays, unchanged. No clipping, snapping, repair or scope merging.",
+          "qualification": "Source acceptance only. Residual native seams and mixed-source administrative discrepancies remain explicit in the source reviews; source-phase proof migration and actual-data verification are separate."
+        }
+      },
+      "record": {
+        "id": "osm:relation:7113920",
+        "officialCode": "325659",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطيايرة",
+          "name:ar": "الطيايرة",
+          "name:fr": "Et-Teyaïra",
+          "ref:tn:codegeo": "325659"
+        },
+        "aliases": [
+          "Et-Teyaïra"
+        ]
+      },
+      "application": {
+        "id": "osm:relation:7113920",
+        "action": "replace",
+        "officialCode": "325659",
+        "sourceId": "isie-local-sectors-2023-jammel"
+      },
+      "geojson": {
+        "file": "official/jammel-isie2023-two-sectors.geojson",
+        "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2"
+      },
+      "featureSha256": "126be5d07cea3ffee18968a50d7c36d9c6d982ff2707cf377190e5968cb81c82"
+    },
+    {
+      "id": "osm:relation:7113923",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-jammel",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/jammel-isie2023-two-sectors.geojson",
+        "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7113923",
+            "officialCode": "325654",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "جمال الغربية",
+              "name:ar": "جمال الغربية",
+              "name:fr": "Jammel Ouest",
+              "ref:tn:codegeo": "325654"
+            },
+            "aliases": [
+              "Jammel Ouest"
+            ]
+          },
+          {
+            "id": "osm:relation:7113920",
+            "officialCode": "325659",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الطيايرة",
+              "name:ar": "الطيايرة",
+              "name:fr": "Et-Teyaïra",
+              "ref:tn:codegeo": "325659"
+            },
+            "aliases": [
+              "Et-Teyaïra"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/next-three-interface-native-source-review.json",
+            "sha256": "c25fc986791c27e9c69f768dc93917c42202b5bb150371bb993bd94e5a651d70"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/next-three-interface-native-source-independent-review.json",
+            "sha256": "dba9679c52e264442b900caafe3e6b6bfe8fa734af9a3bf9901f43004b8f6277"
+          },
+          "nativeCandidate": {
+            "root": "task",
+            "file": "outputs/next-three-interface-native-source-candidates.geojson",
+            "sha256": "a107c120d8c4f1ea81c54aff450832624f6b7d7d0339d50015f2a7af69690f60"
+          },
+          "namePolicy": "Preserve the four exact current Arabic primaries and source French names/aliases; no name normalization.",
+          "geometryPolicy": "Complete qualified native coordinate arrays, unchanged. No clipping, snapping, repair or scope merging.",
+          "qualification": "Source acceptance only. Residual native seams and mixed-source administrative discrepancies remain explicit in the source reviews; source-phase proof migration and actual-data verification are separate."
+        }
+      },
+      "record": {
+        "id": "osm:relation:7113923",
+        "officialCode": "325654",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جمال الغربية",
+          "name:ar": "جمال الغربية",
+          "name:fr": "Jammel Ouest",
+          "ref:tn:codegeo": "325654"
+        },
+        "aliases": [
+          "Jammel Ouest"
+        ]
+      },
+      "application": {
+        "id": "osm:relation:7113923",
+        "action": "replace",
+        "officialCode": "325654",
+        "sourceId": "isie-local-sectors-2023-jammel"
+      },
+      "geojson": {
+        "file": "official/jammel-isie2023-two-sectors.geojson",
+        "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2"
+      },
+      "featureSha256": "ec665ea9be1a4285f5a48ef7bc9cfeb072040bffb0da1709dc5c7aab5e884d0a"
+    }
+  ],
+  "additionalPreservedSectors": [],
+  "scope": "Bind only the two already installed Jammel imada replacements. Keep all nine current sectors separate, with both existing references, contexts and all source geometry unchanged."
+}

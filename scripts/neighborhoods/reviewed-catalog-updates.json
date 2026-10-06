@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "revisions": [
+    {
+      "revision": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/revision-0001.json",
+        "sha256": "73de759899edc2f6ac1a301c3d18e2a746039327844a6611f209690945ca5d20"
+      },
+      "review": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/review-0001.json",
+        "sha256": "f26967fe8e7c25e13fb993aafd297fe10e25b8c6c94950548e2fe23f0dfd03cf"
+      }
+    },
+    {
+      "revision": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/revision-0002.json",
+        "sha256": "bbf0037e8eba23cfb38d28c836547387a73f47ea350e53322ffee489a3b529a0"
+      },
+      "review": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/review-0002.json",
+        "sha256": "2eb0c75b4a201ebad707ab85ea3670bf6263143940a44d4fafb089b0cdfb26d9"
+      }
+    },
+    {
+      "revision": {
+        "file": "catalog-updates/mourouj5-parent-20260924/revision-0001.json",
+        "sha256": "24a6f5be3499546e6b2ec24c150658538ceb78c6ed57de78bb6ee3decfa49136"
+      },
+      "review": {
+        "file": "catalog-updates/mourouj5-parent-20260924/review-0001.json",
+        "sha256": "5baf691eae15d23e0dd21e9bb762bf391a02f9c1345c82645145ec9244decba5"
+      }
+    },
+    {
+      "revision": {
+        "file": "catalog-updates/mourouj5-parent-20260924/revision-0002.json",
+        "sha256": "9144751d3793ffe42b37cab23c8e0f79320431bea6e36bf9f8361491705282a7"
+      },
+      "review": {
+        "file": "catalog-updates/mourouj5-parent-20260924/review-0002.json",
+        "sha256": "9244c4ae2e199b6caeedd454d4b4d6bb2bcc3028345c7366302e6b5512e0ec6d"
+      }
+    },
+    {
+      "revision": {
+        "file": "catalog-updates/bonne-residence-ins-official-arabic-20260924/revision-0001.json",
+        "sha256": "1b978412d4b682304ca732d590659b27932ebf8cfad45ae7698ae116f7c6d12f"
+      },
+      "review": {
+        "file": "catalog-updates/bonne-residence-ins-official-arabic-20260924/review-0001.json",
+        "sha256": "8c4d4ef52423c7a247a9c06521702315a3353bf0362b185b757cd9484471e280"
+      }
+    }
+  ]
+}

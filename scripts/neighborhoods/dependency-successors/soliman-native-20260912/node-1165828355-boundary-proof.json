@@ -1,0 +1,597 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:1165828355",
+  "baseId": 597,
+  "rawCurrent": {
+    "id": "osm:node:1165828355",
+    "sourceId": "osm",
+    "name": "بني حسان",
+    "aliases": [
+      "Beni Hassen"
+    ],
+    "kind": "village",
+    "parentName": "بني حسان الجوفية",
+    "contextAliases": [
+      "Beni Hassen",
+      "Beni Hassen Nord",
+      "Délégation Beni Hassen",
+      "بني حسان الجوفية",
+      "معتمدية بني حسان"
+    ],
+    "governorateId": 364,
+    "lat": 35.5670718,
+    "lng": 10.8080266,
+    "delegationId": 597,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1165828355"
+  },
+  "baseCurrent": {
+    "id": 597,
+    "nomFr": "Beni Hassan",
+    "nomAr": "بني حسان",
+    "nomEn": "Beni Hassan",
+    "lat": 35.5672,
+    "lng": 10.8079
+  },
+  "expectedGovernor": {
+    "id": 364,
+    "nomFr": "Monastir",
+    "nomAr": "المنستير",
+    "nomEn": "Monastir",
+    "lat": 35.7643,
+    "lng": 10.8113
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1165828355",
+    "tags": {
+      "addr:city": "Beni Hassen",
+      "addr:governorate": "Monastir",
+      "name": "بني حسان",
+      "name:ar": "بني حسان",
+      "name:en": "Beni Hassen",
+      "name:fr": "Beni Hassen",
+      "place": "village",
+      "wikidata": "Q1124789",
+      "wikimedia_commons": "Category:Beni Hassen",
+      "wikipedia": "en:Beni Hassen"
+    },
+    "lat": 35.5670718,
+    "lng": 10.8080266
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/source-identity-review.json",
+    "sha256": "000b869270ccbe044f4991fd4002a69df027729739f364f9468b4be5dce3edfa"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/finite-scope-independent-review.json",
+    "sha256": "9e38ed293e3a6baa52a73029b6d97ce970debcd0831c2390e5ef2b3d964269ef"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/node-1165828355.json",
+    "sha256": "eadc84f817faec131f4ed88a699f02d37edb709d498922fc63307c03906d1a5e",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1165828355.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1165828355.json",
+    "sha256": "eadc84f817faec131f4ed88a699f02d37edb709d498922fc63307c03906d1a5e",
+    "exactElement": {
+      "type": "node",
+      "id": 1165828355,
+      "lat": 35.5670718,
+      "lon": 10.8080266,
+      "timestamp": "2026-03-07T20:28:17Z",
+      "version": 15,
+      "changeset": 179509225,
+      "user": "Johnwhelan",
+      "uid": 186592,
+      "tags": {
+        "addr:city": "Beni Hassen",
+        "addr:governorate": "Monastir",
+        "name": "بني حسان",
+        "name:ar": "بني حسان",
+        "name:en": "Beni Hassen",
+        "name:fr": "Beni Hassen",
+        "place": "village",
+        "wikidata": "Q1124789",
+        "wikimedia_commons": "Category:Beni Hassen",
+        "wikipedia": "en:Beni Hassen"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/beni-hassan-saouaf/social-beni-hassen.html",
+      "sha256": "72c66630bc33b3133977694fe332d1e72afd94ef3e58757e1bf658c0d5c86428",
+      "url": "https://www.social.gov.tn/fr/node/3186",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "شارع حبيب بورقيبة 5014 بني حسان",
+        "المنستير"
+      ]
+    }
+  ],
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/beni-hassan-saouaf/mehat-activity-2019.pdf",
+      "sha256": "f9fb23a2e73de7a6c4b74ed1ab3b7d374c848f43bd477f53e2725584b02b583b",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/11/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%86%D8%B4%D8%A7%D8%B7-2019-.pdf",
+      "role": "official_explicit_city_identity",
+      "pdfPage": 87,
+      "visuallyReadText": "حماية مدينة بني حسان",
+      "qualification": "Contextual city usage personally viewed by both source reviewers; binary PDF is not a UTF-8 compiler text assertion."
+    }
+  ],
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/retrieval-manifest.json",
+    "sha256": "13b65f69da71751b2766aa4117aa5385f9bb4ce8faf68d76329f1161b6dea16b"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "3255",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7113965",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3255",
+        "delegationFr": "Beni hassen",
+        "delegationAr": "بني حسان",
+        "sectorCode": "325552",
+        "sectorFr": "Beni hassen nord",
+        "sectorAr": "بني حسان الجوفية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36821,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1741,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1739
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني حسان الجوفية",
+        "name:ar": "بني حسان الجوفية",
+        "name:fr": "Beni Hassen Nord",
+        "ref:tn:codegeo": "325552"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7113965",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "name": "بني حسان الجوفية",
+        "aliases": [
+          "Beni Hassen Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني حسان",
+        "contextAliases": [
+          "Beni Hassen",
+          "Délégation Beni Hassen",
+          "معتمدية بني حسان"
+        ],
+        "governorateId": 364,
+        "lat": 35.58141,
+        "lng": 10.802953,
+        "delegationId": 597,
+        "hasBoundary": true,
+        "bbox": [
+          10.785704,
+          35.56507,
+          10.826822,
+          35.597613
+        ],
+        "areaKm2": 7.509033875909477,
+        "pickerGroupId": "osm:relation:7113965",
+        "offset": 828004,
+        "length": 2356
+      },
+      "sourceGeometrySha256": "311c6c5f95b0e23a5db7ffe2f1f1292ab9eeba612e680714c2825ab80c008352",
+      "packedGeometrySha256": "8deb3619f90e675b740dc7d82fea0086d28019f23f3aef78750c7e4fd085851a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7113975",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3255",
+        "delegationFr": "Beni hassen",
+        "delegationAr": "بني حسان",
+        "sectorCode": "325551",
+        "sectorFr": "Beni hassen sud",
+        "sectorAr": "بني حسان القبلية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36787,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1739,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1737
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني حسان القبلية",
+        "name:ar": "بني حسان القبلية",
+        "name:fr": "Beni Hassen Sud",
+        "ref:tn:codegeo": "325551"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7113975",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "name": "بني حسان القبلية",
+        "aliases": [
+          "Beni Hassen Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني حسان",
+        "contextAliases": [
+          "Beni Hassen",
+          "Délégation Beni Hassen",
+          "معتمدية بني حسان"
+        ],
+        "governorateId": 364,
+        "lat": 35.556594,
+        "lng": 10.811556,
+        "delegationId": 597,
+        "hasBoundary": true,
+        "bbox": [
+          10.774696,
+          35.518428,
+          10.84712,
+          35.59454
+        ],
+        "areaKm2": 26.386020453534204,
+        "pickerGroupId": "osm:relation:7113975",
+        "offset": 830360,
+        "length": 3124
+      },
+      "sourceGeometrySha256": "ed2cebe0d92622eb7e02dad8b649aa3917d8d3bbe8faa34fdc4bf0ae1e77bd50",
+      "packedGeometrySha256": "924d4f425d8de908ef7718336435b23e31a89a83908536f9918645bc3837c5f7",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7114530",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3255",
+        "delegationFr": "Beni hassen",
+        "delegationAr": "بني حسان",
+        "sectorCode": "325554",
+        "sectorFr": "El jnaiha",
+        "sectorAr": "الجنائحة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36889,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1745,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1743
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجنائحة",
+        "name:ar": "الجنائحة",
+        "name:fr": "EL Jnaïha",
+        "ref:tn:codegeo": "325554"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7114530",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "name": "الجنائحة",
+        "aliases": [
+          "EL Jnaïha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني حسان",
+        "contextAliases": [
+          "Beni Hassen",
+          "Délégation Beni Hassen",
+          "معتمدية بني حسان"
+        ],
+        "governorateId": 364,
+        "lat": 35.530674,
+        "lng": 10.771114,
+        "delegationId": 597,
+        "hasBoundary": true,
+        "bbox": [
+          10.760632,
+          35.503047,
+          10.790288,
+          35.558046
+        ],
+        "areaKm2": 9.77082000586902,
+        "pickerGroupId": "osm:relation:7114530",
+        "offset": 914260,
+        "length": 2620
+      },
+      "sourceGeometrySha256": "ee1fb9780324aa9854444cbe0265b1d34e2dc150aed1ff2fab3f504881374c2c",
+      "packedGeometrySha256": "0cc830a5f3c61d9a0cb5a84d4548675f48bf8834fe16b5d7d05164058b3e65a3",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7114531",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3255",
+        "delegationFr": "Beni hassen",
+        "delegationAr": "بني حسان",
+        "sectorCode": "325555",
+        "sectorFr": "Ghnada",
+        "sectorAr": "الغنادة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36923,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1747,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1745
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الغنادة",
+        "name:ar": "الغنادة",
+        "name:fr": "Ghnada",
+        "ref:tn:codegeo": "325555"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7114531",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "name": "الغنادة",
+        "aliases": [
+          "Ghenada",
+          "Ghnada"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني حسان",
+        "contextAliases": [
+          "Beni Hassen",
+          "Délégation Beni Hassen",
+          "معتمدية بني حسان"
+        ],
+        "governorateId": 364,
+        "lat": 35.501603,
+        "lng": 10.693922,
+        "delegationId": 427,
+        "hasBoundary": true,
+        "bbox": [
+          10.635677,
+          35.468583,
+          10.729518,
+          35.534366
+        ],
+        "areaKm2": 27.993709982649555,
+        "pickerGroupId": "osm:relation:7114531",
+        "offset": 916880,
+        "length": 4684
+      },
+      "sourceGeometrySha256": "6f1fa7ca07a652fc39cadf98f8c5c1fc9aa4e7824bdb2581452d25581abe84ea",
+      "packedGeometrySha256": "73378e07af1c5b35adaea0011dcd4956088b1f179d216e1f8f5c2f731704cd70",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7114532",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3255",
+        "delegationFr": "Beni hassen",
+        "delegationAr": "بني حسان",
+        "sectorCode": "325553",
+        "sectorFr": "Hatem",
+        "sectorAr": "حاتم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36855,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1743,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1741
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حاتم",
+        "name:ar": "حاتم",
+        "name:fr": "Hatem",
+        "ref:tn:codegeo": "325553"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7114532",
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "name": "حاتم",
+        "aliases": [
+          "Hatem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني حسان",
+        "contextAliases": [
+          "Beni Hassen",
+          "Délégation Beni Hassen",
+          "معتمدية بني حسان"
+        ],
+        "governorateId": 364,
+        "lat": 35.51857,
+        "lng": 10.741272,
+        "delegationId": 427,
+        "hasBoundary": true,
+        "bbox": [
+          10.717999,
+          35.487294,
+          10.763433,
+          35.550074
+        ],
+        "areaKm2": 15.567608737165965,
+        "pickerGroupId": "osm:relation:7114532",
+        "offset": 921564,
+        "length": 2876
+      },
+      "sourceGeometrySha256": "9932cc824431ec857f1f2b147d9b2b7dd57b093bff8b300eec67365574a6ac83",
+      "packedGeometrySha256": "d47004fa911bb387a6683cb0f98ca46a89c637235ef42930cf441d8ee051af3b",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1165828355",
+      "kind": "village",
+      "tags": {
+        "addr:city": "Beni Hassen",
+        "addr:governorate": "Monastir",
+        "name": "بني حسان",
+        "name:ar": "بني حسان",
+        "name:en": "Beni Hassen",
+        "name:fr": "Beni Hassen",
+        "place": "village",
+        "wikidata": "Q1124789",
+        "wikimedia_commons": "Category:Beni Hassen",
+        "wikipedia": "en:Beni Hassen"
+      }
+    },
+    {
+      "id": "osm:relation:7154977",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Beni Hassen",
+        "boundary": "administrative",
+        "name": "معتمدية بني حسان",
+        "name:ar": "معتمدية بني حسان",
+        "name:fr": "Délégation Beni Hassen",
+        "ref:tn:codegeo": "3255",
+        "ref:tn:hasc_2": "TN.MS.BH",
+        "wikidata": "Q2400649"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7154977": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Beni Hassen",
+        "boundary": "administrative",
+        "name": "معتمدية بني حسان",
+        "name:ar": "معتمدية بني حسان",
+        "name:fr": "Délégation Beni Hassen",
+        "ref:tn:codegeo": "3255",
+        "ref:tn:hasc_2": "TN.MS.BH",
+        "wikidata": "Q2400649"
+      },
+      "sourceGeometrySha256": "d9af6b5530f4f6c9ccb81ab4b845f38a6c72d24b48afc216fcd75bfaee868ef9"
+    },
+    "osm:relation:1434954": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-52",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Monastir",
+        "boundary": "administrative",
+        "long_name": "ولاية المنستير",
+        "long_name:ar": "ولاية المنستير",
+        "long_name:en": "Monastir Governorate",
+        "long_name:fr": "Gouvernorat de Monastir",
+        "long_name:it": "Governatorato di Monastir",
+        "name": "ولاية المنستير",
+        "name:ar": "ولاية المنستير",
+        "name:az": "Monastir (vilayət)",
+        "name:be": "Манасцір (вілает)",
+        "name:be-tarask": "Манастыр (вілает)",
+        "name:bg": "Монастир (област)",
+        "name:ca": "Governació de Monastir",
+        "name:ceb": "Gouvernorat de Monastir",
+        "name:cy": "Monastir (talaith)",
+        "name:de": "Al-Munastir",
+        "name:el": "Μοναστίρ (Κυβερνείο)",
+        "name:en": "Monastir",
+        "name:es": "Gobernación de Monastir",
+        "name:fa": "استان منستیر",
+        "name:fi": "Monastir (kuvernementti)",
+        "name:fr": "Gouvernorat Monastir",
+        "name:frr": "Monastir (Guwernement)",
+        "name:hr": "Monastir",
+        "name:id": "Kegubernuran Monastir",
+        "name:it": "Monastir",
+        "name:ja": "モナスティル県",
+        "name:ka": "მონასტირის ვილაიეთი",
+        "name:ko": "모나스티르주",
+        "name:ms": "Kawasan kegabenoran Monastir",
+        "name:nl": "Monastir (gouvernement)",
+        "name:no": "Monastir (guvernement)",
+        "name:pl": "Gubernatorstwo Monastyr",
+        "name:pt": "Monastir (província)",
+        "name:ro": "Guvernoratul Monastir",
+        "name:ru": "Монастир (вилайет)",
+        "name:sco": "Monastir Govrenorate",
+        "name:sh": "Monastir (vilajet)",
+        "name:sq": "Monastir",
+        "name:tr": "Munastır (vilayet)",
+        "name:uk": "Монастір (вілаєт)",
+        "name:ur": "ولایت منستیر",
+        "name:zh": "莫納斯提爾省",
+        "name:zu": "Monastir Governorate",
+        "population": "455590",
+        "ref:tn:codegeo": "32",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q318102",
+        "wikipedia": "ar:ولاية المنستير"
+      },
+      "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1165828355",
+    "field": "pickerGroupId",
+    "before": "osm:node:1165828355",
+    "after": "delegation:597"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1165828355"
+      ],
+      [
+        "delegation:597"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:597",
+        "osm:node:1165828355"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Both existing point coordinates remain unchanged. Neither equality of boundaries, a surveyed city centre, nor INM calculation-anchor certification is claimed. Coordinate proximity and matching nearest defaults are compatibility facts, not the reason for identity approval.",
+  "scope": "Associate the retained village point with the existing prayer-source picker choice. The coded delegation and all five imadas remain separate administrative identities; no geometry or containment equivalence is inferred.",
+  "spellingPolicy": "Keep the base Beni Hassan and source Beni Hassen spellings, with Arabic بني حسان unchanged. Their exact bilingual identity is reviewed for this pair only.",
+  "phoneQualification": "Root reports the historical base and new node queries selected the same named town outline; supplemental only, with no phone files accessed by this review.",
+  "preservedPointImadaContainment": [
+    {
+      "role": "base",
+      "sectorId": "osm:relation:7113965",
+      "sourceContains": true,
+      "packedContains": true
+    },
+    {
+      "role": "node",
+      "sectorId": "osm:relation:7113965",
+      "sourceContains": true,
+      "packedContains": true
+    }
+  ],
+  "sourcePhasePolicy": "Original cached source states remain unchanged with provider None. The five named imadas have exact accepted official effective tags/shapes/provider and new packed metadata, bound through sourcePhaseLineage. Target village and delegation peer remain unchanged osm sources.",
+  "geometryHashConvention": "Runtime mapping geometry, compact JSON, insertion order, UTF-8. Copied research reports label their separate sorted-key geometry digests.",
+  "dependencyPolicy": "Explicit file references in this wrapper are relative to scripts/neighborhoods. Absolute paths inside immutable source reports document research provenance, not additional compiler dependencies.",
+  "sourcePhaseLineage": {
+    "file": "dependency-successors/soliman-native-20260912/node-1165828355-boundary-lineage.json",
+    "sha256": "f430186f9e0a30b6b9bf30e2c41f4dd1b59712324b47441037b743a9ef835c46"
+  }
+}

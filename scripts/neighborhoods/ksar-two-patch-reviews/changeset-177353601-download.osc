@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osmChange version="0.6" generator="openstreetmap-cgimap 2.1.0 (244709 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <modify>
+  <node id="11493025894" visible="true" version="2" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036" lat="32.7892277" lon="10.5175137">
+   <tag k="name" v="قصر أولاد سلطان"/>
+   <tag k="name:aeb" v="قصر أولاد سلطان"/>
+   <tag k="name:ar" v="قصر أولاد سلطان"/>
+   <tag k="name:en" v="Ksar Ouled Soltane"/>
+   <tag k="place" v="village"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11500965297" visible="true" version="2" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036" lat="32.7801679" lon="10.4764256">
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="archaeological_site"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="1264348269" visible="true" version="2" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036">
+   <nd ref="11746808018"/>
+   <nd ref="11746808019"/>
+   <nd ref="11746860587"/>
+   <nd ref="11746808020"/>
+   <nd ref="11746808021"/>
+   <nd ref="11746808022"/>
+   <nd ref="11746808023"/>
+   <nd ref="11746860588"/>
+   <nd ref="11746860589"/>
+   <nd ref="11746860590"/>
+   <nd ref="11746860591"/>
+   <nd ref="11746808024"/>
+   <nd ref="11746808025"/>
+   <nd ref="11746808026"/>
+   <nd ref="11746808027"/>
+   <nd ref="11746808028"/>
+   <nd ref="11746808029"/>
+   <nd ref="11746808030"/>
+   <nd ref="11746808031"/>
+   <nd ref="11746808032"/>
+   <nd ref="11746808033"/>
+   <nd ref="11746808034"/>
+   <nd ref="11746808035"/>
+   <nd ref="11746808036"/>
+   <nd ref="11746808037"/>
+   <nd ref="11746808038"/>
+   <nd ref="11746860592"/>
+   <nd ref="11746860593"/>
+   <nd ref="11746808039"/>
+   <nd ref="11746808040"/>
+   <nd ref="11746808041"/>
+   <nd ref="11746860594"/>
+   <nd ref="11746808042"/>
+   <nd ref="11746808043"/>
+   <nd ref="11746808044"/>
+   <nd ref="11746808045"/>
+   <nd ref="11746860595"/>
+   <nd ref="11746808046"/>
+   <nd ref="11746808047"/>
+   <nd ref="11746860596"/>
+   <nd ref="11746808048"/>
+   <nd ref="11746860597"/>
+   <nd ref="11746808049"/>
+   <nd ref="11746808050"/>
+   <nd ref="11746808051"/>
+   <nd ref="11746808052"/>
+   <nd ref="11746808053"/>
+   <nd ref="11746808054"/>
+   <nd ref="11746860599"/>
+   <nd ref="11746808055"/>
+   <nd ref="11746860598"/>
+   <nd ref="11746808056"/>
+   <nd ref="11746860600"/>
+   <nd ref="11746808057"/>
+   <nd ref="11746860601"/>
+   <nd ref="11746808058"/>
+   <nd ref="11746808059"/>
+   <nd ref="11746808060"/>
+   <nd ref="11746808061"/>
+   <nd ref="11746808062"/>
+   <nd ref="11746808063"/>
+   <nd ref="11746860602"/>
+   <nd ref="11746808064"/>
+   <nd ref="11746808065"/>
+   <nd ref="11746860603"/>
+   <nd ref="11746860604"/>
+   <nd ref="11746808066"/>
+   <nd ref="11746808067"/>
+   <nd ref="11746808068"/>
+   <nd ref="11746860605"/>
+   <nd ref="11746860569"/>
+   <nd ref="11746860570"/>
+   <nd ref="11746860606"/>
+   <nd ref="11746860571"/>
+   <nd ref="11746860572"/>
+   <nd ref="11746860573"/>
+   <nd ref="11746860574"/>
+   <nd ref="11746860575"/>
+   <nd ref="11746860576"/>
+   <nd ref="11746860577"/>
+   <nd ref="11746860578"/>
+   <nd ref="11746860607"/>
+   <nd ref="11746860579"/>
+   <nd ref="11746860608"/>
+   <nd ref="11746860609"/>
+   <nd ref="11746860580"/>
+   <nd ref="11746860581"/>
+   <nd ref="11746860582"/>
+   <nd ref="11746860583"/>
+   <nd ref="11746860584"/>
+   <nd ref="11746860585"/>
+   <nd ref="11746860586"/>
+   <nd ref="11746860610"/>
+   <nd ref="11746808018"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="قصر أولاد سلطان"/>
+   <tag k="name:ar" v="قصر أولاد سلطان"/>
+   <tag k="name:en" v="Ksar Ouled Soltane"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1264348270" visible="true" version="2" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036">
+   <nd ref="11746860611"/>
+   <nd ref="11746860676"/>
+   <nd ref="11746860675"/>
+   <nd ref="11746860612"/>
+   <nd ref="11746860613"/>
+   <nd ref="11746860614"/>
+   <nd ref="11746860615"/>
+   <nd ref="11746860616"/>
+   <nd ref="11746860617"/>
+   <nd ref="11746860618"/>
+   <nd ref="11746860619"/>
+   <nd ref="11746860620"/>
+   <nd ref="11746860621"/>
+   <nd ref="11746860622"/>
+   <nd ref="11746860623"/>
+   <nd ref="11746860624"/>
+   <nd ref="11746860625"/>
+   <nd ref="11746860626"/>
+   <nd ref="11746860627"/>
+   <nd ref="11746860628"/>
+   <nd ref="11746860629"/>
+   <nd ref="11746860630"/>
+   <nd ref="11746860730"/>
+   <nd ref="11746860731"/>
+   <nd ref="11746860729"/>
+   <nd ref="11746860631"/>
+   <nd ref="11746860728"/>
+   <nd ref="11746860632"/>
+   <nd ref="11746860633"/>
+   <nd ref="11746860634"/>
+   <nd ref="11746860635"/>
+   <nd ref="11746860636"/>
+   <nd ref="11746860727"/>
+   <nd ref="11746860726"/>
+   <nd ref="11746860637"/>
+   <nd ref="11746860638"/>
+   <nd ref="11746860639"/>
+   <nd ref="11746860725"/>
+   <nd ref="11746860724"/>
+   <nd ref="11746860723"/>
+   <nd ref="11746860640"/>
+   <nd ref="11746860641"/>
+   <nd ref="11746860722"/>
+   <nd ref="11746860642"/>
+   <nd ref="11746860643"/>
+   <nd ref="11746860644"/>
+   <nd ref="11746860721"/>
+   <nd ref="11746860720"/>
+   <nd ref="11746860719"/>
+   <nd ref="11746860645"/>
+   <nd ref="11746860646"/>
+   <nd ref="11746860718"/>
+   <nd ref="11746860717"/>
+   <nd ref="11746860647"/>
+   <nd ref="11746860716"/>
+   <nd ref="11746860648"/>
+   <nd ref="11746860715"/>
+   <nd ref="11746860649"/>
+   <nd ref="11746860650"/>
+   <nd ref="11746860714"/>
+   <nd ref="11746860713"/>
+   <nd ref="11746860651"/>
+   <nd ref="11746860652"/>
+   <nd ref="11746860653"/>
+   <nd ref="11746860712"/>
+   <nd ref="11746860654"/>
+   <nd ref="11746860711"/>
+   <nd ref="11746860655"/>
+   <nd ref="11746860710"/>
+   <nd ref="11746860709"/>
+   <nd ref="11746860708"/>
+   <nd ref="11746860656"/>
+   <nd ref="11746860707"/>
+   <nd ref="11746860657"/>
+   <nd ref="11746860658"/>
+   <nd ref="11746860706"/>
+   <nd ref="11746860705"/>
+   <nd ref="11746860704"/>
+   <nd ref="11746860659"/>
+   <nd ref="11746860660"/>
+   <nd ref="11746860661"/>
+   <nd ref="11746860662"/>
+   <nd ref="11746860683"/>
+   <nd ref="11746860682"/>
+   <nd ref="11746860681"/>
+   <nd ref="11746860663"/>
+   <nd ref="11746860680"/>
+   <nd ref="11746860679"/>
+   <nd ref="11746860678"/>
+   <nd ref="11746860677"/>
+   <nd ref="11746860611"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="قصر أولاد سلطان"/>
+   <tag k="name:ar" v="قصر أولاد سلطان"/>
+   <tag k="name:en" v="Ksar Ouled Soltane"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1265381157" visible="true" version="2" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036">
+   <nd ref="11754235225"/>
+   <nd ref="11754235226"/>
+   <nd ref="11754235227"/>
+   <nd ref="11754235228"/>
+   <nd ref="11754235229"/>
+   <nd ref="11754235230"/>
+   <nd ref="11754235231"/>
+   <nd ref="11754235232"/>
+   <nd ref="11754235233"/>
+   <nd ref="11754235234"/>
+   <nd ref="11754235235"/>
+   <nd ref="11754235236"/>
+   <nd ref="11754235237"/>
+   <nd ref="11754235238"/>
+   <nd ref="11754235239"/>
+   <nd ref="11754235240"/>
+   <nd ref="11754235225"/>
+   <tag k="access" v="yes"/>
+   <tag k="area" v="yes"/>
+   <tag k="historic" v="ruins"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1394472968" visible="true" version="2" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036">
+   <nd ref="12908870257"/>
+   <nd ref="12908870258"/>
+   <nd ref="12908870259"/>
+   <nd ref="12908870260"/>
+   <nd ref="12908870261"/>
+   <nd ref="12908870262"/>
+   <nd ref="12908870263"/>
+   <nd ref="12908870264"/>
+   <nd ref="12908870257"/>
+   <tag k="building" v="mosque"/>
+   <tag k="name" v="قصر أولاد سلطان"/>
+   <tag k="name:ar" v="قصر أولاد سلطان"/>
+   <tag k="name:en" v="Ksar Ouled Soltane"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1420196144" visible="true" version="2" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036">
+   <nd ref="13050229061"/>
+   <nd ref="13050229060"/>
+   <nd ref="13050229059"/>
+   <nd ref="13050229058"/>
+   <nd ref="13050229057"/>
+   <nd ref="13050229056"/>
+   <nd ref="13050229055"/>
+   <nd ref="13050229054"/>
+   <nd ref="13050229053"/>
+   <nd ref="13050229052"/>
+   <nd ref="13050229051"/>
+   <nd ref="13050229050"/>
+   <nd ref="13050229049"/>
+   <nd ref="13050229048"/>
+   <nd ref="13050229047"/>
+   <nd ref="13050229046"/>
+   <nd ref="13050229045"/>
+   <nd ref="13050229044"/>
+   <nd ref="13050229043"/>
+   <nd ref="13050229042"/>
+   <nd ref="13050229041"/>
+   <nd ref="13050229040"/>
+   <nd ref="13050229039"/>
+   <nd ref="13050229038"/>
+   <nd ref="13050229037"/>
+   <nd ref="13050229036"/>
+   <nd ref="13050229035"/>
+   <nd ref="13050229034"/>
+   <nd ref="13050229033"/>
+   <nd ref="13050229032"/>
+   <nd ref="13050229031"/>
+   <nd ref="13050229030"/>
+   <nd ref="13050229029"/>
+   <nd ref="13050229028"/>
+   <nd ref="13050229027"/>
+   <nd ref="13050229061"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="تجينت"/>
+   <tag k="name:ar" v="تجينت"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="4816667213" visible="true" version="3" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036" lat="32.7885646" lon="10.5153315">
+   <tag k="amenity" v="cafe"/>
+   <tag k="name" v="مقهى القصر"/>
+   <tag k="name:ar" v="مقهى القصر"/>
+   <tag k="name:fr" v="Café el Ksar"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11746809585" visible="true" version="3" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036" lat="32.7873151" lon="10.5061510">
+   <tag k="name" v="تجينت"/>
+   <tag k="name:aeb" v="تجينت"/>
+   <tag k="name:ar" v="تجينت"/>
+   <tag k="name:en" v="Tajint"/>
+   <tag k="place" v="isolated_dwelling"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="11493029489" visible="true" version="4" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036" lat="32.7746091" lon="10.4868865">
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="name" v="قلعة أولاد شهيدة"/>
+   <tag k="name:aeb" v="قلعة أولاد شهيدة"/>
+   <tag k="name:ar" v="قلعة أولاد شهيدة"/>
+   <tag k="name:en" v="Ksar Ouled Chehida"/>
+   <tag k="ruins" v="building"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="423641633" visible="true" version="4" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036">
+   <nd ref="4231993341"/>
+   <nd ref="4231993335"/>
+   <nd ref="4231993329"/>
+   <nd ref="4231993318"/>
+   <nd ref="4231993291"/>
+   <nd ref="4231993277"/>
+   <nd ref="4231993250"/>
+   <nd ref="4231993237"/>
+   <nd ref="4231993231"/>
+   <nd ref="4231993228"/>
+   <nd ref="4231993226"/>
+   <nd ref="4231993227"/>
+   <nd ref="4231993236"/>
+   <nd ref="4231993241"/>
+   <nd ref="4231993249"/>
+   <nd ref="4231993267"/>
+   <nd ref="4231993274"/>
+   <nd ref="4231993279"/>
+   <nd ref="4231993285"/>
+   <nd ref="4231993302"/>
+   <nd ref="4231993315"/>
+   <nd ref="4231993320"/>
+   <nd ref="4231993317"/>
+   <nd ref="4231993298"/>
+   <nd ref="11500926216"/>
+   <nd ref="4231993282"/>
+   <nd ref="4231993264"/>
+   <nd ref="4231993248"/>
+   <nd ref="11500926217"/>
+   <nd ref="4231993243"/>
+   <nd ref="11500926218"/>
+   <nd ref="4231993242"/>
+   <nd ref="4231993239"/>
+   <nd ref="4231993240"/>
+   <nd ref="4231993244"/>
+   <nd ref="4231993251"/>
+   <nd ref="4231993254"/>
+   <nd ref="4231993280"/>
+   <nd ref="11500871551"/>
+   <nd ref="4231993307"/>
+   <nd ref="4231993321"/>
+   <nd ref="4231993328"/>
+   <nd ref="4231993332"/>
+   <nd ref="4231993338"/>
+   <nd ref="11500871549"/>
+   <nd ref="11500871548"/>
+   <nd ref="11500871547"/>
+   <nd ref="11500871546"/>
+   <nd ref="11500871545"/>
+   <nd ref="4231993339"/>
+   <nd ref="11500871544"/>
+   <nd ref="11500871543"/>
+   <nd ref="11500871539"/>
+   <nd ref="11500871550"/>
+   <nd ref="11500871540"/>
+   <nd ref="11500871541"/>
+   <nd ref="11500871542"/>
+   <nd ref="4231993341"/>
+   <tag k="access" v="yes"/>
+   <tag k="building" v="ruins"/>
+   <tag k="name" v="أولاد شهيدة"/>
+   <tag k="name:ar" v="أولاد شهيدة"/>
+  </way>
+ </modify>
+ <modify>
+  <relation id="2516832" visible="true" version="6" changeset="177353601" timestamp="2026-01-17T21:55:47Z" user="user_16642036" uid="16642036">
+   <member type="way" ref="186841417" role="outer"/>
+   <member type="way" ref="186841478" role="inner"/>
+   <tag k="access" v="yes"/>
+   <tag k="building" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="name" v="قصر أولاد سلطان"/>
+   <tag k="name:ar" v="قصر أولاد سلطان"/>
+   <tag k="name:en" v="Ksar Ouled Soltane"/>
+   <tag k="name:fr" v="Ksar Ouled Soltane"/>
+   <tag k="ruins" v="building"/>
+   <tag k="tourism" v="attraction"/>
+   <tag k="type" v="multipolygon"/>
+   <tag k="wikidata" v="Q2670896"/>
+  </relation>
+ </modify>
+</osmChange>

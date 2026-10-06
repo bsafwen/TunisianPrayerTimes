@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "status": "ROOT_APPROVED_MANUAL_DISPLAY_ONLY",
+  "memberIds": [
+    "osm:node:1143501777",
+    "osm:relation:7201552"
+  ],
+  "canonicalName": "الملاسين",
+  "proposedOwnerId": "osm:node:1143501777",
+  "phoneEvidence": [
+    {
+      "file": "locality-display-reviews/mellassine-2026-09-19/sector-name.json",
+      "sha256": "d7e72f0dede2125810ab6249c7d07f6018e7ff37afb777e3dacddf3688d87548"
+    },
+    {
+      "file": "locality-display-reviews/mellassine-2026-09-19/suburb-coordinate.json",
+      "sha256": "e77a3087a6cd5d8e275365efdbdb58b071c16ad642f0467974bf407b0fa2b4e3"
+    }
+  ],
+  "sourceFacts": {
+    "file": "locality-display-reviews/mellassine-2026-09-19/source-facts.json",
+    "sha256": "f529924a0d19e5c97a7d29a208c165199e08e3fff407b1c8bb528499db6a20cf"
+  },
+  "decision": "Present the named Mellassine locality once in the manual picker, owned by the existing suburb point. Preserve the separately coded sector and the suburb as separate raw geographic records.",
+  "basis": [
+    "The official registry corroborates Mellassine sector116156 in Sijoumi1161.",
+    "The source inventory has exactly these two locality name peers. Both are within the same coded Sijoumi parent; the suburb point is in the distinct Ali Belhouane sector116152.",
+    "The sector-name search and a fresh coordinate lookup at the existing suburb point both select الملاسين on the public Maps card.",
+    "Both retained representatives independently select prayer reference405. This preserves prayer behavior but is not used as evidence of administrative identity."
+  ],
+  "limitations": [
+    "This is a reviewed manual display inference, not a claim that the two source geometries represent the same administrative boundary.",
+    "The suburb point is outside the narrow namesake sector. No new neighborhood polygon or expanded sector polygon is created.",
+    "Maps outlines and coordinate readbacks do not certify a boundary."
+  ],
+  "workerReview": {
+    "finding": "The initial advisory correctly warned against geographic equivalence. This decision instead limits consolidation to the manual display choice and preserves all geographic scopes."
+  }
+}

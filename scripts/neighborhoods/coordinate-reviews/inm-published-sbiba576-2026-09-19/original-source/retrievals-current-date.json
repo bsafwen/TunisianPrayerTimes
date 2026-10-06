@@ -1,0 +1,61 @@
+{
+  "sbiba-prayer-2026-09-19.json": {
+    "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/576/",
+    "startedAt": "2026-09-19T08:23:56.995103+00:00",
+    "status": 200,
+    "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/576/",
+    "headers": {
+      "Date": "Sat, 19 Sep 2026 08:23:56 GMT",
+      "X-Content-Type-Options": "nosniff",
+      "Cache-Control": "must-revalidate, no-cache, private",
+      "X-UA-Compatible": "IE=edge",
+      "Content-language": "fr",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "Vary": "",
+      "Content-Length": "571",
+      "Content-Type": "application/json",
+      "Connection": "close"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/next-locality-candidates-20260919/sbiba-prayer-2026-09-19.json",
+    "sha256": "6ec7b78f5b23532472dc3700a54086ad2a315861f8105b379125b30cc8cbb9c9",
+    "bytes": 571,
+    "reference": {
+      "lat": "35.545",
+      "lng": " 9.072",
+      "date": "2026-09-19 00:00",
+      "active": true
+    },
+    "finishedAt": "2026-09-19T08:23:57.232978+00:00"
+  },
+  "sbiba-sun-2026-09-19.json": {
+    "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/576/",
+    "startedAt": "2026-09-19T08:23:56.996097+00:00",
+    "status": 200,
+    "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/576/",
+    "headers": {
+      "Date": "Sat, 19 Sep 2026 08:23:56 GMT",
+      "X-Content-Type-Options": "nosniff",
+      "Upgrade": "h2",
+      "Connection": "Upgrade",
+      "Cache-Control": "must-revalidate, no-cache, private",
+      "X-UA-Compatible": "IE=edge",
+      "Content-language": "fr",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "Vary": "",
+      "Content-Length": "540",
+      "Content-Type": "application/json"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/next-locality-candidates-20260919/sbiba-sun-2026-09-19.json",
+    "sha256": "7ec25820720f8438225d30e0bcc9acbbe4879e0786fd2abfc9af22d1db4da7c6",
+    "bytes": 540,
+    "reference": {
+      "lat": "35.545",
+      "lng": " 9.072",
+      "date": "2026-09-19 00:00",
+      "active": true
+    },
+    "finishedAt": "2026-09-19T08:23:57.263608+00:00"
+  }
+}

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3498739 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="264881676" visible="true" version="1" changeset="461428" timestamp="2008-05-16T11:27:42Z" user="tmeller" uid="33188" lat="33.4741805" lon="9.0084678">
+  <tag k="created_by" v="Potlatch 0.9a"/>
+ </node>
+ <node id="264881676" visible="true" version="2" changeset="282064" timestamp="2008-06-24T13:52:50Z" user="tmeller" uid="33188" lat="33.4741775" lon="9.0084719">
+  <tag k="created_by" v="Potlatch 0.9c"/>
+  <tag k="name" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="3" changeset="664450" timestamp="2009-02-25T17:35:37Z" user="ger4rd" uid="90488" lat="33.4595082" lon="9.0214154">
+  <tag k="created_by" v="Potlatch 0.9c"/>
+  <tag k="name" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="4" changeset="2255423" timestamp="2009-08-25T12:39:47Z" user="Chdoula" uid="54304" lat="33.4595082" lon="9.0214154">
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="5" changeset="7063484" timestamp="2011-01-23T16:33:46Z" user="ulrichm" uid="192829" lat="33.4595082" lon="9.0214154">
+  <tag k="name" v="دوز / Douz"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="6" changeset="7514413" timestamp="2011-03-10T14:04:25Z" user="Chdoula" uid="54304" lat="33.4595082" lon="9.0214154">
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="7" changeset="10370677" timestamp="2012-01-12T16:15:10Z" user="ZiDeb" uid="584843" lat="33.4595082" lon="9.0214154">
+  <tag k="int_name" v="Douz"/>
+  <tag k="name" v="Douz دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="8" changeset="10987476" timestamp="2012-03-15T11:42:28Z" user="Chdoula" uid="54304" lat="33.4595082" lon="9.0214154">
+  <tag k="int_name" v="Douz"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="9" changeset="10993405" timestamp="2012-03-15T21:55:39Z" user="ulrichm" uid="192829" lat="33.4595082" lon="9.0214154">
+  <tag k="int_name" v="Douz"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="10" changeset="13567435" timestamp="2012-10-20T13:03:20Z" user="ulrichm" uid="192829" lat="33.4595082" lon="9.0214154">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="int_name" v="Douz"/>
+  <tag k="is_in" v="Gabès; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="11" changeset="15239941" timestamp="2013-03-03T21:31:19Z" user="Rick69" uid="1220849" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="int_name" v="Douz"/>
+  <tag k="is_in" v="Gabès; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="12" changeset="16354688" timestamp="2013-05-30T17:47:39Z" user="omar12" uid="1191475" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="دوز  DOUZ"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="13" changeset="22292873" timestamp="2014-05-12T14:23:12Z" user="HellSpawn" uid="137798" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="14" changeset="38066719" timestamp="2016-03-25T16:53:27Z" user="andi_osm" uid="3186104" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="Douz دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="15" changeset="41617274" timestamp="2016-08-22T15:34:38Z" user="☆Finvenkulo" uid="4128818" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="Douz دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="16" changeset="43251665" timestamp="2016-10-28T18:06:48Z" user="Batareikin" uid="127299" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="Douz دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="17" changeset="43833104" timestamp="2016-11-20T21:44:37Z" user="DenisCarriere" uid="472018" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="Douz"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="Douz دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="18" changeset="54389682" timestamp="2017-12-06T04:26:43Z" user="سامبا" uid="4860517" lat="33.4570853" lon="9.0250214">
+  <tag k="addr:city" v="دوز"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="19" changeset="59195128" timestamp="2018-05-23T00:17:25Z" user="Esperanza36" uid="83557" lat="33.4571574" lon="9.0235934">
+  <tag k="addr:city" v="دوز"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabès;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+ </node>
+ <node id="264881676" visible="true" version="20" changeset="79268228" timestamp="2020-01-06T22:57:41Z" user="user_9838430" uid="9838430" lat="33.4571574" lon="9.0235934">
+  <tag k="addr:city" v="دوز"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+  <tag k="wikidata" v="Q1009268"/>
+  <tag k="wikipedia" v="ar:دوز"/>
+ </node>
+ <node id="264881676" visible="true" version="21" changeset="83275482" timestamp="2020-04-09T00:49:21Z" user="Anis Ben Makhlouf" uid="10001069" lat="33.4570570" lon="9.0248688">
+  <tag k="addr:city" v="دوز"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+  <tag k="wikidata" v="Q1009268"/>
+  <tag k="wikipedia" v="ar:دوز"/>
+ </node>
+ <node id="264881676" visible="true" version="22" changeset="117954482" timestamp="2022-02-28T18:21:11Z" user="Amor B" uid="15124343" lat="33.4571102" lon="9.0249829">
+  <tag k="addr:city" v="دوز"/>
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+  <tag k="wikidata" v="Q1009268"/>
+  <tag k="wikipedia" v="ar:دوز"/>
+ </node>
+ <node id="264881676" visible="true" version="23" changeset="121073489" timestamp="2022-05-17T00:18:34Z" user="user_11422772" uid="11422772" lat="33.4571102" lon="9.0249829">
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:kab" v="Duz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+  <tag k="wikidata" v="Q1009268"/>
+  <tag k="wikipedia" v="ar:دوز"/>
+ </node>
+ <node id="264881676" visible="true" version="24" changeset="171909432" timestamp="2025-09-14T10:19:40Z" user="tg4567" uid="12500589" lat="33.4571102" lon="9.0249829">
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:kab" v="Duz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+  <tag k="wikidata" v="Q1009268"/>
+  <tag k="wikimedia_commons" v="Category:Douz"/>
+  <tag k="wikipedia" v="ar:دوز"/>
+ </node>
+</osm>

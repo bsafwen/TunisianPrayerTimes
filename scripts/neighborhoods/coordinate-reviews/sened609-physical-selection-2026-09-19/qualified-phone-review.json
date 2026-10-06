@@ -1,0 +1,144 @@
+{
+  "status": "QUALIFIED_IDENTITY_EVIDENCE_NOT_FULL_CATALOG_CERTIFICATION",
+  "observations": [
+    {
+      "sourceId": 609,
+      "sequence": 5,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-5.json",
+        "sha256": "faf6fc4fb70914cea3a3dd0b7f72892062af3ed79313b71c56fa0abe3e3922ab"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-5.png",
+        "sha256": "3c557e25a65e1ca214ca93683164b8015aec202d492a36e310176dee6e931190"
+      }
+    },
+    {
+      "sourceId": 609,
+      "sequence": 6,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-6.json",
+        "sha256": "18f054ff89784f46caaf58195c040a5e103aa88e18ca45df049e6732d2b3f158"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-6.png",
+        "sha256": "94ca9decbb20d4b38e35e90a2f8aa243cc1a07c49c617fc2964573a1fc32ba7f"
+      }
+    },
+    {
+      "sourceId": 609,
+      "sequence": 7,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-7.json",
+        "sha256": "44ea62b0f0bd08a482852e8c993a6535218c56b6d853d24c47782b9a3d2fe275"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-7.png",
+        "sha256": "dd12674eca41d223012f2fc184c010c3f55e15e1881a023b75af6b2a53de5523"
+      }
+    },
+    {
+      "sourceId": 609,
+      "sequence": 8,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-8.json",
+        "sha256": "993fb177789d1303906649bce2c6d711f08f33b424b8dbcbf840010925354fda"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-8.png",
+        "sha256": "2ccd47cf28148b6f36f4a76297544cd4207f8dbb838b2cdb1c2903e0b5b58797"
+      }
+    },
+    {
+      "sourceId": 1522,
+      "sequence": 5,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-5.json",
+        "sha256": "19021c61bd80a2691ecc2bbed793f595f62552264c81633d60bea5a945772627"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-5.png",
+        "sha256": "ae8bc168dcb1dc762e8dc9c3f35b2a12a4a84e3c16e570e5473035b4d169597d"
+      }
+    },
+    {
+      "sourceId": 1522,
+      "sequence": 6,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-6.json",
+        "sha256": "c7bdfb11a9848038a91dfebab460565f7e4963b3d307592726a3010b04fcaa3c"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-6.png",
+        "sha256": "fcbfc581229aae3dfaeb384d153239cbc421a740650ceeb8bd220e2489a4aee5"
+      }
+    },
+    {
+      "sourceId": 1522,
+      "sequence": 7,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-7.json",
+        "sha256": "98bf5fbfb28b8f551d66b8a3147da66b6dce1360c171cd6b97f7924326c39d3e"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-7.png",
+        "sha256": "511a0b795f9aaaff4d82f7dacb2d8462d5447270050d39b7e666fd97dcb39746"
+      }
+    },
+    {
+      "sourceId": 1522,
+      "sequence": 8,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-8.json",
+        "sha256": "ea8a2549dc04f0f76e44ec9f2f669ae552887c7bc9cc49d588e6941e889bb386"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-8.png",
+        "sha256": "c62e75dd023a459e15a05dec3fb5665357d94dfcfe5ca888dfa6037b7ffb5bde"
+      }
+    },
+    {
+      "sourceId": 1522,
+      "sequence": 9,
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-9.json",
+        "sha256": "fd4783b24e37da72bf3a23d3aac4684ccbec5bdbc20d233645cd688f5e6a9816"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-9.png",
+        "sha256": "f58cd2d7b43d3099f9e77c12d71994d33bfe1606dea301ba3828fb2b98eda665"
+      }
+    }
+  ],
+  "workerReports": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\sened-public-card-comparison-response.json",
+      "sha256": "5b6eb2ef76346bcafbbe0d43828639aa93824fe7417d3fd9f2bd4e8c24271f3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\hichria-public-card-comparison-response.json",
+      "sha256": "647e196588498d10d33c4403a56b69a3f1ce37ad5f7f43b2c445daa1bdc27913"
+    }
+  ],
+  "rootQualifications": {
+    "609": "Approve preparing physical source609 at original town node2178146164. Named town and municipality results show the northern town grid and station, while current published coordinate is beside the separate Sened Jebel village. Preserve Sened Jebel as its own locality. Exact coordinates come from original OSM node matching fresh API, not inferred Google outlines. P14 result is a street card after a coordinate query, not an exact coordinate readback. Municipality photos are not location evidence.",
+    "1522": "Named search context shares the northern mosque landmark with the original village coordinate query. Current published point query returns a differently spelled southern named card near Essalama. Office searches returned broad result lists, including unrelated Sidi Bouzid offices; they do not identify a precise Hichria office or certify either point. Keep the current source unchanged pending additional geographic corroboration. The 2020 official gazette confirms Hichria delegation identity and creation, not town centre coordinates."
+  },
+  "sourceFidelity": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sened-hichria-identity-review-20260919\\fresh-original-node-comparison.json",
+    "sha256": "04b292eeeaded6bb2cfd470363598288740c7876bc6302f362a2163abf0b3892"
+  },
+  "counterfactual": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sened-hichria-identity-review-20260919\\current-reference-counterfactual.json",
+    "sha256": "89d47c452d4d8ececfbdac12b490cf46713fa3a1db5c67d68a53ff80a36538fd"
+  },
+  "phoneLimits": {
+    "exactGoogleCoordinateExportedForApp": false,
+    "boundariesCertified": false,
+    "facetsMarkedVerified": false
+  },
+  "productChangesApprovedForPreparation": [
+    609
+  ],
+  "productChangesInstalled": false
+}

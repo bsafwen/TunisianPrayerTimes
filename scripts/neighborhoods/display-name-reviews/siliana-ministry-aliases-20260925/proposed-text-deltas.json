@@ -1,0 +1,106 @@
+{
+  "baseCatalogSha256": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4",
+  "status": "review_only_not_installed",
+  "safeMinistrySearchAliases": [
+    {
+      "id": "osm:relation:7126058",
+      "insSectorCode": "245151",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "سليانة المدينة",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7126051",
+      "insSectorCode": "245252",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "مرج المقدم",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7125518",
+      "insSectorCode": "245258",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "اولاد زناق",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7125035",
+      "insSectorCode": "245351",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "أحواز بوعرادة",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7126205",
+      "insSectorCode": "245453",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "الاخوات",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7126320",
+      "insSectorCode": "245553",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "الدخانية",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7126318",
+      "insSectorCode": "245556",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "برج المسعودي الشمالية",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7126319",
+      "insSectorCode": "245557",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "برج المسعودي الجنوبية",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    },
+    {
+      "id": "osm:relation:7125787",
+      "insSectorCode": "245758",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "الصدين",
+      "reason": "exact pinned Ministry spelling; unique against سليانة INS sector labels"
+    }
+  ],
+  "displayNames": [],
+  "excludedAliasCases": [],
+  "heldNameConflictCases": [
+    {
+      "appId": "osm:relation:7125032",
+      "insSectorCode": "245354",
+      "ministryName": "هنشير الرومان",
+      "insName": "هنشير الرومان",
+      "appName": "هنشير الرمان",
+      "reason": "Ministry and INS use الرومان; app and OSM use الرمان. This may be a lexical distinction, so hold the alias pending independent identity evidence."
+    },
+    {
+      "appId": "osm:relation:7125778",
+      "insSectorCode": "245757",
+      "ministryName": "راس الوالي",
+      "insName": "رأس الوادي",
+      "appName": "راس الواد",
+      "reason": "Ministry says الوالي; INS and app/OSM say الوادي/الواد. This is a name conflict, not a confirmed spelling variant."
+    },
+    {
+      "appId": "osm:relation:7125183",
+      "insSectorCode": "246058",
+      "ministryName": "البحرين",
+      "insName": "البحيرين",
+      "appName": "البحيرين",
+      "reason": "Ministry says البحرين; INS and app/OSM say البحيرين. Hold the extra-ياء difference pending independent identity evidence."
+    }
+  ]
+}

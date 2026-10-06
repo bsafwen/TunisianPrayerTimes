@@ -1,0 +1,487 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_SOURCE_BYTE_COPY_RECEIPTS",
+  "copies": [
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/source-package-manifest.json",
+        "sha256": "171752fefd84e6be834e795140b2c53168984f08cd15aa384928b9c3b52ffddc",
+        "bytes": 49230
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/source-package-manifest.json",
+        "sha256": "171752fefd84e6be834e795140b2c53168984f08cd15aa384928b9c3b52ffddc"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-thirteen-native-source-stage-readiness-20260912.json",
+        "sha256": "3ec47bb2007f8de140d897644ed0c15103b446cdce55aae7ad77278dff2c2306",
+        "bytes": 25443
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/soliman-thirteen-native-source-stage-readiness-20260912.json",
+        "sha256": "3ec47bb2007f8de140d897644ed0c15103b446cdce55aae7ad77278dff2c2306"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-thirteen-source-package-independent-review-20260912.json",
+        "sha256": "d9c9a73276c72d4a8e4a7ab5cc0b8e9d2f5ad76553a81e20d9176ba81cf504d7",
+        "bytes": 8283
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/soliman-thirteen-source-package-independent-review-20260912.json",
+        "sha256": "d9c9a73276c72d4a8e4a7ab5cc0b8e9d2f5ad76553a81e20d9176ba81cf504d7"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-thirteen-stage-root-geometry-review-20260912.json",
+        "sha256": "76c9f55112e2faefcc4609092d20a63b90ab80832c3332f6be4931e0d0871a9f",
+        "bytes": 7845
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/soliman-thirteen-stage-root-geometry-review-20260912.json",
+        "sha256": "76c9f55112e2faefcc4609092d20a63b90ab80832c3332f6be4931e0d0871a9f"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/arima-joufia-receiving-own-map-source-review.json",
+        "sha256": "e568e51d4d8aaeb4b442af679e969cae9fffc320dc3c021ca2c69ad2bff4e160",
+        "bytes": 58627
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/arima-joufia-receiving-own-map-source-review.json",
+        "sha256": "e568e51d4d8aaeb4b442af679e969cae9fffc320dc3c021ca2c69ad2bff4e160"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-own-map-source-selection-facts.json",
+        "sha256": "0bb60e9953475b957cde85d7ba857cc3483b2ffcbde6106e08c559895e4098fa",
+        "bytes": 125684
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/two-own-map-source-selection-facts.json",
+        "sha256": "0bb60e9953475b957cde85d7ba857cc3483b2ffcbde6106e08c559895e4098fa"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-receiving-source-finite-effects.json",
+        "sha256": "e420a0c7e3cd3aa3cb3147edfd105a77fa0934407c6b6ef366f55c81468930e7",
+        "bytes": 48816
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/two-receiving-source-finite-effects.json",
+        "sha256": "e420a0c7e3cd3aa3cb3147edfd105a77fa0934407c6b6ef366f55c81468930e7"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-receiver-registration-quantization-diagnostic.json",
+        "sha256": "e17e52f5cf57e3ba4300e03677f41cee0e8ce79445a2a880e4656d811826c9b7",
+        "bytes": 4799
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/two-receiver-registration-quantization-diagnostic.json",
+        "sha256": "e17e52f5cf57e3ba4300e03677f41cee0e8ce79445a2a880e4656d811826c9b7"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-whole-native-source-polygons.geojson",
+        "sha256": "1cda298b6956e7dbde26a334ee9dae1d3457ac43a03f1f4abdc5441eed454427",
+        "bytes": 139631
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/two-whole-native-source-polygons.geojson",
+        "sha256": "1cda298b6956e7dbde26a334ee9dae1d3457ac43a03f1f4abdc5441eed454427"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/retrieval-manifest.json",
+        "sha256": "dd7adf0cbb851dd5f4d7557fe4ce6420fd770d9605857d38ec12a489dcb06868",
+        "bytes": 8166
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/retrieval-manifest.json",
+        "sha256": "dd7adf0cbb851dd5f4d7557fe4ce6420fd770d9605857d38ec12a489dcb06868"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/unreviewed-native-path-inventory.json",
+        "sha256": "e62e68308526d7255fbe447728b5936029aff8dec0a4ce646d302f277849f399",
+        "bytes": 1197007
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/unreviewed-native-path-inventory.json",
+        "sha256": "e62e68308526d7255fbe447728b5936029aff8dec0a4ce646d302f277849f399"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/arima-joufia-own-map-source-independent-review-20260912.json",
+        "sha256": "ba07ad26291a6694f75e323756a57e31752d716644b7cedcd01f17e1194edba5",
+        "bytes": 23150
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/arima-joufia-own-map-source-independent-review-20260912.json",
+        "sha256": "ba07ad26291a6694f75e323756a57e31752d716644b7cedcd01f17e1194edba5"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/point-retention-reviews/current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+        "bytes": 1133114
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree2023-590.pdf",
+        "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "bytes": 10636520
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/decree2023-590.pdf",
+        "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree-source.json",
+        "sha256": "4d32d381e259cbecab67ac7b2d268cb8e7892a2ffd6c36531f2e82236cbb5dae",
+        "bytes": 189
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/decree-source.json",
+        "sha256": "4d32d381e259cbecab67ac7b2d268cb8e7892a2ffd6c36531f2e82236cbb5dae"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/current-official-catalog/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "bytes": 9247324
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/current-official-catalog/Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "bytes": 755797
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/current-official-catalog/Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "bytes": 649843
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-76.png",
+        "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598",
+        "bytes": 306070
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/decree-page-76.png",
+        "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-77.png",
+        "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134",
+        "bytes": 313154
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/identity/decree-page-77.png",
+        "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/retrieve_two_originals.py",
+        "sha256": "209c2042c7768417bf35bf3f50994cfc43d33a299a664114a78e131b9a7846d3",
+        "bytes": 4102
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/extraction/retrieve_two_originals.py",
+        "sha256": "209c2042c7768417bf35bf3f50994cfc43d33a299a664114a78e131b9a7846d3"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/extract_native_inventory.py",
+        "sha256": "142ac74c14dd80c9469209dd103312520f900f0d51db1f8fd5d0c739434aff04",
+        "bytes": 6200
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/extraction/extract_native_inventory.py",
+        "sha256": "142ac74c14dd80c9469209dd103312520f900f0d51db1f8fd5d0c739434aff04"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/select_two_whole_sources.py",
+        "sha256": "ac8fce0bfc7f675eea1e3378a2f485fa3f35f472c437e22074f183d389e323ee",
+        "bytes": 8901
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/extraction/select_two_whole_sources.py",
+        "sha256": "ac8fce0bfc7f675eea1e3378a2f485fa3f35f472c437e22074f183d389e323ee"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/measure_two_receivers.py",
+        "sha256": "d4e5be860629a3f7c6d75696ec6da5b2fa7cbd9e1a34b72896ea3e001ada3feb",
+        "bytes": 12376
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/extraction/measure_two_receivers.py",
+        "sha256": "d4e5be860629a3f7c6d75696ec6da5b2fa7cbd9e1a34b72896ea3e001ada3feb"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/freeze_receiving_map_report.py",
+        "sha256": "3d7a70aa6d91d6c56df891ceb2ec8bd01e4270fd975a6ebe5e75838d048082ba",
+        "bytes": 11339
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/extraction/freeze_receiving_map_report.py",
+        "sha256": "3d7a70aa6d91d6c56df891ceb2ec8bd01e4270fd975a6ebe5e75838d048082ba"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/baddar-aitha-kharmia-essabala-source-review/original-source-retrievals.json",
+        "sha256": "05c487d793507d5abf256e757e435446d6dbbaaef898ff8d28cdee23b597d4ee",
+        "bytes": 11745
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/primary/original-source-retrievals.json",
+        "sha256": "05c487d793507d5abf256e757e435446d6dbbaaef898ff8d28cdee23b597d4ee"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/baddar-aitha-kharmia-essabala-source-review/baddar-governorate-village-2016.html",
+        "sha256": "7b2b35ae9facfa169e4c132f05e11f7fb7c1e8d44ecf3c2dc5e557c9e75bab3b",
+        "bytes": 114615
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/primary/baddar-governorate-village-2016.html",
+        "sha256": "7b2b35ae9facfa169e4c132f05e11f7fb7c1e8d44ecf3c2dc5e557c9e75bab3b"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/baddar-aitha-kharmia-essabala-source-review/baddar-governorate-village-2016.headers",
+        "sha256": "3a35baf2c963c584eb2053625ba10c69f0ab12308ffd07eae8af13adf23db76e",
+        "bytes": 394
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/primary/baddar-governorate-village-2016.headers",
+        "sha256": "3a35baf2c963c584eb2053625ba10c69f0ab12308ffd07eae8af13adf23db76e"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/baddar-aitha-kharmia-essabala-source-review/baddar-governorate-arima-2022.html",
+        "sha256": "c11bfbad49d0098ca907520839be9c629b079ca892b661bee88123f806d79f19",
+        "bytes": 126625
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/primary/baddar-governorate-arima-2022.html",
+        "sha256": "c11bfbad49d0098ca907520839be9c629b079ca892b661bee88123f806d79f19"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/baddar-aitha-kharmia-essabala-source-review/baddar-governorate-arima-2022.headers",
+        "sha256": "20b31b0d2afd0ff600cf6d29158fd71d66b286499cd4c5f88548548ba9a1ab45",
+        "bytes": 395
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/primary/baddar-governorate-arima-2022.headers",
+        "sha256": "20b31b0d2afd0ff600cf6d29158fd71d66b286499cd4c5f88548548ba9a1ab45"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/baddar-aitha-kharmia-essabala-name-source-review.json",
+        "sha256": "b3c47138b89438ffb4e1b435e623fefe21b9590e61c9202f5bd2c280258466b0",
+        "bytes": 11608
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/reviews/baddar-aitha-kharmia-essabala-name-source-review.json",
+        "sha256": "b3c47138b89438ffb4e1b435e623fefe21b9590e61c9202f5bd2c280258466b0"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.pdf",
+        "sha256": "6411d48b0acb4b3cffde4c17d52004deb54fbb93d5fd0a6922aec2842dd55a6b",
+        "bytes": 1404326
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/arima.pdf",
+        "sha256": "6411d48b0acb4b3cffde4c17d52004deb54fbb93d5fd0a6922aec2842dd55a6b"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima-retrieval.json",
+        "sha256": "a1cf53be86fc0be55a6a41f672a2000941aa39b85f51eb5193698be261b607c5",
+        "bytes": 2776
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/arima-retrieval.json",
+        "sha256": "a1cf53be86fc0be55a6a41f672a2000941aa39b85f51eb5193698be261b607c5"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.headers",
+        "sha256": "036555b1be91dce05e55490b965f9d6e04d287b998fccf8b4ef8453947c0679e",
+        "bytes": 560
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/arima.headers",
+        "sha256": "036555b1be91dce05e55490b965f9d6e04d287b998fccf8b4ef8453947c0679e"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima-whole-page.png",
+        "sha256": "fdc4f33c0c101b3d0b350071369a4244a6044e6395cf821a5f52806b3c6f0004",
+        "bytes": 3195806
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/arima-whole-page.png",
+        "sha256": "fdc4f33c0c101b3d0b350071369a4244a6044e6395cf821a5f52806b3c6f0004"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.pdf",
+        "sha256": "b828a2a54b8cde4e2dbdb0894319a3ca051c08066fa89fc07d76c18928a15b58",
+        "bytes": 1633073
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/menzel-bouzelfa-joufia.pdf",
+        "sha256": "b828a2a54b8cde4e2dbdb0894319a3ca051c08066fa89fc07d76c18928a15b58"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia-retrieval.json",
+        "sha256": "f4058371f5ba4439cb42fc88822cf902b1671827858490d7f06016b0376bdc76",
+        "bytes": 3171
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/menzel-bouzelfa-joufia-retrieval.json",
+        "sha256": "f4058371f5ba4439cb42fc88822cf902b1671827858490d7f06016b0376bdc76"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.headers",
+        "sha256": "128e4b17df18261ac8bca7c7e0317b62da67b6551533ef339c4e3e0ea9496392",
+        "bytes": 322
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/menzel-bouzelfa-joufia.headers",
+        "sha256": "128e4b17df18261ac8bca7c7e0317b62da67b6551533ef339c4e3e0ea9496392"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia-whole-page.png",
+        "sha256": "5b6ee8be7c3662236c483829a2f787e360e502f5810dd43dd1c68d5ca5beb595",
+        "bytes": 3218212
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/maps/menzel-bouzelfa-joufia-whole-page.png",
+        "sha256": "5b6ee8be7c3662236c483829a2f787e360e502f5810dd43dd1c68d5ca5beb595"
+      },
+      "byteExact": true
+    },
+    {
+      "original": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/scripts/neighborhoods/official/soliman-thirteen-native-20260912/accepted88-whole-imada-scope-review.json",
+        "sha256": "a503c52598baa99bbea05fe2a7c410f622f7320716b6dead6c241720bcae49d1",
+        "bytes": 113590
+      },
+      "staged": {
+        "file": "official/arima-joufia-receivers-20260912/historical/accepted88-whole-imada-scope-review.json",
+        "sha256": "a503c52598baa99bbea05fe2a7c410f622f7320716b6dead6c241720bcae49d1"
+      },
+      "byteExact": true
+    }
+  ],
+  "qualification": "Original responses are exact bytes. Derived facts/extractors/reviews are expressly not original HTTP response bytes. Existing historical paths are preserved without relabeling."
+}

@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUNDED_SOURCE_REVIEW_ONE_HOLD_ONE_SUPPORTED_PENDING_GROUP_TRANSITION",
+  "baselineMetadataSha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86",
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\montfleury-bab-souika-source-review\\exact-current-source-and-scope-facts.json",
+    "sha256": "928a5896d10a31cbb4a697b8f03367e233ca6206b142e5e4207dca682d3d466d"
+  },
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "b18643d50429019a15f9e3d89f410d5841ac09ba6160428f0e2ba2a21b809d33"
+  },
+  "coordinateProvenance": {
+    "coordinateManifestCorrections": 30,
+    "corrections402or395": [],
+    "currentBasesEqualDocs": true,
+    "originalManifestProvenance": {
+      "path": "android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8",
+      "coordinateProvenance": "Legacy bundled reference coordinates; an external origin for these coordinates was not documented."
+    },
+    "qualification": "Existing timetable reference coordinates, not externally certified original INM anchors. Neither distance nor extra OSM decimals justify relocating them."
+  },
+  "records": [
+    {
+      "pointId": "osm:node:1256204446",
+      "baseId": 402,
+      "status": "HOLD_SAME_PLACE_ASSOCIATION_KEEP_DISTINCT",
+      "pointName": "مونفلوري",
+      "base": {
+        "id": 402,
+        "nomFr": "Sidi El Bechir",
+        "nomAr": "سيدي البشير",
+        "nomEn": "Sidi El Bechir",
+        "lat": 36.79,
+        "lng": 10.17
+      },
+      "proposedMetadataFieldChanges": [],
+      "conclusion": "Preserve Montfleury as a separate named quarter. Sidi El Bechir is a different source label with a distinct namesake suburb and imada; the evidence establishes administrative/address association, not synonymous display identity.",
+      "sourcePeers": [
+        {
+          "id": "osm:node:1237971782",
+          "kind": "suburb",
+          "currentGroup": []
+        },
+        {
+          "id": "osm:node:1256204446",
+          "kind": "suburb",
+          "currentGroup": [
+            "osm:node:1256204446"
+          ]
+        },
+        {
+          "id": "osm:relation:4133966",
+          "kind": "delegation",
+          "currentGroup": []
+        },
+        {
+          "id": "osm:relation:7202774",
+          "kind": "sector",
+          "currentGroup": [
+            "osm:relation:7202774"
+          ]
+        }
+      ],
+      "existingSidiElBechirSource": {
+        "id": "osm:node:1237971782",
+        "lat": 36.7921931,
+        "lng": 10.1788977,
+        "rawRowAbsent": true,
+        "insideNamesakeSector": "osm:relation:7202774",
+        "sectorCarriesSourceLatinAlias": "Sidi Al Bachir",
+        "sectorCurrentPrayerSource": 404,
+        "qualification": "This existing source point and carried alias must not be ignored or recreated as a new raw row while evaluating402."
+      },
+      "currentGroups": {
+        "point": [
+          "osm:node:1256204446"
+        ],
+        "base": [
+          "delegation:402"
+        ]
+      },
+      "context": {
+        "currentParent": "معقل الزعيم",
+        "imadaCode": "116753",
+        "delegationCode": "1167",
+        "pointAndBaseInsideCachedImada": true,
+        "sourceQualification": "No concrete contradiction to the current parent was found. Primary address usage supports Montfleury within Sidi El Bechir, but does not independently survey or certify the exact Maakel Ezzaim imada boundary."
+      },
+      "preservedImadas": [
+        {
+          "id": "osm:relation:7202774",
+          "code": "116751",
+          "nameAr": "سيدي البشير",
+          "group": "osm:relation:7202774"
+        },
+        {
+          "id": "osm:relation:7202775",
+          "code": "116752",
+          "nameAr": "سيدي منصور",
+          "group": "osm:relation:7202775"
+        },
+        {
+          "id": "osm:relation:7202779",
+          "code": "116753",
+          "nameAr": "معقل الزعيم",
+          "group": "osm:relation:7202779"
+        },
+        {
+          "id": "osm:relation:7202778",
+          "code": "116754",
+          "nameAr": "فرحات حشاد –( سيدي البشير )",
+          "group": "osm:relation:7202778"
+        },
+        {
+          "id": "osm:relation:7202776",
+          "code": "116755",
+          "nameAr": "أبو القاسم الشابي",
+          "group": "osm:relation:7202776"
+        },
+        {
+          "id": "osm:relation:7202777",
+          "code": "116756",
+          "nameAr": "السيدة المنوبية",
+          "group": "osm:relation:7202777"
+        }
+      ],
+      "distanceMetres": 72.34195496622978,
+      "missingFactForMerge": "A primary source must explicitly establish Montfleury and this Sidi El Bechir timetable identity as the same named place; current sources instead use Montfleury as a location under Sidi El Bechir. A nearby Maps outline does not supply that equivalence."
+    },
+    {
+      "pointId": "osm:node:1258831465",
+      "baseId": 395,
+      "status": "SUPPORTED_DISPLAY_IDENTITY_PENDING_EXISTING_GROUP_REVIEW",
+      "pointName": "باب سويقة",
+      "base": {
+        "id": 395,
+        "nomFr": "Bab Souika",
+        "nomAr": "باب سويقة",
+        "nomEn": "Bab Souika",
+        "lat": 36.8083,
+        "lng": 10.17
+      },
+      "sourceDecision": "Bab Souika is an inhabited urban quarter as well as a historical suburb and administrative name, not merely a gate/POI. The unqualified source point and timetable label support one reviewed display identity; this is a display inference, not equivalence of quarter, heritage and administrative boundaries.",
+      "possibleMetadataFieldChange": {
+        "id": "osm:node:1258831465",
+        "field": "pickerGroupId",
+        "before": "osm:node:1258831465",
+        "after": "delegation:395"
+      },
+      "currentGroups": {
+        "point": [
+          "osm:node:1258831465"
+        ],
+        "base": [
+          "delegation:395",
+          "osm:relation:7201474"
+        ]
+      },
+      "requiredFinalBaseMembers": [
+        "delegation:395",
+        "osm:node:1258831465",
+        "osm:relation:7201474"
+      ],
+      "sourcePeers": [
+        {
+          "id": "osm:node:1258831465",
+          "kind": "suburb",
+          "currentGroup": [
+            "osm:node:1258831465"
+          ]
+        },
+        {
+          "id": "osm:relation:4133433",
+          "kind": "delegation",
+          "currentGroup": []
+        },
+        {
+          "id": "osm:relation:7201474",
+          "kind": "sector",
+          "currentGroup": [
+            "delegation:395",
+            "osm:relation:7201474"
+          ]
+        }
+      ],
+      "priorReviewedMembership": "Sector7201474/code115457 already belongs to delegation:395 through the current coded-sector/base record. Preserve that record and its geographic/raw fields; this is not a pair of singleton groups.",
+      "context": {
+        "pointCurrentImada": "115461 سيدي الجبالي",
+        "baseCurrentImada": "115457 باب سويقة",
+        "sameCachedDelegation": "1154",
+        "qualification": "Different imadas do not themselves contradict the broader quarter name. Preserve both current contexts and all existing imada group assignments."
+      },
+      "preservedImadas": [
+        {
+          "id": "osm:relation:7201472",
+          "code": "115451",
+          "nameAr": "ترنجة",
+          "group": "osm:relation:7201472"
+        },
+        {
+          "id": "osm:relation:7201470",
+          "code": "115452",
+          "nameAr": "باب الخضراء",
+          "group": "osm:relation:7201470"
+        },
+        {
+          "id": "osm:relation:7201478",
+          "code": "115453",
+          "nameAr": "باب سعدون",
+          "group": "osm:relation:7201478"
+        },
+        {
+          "id": "osm:relation:7201476",
+          "code": "115454",
+          "nameAr": "برج زوارة",
+          "group": "osm:relation:7201476"
+        },
+        {
+          "id": "osm:relation:7201469",
+          "code": "115455",
+          "nameAr": "باب العسل",
+          "group": "osm:relation:7201469"
+        },
+        {
+          "id": "osm:relation:7201468",
+          "code": "115456",
+          "nameAr": "الحلفاوين",
+          "group": "osm:relation:7201468"
+        },
+        {
+          "id": "osm:relation:7201474",
+          "code": "115457",
+          "nameAr": "باب سويقة",
+          "group": "delegation:395"
+        },
+        {
+          "id": "osm:relation:7201471",
+          "code": "115458",
+          "nameAr": "باب سيدي عبد السلام",
+          "group": "osm:relation:7201471"
+        },
+        {
+          "id": "osm:relation:7201477",
+          "code": "115459",
+          "nameAr": "الزاوية البكرية",
+          "group": "osm:relation:7201477"
+        },
+        {
+          "id": "osm:relation:7201473",
+          "code": "115460",
+          "nameAr": "حمام الرميمي",
+          "group": "osm:relation:7201473"
+        },
+        {
+          "id": "osm:relation:7201475",
+          "code": "115461",
+          "nameAr": "سيدي الجبالي",
+          "group": "osm:relation:7201475"
+        }
+      ],
+      "distanceMetres": 387.92896593226214,
+      "remainingPrerequisites": [
+        "Independently approve the exact existing-group extension, reserving the complete two-member target group and preserving its accepted sector association. No current singleton-only proof should be bypassed.",
+        "Preserve the namesake read-only delegation peer without inventing a raw row. Preserve all11 imadas, both coordinates, point source395 and all geometry/default/name fields.",
+        "Retain the explicit provenance qualification for SNIT indexed text: direct retrieval failed certificate validation; the separately cached INP primary page is byte-pinned. No TLS bypass was used."
+      ]
+    }
+  ],
+  "primarySources": [
+    {
+      "provider": "Institut National du Patrimoine",
+      "url": "https://www.inp2020.tn/ar/2020/01/28/medina-de-tunis/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\medina403-scope-review\\inp-medina.html",
+        "sha256": "a79a406642ab2c4995b5db5af1d01e67e98667357b097229e653edc429a2de10"
+      },
+      "shortExcerpt": "بين ضاحيتي باب سويقة شمالا وباب الجزيرة جنوبا",
+      "role": "Directly names Bab Souika as a northern historic suburb. Does not define current official quarter vertices or INM source scope."
+    },
+    {
+      "provider": "SNIT, national public housing company",
+      "url": "https://snit.tn/presentations",
+      "evidence": "Its own account names the Bab Souika-Halfaouine quarter renewal and state-commissioned residential/social buildings.",
+      "access": "Official search-index text read. Direct curl rejected expired certificate (ddceeb); web open502. No local response bytes or successful verified download claimed."
+    },
+    {
+      "provider": "ANETI public employment agency",
+      "url": "https://www.emploi.nat.tn/fo/Fr/global.php?gouv=11&page=49",
+      "evidence": "The Sidi El Bechir bureau lists 18 Rue Mechain, Montfleury as its address. This locates the bureau, not a synonym for the whole delegation.",
+      "access": "Official indexed text read; direct curl TLS handshake failed (87ed67), web open502. No original HTML bytes claimed."
+    },
+    {
+      "provider": "INS RGPH2024",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "role": "Complete6 Sidi El Bechir and11 Bab Souika imadas, with original workbook row references in the facts file."
+    }
+  ],
+  "rootReportedPhoneEvidence": {
+    "Montfleury": "Root reported a selected named Tunis area with an outline south of Avenue Ali Trad and north of Avenue Taha Hussein, including the hospital. This agent did not view or access the device; no vertices or base402 identity are certified."
+  },
+  "notPerformed": [
+    "repository changes",
+    "stage or curation preparation",
+    "generator/helper/test execution",
+    "PBF scan",
+    "full nearest-source matrix",
+    "phone/device access",
+    "live ledger access",
+    "coordinate or boundary changes"
+  ]
+}

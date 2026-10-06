@@ -1,0 +1,223 @@
+{
+  "sources": [
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/5239666199.json",
+      "retrievedAt": "2026-09-12T11:24:44.321735+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-current.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-current.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/5239666199.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/5239666199.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no text rewriting, XML conversion, or authentication.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-current.json",
+        "sha256": "b8376fbc4cefd88fb9a76e9629636bd4b9d5740a8eec27113f2bad6842c769af",
+        "bytes": 536
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-current.json.headers",
+        "sha256": "3b9944ce8c5201b8346f5ec6ad05d1f7e78ac84c4d4e554fa02fb49c373ae91f",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/5239666199/history.json",
+      "retrievedAt": "2026-09-12T11:24:44.322734+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-history.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-history.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/5239666199/history.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/5239666199/history.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no text rewriting, XML conversion, or authentication.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-history.json",
+        "sha256": "437de0f92ede40d47846800e3450d99828aaff7dee1f43ad5668066308d308de",
+        "bytes": 1905
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\osm-node-5239666199-history.json.headers",
+        "sha256": "82fac2e7f0b8cf9280073436256d29db1f0662ac9038d1994aa600cb7a9756ce",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/activites/",
+      "retrievedAt": "2026-09-12T11:24:44.565865+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/activites/"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/activites/",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no text rewriting, XML conversion, or authentication.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html",
+        "sha256": "344191b6aed8fe5a53aef108190d7c622cea7806efbdfd597f52f22b5763e0b6",
+        "bytes": 183788
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html.headers",
+        "sha256": "6dab83fa2289bdeb150019a4b3f36739a74acf720e416e71ef6ef97f3956198b",
+        "bytes": 794
+      }
+    },
+    {
+      "requestedUrl": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+      "retrievedAt": "2026-09-12T11:24:44.567869+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no text rewriting, XML conversion, or authentication.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html",
+        "sha256": "cfd0c25c6699121dd29ab1723ad48aeae8082b7f8f8bcc43d9b98049de8b2fcd",
+        "bytes": 119531
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html.headers",
+        "sha256": "ea061c1682942a9feaeec37b5225cc6dd7e08cb38938cefd9a15008a7291b150",
+        "bytes": 500
+      }
+    },
+    {
+      "requestedUrl": "https://cre.education.tn/tataouine/index.php/2014-03-12-13-55-07/ecole-primaire",
+      "retrievedAt": "2026-09-12T11:24:45.139367+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\education-primary-schools.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\education-primary-schools.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://cre.education.tn/tataouine/index.php/2014-03-12-13-55-07/ecole-primaire"
+      ],
+      "exitCode": 35,
+      "httpStatus": "000",
+      "effectiveUrl": "https://cre.education.tn/tataouine/index.php/2014-03-12-13-55-07/ecole-primaire",
+      "stderr": "curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate has expired.\n",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no text rewriting, XML conversion, or authentication.",
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\education-primary-schools.html.headers",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "requestedUrl": "https://www.social.gov.tn/en/local-social-advancement-unit-beni-mhira-tataouine",
+      "retrievedAt": "2026-09-12T11:24:45.660713+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\social-beni-mhira-unit.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\social-beni-mhira-unit.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://www.social.gov.tn/en/local-social-advancement-unit-beni-mhira-tataouine"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://www.social.gov.tn/en/local-social-advancement-unit-beni-mhira-tataouine",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no text rewriting, XML conversion, or authentication.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\social-beni-mhira-unit.html",
+        "sha256": "781be1c8bef6729d009e050e02d67609219f56b8e86a52eb7a5646e082202f23",
+        "bytes": 65289
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\social-beni-mhira-unit.html.headers",
+        "sha256": "9e9799f1f42f597e1422fedef6abbc57acec9366a00f4f83f5a3e5ae45e03cf5",
+        "bytes": 1341
+      }
+    }
+  ],
+  "maxConcurrentRequests": 2,
+  "tlsVerificationDisabled": false
+}

@@ -1,0 +1,73 @@
+{
+  "decision": "PROPOSE_EXPLICIT_REDUNDANT_UNCODED_CHEIKH_RETIREMENT_ONLY_WITH_CORRECTED_CODED_CHEIKH_INSTALLED",
+  "retiredId": "osm:relation:7152490",
+  "replacementId": "osm:relation:7118632",
+  "replacementOfficialCode": "175155",
+  "expectedOriginalTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "loc_name": "الشيخ ادريس",
+    "loc_name:ar": "الشيخ ادريس",
+    "name": "الشيخ إدريس",
+    "name:ar": "الشيخ إدريس",
+    "name:fr": "Cheikh Dris"
+  },
+  "expectedOriginalGeometrySha256": "60e06a361adb5d40b9d6d496ce060f346288d7ec5f76d23ed5d476d18f909226",
+  "originalSourceSnapshotSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "sourceFacts": {
+    "rawGeometryDictionaryExactlyClonedFrom": "osm:relation:7118631",
+    "coordinateSequencesIdentical": true,
+    "sourceAdminLevel": "6",
+    "sourceHasDistinctCode": false,
+    "sourceNameAr": "الشيخ إدريس",
+    "sourceNameFr": "Cheikh Dris",
+    "uniqueOfficialSameNameInCurrentParent": [
+      {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1751",
+        "delegationFr": "Bizerte nord",
+        "delegationAr": "بنزرت الشمالية",
+        "sectorCode": "175155",
+        "sectorFr": "Cheikh Driss",
+        "sectorAr": "الشيخ إدريس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16558,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 710,
+          "Nombre_de_menages_par_Secteurs.xlsx": 709
+        }
+      }
+    ],
+    "originalParentName": "معتمدية بنزرت الشمالية",
+    "originalGovernorateId": 361,
+    "oldGeometryOfficialCheikhIntersectionMeters2": 84161.21822719308,
+    "officialCheikhCoveredByClone": 0.945340167150038,
+    "cloneCoveredByOfficialCheikh": 0.7524032806934743
+  },
+  "reasoning": "The uncoded administrative sector names the same Cheikh Idris as the unique legally distinct coded175155 imada in Bizerte Nord, has no additional code or independent footprint, and is an exact clone of the known misassigned old Medina geometry. Official Cheikh geometry confirms the location identity. This supports redundancy of this exact raw ID after coded Cheikh correction; geometry similarity alone would not support merging Medina or a homonym.",
+  "doNotDo": [
+    "Do not merge Medina175154 with Cheikh175155 because their legacy footprints coincide.",
+    "Do not reuse the bad old coded Cheikh footprint as its corrected geometry.",
+    "Do not infer retirement for other same-name sectors.",
+    "Do not carry removed duplicate geometry into a second GPS candidate."
+  ],
+  "savedSelectionMigration": {
+    "match": "Exact stored locality ID osm:relation:7152490 only",
+    "newId": "osm:relation:7118632",
+    "newNameAr": "الشيخ إدريس",
+    "newKind": "sector",
+    "preserveUnchanged": [
+      "saved delegationId prayer-time source",
+      "fromGps flag"
+    ],
+    "doNotRecalculate": "Do not replace a historical GPS-selected prayer source with the new polygon representative-point source; stored preferences contain no historical coordinates.",
+    "implementationFinding": "Current retired-localities schema1 only supports retired IDs and reviewed names. PrefsManager.getLocalityId/getLocationSelection clear retired labels and do not redirect IDs. An explicit fail-closed ID replacement entry and consistent readers are needed to preserve this name selection; no code was changed.",
+    "requiredGuards": [
+      "Target code175155 and corrected official geometry must be installed in same generation.",
+      "Source raw ID/tags/geometry hash and target official code/name/current parent/source PDF/geometry hash must match.",
+      "One target, no replacement cycles/chains, no general alias or name-based migration.",
+      "Missing or malformed migration metadata must preserve existing saved source; no speculative remapping."
+    ]
+  }
+}

@@ -1,0 +1,890 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-19",
+  "pointId": "osm:node:1513517120",
+  "baseId": 572,
+  "rawCurrent": {
+    "id": "osm:node:1513517120",
+    "sourceId": "osm",
+    "name": "الخيتمين",
+    "aliases": [
+      "El Khitmin"
+    ],
+    "kind": "village",
+    "parentName": "الختمين",
+    "contextAliases": [
+      "Délégation El Alia",
+      "El Alia",
+      "El Khetmine",
+      "الختمين",
+      "معتمدية العالية"
+    ],
+    "governorateId": 361,
+    "lat": 37.1458987,
+    "lng": 9.9850034,
+    "delegationId": 572,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1513517120"
+  },
+  "baseCurrent": {
+    "id": 572,
+    "nomFr": "Al Khitmin",
+    "nomAr": "الختمين",
+    "nomEn": "Al Khitmin",
+    "lat": 37.1457,
+    "lng": 9.9926
+  },
+  "expectedGovernor": {
+    "id": 361,
+    "nomFr": "Bizerte",
+    "nomAr": "بنزرت",
+    "nomEn": "Bizerte",
+    "lat": 37.2744,
+    "lng": 9.8739
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1513517120",
+    "tags": {
+      "alt_name:ar": "الخيتمين",
+      "name": "الخيتمين",
+      "name:ar": "الخيتمين",
+      "name:en": "El Khitmin",
+      "name:fr": "El Khitmin",
+      "place": "village"
+    },
+    "lat": 37.1458987,
+    "lng": 9.9850034
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/khitmin572-20260919/sourcefacts-and-mechanism.json",
+    "sha256": "29715a42705a1066a8665d3e056876dea86b0c16b70827a6047bd70140be7e58",
+    "bytes": 45267
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/khitmin572-20260919/independent-source-review.json",
+    "sha256": "5ad7fde68fcb9fbd74de95b9fec596ee6f1665a29f69757d46bc37eaaf1272ff",
+    "bytes": 3441
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/khitmin572-20260919/node-1513517120-current.json",
+    "sha256": "36a3da33bc7e4c23ab6366bb441e620a0f606c563357c99fe37a01973cc0cec1",
+    "bytes": 590,
+    "url": "https://api.openstreetmap.org/api/0.6/node/1513517120.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1513517120.json",
+    "sha256": "36a3da33bc7e4c23ab6366bb441e620a0f606c563357c99fe37a01973cc0cec1",
+    "exactElement": {
+      "type": "node",
+      "id": 1513517120,
+      "lat": 37.1458987,
+      "lon": 9.9850034,
+      "timestamp": "2021-03-03T18:59:54Z",
+      "version": 9,
+      "changeset": 100370643,
+      "user": "Sal73x",
+      "uid": 1293386,
+      "tags": {
+        "alt_name:ar": "الخيتمين",
+        "name": "الخيتمين",
+        "name:ar": "الخيتمين",
+        "name:en": "El Khitmin",
+        "name:fr": "El Khitmin",
+        "place": "village"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/khitmin572-20260919/isie-original.html",
+      "sha256": "dd17404e56b3fbe171ba54de2b0c563b68757d7644e03352a2cb5b86905a4494",
+      "bytes": 3715411,
+      "url": "https://www.isie.tn/ar/presidentielle-pv-centre-de-vote/",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "م إبتدائية الخيتمين - الختمين",
+        "بنزرت/العالية/الختمين/م إبتدائية الخيتمين - الختمين"
+      ]
+    }
+  ],
+  "supportingSources": {
+    "sourceHistory": {
+      "file": "point-base-display-reviews/khitmin572-20260919/node-1513517120-history.json",
+      "sha256": "d309c89d97946405a3a504ae50e437934d790680cd1754f6fbe51224c29e86ec",
+      "bytes": 3958
+    },
+    "currentSector": {
+      "file": "point-base-display-reviews/khitmin572-20260919/relation-7119581-current.json",
+      "sha256": "61c78ecafb5827d2b467a85ab7e2dbe2b4cedf3cc949dd494c4fb082345e2b90",
+      "bytes": 864
+    },
+    "retrievals": {
+      "file": "point-base-display-reviews/khitmin572-20260919/retrievals.json",
+      "sha256": "eee8b7d353194555423384dbceefbeb97387c36e792463335771387409caed87",
+      "bytes": 5635
+    },
+    "phoneObservation": {
+      "file": "point-base-display-reviews/khitmin572-20260919/phone-khitmin-observation.json",
+      "sha256": "6dd04882dfb336d54ce85ddef02a4d92a71eef62bf34f632b303cb5de467511b",
+      "bytes": 1006
+    },
+    "phoneScreenshot": {
+      "file": "point-base-display-reviews/khitmin572-20260919/phone-khitmin-observation.png",
+      "sha256": "d30138531f5cb5a46e04def99bf3aac32b8baaf0984cd09953b07212463b5d35",
+      "bytes": 1267501
+    }
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "1763",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7119584",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1763",
+        "delegationFr": "El alia",
+        "delegationAr": "العالية",
+        "sectorCode": "176351",
+        "sectorFr": "Sidi ali chabab",
+        "sectorAr": "سيدي علي الشباب",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19482,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 860,
+          "Nombre_de_menages_par_Secteurs.xlsx": 859
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي علي شباب",
+        "name:ar": "سيدي علي شباب",
+        "name:fr": "Sidi Ali Chabeb",
+        "ref:tn:codegeo": "176351"
+      },
+      "sourceGeometrySha256": "75bcc8d460faceb4eafa189b5cfd84ce8cb605edcbed6356f77269b9b1bbdb17",
+      "currentMetadata": {
+        "id": "osm:relation:7119584",
+        "sourceId": "osm",
+        "name": "سيدي علي شباب",
+        "aliases": [
+          "Sidi Ali Chabeb",
+          "Sidi Ali Chbeb"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العالية",
+        "contextAliases": [
+          "Délégation El Alia",
+          "El Alia",
+          "معتمدية العالية"
+        ],
+        "governorateId": 361,
+        "lat": 37.198104,
+        "lng": 10.044999,
+        "delegationId": 566,
+        "hasBoundary": true,
+        "bbox": [
+          10.014693,
+          37.181162,
+          10.068412,
+          37.214972
+        ],
+        "areaKm2": 8.88700683130669,
+        "pickerGroupId": "osm:relation:7119584",
+        "offset": 1144564,
+        "length": 1108
+      },
+      "packedGeometrySha256": "281fc481818d2dc15661ca0da13f7da62cc74b03ecbfa94d1b3704dbcbb32212",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7119583",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1763",
+        "delegationFr": "El alia",
+        "delegationAr": "العالية",
+        "sectorCode": "176352",
+        "sectorFr": "El alia nord",
+        "sectorAr": "العالية الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19516,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 862,
+          "Nombre_de_menages_par_Secteurs.xlsx": 861
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العالية الشمالية",
+        "name:ar": "العالية الشمالية",
+        "name:fr": "El Alia Nord",
+        "ref:tn:codegeo": "176352"
+      },
+      "sourceGeometrySha256": "fc5df08ca77d031027ea3bba9bb78af1c51391843798316a2d9b45705e1a0413",
+      "currentMetadata": {
+        "id": "osm:relation:7119583",
+        "sourceId": "osm",
+        "name": "العالية الشمالية",
+        "aliases": [
+          "El Alia Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العالية",
+        "contextAliases": [
+          "Délégation El Alia",
+          "El Alia",
+          "معتمدية العالية"
+        ],
+        "governorateId": 361,
+        "lat": 37.176288,
+        "lng": 10.002028,
+        "delegationId": 566,
+        "hasBoundary": true,
+        "bbox": [
+          9.960654,
+          37.149947,
+          10.050771,
+          37.202535
+        ],
+        "areaKm2": 21.774732992270383,
+        "pickerGroupId": "osm:relation:7119583",
+        "offset": 1143248,
+        "length": 1316
+      },
+      "packedGeometrySha256": "61e687ad901642409a526b75a80aa15551c18140d4790ce637cd7f92bff609ce",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7119582",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1763",
+        "delegationFr": "El alia",
+        "delegationAr": "العالية",
+        "sectorCode": "176353",
+        "sectorFr": "El alia sud",
+        "sectorAr": "العالية الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19550,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 864,
+          "Nombre_de_menages_par_Secteurs.xlsx": 863
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العالية الجنوبية",
+        "name:ar": "العالية الجنوبية",
+        "name:fr": "El Alia Sud",
+        "ref:tn:codegeo": "176353"
+      },
+      "sourceGeometrySha256": "770f5e5a602883ba16106bc20d30395414f087f2a072923560968113fa6715a5",
+      "currentMetadata": {
+        "id": "osm:relation:7119582",
+        "sourceId": "osm",
+        "name": "العالية الجنوبية",
+        "aliases": [
+          "El Alia Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العالية",
+        "contextAliases": [
+          "Délégation El Alia",
+          "El Alia",
+          "معتمدية العالية"
+        ],
+        "governorateId": 361,
+        "lat": 37.160619,
+        "lng": 10.03395,
+        "delegationId": 566,
+        "hasBoundary": true,
+        "bbox": [
+          10.004059,
+          37.130652,
+          10.059833,
+          37.190318
+        ],
+        "areaKm2": 12.372554089145455,
+        "pickerGroupId": "osm:relation:7119582",
+        "offset": 1141572,
+        "length": 1676
+      },
+      "packedGeometrySha256": "e43100c62e53599efd2203e640e66125d53490d2f17b64c86fbd654193a38a18",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7119581",
+      "officialIdentity": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1763",
+        "delegationFr": "El alia",
+        "delegationAr": "العالية",
+        "sectorCode": "176354",
+        "sectorFr": "El khetmine",
+        "sectorAr": "الختمين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19584,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 866,
+          "Nombre_de_menages_par_Secteurs.xlsx": 865
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الختمين",
+        "name:ar": "الختمين",
+        "name:fr": "El Khetmine",
+        "ref:tn:codegeo": "176354"
+      },
+      "sourceGeometrySha256": "e3c3218f97362cab19d6c1cda3015d199dae84f91316c9c10262c874014119bb",
+      "currentMetadata": {
+        "id": "osm:relation:7119581",
+        "sourceId": "osm",
+        "name": "الختمين",
+        "aliases": [
+          "El Khetmine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العالية",
+        "contextAliases": [
+          "Délégation El Alia",
+          "El Alia",
+          "معتمدية العالية"
+        ],
+        "governorateId": 361,
+        "lat": 37.138325,
+        "lng": 9.971955,
+        "delegationId": 572,
+        "hasBoundary": true,
+        "bbox": [
+          9.91398,
+          37.101514,
+          10.016391,
+          37.175073
+        ],
+        "areaKm2": 42.26189867754321,
+        "pickerGroupId": "delegation:572",
+        "offset": 1139016,
+        "length": 2556
+      },
+      "packedGeometrySha256": "c6c85b78b9821d8f1c90967ca5e0004722cbafb389824136bf6fcfde70cda3f9",
+      "expectedCuration": null
+    }
+  ],
+  "preservedNamePeers": [],
+  "sourceNamePeers": [
+    {
+      "id": "osm:relation:7119581",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الختمين",
+        "name:ar": "الختمين",
+        "name:fr": "El Khetmine",
+        "ref:tn:codegeo": "176354"
+      }
+    },
+    {
+      "id": "osm:node:1513517120",
+      "kind": "village",
+      "tags": {
+        "alt_name:ar": "الخيتمين",
+        "name": "الخيتمين",
+        "name:ar": "الخيتمين",
+        "name:en": "El Khitmin",
+        "name:fr": "El Khitmin",
+        "place": "village"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7151813": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "El Alia",
+        "boundary": "administrative",
+        "name": "معتمدية العالية",
+        "name:ar": "معتمدية العالية",
+        "name:fr": "Délégation El Alia",
+        "ref:tn:codegeo": "1763",
+        "ref:tn:hasc_2": "TN.BZ.AL",
+        "wikidata": "Q3049689"
+      },
+      "sourceGeometrySha256": "e76e24db6ebda5d820116c7705fbdac360eccec1d220fa0b3a6763344e6d0855"
+    },
+    "osm:relation:1435827": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-23",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Bizerte",
+        "boundary": "administrative",
+        "name": "ولاية بنزرت",
+        "name:ar": "ولاية بنزرت",
+        "name:az": "Bizerta (vilayət)",
+        "name:azb": "بنزرت",
+        "name:be": "Бізерта (вілает)",
+        "name:be-tarask": "Бізэрта (вілает)",
+        "name:bg": "Бизерта (област)",
+        "name:ca": "Governació de Bizerta",
+        "name:ceb": "Gouvernorat de Bizerte",
+        "name:cy": "Bizerte (talaith)",
+        "name:de": "Binzart",
+        "name:el": "Μπιζέρτα (Κυβερνείο)",
+        "name:en": "Bizerte",
+        "name:es": "Gobernación de Bizerta",
+        "name:fa": "بنزرت",
+        "name:fi": "Bizerte (kuvernementti)",
+        "name:fr": "Gouvernorat Bizerte",
+        "name:frr": "Bizerte (Guwernement)",
+        "name:hu": "Bizerte kormányzóság",
+        "name:id": "Kegubernuran Bizerte",
+        "name:it": "Biserta",
+        "name:ja": "ビゼルト県",
+        "name:ka": "ბიზერტის ვილაიეთი",
+        "name:ko": "비제르테주",
+        "name:ks": "بنزرت",
+        "name:lt": "Bizertos vilajetas",
+        "name:ms": "Kawasan kegabenoran Bizerte",
+        "name:nl": "Bizerte (gouvernement)",
+        "name:no": "Bizerte (guvernement)",
+        "name:pl": "Gubernatorstwo Bizerta",
+        "name:pnb": "بنزرت",
+        "name:pt": "Bizerta (província)",
+        "name:ro": "Guvernoratul Bizerte",
+        "name:ru": "Бизерта (вилайет)",
+        "name:sco": "Bizerte Govrenorate",
+        "name:sh": "Bizerta (vilajet)",
+        "name:sv": "Bizerte (guvernement)",
+        "name:tr": "Bizerte (vilayet)",
+        "name:uk": "Бізерта (вілаєт)",
+        "name:ur": "بنزرت",
+        "name:zh": "比塞大省",
+        "name:zu": "Bizerte Governorate",
+        "official_name": "ولاية بنزرت",
+        "official_name:ar": "ولاية بنزرت",
+        "official_name:en": "Bizerte Governorate",
+        "official_name:es": "Gobernación de Bizerta",
+        "official_name:fa": "استان بنزرت",
+        "official_name:fr": "Gouvernorat de Bizerte",
+        "official_name:it": "Governatorato di Biserta",
+        "official_name:ur": "ولایت بنزرت",
+        "population": "568219",
+        "population:date": "2014",
+        "ref:tn:codegeo": "17",
+        "wikidata": "Q241129",
+        "wikipedia": "ar:ولاية بنزرت",
+        "wikipedia:es": "Gobernación de Bizerta"
+      },
+      "sourceGeometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1513517120",
+    "field": "pickerGroupId",
+    "before": "osm:node:1513517120",
+    "after": "delegation:572"
+  },
+  "completePickerGroups": {
+    "before": {
+      "osm:relation:7119584": [
+        "osm:relation:7119584"
+      ],
+      "osm:relation:7119583": [
+        "osm:relation:7119583"
+      ],
+      "osm:relation:7119582": [
+        "osm:relation:7119582"
+      ],
+      "delegation:572": [
+        "delegation:572",
+        "osm:relation:7119581"
+      ],
+      "osm:node:1513517120": [
+        "osm:node:1513517120"
+      ]
+    },
+    "after": {
+      "osm:relation:7119584": [
+        "osm:relation:7119584"
+      ],
+      "osm:relation:7119583": [
+        "osm:relation:7119583"
+      ],
+      "osm:relation:7119582": [
+        "osm:relation:7119582"
+      ],
+      "delegation:572": [
+        "delegation:572",
+        "osm:node:1513517120",
+        "osm:relation:7119581"
+      ]
+    }
+  },
+  "displayPhaseCoordinateChanges": [],
+  "deferredCompleteGroupExtension": {
+    "schemaVersion": 1,
+    "strictOwner": {
+      "recordId": "osm:relation:7119581",
+      "expectedRecord": {
+        "id": "osm:relation:7119581",
+        "targetDelegationId": 572,
+        "expectedGovernorateId": 361,
+        "expectedBase": {
+          "nomAr": "الختمين",
+          "lat": 37.1457,
+          "lng": 9.9926
+        },
+        "expectedExistingMemberIds": [
+          "osm:relation:7119581"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:572"
+        ],
+        "members": [
+          {
+            "id": "osm:relation:7119581",
+            "expectedKind": "sector",
+            "expectedSourceId": "osm",
+            "expectedName": "الختمين",
+            "expectedParentName": "معتمدية العالية",
+            "expectedDelegationId": 572,
+            "expectedLat": 37.138325,
+            "expectedLng": 9.971955,
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الختمين",
+              "name:ar": "الختمين",
+              "name:fr": "El Khetmine",
+              "ref:tn:codegeo": "176354"
+            },
+            "originalGeometrySha256": "e3c3218f97362cab19d6c1cda3015d199dae84f91316c9c10262c874014119bb",
+            "packedGeometrySha256": "c6c85b78b9821d8f1c90967ca5e0004722cbafb389824136bf6fcfde70cda3f9"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "method": "current_coded_sector",
+            "id": "osm:relation:7119581",
+            "code": "176354",
+            "currentOfficialRecord": {
+              "governorateCode": "17",
+              "governorateFr": "Bizerte",
+              "governorateAr": "بنزرت",
+              "delegationCode": "1763",
+              "delegationFr": "El alia",
+              "delegationAr": "العالية",
+              "sectorCode": "176354",
+              "sectorFr": "El khetmine",
+              "sectorAr": "الختمين",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19584,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 866,
+                "Nombre_de_menages_par_Secteurs.xlsx": 865
+              }
+            },
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الختمين",
+              "name:ar": "الختمين",
+              "name:fr": "El Khetmine",
+              "ref:tn:codegeo": "176354"
+            },
+            "effectiveOriginalGeometrySha256": "e3c3218f97362cab19d6c1cda3015d199dae84f91316c9c10262c874014119bb"
+          }
+        ]
+      },
+      "reviewEvidence": {
+        "file": "reviews/base-locality110-strict-proposal.json",
+        "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+      },
+      "proofRecordObjectSha256": "35d3cd7bc9a6baa3c366374d668f8f1bb3389e7b2027de4adbced041bd335133",
+      "expectedAppliedReceipt": {
+        "pickerGroupId": "delegation:572",
+        "ids": [
+          "osm:relation:7119581"
+        ]
+      }
+    },
+    "expectedBeforeGroups": {
+      "osm:relation:7119584": [
+        "osm:relation:7119584"
+      ],
+      "osm:relation:7119583": [
+        "osm:relation:7119583"
+      ],
+      "osm:relation:7119582": [
+        "osm:relation:7119582"
+      ],
+      "delegation:572": [
+        "delegation:572",
+        "osm:relation:7119581"
+      ],
+      "osm:node:1513517120": [
+        "osm:node:1513517120"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7119584": [
+        "osm:relation:7119584"
+      ],
+      "osm:relation:7119583": [
+        "osm:relation:7119583"
+      ],
+      "osm:relation:7119582": [
+        "osm:relation:7119582"
+      ],
+      "delegation:572": [
+        "delegation:572",
+        "osm:node:1513517120",
+        "osm:relation:7119581"
+      ]
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:1513517120",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:1513517120",
+          "sourceId": "osm",
+          "name": "الخيتمين",
+          "aliases": [
+            "El Khitmin"
+          ],
+          "kind": "village",
+          "parentName": "الختمين",
+          "contextAliases": [
+            "Délégation El Alia",
+            "El Alia",
+            "El Khetmine",
+            "الختمين",
+            "معتمدية العالية"
+          ],
+          "governorateId": 361,
+          "lat": 37.1458987,
+          "lng": 9.9850034,
+          "delegationId": 572,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1513517120"
+        },
+        "originalTags": {
+          "alt_name:ar": "الخيتمين",
+          "name": "الخيتمين",
+          "name:ar": "الخيتمين",
+          "name:en": "El Khitmin",
+          "name:fr": "El Khitmin",
+          "place": "village"
+        },
+        "sourceGeometrySha256": "2b879753628c8709c137a62bca2ddfe7ee32ff0ea4a3debe346a14158d0d9b05",
+        "expectedCuration": null,
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7119581",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7119581",
+          "sourceId": "osm",
+          "name": "الختمين",
+          "aliases": [
+            "El Khetmine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية العالية",
+          "contextAliases": [
+            "Délégation El Alia",
+            "El Alia",
+            "معتمدية العالية"
+          ],
+          "governorateId": 361,
+          "lat": 37.138325,
+          "lng": 9.971955,
+          "delegationId": 572,
+          "hasBoundary": true,
+          "bbox": [
+            9.91398,
+            37.101514,
+            10.016391,
+            37.175073
+          ],
+          "areaKm2": 42.26189867754321,
+          "pickerGroupId": "delegation:572",
+          "offset": 1139016,
+          "length": 2556
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الختمين",
+          "name:ar": "الختمين",
+          "name:fr": "El Khetmine",
+          "ref:tn:codegeo": "176354"
+        },
+        "sourceGeometrySha256": "e3c3218f97362cab19d6c1cda3015d199dae84f91316c9c10262c874014119bb",
+        "expectedCuration": null,
+        "packedGeometrySha256": "c6c85b78b9821d8f1c90967ca5e0004722cbafb389824136bf6fcfde70cda3f9"
+      },
+      {
+        "id": "osm:relation:7119582",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7119582",
+          "sourceId": "osm",
+          "name": "العالية الجنوبية",
+          "aliases": [
+            "El Alia Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية العالية",
+          "contextAliases": [
+            "Délégation El Alia",
+            "El Alia",
+            "معتمدية العالية"
+          ],
+          "governorateId": 361,
+          "lat": 37.160619,
+          "lng": 10.03395,
+          "delegationId": 566,
+          "hasBoundary": true,
+          "bbox": [
+            10.004059,
+            37.130652,
+            10.059833,
+            37.190318
+          ],
+          "areaKm2": 12.372554089145455,
+          "pickerGroupId": "osm:relation:7119582",
+          "offset": 1141572,
+          "length": 1676
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "العالية الجنوبية",
+          "name:ar": "العالية الجنوبية",
+          "name:fr": "El Alia Sud",
+          "ref:tn:codegeo": "176353"
+        },
+        "sourceGeometrySha256": "770f5e5a602883ba16106bc20d30395414f087f2a072923560968113fa6715a5",
+        "expectedCuration": null,
+        "packedGeometrySha256": "e43100c62e53599efd2203e640e66125d53490d2f17b64c86fbd654193a38a18"
+      },
+      {
+        "id": "osm:relation:7119583",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7119583",
+          "sourceId": "osm",
+          "name": "العالية الشمالية",
+          "aliases": [
+            "El Alia Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية العالية",
+          "contextAliases": [
+            "Délégation El Alia",
+            "El Alia",
+            "معتمدية العالية"
+          ],
+          "governorateId": 361,
+          "lat": 37.176288,
+          "lng": 10.002028,
+          "delegationId": 566,
+          "hasBoundary": true,
+          "bbox": [
+            9.960654,
+            37.149947,
+            10.050771,
+            37.202535
+          ],
+          "areaKm2": 21.774732992270383,
+          "pickerGroupId": "osm:relation:7119583",
+          "offset": 1143248,
+          "length": 1316
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "العالية الشمالية",
+          "name:ar": "العالية الشمالية",
+          "name:fr": "El Alia Nord",
+          "ref:tn:codegeo": "176352"
+        },
+        "sourceGeometrySha256": "fc5df08ca77d031027ea3bba9bb78af1c51391843798316a2d9b45705e1a0413",
+        "expectedCuration": null,
+        "packedGeometrySha256": "61e687ad901642409a526b75a80aa15551c18140d4790ce637cd7f92bff609ce"
+      },
+      {
+        "id": "osm:relation:7119584",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7119584",
+          "sourceId": "osm",
+          "name": "سيدي علي شباب",
+          "aliases": [
+            "Sidi Ali Chabeb",
+            "Sidi Ali Chbeb"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية العالية",
+          "contextAliases": [
+            "Délégation El Alia",
+            "El Alia",
+            "معتمدية العالية"
+          ],
+          "governorateId": 361,
+          "lat": 37.198104,
+          "lng": 10.044999,
+          "delegationId": 566,
+          "hasBoundary": true,
+          "bbox": [
+            10.014693,
+            37.181162,
+            10.068412,
+            37.214972
+          ],
+          "areaKm2": 8.88700683130669,
+          "pickerGroupId": "osm:relation:7119584",
+          "offset": 1144564,
+          "length": 1108
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سيدي علي شباب",
+          "name:ar": "سيدي علي شباب",
+          "name:fr": "Sidi Ali Chabeb",
+          "ref:tn:codegeo": "176351"
+        },
+        "sourceGeometrySha256": "75bcc8d460faceb4eafa189b5cfd84ce8cb605edcbed6356f77269b9b1bbdb17",
+        "expectedCuration": null,
+        "packedGeometrySha256": "281fc481818d2dc15661ca0da13f7da62cc74b03ecbfa94d1b3704dbcbb32212"
+      }
+    ]
+  },
+  "scope": "Share one named-settlement picker choice with the existing Khitmin base and strict coded-sector owner. Retain the village raw ID, exact source name, aliases, coordinate, nearest timetable default and all four Alia sectors.",
+  "coordinateQualification": "Village, administrative-sector representative and INM base coordinates remain independently fixed. Both retained manual representatives currently resolve572. Device GPS independently selects its nearest available timetable; no base coordinate relocation is introduced.",
+  "primaryQualification": "ISIE lists the Khitmin school under Khitmin sector in Alia, Bizerte; current official registry identifies sector176354. Fresh Maps card corroborates الخيتمين / Al Khitmin. This supports display identity only, not equal settlement/sector boundaries or certified Google vertices.",
+  "wholePickerBinding": "The strict owner is bound by its exact unchanged record and active eligible proof object. Whole-picker hashes in source facts are historical baseline audit pins. This proof intentionally remains valid when independent reviewed records are appended elsewhere."
+}

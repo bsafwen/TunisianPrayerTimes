@@ -1,0 +1,297 @@
+{
+  "status": "PASS_FIVE_QUALIFIED_WHOLE_OWN_MAP_SOURCE_OUTLINES",
+  "scope": "Exactly five source outlines and identities. No whole-cohort/topological seam acceptance, live source stage, generation or installation.",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+    "bytes": 1842364
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\retrieval-manifest.json",
+    "sha256": "b926aa08fc3d08426452356e379a1d92a11b60e73ecd281a763ef5b3a62bd794",
+    "bytes": 15447
+  },
+  "historicalUnreviewedInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\unreviewed-native-path-inventory.json",
+    "sha256": "67f727fd0f6fb606ebd4153bbc039a256c667f4e4bfa9b382e8d7d8fc9bb6760",
+    "bytes": 1433950
+  },
+  "reviewedCandidateBundle": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\five-reviewed-whole-native-source-polygons.geojson",
+    "sha256": "fd0f4d1b6d6b7d3eb58a1fb42c7d9967bf31b84801e8e7601d78adc8143344a9",
+    "bytes": 213401
+  },
+  "independentFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-source-independent-review\\five-original-path-identity-facts.json",
+    "sha256": "408d10b5a8e745cb02bdfa88cbdc175d86f82d4cb43f2aa8ae123eb6506a76ad",
+    "bytes": 197687
+  },
+  "records": [
+    {
+      "id": "osm:relation:7104933",
+      "code": "156455",
+      "officialNameAr": "خنقة الحجاج",
+      "officialNameFr": "Khanguet el hojjej",
+      "decision": "GO_QUALIFIED_WHOLE_SOURCE_OUTLINE",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\khanguet-el-hojjej.pdf",
+        "sha256": "88e5d0c527d10fc6837e5f7a5cbcc13b26cf40ae1dc1771b12382c6f5efd70c0",
+        "bytes": 1332791
+      },
+      "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D8%AE%D9%86%D9%82%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AC%D8%A7%D8%AC.pdf",
+      "selectedDrawingIndex": 768,
+      "selectedSeqno": 776,
+      "originalMoveOperation": 5510,
+      "originalStrokeOperation": 6085,
+      "originalEdgeCount": 574,
+      "areaKm2Utm32": 57.847351224054094,
+      "maxControlResidualMeters": 0.12047661872615215,
+      "candidateGeometrySha256": "dbb74900ce23dfb956a6781569506712f49f2560b264b6fc7ed28422af043205",
+      "completeInsideTwoSourceClips": true,
+      "completeInsideCountrySourceOutline": true,
+      "nativeAndGeographicValid": true,
+      "originalSourceCommandsAndCandidateCoordinatesMatch": true,
+      "wholeOriginalPagePersonallyViewedAndRenderByteReproduced": true,
+      "insideTargetLabel": [
+        {
+          "rawText": "ﺧﻧﻘﺔ اﻟﺣﺟﺎج",
+          "pageBounds": [
+            407.25335693359375,
+            260.62811279296875,
+            535.4205322265625,
+            313.9126892089844
+          ],
+          "normalizedName": "خنقة الحجاج"
+        }
+      ],
+      "specificQualification": null
+    },
+    {
+      "id": "osm:relation:7103806",
+      "code": "156456",
+      "officialNameAr": "قرنبالية الشرقية",
+      "officialNameFr": "Grombalia est",
+      "decision": "GO_QUALIFIED_WHOLE_SOURCE_OUTLINE",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\grombalia-est.pdf",
+        "sha256": "72a0cad3f3ecff7f65a93c7d9776ca13135124cc34bfb5a47878e448088c06a6",
+        "bytes": 1545659
+      },
+      "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "selectedDrawingIndex": 716,
+      "selectedSeqno": 724,
+      "originalMoveOperation": 4717,
+      "originalStrokeOperation": 5054,
+      "originalEdgeCount": 336,
+      "areaKm2Utm32": 18.810746249310508,
+      "maxControlResidualMeters": 0.1306239172513291,
+      "candidateGeometrySha256": "522fe65c7f2a29f3be4bd979acc6e0b7e0e8d6b4776ad200120f91046dfac105",
+      "completeInsideTwoSourceClips": true,
+      "completeInsideCountrySourceOutline": true,
+      "nativeAndGeographicValid": true,
+      "originalSourceCommandsAndCandidateCoordinatesMatch": true,
+      "wholeOriginalPagePersonallyViewedAndRenderByteReproduced": true,
+      "insideTargetLabel": [
+        {
+          "rawText": "ﺔﯾﻗرﺷﻟا ﺔﯾﻟﺎﺑﻧرﻗ",
+          "pageBounds": [
+            368.7415466308594,
+            199.0603485107422,
+            533.2736206054688,
+            252.34490966796875
+          ],
+          "normalizedName": "قرنبالية الشرقية"
+        }
+      ],
+      "specificQualification": {
+        "unselectedDrawing": 712,
+        "reason": "Its complete original polygon extends outside own viewport/active clips; it is contextual geometry. Drawing716 is the complete interior target.",
+        "sourceInventoryRecordPreserved": true
+      }
+    },
+    {
+      "id": "osm:relation:7101606",
+      "code": "156255",
+      "officialNameAr": "منزل بوزلفة الغربية",
+      "officialNameFr": "Menzel bou zelfa ouest",
+      "decision": "GO_QUALIFIED_WHOLE_SOURCE_OUTLINE",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\menzel-bouzelfa-ouest.pdf",
+        "sha256": "925c149e026c36ed48c3101eca887c5a7bc0d8bd3eb39dd36e5dd3a907c6142f",
+        "bytes": 1273530
+      },
+      "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "selectedDrawingIndex": 337,
+      "selectedSeqno": 345,
+      "originalMoveOperation": 2201,
+      "originalStrokeOperation": 2528,
+      "originalEdgeCount": 326,
+      "areaKm2Utm32": 15.26375571656621,
+      "maxControlResidualMeters": 0.2400998898201827,
+      "candidateGeometrySha256": "0e014b6080323879acc1494a2ff0d26b1bd39445f6a6ff514941ce727048181a",
+      "completeInsideTwoSourceClips": true,
+      "completeInsideCountrySourceOutline": true,
+      "nativeAndGeographicValid": true,
+      "originalSourceCommandsAndCandidateCoordinatesMatch": true,
+      "wholeOriginalPagePersonallyViewedAndRenderByteReproduced": true,
+      "insideTargetLabel": [
+        {
+          "rawText": "ﺔﯾﺑرﻐﻟا ﺔﻔﻟزوﺑ لزﻧﻣ",
+          "pageBounds": [
+            362.08294677734375,
+            271.78955078125,
+            558.2990112304688,
+            325.0740966796875
+          ],
+          "normalizedName": "منزل بوزلفة الغربية"
+        }
+      ],
+      "specificQualification": null
+    },
+    {
+      "id": "osm:relation:7101601",
+      "code": "156254",
+      "officialNameAr": "منزل بوزلفة القبلية",
+      "officialNameFr": "Menzel bou zelfa keblia",
+      "decision": "GO_QUALIFIED_WHOLE_SOURCE_OUTLINE",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\menzel-bouzelfa-keblia.pdf",
+        "sha256": "00b47cf7be053ccd933f6b5ad19f1154a51f7b7d0280b1086d97d178f5876ea8",
+        "bytes": 1309030
+      },
+      "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D9%82%D8%A8%D9%84%D9%8A%D8%A9.pdf",
+      "selectedDrawingIndex": 288,
+      "selectedSeqno": 296,
+      "originalMoveOperation": 2058,
+      "originalStrokeOperation": 2554,
+      "originalEdgeCount": 495,
+      "areaKm2Utm32": 11.566329540128516,
+      "maxControlResidualMeters": 0.2755565386403778,
+      "candidateGeometrySha256": "b7d448f7da884b996d367bfe0de4ab6754c7f2f0b677a876c9e0a50eae92fcfc",
+      "completeInsideTwoSourceClips": true,
+      "completeInsideCountrySourceOutline": true,
+      "nativeAndGeographicValid": true,
+      "originalSourceCommandsAndCandidateCoordinatesMatch": true,
+      "wholeOriginalPagePersonallyViewedAndRenderByteReproduced": true,
+      "insideTargetLabel": [
+        {
+          "rawText": "ﻣﻧزل ﺑوزﻟﻔﺔ اﻟﻘﺑﻠﯾﺔ",
+          "pageBounds": [
+            187.5200958251953,
+            332.27716064453125,
+            377.2555236816406,
+            385.5617370605469
+          ],
+          "normalizedName": "منزل بوزلفة القبلية"
+        }
+      ],
+      "specificQualification": null
+    },
+    {
+      "id": "osm:relation:7103805",
+      "code": "156457",
+      "officialNameAr": "قرنبالية الغربية",
+      "officialNameFr": "Grombalia ouest",
+      "decision": "GO_QUALIFIED_WHOLE_SOURCE_OUTLINE",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-own-map-source-review\\grombalia-ouest.pdf",
+        "sha256": "a43d10bdb4ddce307148ee0f171eafafa9b3b1cbf92c01a39ab19233d32d5de8",
+        "bytes": 1454442
+      },
+      "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "selectedDrawingIndex": 740,
+      "selectedSeqno": 748,
+      "originalMoveOperation": 3289,
+      "originalStrokeOperation": 3563,
+      "originalEdgeCount": 273,
+      "areaKm2Utm32": 23.32714172790646,
+      "maxControlResidualMeters": 0.1406288500406087,
+      "candidateGeometrySha256": "78e374651a6708d75158880c7f1c8f0120ba1efe3897dabb09918ecfbec78092",
+      "completeInsideTwoSourceClips": true,
+      "completeInsideCountrySourceOutline": true,
+      "nativeAndGeographicValid": true,
+      "originalSourceCommandsAndCandidateCoordinatesMatch": true,
+      "wholeOriginalPagePersonallyViewedAndRenderByteReproduced": true,
+      "insideTargetLabel": [
+        {
+          "rawText": "ﺔﯾﺑرﻐﻟا ﺔﯾﻟﺎﺑﻧرﻗ",
+          "pageBounds": [
+            284.1595458984375,
+            245.8662567138672,
+            440.7706604003906,
+            299.15081787109375
+          ],
+          "normalizedName": "قرنبالية الغربية"
+        }
+      ],
+      "specificQualification": null
+    }
+  ],
+  "independentMethod": [
+    "Hashed each original HTTP PDF response and archived headers against the frozen retrieval manifest.",
+    "Viewed each whole original map page; reproduced each archived whole-page PNG byte-exact from the original PDF with the recorded renderer scale.",
+    "Selected the title/interior-label own outline, independently recovered its complete original decimal m/l/S command sequence and identity graphics transform, and reproduced every float32 native page vertex.",
+    "Confirmed explicit original closure, no repeated nonclosure vertices, a valid simple original/native ring, and complete containment inside the viewport and both active source clips.",
+    "Recovered actual embedded WKT/LPTS/GPTS/viewport objects, independently fit four controls in EPSG32632, and reproduced every proposed WGS84 coordinate exactly through the frozen native pipeline.",
+    "Verified full proposed country containment using the separately pinned complete country source geometry, without clipping the candidate.",
+    "Read each exact coded identity from the pinned current INS registry and independently matched the five referenced original rows in each of the three original INS XLSX ZIP/XML sources."
+  ],
+  "canonical156254": {
+    "nameAr": "منزل بوزلفة القبلية",
+    "nameFr": "Menzel bou zelfa keblia",
+    "ownPdfTitleAndInteriorLabelPersonallyVerified": true,
+    "allThreeOriginalInsIdentityRowsAgree": true,
+    "oldSourceWording": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "منزل بوزلفة الجنوبية",
+      "name:ar": "منزل بوزلفة الجنوبية",
+      "name:fr": "Menzel Bouzelfa Sud",
+      "ref:tn:codegeo": "156254"
+    },
+    "qualification": "Canonical القبلية is supported. This read-only source review does not itself add a name curation or accept the old OSM الجنوبية wording as canonical."
+  },
+  "grombaliaEastSelection": {
+    "selectedOwnOutline": 716,
+    "excludedClippedContext": 712,
+    "qualification": "Drawing712 also encloses a matching text label but extends outside the native viewport/clips. A name-label match alone would have selected an incomplete contextual outline. Drawing716 is complete, independently reproduced and visually consistent with the own map."
+  },
+  "qualifiedSourceIngestionContract": {
+    "geometry": "Use exactly the five pinned complete candidate geometries, preserving every source ring/vertex. No clipping to the prior OSM geometry or neighboring candidates, no smoothing, snapping, filling, buffering, make_valid or inferred edges.",
+    "identities": "Keep the exact code-to-existing-ID mapping in records. Preserve original cache tags truthfully in any future expected-source binding. Canonical Arabic القبلية for156254 is directly supported; any metadata-name/alias migration must be explicit in the later source stage.",
+    "sourceScope": "These are original administrative/electoral-sector vector outlines from each unit’s own official map. Satellite imagery and incidental Google labels are only the map background and are not geometry sources.",
+    "registration": "The maximum four-control fit residual is below0.276m. This measures registration consistency, not surveyed boundary accuracy; it is not a repair tolerance.",
+    "differenceFromOldOsm": "Prior OSM disagreement does not invalidate the complete own-map outline. Its concrete consequences belong in the separate combined cohort/finite-impact review.",
+    "installationGate": "Preserve all original evidence and the exact selected geometry pins; finish the separately assigned adjacent-sector seam, source/current membership, picker and nearest-reference consequence review before an import. This source review changes none of those live records."
+  },
+  "counts": {
+    "originalPdfs": 5,
+    "wholePagesPersonallyViewed": 5,
+    "originalInsWorkbooks": 3,
+    "exactCodedWorkbookRows": 15,
+    "sourceOutlinesPassed": 5,
+    "sourceOutlinesFailed": 0,
+    "totalOriginalEdges": 2004
+  },
+  "qualification": "All source paths are stroke-only with explicit original closed rings, read as boundary-area outlines under the map legend. There is no claim of an original GeoJSON export, cadastral precision or an approved combined partition.",
+  "reviewAttemptHistory": {
+    "firstScript": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-source-independent-review\\review_five_originals.py",
+      "sha256": "8213703d0b9450e837690e380b08c35e2676eda14c9da95f409354705a722679",
+      "bytes": 15539
+    },
+    "firstAttemptResult": "Stopped before facts output when PDF presentation-form yeh decoded to Persian yeh after NFKC and failed the exact reading comparison.",
+    "operativeScript": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-source-independent-review\\review_five_originals_v2.py",
+      "sha256": "5ceb9b052f3cdb1fbdc169fa6bf5ffbc988a45c8b0be7ac5abcf640c3a7885d4",
+      "bytes": 15749
+    },
+    "operativeResult": "PASS. Only extracted-label reading normalization adds Arabic/Persian yeh/kaf equivalence; original labels, IDs, registry strings, all geometry and source guards remain unchanged."
+  },
+  "noProductImportsStageGeneratorRepairPhoneLedgerTestsOrLiveWrites": true,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-five-outer-source-independent-review\\freeze_review.py",
+    "sha256": "1c09b6b28e420ade2251ad21ed3eb2cbcd35d5509f942ab103e0b2b7eeca87c2",
+    "bytes": 6717
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "url": "https://www.isie.tn/wp-content/uploads/2025/11/district_tunisie.csv",
+  "sha256": "933a06439f01b9c11008dcc14ecd52169f91599a654aaf3d6555c52edf30a4f3",
+  "rows": 5013,
+  "columns": [
+    "code_cv",
+    "id_cv_edition_2024",
+    "lib_cv_ar",
+    "lib_cv_fr",
+    "latt_cv",
+    "long_cv",
+    "code_loc",
+    "lib_loc_ar",
+    "lib_loc_fr",
+    "code_del",
+    "lib_dlg_ar",
+    "lib_dlg_fr",
+    "code_irie_tn",
+    "lib_irie_tn_ar",
+    "lib_irie_tn_fr",
+    "code_gouv",
+    "lib_gouv_ar",
+    "lib_gouv_fr",
+    "code_cir_loc",
+    "lib_cir_loc_ar",
+    "lib_cir_loc_fr",
+    "lib_district_ar",
+    "lib_district_fr"
+  ],
+  "delimiter": ";",
+  "file": "isie-district-tunisie-2025.csv"
+}

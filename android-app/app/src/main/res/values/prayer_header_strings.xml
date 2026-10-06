@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Prayer tab: location header -->
+    <string name="location_header_from_gps">حسب موقعك الحالي</string>
+    <string name="location_change_action">تغيير الموقع</string>
+    <!-- Prayer tab: settings sheet opened from the header -->
+    <string name="prayer_tab_settings_title">الإعدادات</string>
+    <!-- Prayer tab hero: the upcoming prayer's auto-silence window -->
+    <string name="next_prayer_silence_window">الإسكات من %1$s إلى %2$s</string>
+    <string name="next_prayer_silence_off_auto">الإسكات التلقائي متوقف</string>
+    <string name="next_prayer_silence_off_prayer">بدون إسكات لصلاة %1$s</string>
+</resources>

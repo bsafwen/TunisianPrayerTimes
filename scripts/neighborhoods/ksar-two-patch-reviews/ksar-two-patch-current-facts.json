@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "ae8202fbf2ce97cfde0cfa4c270a8a93e77cdd09b5fa22e8623f978debc154bf",
+  "baselineGeometrySha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+  "originalSourceFacts": {
+    "file": "ksar-two-patch-reviews/direct-pbf-source-facts.json",
+    "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+  },
+  "contextAndCompleteNameSourceFacts": {
+    "file": "ksar-two-patch-reviews/direct-context-source-facts.json",
+    "sha256": "241f0a76e138f21e423d8067839e4f98053d6cf0f7da994d1b50278f8965dde0"
+  },
+  "members": [
+    {
+      "id": "osm:way:1264348269",
+      "expectedMetadata": {
+        "id": "osm:way:1264348269",
+        "sourceId": "osm",
+        "name": "قصر أولاد سلطان",
+        "aliases": [
+          "Ksar Ouled Soltane"
+        ],
+        "kind": "residential",
+        "parentName": "القلعة الشرقية",
+        "contextAliases": [
+          "Délégation Tataouine Nord",
+          "El Galaa Est",
+          "القلعة الشرقية",
+          "معتمدية تطاوين الشمالية"
+        ],
+        "governorateId": 351,
+        "lat": 32.792254,
+        "lng": 10.518313,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          10.516506,
+          32.789897,
+          10.521192,
+          32.794528
+        ],
+        "areaKm2": 0.11053746530568001,
+        "pickerGroupId": "osm:way:1264348269"
+      },
+      "expectedOriginalTags": {
+        "landuse": "residential",
+        "name": "قصر أولاد سلطان",
+        "name:ar": "قصر أولاد سلطان",
+        "name:en": "Ksar Ouled Soltane"
+      },
+      "expectedEffectiveTags": {
+        "landuse": "residential",
+        "name": "قصر أولاد سلطان",
+        "name:ar": "قصر أولاد سلطان",
+        "name:en": "Ksar Ouled Soltane"
+      },
+      "expectedCuration": null,
+      "originalGeometrySha256": "940014d4e203e51859a735e15722a78604370e77bf49d8533d7bb3cfd3f69675",
+      "effectiveOriginalGeometrySha256": "940014d4e203e51859a735e15722a78604370e77bf49d8533d7bb3cfd3f69675",
+      "packedGeometrySha256": "a7ce8c33641e2d3117cb8ac92052a108619897171cc1b4361818003ff582bdaf"
+    },
+    {
+      "id": "osm:way:1264348270",
+      "expectedMetadata": {
+        "id": "osm:way:1264348270",
+        "sourceId": "osm",
+        "name": "قصر أولاد سلطان",
+        "aliases": [
+          "Ksar Ouled Soltane"
+        ],
+        "kind": "residential",
+        "parentName": "القلعة الشرقية",
+        "contextAliases": [
+          "Délégation Tataouine Nord",
+          "El Galaa Est",
+          "القلعة الشرقية",
+          "معتمدية تطاوين الشمالية"
+        ],
+        "governorateId": 351,
+        "lat": 32.788021,
+        "lng": 10.519467,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          10.514313,
+          32.786085,
+          10.520198,
+          32.789881
+        ],
+        "areaKm2": 0.064808399523089,
+        "pickerGroupId": "osm:way:1264348270"
+      },
+      "expectedOriginalTags": {
+        "landuse": "residential",
+        "name": "قصر أولاد سلطان",
+        "name:ar": "قصر أولاد سلطان",
+        "name:en": "Ksar Ouled Soltane"
+      },
+      "expectedEffectiveTags": {
+        "landuse": "residential",
+        "name": "قصر أولاد سلطان",
+        "name:ar": "قصر أولاد سلطان",
+        "name:en": "Ksar Ouled Soltane"
+      },
+      "expectedCuration": null,
+      "originalGeometrySha256": "49f36c15986a3d244d3656622c66913658e171b850616701b57378e57d4a90c8",
+      "effectiveOriginalGeometrySha256": "49f36c15986a3d244d3656622c66913658e171b850616701b57378e57d4a90c8",
+      "packedGeometrySha256": "aa6e118ee4cf3c92026570b92d4b595ad78f7d224acaeb791d9a48aa5f5ec0f0"
+    }
+  ],
+  "absorbedVillage": {
+    "id": "osm:node:11493025894",
+    "expectedAbsentFromRawCatalog": true,
+    "containedByMemberId": "osm:way:1264348270",
+    "coordinates": [
+      10.5175137,
+      32.7892277
+    ],
+    "expectedOriginalTags": {
+      "name": "قصر أولاد سلطان",
+      "name:aeb": "قصر أولاد سلطان",
+      "name:ar": "قصر أولاد سلطان",
+      "name:en": "Ksar Ouled Soltane",
+      "place": "village"
+    },
+    "expectedEffectiveTags": {
+      "name": "قصر أولاد سلطان",
+      "name:aeb": "قصر أولاد سلطان",
+      "name:ar": "قصر أولاد سلطان",
+      "name:en": "Ksar Ouled Soltane",
+      "place": "village"
+    },
+    "expectedCuration": null,
+    "pointGeometrySha256": "e4e80780b95355ad7528dbe0c6b3c1da2ae0fbe723cd88fa7d3b304171021dbd"
+  },
+  "contexts": [
+    {
+      "id": "osm:relation:7143835",
+      "expectedKind": "sector",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القلعة الشرقية",
+        "name:ar": "القلعة الشرقية",
+        "name:fr": "El Galaa Est",
+        "ref:tn:codegeo": "535163"
+      },
+      "expectedEffectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القلعة الشرقية",
+        "name:ar": "القلعة الشرقية",
+        "name:fr": "El Galaa Est",
+        "ref:tn:codegeo": "535163"
+      },
+      "expectedCuration": null,
+      "originalGeometrySha256": "39f289880ec242667133b96d213a6c0501adaa91bc7f636b80826ec5af6f92b8",
+      "expectedMetadata": {
+        "id": "osm:relation:7143835",
+        "sourceId": "osm",
+        "name": "القلعة الشرقية",
+        "aliases": [
+          "El Galaa Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تطاوين الشمالية",
+        "contextAliases": [
+          "Délégation Tataouine Nord",
+          "معتمدية تطاوين الشمالية"
+        ],
+        "governorateId": 351,
+        "lat": 32.656537,
+        "lng": 10.600536,
+        "delegationId": 1524,
+        "hasBoundary": true,
+        "bbox": [
+          10.485971,
+          32.477287,
+          10.693157,
+          32.828647
+        ],
+        "areaKm2": 393.1270263146737,
+        "pickerGroupId": "osm:relation:7143835"
+      },
+      "packedGeometrySha256": "719b28a12f25ffa27b011e4eecf43bac118ee57bc18d04fb91f1d827b955c64d"
+    },
+    {
+      "id": "osm:relation:7143811",
+      "expectedKind": "delegation",
+      "expectedOriginalTags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "name": "معتمدية تطاوين الشمالية",
+        "name:ar": "معتمدية تطاوين الشمالية",
+        "name:fr": "Délégation Tataouine Nord",
+        "ref:tn:codegeo": "5351",
+        "ref:tn:hasc_2": "TN.TA.TN",
+        "sorting_name": "تطاوين الشمالية",
+        "sorting_name:ar": "تطاوين الشمالية",
+        "sorting_name:fr": "Tataouine Nord",
+        "wikidata": "Q3516010",
+        "wikipedia": "ar:معتمدية تطاوين الشمالية",
+        "wikipedia:ar": "معتمدية تطاوين الشمالية"
+      },
+      "expectedEffectiveTags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "name": "معتمدية تطاوين الشمالية",
+        "name:ar": "معتمدية تطاوين الشمالية",
+        "name:fr": "Délégation Tataouine Nord",
+        "ref:tn:codegeo": "5351",
+        "ref:tn:hasc_2": "TN.TA.TN",
+        "sorting_name": "تطاوين الشمالية",
+        "sorting_name:ar": "تطاوين الشمالية",
+        "sorting_name:fr": "Tataouine Nord",
+        "wikidata": "Q3516010",
+        "wikipedia": "ar:معتمدية تطاوين الشمالية",
+        "wikipedia:ar": "معتمدية تطاوين الشمالية"
+      },
+      "expectedCuration": null,
+      "originalGeometrySha256": "7821aa4f2fbe0333f3e7fed640a21b441dc7a3dfef662863d95c711b9c7fd397"
+    }
+  ],
+  "excludedSameNameObjects": [
+    {
+      "id": "osm:relation:2516832",
+      "tags": {
+        "access": "yes",
+        "building": "yes",
+        "historic": "ruins",
+        "name": "قصر أولاد سلطان",
+        "name:ar": "قصر أولاد سلطان",
+        "name:en": "Ksar Ouled Soltane",
+        "name:fr": "Ksar Ouled Soltane",
+        "ruins": "building",
+        "tourism": "attraction",
+        "wikidata": "Q2670896"
+      }
+    },
+    {
+      "id": "osm:way:1394472968",
+      "tags": {
+        "building": "mosque",
+        "name": "Ksar Ouled Soltane",
+        "name:ar": "قصر أولاد سلطان",
+        "name:en": "Ksar Ouled Soltane"
+      }
+    }
+  ],
+  "geometryHistoryQualification": "The creation coordinates differ from the current PBF at3 northern and9 southern vertices through unreviewed constituent-node edits. This source association uses only the current independently pinned original shapes and packed slices, never the older creation shape. No full vertex-history reconstruction or new boundary certification is claimed."
+}

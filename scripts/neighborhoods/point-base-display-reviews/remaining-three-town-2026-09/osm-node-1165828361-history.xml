@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3498746 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="1165828361" visible="true" version="1" changeset="7358474" timestamp="2011-02-21T21:58:47Z" user="Toyota_79" uid="344903" lat="35.6215725" lon="10.7629733">
+  <tag k="name" v="Jemmel"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="1165828361" visible="true" version="2" changeset="7514629" timestamp="2011-03-10T14:31:59Z" user="Chdoula" uid="54304" lat="35.6215725" lon="10.7629733">
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="1165828361" visible="true" version="3" changeset="9377664" timestamp="2011-09-23T15:49:25Z" user="ulrichm" uid="192829" lat="35.6215725" lon="10.7629733">
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="1165828361" visible="true" version="4" changeset="10095116" timestamp="2011-12-11T23:09:40Z" user="ulrichm" uid="192829" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="1165828361" visible="true" version="5" changeset="14831980" timestamp="2013-01-29T09:01:24Z" user="medska" uid="1189072" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="JAMMEL"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="1165828361" visible="true" version="6" changeset="14954409" timestamp="2013-02-08T10:36:56Z" user="ulrichm" uid="192829" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="1165828361" visible="true" version="7" changeset="43141269" timestamp="2016-10-24T21:09:51Z" user="elkueb" uid="4210803" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="8" changeset="43833104" timestamp="2016-11-20T21:49:19Z" user="DenisCarriere" uid="472018" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="9" changeset="50273783" timestamp="2017-07-14T05:44:33Z" user="Seznam" uid="6301172" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="10" changeset="50721232" timestamp="2017-07-31T13:02:06Z" user="Prabhat Tase" uid="6405072" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="11" changeset="50721237" timestamp="2017-07-31T13:02:09Z" user="Prabhat Tase" uid="6405072" lat="35.6215725" lon="10.7629733">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="12" changeset="72988461" timestamp="2019-08-04T12:13:48Z" user="Anis Ben Makhlouf" uid="10001069" lat="35.6239373" lon="10.7592628">
+  <tag k="addr:city" v="Jemmel"/>
+  <tag k="addr:governorate" v="Monastir"/>
+  <tag k="is_in" v="Monastir; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="13" changeset="109711602" timestamp="2021-08-15T18:22:01Z" user="selimachour" uid="400177" lat="35.6239373" lon="10.7592628">
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="14" changeset="121575309" timestamp="2022-05-27T12:51:32Z" user="Anis Ben Makhlouf" uid="10001069" lat="35.6239297" lon="10.7592359">
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+ </node>
+ <node id="1165828361" visible="true" version="15" changeset="123027404" timestamp="2022-06-30T05:30:55Z" user="Priya1904" uid="12429716" lat="35.6239297" lon="10.7592359">
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+  <tag k="wikipedia" v="en:Jemmal"/>
+ </node>
+ <node id="1165828361" visible="true" version="16" changeset="140856852" timestamp="2023-09-05T15:40:34Z" user="user_18023081" uid="18023081" lat="35.6239297" lon="10.7592359">
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+  <tag k="wikipedia" v="en:Jemmal"/>
+ </node>
+ <node id="1165828361" visible="true" version="17" changeset="143134733" timestamp="2023-10-25T21:12:37Z" user="tg4567" uid="12500589" lat="35.6239297" lon="10.7592359">
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:country_code" v="TN"/>
+  <tag k="is_in:governorate" v="Monastir"/>
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+  <tag k="wikimedia_commons" v="Category:Jemmal"/>
+  <tag k="wikipedia" v="en:Jemmal"/>
+ </node>
+ <node id="1165828361" visible="true" version="18" changeset="179509225" timestamp="2026-03-07T20:28:17Z" user="Johnwhelan" uid="186592" lat="35.6239297" lon="10.7592359">
+  <tag k="name" v="جمال"/>
+  <tag k="name:ar" v="جمال"/>
+  <tag k="name:en" v="Jemmal"/>
+  <tag k="name:fr" v="Jemmel"/>
+  <tag k="place" v="village"/>
+  <tag k="population" v="65420"/>
+  <tag k="source:population" v="English Wikipedia"/>
+  <tag k="wikidata" v="Q2545445"/>
+  <tag k="wikimedia_commons" v="Category:Jemmal"/>
+  <tag k="wikipedia" v="en:Jemmal"/>
+ </node>
+</osm>

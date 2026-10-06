@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "packageId": "tunis-souk-jedid-five-boundaries-20260924",
+  "reviewedDate": "2026-09-24",
+  "inputPins": {
+    "osmAreasSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "records": [
+    {
+      "id": "isie:sector:115653",
+      "officialCode": "115653",
+      "action": "add",
+      "nameAr": "حي بن خلدون الثاني",
+      "nameFr": "Cite ibn khaldoun ii",
+      "aliases": [],
+      "expectedGovernorateNameAr": "تونس",
+      "expectedDelegationNameAr": "العمران الأعلى",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D9%89/%D8%AD%D9%8A%20%D8%A8%D9%86%20%D8%AE%D9%84%D8%AF%D9%88%D9%86%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A.pdf",
+      "sourcePdfSha256": "cfb2dc51603a3b6dd4818f8f37966cef5a9b68ee6f2d0a0a3de026910e4d7f92",
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The ISIE vector repeats on the adjacent Ahmed map, but its large printed label center falls 74 m outside the line. It is an electoral map, not a current surveyed imada boundary.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 0
+      }
+    },
+    {
+      "id": "osm:relation:7201523",
+      "officialCode": "115652",
+      "action": "replace",
+      "nameAr": "الرمانة",
+      "nameFr": "El Romana",
+      "aliases": [],
+      "expectedGovernorateNameAr": "تونس",
+      "expectedDelegationNameAr": "العمران الأعلى",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D9%89/%D8%A7%D9%84%D8%B1%D9%85%D8%A7%D9%86%D8%A9.pdf",
+      "sourcePdfSha256": "0df1089255ac1bde70a0d24c094fc010dc7093067e77a7f03b13a25b34c26c86",
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The source outline is an electoral-map interpretation; independent PDF registration leaves a tiny Hay overlap and does not certify current ground accuracy.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 1
+      }
+    },
+    {
+      "id": "osm:relation:7201520",
+      "officialCode": "115658",
+      "action": "replace",
+      "nameAr": "أحمد التليلي",
+      "nameFr": "Ahmed Tlili",
+      "aliases": [],
+      "expectedGovernorateNameAr": "تونس",
+      "expectedDelegationNameAr": "العمران الأعلى",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D9%89/%D8%A3%D8%AD%D9%85%D8%AF%20%D8%A7%D9%84%D8%AA%D9%84%D9%8A%D9%84%D9%8A.pdf",
+      "sourcePdfSha256": "3b86ba4813953951e45c15d49a3d3ad5de5e7b5094d4b7f804a2cb31499c42af",
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The map title and strong fit to the old coded sector identify this path, but no target-name label center is inside it. Small registration overlaps remain.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 2
+      }
+    },
+    {
+      "id": "isie:sector:435958",
+      "officialCode": "435958",
+      "action": "add",
+      "nameAr": "أولاد الفالح",
+      "nameFr": "Ouled el faleh",
+      "aliases": [],
+      "expectedGovernorateNameAr": "سيدي بوزيد",
+      "expectedDelegationNameAr": "سوق الجديد",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF/%D8%B3%D9%88%D9%82%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF/%D8%A3%D9%88%D9%84%D8%A7%D8%AF%20%D8%A7%D9%84%D9%81%D8%A7%D9%84%D8%AD.pdf",
+      "sourcePdfSha256": "edd854d4ba640d40fa63dd3088bd8867d705aae01b562c5ce23e4427ab91e7e2",
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The label is inside the native ISIE outline and the same outline recurs on the neighbor map. This is an electoral map, not a current cadastral survey.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 3
+      }
+    },
+    {
+      "id": "osm:relation:7169675",
+      "officialCode": "435955",
+      "action": "replace",
+      "nameAr": "الرميلية",
+      "nameFr": "Erremelia",
+      "aliases": [],
+      "expectedGovernorateNameAr": "سيدي بوزيد",
+      "expectedDelegationNameAr": "سوق الجديد",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF/%D8%B3%D9%88%D9%82%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF/%D8%A7%D9%84%D8%B1%D9%85%D9%8A%D9%84%D9%8A%D8%A9.pdf",
+      "sourcePdfSha256": "07054199838177bf16a443b213e6ad4647fee55243a9252e231cf1ca882fec80",
+      "geometryMethod": "Pinned 2026-09-05 OSM الرميلية polygon minus the native ISIE أولاد الفالح candidate, computed in EPSG:32632 and transformed to WGS84; mixed-source derived geometry.",
+      "uncertainty": "This is a derived split of an old OSM polygon, not the native ISIE الرميلية outline. It differs from that outline by about 3.19 km²; nine components include small registration fragments. It avoids material new overlaps with unchanged app neighbors but is not surveyed accuracy.",
+      "geometrySource": {
+        "kind": "difference",
+        "minuend": {
+          "kind": "osm_area",
+          "id": "osm:relation:7169675"
+        },
+        "subtrahend": {
+          "kind": "record",
+          "id": "isie:sector:435958"
+        }
+      }
+    }
+  ]
+}

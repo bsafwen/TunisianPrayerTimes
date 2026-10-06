@@ -1,0 +1,188 @@
+{
+  "status": "ELEVEN_PUBLIC_CONTEXT_OBSERVATIONS_ROOT_REVIEWED_NO_CERTIFICATION",
+  "reviewedAt": "2026-09-12T11:55:29.109248+00:00",
+  "metadataSha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\delegation_476-2\\ledger.json",
+    "sha256": "479ae67b6b1520074d222b1041d422a1dd7c2fff5f4187fc7c137f3ca9400822"
+  },
+  "afterLedgerSha256": "e416831664362a96f34e13bc0bf4dc448b85726f309a5afebc9ac639de89b0bb",
+  "newObservations": [
+    {
+      "id": "delegation:476",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_476-2.json",
+        "sha256": "9e5b7c2021d6fa6b46779677296662d9a01302d2aa06f2e57a190745be0a7382"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_476-2.png",
+        "sha256": "fa508faca836fe3ff58ae1a926e6e58a5db876c2d32cf9edfb376e8ac9bf7f7d"
+      },
+      "query": "31.6916,9.2043",
+      "rootVisualConclusion": "Unnamed pin among SITEP roads and buildings. The nearby-place address says Al Borma, Algeria; this wording identifies a nearby namesake and does not establish the country at the pin or a surveyed border. It is not a selected locality card.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:node:500182808",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-4.json",
+        "sha256": "527546d20856ca4d1644198632661c45082c82324cfa88c5e48eaf68bf150b9a"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-4.png",
+        "sha256": "50745356db524ecd1f9a5486350e582527e54d056e825af7daf184fbd7db6229"
+      },
+      "query": "SITEP El Borma camp résidentiel, Tunisie",
+      "rootVisualConclusion": "Result list contains Camp Résidentiel SITEP El Borma and TPIC Camp of El Borma - Remada. The residential camp is a named public result; no exact footprint is inferred.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:node:500182808",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-5.json",
+        "sha256": "8071086c3bc3ebd80f967798205a53c3da583aa11d4d833c94887ac3655afbee"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-5.png",
+        "sha256": "ddc491f89c5296b3c283368db9842e94a5104f558c59b10fc55e640a6f633992"
+      },
+      "query": "Camp Résidentiel SITEP El Borma",
+      "rootVisualConclusion": "Selected public Camp Résidentiel SITEP El Borma card, categorized as a hotel, with visible compound photographs and short plus code M6P9+X7G in the UI record. Supports residential-site identity, not an authoritative polygon or equality of both stored anchors with its footprint.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:way:96369466",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_96369466-1.json",
+        "sha256": "a789925f91798bad05d7aa08b90da31d5ea9a9144ecac99c8903128c29b7146a"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_96369466-1.png",
+        "sha256": "bbf8a5570a02b6f83f4e10f5b4bc273b149e347a5999267f5e5c6d5f7f722f0f"
+      },
+      "query": "36.457368,9.246191",
+      "rootVisualConclusion": "Coordinate query selected the named Teboursouk/تبرسق locality card amid the town street network. This supports inhabited town context; the map does not certify the stored polygon.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:way:43944790",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-1.json",
+        "sha256": "8577b0aa161096748bb6e89dca11627f06d5334e0aa01834c8c8be21e872d48f"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-1.png",
+        "sha256": "f25082a28f821d83b16856d17cfdfbcc9ae7ebfb6ee3663361f449e0fecdd7e6"
+      },
+      "query": "35.680877,10.311315",
+      "rootVisualConclusion": "Coordinate query snapped to a building on P12, address Sidi Al-Hani, with nearby town streets and health-centre label. Context evidence only; the building is not the locality identity.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:node:1109384824",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1109384824-1.json",
+        "sha256": "ce70c58bb3c8fe5d8b9b2904fe472986fe3f210df90c3ebcc9648fbda4e1f75f"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1109384824-1.png",
+        "sha256": "2436a6d945ea35750a4d919f8b933f83e0701e530325af6b9c4bed52b76abcc4"
+      },
+      "query": "37.1639232,9.7705573",
+      "rootVisualConclusion": "Unnamed pin within the street grid near Hay El Iqbal/حي الإقبال in Tinja. The narrower neighborhood label is contextual evidence, not authorization to rename the broader Tinja point or invent its boundary.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:node:7390818324",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_7390818324-1.json",
+        "sha256": "8b1654dfdebcb7df1b0c278183f0956b3c607286e84209bd13bc6bfb44a30a56"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_7390818324-1.png",
+        "sha256": "ff37234fcab7fe116c023f29c0950df7d6cb3ac8ad944a1b769835f3184204b3"
+      },
+      "query": "36.8749751,10.2454267",
+      "rootVisualConclusion": "Coordinate query selected Place de l'Equitation monument beside Golf Carthage/Centre Golf Soukra. The nearby POI confirms context only; the catalog's town point is not reclassified as that monument.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:node:3145829327",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_3145829327-1.json",
+        "sha256": "6d9de5b3d5148d90f5846c588b9b8941cbb308736228d83ab179eb59ea53eb6d"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_3145829327-1.png",
+        "sha256": "471f57d2abee0e959793fd0c81c8e79545b740178be5ee23707309eaa1462ae5"
+      },
+      "query": "36.7868778,10.1056176",
+      "rootVisualConclusion": "Selected El Agba/العقبة locality card around the Hrairia point, with Hrairia business labels also visible. Requires broader-versus-narrower locality scope review; neither a rename nor a delegation/default change follows from this view alone.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:way:923739218",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_923739218-1.json",
+        "sha256": "3e2833690aaaa580a7de63ab2fe59412b6b165002a4bfcf54a99481496f98ba1"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_923739218-1.png",
+        "sha256": "13064368fb7cd8a96b695db56daee90483c0578b79d3a2bc23974bf9ae55610c"
+      },
+      "query": "34.33925,8.406474",
+      "rootVisualConclusion": "Selected Ouled Bel Hassen locality card, address Metlaoui, with the same name on the street map east of C122. This changes the next action to investigating the small generic Metlaoui polygon as a potentially distinct named neighborhood; its exact footprint remains unverified.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:way:43944790",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-2.json",
+        "sha256": "1de13faed4dc66e63a9a15fe9b293cfc5eb277ffeef215ef54e7507b134be8a2"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-2.png",
+        "sha256": "ebc940a8895af68bf6abab3e9c7e06299af120dbc35368c427b44545064b5ca5"
+      },
+      "query": "Sidi Al Hani Tunisie",
+      "rootVisualConclusion": "Selected Sidi El Heni/سيدي الهاني town card and visible town outline around the same P12 street network. Supports named town identity; the displayed outline is not extracted or certified.",
+      "rootViewed": true
+    },
+    {
+      "id": "delegation:1524",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-2.json",
+        "sha256": "1afcaa3647c0f4c10a4cc6c8ca5ee63588172ee33b8822b662b86d98f54d2462"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-2.png",
+        "sha256": "5e872ddee5f118218d9dee9e0ec42de221b3c51b8b723d0e493f1233be41edd5"
+      },
+      "query": "32.868,10.8113",
+      "rootVisualConclusion": "Coordinate query selected nearby shop 7lou24. The map labels the surrounding streets BENI M'HIRA and the historic Ksar Beni Mhira (El Ataya) farther northeast. This is inhabited-village context, not evidence that the timetable point equals the shop or granary.",
+      "rootViewed": true
+    }
+  ],
+  "preservedEarlierObservations": 982,
+  "totalObservations": 993,
+  "counts": {
+    "currentRows": 3556,
+    "historicalRows": 190,
+    "currentRowsWithObservations": 654,
+    "currentObservations": 809,
+    "historicalObservations": 184,
+    "statuses": {
+      "pending": 3202,
+      "observed_needs_review": 354
+    }
+  },
+  "phoneStateChecks": "ad5286: connected Pixel6; fba4f0: awake, unlocked, Maps foreground. Each observation guarded Maps foreground before screenshot.",
+  "scope": "Public queries and result views only; no map edits, route/navigation, saved-place or account actions. Visible generic history/review controls were not opened.",
+  "facetsPromotedToVerified": false,
+  "productChanges": false,
+  "boundariesExtractedFromGoogle": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_borma_next_six_phone_review.py",
+    "sha256": "1743b47514a319bdc8a3d45e59fa47459da8514d2699f8ebef3b5ca547a002ff"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T08:22:55.176963+00:00",
+  "query": "35.545,9.072",
+  "queryVisibleInUi": false,
+  "publicCardTitles": [
+    "مقهى فاطمة cafe fatma, G3WC+2MJ, Rue Habib thamer"
+  ],
+  "publicUiText": [
+    "مقهى فاطمة cafe fatma",
+    "G3WC+2MJ، Rue Habib thamer، Sbiba 1270، تونس",
+    "كافيه",
+    "مفتوح على مدار الساعة",
+    "الاتجاهات إلى مقهى فاطمة cafe fatma, G3WC+2MJ, Rue Habib thamer",
+    "الاتجاهات",
+    "مشاركة مقهى فاطمة cafe fatma",
+    "مشاركة",
+    "حفظ مقهى فاطمة cafe fatma في القوائم",
+    "حفظ",
+    "نشر مشاركة",
+    "إضافة صور",
+    "إغلاق",
+    "ابحث عن محطات وقود مثلاً",
+    "البحث الصوتي",
+    "‏\"عدسة Google\" في \"خرائط Google\""
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "osm_relation_7164981-2.png",
+  "boundaryVerified": false
+}

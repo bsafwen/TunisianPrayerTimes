@@ -1,0 +1,33 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-12T18:53:22.261786+00:00",
+  "query": "36.860449,10.269408",
+  "queryVisibleInUi": false,
+  "publicCardTitles": [
+    "Résidence SOUROUR 2, 88 Av. Khaled Ibn El Walid"
+  ],
+  "publicUiText": [
+    "Résidence SOUROUR 2",
+    "4,6 نجمة (5)",
+    "‏لا تتحقق Google من صحة المراجعات، ولكنها تُواصِل التحقّق من المحتوى المزيّف وتزيله في حال رصده.",
+    "88 Av. Khaled Ibn El Walid، تونس",
+    "فندق",
+    "الاتجاهات إلى Résidence SOUROUR 2, 88 Av. Khaled Ibn El Walid",
+    "الاتجاهات",
+    "مشاركة Résidence SOUROUR 2",
+    "مشاركة",
+    "حفظ Résidence SOUROUR 2 في القوائم",
+    "حفظ",
+    "نشر مشاركة",
+    "صورة",
+    "إضافة صور",
+    "إغلاق",
+    "ابحث عن محطات وقود مثلاً",
+    "البحث الصوتي",
+    "‏\"عدسة Google\" في \"خرائط Google\""
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "osm_way_525479443-2.png",
+  "boundaryVerified": false
+}

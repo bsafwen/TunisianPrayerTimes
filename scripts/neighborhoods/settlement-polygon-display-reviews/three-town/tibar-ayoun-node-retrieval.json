@@ -1,0 +1,79 @@
+[
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/2832036076.json",
+    "finalUrl": "https://api.openstreetmap.org/api/0.6/node/2832036076.json",
+    "retrievedAt": "2026-09-08T12:56:43.763967+00:00",
+    "httpStatus": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tibar-ayoun-two-display-proof-inputs\\node-2832036076.json",
+    "sha256": "6a75055ab4be5c1fd3f2673aa5ba509aa1d6fd68dd79ec05a1032ddbff2ba104",
+    "bytes": 720,
+    "nodeVersion": 7,
+    "nodeTimestamp": "2023-10-25T21:12:37Z",
+    "nodeChangeset": 143134733,
+    "exactTagsMatchCached": true,
+    "tagDifferences": {},
+    "exactCoordinatesMatchCached": true,
+    "exactNode": {
+      "type": "node",
+      "id": 2832036076,
+      "lat": 36.5218222,
+      "lon": 9.1049848,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 7,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:postcode": "9022",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:en": "Thibar",
+        "name:fr": "Thibar",
+        "place": "village",
+        "population": "3334",
+        "wikidata": "Q3523994",
+        "wikimedia_commons": "Category:Thibar",
+        "wikipedia": "ar:تيبار (تونس)",
+        "wikipedia:ar": "تيبار (تونس)"
+      }
+    }
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/5316229408.json",
+    "finalUrl": "https://api.openstreetmap.org/api/0.6/node/5316229408.json",
+    "retrievedAt": "2026-09-08T12:56:43.854918+00:00",
+    "httpStatus": 200,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tibar-ayoun-two-display-proof-inputs\\node-5316229408.json",
+    "sha256": "09f03b558121b85e4b587ff9e91b7357f795ffe570301d602c8c9eff0c2c47b6",
+    "bytes": 691,
+    "nodeVersion": 3,
+    "nodeTimestamp": "2020-07-18T08:00:31Z",
+    "nodeChangeset": 88169690,
+    "exactTagsMatchCached": true,
+    "tagDifferences": {},
+    "exactCoordinatesMatchCached": true,
+    "exactNode": {
+      "type": "node",
+      "id": 5316229408,
+      "lat": 35.5402671,
+      "lon": 8.8836602,
+      "timestamp": "2020-07-18T08:00:31Z",
+      "version": 3,
+      "changeset": 88169690,
+      "user": "Anis Ben Makhlouf",
+      "uid": 10001069,
+      "tags": {
+        "addr:city": "العيون",
+        "addr:postcode": "1216",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village",
+        "postal_code": "1216",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      }
+    }
+  }
+]

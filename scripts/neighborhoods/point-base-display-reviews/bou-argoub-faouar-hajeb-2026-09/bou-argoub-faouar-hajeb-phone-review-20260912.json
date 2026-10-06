@@ -1,0 +1,166 @@
+{
+  "status": "NINE_PUBLIC_PHONE_RESULTS_REVIEWED_NO_FACET_PROMOTION",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "ad68201de32928467232f1aeb07675e84e993aaad79212406444a65634da1c87"
+  },
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_node_1190878345-1\\ledger.json",
+    "sha256": "0954902c633c393cf3435da1f4faf8a5e0bccc22002467394bff60066c00ab7d"
+  },
+  "afterLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "1d6529525317c301acf2e232934a4aca916796b9c6d3db3597256b28572a6d79"
+  },
+  "counts": {
+    "currentRows": 3560,
+    "historicalRows": 186,
+    "currentRowsWithObservations": 649,
+    "currentObservations": 794,
+    "historicalObservations": 176
+  },
+  "records": [
+    {
+      "id": "osm:node:1190878345",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1190878345-1.json",
+        "sha256": "a9ae2e8587d6ef757047ca13c9d14b85407a2b0b24286101e5fa5c9285496ade"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1190878345-1.png",
+        "sha256": "18cc7f4ec89ee136f7d030a13f493711fef514b4b614a775033dd6bd805fbaa8"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Coordinate search opened a nearby pharmacy on RN1 with Bou Argoub address; the map showed the town name and street network. This is town context, not a town identity match or evidence that the settlement node is a pharmacy."
+    },
+    {
+      "id": "osm:node:1190878345",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1190878345-2.json",
+        "sha256": "8d2b7786aa53eeeade69ec9132d063a4f6047f879101255937bfaf0eece5f3fa"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1190878345-2.png",
+        "sha256": "84f1b133d0006a086eb4ca5c5dee7fe82f000e2615503effe3c0c3e5ad6fb3a1"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Explicit name search opened the بوعرقوب / Bou Argoub town card and a dotted urban outline. This supports inhabited-town identity only; no vertices or legal sector boundary were inferred."
+    },
+    {
+      "id": "osm:node:560792911",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_560792911-1.json",
+        "sha256": "6c8e79bea9081602750190babdcca8a1212c3c5857be74f89f3317254ca36da9"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_560792911-1.png",
+        "sha256": "c29cbc8b74385d7b9de1a7e7f18e510bde0f8d456a09be5725f5cda55700b3e2"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Coordinate search opened C 210 with El Faouar address in an urban street network. This supports town context, not a sector perimeter or exact town centre."
+    },
+    {
+      "id": "osm:node:560792911",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_560792911-2.json",
+        "sha256": "195b51f37ce0ad8a1d0c497aff510b5a7daa7a156fdf43bff1bf228957ad63fd"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_560792911-2.png",
+        "sha256": "8fcf2dc70a5f2e6b68a9ff27d29cd32576a24faa3ec43b637e7068e684fee841"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Explicit name search opened الفوار / El Faouar town card and a dotted urban outline. This supports inhabited-town identity, not equivalence with an administrative sector or a legal boundary."
+    },
+    {
+      "id": "osm:node:1187489040",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1187489040-1.json",
+        "sha256": "462db37a9f4d5b9d6ec808e229904371174601cebff86cc03ceca70d3c67d471"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1187489040-1.png",
+        "sha256": "f0dcd67f72ef74c4dcf3721b02b75224fdeeb347402fd109ba6f11e2b11b931d"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Coordinate search opened a nearby mosque with Hajeb El Ayoun address in the town street network. This supports town context but does not reclassify the settlement node as a mosque."
+    },
+    {
+      "id": "osm:node:1187489040",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1187489040-2.json",
+        "sha256": "39d4a1c572a4f878c8b3c8bea52b564f1f065cfa7489b00e62ec5da30cb16c47"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1187489040-2.png",
+        "sha256": "92c79280907480223282076269a1ed10941cad0b90e63d091e64b92421742be3"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Explicit name search opened حاجب العيون / Hajeb El Ayoun town card and dotted urban outline. This supports inhabited-town identity, not a certified polygon or original prayer-reference anchor."
+    },
+    {
+      "id": "delegation:526",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_526-2.json",
+        "sha256": "7b78c444691d66947f2f020f2e013ffd99fb8d198d6616360134454f16f63e46"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_526-2.png",
+        "sha256": "a3f9a8071190e566275b88b6ac722c145f5da3997dfafdda7286483308831079"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Existing timetable-reference coordinate opened an unnamed pin near الغويبة among rural roads east of the mapped town. This does not establish the town centre or authenticate an original INM anchor; no coordinate move is authorized by this observation."
+    },
+    {
+      "id": "delegation:463",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_463-2.json",
+        "sha256": "59ddcb8c738f37811330a2deef44bdd09d5afcd61dfd783d9f43e9736aa6629b"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_463-2.png",
+        "sha256": "bfaead222a80646addce98aec65f4c7b9e9213426d07ad72bf3c4a5bd5d15728"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Existing timetable-reference coordinate opened سيدي الظاهر with Tunisia address and sparse roads outside the previously viewed urban network. This does not certify a Bou Argoub town centre or original INM anchor, and is not grounds to move the settlement node."
+    },
+    {
+      "id": "delegation:485",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_485-2.json",
+        "sha256": "e556b2c8ab7a0006e2b593cd0cacebcbf7e18e701e1a5ebe65e8fc32386be2b3"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_485-2.png",
+        "sha256": "9fb217fdda3c659241774ef0b66ef0ad502b72f18fae7627bf1d1557f7c59b16"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Existing timetable-reference coordinate opened a nearby residential building with El Faouar address and town map label in an urban street network. This supports local context only, not an exact prayer-reference anchor."
+    }
+  ],
+  "prior961ObservationsPreservedExactly": true,
+  "catalogFacetsPromoted": false,
+  "geometryVerticesCopied": false,
+  "screenshotRecapture": {
+    "file": "osm_node_1190878345-1.png",
+    "run": "07c8b3 exit0",
+    "reason": "Recaptured the same public Maps card after an incidental non-map overlay disappeared. Original image replaced and not retained. Observation JSON unchanged.",
+    "replacementSha256": "18cc7f4ec89ee136f7d030a13f493711fef514b4b614a775033dd6bd805fbaa8"
+  },
+  "connection": "Fresh ADB device and unlocked foreground Maps checks c435fa/7270b0; foreground guarded for captures.",
+  "notPerformed": [
+    "API-key use",
+    "map edits",
+    "directions",
+    "sharing",
+    "saved-place interaction",
+    "product changes",
+    "tests",
+    "build",
+    "APK/AAB"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_bou_argoub_faouar_hajeb_phone_review.py",
+    "sha256": "27c63aa7b852c71c78769a77bc45c380d202e14bcc3ccc80f98dafc956cee528"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "url": "https://api.openstreetmap.org/api/0.6/node/558814817.json",
+  "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/558814817.json",
+  "retrievedAt": "2026-09-08T05:22:15.917723+00:00",
+  "httpStatus": 200,
+  "responseHeaders": {
+    "Connection": "close",
+    "Server": "Apache",
+    "Content-Encoding": "identity",
+    "Cache-Control": "private, max-age=0, must-revalidate",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+    "Content-Type": "application/json; charset=utf-8",
+    "Accept-Ranges": "bytes",
+    "Date": "Tue, 08 Sep 2026 05:22:16 GMT",
+    "Via": "1.1 varnish",
+    "X-Served-By": "cache-par-lfpb1150065-PAR",
+    "X-Cache": "MISS",
+    "X-Cache-Hits": "0",
+    "X-Timer": "S1788844936.183834,VS0,VE45",
+    "Vary": "Accept-Encoding",
+    "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+    "transfer-encoding": "chunked"
+  },
+  "response": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboulba594-identity-review\\public-node-source\\node-558814817.json",
+    "bytes": 681,
+    "sha256": "df38252d5d792e9040d630996eecaefbf7a7490f77c9b6948ba7ab92aecacc0b"
+  },
+  "sourceKind": "Authentic single-node OSM API JSON; not a PBF extraction or derived JSON response.",
+  "exactElement": {
+    "type": "node",
+    "id": 558814817,
+    "lat": 35.6417897,
+    "lon": 10.9658372,
+    "timestamp": "2023-10-25T21:12:37Z",
+    "version": 19,
+    "changeset": 143134733,
+    "user": "tg4567",
+    "uid": 12500589,
+    "tags": {
+      "addr:city": "طبلبة",
+      "name": "طبلبة",
+      "name:ar": "طبلبة",
+      "name:en": "Téboulba",
+      "name:fr": "Teboulba",
+      "place": "village",
+      "population": "40000",
+      "wikidata": "Q2400416",
+      "wikimedia_commons": "Category:Teboulba",
+      "wikipedia": "ar:طبلبة"
+    }
+  },
+  "cacheComparison": {
+    "proposalSha256": "60a44ab8501cf47f535093eb751551c4ecadb452d48a4457740cb97260337053",
+    "allTagsEqual": true,
+    "bothCoordinatesEqual": true,
+    "tagDifferences": {},
+    "cachedCoordinates": {
+      "lat": 35.6417897,
+      "lng": 10.9658372
+    },
+    "apiCoordinates": {
+      "lat": 35.6417897,
+      "lng": 10.9658372
+    }
+  },
+  "status": "EXACT_CURRENT_NODE_MATCH"
+}

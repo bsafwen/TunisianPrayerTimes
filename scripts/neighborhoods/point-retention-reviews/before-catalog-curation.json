@@ -1,0 +1,3863 @@
+{
+  "schemaVersion": 1,
+  "reviewedDate": "2026-09-07",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "scope": "Reviewed naming and administrative membership decisions. These decisions do not certify source polygon boundaries or every other catalog record.",
+  "targets": [
+    {
+      "id": "osm:relation:7172930",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name": "معتمدية السعيدة",
+        "admin_level": "5"
+      }
+    },
+    {
+      "id": "osm:relation:7174555",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية مقرين",
+        "ref:tn:codegeo": "1359"
+      }
+    },
+    {
+      "id": "osm:relation:7145835",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية الحمامات",
+        "ref:tn:codegeo": "1566"
+      }
+    },
+    {
+      "id": "osm:relation:1435825",
+      "expectedKind": "governorate",
+      "expectedTags": {
+        "name:ar": "ولاية نابل",
+        "ref:tn:codegeo": "15"
+      }
+    },
+    {
+      "id": "osm:relation:7145302",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية الهوارية",
+        "ref:tn:codegeo": "1559"
+      }
+    },
+    {
+      "id": "osm:relation:7108012",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية دوز الجنوبية",
+        "ref:tn:codegeo": "6355"
+      }
+    },
+    {
+      "id": "osm:relation:7107872",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية الفوار",
+        "ref:tn:codegeo": "6356"
+      }
+    },
+    {
+      "id": "osm:relation:7110523",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية قبلي الشمالية",
+        "ref:tn:codegeo": "6352"
+      }
+    },
+    {
+      "id": "osm:relation:7110422",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية سوق الأحد",
+        "ref:tn:codegeo": "6353"
+      }
+    },
+    {
+      "id": "osm:relation:7110466",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية قبلي الجنوبية",
+        "ref:tn:codegeo": "6351"
+      }
+    },
+    {
+      "id": "osm:relation:4742886",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية جندوبة الجنوبية",
+        "ref:tn:codegeo": "2251"
+      }
+    },
+    {
+      "id": "osm:relation:7110404",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية دوز الشمالية",
+        "ref:tn:codegeo": "6354"
+      }
+    },
+    {
+      "id": "osm:relation:7147551",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية ساقية الدائر",
+        "ref:tn:codegeo": "3454"
+      }
+    },
+    {
+      "id": "osm:relation:7201228",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "name:ar": "معتمدية الشابة",
+        "ref:tn:codegeo": "3358"
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "osm:relation:7169597",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "السعيدة الشرقية",
+        "ref:tn:codegeo": "436165"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7172930",
+      "reason": "The sector belongs to Essaida after its creation in 2015. Its old Regueb code predates that transfer and must not override current membership.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=54",
+        "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSidiBouzidAr.pdf"
+      ]
+    },
+    {
+      "id": "osm:relation:7169611",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "السعيدة الجنوبية",
+        "ref:tn:codegeo": "436164"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7172930",
+      "reason": "The sector belongs to Essaida after its creation in 2015. Its old Regueb code predates that transfer and must not override current membership.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=54",
+        "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSidiBouzidAr.pdf"
+      ]
+    },
+    {
+      "id": "osm:relation:7169642",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "السعيدة الشمالية",
+        "ref:tn:codegeo": "436153"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7172930",
+      "reason": "The sector belongs to Essaida after its creation in 2015. Its old Regueb code predates that transfer and must not override current membership.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=54",
+        "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSidiBouzidAr.pdf"
+      ]
+    },
+    {
+      "id": "osm:relation:7169615",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الخشم الغربية",
+        "ref:tn:codegeo": "436152"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7172930",
+      "reason": "The sector belongs to Essaida after its creation in 2015. Its old Regueb code predates that transfer and must not override current membership.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=54",
+        "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSidiBouzidAr.pdf"
+      ]
+    },
+    {
+      "id": "osm:relation:7169621",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الخشم الشرقية",
+        "ref:tn:codegeo": "436163"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7172930",
+      "reason": "The sector belongs to Essaida after its creation in 2015. Its old Regueb code predates that transfer and must not override current membership.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=54",
+        "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSidiBouzidAr.pdf"
+      ]
+    },
+    {
+      "id": "osm:relation:7174591",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "جوهرة",
+        "ref:tn:codegeo": "135953"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7174555",
+      "reason": "The official directory identifies Jawhara sector 135953 in Megrine 1359. This reviewed membership corrects its context without altering its conflicting source polygon.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=43"
+      ],
+      "unresolved": [
+        "Source sector polygon is not wholly contained by the source Megrine delegation polygon. Boundary coordinates remain unverified."
+      ]
+    },
+    {
+      "id": "osm:relation:7104932",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "ياسمين الحمامات",
+        "ref:tn:codegeo": "156659"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7145835",
+      "governorateId": "osm:relation:1435825",
+      "reason": "The official directory identifies Yasmine Hammamet sector 156659 under Hammamet 1566 in Nabeul 15. Assign this documented identity instead of the conflicting source Sousse governorate polygon.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=52"
+      ],
+      "unresolved": [
+        "The source sector polygon lies within the source Sousse governorate polygon and the source Hammamet delegation polygon. Correcting metadata does not determine which polygon border is wrong.",
+        "A Google Maps phone spot-check on 2026-09-07 confirmed the place name and coastal resort south of Hammamet; it did not expose a governorate or establish boundary vertex accuracy."
+      ]
+    },
+    {
+      "id": "osm:way:623836961",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "TERRain vierge",
+        "landuse": "residential"
+      },
+      "action": "exclude",
+      "reason": "Generic vacant-land description, with no source tags establishing a neighborhood name. Exclude it from manual and GPS locality labels; remaining containing named areas provide the factual fallback.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/623836961",
+        "Source tags in the pinned PBF: landuse=residential, name=TERRain vierge."
+      ]
+    },
+    {
+      "id": "osm:way:623836962",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "TERRain vierge",
+        "landuse": "residential"
+      },
+      "action": "exclude",
+      "reason": "Generic vacant-land description, with no source tags establishing a neighborhood name. Exclude it from manual and GPS locality labels; remaining containing named areas provide the factual fallback.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/623836962",
+        "Source tags in the pinned PBF: landuse=residential, name=TERRain vierge."
+      ]
+    },
+    {
+      "id": "osm:way:623836963",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "TERRain vierge",
+        "landuse": "residential"
+      },
+      "action": "exclude",
+      "reason": "Generic vacant-land description, with no source tags establishing a neighborhood name. Exclude it from manual and GPS locality labels; remaining containing named areas provide the factual fallback.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/623836963",
+        "Source tags in the pinned PBF: landuse=residential, name=TERRain vierge."
+      ]
+    },
+    {
+      "id": "osm:way:623836964",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "TERRain vierge",
+        "landuse": "residential"
+      },
+      "action": "exclude",
+      "reason": "Generic vacant-land description, with no source tags establishing a neighborhood name. Exclude it from manual and GPS locality labels; remaining containing named areas provide the factual fallback.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/623836964",
+        "Source tags in the pinned PBF: landuse=residential, name=TERRain vierge."
+      ]
+    },
+    {
+      "id": "osm:way:623836965",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "TERRain vierge",
+        "landuse": "residential"
+      },
+      "action": "exclude",
+      "reason": "Generic vacant-land description, with no source tags establishing a neighborhood name. Exclude it from manual and GPS locality labels; remaining containing named areas provide the factual fallback.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/623836965",
+        "Source tags in the pinned PBF: landuse=residential, name=TERRain vierge."
+      ]
+    },
+    {
+      "id": "osm:relation:7096460",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "صاحب الجبل القبلية",
+        "ref:tn:codegeo": "155953"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7145302",
+      "reason": "ISIE lists Sahib El Jebel Sud in Haouaria. Source borders do not provide full containment.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=30"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7107484",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "نويل الشمالية",
+        "ref:tn:codegeo": "635554"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7108012",
+      "reason": "ISIE lists Nouil Nord in Douz Sud. Conflicting source geometry places it in Kebili Sud.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7095632",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "قايدمة",
+        "ref:tn:codegeo": "635654",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قايدمة",
+        "name:fr": "Gueïdma"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7107872",
+      "reason": "ISIE lists Guidma in Faouar. INS code 635654 identifies the same sector; conflicting source geometry places it in Douz Sud. Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59",
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=130",
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "635654",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70593,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3464,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3457
+          },
+          "pointId": "osm:node:349303622",
+          "pointLatitude": 33.4316482,
+          "pointLongitude": 8.8159209,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ],
+      "nameTags": {
+        "name": "غيدمة",
+        "name:ar": "غيدمة",
+        "name:fr": "Gueidma",
+        "alt_name": "قايدمة;Gueïdma"
+      },
+      "manualPointId": "osm:node:349303622"
+    },
+    {
+      "id": "osm:relation:7082695",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "القطعاية",
+        "ref:tn:codegeo": "635259"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7110523",
+      "reason": "ISIE lists Gataaya in Kebili Nord. Conflicting source geometry places it in Kebili Sud.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7083677",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "نقة",
+        "ref:tn:codegeo": "635357"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7110422",
+      "reason": "ISIE lists Nagga in Souk Lahad. Conflicting source geometry places it in Kebili Nord.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7106577",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "المنشية",
+        "ref:tn:codegeo": "635351"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7110422",
+      "reason": "ISIE lists Menchia in Souk Lahad. Conflicting source geometry places it in Kebili Nord.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7109812",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "قبلي الجنوبية",
+        "ref:tn:codegeo": "635151"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7110466",
+      "reason": "ISIE lists the Kebili Sud sector in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7109817",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "‫جنعورة‬",
+        "ref:tn:codegeo": "635159"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7110466",
+      "reason": "ISIE lists Janoura in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7109821",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "‫بازمة‬",
+        "ref:tn:codegeo": "635152"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7110466",
+      "reason": "ISIE lists Bazma in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7139131",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الزغايدة",
+        "ref:tn:codegeo": "225151"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:4742886",
+      "reason": "ISIE lists Ezzeghaida in Jendouba, separately from Jendouba Nord. INS code 225151 identifies that membership; source geometry places it in Jendouba Nord.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=12",
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=65"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7107232",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "العوينة الجنوبية",
+        "ref:tn:codegeo": "635454"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7110404",
+      "reason": "ISIE lists El Aouina Sud in Douz Nord. Conflicting source geometry places it in Douz Sud.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7147586",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "سيدي منصور",
+        "ref:tn:codegeo": "345455"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7147551",
+      "reason": "ISIE lists Sidi Mansour in Sakiet Eddaier. Source borders do not provide full containment.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=73"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:relation:7095734",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الهوارية الشمالية",
+        "ref:tn:codegeo": "155951"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7145302",
+      "reason": "ISIE lists the northern Haouaria sector in Haouaria. Source borders do not provide full containment.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=30"
+      ],
+      "unresolved": [
+        "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+      ]
+    },
+    {
+      "id": "osm:way:239859673",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "École Primaire de Mezraya",
+        "landuse": "residential",
+        "amenity": "school"
+      },
+      "action": "exclude",
+      "reason": "The source identifies a named educational facility, with no independent place or administrative boundary tag establishing a neighborhood. Residential landuse alone must not expose this facility as a locality.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/239859673",
+        "Pinned PBF facility tags: name=École Primaire de Mezraya, amenity=school, landuse=residential"
+      ]
+    },
+    {
+      "id": "osm:way:256591660",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "Institut Supérieur des Etudes Technologiques de Bizerte (ISET)",
+        "landuse": "residential",
+        "amenity": "university"
+      },
+      "action": "exclude",
+      "reason": "The source identifies a named educational facility, with no independent place or administrative boundary tag establishing a neighborhood. Residential landuse alone must not expose this facility as a locality.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/256591660",
+        "Pinned PBF facility tags: name=Institut Supérieur des Etudes Technologiques de Bizerte (ISET), amenity=university, landuse=residential"
+      ]
+    },
+    {
+      "id": "osm:way:256592012",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "Restaurant Universitaire",
+        "landuse": "residential",
+        "amenity": "university"
+      },
+      "action": "exclude",
+      "reason": "The source identifies a named educational facility, with no independent place or administrative boundary tag establishing a neighborhood. Residential landuse alone must not expose this facility as a locality.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/256592012",
+        "Pinned PBF facility tags: name=Restaurant Universitaire, amenity=university, landuse=residential"
+      ]
+    },
+    {
+      "id": "osm:way:705793858",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "المدرسة الابتدائية القايد",
+        "landuse": "residential",
+        "amenity": "school"
+      },
+      "action": "exclude",
+      "reason": "The source identifies a named educational facility, with no independent place or administrative boundary tag establishing a neighborhood. Residential landuse alone must not expose this facility as a locality.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/705793858",
+        "Pinned PBF facility tags: name=المدرسة الابتدائية القايد, amenity=school, landuse=residential"
+      ]
+    },
+    {
+      "id": "osm:way:705793860",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "name": "المدرسة الإبتدائية",
+        "landuse": "residential",
+        "amenity": "school"
+      },
+      "action": "exclude",
+      "reason": "The source identifies a named educational facility, with no independent place or administrative boundary tag establishing a neighborhood. Residential landuse alone must not expose this facility as a locality.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/705793860",
+        "Pinned PBF facility tags: name=المدرسة الإبتدائية, amenity=school, landuse=residential"
+      ]
+    },
+    {
+      "id": "osm:way:186951648",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "المنزل الجامعة المروج 3",
+        "name:ar": "المنزل الجامعة المروج 3",
+        "name:fr": "Foyer universitaire mourouj 3"
+      },
+      "action": "exclude",
+      "reason": "This reviewed label identifies an institutional facility, with no independent place or administrative identity establishing a neighborhood. Exclusion concerns catalog scope; it does not claim the institution is nonexistent or validate its boundary.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/186951648",
+        "Phone Google Maps check on 2026-09-07 resolved Foyer Universitaire Mourouj 3 as university accommodation at the mapped site."
+      ]
+    },
+    {
+      "id": "osm:way:695712523",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Ecole Primaire Borj Ettoumi"
+      },
+      "action": "exclude",
+      "reason": "This reviewed label identifies an institutional facility, with no independent place or administrative identity establishing a neighborhood. Exclusion concerns catalog scope; it does not claim the institution is nonexistent or validate its boundary.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/695712523",
+        "The source name explicitly describes a primary school. Phone Google Maps check on 2026-09-07 showed school pins nearby; it did not verify this exact facility boundary."
+      ]
+    },
+    {
+      "id": "osm:way:286523036",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "جامعة القيروان",
+        "name:ar": "جامعة القيروان",
+        "name:fr": "Université de Kairouan"
+      },
+      "action": "exclude",
+      "reason": "This reviewed label identifies an institutional facility, with no independent place or administrative identity establishing a neighborhood. Exclusion concerns catalog scope; it does not claim the institution is nonexistent or validate its boundary.",
+      "evidence": [
+        "https://www.openstreetmap.org/way/286523036",
+        "The source name explicitly identifies Universite de Kairouan. Phone Google Maps check on 2026-09-07 resolved a university rather than a neighborhood, at a different university administration site; it did not verify this source campus polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7082336",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "المطروحة",
+        "ref:tn:codegeo": "635656"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية رجيم معتوق",
+        "رجيم معتوق",
+        "Rejim Maatoug"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7082340",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "رجيم معتوق",
+        "ref:tn:codegeo": "635655"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية رجيم معتوق",
+        "رجيم معتوق",
+        "Rejim Maatoug"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7145386",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "دخيلة توجان",
+        "ref:tn:codegeo": "516065"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية دخيلة توجان",
+        "دخيلة توجان",
+        "Dkhilet Toujane"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=80"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7145416",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "زمرتن",
+        "ref:tn:codegeo": "516062"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية دخيلة توجان",
+        "دخيلة توجان",
+        "Dkhilet Toujane"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=80"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7145418",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "توجان",
+        "ref:tn:codegeo": "516061"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية دخيلة توجان",
+        "دخيلة توجان",
+        "Dkhilet Toujane"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=80"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7145435",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "عين تونين",
+        "ref:tn:codegeo": "516064"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية دخيلة توجان",
+        "دخيلة توجان",
+        "Dkhilet Toujane"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=80"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7150222",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "سيدي بوبكر",
+        "ref:tn:codegeo": "615552"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية سيدي بوبكر",
+        "سيدي بوبكر",
+        "Sidi Boubaker"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=58"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7150166",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "أم الأقصاب",
+        "ref:tn:codegeo": "615551"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية سيدي بوبكر",
+        "سيدي بوبكر",
+        "Sidi Boubaker"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=58"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7154898",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حامة الجريد",
+        "name:ar": "حامة الجريد",
+        "name:fr": "El Hamma du Jerid",
+        "ref:tn:codegeo": "625256",
+        "wikidata": "Q1026317"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية حامة الجريد",
+        "حامة الجريد",
+        "El Hamma du Jerid"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary. The same sector is formally named الحامة in both old and current INS records; retain حامة الجريد as an alias and the parent name.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=58",
+        {
+          "source": "Exact current and historical official sector name, fresh PBF identity and displayed electoral/parent labels",
+          "oldSourceCode": "625256",
+          "currentSectorCode": "625651",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/hamma-jerid-sector-name-review.json",
+              "sha256": "3fa8c0685545399c1b6a41a504c3f9936bb35d000df07a5631b72f50d3c746fd"
+            },
+            {
+              "file": "name-reviews/hamma-jerid-direct-pbf-source-facts.json",
+              "sha256": "b082503a2c58c29d446bda6e3efda394e9568129bda82cd1073498881cc43e91"
+            }
+          ]
+        }
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ],
+      "nameTags": {
+        "name": "الحامة",
+        "name:ar": "الحامة",
+        "name:fr": "El hamma",
+        "alt_name": "حامة الجريد;El Hamma du Jerid"
+      },
+      "reviewedOfficialSector": {
+        "governorateCode": "62",
+        "governorateFr": "Tozeur",
+        "governorateAr": "توزر",
+        "delegationCode": "6256",
+        "delegationFr": "Hammat ejrid",
+        "delegationAr": "حامة الجريد",
+        "sectorCode": "625651",
+        "sectorFr": "El hamma",
+        "sectorAr": "الحامة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69166,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3391,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3384
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7198151",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الطويرف",
+        "ref:tn:codegeo": "235357"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الطويرف",
+        "الطويرف",
+        "Touiref"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=19"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7198161",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "ولجة السدرة",
+        "ref:tn:codegeo": "235363"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الطويرف",
+        "الطويرف",
+        "Touiref"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=19"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7198149",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الأذياب",
+        "ref:tn:codegeo": "235356"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الطويرف",
+        "الطويرف",
+        "Touiref"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=19"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7198159",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "ملالة",
+        "ref:tn:codegeo": "235355"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الطويرف",
+        "الطويرف",
+        "Touiref"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=19"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7143818",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "بني مهيرة الشرقية",
+        "ref:tn:codegeo": "535358"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية بني مهيرة",
+        "بني مهيرة",
+        "Beni Mhira"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7143819",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "قصر مهيرة",
+        "ref:tn:codegeo": "535357"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية بني مهيرة",
+        "بني مهيرة",
+        "Beni Mhira"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7143820",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "قصر عون",
+        "ref:tn:codegeo": "535356"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية بني مهيرة",
+        "بني مهيرة",
+        "Beni Mhira"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7143821",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "المرة",
+        "ref:tn:codegeo": "535355"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية بني مهيرة",
+        "بني مهيرة",
+        "Beni Mhira"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7143822",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الرهاش",
+        "ref:tn:codegeo": "535354"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية بني مهيرة",
+        "بني مهيرة",
+        "Beni Mhira"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7150172",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الجديدة",
+        "ref:tn:codegeo": "616154"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية زانوش",
+        "زانوش",
+        "Zanouch"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=57"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7150225",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "زانوش",
+        "ref:tn:codegeo": "616153"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية زانوش",
+        "زانوش",
+        "Zanouch"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=57"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7150227",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "عبد الصادق",
+        "ref:tn:codegeo": "616155"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية زانوش",
+        "زانوش",
+        "Zanouch"
+      ],
+      "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=57"
+      ],
+      "unresolved": [
+        "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+      ]
+    },
+    {
+      "id": "osm:relation:7152197",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الغضابنة",
+        "ref:tn:codegeo": "336156"
+      },
+      "action": "administrative_context",
+      "delegationId": "osm:relation:7201228",
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3358 (Chebba), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=90",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "335854",
+        "sectorAr": "الغضابنة",
+        "sectorFr": "Ghedabna",
+        "delegationCode": "3358",
+        "delegationAr": "الشابة",
+        "delegationFr": "Chebba",
+        "governorateCode": "33",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 40969,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1960,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1956
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "336156",
+        "oldOfficialPages": [
+          90
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7152190"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "The source Chebba polygon still excludes this adjacent transferred sector. This context correction does not extend or validate its boundary."
+      ]
+    },
+    {
+      "id": "osm:relation:7152268",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "رجيش",
+        "ref:tn:codegeo": "335154"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية رجيش",
+        "رجيش",
+        "Rejiche"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3362 (Rejiche), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=86",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "336251",
+        "sectorAr": "رجيش",
+        "sectorFr": "Rejiche",
+        "delegationCode": "3362",
+        "delegationAr": "رجيش",
+        "delegationFr": "Rejiche",
+        "governorateCode": "33",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41819,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2010,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2006
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "335154",
+        "oldOfficialPages": [
+          86
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7152227"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7152267",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "رجيش الجنوبية",
+        "ref:tn:codegeo": "335155"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية رجيش",
+        "رجيش",
+        "Rejiche"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3362 (Rejiche), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=86",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "336252",
+        "sectorAr": "رجيش الجنوبية",
+        "sectorFr": "Rejiche sud",
+        "delegationCode": "3362",
+        "delegationAr": "رجيش",
+        "delegationFr": "Rejiche",
+        "governorateCode": "33",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41853,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2012,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2008
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "335155",
+        "oldOfficialPages": [
+          86
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7152227"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7152200",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "البرادعة الجنوبية",
+        "ref:tn:codegeo": "336161"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية البرادعة",
+        "البرادعة",
+        "El Bradaa",
+        "El bradaa"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3363 (El bradaa), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=90",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "336352",
+        "sectorAr": "البرادعة الجنوبية",
+        "sectorFr": "El bradaa sud",
+        "delegationCode": "3363",
+        "delegationAr": "البرادعة",
+        "delegationFr": "El bradaa",
+        "governorateCode": "33",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41921,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2016,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2012
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "336161",
+        "oldOfficialPages": [
+          90
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7152190"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7152199",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "البرادعة الشمالية",
+        "ref:tn:codegeo": "336162"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية البرادعة",
+        "البرادعة",
+        "El Bradaa",
+        "El bradaa"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3363 (El bradaa), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=90",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "336351",
+        "sectorAr": "البرادعة الشمالية",
+        "sectorFr": "El bradaa nord",
+        "delegationCode": "3363",
+        "delegationAr": "البرادعة",
+        "delegationFr": "El bradaa",
+        "governorateCode": "33",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41887,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2014,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2010
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "336162",
+        "oldOfficialPages": [
+          90
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7152190"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7152182",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الحسينات",
+        "ref:tn:codegeo": "336160"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية البرادعة",
+        "البرادعة",
+        "El Bradaa",
+        "El bradaa"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3363 (El bradaa), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=90",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "336353",
+        "sectorAr": "الحسينات",
+        "sectorFr": "El hessinet",
+        "delegationCode": "3363",
+        "delegationAr": "البرادعة",
+        "delegationFr": "El bradaa",
+        "governorateCode": "33",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41955,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2018,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2014
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "336160",
+        "oldOfficialPages": [
+          90
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7152190"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7152185",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الرشارشة",
+        "ref:tn:codegeo": "336159"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية البرادعة",
+        "البرادعة",
+        "El Bradaa",
+        "El bradaa"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3363 (El bradaa), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=90",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "336354",
+        "sectorAr": "الرشارشة",
+        "sectorFr": "Recharcha",
+        "delegationCode": "3363",
+        "delegationAr": "البرادعة",
+        "delegationFr": "El bradaa",
+        "governorateCode": "33",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41989,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2020,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2016
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "336159",
+        "oldOfficialPages": [
+          90
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7152190"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7165351",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "عين جلولة",
+        "ref:tn:codegeo": "415559"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية عين جلولة",
+        "عين جلولة",
+        "Ain Jeloula",
+        "Ain jeloula"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4162 (Ain jeloula), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=99",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "416251",
+        "sectorAr": "عين جلولة",
+        "sectorFr": "Ain djeloula",
+        "delegationCode": "4162",
+        "delegationAr": "عين جلولة",
+        "delegationFr": "Ain jeloula",
+        "governorateCode": "41",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 50047,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2424,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2419
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "415559",
+        "oldOfficialPages": [
+          99
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7165240"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7165331",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "جبل وسلات",
+        "ref:tn:codegeo": "415557"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية عين جلولة",
+        "عين جلولة",
+        "Ain Jeloula",
+        "Ain jeloula"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4162 (Ain jeloula), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=99",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "416252",
+        "sectorAr": "جبل وسلات",
+        "sectorFr": "Djebel Oueslat",
+        "delegationCode": "4162",
+        "delegationAr": "عين جلولة",
+        "delegationFr": "Ain jeloula",
+        "governorateCode": "41",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 50081,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2426,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2421
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "415557",
+        "oldOfficialPages": [
+          99
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7165240"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7165265",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الحميدات",
+        "ref:tn:codegeo": "415953"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية منزل مهيرى",
+        "منزل مهيرى",
+        "Menzel M'hiri",
+        "Menzel m'hiri"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4163 (Menzel m'hiri), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=100",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "416351",
+        "sectorAr": "الحميدات",
+        "sectorFr": "El hmidet",
+        "delegationCode": "4163",
+        "delegationAr": "منزل مهيرى",
+        "delegationFr": "Menzel m'hiri",
+        "governorateCode": "41",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 50115,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2428,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2423
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "415953",
+        "oldOfficialPages": [
+          100
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7201324"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7165296",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الفجيج",
+        "ref:tn:codegeo": "415954"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية منزل مهيرى",
+        "منزل مهيرى",
+        "Menzel M'hiri",
+        "Menzel m'hiri"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4163 (Menzel m'hiri), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=100",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "416352",
+        "sectorAr": "الفجيج",
+        "sectorFr": "El fejij",
+        "delegationCode": "4163",
+        "delegationAr": "منزل مهيرى",
+        "delegationFr": "Menzel m'hiri",
+        "governorateCode": "41",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 50149,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2430,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2425
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "415954",
+        "oldOfficialPages": [
+          100
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7201324"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7165287",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الطويلة",
+        "ref:tn:codegeo": "415955"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية منزل مهيرى",
+        "منزل مهيرى",
+        "Menzel M'hiri",
+        "Menzel m'hiri"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4163 (Menzel m'hiri), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=100",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "416353",
+        "sectorAr": "الطويلة",
+        "sectorFr": "Ettouila",
+        "delegationCode": "4163",
+        "delegationAr": "منزل مهيرى",
+        "delegationFr": "Menzel m'hiri",
+        "governorateCode": "41",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 50183,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2432,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2427
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "415955",
+        "oldOfficialPages": [
+          100
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7201324"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7169598",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الهيشرية",
+        "ref:tn:codegeo": "435154"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الهيشرية",
+        "الهيشرية",
+        "El Hichria",
+        "El hichria"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4364 (El hichria), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "436451",
+        "sectorAr": "الهيشرية",
+        "sectorFr": "El hichria",
+        "delegationCode": "4364",
+        "delegationAr": "الهيشرية",
+        "delegationFr": "El hichria",
+        "governorateCode": "43",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2822,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2817
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "435154",
+        "oldOfficialPages": [
+          107
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7169656"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7169594",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الفريو",
+        "ref:tn:codegeo": "435155"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الهيشرية",
+        "الهيشرية",
+        "El Hichria",
+        "El hichria"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4364 (El hichria), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "436452",
+        "sectorAr": "الفريو",
+        "sectorFr": "El friou",
+        "delegationCode": "4364",
+        "delegationAr": "الهيشرية",
+        "delegationFr": "El hichria",
+        "governorateCode": "43",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57662,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2824,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2819
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "435155",
+        "oldOfficialPages": [
+          107
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7169656"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7169555",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الزيتونة",
+        "ref:tn:codegeo": "435262"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الهيشرية",
+        "الهيشرية",
+        "El Hichria",
+        "El hichria"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4364 (El hichria), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "436453",
+        "sectorAr": "الزيتونة",
+        "sectorFr": "Ezzitouna",
+        "delegationCode": "4364",
+        "delegationAr": "الهيشرية",
+        "delegationFr": "El hichria",
+        "governorateCode": "43",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57696,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2826,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2821
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "435262",
+        "oldOfficialPages": [
+          107
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:12584562"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145442",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الهيشة",
+        "ref:tn:codegeo": "515556"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516253",
+        "sectorAr": "الهيشة",
+        "sectorFr": "El hicha",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59974,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2944,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2938
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515556",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145422",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الميدة",
+        "ref:tn:codegeo": "515557"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516254",
+        "sectorAr": "الميدة",
+        "sectorFr": "El mida",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60008,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2945,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2939
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515557",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145437",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "وذرف الشمالية",
+        "ref:tn:codegeo": "515553"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516251",
+        "sectorAr": "وذرف الشمالية",
+        "sectorFr": "Ouedhref nord",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59906,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2940,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2934
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515553",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145449",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "وذرف الجنوبية",
+        "ref:tn:codegeo": "515554"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516252",
+        "sectorAr": "وذرف الجنوبية",
+        "sectorFr": "Ouedhref sud",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59940,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2942,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2936
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515554",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145393",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "بشيمة القلب",
+        "ref:tn:codegeo": "515760"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الحامة الغربية",
+        "الحامة الغربية",
+        "El Hamma Ouest",
+        "El hamma ouest"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5163 (El hamma ouest), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=114",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516353",
+        "sectorAr": "بشيمة القلب",
+        "sectorFr": "Bechima el kalb",
+        "delegationCode": "5163",
+        "delegationAr": "الحامة الغربية",
+        "delegationFr": "El hamma ouest",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60110,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2951,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2945
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515760",
+        "oldOfficialPages": [
+          114
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145417"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145429",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "بشيمة البرج",
+        "ref:tn:codegeo": "515759"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الحامة الغربية",
+        "الحامة الغربية",
+        "El Hamma Ouest",
+        "El hamma ouest"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5163 (El hamma ouest), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516352",
+        "sectorAr": "بشيمة البرج",
+        "sectorFr": "Bechima el borj",
+        "delegationCode": "5163",
+        "delegationAr": "الحامة الغربية",
+        "delegationFr": "El hamma ouest",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60076,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2949,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2943
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515759",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145417"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145431",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "البحاير",
+        "ref:tn:codegeo": "515758"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الحامة الغربية",
+        "الحامة الغربية",
+        "El Hamma Ouest",
+        "El hamma ouest"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5163 (El hamma ouest), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516351",
+        "sectorAr": "البحاير",
+        "sectorFr": "El behaier",
+        "delegationCode": "5163",
+        "delegationAr": "الحامة الغربية",
+        "delegationFr": "El hamma ouest",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60042,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2947,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2941
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515758",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145417"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145388",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الحبيب ثامر",
+        "ref:tn:codegeo": "515762"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الحامة الغربية",
+        "الحامة الغربية",
+        "El Hamma Ouest",
+        "El hamma ouest"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5163 (El hamma ouest), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=114",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516355",
+        "sectorAr": "الحبيب ثامر",
+        "sectorFr": "Habib thameur",
+        "delegationCode": "5163",
+        "delegationAr": "الحامة الغربية",
+        "delegationFr": "El hamma ouest",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60178,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2955,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2949
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515762",
+        "oldOfficialPages": [
+          114
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145417"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145392",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "بوعطوش",
+        "ref:tn:codegeo": "515761"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية الحامة الغربية",
+        "الحامة الغربية",
+        "El Hamma Ouest",
+        "El hamma ouest"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5163 (El hamma ouest), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=114",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516354",
+        "sectorAr": "بوعطوش",
+        "sectorFr": "Bou attouch",
+        "delegationCode": "5163",
+        "delegationAr": "الحامة الغربية",
+        "delegationFr": "El hamma ouest",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60144,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2953,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2947
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515761",
+        "oldOfficialPages": [
+          114
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145417"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7154910",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "النملات",
+        "ref:tn:codegeo": "625259"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية حامة الجريد",
+        "حامة الجريد",
+        "El Hamma du Jerid",
+        "Hammat ejrid"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 6256 (Hammat ejrid), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=127",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "625653",
+        "sectorAr": "النملات",
+        "sectorFr": "En-namlat",
+        "delegationCode": "6256",
+        "delegationAr": "حامة الجريد",
+        "delegationFr": "Hammat ejrid",
+        "governorateCode": "62",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69233,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3394,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3387
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "625259",
+        "oldOfficialPages": [
+          127
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7154892"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7154924",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "شاكمو",
+        "ref:tn:codegeo": "625257"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية حامة الجريد",
+        "حامة الجريد",
+        "El Hamma du Jerid",
+        "Hammat ejrid"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 6256 (Hammat ejrid), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=127",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "625652",
+        "sectorAr": "شاكمو",
+        "sectorFr": "Chakmou",
+        "delegationCode": "6256",
+        "delegationAr": "حامة الجريد",
+        "delegationFr": "Hammat ejrid",
+        "governorateCode": "62",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69200,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3393,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3386
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "625257",
+        "oldOfficialPages": [
+          127
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7154892"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7169624",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "ref:tn:codegeo": "435151",
+        "name": "سيدي بوزيد الغربية",
+        "name:ar": "سيدي بوزيد الغربية",
+        "name:fr": "Sidi Bouzid Ouest",
+        "name:es": "Sidi Buzid Oeste",
+        "alt_name": "سيدي بوزيد",
+        "alt_name:ar": "سيدي بوزيد"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "سيدي بوزيد",
+        "name:ar": "سيدي بوزيد",
+        "name:fr": "Sidi Bouzid"
+      },
+      "reason": "Promote the existing source Arabic alias for sector435151 to its official primary identity, Sidi Bouzid. INS2012 and INS2024 distinguish it from sector435162, Sidi Bouzid Ouest, whose separate polygon and identity remain intact. The source West primary and translations incorrectly duplicate435162 and are removed from this record rather than retained as aliases. Its legitimate containing delegation is still Sidi Bouzid Ouest.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=53"
+      ],
+      "officialIdentity": {
+        "sectorCode": "435151",
+        "sectorAr": "سيدي بوزيد",
+        "delegationCode": "4351",
+        "delegationAr": "سيدي بوزيد الغربية",
+        "governorateCode": "43",
+        "governorateAr": "سيدي بوزيد",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 53821,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2618,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2613
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "435151",
+        "oldOfficialPages": [
+          107
+        ],
+        "oldOfficialNameAr": "سيدي بوزيد",
+        "oldOfficialNameFr": "Sidi Bouzid",
+        "distinctSector": {
+          "id": "osm:relation:7169639",
+          "code": "435162",
+          "nameAr": "سيدي بوزيد الغربية"
+        },
+        "support": "The selected Arabic primary already exists in the source alt_name and alt_name:ar. Both official editions distinguish the two coded sectors, and their source polygon interiors are disjoint. The2024 French field still says Sidi Bouzid Ouest, so the unqualified French primary uses the corroborated2012 label rather than copying the conflicting newer translation."
+      },
+      "unresolved": [
+        "This corrects naming metadata only and does not certify either sector boundary. The original source PBF and polygon geometry are unchanged."
+      ]
+    },
+    {
+      "id": "osm:node:475589717",
+      "action": "preserve_point",
+      "expectedKind": "hamlet",
+      "expectedTags": {
+        "addr:governorate": "Sfax",
+        "name": "سيدي فرج",
+        "name:ar": "سيدي فرج",
+        "name:cs": "Sidi Frej",
+        "name:en": "Sidi Frej",
+        "name:fr": "Sidi Frej",
+        "place": "hamlet"
+      },
+      "reason": "This real Sidi Frej point was already selectable before the official sector correction. Keep its stable ID and source coordinate for existing saved selections; normal picker grouping joins it to the corrected same-name containing sector without an extra display row.",
+      "evidence": [
+        {
+          "source": "Pinned OSM point and pre-official-import catalog",
+          "catalogSha256": "d57e194c07375a7b757f3d741074a8d5dbb7a75adf817ed14dbab90b6b2b7735",
+          "previousPickerGroupId": "osm:node:475589717",
+          "lat": 34.6881279,
+          "lng": 11.1375138
+        },
+        {
+          "source": "Reviewed official ISIE sector346653 geometry",
+          "file": "official/identity-review-isie2023-sectors.geojson",
+          "id": "osm:relation:7147636",
+          "review": "The point lies inside the corrected Sidi Frej footprint and its Arabic and French names agree; preserve the point without creating a new boundary."
+        }
+      ]
+    },
+    {
+      "id": "osm:node:1977214842",
+      "action": "preserve_point",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "المكارم",
+        "name:ar": "المكارم",
+        "name:en": "El Makarem",
+        "name:fr": "El Makarem",
+        "place": "village"
+      },
+      "reason": "This real Makarem village point was already selectable before the official sector correction. Keep its stable ID and coordinate for saved selections; normal picker grouping joins the corrected same-name sector without an extra row.",
+      "evidence": [
+        {
+          "source": "Pinned OSM point and pre-official-import catalog",
+          "catalogSha256": "d57e194c07375a7b757f3d741074a8d5dbb7a75adf817ed14dbab90b6b2b7735",
+          "previousPickerGroupId": "osm:node:1977214842",
+          "lat": 35.2162626,
+          "lng": 9.60776
+        },
+        {
+          "source": "Reviewed official ISIE sector435256 geometry",
+          "file": "official/next-identity-review-isie2023-sectors.geojson",
+          "id": "osm:relation:7169580",
+          "review": "The point is inside the reviewed generic Makarem footprint and Arabic names agree; retain the point without inventing a boundary."
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7126202",
+      "action": "name_tags",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين الزريق",
+        "name:ar": "عين الزريق",
+        "name:fr": "Ain Ezrig",
+        "ref:tn:codegeo": "245454"
+      },
+      "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "245454",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30361,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1424,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1423
+          },
+          "pointId": "osm:node:10002024787",
+          "pointLatitude": 36.163799,
+          "pointLongitude": 9.4505751,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "nameTags": {
+        "name": "عين زريق",
+        "name:ar": "عين زريق",
+        "name:fr": "Ain zerig",
+        "alt_name": "عين الزريق;Ain Ezrig"
+      },
+      "manualPointId": "osm:node:10002024787"
+    },
+    {
+      "id": "osm:node:10002024787",
+      "action": "preserve_point",
+      "expectedKind": "hamlet",
+      "expectedTags": {
+        "name": "عين زريق",
+        "name:ar": "عين زريق",
+        "name:fr": "Ain Zerig",
+        "place": "hamlet"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7126202",
+          "officialCode": "245454",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7150193",
+      "action": "name_tags",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العمايمة",
+        "name:ar": "العمايمة",
+        "name:fr": "El Amaima",
+        "ref:tn:codegeo": "615253"
+      },
+      "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "615253",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65848,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3236,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3230
+          },
+          "pointId": "osm:node:10010935167",
+          "pointLatitude": 34.6363366,
+          "pointLongitude": 8.7014249,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "nameTags": {
+        "name": "العمايمية",
+        "name:ar": "العمايمية",
+        "name:fr": "El amaima",
+        "alt_name": "العمايمة;El Amaima"
+      },
+      "manualPointId": "osm:node:10010935167"
+    },
+    {
+      "id": "osm:node:10010935167",
+      "action": "preserve_point",
+      "expectedKind": "hamlet",
+      "expectedTags": {
+        "name": "العمايمية",
+        "name:ar": "العمايمية",
+        "name:fr": "El Amaimia",
+        "place": "hamlet"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7150193",
+          "officialCode": "615253",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7152195",
+      "action": "name_tags",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطواهرية",
+        "name:ar": "الطواهرية",
+        "name:fr": "Touahria",
+        "ref:tn:codegeo": "335757"
+      },
+      "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "335757",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 40731,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1946,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1942
+          },
+          "pointId": "osm:node:10021286069",
+          "pointLatitude": 35.3238175,
+          "pointLongitude": 10.7987315,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "nameTags": {
+        "name": "الطواهرة",
+        "name:ar": "الطواهرة",
+        "name:fr": "Touahra",
+        "alt_name": "الطواهرية;Touahria"
+      },
+      "manualPointId": "osm:node:10021286069"
+    },
+    {
+      "id": "osm:node:10021286069",
+      "action": "preserve_point",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "الطواهرة",
+        "name:ar": "الطواهرة",
+        "name:fr": "Ettouahra",
+        "place": "village"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7152195",
+          "officialCode": "335757",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7114433",
+      "action": "name_tags",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المليشيات",
+        "name:ar": "المليشيات",
+        "name:fr": "Melichet",
+        "ref:tn:codegeo": "325453"
+      },
+      "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "325453",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36685,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1733,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1731
+          },
+          "pointId": "osm:node:10118270176",
+          "pointLatitude": 35.51208,
+          "pointLongitude": 10.5316808,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "nameTags": {
+        "name": "المليشات",
+        "name:ar": "المليشات",
+        "name:fr": "Melichet",
+        "alt_name": "المليشيات"
+      },
+      "manualPointId": "osm:node:10118270176"
+    },
+    {
+      "id": "osm:node:10118270176",
+      "action": "preserve_point",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "المليشات",
+        "name:ar": "المليشات",
+        "name:fr": "Mlichette",
+        "place": "village"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7114433",
+          "officialCode": "325453",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:node:349303622",
+      "action": "preserve_point",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "غيدمة",
+        "name:ar": "غيدمة",
+        "name:en": "Ghidma",
+        "name:fr": "Ghidma",
+        "place": "village"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7095632",
+          "officialCode": "635654",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7124231",
+      "action": "name_tags",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ذواودة",
+        "name:ar": "ذواودة",
+        "name:fr": "Dhouaouda",
+        "ref:tn:codegeo": "175753"
+      },
+      "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "175753",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18292,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 796,
+            "Nombre_de_menages_par_Secteurs.xlsx": 795
+          },
+          "pointId": "osm:node:8035791884",
+          "pointLatitude": 37.0331728,
+          "pointLongitude": 9.4336813,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "nameTags": {
+        "name": "الذواودة",
+        "name:ar": "الذواودة",
+        "name:fr": "Dheouaouda",
+        "alt_name": "ذواودة;Dhouaouda"
+      },
+      "manualPointId": "osm:node:8035791884"
+    },
+    {
+      "id": "osm:node:8035791884",
+      "action": "preserve_point",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "الذواودة",
+        "name:ar": "الذواودة",
+        "name:en": "Edhewewda",
+        "name:fr": "Edhewewda",
+        "place": "village"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7124231",
+          "officialCode": "175753",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7082748",
+      "action": "name_tags",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بن محمد",
+        "name:ar": "بن محمد",
+        "name:fr": "Ben Mehemed",
+        "ref:tn:codegeo": "635158"
+      },
+      "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "635158",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69505,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3409,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3402
+          },
+          "pointId": "osm:node:9945093900",
+          "pointLatitude": 33.5724927,
+          "pointLongitude": 8.8865999,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "nameTags": {
+        "name": "بني محمّد",
+        "name:ar": "بني محمّد",
+        "name:fr": "Beni mehemed",
+        "alt_name": "بن محمد;Ben Mehemed"
+      },
+      "manualPointId": "osm:node:9945093900"
+    },
+    {
+      "id": "osm:node:9945093900",
+      "action": "preserve_point",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "بني محمد",
+        "name:ar": "بني محمد",
+        "name:fr": "Beni Mhammad",
+        "place": "village"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7082748",
+          "officialCode": "635158",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7082714",
+      "action": "name_tags",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جرسین",
+        "name:fr": "Jersine",
+        "ref:tn:codegeo": "635156"
+      },
+      "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+      "evidence": [
+        {
+          "source": "Independent official name and source point review",
+          "officialCode": "635156",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69437,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3405,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3398
+          },
+          "pointId": "osm:node:9947246733",
+          "pointLatitude": 33.530208,
+          "pointLongitude": 8.8273725,
+          "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+        }
+      ],
+      "nameTags": {
+        "name": "جرسين",
+        "name:ar": "جرسين",
+        "name:fr": "Jersine",
+        "alt_name": "جرسین"
+      },
+      "manualPointId": "osm:node:9947246733"
+    },
+    {
+      "id": "osm:node:9947246733",
+      "action": "preserve_point",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "جرسين",
+        "name:ar": "جرسين",
+        "name:fr": "Zarsin",
+        "place": "village"
+      },
+      "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+      "evidence": [
+        {
+          "source": "Pinned source point and independent manual-reference review",
+          "sectorId": "osm:relation:7082714",
+          "officialCode": "635156",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/eight-point-sector-spelling-review.json",
+              "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+            },
+            {
+              "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+              "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+            },
+            {
+              "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+              "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+            }
+          ],
+          "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:315007832",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:street": "Route Nationale 1",
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "SOS Village d'enfants Mahrès",
+        "website": "https://www.sosve.org/"
+      },
+      "action": "exclude",
+      "reason": "The source is the walled SOS children care campus on Route Nationale 1. Its operator describes family care homes, a sports field and administration. This is a reviewed standalone institution outside the neighborhood picker scope; the facility exists and is not mislabeled as nonexistent.",
+      "evidence": {
+        "sourceAndScopeReview": {
+          "file": "scope-reviews/scope-labels2-source-review.json",
+          "sha256": "8647c78d5b2e950ee221ea7bcea55df38c8b4a9ee22431b27dce89fd1a1c19d9"
+        },
+        "phoneReview": {
+          "file": "scope-reviews/phone-scope-labels-visual-review2.json",
+          "sha256": "043119d542df80ceb41c54025d6077c9d96df7682db678a59089296ace8ea431"
+        },
+        "classification": "standalone_child_care_institution",
+        "officialProviderEvidence": {
+          "url": "https://www.soschildrensvillages.ca/tunisia/sos-childrens-village-mahres",
+          "resolvedUrl": "https://www.soschildrensvillages.ca/tunisia/sos-childrens-village-mahres",
+          "retrievedAt": "2026-09-07T08:30:11.532447+00:00",
+          "sha256": "c8239dc7fe778ee7f739f425ef85640a30712f88c88eccd436f24c6c4e2842a4",
+          "pageTitle": "SOS Children's Village Mahrès",
+          "finding": "The operator describes children care homes, a football ground and an administrative building in Mahres.",
+          "tunisianOperatorPage": "https://www.sosve.tn/village-sos-mahres/",
+          "tunisianOperatorPageAccess": "Read through web browser extraction; direct urllib archival request returned HTTP403. No raw page hash claimed for that page."
+        },
+        "sourceObject": {
+          "id": "osm:way:315007832",
+          "version": 4,
+          "timestamp": "2019-09-27 20:27:40+00:00",
+          "tags": {
+            "addr:street": "Route Nationale 1",
+            "barrier": "wall",
+            "landuse": "residential",
+            "name": "SOS Village d'enfants Mahrès",
+            "website": "https://www.sosve.org/"
+          },
+          "nodeCount": 7
+        },
+        "containingLocalities": [
+          {
+            "id": "osm:relation:7110921",
+            "name": "المحرس",
+            "kind": "sector",
+            "areaKm2": 23.600835480025687
+          }
+        ],
+        "savedSelectionHandling": "Add the ID to the existing retired-localities asset so a stale label clears while its prayer source is preserved."
+      }
+    },
+    {
+      "id": "osm:way:691401654",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "مشكلة حق الطريق",
+        "name:ar": "مشكلة حق الطريق",
+        "name:fr": "Probleme ouverture d'emprise"
+      },
+      "action": "exclude",
+      "reason": "Both Arabic and French source labels describe a right-of-way/opening problem rather than identify a named locality. The object has only residential landuse and these annotation names, with no independent place or administrative identity.",
+      "evidence": {
+        "sourceAndScopeReview": {
+          "file": "scope-reviews/scope-labels2-source-review.json",
+          "sha256": "8647c78d5b2e950ee221ea7bcea55df38c8b4a9ee22431b27dce89fd1a1c19d9"
+        },
+        "phoneReview": {
+          "file": "scope-reviews/phone-scope-labels-visual-review2.json",
+          "sha256": "043119d542df80ceb41c54025d6077c9d96df7682db678a59089296ace8ea431"
+        },
+        "classification": "generic_mapping_issue_annotation",
+        "officialProviderEvidence": null,
+        "sourceObject": {
+          "id": "osm:way:691401654",
+          "version": 3,
+          "timestamp": "2019-12-15 01:08:43+00:00",
+          "tags": {
+            "landuse": "residential",
+            "name": "مشكلة حق الطريق",
+            "name:ar": "مشكلة حق الطريق",
+            "name:fr": "Probleme ouverture d'emprise"
+          },
+          "nodeCount": 12
+        },
+        "containingLocalities": [
+          {
+            "id": "osm:way:685815670",
+            "name": "Cité El Dhiret et Arfawin",
+            "kind": "residential",
+            "areaKm2": 0.35648332265223054
+          },
+          {
+            "id": "osm:relation:7046892",
+            "name": "عقارب",
+            "kind": "sector",
+            "areaKm2": 40.72574937068836
+          }
+        ],
+        "savedSelectionHandling": "Add the ID to the existing retired-localities asset so a stale label clears while its prayer source is preserved."
+      }
+    },
+    {
+      "id": "osm:node:7372876054",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "القصر",
+        "name:ar": "القصر",
+        "name:en": "El Ksar",
+        "name:fr": "El Ksar",
+        "place": "village"
+      },
+      "action": "preserve_point",
+      "pickerBaseDelegationId": 608,
+      "reason": "This exact existing settlement point already supplies the reviewed coordinates of the namesake original timetable row. Keeping a second display row duplicates the same manual location and prayer choice. Retain the point ID and search/context aliases as members of the original row.",
+      "evidence": {
+        "sourceCoordinateReview": {
+          "delegationId": 608,
+          "expectedGovernorateId": 365,
+          "expectedNames": {
+            "nomAr": "القصر",
+            "nomFr": "El Ksar",
+            "nomEn": "El Ksar"
+          },
+          "reviewedDate": "2026-09-07",
+          "original": {
+            "lat": 34.349,
+            "lng": 8.7701
+          },
+          "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+          "proposed": {
+            "lat": 34.3978553,
+            "lng": 8.8045119
+          },
+          "movedKm": 6.283798029929493,
+          "osm": {
+            "id": "osm:node:7372876054",
+            "url": "https://www.openstreetmap.org/node/7372876054",
+            "apiUrl": "https://api.openstreetmap.org/api/0.6/node/7372876054.json",
+            "version": 2,
+            "timestamp": "2021-02-02T00:59:52Z",
+            "name": "القصر",
+            "place": "village"
+          },
+          "geonames": {
+            "id": 2473466,
+            "name": "El Ksar",
+            "lat": 34.3992,
+            "lng": 8.80399,
+            "featureClass": "P",
+            "featureCode": "PPLX",
+            "modified": "2024-12-02",
+            "url": "https://www.geonames.org/2473466",
+            "distanceToProposedKm": 0.1570040864058775
+          },
+          "phoneVisualReview": {
+            "reviewedDate": "2026-09-07",
+            "decision": "approved_settlement_reference",
+            "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+            "observation": "The proposed pin is in the urban grid just north of Gafsa Gare; its coordinate result explicitly resolves to El Ksar Est.",
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        },
+        "sourceCoordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+        "currentMetadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+        "expectedPickerGroupId": "delegation:608",
+        "expectedPointAndOriginalNames": "القصر",
+        "pointCoordinatesExactlyEqualOriginalRow": true,
+        "manualPrayerSourceUnchanged": true,
+        "boundaryChange": false,
+        "proposal": {
+          "file": "scope-reviews/point-base-links2-proposal.json",
+          "sha256": "23f1b0ebeec48249df6d9bd2d09c353d24c918ee72a8779c345c505acef803ee"
+        },
+        "independentReview": {
+          "file": "scope-reviews/exact-source-point-picker-link-review.json",
+          "sha256": "867810b20456b932d1b26a39a482a7eda38b7690dd0c9a41769ddc7cfc96ea12"
+        },
+        "sourceObject": {
+          "id": "osm:node:7372876054",
+          "version": 2,
+          "timestamp": "2021-02-02 00:59:52+00:00",
+          "lat": 34.3978553,
+          "lng": 8.8045119,
+          "tags": {
+            "name": "القصر",
+            "name:ar": "القصر",
+            "name:en": "El Ksar",
+            "name:fr": "El Ksar",
+            "place": "village"
+          }
+        }
+      }
+    },
+    {
+      "id": "osm:node:351575544",
+      "expectedKind": "town",
+      "expectedTags": {
+        "name": "سوق الأحد",
+        "name:ar": "سوق الأحد",
+        "name:en": "Souk Lahad",
+        "name:fr": "Souk Lahad",
+        "name:ru": "Сук-Ляхад",
+        "place": "town",
+        "wikidata": "Q3051223",
+        "wikimedia_commons": "Category:Souk Lahad",
+        "wikipedia": "ar:سوق الأحد (تونس)"
+      },
+      "action": "preserve_point",
+      "pickerBaseDelegationId": 483,
+      "reason": "This exact existing settlement point already supplies the reviewed coordinates of the namesake original timetable row. Keeping a second display row duplicates the same manual location and prayer choice. Retain the point ID and search/context aliases as members of the original row.",
+      "evidence": {
+        "sourceCoordinateReview": {
+          "delegationId": 483,
+          "expectedGovernorateId": 1012,
+          "expectedNames": {
+            "nomAr": "سوق الأحد",
+            "nomFr": "Souk El Ahad",
+            "nomEn": "Souk El Ahad"
+          },
+          "reviewedDate": "2026-09-07",
+          "original": {
+            "lat": 33.9537,
+            "lng": 8.8361
+          },
+          "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+          "proposed": {
+            "lat": 33.7783142,
+            "lng": 8.8525855
+          },
+          "movedKm": 19.561319977017398,
+          "osm": {
+            "id": "osm:node:351575544",
+            "url": "https://www.openstreetmap.org/node/351575544",
+            "apiUrl": "https://api.openstreetmap.org/api/0.6/node/351575544.json",
+            "version": 10,
+            "timestamp": "2025-09-14T10:19:40Z",
+            "name": "سوق الأحد",
+            "place": "town"
+          },
+          "geonames": {
+            "id": 11862824,
+            "name": "Souk Lahad",
+            "lat": 33.77579,
+            "lng": 8.85992,
+            "featureClass": "P",
+            "featureCode": "PPL",
+            "modified": "2024-12-02",
+            "url": "https://www.geonames.org/11862824",
+            "distanceToProposedKm": 0.7337076303282382
+          },
+          "phoneVisualReview": {
+            "reviewedDate": "2026-09-07",
+            "decision": "approved_settlement_reference",
+            "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+            "observation": "Proposed capture shows P16 within a dense street network, a Souk Lahad address, and nearby SOUK LAHAD business labelling. Original capture is an unnamed location near Oum Essoumaa without visible roads or settlement detail at that viewport.",
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        },
+        "sourceCoordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+        "currentMetadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+        "expectedPickerGroupId": "delegation:483",
+        "expectedPointAndOriginalNames": "سوق الأحد",
+        "pointCoordinatesExactlyEqualOriginalRow": true,
+        "manualPrayerSourceUnchanged": true,
+        "boundaryChange": false,
+        "proposal": {
+          "file": "scope-reviews/point-base-links2-proposal.json",
+          "sha256": "23f1b0ebeec48249df6d9bd2d09c353d24c918ee72a8779c345c505acef803ee"
+        },
+        "independentReview": {
+          "file": "scope-reviews/exact-source-point-picker-link-review.json",
+          "sha256": "867810b20456b932d1b26a39a482a7eda38b7690dd0c9a41769ddc7cfc96ea12"
+        },
+        "sourceObject": {
+          "id": "osm:node:351575544",
+          "version": 10,
+          "timestamp": "2025-09-14 10:19:40+00:00",
+          "lat": 33.7783142,
+          "lng": 8.8525855,
+          "tags": {
+            "name": "سوق الأحد",
+            "name:ar": "سوق الأحد",
+            "name:en": "Souk Lahad",
+            "name:fr": "Souk Lahad",
+            "name:ru": "Сук-Ляхад",
+            "place": "town",
+            "wikidata": "Q3051223",
+            "wikimedia_commons": "Category:Souk Lahad",
+            "wikipedia": "ar:سوق الأحد (تونس)"
+          }
+        }
+      }
+    },
+    {
+      "id": "osm:way:190914701",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "El Aroussa",
+        "addr:country": "TN",
+        "addr:governorate": "Siliana",
+        "landuse": "residential",
+        "name": "El Aroussa",
+        "name:en": "El Aroussa",
+        "name:fr": "L'aroussa"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "El Aroussa",
+        "name:en": "El Aroussa",
+        "name:fr": "L'aroussa",
+        "name:ar": "العروسة"
+      },
+      "reason": "The residential source has the French name El Aroussa but lacks its Arabic primary. The exact bilingual coded sector246151 and coded parent2461 fully contain this source footprint, and INS2024 independently pairs El aroussa with العروسة. Add that supported Arabic primary while retaining every original name and the unchanged footprint.",
+      "evidence": [
+        {
+          "source": "Direct pinned PBF source identities and bilingual current INS2024 row",
+          "reviewFiles": [
+            {
+              "file": "reviews/held12-el-aroussa-translation-review.json",
+              "sha256": "5fde456fa6b1fd909760e93091e9bffbcfc85fcb2632d72f7c84b81af8df7a81"
+            }
+          ],
+          "officialCode": "246151",
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32231,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1524,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1523
+          }
+        },
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+      ],
+      "unresolved": [
+        "The bilingual identity evidence supports the name only; it does not certify the source residential boundary."
+      ]
+    },
+    {
+      "id": "osm:relation:7113328",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الزريبة",
+        "name:ar": "الزريبة",
+        "name:fr": "Ezzriba",
+        "ref:tn:codegeo": "165255"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "الزريبة القرية",
+        "name:ar": "الزريبة القرية",
+        "name:fr": "Ez-zeriba village",
+        "alt_name": "الزريبة;Ezzriba"
+      },
+      "reason": "Restore the meaningful Village qualifier for sector165255: INS2012, INS2024 and ISIE2022 name الزريبة القرية, and the official ISIE map displays that name separately from Zriba Hammam north/south. The source PBF unique code165255 and containing parent1652 are freshly revalidated. Retain original الزريبة and Ezzriba as aliases; leave generic timetable base409 and all geometry/context/grouping unchanged.",
+      "evidence": [
+        {
+          "source": "Fresh exact PBF identities, current and historical INS names, ISIE membership and official map label",
+          "officialCode": "165255",
+          "officialSourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 15233,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 640,
+            "Nombre_de_menages_par_Secteurs.xlsx": 639
+          },
+          "reviewFiles": [
+            {
+              "file": "name-reviews/zriba-village-qualified-name-review.json",
+              "sha256": "a2053a1d83fd77e230bb8d3faaa32887d080f6558b51ab25ef0ff285c795bcd7"
+            },
+            {
+              "file": "name-reviews/zriba-direct-pbf-source-facts.json",
+              "sha256": "32897bec0b78171392d3ed19d6ede7de13eb7f9e007ef0e208bfee5cc4fc30fb"
+            }
+          ]
+        },
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B2%D8%BA%D9%88%D8%A7%D9%86/%D8%A7%D9%84%D8%B2%D8%B1%D9%8A%D8%A8%D8%A9/%D8%A7%D9%84%D8%B2%D8%B1%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D9%82%D8%B1%D9%8A%D8%A9.pdf",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=53",
+        "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=34"
+      ],
+      "officialIdentity": {
+        "governorateCode": "16",
+        "governorateFr": "Zaghouan",
+        "governorateAr": "زغوان",
+        "delegationCode": "1652",
+        "delegationFr": "Ez-zeriba",
+        "delegationAr": "الزريبة",
+        "sectorCode": "165255",
+        "sectorFr": "Ez-zeriba village",
+        "sectorAr": "الزريبة القرية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 15233,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 640,
+          "Nombre_de_menages_par_Secteurs.xlsx": 639
+        }
+      },
+      "unresolved": [
+        "Name evidence does not certify the source polygon. Separate official boundary review remains pending.",
+        "Generic timetable base409 keeps its existing label, coordinate and identity ambiguity; no merge or relocation is authorized."
+      ]
+    },
+    {
+      "id": "osm:way:377116351",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "قصر الجؤامع",
+        "name:aeb": "قصر الجؤامع",
+        "name:ar": "قصر الجؤامع",
+        "name:en": "Ksar Jouamaa"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "قصر الجوامع",
+        "name:aeb": "قصر الجوامع",
+        "name:ar": "قصر الجوامع",
+        "name:en": "Ksar Jouamaa",
+        "alt_name": "قصر الجؤامع"
+      },
+      "reason": "Correct the exact source Arabic spelling قصر الجؤامع to the primary field-inventory village name قصر الجوامع. Preserve the old Arabic as an alternate search name and the original Ksar Jouamaa Latin name. This changes naming metadata only; the village point and residential polygon remain distinct geographic records.",
+      "evidence": [
+        {
+          "source": "Primary GMG Arabic inhabited-village reference, separately identified fortress, and fresh exact PBF identities",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/ksar-jouamaa-source-spelling-review.json",
+              "sha256": "33b1782f0dea72b7c7580788b03640dfe6f203ef62000ddccdbadcf89afa874c"
+            },
+            {
+              "file": "name-reviews/ksar-jouamaa-primary-source.html",
+              "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832"
+            }
+          ]
+        },
+        "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa"
+      ],
+      "unresolved": [
+        "The primary locality name does not certify the residential extent. Published fortress coordinates remain separate and are not substituted for the village point."
+      ]
+    },
+    {
+      "id": "osm:node:11230028572",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "قصر الجؤامع",
+        "name:aeb": "قصر الجؤامع",
+        "name:ar": "قصر الجؤامع",
+        "name:en": "Ksar Jouamaa",
+        "place": "village"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "قصر الجوامع",
+        "name:aeb": "قصر الجوامع",
+        "name:ar": "قصر الجوامع",
+        "name:en": "Ksar Jouamaa",
+        "alt_name": "قصر الجؤامع"
+      },
+      "reason": "Correct the exact source Arabic spelling قصر الجؤامع to the primary field-inventory village name قصر الجوامع. Preserve the old Arabic as an alternate search name and the original Ksar Jouamaa Latin name. This changes naming metadata only; the village point and residential polygon remain distinct geographic records.",
+      "evidence": [
+        {
+          "source": "Primary GMG Arabic inhabited-village reference, separately identified fortress, and fresh exact PBF identities",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/ksar-jouamaa-source-spelling-review.json",
+              "sha256": "33b1782f0dea72b7c7580788b03640dfe6f203ef62000ddccdbadcf89afa874c"
+            },
+            {
+              "file": "name-reviews/ksar-jouamaa-primary-source.html",
+              "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832"
+            }
+          ]
+        },
+        "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa"
+      ],
+      "unresolved": [
+        "The primary locality name does not certify the residential extent. Published fortress coordinates remain separate and are not substituted for the village point."
+      ]
+    },
+    {
+      "id": "osm:way:1187366129",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "residential": "osada"
+      },
+      "action": "locality_context",
+      "reason": "The complete original and packed locality footprint belongs to official Eddouiret535260 and is outside official Ras El Oued535263. Correct display context only; preserve source identity, geometry and prayer selection.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+      ],
+      "reviewEvidence": {
+        "file": "locality-context-reviews/haf-three-context-proof.json",
+        "sha256": "d7bf57ebcf0346c9bd44fb0b16c5199b1d86a46c808a20ad26d3cdbda7e55325"
+      }
+    },
+    {
+      "id": "osm:way:1187366130",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed"
+      },
+      "action": "locality_context",
+      "reason": "The complete original and packed locality footprint belongs to official Eddouiret535260 and is outside official Ras El Oued535263. Correct display context only; preserve source identity, geometry and prayer selection.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+      ],
+      "reviewEvidence": {
+        "file": "locality-context-reviews/haf-three-context-proof.json",
+        "sha256": "d7bf57ebcf0346c9bd44fb0b16c5199b1d86a46c808a20ad26d3cdbda7e55325"
+      }
+    },
+    {
+      "id": "osm:node:11522289870",
+      "expectedKind": "hamlet",
+      "expectedTags": {
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "place": "hamlet"
+      },
+      "action": "locality_context",
+      "reason": "The complete original and packed locality footprint belongs to official Eddouiret535260 and is outside official Ras El Oued535263. Correct display context only; preserve source identity, geometry and prayer selection.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+      ],
+      "reviewEvidence": {
+        "file": "locality-context-reviews/haf-three-context-proof.json",
+        "sha256": "d7bf57ebcf0346c9bd44fb0b16c5199b1d86a46c808a20ad26d3cdbda7e55325"
+      }
+    },
+    {
+      "id": "osm:node:297760994",
+      "expectedKind": "village",
+      "expectedTags": {
+        "addr:city": "Chenini",
+        "name": "شنني",
+        "name:ar": "شنني",
+        "name:en": "Chenini",
+        "name:fr": "Chenini",
+        "place": "village",
+        "wikidata": "Q2317502",
+        "wikimedia_commons": "Category:Chenini",
+        "wikipedia": "ar:شنني (تطاوين)"
+      },
+      "action": "locality_context",
+      "reason": "Exact point is safely inside the official wholeChenini535259 circle and outside the officialNewChenini535258 circle in two independently registered source maps. The sector primary equals the village primary, so display the existing delegation context as subtitle while keeping the correct sector aliases searchable.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+      ],
+      "reviewEvidence": {
+        "file": "locality-context-reviews/chenini-west-context-proof.json",
+        "sha256": "1a91de46e8df006525b4b7ce2a82cb040c768be0d2d4ca1c023623c18141cc11"
+      }
+    },
+    {
+      "id": "osm:way:378117273",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Bir Tedrekhet"
+      },
+      "action": "locality_context",
+      "reason": "The complete original and packed Bir Tedrekhet residential footprint belongs to official Eddouiret535260 and is outside official Ras El Oued535263. Correct display context only; preserve its exact source identity, geometry, prayer source624 and picker group.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+      ],
+      "reviewEvidence": {
+        "file": "locality-context-reviews/bir-tedrekhet-context-proof.json",
+        "sha256": "a6519b063868ba75e141300f306ee197a70058d2f59669132533f49476ff28b3"
+      }
+    }
+  ],
+  "pendingReviews": [
+    {
+      "id": "osm:relation:7111933",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "طبلبة",
+        "ref:tn:codegeo": "325951"
+      },
+      "reason": "The source title identifies Teboulba, while official code325951 identifies Bekalta Nord. Neither renaming this polygon nor linking it to Bekalta is supported by the contradictory source identity. It currently falls back to governorate context because no delegation wholly contains it.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=84"
+      ],
+      "unresolved": [
+        "Establish the correct place identity and administrative membership for this source polygon before relabelling it."
+      ]
+    },
+    {
+      "id": "osm:relation:7114902",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "البساتين",
+        "ref:tn:codegeo": "125253"
+      },
+      "reason": "The source labels code125253 El Bassatine / البساتين in Soukra. INS2024 retains125253 in Soukra as El bousten / البستان. The namesake125754 in Mnihla has no geometric overlap with this polygon. Retain Soukra and review the exact source identity/title separately.",
+      "evidence": [
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "unresolved": [
+        "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+      ]
+    }
+  ]
+}

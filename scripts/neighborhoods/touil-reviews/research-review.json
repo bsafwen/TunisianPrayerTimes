@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "status": "supported_existing_method_proposal",
+  "currentMetadataSha256": "ae8202fbf2ce97cfde0cfa4c270a8a93e77cdd09b5fa22e8623f978debc154bf",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceIdentityReview": {
+    "file": "touil-reviews/touil-surveyed-source-chain-review.json",
+    "sha256": "70c6b976d53ab7a7c2a6f10ff8b57d388637b9f48e57d5c68f2b54fb87475984"
+  },
+  "independentSourceIdentityReview": {
+    "file": "touil-reviews/touil-surveyed-source-chain-independent-review.json",
+    "sha256": "547f45190c354c5283f94401a5e93af71c9a79d303e51bfd7e587db9f8c907cc"
+  },
+  "exactSourceChain": {
+    "file": "touil-reviews/exact-object-and-coordinate-chain.json",
+    "sha256": "923998b85e70f9bd77bd0bd09723f495daead0c591be491df7ffbf369e81a5df"
+  },
+  "primarySourceFiles": [
+    {
+      "file": "touil-reviews/osm-node-11525318199-history.xml",
+      "sha256": "d9dc1baf201929e86b38b495e67803526399ca773d592e5c78cba6d134cc3ae2",
+      "url": "https://api.openstreetmap.org/api/0.6/node/11525318199/history"
+    },
+    {
+      "file": "touil-reviews/osm-way-377996284-history.xml",
+      "sha256": "097be1abfb62f2c57a0776c9d771503c76f0fb4f61833bf12da2f757957ef8c6",
+      "url": "https://api.openstreetmap.org/api/0.6/way/377996284/history"
+    },
+    {
+      "file": "touil-reviews/osm-node-3814110946-history.xml",
+      "sha256": "31fa541aa34571e8ee454980f74846f4578e323d37c9f55639199526d1d79708",
+      "url": "https://api.openstreetmap.org/api/0.6/node/3814110946/history"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-35038528.xml",
+      "sha256": "6f8e3f59d8786a049970973d19c4f7862b3b8b49fbbcf0cc1730270894a50f2e",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/35038528"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-35038528-download.osc",
+      "sha256": "6dceaebd4af6cf0d20e7706a4634b25811977240d080573ccb71090dbd12fe6d",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/35038528/download"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-122572164.xml",
+      "sha256": "4b68964c452ac65337a3ce4ce51d4e7a6445ad018b5e11d68f1227cb91d30de3",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/122572164"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-122572164-download.osc",
+      "sha256": "6f9c7c64fd1432e785a6b08f9e4becb414fecd680868566e7923ff07f7218db9",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/122572164/download"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-146375270.xml",
+      "sha256": "c2fd14eb5b5da858279444d3b159b326161b359e19b4a1b50701fa08a1aa9ac2",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/146375270"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-146375270-download.osc",
+      "sha256": "340e957c90e5defba60dc225ab97e0ee6c24b6d58c45b2a0cc7ccb022c2e58ba",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/146375270/download"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-146876838.xml",
+      "sha256": "5e244b749a316e94b312e557051a0860a56dcd840be91837a68d2071ea0dba74",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838"
+    },
+    {
+      "file": "touil-reviews/osm-changeset-146876838-download.osc",
+      "sha256": "975344b8f4a6d7a7b0c5fb6c2027eda5f2ae966ab9e0f252c35042697b7f0f79",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838/download"
+    },
+    {
+      "file": "touil-reviews/changeset-180432269.xml",
+      "sha256": "5ebf22bcc06418a95456256ddaf44f97b0d6cd7d38f4fbf9d19fc8187f1cb71d",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269"
+    },
+    {
+      "file": "touil-reviews/changeset-180432269-download.osc",
+      "sha256": "ad829a346c64a5d2a17fac22c2250f180827c3084c02bcbdf4575faa0750c4b6",
+      "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269/download"
+    }
+  ],
+  "directOriginalAndNationalSourceEvidence": [
+    {
+      "file": "touil-reviews/original-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+    },
+    {
+      "file": "touil-reviews/national-name-and-address-source-facts.json",
+      "sha256": "01867525513850b3040e334c8cf98ddd33e2995e7c5cddb3070f52957cac4f57"
+    },
+    {
+      "file": "touil-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ],
+  "excludedPeak": {
+    "id": "osm:node:3814110946",
+    "tags": {
+      "name": "طويل أولاد زايد",
+      "name:aeb": "طويل أولاد زايد",
+      "name:ar": "طويل أولاد زايد",
+      "name:en": "Touil Ouled Zayed",
+      "name:fr": "Touil Ouled Zayed",
+      "natural": "peak"
+    },
+    "presentInRawCatalog": false,
+    "includedInGroup": false
+  },
+  "guardAssessment": {
+    "existingMethod": "reviewed_primary_source_named_settlement",
+    "generatorSnapshot": {
+      "file": "touil-reviews/reviewed-generator-source-snapshot.py.txt",
+      "sha256": "e723e22dfdfdcc24fd86a1322a44c901b7934bcdf05a90ddda9632399641e69c"
+    },
+    "noNewCodeOrGuardRelaxation": true,
+    "existingPointAndResidentialSingletons": true,
+    "currentAndOriginalBilingualTagsEqual": true,
+    "neitherMemberNorContextHasCuration": true,
+    "codedContextUniqueOriginalAndEffective535263": true,
+    "bothCompleteOriginalAndPackedMembersCoveredByContext": true,
+    "oneGlobalEligiblePlaceAndOneResidentialFromPinnedSourceInventory": true,
+    "bothCurrentManualDefaults624": true,
+    "nearestEvenAmongAll259UnfilteredSources": {
+      "osm:way:377996284": 624,
+      "osm:node:11525318199": 624
+    },
+    "hamletResidentialContainmentNotRequiredByExistingMethod": true,
+    "generatorHelperWasNotExecuted": true
+  },
+  "currentRecords": [
+    {
+      "id": "osm:way:377996284",
+      "sourceId": "osm",
+      "name": "طويل أولاد زايد",
+      "aliases": [
+        "Touil Ouled Zayed"
+      ],
+      "kind": "residential",
+      "parentName": "رأس الوادي",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Ras El Oued",
+        "Tataouine Sud",
+        "رأس الوادي",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.766158,
+      "lng": 10.265125,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        10.262448,
+        32.764912,
+        10.266663,
+        32.7675
+      ],
+      "areaKm2": 0.026324605121398816,
+      "pickerGroupId": "osm:way:377996284",
+      "offset": 5396284,
+      "length": 620
+    },
+    {
+      "id": "osm:node:11525318199",
+      "sourceId": "osm",
+      "name": "طويل أولاد زايد",
+      "aliases": [
+        "Touil Ouled Zayed"
+      ],
+      "kind": "hamlet",
+      "parentName": "رأس الوادي",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Ras El Oued",
+        "Tataouine Sud",
+        "رأس الوادي",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.7671737,
+      "lng": 10.2628336,
+      "delegationId": 624,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:11525318199"
+    },
+    {
+      "id": "osm:relation:7143876",
+      "sourceId": "osm",
+      "name": "رأس الوادي",
+      "aliases": [
+        "Ras El Oued"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تطاوين الجنوبية",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.713426,
+      "lng": 10.100541,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        9.879862,
+        32.575847,
+        10.344625,
+        32.855837
+      ],
+      "areaKm2": 708.5587393602234,
+      "pickerGroupId": "osm:relation:7143876",
+      "offset": 2131592,
+      "length": 3540
+    }
+  ],
+  "historicalEvidenceQualification": "The two copied source-review reports retain their historical7b metadata references. Their target fields and source fingerprints have been compared to installed ae8202 and remain equal. The new wrapper and exact field assertions are pinned to ae8202.",
+  "decision": "Fits all existing named-settlement source/data guards by static inspection and direct evidence calculations. Root may independently review this proposal; only a subsequent isolated full generation can exercise the actual generator dispatch."
+}

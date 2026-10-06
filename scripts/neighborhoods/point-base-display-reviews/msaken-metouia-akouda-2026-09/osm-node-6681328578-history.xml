@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3498733 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="6681328578" visible="true" version="1" changeset="72989127" timestamp="2019-08-04T12:46:07Z" user="Anis Ben Makhlouf" uid="10001069" lat="35.7252583" lon="10.5832842">
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Msaken"/>
+  <tag k="place" v="village"/>
+ </node>
+ <node id="6681328578" visible="true" version="2" changeset="82458263" timestamp="2020-03-21T12:12:37Z" user="Anis Ben Makhlouf" uid="10001069" lat="35.7252583" lon="10.5832842">
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:fr" v="Msaken"/>
+  <tag k="place" v="village"/>
+  <tag k="postal_code" v="4099"/>
+ </node>
+ <node id="6681328578" visible="true" version="3" changeset="98539602" timestamp="2021-02-02T00:59:52Z" user="user_11422772" uid="11422772" lat="35.7252583" lon="10.5832842">
+  <tag k="name" v="مساكن"/>
+  <tag k="name:ar" v="مساكن"/>
+  <tag k="name:en" v="Msaken"/>
+  <tag k="name:fr" v="Msaken"/>
+  <tag k="place" v="village"/>
+  <tag k="postal_code" v="4099"/>
+ </node>
+</osm>

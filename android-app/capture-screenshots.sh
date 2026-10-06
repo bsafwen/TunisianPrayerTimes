@@ -306,7 +306,7 @@ capture_device() {
     grant_permissions "$serial" "$pkg"
 
     # 4. Capture onboarding steps 0..5 (welcome through wake alarm)
-    local step_names=("welcome" "duration" "delay" "fixed-time" "jomoaa" "wake-alarm")
+    local step_names=("welcome" "silence-period" "drag-endpoints" "endpoint-rules" "jomoaa" "wake-alarm")
     for i in 0 1 2 3 4 5; do
         wait_ui
         capture "$serial" "${prefix}-onboarding-${i}-${step_names[$i]}.png"

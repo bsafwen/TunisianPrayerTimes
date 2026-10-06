@@ -1,0 +1,152 @@
+{
+  "scope": "finite read-only interpretation audit; supplied evidence only",
+  "conclusions": {
+    "amdounCodeNameIdentities": [
+      {
+        "relation": "osm:relation:7189452",
+        "officialCode": "215351",
+        "officialName": {
+          "ar": "زهرة مدين",
+          "fr": "Zahret medien"
+        },
+        "currentOsmName": {
+          "ar": "عمدون",
+          "frAlias": "Amdoun"
+        },
+        "identityConclusion": "Exact code 215351 identifies Zahret medien, not Amdoun. Name-only correction is supported independently of unequal extents; no boundary replacement requested or justified by this name audit.",
+        "geometryCorroboration": {
+          "officialAreaKm2": 8.995099411370612,
+          "comparedAreaKm2": 9.532652006010675,
+          "intersectionKm2": 8.909360146916496,
+          "iou": 0.9262838136221708,
+          "officialCoveredByCompared": 0.9904682249152539,
+          "comparedCoveredByOfficial": 0.9346150621357863,
+          "hausdorffMeters": 431.1044064147871,
+          "centroidDistanceMeters": 45.07504684034296,
+          "currentAnchorCovered": true,
+          "currentAnchorDistanceToPolygonMeters": 0.0,
+          "currentAnchorDistanceToBoundaryMeters": 925.1525654005069
+        },
+        "crossCheckAgainstOtherOfficial": {
+          "official": "zahret-medien-sud/215352",
+          "iou": 0.00789002019924596,
+          "centroidDistanceMeters": 2348.5173367205516,
+          "hausdorffMeters": 3309.7842135071237
+        }
+      },
+      {
+        "relation": "osm:relation:7189451",
+        "officialCode": "215352",
+        "officialName": {
+          "ar": "زهرة مدين الجنوبية",
+          "fr": "Zahret medien sud"
+        },
+        "currentOsmName": {
+          "ar": "عمدون الجنوبية",
+          "frAlias": "Amdoun Sud"
+        },
+        "identityConclusion": "Exact code 215352 identifies Zahret medien sud, not Amdoun Sud. Name-only correction is supported independently of unequal extents; no boundary replacement requested or justified by this name audit.",
+        "geometryCorroboration": {
+          "officialAreaKm2": 19.692897278145765,
+          "comparedAreaKm2": 18.65323642285475,
+          "intersectionKm2": 18.497834333818144,
+          "iou": 0.9319606678445581,
+          "officialCoveredByCompared": 0.9393150267607477,
+          "comparedCoveredByOfficial": 0.9916688940453142,
+          "hausdorffMeters": 649.1935219569352,
+          "centroidDistanceMeters": 2.899038648475634,
+          "currentAnchorCovered": true,
+          "currentAnchorDistanceToPolygonMeters": 0.0,
+          "currentAnchorDistanceToBoundaryMeters": 484.7773939761201
+        },
+        "crossCheckAgainstOtherOfficial": {
+          "official": "zahret-medien/215351",
+          "iou": 0.0001484592783552116,
+          "centroidDistanceMeters": 2306.139728033132,
+          "hausdorffMeters": 3318.2397496896397
+        }
+      }
+    ],
+    "amdounValidity": "Both Amdoun official native paths are explicitly closed, valid, fully inside viewport/both clips; both OSM relations remain geometry-valid. Delegation identity remains Amdoun/عمدون code 2153; sector names are the official Zahret medien/Zahret medien sud names.",
+    "midounTownVsSector": {
+      "sector": {
+        "relation": "osm:relation:7133850",
+        "officialCode": "525751",
+        "officialName": {
+          "ar": "ميدون",
+          "fr": "Midoun"
+        },
+        "nativeContinuousExplicitlyClosed": true,
+        "nativeGeometryValid": false,
+        "fullyInsideViewport": true,
+        "nativeValidity": "Self-intersection[682536.723004981 3741532.5790659]",
+        "nativeSelfIntersectionLat": 33.79823400114453,
+        "nativeSelfIntersectionLng": 10.971821959648114,
+        "nativeSelfIntersectionDistanceFromTownMeters": 2052.499591435576,
+        "areaIou": "WITHHELD_INVALID_OFFICIAL_NATIVE_RING",
+        "boundaryHausdorffToCurrentOriginalMeters": 893.3210841720785,
+        "boundaryHausdorffToCurrentPackedMeters": 893.2913579144346,
+        "currentAnchorCovered": null,
+        "currentAnchorDistanceToBoundaryMeters": 1145.9743847352438,
+        "literalRingWindingNumber": -1,
+        "literalRingCrossingCount": 1,
+        "literalNonzeroFillContains": true,
+        "literalEvenOddFillContains": true,
+        "qualification": "Literal winding/crossing is only a qualified path fact, not ordinary valid-polygon membership; no repair, area, or IoU."
+      },
+      "townPoint": {
+        "id": "osm:node:287613682",
+        "kind": "town",
+        "lat": 33.8074152,
+        "lng": 10.9910666,
+        "distanceToInvalidMidounBoundaryMeters": 1.6219727289307497,
+        "literalWindingNumber": -1,
+        "literalCrossingCount": 1,
+        "literalNonzeroFillContains": true,
+        "literalEvenOddFillContains": true,
+        "ordinaryContainment": null,
+        "currentOsmSectorCovered": false,
+        "currentOsmSectorDistanceMetersOriginal": 7.040130049798284,
+        "currentOsmSectorDistanceMetersPacked": 7.005400085033555,
+        "arkouValidCovered": true,
+        "arkouDistanceToPolygonMeters": 0.0,
+        "arkouDistanceToBoundaryMeters": 1.4527907012910366
+      },
+      "midounArkouTopology": {
+        "status": "AREA_TOPOLOGY_WITHHELD_INVALID_NATIVE_RING",
+        "boundaryDistanceMeters": 0.0,
+        "qualification": "No snapping or repair; no polygon overlap/topology assertion."
+      },
+      "strokeGroundWidthMeters": {
+        "midoun": [
+          34.31164471695368,
+          34.2994060678564
+        ],
+        "arkou": [
+          47.747447351608436,
+          47.731011524125044
+        ]
+      },
+      "identityConclusion": "Town and sector identities remain distinct. Shared name ميدون/Midoun and shared Wikidata Q687088 do not prove duplicate or equal extents. Do not move the town point to a sector anchor. The town is ~7 m outside current OSM sector 7133850, ~1.622 m from the invalid official Midoun boundary, and inside valid Arkou at ~1.453 m from its boundary; the tiny seam plus document stroke width and source differences preclude robust exclusive assignment to Midoun or Arkou. Hold geometry and membership; no buffer/make_valid."
+    }
+  },
+  "nextAction": {
+    "amdoun": "Proceed only as name/alias metadata correction for exact codes 215351 and 215352: Zahret medien and Zahret medien sud. Preserve geometry and ref:tn:codegeo. No boundary replacement.",
+    "midoun": "Hold. Keep town node separate from sector relation; no repair, area/IoU, buffer, make_valid, town-point move, or exclusive sector assignment.",
+    "overall": "Read-only audit complete; unsupported boundary changes remain unwarranted."
+  },
+  "limitations": [
+    "Official source is 2023 electoral district/imada maps, not present-day boundary certification.",
+    "Base imagery/POI labels are context, not independent boundary evidence.",
+    "Original OSM and packed OSM share source lineage.",
+    "Same name or Wikidata does not make a town point identical to an administrative sector.",
+    "Stroke widths are rendering-scale context only, not positional-accuracy intervals or authority to buffer/snap.",
+    "Midoun ordinary polygon containment, area, and IoU are withheld because the native ring self-intersects; literal winding is not ordinary membership."
+  ],
+  "contradictions": [
+    "Amdoun OSM names/aliases conflict with official codes: 7189451 named Amdoun Sud is coded 215352 Zahret medien sud; 7189452 named Amdoun is coded 215351 Zahret medien. Geometry strongly corroborates the official code-name mapping.",
+    "Zahret medien and Zahret medien sud official paths have distance 0.0 but overlap area 2424.407393552848 m² with boundary intersection length 0.0; unresolved, but does not justify boundary replacement.",
+    "Midoun town shares name/Wikidata with sector 7133850 yet lies 7.040130049798284 m outside it; official Midoun ring is invalid and Arkou validly covers the town near a 1.4527907012910366 m boundary seam, so exclusive assignment is not robust.",
+    "Midoun-Arkou boundary distance is 0.0 m, but area topology is withheld because the Midoun native ring self-intersects."
+  ]
+}

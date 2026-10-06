@@ -1,0 +1,819 @@
+{
+  "status": "PASS_QUALIFIED_EXACT_THREE_PROPERTY_EXCLUSION_PROPOSAL",
+  "createdAtUtc": "2026-09-12T18:54:50.290882+00:00",
+  "scope": "Only ways815233393,522478927,525479443, source and prospective finite effects. No source stage, product changes, generator, tests, build, phone or ledger operation.",
+  "baselineMetadataSha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64",
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64",
+      "bytes": 1853702
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "e79422caf9a2fa697a299e97126ffd61ab92440942793ec154b3f45e4dc188ab",
+      "bytes": 5536992
+    },
+    "sourceInventory": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "4c7538b267a3e03facdcaecafa55ce2755eef299b28b36fd59e944b81612d9b2",
+      "bytes": 374967
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "fb18cff7e851c69220869c3324e2351b90f50e6e682726de4d9d784af4106cd7",
+      "bytes": 555357
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "dfe24ddc5d5dcbda875b84f8a24248ad3aa41015eaad4bb602bef99152c723b3",
+      "bytes": 1020126
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "b4210755827fff89a6660c5439aee5081f6932776144ba515f736913664aead3",
+      "bytes": 563448
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421",
+      "bytes": 90241
+    },
+    "gpsResolver": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/DelegationLocator.kt",
+      "sha256": "08b0e71b6ea14a071a6928d71138d32785d563904f61f33e13627e545dd68609",
+      "bytes": 19321
+    },
+    "installedCheckpoint": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/palace-exclusion-catalog-checkpoint-20260912.json",
+      "sha256": "415fae7964e77fa363c77b900c7df25e12fe77a553dd173a0c8123c048bd6416",
+      "bytes": 4516
+    }
+  },
+  "facts": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/exact-three-source-finite-facts.json",
+    "sha256": "88cdc59754eed6b86822665f42b40f26e0419c63c7c98bf1056bf14f63d8d8ac",
+    "bytes": 37878
+  },
+  "sourceTransport": {
+    "osm": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/osm-original-retrievals.json",
+      "sha256": "7ecca711457cecec775f0fd1f3ef0bf10a84b142a10102d2dc92d4926e9ef8c4",
+      "bytes": 10059
+    },
+    "changesetsAndPrimary": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/support-original-retrievals.json",
+      "sha256": "503232e34d76c428169ba079bfbc0d98558b5caf3f8819cf107db5d0cfe23381",
+      "bytes": 26334
+    },
+    "developerSiteFailure": "The bounded attempt to http://www.diarelmesk.net/ failed DNS resolution. No response bytes or current developer claim were invented."
+  },
+  "primarySources": [
+    {
+      "id": "riadh-jort-syndic",
+      "source": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/jort-2025-075.pdf",
+        "sha256": "0fad5d72babc58e20dbe42b06266383b79da96ae2663f4757cbb27568a75dae2",
+        "bytes": 970640
+      },
+      "url": "https://lake.jort.tn/annonces-legales/fr/2025/075.pdf",
+      "physicalPage": 9,
+      "printedPage": 3124,
+      "sourceClass": "Original official publication of a submitted coproprietary-association notice",
+      "claim": "The 9 May 2025 notice identifies Residence Riadh Soukra 1 in Aouina as an apartment/block property with a coproprietary association.",
+      "qualification": "Corroborates property-name and managed-apartment scope. The I suffix is not established as the exact unsuffixed OSM footprint; no cadastral boundaries, current occupants or ownership certification inferred."
+    },
+    {
+      "id": "diar-jort-address",
+      "source": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/jort-2014-069.pdf",
+        "sha256": "78f76e087482daba61c56f3c8866241ea4f35acb29c470e57d2efa74cef792be",
+        "bytes": 1094196
+      },
+      "url": "https://lake.jort.tn/annonces-legales/fr/2014/069.pdf",
+      "physicalPage": 36,
+      "printedPage": 3584,
+      "sourceClass": "Historical address within an original official-publication notice",
+      "claim": "The 10 June 2014 publication gives Diar El Mesk as a residential duplex address in Cite El Wahat, El Aouina, Tunis.",
+      "qualification": "Historical property-name/area corroboration only. The notice concerns a different transaction; it is not evidence that the source polygon is a business, current ownership or parcel extent. Personal identities are not used."
+    },
+    {
+      "id": "sourour-oat-address",
+      "source": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/oat-2025-professional-list.pdf",
+        "sha256": "adb18c20704ca712e4fcedbdeb727c90e0dfbed66161afcfa913073b3791860c",
+        "bytes": 25025364
+      },
+      "url": "https://oat.tn/shared/concours/2025.DCLD-DHHGB2.pdf",
+      "physicalPage": 21,
+      "printedPage": 20,
+      "sourceClass": "Original 2025 Ordre des Architectes professional-address publication",
+      "claim": "A professional address names Residence Sourour, block B and an apartment in Ain Zaghouan.",
+      "qualification": "Apartment/block property-name and area corroboration only, not a bridge certifying the exact OSM vertices, owner, operator or current resident."
+    },
+    {
+      "id": "riadh-II-syndic-context",
+      "source": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/riadh-soukra-II-syndic-contact.html",
+        "sha256": "970d80813f8fd8e4b41ddb19807c7af405b9203faf66bbd27e8f116e789c92f2",
+        "bytes": 51997
+      },
+      "url": "https://riadhsoukra2.blogspot.com/p/nous.html",
+      "sourceClass": "Self-published resident-association site, not independently authenticated official registry",
+      "claim": "The site for Riadh Soukra II discusses association dues and managed residential facilities.",
+      "qualification": "Supplementary suffix-II apartment-complex context; cannot identify the exact unsuffixed OSM footprint."
+    }
+  ],
+  "completePrimaryPageReview": {
+    "provenance": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/primary-derived-page-provenance.json",
+      "sha256": "85149330a9ec0739690cd6b1ddfa7b525750b80aec701543906f311f908bd636",
+      "bytes": 1968
+    },
+    "personallyViewedFullPhysicalPages": [
+      {
+        "file": "jort-2025-075.pdf",
+        "page": 9
+      },
+      {
+        "file": "jort-2014-069.pdf",
+        "page": 36
+      },
+      {
+        "file": "oat-2025-professional-list.pdf",
+        "page": 21
+      }
+    ],
+    "qualification": "Derived complete-page text/render are distinct from preserved original PDF response bytes. Personal identities in public notices/directories are not used or repeated in findings."
+  },
+  "records": [
+    {
+      "id": "osm:way:815233393",
+      "currentRaw": {
+        "id": "osm:way:815233393",
+        "sourceId": "osm",
+        "name": "Résidence Riadh Soukra",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "حي السلامة",
+        "contextAliases": [
+          "Cité Essalema",
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "حي السلامة",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.856853,
+        "lng": 10.268766,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.268203,
+          36.856419,
+          10.269642,
+          36.857269
+        ],
+        "areaKm2": 0.005310870182389313,
+        "pickerGroupId": "osm:way:815233393",
+        "offset": 5471280,
+        "length": 300
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:815233393",
+        "tags": {
+          "addr:city": "العوينة",
+          "addr:city:ar": "العوينة",
+          "addr:postcode": "2045",
+          "building:levels": "7",
+          "height": "21",
+          "landuse": "residential",
+          "name": "Résidence Riadh Soukra",
+          "residential": "apartments"
+        }
+      },
+      "recommendation": "EXCLUDE_EXACT_APARTMENT_PROPERTY",
+      "sourceRoleBasis": "Current source explicitly classifies this 5310.87 m2 footprint as residential=apartments with seven building levels and height21. Those property tags existed in v1; v2 only localized the city address. The originating changeset cites local knowledge.",
+      "primaryEvidenceIds": [
+        "riadh-jort-syndic",
+        "riadh-II-syndic-context"
+      ],
+      "qualifiedIdentity": "A mapped apartment building/compound at exact preserved source footprint. Primary names support that role but do not certify cadastral, ownership or current-operation identity.",
+      "sourceGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2682027,
+                36.8569051
+              ],
+              [
+                10.2682605,
+                36.8567502
+              ],
+              [
+                10.268446,
+                36.8567946
+              ],
+              [
+                10.2685613,
+                36.8567495
+              ],
+              [
+                10.2685827,
+                36.8566873
+              ],
+              [
+                10.2684942,
+                36.8566079
+              ],
+              [
+                10.2683241,
+                36.8565663
+              ],
+              [
+                10.2683574,
+                36.8564791
+              ],
+              [
+                10.2685076,
+                36.856434
+              ],
+              [
+                10.2686686,
+                36.8564898
+              ],
+              [
+                10.2687383,
+                36.8566787
+              ],
+              [
+                10.2688295,
+                36.8567045
+              ],
+              [
+                10.2690119,
+                36.8566229
+              ],
+              [
+                10.269063,
+                36.8564984
+              ],
+              [
+                10.2689899,
+                36.8564792
+              ],
+              [
+                10.2690146,
+                36.856419
+              ],
+              [
+                10.2691943,
+                36.8564276
+              ],
+              [
+                10.2693016,
+                36.856507
+              ],
+              [
+                10.2692908,
+                36.8565671
+              ],
+              [
+                10.2691916,
+                36.856653
+              ],
+              [
+                10.2692774,
+                36.8568418
+              ],
+              [
+                10.2693579,
+                36.8568676
+              ],
+              [
+                10.2694759,
+                36.8568096
+              ],
+              [
+                10.2695805,
+                36.8568418
+              ],
+              [
+                10.2696422,
+                36.8569856
+              ],
+              [
+                10.2695632,
+                36.8571712
+              ],
+              [
+                10.2694545,
+                36.8572691
+              ],
+              [
+                10.2693123,
+                36.857226
+              ],
+              [
+                10.2692721,
+                36.8570457
+              ],
+              [
+                10.2691997,
+                36.8570221
+              ],
+              [
+                10.268977,
+                36.8571122
+              ],
+              [
+                10.2687973,
+                36.8570607
+              ],
+              [
+                10.2687517,
+                36.8568847
+              ],
+              [
+                10.2686766,
+                36.8568633
+              ],
+              [
+                10.2684674,
+                36.8569684
+              ],
+              [
+                10.2682027,
+                36.8569051
+              ]
+            ]
+          ]
+        ]
+      },
+      "sourceGeometrySha256": "af7a4cb47817ba6a48046243be7a67ba40060ab04f7cc2e19f5177412066a8f3",
+      "packedSha256": "0160895921624d29d81355b878d8d53d0f5fbd7adcf85b642288bda644533505",
+      "finiteChecks": {
+        "sourceRecordChecks": {
+          "currentEqualsLatestHistoryAndFullResponseWay": true,
+          "allLiteralSourceCoordinatesIdentical": true,
+          "sourceInventoryRingOrderRelativeToAuthenticWay": {
+            "startIndex": 25,
+            "direction": -1
+          },
+          "completeSourceGeometryTopologicallyExact": true,
+          "sourceGeometryValid": true,
+          "currentPackedSliceReproducedExactly": true
+        },
+        "currentGroupMemberIds": [
+          "osm:way:815233393"
+        ],
+        "allFreshNamedSourceNodesCovered": [],
+        "otherCurrentRawRepresentativesCovered": [],
+        "otherCurrentWholeRawFootprintsCovered": [],
+        "allExactCurationIdReferences": [],
+        "allExactPickerIdReferences": [],
+        "currentCurationReceipts": [],
+        "currentCoverageConflicts": [],
+        "currentMetadataConflicts": [],
+        "retainedWholeContainingRawIds": [
+          "osm:relation:7117891",
+          "osm:way:128946405"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:522478927",
+      "currentRaw": {
+        "id": "osm:way:522478927",
+        "sourceId": "osm",
+        "name": "Residence Diar El Mesk",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سيدي فرج",
+        "contextAliases": [
+          "Kram",
+          "Le Kram",
+          "Sidi Fredj",
+          "الكرم",
+          "سيدي فرج"
+        ],
+        "governorateId": 342,
+        "lat": 36.860753,
+        "lng": 10.269876,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.269553,
+          36.860616,
+          10.270281,
+          36.860902
+        ],
+        "areaKm2": 0.0010309959706691137,
+        "pickerGroupId": "osm:way:522478927",
+        "offset": 5452576,
+        "length": 68
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:522478927",
+        "tags": {
+          "addr:city": "تونس",
+          "addr:city:ar": "تونس",
+          "building:levels": "6",
+          "height": "26",
+          "landuse": "residential",
+          "name": "Residence Diar El Mesk"
+        }
+      },
+      "recommendation": "EXCLUDE_EXACT_APARTMENT_PROPERTY",
+      "sourceRoleBasis": "The 1031.00 m2 footprint originated as building=yes with height26. V2 named the six-level building; v3 replaced building=yes by landuse=residential while retaining the same closed five-node footprint and building-level/height tags. V4 refined to seven nodes. The directly associated 2017 changesets describe a residential building; current v5 only localizes city tags.",
+      "primaryEvidenceIds": [
+        "diar-jort-address"
+      ],
+      "qualifiedIdentity": "A mapped apartment building/compound at exact preserved source footprint. Primary names support that role but do not certify cadastral, ownership or current-operation identity.",
+      "sourceGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.269553,
+                36.8607922
+              ],
+              [
+                10.2697253,
+                36.8606305
+              ],
+              [
+                10.2700666,
+                36.8607135
+              ],
+              [
+                10.2701817,
+                36.8606161
+              ],
+              [
+                10.2702807,
+                36.8606174
+              ],
+              [
+                10.2700214,
+                36.8609024
+              ],
+              [
+                10.269553,
+                36.8607922
+              ]
+            ]
+          ]
+        ]
+      },
+      "sourceGeometrySha256": "7f74811e84ec9711f6ae1b9963dbae735f2ae0a75619798ff649d29a9a3310c4",
+      "packedSha256": "145c5b5682a32cf1df69dae648892819af09a51e17ff613879e153795e2840d5",
+      "finiteChecks": {
+        "sourceRecordChecks": {
+          "currentEqualsLatestHistoryAndFullResponseWay": true,
+          "allLiteralSourceCoordinatesIdentical": true,
+          "sourceInventoryRingOrderRelativeToAuthenticWay": {
+            "startIndex": 0,
+            "direction": -1
+          },
+          "completeSourceGeometryTopologicallyExact": true,
+          "sourceGeometryValid": true,
+          "currentPackedSliceReproducedExactly": true
+        },
+        "currentGroupMemberIds": [
+          "osm:way:522478927"
+        ],
+        "allFreshNamedSourceNodesCovered": [],
+        "otherCurrentRawRepresentativesCovered": [],
+        "otherCurrentWholeRawFootprintsCovered": [],
+        "allExactCurationIdReferences": [],
+        "allExactPickerIdReferences": [],
+        "currentCurationReceipts": [],
+        "currentCoverageConflicts": [],
+        "currentMetadataConflicts": [],
+        "retainedWholeContainingRawIds": [
+          "osm:relation:7079364",
+          "osm:way:128946405"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:525479443",
+      "currentRaw": {
+        "id": "osm:way:525479443",
+        "sourceId": "osm",
+        "name": "Résidence Sourour",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سيدي فرج",
+        "contextAliases": [
+          "Kram",
+          "Le Kram",
+          "Sidi Fredj",
+          "الكرم",
+          "سيدي فرج"
+        ],
+        "governorateId": 342,
+        "lat": 36.860449,
+        "lng": 10.269408,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.268846,
+          36.860224,
+          10.269769,
+          36.860782
+        ],
+        "areaKm2": 0.0026424356003249896,
+        "pickerGroupId": "osm:way:525479443",
+        "offset": 5452644,
+        "length": 68
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:525479443",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Sourour",
+          "residential": "apartments"
+        }
+      },
+      "recommendation": "EXCLUDE_EXACT_APARTMENT_PROPERTY",
+      "sourceRoleBasis": "The 2642.44 m2 seven-node footprint originated in a changeset explicitly describing a residential building. Current v2 retains the same seven nodes and explicitly adds residential=apartments and the property name.",
+      "primaryEvidenceIds": [
+        "sourour-oat-address"
+      ],
+      "qualifiedIdentity": "A mapped apartment building/compound at exact preserved source footprint. Primary names support that role but do not certify cadastral, ownership or current-operation identity.",
+      "sourceGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2688459,
+                36.8606335
+              ],
+              [
+                10.269479,
+                36.8602236
+              ],
+              [
+                10.2697686,
+                36.8603094
+              ],
+              [
+                10.269597,
+                36.8605884
+              ],
+              [
+                10.2696694,
+                36.8606249
+              ],
+              [
+                10.2694897,
+                36.8607815
+              ],
+              [
+                10.2688459,
+                36.8606335
+              ]
+            ]
+          ]
+        ]
+      },
+      "sourceGeometrySha256": "dcc60dc5801cef2b0f46a083264158e941f1ebd90121b9c8a59c7167bbe8b53e",
+      "packedSha256": "5ea5e7b7b68abb7ef851900951437d9ca0ec52c73c4254ce5a56c407fb7e57b1",
+      "finiteChecks": {
+        "sourceRecordChecks": {
+          "currentEqualsLatestHistoryAndFullResponseWay": true,
+          "allLiteralSourceCoordinatesIdentical": true,
+          "sourceInventoryRingOrderRelativeToAuthenticWay": {
+            "startIndex": 5,
+            "direction": -1
+          },
+          "completeSourceGeometryTopologicallyExact": true,
+          "sourceGeometryValid": true,
+          "currentPackedSliceReproducedExactly": true
+        },
+        "currentGroupMemberIds": [
+          "osm:way:525479443"
+        ],
+        "allFreshNamedSourceNodesCovered": [],
+        "otherCurrentRawRepresentativesCovered": [],
+        "otherCurrentWholeRawFootprintsCovered": [],
+        "allExactCurationIdReferences": [],
+        "allExactPickerIdReferences": [],
+        "currentCurationReceipts": [],
+        "currentCoverageConflicts": [],
+        "currentMetadataConflicts": [],
+        "retainedWholeContainingRawIds": [
+          "osm:relation:7079364",
+          "osm:way:128946405"
+        ]
+      }
+    }
+  ],
+  "preservationContract": {
+    "removeOnlyIds": [
+      "osm:way:815233393",
+      "osm:way:522478927",
+      "osm:way:525479443"
+    ],
+    "appendOnlyThreeExactExpectedTagExcludeDecisions": true,
+    "all266ExistingDecisionObjectsAndTokensAndExteriorBytesPreserved": true,
+    "all904CurrentPointRowsPreservedAndOtherRawFieldsExceptOffsetsPreserved": true,
+    "retireExactIdsWithoutInventedReplacement": true,
+    "allCurrentConflictsAnd389ReceiptsPreserved": true,
+    "retainedParents": [
+      "osm:way:128946405",
+      "osm:relation:7117891",
+      "osm:relation:7079364"
+    ],
+    "sourceManifestCompilerPickerAndExistingProofsUnchanged": true,
+    "allCoordinatesAndTimetableAnchorsUnchanged": true
+  },
+  "prospectiveEffect": {
+    "removeOnlyIds": [
+      "osm:way:815233393",
+      "osm:way:522478927",
+      "osm:way:525479443"
+    ],
+    "rawCountBefore": 3529,
+    "rawCountAfter": 3526,
+    "polygonCountBefore": 2625,
+    "polygonCountAfter": 2622,
+    "pointCountPreserved": 904,
+    "rawGroupsBefore": 3393,
+    "rawGroupsAfter": 3390,
+    "curationDecisionsBefore": 266,
+    "curationDecisionsAfter": 269,
+    "retiredBefore": 118,
+    "retiredAfter": 121,
+    "binaryBytesBefore": 5536992,
+    "removedBytes": 436,
+    "binaryBytesAfter": 5536556,
+    "curationReceiptsBefore": 389,
+    "curationReceiptsRemoved": [],
+    "conflictsRemoved": [],
+    "governorateRemovals": {
+      "342": 3
+    },
+    "allThreeTimetableDefaults": [
+      532
+    ],
+    "pickerRowsBefore": 3456,
+    "pickerRowsAfter": 3453,
+    "eligiblePickerRowsBefore": 3455,
+    "eligiblePickerRowsAfter": 3452,
+    "reviewedSavedNamesPreserved": 121,
+    "existingSavedReplacementsPreserved": 1,
+    "curationReceiptsAfter": 389,
+    "conflictsAfter": 366,
+    "pointCountAfter": 904
+  },
+  "savedSelection": {
+    "currentTiny": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/retired-localities.json",
+      "sha256": "97ce2ec3d1239d78911cc46db7960108d2f5a739192d74bc89bc31dfd7f8f30c",
+      "bytes": 11797
+    },
+    "exactTargetReferences": [],
+    "expectedChange": "Append the exact three retired IDs in sorted order; preserve all121 reviewed names and the one existing replacement. No alias redirects are justified."
+  },
+  "gpsSemantics": "Current DelegationLocator.resolveGpsLocation lines191-201 computes findNearestDelegation from exact GPS and overrides returned locality.delegationId. A surrounding sector default is not transferred to GPS timetable selection.",
+  "proposedDecisions": [
+    {
+      "id": "osm:way:815233393",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "العوينة",
+        "addr:city:ar": "العوينة",
+        "addr:postcode": "2045",
+        "building:levels": "7",
+        "height": "21",
+        "landuse": "residential",
+        "name": "Résidence Riadh Soukra",
+        "residential": "apartments"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact mapped apartment property from neighborhood choices. Current source explicitly classifies this 5310.87 m2 footprint as residential=apartments with seven building levels and height21. Those property tags existed in v1; v2 only localized the city address. The originating changeset cites local knowledge. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+      "evidence": [
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-815233393-current.json",
+          "sha256": "db51bf17a6eb8cb11688eff14df17e85a5b2961f7607ba3e365173db351e033e",
+          "bytes": 1019
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-815233393-history.json",
+          "sha256": "66f4a28621c5631a89367975a00266a55eea88f8d2d659eb5da84119a6bd5707",
+          "bytes": 1735
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-815233393-full.json",
+          "sha256": "c23625f36e0868b8a52c7852cef0f18a1b1b7def82a0fd4e6fcffeabea7e6bb7",
+          "bytes": 7074
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/jort-2025-075.pdf",
+          "sha256": "0fad5d72babc58e20dbe42b06266383b79da96ae2663f4757cbb27568a75dae2",
+          "bytes": 970640
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/riadh-soukra-II-syndic-contact.html",
+          "sha256": "970d80813f8fd8e4b41ddb19807c7af405b9203faf66bbd27e8f116e789c92f2",
+          "bytes": 51997
+        }
+      ]
+    },
+    {
+      "id": "osm:way:522478927",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "building:levels": "6",
+        "height": "26",
+        "landuse": "residential",
+        "name": "Residence Diar El Mesk"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact mapped apartment property from neighborhood choices. The 1031.00 m2 footprint originated as building=yes with height26. V2 named the six-level building; v3 replaced building=yes by landuse=residential while retaining the same closed five-node footprint and building-level/height tags. V4 refined to seven nodes. The directly associated 2017 changesets describe a residential building; current v5 only localizes city tags. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+      "evidence": [
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-522478927-current.json",
+          "sha256": "02539bb8f3ff4b4ee3bddbfeb3e8a25a5f65b7cfa754c757d4f0c6fe4e87531a",
+          "bytes": 637
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-522478927-history.json",
+          "sha256": "2e5f6ee09f69cd697110d7fbb9c879d15b633415f22b47c802ae33f9957d68b6",
+          "bytes": 1849
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-522478927-full.json",
+          "sha256": "617faaf772ed4f03da5c6f7a38590da38d90baaf912ef179b920d22ce8622679",
+          "bytes": 1645
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/jort-2014-069.pdf",
+          "sha256": "78f76e087482daba61c56f3c8866241ea4f35acb29c470e57d2efa74cef792be",
+          "bytes": 1094196
+        }
+      ]
+    },
+    {
+      "id": "osm:way:525479443",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Sourour",
+        "residential": "apartments"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact mapped apartment property from neighborhood choices. The 2642.44 m2 seven-node footprint originated in a changeset explicitly describing a residential building. Current v2 retains the same seven nodes and explicitly adds residential=apartments and the property name. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+      "evidence": [
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-525479443-current.json",
+          "sha256": "647e0c7c82721aa2987a4b954175a5e680b88daccc093091a7ac53a58ea0c877",
+          "bytes": 573
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-525479443-history.json",
+          "sha256": "329f71845129478c85c066bfd304d3ab7c63d3ff2e0c2ad2e1a32a4283212309",
+          "bytes": 825
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-525479443-full.json",
+          "sha256": "b7fa251e849027a553181f20f7166b854bd4afb3ba62d3c5023150e5894aed7f",
+          "bytes": 1581
+        },
+        {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/oat-2025-professional-list.pdf",
+          "sha256": "adb18c20704ca712e4fcedbdeb727c90e0dfbed66161afcfa913073b3791860c",
+          "bytes": 25025364
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No legal-parcel, current-owner/operator or occupant certification.",
+    "Property role is supported by exact authentic source tags and edit history; the residence-name prefix alone is insufficient and is not the decision rule.",
+    "No actual generation has occurred; counts and byte removal are prospective exact finite expectations.",
+    "All current parents, source points and timetable providers remain unchanged.",
+    "No new outside-source locality research or general residential filter."
+  ],
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/freeze_source_report.py",
+    "sha256": "11a39d414f496df4ab529411058bdef2ace54ac1fb80085d2768a65c0f16dd72",
+    "bytes": 10021
+  },
+  "phoneNotReliedUpon": "Root owns separate public Maps checks. This bounded source-role and finite review does not claim to have inspected or operated the phone."
+}

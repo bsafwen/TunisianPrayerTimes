@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Independent source prerequisites for Joumine558, Sidi Alouane426 and Ouerdanine593 only. Subsequent assembled-stage byte/proof gate remains required.",
+  "baselineMetadataSha256": "46ac2a5a4bfc1efcab7cda7833874b571180ab474310909a81d80308898b01bb",
+  "generatorSha256": "c4bba701f4c06fb2f9f09862e06aa00761233bde91980517522ee9de4429e4b5",
+  "sourceProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\six-town-base-source-identity-review.json",
+    "sha256": "9152e9be8763f75128ceecb4cc557ccbc2756a4ccc2eb1a46475a6ea3c8ed766"
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\exact-six-source-and-current-facts.json",
+    "sha256": "e36d9256c312ccaacfa8beccdfc76c8f931925db68804e06604ea53c47d3adc2"
+  },
+  "finiteScopeReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\six-town-geography-schema-review.json",
+    "sha256": "d1995886bad28408213518fd7c256e1decbcd9a556b73bda669e1352b745be9d"
+  },
+  "finiteFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-geography-schema-review\\six-geography-dependency-facts.json",
+    "sha256": "4144bf7797868449966f40ac626db5a02f36cea72f5a225cb7140d79505653c3"
+  },
+  "primaryEvidence": {
+    "joumineOfficial": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-social-ministry-local-village.html",
+      "sha256": "6e90595c7ff2580126d649e89acb827f3e360ab509a4c333f4cdb3a01938b49b",
+      "url": "https://www.social.gov.tn/en/node/1186",
+      "publisher": "Tunisian Ministry of Social Affairs",
+      "support": "The local social-promotion unit is identified in Joumine/Bizerte with a civic address in Essman village, Joumine. This is direct official inhabited-address usage; historical firsthand research separately identifies Joumine settlement and its Esenam quarter.",
+      "requiredText": [
+        "الوحدة المحلية للنهوض الاجتماعي بجومين بنزرت",
+        "قرية السمان جومين"
+      ],
+      "displayedCoordinate": [
+        36.9253535,
+        9.3889921
+      ],
+      "qualification": "The displayed coordinate exactly matches the OSM village node. Its provenance is not supplied, so it is not counted as an independently surveyed point or proof of office/building occupancy or village extent."
+    },
+    "joumine": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-ird-firsthand-locality.pdf",
+      "sha256": "34affd3016a9ba3ef18e5a731b336415c826a2669184a84897088465224084da",
+      "url": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/doc34-01/35171.pdf",
+      "publisher": "ORSTOM and Institut Pasteur de Tunis; hosted by IRD",
+      "title": "Ethologie et capacité vectorielle des anophèles de Tunisie — campagne juin-octobre 1991",
+      "pdfPage": 13,
+      "printedPage": 12,
+      "personallyViewedRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-page13.png",
+        "sha256": "ed04f4e8a5bf107935cf949a75687956705947bcafe594d33672a1a11c60574a"
+      },
+      "support": "Firsthand field description identifies inhabited Joumine, its administrative amenities and the Esenam and Mélassine quarters.",
+      "shortExcerpt": "Notre seconde station, Joumine, est une petite localité administrative",
+      "qualification": "Historical inhabited-settlement evidence, not a present population, legal municipal status, exact village perimeter, or exact prayer-reference anchor certification."
+    },
+    "sidiAlouane": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\sidi-alouane-assembly-written-question.pdf",
+      "sha256": "24f8a4590ad9cf73c0886bb6472e626939d423e8e7e74ed1c0a9b29de9663688",
+      "url": "https://www.arp.tn/document/download/119213",
+      "publisher": "Assembly of the Representatives of the People; response attributed to Minister of Interior",
+      "title": "Délibérations, issue 34, sitting dated 16 December 2025",
+      "pdfPage": 53,
+      "printedPage": 3441,
+      "personallyViewedRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\sidi-alouane-page53.png",
+        "sha256": "97fd5c2418fed37c9a982c99fea13d2a1d7508681a952ecdea7f0a4da21db935"
+      },
+      "support": "The Interior Minister response separately identifies central Sidi Alouane city and the northern and southern portions of Sidi Alouane delegation.",
+      "shortExcerpt": "وسط مدينة سيدي علوان",
+      "qualification": "Direct distinction between town and larger delegation. Operational civil-protection descriptions do not establish city or imada polygons."
+    },
+    "interiorDirectory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\interior-municipal-directory.html",
+      "sha256": "e920362ac113c9deaab49014e1b5dd3c9bf1f8ee2cf945e91c4dd750baf9bb66",
+      "url": "https://opendata.interieur.gov.tn/fr/catalog/annuaire-des-municipalites",
+      "publisher": "Tunisian Ministry of Interior",
+      "qualification": "Municipality names and civic addresses; corroborates settlement name use, not municipal borders or legacy prayer-reference coordinates.",
+      "selectedRows": {
+        "الوردانين": "الوردانين شارع الحبيب بورقيبة 5010 73.519.016 73.518.203",
+        "صيادة": "صيادة شارع الحبيب بورقيبة صيادةة 5053 73.430.093 73.430.439",
+        "سيدي علوان": "سيدي علوان شارع ابن زيدون 73.659.041 73.658.230",
+        "تطاوين": "تطاوين تطاوين شارع فرحات حشاد تطاوين 3200 75.860.002 75.862.564 75.860.650",
+        "قبلي": "قبلي قبلي شارع الحبيب بورقيبة قبلي 011 490 75 711 490 75"
+      }
+    },
+    "ouerdanine": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\ouerdanine-governorate-city.html",
+      "sha256": "37e4f4b42f4458fa835c393fb051761901dab93b534530547bdcbcbaa5a43654",
+      "url": "https://www.g-monastir.tn/news/1221-67-22-1952",
+      "publisher": "Monastir Governorate",
+      "publicationDate": "2019-01-22",
+      "support": "Official governorate report explicitly describes the city, its residents and events in its centre, separately mentioning the delegate and mayor.",
+      "requiredText": [
+        "مدينة الوردانين",
+        "أهالي الوردانين"
+      ],
+      "qualification": "Settlement identity only; OSM Ouardanine and base Ouerdanine are retained spelling variants, not a proposed renaming."
+    }
+  },
+  "records": [
+    {
+      "id": "osm:node:1433130924",
+      "baseId": 558,
+      "status": "PASS",
+      "identityConclusion": "The official Social Ministry address in Essman village/Joumine and historical firsthand description of inhabited Joumine corroborate the unique authentic village node and identically named prayer reference. A bounded display association is supported in identity scope.",
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-1433130924.json",
+        "sha256": "5906477199e03404a33815341bd127e7e2c792e78b5bb1d10cfcf07b7b730d16"
+      },
+      "sourceNodeVersion": {
+        "version": 6,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "changeset": 98539602
+      },
+      "currentRaw": {
+        "id": "osm:node:1433130924",
+        "sourceId": "osm",
+        "name": "جومين",
+        "aliases": [
+          "Joumine"
+        ],
+        "kind": "village",
+        "parentName": "السمان",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Essman",
+          "Joumine",
+          "السمان",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.9253535,
+        "lng": 9.3889921,
+        "delegationId": 558,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1433130924"
+      },
+      "baseCurrent": {
+        "id": 558,
+        "nomFr": "Joumine",
+        "nomAr": "جومين",
+        "nomEn": "Joumine",
+        "lat": 36.9262,
+        "lng": 9.3874
+      },
+      "preservation": {
+        "officialImadaCount": 9,
+        "delegationCodes": [
+          "1755"
+        ],
+        "completeLocalRawRecordCount": 10,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:1433130924"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [],
+        "localAcceptedBoundaryIds": []
+      },
+      "completeNamePeerIds": [
+        "osm:node:1433130924",
+        "osm:relation:7151756"
+      ],
+      "onlyRawChange": {
+        "id": "osm:node:1433130924",
+        "field": "pickerGroupId",
+        "before": "osm:node:1433130924",
+        "after": "delegation:558"
+      }
+    },
+    {
+      "id": "osm:node:558962249",
+      "baseId": 426,
+      "status": "PASS",
+      "identityConclusion": "Official city-centre usage expressly distinguished from the delegation supports associating the unique Sidi Alouane village display point with its identically named prayer reference.",
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-558962249.json",
+        "sha256": "83ff46be34987104e422b3d1998c800905814d63c72bcd50fe09f594762c5e51"
+      },
+      "sourceNodeVersion": {
+        "version": 13,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "changeset": 98539602
+      },
+      "currentRaw": {
+        "id": "osm:node:558962249",
+        "sourceId": "osm",
+        "name": "سيدي علوان",
+        "aliases": [
+          "Sidi Alouane"
+        ],
+        "kind": "village",
+        "parentName": "سيدي علوان الشرقية",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "Sidi Alouane Est",
+          "سيدي علوان الشرقية",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.3750157,
+        "lng": 10.9378385,
+        "delegationId": 426,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:558962249"
+      },
+      "baseCurrent": {
+        "id": 426,
+        "nomFr": "Sidi Alouane",
+        "nomAr": "سيدي علوان",
+        "nomEn": "Sidi Alouane",
+        "lat": 35.377,
+        "lng": 10.9383
+      },
+      "preservation": {
+        "officialImadaCount": 12,
+        "delegationCodes": [
+          "3360"
+        ],
+        "completeLocalRawRecordCount": 13,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:558962249"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [],
+        "localAcceptedBoundaryIds": []
+      },
+      "completeNamePeerIds": [
+        "osm:node:558962249",
+        "osm:relation:7152203"
+      ],
+      "onlyRawChange": {
+        "id": "osm:node:558962249",
+        "field": "pickerGroupId",
+        "before": "osm:node:558962249",
+        "after": "delegation:426"
+      }
+    },
+    {
+      "id": "osm:node:1206558973",
+      "baseId": 593,
+      "status": "PASS",
+      "identityConclusion": "Official city and resident descriptions support the unique Ouerdanine/Ouardanine village identity and its identically Arabic-named prayer reference.",
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-1206558973.json",
+        "sha256": "424296bd8cc64824ac1fcbd1838dc3f66a6edeec2f5692b399548315db32ec16"
+      },
+      "sourceNodeVersion": {
+        "version": 11,
+        "timestamp": "2022-05-17T00:37:18Z",
+        "changeset": 121073689
+      },
+      "currentRaw": {
+        "id": "osm:node:1206558973",
+        "sourceId": "osm",
+        "name": "الوردانين",
+        "aliases": [
+          "Ouardanine",
+          "Wardanin"
+        ],
+        "kind": "village",
+        "parentName": "الوردانين الجنوبية",
+        "contextAliases": [
+          "Délégation El Ouerdanine",
+          "Ouerdanine",
+          "Ouerdanine Sud",
+          "الوردانين الجنوبية",
+          "معتمدية الوردانين"
+        ],
+        "governorateId": 364,
+        "lat": 35.7097268,
+        "lng": 10.67649,
+        "delegationId": 593,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1206558973"
+      },
+      "baseCurrent": {
+        "id": 593,
+        "nomFr": "Ouerdanine",
+        "nomAr": "الوردانين",
+        "nomEn": "Ouerdanine",
+        "lat": 35.7087,
+        "lng": 10.6788
+      },
+      "preservation": {
+        "officialImadaCount": 5,
+        "delegationCodes": [
+          "3252"
+        ],
+        "completeLocalRawRecordCount": 6,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:1206558973"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [],
+        "localAcceptedBoundaryIds": []
+      },
+      "completeNamePeerIds": [
+        "osm:node:1206558973",
+        "osm:relation:7154975"
+      ],
+      "onlyRawChange": {
+        "id": "osm:node:1206558973",
+        "field": "pickerGroupId",
+        "before": "osm:node:1206558973",
+        "after": "delegation:593"
+      }
+    }
+  ],
+  "independentChecks": {
+    "readOnlyAssertionTerminal": "014f6a exit0",
+    "allPinnedCurrentInputsMatch": true,
+    "authenticThreeNodeElementsMatchCacheTagsVersionsCoordinates": true,
+    "completeOriginalNamePeersRecomputedFromCache": true,
+    "threeBaseObjectsAndGovernorObjectsExact": true,
+    "officialRegistryImadas": 26,
+    "protectedCurrentRawRowsAndCompleteGroups": 29,
+    "all26PackedSlicesMatch": true,
+    "sourceTagsAndSortedResearchGeometryHashesMatch": true,
+    "bothCoordinatesCoveredByReportedSourceSectorParentGovernor": true,
+    "relevantCurrentCurationBoundaryPickerDependencies": 0,
+    "legacyCoordinateCorrectionSubsets": [],
+    "pdfPagesPersonallyViewed": [
+      "Joumine PDF13 / printed12",
+      "Sidi Alouane PDF53 / printed3441"
+    ],
+    "primaryUtf8TextDirectlyRead": true,
+    "existingMethod": "reviewed_explicit_point_base_display_identity"
+  },
+  "requiredStagePostconditions": [
+    "Exactly three pickerGroupId fields; preserve all raw names, kinds, aliases, parents, contexts, coordinates, defaults and geometry.",
+    "Preserve all26 imadas and complete singleton groups; bases are existing prayer-source choices, not administrative polygons.",
+    "Bind exact original/effective source inventories, authentic node elements, official UTF-8 primary content, complete registry rows and final group maps using unchanged existing validator.",
+    "Retain whole binary and tiny103 bytes; 141 existing curation decisions exact plus three preserve_point decisions."
+  ],
+  "expectedCounts": {
+    "rawFeatures": [
+      3627,
+      3627
+    ],
+    "rawGroups": [
+      3494,
+      3494
+    ],
+    "pickerChoices": [
+      3580,
+      3577
+    ]
+  },
+  "heldBaseIds": [
+    482,
+    600,
+    624
+  ],
+  "limitations": [
+    "The display association is a bounded identity inference from exact authentic source records, existing named prayer references and independent inhabited-place evidence; shared names or proximity alone are insufficient.",
+    "Joumine official coordinate duplicates OSM and has no independent survey provenance; only its official inhabited address is operative. The 1991 field account is historical corroboration.",
+    "Sidi Alouane official response distinguishes city centre from larger delegation; village source kind stays unchanged.",
+    "Ouerdanine/Ouardanine/Wardanin spellings all stay unchanged.",
+    "No current settlement perimeter, legal boundary, exact office occupancy or original INM calculation-coordinate certification is claimed."
+  ],
+  "findings": [],
+  "notPerformed": [
+    "generator or product helper execution",
+    "tests or builds",
+    "source fetch",
+    "phone or ledger access",
+    "repository or stage writes"
+  ]
+}

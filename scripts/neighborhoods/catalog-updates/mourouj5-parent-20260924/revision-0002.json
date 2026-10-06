@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "mourouj5-display-group-20260924",
+  "baseMetadataSha256": "25dc644aa08bba2e1d22240613f6d8d8ea83db400f1582e9fa27d7e4e608d8a0",
+  "baseGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+  "evidence": [
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/display-group-review-0002.json",
+      "sha256": "5900cee1f1c124b4650b6196f87bdcf111516b59580eec8a48b000e3e11bdd96"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/isie-mourouj5-map-2023.pdf",
+      "sha256": "dc67a5bd7dc4bba8381523cb46532dab96b4e9ed3d72a51ac4d43df546cc83f0"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/isie-mourouj5-geopdf-extraction.json",
+      "sha256": "ba2d43b3772e2bbe60b19e664d43e74be59d6f57a361dce467eca11dbae019b1"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/isie-district-tunisie-2025.csv",
+      "sha256": "933a06439f01b9c11008dcc14ecd52169f91599a654aaf3d6555c52edf30a4f3"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/decision-evidence.json",
+      "sha256": "408cb7f7210792b1e1da4b1ae04a82f91bcbe3b91cbb7fd3f2736848264579df"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/reviewed-manual-points-before-picker-group.json",
+      "sha256": "fd2c92c77690b244019f5a5287ca3eeba2233e447f67bbb4d7b0874b27981c55"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/manual-points-rebase-0002.json",
+      "sha256": "86e50d563d413cf897a37f15005700e5b84cd863c22b380dfecd66fa615cc9f2"
+    }
+  ],
+  "newSources": {},
+  "updates": [
+    {
+      "id": "osm:node:332247375",
+      "expectedFeatureSha256": "e0aaab57ed6e5357961395bb4ed8a6f9905dd02b671b90e5ca5cbc9e1a174a52",
+      "expectedPickerGroupTargetSha256": "9bc1144a20c330d61ef3591563e1f5c262c35c9d6d5a796f3ef8e16f31c9e483",
+      "set": {
+        "pickerGroupId": "osm:relation:7174576"
+      },
+      "geometry": null
+    }
+  ],
+  "scopeNote": "Merge the duplicate Mourouj 5 display choices by assigning the raw OSM point to the existing ISIE sector picker group. Preserve both raw IDs, coordinates, the sector polygon, delegation 447 prayer defaults and all other source fields. This is display grouping only and makes no boundary or point-containment claim."
+}

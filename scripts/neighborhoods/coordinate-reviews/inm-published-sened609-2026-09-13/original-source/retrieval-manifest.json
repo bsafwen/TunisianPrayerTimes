@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "derived_retrieval_index_not_original_HTTP_or_original_manifest_bytes",
+  "scope": "Only the two authentic Sened609 daily responses. Response bodies remain byte-exact; filenames are relative to this derived index.",
+  "responses": [
+    {
+      "file": "inm-prayer-609-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/609/",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/609/",
+      "sha256": "7968b7ae601a813181d54917366dc469422d9d4cf2be04e21f93b14b061755cf",
+      "bytes": 519,
+      "retrievedAtUtc": "2026-09-12T10:17:38.911515+00:00",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:38 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "519",
+        "Keep-Alive": "timeout=5, max=44",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten."
+    },
+    {
+      "file": "inm-sun-609-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/609/",
+      "retrievedAtUtc": "2026-09-12T22:09:20.516745+00:00",
+      "tlsVerification": true,
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/609/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 22:09:20 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "488",
+        "Keep-Alive": "timeout=5, max=99",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "sha256": "8d2067a1ec2a93d41519121eb5c98343ff4e0624c29b0f61da3bcc6fa1e85963",
+      "bytes": 488,
+      "provenance": "Original HTTP body after content decoding; not rewritten."
+    }
+  ],
+  "derivation": {
+    "prayerParentManifest": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/inm-reference-inventory-20260912/reference-inventory.json",
+      "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401",
+      "bytes": 1665727
+    },
+    "sunParentManifest": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/sened-reference-review-20260913/retrieval-manifest.json",
+      "sha256": "5ffd80b5d10b3ee641b59579b0cc2c2e30dd4f6112bab6d6ae220ee10b8720e9",
+      "bytes": 11342
+    },
+    "historicalParentManifestPinsAreProvenanceNotShippingDependencyReferences": true,
+    "originalPrayerEntry": {
+      "expected": {
+        "governorateId": 365,
+        "delegationId": 609,
+        "governorate": {
+          "id": 365,
+          "nomFr": "Gafsa",
+          "nomAr": "قفصة",
+          "nomEn": "Gafsa",
+          "lat": 34.425,
+          "lng": 8.7842
+        },
+        "delegation": {
+          "id": 609,
+          "nomFr": "Sened",
+          "nomAr": "السند",
+          "nomEn": "Sened",
+          "lat": 34.5406,
+          "lng": 9.254
+        },
+        "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/609/"
+      },
+      "attempt": 1,
+      "retrievedAt": "2026-09-12T10:17:38.911515+00:00",
+      "reused": false,
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/609/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:38 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "519",
+        "Keep-Alive": "timeout=5, max=44",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-609-2026-09-12.json",
+        "sha256": "7968b7ae601a813181d54917366dc469422d9d4cf2be04e21f93b14b061755cf",
+        "bytes": 519
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten.",
+      "analysis": {
+        "classification": "VALID_DAILY_REFERENCE",
+        "actual": {
+          "dailyRecordId": 854952,
+          "gouvernorat": {
+            "id": 365,
+            "intituleFr": "Gafsa",
+            "intituleAr": "قفصة",
+            "intituleAn": "Gafsa"
+          },
+          "delegation": {
+            "id": 609,
+            "intituleFr": "Sened",
+            "intituleAr": "السند",
+            "intituleAn": "Sened",
+            "parent": {
+              "id": 365,
+              "intituleFr": "Gafsa",
+              "intituleAr": "قفصة",
+              "intituleAn": "Gafsa"
+            }
+          },
+          "date": "2026-09-12 00:00",
+          "year": 2026,
+          "active": true,
+          "method": "GET",
+          "lat": "34.462",
+          "lng": " 9.262",
+          "times": {
+            "sobh": "04:34",
+            "dhohr": "12:26",
+            "aser": "15:52",
+            "magreb": "18:40",
+            "isha": "20:03"
+          }
+        },
+        "validationErrors": [],
+        "nameDifferences": [],
+        "coordinateComparison": {
+          "numeric": {
+            "lat": "34.462",
+            "lng": "9.262"
+          },
+          "matchesCurrentAppNumbersExactly": false,
+          "currentApp": {
+            "lat": 34.5406,
+            "lng": 9.254
+          }
+        }
+      },
+      "accessChallengeSuspected": false,
+      "completedAt": "2026-09-12T10:17:39.180158+00:00"
+    },
+    "originalSunEntry": {
+      "file": "inm-sun-609-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/609/",
+      "retrievedAtUtc": "2026-09-12T22:09:20.516745+00:00",
+      "tlsVerification": true,
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/609/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 22:09:20 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "488",
+        "Keep-Alive": "timeout=5, max=99",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "sha256": "8d2067a1ec2a93d41519121eb5c98343ff4e0624c29b0f61da3bcc6fa1e85963",
+      "bytes": 488,
+      "provenance": "Original HTTP body after content decoding; not rewritten."
+    },
+    "method": "Select the unique inventory response with expected.delegationId609; copy body.hash/bytes and expected.requestedUrl into a local response descriptor, rename only its local file field. Preserve the selected parent entry in full. Copy the Sened sun retrieval entry unchanged with its existing local filename."
+  }
+}

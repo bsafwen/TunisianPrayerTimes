@@ -1,0 +1,228 @@
+{
+  "status": "ORIGINAL_FIVE_OWN_MAP_RETRIEVAL_ONLY",
+  "scope": "Exactly the five parent-authorized routes; no recursive expansion.",
+  "baselineMetadata": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+    "sha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+    "bytes": 1842364
+  },
+  "registry": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "sourceRouteReport": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-six-sector-cohort-independent-impact-review.json",
+    "sha256": "f1e1e664d323872bdf2b4c232c35b00eb8f1a223f30af23ba15e7bb89ff8aa98",
+    "bytes": 89494
+  },
+  "records": [
+    {
+      "key": "khanguet-el-hojjej",
+      "currentRawId": "osm:relation:7104933",
+      "currentCode": "156455",
+      "officialName": "خنقة الحجاج",
+      "officialRegistryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1564",
+        "delegationFr": "Grombalia",
+        "delegationAr": "قرنبالية",
+        "sectorCode": "156455",
+        "sectorFr": "Khanguet el hojjej",
+        "sectorAr": "خنقة الحجاج",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14077,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 578,
+          "Nombre_de_menages_par_Secteurs.xlsx": 577
+        }
+      },
+      "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D8%AE%D9%86%D9%82%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AC%D8%A7%D8%AC.pdf",
+      "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D8%AE%D9%86%D9%82%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AC%D8%A7%D8%AC.pdf",
+      "retrievedAt": "2026-09-12T16:37:47.075546+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "response": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/khanguet-el-hojjej.pdf",
+        "sha256": "88e5d0c527d10fc6837e5f7a5cbcc13b26cf40ae1dc1771b12382c6f5efd70c0",
+        "bytes": 1332791
+      },
+      "headers": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/khanguet-el-hojjej.headers",
+        "sha256": "8125be0cf84f9752ede822b5af3a586844cefa5da28e0141f455cf0e7edd12ed",
+        "bytes": 560
+      },
+      "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.27M 100  1.27M   0      0  3.30M      0                              0\n100  1.27M 100  1.27M   0      0  3.30M      0                              0\n100  1.27M 100  1.27M   0      0  3.30M      0                              0\n",
+      "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+      "success": true
+    },
+    {
+      "key": "grombalia-est",
+      "currentRawId": "osm:relation:7103806",
+      "currentCode": "156456",
+      "officialName": "قرنبالية الشرقية",
+      "officialRegistryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1564",
+        "delegationFr": "Grombalia",
+        "delegationAr": "قرنبالية",
+        "sectorCode": "156456",
+        "sectorFr": "Grombalia est",
+        "sectorAr": "قرنبالية الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14111,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 580,
+          "Nombre_de_menages_par_Secteurs.xlsx": 579
+        }
+      },
+      "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "retrievedAt": "2026-09-12T16:37:47.075546+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "response": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-est.pdf",
+        "sha256": "72a0cad3f3ecff7f65a93c7d9776ca13135124cc34bfb5a47878e448088c06a6",
+        "bytes": 1545659
+      },
+      "headers": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-est.headers",
+        "sha256": "a6eb8a6296a36f7793246e19043bd721a1b0a30d39ca43899c2f0e6e9acf8704",
+        "bytes": 322
+      },
+      "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.47M 100  1.47M   0      0  3.67M      0                              0\n100  1.47M 100  1.47M   0      0  3.67M      0                              0\n100  1.47M 100  1.47M   0      0  3.67M      0                              0\n",
+      "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+      "success": true
+    },
+    {
+      "key": "menzel-bouzelfa-ouest",
+      "currentRawId": "osm:relation:7101606",
+      "currentCode": "156255",
+      "officialName": "منزل بوزلفة الغربية",
+      "officialRegistryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1562",
+        "delegationFr": "Menzel bouzelfa",
+        "delegationAr": "منزل بوزلفة",
+        "sectorCode": "156255",
+        "sectorFr": "Menzel bou zelfa ouest",
+        "sectorAr": "منزل بوزلفة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13703,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 556,
+          "Nombre_de_menages_par_Secteurs.xlsx": 555
+        }
+      },
+      "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "retrievedAt": "2026-09-12T16:37:47.514784+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "response": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/menzel-bouzelfa-ouest.pdf",
+        "sha256": "925c149e026c36ed48c3101eca887c5a7bc0d8bd3eb39dd36e5dd3a907c6142f",
+        "bytes": 1273530
+      },
+      "headers": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/menzel-bouzelfa-ouest.headers",
+        "sha256": "60eeb4aba8d202b05ea9a1c1cd0859b356aac794872f9ebb2b15e34098ced584",
+        "bytes": 560
+      },
+      "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.21M 100  1.21M   0      0  4.22M      0                              0\n100  1.21M 100  1.21M   0      0  4.21M      0                              0\n100  1.21M 100  1.21M   0      0  4.21M      0                              0\n",
+      "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+      "success": true
+    },
+    {
+      "key": "menzel-bouzelfa-keblia",
+      "currentRawId": "osm:relation:7101601",
+      "currentCode": "156254",
+      "officialName": "منزل بوزلفة القبلية",
+      "officialRegistryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1562",
+        "delegationFr": "Menzel bouzelfa",
+        "delegationAr": "منزل بوزلفة",
+        "sectorCode": "156254",
+        "sectorFr": "Menzel bou zelfa keblia",
+        "sectorAr": "منزل بوزلفة القبلية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13669,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 554,
+          "Nombre_de_menages_par_Secteurs.xlsx": 553
+        }
+      },
+      "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D9%82%D8%A8%D9%84%D9%8A%D8%A9.pdf",
+      "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D9%82%D8%A8%D9%84%D9%8A%D8%A9.pdf",
+      "retrievedAt": "2026-09-12T16:37:47.520302+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "response": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/menzel-bouzelfa-keblia.pdf",
+        "sha256": "00b47cf7be053ccd933f6b5ad19f1154a51f7b7d0280b1086d97d178f5876ea8",
+        "bytes": 1309030
+      },
+      "headers": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/menzel-bouzelfa-keblia.headers",
+        "sha256": "acd75b579af584368d4d42dec29c9ff946805a0510b822b26c587177d70361bb",
+        "bytes": 322
+      },
+      "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.24M 100  1.24M   0      0  4.33M      0                              0\n100  1.24M 100  1.24M   0      0  4.33M      0                              0\n100  1.24M 100  1.24M   0      0  4.33M      0                              0\n",
+      "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+      "success": true
+    },
+    {
+      "key": "grombalia-ouest",
+      "currentRawId": "osm:relation:7103805",
+      "currentCode": "156457",
+      "officialName": "قرنبالية الغربية",
+      "officialRegistryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1564",
+        "delegationFr": "Grombalia",
+        "delegationAr": "قرنبالية",
+        "sectorCode": "156457",
+        "sectorFr": "Grombalia ouest",
+        "sectorAr": "قرنبالية الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14145,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 582,
+          "Nombre_de_menages_par_Secteurs.xlsx": 581
+        }
+      },
+      "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "retrievedAt": "2026-09-12T16:37:47.845108+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "response": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-ouest.pdf",
+        "sha256": "a43d10bdb4ddce307148ee0f171eafafa9b3b1cbf92c01a39ab19233d32d5de8",
+        "bytes": 1454442
+      },
+      "headers": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-ouest.headers",
+        "sha256": "a1fe1ee01e4179a57c473833d259e9187719eab397d04b5eb128aea4cdec435b",
+        "bytes": 560
+      },
+      "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.38M 100  1.38M   0      0  4.76M      0                              0\n100  1.38M 100  1.38M   0      0  4.76M      0                              0\n100  1.38M 100  1.38M   0      0  4.76M      0                              0\n",
+      "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+      "success": true
+    }
+  ],
+  "cacheReuseCheck": "Targeted existing filename searches for the five transliterated/Arabic names, codes and raw IDs found no original archived PDF; no broad content scan.",
+  "retrievalConcurrency": 2,
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/retrieve_five_originals.py",
+    "sha256": "b5b7ab1b7400008893f830cd48090e2dd49e4572a810e9713f18bd2b29a95797",
+    "bytes": 3425
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "status": "SOURCE_BLOCKERS_CLARIFIED_CONDITIONAL_GEOMETRY_REVIEW_REQUIRED",
+  "scope": "Exactly Mraissa7100603/156151 source topology and BorjCedria7174585/135552 electoral component identity. No live/product/stage/generator/phone/ledger/tests/build operations.",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41"
+  },
+  "currentBinary": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "b7ac659019ec21f24d0fa518d09be46edd75034aba764ea204b437ee087933be"
+  },
+  "historicalSourceEpoch": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-soliman-numbered-blocks-exclusion-20260912\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "fbd93249d69e9f05d1e713a5924241c38503224adf1b5baab98ac5f44effc4e6"
+    },
+    "qualification": "Priorfbd source cohort retained historically; these two current992b records and packed geometries independently equal fbd except offsets after exact88 block exclusions. No whole-catalog carry asserted here."
+  },
+  "preservedCurrentRecords": [
+    {
+      "id": "osm:relation:7100603",
+      "currentRaw": {
+        "id": "osm:relation:7100603",
+        "sourceId": "osm",
+        "name": "المريسة",
+        "aliases": [
+          "El Mraissa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.793954,
+        "lng": 10.5739,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.527123,
+          36.723914,
+          10.6137,
+          36.863998
+        ],
+        "areaKm2": 49.165943536331746,
+        "pickerGroupId": "osm:relation:7100603",
+        "offset": 282296,
+        "length": 6820
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المريسة",
+        "name:ar": "المريسة",
+        "name:fr": "El Mraissa",
+        "ref:tn:codegeo": "156151"
+      },
+      "sourceGeometrySha256": "7f39ea8220ea855bbcb24ee76202fee30ca556951197608e541c9b7cfd6f4a26",
+      "packedGeometrySha256": "3b8331724799ef9d19b0d9a5a7f656668ef9bda3808566c9c4678fec88dbac61",
+      "unchangedFromFbdExceptOffset": true
+    },
+    {
+      "id": "osm:relation:7174585",
+      "currentRaw": {
+        "id": "osm:relation:7174585",
+        "sourceId": "osm",
+        "name": "برج السدرية",
+        "aliases": [
+          "Borj Cedria",
+          "Borj Cédria",
+          "Borj Cédria, Tunisia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حمام الشط",
+        "contextAliases": [
+          "Délégation Hammam Chott",
+          "Hammam Chott",
+          "معتمدية حمام الشط"
+        ],
+        "governorateId": 349,
+        "lat": 36.68123,
+        "lng": 10.378472,
+        "delegationId": 452,
+        "hasBoundary": true,
+        "bbox": [
+          10.361163,
+          36.644819,
+          10.41874,
+          36.71761
+        ],
+        "areaKm2": 18.525658086818485,
+        "pickerGroupId": "osm:relation:7174585",
+        "offset": 4286072,
+        "length": 6340
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "برج السدرية",
+        "name:ar": "برج السدرية",
+        "name:fr": "Borj Cedria",
+        "ref:tn:codegeo": "135552"
+      },
+      "sourceGeometrySha256": "4cb17fda24123d50fbf91e31a7568ca5ecb2079476f2f0d596ea0109f6339e0d",
+      "packedGeometrySha256": "83e2cf54a63b6ee94a5e2895a1c6b765356aa90b9670324f1597d868592bacf0",
+      "unchangedFromFbdExceptOffset": true
+    }
+  ],
+  "originalSourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "priorNativeCohort": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\soliman-immediate-native-source-cohort-review.json",
+    "sha256": "9deea58cbe45ac51bf8c1e8414cd5c7d3c45399dba5642fa4bf567d5eeafa510"
+  },
+  "priorNativeBundle": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\whole-native-source-polygons.geojson",
+    "sha256": "c18e02069247cd0bd528464ee5da6b01e59bf07ed46e1ab37656d543688b935f"
+  },
+  "originalMaps": [
+    {
+      "key": "mraissa",
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa.pdf",
+        "sha256": "444feebb83c9c559fc645d590cda0824752ce91b2fc3f65539233eca7dacce2f"
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%A7%D9%84%D9%85%D8%B1%D9%8A%D8%B3%D8%A9.pdf",
+      "originalRetrieval": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa-retrieval.json",
+        "sha256": "3107851f1dde1c95d279648e4ea9e926feb91a1aa5bd8c4d82782a59a0657365"
+      },
+      "wholeOriginalRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa.png",
+        "sha256": "803cc88ed9e4dbdd5f6a00294e0640690ec2a74774b1f5da4c9afeaa3d3c32e1"
+      },
+      "wholeOriginalRenderPersonallyViewed": true
+    },
+    {
+      "key": "borj-cedria-1",
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1.pdf",
+        "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc"
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D8%AD%D9%85%D8%A7%D9%85%20%D8%A7%D9%84%D8%B4%D8%B7/%D8%A8%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B3%D8%AF%D8%B1%D9%8A%D8%A9%201.pdf",
+      "originalRetrieval": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1-retrieval.json",
+        "sha256": "44ffc9025119816c89103d6b5cb5f4d4ebacb8fe00100870d94e0b60bb1dd051"
+      },
+      "wholeOriginalRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1.png",
+        "sha256": "c1afcb1c94241199138c63ad932995070fcbc7d6698fb908def8b3e53aedbd0b"
+      },
+      "wholeOriginalRenderPersonallyViewed": true
+    },
+    {
+      "key": "borj-cedria-2",
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2.pdf",
+        "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849"
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D8%AD%D9%85%D8%A7%D9%85%20%D8%A7%D9%84%D8%B4%D8%B7/%D8%A8%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B3%D8%AF%D8%B1%D9%8A%D8%A9%202.pdf",
+      "originalRetrieval": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2-retrieval.json",
+        "sha256": "0e88a2117532572f612bd0366dec714be6dc845a779c5ea4c92a3c8bcd28e5c0"
+      },
+      "wholeOriginalRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2.png",
+        "sha256": "fbad2fbbbcd367ec62b8319f7762fcb5b68b92fcc5c4a3082c363da465602e2f"
+      },
+      "wholeOriginalRenderPersonallyViewed": true
+    }
+  ],
+  "registry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "originalWorkbookVerification": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\original-four-code-workbook-identity-facts.json",
+    "sha256": "a217ad72895abd863556540c4d3d30772a6496a3ff9c2fb23735eba543fdfa17"
+  },
+  "borjCedriaIdentityBridge": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\borj-cedria-official-imada-electoral-component-bridge.json",
+    "sha256": "7be6b471bba316575c81de4be33e53a08f71230d90137eec16d041a66ee4f4cb"
+  },
+  "mraissa": {
+    "originalCommandTopology": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\mraissa-exact-source-topology-facts.json",
+      "sha256": "647af6f48e419d6ee48cf4231ed8e3f5bec0b6926fbac5e9861929f79377179c"
+    },
+    "diagnosticScript": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\inspect_source_topology.py",
+      "sha256": "6a3a4ef38a559f0f6d409aae49a90489a3b0ceada77ae9c8a102b8beaa5790f5"
+    },
+    "finding": "The held self-intersection is in original source strokes, not an extraction/join artifact. All nonadjacent intersections are original-vertex touches; no proper crossings. Five adjacent reverse-edge spurs cancel exactly; counterwound four-edge loop is an interior hole touching the exterior at one vertex.",
+    "sourceParts": {
+      "drawingIndices": [
+        507,
+        508
+      ],
+      "rawContentRanges": [
+        [
+          5467,
+          6491
+        ],
+        [
+          6492,
+          6968
+        ]
+      ],
+      "exactDirectedEdges": 1498,
+      "outerEdges": 1484,
+      "holeEdges": 4,
+      "spurDirectedEdges": 10,
+      "everyOriginalDirectedEdgeAccountedForExactlyOnce": true
+    },
+    "conditionalRegionProof": {
+      "bothFillRulesCoincide": true,
+      "reason": "Exterior winding is-1 and interior four-edge loop+1 in raw PDF coordinates. Outside both is0; exterior minus loop has winding-1/odd parity; inside loop sums0/even parity. Five exact directed reverse pairs contribute0 to either rule.",
+      "sourceActuallySpecifiesFill": false,
+      "pdfStrokePathsSeparatelyOpen": true,
+      "finiteBoundedAreaInterpretationQualification": "Closed-walk fill semantics yield one common bounded area, but the original map only strokes its boundaries and never specifies either fill rule. This is a qualified source-region interpretation for independent review, not a claim of author intent or an approved geographic repair.",
+      "diagnosticPdfRegionValid": true,
+      "diagnosticPdfValidity": "Valid Geometry",
+      "diagnosticPdfRegionArea": 56816.063156932396,
+      "utmRegionAreaSquareMeters": 48898282.926445894,
+      "utmHoleAreaSquareMeters": 111.53010617150285,
+      "georeferencedRegionValid": true,
+      "wholeRingSourceOnlyCandidate": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\mraissa-conditional-closed-walk-region.geojson",
+        "sha256": "3219c5ed433374a28bcb18be70fa31851aa9dbb1a7ebe6214e81480b7c4e04fc"
+      },
+      "candidateHasOneExteriorOneHole": true,
+      "noNewBoundaryEdgesOrVertices": true,
+      "zeroAreaSpurs": [
+        {
+          "originalDirectedEdgeIndices": [
+            999,
+            1000
+          ],
+          "uniqueSegmentLengthPdfPoints": 0.35991999999998825,
+          "insideBoundedRegion": true,
+          "outsideBoundedRegionExceptAttachment": false,
+          "areaExactlyZero": true,
+          "retainedInOriginalEvidence": true
+        },
+        {
+          "originalDirectedEdgeIndices": [
+            1116,
+            1117
+          ],
+          "uniqueSegmentLengthPdfPoints": 0.36004000000002634,
+          "insideBoundedRegion": false,
+          "outsideBoundedRegionExceptAttachment": true,
+          "areaExactlyZero": true,
+          "retainedInOriginalEvidence": true
+        },
+        {
+          "originalDirectedEdgeIndices": [
+            1197,
+            1198
+          ],
+          "uniqueSegmentLengthPdfPoints": 0.35991999999998825,
+          "insideBoundedRegion": true,
+          "outsideBoundedRegionExceptAttachment": false,
+          "areaExactlyZero": true,
+          "retainedInOriginalEvidence": true
+        },
+        {
+          "originalDirectedEdgeIndices": [
+            1306,
+            1307
+          ],
+          "uniqueSegmentLengthPdfPoints": 0.35991999999998825,
+          "insideBoundedRegion": true,
+          "outsideBoundedRegionExceptAttachment": false,
+          "areaExactlyZero": true,
+          "retainedInOriginalEvidence": true
+        },
+        {
+          "originalDirectedEdgeIndices": [
+            1414,
+            1415
+          ],
+          "uniqueSegmentLengthPdfPoints": 0.3600500000000011,
+          "insideBoundedRegion": true,
+          "outsideBoundedRegionExceptAttachment": false,
+          "areaExactlyZero": true,
+          "retainedInOriginalEvidence": true
+        }
+      ],
+      "outsideSpurQualification": "The exterior-facing spur is preserved as original source linework but does not bound area. Selecting the finite-area interpretation changes the representation of this line feature; this is explicit, not silently discarded source evidence.",
+      "nativeRegistrationSource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+        "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+      },
+      "registrationResidualIsNotRepairTolerance": true
+    },
+    "alternativeOfficialBoundarySearch": {
+      "result": "No independently usable alternate official Mraissa polygon located in bounded existing-file/index and exact-name official-domain searches. Non-boundary agricultural/municipal references do not certify a current sector outline. This is not an assertion no alternative exists.",
+      "nextConcreteSourceIfInterpretationNotAccepted": "Original ISIE2023 circonscription_isie2023 GIS layer or official sector-boundary vector from the mapped ISIE/OTC/CNCT/Interior source, with exact156151 identity and provenance; no traced approximation."
+    }
+  },
+  "cohortLimitations": {
+    "independentSixOnlyReport": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\soliman-six-sector-cohort-independent-impact-review.json",
+      "sha256": "f1e1e664d323872bdf2b4c232c35b00eb8f1a223f30af23ba15e7bb89ff8aa98"
+    },
+    "unresolvedSeamsRemain": "Six-source cohort already has independently measured gaps and positive-area native overlaps. This report supplies identity/topology prerequisites only; reducing a gap does not approve import.",
+    "futureScope": "Remaining reviewer owns conditional whole Borj aggregation, and independent topology reviewer must confirm Mraissa interpretation before any eight-sector scenario is called supported."
+  },
+  "primaryCouncilMinutesReused": {
+    "original": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\isie-council-minutes-2023-09-15.pdf",
+      "sha256": "950fb4d41ba9b59ae90aaa130e22da81f6224109310acef1aa0452a8436eaed5"
+    },
+    "url": "https://www.isie.tn/wp-content/uploads/2025/02/15-septembre-2023.pdf",
+    "wholeRelevantPage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\minutes-3.png",
+      "sha256": "d9859c877008855881aac8035d252b17c02b53d85598547c95b29c33d9406ab1"
+    },
+    "personallyViewed": true,
+    "role": "General distinction between administrative imadas and exceptional electoral subdivisions; exact Borj pairing instead comes from decree tableA."
+  },
+  "preservedFrozenArtifacts": true,
+  "noLiveChanges": true
+}

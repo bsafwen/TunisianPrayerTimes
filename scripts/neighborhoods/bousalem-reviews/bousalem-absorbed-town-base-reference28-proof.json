@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "bousalem-reviews/direct-pbf-source-facts.json",
+    "sha256": "8d68a952c625c60092548ea29e2064568a964f0aa1f90df86eed8544947dac0c"
+  },
+  "records": [
+    {
+      "id": "osm:way:172866902",
+      "targetDelegationId": 499,
+      "name": "بوسالم",
+      "governorateId": 354,
+      "basePoint": {
+        "lat": 36.607408,
+        "lng": 8.9696535
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:172866902",
+          "name": "بوسالم",
+          "kind": "residential",
+          "sourceTags": {
+            "addr:city": "بوسالم",
+            "landuse": "residential",
+            "name": "بوسالم",
+            "name:ar": "بوسالم",
+            "name:fr": "Bou Salem",
+            "old_name": "Souk El Khemis",
+            "population": "21000"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 499,
+          "originalGeometrySha256": "5ef80dc60200fbcfbd0bc0645491fa4f463d3c50bf31452f77fb880ee53b3b9f",
+          "packedGeometrySha256": "cf6a2ed593279c14561bd4f44ef4f21a0c3d3097db10c93752a95f64f0a69d48"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:499"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_absorbed_town_reference",
+          "id": "osm:node:1837034352",
+          "accepted": true,
+          "reasons": [
+            "Exact reviewed town reference and original prayer-source coordinates coincide; the singleton unqualified residential town depiction contains that point in both source and packaged geometry.",
+            "Current INS and the primary MEHAT urban plan distinguish the North sector from the whole-town identity."
+          ],
+          "expectedOriginalTags": {
+            "alt_name": "Bousalem",
+            "name": "بوسالم",
+            "name:ar": "بوسالم",
+            "name:ca": "Bou Salem",
+            "name:cy": "Bou Salem",
+            "name:de": "Bou Salem",
+            "name:en": "Bou Salem",
+            "name:fa": "بوسالم",
+            "name:fr": "Bou Salem",
+            "name:kab": "Bu Salem",
+            "name:ro": "Bou Salem",
+            "name:ru": "Бу-Салим",
+            "name:uk": "Бу Салем",
+            "name:zu": "Bou Salem",
+            "old_name": "سوق الخميس",
+            "old_name:ar": "سوق الخميس",
+            "old_name:fr": "Souk El Khemis",
+            "place": "town",
+            "population": "21000",
+            "postal_code": "81700",
+            "website": "http://www.commune-bousalem.gov.tn/",
+            "wikidata": "Q2911912",
+            "wikimedia_commons": "Category:Bou Salem",
+            "wikipedia": "ar:بوسالم"
+          },
+          "expectedEffectiveTags": {
+            "alt_name": "Bousalem",
+            "name": "بوسالم",
+            "name:ar": "بوسالم",
+            "name:ca": "Bou Salem",
+            "name:cy": "Bou Salem",
+            "name:de": "Bou Salem",
+            "name:en": "Bou Salem",
+            "name:fa": "بوسالم",
+            "name:fr": "Bou Salem",
+            "name:kab": "Bu Salem",
+            "name:ro": "Bou Salem",
+            "name:ru": "Бу-Салим",
+            "name:uk": "Бу Салем",
+            "name:zu": "Bou Salem",
+            "old_name": "سوق الخميس",
+            "old_name:ar": "سوق الخميس",
+            "old_name:fr": "Souk El Khemis",
+            "place": "town",
+            "population": "21000",
+            "postal_code": "81700",
+            "website": "http://www.commune-bousalem.gov.tn/",
+            "wikidata": "Q2911912",
+            "wikimedia_commons": "Category:Bou Salem",
+            "wikipedia": "ar:بوسالم"
+          },
+          "expectedKind": "town",
+          "expectedSourceId": "osm",
+          "originalGeometrySha256": "937838cf6870715791da8ff7f08a5997fb9b0b9cce78f104cddc4b319367f778",
+          "effectiveOriginalGeometrySha256": "937838cf6870715791da8ff7f08a5997fb9b0b9cce78f104cddc4b319367f778",
+          "expectedLat": 36.607408,
+          "expectedLng": 8.9696535,
+          "expectedCuration": null,
+          "memberId": "osm:way:172866902",
+          "expectedMemberEffectiveTags": {
+            "addr:city": "بوسالم",
+            "landuse": "residential",
+            "name": "بوسالم",
+            "name:ar": "بوسالم",
+            "name:fr": "Bou Salem",
+            "old_name": "Souk El Khemis",
+            "population": "21000"
+          },
+          "expectedMemberCuration": null,
+          "expectedMemberAliases": [
+            "Bou Salem",
+            "Bousalem",
+            "Bu Salem",
+            "Бу Салем",
+            "Бу-Салим"
+          ],
+          "nameAr": "بوسالم",
+          "nameFr": "Bou Salem",
+          "oldNameFr": "Souk El Khemis",
+          "requiredDistinctPair": {
+            "ids": [
+              "osm:relation:7144493",
+              "osm:way:172866902"
+            ],
+            "reviewEvidence": {
+              "file": "bousalem-reviews/bousalem-north-town-distinct-choices.json",
+              "sha256": "53cb1604a655b1ea6618c9791f4ff5db7f250ac2e769a92d835711992713ddc3"
+            }
+          },
+          "prayerSourceReference": {
+            "file": "prayer-source-coordinates.json",
+            "sha256": "ac670ca7517931030c6d7fe332aa9be8db6f0befd4e00b79c6eeecb7c77fee78",
+            "expectedCorrection": {
+              "delegationId": 499,
+              "expectedGovernorateId": 354,
+              "expectedNames": {
+                "nomAr": "بوسالم",
+                "nomFr": "Bou Salem",
+                "nomEn": "Bou Salem"
+              },
+              "reviewedDate": "2026-09-07",
+              "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+              "original": {
+                "lat": 36.5673,
+                "lng": 8.9671
+              },
+              "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+              "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+              "proposed": {
+                "lat": 36.607408,
+                "lng": 8.9696535
+              },
+              "movedKm": 4.465629672718391,
+              "osm": {
+                "id": "osm:node:1837034352",
+                "url": "https://www.openstreetmap.org/node/1837034352",
+                "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1837034352.json",
+                "version": 13,
+                "timestamp": "2025-11-30T16:07:31Z",
+                "name": "بوسالم",
+                "place": "town"
+              },
+              "osmEvidence": {
+                "retrieved": "2026-09-07",
+                "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+                "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+              },
+              "geonames": {
+                "id": 2471956,
+                "name": "Bou Salem",
+                "lat": 36.60732,
+                "lng": 8.96981,
+                "featureCode": "PPL",
+                "modified": "2026-06-23",
+                "url": "https://www.geonames.org/2471956",
+                "distanceToProposedKm": 0.01705551516255584,
+                "featureClass": "P"
+              },
+              "phoneVisualReview": {
+                "reviewedDate": "2026-09-07",
+                "decision": "approved_settlement_reference",
+                "report": "outputs/phone-source-point-second-review-first-eight.json",
+                "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+                "proposedObservation": "The proposed capture places the pin on a roundabout amid the Bou Salem street network beside Bou Salem Regional Hospital. The selected Fountain Roundabout card names Fontaine de Bousalem / نافورة بوسالم.",
+                "originalObservation": "The original capture shows sparse roads and an Unnamed location whose card says Near Bir Lakhdar.",
+                "limitation": "The fountain card supports the named settlement context; it does not certify the exact query coordinate or an INM reference point.",
+                "exactCoordinateCertified": false,
+                "boundaryVerified": false,
+                "observations": [
+                  {
+                    "role": "proposed",
+                    "point": {
+                      "lat": 36.607408,
+                      "lng": 8.9696535
+                    },
+                    "requestedQuery": "36.607408,8.9696535",
+                    "observedAt": "2026-09-07T06:26:32.434570+00:00",
+                    "screenshot": "outputs/phone-maps-review/delegation_499-2.png",
+                    "screenshotSha256": "6bcd082a343522e33f7fbb1fc279afab896476a973f80acc111c2ec03fa89523",
+                    "observationJson": "outputs/phone-maps-review/delegation_499-2.json",
+                    "observationJsonSha256": "14d1779902bb142d952e1651e05dbac35e6dc1c3845a912c7d86e6d18665a85f",
+                    "visuallyReviewed": true,
+                    "exactCoordinateCertified": false,
+                    "boundaryVerified": false
+                  },
+                  {
+                    "role": "original",
+                    "point": {
+                      "lat": 36.5673,
+                      "lng": 8.9671
+                    },
+                    "requestedQuery": "36.5673,8.9671",
+                    "observedAt": "2026-09-07T06:26:39.268492+00:00",
+                    "screenshot": "outputs/phone-maps-review/delegation_499-3.png",
+                    "screenshotSha256": "75aeb0e286b268f1ed500f186b80cf8ec5a53296999eedb495e5e7d70cff69e3",
+                    "observationJson": "outputs/phone-maps-review/delegation_499-3.json",
+                    "observationJsonSha256": "952ff7f0c562bc8310a59e5081f995762ae62f30ef0031450480d6fadb449a0e",
+                    "visuallyReviewed": true,
+                    "exactCoordinateCertified": false,
+                    "boundaryVerified": false
+                  }
+                ]
+              }
+            }
+          },
+          "peerNameValues": [
+            "بوسالم",
+            "Bou Salem",
+            "Bousalem",
+            "بوسالم الشمالية",
+            "Bou Salem Nord"
+          ],
+          "expectedSourcePeers": [
+            {
+              "id": "osm:node:1837034352",
+              "kind": "town",
+              "originalTags": {
+                "alt_name": "Bousalem",
+                "name": "بوسالم",
+                "name:ar": "بوسالم",
+                "name:ca": "Bou Salem",
+                "name:cy": "Bou Salem",
+                "name:de": "Bou Salem",
+                "name:en": "Bou Salem",
+                "name:fa": "بوسالم",
+                "name:fr": "Bou Salem",
+                "name:kab": "Bu Salem",
+                "name:ro": "Bou Salem",
+                "name:ru": "Бу-Салим",
+                "name:uk": "Бу Салем",
+                "name:zu": "Bou Salem",
+                "old_name": "سوق الخميس",
+                "old_name:ar": "سوق الخميس",
+                "old_name:fr": "Souk El Khemis",
+                "place": "town",
+                "population": "21000",
+                "postal_code": "81700",
+                "website": "http://www.commune-bousalem.gov.tn/",
+                "wikidata": "Q2911912",
+                "wikimedia_commons": "Category:Bou Salem",
+                "wikipedia": "ar:بوسالم"
+              },
+              "effectiveTags": {
+                "alt_name": "Bousalem",
+                "name": "بوسالم",
+                "name:ar": "بوسالم",
+                "name:ca": "Bou Salem",
+                "name:cy": "Bou Salem",
+                "name:de": "Bou Salem",
+                "name:en": "Bou Salem",
+                "name:fa": "بوسالم",
+                "name:fr": "Bou Salem",
+                "name:kab": "Bu Salem",
+                "name:ro": "Bou Salem",
+                "name:ru": "Бу-Салим",
+                "name:uk": "Бу Салем",
+                "name:zu": "Bou Salem",
+                "old_name": "سوق الخميس",
+                "old_name:ar": "سوق الخميس",
+                "old_name:fr": "Souk El Khemis",
+                "place": "town",
+                "population": "21000",
+                "postal_code": "81700",
+                "website": "http://www.commune-bousalem.gov.tn/",
+                "wikidata": "Q2911912",
+                "wikimedia_commons": "Category:Bou Salem",
+                "wikipedia": "ar:بوسالم"
+              },
+              "originalGeometrySha256": "937838cf6870715791da8ff7f08a5997fb9b0b9cce78f104cddc4b319367f778",
+              "effectiveGeometrySha256": "937838cf6870715791da8ff7f08a5997fb9b0b9cce78f104cddc4b319367f778"
+            },
+            {
+              "id": "osm:relation:4742640",
+              "kind": "delegation",
+              "originalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Bou Salem",
+                "boundary": "administrative",
+                "name": "معتمدية بوسالم",
+                "name:ar": "معتمدية بوسالم",
+                "name:fr": "Délégation Bousalem",
+                "name:ru": "Бу-Салим",
+                "official_name": "معتمدية بوسالم",
+                "official_name:ar": "معتمدية بوسالم",
+                "official_name:fr": "Délégation de Bousalem",
+                "population": "36061",
+                "ref:tn:codegeo": "2253",
+                "ref:tn:hasc_2": "TN.JE.BS",
+                "wikidata": "Q2911894",
+                "wikipedia": "ar:معتمدية بوسالم"
+              },
+              "effectiveTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Bou Salem",
+                "boundary": "administrative",
+                "name": "معتمدية بوسالم",
+                "name:ar": "معتمدية بوسالم",
+                "name:fr": "Délégation Bousalem",
+                "name:ru": "Бу-Салим",
+                "official_name": "معتمدية بوسالم",
+                "official_name:ar": "معتمدية بوسالم",
+                "official_name:fr": "Délégation de Bousalem",
+                "population": "36061",
+                "ref:tn:codegeo": "2253",
+                "ref:tn:hasc_2": "TN.JE.BS",
+                "wikidata": "Q2911894",
+                "wikipedia": "ar:معتمدية بوسالم"
+              },
+              "originalGeometrySha256": "9cdff878966bc9c4c1ff75dbc48327db346c4d66d84e338fc26b2a6eae4eadea",
+              "effectiveGeometrySha256": "9cdff878966bc9c4c1ff75dbc48327db346c4d66d84e338fc26b2a6eae4eadea"
+            },
+            {
+              "id": "osm:relation:7144493",
+              "kind": "sector",
+              "originalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "بوسالم الشمالية",
+                "name:ar": "بوسالم الشمالية",
+                "name:fr": "Bou Salem",
+                "ref:tn:codegeo": "225351"
+              },
+              "effectiveTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "بوسالم الشمالية",
+                "name:ar": "بوسالم الشمالية",
+                "name:fr": "Bou Salem",
+                "ref:tn:codegeo": "225351"
+              },
+              "originalGeometrySha256": "7c06b528eac074de5a7c28f03cdd6cc42716a5b4beac75baf4aaee17384703e0",
+              "effectiveGeometrySha256": "7c06b528eac074de5a7c28f03cdd6cc42716a5b4beac75baf4aaee17384703e0"
+            },
+            {
+              "id": "osm:way:172866902",
+              "kind": "residential",
+              "originalTags": {
+                "addr:city": "بوسالم",
+                "landuse": "residential",
+                "name": "بوسالم",
+                "name:ar": "بوسالم",
+                "name:fr": "Bou Salem",
+                "old_name": "Souk El Khemis",
+                "population": "21000"
+              },
+              "effectiveTags": {
+                "addr:city": "بوسالم",
+                "landuse": "residential",
+                "name": "بوسالم",
+                "name:ar": "بوسالم",
+                "name:fr": "Bou Salem",
+                "old_name": "Souk El Khemis",
+                "population": "21000"
+              },
+              "originalGeometrySha256": "5ef80dc60200fbcfbd0bc0645491fa4f463d3c50bf31452f77fb880ee53b3b9f",
+              "effectiveGeometrySha256": "5ef80dc60200fbcfbd0bc0645491fa4f463d3c50bf31452f77fb880ee53b3b9f"
+            }
+          ],
+          "reviewFiles": [
+            {
+              "file": "bousalem-reviews/bousalem-complete-choice-source-review.json",
+              "sha256": "81632f2c6bf81bfa8b9721a2630cac72e71078562a6b3ecfe9cb7863a6c81faf"
+            },
+            {
+              "file": "bousalem-reviews/direct-pbf-source-facts.json",
+              "sha256": "8d68a952c625c60092548ea29e2064568a964f0aa1f90df86eed8544947dac0c"
+            },
+            {
+              "file": "bousalem-reviews/jendouba-development-summary.pdf",
+              "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e"
+            },
+            {
+              "file": "bousalem-reviews/development-page-85.png",
+              "sha256": "d5832c864a7180ad6b737781b28dd2ad77e1c93ba01440ce257a25fc170edc32"
+            },
+            {
+              "file": "bousalem-reviews/development-page-86.png",
+              "sha256": "7493aa8a3f49230ac5e7b8b56a5a1592513bfb795d3497f8fb722a4790752d9c"
+            }
+          ]
+        }
+      ],
+      "scope": "Only the released singleton town residential group joins its exact original town base. The separately reviewed North sector must remain distinct."
+    }
+  ],
+  "prayerSourceReferenceRevision": {
+    "reviewedDate": "2026-09-08",
+    "reason": "The current full coordinate manifest adds only reviewed references417 and443. Bousalem correction499 and the entire original26-correction prefix are byte-identical and object-identical. Update the active file binding while retaining all exact Bousalem identity/coordinate assertions.",
+    "historicalProof": {
+      "file": "bousalem-reviews/bousalem-absorbed-town-base-proof.json",
+      "sha256": "9ae5ff43628f3f1b118f602df4b0fb42637494044f5d58b2ee86b7fbd3808c9c"
+    },
+    "historicalCoordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+    "currentCoordinateManifest": {
+      "file": "prayer-source-coordinates.json",
+      "sha256": "ac670ca7517931030c6d7fe332aa9be8db6f0befd4e00b79c6eeecb7c77fee78"
+    },
+    "preservedOriginalCorrectionCount": 26,
+    "appendedCorrectionIds": [
+      417,
+      443
+    ],
+    "unchangedCorrection499JsonObjectByteSha256": "7472e977a85f8137be1e27d8991e68a45b6588936078089f2cd033c100fe6d77",
+    "scope": "Dependency revision only. No new Bousalem identity, source point, geometry, group, alias or timetable evidence is claimed; original source/phone reviews remain historical."
+  }
+}

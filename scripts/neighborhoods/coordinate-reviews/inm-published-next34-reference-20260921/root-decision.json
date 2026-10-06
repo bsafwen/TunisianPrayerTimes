@@ -1,0 +1,1975 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_SCOPED_REFERENCE_CORRECTIONS_PENDING_GENERATION",
+  "createdAtUtc": "2026-09-21T04:11:19.775718+00:00",
+  "sourceIds": [
+    397,
+    398,
+    400,
+    405,
+    423,
+    427,
+    438,
+    444,
+    447,
+    453,
+    456,
+    462,
+    471,
+    492,
+    493,
+    494,
+    501,
+    503,
+    520,
+    533,
+    548,
+    556,
+    562,
+    577,
+    587,
+    598,
+    599,
+    602,
+    606,
+    620,
+    626,
+    632,
+    633,
+    637
+  ],
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputFiles": {
+    "compiler": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "gouvernorats.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+    "neighborhoods.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "neighborhoods.bin": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "retired-localities.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+    "locality-display-names.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+    "prayer-source-coordinates.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+    "catalog-curation.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "reviewed-boundaries.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "reviewed-picker-groups.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "municipal-sources.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\municipal-sources.json",
+    "final-exclusions.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\final-exclusions.json"
+  },
+  "inputPins": {
+    "compiler": "114e1cbf4931ea8d7383896d9cb56c9b49009f2e874e3e2a5e13d1b10cf233fe",
+    "gouvernorats.json": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+    "neighborhoods.json": "7cbc5c0e0bf41a40a89823b0395ed76e9dc1f8bc05c22188788933744cc25bc0",
+    "neighborhoods.bin": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "retired-localities.json": "301f8edc255204a5e5946dc13dc473293c594f21a5808572eb09905a182c3491",
+    "locality-display-names.json": "a65709c1d970b38b0003c76a0b29a7d962f36dd780458cc75a2be9fd243265a2",
+    "prayer-source-coordinates.json": "1aabe8cba5b1047a8f5f063e52aed17e2862827a45f41899db6ec75b20481804",
+    "catalog-curation.json": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0",
+    "reviewed-boundaries.json": "d4986a089d0409e5bd77f682091a1d6462ad082326f05a3ad81b7f9505330890",
+    "reviewed-picker-groups.json": "7d6c7ca8f9872e55c4c5a4f75dfd216d64ae9882644eb1abfe4c0b9cee39f4c6",
+    "municipal-sources.json": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+    "final-exclusions.json": "a9c77bd87a5231e5bd9d308f5b8edafc6f48b5737a77ae3a4c8a0c336a0349c7"
+  },
+  "evidence": {
+    "geographicReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next34-reference-integration-20260921\\geography-review.json",
+      "sha256": "0b6e982dc2a523e6ed2f0d8fa0f57da97fdf3934eb43e247e826bcd65a7cf957"
+    },
+    "mapsReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next34-reference-integration-20260921\\maps-review.json",
+      "sha256": "59ebe7ecc5d6b8673f494f0edc5d68cbffa498b731ceb89c80095a1e3af4f937"
+    },
+    "impactReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next34-reference-integration-20260921\\impact.json",
+      "sha256": "b6119fd76c3113476fabe2bfdfcdbad48156980924439128260ab878c614aef2"
+    },
+    "pairedInmReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next34-reference-integration-20260921\\paired-stage-compatible.json",
+      "sha256": "1955880c2238393f34cc89345ca995a3237988346c4a658020b28d50bb40cc7d"
+    },
+    "rootVisualReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next34-reference-integration-20260921\\root-visual-review.json",
+      "sha256": "16f7ad417169f7840d62c48ba080e33c3456baa0207d9b1a794c4ffdf7fc4896"
+    }
+  },
+  "expectedRawChanges": [
+    {
+      "id": "osm:node:10118270176",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:10739565994",
+      "before": 523,
+      "after": 525
+    },
+    {
+      "id": "osm:node:1115570559",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12229092546",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12563677142",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7095859",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114421",
+      "before": 535,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114550",
+      "before": 533,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7125598",
+      "before": 525,
+      "after": 414
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7126584",
+      "before": 502,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165008",
+      "before": 573,
+      "after": 587
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201552",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201554",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:relation:7201607",
+      "before": 399,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7201652",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:8893246",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:173445090",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:way:174739936",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:way:180268046",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:192752617",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:way:26289690",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:way:89006660",
+      "before": 532,
+      "after": 386
+    }
+  ],
+  "expectedManualChanges": [
+    {
+      "id": "delegation:468",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "delegation:598",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114421",
+      "before": 535,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114550",
+      "before": 533,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7125598",
+      "before": 525,
+      "after": 414
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7126584",
+      "before": 502,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165008",
+      "before": 573,
+      "after": 587
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201554",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:relation:7201607",
+      "before": 399,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7201652",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:10739565994",
+      "before": 523,
+      "after": 525
+    },
+    {
+      "id": "osm:node:1115570559",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12229092546",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12563677142",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    }
+  ],
+  "expectedCurrentRawChanges": [
+    {
+      "id": "osm:node:10118270176",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:1115570559",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12229092546",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7095859",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201552",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201554",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201607",
+      "before": 399,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:8893246",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:way:101529651",
+      "before": 531,
+      "after": 533
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:173445090",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:way:180268046",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:26289690",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    }
+  ],
+  "expectedCurrentManualChanges": [
+    {
+      "id": "delegation:598",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:1115570559",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12229092546",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201554",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201607",
+      "before": 399,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    }
+  ],
+  "decisionBasis": "Replace 34 legacy undocumented prayer reference coordinates with identity-qualified paired INM published prayer/sun coordinates. Current source identities and bytes preserved; original transport evidence qualified by production validator. Root reviewed all36 new Maps coordinate captures and kept487/631 pending. The34 selected points retain matching native delegation context and Maps locality or broader urban labels. Scope is nearest-source reference selection only.",
+  "rootVisualReview": {
+    "coordinateScreenshotsViewed": 36,
+    "acceptedCoordinateScreenshots": 34,
+    "heldCoordinateScreenshots": 2,
+    "contactSheetsViewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "newMapsCaptureCount": 36,
+    "reusedNamedObservationCount": 34,
+    "exceptionsAndFindings": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next34-reference-integration-20260921\\root-visual-review.json",
+      "sha256": "16f7ad417169f7840d62c48ba080e33c3456baa0207d9b1a794c4ffdf7fc4896"
+    }
+  },
+  "geographicQualifications": [
+    "No display names, locality representative points, owner grouping, governorate assignment or polygon bytes change.",
+    "Published response coordinates do not certify INM internal calculation inputs.",
+    "Town point context does not certify boundaries of any neighborhood or administrative sector.",
+    "Reference source changes follow geographic distance among sources with available bundled timetables."
+  ],
+  "protectedSourceIds": [
+    392,
+    409,
+    567,
+    622,
+    425,
+    534,
+    487,
+    631
+  ],
+  "preserveExistingCorrectionCount": 73,
+  "expectedCorrectionCount": 107,
+  "preserveFinalExclusion": "osm:way:658923544",
+  "validation": "Verify current80raw/73manual source changes and frozen cumulative111raw/103manual before final exclusion,110raw/102manual after. Preserve all geometry,names,owner groups,governorate IDs,retired/display data and73prior corrections. Compile Android after installation only."
+}

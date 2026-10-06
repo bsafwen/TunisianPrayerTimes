@@ -1,0 +1,3929 @@
+{
+  "schemaVersion": 1,
+  "status": "FINITE_FACTS_ONLY_NO_STAGE",
+  "baselineMetadataSha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2",
+  "generatorSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "baselineLocation": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo",
+  "baselineQualification": "Immutable pre-three-town-display snapshot; later changes to the other three picker IDs do not update this report or its currentRaw epoch automatically.",
+  "sourcePhases": "Original cached objects -> all77 accepted replacement records -> active nameTags/exclusions. Finite Bekalta outputs contain only four accepted replacements and its bounded seven-state closure.",
+  "candidate": {
+    "id": "osm:node:558814858",
+    "baseId": 601,
+    "currentRaw": {
+      "id": "osm:node:558814858",
+      "sourceId": "osm",
+      "name": "البقالطة",
+      "aliases": [
+        "Bekalta"
+      ],
+      "kind": "village",
+      "parentName": "البقالطة الشمالية",
+      "contextAliases": [
+        "Bekalta",
+        "Bekalta nord",
+        "Délégation Bekalta",
+        "البقالطة الشمالية",
+        "معتمدية البقالطة"
+      ],
+      "governorateId": 364,
+      "lat": 35.6172948,
+      "lng": 10.9891336,
+      "delegationId": 601,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:558814858"
+    },
+    "currentBase": {
+      "id": 601,
+      "nomFr": "Bekalta",
+      "nomAr": "البقالطة",
+      "nomEn": "Bekalta",
+      "lat": 35.619,
+      "lng": 10.9949
+    },
+    "expectedGovernor": {
+      "id": 364,
+      "nomFr": "Monastir",
+      "nomAr": "المنستير",
+      "nomEn": "Monastir",
+      "lat": 35.7643,
+      "lng": 10.8113
+    },
+    "originalSourceNode": {
+      "id": "osm:node:558814858",
+      "tags": {
+        "addr:city": "Bekalta",
+        "addr:governorate": "Monastir",
+        "addr:postcode": "5009",
+        "name": "البقالطة",
+        "name:ar": "البقالطة",
+        "name:en": "Bekalta",
+        "name:fr": "Bekalta",
+        "place": "village",
+        "population": "17850",
+        "wikidata": "Q1203138",
+        "wikimedia_commons": "Category:Bekalta",
+        "wikipedia": "en:Bekalta"
+      },
+      "lat": 35.6172948,
+      "lng": 10.9891336
+    },
+    "sourceNode": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\osm-node-558814858-current.json",
+      "sha256": "bea719421b4426a61c6cca7beb7fc998a177c1f2ef2ea44e601061cfae9e6bf9",
+      "url": "https://api.openstreetmap.org/api/0.6/node/558814858.json"
+    },
+    "sourceNodeIdentity": {
+      "url": "https://api.openstreetmap.org/api/0.6/node/558814858.json",
+      "sha256": "bea719421b4426a61c6cca7beb7fc998a177c1f2ef2ea44e601061cfae9e6bf9",
+      "exactElement": {
+        "type": "node",
+        "id": 558814858,
+        "lat": 35.6172948,
+        "lon": 10.9891336,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "version": 17,
+        "changeset": 179509225,
+        "user": "Johnwhelan",
+        "uid": 186592,
+        "tags": {
+          "addr:city": "Bekalta",
+          "addr:governorate": "Monastir",
+          "addr:postcode": "5009",
+          "name": "البقالطة",
+          "name:ar": "البقالطة",
+          "name:en": "Bekalta",
+          "name:fr": "Bekalta",
+          "place": "village",
+          "population": "17850",
+          "wikidata": "Q1203138",
+          "wikimedia_commons": "Category:Bekalta",
+          "wikipedia": "en:Bekalta"
+        }
+      }
+    },
+    "officialDelegationCodes": [
+      "3259"
+    ],
+    "preservedSectors": [
+      {
+        "id": "osm:relation:7111930",
+        "officialIdentity": {
+          "governorateCode": "32",
+          "governorateFr": "Monastir",
+          "governorateAr": "المنستير",
+          "delegationCode": "3259",
+          "delegationFr": "Bekalta",
+          "delegationAr": "البقالطة",
+          "sectorCode": "325953",
+          "sectorFr": "Baghdadi",
+          "sectorAr": "البغدادي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37977,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1805,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1802
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البغدادي",
+          "name:ar": "البغدادي",
+          "name:fr": "El Baghdadi",
+          "ref:tn:codegeo": "325953"
+        },
+        "sourceGeometrySha256": "7e6aaf5490e49c0a5eb15d7d168cf5c9659f7f0cce682e9671233f0e86e2f755",
+        "currentMetadata": {
+          "id": "osm:relation:7111930",
+          "sourceId": "isie-local-sectors-2023-baghdadi-review",
+          "name": "البغدادي",
+          "aliases": [
+            "Baghdadi"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.567693,
+          "lng": 11.010783,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.989083,
+            35.552231,
+            11.03094,
+            35.583394
+          ],
+          "areaKm2": 8.50938915410889,
+          "pickerGroupId": "osm:relation:7111930",
+          "offset": 746624,
+          "length": 2092
+        },
+        "packedGeometrySha256": "14a057c97da11378123fef351e4af51f5978ec6e73b6913a9290a08b0e28429b",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7111931",
+        "officialIdentity": {
+          "governorateCode": "32",
+          "governorateFr": "Monastir",
+          "governorateAr": "المنستير",
+          "delegationCode": "3259",
+          "delegationFr": "Bekalta",
+          "delegationAr": "البقالطة",
+          "sectorCode": "325952",
+          "sectorFr": "Bekalta Sud",
+          "sectorAr": "البقالطة الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37943,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1803,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1800
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البقالطة الجنوبية",
+          "name:ar": "البقالطة الجنوبية",
+          "name:fr": "Beklta Sud",
+          "ref:tn:codegeo": "325952"
+        },
+        "sourceGeometrySha256": "56d9a4df8e7909c36bc293bf9da3d9bd4a24fe7c51bb5d8823ce2180dfa356d6",
+        "currentMetadata": {
+          "id": "osm:relation:7111931",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "name": "البقالطة الجنوبية",
+          "aliases": [
+            "Bekalta Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.596024,
+          "lng": 10.994798,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.979602,
+            35.573589,
+            11.018024,
+            35.618857
+          ],
+          "areaKm2": 11.503088896724025,
+          "pickerGroupId": "osm:relation:7111931",
+          "offset": 748716,
+          "length": 1540
+        },
+        "packedGeometrySha256": "3e05a96b1d55481089a5cf62e1859c5006bb287c7c720c642c3d9813c613e6b0",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7111932",
+        "officialIdentity": {
+          "governorateCode": "32",
+          "governorateFr": "Monastir",
+          "governorateAr": "المنستير",
+          "delegationCode": "3259",
+          "delegationFr": "Bekalta",
+          "delegationAr": "البقالطة",
+          "sectorCode": "325954",
+          "sectorFr": "Bekalta est",
+          "sectorAr": "البقالطة الشرقية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38011,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1806,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1803
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البقالطة الشرقية",
+          "name:ar": "البقالطة الشرقية",
+          "name:fr": "Bekalta Est",
+          "ref:tn:codegeo": "325954"
+        },
+        "sourceGeometrySha256": "d6ccd77926f30798fe8b4636cf7d7be08faba97b2d9d5cd2ac41826653371fde",
+        "currentMetadata": {
+          "id": "osm:relation:7111932",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "name": "البقالطة الشرقية",
+          "aliases": [
+            "Bekalta est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.603396,
+          "lng": 11.028329,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            11.005379,
+            35.575003,
+            11.047963,
+            35.63204
+          ],
+          "areaKm2": 14.027324867108453,
+          "pickerGroupId": "osm:relation:7111932",
+          "offset": 750256,
+          "length": 1756
+        },
+        "packedGeometrySha256": "81e155af4f0c947f93d73ecfa40583f8e7e942f6119a662c09e7f35ecc5fbc60",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7111933",
+        "officialIdentity": {
+          "governorateCode": "32",
+          "governorateFr": "Monastir",
+          "governorateAr": "المنستير",
+          "delegationCode": "3259",
+          "delegationFr": "Bekalta",
+          "delegationAr": "البقالطة",
+          "sectorCode": "325951",
+          "sectorFr": "Bekalta nord",
+          "sectorAr": "البقالطة الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37909,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1801,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1798
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "طبلبة",
+          "name:ar": "طبلبة",
+          "name:fr": "Téboulba",
+          "ref:tn:codegeo": "325951"
+        },
+        "sourceGeometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee",
+        "currentMetadata": {
+          "id": "osm:relation:7111933",
+          "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+          "name": "البقالطة الشمالية",
+          "aliases": [
+            "Bekalta nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.626695,
+          "lng": 11.010987,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.973385,
+            35.613826,
+            11.036008,
+            35.63977
+          ],
+          "areaKm2": 9.297071014496208,
+          "pickerGroupId": "osm:relation:7111933",
+          "offset": 752012,
+          "length": 2028
+        },
+        "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+        "expectedCuration": null
+      }
+    ],
+    "contexts": {
+      "osm:relation:1434954": {
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-52",
+          "admin_level": "4",
+          "alt_name:de": "Gouvernement Monastir",
+          "boundary": "administrative",
+          "long_name": "ولاية المنستير",
+          "long_name:ar": "ولاية المنستير",
+          "long_name:en": "Monastir Governorate",
+          "long_name:fr": "Gouvernorat de Monastir",
+          "long_name:it": "Governatorato di Monastir",
+          "name": "ولاية المنستير",
+          "name:ar": "ولاية المنستير",
+          "name:az": "Monastir (vilayət)",
+          "name:be": "Манасцір (вілает)",
+          "name:be-tarask": "Манастыр (вілает)",
+          "name:bg": "Монастир (област)",
+          "name:ca": "Governació de Monastir",
+          "name:ceb": "Gouvernorat de Monastir",
+          "name:cy": "Monastir (talaith)",
+          "name:de": "Al-Munastir",
+          "name:el": "Μοναστίρ (Κυβερνείο)",
+          "name:en": "Monastir",
+          "name:es": "Gobernación de Monastir",
+          "name:fa": "استان منستیر",
+          "name:fi": "Monastir (kuvernementti)",
+          "name:fr": "Gouvernorat Monastir",
+          "name:frr": "Monastir (Guwernement)",
+          "name:hr": "Monastir",
+          "name:id": "Kegubernuran Monastir",
+          "name:it": "Monastir",
+          "name:ja": "モナスティル県",
+          "name:ka": "მონასტირის ვილაიეთი",
+          "name:ko": "모나스티르주",
+          "name:ms": "Kawasan kegabenoran Monastir",
+          "name:nl": "Monastir (gouvernement)",
+          "name:no": "Monastir (guvernement)",
+          "name:pl": "Gubernatorstwo Monastyr",
+          "name:pt": "Monastir (província)",
+          "name:ro": "Guvernoratul Monastir",
+          "name:ru": "Монастир (вилайет)",
+          "name:sco": "Monastir Govrenorate",
+          "name:sh": "Monastir (vilajet)",
+          "name:sq": "Monastir",
+          "name:tr": "Munastır (vilayet)",
+          "name:uk": "Монастір (вілаєт)",
+          "name:ur": "ولایت منستیر",
+          "name:zh": "莫納斯提爾省",
+          "name:zu": "Monastir Governorate",
+          "population": "455590",
+          "ref:tn:codegeo": "32",
+          "source:population": "INS TN 2004",
+          "wikidata": "Q318102",
+          "wikipedia": "ar:ولاية المنستير"
+        },
+        "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+      },
+      "osm:relation:7154971": {
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Bekalta",
+          "boundary": "administrative",
+          "name": "معتمدية البقالطة",
+          "name:ar": "معتمدية البقالطة",
+          "name:fr": "Délégation Bekalta",
+          "ref:tn:codegeo": "3259",
+          "ref:tn:hasc_2": "TN.MS.BK",
+          "wikidata": "Q12243794"
+        },
+        "sourceGeometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4"
+      }
+    },
+    "sourceStates": [
+      {
+        "id": "osm:node:558814858",
+        "original": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "Bekalta",
+            "addr:governorate": "Monastir",
+            "addr:postcode": "5009",
+            "name": "البقالطة",
+            "name:ar": "البقالطة",
+            "name:en": "Bekalta",
+            "name:fr": "Bekalta",
+            "place": "village",
+            "population": "17850",
+            "wikidata": "Q1203138",
+            "wikimedia_commons": "Category:Bekalta",
+            "wikipedia": "en:Bekalta"
+          },
+          "sourceId": null,
+          "geometrySha256": "a22710784f96752df277c6a38151150e2ade7405df9a5d70950339f333e36ebc"
+        },
+        "effective": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "Bekalta",
+            "addr:governorate": "Monastir",
+            "addr:postcode": "5009",
+            "name": "البقالطة",
+            "name:ar": "البقالطة",
+            "name:en": "Bekalta",
+            "name:fr": "Bekalta",
+            "place": "village",
+            "population": "17850",
+            "wikidata": "Q1203138",
+            "wikimedia_commons": "Category:Bekalta",
+            "wikipedia": "en:Bekalta"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "a22710784f96752df277c6a38151150e2ade7405df9a5d70950339f333e36ebc"
+        }
+      },
+      {
+        "id": "osm:relation:1434954",
+        "original": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-52",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Monastir",
+            "boundary": "administrative",
+            "long_name": "ولاية المنستير",
+            "long_name:ar": "ولاية المنستير",
+            "long_name:en": "Monastir Governorate",
+            "long_name:fr": "Gouvernorat de Monastir",
+            "long_name:it": "Governatorato di Monastir",
+            "name": "ولاية المنستير",
+            "name:ar": "ولاية المنستير",
+            "name:az": "Monastir (vilayət)",
+            "name:be": "Манасцір (вілает)",
+            "name:be-tarask": "Манастыр (вілает)",
+            "name:bg": "Монастир (област)",
+            "name:ca": "Governació de Monastir",
+            "name:ceb": "Gouvernorat de Monastir",
+            "name:cy": "Monastir (talaith)",
+            "name:de": "Al-Munastir",
+            "name:el": "Μοναστίρ (Κυβερνείο)",
+            "name:en": "Monastir",
+            "name:es": "Gobernación de Monastir",
+            "name:fa": "استان منستیر",
+            "name:fi": "Monastir (kuvernementti)",
+            "name:fr": "Gouvernorat Monastir",
+            "name:frr": "Monastir (Guwernement)",
+            "name:hr": "Monastir",
+            "name:id": "Kegubernuran Monastir",
+            "name:it": "Monastir",
+            "name:ja": "モナスティル県",
+            "name:ka": "მონასტირის ვილაიეთი",
+            "name:ko": "모나스티르주",
+            "name:ms": "Kawasan kegabenoran Monastir",
+            "name:nl": "Monastir (gouvernement)",
+            "name:no": "Monastir (guvernement)",
+            "name:pl": "Gubernatorstwo Monastyr",
+            "name:pt": "Monastir (província)",
+            "name:ro": "Guvernoratul Monastir",
+            "name:ru": "Монастир (вилайет)",
+            "name:sco": "Monastir Govrenorate",
+            "name:sh": "Monastir (vilajet)",
+            "name:sq": "Monastir",
+            "name:tr": "Munastır (vilayet)",
+            "name:uk": "Монастір (вілаєт)",
+            "name:ur": "ولایت منستیر",
+            "name:zh": "莫納斯提爾省",
+            "name:zu": "Monastir Governorate",
+            "population": "455590",
+            "ref:tn:codegeo": "32",
+            "source:population": "INS TN 2004",
+            "wikidata": "Q318102",
+            "wikipedia": "ar:ولاية المنستير"
+          },
+          "sourceId": null,
+          "geometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+        },
+        "effective": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-52",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Monastir",
+            "boundary": "administrative",
+            "long_name": "ولاية المنستير",
+            "long_name:ar": "ولاية المنستير",
+            "long_name:en": "Monastir Governorate",
+            "long_name:fr": "Gouvernorat de Monastir",
+            "long_name:it": "Governatorato di Monastir",
+            "name": "ولاية المنستير",
+            "name:ar": "ولاية المنستير",
+            "name:az": "Monastir (vilayət)",
+            "name:be": "Манасцір (вілает)",
+            "name:be-tarask": "Манастыр (вілает)",
+            "name:bg": "Монастир (област)",
+            "name:ca": "Governació de Monastir",
+            "name:ceb": "Gouvernorat de Monastir",
+            "name:cy": "Monastir (talaith)",
+            "name:de": "Al-Munastir",
+            "name:el": "Μοναστίρ (Κυβερνείο)",
+            "name:en": "Monastir",
+            "name:es": "Gobernación de Monastir",
+            "name:fa": "استان منستیر",
+            "name:fi": "Monastir (kuvernementti)",
+            "name:fr": "Gouvernorat Monastir",
+            "name:frr": "Monastir (Guwernement)",
+            "name:hr": "Monastir",
+            "name:id": "Kegubernuran Monastir",
+            "name:it": "Monastir",
+            "name:ja": "モナスティル県",
+            "name:ka": "მონასტირის ვილაიეთი",
+            "name:ko": "모나스티르주",
+            "name:ms": "Kawasan kegabenoran Monastir",
+            "name:nl": "Monastir (gouvernement)",
+            "name:no": "Monastir (guvernement)",
+            "name:pl": "Gubernatorstwo Monastyr",
+            "name:pt": "Monastir (província)",
+            "name:ro": "Guvernoratul Monastir",
+            "name:ru": "Монастир (вилайет)",
+            "name:sco": "Monastir Govrenorate",
+            "name:sh": "Monastir (vilajet)",
+            "name:sq": "Monastir",
+            "name:tr": "Munastır (vilayet)",
+            "name:uk": "Монастір (вілаєт)",
+            "name:ur": "ولایت منستیر",
+            "name:zh": "莫納斯提爾省",
+            "name:zu": "Monastir Governorate",
+            "population": "455590",
+            "ref:tn:codegeo": "32",
+            "source:population": "INS TN 2004",
+            "wikidata": "Q318102",
+            "wikipedia": "ar:ولاية المنستير"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+        }
+      },
+      {
+        "id": "osm:relation:7111930",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البغدادي",
+            "name:ar": "البغدادي",
+            "name:fr": "El Baghdadi",
+            "ref:tn:codegeo": "325953"
+          },
+          "sourceId": null,
+          "geometrySha256": "7e6aaf5490e49c0a5eb15d7d168cf5c9659f7f0cce682e9671233f0e86e2f755"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325953",
+            "name:ar": "البغدادي",
+            "name:fr": "Baghdadi"
+          },
+          "sourceId": "isie-local-sectors-2023-baghdadi-review",
+          "geometrySha256": "70b9eb83856d3bf95a434bc1b0b389ae3838609597a942286ce6268980fa4e49"
+        }
+      },
+      {
+        "id": "osm:relation:7111931",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الجنوبية",
+            "name:ar": "البقالطة الجنوبية",
+            "name:fr": "Beklta Sud",
+            "ref:tn:codegeo": "325952"
+          },
+          "sourceId": null,
+          "geometrySha256": "56d9a4df8e7909c36bc293bf9da3d9bd4a24fe7c51bb5d8823ce2180dfa356d6"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325952",
+            "name:ar": "البقالطة الجنوبية",
+            "name:fr": "Bekalta Sud"
+          },
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "geometrySha256": "6a739bf408f25fad5d65e42ec36ce92b4f4f751610f835d5753273ae986f2c43"
+        }
+      },
+      {
+        "id": "osm:relation:7111932",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الشرقية",
+            "name:ar": "البقالطة الشرقية",
+            "name:fr": "Bekalta Est",
+            "ref:tn:codegeo": "325954"
+          },
+          "sourceId": null,
+          "geometrySha256": "d6ccd77926f30798fe8b4636cf7d7be08faba97b2d9d5cd2ac41826653371fde"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325954",
+            "name:ar": "البقالطة الشرقية",
+            "name:fr": "Bekalta est"
+          },
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "geometrySha256": "ea11ae659d96bd68629131d6b5dd050531d152009dfd1a7e9098e251abe96e94"
+        }
+      },
+      {
+        "id": "osm:relation:7111933",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طبلبة",
+            "name:ar": "طبلبة",
+            "name:fr": "Téboulba",
+            "ref:tn:codegeo": "325951"
+          },
+          "sourceId": null,
+          "geometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325951",
+            "name:ar": "البقالطة الشمالية",
+            "name:fr": "Bekalta nord"
+          },
+          "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+          "geometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e"
+        }
+      },
+      {
+        "id": "osm:relation:7154971",
+        "original": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bekalta",
+            "boundary": "administrative",
+            "name": "معتمدية البقالطة",
+            "name:ar": "معتمدية البقالطة",
+            "name:fr": "Délégation Bekalta",
+            "ref:tn:codegeo": "3259",
+            "ref:tn:hasc_2": "TN.MS.BK",
+            "wikidata": "Q12243794"
+          },
+          "sourceId": null,
+          "geometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4"
+        },
+        "effective": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bekalta",
+            "boundary": "administrative",
+            "name": "معتمدية البقالطة",
+            "name:ar": "معتمدية البقالطة",
+            "name:fr": "Délégation Bekalta",
+            "ref:tn:codegeo": "3259",
+            "ref:tn:hasc_2": "TN.MS.BK",
+            "wikidata": "Q12243794"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1434954": null,
+      "osm:relation:7111930": null,
+      "osm:relation:7111931": null,
+      "osm:relation:7111932": null,
+      "osm:relation:7111933": null,
+      "osm:relation:7154971": null
+    },
+    "acceptedBoundaryReplacements": [
+      {
+        "id": "osm:relation:7111930",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-baghdadi-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/baghdadi-review-isie2023-sector.geojson",
+          "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111930",
+              "officialCode": "325953",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البغدادي",
+                "name:ar": "البغدادي",
+                "name:fr": "El Baghdadi",
+                "ref:tn:codegeo": "325953"
+              }
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/baghdadi-review-isie2023-decision.json",
+            "evidenceSha256": "a9c5b40970cb04f4ec1c92ef3429dfbf11a20396af183564162eb4883e172512"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111930",
+          "officialCode": "325953",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البغدادي",
+            "name:ar": "البغدادي",
+            "name:fr": "El Baghdadi",
+            "ref:tn:codegeo": "325953"
+          }
+        },
+        "application": {
+          "id": "osm:relation:7111930",
+          "action": "replace",
+          "officialCode": "325953",
+          "sourceId": "isie-local-sectors-2023-baghdadi-review"
+        },
+        "geojson": {
+          "file": "official/baghdadi-review-isie2023-sector.geojson",
+          "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a"
+        },
+        "featureSha256": "5ab1282285e8d02d45ec90cc25040fcc4c140ce09f32f174930eb812ae5c7f80"
+      },
+      {
+        "id": "osm:relation:7111931",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-bekalta-south-east-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111931",
+              "officialCode": "325952",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الجنوبية",
+                "name:ar": "البقالطة الجنوبية",
+                "name:fr": "Beklta Sud",
+                "ref:tn:codegeo": "325952"
+              }
+            },
+            {
+              "id": "osm:relation:7111932",
+              "officialCode": "325954",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الشرقية",
+                "name:ar": "البقالطة الشرقية",
+                "name:fr": "Bekalta Est",
+                "ref:tn:codegeo": "325954"
+              }
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/bekalta-south-east-review-isie2023-decisions.json",
+            "evidenceSha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111931",
+          "officialCode": "325952",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الجنوبية",
+            "name:ar": "البقالطة الجنوبية",
+            "name:fr": "Beklta Sud",
+            "ref:tn:codegeo": "325952"
+          }
+        },
+        "application": {
+          "id": "osm:relation:7111931",
+          "action": "replace",
+          "officialCode": "325952",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review"
+        },
+        "geojson": {
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5"
+        },
+        "featureSha256": "94567b2e53c594f7336a060c00d618b5bee866b8fab11386a886a48c3efbe5ee"
+      },
+      {
+        "id": "osm:relation:7111932",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-bekalta-south-east-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111931",
+              "officialCode": "325952",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الجنوبية",
+                "name:ar": "البقالطة الجنوبية",
+                "name:fr": "Beklta Sud",
+                "ref:tn:codegeo": "325952"
+              }
+            },
+            {
+              "id": "osm:relation:7111932",
+              "officialCode": "325954",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الشرقية",
+                "name:ar": "البقالطة الشرقية",
+                "name:fr": "Bekalta Est",
+                "ref:tn:codegeo": "325954"
+              }
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/bekalta-south-east-review-isie2023-decisions.json",
+            "evidenceSha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111932",
+          "officialCode": "325954",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الشرقية",
+            "name:ar": "البقالطة الشرقية",
+            "name:fr": "Bekalta Est",
+            "ref:tn:codegeo": "325954"
+          }
+        },
+        "application": {
+          "id": "osm:relation:7111932",
+          "action": "replace",
+          "officialCode": "325954",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review"
+        },
+        "geojson": {
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5"
+        },
+        "featureSha256": "f3f3e1e05570e560b32a897385050ec76d53f5d58a225efc9bd595af130fe3ff"
+      },
+      {
+        "id": "osm:relation:7111933",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+          "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111933",
+              "officialCode": "325951",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "طبلبة",
+                "name:ar": "طبلبة",
+                "name:fr": "Téboulba",
+                "ref:tn:codegeo": "325951"
+              },
+              "scopeKind": "exhaustive_electoral_parts"
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/bekalta-north-aggregate-independent-review.json",
+            "evidenceSha256": "9ce783d5e415631eed80f536f80d3ce64ecfe51bfa109b54eede5bdd7ff906aa"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111933",
+          "officialCode": "325951",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طبلبة",
+            "name:ar": "طبلبة",
+            "name:fr": "Téboulba",
+            "ref:tn:codegeo": "325951"
+          },
+          "scopeKind": "exhaustive_electoral_parts"
+        },
+        "application": {
+          "id": "osm:relation:7111933",
+          "action": "replace",
+          "officialCode": "325951",
+          "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review"
+        },
+        "geojson": {
+          "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+          "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+        },
+        "featureSha256": "e2a0fc6211be1eb9d86589594993f6038d7d4a0e7826a56b398482af690ed8ea"
+      }
+    ],
+    "reviewedBoundaries": {
+      "file": "reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:558814858",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:558814858",
+          "sourceId": "osm",
+          "name": "البقالطة",
+          "aliases": [
+            "Bekalta"
+          ],
+          "kind": "village",
+          "parentName": "البقالطة الشمالية",
+          "contextAliases": [
+            "Bekalta",
+            "Bekalta nord",
+            "Délégation Bekalta",
+            "البقالطة الشمالية",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.6172948,
+          "lng": 10.9891336,
+          "delegationId": 601,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:558814858"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7111930",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111930",
+          "sourceId": "isie-local-sectors-2023-baghdadi-review",
+          "name": "البغدادي",
+          "aliases": [
+            "Baghdadi"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.567693,
+          "lng": 11.010783,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.989083,
+            35.552231,
+            11.03094,
+            35.583394
+          ],
+          "areaKm2": 8.50938915410889,
+          "pickerGroupId": "osm:relation:7111930",
+          "offset": 746624,
+          "length": 2092
+        },
+        "packedGeometrySha256": "14a057c97da11378123fef351e4af51f5978ec6e73b6913a9290a08b0e28429b"
+      },
+      {
+        "id": "osm:relation:7111931",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111931",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "name": "البقالطة الجنوبية",
+          "aliases": [
+            "Bekalta Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.596024,
+          "lng": 10.994798,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.979602,
+            35.573589,
+            11.018024,
+            35.618857
+          ],
+          "areaKm2": 11.503088896724025,
+          "pickerGroupId": "osm:relation:7111931",
+          "offset": 748716,
+          "length": 1540
+        },
+        "packedGeometrySha256": "3e05a96b1d55481089a5cf62e1859c5006bb287c7c720c642c3d9813c613e6b0"
+      },
+      {
+        "id": "osm:relation:7111932",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111932",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "name": "البقالطة الشرقية",
+          "aliases": [
+            "Bekalta est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.603396,
+          "lng": 11.028329,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            11.005379,
+            35.575003,
+            11.047963,
+            35.63204
+          ],
+          "areaKm2": 14.027324867108453,
+          "pickerGroupId": "osm:relation:7111932",
+          "offset": 750256,
+          "length": 1756
+        },
+        "packedGeometrySha256": "81e155af4f0c947f93d73ecfa40583f8e7e942f6119a662c09e7f35ecc5fbc60"
+      },
+      {
+        "id": "osm:relation:7111933",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111933",
+          "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+          "name": "البقالطة الشمالية",
+          "aliases": [
+            "Bekalta nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.626695,
+          "lng": 11.010987,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.973385,
+            35.613826,
+            11.036008,
+            35.63977
+          ],
+          "areaKm2": 9.297071014496208,
+          "pickerGroupId": "osm:relation:7111933",
+          "offset": 752012,
+          "length": 2028
+        },
+        "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0"
+      }
+    ],
+    "sourceNamePeers": {
+      "original": [
+        {
+          "id": "osm:node:558814858",
+          "kind": "village",
+          "tags": {
+            "addr:city": "Bekalta",
+            "addr:governorate": "Monastir",
+            "addr:postcode": "5009",
+            "name": "البقالطة",
+            "name:ar": "البقالطة",
+            "name:en": "Bekalta",
+            "name:fr": "Bekalta",
+            "place": "village",
+            "population": "17850",
+            "wikidata": "Q1203138",
+            "wikimedia_commons": "Category:Bekalta",
+            "wikipedia": "en:Bekalta"
+          },
+          "sourceId": null,
+          "geometrySha256": "a22710784f96752df277c6a38151150e2ade7405df9a5d70950339f333e36ebc",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7154971",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bekalta",
+            "boundary": "administrative",
+            "name": "معتمدية البقالطة",
+            "name:ar": "معتمدية البقالطة",
+            "name:fr": "Délégation Bekalta",
+            "ref:tn:codegeo": "3259",
+            "ref:tn:hasc_2": "TN.MS.BK",
+            "wikidata": "Q12243794"
+          },
+          "sourceId": null,
+          "geometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4",
+          "rawPresent": false
+        }
+      ],
+      "effective": [
+        {
+          "id": "osm:node:558814858",
+          "kind": "village",
+          "tags": {
+            "addr:city": "Bekalta",
+            "addr:governorate": "Monastir",
+            "addr:postcode": "5009",
+            "name": "البقالطة",
+            "name:ar": "البقالطة",
+            "name:en": "Bekalta",
+            "name:fr": "Bekalta",
+            "place": "village",
+            "population": "17850",
+            "wikidata": "Q1203138",
+            "wikimedia_commons": "Category:Bekalta",
+            "wikipedia": "en:Bekalta"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "a22710784f96752df277c6a38151150e2ade7405df9a5d70950339f333e36ebc",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7154971",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bekalta",
+            "boundary": "administrative",
+            "name": "معتمدية البقالطة",
+            "name:ar": "معتمدية البقالطة",
+            "name:fr": "Délégation Bekalta",
+            "ref:tn:codegeo": "3259",
+            "ref:tn:hasc_2": "TN.MS.BK",
+            "wikidata": "Q12243794"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4",
+          "rawPresent": false
+        }
+      ]
+    },
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:558814858",
+        "osm:relation:7154971"
+      ],
+      "effective": [
+        "osm:node:558814858",
+        "osm:relation:7154971"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1434954": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7111930": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111931": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111932": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111933": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7154971": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "packedCoordinateContextMembership": {
+      "osm:relation:7111930": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "osm:relation:7111931": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "osm:relation:7111932": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "osm:relation:7111933": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      }
+    },
+    "completeAdministrativeContainers": {
+      "original": {
+        "point": [
+          "osm:relation:1434954",
+          "osm:relation:7111933",
+          "osm:relation:7154971"
+        ],
+        "base": [
+          "osm:relation:1434954",
+          "osm:relation:7111933",
+          "osm:relation:7154971"
+        ]
+      },
+      "effective": {
+        "point": [
+          "osm:relation:1434954",
+          "osm:relation:7111933",
+          "osm:relation:7154971"
+        ],
+        "base": [
+          "osm:relation:1434954",
+          "osm:relation:7111933",
+          "osm:relation:7154971"
+        ]
+      }
+    },
+    "allOriginalEffectiveContainersIncluded": true,
+    "expectedBeforeGroups": {
+      "osm:node:558814858": [
+        "osm:node:558814858"
+      ],
+      "osm:relation:7111930": [
+        "osm:relation:7111930"
+      ],
+      "osm:relation:7111931": [
+        "osm:relation:7111931"
+      ],
+      "osm:relation:7111932": [
+        "osm:relation:7111932"
+      ],
+      "osm:relation:7111933": [
+        "osm:relation:7111933"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7111930": [
+        "osm:relation:7111930"
+      ],
+      "osm:relation:7111931": [
+        "osm:relation:7111931"
+      ],
+      "osm:relation:7111932": [
+        "osm:relation:7111932"
+      ],
+      "osm:relation:7111933": [
+        "osm:relation:7111933"
+      ],
+      "delegation:601": [
+        "osm:node:558814858"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "expectedCoordinateCorrections": [],
+    "referenceGuards": {
+      "point": {
+        "coordinate": {
+          "lat": 35.6172948,
+          "lng": 10.9891336
+        },
+        "ranking": [
+          {
+            "id": 601,
+            "kilometers": 0.554653271655194
+          },
+          {
+            "id": 594,
+            "kilometers": 3.4345692695950003
+          },
+          {
+            "id": 598,
+            "kilometers": 9.070974447520772
+          },
+          {
+            "id": 602,
+            "kilometers": 10.512004444341867
+          },
+          {
+            "id": 600,
+            "kilometers": 10.704792326191775
+          },
+          {
+            "id": 618,
+            "kilometers": 14.157439449740526
+          },
+          {
+            "id": 599,
+            "kilometers": 15.17238285277341
+          },
+          {
+            "id": 597,
+            "kilometers": 17.308233510603188
+          },
+          {
+            "id": 1084,
+            "kilometers": 17.53378341463102
+          },
+          {
+            "id": 603,
+            "kilometers": 19.640680932654497
+          },
+          {
+            "id": 595,
+            "kilometers": 20.75858403998899
+          },
+          {
+            "id": 423,
+            "kilometers": 20.826379144704383
+          },
+          {
+            "id": 637,
+            "kilometers": 22.91565656396996
+          },
+          {
+            "id": 596,
+            "kilometers": 23.10588159024068
+          },
+          {
+            "id": 426,
+            "kilometers": 27.112957141323765
+          },
+          {
+            "id": 427,
+            "kilometers": 28.531707468107125
+          },
+          {
+            "id": 592,
+            "kilometers": 28.667537826661007
+          },
+          {
+            "id": 593,
+            "kilometers": 29.821440404557244
+          },
+          {
+            "id": 440,
+            "kilometers": 39.02382229679964
+          },
+          {
+            "id": 621,
+            "kilometers": 39.32659720306125
+          },
+          {
+            "id": 619,
+            "kilometers": 43.404491631697844
+          },
+          {
+            "id": 438,
+            "kilometers": 43.935769876879064
+          },
+          {
+            "id": 424,
+            "kilometers": 44.01248745483002
+          },
+          {
+            "id": 443,
+            "kilometers": 44.970397181186314
+          },
+          {
+            "id": 437,
+            "kilometers": 47.30478779012377
+          },
+          {
+            "id": 425,
+            "kilometers": 49.74380263459699
+          },
+          {
+            "id": 439,
+            "kilometers": 50.00842564348371
+          },
+          {
+            "id": 428,
+            "kilometers": 50.097841741647116
+          },
+          {
+            "id": 541,
+            "kilometers": 59.38958825233582
+          },
+          {
+            "id": 436,
+            "kilometers": 60.089199942107236
+          },
+          {
+            "id": 441,
+            "kilometers": 60.57382532570253
+          },
+          {
+            "id": 431,
+            "kilometers": 62.224543217853785
+          },
+          {
+            "id": 435,
+            "kilometers": 63.025953410680195
+          },
+          {
+            "id": 536,
+            "kilometers": 65.17244798416108
+          },
+          {
+            "id": 429,
+            "kilometers": 65.93758879301156
+          },
+          {
+            "id": 545,
+            "kilometers": 70.89471475215085
+          },
+          {
+            "id": 442,
+            "kilometers": 71.05585359876216
+          },
+          {
+            "id": 434,
+            "kilometers": 79.59009245346954
+          },
+          {
+            "id": 630,
+            "kilometers": 80.95787992762976
+          },
+          {
+            "id": 430,
+            "kilometers": 85.09417249797897
+          },
+          {
+            "id": 528,
+            "kilometers": 88.35941119225048
+          },
+          {
+            "id": 433,
+            "kilometers": 89.65672544997061
+          },
+          {
+            "id": 542,
+            "kilometers": 91.22020177516235
+          },
+          {
+            "id": 547,
+            "kilometers": 92.94619351232394
+          },
+          {
+            "id": 548,
+            "kilometers": 93.27696041373488
+          },
+          {
+            "id": 461,
+            "kilometers": 93.82418239953977
+          },
+          {
+            "id": 521,
+            "kilometers": 94.04210658318219
+          },
+          {
+            "id": 460,
+            "kilometers": 95.57259207792262
+          },
+          {
+            "id": 468,
+            "kilometers": 95.94259434031308
+          },
+          {
+            "id": 623,
+            "kilometers": 95.97377558545487
+          },
+          {
+            "id": 522,
+            "kilometers": 96.13522784402214
+          },
+          {
+            "id": 412,
+            "kilometers": 98.43298658845208
+          },
+          {
+            "id": 632,
+            "kilometers": 99.67777183074135
+          },
+          {
+            "id": 413,
+            "kilometers": 100.04073429335592
+          },
+          {
+            "id": 543,
+            "kilometers": 100.98544451207141
+          },
+          {
+            "id": 409,
+            "kilometers": 102.6152466343108
+          },
+          {
+            "id": 529,
+            "kilometers": 103.04686602314709
+          },
+          {
+            "id": 544,
+            "kilometers": 105.47972125034715
+          },
+          {
+            "id": 540,
+            "kilometers": 105.97559103909275
+          },
+          {
+            "id": 549,
+            "kilometers": 106.45774426489182
+          },
+          {
+            "id": 459,
+            "kilometers": 107.67479424695922
+          },
+          {
+            "id": 527,
+            "kilometers": 108.95915410391821
+          },
+          {
+            "id": 463,
+            "kilometers": 109.34489487749723
+          },
+          {
+            "id": 616,
+            "kilometers": 115.86354020349513
+          },
+          {
+            "id": 512,
+            "kilometers": 117.46803158988145
+          },
+          {
+            "id": 464,
+            "kilometers": 117.98464038804393
+          },
+          {
+            "id": 523,
+            "kilometers": 118.33485215177924
+          },
+          {
+            "id": 467,
+            "kilometers": 120.56622073571833
+          },
+          {
+            "id": 457,
+            "kilometers": 124.10246875366286
+          },
+          {
+            "id": 458,
+            "kilometers": 124.27614148516889
+          },
+          {
+            "id": 538,
+            "kilometers": 126.85953835390092
+          },
+          {
+            "id": 411,
+            "kilometers": 128.18060692095614
+          },
+          {
+            "id": 524,
+            "kilometers": 128.77056540277033
+          },
+          {
+            "id": 465,
+            "kilometers": 129.23564377040705
+          },
+          {
+            "id": 456,
+            "kilometers": 129.30047562905457
+          },
+          {
+            "id": 537,
+            "kilometers": 129.5731075735118
+          },
+          {
+            "id": 525,
+            "kilometers": 129.58529655716907
+          },
+          {
+            "id": 526,
+            "kilometers": 133.17122928847098
+          },
+          {
+            "id": 462,
+            "kilometers": 133.46210676360587
+          },
+          {
+            "id": 452,
+            "kilometers": 134.46210964789313
+          },
+          {
+            "id": 444,
+            "kilometers": 134.65699560912776
+          },
+          {
+            "id": 410,
+            "kilometers": 136.70047347785263
+          },
+          {
+            "id": 455,
+            "kilometers": 136.96146265853645
+          },
+          {
+            "id": 451,
+            "kilometers": 137.3474035858009
+          },
+          {
+            "id": 453,
+            "kilometers": 138.0573206495608
+          },
+          {
+            "id": 504,
+            "kilometers": 138.1446172350139
+          },
+          {
+            "id": 417,
+            "kilometers": 138.60961731651872
+          },
+          {
+            "id": 445,
+            "kilometers": 139.56212784269204
+          },
+          {
+            "id": 450,
+            "kilometers": 139.60639113988884
+          },
+          {
+            "id": 469,
+            "kilometers": 140.14521924432267
+          },
+          {
+            "id": 447,
+            "kilometers": 140.5404709529227
+          },
+          {
+            "id": 454,
+            "kilometers": 142.02841762719638
+          },
+          {
+            "id": 446,
+            "kilometers": 142.48784932738582
+          },
+          {
+            "id": 449,
+            "kilometers": 143.13250029599192
+          },
+          {
+            "id": 539,
+            "kilometers": 143.25847838965433
+          },
+          {
+            "id": 622,
+            "kilometers": 143.5949935032583
+          },
+          {
+            "id": 448,
+            "kilometers": 144.77507068927588
+          },
+          {
+            "id": 400,
+            "kilometers": 144.81698429904657
+          },
+          {
+            "id": 401,
+            "kilometers": 146.22783177408118
+          },
+          {
+            "id": 388,
+            "kilometers": 146.95177409789318
+          },
+          {
+            "id": 420,
+            "kilometers": 147.10551662586548
+          },
+          {
+            "id": 399,
+            "kilometers": 147.27558809972533
+          },
+          {
+            "id": 506,
+            "kilometers": 147.41918091687012
+          },
+          {
+            "id": 414,
+            "kilometers": 148.23401558689602
+          },
+          {
+            "id": 406,
+            "kilometers": 148.47398892884527
+          },
+          {
+            "id": 387,
+            "kilometers": 149.56035802422036
+          },
+          {
+            "id": 402,
+            "kilometers": 149.68366950779824
+          },
+          {
+            "id": 513,
+            "kilometers": 149.7533124089314
+          },
+          {
+            "id": 404,
+            "kilometers": 150.062393380838
+          },
+          {
+            "id": 405,
+            "kilometers": 150.45103060791305
+          },
+          {
+            "id": 403,
+            "kilometers": 150.51547858884237
+          },
+          {
+            "id": 615,
+            "kilometers": 150.78242825655497
+          },
+          {
+            "id": 628,
+            "kilometers": 150.88987359673152
+          },
+          {
+            "id": 398,
+            "kilometers": 151.21320222322308
+          },
+          {
+            "id": 395,
+            "kilometers": 151.4554449536567
+          },
+          {
+            "id": 397,
+            "kilometers": 151.78152630817178
+          },
+          {
+            "id": 396,
+            "kilometers": 151.97287486940962
+          },
+          {
+            "id": 386,
+            "kilometers": 152.35050166973502
+          },
+          {
+            "id": 389,
+            "kilometers": 152.47419820745668
+          },
+          {
+            "id": 394,
+            "kilometers": 153.02709805321382
+          },
+          {
+            "id": 391,
+            "kilometers": 153.24413716976102
+          },
+          {
+            "id": 555,
+            "kilometers": 153.8589334491853
+          },
+          {
+            "id": 390,
+            "kilometers": 154.11553486055544
+          },
+          {
+            "id": 532,
+            "kilometers": 154.58057965182437
+          },
+          {
+            "id": 617,
+            "kilometers": 154.84542364064842
+          },
+          {
+            "id": 393,
+            "kilometers": 154.8505318591134
+          },
+          {
+            "id": 633,
+            "kilometers": 155.2186213322025
+          },
+          {
+            "id": 631,
+            "kilometers": 155.67773501619985
+          },
+          {
+            "id": 511,
+            "kilometers": 155.68719009568102
+          },
+          {
+            "id": 392,
+            "kilometers": 155.87067941656457
+          },
+          {
+            "id": 519,
+            "kilometers": 156.10055800240178
+          },
+          {
+            "id": 534,
+            "kilometers": 156.71863210766097
+          },
+          {
+            "id": 552,
+            "kilometers": 157.11823980611857
+          },
+          {
+            "id": 554,
+            "kilometers": 157.3522369551364
+          },
+          {
+            "id": 533,
+            "kilometers": 159.21750717722
+          },
+          {
+            "id": 466,
+            "kilometers": 159.3205128027419
+          },
+          {
+            "id": 553,
+            "kilometers": 160.72230137859486
+          },
+          {
+            "id": 419,
+            "kilometers": 162.24567389578436
+          },
+          {
+            "id": 507,
+            "kilometers": 162.66150174235796
+          },
+          {
+            "id": 415,
+            "kilometers": 163.49991681181865
+          },
+          {
+            "id": 531,
+            "kilometers": 164.18445675198427
+          },
+          {
+            "id": 1522,
+            "kilometers": 165.78659676633694
+          },
+          {
+            "id": 535,
+            "kilometers": 166.7877531579415
+          },
+          {
+            "id": 550,
+            "kilometers": 167.20186717434498
+          },
+          {
+            "id": 551,
+            "kilometers": 167.23811721222904
+          },
+          {
+            "id": 520,
+            "kilometers": 168.14483062887402
+          },
+          {
+            "id": 418,
+            "kilometers": 168.51834518302212
+          },
+          {
+            "id": 546,
+            "kilometers": 168.89043923054555
+          },
+          {
+            "id": 556,
+            "kilometers": 169.1861209840137
+          },
+          {
+            "id": 505,
+            "kilometers": 169.59269805261454
+          },
+          {
+            "id": 517,
+            "kilometers": 173.59168864956425
+          },
+          {
+            "id": 576,
+            "kilometers": 173.83955022953057
+          },
+          {
+            "id": 581,
+            "kilometers": 174.43352230004302
+          },
+          {
+            "id": 416,
+            "kilometers": 174.71230444863326
+          },
+          {
+            "id": 575,
+            "kilometers": 174.7511810974535
+          },
+          {
+            "id": 530,
+            "kilometers": 178.62650195014356
+          },
+          {
+            "id": 422,
+            "kilometers": 178.97824206576104
+          },
+          {
+            "id": 508,
+            "kilometers": 179.7096377811814
+          },
+          {
+            "id": 567,
+            "kilometers": 182.568593505815
+          },
+          {
+            "id": 518,
+            "kilometers": 183.06649477729138
+          },
+          {
+            "id": 510,
+            "kilometers": 183.5210955416407
+          },
+          {
+            "id": 584,
+            "kilometers": 183.62029843146996
+          },
+          {
+            "id": 421,
+            "kilometers": 184.8030551458163
+          },
+          {
+            "id": 563,
+            "kilometers": 186.79911762122774
+          },
+          {
+            "id": 571,
+            "kilometers": 187.19782555295828
+          },
+          {
+            "id": 570,
+            "kilometers": 187.4630968317783
+          },
+          {
+            "id": 509,
+            "kilometers": 187.8735506577542
+          },
+          {
+            "id": 583,
+            "kilometers": 191.9076798644849
+          },
+          {
+            "id": 579,
+            "kilometers": 191.92830454446636
+          },
+          {
+            "id": 572,
+            "kilometers": 191.93909951396924
+          },
+          {
+            "id": 566,
+            "kilometers": 193.12810382829008
+          },
+          {
+            "id": 494,
+            "kilometers": 194.10723034995158
+          },
+          {
+            "id": 564,
+            "kilometers": 194.43940303863636
+          },
+          {
+            "id": 516,
+            "kilometers": 196.84858814324394
+          },
+          {
+            "id": 559,
+            "kilometers": 197.99301229854555
+          },
+          {
+            "id": 582,
+            "kilometers": 197.99977579160407
+          },
+          {
+            "id": 590,
+            "kilometers": 198.09530064539192
+          },
+          {
+            "id": 609,
+            "kilometers": 198.14473768218576
+          },
+          {
+            "id": 569,
+            "kilometers": 199.54459871483445
+          },
+          {
+            "id": 1021,
+            "kilometers": 199.75159065091634
+          },
+          {
+            "id": 492,
+            "kilometers": 200.97106119704867
+          },
+          {
+            "id": 635,
+            "kilometers": 201.38980790820997
+          },
+          {
+            "id": 491,
+            "kilometers": 202.13424656907694
+          },
+          {
+            "id": 562,
+            "kilometers": 202.35077408371654
+          },
+          {
+            "id": 629,
+            "kilometers": 203.7314146460881
+          },
+          {
+            "id": 565,
+            "kilometers": 203.859063960451
+          },
+          {
+            "id": 561,
+            "kilometers": 204.2180617589788
+          },
+          {
+            "id": 558,
+            "kilometers": 204.4472120462251
+          },
+          {
+            "id": 1019,
+            "kilometers": 204.7298393775894
+          },
+          {
+            "id": 1025,
+            "kilometers": 205.62972910267337
+          },
+          {
+            "id": 560,
+            "kilometers": 207.8984711969104
+          },
+          {
+            "id": 568,
+            "kilometers": 208.40915201860523
+          },
+          {
+            "id": 612,
+            "kilometers": 208.58353088829207
+          },
+          {
+            "id": 620,
+            "kilometers": 209.4706971860185
+          },
+          {
+            "id": 634,
+            "kilometers": 209.52664123340364
+          },
+          {
+            "id": 573,
+            "kilometers": 209.96160839076958
+          },
+          {
+            "id": 493,
+            "kilometers": 210.64181104444302
+          },
+          {
+            "id": 499,
+            "kilometers": 212.19674239029098
+          },
+          {
+            "id": 515,
+            "kilometers": 213.1788853469903
+          },
+          {
+            "id": 589,
+            "kilometers": 213.7184976370498
+          },
+          {
+            "id": 585,
+            "kilometers": 213.98403548813783
+          },
+          {
+            "id": 636,
+            "kilometers": 214.88319848531873
+          },
+          {
+            "id": 578,
+            "kilometers": 215.94768512709695
+          },
+          {
+            "id": 587,
+            "kilometers": 216.97796443054278
+          },
+          {
+            "id": 1024,
+            "kilometers": 220.72432605269015
+          },
+          {
+            "id": 627,
+            "kilometers": 221.54840992704064
+          },
+          {
+            "id": 503,
+            "kilometers": 221.80876976551957
+          },
+          {
+            "id": 586,
+            "kilometers": 221.92381751940033
+          },
+          {
+            "id": 610,
+            "kilometers": 223.345924546559
+          },
+          {
+            "id": 557,
+            "kilometers": 224.22495978117288
+          },
+          {
+            "id": 514,
+            "kilometers": 228.47955153397632
+          },
+          {
+            "id": 574,
+            "kilometers": 230.05286911132924
+          },
+          {
+            "id": 1523,
+            "kilometers": 230.73995234850378
+          },
+          {
+            "id": 1020,
+            "kilometers": 231.46657516087492
+          },
+          {
+            "id": 577,
+            "kilometers": 231.77129773690237
+          },
+          {
+            "id": 611,
+            "kilometers": 233.85453285207777
+          },
+          {
+            "id": 1023,
+            "kilometers": 235.02573066207503
+          },
+          {
+            "id": 490,
+            "kilometers": 235.33321971284516
+          },
+          {
+            "id": 502,
+            "kilometers": 235.9972619116212
+          },
+          {
+            "id": 500,
+            "kilometers": 238.81555806156456
+          },
+          {
+            "id": 588,
+            "kilometers": 239.719499948598
+          },
+          {
+            "id": 496,
+            "kilometers": 239.79193452284647
+          },
+          {
+            "id": 638,
+            "kilometers": 240.59581541391825
+          },
+          {
+            "id": 608,
+            "kilometers": 240.76865646895803
+          },
+          {
+            "id": 580,
+            "kilometers": 244.2990303366215
+          },
+          {
+            "id": 498,
+            "kilometers": 244.79597484890746
+          },
+          {
+            "id": 591,
+            "kilometers": 246.0497671906776
+          },
+          {
+            "id": 501,
+            "kilometers": 246.36922646000383
+          },
+          {
+            "id": 1022,
+            "kilometers": 248.6193951082534
+          },
+          {
+            "id": 497,
+            "kilometers": 248.97742067603724
+          },
+          {
+            "id": 607,
+            "kilometers": 253.77413821873083
+          },
+          {
+            "id": 626,
+            "kilometers": 257.08449596986503
+          },
+          {
+            "id": 489,
+            "kilometers": 273.4842039155396
+          },
+          {
+            "id": 474,
+            "kilometers": 275.7248964171299
+          },
+          {
+            "id": 606,
+            "kilometers": 275.9224847291636
+          },
+          {
+            "id": 488,
+            "kilometers": 276.21926943091773
+          },
+          {
+            "id": 604,
+            "kilometers": 277.37252475980256
+          },
+          {
+            "id": 482,
+            "kilometers": 281.45154098302487
+          },
+          {
+            "id": 483,
+            "kilometers": 282.765889588946
+          },
+          {
+            "id": 473,
+            "kilometers": 290.5346746253963
+          },
+          {
+            "id": 472,
+            "kilometers": 291.92156225783765
+          },
+          {
+            "id": 605,
+            "kilometers": 293.44696020725127
+          },
+          {
+            "id": 484,
+            "kilometers": 300.1062225114546
+          },
+          {
+            "id": 624,
+            "kilometers": 302.8963232730291
+          },
+          {
+            "id": 1524,
+            "kilometers": 306.14415740537953
+          },
+          {
+            "id": 480,
+            "kilometers": 310.1306965325766
+          },
+          {
+            "id": 478,
+            "kilometers": 312.21171633708815
+          },
+          {
+            "id": 481,
+            "kilometers": 314.6767910393157
+          },
+          {
+            "id": 625,
+            "kilometers": 321.9517815814179
+          },
+          {
+            "id": 485,
+            "kilometers": 328.1220056411018
+          },
+          {
+            "id": 477,
+            "kilometers": 344.13562500517537
+          },
+          {
+            "id": 479,
+            "kilometers": 369.8136178765223
+          },
+          {
+            "id": 471,
+            "kilometers": 370.77945456405644
+          },
+          {
+            "id": 487,
+            "kilometers": 372.37662331724016
+          },
+          {
+            "id": 486,
+            "kilometers": 387.2022547299368
+          },
+          {
+            "id": 470,
+            "kilometers": 401.64998530574354
+          },
+          {
+            "id": 476,
+            "kilometers": 466.70455398649233
+          },
+          {
+            "id": 475,
+            "kilometers": 611.4236158210906
+          }
+        ],
+        "nearest": {
+          "id": 601,
+          "kilometers": 0.554653271655194
+        },
+        "runnerUp": {
+          "id": 594,
+          "kilometers": 3.4345692695950003
+        }
+      },
+      "base": {
+        "coordinate": {
+          "lat": 35.619,
+          "lng": 10.9949
+        },
+        "ranking": [
+          {
+            "id": 601,
+            "kilometers": 0.0
+          },
+          {
+            "id": 594,
+            "kilometers": 3.640008279861086
+          },
+          {
+            "id": 598,
+            "kilometers": 9.559955433384498
+          },
+          {
+            "id": 602,
+            "kilometers": 10.941125404732079
+          },
+          {
+            "id": 600,
+            "kilometers": 11.045870226937145
+          },
+          {
+            "id": 618,
+            "kilometers": 14.092308238194503
+          },
+          {
+            "id": 599,
+            "kilometers": 15.553221941507948
+          },
+          {
+            "id": 1084,
+            "kilometers": 17.58347065027984
+          },
+          {
+            "id": 597,
+            "kilometers": 17.862754625895953
+          },
+          {
+            "id": 603,
+            "kilometers": 20.03641565487368
+          },
+          {
+            "id": 423,
+            "kilometers": 21.020518950642227
+          },
+          {
+            "id": 595,
+            "kilometers": 21.266633179227938
+          },
+          {
+            "id": 637,
+            "kilometers": 23.15074159245709
+          },
+          {
+            "id": 596,
+            "kilometers": 23.653114222411475
+          },
+          {
+            "id": 426,
+            "kilometers": 27.39265436862882
+          },
+          {
+            "id": 592,
+            "kilometers": 29.038078543230714
+          },
+          {
+            "id": 427,
+            "kilometers": 29.060466442328224
+          },
+          {
+            "id": 593,
+            "kilometers": 30.248376580908285
+          },
+          {
+            "id": 440,
+            "kilometers": 39.45735870725243
+          },
+          {
+            "id": 621,
+            "kilometers": 39.63831860154755
+          },
+          {
+            "id": 619,
+            "kilometers": 43.86378585305894
+          },
+          {
+            "id": 424,
+            "kilometers": 44.063686175317784
+          },
+          {
+            "id": 438,
+            "kilometers": 44.232184581871486
+          },
+          {
+            "id": 443,
+            "kilometers": 45.322408848671536
+          },
+          {
+            "id": 437,
+            "kilometers": 47.606348109251975
+          },
+          {
+            "id": 425,
+            "kilometers": 49.94478652211728
+          },
+          {
+            "id": 439,
+            "kilometers": 50.32794629103967
+          },
+          {
+            "id": 428,
+            "kilometers": 50.62811372828225
+          },
+          {
+            "id": 541,
+            "kilometers": 59.76405598774284
+          },
+          {
+            "id": 436,
+            "kilometers": 60.37671734647585
+          },
+          {
+            "id": 441,
+            "kilometers": 61.06979951980148
+          },
+          {
+            "id": 431,
+            "kilometers": 62.77486655046107
+          },
+          {
+            "id": 435,
+            "kilometers": 63.252049381594325
+          },
+          {
+            "id": 536,
+            "kilometers": 65.42230025789239
+          },
+          {
+            "id": 429,
+            "kilometers": 66.47607242279305
+          },
+          {
+            "id": 545,
+            "kilometers": 71.14529194864683
+          },
+          {
+            "id": 442,
+            "kilometers": 71.41603728493061
+          },
+          {
+            "id": 434,
+            "kilometers": 79.81381766245198
+          },
+          {
+            "id": 630,
+            "kilometers": 81.46073212239223
+          },
+          {
+            "id": 430,
+            "kilometers": 85.62816075129375
+          },
+          {
+            "id": 528,
+            "kilometers": 88.91254190845062
+          },
+          {
+            "id": 433,
+            "kilometers": 89.78598490903018
+          },
+          {
+            "id": 542,
+            "kilometers": 91.69146360234811
+          },
+          {
+            "id": 547,
+            "kilometers": 93.24883095941617
+          },
+          {
+            "id": 548,
+            "kilometers": 93.56901291896561
+          },
+          {
+            "id": 461,
+            "kilometers": 93.8364016110517
+          },
+          {
+            "id": 521,
+            "kilometers": 94.45382960796228
+          },
+          {
+            "id": 460,
+            "kilometers": 95.49021346385994
+          },
+          {
+            "id": 468,
+            "kilometers": 95.8702510229131
+          },
+          {
+            "id": 623,
+            "kilometers": 95.91319710399532
+          },
+          {
+            "id": 522,
+            "kilometers": 96.65544022962737
+          },
+          {
+            "id": 412,
+            "kilometers": 98.75094166713646
+          },
+          {
+            "id": 632,
+            "kilometers": 99.97362383869418
+          },
+          {
+            "id": 413,
+            "kilometers": 100.29445597194874
+          },
+          {
+            "id": 543,
+            "kilometers": 101.02424998380195
+          },
+          {
+            "id": 409,
+            "kilometers": 102.80808168960978
+          },
+          {
+            "id": 529,
+            "kilometers": 103.58877667447037
+          },
+          {
+            "id": 544,
+            "kilometers": 105.62495387801285
+          },
+          {
+            "id": 540,
+            "kilometers": 106.35777696486089
+          },
+          {
+            "id": 549,
+            "kilometers": 106.76881003739145
+          },
+          {
+            "id": 459,
+            "kilometers": 107.54342833283538
+          },
+          {
+            "id": 463,
+            "kilometers": 109.35536451888491
+          },
+          {
+            "id": 527,
+            "kilometers": 109.51181062789671
+          },
+          {
+            "id": 616,
+            "kilometers": 116.06190767579213
+          },
+          {
+            "id": 464,
+            "kilometers": 118.00006540273357
+          },
+          {
+            "id": 512,
+            "kilometers": 118.01408032180167
+          },
+          {
+            "id": 523,
+            "kilometers": 118.85263555203323
+          },
+          {
+            "id": 467,
+            "kilometers": 120.54457067885693
+          },
+          {
+            "id": 457,
+            "kilometers": 123.96564278092393
+          },
+          {
+            "id": 458,
+            "kilometers": 124.2491293763793
+          },
+          {
+            "id": 538,
+            "kilometers": 127.34035927840054
+          },
+          {
+            "id": 411,
+            "kilometers": 128.44981456106305
+          },
+          {
+            "id": 456,
+            "kilometers": 129.10441928180916
+          },
+          {
+            "id": 465,
+            "kilometers": 129.2392921102685
+          },
+          {
+            "id": 524,
+            "kilometers": 129.29116730980246
+          },
+          {
+            "id": 537,
+            "kilometers": 129.93509941721803
+          },
+          {
+            "id": 525,
+            "kilometers": 130.05894578809668
+          },
+          {
+            "id": 462,
+            "kilometers": 133.40786857681053
+          },
+          {
+            "id": 526,
+            "kilometers": 133.71780148162054
+          },
+          {
+            "id": 452,
+            "kilometers": 134.5045021793625
+          },
+          {
+            "id": 444,
+            "kilometers": 134.7396219578505
+          },
+          {
+            "id": 455,
+            "kilometers": 136.73763744888578
+          },
+          {
+            "id": 410,
+            "kilometers": 136.91412571340356
+          },
+          {
+            "id": 451,
+            "kilometers": 137.39872363915248
+          },
+          {
+            "id": 453,
+            "kilometers": 138.12076387011433
+          },
+          {
+            "id": 504,
+            "kilometers": 138.67428145801483
+          },
+          {
+            "id": 417,
+            "kilometers": 139.0173344479021
+          },
+          {
+            "id": 450,
+            "kilometers": 139.66296031062558
+          },
+          {
+            "id": 445,
+            "kilometers": 139.681193579031
+          },
+          {
+            "id": 469,
+            "kilometers": 139.91764499580108
+          },
+          {
+            "id": 447,
+            "kilometers": 140.63443028343121
+          },
+          {
+            "id": 454,
+            "kilometers": 142.10473877246042
+          },
+          {
+            "id": 446,
+            "kilometers": 142.59715368874583
+          },
+          {
+            "id": 449,
+            "kilometers": 143.19535273047032
+          },
+          {
+            "id": 622,
+            "kilometers": 143.6749759035088
+          },
+          {
+            "id": 539,
+            "kilometers": 143.68211642064932
+          },
+          {
+            "id": 448,
+            "kilometers": 144.8499973120604
+          },
+          {
+            "id": 400,
+            "kilometers": 144.9103036602797
+          },
+          {
+            "id": 401,
+            "kilometers": 146.3119296408876
+          },
+          {
+            "id": 388,
+            "kilometers": 146.9962611160634
+          },
+          {
+            "id": 399,
+            "kilometers": 147.36468851358688
+          },
+          {
+            "id": 420,
+            "kilometers": 147.43306848858043
+          },
+          {
+            "id": 506,
+            "kilometers": 147.97151754532157
+          },
+          {
+            "id": 406,
+            "kilometers": 148.5140160749486
+          },
+          {
+            "id": 414,
+            "kilometers": 148.71958252468193
+          },
+          {
+            "id": 387,
+            "kilometers": 149.59135192752592
+          },
+          {
+            "id": 402,
+            "kilometers": 149.77310597369512
+          },
+          {
+            "id": 404,
+            "kilometers": 150.14857882251414
+          },
+          {
+            "id": 513,
+            "kilometers": 150.30007606268677
+          },
+          {
+            "id": 405,
+            "kilometers": 150.5424152081358
+          },
+          {
+            "id": 403,
+            "kilometers": 150.60318897184874
+          },
+          {
+            "id": 615,
+            "kilometers": 150.86532694422155
+          },
+          {
+            "id": 398,
+            "kilometers": 151.32375333302352
+          },
+          {
+            "id": 628,
+            "kilometers": 151.44256172859087
+          },
+          {
+            "id": 395,
+            "kilometers": 151.5412301892064
+          },
+          {
+            "id": 397,
+            "kilometers": 151.88470639404446
+          },
+          {
+            "id": 396,
+            "kilometers": 152.07121097638776
+          },
+          {
+            "id": 386,
+            "kilometers": 152.3789419016034
+          },
+          {
+            "id": 389,
+            "kilometers": 152.54811482204266
+          },
+          {
+            "id": 394,
+            "kilometers": 153.12202725457425
+          },
+          {
+            "id": 391,
+            "kilometers": 153.33180028527863
+          },
+          {
+            "id": 555,
+            "kilometers": 153.99996533984387
+          },
+          {
+            "id": 390,
+            "kilometers": 154.19240521410757
+          },
+          {
+            "id": 532,
+            "kilometers": 154.62617430313065
+          },
+          {
+            "id": 393,
+            "kilometers": 154.9446428981168
+          },
+          {
+            "id": 617,
+            "kilometers": 155.27019834218385
+          },
+          {
+            "id": 633,
+            "kilometers": 155.3272835453332
+          },
+          {
+            "id": 631,
+            "kilometers": 155.74608726329888
+          },
+          {
+            "id": 392,
+            "kilometers": 155.96270670181886
+          },
+          {
+            "id": 511,
+            "kilometers": 156.17875945230924
+          },
+          {
+            "id": 519,
+            "kilometers": 156.36626091830402
+          },
+          {
+            "id": 534,
+            "kilometers": 156.81620070974236
+          },
+          {
+            "id": 552,
+            "kilometers": 157.29886391934662
+          },
+          {
+            "id": 554,
+            "kilometers": 157.45633633781728
+          },
+          {
+            "id": 466,
+            "kilometers": 159.1256879459813
+          },
+          {
+            "id": 533,
+            "kilometers": 159.3098030955169
+          },
+          {
+            "id": 553,
+            "kilometers": 160.8362441761995
+          },
+          {
+            "id": 419,
+            "kilometers": 162.58853002128595
+          },
+          {
+            "id": 507,
+            "kilometers": 163.21537189297325
+          },
+          {
+            "id": 415,
+            "kilometers": 163.98056468707685
+          },
+          {
+            "id": 531,
+            "kilometers": 164.23100643969946
+          },
+          {
+            "id": 1522,
+            "kilometers": 166.33514697102
+          },
+          {
+            "id": 535,
+            "kilometers": 166.88795227365725
+          },
+          {
+            "id": 550,
+            "kilometers": 167.33998250066435
+          },
+          {
+            "id": 551,
+            "kilometers": 167.40626211572686
+          },
+          {
+            "id": 520,
+            "kilometers": 168.39777820455063
+          },
+          {
+            "id": 418,
+            "kilometers": 168.8892609335395
+          },
+          {
+            "id": 546,
+            "kilometers": 169.31584638129308
+          },
+          {
+            "id": 556,
+            "kilometers": 169.34751845650325
+          },
+          {
+            "id": 505,
+            "kilometers": 170.109083787773
+          },
+          {
+            "id": 517,
+            "kilometers": 173.89332583329792
+          },
+          {
+            "id": 576,
+            "kilometers": 174.36904814174397
+          },
+          {
+            "id": 581,
+            "kilometers": 174.9558993162305
+          },
+          {
+            "id": 416,
+            "kilometers": 175.22741575665853
+          },
+          {
+            "id": 575,
+            "kilometers": 175.30252926365242
+          },
+          {
+            "id": 530,
+            "kilometers": 178.68188773362124
+          },
+          {
+            "id": 422,
+            "kilometers": 179.39789879969382
+          },
+          {
+            "id": 508,
+            "kilometers": 180.26253359589177
+          },
+          {
+            "id": 567,
+            "kilometers": 182.6394368374766
+          },
+          {
+            "id": 518,
+            "kilometers": 183.41386792155353
+          },
+          {
+            "id": 510,
+            "kilometers": 184.04623459632873
+          },
+          {
+            "id": 584,
+            "kilometers": 184.06660350200275
+          },
+          {
+            "id": 421,
+            "kilometers": 185.1894973202625
+          },
+          {
+            "id": 563,
+            "kilometers": 186.82249727066824
+          },
+          {
+            "id": 571,
+            "kilometers": 187.24561824549656
+          },
+          {
+            "id": 570,
+            "kilometers": 187.52353168200585
+          },
+          {
+            "id": 509,
+            "kilometers": 188.42477504330293
+          },
+          {
+            "id": 572,
+            "kilometers": 192.01142242131604
+          },
+          {
+            "id": 583,
+            "kilometers": 192.39007297143132
+          },
+          {
+            "id": 579,
+            "kilometers": 192.4563456134577
+          },
+          {
+            "id": 566,
+            "kilometers": 193.18887075257712
+          },
+          {
+            "id": 494,
+            "kilometers": 194.32978546644136
+          },
+          {
+            "id": 564,
+            "kilometers": 194.47238222145248
+          },
+          {
+            "id": 516,
+            "kilometers": 197.19374464448344
+          },
+          {
+            "id": 559,
+            "kilometers": 198.15203030374357
+          },
+          {
+            "id": 582,
+            "kilometers": 198.5544134916259
+          },
+          {
+            "id": 590,
+            "kilometers": 198.56965474876435
+          },
+          {
+            "id": 609,
+            "kilometers": 198.67611985797683
+          },
+          {
+            "id": 569,
+            "kilometers": 199.59082553022398
+          },
+          {
+            "id": 1021,
+            "kilometers": 200.23128675363373
+          },
+          {
+            "id": 492,
+            "kilometers": 201.15635621800203
+          },
+          {
+            "id": 635,
+            "kilometers": 201.9411436569939
+          },
+          {
+            "id": 491,
+            "kilometers": 202.3498668867007
+          },
+          {
+            "id": 562,
+            "kilometers": 202.46388379730584
+          },
+          {
+            "id": 565,
+            "kilometers": 203.97658676527894
+          },
+          {
+            "id": 629,
+            "kilometers": 204.02798547498787
+          },
+          {
+            "id": 561,
+            "kilometers": 204.29236221002742
+          },
+          {
+            "id": 558,
+            "kilometers": 204.67476428376818
+          },
+          {
+            "id": 1019,
+            "kilometers": 205.11968424881445
+          },
+          {
+            "id": 1025,
+            "kilometers": 206.03320170804432
+          },
+          {
+            "id": 560,
+            "kilometers": 208.07338062863874
+          },
+          {
+            "id": 568,
+            "kilometers": 208.4889557316196
+          },
+          {
+            "id": 612,
+            "kilometers": 209.08523636997936
+          },
+          {
+            "id": 634,
+            "kilometers": 209.60559616812867
+          },
+          {
+            "id": 620,
+            "kilometers": 209.85016134653094
+          },
+          {
+            "id": 573,
+            "kilometers": 210.4841188927876
+          },
+          {
+            "id": 493,
+            "kilometers": 210.88339637416587
+          },
+          {
+            "id": 499,
+            "kilometers": 212.5399126794151
+          },
+          {
+            "id": 515,
+            "kilometers": 213.47777715055668
+          },
+          {
+            "id": 589,
+            "kilometers": 214.13546185610278
+          },
+          {
+            "id": 585,
+            "kilometers": 214.476077575007
+          },
+          {
+            "id": 636,
+            "kilometers": 215.32395165290686
+          },
+          {
+            "id": 578,
+            "kilometers": 216.48877361297085
+          },
+          {
+            "id": 587,
+            "kilometers": 217.49278306729505
+          },
+          {
+            "id": 1024,
+            "kilometers": 221.1484077129284
+          },
+          {
+            "id": 627,
+            "kilometers": 221.92724171618804
+          },
+          {
+            "id": 503,
+            "kilometers": 222.14321494597226
+          },
+          {
+            "id": 586,
+            "kilometers": 222.41097553215704
+          },
+          {
+            "id": 610,
+            "kilometers": 223.8980365913257
+          },
+          {
+            "id": 557,
+            "kilometers": 224.44949904403578
+          },
+          {
+            "id": 514,
+            "kilometers": 228.7428031085273
+          },
+          {
+            "id": 574,
+            "kilometers": 230.57651203094386
+          },
+          {
+            "id": 1523,
+            "kilometers": 231.15815448162283
+          },
+          {
+            "id": 1020,
+            "kilometers": 231.79520087778474
+          },
+          {
+            "id": 577,
+            "kilometers": 232.32560646631623
+          },
+          {
+            "id": 611,
+            "kilometers": 234.38547219055644
+          },
+          {
+            "id": 1023,
+            "kilometers": 235.4055000682733
+          },
+          {
+            "id": 490,
+            "kilometers": 235.49804254232606
+          },
+          {
+            "id": 502,
+            "kilometers": 236.3535231462287
+          },
+          {
+            "id": 500,
+            "kilometers": 239.21462615085755
+          },
+          {
+            "id": 496,
+            "kilometers": 240.0811378864003
+          },
+          {
+            "id": 588,
+            "kilometers": 240.2233472178373
+          },
+          {
+            "id": 638,
+            "kilometers": 241.13669828605714
+          },
+          {
+            "id": 608,
+            "kilometers": 241.3076744153744
+          },
+          {
+            "id": 580,
+            "kilometers": 244.85312249732817
+          },
+          {
+            "id": 498,
+            "kilometers": 245.13129394761063
+          },
+          {
+            "id": 591,
+            "kilometers": 246.49547568418495
+          },
+          {
+            "id": 501,
+            "kilometers": 246.7764175932747
+          },
+          {
+            "id": 1022,
+            "kilometers": 248.99366287292045
+          },
+          {
+            "id": 497,
+            "kilometers": 249.27818248345525
+          },
+          {
+            "id": 607,
+            "kilometers": 254.3068976206233
+          },
+          {
+            "id": 626,
+            "kilometers": 257.362761006003
+          },
+          {
+            "id": 489,
+            "kilometers": 273.806971658637
+          },
+          {
+            "id": 474,
+            "kilometers": 276.0079900912513
+          },
+          {
+            "id": 488,
+            "kilometers": 276.36880032177885
+          },
+          {
+            "id": 606,
+            "kilometers": 276.4678522870826
+          },
+          {
+            "id": 604,
+            "kilometers": 277.92394155944976
+          },
+          {
+            "id": 482,
+            "kilometers": 281.93947407595476
+          },
+          {
+            "id": 483,
+            "kilometers": 283.26574208493986
+          },
+          {
+            "id": 473,
+            "kilometers": 290.8290854693328
+          },
+          {
+            "id": 472,
+            "kilometers": 292.1387780833848
+          },
+          {
+            "id": 605,
+            "kilometers": 293.99701206492773
+          },
+          {
+            "id": 484,
+            "kilometers": 300.5741262454496
+          },
+          {
+            "id": 624,
+            "kilometers": 303.1700427034466
+          },
+          {
+            "id": 1524,
+            "kilometers": 306.3622157414759
+          },
+          {
+            "id": 480,
+            "kilometers": 310.6829711156476
+          },
+          {
+            "id": 478,
+            "kilometers": 312.7471735703022
+          },
+          {
+            "id": 481,
+            "kilometers": 315.21483729367327
+          },
+          {
+            "id": 625,
+            "kilometers": 322.4873672880832
+          },
+          {
+            "id": 485,
+            "kilometers": 328.6066780133388
+          },
+          {
+            "id": 477,
+            "kilometers": 344.67501369328465
+          },
+          {
+            "id": 479,
+            "kilometers": 370.3542821637856
+          },
+          {
+            "id": 471,
+            "kilometers": 371.04638421244533
+          },
+          {
+            "id": 487,
+            "kilometers": 372.8892217229509
+          },
+          {
+            "id": 486,
+            "kilometers": 387.72443242839546
+          },
+          {
+            "id": 470,
+            "kilometers": 401.8754054657303
+          },
+          {
+            "id": 476,
+            "kilometers": 467.0702358841918
+          },
+          {
+            "id": 475,
+            "kilometers": 611.7261426682178
+          }
+        ],
+        "nearest": {
+          "id": 601,
+          "kilometers": 0.0
+        },
+        "runnerUp": {
+          "id": 594,
+          "kilometers": 3.640008279861086
+        }
+      }
+    },
+    "schemaAssessment": {
+      "method": "reviewed_explicit_point_base_display_identity",
+      "extension": "townPreservationExtension",
+      "status": "EXISTING_EXTENSION_FEASIBLE",
+      "reason": "Four accepted replacements require exact original/effective phases. Existing extension preserves all five raw rows, seven states, four singleton sectors and both source-only contexts.",
+      "extraNamePeerIds": [],
+      "extraAdministrativeContainerIds": [],
+      "positiveGovernorAndDelegationContainment": true,
+      "topLevelCompletePickerGroups": {
+        "before": [
+          [
+            "osm:node:558814858"
+          ],
+          [
+            "delegation:601"
+          ]
+        ],
+        "after": [
+          [
+            "delegation:601",
+            "osm:node:558814858"
+          ]
+        ]
+      },
+      "doNotUse": [
+        "standard proof without source lineage",
+        "top-level officialDelegationCode together with townPreservationExtension",
+        "retainedTownPoint",
+        "coordinate relocation"
+      ]
+    },
+    "onlyPossibleRawChange": {
+      "id": "osm:node:558814858",
+      "field": "pickerGroupId",
+      "before": "osm:node:558814858",
+      "after": "delegation:601"
+    },
+    "sourcePhaseQualification": "Original North sector325951 is labeled Teboulba in the cache. Its accepted ISIE replacement retains ID/code and replaces labels/geometry with Bekalta North. This historical mismatch is not town-node identity evidence.",
+    "boundaryQualification": "Accepted 2023 vector/electoral aggregate lineage and its existing registration-gap/conflict qualifications are retained; no new boundary precision or Google extent is claimed."
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-town-point-source-review.json",
+    "sha256": "42c7f5f3d6caa20bb984df325e7700003b049bf08b0683bb47a50fcea21607f4"
+  },
+  "sourceIdentityFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\source-identity-facts.json",
+    "sha256": "eff6cf8be916dbf7f6cc1ac6344ca6b765eff9b5cafd9f39bfd7e8346ebeef1f"
+  },
+  "supplementaryPhoneReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-beni-mhira-borma-phone-review-20260912.json",
+    "sha256": "f37127f65189ec3c112ac08b33950b740a30fee26abfb8a4a11eec15175a7ecc"
+  },
+  "bekaltaPhoneObservationsOnly": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_558814858-1.json",
+        "sha256": "b6ef754f8a37ea65b123f283feecaafcf436d2145737b6a5f2351f78c9cfa5a7"
+      },
+      "exactObservation": {
+        "observationParserVersion": 3,
+        "observedAt": "2026-09-12T10:56:56.483074+00:00",
+        "query": "35.6172948,10.9891336",
+        "queryVisibleInUi": false,
+        "publicCardTitles": [
+          "محطة الحافلة"
+        ],
+        "publicUiText": [
+          "عرض صور محطة الحافلة من \"التجوّل الافتراضي\"",
+          "محطة الحافلة",
+          "4,0 نجمة (2)",
+          "‏لا تتحقق Google من صحة المراجعات، ولكنها تُواصِل التحقّق من المحتوى المزيّف وتزيله في حال رصده.",
+          "Al-Baqalitah، تونس",
+          "محطة حافلات",
+          "·",
+          "غير صالح للكراسي المتحركة",
+          "الاتجاهات إلى محطة الحافلة",
+          "الاتجاهات",
+          "مشاركة محطة الحافلة",
+          "مشاركة",
+          "حفظ محطة الحافلة في القوائم",
+          "حفظ",
+          "عرض المزيد من الإجراءات لهذا المكان",
+          "المزيد",
+          "صورة",
+          "إغلاق",
+          "ابحث عن محطات وقود مثلاً",
+          "البحث الصوتي",
+          "‏\"عدسة Google\" في \"خرائط Google\""
+        ],
+        "observationStatus": "needs_visual_review",
+        "catalogNamesVisibleOutsideSearch": [],
+        "screenshot": "osm_node_558814858-1.png",
+        "boundaryVerified": false
+      },
+      "query": "35.6172948,10.9891336",
+      "rootVisualConclusion": "Coordinates open a nearby bus-stop card in Al-Baqalitah. Bekalta streets and town label surround the pin. This is settlement context, not exact point equality.",
+      "qualification": "Root reviewed the original screenshot; this finite inventory reads the recorded public observation only, without viewing or extracting Google geometry."
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_558814858-2.json",
+        "sha256": "115d7858db782a80e31e2c47204aefcc3dd19e41f38628750b63df571879efbd"
+      },
+      "exactObservation": {
+        "observationParserVersion": 3,
+        "observedAt": "2026-09-12T10:57:52.256654+00:00",
+        "query": "البقالطة المنستير تونس",
+        "queryVisibleInUi": true,
+        "publicCardTitles": [
+          "بقالطة"
+        ],
+        "publicUiText": [
+          "بقالطة",
+          "Bekalta",
+          "تونس‎",
+          "الاتجاهات إلى بقالطة",
+          "الاتجاهات",
+          "مشاركة بقالطة",
+          "مشاركة",
+          "حفظ بقالطة في القوائم",
+          "حفظ",
+          "عرض المزيد من الإجراءات لهذا المكان",
+          "المزيد",
+          "صورة",
+          "إغلاق",
+          "البقالطة المنستير تونس",
+          "محو"
+        ],
+        "observationStatus": "candidate_observed",
+        "catalogNamesVisibleOutsideSearch": [
+          "Bekalta"
+        ],
+        "screenshot": "osm_node_558814858-2.png",
+        "boundaryVerified": false
+      },
+      "query": "البقالطة المنستير تونس",
+      "rootVisualConclusion": "Public Bekalta town card with a visible town outline. Context matches the first view; no Google boundary coordinates are extracted or certified.",
+      "qualification": "Root reviewed the original screenshot; this finite inventory reads the recorded public observation only, without viewing or extracting Google geometry."
+    }
+  ],
+  "referenceInventory": {
+    "available": 258,
+    "rejected": [
+      {
+        "id": 495,
+        "reason": "no_complete_bundled_month"
+      }
+    ],
+    "boundedComparisons": 516,
+    "eligibilitySource": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "fc8f3ecb526f1d79eeb3040a5778ee1e3965b744afb6d1e37a298647e53fff0e"
+    }
+  },
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "760f97a46c16b6f88ca7cac8b4f8a81610b755377397cb740e2f482973f91de1"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "3be47aac507d34a9088a1dd26e3e71d844cdb36d3fc91259f57d17092dc877a9"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "fc8f3ecb526f1d79eeb3040a5778ee1e3965b744afb6d1e37a298647e53fff0e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-town-point-source-review.json",
+      "sha256": "42c7f5f3d6caa20bb984df325e7700003b049bf08b0683bb47a50fcea21607f4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\source-identity-facts.json",
+      "sha256": "eff6cf8be916dbf7f6cc1ac6344ca6b765eff9b5cafd9f39bfd7e8346ebeef1f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-beni-mhira-borma-phone-review-20260912.json",
+      "sha256": "f37127f65189ec3c112ac08b33950b740a30fee26abfb8a4a11eec15175a7ecc"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\megrine-isie2023-sectors.geojson",
+      "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\identity-review-isie2023-sectors.geojson",
+      "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\next-identity-review-isie2023-sectors.geojson",
+      "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\neighbor-review-isie2023-sectors.geojson",
+      "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\bekalta-neighbors-review-isie2023-sectors.geojson",
+      "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\bekalta-south-east-review-isie2023-sectors.geojson",
+      "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\baghdadi-review-isie2023-sector.geojson",
+      "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\hiboun-review-isie2023-sector.geojson",
+      "sha256": "b1f3b459d642e6be62ab60f27fed66068df3222fbc726e970bfed3276c5b642c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\bizerte-three-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\bembla-seven-native-source-candidates.geojson",
+      "sha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\bembla-bennane-joufia-native-source-candidate.geojson",
+      "sha256": "395e9bb9803d0ae544977aad8178e0b06e74de7ff013d0c3c5346b4078f00497"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\bembla-bennane-keblia-native-source-candidate.geojson",
+      "sha256": "760dd75369b87109b81609ec18cf77c171486aed45dea79ea04d34964d793cf5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\carthage-isie2023-six-sectors.geojson",
+      "sha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\le-kram-isie2023-six-sectors.geojson",
+      "sha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\la-goulette-isie2023-three-sectors.geojson",
+      "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\beni-hassan-isie2023-five-sectors.geojson",
+      "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\saouaf-isie2023-five-sectors.geojson",
+      "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\zeramdine-south-isie2023-sectors.geojson",
+      "sha256": "7af1bc235260fcdbaf61332f2317a6ae9911fed1982746cdb1a78fd6fd1328c1"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\nadhour-isie2023-sectors.geojson",
+      "sha256": "5c7f6a16500866daf3a2937eb92e1b3be6798e1c34d2dcb6ef6c7bb5d2f8024e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\jammel-isie2023-two-sectors.geojson",
+      "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\nadhour-souar-isie2023-sectors.geojson",
+      "sha256": "8c2fda9b927cb8e0c5761df51adede563a96d3a2c683649586ddf181fa32582f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-bou-argoub-faouar-hajeb-import\\repo\\scripts\\neighborhoods\\official\\zeramdine-north-isie2023-sectors.geojson",
+      "sha256": "8f3f52ecf69ea9df4136a53e83241e57775399c1d5c805ffea16862372812361"
+    }
+  ]
+}

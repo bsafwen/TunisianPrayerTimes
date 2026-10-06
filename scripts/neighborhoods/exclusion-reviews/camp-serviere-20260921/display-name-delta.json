@@ -1,0 +1,12 @@
+{
+  "id": "osm:node:1190877566",
+  "action": "remove_exact_override",
+  "liveEntriesPreservedInHistory": [
+    {
+      "id": "osm:node:1190877566",
+      "nameAr": "كامب سرفيير",
+      "searchAliases": []
+    }
+  ],
+  "reason": "Retire the stale picker/GPS display override together with the exact facility ID; preserve the original override in this evidence record and retain the source name/search data."
+}

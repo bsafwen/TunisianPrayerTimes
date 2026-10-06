@@ -1,0 +1,120 @@
+[
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/298019989.json",
+    "retrievedAt": "2026-09-08T14:17:13.624330+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/298019989.json\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-298019989.json",
+    "sha256": "3be492b14ad7ae24c7afaba6316f536d50a24e256881002cd0b1963a3ab71d41",
+    "bytes": 784
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1433130924.json",
+    "retrievedAt": "2026-09-08T14:17:13.626294+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/1433130924.json\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-1433130924.json",
+    "sha256": "5906477199e03404a33815341bd127e7e2c792e78b5bb1d10cfcf07b7b730d16",
+    "bytes": 576
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/558962249.json",
+    "retrievedAt": "2026-09-08T14:17:13.627294+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/558962249.json\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-558962249.json",
+    "sha256": "83ff46be34987104e422b3d1998c800905814d63c72bcd50fe09f594762c5e51",
+    "bytes": 656
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/558816759.json",
+    "retrievedAt": "2026-09-08T14:17:13.629291+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/558816759.json\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-558816759.json",
+    "sha256": "9c8dfdf4f9019e785d3a53236fd986c17feadba0424613a30b5cca371bfc0e76",
+    "bytes": 700
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1206558973.json",
+    "retrievedAt": "2026-09-08T14:17:13.630358+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/1206558973.json\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-1206558973.json",
+    "sha256": "424296bd8cc64824ac1fcbd1838dc3f66a6edeec2f5692b399548315db32ec16",
+    "bytes": 673
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/264885332.json",
+    "retrievedAt": "2026-09-08T14:17:13.631291+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/264885332.json\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-264885332.json",
+    "sha256": "02de5b550fee38cc66c6ec15dca76a0afbd9e2acdf0bc35600feed4b182f3723",
+    "bytes": 897
+  },
+  {
+    "url": "https://www.g-monastir.tn/ar/news/1221-67-22-1952",
+    "retrievedAt": "2026-09-08T14:17:13.859528+00:00",
+    "curlExit": 0,
+    "response": "https://www.g-monastir.tn/news/1221-67-22-1952\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\ouerdanine-governorate-city.html",
+    "sha256": "37e4f4b42f4458fa835c393fb051761901dab93b534530547bdcbcbaa5a43654",
+    "bytes": 92934
+  },
+  {
+    "url": "https://www.commune-tataouine.gov.tn/index.php?Itemid=131&id=8&lang=ar&option=com_content&view=article",
+    "retrievedAt": "2026-09-08T14:17:13.867069+00:00",
+    "curlExit": 0,
+    "response": "https://www.commune-tataouine.gov.tn/index.php?Itemid=131&id=8&lang=ar&option=com_content&view=article\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\tataouine-municipal-geography.html",
+    "sha256": "df0aa870d60c5f739f68d73de28c97dbea50425026ab735c57af73d4eddd4de8",
+    "bytes": 41429
+  },
+  {
+    "url": "https://www.commune-mahdia.gov.tn/ar/presentation_ville",
+    "retrievedAt": "2026-09-08T14:17:13.870126+00:00",
+    "curlExit": 28,
+    "response": "https://www.commune-mahdia.gov.tn/ar/presentation_ville\n000",
+    "error": "curl: (28) Connection timed out after 12006 milliseconds",
+    "verifiedTLS": true
+  },
+  {
+    "url": "https://g-monastir.tn/images/pdf_files/lamta.pdf",
+    "retrievedAt": "2026-09-08T14:17:13.873236+00:00",
+    "curlExit": 0,
+    "response": "https://g-monastir.tn/images/pdf_files/lamta.pdf\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\lamta-governorate-geography.pdf",
+    "sha256": "0e8f7740d311b5baf5dfc261197063f11046d7337e891f136363b1fee966e694",
+    "bytes": 1057983
+  },
+  {
+    "url": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/doc34-01/35171.pdf",
+    "retrievedAt": "2026-09-08T14:17:13.875244+00:00",
+    "curlExit": 0,
+    "response": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/doc34-01/35171.pdf\n200",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-ird-firsthand-locality.pdf",
+    "sha256": "34affd3016a9ba3ef18e5a731b336415c826a2669184a84897088465224084da",
+    "bytes": 1603826
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "requestedUrl": "https://www.social.gov.tn/en/node/2973",
+  "finalUrl": "https://www.social.gov.tn/en/node/2973",
+  "status": 200,
+  "retrievedAtUtc": "2026-09-19T09:12:44.581028+00:00",
+  "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\social-hazoua-town.html",
+  "sha256": "06129c0754b8595f00bacb1db9c20551e8a2bae157a9745e7f1f0a2b6fc8b838",
+  "bytes": 65345,
+  "headers": {
+    "Date": "Sat, 19 Sep 2026 09:12:50 GMT",
+    "Server": "Apache",
+    "X-Content-Type-Options": "nosniff",
+    "X-Powered-By": "PHP/7.4.30",
+    "Cache-Control": "must-revalidate, no-cache, private",
+    "X-Drupal-Dynamic-Cache": "UNCACHEABLE",
+    "Link": "<https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%A8%D8%AD%D8%B2%D9%88%D8%A9-%D8%AA%D9%88%D8%B2%D8%B1>; rel=\"alternate\"; hreflang=\"ar\"",
+    "X-UA-Compatible": "IE=edge",
+    "Content-language": "en",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+    "X-Generator": "Drupal 9 (https://www.drupal.org)",
+    "Connection": "close",
+    "Transfer-Encoding": "chunked",
+    "Content-Type": "text/html; charset=UTF-8"
+  }
+}

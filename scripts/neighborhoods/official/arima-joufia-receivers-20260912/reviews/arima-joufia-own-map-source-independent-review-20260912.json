@@ -1,0 +1,619 @@
+{
+  "status": "PASS",
+  "scope": "Independent original-source and whole-outline review of exactly Arima156053/7100361 and Menzel Bouzelfa Joufia156253/7101605. No integration or point-address approval.",
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "inputs": {
+    "selection": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-own-map-source-selection-facts.json",
+      "sha256": "0bb60e9953475b957cde85d7ba857cc3483b2ffcbde6106e08c559895e4098fa",
+      "bytes": 125684
+    },
+    "bundle": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-whole-native-source-polygons.geojson",
+      "sha256": "1cda298b6956e7dbde26a334ee9dae1d3457ac43a03f1f4abdc5441eed454427",
+      "bytes": 139631
+    },
+    "retrieval": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/retrieval-manifest.json",
+      "sha256": "dd7adf0cbb851dd5f4d7557fe4ce6420fd770d9605857d38ec12a489dcb06868",
+      "bytes": 8166
+    },
+    "inventory": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/unreviewed-native-path-inventory.json",
+      "sha256": "e62e68308526d7255fbe447728b5936029aff8dec0a4ce646d302f277849f399",
+      "bytes": 1197007
+    },
+    "registry": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/point-retention-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "sourceCache": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "frozenThirteenPackage": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/source-package-manifest.json",
+      "sha256": "171752fefd84e6be834e795140b2c53168984f08cd15aa384928b9c3b52ffddc",
+      "bytes": 49230
+    }
+  },
+  "independence": "New reviewer code directly reads original PDF objects/content operators, graphics state clips, complete drawing walks, labels, embedded controls and all coordinate arrays. It reads original zipped workbook XML cells. No author script or product helper was imported or executed.",
+  "sourcePinChecks": 22,
+  "records": [
+    {
+      "id": "osm:relation:7100361",
+      "code": "156053",
+      "registryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1560",
+        "delegationFr": "Takelsa",
+        "delegationAr": "تاكلسة",
+        "sectorCode": "156053",
+        "sectorFr": "El arima",
+        "sectorAr": "العريمة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13295,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 532,
+          "Nombre_de_menages_par_Secteurs.xlsx": 531
+        }
+      },
+      "sourcePdf": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.pdf",
+        "sha256": "6411d48b0acb4b3cffde4c17d52004deb54fbb93d5fd0a6922aec2842dd55a6b",
+        "bytes": 1404326
+      },
+      "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9.pdf",
+      "wholePageRender": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima-whole-page.png",
+        "sha256": "fdc4f33c0c101b3d0b350071369a4244a6044e6395cf821a5f52806b3c6f0004",
+        "bytes": 3195806
+      },
+      "wholePagePersonallyViewed": true,
+      "selectedDrawingIndex": 601,
+      "completeOriginalWalk": {
+        "moveOperation": 6316,
+        "strokeOperation": 7175,
+        "lineEdges": 858,
+        "explicitClosingLine": true,
+        "additionalClosingEdge": false,
+        "strokeOnlyNoFill": true,
+        "originalDecimalVerticesSha256": "ddc554f7b8669c5dfa7472e4a033ed21dfe0ae6810bae0efe94b937034b74b39",
+        "identityCTM": true,
+        "simple": true,
+        "holes": 0
+      },
+      "originalActiveClips": [
+        {
+          "operation": 2457,
+          "rule": "W*",
+          "coordinates": [
+            [
+              0.0,
+              595.50236
+            ],
+            [
+              0.0,
+              -0.73287
+            ],
+            [
+              841.86088,
+              -0.73287
+            ],
+            [
+              841.86088,
+              595.50236
+            ],
+            [
+              0.0,
+              595.50236
+            ]
+          ]
+        },
+        {
+          "operation": 2467,
+          "rule": "W*",
+          "coordinates": [
+            [
+              4.31908,
+              590.46173
+            ],
+            [
+              4.31908,
+              5.02786
+            ],
+            [
+              841.86088,
+              5.02786
+            ],
+            [
+              841.86088,
+              590.46173
+            ],
+            [
+              4.31908,
+              590.46173
+            ]
+          ]
+        }
+      ],
+      "wholeOriginalPathInsideViewportAndBothClips": true,
+      "registration": {
+        "epsg": 32632,
+        "originalDecimalViewportBBox": [
+          4.31908,
+          590.46173,
+          841.50095,
+          5.38791
+        ],
+        "declaredLibraryViewportBBox": [
+          4.31908,
+          590.46176,
+          841.501,
+          5.38791
+        ],
+        "LPTS": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "GPTSLatLon": [
+          [
+            36.6731,
+            10.54763
+          ],
+          [
+            36.79448,
+            10.55007
+          ],
+          [
+            36.79147,
+            10.7661
+          ],
+          [
+            36.6701,
+            10.76332
+          ]
+        ],
+        "declaredAffineReproducedExactly": true,
+        "maxControlFitResidualMeters": 0.08961302871182687
+      },
+      "completeNativeGeometrySha256": "60caf195b48669aae17d7d75e56d46ac67857d8b95240b0074b3a89c9221b186",
+      "allNativeCoordinateArraysExact": true,
+      "areaM2UTM32": 62051763.6096328,
+      "oneInteriorNamedWholeBoundary": {
+        "drawingIndex": 601,
+        "label": "اﻟﻌرﯾﻣﺔ",
+        "point": [
+          311.5240173339844,
+          273.5886764526367
+        ]
+      },
+      "decreeWholeImadaScope": {
+        "file": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "bytes": 10636520
+        },
+        "pdfPage": 76,
+        "jortPage": 5173,
+        "wholePageRender": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598",
+          "bytes": 306070
+        },
+        "wholePagePersonallyViewed": true,
+        "imadaName": "العريمة",
+        "circleName": "العريمة",
+        "conclusion": "one_whole_imada_one_electoral_circle"
+      }
+    },
+    {
+      "id": "osm:relation:7101605",
+      "code": "156253",
+      "registryRow": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1562",
+        "delegationFr": "Menzel bouzelfa",
+        "delegationAr": "منزل بوزلفة",
+        "sectorCode": "156253",
+        "sectorFr": "Menzel bou zelfa nord",
+        "sectorAr": "منزل بوزلفة الجوفية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13635,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 552,
+          "Nombre_de_menages_par_Secteurs.xlsx": 551
+        }
+      },
+      "sourcePdf": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.pdf",
+        "sha256": "b828a2a54b8cde4e2dbdb0894319a3ca051c08066fa89fc07d76c18928a15b58",
+        "bytes": 1633073
+      },
+      "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "wholePageRender": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia-whole-page.png",
+        "sha256": "5b6ee8be7c3662236c483829a2f787e360e502f5810dd43dd1c68d5ca5beb595",
+        "bytes": 3218212
+      },
+      "wholePagePersonallyViewed": true,
+      "selectedDrawingIndex": 374,
+      "completeOriginalWalk": {
+        "moveOperation": 2495,
+        "strokeOperation": 3073,
+        "lineEdges": 577,
+        "explicitClosingLine": true,
+        "additionalClosingEdge": false,
+        "strokeOnlyNoFill": true,
+        "originalDecimalVerticesSha256": "dea78f98a74328d593b2f75f5f5f2bcae00320206a6eed27c2fc527a886d89ef",
+        "identityCTM": true,
+        "simple": true,
+        "holes": 0
+      },
+      "originalActiveClips": [
+        {
+          "operation": 1414,
+          "rule": "W*",
+          "coordinates": [
+            [
+              0.0,
+              595.50236
+            ],
+            [
+              0.0,
+              -0.73287
+            ],
+            [
+              841.86088,
+              -0.73287
+            ],
+            [
+              841.86088,
+              595.50236
+            ],
+            [
+              0.0,
+              595.50236
+            ]
+          ]
+        },
+        {
+          "operation": 1424,
+          "rule": "W*",
+          "coordinates": [
+            [
+              4.31908,
+              590.46173
+            ],
+            [
+              4.31908,
+              5.02786
+            ],
+            [
+              841.86088,
+              5.02786
+            ],
+            [
+              841.86088,
+              590.46173
+            ],
+            [
+              4.31908,
+              590.46173
+            ]
+          ]
+        }
+      ],
+      "wholeOriginalPathInsideViewportAndBothClips": true,
+      "registration": {
+        "epsg": 32632,
+        "originalDecimalViewportBBox": [
+          4.31908,
+          590.46173,
+          841.50095,
+          5.38791
+        ],
+        "declaredLibraryViewportBBox": [
+          4.31908,
+          590.46176,
+          841.501,
+          5.38791
+        ],
+        "LPTS": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "GPTSLatLon": [
+          [
+            36.64664,
+            10.56273
+          ],
+          [
+            36.73473,
+            10.56451
+          ],
+          [
+            36.73257,
+            10.72115
+          ],
+          [
+            36.64449,
+            10.71919
+          ]
+        ],
+        "declaredAffineReproducedExactly": true,
+        "maxControlFitResidualMeters": 0.09352890800210957
+      },
+      "completeNativeGeometrySha256": "518001fa3be603f0e7933c751deba8b0014aa087bee86a08f6d76e22cae3d2ff",
+      "allNativeCoordinateArraysExact": true,
+      "areaM2UTM32": 46045156.7927964,
+      "oneInteriorNamedWholeBoundary": {
+        "drawingIndex": 374,
+        "label": "ﺔﯾﻓوﺟﻟا ﺔﻔﻟزوﺑ لزﻧﻣ",
+        "point": [
+          347.17604064941406,
+          215.6213607788086
+        ]
+      },
+      "decreeWholeImadaScope": {
+        "file": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "bytes": 10636520
+        },
+        "pdfPage": 77,
+        "jortPage": 5174,
+        "wholePageRender": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134",
+          "bytes": 313154
+        },
+        "wholePagePersonallyViewed": true,
+        "imadaName": "منزل بوزلفة الجوفية",
+        "circleName": "منزل بوزلفة الجوفية",
+        "conclusion": "one_whole_imada_one_electoral_circle"
+      }
+    }
+  ],
+  "originalWorkbookIdentityChecks": [
+    {
+      "originalWorkbook": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/current-official-catalog/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "bytes": 9247324
+      },
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population",
+      "exactIdentityRows": [
+        {
+          "originalRow": 13295,
+          "identityFields": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1560",
+            "delegationFr": "Takelsa",
+            "delegationAr": "تاكلسة",
+            "sectorFr": "El arima",
+            "sectorAr": "العريمة",
+            "sectorCode": "156053"
+          },
+          "exactCells": {
+            "governorateCode": "D13295",
+            "governorateFr": "E13295",
+            "governorateAr": "F13295",
+            "delegationCode": "G13295",
+            "delegationFr": "H13295",
+            "delegationAr": "I13295",
+            "sectorFr": "K13295",
+            "sectorAr": "L13295",
+            "sectorCode": "J13295"
+          }
+        },
+        {
+          "originalRow": 13635,
+          "identityFields": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1562",
+            "delegationFr": "Menzel bouzelfa",
+            "delegationAr": "منزل بوزلفة",
+            "sectorFr": "Menzel bou zelfa nord",
+            "sectorAr": "منزل بوزلفة الجوفية",
+            "sectorCode": "156253"
+          },
+          "exactCells": {
+            "governorateCode": "D13635",
+            "governorateFr": "E13635",
+            "governorateAr": "F13635",
+            "delegationCode": "G13635",
+            "delegationFr": "H13635",
+            "delegationAr": "I13635",
+            "sectorFr": "K13635",
+            "sectorAr": "L13635",
+            "sectorCode": "J13635"
+          }
+        }
+      ]
+    },
+    {
+      "originalWorkbook": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/current-official-catalog/Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "bytes": 755797
+      },
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "sheet": "Logements",
+      "exactIdentityRows": [
+        {
+          "originalRow": 532,
+          "identityFields": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1560",
+            "delegationFr": "Takelsa",
+            "delegationAr": "تاكلسة",
+            "sectorFr": "El arima",
+            "sectorAr": "العريمة",
+            "sectorCode": "156053"
+          },
+          "exactCells": {
+            "governorateCode": "D532",
+            "governorateFr": "E532",
+            "governorateAr": "F532",
+            "delegationCode": "G532",
+            "delegationFr": "H532",
+            "delegationAr": "I532",
+            "sectorFr": "J532",
+            "sectorAr": "K532",
+            "sectorCode": "L532"
+          }
+        },
+        {
+          "originalRow": 552,
+          "identityFields": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1562",
+            "delegationFr": "Menzel bouzelfa",
+            "delegationAr": "منزل بوزلفة",
+            "sectorFr": "Menzel bou zelfa nord",
+            "sectorAr": "منزل بوزلفة الجوفية",
+            "sectorCode": "156253"
+          },
+          "exactCells": {
+            "governorateCode": "D552",
+            "governorateFr": "E552",
+            "governorateAr": "F552",
+            "delegationCode": "G552",
+            "delegationFr": "H552",
+            "delegationAr": "I552",
+            "sectorFr": "J552",
+            "sectorAr": "K552",
+            "sectorCode": "L552"
+          }
+        }
+      ]
+    },
+    {
+      "originalWorkbook": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/current-official-catalog/Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "bytes": 649843
+      },
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "sheet": "Ménages",
+      "exactIdentityRows": [
+        {
+          "originalRow": 531,
+          "identityFields": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1560",
+            "delegationFr": "Takelsa",
+            "delegationAr": "تاكلسة",
+            "sectorFr": "El arima",
+            "sectorAr": "العريمة",
+            "sectorCode": "156053"
+          },
+          "exactCells": {
+            "governorateCode": "D531",
+            "governorateFr": "E531",
+            "governorateAr": "F531",
+            "delegationCode": "G531",
+            "delegationFr": "H531",
+            "delegationAr": "I531",
+            "sectorFr": "J531",
+            "sectorAr": "K531",
+            "sectorCode": "L531"
+          }
+        },
+        {
+          "originalRow": 551,
+          "identityFields": {
+            "governorateCode": "15",
+            "governorateFr": "Nabeul",
+            "governorateAr": "نابل",
+            "delegationCode": "1562",
+            "delegationFr": "Menzel bouzelfa",
+            "delegationAr": "منزل بوزلفة",
+            "sectorFr": "Menzel bou zelfa nord",
+            "sectorAr": "منزل بوزلفة الجوفية",
+            "sectorCode": "156253"
+          },
+          "exactCells": {
+            "governorateCode": "D551",
+            "governorateFr": "E551",
+            "governorateAr": "F551",
+            "delegationCode": "G551",
+            "delegationFr": "H551",
+            "delegationAr": "I551",
+            "sectorFr": "J551",
+            "sectorAr": "K551",
+            "sectorCode": "L551"
+          }
+        }
+      ]
+    }
+  ],
+  "visualReview": {
+    "wholeMapPagesPersonallyViewed": 2,
+    "wholeOriginalDecreePagesPersonallyViewed": [
+      76,
+      77
+    ],
+    "findings": [
+      "Arima map interior names العريمة and places it within the Takelsa delegation context. Complete red sector outline and legend are visible.",
+      "Joufia map interior names منزل بوزلفة الجوفية. The top-right title is partly clipped in the original page; the central whole-area label is clear.",
+      "Decree pages 76/77 show each requested imada as its single identically named electoral circle under Takelsa / Menzel Bouzelfa, respectively. These rows do not assert a locality-sized or municipal footprint."
+    ]
+  },
+  "qualifications": [
+    "Both boundaries are original simple closed stroke paths with no explicit fill. The whole own-map region interpretation follows the map labels, legend and one-to-one decree identity; no omitted path edge, invented closing edge, clipping, snapping, repair or union was used.",
+    "The bundle exactly reproduces the declared PyMuPDF page/drawing representation and embedded four-control UTM32 least-squares transform. Original decimal viewport values are separately recorded because serialized PyMuPDF values differ slightly. Neither decimal precision nor sub-meter control-fit residual is a surveyed accuracy certificate.",
+    "The independent finite-effects reviewer owns Baddar/El Aitha point membership and quantization diagnostics. Baddar is reported only about 0.9 m inside Arima; this source review does not turn that margin into certified ground truth or approve the cached Soliman delegation fallback. Primary town/address evidence and coherent current-source effects remain separate integration prerequisites.",
+    "PASS supports these two complete named sector sources for a separately reviewed overlay. It does not certify every external seam, change the frozen thirteen package, or authorize a live import."
+  ],
+  "noLiveSourceStageCompilerGeneratorTestsPhoneLedgerMutation": true,
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/review_arima_joufia_own_sources_independent_20260912.py",
+    "sha256": "c06bf177a5824ccf90ba7a8c3f68e60f421ee6fc298e3a5215da9815d1dab601",
+    "bytes": 19200
+  }
+}

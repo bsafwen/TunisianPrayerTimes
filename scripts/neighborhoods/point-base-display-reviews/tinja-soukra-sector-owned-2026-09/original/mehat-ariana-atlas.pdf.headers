@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 12:22:51 GMT
+Server: Apache/2.4.57 (Oracle Linux Server) OpenSSL/3.0.7
+X-Frame-Options: SAMEORIGIN
+Upgrade: h2,h2c
+Connection: Upgrade
+Last-Modified: Thu, 07 Sep 2017 14:05:30 GMT
+ETag: "ea137e-55899f3f95e80-gzip"
+Accept-Ranges: bytes
+Cache-Control: max-age=31536000, public
+Expires: Sun, 12 Sep 2027 12:22:51 GMT
+Vary: Accept-Encoding
+Content-Encoding: gzip
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Access-Control-Allow-Origin: *
+Referrer-Policy: no-referrer-when-downgrade
+Pragma: public
+Transfer-Encoding: chunked
+Content-Type: application/pdf
+

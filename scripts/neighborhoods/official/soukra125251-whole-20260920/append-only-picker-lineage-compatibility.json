@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_picker_strict_boundary_successor",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "previousManifest": {
+    "file": "official/soukra125251-whole-20260920/evidence/reviewed-picker-groups-before-soukra125251-whole.json",
+    "sha256": "5acfdbf2c5a36af0ade105e0e795aa39a27f90f7749c0e708bd7db79b8196aa4"
+  },
+  "ownerId": "osm:relation:7114900",
+  "previousRecord": {
+    "id": "osm:relation:7114900",
+    "targetDelegationId": 532,
+    "expectedGovernorateId": 358,
+    "expectedBase": {
+      "nomAr": "سكرة",
+      "lat": 36.8791,
+      "lng": 10.2656
+    },
+    "expectedExistingMemberIds": [
+      "osm:relation:7114900"
+    ],
+    "expectedTargetMemberIds": [
+      "delegation:532"
+    ],
+    "members": [
+      {
+        "id": "osm:relation:7114900",
+        "expectedKind": "sector",
+        "expectedSourceId": "osm",
+        "expectedName": "سكرة",
+        "expectedParentName": "معتمدية سكرة",
+        "expectedDelegationId": 532,
+        "expectedLat": 36.876348,
+        "expectedLng": 10.258199,
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "int_name": "Soukra",
+          "name": "سكرة",
+          "name:ar": "سكرة",
+          "name:fr": "Soukra",
+          "ref:tn:codegeo": "125251"
+        },
+        "originalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f",
+        "packedGeometrySha256": "db4b5309477bcfe72d8156e17be76fe3a94f2bc0e12f9967c08132815471e1e1"
+      }
+    ],
+    "identityEvidence": [
+      {
+        "method": "current_coded_sector",
+        "id": "osm:relation:7114900",
+        "code": "125251",
+        "currentOfficialRecord": {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125251",
+          "sectorFr": "Soukra",
+          "sectorAr": "سكرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5849,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 184,
+            "Nombre_de_menages_par_Secteurs.xlsx": 184
+          }
+        },
+        "accepted": true,
+        "reasons": [],
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "int_name": "Soukra",
+          "name": "سكرة",
+          "name:ar": "سكرة",
+          "name:fr": "Soukra",
+          "ref:tn:codegeo": "125251"
+        },
+        "effectiveOriginalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f"
+      },
+      {
+        "method": "current_coded_namesake_administrative_parent",
+        "id": "osm:relation:4184709",
+        "code": "1252",
+        "name": "معتمدية سكرة",
+        "accepted": true,
+        "reasons": [],
+        "expectedOriginalTags": {
+          "admin_level": "5",
+          "alt_name:fr": "La Soukra",
+          "boundary": "administrative",
+          "name": "معتمدية سكرة",
+          "name:ar": "معتمدية سكرة",
+          "name:fr": "Délégation Soukra",
+          "ref:tn:codegeo": "1252",
+          "ref:tn:hasc_2": "TN.AN.LS",
+          "wikidata": "Q3212913"
+        },
+        "effectiveOriginalGeometrySha256": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c",
+        "currentOfficialRecord": {
+          "governorateCode": "12",
+          "governorateAr": "أريانة",
+          "governorateFr": "Ariana",
+          "delegationCode": "1252",
+          "delegationAr": "سكرة",
+          "delegationFr": "Soukra"
+        }
+      }
+    ]
+  },
+  "activeRecord": {
+    "id": "osm:relation:7114900",
+    "targetDelegationId": 532,
+    "expectedGovernorateId": 358,
+    "expectedBase": {
+      "nomAr": "سكرة",
+      "lat": 36.8791,
+      "lng": 10.2656
+    },
+    "expectedExistingMemberIds": [
+      "osm:relation:7114900"
+    ],
+    "expectedTargetMemberIds": [
+      "delegation:532"
+    ],
+    "members": [
+      {
+        "id": "osm:relation:7114900",
+        "expectedKind": "sector",
+        "expectedSourceId": "isie-local-sector-2023-soukra125251-whole",
+        "expectedName": "سكرة",
+        "expectedParentName": "معتمدية سكرة",
+        "expectedDelegationId": 532,
+        "expectedLat": 36.876348,
+        "expectedLng": 10.258199,
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "int_name": "Soukra",
+          "name": "سكرة",
+          "name:ar": "سكرة",
+          "name:fr": "Soukra",
+          "ref:tn:codegeo": "125251"
+        },
+        "originalGeometrySha256": "7619632b7b5e163239ce954cbb3d97b69c366536def4563bf2c568fb305df60f",
+        "packedGeometrySha256": "f3c89d91daefed0c930741fbc5db4fad35206fad5483cafc2c341eb60f969ca0"
+      }
+    ],
+    "identityEvidence": [
+      {
+        "method": "current_coded_sector",
+        "id": "osm:relation:7114900",
+        "code": "125251",
+        "currentOfficialRecord": {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125251",
+          "sectorFr": "Soukra",
+          "sectorAr": "سكرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5849,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 184,
+            "Nombre_de_menages_par_Secteurs.xlsx": 184
+          }
+        },
+        "accepted": true,
+        "reasons": [],
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "int_name": "Soukra",
+          "name": "سكرة",
+          "name:ar": "سكرة",
+          "name:fr": "Soukra",
+          "ref:tn:codegeo": "125251"
+        },
+        "effectiveOriginalGeometrySha256": "7619632b7b5e163239ce954cbb3d97b69c366536def4563bf2c568fb305df60f"
+      },
+      {
+        "method": "reviewed_official_boundary_parent_membership",
+        "id": "osm:relation:4184709",
+        "code": "1252",
+        "name": "معتمدية سكرة",
+        "accepted": true,
+        "reasons": [],
+        "expectedOriginalTags": {
+          "admin_level": "5",
+          "alt_name:fr": "La Soukra",
+          "boundary": "administrative",
+          "name": "معتمدية سكرة",
+          "name:ar": "معتمدية سكرة",
+          "name:fr": "Délégation Soukra",
+          "ref:tn:codegeo": "1252",
+          "ref:tn:hasc_2": "TN.AN.LS",
+          "wikidata": "Q3212913"
+        },
+        "effectiveOriginalGeometrySha256": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c",
+        "currentOfficialRecord": {
+          "governorateCode": "12",
+          "governorateAr": "أريانة",
+          "governorateFr": "Ariana",
+          "delegationCode": "1252",
+          "delegationAr": "سكرة",
+          "delegationFr": "Soukra"
+        },
+        "parentMembershipReview": {
+          "file": "official/soukra125251-whole-20260920/parent-membership-review.json",
+          "sha256": "db679431efc289f1fcfa10900ff1b2a07e7308fe4a7ac028ca0e64b79ae664ef"
+        }
+      }
+    ]
+  },
+  "previousProofCollection": {
+    "file": "reviews/base-locality110-strict-proposal.json",
+    "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+  },
+  "successorProofCollection": {
+    "file": "official/soukra125251-whole-20260920/dependencies/base-locality110-strict-proposal-successor.json",
+    "sha256": "c64131bc132d598b7de93967c09e87676a415b7027498c81fd158fc5ffc48c56"
+  },
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "98e2d2b7a6cc7df3613e28bb783eaee85367bbe6984b893ae8cb82bf8557f2fa"
+  },
+  "acceptedBoundaryReplacement": {
+    "id": "osm:relation:7114900",
+    "sourceRecord": {
+      "id": "isie-local-sector-2023-soukra125251-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/سكرة/سكرة.pdf",
+      "file": "official/soukra125251-whole-20260920/soukra125251-whole-source.geojson",
+      "sha256": "69e9681041dbae1b712ba75fd56210ce4c484ea33b381c36f9330f1d59eecf1b",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7114900",
+          "officialCode": "125251",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "int_name": "Soukra",
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:fr": "Soukra",
+            "ref:tn:codegeo": "125251"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/soukra125251-whole-20260920/manual-point-review.json",
+        "sha256": "57ba25370c2eec35ac1b64ee7799d54ec137f93491d68cae96e9cf4a00e2c3d4"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "One complete unchanged native whole-imada vector; no repair, snapping, clipping or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary name and Soukra French name preserved exactly; no curation supersession.",
+        "evidenceFile": "official/soukra125251-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "eed9586210c7771d19b4e72342b9937356f3b4eabed74b27633ea4937374a0dc",
+        "uncertainty": "Native shared registration overlap, actual conflicts/gaps retained; no survey or present-day currency certification."
+      }
+    },
+    "record": {
+      "id": "osm:relation:7114900",
+      "officialCode": "125251",
+      "action": "replace",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "int_name": "Soukra",
+        "name": "سكرة",
+        "name:ar": "سكرة",
+        "name:fr": "Soukra",
+        "ref:tn:codegeo": "125251"
+      },
+      "aliases": []
+    },
+    "application": {
+      "id": "osm:relation:7114900",
+      "action": "replace",
+      "officialCode": "125251",
+      "sourceId": "isie-local-sector-2023-soukra125251-whole"
+    },
+    "geojson": {
+      "file": "official/soukra125251-whole-20260920/soukra125251-whole-source.geojson",
+      "sha256": "69e9681041dbae1b712ba75fd56210ce4c484ea33b381c36f9330f1d59eecf1b"
+    },
+    "featureSha256": "68d38ffb63937002a3d3d439ae09c67bc7709459d052d09cee95e31dc540753f",
+    "providerEvidence": {
+      "file": "official/soukra125251-whole-20260920/source-acceptance-review.json",
+      "sha256": "eed9586210c7771d19b4e72342b9937356f3b4eabed74b27633ea4937374a0dc",
+      "bytes": 21807
+    }
+  },
+  "qualification": "Work-only strict picker successor; original OSM geometry and historical evidence preserved separately; no consumer repins or historical rewrites."
+}

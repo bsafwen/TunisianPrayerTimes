@@ -1,0 +1,2332 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:560792911",
+  "baseId": 485,
+  "rawCurrent": {
+    "id": "osm:node:560792911",
+    "sourceId": "osm",
+    "name": "الفوار",
+    "aliases": [
+      "El Faouar"
+    ],
+    "kind": "village",
+    "parentName": "غريب",
+    "contextAliases": [
+      "Délégation El Faouar",
+      "Faouar",
+      "Gharib",
+      "غريب",
+      "معتمدية الفوار"
+    ],
+    "governorateId": 1012,
+    "lat": 33.355963,
+    "lng": 8.6732515,
+    "delegationId": 485,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:560792911"
+  },
+  "baseCurrent": {
+    "id": 485,
+    "nomFr": "El Faouar",
+    "nomAr": "الفوار",
+    "nomEn": "El Faouar",
+    "lat": 33.3643,
+    "lng": 8.6766
+  },
+  "expectedGovernor": {
+    "id": 1012,
+    "nomFr": "Kébili",
+    "nomAr": "قبلي",
+    "nomEn": "Kebili",
+    "lat": 33.7072,
+    "lng": 8.9697
+  },
+  "originalSourceNode": {
+    "id": "osm:node:560792911",
+    "tags": {
+      "name": "الفوار",
+      "name:ar": "الفوار",
+      "name:en": "El Faouar",
+      "name:fr": "El Faouar",
+      "place": "village"
+    },
+    "lat": 33.355963,
+    "lng": 8.6732515
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/faouar/osm-node-560792911-current.json",
+    "sha256": "fdb150fc934c0bcbb196ce191103d3ca96f939edfd02852cab1bd30caaf48ad8",
+    "url": "https://api.openstreetmap.org/api/0.6/node/560792911.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/560792911.json",
+    "sha256": "fdb150fc934c0bcbb196ce191103d3ca96f939edfd02852cab1bd30caaf48ad8",
+    "exactElement": {
+      "type": "node",
+      "id": 560792911,
+      "lat": 33.355963,
+      "lon": 8.6732515,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "version": 9,
+      "changeset": 98539602,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "name": "الفوار",
+        "name:ar": "الفوار",
+        "name:en": "El Faouar",
+        "name:fr": "El Faouar",
+        "place": "village"
+      }
+    }
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/el-faouar-town-point-source-review.json",
+    "sha256": "b46eef0ec5b43f07b6ab2c3f92dd3335ddadc62646f391989a972781bbbf07a4"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+    "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+  },
+  "independentPrimaryFinding": "Same named settlement choice as El Faouar reference; preserve five sectors and Ghidma group.",
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-page-38.txt",
+      "sha256": "19f8370de49deb920ffb5d82211302fd42040e143ab06efb1bec40f1d64a7dea",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasSDARECOsudOuestFR.pdf",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "Les agglomérations se sont alors étendues",
+        "frontières et sahariennes : Hezoua, El Faouar,",
+        "VII/ LE RESEAU URBAIN REGIONAL"
+      ],
+      "artifactKind": "derived_complete_page_text",
+      "isOriginalHttpResponseBytes": false,
+      "originalPdf": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-sud-ouest.pdf",
+        "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasSDARECOsudOuestFR.pdf"
+      },
+      "pdfPage": 38,
+      "printedPage": 37,
+      "finding": "The regional urban-network chapter explicitly names El Faouar among the settlements that expanded toward the Saharan/frontier zone. Its definition of agglomeration includes cities, villages and small towns regardless of communal status. This supports inhabited-settlement identity, not equivalence with any sector, municipality or delegation territory.",
+      "urlQualification": "URL identifies the original PDF; the pinned UTF8 file is a derived complete page.",
+      "derivationReview": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/complete-primary-page-text-provenance.json",
+        "sha256": "9f850f38021c54274ef46426a1f7b75e0f2558573d5fcc63cc7c6c736752d989"
+      }
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/el-faouar-town-point-source-review.json",
+      "sha256": "b46eef0ec5b43f07b6ab2c3f92dd3335ddadc62646f391989a972781bbbf07a4"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/faouar/osm-node-560792911-history.json",
+    "sha256": "e15cd5ac3b4e64b822b7af0b56155592e0ea5e64d6349ec96f2496f98b753a70"
+  },
+  "sourceIdentityQualifications": {
+    "history": {
+      "versionsReviewed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "firstTimestamp": "2009-11-11T15:42:43Z",
+      "lastTimestamp": "2021-02-02T00:59:52Z",
+      "namedVillageThroughout": true,
+      "institutionOrAdministrativeRetagFound": false,
+      "coordinateEpochs": [
+        {
+          "lat": 33.364865,
+          "lng": 8.676866,
+          "versions": [
+            1
+          ]
+        },
+        {
+          "lat": 33.3648651,
+          "lng": 8.6768659,
+          "versions": [
+            2
+          ]
+        },
+        {
+          "lat": 33.3606088,
+          "lng": 8.6752894,
+          "versions": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "lat": 33.355963,
+          "lng": 8.6732515,
+          "versions": [
+            8,
+            9
+          ]
+        }
+      ],
+      "historicalQualification": "Versions 3 through 6 carried Gabes address/is_in governorate tags. Those were removed in version 7; no current metadata or administrative inference relies on them. Coordinates are preserved as source representatives, not certified centers."
+    },
+    "identity": "The stable inhabited-place source node and official urban-settlement description support a single picker display association with El Faouar base485. Retain village kind, coordinates, raw names/aliases/context, prayer reference485, five sectors and all existing Ghidma/manual-point and Rejim Maatoug transfer decisions. This is no polygon or city-sector identity claim.",
+    "limits": [
+      "Ghidma has a pre-existing source polygon/delegation disagreement, explicitly documented by its active administrative_context curation. Preserve that reviewed metadata and the unmodified source polygon; it does not justify changing the proposed Faouar city association.",
+      "Two historical Faouar-coded sectors are current Rejim Maatoug sectors. Their existing transfer decisions and complete groups remain unchanged.",
+      "No exact GPS coordinate, inhabited perimeter or municipal boundary is certified by this display review.",
+      "Phone evidence is handled separately by root; this report does not claim to have viewed the phone."
+    ]
+  },
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-after-inm-geography-feasibility.json",
+    "sha256": "ddf07c5f2cae5747613e64a79022c3ade2e995f77fcd6f64aa534f50f56cee60"
+  },
+  "currentSourcePhaseFacts": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/finite-source-group-facts.json",
+    "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+  },
+  "historicalSourceReportQualification": "Original identity/phone reports describe their earlier frozen reference phase. Their identity observations remain evidence; only currentSourcePhaseFacts, rawCurrent, baseCurrent and expectedCoordinateCorrections bind current coordinates and containment.",
+  "supplementaryPhoneReview": {
+    "reference": {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-phone-review-20260912.json",
+      "sha256": "16bac80d9ffcd27ce60ac2a13a26c0cf7d583bdcbabd10518df6aff2739d5a9e"
+    },
+    "qualification": "Public candidate search observations only; no Google polygon or coordinate certification. Original reference searches predate the two official INM coordinate corrections."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7095581",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6356",
+        "delegationFr": "El faouar",
+        "delegationAr": "الفوار",
+        "sectorCode": "635651",
+        "sectorFr": "Sabria ouest",
+        "sectorAr": "الصابرية الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70491,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3459,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3452
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صبرية غرب",
+        "name:ar": "صبرية غرب",
+        "name:fr": "Sabria Ouest",
+        "ref:tn:codegeo": "635651"
+      },
+      "sourceGeometrySha256": "32874d64a4dfb4728959901d1ab0a45adf98e223efd9bd772b68400b56321118",
+      "currentMetadata": {
+        "id": "osm:relation:7095581",
+        "sourceId": "osm",
+        "name": "صبرية غرب",
+        "aliases": [
+          "Sabria Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الفوار",
+        "contextAliases": [
+          "Délégation El Faouar",
+          "Faouar",
+          "معتمدية الفوار"
+        ],
+        "governorateId": 1012,
+        "lat": 32.962509,
+        "lng": 8.435345,
+        "delegationId": 485,
+        "hasBoundary": true,
+        "bbox": [
+          8.106881,
+          32.502602,
+          8.738262,
+          33.395472
+        ],
+        "areaKm2": 2684.9390182553875,
+        "pickerGroupId": "osm:relation:7095581",
+        "offset": 107428,
+        "length": 1268
+      },
+      "packedGeometrySha256": "187233f8c8d1778e8ddfab49f91a548b0d9df265b64e5be1c39ae9e06b17b77f",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7095582",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6356",
+        "delegationFr": "El faouar",
+        "delegationAr": "الفوار",
+        "sectorCode": "635652",
+        "sectorFr": "Sabria est",
+        "sectorAr": "الصابرية الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70525,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3460,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3453
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صبرية شرق",
+        "name:ar": "صبرية شرق",
+        "name:fr": "Sabria Est",
+        "ref:tn:codegeo": "635652"
+      },
+      "sourceGeometrySha256": "164ec4464d1323d47c89de231fce6515abf58c54dd90a24e5489fe29be94346a",
+      "currentMetadata": {
+        "id": "osm:relation:7095582",
+        "sourceId": "osm",
+        "name": "صبرية شرق",
+        "aliases": [
+          "Sabria Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الفوار",
+        "contextAliases": [
+          "Délégation El Faouar",
+          "Faouar",
+          "معتمدية الفوار"
+        ],
+        "governorateId": 1012,
+        "lat": 32.968993,
+        "lng": 8.801557,
+        "delegationId": 485,
+        "hasBoundary": true,
+        "bbox": [
+          8.570614,
+          32.539233,
+          9.068356,
+          33.395472
+        ],
+        "areaKm2": 2367.7091043832397,
+        "pickerGroupId": "osm:relation:7095582",
+        "offset": 108696,
+        "length": 844
+      },
+      "packedGeometrySha256": "70f5b824d0df0abdd17d4093ab59895b11eb3b5742a3bc2aeb5e8a7a6516a6a4",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7095579",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6356",
+        "delegationFr": "El faouar",
+        "delegationAr": "الفوار",
+        "sectorCode": "635653",
+        "sectorFr": "Gharib",
+        "sectorAr": "غريب",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70559,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3462,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3455
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "غريب",
+        "name:ar": "غريب",
+        "name:fr": "Gharib",
+        "ref:tn:codegeo": "635653"
+      },
+      "sourceGeometrySha256": "c451e3ad51d8975d814cbe1c70af924338dae2c318d8de983a2f9d2bb12dc1ee",
+      "currentMetadata": {
+        "id": "osm:relation:7095579",
+        "sourceId": "osm",
+        "name": "غريب",
+        "aliases": [
+          "Gharib"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الفوار",
+        "contextAliases": [
+          "Délégation El Faouar",
+          "Faouar",
+          "معتمدية الفوار"
+        ],
+        "governorateId": 1012,
+        "lat": 33.281202,
+        "lng": 8.400263,
+        "delegationId": 485,
+        "hasBoundary": true,
+        "bbox": [
+          8.106881,
+          33.104887,
+          8.738262,
+          33.454428
+        ],
+        "areaKm2": 1156.9797358810965,
+        "pickerGroupId": "osm:relation:7095579",
+        "offset": 106544,
+        "length": 884
+      },
+      "packedGeometrySha256": "ad7bce688e7026652de5d36689600dddc4f41accce726b28fd5582dd8838f2c4",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7095632",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6356",
+        "delegationFr": "El faouar",
+        "delegationAr": "الفوار",
+        "sectorCode": "635654",
+        "sectorFr": "Gueidma",
+        "sectorAr": "غيدمة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70593,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3464,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3457
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قايدمة",
+        "name:ar": "قايدمة",
+        "name:fr": "Gueïdma",
+        "ref:tn:codegeo": "635654"
+      },
+      "sourceGeometrySha256": "2a0f6a442e8b2fe4182c72636a1a0c8d80c04ec3495ee55fd15f70e3e3af7132",
+      "currentMetadata": {
+        "id": "osm:relation:7095632",
+        "sourceId": "osm",
+        "name": "غيدمة",
+        "aliases": [
+          "Ghidma",
+          "Gueidma",
+          "Gueïdma",
+          "قايدمة"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الفوار",
+        "contextAliases": [
+          "Délégation El Faouar",
+          "Faouar",
+          "معتمدية الفوار"
+        ],
+        "governorateId": 1012,
+        "lat": 33.4316482,
+        "lng": 8.8159209,
+        "delegationId": 485,
+        "hasBoundary": true,
+        "bbox": [
+          8.731224,
+          33.334122,
+          8.863735,
+          33.464381
+        ],
+        "areaKm2": 88.97019359085873,
+        "manualPointId": "osm:node:349303622",
+        "pickerGroupId": "osm:relation:7095632",
+        "offset": 109540,
+        "length": 172
+      },
+      "packedGeometrySha256": "ae559b31594b1bf18ab84f0a8a05efd56c6a037ec32c356715d93e68b4dc11b4",
+      "expectedCuration": {
+        "id": "osm:relation:7095632",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "قايدمة",
+          "ref:tn:codegeo": "635654",
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "قايدمة",
+          "name:fr": "Gueïdma"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7107872",
+        "reason": "ISIE lists Guidma in Faouar. INS code 635654 identifies the same sector; conflicting source geometry places it in Douz Sud. Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59",
+          "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=130",
+          {
+            "source": "Independent official name and source point review",
+            "officialCode": "635654",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "officialSourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70593,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3464,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3457
+            },
+            "pointId": "osm:node:349303622",
+            "pointLatitude": 33.4316482,
+            "pointLongitude": 8.8159209,
+            "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+          }
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ],
+        "nameTags": {
+          "name": "غيدمة",
+          "name:ar": "غيدمة",
+          "name:fr": "Gueidma",
+          "alt_name": "قايدمة;Gueïdma"
+        },
+        "manualPointId": "osm:node:349303622"
+      }
+    },
+    {
+      "id": "osm:relation:7095633",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6356",
+        "delegationFr": "El faouar",
+        "delegationAr": "الفوار",
+        "sectorCode": "635657",
+        "sectorFr": "Bichni - edarjin",
+        "sectorAr": "بشني - الدرجين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70627,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3466,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3459
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بشني إدرجين",
+        "name:ar": "بشني إدرجين",
+        "name:fr": "Bichni Edarjin",
+        "ref:tn:codegeo": "635657"
+      },
+      "sourceGeometrySha256": "72eca487635e3cc88efce894ddbba412989690487e9e07673fe7f9138babdcc9",
+      "currentMetadata": {
+        "id": "osm:relation:7095633",
+        "sourceId": "osm",
+        "name": "بشني إدرجين",
+        "aliases": [
+          "Bichni Edarjin"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية الفوار",
+        "contextAliases": [
+          "Délégation El Faouar",
+          "Faouar",
+          "معتمدية الفوار"
+        ],
+        "governorateId": 1012,
+        "lat": 33.613626,
+        "lng": 8.554326,
+        "delegationId": 485,
+        "hasBoundary": true,
+        "bbox": [
+          8.263815,
+          33.426567,
+          8.858414,
+          33.803054
+        ],
+        "areaKm2": 1067.6854791170836,
+        "pickerGroupId": "osm:relation:7095633",
+        "offset": 109712,
+        "length": 788
+      },
+      "packedGeometrySha256": "1715bd068a17d801016da0faf5fc890f5d8298a4eb062907e092a34f90114ded",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:560792911",
+      "kind": "village",
+      "tags": {
+        "name": "الفوار",
+        "name:ar": "الفوار",
+        "name:en": "El Faouar",
+        "name:fr": "El Faouar",
+        "place": "village"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434950": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-73",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية قبلي",
+        "name:ar": "ولاية قبلي",
+        "name:az": "Kebili (vilayət)",
+        "name:be": "Кебілі (вілает)",
+        "name:be-tarask": "Кебілі (вілает)",
+        "name:bg": "Кебили (област)",
+        "name:ca": "Governació de Kébili",
+        "name:ceb": "Gouvernorat de Kébili",
+        "name:cy": "Kébili (talaith)",
+        "name:de": "Gouvernement Kebili",
+        "name:el": "Κεμπιλί (Κυβερνείο)",
+        "name:en": "Kébili",
+        "name:eo": "Kebili",
+        "name:es": "Gobernación de Kebili",
+        "name:fa": "قبلی",
+        "name:fr": "Gouvernorat Kébili",
+        "name:frr": "Kébili (Guwernement)",
+        "name:id": "Kegubernuran Kebili",
+        "name:it": "Kébili",
+        "name:ja": "ケビリ県",
+        "name:ko": "케빌리주",
+        "name:ks": "قبلی",
+        "name:ms": "Kawasan kegabenoran Kebili",
+        "name:nl": "Kébili (gouvernement)",
+        "name:no": "Kebili (guvernement)",
+        "name:pl": "Kibili",
+        "name:pt": "Kebili (província)",
+        "name:ro": "Guvernoratul Kebili",
+        "name:ru": "Кебили (вилайет)",
+        "name:sco": "Kebili Govrenorate",
+        "name:sh": "Kébili (vilajet)",
+        "name:tr": "Kabili ili",
+        "name:uk": "Кебілі (вілаєт)",
+        "name:ur": "قبلی",
+        "name:zh": "吉比利省",
+        "name:zu": "Kebili Governorate",
+        "official_name": "ولاية قبلي",
+        "official_name:ar": "ولاية قبلي",
+        "official_name:en": "Kebili Governorate",
+        "official_name:eo": "Gubernio de Kebili",
+        "official_name:fa": "استان قبلی",
+        "official_name:fr": "Gouvernorat de Kébili",
+        "official_name:it": "Governatorato di Kébili",
+        "official_name:pl": "Gubernatorstwo Kibili",
+        "official_name:ur": "ولایت قبلی",
+        "population": "156961",
+        "population:date": "2014",
+        "ref:tn:codegeo": "63",
+        "wikidata": "Q286063",
+        "wikipedia": "ar:ولاية قبلي"
+      },
+      "sourceGeometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+    },
+    "osm:relation:7107872": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Faouar",
+        "boundary": "administrative",
+        "name": "معتمدية الفوار",
+        "name:ar": "معتمدية الفوار",
+        "name:fr": "Délégation El Faouar",
+        "ref:tn:codegeo": "6356",
+        "ref:tn:hasc_2": "TN.KB.FA",
+        "wikidata": "Q12243833"
+      },
+      "sourceGeometrySha256": "5513ceb7470370b4e8fe90cbfb9b5e5dbffabe6f6ac9e9b278ed66cdca052067"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:560792911",
+    "field": "pickerGroupId",
+    "before": "osm:node:560792911",
+    "after": "delegation:485"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:560792911"
+      ],
+      [
+        "delegation:485"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:485",
+        "osm:node:560792911"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Both current point and timetable-reference coordinates are preserved. Published INM reference coordinates are not certified internal calculation inputs or administrative/urban boundaries.",
+  "scope": "Only the named point joins the existing manual town choice. Separate official sectors, all raw records, source identities, geometry, names, aliases, context and prayer defaults remain unchanged.",
+  "sourcePhaseQualification": "ACTUAL_ISOLATED_GENERATED_METADATA_AFTER_TWO_INM_REFERENCES_BEFORE_THREE_DISPLAY_RULES",
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "6356"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:349303622",
+        "original": {
+          "tags": {
+            "name": "غيدمة",
+            "name:ar": "غيدمة",
+            "name:en": "Ghidma",
+            "name:fr": "Ghidma",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "ee5d74479665ee7ec9709874f2c3ef7ade3483c9eaf48c90c1b306a5fc4c2049"
+        },
+        "effective": {
+          "tags": {
+            "name": "غيدمة",
+            "name:ar": "غيدمة",
+            "name:en": "Ghidma",
+            "name:fr": "Ghidma",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "ee5d74479665ee7ec9709874f2c3ef7ade3483c9eaf48c90c1b306a5fc4c2049"
+        }
+      },
+      {
+        "id": "osm:node:560792911",
+        "original": {
+          "tags": {
+            "name": "الفوار",
+            "name:ar": "الفوار",
+            "name:en": "El Faouar",
+            "name:fr": "El Faouar",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "72f71c405bf8c92d9c5a4a627defb2afc359927ea7a841ce9eea1e85b788ef3e"
+        },
+        "effective": {
+          "tags": {
+            "name": "الفوار",
+            "name:ar": "الفوار",
+            "name:en": "El Faouar",
+            "name:fr": "El Faouar",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "72f71c405bf8c92d9c5a4a627defb2afc359927ea7a841ce9eea1e85b788ef3e"
+        }
+      },
+      {
+        "id": "osm:relation:1434950",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-73",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قبلي",
+            "name:ar": "ولاية قبلي",
+            "name:az": "Kebili (vilayət)",
+            "name:be": "Кебілі (вілает)",
+            "name:be-tarask": "Кебілі (вілает)",
+            "name:bg": "Кебили (област)",
+            "name:ca": "Governació de Kébili",
+            "name:ceb": "Gouvernorat de Kébili",
+            "name:cy": "Kébili (talaith)",
+            "name:de": "Gouvernement Kebili",
+            "name:el": "Κεμπιλί (Κυβερνείο)",
+            "name:en": "Kébili",
+            "name:eo": "Kebili",
+            "name:es": "Gobernación de Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Gouvernorat Kébili",
+            "name:frr": "Kébili (Guwernement)",
+            "name:id": "Kegubernuran Kebili",
+            "name:it": "Kébili",
+            "name:ja": "ケビリ県",
+            "name:ko": "케빌리주",
+            "name:ks": "قبلی",
+            "name:ms": "Kawasan kegabenoran Kebili",
+            "name:nl": "Kébili (gouvernement)",
+            "name:no": "Kebili (guvernement)",
+            "name:pl": "Kibili",
+            "name:pt": "Kebili (província)",
+            "name:ro": "Guvernoratul Kebili",
+            "name:ru": "Кебили (вилайет)",
+            "name:sco": "Kebili Govrenorate",
+            "name:sh": "Kébili (vilajet)",
+            "name:tr": "Kabili ili",
+            "name:uk": "Кебілі (вілаєт)",
+            "name:ur": "قبلی",
+            "name:zh": "吉比利省",
+            "name:zu": "Kebili Governorate",
+            "official_name": "ولاية قبلي",
+            "official_name:ar": "ولاية قبلي",
+            "official_name:en": "Kebili Governorate",
+            "official_name:eo": "Gubernio de Kebili",
+            "official_name:fa": "استان قبلی",
+            "official_name:fr": "Gouvernorat de Kébili",
+            "official_name:it": "Governatorato di Kébili",
+            "official_name:pl": "Gubernatorstwo Kibili",
+            "official_name:ur": "ولایت قبلی",
+            "population": "156961",
+            "population:date": "2014",
+            "ref:tn:codegeo": "63",
+            "wikidata": "Q286063",
+            "wikipedia": "ar:ولاية قبلي"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-73",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قبلي",
+            "name:ar": "ولاية قبلي",
+            "name:az": "Kebili (vilayət)",
+            "name:be": "Кебілі (вілает)",
+            "name:be-tarask": "Кебілі (вілает)",
+            "name:bg": "Кебили (област)",
+            "name:ca": "Governació de Kébili",
+            "name:ceb": "Gouvernorat de Kébili",
+            "name:cy": "Kébili (talaith)",
+            "name:de": "Gouvernement Kebili",
+            "name:el": "Κεμπιλί (Κυβερνείο)",
+            "name:en": "Kébili",
+            "name:eo": "Kebili",
+            "name:es": "Gobernación de Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Gouvernorat Kébili",
+            "name:frr": "Kébili (Guwernement)",
+            "name:id": "Kegubernuran Kebili",
+            "name:it": "Kébili",
+            "name:ja": "ケビリ県",
+            "name:ko": "케빌리주",
+            "name:ks": "قبلی",
+            "name:ms": "Kawasan kegabenoran Kebili",
+            "name:nl": "Kébili (gouvernement)",
+            "name:no": "Kebili (guvernement)",
+            "name:pl": "Kibili",
+            "name:pt": "Kebili (província)",
+            "name:ro": "Guvernoratul Kebili",
+            "name:ru": "Кебили (вилайет)",
+            "name:sco": "Kebili Govrenorate",
+            "name:sh": "Kébili (vilajet)",
+            "name:tr": "Kabili ili",
+            "name:uk": "Кебілі (вілаєт)",
+            "name:ur": "قبلی",
+            "name:zh": "吉比利省",
+            "name:zu": "Kebili Governorate",
+            "official_name": "ولاية قبلي",
+            "official_name:ar": "ولاية قبلي",
+            "official_name:en": "Kebili Governorate",
+            "official_name:eo": "Gubernio de Kebili",
+            "official_name:fa": "استان قبلی",
+            "official_name:fr": "Gouvernorat de Kébili",
+            "official_name:it": "Governatorato di Kébili",
+            "official_name:pl": "Gubernatorstwo Kibili",
+            "official_name:ur": "ولایت قبلی",
+            "population": "156961",
+            "population:date": "2014",
+            "ref:tn:codegeo": "63",
+            "wikidata": "Q286063",
+            "wikipedia": "ar:ولاية قبلي"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+        }
+      },
+      {
+        "id": "osm:relation:7095579",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غريب",
+            "name:ar": "غريب",
+            "name:fr": "Gharib",
+            "ref:tn:codegeo": "635653"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "c451e3ad51d8975d814cbe1c70af924338dae2c318d8de983a2f9d2bb12dc1ee"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غريب",
+            "name:ar": "غريب",
+            "name:fr": "Gharib",
+            "ref:tn:codegeo": "635653"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "c451e3ad51d8975d814cbe1c70af924338dae2c318d8de983a2f9d2bb12dc1ee"
+        }
+      },
+      {
+        "id": "osm:relation:7095581",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صبرية غرب",
+            "name:ar": "صبرية غرب",
+            "name:fr": "Sabria Ouest",
+            "ref:tn:codegeo": "635651"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "32874d64a4dfb4728959901d1ab0a45adf98e223efd9bd772b68400b56321118"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صبرية غرب",
+            "name:ar": "صبرية غرب",
+            "name:fr": "Sabria Ouest",
+            "ref:tn:codegeo": "635651"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "32874d64a4dfb4728959901d1ab0a45adf98e223efd9bd772b68400b56321118"
+        }
+      },
+      {
+        "id": "osm:relation:7095582",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صبرية شرق",
+            "name:ar": "صبرية شرق",
+            "name:fr": "Sabria Est",
+            "ref:tn:codegeo": "635652"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "164ec4464d1323d47c89de231fce6515abf58c54dd90a24e5489fe29be94346a"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صبرية شرق",
+            "name:ar": "صبرية شرق",
+            "name:fr": "Sabria Est",
+            "ref:tn:codegeo": "635652"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "164ec4464d1323d47c89de231fce6515abf58c54dd90a24e5489fe29be94346a"
+        }
+      },
+      {
+        "id": "osm:relation:7095632",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قايدمة",
+            "name:ar": "قايدمة",
+            "name:fr": "Gueïdma",
+            "ref:tn:codegeo": "635654"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "2a0f6a442e8b2fe4182c72636a1a0c8d80c04ec3495ee55fd15f70e3e3af7132"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "ref:tn:codegeo": "635654",
+            "name": "غيدمة",
+            "name:ar": "غيدمة",
+            "name:fr": "Gueidma",
+            "alt_name": "قايدمة;Gueïdma"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "2a0f6a442e8b2fe4182c72636a1a0c8d80c04ec3495ee55fd15f70e3e3af7132"
+        }
+      },
+      {
+        "id": "osm:relation:7095633",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بشني إدرجين",
+            "name:ar": "بشني إدرجين",
+            "name:fr": "Bichni Edarjin",
+            "ref:tn:codegeo": "635657"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "72eca487635e3cc88efce894ddbba412989690487e9e07673fe7f9138babdcc9"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بشني إدرجين",
+            "name:ar": "بشني إدرجين",
+            "name:fr": "Bichni Edarjin",
+            "ref:tn:codegeo": "635657"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "72eca487635e3cc88efce894ddbba412989690487e9e07673fe7f9138babdcc9"
+        }
+      },
+      {
+        "id": "osm:relation:7107872",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Faouar",
+            "boundary": "administrative",
+            "name": "معتمدية الفوار",
+            "name:ar": "معتمدية الفوار",
+            "name:fr": "Délégation El Faouar",
+            "ref:tn:codegeo": "6356",
+            "ref:tn:hasc_2": "TN.KB.FA",
+            "wikidata": "Q12243833"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "5513ceb7470370b4e8fe90cbfb9b5e5dbffabe6f6ac9e9b278ed66cdca052067"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Faouar",
+            "boundary": "administrative",
+            "name": "معتمدية الفوار",
+            "name:ar": "معتمدية الفوار",
+            "name:fr": "Délégation El Faouar",
+            "ref:tn:codegeo": "6356",
+            "ref:tn:hasc_2": "TN.KB.FA",
+            "wikidata": "Q12243833"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "5513ceb7470370b4e8fe90cbfb9b5e5dbffabe6f6ac9e9b278ed66cdca052067"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:node:349303622": {
+        "id": "osm:node:349303622",
+        "action": "preserve_point",
+        "expectedKind": "village",
+        "expectedTags": {
+          "name": "غيدمة",
+          "name:ar": "غيدمة",
+          "name:en": "Ghidma",
+          "name:fr": "Ghidma",
+          "place": "village"
+        },
+        "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+        "evidence": [
+          {
+            "source": "Pinned source point and independent manual-reference review",
+            "sectorId": "osm:relation:7095632",
+            "officialCode": "635654",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+          }
+        ]
+      },
+      "osm:relation:1434950": null,
+      "osm:relation:7095579": null,
+      "osm:relation:7095581": null,
+      "osm:relation:7095582": null,
+      "osm:relation:7095632": {
+        "id": "osm:relation:7095632",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "قايدمة",
+          "ref:tn:codegeo": "635654",
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "قايدمة",
+          "name:fr": "Gueïdma"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7107872",
+        "reason": "ISIE lists Guidma in Faouar. INS code 635654 identifies the same sector; conflicting source geometry places it in Douz Sud. Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59",
+          "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=130",
+          {
+            "source": "Independent official name and source point review",
+            "officialCode": "635654",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "officialSourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70593,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3464,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3457
+            },
+            "pointId": "osm:node:349303622",
+            "pointLatitude": 33.4316482,
+            "pointLongitude": 8.8159209,
+            "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+          }
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ],
+        "nameTags": {
+          "name": "غيدمة",
+          "name:ar": "غيدمة",
+          "name:fr": "Gueidma",
+          "alt_name": "قايدمة;Gueïdma"
+        },
+        "manualPointId": "osm:node:349303622"
+      },
+      "osm:relation:7095633": null,
+      "osm:relation:7107872": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "coordinateContextMembership": {
+      "osm:relation:1434950": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7095579": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7095581": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7095582": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7095632": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7095633": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7107872": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:349303622",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:349303622",
+          "sourceId": "osm",
+          "name": "غيدمة",
+          "aliases": [
+            "Ghidma"
+          ],
+          "kind": "village",
+          "parentName": "معتمدية الفوار",
+          "contextAliases": [
+            "Délégation El Faouar",
+            "Faouar",
+            "Gueidma",
+            "Gueïdma",
+            "غيدمة",
+            "قايدمة",
+            "معتمدية الفوار"
+          ],
+          "governorateId": 1012,
+          "lat": 33.4316482,
+          "lng": 8.8159209,
+          "delegationId": 485,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:relation:7095632"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:node:560792911",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:560792911",
+          "sourceId": "osm",
+          "name": "الفوار",
+          "aliases": [
+            "El Faouar"
+          ],
+          "kind": "village",
+          "parentName": "غريب",
+          "contextAliases": [
+            "Délégation El Faouar",
+            "Faouar",
+            "Gharib",
+            "غريب",
+            "معتمدية الفوار"
+          ],
+          "governorateId": 1012,
+          "lat": 33.355963,
+          "lng": 8.6732515,
+          "delegationId": 485,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:560792911"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7095579",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7095579",
+          "sourceId": "osm",
+          "name": "غريب",
+          "aliases": [
+            "Gharib"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الفوار",
+          "contextAliases": [
+            "Délégation El Faouar",
+            "Faouar",
+            "معتمدية الفوار"
+          ],
+          "governorateId": 1012,
+          "lat": 33.281202,
+          "lng": 8.400263,
+          "delegationId": 485,
+          "hasBoundary": true,
+          "bbox": [
+            8.106881,
+            33.104887,
+            8.738262,
+            33.454428
+          ],
+          "areaKm2": 1156.9797358810965,
+          "pickerGroupId": "osm:relation:7095579",
+          "offset": 106544,
+          "length": 884
+        },
+        "packedGeometrySha256": "ad7bce688e7026652de5d36689600dddc4f41accce726b28fd5582dd8838f2c4"
+      },
+      {
+        "id": "osm:relation:7095581",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7095581",
+          "sourceId": "osm",
+          "name": "صبرية غرب",
+          "aliases": [
+            "Sabria Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الفوار",
+          "contextAliases": [
+            "Délégation El Faouar",
+            "Faouar",
+            "معتمدية الفوار"
+          ],
+          "governorateId": 1012,
+          "lat": 32.962509,
+          "lng": 8.435345,
+          "delegationId": 485,
+          "hasBoundary": true,
+          "bbox": [
+            8.106881,
+            32.502602,
+            8.738262,
+            33.395472
+          ],
+          "areaKm2": 2684.9390182553875,
+          "pickerGroupId": "osm:relation:7095581",
+          "offset": 107428,
+          "length": 1268
+        },
+        "packedGeometrySha256": "187233f8c8d1778e8ddfab49f91a548b0d9df265b64e5be1c39ae9e06b17b77f"
+      },
+      {
+        "id": "osm:relation:7095582",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7095582",
+          "sourceId": "osm",
+          "name": "صبرية شرق",
+          "aliases": [
+            "Sabria Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الفوار",
+          "contextAliases": [
+            "Délégation El Faouar",
+            "Faouar",
+            "معتمدية الفوار"
+          ],
+          "governorateId": 1012,
+          "lat": 32.968993,
+          "lng": 8.801557,
+          "delegationId": 485,
+          "hasBoundary": true,
+          "bbox": [
+            8.570614,
+            32.539233,
+            9.068356,
+            33.395472
+          ],
+          "areaKm2": 2367.7091043832397,
+          "pickerGroupId": "osm:relation:7095582",
+          "offset": 108696,
+          "length": 844
+        },
+        "packedGeometrySha256": "70f5b824d0df0abdd17d4093ab59895b11eb3b5742a3bc2aeb5e8a7a6516a6a4"
+      },
+      {
+        "id": "osm:relation:7095632",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7095632",
+          "sourceId": "osm",
+          "name": "غيدمة",
+          "aliases": [
+            "Ghidma",
+            "Gueidma",
+            "Gueïdma",
+            "قايدمة"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الفوار",
+          "contextAliases": [
+            "Délégation El Faouar",
+            "Faouar",
+            "معتمدية الفوار"
+          ],
+          "governorateId": 1012,
+          "lat": 33.4316482,
+          "lng": 8.8159209,
+          "delegationId": 485,
+          "hasBoundary": true,
+          "bbox": [
+            8.731224,
+            33.334122,
+            8.863735,
+            33.464381
+          ],
+          "areaKm2": 88.97019359085873,
+          "manualPointId": "osm:node:349303622",
+          "pickerGroupId": "osm:relation:7095632",
+          "offset": 109540,
+          "length": 172
+        },
+        "packedGeometrySha256": "ae559b31594b1bf18ab84f0a8a05efd56c6a037ec32c356715d93e68b4dc11b4"
+      },
+      {
+        "id": "osm:relation:7095633",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7095633",
+          "sourceId": "osm",
+          "name": "بشني إدرجين",
+          "aliases": [
+            "Bichni Edarjin"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الفوار",
+          "contextAliases": [
+            "Délégation El Faouar",
+            "Faouar",
+            "معتمدية الفوار"
+          ],
+          "governorateId": 1012,
+          "lat": 33.613626,
+          "lng": 8.554326,
+          "delegationId": 485,
+          "hasBoundary": true,
+          "bbox": [
+            8.263815,
+            33.426567,
+            8.858414,
+            33.803054
+          ],
+          "areaKm2": 1067.6854791170836,
+          "pickerGroupId": "osm:relation:7095633",
+          "offset": 109712,
+          "length": 788
+        },
+        "packedGeometrySha256": "1715bd068a17d801016da0faf5fc890f5d8298a4eb062907e092a34f90114ded"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:560792911": [
+        "osm:node:560792911"
+      ],
+      "osm:relation:7095579": [
+        "osm:relation:7095579"
+      ],
+      "osm:relation:7095581": [
+        "osm:relation:7095581"
+      ],
+      "osm:relation:7095582": [
+        "osm:relation:7095582"
+      ],
+      "osm:relation:7095632": [
+        "osm:node:349303622",
+        "osm:relation:7095632"
+      ],
+      "osm:relation:7095633": [
+        "osm:relation:7095633"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7095579": [
+        "osm:relation:7095579"
+      ],
+      "osm:relation:7095581": [
+        "osm:relation:7095581"
+      ],
+      "osm:relation:7095582": [
+        "osm:relation:7095582"
+      ],
+      "osm:relation:7095632": [
+        "osm:node:349303622",
+        "osm:relation:7095632"
+      ],
+      "osm:relation:7095633": [
+        "osm:relation:7095633"
+      ],
+      "delegation:485": [
+        "osm:node:560792911"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": {
+        "file": "reviewed-picker-groups.json",
+        "sha256": "bc2f54d7f9cf40af5fdcef891ecf927629c304d7823bcd1a653a63c8cd1494e2"
+      },
+      "records": [
+        {
+          "section": "records",
+          "id": "osm:relation:7082336",
+          "record": {
+            "id": "osm:relation:7082336",
+            "targetDelegationId": 486,
+            "expectedGovernorateId": 1012,
+            "expectedBase": {
+              "nomAr": "المطروحة",
+              "lat": 33.3497,
+              "lng": 7.7825
+            },
+            "expectedExistingMemberIds": [
+              "osm:relation:7082336",
+              "osm:way:207572354"
+            ],
+            "expectedTargetMemberIds": [
+              "delegation:486"
+            ],
+            "members": [
+              {
+                "id": "osm:relation:7082336",
+                "expectedKind": "sector",
+                "expectedSourceId": "osm",
+                "expectedName": "المطروحة",
+                "expectedParentName": "معتمدية رجيم معتوق",
+                "expectedDelegationId": 486,
+                "expectedLat": 33.352497,
+                "expectedLng": 7.825295,
+                "expectedOriginalTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "المطروحة",
+                  "name:ar": "المطروحة",
+                  "name:fr": "El Matrouha",
+                  "ref:tn:codegeo": "635656"
+                },
+                "originalGeometrySha256": "955a97b972f0eb939401063d3760793ababd1536898551e4c96f6db26e724521",
+                "packedGeometrySha256": "4c7994cb267a2ba03ac2a7bae238e2d3af3efb0f607d07ff435e15ceecf8e924"
+              },
+              {
+                "id": "osm:way:207572354",
+                "expectedKind": "village",
+                "expectedSourceId": "osm",
+                "expectedName": "المطروحة",
+                "expectedParentName": "معتمدية رجيم معتوق",
+                "expectedDelegationId": 486,
+                "expectedLat": 33.349773,
+                "expectedLng": 7.782706,
+                "expectedOriginalTags": {
+                  "landuse": "residential",
+                  "name": "المطروحة",
+                  "name:ar": "المطروحة",
+                  "name:en": "Matrouha",
+                  "name:fr": "Matrouha",
+                  "place": "village"
+                },
+                "originalGeometrySha256": "7215e5d986bcbb00e7185ff3cbdc3575db57681ff911f498e04c3643d1066f3f",
+                "packedGeometrySha256": "c4108400a4257110307775fc63284aa76ff83a3aedeb32a8f53bdd0f71ab9192"
+              }
+            ],
+            "identityEvidence": [
+              {
+                "id": "osm:relation:7082336",
+                "accepted": true,
+                "reasons": [],
+                "expectedOriginalTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "المطروحة",
+                  "name:ar": "المطروحة",
+                  "name:fr": "El Matrouha",
+                  "ref:tn:codegeo": "635656"
+                },
+                "effectiveOriginalGeometrySha256": "955a97b972f0eb939401063d3760793ababd1536898551e4c96f6db26e724521",
+                "method": "reviewed_current_sector_transfer",
+                "sourceCode": "635656",
+                "currentCode": "635752",
+                "code": "635656",
+                "currentOfficialRecord": {
+                  "governorateCode": "63",
+                  "governorateFr": "Kebili",
+                  "governorateAr": "قبلي",
+                  "delegationCode": "6357",
+                  "delegationFr": "Rjim maatoug",
+                  "delegationAr": "رجيم معتوق",
+                  "sectorCode": "635752",
+                  "sectorFr": "El matrouha",
+                  "sectorAr": "المطروحة",
+                  "sourceRows": {
+                    "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70695,
+                    "Nombre_de_Logements_par_Secteurs.xlsx": 3470,
+                    "Nombre_de_menages_par_Secteurs.xlsx": 3463
+                  }
+                },
+                "expectedCuration": {
+                  "id": "osm:relation:7082336",
+                  "expectedKind": "sector",
+                  "expectedTags": {
+                    "name:ar": "المطروحة",
+                    "ref:tn:codegeo": "635656"
+                  },
+                  "action": "administrative_context",
+                  "parentNames": [
+                    "معتمدية رجيم معتوق",
+                    "رجيم معتوق",
+                    "Rejim Maatoug"
+                  ],
+                  "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+                  "evidence": [
+                    "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+                  ],
+                  "unresolved": [
+                    "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+                  ]
+                },
+                "nameEquivalence": {
+                  "displayName": "المطروحة",
+                  "displayParentName": "معتمدية رجيم معتوق",
+                  "officialSectorAr": "المطروحة",
+                  "officialDelegationAr": "رجيم معتوق"
+                },
+                "originalCodedParentEvidence": [
+                  {
+                    "id": "osm:relation:7107872",
+                    "sourceCode": "6356",
+                    "expectedOriginalTags": {
+                      "admin_level": "5",
+                      "alt_name:fr": "Faouar",
+                      "boundary": "administrative",
+                      "name": "معتمدية الفوار",
+                      "name:ar": "معتمدية الفوار",
+                      "name:fr": "Délégation El Faouar",
+                      "ref:tn:codegeo": "6356",
+                      "ref:tn:hasc_2": "TN.KB.FA",
+                      "wikidata": "Q12243833"
+                    },
+                    "effectiveOriginalGeometrySha256": "5513ceb7470370b4e8fe90cbfb9b5e5dbffabe6f6ac9e9b278ed66cdca052067",
+                    "containsSourceSector": true,
+                    "containsEveryGroupMember": true
+                  }
+                ],
+                "sourceVintageEvidence": {
+                  "oldSourceCode": "635656",
+                  "oldOfficialRows": [
+                    {
+                      "code": "635656",
+                      "nameFr": "El Matrouha",
+                      "nameAr": "المطروحة",
+                      "delegationHeading": "Delegation Faouar",
+                      "page": 130
+                    }
+                  ],
+                  "isie2022MembershipEvidence": [
+                    {
+                      "governorate": "قبلي",
+                      "delegation": "رجيم معتوق",
+                      "sector": "المطروحة",
+                      "pages": [
+                        60
+                      ]
+                    }
+                  ],
+                  "currentCode": "635752",
+                  "finding": "Existing curation already moves context from old Faouar code635656 to Rejim Maatoug. INS2012 p130, ISIE2022 p60, and all three INS2024 tables connect المطروحة to current635752; old code retention caused the strict blocker.",
+                  "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "section": "records",
+          "id": "osm:relation:7082340",
+          "record": {
+            "id": "osm:relation:7082340",
+            "targetDelegationId": 487,
+            "expectedGovernorateId": 1012,
+            "expectedBase": {
+              "nomAr": "رجيم معتوق",
+              "lat": 33.32,
+              "lng": 8.033
+            },
+            "expectedExistingMemberIds": [
+              "osm:relation:7082340",
+              "osm:way:186759798"
+            ],
+            "expectedTargetMemberIds": [
+              "delegation:487"
+            ],
+            "members": [
+              {
+                "id": "osm:relation:7082340",
+                "expectedKind": "sector",
+                "expectedSourceId": "osm",
+                "expectedName": "رجيم معتوق",
+                "expectedParentName": "معتمدية رجيم معتوق",
+                "expectedDelegationId": 487,
+                "expectedLat": 33.424038,
+                "expectedLng": 8.155351,
+                "expectedOriginalTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "رجيم معتوق",
+                  "name:ar": "رجيم معتوق",
+                  "name:fr": "Rejim Mâatoug",
+                  "ref:tn:codegeo": "635655",
+                  "wikidata": "Q2912518",
+                  "wikipedia": "ar:رجيم معتوق"
+                },
+                "originalGeometrySha256": "79c2783be79a4b40f54f7c76b004d71d0d0170c004647f38c41f8cc1e50db0aa",
+                "packedGeometrySha256": "74c7c2ec978797f6265b6484a06a74225fed98c20db7fb44bec65cf452ee9ca9"
+              },
+              {
+                "id": "osm:way:186759798",
+                "expectedKind": "residential",
+                "expectedSourceId": "osm",
+                "expectedName": "رجيم معتوق",
+                "expectedParentName": "معتمدية رجيم معتوق",
+                "expectedDelegationId": 487,
+                "expectedLat": 33.318996,
+                "expectedLng": 8.033431,
+                "expectedOriginalTags": {
+                  "landuse": "residential",
+                  "name": "رجيم معتوق",
+                  "name:ar": "رجيم معتوق",
+                  "name:fr": "Rjim Maatoug"
+                },
+                "originalGeometrySha256": "49095b806ecf20289ad8ddc479770238de148c3daa90c09fbb31251221ffe4d0",
+                "packedGeometrySha256": "e4fe55ee387d2649111aca25da0b1109c8fb66f5bee05a2f79b76df74f89f867"
+              }
+            ],
+            "identityEvidence": [
+              {
+                "id": "osm:relation:7082340",
+                "accepted": true,
+                "reasons": [],
+                "expectedOriginalTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "رجيم معتوق",
+                  "name:ar": "رجيم معتوق",
+                  "name:fr": "Rejim Mâatoug",
+                  "ref:tn:codegeo": "635655",
+                  "wikidata": "Q2912518",
+                  "wikipedia": "ar:رجيم معتوق"
+                },
+                "effectiveOriginalGeometrySha256": "79c2783be79a4b40f54f7c76b004d71d0d0170c004647f38c41f8cc1e50db0aa",
+                "method": "reviewed_current_sector_transfer",
+                "sourceCode": "635655",
+                "currentCode": "635751",
+                "code": "635655",
+                "currentOfficialRecord": {
+                  "governorateCode": "63",
+                  "governorateFr": "Kebili",
+                  "governorateAr": "قبلي",
+                  "delegationCode": "6357",
+                  "delegationFr": "Rjim maatoug",
+                  "delegationAr": "رجيم معتوق",
+                  "sectorCode": "635751",
+                  "sectorFr": "Rejim maatoug",
+                  "sectorAr": "رجيم معتوق",
+                  "sourceRows": {
+                    "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70661,
+                    "Nombre_de_Logements_par_Secteurs.xlsx": 3468,
+                    "Nombre_de_menages_par_Secteurs.xlsx": 3461
+                  }
+                },
+                "expectedCuration": {
+                  "id": "osm:relation:7082340",
+                  "expectedKind": "sector",
+                  "expectedTags": {
+                    "name:ar": "رجيم معتوق",
+                    "ref:tn:codegeo": "635655"
+                  },
+                  "action": "administrative_context",
+                  "parentNames": [
+                    "معتمدية رجيم معتوق",
+                    "رجيم معتوق",
+                    "Rejim Maatoug"
+                  ],
+                  "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+                  "evidence": [
+                    "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+                  ],
+                  "unresolved": [
+                    "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+                  ]
+                },
+                "nameEquivalence": {
+                  "displayName": "رجيم معتوق",
+                  "displayParentName": "معتمدية رجيم معتوق",
+                  "officialSectorAr": "رجيم معتوق",
+                  "officialDelegationAr": "رجيم معتوق"
+                },
+                "originalCodedParentEvidence": [
+                  {
+                    "id": "osm:relation:7107872",
+                    "sourceCode": "6356",
+                    "expectedOriginalTags": {
+                      "admin_level": "5",
+                      "alt_name:fr": "Faouar",
+                      "boundary": "administrative",
+                      "name": "معتمدية الفوار",
+                      "name:ar": "معتمدية الفوار",
+                      "name:fr": "Délégation El Faouar",
+                      "ref:tn:codegeo": "6356",
+                      "ref:tn:hasc_2": "TN.KB.FA",
+                      "wikidata": "Q12243833"
+                    },
+                    "effectiveOriginalGeometrySha256": "5513ceb7470370b4e8fe90cbfb9b5e5dbffabe6f6ac9e9b278ed66cdca052067",
+                    "containsSourceSector": true,
+                    "containsEveryGroupMember": true
+                  }
+                ],
+                "sourceVintageEvidence": {
+                  "oldSourceCode": "635655",
+                  "oldOfficialRows": [
+                    {
+                      "code": "635655",
+                      "nameFr": "Rejim Mâatoug",
+                      "nameAr": "رجيم معتوق",
+                      "delegationHeading": "Delegation Faouar",
+                      "page": 130
+                    }
+                  ],
+                  "isie2022MembershipEvidence": [
+                    {
+                      "governorate": "قبلي",
+                      "delegation": "رجيم معتوق",
+                      "sector": "رجيم معتوق",
+                      "pages": [
+                        60
+                      ]
+                    }
+                  ],
+                  "currentCode": "635751",
+                  "finding": "Existing curation already moves context from old Faouar code635655 to Rejim Maatoug. INS2012 p130 plus ISIE2022 p60 and current635751 support the same رجيم معتوق identity.",
+                  "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "schemaVersion": 1,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:560792911"
+      ],
+      "effective": [
+        "osm:node:560792911"
+      ]
+    }
+  },
+  "preservedAdjacentTransfers": [
+    {
+      "id": "osm:relation:7082336",
+      "originalCode": "635656",
+      "exactActiveDecision": {
+        "id": "osm:relation:7082336",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "المطروحة",
+          "ref:tn:codegeo": "635656"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية رجيم معتوق",
+          "رجيم معتوق",
+          "Rejim Maatoug"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082336",
+        "sourceId": "osm",
+        "name": "المطروحة",
+        "aliases": [
+          "El Matrouha",
+          "Matrouha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رجيم معتوق",
+        "contextAliases": [
+          "Rejim Maatoug",
+          "رجيم معتوق",
+          "معتمدية رجيم معتوق"
+        ],
+        "governorateId": 1012,
+        "lat": 33.352497,
+        "lng": 7.825295,
+        "delegationId": 486,
+        "hasBoundary": true,
+        "bbox": [
+          7.732558,
+          33.186936,
+          7.930949,
+          33.504558
+        ],
+        "areaKm2": 373.86722998582763,
+        "pickerGroupId": "delegation:486",
+        "offset": 84140,
+        "length": 484
+      },
+      "completeRawRecords": [
+        {
+          "id": "osm:relation:7082336",
+          "kind": "sector",
+          "currentMetadata": {
+            "id": "osm:relation:7082336",
+            "sourceId": "osm",
+            "name": "المطروحة",
+            "aliases": [
+              "El Matrouha",
+              "Matrouha"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رجيم معتوق",
+            "contextAliases": [
+              "Rejim Maatoug",
+              "رجيم معتوق",
+              "معتمدية رجيم معتوق"
+            ],
+            "governorateId": 1012,
+            "lat": 33.352497,
+            "lng": 7.825295,
+            "delegationId": 486,
+            "hasBoundary": true,
+            "bbox": [
+              7.732558,
+              33.186936,
+              7.930949,
+              33.504558
+            ],
+            "areaKm2": 373.86722998582763,
+            "pickerGroupId": "delegation:486",
+            "offset": 84140,
+            "length": 484
+          },
+          "packedGeometrySha256": "4c7994cb267a2ba03ac2a7bae238e2d3af3efb0f607d07ff435e15ceecf8e924"
+        },
+        {
+          "id": "osm:way:207572354",
+          "kind": "village",
+          "currentMetadata": {
+            "id": "osm:way:207572354",
+            "sourceId": "osm",
+            "name": "المطروحة",
+            "aliases": [
+              "Matrouha"
+            ],
+            "kind": "village",
+            "parentName": "معتمدية رجيم معتوق",
+            "contextAliases": [
+              "El Matrouha",
+              "Rejim Maatoug",
+              "المطروحة",
+              "رجيم معتوق",
+              "معتمدية رجيم معتوق"
+            ],
+            "governorateId": 1012,
+            "lat": 33.349773,
+            "lng": 7.782706,
+            "delegationId": 486,
+            "hasBoundary": true,
+            "bbox": [
+              7.778181,
+              33.347402,
+              7.786619,
+              33.352134
+            ],
+            "areaKm2": 0.1285147530648378,
+            "pickerGroupId": "delegation:486",
+            "offset": 5333580,
+            "length": 140
+          },
+          "packedGeometrySha256": "c4108400a4257110307775fc63284aa76ff83a3aedeb32a8f53bdd0f71ab9192"
+        }
+      ],
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطروحة",
+        "name:ar": "المطروحة",
+        "name:fr": "El Matrouha",
+        "ref:tn:codegeo": "635656"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطروحة",
+        "name:ar": "المطروحة",
+        "name:fr": "El Matrouha",
+        "ref:tn:codegeo": "635656"
+      },
+      "sourceGeometrySha256": "955a97b972f0eb939401063d3760793ababd1536898551e4c96f6db26e724521",
+      "packedGeometrySha256": "4c7994cb267a2ba03ac2a7bae238e2d3af3efb0f607d07ff435e15ceecf8e924"
+    },
+    {
+      "id": "osm:relation:7082340",
+      "originalCode": "635655",
+      "exactActiveDecision": {
+        "id": "osm:relation:7082340",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "رجيم معتوق",
+          "ref:tn:codegeo": "635655"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية رجيم معتوق",
+          "رجيم معتوق",
+          "Rejim Maatoug"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082340",
+        "sourceId": "osm",
+        "name": "رجيم معتوق",
+        "aliases": [
+          "Rejim Mâatoug"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رجيم معتوق",
+        "contextAliases": [
+          "Rejim Maatoug",
+          "رجيم معتوق",
+          "معتمدية رجيم معتوق"
+        ],
+        "governorateId": 1012,
+        "lat": 33.424038,
+        "lng": 8.155351,
+        "delegationId": 487,
+        "hasBoundary": true,
+        "bbox": [
+          7.880534,
+          33.104887,
+          8.509297,
+          33.732239
+        ],
+        "areaKm2": 2126.863313354988,
+        "pickerGroupId": "delegation:487",
+        "offset": 84624,
+        "length": 796
+      },
+      "completeRawRecords": [
+        {
+          "id": "osm:relation:7082340",
+          "kind": "sector",
+          "currentMetadata": {
+            "id": "osm:relation:7082340",
+            "sourceId": "osm",
+            "name": "رجيم معتوق",
+            "aliases": [
+              "Rejim Mâatoug"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رجيم معتوق",
+            "contextAliases": [
+              "Rejim Maatoug",
+              "رجيم معتوق",
+              "معتمدية رجيم معتوق"
+            ],
+            "governorateId": 1012,
+            "lat": 33.424038,
+            "lng": 8.155351,
+            "delegationId": 487,
+            "hasBoundary": true,
+            "bbox": [
+              7.880534,
+              33.104887,
+              8.509297,
+              33.732239
+            ],
+            "areaKm2": 2126.863313354988,
+            "pickerGroupId": "delegation:487",
+            "offset": 84624,
+            "length": 796
+          },
+          "packedGeometrySha256": "74c7c2ec978797f6265b6484a06a74225fed98c20db7fb44bec65cf452ee9ca9"
+        },
+        {
+          "id": "osm:way:186759798",
+          "kind": "residential",
+          "currentMetadata": {
+            "id": "osm:way:186759798",
+            "sourceId": "osm",
+            "name": "رجيم معتوق",
+            "aliases": [
+              "Rjim Maatoug",
+              "Rjim Maâtoug",
+              "Réjim Maâtoug"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية رجيم معتوق",
+            "contextAliases": [
+              "Rejim Maatoug",
+              "Rejim Mâatoug",
+              "رجيم معتوق",
+              "معتمدية رجيم معتوق"
+            ],
+            "governorateId": 1012,
+            "lat": 33.318996,
+            "lng": 8.033431,
+            "delegationId": 487,
+            "hasBoundary": true,
+            "bbox": [
+              8.016104,
+              33.312051,
+              8.042153,
+              33.325687
+            ],
+            "areaKm2": 1.253627373462738,
+            "pickerGroupId": "delegation:487",
+            "offset": 5290920,
+            "length": 428
+          },
+          "packedGeometrySha256": "e4fe55ee387d2649111aca25da0b1109c8fb66f5bee05a2f79b76df74f89f867"
+        }
+      ],
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "رجيم معتوق",
+        "name:ar": "رجيم معتوق",
+        "name:fr": "Rejim Mâatoug",
+        "ref:tn:codegeo": "635655",
+        "wikidata": "Q2912518",
+        "wikipedia": "ar:رجيم معتوق"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "رجيم معتوق",
+        "name:ar": "رجيم معتوق",
+        "name:fr": "Rejim Mâatoug",
+        "ref:tn:codegeo": "635655",
+        "wikidata": "Q2912518",
+        "wikipedia": "ar:رجيم معتوق"
+      },
+      "sourceGeometrySha256": "79c2783be79a4b40f54f7c76b004d71d0d0170c004647f38c41f8cc1e50db0aa",
+      "packedGeometrySha256": "74c7c2ec978797f6265b6484a06a74225fed98c20db7fb44bec65cf452ee9ca9"
+    }
+  ],
+  "preservedOtherContextRows": [
+    {
+      "id": "osm:node:2883150051",
+      "sourceId": "osm",
+      "name": "بشني",
+      "aliases": [
+        "Bechini"
+      ],
+      "kind": "village",
+      "parentName": "بشني إدرجين",
+      "contextAliases": [
+        "Bichni Edarjin",
+        "Délégation El Faouar",
+        "Faouar",
+        "بشني إدرجين",
+        "معتمدية الفوار"
+      ],
+      "governorateId": 1012,
+      "lat": 33.4841371,
+      "lng": 8.7923607,
+      "delegationId": 485,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:2883150051"
+    },
+    {
+      "id": "osm:node:349303785",
+      "sourceId": "osm",
+      "name": "الصابرية",
+      "aliases": [
+        "Es Sabria"
+      ],
+      "kind": "village",
+      "parentName": "صبرية شرق",
+      "contextAliases": [
+        "Délégation El Faouar",
+        "Faouar",
+        "Sabria Est",
+        "صبرية شرق",
+        "معتمدية الفوار"
+      ],
+      "governorateId": 1012,
+      "lat": 33.3546845,
+      "lng": 8.7471305,
+      "delegationId": 485,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:349303785"
+    },
+    {
+      "id": "osm:node:560792912",
+      "sourceId": "osm",
+      "name": "الدرجين",
+      "aliases": [
+        "El Dergine",
+        "Eddorgine"
+      ],
+      "kind": "hamlet",
+      "parentName": "بشني إدرجين",
+      "contextAliases": [
+        "Bichni Edarjin",
+        "Délégation El Faouar",
+        "Faouar",
+        "بشني إدرجين",
+        "معتمدية الفوار"
+      ],
+      "governorateId": 1012,
+      "lat": 33.4630348,
+      "lng": 8.7196225,
+      "delegationId": 485,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:560792912"
+    }
+  ]
+}

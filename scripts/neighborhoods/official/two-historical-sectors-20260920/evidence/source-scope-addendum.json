@@ -1,0 +1,592 @@
+{
+  "visualReview": [
+    {
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\ettadhamen4.pdf",
+        "sha256": "ba9d75ba467a055e07f96c810263e4502a9b3273697414303eab8edb19d11c38"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\ettadhamen4.png",
+        "sha256": "3c1429c083833312c848348737a8e5266975f499c53da251396ac4a746bad3d2"
+      },
+      "titleAndTargetPersonallyViewed": true,
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "scope": "Whole target election district outline is complete. Numbered Sousse maps are different constituent districts, not page tiles.",
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "wholeNativePathInsideClip": true
+        },
+        {
+          "level": 1,
+          "wholeNativePathInsideClip": true
+        }
+      ],
+      "redLabels": [
+        {
+          "text": "4 نماضتلا",
+          "color": 15073280,
+          "bbox": [
+            244.92788696289062,
+            378.36297607421875,
+            365.173828125,
+            431.6475524902344
+          ],
+          "centerInsideTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "text": " ةیباختنلاا ةرئادلا",
+          "color": 15073280,
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "text": "4 نماضتلا",
+          "color": 15073280,
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            794.3782958984375,
+            82.52029418945312
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "labelExtractionCorrection": "PDF labels use color15073280 (0xe60000), not pure16711680; initial insideRedLabels empty does not mean no label. Part1 label bounding rectangle extends outside its target; title/source and rendered boundary identify the path."
+    },
+    {
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh1.pdf",
+        "sha256": "974ebe24f0dee0a2701db768d6dd160554c9a492c5601b2978df6c710ad81025"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh1.png",
+        "sha256": "085039128eeafd81e228434d22d2f0d91259553172ae3e8621c3d189f89908c1"
+      },
+      "titleAndTargetPersonallyViewed": true,
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "scope": "Whole target election district outline is complete. Numbered Sousse maps are different constituent districts, not page tiles.",
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "wholeNativePathInsideClip": true
+        },
+        {
+          "level": 1,
+          "wholeNativePathInsideClip": true
+        }
+      ],
+      "redLabels": [
+        {
+          "text": "1 زاویة سوسة",
+          "color": 15073280,
+          "bbox": [
+            480.1378479003906,
+            480.6158447265625,
+            634.9483642578125,
+            533.9004516601562
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "text": "1 حمام معروف الریاض",
+          "color": 15073280,
+          "bbox": [
+            534.84619140625,
+            384.12371826171875,
+            765.6265869140625,
+            437.40826416015625
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "text": " ةیباختنلاا ةرئادلا",
+          "color": 15073280,
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "text": "1  معروف الریاض",
+          "color": 15073280,
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            858.466552734375,
+            82.52029418945312
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "labelExtractionCorrection": "PDF labels use color15073280 (0xe60000), not pure16711680; initial insideRedLabels empty does not mean no label. Part1 label bounding rectangle extends outside its target; title/source and rendered boundary identify the path."
+    },
+    {
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh2.pdf",
+        "sha256": "377144831315b1197c2f4aefdc0f4aee2bf5db4ba20d7c99a24c401d70ff7eaf"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh2.png",
+        "sha256": "81f4bb31efb518e6f06a5a9142c431ffc9384e5b33f512d5f278223d505dad1f"
+      },
+      "titleAndTargetPersonallyViewed": true,
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "scope": "Whole target election district outline is complete. Numbered Sousse maps are different constituent districts, not page tiles.",
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "wholeNativePathInsideClip": true
+        },
+        {
+          "level": 1,
+          "wholeNativePathInsideClip": true
+        }
+      ],
+      "redLabels": [
+        {
+          "text": "بوحسینة",
+          "color": 15073280,
+          "bbox": [
+            486.616455078125,
+            104.00834655761719,
+            585.2598876953125,
+            157.29290771484375
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "text": "2 حمام معروف الریاض",
+          "color": 15073280,
+          "bbox": [
+            331.8493957519531,
+            376.562744140625,
+            562.6298217773438,
+            429.8473205566406
+          ],
+          "centerInsideTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "text": "القلعة الصغرى الشرقیة",
+          "color": 15073280,
+          "bbox": [
+            41.03126907348633,
+            183.9384307861328,
+            271.8115539550781,
+            237.22299194335938
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "text": "( )سوسة جوھرة- حشاد",
+          "color": 15073280,
+          "bbox": [
+            578.0369873046875,
+            27.318679809570312,
+            810.2579345703125,
+            80.6032485961914
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "text": "ةرھوج لولھس",
+          "color": 15073280,
+          "bbox": [
+            412.47222900390625,
+            -6.8856048583984375,
+            541.7194213867188,
+            46.398963928222656
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "text": " الدائرة الانتخابیة",
+          "color": 15073280,
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "text": "2  معروف الریاض",
+          "color": 15073280,
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            858.466552734375,
+            82.52029418945312
+          ],
+          "centerInsideTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "labelExtractionCorrection": "PDF labels use color15073280 (0xe60000), not pure16711680; initial insideRedLabels empty does not mean no label. Part1 label bounding rectangle extends outside its target; title/source and rendered boundary identify the path."
+    }
+  ],
+  "parents": [
+    {
+      "id": "osm:relation:7115584",
+      "parentId": "osm:relation:4156579",
+      "parentTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ettadhamen",
+        "boundary": "administrative",
+        "name": "معتمدية حي التضامن",
+        "name:ar": "معتمدية حي التضامن",
+        "name:fr": "Délégation Cité Ettadhamen",
+        "ref:tn:codegeo": "1256",
+        "ref:tn:hasc_2": "TN.AN.ET",
+        "wikidata": "Q3059378"
+      },
+      "originalOutsideParentM2": 0.0,
+      "officialOutsideOriginalParentM2": 405.4674913191327,
+      "governorateSourceMatches": [
+        {
+          "id": "osm:relation:1435830",
+          "tags": {
+            "ISO3166-2": "TN-12",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية أريانة",
+            "name:ar": "ولاية أريانة",
+            "name:az": "Aryana",
+            "name:azb": "اریانه",
+            "name:bar": "Gouvernement Ariana",
+            "name:be": "Арыяна",
+            "name:be-tarask": "Арыяна (вілает)",
+            "name:bg": "Ариана",
+            "name:ca": "Governació d'Ariana",
+            "name:ce": "Арьяна",
+            "name:ceb": "Gouvernorat de l'Ariana",
+            "name:cy": "Ariana",
+            "name:de": "Gouvernement Ariana",
+            "name:el": "Αρυάνα",
+            "name:en": "Ariana",
+            "name:eo": "Arjana",
+            "name:fa": "اریانه",
+            "name:fi": "Ariana",
+            "name:fr": "Gouvernorat Ariana",
+            "name:frr": "Ariana",
+            "name:he": "אריאנה (מחוז)",
+            "name:hu": "Arjána kormányzóság",
+            "name:id": "Kegubernuran Ariana",
+            "name:it": "Ariana",
+            "name:ja": "アリアナ県",
+            "name:ka": "არიანის ვილაიეთი",
+            "name:ko": "아리아나주",
+            "name:lt": "Arianos vilajetas",
+            "name:ms": "Kawasan kegabenoran Ariana",
+            "name:nl": "Ariana",
+            "name:no": "Ariana",
+            "name:pl": "Arjana",
+            "name:pnb": "آریانہ",
+            "name:pt": "Ariana",
+            "name:ro": "Guvernoratul Ariana",
+            "name:ru": "Арьяна",
+            "name:sco": "Ariana Govrenorate",
+            "name:sh": "Ariana",
+            "name:sv": "Ariana",
+            "name:tr": "Aryana ili",
+            "name:uk": "Ар'яна",
+            "name:ur": "آریانہ",
+            "name:vi": "Ariana",
+            "name:zh": "艾爾亞內省",
+            "name:zu": "Ariana Governorate",
+            "official_name": "ولاية أريانة",
+            "official_name:ar": "ولاية أريانة",
+            "official_name:en": "Ariana Governorate",
+            "official_name:eo": "Gubernio de Arjana",
+            "official_name:fa": "استان اریانه",
+            "official_name:fr": "Gouvernorat de Ariana",
+            "official_name:it": "Governatorato di Ariana",
+            "official_name:pl": "Gubernatorstwo Arjana",
+            "official_name:ur": "ولایت آریانہ",
+            "population": "576088",
+            "population:date": "2014",
+            "ref:tn:codegeo": "12",
+            "wikidata": "Q233116",
+            "wikipedia": "ar:ولاية أريانة"
+          }
+        }
+      ],
+      "officialOutsideOriginalGovernorateM2": [
+        {
+          "id": "osm:relation:1435830",
+          "areaM2": 402.0129208057862
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7113315",
+      "parentId": "osm:relation:7150108",
+      "parentTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Sousse Riadh",
+        "boundary": "administrative",
+        "name": "معتمدية سوسة الرياض",
+        "name:ar": "معتمدية سوسة الرياض",
+        "name:fr": "Délégation Sousse Erriadh",
+        "ref:tn:codegeo": "3152",
+        "ref:tn:hasc_2": "TN.SS.SR",
+        "wikidata": "Q3492192"
+      },
+      "originalOutsideParentM2": 0.0,
+      "officialOutsideOriginalParentM2": 312599.3935339133,
+      "governorateSourceMatches": [
+        {
+          "id": "osm:relation:3152094",
+          "tags": {
+            "ISO3166-2": "TN-51",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية سوسة",
+            "name:ar": "ولاية سوسة",
+            "name:azb": "سوسه",
+            "name:be": "Сус (вілает)",
+            "name:be-tarask": "Сус (вілает)",
+            "name:bg": "Сус (област)",
+            "name:ca": "Governació de Sussa",
+            "name:ceb": "Gouvernorat de Sousse",
+            "name:ckb": "سوسە",
+            "name:cy": "Sousse (talaith)",
+            "name:de": "Gouvernement Sousse",
+            "name:el": "Σούσα (Κυβερνείο)",
+            "name:en": "Sousse",
+            "name:es": "Gobernación de Susa",
+            "name:fa": "سوسه",
+            "name:fi": "Sousse (kuvernementti)",
+            "name:fr": "Gouvernorat Sousse",
+            "name:frr": "Sousse (Guwernement)",
+            "name:he": "סוסה (מחוז)",
+            "name:id": "Kegubernuran Sousse",
+            "name:it": "Susa",
+            "name:ja": "スース県",
+            "name:ko": "수스주",
+            "name:ks": "سوسہ",
+            "name:lt": "Suso vilajetas",
+            "name:ms": "Kawasan kegabenoran Sousse",
+            "name:nl": "Sousse (gouvernement)",
+            "name:no": "Sousse (guvernement)",
+            "name:ota": "سوسه",
+            "name:pl": "Gubernatorstwo Susa",
+            "name:pt": "Susa (província)",
+            "name:ro": "Guvernoratul Sousse",
+            "name:ru": "Сус (вилайет)",
+            "name:sco": "Sousse Govrenorate",
+            "name:sh": "Sousse (vilajet)",
+            "name:tr": "Susa ili",
+            "name:uk": "Сус (вілаєт)",
+            "name:ur": "سوسہ",
+            "name:zh": "蘇塞省",
+            "name:zu": "Sousse Governorate",
+            "official_name": "ولاية سوسة",
+            "official_name:ar": "ولاية سوسة",
+            "official_name:en": "Sousse Governorate",
+            "official_name:es": "Gobernación de Susa",
+            "official_name:fa": "استان سوسه",
+            "official_name:fr": "Gouvernorat de Sousse",
+            "official_name:ur": "ولایت سوسہ",
+            "population": "674971",
+            "population:date": "2014",
+            "ref:tn:codegeo": "31",
+            "wikidata": "Q276565",
+            "wikipedia": "ar:ولاية سوسة"
+          }
+        }
+      ],
+      "officialOutsideOriginalGovernorateM2": [
+        {
+          "id": "osm:relation:3152094",
+          "areaM2": 0.0
+        }
+      ]
+    }
+  ],
+  "currentOfficialIdentity": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+      "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760"
+    },
+    "records": [
+      {
+        "governorateCode": "12",
+        "governorateFr": "Ariana",
+        "governorateAr": "أريانة",
+        "delegationCode": "1256",
+        "delegationFr": "Cite ettadhamen",
+        "delegationAr": "حي التضامن",
+        "sectorCode": "125657",
+        "sectorFr": "Ettadhamen 4",
+        "sectorAr": "التضامن 4",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6903,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 230,
+          "Nombre_de_menages_par_Secteurs.xlsx": 230
+        }
+      },
+      {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3152",
+        "delegationFr": "Sousse riadh",
+        "delegationAr": "سوسة الرياض",
+        "sectorCode": "315256",
+        "sectorFr": "Hammem maarouf er-riadh",
+        "sectorAr": "حمام معروف الرياض",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32639,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1537,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1536
+        }
+      }
+    ]
+  },
+  "completeCachedIndexParentScopes": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\isie-exact-parent-subsets.json",
+      "sha256": "d006f86495628a407fd99e92b144243d159ba1473d38b9760eb6e67185bd29fe"
+    },
+    "index": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    },
+    "retrievedAt": "2026-09-07T06:25:42.947665+00:00",
+    "parents": [
+      {
+        "path": "/أريانة/حي التضامن/",
+        "count": 9,
+        "rows": [
+          {
+            "index": 14,
+            "text": "2مارس.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/2مارس.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/2مارس.pdf"
+          },
+          {
+            "index": 15,
+            "text": "9أفريل.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/9أفريل.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/9أفريل.pdf"
+          },
+          {
+            "index": 16,
+            "text": "18جانفي.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/18جانفي.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/18جانفي.pdf"
+          },
+          {
+            "index": 17,
+            "text": "ابن خلدون.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/ابن خلدون.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/ابن خلدون.pdf"
+          },
+          {
+            "index": 18,
+            "text": "ابو القاسم الشابي.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/ابو القاسم الشابي.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/ابو القاسم الشابي.pdf"
+          },
+          {
+            "index": 19,
+            "text": "التضامن 4.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/التضامن 4.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/التضامن 4.pdf"
+          },
+          {
+            "index": 20,
+            "text": "المنجي سليم.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/المنجي سليم.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/المنجي سليم.pdf"
+          },
+          {
+            "index": 21,
+            "text": "حي التضامن.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/حي التضامن.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/حي التضامن.pdf"
+          },
+          {
+            "index": 22,
+            "text": "خير الدين باشا.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/خير الدين باشا.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/خير الدين باشا.pdf"
+          }
+        ]
+      },
+      {
+        "path": "/سوسة/سوسة الرياض/",
+        "count": 5,
+        "rows": [
+          {
+            "index": 1389,
+            "text": "الزهور - (سوسة الرياض).pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/الزهور - (سوسة الرياض).pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/الزهور - (سوسة الرياض).pdf"
+          },
+          {
+            "index": 1390,
+            "text": "حمام معروف الرياض 1.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf"
+          },
+          {
+            "index": 1391,
+            "text": "حمام معروف الرياض 2.pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf"
+          },
+          {
+            "index": 1392,
+            "text": "حي الرياض 1 - (سوسة الرياض).pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حي الرياض 1 - (سوسة الرياض).pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حي الرياض 1 - (سوسة الرياض).pdf"
+          },
+          {
+            "index": 1393,
+            "text": "حي الرياض 2 - (سوسة الرياض).pdf",
+            "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حي الرياض 2 - (سوسة الرياض).pdf",
+            "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حي الرياض 2 - (سوسة الرياض).pdf"
+          }
+        ]
+      }
+    ],
+    "qualification": "Exhaustive within downloaded official full index; same ISIE provider as maps, not an independent legal guarantee of current boundaries."
+  }
+}

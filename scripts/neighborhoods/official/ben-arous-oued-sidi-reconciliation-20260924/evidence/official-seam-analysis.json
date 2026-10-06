@@ -1,0 +1,118 @@
+{
+  "method": "GeoPDF local-coordinate georeferencing by least-squares affine fit to PDF /GPTS and /LPTS; native ISIE vector drawing layers extracted from both PDFs.",
+  "sourcePdfSha256": {
+    "oued": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b",
+    "sidi": "2eb8c032560c328b6e8d2fec370384095c47f7300c0cd23e6d14e5f3135a4b26"
+  },
+  "sourcePdfUrls": {
+    "oued": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B2%D8%BA%D9%88%D8%A7%D9%86/%D8%B2%D8%BA%D9%88%D8%A7%D9%86/%D9%88%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B2%D9%8A%D8%AA.pdf",
+    "sidi": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D8%B1%D9%86%D8%A7%D9%82/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%B3%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D9%82%D8%A7%D8%B1%D8%B5%D9%8A.pdf"
+  },
+  "georeference": {
+    "oued": {
+      "epsg": 32632,
+      "controlMaxResidualMeters": 0.1698565984668559
+    },
+    "sidi": {
+      "epsg": 32632,
+      "controlMaxResidualMeters": 0.21831580757678234
+    }
+  },
+  "nativeLineDrawingsByMapLayer": {
+    "oued": {
+      "black_governorate": {
+        "featureDrawingCount": 4,
+        "segmentCount": 39
+      },
+      "blue_delegation": {
+        "featureDrawingCount": 15,
+        "segmentCount": 39
+      },
+      "red_sector": {
+        "featureDrawingCount": 38,
+        "segmentCount": 242
+      }
+    },
+    "sidi": {
+      "black_governorate": {
+        "featureDrawingCount": 3,
+        "segmentCount": 40
+      },
+      "blue_delegation": {
+        "featureDrawingCount": 8,
+        "segmentCount": 40
+      },
+      "red_sector": {
+        "featureDrawingCount": 20,
+        "segmentCount": 1044
+      }
+    }
+  },
+  "overlapAndBoundaryMetrics": {
+    "installed_overlap_km2": 0.474293,
+    "oued_candidate_intersection_km2": 0.474293,
+    "oued_candidate_fraction": 1.0,
+    "sidi_red_candidate_intersection_km2": 0.006438,
+    "sidi_red_candidate_fraction": 0.013575,
+    "candidate_mutual_overlap_km2": 0.012208,
+    "black_governorate_line_by_source_map": {
+      "oued": {
+        "blackLineLengthInsideInstalledOverlapMeters": 1402.9,
+        "overlapAreaWithin5mOfBlackLineKm2": 0.0,
+        "overlapAreaWithin20mOfBlackLineKm2": 0.1,
+        "overlapAreaWithin50mOfBlackLineKm2": 0.2,
+        "ouedCandidateBoundaryNearBlackWithin20mInsideOverlapBuffer100m": 4762.4,
+        "sidiCandidateBoundaryNearBlackWithin20mInsideOverlapBuffer100m": 4761.3,
+        "blackBlueJunction": {
+          "lineLengthNearOtherLayerMeters": 4447.0,
+          "nearLinePartCount": 20,
+          "nearLineEndpointCount": 23
+        },
+        "blackRedJunction": {
+          "lineLengthNearOtherLayerMeters": 4447.0,
+          "nearLinePartCount": 20,
+          "nearLineEndpointCount": 23
+        },
+        "blueRedJunction": {
+          "lineLengthNearOtherLayerMeters": 4447.0,
+          "nearLinePartCount": 20,
+          "nearLineEndpointCount": 23
+        }
+      },
+      "sidi": {
+        "blackLineLengthInsideInstalledOverlapMeters": 1798.6,
+        "overlapAreaWithin5mOfBlackLineKm2": 0.0,
+        "overlapAreaWithin20mOfBlackLineKm2": 0.1,
+        "overlapAreaWithin50mOfBlackLineKm2": 0.2,
+        "ouedCandidateBoundaryNearBlackWithin20mInsideOverlapBuffer100m": 4762.4,
+        "sidiCandidateBoundaryNearBlackWithin20mInsideOverlapBuffer100m": 4761.3,
+        "blackBlueJunction": {
+          "lineLengthNearOtherLayerMeters": 4449.4,
+          "nearLinePartCount": 19,
+          "nearLineEndpointCount": 22
+        },
+        "blackRedJunction": {
+          "lineLengthNearOtherLayerMeters": 4449.4,
+          "nearLinePartCount": 19,
+          "nearLineEndpointCount": 22
+        },
+        "blueRedJunction": {
+          "lineLengthNearOtherLayerMeters": 4449.4,
+          "nearLinePartCount": 19,
+          "nearLineEndpointCount": 22
+        }
+      }
+    },
+    "blackGovernorateLineCrossSheetAgreement": {
+      "ouedLineLengthWithin20mOfSidiLineMeters": 6793.6,
+      "sidiLineLengthWithin20mOfOuedLineMeters": 6795.5,
+      "hausdorffMetersOnClippedSeamWindow": 9.1
+    }
+  },
+  "sidiSourceCandidateStatus": "RING_GEOMETRY_EVIDENCE_ONLY_NOT_APPROVED_REPLACEMENT",
+  "sidiSourceCandidateVisualReview": "PENDING",
+  "ouedCandidateStatus": "approved for candidate comparison only; not installation authorization",
+  "conclusion": "Official ISIE linework supports assigning the disputed strip to Zaghouan / Oued Ezzit: the Oued Ezzit source ring covers essentially all of the computed installed intersection, while the Sidi Salem red-ring candidate covers 1.36%. The native black governorate lines on the two sheets agree within 9.1 m in the seam window; the black line and blue/red boundary paths are traced in both overlays. Sidi candidate remains comparison evidence only (its source metadata review status is PENDING).",
+  "auditReportedInstalledOverlapKm2": 0.474363,
+  "auditVsSourceProjectionDifferenceKm2": 7e-05
+}

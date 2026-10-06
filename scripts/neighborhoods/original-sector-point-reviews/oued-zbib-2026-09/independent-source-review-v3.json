@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "createdAtUtc": "2026-09-19T12:24:44.741303+00:00",
+  "scope": "Oued Zbib only; no approval of Jebel Jelloud three-member identity. This checks exact source/geometry/name/manual-context projection, not an unbuilt compiler extension.",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "2730affeae7809067a0901059052979be0a807f7d47e2a2b14cc72d55830716c",
+  "sourceReports": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/jebel-oued-zbib-source-review-20260919/sourcefacts-and-design-v3.json",
+      "sha256": "c5c365144fabad014d9c21f640b11d73972fef4fe29708b2c2137364f52770af"
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/jebel-oued-coordinate-phone-review-20260919.json",
+      "sha256": "8e3c0c3c3ed80c9a95f412780148e5d69b1f1dad1e2869fc2bd6af7037d7832f"
+    }
+  ],
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7133843",
+      "field": "lat",
+      "before": 33.772854,
+      "after": 33.7893831
+    },
+    {
+      "id": "osm:relation:7133843",
+      "field": "lng",
+      "before": 10.820138,
+      "after": 10.828002
+    },
+    {
+      "id": "osm:relation:7133843",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:2419847402"
+    },
+    {
+      "id": "osm:node:2419847402",
+      "field": "aliases",
+      "before": [
+        "Oued Zbib"
+      ],
+      "after": [
+        "Oued Zbib",
+        "واد الزبيب"
+      ]
+    },
+    {
+      "id": "osm:node:2419847402",
+      "field": "name",
+      "before": "واد الزبيب",
+      "after": "وادي الزبيب"
+    },
+    {
+      "id": "osm:node:2419847402",
+      "field": "parentName",
+      "before": "وادي الزبيب",
+      "after": "معتمدية جربة أجيم"
+    },
+    {
+      "id": "osm:node:2419847402",
+      "field": "pickerGroupId",
+      "before": "osm:node:2419847402",
+      "after": "osm:relation:7133843"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119"
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "2730affeae7809067a0901059052979be0a807f7d47e2a2b14cc72d55830716c"
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568"
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "9e65e1f52fb3b129816e8ee33af89df545b98226f35b222870403a7ec9541c25"
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "64d19a987e7012d1531c54d7f195f7429f9bd314c5708f65108c04618d1be231"
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "2c3e3d66ffb3f745eca9dd53cd2a0c07394c038acca55989430b9336c9606157"
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/jebel-oued-zbib-source-review-20260919/oued-zbib-node-current.json",
+      "sha256": "7875a8c0d843a5b82b414a5d7a1e9ea048874c7ef429f8cc0fde6df0e802d8fd"
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/jebel-oued-zbib-source-review-20260919/oued-zbib-node-current.json.receipt.json",
+      "sha256": "2f1c64bc085e6ad5716978af79e2c05d915903d845e47a53494314c166814c66"
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "7f4a47f43695272401599976f64f74aba5ad3867d2226ce0f394190bc446a4a1"
+    }
+  ],
+  "identityFindings": {
+    "officialSector": {
+      "governorateCode": "52",
+      "governorateFr": "Mednine",
+      "governorateAr": "مدنين",
+      "delegationCode": "5258",
+      "delegationFr": "Djerba ajim",
+      "delegationAr": "جربة أجيم",
+      "sectorCode": "525855",
+      "sectorFr": "Oued ezzebib",
+      "sectorAr": "وادي الزبيب",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62966,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3095,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3089
+      }
+    },
+    "originalPoint": {
+      "id": "osm:node:2419847402",
+      "kind": "village",
+      "tags": {
+        "addr:postcode": "4166",
+        "name": "واد الزبيب",
+        "name:aeb": "واد الزبيب",
+        "name:ar": "واد الزبيب",
+        "name:en": "Oued Zbib",
+        "name:fr": "Oued Zbib",
+        "place": "village"
+      },
+      "lat": 33.7893831,
+      "lng": 10.828002
+    },
+    "sourceNamePeers": [
+      "osm:node:2419847402",
+      "osm:relation:7133843"
+    ],
+    "uniquePointContexts": [
+      "osm:relation:7133843",
+      "osm:relation:7133842"
+    ],
+    "pairedArabicEvidence": "Original source point واد الزبيب/Oued Zbib, unique containing official525855 وادي الزبيب/Oued Ezzebib, matching parent/governor and original+packed containment; root exact-source-coordinate phone card corroborates the official Arabic spelling in an inhabited road cluster. This supports this one canonical display pairing and preserved original alias, not general Arabic normalization or equal village/sector extent.",
+    "phoneQualification": "Root viewed the screenshots; this reviewer verified their pins and read the qualified observations, not independently viewed them. No Google geometry or coordinates used.",
+    "retainedPointRequired": true,
+    "ordinaryAbsorptionMustNotDropRawId": "osm:node:2419847402",
+    "sameNameParentFallbackVerified": true,
+    "allConsumedOriginalNamesRetained": true,
+    "nameAebFidelityConfirmed": "v3 preserves original name:aeb=واد الزبيب; only name/name:ar adopt the official spelling, retaining the original Arabic alias. The seven-field metadata projection remains unchanged.",
+    "fullCountryNearestBeforeAndAfter": {
+      "rawCount": 3523,
+      "referenceCount": 258,
+      "changedDefaults": 0
+    },
+    "noRawIdDropped": true,
+    "noGeometryOrTimetableReferenceChange": true,
+    "savedIdentityQualification": "Both raw IDs remain present at their original node or reviewed same-node sector manual coordinate; the old point spelling stays an alias. Packaging must preserve this saved-name/ID behavior; this report does not certify an unreviewed extension."
+  },
+  "proofRequirements": [
+    "Exact original/effective node+sector identities and code525855; no invented imported-boundary/context lineage",
+    "Original and packed point containment and complete before/after two-member group",
+    "Exact curations including preserved original names and unchanged physical node coordinates",
+    "All seven derived fields, including point parentName, and unchanged contextAliases",
+    "Legacy point-retention branch unchanged; no arbitrary-name/generic absorption bypass"
+  ],
+  "checksPassed": 50,
+  "checks": [
+    "exact facts pin",
+    "baselineMetadata exact",
+    "baselineGovernorAsset exact",
+    "baselineCuration exact",
+    "baselinePicker exact",
+    "baselineBinary exact",
+    "originalSourceInventory exact",
+    "officialRegistry exact",
+    "originalSector exact",
+    "originalPoint exact",
+    "originalParent exact",
+    "3523 raw IDs",
+    "currentSector exact",
+    "currentPoint exact",
+    "exact packed slice consumed",
+    "packed hash",
+    "original geometry hash",
+    "original+packed valid and contain original point",
+    "unique official525855 identity",
+    "public node bytes",
+    "public node equals original tags/coords",
+    "node HTTP receipt identity/pin",
+    "both source identities currently uncurated",
+    "full original same-name peer set exactly point+sector",
+    "expected point primary and aliases",
+    "all consumed original point names preserved",
+    "sector names unchanged",
+    "original name:aeb unchanged in v3",
+    "unique actual sector/delegation point contexts",
+    "same-primary sector skipped in favor of exact containing delegation",
+    "derived contextAliases unchanged",
+    "before field osm:relation:7133843.lat",
+    "before field osm:relation:7133843.lng",
+    "before field osm:relation:7133843.manualPointId",
+    "before field osm:node:2419847402.aliases",
+    "before field osm:node:2419847402.name",
+    "before field osm:node:2419847402.parentName",
+    "before field osm:node:2419847402.pickerGroupId",
+    "entire two-row after projection exact",
+    "only seven semantic raw fields",
+    "all raw IDs and source-point coordinates retained",
+    "complete group after exactly sector+retained point",
+    "exact258 available references",
+    "all3523 before nearest defaults independently exact",
+    "all3523 after nearest defaults independently exact",
+    "qualified root phone pin",
+    "phone osm:relation:7133843 record pin",
+    "phone osm:relation:7133843 screenshot pin",
+    "phone osm:node:2419847402 record pin",
+    "phone osm:node:2419847402 screenshot pin"
+  ],
+  "notRun": [
+    "compiler import/execution",
+    "generator",
+    "tests/build",
+    "phone",
+    "live product edits"
+  ]
+}

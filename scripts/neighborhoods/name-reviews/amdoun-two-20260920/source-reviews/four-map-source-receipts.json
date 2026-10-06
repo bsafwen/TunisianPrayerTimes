@@ -1,0 +1,70 @@
+[
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien.pdf",
+    "sha256": "7e8b308d9e185da02fcb450153d1239e783cfef54f82a3a78c0a580661217bd3",
+    "bytes": 1291892,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين.pdf",
+    "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D8%A7%D8%AC%D8%A9/%D8%B9%D9%85%D8%AF%D9%88%D9%86/%D8%B2%D9%87%D8%B1%D8%A9%20%D9%85%D8%AF%D9%8A%D9%86.pdf",
+    "index": 608,
+    "observedTitle": "زهرة مدين.pdf",
+    "indexSource": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    },
+    "retrievedAt": "2026-09-20T11:22:52.565616+00:00",
+    "httpStatus": 200,
+    "contentType": "application/pdf"
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien-sud.pdf",
+    "sha256": "d4f5105ecb380f07b675b1897e4ad9f903da2cfae9ee81daf5e0d88fe2944107",
+    "bytes": 1096477,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين الجنوبية.pdf",
+    "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D8%A7%D8%AC%D8%A9/%D8%B9%D9%85%D8%AF%D9%88%D9%86/%D8%B2%D9%87%D8%B1%D8%A9%20%D9%85%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+    "index": 609,
+    "observedTitle": "زهرة مدين الجنوبية.pdf",
+    "indexSource": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    },
+    "retrievedAt": "2026-09-20T11:22:52.563617+00:00",
+    "httpStatus": 200,
+    "contentType": "application/pdf"
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\midoun.pdf",
+    "sha256": "2ed99f7d702d77e90c376bdcf6184b86cee18862cbc59bc8ae4b3a813d8698fc",
+    "bytes": 1539296,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/ميدون.pdf",
+    "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%85%D8%AF%D9%86%D9%8A%D9%86/%D8%AC%D8%B1%D8%A8%D8%A9%20%D9%85%D9%8A%D8%AF%D9%88%D9%86/%D9%85%D9%8A%D8%AF%D9%88%D9%86.pdf",
+    "index": 1956,
+    "observedTitle": "ميدون.pdf",
+    "indexSource": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    },
+    "retrievedAt": "2026-09-20T11:22:52.553210+00:00",
+    "httpStatus": 200,
+    "contentType": "application/pdf"
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\arkou.pdf",
+    "sha256": "41204274398156d8b262bae61ad041f99aef42147499692ffdf85efd1ba3ec43",
+    "bytes": 1524451,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/اركو.pdf",
+    "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%85%D8%AF%D9%86%D9%8A%D9%86/%D8%AC%D8%B1%D8%A8%D8%A9%20%D9%85%D9%8A%D8%AF%D9%88%D9%86/%D8%A7%D8%B1%D9%83%D9%88.pdf",
+    "index": 1950,
+    "observedTitle": "اركو.pdf",
+    "indexSource": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    },
+    "retrievedAt": "2026-09-20T11:22:52.560102+00:00",
+    "httpStatus": 200,
+    "contentType": "application/pdf"
+  }
+]

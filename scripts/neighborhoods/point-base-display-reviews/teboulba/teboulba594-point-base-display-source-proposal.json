@@ -1,0 +1,1271 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_SUPPORTED_EXACT_POINT_BASE_DISPLAY_ASSOCIATION_PENDING_EXPLICIT_PHASE_SPECIFIC_PEER_PROOF",
+  "reviewedAt": "2026-09-08T05:17:34.486245+00:00",
+  "baselineMetadataSha256": "0b9a6dc6186cafaa948adf602f39ff6e90f700401d8332593cab99fea31ab038",
+  "sourceDecision": "The OSM village and base594 denote the same named Teboulba settlement for picker/timetable purposes. Exact Arabic/French identity, explicit addr:city, unique settlement-node inventory, official municipality city naming and common Monastir/Teboulba administrative context jointly support one display choice. The14.79m separation is corroborative only. Preserve both accepted coordinates and source594; no correction or geometry change is proposed.",
+  "exactPair": {
+    "basePickerId": "delegation:594",
+    "baseCurrent": {
+      "id": 594,
+      "nomFr": "Teboulba",
+      "nomAr": "طبلبة",
+      "nomEn": "Teboulba",
+      "lat": 35.6418,
+      "lng": 10.966
+    },
+    "expectedGovernor": {
+      "id": 364,
+      "nomFr": "Monastir",
+      "nomAr": "المنستير",
+      "nomEn": "Monastir",
+      "lat": 35.7643,
+      "lng": 10.8113
+    },
+    "rawCurrent": {
+      "id": "osm:node:558814817",
+      "sourceId": "osm",
+      "name": "طبلبة",
+      "aliases": [
+        "Teboulba",
+        "Téboulba"
+      ],
+      "kind": "village",
+      "parentName": "العيايشة",
+      "contextAliases": [
+        "Délégation Teboulba",
+        "El aiaicha",
+        "Téboulba",
+        "العيايشة",
+        "معتمدية طبلبة"
+      ],
+      "governorateId": 364,
+      "lat": 35.6417897,
+      "lng": 10.9658372,
+      "delegationId": 594,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:558814817"
+    },
+    "originalSourceNode": {
+      "id": "osm:node:558814817",
+      "tags": {
+        "addr:city": "طبلبة",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:en": "Téboulba",
+        "name:fr": "Teboulba",
+        "place": "village",
+        "population": "40000",
+        "wikidata": "Q2400416",
+        "wikimedia_commons": "Category:Teboulba",
+        "wikipedia": "ar:طبلبة"
+      },
+      "lat": 35.6417897,
+      "lng": 10.9658372
+    },
+    "expectedCoordinateCorrections": []
+  },
+  "proposedOnlyRawChange": {
+    "id": "osm:node:558814817",
+    "field": "pickerGroupId",
+    "before": "osm:node:558814817",
+    "after": "delegation:594"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:558814817"
+      ],
+      [
+        "delegation:594"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:594",
+        "osm:node:558814817"
+      ]
+    ]
+  },
+  "coordinateChanges": [],
+  "nameAliasContextChanges": [],
+  "scope": {
+    "officialGovernorateCode": "32",
+    "officialDelegationCode": "3260",
+    "officialSectorInventory": [
+      {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326051",
+        "sectorFr": "Houmet essouk",
+        "sectorAr": "حومة السوق",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38045,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1808,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1805
+        }
+      },
+      {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326052",
+        "sectorFr": "El fadhline",
+        "sectorAr": "الفضلين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38079,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1809,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1806
+        }
+      },
+      {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326053",
+        "sectorFr": "El aiaicha",
+        "sectorAr": "العيايشة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38113,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1811,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1808
+        }
+      },
+      {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326054",
+        "sectorFr": "Sokrine",
+        "sectorAr": "السكرين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38147,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1813,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1810
+        }
+      },
+      {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3260",
+        "delegationFr": "Teboulba",
+        "delegationAr": "طبلبة",
+        "sectorCode": "326055",
+        "sectorFr": "Bou-driss",
+        "sectorAr": "بودريس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38181,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1815,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1812
+        }
+      }
+    ],
+    "preservedImadaIds": [
+      "osm:relation:7111787",
+      "osm:relation:7111785",
+      "osm:relation:7111784",
+      "osm:relation:7111783",
+      "osm:relation:7111786"
+    ],
+    "additionalPreservedAcceptedSectorId": "osm:relation:7111933",
+    "noImadaOrMunicipalBoundaryEquivalenceClaim": true
+  },
+  "protectedCurrentRecords": {
+    "osm:node:558814817": {
+      "currentMetadata": {
+        "id": "osm:node:558814817",
+        "sourceId": "osm",
+        "name": "طبلبة",
+        "aliases": [
+          "Teboulba",
+          "Téboulba"
+        ],
+        "kind": "village",
+        "parentName": "العيايشة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "El aiaicha",
+          "Téboulba",
+          "العيايشة",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.6417897,
+        "lng": 10.9658372,
+        "delegationId": 594,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:558814817"
+      },
+      "completeRawGroup": [
+        "osm:node:558814817"
+      ],
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7111787": {
+      "currentMetadata": {
+        "id": "osm:relation:7111787",
+        "sourceId": "osm",
+        "name": "حومة السوق",
+        "aliases": [
+          "Houmet Essouk"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.643871,
+        "lng": 10.97281,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.965851,
+          35.635657,
+          10.98536,
+          35.651718
+        ],
+        "areaKm2": 0.8853520287716131,
+        "pickerGroupId": "osm:relation:7111787",
+        "offset": 746560,
+        "length": 876
+      },
+      "completeRawGroup": [
+        "osm:relation:7111787"
+      ],
+      "packedGeometrySha256": "5f3d6f041680a2f7b8d3befccbf8dd323efedc29d4259ea28019f3cf4572249d"
+    },
+    "osm:relation:7111785": {
+      "currentMetadata": {
+        "id": "osm:relation:7111785",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "name": "الفضلين",
+        "aliases": [
+          "El fadhline"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.637025,
+        "lng": 10.979964,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.971565,
+          35.626533,
+          10.999582,
+          35.647434
+        ],
+        "areaKm2": 2.523472596820673,
+        "pickerGroupId": "osm:relation:7111785",
+        "offset": 744400,
+        "length": 1108
+      },
+      "completeRawGroup": [
+        "osm:relation:7111785"
+      ],
+      "packedGeometrySha256": "de3579ef6c06cbb68312b15d688d79dc46967a8a119649e72f69e0e2fee93da0"
+    },
+    "osm:relation:7111784": {
+      "currentMetadata": {
+        "id": "osm:relation:7111784",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "name": "العيايشة",
+        "aliases": [
+          "El aiaicha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.628742,
+        "lng": 10.956135,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.934598,
+          35.615757,
+          10.978802,
+          35.641811
+        ],
+        "areaKm2": 6.888887324895325,
+        "pickerGroupId": "osm:relation:7111784",
+        "offset": 743396,
+        "length": 1004
+      },
+      "completeRawGroup": [
+        "osm:relation:7111784"
+      ],
+      "packedGeometrySha256": "3b1da5b0c843d73bcef4e1d102d8bd8201d62f0f1a157c3b6d772762aa53e110"
+    },
+    "osm:relation:7111783": {
+      "currentMetadata": {
+        "id": "osm:relation:7111783",
+        "sourceId": "osm",
+        "name": "السكرين",
+        "aliases": [
+          "Sokrine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.65322,
+        "lng": 10.96443,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.928409,
+          35.641837,
+          10.985148,
+          35.664618
+        ],
+        "areaKm2": 4.409805668314854,
+        "pickerGroupId": "osm:relation:7111783",
+        "offset": 739224,
+        "length": 4172
+      },
+      "completeRawGroup": [
+        "osm:relation:7111783"
+      ],
+      "packedGeometrySha256": "c7a440b4e699f2b2be38a70735ff563bc59a291baa5b088404143125a4d09e13"
+    },
+    "osm:relation:7111786": {
+      "currentMetadata": {
+        "id": "osm:relation:7111786",
+        "sourceId": "osm",
+        "name": "بودريس",
+        "aliases": [
+          "Bou-driss"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية طبلبة",
+        "contextAliases": [
+          "Délégation Teboulba",
+          "Téboulba",
+          "معتمدية طبلبة"
+        ],
+        "governorateId": 364,
+        "lat": 35.645247,
+        "lng": 10.947215,
+        "delegationId": 594,
+        "hasBoundary": true,
+        "bbox": [
+          10.924943,
+          35.630898,
+          10.965851,
+          35.659739
+        ],
+        "areaKm2": 5.790310573315543,
+        "pickerGroupId": "osm:relation:7111786",
+        "offset": 745508,
+        "length": 1052
+      },
+      "completeRawGroup": [
+        "osm:relation:7111786"
+      ],
+      "packedGeometrySha256": "9d60046714fd1371a691d785736c309e6f66c693c3dd3f01ccb717bfb30c1e21"
+    },
+    "osm:relation:7111933": {
+      "currentMetadata": {
+        "id": "osm:relation:7111933",
+        "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+        "name": "البقالطة الشمالية",
+        "aliases": [
+          "Bekalta nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية البقالطة",
+        "contextAliases": [
+          "Bekalta",
+          "Délégation Bekalta",
+          "معتمدية البقالطة"
+        ],
+        "governorateId": 364,
+        "lat": 35.626695,
+        "lng": 11.010987,
+        "delegationId": 601,
+        "hasBoundary": true,
+        "bbox": [
+          10.973385,
+          35.613826,
+          11.036008,
+          35.63977
+        ],
+        "areaKm2": 9.297071014496208,
+        "pickerGroupId": "osm:relation:7111933",
+        "offset": 752824,
+        "length": 2028
+      },
+      "completeRawGroup": [
+        "osm:relation:7111933"
+      ],
+      "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0"
+    }
+  },
+  "contexts": {
+    "osm:relation:7154981": {
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Téboulba",
+        "boundary": "administrative",
+        "name": "معتمدية طبلبة",
+        "name:ar": "معتمدية طبلبة",
+        "name:fr": "Délégation Teboulba",
+        "ref:tn:codegeo": "3260",
+        "ref:tn:hasc_2": "TN.MS.TE",
+        "wikidata": "Q12243965"
+      },
+      "sourceGeometrySha256": "0ea9d8248c6c1559376fd3de54bdda94156694292a546651231e130fada96a1a",
+      "containsBothAcceptedReferencePoints": true
+    },
+    "osm:relation:1434954": {
+      "tags": {
+        "ISO3166-2": "TN-52",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Monastir",
+        "boundary": "administrative",
+        "long_name": "ولاية المنستير",
+        "long_name:ar": "ولاية المنستير",
+        "long_name:en": "Monastir Governorate",
+        "long_name:fr": "Gouvernorat de Monastir",
+        "long_name:it": "Governatorato di Monastir",
+        "name": "ولاية المنستير",
+        "name:ar": "ولاية المنستير",
+        "name:az": "Monastir (vilayət)",
+        "name:be": "Манасцір (вілает)",
+        "name:be-tarask": "Манастыр (вілает)",
+        "name:bg": "Монастир (област)",
+        "name:ca": "Governació de Monastir",
+        "name:ceb": "Gouvernorat de Monastir",
+        "name:cy": "Monastir (talaith)",
+        "name:de": "Al-Munastir",
+        "name:el": "Μοναστίρ (Κυβερνείο)",
+        "name:en": "Monastir",
+        "name:es": "Gobernación de Monastir",
+        "name:fa": "استان منستیر",
+        "name:fi": "Monastir (kuvernementti)",
+        "name:fr": "Gouvernorat Monastir",
+        "name:frr": "Monastir (Guwernement)",
+        "name:hr": "Monastir",
+        "name:id": "Kegubernuran Monastir",
+        "name:it": "Monastir",
+        "name:ja": "モナスティル県",
+        "name:ka": "მონასტირის ვილაიეთი",
+        "name:ko": "모나스티르주",
+        "name:ms": "Kawasan kegabenoran Monastir",
+        "name:nl": "Monastir (gouvernement)",
+        "name:no": "Monastir (guvernement)",
+        "name:pl": "Gubernatorstwo Monastyr",
+        "name:pt": "Monastir (província)",
+        "name:ro": "Guvernoratul Monastir",
+        "name:ru": "Монастир (вилайет)",
+        "name:sco": "Monastir Govrenorate",
+        "name:sh": "Monastir (vilajet)",
+        "name:sq": "Monastir",
+        "name:tr": "Munastır (vilayet)",
+        "name:uk": "Монастір (вілаєт)",
+        "name:ur": "ولایت منستیر",
+        "name:zh": "莫納斯提爾省",
+        "name:zu": "Monastir Governorate",
+        "population": "455590",
+        "ref:tn:codegeo": "32",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q318102",
+        "wikipedia": "ar:ولاية المنستير"
+      },
+      "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5",
+      "containsBothAcceptedReferencePoints": true
+    }
+  },
+  "referenceAndPrayerEvidence": {
+    "ellipsoidalDistanceBetweenReferencesM": 14.788962646591173,
+    "currentNodeNearestUsableSource": {
+      "id": 594,
+      "distanceKm": 0.014756007808016086
+    },
+    "runnerUp": {
+      "id": 601,
+      "distanceKm": 3.6497854097876066
+    },
+    "baseUsesOwnAvailableSource594": true,
+    "availableSources": 258,
+    "source594Rejected": false,
+    "source594Csvs": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\01.csv",
+        "sha256": "7391717628e16ce6439c69184d324b4088f68be379b17c19e82cbb2a893781e7",
+        "rowsIncludingHeader": 32
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\02.csv",
+        "sha256": "6892770b19a4ada3ece0e54410735514278f0b72253ab24082d6c84aada9a506",
+        "rowsIncludingHeader": 29
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\03.csv",
+        "sha256": "b81bc285919e9d6a9f7e278c37096e371ac86a3b37172e99d4fe8384a89d6c23",
+        "rowsIncludingHeader": 32
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\04.csv",
+        "sha256": "dad895b9f732975a121b6e4c5ca584be8a44849a43848d3d3acb96a1dcc6d201",
+        "rowsIncludingHeader": 31
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\05.csv",
+        "sha256": "a8932cba8f8c5f72ce7d02e7265619c9bf1f27c8943168e801b7c30bebf492a8",
+        "rowsIncludingHeader": 32
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\06.csv",
+        "sha256": "9712f3271dd2889f0ce879eafb14527de8d442b3bace2a0ee124050ecfbc3675",
+        "rowsIncludingHeader": 31
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\07.csv",
+        "sha256": "50be3d7ba7c4d2229595ddbc8e789beed59e1db9d95ab7cc76320f39fbdb47ea",
+        "rowsIncludingHeader": 32
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\08.csv",
+        "sha256": "2b5b26c319315ba811f2b11bb2c113f235659fcf4dd805f8fdc021291fc34917",
+        "rowsIncludingHeader": 32
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\09.csv",
+        "sha256": "f8c711a08c0bf4091d3918c0ae42d37c415a39c466dec1925d81cc5c682823ea",
+        "rowsIncludingHeader": 31
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\10.csv",
+        "sha256": "43507dc06bde3a8ec330de74738d4e8189c660a347e3a029a015cf833ff2bc61",
+        "rowsIncludingHeader": 32
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\11.csv",
+        "sha256": "e7acaebed870e6a78bc424bd7c7c092418e34e705bcfbfcfb010859db9c14254",
+        "rowsIncludingHeader": 31
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\594\\2026\\12.csv",
+        "sha256": "e6b0530b07a60bc555a7d6263d46d0c644998b86083a88994e26a73e6104b27f",
+        "rowsIncludingHeader": 32
+      }
+    ],
+    "noSource594CoordinateCorrectionInThirtyExistingRecords": true,
+    "currentCoordinatesRetained": true,
+    "qualification": "These are existing settlement/timetable reference points, not certified original INM calculation coordinates."
+  },
+  "primaryEvidence": [
+    {
+      "role": "official_settlement_identity",
+      "url": "https://www.commune-teboulba.gov.tn/fr",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboulba594-identity-review\\municipality-fr.html",
+      "sha256": "17be46ea3cdb2645fd9c9b1c9f7548b61ec68f3649eeb397bce5fbb06ceeff29",
+      "retrievedAt": "2026-09-08T05:17:34.489301+00:00",
+      "retrieval": "Windows curl with default verified TLS; HTTP200; no certificate bypass.",
+      "requiredText": [
+        "La commune de TEBOULBA",
+        "بمدينة طبلبة"
+      ],
+      "qualification": "Official municipality page identifies the town bilingually. Its municipal scope is not equated to a single imada or to the point coordinates."
+    }
+  ],
+  "originalNamePeerInventory": [
+    {
+      "id": "osm:relation:7111933",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:fr": "Téboulba",
+        "ref:tn:codegeo": "325951"
+      },
+      "geometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee"
+    },
+    {
+      "id": "osm:relation:7154981",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Téboulba",
+        "boundary": "administrative",
+        "name": "معتمدية طبلبة",
+        "name:ar": "معتمدية طبلبة",
+        "name:fr": "Délégation Teboulba",
+        "ref:tn:codegeo": "3260",
+        "ref:tn:hasc_2": "TN.MS.TE",
+        "wikidata": "Q12243965"
+      },
+      "geometrySha256": "0ea9d8248c6c1559376fd3de54bdda94156694292a546651231e130fada96a1a"
+    },
+    {
+      "id": "osm:node:558814817",
+      "tags": {
+        "addr:city": "طبلبة",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:en": "Téboulba",
+        "name:fr": "Teboulba",
+        "place": "village",
+        "population": "40000",
+        "wikidata": "Q2400416",
+        "wikimedia_commons": "Category:Teboulba",
+        "wikipedia": "ar:طبلبة"
+      },
+      "geometrySha256": null
+    }
+  ],
+  "effectiveNamePeerIdsExpected": [
+    "osm:node:558814817",
+    "osm:relation:7154981"
+  ],
+  "existingValidatorAssessment": {
+    "method": "reviewed_explicit_point_base_display_identity",
+    "function": "validate_reviewed_point_base_display",
+    "generatorSha256": "e0787b055678b23b2b9fd47adea60c5b2e6af013ae5d02eeaa7a4be1c9e46276",
+    "identitySupportedButWrapperNotYetUsableUnchanged": true,
+    "blocker": "The existing common sourceNamePeers/tags assertion applies one identical inventory to original and effective sources. Accepted corrected Bekalta North removes an original false Teboulba peer. The current format cannot express this honestly.",
+    "requiredBoundedProofChange": "Preserve the existing proof path; allow a separately reviewed format that binds complete original/effective peer inventories. Every changed or removed peer must link to its exact already accepted boundary application and distinct original/effective tags, kinds and geometry hashes. Do not skip inventory completeness or restore obsolete aliases.",
+    "strictCoincidentReferencePathNotAppropriate": "pickerBaseDelegationId requires identical raw/base coordinates; do not relocate either point or add a false coordinate correction to satisfy it.",
+    "otherRequiredAcquisition": "Existing explicit display schema also requires an exact byte-pinned public OSM single-node JSON response with version/timestamp/changeset matching all cached tags and coordinates. No such payload was acquired for this proposal.",
+    "phoneOptional": "A Teboulba/طبلبة name card can corroborate the town identity; phone results cannot fix original/effective source-peer bookkeeping or certify an imada border."
+  },
+  "acceptedLegacyPeerCorrection": {
+    "id": "osm:relation:7111933",
+    "sourceRecord": {
+      "id": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7111933",
+          "officialCode": "325951",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طبلبة",
+            "name:ar": "طبلبة",
+            "name:fr": "Téboulba",
+            "ref:tn:codegeo": "325951"
+          },
+          "scopeKind": "exhaustive_electoral_parts"
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-north-aggregate-independent-review.json",
+        "evidenceSha256": "9ce783d5e415631eed80f536f80d3ce64ecfe51bfa109b54eede5bdd7ff906aa"
+      }
+    },
+    "manifest": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4"
+    },
+    "sourceGeojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+    },
+    "application": {
+      "id": "osm:relation:7111933",
+      "action": "replace",
+      "officialCode": "325951",
+      "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review"
+    },
+    "originalTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "طبلبة",
+      "name:ar": "طبلبة",
+      "name:fr": "Téboulba",
+      "ref:tn:codegeo": "325951"
+    },
+    "originalGeometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee",
+    "effectiveProperties": {
+      "id": "osm:relation:7111933",
+      "kind": "sector",
+      "officialCode": "325951",
+      "nameAr": "البقالطة الشمالية",
+      "nameFr": "Bekalta nord",
+      "governorateCode": "32",
+      "governorateAr": "المنستير",
+      "governorateFr": "Monastir",
+      "delegationCode": "3259",
+      "parentAr": "البقالطة",
+      "parentFr": "Bekalta",
+      "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+      "sourceParts": [
+        {
+          "circleId": "bekalta-north-1",
+          "circleNameAr": "البقالطة الشمالية 1",
+          "parentImadaCode": "325951",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9.pdf",
+          "sourcePdfSha256": "44da4d4631854a63048c32acf144bb49e5dc583f8dd4b4b492675432430b7bbf",
+          "sourcePdfFile": "work/isie-sector-maps-next-conflicts/bekalta-north.pdf",
+          "sourcePdfPage": 1,
+          "sourceDrawingIndex": 237,
+          "sourceVectorLayer": "circonscription_isie2023",
+          "sourceGeometrySha256": "d0e62b8f72da802caf5254fadea9f9b9a0854041d98c9bd042a1252dbe67f809",
+          "sourceGeometryVertices": 177,
+          "sourceCrsEpsg": 32632,
+          "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+          "sourceControlPointMaxResidualMeters": 0.32085106418361614,
+          "sourceControlPointsLatLon": [
+            [
+              35.61174,
+              10.98032
+            ],
+            [
+              35.6447,
+              10.98114
+            ],
+            [
+              35.64374,
+              11.03894
+            ],
+            [
+              35.61077,
+              11.0381
+            ]
+          ],
+          "sourceLocalControlPoints": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "sourceViewportBBox": [
+            4.31908,
+            590.46173,
+            841.50095,
+            5.38791
+          ],
+          "sourcePageTransformationMatrix": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0,
+            0.0,
+            595.5023803710938
+          ],
+          "sourceAffineMetersFromPagePoints": [
+            [
+              6.254404802685647,
+              -7.97662263352125e-05
+            ],
+            [
+              -0.000727733277471998,
+              -6.252782655174087
+            ],
+            [
+              679337.388510424,
+              3946381.024358182
+            ]
+          ],
+          "sourceClipPaths": [
+            {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    0.0
+                  ]
+                ]
+              ]
+            },
+            {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ]
+                ]
+              ]
+            }
+          ],
+          "sourceClipReview": {
+            "explicitlyClosed": true,
+            "activeClipCount": 2,
+            "outsideActiveClipsAreaPoints2": [
+              0.0,
+              0.0
+            ],
+            "outsideViewportAreaPoints2": 0.0,
+            "distanceFromViewportPoints": 38.15187883377075
+          },
+          "visualReview": "Complete North1 ring identified by its title, distinct northern/coastal footprint and shared border with North2. The neighboring North2 label on this page is displaced across the divider; it is not used as a ring-identity test.",
+          "matchingNumberedPageLabels": [
+            {
+              "text": "1 اﻟﺑﻘﺎﻟطﺔ اﻟﺷﻣﺎﻟﯾﺔ",
+              "normalizedForward": "1البقالطةالشمالية",
+              "normalizedReverse": "ةيلامشلاةطلاقبلا1",
+              "colors": [
+                15073280
+              ],
+              "bounds": [
+                176.72239685058594,
+                192.5795440673828,
+                371.4988098144531,
+                245.86410522460938
+              ],
+              "point": [
+                274.11060333251953,
+                219.2218246459961
+              ]
+            },
+            {
+              "text": "1 اﻟﺑﻘﺎﻟطﺔ اﻟﺷﻣﺎﻟﯾﺔ",
+              "normalizedForward": "1البقالطةالشمالية",
+              "normalizedReverse": "ةيلامشلاةطلاقبلا1",
+              "colors": [
+                15073280
+              ],
+              "bounds": [
+                691.4129028320312,
+                36.847808837890625,
+                858.4664916992188,
+                82.52029418945312
+              ],
+              "point": [
+                774.939697265625,
+                59.684051513671875
+              ]
+            }
+          ],
+          "validation": {
+            "valid": true,
+            "countryFullyContains": true,
+            "noRepairSnappingBufferClippingOrSimplification": true
+          }
+        },
+        {
+          "circleId": "bekalta-north-2",
+          "circleNameAr": "البقالطة الشمالية 2",
+          "parentImadaCode": "325951",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9%20%282%29.pdf",
+          "sourcePdfSha256": "c2f5d298778222de1ef8a4cd19b41c58653b8a247c6d7197c1d653eb80018252",
+          "sourcePdfFile": "work/isie-sector-maps-next-conflicts/bekalta-north-detail.pdf",
+          "sourcePdfPage": 1,
+          "sourceDrawingIndex": 146,
+          "sourceVectorLayer": "circonscription_isie2023",
+          "sourceGeometrySha256": "8c9d7948345a1201e02abbeff2ab5008e595154590cde720aed9270944bd615e",
+          "sourceGeometryVertices": 88,
+          "sourceCrsEpsg": 32632,
+          "sourceCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+          "sourceControlPointMaxResidualMeters": 0.22829289759060906,
+          "sourceControlPointsLatLon": [
+            [
+              35.6131,
+              10.96535
+            ],
+            [
+              35.63458,
+              10.96588
+            ],
+            [
+              35.63396,
+              11.00355
+            ],
+            [
+              35.61248,
+              11.00302
+            ]
+          ],
+          "sourceLocalControlPoints": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "sourceViewportBBox": [
+            4.31908,
+            590.46173,
+            841.50095,
+            5.38791
+          ],
+          "sourcePageTransformationMatrix": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0,
+            0.0,
+            595.5023803710938
+          ],
+          "sourceAffineMetersFromPagePoints": [
+            [
+              4.0770374012864785,
+              9.590952415881612e-05
+            ],
+            [
+              0.00014534807769450708,
+              -4.07423583389027
+            ],
+            [
+              677987.347361655,
+              3945219.394368721
+            ]
+          ],
+          "sourceClipPaths": [
+            {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    0.0
+                  ]
+                ]
+              ]
+            },
+            {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ]
+                ]
+              ]
+            }
+          ],
+          "sourceClipReview": {
+            "explicitlyClosed": true,
+            "activeClipCount": 2,
+            "outsideActiveClipsAreaPoints2": [
+              0.0,
+              0.0
+            ],
+            "outsideViewportAreaPoints2": 0.0,
+            "distanceFromViewportPoints": 26.643310546875004
+          },
+          "visualReview": "Complete North2 ring identified by its title, interior numbered label and southwestern footprint, east of the Teboulba boundary and north of Bekalta South.",
+          "matchingNumberedPageLabels": [
+            {
+              "text": "2 ﺔﯾﻟﺎﻣﺷﻟا ﺔطﻟﺎﻘﺑﻟا",
+              "normalizedForward": "2ةيلامشلاةطلاقبلا",
+              "normalizedReverse": "البقالطةالشمالية2",
+              "colors": [
+                15073280
+              ],
+              "bounds": [
+                223.51243591308594,
+                331.197021484375,
+                418.28887939453125,
+                384.4815979003906
+              ],
+              "point": [
+                320.9006576538086,
+                357.8393096923828
+              ]
+            },
+            {
+              "text": "2 ﺔﯾﻟﺎﻣﺷﻟا ﺔطﻟﺎﻘﺑﻟا",
+              "normalizedForward": "2ةيلامشلاةطلاقبلا",
+              "normalizedReverse": "البقالطةالشمالية2",
+              "colors": [
+                15073280
+              ],
+              "bounds": [
+                691.4129028320312,
+                36.847808837890625,
+                858.4664916992188,
+                82.52029418945312
+              ],
+              "point": [
+                774.939697265625,
+                59.684051513671875
+              ]
+            }
+          ],
+          "validation": {
+            "valid": true,
+            "countryFullyContains": true,
+            "noRepairSnappingBufferClippingOrSimplification": true
+          }
+        }
+      ],
+      "sourceGeometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e",
+      "sourceGeometryVertices": 254,
+      "scopeReview": {
+        "classification": "EXHAUSTIVE_PARTS_AGGREGATE_FOR_ONE_IMADA",
+        "wholeCircleEqualsWholeImada": false,
+        "wholeAggregateEqualsWholeImadaIdentity": true,
+        "officialImadaCode": "325951",
+        "officialImadaNameAr": "البقالطة الشمالية",
+        "exactRequiredCircleNamesAr": [
+          "البقالطة الشمالية 1",
+          "البقالطة الشمالية 2"
+        ],
+        "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "decreeAnnex": 1,
+        "decreeTable": "A",
+        "decreePDFPage": 15,
+        "decreeJORTPage": 5112,
+        "reviewedEvidenceFile": "outputs/bekalta-pending-clusters-electoral-semantics-review.json",
+        "guardRequirement": "Accept only this exact imada ID/code and both exact named parts with pinned PDF and geometry digests. Neither part alone, an extra part, a different source code, or a broad name match is sufficient."
+      },
+      "aggregationReview": {
+        "operation": "Exact Shapely/GEOS union of both unrounded WGS84 source polygons; no buffering/snapping, smoothing, gap filling, clipping or simplified borders.",
+        "partIds": [
+          "bekalta-north-1",
+          "bekalta-north-2"
+        ],
+        "partGeometrySha256": [
+          "d0e62b8f72da802caf5254fadea9f9b9a0854041d98c9bd042a1252dbe67f809",
+          "8c9d7948345a1201e02abbeff2ab5008e595154590cde720aed9270944bd615e"
+        ],
+        "sourcePartsFile": "outputs/bekalta-north-aggregate-source-parts.geojson",
+        "sourcePartsFileSha256": "7a4966f8ae07440cd7d77db733c22adfb0eec4af6fccf74d1facf36c5b34f509",
+        "inputOverlapMeters2": 583.0395295198193,
+        "internalGapCount": 4,
+        "internalGapAreasMeters2": [
+          23.233201590541682,
+          77.23789121160836,
+          4.589248110349907,
+          139.03635904411195
+        ],
+        "internalGapTotalMeters2": 244.0966999566119,
+        "sourcePolygonsDistanceMeters": 0.0,
+        "gapTreatment": "All four uncovered interior gaps are preserved as holes. No boundary was invented to connect or fill them. Gap inventory measures enclosed holes only; no claim of zero open-edge discrepancy against the unknown survey boundary.",
+        "intersectionVertices": "Union can split original boundary segments at their mutual intersections. These computed intersection vertices are inherent in the exact set union, not snapped or manually invented links."
+      },
+      "currentOfficialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3259",
+        "delegationFr": "Bekalta",
+        "delegationAr": "البقالطة",
+        "sectorCode": "325951",
+        "sectorFr": "Bekalta nord",
+        "sectorAr": "البقالطة الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37909,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1801,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1798
+        }
+      },
+      "sourceAssertion": {
+        "id": "osm:relation:7111933",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "طبلبة",
+          "name:ar": "طبلبة",
+          "name:fr": "Téboulba",
+          "ref:tn:codegeo": "325951"
+        }
+      },
+      "manualIdentityQualification": "INS2012 and INS2024 identify325951 as Bekalta North; decree590 annexA explicitly assigns North1 and North2 to that single imada. Each complete original map target was re-read and independently georeferenced. The exhaustive aggregate, not either electoral part, supplies the whole-imada identity. The old Teboulba name is unsupported for this source ID and must be removed rather than carried forward as an alias.",
+      "validation": {
+        "valid": true,
+        "finite2d": true,
+        "countryFullyContains": true,
+        "countryOutsideAreaMeters2": 0.0,
+        "noSnappingBufferClippingOrSimplification": true,
+        "exactUnionOfRequiredUnchangedParts": true,
+        "unfilledInternalGapCount": 4
+      },
+      "quantizationReview": {
+        "gridDegrees": 1e-06,
+        "valid": true,
+        "countryFullyContains": true,
+        "geometryType": "Polygon",
+        "internalGapCount": 4,
+        "internalGapAreasMeters2": [
+          22.0678832307392,
+          80.73034080208845,
+          4.789246278222436,
+          129.4664125237831
+        ],
+        "symmetricDifferenceMeters2": 350.1567418595585,
+        "hausdorffMeters": 87.13743027602197,
+        "note": "Quantization checked on a separate copy; exported union and part polygons retain original georeferenced precision."
+      },
+      "osmComparison": {
+        "id": "osm:relation:7111933",
+        "iou": 0.7559259446632041,
+        "officialCoveredByOsm": 0.9863774578391671,
+        "osmCoveredByOfficial": 0.7639009563320014,
+        "hausdorffMeters": 1275.1369907540823
+      },
+      "recommendedChange": {
+        "replaceGeometry": true,
+        "retainSourceCode": true,
+        "replacePrimaryNames": true,
+        "removeIncorrectNames": [
+          "طبلبة",
+          "Téboulba"
+        ],
+        "requiredLoaderChange": "Explicit exhaustive-parts scope guard; existing whole-circle-only guard must reject this candidate until deliberately extended."
+      }
+    },
+    "effectiveSourceGeometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e",
+    "currentPackedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+    "preserveCurrentCanonicalGroup": [
+      "osm:relation:7111933"
+    ],
+    "geometryQualification": "The accepted original and replacement geometries differ. Pin each to its respective reviewed baseline; do not require them equal and do not modify either for this display correction."
+  },
+  "inputPins": {
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": "0b9a6dc6186cafaa948adf602f39ff6e90f700401d8332593cab99fea31ab038",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json": "8cc4859de48a206f52498f6902a83f4247d19a9b78da3fc70bb16badf81e896c",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json": "7384fa1b3711482017b398ec766ea8c37debb1cd7504585680d5d94e0b63e12b",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json": "64529ebec12655c3b2d44c5f43e9daeb15dadb8b9c136c3c22fe6d4895549688",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py": "e0787b055678b23b2b9fd47adea60c5b2e6af013ae5d02eeaa7a4be1c9e46276",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "execution": {
+    "proposalOnly": true,
+    "generatorHelperOrTestExecuted": false,
+    "fullCatalogMatrixRun": false,
+    "liveAppOrLedgerModified": false,
+    "deviceAccess": false,
+    "pbfScan": false,
+    "nodeApiFetch": false,
+    "newPrimaryFetchCount": 1
+  },
+  "limits": [
+    "No point-coordinate, sector-context or boundary change is proposed.",
+    "Full future implementation/source validation and one actual generated delta remain required.",
+    "Official registry proves the five-imada administrative inventory; municipality and exact addressed source node establish settlement identity separately."
+  ]
+}

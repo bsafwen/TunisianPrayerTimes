@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7100693",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سليمان",
+        "name:ar": "سليمان",
+        "name:fr": "Soliman",
+        "ref:tn:codegeo": "156154"
+      },
+      "originalGeometrySha256": "f2ab72174e970cb20848ed06b2352db41453bb21d47c75b55956f96c68b3c071",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سليمان",
+        "name:ar": "سليمان",
+        "name:fr": "Soliman",
+        "ref:tn:codegeo": "156154"
+      },
+      "effectiveGeometrySha256": "f2ab72174e970cb20848ed06b2352db41453bb21d47c75b55956f96c68b3c071",
+      "expectedMetadata": {
+        "name": "سليمان",
+        "aliases": [
+          "Soliman"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "governorateId": 350,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:177385463",
+      "originalKind": "residential",
+      "originalTags": {
+        "addr:city": "سليمان",
+        "addr:country": "TN",
+        "addr:governorate": "Nabeul",
+        "landuse": "residential",
+        "name": "سليمان",
+        "name:ar": "سليمان",
+        "name:fr": "Soliman"
+      },
+      "originalGeometrySha256": "1e90189af413c2ea32ece7ca663c3692170c2a2599b2f7569556220140aae69d",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "addr:city": "سليمان",
+        "addr:country": "TN",
+        "addr:governorate": "Nabeul",
+        "landuse": "residential",
+        "name": "سليمان",
+        "name:ar": "سليمان",
+        "name:fr": "Soliman"
+      },
+      "effectiveGeometrySha256": "1e90189af413c2ea32ece7ca663c3692170c2a2599b2f7569556220140aae69d",
+      "expectedMetadata": {
+        "name": "سليمان",
+        "aliases": [
+          "Soliman"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية سليمان",
+        "governorateId": 350,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "three-city-source-facts.json",
+      "sha256": "e733c1e54fd534e91c5779c892ea07c1f6dd9f1c1a0b0cc5de57da1d634afd30"
+    }
+  ],
+  "scope": "Preserve the same-name town residential and independently coded imada as different browsing identities. This guard alone splits an old automatic group; the paired reviewed city/base association restores the intended two final choices."
+}

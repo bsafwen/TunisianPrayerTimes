@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "status": "installed",
+  "installedAtLocalDate": "2026-09-24",
+  "targetId": "osm:relation:7174569",
+  "clipperId": "osm:relation:7104940",
+  "method": "Apply one provisional partial clip on top of the pinned post-Oued/Sidi live catalog; preserve the small Kabouti GeoPDF-supported overlap for existing runtime conflict suppression.",
+  "inputs": {
+    "manifestSha256": "09e7c40294dac515747b6d303a1a589247be87a39c62da55fd5f5648ae51c858",
+    "baseBuilderSha256": "ab0e2a93abecf40483ce0caabfe45aaaa27e6936a33b4f5f1366b675c834aabf",
+    "sourceBuilderSha256": "1c248ad079889018e14013d27d22911bf6ef50a99362d3f912849a3cd82af25b",
+    "overlayBuilderSha256": "872cd6b69bd1002f84e1598c97109f2ce8a6ad7e2656772658b5b067744a6f3c",
+    "preservationGeojsonSha256": "39170fe05560114a9a9b4e9933e7e232ea1db32b7595e3952eb62a9bae164911",
+    "sourceReviewSha256": "cb8b346797bba3c8f9a258f00d3232e0629525ff85c9cf6cbd2a691646526aa9",
+    "partialClipImpactSha256": "ab3fbec8720f45e19a664d578f220cc884ebd0f8dd4d6dd5c831422653d53924",
+    "kaboutiPdfSha256": "f9a2edf4a8f8e07c86c6d8d054f3c98cb296af4d8f5e6630f94ffe1aa01d9a9a",
+    "tarifPdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+    "driverSha256": "dbbdbbccbf991b466137b3f5d7a6d6df630afcd058eb48cab92fd7208c431fcd"
+  },
+  "outputs": {
+    "neighborhoodsJsonSha256": "63908a83db9b024bddbd8ff75e11806e987a95742cde1571ac7c0286b46460e7",
+    "neighborhoodsBinSha256": "d098fadb5cebac0c8c04d245ca3e9a526064b18c71162d9331c38df6e7b3d347"
+  },
+  "verification": {
+    "status": "passed",
+    "changedSelectableRows": [
+      "osm:relation:7174569"
+    ],
+    "preservedUntouchedPolygonPayloads": 2571,
+    "pointRowsPreserved": true,
+    "existingSourceRecordsPreserved": true,
+    "countryPayloadPreserved": true,
+    "newOverlappingSectorPairs": [],
+    "gridRoundingGapOutsideTarifM2": 8.514597166599078,
+    "gridRoundingExpansionBeyondOriginalKaboutiM2": 0.0,
+    "gpsBroadInterior": {
+      "winnerId": "osm:relation:7104940",
+      "targetAbsentFromCandidates": true
+    },
+    "gpsPreservedSliver": {
+      "winnerId": null,
+      "bothPairMembersSuppressed": true,
+      "bothPairMembersStrictlyContainSample": true
+    },
+    "clip": {
+      "removedAreaKm2": 0.5450546492087005,
+      "remainingAreaKm2": 44.10376408943005,
+      "preservedOverlapKm2": 0.0009693125037814105,
+      "remainingOverlapKm2": 0.0009621920871346601,
+      "formerOverlapGpsWinnerId": "osm:relation:7104940",
+      "preservedOverlapGpsWinnerId": null,
+      "preservedOverlapGpsConflictSuppressed": true
+    },
+    "inputPins": {
+      "manifestSha256": "09e7c40294dac515747b6d303a1a589247be87a39c62da55fd5f5648ae51c858",
+      "baseBuilderSha256": "ab0e2a93abecf40483ce0caabfe45aaaa27e6936a33b4f5f1366b675c834aabf",
+      "sourceBuilderSha256": "1c248ad079889018e14013d27d22911bf6ef50a99362d3f912849a3cd82af25b",
+      "overlayBuilderSha256": "872cd6b69bd1002f84e1598c97109f2ce8a6ad7e2656772658b5b067744a6f3c",
+      "preservationGeojsonSha256": "39170fe05560114a9a9b4e9933e7e232ea1db32b7595e3952eb62a9bae164911",
+      "sourceReviewSha256": "cb8b346797bba3c8f9a258f00d3232e0629525ff85c9cf6cbd2a691646526aa9",
+      "partialClipImpactSha256": "ab3fbec8720f45e19a664d578f220cc884ebd0f8dd4d6dd5c831422653d53924",
+      "kaboutiPdfSha256": "f9a2edf4a8f8e07c86c6d8d054f3c98cb296af4d8f5e6630f94ffe1aa01d9a9a",
+      "tarifPdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+      "driverSha256": "dbbdbbccbf991b466137b3f5d7a6d6df630afcd058eb48cab92fd7208c431fcd"
+    },
+    "baseAssetSha256": {
+      "neighborhoodsJson": "d9e8dd2a9ab5e227afa7d30a61ab5dd25ac383a24d2b97fa03914351134dfa9c",
+      "neighborhoodsBin": "4b0727226a5ed143cf9704e0c820b39d70ef21ba28a05b809dc84c12932342a7"
+    },
+    "stagedAssetSha256": {
+      "neighborhoodsJson": "63908a83db9b024bddbd8ff75e11806e987a95742cde1571ac7c0286b46460e7",
+      "neighborhoodsBin": "d098fadb5cebac0c8c04d245ca3e9a526064b18c71162d9331c38df6e7b3d347"
+    },
+    "overlayReportSha256": "a0b1f75aab7ab12625bc5dfa660ab0420f026955a9a6a86a14cb42129fdd61ba",
+    "overlayBuilderOutput": {
+      "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ben-arous-nonsectors-review-20260924\\kabouti-current-chain\\stage",
+      "status": "passed",
+      "stagedAssetSha256": {
+        "neighborhoodsJson": "63908a83db9b024bddbd8ff75e11806e987a95742cde1571ac7c0286b46460e7",
+        "neighborhoodsBin": "d098fadb5cebac0c8c04d245ca3e9a526064b18c71162d9331c38df6e7b3d347"
+      },
+      "sectorOverlapKm2": {
+        "osm:relation:7174569": {
+          "sectorOverlapKm2Before": 0.6356038397087329,
+          "sectorOverlapKm2After": 0.09054441924610403
+        }
+      },
+      "audit": {
+        "passed": true,
+        "invalidPolygonCount": 0,
+        "representativePointFailures": 0,
+        "missingBboxGridEntries": 0,
+        "conflictSamplesEvaluated": 485,
+        "behavioralRegressionFixturesPassed": 9,
+        "realCoordinateRegressionCasesPassed": 3
+      }
+    },
+    "installState": "installed"
+  }
+}

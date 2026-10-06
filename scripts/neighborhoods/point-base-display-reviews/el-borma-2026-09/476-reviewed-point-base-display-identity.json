@@ -1,0 +1,1596 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:500182808",
+  "baseId": 476,
+  "rawCurrent": {
+    "id": "osm:node:500182808",
+    "sourceId": "osm",
+    "name": "البرمة",
+    "aliases": [
+      "ⵍⴱⵔⵎⴰ البرمة",
+      "El Borma",
+      "ⵍⴱⵔⵎⴰ"
+    ],
+    "kind": "village",
+    "parentName": "رمادة الغربية",
+    "contextAliases": [
+      "Délégation Remada",
+      "Remada",
+      "Remada Ouest",
+      "رمادة الغربية",
+      "معتمدية رمادة"
+    ],
+    "governorateId": 351,
+    "lat": 31.6880101,
+    "lng": 9.2186132,
+    "delegationId": 476,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:500182808"
+  },
+  "baseCurrent": {
+    "id": 476,
+    "nomFr": "El Borma",
+    "nomAr": "البرمة",
+    "nomEn": "El Borma",
+    "lat": 31.6916,
+    "lng": 9.2043
+  },
+  "expectedGovernor": {
+    "id": 351,
+    "nomFr": "Tataouine",
+    "nomAr": "تطاوين",
+    "nomEn": "Tataouine",
+    "lat": 32.9297,
+    "lng": 10.4518
+  },
+  "originalSourceNode": {
+    "id": "osm:node:500182808",
+    "tags": {
+      "addr:city": "البرمة",
+      "name": "ⵍⴱⵔⵎⴰ البرمة",
+      "name:ar": "البرمة",
+      "name:ber": "ⵍⴱⵔⵎⴰ",
+      "name:de": "El Borma",
+      "name:en": "El Borma",
+      "name:es": "El Borma",
+      "name:fr": "El Borma",
+      "place": "village"
+    },
+    "lat": 31.6880101,
+    "lng": 9.2186132
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/el-borma-2026-09/osm-node-500182808-version8.json",
+    "sha256": "98922a10e1b5bb7da068eb52f2ae10ac5da325ed4b6086158ef346ac5b13079d",
+    "url": "https://api.openstreetmap.org/api/0.6/node/500182808/8.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/500182808/8.json",
+    "sha256": "98922a10e1b5bb7da068eb52f2ae10ac5da325ed4b6086158ef346ac5b13079d",
+    "exactElement": {
+      "type": "node",
+      "id": 500182808,
+      "lat": 31.6880101,
+      "lon": 9.2186132,
+      "timestamp": "2026-07-06T15:32:58Z",
+      "version": 8,
+      "changeset": 185207666,
+      "user": "Libya-truth",
+      "uid": 22560041,
+      "tags": {
+        "addr:city": "البرمة",
+        "name": "ⵍⴱⵔⵎⴰ البرمة",
+        "name:ar": "البرمة",
+        "name:ber": "ⵍⴱⵔⵎⴰ",
+        "name:de": "El Borma",
+        "name:en": "El Borma",
+        "name:es": "El Borma",
+        "name:fr": "El Borma",
+        "place": "village"
+      }
+    }
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/el-borma-2026-09/el-borma-display-scope-feasibility.json",
+    "sha256": "aa8c49a1b54264ddbf1da92c27c8f26de012e411548da1824dbd8f4e629a1bd8"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/el-borma-2026-09/el-borma-root-display-scope-review.json",
+    "sha256": "52400db186b7e7eca19cb1ff6b039ad39e3fdafe61be7aa28691112cd7bde13c"
+  },
+  "independentPrimaryFinding": {
+    "decision": "Support combining the two broad El Borma manual locality choices. The source village identity has continuity from the original western point near the stored reference to the present eastern point; SITEP confirms habitation and INM identifies the Tunisian timetable. Both entries represent the named worker locality context. This does not equate a concession, residential camp, civilian municipality or administrative delegation.",
+    "holdResolution": "The prior hold requested independent narrower locality/reference scope and a valid proof contract. Authentic node history, direct INM identity, primary operator habitation, and the independently checked existing extension now support the broad named-locality display association. Exact shared residential-camp footprint is not the asserted identity."
+  },
+  "originalSourceReview": {
+    "file": "point-base-display-reviews/el-borma-2026-09/el-borma-town-point-source-review-20260912.json",
+    "sha256": "d7fe7e20ec827d9f254d7756db0292ccb5a7ba4d0fbded2e81fc0f371ff0622e"
+  },
+  "supersededScopeHold": {
+    "file": "point-base-display-reviews/el-borma-2026-09/beni-mhira-borma-root-scope-holds-20260912.json",
+    "sha256": "d4e5df986785630e710959b05c46c4a02c119a9a3f4fdbfd0509e2fd77db4777"
+  },
+  "historicalSourceContextFacts": {
+    "file": "point-base-display-reviews/el-borma-2026-09/finite-source-context-facts.json",
+    "sha256": "3185feb80c30638fd48a4973ee3d343576903b27f1bef10f4f355b9c3c9399ff"
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/el-borma-2026-09/sitep-social.html",
+      "sha256": "c43e2230e6a10bba8b16643eea25e60ff948bc6f2b718f5f6df2c69976f21e82",
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=5",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "camp r&eacute;sidentiel",
+        "la base d&rsquo;El Borma",
+        "centre m&eacute;dical"
+      ],
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "finding": "The operator explicitly describes a residential camp with sports facilities and a medical centre at its El Borma base. Inhabited worker locality is supported; a general civilian town and exact point or residential footprint are not certified.",
+      "qualification": "Primary operator evidence identifies the inhabited worker locality in Tunisia; it is not an assertion that either point lies inside the camp, nor an administrative code or boundary certification."
+    },
+    {
+      "file": "point-base-display-reviews/el-borma-2026-09/sitep-field.html",
+      "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51",
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+      "role": "official_locality_context",
+      "requiredText": [
+        "El-Borma",
+        "sud-ouest Tunisien"
+      ],
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "finding": "The operator locates its El Borma oil/gas production field in southwestern Tunisia near the Tunisian-Algerian border. This is the Tunisian industrial locality, not proof about the Algerian namesake municipality.",
+      "qualification": "Primary operator evidence identifies the inhabited worker locality in Tunisia; it is not an assertion that either point lies inside the camp, nor an administrative code or boundary certification."
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/el-borma-2026-09/retrieval-initial.json",
+      "sha256": "0159ec3c34cb9de6e22f14407d8ec09ac4c24c4622f12179c5c431468c1e4b91"
+    },
+    {
+      "file": "point-base-display-reviews/el-borma-2026-09/retrieval-social-field.json",
+      "sha256": "c799227e5372429099c7c44765e2b45ef97b6affeb883b91481bab06a617d38e"
+    },
+    {
+      "file": "point-base-display-reviews/el-borma-2026-09/historical-node-retrieval.json",
+      "sha256": "27620855771dee1070289ff2ecda0eb0d103a4ba3d894da238e6c5619f52ea56"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/el-borma-2026-09/osm-node-history-confirmed.json",
+    "sha256": "5c86593c1fe7935c86a31e9b631e98bb2243c08b95661c96eeb2f114bfef64fc",
+    "url": "https://api.openstreetmap.org/api/0.6/node/500182808/history.json"
+  },
+  "currentOsmSourceSnapshot": {
+    "file": "point-base-display-reviews/el-borma-2026-09/osm-node-current-confirmed.json",
+    "sha256": "b4cc8a5820330c7ccac48193ee5c8a6f58bb77a1ab56f4ce2ed534e0d1509565",
+    "url": "https://api.openstreetmap.org/api/0.6/node/500182808.json"
+  },
+  "sourceIdentityQualifications": [
+    "The operative source snapshot is authentic historical version8, matching the frozen cache exactly. Version9 is retained separately as current supplemental evidence; its different name tag is not silently imported.",
+    "The manual name covers the inhabited worker locality and its same-name timetable reference. Residential camp, neighbouring compounds, oilfield and airport remain distinct geographic scopes.",
+    "The two anchors are not asserted to lie inside a common residential-camp footprint. There is no new polygon or coordinate correction."
+  ],
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/el-borma-2026-09/el-borma-display-scope-feasibility.json",
+    "sha256": "aa8c49a1b54264ddbf1da92c27c8f26de012e411548da1824dbd8f4e629a1bd8"
+  },
+  "currentSourcePhaseFacts": {
+    "file": "point-base-display-reviews/el-borma-2026-09/finite-source-group-facts.json",
+    "sha256": "83f9b3c04049276c98d83a5571938988029e09423fbe38e779f74ca45139b997"
+  },
+  "baselineMetadataSha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+  "baselineCurationSha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94",
+  "supplementaryPhoneReview": {
+    "reference": {
+      "file": "point-base-display-reviews/el-borma-2026-09/borma-next-six-beni-mhira-phone-review-20260912.json",
+      "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f"
+    },
+    "qualification": "Only the three El Borma observations in this report inform this pair. The base pin card contains a nearby Al Borma Algeria label; the exact camp card identifies the residential camp only. These are contextual observations, not country/point/polygon certifications."
+  },
+  "primaryVisualScopeEvidence": {
+    "images": [
+      {
+        "file": "point-base-display-reviews/el-borma-2026-09/sitep-field-map.jpg",
+        "sha256": "db49894dc40866c7e7795fe81220eab7ec0f83fd8773fab5e14692afec96fa37"
+      },
+      {
+        "file": "point-base-display-reviews/el-borma-2026-09/sitep-residential-camp.png",
+        "sha256": "e726f6bbef65e1109956824efe0397c3fb6710274bf4f149326fa36cc8f671f8"
+      }
+    ],
+    "retrieval": {
+      "file": "point-base-display-reviews/el-borma-2026-09/sitep-plan-image-retrieval.json",
+      "sha256": "6914db26147218824b9ce1cfb04449114f4a1b05127dc8f2b9733542fc069061"
+    },
+    "parentHtml": {
+      "file": "point-base-display-reviews/el-borma-2026-09/sitep-field.html",
+      "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51",
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+      "role": "official_locality_context",
+      "requiredText": [
+        "El-Borma",
+        "sud-ouest Tunisien"
+      ],
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "finding": "The operator locates its El Borma oil/gas production field in southwestern Tunisia near the Tunisian-Algerian border. This is the Tunisian industrial locality, not proof about the Algerian namesake municipality.",
+      "qualification": "Primary operator evidence identifies the inhabited worker locality in Tunisia; it is not an assertion that either point lies inside the camp, nor an administrative code or boundary certification."
+    },
+    "visualReview": "Both full original images personally viewed. The camp image labels Camp Résidentiel and a red closed outline, with no geographic grid/control. The concession image separately marks a national border, names Carthage UTM32N, and depicts a much broader industrial concession. These are different scopes, neither is imported or geometrically fitted.",
+    "polygonImported": false
+  },
+  "officialTimetableIdentity": {
+    "originalResponse": {
+      "file": "point-base-display-reviews/el-borma-2026-09/prayer-476-2026-09-12.json",
+      "sha256": "aff4fa2cb83fa88f87902552f5d49edde663dabbaeab85c38addf00952fcc1b4",
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/351/476/"
+    },
+    "retrievalRecordExtract": {
+      "file": "point-base-display-reviews/el-borma-2026-09/inm476-original-retrieval-record-extract.json",
+      "sha256": "3c5dad68d06a3dd8e06aad5a44d97737b918ea5c08d98987f4477848588d8440"
+    },
+    "publishedCoordinate": {
+      "lat": 31.69,
+      "lng": 9.211
+    },
+    "coordinatesApplied": false,
+    "qualification": "Official same named Tunisian timetable identity; published coordinate is not silently substituted for the stored anchor and is not certified as an astronomical calculation input."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7143844",
+      "officialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535754",
+        "sectorFr": "Kenbout",
+        "sectorAr": "كنبوت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3199
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "ref:tn:codegeo": "535754"
+      },
+      "sourceGeometrySha256": "c44305ceffceab88ad1b6e89c9edcdf58e99f767eb1e57ffdce1b79afaccfbfe",
+      "currentMetadata": {
+        "id": "osm:relation:7143844",
+        "sourceId": "osm",
+        "name": "كمبوت",
+        "aliases": [
+          "Kambout",
+          "ⴽⵎⴱⵓⵜ"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.198026,
+        "lng": 10.07295,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          9.844184,
+          31.976627,
+          10.35943,
+          32.418207
+        ],
+        "areaKm2": 1093.2821259218051,
+        "pickerGroupId": "osm:relation:7143844",
+        "offset": 2084896,
+        "length": 2268
+      },
+      "packedGeometrySha256": "f90a1a1c72c56eb9cbdad816338b11f67e1229af4da4517668d5aa2176ad1aed",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7143846",
+      "officialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535753",
+        "sectorFr": "Nekrif",
+        "sectorAr": "نكريف",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65239,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3203,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3197
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "نكريف",
+        "name:ar": "نكريف",
+        "name:fr": "Nekrif",
+        "ref:tn:codegeo": "535753"
+      },
+      "sourceGeometrySha256": "034beea4ed0afb67e44ccfa7609805a7675b1f03a4bacba98014ff4141bc45a7",
+      "currentMetadata": {
+        "id": "osm:relation:7143846",
+        "sourceId": "osm",
+        "name": "نكريف",
+        "aliases": [
+          "Nekrif",
+          "ⵏⴽⵔⵉⴼ"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.098757,
+        "lng": 10.394572,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          10.144431,
+          31.913657,
+          10.591872,
+          32.280237
+        ],
+        "areaKm2": 687.8203768147316,
+        "pickerGroupId": "osm:relation:7143846",
+        "offset": 2087688,
+        "length": 1460
+      },
+      "packedGeometrySha256": "248da09aacfbe6d323580e262d76a3b1adac12d172ad6b19aeb88077c5a0bad3",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7143848",
+      "officialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535752",
+        "sectorFr": "Remada ouest",
+        "sectorAr": "رمادة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65205,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3201,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3195
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "رمادة الغربية",
+        "name:ar": "رمادة الغربية",
+        "name:fr": "Remada Ouest",
+        "ref:tn:codegeo": "535752"
+      },
+      "sourceGeometrySha256": "de5696786088f93e31ab68d37f40ae3d52e8840a2aaac6905342c0df17cc7ed4",
+      "currentMetadata": {
+        "id": "osm:relation:7143848",
+        "sourceId": "osm",
+        "name": "رمادة الغربية",
+        "aliases": [
+          "Remada Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.030197,
+        "lng": 9.540886,
+        "delegationId": 476,
+        "hasBoundary": true,
+        "bbox": [
+          8.588326,
+          31.51407,
+          10.438221,
+          32.546427
+        ],
+        "areaKm2": 9896.9874338715,
+        "pickerGroupId": "osm:relation:7143848",
+        "offset": 2089448,
+        "length": 4108
+      },
+      "packedGeometrySha256": "db2a4fcef72c29507fe236287d05694b1d8914392fdf660079d1d60df37d3420",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7143850",
+      "officialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535751",
+        "sectorFr": "Remada est",
+        "sectorAr": "رمادة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65171,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3199,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3193
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "رمادة الشرقية",
+        "name:ar": "رمادة الشرقية",
+        "name:fr": "Remada Est",
+        "ref:tn:codegeo": "535751"
+      },
+      "sourceGeometrySha256": "99cd2556dc4a94608614139e8a969fafb809dbc65beba5fcfba0345d835c2c7d",
+      "currentMetadata": {
+        "id": "osm:relation:7143850",
+        "sourceId": "osm",
+        "name": "رمادة الشرقية",
+        "aliases": [
+          "Remada Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.434532,
+        "lng": 10.442714,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          10.267404,
+          32.243847,
+          10.640149,
+          32.624197
+        ],
+        "areaKm2": 850.5269379166142,
+        "pickerGroupId": "osm:relation:7143850",
+        "offset": 2095416,
+        "length": 2228
+      },
+      "packedGeometrySha256": "0cd171c3fe0b591c062f7fbaec55da81673b741ea2445c697941f229afcb43d3",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7143871",
+      "officialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535757",
+        "sectorFr": "Meghani",
+        "sectorAr": "مغنى",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65341,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3208,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3202
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مغنى",
+        "name:ar": "مغنى",
+        "name:fr": "Meghani",
+        "ref:tn:codegeo": "535757"
+      },
+      "sourceGeometrySha256": "bfd645ef135e0eace3d40ec28f0659ba1f46d0a528ca65b6931c0d263224e4a4",
+      "currentMetadata": {
+        "id": "osm:relation:7143871",
+        "sourceId": "osm",
+        "name": "مغنى",
+        "aliases": [
+          "Meghani"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.317542,
+        "lng": 10.634743,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          10.502444,
+          32.140157,
+          10.801971,
+          32.495127
+        ],
+        "areaKm2": 490.8415001806384,
+        "pickerGroupId": "osm:relation:7143871",
+        "offset": 2125584,
+        "length": 1348
+      },
+      "packedGeometrySha256": "7374242d398d2cc58e7543fbf682dd6cc4d37a70fa855972210b905161660fa2",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7143874",
+      "officialIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535755",
+        "sectorFr": "Bir amir",
+        "sectorAr": "بئر عمير",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65307,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3207,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3201
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بئر عمير",
+        "name:ar": "بئر عمير",
+        "name:fr": "Bir Amir",
+        "ref:tn:codegeo": "535755"
+      },
+      "sourceGeometrySha256": "891f2697f7d59581f89325799303a18a119e1ccea266d29171376d8f510060a8",
+      "currentMetadata": {
+        "id": "osm:relation:7143874",
+        "sourceId": "osm",
+        "name": "بئر عمير",
+        "aliases": [
+          "Bir Aamir",
+          "Bir Amir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.581917,
+        "lng": 9.39924,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          8.35683,
+          32.363237,
+          10.307195,
+          32.800622
+        ],
+        "areaKm2": 3664.769860748323,
+        "pickerGroupId": "osm:relation:7143874",
+        "offset": 2129884,
+        "length": 3852
+      },
+      "packedGeometrySha256": "4fcd8084ddef10405be9b76537228e2ee727d9e3e72993ac1dd4edd20b1f0b82",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:500182808",
+      "kind": "village",
+      "tags": {
+        "addr:city": "البرمة",
+        "name": "ⵍⴱⵔⵎⴰ البرمة",
+        "name:ar": "البرمة",
+        "name:ber": "ⵍⴱⵔⵎⴰ",
+        "name:de": "El Borma",
+        "name:en": "El Borma",
+        "name:es": "El Borma",
+        "name:fr": "El Borma",
+        "place": "village"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434953": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-83",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية تطاوين",
+        "name:ar": "ولاية تطاوين",
+        "name:be": "Татавін (вілает)",
+        "name:be-tarask": "Татаўін (вілает)",
+        "name:bg": "Татауин (област)",
+        "name:ca": "Governació de Tataouine",
+        "name:ceb": "Tataouine (lalawigan)",
+        "name:cy": "Tataouine (talaith)",
+        "name:de": "Gouvernement Tataouine",
+        "name:el": "Ταταουίν (Κυβερνείο)",
+        "name:en": "Tataouine",
+        "name:es": "Gobernación de Tataouine",
+        "name:fa": "تطاوین",
+        "name:fi": "Tataouine (kuvernementti)",
+        "name:fr": "Gouvernorat Tataouine",
+        "name:frr": "Tataouine (Guwernement)",
+        "name:id": "Kegubernuran Tataouine",
+        "name:it": "Tataouine",
+        "name:ja": "タタウイヌ県",
+        "name:ko": "타타우인주",
+        "name:ms": "Kawasan kegabenoran Tataouine",
+        "name:nl": "Tataouine (gouvernement)",
+        "name:no": "Tataouine (guvernement)",
+        "name:pl": "Gubernatorstwo Tatawin",
+        "name:pt": "Tataouine (província)",
+        "name:ro": "Guvernoratul Tataouine",
+        "name:ru": "Татавин (вилайет)",
+        "name:sco": "Tataouine Govrenorate",
+        "name:sh": "Tataouine (vilajet)",
+        "name:sv": "Tataouine (guvernement)",
+        "name:tr": "Tatavin ili",
+        "name:uk": "Татауїн (вілаєт)",
+        "name:ur": "تطاوین",
+        "name:zh": "泰塔溫省",
+        "name:zu": "Tataouine Governorate",
+        "official_name": "ولاية تطاوين",
+        "official_name:ar": "ولاية تطاوين",
+        "official_name:en": "Tataouine Governorate",
+        "official_name:fa": "استان تطاوین",
+        "official_name:fr": "Gouvernorat de Tataouine",
+        "official_name:it": "Governatorato di Tataouine",
+        "official_name:ur": "ولایت تطاوین",
+        "population": "143524",
+        "population:date": "2004",
+        "ref:tn:codegeo": "53",
+        "wikidata": "Q327045",
+        "wikipedia": "ar:ولاية تطاوين"
+      },
+      "sourceGeometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0"
+    },
+    "osm:relation:7143840": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Remada",
+        "boundary": "administrative",
+        "name": "معتمدية رمادة",
+        "name:ar": "معتمدية رمادة",
+        "name:fr": "Délégation Remada",
+        "ref:tn:codegeo": "5357",
+        "ref:tn:hasc_2": "TN.TA.RE",
+        "wikidata": "Q3424458"
+      },
+      "sourceGeometrySha256": "97ed7fa508bfca02431d7db1e1b64173cb6895c828b95ed0854d36d89b6b3ace"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:500182808",
+    "field": "pickerGroupId",
+    "before": "osm:node:500182808",
+    "after": "delegation:476"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:500182808"
+      ],
+      [
+        "delegation:476"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:476",
+        "osm:node:500182808"
+      ]
+    ]
+  },
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "5357"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:500182808",
+        "original": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "البرمة",
+            "name": "ⵍⴱⵔⵎⴰ البرمة",
+            "name:ar": "البرمة",
+            "name:ber": "ⵍⴱⵔⵎⴰ",
+            "name:de": "El Borma",
+            "name:en": "El Borma",
+            "name:es": "El Borma",
+            "name:fr": "El Borma",
+            "place": "village"
+          },
+          "sourceId": null,
+          "geometrySha256": "ef1d598e5a6e41a53c5ef077b8f56b36777daca7388b071eaa51a59f83fa15c0"
+        },
+        "effective": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "البرمة",
+            "name": "ⵍⴱⵔⵎⴰ البرمة",
+            "name:ar": "البرمة",
+            "name:ber": "ⵍⴱⵔⵎⴰ",
+            "name:de": "El Borma",
+            "name:en": "El Borma",
+            "name:es": "El Borma",
+            "name:fr": "El Borma",
+            "place": "village"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "ef1d598e5a6e41a53c5ef077b8f56b36777daca7388b071eaa51a59f83fa15c0"
+        }
+      },
+      {
+        "id": "osm:relation:1434953",
+        "original": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-83",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية تطاوين",
+            "name:ar": "ولاية تطاوين",
+            "name:be": "Татавін (вілает)",
+            "name:be-tarask": "Татаўін (вілает)",
+            "name:bg": "Татауин (област)",
+            "name:ca": "Governació de Tataouine",
+            "name:ceb": "Tataouine (lalawigan)",
+            "name:cy": "Tataouine (talaith)",
+            "name:de": "Gouvernement Tataouine",
+            "name:el": "Ταταουίν (Κυβερνείο)",
+            "name:en": "Tataouine",
+            "name:es": "Gobernación de Tataouine",
+            "name:fa": "تطاوین",
+            "name:fi": "Tataouine (kuvernementti)",
+            "name:fr": "Gouvernorat Tataouine",
+            "name:frr": "Tataouine (Guwernement)",
+            "name:id": "Kegubernuran Tataouine",
+            "name:it": "Tataouine",
+            "name:ja": "タタウイヌ県",
+            "name:ko": "타타우인주",
+            "name:ms": "Kawasan kegabenoran Tataouine",
+            "name:nl": "Tataouine (gouvernement)",
+            "name:no": "Tataouine (guvernement)",
+            "name:pl": "Gubernatorstwo Tatawin",
+            "name:pt": "Tataouine (província)",
+            "name:ro": "Guvernoratul Tataouine",
+            "name:ru": "Татавин (вилайет)",
+            "name:sco": "Tataouine Govrenorate",
+            "name:sh": "Tataouine (vilajet)",
+            "name:sv": "Tataouine (guvernement)",
+            "name:tr": "Tatavin ili",
+            "name:uk": "Татауїн (вілаєт)",
+            "name:ur": "تطاوین",
+            "name:zh": "泰塔溫省",
+            "name:zu": "Tataouine Governorate",
+            "official_name": "ولاية تطاوين",
+            "official_name:ar": "ولاية تطاوين",
+            "official_name:en": "Tataouine Governorate",
+            "official_name:fa": "استان تطاوین",
+            "official_name:fr": "Gouvernorat de Tataouine",
+            "official_name:it": "Governatorato di Tataouine",
+            "official_name:ur": "ولایت تطاوین",
+            "population": "143524",
+            "population:date": "2004",
+            "ref:tn:codegeo": "53",
+            "wikidata": "Q327045",
+            "wikipedia": "ar:ولاية تطاوين"
+          },
+          "sourceId": null,
+          "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0"
+        },
+        "effective": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-83",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية تطاوين",
+            "name:ar": "ولاية تطاوين",
+            "name:be": "Татавін (вілает)",
+            "name:be-tarask": "Татаўін (вілает)",
+            "name:bg": "Татауин (област)",
+            "name:ca": "Governació de Tataouine",
+            "name:ceb": "Tataouine (lalawigan)",
+            "name:cy": "Tataouine (talaith)",
+            "name:de": "Gouvernement Tataouine",
+            "name:el": "Ταταουίν (Κυβερνείο)",
+            "name:en": "Tataouine",
+            "name:es": "Gobernación de Tataouine",
+            "name:fa": "تطاوین",
+            "name:fi": "Tataouine (kuvernementti)",
+            "name:fr": "Gouvernorat Tataouine",
+            "name:frr": "Tataouine (Guwernement)",
+            "name:id": "Kegubernuran Tataouine",
+            "name:it": "Tataouine",
+            "name:ja": "タタウイヌ県",
+            "name:ko": "타타우인주",
+            "name:ms": "Kawasan kegabenoran Tataouine",
+            "name:nl": "Tataouine (gouvernement)",
+            "name:no": "Tataouine (guvernement)",
+            "name:pl": "Gubernatorstwo Tatawin",
+            "name:pt": "Tataouine (província)",
+            "name:ro": "Guvernoratul Tataouine",
+            "name:ru": "Татавин (вилайет)",
+            "name:sco": "Tataouine Govrenorate",
+            "name:sh": "Tataouine (vilajet)",
+            "name:sv": "Tataouine (guvernement)",
+            "name:tr": "Tatavin ili",
+            "name:uk": "Татауїн (вілаєт)",
+            "name:ur": "تطاوین",
+            "name:zh": "泰塔溫省",
+            "name:zu": "Tataouine Governorate",
+            "official_name": "ولاية تطاوين",
+            "official_name:ar": "ولاية تطاوين",
+            "official_name:en": "Tataouine Governorate",
+            "official_name:fa": "استان تطاوین",
+            "official_name:fr": "Gouvernorat de Tataouine",
+            "official_name:it": "Governatorato di Tataouine",
+            "official_name:ur": "ولایت تطاوین",
+            "population": "143524",
+            "population:date": "2004",
+            "ref:tn:codegeo": "53",
+            "wikidata": "Q327045",
+            "wikipedia": "ar:ولاية تطاوين"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0"
+        }
+      },
+      {
+        "id": "osm:relation:7143840",
+        "original": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Remada",
+            "boundary": "administrative",
+            "name": "معتمدية رمادة",
+            "name:ar": "معتمدية رمادة",
+            "name:fr": "Délégation Remada",
+            "ref:tn:codegeo": "5357",
+            "ref:tn:hasc_2": "TN.TA.RE",
+            "wikidata": "Q3424458"
+          },
+          "sourceId": null,
+          "geometrySha256": "97ed7fa508bfca02431d7db1e1b64173cb6895c828b95ed0854d36d89b6b3ace"
+        },
+        "effective": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Remada",
+            "boundary": "administrative",
+            "name": "معتمدية رمادة",
+            "name:ar": "معتمدية رمادة",
+            "name:fr": "Délégation Remada",
+            "ref:tn:codegeo": "5357",
+            "ref:tn:hasc_2": "TN.TA.RE",
+            "wikidata": "Q3424458"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "97ed7fa508bfca02431d7db1e1b64173cb6895c828b95ed0854d36d89b6b3ace"
+        }
+      },
+      {
+        "id": "osm:relation:7143844",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كمبوت",
+            "name:ar": "كمبوت",
+            "name:fr": "Kambout",
+            "ref:tn:codegeo": "535754"
+          },
+          "sourceId": null,
+          "geometrySha256": "c44305ceffceab88ad1b6e89c9edcdf58e99f767eb1e57ffdce1b79afaccfbfe"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كمبوت",
+            "name:ar": "كمبوت",
+            "name:fr": "Kambout",
+            "ref:tn:codegeo": "535754"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "c44305ceffceab88ad1b6e89c9edcdf58e99f767eb1e57ffdce1b79afaccfbfe"
+        }
+      },
+      {
+        "id": "osm:relation:7143846",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نكريف",
+            "name:ar": "نكريف",
+            "name:fr": "Nekrif",
+            "ref:tn:codegeo": "535753"
+          },
+          "sourceId": null,
+          "geometrySha256": "034beea4ed0afb67e44ccfa7609805a7675b1f03a4bacba98014ff4141bc45a7"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نكريف",
+            "name:ar": "نكريف",
+            "name:fr": "Nekrif",
+            "ref:tn:codegeo": "535753"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "034beea4ed0afb67e44ccfa7609805a7675b1f03a4bacba98014ff4141bc45a7"
+        }
+      },
+      {
+        "id": "osm:relation:7143848",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الغربية",
+            "name:ar": "رمادة الغربية",
+            "name:fr": "Remada Ouest",
+            "ref:tn:codegeo": "535752"
+          },
+          "sourceId": null,
+          "geometrySha256": "de5696786088f93e31ab68d37f40ae3d52e8840a2aaac6905342c0df17cc7ed4"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الغربية",
+            "name:ar": "رمادة الغربية",
+            "name:fr": "Remada Ouest",
+            "ref:tn:codegeo": "535752"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "de5696786088f93e31ab68d37f40ae3d52e8840a2aaac6905342c0df17cc7ed4"
+        }
+      },
+      {
+        "id": "osm:relation:7143850",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الشرقية",
+            "name:ar": "رمادة الشرقية",
+            "name:fr": "Remada Est",
+            "ref:tn:codegeo": "535751"
+          },
+          "sourceId": null,
+          "geometrySha256": "99cd2556dc4a94608614139e8a969fafb809dbc65beba5fcfba0345d835c2c7d"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الشرقية",
+            "name:ar": "رمادة الشرقية",
+            "name:fr": "Remada Est",
+            "ref:tn:codegeo": "535751"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "99cd2556dc4a94608614139e8a969fafb809dbc65beba5fcfba0345d835c2c7d"
+        }
+      },
+      {
+        "id": "osm:relation:7143871",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مغنى",
+            "name:ar": "مغنى",
+            "name:fr": "Meghani",
+            "ref:tn:codegeo": "535757"
+          },
+          "sourceId": null,
+          "geometrySha256": "bfd645ef135e0eace3d40ec28f0659ba1f46d0a528ca65b6931c0d263224e4a4"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مغنى",
+            "name:ar": "مغنى",
+            "name:fr": "Meghani",
+            "ref:tn:codegeo": "535757"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "bfd645ef135e0eace3d40ec28f0659ba1f46d0a528ca65b6931c0d263224e4a4"
+        }
+      },
+      {
+        "id": "osm:relation:7143874",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر عمير",
+            "name:ar": "بئر عمير",
+            "name:fr": "Bir Amir",
+            "ref:tn:codegeo": "535755"
+          },
+          "sourceId": null,
+          "geometrySha256": "891f2697f7d59581f89325799303a18a119e1ccea266d29171376d8f510060a8"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر عمير",
+            "name:ar": "بئر عمير",
+            "name:fr": "Bir Amir",
+            "ref:tn:codegeo": "535755"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "891f2697f7d59581f89325799303a18a119e1ccea266d29171376d8f510060a8"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1434953": null,
+      "osm:relation:7143840": null,
+      "osm:relation:7143844": null,
+      "osm:relation:7143846": null,
+      "osm:relation:7143848": null,
+      "osm:relation:7143850": null,
+      "osm:relation:7143871": null,
+      "osm:relation:7143874": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:500182808"
+      ],
+      "effective": [
+        "osm:node:500182808"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1434953": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7143840": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7143844": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143846": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143848": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7143850": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143871": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143874": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:500182808",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:500182808",
+          "sourceId": "osm",
+          "name": "البرمة",
+          "aliases": [
+            "ⵍⴱⵔⵎⴰ البرمة",
+            "El Borma",
+            "ⵍⴱⵔⵎⴰ"
+          ],
+          "kind": "village",
+          "parentName": "رمادة الغربية",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "Remada Ouest",
+            "رمادة الغربية",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 31.6880101,
+          "lng": 9.2186132,
+          "delegationId": 476,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:500182808"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7143844",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143844",
+          "sourceId": "osm",
+          "name": "كمبوت",
+          "aliases": [
+            "Kambout",
+            "ⴽⵎⴱⵓⵜ"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.198026,
+          "lng": 10.07295,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            9.844184,
+            31.976627,
+            10.35943,
+            32.418207
+          ],
+          "areaKm2": 1093.2821259218051,
+          "pickerGroupId": "osm:relation:7143844",
+          "offset": 2084896,
+          "length": 2268
+        },
+        "packedGeometrySha256": "f90a1a1c72c56eb9cbdad816338b11f67e1229af4da4517668d5aa2176ad1aed"
+      },
+      {
+        "id": "osm:relation:7143846",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143846",
+          "sourceId": "osm",
+          "name": "نكريف",
+          "aliases": [
+            "Nekrif",
+            "ⵏⴽⵔⵉⴼ"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.098757,
+          "lng": 10.394572,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.144431,
+            31.913657,
+            10.591872,
+            32.280237
+          ],
+          "areaKm2": 687.8203768147316,
+          "pickerGroupId": "osm:relation:7143846",
+          "offset": 2087688,
+          "length": 1460
+        },
+        "packedGeometrySha256": "248da09aacfbe6d323580e262d76a3b1adac12d172ad6b19aeb88077c5a0bad3"
+      },
+      {
+        "id": "osm:relation:7143848",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143848",
+          "sourceId": "osm",
+          "name": "رمادة الغربية",
+          "aliases": [
+            "Remada Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.030197,
+          "lng": 9.540886,
+          "delegationId": 476,
+          "hasBoundary": true,
+          "bbox": [
+            8.588326,
+            31.51407,
+            10.438221,
+            32.546427
+          ],
+          "areaKm2": 9896.9874338715,
+          "pickerGroupId": "osm:relation:7143848",
+          "offset": 2089448,
+          "length": 4108
+        },
+        "packedGeometrySha256": "db2a4fcef72c29507fe236287d05694b1d8914392fdf660079d1d60df37d3420"
+      },
+      {
+        "id": "osm:relation:7143850",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143850",
+          "sourceId": "osm",
+          "name": "رمادة الشرقية",
+          "aliases": [
+            "Remada Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.434532,
+          "lng": 10.442714,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.267404,
+            32.243847,
+            10.640149,
+            32.624197
+          ],
+          "areaKm2": 850.5269379166142,
+          "pickerGroupId": "osm:relation:7143850",
+          "offset": 2095416,
+          "length": 2228
+        },
+        "packedGeometrySha256": "0cd171c3fe0b591c062f7fbaec55da81673b741ea2445c697941f229afcb43d3"
+      },
+      {
+        "id": "osm:relation:7143871",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143871",
+          "sourceId": "osm",
+          "name": "مغنى",
+          "aliases": [
+            "Meghani"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.317542,
+          "lng": 10.634743,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.502444,
+            32.140157,
+            10.801971,
+            32.495127
+          ],
+          "areaKm2": 490.8415001806384,
+          "pickerGroupId": "osm:relation:7143871",
+          "offset": 2125584,
+          "length": 1348
+        },
+        "packedGeometrySha256": "7374242d398d2cc58e7543fbf682dd6cc4d37a70fa855972210b905161660fa2"
+      },
+      {
+        "id": "osm:relation:7143874",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143874",
+          "sourceId": "osm",
+          "name": "بئر عمير",
+          "aliases": [
+            "Bir Aamir",
+            "Bir Amir"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.581917,
+          "lng": 9.39924,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            8.35683,
+            32.363237,
+            10.307195,
+            32.800622
+          ],
+          "areaKm2": 3664.769860748323,
+          "pickerGroupId": "osm:relation:7143874",
+          "offset": 2129884,
+          "length": 3852
+        },
+        "packedGeometrySha256": "4fcd8084ddef10405be9b76537228e2ee727d9e3e72993ac1dd4edd20b1f0b82"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:500182808": [
+        "osm:node:500182808"
+      ],
+      "osm:relation:7143844": [
+        "osm:relation:7143844"
+      ],
+      "osm:relation:7143846": [
+        "osm:relation:7143846"
+      ],
+      "osm:relation:7143848": [
+        "osm:relation:7143848"
+      ],
+      "osm:relation:7143850": [
+        "osm:relation:7143850"
+      ],
+      "osm:relation:7143871": [
+        "osm:relation:7143871"
+      ],
+      "osm:relation:7143874": [
+        "osm:relation:7143874"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7143844": [
+        "osm:relation:7143844"
+      ],
+      "osm:relation:7143846": [
+        "osm:relation:7143846"
+      ],
+      "osm:relation:7143848": [
+        "osm:relation:7143848"
+      ],
+      "osm:relation:7143850": [
+        "osm:relation:7143850"
+      ],
+      "osm:relation:7143871": [
+        "osm:relation:7143871"
+      ],
+      "osm:relation:7143874": [
+        "osm:relation:7143874"
+      ],
+      "delegation:476": [
+        "osm:node:500182808"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "schemaVersion": 1
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Both stored anchors stay exact. The published INM476 coordinate is supplemental identity evidence and is not a migration.",
+  "scope": "One manual El Borma named worker-locality/timetable choice. Current administration remains Remada5357 and all six sectors remain distinct. No common camp footprint, El Borma delegation or civilian municipality is asserted.",
+  "sourcePhaseQualification": "Authentic historical OSM version8 exactly matches frozen source cache. Current version9 changes only name. Version8 must remain explicitly historical; neither source snapshot is rewritten. All nine local source states are OSM and unchanged between original/effective phases except provider bookkeeping.",
+  "boundaryQualification": "Cached Remada administrative boundaries remain unchanged. Official registry confirms administrative identities, not legal or surveyed point containment. The SITEP residential-camp image has no geographic control and is not an imported polygon."
+}

@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_SOURCE_PENDING_DISPLAY_MIGRATION_AND_ACTUAL_GENERATION",
+  "baselineMetadataSha256": "0eaf70badf9f20766531c3cb82539dd5dbcf202057c568f6a29da1beca825234",
+  "nativeSourceReviews": [
+    {
+      "root": "task",
+      "file": "outputs/le-kram-six-native-boundary-source-review.json",
+      "sha256": "c2bd1fea602e0a0630e106aa086b00f8358a9aa23145f8aa588387a6c7537878"
+    },
+    {
+      "root": "task",
+      "file": "outputs/la-goulette-three-native-source-review.json",
+      "sha256": "a68223fa5a2f34c9534b79172c2c1535f54eb1dfdca89cc71a23aa674df63ef8"
+    }
+  ],
+  "namesReview": {
+    "root": "task",
+    "file": "outputs/kram-goulette-nine-sector-name-source-review.json",
+    "sha256": "8ddb5341ce39d441331012146c98e229eea60b1ef9fe1143823cf8688b1b0c35"
+  },
+  "acceptedNamePlan": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\kram-goulette-nine-accepted-name-plan.json",
+    "sha256": "298e772fa91758437062189b37a6529e7c8add1012cb99e657debbea7f2076a7"
+  },
+  "geometryExports": [
+    {
+      "file": "official/le-kram-isie2023-six-sectors.geojson",
+      "sha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0"
+    },
+    {
+      "file": "official/la-goulette-isie2023-three-sectors.geojson",
+      "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f"
+    }
+  ],
+  "geometryPolicy": "All nine complete native source geometry arrays preserved. No clipping, repair, inferred connectors, snapping or overlap/gap filling.",
+  "dependencyPolicy": "The La Goulette original source identity proofs remain historical. A separate explicitly validated effective-source phase is required; original facts must not be rewritten.",
+  "acceptedNames": [
+    {
+      "id": "osm:relation:7063887",
+      "code": "117051",
+      "sourceId": "isie-local-sectors-2023-le-kram",
+      "nameAr": "الكرم الشرقي",
+      "nameFr": "Le Kram Est",
+      "aliases": [
+        "كرم الشرقية"
+      ],
+      "parentAr": "الكرم",
+      "parentFr": "Le Kram",
+      "candidate": {
+        "file": "outputs/le-kram-six-native-source-candidates.geojson",
+        "sha256": "db979b3effbbd18e55f105132e549c5f7c00d9726bc59eaa5404b6f0e5b2a495"
+      }
+    },
+    {
+      "id": "osm:relation:7079234",
+      "code": "117052",
+      "sourceId": "isie-local-sectors-2023-le-kram",
+      "nameAr": "الرياض",
+      "nameFr": "Erriadh",
+      "aliases": [],
+      "parentAr": "الكرم",
+      "parentFr": "Le Kram",
+      "candidate": {
+        "file": "outputs/le-kram-six-native-source-candidates.geojson",
+        "sha256": "db979b3effbbd18e55f105132e549c5f7c00d9726bc59eaa5404b6f0e5b2a495"
+      }
+    },
+    {
+      "id": "osm:relation:7079245",
+      "code": "117057",
+      "sourceId": "isie-local-sectors-2023-le-kram",
+      "nameAr": "البئر الحلو",
+      "nameFr": "Bir El Helou",
+      "aliases": [
+        "بير لحلو"
+      ],
+      "parentAr": "الكرم",
+      "parentFr": "Le Kram",
+      "candidate": {
+        "file": "outputs/le-kram-six-native-source-candidates.geojson",
+        "sha256": "db979b3effbbd18e55f105132e549c5f7c00d9726bc59eaa5404b6f0e5b2a495"
+      }
+    },
+    {
+      "id": "osm:relation:7079335",
+      "code": "117055",
+      "sourceId": "isie-local-sectors-2023-le-kram",
+      "nameAr": "الكرم الغربي",
+      "nameFr": "Le Kram Ouest",
+      "aliases": [
+        "الكرم الغربية"
+      ],
+      "parentAr": "الكرم",
+      "parentFr": "Le Kram",
+      "candidate": {
+        "file": "outputs/le-kram-six-native-source-candidates.geojson",
+        "sha256": "db979b3effbbd18e55f105132e549c5f7c00d9726bc59eaa5404b6f0e5b2a495"
+      }
+    },
+    {
+      "id": "osm:relation:7079355",
+      "code": "117056",
+      "sourceId": "isie-local-sectors-2023-le-kram",
+      "nameAr": "سيدي عمر",
+      "nameFr": "Sidi Amor",
+      "aliases": [],
+      "parentAr": "الكرم",
+      "parentFr": "Le Kram",
+      "candidate": {
+        "file": "outputs/le-kram-six-native-source-candidates.geojson",
+        "sha256": "db979b3effbbd18e55f105132e549c5f7c00d9726bc59eaa5404b6f0e5b2a495"
+      }
+    },
+    {
+      "id": "osm:relation:7079365",
+      "code": "117053",
+      "sourceId": "isie-local-sectors-2023-le-kram",
+      "nameAr": "البحيرة",
+      "nameFr": "El Bouhaira",
+      "aliases": [],
+      "parentAr": "الكرم",
+      "parentFr": "Le Kram",
+      "candidate": {
+        "file": "outputs/le-kram-six-native-source-candidates.geojson",
+        "sha256": "db979b3effbbd18e55f105132e549c5f7c00d9726bc59eaa5404b6f0e5b2a495"
+      }
+    },
+    {
+      "id": "osm:relation:7117889",
+      "code": "116952",
+      "sourceId": "isie-local-sectors-2023-la-goulette",
+      "nameAr": "حلق الوادي الكازينو",
+      "nameFr": "La Goulette Casino",
+      "aliases": [],
+      "parentAr": "حلق الوادي",
+      "parentFr": "La Goulette",
+      "candidate": {
+        "file": "outputs/la-goulette-three-native-source-candidates.geojson",
+        "sha256": "47870f5fd7a9c5c90643e167de921b24c89815250cf12c96b589500e0cfacbe8"
+      }
+    },
+    {
+      "id": "osm:relation:7117890",
+      "code": "116953",
+      "sourceId": "isie-local-sectors-2023-la-goulette",
+      "nameAr": "خير الدين",
+      "nameFr": "Kheredine",
+      "aliases": [
+        "Kheireddine"
+      ],
+      "parentAr": "حلق الوادي",
+      "parentFr": "La Goulette",
+      "candidate": {
+        "file": "outputs/la-goulette-three-native-source-candidates.geojson",
+        "sha256": "47870f5fd7a9c5c90643e167de921b24c89815250cf12c96b589500e0cfacbe8"
+      }
+    },
+    {
+      "id": "osm:relation:7117933",
+      "code": "116951",
+      "sourceId": "isie-local-sectors-2023-la-goulette",
+      "nameAr": "حلق الوادي",
+      "nameFr": "La Goulette",
+      "aliases": [
+        "La Goleta",
+        "La Goletta",
+        "Хальк-эль-Уэд",
+        "לה גולט",
+        "حلق الوادی",
+        "Ḥalq al-Wādī"
+      ],
+      "parentAr": "حلق الوادي",
+      "parentFr": "La Goulette",
+      "candidate": {
+        "file": "outputs/la-goulette-three-native-source-candidates.geojson",
+        "sha256": "47870f5fd7a9c5c90643e167de921b24c89815250cf12c96b589500e0cfacbe8"
+      }
+    }
+  ]
+}

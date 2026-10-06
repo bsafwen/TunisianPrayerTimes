@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "tijma-source-facts.json",
+    "sha256": "dcc84d5fa797ad207d9bd9d57d8c242c60d11033a5553b582965b241c70d5b5c"
+  },
+  "reviewedMetadataSha256": "5ae35db94082c5f7ef5706c6f5136a655fa50879b4b67f294d0853056b685510",
+  "researchReview": {
+    "file": "tijma-adbech-display-identity-review.json",
+    "sha256": "180f0b0b8720d7407d862c6e36d8486c9bc8d8d368213f6ecfa4c7137a31c4cf"
+  },
+  "records": [
+    {
+      "id": "osm:way:379743528",
+      "status": "eligible_proposal",
+      "method": "explicit_addressed_village",
+      "targetPickerGroupId": "osm:node:1997440362",
+      "expectedExistingMemberIds": [
+        "osm:way:379743528"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:1997440362"
+      ],
+      "expectedGovernorateId": 347,
+      "expectedParentName": "مطماطة الجديدة",
+      "expectedDelegationId": 1022,
+      "villagePointId": "osm:node:1997440362",
+      "nameEvidence": {
+        "arabic": "تيجمة",
+        "latin": "Tijma",
+        "addressTag": "addr:place",
+        "arabicNameTag": "name:ar",
+        "latinNameTag": "name:en"
+      },
+      "expectedMatchingVillageSourceIds": [
+        "osm:node:1997440362"
+      ],
+      "identityFinding": "The residential source explicitly gives its locality address as تيجمة; the unique source village has the same address and exact Arabic/English names. INP independently identifies the dispersed rural locality at this location and assigns it to Nouvelle Matmata. No source competitor claims a second matching village in this context.",
+      "members": [
+        {
+          "id": "osm:way:379743528",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "تيجمة",
+          "expectedAliases": [
+            "Tijma"
+          ],
+          "expectedContextAliases": [
+            "Délégation Nouvelle Matmata",
+            "Nouvelle Matmata",
+            "مطماطة الجديدة",
+            "معتمدية مطماطة الجديدة"
+          ],
+          "expectedLat": 33.583446,
+          "expectedLng": 9.98215,
+          "expectedOriginalTags": {
+            "addr:place": "تيجمة",
+            "landuse": "residential",
+            "name": "تيجمة",
+            "name:aeb": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma"
+          },
+          "expectedEffectiveTags": {
+            "addr:place": "تيجمة",
+            "landuse": "residential",
+            "name": "تيجمة",
+            "name:aeb": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "08917a124d0dbdd1287ea833cca376a1a698f1fb1f580b06822e06064991e624",
+          "effectiveOriginalGeometrySha256": "08917a124d0dbdd1287ea833cca376a1a698f1fb1f580b06822e06064991e624",
+          "packedGeometrySha256": "cab36ca98c0d81dbeb0fb775c337a833baab1fad06b1324f29dbe366dc89e3de"
+        },
+        {
+          "id": "osm:node:1997440362",
+          "expectedKind": "village",
+          "expectedSourceId": "osm",
+          "expectedName": "تيجمة",
+          "expectedAliases": [
+            "Tidjma",
+            "Tijma"
+          ],
+          "expectedContextAliases": [
+            "Délégation Nouvelle Matmata",
+            "Nouvelle Matmata",
+            "مطماطة الجديدة",
+            "معتمدية مطماطة الجديدة"
+          ],
+          "expectedLat": 33.5810179,
+          "expectedLng": 9.9780968,
+          "expectedOriginalTags": {
+            "addr:place": "تيجمة",
+            "name": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma",
+            "name:fr": "Tidjma",
+            "place": "village"
+          },
+          "expectedEffectiveTags": {
+            "addr:place": "تيجمة",
+            "name": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma",
+            "name:fr": "Tidjma",
+            "place": "village"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "bf53f64e4c12181dfb0d67da2f51df9b587ef70f2fe8ac486d0cd7e1d7bba5b7",
+          "effectiveOriginalGeometrySha256": "bf53f64e4c12181dfb0d67da2f51df9b587ef70f2fe8ac486d0cd7e1d7bba5b7",
+          "packedGeometrySha256": null
+        }
+      ],
+      "codedContext": {
+        "id": "osm:relation:7145430",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "مطماطة الجديدة",
+          "name:ar": "مطماطة الجديدة",
+          "name:fr": "Nouvelle Matmata",
+          "ref:tn:codegeo": "515951"
+        },
+        "originalGeometrySha256": "f8a0ee5f8a54e2663e2cbee42d8e9667b530a0dd847ecbe452af6ff99b3b0f6d",
+        "effectiveOriginalGeometrySha256": "f8a0ee5f8a54e2663e2cbee42d8e9667b530a0dd847ecbe452af6ff99b3b0f6d",
+        "packedGeometrySha256": "0edc2ec85cdef52d90b285ba42f4bfddeb9295809290d4314de32bb41337f3ee",
+        "currentOfficialRecord": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5159",
+          "delegationFr": "Nouvelle matmata",
+          "delegationAr": "مطماطة الجديدة",
+          "sectorCode": "515951",
+          "sectorFr": "Nouvelle matmata",
+          "sectorAr": "مطماطة الجديدة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59226,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2905,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2899
+          }
+        },
+        "originalContainsEveryMember": true,
+        "packagedContainsEveryMember": true,
+        "expectedKind": "sector",
+        "expectedSourceId": "osm",
+        "expectedName": "مطماطة الجديدة",
+        "expectedAliases": [
+          "Nouvelle Matmata"
+        ],
+        "expectedContextAliases": [
+          "Délégation Nouvelle Matmata",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "expectedLat": 33.654405,
+        "expectedLng": 9.980098,
+        "expectedParentName": "معتمدية مطماطة الجديدة",
+        "expectedDelegationId": 1023,
+        "expectedEffectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "مطماطة الجديدة",
+          "name:ar": "مطماطة الجديدة",
+          "name:fr": "Nouvelle Matmata",
+          "ref:tn:codegeo": "515951"
+        },
+        "expectedCuration": null
+      },
+      "limitations": [
+        "Display grouping only; the residential fragment remains its existing small polygon and the village remains its existing point.",
+        "No requirement or claim that the village point lies inside the residential fragment.",
+        "Preserve both stable IDs, raw names/aliases, coordinates, prayer1022, parent context and polygon bytes.",
+        "No full locality extent is created, downloaded from Google, inferred from a hull or treated as certified.",
+        "The address relationship is reviewed for these exact IDs, not a general proximity or alias-only merge rule."
+      ]
+    }
+  ]
+}

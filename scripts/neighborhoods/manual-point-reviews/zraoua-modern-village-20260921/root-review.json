@@ -1,0 +1,97 @@
+{
+  "status": "ROOT_ACCEPTED_MANUAL_REPRESENTATIVE_CORRECTION_ONLY",
+  "timeUtc": "2026-09-21T14:13:06.990591+00:00",
+  "id": "osm:relation:7145390",
+  "memberId": "osm:node:1738650159",
+  "before": {
+    "lat": 33.61011,
+    "lng": 9.694064
+  },
+  "after": {
+    "lat": 33.660037,
+    "lng": 9.79566
+  },
+  "beforeSourceId": 1022,
+  "afterSourceId": 1023,
+  "basis": [
+    "Official ISIE sector map515953 identifies الزراوة in مطماطة الجديدة. Map515853 identifies neighboring تمزرط in مطماطة. These administrative identities remain separate.",
+    "Current sector representative is1262.542m outside the extracted official Zraoua candidate and inside Tamazret candidate. Google reverse instead names Zraoua at this point; that conflicting address alone cannot settle the boundary.",
+    "Selected new-village point is an existing native catalog coordinate, not a coordinate copied from Google. Root reviewed its exact-coordinate public Android Maps capture: named Zrawa nouvelle with streets/buildings, medical center and cafes.",
+    "Rounded new-village pin is strictly inside both current Zraoua geometry and unapproved official candidate; original pin clearances are54.224m and509.416m respectively.",
+    "Using this inhabited child village is an explicit manual representative choice for the broader sector, not an assertion that it is an administrative capital or geographic centroid. The separately named old and new villages remain selectable.",
+    "Available-source calculation over258current sources selects1023at the new village,18.019605km away versus1022at20.338745km. The prior sector point selected1022. Exact rounded-point calculations are required again by the amendment module."
+  ],
+  "boundaryHold": {
+    "candidateOverlapAreaM2": 109210.028,
+    "reason": "Independent official-map candidates overlap by109210.028m2. All vertices, neighboring boundaries and GPS edges remain unapproved; no polygon installation or geographic certification."
+  },
+  "constraints": [
+    "Only target lat/lng/delegationId may change.",
+    "Prior Riadh/Chaker amendments remain exact.",
+    "No feature identity, parent, alias, picker group, boundary bytes, source coordinate or timetable changes.",
+    "GPS must continue choosing the nearest source from actual device coordinates."
+  ],
+  "evidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zraoua-spatial-reconciliation-20260921\\config.json",
+      "sha256": "bab3246336b1e5d426cfd7b9d683397b43b493c30d18a2921cd4148b86cea41b"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zraoua-spatial-reconciliation-20260921\\report.json",
+      "sha256": "6d9cd2cd83b38d7d1efd46da194c87ff665dd9c15801b0d206cf961d914bcdc6"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zraoua-spatial-reconciliation-20260921\\boundaries.geojson",
+      "sha256": "8d8cd84f5f9816970f3dec951e71a37deec27153c2f0c4e1d1f9fdb77351663c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zraoua-spatial-reconciliation-20260921\\reverse-7145390.json",
+      "sha256": "833a04d92927542f021e1409a8f6f8325dcc67ba1c3b6972e4710d273fdc9e21"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zraoua-spatial-reconciliation-20260921\\reverse-1738650159.json",
+      "sha256": "5b3c23304bc1fbaaf9d095738cc5e25e91e8acfc1b80236035247672bbd64dad"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zraoua-spatial-reconciliation-20260921\\reverse-3794158072.json",
+      "sha256": "ff73fbf697a36ce993a617d73fa5f864b79f272aff562662b9434ee237c95325"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-second-frontier-20260921\\sector-515953.pdf",
+      "sha256": "af4c092abf25c5d4a5ea7696c5de785339fd9076e6bdfab8747368704ee10e7b"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-second-frontier-20260921\\sector-515953.png",
+      "sha256": "c72a948a9f01fa79abcf4a09ac35d5077190aef8d177751e450ea93134f080f7"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-second-frontier-20260921\\sector-515853.pdf",
+      "sha256": "83f5a2b325747592e0799f07fe88ebe8da8fc975523632f0c96f35f4ddef460f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-second-frontier-20260921\\sector-515853.png",
+      "sha256": "40d882ceced7952f0716c0173462917c9732a8a794c99ff51058d6a4eeeeb632"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\zraoua-point-comparison-20260921\\batch-summary.json",
+      "sha256": "13133f45ca2cac6fba8311d25ff66afe1ec499a6e7a02b47cabff938f25eaeb7"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\zraoua-point-comparison-20260921\\osm_node_1738650159-4.json",
+      "sha256": "b525337ed8c257162a4b66ad169179fc1ec6226b1fb186342731e9bb512137c3"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\zraoua-point-comparison-20260921\\osm_node_1738650159-4.png",
+      "sha256": "7febaa63919a641c39be343c7c3cd0ebf5f87ee163dd19c01f1d4146cc869264"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\zraoua-point-comparison-20260921\\osm_node_3794158072-4.json",
+      "sha256": "3a422a8d4c484035457902507ece62b9f16531673f1a3925ee694cd80b5b7fb9"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\zraoua-point-comparison-20260921\\osm_node_3794158072-4.png",
+      "sha256": "c332f394fdd05f3e1ceb9b3b9836a82fb163d16e9c4bcc646ad7c8132d0b541d"
+    }
+  ],
+  "newBoundaryCertifications": 0
+}

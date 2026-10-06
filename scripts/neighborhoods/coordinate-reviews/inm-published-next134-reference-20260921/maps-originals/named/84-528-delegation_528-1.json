@@ -1,0 +1,32 @@
+{
+  "observedAt": "2026-09-07T06:15:05.187746+00:00",
+  "query": "بوحجلة القيروان Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Bouhajla"
+  ],
+  "publicUiText": [
+    "Bouhajla",
+    "بوحجلة",
+    "Tunisia",
+    "Directions to Bouhajla",
+    "Directions",
+    "Share Bouhajla",
+    "Share",
+    "Save Bouhajla to lists",
+    "Save",
+    "Photo",
+    "Video",
+    "Close",
+    "بوحجلة القيروان Tunisia",
+    "Clear"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "بوحجلة",
+    "Bou Hajla",
+    "Bou Hajla"
+  ],
+  "screenshot": "delegation_528-1.png",
+  "boundaryVerified": false
+}

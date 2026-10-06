@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7118631",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المدينة",
+        "name:ar": "المدينة",
+        "name:fr": "El Medina",
+        "ref:tn:codegeo": "175154"
+      },
+      "originalGeometrySha256": "9e2566c12a77d80d780beadc826cc7c9f2dea9e2a7b1a7f6097e76d489cf3350",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "boundary": "administrative",
+        "admin_level": "6",
+        "ref:tn:codegeo": "175154",
+        "name:ar": "المدينة",
+        "name:fr": "La medina",
+        "alt_name": "El Medina"
+      },
+      "effectiveGeometrySha256": "a44972e0106b8224a2bddb56694879ef5d833eb8eb6751f28a9d913c1c5ab805",
+      "expectedMetadata": {
+        "name": "المدينة",
+        "aliases": [
+          "La medina",
+          "El Medina"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بنزرت الشمالية",
+        "governorateId": 361,
+        "sourceId": "isie-local-sectors-2023-bizerte-three-review"
+      }
+    },
+    {
+      "id": "osm:way:256615867",
+      "originalKind": "suburb",
+      "originalTags": {
+        "landuse": "residential",
+        "long_name:ar": "المدينة العتيقة",
+        "name": "المدينة العتيقة",
+        "name:ar": "المدينة العتيقة",
+        "name:en": "La Medina",
+        "name:fr": "La Medina",
+        "place": "suburb"
+      },
+      "originalGeometrySha256": "44644802f527cf4a98ecf71835581046298c715f16e71f5407245d189ab79bc7",
+      "effectiveKind": "suburb",
+      "effectiveTags": {
+        "landuse": "residential",
+        "long_name:ar": "المدينة العتيقة",
+        "name": "المدينة العتيقة",
+        "name:ar": "المدينة العتيقة",
+        "name:en": "La Medina",
+        "name:fr": "La Medina",
+        "place": "suburb"
+      },
+      "effectiveGeometrySha256": "44644802f527cf4a98ecf71835581046298c715f16e71f5407245d189ab79bc7",
+      "expectedMetadata": {
+        "name": "المدينة العتيقة",
+        "aliases": [
+          "La Medina"
+        ],
+        "kind": "suburb",
+        "parentName": "معتمدية بنزرت الشمالية",
+        "governorateId": 361,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "picker-distinct-reviews/bizerte-medina-automatic-group-delta-review.json",
+      "sha256": "031def2b709a99a44cde8f77386ade6454ea950b836269c299e4014e32d34de8"
+    },
+    {
+      "file": "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+      "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197"
+    },
+    {
+      "file": "official/bizerte-three-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140"
+    }
+  ],
+  "reason": "The current primary Arabic names distinguish an old-town suburb from the broader administrative Medina sector. Their shared legitimate French alias is not sufficient identity evidence; about47.46% of the suburb is outside the official sector. Preserve both searchable choices and complete raw footprints."
+}

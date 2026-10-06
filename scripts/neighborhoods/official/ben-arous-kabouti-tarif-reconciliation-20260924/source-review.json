@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "provisional_best_effort_boundary_candidate",
+  "sourceGeojsonSha256": "39170fe05560114a9a9b4e9933e7e232ea1db32b7595e3952eb62a9bae164911",
+  "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بن%20عروس/مرناق/الكبوطي.pdf",
+  "sourcePdfSha256": "f9a2edf4a8f8e07c86c6d8d054f3c98cb296af4d8f5e6630f94ffe1aa01d9a9a",
+  "pairedTarifPdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل%202/قرنبالية/جبل%20طريف.pdf",
+  "pairedTarifPdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+  "officialSectorCode": "136257",
+  "extraction": {
+    "library": "PyMuPDF 1.28.2 with GeoPDF /GPTS and /LPTS affine controls",
+    "layer": "circonscription_isie2023",
+    "drawingIndex": 369,
+    "segmentCount": 740,
+    "coordinateCount": 741,
+    "maximumSegmentGapPageUnits": 0.0,
+    "closureGapPageUnits": 0.0,
+    "pdfGeoCrsEpsg": 32632,
+    "controlPointCount": 4,
+    "controlResidualMeters": [
+      0.40705342059561694,
+      0.40705341966211356,
+      0.40705341872623557,
+      0.4070534173342915
+    ],
+    "controlResidualMaximumMeters": 0.40705342059561694,
+    "controlResidualRmsMeters": 0.4070534190795644,
+    "pageSize": [
+      841.492919921875,
+      595.5023803710938
+    ]
+  },
+  "sourceInterpretation": "This red sector ring is used only to preserve the tiny part of the installed Kabouti/Tarif conflict that falls inside the Kabouti map candidate plus one 1e-6-degree app-grid margin. The paired 2023 maps place the broad recorded overlap on the جبل طريف side of their shared administrative linework.",
+  "purpose": "Preserve a small source-supported overlap while clipping the broad contested area from Kabouti; do not install this candidate as the full Kabouti boundary.",
+  "uncertainty": "The 2023 electoral GeoPDF ring remains pending as a whole-boundary validation and is interpreted against the paired Tarif map only at this seam. Control residuals describe map registration fit, not ground or legal-boundary accuracy. The retained overlap is intentionally unresolved and must remain suppressed by the app conflict rule."
+}

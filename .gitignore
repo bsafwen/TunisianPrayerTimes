@@ -1,29 +1,57 @@
+# ── Node ────────────────────────────────────────────────────────────────
 node_modules/
+
+# ── Generated data folders ──────────────────────────────────────────────
+# Anchored on purpose: a bare "data" rule also hid Kotlin "data" packages.
+/scraper/data/
+/qaloon-model/data/
+/multiplatform/desktopApp/data
+__pycache__/
+build-logic/.gradle/
+build-logic/build/
 data
 !/data/
 /data/*
 !/data/official-islamic-dates/
-!/data/official-islamic-dates/*.json
+!/data/prayer-formula/
 mawaqit-csv
-.DS_Store
+
+# ── Secrets and machine-local config ────────────────────────────────────
 .env.local
 .env.*.local
-
-# Android
 *.jks
 *.keystore
-android-app/.gradle/
-android-app/.idea/
-android-app/.kotlin/
-android-app/build/
-android-app/app/build/
-android-app/local.properties
-android-app/keystore.properties
+local.properties
+keystore.properties
+
+# ── Gradle / Kotlin build output ────────────────────────────────────────
+# Covers android-app, tv-app, multiplatform, qaloon-app and build-logic
+# (build-logic's build.gradle.kts, settings.gradle.kts and src/ stay tracked).
+# build/ is anchored to project roots and modules so a Kotlin package
+# named "build" can never be hidden.
+.gradle/
+.kotlin/
+/*/build/
+/*/*/build/
 *.apk
-java_pid53290.hprof
 *.aab
-*.apk
-android-app/BUG_REVIEW.md
+
+# Local-only archives (agent staging tars, source snapshots) never go through git.
+*.tar
+*.tar.gz
+*.tgz
+
+# Local captures and reports that once leaked into android-app/build/.
+android-app/build/
+
+# Quran media ships through Play Asset Delivery and the quran-cdn Worker, never through git.
+# Only the small JSON indexes under assets/quran are committed.
+android-app/app/src/main/assets/quran/**/*.mp3
+android-app/app/src/main/assets/quran/pages/*
+!android-app/app/src/main/assets/quran/pages/pages.json
+android-app/quran-packs/*/src/
+android-app/quran-packs/*/build/
+android-app/quran-assets/build/
 
 # Multiplatform Desktop
 multiplatform/.gradle/
@@ -53,5 +81,42 @@ qaloon-app/app/build/
 qaloon-app/local.properties
 qaloon-app/keystore.properties
 
+# ── JVM crash and heap dumps ────────────────────────────────────────────
+*.hprof
 hs_err_pid*.log
 replay_pid*.log
+
+# ── IDE, editor and OS files ────────────────────────────────────────────
+.idea/
+*.iml
+.metals/
+.bsp/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Python ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+
+# ── Claude Code session state (settings.json, launch.json, skills/ stay shareable)
+/.claude/*.lock
+/.claude/scheduled_tasks.json
+/.claude/settings.local.json
+/.claude/worktrees/
+/.claude/checkpoints/
+/.claude/mailbox/
+/.claude/routines/.state/
+/.claude/agent-registry.json
+/.claude/agent-memory-local
+/.claude/first-run
+/.claude/assistant-daemon-state.json
+
+# ── Local working folder (locality-automation venv, transactions, device captures)
+/work/
+
+# ── Personal notes ──────────────────────────────────────────────────────
+android-app/BUG_REVIEW.md
+
+android-app/app/build/

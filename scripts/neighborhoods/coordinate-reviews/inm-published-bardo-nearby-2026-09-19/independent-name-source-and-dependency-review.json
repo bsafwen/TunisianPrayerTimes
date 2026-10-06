@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Bardo source identity and existing automatic name/group route only, currentfe578055 baseline. Four name/alias/group fields. Fresh published-reference correction and competitors are a separate pending package.",
+  "reviewer": "point_pairs_check",
+  "createdAtUtc": "2026-09-19T11:29:03.068242+00:00",
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceReports": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-source-design-20260919/sourcefacts-and-design.json",
+      "sha256": "bd9896d395bfcb9760dd21461042fb39da5170112fda695c9f0fd1a3873b1dcc",
+      "bytes": 29489
+    }
+  ],
+  "sourceInputs": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+      "bytes": 1851425
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568",
+      "bytes": 5536120
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "bytes": 54578
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "55cb693c58e7da2c6c680869a30fbcb31bbb4abea4c49867600387471ee3141e",
+      "bytes": 419286
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "edc9b5f969bdb1387c9b8fca93e1ef999cb2af444d1921e9b34ea241633419a2",
+      "bytes": 615989
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "7f4a47f43695272401599976f64f74aba5ad3867d2226ce0f394190bc446a4a1",
+      "bytes": 642686
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/LocalityRepository.kt",
+      "sha256": "8f3b8d9c4ca2dd5edb8d0451d544704b89ba3c05d9cbb63db64493bb8f95554b",
+      "bytes": 18225
+    }
+  ],
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7118020",
+      "field": "name",
+      "before": "عمادة باردو",
+      "after": "باردو"
+    },
+    {
+      "id": "osm:relation:7118020",
+      "field": "aliases",
+      "before": [
+        "Bardo"
+      ],
+      "after": [
+        "Bardo",
+        "Le Bardo",
+        "Ле Бардо",
+        "בארדו",
+        "عمادة باردو"
+      ]
+    },
+    {
+      "id": "osm:relation:7118020",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7118020",
+      "after": "delegation:394"
+    },
+    {
+      "id": "osm:way:103825771",
+      "field": "aliases",
+      "before": [
+        "Le Bardo",
+        "Ле Бардо",
+        "בארדו"
+      ],
+      "after": [
+        "Le Bardo",
+        "Ле Бардо"
+      ]
+    }
+  ],
+  "projection": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-source-design-20260919/independent-name-only-projected-neighborhoods.json",
+    "sha256": "879f92d870fb740e2cbb852f84fabc70a5ae21159345aeb22a78b5e6597c23d1",
+    "bytes": 1851461
+  },
+  "strict394Correction": "There is no current strict reviewed-picker394 record. Town103825771 has automatic namesake parent/base linkage; the renamed overlapping sector joins that complete group through the unchanged automatic rule.",
+  "completeFinalGroup": [
+    "delegation:394",
+    "osm:relation:7118020",
+    "osm:way:103825771"
+  ],
+  "manualRepresentative": {
+    "id": "osm:way:103825771",
+    "lat": 36.814275,
+    "lng": 10.137426,
+    "unchanged": true
+  },
+  "expectedEffects": {
+    "rawCountDelta": 0,
+    "displayCountDelta": -1,
+    "curationDecisionDelta": 1,
+    "curationReceiptDelta": 1,
+    "reviewedSavedNamesDelta": 1,
+    "geometryByteChanges": 0,
+    "sourceCoordinatesChanged": 0,
+    "nameOnlyNearestChanges": 0
+  },
+  "dependencyClosureInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-source-design-20260919/independent-active-reference-closure.json",
+    "sha256": "47c1222a933a85d42bac64d1d046a96152868613d6ac76655ac7b8bb225e322a",
+    "bytes": 2252418
+  },
+  "referenceImpactInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-source-design-20260919/independent-reference-impact-closure.json",
+    "sha256": "a4bed7042c6dba586d85156846e25713f86e1c422aead26f7d9a52a4572b6b15",
+    "bytes": 4545
+  },
+  "dependencyClassification": [
+    {
+      "class": "original official and administrative-code inventories",
+      "effect": "Original source116051 claim and official row remain exact; no changes to source tags, IDs, polygons or official files."
+    },
+    {
+      "class": "whole historical raw catalogs in Chenini, Tinja and Beni proof closures",
+      "effect": "Historical capture remains untouched. Current assertions select their explicit raw IDs and non-Tunis governor/context scope, not Bardo or proposed five nearest rows."
+    },
+    {
+      "class": "historical independent staged-output/offset and public phone inventories",
+      "effect": "Old observations remain historical; not current raw metadata assertions."
+    },
+    {
+      "class": "current coverage.json reached only through historical input/source-study pins",
+      "effect": "Generated coverage must update its ordinary duplicate group; historical study hashes are not proof that old mutable coverage is current."
+    },
+    {
+      "class": "prospective394 five-default impact RasTabia exclusion173",
+      "effect": "Its preservedSurroundingLocalityIds keeps7201481 present. Historical391/default/GPS observations remain dated evidence; no compiler guard consumes them as current nearest values."
+    },
+    {
+      "class": "reference ranking diagnostics",
+      "effect": "Historical finite facts include394 among all references; compiler contains no referenceGuards/ranking reader. Current nearest is recomputed separately."
+    }
+  ],
+  "dependencyLimit": "The reference-graph inventory is deliberately overinclusive: it traverses historical input-report links as well as active contracts. Its stale mutable-input hashes and TASK-relative paths are catalogued, not asserted as current valid dependencies. Semantic current guard conclusions are limited to the Bardo four-field transition and the explicitly named five prospective reference-impact IDs.",
+  "currentProofSuccessorsForNameOnlyTransition": [],
+  "jointReferenceWorkStillRequired": [
+    "Compare fresh394 and fresh391/393/396 responses before selecting correction scope.",
+    "Independently recompute all3523 nearest defaults for final selected corrections and review any new affected raw-ID guards.",
+    "A coordinate manifest update needs its exact existing Hichria/Bousalem/Degache checksum successors, and any resulting whole-picker checksum successors; preserve unrelated historical snapshots."
+  ],
+  "checkCount": 61,
+  "checks": [
+    "exact source design pin",
+    "authoritative original source inventory pin",
+    "current installed baseline",
+    "original exact source identity osm:relation:7118020",
+    "original exact geometry osm:relation:7118020",
+    "current catalog or absorbed state osm:relation:7118020",
+    "original exact source identity osm:way:103825771",
+    "original exact geometry osm:way:103825771",
+    "current catalog or absorbed state osm:way:103825771",
+    "original exact source identity osm:node:287558953",
+    "original exact geometry osm:node:287558953",
+    "current catalog or absorbed state osm:node:287558953",
+    "original exact source identity osm:relation:4128393",
+    "original exact geometry osm:relation:4128393",
+    "current catalog or absorbed state osm:relation:4128393",
+    "original exact source identity osm:relation:1435835",
+    "original exact geometry osm:relation:1435835",
+    "current catalog or absorbed state osm:relation:1435835",
+    "exact packed geometry osm:relation:7118020",
+    "exact packed geometry osm:way:103825771",
+    "all original containment claims bundledPrayerReference",
+    "all packed containment claims bundledPrayerReference",
+    "all original containment claims absorbedTownNode",
+    "all packed containment claims absorbedTownNode",
+    "all original containment claims sectorRepresentative",
+    "all packed containment claims sectorRepresentative",
+    "all original containment claims townRepresentative",
+    "all packed containment claims townRepresentative",
+    "distinct partial polygon extents original",
+    "independent measured overlap original",
+    "distinct partial polygon extents packed",
+    "independent measured overlap packed",
+    "whole sources within unchanged namesake delegation",
+    "official exact coded identity",
+    "all14 official sectors retained distinct",
+    "canonical source town/official/base name equality",
+    "all prior sector source names retained",
+    "current authentic node alias receiver is town",
+    "exact node aliases move to smaller canonical sector",
+    "authentic point remains absorbed; smaller receiver rank",
+    "exact four name-only raw fields",
+    "exact before osm:relation:7118020/name",
+    "exact before osm:relation:7118020/aliases",
+    "exact before osm:relation:7118020/pickerGroupId",
+    "exact before osm:way:103825771/aliases",
+    "current complete groups",
+    "prospective complete group inventory",
+    "no third current raw name peer gains grouping eligibility",
+    "existing positive overlap and names support automatic pairwise join",
+    "no inherited current raw contexts under sector",
+    "complete merged group search names preserved including Hebrew",
+    "no strict394 record exists",
+    "no direct reviewed picker guard targets Bardo sources/group",
+    "no conflicting direct source curation",
+    "base remains in correct containing delegation",
+    "all3523 current defaults verified; name-only proposal preserves coordinates/references",
+    "runtime town representative priority and group alias union unchanged",
+    "historical Tinja/Beni full catalogs do not expand scoped guards into Tunis342",
+    "Chenini point retention selects no Bardo row from its old whole-catalog baseline",
+    "new immutable projection",
+    "new immutable source review"
+  ],
+  "qualifications": [
+    "Neither footprint covers the other. Preserve all14 distinct official sectors and both original raw polygons.",
+    "Shared display identity does not certify equal administrative or inhabited extent.",
+    "The Hebrew alias moves from town raw metadata to the sector but stays on the same combined searchable group; do not claim every raw alias unchanged.",
+    "Saved raw IDs remain available with their own retained raw coordinates; the grouped manual Bardo choice continues using the town representative.",
+    "Full generated raw/group/coverage verification remains root-owned."
+  ],
+  "notRun": [
+    "compiler execution/import",
+    "generator",
+    "tests",
+    "build",
+    "phone",
+    "network",
+    "live edits"
+  ]
+}

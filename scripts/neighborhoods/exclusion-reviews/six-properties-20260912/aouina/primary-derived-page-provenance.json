@@ -1,0 +1,35 @@
+[
+  {
+    "original": "jort-2025-075.pdf",
+    "originalSha256": "0fad5d72babc58e20dbe42b06266383b79da96ae2663f4757cbb27568a75dae2",
+    "physicalPage": 9,
+    "textFile": "jort-2025-075-page-9.txt",
+    "textSha256": "ac71d9789aefa56205abc21847bb695f2fa6a48b53e53c05c2b5d0aca0388a51",
+    "renderFile": "jort-2025-075-page-9.png",
+    "renderSha256": "0ed8eee238d54cccdac997b94cb7cd425b89e66f3dd3ff9016a48df3d6a1a215",
+    "method": "Complete original physical page; PyMuPDF get_text() serialized UTF8 LF, get_pixmap(Matrix(1.4,1.4),alpha=False). Derived text and image are not original response bytes.",
+    "libraryVersion": "1.28.2"
+  },
+  {
+    "original": "jort-2014-069.pdf",
+    "originalSha256": "78f76e087482daba61c56f3c8866241ea4f35acb29c470e57d2efa74cef792be",
+    "physicalPage": 36,
+    "textFile": "jort-2014-069-page-36.txt",
+    "textSha256": "c292d3f6a75281d40e8d0dd05f005ca0aa9e19ac8a2657ed848f69fad94f73ce",
+    "renderFile": "jort-2014-069-page-36.png",
+    "renderSha256": "b8b4bb5e904b8af3d76903387f71daa5547050e0b0b08c1e5cc9be391e08c4a9",
+    "method": "Complete original physical page; PyMuPDF get_text() serialized UTF8 LF, get_pixmap(Matrix(1.4,1.4),alpha=False). Derived text and image are not original response bytes.",
+    "libraryVersion": "1.28.2"
+  },
+  {
+    "original": "oat-2025-professional-list.pdf",
+    "originalSha256": "adb18c20704ca712e4fcedbdeb727c90e0dfbed66161afcfa913073b3791860c",
+    "physicalPage": 21,
+    "textFile": "oat-2025-professional-list-page-21.txt",
+    "textSha256": "dd493392979a39f027a73f6ad07565211f29cc8515ff78c6939e5c3e1666a083",
+    "renderFile": "oat-2025-professional-list-page-21.png",
+    "renderSha256": "92bef3818a9fbd73c3b60be98da4e5619736ab6714aef997d40c0fdbf41e2f34",
+    "method": "Complete original physical page; PyMuPDF get_text() serialized UTF8 LF, get_pixmap(Matrix(1.4,1.4),alpha=False). Derived text and image are not original response bytes.",
+    "libraryVersion": "1.28.2"
+  }
+]

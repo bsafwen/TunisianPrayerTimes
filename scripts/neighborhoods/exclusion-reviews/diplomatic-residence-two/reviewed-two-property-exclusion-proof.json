@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_exact_institutional_residence_property_exclusion",
+  "baselineMetadataSha256": "552b098b4e8da9201c1fa46d3315e7fe627fcb251dcaf569b9ef87c1b19f03a4",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceReview": {
+    "file": "exclusion-reviews/diplomatic-residence-two/diplomatic-residence-two-source-review.json",
+    "sha256": "dc4c7c6b1411c90655a61dc10ea3e2126970efe8f2aa78e7812a9ad30efa5b74"
+  },
+  "independentSourceAndDependencyReview": {
+    "file": "exclusion-reviews/diplomatic-residence-two/diplomatic-residence-two-source-dependency-independent-review-v2.json",
+    "sha256": "561ec62e1d7f75b540486f691edcfc3d8453fbb699180580bee1bd39f9b41754"
+  },
+  "finiteImpactReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\diplomatic-residence-two-finite-impact-review.json",
+    "sha256": "01378b1c2ac55f67b21f1b47054821100bb9a76538f346438b7906e11b179fd4"
+  },
+  "records": [
+    {
+      "id": "osm:way:131384751",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "access": "private",
+        "barrier": "wall",
+        "country": "FR",
+        "diplomatic": "embassy",
+        "embassy": "residence",
+        "landuse": "residential",
+        "name": "سكن السفير الفرنسي",
+        "name:ar": "سكن السفير الفرنسي",
+        "name:en": "Residence of the French Ambassador",
+        "name:fr": "Résidence de l'ambassadeur de France",
+        "office": "diplomatic",
+        "target": "TN"
+      },
+      "currentEssentialFields": {
+        "id": "osm:way:131384751",
+        "sourceId": "osm",
+        "name": "سكن السفير الفرنسي",
+        "aliases": [
+          "Résidence de l'ambassadeur de France",
+          "Residence of the French Ambassador"
+        ],
+        "kind": "residential",
+        "parentName": "المرسى الشاطئ",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "La Marsa Plage",
+          "المرسى الشاطئ",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "areaKm2": 0.04487140565031383,
+        "pickerGroupId": "osm:way:131384751"
+      },
+      "currentWholeRawRecordSha256": "acbb2ad220d79304b297bab79088a503917d21349ad9d319e1c36ad2304e0b7a",
+      "currentRawRecordHashConvention": "Canonical UTF-8 JSON; sorted keys, compact separators, ensure_ascii=False. Coordinates intentionally not repeated in this review.",
+      "completeCurrentRawGroup": [
+        "osm:way:131384751"
+      ],
+      "cachedGeometrySha256": "2c4618f3fe0625692a64a73774ace7d89a4840bee4945c9a2ea612f486e029d8",
+      "packedGeometrySha256": "403bd7cb090fdeaf9410c789123ab19982a0db5cfdd2b1b39a394c6660df172e",
+      "packedBytes": 188,
+      "currentWay": {
+        "file": "exclusion-reviews/diplomatic-residence-two/way-131384751.json",
+        "sha256": "268d67a35508b0f11830505657b42076a3cdf9e3f8424f60b3680e8d35299860"
+      },
+      "wayHistory": {
+        "file": "exclusion-reviews/diplomatic-residence-two/way-131384751-history.json",
+        "sha256": "bd8564ce07d50d436d4fe43522ada283f9d8237034ccce09ac4422b425be4384"
+      },
+      "primaryEvidence": [
+        {
+          "file": "exclusion-reviews/diplomatic-residence-two/france-afe-institutional-estate-response.html",
+          "sha256": "431bea7ce01fcd5af2169ad83e08d0999bb657179ce53adec09152ded340792e"
+        }
+      ],
+      "primaryEvidenceQualification": "Historical public ministry response on residence-estate scope; full raw response read directly.",
+      "preserveParentSector": {
+        "id": "osm:relation:7062337",
+        "name": "المرسى الشاطئ",
+        "wholeRawRecordSha256": "3488c615154739b2f91bc56cbcd129e64a13f0dd5ddef16c55e6b3a20d8ed713",
+        "completeRawGroup": [
+          "osm:relation:7062337"
+        ]
+      },
+      "savedLocalityDisposition": {
+        "retireId": "osm:way:131384751",
+        "replacementId": null
+      },
+      "sourceScopeDecision": "Persistent singular residence-property identity and public institutional estate evidence; not a general inhabited neighborhood."
+    },
+    {
+      "id": "osm:way:149824801",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "access": "private",
+        "barrier": "wall",
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "سكن السفير البريطاني",
+        "name:ar": "سكن السفير البريطاني",
+        "name:en": "Residence of the British Ambassador to Tunisia"
+      },
+      "currentEssentialFields": {
+        "id": "osm:way:149824801",
+        "sourceId": "osm",
+        "name": "سكن السفير البريطاني",
+        "aliases": [
+          "Residence of the British Ambassador to Tunisia"
+        ],
+        "kind": "residential",
+        "parentName": "المرسى المنتزه",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "La Marsa El Montazeh",
+          "المرسى المنتزه",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "areaKm2": 0.027479932502142333,
+        "pickerGroupId": "osm:way:149824801"
+      },
+      "currentWholeRawRecordSha256": "1753777afb82764de59b0c22854ac9cf00c32c6924ae050a028144c38de17829",
+      "currentRawRecordHashConvention": "Canonical UTF-8 JSON; sorted keys, compact separators, ensure_ascii=False. Coordinates intentionally not repeated in this review.",
+      "completeCurrentRawGroup": [
+        "osm:way:149824801"
+      ],
+      "cachedGeometrySha256": "23a5d047d5790df693e79f887d3580506913787ad20ecebcd7f014785b3cb0ac",
+      "packedGeometrySha256": "e54315f2f105d95b9e9afcbe81af00bf61141d841af39e0cd8b274cb7c33cbdf",
+      "packedBytes": 140,
+      "currentWay": {
+        "file": "exclusion-reviews/diplomatic-residence-two/way-149824801.json",
+        "sha256": "41412f846fa938e1177e8decbb3da3a796fe5c3585b857671077b12a37afa0dd"
+      },
+      "wayHistory": {
+        "file": "exclusion-reviews/diplomatic-residence-two/way-149824801-history.json",
+        "sha256": "ab33665d2f16b6ab7f465cf5c914cadc3f01186b51fa79f4c0f842076e9f4889"
+      },
+      "primaryEvidence": [
+        {
+          "file": "exclusion-reviews/diplomatic-residence-two/britain-gac-residence-institution.html",
+          "sha256": "6530db53d7ad2925438c25f6f08672bbd7a96c526e1bced777d1e96c66ee3920"
+        },
+        {
+          "file": "exclusion-reviews/diplomatic-residence-two/britain-gac-institutional-estates-2018-2019.pdf",
+          "sha256": "0750e601ddc5d0435833386ebe2c557108133b0c8c1acc2a73d8bcbd596c2f80"
+        }
+      ],
+      "primaryEvidenceQualification": "UK government collection estate page and annual report PDF page10, independently visually reviewed.",
+      "preserveParentSector": {
+        "id": "osm:relation:7062421",
+        "name": "المرسى المنتزه",
+        "wholeRawRecordSha256": "9def19c25ebf099bdc9049dcf2c172e57499c06f15d94205068dcc700f05e949",
+        "completeRawGroup": [
+          "osm:relation:7062421"
+        ]
+      },
+      "savedLocalityDisposition": {
+        "retireId": "osm:way:149824801",
+        "replacementId": null
+      },
+      "sourceScopeDecision": "Persistent singular residence-property identity and public institutional estate evidence; not a general inhabited neighborhood."
+    }
+  ],
+  "limitations": [
+    "Institutional mapped-object scope only; no conclusion that the property is uninhabited or unused.",
+    "Exact current occupancy and exact full parcel/estate equivalence are not certified. The French official historic park description differs from the cached mapped area.",
+    "No general diplomatic/private-residential filter, replacement alias, boundary substitute, resident information or private-address evidence."
+  ]
+}

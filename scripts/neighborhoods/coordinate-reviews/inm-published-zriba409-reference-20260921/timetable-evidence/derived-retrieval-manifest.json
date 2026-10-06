@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "responses": [
+    {
+      "key": "409-prayer",
+      "delegationId": 409,
+      "governorateId": 343,
+      "kind": "prayer",
+      "disposition": "fresh",
+      "attempt": 1,
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/343/409/",
+      "startedAtUtc": "2026-09-19T11:41:33.421146+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/343/409/",
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:41:33 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "557",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "finishedAtUtc": "2026-09-19T11:41:33.602977+00:00",
+      "elapsedSeconds": 0.187,
+      "responseFile": "responses\\409-prayer-attempt01-f145a24900a1a17c.json",
+      "sha256": "f145a24900a1a17cac921b20abda113819077904556cc755e6d294f44f10afa4",
+      "bytes": 557,
+      "receiptFile": "receipts\\409-prayer-attempt01.json",
+      "receiptSha256": "1ce3af3a7e3dbc1c1abdf781e874f281262cbaa5e008915b3f4aa813f3a52ae2",
+      "file": "originals/409-prayer-attempt01-f145a24900a1a17c.json"
+    },
+    {
+      "key": "409-sun",
+      "delegationId": 409,
+      "governorateId": 343,
+      "kind": "sun",
+      "disposition": "fresh",
+      "attempt": 1,
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/343/409/",
+      "startedAtUtc": "2026-09-19T11:41:34.080517+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/343/409/",
+      "responseHeaders": {
+        "Date": "Sat, 19 Sep 2026 11:41:33 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "526",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "finishedAtUtc": "2026-09-19T11:41:34.235993+00:00",
+      "elapsedSeconds": 0.156,
+      "responseFile": "responses\\409-sun-attempt01-47862d21d347cb0a.json",
+      "sha256": "47862d21d347cb0a966c9d2554ba4b17acf434bfaf82e7fafde7514e53cd9515",
+      "bytes": 526,
+      "receiptFile": "receipts\\409-sun-attempt01.json",
+      "receiptSha256": "a9dbcfc5a0484f4de9eb1cb17283aedbe49a66537353c5bf1abae97fa7d8bbbd",
+      "file": "originals/409-sun-attempt01-47862d21d347cb0a.json"
+    }
+  ]
+}

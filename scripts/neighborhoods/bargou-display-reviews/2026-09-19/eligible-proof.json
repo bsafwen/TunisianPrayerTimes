@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "status": "ORDINARY_SINGLE_DISPLAY_GROUP_ELIGIBLE_PROPOSAL",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "bargou-display-reviews/2026-09-19/source-facts.json",
+    "sha256": "9e19718a10b68deaef424622e4caf16d0cf615982acfa29dced64fd071eff45e"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7125182",
+      "status": "eligible_proposal",
+      "targetDelegationId": 417,
+      "targetBaseId": "delegation:417",
+      "name": "برقو",
+      "governorateId": 344,
+      "governorate": "سليانة",
+      "basePoint": {
+        "lat": 36.0914446,
+        "lng": 9.5667337
+      },
+      "members": [
+        {
+          "id": "osm:relation:7125182",
+          "name": "برقو",
+          "kind": "sector",
+          "sourceTags": {
+            "admin_level": "6",
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "boundary": "administrative",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "ref:tn:codegeo": "246051",
+            "wikidata": "Q2884486",
+            "wikipedia": "ar:برقو"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 417,
+          "independentNearestPrayerSource": 417,
+          "reasons": []
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:417"
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7125182",
+          "code": "246051",
+          "currentOfficialRecord": {
+            "governorateCode": "24",
+            "governorateFr": "Siliana",
+            "governorateAr": "سليانة",
+            "delegationCode": "2460",
+            "delegationFr": "Bargou",
+            "delegationAr": "برقو",
+            "sectorCode": "246051",
+            "sectorFr": "Bargou",
+            "sectorAr": "برقو",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31959,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1511,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1510
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "boundary": "administrative",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "ref:tn:codegeo": "246051",
+            "wikidata": "Q2884486",
+            "wikipedia": "ar:برقو"
+          },
+          "effectiveOriginalGeometrySha256": "f91c26b45910163cd9f87710a917d48dc8db0bee120664fd547b4ede9f129ba6",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7154129",
+              "sourceCode": "2460",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Bargou",
+                "boundary": "administrative",
+                "name": "معتمدية برقو",
+                "name:ar": "معتمدية برقو",
+                "name:fr": "Délégation Bargou",
+                "ref:tn:codegeo": "2460",
+                "ref:tn:hasc_2": "TN.SL.BA",
+                "wikidata": "Q2884474"
+              },
+              "effectiveOriginalGeometrySha256": "5f6cc5fc6322a35e1354fc9c5370d1b3117e006e9f939b7fa6d88050b9f930a3",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ]
+        }
+      ],
+      "reasons": []
+    }
+  ]
+}

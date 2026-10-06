@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPPORTED_DISPLAY_IDENTITY_PENDING_REVIEWED_SUBURB_FORMAT",
+  "baselineMetadataSha256": "5f917545f27b00c111221d366dfb7702e70952445296967a2219e1db93d92404",
+  "pointId": "osm:node:1185290849",
+  "baseId": 389,
+  "identityDecision": "same_named_inhabited_quarter_display_only",
+  "rawCurrent": {
+    "id": "osm:node:1185290849",
+    "sourceId": "osm",
+    "name": "حي الخضراء",
+    "aliases": [
+      "Cité El Khadra",
+      "Hay El Khadra",
+      "Cité el Khadra"
+    ],
+    "kind": "suburb",
+    "parentName": "فرحات حشاد",
+    "contextAliases": [
+      "Délégation Cité El Khadra",
+      "Farhat Hached",
+      "la cité El Khadra",
+      "فرحات حشاد",
+      "معتمدية حي الخضراء"
+    ],
+    "governorateId": 342,
+    "lat": 36.8302177,
+    "lng": 10.1970639,
+    "delegationId": 389,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1185290849"
+  },
+  "baseCurrent": {
+    "id": 389,
+    "nomFr": "Cite El Khadhra",
+    "nomAr": "حي الخضراء",
+    "nomEn": "Cite El Khadhra",
+    "lat": 36.8305,
+    "lng": 10.1969
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1185290849",
+    "tags": {
+      "alt_name": "Cité el Khadra",
+      "int_name": "El Khadra",
+      "name": "حي الخضراء",
+      "name:ar": "حي الخضراء",
+      "name:en": "Hay El Khadra",
+      "name:fr": "Cité El Khadra",
+      "place": "suburb"
+    },
+    "lat": 36.8302177,
+    "lng": 10.1970639
+  },
+  "reasoning": [
+    "The complete cached source is explicitly a named suburb, with Arabic حي الخضراء and Latin Cite El Khadra variants, not a business or an administrative polygon.",
+    "The Ministry of Environment describes an event in Cite El Khadhra and its inhabitants. Both Khadra/Khadhra spellings occur in this primary account, supporting a named inhabited quarter independently of the similarly named administrative entities.",
+    "The longstanding base389 entry uses that quarter name and a point reference. Current Android and docs rows match the tracked HEAD Android row. LocalityRepository constructs delegation:389 directly from its names/governor/source ID; it does not derive this manual row from the115951 imada or1159 delegation geometry. The metadata-backed imadas remain separate picker choices.",
+    "Both existing reference points are in the same current cached Farhat Hached115956 area and administrative delegation1159; both are outside the cached namesake imada115951. This is geographic consistency, not identity inferred from containment or a certification of those polygons.",
+    "Existing manual source389 already serves the raw suburb. Their34.614m separation corroborates a shared quarter reference but is not the identity criterion. A display association can retain both exact coordinates and the current default."
+  ],
+  "primaryEvidence": {
+    "provider": "Ministry of Environment",
+    "url": "https://www.environnement.gov.tn/actualites/actualite?cHash=74f044aa973b1e9c4bbfcc3c9115c377&tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=380",
+    "eventDate": "2024-09-08",
+    "evidenceRead": "Primary page text opened in the immediately preceding bounded review; article describes a public event and the inhabitants of Cite El Khadhra. No business-name inference or remote-byte pin claimed."
+  },
+  "sourceProvenance": {
+    "baseRow": "Android asset, docs asset and tracked HEAD Android asset contain the same389 row. TV asset retains a different older coordinate36.83,10.165; it is not the accepted current reference.",
+    "coordinateManifestCorrectionsFor389": [],
+    "prayerData": "scraper/src/api.ts fetches INM prayer times using governor342/source389; bundled389/2026/01.csv has31day rows with all six prayer-time columns. No new prayer fetch or monthly audit was run.",
+    "limits": "No original external INM source proving these exact reference coordinates was located. They are the accepted application settlement references, not asserted INM calculation-station coordinates.",
+    "runtimePath": "android-app/app/src/main/java/com/tunisianprayertimes/LocalityRepository.kt:199",
+    "priorReferenceReview": "outputs/prayer-source-coordinate-review.json, source389 row; historical arithmetic and candidate context only."
+  },
+  "onlyProposedRawChange": {
+    "id": "osm:node:1185290849",
+    "field": "pickerGroupId",
+    "before": "osm:node:1185290849",
+    "after": "delegation:389"
+  },
+  "completeExpectedPickerGroups": {
+    "before": [
+      [
+        "osm:node:1185290849"
+      ],
+      [
+        "delegation:389"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:389",
+        "osm:node:1185290849"
+      ]
+    ]
+  },
+  "preserveCoordinates": {
+    "base": {
+      "lat": 36.8305,
+      "lng": 10.1969
+    },
+    "point": {
+      "lat": 36.8302177,
+      "lng": 10.1970639
+    }
+  },
+  "preserveImadas": [
+    {
+      "id": "osm:relation:7201241",
+      "code": "115951",
+      "name": "حي الخضراء",
+      "pickerGroupId": "osm:relation:7201241"
+    },
+    {
+      "id": "osm:relation:7201237",
+      "code": "115952",
+      "name": "حي الحدائق",
+      "pickerGroupId": "osm:relation:7201237"
+    },
+    {
+      "id": "osm:relation:7201235",
+      "code": "115953",
+      "name": "الشرقية",
+      "pickerGroupId": "osm:relation:7201235"
+    },
+    {
+      "id": "osm:relation:7201239",
+      "code": "115954",
+      "name": "خير الدين باشا",
+      "pickerGroupId": "osm:relation:7201239"
+    },
+    {
+      "id": "osm:relation:7201238",
+      "code": "115955",
+      "name": "علي بلهوان",
+      "pickerGroupId": "osm:relation:7201238"
+    },
+    {
+      "id": "osm:relation:7201234",
+      "code": "115956",
+      "name": "فرحات حشاد",
+      "pickerGroupId": "osm:relation:7201234"
+    },
+    {
+      "id": "osm:relation:7201240",
+      "code": "115957",
+      "name": "البحيرة",
+      "pickerGroupId": "osm:relation:7201240"
+    },
+    {
+      "id": "osm:relation:7201236",
+      "code": "115958",
+      "name": "حي السلام",
+      "pickerGroupId": "osm:relation:7201236"
+    }
+  ],
+  "preserveAdministrativeDelegation": {
+    "id": "osm:relation:4133739",
+    "code": "1159",
+    "name": "معتمدية حي الخضراء",
+    "rawCatalogFeature": false
+  },
+  "countQualification": "Nine administrative source objects = eight current INS imadas plus their delegation. Current registry and catalog do not contain a ninth1159 imada. Preserve every listed object; do not invent an extra imada.",
+  "cachedContainmentPointThenBase": {
+    "osm:relation:4133739": [
+      true,
+      true
+    ],
+    "osm:relation:7201234": [
+      true,
+      true
+    ],
+    "osm:relation:7201241": [
+      false,
+      false
+    ]
+  },
+  "existingProofCompatibility": {
+    "generatorSha256": "fa5106f71ba1b218371d90dedd419453ab309bbc3b00311dae38de6c95aca4e7",
+    "reusableProtections": [
+      "Exact base row and governor",
+      "Exact original/effective node tags, kind and coordinates",
+      "Primary settlement identity and independent review",
+      "Existing correction subset389 remains empty",
+      "Complete source-name peers and before/after picker groups",
+      "Current source389/nearest usable-source guard",
+      "Every preserved imada raw field, group and packed geometry",
+      "Final membership and all non-group fields unchanged"
+    ],
+    "blocker": "validate_reviewed_point_base_display line1458 accepts town/village only. Khadra is suburb and must remain suburb. Any implementation needs an explicit reviewed suburb admission with primary inhabited-quarter identity and the same exact protections; do not weaken the existing town/village path or relabel the source node.",
+    "proofAcquisitionBeforeImplementation": "Capture the exact public current OSM node payload/version/timestamp and compare all cached tags and coordinates, pin the primary source bytes, and complete original/effective source-name peer reservation. These are proof-pack readiness steps, not a request for coordinate movement or whole-neighborhood borders.",
+    "teboulba594": "Shows coordinate equality is not required; original/effective source lineage is available only if exact accepted source replacements actually affect relevant peers.",
+    "ouedMeliz500": "Shows own-coordinate-correction subset binding; Khadra has no correction389 and must keep an empty subset rather than add one to satisfy a guard."
+  },
+  "phoneQualification": "Root reports a selected Cite El Khadra Tunis named-quarter card, with visual review pending when this proposal was written. No phone artifact or ledger read by this agent; source conclusion above does not claim personally viewed phone evidence.",
+  "nonChanges": "No rename, aliases, parent/context, coordinates, prayer defaults, raw IDs, geometry, administrative groups, tiny-index or source-coordinate manifest changes proposed. Source-only; no stage or implementation."
+}

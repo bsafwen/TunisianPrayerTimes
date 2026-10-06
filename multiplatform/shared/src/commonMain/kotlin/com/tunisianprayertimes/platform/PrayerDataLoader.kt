@@ -3,7 +3,8 @@ package com.tunisianprayertimes.platform
 import com.tunisianprayertimes.*
 
 /**
- * Platform abstraction for loading prayer times from bundled CSV data.
+ * Platform abstraction for loading prayer times: computed from INM's formula on Android,
+ * read from bundled CSV data on desktop.
  */
 expect object PrayerDataLoader {
     fun hasPrayerData(delegationId: Int, year: Int, month: Int): Boolean

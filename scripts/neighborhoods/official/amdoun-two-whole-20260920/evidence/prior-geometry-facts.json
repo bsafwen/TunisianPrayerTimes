@@ -1,0 +1,1664 @@
+{
+  "status": "SOURCE_GEOMETRY_FACTS_NO_PRODUCTION_CHANGE",
+  "scope": "Exactly four observed official PDFs; three current sectors and one town point, no neighbor expansion.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\extract.py",
+    "sha256": "53aeeac37f3a9180cb77a81c59b34146f9143c761a54451630482f25193eca49",
+    "bytes": 10929
+  },
+  "reusedWorkflow": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\extract_scope_facts.py",
+    "sha256": "c5409076a0fb30f9ce5f5e6e308ec88d5702170da14e2875ab12ade77cf324fe",
+    "bytes": 9116
+  },
+  "frozenInputs": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\frozen-source-rows.json",
+    "sha256": "17894890818f921fdda9789529a409a42aa0be7984af68c5169d93cf58275a71",
+    "bytes": 126895
+  },
+  "previousIdentityFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+    "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+    "bytes": 132738
+  },
+  "previousOfficialIndex": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\local-evidence-index.json",
+    "sha256": "2f35e76bbe32f611d963e83441454c6ba7ece8436016d990d8f4748815079637",
+    "bytes": 89653
+  },
+  "geometryMethod": "Parse embedded GCS WKT + GPTS/LPTS and page transformation; affine in stored projected CRS. Native continuous explicitly closed red circonscription_isie2023 path, wholly inside viewport and both active clips. No invented alignment, repair, snapping, smoothing, buffer or cutting. Native paths are preserved separately.",
+  "records": [
+    {
+      "slug": "zahret-medien",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien.pdf",
+        "sha256": "7e8b308d9e185da02fcb450153d1239e783cfef54f82a3a78c0a580661217bd3",
+        "bytes": 1291892,
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين.pdf",
+        "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D8%A7%D8%AC%D8%A9/%D8%B9%D9%85%D8%AF%D9%88%D9%86/%D8%B2%D9%87%D8%B1%D8%A9%20%D9%85%D8%AF%D9%8A%D9%86.pdf",
+        "index": 608,
+        "observedTitle": "زهرة مدين.pdf",
+        "indexSource": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+          "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+          "bytes": 818063
+        },
+        "retrievedAt": "2026-09-20T11:22:52.565616+00:00",
+        "httpStatus": 200,
+        "contentType": "application/pdf"
+      },
+      "sourcePageOneBased": 1,
+      "titlePersonallyViewed": "زهرة مدين",
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien.png",
+        "sha256": "f8cbff7f4235cbe7d42cb2bbc38d3e81fa98aac6089eb5050903f382a20d2be9",
+        "bytes": 2026523
+      },
+      "drawingIndex": 245,
+      "seqno": 253,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 373,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.283264160156254,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          36.76116,
+          9.04726
+        ],
+        [
+          36.80132,
+          9.04728
+        ],
+        [
+          36.80127,
+          9.11877
+        ],
+        [
+          36.76111,
+          9.1187
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          7.61704535673418,
+          -1.8087796969551237e-05
+        ],
+        [
+          -0.00025833692211563175,
+          -7.614288849999866
+        ],
+        [
+          504185.0949349647,
+          4072871.94739259
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.2836175848720098,
+        0.2836175846354385,
+        0.2836175845622403,
+        0.28361758433514933
+      ],
+      "axisScaleMetersPerPagePoint": [
+        7.617045356755656,
+        7.614288854382282
+      ],
+      "redLabels": [
+        {
+          "raw": "كﻟﺎﻣ",
+          "reversedNormalized": "مالك",
+          "bbox": [
+            11.877470016479492,
+            93.56703186035156,
+            67.67537689208984,
+            146.85159301757812
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "نﯾدﻣ ةرھز",
+          "reversedNormalized": "زھرة مدین",
+          "bbox": [
+            334.548828125,
+            307.43402099609375,
+            448.6741638183594,
+            360.7185974121094
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "حﺎﺑﺻ",
+          "reversedNormalized": "صباح",
+          "bbox": [
+            677.1959228515625,
+            140.37294006347656,
+            735.1538696289062,
+            193.65750122070312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾﺑوﻧﺟﻟا نﯾدﻣ ةرھز",
+          "reversedNormalized": "زھرة مدین الجنوبیة",
+          "bbox": [
+            618.3484497070312,
+            366.12139892578125,
+            814.2044067382812,
+            419.4059753417969
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﻘوﺳﺔ",
+          "reversedNormalized": "ةسوقلا",
+          "bbox": [
+            13.67708969116211,
+            406.80657958984375,
+            98.27880859375,
+            460.09112548828125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾزﻏ",
+          "reversedNormalized": "غزیة",
+          "bbox": [
+            769.5162963867188,
+            -1.1249237060546875,
+            828.5545654296875,
+            52.159645080566406
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": " ﺔﯾﺑﺎﺧﺗﻧﻻا ةرﺋادﻟا",
+          "reversedNormalized": "الدائرة الانتخابیة ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "نﯾدﻣ ةرھز",
+          "reversedNormalized": "زھرة مدین",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            789.337158203125,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        9.055893813725218,
+        36.76294724174085,
+        9.1101033800332,
+        36.799493604411126
+      ],
+      "comparisons": {
+        "osm:relation:7189451": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون الجنوبية",
+            "name:ar": "عمدون الجنوبية",
+            "name:fr": "Amdoun Sud",
+            "ref:tn:codegeo": "215352"
+          },
+          "currentRow": {
+            "id": "osm:relation:7189451",
+            "sourceId": "osm",
+            "name": "عمدون الجنوبية",
+            "aliases": [
+              "Amdoun Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية عمدون",
+            "contextAliases": [
+              "Délégation Amdoun",
+              "معتمدية عمدون"
+            ],
+            "governorateId": 356,
+            "lat": 36.76026,
+            "lng": 9.087709,
+            "delegationId": 515,
+            "hasBoundary": true,
+            "bbox": [
+              9.052248,
+              36.73371,
+              9.139952,
+              36.7867
+            ],
+            "areaKm2": 18.70448151465049,
+            "pickerGroupId": "osm:relation:7189451",
+            "offset": 4797564,
+            "length": 3548
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 8.995099411370612,
+            "comparedAreaKm2": 18.65323642285475,
+            "intersectionKm2": 0.004104042702453686,
+            "iou": 0.0001484592783552116,
+            "officialCoveredByCompared": 0.00045625317906612656,
+            "comparedCoveredByOfficial": 0.0002200177282600265,
+            "officialOutsideComparedKm2": 8.990995368668182,
+            "comparedOutsideOfficialKm2": 18.649132380152253,
+            "hausdorffMeters": 3318.2397496896397,
+            "centroidDistanceMeters": 2306.139728033132
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 8.995099411370612,
+            "comparedAreaKm2": 18.653236422854725,
+            "intersectionKm2": 0.004104042702453686,
+            "iou": 0.0001484592783552116,
+            "officialCoveredByCompared": 0.00045625317906612656,
+            "comparedCoveredByOfficial": 0.00022001772826002683,
+            "officialOutsideComparedKm2": 8.990995368668182,
+            "comparedOutsideOfficialKm2": 18.649132380152285,
+            "hausdorffMeters": 3318.2397496896397,
+            "centroidDistanceMeters": 2306.139728044743
+          },
+          "currentAnchor": {
+            "covered": false,
+            "distanceToPolygonMeters": 484.7918799630434,
+            "distanceToBoundaryMeters": 484.7918799630434
+          }
+        },
+        "osm:relation:7189452": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون",
+            "name:ar": "عمدون",
+            "name:fr": "Amdoun",
+            "ref:tn:codegeo": "215351"
+          },
+          "currentRow": {
+            "id": "osm:relation:7189452",
+            "sourceId": "osm",
+            "name": "عمدون",
+            "aliases": [
+              "Amdoun"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية عمدون",
+            "contextAliases": [
+              "Délégation Amdoun",
+              "معتمدية عمدون"
+            ],
+            "governorateId": 356,
+            "lat": 36.78194,
+            "lng": 9.088968,
+            "delegationId": 515,
+            "hasBoundary": true,
+            "bbox": [
+              9.055601,
+              36.76293,
+              9.109579,
+              36.80082
+            ],
+            "areaKm2": 9.558281132863852,
+            "pickerGroupId": "osm:relation:7189452",
+            "offset": 4801112,
+            "length": 3292
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 8.995099411370612,
+            "comparedAreaKm2": 9.532652006010675,
+            "intersectionKm2": 8.909360146916496,
+            "iou": 0.9262838136221708,
+            "officialCoveredByCompared": 0.9904682249152539,
+            "comparedCoveredByOfficial": 0.9346150621357863,
+            "officialOutsideComparedKm2": 0.08573926445425213,
+            "comparedOutsideOfficialKm2": 0.6232918590942252,
+            "hausdorffMeters": 431.1044064147871,
+            "centroidDistanceMeters": 45.07504684034296
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 8.995099411370612,
+            "comparedAreaKm2": 9.53265200601067,
+            "intersectionKm2": 8.909360146916496,
+            "iou": 0.9262838136221708,
+            "officialCoveredByCompared": 0.9904682249152539,
+            "comparedCoveredByOfficial": 0.9346150621357868,
+            "officialOutsideComparedKm2": 0.08573926445425213,
+            "comparedOutsideOfficialKm2": 0.6232918590942248,
+            "hausdorffMeters": 431.1044064147871,
+            "centroidDistanceMeters": 45.07504683958938
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 925.1525654005069
+          }
+        }
+      }
+    },
+    {
+      "slug": "zahret-medien-sud",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien-sud.pdf",
+        "sha256": "d4f5105ecb380f07b675b1897e4ad9f903da2cfae9ee81daf5e0d88fe2944107",
+        "bytes": 1096477,
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين الجنوبية.pdf",
+        "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D8%A7%D8%AC%D8%A9/%D8%B9%D9%85%D8%AF%D9%88%D9%86/%D8%B2%D9%87%D8%B1%D8%A9%20%D9%85%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+        "index": 609,
+        "observedTitle": "زهرة مدين الجنوبية.pdf",
+        "indexSource": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+          "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+          "bytes": 818063
+        },
+        "retrievedAt": "2026-09-20T11:22:52.563617+00:00",
+        "httpStatus": 200,
+        "contentType": "application/pdf"
+      },
+      "sourcePageOneBased": 1,
+      "titlePersonallyViewed": "زهرة مدين الجنوبية",
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien-sud.png",
+        "sha256": "9d5ca3b1b44b81b349f10377ea778dbac2ecec1001b9a88a104335b6e3709b17",
+        "bytes": 1937363
+      },
+      "drawingIndex": 271,
+      "seqno": 279,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 515,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          36.73119,
+          9.04442
+        ],
+        [
+          36.78929,
+          9.04446
+        ],
+        [
+          36.78921,
+          9.14785
+        ],
+        [
+          36.7311,
+          9.14774
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          11.019028362251644,
+          -0.0001999582794481433
+        ],
+        [
+          -0.00038063604006310925,
+          -11.01660627768615
+        ],
+        [
+          503918.9969734992,
+          4071554.776167078
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.33349120266599147,
+        0.3334912011526506,
+        0.33349120230318263,
+        0.33349120006422406
+      ],
+      "axisScaleMetersPerPagePoint": [
+        11.01902836406593,
+        11.01660628426185
+      ],
+      "redLabels": [
+        {
+          "raw": "ةرزﻋ",
+          "reversedNormalized": "عزرة",
+          "bbox": [
+            590.0944213867188,
+            330.4769287109375,
+            651.6529541015625,
+            383.7615051269531
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﺳوﻘﻟا",
+          "reversedNormalized": "القوسة",
+          "bbox": [
+            85.30184936523438,
+            430.92962646484375,
+            169.903564453125,
+            484.21417236328125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "زھرة ﻣدﯾن اﻟﺟﻧوﺑﯾﺔ",
+          "reversedNormalized": "ةیبونجلا نیدم ةرھز",
+          "bbox": [
+            83.50222778320312,
+            275.02996826171875,
+            279.3580017089844,
+            328.31451416015625
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "ﺔﯾرﯾﻐﻟا",
+          "reversedNormalized": "الغیریة",
+          "bbox": [
+            438.02679443359375,
+            477.7354736328125,
+            521.188232421875,
+            531.0200805664062
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "كﻟﺎﻣ",
+          "reversedNormalized": "مالك",
+          "bbox": [
+            91.42054748535156,
+            50.72163391113281,
+            140.7375030517578,
+            104.0062026977539
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "زھرة ﻣدﯾن",
+          "reversedNormalized": "نیدم ةرھز",
+          "bbox": [
+            185.90045166015625,
+            133.8921356201172,
+            300.0257263183594,
+            187.17669677734375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "حﺎﺑﺻ",
+          "reversedNormalized": "صباح",
+          "bbox": [
+            542.9444580078125,
+            3.5556793212890625,
+            593.3414306640625,
+            56.840248107910156
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟطرھوﻧﻲ",
+          "reversedNormalized": "ينوھرطلا",
+          "bbox": [
+            8.63815975189209,
+            526.70166015625,
+            119.16282653808594,
+            579.9862670898438
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾزﻏ",
+          "reversedNormalized": "غزیة",
+          "bbox": [
+            646.0625610351562,
+            -1.1249237060546875,
+            705.100830078125,
+            52.159645080566406
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "( )ﺑﺎﺟﺔ اﻟﺷﻣﺎﻟﯾﺔ- ﻋﯾن ﺳﻠطﺎن",
+          "reversedNormalized": "ناطلس نیع -ةیلامشلا ةجاب) (",
+          "bbox": [
+            442.5258483886719,
+            52.88191223144531,
+            725.873779296875,
+            106.1664810180664
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": " اﻟداﺋرة اﻻﻧﺗﺧﺎﺑﯾﺔ",
+          "reversedNormalized": "ةیباختنلاا ةرئادلا ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "زھرة ﻣدﯾن اﻟﺟﻧوﺑﯾﺔ",
+          "reversedNormalized": "ةیبونجلا نیدم ةرھز",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            859.546142578125,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        }
+      ],
+      "wgs84Bounds": [
+        9.052350825669777,
+        36.73380876922951,
+        9.13992228223531,
+        36.786592005180374
+      ],
+      "comparisons": {
+        "osm:relation:7189451": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون الجنوبية",
+            "name:ar": "عمدون الجنوبية",
+            "name:fr": "Amdoun Sud",
+            "ref:tn:codegeo": "215352"
+          },
+          "currentRow": {
+            "id": "osm:relation:7189451",
+            "sourceId": "osm",
+            "name": "عمدون الجنوبية",
+            "aliases": [
+              "Amdoun Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية عمدون",
+            "contextAliases": [
+              "Délégation Amdoun",
+              "معتمدية عمدون"
+            ],
+            "governorateId": 356,
+            "lat": 36.76026,
+            "lng": 9.087709,
+            "delegationId": 515,
+            "hasBoundary": true,
+            "bbox": [
+              9.052248,
+              36.73371,
+              9.139952,
+              36.7867
+            ],
+            "areaKm2": 18.70448151465049,
+            "pickerGroupId": "osm:relation:7189451",
+            "offset": 4797564,
+            "length": 3548
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 19.692897278145765,
+            "comparedAreaKm2": 18.65323642285475,
+            "intersectionKm2": 18.497834333818144,
+            "iou": 0.9319606678445581,
+            "officialCoveredByCompared": 0.9393150267607477,
+            "comparedCoveredByOfficial": 0.9916688940453142,
+            "officialOutsideComparedKm2": 1.1950629443276677,
+            "comparedOutsideOfficialKm2": 0.15540208903670685,
+            "hausdorffMeters": 649.1935219569352,
+            "centroidDistanceMeters": 2.899038648475634
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 19.692897278145765,
+            "comparedAreaKm2": 18.653236422854725,
+            "intersectionKm2": 18.497834333818144,
+            "iou": 0.9319606678445581,
+            "officialCoveredByCompared": 0.9393150267607477,
+            "comparedCoveredByOfficial": 0.9916688940453157,
+            "officialOutsideComparedKm2": 1.1950629443276677,
+            "comparedOutsideOfficialKm2": 0.15540208903670683,
+            "hausdorffMeters": 649.1935219569352,
+            "centroidDistanceMeters": 2.8990386627862534
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 484.7773939761201
+          }
+        },
+        "osm:relation:7189452": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون",
+            "name:ar": "عمدون",
+            "name:fr": "Amdoun",
+            "ref:tn:codegeo": "215351"
+          },
+          "currentRow": {
+            "id": "osm:relation:7189452",
+            "sourceId": "osm",
+            "name": "عمدون",
+            "aliases": [
+              "Amdoun"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية عمدون",
+            "contextAliases": [
+              "Délégation Amdoun",
+              "معتمدية عمدون"
+            ],
+            "governorateId": 356,
+            "lat": 36.78194,
+            "lng": 9.088968,
+            "delegationId": 515,
+            "hasBoundary": true,
+            "bbox": [
+              9.055601,
+              36.76293,
+              9.109579,
+              36.80082
+            ],
+            "areaKm2": 9.558281132863852,
+            "pickerGroupId": "osm:relation:7189452",
+            "offset": 4801112,
+            "length": 3292
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 19.692897278145765,
+            "comparedAreaKm2": 9.532652006010675,
+            "intersectionKm2": 0.22878505547705266,
+            "iou": 0.00789002019924596,
+            "officialCoveredByCompared": 0.01161764326729858,
+            "comparedCoveredByOfficial": 0.024000147632872317,
+            "officialOutsideComparedKm2": 19.46411222266874,
+            "comparedOutsideOfficialKm2": 9.303866950533585,
+            "hausdorffMeters": 3309.7842135071237,
+            "centroidDistanceMeters": 2348.5173367205516
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 19.692897278145765,
+            "comparedAreaKm2": 9.53265200601067,
+            "intersectionKm2": 0.22878505547705266,
+            "iou": 0.00789002019924596,
+            "officialCoveredByCompared": 0.01161764326729858,
+            "comparedCoveredByOfficial": 0.02400014763287233,
+            "officialOutsideComparedKm2": 19.46411222266874,
+            "comparedOutsideOfficialKm2": 9.303866950533587,
+            "hausdorffMeters": 3309.7842135071237,
+            "centroidDistanceMeters": 2348.5173367198463
+          },
+          "currentAnchor": {
+            "covered": false,
+            "distanceToPolygonMeters": 924.0330019515782,
+            "distanceToBoundaryMeters": 924.0330019515782
+          }
+        }
+      }
+    },
+    {
+      "slug": "midoun",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\midoun.pdf",
+        "sha256": "2ed99f7d702d77e90c376bdcf6184b86cee18862cbc59bc8ae4b3a813d8698fc",
+        "bytes": 1539296,
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/ميدون.pdf",
+        "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%85%D8%AF%D9%86%D9%8A%D9%86/%D8%AC%D8%B1%D8%A8%D8%A9%20%D9%85%D9%8A%D8%AF%D9%88%D9%86/%D9%85%D9%8A%D8%AF%D9%88%D9%86.pdf",
+        "index": 1956,
+        "observedTitle": "ميدون.pdf",
+        "indexSource": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+          "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+          "bytes": 818063
+        },
+        "retrievedAt": "2026-09-20T11:22:52.553210+00:00",
+        "httpStatus": 200,
+        "contentType": "application/pdf"
+      },
+      "sourcePageOneBased": 1,
+      "titlePersonallyViewed": "ميدون",
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\midoun.png",
+        "sha256": "a062735057d6cebdb9889fc3038f721642eb7769370ecc3bb5fc36849734e60b",
+        "bytes": 1943555
+      },
+      "drawingIndex": 500,
+      "seqno": 508,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 837,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": false,
+      "nativeValidityPageCoordinates": "Self-intersection[189.949611655896 544.996264455722]",
+      "nativeValidityUtmCoordinates": "Self-intersection[682536.723004981 3741532.5790659]",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 38.15187883377075,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          33.79377,
+          10.94783
+        ],
+        [
+          33.85659,
+          10.94925
+        ],
+        [
+          33.85484,
+          11.05703
+        ],
+        [
+          33.79202,
+          11.05553
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          11.916289457660138,
+          7.198755237696605e-06
+        ],
+        [
+          0.000772418825818022,
+          -11.912039001419544
+        ],
+        [
+          680272.8074847447,
+          3748024.59445632
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.11823612018781256,
+        0.11823611648618387,
+        0.11823611920018764,
+        0.11823611589558826
+      ],
+      "axisScaleMetersPerPagePoint": [
+        11.916289457662312,
+        11.91203902646273
+      ],
+      "redLabels": [
+        {
+          "raw": "نودﯾﻣ",
+          "reversedNormalized": "میدون",
+          "bbox": [
+            158.36630249023438,
+            227.86399841308594,
+            230.72613525390625,
+            281.1485595703125
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "وﻛرا",
+          "reversedNormalized": "اركو",
+          "bbox": [
+            298.1965637207031,
+            480.97589111328125,
+            360.83514404296875,
+            534.260498046875
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "ﺔﯾارزﻣ",
+          "reversedNormalized": "مزرایة",
+          "bbox": [
+            88.36119842529297,
+            65.48350524902344,
+            165.40167236328125,
+            118.76807403564453
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﻣﺣﺑوﺑﯾن",
+          "reversedNormalized": "نیبوبحملا",
+          "bbox": [
+            137.67071533203125,
+            538.22314453125,
+            248.5556182861328,
+            591.5077514648438
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "نﺎﯾﻏدﺻ",
+          "reversedNormalized": "صدغیان",
+          "bbox": [
+            29.333759307861328,
+            336.2376708984375,
+            111.05488586425781,
+            389.522216796875
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": " اﻟداﺋرة اﻻﻧﺗﺧﺎﺑﯾﺔ",
+          "reversedNormalized": "ةیباختنلاا ةرئادلا ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "نودﯾﻣ",
+          "reversedNormalized": "میدون",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            753.6926879882812,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        10.953329056081479,
+        33.79818381091078,
+        11.051463150079188,
+        33.85112087805703
+      ],
+      "comparisons": {
+        "osm:relation:7133850": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ميدون",
+            "name:ar": "ميدون",
+            "name:fr": "Midoun",
+            "ref:tn:codegeo": "525751",
+            "wikidata": "Q687088",
+            "wikipedia": "ar:ميدون (تونس)"
+          },
+          "currentRow": {
+            "id": "osm:relation:7133850",
+            "sourceId": "osm",
+            "name": "ميدون",
+            "aliases": [
+              "Midoun"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جربة ميدون",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.824557,
+            "lng": 11.006924,
+            "delegationId": 492,
+            "hasBoundary": true,
+            "bbox": [
+              10.94771,
+              33.798263,
+              11.051437,
+              33.851228
+            ],
+            "areaKm2": 23.952119218510635,
+            "pickerGroupId": "osm:relation:7133850",
+            "offset": 1663152,
+            "length": 4036
+          },
+          "officialVsOriginal": {
+            "status": "WITHHELD_INVALID_OFFICIAL_NATIVE_RING",
+            "validity": "Self-intersection[682536.723004981 3741532.5790659]",
+            "boundaryHausdorffMeters": 893.3210841720785,
+            "qualification": "No area or overlap ratio computed from a self-intersecting ring; unchanged native path retained."
+          },
+          "officialVsPacked": {
+            "status": "WITHHELD_INVALID_OFFICIAL_NATIVE_RING",
+            "validity": "Self-intersection[682536.723004981 3741532.5790659]",
+            "boundaryHausdorffMeters": 893.2913579144346,
+            "qualification": "No area or overlap ratio computed from a self-intersecting ring; unchanged native path retained."
+          },
+          "currentAnchor": {
+            "covered": null,
+            "nativeRingValid": false,
+            "distanceToBoundaryMeters": 1145.9743847352438,
+            "literalRingWindingNumber": -1,
+            "literalRingCrossingCount": 1,
+            "literalNonzeroFillContains": true,
+            "literalEvenOddFillContains": true,
+            "qualification": "Unrepaired self-intersecting native ring: ordinary valid-polygon containment withheld; literal nonzero/even-odd winding reported separately."
+          }
+        }
+      },
+      "townPoint": {
+        "id": "osm:node:287613682",
+        "lat": 33.8074152,
+        "lng": 10.9910666,
+        "covered": null,
+        "nativeRingValid": false,
+        "distanceToBoundaryMeters": 1.6219727289307497,
+        "literalRingWindingNumber": -1,
+        "literalRingCrossingCount": 1,
+        "literalNonzeroFillContains": true,
+        "literalEvenOddFillContains": true,
+        "qualification": "Unrepaired self-intersecting native ring: ordinary valid-polygon containment withheld; literal nonzero/even-odd winding reported separately."
+      }
+    },
+    {
+      "slug": "arkou",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\arkou.pdf",
+        "sha256": "41204274398156d8b262bae61ad041f99aef42147499692ffdf85efd1ba3ec43",
+        "bytes": 1524451,
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/اركو.pdf",
+        "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%85%D8%AF%D9%86%D9%8A%D9%86/%D8%AC%D8%B1%D8%A8%D8%A9%20%D9%85%D9%8A%D8%AF%D9%88%D9%86/%D8%A7%D8%B1%D9%83%D9%88.pdf",
+        "index": 1950,
+        "observedTitle": "اركو.pdf",
+        "indexSource": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+          "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+          "bytes": 818063
+        },
+        "retrievedAt": "2026-09-20T11:22:52.560102+00:00",
+        "httpStatus": 200,
+        "contentType": "application/pdf"
+      },
+      "sourcePageOneBased": 1,
+      "titlePersonallyViewed": "اركو",
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\arkou.png",
+        "sha256": "bf426213befe39407936cf8dc9c5df1db2ce70d902523d66924a39e0d4ef1ad5",
+        "bytes": 1749854
+      },
+      "drawingIndex": 547,
+      "seqno": 555,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 767,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          33.74578,
+          10.93863
+        ],
+        [
+          33.8332,
+          10.9406
+        ],
+        [
+          33.83075,
+          11.09054
+        ],
+        [
+          33.74333,
+          11.08842
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          16.582487027742452,
+          -0.00028976305294964083
+        ],
+        [
+          0.0004896275822829921,
+          -16.576778929496868
+        ],
+        [
+          679501.1992976449,
+          3745439.1340283956
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.22798169635094895,
+        0.22798169416837902,
+        0.22798169539100696,
+        0.22798169145151678
+      ],
+      "axisScaleMetersPerPagePoint": [
+        16.58248703027412,
+        16.576778936727923
+      ],
+      "redLabels": [
+        {
+          "raw": "ارﻛو",
+          "reversedNormalized": "وكرا",
+          "bbox": [
+            248.16720581054688,
+            238.30531311035156,
+            310.8057861328125,
+            291.5898742675781
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "نودﯾﻣ",
+          "reversedNormalized": "میدون",
+          "bbox": [
+            166.2846221923828,
+            5.7159576416015625,
+            238.64447021484375,
+            59.000526428222656
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "لﻘﻌﻣ ﻲﻧﺑ",
+          "reversedNormalized": "بني معقل",
+          "bbox": [
+            173.48309326171875,
+            440.290771484375,
+            275.7267761230469,
+            493.5753479003906
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "نﯾﺑوﺑﺣﻣﻟا",
+          "reversedNormalized": "المحبوبین",
+          "bbox": [
+            147.38864135742188,
+            219.5829315185547,
+            258.2735595703125,
+            272.86749267578125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": " ﺔﯾﺑﺎﺧﺗﻧﻻا ةرﺋادﻟا",
+          "reversedNormalized": "الدائرة الانتخابیة ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ارﻛو",
+          "reversedNormalized": "وكرا",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            745.0515747070312,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        10.968673774901845,
+        33.74886958101563,
+        11.06056820591472,
+        33.82742295819142
+      ],
+      "comparisons": {
+        "osm:relation:7133850": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ميدون",
+            "name:ar": "ميدون",
+            "name:fr": "Midoun",
+            "ref:tn:codegeo": "525751",
+            "wikidata": "Q687088",
+            "wikipedia": "ar:ميدون (تونس)"
+          },
+          "currentRow": {
+            "id": "osm:relation:7133850",
+            "sourceId": "osm",
+            "name": "ميدون",
+            "aliases": [
+              "Midoun"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جربة ميدون",
+            "contextAliases": [
+              "Djerba - Midoun",
+              "Délégation Djerba Midoun",
+              "معتمدية جربة ميدون"
+            ],
+            "governorateId": 353,
+            "lat": 33.824557,
+            "lng": 11.006924,
+            "delegationId": 492,
+            "hasBoundary": true,
+            "bbox": [
+              10.94771,
+              33.798263,
+              11.051437,
+              33.851228
+            ],
+            "areaKm2": 23.952119218510635,
+            "pickerGroupId": "osm:relation:7133850",
+            "offset": 1663152,
+            "length": 4036
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 41.958265119755765,
+            "comparedAreaKm2": 23.891632349686674,
+            "intersectionKm2": 0.018446511163751764,
+            "iou": 0.00028020818157938537,
+            "officialCoveredByCompared": 0.00043963951109757276,
+            "comparedCoveredByOfficial": 0.0007720908682069888,
+            "officialOutsideComparedKm2": 41.93981860859202,
+            "comparedOutsideOfficialKm2": 23.873185838522925,
+            "hausdorffMeters": 5929.959129706164,
+            "centroidDistanceMeters": 4437.936907113154
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 41.958265119755765,
+            "comparedAreaKm2": 23.891617040612044,
+            "intersectionKm2": 0.01844112931341777,
+            "iou": 0.00028012647185891935,
+            "officialCoveredByCompared": 0.00043951124434682333,
+            "comparedCoveredByOfficial": 0.0007718661019080757,
+            "officialOutsideComparedKm2": 41.93982399044234,
+            "comparedOutsideOfficialKm2": 23.873175911298667,
+            "hausdorffMeters": 5929.988376409182,
+            "centroidDistanceMeters": 4437.942956064197
+          },
+          "currentAnchor": {
+            "covered": false,
+            "distanceToPolygonMeters": 1143.4646928102006,
+            "distanceToBoundaryMeters": 1143.4646928102006
+          }
+        }
+      },
+      "townPoint": {
+        "id": "osm:node:287613682",
+        "lat": 33.8074152,
+        "lng": 10.9910666,
+        "covered": true,
+        "distanceToPolygonMeters": 0.0,
+        "distanceToBoundaryMeters": 1.4527907012910366
+      }
+    }
+  ],
+  "pairTopology": [
+    {
+      "a": "zahret-medien",
+      "b": "zahret-medien-sud",
+      "distanceMeters": 0.0,
+      "intersectionAreaM2": 2424.407393552848,
+      "boundaryIntersectionLengthMeters": 0.0,
+      "relation": "212101212",
+      "qualification": "Separately georeferenced complete native paths; no snapping or repair."
+    },
+    {
+      "a": "midoun",
+      "b": "arkou",
+      "status": "AREA_TOPOLOGY_WITHHELD_INVALID_NATIVE_RING",
+      "boundaryDistanceMeters": 0.0,
+      "qualification": "One complete native ring is self-intersecting; no snapping or repair and no polygon overlap/topology assertion."
+    }
+  ],
+  "midounTownVsCurrentSector": {
+    "original": {
+      "covered": false,
+      "distanceToPolygonMeters": 7.040130049798284,
+      "distanceToBoundaryMeters": 7.040130049798284
+    },
+    "packed": {
+      "covered": false,
+      "distanceToPolygonMeters": 7.005400085033555,
+      "distanceToBoundaryMeters": 7.005400085033555
+    }
+  },
+  "limitations": [
+    "Official source is 2023 electoral district/imada map, not an assertion of present-day boundary certification.",
+    "Map base imagery/POI labels are geographic context, not independent boundary evidence.",
+    "Original OSM and packed OSM share source lineage.",
+    "Same town name or Wikidata does not make a town point identical to an administrative sector."
+  ]
+}

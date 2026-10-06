@@ -1,0 +1,825 @@
+{
+  "baseCurrent": {
+    "id": 463,
+    "lat": 36.535,
+    "lng": 10.552,
+    "nomAr": "بوعرقوب",
+    "nomEn": "Bou Argoub",
+    "nomFr": "Bou Argoub"
+  },
+  "baseId": 463,
+  "completePickerGroups": {
+    "after": [
+      [
+        "delegation:463",
+        "osm:node:1190878345"
+      ]
+    ],
+    "before": [
+      [
+        "osm:node:1190878345"
+      ],
+      [
+        "delegation:463"
+      ]
+    ]
+  },
+  "contexts": {
+    "osm:relation:1435825": {
+      "kind": "governorate",
+      "sourceGeometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700",
+      "tags": {
+        "ISO3166-2": "TN-21",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية نابل",
+        "name:ar": "ولاية نابل",
+        "name:az": "Nabul (vilayət)",
+        "name:be": "Набуль (вілает)",
+        "name:be-tarask": "Набуль (вілает)",
+        "name:bg": "Набил (област)",
+        "name:ca": "Governació de Nabeul",
+        "name:ceb": "Gouvernorat de Nabeul",
+        "name:cy": "Nabeul (talaith)",
+        "name:de": "Gouvernement Nabeul",
+        "name:el": "Ναμπέλ (Κυβερνείο)",
+        "name:en": "Nabeul",
+        "name:es": "Gobernación de Nabeul",
+        "name:fa": "نابل",
+        "name:fi": "Nabeul (kuvernementti)",
+        "name:fr": "Gouvernorat Nabeul",
+        "name:frr": "Nabeul (Guwernement)",
+        "name:id": "Kegubernuran Nabeul",
+        "name:it": "Nabeul",
+        "name:ja": "ナブール県",
+        "name:ko": "나뵐주",
+        "name:ks": "نابل",
+        "name:ms": "Kawasan kegabenoran Nabeul",
+        "name:nl": "Nabeul (gouvernement)",
+        "name:no": "Nabeul (guvernement)",
+        "name:pl": "Gubernatorstwo Nabul",
+        "name:pt": "Nabeul (província)",
+        "name:ro": "Guvernoratul Nabeul",
+        "name:ru": "Набуль (вилайет)",
+        "name:sco": "Nabeul Govrenorate",
+        "name:sh": "Nabeul (vilajet)",
+        "name:tr": "Nabil ili",
+        "name:uk": "Набуль (вілаєт)",
+        "name:ur": "نابل",
+        "name:zh": "納布勒省",
+        "name:zu": "Nabeul Governorate",
+        "official_name": "ولاية نابل",
+        "official_name:ar": "ولاية نابل",
+        "official_name:en": "Nabeul Governorate",
+        "official_name:fa": "استان نابل",
+        "official_name:fr": "Gouvernorat de Nabeul",
+        "official_name:it": "Governatorato di Nabeul",
+        "official_name:ur": "ولاية نابل",
+        "population": "787920",
+        "population:date": "2014",
+        "ref:tn:codegeo": "15",
+        "wikidata": "Q328145",
+        "wikipedia": "ar:ولاية نابل"
+      }
+    },
+    "osm:relation:7145836": {
+      "kind": "delegation",
+      "sourceGeometrySha256": "bd2564de4460ce55a88e1bfe92089582d3c3257ec5d94fbd4f0daaf1ba73ac23",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Bou Argoub",
+        "boundary": "administrative",
+        "name": "معتمدية بو عرقوب",
+        "name:ar": "معتمدية بو عرقوب",
+        "name:fr": "Délégation Bou Argoub",
+        "ref:tn:codegeo": "1565",
+        "ref:tn:hasc_2": "TN.NB.BA",
+        "wikidata": "Q2911882"
+      }
+    }
+  },
+  "coordinatePolicy": "Both current point and timetable-reference coordinates are preserved. Published INM reference coordinates are not certified internal calculation inputs or administrative/urban boundaries.",
+  "currentSourcePhaseFacts": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/finite-source-group-facts.json",
+    "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+  },
+  "displayPhaseCoordinateChanges": [],
+  "expectedCoordinateCorrections": [
+    {
+      "delegationId": 463,
+      "expectedGovernorateId": 350,
+      "expectedNames": {
+        "nomAr": "بوعرقوب",
+        "nomEn": "Bou Argoub",
+        "nomFr": "Bou Argoub"
+      },
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-prayer-463-2026-09-12.json",
+          "sha256": "c95b48e575298a1d6bfd3c085969775a10591cfaf46c915ba1ebd79532a7fffc",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/350/463/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+        },
+        "serviceDate": "2026-09-12",
+        "sun": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-sun-463-2026-09-12.json",
+          "sha256": "821a07ba0bf2944227a69cf1caa03700a2c8fddf8035c2cf1f6077fcb90b3edc",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/350/463/"
+        }
+      },
+      "original": {
+        "lat": 36.55,
+        "lng": 10.55
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d. Original external provenance is not certified by this migration.",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      },
+      "originalSourceAssetSha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "proposed": {
+        "lat": 36.535,
+        "lng": 10.552
+      },
+      "qualification": "Official public INM prayer and sunrise responses publish these reference values. This records published fields and does not certify internal calculation inputs, survey precision, an OSM node or any boundary.",
+      "referenceKind": "inm_published_reference",
+      "reviewBatchId": "2026-09-12-inm-published-reference-463-526",
+      "reviewedDate": "2026-09-12"
+    }
+  ],
+  "expectedGovernor": {
+    "id": 350,
+    "lat": 36.4561,
+    "lng": 10.7376,
+    "nomAr": "نابل",
+    "nomEn": "Nabeul",
+    "nomFr": "Nabeul"
+  },
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-after-inm-geography-feasibility.json",
+    "sha256": "ddf07c5f2cae5747613e64a79022c3ade2e995f77fcd6f64aa534f50f56cee60"
+  },
+  "historicalSourceReportQualification": "Original identity/phone reports describe their earlier frozen reference phase. Their identity observations remain evidence; only currentSourcePhaseFacts, rawCurrent, baseCurrent and expectedCoordinateCorrections bind current coordinates and containment.",
+  "identityDecision": "same_named_settlement_display_only",
+  "independentPrimaryFinding": "Same named settlement choice as Bou Argoub reference; preserve seven sectors.",
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+    "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+  },
+  "method": "reviewed_explicit_point_base_display_identity",
+  "officialDelegationCode": "1565",
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "onlyRawChange": {
+    "after": "delegation:463",
+    "before": "osm:node:1190878345",
+    "field": "pickerGroupId",
+    "id": "osm:node:1190878345"
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1190878345",
+    "lat": 36.5342202,
+    "lng": 10.5498743,
+    "tags": {
+      "name": "بوعرقوب",
+      "name:ar": "بوعرقوب",
+      "name:en": "Bou Argoub",
+      "name:fr": "Bou Argoub",
+      "place": "village",
+      "wikidata": "Q655294",
+      "wikipedia": "ar:بوعرقوب"
+    }
+  },
+  "pointId": "osm:node:1190878345",
+  "preservedSectors": [
+    {
+      "currentMetadata": {
+        "aliases": [
+          "Borj Hfaiedh"
+        ],
+        "areaKm2": 24.665416156828172,
+        "bbox": [
+          10.570552,
+          36.458909,
+          10.643004,
+          36.534664
+        ],
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7103679",
+        "kind": "sector",
+        "lat": 36.496414,
+        "length": 1116,
+        "lng": 10.605121,
+        "name": "برج حفيظ",
+        "offset": 393332,
+        "parentName": "معتمدية بو عرقوب",
+        "pickerGroupId": "osm:relation:7103679",
+        "sourceId": "osm"
+      },
+      "expectedCuration": null,
+      "id": "osm:relation:7103679",
+      "officialIdentity": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "برج حفيظ",
+        "sectorCode": "156553",
+        "sectorFr": "Borj hefaied",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 592,
+          "Nombre_de_menages_par_Secteurs.xlsx": 591,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14315
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "برج حفيظ",
+        "name:ar": "برج حفيظ",
+        "name:fr": "Borj Hfaiedh",
+        "ref:tn:codegeo": "156553"
+      },
+      "packedGeometrySha256": "6c6867f5ddd85720a5950390f0e07dd1a3fc6f1a404305350e5f844fdda8bf60",
+      "sourceGeometrySha256": "1db7defdac53df5ecc60839c8830995b17054412c5b72ad9a96499658540221d"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "Bou Argoub Sud"
+        ],
+        "areaKm2": 17.94517930374868,
+        "bbox": [
+          10.495502,
+          36.476843,
+          10.57865,
+          36.525137
+        ],
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7103680",
+        "kind": "sector",
+        "lat": 36.500767,
+        "length": 836,
+        "lng": 10.536322,
+        "name": "بو عرقوب الجنوبية",
+        "offset": 394448,
+        "parentName": "معتمدية بو عرقوب",
+        "pickerGroupId": "osm:relation:7103680",
+        "sourceId": "osm"
+      },
+      "expectedCuration": null,
+      "id": "osm:relation:7103680",
+      "officialIdentity": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "بوعرقوب القبلية",
+        "sectorCode": "156555",
+        "sectorFr": "Bou argoub sud",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 596,
+          "Nombre_de_menages_par_Secteurs.xlsx": 595,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14383
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بو عرقوب الجنوبية",
+        "name:ar": "بو عرقوب الجنوبية",
+        "name:fr": "Bou Argoub Sud",
+        "ref:tn:codegeo": "156555"
+      },
+      "packedGeometrySha256": "da4b984b2b57f89a088b8889a5be1b2f53b30d8947a840667dc73a29f3f98a50",
+      "sourceGeometrySha256": "7fff34c877f19d343918cb699ed59994c534d0194018a65192a2b8d2739f990d"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "El Machrouha",
+          "El Mashrouha"
+        ],
+        "areaKm2": 20.44526130903216,
+        "bbox": [
+          10.561966,
+          36.503852,
+          10.627657,
+          36.558184
+        ],
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7103681",
+        "kind": "sector",
+        "lat": 36.530801,
+        "length": 540,
+        "lng": 10.597844,
+        "name": "المشروحة",
+        "offset": 395284,
+        "parentName": "معتمدية بو عرقوب",
+        "pickerGroupId": "osm:relation:7103681",
+        "sourceId": "osm"
+      },
+      "expectedCuration": null,
+      "id": "osm:relation:7103681",
+      "officialIdentity": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "المشروحة",
+        "sectorCode": "156552",
+        "sectorFr": "El machrouha",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 590,
+          "Nombre_de_menages_par_Secteurs.xlsx": 589,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14281
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المشروحة",
+        "name:ar": "المشروحة",
+        "name:fr": "El Machrouha",
+        "ref:tn:codegeo": "156552"
+      },
+      "packedGeometrySha256": "65db312ebfcb82bbff79d5b1bce2c27278a9a9017da97f212c49e524539693a3",
+      "sourceGeometrySha256": "6e97be88601321199d5c2e22e6570fdbc42a2651c97dce8a4d31eecf688b2193"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "Bou Argoub Nord"
+        ],
+        "areaKm2": 25.546959392587787,
+        "bbox": [
+          10.487877,
+          36.506448,
+          10.578005,
+          36.555795
+        ],
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7103682",
+        "kind": "sector",
+        "lat": 36.530029,
+        "length": 692,
+        "lng": 10.535769,
+        "name": "بو عرقوب الشمالية",
+        "offset": 395824,
+        "parentName": "معتمدية بو عرقوب",
+        "pickerGroupId": "osm:relation:7103682",
+        "sourceId": "osm"
+      },
+      "expectedCuration": null,
+      "id": "osm:relation:7103682",
+      "officialIdentity": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "بوعرقوب الجوفية",
+        "sectorCode": "156554",
+        "sectorFr": "Bou argoub jawffia",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 594,
+          "Nombre_de_menages_par_Secteurs.xlsx": 593,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14349
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بو عرقوب الشمالية",
+        "name:ar": "بو عرقوب الشمالية",
+        "name:fr": "Bou Argoub Nord",
+        "ref:tn:codegeo": "156554"
+      },
+      "packedGeometrySha256": "de362940d5f15f6acf713229b3af2ded9df121f19871a5ea67fd777428ba51db",
+      "sourceGeometrySha256": "b1a22f0b86b2e2cda774be9f2e8f2867ad8b8ee65eeb2f3fc9116d7c546a6161"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "Sidi Dhaher"
+        ],
+        "areaKm2": 8.016573115625173,
+        "bbox": [
+          10.535215,
+          36.536496,
+          10.579785,
+          36.569213
+        ],
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7103683",
+        "kind": "sector",
+        "lat": 36.553149,
+        "length": 508,
+        "lng": 10.557644,
+        "name": "سيدي الظاهر",
+        "offset": 396516,
+        "parentName": "معتمدية بو عرقوب",
+        "pickerGroupId": "osm:relation:7103683",
+        "sourceId": "osm"
+      },
+      "expectedCuration": null,
+      "id": "osm:relation:7103683",
+      "officialIdentity": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "سيدي الظاهر",
+        "sectorCode": "156551",
+        "sectorFr": "Sidi dhaher",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 588,
+          "Nombre_de_menages_par_Secteurs.xlsx": 587,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14247
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي الظاهر",
+        "name:ar": "سيدي الظاهر",
+        "name:fr": "Sidi Dhaher",
+        "ref:tn:codegeo": "156551"
+      },
+      "packedGeometrySha256": "05eede436998f1f6b3da5ed1ae083468b30a5ee444c9880aad0186e935c0ea0b",
+      "sourceGeometrySha256": "f15c68a03c4521013966da84071262e2e89a78eeebc9be4afa22aa5a379fd20f"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "Belli",
+          "بلي"
+        ],
+        "areaKm2": 13.176450008792967,
+        "bbox": [
+          10.550266,
+          36.520369,
+          10.65077,
+          36.582491
+        ],
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7103684",
+        "kind": "sector",
+        "lat": 36.551455,
+        "length": 772,
+        "lng": 10.607997,
+        "name": "بلّي",
+        "offset": 397024,
+        "parentName": "معتمدية بو عرقوب",
+        "pickerGroupId": "osm:relation:7103684",
+        "sourceId": "osm"
+      },
+      "expectedCuration": null,
+      "id": "osm:relation:7103684",
+      "officialIdentity": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "بلي",
+        "sectorCode": "156556",
+        "sectorFr": "Belli",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 598,
+          "Nombre_de_menages_par_Secteurs.xlsx": 597,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14417
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بلّي",
+        "name:ar": "بلّي",
+        "name:fr": "Belli",
+        "ref:tn:codegeo": "156556"
+      },
+      "packedGeometrySha256": "c54606e14c5664d71a41fe5b1edcf767879cd50da73c8b2d2b29388d8bc4fe0c",
+      "sourceGeometrySha256": "6b627c7a6e941b30250c6f4ac6116a08d17f12e7bf58a1296ef2899d996b922d"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "El Kharrouba"
+        ],
+        "areaKm2": 20.07591584323772,
+        "bbox": [
+          10.589988,
+          36.544426,
+          10.662306,
+          36.597178
+        ],
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7103685",
+        "kind": "sector",
+        "lat": 36.570604,
+        "length": 676,
+        "lng": 10.627693,
+        "name": "الخرّوبة",
+        "offset": 397796,
+        "parentName": "معتمدية بو عرقوب",
+        "pickerGroupId": "osm:relation:7103685",
+        "sourceId": "osm"
+      },
+      "expectedCuration": null,
+      "id": "osm:relation:7103685",
+      "officialIdentity": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "الخروبة",
+        "sectorCode": "156557",
+        "sectorFr": "El kharrouba",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 600,
+          "Nombre_de_menages_par_Secteurs.xlsx": 599,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14451
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الخرّوبة",
+        "name:ar": "الخرّوبة",
+        "name:fr": "El Kharrouba",
+        "ref:tn:codegeo": "156557"
+      },
+      "packedGeometrySha256": "f8aaf650b3e289618b560e2cd5dc8c0773f4cdf96c3e72638d368dff61f3793a",
+      "sourceGeometrySha256": "1bda20a60c5823b12f7c12e1a85e6649e3065f895d1348fb727a9b6bea1fe21e"
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "artifactKind": "original_html_response",
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bouargoub/municipal-city-brief.html",
+      "finding": "The municipality explicitly describes the inhabited city Bou Argoub in Nabeul, situated on the RN1 route between Hammamet and Tunis. Its broad neighboring-area descriptions are not converted into a city perimeter.",
+      "isOriginalHttpResponseBytes": true,
+      "qualification": "No source sentence, site menu, population, neighboring-area description or map is accepted as a certified city coordinate, imada boundary or city/municipality equivalence.",
+      "requiredText": [
+        "ﺗﻘﻊ ﻣدﯾﻧﺔ ﺑوﻋرﻗوب",
+        "وﻻﯾﺔ ﻧﺎﺑل",
+        "ﺑﯾن اﻟﺣﻣﺎﻣﺎت وﺗوﻧس اﻟﻌﺎﺻﻣﺔ"
+      ],
+      "role": "official_settlement_identity",
+      "sha256": "da118e28e881d8bd8569a50b924e1d9502573366f339b42c08b2a6bc60f33321",
+      "url": "https://www.commune-bouargoub.gov.tn/index.php?Itemid=132&id=18&lang=ar&option=com_content&view=article"
+    },
+    {
+      "artifactKind": "original_html_response",
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bouargoub/municipal-city-public-notices.html",
+      "finding": "The municipality separately announces works on the city entrances and city roads. This supports a named inhabited city, without treating municipal jurisdiction or a works perimeter as the town boundary.",
+      "isOriginalHttpResponseBytes": true,
+      "qualification": "No source sentence, site menu, population, neighboring-area description or map is accepted as a certified city coordinate, imada boundary or city/municipality equivalence.",
+      "requiredText": [
+        "تجميل مداخل مدينة بوعرقوب",
+        "طلب عروض صيانة الطرقات مدينة بوعرقوب",
+        "بلدية بوعرقوب"
+      ],
+      "role": "official_settlement_identity",
+      "sha256": "9bf83223d9ffc680274da0015f04710e87a00f11c023014e612ed2aabfd93838",
+      "url": "https://www.commune-bouargoub.gov.tn/index.php?Itemid=447&id=11&lang=ar&option=com_content&view=category"
+    }
+  ],
+  "rawCurrent": {
+    "aliases": [
+      "Bou Argoub"
+    ],
+    "contextAliases": [
+      "Bou Argoub",
+      "Bou Argoub Nord",
+      "Délégation Bou Argoub",
+      "بو عرقوب الشمالية",
+      "معتمدية بو عرقوب"
+    ],
+    "delegationId": 463,
+    "governorateId": 350,
+    "hasBoundary": false,
+    "id": "osm:node:1190878345",
+    "kind": "village",
+    "lat": 36.5342202,
+    "lng": 10.5498743,
+    "name": "بوعرقوب",
+    "parentName": "بو عرقوب الشمالية",
+    "pickerGroupId": "osm:node:1190878345",
+    "sourceId": "osm"
+  },
+  "reviewedDate": "2026-09-12",
+  "schemaVersion": 1,
+  "scope": "Only the named point joins the existing manual town choice. Separate official sectors, all raw records, source identities, geometry, names, aliases, context and prayer defaults remain unchanged.",
+  "sourceHistory": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bouargoub/osm-node-1190878345-history.json",
+    "sha256": "6a86ea35510109a194eb8d07550598eaf62665c254cf01421d4fea0c5eb900e4",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1190878345/history.json"
+  },
+  "sourceIdentityQualifications": {
+    "history": {
+      "coordinateEpochs": [
+        {
+          "firstVersion": 1,
+          "lastVersion": 2,
+          "lat": 36.53853,
+          "lng": 10.55093
+        },
+        {
+          "firstVersion": 3,
+          "lastVersion": 6,
+          "lat": 36.5333936,
+          "lng": 10.5510357
+        },
+        {
+          "firstVersion": 7,
+          "lastVersion": 7,
+          "lat": 36.5324891,
+          "lng": 10.5508025
+        },
+        {
+          "firstVersion": 8,
+          "lastVersion": 9,
+          "lat": 36.5342202,
+          "lng": 10.5498743
+        }
+      ],
+      "currentCoordinatesSinceVersion": 8,
+      "currentFrenchSpelling": "Bou Argoub",
+      "currentNodeExactlyMatchesHistoryAndFrozenSource": true,
+      "initialFrenchSpelling": "Bou Arkoub",
+      "institutionOrAdministrativeRetagFound": false,
+      "namedVillageThroughout": true,
+      "noNorthSouthSidiDhaherNameAssignedInHistory": true,
+      "versions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "identity": "The source node and existing base463 support the same named Bou Argoub inhabited-settlement display. The nine complete node versions are named villages; the municipal body explicitly describes the city in Nabeul and announces city-road/entrance works. This is a qualified semantic identity finding, not proof of either coordinate as the town center.",
+    "limits": [
+      "Preserve village kind, raw IDs, names, aliases, current North/South directional variants, all contexts, prayer defaults and both existing coordinates.",
+      "The town is not identified with Bou Argoub North, South, Sidi Dhaher, the municipality or the whole delegation.",
+      "Municipal descriptive boundaries, site map and any Google outline are not certified polygon evidence and are not imported.",
+      "No absence-based identity conclusion: complete history and explicit primary city text support the qualified association.",
+      "The exact HTML body uses Arabic presentation forms; requiredText binds its unmodified original bytes. Derived readable text is explicitly separate.",
+      "Current coverage supplies the available-reference inventory for read-only rankings. The catalog generator must still enforce its own month-availability and complete group checks before any install."
+    ]
+  },
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1190878345",
+      "kind": "village",
+      "tags": {
+        "name": "بوعرقوب",
+        "name:ar": "بوعرقوب",
+        "name:en": "Bou Argoub",
+        "name:fr": "Bou Argoub",
+        "place": "village",
+        "wikidata": "Q655294",
+        "wikipedia": "ar:بوعرقوب"
+      }
+    },
+    {
+      "id": "osm:relation:7145836",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Bou Argoub",
+        "boundary": "administrative",
+        "name": "معتمدية بو عرقوب",
+        "name:ar": "معتمدية بو عرقوب",
+        "name:fr": "Délégation Bou Argoub",
+        "ref:tn:codegeo": "1565",
+        "ref:tn:hasc_2": "TN.NB.BA",
+        "wikidata": "Q2911882"
+      }
+    }
+  ],
+  "sourceNode": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bouargoub/osm-node-1190878345-current.json",
+    "sha256": "150723df61be020e28f56a2945106c22fb9b7b655f7e30ea25239794a750f73a",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1190878345.json"
+  },
+  "sourceNodeIdentity": {
+    "exactElement": {
+      "changeset": 98539602,
+      "id": 1190878345,
+      "lat": 36.5342202,
+      "lon": 10.5498743,
+      "tags": {
+        "name": "بوعرقوب",
+        "name:ar": "بوعرقوب",
+        "name:en": "Bou Argoub",
+        "name:fr": "Bou Argoub",
+        "place": "village",
+        "wikidata": "Q655294",
+        "wikipedia": "ar:بوعرقوب"
+      },
+      "timestamp": "2021-02-02T00:59:52Z",
+      "type": "node",
+      "uid": 11422772,
+      "user": "user_11422772",
+      "version": 9
+    },
+    "sha256": "150723df61be020e28f56a2945106c22fb9b7b655f7e30ea25239794a750f73a",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1190878345.json"
+  },
+  "sourcePhaseLineage": {
+    "file": "point-base-display-reviews/bou-argoub-official-neighbours-20260920/463-source-phase-lineage.json",
+    "sha256": "ca26266a8f85420024e3781c61d2e28d43624c4632659a82ecedf3f94af843fb"
+  },
+  "sourcePhaseQualification": "ACTUAL_ISOLATED_GENERATED_METADATA_AFTER_TWO_INM_REFERENCES_BEFORE_THREE_DISPLAY_RULES",
+  "sourceProposal": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-town-point-source-review.json",
+    "sha256": "c0be681b4afc62fce65a38e131e2b9d6a9baa966fcdb21a3875f6e24393f6fdd"
+  },
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bouargoub-original-retrievals.json",
+      "sha256": "a0cad22065372f37da5d330bb2c4a113c6b49a63d5cc591b4e1e11857de65bc9"
+    }
+  ],
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "supplementaryPhoneReview": {
+    "qualification": "Public candidate search observations only; no Google polygon or coordinate certification. Original reference searches predate the two official INM coordinate corrections.",
+    "reference": {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-phone-review-20260912.json",
+      "sha256": "16bac80d9ffcd27ce60ac2a13a26c0cf7d583bdcbabd10518df6aff2739d5a9e"
+    }
+  }
+}

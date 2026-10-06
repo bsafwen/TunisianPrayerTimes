@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "primarySource": {
+    "title": "Tunisian decree2023-590 of21September2023, annex1 tableA and annex6 introduction",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "date": "2023-09-21",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "pages": 190,
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "records": [
+    {
+      "id": "osm:relation:7113315",
+      "officialCode": "315256",
+      "imadaName": "حمام معروف الرياض",
+      "completeCircleNames": [
+        "حمام معروف الرياض 1",
+        "حمام معروف الرياض 2"
+      ],
+      "expectedPartCount": 2,
+      "jortPage": 5148,
+      "annex": 1,
+      "table": "A",
+      "conclusion": "whole_imada_from_exhaustive_electoral_parts",
+      "pdfPage": 51,
+      "boundarySourceId": "isie-local-sector-2023-hammam-maarouf-riadh-exhaustive-parts",
+      "boundarySourceFile": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-source.geojson",
+      "boundarySourceSha256": "874b28be93b7a1d59fd450e6d6a4cbfee46dcf51a6f77c6bf7ee20aba13d3985",
+      "delegationCode": "3152",
+      "governorateCode": "31",
+      "decreeInventory": {
+        "completeForDelegation": true,
+        "delegationCode": "3152",
+        "rows": [
+          {
+            "officialCode": "315254",
+            "imadaName": "الزهور",
+            "circleNames": [
+              "الزهور - (سوسة الرياض)"
+            ]
+          },
+          {
+            "officialCode": "315256",
+            "imadaName": "حمام معروف الرياض",
+            "circleNames": [
+              "حمام معروف الرياض 1",
+              "حمام معروف الرياض 2"
+            ]
+          },
+          {
+            "officialCode": "315255",
+            "imadaName": "حي الرياض",
+            "circleNames": [
+              "حي الرياض 1 - (سوسة الرياض)",
+              "حي الرياض 2 - (سوسة الرياض)"
+            ]
+          }
+        ]
+      },
+      "sourceParts": {
+        "file": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-source-parts.geojson",
+        "sha256": "5b8ec0bedd84174e59a697d0a44c301142cd2a263bfb48a176f16e7ffabeb6b9"
+      },
+      "parts": [
+        {
+          "id": "hammam-maarouf-riadh-1",
+          "circleName": "حمام معروف الرياض 1",
+          "parentImadaCode": "315256",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf",
+          "sourcePdfSha256": "974ebe24f0dee0a2701db768d6dd160554c9a492c5601b2978df6c710ad81025",
+          "geometrySha256": "1ad6c2e7aff464fdbae5d27d46d026c02f296536409c1fe689ba18d5f5a3df66"
+        },
+        {
+          "id": "hammam-maarouf-riadh-2",
+          "circleName": "حمام معروف الرياض 2",
+          "parentImadaCode": "315256",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf",
+          "sourcePdfSha256": "377144831315b1197c2f4aefdc0f4aee2bf5db4ba20d7c99a24c401d70ff7eaf",
+          "geometrySha256": "153566aebfdd6461ba3a4b15b33f6e69420c173ec6600d47b174feb41af0c74d"
+        }
+      ],
+      "geometrySha256": "ebabb97d5444371309fccd83f9e153d8d947b782c091478f7b5d44871dc93606",
+      "quantization": {
+        "coordinateScale": 1000000,
+        "packedGeometrySha256": "ffd3c39e9dc0c2702b03d8074643a036a1ee0c4a248afa969203b03b32f0a45e",
+        "review": {
+          "file": "official/two-historical-sectors-20260920/coordinate-precision-review.json",
+          "sha256": "628f576a162f5cfc8ba1cec9360906c4d8de703f12b96583e2d54241e412bc59"
+        }
+      }
+    }
+  ]
+}
