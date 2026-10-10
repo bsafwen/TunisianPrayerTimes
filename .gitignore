@@ -15,7 +15,6 @@ data
 !/data/official-islamic-dates/
 !/data/prayer-formula/
 !/data/mosques/
-mawaqit-csv
 
 # ── Secrets and machine-local config ────────────────────────────────────
 .env.local
@@ -136,3 +135,9 @@ android-app/app/build/
 
 # Neighborhood research workspace (evidence PDFs, review batches) is local only.
 /scripts/neighborhoods/
+
+/mosque-dataset/
+
+# Official prayer timetables and research downloads stay local (terms of use, see
+# docs/prayer-times-beyond-tunisia-plan.md, decision A7).
+/test-data-local/
