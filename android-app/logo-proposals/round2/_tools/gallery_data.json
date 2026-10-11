@@ -1,0 +1,62 @@
+{
+  "title": "Prayer Silence Icons",
+  "lede": [
+    "Round 2 of the launcher icon for «أوقات الصلاة تونس». Every proposal now shows the app's main job: the phone goes quiet while you pray. A prayer rug replaces the mosque architecture of round 1, and the colours come from Kairouan carpets, Sidi Bou Said blue and Nabeul clay instead of dark teal and gold.",
+    "Best first. Switch the launcher mask below to see each icon the way different phones cut it."
+  ],
+  "proposals": [
+    {
+      "folder": "07-rug-badge", "anchor": "muted-rug", "num": "07", "ar": "سجادة صامتة", "en": "Muted Rug",
+      "idea": "A Kairouan prayer rug with a mute badge, the way a video call marks a muted person.",
+      "silence": "The speaker with a × is the phone's own mute sign. It reads at once, down to 36 px.",
+      "prayer": "A fringed rug seen from above, in Sidi Bou Said blue with one Kairouan lozenge. No building and no crescent.",
+      "risk": "Read literally, it says the rug is muted. The × stays inside the badge and never touches the rug, but you should be comfortable with that reading.",
+      "variants": [
+        {"path": "07-rug-badge/_var/teal-cream", "label": "On the app's current teal"},
+        {"path": "07-rug-badge/_var/r2-crescent", "label": "Do Not Disturb moon instead of the ×"},
+        {"path": "07-rug-badge/_var/r2-red", "label": "Classic red mute badge"}
+      ]
+    },
+    {
+      "folder": "01-volume-rug", "anchor": "volume-rug", "num": "01", "ar": "سجادة الصمت", "en": "Volume Rug",
+      "idea": "The prayer rug is the phone's volume slider, pushed all the way down to mute.",
+      "silence": "The white knob holds the mute sign at the foot of the track, like Android's volume panel at zero.",
+      "prayer": "A madder-red Kairouan rug with white wool fringe and one lozenge.",
+      "risk": "The slider idea only lands for people who know the volume panel. Everyone else still sees a rug and a mute sign. In the themed icon the fringe can look like the pins of a chip.",
+      "variants": [
+        {"path": "01-volume-rug/_var/g-bands", "label": "Striped kilim ends instead of a border"}
+      ]
+    },
+    {
+      "folder": "05-dnd-crescent", "anchor": "quiet-crescent", "num": "05", "ar": "هلال السكينة", "en": "Quiet Crescent",
+      "idea": "The crescent is the sign of Islam and also the Do Not Disturb icon on Samsung, Xiaomi, Oppo and iPhone. Here it shelters a prayer rug.",
+      "silence": "It looks like the Do Not Disturb tile switched on. Clear for Samsung and Xiaomi users, weaker on Pixel, where Do Not Disturb is a circle with a bar.",
+      "prayer": "The crescent, and a cream rug with a madder prayer niche.",
+      "risk": "Many people will read the crescent as the hilal first, so silence is the second reading. A crescent holding an object is a common pattern among prayer apps.",
+      "variants": [
+        {"path": "05-dnd-crescent/_var/day", "label": "Daylight: blue crescent on pale sky"}
+      ]
+    },
+    {
+      "folder": "08-shhh-shin", "anchor": "shhh", "num": "08", "ar": "ششش", "en": "Shhh",
+      "idea": "One calligraphic ش, the letter Arabic uses to write \"shh\". Its teeth step down and its tail fades out like a ring dying away.",
+      "silence": "Arabic readers hear «ششش», and the fading tail helps. Nothing shows a phone.",
+      "prayer": "Only through the app's name. No religious sign is used.",
+      "risk": "It can pass for the logo of a café, a pottery brand or a keyboard app. It is the most stylish of the four and the least literal, so it may suit a splash screen or wordmark better than the launcher.",
+      "variants": [
+        {"path": "08-shhh-shin/_var/r2-c-tucked", "label": "With a small crescent"}
+      ]
+    }
+  ],
+  "dropped": [
+    {"folder": "_dropped/02-shh-ta", "en": "02 · Finger on lips (ط)", "why": "At icon size the lips looked like a cosmetics ad."},
+    {"folder": "_dropped/03-sad-ring", "en": "03 · ص as Do Not Disturb", "why": "Read as a paperclip or the letter e, not as the ⊖ sign."},
+    {"folder": "_dropped/04-takbir-pause", "en": "04 · Takbir hands as ⏸", "why": "The raised hands looked like rubber gloves."},
+    {"folder": "_dropped/06-quiet-gap", "en": "06 · Waveform with a quiet gap", "why": "Read as a dumbbell with a chip in the middle, and a waveform says audio, not silence."}
+  ],
+  "next": [
+    "Tell me which one you want, and which variant if any. I will turn it into the real Android icon: vector layers, a themed-icon layer for Android 13 and later, fresh PNG fallbacks and the 512 px Play Store image.",
+    "If none is right but one comes close, tell me what to change and I will push that direction further."
+  ],
+  "footer": "How these were made: 30 ideas from 5 angles, scored by 3 judges; 8 drawn and checked at real launcher sizes; 4 kept after two critique rounds. These are mockups only: the app still ships its old icon. Source SVGs, notes and previews are in android-app/logo-proposals/round2."
+}

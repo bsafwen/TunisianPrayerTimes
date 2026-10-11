@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <defs><radialGradient id="bg" cx="54" cy="44" r="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00695C"/><stop offset="1" stop-color="#004D40"/></radialGradient></defs>
+  <rect x="0" y="0" width="108" height="108" fill="url(#bg)"/>
+  <defs><radialGradient id="glow" cx="54" cy="51.5" r="24" gradientUnits="userSpaceOnUse"><stop offset="0.0" stop-color="#D8B65C"/><stop offset="0.2" stop-color="#9A8746"/><stop offset="0.46" stop-color="#3F6A50"/><stop offset="0.8" stop-color="#0F4A3D"/><stop offset="1.0" stop-color="#033D34"/></radialGradient></defs>
+  <path fill="#F8EEDB" d="M34.88,80.5 L34.88,63 L33.22,63 L33.22,60 A24,24 0 1,1 74.78,60 L74.78,63 L73.12,63 L73.12,80.5 Z"/>
+  <path fill="url(#glow)" d="M40.58,60 A18,18 0 1,1 67.42,60 L67.42,63 L68.92,63 L68.92,76 L39.08,76 L39.08,63 L40.58,63 Z"/>
+  <path fill="#EDC659" d="M52.5,29.7 L52.5,35.3 L55.5,35.3 L55.5,29.7 Z"/>
+  <path fill="#EDC659" d="M54,34.23 C56.05,34.23 56.43,36.15 55.54,37.05 C57.33,38.33 60.4,39.99 61.19,43.19 L62.82,43.19 L62.82,46.14 L61.73,46.14 L59.97,58.3 L61.19,58.3 L61.19,60.98 L57.58,60.98 L54,65.21 L50.42,60.98 L46.81,60.98 L46.81,58.3 L48.03,58.3 L46.27,46.14 L45.18,46.14 L45.18,43.19 L46.81,43.19 C47.6,39.99 50.67,38.33 52.46,37.05 C51.57,36.15 51.95,34.23 54,34.23 Z"/>
+  <path fill="#F8EEDB" d="M50.2,57.18 L57.8,57.18 L58.18,54.27 A4.56,4.56 0 1,0 49.82,54.27 Z"/>
+</svg>

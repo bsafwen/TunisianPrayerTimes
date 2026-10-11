@@ -63,7 +63,7 @@ class AdhkarReaderSwipeTest {
                 },
                 onSkip = {}, onRemove = {}, onFavourite = {}, onCollections = {}, onEditCustom = {},
                 onDeleteCustom = {}, onAddToCollection = {}, onReorderCollection = {}, onTextSize = {},
-                onHaptics = {}, onNewSession = {}, reminder = null, reminderActionLabel = "إنشاء تذكير لهذا الذكر",
+                onHaptics = {}, onVariant = {}, onNewSession = {}, reminder = null, reminderActionLabel = "إنشاء تذكير لهذا الذكر",
                 onReminder = {}, onConfigureReminder = {}, onDeleteReminder = {}, skipReminderLabel = null,
                 onSkipReminder = {}, snackbar = remember { SnackbarHostState() })
         }

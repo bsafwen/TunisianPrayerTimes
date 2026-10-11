@@ -94,6 +94,11 @@
             </intent-filter>
         </receiver>
 
+        <!-- The daily «التثبيت» reminder. -->
+        <receiver
+            android:name=".quran.hifz.HifzReminderReceiver"
+            android:exported="false" />
+
         <!-- Private delivery and counter actions for adhkar reminders. -->
         <receiver
             android:name=".adhkar.DhikrReminderReceiver"

@@ -2561,7 +2561,7 @@ private fun WakeExtraAlarmSheet(
 }
 
 @Composable
-private fun WakeSegmentedChoice(
+internal fun WakeSegmentedChoice(
     options: List<String>,
     selectedIndex: Int,
     onSelect: (Int) -> Unit,
@@ -3854,6 +3854,16 @@ private fun computeWakeDraftSilenceWarning(
         prayerDays = prayerDays,
     )
 }
+
+/** Whether the editor's save would stop on a silence-window conflict for [config] as it is. */
+internal fun hasUnresolvedWakeSilenceConflict(
+    context: android.content.Context,
+    delegationId: Int,
+    config: PrayerWakeConfig,
+): Boolean = config.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
+    config.repeatMode != WakeRepeatMode.ONCE &&
+    !config.ringDuringSilenceWindow &&
+    computeWakeDraftSilenceWarning(context, delegationId, config)?.conflict != null
 
 private fun resolveOneTimeWakeTrigger(
     context: android.content.Context,

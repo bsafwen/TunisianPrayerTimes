@@ -28,7 +28,6 @@ class WakeActionReceiver : BroadcastReceiver() {
             context.sendBroadcast(Intent(ACTION_SYNC_WAKE_ALERT).setPackage(context.packageName))
             return
         }
-        context.stopService(Intent(context, WakePlaybackService::class.java))
         WakeDismissalCoordinator.recordDismissal(
             context = context,
             payload = payload,
@@ -39,16 +38,14 @@ class WakeActionReceiver : BroadcastReceiver() {
             context = context,
             payload = payload,
         )
-
-        context.sendBroadcast(
-            Intent(ACTION_DISMISS_WAKE_ALERT)
-                .setPackage(context.packageName)
-                .apply {
-                    intent.wakeEventId()?.let { eventId ->
-                        populateWakeStopPayload(eventId)
-                    }
-                },
+        // Advance the queue here: the alert screen only listens while it is started, and a stopped
+        // alarm left as current would be shown again, silent, the next time the app comes forward.
+        WakeAlarmQueueHolder.queue.handleDismiss(payload.eventId)
+        // The service plays the next queued alarm, or stops itself and resumes silence when none is left.
+        context.startService(
+            Intent(context, WakePlaybackService::class.java)
+                .setAction(WakePlaybackService.ACTION_REFRESH_FOR_CURRENT),
         )
-        WakeAlarmScheduler.resumeSilenceUntilNextAlarm(context)
+        context.sendBroadcast(Intent(ACTION_SYNC_WAKE_ALERT).setPackage(context.packageName))
     }
 }

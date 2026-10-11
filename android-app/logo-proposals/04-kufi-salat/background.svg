@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <defs>
+    <radialGradient id="teal" cx="54" cy="46" r="62" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#005F53"/><stop offset="1" stop-color="#00443A"/></radialGradient>
+  </defs>
+  <rect width="108" height="108" fill="url(#teal)"/>
+</svg>

@@ -85,6 +85,9 @@ private fun PrayerWakeConfig.normalizedFor(
         skipNextOccurrenceAtMillis = skipNextOccurrenceAtMillis.takeIf {
             mainAlarm.mode != WakeMainAlarmMode.FROM_NOW && repeatMode == WakeRepeatMode.RECURRING
         },
+        stoppedOccurrenceAtMillis = stoppedOccurrenceAtMillis.takeIf {
+            mainAlarm.mode != WakeMainAlarmMode.FROM_NOW && repeatMode == WakeRepeatMode.RECURRING
+        },
         scheduledDays = scheduledDays.normalizedWakeScheduleDays(),
         playback = playback.normalized(),
         subAlarms = subAlarms

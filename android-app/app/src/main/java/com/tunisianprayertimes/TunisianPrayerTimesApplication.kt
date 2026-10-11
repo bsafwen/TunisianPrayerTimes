@@ -45,6 +45,9 @@ class TunisianPrayerTimesApplication : Application() {
             } catch (error: Exception) {
                 Log.w("Adhkar", "Could not refresh dhikr reminders", error)
             }
+            // The hifz reminders after prayers too: they follow the city's prayer times.
+            runCatching { com.tunisianprayertimes.quran.hifz.HifzReminder.refresh(this@TunisianPrayerTimesApplication) }
+                .onFailure { Log.w("Hifz", "Could not refresh hifz reminders", it) }
         }
     }
 

@@ -22,7 +22,7 @@ import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
 import com.tunisianprayertimes.isRepeatingWakeAlarm
-import com.tunisianprayertimes.isSkippingWakeOccurrence
+import com.tunisianprayertimes.isSuppressedWakeOccurrence
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.nap.NapSilenceController
 import java.util.Calendar
@@ -175,6 +175,96 @@ object WakeAlarmScheduler {
 			.alarms
 			.any { config -> config.hasFutureWakeTriggers(System.currentTimeMillis()) }
 
+	/** One occurrence of an alarm, from its earliest ring to its latest, extras included. */
+	data class OccurrenceWindow(
+		val occurrenceAtMillis: Long,
+		val startsAtMillis: Long,
+		val endsAtMillis: Long,
+	)
+
+	/** Every occurrence of the alarm around today, a skipped one included but not one the user stopped. */
+	fun occurrenceWindows(context: Context, delegationId: Int, config: PrayerWakeConfig): List<OccurrenceWindow> =
+		occurrenceWindows(config, loadPrayerDayContexts(context, delegationId, Calendar.getInstance()))
+
+	private fun occurrenceWindows(
+		config: PrayerWakeConfig,
+		prayerDays: List<WakeAlarmComputer.PrayerDayContext>,
+	): List<OccurrenceWindow> =
+		WakeAlarmComputer
+			.scheduledTriggers(config.copy(skipNextOccurrenceAtMillis = null), prayerDays)
+			.groupBy { trigger -> trigger.occurrenceAtMillis }
+			.map { (occurrenceAtMillis, triggers) ->
+				OccurrenceWindow(
+					occurrenceAtMillis = occurrenceAtMillis,
+					startsAtMillis = triggers.minOf { trigger -> trigger.triggerAtMillis },
+					endsAtMillis = triggers.maxOf { trigger -> trigger.triggerAtMillis },
+				)
+			}
+
+	/** The occurrence whose awake check is scheduled and has not started yet. */
+	private fun pendingAwakeCheckOccurrenceAtMillis(context: Context, alarmId: String, nowMillis: Long): Long? {
+		val eventId = wakeMainEventId(alarmId)
+		val triggerAtMillis = AwakeCheckScheduler.triggerAtMillis(context, eventId) ?: return null
+		return AwakeCheckScheduler.occurrenceAtMillis(context, eventId)?.takeIf { triggerAtMillis > nowMillis }
+	}
+
+	/**
+	 * True from the earliest ring of an occurrence to its latest, and while a delivered ring or the awake check
+	 * that follows is still going. The alarm row offers Stop in this state and Skip otherwise.
+	 */
+	fun isWakeAlarmRunning(
+		context: Context,
+		alarmId: String,
+		windows: List<OccurrenceWindow>,
+		nowMillis: Long = System.currentTimeMillis(),
+	): Boolean =
+		windows.any { window -> nowMillis in window.startsAtMillis..window.endsAtMillis } ||
+			WakeAlarmQueueHolder.queue.activeOccurrenceForAlarm(alarmId) != null ||
+			AwakeCheckService.activeOccurrenceForEvent(wakeMainEventId(alarmId)) != null ||
+			pendingAwakeCheckOccurrenceAtMillis(context, alarmId, nowMillis) != null
+
+	/**
+	 * Stops the alarm's running occurrence whatever the type of its rings: the one ringing, the extras still to come
+	 * and the awake check. A repeating alarm keeps its later occurrences, and its skip stays free for the next alarm.
+	 * A one-off is turned off, which also keeps a trigger already on its way quiet.
+	 */
+	suspend fun stopWakeAlarm(context: Context, alarmId: String): PrayerWakeConfig? {
+		val repository = PrayerWakeRepository(context)
+		val config = repository.getWakeAlarm(alarmId) ?: return null
+		val now = Calendar.getInstance()
+		val awakeCheckEventId = wakeMainEventId(alarmId)
+		val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
+		val occurrenceAtMillis = WakeAlarmQueueHolder.queue.activeOccurrenceForAlarm(alarmId)
+			?: AwakeCheckService.activeOccurrenceForEvent(awakeCheckEventId)
+			?: pendingAwakeCheckOccurrenceAtMillis(context, alarmId, now.timeInMillis)
+			?: occurrenceWindows(config, prayerDays)
+				.firstOrNull { window -> now.timeInMillis in window.startsAtMillis..window.endsAtMillis }
+				?.occurrenceAtMillis
+			?: return null
+		val repeating = config.isRepeatingWakeAlarm()
+		val updated: PrayerWakeConfig? = if (repeating) {
+			repository.setWakeAlarmStoppedOccurrence(alarmId, occurrenceAtMillis)
+				?.also { WakeOccurrenceSkipRegistry.mark(alarmId, occurrenceAtMillis) }
+		} else {
+			config.copy(enabled = false).also { disabled -> repository.saveWakeConfig(disabled) }
+		}
+		if (updated == null) return null
+		val queue = WakeAlarmQueueHolder.queue
+		if (queue.discardOccurrence(alarmId, occurrenceAtMillis)) {
+			context.startService(
+				Intent(context, WakePlaybackService::class.java)
+					.setAction(WakePlaybackService.ACTION_REFRESH_FOR_CURRENT),
+			)
+			context.sendBroadcast(Intent(ACTION_SYNC_WAKE_ALERT).setPackage(context.packageName))
+		}
+		// A stop is not undone, so nothing queued for this occurrence is kept for a restore.
+		queue.discardSkippedOccurrence(alarmId, occurrenceAtMillis)
+		AwakeCheckScheduler.cancel(context, awakeCheckEventId)
+		AwakeCheckService.cancelForOccurrence(context, awakeCheckEventId, occurrenceAtMillis)
+		if (repeating) rescheduleAlarmForSkipToggle(context, alarmId) else scheduleAll(context)
+		return updated
+	}
+
 	suspend fun toggleSkipNextWakeOccurrence(context: Context, alarmId: String): PrayerWakeConfig? {
 		val repository = PrayerWakeRepository(context)
 		val config = repository.getWakeAlarm(alarmId) ?: return null
@@ -192,35 +282,16 @@ object WakeAlarmScheduler {
 		}
 		if (!config.enabled) return null
 
-		val activeOccurrenceAtMillis = WakeAlarmQueueHolder.queue.activeOccurrenceForAlarm(alarmId)
-		val awakeCheckEventId = wakeMainEventId(alarmId)
-		val scheduledAwakeOccurrenceAtMillis = AwakeCheckScheduler.occurrenceAtMillis(context, awakeCheckEventId)
-		val awakeOccurrenceAtMillis = AwakeCheckService.activeOccurrenceForEvent(awakeCheckEventId)
-			?: scheduledAwakeOccurrenceAtMillis
+		// Skipping concerns the next alarm; the running occurrence, if any, is ended with stopWakeAlarm.
 		val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
-		val nextOccurrenceAtMillis = activeOccurrenceAtMillis
-			?: awakeOccurrenceAtMillis
-			?: nextWakeOccurrenceAtMillis(now, config, prayerDays)
+		val nextOccurrenceAtMillis = occurrenceWindows(config, prayerDays)
+			.filter { window -> window.startsAtMillis > now.timeInMillis }
+			.minByOrNull { window -> window.startsAtMillis }
+			?.occurrenceAtMillis
 			?: return null
 		val updated = repository.setWakeAlarmSkipOccurrence(alarmId, nextOccurrenceAtMillis) ?: return null
 		WakeOccurrenceSkipRegistry.mark(alarmId, nextOccurrenceAtMillis)
 		WakeAlarmQueueHolder.queue.discardSkippedOccurrencesForAlarm(alarmId, nextOccurrenceAtMillis)
-		val removedDeliveredAlarm = WakeAlarmQueueHolder.queue.discardOccurrence(alarmId, nextOccurrenceAtMillis)
-		if (removedDeliveredAlarm) {
-			context.startService(
-				Intent(context, WakePlaybackService::class.java)
-					.setAction(WakePlaybackService.ACTION_REFRESH_FOR_CURRENT),
-			)
-			context.sendBroadcast(
-				Intent(ACTION_SYNC_WAKE_ALERT).setPackage(context.packageName),
-			)
-		}
-		if (scheduledAwakeOccurrenceAtMillis == nextOccurrenceAtMillis ||
-			(nextOccurrenceAtMillis <= now.timeInMillis && scheduledAwakeOccurrenceAtMillis == null)
-		) {
-			AwakeCheckScheduler.cancel(context, awakeCheckEventId)
-		}
-		AwakeCheckService.cancelForOccurrence(context, awakeCheckEventId, nextOccurrenceAtMillis)
 		// Cancel this alarm's remaining triggers now without touching another due alarm.
 		rescheduleAlarmForSkipToggle(context, alarmId)
 		return updated
@@ -258,22 +329,6 @@ object WakeAlarmScheduler {
 		configs
 			.filter { config -> config.isExpiredOneOffWakeAlarm(nowMillis) }
 			.forEach { config -> runCatching { repo.deleteWakeAlarm(config.id) } }
-	}
-
-	private fun nextWakeOccurrenceAtMillis(
-		now: Calendar,
-		config: PrayerWakeConfig,
-		prayerDays: List<WakeAlarmComputer.PrayerDayContext>,
-	): Long? {
-		val futureTriggers = WakeAlarmComputer
-			.scheduledTriggers(config.copy(skipNextOccurrenceAtMillis = null), prayerDays)
-			.filter { trigger -> trigger.triggerAtMillis > now.timeInMillis }
-		// A main alarm that already rang still owns its upcoming extra alarms.
-		return futureTriggers
-			.filter { trigger -> trigger.occurrenceAtMillis <= now.timeInMillis }
-			.maxByOrNull { trigger -> trigger.occurrenceAtMillis }
-			?.occurrenceAtMillis
-			?: futureTriggers.minByOrNull { trigger -> trigger.triggerAtMillis }?.occurrenceAtMillis
 	}
 
 	fun cancelAll(context: Context) {
@@ -353,7 +408,7 @@ object WakeAlarmScheduler {
 			val triggerAtMillis = prefs.getLong(KEY_TRIGGER_PREFIX + eventId, 0L)
 			val occurrenceAtMillis = prefs.getLong(KEY_OCCURRENCE_PREFIX + eventId, 0L)
 			config?.enabled == true &&
-				!config.isSkippingWakeOccurrence(occurrenceAtMillis) &&
+				!config.isSuppressedWakeOccurrence(occurrenceAtMillis) &&
 				triggerAtMillis in (now.timeInMillis - DUE_DELIVERY_GRACE_MILLIS)..now.timeInMillis &&
 				!prefs.getBoolean(KEY_DELIVERED_PREFIX + eventId, false)
 		}

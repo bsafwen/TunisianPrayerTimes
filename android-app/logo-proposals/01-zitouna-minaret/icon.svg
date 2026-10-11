@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <defs>
+  <radialGradient id="bg" cx="54" cy="40" r="58" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#00796B"/>
+  <stop offset="0.55" stop-color="#00594D"/>
+  <stop offset="1" stop-color="#004D40"/>
+  </radialGradient>
+  </defs>
+  <rect width="108" height="108" fill="url(#bg)"/>
+  <path fill="#FFF8F0" fill-rule="evenodd" d="M41,84L41,51L39.5,51L39.5,45L41,42.8L42.5,45L42.5,48L44.6,48L44.6,45L46.1,42.8L47.6,45L47.6,48L49.7,48L49.7,35L58.3,35L58.3,48L60.4,48L60.4,45L61.9,42.8L63.4,45L63.4,48L65.5,48L65.5,45L67,42.8L68.5,45L68.5,51L67,51L67,84Z M52.2,44.4V40C52.2,38.57 53.37,38.4 54,37.4C54.63,38.4 55.8,38.57 55.8,40V44.4Z M54,55.5L58.8,63.5L54,71.5L49.2,63.5Z M44.2,57.3L47.6,63.5L44.2,69.7Z M63.8,57.3L60.4,63.5L63.8,69.7Z M50.6,81V79.6A5.4,5.4 0 0,1 54,71.91A5.4,5.4 0 0,1 57.4,79.6V81Z"/>
+  <path fill="#D4AF37" d="M48.8,35C48.8,30.84 51,29.8 54,29.8C57,29.8 59.2,30.84 59.2,35Z"/>
+  <path fill="#D4AF37" d="M52,27.5A2,2 0 1,1 56,27.5A2,2 0 1,1 52,27.5Z"/>
+  <path fill="#D4AF37" d="M53.4,23.1H54.6V27.5H53.4Z"/>
+  <path fill="#D4AF37" d="M52.5,23.1A1.5,1.5 0 1,1 55.5,23.1A1.5,1.5 0 1,1 52.5,23.1Z"/>
+</svg>

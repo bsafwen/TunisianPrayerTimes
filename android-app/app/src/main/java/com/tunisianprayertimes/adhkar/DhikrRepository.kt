@@ -287,6 +287,13 @@ class DhikrRepository(context: Context) {
         update { it.withoutExpiredHistory(now, protectedOccurrenceIds) }
     fun setTextSize(size: Int) = update { it.copy(textSize = size.coerceIn(24, 40)) }
     fun setHaptics(enabled: Boolean) = update { it.copy(countHaptics = enabled) }
+    /** Reads [entryId] in its wording [variantId] from now on; its counts and reminders are unchanged. */
+    fun setVariant(entryId: String, variantId: String) {
+        val variants = DhikrCatalog.find(entryId)?.variants.orEmpty()
+        require(variants.any { it.id == variantId })
+        update { it.copy(variantChoices = if (variantId == variants.first().id) it.variantChoices - entryId
+            else it.variantChoices + (entryId to variantId)) }
+    }
 
     fun ensureOccurrence(rule: DhikrReminder, window: DhikrWindow): DhikrOccurrence {
         update { old ->
@@ -611,6 +618,7 @@ private fun DhikrState.toJson(): JSONObject = JSONObject()
     .put("collectionOrders", collectionOrders.toOrderJson())
     .put("favourites", JSONArray(favourites.toList())).put("lastSessionId", lastSessionId ?: JSONObject.NULL)
     .put("textSize", textSize).put("countHaptics", countHaptics)
+    .put("variants", JSONObject(variantChoices))
     .put("occurrences", JSONArray(occurrences.values.map { o -> JSONObject()
         .put("id", o.id).put("ruleId", o.ruleId).put("revision", o.revision).put("date", o.date)
         .put("dhikrId", o.dhikrId).put("target", o.target).put("start", o.startMillis).put("end", o.endMillis)
@@ -673,12 +681,19 @@ private fun dhikrStateFromJson(json: JSONObject): DhikrState {
     }.orEmpty()
     val favourites = json.stringList("favourites").filter { it in knownIds }.toSet()
     val removals = readMembership("collectionRemovals")
+    // A choice survives only while the catalog still offers that wording.
+    val variantChoices = json.optJSONObject("variants")?.let { obj ->
+        obj.keys().asSequence().mapNotNull { id ->
+            val variant = obj.optString(id)
+            if (DhikrCatalog.find(id)?.variants.orEmpty().drop(1).any { it.id == variant }) id to variant else null
+        }.toMap()
+    }.orEmpty()
     return DhikrState(reminders,
         occurrences, sessions, favourites,
         if (json.isNull("lastSessionId")) null else json.optString("lastSessionId").takeIf { it in sessions },
         json.optInt("textSize", 28).coerceIn(24, 40),
         json.optBoolean("countHaptics"), customEntries,
-        readMembership("collectionAdditions"), removals, collectionOrders)
+        readMembership("collectionAdditions"), removals, collectionOrders, variantChoices)
 }
 /** The prayer at which a daily collection's occasion begins; null for collections that have none. */
 internal fun collectionOccasionStart(category: DhikrCategory): DhikrTimeKind? = when (category) {

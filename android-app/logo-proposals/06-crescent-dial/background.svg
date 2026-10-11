@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <defs>
+    <radialGradient id="sky" cx="66" cy="40" r="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00695C"/>
+      <stop offset="0.45" stop-color="#004D40"/>
+      <stop offset="1" stop-color="#062A27"/>
+    </radialGradient>
+  </defs>
+  <!-- night sky, lit from where the next prayer sits -->
+  <rect width="108" height="108" fill="url(#sky)"/>
+</svg>

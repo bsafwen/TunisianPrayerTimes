@@ -17,6 +17,7 @@ import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -37,6 +38,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
@@ -72,7 +74,7 @@ import kotlin.math.sign
     onFavourite: () -> Unit, onCollections: () -> Unit,
     onEditCustom: () -> Unit, onDeleteCustom: () -> Unit,
     onAddToCollection: () -> Unit, onReorderCollection: () -> Unit,
-    onTextSize: (Int) -> Unit, onHaptics: (Boolean) -> Unit,
+    onTextSize: (Int) -> Unit, onHaptics: (Boolean) -> Unit, onVariant: (String) -> Unit,
     onNewSession: () -> Unit, reminder: DhikrReminder?, reminderActionLabel: String, onReminder: () -> Unit,
     onConfigureReminder: () -> Unit, onDeleteReminder: () -> Unit,
     skipReminderLabel: String?, onSkipReminder: () -> Unit,
@@ -96,6 +98,7 @@ import kotlin.math.sign
         occurrence.status != DhikrOccurrenceStatus.DONE
     var sources by remember { mutableStateOf(false) }
     var textSettings by remember { mutableStateOf(false) }
+    var wordings by remember { mutableStateOf(false) }
     var showExplanation by remember(session.itemId) { mutableStateOf(false) }
     var showNarration by remember(session.itemId) { mutableStateOf(false) }
     var menu by remember { mutableStateOf(false) }
@@ -339,14 +342,17 @@ import kotlin.math.sign
                             showExplanation = showExplanation, onToggleExplanation = { showExplanation = !showExplanation },
                             showNarration = showNarration, onToggleNarration = { showNarration = !showNarration },
                             explanationRequester = explanationRequester, narrationRequester = narrationRequester,
-                            onNewSession = onNewSession)
+                            onWordings = { wordings = true }, onNewSession = onNewSession)
                     }
 
-                    // Counter: increment on the right, undo on the left, tap the ring to count too.
+                    // Counter: increment on the right, undo on the left, tap the ring to count too. Once the
+                    // count is full, the plus moves on to the next dhikr like the ring and the text.
                     Row(Modifier.fillMaxWidth().padding(horizontal = 32.dp), verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween) {
-                        CounterButton(icon = R.drawable.ic_adhkar_plus, description = "زيادة العدد", enabled = canCount,
-                            size = 60, onClick = ::countOnce, tag = "adhkar_increment")
+                        CounterButton(icon = R.drawable.ic_adhkar_plus,
+                            description = if (canAdvanceOnTap) "الانتقال إلى الذكر التالي" else "زيادة العدد",
+                            enabled = canCount || canAdvanceOnTap,
+                            size = 60, onClick = ::activateDhikr, tag = "adhkar_increment")
                         Box(Modifier.size(124.dp).clip(CircleShape)
                             .clickable(enabled = canCount || canAdvanceOnTap, onClick = ::activateDhikr)
                             .testTag("adhkar_count")
@@ -421,6 +427,34 @@ import kotlin.math.sign
                     color = p.muted, fontSize = 12.sp, lineHeight = 23.sp)
             }
         }
+        if (wordings) ModalBottomSheet(onDismissRequest = { wordings = false },
+            sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = p.background) {
+            DhikrSheetHeader("الصيغ الواردة") { wordings = false }
+            Column(Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 24.dp).padding(bottom = 24.dp)
+                .navigationBarsPadding(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                val current = entry.currentVariant
+                entry.variants.forEach { variant ->
+                    val selected = variant.id == current?.id
+                    Surface(shape = RoundedCornerShape(18.dp), color = if (selected) AdhkarSoftGreen else AdhkarSurface,
+                        border = BorderStroke(1.dp, if (selected) p.primary else AdhkarBorder),
+                        modifier = Modifier.fillMaxWidth()
+                            .selectable(selected, role = Role.RadioButton) { wordings = false; onVariant(variant.id) }
+                            .testTag("adhkar_variant_" + variant.id)) {
+                        Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(variant.label, Modifier.weight(1f), color = AdhkarHeading,
+                                    fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                                if (selected) DhikrIcon(R.drawable.ic_adhkar_check, "الصيغة المختارة",
+                                    tint = p.primary, modifier = Modifier.size(20.dp))
+                            }
+                            Text(variant.text, Modifier.fillMaxWidth(), fontFamily = AdhkarReadingFont, fontSize = 18.sp,
+                                lineHeight = 34.sp, color = p.forest, textAlign = TextAlign.Right)
+                            Text(variant.reference, color = p.muted, fontSize = 12.sp, lineHeight = 22.sp)
+                        }
+                    }
+                }
+            }
+        }
         if (textSettings) AlertDialog(onDismissRequest = { textSettings = false }, title = { Text("حجم النص") },
             text = { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("يبقى تقدّمك محفوظًا عند تغيير حجم النص.", color = p.muted)
@@ -449,6 +483,7 @@ import kotlin.math.sign
  * One dhikr's scrolling page. The live page and the neighbour that slides in during a swipe share it,
  * so a swipe lands on exactly what slid in. Only the [live] page reacts to touches.
  */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun DhikrPage(
     entry: DhikrEntry, sourceEntry: DhikrEntry, count: Int, complete: Boolean, skipped: Boolean, textSize: Int,
@@ -458,11 +493,15 @@ private fun DhikrPage(
     showExplanation: Boolean = false, onToggleExplanation: () -> Unit = {},
     showNarration: Boolean = false, onToggleNarration: () -> Unit = {},
     explanationRequester: BringIntoViewRequester? = null, narrationRequester: BringIntoViewRequester? = null,
-    onNewSession: () -> Unit = {},
+    onWordings: () -> Unit = {}, onNewSession: () -> Unit = {},
 ) {
     val p = LocalAdhkarPalette.current
     val activate = Modifier.clickable(enabled = live && activateLabel != null, onClickLabel = activateLabel, onClick = onActivate)
-    Column(modifier.fillMaxSize().background(p.background).verticalScroll(scroll, enabled = scrollEnabled)
+    // The same tap anywhere on the page, so a short dhikr is not a small target. Without a ripple: a
+    // full-page flash on every count is too loud. The source, chips and buttons keep their own taps.
+    val activatePage = Modifier.clickable(interactionSource = null, indication = null,
+        enabled = live && activateLabel != null, onClickLabel = activateLabel, onClick = onActivate)
+    Column(modifier.fillMaxSize().background(p.background).then(activatePage).verticalScroll(scroll, enabled = scrollEnabled)
         .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(Modifier.height(28.dp))
@@ -503,9 +542,13 @@ private fun DhikrPage(
         }
         if (skipped && !complete) Text("تم تخطّي هذا الذكر", color = p.primary, fontSize = 12.sp,
             textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
-        if (sourceEntry.explanation.isNotBlank() || sourceEntry.narration.isNotBlank()) {
+        if (sourceEntry.explanation.isNotBlank() || sourceEntry.narration.isNotBlank() || entry.variants.size > 1) {
             Spacer(Modifier.height(12.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            // A chip that does not fit moves to the next line rather than squeezing its label.
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (entry.variants.size > 1) ReaderToggleChip(R.drawable.ic_adhkar_list, "الصيغ الواردة",
+                    "الصيغ", "adhkar_variants", live, onWordings)
                 if (sourceEntry.explanation.isNotBlank()) ReaderToggleChip(R.drawable.ic_adhkar_info, "الشرح",
                     if (showExplanation) "إخفاء الشرح" else "الشرح", "adhkar_explanation_toggle", live, onToggleExplanation)
                 if (sourceEntry.narration.isNotBlank()) ReaderToggleChip(R.drawable.ic_adhkar_bookmark, "الحديث",
@@ -611,10 +654,10 @@ private fun ReaderToggleChip(icon: Int, description: String, label: String, tag:
     val p = LocalAdhkarPalette.current
     Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
         modifier = Modifier.clickable(enabled = enabled, onClick = onClick).testTag(tag)) {
-        Row(Modifier.padding(horizontal = 18.dp, vertical = 9.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.padding(horizontal = 14.dp, vertical = 9.dp), verticalAlignment = Alignment.CenterVertically) {
             DhikrIcon(icon, description, tint = p.primary, modifier = Modifier.size(18.dp))
-            Spacer(Modifier.width(8.dp))
-            Text(label, color = p.primary, fontSize = 13.sp)
+            Spacer(Modifier.width(6.dp))
+            Text(label, color = p.primary, fontSize = 13.sp, maxLines = 1, softWrap = false)
         }
     }
 }

@@ -43,4 +43,26 @@ class QuranHighlightsTest {
         // Appendix pages carry no verse geometry.
         assertNull(highlights.verseAt(610, .50f, .130f))
     }
+
+    @Test
+    fun lineAt_boundsTheLineUnderThePoint() {
+        // Either verse on the first line gives its height; the second line has its own.
+        assertEquals(.100f, highlights.lineAt(7, .70f, .130f)?.top)
+        assertEquals(.160f, highlights.lineAt(7, .30f, .130f)?.bottom)
+        assertEquals(.164f, highlights.lineAt(7, .70f, .200f)?.top)
+    }
+
+    @Test
+    fun lineAt_betweenTwoLines_takesTheNearest() {
+        assertEquals(.100f, highlights.lineAt(7, .70f, .161f)?.top)
+        assertEquals(.164f, highlights.lineAt(7, .70f, .1635f)?.top)
+    }
+
+    @Test
+    fun lineAt_findsALineExactlyWhereVerseAtFindsAVerse() {
+        for (x in listOf(.905f, .911f, .913f, .93f, .97f, .50f)) for (y in listOf(.05f, .130f, .161f, .230f, .237f, .50f)) {
+            assertEquals("($x, $y)", highlights.verseAt(7, x, y) != null, highlights.lineAt(7, x, y) != null)
+        }
+        assertNull(highlights.lineAt(610, .50f, .130f))
+    }
 }

@@ -212,6 +212,8 @@ data class DhikrState(
     val collectionRemovals: Map<DhikrCategory, Set<String>> = emptyMap(),
     /** User-defined ordering for collection entries; entries not listed here follow the collection's default order. */
     val collectionOrders: Map<DhikrCategory, List<String>> = emptyMap(),
+    /** The wording picked for an entry that has several; an entry absent here reads its own wording. */
+    val variantChoices: Map<String, String> = emptyMap(),
 )
 
 /**
@@ -243,9 +245,12 @@ internal fun DhikrState.changesSchedule(rule: DhikrReminder): Boolean {
 
 /** Resolves built-in and personal entries through one lookup. */
 fun DhikrState.findDhikr(id: String): DhikrEntry? =
-    customEntries.firstOrNull { it.id == id } ?: DhikrCatalog.find(id)
+    customEntries.firstOrNull { it.id == id } ?: DhikrCatalog.find(id)?.let(::withChosenVariant)
 
-val DhikrState.allEntries: List<DhikrEntry> get() = DhikrCatalog.entries + customEntries
+val DhikrState.allEntries: List<DhikrEntry> get() = DhikrCatalog.entries.map(::withChosenVariant) + customEntries
+
+/** A built-in entry in the wording the user picked for it. */
+private fun DhikrState.withChosenVariant(entry: DhikrEntry): DhikrEntry = entry.withVariant(variantChoices[entry.id])
 
 /** Collection membership is the catalog default adjusted by the user's additions and removals. */
 fun DhikrState.isInCollection(entry: DhikrEntry, category: DhikrCategory): Boolean = when {

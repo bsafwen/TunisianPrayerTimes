@@ -171,6 +171,11 @@ data class PrayerWakeConfig(
     val ringDuringSilenceWindow: Boolean = false,
     /** Main-trigger timestamp identifying the recurring occurrence to skip, including its sub-alarms. */
     val skipNextOccurrenceAtMillis: Long? = null,
+    /**
+     * Main-trigger timestamp of the recurring occurrence the user stopped. Whatever of it was still to ring is
+     * cancelled, and the skip above stays free for the next occurrence.
+     */
+    val stoppedOccurrenceAtMillis: Long? = null,
 ) {
     init {
         require(prayer.supportsWakeAlarm()) {
@@ -184,6 +189,13 @@ fun PrayerWakeConfig.isRepeatingWakeAlarm(): Boolean =
 
 fun PrayerWakeConfig.isSkippingWakeOccurrence(occurrenceAtMillis: Long): Boolean =
     isRepeatingWakeAlarm() && skipNextOccurrenceAtMillis == occurrenceAtMillis
+
+fun PrayerWakeConfig.isStoppedWakeOccurrence(occurrenceAtMillis: Long): Boolean =
+    isRepeatingWakeAlarm() && stoppedOccurrenceAtMillis == occurrenceAtMillis
+
+/** An occurrence that must not ring because the user skipped it or stopped it. */
+fun PrayerWakeConfig.isSuppressedWakeOccurrence(occurrenceAtMillis: Long): Boolean =
+    isSkippingWakeOccurrence(occurrenceAtMillis) || isStoppedWakeOccurrence(occurrenceAtMillis)
 
 fun PrayerWakeConfig.hasPendingWakeOccurrenceSkip(nowMillis: Long = System.currentTimeMillis()): Boolean {
     if (!isRepeatingWakeAlarm()) return false

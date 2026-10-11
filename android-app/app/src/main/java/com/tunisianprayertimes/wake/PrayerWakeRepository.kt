@@ -57,6 +57,23 @@ class PrayerWakeRepository(private val context: Context) {
         return updatedConfig
     }
 
+    suspend fun setWakeAlarmStoppedOccurrence(id: String, occurrenceAtMillis: Long?): PrayerWakeConfig? {
+        require(id.isNotBlank()) { "Wake alarm id must not be blank." }
+        var updatedConfig: PrayerWakeConfig? = null
+        context.prayerWakeDataStore.edit { preferences ->
+            val current = decodePrayerWakeStore(preferences[prayerWakeStoreKey])
+            val existing = current.alarmFor(id) ?: return@edit
+            if (occurrenceAtMillis != null && !existing.isRepeatingWakeAlarm()) return@edit
+            val replacement = existing.copy(stoppedOccurrenceAtMillis = occurrenceAtMillis)
+            updatedConfig = replacement
+            val updated = current.alarms.map { config ->
+                if (config.id == id) replacement else config
+            }
+            preferences[prayerWakeStoreKey] = encodePrayerWakeStore(PrayerWakeStore(alarms = updated))
+        }
+        return updatedConfig
+    }
+
     suspend fun saveWakeConfig(config: PrayerWakeConfig) {
         require(config.prayer.supportsWakeAlarm()) {
             "Wake alarms are only supported for supported prayer rows."
@@ -83,6 +100,7 @@ class PrayerWakeRepository(private val context: Context) {
             val updatedConfig = config.copy(
                 id = resolvedId,
                 skipNextOccurrenceAtMillis = if (scheduleChanged) null else config.skipNextOccurrenceAtMillis,
+                stoppedOccurrenceAtMillis = if (scheduleChanged) null else config.stoppedOccurrenceAtMillis,
             )
             if (existing != null && existing != updatedConfig) {
                 scheduledMetadataAlarmIdToClear = resolvedId
@@ -91,7 +109,8 @@ class PrayerWakeRepository(private val context: Context) {
                 awakeCheckGroupAlarmIdToClear = resolvedId
             }
             if (scheduleChanged || !updatedConfig.enabled ||
-                (existing?.skipNextOccurrenceAtMillis != null && updatedConfig.skipNextOccurrenceAtMillis == null)
+                (existing?.skipNextOccurrenceAtMillis != null && updatedConfig.skipNextOccurrenceAtMillis == null) ||
+                (existing?.stoppedOccurrenceAtMillis != null && updatedConfig.stoppedOccurrenceAtMillis == null)
             ) {
                 skippedAlarmIdToClear = resolvedId
             }

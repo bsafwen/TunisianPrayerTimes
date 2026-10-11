@@ -13,6 +13,12 @@ enum class DhikrCategory(val title: String) {
 
 data class DhikrStep(val label: String, val text: String, val repetitions: Int)
 
+/**
+ * One authentic wording of a dhikr that has several (see [DhikrVariants]). It is still the same dhikr:
+ * a chosen wording replaces only the text, the source and the hadith, never the counts or the reminders.
+ */
+data class DhikrVariant(val id: String, val label: String, val text: String, val reference: String, val narration: String)
+
 data class DhikrEntry(
     val id: String,
     val title: String,
@@ -37,7 +43,19 @@ data class DhikrEntry(
      * occasions (morning, bedtime, after the prayer): the mosque's after-prayer screen cites only its own.
      */
     val collectionReferences: Map<DhikrCategory, String> = emptyMap(),
+    /** The wordings the reader can choose from, this entry's own first; empty when it has only one. */
+    val variants: List<DhikrVariant> = emptyList(),
 )
+
+/** The entry read in its wording [variantId]; the entry unchanged for its own wording or an unknown id. */
+fun DhikrEntry.withVariant(variantId: String?): DhikrEntry {
+    val variant = variants.drop(1).firstOrNull { it.id == variantId } ?: return this
+    return copy(text = variant.text, reference = variant.reference, narration = variant.narration,
+        collectionReferences = emptyMap())
+}
+
+/** The wording this entry currently reads, or null when it has only one. */
+val DhikrEntry.currentVariant: DhikrVariant? get() = variants.firstOrNull { it.text == text }
 
 fun DhikrEntry.countForCollection(category: DhikrCategory?): Int =
     category?.let(collectionCountOverrides::get) ?: defaultCount
@@ -409,6 +427,11 @@ object DhikrCatalog {
         (baseEntries.map { entry -> explanations[entry.id]?.let { entry.copy(explanation = it) } ?: entry } +
             DhikrAdditionalCatalog.entries)
             .map { entry -> DhikrNarrations.byId[entry.id]?.let { entry.copy(narration = it) } ?: entry }
+            .map { entry ->
+                val (firstId, firstLabel) = DhikrVariants.first[entry.id] ?: return@map entry
+                entry.copy(variants = listOf(DhikrVariant(firstId, firstLabel, entry.text, entry.reference, entry.narration)) +
+                    DhikrVariants.byId[entry.id].orEmpty())
+            }
             .associateBy { it.id }
 
     /**

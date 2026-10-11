@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
-import com.tunisianprayertimes.isSkippingWakeOccurrence
+import com.tunisianprayertimes.isSuppressedWakeOccurrence
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +32,7 @@ class WakeAlarmReceiver : BroadcastReceiver() {
                 }
 
                 val occurrenceAtMillis = triggerPayload.resolvedOccurrenceAtMillis()
-                if (config?.isSkippingWakeOccurrence(occurrenceAtMillis) == true) {
+                if (config?.isSuppressedWakeOccurrence(occurrenceAtMillis) == true) {
                     result = "skipped"
                     Log.d(TAG, "Ignoring skipped recurring wake occurrence eventId=${triggerPayload.eventId}")
                     WakeAlarmScheduler.scheduleAll(context)
@@ -49,7 +49,7 @@ class WakeAlarmReceiver : BroadcastReceiver() {
                     result = "disabled"
                     return@launch
                 }
-                if (latestConfig?.isSkippingWakeOccurrence(occurrenceAtMillis) == true) {
+                if (latestConfig?.isSuppressedWakeOccurrence(occurrenceAtMillis) == true) {
                     result = "skipped"
                     WakeAlarmScheduler.scheduleAll(context)
                     return@launch

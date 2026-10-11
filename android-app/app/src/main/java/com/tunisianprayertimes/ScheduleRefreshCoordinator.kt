@@ -9,8 +9,14 @@ import com.tunisianprayertimes.adhkar.DhikrReminderReceiver
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 object ScheduleRefreshCoordinator {
+    /** Runs the hifz refresh off the caller's thread: it reads the notebook and the prayer times. */
+    private val hifzScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     const val RESULT_SUCCESS = "success"
     const val RESULT_DISABLED = "disabled"
     const val RESULT_PERMISSION_MISSING = "permission_missing"
@@ -36,6 +42,11 @@ object ScheduleRefreshCoordinator {
         skipWhileManualSilence: Boolean = false,
     ): String {
         val appContext = context.applicationContext
+        // The hifz reminders after prayers come when the silences end: they move with them.
+        hifzScope.launch {
+            runCatching { com.tunisianprayertimes.quran.hifz.HifzReminder.refresh(appContext) }
+                .onFailure { Log.w("ScheduleRefresh", "Could not restore hifz reminders", it) }
+        }
 
         if (!PrefsManager.isEnabled(appContext)) {
             SilenceScheduler.cancelAll(appContext)

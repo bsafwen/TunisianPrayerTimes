@@ -79,7 +79,7 @@ object WakeAlarmComputer {
             listOfNotNull(mainTriggerForDay(day, config)) + config.subAlarms.mapNotNull { subAlarm ->
                 subTriggerForDay(day, config, subAlarm)
             }
-        }.filterNot { trigger -> config.isSkippingWakeOccurrence(trigger.occurrenceAtMillis) }
+        }.filterNot { trigger -> config.isSuppressedWakeOccurrence(trigger.occurrenceAtMillis) }
         val mainAlarm = nextFutureTrigger(
             now = now,
             candidates = candidates.filterNot { trigger -> trigger.isSubAlarm },
@@ -122,7 +122,7 @@ object WakeAlarmComputer {
                     subTriggerForDay(day, config, subAlarm)
                 }
             }
-            .filterNot { trigger -> config.isSkippingWakeOccurrence(trigger.occurrenceAtMillis) }
+            .filterNot { trigger -> config.isSuppressedWakeOccurrence(trigger.occurrenceAtMillis) }
             .sortedBy { trigger -> trigger.triggerAtMillis }
     }
 

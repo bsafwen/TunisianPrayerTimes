@@ -496,6 +496,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onReorderCollection = { reorderCollectionSessionId = id },
                         onTextSize = { size -> mutate({ repo.setTextSize(size) }) },
                         onHaptics = { enabled -> mutate({ repo.setHaptics(enabled) }) },
+                        onVariant = { variant -> mutate({ repo.setVariant(session.itemId, variant) }) },
                         onNewSession = {
                             val collectionReading = session.collectionPeriodKey != null
                             val items = if (collectionReading && session.category != null)

@@ -20,7 +20,18 @@ internal fun formatWakeScheduleDaysSummary(
         return context.getString(R.string.wake_schedule_days_every_day)
     }
 
-    return normalizedDays.joinToString(separator = "، ") { day ->
+    // Days in week order, e.g. Monday to Friday, read as a range instead of a list.
+    val ordered = WakeScheduleDay.entries.filter { day -> day in normalizedDays }
+    val isRun = ordered.size >= 3 &&
+        ordered.last().ordinal - ordered.first().ordinal == ordered.size - 1
+    if (isRun) {
+        return context.getString(
+            R.string.wake_schedule_days_range,
+            context.getString(wakeScheduleDayNameRes(ordered.first())),
+            context.getString(wakeScheduleDayNameRes(ordered.last())),
+        )
+    }
+    return ordered.joinToString(separator = "، ") { day ->
         context.getString(wakeScheduleDayNameRes(day))
     }
 }

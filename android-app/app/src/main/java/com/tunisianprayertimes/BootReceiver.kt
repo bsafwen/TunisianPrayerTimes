@@ -46,6 +46,8 @@ class BootReceiver : BroadcastReceiver() {
     }
 
     internal suspend fun refreshSchedules(context: Context): String {
+        runCatching { com.tunisianprayertimes.quran.hifz.HifzReminder.refresh(context) }
+            .onFailure { Log.w("BootReceiver", "Failed to refresh the hifz reminder", it) }
         AnalyticsTracker.installRamadanOverrideReporter(context)
         RamadanOverrideChecker.startPollingIfNeeded()
         return ScheduleRefreshCoordinator.syncAll(context).analyticsResult

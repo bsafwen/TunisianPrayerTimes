@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <defs><linearGradient id="sky" x1="0" y1="18" x2="0" y2="72" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00453A"/><stop offset="0.5" stop-color="#004D40"/><stop offset="1" stop-color="#0A7363"/></linearGradient><linearGradient id="ground" x1="0" y1="72" x2="0" y2="90" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#004A3D"/><stop offset="1" stop-color="#00453A"/></linearGradient></defs>
+  <rect width="108" height="72" fill="url(#sky)"/>
+  <rect y="72" width="108" height="36" fill="url(#ground)"/>
+  <path fill="#FFF8F0" fill-rule="evenodd" d="M44,90L44,48.5L42.5,48.5L42.5,43.7L44.5,41.1L46.5,43.7L46.5,45.5L49.7,45.5L49.7,38.5L58.3,38.5L58.3,45.5L61.5,45.5L61.5,43.7L63.5,41.1L65.5,43.7L65.5,48.5L64,48.5L64,90ZM51.8,59V55.3Q51.8,52.4 54,52Q56.2,52.4 56.2,55.3V59ZM49.3,70V64.15Q49.3,62 51,61.6Q52.7,62 52.7,64.15V70ZM55.3,70V64.15Q55.3,62 57,61.6Q58.7,62 58.7,64.15V70ZM52.5,45.9V43.15Q52.5,41.3 54,40.9Q55.5,41.3 55.5,43.15V45.9Z"/>
+  <path fill="#E2B845" d="M49.7,38.5A4.3,3.8 0 0 1 58.3,38.5ZM53.5,33.5H54.5V34.9H53.5ZM52.6,32.3A1.4,1.4 0 1 1 55.4,32.3A1.4,1.4 0 1 1 52.6,32.3ZM27.3,70.04A28.8,34.8 0 0 1 74.15,32.14A2.3,2.3 0 0 1 70.93,35.42A24.2,30.2 0 0 0 31.56,68.31A2.3,2.3 0 0 1 27.3,70.04ZM82.57,52.58A28.8,34.8 0 0 1 80.7,70.04A2.3,2.3 0 0 1 76.44,68.31A24.2,30.2 0 0 0 78,53.16A2.3,2.3 0 0 1 82.57,52.58ZM72.22,42.75A5.6,5.6 0 1 1 83.42,42.75A5.6,5.6 0 1 1 72.22,42.75Z"/>
+</svg>

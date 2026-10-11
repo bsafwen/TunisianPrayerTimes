@@ -721,7 +721,7 @@ object DhikrReminderScheduler {
         val done = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_DONE)
             .setData(Uri.parse("tunisianprayertimes://adhkar/done/" + Uri.encode(occurrence.id)))
             .putExtra("occurrence", occurrence.id)
-        builder.addAction(0, "تم", PendingIntent.getBroadcast(context, 0, done,
+        builder.addAction(0, context.getString(R.string.adhkar_notification_done), PendingIntent.getBroadcast(context, 0, done,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
         builder.setVibrate(if (rule?.vibrate == false || !alert) longArrayOf(0L) else longArrayOf(0, 250, 120, 250))
         Log.d(TAG, "posting " + occurrence.id + " title=$title")

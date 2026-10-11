@@ -6,7 +6,7 @@ import android.content.Intent
 import android.util.Log
 import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.Prayer
-import com.tunisianprayertimes.isSkippingWakeOccurrence
+import com.tunisianprayertimes.isSuppressedWakeOccurrence
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,7 +64,7 @@ class AwakeCheckReceiver : BroadcastReceiver() {
                         }
                         if (alarmId != null && (
                                 WakeOccurrenceSkipRegistry.contains(alarmId, occurrenceAtMillis) ||
-                                    config?.isSkippingWakeOccurrence(occurrenceAtMillis) == true
+                                    config?.isSuppressedWakeOccurrence(occurrenceAtMillis) == true
                             )
                         ) {
                             AwakeCheckScheduler.cancelIfMatching(

@@ -74,9 +74,7 @@ class WakeAlertActivity : AppCompatActivity() {
     private val dismissReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == ACTION_SYNC_WAKE_ALERT) {
-                payload = queue.current
-                pendingCount = queue.pendingCount
-                if (payload == null) finish()
+                showQueueCurrentOrFinish()
                 return
             }
             val eventId = intent.wakeEventId()
@@ -106,9 +104,24 @@ class WakeAlertActivity : AppCompatActivity() {
 
     private fun advanceToNextPayload(): Boolean {
         val advanced = queue.advance()
-        payload = queue.current
-        pendingCount = queue.pendingCount
+        if (advanced) showQueueCurrentOrFinish()
         return advanced
+    }
+
+    /**
+     * Shows the queue's current alarm, or finishes when there is none. A finishing window keeps the
+     * alarm it showed: clearing [payload] would recompose it into the empty fallback layout while it
+     * animates away, which reads as a flicker on Stop.
+     */
+    private fun showQueueCurrentOrFinish(): Boolean {
+        val current = queue.current
+        if (current == null) {
+            finish()
+            return false
+        }
+        payload = current
+        pendingCount = queue.pendingCount
+        return true
     }
 
     override fun attachBaseContext(newBase: Context) {
@@ -164,10 +177,8 @@ class WakeAlertActivity : AppCompatActivity() {
                         if (displayedPayload !== queue.current) {
                             // Skip can remove the displayed alarm before its sync broadcast arrives.
                             // A Stop tap for that stale screen must not dismiss the promoted alarm.
-                            payload = queue.current
-                            pendingCount = queue.pendingCount
                             signalServiceCurrentChanged()
-                            if (payload == null) finish()
+                            showQueueCurrentOrFinish()
                         } else if (displayedPayload != null) {
                             val p = displayedPayload
                             WakeDismissalCoordinator.recordDismissal(
@@ -206,15 +217,13 @@ class WakeAlertActivity : AppCompatActivity() {
         // Only trust the queue (populated by the service). Never feed intent
         // extras into the queue from here — a stale PendingIntent (e.g. a
         // deferred fullScreenIntent) could otherwise resurrect a dead alarm.
-        payload = queue.current
-        pendingCount = queue.pendingCount
-        if (payload == null) {
+        if (queue.current == null) {
             android.util.Log.d(
                 "WakeFlow",
                 "Activity.onNewIntent finishing — queue is empty (stale launch)",
             )
-            finish()
         }
+        showQueueCurrentOrFinish()
     }
 
     override fun onStart() {
@@ -226,14 +235,9 @@ class WakeAlertActivity : AppCompatActivity() {
         // Resync from the singleton in case the queue advanced or was cleared
         // while this activity was paused/stopped (e.g., user opened another app
         // and a sub-alarm fired).
-        payload = queue.current
-        pendingCount = queue.pendingCount
-        if (payload == null) {
-            // Nothing to show — either the alarm was dismissed externally or
-            // the process was just rebuilt with no queue state. Bail out.
-            finish()
-            return
-        }
+        // Nothing to show — either the alarm was dismissed externally or
+        // the process was just rebuilt with no queue state. Bail out.
+        if (!showQueueCurrentOrFinish()) return
         ContextCompat.registerReceiver(
             this,
             dismissReceiver,

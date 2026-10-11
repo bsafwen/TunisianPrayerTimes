@@ -1,0 +1,19 @@
+Tunisia mosque inventory and mapped footprints
+
+Data © OpenStreetMap contributors.
+Open Database License (ODbL) 1.0: https://opendatacommons.org/licenses/odbl/1-0/
+Attribution and source terms: https://www.openstreetmap.org/copyright
+Country extract distributor: https://download.geofabrik.de/africa/tunisia.html
+
+This is a filtered, classified and partly deduplicated derived database.
+It is not an official census, a surveyed boundary dataset, or proof of current
+mosque use. See source metadata and each record's polygonEligible/status fields.
+
+Explicitly reviewed external building outlines:
+Microsoft Global Building Footprints, release 2026-08-13.
+https://github.com/microsoft/GlobalMLBuildingFootprints
+Licensed under Community Data License Agreement - Permissive 2.0.
+The complete license text is included in CDLA-Permissive-2.0.txt beside this file.
+External geometry is identified separately from OSM identity data in each
+record's externalGeometrySource and reviewedExternalBoundary properties.
+No Google Maps imagery is included in this dataset or app asset.

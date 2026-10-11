@@ -46,6 +46,7 @@ object PrefsManager {
     private const val KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS = "auto_silence_dismissed_until_millis"
     private const val KEY_AUTO_SILENCE_DISMISSED_PRAYER = "auto_silence_dismissed_prayer"
     private const val KEY_QIBLA_METHOD = "qibla_method"
+    private const val KEY_FAJR_ALARM_SUGGESTION_DISMISSED = "fajr_alarm_suggestion_dismissed"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
 
@@ -369,6 +370,15 @@ object PrefsManager {
 
     fun setQiblaMethod(context: Context, method: QiblaMethod) {
         prefs(context).edit().putString(KEY_QIBLA_METHOD, method.name).apply()
+    }
+
+    /** The alarms tab's Fajr-alarm suggestion, once closed, never comes back. */
+    fun isFajrAlarmSuggestionDismissed(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_FAJR_ALARM_SUGGESTION_DISMISSED, false)
+    }
+
+    fun setFajrAlarmSuggestionDismissed(context: Context) {
+        prefs(context).edit().putBoolean(KEY_FAJR_ALARM_SUGGESTION_DISMISSED, true).apply()
     }
 
     private const val RAMADAN_ISHA_MINUTES = 90

@@ -35,6 +35,29 @@ class QuranHighlights internal constructor(
         return nearest
     }
 
+    /**
+     * The text line at a point of the original scan, as the verse rectangle on it nearest the point: its top
+     * and bottom bound that line. The line holding the point comes first, then the nearest one, as near as
+     * [verseAt] allows. Null in margins away from the text and in chapter headings.
+     */
+    fun lineAt(page: Int, x: Float, y: Float): QuranHighlightRect? {
+        var nearest: QuranHighlightRect? = null
+        var nearestDy = TOUCH_SLOP
+        var nearestDx = TOUCH_SLOP
+        pages[page]?.values?.forEach { rects ->
+            rects.forEach { rect ->
+                val dx = maxOf(rect.left - x, 0f, x - rect.right)
+                val dy = maxOf(rect.top - y, 0f, y - rect.bottom)
+                if (dx < TOUCH_SLOP && dy < TOUCH_SLOP && (dy < nearestDy || (dy == nearestDy && dx <= nearestDx))) {
+                    nearestDy = dy
+                    nearestDx = dx
+                    nearest = rect
+                }
+            }
+        }
+        return nearest
+    }
+
     private companion object {
         /** About a fifth of a text line, in the normalized scan coordinates. */
         const val TOUCH_SLOP = 0.012f

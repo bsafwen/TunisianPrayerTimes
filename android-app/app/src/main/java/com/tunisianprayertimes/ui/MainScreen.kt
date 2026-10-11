@@ -11,15 +11,23 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
+import android.os.SystemClock
 import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -104,6 +112,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
@@ -128,6 +137,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.TextStyle
@@ -193,6 +203,9 @@ import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.WakeRepeatMode
 import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
 import com.tunisianprayertimes.isRepeatingWakeAlarm
+import com.tunisianprayertimes.MathDifficulty
+import com.tunisianprayertimes.OffsetDirection
+import com.tunisianprayertimes.WakeUpCheckType
 import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
@@ -312,6 +325,7 @@ fun MainScreen(
     requestedDestinationSequence: Int = 0,
     requestedDhikrReminderId: String? = null,
     requestedDhikrOccurrenceId: String? = null,
+    requestedQuranAction: String? = null,
 ) {
     val context = LocalContext.current
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
@@ -632,6 +646,27 @@ fun MainScreen(
     val mainScope = rememberCoroutineScope()
     val awakeCheckRunning by AwakeCheckService.isRunning.collectAsState()
 
+    // The Fajr suggestion saves straight away, as the editor's save would.
+    fun addSuggestedFajrAlarm(config: PrayerWakeConfig) {
+        if (hasUnresolvedWakeSilenceConflict(context, delegationId, config)) {
+            // Only the editor can settle a silence-window conflict, so the alarm opens there.
+            quickAddVisible = false
+            wakeSilenceConflictEditor = null
+            editingWakeAlarm = config
+            return
+        }
+        mainScope.launch {
+            wakeRepository.saveWakeConfig(config)
+            AnalyticsTracker.wakeAlarmSaved(context, config)
+            rescheduleIfEnabled()
+        }
+        if (!hasPostNotificationsPermission(context)) {
+            requestWakeNotificationPermission()
+        } else {
+            requestFullScreenIntentIfNeeded()
+        }
+    }
+
     LaunchedEffect(selectedDestination, hasNotifications, hasEnabledFutureWakeAlarm, notificationPermissionPromptRequested) {
         if (selectedDestination == MainDestination.Alarms &&
             hasEnabledFutureWakeAlarm &&
@@ -711,6 +746,17 @@ fun MainScreen(
             with(density) { MainContentBottomPadding.roundToPx() } + navigationBarInsetPx,
         )
     }
+    // The Quran reader's dock sits right on the bar, and the bar slides away for its full player and focus mode.
+    var bottomNavigationHeightPx by remember {
+        mutableIntStateOf(with(density) { BottomNavigationMinHeight.roundToPx() } + navigationBarInsetPx)
+    }
+    var quranHidesNavigation by remember { mutableStateOf(false) }
+    val navigationHidden = quranHidesNavigation && selectedDestination == MainDestination.Quran
+    val quranBottomPadding by animateDpAsState(
+        targetValue = with(density) { (if (navigationHidden) navigationBarInsetPx else bottomNavigationHeightPx).toDp() },
+        label = "quranBottomPadding",
+    )
+    val quranPlayback by com.tunisianprayertimes.quran.audio.QuranAudioController.state.collectAsState()
 
     val adhkarStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     val quranStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
@@ -729,7 +775,9 @@ fun MainScreen(
         } else if (selectedDestination == MainDestination.Quran) {
             quranStateHolder.SaveableStateProvider("quran") {
                 QuranScreen(
-                    modifier = Modifier.fillMaxSize().padding(bottom = with(density) { bottomNavigationOccupiedPx.toDp() }),
+                    modifier = Modifier.fillMaxSize().padding(bottom = quranBottomPadding),
+                    onHideNavigation = { quranHidesNavigation = it },
+                    hifzRequest = requestedQuranAction?.let { it to requestedDestinationSequence },
                 )
             }
         } else {
@@ -1053,6 +1101,7 @@ fun MainScreen(
                             onConfigChanged = { rescheduleIfEnabled() },
                             onPresetSelected = ::createWakeAlarm,
                             onEditAlarm = { config -> editingWakeAlarm = config },
+                            onAddFajrAlarm = ::addSuggestedFajrAlarm,
                         )
                     }
 
@@ -1066,11 +1115,17 @@ fun MainScreen(
         }
 
         }
+        AnimatedVisibility(
+            visible = !navigationHidden,
+            modifier = Modifier.align(Alignment.BottomCenter),
+            enter = slideInVertically { it },
+            exit = slideOutVertically { it },
+        ) {
         Surface(
             modifier = Modifier
-                .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .onSizeChanged { size ->
+                    bottomNavigationHeightPx = size.height
                     bottomNavigationOccupiedPx = size.height + with(density) {
                         (MainContentBottomPadding - BottomNavigationMinHeight).roundToPx()
                     }
@@ -1154,12 +1209,26 @@ fun MainScreen(
 
                                 Spacer(Modifier.height(5.dp))
 
-                                Icon(
-                                    painter = painterResource(destination.iconRes),
-                                    contentDescription = label,
-                                    tint = tabContentColor,
-                                    modifier = Modifier.size(18.dp)
-                                )
+                                Box {
+                                    Icon(
+                                        painter = painterResource(destination.iconRes),
+                                        contentDescription = label,
+                                        tint = tabContentColor,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                    // A recitation plays on while another tab is open.
+                                    if (destination == MainDestination.Quran && !selected && quranPlayback.playing) {
+                                        Box(
+                                            Modifier
+                                                .align(Alignment.TopEnd)
+                                                .offset(x = 3.dp, y = (-2).dp)
+                                                .size(6.dp)
+                                                .clip(CircleShape)
+                                                .background(GreenPrimary)
+                                                .testTag("quran_tab_playing")
+                                        )
+                                    }
+                                }
 
                                 Spacer(Modifier.height(3.dp))
 
@@ -1178,6 +1247,7 @@ fun MainScreen(
                     }
                 }
             }
+        }
         }
 
         if (showWakeAlarmAddButton && wakeAlarmAddButtonVisible) {
@@ -4426,9 +4496,14 @@ private fun WakeAlarmCard(
     onConfigChanged: () -> Unit,
     onPresetSelected: (WakeQuickPreset) -> Unit,
     onEditAlarm: (PrayerWakeConfig) -> Unit,
+    onAddFajrAlarm: (PrayerWakeConfig) -> Unit,
 ) {
     val context = LocalContext.current
     val wakeRepository = remember(context) { PrayerWakeRepository(context) }
+    var fajrSuggestionDismissed by remember {
+        mutableStateOf(PrefsManager.isFajrAlarmSuggestionDismissed(context))
+    }
+    var fajrSetupOpen by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
     val nowMillis by produceState(initialValue = System.currentTimeMillis()) {
         while (true) {
@@ -4448,6 +4523,14 @@ private fun WakeAlarmCard(
             }
             .minByOrNull { (_, trigger) -> trigger.triggerAtMillis }
     }
+    if (fajrSetupOpen) {
+        FajrAlarmSetupSheet(
+            delegationId = delegationId,
+            nowMillis = nowMillis,
+            onAdd = onAddFajrAlarm,
+            onDismiss = { fajrSetupOpen = false },
+        )
+    }
 
     alarmPendingDeletion?.let { alarm ->
         WakeAlarmDeleteDialog(
@@ -4465,18 +4548,26 @@ private fun WakeAlarmCard(
         )
     }
 
+    // Each item above the list carries its own 12dp gap below it, so an item that animates away
+    // takes its gap with it instead of leaving a spacedBy gap that snaps shut after the exit.
     Column(
         modifier = Modifier
             .fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         if (nextAlarm != null) {
             val (alarm, trigger) = nextAlarm
-            WakeNextAlarmPanel(
-                wakeConfig = alarm,
-                trigger = trigger,
-                nowMillis = nowMillis,
-            )
+            Box(modifier = Modifier.padding(bottom = 12.dp)) {
+                WakeNextAlarmPanel(
+                    wakeConfig = alarm,
+                    trigger = trigger,
+                    nowMillis = nowMillis,
+                )
+            }
+        } else if (loadedWakeAlarms.isNotEmpty() && loadedWakeAlarms.none { alarm -> alarm.enabled }) {
+            // The hero stays when every alarm is off, and says so rather than showing an alarm that won't ring.
+            Box(modifier = Modifier.padding(bottom = 12.dp)) {
+                WakeNoEnabledAlarmPanel()
+            }
         }
 
         AnimatedVisibility(
@@ -4484,11 +4575,43 @@ private fun WakeAlarmCard(
             enter = expandVertically(),
             exit = shrinkVertically()
         ) {
-            AwakeCheckBanner(onConfirm = onConfirmAwake)
+            Box(modifier = Modifier.padding(bottom = 12.dp)) {
+                AwakeCheckBanner(onConfirm = onConfirmAwake)
+            }
+        }
+
+        // Waits for the stored alarms, so it never flashes before a Fajr alarm loads.
+        val offerFajrAlarm = !fajrSuggestionDismissed && wakeAlarms?.hasFajrWakeAlarm() == false
+        // A new user meets the offer inside the start card; anyone with alarms gets the small row.
+        AnimatedVisibility(
+            visible = offerFajrAlarm && !displayState.showEmptyState,
+            enter = EnterTransition.None,
+            // Fade first, then close the space in a fixed short time from the bottom, so the card is
+            // gone before its rounded edge is clipped and there is no long spring tail.
+            exit = fadeOut(tween(durationMillis = 120)) + shrinkVertically(
+                animationSpec = tween(durationMillis = 220, delayMillis = 60, easing = FastOutSlowInEasing),
+                shrinkTowards = Alignment.Top,
+            ),
+        ) {
+            FajrAlarmSuggestionRow(
+                modifier = Modifier.padding(bottom = 12.dp),
+                onOpen = { fajrSetupOpen = true },
+                onClose = {
+                    PrefsManager.setFajrAlarmSuggestionDismissed(context)
+                    fajrSuggestionDismissed = true
+                },
+            )
         }
 
         if (displayState.showEmptyState) {
-            WakeAlarmEmptyState(onPresetSelected = onPresetSelected)
+            WakeAlarmEmptyState(
+                onPresetSelected = onPresetSelected,
+                onFajrSetup = if (offerFajrAlarm) {
+                    { fajrSetupOpen = true }
+                } else {
+                    null
+                },
+            )
         }
 
         if (loadedWakeAlarms.isNotEmpty()) {
@@ -4509,6 +4632,12 @@ private fun WakeAlarmCard(
                 onSkipNext = { alarm ->
                     coroutineScope.launch {
                         WakeAlarmScheduler.toggleSkipNextWakeOccurrence(context, alarm.id)
+                    }
+                },
+                onStop = { alarm ->
+                    coroutineScope.launch {
+                        WakeAlarmScheduler.stopWakeAlarm(context, alarm.id)
+                        onConfigChanged()
                     }
                 },
             )
@@ -4706,6 +4835,22 @@ private fun roundedClockTimeAfter(minutesFromNow: Int): ClockTime {
     )
 }
 
+// A second tap on the skip/stop button, meant for the action it just had, must not trigger the one it turns into.
+private const val WAKE_ACTION_DEBOUNCE_MILLIS = 1_200L
+
+private fun runningWakeAlarmIds(
+    context: android.content.Context,
+    wakeAlarms: List<PrayerWakeConfig>,
+    windowsByAlarm: Map<String, List<WakeAlarmScheduler.OccurrenceWindow>>,
+): Set<String> =
+    wakeAlarms
+        .filter { alarm ->
+            alarm.enabled &&
+                WakeAlarmScheduler.isWakeAlarmRunning(context, alarm.id, windowsByAlarm[alarm.id].orEmpty())
+        }
+        .map { alarm -> alarm.id }
+        .toSet()
+
 @Composable
 private fun WakeAlarmListPanel(
     wakeAlarms: List<PrayerWakeConfig>,
@@ -4715,15 +4860,45 @@ private fun WakeAlarmListPanel(
     onEnabledChange: (PrayerWakeConfig, Boolean) -> Unit,
     onDeleteRequest: (PrayerWakeConfig) -> Unit,
     onSkipNext: (PrayerWakeConfig) -> Unit,
+    onStop: (PrayerWakeConfig) -> Unit,
 ) {
     val context = LocalContext.current
+    // An alarm is running from the earliest ring of an occurrence to its latest, so the windows are worked out once
+    // a day and the clock is checked every second. The awake check reports itself, so its start and end re-check at once.
+    val todayStartMillis = startOfDayMillis(nowMillis)
+    val windowsByAlarm = remember(wakeAlarms, delegationId, todayStartMillis) {
+        wakeAlarms.associate { alarm ->
+            alarm.id to WakeAlarmScheduler.occurrenceWindows(context, delegationId, alarm)
+        }
+    }
+    val awakeCheckRunning by AwakeCheckService.isRunning.collectAsStateWithLifecycle()
+    var runningAlarmIds by remember { mutableStateOf(runningWakeAlarmIds(context, wakeAlarms, windowsByAlarm)) }
+    LaunchedEffect(wakeAlarms, windowsByAlarm, awakeCheckRunning) {
+        while (true) {
+            runningAlarmIds = runningWakeAlarmIds(context, wakeAlarms, windowsByAlarm)
+            delay(1_000L)
+        }
+    }
+    var lastActionAtMillis by remember { mutableLongStateOf(0L) }
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .testTag(TestTags.WAKE_ALARM_LIST),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        wakeAlarms.forEachIndexed { index, wakeAlarm ->
+        // By the next ring, so the list reads in time order; alarms that are off go last.
+        val sortedAlarms = remember(wakeAlarms, delegationId, nowMillis) {
+            wakeAlarms.sortedWith(
+                compareBy<PrayerWakeConfig>(
+                    { alarm -> !alarm.enabled },
+                    { alarm ->
+                        nextWakeAlarmTrigger(context, delegationId, alarm.copy(enabled = true))?.triggerAtMillis
+                            ?: Long.MAX_VALUE
+                    },
+                ),
+            )
+        }
+        sortedAlarms.forEachIndexed { index, wakeAlarm ->
             val nextTrigger = remember(wakeAlarm, delegationId) {
                 nextWakeAlarmTrigger(context, delegationId, wakeAlarm.copy(enabled = true))
             }
@@ -4734,13 +4909,23 @@ private fun WakeAlarmListPanel(
                 nextAlarmMillis = nextMillis,
                 nextIsExtraAlarm = nextTrigger?.isSubAlarm == true,
                 mainAlarmMillis = nextTrigger?.occurrenceAtMillis,
-                // The main alarm (or one of its extras) already rang for the upcoming trigger's occurrence.
-                currentOccurrenceStarted = nextTrigger?.let { it.occurrenceAtMillis <= nowMillis } == true,
+                isRunning = wakeAlarm.id in runningAlarmIds,
                 nowMillis = nowMillis,
                 onClick = { onEditAlarm(wakeAlarm) },
                 onEnabledChange = { enabled -> onEnabledChange(wakeAlarm, enabled) },
                 onDeleteRequest = { onDeleteRequest(wakeAlarm) },
-                onSkipNext = { onSkipNext(wakeAlarm) },
+                onSkipNext = {
+                    val tappedAtMillis = SystemClock.elapsedRealtime()
+                    if (tappedAtMillis - lastActionAtMillis >= WAKE_ACTION_DEBOUNCE_MILLIS) {
+                        lastActionAtMillis = tappedAtMillis
+                        // The label decides: a pending skip is undone, a running alarm is stopped, else the next one is skipped.
+                        if (wakeAlarm.id in runningAlarmIds && !wakeAlarm.hasPendingWakeOccurrenceSkip(nowMillis)) {
+                            onStop(wakeAlarm)
+                        } else {
+                            onSkipNext(wakeAlarm)
+                        }
+                    }
+                },
             )
         }
     }
@@ -4773,6 +4958,15 @@ private fun WakeNextAlarmPanel(
                     summaryText = summaryText,
                     modifier = if (sideBySide) Modifier.width(detailsWidth) else Modifier.fillMaxWidth(),
                 )
+                // Counts to the next ring, whether it is the alarm or one of its extras. It sits outside
+                // the narrower details column so it stays on one line, in the timeline's gold.
+                WakeNextAlarmCountdown(
+                    text = stringResource(
+                        R.string.wake_editor_hero_countdown,
+                        formatWakeCountdownDuration(trigger.triggerAtMillis - nowMillis),
+                    ),
+                    color = Gold,
+                )
                 if (hasExtras) {
                     WakeNextAlarmTimeline(
                         stops = wakeTimelineStops(
@@ -4786,6 +4980,57 @@ private fun WakeNextAlarmPanel(
                 }
             }
         }
+    }
+}
+
+/** The hero when alarms exist but all are off: it says so, in the same scene as the next-alarm hero. */
+@Composable
+private fun WakeNoEnabledAlarmPanel() {
+    HeroCardSurface(modifier = Modifier.heightIn(min = MainHeroCardHeight)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 17.dp, vertical = 13.dp)
+                .heightIn(min = 122.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            HeroIconRing(iconRes = R.drawable.ic_tab_alarms)
+            Text(
+                text = stringResource(R.string.wake_alarm_hero_none_title),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+            )
+        }
+    }
+}
+
+/**
+ * How long until the next ring, as one gold line under the date. Like the time row above, the icon sits
+ * in the bell's column and the text lines up with the title and the date.
+ */
+@Composable
+private fun WakeNextAlarmCountdown(text: String, color: Color, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Box(modifier = Modifier.width(34.dp), contentAlignment = Alignment.Center) {
+            Icon(
+                painter = painterResource(R.drawable.ic_adhkar_clock),
+                contentDescription = null,
+                tint = color,
+                modifier = Modifier.size(15.dp),
+            )
+        }
+        Text(
+            text = text,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = color,
+        )
     }
 }
 
@@ -5213,7 +5458,10 @@ private fun NextPrayerHeroVerse(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun WakeAlarmEmptyState(onPresetSelected: (WakeQuickPreset) -> Unit) {
+private fun WakeAlarmEmptyState(
+    onPresetSelected: (WakeQuickPreset) -> Unit,
+    onFajrSetup: (() -> Unit)?,
+) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(18.dp),
@@ -5241,6 +5489,7 @@ private fun WakeAlarmEmptyState(onPresetSelected: (WakeQuickPreset) -> Unit) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
+                onFajrSetup?.let { onClick -> FajrAlarmStartOption(onClick = onClick) }
                 WakeQuickPreset.values().forEach { preset ->
                     WakeQuickPresetRow(
                         preset = preset,
@@ -5598,7 +5847,7 @@ private fun WakeAlarmRow(
     // When the next ring is an extra, the big time is that extra's, so say so and show the main alarm's time.
     nextIsExtraAlarm: Boolean,
     mainAlarmMillis: Long?,
-    currentOccurrenceStarted: Boolean,
+    isRunning: Boolean,
     nowMillis: Long,
     onClick: () -> Unit,
     onEnabledChange: (Boolean) -> Unit,
@@ -5608,22 +5857,79 @@ private fun WakeAlarmRow(
     val enabled = wakeConfig.enabled
     val isRepeatingAlarm = wakeConfig.isRepeatingWakeAlarm()
     val isSkipPending = wakeConfig.hasPendingWakeOccurrenceSkip(nowMillis)
-    val showSkipNextAction = isRepeatingAlarm && (isSkipPending || (enabled && nextAlarmMillis != null))
+    val showSkipNextAction = isRunning ||
+        (isRepeatingAlarm && (isSkipPending || (enabled && nextAlarmMillis != null)))
+    // A pending skip is undone first, so a stopped alarm offers undo for the rest of its occurrence.
     val skipActionDescription = stringResource(
         when {
             isSkipPending -> R.string.wake_alarm_undo_skip_next
-            currentOccurrenceStarted -> R.string.wake_alarm_cancel_current
+            isRunning -> R.string.wake_alarm_stop
             else -> R.string.wake_alarm_skip_next
         },
     )
     val deleteActionDescription = stringResource(R.string.wake_alarm_delete_action)
-    val alarmDisplayName = wakeAlarmDisplayName(wakeConfig)
-    val summaryText = wakeSummaryText(alarmDisplayName, wakeConfig)
-    val wakeCheckChip = stringResource(R.string.wake_alarm_feature_wake_check)
-    val vibrationChip = stringResource(R.string.wake_alarm_feature_vibration)
+    val context = LocalContext.current
+    // The card names the alarm by its own time; the ring coming next, maybe an extra, is a detail below it.
+    val alarmTimeMillis = mainAlarmMillis ?: nextAlarmMillis
+    // What the alarm follows: its days for a fixed time, its rule for a prayer or a timer.
+    val isTimer = wakeConfig.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW
+    val scheduleText = if (isTimer) {
+        stringResource(R.string.wake_editor_mode_from_now)
+    } else if (wakeConfig.mainAlarm.mode == WakeMainAlarmMode.FIXED_TIME) {
+        if (wakeConfig.repeatMode == WakeRepeatMode.ONCE) {
+            stringResource(R.string.wake_schedule_once)
+        } else {
+            formatWakeScheduleDaysSummary(context, wakeConfig.scheduledDays)
+        }
+    } else {
+        wakeSummaryText(wakeAlarmDisplayName(wakeConfig), wakeConfig)
+    }
+    @Composable
+    fun relativeDay(millis: Long): String = when (wakeHeroRelativeDay(millis, nowMillis)) {
+        WakeHeroRelativeDay.TODAY -> stringResource(R.string.date_today)
+        WakeHeroRelativeDay.TOMORROW -> stringResource(R.string.next_prayer_countdown_tomorrow)
+        WakeHeroRelativeDay.LATER -> formatWakeAlarmDate(millis)
+    }
+    // A state the user must notice replaces the plain "next" note.
+    val skippedOccurrenceAtMillis = wakeConfig.skipNextOccurrenceAtMillis.takeIf { isSkipPending }
+    val statusText = when {
+        !enabled -> stringResource(R.string.wake_alarm_row_off)
+        isRunning -> stringResource(R.string.wake_alarm_row_in_progress)
+        skippedOccurrenceAtMillis != null ->
+            stringResource(R.string.wake_alarm_row_skipped, relativeDay(skippedOccurrenceAtMillis))
+        else -> null
+    }
+    val nextDayText = nextAlarmMillis?.takeIf { statusText == null }?.let { millis ->
+        if (isTimer) {
+            stringResource(R.string.wake_editor_hero_countdown, formatWakeCountdownDuration(millis - nowMillis))
+        } else {
+            stringResource(R.string.wake_alarm_row_next_at, relativeDay(millis))
+        }
+    }
+    // Every ring of the coming occurrence, in time order, the way the hero's timeline lists them.
+    val ringTimes = mainAlarmMillis?.takeIf { wakeConfig.subAlarms.isNotEmpty() }?.let { occurrenceAtMillis ->
+        (listOf(0) + wakeConfig.subAlarms.map { extra -> extra.signedOffsetMinutes })
+            .sorted()
+            .map { offset -> offset to occurrenceAtMillis + offset * 60_000L }
+    }
     val featureChips = buildList {
-        if (wakeConfig.playback.wakeUpCheckEnabled) add(wakeCheckChip)
-        if (wakeConfig.playback.vibrationOnly) add(vibrationChip)
+        val playback = wakeConfig.playback
+        if (playback.wakeUpCheckEnabled) {
+            val mathLevels = playback.effectiveWakeUpCheckSteps
+                .filter { step -> step.type == WakeUpCheckType.MATH }
+                .map { step -> step.difficulty }
+            add(
+                when (mathLevels.maxOrNull()) {
+                    MathDifficulty.HARD -> context.getString(R.string.wake_alarm_feature_challenge_hard)
+                    MathDifficulty.INTERMEDIATE -> context.getString(R.string.wake_alarm_feature_challenge_medium)
+                    MathDifficulty.EASY -> context.getString(R.string.wake_alarm_feature_challenge_easy)
+                    null -> context.getString(R.string.wake_alarm_feature_wake_check)
+                },
+            )
+        }
+        if (playback.awakeCheckEnabled) add(context.getString(R.string.wake_alarm_feature_awake_check))
+        if (playback.vibrationOnly) add(context.getString(R.string.wake_alarm_feature_vibration))
+        if (wakeConfig.silenceUntilAlarm) add(context.getString(R.string.wake_alarm_feature_silence))
     }
 
     Card(
@@ -5642,126 +5948,71 @@ private fun WakeAlarmRow(
         )
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            Column(
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                    .padding(start = 16.dp, end = 12.dp, top = 12.dp, bottom = 12.dp),
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                // An alarm that is off keeps its details, greyed out.
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .alpha(if (enabled) 1f else 0.5f),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
-                    Column(
-                        modifier = Modifier.weight(1f),
-                        verticalArrangement = Arrangement.spacedBy(2.dp),
-                    ) {
-                        if (nextAlarmMillis != null) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            ) {
-                                if (nextIsExtraAlarm) {
-                                    // The same bell the hero uses for an extra alert.
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_adhkar_bell),
-                                        contentDescription = null,
-                                        tint = Gold,
-                                        modifier = Modifier.size(18.dp),
-                                    )
-                                }
-                                Text(
-                                    text = formatTimeOfDay(nextAlarmMillis),
-                                    fontSize = 24.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = GreenPrimaryDark,
-                                    maxLines = 1,
-                                    style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
-                                )
-                            }
-                        }
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Text(
-                                text = alarmDisplayName,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = GreenPrimaryDark,
-                                maxLines = if (LocalDensity.current.fontScale > 1.3f) Int.MAX_VALUE else 2,
-                                overflow = TextOverflow.Ellipsis,
-                                modifier = Modifier.weight(1f, fill = false).alignByBaseline(),
-                            )
-                            Text(
-                                text = alarmName,
-                                fontSize = 11.sp,
-                                color = TextMuted,
-                                maxLines = 1,
-                                modifier = Modifier.alignByBaseline(),
-                            )
-                        }
-                    }
-                    Switch(
-                        checked = enabled,
-                        onCheckedChange = onEnabledChange,
-                        modifier = Modifier
-                            .heightIn(min = 48.dp)
-                            .testTag(TestTags.wakeAlarmEnabledSwitch(wakeConfig.id))
-                            .semantics { contentDescription = alarmName },
-                    )
-                }
-
-                if (nextAlarmMillis != null) {
-                    val dateText = stringResource(
-                        R.string.wake_alarm_row_next_at,
-                        formatWakeAlarmDate(nextAlarmMillis),
-                    )
-                    FlowRow(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalArrangement = Arrangement.spacedBy(2.dp),
-                    ) {
+                    if (alarmTimeMillis != null) {
                         Text(
-                            text = dateText,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Medium,
+                            text = formatTimeOfDay(alarmTimeMillis),
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold,
                             color = GreenPrimaryDark,
-                            lineHeight = 16.sp,
-                        )
-                        if (nextIsExtraAlarm && mainAlarmMillis != null) {
-                            Text(
-                                text = stringResource(
-                                    R.string.wake_alarm_row_extra_next,
-                                    formatTimeOfDay(mainAlarmMillis),
-                                ),
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = GreenPrimaryDark,
-                                lineHeight = 16.sp,
-                            )
-                        }
-                        Text(
-                            text = summaryText,
-                            fontSize = 12.sp,
-                            color = TextDark,
-                            lineHeight = 16.sp,
+                            maxLines = 1,
+                            style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
                         )
                     }
-                } else {
                     Text(
-                        text = summaryText,
-                        fontSize = 12.sp,
-                        color = TextDark,
-                        lineHeight = 16.sp,
+                        text = listOfNotNull(scheduleText, nextDayText).joinToString(separator = " • "),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = GreenPrimaryDark,
+                        lineHeight = 18.sp,
                     )
-                }
-                if (featureChips.isNotEmpty()) {
-                    FlowRow(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        verticalArrangement = Arrangement.spacedBy(6.dp),
-                    ) {
-                        featureChips.forEach { chip -> WakeAlarmFeatureChip(text = chip) }
+                    if (statusText != null) {
+                        Text(
+                            text = statusText,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = if (isRunning && enabled) SilenceRed else PrayerNameColor,
+                            lineHeight = 18.sp,
+                        )
+                    }
+                    if (ringTimes != null) {
+                        WakeAlarmRingStrip(
+                            rings = ringTimes,
+                            nextRingAtMillis = nextAlarmMillis.takeIf { enabled && !isSkipPending },
+                            nowMillis = nowMillis,
+                        )
+                    }
+                    if (featureChips.isNotEmpty()) {
+                        FlowRow(
+                            modifier = Modifier.padding(top = 4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp),
+                            verticalArrangement = Arrangement.spacedBy(6.dp),
+                        ) {
+                            featureChips.forEach { chip -> WakeAlarmFeatureChip(text = chip) }
+                        }
                     }
                 }
+                Switch(
+                    checked = enabled,
+                    onCheckedChange = onEnabledChange,
+                    modifier = Modifier
+                        .heightIn(min = 48.dp)
+                        .testTag(TestTags.wakeAlarmEnabledSwitch(wakeConfig.id))
+                        .semantics { contentDescription = alarmName },
+                )
             }
             HorizontalDivider(color = GreenPrimary.copy(alpha = 0.1f))
             Row(
@@ -5785,7 +6036,7 @@ private fun WakeAlarmRow(
                                 text = stringResource(
                                     when {
                                         isSkipPending -> R.string.wake_alarm_undo_skip_next_short
-                                        currentOccurrenceStarted -> R.string.wake_alarm_cancel_current_short
+                                        isRunning -> R.string.wake_alarm_stop_short
                                         else -> R.string.wake_alarm_skip_next_short
                                     },
                                 ),
@@ -5817,13 +6068,54 @@ private fun WakeAlarmRow(
     }
 }
 
+/**
+ * The rings of one occurrence as times, e.g. 04:50 • 04:55 • 05:00: the main alarm in bold, the ring
+ * coming next in gold, the other extras muted.
+ */
+@Composable
+private fun WakeAlarmRingStrip(rings: List<Pair<Int, Long>>, nextRingAtMillis: Long?, nowMillis: Long) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+    ) {
+        rings.forEachIndexed { index, (offset, atMillis) ->
+            if (index > 0) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .size(4.dp)
+                        .clip(CircleShape)
+                        .background(TextMuted.copy(alpha = 0.45f)),
+                )
+            }
+            val isMain = offset == 0
+            val isNext = atMillis == nextRingAtMillis
+            val isPast = atMillis < nowMillis && !isNext
+            Text(
+                modifier = Modifier.alpha(if (isPast) 0.4f else 1f),
+                text = formatTimeOfDay(atMillis),
+                fontSize = 14.sp,
+                fontWeight = if (isMain || isNext) FontWeight.Bold else FontWeight.Medium,
+                color = when {
+                    isNext -> Gold
+                    isMain -> GreenPrimaryDark
+                    else -> TextMuted
+                },
+                style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
+            )
+        }
+    }
+}
+
 @Composable
 private fun wakeSummaryText(
     prayerName: String,
     wakeConfig: PrayerWakeConfig,
+    // The alarm row shows the fixed time big already, so it names only the mode.
+    includeFixedTime: Boolean = true,
 ): String {
     val mainSummary = when (wakeConfig.mainAlarm.mode) {
-        WakeMainAlarmMode.FIXED_TIME -> stringResource(
+        WakeMainAlarmMode.FIXED_TIME -> if (!includeFixedTime) stringResource(R.string.wake_editor_mode_fixed) else stringResource(
             R.string.wake_summary_fixed,
             formatClockTime(
                 wakeConfig.mainAlarm.fixedTime.hour,
@@ -6542,7 +6834,7 @@ private fun nextWakeAlarmMillis(
     return nextWakeAlarmTrigger(context, delegationId, config)?.triggerAtMillis
 }
 
-private fun nextWakeAlarmTrigger(
+internal fun nextWakeAlarmTrigger(
     context: android.content.Context,
     delegationId: Int,
     config: com.tunisianprayertimes.PrayerWakeConfig,

@@ -26,6 +26,15 @@ object MainTabNavigation {
     const val DESTINATION_ADHKAR = "adhkar"
     const val DESTINATION_QURAN = "quran"
     const val EXTRA_DHIKR_REMINDER_ID = "com.tunisianprayertimes.extra.DHIKR_REMINDER_ID"
+    /** What the Quran tab opens: «التثبيت» or its day's review. */
+    const val EXTRA_QURAN_ACTION = "com.tunisianprayertimes.extra.QURAN_ACTION"
+    const val QURAN_ACTION_HIFZ = "hifz"
+    const val QURAN_ACTION_HIFZ_REVIEW = "hifz_review"
+    const val QURAN_ACTION_HIFZ_RECORD = "hifz_record"
+    /** Followed by a point's id: its fix, from a reminder about that point. */
+    const val QURAN_ACTION_HIFZ_FIX_PREFIX = "hifz_fix:"
+    /** Followed by points' ids, «1,2»: those points, from a reminder about several. */
+    const val QURAN_ACTION_HIFZ_POINTS_PREFIX = "hifz_points:"
 }
 
 /**
@@ -41,6 +50,7 @@ internal class MainTabRequests {
         val sequence: Int,
         val dhikrReminderId: String? = null,
         val dhikrOccurrenceId: String? = null,
+        val quranAction: String? = null,
     )
 
     private var sequence = 0
@@ -62,6 +72,8 @@ internal class MainTabRequests {
             sequence = sequence,
             dhikrReminderId = savedInstanceState.getString(STATE_DHIKR_REMINDER_ID),
             dhikrOccurrenceId = savedInstanceState.getString(STATE_DHIKR_OCCURRENCE_ID),
+            // The Quran tab skips a hifz request it already handled and retries one a re-creation interrupted.
+            quranAction = savedInstanceState.getString(STATE_QURAN_ACTION),
         )
     }
 
@@ -71,6 +83,7 @@ internal class MainTabRequests {
         outState.putInt(STATE_SEQUENCE, sequence)
         outState.putString(STATE_DHIKR_REMINDER_ID, current.dhikrReminderId)
         outState.putString(STATE_DHIKR_OCCURRENCE_ID, current.dhikrOccurrenceId)
+        outState.putString(STATE_QURAN_ACTION, current.quranAction)
     }
 
     private fun accept(intent: Intent?) {
@@ -83,6 +96,7 @@ internal class MainTabRequests {
             sequence = sequence,
             dhikrReminderId = intent.getStringExtra(MainTabNavigation.EXTRA_DHIKR_REMINDER_ID),
             dhikrOccurrenceId = intent.getStringExtra(com.tunisianprayertimes.adhkar.DhikrReminderScheduler.EXTRA_OCCURRENCE_ID),
+            quranAction = intent.getStringExtra(MainTabNavigation.EXTRA_QURAN_ACTION),
         )
     }
 
@@ -90,6 +104,7 @@ internal class MainTabRequests {
         const val STATE_SEQUENCE = "com.tunisianprayertimes.state.TAB_REQUEST_SEQUENCE"
         const val STATE_DHIKR_REMINDER_ID = "com.tunisianprayertimes.state.TAB_REQUEST_DHIKR_REMINDER_ID"
         const val STATE_DHIKR_OCCURRENCE_ID = "com.tunisianprayertimes.state.TAB_REQUEST_DHIKR_OCCURRENCE_ID"
+        const val STATE_QURAN_ACTION = "com.tunisianprayertimes.state.TAB_REQUEST_QURAN_ACTION"
     }
 }
 
@@ -105,9 +120,36 @@ class MainActivity : AppCompatActivity() {
         super.attachBaseContext(newBase.createConfigurationContext(config))
     }
 
+    /**
+     * «سجّل موضعا» from the launcher: a slip made in prayer or with a teacher is recorded at once.
+     * Dynamic, because a static shortcut cannot follow the debug build's package suffix.
+     */
+    private fun publishShortcuts() {
+        runCatching {
+            val manager = getSystemService(android.content.pm.ShortcutManager::class.java) ?: return
+            // The launcher's own action and category, so a running task is reused and the request
+            // arrives through onNewIntent instead of stacking a second activity.
+            val intent = Intent(Intent.ACTION_MAIN)
+                .addCategory(Intent.CATEGORY_LAUNCHER)
+                .setClass(this, MainActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_QURAN)
+                .putExtra(MainTabNavigation.EXTRA_QURAN_ACTION, MainTabNavigation.QURAN_ACTION_HIFZ_RECORD)
+            manager.dynamicShortcuts = listOf(
+                android.content.pm.ShortcutInfo.Builder(this, "hifz_record")
+                    .setShortLabel("سجّل موضعا")
+                    .setLongLabel("سجّل موضعا للتثبيت")
+                    .setIcon(android.graphics.drawable.Icon.createWithResource(this, R.drawable.ic_tab_quran))
+                    .setIntent(intent)
+                    .build(),
+            )
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         tabRequests.onCreate(intent, savedInstanceState)
+        publishShortcuts()
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
             navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
@@ -128,6 +170,7 @@ class MainActivity : AppCompatActivity() {
                     requestedDestinationSequence = tabRequest.sequence,
                     requestedDhikrReminderId = tabRequest.dhikrReminderId,
                     requestedDhikrOccurrenceId = tabRequest.dhikrOccurrenceId,
+                    requestedQuranAction = tabRequest.quranAction,
                 )
             }
         }

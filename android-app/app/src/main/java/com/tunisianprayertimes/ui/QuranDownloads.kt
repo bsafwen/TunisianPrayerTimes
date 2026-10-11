@@ -111,14 +111,16 @@ internal class QuranRecitationStarter(private val media: () -> QuranMedia?) {
     /** The packs a start waits for, or empty. */
     val pendingPacks: List<QuranPack> get() = waiting?.packs.orEmpty()
 
-    fun start(reciterId: String, surahs: IntRange, start: () -> Unit) {
+    /** [surahs]: the chapters the recitation needs, a range or only some, as a drill's two verses far apart. */
+    fun start(reciterId: String, surahs: Iterable<Int>, start: () -> Unit) {
         val current = media()
-        val needed = current?.recitationPacks(reciterId, surahs).orEmpty()
+        val needed = if (surahs is IntRange) current?.recitationPacks(reciterId, surahs).orEmpty()
+            else surahs.toSortedSet().flatMap { current?.recitationPacks(reciterId, it..it).orEmpty() }.distinct()
         val missing = current?.missing(needed).orEmpty()
         if (current == null || missing.isEmpty()) {
             waiting = null
             start()
-            current?.let { prefetchAfter(it, reciterId, surahs.last) }
+            surahs.maxOrNull()?.let { last -> current?.let { prefetchAfter(it, reciterId, last) } }
             return
         }
         // Asked for by the listener: one recitation is worth mobile data, Play asks above 200 MB.
@@ -208,7 +210,8 @@ internal fun quranSize(bytes: Long): String {
     else String.format(arabic, "%d ميغابايت", ((bytes + 999_999L) / 1_000_000L).coerceAtLeast(1L))
 }
 
-internal fun quranPercent(fraction: Float): String = String.format(Locale.ROOT, "%d%%", (fraction * 100).toInt())
+/** Isolated left to right: after Arabic letters, a bare «26%» would read «%26». */
+internal fun quranPercent(fraction: Float): String = ltr(String.format(Locale.ROOT, "%d%%", (fraction * 100).toInt()))
 
 /**
  * The mushaf's pages, until they are on the device: their size and a download button, the

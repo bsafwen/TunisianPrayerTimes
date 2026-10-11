@@ -1,0 +1,303 @@
+"""Generator for 05-dnd-crescent «هلال السكينة» Quiet Crescent.
+
+A fat crescent in the Do Not Disturb pose (hollow opening to the upper
+right) cradles a small upright Kairouan prayer rug.
+
+Usage: python -I gen.py            (writes the final layers + every _var)
+"""
+
+import math
+from pathlib import Path
+
+HERE = Path(__file__).parent
+
+
+def f(v):
+    s = f"{v:.2f}".rstrip("0").rstrip(".")
+    return "0" if s == "-0" else s
+
+
+# ---------------------------------------------------------------- geometry
+
+def crescent(c1, r1, r2, d, angle_deg):
+    """Crescent = circle(c1, r1) minus circle(c2, r2), c2 offset by d toward
+    angle_deg (screen degrees, 0 = right, -90 = up). Returns (path, c2)."""
+    ux, uy = math.cos(math.radians(angle_deg)), math.sin(math.radians(angle_deg))
+    c2 = (c1[0] + d * ux, c1[1] + d * uy)
+    a = (r1 * r1 - r2 * r2 + d * d) / (2 * d)
+    h = math.sqrt(r1 * r1 - a * a)
+    bx, by = c1[0] + a * ux, c1[1] + a * uy
+    px, py = -uy, ux  # perpendicular
+    p = (bx + h * px, by + h * py)
+    q = (bx - h * px, by - h * py)
+    inner_large = 1 if a > d else 0
+    path = (
+        f"M{f(p[0])} {f(p[1])}"
+        f"A{f(r1)} {f(r1)} 0 1 1 {f(q[0])} {f(q[1])}"
+        f"A{f(r2)} {f(r2)} 0 {inner_large} 0 {f(p[0])} {f(p[1])}Z"
+    )
+    return path, c2
+
+
+def rrect(x, y, w, h, r):
+    return (
+        f"M{f(x + r)} {f(y)}H{f(x + w - r)}"
+        f"A{f(r)} {f(r)} 0 0 1 {f(x + w)} {f(y + r)}V{f(y + h - r)}"
+        f"A{f(r)} {f(r)} 0 0 1 {f(x + w - r)} {f(y + h)}H{f(x + r)}"
+        f"A{f(r)} {f(r)} 0 0 1 {f(x)} {f(y + h - r)}V{f(y + r)}"
+        f"A{f(r)} {f(r)} 0 0 1 {f(x + r)} {f(y)}Z"
+    )
+
+
+def diamond(cx, cy, hw, hh):
+    return f"M{f(cx)} {f(cy - hh)}L{f(cx + hw)} {f(cy)}L{f(cx)} {f(cy + hh)}L{f(cx - hw)} {f(cy)}Z"
+
+
+cfg_loz_t = 1.9
+
+
+def rug_parts(cx, cy, w, body_h, fringe_h, n_tassels, tassel_w, loz, arch, core=0.0):
+    """Upright rug centred at (cx, cy). Returns dict of path strings."""
+    x0, y0 = cx - w / 2, cy - body_h / 2
+    body = rrect(x0, y0, w, body_h, 1.1)
+    # tassels: n rounded bars above and below the body, spread across the width
+    inset = 1.3
+    span = w - 2 * inset
+    step = (span - tassel_w) / (n_tassels - 1)
+    tassels = []
+    for i in range(n_tassels):
+        tx = x0 + inset + i * step
+        # top fringe overlaps the body by 0.6 so no hairline gap shows
+        tassels.append(rrect(tx, y0 - fringe_h, tassel_w, fringe_h + 0.6, tassel_w / 2))
+        tassels.append(rrect(tx, y0 + body_h - 0.6, tassel_w, fringe_h + 0.6, tassel_w / 2))
+    lw, lh = loz
+    lozenge = diamond(cx, cy + (1.2 if arch else 0), lw / 2, lh / 2)
+    inner = diamond(cx, cy + (1.2 if arch else 0), lw / 2 - cfg_loz_t, lh / 2 - cfg_loz_t * 1.3)
+    if core:
+        # a solid core diamond inside the hollow lozenge (evenodd: filled again)
+        inner += diamond(cx, cy + (1.2 if arch else 0), core, core * 1.25)
+    parts = {"body": body, "tassels": "".join(tassels), "lozenge": lozenge, "lozenge_in": inner}
+    if arch:
+        # a mihrab niche: pointed arch band near the top of the field
+        ax0, ax1 = x0 + 2.2, x0 + w - 2.2
+        ay = y0 + 6.2
+        top = y0 + 2.0
+        t = 1.4
+        mx = cx
+        outer = (
+            f"M{f(ax0)} {f(ay)}"
+            f"C{f(ax0)} {f(ay - 2.6)} {f(mx - 2.2)} {f(top + 0.8)} {f(mx)} {f(top)}"
+            f"C{f(mx + 2.2)} {f(top + 0.8)} {f(ax1)} {f(ay - 2.6)} {f(ax1)} {f(ay)}"
+            f"H{f(ax1 - t)}"
+            f"C{f(ax1 - t)} {f(ay - 1.9)} {f(mx + 1.6)} {f(top + t + 0.9)} {f(mx)} {f(top + t + 0.2)}"
+            f"C{f(mx - 1.6)} {f(top + t + 0.9)} {f(ax0 + t)} {f(ay - 1.9)} {f(ax0 + t)} {f(ay)}Z"
+        )
+        parts["arch"] = outer
+    return parts
+
+
+def sujud_parts(cfg, c2):
+    """A faceless figure in sujud on a horizontal rug strip, inside the hollow.
+    Local frame: x right, y up from the strip's top surface; origin at toes."""
+    ox, oy = cfg["fig_o"]
+    k = cfg["fig_k"]
+
+    def P(x, y):
+        return f"{f(ox + x * k)} {f(oy - y * k)}"
+
+    body = (
+        f"M{P(0, 0)}L{P(0, 2.4)}"
+        f"C{P(0.4, 3.6)} {P(1.6, 5.8)} {P(3.0, 8.2)}"      # heel/calf rising to the hips
+        f"C{P(3.6, 9.3)} {P(5.2, 9.4)} {P(6.2, 8.6)}"      # rounded hips (highest point)
+        f"C{P(8.0, 7.2)} {P(10.0, 5.6)} {P(11.2, 4.4)}"    # back sloping down to the shoulders
+        f"C{P(11.9, 3.7)} {P(12.2, 2.4)} {P(12.2, 1.2)}"   # shoulder rounding into the arm
+        f"L{P(12.4, 0)}Z"
+    )
+    hr = 1.9
+    hx, hy = 14.6, hr
+    head = (f"M{P(hx - hr, hy)}A{f(hr * k)} {f(hr * k)} 0 1 1 {P(hx + hr, hy)}"
+            f"A{f(hr * k)} {f(hr * k)} 0 1 1 {P(hx - hr, hy)}Z")
+    sx0, sx1 = ox - 2.2 * k, ox + 18.0 * k
+    th = cfg["strip_h"]
+    strip = rrect(sx0, oy, sx1 - sx0, th, 0.8)
+    fr = []
+    n, tw, fl = 2, 1.5, 2.3
+    for i in range(n):
+        ty = oy + 0.3 + i * (th - 0.6 - tw) / (n - 1)
+        fr.append(rrect(sx0 - fl, ty, fl + 0.6, tw, tw / 2))
+        fr.append(rrect(sx1 - 0.6, ty, fl + 0.6, tw, tw / 2))
+    return {"figure": body + head, "strip": strip, "fringe": "".join(fr),
+            "box": (sx0 - fl, oy - 9.4 * k, sx1 + fl, oy + th)}
+
+
+# ---------------------------------------------------------------- variants
+
+BASE = dict(
+    c1=(54.6, 53.6), r1=21.6, r2=16.2, d=11.2, angle=-45, gap=3.4,
+    rug_c=(60.4, 46.6), rug_w=13.6, body_h=16.6, fringe_h=2.7,
+    n_tassels=5, tassel_w=1.45, loz=(9.0, 11.2), core=1.1, arch=False,
+    bg=("#F2F7FC", "#D3E5F6"), moon="#1D5FA6", rug="#B5412F",
+    cream="#F6E9CF", fringe="#D3AD6F",
+)
+
+VARIANTS = {
+    "day": dict(),
+    "day-3t": dict(n_tassels=3, tassel_w=2.3, core=0.0, loz=(8.4, 10.4)),
+    "sujud": dict(mode="sujud", fig_o=(56.0, 50.0), fig_k=1.0, strip_h=3.4,
+                  figure="#1D5FA6"),
+    "blue": dict(bg=("#3F8AD6", "#1D5FA6"), moon="#FFFFFF", fringe="#F6E9CF"),
+}
+FINAL = "day"
+
+
+def build(cfg):
+    moon, c2 = crescent(cfg["c1"], cfg["r1"], cfg["r2"], cfg["d"], cfg["angle"])
+    if cfg.get("mode") == "sujud":
+        return build_sujud(cfg, moon, c2), c2
+    if cfg.get("gap"):
+        place_rug(cfg, c2, cfg["gap"])
+    rp = rug_parts(*cfg["rug_c"], cfg["rug_w"], cfg["body_h"], cfg["fringe_h"],
+                   cfg["n_tassels"], cfg["tassel_w"], cfg["loz"], cfg["arch"], cfg.get("core", 0.0))
+    top, bot = cfg["bg"]
+    head = '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">\n'
+    grad = (
+        '  <defs>\n'
+        '    <linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="54" y1="18" x2="54" y2="90">\n'
+        f'      <stop offset="0" stop-color="{top}"/>\n'
+        f'      <stop offset="1" stop-color="{bot}"/>\n'
+        '    </linearGradient>\n'
+        '  </defs>\n'
+    )
+    bg_body = '  <rect x="0" y="0" width="108" height="108" fill="url(#sky)"/>\n'
+    fg_body = (
+        f'  <path fill="{cfg["moon"]}" d="{moon}"/>\n'
+        f'  <path fill="{cfg["fringe"]}" d="{rp["tassels"]}"/>\n'
+        f'  <path fill="{cfg["rug"]}" d="{rp["body"]}"/>\n'
+        f'  <path fill="{cfg["cream"]}" fill-rule="evenodd" d="{rp["lozenge"]}{rp["lozenge_in"]}"/>\n'
+    )
+    if "arch" in rp:
+        fg_body += f'  <path fill="{cfg["cream"]}" d="{rp["arch"]}"/>\n'
+    mono_rug = rp["body"] + rp["lozenge"] + rp["lozenge_in"] + rp.get("arch", "")
+    mono_body = (
+        f'  <path fill="#000000" d="{moon}"/>\n'
+        f'  <path fill="#000000" d="{rp["tassels"]}"/>\n'
+        f'  <path fill="#000000" fill-rule="evenodd" d="{mono_rug}"/>\n'
+    )
+    return {
+        "background.svg": head + grad + bg_body + "</svg>\n",
+        "foreground.svg": head + fg_body + "</svg>\n",
+        "monochrome.svg": head + mono_body + "</svg>\n",
+        "icon.svg": head + grad + bg_body + fg_body + "</svg>\n",
+    }, c2
+
+
+def svg_head():
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">\n'
+
+
+def background(cfg):
+    top, bot = cfg["bg"]
+    grad = (
+        '  <defs>\n'
+        '    <linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="54" y1="18" x2="54" y2="90">\n'
+        f'      <stop offset="0" stop-color="{top}"/>\n'
+        f'      <stop offset="1" stop-color="{bot}"/>\n'
+        '    </linearGradient>\n'
+        '  </defs>\n'
+    )
+    return grad, '  <rect x="0" y="0" width="108" height="108" fill="url(#sky)"/>\n'
+
+
+def build_sujud(cfg, moon, c2):
+    sp = sujud_parts(cfg, c2)
+    x0, y0, x1, y1 = sp["box"]
+    gap = 99
+    for kk in range(3600):
+        t = 2 * math.pi * kk / 3600
+        p = (c2[0] + cfg["r2"] * math.cos(t), c2[1] + cfg["r2"] * math.sin(t))
+        if math.dist(p, cfg["c1"]) > cfg["r1"]:
+            continue
+        gap = min(gap, math.hypot(max(x0 - p[0], 0, p[0] - x1), max(y0 - p[1], 0, p[1] - y1)))
+    print(f"  sujud box gap (box, conservative) {gap:.2f}")
+    grad, bg = background(cfg)
+    fg = (
+        f'  <path fill="{cfg["moon"]}" d="{moon}"/>\n'
+        f'  <path fill="{cfg["fringe"]}" d="{sp["fringe"]}"/>\n'
+        f'  <path fill="{cfg["rug"]}" d="{sp["strip"]}"/>\n'
+        f'  <path fill="{cfg["figure"]}" d="{sp["figure"]}"/>\n'
+    )
+    mono = f'  <path fill="#000000" d="{moon}{sp["fringe"]}{sp["strip"]}{sp["figure"]}"/>\n'
+    h = svg_head()
+    return {"background.svg": h + grad + bg + "</svg>\n", "foreground.svg": h + fg + "</svg>\n",
+            "monochrome.svg": h + mono + "</svg>\n", "icon.svg": h + grad + bg + fg + "</svg>\n"}
+
+
+def rug_box(cfg):
+    cx, cy = cfg["rug_c"]
+    hw = cfg["rug_w"] / 2
+    hh = cfg["body_h"] / 2 + cfg["fringe_h"]
+    return cx - hw, cy - hh, cx + hw, cy + hh
+
+
+def clearance(cfg, c2):
+    """Smallest gap between the rug (fringe included) and the crescent ink."""
+    x0, y0, x1, y1 = rug_box(cfg)
+    best = 99.0
+    for k in range(3600):
+        t = 2 * math.pi * k / 3600
+        p = (c2[0] + cfg["r2"] * math.cos(t), c2[1] + cfg["r2"] * math.sin(t))
+        if math.dist(p, cfg["c1"]) > cfg["r1"]:
+            continue  # this part of the inner circle is open sky, not crescent edge
+        dx = max(x0 - p[0], 0, p[0] - x1)
+        dy = max(y0 - p[1], 0, p[1] - y1)
+        best = min(best, math.hypot(dx, dy))
+    return best
+
+
+def report(cfg, c2):
+    x0, y0, x1, y1 = rug_box(cfg)
+    sx = sy = n = 0
+    c1, r1, r2 = cfg["c1"], cfg["r1"], cfg["r2"]
+    for i in range(0, 1080, 2):
+        for j in range(0, 1080, 2):
+            x, y = i / 10, j / 10
+            ink = (math.dist((x, y), c1) <= r1 and math.dist((x, y), c2) > r2) or                   (x0 <= x <= x1 and y0 <= y <= y1)
+            if ink:
+                sx += x; sy += y; n += 1
+    far = max(math.dist((54, 54), (x, y)) for x in (x0, x1) for y in (y0, y1))
+    print(f"  c2=({c2[0]:.1f},{c2[1]:.1f}) rug=({cfg['rug_c'][0]:.1f},{cfg['rug_c'][1]:.1f}) "
+          f"clearance {clearance(cfg, c2):.2f}dp  centroid ({sx/n:.1f},{sy/n:.1f})  rug corner r={far:.1f}")
+
+
+def place_rug(cfg, c2, gap):
+    """Slide the rug from c2 along the opening direction until it clears the
+    crescent's inner edge by `gap` dp (plus any manual nudge)."""
+    ux, uy = math.cos(math.radians(cfg["angle"])), math.sin(math.radians(cfg["angle"]))
+    nx, ny = cfg.get("rug_nudge", (0, 0))
+    s = -6.0
+    while s < 12:
+        cfg["rug_c"] = (c2[0] + s * ux + nx, c2[1] + s * uy + ny)
+        if clearance(cfg, c2) >= gap:
+            return
+        s += 0.05
+
+
+def write(dirpath, files):
+    dirpath.mkdir(parents=True, exist_ok=True)
+    for name, text in files.items():
+        with open(dirpath / name, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(text)
+
+
+if __name__ == "__main__":
+    for name, over in VARIANTS.items():
+        cfg = {**BASE, **over}
+        files, c2 = build(cfg)
+        files.pop("icon.svg")
+        write(HERE / "_var" / name, files)
+        print(name)
+        if cfg.get("mode") != "sujud":
+            report(cfg, c2)
+    files, _ = build({**BASE, **VARIANTS[FINAL]})
+    write(HERE, files)
+    print("final =", FINAL)

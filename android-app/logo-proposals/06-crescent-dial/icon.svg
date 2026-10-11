@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <defs>
+    <radialGradient id="sky" cx="66" cy="40" r="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00695C"/>
+      <stop offset="0.45" stop-color="#004D40"/>
+      <stop offset="1" stop-color="#062A27"/>
+    </radialGradient>
+  </defs>
+  <!-- night sky, lit from where the next prayer sits -->
+  <rect width="108" height="108" fill="url(#sky)"/>
+  <!-- crescent: disc r27 minus disc r23 offset 12.5dp toward -38deg; tips rounded r1.9 -->
+  <path fill="#EEE7D8" d="M78.66,67.77A27,27 0 1,1 46.6,26.74A1.9,1.9 0 0,1 48.82,29.67A23,23 0 0,0 76.35,64.91A1.9,1.9 0 0,1 78.66,67.77Z"/>
+  <!-- four prayer marks completing the moon's circle -->
+  <path fill="#EEE7D8" d="M55.02,27.98A2.9,2.9 0 1,0 60.82,27.98A2.9,2.9 0 1,0 55.02,27.98ZM64.9,30.57A2.9,2.9 0 1,0 70.7,30.57A2.9,2.9 0 1,0 64.9,30.57ZM77.18,46.28A2.9,2.9 0 1,0 82.98,46.28A2.9,2.9 0 1,0 77.18,46.28ZM77.3,56.49A2.9,2.9 0 1,0 83.1,56.49A2.9,2.9 0 1,0 77.3,56.49Z"/>
+  <!-- the next prayer -->
+  <path fill="#D4AF37" d="M71.27,37.07A4.4,4.4 0 1,0 80.07,37.07A4.4,4.4 0 1,0 71.27,37.07Z"/>
+</svg>
