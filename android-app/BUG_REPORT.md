@@ -1,12 +1,13 @@
 # android-app bug report
 
-Date: 2026-10-10 (third revision: bugs reproduced on a Pixel 6, and a failing test added for each bug a test could show)
+Date: 2026-10-11 (fifth revision: the 21 confirmed bugs fixed, their 22 tests pass, and H1-H3 checked again on the Pixel 6 with the fixed build)
 
 ## Scope and method
 
 - **Target:** `android-app/`: main code under `app/src/main` (142 Kotlin files, about 52,000 non-blank lines), the Gradle build files, manifest, resources, bundled assets, and the release and capture scripts. Unit tests (`src/test`) and instrumented tests (`src/androidTest`) were not reviewed; one test was read as evidence for M3, and the silence tests were searched for midnight handling (M14).
 - **Code state:** the working tree as it is on disk. It has many uncommitted and untracked changes, so some findings may already be fixed in uncommitted work. By file timestamps, the only `android-app` files written on the day of the review (besides this report) are Quran audio, Quran and Hifz screens, Hifz logic, `MainActivity.kt` and a few tests, last written between 09:30 and 13:30, before the first review pass started. None of the files cited by H1-H4 and M1-M14 was among them, so their line numbers were stable during the review.
-- **No source edits:** no production source or build file was edited. Revisions 1 and 2 were read-only. In revision 3 the app was built, several bugs were reproduced on a Pixel 6, and 22 new tests were added under `app/src/test/java/com/tunisianprayertimes/bugreport/` (see "Tests"). "Verified" means traced in the source; the "Pixel 6" and "Test" lines say when a bug was also reproduced.
+- **Source edits:** revisions 1 to 3 changed no production source or build file. Revisions 1 and 2 were read-only. In revision 3 the app was built, several bugs were reproduced on a Pixel 6, and 22 new tests were added under `app/src/test/java/com/tunisianprayertimes/bugreport/` (see "Tests"). Revision 4 fixed the 21 confirmed findings in production code; no build file was changed. "Verified" means traced in the source; the "Pixel 6" and "Test" lines say when a bug was also reproduced, and a "Fixed" line says how it was fixed.
+- **Line numbers** in the Location lines are those before the revision 4 fixes.
 - **Method:** parallel read-only review passes over code slices, followed by my own checks. In the first revision I re-read the code behind every High and Medium finding and most Low ones. In the second I read most of the silence system, the Quran pack code, the analytics code and the wake mini-games directly. In the third I reproduced H1-H3 on the user's Pixel 6 and wrote a test for each finding a unit test could show. Many review passes returned no result, even after retries. Those areas are listed under "Coverage" and were **not** reviewed.
 - **Paths:** source files are relative to `app/src/main/java/com/tunisianprayertimes/` unless the path starts with `app/`, `android-app/` or `multiplatform/`.
 - **Line numbers** are the numbers the file-reading tool shows, which match an editor. Some line counts given to the review passes came from a counter that skips blank lines. The real counts are 7,062 for `ui/MainScreen.kt` (not 6,765), 4,056 for `ui/WakeEditorSheet.kt` (not 3,861) and 2,744 for `ui/QuranScreen.kt` (not 2,703).
@@ -17,7 +18,8 @@ Status:
 
 Evidence lines under a finding:
 - **Pixel 6:** the bug was reproduced on the user's Pixel 6 (Android 16), see "Reproduction on a Pixel 6".
-- **Test:** a test in `bugreport/` asserts the correct behavior and fails because of the bug, see "Tests".
+- **Test:** a test in `bugreport/` asserts the correct behavior and failed because of the bug, see "Tests".
+- **Fixed:** what revision 4 changed. The finding's test passes after the change.
 
 Severity:
 - **High:** the app leaves alarms, silence, or settings in a wrong state, or misbehaves visibly, in ordinary use.
@@ -43,7 +45,9 @@ Most important:
 
 Also worth attention: a wake alarm can be dropped in one specific combination (M1), and the Ramadan override stays on after Ramadan and deletes the user's Isha end offset (M3). The shared-sheet `+`/`-` bug (formerly H4) is now L30: the sheet cannot be opened from the app.
 
-20 findings are shown by 22 failing tests, and 3 were reproduced on the Pixel 6 (see "Tests" and "Reproduction on a Pixel 6").
+20 findings are shown by 22 tests, and 3 were reproduced on the Pixel 6 (see "Tests" and "Reproduction on a Pixel 6").
+
+**Fixed in revision 4:** the 21 confirmed findings, meaning those shown by a test or reproduced on the Pixel 6: H1-H4, M1, M3, M5-M9, M11, M12, M14, L5, L12, L15, L20 and L28-L30. Their 22 tests pass, and none of the fixes adds a failure to the rest of the unit tests (see "Tests"). The three bugs reproduced on the Pixel 6 (H1-H3) were run again there with the fixed build, and all three now behave correctly, H1 also through a real reboot (see "Validation on the Pixel 6"). The other 27 findings (M2, M4, M10, M13 and 23 Low ones) are not fixed.
 
 ---
 
@@ -51,8 +55,9 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### H1. Timed manual silence is not re-armed after a reboot
 - **Status:** Verified
+- **Fixed:** `ManualSilenceScheduler.restoreTimer` ends a manual silence whose end has passed, or re-arms its end alarm. `BootReceiver.refreshSchedules` calls it before anything else, and `TunisianPrayerTimesApplication` calls it on every process start, which also covers a force-stop once the app runs again. Checked on the Pixel 6 after a force-stop and after a real reboot: the silence ended at its set time both times (see "Validation on the Pixel 6").
 - **Pixel 6:** reproduced, with a force-stop instead of a reboot (both clear the app's alarms). At 19:55:26 a 2-minute manual silence was on, its end was stored for 19:57:23, and its end alarm was armed. After `am force-stop` the app had no alarms left. At 19:58:33 the phone was still in DND with the ringer silent (`zen_mode=2`, `mode_ringer=0`), and `manual_silence_active` was still true. Opening the app ended it (19:58:49).
-- **Test:** `SilenceBugsTest.H1_bootRearmsAnUnexpiredTimedManualSilence` and `H1_bootEndsAManualSilenceThatExpiredDuringTheReboot` fail: `BootReceiver.refreshSchedules` neither re-arms the end alarm nor ends an expired silence.
+- **Test:** `SilenceBugsTest.H1_bootRearmsAnUnexpiredTimedManualSilence` and `H1_bootEndsAManualSilenceThatExpiredDuringTheReboot` failed before the fix: `BootReceiver.refreshSchedules` neither re-arms the end alarm nor ends an expired silence.
 - **Location:** `ManualSilenceScheduler.kt:23-43` and `:51-62`; `BootReceiver.kt:48-54`; `ScheduleRefreshCoordinator.kt:93-110`; `TunisianPrayerTimesApplication.kt:39-52`; `ui/MainScreen.kt:448-508` and `:978-1008`
 - **Problem:** A timed or "until prayer" manual silence ends through one exact AlarmManager broadcast. Alarms are cleared by a reboot (and by force-stop), but the preferences still say manual silence is active, and the ringer and DND state normally persist. Nothing re-arms the end alarm. `BootReceiver` runs `HifzReminder.refresh`, `ScheduleRefreshCoordinator.syncAll` (Adhkar, prayer silence, wake alarms) and the Ramadan check, and none of them calls `ManualSilenceScheduler`. The shared `TimerScheduler` and `SilenceController` do not cover it either. `syncExpiredTimer`, which ends an expired manual silence, runs only from wake and awake-check paths and when the main screen opens (`MainScreen.kt:449`). If the app is opened before the end time, the end is handled by an in-app wait (`:497-508`) that lasts only while the screen stays open.
 - **Impact:** After a reboot during a timed manual silence, the phone stays silent or in DND past the chosen end until the app is opened after that time, or a wake alarm runs. The Application already re-arms Adhkar and Hifz reminders on process start for this reason (`TunisianPrayerTimesApplication.kt:42-44`), but not the manual silence end.
@@ -60,13 +65,14 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### H2. Nap silence ("silent until alarm") is saved and restored incorrectly around prayer silence windows
 - **Status:** Verified
+- **Fixed:** the three silences now share one saved state, and only the strongest one acts (manual over a prayer window over a nap). A silence that starts while another is on copies the state that one saved, not the current silenced state (`NapSilenceController.enableNapSilence`, `SilenceModeController.enableAutoSilence` and `setManualSilent`). A window or manual silence that ends while a nap is pending hands its saved state to the nap and keeps the phone silenced (`NapSilenceController.takeOverSilence`), so the nap's alarm restores the state from before any silence. Checked on the Pixel 6 with the real Asr window: the phone stayed silent until the nap alarm and then returned to normal, and the app's DND mode was left inactive (see "Validation on the Pixel 6").
 - **Pixel 6:** reproduced with the installed `.dev` build and the real Isha silence window (19:16-19:46).
   - 19:16:27: a quick timer (vibration only, "silence the phone until the alarm rings", ringing at 19:49:17) was saved during the window. The app stored `nap_previous_ringer_mode=0` (silent) and `nap_previous_interruption_filter=3` (none), the window's silenced state.
   - 19:46:12: the window ended and the phone went back to normal (`zen_mode=0`) while the nap alarm was still pending, so the nap silence was lost.
   - 19:49:28: the alarm rang, and the app put the stored silenced state back (`zen_mode=1`, `mode_ringer=0`).
   - After the alarm was stopped, and one minute later, the phone stayed in DND with the ringer silent. No app flag was set, so nothing would restore it.
   - On Android 16 this shows in Settings > Modes as "عدم الإزعاج (أوقات الصلاة تونس)", active and managed by the app. `adb shell cmd notification set_dnd off` could not clear it; turning the mode off in Settings did.
-- **Test:** `SilenceBugsTest.H2_napCreatedDuringPrayerWindowLeavesPhoneNormalAfterItRings` and `H2_napRingingDuringPrayerWindowLeavesPhoneNormalAfterWindow` fail: the ringer ends silent instead of normal.
+- **Test:** `SilenceBugsTest.H2_napCreatedDuringPrayerWindowLeavesPhoneNormalAfterItRings` and `H2_napRingingDuringPrayerWindowLeavesPhoneNormalAfterWindow` failed before the fix: the ringer ends silent instead of normal.
 - **Location:** `wake/WakeAlarmScheduler.kt:51-95` and `:129-130`; `nap/NapSilenceController.kt:10-49`; `SilenceModeController.kt:53-101`; `ui/MainScreen.kt:1319-1329`; `SilenceReceiver.kt:61-85`
 - **Problem:** Silence-until-alarm is activated only for "from now" alarms (`ui/MainScreen.kt:1319-1323`). Saving one calls `activateSilenceUntilAlarm`, which starts the nap silence without checking whether auto or manual silence is already on, and `MainScreen.kt:1319-1329` does not check either. `enableNapSilence` stores the current ringer mode and DND filter as the state to restore, which during a prayer window is the already-silenced state. When the window ends, `disableAutoSilence` restores normal mode and the nap silence is lost while its alarm is still pending. When the alarm rings, `releaseSilenceForRingingAlarm` calls `disableNapSilence`, which restores the stored silenced state. Separately, `releaseSilenceForRingingAlarm` and `removeSilenceUntilAlarm` call `disableNapSilence` only when `shouldUseWakeSilence` is true (no auto and no manual silence), so a nap alarm that rings or is removed during a window leaves the nap state in place.
 - **Impact:** A nap alarm created during a prayer silence window (for example right after Dhuhr) can leave the phone silent with DND on after the alarm. On the Pixel 6 it stayed on as a DND mode owned by the app until it was turned off in Settings > Modes. Each later window records that state as its "previous" state and restores it. The `forceNormalMode` fallback in `SilenceReceiver` (`:75-83`) runs only when the auto flag was already cleared, so the stuck state can last until the user fixes it.
@@ -74,6 +80,7 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### H3. The ringtone preview keeps playing after the app is backgrounded
 - **Status:** Verified
+- **Fixed:** `WakeRingtoneSelector` (`ui/WakeEditorSheet.kt`) stops the preview on `ON_STOP` with `LifecycleEventEffect`, which also resets the button. Checked on the Pixel 6: after Home the preview stops within 3 s, and the button resets (see "Validation on the Pixel 6").
 - **Pixel 6:** reproduced. A ringtone preview was started in the alarm editor and Home was pressed. At 19:08:03, about 21 seconds later, the launcher was in front and the app's `MediaPlayer` (uid 10651) was still `state:started` with `usage=USAGE_ALARM` in `dumpsys audio`. Back in the app, the button still read "إيقاف المعاينة" (stop preview).
 - **Test:** none. The bug needs a running activity that goes to the background, so it was reproduced on the device instead of in a unit test.
 - **Location:** `wake/WakeRingtonePreviewPlayer.kt:23` and `:62` (`isLooping = true`); `ui/WakeEditorSheet.kt:3330-3359` (stop paths) and `:1627-1633` (the only lifecycle observer, `ON_RESUME`)
@@ -83,7 +90,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### H4. A tap on the silence slider track can save a stale config
 - **Status:** Verified
-- **Test:** `SilenceUiBugsTest.H4_trackTapUsesTheLatestCommitCallback` fails: the tap commits through the first composition's callback (`[1]` instead of `[2]`). The test also showed the condition: the slider must already have had a touch (for example the tap on a handle that opens the endpoint editor), most likely because Compose starts the `pointerInput` coroutine, with the lambda of that moment, on the first touch. A first touch after the config change gets the new callback.
+- **Fixed:** the slider reads `onCommitWindow` and `onEditEndpoint` through `rememberUpdatedState`, and every tap, drag-end, nudge and accessibility action uses those.
+- **Test:** `SilenceUiBugsTest.H4_trackTapUsesTheLatestCommitCallback` failed before the fix: the tap commits through the first composition's callback (`[1]` instead of `[2]`). The test also showed the condition: the slider must already have had a touch (for example the tap on a handle that opens the endpoint editor), most likely because Compose starts the `pointerInput` coroutine, with the lambda of that moment, on the first touch. A first touch after the config change gets the new callback.
 - **Location:** `ui/PrayerSilenceRangeSlider.kt:218-221`, `:574`, `:621`, `:645-648`; `ui/MainScreen.kt:5681-5686`
 - **Problem:** The slider reads `window`, `config`, `canAdjust` and `onPreviewWindow` through `rememberUpdatedState`, but not `onCommitWindow`. The tap handler is installed with `pointerInput(canAdjust, prayerTime, scale, constraints.maxWidth)`, so its closure is replaced only when one of those keys changes, and `handleTrackTap` calls the `onCommitWindow` from the older composition. In `MainScreen.kt` that lambda builds the saved config from the `config` captured when it was created (`prayerTimelineConfigForWindow(validPrayerTime, config, candidate)`). If a rule mode or another config field changes through the editor or the shared sheet without changing the resolved window or the scale, the next track tap saves the old config with the new window. Dragging is not affected, because its gesture key includes `config` (`:621`).
 - **Impact:** A saved rule mode (for example a fixed end) or another silence setting can silently revert.
@@ -95,7 +103,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M1. A wake alarm can be dropped by a second silence check in the playback service
 - **Status:** Verified (code path); needs an unusual combination
-- **Test:** `WakeAndPrefsBugsTest.M1_alarmAllowedOverPrayerWindowIsPlayedWhileAnotherNapIsPending` fails: after the receiver's lift, the playback service drops the alarm (the queue stays empty).
+- **Fixed:** after lifting a prayer window for an alarm allowed to ring over it, `WakeAutoSilenceConflictController` pauses a pending nap's silence for that alarm (`WakeAlarmScheduler.pauseSilenceForRingingAlarm`), so the service finds no app silence and plays it. The nap's silence resumes when that alarm stops.
+- **Test:** `WakeAndPrefsBugsTest.M1_alarmAllowedOverPrayerWindowIsPlayedWhileAnotherNapIsPending` failed before the fix: after the receiver's lift, the playback service drops the alarm (the queue stays empty).
 - **Location:** `wake/WakeAlarmReceiver.kt:42-74`; `wake/WakePlaybackService.kt:56-69`; `wake/WakeAutoSilenceConflictController.kt:13-56`; `SilenceStatus.kt:21-30`; `wake/WakeAlarmScheduler.kt:116-119` and `:794`
 - **Problem:** For an alarm that may ring over a prayer silence window (flagged when it is scheduled, or at fire time for "from now" alarms), the receiver lifts the auto-silence and then starts `WakePlaybackService`. The service repeats the lift, which now returns false because the auto flag is already cleared, and stops without playing if `isAppControlledSilenceActive` is true. That holds when another silence-until-alarm is still pending and the DND filter restored by the lift is still "none", which happens when the window started during that nap (the window recorded the nap's silenced state as its previous state, see H2).
 - **Impact:** That alarm never rings and shows no notification.
@@ -111,7 +120,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M3. The Ramadan Isha override is never reverted and deletes the user's Isha end offset
 - **Status:** Verified (code); intended lifetime not confirmed
-- **Test:** `WakeAndPrefsBugsTest.M3_ramadanIshaOverrideIsRevertedAfterRamadan` fails: after Ramadan, Isha stays at 90 minutes.
+- **Fixed:** `applyRamadanIshaOverrideIfNeeded` saves the user's Isha after-minutes and end offset before writing 90, and restores them the first time it runs after that Ramadan. Any Isha edit drops the saved values, so a change made during Ramadan is kept. Values already overwritten in earlier years cannot be recovered.
+- **Test:** `WakeAndPrefsBugsTest.M3_ramadanIshaOverrideIsRevertedAfterRamadan` failed before the fix: after Ramadan, Isha stays at 90 minutes.
 - **Location:** `PrefsManager.kt:384-426`; callers `SilenceScheduler.kt:178` and `TunisianPrayerTimesApplication.kt:65`; test `app/src/test/java/com/tunisianprayertimes/PrefsManagerTest.kt:183-200`
 - **Problem:** The first time Ramadan is detected in a Hijri year, `applyRamadanIshaOverrideIfNeeded` writes Isha after-minutes as 90 when the stored value is below 90 (the default is 30), and deletes the Isha adhan-relative end offset. Nothing restores either value after Ramadan; the only other writer is the user's own edit (`PrefsManager.setConfig`, `:535-550`). The doc comment calls it a "one-time" override, but the older test `ishaDefaultDuringRamadan_returns90` expects `getAfterMinutes` to return 90 during Ramadan even after saving 30, which the current code does not do (that test would fail during Ramadan).
 - **Impact:** Users who never changed Isha get a 90-minute post-Isha silence for the rest of the year, and a custom Isha end offset is removed each Ramadan without notice.
@@ -126,14 +136,16 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M5. Friday "until prayer" ignores a custom Jomoaa time
 - **Status:** Verified (code); intended behavior not confirmed
-- **Test:** `LogicBugsTest.M5_untilDhuhrOnFridayEndsAtTheCustomJomoaaTime` fails: with Jomoaa set to 13:15, "until Dhuhr" ends at Dhuhr's time, 63 minutes early. The test calls the private function through reflection.
+- **Fixed:** the manual silence candidates come from `scheduledPrayers` for each day, with Friday's Jomoaa standing for the card's Dhuhr (`manualSilencePrayers` in `ui/MainScreen.kt`). The labels still say Dhuhr on Fridays.
+- **Test:** `LogicBugsTest.M5_untilDhuhrOnFridayEndsAtTheCustomJomoaaTime` failed before the fix: with Jomoaa set to 13:15, "until Dhuhr" ends at Dhuhr's time, 63 minutes early. The test calls the private function through reflection.
 - **Location:** `ui/MainScreen.kt:6636-6672`, `:2738-2749`; `multiplatform/shared/src/commonMain/kotlin/com/tunisianprayertimes/PrayerModels.kt:31-41`
 - **Problem:** `resolveUpcomingManualSilencePrayer` and `resolveManualSilencePrayerEndMillis` build their candidates from `allPrayers()`, which has Dhuhr but no Jomoaa. Friday silence scheduling and the timeline use `scheduledPrayers(...)`, where Jomoaa replaces Dhuhr. With a custom Jomoaa after Dhuhr (the default Jomoaa time equals Dhuhr), the default target chosen between Dhuhr and Jomoaa is Asr, and "until Dhuhr" ends at the Dhuhr time, before the Friday prayer.
 - **Fix:** Build the candidates from `scheduledPrayers(isFriday, jomoaaHour, jomoaaMinute)`.
 
 ### M6. Deleting an alarm leaves its awake check scheduled
 - **Status:** Verified
-- **Test:** `WakeAndPrefsBugsTest.M6_deletingAnAlarmCancelsItsPendingAwakeCheck` fails: the awake-check alarm is still scheduled after the delete.
+- **Fixed:** `PrayerWakeRepository.deleteWakeAlarm` cancels the awake checks of the alarm and its extra alarms, except for a completed one-off removed by the expiry cleanup, whose last check must still run.
+- **Test:** `WakeAndPrefsBugsTest.M6_deletingAnAlarmCancelsItsPendingAwakeCheck` failed before the fix: the awake-check alarm is still scheduled after the delete.
 - **Location:** `wake/PrayerWakeRepository.kt:169-185` and `:117-133`; `wake/AwakeCheckReceiver.kt:30-82`; `wake/WakeDismissalCoordinator.kt:42`; `ui/MainScreen.kt:1349-1357`
 - **Problem:** Dismissing an alarm schedules its awake check. `saveWakeConfig` and `stopWakeAlarm` cancel it, but `deleteWakeAlarm` and the delete handler in `MainScreen.kt` do not. When the check fires, `AwakeCheckReceiver` finds no config and starts the check, because a missing config is expected for completed one-off alarms (`:59-60`).
 - **Impact:** An "are you awake?" alarm rings for an alarm the user deleted, if it is deleted while a check is pending.
@@ -141,7 +153,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M7. A paused silence-until-alarm is not re-applied while auto-silence is on
 - **Status:** Verified
-- **Test:** `SilenceBugsTest.M7_pausedNapIsReappliedAfterPrayerWindowEnds` fails: after the window, the pending nap's silence is not active.
+- **Fixed:** a prayer or manual silence no longer blocks `resumeSilenceUntilNextAlarm`: the nap silence is re-applied with that silence's saved state, and gets the phone back when that silence ends (see H2). The service also resumes after it drops a queued alarm.
+- **Test:** `SilenceBugsTest.M7_pausedNapIsReappliedAfterPrayerWindowEnds` failed before the fix: after the window, the pending nap's silence is not active.
 - **Location:** `wake/WakeAlarmScheduler.kt:97-119`; `wake/WakePlaybackService.kt:43` and `:147`
 - **Problem:** `resumeSilenceUntilNextAlarm` returns early while auto or manual silence is on and leaves the pause marker set, so `isSilenceUntilAlarmActive` reports false. It is called only when the wake playback service stops.
 - **Impact:** If a prayer window is active when one nap alarm's playback stops, the silence for another pending nap alarm is not re-applied afterwards.
@@ -149,7 +162,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M8. Saving from an open editor writes back a stale snapshot
 - **Status:** Verified (code path); needs a stop or skip while the editor is open
-- **Test:** `WakeAndPrefsBugsTest.M8_savingAStaleEditorSnapshotKeepsTheStoppedOccurrence` fails: the stopped occurrence is null after the save.
+- **Fixed:** when the schedule is unchanged, `saveWakeConfig` keeps the skip and stop markers of the stored record, and it clears the skip registry only when the schedule changes or the alarm is disabled.
+- **Test:** `WakeAndPrefsBugsTest.M8_savingAStaleEditorSnapshotKeepsTheStoppedOccurrence` failed before the fix: the stopped occurrence is null after the save.
 - **Location:** `ui/WakeEditorSheet.kt:353` and `:446`; `wake/PrayerWakeRepository.kt:100-116` and `:128`; `wake/WakeAlarmScheduler.kt:231-266`
 - **Problem:** The draft is `initialConfig.copy(...)`, where `initialConfig` was copied when the editor opened. `saveWakeConfig` takes the skip and stop markers from the config it is given, unless the schedule changed. If an occurrence is stopped while the editor is open (for example the alarm rings and is stopped), Save writes the old markers back and clears the skip registry.
 - **Impact:** The stopped or skipped occurrence can come back, and its remaining extra alarms can ring again.
@@ -157,7 +171,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M9. A one-time prayer-relative alarm saved after midnight can be set a day late
 - **Status:** Verified (code); needs an offset that reaches past midnight
-- **Test:** `WakeAndPrefsBugsTest.M9_oneTimePrayerRelativeAlarmSavedAfterMidnightRingsTonight` fails: with the local clock at 00:10, an alarm due in 30 minutes is pinned 1,468 minutes ahead (run on 2026-10-10; the number depends on the day's Isha times). The test calls the private `resolveOneTimeWakeTrigger` through reflection.
+- **Fixed:** `resolveOneTimeWakeTrigger` uses the preview's prayer days (`loadWakePreviewPrayerDays`, from yesterday), as the scheduler does.
+- **Test:** `WakeAndPrefsBugsTest.M9_oneTimePrayerRelativeAlarmSavedAfterMidnightRingsTonight` failed before the fix: with the local clock at 00:10, an alarm due in 30 minutes is pinned 1,468 minutes ahead (run on 2026-10-10; the number depends on the day's Isha times). The test calls the private `resolveOneTimeWakeTrigger` through reflection.
 - **Location:** `ui/WakeEditorSheet.kt:3868-3906` (day 0 start at `:3880`) and `:3781-3788` (preview, day -1 start); `multiplatform/shared/src/commonMain/kotlin/com/tunisianprayertimes/WakeAlarmComputer.kt:106-113` and `:195`
 - **Problem:** The save path pins `oneOffTriggerAtMillis` using prayer days that start at day 0, while the preview and the scheduler start at day -1 (yesterday's prayer). For ONCE alarms the pinned trigger is what the computer uses. For example, "Isha + 3 hours" saved at 00:10 previews 00:30 today but is pinned to 00:30 tomorrow.
 - **Impact:** The alarm rings about 24 hours later than the preview showed. Re-saving such an alarm in that window moves it again.
@@ -172,7 +187,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M11. The overlap warning misses an earlier silence start on the next prayer
 - **Status:** Verified
-- **Test:** `SilenceBugsTest.M11_unsilenceOfOnePrayerKeepsOverlappingWindowSilenced` fails: Maghrib's end restores normal mode while Isha's window is still active.
+- **Fixed:** an UNSILENCE alarm keeps the silence while another enabled window, an Eid or carried-over one included, contains the current time (`SilenceScheduler.isOtherSilenceWindowActive`); that window's own end alarm ends it. The overlap warning also compares with the next prayer's window start, as well as its adhan.
+- **Test:** `SilenceBugsTest.M11_unsilenceOfOnePrayerKeepsOverlappingWindowSilenced` failed before the fix: Maghrib's end restores normal mode while Isha's window is still active.
 - **Location:** `ui/MainScreen.kt:5640-5648`; `SilenceScheduler.kt:274-277`; `SilenceReceiver.kt:75-76`
 - **Problem:** The warning compares a window's end with the next prayer's adhan time (`window.endMinutes > nextMinute`). If the next prayer's silence starts before its adhan (negative start offset), the windows can overlap with no warning. The scheduler does not merge overlapping windows: each prayer's end alarm is scheduled on its own (`SilenceScheduler.kt:274-277`), and each UNSILENCE alarm calls `disableAutoSilence`, which restores normal mode without checking for another active window.
 - **Impact:** The earlier end can cut the later window short.
@@ -180,7 +196,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M12. A GPS fix in some border sectors turns prayer silencing off for hours
 - **Status:** Verified (gate logic and data)
-- **Test:** `LogicBugsTest.M12_fixInsideBorderSectorIsNotOutsideTunisia` fails: `resolveGpsLocation(33.305522, 7.765197)` returns `OutsideTunisia`, while `isInsideTunisiaBounds`, which the verify worker uses, counts the point as inside. By the app's own `neighborhoods.bin`, the point is inside the El Matrouha sector polygon (`osm:relation:7082336`, about 3.5 km from its edge) and about 1.6 km outside the country outline. The test expects such a fix to count as Tunisia, as the widened border does; if the chosen fix is to use the strict outline everywhere, the test has to change.
+- **Fixed:** the GPS gate and `SilenceVerifyWorker` share one test, `isInsideTunisia` (`DelegationLocator.kt`): inside the widened border or the country outline. Fixes up to about 0.3° outside the outline now get the nearest Tunisian timetable instead of "outside Tunisia", without a locality name.
+- **Test:** `LogicBugsTest.M12_fixInsideBorderSectorIsNotOutsideTunisia` failed before the fix: `resolveGpsLocation(33.305522, 7.765197)` returns `OutsideTunisia`, while `isInsideTunisiaBounds`, which the verify worker uses, counts the point as inside. By the app's own `neighborhoods.bin`, the point is inside the El Matrouha sector polygon (`osm:relation:7082336`, about 3.5 km from its edge) and about 1.6 km outside the country outline. The test expects such a fix to count as Tunisia, as the widened border does; if the chosen fix is to use the strict outline everywhere, the test has to change.
 - **Location:** `DelegationLocator.kt:221-237` (gate at `:229-230`) and `:36-87` (the widened border polygon); `SilenceVerifyWorker.kt:106-130`; `ScheduleRefreshCoordinator.kt:70-73`; `ui/MainScreen.kt:1722-1731`
 - **Problem:** A fix inside a sector polygon but outside the country outline returns `OutsideTunisia`, because the locator prefers the polygon index when it loads. The picker then cancels all silence alarms and sets the outside flag (`ui/MainScreen.kt:1722-1731`), which blocks rescheduling. Restoration waits for `SilenceVerifyWorker` (about every 6 hours), which tests only `isInsideTunisiaBounds` (`:129`): a coarse border polygon widened by about 0.3° for GPS error, while the index outline used by the gate has no margin. The review pass reported that one sector (`osm:relation:7082336`) extends past the outline, and decoding the bundled geometry confirms it (see Test).
 - **Impact:** Prayer silencing can stay off for hours while the user sees "outside Tunisia".
@@ -194,7 +211,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### M14. A silence window that crosses midnight is ended at 00:01
 - **Status:** Verified (code)
-- **Test:** `SilenceBugsTest.M14_windowThatEndsAfterMidnightSurvivesTheMidnightReschedule` fails: the 00:01 run ends a window configured to last until 01:00.
+- **Fixed:** `scheduleAllInternal` also evaluates yesterday's windows that end after midnight (`carriedOverWindows`), keeps their silence and sets their end alarm again; a reschedule just after that end sets today's alarm for the same prayer back. `currentSilenceWindowPrayer` and `currentSilenceWindowEnd` see these windows too. The shared `SilenceAlarmComputer` (desktop app) still looks at today's prayers only.
+- **Test:** `SilenceBugsTest.M14_windowThatEndsAfterMidnightSurvivesTheMidnightReschedule` failed before the fix: the 00:01 run ends a window configured to last until 01:00.
 - **Location:** `SilenceScheduler.kt:172-199` (only today's prayers are evaluated), `:243-277` (window check and end alarms), `:295-306` (restore when no window is active), `:321` and `:450-465` (midnight reschedule at 00:01), `:402-418` (alarms with the same identity replace each other), `:609-630` (`resolveUnsilenceTime`); `SilenceReceiver.kt:107-127`; `ui/PrayerTimelineModel.kt:147-173`; `ui/MainScreen.kt:2331` and `:5640-5648`; `multiplatform/shared/src/commonMain/kotlin/com/tunisianprayertimes/SilenceAlarmComputer.kt:43-95`; contrast `EidSilenceWindows.kt:23-42` and `:66-75`
 - **Problem:** The editor and the scheduler both allow a window to end after midnight: a fixed end earlier than the start rolls to the next day (`resolveUnsilenceTime`, `resolvePrayerTimelineWindow`), an adhan-relative end can resolve past 1,440 minutes, and the overlap warning for Isha compares with tomorrow's Fajr. But `scheduleAllInternal` evaluates only today's prayers, and only Eid windows are carried over from the day before. At 00:01 a window that began yesterday is therefore not "in a window". The function ends the silence (`disableAutoSilence`), and it re-schedules today's end alarm for that prayer, which replaces the pending one because `setAlarmClock` treats the same `PendingIntent` as the same alarm. The 00:01 reschedule is set on every run, and any later refresh after midnight (opening the app, boot, a time change) does the same. The shared `SilenceAlarmComputer` model has the same shape, and the silence tests I searched have no case for a window that crosses midnight.
 - **Trigger:** A custom Isha (or other late) window that ends after midnight, for example a fixed end of 01:00.
@@ -231,7 +249,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### L5. Switching an adhan-relative start to "Fixed" can move it a day
 - **Status:** Verified (code); narrow
-- **Test:** `LogicBugsTest.L5_fixingAPreviousDayStartKeepsItOnThePreviousDay` fails: a start 7 hours before a 06:00 adhan (-60, 23:00 the day before) becomes 1380 (23:00 on the prayer's own day) after the switch to Fixed.
+- **Fixed:** `withStartRule` converts a start to Fixed only when its clock time falls on the prayer's own day, the only kind of fixed start the scheduler can represent; otherwise the start stays adhan-relative. Tapping Fixed then does nothing, with no message.
+- **Test:** `LogicBugsTest.L5_fixingAPreviousDayStartKeepsItOnThePreviousDay` failed before the fix: a start 7 hours before a 06:00 adhan (-60, 23:00 the day before) becomes 1380 (23:00 on the prayer's own day) after the switch to Fixed.
 - **Location:** `ui/PrayerSilenceEditorSheet.kt:181-198`; `ui/PrayerTimelineModel.kt:115-128` and `:153-173`
 - **Problem:** The resolved start can be negative (for example -60 for a 06:00 prayer whose start is 7 hours before adhan). `withStartRule` reduces it with `Math.floorMod` to 23:00 and stores it as a fixed clock time, which `resolvePrayerTimelineWindow` reads as 23:00 on the prayer's own day, so the start moves 24 hours later instead of staying on the previous day.
 - **Fix:** Warn or block when the resolved start falls on the previous day.
@@ -274,7 +293,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### L12. An extra alarm shows "same as main sound" when only the progressive volume differs
 - **Status:** Verified
-- **Test:** `LogicBugsTest.L12_progressiveVolumeDifferenceIsNotTheSameSound` fails: `soundMatches` returns true for an extra alarm that differs from the main sound only in progressive volume.
+- **Fixed:** `soundMatches` compares `progressiveVolume` too.
+- **Test:** `LogicBugsTest.L12_progressiveVolumeDifferenceIsNotTheSameSound` failed before the fix: `soundMatches` returns true for an extra alarm that differs from the main sound only in progressive volume.
 - **Location:** `ui/WakeExtraAlarmRules.kt:126-138`; `ui/WakeEditorSheet.kt:2393`, `:2503`, `:2234`
 - **Problem:** `withSoundOf` copies `progressiveVolume`, but `soundMatches` does not compare it. The sheet then hides the "use main sound" reset and drops the sound detail from the timeline, while the alarm uses its own volume ramp.
 - **Fix:** Include `progressiveVolume` in `soundMatches`.
@@ -293,7 +313,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### L15. The shared sheet's minute field refills with "0" when cleared
 - **Status:** Verified (code and test); latent, because the app cannot open the shared sheet (see L30)
-- **Test:** `SilenceUiBugsTest.L15_clearedMinuteFieldStaysEmpty` fails: right after the field is cleared it shows "0". The test renders the sheet directly.
+- **Fixed:** the shared sheet's minute fields show the typed text, so a cleared field stays empty and keeps its direction; Apply stays disabled until it holds a number.
+- **Test:** `SilenceUiBugsTest.L15_clearedMinuteFieldStaysEmpty` failed before the fix: right after the field is cleared it shows "0". The test renders the sheet directly.
 - **Location:** `ui/SharedSilenceSettingsSheet.kt:202`, `:211`, `:384`
 - **Problem:** The shown value is derived from the parsed offset (`startOffset ?: 0`, `endOffset ?: 0`), not from the typed text, so clearing the field refills it with "0" at once and the user cannot retype from an empty field.
 - **Fix:** Keep the typed text in local state.
@@ -324,7 +345,8 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### L20. The location listener fires once per changed key, queuing repeated refreshes
 - **Status:** Verified
-- **Test:** `WakeAndPrefsBugsTest.L20_oneLocationSaveNotifiesTheListenerOnce` fails: one `setLocality` call notified the listener 5 times.
+- **Fixed:** `observeLocationSelection` posts one callback per batch of changed keys to the main thread, and unsubscribing drops a pending one.
+- **Test:** `WakeAndPrefsBugsTest.L20_oneLocationSaveNotifiesTheListenerOnce` failed before the fix: one `setLocality` call notified the listener 5 times.
 - **Location:** `PrefsManager.kt:141-149`; `TunisianPrayerTimesApplication.kt:35-52`
 - **Problem:** One location save changes several keys in one `apply()`, and the listener runs once per key. Each run starts a full Adhkar and Hifz reminder refresh with no debounce.
 - **Fix:** Coalesce location-triggered refreshes into one pending job.
@@ -373,21 +395,24 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 
 ### L28. The end-of-window fallback forces normal ringer mode and DND off
 - **Status:** Verified; documented as a safety net
-- **Test:** `SilenceBugsTest.L28_endOfWindowFallbackKeepsTheUsersVibrateMode` fails: the end alarm turns the user's vibrate mode (1) into normal (2).
+- **Fixed:** when the flag is already cleared, the receiver forces normal mode only if the phone is still silenced (`SilenceStatus.isPhoneSilenced`) and no nap silence owns it. A user who keeps the ringer on silent still gets normal mode at the end of a dismissed window.
+- **Test:** `SilenceBugsTest.L28_endOfWindowFallbackKeepsTheUsersVibrateMode` failed before the fix: the end alarm turns the user's vibrate mode (1) into normal (2).
 - **Location:** `SilenceReceiver.kt:61-85`; `SilenceModeController.kt:170-191` (`forceNormalMode`); `SilenceScheduler.kt:246-256`
 - **Problem:** When an UNSILENCE alarm fires and the auto-silence flag is already cleared, `SilenceReceiver` calls `forceNormalMode`, which sets the ringer to normal and the interruption filter to "all" whatever the phone's current state is. The flag is already cleared when the user dismissed the silence in the app (the scheduler keeps the end alarm in that case) or a refresh ended it. A user who keeps the phone on vibrate and dismissed the silence has the ringer turned up at the end of the window. The code comment says this is deliberate, so that DND is never left on.
 - **Fix:** Restore only when the phone is still silenced (DND "none" or the silent ringer), or restore a captured previous state when one exists.
 
 ### L29. The analytics silence count ignores the per-prayer settings
 - **Status:** Verified
-- **Test:** `WakeAndPrefsBugsTest.L29_analyticsSilenceCountCountsEnabledPrayers` fails: with only Fajr enabled, the count is 8.
+- **Fixed:** `silencePrayerCount` counts the prayers whose silence is enabled.
+- **Test:** `WakeAndPrefsBugsTest.L29_analyticsSilenceCountCountsEnabledPrayers` failed before the fix: with only Fajr enabled, the count is 8.
 - **Location:** `AnalyticsTracker.kt:251-252` (`silencePrayerCount`); used at `:81` and `:205`, and by `BootReceiver.kt`, `SilenceVerifyWorker.kt` and `wake/WakeAlarmVerifyWorker.kt`
 - **Problem:** `silencePrayerCount` returns `Prayer.values().size` (8) whenever prayer silence is enabled, and 0 otherwise, so the `silence_alarm_count_bucket` and `active_prayer_count_bucket` analytics values are always "6_plus" or "0", whichever prayers the user turned on.
 - **Fix:** Count the prayers for which `PrefsManager.isPrayerSilenceEnabled` is true.
 
 ### L30. `+` and `-` run backwards for "before adhan" in the shared silence sheet (latent)
 - **Status:** Verified (code and test); latent, because the app cannot open the sheet. Formerly H4.
-- **Test:** `SilenceUiBugsTest.L30_sharedSheetPlusIncreasesTheShownMinutesBeforeAdhan` fails: with the start 10 minutes before adhan, `+` shows 9 instead of 11. The test renders the sheet directly.
+- **Fixed:** `+` and `-` step the shown minutes and keep the selected direction; at adhan there is no minute field, as in the endpoint editor.
+- **Test:** `SilenceUiBugsTest.L30_sharedSheetPlusIncreasesTheShownMinutesBeforeAdhan` failed before the fix: with the start 10 minutes before adhan, `+` shows 9 instead of 11. The test renders the sheet directly.
 - **Location:** `ui/SharedSilenceSettingsSheet.kt:374-397`; `ui/MainScreen.kt:2060`, `:2469`, `:2526-2558`
 - **Problem:** The field shows `abs(offsetValue)` (`:384`), but the buttons add or subtract from the signed value: `onIncrease = { onOffsetChange((offsetValue + 1).toString()) }` (`:390`). With "before adhan" selected (offset -10), `+` gives -9, which shows as 9, and `-` gives -11, which shows as 11. Stepping through zero flips the direction to "after adhan". The single-endpoint editor (`ui/PrayerEndpointControls.kt:141-146`) steps the magnitude and is correct, so the two sheets disagree.
 - **Why latent:** `MainScreen.kt` shows the sheet only while `sharedSheetOpen` is true (`:2469`). That state starts false (`:2060`) and is only ever set to false (`:2530`, `:2558`). No commit in the current branch's history sets it to true. On older branches (for example `codex-2`), commit `c5d382e5` (2026-09-18) added a `SharedSettingsAction(onClick = { sharedSheetOpen = true })` button, and `b10d32aa` removed it the same day. For the same reason the bug could not be reproduced on the Pixel 6.
@@ -414,31 +439,48 @@ Also worth attention: a wake alarm can be dropped in one specific combination (M
 - **After:** the app data was restored from the backup, and the files the session created were deleted (`nap_prefs.xml`, `awake_check_group_dismissals.xml` and the wake DataStore file `prayer_wake_store.preferences_pb`). The app was opened and re-armed its 13 alarms for 2026-10-11. The app's DND mode was turned off in Settings > Modes. DND is off, the ringer is normal, and the alarm volume is back to 7. The ring and notification volumes read 1 of 7 at the end. I did not set them, but their level before the session was not recorded, so check them.
 - **Android 16 notes:** `cmd media_session volume --stream 4 --set N` had no effect, so the alarm volume was set with the Settings slider. `cmd notification set_dnd off` did not clear the app's DND mode (`implicit_com.tunisianprayertimes.dev`); only Settings > Modes did.
 
+## Validation on the Pixel 6 (revision 5)
+
+On 2026-10-11 I installed the fixed build on the same Pixel 6 and ran the three scenarios reproduced in revision 3 again. All three now behave correctly.
+
+- **Build:** `assembleDebug` of the revision 4 code, installed with `adb install -r` over the `.dev` app, which keeps its data. Same version (2.144, code 155); SHA-256 `408d2e6a…`, checked on the phone. The APK contains the new code (for example `restoreTimer`, `takeOverSilence`, `isOtherSilenceWindowActive`).
+- **Before:** I copied the old APK (`4389a9a3…`) and the `.dev` app's data, then recorded the phone's state: DND off, ringer normal, the app's DND mode inactive, alarm volume 7, ring and notification volumes 1.
+- **Evidence:** `settings get global zen_mode` / `mode_ringer`, `dumpsys audio`, `dumpsys alarm` (including its statistics, which restart at boot), the `events` log and the app's preference files, read at the times given.
+
+| Finding | Before the fix (revision 3) | With the fix (2026-10-11) |
+|---|---|---|
+| H3 | 21 s after Home, the preview's `MediaPlayer` was still `state:started` | Playing in the foreground at 14:41:25 (`state:started`, button "إيقاف المعاينة"). After Home, no player for the app at 3 s and at 21 s, and nothing playing on the phone. Back through Recents, the editor was still open and the button read "تشغيل المعاينة" again |
+| H1, force-stop | After a force-stop the end alarm was gone; the phone stayed silent until the app was opened | 3-minute silence from 14:44:44, end alarm 14:47:40. After `am force-stop` the app had no alarms. Reopening the app re-armed the end alarm for 14:47:40; I then went Home and killed the app process. At 14:48:11 the phone was back to normal and manual silence was off: the re-armed alarm had fired and started the app |
+| H1, reboot | Not tried | 3-minute silence from 15:10:13, end 15:13:10; `adb reboot` at 15:10:25. The user unlocked at 15:11:05; at 15:11:49 the system started the app for `BootReceiver` (its only start since the boot, no screen opened), and the end alarm was re-armed by 15:11:55. The alarm statistics show it fired once, at about 15:13:10.5. At 15:20:00 the Asr window recorded the phone's previous state as ringer normal and DND off |
+| H2 | The nap saved the window's silenced state (ringer silent, DND "none"); at the window end the phone went normal; after the nap alarm it stayed in DND, and the app's DND mode had to be turned off in Settings | Quick timer saved at 15:24:42 in the real Asr window (15:20-15:50): the nap saved ringer normal and DND off. At 15:50 the window ended and the phone stayed silent for the pending nap. At 15:53:48 the nap alarm rang and the phone returned to normal; after I stopped the alarm, and a minute later, the phone was normal and the app's DND mode inactive (`STATE_FALSE`) |
+
+- **After:** I restored `prayer_silence_prefs.xml` from the copy (it then matched exactly), deleted the files the tests created (`nap_prefs.xml`, `awake_check_group_dismissals.xml`, `prayer_wake_store.preferences_pb`), and relaunched the app. It re-armed its alarms for the rest of the day (Maghrib 17:51-18:11, Isha 19:15-19:45). DND is off, the ringer is normal, and the app's DND mode is inactive; the alarm, ring and notification volumes are unchanged (7, 1, 1). The fixed build stays installed. The old APK and the data copy are kept on the computer, outside the repository, in case they are needed. I removed the temporary files from the phone.
+- **Android 16 notes:** the reboot turned Wireless debugging off; it had to be turned back on on the phone before adb could reconnect. The boot broadcast arrived 44 s after the unlock.
+- **Not re-checked on the device:** the other 18 fixed findings. Their scenarios need a set date or time (a window that crosses midnight, Ramadan, a Friday), a specific sequence, or the shared sheet the app cannot open. Their unit tests cover them.
+
 ## Tests
 
-22 tests in `app/src/test/java/com/tunisianprayertimes/bugreport/` cover 20 findings. Each test asserts the correct behavior, so it fails while its bug is present and passes once the bug is fixed. Setup steps that a test depends on are asserted first (some with a "Precondition" message), so a broken setup fails at a different line from the bug. The tests use the project's existing test dependencies (JUnit 4, Robolectric, Compose UI test); no production or build file was changed.
+22 tests in `app/src/test/java/com/tunisianprayertimes/bugreport/` cover 20 findings. Each test asserts the correct behavior: it failed while its bug was present (revision 3) and passes now that the bug is fixed (revision 4). Setup steps that a test depends on are asserted first (some with a "Precondition" message), so a broken setup fails at a different line from the bug. The tests use the project's existing test dependencies (JUnit 4, Robolectric, Compose UI test).
 
 | File | Findings | Setup |
 |---|---|---|
-| `BugReproSupport.kt` | none (gate and helpers) | |
+| `BugReproSupport.kt` | none (helpers) | |
 | `SilenceBugsTest.kt` | H1 (2 tests), H2 (2 tests), M7, M11, M14, L28 | Robolectric, SDK 33 |
 | `WakeAndPrefsBugsTest.kt` | M1, M3, M6, M8, M9, L20, L29 | Robolectric, SDK 33 |
 | `LogicBugsTest.kt` | M5, M12, L5, L12 | Robolectric, SDK 33 |
 | `SilenceUiBugsTest.kt` | H4, L15, L30 | Compose UI test on Robolectric, SDK 35, Arabic (Tunisia), 360 x 800 dp |
 
-**Gate.** The tests are skipped unless the environment variable `BUG_REPRO` is `1` (`assumeBugReproEnabled()` in `BugReproSupport.kt`). CI (`.github/workflows/android-tests.yml`) runs `./gradlew testDebugUnitTest` on pushes and pull requests to `main`, and 22 failing tests would turn it red. I chose this gate without asking. When a bug is fixed, its test passes with the gate on; once all of them pass, delete the gate so that they guard against regressions.
+**Gate (removed in revision 4).** In revision 3 the tests were skipped unless the environment variable `BUG_REPRO` was `1`, because CI (`.github/workflows/android-tests.yml`) runs `./gradlew testDebugUnitTest` on pushes and pull requests to `main`, and 22 failing tests would have turned it red. Revision 4 fixed all 22 and removed the gate, so they now run with the other unit tests, CI included, and guard against regressions.
 
-**Run.** From `android-app`:
+**Run.** From `android-app` (on Windows, `gradlew.bat` with the same arguments):
 
 ```
-BUG_REPRO=1 ./gradlew :app:testDebugUnitTest --rerun --tests "com.tunisianprayertimes.bugreport.*"
+./gradlew :app:testDebugUnitTest --tests "com.tunisianprayertimes.bugreport.*"
 ```
 
-On Windows I set `$env:BUG_REPRO = '1'` in PowerShell and ran `gradlew.bat --no-daemon` with the same arguments. `--rerun` is needed because Gradle does not track the environment variable: after a normal run the test task counts as up to date, and the tests do not run at all. This happened once during this revision.
+**Results.** Before the fixes (revision 3, run with `BUG_REPRO=1` at 20:11 on 2026-10-10), all 22 tests failed, each at the assertion for its bug, not at a precondition or in setup (table below). After the fixes (revision 4, 2026-10-11), all 22 pass.
 
-**Results.** With `BUG_REPRO=1` (run at 20:11 on 2026-10-10), all 22 tests failed, each at the assertion for its bug, not at a precondition or in setup. With the gate off, the build succeeded and all 22 were skipped.
-
-| Test | Finding | Failure |
+| Test | Finding | Failure before the fix |
 |---|---|---|
 | `SilenceBugsTest.H1_bootRearmsAnUnexpiredTimedManualSilence` | H1 | no manual-silence end alarm after the boot refresh |
 | `SilenceBugsTest.H1_bootEndsAManualSilenceThatExpiredDuringTheReboot` | H1 | manual silence still active (`expected:<false> but was:<true>`) |
@@ -463,15 +505,22 @@ On Windows I set `$env:BUG_REPRO = '1'` in PowerShell and ran `gradlew.bat --no-
 | `WakeAndPrefsBugsTest.L29_analyticsSilenceCountCountsEnabledPrayers` | L29 | count 8 instead of 1 |
 | `SilenceUiBugsTest.L30_sharedSheetPlusIncreasesTheShownMinutesBeforeAdhan` | L30 | the field shows "9" instead of "11" after `+` |
 
+**Whole suite.** I compared the full `testDebugUnitTest` run with the same run on HEAD (commit `f9ef43cc`, without the fixes), checked out in a separate git worktree.
+- With a 2 GB test heap, both run the same 1,024 tests and fail the same 30. The only difference is the 22 bug tests: skipped on HEAD, passing with the fixes.
+- The 30 shared failures are in `LocalityRepositoryTest` (8), `NeighborhoodRepositoryTest` (4), `DelegationLocatorTest` (3), `AdhkarFlowTest` (2), `AlarmServiceSilenceGuardTest` (6), `AwakeCheckSilenceSuppressionTest` (4), `WakeAlarmSilenceSuppressionTest` (2) and `QiblaCardTest` (1). I did not investigate them.
+- With the default 512 MB test heap, the test JVM runs out of memory on HEAD too: it spends its last stretch in about 1,600 full garbage collections at 510 of 512 MB, then crashes. A plain run therefore stops early, and the three wake and awake-check classes above never run. Raising `maxHeapSize` for unit tests in `app/build.gradle.kts` would fix this; I did not change it. For these runs I passed a temporary Gradle init script that sets `maxHeapSize = "2g"`.
+
 **Limits.**
 - Robolectric shadows stand in for AlarmManager, AudioManager and NotificationManager, so the tests show the app's own logic, not the platform's behavior. That is why H1 and H2 were also run on the device.
 - H1's tests call `BootReceiver.refreshSchedules` directly; it is the method the boot broadcast runs (`BootReceiver.kt:29`).
 - M5 and M9 call private top-level functions through reflection (`MainScreenKt.resolveManualSilencePrayerEndMillis` and `WakeEditorSheetKt.resolveOneTimeWakeTrigger`), because the logic sits in UI files. If those functions are renamed or their parameters change, the tests fail with `NoSuchMethodException` instead of an assertion.
 - M9 and M11 set the default time zone so that the local clock reads a chosen time (`withLocalClockAt`), and use the bundled prayer times for the run date, so M9's exact number changes from day to day.
-- H4 fails only when the slider has had a touch before the config change (see H4).
+- H4's bug shows only when the slider has had a touch before the config change (see H4).
 - M12 encodes one choice of fix (see M12).
 - L15 and L30 render `SharedSilenceSettingsSheet` directly, because the app never opens it.
-- A test stops at its first failed assertion, so M3 reports the Isha duration and never reaches its check of the end offset.
+- Before the fix, M3 stopped at its first assertion (the Isha duration); it now passes that and the end-offset check.
+- The H1 test that ends an expired silence turns prayer silence off. Otherwise a prayer window active at the real time of the run would silence the phone again and fail it.
+- Revision 4 also changed 7 existing tests in `AlarmCoverageTest`, `SilenceStateTest` and `PhoneCallVibrationTest`. They fire SILENCE and UNSILENCE at the real clock, and with the M11 fix an UNSILENCE during another prayer's default window keeps the silence. They now use the delegation 99999, which has no prayer times and is already used elsewhere in those files. No assertion changed.
 
 **Not tested** (28 findings):
 - H3: needs an activity that goes to the background; reproduced on the device instead.
@@ -487,10 +536,20 @@ On Windows I set `$env:BUG_REPRO = '1'` in PowerShell and ran `gradlew.bat --no-
 - `WakeAlarmQueue` has no synchronization. `WakeAlarmScheduler.scheduleAll` runs on IO receiver coroutines and calls `discardSkippedOccurrence`, while UI code can modify the same queue. Possible race, not traced.
 - `PhoneStateReceiver` is exported with a `PHONE_STATE` filter (`AndroidManifest.xml:122-128`). If another app could send that action, the only effect would be the missed-call flag, so the impact would be small.
 - A vibration-only alarm combined with the gyroscope maze: the maze resets its hold timer on linear-acceleration spikes above 12 to 20 m/s², and the alarm's own vibration might trip them on some devices. With a working ringtone no vibration runs, so this needs a device test.
-- Intended behavior for: the Ramadan override lifetime (M3), the Friday Dhuhr row (L7), re-selecting "From now" (L1), Eid times across years (L4), and whether a GPS fix just outside the country outline should count as Tunisia (M12).
+- Intended behavior for: the Friday Dhuhr row (L7), re-selecting "From now" (L1), and Eid times across years (L4).
 - M1 is shown by a Robolectric test only. Its sequence (a prayer window that starts during one nap, then another alarm allowed to ring over the window) was not run on a device.
-- H1 was reproduced with a force-stop, which clears the app's alarms as a reboot does; a real reboot was not tried.
+- H1 was reproduced with a force-stop, which clears the app's alarms as a reboot does. The fix was checked after both a force-stop and a real reboot (see "Validation on the Pixel 6"). Before the user unlocks the phone after a reboot, the app cannot run (its preferences are in credential-encrypted storage), so a manual silence can only end after the unlock.
 - Whether the shared silence sheet (L15, L30) is meant to come back. If it is, L30 is High again.
+- Choices made by the revision 4 fixes that you may want to change:
+  - **H2:** if the user dismisses a prayer window or stops a manual silence while a nap alarm is pending, the phone stays silenced until that alarm, because the nap asked for silence. The main screen still shows the "normal mode restored" toast.
+  - **M1:** an alarm allowed to ring over a prayer window also lifts another pending nap's silence while it rings.
+  - **M3:** any Isha edit during Ramadan keeps 90 minutes after Ramadan, even a change to the start only, because the editor saves the whole window.
+  - **M5:** on Fridays the card, the toast and the hero line still say Dhuhr while the silence ends at the Jomoaa time.
+  - **M11:** the overlap warning compares with the earlier of the next adhan and the next window's start, so it can only add warnings.
+  - **M12:** fixes up to about 0.3° outside the country outline, near the Algerian or Libyan border or at sea, now get the nearest Tunisian timetable instead of "outside Tunisia".
+  - **L5:** tapping Fixed for a start on another day does nothing and shows no message; a message needs a new string resource.
+  - **H3:** the preview still takes no audio focus.
+- The 30 unit test failures shared with HEAD (see "Tests") include 12 in wake and awake-check silence suppression tests. They predate this work and were not investigated.
 
 ## Coverage
 
@@ -523,6 +582,19 @@ On Windows I set `$env:BUG_REPRO = '1'` in PowerShell and ran `gradlew.bat --no-
 Items marked **Not reviewed** were not covered because the review passes covering them returned no results, including after retries. They need a second pass before the report can be called complete.
 
 ## Revision history
+
+### Revision 5
+
+- Installed the fixed build on the Pixel 6 and ran H1, H2 and H3 again. All three now behave correctly; H1 was checked after a force-stop and after a real reboot (see "Validation on the Pixel 6").
+- Restored the phone afterwards. The fixed build stays installed.
+
+### Revision 4
+
+- Fixed the 21 confirmed findings: H1-H4, M1, M3, M5-M9, M11, M12, M14, L5, L12, L15, L20 and L28-L30. Each has a "Fixed" line. No build file was changed.
+- Removed the `BUG_REPRO` gate. All 22 bug tests pass and now run in every `testDebugUnitTest`, CI included.
+- Made the H1 expired-silence test independent of the time of day, and moved 7 existing tests to the delegation without prayer times for the same reason (see "Tests").
+- Compared the whole unit test suite with HEAD: the same 30 tests fail with and without the fixes, and the default 512 MB test heap runs out on HEAD too.
+- The fixes were not re-checked on the Pixel 6.
 
 ### Revision 3
 

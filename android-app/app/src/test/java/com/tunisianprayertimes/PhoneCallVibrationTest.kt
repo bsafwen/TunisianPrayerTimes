@@ -141,6 +141,8 @@ class PhoneCallVibrationTest {
 
     @Test
     fun autoUnsilence_withCallFlag_vibrationEnabled_consumesFlag() {
+        // No prayer times, so no other prayer's window keeps the silence whatever the time.
+        PrefsManager.setDelegationId(context, 99999)
         PrefsManager.setCallEndVibrationEnabled(context, true)
         silenceReceiver.onReceive(context, silenceIntent())
         PrefsManager.markCallReceivedDuringSilence(context)
@@ -162,6 +164,8 @@ class PhoneCallVibrationTest {
      */
     @Test
     fun autoUnsilence_vibrationDisabled_flagIsStillConsumed() {
+        // No prayer times, so no other prayer's window keeps the silence whatever the time.
+        PrefsManager.setDelegationId(context, 99999)
         PrefsManager.setCallEndVibrationEnabled(context, false)
         silenceReceiver.onReceive(context, silenceIntent())
         PrefsManager.markCallReceivedDuringSilence(context)

@@ -50,6 +50,12 @@ internal object WakeAutoSilenceConflictController {
 
         return SilenceModeController.disableAutoSilence(context).also { lifted ->
             if (lifted) {
+                // The window hands the phone over to a pending silence-until-alarm, which would keep
+                // this alarm silent and make the playback service drop it. Lift it while this alarm rings.
+                WakeAlarmScheduler.pauseSilenceForRingingAlarm(
+                    context,
+                    wakeAlarmIdFromEventId(payload.eventId) ?: payload.eventId,
+                )
                 Log.d(TAG, "Lifted auto-silence for wake alarm ${payload.eventId}")
             }
         }

@@ -4,31 +4,14 @@ import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
-import org.junit.Assume.assumeTrue
 import org.robolectric.Shadows
 import java.util.Calendar
 import java.util.TimeZone
 
-/**
- * Tests in this package reproduce the bugs listed in android-app/BUG_REPORT.md.
- * Each test asserts the correct behavior, so it fails while the bug is present.
- *
- * They are skipped unless the environment variable BUG_REPRO is set to 1, so that
- * the default `./gradlew testDebugUnitTest` run (and CI) stays green:
- *
- *     BUG_REPRO=1 ./gradlew :app:testDebugUnitTest --rerun --tests "com.tunisianprayertimes.bugreport.*"
- *
- * --rerun is needed because Gradle does not track the environment variable: after a
- * normal run the test task counts as up to date and the tests would not run.
- *
- * When a bug is fixed, its test passes; once all of them pass, delete the gate below.
+/*
+ * Regression tests for the bugs listed in android-app/BUG_REPORT.md. Each test is named
+ * after its finding and asserts the correct behavior; it failed until that bug was fixed.
  */
-internal fun assumeBugReproEnabled() {
-    assumeTrue(
-        "Bug reproduction tests run only with BUG_REPRO=1 (see BugReproSupport.kt)",
-        System.getenv("BUG_REPRO") == "1",
-    )
-}
 
 /** Clears the preference files the silence and wake code uses. */
 internal fun Context.clearSilenceAndWakePrefs() {

@@ -156,6 +156,8 @@ class SilenceStateTest {
     @Test
     fun missedUnsilence_nextPrayerStillRestoresToOriginalNormalMode() {
         val receiver = SilenceReceiver()
+        // No prayer times, so no other prayer's window keeps the silence whatever the time.
+        PrefsManager.setDelegationId(context, 99999)
 
         // 1. Maghreb silence fires — phone was NORMAL
         assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
@@ -252,6 +254,8 @@ class SilenceStateTest {
      */
     @Test
     fun autoSilence_whenUserAlreadyHasDndEnabled_restoresUserDnd() {
+        // No prayer times, so no other prayer's window keeps the silence whatever the time.
+        PrefsManager.setDelegationId(context, 99999)
         // User manually set DND + silent before any prayer
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)

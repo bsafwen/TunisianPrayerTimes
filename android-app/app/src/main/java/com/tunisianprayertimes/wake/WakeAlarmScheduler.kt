@@ -77,6 +77,16 @@ object WakeAlarmScheduler {
 		return true
 	}
 
+	/** Lifts the silence for the pending alarms while another alarm rings, until [resumeSilenceUntilNextAlarm]. */
+	fun pauseSilenceForRingingAlarm(context: Context, alarmId: String): Boolean {
+		if (!isSilenceUntilAlarmActive(context) || !shouldUseWakeSilence(context)) return false
+		if (!NapSilenceController.disableNapSilence(context)) return false
+		persistSilencedAlarmIds(context, silencedAlarmIds(context), alarmId)
+		refreshDhikrRemindersAfterSilenceRelease(context)
+		Log.d(TAG, "Silence paused for ringing alarm $alarmId")
+		return true
+	}
+
 	fun removeSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
 		if (!isSilencedAlarm(context, alarmId)) return false
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
@@ -102,7 +112,9 @@ object WakeAlarmScheduler {
 			persistSilencedAlarmIds(context, emptySet(), null)
 			return false
 		}
-		if (pausedForAlarmId == null || !shouldUseWakeSilence(context)) {
+		// A prayer or manual silence does not block the resume: when it ends, it hands the phone
+		// over to this silence instead of restoring its state.
+		if (pausedForAlarmId == null) {
 			return false
 		}
 		if (!NapSilenceController.enableNapSilence(context)) {

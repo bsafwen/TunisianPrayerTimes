@@ -86,6 +86,16 @@ internal fun isInsideTunisiaBounds(lat: Double, lng: Double): Boolean {
     return ringContainsPoint(TUNISIA_BORDER, lat, lng)
 }
 
+/**
+ * Whether a location fix counts as Tunisia: inside the country outline from neighborhoods.bin,
+ * or inside the widened [TUNISIA_BORDER]. The widened border alone decides when the index
+ * cannot load. Both the GPS gate and [SilenceVerifyWorker] use this one test, so one cannot
+ * turn prayer silencing off while the other turns it back on.
+ */
+internal fun isInsideTunisia(context: Context, lat: Double, lng: Double): Boolean {
+    return isInsideTunisiaBounds(lat, lng) || NeighborhoodRepository.isInsideCountry(context, lat, lng)
+}
+
 sealed interface DelegationLocationResult {
     data class Success(val delegation: Delegation, val locality: Locality? = null) : DelegationLocationResult
     data object PermissionDenied : DelegationLocationResult
@@ -225,9 +235,8 @@ object DelegationLocator {
         accuracyMeters: Double? = null,
     ): DelegationLocationResult {
         if (!validCoordinates(lat, lng)) return DelegationLocationResult.LocationUnavailable
+        if (!isInsideTunisia(context, lat, lng)) return DelegationLocationResult.OutsideTunisia
         val index = runCatching { NeighborhoodRepository.load(context) }.getOrNull()
-        val insideCountry = index?.isInsideCountry(lat, lng) ?: isInsideTunisiaBounds(lat, lng)
-        if (!insideCountry) return DelegationLocationResult.OutsideTunisia
         val nearest = GouvernoratRepository.findNearestDelegation(context, lat, lng)
             ?: return DelegationLocationResult.NoDelegationFound
         // Containment determines only the user's visible location. Timetables are

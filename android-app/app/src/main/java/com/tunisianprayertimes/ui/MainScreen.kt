@@ -5549,6 +5549,11 @@ private fun PrayerRow(
     var undoBefore by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
     var undoAfter by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
     val currentConfig by rememberUpdatedState(config)
+    // The overlap warning below uses the next prayer's saved window, which can change from that prayer's row.
+    val nextPrayer = nextPrayerTime?.prayer
+    var nextPrayerConfig by remember(context, nextPrayer) {
+        mutableStateOf(nextPrayer?.let { PrefsManager.getConfig(context, it) })
+    }
 
     DisposableEffect(context, prayer, usesDraft) {
         val stopObservingConfig = if (usesDraft) {
@@ -5569,6 +5574,16 @@ private fun PrayerRow(
             stopObservingConfig()
             stopObservingEnabled()
         }
+    }
+    DisposableEffect(context, nextPrayer) {
+        val stopObservingNextConfig = if (nextPrayer == null) {
+            ({})
+        } else {
+            PrefsManager.observeConfigChanges(context, nextPrayer) {
+                nextPrayerConfig = PrefsManager.getConfig(context, nextPrayer)
+            }
+        }
+        onDispose { stopObservingNextConfig() }
     }
     LaunchedEffect(config) {
         previewWindow = null
@@ -5641,7 +5656,10 @@ private fun PrayerRow(
         window == null -> null
         window.endMinutes < window.startMinutes -> R.string.prayer_timeline_invalid_window
         nextPrayerTime != null && nextPrayerTime.hour in 0..23 && nextPrayerTime.minute in 0..59 -> {
-            val nextMinute = nextPrayerTime.minutesOfDay() + if (nextPrayerIsTomorrow) 1440 else 0
+            // The next prayer's silence can start before its adhan, so compare with whichever comes first.
+            val nextSilenceStart = nextPrayerConfig?.let { resolvePrayerTimelineWindow(nextPrayerTime, it).startMinutes }
+            val nextMinute = minOf(nextPrayerTime.minutesOfDay(), nextSilenceStart ?: Int.MAX_VALUE) +
+                if (nextPrayerIsTomorrow) 1440 else 0
             R.string.warning_overlaps_next_prayer.takeIf { window.endMinutes > nextMinute }
         }
         else -> null
@@ -6640,13 +6658,14 @@ private fun resolveUpcomingManualSilencePrayer(
 ): Prayer? {
     val now = Calendar.getInstance().apply { timeInMillis = nowMillis }
     val todayTimes = loadDayPrayerTimesWithFallback(context, delegationId, now)
-    val upcomingToday = todayTimes?.allPrayers()?.firstOrNull { prayerTime ->
+    val upcomingToday = todayTimes?.manualSilencePrayers(context, now)?.firstOrNull { prayerTime ->
         prayerTimeMillis(now, prayerTime) > nowMillis
     }
     if (upcomingToday != null) return upcomingToday.prayer
 
     val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
-    return loadDayPrayerTimesWithFallback(context, delegationId, tomorrow)?.allPrayers()?.firstOrNull()?.prayer
+    return loadDayPrayerTimesWithFallback(context, delegationId, tomorrow)
+        ?.manualSilencePrayers(context, tomorrow)?.firstOrNull()?.prayer
 }
 
 private fun resolveManualSilencePrayerEndMillis(
@@ -6661,7 +6680,7 @@ private fun resolveManualSilencePrayerEndMillis(
     for (dayOffset in 0..1) {
         val day = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, dayOffset) }
         val prayerTime = loadDayPrayerTimesWithFallback(context, delegationId, day)
-            ?.allPrayers()
+            ?.manualSilencePrayers(context, day)
             ?.firstOrNull { it.prayer == prayer }
             ?: continue
         val targetMillis = prayerTimeMillis(day, prayerTime)
@@ -6670,6 +6689,19 @@ private fun resolveManualSilencePrayerEndMillis(
 
     return null
 }
+
+/**
+ * The day's prayers as the manual silence card offers them. On Fridays silence scheduling
+ * replaces Dhuhr with Jomoaa at its custom time, so the card's Dhuhr stands for Jomoaa that day.
+ */
+private fun DayPrayerTimes.manualSilencePrayers(context: Context, day: Calendar): List<PrayerTime> =
+    scheduledPrayers(
+        isFriday = day.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+        jomoaaHour = PrefsManager.getJomoaaTimeHour(context),
+        jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
+    ).map { prayerTime ->
+        if (prayerTime.prayer == Prayer.JOMOAA) prayerTime.copy(prayer = Prayer.DHUHR) else prayerTime
+    }
 
 private fun loadDayPrayerTimesWithFallback(
     context: Context,

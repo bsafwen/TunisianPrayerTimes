@@ -48,7 +48,6 @@ class WakeAndPrefsBugsTest {
 
     @Before
     fun setup() = runBlocking {
-        assumeBugReproEnabled()
         context = ApplicationProvider.getApplicationContext()
         context.clearSilenceAndWakePrefs()
         context.resetPhoneToNormal()

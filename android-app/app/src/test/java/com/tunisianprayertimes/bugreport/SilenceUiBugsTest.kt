@@ -51,7 +51,6 @@ class SilenceUiBugsTest {
 
     @Before
     fun setup() {
-        assumeBugReproEnabled()
         context = ApplicationProvider.getApplicationContext()
     }
 

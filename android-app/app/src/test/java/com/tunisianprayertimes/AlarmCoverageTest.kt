@@ -431,6 +431,8 @@ class AlarmCoverageTest {
         // Simulate the full lifecycle: SilenceReceiver gets ACTION_SILENCE → phone silenced
         // → SilenceReceiver gets ACTION_UNSILENCE → phone normal
         val receiver = SilenceReceiver()
+        // No prayer times, so no other prayer's window keeps the silence whatever the time.
+        PrefsManager.setDelegationId(context, 99999)
 
         assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
 
@@ -518,6 +520,8 @@ class AlarmCoverageTest {
     @Test
     fun silenceReceiver_withDndGranted_unsilencesPhone() {
         val receiver = SilenceReceiver()
+        // No prayer times, so no other prayer's window keeps the silence whatever the time.
+        PrefsManager.setDelegationId(context, 99999)
         receiver.onReceive(context, Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
             putExtra("extra_prayer", "ASR")
         })
@@ -548,6 +552,8 @@ class AlarmCoverageTest {
     @Test
     fun silenceReceiver_unsilence_missingExtraPrayer_stillWorks() {
         val receiver = SilenceReceiver()
+        // No prayer times, so no other prayer's window keeps the silence whatever the time.
+        PrefsManager.setDelegationId(context, 99999)
         receiver.onReceive(context, Intent("com.tunisianprayertimes.ACTION_SILENCE"))
         receiver.onReceive(context, Intent("com.tunisianprayertimes.ACTION_UNSILENCE"))
 

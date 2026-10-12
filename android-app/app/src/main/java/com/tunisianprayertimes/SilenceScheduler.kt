@@ -117,6 +117,7 @@ object SilenceScheduler {
                 }
             }
         }
+        carriedOverWindows(context, now).firstOrNull()?.let { return it.prayer }
         // If auto-silence is active but we're in the gap between old/new delegation times,
         // return the imminent prayer so the UI can record dismissal correctly.
         if (carriedEid != null && PrefsManager.isPrayerSilenceEnabled(context, carriedEid.prayer)) return carriedEid.prayer
@@ -135,6 +136,7 @@ object SilenceScheduler {
         RamadanOverrideChecker.loadCachedOverrideIfNeeded()
         val now = Calendar.getInstance()
         EidSilenceWindows.nearby(context, now).firstOrNull { it.contains(now.timeInMillis) }?.let { return it.end }
+        carriedOverWindows(context, now).firstOrNull()?.let { return it.end }
         val delegationId = PrefsManager.getDelegationId(context)
         val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
             context, delegationId,
@@ -165,6 +167,30 @@ object SilenceScheduler {
             if (!now.before(silenceTime) && now.before(unsilenceTime)) return unsilenceTime.timeInMillis
         }
         return null
+    }
+
+    /**
+     * Whether the enabled window of a prayer other than [endingPrayer] contains now, an Eid
+     * window or a window carried over from yesterday included. Each window has its own end
+     * alarm, so the end of one must not end the silence while an overlapping one still runs.
+     */
+    fun isOtherSilenceWindowActive(context: Context, endingPrayer: Prayer?): Boolean {
+        if (!PrefsManager.isEnabled(context) || PrefsManager.isDisabledOutsideTunisia(context)) return false
+        RamadanOverrideChecker.loadCachedOverrideIfNeeded()
+        val now = Calendar.getInstance()
+        val eidActive = EidSilenceWindows.nearby(context, now).any {
+            it.prayer != endingPrayer && it.contains(now.timeInMillis) && PrefsManager.isPrayerSilenceEnabled(context, it.prayer)
+        }
+        if (eidActive || carriedOverWindows(context, now).any { it.prayer != endingPrayer }) return true
+        val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
+            context, PrefsManager.getDelegationId(context),
+            now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH),
+        ) ?: return false
+        val prayers = scheduledPrayersForDate(
+            context, todayTimes, now, now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+            PrefsManager.getJomoaaTimeHour(context), PrefsManager.getJomoaaTimeMinute(context),
+        )
+        return windowsContaining(context, now, prayers, now).any { it.prayer != endingPrayer }
     }
 
     @VisibleForTesting
@@ -286,6 +312,22 @@ object SilenceScheduler {
             }
         }
 
+        // A window that began yesterday and ends after midnight is still running. Keep its
+        // silence and its end alarm: today's end alarm for the same prayer, set above, shares
+        // its request code, so it is replaced here and set again by the reschedule below.
+        val carriedOver = carriedOverWindows(context, now)
+        for (window in carriedOver) {
+            currentlyInSilenceWindow = true
+            val dismissed = PrefsManager.getAutoSilenceDismissedPrayer(context) == window.prayer.name &&
+                PrefsManager.getAutoSilenceDismissedUntilMillis(context) >= window.start - MAX_DELEGATION_SHIFT_MS
+            if (!dismissed) {
+                PrefsManager.clearAutoSilenceDismissed(context)
+                SilenceModeController.enableAutoSilence(context, window.prayer)
+            }
+            scheduleExactAlarm(context, window.end, ACTION_UNSILENCE, window.prayer)
+            Log.d(TAG, "Window of ${window.prayer} carried over from yesterday, scheduled UNSILENCE at ${window.end}")
+        }
+
         // If we're not in any silence window, restore the previous ringer state
         // if auto-silence was active (handles missed unsilence alarms).
         // This is a no-op when the flag is not set, so manual silence is preserved.
@@ -313,6 +355,8 @@ object SilenceScheduler {
         if (latestWindowEndMs != Long.MIN_VALUE && now.timeInMillis < latestWindowEndMs) {
             schedulePostFinalWindowReschedule(context, latestWindowEndMs)
         }
+        // Sooner after a carried-over window, to set today's end alarm of that prayer again.
+        carriedOver.minOfOrNull { it.end }?.let { schedulePostFinalWindowReschedule(context, it) }
         if (latestWindowEndMs != Long.MIN_VALUE && now.timeInMillis >= latestWindowEndMs && !currentlyInSilenceWindow) {
             scheduleTomorrowPrayers(context, delegationId, now)
         }
@@ -638,6 +682,52 @@ object SilenceScheduler {
         config.mode != SilenceMode.FIXED_TIME &&
             config.endOffsetMinutes != null &&
             !unsilenceTime.after(silenceTime)
+
+    private data class PrayerWindow(val prayer: Prayer, val start: Long, val end: Long)
+
+    private fun silenceStartTime(day: Calendar, prayerTime: PrayerTime, config: PrayerSilenceConfig): Calendar =
+        if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
+            (day.clone() as Calendar).apply {
+                set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
+                set(Calendar.MINUTE, config.delayFixedMinute)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+        } else {
+            prayerStartTime(day, prayerTime).apply { add(Calendar.MINUTE, config.delayMinutes) }
+        }
+
+    /** Windows of the enabled [prayers] of [day] that contain [now]. */
+    private fun windowsContaining(context: Context, day: Calendar, prayers: List<PrayerTime>, now: Calendar): List<PrayerWindow> =
+        prayers.filter { PrefsManager.isPrayerSilenceEnabled(context, it.prayer) }.mapNotNull { prayerTime ->
+            val config = PrefsManager.getConfig(context, prayerTime.prayer)
+            val silenceTime = silenceStartTime(day, prayerTime, config)
+            val unsilenceTime = resolveUnsilenceTime(day, prayerTime, silenceTime, config)
+            // An invalid adhan-relative window does not end after its start, so it contains no time.
+            if (!now.before(silenceTime) && now.before(unsilenceTime)) {
+                PrayerWindow(prayerTime.prayer, silenceTime.timeInMillis, unsilenceTime.timeInMillis)
+            } else {
+                null
+            }
+        }
+
+    /**
+     * Windows of yesterday's prayers that end after midnight and still contain [now]; today's
+     * prayers do not include them. Eid windows are carried over by [EidSilenceWindows].
+     */
+    private fun carriedOverWindows(context: Context, now: Calendar): List<PrayerWindow> {
+        val yesterday = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, -1) }
+        val yesterdayTimes = PrayerTimesRepository.loadDayPrayerTimes(
+            context, PrefsManager.getDelegationId(context),
+            yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH) + 1, yesterday.get(Calendar.DAY_OF_MONTH),
+        ) ?: return emptyList()
+        val prayers = yesterdayTimes.scheduledPrayers(
+            yesterday.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+            PrefsManager.getJomoaaTimeHour(context),
+            PrefsManager.getJomoaaTimeMinute(context),
+        )
+        return windowsContaining(context, yesterday, prayers, now)
+    }
 
     private fun scheduledPrayersForDate(
         context: Context,

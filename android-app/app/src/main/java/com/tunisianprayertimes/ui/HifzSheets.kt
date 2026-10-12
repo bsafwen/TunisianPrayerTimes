@@ -124,7 +124,7 @@ internal fun hifzPointTitle(catalog: QuranCatalog, point: HifzPoint): String {
 
 /**
  * Quran words as printed. [marked] words stand out in [markColor] and underlined; «هنا يفترقان» goes
- * before word [partAt]; [hidden] words are replaced by one «……».
+ * before word [partAt]; [hidden] words are replaced by one violet «……», the review's blank.
  */
 @Composable
 internal fun HifzVerseText(
@@ -147,7 +147,7 @@ internal fun HifzVerseText(
             var masked = false
             for (i in from.coerceAtLeast(0) until to.coerceAtMost(words.size)) {
                 if (hidden != null && i in hidden) {
-                    if (!masked) { append("…… "); masked = true }
+                    if (!masked) { withStyle(SpanStyle(color = QuranHifzViolet, fontWeight = FontWeight.SemiBold)) { append("……") }; append(' '); masked = true }
                     continue
                 }
                 masked = false
@@ -346,7 +346,7 @@ internal fun HifzRecordSheet(
                     enabled = kind != HifzKind.Word || wrongWords.isNotEmpty(),
                     colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
                     modifier = Modifier.fillMaxWidth().testTag("hifz_record_save"),
-                ) { Text(if (kind == HifzKind.Word && wrongWords.isEmpty()) "اختر الكلمة ثم احفظ" else "حفظ في دفتر التثبيت") }
+                ) { Text(if (kind == HifzKind.Word && wrongWords.isEmpty()) "اختر الكلمة ثم احفظ" else "حفظ في دفتر المواضع") }
                 Text("يحفظ بلمسة · يمكنك التراجع", fontSize = 12.sp, color = TextMuted)
             }
         }
@@ -571,7 +571,7 @@ internal fun HifzFixSheet(
                     Column(Modifier.weight(1f)) {
                         Text(if (headsUpOn) "نبهني قبلها أثناء الاستماع" else "توقف قبلها أثناء الاستماع", fontSize = 14.sp, color = if (aids) TextDark else TextMuted)
                         when {
-                            !aids -> Text("التنبيه والتوقف قبل المواضع متوقفان في إعدادات التثبيت", fontSize = 12.sp, color = TextMuted)
+                            !aids -> Text("التنبيه والتوقف قبل المواضع متوقفان في إعدادات المراجعة", fontSize = 12.sp, color = TextMuted)
                             !headsUpOn -> Text("لتقرأها من حفظك قبل أن تسمعها", fontSize = 12.sp, color = TextMuted)
                             stopBeforeOn && point.headsUp -> Text("ويتوقف الاستماع قبلها لتقرأها من حفظك", fontSize = 12.sp, color = TextMuted)
                         }
@@ -595,7 +595,7 @@ internal fun HifzFixSheet(
     if (confirmDelete) AlertDialog(
         onDismissRequest = { confirmDelete = false },
         title = { Text("حذف هذا الموضع؟") },
-        text = { Text(if (undoable) "يُحذف من دفتر التثبيت مع مراجعاته. يمكنك التراجع بعده مباشرة." else "يُحذف من دفتر التثبيت مع مراجعاته.") },
+        text = { Text(if (undoable) "يُحذف من دفتر المواضع مع مراجعاته. يمكنك التراجع بعده مباشرة." else "يُحذف من دفتر المواضع مع مراجعاته.") },
         confirmButton = { TextButton(onClick = { confirmDelete = false; onDelete() }) { Text("حذف") } },
         dismissButton = { TextButton(onClick = { confirmDelete = false }) { Text("إلغاء") } },
     )
@@ -660,7 +660,7 @@ internal fun HifzFixBody(catalog: QuranCatalog, fix: HifzFix, lookAlikes: HifzLo
         HifzKind.Skip -> HifzSection("") {
             fix.before?.let { before ->
                 Text("آخر ${v.ayah - 1}:", fontSize = 12.sp, color = TextMuted)
-                HifzVerseText(before, from = (before.size - 4).coerceAtLeast(0), lead = "… ", fontSize = 16.sp, color = TextMuted)
+                HifzVerseText(before, from = (before.size - 4).coerceAtLeast(0), fontSize = 16.sp, color = TextMuted)
             }
             Text("${hifzVerseName(catalog, v)} · ${hifzPage(catalog, v).orEmpty()}", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
             HifzVerseText(fix.words, marked = setOf(fix.distinctAt))
@@ -683,7 +683,7 @@ internal fun HifzFixBody(catalog: QuranCatalog, fix: HifzFix, lookAlikes: HifzLo
         HifzKind.Start -> HifzSection("") {
             fix.before?.let { before ->
                 Text("آخر ${v.ayah - 1}:", fontSize = 12.sp, color = TextMuted)
-                HifzVerseText(before, from = (before.size - 4).coerceAtLeast(0), lead = "… ", fontSize = 16.sp, color = TextMuted)
+                HifzVerseText(before, from = (before.size - 4).coerceAtLeast(0), fontSize = 16.sp, color = TextMuted)
             }
             Text("${hifzVerseName(catalog, v)} · ${hifzPage(catalog, v).orEmpty()}", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
             HifzVerseText(fix.words, marked = (0..fix.distinctAt.coerceAtLeast(1)).toSet())
@@ -1002,7 +1002,7 @@ internal fun HifzNotificationsWarning(channels: List<String>, modifier: Modifier
     }
 }
 
-/** The app's notification settings, or straight the «التثبيت» channel among [channels] the reader turned off. */
+/** The app's notification settings, or straight the «المراجعة» channel among [channels] the reader turned off. */
 internal fun openHifzNotificationSettings(context: Context, channels: List<String>) {
     val channel = HifzReminder.blockedChannel(context, channels)
     val intent = if (NotificationManagerCompat.from(context).areNotificationsEnabled() && channel != null) {

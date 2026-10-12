@@ -134,5 +134,9 @@ internal fun PrayerWakeSubAlarm.soundMatches(mainPlayback: WakePlaybackOptions):
     playback.vibrationOnly == mainPlayback.vibrationOnly &&
         (
             mainPlayback.vibrationOnly ||
-                (playback.ringtone == mainPlayback.ringtone && playback.customRingtoneUri == mainPlayback.customRingtoneUri)
+                (
+                    playback.ringtone == mainPlayback.ringtone &&
+                        playback.customRingtoneUri == mainPlayback.customRingtoneUri &&
+                        playback.progressiveVolume == mainPlayback.progressiveVolume
+                    )
             )

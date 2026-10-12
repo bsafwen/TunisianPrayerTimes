@@ -411,7 +411,7 @@ internal fun decodeHifzPoints(value: String): List<HifzPoint> {
     }
 }
 
-/** How «التثبيت» behaves; kept in its own preferences. */
+/** How «المراجعة» behaves; kept in its own preferences. */
 data class HifzSettings(
     val reminder: Boolean = true,
     /** Minutes after sunrise for the daily reminder. */

@@ -126,6 +126,6 @@ class SilenceVerifyWorker(
 
         if (location == null) return false
 
-        return !isInsideTunisiaBounds(location.latitude, location.longitude)
+        return !isInsideTunisia(applicationContext, location.latitude, location.longitude)
     }
 }

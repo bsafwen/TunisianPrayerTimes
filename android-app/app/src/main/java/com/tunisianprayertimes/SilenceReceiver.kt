@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -73,11 +74,18 @@ class SilenceReceiver : BroadcastReceiver() {
                     return
                 }
                 if (autoActive) {
+                    val prayer = runCatching { Prayer.valueOf(prayerName) }.getOrNull()
+                    if (SilenceScheduler.isOtherSilenceWindowActive(context, prayer)) {
+                        // Overlapping windows: that window's own end alarm ends the silence.
+                        Log.d(TAG, "Another prayer's silence window is still active, keeping silence")
+                        return
+                    }
                     SilenceModeController.disableAutoSilence(context)
-                } else {
+                } else if (SilenceStatus.isPhoneSilenced(context) && !WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) {
                     // Flag was already cleared (manual toggle, scheduleAll, etc.)
-                    // but the alarm still fired — force normal so DND is never
-                    // left on permanently.
+                    // but the phone is still silenced — force normal so DND is never
+                    // left on permanently. A ringer mode the user chose is left as it
+                    // is, and a silence-until-alarm is ended by its own alarm.
                     Log.d(TAG, "Auto-silence flag already cleared, forcing normal mode")
                     SilenceModeController.forceNormalMode(context)
                 }

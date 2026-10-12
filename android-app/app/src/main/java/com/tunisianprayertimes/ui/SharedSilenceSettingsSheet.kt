@@ -199,7 +199,7 @@ internal fun SharedSilenceSettingsSheet(
                 SharedEndpointRuleEditor(
                     title = stringResource(R.string.prayer_silence_shared_start_rule),
                     adhanMode = startAdhan,
-                    offsetValue = startOffset ?: 0,
+                    offsetText = startOffsetText,
                     clockMinutes = startClock,
                     onModeChange = { adhan -> startMode = if (adhan) EndpointRuleMode.ADHAN.name else EndpointRuleMode.FIXED_TIME.name },
                     onOffsetChange = { startOffsetText = it },
@@ -208,7 +208,7 @@ internal fun SharedSilenceSettingsSheet(
                 SharedEndpointRuleEditor(
                     title = stringResource(R.string.prayer_silence_shared_end_rule),
                     adhanMode = endAdhan,
-                    offsetValue = endOffset ?: 0,
+                    offsetText = endOffsetText,
                     clockMinutes = endClock,
                     onModeChange = { adhan -> endMode = if (adhan) EndpointRuleMode.ADHAN.name else EndpointRuleMode.FIXED_TIME.name },
                     onOffsetChange = { endOffsetText = it },
@@ -344,12 +344,21 @@ internal fun SharedSilenceSettingsSheet(
 private fun SharedEndpointRuleEditor(
     title: String,
     adhanMode: Boolean,
-    offsetValue: Int,
+    offsetText: String,
     clockMinutes: Int,
     onModeChange: (Boolean) -> Unit,
     onOffsetChange: (String) -> Unit,
     onClockClick: () -> Unit,
 ) {
+    val offsetValue = offsetText.toIntOrNull()?.takeIf { abs(it) <= SharedOffsetLimitMinutes } ?: 0
+    // The field shows the typed minutes. The sign stays on the text even while the field
+    // is empty ("-"), so clearing a "before adhan" value keeps its direction.
+    val selectedDirection = when {
+        offsetText.toIntOrNull() == 0 -> EndpointDirection.AT_ADHAN
+        offsetText.startsWith("-") -> EndpointDirection.BEFORE
+        else -> EndpointDirection.AFTER
+    }
+    val sign = if (selectedDirection == EndpointDirection.BEFORE) "-" else ""
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(
             text = title,
@@ -368,7 +377,7 @@ private fun SharedEndpointRuleEditor(
         )
         if (adhanMode) {
             EndpointDirectionChoices(
-                selected = offsetDirection(offsetValue),
+                selected = selectedDirection,
                 enabled = true,
                 onSelected = { direction ->
                     val magnitude = abs(offsetValue).coerceAtLeast(1)
@@ -380,26 +389,23 @@ private fun SharedEndpointRuleEditor(
                     onOffsetChange(target.toString())
                 },
             )
-            EndpointMinuteStepper(
-                value = abs(offsetValue).toString(),
-                enabled = true,
-                decreaseLabel = stringResource(R.string.prayer_silence_decrease_minute),
-                increaseLabel = stringResource(R.string.prayer_silence_increase_minute),
-                unitLabel = stringResource(R.string.prayer_editor_minutes_unit),
-                onDecrease = { onOffsetChange((offsetValue - 1).toString()) },
-                onIncrease = { onOffsetChange((offsetValue + 1).toString()) },
-                onValueChange = { text ->
-                    val digits = normalizeEndpointNumber(text)
-                    val parsed = digits.toIntOrNull()
-                    val signed = when {
-                        parsed == null -> digits
-                        parsed == 0 -> "0"
-                        offsetValue < 0 -> (-parsed).toString()
-                        else -> parsed.toString()
-                    }
-                    onOffsetChange(signed)
-                },
-            )
+            // As in the endpoint editor: no minutes at adhan, and + and - step the shown
+            // minutes without leaving the selected direction.
+            if (selectedDirection != EndpointDirection.AT_ADHAN) {
+                EndpointMinuteStepper(
+                    value = offsetText.removePrefix("-"),
+                    enabled = true,
+                    decreaseLabel = stringResource(R.string.prayer_silence_decrease_minute),
+                    increaseLabel = stringResource(R.string.prayer_silence_increase_minute),
+                    unitLabel = stringResource(R.string.prayer_editor_minutes_unit),
+                    onDecrease = { onOffsetChange(sign + (abs(offsetValue) - 1).coerceAtLeast(1)) },
+                    onIncrease = { onOffsetChange(sign + (abs(offsetValue) + 1)) },
+                    onValueChange = { text ->
+                        val digits = normalizeEndpointNumber(text)
+                        onOffsetChange(if (digits.toIntOrNull() == 0) "0" else sign + digits)
+                    },
+                )
+            }
         } else {
             EndpointClockButton(
                 label = stringResource(R.string.prayer_silence_mode_fixed),

@@ -249,7 +249,11 @@ object AnalyticsTracker {
     }
 
     fun silencePrayerCount(context: Context): Int =
-        if (PrefsManager.isEnabled(context)) Prayer.values().size else 0
+        if (PrefsManager.isEnabled(context)) {
+            Prayer.values().count { PrefsManager.isPrayerSilenceEnabled(context, it) }
+        } else {
+            0
+        }
 
     suspend fun enabledWakeAlarmCount(context: Context): Int =
         runCatching {

@@ -215,7 +215,7 @@ object HifzReminder {
             else -> "يوم مراجعته"
         }
         return if (settings.reminder) "يظهر في تذكير الصباح $day، بعد الشروق بـ ${settings.reminderAfterSunriseMin} دقيقة، ثم تتباعد مراجعاته كلما أجبت «أتقنتها»."
-        else "التذكير اليومي متوقف في الإعدادات: تجده في مراجعة التثبيت $day."
+        else "التذكير اليومي متوقف في الإعدادات: تجده في المراجعة $day."
     }
 
     /** «بعد كل صلاة», «بعد الفجر والظهر والعشاء», «بعد الفجر وفي الساعة 13:00 و21:30». */
@@ -394,12 +394,12 @@ object HifzReminder {
                     .setContentTitle(if (name != null) "أوقفنا تذكير موضع $name" else "أوقفنا تذكير هذه المواضع")
                     .setContentText(
                         when {
-                            !HifzSettings.read(app).reminder -> if (name != null) "يبقى في مراجعة التثبيت يوم موعده" else "تبقى في مراجعة التثبيت يوم موعدها"
+                            !HifzSettings.read(app).reminder -> if (name != null) "يبقى في المراجعة يوم موعده" else "تبقى في المراجعة يوم موعدها"
                             name != null -> "يبقى في المراجعة، ويظهر في تذكير الصباح يوم موعده"
                             else -> "تبقى في المراجعة، وتظهر في تذكير الصباح يوم موعدها"
                         },
                     )
-                    .setSubText("التثبيت")
+                    .setSubText("المراجعة")
                     .setOnlyAlertOnce(true)
                     .setTimeoutAfter(8_000L)
                     .setAutoCancel(true)
@@ -411,8 +411,8 @@ object HifzReminder {
 
     private fun post(context: Context, due: List<HifzPoint>, settings: HifzSettings) {
         val manager = context.getSystemService(NotificationManager::class.java) ?: return
-        manager.createNotificationChannel(NotificationChannel(CHANNEL_ID, "التثبيت", NotificationManager.IMPORTANCE_DEFAULT).apply {
-            description = "تذكير يومي واحد بمواضع التثبيت"
+        manager.createNotificationChannel(NotificationChannel(CHANNEL_ID, "المراجعة", NotificationManager.IMPORTANCE_DEFAULT).apply {
+            description = "تذكير يومي واحد بمواضعك"
         })
         val catalog = QuranRepository.load(context)
         val name = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
@@ -429,7 +429,7 @@ object HifzReminder {
             .setSmallIcon(R.drawable.ic_tab_quran)
             .setContentTitle(title)
             .setContentText(summary)
-            .setSubText("التثبيت")
+            .setSubText("المراجعة")
             .setStyle(style)
             .setContentIntent(review)
             .setAutoCancel(true)
@@ -447,7 +447,7 @@ object HifzReminder {
      */
     private fun postRepeat(context: Context, due: List<HifzPoint>, slot: HifzSlot) {
         val manager = context.getSystemService(NotificationManager::class.java) ?: return
-        manager.createNotificationChannel(NotificationChannel(REPEAT_CHANNEL_ID, "تذكير بمواضع التثبيت", NotificationManager.IMPORTANCE_DEFAULT).apply {
+        manager.createNotificationChannel(NotificationChannel(REPEAT_CHANNEL_ID, "تذكير بمواضعك", NotificationManager.IMPORTANCE_DEFAULT).apply {
             description = "بعد الصلوات أو في الأوقات التي اخترتها، للمواضع التي اخترت أن تُذكَّر بها"
         })
         val catalog = QuranRepository.load(context)

@@ -240,6 +240,7 @@ class WakePlaybackService : Service() {
             android.util.Log.d("WakeFlow", "Playback suppressed during app-controlled silence eventId=${payload.eventId}")
             WakeAlarmQueueHolder.queue.clear()
             stopPlayback()
+            WakeAlarmScheduler.resumeSilenceUntilNextAlarm(this)
             stopForeground(STOP_FOREGROUND_REMOVE)
             stopSelf()
             return

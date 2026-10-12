@@ -37,7 +37,6 @@ class SilenceBugsTest {
 
     @Before
     fun setup() {
-        assumeBugReproEnabled()
         context = ApplicationProvider.getApplicationContext()
         context.clearSilenceAndWakePrefs()
         context.resetPhoneToNormal()
@@ -65,6 +64,8 @@ class SilenceBugsTest {
     /** H1: a manual silence whose end passed during the reboot must be ended by the boot path. */
     @Test
     fun H1_bootEndsAManualSilenceThatExpiredDuringTheReboot() = runBlocking {
+        // Prayer silence off: a prayer window active when the test runs would silence the phone again.
+        PrefsManager.setEnabled(context, false)
         SilenceModeController.setManualSilent(context)
         PrefsManager.setManualSilenceEndsAtMillis(context, System.currentTimeMillis() - 60_000L)
 

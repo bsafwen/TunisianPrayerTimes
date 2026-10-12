@@ -26,7 +26,7 @@ object MainTabNavigation {
     const val DESTINATION_ADHKAR = "adhkar"
     const val DESTINATION_QURAN = "quran"
     const val EXTRA_DHIKR_REMINDER_ID = "com.tunisianprayertimes.extra.DHIKR_REMINDER_ID"
-    /** What the Quran tab opens: «التثبيت» or its day's review. */
+    /** What the Quran tab opens: «المراجعة» or its day's review. */
     const val EXTRA_QURAN_ACTION = "com.tunisianprayertimes.extra.QURAN_ACTION"
     const val QURAN_ACTION_HIFZ = "hifz"
     const val QURAN_ACTION_HIFZ_REVIEW = "hifz_review"
@@ -138,7 +138,7 @@ class MainActivity : AppCompatActivity() {
             manager.dynamicShortcuts = listOf(
                 android.content.pm.ShortcutInfo.Builder(this, "hifz_record")
                     .setShortLabel("سجّل موضعا")
-                    .setLongLabel("سجّل موضعا للتثبيت")
+                    .setLongLabel("سجّل موضعا للمراجعة")
                     .setIcon(android.graphics.drawable.Icon.createWithResource(this, R.drawable.ic_tab_quran))
                     .setIntent(intent)
                     .build(),

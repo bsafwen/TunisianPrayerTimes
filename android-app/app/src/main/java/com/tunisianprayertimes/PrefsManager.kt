@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.app.NotificationManager
 import android.media.AudioManager
+import android.os.Handler
+import android.os.Looper
 import java.time.chrono.HijrahDate
 import java.time.temporal.ChronoField
 
@@ -141,11 +143,21 @@ object PrefsManager {
     fun observeLocationSelection(context: Context, onChanged: () -> Unit): () -> Unit {
         val settings = prefs(context)
         val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS, KEY_MANUAL_REFERENCE_ID)
+        // One save changes several keys in one apply(), and the listener is called once per key,
+        // all in one pass on the main thread. Post one callback for the whole batch instead.
+        val mainHandler = Handler(Looper.getMainLooper())
+        val notifyChange = Runnable { onChanged() }
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-            if (key == null || key in keys) onChanged()
+            if (key == null || key in keys) {
+                mainHandler.removeCallbacks(notifyChange)
+                mainHandler.post(notifyChange)
+            }
         }
         settings.registerOnSharedPreferenceChangeListener(listener)
-        return { settings.unregisterOnSharedPreferenceChangeListener(listener) }
+        return {
+            settings.unregisterOnSharedPreferenceChangeListener(listener)
+            mainHandler.removeCallbacks(notifyChange)
+        }
     }
 
     fun isEnabled(context: Context): Boolean {
@@ -383,6 +395,12 @@ object PrefsManager {
 
     private const val RAMADAN_ISHA_MINUTES = 90
     private const val KEY_RAMADAN_OVERRIDE_APPLIED = "ramadan_isha_override_hijri_year"
+    // The user's own Isha values from before the override, restored once that Ramadan is over.
+    // UNSET marks a key that was not set, so the restore removes it again.
+    private const val KEY_RAMADAN_SAVED_ISHA_AFTER = "ramadan_isha_saved_after_minutes"
+    private const val KEY_RAMADAN_SAVED_ISHA_END_OFFSET = "ramadan_isha_saved_end_offset"
+    private const val UNSET = Int.MIN_VALUE
+    private const val HIJRI_RAMADAN = 9
 
     private fun defaultAfterMinutes(prayer: Prayer): Int = when (prayer) {
         Prayer.FAJR -> 60
@@ -402,31 +420,67 @@ object PrefsManager {
     /**
      * One-time Ramadan override: if it's Ramadan and we haven't already applied the
      * override this Hijri year, bump Isha duration to 90 min (only if current value < 90).
-     * After this, the user's changes are respected.
+     * The user's own Isha values are saved first and restored once that Ramadan is over.
+     * After this, the user's changes are respected: an Isha edit drops the saved values,
+     * so it is kept after Ramadan.
      */
     fun applyRamadanIshaOverrideIfNeeded(context: Context) {
         applyRamadanIshaOverrideIfNeeded(context, HijrahDate.now())
     }
 
+    // Synchronized: the Application (main thread) and the scheduler can run this at once, and
+    // a second override must not save the first one's 90 as the user's own value.
+    @Synchronized
     internal fun applyRamadanIshaOverrideIfNeeded(context: Context, hijrahDate: HijrahDate) {
-        if (!RamadanDetector.isRamadan(hijrahDate)) return
-
+        val settings = prefs(context)
+        val isRamadan = RamadanDetector.isRamadan(hijrahDate)
         val hijriYear = hijrahDate.get(ChronoField.YEAR)
-        val appliedYear = prefs(context).getInt(KEY_RAMADAN_OVERRIDE_APPLIED, -1)
+        val appliedYear = settings.getInt(KEY_RAMADAN_OVERRIDE_APPLIED, -1)
+        // Restore only after that Ramadan: a date before it (a clock or an official date
+        // change) must not end an override that would then not be applied again this year.
+        val afterAppliedRamadan = hijriYear > appliedYear ||
+            (hijriYear == appliedYear && !isRamadan && hijrahDate.get(ChronoField.MONTH_OF_YEAR) > HIJRI_RAMADAN)
+        if (afterAppliedRamadan) restoreIshaSavedBeforeRamadan(context)
+        if (!isRamadan) return
         if (appliedYear == hijriYear) return // already applied this Ramadan
 
-        val current = getAfterMinutes(context, Prayer.ISHA)
-        if (current < RAMADAN_ISHA_MINUTES) {
-            setAfterMinutes(context, Prayer.ISHA, RAMADAN_ISHA_MINUTES)
-            // An explicit adhan-relative end would otherwise keep overriding the
-            // legacy duration this override relies on.
-            setEndOffsetMinutes(context, Prayer.ISHA, null)
+        val afterKey = "after_${Prayer.ISHA.name}"
+        val endOffsetKey = "end_offset_${Prayer.ISHA.name}"
+        val edit = settings.edit().putInt(KEY_RAMADAN_OVERRIDE_APPLIED, hijriYear)
+        if (getAfterMinutes(context, Prayer.ISHA) < RAMADAN_ISHA_MINUTES) {
+            edit.putInt(KEY_RAMADAN_SAVED_ISHA_AFTER, settings.getInt(afterKey, UNSET))
+                .putInt(KEY_RAMADAN_SAVED_ISHA_END_OFFSET, settings.getInt(endOffsetKey, UNSET))
+                .putInt(afterKey, RAMADAN_ISHA_MINUTES)
+                // An explicit adhan-relative end would otherwise keep overriding the
+                // legacy duration this override relies on.
+                .remove(endOffsetKey)
         }
-        prefs(context).edit().putInt(KEY_RAMADAN_OVERRIDE_APPLIED, hijriYear).apply()
+        edit.apply()
+    }
+
+    private fun restoreIshaSavedBeforeRamadan(context: Context) {
+        val settings = prefs(context)
+        if (!settings.contains(KEY_RAMADAN_SAVED_ISHA_AFTER)) return
+        val afterKey = "after_${Prayer.ISHA.name}"
+        val endOffsetKey = "end_offset_${Prayer.ISHA.name}"
+        val savedAfter = settings.getInt(KEY_RAMADAN_SAVED_ISHA_AFTER, UNSET)
+        val savedEndOffset = settings.getInt(KEY_RAMADAN_SAVED_ISHA_END_OFFSET, UNSET)
+        val edit = settings.edit()
+            .remove(KEY_RAMADAN_SAVED_ISHA_AFTER)
+            .remove(KEY_RAMADAN_SAVED_ISHA_END_OFFSET)
+        if (savedAfter == UNSET) edit.remove(afterKey) else edit.putInt(afterKey, savedAfter)
+        if (savedEndOffset == UNSET) edit.remove(endOffsetKey) else edit.putInt(endOffsetKey, savedEndOffset)
+        edit.apply()
+    }
+
+    /** An Isha edit is the user's choice: drop the values saved by the Ramadan override so it is kept. */
+    private fun SharedPreferences.Editor.dropIshaSavedBeforeRamadan(prayer: Prayer): SharedPreferences.Editor {
+        if (prayer == Prayer.ISHA) remove(KEY_RAMADAN_SAVED_ISHA_AFTER).remove(KEY_RAMADAN_SAVED_ISHA_END_OFFSET)
+        return this
     }
 
     fun setAfterMinutes(context: Context, prayer: Prayer, minutes: Int) {
-        prefs(context).edit().putInt("after_${prayer.name}", minutes).apply()
+        prefs(context).edit().putInt("after_${prayer.name}", minutes).dropIshaSavedBeforeRamadan(prayer).apply()
     }
 
     private fun defaultSilenceMode(prayer: Prayer): SilenceMode = when (prayer) {
@@ -444,7 +498,7 @@ object PrefsManager {
     }
 
     fun setSilenceMode(context: Context, prayer: Prayer, mode: SilenceMode) {
-        prefs(context).edit().putString("mode_${prayer.name}", mode.name).apply()
+        prefs(context).edit().putString("mode_${prayer.name}", mode.name).dropIshaSavedBeforeRamadan(prayer).apply()
     }
 
     fun getFixedTimeHour(context: Context, prayer: Prayer): Int {
@@ -461,6 +515,7 @@ object PrefsManager {
         prefs(context).edit()
             .putInt("fixed_hour_${prayer.name}", hour)
             .putInt("fixed_minute_${prayer.name}", minute)
+            .dropIshaSavedBeforeRamadan(prayer)
             .apply()
     }
 
@@ -471,7 +526,7 @@ object PrefsManager {
     }
 
     fun setDelayMinutes(context: Context, prayer: Prayer, minutes: Int) {
-        prefs(context).edit().putInt("delay_${prayer.name}", minutes).apply()
+        prefs(context).edit().putInt("delay_${prayer.name}", minutes).dropIshaSavedBeforeRamadan(prayer).apply()
     }
 
     fun getDelayMode(context: Context, prayer: Prayer): DelayMode {
@@ -480,7 +535,7 @@ object PrefsManager {
     }
 
     fun setDelayMode(context: Context, prayer: Prayer, mode: DelayMode) {
-        prefs(context).edit().putString("delay_mode_${prayer.name}", mode.name).apply()
+        prefs(context).edit().putString("delay_mode_${prayer.name}", mode.name).dropIshaSavedBeforeRamadan(prayer).apply()
     }
 
     fun getDelayFixedHour(context: Context, prayer: Prayer): Int {
@@ -495,6 +550,7 @@ object PrefsManager {
         prefs(context).edit()
             .putInt("delay_fixed_hour_${prayer.name}", hour)
             .putInt("delay_fixed_minute_${prayer.name}", minute)
+            .dropIshaSavedBeforeRamadan(prayer)
             .apply()
     }
 
@@ -508,7 +564,7 @@ object PrefsManager {
     }
 
     fun setEndOffsetMinutes(context: Context, prayer: Prayer, minutes: Int?) {
-        val edit = prefs(context).edit()
+        val edit = prefs(context).edit().dropIshaSavedBeforeRamadan(prayer)
         if (minutes == null) {
             edit.remove("end_offset_${prayer.name}")
         } else {
@@ -542,6 +598,7 @@ object PrefsManager {
             .putInt("delay_${prayer.name}", config.delayMinutes)
             .putInt("delay_fixed_hour_${prayer.name}", config.delayFixedHour)
             .putInt("delay_fixed_minute_${prayer.name}", config.delayFixedMinute)
+            .dropIshaSavedBeforeRamadan(prayer)
         // Local val: cross-module properties are not smart-castable.
         val endOffsetMinutes = config.endOffsetMinutes
         if (endOffsetMinutes == null) {

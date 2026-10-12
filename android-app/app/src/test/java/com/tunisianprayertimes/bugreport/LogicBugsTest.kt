@@ -34,7 +34,6 @@ class LogicBugsTest {
 
     @Before
     fun setup() {
-        assumeBugReproEnabled()
         context = ApplicationProvider.getApplicationContext()
         context.clearSilenceAndWakePrefs()
     }

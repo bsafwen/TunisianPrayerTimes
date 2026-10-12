@@ -61,6 +61,21 @@ object ManualSilenceScheduler {
         return true
     }
 
+    /**
+     * A reboot or a force-stop clears the end alarm of a timed manual silence, while the phone
+     * stays silenced and the end time stays saved. Ends the silence if that time has passed, or
+     * re-arms the alarm if it has not; re-arming replaces the alarm if it is still set.
+     */
+    fun restoreTimer(context: Context) {
+        if (syncExpiredTimer(context)) {
+            return
+        }
+        val endsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
+        if (PrefsManager.isManualSilenceActive(context) && endsAtMillis > 0L) {
+            scheduleAt(context, endsAtMillis)
+        }
+    }
+
     fun onTimerExpired(context: Context) {
         cancel(context)
         if (!PrefsManager.isManualSilenceActive(context)) {

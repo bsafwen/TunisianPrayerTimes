@@ -104,7 +104,7 @@ internal fun QuranIndexSheet(
                 QuranHifzSquare()
                 Spacer(Modifier.width(10.dp))
                 Text(
-                    if (hifzDue > 0) "التثبيت · ${quranPointsLabel(hifzDue)} اليوم" else "التثبيت · دفتر المواضع",
+                    if (hifzDue > 0) "المراجعة · ${quranPointsLabel(hifzDue)} اليوم" else "المراجعة · دفتر المواضع",
                     Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
                 )
                 Text("‹", fontSize = 18.sp, color = TextMuted)

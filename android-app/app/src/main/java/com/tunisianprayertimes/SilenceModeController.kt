@@ -8,6 +8,9 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
+import com.tunisianprayertimes.nap.NapPrefs
+import com.tunisianprayertimes.nap.NapSilenceController
+import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -66,10 +69,20 @@ object SilenceModeController {
             return true
         }
         if (!PrefsManager.isAutoSilenceActive(context)) {
+            // A silence-until-alarm has already silenced the phone: keep the state it saved before it.
+            val napSilenceActive = WakeAlarmScheduler.isSilenceUntilAlarmActive(context)
             PrefsManager.markAutoSilenceActive(
                 context = context,
-                previousRingerMode = audioManager.ringerMode,
-                previousInterruptionFilter = notificationManager.currentInterruptionFilter
+                previousRingerMode = if (napSilenceActive) {
+                    NapPrefs.getPreviousRingerMode(context)
+                } else {
+                    audioManager.ringerMode
+                },
+                previousInterruptionFilter = if (napSilenceActive) {
+                    NapPrefs.getPreviousInterruptionFilter(context)
+                } else {
+                    notificationManager.currentInterruptionFilter
+                }
             )
         }
 
@@ -89,11 +102,21 @@ object SilenceModeController {
         if (!PrefsManager.isAutoSilenceActive(context)) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        restoreState(
-            notificationManager, audioManager,
-            PrefsManager.getAutoSilencePreviousInterruptionFilter(context),
-            PrefsManager.getAutoSilencePreviousRingerMode(context)
-        )
+        if (WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) {
+            // A pending silence-until-alarm keeps the phone silenced and restores the state from
+            // before the window when its alarm rings.
+            NapSilenceController.takeOverSilence(
+                context,
+                PrefsManager.getAutoSilencePreviousRingerMode(context),
+                PrefsManager.getAutoSilencePreviousInterruptionFilter(context)
+            )
+        } else {
+            restoreState(
+                notificationManager, audioManager,
+                PrefsManager.getAutoSilencePreviousInterruptionFilter(context),
+                PrefsManager.getAutoSilencePreviousRingerMode(context)
+            )
+        }
         PrefsManager.clearAutoSilenceState(context)
         SilenceGuardService.stopIfNotNeeded(context)
         refreshDhikrReminders(context)
@@ -109,13 +132,19 @@ object SilenceModeController {
         if (!PrefsManager.isManualSilenceActive(context)) {
             PrefsManager.clearCallReceivedDuringSilence(context)
         }
+        // A prayer silence or a silence-until-alarm has already silenced the phone: keep the
+        // state it saved before it.
         val previousRingerMode = if (PrefsManager.isAutoSilenceActive(context)) {
             PrefsManager.getAutoSilencePreviousRingerMode(context)
+        } else if (WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) {
+            NapPrefs.getPreviousRingerMode(context)
         } else {
             audioManager.ringerMode
         }
         val previousInterruptionFilter = if (PrefsManager.isAutoSilenceActive(context)) {
             PrefsManager.getAutoSilencePreviousInterruptionFilter(context)
+        } else if (WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) {
+            NapPrefs.getPreviousInterruptionFilter(context)
         } else {
             notificationManager.currentInterruptionFilter
         }
@@ -146,7 +175,17 @@ object SilenceModeController {
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         ManualSilenceScheduler.cancel(context)
 
-        if (PrefsManager.isManualSilenceActive(context)) {
+        if (WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) {
+            // A pending silence-until-alarm keeps the phone silenced and restores the state from
+            // before the manual silence when its alarm rings.
+            if (PrefsManager.isManualSilenceActive(context)) {
+                NapSilenceController.takeOverSilence(
+                    context,
+                    PrefsManager.getManualSilencePreviousRingerMode(context),
+                    PrefsManager.getManualSilencePreviousInterruptionFilter(context)
+                )
+            }
+        } else if (PrefsManager.isManualSilenceActive(context)) {
             restoreState(
                 notificationManager, audioManager,
                 PrefsManager.getManualSilencePreviousInterruptionFilter(context),

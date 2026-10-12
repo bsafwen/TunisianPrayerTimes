@@ -46,6 +46,9 @@ class BootReceiver : BroadcastReceiver() {
     }
 
     internal suspend fun refreshSchedules(context: Context): String {
+        // First, so that syncAll schedules from the state left after an expired manual silence ends.
+        runCatching { ManualSilenceScheduler.restoreTimer(context) }
+            .onFailure { Log.w("BootReceiver", "Failed to restore the manual silence timer", it) }
         runCatching { com.tunisianprayertimes.quran.hifz.HifzReminder.refresh(context) }
             .onFailure { Log.w("BootReceiver", "Failed to refresh the hifz reminder", it) }
         AnalyticsTracker.installRamadanOverrideReporter(context)

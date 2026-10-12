@@ -97,21 +97,19 @@ class PrayerWakeRepository(private val context: Context) {
                     existing.scheduledDays != config.scheduledDays ||
                     existing.subAlarms != config.subAlarms
                 )
+            // Skips and stops are set on the stored record directly and can be newer than the caller's copy
+            // (an editor opened before the alarm was stopped): a save that keeps the schedule keeps them.
+            val markerSource = existing ?: config
             val updatedConfig = config.copy(
                 id = resolvedId,
-                skipNextOccurrenceAtMillis = if (scheduleChanged) null else config.skipNextOccurrenceAtMillis,
-                stoppedOccurrenceAtMillis = if (scheduleChanged) null else config.stoppedOccurrenceAtMillis,
+                skipNextOccurrenceAtMillis = if (scheduleChanged) null else markerSource.skipNextOccurrenceAtMillis,
+                stoppedOccurrenceAtMillis = if (scheduleChanged) null else markerSource.stoppedOccurrenceAtMillis,
             )
             if (existing != null && existing != updatedConfig) {
                 scheduledMetadataAlarmIdToClear = resolvedId
             }
             if (scheduleChanged || !updatedConfig.enabled) {
                 awakeCheckGroupAlarmIdToClear = resolvedId
-            }
-            if (scheduleChanged || !updatedConfig.enabled ||
-                (existing?.skipNextOccurrenceAtMillis != null && updatedConfig.skipNextOccurrenceAtMillis == null) ||
-                (existing?.stoppedOccurrenceAtMillis != null && updatedConfig.stoppedOccurrenceAtMillis == null)
-            ) {
                 skippedAlarmIdToClear = resolvedId
             }
             if (!updatedConfig.enabled) {
@@ -169,8 +167,19 @@ class PrayerWakeRepository(private val context: Context) {
     suspend fun deleteWakeAlarm(id: String) {
         require(id.isNotBlank()) { "Wake alarm id must not be blank." }
 
+        var awakeCheckEventIdsToCancel = emptySet<String>()
         context.prayerWakeDataStore.edit { preferences ->
             val current = decodePrayerWakeStore(preferences[prayerWakeStoreKey])
+            // The expiry cleanup removes a completed one-off before the awake check of its last ring runs, and that
+            // check must still run (see AwakeCheckReceiver). Deleting any other alarm drops its pending checks.
+            current.alarmFor(id)
+                ?.takeUnless { removed -> removed.isExpiredOneOffWakeAlarm(System.currentTimeMillis()) }
+                ?.let { removed ->
+                    awakeCheckEventIdsToCancel = buildSet {
+                        add(wakeMainEventId(id))
+                        removed.subAlarms.forEach { subAlarm -> add(wakeSubAlarmEventId(id, subAlarm.id)) }
+                    }
+                }
             val updated = current.alarms.filterNot { config -> config.id == id }
             if (updated.isEmpty()) {
                 preferences.remove(prayerWakeStoreKey)
@@ -182,6 +191,7 @@ class PrayerWakeRepository(private val context: Context) {
         WakeOccurrenceSkipRegistry.clearAlarm(id)
         WakeAlarmScheduler.invalidateScheduledTriggerMetadata(context, id)
         AwakeCheckGroupTracker.clearAlarm(context, id)
+        awakeCheckEventIdsToCancel.forEach { eventId -> AwakeCheckScheduler.cancel(context, eventId) }
     }
 
     suspend fun clearAllWakeConfigs() {

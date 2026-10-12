@@ -125,6 +125,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -3351,6 +3352,9 @@ private fun WakeRingtoneSelector(
         }
     }
 
+    // A stopped activity keeps this composition, so the looping preview would go on playing in the background.
+    LifecycleEventEffect(Lifecycle.Event.ON_STOP) { stopPreview() }
+
     LaunchedEffect(enabled) {
         if (!enabled) {
             stopPreview()
@@ -3875,28 +3879,8 @@ private fun resolveOneTimeWakeTrigger(
     }
 
     val now = Calendar.getInstance()
-    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (0..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
-        val date = (now.clone() as Calendar).apply {
-            add(Calendar.DAY_OF_YEAR, dayOffset)
-        }
-        PrayerTimesRepository.loadDayPrayerTimes(
-            context = context,
-            delegationId = delegationId,
-            year = date.get(Calendar.YEAR),
-            month = date.get(Calendar.MONTH) + 1,
-            day = date.get(Calendar.DAY_OF_MONTH),
-        )?.let { prayerTimes ->
-            WakeAlarmComputer.PrayerDayContext(
-                date = date,
-                prayerTimes = prayerTimes,
-                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-                jomoaaHour = jomoaaHour,
-                jomoaaMinute = jomoaaMinute,
-            )
-        }
-    }
+    // The preview's days, from yesterday: an offset past midnight can make yesterday's prayer the next ring.
+    val prayerDays = loadWakePreviewPrayerDays(context, delegationId, now)
     val mainTrigger = WakeAlarmComputer.compute(now, config, prayerDays).mainAlarm ?: return config
     return config.copy(
         mainAlarm = config.mainAlarm.copy(

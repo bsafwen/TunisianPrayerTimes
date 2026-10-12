@@ -69,7 +69,7 @@ internal fun QuranVerseCard(
             {
                 if (hasPoint) CardAction(R.drawable.ic_quran_mark, "التصحيح", onPoint, Modifier.testTag("quran_verse_fix"), tint = QuranHifzViolet,
                     description = "التصحيح: الصواب في هذا الموضع")
-                else CardAction(R.drawable.ic_quran_slip, "موضع", onPoint, Modifier.testTag("quran_verse_point"), description = "سجّل موضعا للتثبيت")
+                else CardAction(R.drawable.ic_quran_slip, "موضع", onPoint, Modifier.testTag("quran_verse_point"), description = "سجّل موضعا للمراجعة")
             },
             {
                 CardAction(

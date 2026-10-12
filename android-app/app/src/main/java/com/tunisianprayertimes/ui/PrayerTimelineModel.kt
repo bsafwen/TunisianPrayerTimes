@@ -111,17 +111,20 @@ internal fun PrayerSilenceConfig.endRuleMode(): EndpointRuleMode =
         EndpointRuleMode.ADHAN
     }
 
-/** Replaces one endpoint's rule without touching the other endpoint. */
+/**
+ * Replaces one endpoint's rule without touching the other endpoint. A fixed start is
+ * a clock time on the prayer's own day, as the scheduler reads it, so a start on
+ * another day stays adhan-relative ([offsetMinutes]) instead of moving by a day.
+ */
 internal fun PrayerSilenceConfig.withStartRule(
     mode: EndpointRuleMode,
     offsetMinutes: Int,
     clockMinutes: Int,
-): PrayerSilenceConfig = if (mode == EndpointRuleMode.FIXED_TIME) {
-    val clock = Math.floorMod(clockMinutes, MINUTES_PER_DAY)
+): PrayerSilenceConfig = if (mode == EndpointRuleMode.FIXED_TIME && clockMinutes in 0 until MINUTES_PER_DAY) {
     copy(
         delayMode = DelayMode.FIXED_TIME,
-        delayFixedHour = clock / 60,
-        delayFixedMinute = clock % 60,
+        delayFixedHour = clockMinutes / 60,
+        delayFixedMinute = clockMinutes % 60,
     )
 } else {
     copy(delayMode = DelayMode.MINUTES, delayMinutes = offsetMinutes)

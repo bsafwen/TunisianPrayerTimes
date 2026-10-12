@@ -219,6 +219,8 @@ internal fun PrayerSilenceRangeSlider(
     val currentConfig by rememberUpdatedState(config)
     val currentCanAdjust by rememberUpdatedState(canAdjust)
     val currentPreviewWindow by rememberUpdatedState(onPreviewWindow)
+    val currentCommitWindow by rememberUpdatedState(onCommitWindow)
+    val currentEditEndpoint by rememberUpdatedState(onEditEndpoint)
 
     val earlierLabel = stringResource(R.string.prayer_silence_adjust_earlier)
     val laterLabel = stringResource(R.string.prayer_silence_adjust_later)
@@ -406,7 +408,7 @@ internal fun PrayerSilenceRangeSlider(
                 }
             }
             if (candidate == visible || !isValid(candidate)) return false
-            onCommitWindow(candidate)
+            currentCommitWindow(candidate)
             return true
         }
 
@@ -414,7 +416,7 @@ internal fun PrayerSilenceRangeSlider(
             if (!currentCanAdjust) return false
             val candidate = shifted(visibleWindow(), part, deltaMinutes, activeScale) ?: return false
             if (!isValid(candidate)) return false
-            onCommitWindow(candidate)
+            currentCommitWindow(candidate)
             return true
         }
 
@@ -543,7 +545,7 @@ internal fun PrayerSilenceRangeSlider(
             drag = null
             if (completed != null && completed.window != completed.startWindow) {
                 currentPreviewWindow(null)
-                onCommitWindow(completed.window)
+                currentCommitWindow(completed.window)
             } else {
                 currentPreviewWindow(null)
             }
@@ -571,14 +573,14 @@ internal fun PrayerSilenceRangeSlider(
                 )
             }
             if (candidate == visible || !isValid(candidate)) return
-            onCommitWindow(candidate)
+            currentCommitWindow(candidate)
         }
 
         fun handleTap(position: Offset) {
             if (!currentCanAdjust) return
             when (hitPart(position)) {
-                SilenceDragPart.Start -> onEditEndpoint(SilenceEndpoint.START)
-                SilenceDragPart.End -> onEditEndpoint(SilenceEndpoint.END)
+                SilenceDragPart.Start -> currentEditEndpoint(SilenceEndpoint.START)
+                SilenceDragPart.End -> currentEditEndpoint(SilenceEndpoint.END)
                 SilenceDragPart.Window -> handleTrackTap(position)
                 null -> handleTrackTap(position)
             }

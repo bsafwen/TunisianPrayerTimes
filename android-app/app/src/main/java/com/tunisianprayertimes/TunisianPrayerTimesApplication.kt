@@ -32,8 +32,17 @@ class TunisianPrayerTimesApplication : Application() {
         SilenceController.init(this)
         TimerScheduler.init(this)
         refreshDhikrReminders()
+        restoreManualSilenceTimer()
         dhikrLocationSubscription = PrefsManager.observeLocationSelection(this) { refreshDhikrReminders() }
         observeOfficialDateChanges()
+    }
+
+    private fun restoreManualSilenceTimer() {
+        applicationScope.launch(Dispatchers.IO) {
+            // A force-stop clears the end alarm of a timed manual silence, as a reboot does.
+            runCatching { ManualSilenceScheduler.restoreTimer(this@TunisianPrayerTimesApplication) }
+                .onFailure { Log.w("ManualSilence", "Could not restore the manual silence timer", it) }
+        }
     }
 
     private fun refreshDhikrReminders() {
