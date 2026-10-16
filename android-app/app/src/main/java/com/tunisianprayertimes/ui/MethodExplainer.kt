@@ -80,7 +80,8 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
     val admin1Name = remember(place) { PlaceCatalogue.get(context).admin1Name(place.countryCode, place.admin1) }
     val chip = MethodPresentation.chip(method, place, mapped, profileFit, admin1Name)
     val day = remember(choice, today) { runCatching { placeTimes.day(place, choice, today) }.getOrNull() }
-    val showNights = abs(place.point.latitude) >= 44.5
+    // Diyanet's takdir, the first short-night rule, starts at 44.375° N (README H6).
+    val showNights = abs(place.point.latitude) >= 44.375
     val estimatedNights by produceState<List<Boolean>?>(null, choice, today.year, showNights) {
         if (!showNights) return@produceState
         value = withContext(Dispatchers.Default) {

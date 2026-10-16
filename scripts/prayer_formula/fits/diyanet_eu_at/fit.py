@@ -19,9 +19,10 @@ Data, read at run time from test-data-local and never copied (D13, A7):
   (assets/places/europe-cities.tsv) for their Arabic names.
 
 The method is diyanet_eu as EuropeanPresets.DIYANET_EU stands (18 / 16, sunrise - 7, Dhuhr + 5, Asr + 4, Maghrib + 7,
-the sun once a day at 0h UT, NEAREST, Diyanet's takdir from 44.5 N, 5 h minimum day and night): nothing of it is
-refitted here. Its takdir constants (DiyanetTakdir.kt) were re-derived from IGGÖ's tables (fits/diyanet_takdir.py),
-so Fajr and Isha on the takdir days (May to August) are in-sample there and scored apart.
+the sun once a day at 0h UT, NEAREST, Diyanet's takdir from 44.375 N, 5 h minimum day and night): nothing of it is
+refitted here. Its takdir (DiyanetTakdir.kt, README H6) is Diyanet's criteria as fits/diyanet_takdir/ reads them from
+Diyanet's own tables, which held out these Austrian tables entirely; Fajr and Isha on the takdir days (May to August)
+are still scored apart.
 
 Tier 0, per city: the longitude from Dhuhr (windows, within 0.25 deg of the centre), then the latitude from sunrise,
 Asr, Maghrib, and Fajr and Isha outside May-August (exact minutes on a 0.005 then 0.0005 deg grid within 0.15 deg; the
@@ -69,7 +70,7 @@ SPAN_LNG = 0.25                        # degrees of longitude (Eisenstadt's tabl
 COARSE = 0.005
 STEP = 0.0005
 REACH_KM = 25.0                        # IGGÖ's rule (6.5): a point within 25 km of a city centre takes its table
-# City centres (OpenStreetMap, as in fits/diyanet_takdir.py) and Arabic names.
+# City centres (OpenStreetMap, as the former IGGÖ fit fits/diyanet_takdir.py had them, in git history) and Arabic names.
 CITIES = {
     "bregenz": ((47.5031, 9.7471), "بريغنتس"), "eisenstadt": ((47.8457, 16.5233), "أيزنشتات"),
     "graz": ((47.0707, 15.4395), "غراتس"), "innsbruck": ((47.2692, 11.4041), "إنسبروك"),

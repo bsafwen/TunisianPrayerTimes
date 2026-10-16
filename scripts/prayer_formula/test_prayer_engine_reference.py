@@ -160,13 +160,59 @@ class HighLatitudeTest(unittest.TestCase):
         self.assertEqual(day.rules["ASR"], "POLAR_ASR_MIDPOINT")
 
     def test_diyanet_clamp_at_bodo(self):
-        # H2: the Diyanet presets centre on T + 5 min every day; the polar Asr is T, tied to Dhuhr + 5.
+        # H2: the Diyanet presets centre on T + 5 min every day and clamp their published sunrise and Maghrib (the
+        # offsets − 7 and + 7 inside the clamp); the polar Asr is T, tied to Dhuhr + 5.
         _, _, steps, day = run_case("polar-bodo-diyanet-2026-12-21")
         t = steps.transit
-        self.assertAlmostEqual(steps.sunrise, t + 300 - 2.5 * 3600, delta=0.001)
-        self.assertAlmostEqual(day.unrounded["MAGHRIB"], t + 300 + 2.5 * 3600 + 7 * 60, delta=0.001)
+        self.assertAlmostEqual(day.unrounded["SUNRISE"], t + 300 - 2.5 * 3600, delta=0.001)
+        self.assertAlmostEqual(steps.sunrise, t + 300 - 2.5 * 3600 + 7 * 60, delta=0.001)
+        self.assertAlmostEqual(day.unrounded["MAGHRIB"], t + 300 + 2.5 * 3600, delta=0.001)
         self.assertEqual(day.minutes["ASR"], day.minutes["DHUHR"])
         self.assertEqual(day.rules["ASR"], "DIYANET_CLAMP")
+
+    def test_takdir_case_a_at_cuneo(self):
+        # H6, case A: on 21 June, Isha = M + S/3 and Fajr = R − (18/16)·S/3, S = F + 24 h − M, with the published
+        # sunrise and Maghrib (no E19 outside mainland France).
+        engine, site, _, day = run_case("diyanet-cuneo-2026-06-21")
+        f = engine.angle_on(site, engine.day, "FAJR")
+        r, m = day.unrounded["SUNRISE"], day.unrounded["MAGHRIB"]
+        s = f + 86400 - m
+        self.assertAlmostEqual(day.unrounded["ISHA"], m + s / 3, delta=0.001)
+        self.assertAlmostEqual(day.unrounded["FAJR"], r - 18 / 16 * s / 3, delta=0.001)
+        self.assertEqual((day.rules["FAJR"], day.rules["ISHA"]), ("DIYANET_TAKDIR", "DIYANET_TAKDIR"))
+
+    def test_takdir_cutoff_and_south(self):
+        # H6: nothing south of 44.375° N (Rodez keeps its angles on 21 June); in the south the angle times stay and
+        # an absent Fajr takes α/60 of the night before (Ushuaia, 21 December).
+        _, _, _, rodez = run_case("diyanet-rodez-2026-06-21")
+        self.assertNotIn("FAJR", rodez.rules)
+        self.assertNotIn("ISHA", rodez.rules)
+        engine, site, steps, ushuaia = run_case("diyanet-ushuaia-2026-12-21")
+        self.assertIsNone(engine.angle_on(site, engine.day, "FAJR"))
+        night = engine.night_length(site, engine.day - ref.ONE_DAY)
+        self.assertAlmostEqual(ushuaia.unrounded["FAJR"], steps.sunrise - 18 / 60 * night, delta=0.001)
+        self.assertEqual(ushuaia.rules["FAJR"], "DIYANET_TAKDIR")
+        _, _, _, winter = run_case("diyanet-ushuaia-2026-06-21")
+        self.assertNotIn("FAJR", winter.rules)
+
+    def test_takdir_held_night_at_gavle(self):
+        # H2 and H6 where 21 June holds its night: no Fajr earlier, no Isha later than 21 June's (times of day), the
+        # sunrise of 22 June to 31 October never earlier than the day before's, the sunset to 21 June never earlier.
+        engine, site, _, _ = run_case("diyanet-gavle-2026-06-21")
+        self.assertTrue(engine.holds_its_night(site, 2026))
+        table = engine.takdir_table(site, 2026)
+        june = table[datetime.date(2026, 6, 21)]
+        for d, (fajr, isha) in table.items():
+            self.assertGreaterEqual(fajr, june[0] - 1e-6, d)
+            self.assertLessEqual(isha, june[1] + 1e-6, d)
+        d = datetime.date(2026, 3, 2)
+        while d <= datetime.date(2026, 10, 31):
+            here, before = engine.day_steps(site, d), engine.day_steps(site, d - ref.ONE_DAY)
+            if d <= datetime.date(2026, 6, 21):
+                self.assertGreaterEqual(here.sunset + 1e-6, before.sunset + 86400, d)
+            else:
+                self.assertGreaterEqual(here.sunrise + 1e-6, before.sunrise + 86400, d)
+            d += ref.ONE_DAY
 
     def test_dum_rt_at_kazan(self):
         # H4: N's lowest altitude above −18°: Isha = sunset + 90 min, Fajr = sunrise − 120 min.

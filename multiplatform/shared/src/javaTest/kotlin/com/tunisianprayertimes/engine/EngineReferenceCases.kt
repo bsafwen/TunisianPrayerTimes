@@ -440,6 +440,19 @@ class EngineReferenceCases {
             add("diyanet-vienna", VIENNA, summer + EngineTestSupport.dates("2026-10-13"), com.tunisianprayertimes.method.EuropeanPresets.DIYANET_EU)
             add("diyanet-sarajevo", place(43.8563, 18.4131, "Europe/Sarajevo"), summer, com.tunisianprayertimes.method.EuropeanPresets.DIYANET_TR)
             add("diyanet-zurich", place(45.2, 7.7, "Europe/Rome"), summer, com.tunisianprayertimes.method.EuropeanPresets.DIYANET_EU)
+            // H6 (fits/diyanet_takdir): just north and south of the cutoff, case A, case B, the held night (H2), a
+            // midnight sun, and the south, where the angle times stay and an absent one takes α/60 of the night.
+            val takdirDates = EngineTestSupport.dates("2026-03-15", "2026-04-20", "2026-05-10", "2026-05-28", "2026-06-03",
+                "2026-06-21", "2026-07-15", "2026-08-10", "2026-08-31", "2026-09-20", "2026-10-15")
+            val diyanetEu = com.tunisianprayertimes.method.EuropeanPresets.DIYANET_EU
+            add("diyanet-cuneo", place(44.39, 7.55, "Europe/Rome"), takdirDates, diyanetEu)
+            add("diyanet-rodez", place(44.35, 2.57, "Europe/Paris"), EngineTestSupport.dates("2026-05-28", "2026-06-21"), diyanetEu)
+            add("diyanet-paris", PARIS, takdirDates, diyanetEu)
+            add("diyanet-hamburg", place(53.55, 10.0, "Europe/Berlin"), takdirDates, diyanetEu)
+            add("diyanet-gavle", place(60.67, 17.14, "Europe/Stockholm"), takdirDates, diyanetEu)
+            add("diyanet-tromso", TROMSO, takdirDates + EngineTestSupport.dates("2026-12-21"), diyanetEu)
+            add("diyanet-ushuaia", place(-54.79, -68.305, "America/Argentina/Ushuaia"),
+                EngineTestSupport.dates("2026-06-21", "2026-10-15", "2026-12-21", "2027-01-15"), diyanetEu)
             add("zagreb-summer", ZAGREB, EngineTestSupport.dates("2026-03-24", "2026-03-25", "2026-06-21", "2026-08-25", "2026-09-01", "2026-09-02"), com.tunisianprayertimes.method.EuropeanPresets.HR_MIZ_ZAGREB)
             add("ljubljana-summer", LJUBLJANA, EngineTestSupport.dates("2026-04-23", "2026-04-24", "2026-05-10", "2026-05-23", "2026-05-24"), com.tunisianprayertimes.method.EuropeanPresets.SI_ISLAMSKA_SKUPNOST)
             // Slovenia's Isha at Sarajevo's point (IshaRule.Angle.at) outside the summer form.

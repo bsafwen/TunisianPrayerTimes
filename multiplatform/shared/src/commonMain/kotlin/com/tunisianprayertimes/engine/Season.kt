@@ -56,6 +56,14 @@ internal class Season private constructor(val site: Site, val zone: ZoneId, val 
     internal val meccaOffsets = HashMap<LocalDate, IrnNorth.MeccaOffsets>()
     internal val northDays = HashMap<Int, IrnNorth.Days>()
 
+    /** H6 ([DiyanetTakdir]): the year's takdir table, kept with the season. */
+    internal val takdirTables = HashMap<Int, DiyanetTakdir>()
+
+    private val endsByDate = object : LinkedHashMap<LocalDate, DayEnds>(64, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<LocalDate, DayEnds>?) = size > MAX_DAYS
+    }
+    private val heldNights = HashMap<Int, Boolean>()
+
     fun day(date: LocalDate): DayAstro = synchronized(days) { days[date] } ?: compute(date).also { synchronized(days) { days[date] = it } }
 
     private fun compute(date: LocalDate): DayAstro = DayAstro(date, Sky(site, date, zone, method), method)
@@ -68,8 +76,13 @@ internal class Season private constructor(val site: Site, val zone: ZoneId, val 
     /** True when the method's Diyanet clamp applies: no gate, centred on Dhuhr = noon + 5 (7.4). */
     private val diyanet: Boolean get() = method.polar == PolarFallback.DIYANET_CLAMP || method.minDayNightHours != null
 
-    /** Steps 2 and 3 for [date]: the 5-hour minimum day and night where the method's polar rule acts. */
+    /** Steps 2 and 3 for [date]: the 5-hour minimum day and night where the method's polar rule acts (H2). */
     fun ends(date: LocalDate): DayEnds {
+        synchronized(endsByDate) { endsByDate[date] }?.let { return it }
+        return computeEnds(date).also { synchronized(endsByDate) { endsByDate[date] = it } }
+    }
+
+    private fun computeEnds(date: LocalDate): DayEnds {
         val d = day(date)
         val clampActs = when {
             method.polar == PolarFallback.IRN_MECCA_CYCLE -> false
@@ -78,17 +91,66 @@ internal class Season private constructor(val site: Site, val zone: ZoneId, val 
         }
         if (!clampActs) return DayEnds(d.sunriseRaw, d.sunsetRaw, null, null)
         val rule = if (diyanet) RuleName.DIYANET_CLAMP else RuleName.MIN_DAY_NIGHT_5H
-        val centre = d.transit + if (diyanet) DIYANET_DHUHR_SECONDS else 0.0
-        val polarNight = d.noonAltitudeDeg < d.sunriseHorizonDeg
-        val sunrise = d.sunriseRaw?.coerceIn(centre - LONG_HALF, centre - SHORT_HALF)
-            ?: if (polarNight) centre - SHORT_HALF else centre - LONG_HALF
-        val sunset = d.sunsetRaw?.coerceIn(centre + SHORT_HALF, centre + LONG_HALF)
-            ?: if (polarNight) centre + SHORT_HALF else centre + LONG_HALF
+        var (sunrise, sunset) = clamped(d)
+        if (diyanet && date.monthValue in 3..10 && holdsItsNight(date.year)) {
+            // The held night: 21 June's ends bound the summer, and the ends never move back towards it (times of day).
+            val solstice = LocalDate.of(date.year, 6, 21)
+            val shift = (date.toEpochDay() - solstice.toEpochDay()) * DAY_SECONDS
+            val (juneSunrise, juneSunset) = clamped(day(solstice))
+            sunrise = maxOf(sunrise, juneSunrise + shift)
+            sunset = minOf(sunset, juneSunset + shift)
+            if (date > LocalDate.of(date.year, 3, 1) && date <= solstice) {
+                sunset = maxOf(sunset, checkNotNull(previousEnds(date).sunset) + DAY_SECONDS)
+            } else if (date > solstice && date <= LocalDate.of(date.year, 10, 31)) {
+                sunrise = maxOf(sunrise, checkNotNull(previousEnds(date).sunrise) + DAY_SECONDS)
+            }
+        }
         return DayEnds(
             sunrise, sunset,
             if (d.sunriseRaw == null || abs(sunrise - d.sunriseRaw) > MOVED) rule else null,
             if (d.sunsetRaw == null || abs(sunset - d.sunsetRaw) > MOVED) rule else null,
         )
+    }
+
+    /** The ends of the date before [date], those from 1 March computed in date order first, so no chain of dates recurses. */
+    private fun previousEnds(date: LocalDate): DayEnds {
+        val previous = date.minusDays(1)
+        var d = LocalDate.of(date.year, 3, 1)
+        while (d < previous) {
+            ends(d)
+            d = d.plusDays(1)
+        }
+        return ends(previous)
+    }
+
+    /**
+     * H2's clamp on [d]'s sunrise and sunset, centred on Dhuhr (the Diyanet presets: transit + 5 min, on their
+     * published sunrise and Maghrib, the method's offsets added before and taken off after).
+     */
+    private fun clamped(d: DayAstro): Pair<Double, Double> {
+        val centre = d.transit + if (diyanet) DIYANET_DHUHR_SECONDS else 0.0
+        val polarNight = d.noonAltitudeDeg < d.sunriseHorizonDeg
+        val rise = if (diyanet) method.offset(TimeEvent.SUNRISE) * 60.0 else 0.0
+        val set = if (diyanet) method.offset(TimeEvent.MAGHRIB) * 60.0 else 0.0
+        val sunrise = (d.sunriseRaw?.plus(rise)?.coerceIn(centre - LONG_HALF, centre - SHORT_HALF)
+            ?: if (polarNight) centre - SHORT_HALF else centre - LONG_HALF) - rise
+        val sunset = (d.sunsetRaw?.plus(set)?.coerceIn(centre + SHORT_HALF, centre + LONG_HALF)
+            ?: if (polarNight) centre + SHORT_HALF else centre + LONG_HALF) - set
+        return sunrise to sunset
+    }
+
+    /**
+     * H2's held night: [year]'s 21 June has its published sunrise before Dhuhr − 9.5 h and its Maghrib after
+     * Dhuhr + 9.5 h, an absent event counting under a midnight sun (never in a polar night).
+     */
+    fun holdsItsNight(year: Int): Boolean {
+        synchronized(heldNights) { heldNights[year] }?.let { return it }
+        val d = day(LocalDate.of(year, 6, 21))
+        val centre = d.transit + DIYANET_DHUHR_SECONDS
+        val midnightSun = d.noonAltitudeDeg >= d.sunriseHorizonDeg
+        val sunrise = d.sunriseRaw?.let { it + method.offset(TimeEvent.SUNRISE) * 60.0 < centre - LONG_HALF } ?: midnightSun
+        val sunset = d.sunsetRaw?.let { it + method.offset(TimeEvent.MAGHRIB) * 60.0 > centre + LONG_HALF } ?: midnightSun
+        return (sunrise && sunset).also { synchronized(heldNights) { heldNights[year] = it } }
     }
 
     /** Whether a day or a night around [d] is shorter than 5 h, or an event is missing. */
@@ -172,6 +234,7 @@ internal class Season private constructor(val site: Site, val zone: ZoneId, val 
         const val LONG_HALF = 9.5 * 3600
         const val DIYANET_DHUHR_SECONDS = 5 * 60.0
         private const val MOVED = 1e-3
+        private const val DAY_SECONDS = 86_400.0
 
         private val cache = object : LinkedHashMap<Triple<Site, ZoneId, PrayerMethod>, Season>(16, 0.75f, true) {
             override fun removeEldestEntry(eldest: MutableMap.MutableEntry<Triple<Site, ZoneId, PrayerMethod>, Season>?) = size > 12

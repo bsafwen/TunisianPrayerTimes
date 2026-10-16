@@ -188,7 +188,8 @@ internal fun PrayerMethodSection(onTimesChanged: () -> Unit) {
     }
 }
 
-private const val HIGH_LATITUDE_FROM = 44.5
+/** Where a method's own short-night rule can act: Diyanet's takdir, the first, starts at 44.375° N (README H6). */
+private const val HIGH_LATITUDE_FROM = 44.375
 
 @Composable
 private fun SettingsRow(title: String, subtitle: String?, onClick: () -> Unit) {

@@ -86,7 +86,7 @@ object EuropeanPresets {
         )
     }
 
-    val DIYANET_EU = angles("diyanet_eu", 18.0, 16.0, tables("Re-derived from IGGÖ's and Diyanet's tables; summer times may differ by a few minutes"), HighLatitudeRule.DiyanetTakdir) {
+    val DIYANET_EU = angles("diyanet_eu", 18.0, 16.0, tables("Diyanet's 2021 Congress criteria, checked on its 2027 European tables (fits/diyanet_takdir)"), HighLatitudeRule.DiyanetTakdir) {
         copy(offsets = DIYANET_OFFSETS, polar = PolarFallback.DIYANET_CLAMP, minDayNightHours = 5, sunEvaluation = DAILY_0H)
     }
 

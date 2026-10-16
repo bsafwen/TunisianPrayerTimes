@@ -133,35 +133,15 @@ internal class HighLatitudeRules(
 
     // ---- Diyanet's takdir ----
 
+    /** H6: the year's table north of 44.375° N; elsewhere the angle time, or D5's α/60 of the night where it is absent. */
     private fun takdir(side: Side, angleTime: Double?, angleDeg: Double): Bounded {
-        val phi = abs(latitudeDeg)
-        if (phi < DiyanetTakdir.START_LATITUDE) return Bounded(angleTime, null)
-        val sky = Sky(season.site, date, zone, method)
-        var value = angleTime
-        if (phi >= DiyanetTakdir.K_LATITUDE) {
-            val night = (if (side == Side.FAJR) nightBefore else nightAfter) ?: return Bounded(angleTime, null)
-            val lowest = Solver.altitude(sky.cycle.hours(night.lowestPoint), season.site.evening.latitude, season.site.evening.longitude, sky.instantSun, sky.cycle)
-            val k = if (side == Side.FAJR) DiyanetTakdir.kFajr(phi) else DiyanetTakdir.kIsha(phi)
-            val effective = minOf(angleDeg, k * -lowest)
-            if (effective < angleDeg) {
-                val event = if (side == Side.FAJR) TimeEvent.FAJR else TimeEvent.ISHA
-                val takdir = sky.twilight(event, effective).seconds
-                if (takdir != null) value = if (side == Side.FAJR) maxOf(value ?: takdir, takdir) else minOf(value ?: takdir, takdir)
-            }
+        if (latitudeDeg >= DiyanetTakdir.START_LATITUDE) {
+            DiyanetTakdir.of(season, date.year).value(date, side == Side.FAJR)?.let { return moved(angleTime, it, RuleName.DIYANET_TAKDIR) }
         }
-        if (side == Side.FAJR) {
-            val cap = DiyanetTakdir.fajrCapMinutes(phi)
-            if (cap.isFinite()) sunrise?.let { value = maxOf(value ?: (it - cap * 60), it - cap * 60) }
-        } else {
-            val cap = DiyanetTakdir.ishaCapMinutes(phi)
-            if (cap.isFinite()) sunset?.let { value = minOf(value ?: (it + cap * 60), it + cap * 60) }
-        }
-        if (value == null) {
-            // Under a midnight sun k·D gives no event: D5's share of the clamped night instead.
-            val night = if (side == Side.FAJR) nightBefore else nightAfter
-            value = night?.let { if (side == Side.FAJR) checkNotNull(sunrise) - angleDeg / 60 * it.seconds else checkNotNull(sunset) + angleDeg / 60 * it.seconds }
-        }
-        return value?.let { moved(angleTime, it, RuleName.DIYANET_TAKDIR) } ?: Bounded(null, null)
+        if (angleTime != null) return Bounded(angleTime, null)
+        val night = (if (side == Side.FAJR) nightBefore else nightAfter) ?: return Bounded(null, null)
+        val value = if (side == Side.FAJR) checkNotNull(sunrise) - angleDeg / 60 * night.seconds else checkNotNull(sunset) + angleDeg / 60 * night.seconds
+        return Bounded(value, RuleName.DIYANET_TAKDIR)
     }
 
     // ---- Absent nights, with the ramp ----

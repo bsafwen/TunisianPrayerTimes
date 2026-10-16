@@ -44,9 +44,9 @@ within 1 minute, held out:
 **The takdir at Turkey's latitudes.** Diyanet prints no takdir in Turkey. Fajr and Isha from 15 April to 31 August,
 never used in a fit, are plain 18° and 17° times: 98.5 % and 98.4 % exact, all within 1 minute, and so in every
 one-degree band of the entries' latitudes, 35.9° to 42.0° N (97.1–98.8 % exact; the one entry north of 42°, SİNOP,
-96.4 % and 100 %). The engine's takdir starts at 44.5° N (7.4), so it never acts in Turkey either: there the season
-matches (Turkey's shortest midnight depression, about 24.5° at 42.1° N, stays far from 18°). Where it does act, Diyanet's
-own Austrian tables show the V-shaped ramp described in `fits/diyanet_eu_at`.
+96.4 % and 100 %). The engine's takdir starts at 44.375° N (README H6), so it never acts in Turkey either: there the
+season matches (Turkey's shortest midnight depression, about 24.5° at 42.1° N, stays far from 18°). Where it does act,
+Diyanet's tables follow the Prayer Times Congress's criteria described in `fits/diyanet_takdir`.
 
 **Zones.** One per entry, id the IlceID, `point` its district seat (GeoNames, the catalogue's own point), from which the
 nearest entry is measured, and its fitted point as its E6 morning and evening points (as IGGÖ's capitals and the

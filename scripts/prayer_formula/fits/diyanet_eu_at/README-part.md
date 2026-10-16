@@ -9,9 +9,11 @@ IGGÖ's nine state capitals (tier 0, within 25 km) and Diyanet's 191 Austrian en
 table's fitted point, IGGÖ's April–December 2026 tables are reproduced on 97.4–98.2 % of days per time held out, and
 Diyanet's own 2027 tables on 97.7–98.4 %, every time within 1 min but the takdir's first day at the northernmost places
 (IGGÖ's Vienna and St. Pölten on 30 April 2026, Diyanet's Zwettl, Hollabrunn, Mistelbach and Berg bei Rohrbach on 27
-April 2027: Fajr 2–3 min, Diyanet's season starting a day before the engine's). **In the takdir season it does not**:
-from May to early August, Fajr and Isha are about 23 % and 31 % exact, up to 11 min off at IGGÖ's cities and 16 min at
-Diyanet's northern entries.
+April 2027: Fajr 2–3 min, Diyanet's season starting a day before the engine's). **In the takdir season it did not**
+with the former k·D takdir: from May to early August, Fajr and Isha were about 23 % and 31 % exact, up to 11 min off at
+IGGÖ's cities and 16 min at Diyanet's northern entries. Since 2026-10-16 H6 is Diyanet's own criteria
+(`fits/diyanet_takdir`, which held these 190 tables out): 96.8 % and 97.9 % exact on the takdir days and 98.0 % and
+98.2 % on the whole of 2027, every time within 1 min.
 
 **IGGÖ's tables are Diyanet's.** On their 31 common days (2026-10-16 to 11-15) each of IGGÖ's nine tables equals a
 Diyanet entry on all 186 times: BREGENZ, EISENSTADT, GRAZ, INNSBRUCK, KLAGENFURT, SALZBURG, SANKT POLTEN, VIYANA (Wien)
@@ -43,8 +45,8 @@ between 46.6° and 48.3° N but not north of it (clamped at 48.27°: 0.671 for F
 and in July (Fajr and Isha on the takdir days: 22.9 % and 30.9 % exact over Diyanet's tables).
 
 **Tier 0: IGGÖ's nine capitals.** Ids `bregenz`, `eisenstadt`, `graz`, `innsbruck`, `klagenfurt`, `linz`, `salzburg`,
-`st-poelten`, `wien`, Arabic names transliterated; each `point` is the city centre (OpenStreetMap, as in
-`fits/diyanet_takdir.py`), from which IGGÖ's 25 km are measured (`reachKm` 25, `mappingTier` 0), and its fitted point is
+`st-poelten`, `wien`, Arabic names transliterated; each `point` is the city centre (OpenStreetMap, as in the former
+IGGÖ fit `fits/diyanet_takdir.py`, in git history), from which IGGÖ's 25 km are measured (`reachKm` 25, `mappingTier` 0), and its fitted point is
 its E6 morning and evening point: 0.1–4.2 km from the centre, Eisenstadt's 14.5 km east-north-east (47.9077 N
 16.69417 E, Diyanet's EISENSTADT point too). At the city centres the tables are 83.6–85.9 % exact (Eisenstadt 24–40 %).
 
@@ -86,10 +88,8 @@ only), and `official/at/` from `fits/diyanet_tr/collect.py` (2026-10-16): `lists
 `pages/<IlceID>.html.gz` (31 days from 2026-10-16 and all of 2027 each; 192 requests).
 
 **Open.**
-1. **Engine**: Diyanet's takdir (H6, `DiyanetTakdir.kt`) should be the V above, built like IRN's summer Isha (H7): a
-   straight line in clock time from the last plain day to the 21 June value (the share of the midnight depression in
-   the table's line in latitude) and on to the first plain day after, with the season's ends from their own lines (or
-   from a duration: the plain Fajr is 127–131 min before sunrise and the plain Isha 115–118 min after sunset on the
-   last plain day). The k lines' clamp at 48.27° should go. Diyanet's tables north of 49° N (Germany, the Netherlands)
-   would test the lines beyond Austria; until then 9.2's ±10 for estimated times does not hold (11–16 min).
+1. **Engine** (done 2026-10-16): Diyanet's takdir was to be the V above. The V is the Prayer Times Congress's third of
+   the sharia night with its 20-minute transitions, read from Diyanet's tables across Europe (`fits/diyanet_takdir`,
+   README H6); the k lines and their clamp at 48.27° are gone, and 9.2's ±10 for estimated times holds (every time
+   within 1 min).
 2. Next year's tables (2028 from about September 2027) to hold out another year, and IGGÖ's 2027 tables to confirm tier 0.

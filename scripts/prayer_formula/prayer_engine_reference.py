@@ -46,6 +46,9 @@ MECCA_POINT = {"latE5": 2142250, "lngE5": 3982620}   # H8: 21.4225°N 39.8262°E
 MECCA_OFFSET_S = 10800              # H8: Asia/Riyadh, UTC+03:00 all year
 COMMON_YEAR = 2021                  # H7: switch days are day numbers of a common year
 IRN_NORTH = 63.56                   # H7 south of it, H8 from it
+TAKDIR_START = 44.375               # H6: no takdir south of it (north latitudes only)
+TAKDIR_STEP = 1200.0                # H6: the transitions start 20 minutes from the anchor
+TAKDIR_SCAN = 200                   # H6: the longest transition counted
 RAMP_DAYS = 200                     # H3
 D2R = math.pi / 180
 
@@ -695,18 +698,22 @@ class DaySteps:
                 or not (t + 2.5 * HOUR <= sunset <= t + 9.5 * HOUR))
 
     def _clamp(self, diyanet: bool) -> None:
-        """H2: the 5-hour minimum, centred on T (T + 5 min for the Diyanet presets)."""
+        """H2: the 5-hour minimum, centred on T (T + 5 min for the Diyanet presets, on their published times), and
+        the Diyanet presets' held night."""
         name = "DIYANET_CLAMP" if diyanet else "MIN_DAY_NIGHT_5H"
-        centre = self.transit + (300 if diyanet else 0)
+        engine, day = self.engine, self.day
+        sunrise, sunset = engine.clamped_ends(self.site, day)
+        if diyanet and 3 <= day.month <= 10 and engine.holds_its_night(self.site, day.year):
+            solstice = datetime.date(day.year, 6, 21)
+            shift = (day - solstice).days * 86400
+            june_sunrise, june_sunset = engine.clamped_ends(self.site, solstice)
+            sunrise = max(sunrise, june_sunrise + shift)
+            sunset = min(sunset, june_sunset + shift)
+            if datetime.date(day.year, 3, 1) < day <= solstice:
+                sunset = max(sunset, engine.previous_steps(self.site, day).sunset + 86400)
+            elif solstice < day <= datetime.date(day.year, 10, 31):
+                sunrise = max(sunrise, engine.previous_steps(self.site, day).sunrise + 86400)
         raw_sunrise, raw_sunset = self.raw.sunrise, self.raw.sunset
-        if raw_sunrise is None:
-            sunrise = centre - 2.5 * HOUR if self.raw.polar_night else centre - 9.5 * HOUR
-        else:
-            sunrise = min(max(raw_sunrise, centre - 9.5 * HOUR), centre - 2.5 * HOUR)
-        if raw_sunset is None:
-            sunset = centre + 2.5 * HOUR if self.raw.polar_night else centre + 9.5 * HOUR
-        else:
-            sunset = min(max(raw_sunset, centre + 2.5 * HOUR), centre + 9.5 * HOUR)
         maghrib_angle = self.engine.method["maghribAngle"]
         if raw_sunrise is None or abs(sunrise - raw_sunrise) > 0.001:
             self.h2_sunrise = True
@@ -791,6 +798,8 @@ class CaseEngine:
         self._lre: dict[tuple[str, int], float | None] = {}
         self._mecca: CaseEngine | None = None
         self._raw_north: dict = {}
+        self._held: dict[tuple[str, int], bool] = {}
+        self._takdir: dict[tuple[str, int], dict] = {}
 
     # S2 ---------------------------------------------------------------------------------------
 
@@ -836,6 +845,52 @@ class CaseEngine:
         if key not in self._steps:
             self._steps[key] = DaySteps(self, site, day)
         return self._steps[key]
+
+    # H2 ---------------------------------------------------------------------------------------
+
+    def previous_steps(self, site: Site, day: datetime.date) -> DaySteps:
+        """The steps 1-3 of the date before day, those from 1 March computed in date order first: the held night
+        reads each previous date's, and in order no chain of dates recurses."""
+        d = datetime.date(day.year, 3, 1)
+        while d < day - ONE_DAY:
+            self.day_steps(site, d)
+            d += ONE_DAY
+        return self.day_steps(site, day - ONE_DAY)
+
+    def published_offsets(self) -> tuple[float, float]:
+        """o_r and o_m: the method's SUNRISE and MAGHRIB offsets (step 0, the case's date), in seconds."""
+        offsets = self.rule_for(self.day)[0]
+        return 60.0 * offsets.get("SUNRISE", 0), 60.0 * offsets.get("MAGHRIB", 0)
+
+    def clamped_ends(self, site: Site, day: datetime.date) -> tuple[float, float]:
+        """H2's clamp of day's sunrise and sunset, centred on T (the Diyanet presets: on T + 5 min and on their
+        published sunrise and Maghrib)."""
+        raw = self.raw_day(site, day)
+        centre = raw.transit + (300 if self.diyanet_preset else 0)
+        o_r, o_m = self.published_offsets() if self.diyanet_preset else (0.0, 0.0)
+        if raw.sunrise is None:
+            sunrise = centre - 2.5 * HOUR if raw.polar_night else centre - 9.5 * HOUR
+        else:
+            sunrise = min(max(raw.sunrise + o_r, centre - 9.5 * HOUR), centre - 2.5 * HOUR)
+        if raw.sunset is None:
+            sunset = centre + 2.5 * HOUR if raw.polar_night else centre + 9.5 * HOUR
+        else:
+            sunset = min(max(raw.sunset + o_m, centre + 2.5 * HOUR), centre + 9.5 * HOUR)
+        return sunrise - o_r, sunset - o_m
+
+    def holds_its_night(self, site: Site, year: int) -> bool:
+        """H2: whether 21 June of year holds its night (published sunrise before T + 5 min − 9.5 h and Maghrib after
+        T + 5 min + 9.5 h; an absent event counts under a midnight sun, never in a polar night)."""
+        key = (site.key, year)
+        if key not in self._held:
+            raw = self.raw_day(site, datetime.date(year, 6, 21))
+            centre = raw.transit + 300
+            o_r, o_m = self.published_offsets()
+            midnight_sun = not raw.polar_night
+            rise = midnight_sun if raw.sunrise is None else raw.sunrise + o_r < centre - 9.5 * HOUR
+            sets = midnight_sun if raw.sunset is None else raw.sunset + o_m > centre + 9.5 * HOUR
+            self._held[key] = rise and sets
+        return self._held[key]
 
     # S5, S6 -----------------------------------------------------------------------------------
 
@@ -1339,36 +1394,127 @@ class CaseEngine:
         return earlier(t, bound) if name == "ISHA" else later(t, bound)
 
     def takdir(self, site: Site, day: datetime.date, name: str, t: float | None) -> float | None:
-        """H6: Diyanet's takdir."""
-        phi = abs(site.evening[0])
-        if phi < 44.5:
+        """H6: Diyanet's takdir: the year's table north of 44.375° N, else t, or α/60 of the night when t is absent."""
+        if site.evening[0] >= TAKDIR_START:
+            value = self.takdir_table(site, day.year)[day][0 if name == "FAJR" else 1]
+            if value is not None:
+                return epoch_days(day) * 86400 + value
+        if t is not None:
             return t
-        alpha = self.angle_degrees(day, name)
-        steps = self.day_steps(site, day)
-        if phi >= 46:
-            evening_day = day if name == "ISHA" else day - ONE_DAY
-            lowest = self.lowest_point(site, evening_day)
-            if lowest is not None:
-                depression = -self.altitude_at(site, evening_day, lowest)
-                clamped = min(max(phi, 46.62), 48.27)
-                k = 2.41002 - 0.03603 * clamped if name == "FAJR" else 2.15968 - 0.03192 * clamped
-                effective = min(alpha, k * depression)
-                if effective < alpha:
-                    moved = self.raw_day(site, day).angle_event(name, effective)
-                    if moved is not None:
-                        if t is None:
-                            t = moved
-                        else:
-                            t = max(t, moved) if name == "FAJR" else min(t, moved)
-        if name == "FAJR":
-            minutes = 127.5 if phi >= 46 else 134 + (127.5 - 134) * (phi - 44.5) / 1.5
-            t = later(t, steps.sunrise - 60 * minutes)
-        elif phi < 46:
-            minutes = 118 + (112.5 - 118) * (phi - 44.5) / 1.5
-            t = earlier(t, steps.sunset + 60 * minutes)
-        if t is None:
-            t = self.from_edge(site, day, name, alpha / 60 * self.night_for(site, day, name))
-        return t
+        return self.from_edge(site, day, name, self.angle_degrees(day, name) / 60 * self.night_for(site, day, name))
+
+    def takdir_table(self, site: Site, year: int) -> dict[datetime.date, list]:
+        """H6: [Fajr, Isha] of every date of year, as seconds after 00:00 UTC of the date (None where absent)."""
+        key = (site.key, year)
+        if key in self._takdir:
+            return self._takdir[key]
+        o_r, o_m = self.published_offsets()
+        k = self.angle_degrees(self.day, "FAJR") / self.angle_degrees(self.day, "ISHA")
+
+        def midnight(d: datetime.date) -> float:
+            return epoch_days(d) * 86400
+
+        def plain(d: datetime.date, j: int) -> float | None:
+            t = self.angle_on(site, d, ("FAJR", "ISHA")[j])
+            return None if t is None else t - midnight(d)
+
+        def r(d: datetime.date) -> float:                   # the published sunrise
+            return self.day_steps(site, d).sunrise + o_r - midnight(d)
+
+        def m(d: datetime.date) -> float:                   # the published Maghrib
+            return self.day_steps(site, d).sunset + o_m - midnight(d)
+
+        def sharia(d: datetime.date) -> float | None:       # S = F + 24 h - M
+            f = plain(d, 0)
+            return None if f is None else f + 86400 - m(d)
+
+        def night(d: datetime.date) -> float:               # N = R + 24 h - M
+            return r(d) + 86400 - m(d)
+
+        first, last = datetime.date(year, 1, 1), datetime.date(year, 12, 31)
+        table: dict[datetime.date, list] = {}
+        d = first
+        while d <= last:
+            table[d] = [plain(d, 0), plain(d, 1)]
+            d += ONE_DAY
+        self._takdir[key] = table
+        solstice = datetime.date(year, 6, 21)
+        window = datetime.date(year, 2, 1)
+        absent = []
+        while window <= datetime.date(year, 11, 30):
+            if plain(window, 0) is None:
+                absent.append(window)
+            window += ONE_DAY
+        if not absent:                                      # case A
+            s = sharia(solstice)
+            if s is None:
+                return table
+            spring = autumn = solstice
+            fajr, isha = r(solstice) - k * s / 3, m(solstice) + s / 3
+            anchors = [(fajr, fajr), (isha, isha)]
+        else:                                               # case B
+            spring, autumn = absent[0], absent[-1]
+            s = sharia(spring - ONE_DAY)
+            if s is None:
+                return table
+            share = s / 3 / night(spring - ONE_DAY)
+
+            def frozen(x: datetime.date, j: int) -> float:
+                return r(x) - k * share * night(x) if j == 0 else m(x) + share * night(x)
+
+            d = spring
+            while d <= autumn:
+                table[d] = [frozen(d, 0), frozen(d, 1)]
+                d += ONE_DAY
+            anchors = [(frozen(spring, 0), frozen(autumn, 0)), (frozen(spring, 1), frozen(autumn, 1))]
+        lengths = [[0, 0], [0, 0]]
+        for j in (0, 1):
+            sign = 1 if j == 0 else -1
+            for side in (0, 1):
+                a, value = (spring, anchors[j][0]) if side == 0 else (autumn, anchors[j][1])
+                step = -ONE_DAY if side == 0 else ONE_DAY
+
+                def past(x: datetime.date) -> bool:
+                    p = plain(x, j)
+                    return p is None or (p < value + TAKDIR_STEP if j == 0 else p > value - TAKDIR_STEP)
+
+                n = 0
+                while n < TAKDIR_SCAN and past(a + (n + 1) * step):
+                    n += 1
+                lengths[j][side] = n
+                for i in range(1, n + 1):
+                    x = a + i * step
+                    if x not in table:
+                        continue
+                    line = value + sign * TAKDIR_STEP * i / n
+                    p = plain(x, j)
+                    table[x][j] = line if p is None else (max(line, p) if j == 0 else min(line, p))
+                if a in table:
+                    table[a][j] = value
+        if self.holds_its_night(site, year):
+            cap = list(table[solstice])
+            for v in table.values():
+                if v[0] is not None and cap[0] is not None:
+                    v[0] = max(v[0], cap[0])
+                if v[1] is not None and cap[1] is not None:
+                    v[1] = min(v[1], cap[1])
+            if absent:
+
+                def hold(x: datetime.date, j: int) -> None:
+                    here, before = table[x], table.get(x - ONE_DAY)
+                    if before is not None and here[j] is not None and before[j] is not None:
+                        here[j] = max(here[j], before[j])
+
+                d = max(spring - lengths[1][0] * ONE_DAY, first) + ONE_DAY
+                while d <= solstice:                        # the Isha never earlier again up to 21 June
+                    hold(d, 1)
+                    d += ONE_DAY
+                end = min(autumn + lengths[0][1] * ONE_DAY, last)
+                d = solstice + ONE_DAY
+                while d <= end:                             # the Fajr never earlier again after it
+                    hold(d, 0)
+                    d += ONE_DAY
+        return table
 
     def switch_days(self, site: Site, day: datetime.date, name: str) -> tuple[int, int] | None:
         """H7: [first, last] for ISHA or FAJR, from the zone or from the year's events."""

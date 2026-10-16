@@ -58,7 +58,7 @@ sealed interface HighLatitudeRule {
     @SerialName("moonsighting_seasonal")
     data class MoonsightingSeasonal(val fajrOnly: Boolean = false) : HighLatitudeRule
 
-    /** Diyanet's takdir from 44.5°N ([DiyanetTakdir]), with its 5-hour day and night. */
+    /** Diyanet's takdir from 44.375°N ([DiyanetTakdir]): a third of the sharia night, with its 5-hour day and night. */
     @Serializable
     @SerialName("diyanet_takdir")
     data object DiyanetTakdir : HighLatitudeRule
@@ -115,7 +115,10 @@ enum class PolarFallback {
     /** The 5-hour minimum day and night, at places whose year has a day without a sunrise, a sunset or an Asr. */
     MIN_DAY_NIGHT_5H,
 
-    /** Diyanet's clamp, centred on its Dhuhr (noon + 5), wherever the day or night is shorter than 5 h; Asr = Dhuhr without a shadow. */
+    /**
+     * Diyanet's clamp on its published sunrise and Maghrib, centred on its Dhuhr (noon + 5), wherever the day or night
+     * is shorter than 5 h, with 21 June's bounds where that night is held; Asr = Dhuhr without a shadow.
+     */
     DIYANET_CLAMP,
 
     /** `irn`: Mecca's day placed on the local solar noon in the polar seasons, from 63.56°N. */

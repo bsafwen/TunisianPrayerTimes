@@ -240,6 +240,66 @@ class HighLatitudeRulesTest {
         assertEquals(bodo[TimeEvent.DHUHR].at, bodo[TimeEvent.ASR].at)
     }
 
+    private fun seconds(instant: java.time.Instant?): Double = checkNotNull(instant).let { it.epochSecond + it.nano / 1e9 }
+
+    @Test
+    fun diyanetTakdir() {
+        // H6 (fits/diyanet_takdir), case A at Cuneo on 21 June: Isha = Maghrib + S/3 and Fajr = sunrise − (18/16)·S/3, S the
+        // plain Fajr + 24 h − Maghrib, with the published sunrise and Maghrib.
+        val method = EuropeanPresets.DIYANET_EU
+        val cuneo = PrayerEngine.explain(place(44.39, 7.55, "Europe/Rome"), june21, method)
+        val sunrise = seconds(cuneo.events[TimeEvent.SUNRISE.ordinal].unrounded)
+        val maghrib = seconds(cuneo.events[TimeEvent.MAGHRIB.ordinal].unrounded)
+        val sharia = seconds(cuneo.events[TimeEvent.FAJR.ordinal].raw) + 86_400 - maghrib
+        assertEquals(maghrib + sharia / 3, seconds(cuneo.events[TimeEvent.ISHA.ordinal].unrounded), 0.01)
+        assertEquals(sunrise - 18.0 / 16 * sharia / 3, seconds(cuneo.events[TimeEvent.FAJR.ordinal].unrounded), 0.01)
+        assertEquals(RuleName.DIYANET_TAKDIR, cuneo.day[TimeEvent.ISHA].rule)
+        // Rodez, 44.35° N, south of the cutoff: the angle times stay.
+        val rodez = PrayerEngine.day(place(44.35, 2.57, "Europe/Paris"), june21, method)
+        assertEquals(EventStatus.COMPUTED, rodez[TimeEvent.FAJR].status)
+        assertEquals(EventStatus.COMPUTED, rodez[TimeEvent.ISHA].status)
+        // Ushuaia: Diyanet's southern tables keep the angle times; an absent Fajr takes 18/60 of the night before.
+        val ushuaia = place(-54.79, -68.305, "America/Argentina/Ushuaia")
+        assertEquals(EventStatus.COMPUTED, PrayerEngine.day(ushuaia, june21, method)[TimeEvent.FAJR].status)
+        val december = PrayerEngine.explain(ushuaia, LocalDate.of(2026, 12, 21), method)
+        val night = checkNotNull(december.nightBefore)
+        val fallback = seconds(night.sunrise) - 0.3 * (seconds(night.sunrise) - seconds(night.sunset))
+        assertEquals(fallback, seconds(december.events[TimeEvent.FAJR.ordinal].unrounded), 1.0)
+        assertEquals(RuleName.DIYANET_TAKDIR, december.day[TimeEvent.FAJR].rule)
+    }
+
+    @Test
+    fun diyanetHeldNight() {
+        // H2 and H6 where 21 June holds its night (Gävle, 60.67° N): from 1 March to 31 October no Fajr earlier and no
+        // Isha later than 21 June's, the sunset never earlier again up to 21 June and the sunrise never earlier again
+        // after it (UTC times of day). At Tromsø the published sunrise and Maghrib of 21 June are Dhuhr ∓ 9.5 h.
+        val method = EuropeanPresets.DIYANET_EU
+        val gavle = place(60.67, 17.14, "Europe/Stockholm")
+        fun timeOfDay(date: LocalDate, event: TimeEvent): Double =
+            seconds(PrayerEngine.explain(gavle, date, method).events[event.ordinal].unrounded) - date.toEpochDay() * 86_400.0
+        val juneFajr = timeOfDay(june21, TimeEvent.FAJR)
+        val juneIsha = timeOfDay(june21, TimeEvent.ISHA)
+        var date = LocalDate.of(2026, 3, 1)
+        var sunset = timeOfDay(date, TimeEvent.MAGHRIB)
+        var sunrise = timeOfDay(date, TimeEvent.SUNRISE)
+        while (date < LocalDate.of(2026, 10, 31)) {
+            date = date.plusDays(1)
+            assertTrue(timeOfDay(date, TimeEvent.FAJR) >= juneFajr - 0.01, "$date Fajr")
+            assertTrue(timeOfDay(date, TimeEvent.ISHA) <= juneIsha + 0.01, "$date Isha")
+            val nextSunset = timeOfDay(date, TimeEvent.MAGHRIB)
+            val nextSunrise = timeOfDay(date, TimeEvent.SUNRISE)
+            if (date <= june21) assertTrue(nextSunset >= sunset - 0.01, "$date sunset")
+            else assertTrue(nextSunrise >= sunrise - 0.01, "$date sunrise")
+            sunset = nextSunset
+            sunrise = nextSunrise
+        }
+        val tromso = PrayerEngine.explain(place(69.6492, 18.9553, "Europe/Oslo"), june21, method)
+        val dhuhr = seconds(tromso.events[TimeEvent.DHUHR.ordinal].unrounded)
+        assertEquals(dhuhr - 9.5 * 3600, seconds(tromso.events[TimeEvent.SUNRISE.ordinal].unrounded), 0.01)
+        assertEquals(dhuhr + 9.5 * 3600, seconds(tromso.events[TimeEvent.MAGHRIB.ordinal].unrounded), 0.01)
+        assertEquals(RuleName.DIYANET_CLAMP, tromso.day[TimeEvent.SUNRISE].rule)
+    }
+
     @Test
     fun winterAsrBoundary() {
         val rovaniemi = place(66.5039, 25.7294, "Europe/Helsinki")
