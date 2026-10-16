@@ -1,0 +1,292 @@
+{
+ "schema": 1,
+ "authority": "hr_miz_zagreb",
+ "methodId": "hr_miz_zagreb",
+ "country": "HR",
+ "mapping": "NATIONAL",
+ "source": "MIZ Zagreb (Medžlis Islamske zajednice Zagreb): «Zagrebačka vaktija», the vaktija for the Zagreb area",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "MIZ Zagreb's Ramadan 2025 sheet",
+    "from": "2025-03-01",
+    "to": "2025-03-29",
+    "days": 29,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "MIZ Zagreb's Ramadan 2025 sheet, held out by alternate days",
+    "from": "2025-03-01",
+    "to": "2025-03-29",
+    "days": 29,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.4138,
+   "SUNRISE": 0.5862,
+   "DHUHR": 0.8966,
+   "ASR": 0.6897,
+   "MAGHRIB": 0.6897,
+   "ISHA": 0.6897
+  },
+  "within1": {
+   "FAJR": 0.7931,
+   "SUNRISE": 0.7931,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    0,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "DHUHR": [
+    0,
+    0,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ASR": [
+    0,
+    0,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    0,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ISHA": [
+    0,
+    0,
+    29,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 5
+ },
+ "zones": [
+  {
+   "id": "zagreb",
+   "point": {
+    "latE5": 4581444,
+    "lngE5": 1597798
+   },
+   "morningPoint": {
+    "latE5": 4581444,
+    "lngE5": 1590158
+   },
+   "eveningPoint": {
+    "latE5": 4581444,
+    "lngE5": 1590158
+   },
+   "nameAr": "زغرب",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4581444,
+      "lngE5": 1597798
+     },
+     "catalogueIds": [
+      3186886
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MIZ Zagreb's Ramadan 2025 sheet",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MIZ Zagreb's Ramadan 2025 sheet, held out by alternate days",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4138,
+     "SUNRISE": 0.5862,
+     "DHUHR": 0.8966,
+     "ASR": 0.6897,
+     "MAGHRIB": 0.6897,
+     "ISHA": 0.6897
+    },
+    "within1": {
+     "FAJR": 0.7931,
+     "SUNRISE": 0.7931,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      29,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      29,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      29,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      29,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      29,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      29,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 5
+   }
+  }
+ ]
+}

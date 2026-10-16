@@ -20,6 +20,11 @@ class PlaceCatalogue private constructor(
     private val rows: List<Row>,
     /** "CC.code" to GeoNames' admin1 name, for the countries whose admin1 the app stores (6.8). */
     private val admin1Names: Map<String, String> = emptyMap(),
+    /**
+     * The entry points of the authorities whose zones go by municipality or district (IRN in NO, Diyanet in TR), each
+     * standing for its own (its first `admin2`; none for Diyanet's few entries without a district code).
+     */
+    private val entryPoints: (String) -> List<CityRef> = { emptyList() },
 ) : CityIndex {
     /** The GeoNames name of a stored admin1 code, or null. */
     fun admin1Name(countryCode: String?, code: String?): String? =
@@ -53,7 +58,16 @@ class PlaceCatalogue private constructor(
         return out.sortedBy { it.second }
     }
 
-    override fun nearestOf(point: LatLngE5, countryCode: String): CityRef? = nearestRowOf(point, countryCode)?.ref
+    /**
+     * The nearest row of [countryCode] for the administrative values (6.8), the authority's entry points counted too in
+     * NO and TR: the catalogue has rows in 95 of Norway's 357 municipalities and none in eight Turkish districts, so a
+     * fix there would otherwise take a neighbour's.
+     */
+    override fun nearestOf(point: LatLngE5, countryCode: String): CityRef? {
+        val row = nearestRowOf(point, countryCode)?.ref
+        val entry = entryPoints(countryCode).minByOrNull { CountryMethodDefaults.distanceKm(point, it.point) }
+        return listOfNotNull(row, entry).minByOrNull { CountryMethodDefaults.distanceKm(point, it.point) }
+    }
 
     /** The nearest row of [countryCode], searching wider rings until one is found (6.8: the département of the nearest FR row). */
     fun nearestRowOf(point: LatLngE5, countryCode: String, maxKm: Double = 2_000.0): Row? {
@@ -108,8 +122,28 @@ class PlaceCatalogue private constructor(
                     }.toMap()
                 }
             }.getOrDefault(emptyMap())
-            return PlaceCatalogue(rows, admin1)
+            return PlaceCatalogue(rows, admin1, entryPointsOf(context))
         }
+
+        /** The entry points by country, read from their official-zone asset the first time a fix there asks (6.8). */
+        private fun entryPointsOf(context: Context): (String) -> List<CityRef> {
+            val cache = HashMap<String, List<CityRef>>()
+            return { cc ->
+                synchronized(cache) {
+                    cache.getOrPut(cc) {
+                        val (method, zone) = ENTRY_AUTHORITIES[cc] ?: return@getOrPut emptyList()
+                        val zones = runCatching { OfficialZoneAssets.index(context).forMethod(method, cc)?.zones }.getOrNull().orEmpty()
+                        zones.mapIndexed { i, z -> CityRef(ENTRY_ID_BASE - i, z.point, cc, zone, admin2 = z.admin2.firstOrNull()) }
+                    }
+                }
+            }
+        }
+
+        /** The methods whose zones go by municipality or district, with the country's zone. */
+        private val ENTRY_AUTHORITIES = mapOf("NO" to ("irn" to "Europe/Oslo"), "TR" to ("diyanet_tr" to "Europe/Istanbul"))
+
+        /** Entry points' ids, below the delegation seats' negative ids and never stored. */
+        private const val ENTRY_ID_BASE = -10_000_000L
 
         /**
          * The build script's format (6.8): a header, then one row per place, sorted by country; an empty zone repeats
@@ -151,7 +185,11 @@ class PlaceCatalogue private constructor(
         }
 
         /** A catalogue over [rows], for tests. */
-        internal fun of(rows: List<Row>, admin1Names: Map<String, String> = emptyMap()): PlaceCatalogue = PlaceCatalogue(rows, admin1Names)
+        internal fun of(
+            rows: List<Row>,
+            admin1Names: Map<String, String> = emptyMap(),
+            entryPoints: (String) -> List<CityRef> = { emptyList() },
+        ): PlaceCatalogue = PlaceCatalogue(rows, admin1Names, entryPoints)
 
         /** Replaces the loaded catalogue, for tests; null loads the assets again. */
         @androidx.annotation.VisibleForTesting

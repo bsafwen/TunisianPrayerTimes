@@ -68,6 +68,19 @@ class OfficialZoneAssetsTest {
     }
 
     @Test
+    fun theManifestListsEveryAssetAsTheAppSelectsIt() {
+        // index.tsv (fits/common.write_index): the app reads each asset only when its method serves a place in its
+        // countries, so the manifest must name every asset with its method and countries, its zones' included.
+        val folder = assetsFolder() ?: return
+        val expected = folder.listFiles { f -> f.extension == "json" }.orEmpty().sortedBy { it.name }.map { file ->
+            val zones = OfficialZones.parse(file.readText())
+            listOf(zones.authority, zones.methodId, OfficialZoneIndex.countriesOf(zones).sorted().joinToString(",")).joinToString("\t")
+        }
+        val manifest = folder.resolve("index.tsv").readLines().drop(1).filter { it.isNotBlank() }
+        assertEquals(expected, manifest, "official-zones/index.tsv is stale: run fits/common.write_index()")
+    }
+
+    @Test
     fun theAssetFormatRoundTrips() {
         val zones = AuthorityZones(
             "om_mara", "om_mara", "OM", MappingKind.NEAREST, byAdmin1 = false, namedFirst = true, terrainClassKm = null, fit = null, source = "test",

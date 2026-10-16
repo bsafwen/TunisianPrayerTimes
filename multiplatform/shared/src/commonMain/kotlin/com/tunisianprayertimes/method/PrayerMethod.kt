@@ -6,6 +6,7 @@ import com.tunisianprayertimes.engine.PolarFallback
 import com.tunisianprayertimes.engine.SunEvaluation
 import com.tunisianprayertimes.engine.SunModel
 import com.tunisianprayertimes.engine.TimeEvent
+import com.tunisianprayertimes.place.LatLngE5
 import java.time.LocalDate
 import java.time.LocalTime
 import kotlinx.serialization.SerialName
@@ -40,6 +41,8 @@ data class PrayerMethod(
     val elevationShifts: List<ElevationShift> = emptyList(),
     /** E18: minutes at 36 equal steps through the year, interpolated by day of the year. */
     val seasonalOffsets: Map<TimeEvent, List<Double>> = emptyMap(),
+    /** E18: minutes on calendar dates of every year, both ends included (`irn`: Dhuhr + 5 from 21 March to 20 September). */
+    val datedOffsets: List<DatedOffset> = emptyList(),
     /** `bosnia_iz`: the Takvim's Table 1, 12 monthly means north of Sarajevo then 12 south, with printed signs. */
     val takvimMeans: List<Double> = emptyList(),
     /** E13. */
@@ -118,9 +121,14 @@ sealed interface FajrRule {
 
 @Serializable
 sealed interface IshaRule {
+    /**
+     * The sun [degrees] below the horizon at the evening point, or at [at] when set: a table that copies another
+     * place's twilight, on the place's own cycle and with Isha's evaluation (Slovenia's Isha is Sarajevo's 17°, 8.8).
+     * [atNameAr] names that point in «طريقتك».
+     */
     @Serializable
     @SerialName("angle")
-    data class Angle(val degrees: Double) : IshaRule
+    data class Angle(val degrees: Double, val at: LatLngE5? = null, val atNameAr: String? = null) : IshaRule
 
     /** A fixed interval after Maghrib (after all of Maghrib's adjustments, step 4) or after sunset; [ramadan] on Ramadan days (E8). */
     @Serializable
@@ -164,6 +172,17 @@ enum class Rounding {
 /** E16: from [fromM] metres up to the next shift's height, the shift's [minutes] (fractions kept until the rounding). */
 @Serializable
 data class ElevationShift(val fromM: Int, val minutes: Double)
+
+/** E18's dated offset: [minutes] on [event] from one calendar date to another, both included; a span past 31 December wraps. */
+@Serializable
+data class DatedOffset(val event: TimeEvent, val fromMonth: Int, val fromDay: Int, val toMonth: Int, val toDay: Int, val minutes: Double) {
+    fun covers(date: LocalDate): Boolean {
+        val day = date.monthValue * 100 + date.dayOfMonth
+        val from = fromMonth * 100 + fromDay
+        val to = toMonth * 100 + toDay
+        return if (from <= to) day in from..to else day >= from || day <= to
+    }
+}
 
 /** E9: from [validFrom] on, [change] applies. */
 @Serializable

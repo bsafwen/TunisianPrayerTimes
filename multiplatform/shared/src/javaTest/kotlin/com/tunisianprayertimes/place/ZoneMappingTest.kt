@@ -186,6 +186,25 @@ class ZoneMappingTest {
     }
 
     @Test
+    fun zagrebsTableCoversItsAreaAndATownBeatsItsValley() {
+        // 8.8: MIZ Zagreb's one zone where Zagreb is the nearest of the Takvim's five Croatian towns; elsewhere the
+        // method at the user's point, even when chosen.
+        val zagreb = AuthorityZones("hr_miz_zagreb", "hr_miz_zagreb", "HR", MappingKind.NATIONAL, false, false, null, source = "test", fit = null,
+            zones = listOf(zone("hr_miz_zagreb", "zagreb", 45.8150, 15.9819)))
+        assertEquals("zagreb", ZoneMapping.attach(place(45.49, 16.37, "Europe/Zagreb", "HR"), EuropeanPresets.HR_MIZ_ZAGREB, zagreb)?.id) // Sisak
+        assertNull(ZoneMapping.attach(place(43.5081, 16.4402, "Europe/Zagreb", "HR"), EuropeanPresets.HR_MIZ_ZAGREB, zagreb)) // Split
+        // fits/xk_bik: Preševo's town zone shares its point with its Valley's; at equal distance the smaller reach wins.
+        val bik = AuthorityZones("xk_bik", "xk_bik", "XK", MappingKind.LISTED_PLACES, false, false, null, source = "test", fit = null,
+            zones = listOf(
+                zone("xk_bik", "kosovo", 42.5, 21.0),
+                zone("xk_bik", "valley-presevo", 42.3092, 21.6497) { copy(country = "RS", reachKm = 15.0, baseZoneId = "kosovo") },
+                zone("xk_bik", "presevo", 42.3092, 21.6497) { copy(country = "RS", reachKm = 5.0, baseZoneId = "kosovo") },
+            ))
+        assertEquals("presevo", ZoneMapping.attach(place(42.3092, 21.6497, "Europe/Belgrade", "RS"), EuropeanPresets.XK_BIK, bik)?.id)
+        assertEquals("valley-presevo", ZoneMapping.attach(place(42.38, 21.62, "Europe/Belgrade", "RS"), EuropeanPresets.XK_BIK, bik)?.id)
+    }
+
+    @Test
     fun leTamponsColumnIsTheFloorOfTheElevationShift() {
         // Plan 7.6: Maghrib and Isha move at least + 2 at Le Tampon's places, the column counting toward E16 (Cilaos: + 5).
         val tampon = zone("re_cir", "sud_tampon", -21.278, 55.517) { copy(elevationShiftFloor = 2.0) }

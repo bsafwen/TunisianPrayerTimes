@@ -33,7 +33,7 @@
   </head>
   <body>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: October 3, 2026</p>
+    <p class="updated">Last updated: October 16, 2026</p>
 
     <p>
       <strong>Tunisian Prayer Times</strong> ("the App") is developed by Safwen
@@ -48,6 +48,15 @@
     </p>
     <ul>
       <li>Your selected municipality (delegation) in Tunisia</li>
+      <li>
+        Outside Tunisia: your place, as a position rounded to about 1 km
+        (0.01°) or a city you picked from the App's list, with its time zone
+        and the name shown for it
+      </li>
+      <li>
+        The prayer-time method you chose for each country, its adjustments, and
+        your Friday prayer time for each country
+      </li>
       <li>Your prayer silence preferences (duration, delay, mode)</li>
       <li>Whether the silence feature is enabled or disabled</li>
     </ul>
@@ -57,10 +66,11 @@
       any server.
     </p>
     <p>
-      If you use the GPS auto-detect feature, your device location is read
-      momentarily to find the nearest municipality. The coordinates themselves
-      are never stored or transmitted — only the resulting municipality
-      selection is saved locally.
+      In Tunisia, when you use location, your device location is read
+      momentarily to find the nearest municipality; the coordinates are not
+      stored, only the municipality. Outside Tunisia, the App keeps only a
+      position rounded to about 1 km, on your device, so that it can compute
+      prayer times there. It is never transmitted.
     </p>
     <p>
       The App also uses Google Firebase Analytics to collect limited,
@@ -68,8 +78,15 @@
       whether important features are working and which parts of the App need
       improvement. Examples include which main tab was opened, whether a
       permission step succeeded, whether automatic silence was enabled, bucketed
-      alarm counts or durations, Qibla calculation success or failure, and alarm
-      scheduling health.
+      alarm counts or durations, Qibla calculation success or failure, alarm
+      scheduling health, and whether the place is a Tunisian municipality or a
+      place abroad (never which place or which country).
+    </p>
+    <p>
+      Analytics are turned off when your phone's SIM or network country, or
+      your place, is in the European Union, the European Economic Area, the
+      United Kingdom, Switzerland or French overseas territories, where they
+      would need your consent; nothing is collected there.
     </p>
     <p>
       Analytics events are intentionally coarse. They do not include precise
@@ -84,7 +101,10 @@
     <ul>
       <li>Personal identification (name, email, phone number)</li>
       <li>Device identifiers (IMEI, Android ID, advertising ID)</li>
-      <li>GPS coordinates or precise location data</li>
+      <li>
+        GPS coordinates or precise location data (abroad, a position rounded to
+        about 1 km stays on your device)
+      </li>
       <li>Phone call details (caller ID, call logs, call content)</li>
       <li>Contacts, photos, or files</li>
       <li>Crash reports or diagnostics</li>
@@ -95,7 +115,10 @@
     <h2>3. Network Access</h2>
     <p>
       All prayer time data is bundled within the App and no internet connection
-      is required for the core silencing functionality.
+      is required for the core silencing functionality. Outside Tunisia too, the
+      App computes prayer times on the device, from the official tables and the
+      list of cities it bundles (place names from GeoNames and Wikidata); it
+      sends nothing to compute them.
     </p>
     <p>
       The mushaf page scans and the Quran recitations are too large to bundle.
@@ -144,9 +167,15 @@
         from disabling scheduled alarms
       </li>
       <li>
-        <strong>Location (optional)</strong> — used only when you tap the GPS
-        auto-detect button to find your nearest municipality. The App never
-        accesses location in the background.
+        <strong>Location (optional)</strong> — used when you tap the location
+        button or answer the first-run location step, to find your municipality
+        or your place abroad. If you turn automatic location on, the App also
+        asks for your location when the phone's time zone changes (for example
+        after a flight), to update your place. The App does not hold the
+        background-location permission, so when Android does not give the
+        location at that moment (on recent versions, while no screen of the
+        App is open), the App shows a notification asking you to choose your
+        city instead. The location never leaves your device.
       </li>
       <li>
         <strong>Internet access</strong> — for the Quran downloads and the

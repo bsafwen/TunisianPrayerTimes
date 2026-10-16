@@ -29,18 +29,36 @@ class SilenceGuardService : Service() {
         private const val CHANNEL_ID = "silence_guard"
         private const val NOTIFICATION_ID = 7001
 
+        private val lock = Any()
+
+        /** Starts asked for and not yet delivered to onStartCommand, which runs after onCreate's startForeground. */
+        private var pendingStarts = 0
+
         fun start(context: Context) {
             if (!shouldRun(context)) return
             val intent = Intent(context, SilenceGuardService::class.java)
-            try {
-                context.startForegroundService(intent)
-            } catch (e: Exception) {
-                Log.w(TAG, "Failed to start foreground service", e)
+            synchronized(lock) {
+                pendingStarts++
+                try {
+                    context.startForegroundService(intent)
+                } catch (e: Exception) {
+                    pendingStarts--
+                    Log.w(TAG, "Failed to start foreground service", e)
+                }
             }
         }
 
+        /**
+         * Android crashes the app when a service started with startForegroundService is stopped before it calls
+         * startForeground (ForegroundServiceDidNotStartInTimeException), as two schedule runs a moment apart can do
+         * (a place change and the refresh of a zone change). While a start is under way the service decides in
+         * onStartCommand instead, stopping itself when it is no longer needed.
+         */
         fun stop(context: Context) {
-            context.stopService(Intent(context, SilenceGuardService::class.java))
+            synchronized(lock) {
+                if (pendingStarts > 0) return
+                context.stopService(Intent(context, SilenceGuardService::class.java))
+            }
         }
 
         fun stopIfNotNeeded(context: Context) {
@@ -65,8 +83,10 @@ class SilenceGuardService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        synchronized(lock) { if (pendingStarts > 0) pendingStarts-- }
         if (!shouldRun(this)) {
-            stopSelf()
+            // Only this start's stop: a newer start under way keeps the service until its own onStartCommand.
+            stopSelf(startId)
             return START_NOT_STICKY
         }
         return START_STICKY

@@ -1,8 +1,10 @@
 package com.tunisianprayertimes.place
 
 import java.time.ZoneId
+import kotlinx.serialization.Serializable
 
 /** A point in whole 1e-5 degrees (about 1 m), the form places and official zones store (plan 6.5, 6.8). */
+@Serializable
 data class LatLngE5(val latE5: Int, val lngE5: Int) {
     val latitude: Double get() = latE5 / 1e5
     val longitude: Double get() = lngE5 / 1e5

@@ -1,0 +1,1072 @@
+{
+ "schema": 1,
+ "authority": "si_islamska_skupnost",
+ "methodId": "si_islamska_skupnost",
+ "country": "SI",
+ "mapping": "LISTED_PLACES",
+ "source": "The Islamic Community in Slovenia (vaktija.si): Ljubljana's table and the published offsets of Celje, Jesenice, Koper, Maribor and Novo mesto",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana and the five places' offsets",
+    "from": "2026-10-01",
+    "to": "2026-12-31",
+    "days": 92,
+    "zones": 6,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: every place, held out by month",
+    "from": "2026-10-01",
+    "to": "2026-12-31",
+    "days": 92,
+    "zones": 6,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.5217,
+   "SUNRISE": 0.4239,
+   "DHUHR": 0.7717,
+   "ASR": 0.5978,
+   "MAGHRIB": 0.75,
+   "ISHA": 0.3478
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 0.9891,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 0.7609
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    186,
+    180,
+    186
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    186,
+    180,
+    186
+   ],
+   "DHUHR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    186,
+    180,
+    186
+   ],
+   "ASR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    186,
+    180,
+    186
+   ],
+   "MAGHRIB": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    186,
+    180,
+    186
+   ],
+   "ISHA": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    186,
+    180,
+    186
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 5
+ },
+ "zones": [
+  {
+   "id": "ljubljana",
+   "point": {
+    "latE5": 4605108,
+    "lngE5": 1450513
+   },
+   "morningPoint": {
+    "latE5": 4576608,
+    "lngE5": 1441841
+   },
+   "eveningPoint": {
+    "latE5": 4576608,
+    "lngE5": 1441841
+   },
+   "nameAr": "ليوبليانا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4605108,
+      "lngE5": 1450513
+     },
+     "catalogueIds": [
+      3196359
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana, held out by month",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5217,
+     "SUNRISE": 0.4239,
+     "DHUHR": 0.7717,
+     "ASR": 0.5978,
+     "MAGHRIB": 0.75,
+     "ISHA": 0.3478
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9891,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7609
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 5
+   }
+  },
+  {
+   "id": "celje",
+   "point": {
+    "latE5": 4623092,
+    "lngE5": 1526044
+   },
+   "offsets": {
+    "FAJR": -2.0,
+    "SUNRISE": -2.0,
+    "DHUHR": -3.0,
+    "ASR": -4.0,
+    "MAGHRIB": -4.0,
+    "ISHA": -4.0
+   },
+   "baseZoneId": "ljubljana",
+   "nameAr": "تسليي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4623092,
+      "lngE5": 1526044
+     },
+     "catalogueIds": [
+      3202781
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana, held out by month",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5217,
+     "SUNRISE": 0.4239,
+     "DHUHR": 0.7717,
+     "ASR": 0.5978,
+     "MAGHRIB": 0.75,
+     "ISHA": 0.3478
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9891,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7609
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 5
+   }
+  },
+  {
+   "id": "jesenice",
+   "point": {
+    "latE5": 4643240,
+    "lngE5": 1406232
+   },
+   "offsets": {
+    "FAJR": 3.0,
+    "SUNRISE": 3.0,
+    "DHUHR": 2.0,
+    "ASR": 1.0,
+    "MAGHRIB": 1.0,
+    "ISHA": 1.0
+   },
+   "baseZoneId": "ljubljana",
+   "nameAr": "جيسينتسي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4643240,
+      "lngE5": 1406232
+     },
+     "catalogueIds": [
+      3198647
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana, held out by month",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5217,
+     "SUNRISE": 0.4239,
+     "DHUHR": 0.7717,
+     "ASR": 0.5978,
+     "MAGHRIB": 0.75,
+     "ISHA": 0.3478
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9891,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7609
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 5
+   }
+  },
+  {
+   "id": "koper",
+   "point": {
+    "latE5": 4554820,
+    "lngE5": 1372963
+   },
+   "offsets": {
+    "FAJR": 2.0,
+    "SUNRISE": 2.0,
+    "DHUHR": 3.0,
+    "ASR": 4.0,
+    "MAGHRIB": 4.0,
+    "ISHA": 4.0
+   },
+   "baseZoneId": "ljubljana",
+   "nameAr": "كوبر",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4554820,
+      "lngE5": 1372963
+     },
+     "catalogueIds": [
+      3197753
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana, held out by month",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5217,
+     "SUNRISE": 0.4239,
+     "DHUHR": 0.7717,
+     "ASR": 0.5978,
+     "MAGHRIB": 0.75,
+     "ISHA": 0.3478
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9891,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7609
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 5
+   }
+  },
+  {
+   "id": "maribor",
+   "point": {
+    "latE5": 4655583,
+    "lngE5": 1564593
+   },
+   "offsets": {
+    "FAJR": -4.0,
+    "SUNRISE": -4.0,
+    "DHUHR": -5.0,
+    "ASR": -5.0,
+    "MAGHRIB": -5.0,
+    "ISHA": -5.0
+   },
+   "baseZoneId": "ljubljana",
+   "nameAr": "ماريبور",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4655583,
+      "lngE5": 1564593
+     },
+     "catalogueIds": [
+      3195506
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana, held out by month",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5217,
+     "SUNRISE": 0.4239,
+     "DHUHR": 0.7717,
+     "ASR": 0.5978,
+     "MAGHRIB": 0.75,
+     "ISHA": 0.3478
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9891,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7609
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 5
+   }
+  },
+  {
+   "id": "novo-mesto",
+   "point": {
+    "latE5": 4580397,
+    "lngE5": 1516886
+   },
+   "offsets": {
+    "FAJR": -2.0,
+    "SUNRISE": -2.0,
+    "DHUHR": -2.0,
+    "ASR": -2.0,
+    "MAGHRIB": -2.0,
+    "ISHA": -2.0
+   },
+   "baseZoneId": "ljubljana",
+   "nameAr": "نوفو ميتسو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4580397,
+      "lngE5": 1516886
+     },
+     "catalogueIds": [
+      3194351
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "vaktija.si's feed, 2026-10, 2026-11, 2026-12: Ljubljana, held out by month",
+      "from": "2026-10-01",
+      "to": "2026-12-31",
+      "days": 92,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5217,
+     "SUNRISE": 0.4239,
+     "DHUHR": 0.7717,
+     "ASR": 0.5978,
+     "MAGHRIB": 0.75,
+     "ISHA": 0.3478
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9891,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7609
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 5
+   }
+  }
+ ]
+}

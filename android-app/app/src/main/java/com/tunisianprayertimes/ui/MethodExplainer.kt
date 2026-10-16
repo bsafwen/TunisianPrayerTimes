@@ -201,7 +201,7 @@ private fun methodRows(method: PrayerMethod): List<Pair<String, String>> = build
         is FajrRule.MinutesBeforeSunrise -> "قبل الشروق بـ" + LRI + f.minutes + PDI + " دقيقة"
     })
     add("العشاء" to when (val i = method.isha) {
-        is IshaRule.Angle -> LRI + degrees(i.degrees) + PDI + " تحت الأفق"
+        is IshaRule.Angle -> LRI + degrees(i.degrees) + PDI + " تحت الأفق" + (i.atNameAr?.let { " في $it" } ?: "")
         is IshaRule.MinutesAfter -> "بعد المغرب بـ" + LRI + i.minutes + PDI + " دقيقة" +
             (i.ramadan?.let { "، وفي رمضان " + LRI + it + PDI } ?: "")
     })

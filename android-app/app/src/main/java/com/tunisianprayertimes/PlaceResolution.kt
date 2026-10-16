@@ -190,6 +190,7 @@ object PlaceResolution {
         val before = runCatching { identity(context, old) }.getOrNull()
         PrayerTimesRepository.invalidate()
         DhikrReminderScheduler.invalidatePrayerCache()
+        AnalyticsTracker.applyRegionalCollection(context)  // analytics follow the new place's country (EU rules)
         if (new is PrayerPlace.Coordinates) runCatching { refreshChoice(context, new) }.onFailure { Log.w(TAG, "Could not refresh the method choice", it) }
         PrefsManager.clearAutoSilenceDismissals(context)
         PrefsManager.clearAutoSilenceDismissed(context)

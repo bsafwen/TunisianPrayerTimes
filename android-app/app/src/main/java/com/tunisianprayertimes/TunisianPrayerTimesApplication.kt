@@ -29,6 +29,7 @@ class TunisianPrayerTimesApplication : Application() {
         // Preferences, official Ramadan/Eid dates and the prayer-time and location loaders,
         // started the same way as in the TV app.
         SharedAndroid.init(this)
+        AnalyticsTracker.applyRegionalCollection(this)
         SilenceController.init(this)
         TimerScheduler.init(this)
         refreshDhikrReminders()

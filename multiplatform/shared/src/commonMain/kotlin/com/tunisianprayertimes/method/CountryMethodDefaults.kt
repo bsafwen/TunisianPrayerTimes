@@ -55,7 +55,7 @@ object CountryMethodDefaults {
             "AT" -> CountryDefault("diyanet_eu")
             "LU" -> CountryDefault("luxembourg_shoura")
             "BA" -> CountryDefault("bosnia_iz")
-            "HR" -> CountryDefault(if (point != null && nearestCroatianTown(point) == "zagreb") "hr_miz_zagreb" else "bosnia_iz", resolvesOnMove = true)
+            "HR" -> CountryDefault(if (point != null && inZagrebArea(point)) "hr_miz_zagreb" else "bosnia_iz", resolvesOnMove = true)
             "SI" -> CountryDefault("si_islamska_skupnost")
             "TR" -> CountryDefault("diyanet_tr")
             "AL" -> CountryDefault("al_kmsh")
@@ -152,12 +152,17 @@ object CountryMethodDefaults {
         "zagreb" to LatLngE5.of(45.8150, 15.9819), "rijeka" to LatLngE5.of(45.3271, 14.4422), "osijek" to LatLngE5.of(45.5550, 18.6955),
         "split" to LatLngE5.of(43.5081, 16.4402), "dubrovnik" to LatLngE5.of(42.6507, 18.0944),
     )
-    private val PRESEVO_VALLEY = listOf(LatLngE5.of(42.3092, 21.6497), LatLngE5.of(42.4598, 21.7660), LatLngE5.of(42.8433, 21.5853))
-    private const val PRESEVO_REACH_KM = 12.0
+    /** Preševo, Bujanovac and Medveđa with the radii fitted from their municipalities (fits/xk_bik, the asset's valley zones). */
+    private val PRESEVO_VALLEY = listOf(
+        LatLngE5.of(42.3092, 21.6497) to 15.0, LatLngE5.of(42.4598, 21.7660) to 13.5, LatLngE5.of(42.8433, 21.5853) to 13.0,
+    )
 
     private fun nearestCroatianTown(point: LatLngE5): String = CROATIAN_TOWNS.minBy { (_, town) -> distanceKm(point, town) }.key
 
-    private fun inPresevoValley(point: LatLngE5) = PRESEVO_VALLEY.any { distanceKm(point, it) <= PRESEVO_REACH_KM }
+    /** Croatia's Zagreb area (8.8): Zagreb is the nearest of the Takvim's five Croatian towns. */
+    fun inZagrebArea(point: LatLngE5): Boolean = nearestCroatianTown(point) == "zagreb"
+
+    private fun inPresevoValley(point: LatLngE5) = PRESEVO_VALLEY.any { (town, reachKm) -> distanceKm(point, town) <= reachKm }
 
     /** Great-circle distance in km (haversine, mean Earth radius). */
     fun distanceKm(a: LatLngE5, b: LatLngE5): Double {

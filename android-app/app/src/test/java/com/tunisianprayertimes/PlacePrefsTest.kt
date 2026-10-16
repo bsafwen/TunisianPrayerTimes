@@ -1,6 +1,7 @@
 package com.tunisianprayertimes
 
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.engine.TimeEvent
 import com.tunisianprayertimes.method.PrayerMethodChoice
@@ -69,13 +70,28 @@ class PlacePrefsTest {
     }
 
     @Test
-    fun regionsStayClosedUntilTheirMilestones() {
-        assertTrue(PrefsManager.isRegionOpen(context, Region.TUNISIA))
-        assertFalse(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
-        assertFalse(PrefsManager.isRegionOpen(context, Region.EUROPE))
-        PrefsManager.setRegionOpen(context, arabLeague = true)
-        assertTrue(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
-        assertFalse(PrefsManager.isRegionOpen(context, Region.EUROPE))
+    fun regionsOpenInDevelopmentBuildsAndWaitForM9InARelease() {
+        val flags = context.applicationInfo.flags
+        try {
+            // A development build opens both regions (AM9, M9's device checks); the debug switches still close one.
+            context.applicationInfo.flags = flags or ApplicationInfo.FLAG_DEBUGGABLE
+            assertTrue(PrefsManager.isRegionOpen(context, Region.TUNISIA))
+            assertTrue(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
+            assertTrue(PrefsManager.isRegionOpen(context, Region.EUROPE))
+            PrefsManager.setRegionOpen(context, europe = false)
+            assertTrue(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
+            assertFalse(PrefsManager.isRegionOpen(context, Region.EUROPE))
+            // A release build keeps them as REGIONS_OPEN_IN_RELEASE says until the release with both regions (M9).
+            context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE).edit().clear().commit()
+            context.applicationInfo.flags = flags and ApplicationInfo.FLAG_DEBUGGABLE.inv()
+            assertTrue(PrefsManager.isRegionOpen(context, Region.TUNISIA))
+            assertEquals(PrefsManager.REGIONS_OPEN_IN_RELEASE, PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
+            assertEquals(PrefsManager.REGIONS_OPEN_IN_RELEASE, PrefsManager.isRegionOpen(context, Region.EUROPE))
+            PrefsManager.setRegionOpen(context, arabLeague = true)
+            assertTrue(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
+        } finally {
+            context.applicationInfo.flags = flags
+        }
     }
 
     @Test

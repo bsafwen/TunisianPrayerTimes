@@ -25,4 +25,10 @@ enum class SunEvaluation {
 
     /** Asr only: the noon shadow takes the declination at the Asr instant itself, iterated (Bahrain). */
     SHADOW_AT_EVENT,
+
+    /** The sun once, at 12:00 local civil time of the date in the place's zone, summer time included (`irn`). */
+    DAILY_LOCAL_NOON,
+
+    /** The declination at the event's instant, iterated, with the equation of time and distance at local noon (`irn`). */
+    EVENT_DECLINATION,
 }

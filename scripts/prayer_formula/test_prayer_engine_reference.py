@@ -204,16 +204,47 @@ class HighLatitudeTest(unittest.TestCase):
         self.assertAlmostEqual(times["ISHA"], (start + end) / 2, delta=0.001)
 
     def test_mecca_cycle_at_tromso(self):
-        # H8: in a polar season, sunrise, sunset and Fajr keep Mecca's offsets from its transit (mwl at Mecca:
-        # 18° Fajr, standard horizon, no offsets, so its Dhuhr is its transit).
+        # H8: inside the summer, the four times keep Mecca's offsets from its transit, Mecca's day being computed
+        # with the method's own evaluations and Tromsø's local noon, 18°/18° and the standard horizon.
+        case = CASES["irn-tromso-2026-06-21"]
         _, _, steps, day = run_case("irn-tromso-2026-06-21")
-        mecca = run_case("mwl-mecca-2026-06-21")[3].unrounded
-        t = steps.transit
-        self.assertAlmostEqual(steps.sunrise - t, mecca["SUNRISE"] - mecca["DHUHR"], delta=0.001)
-        self.assertAlmostEqual(day.unrounded["MAGHRIB"] - 4 * 60 - t, mecca["MAGHRIB"] - mecca["DHUHR"], delta=0.001)
-        self.assertAlmostEqual(day.unrounded["FAJR"] - t, mecca["FAJR"] - mecca["DHUHR"], delta=0.001)
+        method = dict(case["method"], fajr={"type": "angle", "degrees": 18.0}, isha={"type": "angle", "degrees": 18.0},
+                      twilightLatitudeScale=1.0, polar="MIN_DAY_NIGHT_5H", minDayNightHours=None,
+                      highLatitude={"type": "angle_based"},
+                      horizon={"sunrise": {"type": "standard"}, "sunset": {"type": "standard"}})
+        place = {"latE5": 2142250, "lngE5": 3982620, "elevationM": None, "zoneId": case["place"]["zoneId"], "countryCode": None}
+        mecca = ref.CaseEngine(dict(case, id="mecca", method=method, place=place, zone=None, baseZone=None))
+        raw = mecca.raw_day(mecca.exact_site(), mecca.day)
+        t, mt = steps.transit, raw.transit
+        self.assertAlmostEqual(steps.sunrise - t, raw.sunrise - mt, delta=0.001)
+        self.assertAlmostEqual(steps.sunset - t, raw.sunset - mt, delta=0.001)
+        self.assertAlmostEqual(steps.fajr - t, raw.angle_event("FAJR", 18.0) - mt, delta=0.001)
+        self.assertAlmostEqual(steps.isha - t, raw.angle_event("ISHA", 18.0) - mt, delta=0.001)
+        maghrib = case["method"]["offsets"].get("MAGHRIB", 0)
+        self.assertAlmostEqual(day.unrounded["MAGHRIB"] - 60 * maghrib, steps.sunset, delta=0.001)
         for name in ("FAJR", "SUNRISE", "MAGHRIB", "ISHA"):
             self.assertEqual(day.rules[name], "IRN_MECCA_CYCLE", name)
+
+    def test_local_noon_evaluations(self):
+        # S4: DAILY_LOCAL_NOON is the model at 12:00 local time, whatever JD; EVENT_DECLINATION takes δ at JD with
+        # E and r at that noon.
+        model = ref.SUN_MODELS["MEEUS"]
+        noon = 2461212.5 + 10 / 24          # 2026-06-21 12:00 in Oslo (10:00 UT)
+        fixed = ref.SunFunction(model, "DAILY_LOCAL_NOON", 2461212.5, noon)
+        self.assertEqual(fixed(2461212.9), model(noon))
+        mixed = ref.SunFunction(model, "EVENT_DECLINATION", 2461212.5, noon)
+        jd = 2461213.4
+        self.assertEqual(mixed(jd), (model(jd)[0], model(noon)[1], model(noon)[2]))
+
+    def test_dated_offsets(self):
+        # E18: both ends included; a span past 31 December wraps.
+        irn = [{"event": "DHUHR", "fromMonth": 3, "fromDay": 21, "toMonth": 9, "toDay": 20, "minutes": 5.0}]
+        for day, minutes in (("2026-03-20", 0), ("2026-03-21", 5), ("2026-09-20", 5), ("2026-09-21", 0)):
+            self.assertEqual(ref.dated_value(irn, "DHUHR", datetime.date.fromisoformat(day)), minutes, day)
+        self.assertEqual(ref.dated_value(irn, "ASR", datetime.date(2026, 6, 1)), 0)
+        winter = [{"event": "ISHA", "fromMonth": 12, "fromDay": 1, "toMonth": 1, "toDay": 31, "minutes": -2.0}]
+        self.assertEqual(ref.dated_value(winter, "ISHA", datetime.date(2026, 1, 15)), -2)
+        self.assertEqual(ref.dated_value(winter, "ISHA", datetime.date(2026, 2, 1)), 0)
 
 
 class ExpectedFixtureTest(unittest.TestCase):

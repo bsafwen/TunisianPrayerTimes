@@ -208,4 +208,20 @@ def write_asset(authority: str, method_id: str, country: str, mapping: str, zone
     ASSETS.mkdir(parents=True, exist_ok=True)
     path = ASSETS / f"{authority}.json"
     path.write_text(json.dumps(asset, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    write_index()
     return path
+
+
+def write_index() -> Path:
+    """The assets' manifest, official-zones/index.tsv (authority, method, its own and its zones' countries), which the
+    app reads to parse an asset only when its method serves a place (OfficialZoneAssets); OfficialZoneAssetsTest
+    checks it against the assets."""
+    rows = []
+    for path in sorted(ASSETS.glob("*.json")):
+        asset = json.loads(path.read_text(encoding="utf-8"))
+        countries = {c.strip() for c in asset["country"].split(",") if c.strip()}
+        countries |= {z["country"] for z in asset["zones"] if z.get("country")}
+        rows.append(f"{asset['authority']}\t{asset['methodId']}\t{','.join(sorted(countries))}")
+    out = ASSETS / "index.tsv"
+    out.write_text("authority\tmethodId\tcountries\n" + "".join(row + "\n" for row in rows), encoding="utf-8", newline="\n")
+    return out

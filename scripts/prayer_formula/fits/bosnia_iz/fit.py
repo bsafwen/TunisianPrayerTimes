@@ -35,7 +35,8 @@ into the asset (8.8).
    and Serbia's 11. Each point is the one the most printed values allow, nearest the town, within 15 km; within 60 km
    where the month-split shows the wider search predicts the left-out months better. Held out: the point fitted on
    half the months scores the other half's printed differences, per day of 2026.
-3. Montenegro's five towns: vaktija.ba's one difference all year on all six times (published offsets, reach 8 km).
+3. Montenegro's five towns: vaktija.ba's one difference all year on all six times (published offsets, each reaching
+   as far as its own OpenStreetMap boundary: ME_REACH_KM).
 
 The asset keeps each zone's town as its `point` and the fitted computing point as its E6 `morningPoint` and
 `eveningPoint` (8.8). The engine's TAKVIM rule reads `point` today; the scores below that use the fitted point
@@ -81,7 +82,10 @@ CLEARLY = 1.005                # an alternative must cover more than 0.5 % more 
 RADIUS_KM = (15.0, 60.0)
 MARGIN = 0.001                 # minutes kept inside every printed difference's window (above E5 rounding and float noise)
 KM_PER_DEG = 111.2
-ME_REACH_KM = 8.0              # 8.8: Montenegro's five towns, "start with 8 km"
+# 8.8: Montenegro's five towns' areas, set in M3 from the town extents (fits/town_extents.py, OpenStreetMap's town
+# boundaries): the farthest vertex of the town's own boundary from the zone's point, rounded up to 0.5 km; Gusinje, a
+# point only in OpenStreetMap, the median of the other four (3.42 km). Formerly 8 km each, the plan's start.
+ME_REACH_KM = {"Bijelo Polje": 6.0, "Gusinje": 3.5, "Plav": 2.0, "Pljevlja": 3.0, "Rožaje": 4.0}
 SOURCE_LINE = ("The Islamic Community of Bosnia and Herzegovina: vaktija.ba's perpetual Sarajevo table and the Takvim "
                "2025's monthly town differences, derived on the phone from the Takvim's rule (pages 8-12, Table 1)")
 TABLE_SOURCE = "vaktija.ba Sarajevo table (perpetual; Fajr and Isha of 2025, the other columns older)"
@@ -821,7 +825,7 @@ def main() -> int:
         zones.append(z)
     for name, town, value in sorted(montenegro, key=lambda t: slug(t[0])):
         zones.append({"id": slug(name), "nameAr": NAME_AR[name], "point": common.point(*town), "country": "ME",
-                      "offsets": {e: float(value) for e in EVENTS}, "baseZoneId": "sarajevo", "reachKm": ME_REACH_KM,
+                      "offsets": {e: float(value) for e in EVENTS}, "baseZoneId": "sarajevo", "reachKm": ME_REACH_KM[name],
                       "namedPlaces": named(town)})
     assert len(zones) == 1 + len(takvim) + len(montenegro) == 136, len(zones)
     assert len({z["id"] for z in zones}) == len(zones)

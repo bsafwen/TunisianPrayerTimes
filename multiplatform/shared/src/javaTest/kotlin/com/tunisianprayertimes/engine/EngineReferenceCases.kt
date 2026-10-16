@@ -22,6 +22,7 @@ import com.tunisianprayertimes.place.OfficialZone
 import com.tunisianprayertimes.place.PrayerPlace
 import com.tunisianprayertimes.place.ZoneOffsetRule
 import java.io.File
+import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZonedDateTime
@@ -31,6 +32,8 @@ import kotlin.math.sin
 import kotlin.test.Test
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.add
+import kotlinx.serialization.json.buildJsonArray
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.put
@@ -437,8 +440,10 @@ class EngineReferenceCases {
             add("diyanet-vienna", VIENNA, summer + EngineTestSupport.dates("2026-10-13"), com.tunisianprayertimes.method.EuropeanPresets.DIYANET_EU)
             add("diyanet-sarajevo", place(43.8563, 18.4131, "Europe/Sarajevo"), summer, com.tunisianprayertimes.method.EuropeanPresets.DIYANET_TR)
             add("diyanet-zurich", place(45.2, 7.7, "Europe/Rome"), summer, com.tunisianprayertimes.method.EuropeanPresets.DIYANET_EU)
-            add("zagreb-summer", ZAGREB, EngineTestSupport.dates("2026-03-24", "2026-03-25", "2026-06-21", "2026-08-25", "2026-08-26"), com.tunisianprayertimes.method.EuropeanPresets.HR_MIZ_ZAGREB)
+            add("zagreb-summer", ZAGREB, EngineTestSupport.dates("2026-03-24", "2026-03-25", "2026-06-21", "2026-08-25", "2026-09-01", "2026-09-02"), com.tunisianprayertimes.method.EuropeanPresets.HR_MIZ_ZAGREB)
             add("ljubljana-summer", LJUBLJANA, EngineTestSupport.dates("2026-04-23", "2026-04-24", "2026-05-10", "2026-05-23", "2026-05-24"), com.tunisianprayertimes.method.EuropeanPresets.SI_ISLAMSKA_SKUPNOST)
+            // Slovenia's Isha at Sarajevo's point (IshaRule.Angle.at) outside the summer form.
+            add("ljubljana-sarajevo-isha", LJUBLJANA, EngineTestSupport.dates("2026-01-15", "2026-10-15", "2026-12-21"), com.tunisianprayertimes.method.EuropeanPresets.SI_ISLAMSKA_SKUPNOST)
             add("irn-oslo", OSLO, EngineTestSupport.dates("2026-04-13", "2026-06-21", "2026-08-27", "2026-12-21"), com.tunisianprayertimes.method.EuropeanPresets.IRN)
             add("irn-tromso", TROMSO, EngineTestSupport.dates("2026-06-21", "2026-12-21", "2026-04-20"), com.tunisianprayertimes.method.EuropeanPresets.IRN)
             add("irn-switch-fixture", OSLO, listOf(89, 90, 103, 172, 239, 251, 252).map { com.tunisianprayertimes.engine.IrnRule.onDay(2026, it) }, com.tunisianprayertimes.method.EuropeanPresets.IRN) {
@@ -483,6 +488,17 @@ class EngineReferenceCases {
                     put("standardOffsetSeconds", standard)
                     put("utcOffsetSeconds", zone.rules.getOffset(noon).totalSeconds)
                     put("localMidnightEpochSeconds", ZonedDateTime.of(case.date, LocalTime.MIDNIGHT, zone).toInstant().epochSecond)
+                    // Z's offsets over D ± 400 days, for each date's local noon (S4) and H7's clock times.
+                    put("offsetChanges", buildJsonArray {
+                        val start = noon.minus(Duration.ofDays(400))
+                        val end = noon.plus(Duration.ofDays(400))
+                        add(buildJsonArray { add(start.epochSecond); add(zone.rules.getOffset(start).totalSeconds) })
+                        var transition = zone.rules.nextTransition(start)
+                        while (transition != null && transition.instant < end) {
+                            add(buildJsonArray { add(transition.instant.epochSecond); add(transition.offsetAfter.totalSeconds) })
+                            transition = zone.rules.nextTransition(transition.instant)
+                        }
+                    })
                     put("ishaLatestEpochSeconds", clock(case.method.ishaLatest))
                     put("ishaEarliestEpochSeconds", clock(case.method.ishaEarliest))
                 })

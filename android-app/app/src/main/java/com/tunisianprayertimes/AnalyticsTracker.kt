@@ -12,6 +12,33 @@ object AnalyticsTracker {
     private const val KEY_DELEGATION_SOURCE = "delegation_source"
     private const val DELEGATION_SOURCE_DEFAULT = "default"
 
+    /**
+     * The EU's rules (plan M9's privacy review): Firebase Analytics keeps an app-instance id on the device, which the
+     * EU's ePrivacy rules usually allow only with consent, and the App asks none. So collection stays off (the
+     * manifest's default) whenever the phone's SIM or network country, or the current place, is in the EEA, the UK,
+     * Switzerland or French overseas, and is turned on elsewhere. Applied at start and after every place change.
+     */
+    fun applyRegionalCollection(context: Context) {
+        val phone = context.getSystemService(Context.TELEPHONY_SERVICE) as? android.telephony.TelephonyManager
+        val countries = listOfNotNull(
+            runCatching { phone?.simCountryIso }.getOrNull(),
+            runCatching { phone?.networkCountryIso }.getOrNull(),
+            runCatching { (PrefsManager.getPlace(context) as? com.tunisianprayertimes.place.PrayerPlace.Coordinates)?.countryCode }.getOrNull(),
+        )
+        runCatching { FirebaseAnalytics.getInstance(context.applicationContext).setAnalyticsCollectionEnabled(collectionAllowed(countries)) }
+    }
+
+    /** False when any of [countries] (ISO codes, any case) is one where analytics would need the user's consent. */
+    internal fun collectionAllowed(countries: Collection<String>): Boolean = countries.none { it.uppercase() in CONSENT_COUNTRIES }
+
+    private val CONSENT_COUNTRIES = setOf(
+        // The EU (Åland with Finland), Iceland, Liechtenstein and Norway (the EEA), the UK with Gibraltar, Switzerland.
+        "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT",
+        "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "AX", "IS", "LI", "NO", "GB", "GI", "CH",
+        // French overseas: the EU's outermost regions and the territories under French law.
+        "RE", "GP", "MQ", "GF", "YT", "MF", "BL", "PM", "NC", "PF", "WF",
+    )
+
     fun installRamadanOverrideReporter(context: Context) {
         val appContext = context.applicationContext
         RamadanOverrideChecker.analyticsReporter = { report ->

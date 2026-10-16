@@ -61,6 +61,9 @@ ARAB_LEAGUE = {
 NEIGHBOURS = {"IR", "TD", "NE", "ML", "SN", "CF", "SS", "ET", "ER", "KE"}
 ADMIN1_COUNTRIES = {"RU", "DZ", "MR", "AE", "JO", "IQ"}
 ADMIN2_COUNTRIES = {"FR", "TR", "NO", "PS"}
+# GeoNames codes that put a place in a district far from it (found by fits/diyanet_tr, 2026-10-16): Çamyuva lies
+# beside Kemer (7732191), not in Alanya's district (7732185), 129 km away.
+ADMIN2_FIXES = {325159: "7732191"}
 SEAT_CODES = {"PPLA", "PPLA2", "PPLA3", "PPLA4", "PPLC"}
 EXONYM_LANGUAGES = {"en", "fr", "de", "it", "es"}
 LONGYEARBYEN = 2729907
@@ -155,7 +158,7 @@ def clean(text: str) -> str:
 def line_of(row: dict, arabic: str, aliases: set[str], neighbour: bool) -> str:
     cc = country_of(row)
     admin1 = row["admin1"] if cc in ADMIN1_COUNTRIES and not neighbour else ""
-    admin2 = row["admin2"] if cc in ADMIN2_COUNTRIES and not neighbour else ""
+    admin2 = ADMIN2_FIXES.get(row["id"], row["admin2"]) if cc in ADMIN2_COUNTRIES and not neighbour else ""
     dem = row["dem"] if (cc in ARAB_LEAGUE or cc == "RE") and not neighbour else ""
     names = sorted(a for a in aliases if a not in (row["name"], row["ascii"], arabic))
     if row["id"] == HAWAR:

@@ -28,7 +28,7 @@ internal class DayAstro(
 
     /** Only the rules that look at other nights' angles need these: computed on first use. */
     val fajrAngle: Double? by lazy { (method.fajr as? FajrRule.Angle)?.let { sky.twilight(TimeEvent.FAJR, it.degrees).seconds } }
-    val ishaAngle: Double? by lazy { (method.isha as? IshaRule.Angle)?.let { sky.twilight(TimeEvent.ISHA, it.degrees).seconds } }
+    val ishaAngle: Double? by lazy { (method.isha as? IshaRule.Angle)?.let { sky.twilight(TimeEvent.ISHA, it.degrees, at = it.at).seconds } }
 }
 
 /**
@@ -51,6 +51,10 @@ internal class Season private constructor(val site: Site, val zone: ZoneId, val 
         override fun removeEldestEntry(eldest: MutableMap.MutableEntry<LocalDate, DayAstro>?) = size > MAX_DAYS
     }
     private val ratios = HashMap<Int, Double?>()
+
+    /** H8 ([IrnNorth]): Mecca's day by date and the northern days by year, kept with the season. */
+    internal val meccaOffsets = HashMap<LocalDate, IrnNorth.MeccaOffsets>()
+    internal val northDays = HashMap<Int, IrnNorth.Days>()
 
     fun day(date: LocalDate): DayAstro = synchronized(days) { days[date] } ?: compute(date).also { synchronized(days) { days[date] = it } }
 

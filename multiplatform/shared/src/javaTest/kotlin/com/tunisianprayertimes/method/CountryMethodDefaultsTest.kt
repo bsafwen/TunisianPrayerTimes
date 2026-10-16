@@ -49,6 +49,7 @@ class CountryMethodDefaultsTest {
         assertEquals("hr_miz_zagreb", CountryMethodDefaults.forCountry("HR", point = LatLngE5.of(45.49, 16.37)).fallback) // Sisak
         assertEquals("bosnia_iz", CountryMethodDefaults.forCountry("HR", point = LatLngE5.of(43.51, 16.44)).fallback) // Split
         assertEquals("xk_bik", CountryMethodDefaults.forCountry("RS", point = LatLngE5.of(42.46, 21.77)).fallback) // Bujanovac
+        assertEquals("xk_bik", CountryMethodDefaults.forCountry("RS", point = LatLngE5.of(42.22, 21.56)).fallback) // 12.4 km from Preševo, inside its 15 km
         assertEquals("bosnia_iz", CountryMethodDefaults.forCountry("RS", point = LatLngE5.of(44.79, 20.45)).fallback) // Belgrade
         assertEquals("dum_rf", CountryMethodDefaults.forCountry("RU", admin1 = "48").fallback)
         assertEquals("dum_rf", CountryMethodDefaults.forCountry("RU", admin1 = "47").fallback)

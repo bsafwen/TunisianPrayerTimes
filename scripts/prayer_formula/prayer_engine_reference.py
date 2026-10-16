@@ -45,6 +45,7 @@ SARAJEVO_LNG = 18 + 26 / 60         #             18°26'E
 MECCA_POINT = {"latE5": 2142250, "lngE5": 3982620}   # H8: 21.4225°N 39.8262°E
 MECCA_OFFSET_S = 10800              # H8: Asia/Riyadh, UTC+03:00 all year
 COMMON_YEAR = 2021                  # H7: switch days are day numbers of a common year
+IRN_NORTH = 63.56                   # H7 south of it, H8 from it
 RAMP_DAYS = 200                     # H3
 D2R = math.pi / 180
 
@@ -237,8 +238,9 @@ SUN_MODELS = {"MEEUS": meeus_sun, "VSOP87": vsop87_sun, "TEXTBOOK": textbook_sun
 class SunFunction:
     """S4: the sun of one evaluation mode, for a cycle with JD0."""
 
-    def __init__(self, model, mode: str, jd0: float):
+    def __init__(self, model, mode: str, jd0: float, noon_jd: float | None = None):
         self.model = model
+        self.eot = None                     # EVENT_DECLINATION: E and r held at local noon
         if mode == "DAILY_0H_UT":
             self.fixed = model(jd0)
         elif mode == "DAILY_10H_UT":
@@ -247,13 +249,24 @@ class SunFunction:
             decl = model(jd0 + 21 / 24)[0]
             _, eot, dist = model(jd0 + 9 / 24)
             self.fixed = (decl, eot, dist)
+        elif mode == "DAILY_LOCAL_NOON":
+            self.fixed = model(noon_jd)
+        elif mode == "EVENT_DECLINATION":
+            self.fixed = None
+            _, self.eot, self.distance = model(noon_jd)
         elif mode in ("EVENT_INSTANT", "LOCAL_MIDNIGHT_SHADOW", "SHADOW_AT_DHUHR", "SHADOW_AT_EVENT"):
             self.fixed = None
         else:
             raise ValueError(f"unknown evaluation mode {mode}")
 
     def __call__(self, jd: float) -> tuple[float, float, float]:
-        return self.fixed if self.fixed is not None else self.model(jd)
+        if self.fixed is not None:
+            return self.fixed
+        value = self.model(jd)
+        return value if self.eot is None else (value[0], self.eot, self.distance)
+
+
+NOON_MODES = ("DAILY_LOCAL_NOON", "EVENT_DECLINATION")
 
 
 # ---------------------------------------------------------------------------------------------
@@ -447,6 +460,19 @@ def dum_rf_share(day: datetime.date) -> float:
     return max(0.25, 0.30 - n / 240)
 
 
+def dated_value(entries: list, name: str, day: datetime.date) -> float:
+    """E18's dated offsets: the minutes of every entry of the event whose dates, both ends included, contain day."""
+    total = 0.0
+    md = (day.month, day.day)
+    for e in entries:
+        if e["event"] != name:
+            continue
+        start, end = (e["fromMonth"], e["fromDay"]), (e["toMonth"], e["toDay"])
+        if (start <= md <= end) if start <= end else (md >= start or md <= end):
+            total += float(e["minutes"])
+    return total
+
+
 def common_day_number(day: datetime.date) -> int:
     """H7: the day number of day's calendar date in a common year (29 February counts as 28 February)."""
     if day.month == 2 and day.day == 29:
@@ -482,7 +508,9 @@ class RawDay:
         self.cycle = Cycle(engine.cycle_date(site, day))
 
     def sun(self, event_name: str) -> SunFunction:
-        return SunFunction(self.engine.model, self.engine.modes[event_name], self.cycle.jd0)
+        mode = self.engine.modes[event_name]
+        noon = self.engine.local_noon_jd(self.day) if mode in NOON_MODES else None
+        return SunFunction(self.engine.model, mode, self.cycle.jd0, noon)
 
     def _sunrise_horizon(self) -> tuple[SunFunction, float]:
         sun = self.sun("SUNRISE")
@@ -593,10 +621,10 @@ class RawDay:
             return None
         return atand(1 / x)
 
-    def angle_event(self, name: str, degrees: float) -> float | None:
-        """S5: Fajr or Isha by angle, at latitude φ·twilightLatitudeScale (E17), with E4's sun."""
+    def angle_event(self, name: str, degrees: float, at: dict | None = None) -> float | None:
+        """S5: Fajr or Isha by angle, at latitude φ·twilightLatitudeScale (E17), with E4's sun; Isha at `at` when set."""
         sun = self.sun(name)
-        lat, lng = self.site.morning if name == "FAJR" else self.site.evening
+        lat, lng = lat_lng(at) if at is not None else (self.site.morning if name == "FAJR" else self.site.evening)
         lat *= self.engine.method["twilightLatitudeScale"]
         t0 = transit(self.cycle, sun, lng)
         side = -1 if name == "FAJR" else 1
@@ -648,6 +676,7 @@ class DaySteps:
         self.h2_sunrise = False                 # H2 set this sunrise (S8)
         self.h2_sunset = False
         self._polar_asr: tuple[str, float] | None = None
+        self._irn_asr = False                   # H8's Asr
         method = engine.method
         if engine.diyanet_preset:
             self._clamp(True)
@@ -692,29 +721,22 @@ class DaySteps:
         self._polar_asr = (name, self.transit) if diyanet else ("POLAR_ASR_MIDPOINT", (self.transit + sunset) / 2)
 
     def _mecca_cycle(self) -> None:
-        """H8, from 63.56° (the zone's or place's point)."""
-        lat = abs(self.site.point[0])
-        if lat < 63.56:
+        """H8, from 63.56° (the zone's or place's point): IRN's northern rules."""
+        if abs(self.site.point[0]) < IRN_NORTH:
             return
-        t = self.transit
-        raw_sunset = self.raw.sunset
-        if raw_sunset is None:
-            season = (not self.raw.polar_night) or lat > 66.33
-        else:
-            season = raw_sunset - t > 8 * HOUR + 5 * 60 or (lat > 66.33 and raw_sunset - t < 3 * HOUR + 20 * 60)
-        if season:
-            sunrise, sunset, fajr, isha = self.engine.mecca_offsets(self.day)
-            self.sunrise, self.sunset = t + sunrise, t + sunset
-            self.fajr, self.isha = t + fajr, t + isha
-            self.maghrib_base = self.sunset
-            for name in ("SUNRISE", "MAGHRIB", "FAJR", "ISHA"):
+        times = self.engine.north_times(self.site, self.day)
+        engine, raw = self.engine, self.raw
+        real = {"SUNRISE": raw.sunrise, "MAGHRIB": raw.sunset,
+                "FAJR": engine.angle_on(self.site, self.day, "FAJR"), "ISHA": engine.angle_on(self.site, self.day, "ISHA")}
+        for name, value in (("SUNRISE", times["rise"]), ("MAGHRIB", times["set"]), ("FAJR", times["fajr"]),
+                            ("ISHA", times["isha"])):
+            if real[name] is None or abs(value - real[name]) > 0.001:
                 self.rules[name] = "IRN_MECCA_CYCLE"
-            self._polar_asr = ("POLAR_ASR_MIDPOINT", (t + self.sunset) / 2)
-        elif lat <= 66.33 and self.maghrib_base is not None and self.maghrib_base < t + 2 * HOUR:
-            moved = t + 2 * HOUR - self.maghrib_base > 0.001
-            self.maghrib_base = t + 2 * HOUR
-            if moved:
-                self.rules["MAGHRIB"] = "IRN_MECCA_CYCLE"
+        self.sunrise, self.sunset = times["rise"], times["set"]
+        self.fajr, self.isha = times["fajr"], times["isha"]
+        if engine.method["maghribAngle"] is None:
+            self.maghrib_base = self.sunset
+        self._irn_asr = True
 
     @functools.cached_property
     def asr(self) -> tuple[float | None, str | None]:
@@ -722,6 +744,10 @@ class DaySteps:
         if self.engine.method["asr"]["type"] not in SHADOW_KINDS:
             return None, None
         value = self.raw.asr
+        if self._irn_asr:
+            mid = (self.transit + self.sunset) / 2
+            asr = min(mid if value is None else max(value, mid), self.sunset - HOUR)
+            return asr, ("POLAR_ASR_MIDPOINT" if value is None or abs(asr - value) > 0.001 else None)
         if value is None and self._polar_asr is not None:
             return self._polar_asr[1], self._polar_asr[0]
         return value, None
@@ -752,6 +778,7 @@ class CaseEngine:
         self.standard_offset = facts["standardOffsetSeconds"]
         self.utc_offset = facts.get("utcOffsetSeconds", self.standard_offset)
         self.midnight = facts["localMidnightEpochSeconds"]
+        self.offset_changes = facts.get("offsetChanges") or [[-1e18, self.utc_offset]]
         evaluation = self.method.get("sunEvaluation") or {}
         self.modes = {name: evaluation.get(name, "EVENT_INSTANT") for name in EVENTS}
         self.diyanet_preset = (self.method["polar"] == "DIYANET_CLAMP"
@@ -763,6 +790,7 @@ class CaseEngine:
         self._polar_years: dict[tuple[str, int], bool] = {}
         self._lre: dict[tuple[str, int], float | None] = {}
         self._mecca: CaseEngine | None = None
+        self._raw_north: dict = {}
 
     # S2 ---------------------------------------------------------------------------------------
 
@@ -775,6 +803,23 @@ class CaseEngine:
     def local_midnight(self, day: datetime.date) -> float:
         """00:00 of day in Z: the case's fact for D, one standard day apart for other dates."""
         return self.midnight + 86400 * (day - self.day).days
+
+    def offset_at(self, epoch: float) -> float:
+        """Z's UTC offset at an instant, from zoneFacts' offset changes (the case's offset without them)."""
+        offset = self.offset_changes[0][1]
+        for start, value in self.offset_changes:
+            if start <= epoch:
+                offset = value
+            else:
+                break
+        return offset
+
+    def local_noon_jd(self, day: datetime.date) -> float:
+        """S4: the Julian day of 12:00 local civil time in Z on day."""
+        clock = epoch_days(day) * 86400 + 43200
+        t = clock - self.offset_at(clock - self.utc_offset)
+        t = clock - self.offset_at(t)
+        return t / 86400 + UNIX_EPOCH_JD
 
     def clock_instant(self, day: datetime.date, seconds: float) -> float:
         """A clock time on a local date in Z, read with the case's UTC offset (H3, H4, H7)."""
@@ -855,21 +900,150 @@ class CaseEngine:
         if self._mecca is None:
             method = copy.deepcopy(self.method)
             method.update({"fajr": {"type": "angle", "degrees": 18.0}, "isha": {"type": "angle", "degrees": 18.0},
-                           "twilightLatitudeScale": 1.0, "sunEvaluation": {}, "polar": "MIN_DAY_NIGHT_5H",
-                           "minDayNightHours": None})
-            midnight = epoch_days(self.day) * 86400 - MECCA_OFFSET_S
+                           "twilightLatitudeScale": 1.0, "polar": "MIN_DAY_NIGHT_5H", "minDayNightHours": None,
+                           "highLatitude": {"type": "angle_based"},
+                           "horizon": {"sunrise": {"type": "standard"}, "sunset": {"type": "standard"}}})
+            # The method's own evaluations; local noon is the place's (its zone facts).
             self._mecca = CaseEngine({
                 "id": self.case["id"] + "/mecca", "date": self.case["date"], "method": method,
-                "place": {**MECCA_POINT, "elevationM": None, "zoneId": "Asia/Riyadh", "countryCode": None},
+                "place": {**MECCA_POINT, "elevationM": None, "zoneId": self.place["zoneId"], "countryCode": None},
                 "ramadanDay": False, "zone": None, "baseZone": None, "offsetWindow": None, "adjustments": {},
-                "zoneFacts": {"standardOffsetSeconds": MECCA_OFFSET_S, "utcOffsetSeconds": MECCA_OFFSET_S,
-                              "localMidnightEpochSeconds": midnight, "ishaLatestEpochSeconds": None,
-                              "ishaEarliestEpochSeconds": None}})
+                "zoneFacts": dict(self.case["zoneFacts"])})
         mecca = self._mecca
         steps = mecca.day_steps(mecca.exact_site(), day)
         t = steps.transit
         return (steps.sunrise - t, steps.sunset - t,
                 steps.raw.angle_event("FAJR", 18.0) - t, steps.raw.angle_event("ISHA", 18.0) - t)
+
+    def north_day(self, site: Site, d: datetime.date) -> dict:
+        """H8: the real times of date d (raw, then capped), Mecca's day on d, and 00:00 UTC of d."""
+        key = (site.key, d, "north")
+        if key not in self._raw_north:
+            raw = self.raw_day(site, d)
+            t = raw.transit
+            polar = raw.sunrise is None and raw.sunset is None and raw.polar_night
+            rise_u = raw.sunrise if raw.sunrise is not None else (t if polar else t - 8 * HOUR)
+            set_u = raw.sunset if raw.sunset is not None else (t if polar else t + 8 * HOUR)
+            fajr, isha = self.angle_on(site, d, "FAJR"), self.angle_on(site, d, "ISHA")
+            m_rise, m_set, m_fajr, m_isha = self.mecca_offsets(d)
+            self._raw_north[key] = {
+                "T": t, "rise_u": rise_u, "set_u": set_u,
+                "rise": max(rise_u, t - 8 * HOUR) if raw.sunrise is not None else rise_u,
+                "set": min(set_u, t + 8 * HOUR) if raw.sunset is not None else set_u,
+                "fajr": t - 9 * HOUR if fajr is None or fajr < t - 9 * HOUR else fajr,
+                "isha": t + 9 * HOUR if isha is None or isha > t + 9 * HOUR else isha,
+                "M_rise": t + m_rise, "M_set": t + m_set, "M_fajr": t + m_fajr, "M_isha": t + m_isha,
+                "mid0": epoch_days(d) * 86400,
+            }
+        return self._raw_north[key]
+
+    def north_days(self, site: Site, year: int) -> dict:
+        """H8's days: the zone's switchDays, or the ones a place without them derives from its own sun."""
+        key = (site.key, year, "north-days")
+        if key in self._raw_north:
+            return self._raw_north[key]
+        given = (site.zone or {}).get("switchDays") or {}
+        days: dict = {"svalbard": False, "summer": None, "autumn": None, "spring": None}
+        summer = given.get("MAGHRIB")
+        if summer is not None:
+            if summer["first"] <= 1 and summer["last"] >= 365:
+                days["svalbard"] = True
+            else:
+                days["summer"] = (summer["first"] - 1, summer["last"] + 1)
+            mecca, floor = given.get("SUNRISE") or {}, given.get("DHUHR") or {}
+            if mecca.get("first"):
+                days["autumn"] = ("MECCA", mecca["first"] - 1)
+            elif floor.get("first"):
+                days["autumn"] = ("FLOOR", floor["first"])
+            if mecca.get("last"):
+                days["spring"] = ("MECCA", mecca["last"] + 1)
+            elif floor.get("last"):
+                days["spring"] = ("FLOOR", floor["last"])
+        else:
+            def after(n: int) -> float | None:
+                raw = self.raw_day(site, date_of_day_number(n, year))
+                return None if raw.sunset is None else raw.sunset - raw.transit
+            long_day = [n for n in range(60, 301) if (lambda x: x is None or x > 8 * HOUR + 5 * 60)(after(n))]
+            first = next((n for n in long_day if n <= 172), None)
+            last = next((n for n in reversed(long_day) if n >= 172), None)
+            if first is not None and last is not None:
+                days["summer"] = (first - 1, last + 1)
+            if abs(site.point[0]) >= 66.33:
+                short = lambda n: (lambda x: x is None or x < 3 * HOUR + 20 * 60)(after(n))
+                s = next((n for n in range(260, 366) if short(n)), None)
+                e = next((n for n in range(100, 0, -1) if short(n)), None)
+                if s is not None:
+                    days["autumn"] = ("MECCA", s - 1)
+                if e is not None:
+                    days["spring"] = ("MECCA", e + 1)
+            else:
+                days["autumn"], days["spring"] = ("FLOOR", 182), ("FLOOR", 181)
+        self._raw_north[key] = days
+        return days
+
+    def north_times(self, site: Site, day: datetime.date) -> dict:
+        """H8: sunrise, sunset, Fajr and Isha of day."""
+        year, n = day.year, common_day_number(day)
+
+        def date_of(m: int) -> datetime.date:
+            if m < 1:
+                return date_of_day_number(m + 365, year - 1)
+            if m > 365:
+                return date_of_day_number(m - 365, year + 1)
+            return date_of_day_number(m, year)
+
+        def nd(m: int) -> dict:
+            return self.north_day(site, date_of(m))
+
+        def line(m: int, m0: int, y0: float, m1: int, y1: float) -> float:
+            u0, u1 = y0 - nd(m0)["mid0"], y1 - nd(m1)["mid0"]
+            return nd(m)["mid0"] + u0 + (u1 - u0) * (m - m0) / (m1 - m0)
+
+        cur = nd(n)
+        mec = {k: cur["M_" + k] for k in ("rise", "set", "fajr", "isha")}
+        out = {k: cur[k] for k in ("rise", "set", "fajr", "isha")}
+        days = self.north_days(site, year)
+        if days["svalbard"]:
+            out = dict(mec)
+        else:
+            if days["summer"] is not None:
+                a, b = days["summer"]
+                for k in ("rise", "set"):
+                    if a < n < a + 7:
+                        out[k] = line(n, a, nd(a)[k + "_u"], a + 7, nd(a + 7)["M_" + k])
+                    elif a + 7 <= n <= b - 7:
+                        out[k] = mec[k]
+                    elif b - 7 < n < b:
+                        out[k] = line(n, b - 7, nd(b - 7)["M_" + k], b, nd(b)[k + "_u"])
+                a2, b2 = a + 7, b - 8
+                for k in ("fajr", "isha"):
+                    if a2 < n < a2 + 7:
+                        out[k] = line(n, a2, nd(a2)[k], a2 + 7, nd(a2 + 7)["M_" + k])
+                    elif a2 + 7 <= n <= b2 - 7:
+                        out[k] = mec[k]
+                    elif b2 - 7 < n < b2:
+                        out[k] = line(n, b2 - 7, nd(b2 - 7)["M_" + k], b2, nd(b2)[k])
+            half = days["spring"] if n <= 181 else days["autumn"]
+            if half is not None and half[0] == "MECCA":
+                x = half[1]
+                for k in ("rise", "set", "fajr", "isha"):
+                    if n > 181:
+                        if x < n < x + 30:
+                            out[k] = line(n, x, nd(x)[k], x + 30, nd(x + 30)["M_" + k])
+                        elif n >= x + 30:
+                            out[k] = mec[k]
+                    elif n <= x - 30:
+                        out[k] = mec[k]
+                    elif x - 30 < n < x:
+                        out[k] = line(n, x - 30, nd(x - 30)["M_" + k], x, nd(x)[k])
+            elif half is not None and half[0] == "FLOOR":
+                inside = n >= half[1] if n > 181 else n <= half[1]
+                if inside:
+                    out["set"] = max(out["set"], cur["T"] + 2 * HOUR)
+                    out["rise"] = min(out["rise"], cur["T"] - 2 * HOUR)
+        out["set"] = min(out["set"], cur["T"] + 8 * HOUR)
+        out["rise"] = max(out["rise"], cur["T"] - 8 * HOUR)
+        return out
 
     # S8 ---------------------------------------------------------------------------------------
 
@@ -980,7 +1154,9 @@ class CaseEngine:
         e16_evening = max(float(floor), e16) if floor is not None else e16       # E16's floor (Le Tampon)
 
         def season(name: str) -> float:
-            return seasonal_value((method["seasonalOffsets"] or {}).get(name), day)
+            """E18: the seasonal value and the dated offsets of the date."""
+            return (seasonal_value((method["seasonalOffsets"] or {}).get(name), day)
+                    + dated_value(method.get("datedOffsets") or [], name, day))
 
         def plus(t: float | None, minutes: float) -> float | None:
             return None if t is None else t + 60 * minutes
@@ -1056,7 +1232,8 @@ class CaseEngine:
         key = (site.key, day, name)
         if key not in self._angles:
             degrees = self.angle_degrees(day, name)
-            self._angles[key] = None if degrees is None else self.raw_day(site, day).angle_event(name, degrees)
+            at = self.rule_for(day)[2].get("at") if name == "ISHA" else None
+            self._angles[key] = None if degrees is None else self.raw_day(site, day).angle_event(name, degrees, at)
         return self._angles[key]
 
     def night_for(self, site: Site, day: datetime.date, name: str) -> float:
@@ -1198,26 +1375,24 @@ class CaseEngine:
         given = (site.zone or {}).get("switchDays") or {}
         if name in given:
             return given[name]["first"], given[name]["last"]
+        if name == "ISHA":
+            def late(n: int) -> bool:
+                isha = self.angle_on(site, date_of_day_number(n, day.year), "ISHA")
+                return isha is None or utc_hours(isha) >= 20
+            first = next((n for n in range(32, 173) if late(n)), None)
+            last = next((n for n in range(365, 171, -1) if late(n)), None)
+            return None if first is None or last is None else (first + 1, last - 1)
         for n in range(32, 173):
             other = date_of_day_number(n, day.year)
-            if name == "ISHA":
-                isha = self.raw_day(site, other).angle_event("ISHA", 15.0)
-                found = isha is None or utc_hours(isha) >= 20
-            else:
-                fajr = self.angle_on(site, other, "FAJR")
-                found = fajr is None or self.day_steps(site, other).sunrise - fajr >= 153 * 60
-            if found:
+            fajr = self.angle_on(site, other, "FAJR")
+            if fajr is None or self.day_steps(site, other).sunrise - fajr >= 153 * 60:
                 return n, 341 - n
         return None
 
     def irn(self, site: Site, day: datetime.date, name: str, t: float | None) -> float | None:
-        """H7: IRN's rule."""
-        if abs(site.point[0]) >= 63.56:
-            if name == "ISHA":
-                lowest = self.lowest_point(site, day)
-                return t if lowest is None else earlier(t, lowest - 3 * HOUR)
-            lowest = self.lowest_point(site, day - ONE_DAY)
-            return t if lowest is None else later(t, lowest + 3 * HOUR)
+        """H7: IRN's rule (from 63.56°, H8 has set Fajr and Isha)."""
+        if abs(site.point[0]) >= IRN_NORTH:
+            return t
         days = self.switch_days(site, day, name)
         n = common_day_number(day)
         if days is None or not days[0] <= n <= days[1]:
@@ -1235,9 +1410,9 @@ class CaseEngine:
                     last + 1, day.year), "ISHA"))
             hours = y0 + (y1 - y0) * (n - x0) / (x1 - x0)
             return max(epoch_days(day) * 86400 + 3600 * hours, steps.sunset + delay)
-        reference = first - 1 if n < 172 else last + 1
+        reference = first - 1 if n <= 172 else last + 1
         fajr = self.angle_on(site, date_of_day_number(reference, day.year), "FAJR")
-        local = fajr + self.utc_offset
+        local = fajr + self.offset_at(fajr)
         clock = local - math.floor(local / 86400) * 86400
         return min(self.clock_instant(day, clock), steps.sunrise - HOUR)
 
@@ -1274,7 +1449,10 @@ class CaseEngine:
             curve = steps.sunrise - 60 * twilight_curve(lat, day, MOONSIGHTING_FAJR)
             return curve if base is None else max(base, curve)
         if kind == "dum_rf":
-            night = self.night_for(site, day, name)
+            # H4: N' = 24 h minus D's own day.
+            if steps.sunrise is None or steps.sunset is None:
+                return t
+            night = 86400 - (steps.sunset - steps.sunrise)
             if name == "ISHA":
                 return earlier(t, steps.sunset + dum_rf_share(day) * night)
             return later(t, steps.sunrise - 0.30 * night)

@@ -159,10 +159,11 @@ class HighLatitudeRulesTest {
     @Test
     fun summerForms() {
         // 9.2: Zagreb on 2026-06-21 under hr_miz_zagreb, Fajr = sunrise − 105; Ljubljana on 2026-05-10 under
-        // si_islamska_skupnost, Fajr = sunrise − 105 and Isha = Maghrib + 90; Riyadh keeps its angle time.
+        // si_islamska_skupnost, Fajr = sunrise − 105 and Isha = Maghrib + 90; Riyadh keeps its angle time. The printed
+        // relations: the times after the profiles' offsets (113 from the computed sunrise, less sunrise's − 8, at Zagreb).
         fun check(place: PrayerPlace.Coordinates, date: LocalDate, method: PrayerMethod, fajrBefore: Double?, ishaAfter: Double?) {
             val e = PrayerEngine.explain(place, date, method)
-            val sunrise = checkNotNull(e.events[TimeEvent.SUNRISE.ordinal].raw)
+            val sunrise = checkNotNull(e.events[TimeEvent.SUNRISE.ordinal].unrounded)
             val fajr = checkNotNull(e.events[TimeEvent.FAJR.ordinal].unrounded)
             if (fajrBefore != null) assertEquals(fajrBefore, Duration.between(fajr, sunrise).seconds / 60.0, 0.01)
             if (ishaAfter != null) {

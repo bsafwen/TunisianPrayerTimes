@@ -12,31 +12,50 @@ import java.time.LocalDate
 import java.time.chrono.HijrahDate
 import java.time.temporal.ChronoField
 
-/** The official-zone assets the app bundles (6.5), by authority, and the one that serves a method in a country. */
-class OfficialZoneIndex(assets: List<AuthorityZones>) {
-    val byAuthority: Map<String, AuthorityZones> = assets.associateBy { it.authority }
-    private val byMethod: Map<String, List<AuthorityZones>> = assets.groupBy { it.methodId }
+/**
+ * The official-zone assets the app bundles (6.5), by authority, and the one that serves a method in a country. Each
+ * asset is read on first use ([lazy]: the app's manifest), so a place uses only its own method's asset.
+ */
+class OfficialZoneIndex private constructor(private val entries: Array<Entry>) {
+    /** One asset: what selects it (its authority, method and countries, its zones' included) and how to read it, once. */
+    class Entry(val authority: String, val methodId: String, val countries: Set<String>, load: () -> AuthorityZones?) {
+        val zones: AuthorityZones? by lazy(load)
+    }
+
+    constructor(assets: List<AuthorityZones>) : this(assets.map { a -> Entry(a.authority, a.methodId, countriesOf(a)) { a } }.toTypedArray())
+
+    private val byMethod: Map<String, List<Entry>> = entries.groupBy { it.methodId }
+    private val entryOf: Map<String, Entry> = entries.associateBy { it.authority }
+
+    /** Every asset, read. */
+    val byAuthority: Map<String, AuthorityZones> by lazy { entries.mapNotNull { e -> e.zones?.let { e.authority to it } }.toMap() }
 
     /**
      * The asset of [methodId] that covers [country] (its own country list or one of its zones' countries,
-     * Ceuta and Melilla under `ma_habous` included); a method with one asset gives it whatever the country,
-     * and [ZoneMapping] then attaches no zone outside its countries.
+     * Ceuta and Melilla under `ma_habous` included); none for a country no asset of the method covers (where
+     * [ZoneMapping] would attach no zone anyway), so a method used abroad reads no asset and shows no table's record.
+     * An unknown country takes the method's first asset.
      */
     fun forMethod(methodId: String, country: String?): AuthorityZones? {
         val candidates = byMethod[methodId].orEmpty()
-        if (candidates.size <= 1) return candidates.firstOrNull()
-        val cc = country?.let(CountryResolver::normalize)
-        return candidates.firstOrNull { a -> cc != null && (cc in a.country.split(',') || a.zones.any { it.country == cc }) }
-            ?: candidates.first()
+        val cc = country?.let(CountryResolver::normalize) ?: return candidates.firstOrNull()?.zones
+        return candidates.firstOrNull { cc in it.countries }?.zones
     }
 
     /** Algeria's offset windows for any zone of the index (6.2, 8.8). */
     val offsetWindows: ZoneMapping.OffsetWindows = ZoneMapping.OffsetWindows { zone, date ->
-        byAuthority[zone.authority]?.let { AlgerianOffsetWindows(it).windowFor(zone, date) }
+        entryOf[zone.authority]?.zones?.let { AlgerianOffsetWindows(it).windowFor(zone, date) }
     }
 
     companion object {
-        val EMPTY = OfficialZoneIndex(emptyList())
+        val EMPTY = OfficialZoneIndex(emptyList<AuthorityZones>())
+
+        /** An index whose assets are read on first use: the app's, from `official-zones/index.tsv`. */
+        fun lazy(entries: List<Entry>) = OfficialZoneIndex(entries.toTypedArray())
+
+        /** An asset's countries as the manifest lists them: its own list and its zones'. */
+        fun countriesOf(a: AuthorityZones): Set<String> =
+            (a.country.split(',') + a.zones.mapNotNull { it.country }).map { it.trim() }.filter { it.isNotEmpty() }.toSet()
     }
 }
 

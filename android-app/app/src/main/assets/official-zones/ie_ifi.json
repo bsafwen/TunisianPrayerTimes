@@ -1,0 +1,5222 @@
+{
+ "schema": 1,
+ "authority": "ie_ifi",
+ "methodId": "ie_ifi",
+ "country": "IE",
+ "mapping": "NEAREST",
+ "source": "The Islamic Foundation of Ireland: its perpetual Dublin timetable and its Ramadan 2026 tables for Dublin and 32 other towns (islamicfoundation.ie)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "The IFI's perpetual Dublin table (islamicfoundation.ie timetable app)",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "The IFI's perpetual Dublin table (islamicfoundation.ie timetable app), held out by month",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.474,
+   "SUNRISE": 0.8959,
+   "DHUHR": 0.9041,
+   "ASR": 0.9014,
+   "MAGHRIB": 0.8575,
+   "ISHA": 0.5178
+  },
+  "within1": {
+   "FAJR": 0.9041,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 0.7781
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "SUNRISE": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "DHUHR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ASR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "MAGHRIB": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ISHA": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 13
+ },
+ "zones": [
+  {
+   "id": "athlone",
+   "point": {
+    "latE5": 5342278,
+    "lngE5": -793722
+   },
+   "morningPoint": {
+    "latE5": 5342778,
+    "lngE5": -796762
+   },
+   "eveningPoint": {
+    "latE5": 5342778,
+    "lngE5": -796762
+   },
+   "nameAr": "أثلون",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5342278,
+      "lngE5": -793722
+     },
+     "catalogueIds": [
+      3313472
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Athlone",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Athlone, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9,
+     "SUNRISE": 0.9667,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ballina",
+   "point": {
+    "latE5": 5411667,
+    "lngE5": -916667
+   },
+   "nameAr": "بالينا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5411667,
+      "lngE5": -916667
+     },
+     "catalogueIds": [
+      2966778
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ballina",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ballina, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8667,
+     "SUNRISE": 0.9,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ballinasloe",
+   "point": {
+    "latE5": 5332750,
+    "lngE5": -821944
+   },
+   "nameAr": "بالينسلو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5332750,
+      "lngE5": -821944
+     },
+     "catalogueIds": [
+      2966753
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ballinasloe",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ballinasloe, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 0.9333,
+     "DHUHR": 1.0,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ballyhaunis",
+   "point": {
+    "latE5": 5376667,
+    "lngE5": -876667
+   },
+   "morningPoint": {
+    "latE5": 5379417,
+    "lngE5": -876667
+   },
+   "eveningPoint": {
+    "latE5": 5379417,
+    "lngE5": -876667
+   },
+   "nameAr": "باليهونيس",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5376667,
+      "lngE5": -876667
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ballyhaunis",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ballyhaunis, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8333,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "carlow",
+   "point": {
+    "latE5": 5284083,
+    "lngE5": -692611
+   },
+   "morningPoint": {
+    "latE5": 5284833,
+    "lngE5": -692611
+   },
+   "eveningPoint": {
+    "latE5": 5284833,
+    "lngE5": -692611
+   },
+   "nameAr": "كارلو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5284083,
+      "lngE5": -692611
+     },
+     "catalogueIds": [
+      2965768
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Carlow",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Carlow, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8667,
+     "SUNRISE": 0.9333,
+     "DHUHR": 0.9667,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "castlebar",
+   "point": {
+    "latE5": 5385000,
+    "lngE5": -930000
+   },
+   "morningPoint": {
+    "latE5": 5387500,
+    "lngE5": -929577
+   },
+   "eveningPoint": {
+    "latE5": 5387500,
+    "lngE5": -929577
+   },
+   "nameAr": "كاسلبار",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5385000,
+      "lngE5": -930000
+     },
+     "catalogueIds": [
+      2965654
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Castlebar",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Castlebar, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8667,
+     "SUNRISE": 0.9,
+     "DHUHR": 0.8,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.9333,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "cavan",
+   "point": {
+    "latE5": 5399083,
+    "lngE5": -736056
+   },
+   "morningPoint": {
+    "latE5": 5399083,
+    "lngE5": -735910
+   },
+   "eveningPoint": {
+    "latE5": 5399083,
+    "lngE5": -735910
+   },
+   "nameAr": "كافان",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5399083,
+      "lngE5": -736056
+     },
+     "catalogueIds": [
+      2965535
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Cavan",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Cavan, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7333,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "clonmel",
+   "point": {
+    "latE5": 5235500,
+    "lngE5": -770389
+   },
+   "morningPoint": {
+    "latE5": 5235500,
+    "lngE5": -771759
+   },
+   "eveningPoint": {
+    "latE5": 5235500,
+    "lngE5": -771759
+   },
+   "nameAr": "كلونميل",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5235500,
+      "lngE5": -770389
+     },
+     "catalogueIds": [
+      2965353
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Clonmel",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Clonmel, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7333,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9667,
+     "ASR": 0.9667,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "cork",
+   "point": {
+    "latE5": 5189797,
+    "lngE5": -847061
+   },
+   "morningPoint": {
+    "latE5": 5184047,
+    "lngE5": -847061
+   },
+   "eveningPoint": {
+    "latE5": 5184047,
+    "lngE5": -847061
+   },
+   "nameAr": "كورك",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5189797,
+      "lngE5": -847061
+     },
+     "catalogueIds": [
+      2965140
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Cork",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Cork, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6667,
+     "SUNRISE": 0.9667,
+     "DHUHR": 1.0,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.9,
+     "ISHA": 0.7
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "donegal",
+   "point": {
+    "latE5": 5465378,
+    "lngE5": -811134
+   },
+   "morningPoint": {
+    "latE5": 5466378,
+    "lngE5": -811134
+   },
+   "eveningPoint": {
+    "latE5": 5466378,
+    "lngE5": -811134
+   },
+   "nameAr": "دونيغال",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5465378,
+      "lngE5": -811134
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Donegal",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Donegal, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5333,
+     "SUNRISE": 0.9,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.6667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "drogheda",
+   "point": {
+    "latE5": 5371889,
+    "lngE5": -634778
+   },
+   "morningPoint": {
+    "latE5": 5375639,
+    "lngE5": -634778
+   },
+   "eveningPoint": {
+    "latE5": 5375639,
+    "lngE5": -634778
+   },
+   "nameAr": "دروهيدا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5371889,
+      "lngE5": -634778
+     },
+     "catalogueIds": [
+      2964661
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Drogheda",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Drogheda, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 0.9333,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "dublin",
+   "point": {
+    "latE5": 5333306,
+    "lngE5": -624889
+   },
+   "nameAr": "دبلن",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5333306,
+      "lngE5": -624889
+     },
+     "catalogueIds": [
+      2964574
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's perpetual Dublin table (islamicfoundation.ie timetable app)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's perpetual Dublin table (islamicfoundation.ie timetable app), held out by month",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.474,
+     "SUNRISE": 0.8959,
+     "DHUHR": 0.9041,
+     "ASR": 0.9014,
+     "MAGHRIB": 0.8575,
+     "ISHA": 0.5178
+    },
+    "within1": {
+     "FAJR": 0.9041,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7781
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 13
+   }
+  },
+  {
+   "id": "dundalk",
+   "point": {
+    "latE5": 5400000,
+    "lngE5": -641667
+   },
+   "morningPoint": {
+    "latE5": 5403500,
+    "lngE5": -641667
+   },
+   "eveningPoint": {
+    "latE5": 5403500,
+    "lngE5": -641667
+   },
+   "nameAr": "دوندالك",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5400000,
+      "lngE5": -641667
+     },
+     "catalogueIds": [
+      2964540
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Dundalk",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Dundalk, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8333,
+     "SUNRISE": 0.9667,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9333,
+     "ISHA": 0.8
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ennis",
+   "point": {
+    "latE5": 5284361,
+    "lngE5": -898639
+   },
+   "morningPoint": {
+    "latE5": 5284111,
+    "lngE5": -898639
+   },
+   "eveningPoint": {
+    "latE5": 5284111,
+    "lngE5": -898639
+   },
+   "nameAr": "إينيس",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5284361,
+      "lngE5": -898639
+     },
+     "catalogueIds": [
+      2964405
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ennis",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Ennis, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.8667,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "galway",
+   "point": {
+    "latE5": 5327245,
+    "lngE5": -905095
+   },
+   "morningPoint": {
+    "latE5": 5327245,
+    "lngE5": -904573
+   },
+   "eveningPoint": {
+    "latE5": 5327245,
+    "lngE5": -904573
+   },
+   "nameAr": "غالواي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5327245,
+      "lngE5": -905095
+     },
+     "catalogueIds": [
+      2964180
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Galway",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Galway, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9333,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.8333,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kildare",
+   "point": {
+    "latE5": 5315611,
+    "lngE5": -691444
+   },
+   "morningPoint": {
+    "latE5": 5313861,
+    "lngE5": -691933
+   },
+   "eveningPoint": {
+    "latE5": 5313861,
+    "lngE5": -691933
+   },
+   "nameAr": "كيلدير",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5315611,
+      "lngE5": -691444
+     },
+     "catalogueIds": [
+      2963436
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Kildare",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Kildare, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9667,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.9667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kilkenny",
+   "point": {
+    "latE5": 5265417,
+    "lngE5": -725222
+   },
+   "morningPoint": {
+    "latE5": 5263167,
+    "lngE5": -725222
+   },
+   "eveningPoint": {
+    "latE5": 5263167,
+    "lngE5": -725222
+   },
+   "nameAr": "كيلكيني",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5265417,
+      "lngE5": -725222
+     },
+     "catalogueIds": [
+      2963398
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Kilkenny",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Kilkenny, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8667,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "letterkenny",
+   "point": {
+    "latE5": 5495000,
+    "lngE5": -773333
+   },
+   "morningPoint": {
+    "latE5": 5501500,
+    "lngE5": -773582
+   },
+   "eveningPoint": {
+    "latE5": 5501500,
+    "lngE5": -773582
+   },
+   "nameAr": "لتركني",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5495000,
+      "lngE5": -773333
+     },
+     "catalogueIds": [
+      2962961
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Letterkenny",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Letterkenny, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4667,
+     "SUNRISE": 0.8667,
+     "DHUHR": 0.8667,
+     "ASR": 0.8667,
+     "MAGHRIB": 0.5,
+     "ISHA": 0.6333
+    },
+    "within1": {
+     "FAJR": 0.9333,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "limerick",
+   "point": {
+    "latE5": 5266472,
+    "lngE5": -862306
+   },
+   "morningPoint": {
+    "latE5": 5265472,
+    "lngE5": -862306
+   },
+   "eveningPoint": {
+    "latE5": 5265472,
+    "lngE5": -862306
+   },
+   "nameAr": "ليمريك",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5266472,
+      "lngE5": -862306
+     },
+     "catalogueIds": [
+      2962943
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Limerick",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Limerick, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7667,
+     "SUNRISE": 0.9333,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9333,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "longford",
+   "point": {
+    "latE5": 5372536,
+    "lngE5": -779823
+   },
+   "morningPoint": {
+    "latE5": 5375786,
+    "lngE5": -779823
+   },
+   "eveningPoint": {
+    "latE5": 5375786,
+    "lngE5": -779823
+   },
+   "nameAr": "لونغفورد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5372536,
+      "lngE5": -779823
+     },
+     "catalogueIds": [
+      2962840
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Longford",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Longford, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 0.9333,
+     "DHUHR": 1.0,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "monaghan",
+   "point": {
+    "latE5": 5424589,
+    "lngE5": -697098
+   },
+   "morningPoint": {
+    "latE5": 5426089,
+    "lngE5": -697098
+   },
+   "eveningPoint": {
+    "latE5": 5426089,
+    "lngE5": -697098
+   },
+   "nameAr": "موناهان",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5424589,
+      "lngE5": -697098
+     },
+     "catalogueIds": [
+      2962568
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Monaghan",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Monaghan, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "mullingar",
+   "point": {
+    "latE5": 5352466,
+    "lngE5": -733850
+   },
+   "morningPoint": {
+    "latE5": 5353216,
+    "lngE5": -734842
+   },
+   "eveningPoint": {
+    "latE5": 5353216,
+    "lngE5": -734842
+   },
+   "nameAr": "مولينغار",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5352466,
+      "lngE5": -733850
+     },
+     "catalogueIds": [
+      2962361
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Mullingar",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Mullingar, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9,
+     "SUNRISE": 0.9333,
+     "DHUHR": 0.9,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "naas",
+   "point": {
+    "latE5": 5321583,
+    "lngE5": -666694
+   },
+   "morningPoint": {
+    "latE5": 5322083,
+    "lngE5": -666694
+   },
+   "eveningPoint": {
+    "latE5": 5322083,
+    "lngE5": -666694
+   },
+   "nameAr": "ناس",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5321583,
+      "lngE5": -666694
+     },
+     "catalogueIds": [
+      2962334
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Naas",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Naas, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9,
+     "SUNRISE": 0.9667,
+     "DHUHR": 1.0,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "navan",
+   "point": {
+    "latE5": 5365278,
+    "lngE5": -668139
+   },
+   "morningPoint": {
+    "latE5": 5365528,
+    "lngE5": -668139
+   },
+   "eveningPoint": {
+    "latE5": 5365528,
+    "lngE5": -668139
+   },
+   "nameAr": "نافان",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5365278,
+      "lngE5": -668139
+     },
+     "catalogueIds": [
+      2962308
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Navan",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Navan, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 0.9,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "portlaoise",
+   "point": {
+    "latE5": 5303441,
+    "lngE5": -729979
+   },
+   "morningPoint": {
+    "latE5": 5302441,
+    "lngE5": -729548
+   },
+   "eveningPoint": {
+    "latE5": 5302441,
+    "lngE5": -729548
+   },
+   "nameAr": "بورتلاويس",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5303441,
+      "lngE5": -729979
+     },
+     "catalogueIds": [
+      2962026
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Portlaoise",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Portlaoise, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7667,
+     "SUNRISE": 0.9333,
+     "DHUHR": 0.9333,
+     "ASR": 0.8667,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "roscommon",
+   "point": {
+    "latE5": 5363333,
+    "lngE5": -818333
+   },
+   "morningPoint": {
+    "latE5": 5365083,
+    "lngE5": -817709
+   },
+   "eveningPoint": {
+    "latE5": 5365083,
+    "lngE5": -817709
+   },
+   "nameAr": "روسكومون",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5363333,
+      "lngE5": -818333
+     },
+     "catalogueIds": [
+      2961732
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Roscommon",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Roscommon, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9333,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "sligo",
+   "point": {
+    "latE5": 5426969,
+    "lngE5": -846943
+   },
+   "morningPoint": {
+    "latE5": 5429969,
+    "lngE5": -846943
+   },
+   "eveningPoint": {
+    "latE5": 5429969,
+    "lngE5": -846943
+   },
+   "nameAr": "سليجو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5426969,
+      "lngE5": -846943
+     },
+     "catalogueIds": [
+      2961423
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Sligo",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Sligo, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6333,
+     "SUNRISE": 0.9,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "thurles",
+   "point": {
+    "latE5": 5268194,
+    "lngE5": -780222
+   },
+   "morningPoint": {
+    "latE5": 5266444,
+    "lngE5": -779555
+   },
+   "eveningPoint": {
+    "latE5": 5266444,
+    "lngE5": -779555
+   },
+   "nameAr": "ثورلز",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5268194,
+      "lngE5": -780222
+     },
+     "catalogueIds": [
+      2961214
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Thurles",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Thurles, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9,
+     "SUNRISE": 0.9,
+     "DHUHR": 0.8,
+     "ASR": 0.8667,
+     "MAGHRIB": 0.8667,
+     "ISHA": 0.7667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "tipperary",
+   "point": {
+    "latE5": 5247333,
+    "lngE5": -815583
+   },
+   "morningPoint": {
+    "latE5": 5235833,
+    "lngE5": -810922
+   },
+   "eveningPoint": {
+    "latE5": 5235833,
+    "lngE5": -810922
+   },
+   "nameAr": "تيبيراري",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5247333,
+      "lngE5": -815583
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Tipperary",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Tipperary, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7333,
+     "SUNRISE": 0.8333,
+     "DHUHR": 0.8333,
+     "ASR": 0.9,
+     "MAGHRIB": 0.8667,
+     "ISHA": 0.7333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "tralee",
+   "point": {
+    "latE5": 5227042,
+    "lngE5": -970264
+   },
+   "morningPoint": {
+    "latE5": 5226542,
+    "lngE5": -971782
+   },
+   "eveningPoint": {
+    "latE5": 5226542,
+    "lngE5": -971782
+   },
+   "nameAr": "ترالي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5227042,
+      "lngE5": -970264
+     },
+     "catalogueIds": [
+      2961123
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Tralee",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Tralee, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7586
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 1,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "tullamore",
+   "point": {
+    "latE5": 5327389,
+    "lngE5": -748889
+   },
+   "morningPoint": {
+    "latE5": 5327639,
+    "lngE5": -748579
+   },
+   "eveningPoint": {
+    "latE5": 5327639,
+    "lngE5": -748579
+   },
+   "nameAr": "تولامور",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5327389,
+      "lngE5": -748889
+     },
+     "catalogueIds": [
+      2961086
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Tullamore",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Tullamore, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "waterford",
+   "point": {
+    "latE5": 5225833,
+    "lngE5": -711194
+   },
+   "morningPoint": {
+    "latE5": 5219083,
+    "lngE5": -710906
+   },
+   "eveningPoint": {
+    "latE5": 5219083,
+    "lngE5": -710906
+   },
+   "nameAr": "وترفورد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5225833,
+      "lngE5": -711194
+     },
+     "catalogueIds": [
+      2960992
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Waterford",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Waterford, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7667,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9667,
+     "ASR": 0.9,
+     "MAGHRIB": 0.8667,
+     "ISHA": 0.6667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "wexford",
+   "point": {
+    "latE5": 5233417,
+    "lngE5": -645750
+   },
+   "morningPoint": {
+    "latE5": 5227667,
+    "lngE5": -646744
+   },
+   "eveningPoint": {
+    "latE5": 5227667,
+    "lngE5": -646744
+   },
+   "nameAr": "ويكسفورد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5233417,
+      "lngE5": -645750
+     },
+     "catalogueIds": [
+      2960964
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Wexford",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The IFI's Ramadan 2026 table for Wexford, held out by day (odd and even days)",
+      "from": "2026-02-19",
+      "to": "2026-03-20",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9667,
+     "ASR": 0.8667,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.8
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      10,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

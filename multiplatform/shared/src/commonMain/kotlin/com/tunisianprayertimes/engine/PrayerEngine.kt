@@ -15,8 +15,12 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZonedDateTime
+import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.floor
+
+/** A rule moved a time when it changed it by more than this (seconds). */
+private const val MOVED = 1e-3
 
 /**
  * The shared prayer engine (plan 6.2): six times as UTC instants for a place outside Tunisia, a date
@@ -169,7 +173,7 @@ internal class MethodRun(
             is FajrRule.MinutesBeforeSunrise -> fajr.startAt(season.ends(date).sunrise?.minus(rule.minutes * 60.0))
         }
         when (val rule = method.isha) {
-            is IshaRule.Angle -> isha.start(sky.twilight(TimeEvent.ISHA, rule.degrees))
+            is IshaRule.Angle -> isha.start(sky.twilight(TimeEvent.ISHA, rule.degrees, at = rule.at))
             is IshaRule.MinutesAfter -> {
                 val minutes = if (ramadanDay) rule.ramadan ?: rule.minutes else rule.minutes
                 val from = if (rule.from == IshaFrom.MAGHRIB) maghrib.seconds else season.ends(date).sunset
@@ -184,8 +188,9 @@ internal class MethodRun(
         }
         // Step 6: the high-latitude rule, on the night of steps 1–3 (or Mecca's day in irn's polar seasons).
         if (mecca != null) {
-            fajr.moveTo(3, StepKind.POLAR, mecca.fajr, RuleName.IRN_MECCA_CYCLE)
-            isha.moveTo(3, StepKind.POLAR, mecca.isha, RuleName.IRN_MECCA_CYCLE)
+            // H8 sets irn's northern Fajr and Isha; a time it leaves at its angle stays computed.
+            if (fajr.seconds.let { it == null || abs(mecca.fajr - it) > MOVED }) fajr.moveTo(3, StepKind.POLAR, mecca.fajr, RuleName.IRN_MECCA_CYCLE)
+            if (isha.seconds.let { it == null || abs(mecca.isha - it) > MOVED }) isha.moveTo(3, StepKind.POLAR, mecca.isha, RuleName.IRN_MECCA_CYCLE)
         } else {
             highLatitude(maghrib.seconds)
         }
@@ -215,39 +220,42 @@ internal class MethodRun(
     /** E16 on Maghrib and Isha: at least the zone's floor (Le Tampon, 7.6). */
     private fun eveningElevationShift(): Double = maxOf(site.zone?.elevationShiftFloor ?: 0.0, elevationShift())
 
-    /** E18: the 36 values a year interpolated linearly at the date's place in the year. */
+    /** E18: the 36 values a year interpolated linearly at the date's place in the year, and the date's dated offsets. */
     private fun seasonal(event: TimeEvent): Double {
-        val values = method.seasonalOffsets[event] ?: return 0.0
+        val dated = method.datedOffsets.filter { it.event == event && it.covers(date) }.sumOf { it.minutes }
+        val values = method.seasonalOffsets[event] ?: return dated
         val position = (date.dayOfYear - 1).toDouble() / date.lengthOfYear() * values.size
         val k = floor(position).toInt()
         val w = position - k
-        return values[k] * (1 - w) + values[(k + 1) % values.size] * w
+        return dated + values[k] * (1 - w) + values[(k + 1) % values.size] * w
     }
 
     /**
      * Steps 2 and 3 (D6, 7.4): the 5-hour minimum day and night on sunrise and sunset where the method's
-     * polar rule acts, the polar Asr, and `irn`'s Mecca cycle, which also sets Fajr and Isha (returned).
+     * polar rule acts, the polar Asr, and `irn`'s northern rules (H8), which also set Fajr and Isha (returned).
      */
-    private fun polarRules(): IrnMeccaCycle.Times? {
+    private fun polarRules(): IrnNorth.Times? {
         val sunrise = this[TimeEvent.SUNRISE]
         val maghrib = this[TimeEvent.MAGHRIB]
         val asr = this[TimeEvent.ASR]
         val transit = checkNotNull(sky.transit.seconds)
-        if (IrnMeccaCycle.applies(site, method)) {
+        if (IrnNorth.applies(site, method)) {
+            val north = IrnNorth(season).times(date)
             val day = season.day(date)
-            if (IrnMeccaCycle.inSeason(site, day)) {
-                val mecca = IrnMeccaCycle.times(method, date, transit)
-                sunrise.moveTo(3, StepKind.POLAR, mecca.sunrise, RuleName.IRN_MECCA_CYCLE)
-                if (method.maghribAngle == null) maghrib.moveTo(3, StepKind.POLAR, mecca.sunset, RuleName.IRN_MECCA_CYCLE)
-                if (asr.seconds == null && method.asr !is AsrRule.BeforeMaghrib) {
-                    asr.moveTo(3, StepKind.POLAR, (transit + mecca.sunset) / 2, RuleName.POLAR_ASR_MIDPOINT)
-                }
-                return mecca
+            if (day.sunriseRaw.let { it == null || abs(north.sunrise - it) > MOVED }) {
+                sunrise.moveTo(3, StepKind.POLAR, north.sunrise, RuleName.IRN_MECCA_CYCLE)
             }
-            if (kotlin.math.abs(site.main.latitude) < IrnMeccaCycle.POLAR_NIGHT_LATITUDE) {
-                val floor = transit + IrnMeccaCycle.WINTER_MAGHRIB_FLOOR
-                maghrib.seconds?.let { if (it < floor) maghrib.moveTo(2, StepKind.POLAR, floor, RuleName.IRN_MECCA_CYCLE) }
+            if (method.maghribAngle == null && day.sunsetRaw.let { it == null || abs(north.sunset - it) > MOVED }) {
+                maghrib.moveTo(3, StepKind.POLAR, north.sunset, RuleName.IRN_MECCA_CYCLE)
             }
+            if (method.asr !is AsrRule.BeforeMaghrib) {
+                // IRN's Asr: no earlier than halfway from the transit to sunset, and at least an hour before sunset.
+                val shadow = asr.seconds
+                val middle = (transit + north.sunset) / 2
+                val value = minOf(if (shadow == null) middle else maxOf(shadow, middle), north.sunset - 3600.0)
+                if (shadow == null || abs(value - shadow) > MOVED) asr.moveTo(3, StepKind.POLAR, value, RuleName.POLAR_ASR_MIDPOINT)
+            }
+            return north
         }
         val ends = season.ends(date)
         ends.sunriseRule?.let { rule -> ends.sunrise?.let { sunrise.moveTo(2, StepKind.POLAR, it, rule) } }

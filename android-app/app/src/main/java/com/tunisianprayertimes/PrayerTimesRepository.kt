@@ -31,8 +31,17 @@ object PrayerTimesRepository {
     @Volatile
     private var placeTimes: PlaceTimes? = null
 
+    @Volatile
+    private var inmTimes: PlaceTimes? = null
+
+    /** The routing with the official-zone assets (about 5 MB of JSON, parsed once): places abroad only. */
     private fun placeTimes(context: Context): PlaceTimes = placeTimes ?: synchronized(this) {
         placeTimes ?: PlaceTimes(InmPrayerDays(source(context)), OfficialZoneAssets.index(context)).also { placeTimes = it }
+    }
+
+    /** A delegation's routing never reads a zone, so it does not parse the assets: no cost in Tunisia or in a cold alarm process. */
+    private fun inmTimes(context: Context): PlaceTimes = inmTimes ?: synchronized(this) {
+        inmTimes ?: PlaceTimes(InmPrayerDays(source(context))).also { inmTimes = it }
     }
 
     /** The routing itself, for the travel comparison of 6.8 (the mapped official zone of a fix). */
@@ -60,7 +69,8 @@ object PrayerTimesRepository {
         val choice = choice(context, place)
         val key = "${place.cacheKey}|${choice?.key}|$date"
         synchronized(days) { if (days.containsKey(key)) return days[key] }
-        val day = placeTimes(context).day(place, choice, date)
+        val times = if (place is PrayerPlace.Inm) inmTimes(context) else placeTimes(context)
+        val day = times.day(place, choice, date)
         synchronized(days) { days[key] = day }
         return day
     }

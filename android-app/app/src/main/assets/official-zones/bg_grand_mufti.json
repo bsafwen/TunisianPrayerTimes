@@ -1,0 +1,7600 @@
+{
+ "schema": 1,
+ "authority": "bg_grand_mufti",
+ "methodId": "bg_grand_mufti",
+ "country": "BG",
+ "mapping": "NEAREST",
+ "source": "The Chief Mufti's Office of Bulgaria (grandmufti.bg), «Времена за намаз»: one table and a whole-minute shift for each of its 48 cities",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "The Chief Mufti's Office's tables, 2026-10: Sofia's table and the cities' shifts",
+    "from": "2026-10-01",
+    "to": "2026-10-31",
+    "days": 31,
+    "zones": 48,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "The Chief Mufti's Office's tables, 2026-10, every city, held out by alternate days",
+    "from": "2026-10-01",
+    "to": "2026-10-31",
+    "days": 31,
+    "zones": 48,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9355,
+   "SUNRISE": 0.9032,
+   "DHUHR": 0.871,
+   "ASR": 0.7742,
+   "MAGHRIB": 0.9355,
+   "ISHA": 0.871
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1488,
+    0,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1488,
+    0,
+    0
+   ],
+   "DHUHR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1488,
+    0,
+    0
+   ],
+   "ASR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1488,
+    0,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1488,
+    0,
+    0
+   ],
+   "ISHA": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1488,
+    0,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "sofia",
+   "point": {
+    "latE5": 4269751,
+    "lngE5": 2332415
+   },
+   "morningPoint": {
+    "latE5": 4269751,
+    "lngE5": 2331002
+   },
+   "eveningPoint": {
+    "latE5": 4269751,
+    "lngE5": 2331002
+   },
+   "nameAr": "صوفيا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4269751,
+      "lngE5": 2332415
+     },
+     "catalogueIds": [
+      727011
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "aytos",
+   "point": {
+    "latE5": 4270322,
+    "lngE5": 2725464
+   },
+   "offsets": {
+    "FAJR": -15.0,
+    "SUNRISE": -15.0,
+    "DHUHR": -15.0,
+    "ASR": -15.0,
+    "MAGHRIB": -15.0,
+    "ISHA": -15.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "أيتوس",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4270322,
+      "lngE5": 2725464
+     },
+     "catalogueIds": [
+      733579
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "balchik",
+   "point": {
+    "latE5": 4342166,
+    "lngE5": 2815848
+   },
+   "offsets": {
+    "FAJR": -18.0,
+    "SUNRISE": -18.0,
+    "DHUHR": -18.0,
+    "ASR": -18.0,
+    "MAGHRIB": -18.0,
+    "ISHA": -18.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بلجق",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4342166,
+      "lngE5": 2815848
+     },
+     "catalogueIds": [
+      733515
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "blagoevgrad",
+   "point": {
+    "latE5": 4201457,
+    "lngE5": 2309804
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بلاغويفغراد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4201457,
+      "lngE5": 2309804
+     },
+     "catalogueIds": [
+      733191
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "burgas",
+   "point": {
+    "latE5": 4250651,
+    "lngE5": 2746886
+   },
+   "offsets": {
+    "FAJR": -16.0,
+    "SUNRISE": -16.0,
+    "DHUHR": -16.0,
+    "ASR": -16.0,
+    "MAGHRIB": -16.0,
+    "ISHA": -16.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بورغاس",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4250651,
+      "lngE5": 2746886
+     },
+     "catalogueIds": [
+      732770
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "byala",
+   "point": {
+    "latE5": 4287426,
+    "lngE5": 2788865
+   },
+   "offsets": {
+    "FAJR": -17.0,
+    "SUNRISE": -17.0,
+    "DHUHR": -17.0,
+    "ASR": -17.0,
+    "MAGHRIB": -17.0,
+    "ISHA": -17.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بيالا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4287426,
+      "lngE5": 2788865
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "dobrich",
+   "point": {
+    "latE5": 4356491,
+    "lngE5": 2783138
+   },
+   "offsets": {
+    "FAJR": -17.0,
+    "SUNRISE": -17.0,
+    "DHUHR": -17.0,
+    "ASR": -17.0,
+    "MAGHRIB": -17.0,
+    "ISHA": -17.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "دوبريتش",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4356491,
+      "lngE5": 2783138
+     },
+     "catalogueIds": [
+      726418
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "gorna-oryahovitsa",
+   "point": {
+    "latE5": 4312778,
+    "lngE5": 2570167
+   },
+   "offsets": {
+    "FAJR": -9.0,
+    "SUNRISE": -9.0,
+    "DHUHR": -9.0,
+    "ASR": -9.0,
+    "MAGHRIB": -9.0,
+    "ISHA": -9.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "غورنا اورياهوفيتسا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4312778,
+      "lngE5": 2570167
+     },
+     "catalogueIds": [
+      731233
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "gotse-delchev",
+   "point": {
+    "latE5": 4156667,
+    "lngE5": 2373333
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "غوتسه دلتشو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4156667,
+      "lngE5": 2373333
+     },
+     "catalogueIds": [
+      731108
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "harmanli",
+   "point": {
+    "latE5": 4193233,
+    "lngE5": 2590172
+   },
+   "offsets": {
+    "FAJR": -10.0,
+    "SUNRISE": -10.0,
+    "DHUHR": -10.0,
+    "ASR": -10.0,
+    "MAGHRIB": -10.0,
+    "ISHA": -10.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "الخرمانية",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4193233,
+      "lngE5": 2590172
+     },
+     "catalogueIds": [
+      730442
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "haskovo",
+   "point": {
+    "latE5": 4193415,
+    "lngE5": 2555557
+   },
+   "offsets": {
+    "FAJR": -9.0,
+    "SUNRISE": -9.0,
+    "DHUHR": -9.0,
+    "ASR": -9.0,
+    "MAGHRIB": -9.0,
+    "ISHA": -9.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "هاسكوفو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4193415,
+      "lngE5": 2555557
+     },
+     "catalogueIds": [
+      730435
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "isperih",
+   "point": {
+    "latE5": 4371667,
+    "lngE5": 2683333
+   },
+   "offsets": {
+    "FAJR": -13.0,
+    "SUNRISE": -13.0,
+    "DHUHR": -13.0,
+    "ASR": -13.0,
+    "MAGHRIB": -13.0,
+    "ISHA": -13.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "إسبريه",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4371667,
+      "lngE5": 2683333
+     },
+     "catalogueIds": [
+      730866
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kaolinovo",
+   "point": {
+    "latE5": 4361667,
+    "lngE5": 2711667
+   },
+   "offsets": {
+    "FAJR": -14.0,
+    "SUNRISE": -14.0,
+    "DHUHR": -14.0,
+    "ASR": -14.0,
+    "MAGHRIB": -14.0,
+    "ISHA": -14.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كاولينوفو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4361667,
+      "lngE5": 2711667
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kardzhali",
+   "point": {
+    "latE5": 4164502,
+    "lngE5": 2536578
+   },
+   "offsets": {
+    "FAJR": -8.0,
+    "SUNRISE": -8.0,
+    "DHUHR": -8.0,
+    "ASR": -8.0,
+    "MAGHRIB": -8.0,
+    "ISHA": -8.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كارجلي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4164502,
+      "lngE5": 2536578
+     },
+     "catalogueIds": [
+      729794
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "karlovo",
+   "point": {
+    "latE5": 4263333,
+    "lngE5": 2480000
+   },
+   "offsets": {
+    "FAJR": -6.0,
+    "SUNRISE": -6.0,
+    "DHUHR": -6.0,
+    "ASR": -6.0,
+    "MAGHRIB": -6.0,
+    "ISHA": -6.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كارلوفو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4263333,
+      "lngE5": 2480000
+     },
+     "catalogueIds": [
+      730565
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "karnobat",
+   "point": {
+    "latE5": 4265000,
+    "lngE5": 2698333
+   },
+   "offsets": {
+    "FAJR": -14.0,
+    "SUNRISE": -14.0,
+    "DHUHR": -14.0,
+    "ASR": -14.0,
+    "MAGHRIB": -14.0,
+    "ISHA": -14.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كارنوبات",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4265000,
+      "lngE5": 2698333
+     },
+     "catalogueIds": [
+      730559
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kavarna",
+   "point": {
+    "latE5": 4343601,
+    "lngE5": 2833953
+   },
+   "offsets": {
+    "FAJR": -19.0,
+    "SUNRISE": -19.0,
+    "DHUHR": -19.0,
+    "ASR": -19.0,
+    "MAGHRIB": -19.0,
+    "ISHA": -19.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كافارنا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4343601,
+      "lngE5": 2833953
+     },
+     "catalogueIds": [
+      730518
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "knezha",
+   "point": {
+    "latE5": 4350000,
+    "lngE5": 2408333
+   },
+   "offsets": {
+    "FAJR": -3.0,
+    "SUNRISE": -3.0,
+    "DHUHR": -3.0,
+    "ASR": -3.0,
+    "MAGHRIB": -3.0,
+    "ISHA": -3.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كنيجا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4350000,
+      "lngE5": 2408333
+     },
+     "catalogueIds": [
+      730287
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kotel",
+   "point": {
+    "latE5": 4288333,
+    "lngE5": 2645000
+   },
+   "offsets": {
+    "FAJR": -12.0,
+    "SUNRISE": -12.0,
+    "DHUHR": -12.0,
+    "ASR": -12.0,
+    "MAGHRIB": -12.0,
+    "ISHA": -12.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كوتل",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4288333,
+      "lngE5": 2645000
+     },
+     "catalogueIds": [
+      730073
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "krumovgrad",
+   "point": {
+    "latE5": 4147127,
+    "lngE5": 2565485
+   },
+   "offsets": {
+    "FAJR": -9.0,
+    "SUNRISE": -9.0,
+    "DHUHR": -9.0,
+    "ASR": -9.0,
+    "MAGHRIB": -9.0,
+    "ISHA": -9.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كروموفجراد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4147127,
+      "lngE5": 2565485
+     },
+     "catalogueIds": [
+      729896
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kubrat",
+   "point": {
+    "latE5": 4379658,
+    "lngE5": 2650063
+   },
+   "offsets": {
+    "FAJR": -12.0,
+    "SUNRISE": -12.0,
+    "DHUHR": -12.0,
+    "ASR": -12.0,
+    "MAGHRIB": -12.0,
+    "ISHA": -12.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "كوبرات",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4379658,
+      "lngE5": 2650063
+     },
+     "catalogueIds": [
+      729839
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "lovech",
+   "point": {
+    "latE5": 4313227,
+    "lngE5": 2471763
+   },
+   "offsets": {
+    "FAJR": -5.0,
+    "SUNRISE": -5.0,
+    "DHUHR": -5.0,
+    "ASR": -5.0,
+    "MAGHRIB": -5.0,
+    "ISHA": -5.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "لوفتش",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4313227,
+      "lngE5": 2471763
+     },
+     "catalogueIds": [
+      729559
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "madan",
+   "point": {
+    "latE5": 4149869,
+    "lngE5": 2493973
+   },
+   "offsets": {
+    "FAJR": -6.0,
+    "SUNRISE": -6.0,
+    "DHUHR": -6.0,
+    "ASR": -6.0,
+    "MAGHRIB": -6.0,
+    "ISHA": -6.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "مادان",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4149869,
+      "lngE5": 2493973
+     },
+     "catalogueIds": [
+      729439
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "montana",
+   "point": {
+    "latE5": 4341285,
+    "lngE5": 2322174
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "مونتانا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4341285,
+      "lngE5": 2322174
+     },
+     "catalogueIds": [
+      729114
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "nikopol",
+   "point": {
+    "latE5": 4370528,
+    "lngE5": 2489521
+   },
+   "offsets": {
+    "FAJR": -6.0,
+    "SUNRISE": -6.0,
+    "DHUHR": -6.0,
+    "ASR": -6.0,
+    "MAGHRIB": -6.0,
+    "ISHA": -6.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "نيكوبول",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4370528,
+      "lngE5": 2489521
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "nova-zagora",
+   "point": {
+    "latE5": 4248333,
+    "lngE5": 2601667
+   },
+   "offsets": {
+    "FAJR": -10.0,
+    "SUNRISE": -10.0,
+    "DHUHR": -10.0,
+    "ASR": -10.0,
+    "MAGHRIB": -10.0,
+    "ISHA": -10.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "زغرة الجديدة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4248333,
+      "lngE5": 2601667
+     },
+     "catalogueIds": [
+      728742
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "novi-pazar",
+   "point": {
+    "latE5": 4335000,
+    "lngE5": 2720000
+   },
+   "offsets": {
+    "FAJR": -15.0,
+    "SUNRISE": -15.0,
+    "DHUHR": -15.0,
+    "ASR": -15.0,
+    "MAGHRIB": -15.0,
+    "ISHA": -15.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "نوفي بازار",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4335000,
+      "lngE5": 2720000
+     },
+     "catalogueIds": [
+      728734
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "pazardzhik",
+   "point": {
+    "latE5": 4219934,
+    "lngE5": 2433318
+   },
+   "offsets": {
+    "FAJR": -4.0,
+    "SUNRISE": -4.0,
+    "DHUHR": -4.0,
+    "ASR": -4.0,
+    "MAGHRIB": -4.0,
+    "ISHA": -4.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بازارجيك",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4219934,
+      "lngE5": 2433318
+     },
+     "catalogueIds": [
+      728378
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "pleven",
+   "point": {
+    "latE5": 4341791,
+    "lngE5": 2461666
+   },
+   "offsets": {
+    "FAJR": -5.0,
+    "SUNRISE": -5.0,
+    "DHUHR": -5.0,
+    "ASR": -5.0,
+    "MAGHRIB": -5.0,
+    "ISHA": -5.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بلفن",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4341791,
+      "lngE5": 2461666
+     },
+     "catalogueIds": [
+      728203
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "plovdiv",
+   "point": {
+    "latE5": 4215387,
+    "lngE5": 2475001
+   },
+   "offsets": {
+    "FAJR": -5.0,
+    "SUNRISE": -5.0,
+    "DHUHR": -5.0,
+    "ASR": -5.0,
+    "MAGHRIB": -5.0,
+    "ISHA": -5.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بلوفديف",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4215387,
+      "lngE5": 2475001
+     },
+     "catalogueIds": [
+      728193
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "provadia",
+   "point": {
+    "latE5": 4318333,
+    "lngE5": 2743333
+   },
+   "offsets": {
+    "FAJR": -16.0,
+    "SUNRISE": -16.0,
+    "DHUHR": -16.0,
+    "ASR": -16.0,
+    "MAGHRIB": -16.0,
+    "ISHA": -16.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "بروفاديا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4318333,
+      "lngE5": 2743333
+     },
+     "catalogueIds": [
+      727921
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "razgrad",
+   "point": {
+    "latE5": 4353331,
+    "lngE5": 2651849
+   },
+   "offsets": {
+    "FAJR": -12.0,
+    "SUNRISE": -12.0,
+    "DHUHR": -12.0,
+    "ASR": -12.0,
+    "MAGHRIB": -12.0,
+    "ISHA": -12.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "رازغراد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4353331,
+      "lngE5": 2651849
+     },
+     "catalogueIds": [
+      727696
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ruse",
+   "point": {
+    "latE5": 4384872,
+    "lngE5": 2595340
+   },
+   "offsets": {
+    "FAJR": -10.0,
+    "SUNRISE": -10.0,
+    "DHUHR": -10.0,
+    "ASR": -10.0,
+    "MAGHRIB": -10.0,
+    "ISHA": -10.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "روسه",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4384872,
+      "lngE5": 2595340
+     },
+     "catalogueIds": [
+      727523
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "shumen",
+   "point": {
+    "latE5": 4327064,
+    "lngE5": 2692286
+   },
+   "offsets": {
+    "FAJR": -14.0,
+    "SUNRISE": -14.0,
+    "DHUHR": -14.0,
+    "ASR": -14.0,
+    "MAGHRIB": -14.0,
+    "ISHA": -14.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "شومن",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4327064,
+      "lngE5": 2692286
+     },
+     "catalogueIds": [
+      727233
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "silistra",
+   "point": {
+    "latE5": 4411710,
+    "lngE5": 2726056
+   },
+   "offsets": {
+    "FAJR": -16.0,
+    "SUNRISE": -16.0,
+    "DHUHR": -16.0,
+    "ASR": -16.0,
+    "MAGHRIB": -16.0,
+    "ISHA": -16.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "سيليسترا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4411710,
+      "lngE5": 2726056
+     },
+     "catalogueIds": [
+      727221
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "sitovo",
+   "point": {
+    "latE5": 4402730,
+    "lngE5": 2701982
+   },
+   "offsets": {
+    "FAJR": -14.0,
+    "SUNRISE": -14.0,
+    "DHUHR": -14.0,
+    "ASR": -14.0,
+    "MAGHRIB": -14.0,
+    "ISHA": -14.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "سيتوفو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4402730,
+      "lngE5": 2701982
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "sliven",
+   "point": {
+    "latE5": 4268607,
+    "lngE5": 2632558
+   },
+   "offsets": {
+    "FAJR": -12.0,
+    "SUNRISE": -12.0,
+    "DHUHR": -12.0,
+    "ASR": -12.0,
+    "MAGHRIB": -12.0,
+    "ISHA": -12.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "سليفن",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4268607,
+      "lngE5": 2632558
+     },
+     "catalogueIds": [
+      727079
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "smolyan",
+   "point": {
+    "latE5": 4157439,
+    "lngE5": 2471204
+   },
+   "offsets": {
+    "FAJR": -5.0,
+    "SUNRISE": -5.0,
+    "DHUHR": -5.0,
+    "ASR": -5.0,
+    "MAGHRIB": -5.0,
+    "ISHA": -5.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "سمولين",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4157439,
+      "lngE5": 2471204
+     },
+     "catalogueIds": [
+      727030
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "stara-zagora",
+   "point": {
+    "latE5": 4243205,
+    "lngE5": 2564262
+   },
+   "offsets": {
+    "FAJR": -9.0,
+    "SUNRISE": -9.0,
+    "DHUHR": -9.0,
+    "ASR": -9.0,
+    "MAGHRIB": -9.0,
+    "ISHA": -9.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "ستارا زاغورا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4243205,
+      "lngE5": 2564262
+     },
+     "catalogueIds": [
+      726848
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "svishtov",
+   "point": {
+    "latE5": 4361875,
+    "lngE5": 2535033
+   },
+   "offsets": {
+    "FAJR": -8.0,
+    "SUNRISE": -8.0,
+    "DHUHR": -8.0,
+    "ASR": -8.0,
+    "MAGHRIB": -8.0,
+    "ISHA": -8.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "سفيشتوف",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4361875,
+      "lngE5": 2535033
+     },
+     "catalogueIds": [
+      726534
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "targovishte",
+   "point": {
+    "latE5": 4325120,
+    "lngE5": 2657215
+   },
+   "offsets": {
+    "FAJR": -13.0,
+    "SUNRISE": -13.0,
+    "DHUHR": -13.0,
+    "ASR": -13.0,
+    "MAGHRIB": -13.0,
+    "ISHA": -13.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "تارغوفيشته",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4325120,
+      "lngE5": 2657215
+     },
+     "catalogueIds": [
+      726174
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "tvarditsa",
+   "point": {
+    "latE5": 4270000,
+    "lngE5": 2590000
+   },
+   "offsets": {
+    "FAJR": -10.0,
+    "SUNRISE": -10.0,
+    "DHUHR": -10.0,
+    "ASR": -10.0,
+    "MAGHRIB": -10.0,
+    "ISHA": -10.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "تفارديتسا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4270000,
+      "lngE5": 2590000
+     },
+     "catalogueIds": [
+      726130
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "varna",
+   "point": {
+    "latE5": 4321912,
+    "lngE5": 2791024
+   },
+   "offsets": {
+    "FAJR": -18.0,
+    "SUNRISE": -18.0,
+    "DHUHR": -18.0,
+    "ASR": -18.0,
+    "MAGHRIB": -18.0,
+    "ISHA": -18.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "فارنا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4321912,
+      "lngE5": 2791024
+     },
+     "catalogueIds": [
+      726050
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "veliki-preslav",
+   "point": {
+    "latE5": 4316667,
+    "lngE5": 2681667
+   },
+   "offsets": {
+    "FAJR": -13.0,
+    "SUNRISE": -13.0,
+    "DHUHR": -13.0,
+    "ASR": -13.0,
+    "MAGHRIB": -13.0,
+    "ISHA": -13.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "فيليكي بريسلاف",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4316667,
+      "lngE5": 2681667
+     },
+     "catalogueIds": [
+      727987
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "veliko-tarnovo",
+   "point": {
+    "latE5": 4308124,
+    "lngE5": 2562904
+   },
+   "offsets": {
+    "FAJR": -9.0,
+    "SUNRISE": -9.0,
+    "DHUHR": -9.0,
+    "ASR": -9.0,
+    "MAGHRIB": -9.0,
+    "ISHA": -9.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "فيليكو تيرنوفو",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4308124,
+      "lngE5": 2562904
+     },
+     "catalogueIds": [
+      725993
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "velingrad",
+   "point": {
+    "latE5": 4202754,
+    "lngE5": 2399155
+   },
+   "offsets": {
+    "FAJR": -3.0,
+    "SUNRISE": -3.0,
+    "DHUHR": -3.0,
+    "ASR": -3.0,
+    "MAGHRIB": -3.0,
+    "ISHA": -3.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "فيلينغراد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4202754,
+      "lngE5": 2399155
+     },
+     "catalogueIds": [
+      725988
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "yakoruda",
+   "point": {
+    "latE5": 4202528,
+    "lngE5": 2368417
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "ياكورودا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4202528,
+      "lngE5": 2368417
+     },
+     "catalogueIds": [
+      725586
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "yambol",
+   "point": {
+    "latE5": 4248243,
+    "lngE5": 2650006
+   },
+   "offsets": {
+    "FAJR": -12.0,
+    "SUNRISE": -12.0,
+    "DHUHR": -12.0,
+    "ASR": -12.0,
+    "MAGHRIB": -12.0,
+    "ISHA": -12.0
+   },
+   "baseZoneId": "sofia",
+   "nameAr": "يامبول",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4248243,
+      "lngE5": 2650006
+     },
+     "catalogueIds": [
+      725578
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "The Chief Mufti's Office's tables, 2026-10: Sofia, held out by alternate days",
+      "from": "2026-10-01",
+      "to": "2026-10-31",
+      "days": 31,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9355,
+     "SUNRISE": 0.9032,
+     "DHUHR": 0.871,
+     "ASR": 0.7742,
+     "MAGHRIB": 0.9355,
+     "ISHA": 0.871
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

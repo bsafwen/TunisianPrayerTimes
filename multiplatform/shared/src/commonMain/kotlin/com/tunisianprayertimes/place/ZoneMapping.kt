@@ -57,10 +57,11 @@ object ZoneMapping {
         if (zones.namedFirst) named(place, candidates)?.let { return it }
         return when (zones.mapping) {
             MappingKind.EXACT -> null
-            // One table; a zone that lists admin areas covers only those (Rhône: département 69, else exact coordinates).
+            // One table; a zone that lists admin areas covers only those (Rhône: département 69, else exact coordinates),
+            // and MIZ Zagreb's covers Croatia's Zagreb area only (8.8; elsewhere the method at the place).
             MappingKind.NATIONAL -> candidates.firstOrNull { zone ->
                 (zone.admin1.isEmpty() || place.admin1 in zone.admin1) && (zone.admin2.isEmpty() || place.admin2 in zone.admin2)
-            }
+            }?.takeUnless { zones.authority == "hr_miz_zagreb" && !CountryMethodDefaults.inZagrebArea(place.point) }
             MappingKind.NEAREST -> nearestWithRules(place, method, zones, candidates)
             MappingKind.NEAREST_LOCAL -> candidates
                 .filter { distance(place, it.point) <= it.reachKm }
@@ -109,8 +110,9 @@ object ZoneMapping {
 
     private fun distance(place: PrayerPlace.Coordinates, p: LatLngE5) = CountryMethodDefaults.distanceKm(place.point, p)
 
+    /** The nearest zone in reach; at equal distance the one with the smaller reach (a town inside its valley's disc). */
     private fun nearest(place: PrayerPlace.Coordinates, zones: List<OfficialZone>): OfficialZone? =
-        zones.filter { distance(place, it.point) <= it.reachKm }.minByOrNull { distance(place, it.point) }
+        zones.filter { distance(place, it.point) <= it.reachKm }.minWithOrNull(compareBy({ distance(place, it.point) }, { it.reachKm }))
 
     /** NEAREST with the rules some authorities add: by province, named places first, Yemen's terrain class, tiers. */
     private fun nearestWithRules(place: PrayerPlace.Coordinates, method: PrayerMethod, zones: AuthorityZones, all: List<OfficialZone>): OfficialZone? {

@@ -1,0 +1,288 @@
+{
+ "schema": 1,
+ "authority": "dum_rf",
+ "methodId": "dum_rf",
+ "country": "RU",
+ "mapping": "NATIONAL",
+ "source": "The Spiritual Administration of Muslims of the Russian Federation (dumrf.ru), «Время намазов по Москве и Московской области»: one monthly table for Moscow and Moscow Oblast",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "DUM RF's monthly Moscow sheets (dumrf.ru and the Wayback Machine), 2025-02, 2025-06, 2025-07, 2025-08, 2025-10, 2025-11, 2025-12, 2026-01, 2026-02, 2026-03, 2026-04, 2026-05, 2026-06, 2026-07, 2026-08, 2026-10, 2026-11: the distinct sheets read at the reference year 2025",
+    "from": "2025-12-01",
+    "to": "2026-11-30",
+    "days": 335,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "DUM RF's monthly Moscow sheets (dumrf.ru and the Wayback Machine), 2025-02, 2025-06, 2025-07, 2025-08, 2025-10, 2025-11, 2025-12, 2026-01, 2026-02, 2026-03, 2026-04, 2026-05, 2026-06, 2026-07, 2026-08, 2026-10, 2026-11, held out by month, each at its own year",
+    "from": "2025-02-01",
+    "to": "2026-11-30",
+    "days": 516,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.7306,
+   "SUNRISE": 0.7016,
+   "DHUHR": 0.9612,
+   "ASR": 0.7926,
+   "MAGHRIB": 0.686,
+   "ISHA": 0.688
+  },
+  "within1": {
+   "FAJR": 0.9729,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 0.969
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    31,
+    56,
+    31,
+    30,
+    31,
+    60,
+    62,
+    62,
+    0,
+    62,
+    60,
+    31
+   ],
+   "SUNRISE": [
+    31,
+    56,
+    31,
+    30,
+    31,
+    60,
+    62,
+    62,
+    0,
+    62,
+    60,
+    31
+   ],
+   "DHUHR": [
+    31,
+    56,
+    31,
+    30,
+    31,
+    60,
+    62,
+    62,
+    0,
+    62,
+    60,
+    31
+   ],
+   "ASR": [
+    31,
+    56,
+    31,
+    30,
+    31,
+    60,
+    62,
+    62,
+    0,
+    62,
+    60,
+    31
+   ],
+   "MAGHRIB": [
+    31,
+    56,
+    31,
+    30,
+    31,
+    60,
+    62,
+    62,
+    0,
+    62,
+    60,
+    31
+   ],
+   "ISHA": [
+    31,
+    56,
+    31,
+    30,
+    31,
+    60,
+    62,
+    62,
+    0,
+    62,
+    60,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 4
+ },
+ "zones": [
+  {
+   "id": "moscow",
+   "point": {
+    "latE5": 5575204,
+    "lngE5": 3761781
+   },
+   "nameAr": "موسكو",
+   "admin1": [
+    "48",
+    "47"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 5575204,
+      "lngE5": 3761781
+     },
+     "catalogueIds": [
+      524901
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "DUM RF's monthly Moscow sheets (dumrf.ru and the Wayback Machine), 2025-02, 2025-06, 2025-07, 2025-08, 2025-10, 2025-11, 2025-12, 2026-01, 2026-02, 2026-03, 2026-04, 2026-05, 2026-06, 2026-07, 2026-08, 2026-10, 2026-11: the distinct sheets read at the reference year 2025",
+      "from": "2025-12-01",
+      "to": "2026-11-30",
+      "days": 335,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "DUM RF's monthly Moscow sheets (dumrf.ru and the Wayback Machine), 2025-02, 2025-06, 2025-07, 2025-08, 2025-10, 2025-11, 2025-12, 2026-01, 2026-02, 2026-03, 2026-04, 2026-05, 2026-06, 2026-07, 2026-08, 2026-10, 2026-11, held out by month, each at its own year",
+      "from": "2025-02-01",
+      "to": "2026-11-30",
+      "days": 516,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7306,
+     "SUNRISE": 0.7016,
+     "DHUHR": 0.9612,
+     "ASR": 0.7926,
+     "MAGHRIB": 0.686,
+     "ISHA": 0.688
+    },
+    "within1": {
+     "FAJR": 0.9729,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.969
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      56,
+      31,
+      30,
+      31,
+      60,
+      62,
+      62,
+      0,
+      62,
+      60,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      56,
+      31,
+      30,
+      31,
+      60,
+      62,
+      62,
+      0,
+      62,
+      60,
+      31
+     ],
+     "DHUHR": [
+      31,
+      56,
+      31,
+      30,
+      31,
+      60,
+      62,
+      62,
+      0,
+      62,
+      60,
+      31
+     ],
+     "ASR": [
+      31,
+      56,
+      31,
+      30,
+      31,
+      60,
+      62,
+      62,
+      0,
+      62,
+      60,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      56,
+      31,
+      30,
+      31,
+      60,
+      62,
+      62,
+      0,
+      62,
+      60,
+      31
+     ],
+     "ISHA": [
+      31,
+      56,
+      31,
+      30,
+      31,
+      60,
+      62,
+      62,
+      0,
+      62,
+      60,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 4
+   }
+  }
+ ]
+}

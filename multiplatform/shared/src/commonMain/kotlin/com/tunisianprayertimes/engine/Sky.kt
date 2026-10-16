@@ -94,7 +94,16 @@ internal class Sky(val site: Site, val date: LocalDate, val zoneId: ZoneId, val 
             val equation = SolarEngine.sun(model, c.jd0 + 9.0 / 24.0)
             fixed(SunState(declination.declinationDeg, equation.equationOfTimeMin, equation.distanceAu))
         }
+        SunEvaluation.DAILY_LOCAL_NOON -> fixed(SolarEngine.sun(model, localNoonJd(c)))
+        SunEvaluation.EVENT_DECLINATION -> {
+            val noon = SolarEngine.sun(model, localNoonJd(c))
+            SunAt { jd -> SunState(instantSun.at(jd).declinationDeg, noon.equationOfTimeMin, noon.distanceAu) }
+        }
     }
+
+    /** S4: 12:00 local civil time of [c]'s civil date in the place's zone. */
+    private fun localNoonJd(c: SolarCycle): Double =
+        SolarEngine.julianDay(ZonedDateTime.of(c.date, LocalTime.NOON, zoneId).toInstant().epochSecond.toDouble())
 
     private fun fixed(state: SunState) = SunAt { state }
 
@@ -138,13 +147,13 @@ internal class Sky(val site: Site, val date: LocalDate, val zoneId: ZoneId, val 
     val sunset: Solved by lazy { sunset(cycle) }
 
     /**
-     * Fajr (side −1, morning point) or Isha (+1, evening point) at a depression angle: the method's own
-     * ([scaled]: E17's twilight latitude, E4's evaluation, E3's dip), or, for E19's bounds, the plain
-     * angle at the real latitude and the sun at its own instant.
+     * Fajr (side −1, morning point) or Isha (+1, evening point, or [at], `IshaRule.Angle.at`) at a depression
+     * angle: the method's own ([scaled]: E17's twilight latitude, E4's evaluation, E3's dip), or, for E19's
+     * bounds, the plain angle at the real latitude and the sun at its own instant.
      */
-    fun twilight(event: TimeEvent, angleDeg: Double, scaled: Boolean = true): Solved {
+    fun twilight(event: TimeEvent, angleDeg: Double, scaled: Boolean = true, at: LatLngE5? = null): Solved {
         val morning = event == TimeEvent.FAJR
-        val point = if (morning) site.morning else site.evening
+        val point = at?.let(Point::of) ?: if (morning) site.morning else site.evening
         val latitude = point.latitude * if (scaled) method.twilightLatitudeScale else 1.0
         val dip = if (scaled && method.dipOnTwilight) {
             HorizonAltitude.geometricDipDeg(if (morning) site.morningElevationM else site.eveningElevationM)

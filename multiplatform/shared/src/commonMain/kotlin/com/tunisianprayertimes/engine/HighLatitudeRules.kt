@@ -55,7 +55,8 @@ internal class HighLatitudeRules(
                 moved(angleTime, if (base == null) curve else maxOf(base, curve), RuleName.MOONSIGHTING_SEASONAL)
             }
             HighLatitudeRule.DiyanetTakdir -> takdir(Side.FAJR, angleTime, angleDeg)
-            HighLatitudeRule.DumRf -> night?.let { later(angleTime, sunrise - 0.30 * it.seconds, RuleName.DUM_RF) } ?: Bounded(angleTime, null)
+            // DUM RF's night: 24 h minus the same date's day (H4), as its tables take it.
+            HighLatitudeRule.DumRf -> sunset?.let { set -> later(angleTime, sunrise - 0.30 * (DAY_SECONDS - (set - sunrise)), RuleName.DUM_RF) } ?: Bounded(angleTime, null)
             HighLatitudeRule.DumRt ->
                 if (night != null && staysAbove18(night)) moved(angleTime, sunrise - 2 * 3600.0, RuleName.DUM_RT) else Bounded(angleTime, null)
             is HighLatitudeRule.SummerForm ->
@@ -90,7 +91,7 @@ internal class HighLatitudeRules(
                 moved(angleTime, if (base == null) curve else minOf(base, curve), RuleName.MOONSIGHTING_SEASONAL)
             }
             HighLatitudeRule.DiyanetTakdir -> takdir(Side.ISHA, angleTime, angleDeg)
-            HighLatitudeRule.DumRf -> night?.let { earlier(angleTime, sunset + dumRfShare(date) * it.seconds, RuleName.DUM_RF) } ?: Bounded(angleTime, null)
+            HighLatitudeRule.DumRf -> sunrise?.let { rise -> earlier(angleTime, sunset + dumRfShare(date) * (DAY_SECONDS - (sunset - rise)), RuleName.DUM_RF) } ?: Bounded(angleTime, null)
             HighLatitudeRule.DumRt ->
                 if (night != null && staysAbove18(night)) moved(angleTime, sunset + 90 * 60.0, RuleName.DUM_RT) else Bounded(angleTime, null)
             is HighLatitudeRule.SummerForm -> {
@@ -236,6 +237,7 @@ internal class HighLatitudeRules(
         const val RAMP_SECONDS = 5 * 60.0
         const val MAX_SEARCH_DAYS = 200
         private const val MOVED = 1e-3
+        private const val DAY_SECONDS = 86_400.0
 
         /**
          * DUM RF's Isha share of the night in 2026 (7.4): 0.30 from 1 to 30 June, 0.30 − n/240 in the n-th block
@@ -255,19 +257,15 @@ internal class HighLatitudeRules(
 }
 
 /**
- * `irn` (7.4): Islamic Council Norway's rules. South of 63.56°N its summer rule; from 63.56°N its caps
- * at solar midnight ∓ 3 h (the Mecca cycle of the polar seasons is a polar rule, [IrnMeccaCycle]). The
- * switch days follow the rule of 7.4 unless the mapped zone stores its own (`switchDays`, 6.5); they are
- * provisional until fitted on IRN's 2026 tables.
+ * `irn` (README H7): Islamic Council Norway's southern summer rule, south of 63.56°N; from there H8 ([IrnNorth])
+ * sets the times. The switch days follow the rules fitted on IRN's 2026 tables unless the mapped zone stores its
+ * own (`switchDays`, 6.5: Fajr's at the entries no rule fits).
  */
 internal class IrnRule(private val season: Season, private val zone: ZoneId, private val method: PrayerMethod) {
     private val south = abs(season.site.main.latitude) < IRN_SOUTH_LIMIT
 
     fun isha(date: LocalDate, angleTime: Double?, sunset: Double, night: Night?): Bounded {
-        if (!south) {
-            val cap = night?.let { it.lowestPoint - 3 * 3600.0 } ?: return Bounded(angleTime, null)
-            return if (angleTime == null || angleTime > cap) Bounded(cap, RuleName.IRN_SOUTHERN_SUMMER) else Bounded(angleTime, null)
-        }
+        if (!south) return Bounded(angleTime, null)  // H8 ([IrnNorth]) sets the northern times
         val (first, last) = season.site.zone?.switchDays?.get(TimeEvent.ISHA)?.let { it.first to it.last } ?: ishaSwitch(date.year)
         val day = commonDay(date)
         if (day < first || day > last) return Bounded(angleTime, null)
@@ -286,15 +284,12 @@ internal class IrnRule(private val season: Season, private val zone: ZoneId, pri
     }
 
     fun fajr(date: LocalDate, angleTime: Double?, sunrise: Double, night: Night?): Bounded {
-        if (!south) {
-            val cap = night?.let { it.lowestPoint + 3 * 3600.0 } ?: return Bounded(angleTime, null)
-            return if (angleTime == null || angleTime < cap) Bounded(cap, RuleName.IRN_SOUTHERN_SUMMER) else Bounded(angleTime, null)
-        }
+        if (!south) return Bounded(angleTime, null)  // H8 ([IrnNorth]) sets the northern times
         val (first, last) = season.site.zone?.switchDays?.get(TimeEvent.FAJR)?.let { it.first to it.last } ?: fajrSwitch(date.year)
         val day = commonDay(date)
         if (day < first || day > last) return Bounded(angleTime, null)
-        // Held at the clock time of the last 16° Fajr before the season, or from 21 June of the first one after it.
-        val heldFrom = if (day < SOLSTICE_DAY) onDay(date.year, first - 1) else onDay(date.year, last + 1)
+        // Held at the clock time of the last 16° Fajr before the season through 21 June, then of the first one after it.
+        val heldFrom = if (day <= SOLSTICE_DAY) onDay(date.year, first - 1) else onDay(date.year, last + 1)
         val held = fajrAt16(heldFrom) ?: return Bounded(angleTime, null)
         val clock = java.time.Instant.ofEpochSecond(held.toLong()).atZone(zone).toLocalTime()
         val atClock = ZonedDateTime.of(date, clock, zone).toInstant().epochSecond.toDouble()
@@ -304,13 +299,15 @@ internal class IrnRule(private val season: Season, private val zone: ZoneId, pri
     private fun ishaAt15(d: LocalDate): Double? = season.day(d).ishaAngle
     private fun fajrAt16(d: LocalDate): Double? = season.day(d).fajrAngle
 
-    /** The first day (of a common year) whose 15° Isha passes 20:00 UTC, and its mirror about 20 June. */
+    /**
+     * The day after the first day (of a common year, 32–172) whose angle Isha is absent or at or after 20:00 UTC,
+     * and the day before the last such day (172–365), each side on its own (all of IRN's 255 southern tables).
+     */
     private fun ishaSwitch(year: Int): Pair<Int, Int> {
-        val first = (32..SOLSTICE_DAY).firstOrNull { day ->
-            val isha = ishaAt15(onDay(year, day))
-            isha == null || ((isha / 3600.0) % 24 + 24) % 24 >= 20.0
-        } ?: return Int.MAX_VALUE to Int.MIN_VALUE
-        return first to (MIRROR - first)
+        fun late(day: Int) = ishaAt15(onDay(year, day)).let { it == null || ((it / 3600.0) % 24 + 24) % 24 >= 20.0 }
+        val first = (32..SOLSTICE_DAY).firstOrNull(::late) ?: return Int.MAX_VALUE to Int.MIN_VALUE
+        val last = (365 downTo SOLSTICE_DAY).firstOrNull(::late) ?: return Int.MAX_VALUE to Int.MIN_VALUE
+        return (first + 1) to (last - 1)
     }
 
     /** The first day whose 16° Fajr is 153 min or more before sunrise, and its mirror about 20 June. */

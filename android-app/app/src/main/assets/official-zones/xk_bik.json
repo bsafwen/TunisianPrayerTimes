@@ -1,0 +1,1810 @@
+{
+ "schema": 1,
+ "authority": "xk_bik",
+ "methodId": "xk_bik",
+ "country": "XK",
+ "mapping": "LISTED_PLACES",
+ "source": "The Presidency of the Islamic Community of Kosovo (BIK): its Takvim 2026, one table for Kosovo and the Preševo Valley at 42.5 N 21 E, and its seven towns' published shifts («Diferenca e vendeve»)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+    "from": "2026-01-01",
+    "to": "2029-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+    "from": "2026-01-01",
+    "to": "2029-12-31",
+    "days": 1460,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.5637,
+   "SUNRISE": 0.6616,
+   "DHUHR": 0.8185,
+   "ASR": 0.726,
+   "MAGHRIB": 0.6726,
+   "ISHA": 0.5815
+  },
+  "within1": {
+   "FAJR": 0.9623,
+   "SUNRISE": 0.9897,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 0.9993,
+   "ISHA": 0.9904
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    124,
+    112,
+    124,
+    120,
+    124,
+    120,
+    124,
+    124,
+    120,
+    124,
+    120,
+    124
+   ],
+   "SUNRISE": [
+    124,
+    112,
+    124,
+    120,
+    124,
+    120,
+    124,
+    124,
+    120,
+    124,
+    120,
+    124
+   ],
+   "DHUHR": [
+    124,
+    112,
+    124,
+    120,
+    124,
+    120,
+    124,
+    124,
+    120,
+    124,
+    120,
+    124
+   ],
+   "ASR": [
+    124,
+    112,
+    124,
+    120,
+    124,
+    120,
+    124,
+    124,
+    120,
+    124,
+    120,
+    124
+   ],
+   "MAGHRIB": [
+    124,
+    112,
+    124,
+    120,
+    124,
+    120,
+    124,
+    124,
+    120,
+    124,
+    120,
+    124
+   ],
+   "ISHA": [
+    124,
+    112,
+    124,
+    120,
+    124,
+    120,
+    124,
+    124,
+    120,
+    124,
+    120,
+    124
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "kosovo",
+   "point": {
+    "latE5": 4250000,
+    "lngE5": 2100000
+   },
+   "nameAr": "كوسوفو",
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "sharr",
+   "nameAr": "شار (دراغاش)",
+   "point": {
+    "latE5": 4206158,
+    "lngE5": 2065337
+   },
+   "offsets": {
+    "FAJR": 2.0,
+    "SUNRISE": 2.0,
+    "DHUHR": 2.0,
+    "ASR": 2.0,
+    "MAGHRIB": 2.0,
+    "ISHA": 2.0
+   },
+   "baseZoneId": "kosovo",
+   "reachKm": 3.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4206158,
+      "lngE5": 2065337
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "ferizaj",
+   "nameAr": "فيريزاي",
+   "point": {
+    "latE5": 4236822,
+    "lngE5": 2115328
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "kosovo",
+   "reachKm": 4.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4236822,
+      "lngE5": 2115328
+     },
+     "catalogueIds": [
+      784759
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "gjilan",
+   "nameAr": "جيلان",
+   "point": {
+    "latE5": 4246352,
+    "lngE5": 2146936
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "kosovo",
+   "reachKm": 3.5,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4246352,
+      "lngE5": 2146936
+     },
+     "catalogueIds": [
+      790674
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "prishtina",
+   "nameAr": "بريشتينا",
+   "point": {
+    "latE5": 4266388,
+    "lngE5": 2116408
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "kosovo",
+   "reachKm": 7.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4266388,
+      "lngE5": 2116408
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "podujeve",
+   "nameAr": "بودوييفو",
+   "point": {
+    "latE5": 4290780,
+    "lngE5": 2119253
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "kosovo",
+   "reachKm": 4.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4290780,
+      "lngE5": 2119253
+     },
+     "catalogueIds": [
+      786950
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "vushtrri",
+   "nameAr": "فوشتري",
+   "point": {
+    "latE5": 4282192,
+    "lngE5": 2096744
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "kosovo",
+   "reachKm": 6.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4282192,
+      "lngE5": 2096744
+     },
+     "catalogueIds": [
+      784097
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "presevo",
+   "nameAr": "بريشيفو",
+   "point": {
+    "latE5": 4230920,
+    "lngE5": 2164970
+   },
+   "offsets": {
+    "FAJR": -2.0,
+    "SUNRISE": -2.0,
+    "DHUHR": -2.0,
+    "ASR": -2.0,
+    "MAGHRIB": -2.0,
+    "ISHA": -2.0
+   },
+   "baseZoneId": "kosovo",
+   "reachKm": 5.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4230920,
+      "lngE5": 2164970
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "country": "RS"
+  },
+  {
+   "id": "valley-presevo",
+   "nameAr": "وادي بريشيفو",
+   "point": {
+    "latE5": 4230920,
+    "lngE5": 2164970
+   },
+   "country": "RS",
+   "baseZoneId": "kosovo",
+   "reachKm": 15.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4230920,
+      "lngE5": 2164970
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "valley-bujanovac",
+   "nameAr": "وادي بريشيفو",
+   "point": {
+    "latE5": 4245980,
+    "lngE5": 2176600
+   },
+   "country": "RS",
+   "baseZoneId": "kosovo",
+   "reachKm": 13.5,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4245980,
+      "lngE5": 2176600
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "valley-medvedja",
+   "nameAr": "وادي بريشيفو",
+   "point": {
+    "latE5": 4284330,
+    "lngE5": 2158530
+   },
+   "country": "RS",
+   "baseZoneId": "kosovo",
+   "reachKm": 13.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4284330,
+      "lngE5": 2158530
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "BIK Takvim 2026 (perpetual: the 2025 edition is equal by date), read by date in 2026-2029, held out by alternate rows",
+      "from": "2026-01-01",
+      "to": "2029-12-31",
+      "days": 1460,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5637,
+     "SUNRISE": 0.6616,
+     "DHUHR": 0.8185,
+     "ASR": 0.726,
+     "MAGHRIB": 0.6726,
+     "ISHA": 0.5815
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 0.9897,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9993,
+     "ISHA": 0.9904
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "SUNRISE": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "DHUHR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ASR": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "MAGHRIB": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ],
+     "ISHA": [
+      124,
+      112,
+      124,
+      120,
+      124,
+      120,
+      124,
+      124,
+      120,
+      124,
+      120,
+      124
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  }
+ ]
+}

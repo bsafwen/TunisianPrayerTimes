@@ -73,6 +73,7 @@ class PlaceResolutionTest {
 
     @Test
     fun aFixAbroadIsIgnoredWhileItsRegionIsClosed() {
+        PrefsManager.setRegionOpen(context, arabLeague = false)  // development builds open it by default
         val result = PlaceResolution.resolveAbroad(context, 24.70, 46.70, network = "sa", phoneZone = "Asia/Riyadh")
         assertEquals(DelegationLocationResult.RegionClosed("SA"), result)
     }
@@ -87,6 +88,20 @@ class PlaceResolutionTest {
         assertEquals(612, abroad.place.elevationM)
         assertEquals(LatLngE5.of(24.70, 46.70), abroad.place.point) // stored rounded to 0.01°
         assertEquals("قرب الرياض", abroad.label)
+    }
+
+    @Test
+    fun aFixInNorwayTakesItsMunicipalityFromTheNearestRowOrIrnEntryPoint() {
+        // 6.8: Lesja's IRN entry point (municipality 3431) lies 112 km from the nearest catalogue row (Røros, 5025);
+        // a fix there takes its own municipality, so ADMIN_AREA gives it Lesja's table, not Røros's.
+        val roros = row(3141310, 62.57451, 11.38427, "NO", "Europe/Oslo", "Røros", "روروس", 3598, admin2 = "5025")
+        val lesja = CityRef(-10_000_000L, LatLngE5.of(62.11463, 9.44037), "NO", "Europe/Oslo", admin2 = "3431")
+        PlaceCatalogue.setForTests(PlaceCatalogue.of(listOf(roros), entryPoints = { if (it == "NO") listOf(lesja) else emptyList() }))
+        PrefsManager.setRegionOpen(context, europe = true)
+        val result = PlaceResolution.resolveAbroad(context, 62.115, 9.441, network = "no", phoneZone = "Europe/Oslo")
+        val place = (result as DelegationLocationResult.Abroad).place
+        assertEquals("NO", place.countryCode)
+        assertEquals("3431", place.admin2)
     }
 
     @Test

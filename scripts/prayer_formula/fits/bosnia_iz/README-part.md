@@ -42,8 +42,10 @@ the fitted point: Dhuhr 1,232 of 1,461 (the event instant 1,227), sunrise 552 (4
   15 km; within 60 km where the month split shows the wider search predicts the left-out months better (Tutin only:
   vaktija.ba prints Sjenica's differences for it, and its point lies 55 km away, beside Sjenica's).
 - Montenegro's five vaktija.ba towns, published offsets on all six times all year (Pljevlja − 3, Bijelo Polje − 5,
-  Gusinje and Plav − 6, Rožaje − 7), `reachKm` 8 (8.8's starting value); elsewhere in Montenegro the mapping builds
-  the longitude-shift zone on the phone (6.2).
+  Gusinje and Plav − 6, Rožaje − 7), each `reachKm` the town's extent (M3, 2026-10-16: the farthest vertex of its
+  OpenStreetMap boundary from the zone's point, rounded up to 0.5 km, `fits/town_extents.py`): Bijelo Polje 6, Pljevlja
+  3, Plav 2, Rožaje 4 km, and Gusinje, a point only in OpenStreetMap, 3.5 km (the median of the other four, 3.42 km);
+  8 km each before. Elsewhere in Montenegro the mapping builds the longitude-shift zone on the phone (6.2).
 - `nameAr` are transliterations of the Takvim's names (Hlivno as «ليفنو»), to be replaced by the catalogue's Arabic
   labels if M5 has better ones; catalogue ids are left to M5.
 
@@ -95,4 +97,4 @@ column; the rule gives 15–16 at any point near Koper. Its 28 days are counted 
    point, and a sunrise-only point would cost the 2025 Fajr its fit (E6 couples Fajr and sunrise).
 3. vaktija.ba's six Sandžak towns follow Table 1 only to 84.7 %: reproducing them exactly needs their printed monthly
    differences (12 × 3 whole minutes per town), which 8.8 chose not to store.
-4. Montenegro's town reach (8 km) and every zone's catalogue ids wait for M5's town extents and catalogue.
+4. Every zone's catalogue ids are filled by `scripts/places/match_named_places.py` after each run of this fit.
