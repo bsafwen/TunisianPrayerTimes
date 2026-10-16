@@ -208,7 +208,24 @@ class DelegationLocatorTest {
     }
 
     @Test
-    fun `silent update ignores location outside Tunisia`() = runBlocking {
+    fun `silent update outside Tunisia keeps the delegation while its region is closed`() = runBlocking {
+        // Plan 2: a fix in a region whose switch is off is ignored (development builds open both by default).
+        PrefsManager.setRegionOpen(context, europe = false)
+        PrefsManager.setDelegationId(context, 386)
+        DelegationLocator.locationProvider = FakeLocationProvider(
+            testLocation(lat = 48.8566, lng = 2.3522)
+        )
+
+        val outcome = DelegationLocator.updatePlaceFromLastLocation(context)
+
+        assertEquals(DelegationLocator.FixOutcome.UNCHANGED, outcome)
+        assertEquals(386, PrefsManager.getDelegationId(context))
+    }
+
+    @Test
+    fun `silent update in an open region abroad stores the place`() = runBlocking {
+        // Plan 6.8: no outside-Tunisia gate; a fix in Paris becomes a place abroad.
+        PrefsManager.setRegionOpen(context, europe = true)
         PrefsManager.setDelegationId(context, 386)
         DelegationLocator.locationProvider = FakeLocationProvider(
             testLocation(lat = 48.8566, lng = 2.3522)
@@ -216,8 +233,10 @@ class DelegationLocatorTest {
 
         val changed = DelegationLocator.updateDelegationFromLastLocation(context)
 
-        assertFalse(changed)
-        assertEquals(386, PrefsManager.getDelegationId(context))
+        assertTrue(changed)
+        val place = PrefsManager.getPlace(context) as com.tunisianprayertimes.place.PrayerPlace.Coordinates
+        assertEquals("FR", place.countryCode)
+        assertEquals("Europe/Paris", place.zoneId)
     }
 
     @Test

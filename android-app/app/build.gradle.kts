@@ -109,7 +109,12 @@ android {
             isIncludeAndroidResources = true
             // Prayer times are instants in the place's zone (plan 6.6); the tests read Tunisian times as the
             // phone's clock, so the phone is in Tunisia unless a test sets another zone (CI runs in UTC).
-            all { it.systemProperty("user.timezone", "Africa/Tunis") }
+            // One Robolectric sandbox per SDK level (26 to 35) outgrows Gradle's default 512 MB: the suite stopped
+            // with an OutOfMemoryError before its last classes, already at 03647f2fc.
+            all {
+                it.systemProperty("user.timezone", "Africa/Tunis")
+                it.maxHeapSize = "2g"
+            }
         }
     }
 }

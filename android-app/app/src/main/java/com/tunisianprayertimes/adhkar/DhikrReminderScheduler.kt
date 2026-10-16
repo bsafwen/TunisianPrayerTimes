@@ -24,7 +24,9 @@ import java.time.Instant
 import java.time.LocalDate
 import com.tunisianprayertimes.engine.TimeEvent
 import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.Locale
 import java.util.concurrent.TimeUnit
 import org.json.JSONObject
@@ -382,6 +384,8 @@ object DhikrReminderScheduler {
      * A reminder time on [date] (plan 6.9): a fixed clock time in the phone's zone, or the requested time's
      * instant on prayer day [date] at the saved place, plus the offset. Only that time is checked: the
      * engine's order of the day, with its permitted ties, holds for the others. Null without that time.
+     * Beyond [PrayerTimesRepository.SUPPORTED_YEARS] the last year's same day stands in (February 29 takes
+     * February 28), at its clock time in the place's zone, as the app's next-day fallback does.
      */
     fun resolveTime(context: Context, time: DhikrTime, date: LocalDate): Long? {
         if (time.kind == DhikrTimeKind.FIXED) {
@@ -389,7 +393,16 @@ object DhikrReminderScheduler {
                 .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
         }
         val event = TimeEvent.entries[time.kind.ordinal - 1]
-        val at = PrayerTimesRepository.prayerDay(context, date)?.get(event)?.at ?: return null
+        val lastYear = PrayerTimesRepository.SUPPORTED_YEARS.last
+        val at = if (date.year <= lastYear) {
+            PrayerTimesRepository.prayerDay(context, date)?.get(event)?.at ?: return null
+        } else {
+            val place = PrayerTimesRepository.place(context)
+            val standIn = date.withYear(lastYear)
+            val clock = PrayerTimesRepository.prayerDay(context, standIn, place)?.get(event)?.at?.atZone(place.zone) ?: return null
+            // The same clock time on [date], an Isha after midnight kept on the next date.
+            ZonedDateTime.of(date.plusDays(ChronoUnit.DAYS.between(standIn, clock.toLocalDate())), clock.toLocalTime(), place.zone).toInstant()
+        }
         return at.toEpochMilli() + time.offsetMinutes * 60_000L
     }
     /** Runs on every place or method change (6.9): the times behind the scan change with them. */
