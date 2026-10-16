@@ -35,6 +35,21 @@ class WakeAlarmQueue {
             .maxOfOrNull { payload -> payload.resolvedOccurrenceAtMillis() }
     }
 
+    /** A delivered ring of one alarm: the one going now, or one [waiting] behind another alarm's ring. */
+    data class QueuedRing(val payload: WakeTriggerPayload, val waiting: Boolean)
+
+    /**
+     * The alarm's ring in the queue: the current one if it is this alarm's, else its first one waiting. Rings of the
+     * alarm queued behind its own current ring are not returned; they ring after it.
+     */
+    fun ringForAlarm(alarmId: String): QueuedRing? {
+        current?.takeIf { payload -> wakeAlarmIdFromEventId(payload.eventId) == alarmId }
+            ?.let { payload -> return QueuedRing(payload, waiting = false) }
+        return pending
+            .firstOrNull { payload -> wakeAlarmIdFromEventId(payload.eventId) == alarmId }
+            ?.let { payload -> QueuedRing(payload, waiting = true) }
+    }
+
     /** Stop all playback already delivered for one occurrence, preserving other alarms. */
     fun discardOccurrence(alarmId: String, occurrenceAtMillis: Long): Boolean {
         val removedCurrent = current?.let { payload ->

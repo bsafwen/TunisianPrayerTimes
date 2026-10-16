@@ -91,14 +91,11 @@ class AdhkarFlowTest {
         repo.restore(edited)
         assertEquals(edited, repo.state.value.reminders.single())
     }
-    @Test fun legacyCountersMigrateWithoutResetAndNewSessionIsExplicit() {
+    @Test fun legacyCountersMigrateWithoutReset() {
         context.getSharedPreferences("adhkar_reminders", 0).edit().putString("progress", """{"reading|salah_istighfar":2}""").commit()
         val first = repo.openSession(listOf("salah_istighfar"))
         assertEquals(2, repo.state.value.sessions.getValue(first).counts["salah_istighfar"])
         assertEquals(first, repo.openSession(listOf("salah_istighfar")))
-        val fresh = repo.openSession(listOf("salah_istighfar"), fresh = true)
-        assertNotEquals(first, fresh)
-        assertEquals(0, repo.state.value.sessions.getValue(fresh).counts["salah_istighfar"] ?: 0)
     }
     @Test fun morningCollectionRunsFromFajrToDhuhrAndSurvivesRestart() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")
@@ -164,11 +161,6 @@ class AdhkarFlowTest {
         assertNotEquals(first, next)
         assertNotEquals(beforeNextAsr, next)
         assertTrue(repo.state.value.sessions.getValue(next).counts.isEmpty())
-        val newReading = repo.openSession(expandedItems, DhikrCategory.EVENING, fresh = true,
-            now = nextAsr + 1, collectionReading = true)
-        assertNotEquals(next, newReading)
-        assertEquals(newReading, repo.openSession(expandedItems, DhikrCategory.EVENING,
-            now = nextAsr + 1, collectionReading = true))
     }
     @Test fun fullCollectionAndIndividualDhikrUseSeparateCounters() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")
@@ -224,12 +216,6 @@ class AdhkarFlowTest {
         assertNotEquals(fromReminder, fromCard)
         assertEquals(mapOf(items[0] to 1, items[1] to 1), repo.state.value.sessions.getValue(fromCard).counts)
         assertTrue(repo.state.value.isCollectionPeriodComplete(DhikrCategory.MORNING, cardKey))
-
-        // New Session still starts the occasion over.
-        val fresh = repo.openSession(items, DhikrCategory.MORNING, fresh = true, now = window.endMillis + 2,
-            collectionReading = true)
-        assertTrue(repo.state.value.sessions.getValue(fresh).counts.isEmpty())
-        assertFalse(repo.state.value.isCollectionPeriodComplete(DhikrCategory.MORNING, cardKey))
     }
     @Test fun morningProgressCarriesBetweenTheTabAndTheReminder() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")

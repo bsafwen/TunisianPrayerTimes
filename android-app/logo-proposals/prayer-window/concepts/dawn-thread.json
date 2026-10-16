@@ -1,0 +1,20 @@
+{
+  "id": "dawn-thread",
+  "name": "Dawn Thread",
+  "tag": "Fluid / daily continuity",
+  "group": "creative",
+  "file": "concepts/dawn-thread.svg",
+  "summary": "A flowing folded stroke gives the prayer day a continuous, distinctive signature.",
+  "why": "A single broad stroke rises, turns, and returns. Its movement evokes the cadence of Arabic calligraphy without spelling a letter, connecting prayer, reading, and remembrance through one daily rhythm. A mint fold marks the next turn.",
+  "risk": "The devotional connection depends on the name; the fluid shape can also suggest music or movement.",
+  "key1": "The continuous stroke",
+  "sub1": "A rhythm across the day",
+  "key2": "The folded tip",
+  "sub2": "A new moment of attention",
+  "palette": {
+    "background": "#182D35",
+    "ink": "#FFB899",
+    "sun": "#8BDED2",
+    "name": "DAWN THREAD / PEACH & MINT"
+  }
+}

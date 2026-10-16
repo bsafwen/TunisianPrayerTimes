@@ -44,6 +44,7 @@ import com.tunisianprayertimes.mosque.DisplayTexts
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.Digits
 import com.tunisianprayertimes.tv.ui.theme.Amiri
+import com.tunisianprayertimes.tv.ui.theme.Mushaf
 import com.tunisianprayertimes.tv.ui.theme.Crescent
 import com.tunisianprayertimes.tv.ui.theme.KhatamStar
 import com.tunisianprayertimes.tv.ui.theme.Kufi
@@ -248,15 +249,15 @@ private fun HeaderVerse(verses: List<DisplayTexts.DisplayText>, modifier: Modifi
         val fitted = remember(verses, width) {
             verses.firstNotNullOfOrNull { verse ->
                 val reference = measurer.measure(verse.reference, VERSE_REFERENCE, softWrap = false, maxLines = 1).size.width
-                (17 downTo 14).map { verseStyle(it) }.firstOrNull { style ->
-                    measurer.measure(verse.text, style, softWrap = false, maxLines = 1).size.width + reference + fixed <= width
+                (17 downTo 14).map { verseStyle(it, verse.isMushaf) }.firstOrNull { style ->
+                    measurer.measure(verse.mushafText, style, softWrap = false, maxLines = 1).size.width + reference + fixed <= width
                 }?.let { verse to it }
             }
         }
         if (fitted != null) {
             val (verse, style) = fitted
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
-                Text(verse.text, style = style, maxLines = 1, softWrap = false)
+                Text(verse.mushafText, style = style, maxLines = 1, softWrap = false)
                 Medallion(15.dp)
                 Text(TvStrings.source(verse.reference), style = VERSE_REFERENCE, maxLines = 1, softWrap = false)
             }
@@ -360,7 +361,9 @@ private fun mosqueNameStyle(size: Int): TextStyle = midadStyle(size.sp, FontWeig
 private val NAME_SIZES = listOf(29, 27, 25, 23, 21)
 private val NAME_WIDTH = 290.dp
 private val PLACE = midadStyle(15.sp, color = Midad.Muted)
-private fun verseStyle(size: Int): TextStyle = midadStyle(size.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f)
+/** A verse as the mushaf prints it, in its font; Amiri for a text that has no mushaf form. */
+private fun verseStyle(size: Int, mushaf: Boolean): TextStyle =
+    midadStyle(size.sp, color = Midad.Verse, family = if (mushaf) Mushaf else Amiri, lineHeight = 1.4f)
 private val VERSE_REFERENCE = midadStyle(11.sp, color = Midad.Muted)
 private val HIJRI = midadStyle(19.sp, FontWeight.Medium)
 private val DAY_NOTE = midadStyle(15.sp, color = Midad.Muted)

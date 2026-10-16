@@ -1,0 +1,20 @@
+{
+  "id": "sakina-quiet-joy",
+  "name": "Sakina Quiet Joy",
+  "tag": "Peace / calm / quiet happiness",
+  "file": "concepts/sakina-quiet-joy.svg",
+  "summary": "A soft jade curve holds a warm golden circle in an open, gently uplifting composition.",
+  "why": "The broad curve feels welcoming and settled. A small, off-center circle adds warmth and a touch of happiness. Rounded ends, gentle asymmetry, and generous space give the mark a calm, unhurried character.",
+  "risk": "The abstract mark may also suggest wellbeing; the app name gives it a prayer context.",
+  "key1": "A gentle embrace",
+  "sub1": "Comfort and calm",
+  "key2": "A touch of warmth",
+  "sub2": "Quiet happiness",
+  "group": "sakinah-feeling",
+  "palette": {
+    "background": "#F3ECDE",
+    "ink": "#24594D",
+    "sun": "#D9A55E",
+    "name": "QUIET JOY / IVORY + JADE + WARM GOLD"
+  }
+}

@@ -14,6 +14,7 @@ import com.tunisianprayertimes.WakeMainAlarmMode
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -107,7 +108,7 @@ class AwakeCheckDisableTest {
     }
 
     @Test
-    fun awakeCheckStillStartsAfterCompletedOneOffParentIsAutomaticallyDeleted() = runBlocking {
+    fun completedOneOffIsKeptUntilItsAwakeCheckStarts() = runBlocking {
         val alarm = PrayerWakeConfig(
             id = "completed-one-off",
             prayer = Prayer.FAJR,
@@ -120,8 +121,9 @@ class AwakeCheckDisableTest {
         repository.saveWakeConfig(alarm)
         scheduleAwakeCheck(wakeMainEventId(alarm.id))
         val deliveredIntent = Intent(Shadows.shadowOf(shadowAlarmManager.scheduledAlarms.single().operation).savedIntent)
+        // The expiry cleanup waits for the check, so the Alarms tab can still show it and Stop can end it.
         WakeAlarmScheduler.scheduleAll(context)
-        assertNull(repository.getWakeAlarm(alarm.id))
+        assertNotNull(repository.getWakeAlarm(alarm.id))
 
         context.deliverWakeBroadcast(AwakeCheckReceiver(), deliveredIntent)
 

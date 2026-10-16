@@ -1,0 +1,20 @@
+{
+  "id": "blue-manuscript",
+  "name": "Blue Manuscript",
+  "tag": "Editorial / illuminated",
+  "group": "creative",
+  "file": "concepts/blue-manuscript.svg",
+  "summary": "A golden manuscript medallion becomes a confident, compact identity for Quran and remembrance.",
+  "why": "A broad eight-point medallion recalls ornamental verse markers and illuminated manuscript margins. Its open diamond and ivory center simplify that tradition into a bold mark, with deep blue and gold giving the app an unmistakable editorial character.",
+  "risk": "It emphasizes Quran and devotional reading more than prayer schedules, and can also resemble a cultural institution's emblem.",
+  "key1": "The gold medallion",
+  "sub1": "A manuscript tradition",
+  "key2": "The clear center",
+  "sub2": "Attention to the verse",
+  "palette": {
+    "background": "#143F84",
+    "ink": "#F2C66D",
+    "sun": "#EEF2DB",
+    "name": "BLUE MANUSCRIPT / LAPIS & GOLD"
+  }
+}

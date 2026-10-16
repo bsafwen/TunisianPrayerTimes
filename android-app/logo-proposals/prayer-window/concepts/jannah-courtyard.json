@@ -1,0 +1,15 @@
+{
+  "id": "jannah-courtyard",
+  "name": "Jannah Courtyard",
+  "tag": "Garden / Islamic geometry",
+  "file": "concepts/jannah-courtyard.svg",
+  "summary": "An eight-point Islamic courtyard frame holds the original flourishing garden and its spring.",
+  "why": "A broad geometric frame recalls Islamic tilework and the enclosed gardens of traditional courtyards. Three leaves and a short flowing spring remain the heart of the mark, giving the geometry a living center rather than making it a separate decoration.",
+  "risk": "It can suggest an Islamic cultural or garden institution; the small foliage is less distinct than the outer frame at launcher size.",
+  "key1": "The geometric frame",
+  "sub1": "Islamic courtyard character",
+  "key2": "A living center",
+  "sub2": "Foliage and flowing water",
+  "palette": {"background": "#153F3B", "ink": "#C6E5CA", "sun": "#EBC77D", "name": "JANNAH COURTYARD / FOREST + CELADON"},
+  "group": "jannah-variation"
+}

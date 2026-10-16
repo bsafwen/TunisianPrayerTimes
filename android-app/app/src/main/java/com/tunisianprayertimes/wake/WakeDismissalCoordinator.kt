@@ -89,6 +89,10 @@ internal object WakeDismissalCoordinator {
         if (!config.isExpiredOneOffWakeAlarm(nowMillis)) {
             return false
         }
+        // Kept, and shown, until its awake check is over; the check's end removes it.
+        if (WakeAlarmScheduler.hasAwakeCheckInProgress(context, alarmId)) {
+            return false
+        }
 
         return runCatching {
             repository.deleteWakeAlarm(config.id)

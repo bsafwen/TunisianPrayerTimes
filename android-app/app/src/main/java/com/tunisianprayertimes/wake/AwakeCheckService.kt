@@ -109,6 +109,7 @@ class AwakeCheckService : Service() {
         runningOccurrenceAtMillis = occurrenceAtMillis
         runningScheduledTriggerAtMillis = scheduledTriggerAtMillis
         runningTriggerAtMillis = scheduledTriggerAtMillis ?: 0L
+        runningStartedAtMillis = System.currentTimeMillis()
         _isRunning.value = true
 
         createChannel()
@@ -130,11 +131,16 @@ class AwakeCheckService : Service() {
             AwakeCheckScheduler.cancelIfMatching(
                 this, eventId, runningOccurrenceAtMillis, runningScheduledTriggerAtMillis,
             )
+            // A finished one-off waited for its check before going away.
+            wakeAlarmIdFromEventId(eventId)?.let { alarmId ->
+                WakeAlarmScheduler.removeExpiredOneOffAfterAwakeCheckAsync(applicationContext, alarmId)
+            }
         }
         runningEventId = null
         runningOccurrenceAtMillis = 0L
         runningScheduledTriggerAtMillis = null
         runningTriggerAtMillis = 0L
+        runningStartedAtMillis = 0L
         _isRunning.value = false
         escalationJob?.cancel()
         stopPlayback()
@@ -349,9 +355,15 @@ class AwakeCheckService : Service() {
         @Volatile private var runningEventId: String? = null
         @Volatile private var runningOccurrenceAtMillis: Long = 0L
         @Volatile private var runningTriggerAtMillis: Long = 0L
+        @Volatile private var runningStartedAtMillis: Long = 0L
 
         fun activeOccurrenceForEvent(eventId: String): Long? =
             runningOccurrenceAtMillis.takeIf { runningEventId == eventId && it > 0L }
+
+        /** When the running check was due, as it was scheduled, else when it started. */
+        fun activeTriggerForEvent(eventId: String): Long? =
+            (runningTriggerAtMillis.takeIf { it > 0L } ?: runningStartedAtMillis.takeIf { it > 0L })
+                ?.takeIf { runningEventId == eventId }
 
         fun cancelForOccurrence(context: Context, eventId: String, occurrenceAtMillis: Long) {
             if (runningEventId != eventId) return

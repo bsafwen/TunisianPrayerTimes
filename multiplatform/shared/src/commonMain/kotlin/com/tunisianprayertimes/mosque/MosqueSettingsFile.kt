@@ -578,7 +578,7 @@ object MosqueSettingsFile {
     private fun shown(item: MosqueDhikr): Shown = when (item) {
         is ReviewedDhikr -> DhikrCatalog.find(item.id).let { entry ->
             val count = item.count ?: entry?.countForCollection(DhikrCategory.SALAH) ?: 1
-            val times = if (entry == null || entry.steps.isNotEmpty()) count else shownTimes(entry.text, count)
+            val times = if (entry == null || entry.steps.isNotEmpty()) count else shownTimes(MosqueAdhkar.shownText(entry), count)
             Shown("id:${item.id}", entry?.title ?: item.id, count, null, times)
         }
         is CustomDhikr -> Shown("own:${item.text}", textName(item.text), item.count, item.reference, shownTimes(item.text, item.count))

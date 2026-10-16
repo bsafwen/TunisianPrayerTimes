@@ -1,0 +1,20 @@
+{
+  "id": "sakina-hilal",
+  "name": "Sakina Hilal",
+  "tag": "Peace held in a crescent",
+  "summary": "The Sakina dove rests within one generous crescent. The Islamic cue becomes the shelter itself.",
+  "why": "A broad crescent wraps around the original dove without crowding its head or raised wing. The crescent and bird form one upward composition: a familiar Islamic association around a quiet, living center.",
+  "risk": "The crescent can also suggest Ramadan or nighttime; the symbol does not communicate prayer scheduling on its own.",
+  "key1": "The sheltering crescent",
+  "sub1": "An Islamic association",
+  "key2": "The original dove",
+  "sub2": "Peace at the center",
+  "file": "concepts/sakina-hilal.svg",
+  "palette": {
+    "background": "#4F7096",
+    "ink": "#FFF6E7",
+    "sun": "#BFD9D3",
+    "name": "SAKINA HILAL / DUSK + SEA GLASS"
+  },
+  "group": "sakina-variation"
+}

@@ -1,15 +1,15 @@
 package com.tunisianprayertimes.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -19,35 +19,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
-import com.tunisianprayertimes.quran.QuranGoTo
 import com.tunisianprayertimes.quran.QuranVerseReference
+import com.tunisianprayertimes.quran.normalizeQuranSearch
+import com.tunisianprayertimes.quran.hifz.HifzGrade
 import com.tunisianprayertimes.quran.hifz.HifzKind
 import com.tunisianprayertimes.quran.hifz.HifzPoint
 import com.tunisianprayertimes.quran.hifz.HifzReminder
 import com.tunisianprayertimes.quran.hifz.HifzSettings
 import com.tunisianprayertimes.quran.hifz.dueToday
-import com.tunisianprayertimes.quran.hifz.epochDay
-import com.tunisianprayertimes.quran.hifz.hifzVersesLabel
-import com.tunisianprayertimes.quran.quranGoTo
-import com.tunisianprayertimes.quran.quranNameKey
 import com.tunisianprayertimes.ui.theme.*
-import java.time.LocalDate
 
 /** What «المراجعة» can ask of the reader. */
 internal interface HifzHomeActions {
     /** The launcher's «سجّل موضعا» opened its dialog: the request is done. */
     fun recordShown()
     fun review()
+    /** Continue immediate practice without recording another scheduled check. */
+    fun resumePractice(ids: List<Long>) = Unit
+    /** Explicitly remove unfinished practice; the saved points and their next checks remain. */
+    fun dismissPractice(ids: List<Long>) = Unit
+    /** Choose a passage, return to the mushaf and recite it with its verses covered. */
+    fun recite()
+    /** The day's review, starting with [point]: tapped in the «اليوم» list before it was checked. */
+    fun reviewFrom(point: HifzPoint)
     fun listen(points: List<HifzPoint>)
     fun briefing()
     fun open(point: HifzPoint)
@@ -59,10 +62,22 @@ internal interface HifzHomeActions {
 }
 
 /**
- * «المراجعة»: everything that helps keep what is memorised. Today's checks, the eyes-free entry, hiding the verses on
- * the page, positive counts only, then the notebook of slips.
+ * A change made from the notebook, said at its top with its undo: the reader's own snackbar would be under the sheet.
+ * [again]: «سجّل موضعا آخر», after a record.
  */
-@OptIn(ExperimentalMaterial3Api::class)
+@Immutable
+internal data class HifzNotice(
+    val text: String,
+    val undo: (() -> Unit)?,
+    val again: (() -> Unit)? = null,
+    val practice: (() -> Unit)? = null,
+)
+
+/**
+ * «المراجعة»: everything that helps keep what is memorised. Today's checks, which never give their answers before they
+ * are taken; hiding the verses on the page; a look before reciting; positive counts only; then the notebook of slips.
+ */
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 internal fun HifzHomeSheet(
     catalog: QuranCatalog,
@@ -73,118 +88,236 @@ internal fun HifzHomeSheet(
     startRecording: Boolean = false,
     /** «وضع المراجعة» is on in the reader. */
     versesHidden: Boolean,
+    /** «قبل التسميع · الحزب 5»: the passage the look before reciting covers, from the page in view. */
+    briefingLabel: String = "قبل التسميع",
+    notice: HifzNotice? = null,
+    onNoticeClosed: () -> Unit = {},
+    /** What plays, shown at the foot since the sheet hides the player. */
+    audio: HifzAudio? = null,
+    audioControls: HifzAudioControls? = null,
+    /** Unfinished immediate practice, retained when a round is left or another batch starts. */
+    pendingPractice: List<HifzPoint> = emptyList(),
+    /** Already exposed answers may be due by date but cannot be fresh checks again today. */
+    eligibleDueIds: Set<Long>? = null,
+    practicedToday: Int = 0,
     actions: HifzHomeActions,
 ) {
-    val due = remember(points, today, settings.perDay) { points.dueToday(today, settings.perDay) }
-    /** All the points due, also those beyond one review's. */
-    val dueAll = remember(points, today) { points.count { it.isDue(today) } }
+    /** Every point due, the next review's first: «اليوم» is the day's, not one review's. */
+    val eligible = remember(points, eligibleDueIds) { points.filter { eligibleDueIds == null || it.id in eligibleDueIds } }
+    val dueAll = remember(eligible, today) { eligible.dueToday(today) }
+    val batch = remember(eligible, today, settings.perDay) { eligible.dueToday(today, settings.perDay) }
+    val pending = remember(points, pendingPractice) { pendingPractice.distinctBy { it.id }.filter { waiting -> points.any { it.id == waiting.id } } }
     var howItWorks by rememberSaveable { mutableStateOf(false) }
-    val month = remember(today) { LocalDate.ofEpochDay(today).withDayOfMonth(1).toEpochDay() }
-    val heldThisMonth = points.count { p -> p.masteredAt?.let { epochDay(it) >= month } == true && p.mastered }
-    var tab by rememberSaveable { mutableIntStateOf(if (due.isNotEmpty()) 0 else 1) }
+    // Preserve the first scheduled attempt for each point and day. Neither a later slip nor immediate practice
+    // rewrites that result; migrated notebooks have no inferred history.
+    val checkedRecently = remember(points, today) {
+        points.flatMap { point -> point.checks.filter { it.day in (today - 6)..today }.groupBy { it.day }.values.map { it.minBy { check -> check.at } } }
+    }
+    val checkedToday = checkedRecently.filter { it.day == today }
+    var notebook by rememberSaveable { mutableStateOf(false) }
+    val focus = LocalFocusManager.current
+    val homeScroll = rememberLazyListState()
+    val notebookScroll = rememberLazyListState()
+    var tab by rememberSaveable { mutableIntStateOf(1) }
+    var query by rememberSaveable { mutableStateOf("") }
     var kindFilter by rememberSaveable { mutableStateOf<String?>(null) }
     var surahFilter by rememberSaveable { mutableStateOf<Int?>(null) }
     var away by rememberSaveable { mutableStateOf(false) }
+    var dismissPending by rememberSaveable { mutableStateOf(false) }
+    /** A due point tapped before its check: seeing its answer now would spoil it, so the reader is asked first. */
+    var spoilId by rememberSaveable { mutableStateOf<Long?>(null) }
     LaunchedEffect(startRecording) {
         if (startRecording) {
             away = true
             actions.recordShown()
         }
     }
+    LaunchedEffect(notebook) {
+        if (notebook) notebookScroll.scrollToItem(0)
+    }
+    // Saving returns here before the result arrives. Inserting the notice above the keyed first item keeps
+    // that item anchored, so explicitly bring the new confirmation and its Undo into view.
+    LaunchedEffect(notice, notebook) {
+        if (notice != null) (if (notebook) notebookScroll else homeScroll).scrollToItem(0)
+    }
+    fun openRow(point: HifzPoint) {
+        focus.clearFocus()
+        if (point.isDue(today) && (eligibleDueIds == null || point.id in eligibleDueIds)) spoilId = point.id else actions.open(point)
+    }
+    fun returnHome() {
+        focus.clearFocus()
+        notebook = false
+    }
+    fun openNotebook(todayOnly: Boolean = false) {
+        tab = if (todayOnly) 0 else 1
+        query = ""
+        kindFilter = null
+        surahFilter = null
+        notebook = true
+    }
     ModalBottomSheet(onDismissRequest = actions::dismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
+        BackHandler(enabled = notebook) { returnHome() }
         Column(Modifier.fillMaxWidth().quranSheetHeight().testTag("hifz_home")) {
             Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                QuranHifzSquare(18.dp)
-                Spacer(Modifier.width(8.dp))
-                Text("المراجعة", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                TextButton(onClick = actions::settings, modifier = Modifier.testTag("hifz_settings")) { Text("الإعدادات") }
+                if (notebook) IconButton(onClick = { returnHome() }, modifier = Modifier.testTag("hifz_notebook_back")) {
+                    Icon(painterResource(R.drawable.ic_adhkar_back), "العودة إلى المراجعة", tint = GreenPrimaryDark)
+                } else {
+                    QuranHifzSquare(18.dp)
+                    Spacer(Modifier.width(8.dp))
+                }
+                Text(if (notebook) "دفتر المواضع" else "المراجعة", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                if (!notebook) TextButton(onClick = actions::settings, modifier = Modifier.testTag("hifz_settings")) { Text("الإعدادات") }
                 IconButton(onClick = actions::dismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
             }
-            LazyColumn(Modifier.weight(1f), contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 88.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                item {
-                    // Only the reminders in use: the morning one, and those after prayers while a plan runs.
-                    HifzNotificationsWarning(listOfNotNull(
-                        HifzReminder.CHANNEL_ID.takeIf { settings.reminder && points.isNotEmpty() },
-                        HifzReminder.REPEAT_CHANNEL_ID.takeIf { points.any { it.repeatsOn(today) } },
-                    ))
-                }
-                item {
-                    Surface(shape = RoundedCornerShape(16.dp), color = GoldLight) {
-                        Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                            if (due.isNotEmpty()) {
-                                // The review the button starts, as the «اليوم» tab and the morning reminder count it.
-                                Text("اليوم ${quranPointsLabel(due.size)} للمراجعة", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                                Text(
-                                    listOfNotNull(
-                                        "نحو ${quranMinutesLabel((due.size + 1).coerceAtLeast(2))}",
-                                        "نبدأ بما يحتاج عناية".takeIf { due.any { it.needsCare } },
-                                        "وبقي بعدها: ${hifzCountLabel(dueAll - due.size)}".takeIf { dueAll > due.size },
-                                    ).joinToString(" · "),
-                                    fontSize = 13.sp, color = Color(0xFF6E5A2E),
-                                )
-                                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                    Button(onClick = actions::review, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_start_review")) {
-                                        Text("ابدأ المراجعة")
-                                    }
-                                    OutlinedButton(onClick = { actions.listen(due) }) { Text("استمع إليها") }
+            LazyColumn(
+                Modifier.weight(1f).testTag(if (notebook) "hifz_notebook" else "hifz_home_content"),
+                state = if (notebook) notebookScroll else homeScroll,
+                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                notice?.let { told ->
+                    item(key = "notice") {
+                        Column(
+                            Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(AdhkarSoftGreen).padding(start = 12.dp, end = 4.dp).testTag("hifz_notice"),
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(told.text, Modifier.weight(1f).padding(vertical = 8.dp), fontSize = 13.sp, color = GreenPrimaryDark)
+                                IconButton(onClick = onNoticeClosed, modifier = Modifier.size(48.dp)) {
+                                    Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء", Modifier.size(14.dp), tint = GreenPrimaryDark)
                                 }
-                            } else if (points.isEmpty()) {
-                                Text("دفتر المواضع فارغ", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                                Text("اضغط على آية أخطأت فيها، ثم «موضع». أو سجّل موضعا من هنا بعد التسميع.", fontSize = 13.sp, color = Color(0xFF6E5A2E))
-                            } else {
-                                // Held points come back too, to make sure of them.
-                                val next = points.minOfOrNull { it.dueDay }
-                                val allHeld = points.all { it.mastered }
-                                Text(if (allHeld) "كل مواضعك ثبتت" else "لا مراجعة اليوم", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                                if (next != null) Text(
-                                    (if (allHeld) "مراجعة للتأكد " else "المراجعة القادمة ") + hifzWhen(next - today),
-                                    fontSize = 13.sp, color = Color(0xFF6E5A2E),
-                                )
-                                OutlinedButton(onClick = { actions.listen(points.filterNot { it.mastered }.ifEmpty { points }) }) { Text("استمع إلى مواضعي") }
+                            }
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                told.practice?.let { Button(onClick = it, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_notice_practice")) { Text("تدرّب الآن", fontSize = 13.sp) } }
+                                told.again?.let { TextButton(onClick = it) { Text("سجّل موضعا آخر", fontSize = 13.sp) } }
+                                told.undo?.let { TextButton(onClick = it, modifier = Modifier.testTag("hifz_notice_undo")) { Text("تراجع", fontSize = 13.sp) } }
                             }
                         }
                     }
                 }
-                item {
-                    // Reciting a page from memory is part of the review too, with or without slips recorded.
-                    Row(
-                        Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White)
-                            .toggleable(versesHidden, role = Role.Switch, onValueChange = actions::hideVerses)
-                            .padding(start = 14.dp, end = 10.dp, top = 10.dp, bottom = 10.dp).testTag("hifz_hide_verses"),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Icon(painterResource(R.drawable.ic_quran_review), null, Modifier.size(22.dp), tint = GreenPrimary)
-                        Spacer(Modifier.width(12.dp))
-                        Column(Modifier.weight(1f)) {
-                            Text("وضع المراجعة", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                            Text("تُغطّى الآيات في المصحف فتقرؤها من حفظك، وتكشفها بإصبعك. تجده أيضا في زر العين أعلى المصحف.",
-                                fontSize = 12.sp, color = TextMuted)
+                if (!notebook) item(key = "today") {
+                    Surface(shape = RoundedCornerShape(16.dp), color = GoldLight) {
+                        Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                            if (dueAll.isNotEmpty()) {
+                                // Care determines batch selection; the selected points are presented in mushaf order.
+                                Text("اليوم ${quranPointsLabel(dueAll.size)} للمراجعة", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                                val late = dueAll.count { it.dueDay < today }
+                                Text(
+                                    listOfNotNull(
+                                        "نبدأ بـ ${hifzCountLabel(batch.size)}".takeIf { dueAll.size > batch.size },
+                                        "نحو ${quranMinutesLabel((batch.size + 1).coerceAtLeast(2))}",
+                                        "نختار ما يحتاج عناية للجولة".takeIf { batch.any { it.needsCare } },
+                                        "منها ${hifzCountLabel(late)} متأخرة".takeIf { late > 0 },
+                                    ).joinToString(" · "),
+                                    fontSize = 13.sp, color = Color(0xFF6E5A2E),
+                                )
+                                // No «استمع إليها» here: hearing the answers first would be no check at all. They can be heard
+                                // once the review is done.
+                                Button(onClick = actions::review, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_start_review")) {
+                                    Text("ابدأ مراجعة اليوم")
+                                }
+                            } else if (points.isEmpty()) {
+                                Text("ابدأ بما تحفظه", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                                Text("سمّع مقطعًا من حفظك. إن توقفت أو أخطأت، سجّل الموضع لنتدرّب عليه ونراجعه لاحقًا.", fontSize = 13.sp, color = Color(0xFF6E5A2E))
+                            } else {
+                                // Held points come back too, to make sure of them.
+                                val next = points.minOfOrNull { point ->
+                                    // The date is unchanged after assisted practice, but another independent attempt
+                                    // becomes available tomorrow when today's exposure is no longer carried forward.
+                                    if (point.isDue(today) && eligibleDueIds != null && point.id !in eligibleDueIds) today + 1 else point.dueDay
+                                }
+                                val allHeld = points.all { it.mastered }
+                                Text(if (practicedToday > 0) "لا مراجعات جديدة الآن" else "لا مواضع مستحقة الآن", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                                if (next != null) Text(
+                                    (if (allHeld) "مراجعة للتأكد " else "المراجعة القادمة ") + hifzWhen(next - today),
+                                    fontSize = 13.sp, color = Color(0xFF6E5A2E),
+                                )
+                                Text("يمكنك تسميع مقطع من حفظك أو تدريب موضع من دفترك.", fontSize = 13.sp, color = Color(0xFF6E5A2E))
+                            }
+                            if (practicedToday > 0) Text(
+                                "تدرّبت اليوم على ${hifzCountLabel(practicedToday)} بعد رؤية الإجابة؛ نختبرها دون مساعدة لاحقًا.",
+                                fontSize = 12.sp, color = Color(0xFF6E5A2E), modifier = Modifier.testTag("hifz_practiced_today"),
+                            )
                         }
-                        Spacer(Modifier.width(8.dp))
-                        Switch(checked = versesHidden, onCheckedChange = null, colors = SwitchDefaults.colors(checkedTrackColor = GreenPrimary))
                     }
                 }
-                if (points.isNotEmpty()) item {
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                        OutlinedButton(onClick = actions::briefing, modifier = Modifier.testTag("hifz_briefing")) { Text("قبل التسميع") }
-                        if (heldThisMonth > 0) Text("ثبت هذا الشهر: ${hifzCountLabel(heldThisMonth)}", Modifier.weight(1f), fontSize = 13.sp, color = GreenPrimary)
-                        else Spacer(Modifier.weight(1f))
-                        TextButton(onClick = { howItWorks = true }, modifier = Modifier.testTag("hifz_home_how_it_works")) { Text("كيف تعمل؟", fontSize = 13.sp) }
+                if (!notebook && pending.isNotEmpty()) item(key = "pending_practice") {
+                    Surface(shape = RoundedCornerShape(12.dp), color = QuranHifzViolet.copy(alpha = 0.07f)) {
+                        Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text("تدريب لم تكمله · ${hifzCountLabel(pending.size)}", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                            Text("أكمله من حيث توقفت؛ تبقى مواعيد المراجعة كما هي.", fontSize = 12.sp, color = TextMuted)
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                Button(
+                                    onClick = { actions.resumePractice(pending.map { it.id }) },
+                                    colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                                    modifier = Modifier.testTag("hifz_resume_practice"),
+                                ) { Text("أكمل التدريب") }
+                                TextButton(onClick = { dismissPending = true }, modifier = Modifier.testTag("hifz_dismiss_practice")) { Text("أزل من التدريب", fontSize = 12.sp) }
+                            }
+                        }
                     }
                 }
-                if (points.isNotEmpty()) item {
-                    Text("دفتر المواضع", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, modifier = Modifier.padding(top = 8.dp))
+                if (!notebook) item(key = "notebook_entry") {
+                    Surface(
+                        onClick = { openNotebook() }, modifier = Modifier.fillMaxWidth().testTag("hifz_open_notebook"),
+                        shape = RoundedCornerShape(12.dp), color = Color.White,
+                    ) {
+                        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                            Text("دفتر المواضع · ${hifzCountLabel(points.size)}", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                            Text("ابحث عن موضع، وافتح تصحيحه أو سجله", fontSize = 12.sp, color = TextMuted)
+                        }
+                    }
+                }
+                if (!notebook) item(key = "passage_entry") {
+                    Surface(shape = RoundedCornerShape(12.dp), color = Color.White) {
+                        Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text("تسميع من حفظك", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                OutlinedButton(onClick = actions::recite, modifier = Modifier.testTag("hifz_recite")) { Text("سمّع مقطعًا") }
+                                if (points.isNotEmpty()) TextButton(onClick = actions::briefing, modifier = Modifier.testTag("hifz_briefing")) { Text(briefingLabel, fontSize = 13.sp) }
+                            }
+                            TextButton(onClick = { howItWorks = true }, modifier = Modifier.testTag("hifz_home_how_it_works")) { Text("كيف أراجع وأصحّح حفظي؟", fontSize = 13.sp) }
+                        }
+                    }
+                }
+                if (!notebook && checkedRecently.isNotEmpty()) item(key = "progress") {
+                    Surface(shape = RoundedCornerShape(12.dp), color = AdhkarSoftGreen, modifier = Modifier.testTag("hifz_progress")) {
+                        Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                            Text("المحاولة الأولى في المراجعة", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                            Text(
+                                "اليوم: ${checkedToday.size} · دون مساعدة: ${checkedToday.count { it.grade == HifzGrade.Held }}",
+                                fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.testTag("hifz_progress_today"),
+                            )
+                            Text(
+                                "آخر 7 أيام: ${checkedRecently.size} · دون مساعدة: ${checkedRecently.count { it.grade == HifzGrade.Held }}",
+                                fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.testTag("hifz_progress_week"),
+                            )
+                            Text("نحسب أول محاولة لكل موضع في يوم مراجعته. التدريب بعدها لا يغيّر نتيجتها.", fontSize = 12.sp, color = TextMuted)
+                        }
+                    }
+                }
+                if (notebook) item(key = "notebook_filters") {
+                    OutlinedTextField(
+                        value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth().testTag("hifz_notebook_search"),
+                        label = { Text("ابحث في دفتر المواضع") },
+                        placeholder = { Text("السورة والآية، كلمات منها، أو ملاحظتك", fontSize = 13.sp) },
+                        leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null) },
+                        trailingIcon = if (query.isNotEmpty()) ({
+                            IconButton(onClick = { query = "" }) { Icon(painterResource(R.drawable.ic_adhkar_close), "مسح البحث") }
+                        }) else null,
+                        singleLine = true, shape = RoundedCornerShape(12.dp),
+                    )
                     val held = points.count { it.mastered }
-                    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        listOf("اليوم ${due.size}", "الكل ${points.size}", "ثبتت $held").forEachIndexed { index, label ->
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        listOf("اليوم ${dueAll.size}", "الكل ${points.size}", "ثبتت $held").forEachIndexed { index, label ->
                             FilterChip(selected = tab == index, onClick = { tab = index }, label = { Text(label) },
                                 colors = FilterChipDefaults.filterChipColors(selectedContainerColor = GreenPrimary, selectedLabelColor = Color.White))
                         }
                     }
-                    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        // The same name in the menu and on the chip once chosen.
                         HifzFilterMenu(
                             label = kindFilter?.let { HifzKind.of(it)?.short } ?: "كل الأنواع",
-                            options = listOf(null to "كل الأنواع") + HifzKind.entries.map { it.key to it.label },
+                            options = listOf(null to "كل الأنواع") + HifzKind.entries.map { it.key to it.short },
                         ) { kindFilter = it }
                         val surahs = points.map { it.verse.surah }.distinct().sorted()
                         HifzFilterMenu(
@@ -193,31 +326,66 @@ internal fun HifzHomeSheet(
                         ) { surahFilter = it?.toIntOrNull() }
                     }
                 }
-                val shown = when (tab) {
-                    0 -> due
+                val shown = if (!notebook) batch.take(2) else when (tab) {
+                    // The next review's first, then the rest of the day's.
+                    0 -> batch + dueAll.filterNot { it in batch }
                     2 -> points.filter { it.mastered }
                     else -> points
-                }.filter { (kindFilter == null || it.kind.key == kindFilter) && (surahFilter == null || it.verse.surah == surahFilter) }
-                val care = shown.filter { it.needsCare }
+                }.filter {
+                    (kindFilter == null || it.kind.key == kindFilter) &&
+                        (surahFilter == null || it.verse.surah == surahFilter) && hifzNotebookMatches(catalog, it, query)
+                }
+                if (!notebook && shown.isNotEmpty()) item(key = "today_preview") {
+                    FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        Text("من مراجعات اليوم", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, modifier = Modifier.padding(vertical = 12.dp))
+                        TextButton(onClick = { openNotebook(todayOnly = true) }, modifier = Modifier.testTag("hifz_today_notebook")) { Text("عرض الكل (${dueAll.size})", fontSize = 13.sp) }
+                    }
+                }
+                val care = if (notebook) shown.filter { it.needsCare } else emptyList()
                 if (care.isNotEmpty()) {
                     item {
                         Column(Modifier.padding(top = 4.dp)) {
                             Text("يحتاج عناية", fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzViolet)
-                            Text("مواضع سجلتها 3 مرات أو أكثر، تأتي أولًا حتى تثبت", fontSize = 12.sp, color = TextMuted)
+                            Text("أخطاء أو تلميحات متكررة؛ تتراجع الأولوية بعد مراجعتين دون مساعدة", fontSize = 12.sp, color = TextMuted)
                         }
                     }
-                    items(care, key = { "care${it.id}" }) { HifzPointRow(catalog, it, today) { actions.open(it) } }
+                    items(care, key = { "care${it.id}" }) { HifzPointRow(catalog, it, today) { openRow(it) } }
                 }
-                shown.filterNot { it.needsCare }.groupBy { it.verse.surah }.toSortedMap().forEach { (surah, rows) ->
-                    item(key = "surah$surah") {
+                shown.filterNot { it in care }.groupBy { it.verse.surah }.toSortedMap().forEach { (surah, rows) ->
+                    if (notebook) item(key = "surah$surah") {
                         Text("${catalog.surahs.getOrNull(surah - 1)?.name.orEmpty()} (${rows.size})", fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = TextMuted,
                             modifier = Modifier.padding(top = 4.dp))
                     }
-                    items(rows, key = { it.id }) { HifzPointRow(catalog, it, today) { actions.open(it) } }
+                    items(rows, key = { it.id }) { HifzPointRow(catalog, it, today) { openRow(it) } }
                 }
-                if (points.isNotEmpty() && shown.isEmpty()) item { Text("لا مواضع هنا", fontSize = 13.sp, color = TextMuted) }
+                if (notebook && shown.isEmpty()) item(key = "empty_notebook") {
+                    Column(Modifier.fillMaxWidth().padding(vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Text(if (points.isEmpty()) "لم تسجّل مواضع بعد" else "لا مواضع تطابق اختيارك", fontSize = 14.sp, color = GreenPrimaryDark)
+                        Text(if (points.isEmpty()) "سجّل الموضع الذي توقفت فيه لتجده هنا وتتابع مراجعته." else "جرّب اسم السورة أو رقم الآية أو كلمات من ملاحظتك.", fontSize = 13.sp, color = TextMuted)
+                        if (points.isNotEmpty()) TextButton(onClick = { query = ""; kindFilter = null; surahFilter = null; tab = 1 }) { Text("اعرض كل المواضع") }
+                    }
+                }
+                if (notebook && shown.isNotEmpty()) item(key = "notebook_listen") {
+                    TextButton(onClick = { actions.listen(shown) }) { Text("استمع إلى هذه المواضع", fontSize = 13.sp) }
+                }
+                if (!notebook) item(key = "free_practice") {
+                    HorizontalDivider(Modifier.padding(top = 8.dp), color = CardBorder)
+                    Row(
+                        Modifier.fillMaxWidth().toggleable(versesHidden, role = Role.Switch, onValueChange = actions::hideVerses)
+                            .padding(vertical = 4.dp).testTag("hifz_hide_verses"),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text("تسميع حرّ · إخفاء آيات المصحف", Modifier.weight(1f), fontSize = 13.sp, color = TextMuted)
+                        Switch(checked = versesHidden, onCheckedChange = null, colors = SwitchDefaults.colors(checkedTrackColor = GreenPrimary))
+                    }
+                    HifzNotificationsWarning(listOfNotNull(
+                        HifzReminder.CHANNEL_ID.takeIf { settings.reminder && points.isNotEmpty() },
+                        HifzReminder.REPEAT_CHANNEL_ID.takeIf { points.any { it.repeatsOn(today) } },
+                    ))
+                }
             }
-            Box(Modifier.fillMaxWidth().padding(16.dp), contentAlignment = Alignment.CenterEnd) {
+            Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), horizontalAlignment = Alignment.End) {
+                if (audio != null && audioControls != null) HifzAudioStrip(audio, audioControls)
                 ExtendedFloatingActionButton(
                     onClick = { away = true }, containerColor = GreenPrimary, contentColor = Color.White,
                     modifier = Modifier.testTag("hifz_record_away"),
@@ -227,6 +395,53 @@ internal fun HifzHomeSheet(
     }
     if (away) HifzAwayDialog(catalog, onChosen = { away = false; actions.record(it) }, onDismiss = { away = false })
     if (howItWorks) HifzHowItWorksDialog { howItWorks = false }
+    if (dismissPending && pending.isNotEmpty()) AlertDialog(
+        onDismissRequest = { dismissPending = false },
+        title = { Text("إزالة التدريب غير المكتمل؟") },
+        text = { Text("سيُزال ${hifzCountLabel(pending.size)} من قائمة التدريب. تبقى المواضع في دفترك وتبقى مواعيد مراجعتها كما هي.") },
+        confirmButton = {
+            TextButton(onClick = { dismissPending = false; actions.dismissPractice(pending.map { it.id }) }, modifier = Modifier.testTag("hifz_confirm_dismiss_practice")) { Text("أزل من التدريب") }
+        },
+        dismissButton = { TextButton(onClick = { dismissPending = false }) { Text("احتفظ بالتدريب") } },
+    )
+    points.firstOrNull { it.id == spoilId }?.let { point ->
+        AlertDialog(
+            onDismissRequest = { spoilId = null },
+            title = { Text("${hifzVerseName(catalog, point.verse)} في مراجعة اليوم") },
+            text = { Text("لم تراجعها بعد اليوم. إن رأيت تصحيحها الآن، فلن تكون مراجعتها اختبارًا لحفظك.") },
+            confirmButton = {
+                TextButton(onClick = { spoilId = null; actions.reviewFrom(point) }, modifier = Modifier.testTag("hifz_spoil_review")) { Text("راجعها الآن") }
+            },
+            dismissButton = {
+                TextButton(onClick = { spoilId = null; actions.open(point) }, modifier = Modifier.testTag("hifz_spoil_open")) { Text("اعرض التصحيح") }
+            },
+        )
+    }
+}
+
+/** Search the saved notebook without showing answer excerpts before a due check. */
+internal fun hifzNotebookMatches(catalog: QuranCatalog, point: HifzPoint, query: String): Boolean {
+    if (query.isBlank()) return true
+    val typed = hifzTypedVerse(query, catalog)
+    if (typed != null) return point.verse == typed || point.other == typed
+    fun searchable(value: String): String = normalizeQuranSearch(value.map { char -> char.digitToIntOrNull()?.digitToChar() ?: char }.joinToString(""))
+    val needle = searchable(query).split(' ').filter { it.isNotEmpty() }
+    if (needle.isEmpty()) return true
+    val haystack = searchable(buildString {
+        append(hifzPointTitle(catalog, point))
+        append(' ')
+        append("${point.verse.surah}:${point.verse.ayah}")
+        append(' ')
+        append(catalog.verse(point.verse)?.text.orEmpty())
+        point.other?.let { other ->
+            append(" ${other.surah}:${other.ayah} ")
+            append(catalog.verse(other)?.text.orEmpty())
+        }
+        append(' ')
+        append(point.key)
+    })
+    val numbers = haystack.split(' ').filter { it.all(Char::isDigit) }.toSet()
+    return needle.all { term -> if (term.all(Char::isDigit)) term in numbers else term in haystack }
 }
 
 @Composable
@@ -248,72 +463,48 @@ private fun HifzPointRow(catalog: QuranCatalog, point: HifzPoint, today: Long, o
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f)) {
-            Text(hifzPointTitle(catalog, point), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(hifzPointTitle(catalog, point), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
             Text(hifzListDetail(point, today), fontSize = 12.sp, color = TextMuted)
+            point.recentFeedback?.let { Text(it, fontSize = 12.sp, color = if (point.needsCare) QuranHifzViolet else GreenPrimary) }
         }
-        HifzDots(point.slips)
+        Spacer(Modifier.width(8.dp))
+        HifzLadder(point)
     }
 }
 
-/** «النساء47», «النساء: 47», «ص 51»: a verse typed loosely, which the index's field reads otherwise or not at all. */
-private fun hifzTypedVerse(text: String, catalog: QuranCatalog): QuranVerseReference? {
-    val clean = text.trim().map { c -> c.digitToIntOrNull()?.digitToChar() ?: c }.joinToString("")
-    val match = Regex("^(.*\\D)\\s*(\\d{1,3})$").matchEntire(clean) ?: return null
-    val name = match.groupValues[1].trimEnd(' ', ':', '：')
-    val surah = catalog.surahs.firstOrNull { quranNameKey(it.name) == quranNameKey(name) } ?: return null
-    val ayah = match.groupValues[2].toInt()
-    return QuranVerseReference(surah.number, ayah).takeIf { ayah >= 1 && (surah.verseCount == null || ayah <= surah.verseCount) }
-}
-
-/** «في سورة النساء 176 آية · اكتب رقم الآية» when a chapter is recognised, otherwise an example. */
-private fun hifzAwayHint(text: String, catalog: QuranCatalog): String {
-    val clean = text.trim().map { c -> c.digitToIntOrNull()?.digitToChar() ?: c }.joinToString("")
-    // «4», «4:200»: a chapter's number; «النساء», «النساء 200»: its name.
-    val numbered = Regex("^(\\d{1,3})(?:\\s*[:：/.\\s-]\\s*\\d{0,3})?$").matchEntire(clean)?.groupValues?.get(1)?.toInt()
-    val named = Regex("^(.*\\D)\\s*\\d{0,3}$").matchEntire(clean)?.groupValues?.get(1)?.trimEnd(' ', ':', '：')
-    val surah = numbered?.let { n -> catalog.surahs.firstOrNull { it.number == n } }
-        ?: named?.let { n -> catalog.surahs.firstOrNull { quranNameKey(it.name) == quranNameKey(n) } }
-    val count = surah?.verseCount
-    return when {
-        surah == null -> "اكتب السورة ورقم الآية، مثل النساء 47"
-        count == null -> "اكتب رقم الآية بعد سورة ${surah.name}"
-        else -> "في سورة ${surah.name} ${hifzVersesLabel(count)} · اكتب رقم الآية"
-    }
-}
-
-/** A slip made away from the app (in prayer, with a teacher): find the verse by its number or chapter. */
+/**
+ * A slip made away from the app (in prayer, with a teacher): the verse found as it is remembered, by words from it, its
+ * page or its reference.
+ */
 @Composable
-private fun HifzAwayDialog(catalog: QuranCatalog, onChosen: (QuranVerseReference) -> Unit, onDismiss: () -> Unit) {
-    var text by rememberSaveable { mutableStateOf("") }
-    val found = remember(text) {
-        quranGoTo(text, catalog.surahs, catalog.pages.size + 1).filterIsInstance<QuranGoTo.Verse>().firstOrNull()?.verse ?: hifzTypedVerse(text, catalog)
-    }
+internal fun HifzAwayDialog(
+    catalog: QuranCatalog,
+    onChosen: (QuranVerseReference) -> Unit,
+    onDismiss: () -> Unit,
+    title: String = "سجّل موضعا",
+    prompt: String = "في أي آية أخطأت؟ اكتب كلمات منها، أو صفحتها، أو مثل النساء 47",
+) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("سجّل موضعا") },
+        title = { Text(title) },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("في أي آية أخطأت؟", fontSize = 14.sp)
-                OutlinedTextField(
-                    value = text, onValueChange = { text = it }, singleLine = true, modifier = Modifier.fillMaxWidth().testTag("hifz_away_field"),
-                    placeholder = { Text("مثل 4:47 أو النساء 47") }, shape = RoundedCornerShape(12.dp),
-                    // Why «التالي» waits, once something is typed: never an error while the reader types.
-                    supportingText = if (found == null && text.isNotBlank()) ({ Text(hifzAwayHint(text, catalog)) }) else null,
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                    keyboardActions = KeyboardActions(onDone = { found?.let(onChosen) }),
-                )
-                found?.let { verse ->
-                    Text(hifzVerseName(catalog, verse), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                    catalog.verse(verse)?.let { Text(it.text.split(' ').take(8).joinToString(" ") + " …", fontFamily = AdhkarReadingFont, fontSize = 16.sp) }
-                }
+            Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(prompt, fontSize = 14.sp)
+                HifzVerseFinder(catalog, Modifier.testTag("hifz_away_field"), onChosen = onChosen)
             }
         },
-        confirmButton = { TextButton(onClick = { found?.let(onChosen) }, enabled = found != null) { Text("التالي") } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("إلغاء") } },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("إلغاء") } },
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+/** What is said before a point while listening: nothing, a heads-up, or a stop to recite it from memory. */
+private enum class HifzBeforePoint(val label: String, val detail: String) {
+    Nothing("لا شيء", "تستمع دون تنبيه قبل مواضعك"),
+    HeadsUp("نبّهني", "قبل الآية التي أخطأت فيها تظهر بطاقة تسألك عنها، والصواب خلف «أظهر الصواب»"),
+    Stop("توقّف لأسمّعه", "يتوقف القارئ قبلها لتقرأها من حفظك، ثم تسمعها للتأكد · في التكرار بلا توقف لا يتوقف، فتظهر البطاقة"),
+}
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 internal fun HifzSettingsSheet(settings: HifzSettings, onChange: (HifzSettings) -> Unit, onDismiss: () -> Unit) {
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
@@ -330,29 +521,51 @@ internal fun HifzSettingsSheet(settings: HifzSettings, onChange: (HifzSettings) 
             HifzRepeatChoice(settings.newRepeat, settings.newRepeatDays) { repeat, days ->
                 onChange(settings.copy(newRepeat = repeat, newRepeatDays = days))
             }
-            Text("يمكنك تغيير ذلك لكل موضع عند تسجيله أو من «التصحيح».", fontSize = 12.sp, color = TextMuted)
+            Text("يسألك التذكير أولًا، ثم ترى الصواب. يمكنك تغيير ذلك لكل موضع عند تسجيله أو من «التصحيح».", fontSize = 12.sp, color = TextMuted)
             HorizontalDivider(color = CardBorder)
-            HifzSwitch("تذكير يومي", settings.reminder) { onChange(settings.copy(reminder = it)) }
-            HifzChoice("وقت التذكير", "بعد الشروق بـ ${settings.reminderAfterSunriseMin} دقيقة", HifzSettings.ReminderOffsets.map { it to "بعد الشروق بـ $it دقيقة" }, enabled = settings.reminder) {
-                onChange(settings.copy(reminderAfterSunriseMin = it))
+            HifzSwitch("تذكير الصباح بمراجعة اليوم", settings.reminder) { onChange(settings.copy(reminder = it)) }
+            // After Fajr, when hafiz revise, or a while after sunrise; -1 stands for after Fajr.
+            HifzChoice(
+                "وقت التذكير", HifzReminder.dailyTimeLabel(settings),
+                listOf(-1 to "بعد صلاة الفجر") + HifzSettings.ReminderOffsets.map { it to "بعد الشروق بـ $it دقيقة" },
+                enabled = settings.reminder,
+            ) { chosen ->
+                onChange(if (chosen < 0) settings.copy(reminderAfterFajr = true) else settings.copy(reminderAfterFajr = false, reminderAfterSunriseMin = chosen))
             }
-            Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("عدد المواضع في كل مراجعة", Modifier.weight(1f), fontSize = 15.sp)
-                HifzSettings.PerDayChoices.forEach { n ->
-                    FilterChip(selected = settings.perDay == n, onClick = { onChange(settings.copy(perDay = n)) }, label = { Text("$n") }, modifier = Modifier.padding(start = 6.dp),
-                        colors = FilterChipDefaults.filterChipColors(selectedContainerColor = GreenPrimary, selectedLabelColor = Color.White))
+            val stacked = LocalDensity.current.fontScale > 1.3f
+            val perRound: @Composable () -> Unit = {
+                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    HifzSettings.PerDayChoices.forEach { n ->
+                        FilterChip(selected = settings.perDay == n, onClick = { onChange(settings.copy(perDay = n)) }, label = { Text("$n") },
+                            colors = FilterChipDefaults.filterChipColors(selectedContainerColor = GreenPrimary, selectedLabelColor = Color.White))
+                    }
                 }
+            }
+            if (stacked) Column(Modifier.padding(vertical = 6.dp)) {
+                Text("عدد المواضع في الجولة الواحدة", fontSize = 15.sp)
+                perRound()
+            } else Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text("عدد المواضع في الجولة الواحدة", Modifier.weight(1f), fontSize = 15.sp)
+                perRound()
             }
             HorizontalDivider(color = CardBorder)
             HifzSwitch("إظهار مواضعي على الصفحات", settings.markers) { onChange(settings.copy(markers = it)) }
-            HifzSwitch("تنبيه قبل الموضع أثناء الاستماع", settings.headsUp) { onChange(settings.copy(headsUp = it)) }
-            HifzSwitch("توقف قبل الموضع لأسمّعه", settings.stopBefore) { onChange(settings.copy(stopBefore = it)) }
-            HifzSwitch("اعرض «قبل التسميع» حين أفتح سورة فيها مواضع", settings.briefing) { onChange(settings.copy(briefing = it)) }
+            // One choice: a heads-up and a stop before the same verse would contradict each other.
+            val before = when {
+                settings.stopBefore -> HifzBeforePoint.Stop
+                settings.headsUp -> HifzBeforePoint.HeadsUp
+                else -> HifzBeforePoint.Nothing
+            }
+            HifzChoice("قبل الموضع أثناء الاستماع", before.label, HifzBeforePoint.entries.map { it to it.label }) { chosen ->
+                onChange(settings.copy(headsUp = chosen == HifzBeforePoint.HeadsUp, stopBefore = chosen == HifzBeforePoint.Stop))
+            }
+            Text(before.detail, fontSize = 12.sp, color = TextMuted)
+            HifzSwitch("اقترح «قبل التسميع» حين أبدأ حزبا فيه مواضع", settings.briefing) { onChange(settings.copy(briefing = it)) }
             HorizontalDivider(color = CardBorder)
-            HifzChoice("مهلة للترديد في التدريب", gapLabel(settings.drillGap), listOf(0f, 0.5f, 1f, 2f).map { it to gapLabel(it) }) {
+            HifzChoice("مهلة للترديد في «درّب»", gapLabel(settings.drillGap), listOf(0f, 0.5f, 1f, 2f).map { it to gapLabel(it) }) {
                 onChange(settings.copy(drillGap = it))
             }
-            HifzChoice("السرعة في التدريب", speedLabel(settings.drillSpeed), listOf(0.75f, 1f).map { it to speedLabel(it) }) {
+            HifzChoice("السرعة في «درّب»", speedLabel(settings.drillSpeed), listOf(0.75f, 1f).map { it to speedLabel(it) }) {
                 onChange(settings.copy(drillSpeed = it))
             }
         }

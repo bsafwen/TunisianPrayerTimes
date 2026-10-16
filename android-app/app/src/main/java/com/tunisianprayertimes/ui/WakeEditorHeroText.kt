@@ -30,6 +30,14 @@ internal fun formatWakeCountdownDuration(remainingMillis: Long): String {
     ).joinToString(separator = " و")
 }
 
+/**
+ * Time left until [targetMillis] as the clock reads it: the whole minutes between the two clock times, so a
+ * countdown agrees with the time written beside it (a check due at 05:14:46 is 4 minutes after 05:10, not 5).
+ * For a ring on a whole minute this is the same as rounding the time left up.
+ */
+internal fun wakeClockCountdownMillis(targetMillis: Long, nowMillis: Long): Long =
+    (Math.floorDiv(targetMillis, MINUTE_MILLIS) - Math.floorDiv(nowMillis, MINUTE_MILLIS)) * MINUTE_MILLIS
+
 internal fun wakeHeroRelativeDay(
     triggerAtMillis: Long,
     nowMillis: Long,

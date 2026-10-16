@@ -61,7 +61,6 @@
     <string name="next_prayer_countdown_at">عند %1$s</string>
     <string name="next_prayer_countdown_at_tomorrow">غدًا عند %1$s</string>
     <string name="next_prayer_countdown_tomorrow">غدًا</string>
-    <string name="next_prayer_verse">﴿ وَأَقِمِ الصَّلَاةَ لِذِكْرِيَ ﴾</string>
     <string name="col_prayer">الصلاة</string>
     <string name="col_time">الوقت</string>
     <string name="col_delay">التأخير</string>
@@ -281,6 +280,14 @@
     <string name="wake_timeline_a11y_extra">تنبيه إضافي %1$s، %2$s</string>
     <string name="wake_timeline_state_rung">رنّ</string>
     <string name="wake_timeline_state_next">التالي</string>
+    <string name="wake_timeline_awake_check">التأكيد</string>
+    <string name="wake_timeline_a11y_awake_check">تأكيد الاستيقاظ %1$s</string>
+    <string name="wake_alarm_hero_awake_check_title">تأكيد الاستيقاظ</string>
+    <string name="wake_alarm_hero_awake_check_countdown">يبدأ بعد %1$s</string>
+    <string name="wake_alarm_hero_awake_check_due">يبدأ خلال لحظات</string>
+    <string name="wake_alarm_hero_ringing_title">يرن الآن</string>
+    <string name="wake_alarm_hero_waiting_title">في الانتظار</string>
+    <string name="wake_alarm_hero_ring_due">يرن خلال لحظات</string>
     <string name="wake_alarm_empty_title">ابدأ بمنبه بسيط</string>
     <string name="wake_alarm_empty_body_modern">أضف منبها واحدا، ثم خصص الصوت وتحدي الإيقاف عند الحاجة.</string>
     <string name="wake_alarm_empty_body">لا توجد منبهات بعد. أضف منبها جديدا، ثم اختر له وقتا ثابتا أو اربطه بصلاة أو اضبطه بعد مدة من الآن.</string>
@@ -457,6 +464,8 @@
     <string name="wake_alarm_row_next_extra">التالي %1$s: تنبيه إضافي %2$s</string>
     <string name="wake_alarm_row_off">متوقف</string>
     <string name="wake_alarm_row_in_progress">جارٍ الآن</string>
+    <string name="wake_alarm_row_awake_check_at">تأكيد الاستيقاظ عند %1$s</string>
+    <string name="wake_alarm_row_awake_check_running">بانتظار تأكيد الاستيقاظ</string>
     <string name="wake_alarm_row_skipped">تم تخطي منبه %1$s</string>
     <string name="wake_alarm_row_extras">%1$s: %2$s</string>
     <plurals name="wake_alarm_row_extra_count">

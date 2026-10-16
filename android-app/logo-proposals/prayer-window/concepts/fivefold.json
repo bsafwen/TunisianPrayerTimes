@@ -1,0 +1,20 @@
+{
+  "id": "fivefold",
+  "name": "Fivefold",
+  "tag": "Folded geometry / five prayers",
+  "group": "creative",
+  "file": "concepts/fivefold.svg",
+  "summary": "Five folded facets gather around a shared center. A compact geometric emblem for a day shaped by prayer.",
+  "why": "Five distinct facets represent the five daily prayers. Their oblique edges create a folded, architectural rhythm, while the open center gives the mark room to breathe. One terracotta facet brings the next prayer into focus.",
+  "risk": "The abstract geometry needs the app name to establish its prayer meaning, and can initially suggest a camera aperture.",
+  "key1": "Five folded facets",
+  "sub1": "Five prayers across the day",
+  "key2": "A shared open center",
+  "sub2": "One continuous daily practice",
+  "palette": {
+    "background": "#ECE7DB",
+    "ink": "#263F49",
+    "sun": "#D05A36",
+    "name": "FIVEFOLD / LIMESTONE + TERRACOTTA"
+  }
+}

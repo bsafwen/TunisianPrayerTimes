@@ -1,0 +1,15 @@
+{
+  "id": "sanctuary",
+  "name": "Sanctuary",
+  "tag": "Prayer / an intimate refuge",
+  "file": "concepts/sanctuary.svg",
+  "summary": "A warm prayer place held within two protective walls. An intimate space for stillness, drawn as a sculptural sign.",
+  "why": "A folded wall frames an open interior, with a small warm plane at its heart. Seeing the prayer place from above makes this a symbol of entering a quiet space rather than another mosque silhouette. The open front keeps the gesture welcoming.",
+  "risk": "The abstract room can suggest architecture or interiors; the app name establishes its connection to prayer.",
+  "key1": "Protective walls",
+  "sub1": "Leave the noise outside",
+  "key2": "A warm prayer place",
+  "sub2": "An intimate refuge",
+  "palette": {"background": "#EEDDCB", "ink": "#593D56", "sun": "#BD7650", "name": "SANCTUARY / SAND + AUBERGINE"},
+  "group": "serenity"
+}

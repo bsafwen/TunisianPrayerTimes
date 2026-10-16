@@ -92,8 +92,14 @@ val Kufi = FontFamily(
     Font(R.font.reem_kufi, FontWeight.Bold),
 )
 
-/** Amiri: the Quran, the adhkar and the duas, with their full vowel marks. */
+/** Amiri: the adhkar and the duas, with their full vowel marks. */
 val Amiri = FontFamily(Font(R.font.amiri, FontWeight.Normal))
+
+/**
+ * The Quran as the app's Qaloon mushaf prints it ([com.tunisianprayertimes.adhkar.MushafPassages]): Amiri Quran redrawn
+ * with the mushaf's marks (scripts/mushaf_font/build_font.py, SIL Open Font License), the phone app's font.
+ */
+val Mushaf = FontFamily(Font(R.font.mushaf_qaloun, FontWeight.Normal))
 
 /**
  * A text style in one of the three families. [lineHeight] is a multiple of the size, the mockups' CSS

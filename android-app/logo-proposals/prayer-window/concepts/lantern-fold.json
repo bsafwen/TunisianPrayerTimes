@@ -1,0 +1,20 @@
+{
+  "id": "lantern-fold",
+  "name": "Lantern Fold",
+  "tag": "Light / guidance",
+  "file": "concepts/lantern-fold.svg",
+  "summary": "A lantern reduced to a folded jewel, with a small light held inside.",
+  "why": "A faceted body and a floating cap turn the lantern into a compact emblem. The open center makes the light feel protected, suggesting guidance and moments of reading or prayer after dark.",
+  "risk": "Lanterns may suggest Ramadan more strongly than year-round prayer; this is a cultural direction rather than a feature diagram.",
+  "key1": "The folded shell",
+  "sub1": "Care and protection",
+  "key2": "The inner light",
+  "sub2": "Guidance and reflection",
+  "group": "creative",
+  "palette": {
+    "background": "#26344C",
+    "ink": "#E8AB5A",
+    "sun": "#FFF1D9",
+    "name": "MIDNIGHT / COPPER / LAMPLIGHT"
+  }
+}

@@ -34,12 +34,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranCatalog
+import com.tunisianprayertimes.quran.QuranDivisions
+import com.tunisianprayertimes.quran.QuranGoTo
 import com.tunisianprayertimes.quran.QuranSearchHit
 import com.tunisianprayertimes.quran.QuranSearchKind
 import com.tunisianprayertimes.quran.QuranSearchResult
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.quranMatchRanges
+import com.tunisianprayertimes.quran.quranGoTo
+import com.tunisianprayertimes.quran.quranNameKey
 import com.tunisianprayertimes.ui.theme.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -71,6 +76,14 @@ internal class QuranSearchState {
         val name = surah
         if (name == null) results else results.filter { it.surahName == name }
     }
+
+    fun updateQuery(value: String) {
+        query = value
+        surah = null
+        current = -1
+        results = emptyList()
+        searching = value.isNotBlank()
+    }
 }
 
 private val QuranSearchStateSaver = listSaver<QuranSearchState, Any>(
@@ -97,9 +110,11 @@ internal fun rememberQuranSearch(catalog: QuranCatalog?): QuranSearchState {
             state.results = emptyList()
             if (query.isNotBlank()) {
                 delay(180)
-                state.results = withContext(Dispatchers.Default) { index.search(query) }
+                val results = withContext(Dispatchers.Default) { index.search(query) }
+                if (state.query != query) return@collectLatest
+                state.results = results
             }
-            state.searching = false
+            if (state.query == query) state.searching = false
         }
     }
     return state
@@ -157,19 +172,38 @@ internal fun QuranResultStepper(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun QuranSearchSheet(
+    catalog: QuranCatalog,
+    divisions: QuranDivisions?,
     search: QuranSearchState,
     recents: List<String>,
     onClearRecents: () -> Unit,
     onDismiss: () -> Unit,
     /** The position of the tapped result among [QuranSearchState.visible]. */
     onResult: (Int) -> Unit,
+    onPlayResult: (Int) -> Unit,
+    onLocation: (QuranGoTo, Boolean) -> Unit,
 ) {
     val context = LocalContext.current
     var showSources by rememberSaveable { mutableStateOf(false) }
     val focus = LocalFocusManager.current
     val scope = rememberCoroutineScope()
     val visible = search.visible
-    var shown by remember(search.query, search.surah) { mutableIntStateOf(FirstResults) }
+    var shown by remember(search.query, search.surah) { mutableIntStateOf(maxOf(FirstResults, search.current + 1)) }
+    // Verse references use the text results below, keeping one preview and one highlight path.
+    val locations = remember(search.query, catalog, divisions) {
+        val key = quranNameKey(search.query)
+        val namedSurahs = if (key.isEmpty() || key.first().isDigit()) emptyList() else {
+            catalog.surahs.filter { quranNameKey(it.name).contains(key) }.map { QuranGoTo.Surah(it.number) }
+        }
+        (quranGoTo(search.query, catalog.surahs, QuranScanCount + 1).filter {
+            it !is QuranGoTo.Verse && (it !is QuranGoTo.Hizb || divisions?.hizbStart(it.number) != null)
+        } + namedSurahs).distinct()
+    }
+    fun updateQuery(value: String) {
+        if (value == search.query) return
+        search.updateQuery(value)
+        scope.launch { search.listState.scrollToItem(0) }
+    }
     // A long list is narrowed by chapter; the most hit chapters come first.
     val chapters = remember(search.results) {
         search.results.groupingBy { it.surahName }.eachCount().entries
@@ -179,12 +213,12 @@ internal fun QuranSearchSheet(
         Column(Modifier.fillMaxWidth().quranSheetHeight().padding(horizontal = 16.dp)) {
             QuranPanelHeader("البحث في القرآن", onDismiss)
             OutlinedTextField(
-                value = search.query, onValueChange = { search.query = it; search.surah = null },
+                value = search.query, onValueChange = ::updateQuery,
                 modifier = Modifier.fillMaxWidth().testTag("quran_search_input"),
-                placeholder = { Text("كلمات من الآية، أو رقمها مثل 2:25") }, singleLine = true,
+                placeholder = { Text("سورة، صفحة، أو كلمات من آية") }, singleLine = true,
                 leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null) },
                 trailingIcon = {
-                    if (search.query.isNotEmpty()) IconButton(onClick = { search.query = ""; search.surah = null }) {
+                    if (search.query.isNotEmpty()) IconButton(onClick = { updateQuery("") }) {
                         Icon(painterResource(R.drawable.ic_adhkar_close), "مسح البحث")
                     }
                 },
@@ -193,11 +227,11 @@ internal fun QuranSearchSheet(
             )
             Text(
                 when {
-                    search.query.isBlank() -> "ابحث مع التشكيل أو بدونه"
+                    search.query.isBlank() -> "مثال: طه، صفحة 321، طه:130، حزب 12 · أو كلمات مع التشكيل أو بدونه"
                     search.searching -> "جارٍ البحث…"
-                    search.results.isEmpty() -> "لا توجد نتائج. جرّب كلمة أخرى."
+                    search.results.isEmpty() && locations.isEmpty() -> "لا توجد نتائج. جرّب اسم سورة أو رقم صفحة أو كلمات من آية."
                     search.surah != null -> "${quranNumber(visible.size)} نتيجة في سورة ${search.surah} · اضغط لفتح الصفحة"
-                    else -> "${quranNumber(search.results.size)} نتيجة · اضغط لفتح الصفحة"
+                    else -> "${quranNumber(search.results.size + locations.size)} نتيجة · اضغط لفتح الصفحة"
                 },
                 Modifier.padding(vertical = 12.dp), fontSize = 12.sp, color = TextMuted,
             )
@@ -209,7 +243,7 @@ internal fun QuranSearchSheet(
                     FilterChip(
                         selected = search.surah == null,
                         onClick = { search.surah = null; scope.launch { search.listState.scrollToItem(0) } },
-                        label = { Text("الكل (${quranNumber(search.results.size)})") },
+                        label = { Text("الكل (${quranNumber(search.results.size + locations.size)})") },
                     )
                 }
                 items(chapters, key = { it.key }) { (name, count) ->
@@ -235,13 +269,25 @@ internal fun QuranSearchSheet(
                         Text(
                             recent,
                             Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White)
-                                .clickable { search.query = recent; search.surah = null }.padding(14.dp).testTag("quran_recent_search"),
+                                .clickable { updateQuery(recent) }.padding(14.dp).testTag("quran_recent_search"),
                             fontSize = 16.sp, color = TextDark,
                         )
                     }
                 }
+                if (search.surah == null) {
+                    items(locations, key = { "location:$it" }) { location ->
+                        QuranSearchLocationRow(location, catalog, divisions) { play ->
+                            focus.clearFocus()
+                            onLocation(location, play)
+                        }
+                    }
+                }
                 itemsIndexed(visible.take(shown)) { position, result ->
-                    QuranSearchResultRow(result, search.query, onClick = { focus.clearFocus(); onResult(position) })
+                    QuranSearchResultRow(
+                        result, search.query,
+                        onClick = { focus.clearFocus(); onResult(position) },
+                        onPlay = { focus.clearFocus(); onPlayResult(position) },
+                    )
                 }
                 if (visible.size > shown) item {
                     TextButton(onClick = { shown += FirstResults }, modifier = Modifier.fillMaxWidth()) {
@@ -267,27 +313,78 @@ internal fun QuranSearchSheet(
 }
 
 @Composable
-private fun QuranSearchResultRow(result: QuranSearchResult, query: String, onClick: () -> Unit) {
-    // The words that matched wear the colour the verse gets on the page.
+private fun QuranSearchLocationRow(
+    location: QuranGoTo,
+    catalog: QuranCatalog,
+    divisions: QuranDivisions?,
+    onOpen: (Boolean) -> Unit,
+) {
+    val (title, detail) = when (location) {
+        is QuranGoTo.Page -> "انتقال إلى صفحة ${location.printed}" to
+            catalog.pages.getOrNull((location.printed - 1).coerceAtLeast(1) - 1)?.surahNames?.joinToString("، ").orEmpty()
+        is QuranGoTo.Surah -> {
+            val surah = catalog.surahs[location.number - 1]
+            "سورة ${surah.name}" to listOfNotNull(
+                surah.verseCount?.let(::quranVerseCountLabel), quranPageLabel(surah.page),
+            ).joinToString(" · ")
+        }
+        is QuranGoTo.Hizb -> {
+            val start = divisions?.hizbStart(location.number) ?: return
+            "الحزب ${location.number}" to
+                "${catalog.surahs[start.start.surah - 1].name} · الآية ${start.start.ayah} · ${quranPageLabel(start.page)}"
+        }
+        is QuranGoTo.Verse -> return
+    }
+    Row(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White)
+            .clickable { onOpen(false) }.padding(14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(title, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary)
+            if (detail.isNotEmpty()) Text(detail, fontSize = 12.sp, color = TextMuted)
+        }
+        if (location !is QuranGoTo.Page) IconButton(onClick = { onOpen(true) }) {
+            Icon(painterResource(R.drawable.ic_play_arrow), "استمع إلى $title", tint = GreenPrimary)
+        }
+    }
+}
+
+@Composable
+private fun QuranSearchResultRow(result: QuranSearchResult, query: String, onClick: () -> Unit, onPlay: () -> Unit) {
+    // The words that matched wear the colour the verse gets on the page. They are found in the bundled text and
+    // shown in the mushaf's spelling, word for word.
     val text = remember(result, query) {
+        val matched = if (result.kind == QuranSearchKind.Reference) emptyList()
+            else quranMatchRanges(result.text, query, similar = result.kind == QuranSearchKind.Similar)
         buildAnnotatedString {
-            append(result.text)
-            if (result.kind != QuranSearchKind.Reference) {
-                quranMatchRanges(result.text, query, similar = result.kind == QuranSearchKind.Similar).forEach {
-                    addStyle(SpanStyle(background = QuranFoundColor), it.first, it.last + 1)
+            var offset = 0
+            val tokens = result.text.split(' ')
+            tokens.zip(QuranMushafText.words(tokens)).forEach { (token, shown) ->
+                val start = offset
+                offset += token.length + 1
+                if (shown.isEmpty()) return@forEach
+                if (length > 0) append(' ')
+                val from = length
+                append(shown)
+                if (matched.any { it.first < start + token.length && it.last >= start }) {
+                    addStyle(SpanStyle(background = QuranFoundColor), from, length)
                 }
             }
         }
     }
     Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White).clickable(onClick = onClick).padding(14.dp)) {
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text(
                 "${result.surahName} · ${quranVerseLabel(result.verses)}",
                 Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary,
             )
             Text(quranPageLabel(result.page), fontSize = 12.sp, color = TextMuted)
+            IconButton(onClick = onPlay) {
+                Icon(painterResource(R.drawable.ic_play_arrow), "استمع إلى الآية", tint = GreenPrimary)
+            }
         }
-        Text(text, Modifier.padding(top = 8.dp), fontFamily = AdhkarReadingFont, fontSize = 22.sp, lineHeight = 36.sp, color = TextDark)
+        Text(text, Modifier.padding(top = 8.dp), fontFamily = QuranMushafFont, fontSize = 22.sp, lineHeight = 36.sp, color = TextDark)
         when (result.kind) {
             QuranSearchKind.Reference -> "الانتقال إلى الآية"
             QuranSearchKind.Words -> "الكلمات كلها في الآية نفسها"

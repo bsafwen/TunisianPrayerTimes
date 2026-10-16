@@ -1,0 +1,19 @@
+{
+  "id": "dawn-switch",
+  "name": "Dawn Switch",
+  "tag": "Wake for Fajr",
+  "file": "concepts/dawn-switch.svg",
+  "summary": "A wake switch becomes a rising sun, connecting automation to the start of the prayer day.",
+  "why": "A short switch body meets a sun split by a clear horizon. The low, asymmetric silhouette links the app's wake alarms and automatic routines to dawn, without adding alarm-clock details.",
+  "risk": "The sunrise can suggest weather; the switch shape needs the app context to convey waking.",
+  "key1": "The switch",
+  "sub1": "Automatic routines",
+  "key2": "Split sunlight",
+  "sub2": "Wake for Fajr",
+  "palette": {
+    "background": "#193747",
+    "ink": "#EFF3EA",
+    "sun": "#FFA66B",
+    "name": "DEEP PETROL / CHALK / DAWN"
+  }
+}

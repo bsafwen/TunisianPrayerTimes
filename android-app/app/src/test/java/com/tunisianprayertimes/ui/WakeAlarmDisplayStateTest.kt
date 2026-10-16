@@ -86,6 +86,24 @@ class WakeAlarmDisplayStateTest {
         assertEquals(listOf(disabledFixedAlarm), state.visibleWakeAlarms)
     }
 
+    @Test
+    fun expiredFromNowAlarmInProgress_remainsVisible() {
+        // Its rings are over but its awake check is still to come.
+        val timerWithPendingCheck = fromNowAlarm(
+            id = "timer-awaiting-check",
+            triggerAtMillis = nowMillis - 60_000L,
+        )
+
+        val state = wakeAlarmDisplayState(
+            wakeAlarms = listOf(timerWithPendingCheck),
+            nowMillis = nowMillis,
+            inProgressAlarmIds = setOf("timer-awaiting-check"),
+        )
+
+        assertFalse(state.showEmptyState)
+        assertEquals(listOf(timerWithPendingCheck), state.visibleWakeAlarms)
+    }
+
     private fun fromNowAlarm(
         id: String,
         triggerAtMillis: Long,

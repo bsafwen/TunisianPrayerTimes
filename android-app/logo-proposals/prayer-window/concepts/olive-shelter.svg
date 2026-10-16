@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Olive Shelter - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F0EAD7"/>
+  <path fill="#526443" d="M51 74C35 73 26 60 30 42C47 42 57 55 51 74Z"/>
+  <path fill="#526443" d="M53 54C48 38 58 27 76 31C77 47 67 59 53 54Z"/>
+  <path fill="#526443" d="M48 77C48 63 51 54 58 44C59 43 61 45 60 46C54 57 52 66 52 77C52 80 48 80 48 77Z"/>
+  <circle cx="63" cy="66" r="7.5" fill="#C98940"/>
+</svg>

@@ -3,6 +3,7 @@ package com.tunisianprayertimes.mosque
 import com.tunisianprayertimes.adhkar.DhikrCatalog
 import com.tunisianprayertimes.adhkar.DhikrCategory
 import com.tunisianprayertimes.adhkar.DhikrEntry
+import com.tunisianprayertimes.adhkar.MushafPassages
 import com.tunisianprayertimes.adhkar.countForCollection
 import com.tunisianprayertimes.adhkar.referenceForCollection
 import kotlin.math.abs
@@ -12,6 +13,7 @@ import kotlin.math.ceil
  * One screen of the mosque's adhkar: [text] to be said [count] times, with its [reference].
  * [entryId] is the reviewed catalog entry, or null for a mosque's own text from the USB file.
  * A multi-part item (the 33/33/33/1 tasbih) or a long text shows as several slides: [part] of [parts].
+ * A [mushaf] text is Qur'an as the mushaf prints it ([MushafPassages]), for the mushaf font.
  */
 data class AdhkarSlide(
     val entryId: String?,
@@ -21,6 +23,7 @@ data class AdhkarSlide(
     val durationMillis: Long,
     val part: Int = 1,
     val parts: Int = 1,
+    val mushaf: Boolean = false,
 )
 
 /** One line of the adhan screen: what the listener says. A [fajrOnly] line answers the phrase only Fajr's adhan has. */
@@ -134,10 +137,16 @@ object MosqueAdhkar {
      */
     fun tickerSlides(item: MosqueDhikr): List<AdhkarSlide> = when (item) {
         is ReviewedDhikr -> DhikrCatalog.find(item.id)?.let { entry ->
-            slides(entry.copy(text = oneLine(entry.text)), null, 1).map { it.copy(count = 1, durationMillis = AdhkarPacer.durationMillis(it.text, 1)) }
+            slides(entry, null, 1, oneLine(shownText(entry))).map { it.copy(count = 1, durationMillis = AdhkarPacer.durationMillis(it.text, 1)) }
         }.orEmpty()
         is CustomDhikr -> ownSlides(item.copy(text = oneLine(item.text), count = 1))
     }
+
+    /**
+     * The words a reviewed text is shown with: a Qur'an passage as the mushaf prints it ([MushafPassages], for the
+     * mushaf font), any other text as the catalog words it. It is what the screen pages and paces.
+     */
+    fun shownText(entry: DhikrEntry): String = MushafPassages.text(entry.id) ?: entry.text
 
     /** [text] with its line breaks and runs of spaces as single spaces. */
     private fun oneLine(text: String): String = text.trim().replace(WHITESPACE, " ")
@@ -211,8 +220,9 @@ object MosqueAdhkar {
      * long text. [countOverride] is the mosque's count; a text said in steps keeps its own. The source
      * is the part of the entry's that concerns [category], when the catalog gives one.
      */
-    private fun slides(entry: DhikrEntry, category: DhikrCategory?, countOverride: Int?): List<AdhkarSlide> {
+    private fun slides(entry: DhikrEntry, category: DhikrCategory?, countOverride: Int?, text: String = shownText(entry)): List<AdhkarSlide> {
         val reference = entry.referenceForCollection(category)
+        val mushaf = entry.id in MushafPassages.ids
         if (entry.steps.isNotEmpty()) {
             return entry.steps.mapIndexed { index, step ->
                 AdhkarSlide(entry.id, step.text, reference, step.repetitions,
@@ -220,13 +230,13 @@ object MosqueAdhkar {
             }
         }
         val count = countOverride ?: entry.countForCollection(category)
-        val pages = AdhkarPacer.pages(entry.text)
+        val pages = AdhkarPacer.pages(text)
         if (pages.size == 1) {
-            return listOf(AdhkarSlide(entry.id, entry.text, reference, count, AdhkarPacer.durationMillis(entry.text, count)))
+            return listOf(AdhkarSlide(entry.id, text, reference, count, AdhkarPacer.durationMillis(text, count), mushaf = mushaf))
         }
         // A long text is read page by page, and whole again for each repetition (at most three).
         val once = pages.mapIndexed { index, page ->
-            AdhkarSlide(entry.id, page, reference, 1, AdhkarPacer.durationMillis(page, 1), index + 1, pages.size)
+            AdhkarSlide(entry.id, page, reference, 1, AdhkarPacer.durationMillis(page, 1), index + 1, pages.size, mushaf)
         }
         return List(count.coerceIn(1, MAX_PAGED_REPETITIONS)) { once }.flatten()
     }

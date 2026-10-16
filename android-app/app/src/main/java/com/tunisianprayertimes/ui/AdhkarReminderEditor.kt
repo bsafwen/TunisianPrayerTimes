@@ -310,9 +310,8 @@ import org.json.JSONObject
                             Text(collection?.let(::reminderCollectionTitle) ?: selectedEntry?.title ?: "اختر ذكرًا",
                                 color = if (collection == null && selectedEntry == null) p.primary else AdhkarHeading,
                                 fontWeight = FontWeight.Bold, fontSize = 16.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                            if (collection == null && selectedEntry != null) Text(dhikrPreview(selectedEntry.text),
-                                color = p.muted, fontFamily = AdhkarReadingFont, fontSize = 12.sp, lineHeight = 22.sp,
-                                maxLines = 2, overflow = TextOverflow.Ellipsis)
+                            if (collection == null && selectedEntry != null) DhikrPreview(selectedEntry.id, dhikrPreview(selectedEntry.text),
+                                p.muted, 12.sp, maxLines = 2, lineHeight = 22.sp)
                             else Text(when {
                                 collection != null -> collectionSubtitle(repoState, collection)
                                 selectedId.isEmpty() -> "اضغط لاختيار الذكر الذي تريد التذكير به."
@@ -633,7 +632,7 @@ import org.json.JSONObject
                     }
                     items(results, key = { it.id }) { entry ->
                         PickerRow(entry.title, remember(entry.id) { dhikrPreview(entry.text) }, AdhkarReadingFont,
-                            selected = collection == null && entry.id == selectedId) {
+                            selected = collection == null && entry.id == selectedId, previewId = entry.id) {
                             // A goal the user set stays; one that only followed the previous dhikr, the reading it
                             // was opened from or a ready-made option follows the new one.
                             val followed = collection != null || steppedEntry != null ||
@@ -865,14 +864,15 @@ private fun ToggleRow(title: String, subtitle: String, checked: Boolean, onChang
 
 /** One choice of the dhikr picker; the check mark is said by the screen reader as the selected state. */
 @Composable
-private fun PickerRow(title: String, subtitle: String, subtitleFont: FontFamily?, selected: Boolean, onClick: () -> Unit) {
+private fun PickerRow(title: String, subtitle: String, subtitleFont: FontFamily?, selected: Boolean,
+                      previewId: String? = null, onClick: () -> Unit) {
     val p = LocalAdhkarPalette.current
     Row(Modifier.fillMaxWidth().selectable(selected, role = Role.RadioButton, onClick = onClick).padding(vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
             Text(title, color = AdhkarHeading, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
                 maxLines = 1, overflow = TextOverflow.Ellipsis)
-            Text(subtitle, color = p.muted, fontFamily = subtitleFont, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            DhikrPreview(previewId.orEmpty(), subtitle, p.muted, 12.sp, maxLines = 1, font = subtitleFont)
         }
         if (selected) DhikrIcon(R.drawable.ic_adhkar_check, tint = p.primary, modifier = Modifier.size(18.dp))
     }

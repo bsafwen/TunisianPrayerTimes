@@ -16,6 +16,13 @@
   font-weight: 400;
   font-display: swap;
 }
+/* The Qur'an passages, as the mushaf prints them and the screen shows them: the app's mushaf font. */
+@font-face {
+  font-family: "Mushaf Qaloun";
+  src: url("fonts/mushaf-qaloun.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
 :root {
   color-scheme: light;
   --page: #EFECE4;
@@ -194,6 +201,7 @@ button.primary:focus-visible, .tabs button[aria-current="page"]:focus-visible { 
 .reference { font-size: 12px; color: var(--muted); }
 .id { font: 11px/1.4 ui-monospace, "Cascadia Mono", Menlo, monospace; color: var(--muted); overflow-wrap: anywhere; }
 .sacred, .dhikr-text { font-family: var(--sacred); font-size: 20px; line-height: 1.9; }
+.mushaf, details.dhikr.mushaf summary { font-family: "Mushaf Qaloun", var(--sacred); font-size: 22px; line-height: 2; }
 .dhikr-text { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 ol.dhikr-text { white-space: normal; padding-inline-start: 22px; }
 textarea.sacred { font-size: 18px; min-height: 90px; }

@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.mosque
 
 import com.tunisianprayertimes.adhkar.DhikrCatalog
+import com.tunisianprayertimes.adhkar.MushafPassages
 import com.tunisianprayertimes.adhkar.DhikrCategory
 import com.tunisianprayertimes.adhkar.DhikrNarrations
 import com.tunisianprayertimes.adhkar.referenceForCollection
@@ -45,14 +46,14 @@ class MosqueAdhkarTest {
     @Test
     fun afterThePrayerASourceCitesTheAfterPrayerOccasionOnly() {
         val slides = MosqueAdhkar.afterSalah()
-        // Not the morning and bedtime practices, nor «القرآن 112», which reads like a verse number.
-        assertEquals("سورة الإخلاص؛ دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)", slides.single { it.entryId == "surah_ikhlas" }.reference)
-        assertEquals("سورة الناس؛ دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)", slides.single { it.entryId == "surah_nas" }.reference)
+        // Not the morning and bedtime hadiths, nor «القرآن 112», which reads like a verse number.
+        assertEquals("سورة الإخلاص؛ سنن أبي داود 1523 (صحيح)", slides.single { it.entryId == "surah_ikhlas" }.reference)
+        assertEquals("سورة الناس؛ سنن أبي داود 1523 (صحيح)", slides.single { it.entryId == "surah_nas" }.reference)
         val kursi = slides.filter { it.entryId == "ayat_kursi" }.map { it.reference }.distinct().single()
-        assertTrue(kursi.startsWith("البقرة 253–254") && "للنسائي" in kursi && "النوم" !in kursi, kursi)
-        // The after-prayer clause is the catalog's own, reviewed with the whole source.
+        assertTrue(kursi.startsWith("البقرة 253–254") && "للنسائي" in kursi && "البخاري" !in kursi, kursi)
+        // The after-prayer hadith is the catalog's own, reviewed with the whole source.
         val ikhlas = DhikrCatalog.find("surah_ikhlas")!!
-        assertTrue("دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)" in ikhlas.reference)
+        assertTrue("سنن أبي داود 1523 (صحيح)" in ikhlas.reference)
         // Elsewhere the whole source stays: the phone's collections, the ticker.
         assertEquals(ikhlas.reference, ikhlas.referenceForCollection(DhikrCategory.MORNING))
         assertEquals(ikhlas.reference, MosqueAdhkar.tickerSlides(ReviewedDhikr("surah_ikhlas")).first().reference)
@@ -66,6 +67,20 @@ class MosqueAdhkarTest {
         assertTrue(slides.filter { it.entryId == DhikrCatalog.SALAH_HUNDRED_ID && it.count == 33 }.all { it.durationMillis >= 82_500 })
         assertTrue(slides.filter { it.entryId == "ayat_kursi" }.sumOf { it.durationMillis } >= 20_000)
         assertEquals(AdhkarPacer.MAX_SLIDE_MILLIS, AdhkarPacer.durationMillis("سبحان الله", 1000))
+    }
+
+    @Test
+    fun quranTextsAreShownAsTheMushafPrintsThem() {
+        // Ayat al-Kursi as the mushaf prints it: paged at its verse end or a waqf sign, whole again when put together,
+        // and a verse number never opens a page (it is bound to the word it ends).
+        val kursi = MushafPassages.text("ayat_kursi")!!
+        val slides = MosqueAdhkar.afterSalahSlides(ReviewedDhikr("ayat_kursi", count = 1))
+        assertEquals(kursi, slides.joinToString("") { it.text })
+        assertTrue(slides.size > 1 && slides.all { it.mushaf && it.entryId == "ayat_kursi" })
+        assertTrue(slides.dropLast(1).all { Regex("""(۝[0-9]+|[ۖۗۚ])\s*$""").containsMatchIn(it.text) })
+        assertTrue(slides.none { it.text.trimStart().startsWith("۝") })
+        // A text that is not the Qur'an keeps the catalog's words, in the adhkar's font.
+        assertTrue(MosqueAdhkar.afterSalahSlides(ReviewedDhikr("salah_istighfar")).none { it.mushaf })
     }
 
     @Test
@@ -165,13 +180,14 @@ class MosqueAdhkarTest {
     fun theTickerShowsEveryTextOnOneLine() {
         // Al-Ikhlas has its basmala on a line of its own; a mosque's text and announcement may have several.
         val surah = MosqueAdhkar.tickerSlides(ReviewedDhikr("surah_ikhlas")).single()
-        assertEquals(DhikrCatalog.find("surah_ikhlas")!!.text.replace('\n', ' '), surah.text)
+        assertEquals(MushafPassages.text("surah_ikhlas")!!.replace('\n', ' '), surah.text)
+        assertTrue(surah.mushaf)
         val own = MosqueAdhkar.tickerSlides(CustomDhikr("اللهم\nاغفر لنا\n\n  وارحمنا ", "مأثور")).single()
         assertEquals("اللهم اغفر لنا وارحمنا", own.text)
         val news = MosqueAdhkar.tickerWithAnnouncements(emptyList(), listOf("درس في التفسير\nكل سبت\nبعد صلاة العصر"), "إعلان").single()
         assertEquals("درس في التفسير كل سبت بعد صلاة العصر", news.text)
         // The after-prayer screen keeps the lines.
-        assertEquals(DhikrCatalog.find("surah_ikhlas")!!.text, MosqueAdhkar.afterSalahSlides(ReviewedDhikr("surah_ikhlas")).single().text)
+        assertEquals(MushafPassages.text("surah_ikhlas"), MosqueAdhkar.afterSalahSlides(ReviewedDhikr("surah_ikhlas")).single().text)
     }
 
     @Test
@@ -338,7 +354,7 @@ class MosqueAdhkarTest {
 
     @Test
     fun aCountOnALongReviewedTextRepeatsTheWholeText() {
-        val pages = AdhkarPacer.pages(DhikrCatalog.find("ayat_kursi")!!.text).size
+        val pages = AdhkarPacer.pages(MosqueAdhkar.shownText(DhikrCatalog.find("ayat_kursi")!!)).size
         assertTrue(pages > 1)
         val slides = MosqueAdhkar.afterSalahSlides(ReviewedDhikr("ayat_kursi", count = 3))
         assertEquals(List(3) { (1..pages).toList() }.flatten(), slides.map { it.part })

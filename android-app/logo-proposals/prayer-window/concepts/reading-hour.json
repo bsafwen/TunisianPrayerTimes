@@ -1,0 +1,19 @@
+{
+  "id": "reading-hour",
+  "name": "Reading Hour",
+  "tag": "Quran / daily habit",
+  "file": "concepts/reading-hour.svg",
+  "summary": "A folded bookmark with time at its heart. Quran reading and daily reminders share one compact symbol.",
+  "why": "A solid bookmark makes the reading connection immediate. A clock is cut into its center, joining the Quran reader and saved reading position to the app's daily rhythm and reminders. Violet and fresh lime give the familiar page a contemporary character.",
+  "risk": "Reading leads the identity; the mark may also suit an audiobook or reading-habit app.",
+  "key1": "The folded bookmark",
+  "sub1": "Return to the Quran",
+  "key2": "Time at the center",
+  "sub2": "A daily reading habit",
+  "palette": {
+    "background": "#6851DA",
+    "ink": "#F7F1E6",
+    "sun": "#C5F27D",
+    "name": "READING HOUR / VIOLET & LIME"
+  }
+}

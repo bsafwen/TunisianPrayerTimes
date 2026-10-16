@@ -9,9 +9,15 @@ internal data class WakeAlarmDisplayState(
     val showEmptyState: Boolean,
 )
 
+/**
+ * The alarms the Alarms tab lists. A one-off whose rings are all past is hidden, unless its occurrence is still in
+ * progress ([inProgressAlarmIds]: a ring queued behind a challenge, or its awake check), so it can still be seen and
+ * stopped.
+ */
 internal fun wakeAlarmDisplayState(
     wakeAlarms: List<PrayerWakeConfig>?,
     nowMillis: Long = System.currentTimeMillis(),
+    inProgressAlarmIds: Set<String> = emptySet(),
 ): WakeAlarmDisplayState {
     if (wakeAlarms == null) {
         return WakeAlarmDisplayState(
@@ -21,7 +27,7 @@ internal fun wakeAlarmDisplayState(
     }
 
     val visibleWakeAlarms = wakeAlarms.filterNot { alarm ->
-        alarm.isExpiredFromNowAlarm(nowMillis)
+        alarm.isExpiredFromNowAlarm(nowMillis) && alarm.id !in inProgressAlarmIds
     }
 
     return WakeAlarmDisplayState(

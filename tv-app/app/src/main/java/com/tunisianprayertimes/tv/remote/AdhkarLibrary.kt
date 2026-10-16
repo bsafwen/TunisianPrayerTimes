@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.remote
 
+import com.tunisianprayertimes.adhkar.MushafPassages
 import com.tunisianprayertimes.adhkar.DhikrCatalog
 import com.tunisianprayertimes.adhkar.DhikrCategory
 import com.tunisianprayertimes.adhkar.countForCollection
@@ -37,6 +38,8 @@ object AdhkarLibrary {
                     put("id", entry.id)
                     put("title", entry.title)
                     put("text", entry.text)
+                    // A Qur'an passage as the screen shows it: as the mushaf prints it, for the mushaf font.
+                    MushafPassages.text(entry.id)?.let { put("mushafText", it) }
                     put("reference", entry.reference)
                     put("count", entry.countForCollection(DhikrCategory.SALAH))
                     if (entry.steps.isNotEmpty()) {

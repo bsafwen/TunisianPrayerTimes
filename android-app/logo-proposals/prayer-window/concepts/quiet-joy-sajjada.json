@@ -1,0 +1,20 @@
+{
+  "id": "quiet-joy-sajjada",
+  "name": "Quiet Joy Sajjada",
+  "tag": "A peaceful place for salah",
+  "file": "concepts/quiet-joy-sajjada.svg",
+  "summary": "A softly curved prayer rug shelters a small warm light, carrying Quiet Joy into a place for salah.",
+  "why": "Rounded corners and a short, gently splayed fringe give the rug a soft textile character. Inside, a warm light rests over the same welcoming curve that defines Quiet Joy. The pointed niche makes the place for salah clear.",
+  "risk": "The compact rug may also read as a small protective emblem; the fringe and niche make the prayer connection clearer at launcher size.",
+  "key1": "The softened prayer rug",
+  "sub1": "A personal place for salah",
+  "key2": "A small sheltered light",
+  "sub2": "Comfort and quiet joy",
+  "group": "quiet-joy-prayer",
+  "palette": {
+    "background": "#F3ECDE",
+    "ink": "#24594D",
+    "sun": "#D9A55E",
+    "name": "QUIET JOY / IVORY + JADE + WARM GOLD"
+  }
+}

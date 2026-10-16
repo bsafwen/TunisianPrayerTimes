@@ -1,0 +1,19 @@
+{
+  "id": "dayline",
+  "name": "Dayline",
+  "tag": "Schedule / five appointments",
+  "file": "concepts/dayline.svg",
+  "summary": "Five appointments on one confident rising line. The next prayer comes forward in electric citron.",
+  "why": "Five upright gates share a continuous timeline, turning the app's central job into one compact sign: keep the five daily prayers in view and make the next one clear. The diagonal gives a familiar schedule structure its own silhouette.",
+  "risk": "The meaning depends on the five-prayer story; without the app name it can suggest a schedule or an equalizer.",
+  "key1": "Five fixed gates",
+  "sub1": "The five daily prayers",
+  "key2": "One bright appointment",
+  "sub2": "The next prayer in focus",
+  "palette": {
+    "background": "#1C2634",
+    "ink": "#D7E6EB",
+    "sun": "#D8FF65",
+    "name": "DAYLINE / SLATE + CITRON"
+  }
+}

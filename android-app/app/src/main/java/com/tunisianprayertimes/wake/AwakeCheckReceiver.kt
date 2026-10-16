@@ -45,6 +45,11 @@ class AwakeCheckReceiver : BroadcastReceiver() {
                                 stored != scheduledTriggerAtMillis
                             } == true
                         ) return@launch
+                        // From here the check either starts, and the service reports it, or is dropped; either way
+                        // the Alarms tab must stop counting it as pending.
+                        scheduledTriggerAtMillis?.let { triggerAtMillis ->
+                            AwakeCheckScheduler.markHandled(appContext, eventId, triggerAtMillis)
+                        }
                         val alarmId = wakeAlarmIdFromEventId(eventId)
                         val config = alarmId?.let { PrayerWakeRepository(appContext).getWakeAlarm(it) }
                         val checkTriggerAtMillis = intent.getLongExtra(EXTRA_WAKE_TRIGGER_AT_MILLIS, 0L)

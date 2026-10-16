@@ -1,0 +1,15 @@
+{
+  "id": "jannah-mihrab",
+  "name": "Jannah Mihrab",
+  "tag": "Garden / a place for prayer",
+  "file": "concepts/jannah-mihrab.svg",
+  "summary": "A living garden and spring sit within a pointed prayer niche, making the devotional connection immediate.",
+  "why": "The original garden becomes a small sanctuary: two generous leaves grow inside a pointed mihrab, with a flowing spring across its threshold. The arch is part of the entire silhouette, while the retained forest, celadon, and gold preserve the garden's calm character.",
+  "risk": "The prayer reference is clearer, but the arch brings the direction closer to familiar mosque-based app identities.",
+  "key1": "The pointed mihrab",
+  "sub1": "A clear place for prayer",
+  "key2": "Leaves over a spring",
+  "sub2": "The garden remains alive",
+  "palette": {"background": "#153F3B", "ink": "#C6E5CA", "sun": "#EBC77D", "name": "JANNAH MIHRAB / FOREST + CELADON"},
+  "group": "jannah-variation"
+}

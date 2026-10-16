@@ -25,6 +25,7 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.adhkar.DhikrTime
 import com.tunisianprayertimes.adhkar.DhikrTimeKind
+import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranRepository
 import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.quran.audio.QuranPlaybackService
@@ -40,11 +41,12 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 /**
- * Two kinds of reminders. One optional notification a day, by default 45 minutes after sunrise, with that
- * day's checks: collapsed it names them, expanded it asks each check's question, never its answer, which the review
- * hides until «أظهر»; nothing is posted on a day with no check, and it goes once no check is left that day.
+ * Two kinds of reminders. One optional notification a day, by default 45 minutes after sunrise or after Fajr, with
+ * that day's checks: collapsed it names them, expanded it asks each check's question, never its answer, which the
+ * review hides until «أظهر»; nothing is posted on a day with no check, and it goes once no check is left that day.
  * And, for the points the reader chose so, reminders for a few days after prayers, once the prayer's silence
- * ends, or at clock times: with the right wording only, «استمع» and «حفظتها».
+ * ends, or at clock times: each asks its question first, the right wording only behind «أظهر الصواب», with
+ * «استمع» and «حفظتها».
  */
 object HifzReminder {
     /** The morning reminder of the day's checks. */
@@ -57,9 +59,13 @@ object HifzReminder {
     internal const val ACTION_REMIND = "com.tunisianprayertimes.hifz.REMIND"
     internal const val ACTION_REPEAT = "com.tunisianprayertimes.hifz.REPEAT"
     internal const val ACTION_LEARNED = "com.tunisianprayertimes.hifz.LEARNED"
+    internal const val ACTION_UNLEARN = "com.tunisianprayertimes.hifz.UNLEARN"
+    internal const val ACTION_REVEAL = "com.tunisianprayertimes.hifz.REVEAL"
     private const val EXTRA_DAY = "com.tunisianprayertimes.hifz.extra.DAY"
     private const val EXTRA_TIME = "com.tunisianprayertimes.hifz.extra.TIME"
     private const val EXTRA_IDS = "com.tunisianprayertimes.hifz.extra.IDS"
+    /** The plans «حفظتها» stopped, «id|repeat|until|days» joined by «;», to put them back. */
+    private const val EXTRA_PLANS = "com.tunisianprayertimes.hifz.extra.PLANS"
     /** Later than this, a plan's reminder is dropped: the next one is near. */
     private const val REPEAT_STALE_MS = 3 * 60 * 60_000L
     private val laterDate = DateTimeFormatter.ofPattern("d MMMM", Locale.forLanguageTag("ar-TN-u-nu-latn"))
@@ -92,10 +98,18 @@ object HifzReminder {
         return (0L..2L).firstNotNullOfOrNull { offset ->
             val date = today.plusDays(offset)
             if (date.toEpochDay() == lastDay) return@firstNotNullOfOrNull null
-            DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.SHURUK, offsetMinutes = settings.reminderAfterSunriseMin), date)
-                ?.takeIf { it > now + 30_000L }
+            dailyAt(context, settings, date.toEpochDay())?.takeIf { it > now + 30_000L }
         }
     }
+
+    /** When the daily reminder comes on [day]: after Fajr as the plans' «بعد الفجر», or after sunrise. */
+    private fun dailyAt(context: Context, settings: HifzSettings, day: Long): Long? =
+        if (settings.reminderAfterFajr) afterPrayerAt(context, day, Prayer.FAJR)
+        else DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.SHURUK, offsetMinutes = settings.reminderAfterSunriseMin), LocalDate.ofEpochDay(day))
+
+    /** «بعد الفجر», «بعد الشروق بـ 45 دقيقة»: when the daily reminder comes. */
+    fun dailyTimeLabel(settings: HifzSettings): String =
+        if (settings.reminderAfterFajr) "بعد الفجر" else "بعد الشروق بـ ${settings.reminderAfterSunriseMin} دقيقة"
 
     /** One alarm for the next reminder of the plans, whichever points it brings back. */
     private fun armRepeat(context: Context, alarms: AlarmManager, now: Long) {
@@ -197,21 +211,27 @@ object HifzReminder {
     /** What a recorded point's reminders are now, for its fix sheet. Call off the main thread. */
     fun pointSentence(context: Context, point: HifzPoint, now: Long = System.currentTimeMillis()): String {
         val today = epochDay(now)
-        if (!point.repeatsOn(today)) return dailySentence(context, point.dueDay - today)
+        if (!point.repeatsOn(today)) return dailySentence(context, point.dueDay - today, now)
         val next = listOf(point).nextRepeat(today, now + 30_000L) { day, time -> slotAt(context, day, time) }
         val until = "${repeatPhrase(point.repeat)} حتى ${dayLabel(point.repeatUntil!!, today)}"
         return if (next == null) "يذكّرك به $until." else "يذكّرك به $until. التذكير التالي ${slotLabel(next, today)}."
     }
 
-    private fun dailySentence(context: Context, daysToCheck: Long = 1L): String {
+    private fun dailySentence(context: Context, daysToCheck: Long = 1L, now: Long = System.currentTimeMillis()): String {
         val settings = HifzSettings.read(context)
+        // Due now and today's reminder already gone by: never a promise of a reminder that has passed.
+        if (daysToCheck <= 0L) {
+            val reminded = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getLong("reminded_day", -1L) == epochDay(now)
+            val passed = reminded || (dailyAt(context, settings, epochDay(now))?.let { it <= now } ?: true)
+            if (!settings.reminder || passed) return "موعد مراجعته اليوم: تجده الآن في «مراجعة اليوم»."
+        }
         val day = when {
             daysToCheck <= 0L -> "اليوم"
             daysToCheck == 1L -> "غدًا"
             else -> "يوم مراجعته"
         }
-        return if (settings.reminder) "يظهر في تذكير الصباح $day، بعد الشروق بـ ${settings.reminderAfterSunriseMin} دقيقة، ثم تتباعد مراجعاته كلما أجبت «أتقنتها»."
-        else "التذكير اليومي متوقف في الإعدادات: تجده في المراجعة $day."
+        return if (settings.reminder) "يظهر في تذكير الصباح $day، ${dailyTimeLabel(settings)}، ثم تتباعد مراجعاته كلما أجبت «أتقنتها»."
+        else "تذكير الصباح متوقف في الإعدادات: تجده $day في «مراجعة اليوم»."
     }
 
     /** «بعد كل صلاة», «بعد الفجر والظهر والعشاء», «بعد الفجر وفي الساعة 13:00 و21:30». */
@@ -344,7 +364,7 @@ object HifzReminder {
         val settings = HifzSettings.read(app)
         val due = HifzRepository.points.value.dueToday(today, settings.perDay)
         if (settings.reminder && due.isNotEmpty() && prefs.getLong("reminded_day", -1L) != today) {
-            runCatching { post(app, due, settings) }
+            runCatching { post(app, due, HifzRepository.points.value.count { it.isDue(today) }) }
             prefs.edit().putLong("reminded_day", today).apply()
         }
         refresh(app)
@@ -371,12 +391,21 @@ object HifzReminder {
         refresh(app)
     }
 
-    /** «حفظتها»: the points' plans stop, said in a quiet notification that goes by itself; their spaced checks go on. */
+    /**
+     * «حفظتها»: the points' plans stop, said in a quiet notification that goes by itself, with «تراجع» to put them
+     * back; their spaced checks go on.
+     */
     internal fun learned(context: Context, ids: LongArray) {
         val app = context.applicationContext
         HifzRepository.load(app)
         val points = HifzRepository.points.value.filter { it.id in ids }
         points.forEach { point -> HifzRepository.update(app, point.copy(repeat = HifzRepeat.None, repeatUntil = null)) }
+        val plans = points.filter { !it.repeat.none }.joinToString(";") { "${it.id}|${it.repeat.encode()}|${it.repeatUntil ?: ""}|${it.repeatDays}" }
+        val undo = PendingIntent.getBroadcast(
+            app, REPEAT_NOTIFICATION_ID + 3,
+            Intent(app, HifzReminderReceiver::class.java).setAction(ACTION_UNLEARN).putExtra(EXTRA_PLANS, plans),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
         val manager = app.getSystemService(NotificationManager::class.java)
         val catalog = runCatching { QuranRepository.load(app) }.getOrNull()
         val single = points.singleOrNull()
@@ -397,28 +426,48 @@ object HifzReminder {
                     )
                     .setSubText("المراجعة")
                     .setOnlyAlertOnce(true)
-                    .setTimeoutAfter(8_000L)
+                    .setTimeoutAfter(15_000L)
                     .setAutoCancel(true)
+                    .apply { if (plans.isNotEmpty()) addAction(Notification.Action.Builder(null, "تراجع", undo).build()) }
                     .build(),
             )
         } else manager?.cancel(REPEAT_NOTIFICATION_ID)
         refresh(app)
     }
 
-    private fun post(context: Context, due: List<HifzPoint>, settings: HifzSettings) {
+    /** «تراجع» after «حفظتها»: the plans come back as they were. */
+    internal fun unlearn(context: Context, plans: String?) {
+        val app = context.applicationContext
+        HifzRepository.load(app)
+        plans.orEmpty().split(';').filter { it.isNotBlank() }.forEach { row ->
+            val parts = row.split('|')
+            if (parts.size != 4) return@forEach
+            val id = parts[0].toLongOrNull() ?: return@forEach
+            val repeat = HifzRepeat.decode(parts[1]) ?: return@forEach
+            HifzRepository.points.value.firstOrNull { it.id == id }?.let { point ->
+                HifzRepository.update(app, point.copy(repeat = repeat, repeatUntil = parts[2].toLongOrNull(), repeatDays = parts[3].toIntOrNull() ?: point.repeatDays))
+            }
+        }
+        app.getSystemService(NotificationManager::class.java)?.cancel(REPEAT_NOTIFICATION_ID)
+        refresh(app)
+    }
+
+    /** [due] the review's points, [dueAll] every point due today, also those beyond one review's. */
+    private fun post(context: Context, due: List<HifzPoint>, dueAll: Int) {
         val manager = context.getSystemService(NotificationManager::class.java) ?: return
         manager.createNotificationChannel(NotificationChannel(CHANNEL_ID, "المراجعة", NotificationManager.IMPORTANCE_DEFAULT).apply {
             description = "تذكير يومي واحد بمواضعك"
         })
         val catalog = QuranRepository.load(context)
         val name = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
-        val title = "اليوم ${pointsLabel(due.size)} للمراجعة"
+        val title = "اليوم ${pointsLabel(maxOf(dueAll, due.size))} للمراجعة"
         val summary = due.joinToString(" · ") { "${name(it.verse.surah)} ${it.verse.ayah} (${it.kind.short})" }
-        // What each check will ask, not its answer: read here, it would be no check at all.
+        // What each check will ask, not its answer: read here, it would be no check at all. Nor is there anything to
+        // listen to here: hearing the answers first would be no check either.
         val lines = due.mapNotNull { point ->
             val fix = hifzFix(catalog, point) ?: return@mapNotNull null
-            "${name(point.verse.surah)} ${point.verse.ayah} · ${fix.digestPrompt}"
-        }
+            "${name(point.verse.surah)} ${point.verse.ayah} · ${plain(fix.digestPrompt)}"
+        } + listOfNotNull((dueAll - due.size).takeIf { it > 0 }?.let { "ثم ${pointsLabel(it)} في جولة أخرى" })
         val style = Notification.InboxStyle().setBigContentTitle(title).also { inbox -> lines.forEach(inbox::addLine) }
         val review = openIntent(context, NOTIFICATION_ID, MainTabNavigation.QURAN_ACTION_HIFZ_REVIEW)
         val builder = Notification.Builder(context, CHANNEL_ID)
@@ -430,18 +479,16 @@ object HifzReminder {
             .setContentIntent(review)
             .setAutoCancel(true)
             .setCategory(Notification.CATEGORY_REMINDER)
-            .addAction(Notification.Action.Builder(null, "ابدأ المراجعة", review).build())
-        listenIntent(context, NOTIFICATION_ID + 1, hifzListen(catalog, due, settings))?.let { listen ->
-            builder.addAction(Notification.Action.Builder(null, "استمع إليها", listen).build())
-        }
+            .addAction(Notification.Action.Builder(null, "ابدأ مراجعة اليوم", review).build())
         manager.notify(NOTIFICATION_ID, builder.build())
     }
 
     /**
-     * The points a plan's reminder brings back, in one notification however many they are: the right
-     * wording with the words to mind in bold, never the wrong wording.
+     * The points a plan's reminder brings back, in one notification however many they are. Each asks its question
+     * first, «بماذا تختم؟», so the reminder is a small recall rather than a reading; [revealed], after «أظهر الصواب»,
+     * the right wording with the words to mind in bold, never the wrong wording.
      */
-    private fun postRepeat(context: Context, due: List<HifzPoint>, slot: HifzSlot) {
+    private fun postRepeat(context: Context, due: List<HifzPoint>, slot: HifzSlot, revealed: Boolean = false) {
         val manager = context.getSystemService(NotificationManager::class.java) ?: return
         manager.createNotificationChannel(NotificationChannel(REPEAT_CHANNEL_ID, "تذكير بمواضعك", NotificationManager.IMPORTANCE_DEFAULT).apply {
             description = "بعد الصلوات أو في الأوقات التي اخترتها، للمواضع التي اخترت أن تُذكَّر بها"
@@ -453,14 +500,25 @@ object HifzReminder {
         val single = fixes.singleOrNull()
         val title = if (single != null) "تذكّر · ${name(single.point.verse)}" else "تذكّر ${pointsLabel(fixes.size, accusative = true)}"
         val after = timeLabel(slot.time, slot.day)
+        val question = { fix: HifzFix -> "${wordingLabel(fix)}: ${plain(fix.digestPrompt)}" }
         val style = if (single != null) {
             val key = single.point.key.trim()
             Notification.BigTextStyle().setBigContentTitle(title).bigText(
-                SpannableStringBuilder(fixLine(single, null)).apply { if (key.isNotEmpty()) append("\nضابطي: ").append(key) },
+                if (!revealed) "${question(single)}\nقلها من حفظك، ثم اضغط «أظهر الصواب»."
+                else SpannableStringBuilder(fixLine(single, null)).apply { if (key.isNotEmpty()) append("\nضابطي: ").append(key) },
             )
         } else {
-            Notification.InboxStyle().setBigContentTitle(title).also { inbox -> fixes.forEach { inbox.addLine(fixLine(it, name(it.point.verse))) } }
+            Notification.InboxStyle().setBigContentTitle(title).also { inbox ->
+                fixes.forEach { inbox.addLine(if (revealed) fixLine(it, name(it.point.verse)) else "${name(it.point.verse)} · ${plain(it.digestPrompt)}") }
+            }
         }
+        val reveal = PendingIntent.getBroadcast(
+            context, REPEAT_NOTIFICATION_ID + 4,
+            Intent(context, HifzReminderReceiver::class.java).setAction(ACTION_REVEAL)
+                .putExtra(EXTRA_IDS, fixes.map { it.point.id }.toLongArray())
+                .putExtra(EXTRA_DAY, slot.day).putExtra(EXTRA_TIME, slot.time.key),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
         val open = openIntent(
             context, REPEAT_NOTIFICATION_ID,
             if (single != null) "${MainTabNavigation.QURAN_ACTION_HIFZ_FIX_PREFIX}${single.point.id}"
@@ -474,12 +532,18 @@ object HifzReminder {
         val builder = Notification.Builder(context, REPEAT_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_tab_quran)
             .setContentTitle(title)
-            .setContentText(if (single != null) fixLine(single, null) else fixes.joinToString(" · ") { "${name(it.point.verse)} (${it.point.kind.short})" })
+            .setContentText(when {
+                single != null && revealed -> fixLine(single, null)
+                single != null -> question(single)
+                else -> fixes.joinToString(" · ") { "${name(it.point.verse)} (${it.point.kind.short})" }
+            })
             .setSubText(after)
             .setStyle(style)
             .setContentIntent(open)
             .setAutoCancel(true)
+            .setOnlyAlertOnce(true)
             .setCategory(Notification.CATEGORY_REMINDER)
+        if (!revealed) builder.addAction(Notification.Action.Builder(null, "أظهر الصواب", reveal).build())
         val settings = HifzSettings.read(context)
         listenIntent(context, REPEAT_NOTIFICATION_ID + 1, hifzListen(catalog, fixes.map { it.point }, settings.copy(drillGap = 0f)))?.let { listen ->
             builder.addAction(Notification.Action.Builder(null, "استمع", listen).build())
@@ -493,6 +557,15 @@ object HifzReminder {
         manager.notify(REPEAT_NOTIFICATION_ID, builder.build())
     }
 
+    /** «أظهر الصواب» on a plan's reminder: the same reminder again, now with the right wording. */
+    internal fun reveal(context: Context, ids: LongArray, day: Long, time: HifzWhen?) {
+        val app = context.applicationContext
+        HifzRepository.load(app)
+        val points = HifzRepository.points.value.filter { it.id in ids }
+        if (points.isEmpty() || time == null) return
+        runCatching { postRepeat(app, points, HifzSlot(day, time, System.currentTimeMillis()), revealed = true) }
+    }
+
     /** «انتبه إلى: …» with the words to mind in bold, after the verse's name when given. */
     private fun fixLine(fix: HifzFix, verseName: String?): CharSequence = SpannableStringBuilder().apply {
         if (verseName != null) append(verseName).append(" · ")
@@ -501,14 +574,17 @@ object HifzReminder {
         shown.forEachIndexed { position, index ->
             if (position > 0) append(if (index > shown[position - 1] + 1) " … " else " ")
             val start = length
-            append(fix.words.printed[index])
+            append(plain(fix.words.printed[index]))
             if (index in fix.stressed) setSpan(StyleSpan(Typeface.BOLD), start, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
         if (fix.wording.endsWith("…")) append(" …")
     }
 
     private fun wordingLabel(fix: HifzFix): String =
-        if (fix.point.kind == HifzKind.Skip && fix.point.verse.ayah > 1) "بعد الآية ${fix.point.verse.ayah - 1}" else fix.wordingLabel
+        if (fix.point.kind == HifzKind.Skip && fix.point.verse.ayah > 1) "بعد الآية ${fix.point.verse.ayah - 1}" else plain(fix.wordingLabel)
+
+    /** Qur'an words in a notification, which shows them in the system's font, not the mushaf's. */
+    private fun plain(text: String): String = QuranMushafText.plain(text)
 
     private fun openIntent(context: Context, requestCode: Int, quranAction: String): PendingIntent = PendingIntent.getActivity(
         context, requestCode,
@@ -565,13 +641,21 @@ object HifzReminder {
                 HifzWhen.of(intent.getStringExtra(EXTRA_TIME)),
             )
             ACTION_LEARNED -> learned(context, intent.getLongArrayExtra(EXTRA_IDS) ?: LongArray(0))
+            ACTION_UNLEARN -> unlearn(context, intent.getStringExtra(EXTRA_PLANS))
+            ACTION_REVEAL -> reveal(
+                context, intent.getLongArrayExtra(EXTRA_IDS) ?: LongArray(0),
+                intent.getLongExtra(EXTRA_DAY, todayEpochDay()), HifzWhen.of(intent.getStringExtra(EXTRA_TIME)),
+            )
         }
     }
 }
 
 class HifzReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action !in setOf(HifzReminder.ACTION_REMIND, HifzReminder.ACTION_REPEAT, HifzReminder.ACTION_LEARNED)) return
+        if (intent.action !in setOf(
+                HifzReminder.ACTION_REMIND, HifzReminder.ACTION_REPEAT, HifzReminder.ACTION_LEARNED,
+                HifzReminder.ACTION_UNLEARN, HifzReminder.ACTION_REVEAL,
+            )) return
         val result = goAsync()
         CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
             try {

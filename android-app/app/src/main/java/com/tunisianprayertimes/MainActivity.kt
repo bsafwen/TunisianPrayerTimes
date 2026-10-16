@@ -126,26 +126,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * «سجّل موضعا» from the launcher: a slip made in prayer or with a teacher is recorded at once.
-     * Dynamic, because a static shortcut cannot follow the debug build's package suffix.
+     * «سجّل موضعا» from the launcher: a slip made in prayer or with a teacher is recorded at once; «مراجعة اليوم»: the
+     * day's checks, without going through the reader. Dynamic, because a static shortcut cannot follow the debug
+     * build's package suffix.
      */
     private fun publishShortcuts() {
         runCatching {
             val manager = getSystemService(android.content.pm.ShortcutManager::class.java) ?: return
             // The launcher's own action and category, so a running task is reused and the request
             // arrives through onNewIntent instead of stacking a second activity.
-            val intent = Intent(Intent.ACTION_MAIN)
+            fun intent(action: String) = Intent(Intent.ACTION_MAIN)
                 .addCategory(Intent.CATEGORY_LAUNCHER)
                 .setClass(this, MainActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_QURAN)
-                .putExtra(MainTabNavigation.EXTRA_QURAN_ACTION, MainTabNavigation.QURAN_ACTION_HIFZ_RECORD)
+                .putExtra(MainTabNavigation.EXTRA_QURAN_ACTION, action)
+            val icon = android.graphics.drawable.Icon.createWithResource(this, R.drawable.ic_tab_quran)
             manager.dynamicShortcuts = listOf(
                 android.content.pm.ShortcutInfo.Builder(this, "hifz_record")
                     .setShortLabel("سجّل موضعا")
                     .setLongLabel("سجّل موضعا للمراجعة")
-                    .setIcon(android.graphics.drawable.Icon.createWithResource(this, R.drawable.ic_tab_quran))
-                    .setIntent(intent)
+                    .setIcon(icon)
+                    .setIntent(intent(MainTabNavigation.QURAN_ACTION_HIFZ_RECORD))
+                    .setRank(0)
+                    .build(),
+                // With nothing due, it opens «المراجعة», which says when the next check comes.
+                android.content.pm.ShortcutInfo.Builder(this, "hifz_review")
+                    .setShortLabel("مراجعة اليوم")
+                    .setLongLabel("ابدأ مراجعة اليوم")
+                    .setIcon(icon)
+                    .setIntent(intent(MainTabNavigation.QURAN_ACTION_HIFZ_REVIEW))
+                    .setRank(1)
                     .build(),
             )
         }

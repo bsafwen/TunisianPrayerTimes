@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Lantern Fold - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#26344C"/>
+  <path d="M54 25V31" fill="none" stroke="#FFF1D9" stroke-width="4" stroke-linecap="round"/>
+  <path fill="#FFF1D9" d="M43 35H65L68 42H40Z"/>
+  <path fill="#E8AB5A" fill-rule="evenodd" d="M39 46H69L75 63L64 79H44L33 63ZM54 49C66 60 65 64 54 73C43 64 42 60 54 49Z"/>
+  <path fill="#FFF1D9" d="M54 57L59 63L54 67L49 63Z"/>
+</svg>

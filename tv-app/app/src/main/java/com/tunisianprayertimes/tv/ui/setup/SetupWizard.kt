@@ -44,7 +44,7 @@ import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.common.KeyHints
 import com.tunisianprayertimes.tv.ui.common.initialFocus
 import com.tunisianprayertimes.tv.ui.common.rtl
-import com.tunisianprayertimes.tv.ui.theme.Amiri
+import com.tunisianprayertimes.tv.ui.theme.Mushaf
 import com.tunisianprayertimes.tv.ui.theme.Dots
 import com.tunisianprayertimes.tv.ui.theme.Kufi
 import com.tunisianprayertimes.tv.ui.theme.Medallion
@@ -202,7 +202,7 @@ private fun WelcomeStep(
     onUsbSetup: (() -> Unit)?,
 ) {
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(DisplayTexts.BASMALA.text, style = midadStyle(20.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f))
+        Text(DisplayTexts.BASMALA.mushafText, style = midadStyle(20.sp, color = Midad.Verse, family = Mushaf, lineHeight = 1.4f))
         Text(TvStrings.APP_NAME, style = midadStyle(30.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.25f))
         MedallionRule(width = 260.dp, modifier = Modifier.padding(vertical = 6.dp))
         Text(TvStrings.SETUP_WELCOME_SUB, style = midadStyle(15.sp, color = Midad.Muted))

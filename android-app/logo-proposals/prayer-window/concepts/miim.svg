@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Miim - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#253D32"/>
+  <g transform="translate(3 -1)">
+    <path fill="#F8F0DA" d="M39 42C39 32 45 27 53 29L74 42L70 56L51 61C44 63 41 67 42 75L44 82H33L31 74C29 60 36 51 48 48L59 45L50 39C47 37 45 39 44 43Z"/>
+    <path fill="#E2B45D" d="M62 34.57L74 42L70 56L59 58.89L63 44Z"/>
+  </g>
+</svg>

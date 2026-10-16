@@ -9,8 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -23,19 +21,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranDivisions
-import com.tunisianprayertimes.quran.QuranGoTo
 import com.tunisianprayertimes.quran.QuranLibrary
+import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranThumn
 import com.tunisianprayertimes.quran.QuranVerseReference
-import com.tunisianprayertimes.quran.quranGoTo
-import com.tunisianprayertimes.quran.quranNameKey
 import com.tunisianprayertimes.ui.theme.*
 
 /** Where the index sends the reader. */
@@ -45,10 +40,11 @@ internal interface QuranIndexActions {
     fun playSurah(surah: Int)
     fun resumeListening()
     fun openHifz()
+    fun search()
     fun dismiss()
 }
 
-/** «الفهرس»: continue cards, one field for any place, chapters, ahzab and bookmarks. */
+/** «الفهرس»: continue cards, the shared search, chapters, ahzab and bookmarks. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun QuranIndexSheet(
@@ -67,9 +63,7 @@ internal fun QuranIndexSheet(
     missingSurahs: Set<Int>,
     actions: QuranIndexActions,
 ) {
-    var query by rememberSaveable { mutableStateOf("") }
     var tab by rememberSaveable { mutableIntStateOf(-1) }
-    val printedPages = QuranScanCount + 1
     val surahName = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
     ModalBottomSheet(onDismissRequest = actions::dismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
         Column(Modifier.fillMaxWidth().quranSheetHeight()) {
@@ -81,7 +75,7 @@ internal fun QuranIndexSheet(
                 IconButton(onClick = actions::dismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
             }
             val lastRead = remember(libraryRevision) { library.lastRead }
-            if (query.isBlank() && (lastRead != null || lastListened != null)) Row(
+            if (lastRead != null || lastListened != null) Row(
                 Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
@@ -95,7 +89,7 @@ internal fun QuranIndexSheet(
                     onClick = actions::resumeListening, onPlay = actions::resumeListening.takeUnless { listeningNow }, modifier = Modifier.weight(1f),
                 )
             }
-            if (query.isBlank() && hifzDue >= 0) Row(
+            if (hifzDue >= 0) Row(
                 Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp).clip(RoundedCornerShape(12.dp))
                     .background(Color.White).border(1.dp, CardBorder, RoundedCornerShape(12.dp))
                     .clickable(onClick = actions::openHifz).padding(horizontal = 12.dp, vertical = 12.dp).testTag("quran_index_hifz"),
@@ -109,18 +103,13 @@ internal fun QuranIndexSheet(
                 )
                 Text("‹", fontSize = 18.sp, color = TextMuted)
             }
-            OutlinedTextField(
-                value = query, onValueChange = { query = it },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp).testTag("quran_index_field"),
-                placeholder = { Text("سورة أو صفحة أو آية مثل 2:21") }, singleLine = true,
-                leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null) },
-                trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(painterResource(R.drawable.ic_adhkar_close), "مسح") } },
-                shape = RoundedCornerShape(14.dp), keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
-                keyboardActions = KeyboardActions(onGo = { goToFirst(query, catalog, divisions, printedPages, actions) }),
-            )
-            if (query.isNotBlank()) {
-                GoToResults(query, catalog, divisions, printedPages, surahName, actions)
-                return@Column
+            TextButton(
+                onClick = actions::search,
+                modifier = Modifier.align(Alignment.End).padding(horizontal = 16.dp, vertical = 6.dp).testTag("quran_index_search"),
+            ) {
+                Icon(painterResource(R.drawable.ic_adhkar_search), null, Modifier.size(20.dp))
+                Spacer(Modifier.width(8.dp))
+                Text("البحث في القرآن")
             }
             val tabs = listOfNotNull("السور", if (divisions != null) "الأحزاب" else null, "العلامات")
             val selected = (if (tab >= 0) tab else tabs.indexOf(initialTab).coerceAtLeast(0)).coerceIn(0, tabs.lastIndex)
@@ -152,73 +141,6 @@ private fun ContinueCard(title: String, detail: String, onClick: () -> Unit, onP
             Modifier.size(40.dp).clip(CircleShape).background(GreenPrimary).clickable(onClick = onPlay).semantics { contentDescription = "تابع الاستماع" },
             contentAlignment = Alignment.Center,
         ) { Icon(painterResource(R.drawable.ic_play_arrow), null, Modifier.size(20.dp), tint = Color.White) }
-    }
-}
-
-/** The keyboard's Go key opens what the first result row would. */
-private fun goToFirst(query: String, catalog: QuranCatalog, divisions: QuranDivisions?, printedPages: Int, actions: QuranIndexActions) {
-    when (val target = quranGoTo(query, catalog.surahs, printedPages).firstOrNull()) {
-        is QuranGoTo.Page -> actions.openPage((target.printed - 1).coerceAtLeast(1))
-        is QuranGoTo.Surah -> actions.openPage(catalog.surahs[target.number - 1].page)
-        is QuranGoTo.Verse -> actions.openVerse(target.verse, play = false)
-        is QuranGoTo.Hizb -> divisions?.hizbStart(target.number)?.let { actions.openVerse(it.start, play = false) }
-        null -> {
-            val key = quranNameKey(query)
-            if (key.isNotEmpty() && !key.first().isDigit()) {
-                catalog.surahs.firstOrNull { quranNameKey(it.name).contains(key) }?.let { actions.openPage(it.page) }
-            }
-        }
-    }
-}
-
-@Composable
-private fun ColumnScope.GoToResults(
-    query: String,
-    catalog: QuranCatalog,
-    divisions: QuranDivisions?,
-    printedPages: Int,
-    surahName: (Int) -> String,
-    actions: QuranIndexActions,
-) {
-    val targets = remember(query, catalog) { quranGoTo(query, catalog.surahs, printedPages) }
-    val names = remember(query, catalog) {
-        val key = quranNameKey(query)
-        if (key.isEmpty() || key.first().isDigit()) emptyList() else catalog.surahs.filter { quranNameKey(it.name).contains(key) }
-    }
-    LazyColumn(Modifier.weight(1f).padding(horizontal = 8.dp), contentPadding = PaddingValues(bottom = 24.dp)) {
-        items(targets) { target ->
-            when (target) {
-                is QuranGoTo.Page -> ResultRow(
-                    "انتقال إلى صفحة ${target.printed}",
-                    catalog.pages.getOrNull((target.printed - 1).coerceAtLeast(1) - 1)?.surahNames?.joinToString("، ").orEmpty(),
-                    onClick = { actions.openPage((target.printed - 1).coerceAtLeast(1)) }, onPlay = null,
-                )
-                is QuranGoTo.Surah -> {
-                    val surah = catalog.surahs[target.number - 1]
-                    ResultRow("سورة ${surah.number} · ${surah.name}", surahDetail(surah.verseCount, surah.page),
-                        onClick = { actions.openPage(surah.page) }, onPlay = { actions.playSurah(surah.number) })
-                }
-                is QuranGoTo.Verse -> ResultRow(
-                    "${surahName(target.verse.surah)} · الآية ${target.verse.ayah}",
-                    catalog.pagesForVerse(target.verse.surah, target.verse.ayah).firstOrNull()?.let(::quranPageLabel).orEmpty(),
-                    onClick = { actions.openVerse(target.verse, play = false) }, onPlay = { actions.openVerse(target.verse, play = true) },
-                )
-                is QuranGoTo.Hizb -> {
-                    val start = divisions?.hizbStart(target.number)
-                    if (start != null) ResultRow(
-                        "الحزب ${target.number}", "${surahName(start.start.surah)} ${start.start.ayah} · ${quranPageLabel(start.page)}",
-                        onClick = { actions.openVerse(start.start, play = false) }, onPlay = { actions.openVerse(start.start, play = true) },
-                    )
-                }
-            }
-        }
-        items(names, key = { "n${it.number}" }) { surah ->
-            ResultRow("${surah.number} · ${surah.name}", surahDetail(surah.verseCount, surah.page),
-                onClick = { actions.openPage(surah.page) }, onPlay = { actions.playSurah(surah.number) })
-        }
-        if (targets.isEmpty() && names.isEmpty()) item {
-            Text("لا يوجد موضع بهذا الاسم أو الرقم", Modifier.padding(24.dp), color = TextMuted)
-        }
     }
 }
 
@@ -319,14 +241,14 @@ private fun ColumnScope.AhzabList(
 
 @Composable
 private fun ThumnRow(thumn: QuranThumn, catalog: QuranCatalog, surahName: (Int) -> String, actions: QuranIndexActions) {
-    val opening = remember(thumn) { catalog.verse(thumn.start)?.text?.split(' ')?.take(3)?.joinToString(" ").orEmpty() }
+    val opening = remember(thumn) { catalog.verse(thumn.start)?.text?.let(QuranMushafText::text)?.split(' ')?.take(3)?.joinToString(" ").orEmpty() }
     Row(
         Modifier.fillMaxWidth().background(Color(0xFFEEF5F1)).clickable { actions.openVerse(thumn.start, play = false) }
             .padding(start = 28.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(thumnName(thumn.thumn), Modifier.width(92.dp), fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-        Text("$opening…", Modifier.weight(1f), fontFamily = AdhkarReadingFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text("$opening…", Modifier.weight(1f), fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
         Text("${surahName(thumn.start.surah)} ${thumn.start.ayah} · ص ${thumn.page + 1}", fontSize = 11.sp, color = TextMuted, maxLines = 1)
     }
 }
@@ -363,7 +285,7 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
                 Column(Modifier.weight(1f)) {
                     Text("${surahName(mark.verse.surah)} · الآية ${mark.verse.ayah}", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                     verse?.let {
-                        Text(it.text.split(' ').take(4).joinToString(" ") + "…", fontFamily = AdhkarReadingFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                        Text(QuranMushafText.text(it.text).split(' ').take(4).joinToString(" ") + "…", fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         Text(quranPageLabel(it.pages.first()), fontSize = 12.sp, color = TextMuted)
                     }
                 }

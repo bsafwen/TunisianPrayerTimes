@@ -1,0 +1,20 @@
+{
+  "id": "light-lens",
+  "name": "Light Lens",
+  "tag": "Daylight / abstract lens",
+  "group": "creative",
+  "file": "concepts/light-lens.svg",
+  "summary": "Two unequal fields of light, cut by a clear diagonal horizon. A striking identity for the changing prayer day.",
+  "why": "An asymmetric lens separates into two luminous fields, reflecting the transition between daylight and night. The uninterrupted gap gives the small icon a strong silhouette, while the two colors suggest different moments within one day.",
+  "risk": "Its link to prayer times is conceptual; without the app name it may suggest optics or an abstract planet.",
+  "key1": "Two light fields",
+  "sub1": "Day and night in one rhythm",
+  "key2": "A clear horizon cut",
+  "sub2": "Changing moments of prayer",
+  "palette": {
+    "background": "#42318A",
+    "ink": "#FFF4D9",
+    "sun": "#E2F05D",
+    "name": "LIGHT LENS / IRIS + CITRON"
+  }
+}

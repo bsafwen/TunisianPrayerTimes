@@ -1,0 +1,20 @@
+{
+  "id": "sakina-khatam",
+  "name": "Sakina Khatam",
+  "tag": "A dove cut into Islamic geometry",
+  "summary": "An eight-point geometric seal holds the Sakina dove in negative space. Its warm wing remains a separate accent.",
+  "why": "The dove is carved out of the main geometric form, so the Islamic pattern and peaceful bird share a single silhouette. A larger bird fits within the solid seal, and the warm wing gives the cutout a quiet point of focus.",
+  "risk": "An eight-point seal is shared across several artistic traditions; without the app name, the mark can also suggest a cultural or charitable organization.",
+  "key1": "The eight-point seal",
+  "sub1": "Islamic geometric character",
+  "key2": "A dove in negative space",
+  "sub2": "Peace shaped into the mark",
+  "file": "concepts/sakina-khatam.svg",
+  "palette": {
+    "background": "#4F7096",
+    "ink": "#FFF6E7",
+    "sun": "#DCC69C",
+    "name": "SAKINA KHATAM / DUSK + WARM SAND"
+  },
+  "group": "sakina-variation"
+}
