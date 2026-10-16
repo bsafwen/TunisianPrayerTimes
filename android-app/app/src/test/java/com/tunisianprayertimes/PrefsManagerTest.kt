@@ -2,6 +2,7 @@ package com.tunisianprayertimes
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
+import java.time.chrono.HijrahDate
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -182,33 +183,20 @@ class PrefsManagerTest {
 
     @Test
     fun ishaDefaultDuringRamadan_returns90() {
-        // This tests the Ramadan override: during Ramadan, default for Isha is 90
-        // If we're currently in Ramadan, getAfterMinutes returns 90 regardless of saved value
-        if (RamadanDetector.isRamadan()) {
-            // Save 30 for Isha — Ramadan override should still return 90
-            PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
-            assertEquals(
-                "Ramadan: Isha should always be 90 regardless of saved value",
-                90,
-                PrefsManager.getAfterMinutes(context, Prayer.ISHA)
-            )
-        } else {
-            // Outside Ramadan: saved value is returned
-            PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
-            assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-        }
+        // The Ramadan override, pinned to a day of Ramadan 1448 so the test does not depend on today: the first
+        // call in that Ramadan saves the user's Isha and writes 90. getAfterMinutes reads the stored value; there
+        // is no read-time bump.
+        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
+        assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
+        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, HijrahDate.of(1448, 9, 10))
+        assertEquals("Ramadan: an Isha below 90 is bumped to 90", 90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
     }
 
     @Test
     fun ishaDefault_outsideRamadan_is30() {
-        // Outside Ramadan, default Isha afterMinutes should be 30
-        if (!RamadanDetector.isRamadan()) {
-            assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-        }
-        // If currently Ramadan, default is overridden to 90
-        if (RamadanDetector.isRamadan()) {
-            assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-        }
+        // Outside Ramadan (pinned to 10 Sha'ban 1448) the override changes nothing: the default stays 30.
+        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, HijrahDate.of(1448, 8, 10))
+        assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
     }
 
     @Test

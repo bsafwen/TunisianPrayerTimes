@@ -27,6 +27,7 @@ import com.tunisianprayertimes.ui.PrayerSilenceRangeSlider
 import com.tunisianprayertimes.ui.PrayerTimelineScale
 import com.tunisianprayertimes.ui.PrayerTimelineWindow
 import com.tunisianprayertimes.ui.SharedSilenceRuleDraft
+import com.tunisianprayertimes.ui.PrayerTimelineAnchor
 import com.tunisianprayertimes.ui.SharedSilenceSettingsSheet
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -58,7 +59,7 @@ class SilenceUiBugsTest {
         compose.setContent {
             SharedSilenceSettingsSheet(
                 prayerNames = listOf(Prayer.DHUHR to "الظهر"),
-                prayerTimes = mapOf(Prayer.DHUHR to PrayerTime(Prayer.DHUHR, 12, 0)),
+                anchors = mapOf(Prayer.DHUHR to PrayerTimelineAnchor.demo(Prayer.DHUHR, 12, 0)),
                 initialDraft = SharedSilenceRuleDraft(startOffsetMinutes = -minutesBefore, endOffsetMinutes = 30),
                 onDismiss = {},
                 onApply = { _, _ -> },
@@ -95,7 +96,7 @@ class SilenceUiBugsTest {
     fun H4_trackTapUsesTheLatestCommitCallback() {
         var generation by mutableIntStateOf(1)
         val commits = mutableListOf<Int>()
-        val prayerTime = PrayerTime(Prayer.DHUHR, 12, 0)
+        val anchor = PrayerTimelineAnchor.demo(Prayer.DHUHR, 12, 0)
         // Both configs resolve to the same 12:00-13:00 window; only the end rule differs.
         val adhanRelativeEnd = PrayerSilenceConfig(endOffsetMinutes = 60)
         val fixedEnd = PrayerSilenceConfig(mode = SilenceMode.FIXED_TIME, fixedHour = 13, fixedMinute = 0)
@@ -106,7 +107,7 @@ class SilenceUiBugsTest {
             PrayerSilenceRangeSlider(
                 prayer = Prayer.DHUHR,
                 prayerName = "الظهر",
-                prayerTime = prayerTime,
+                anchor = anchor,
                 config = if (current == 1) adhanRelativeEnd else fixedEnd,
                 scale = scale,
                 window = window,

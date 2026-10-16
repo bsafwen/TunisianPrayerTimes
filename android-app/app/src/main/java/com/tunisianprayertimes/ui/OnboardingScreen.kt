@@ -1,5 +1,11 @@
 package com.tunisianprayertimes.ui
 
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.rememberCoroutineScope
+import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.PlaceResolution
+import com.tunisianprayertimes.DelegationLocationResult
+import com.tunisianprayertimes.DelegationLocator
 import android.Manifest
 import android.app.AlarmManager
 import android.app.NotificationManager
@@ -94,7 +100,6 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.tunisianprayertimes.DelayMode
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.SilenceMode
@@ -114,8 +119,60 @@ fun OnboardingScreen(
 ) {
     val context = LocalContext.current
     var currentStep by rememberSaveable { mutableIntStateOf(0) }
-    val totalSteps = 8
-    val permissionsStep = 6
+    val totalSteps = 9
+    val locationStep = 1
+    val permissionsStep = 7
+
+    // The location step (6.8): a fix, a city picked on the main screen, or a skip, which leaves a provisional
+    // place to confirm there.
+    var placeLabel by rememberSaveable { mutableStateOf<String?>(null) }
+    var placeStatus by rememberSaveable { mutableStateOf<String?>(null) }
+    var pickCityLater by rememberSaveable { mutableStateOf(false) }
+    var locating by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    fun locate() {
+        locating = true
+        placeStatus = null
+        scope.launch {
+            when (val result = DelegationLocator.detectNearestDelegation(context)) {
+                is DelegationLocationResult.Success -> {
+                    PrefsManager.setGpsLocation(context, result)
+                    AnalyticsTracker.markDelegationSource(context, "onboarding_gps")
+                    placeLabel = result.delegation.nomAr
+                }
+                is DelegationLocationResult.Abroad -> {
+                    PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
+                    AnalyticsTracker.markDelegationSource(context, "onboarding_gps_abroad")
+                    placeLabel = result.label ?: context.getString(R.string.location_current_place)
+                }
+                is DelegationLocationResult.RegionClosed -> placeStatus = context.getString(R.string.onboarding_location_closed)
+                else -> placeStatus = context.getString(R.string.onboarding_location_failed)
+            }
+            locating = false
+        }
+    }
+    val locationPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { grants ->
+        if (grants.values.any { it }) locate() else placeStatus = context.getString(R.string.onboarding_location_failed)
+    }
+    /** A skipped location step leaves the first-run place of 6.8, to confirm on the main screen. */
+    fun finishOnboarding() {
+        if (placeLabel == null) {
+            if (pickCityLater) PrefsManager.requestPlacePickerOnStart(context)
+            val (place, label) = PlaceResolution.provisionalPlace(context)
+            when (place) {
+                is com.tunisianprayertimes.place.PrayerPlace.Inm -> {
+                    PrefsManager.setDelegationId(context, place.delegationId)
+                    PrefsManager.setPlaceProvisional(context, true)
+                }
+                is com.tunisianprayertimes.place.PrayerPlace.Coordinates ->
+                    PrefsManager.setPlace(context, place, label, fromGps = false, provisional = true)
+            }
+            AnalyticsTracker.markDelegationSource(context, if (pickCityLater) "onboarding_pick_later" else "onboarding_skipped")
+        }
+        onFinish()
+    }
 
     // Track navigation direction for animation
     var goingForward by remember { mutableStateOf(true) }
@@ -209,12 +266,29 @@ fun OnboardingScreen(
             ) { step ->
                 when (step) {
                     0 -> WelcomeStep()
-                    1 -> SilencePeriodStep()
-                    2 -> DragEndpointsStep()
-                    3 -> EndpointRulesStep()
-                    4 -> JomoaaExplanationStep()
-                    5 -> WakeAlarmIntroStep()
-                    6 -> PermissionsStep(
+                    locationStep -> LocationStep(
+                        placeLabel = placeLabel,
+                        status = when {
+                            locating -> stringResource(R.string.onboarding_location_locating)
+                            placeStatus != null -> placeStatus
+                            pickCityLater && placeLabel == null -> stringResource(R.string.onboarding_location_pick_later)
+                            else -> null
+                        },
+                        busy = locating,
+                        onLocate = {
+                            if (DelegationLocator.hasLocationPermission(context)) locate()
+                            else locationPermissionLauncher.launch(arrayOf(
+                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,
+                            ))
+                        },
+                        onPickCity = { pickCityLater = true; placeStatus = null },
+                    )
+                    2 -> SilencePeriodStep()
+                    3 -> DragEndpointsStep()
+                    4 -> EndpointRulesStep()
+                    5 -> JomoaaExplanationStep()
+                    6 -> WakeAlarmIntroStep()
+                    7 -> PermissionsStep(
                         hasDnd = hasDnd,
                         hasAlarm = hasAlarm,
                         hasBattery = hasBattery,
@@ -230,7 +304,7 @@ fun OnboardingScreen(
                         },
                         context = context
                     )
-                    7 -> ReadyStep()
+                    8 -> ReadyStep()
                 }
             }
         }
@@ -267,7 +341,7 @@ fun OnboardingScreen(
 
             if (currentStep == totalSteps - 1) {
                 Button(
-                    onClick = onFinish,
+                    onClick = { finishOnboarding() },
                     modifier = Modifier.weight(1f).heightIn(min = 56.dp).testTag(TestTags.ONBOARDING_START),
                     shape = RoundedCornerShape(28.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)
@@ -432,6 +506,70 @@ private fun WelcomeStep() {
             textAlign = TextAlign.Center,
             lineHeight = 26.sp
         )
+    }
+}
+
+/** 6.8's location step: «تحديد موقعي», «اختيار مدينة», or the next button, which skips it. */
+@Composable
+private fun LocationStep(
+    placeLabel: String?,
+    status: String?,
+    busy: Boolean,
+    onLocate: () -> Unit,
+    onPickCity: () -> Unit,
+) {
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_location_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 24.sp
+            )
+        },
+        description = {
+            Text(
+                text = stringResource(R.string.onboarding_location_desc),
+                fontSize = 14.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
+        },
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(14.dp),
+        ) {
+            Image(
+                painter = painterResource(R.drawable.mosque_silhouette),
+                contentDescription = null,
+                modifier = Modifier.size(96.dp),
+                contentScale = ContentScale.Fit,
+            )
+            Button(
+                onClick = onLocate,
+                enabled = !busy,
+                modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp).testTag("onboarding_location_locate"),
+                shape = RoundedCornerShape(26.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+            ) { Text(stringResource(R.string.onboarding_location_locate), fontSize = 16.sp) }
+            OutlinedButton(
+                onClick = onPickCity,
+                enabled = !busy,
+                modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp).testTag("onboarding_location_pick"),
+                shape = RoundedCornerShape(26.dp),
+                border = androidx.compose.foundation.BorderStroke(1.dp, GreenPrimary),
+            ) { Text(stringResource(R.string.onboarding_location_pick), fontSize = 16.sp, color = GreenPrimary) }
+            val line = placeLabel?.let { stringResource(R.string.onboarding_location_done, it) } ?: status
+            if (line != null) {
+                Text(line, fontSize = 14.sp, color = if (placeLabel != null) GreenPrimaryDark else TextMuted,
+                    textAlign = TextAlign.Center, lineHeight = 20.sp, modifier = Modifier.testTag("onboarding_location_status"))
+            }
+        }
     }
 }
 
@@ -934,7 +1072,11 @@ private fun ReadyStep() {
         },
         description = {
             Text(
-                text = stringResource(R.string.onboarding_ready_desc),
+                // «No difference between nearby places» holds for INM's delegations only (6.11).
+                text = stringResource(
+                    if (PrefsManager.getPlace(LocalContext.current) is com.tunisianprayertimes.place.PrayerPlace.Inm) R.string.onboarding_ready_desc
+                    else R.string.onboarding_ready_desc_abroad,
+                ),
                 fontSize = 15.sp,
                 color = TextDark,
                 textAlign = TextAlign.Center,
@@ -983,8 +1125,8 @@ private fun DemoPrayerSilenceRow(
     startHighlight: Float = 0f,
     endHighlight: Float = 0f,
 ) {
-    val prayerTime = remember(prayerHour, prayerMinute) { PrayerTime(prayer, prayerHour, prayerMinute) }
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    val anchor = remember(prayer, prayerHour, prayerMinute) { PrayerTimelineAnchor.demo(prayer, prayerHour, prayerMinute) }
+    val prayerMinutes = anchor.minutes
     var enabled by remember { mutableStateOf(true) }
     var startOffset by remember { mutableIntStateOf(initialStartOffset) }
     var endOffset by remember { mutableIntStateOf(initialEndOffset) }
@@ -1002,7 +1144,7 @@ private fun DemoPrayerSilenceRow(
         )
     }
     val config = controlledConfig ?: baseConfig
-    val targetWindow = remember(prayerTime, config) { resolvePrayerTimelineWindow(prayerTime, config) }
+    val targetWindow = remember(anchor, config) { resolvePrayerTimelineWindow(anchor, config) }
     val animatedStartMinutes by animateIntAsState(
         targetValue = targetWindow.startMinutes,
         animationSpec = tween(520, easing = FastOutSlowInEasing),
@@ -1129,7 +1271,7 @@ private fun DemoPrayerSilenceRow(
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 DemoEndpointSummary(
-                    prayerTime = prayerTime,
+                    anchor = anchor,
                     config = config,
                     window = window,
                     startHighlight = startHighlight,
@@ -1138,7 +1280,7 @@ private fun DemoPrayerSilenceRow(
                 PrayerSilenceRangeSlider(
                     prayer = prayer,
                     prayerName = prayerName,
-                    prayerTime = prayerTime,
+                    anchor = anchor,
                     config = config,
                     scale = scale,
                     window = window,
@@ -1162,13 +1304,13 @@ private fun DemoPrayerSilenceRow(
 
 @Composable
 private fun DemoEndpointSummary(
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     config: PrayerSilenceConfig,
     window: PrayerTimelineWindow,
     startHighlight: Float = 0f,
     endHighlight: Float = 0f,
 ) {
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    val prayerMinutes = anchor.minutes
     val startCaption = stringResource(
         R.string.prayer_silence_endpoint_caption,
         stringResource(R.string.prayer_silence_start_label),

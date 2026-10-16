@@ -1,0 +1,3974 @@
+{
+ "schema": 1,
+ "authority": "sa_umm_al_qura",
+ "methodId": "sa_umm_al_qura",
+ "country": "SA",
+ "mapping": "NEAREST_LOCAL",
+ "source": "KACST's Umm al-Qura calendar (ummulqura.org.sa, API umqserv.kacst.gov.sa): its 173 places with their published coordinates; KACST computes any other point",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "kacst_api",
+    "from": "2025-01-01",
+    "to": "2025-12-31",
+    "days": 365,
+    "zones": 2,
+    "monthSplit": false
+   },
+   {
+    "source": "kacst_api",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 8,
+    "monthSplit": false
+   },
+   {
+    "source": "kacst_api",
+    "from": "2027-01-01",
+    "to": "2027-12-31",
+    "days": 365,
+    "zones": 3,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "kacst_api",
+    "from": "2025-01-01",
+    "to": "2025-12-31",
+    "days": 365,
+    "zones": 2,
+    "monthSplit": false
+   },
+   {
+    "source": "kacst_api",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 8,
+    "monthSplit": false
+   },
+   {
+    "source": "kacst_api",
+    "from": "2027-01-01",
+    "to": "2027-12-31",
+    "days": 365,
+    "zones": 3,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.994,
+   "SUNRISE": 0.9956,
+   "DHUHR": 0.998,
+   "ASR": 0.9951,
+   "MAGHRIB": 0.9947,
+   "ISHA": 0.9947
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    388,
+    340,
+    390,
+    372,
+    384,
+    376,
+    378,
+    392,
+    366,
+    388,
+    369,
+    375
+   ],
+   "SUNRISE": [
+    388,
+    340,
+    390,
+    372,
+    384,
+    376,
+    378,
+    392,
+    366,
+    388,
+    369,
+    375
+   ],
+   "DHUHR": [
+    388,
+    340,
+    390,
+    372,
+    384,
+    376,
+    378,
+    392,
+    366,
+    388,
+    369,
+    375
+   ],
+   "ASR": [
+    388,
+    340,
+    390,
+    372,
+    384,
+    376,
+    378,
+    392,
+    366,
+    388,
+    369,
+    375
+   ],
+   "MAGHRIB": [
+    388,
+    340,
+    390,
+    372,
+    384,
+    376,
+    378,
+    392,
+    366,
+    388,
+    369,
+    375
+   ],
+   "ISHA": [
+    388,
+    340,
+    390,
+    372,
+    384,
+    376,
+    378,
+    392,
+    366,
+    388,
+    369,
+    375
+   ]
+  },
+  "heldOutRamadanDays": 385,
+  "quirkDays": 227,
+  "maxDiffMin": 2,
+  "regions": [
+   "AS",
+   "BA",
+   "GA",
+   "GO",
+   "MN",
+   "MQ",
+   "NG",
+   "QA",
+   "RD",
+   "SH",
+   "SQ",
+   "TB"
+  ]
+ },
+ "zones": [
+  {
+   "id": "1001",
+   "nameAr": "الرياض",
+   "point": {
+    "latE5": 2467000,
+    "lngE5": 4669000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9914,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9943,
+     "ISHA": 0.9943
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      27,
+      30,
+      29,
+      29,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      30
+     ],
+     "SUNRISE": [
+      30,
+      27,
+      30,
+      29,
+      29,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      30
+     ],
+     "DHUHR": [
+      30,
+      27,
+      30,
+      29,
+      29,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      30
+     ],
+     "ASR": [
+      30,
+      27,
+      30,
+      29,
+      29,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      30
+     ],
+     "MAGHRIB": [
+      30,
+      27,
+      30,
+      29,
+      29,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      30
+     ],
+     "ISHA": [
+      30,
+      27,
+      30,
+      29,
+      29,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      30
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 15,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "9",
+   "nameAr": "الأفلاج",
+   "point": {
+    "latE5": 2222000,
+    "lngE5": 4665600
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "150",
+   "nameAr": "الحائر",
+   "point": {
+    "latE5": 2440457,
+    "lngE5": 4683952
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "23",
+   "nameAr": "الحريق",
+   "point": {
+    "latE5": 2362000,
+    "lngE5": 4652000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "28",
+   "nameAr": "الخرج",
+   "point": {
+    "latE5": 2415000,
+    "lngE5": 4732000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "4",
+   "nameAr": "الدرعية",
+   "point": {
+    "latE5": 2474000,
+    "lngE5": 4658000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "151",
+   "nameAr": "الدلم",
+   "point": {
+    "latE5": 2399649,
+    "lngE5": 4713834
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "64",
+   "nameAr": "الدوادمي",
+   "point": {
+    "latE5": 2450000,
+    "lngE5": 4438000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "49",
+   "nameAr": "الزلفي",
+   "point": {
+    "latE5": 2630000,
+    "lngE5": 4482000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "48",
+   "nameAr": "السليل",
+   "point": {
+    "latE5": 2047000,
+    "lngE5": 4557000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "191",
+   "nameAr": "العيينة",
+   "point": {
+    "latE5": 2490180,
+    "lngE5": 4638650
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "19",
+   "nameAr": "الغاط",
+   "point": {
+    "latE5": 2603000,
+    "lngE5": 4495000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "22",
+   "nameAr": "القويعية",
+   "point": {
+    "latE5": 2405000,
+    "lngE5": 4525000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "85",
+   "nameAr": "المجمعة",
+   "point": {
+    "latE5": 2590000,
+    "lngE5": 4534000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "87",
+   "nameAr": "المزاحمية",
+   "point": {
+    "latE5": 2448000,
+    "lngE5": 4629000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "185",
+   "nameAr": "تمير",
+   "point": {
+    "latE5": 2571340,
+    "lngE5": 4587070
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "112",
+   "nameAr": "ثادق",
+   "point": {
+    "latE5": 2528000,
+    "lngE5": 4586000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "186",
+   "nameAr": "جلاجل",
+   "point": {
+    "latE5": 2568340,
+    "lngE5": 4545920
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "72",
+   "nameAr": "حريملاء",
+   "point": {
+    "latE5": 2511000,
+    "lngE5": 4610000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "71",
+   "nameAr": "حوطة بني تميم",
+   "point": {
+    "latE5": 2349000,
+    "lngE5": 4686000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "187",
+   "nameAr": "حوطة سدير",
+   "point": {
+    "latE5": 2559470,
+    "lngE5": 4561840
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "95",
+   "nameAr": "رماح",
+   "point": {
+    "latE5": 2556000,
+    "lngE5": 4717000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "188",
+   "nameAr": "روضة سدير",
+   "point": {
+    "latE5": 2561870,
+    "lngE5": 4555430
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "193",
+   "nameAr": "سدوس",
+   "point": {
+    "latE5": 2499374,
+    "lngE5": 4620788
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "105",
+   "nameAr": "شقراء",
+   "point": {
+    "latE5": 2526000,
+    "lngE5": 4526000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "62",
+   "nameAr": "ضرماء",
+   "point": {
+    "latE5": 2460000,
+    "lngE5": 4613000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "5",
+   "nameAr": "عفيف",
+   "point": {
+    "latE5": 2391000,
+    "lngE5": 4292000
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "190",
+   "nameAr": "ليلى",
+   "point": {
+    "latE5": 2228990,
+    "lngE5": 4671880
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "152",
+   "nameAr": "مرات",
+   "point": {
+    "latE5": 2506990,
+    "lngE5": 4546390
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "192",
+   "nameAr": "ملهم",
+   "point": {
+    "latE5": 2516250,
+    "lngE5": 4633370
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "116",
+   "nameAr": "وادي الدواسر",
+   "point": {
+    "latE5": 2047220,
+    "lngE5": 4478300
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "197",
+   "nameAr": "الرين",
+   "point": {
+    "latE5": 2354200,
+    "lngE5": 4551590
+   },
+   "admin1": [
+    "RD"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1002",
+   "nameAr": "مكة المكرمة",
+   "point": {
+    "latE5": 2142667,
+    "lngE5": 3983167
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9971,
+     "SUNRISE": 0.9942,
+     "DHUHR": 0.9971,
+     "ASR": 0.9942,
+     "MAGHRIB": 0.9942,
+     "ISHA": 0.9942
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 18,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "154",
+   "nameAr": "أضم",
+   "point": {
+    "latE5": 2042300,
+    "lngE5": 4086240
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "26",
+   "nameAr": "الجموم",
+   "point": {
+    "latE5": 2163000,
+    "lngE5": 3970000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "29",
+   "nameAr": "الخرمة",
+   "point": {
+    "latE5": 2191000,
+    "lngE5": 4202000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "109",
+   "nameAr": "الطائف",
+   "point": {
+    "latE5": 2125000,
+    "lngE5": 4040000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "157",
+   "nameAr": "العرضيات",
+   "point": {
+    "latE5": 1941604,
+    "lngE5": 4174532
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "66",
+   "nameAr": "القنفذة",
+   "point": {
+    "latE5": 1913000,
+    "lngE5": 4108000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "27",
+   "nameAr": "الكامل",
+   "point": {
+    "latE5": 2226000,
+    "lngE5": 3979000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "30",
+   "nameAr": "الليث",
+   "point": {
+    "latE5": 2015000,
+    "lngE5": 4028000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "114",
+   "nameAr": "تربة",
+   "point": {
+    "latE5": 2123000,
+    "lngE5": 4165000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "189",
+   "nameAr": "ثول",
+   "point": {
+    "latE5": 2227580,
+    "lngE5": 3911320
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "74",
+   "nameAr": "جدة",
+   "point": {
+    "latE5": 2150000,
+    "lngE5": 3917000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9856,
+     "SUNRISE": 0.9943,
+     "DHUHR": 1.0,
+     "ASR": 0.9971,
+     "MAGHRIB": 0.9971,
+     "ISHA": 0.9971
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      29,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 17,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "82",
+   "nameAr": "خليص",
+   "point": {
+    "latE5": 2211000,
+    "lngE5": 3931000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "194",
+   "nameAr": "ذهبان",
+   "point": {
+    "latE5": 2193090,
+    "lngE5": 3911600
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "93",
+   "nameAr": "رابغ",
+   "point": {
+    "latE5": 2279000,
+    "lngE5": 3903000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "96",
+   "nameAr": "رنية",
+   "point": {
+    "latE5": 2128000,
+    "lngE5": 4282000
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "155",
+   "nameAr": "ميسان",
+   "point": {
+    "latE5": 2074756,
+    "lngE5": 4085032
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "198",
+   "nameAr": "المويه",
+   "point": {
+    "latE5": 2243410,
+    "lngE5": 4176150
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "199",
+   "nameAr": "بحرة",
+   "point": {
+    "latE5": 2140230,
+    "lngE5": 3946310
+   },
+   "admin1": [
+    "MQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1003",
+   "nameAr": "المدينة المنورة",
+   "point": {
+    "latE5": 2454000,
+    "lngE5": 3963000
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 8,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9885,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9971,
+     "MAGHRIB": 0.9914,
+     "ISHA": 0.9914
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      28,
+      29,
+      31,
+      28,
+      30,
+      29,
+      28
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      28,
+      29,
+      31,
+      28,
+      30,
+      29,
+      28
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      28,
+      29,
+      31,
+      28,
+      30,
+      29,
+      28
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      28,
+      29,
+      31,
+      28,
+      30,
+      29,
+      28
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      28,
+      29,
+      31,
+      28,
+      30,
+      29,
+      28
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      28,
+      29,
+      31,
+      28,
+      30,
+      29,
+      28
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 18,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "25",
+   "nameAr": "الحناكية",
+   "point": {
+    "latE5": 2488000,
+    "lngE5": 4052000
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "38",
+   "nameAr": "العلا",
+   "point": {
+    "latE5": 2655000,
+    "lngE5": 3796000
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "158",
+   "nameAr": "العيص",
+   "point": {
+    "latE5": 2505980,
+    "lngE5": 3811670
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "50",
+   "nameAr": "بدر",
+   "point": {
+    "latE5": 2378000,
+    "lngE5": 3880000
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "77",
+   "nameAr": "خيبر",
+   "point": {
+    "latE5": 2571000,
+    "lngE5": 3928000
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "31",
+   "nameAr": "مهد الذهب",
+   "point": {
+    "latE5": 2352000,
+    "lngE5": 4089000
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "118",
+   "nameAr": "ينبع",
+   "point": {
+    "latE5": 2409000,
+    "lngE5": 3807000
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "200",
+   "nameAr": "وادي الفرع",
+   "point": {
+    "latE5": 2331270,
+    "lngE5": 3977760
+   },
+   "admin1": [
+    "MN"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1004",
+   "nameAr": "بريدة",
+   "point": {
+    "latE5": 2635000,
+    "lngE5": 4396000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 8,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9971,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9942,
+     "ASR": 0.9971,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 19,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "14",
+   "nameAr": "الأسياح",
+   "point": {
+    "latE5": 2677000,
+    "lngE5": 4422000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "15",
+   "nameAr": "البدائع",
+   "point": {
+    "latE5": 2600000,
+    "lngE5": 4373000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "17",
+   "nameAr": "البكيرية",
+   "point": {
+    "latE5": 2615000,
+    "lngE5": 4367000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "195",
+   "nameAr": "البصر",
+   "point": {
+    "latE5": 2628880,
+    "lngE5": 4386120
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "42",
+   "nameAr": "الرس",
+   "point": {
+    "latE5": 2586000,
+    "lngE5": 4348000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "107",
+   "nameAr": "الشماسية",
+   "point": {
+    "latE5": 2631890,
+    "lngE5": 4425740
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "33",
+   "nameAr": "المذنب",
+   "point": {
+    "latE5": 2587000,
+    "lngE5": 4421000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "46",
+   "nameAr": "النبهانية",
+   "point": {
+    "latE5": 2594000,
+    "lngE5": 4295000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "100",
+   "nameAr": "رياض الخبراء",
+   "point": {
+    "latE5": 2604000,
+    "lngE5": 4355000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "160",
+   "nameAr": "ضرية",
+   "point": {
+    "latE5": 2472250,
+    "lngE5": 4293270
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "159",
+   "nameAr": "عقلة الصقور",
+   "point": {
+    "latE5": 2583110,
+    "lngE5": 4218790
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "89",
+   "nameAr": "عنيزة",
+   "point": {
+    "latE5": 2609000,
+    "lngE5": 4397000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "90",
+   "nameAr": "عيون الجواء",
+   "point": {
+    "latE5": 2651000,
+    "lngE5": 4362000
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "196",
+   "nameAr": "القوارة",
+   "point": {
+    "latE5": 2677160,
+    "lngE5": 4347420
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "201",
+   "nameAr": "أبانات",
+   "point": {
+    "latE5": 2550570,
+    "lngE5": 4284640
+   },
+   "admin1": [
+    "QA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1005",
+   "nameAr": "الدمام",
+   "point": {
+    "latE5": 2644000,
+    "lngE5": 5010000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9971,
+     "SUNRISE": 0.9971,
+     "DHUHR": 0.9971,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 18,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "75",
+   "nameAr": "الجبيل",
+   "point": {
+    "latE5": 2700000,
+    "lngE5": 4966000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "80",
+   "nameAr": "الخبر",
+   "point": {
+    "latE5": 2626000,
+    "lngE5": 5021000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "76",
+   "nameAr": "الخفجي",
+   "point": {
+    "latE5": 2842000,
+    "lngE5": 4849000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "161",
+   "nameAr": "الظهران",
+   "point": {
+    "latE5": 2623929,
+    "lngE5": 5004026
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "91",
+   "nameAr": "القطيف",
+   "point": {
+    "latE5": 2656000,
+    "lngE5": 5000000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "165",
+   "nameAr": "المبرز",
+   "point": {
+    "latE5": 2540581,
+    "lngE5": 4954847
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "37",
+   "nameAr": "النعيرية",
+   "point": {
+    "latE5": 2747000,
+    "lngE5": 4847000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "10",
+   "nameAr": "الهفوف",
+   "point": {
+    "latE5": 2540800,
+    "lngE5": 4961320
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "2",
+   "nameAr": "بقيق",
+   "point": {
+    "latE5": 2593000,
+    "lngE5": 4966000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "164",
+   "nameAr": "تاروت",
+   "point": {
+    "latE5": 2657110,
+    "lngE5": 5007270
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "68",
+   "nameAr": "حفر الباطن",
+   "point": {
+    "latE5": 2840000,
+    "lngE5": 4597000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "97",
+   "nameAr": "رأس تنورة",
+   "point": {
+    "latE5": 2671000,
+    "lngE5": 5007000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "8",
+   "nameAr": "قرية العليا",
+   "point": {
+    "latE5": 2756000,
+    "lngE5": 4770000
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "202",
+   "nameAr": "الأحساء",
+   "point": {
+    "latE5": 2413890,
+    "lngE5": 4942770
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "203",
+   "nameAr": "العديد",
+   "point": {
+    "latE5": 2414700,
+    "lngE5": 5091900
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "204",
+   "nameAr": "البيضاء",
+   "point": {
+    "latE5": 2636142,
+    "lngE5": 4996959
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "209",
+   "nameAr": "راس تنورة",
+   "point": {
+    "latE5": 2670650,
+    "lngE5": 5005280
+   },
+   "admin1": [
+    "SQ"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1006",
+   "nameAr": "أبها",
+   "point": {
+    "latE5": 1822000,
+    "lngE5": 4251000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9943,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9943,
+     "ASR": 0.9943,
+     "MAGHRIB": 0.9943,
+     "ISHA": 0.9943
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      31,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      31,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      31,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      31,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      31,
+      30,
+      28,
+      30,
+      29,
+      29
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      31,
+      30,
+      28,
+      30,
+      29,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 15,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "7",
+   "nameAr": "أحد رفيدة",
+   "point": {
+    "latE5": 1817000,
+    "lngE5": 4284000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "170",
+   "nameAr": "الأمواه",
+   "point": {
+    "latE5": 1871410,
+    "lngE5": 4365910
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "171",
+   "nameAr": "البرك",
+   "point": {
+    "latE5": 1820710,
+    "lngE5": 4153630
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "169",
+   "nameAr": "الحرجة",
+   "point": {
+    "latE5": 1792040,
+    "lngE5": 4337290
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "34",
+   "nameAr": "المجاردة",
+   "point": {
+    "latE5": 1913000,
+    "lngE5": 4193000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "36",
+   "nameAr": "النماص",
+   "point": {
+    "latE5": 1914000,
+    "lngE5": 4214000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "166",
+   "nameAr": "بارق",
+   "point": {
+    "latE5": 1893050,
+    "lngE5": 4192960
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "55",
+   "nameAr": "بلقرن",
+   "point": {
+    "latE5": 1957000,
+    "lngE5": 4196000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "56",
+   "nameAr": "بيشة",
+   "point": {
+    "latE5": 2000000,
+    "lngE5": 4260000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "110",
+   "nameAr": "تثليث",
+   "point": {
+    "latE5": 1955000,
+    "lngE5": 4352000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "167",
+   "nameAr": "تنومة",
+   "point": {
+    "latE5": 1892900,
+    "lngE5": 4217700
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "78",
+   "nameAr": "خميس مشيط",
+   "point": {
+    "latE5": 1831000,
+    "lngE5": 4273000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "98",
+   "nameAr": "رجال ألمع",
+   "point": {
+    "latE5": 1823000,
+    "lngE5": 4228000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "104",
+   "nameAr": "سراة عبيدة",
+   "point": {
+    "latE5": 1808000,
+    "lngE5": 4314000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "168",
+   "nameAr": "طريب",
+   "point": {
+    "latE5": 1856676,
+    "lngE5": 4320690
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "60",
+   "nameAr": "ظهران الجنوب",
+   "point": {
+    "latE5": 1769000,
+    "lngE5": 4351000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "84",
+   "nameAr": "محايل عسير",
+   "point": {
+    "latE5": 1854000,
+    "lngE5": 4205000
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "205",
+   "nameAr": "الفرشة",
+   "point": {
+    "latE5": 1775320,
+    "lngE5": 4315290
+   },
+   "admin1": [
+    "AS"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1007",
+   "nameAr": "تبوك",
+   "point": {
+    "latE5": 2840000,
+    "lngE5": 3658000
+   },
+   "admin1": [
+    "TB"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 8,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9942,
+     "SUNRISE": 0.9971,
+     "DHUHR": 0.9971,
+     "ASR": 0.9827,
+     "MAGHRIB": 0.9942,
+     "ISHA": 0.9942
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      28,
+      30,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      28
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 19,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "45",
+   "nameAr": "أملج",
+   "point": {
+    "latE5": 2503000,
+    "lngE5": 3726000
+   },
+   "admin1": [
+    "TB"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "44",
+   "nameAr": "الوجه",
+   "point": {
+    "latE5": 2623000,
+    "lngE5": 3647000
+   },
+   "admin1": [
+    "TB"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "111",
+   "nameAr": "تيماء",
+   "point": {
+    "latE5": 2863000,
+    "lngE5": 3855000
+   },
+   "admin1": [
+    "TB"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "70",
+   "nameAr": "حقل",
+   "point": {
+    "latE5": 2930000,
+    "lngE5": 3495000
+   },
+   "admin1": [
+    "TB"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "59",
+   "nameAr": "ضباء",
+   "point": {
+    "latE5": 2735000,
+    "lngE5": 3569000
+   },
+   "admin1": [
+    "TB"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "206",
+   "nameAr": "البدع",
+   "point": {
+    "latE5": 2847300,
+    "lngE5": 3502780
+   },
+   "admin1": [
+    "TB"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1008",
+   "nameAr": "حائل",
+   "point": {
+    "latE5": 2752000,
+    "lngE5": 4170000
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "173",
+   "nameAr": "الحائط",
+   "point": {
+    "latE5": 2599330,
+    "lngE5": 4046690
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "174",
+   "nameAr": "السليمي",
+   "point": {
+    "latE5": 2628960,
+    "lngE5": 4136610
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "177",
+   "nameAr": "الشملي",
+   "point": {
+    "latE5": 2685860,
+    "lngE5": 4032854
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "43",
+   "nameAr": "الشنان",
+   "point": {
+    "latE5": 2717000,
+    "lngE5": 4244000
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "20",
+   "nameAr": "الغزالة",
+   "point": {
+    "latE5": 2679000,
+    "lngE5": 4132000
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "54",
+   "nameAr": "بقعاء",
+   "point": {
+    "latE5": 2790000,
+    "lngE5": 4240000
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "176",
+   "nameAr": "سميراء",
+   "point": {
+    "latE5": 2649941,
+    "lngE5": 4212939
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "175",
+   "nameAr": "موقق",
+   "point": {
+    "latE5": 2737854,
+    "lngE5": 4117976
+   },
+   "admin1": [
+    "HA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1009",
+   "nameAr": "عرعر",
+   "point": {
+    "latE5": 3099000,
+    "lngE5": 4102000
+   },
+   "admin1": [
+    "SH"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 8,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9913,
+     "SUNRISE": 0.9855,
+     "DHUHR": 0.9971,
+     "ASR": 0.9913,
+     "MAGHRIB": 0.9827,
+     "ISHA": 0.9827
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      31,
+      29,
+      29,
+      29,
+      29
+     ],
+     "SUNRISE": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      31,
+      29,
+      29,
+      29,
+      29
+     ],
+     "DHUHR": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      31,
+      29,
+      29,
+      29,
+      29
+     ],
+     "ASR": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      31,
+      29,
+      29,
+      29,
+      29
+     ],
+     "MAGHRIB": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      31,
+      29,
+      29,
+      29,
+      29
+     ],
+     "ISHA": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      31,
+      29,
+      29,
+      29,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 19,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "178",
+   "nameAr": "العويقلية",
+   "point": {
+    "latE5": 3036177,
+    "lngE5": 4225092
+   },
+   "admin1": [
+    "SH"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "94",
+   "nameAr": "رفحاء",
+   "point": {
+    "latE5": 2963000,
+    "lngE5": 4350000
+   },
+   "admin1": [
+    "SH"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "115",
+   "nameAr": "طريف",
+   "point": {
+    "latE5": 3168000,
+    "lngE5": 3866000
+   },
+   "admin1": [
+    "SH"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1010",
+   "nameAr": "جازان",
+   "point": {
+    "latE5": 1689000,
+    "lngE5": 4254000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9971,
+     "SUNRISE": 0.9914,
+     "DHUHR": 1.0,
+     "ASR": 0.9971,
+     "MAGHRIB": 0.9971,
+     "ISHA": 0.9971
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      27,
+      30,
+      29,
+      30,
+      29,
+      30,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "SUNRISE": [
+      30,
+      27,
+      30,
+      29,
+      30,
+      29,
+      30,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "DHUHR": [
+      30,
+      27,
+      30,
+      29,
+      30,
+      29,
+      30,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ASR": [
+      30,
+      27,
+      30,
+      29,
+      30,
+      29,
+      30,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "MAGHRIB": [
+      30,
+      27,
+      30,
+      29,
+      30,
+      29,
+      30,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ISHA": [
+      30,
+      27,
+      30,
+      29,
+      30,
+      29,
+      30,
+      30,
+      28,
+      30,
+      28,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 15,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "3",
+   "nameAr": "أبو عريش",
+   "point": {
+    "latE5": 1697000,
+    "lngE5": 4283000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "6",
+   "nameAr": "أحد المسارحة",
+   "point": {
+    "latE5": 1670000,
+    "lngE5": 4295000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "24",
+   "nameAr": "الحرث",
+   "point": {
+    "latE5": 1678000,
+    "lngE5": 4322000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "18",
+   "nameAr": "الدائر",
+   "point": {
+    "latE5": 1734000,
+    "lngE5": 4314000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "39",
+   "nameAr": "الدرب",
+   "point": {
+    "latE5": 1771000,
+    "lngE5": 4209000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "41",
+   "nameAr": "الريث",
+   "point": {
+    "latE5": 1760000,
+    "lngE5": 4286000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "181",
+   "nameAr": "الطوال",
+   "point": {
+    "latE5": 1652800,
+    "lngE5": 4296850
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "13",
+   "nameAr": "العارضة",
+   "point": {
+    "latE5": 1704000,
+    "lngE5": 4309000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "11",
+   "nameAr": "العيدابي",
+   "point": {
+    "latE5": 1724000,
+    "lngE5": 4295000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "52",
+   "nameAr": "بيش",
+   "point": {
+    "latE5": 1737800,
+    "lngE5": 4253800
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "65",
+   "nameAr": "جزر فرسان",
+   "point": {
+    "latE5": 1671000,
+    "lngE5": 4212000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "103",
+   "nameAr": "صامطة",
+   "point": {
+    "latE5": 1659000,
+    "lngE5": 4294000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "101",
+   "nameAr": "صبيا",
+   "point": {
+    "latE5": 1715000,
+    "lngE5": 4262000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "61",
+   "nameAr": "ضمد",
+   "point": {
+    "latE5": 1710000,
+    "lngE5": 4278000
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "179",
+   "nameAr": "فيفاء",
+   "point": {
+    "latE5": 1724730,
+    "lngE5": 4310690
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "180",
+   "nameAr": "هروب",
+   "point": {
+    "latE5": 1743500,
+    "lngE5": 4288570
+   },
+   "admin1": [
+    "GA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1011",
+   "nameAr": "نجران",
+   "point": {
+    "latE5": 1752000,
+    "lngE5": 4420000
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 8,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9971,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9971,
+     "ASR": 0.9971,
+     "MAGHRIB": 0.9913,
+     "ISHA": 0.9913
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      30,
+      29,
+      29,
+      29,
+      29
+     ],
+     "SUNRISE": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      30,
+      29,
+      29,
+      29,
+      29
+     ],
+     "DHUHR": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      30,
+      29,
+      29,
+      29,
+      29
+     ],
+     "ASR": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      30,
+      29,
+      29,
+      29,
+      29
+     ],
+     "MAGHRIB": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      30,
+      29,
+      29,
+      29,
+      29
+     ],
+     "ISHA": [
+      29,
+      26,
+      30,
+      28,
+      30,
+      28,
+      28,
+      30,
+      29,
+      29,
+      29,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 20,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "79",
+   "nameAr": "الخرخير",
+   "point": {
+    "latE5": 1885000,
+    "lngE5": 5181900
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "51",
+   "nameAr": "بدر الجنوب",
+   "point": {
+    "latE5": 1788000,
+    "lngE5": 4372000
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "113",
+   "nameAr": "ثار",
+   "point": {
+    "latE5": 1797000,
+    "lngE5": 4411000
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "67",
+   "nameAr": "حبونا",
+   "point": {
+    "latE5": 1785000,
+    "lngE5": 4302000
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "81",
+   "nameAr": "خباش",
+   "point": {
+    "latE5": 1760000,
+    "lngE5": 4506600
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "106",
+   "nameAr": "شرورة",
+   "point": {
+    "latE5": 1749000,
+    "lngE5": 4711000
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "117",
+   "nameAr": "يدمة",
+   "point": {
+    "latE5": 1853000,
+    "lngE5": 4421000
+   },
+   "admin1": [
+    "NG"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1012",
+   "nameAr": "الباحة",
+   "point": {
+    "latE5": 2001000,
+    "lngE5": 4147000
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9914,
+     "DHUHR": 1.0,
+     "ASR": 0.9971,
+     "MAGHRIB": 0.9971,
+     "ISHA": 0.9971
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      29,
+      30,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      29,
+      30,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      29,
+      30,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      29,
+      30,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      29,
+      30,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      29,
+      30,
+      30,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 16,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "182",
+   "nameAr": "الحجرة",
+   "point": {
+    "latE5": 2019540,
+    "lngE5": 4107220
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "12",
+   "nameAr": "العقيق",
+   "point": {
+    "latE5": 2027000,
+    "lngE5": 4166000
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "40",
+   "nameAr": "القرى",
+   "point": {
+    "latE5": 2025000,
+    "lngE5": 4136000
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "32",
+   "nameAr": "المخواة",
+   "point": {
+    "latE5": 1978000,
+    "lngE5": 4143000
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "35",
+   "nameAr": "المندق",
+   "point": {
+    "latE5": 2016000,
+    "lngE5": 4129000
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "53",
+   "nameAr": "بلجرشي",
+   "point": {
+    "latE5": 1986000,
+    "lngE5": 4157000
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "183",
+   "nameAr": "غامد الزناد",
+   "point": {
+    "latE5": 1960330,
+    "lngE5": 4148130
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "92",
+   "nameAr": "قلوة",
+   "point": {
+    "latE5": 1995000,
+    "lngE5": 4124000
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "207",
+   "nameAr": "بني حسن",
+   "point": {
+    "latE5": 2005158,
+    "lngE5": 4137405
+   },
+   "admin1": [
+    "BA"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "1013",
+   "nameAr": "سكاكا",
+   "point": {
+    "latE5": 2997000,
+    "lngE5": 4020000
+   },
+   "admin1": [
+    "GO"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "21",
+   "nameAr": "القريات",
+   "point": {
+    "latE5": 3133000,
+    "lngE5": 3734000
+   },
+   "admin1": [
+    "GO"
+   ],
+   "reachKm": 25.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kacst_api",
+      "from": "2025-01-01",
+      "to": "2025-12-31",
+      "days": 365,
+      "zones": 2,
+      "monthSplit": false
+     },
+     {
+      "source": "kacst_api",
+      "from": "2027-01-01",
+      "to": "2027-12-31",
+      "days": 365,
+      "zones": 3,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kacst_api",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9914,
+     "SUNRISE": 0.9914,
+     "DHUHR": 1.0,
+     "ASR": 0.9914,
+     "MAGHRIB": 0.9971,
+     "ISHA": 0.9971
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "SUNRISE": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "DHUHR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ASR": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "MAGHRIB": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ],
+     "ISHA": [
+      30,
+      26,
+      30,
+      29,
+      29,
+      29,
+      29,
+      30,
+      28,
+      30,
+      28,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 18,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "63",
+   "nameAr": "دومة الجندل",
+   "point": {
+    "latE5": 2981000,
+    "lngE5": 3987000
+   },
+   "admin1": [
+    "GO"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "184",
+   "nameAr": "طبرجل",
+   "point": {
+    "latE5": 3050098,
+    "lngE5": 3822184
+   },
+   "admin1": [
+    "GO"
+   ],
+   "reachKm": 25.0
+  },
+  {
+   "id": "208",
+   "nameAr": "صوير",
+   "point": {
+    "latE5": 3011470,
+    "lngE5": 4038030
+   },
+   "admin1": [
+    "GO"
+   ],
+   "reachKm": 25.0
+  }
+ ]
+}

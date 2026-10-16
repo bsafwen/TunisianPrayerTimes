@@ -150,18 +150,16 @@ class WakeAndPrefsBugsTest {
         val minutesLeft = withLocalClockAt(0, 10) {
             val now = Calendar.getInstance()
             val yesterday = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, -1) }
-            val times = requireNotNull(PrayerTimesRepository.loadDayPrayerTimes(
-                context, delegationId,
-                yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH) + 1, yesterday.get(Calendar.DAY_OF_MONTH),
-            ))
-            val yesterdayIsha = (yesterday.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, times.isha.hour)
-                set(Calendar.MINUTE, times.isha.minute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
+            // The prayer day of yesterday's calendar date, as an instant (6.9): the wake contexts pair each
+            // calendar day with the prayer day of the same date.
+            val yesterdayIsha = requireNotNull(
+                PrayerTimesRepository.prayerDay(
+                    context,
+                    java.time.LocalDate.of(yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH) + 1, yesterday.get(Calendar.DAY_OF_MONTH)),
+                )?.get(com.tunisianprayertimes.engine.TimeEvent.ISHA)?.at,
+            ).toEpochMilli()
             // "Isha + N minutes" that falls 30 minutes from now, counted from yesterday's Isha.
-            val offset = ((now.timeInMillis + 30 * 60_000L - yesterdayIsha.timeInMillis) / 60_000L).toInt()
+            val offset = ((now.timeInMillis + 30 * 60_000L - yesterdayIsha) / 60_000L).toInt()
             val config = PrayerWakeConfig(
                 id = "once",
                 prayer = Prayer.ISHA,

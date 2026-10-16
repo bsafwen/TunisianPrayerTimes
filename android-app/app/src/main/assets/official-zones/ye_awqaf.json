@@ -1,0 +1,4945 @@
+{
+ "schema": 1,
+ "authority": "ye_awqaf",
+ "methodId": "ye_awqaf",
+ "country": "YE",
+ "mapping": "NEAREST",
+ "terrainClassKm": 60.0,
+ "source": "Yemen's General Authority of Awqaf and Guidance (Sanaa), awqaf.gov.ye: daily tables of its 31 locations, Aden-held areas included, since 2026-05-21",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "awqaf.gov.ye Tebyan panel JSON (31 locations)",
+    "from": "2026-05-21",
+    "to": "2026-10-11",
+    "days": 134,
+    "zones": 31,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "awqaf.gov.ye Tebyan panel JSON (31 locations), months split (May, July, September / June, August, October)",
+    "from": "2026-05-21",
+    "to": "2026-10-11",
+    "days": 134,
+    "zones": 31,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9774,
+   "SUNRISE": 0.9786,
+   "DHUHR": 0.967,
+   "ASR": 0.9622,
+   "MAGHRIB": 0.9815,
+   "ISHA": 0.9757
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    0,
+    0,
+    0,
+    341,
+    775,
+    961,
+    899,
+    930,
+    248,
+    0,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    0,
+    0,
+    341,
+    775,
+    961,
+    899,
+    930,
+    248,
+    0,
+    0
+   ],
+   "DHUHR": [
+    0,
+    0,
+    0,
+    0,
+    341,
+    775,
+    961,
+    899,
+    930,
+    248,
+    0,
+    0
+   ],
+   "ASR": [
+    0,
+    0,
+    0,
+    0,
+    341,
+    775,
+    961,
+    899,
+    930,
+    248,
+    0,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    0,
+    0,
+    0,
+    341,
+    775,
+    961,
+    899,
+    930,
+    248,
+    0,
+    0
+   ],
+   "ISHA": [
+    0,
+    0,
+    0,
+    0,
+    341,
+    775,
+    961,
+    899,
+    930,
+    248,
+    0,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "1",
+   "nameAr": "صنعاء",
+   "point": {
+    "latE5": 1535452,
+    "lngE5": 4420646
+   },
+   "morningPoint": {
+    "latE5": 1533852,
+    "lngE5": 4420870
+   },
+   "eveningPoint": {
+    "latE5": 1533852,
+    "lngE5": 4420870
+   },
+   "elevationM": 2356,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1535452,
+      "lngE5": 4420646
+     },
+     "catalogueIds": [
+      71137
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): صنعاء",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): صنعاء, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9925,
+     "SUNRISE": 0.9851,
+     "DHUHR": 0.9478,
+     "ASR": 0.9851,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9776
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "2",
+   "nameAr": "عدن",
+   "point": {
+    "latE5": 1277957,
+    "lngE5": 4503852
+   },
+   "morningPoint": {
+    "latE5": 1277757,
+    "lngE5": 4503696
+   },
+   "eveningPoint": {
+    "latE5": 1277757,
+    "lngE5": 4503696
+   },
+   "elevationM": 64,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1277957,
+      "lngE5": 4503852
+     },
+     "catalogueIds": [
+      415189
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): عدن",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): عدن, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9925,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9403,
+     "ASR": 0.9701,
+     "MAGHRIB": 0.9776,
+     "ISHA": 0.9552
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "3",
+   "nameAr": "صعدة",
+   "point": {
+    "latE5": 1694021,
+    "lngE5": 4376393
+   },
+   "morningPoint": {
+    "latE5": 1693721,
+    "lngE5": 4375971
+   },
+   "eveningPoint": {
+    "latE5": 1693721,
+    "lngE5": 4375971
+   },
+   "elevationM": 1828,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1694021,
+      "lngE5": 4376393
+     },
+     "catalogueIds": [
+      71334
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): صعدة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): صعدة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9701,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9701,
+     "ASR": 0.9776,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9925
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "4",
+   "nameAr": "حضرموت - المكلا",
+   "point": {
+    "latE5": 1454248,
+    "lngE5": 4912424
+   },
+   "morningPoint": {
+    "latE5": 1453348,
+    "lngE5": 4912493
+   },
+   "eveningPoint": {
+    "latE5": 1453348,
+    "lngE5": 4912493
+   },
+   "elevationM": 72,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1454248,
+      "lngE5": 4912424
+     },
+     "catalogueIds": [
+      78754
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حضرموت - المكلا",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حضرموت - المكلا, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9627,
+     "SUNRISE": 0.9851,
+     "DHUHR": 0.9552,
+     "ASR": 0.9104,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9925
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "5",
+   "nameAr": "تعز",
+   "point": {
+    "latE5": 1357952,
+    "lngE5": 4402091
+   },
+   "morningPoint": {
+    "latE5": 1357052,
+    "lngE5": 4404479
+   },
+   "eveningPoint": {
+    "latE5": 1357052,
+    "lngE5": 4404479
+   },
+   "elevationM": 1444,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1357952,
+      "lngE5": 4402091
+     },
+     "catalogueIds": [
+      70225
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): تعز",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): تعز, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9701,
+     "SUNRISE": 0.9851,
+     "DHUHR": 0.9403,
+     "ASR": 0.9403,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "6",
+   "nameAr": "عمران",
+   "point": {
+    "latE5": 1565940,
+    "lngE5": 4394385
+   },
+   "morningPoint": {
+    "latE5": 1564140,
+    "lngE5": 4392762
+   },
+   "eveningPoint": {
+    "latE5": 1564140,
+    "lngE5": 4392762
+   },
+   "elevationM": 2296,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1565940,
+      "lngE5": 4394385
+     },
+     "catalogueIds": [
+      78428
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): عمران",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): عمران, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9851,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9701,
+     "ASR": 0.9552,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "7",
+   "nameAr": "إب - المدينة",
+   "point": {
+    "latE5": 1396667,
+    "lngE5": 4418333
+   },
+   "morningPoint": {
+    "latE5": 1395067,
+    "lngE5": 4418513
+   },
+   "eveningPoint": {
+    "latE5": 1395067,
+    "lngE5": 4418513
+   },
+   "elevationM": 2057,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1396667,
+      "lngE5": 4418333
+     },
+     "catalogueIds": [
+      74477
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): إب - المدينة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): إب - المدينة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9776,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9627,
+     "ASR": 0.9701,
+     "MAGHRIB": 0.9851,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "8",
+   "nameAr": "الحديدة - المدينة",
+   "point": {
+    "latE5": 1479781,
+    "lngE5": 4295452
+   },
+   "morningPoint": {
+    "latE5": 1479181,
+    "lngE5": 4295266
+   },
+   "eveningPoint": {
+    "latE5": 1479181,
+    "lngE5": 4295266
+   },
+   "elevationM": 25,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1479781,
+      "lngE5": 4295452
+     },
+     "catalogueIds": [
+      79415
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - المدينة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - المدينة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9925,
+     "SUNRISE": 0.9851,
+     "DHUHR": 0.9627,
+     "ASR": 0.9701,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9627
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "9",
+   "nameAr": "مأرب",
+   "point": {
+    "latE5": 1546253,
+    "lngE5": 4532581
+   },
+   "morningPoint": {
+    "latE5": 1545253,
+    "lngE5": 4531954
+   },
+   "eveningPoint": {
+    "latE5": 1545253,
+    "lngE5": 4531954
+   },
+   "elevationM": 1102,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1546253,
+      "lngE5": 4532581
+     },
+     "catalogueIds": [
+      72968
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): مأرب",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): مأرب, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9701,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9627,
+     "ASR": 0.9478,
+     "MAGHRIB": 0.9254,
+     "ISHA": 0.9776
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "10",
+   "nameAr": "حجة - المدينة",
+   "point": {
+    "latE5": 1569425,
+    "lngE5": 4360582
+   },
+   "morningPoint": {
+    "latE5": 1568925,
+    "lngE5": 4360177
+   },
+   "eveningPoint": {
+    "latE5": 1568925,
+    "lngE5": 4360177
+   },
+   "elevationM": 1886,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1569425,
+      "lngE5": 4360582
+     },
+     "catalogueIds": [
+      75337
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حجة - المدينة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حجة - المدينة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9776,
+     "SUNRISE": 0.9552,
+     "DHUHR": 0.9851,
+     "ASR": 0.9776,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9925
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "11",
+   "nameAr": "المحويت",
+   "point": {
+    "latE5": 1547007,
+    "lngE5": 4354481
+   },
+   "morningPoint": {
+    "latE5": 1546407,
+    "lngE5": 4354395
+   },
+   "eveningPoint": {
+    "latE5": 1546407,
+    "lngE5": 4354395
+   },
+   "elevationM": 2148,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1547007,
+      "lngE5": 4354481
+     },
+     "catalogueIds": [
+      78977
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): المحويت",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): المحويت, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9925,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9403,
+     "ASR": 0.9627,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "12",
+   "nameAr": "ذمار",
+   "point": {
+    "latE5": 1454274,
+    "lngE5": 4440514
+   },
+   "morningPoint": {
+    "latE5": 1453974,
+    "lngE5": 4440696
+   },
+   "eveningPoint": {
+    "latE5": 1453974,
+    "lngE5": 4440696
+   },
+   "elevationM": 2490,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1454274,
+      "lngE5": 4440514
+     },
+     "catalogueIds": [
+      76184
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): ذمار",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): ذمار, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9851,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9701,
+     "ASR": 0.9925,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9776
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "13",
+   "nameAr": "البيضاء - المدينة",
+   "point": {
+    "latE5": 1398523,
+    "lngE5": 4557272
+   },
+   "morningPoint": {
+    "latE5": 1398023,
+    "lngE5": 4556966
+   },
+   "eveningPoint": {
+    "latE5": 1398023,
+    "lngE5": 4556966
+   },
+   "elevationM": 2041,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1398523,
+      "lngE5": 4557272
+     },
+     "catalogueIds": [
+      79836
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): البيضاء - المدينة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): البيضاء - المدينة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9776,
+     "SUNRISE": 0.9925,
+     "DHUHR": 0.9701,
+     "ASR": 0.9254,
+     "MAGHRIB": 0.9552,
+     "ISHA": 0.9776
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "14",
+   "nameAr": "الجوف",
+   "point": {
+    "latE5": 1616406,
+    "lngE5": 4477692
+   },
+   "morningPoint": {
+    "latE5": 1612806,
+    "lngE5": 4478444
+   },
+   "eveningPoint": {
+    "latE5": 1612806,
+    "lngE5": 4478444
+   },
+   "elevationM": 1091,
+   "terrainClass": "HIGH",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1616406,
+      "lngE5": 4477692
+     },
+     "catalogueIds": [
+      79455
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الجوف",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الجوف, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9776,
+     "SUNRISE": 0.9701,
+     "DHUHR": 0.9701,
+     "ASR": 0.9627,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9552
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "15",
+   "nameAr": "ريمة",
+   "point": {
+    "latE5": 1470389,
+    "lngE5": 4359917
+   },
+   "morningPoint": {
+    "latE5": 1461289,
+    "lngE5": 4360290
+   },
+   "eveningPoint": {
+    "latE5": 1461289,
+    "lngE5": 4360290
+   },
+   "elevationM": 2361,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1470389,
+      "lngE5": 4359917
+     },
+     "catalogueIds": [
+      401043
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): ريمة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): ريمة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9701,
+     "SUNRISE": 0.9925,
+     "DHUHR": 0.9925,
+     "ASR": 0.9478,
+     "MAGHRIB": 0.9776,
+     "ISHA": 0.9627
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "16",
+   "nameAr": "الضالع",
+   "point": {
+    "latE5": 1369572,
+    "lngE5": 4473137
+   },
+   "morningPoint": {
+    "latE5": 1367772,
+    "lngE5": 4473312
+   },
+   "eveningPoint": {
+    "latE5": 1367772,
+    "lngE5": 4473312
+   },
+   "elevationM": 1517,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1369572,
+      "lngE5": 4473137
+     },
+     "catalogueIds": [
+      80384
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الضالع",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الضالع, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9851,
+     "SUNRISE": 0.9925,
+     "DHUHR": 0.9701,
+     "ASR": 0.9627,
+     "MAGHRIB": 0.9776,
+     "ISHA": 0.9627
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "17",
+   "nameAr": "لحج",
+   "point": {
+    "latE5": 1305667,
+    "lngE5": 4488194
+   },
+   "morningPoint": {
+    "latE5": 1305967,
+    "lngE5": 4488322
+   },
+   "eveningPoint": {
+    "latE5": 1305967,
+    "lngE5": 4488322
+   },
+   "elevationM": 147,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1305667,
+      "lngE5": 4488194
+     },
+     "catalogueIds": [
+      73560
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): لحج",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): لحج, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9925,
+     "SUNRISE": 0.9552,
+     "DHUHR": 0.9701,
+     "ASR": 0.9627,
+     "MAGHRIB": 0.9701,
+     "ISHA": 0.9776
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "18",
+   "nameAr": "شبوة",
+   "point": {
+    "latE5": 1453767,
+    "lngE5": 4683187
+   },
+   "morningPoint": {
+    "latE5": 1452867,
+    "lngE5": 4683538
+   },
+   "eveningPoint": {
+    "latE5": 1452867,
+    "lngE5": 4683538
+   },
+   "elevationM": 1195,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1453767,
+      "lngE5": 4683187
+     },
+     "catalogueIds": [
+      77726
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): شبوة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): شبوة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9701,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9701,
+     "ASR": 0.9328,
+     "MAGHRIB": 0.9552,
+     "ISHA": 0.9552
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "19",
+   "nameAr": "أبين - زنجبار",
+   "point": {
+    "latE5": 1312871,
+    "lngE5": 4538073
+   },
+   "morningPoint": {
+    "latE5": 1312471,
+    "lngE5": 4538305
+   },
+   "eveningPoint": {
+    "latE5": 1312471,
+    "lngE5": 4538305
+   },
+   "elevationM": 29,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1312871,
+      "lngE5": 4538073
+     },
+     "catalogueIds": [
+      69426
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): أبين - زنجبار",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): أبين - زنجبار, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9851,
+     "SUNRISE": 0.9701,
+     "DHUHR": 0.9701,
+     "ASR": 0.9478,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9701
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "20",
+   "nameAr": "المهرة",
+   "point": {
+    "latE5": 1620787,
+    "lngE5": 5217605
+   },
+   "morningPoint": {
+    "latE5": 1618587,
+    "lngE5": 5216815
+   },
+   "eveningPoint": {
+    "latE5": 1618587,
+    "lngE5": 5216815
+   },
+   "elevationM": -71,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1620787,
+      "lngE5": 5217605
+     },
+     "catalogueIds": [
+      79700
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): المهرة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): المهرة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9701,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9851,
+     "ASR": 0.9552,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9925
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "21",
+   "nameAr": "سقطرى",
+   "point": {
+    "latE5": 1264881,
+    "lngE5": 5401895
+   },
+   "morningPoint": {
+    "latE5": 1265281,
+    "lngE5": 5402380
+   },
+   "eveningPoint": {
+    "latE5": 1265281,
+    "lngE5": 5402380
+   },
+   "elevationM": 124,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1264881,
+      "lngE5": 5401895
+     },
+     "catalogueIds": [
+      75427
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): سقطرى",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): سقطرى, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9627,
+     "SUNRISE": 0.9851,
+     "DHUHR": 0.9851,
+     "ASR": 0.9627,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "401",
+   "nameAr": "حضرموت - سيئون",
+   "point": {
+    "latE5": 1594333,
+    "lngE5": 4879333
+   },
+   "morningPoint": {
+    "latE5": 1594333,
+    "lngE5": 4878756
+   },
+   "eveningPoint": {
+    "latE5": 1594333,
+    "lngE5": 4878756
+   },
+   "elevationM": 643,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1594333,
+      "lngE5": 4879333
+     },
+     "catalogueIds": [
+      70981,
+      7792748
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حضرموت - سيئون",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حضرموت - سيئون, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9701,
+     "SUNRISE": 0.9403,
+     "DHUHR": 0.9552,
+     "ASR": 0.9627,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9403
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "402",
+   "nameAr": "حضرموت - تريم",
+   "point": {
+    "latE5": 1605694,
+    "lngE5": 4899889
+   },
+   "morningPoint": {
+    "latE5": 1604294,
+    "lngE5": 4899225
+   },
+   "eveningPoint": {
+    "latE5": 1604294,
+    "lngE5": 4899225
+   },
+   "elevationM": 568,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1605694,
+      "lngE5": 4899889
+     },
+     "catalogueIds": [
+      70160
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حضرموت - تريم",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حضرموت - تريم, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9776,
+     "SUNRISE": 0.9701,
+     "DHUHR": 0.9776,
+     "ASR": 0.9851,
+     "MAGHRIB": 0.9701,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "701",
+   "nameAr": "إب - ذي السفال",
+   "point": {
+    "latE5": 1383446,
+    "lngE5": 4411469
+   },
+   "morningPoint": {
+    "latE5": 1379146,
+    "lngE5": 4415274
+   },
+   "eveningPoint": {
+    "latE5": 1379146,
+    "lngE5": 4415274
+   },
+   "elevationM": 1415,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1383446,
+      "lngE5": 4411469
+     },
+     "catalogueIds": [
+      76154
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): إب - ذي السفال",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): إب - ذي السفال, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9776,
+     "SUNRISE": 0.9776,
+     "DHUHR": 0.9627,
+     "ASR": 0.9925,
+     "MAGHRIB": 0.9776,
+     "ISHA": 0.9701
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "801",
+   "nameAr": "الحديدة - زبيد",
+   "point": {
+    "latE5": 1419510,
+    "lngE5": 4331518
+   },
+   "morningPoint": {
+    "latE5": 1418810,
+    "lngE5": 4330228
+   },
+   "eveningPoint": {
+    "latE5": 1418810,
+    "lngE5": 4330228
+   },
+   "elevationM": 112,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1419510,
+      "lngE5": 4331518
+     },
+     "catalogueIds": [
+      69500
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - زبيد",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - زبيد, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9925,
+     "SUNRISE": 0.9851,
+     "DHUHR": 0.9627,
+     "ASR": 0.9851,
+     "MAGHRIB": 0.9851,
+     "ISHA": 0.9701
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "802",
+   "nameAr": "الحديدة - المراوعة",
+   "point": {
+    "latE5": 1483069,
+    "lngE5": 4315391
+   },
+   "morningPoint": {
+    "latE5": 1484469,
+    "lngE5": 4320020
+   },
+   "eveningPoint": {
+    "latE5": 1484469,
+    "lngE5": 4320020
+   },
+   "elevationM": 91,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1483069,
+      "lngE5": 4315391
+     },
+     "catalogueIds": [
+      78909
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - المراوعة",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - المراوعة, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9925,
+     "DHUHR": 0.9627,
+     "ASR": 0.9627,
+     "MAGHRIB": 0.9701,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "803",
+   "nameAr": "الحديدة - بيت الفقية",
+   "point": {
+    "latE5": 1451635,
+    "lngE5": 4332446
+   },
+   "morningPoint": {
+    "latE5": 1450235,
+    "lngE5": 4330345
+   },
+   "eveningPoint": {
+    "latE5": 1450235,
+    "lngE5": 4330345
+   },
+   "elevationM": 150,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1451635,
+      "lngE5": 4332446
+     },
+     "catalogueIds": [
+      76991
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - بيت الفقية",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - بيت الفقية, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9104,
+     "SUNRISE": 0.9701,
+     "DHUHR": 0.9627,
+     "ASR": 0.9552,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9701
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "804",
+   "nameAr": "الحديدة - باجل",
+   "point": {
+    "latE5": 1505898,
+    "lngE5": 4328731
+   },
+   "morningPoint": {
+    "latE5": 1505298,
+    "lngE5": 4328437
+   },
+   "eveningPoint": {
+    "latE5": 1505298,
+    "lngE5": 4328437
+   },
+   "elevationM": 214,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1505898,
+      "lngE5": 4328731
+     },
+     "catalogueIds": [
+      77408
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - باجل",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): الحديدة - باجل, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9627,
+     "SUNRISE": 0.9701,
+     "DHUHR": 0.9701,
+     "ASR": 0.9701,
+     "MAGHRIB": 0.9776,
+     "ISHA": 0.9701
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "1001",
+   "nameAr": "حجة - عبس",
+   "point": {
+    "latE5": 1600295,
+    "lngE5": 4319725
+   },
+   "morningPoint": {
+    "latE5": 1599795,
+    "lngE5": 4318300
+   },
+   "eveningPoint": {
+    "latE5": 1599795,
+    "lngE5": 4318300
+   },
+   "elevationM": 60,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1600295,
+      "lngE5": 4319725
+     },
+     "catalogueIds": [
+      70357
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حجة - عبس",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): حجة - عبس, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9776,
+     "SUNRISE": 0.9627,
+     "DHUHR": 0.9701,
+     "ASR": 0.9478,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "1301",
+   "nameAr": "البيضاء - رداع",
+   "point": {
+    "latE5": 1441510,
+    "lngE5": 4483709
+   },
+   "morningPoint": {
+    "latE5": 1441310,
+    "lngE5": 4483525
+   },
+   "eveningPoint": {
+    "latE5": 1441310,
+    "lngE5": 4483525
+   },
+   "elevationM": 2177,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1441510,
+      "lngE5": 4483709
+     },
+     "catalogueIds": [
+      71491
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): البيضاء - رداع",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): البيضاء - رداع, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9851,
+     "SUNRISE": 0.9701,
+     "DHUHR": 0.9851,
+     "ASR": 0.9776,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9627
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "1901",
+   "nameAr": "أبين - جعار",
+   "point": {
+    "latE5": 1322300,
+    "lngE5": 4530559
+   },
+   "morningPoint": {
+    "latE5": 1317000,
+    "lngE5": 4535106
+   },
+   "eveningPoint": {
+    "latE5": 1317000,
+    "lngE5": 4535106
+   },
+   "elevationM": 57,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1322300,
+      "lngE5": 4530559
+     },
+     "catalogueIds": [
+      74368
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): أبين - جعار",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ye Tebyan panel JSON (31 locations): أبين - جعار, months split (May, July, September / June, August, October)",
+      "from": "2026-05-21",
+      "to": "2026-10-11",
+      "days": 134,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9851,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9776,
+     "ASR": 0.9701,
+     "MAGHRIB": 0.9925,
+     "ISHA": 0.9851
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      11,
+      25,
+      31,
+      29,
+      30,
+      8,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

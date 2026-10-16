@@ -1,0 +1,280 @@
+{
+ "schema": 1,
+ "authority": "bh_calendar",
+ "methodId": "bh_calendar",
+ "country": "BH",
+ "mapping": "NATIONAL",
+ "source": "The Supreme Council for Islamic Affairs's Bahraini calendar (almajles.gov.bh), 1448 (2026-06-16 to 2027-06-05): one national table from two stated points",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "bh_scia_calendar_1448",
+    "from": "2026-06-16",
+    "to": "2027-06-05",
+    "days": 355,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "bh_scia_calendar_1448",
+    "from": "2026-06-16",
+    "to": "2027-06-05",
+    "days": 355,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9746,
+   "SUNRISE": 0.9803,
+   "DHUHR": 0.9718,
+   "ASR": 0.969,
+   "MAGHRIB": 0.969,
+   "ISHA": 0.9437
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    20,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "SUNRISE": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    20,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "DHUHR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    20,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ASR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    20,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "MAGHRIB": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    20,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ISHA": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    20,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "bahrain",
+   "nameAr": "البحرين",
+   "point": {
+    "latE5": 2622787,
+    "lngE5": 5058565
+   },
+   "morningPoint": {
+    "latE5": 2620500,
+    "lngE5": 5068000
+   },
+   "eveningPoint": {
+    "latE5": 2617500,
+    "lngE5": 5044000
+   },
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "bh_scia_calendar_1448",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "bh_scia_calendar_1448",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9746,
+     "SUNRISE": 0.9803,
+     "DHUHR": 0.9718,
+     "ASR": 0.969,
+     "MAGHRIB": 0.969,
+     "ISHA": 0.9437
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,2201 @@
+{
+ "schema": 1,
+ "authority": "mr_islamic_affairs",
+ "methodId": "mr_islamic_affairs",
+ "country": "MR",
+ "mapping": "NEAREST",
+ "byAdmin1": true,
+ "source": "Mauritania's Ministry of Islamic Affairs and Original Education: the Ramadan imsakiya of the 13 wilaya capitals (1446/2025; Nouakchott also 1442-1445), a perpetual table since 2023, applied all year (Q6)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023) and Nouakchott 2023-2024",
+    "from": "2023-03-23",
+    "to": "2025-03-30",
+    "days": 450,
+    "zones": 13,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): Nouakchott by month (March, April), the interior capitals by date (odd, even)",
+    "from": "2023-03-23",
+    "to": "2025-03-30",
+    "days": 450,
+    "zones": 13,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.5867,
+   "SUNRISE": 0.6111,
+   "DHUHR": 0.8511,
+   "ASR": 0.88,
+   "MAGHRIB": 0.9111,
+   "ISHA": 0.8667
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    0,
+    420,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    420,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "DHUHR": [
+    0,
+    0,
+    420,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ASR": [
+    0,
+    0,
+    420,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    0,
+    420,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ISHA": [
+    0,
+    0,
+    420,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 450,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "nouakchott",
+   "nameAr": "انواكشوط",
+   "point": {
+    "latE5": 1808581,
+    "lngE5": -1597850
+   },
+   "morningPoint": {
+    "latE5": 1808581,
+    "lngE5": -1598917
+   },
+   "eveningPoint": {
+    "latE5": 1808581,
+    "lngE5": -1598917
+   },
+   "admin1": [
+    "13",
+    "14",
+    "15"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1808581,
+      "lngE5": -1597850
+     },
+     "catalogueIds": [
+      2377450
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiyas 1444-1446 (2023-2025), Nouakchott",
+      "from": "2023-03-23",
+      "to": "2025-03-30",
+      "days": 90,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiyas 1444-1446 (2023-2025), Nouakchott, March and April month-days split",
+      "from": "2023-03-23",
+      "to": "2025-03-30",
+      "days": 90,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6222,
+     "SUNRISE": 0.6556,
+     "DHUHR": 0.8778,
+     "ASR": 0.8667,
+     "MAGHRIB": 0.9111,
+     "ISHA": 0.8556
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      60,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      60,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      60,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      60,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      60,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      60,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 90,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "nema",
+   "nameAr": "النعمة",
+   "point": {
+    "latE5": 1661702,
+    "lngE5": -725649
+   },
+   "morningPoint": {
+    "latE5": 1661702,
+    "lngE5": -726836
+   },
+   "eveningPoint": {
+    "latE5": 1661702,
+    "lngE5": -726836
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1661702,
+      "lngE5": -725649
+     },
+     "catalogueIds": [
+      2377539
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): nema",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): nema, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6333,
+     "SUNRISE": 0.6333,
+     "DHUHR": 0.8333,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "aioun",
+   "nameAr": "العيون",
+   "point": {
+    "latE5": 1666140,
+    "lngE5": -961490
+   },
+   "morningPoint": {
+    "latE5": 1666140,
+    "lngE5": -961305
+   },
+   "eveningPoint": {
+    "latE5": 1666140,
+    "lngE5": -961305
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "02"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1666140,
+      "lngE5": -961490
+     },
+     "catalogueIds": [
+      2381291
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): aioun",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): aioun, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6667,
+     "SUNRISE": 0.6333,
+     "DHUHR": 0.9,
+     "ASR": 0.7667,
+     "MAGHRIB": 0.8667,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kiffa",
+   "nameAr": "كيفه",
+   "point": {
+    "latE5": 1662073,
+    "lngE5": -1140208
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "03"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1662073,
+      "lngE5": -1140208
+     },
+     "catalogueIds": [
+      2378538
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): kiffa",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): kiffa, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6,
+     "SUNRISE": 0.5667,
+     "DHUHR": 0.8667,
+     "ASR": 0.8667,
+     "MAGHRIB": 0.9333,
+     "ISHA": 0.9667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "kaedi",
+   "nameAr": "كيهيدي",
+   "point": {
+    "latE5": 1615071,
+    "lngE5": -1350582
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "04"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1615071,
+      "lngE5": -1350582
+     },
+     "catalogueIds": [
+      2378736
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): kaedi",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): kaedi, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6333,
+     "SUNRISE": 0.6667,
+     "DHUHR": 0.8,
+     "ASR": 0.7667,
+     "MAGHRIB": 0.9,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "aleg",
+   "nameAr": "ألاك",
+   "point": {
+    "latE5": 1705314,
+    "lngE5": -1391312
+   },
+   "morningPoint": {
+    "latE5": 1705314,
+    "lngE5": -1393120
+   },
+   "eveningPoint": {
+    "latE5": 1705314,
+    "lngE5": -1393120
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "05"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1705314,
+      "lngE5": -1391312
+     },
+     "catalogueIds": [
+      2381659
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): aleg",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): aleg, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5667,
+     "SUNRISE": 0.5667,
+     "DHUHR": 0.8333,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9333,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "rosso",
+   "nameAr": "روصو",
+   "point": {
+    "latE5": 1651378,
+    "lngE5": -1580503
+   },
+   "morningPoint": {
+    "latE5": 1651378,
+    "lngE5": -1582507
+   },
+   "eveningPoint": {
+    "latE5": 1651378,
+    "lngE5": -1582507
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "06"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1651378,
+      "lngE5": -1580503
+     },
+     "catalogueIds": [
+      2376898
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): rosso",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): rosso, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5667,
+     "SUNRISE": 0.7333,
+     "DHUHR": 0.8333,
+     "ASR": 0.8667,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "atar",
+   "nameAr": "أطار",
+   "point": {
+    "latE5": 2051875,
+    "lngE5": -1304637
+   },
+   "morningPoint": {
+    "latE5": 2051875,
+    "lngE5": -1305696
+   },
+   "eveningPoint": {
+    "latE5": 2051875,
+    "lngE5": -1305696
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "07"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2051875,
+      "lngE5": -1304637
+     },
+     "catalogueIds": [
+      2381334
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): atar",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): atar, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5333,
+     "SUNRISE": 0.6,
+     "DHUHR": 0.8,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.9,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "nouadhibou",
+   "nameAr": "نواذيبو",
+   "point": {
+    "latE5": 2094188,
+    "lngE5": -1703842
+   },
+   "morningPoint": {
+    "latE5": 2094188,
+    "lngE5": -1705666
+   },
+   "eveningPoint": {
+    "latE5": 2094188,
+    "lngE5": -1705666
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "08"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2094188,
+      "lngE5": -1703842
+     },
+     "catalogueIds": [
+      2377457
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): nouadhibou",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): nouadhibou, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4333,
+     "SUNRISE": 0.6,
+     "DHUHR": 0.8,
+     "ASR": 1.0,
+     "MAGHRIB": 0.8667,
+     "ISHA": 0.7
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "tidjikja",
+   "nameAr": "تجكجه",
+   "point": {
+    "latE5": 1855644,
+    "lngE5": -1142715
+   },
+   "morningPoint": {
+    "latE5": 1855644,
+    "lngE5": -1143711
+   },
+   "eveningPoint": {
+    "latE5": 1855644,
+    "lngE5": -1143711
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "09"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1855644,
+      "lngE5": -1142715
+     },
+     "catalogueIds": [
+      2376193
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): tidjikja",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): tidjikja, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6667,
+     "SUNRISE": 0.5667,
+     "DHUHR": 0.8667,
+     "ASR": 0.8667,
+     "MAGHRIB": 0.8333,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "selibaby",
+   "nameAr": "سيلبابي",
+   "point": {
+    "latE5": 1515846,
+    "lngE5": -1218430
+   },
+   "morningPoint": {
+    "latE5": 1515846,
+    "lngE5": -1218985
+   },
+   "eveningPoint": {
+    "latE5": 1515846,
+    "lngE5": -1218985
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "10"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1515846,
+      "lngE5": -1218430
+     },
+     "catalogueIds": [
+      2376719
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): selibaby",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): selibaby, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6667,
+     "SUNRISE": 0.6,
+     "DHUHR": 0.8667,
+     "ASR": 0.8667,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "zouerat",
+   "nameAr": "ازويرات",
+   "point": {
+    "latE5": 2273542,
+    "lngE5": -1247134
+   },
+   "morningPoint": {
+    "latE5": 2273542,
+    "lngE5": -1246412
+   },
+   "eveningPoint": {
+    "latE5": 2273542,
+    "lngE5": -1246412
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "11"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2273542,
+      "lngE5": -1247134
+     },
+     "catalogueIds": [
+      2375558
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): zouerat",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): zouerat, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.3333,
+     "SUNRISE": 0.4667,
+     "DHUHR": 0.8667,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.8333,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "akjoujt",
+   "nameAr": "أكجوجت",
+   "point": {
+    "latE5": 1974163,
+    "lngE5": -1438534
+   },
+   "morningPoint": {
+    "latE5": 1974163,
+    "lngE5": -1439607
+   },
+   "eveningPoint": {
+    "latE5": 1974163,
+    "lngE5": -1439607
+   },
+   "offsets": {
+    "SUNRISE": -1.5
+   },
+   "admin1": [
+    "12"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1974163,
+      "lngE5": -1438534
+     },
+     "catalogueIds": [
+      2381690
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): akjoujt",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry imsakiya 1446/2025 (13 capitals; perpetual since 1444/2023): akjoujt, odd and even dates split",
+      "from": "2025-03-01",
+      "to": "2025-03-30",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6333,
+     "SUNRISE": 0.5667,
+     "DHUHR": 0.8667,
+     "ASR": 0.9,
+     "MAGHRIB": 0.9,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

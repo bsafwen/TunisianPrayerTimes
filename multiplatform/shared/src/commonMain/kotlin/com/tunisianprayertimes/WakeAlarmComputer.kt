@@ -1,5 +1,8 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.engine.PrayerDay
+import com.tunisianprayertimes.engine.TimeEvent
+import java.time.Instant
 import java.util.Calendar
 
 /**
@@ -11,12 +14,16 @@ import java.util.Calendar
  */
 object WakeAlarmComputer {
 
+    /**
+     * One calendar day (plan 6.9): [date] in the phone's zone for fixed-time and from-now alarms, and the
+     * prayer day of the same date as instants, null when it has no times, which prayer-relative alarms skip.
+     * [jumua] is the Friday's resolved Jumu'a time (an edited time, else A18's default); Dhuhr when null.
+     */
     data class PrayerDayContext(
         val date: Calendar,
-        val prayerTimes: DayPrayerTimes,
+        val prayerDay: PrayerDay? = null,
         val isFriday: Boolean = false,
-        val jomoaaHour: Int = -1,
-        val jomoaaMinute: Int = -1,
+        val jumua: Instant? = null,
     )
 
     data class ScheduledWakeTrigger(
@@ -180,9 +187,7 @@ object WakeAlarmComputer {
                 val effectivePrayer = effectivePrayerFor(config.prayer, prayerDay.isFriday)
                 val prayerTime = prayerDay.resolvePrayerTime(effectivePrayer) ?: return null
                 MainOccurrence(
-                    triggerAtMillis = calendarForTime(prayerDay.date, prayerTime.hour, prayerTime.minute)
-                        .apply { add(Calendar.MINUTE, config.mainAlarm.prayerOffset.minutes) }
-                        .timeInMillis,
+                    triggerAtMillis = prayerTime.toEpochMilli() + config.mainAlarm.prayerOffset.minutes.toMillis(),
                     effectivePrayer = effectivePrayer,
                 )
             }
@@ -262,14 +267,19 @@ object WakeAlarmComputer {
             .filter { trigger -> trigger.triggerAtMillis > now.timeInMillis }
             .minByOrNull { trigger -> trigger.triggerAtMillis }
 
-    private fun PrayerDayContext.resolvePrayerTime(prayer: Prayer): PrayerTime? =
-        prayerTimes
-            .scheduledPrayers(
-                isFriday = isFriday,
-                jomoaaHour = jomoaaHour,
-                jomoaaMinute = jomoaaMinute,
-            )
-            .firstOrNull { prayerTime -> prayerTime.prayer == prayer }
+    /** The instant of [prayer] on this prayer day: Jumu'a on a Friday in Dhuhr's place, null without a time. */
+    private fun PrayerDayContext.resolvePrayerTime(prayer: Prayer): Instant? {
+        val day = prayerDay ?: return null
+        return when (prayer) {
+            Prayer.FAJR -> day[TimeEvent.FAJR].at
+            Prayer.DHUHR -> if (isFriday) null else day[TimeEvent.DHUHR].at
+            Prayer.JOMOAA -> if (isFriday) jumua ?: day[TimeEvent.DHUHR].at else null
+            Prayer.ASR -> day[TimeEvent.ASR].at
+            Prayer.MAGHRIB -> day[TimeEvent.MAGHRIB].at
+            Prayer.ISHA -> day[TimeEvent.ISHA].at
+            Prayer.AID_FITR, Prayer.AID_ADHA -> null
+        }
+    }
 
     private fun effectivePrayerFor(prayer: Prayer, isFriday: Boolean): Prayer =
         if (prayer == Prayer.DHUHR && isFriday) Prayer.JOMOAA else prayer

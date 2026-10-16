@@ -1,0 +1,12154 @@
+{
+ "schema": 1,
+ "authority": "eg_egsa",
+ "methodId": "eg_egsa",
+ "country": "EG",
+ "mapping": "NEAREST",
+ "namedFirst": true,
+ "source": "The Egyptian General Survey Authority's all-cities daily table (esa.gov.eg/praytimes.aspx): 78 cities, each computed at a point fitted on 8 days of 2025-26 (Wayback copies and the 2026-10-08 page)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+    "from": "2025-04-29",
+    "to": "2026-10-08",
+    "days": 621,
+    "zones": 78,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+    "from": "2025-04-29",
+    "to": "2026-10-08",
+    "days": 621,
+    "zones": 78,
+    "monthSplit": false
+   },
+   {
+    "source": "EGSA's Ramadan 1445 imsakiya for Cairo, as reprinted by Al-Dostor",
+    "from": "2024-03-11",
+    "to": "2024-04-09",
+    "days": 30,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor",
+    "from": "2025-08-13",
+    "to": "2025-08-13",
+    "days": 6,
+    "zones": 6,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9802,
+   "SUNRISE": 0.9711,
+   "DHUHR": 0.9711,
+   "ASR": 0.9772,
+   "MAGHRIB": 0.9756,
+   "ISHA": 0.968
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    78,
+    98,
+    85,
+    0,
+    78,
+    78,
+    84,
+    0,
+    78,
+    0,
+    78
+   ],
+   "SUNRISE": [
+    0,
+    78,
+    98,
+    85,
+    0,
+    78,
+    78,
+    84,
+    0,
+    78,
+    0,
+    78
+   ],
+   "DHUHR": [
+    0,
+    78,
+    98,
+    85,
+    0,
+    78,
+    78,
+    84,
+    0,
+    78,
+    0,
+    78
+   ],
+   "ASR": [
+    0,
+    78,
+    98,
+    85,
+    0,
+    78,
+    78,
+    84,
+    0,
+    78,
+    0,
+    78
+   ],
+   "MAGHRIB": [
+    0,
+    78,
+    98,
+    85,
+    0,
+    78,
+    78,
+    84,
+    0,
+    78,
+    0,
+    78
+   ],
+   "ISHA": [
+    0,
+    78,
+    98,
+    85,
+    0,
+    78,
+    78,
+    84,
+    0,
+    78,
+    0,
+    78
+   ]
+  },
+  "heldOutRamadanDays": 30,
+  "quirkDays": 158,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "1",
+   "nameAr": "القاهرة",
+   "point": {
+    "latE5": 3006263,
+    "lngE5": 3124967
+   },
+   "morningPoint": {
+    "latE5": 3008272,
+    "lngE5": 3127361
+   },
+   "eveningPoint": {
+    "latE5": 3008272,
+    "lngE5": 3127361
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3006263,
+      "lngE5": 3124967
+     },
+     "catalogueIds": [
+      360630
+     ],
+     "areaKm": 15.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "EGSA's Ramadan 1445 imsakiya for Cairo, as reprinted by Al-Dostor",
+      "from": "2024-03-11",
+      "to": "2024-04-09",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor",
+      "from": "2025-08-13",
+      "to": "2025-08-13",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9487,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      22,
+      10,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      22,
+      10,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      22,
+      10,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      22,
+      10,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      22,
+      10,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      22,
+      10,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "2",
+   "nameAr": "الأسكندرية",
+   "point": {
+    "latE5": 3120167,
+    "lngE5": 2991556
+   },
+   "morningPoint": {
+    "latE5": 3123250,
+    "lngE5": 2996339
+   },
+   "eveningPoint": {
+    "latE5": 3123250,
+    "lngE5": 2996339
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3120167,
+      "lngE5": 2991556
+     },
+     "catalogueIds": [
+      361058
+     ],
+     "areaKm": 13.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor",
+      "from": "2025-08-13",
+      "to": "2025-08-13",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.8889,
+     "ASR": 0.7778,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.7778
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "3",
+   "nameAr": "طنطا",
+   "point": {
+    "latE5": 3078833,
+    "lngE5": 3100167
+   },
+   "morningPoint": {
+    "latE5": 3079179,
+    "lngE5": 3099383
+   },
+   "eveningPoint": {
+    "latE5": 3079179,
+    "lngE5": 3099383
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3078833,
+      "lngE5": 3100167
+     },
+     "catalogueIds": [
+      347497
+     ],
+     "areaKm": 4.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor",
+      "from": "2025-08-13",
+      "to": "2025-08-13",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.8889,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.8889,
+     "ISHA": 0.8889
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "4",
+   "nameAr": "المنصورة",
+   "point": {
+    "latE5": 3103637,
+    "lngE5": 3138069
+   },
+   "morningPoint": {
+    "latE5": 3104898,
+    "lngE5": 3139171
+   },
+   "eveningPoint": {
+    "latE5": 3104898,
+    "lngE5": 3139171
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3103637,
+      "lngE5": 3138069
+     },
+     "catalogueIds": [
+      360761
+     ],
+     "areaKm": 4.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor",
+      "from": "2025-08-13",
+      "to": "2025-08-13",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8889,
+     "SUNRISE": 0.8889,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.8889,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "5",
+   "nameAr": "الزقازيق",
+   "point": {
+    "latE5": 3058750,
+    "lngE5": 3150194
+   },
+   "morningPoint": {
+    "latE5": 3056723,
+    "lngE5": 3149683
+   },
+   "eveningPoint": {
+    "latE5": 3056723,
+    "lngE5": 3149683
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3058750,
+      "lngE5": 3150194
+     },
+     "catalogueIds": [
+      359493
+     ],
+     "areaKm": 3.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor",
+      "from": "2025-08-13",
+      "to": "2025-08-13",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8889,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.8889,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "6",
+   "nameAr": "أسيوط",
+   "point": {
+    "latE5": 2718096,
+    "lngE5": 3118368
+   },
+   "morningPoint": {
+    "latE5": 2717553,
+    "lngE5": 3117475
+   },
+   "eveningPoint": {
+    "latE5": 2717553,
+    "lngE5": 3117475
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2718096,
+      "lngE5": 3118368
+     },
+     "catalogueIds": [
+      359783
+     ],
+     "areaKm": 4.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor",
+      "from": "2025-08-13",
+      "to": "2025-08-13",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.8889,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "7",
+   "nameAr": "سوهاج",
+   "point": {
+    "latE5": 2655695,
+    "lngE5": 3169478
+   },
+   "morningPoint": {
+    "latE5": 2656568,
+    "lngE5": 3169458
+   },
+   "eveningPoint": {
+    "latE5": 2656568,
+    "lngE5": 3169458
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2655695,
+      "lngE5": 3169478
+     },
+     "catalogueIds": [
+      347796
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "8",
+   "nameAr": "بنى سويف",
+   "point": {
+    "latE5": 2907417,
+    "lngE5": 3109778
+   },
+   "morningPoint": {
+    "latE5": 2910225,
+    "lngE5": 3108448
+   },
+   "eveningPoint": {
+    "latE5": 2910225,
+    "lngE5": 3108448
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2907417,
+      "lngE5": 3109778
+     },
+     "catalogueIds": [
+      359173
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "9",
+   "nameAr": "المنيا",
+   "point": {
+    "latE5": 2809193,
+    "lngE5": 3075814
+   },
+   "morningPoint": {
+    "latE5": 2808344,
+    "lngE5": 3075406
+   },
+   "eveningPoint": {
+    "latE5": 2808344,
+    "lngE5": 3075406
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2809193,
+      "lngE5": 3075814
+     },
+     "catalogueIds": [
+      360686
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 0.75,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "10",
+   "nameAr": "قنا",
+   "point": {
+    "latE5": 2616418,
+    "lngE5": 3272671
+   },
+   "morningPoint": {
+    "latE5": 2616553,
+    "lngE5": 3270665
+   },
+   "eveningPoint": {
+    "latE5": 2616553,
+    "lngE5": 3270665
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2616418,
+      "lngE5": 3272671
+     },
+     "catalogueIds": [
+      350550
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "11",
+   "nameAr": "أسوان",
+   "point": {
+    "latE5": 2409082,
+    "lngE5": 3289942
+   },
+   "morningPoint": {
+    "latE5": 2393813,
+    "lngE5": 3291271
+   },
+   "eveningPoint": {
+    "latE5": 2393813,
+    "lngE5": 3291271
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2409082,
+      "lngE5": 3289942
+     },
+     "catalogueIds": [
+      359792
+     ],
+     "areaKm": 3.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "12",
+   "nameAr": "مطروح",
+   "point": {
+    "latE5": 3135290,
+    "lngE5": 2723725
+   },
+   "morningPoint": {
+    "latE5": 3142256,
+    "lngE5": 2724995
+   },
+   "eveningPoint": {
+    "latE5": 3142256,
+    "lngE5": 2724995
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3135290,
+      "lngE5": 2723725
+     },
+     "catalogueIds": [
+      352733
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "13",
+   "nameAr": "الغردقة",
+   "point": {
+    "latE5": 2725738,
+    "lngE5": 3381291
+   },
+   "morningPoint": {
+    "latE5": 2717317,
+    "lngE5": 3383604
+   },
+   "eveningPoint": {
+    "latE5": 2717317,
+    "lngE5": 3383604
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2725738,
+      "lngE5": 3381291
+     },
+     "catalogueIds": [
+      361291
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "14",
+   "nameAr": "الخارجة",
+   "point": {
+    "latE5": 2545101,
+    "lngE5": 3054653
+   },
+   "morningPoint": {
+    "latE5": 2544467,
+    "lngE5": 3026304
+   },
+   "eveningPoint": {
+    "latE5": 2544467,
+    "lngE5": 3026304
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2545101,
+      "lngE5": 3054653
+     },
+     "catalogueIds": [
+      360923
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "15",
+   "nameAr": "الإسماعيلية",
+   "point": {
+    "latE5": 3060427,
+    "lngE5": 3227225
+   },
+   "morningPoint": {
+    "latE5": 3060733,
+    "lngE5": 3225199
+   },
+   "eveningPoint": {
+    "latE5": 3060733,
+    "lngE5": 3225199
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3060427,
+      "lngE5": 3227225
+     },
+     "catalogueIds": [
+      361055
+     ],
+     "areaKm": 3.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "16",
+   "nameAr": "دمياط",
+   "point": {
+    "latE5": 3141648,
+    "lngE5": 3181332
+   },
+   "morningPoint": {
+    "latE5": 3142471,
+    "lngE5": 3181175
+   },
+   "eveningPoint": {
+    "latE5": 3142471,
+    "lngE5": 3181175
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3141648,
+      "lngE5": 3181332
+     },
+     "catalogueIds": [
+      358048
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.75,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "17",
+   "nameAr": "السلوم",
+   "point": {
+    "latE5": 3155371,
+    "lngE5": 2515793
+   },
+   "morningPoint": {
+    "latE5": 3154089,
+    "lngE5": 2516512
+   },
+   "eveningPoint": {
+    "latE5": 3154089,
+    "lngE5": 2516512
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3155371,
+      "lngE5": 2515793
+     },
+     "catalogueIds": [
+      359867
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "18",
+   "nameAr": "نويبع",
+   "point": {
+    "latE5": 2904681,
+    "lngE5": 3466340
+   },
+   "morningPoint": {
+    "latE5": 2907105,
+    "lngE5": 3465550
+   },
+   "eveningPoint": {
+    "latE5": 2907105,
+    "lngE5": 3465550
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2904681,
+      "lngE5": 3466340
+     },
+     "catalogueIds": [
+      350893
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 0.875,
+     "DHUHR": 0.875,
+     "ASR": 0.875,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "19",
+   "nameAr": "حلايب",
+   "point": {
+    "latE5": 2222273,
+    "lngE5": 3664679
+   },
+   "morningPoint": {
+    "latE5": 2222052,
+    "lngE5": 3664408
+   },
+   "eveningPoint": {
+    "latE5": 2222052,
+    "lngE5": 3664408
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2222273,
+      "lngE5": 3664679
+     },
+     "catalogueIds": [
+      374290
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "20",
+   "nameAr": "شرم الشيخ",
+   "point": {
+    "latE5": 2791582,
+    "lngE5": 3432995
+   },
+   "morningPoint": {
+    "latE5": 2789253,
+    "lngE5": 3430408
+   },
+   "eveningPoint": {
+    "latE5": 2789253,
+    "lngE5": 3430408
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2791582,
+      "lngE5": 3432995
+     },
+     "catalogueIds": [
+      349340
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "21",
+   "nameAr": "الفيوم",
+   "point": {
+    "latE5": 2930995,
+    "lngE5": 3084180
+   },
+   "morningPoint": {
+    "latE5": 2931223,
+    "lngE5": 3083450
+   },
+   "eveningPoint": {
+    "latE5": 2931223,
+    "lngE5": 3083450
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2930995,
+      "lngE5": 3084180
+     },
+     "catalogueIds": [
+      361320
+     ],
+     "areaKm": 4.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "22",
+   "nameAr": "6 أكتوبر",
+   "point": {
+    "latE5": 2994644,
+    "lngE5": 3091687
+   },
+   "morningPoint": {
+    "latE5": 2994958,
+    "lngE5": 3092944
+   },
+   "eveningPoint": {
+    "latE5": 2994958,
+    "lngE5": 3092944
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2994644,
+      "lngE5": 3091687
+     },
+     "catalogueIds": [],
+     "areaKm": 3.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "23",
+   "nameAr": "كفر الشيخ",
+   "point": {
+    "latE5": 3111174,
+    "lngE5": 3093991
+   },
+   "morningPoint": {
+    "latE5": 3110961,
+    "lngE5": 3093467
+   },
+   "eveningPoint": {
+    "latE5": 3110961,
+    "lngE5": 3093467
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3111174,
+      "lngE5": 3093991
+     },
+     "catalogueIds": [
+      354502
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "24",
+   "nameAr": "الحامول",
+   "point": {
+    "latE5": 3131146,
+    "lngE5": 3114766
+   },
+   "morningPoint": {
+    "latE5": 3133945,
+    "lngE5": 3115174
+   },
+   "eveningPoint": {
+    "latE5": 3133945,
+    "lngE5": 3115174
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3131146,
+      "lngE5": 3114766
+     },
+     "catalogueIds": [
+      361213
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "25",
+   "nameAr": "بلطيم",
+   "point": {
+    "latE5": 3155582,
+    "lngE5": 3108918
+   },
+   "morningPoint": {
+    "latE5": 3137108,
+    "lngE5": 3108452
+   },
+   "eveningPoint": {
+    "latE5": 3137108,
+    "lngE5": 3108452
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3155582,
+      "lngE5": 3108918
+     },
+     "catalogueIds": [
+      359304
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "26",
+   "nameAr": "طابا",
+   "point": {
+    "latE5": 2949199,
+    "lngE5": 3489572
+   },
+   "morningPoint": {
+    "latE5": 2948213,
+    "lngE5": 3439003
+   },
+   "eveningPoint": {
+    "latE5": 2948213,
+    "lngE5": 3439003
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2949199,
+      "lngE5": 3489572
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "27",
+   "nameAr": "راس سدر",
+   "point": {
+    "latE5": 2959886,
+    "lngE5": 3268273
+   },
+   "morningPoint": {
+    "latE5": 2959831,
+    "lngE5": 3266400
+   },
+   "eveningPoint": {
+    "latE5": 2959831,
+    "lngE5": 3266400
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2959886,
+      "lngE5": 3268273
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "28",
+   "nameAr": "الطور",
+   "point": {
+    "latE5": 2824168,
+    "lngE5": 3362220
+   },
+   "morningPoint": {
+    "latE5": 2821399,
+    "lngE5": 3362478
+   },
+   "eveningPoint": {
+    "latE5": 2821399,
+    "lngE5": 3362478
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2824168,
+      "lngE5": 3362220
+     },
+     "catalogueIds": [
+      359678
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 0.875,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "29",
+   "nameAr": "دهب",
+   "point": {
+    "latE5": 2848208,
+    "lngE5": 3449505
+   },
+   "morningPoint": {
+    "latE5": 2850981,
+    "lngE5": 3450723
+   },
+   "eveningPoint": {
+    "latE5": 2850981,
+    "lngE5": 3450723
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2848208,
+      "lngE5": 3449505
+     },
+     "catalogueIds": [
+      358245
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "30",
+   "nameAr": "ابوزنيمة",
+   "point": {
+    "latE5": 2904750,
+    "lngE5": 3311034
+   },
+   "morningPoint": {
+    "latE5": 2906380,
+    "lngE5": 3307465
+   },
+   "eveningPoint": {
+    "latE5": 2906380,
+    "lngE5": 3307465
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2904750,
+      "lngE5": 3311034
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "31",
+   "nameAr": "راس غارب",
+   "point": {
+    "latE5": 2835831,
+    "lngE5": 3307829
+   },
+   "morningPoint": {
+    "latE5": 2840774,
+    "lngE5": 3333450
+   },
+   "eveningPoint": {
+    "latE5": 2840774,
+    "lngE5": 3333450
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2835831,
+      "lngE5": 3307829
+     },
+     "catalogueIds": [
+      350207
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.75,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "32",
+   "nameAr": "القصير",
+   "point": {
+    "latE5": 2610611,
+    "lngE5": 3427716
+   },
+   "morningPoint": {
+    "latE5": 2603928,
+    "lngE5": 3428659
+   },
+   "eveningPoint": {
+    "latE5": 2603928,
+    "lngE5": 3428659
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2610611,
+      "lngE5": 3427716
+     },
+     "catalogueIds": [
+      360531
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "33",
+   "nameAr": "برنيس",
+   "point": {
+    "latE5": 2394556,
+    "lngE5": 3548417
+   },
+   "morningPoint": {
+    "latE5": 2374823,
+    "lngE5": 3549839
+   },
+   "eveningPoint": {
+    "latE5": 2374823,
+    "lngE5": 3549839
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2394556,
+      "lngE5": 3548417
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "34",
+   "nameAr": "سفاجة",
+   "point": {
+    "latE5": 2674906,
+    "lngE5": 3393891
+   },
+   "morningPoint": {
+    "latE5": 2672903,
+    "lngE5": 3393684
+   },
+   "eveningPoint": {
+    "latE5": 2672903,
+    "lngE5": 3393684
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2674906,
+      "lngE5": 3393891
+     },
+     "catalogueIds": [
+      358620
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "35",
+   "nameAr": "مرسى علم",
+   "point": {
+    "latE5": 2506305,
+    "lngE5": 3489005
+   },
+   "morningPoint": {
+    "latE5": 2505977,
+    "lngE5": 3488528
+   },
+   "eveningPoint": {
+    "latE5": 2505977,
+    "lngE5": 3488528
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2506305,
+      "lngE5": 3489005
+     },
+     "catalogueIds": [
+      352736
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "36",
+   "nameAr": "شلاتين",
+   "point": {
+    "latE5": 2313235,
+    "lngE5": 3559094
+   },
+   "morningPoint": {
+    "latE5": 2312061,
+    "lngE5": 3559857
+   },
+   "eveningPoint": {
+    "latE5": 2312061,
+    "lngE5": 3559857
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2313235,
+      "lngE5": 3559094
+     },
+     "catalogueIds": [
+      8555994
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 0.75,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "37",
+   "nameAr": "سيدى برانى",
+   "point": {
+    "latE5": 3161166,
+    "lngE5": 2592539
+   },
+   "morningPoint": {
+    "latE5": 3175786,
+    "lngE5": 2592279
+   },
+   "eveningPoint": {
+    "latE5": 3175786,
+    "lngE5": 2592279
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3161166,
+      "lngE5": 2592539
+     },
+     "catalogueIds": [
+      348548
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 0.875,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "38",
+   "nameAr": "الضبعة",
+   "point": {
+    "latE5": 3102819,
+    "lngE5": 2844498
+   },
+   "morningPoint": {
+    "latE5": 3102745,
+    "lngE5": 2844954
+   },
+   "eveningPoint": {
+    "latE5": 3102745,
+    "lngE5": 2844954
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3102819,
+      "lngE5": 2844498
+     },
+     "catalogueIds": [
+      361871
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "39",
+   "nameAr": "العلمين",
+   "point": {
+    "latE5": 3083007,
+    "lngE5": 2895502
+   },
+   "morningPoint": {
+    "latE5": 3083299,
+    "lngE5": 2894907
+   },
+   "eveningPoint": {
+    "latE5": 3083299,
+    "lngE5": 2894907
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3083007,
+      "lngE5": 2895502
+     },
+     "catalogueIds": [
+      361612
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "40",
+   "nameAr": "واحة سيوة",
+   "point": {
+    "latE5": 2920320,
+    "lngE5": 2551965
+   },
+   "morningPoint": {
+    "latE5": 2922002,
+    "lngE5": 2553083
+   },
+   "eveningPoint": {
+    "latE5": 2922002,
+    "lngE5": 2553083
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2920320,
+      "lngE5": 2551965
+     },
+     "catalogueIds": [
+      347863
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "41",
+   "nameAr": "موط (الداخلة)",
+   "point": {
+    "latE5": 2548742,
+    "lngE5": 2897918
+   },
+   "morningPoint": {
+    "latE5": 2551272,
+    "lngE5": 2890868
+   },
+   "eveningPoint": {
+    "latE5": 2551272,
+    "lngE5": 2890868
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2548742,
+      "lngE5": 2897918
+     },
+     "catalogueIds": [
+      351766
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "42",
+   "nameAr": "الفرافرة",
+   "point": {
+    "latE5": 2705680,
+    "lngE5": 2796979
+   },
+   "morningPoint": {
+    "latE5": 2710543,
+    "lngE5": 2799578
+   },
+   "eveningPoint": {
+    "latE5": 2710543,
+    "lngE5": 2799578
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2705680,
+      "lngE5": 2796979
+     },
+     "catalogueIds": [
+      350661
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "43",
+   "nameAr": "البويطى",
+   "point": {
+    "latE5": 2834827,
+    "lngE5": 2886936
+   },
+   "morningPoint": {
+    "latE5": 2833941,
+    "lngE5": 2894795
+   },
+   "eveningPoint": {
+    "latE5": 2833941,
+    "lngE5": 2894795
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2834827,
+      "lngE5": 2886936
+     },
+     "catalogueIds": [
+      361394
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "44",
+   "nameAr": "باريس",
+   "point": {
+    "latE5": 2467379,
+    "lngE5": 3060101
+   },
+   "morningPoint": {
+    "latE5": 2439827,
+    "lngE5": 3049644
+   },
+   "eveningPoint": {
+    "latE5": 2439827,
+    "lngE5": 3049644
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2467379,
+      "lngE5": 3060101
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "45",
+   "nameAr": "المحلة الكبرى",
+   "point": {
+    "latE5": 3097063,
+    "lngE5": 3116690
+   },
+   "morningPoint": {
+    "latE5": 3097937,
+    "lngE5": 3093757
+   },
+   "eveningPoint": {
+    "latE5": 3097937,
+    "lngE5": 3093757
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3097063,
+      "lngE5": 3116690
+     },
+     "catalogueIds": [
+      360829
+     ],
+     "areaKm": 4.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "46",
+   "nameAr": "الحمام",
+   "point": {
+    "latE5": 3084532,
+    "lngE5": 2938818
+   },
+   "morningPoint": {
+    "latE5": 3084932,
+    "lngE5": 2939513
+   },
+   "eveningPoint": {
+    "latE5": 3084932,
+    "lngE5": 2939513
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3084532,
+      "lngE5": 2938818
+     },
+     "catalogueIds": [
+      361219
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "47",
+   "nameAr": "نجع حمادى",
+   "point": {
+    "latE5": 2604949,
+    "lngE5": 3224142
+   },
+   "morningPoint": {
+    "latE5": 2606892,
+    "lngE5": 3222854
+   },
+   "eveningPoint": {
+    "latE5": 2606892,
+    "lngE5": 3222854
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2604949,
+      "lngE5": 3224142
+     },
+     "catalogueIds": [
+      351434
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "48",
+   "nameAr": "بورسعيد",
+   "point": {
+    "latE5": 3126531,
+    "lngE5": 3230190
+   },
+   "morningPoint": {
+    "latE5": 3127606,
+    "lngE5": 3229939
+   },
+   "eveningPoint": {
+    "latE5": 3127606,
+    "lngE5": 3229939
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3126531,
+      "lngE5": 3230190
+     },
+     "catalogueIds": [
+      358619
+     ],
+     "areaKm": 5.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.75,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "49",
+   "nameAr": "السويس",
+   "point": {
+    "latE5": 2997371,
+    "lngE5": 3252627
+   },
+   "morningPoint": {
+    "latE5": 2995199,
+    "lngE5": 3252987
+   },
+   "eveningPoint": {
+    "latE5": 2995199,
+    "lngE5": 3252987
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2997371,
+      "lngE5": 3252627
+     },
+     "catalogueIds": [
+      359796
+     ],
+     "areaKm": 4.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "50",
+   "nameAr": "العريش",
+   "point": {
+    "latE5": 3113159,
+    "lngE5": 3379844
+   },
+   "morningPoint": {
+    "latE5": 3113103,
+    "lngE5": 3379397
+   },
+   "eveningPoint": {
+    "latE5": 3113103,
+    "lngE5": 3379397
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3113159,
+      "lngE5": 3379844
+     },
+     "catalogueIds": [
+      361546
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.875,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "51",
+   "nameAr": "دمنهور",
+   "point": {
+    "latE5": 3103408,
+    "lngE5": 3046823
+   },
+   "morningPoint": {
+    "latE5": 3106085,
+    "lngE5": 3046288
+   },
+   "eveningPoint": {
+    "latE5": 3106085,
+    "lngE5": 3046288
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3103408,
+      "lngE5": 3046823
+     },
+     "catalogueIds": [
+      358448
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "52",
+   "nameAr": "ادفو",
+   "point": {
+    "latE5": 2497916,
+    "lngE5": 3287722
+   },
+   "morningPoint": {
+    "latE5": 2498245,
+    "lngE5": 3283006
+   },
+   "eveningPoint": {
+    "latE5": 2498245,
+    "lngE5": 3283006
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2497916,
+      "lngE5": 3287722
+     },
+     "catalogueIds": [
+      355635
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 0.75,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "53",
+   "nameAr": "اسنا",
+   "point": {
+    "latE5": 2529336,
+    "lngE5": 3255402
+   },
+   "morningPoint": {
+    "latE5": 2532356,
+    "lngE5": 3255520
+   },
+   "eveningPoint": {
+    "latE5": 2532356,
+    "lngE5": 3255520
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2529336,
+      "lngE5": 3255402
+     },
+     "catalogueIds": [
+      355449
+     ],
+     "areaKm": 4.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "54",
+   "nameAr": "الأقصر",
+   "point": {
+    "latE5": 2569893,
+    "lngE5": 3264210
+   },
+   "morningPoint": {
+    "latE5": 2569964,
+    "lngE5": 3264766
+   },
+   "eveningPoint": {
+    "latE5": 2569964,
+    "lngE5": 3264766
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2569893,
+      "lngE5": 3264210
+     },
+     "catalogueIds": [
+      360502
+     ],
+     "areaKm": 3.5
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "55",
+   "nameAr": "القاهرة الجديدة",
+   "point": {
+    "latE5": 3003000,
+    "lngE5": 3147000
+   },
+   "morningPoint": {
+    "latE5": 3005802,
+    "lngE5": 3139559
+   },
+   "eveningPoint": {
+    "latE5": 3005802,
+    "lngE5": 3139559
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3003000,
+      "lngE5": 3147000
+     },
+     "catalogueIds": [
+      7799991
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "56",
+   "nameAr": "توشكى",
+   "point": {
+    "latE5": 2279270,
+    "lngE5": 3141374
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2279270,
+      "lngE5": 3141374
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "57",
+   "nameAr": "الدلنجات",
+   "point": {
+    "latE5": 3082796,
+    "lngE5": 3053552
+   },
+   "morningPoint": {
+    "latE5": 3082185,
+    "lngE5": 3053022
+   },
+   "eveningPoint": {
+    "latE5": 3082185,
+    "lngE5": 3053022
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3082796,
+      "lngE5": 3053552
+     },
+     "catalogueIds": [
+      361827
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "58",
+   "nameAr": "كاترين",
+   "point": {
+    "latE5": 2856191,
+    "lngE5": 3394934
+   },
+   "morningPoint": {
+    "latE5": 2855782,
+    "lngE5": 3394088
+   },
+   "eveningPoint": {
+    "latE5": 2855782,
+    "lngE5": 3394088
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2856191,
+      "lngE5": 3394934
+     },
+     "catalogueIds": [
+      8521413
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "59",
+   "nameAr": "السادات",
+   "point": {
+    "latE5": 3036742,
+    "lngE5": 3050871
+   },
+   "morningPoint": {
+    "latE5": 3042464,
+    "lngE5": 3051235
+   },
+   "eveningPoint": {
+    "latE5": 3042464,
+    "lngE5": 3051235
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3036742,
+      "lngE5": 3050871
+     },
+     "catalogueIds": [
+      353223
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "60",
+   "nameAr": "مدينة 15 مايو",
+   "point": {
+    "latE5": 2982983,
+    "lngE5": 3136965
+   },
+   "morningPoint": {
+    "latE5": 2983809,
+    "lngE5": 3137043
+   },
+   "eveningPoint": {
+    "latE5": 2983809,
+    "lngE5": 3137043
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2982983,
+      "lngE5": 3136965
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 7,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 7,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.8571,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.8571
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "61",
+   "nameAr": "الصالحية الجديدة",
+   "point": {
+    "latE5": 3063146,
+    "lngE5": 3193927
+   },
+   "morningPoint": {
+    "latE5": 3060174,
+    "lngE5": 3193309
+   },
+   "eveningPoint": {
+    "latE5": 3060174,
+    "lngE5": 3193309
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3063146,
+      "lngE5": 3193927
+     },
+     "catalogueIds": [
+      433774
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "62",
+   "nameAr": "العاشر من رمضان",
+   "point": {
+    "latE5": 3029636,
+    "lngE5": 3174633
+   },
+   "morningPoint": {
+    "latE5": 3031454,
+    "lngE5": 3173620
+   },
+   "eveningPoint": {
+    "latE5": 3031454,
+    "lngE5": 3173620
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3029636,
+      "lngE5": 3174633
+     },
+     "catalogueIds": [
+      353229
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.875,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "63",
+   "nameAr": "العاصمة الادارية الجديدة",
+   "point": {
+    "latE5": 3002385,
+    "lngE5": 3175496
+   },
+   "morningPoint": {
+    "latE5": 2996303,
+    "lngE5": 3184087
+   },
+   "eveningPoint": {
+    "latE5": 2996303,
+    "lngE5": 3184087
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3002385,
+      "lngE5": 3175496
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "64",
+   "nameAr": "العبور",
+   "point": {
+    "latE5": 3022886,
+    "lngE5": 3148149
+   },
+   "morningPoint": {
+    "latE5": 3024018,
+    "lngE5": 3157297
+   },
+   "eveningPoint": {
+    "latE5": 3024018,
+    "lngE5": 3157297
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3022886,
+      "lngE5": 3148149
+     },
+     "catalogueIds": [
+      12451089
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "65",
+   "nameAr": "الفشن الجديدة",
+   "point": {
+    "latE5": 2880837,
+    "lngE5": 3065595
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2880837,
+      "lngE5": 3065595
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "66",
+   "nameAr": "المنصورة الجديدة",
+   "point": {
+    "latE5": 3149100,
+    "lngE5": 3140631
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3149100,
+      "lngE5": 3140631
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.875,
+     "SUNRISE": 0.875,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "67",
+   "nameAr": "النوبارية الجديدة",
+   "point": {
+    "latE5": 3066870,
+    "lngE5": 3007391
+   },
+   "morningPoint": {
+    "latE5": 3067278,
+    "lngE5": 3006292
+   },
+   "eveningPoint": {
+    "latE5": 3067278,
+    "lngE5": 3006292
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3066870,
+      "lngE5": 3007391
+     },
+     "catalogueIds": [
+      408919
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "68",
+   "nameAr": "بدر",
+   "point": {
+    "latE5": 3013600,
+    "lngE5": 3171500
+   },
+   "morningPoint": {
+    "latE5": 3011268,
+    "lngE5": 3175446
+   },
+   "eveningPoint": {
+    "latE5": 3011268,
+    "lngE5": 3175446
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3013600,
+      "lngE5": 3171500
+     },
+     "catalogueIds": [
+      415561
+     ],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "69",
+   "nameAr": "بنى مزار الجديدة",
+   "point": {
+    "latE5": 2852256,
+    "lngE5": 3094752
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2852256,
+      "lngE5": 3094752
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "70",
+   "nameAr": "بورسعيد الجديدة سلام",
+   "point": {
+    "latE5": 3105569,
+    "lngE5": 3261917
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3105569,
+      "lngE5": 3261917
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "71",
+   "nameAr": "بئر العبد الجديدة",
+   "point": {
+    "latE5": 3103233,
+    "lngE5": 3298471
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3103233,
+      "lngE5": 3298471
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.875,
+     "ASR": 1.0,
+     "MAGHRIB": 0.875,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "72",
+   "nameAr": "توشكى الجديدة",
+   "point": {
+    "latE5": 2289449,
+    "lngE5": 3157373
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2289449,
+      "lngE5": 3157373
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 7,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 7,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8571,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.8571,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 3,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "73",
+   "nameAr": "حدائق العاصمة",
+   "point": {
+    "latE5": 3012802,
+    "lngE5": 3189733
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3012802,
+      "lngE5": 3189733
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "74",
+   "nameAr": "رشيد الجديدة",
+   "point": {
+    "latE5": 3139259,
+    "lngE5": 3035948
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3139259,
+      "lngE5": 3035948
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "75",
+   "nameAr": "رفح الجديدة",
+   "point": {
+    "latE5": 3121730,
+    "lngE5": 3417901
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3121730,
+      "lngE5": 3417901
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "76",
+   "nameAr": "سفنكس الجديدة",
+   "point": {
+    "latE5": 3011354,
+    "lngE5": 3075433
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3011354,
+      "lngE5": 3075433
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "77",
+   "nameAr": "شرق العوينات",
+   "point": {
+    "latE5": 2271749,
+    "lngE5": 2872140
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2271749,
+      "lngE5": 2872140
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 8,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.875,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.875
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "78",
+   "nameAr": "غرب النوبارية",
+   "point": {
+    "latE5": 3067633,
+    "lngE5": 2965816
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3067633,
+      "lngE5": 2965816
+     },
+     "catalogueIds": [],
+     "areaKm": 3.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 7,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy; leave one day out: each day scored with the profile and points fitted on the other days",
+      "from": "2025-04-29",
+      "to": "2026-10-08",
+      "days": 7,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.8571,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 3,
+    "maxDiffMin": 2
+   }
+  }
+ ]
+}

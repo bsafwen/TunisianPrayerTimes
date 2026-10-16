@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.adhkar
 
+import com.tunisianprayertimes.PrefsManager
 import android.content.Context
 import android.content.SharedPreferences
 import java.time.Instant
@@ -36,6 +37,8 @@ class DhikrRepository(context: Context) {
                         occurrence.copy(status = DhikrOccurrenceStatus.REPLACED) else occurrence
                 })
         }
+        // Saved valid at the place: no longer flagged after a move (6.9).
+        PrefsManager.clearAdhkarPlaceFlag(app, rule.id)
         DhikrReminderScheduler.refresh(app)
     }
     /**
@@ -45,6 +48,7 @@ class DhikrRepository(context: Context) {
     fun delete(id: String): Int {
         val index = state.value.reminders.indexOfFirst { it.id == id }
         update { it.copy(reminders = it.reminders.filterNot { rule -> rule.id == id }) }
+        PrefsManager.clearAdhkarPlaceFlag(app, id)
         DhikrReminderScheduler.refresh(app)
         return index
     }

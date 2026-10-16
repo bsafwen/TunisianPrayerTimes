@@ -1,5 +1,7 @@
 package com.tunisianprayertimes.ui
 
+import androidx.compose.material3.MaterialTheme
+import com.tunisianprayertimes.PrefsManager
 import android.Manifest
 import android.content.Context
 import android.content.Intent
@@ -694,6 +696,9 @@ private fun AdhkarTodayPage(
     val p = LocalAdhkarPalette.current
     val slots = remember { reminderSlots() }
     val savedRules = remember(state.reminders) { slots.associate { it.key to savedRuleFor(it.key, state.reminders) } }
+    // Reminders that no longer fit every day at the place since a change of place or method (6.9).
+    val appContext = androidx.compose.ui.platform.LocalContext.current
+    val placeFlags = remember(state.reminders) { PrefsManager.getAdhkarPlaceFlags(appContext) }
     fun completedCollection(category: DhikrCategory): Boolean {
         val periodKey = collectionPeriodKeys[category] ?: return false
         return state.isCollectionPeriodComplete(category, periodKey)
@@ -769,7 +774,8 @@ private fun AdhkarTodayPage(
                 kind?.iconBackground ?: AdhkarSoftGreen)
             HomeReminderRow(slot = slot, saved = rule,
                 onRead = { onOpenReminder(rule) },
-                onToggle = { checked -> onToggleRule(rule, checked) })
+                onToggle = { checked -> onToggleRule(rule, checked) },
+                placeWarning = placeFlags[rule.id])
         }
     }
 }
@@ -801,6 +807,8 @@ private fun HomeReminderRow(
     tagPrefix: String = "adhkar_home",
     // A suggestion being saved: shown on, and not to be tapped again, until the save has landed.
     pending: Boolean = false,
+    /** The saved reminder no longer fits every day at the place (6.9): the problem, with its first date. */
+    placeWarning: String? = null,
 ) {
     val p = LocalAdhkarPalette.current
     AdhkarCard(Modifier.fillMaxWidth().padding(horizontal = if (tagPrefix == "adhkar_home") 20.dp else 0.dp)
@@ -820,6 +828,8 @@ private fun HomeReminderRow(
                 Text(compactReminderSummary(saved ?: slot.preset), color = p.muted, fontSize = 12.sp, lineHeight = 19.sp,
                     maxLines = 2, overflow = TextOverflow.Ellipsis)
                 if (saved == null) Text("اضغط لتخصيص التذكير", color = p.primary, fontSize = 11.sp)
+                if (placeWarning != null) Text("بعد تغيير الموقع أو الطريقة: $placeWarning", color = MaterialTheme.colorScheme.error,
+                    fontSize = 11.sp, lineHeight = 16.sp, modifier = Modifier.testTag("${tagPrefix}_place_warning_" + slot.key))
             }
             AdhkarSwitch(saved?.enabled == true || pending, onCheckedChange = onToggle, enabled = !pending,
                 modifier = Modifier.testTag("${tagPrefix}_toggle_" + slot.key)

@@ -107,6 +107,9 @@ android {
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
+            // Prayer times are instants in the place's zone (plan 6.6); the tests read Tunisian times as the
+            // phone's clock, so the phone is in Tunisia unless a test sets another zone (CI runs in UTC).
+            all { it.systemProperty("user.timezone", "Africa/Tunis") }
         }
     }
 }

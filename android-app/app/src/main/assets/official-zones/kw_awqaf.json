@@ -1,0 +1,1968 @@
+{
+ "schema": 1,
+ "authority": "kw_awqaf",
+ "methodId": "kw_awqaf",
+ "country": "KW",
+ "mapping": "LISTED_PLACES",
+ "source": "The Ministry of Awqaf's perpetual timetable for Kuwait City and its suburbs (Mosques Sector, on Dr Saleh Al-Ojairi's calendar), with the footer's minute offsets for 11 places; computed for the actual year",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "kw_awqaf_perpetual_sheets",
+    "from": "2011-02-01",
+    "to": "2011-12-31",
+    "days": 182,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "kw_awqaf_perpetual_sheets",
+    "from": "2026-02-01",
+    "to": "2026-12-31",
+    "days": 182,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.7722,
+   "SUNRISE": 0.7444,
+   "DHUHR": 0.8833,
+   "ASR": 0.8333,
+   "MAGHRIB": 0.7833,
+   "ISHA": 0.7833
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    28,
+    30,
+    0,
+    0,
+    30,
+    0,
+    0,
+    0,
+    31,
+    30,
+    31
+   ],
+   "SUNRISE": [
+    0,
+    28,
+    30,
+    0,
+    0,
+    30,
+    0,
+    0,
+    0,
+    31,
+    30,
+    31
+   ],
+   "DHUHR": [
+    0,
+    28,
+    30,
+    0,
+    0,
+    30,
+    0,
+    0,
+    0,
+    31,
+    30,
+    31
+   ],
+   "ASR": [
+    0,
+    28,
+    30,
+    0,
+    0,
+    30,
+    0,
+    0,
+    0,
+    31,
+    30,
+    31
+   ],
+   "MAGHRIB": [
+    0,
+    28,
+    30,
+    0,
+    0,
+    30,
+    0,
+    0,
+    0,
+    31,
+    30,
+    31
+   ],
+   "ISHA": [
+    0,
+    28,
+    30,
+    0,
+    0,
+    30,
+    0,
+    0,
+    0,
+    31,
+    30,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 2,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "kuwait_city",
+   "point": {
+    "latE5": 2936700,
+    "lngE5": 4797429
+   },
+   "morningPoint": {
+    "latE5": 2933000,
+    "lngE5": 4799000
+   },
+   "eveningPoint": {
+    "latE5": 2933000,
+    "lngE5": 4799000
+   },
+   "nameAr": "مدينة الكويت",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2936700,
+      "lngE5": 4797429
+     },
+     "catalogueIds": [
+      285787
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "ahmadi",
+   "point": {
+    "latE5": 2907694,
+    "lngE5": 4808389
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "الأحمدي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2907694,
+      "lngE5": 4808389
+     },
+     "catalogueIds": [
+      285839
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "wafra",
+   "point": {
+    "latE5": 2863917,
+    "lngE5": 4793056
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "الوفرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2863917,
+      "lngE5": 4793056
+     },
+     "catalogueIds": [
+      285760
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "failaka",
+   "point": {
+    "latE5": 2944250,
+    "lngE5": 4827472
+   },
+   "offsets": {
+    "FAJR": -2.0,
+    "SUNRISE": -2.0,
+    "DHUHR": -2.0,
+    "ASR": -2.0,
+    "MAGHRIB": -2.0,
+    "ISHA": -2.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "فيلكا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2944250,
+      "lngE5": 4827472
+     },
+     "catalogueIds": [
+      285673
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "bubiyan",
+   "point": {
+    "latE5": 2976972,
+    "lngE5": 4825556
+   },
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "بوبيان",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2976972,
+      "lngE5": 4825556
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "jahra",
+   "point": {
+    "latE5": 2933750,
+    "lngE5": 4765806
+   },
+   "offsets": {
+    "FAJR": 2.0,
+    "SUNRISE": 2.0,
+    "DHUHR": 2.0,
+    "ASR": 2.0,
+    "MAGHRIB": 2.0,
+    "ISHA": 2.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "الجهراء",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2933750,
+      "lngE5": 4765806
+     },
+     "catalogueIds": [
+      285799
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "nuwaiseeb",
+   "point": {
+    "latE5": 2854694,
+    "lngE5": 4839917
+   },
+   "offsets": {
+    "FAJR": -2.0,
+    "SUNRISE": -2.0,
+    "DHUHR": -2.0,
+    "ASR": -2.0,
+    "MAGHRIB": -2.0,
+    "ISHA": -2.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "النويصيب",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2854694,
+      "lngE5": 4839917
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "salmi",
+   "point": {
+    "latE5": 2910000,
+    "lngE5": 4667917
+   },
+   "offsets": {
+    "FAJR": 6.0,
+    "SUNRISE": 6.0,
+    "DHUHR": 6.0,
+    "ASR": 6.0,
+    "MAGHRIB": 6.0,
+    "ISHA": 6.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "السالمي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2910000,
+      "lngE5": 4667917
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "abdali",
+   "point": {
+    "latE5": 3004219,
+    "lngE5": 4772205
+   },
+   "offsets": {
+    "FAJR": 2.0,
+    "SUNRISE": 2.0,
+    "DHUHR": 2.0,
+    "ASR": 2.0,
+    "MAGHRIB": 2.0,
+    "ISHA": 2.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "العبدلي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3004219,
+      "lngE5": 4772205
+     },
+     "catalogueIds": [
+      11579278
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "kubbar",
+   "point": {
+    "latE5": 2907222,
+    "lngE5": 4849333
+   },
+   "offsets": {
+    "FAJR": -2.0,
+    "SUNRISE": -2.0,
+    "DHUHR": -2.0,
+    "ASR": -2.0,
+    "MAGHRIB": -2.0,
+    "ISHA": -2.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "كبر",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2907222,
+      "lngE5": 4849333
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "qaruh",
+   "point": {
+    "latE5": 2881750,
+    "lngE5": 4877611
+   },
+   "offsets": {
+    "FAJR": -3.0,
+    "SUNRISE": -3.0,
+    "DHUHR": -3.0,
+    "ASR": -3.0,
+    "MAGHRIB": -3.0,
+    "ISHA": -3.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "قاروه",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2881750,
+      "lngE5": 4877611
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "umm_al_maradim",
+   "point": {
+    "latE5": 2868000,
+    "lngE5": 4865167
+   },
+   "offsets": {
+    "FAJR": -3.0,
+    "SUNRISE": -3.0,
+    "DHUHR": -3.0,
+    "ASR": -3.0,
+    "MAGHRIB": -3.0,
+    "ISHA": -3.0
+   },
+   "baseZoneId": "kuwait_city",
+   "nameAr": "أم المرادم",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2868000,
+      "lngE5": 4865167
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2011-02-01",
+      "to": "2011-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "kw_awqaf_perpetual_sheets",
+      "from": "2026-02-01",
+      "to": "2026-12-31",
+      "days": 182,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7722,
+     "SUNRISE": 0.7444,
+     "DHUHR": 0.8833,
+     "ASR": 0.8333,
+     "MAGHRIB": 0.7833,
+     "ISHA": 0.7833
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      28,
+      30,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 2,
+    "maxDiffMin": 2
+   }
+  }
+ ]
+}

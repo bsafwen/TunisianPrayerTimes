@@ -1,0 +1,2 @@
+Place names and coordinates: GeoNames (https://www.geonames.org), CC BY 4.0.
+Arabic labels where GeoNames has none: Wikidata (https://www.wikidata.org), CC0.

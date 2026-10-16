@@ -41,7 +41,7 @@
     <string name="banner_phone_state_missing">إذن حالة الهاتف مطلوب لتنبيهك بالاهتزاز إذا وصلك اتصال أثناء الإسكات. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
     <string name="call_end_vibration_title">اهتزاز عند انتهاء الإسكات إذا وردت مكالمة</string>
-    <string name="auto_location_title">تحديث المعتمدية تلقائيًا</string>
+    <string name="auto_location_title">تحديث الموقع تلقائيًا</string>
     <string name="manual_silence_title">الإسكات اليدوي</string>
     <string name="manual_silence_mode_until">حتى أقوم بإيقافه</string>
     <string name="manual_silence_mode_duration">لمدة محددة</string>
@@ -76,19 +76,24 @@
     <string name="ramadan_active">رمضان — إسكات العشاء ممتد إلى ساعة ونصف 🌙</string>
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>
-    <string name="hint_search_delegation">ابحث عن حيّ أو منطقة أو معتمدية…</string>
+    <string name="hint_search_delegation">ابحث عن مدينة أو حيّ…</string>
     <string name="label_change">تغيير</string>
     <string name="gps_auto_detect">تحديد الموقع تلقائيًا 📍</string>
     <string name="gps_locating">جاري تحديد الموقع…</string>
     <string name="gps_unavailable">خدمة الموقع غير متاحة</string>
-    <string name="location_permission_denied">يجب منح إذن الموقع لتحديد معتمديتك تلقائيًا</string>
+    <string name="location_permission_denied">يجب منح إذن الموقع لتحديد موقعك تلقائيًا</string>
     <string name="location_lookup_failed">تعذر تحديد موقعك حاليًا</string>
-    <string name="location_no_match">تعذر تحديد أقرب معتمدية</string>
-    <string name="location_outside_tunisia">أنت خارج تونس، تم إيقاف الكتم التلقائي</string>
+    <string name="location_no_match">تعذّر تحديد موقعك. اختر مدينة من القائمة.</string>
+    <string name="location_channel_name">تغيير الموقع</string>
+    <string name="location_changed_to">تم تغيير الموقع إلى %1$s</string>
+    <string name="location_changed_to_zone">تم تغيير الموقع إلى %1$s، جدول: %2$s</string>
+    <string name="travel_zone_changed_title">تغيّرت المنطقة الزمنية لهاتفك</string>
+    <string name="travel_zone_changed_text">اختر مدينتك لتبقى المواقيت والكتم على وقتها الصحيح.</string>
+    <string name="location_current_place">موقعي الحالي</string>
     <string name="qibla_title">اتجاه القبلة</string>
     <string name="qibla_subtitle">استخدم البوصلة لتوجيه أعلى الهاتف نحو القبلة.</string>
-    <string name="qibla_location_selected">حسب المعتمدية: %1$s</string>
-    <string name="qibla_location_selected_locating">حسب المعتمدية: %1$s · جاري تحديد موقعك…</string>
+    <string name="qibla_location_selected">حسب الموقع المختار: %1$s</string>
+    <string name="qibla_location_selected_locating">حسب الموقع المختار: %1$s · جاري تحديد موقعك…</string>
     <string name="qibla_location_last_known">حسب آخر موقع معروف</string>
     <string name="qibla_location_last_known_locating">حسب آخر موقع معروف · جاري تحديد موقعك…</string>
     <string name="qibla_location_too_coarse">موقعك التقريبي لا يكفي قرب مكة. اضغط هنا لتفعيل الموقع الدقيق.</string>
@@ -157,7 +162,7 @@
     <string name="pick_aid_adha_time">اختر وقت صلاة عيد الأضحى</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_welcome">هذا التطبيق يقوم بإسكات هاتفك تلقائيًا عند دخول وقت كل صلاة\n\nيعتمد التطبيق على بيانات مواقيت الصلاة المنشورة من المعهد الوطني للرصد الجوي التونسي على meteo.tn.\n\nهذا التطبيق مستقل وليس تابعًا لأي جهة حكومية ولا يمثلها.\n\nدعنا نشرح لك كيف يعمل</string>
+    <string name="onboarding_welcome">هذا التطبيق يقوم بإسكات هاتفك تلقائيًا عند دخول وقت كل صلاة\n\nفي تونس، يعتمد التطبيق على مواقيت المعهد الوطني للرصد الجوي المنشورة على meteo.tn، وخارجها على طريقة بلدك.\n\nهذا التطبيق مستقل وليس تابعًا لأي جهة حكومية ولا يمثلها.\n\nدعنا نشرح لك كيف يعمل</string>
     <string name="onboarding_period_title">لكل صلاة فترة إسكات من البداية إلى النهاية</string>
     <string name="onboarding_period_desc">العلامة الذهبية على الشريط هي وقت الأذان، والطرفان يحددان بداية الإسكات ونهايته، والمدة تُحسب بينهما تلقائيًا.\n\nيمكنك تفعيل الإسكات أو إيقافه لكل صلاة من المفتاح.</string>
     <string name="onboarding_drag_title">اسحب طرفي الفترة لتعديل الإسكات</string>
@@ -559,7 +564,7 @@
     <string name="wake_editor_silence_toggle">إسكات الهاتف حتى يرنّ المنبه</string>
     <string name="wake_editor_silence_hint">سَيَتِمُّ إسْكَاتُ الهاتف عند الحفظ ويعود للوضع الطبيعي عند رنين المنبه</string>
 
-    <string name="locality_no_results">لم نجد هذه المنطقة في القائمة. جرّب اسم المعتمدية أو ارجع واستعمل تحديد الموقع.</string>
+    <string name="locality_no_results">جرّب اسم المدينة أو استعمل تحديد الموقع</string>
     <string name="locality_kind_delegation">معتمدية</string>
     <string name="locality_kind_sector">عمادة</string>
     <string name="locality_kind_municipality">بلدية</string>
@@ -573,4 +578,61 @@
     <string name="location_neighborhood_unavailable">تم تحديد موقعك، لكن اسم الحي غير متوفر. يمكنك اختياره يدويًا.</string>
     <string name="location_saved_source_unavailable">أوقات الصلاة غير متوفرة للاختيار المحفوظ. استخدم تحديد الموقع أو اختر منطقة أخرى من القائمة.</string>
     <string name="location_no_current_prayer_data">لا تتوفر بيانات أوقات الصلاة لهذا الشهر في إصدار التطبيق الحالي.</string>
+    <!-- D16's year run in the silence editors (plan 6.9). -->
+    <string name="silence_year_fit_title">لا يناسب هذا التوقيت كل الأيام</string>
+    <string name="silence_year_fit_body">هذا التوقيت لا يناسب %1$s من أيام السنة القادمة في هذا المكان، أولها %2$s: تأتي فيها نهاية الكتم قبل بدايته، أو بعيدًا جدًا عن الأذان.</string>
+    <plurals name="silence_year_fit_days">
+        <item quantity="zero">⁦%d⁩ يوم</item>
+        <item quantity="one">يومًا واحدًا</item>
+        <item quantity="two">يومين</item>
+        <item quantity="few">⁦%d⁩ أيام</item>
+        <item quantity="many">⁦%d⁩ يومًا</item>
+        <item quantity="other">⁦%d⁩ يوم</item>
+    </plurals>
+    <string name="silence_year_fit_keep_note">إن أبقيته، تتأخر النهاية في تلك الأيام حتى 30 دقيقة، فإن لم يكفِ ذلك بقيت على بُعدها من الأذان يوم حفظتها.</string>
+    <string name="silence_year_fit_use_adhan_end">نهاية بعد الأذان بـ%1$s دقيقة</string>
+    <string name="silence_year_fit_use_fixed_end">نهاية ثابتة على الساعة %1$s</string>
+    <string name="silence_year_fit_keep">الإبقاء على اختياري</string>
+    <!-- The first run's location step and its provisional place (plan 6.8). -->
+    <string name="onboarding_location_title">أين تصلّي؟</string>
+    <string name="onboarding_location_desc">نحسب المواقيت لمكانك: في تونس من جداول المعهد الوطني للرصد الجوي، وخارجها بطريقة بلدك. يمكنك التخطّي، فنقترح موقعًا تؤكّده لاحقًا.</string>
+    <string name="onboarding_location_locate">تحديد موقعي</string>
+    <string name="onboarding_location_pick">اختيار مدينة</string>
+    <string name="onboarding_location_locating">جارٍ تحديد موقعك…</string>
+    <string name="onboarding_location_done">موقعك: %1$s</string>
+    <string name="onboarding_location_pick_later">ستختار مدينتك عند فتح التطبيق.</string>
+    <string name="onboarding_location_failed">تعذّر تحديد موقعك. اختر مدينة، أو تابع ونقترح موقعًا تؤكّده لاحقًا.</string>
+    <string name="onboarding_location_closed">هذه المنطقة غير متاحة بعد. اختر مدينة أو تابع.</string>
+    <string name="location_confirm_title">تأكيد الموقع</string>
+    <string name="location_confirm_text">اخترنا لك %1$s من شبكة هاتفك ومنطقته الزمنية. هل هذا موقعك؟</string>
+    <string name="location_confirm_yes">نعم</string>
+    <string name="location_confirm_change">تغيير</string>
+    <string name="location_default_tunis">تونس</string>
+    <!-- The method chooser and «تأكيد الطريقة» (plan 6.4, 6.11). -->
+    <string name="method_chooser_title">اختر ما يوافق مسجدك</string>
+    <string name="method_chooser_note">تختلف مساجد هذا البلد في طريقة الحساب. يمكنك تغييرها لاحقًا من إعدادات المواقيت.</string>
+    <string name="method_chooser_asr">وقت العصر</string>
+    <string name="method_chooser_save">حفظ</string>
+    <string name="method_confirm_title">تأكيد الطريقة</string>
+    <string name="method_confirm_text_chooser">نستعمل الآن %1$s. اختر ما يوافق مسجدك.</string>
+    <string name="method_confirm_text_unknown">لم نعرف بلد موقعك، فنستعمل %1$s.</string>
+    <string name="method_confirm_choose">اختيار</string>
+    <string name="method_confirm_ok">تأكيد</string>
+    <!-- The list's markers and lines (plan 6.11); the wording is settled with the mockups. -->
+    <string name="marker_before_midnight">قبل منتصف الليل</string>
+    <string name="marker_after_midnight">بعد منتصف الليل</string>
+    <string name="marker_estimated">تقديري</string>
+    <string name="marker_ok">حسنًا</string>
+    <string name="list_zone_line">جدول: %1$s</string>
+    <string name="list_place_offset">توقيت المكان: %1$s</string>
+    <string name="estimated_short_night">لا يكتمل الليل هذه الأيام كما تحتاجه العلامة، فقُدّر %1$s بقاعدة %2$s.</string>
+    <string name="estimated_rule_generic">الليالي القصيرة</string>
+    <string name="estimated_polar">لا تغرب الشمس اليوم أو لا تشرق في هذا المكان، فقُدّر %1$s بقاعدة الأيام القطبية.</string>
+    <string name="estimated_isha_latest">حُدّد %1$s بآخر ساعة تعتمدها هذه الطريقة.</string>
+    <string name="estimated_envelope">جاء %1$s في هذه الطريقة خارج الأقوال المعتبرة، فنُقل إلى أقرب حدّ لها.</string>
+    <string name="estimated_adjustment">أوقف تعديلُك بالدقائق %1$s عند حدّه.</string>
+    <string name="estimated_order">تقدّم هذه الطريقة %1$s اليوم على الوقت الذي قبله، فجُعل معه.</string>
+    <string name="estimated_night_middle">الفترة التي تحددها هذه الطريقة بعد المغرب أطول من نصف الليلة، فجُعل العشاء في وسط الليلة.</string>
+    <string name="location_region_closed">هذه المنطقة غير متاحة بعد في هذا الإصدار، فبقي موقعك المحفوظ.</string>
+    <string name="onboarding_ready_desc_abroad">سيتكفل التطبيق بالباقي، ويمكنك ضبط طريقة الحساب لتوافق مسجدك من إعدادات المواقيت.\n\nصلاة مقبولة 🤲</string>
 </resources>

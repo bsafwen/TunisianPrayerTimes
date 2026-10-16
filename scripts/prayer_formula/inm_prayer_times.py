@@ -140,7 +140,8 @@ def load_params() -> dict[int, dict]:
     return {int(k): v for k, v in json.loads(PARAMS_PATH.read_text(encoding="utf-8")).items()}
 
 
-def verify(year: int) -> None:
+def verify(year: int) -> bool:
+    """Prints the exact share; true when every published time of [year] is reproduced."""
     params = load_params()
     total = mismatches = 0
     per_column = [0] * 6
@@ -159,9 +160,13 @@ def verify(year: int) -> None:
                     if got[k] != cells[k + 1]:
                         mismatches += 1
                         per_column[k] += 1
+    if total == 0:
+        print(f"no published table for {year} in {CSV_DIR}")
+        return False
     print(f"{len(params)} delegations, {total} times, {total - mismatches} exact "
           f"({100 * (total - mismatches) / total:.3f}%)")
     print("mismatches per column:", dict(zip(COLUMNS, per_column)))
+    return mismatches == 0
 
 
 def print_month(did: int, year: int, month: int) -> None:
@@ -171,7 +176,7 @@ def print_month(did: int, year: int, month: int) -> None:
         print(f"{day:02d}," + ",".join(prayer_times(datetime.date(year, month, day), p)))
 
 
-def main() -> None:
+def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--verify", action="store_true", help="compare against the bundled CSVs")
     parser.add_argument("--year", type=int, default=2026)
@@ -179,13 +184,15 @@ def main() -> None:
     parser.add_argument("--month", type=int, help="print one month as CSV")
     args = parser.parse_args()
     if args.verify:
-        verify(args.year)
-    elif args.delegation:
+        # A nonzero exit fails CI on any mismatch, or when no table of that year was found.
+        return 0 if verify(args.year) else 1
+    if args.delegation:
         for month in [args.month] if args.month else range(1, 13):
             print_month(args.delegation, args.year, month)
     else:
         parser.print_help()
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

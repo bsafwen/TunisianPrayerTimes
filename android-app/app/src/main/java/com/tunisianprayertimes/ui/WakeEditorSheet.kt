@@ -189,6 +189,8 @@ data class WakeSilenceConflictSummary(
     val silenceStartAtMillis: Long,
     val silenceEndAtMillis: Long,
     val triggerAtMillis: Long,
+    /** The conflicting window's prayer day (6.9), which its inline editor shows. */
+    val silencePrayerDay: java.time.LocalDate? = null,
 )
 
 private data class WakeSilenceConflictKey(
@@ -3772,6 +3774,7 @@ private data class WakeSilenceConflict(
     val silenceStartAtMillis: Long,
     val silenceEndAtMillis: Long,
     val triggerAtMillis: Long,
+    val silencePrayerDay: java.time.LocalDate,
 )
 
 private fun WakeSilenceConflict.toSummary(): WakeSilenceConflictSummary = WakeSilenceConflictSummary(
@@ -3780,36 +3783,16 @@ private fun WakeSilenceConflict.toSummary(): WakeSilenceConflictSummary = WakeSi
     silenceStartAtMillis = silenceStartAtMillis,
     silenceEndAtMillis = silenceEndAtMillis,
     triggerAtMillis = triggerAtMillis,
+    silencePrayerDay = silencePrayerDay,
 )
 
 private fun loadWakePreviewPrayerDays(
     context: android.content.Context,
     delegationId: Int,
     now: Calendar,
-): List<WakeAlarmComputer.PrayerDayContext> {
-    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    return (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
-        val date = (now.clone() as Calendar).apply {
-            add(Calendar.DAY_OF_YEAR, dayOffset)
-        }
-        PrayerTimesRepository.loadDayPrayerTimes(
-            context = context,
-            delegationId = delegationId,
-            year = date.get(Calendar.YEAR),
-            month = date.get(Calendar.MONTH) + 1,
-            day = date.get(Calendar.DAY_OF_MONTH),
-        )?.let { prayerTimes ->
-            WakeAlarmComputer.PrayerDayContext(
-                date = date,
-                prayerTimes = prayerTimes,
-                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-                jomoaaHour = jomoaaHour,
-                jomoaaMinute = jomoaaMinute,
-            )
-        }
-    }
-}
+): List<WakeAlarmComputer.PrayerDayContext> =
+    // Calendar days from −1 (6.9): tonight's after-midnight Isha belongs to prayer day D − 1.
+    com.tunisianprayertimes.wake.WakeAlarmScheduler.loadPrayerDayContexts(context, now)
 
 private fun computeWakeHeroTimes(
     context: android.content.Context,
@@ -3898,14 +3881,12 @@ private fun computeWakeSilenceWarning(
         return null
     }
 
-    val silenceConfigs = Prayer.entries.associateWith { prayer ->
-        PrefsManager.getConfig(context, prayer)
-    }
-
+    // The windows the scheduler arms (6.9), around each trigger.
+    val planner = com.tunisianprayertimes.SilenceScheduler.planner(context)
     val triggerWithOverlap = triggers
         .asSequence()
         .mapNotNull { trigger ->
-            findWakeSilenceOverlap(trigger, prayerDays, silenceConfigs)?.let { overlap ->
+            findWakeSilenceOverlap(trigger, planner)?.let { overlap ->
                 trigger to overlap
             }
         }
@@ -3918,8 +3899,8 @@ private fun computeWakeSilenceWarning(
         wakeTriggerLabel(context, trigger),
         formatWakePreviewDateTime(trigger.triggerAtMillis),
         prayerDisplayName(context, overlap.prayer),
-        formatWakePreviewDateTime(overlap.startAtMillis),
-        formatWakePreviewDateTime(overlap.endAtMillis),
+        formatWakePreviewDateTime(overlap.start.toEpochMilli()),
+        formatWakePreviewDateTime(overlap.end.toEpochMilli()),
     )
     return WakeValidationWarning(
         title = context.getString(R.string.wake_editor_warning_title),
@@ -3927,32 +3908,20 @@ private fun computeWakeSilenceWarning(
         conflict = WakeSilenceConflict(
             detail = detail,
             silencePrayer = overlap.prayer,
-            silenceStartAtMillis = overlap.startAtMillis,
-            silenceEndAtMillis = overlap.endAtMillis,
+            silenceStartAtMillis = overlap.start.toEpochMilli(),
+            silenceEndAtMillis = overlap.end.toEpochMilli(),
             triggerAtMillis = trigger.triggerAtMillis,
+            silencePrayerDay = overlap.prayerDay,
         ),
     )
 }
 
+/** The armed window a trigger falls in (6.9), with its prayer day. */
 private fun findWakeSilenceOverlap(
     trigger: WakeAlarmComputer.ScheduledWakeTrigger,
-    prayerDays: List<WakeAlarmComputer.PrayerDayContext>,
-    silenceConfigs: Map<Prayer, PrayerSilenceConfig>,
-): SilenceAlarmComputer.SilenceWindowOverlap? =
-    prayerDays
-        .asSequence()
-        .mapNotNull { prayerDay ->
-            SilenceAlarmComputer.overlapForTrigger(
-                triggerAtMillis = trigger.triggerAtMillis,
-                prayerDay = prayerDay.date,
-                prayerTimes = prayerDay.prayerTimes,
-                configs = silenceConfigs,
-                isFriday = prayerDay.isFriday,
-                jomoaaHour = prayerDay.jomoaaHour,
-                jomoaaMinute = prayerDay.jomoaaMinute,
-            )
-        }
-        .firstOrNull()
+    planner: com.tunisianprayertimes.silence.SilenceWindowPlanner,
+): com.tunisianprayertimes.silence.SilenceWindow? =
+    planner.windowAt(java.time.Instant.ofEpochMilli(trigger.triggerAtMillis))
 
 private fun wakeTriggerLabel(
     context: android.content.Context,

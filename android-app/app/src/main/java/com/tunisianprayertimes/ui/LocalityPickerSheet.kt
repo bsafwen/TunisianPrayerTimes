@@ -60,6 +60,10 @@ internal fun LocalityPickerSheet(
     selectedId: String,
     onDismiss: () -> Unit,
     onSelect: (Locality) -> Unit,
+    // Catalogue cities of the open regions (6.8): country groups after the governorates, never snapped to a delegation.
+    cities: List<com.tunisianprayertimes.PlaceCatalogue.Row> = emptyList(),
+    selectedCityId: Long? = null,
+    onSelectCity: (com.tunisianprayertimes.PlaceCatalogue.Row) -> Unit = {},
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
@@ -99,6 +103,17 @@ internal fun LocalityPickerSheet(
         else -> emptyList()
     }
     val isSearchPending = !search.isEmpty && currentResult == null
+    val cityGroups by produceState(emptyList<Pair<String, List<com.tunisianprayertimes.PlaceCatalogue.Row>>>(), cities, query) {
+        value = withContext(Dispatchers.Default) {
+            when {
+                cities.isEmpty() -> emptyList()
+                query.isBlank() -> com.tunisianprayertimes.CitySearch.countryGroups(cities)
+                else -> com.tunisianprayertimes.CitySearch.search(cities, query)
+                    .groupBy { com.tunisianprayertimes.CitySearch.countryName(com.tunisianprayertimes.place.CountryResolver.normalize(it.ref.countryCode)) }
+                    .toList()
+            }
+        }
+    }
     LaunchedEffect(query, catalog) {
         listState.scrollToItem(if (query.isBlank()) catalog.selectionScrollIndex(selectedId) else 0)
     }
@@ -139,7 +154,7 @@ internal fun LocalityPickerSheet(
                 ) {
                     CircularProgressIndicator(modifier = Modifier.size(24.dp))
                 }
-            } else if (groups.isEmpty()) {
+            } else if (groups.isEmpty() && cityGroups.isEmpty()) {
                 Text(
                     stringResource(R.string.locality_no_results),
                     modifier = Modifier.fillMaxWidth().padding(24.dp),
@@ -182,6 +197,41 @@ internal fun LocalityPickerSheet(
                                     )
                                     if (subtitle.isNotBlank()) {
                                         Text(subtitle, fontSize = 12.sp, color = TextMuted)
+                                    }
+                                }
+                                if (selected) Icon(
+                                    painterResource(R.drawable.ic_check), contentDescription = null,
+                                    tint = GreenPrimary, modifier = Modifier.size(18.dp),
+                                )
+                            }
+                            HorizontalDivider(color = Divider, modifier = Modifier.padding(horizontal = 20.dp))
+                        }
+                    }
+                    cityGroups.forEach { (countryName, rows) ->
+                        stickyHeader(key = "country:$countryName") {
+                            Text(
+                                countryName, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = GreenPrimary,
+                                modifier = Modifier.fillMaxWidth().background(BgCream).padding(horizontal = 20.dp, vertical = 8.dp),
+                            )
+                        }
+                        items(rows, key = { "city:" + it.ref.id }, contentType = { "city" }) { row ->
+                            val selected = row.ref.id == selectedCityId
+                            Row(
+                                modifier = Modifier.fillMaxWidth().testTag("city_row_${row.ref.id}")
+                                    .selectable(selected = selected, role = Role.RadioButton, onClick = { onSelectCity(row) })
+                                    .background(if (selected) GoldLight.copy(alpha = 0.2f) else Color.Transparent)
+                                    .padding(horizontal = 28.dp, vertical = 12.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Column(Modifier.weight(1f)) {
+                                    Text(
+                                        row.arabic.ifEmpty { row.name }, fontSize = 15.sp,
+                                        color = if (selected) GreenPrimaryDark else TextDark,
+                                        fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+                                    )
+                                    if (row.arabic.isNotEmpty() && row.name != row.arabic) {
+                                        Text(row.name, fontSize = 12.sp, color = TextMuted)
                                     }
                                 }
                                 if (selected) Icon(

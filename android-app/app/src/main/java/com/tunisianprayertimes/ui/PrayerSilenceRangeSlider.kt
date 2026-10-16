@@ -67,7 +67,6 @@ import androidx.compose.ui.unit.dp
 import com.tunisianprayertimes.DelayMode
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.SilenceMode
 import kotlin.math.abs
@@ -173,7 +172,7 @@ private val AbsoluteTopLeft = object : Alignment {
 internal fun PrayerSilenceRangeSlider(
     prayer: Prayer,
     prayerName: String,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     config: PrayerSilenceConfig,
     scale: PrayerTimelineScale,
     window: PrayerTimelineWindow,
@@ -184,7 +183,7 @@ internal fun PrayerSilenceRangeSlider(
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    val prayerMinutes = anchor.minutes
     val validWindow = window.endMinutes >= window.startMinutes
     val canAdjust = enabled && validWindow
     val density = LocalDensity.current
@@ -211,7 +210,7 @@ internal fun PrayerSilenceRangeSlider(
     val startDescription = stringResource(R.string.prayer_silence_start_handle_desc, prayerName, startState)
     val endDescription = stringResource(R.string.prayer_silence_end_handle_desc, prayerName, endState)
 
-    var drag by remember(prayerTime, config, scale) { mutableStateOf<SilenceDragState?>(null) }
+    var drag by remember(anchor, config, scale) { mutableStateOf<SilenceDragState?>(null) }
     // The active row may widen its own viewing domain while a deliberate edge drag is
     // in progress; every other row keeps the shared scale until the drag commits.
     val activeScale = drag?.scale ?: scale
@@ -381,7 +380,7 @@ internal fun PrayerSilenceRangeSlider(
             )
 
         fun isValid(candidate: PrayerTimelineWindow): Boolean =
-            prayerTimelineConfigForWindow(prayerTime, currentConfig, candidate) != null
+            prayerTimelineConfigForWindow(anchor, currentConfig, candidate) != null
 
         fun nudgeTo(endpoint: SilenceEndpoint, targetOffset: Int): Boolean {
             if (!currentCanAdjust) return false
@@ -620,7 +619,7 @@ internal fun PrayerSilenceRangeSlider(
 
         val dragModifier = Modifier.silenceSliderDrag(
             enabled = canAdjust,
-            gestureKey = listOf(prayerTime, config, scale, constraints.maxWidth),
+            gestureKey = listOf(anchor, config, scale, constraints.maxWidth),
             choosePart = { position -> hitPart(position) },
             onStart = { part ->
                 val origin = currentWindow
@@ -644,7 +643,7 @@ internal fun PrayerSilenceRangeSlider(
                 currentPreviewWindow(null)
             },
         )
-        val tapModifier = Modifier.pointerInput(canAdjust, prayerTime, scale, constraints.maxWidth) {
+        val tapModifier = Modifier.pointerInput(canAdjust, anchor, scale, constraints.maxWidth) {
             if (!canAdjust) return@pointerInput
             detectTapGestures { position -> handleTap(position) }
         }

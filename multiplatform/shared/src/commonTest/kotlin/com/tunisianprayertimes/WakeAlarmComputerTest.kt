@@ -1,5 +1,12 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.engine.EventStatus
+import com.tunisianprayertimes.engine.EventTime
+import com.tunisianprayertimes.engine.PrayerDay
+import com.tunisianprayertimes.engine.TimeEvent
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneOffset
 import java.util.Calendar
 import java.util.TimeZone
 import kotlin.test.Test
@@ -169,30 +176,30 @@ class WakeAlarmComputerTest {
         }
         WakeAlarmComputer.PrayerDayContext(
             date = date,
-            prayerTimes = sampleTimes(
-                day = date.get(Calendar.DAY_OF_MONTH),
-                fajrHour = fajrHour,
-                fajrMinute = fajrMinute,
-            ),
+            prayerDay = sampleDay(date, fajrHour, fajrMinute),
             isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-            jomoaaHour = 12,
-            jomoaaMinute = 30,
+            jumua = at(date, 12, 30),
         )
     }
 
-    private fun sampleTimes(
-        day: Int,
-        fajrHour: Int,
-        fajrMinute: Int,
-    ): DayPrayerTimes = DayPrayerTimes(
-        day = day,
-        fajr = PrayerTime(Prayer.FAJR, fajrHour, fajrMinute),
-        shurukHour = 6,
-        shurukMinute = 50,
-        dhuhr = PrayerTime(Prayer.DHUHR, 12, 15),
-        asr = PrayerTime(Prayer.ASR, 15, 30),
-        maghrib = PrayerTime(Prayer.MAGHRIB, 18, 10),
-        isha = PrayerTime(Prayer.ISHA, 19, 30),
+    /** The prayer day of [date] as instants, the times read in the date's own zone (UTC here). */
+    private fun sampleDay(date: Calendar, fajrHour: Int, fajrMinute: Int): PrayerDay {
+        val times = listOf(fajrHour to fajrMinute, 6 to 50, 12 to 15, 15 to 30, 18 to 10, 19 to 30)
+        return PrayerDay(
+            date = LocalDate.of(date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH)),
+            zone = ZoneOffset.UTC,
+            placeKey = "test",
+            events = TimeEvent.entries.mapIndexed { i, event -> EventTime(event, at(date, times[i].first, times[i].second), EventStatus.COMPUTED) },
+        )
+    }
+
+    private fun at(date: Calendar, hour: Int, minute: Int): Instant = Instant.ofEpochMilli(
+        (date.clone() as Calendar).apply {
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }.timeInMillis,
     )
 
     private fun calendar(

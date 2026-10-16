@@ -41,6 +41,7 @@ object AnalyticsTracker {
                 putFlag("exact_alarm_granted", exactAlarmGranted)
                 putFlag("battery_exempt", batteryExempt)
                 putString("delegation_source", prefs.getString(KEY_DELEGATION_SOURCE, DELEGATION_SOURCE_DEFAULT))
+                putString("place_kind", placeKind(context))
             },
         )
         prefs.edit().putBoolean(KEY_ACTIVATION_LOGGED, true).apply()
@@ -204,9 +205,17 @@ object AnalyticsTracker {
                 putString("result", result)
                 putString("silence_alarm_count_bucket", countBucket(silencePrayerCount))
                 putString("wake_alarm_count_bucket", countBucket(wakeAlarmCount))
+                putString("place_kind", placeKind(context))
             },
         )
     }
+
+    /**
+     * The place's kind only (plan 6.8): never its coordinates, city, zone, country, method or official zone, since
+     * each of them reveals the country.
+     */
+    private fun placeKind(context: Context): String =
+        if (runCatching { PrefsManager.getPlace(context) }.getOrNull() is com.tunisianprayertimes.place.PrayerPlace.Coordinates) "coordinates" else "inm"
 
     fun ramadanOverrideFetchResult(context: Context, report: RamadanOverrideChecker.FetchReport) {
         log(

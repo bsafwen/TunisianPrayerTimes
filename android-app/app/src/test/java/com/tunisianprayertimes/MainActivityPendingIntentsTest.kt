@@ -120,6 +120,9 @@ class MainActivityPendingIntentsTest {
 
     @Test
     fun awakeCheckNotificationUsesAwakeCheckIntent() {
+        // A prayer's silence window at the real time of the run would suppress the awake check.
+        PrefsManager.setEnabled(context, false)
+        SilenceModeController.disableAutoSilence(context)
         val controller = Robolectric.buildService(
             AwakeCheckService::class.java,
             AwakeCheckService.intent(

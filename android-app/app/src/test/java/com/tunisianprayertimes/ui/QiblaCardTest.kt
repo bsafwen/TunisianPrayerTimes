@@ -36,7 +36,7 @@ class QiblaCardTest {
     fun inTunisia_withoutLocationPermission_showsBearingFromSelectedDelegation() {
         setNetworkCountry("tn")
         val delegationLabel = context.getString(R.string.qibla_location_selected, "مدينة تونس")
-        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        showCardForTunis()
         compose.waitUntil(timeoutMillis = 10_000) {
             compose.onAllNodesWithText(delegationLabel).fetchSemanticsNodes().isNotEmpty()
         }
@@ -53,7 +53,7 @@ class QiblaCardTest {
     fun abroad_withoutLocationPermission_doesNotFallBackToTheTunisianDelegation() {
         setNetworkCountry("fr")
         val permissionHint = context.getString(R.string.qibla_location_permission_required)
-        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        showCardForTunis()
         compose.waitUntil(timeoutMillis = 10_000) {
             compose.onAllNodesWithText(permissionHint).fetchSemanticsNodes().isNotEmpty()
         }
@@ -68,7 +68,7 @@ class QiblaCardTest {
     @Test
     fun methodChoice_staysOutOfTheWayUntilOpened() {
         setNetworkCountry("tn")
-        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        showCardForTunis()
         waitForBearing(113.0)
 
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_ROW).assertExists()
@@ -81,7 +81,7 @@ class QiblaCardTest {
     @Test
     fun switchingToTheRhumbLine_explainsTheDifferenceAndRemembersTheChoice() {
         setNetworkCountry("tn")
-        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        showCardForTunis()
         waitForBearing(113.0)
 
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_ROW).performClick()
@@ -101,10 +101,33 @@ class QiblaCardTest {
     fun savedRhumbLineChoice_isUsedAndFlaggedWhenTheCardOpens() {
         setNetworkCountry("tn")
         PrefsManager.setQiblaMethod(context, QiblaMethod.RhumbLine)
-        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        showCardForTunis()
         waitForBearing(121.0)
 
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_CHIP).assertExists()
+    }
+
+    /** The card reads the saved place (6.8): Tunis's delegation here. */
+    private fun showCardForTunis() {
+        PrefsManager.setDelegationId(context, TUNIS_DELEGATION_ID)
+        compose.setContent { QiblaCard(placeRevision = TUNIS_DELEGATION_ID) }
+    }
+
+    @Test
+    fun abroad_withoutLocationPermission_usesTheSelectedPlaceWhereThePhoneIs() {
+        // Plan 6.8: the saved place stands in wherever the network country matches it, not only in Tunisia.
+        setNetworkCountry("fr")
+        val paris = com.tunisianprayertimes.place.PrayerPlace.Coordinates(
+            latE5 = 4885660, lngE5 = 235220, zoneId = "Europe/Paris",
+            zoneSource = com.tunisianprayertimes.place.ZoneSource.CATALOGUE, countryCode = "FR",
+        )
+        PrefsManager.setPlace(context, paris, "باريس", fromGps = false)
+        val label = context.getString(R.string.qibla_location_selected, "باريس")
+        compose.setContent { QiblaCard(placeRevision = -1) }
+        compose.waitUntil(timeoutMillis = 10_000) {
+            compose.onAllNodesWithText(label).fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onNodeWithText(label).assertExists()
     }
 
     private fun waitForBearing(degrees: Double) {

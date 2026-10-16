@@ -1,6 +1,5 @@
 package com.tunisianprayertimes
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import androidx.work.Constraints
@@ -9,11 +8,7 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import android.location.Location
-import com.google.android.gms.location.LocationServices
 import java.util.concurrent.TimeUnit
-import kotlin.coroutines.resume
-import kotlinx.coroutines.suspendCancellableCoroutine
 
 /**
  * Periodic WorkManager worker that re-verifies and re-schedules silence alarms.
@@ -68,30 +63,14 @@ class SilenceVerifyWorker(
         RamadanOverrideChecker.startPollingIfNeeded()
         var refreshResult = "disabled"
         if (PrefsManager.isEnabled(applicationContext)) {
-            if (isOutsideTunisia()) {
-                refreshResult = "outside_tunisia"
-                if (!PrefsManager.isDisabledOutsideTunisia(applicationContext)) {
-                    Log.d(TAG, "User is outside Tunisia, cancelling silence alarms")
-                    SilenceScheduler.cancelAll(applicationContext)
-                    PrefsManager.setDisabledOutsideTunisia(applicationContext, true)
+            // No outside-Tunisia gate (principle 7, D20): a place abroad keeps its silences.
+            refreshResult = "success"
+            if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
+                if (DelegationLocator.updateDelegationFromCurrentLocation(applicationContext)) {
+                    Log.d(TAG, "Delegation updated, rescheduling alarms")
                 }
-            } else if (PrefsManager.isDisabledOutsideTunisia(applicationContext)) {
-                refreshResult = "returned_to_tunisia"
-                Log.d(TAG, "User returned to Tunisia, re-enabling silence alarms")
-                PrefsManager.setDisabledOutsideTunisia(applicationContext, false)
-                if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
-                    DelegationLocator.updateDelegationFromCurrentLocation(applicationContext)
-                }
-                SilenceScheduler.scheduleAll(applicationContext)
-            } else {
-                refreshResult = "success"
-                if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
-                    if (DelegationLocator.updateDelegationFromCurrentLocation(applicationContext)) {
-                        Log.d(TAG, "Delegation updated, rescheduling alarms")
-                    }
-                }
-                SilenceScheduler.scheduleAll(applicationContext)
             }
+            SilenceScheduler.scheduleAll(applicationContext)
         }
         AnalyticsTracker.scheduleRefreshResult(
             context = applicationContext,
@@ -101,31 +80,5 @@ class SilenceVerifyWorker(
             wakeAlarmCount = AnalyticsTracker.enabledWakeAlarmCount(applicationContext),
         )
         return Result.success()
-    }
-
-    @SuppressLint("MissingPermission")
-    private suspend fun isOutsideTunisia(): Boolean {
-        if (!DelegationLocator.hasLocationPermission(applicationContext)) {
-            return false
-        }
-
-        val location: Location? = try {
-            suspendCancellableCoroutine { continuation ->
-                LocationServices.getFusedLocationProviderClient(applicationContext)
-                    .lastLocation
-                    .addOnSuccessListener { loc: Location? ->
-                        if (continuation.isActive) continuation.resume(loc)
-                    }
-                    .addOnFailureListener {
-                        if (continuation.isActive) continuation.resume(null)
-                    }
-            }
-        } catch (_: Exception) {
-            null
-        }
-
-        if (location == null) return false
-
-        return !isInsideTunisia(applicationContext, location.latitude, location.longitude)
     }
 }

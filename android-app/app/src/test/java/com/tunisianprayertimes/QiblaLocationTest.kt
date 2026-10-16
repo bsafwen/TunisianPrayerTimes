@@ -37,6 +37,19 @@ class QiblaLocationTest {
     }
 
     @Test
+    fun placeCheck_worksForAPlaceAbroadByNetworkThenZone() {
+        // Plan 6.8: the saved place stands in wherever the phone's network country or zone matches it.
+        assertTrue(isLikelyAt("fr", "Africa/Tunis", "FR", "Europe/Paris"))
+        assertFalse(isLikelyAt("tn", "Europe/Paris", "FR", "Europe/Paris"))
+        assertTrue(isLikelyAt(null, "Europe/Paris", "FR", "Europe/Paris"))
+        assertFalse(isLikelyAt("", "Europe/Berlin", "FR", "Europe/Paris"))
+        // Western Sahara counts as Morocco (A1), as the catalogue files it.
+        assertTrue(isLikelyAt("eh", null, "MA", "Africa/Casablanca"))
+        // A place with no country falls back on the zone.
+        assertTrue(isLikelyAt("fr", "Europe/Paris", null, "Europe/Paris"))
+    }
+
+    @Test
     fun awaitFirstMatching_returnsTheFirstAnswerAndCancelsTheRest() = runTest {
         val gps = CompletableDeferred<String?>()
         val network = CompletableDeferred<String?>()

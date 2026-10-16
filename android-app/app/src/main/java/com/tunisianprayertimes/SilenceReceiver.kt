@@ -17,7 +17,6 @@ class SilenceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action ?: return
         Log.d(TAG, "Received action: $action")
-        if (SilenceScheduler.handleEidAlarm(context, intent)) return
 
         when (action) {
             "com.tunisianprayertimes.ACTION_SILENCE" -> {
@@ -27,15 +26,26 @@ class SilenceReceiver : BroadcastReceiver() {
                     Log.d(TAG, "Silence disabled for $prayerName, skipping")
                     return
                 }
-                Log.d(TAG, "Silencing phone for $prayerName")
-                // Check if the user already dismissed silence for this prayer.
-                // A delegation change may have rescheduled this alarm to a slightly
-                // later time; honour the user's prior dismissal.
-                val dismissedPrayer = PrefsManager.getAutoSilenceDismissedPrayer(context)
-                if (dismissedPrayer == prayerName) {
+                // The alarm names its prayer day (6.9). A dismissal covers that occurrence only, and an alarm
+                // that no longer matches a window of the scan (the window moved, or a cancel came too late to
+                // retract an already dispatched broadcast) is obsolete: everything is armed again instead.
+                val prayerDay = SilenceScheduler.prayerDayOf(intent)
+                if (prayer != null && prayerDay != null) {
+                    if (SilenceScheduler.isDismissed(context, prayer, prayerDay)) {
+                        Log.d(TAG, "User dismissed $prayerName of $prayerDay, skipping")
+                        return
+                    }
+                    if (SilenceScheduler.windowOf(context, prayer, prayerDay)?.contains(SilenceScheduler.now()) != true) {
+                        Log.d(TAG, "Obsolete start of $prayerName of $prayerDay, rescheduling")
+                        SilenceScheduler.scheduleAll(context)
+                        return
+                    }
+                } else if (PrefsManager.getAutoSilenceDismissedPrayer(context) == prayerName) {
+                    // An alarm armed before 6.9 carries no prayer day: today's rule.
                     Log.d(TAG, "User already dismissed silence for $prayerName, skipping")
                     return
                 }
+                Log.d(TAG, "Silencing phone for $prayerName")
                 PrefsManager.clearAutoSilenceDismissed(context)
                 SilenceModeController.enableAutoSilence(
                     context,
@@ -75,9 +85,10 @@ class SilenceReceiver : BroadcastReceiver() {
                 }
                 if (autoActive) {
                     val prayer = runCatching { Prayer.valueOf(prayerName) }.getOrNull()
-                    if (SilenceScheduler.isOtherSilenceWindowActive(context, prayer)) {
-                        // Overlapping windows: that window's own end alarm ends the silence.
-                        Log.d(TAG, "Another prayer's silence window is still active, keeping silence")
+                    if (SilenceScheduler.isOtherSilenceWindowActive(context, prayer, SilenceScheduler.prayerDayOf(intent))) {
+                        // Overlapping windows, another occurrence of the same prayer included: the
+                        // latest one's own end alarm ends the silence (6.9).
+                        Log.d(TAG, "Another silence window is still active, keeping silence")
                         return
                     }
                     SilenceModeController.disableAutoSilence(context)

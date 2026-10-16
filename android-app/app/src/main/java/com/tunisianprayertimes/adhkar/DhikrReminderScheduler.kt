@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.adhkar
 
+import com.tunisianprayertimes.PrefsManager
 import android.Manifest
 import android.app.AlarmManager
 import android.app.NotificationChannel
@@ -21,6 +22,7 @@ import androidx.work.WorkManager
 import com.tunisianprayertimes.*
 import java.time.Instant
 import java.time.LocalDate
+import com.tunisianprayertimes.engine.TimeEvent
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -53,7 +55,6 @@ object DhikrReminderScheduler {
     private const val BLOCKED_NOTIFICATION_RETRY_MILLIS = 15 * 60_000L
     /** Why a nudge was put off by a minute or two without giving up its slot. */
     private val POSTPONED_REASONS = setOf("spacing", "retry")
-    private val months = linkedMapOf<String, List<DayPrayerTimes>>()
     @Volatile private var scheduleScan: Pair<List<Any>, DhikrPeriodProblem?>? = null
     private val laterDate = DateTimeFormatter.ofPattern("d MMMM", Locale.forLanguageTag("ar-TN-u-nu-latn"))
     private const val OVERNIGHT_HINT = " إذا كانت الفترة ليلية، فعّل «تنتهي في اليوم التالي»."
@@ -145,7 +146,7 @@ object DhikrReminderScheduler {
      */
     private fun scheduleProblem(context: Context, rule: DhikrReminder, today: LocalDate): DhikrPeriodProblem? {
         // The editor validates on every change; only a changed schedule is scanned again.
-        val key = listOf(PrefsManager.getDelegationId(context), ZoneId.systemDefault(), today, rule.daysOfWeek, rule.intervals(),
+        val key = listOf(PrayerTimesRepository.timesKey(context), ZoneId.systemDefault(), today, rule.daysOfWeek, rule.intervals(),
             rule.collection ?: "")
         scheduleScan?.takeIf { it.first == key }?.let { return it.second }
         // A clock time can drift out of a collection's occasion as the prayers move: scan the year for those too.
@@ -300,14 +301,18 @@ object DhikrReminderScheduler {
     }
     private val occasionCollections = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING)
     private fun resolvedBounds(context: Context, rule: DhikrReminder, date: LocalDate): List<Pair<Int, Pair<Long, Long>>>? {
-        return rule.intervals().mapIndexed { index, interval ->
+        return rule.intervals().mapIndexedNotNull { index, interval ->
             val start = resolveTime(context, interval.start, date) ?: return null
             var end = resolveTime(context, interval.end,
                 if (interval.endNextDay == true) date.plusDays(1) else date) ?: return null
+            // A period from one prayer to a later one whose ends meet because of a permitted tie (6.2) is
+            // empty that day: no nudge and no occurrence, neither an error nor moved to the next day.
+            if (end == start && interval.endNextDay != true && interval.start.kind != DhikrTimeKind.FIXED &&
+                interval.end.kind.ordinal > interval.start.kind.ordinal) return@mapIndexedNotNull null
             if (interval.endNextDay == null && end <= start)
                 end = resolveTime(context, interval.end, date.plusDays(1)) ?: return null
             index to (start to end)
-        }
+        }.takeIf { it.isNotEmpty() || rule.intervals().isEmpty() }
     }
     private fun nudgeSlots(context: Context, rule: DhikrReminder, window: DhikrWindow): List<IndexedValue<Long>> =
         dhikrNudgeTimes(rule, resolveWindows(context, rule, window.date)).withIndex()
@@ -373,35 +378,34 @@ object DhikrReminderScheduler {
         return (-2L..8L).flatMap { resolveWindows(context, rule, today.plusDays(it), scheduleOnly) }
             .filter { it.endMillis > now }.sortedBy { it.startMillis }
     }
+    /**
+     * A reminder time on [date] (plan 6.9): a fixed clock time in the phone's zone, or the requested time's
+     * instant on prayer day [date] at the saved place, plus the offset. Only that time is checked: the
+     * engine's order of the day, with its permitted ties, holds for the others. Null without that time.
+     */
     fun resolveTime(context: Context, time: DhikrTime, date: LocalDate): Long? {
-        val minute = if (time.kind == DhikrTimeKind.FIXED) time.minuteOfDay else {
-            val id = PrefsManager.getDelegationId(context)
-            // Prayer times are computed for PrayerTimesRepository.SUPPORTED_YEARS.
-            // Following the app's existing next-day prayer fallback, reuse the last
-            // supported year beyond it. February 29 uses February 28 in a non-leap year.
-            val lastYear = PrayerTimesRepository.SUPPORTED_YEARS.last
-            val candidateYears = listOf(minOf(date.year, lastYear))
-            val day = candidateYears.firstNotNullOfOrNull { year ->
-                val key = "$id|$year|" + date.monthValue
-                val month = synchronized(months) {
-                    months.getOrPut(key) { PrayerTimesRepository.loadPrayerTimes(context, id, year, date.monthValue) }
-                        .also { if (months.size > 24) months.remove(months.keys.first()) }
-                }
-                month.find { it.day == date.dayOfMonth }
-                    ?: if (date.monthValue == 2 && date.dayOfMonth == 29 && year != date.year)
-                        month.find { it.day == 28 }
-                    else null
-            } ?: return null
-            val pairs = listOf(day.fajr.hour to day.fajr.minute, day.shurukHour to day.shurukMinute,
-                day.dhuhr.hour to day.dhuhr.minute, day.asr.hour to day.asr.minute, day.maghrib.hour to day.maghrib.minute, day.isha.hour to day.isha.minute)
-            if (pairs.any { it.first !in 0..23 || it.second !in 0..59 }) return null
-            val values = pairs.map { it.first * 60 + it.second }
-            if (values.zipWithNext().any { it.first >= it.second }) return null
-            values[time.kind.ordinal - 1]
+        if (time.kind == DhikrTimeKind.FIXED) {
+            return date.atStartOfDay().plusMinutes((time.minuteOfDay + time.offsetMinutes).toLong())
+                .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
         }
-        return date.atStartOfDay().plusMinutes((minute + time.offsetMinutes).toLong()).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        val event = TimeEvent.entries[time.kind.ordinal - 1]
+        val at = PrayerTimesRepository.prayerDay(context, date)?.get(event)?.at ?: return null
+        return at.toEpochMilli() + time.offsetMinutes * 60_000L
     }
-    fun invalidatePrayerCache() = synchronized(months) { months.clear(); scheduleScan = null }
+    /** Runs on every place or method change (6.9): the times behind the scan change with them. */
+    fun invalidatePrayerCache() { scheduleScan = null }
+
+    /**
+     * After a change of place or method (6.9): every saved reminder is checked again over the coming year. One that
+     * no longer fits keeps running on the days that still do, and its card shows the first date that fails.
+     */
+    fun recheckSavedReminders(context: Context) {
+        invalidatePrayerCache()
+        val flags = DhikrRepository(context).state.value.reminders.mapNotNull { rule ->
+            periodProblem(context, rule)?.message?.let { rule.id to it }
+        }.toMap()
+        PrefsManager.setAdhkarPlaceFlags(context, flags)
+    }
 
     /** One inexact pending event per rule. A stable event token survives cold-process delivery. */
     fun refresh(context: Context, rearm: Boolean = false, nowMillis: Long = System.currentTimeMillis()): Unit = synchronized(schedulingLock) {

@@ -26,6 +26,13 @@ class BootReceiver : BroadcastReceiver() {
                 CoroutineScope(Dispatchers.IO).launch {
                     var refreshResult = "success"
                     try {
+                        // The scheduler's codes before 6.9's day slots, on every update, before the reschedule.
+                        if (action == Intent.ACTION_MY_PACKAGE_REPLACED) SilenceScheduler.cancelLegacyAlarms(context)
+                        // 6.8: a new time zone may mean a trip; with auto-location on, a fix goes through the travel rule first.
+                        if (action == Intent.ACTION_TIMEZONE_CHANGED) {
+                            runCatching { TravelPlaceWorker.checkAfterZoneChange(context) }
+                                .onFailure { Log.w("BootReceiver", "Travel check failed", it) }
+                        }
                         refreshResult = refreshSchedules(context)
                     } catch (error: Exception) {
                         refreshResult = "failure"

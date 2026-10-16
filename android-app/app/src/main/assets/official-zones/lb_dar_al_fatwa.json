@@ -1,0 +1,308 @@
+{
+ "schema": 1,
+ "authority": "lb_dar_al_fatwa",
+ "methodId": "lb_dar_al_fatwa",
+ "country": "LB",
+ "mapping": "NATIONAL",
+ "source": "Dar al-Fatwa's Beirut table (the Ramadan 1445 imsakiya, and the perpetual year table its screen at Ras Beirut shows, equal on all 180 times), computed for the actual year (A8); one zone for all of Lebanon",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "tv.masjidi.app region 2: the perpetual Beirut table Dar al-Fatwa's screen at Ras Beirut shows (equals the imsakiya)",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 366,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "darelfatwa.gov.lb Ramadan 1445 imsakiya, Beirut (official)",
+    "from": "2024-03-11",
+    "to": "2024-04-09",
+    "days": 30,
+    "zones": 1,
+    "monthSplit": true
+   },
+   {
+    "source": "tv.masjidi.app region 2: the perpetual Beirut table Dar al-Fatwa's screen at Ras Beirut shows (equals the imsakiya), scored for 2026",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.1811,
+   "SUNRISE": 0.2677,
+   "DHUHR": 0.7375,
+   "ASR": 0.5354,
+   "MAGHRIB": 0.2782,
+   "ISHA": 0.3071
+  },
+  "within1": {
+   "FAJR": 0.727,
+   "SUNRISE": 0.8819,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 0.9475,
+   "ISHA": 0.9396
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    31,
+    28,
+    38,
+    39,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "SUNRISE": [
+    31,
+    28,
+    38,
+    39,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "DHUHR": [
+    31,
+    28,
+    38,
+    39,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ASR": [
+    31,
+    28,
+    38,
+    39,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "MAGHRIB": [
+    31,
+    28,
+    38,
+    39,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ISHA": [
+    31,
+    28,
+    38,
+    39,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 30,
+  "quirkDays": 14,
+  "maxDiffMin": 3
+ },
+ "zones": [
+  {
+   "id": "beirut",
+   "point": {
+    "latE5": 3389400,
+    "lngE5": 3550200
+   },
+   "morningPoint": {
+    "latE5": 3389000,
+    "lngE5": 3546060
+   },
+   "eveningPoint": {
+    "latE5": 3389000,
+    "lngE5": 3546060
+   },
+   "nameAr": "بيروت",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3389400,
+      "lngE5": 3550200
+     },
+     "catalogueIds": [
+      276781
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "tv.masjidi.app region 2: the perpetual Beirut table Dar al-Fatwa's screen at Ras Beirut shows (equals the imsakiya)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darelfatwa.gov.lb Ramadan 1445 imsakiya, Beirut (official)",
+      "from": "2024-03-11",
+      "to": "2024-04-09",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "tv.masjidi.app region 2: the perpetual Beirut table Dar al-Fatwa's screen at Ras Beirut shows (equals the imsakiya), scored for 2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.1811,
+     "SUNRISE": 0.2677,
+     "DHUHR": 0.7375,
+     "ASR": 0.5354,
+     "MAGHRIB": 0.2782,
+     "ISHA": 0.3071
+    },
+    "within1": {
+     "FAJR": 0.727,
+     "SUNRISE": 0.8819,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9475,
+     "ISHA": 0.9396
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      38,
+      39,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      38,
+      39,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      38,
+      39,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      38,
+      39,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      38,
+      39,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      38,
+      39,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 14,
+    "maxDiffMin": 3
+   }
+  }
+ ]
+}

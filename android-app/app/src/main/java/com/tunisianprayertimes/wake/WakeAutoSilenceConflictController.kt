@@ -38,15 +38,7 @@ internal object WakeAutoSilenceConflictController {
             return false
         }
 
-        val dismissedPrayer = SilenceScheduler.currentSilenceWindowPrayer(context)
-            ?: payload.autoSilenceConflictPrayer
-        dismissedPrayer?.let { prayer ->
-            PrefsManager.setAutoSilenceDismissed(
-                context = context,
-                millis = System.currentTimeMillis(),
-                prayer = prayer,
-            )
-        }
+        SilenceScheduler.dismissCurrentWindows(context, SilenceScheduler.currentSilenceWindowPrayer(context) ?: payload.autoSilenceConflictPrayer)
 
         return SilenceModeController.disableAutoSilence(context).also { lifted ->
             if (lifted) {

@@ -6,6 +6,17 @@ import android.app.NotificationManager
 import android.media.AudioManager
 import android.os.Handler
 import android.os.Looper
+import com.tunisianprayertimes.method.CountryMethodDefaults
+import com.tunisianprayertimes.method.PrayerMethodChoice
+import com.tunisianprayertimes.place.CountryResolver
+import com.tunisianprayertimes.place.PrayerPlace
+import com.tunisianprayertimes.place.Region
+import com.tunisianprayertimes.place.Regions
+import com.tunisianprayertimes.place.ZoneResolver
+import com.tunisianprayertimes.place.ZoneSource
+import java.time.LocalTime
+import java.time.ZoneId
+import kotlinx.serialization.json.Json
 import java.time.chrono.HijrahDate
 import java.time.temporal.ChronoField
 
@@ -43,7 +54,6 @@ object PrefsManager {
     private const val KEY_MANUAL_SILENCE_TARGET_PRAYER = "manual_silence_target_prayer"
     private const val KEY_CALL_RECEIVED_DURING_SILENCE = "call_received_during_silence"
     private const val KEY_CALL_END_VIBRATION_ENABLED = "call_end_vibration_enabled"
-    private const val KEY_DISABLED_OUTSIDE_TUNISIA = "disabled_outside_tunisia"
     private const val KEY_AUTO_LOCATION_UPDATE = "auto_location_update"
     private const val KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS = "auto_silence_dismissed_until_millis"
     private const val KEY_AUTO_SILENCE_DISMISSED_PRAYER = "auto_silence_dismissed_prayer"
@@ -62,11 +72,178 @@ object PrefsManager {
 
     fun setDelegationId(context: Context, id: Int) {
         val settings = prefs(context)
-        val edit = settings.edit().putInt(KEY_DELEGATION_ID, id)
+        // Choosing a delegation confirms the place (6.8): no «تأكيد الموقع» banner after it.
+        val edit = settings.edit().putInt(KEY_DELEGATION_ID, id).removePlaceAbroad().remove(KEY_PLACE_PROVISIONAL)
         if (getDelegationId(context) != id) {
             edit.remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME).remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS)
                 .remove(KEY_MANUAL_REFERENCE_ID)
         }
+        edit.apply()
+    }
+
+    // --- The place (plan 6.8): a Tunisian delegation, or a point abroad ---
+
+    private const val KEY_PLACE_KIND = "place_kind"
+    private const val KEY_PLACE_LAT_E5 = "place_lat_e5"
+    private const val KEY_PLACE_LNG_E5 = "place_lng_e5"
+    private const val KEY_PLACE_ELEVATION_M = "place_elevation_m"
+    private const val KEY_PLACE_ZONE_ID = "place_zone_id"
+    private const val KEY_PLACE_ZONE_SOURCE = "place_zone_source"
+    private const val KEY_PLACE_COUNTRY = "place_country"
+    private const val KEY_PLACE_ADMIN1 = "place_admin1"
+    private const val KEY_PLACE_ADMIN2 = "place_admin2"
+    private const val KEY_PLACE_CATALOGUE_ID = "place_catalogue_id"
+    private const val KEY_PLACE_NAME_SNAPSHOT = "place_name_snapshot"
+    private const val KEY_PLACE_PROVISIONAL = "place_provisional"
+    private const val PLACE_KIND_COORDINATES = "coordinates"
+    private val PLACE_KEYS = listOf(
+        KEY_PLACE_KIND, KEY_PLACE_LAT_E5, KEY_PLACE_LNG_E5, KEY_PLACE_ELEVATION_M, KEY_PLACE_ZONE_ID, KEY_PLACE_ZONE_SOURCE,
+        KEY_PLACE_COUNTRY, KEY_PLACE_ADMIN1, KEY_PLACE_ADMIN2, KEY_PLACE_CATALOGUE_ID, KEY_PLACE_NAME_SNAPSHOT,
+    )
+    private const val KEY_REGION_ARAB_LEAGUE_OPEN = "region_arab_league_open"
+    private const val KEY_REGION_EUROPE_OPEN = "region_europe_open"
+    private const val KEY_ADHKAR_PLACE_FLAGS = "adhkar_place_flags"
+    private const val KEY_PICK_PLACE_ON_START = "pick_place_on_start"
+    private val choiceJson = Json { ignoreUnknownKeys = true; encodeDefaults = false }
+
+    /** A delegation is stored: the place abroad goes, so readers fall back to the delegation. */
+    private fun SharedPreferences.Editor.removePlaceAbroad(): SharedPreferences.Editor {
+        PLACE_KEYS.forEach { remove(it) }
+        return this
+    }
+
+    /** The saved place: the delegation of [getDelegationId], or the point abroad that [setPlace] stored. */
+    fun getPlace(context: Context): PrayerPlace {
+        val p = prefs(context)
+        if (p.getString(KEY_PLACE_KIND, null) != PLACE_KIND_COORDINATES || !p.contains(KEY_PLACE_LAT_E5) || !p.contains(KEY_PLACE_LNG_E5)) {
+            return PrayerPlace.Inm(getDelegationId(context))
+        }
+        val zone = ZoneResolver.parse(p.getString(KEY_PLACE_ZONE_ID, null), ZoneId.systemDefault())
+        return PrayerPlace.Coordinates(
+            latE5 = p.getInt(KEY_PLACE_LAT_E5, 0),
+            lngE5 = p.getInt(KEY_PLACE_LNG_E5, 0),
+            elevationM = if (p.contains(KEY_PLACE_ELEVATION_M)) p.getInt(KEY_PLACE_ELEVATION_M, 0) else null,
+            zoneId = zone.id,
+            zoneSource = runCatching { ZoneSource.valueOf(p.getString(KEY_PLACE_ZONE_SOURCE, "")!!) }
+                .getOrDefault(ZoneSource.DEVICE),
+            countryCode = p.getString(KEY_PLACE_COUNTRY, null),
+            catalogueId = if (p.contains(KEY_PLACE_CATALOGUE_ID)) p.getLong(KEY_PLACE_CATALOGUE_ID, 0L) else null,
+            admin1 = p.getString(KEY_PLACE_ADMIN1, null),
+            admin2 = p.getString(KEY_PLACE_ADMIN2, null),
+        )
+    }
+
+    /** The label of a place abroad, as it was when stored («قرب X» or the picked city). */
+    fun getPlaceNameSnapshot(context: Context): String? = prefs(context).getString(KEY_PLACE_NAME_SNAPSHOT, null)
+
+    /** True while the place is the first run's guess, until the user confirms it or a fix arrives (6.8). */
+    fun isPlaceProvisional(context: Context): Boolean = prefs(context).getBoolean(KEY_PLACE_PROVISIONAL, false)
+
+    fun setPlaceProvisional(context: Context, provisional: Boolean) {
+        prefs(context).edit().putBoolean(KEY_PLACE_PROVISIONAL, provisional).apply()
+    }
+
+    /** «اختيار مدينة» in the onboarding (6.8): the main screen opens the picker once, on its first start. */
+    fun requestPlacePickerOnStart(context: Context) {
+        prefs(context).edit().putBoolean(KEY_PICK_PLACE_ON_START, true).apply()
+    }
+
+    fun consumePlacePickerOnStart(context: Context): Boolean {
+        val settings = prefs(context)
+        if (!settings.getBoolean(KEY_PICK_PLACE_ON_START, false)) return false
+        settings.edit().remove(KEY_PICK_PLACE_ON_START).apply()
+        return true
+    }
+
+    /**
+     * Stores a place abroad in one edit (6.8). The Tunisian locality keys go with it, so no stale Tunisian
+     * label or source repair can act on a place abroad; the delegation id stays for INM's readers.
+     */
+    fun setPlace(
+        context: Context,
+        place: PrayerPlace.Coordinates,
+        label: String?,
+        fromGps: Boolean,
+        provisional: Boolean = false,
+    ) {
+        val edit = prefs(context).edit()
+            .putString(KEY_PLACE_KIND, PLACE_KIND_COORDINATES)
+            .putInt(KEY_PLACE_LAT_E5, place.latE5)
+            .putInt(KEY_PLACE_LNG_E5, place.lngE5)
+            .putString(KEY_PLACE_ZONE_ID, place.zoneId)
+            .putString(KEY_PLACE_ZONE_SOURCE, place.zoneSource.name)
+            .putBoolean(KEY_LOCATION_FROM_GPS, fromGps)
+            .putBoolean(KEY_PLACE_PROVISIONAL, provisional)
+            .remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME).remove(KEY_LOCALITY_KIND).remove(KEY_MANUAL_REFERENCE_ID)
+        fun putOrRemove(key: String, value: String?) { if (value == null) edit.remove(key) else edit.putString(key, value) }
+        putOrRemove(KEY_PLACE_COUNTRY, place.countryCode)
+        putOrRemove(KEY_PLACE_ADMIN1, place.admin1)
+        putOrRemove(KEY_PLACE_ADMIN2, place.admin2)
+        putOrRemove(KEY_PLACE_NAME_SNAPSHOT, label)
+        place.elevationM?.let { edit.putInt(KEY_PLACE_ELEVATION_M, it) } ?: edit.remove(KEY_PLACE_ELEVATION_M)
+        place.catalogueId?.let { edit.putLong(KEY_PLACE_CATALOGUE_ID, it) } ?: edit.remove(KEY_PLACE_CATALOGUE_ID)
+        edit.apply()
+    }
+
+    /** The method choice of a place's country (6.4), `method_choice_<CC>`; null until one is stored. */
+    fun getMethodChoice(context: Context, place: PrayerPlace.Coordinates): PrayerMethodChoice? {
+        val key = CountryMethodDefaults.choiceKey(place.countryCode, place.admin1)
+        val stored = prefs(context).getString(key, null) ?: return null
+        return runCatching { choiceJson.decodeFromString(PrayerMethodChoice.serializer(), stored) }.getOrNull()
+    }
+
+    fun setMethodChoice(
+        context: Context,
+        place: PrayerPlace.Coordinates,
+        choice: PrayerMethodChoice,
+    ) {
+        val key = CountryMethodDefaults.choiceKey(place.countryCode, place.admin1)
+        prefs(context).edit().putString(key, choiceJson.encodeToString(PrayerMethodChoice.serializer(), choice)).apply()
+    }
+
+    /**
+     * The edited Jumu'a time of a place's country (6.9, A18): a mosque time, so stored per country, Tunisia
+     * keeping today's keys. Null when not edited: the A18 default then applies.
+     */
+    fun getJumuaTime(context: Context, place: PrayerPlace): LocalTime? = when (place) {
+        is PrayerPlace.Inm -> {
+            val hour = getJomoaaTimeHour(context)
+            val minute = getJomoaaTimeMinute(context)
+            if (hour in 0..23 && minute in 0..59) LocalTime.of(hour, minute) else null
+        }
+        is PrayerPlace.Coordinates ->
+            prefs(context).getString(jumuaKey(place), null)?.let { runCatching { LocalTime.parse(it) }.getOrNull() }
+    }
+
+    fun setJumuaTime(context: Context, place: PrayerPlace, time: LocalTime?) {
+        when (place) {
+            is PrayerPlace.Inm -> setJomoaaTime(context, time?.hour ?: -1, time?.minute ?: -1)
+            is PrayerPlace.Coordinates -> {
+                val edit = prefs(context).edit()
+                if (time == null) edit.remove(jumuaKey(place)) else edit.putString(jumuaKey(place), time.toString())
+                edit.apply()
+            }
+        }
+    }
+
+    private fun jumuaKey(place: PrayerPlace.Coordinates) =
+        "jomoaa_time_" + (place.countryCode?.let(CountryResolver::normalize) ?: "ZZ")
+
+    /**
+     * The developer switches of plan 2: each region stays closed until its milestones are done (the Arab League
+     * at AM9, Europe, which also covers every other place outside Tunisia, at M9). Tunisia is always open.
+     */
+    fun isRegionOpen(context: Context, region: Region): Boolean =
+        Regions.isOpen(
+            region,
+            arabLeagueOpen = prefs(context).getBoolean(KEY_REGION_ARAB_LEAGUE_OPEN, false),
+            europeOpen = prefs(context).getBoolean(KEY_REGION_EUROPE_OPEN, false),
+        )
+
+    fun setRegionOpen(context: Context, arabLeague: Boolean? = null, europe: Boolean? = null) {
+        val edit = prefs(context).edit()
+        arabLeague?.let { edit.putBoolean(KEY_REGION_ARAB_LEAGUE_OPEN, it) }
+        europe?.let { edit.putBoolean(KEY_REGION_EUROPE_OPEN, it) }
         edit.apply()
     }
 
@@ -78,6 +255,8 @@ object PrefsManager {
 
     fun setLocality(context: Context, locality: Locality) {
         prefs(context).edit()
+            .removePlaceAbroad()
+            .remove(KEY_PLACE_PROVISIONAL)
             .putInt(KEY_DELEGATION_ID, locality.delegationId)
             .putString(KEY_LOCALITY_ID, locality.id)
             .putString(KEY_LOCALITY_NAME, locality.name)
@@ -95,6 +274,8 @@ object PrefsManager {
     /** The label and the timetable are independent results of the same GPS fix. */
     fun setGpsLocation(context: Context, result: DelegationLocationResult.Success) {
         prefs(context).edit()
+            .removePlaceAbroad()
+            .remove(KEY_PLACE_PROVISIONAL)
             .putInt(KEY_DELEGATION_ID, result.delegation.id)
             .putString(KEY_LOCALITY_ID, result.locality?.id)
             .putString(KEY_LOCALITY_NAME, result.locality?.name)
@@ -142,7 +323,8 @@ object PrefsManager {
 
     fun observeLocationSelection(context: Context, onChanged: () -> Unit): () -> Unit {
         val settings = prefs(context)
-        val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS, KEY_MANUAL_REFERENCE_ID)
+        val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS, KEY_MANUAL_REFERENCE_ID) +
+            PLACE_KEYS + KEY_PLACE_PROVISIONAL
         // One save changes several keys in one apply(), and the listener is called once per key,
         // all in one pass on the main thread. Post one callback for the whole batch instead.
         val mainHandler = Handler(Looper.getMainLooper())
@@ -227,6 +409,32 @@ object PrefsManager {
             .remove(KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS)
             .remove(KEY_AUTO_SILENCE_DISMISSED_PRAYER)
             .apply()
+    }
+
+    private const val KEY_AUTO_SILENCE_DISMISSALS = "auto_silence_dismissed_occurrences"
+
+    /**
+     * The occurrences of auto-silence the user dismissed (plan 6.9): each a prayer of a prayer day, so a
+     * dismissal in Fajr(k)'s window does not stop Fajr(k + 1)'s.
+     */
+    fun getAutoSilenceDismissals(context: Context): Set<Pair<Prayer, java.time.LocalDate>> =
+        prefs(context).getString(KEY_AUTO_SILENCE_DISMISSALS, null).orEmpty().split(',').mapNotNull { entry ->
+            val (prayer, day) = entry.split('@').takeIf { it.size == 2 } ?: return@mapNotNull null
+            val p = runCatching { Prayer.valueOf(prayer) }.getOrNull() ?: return@mapNotNull null
+            val d = day.toLongOrNull()?.let(java.time.LocalDate::ofEpochDay) ?: return@mapNotNull null
+            p to d
+        }.toSet()
+
+    /** Adds dismissed occurrences, dropping those of prayer days before [keepFrom]. */
+    fun addAutoSilenceDismissals(context: Context, occurrences: Collection<Pair<Prayer, java.time.LocalDate>>, keepFrom: java.time.LocalDate) {
+        val kept = (getAutoSilenceDismissals(context) + occurrences).filter { !it.second.isBefore(keepFrom) }
+        prefs(context).edit()
+            .putString(KEY_AUTO_SILENCE_DISMISSALS, kept.joinToString(",") { "${it.first.name}@${it.second.toEpochDay()}" })
+            .apply()
+    }
+
+    fun clearAutoSilenceDismissals(context: Context) {
+        prefs(context).edit().remove(KEY_AUTO_SILENCE_DISMISSALS).apply()
     }
 
     fun isManualSilenceActive(context: Context): Boolean {
@@ -358,14 +566,6 @@ object PrefsManager {
         prefs(context).edit().putBoolean(KEY_CALL_END_VIBRATION_ENABLED, enabled).apply()
     }
 
-    fun isDisabledOutsideTunisia(context: Context): Boolean {
-        return prefs(context).getBoolean(KEY_DISABLED_OUTSIDE_TUNISIA, false)
-    }
-
-    fun setDisabledOutsideTunisia(context: Context, disabled: Boolean) {
-        prefs(context).edit().putBoolean(KEY_DISABLED_OUTSIDE_TUNISIA, disabled).apply()
-    }
-
     fun isAutoLocationUpdateEnabled(context: Context): Boolean {
         return prefs(context).getBoolean(KEY_AUTO_LOCATION_UPDATE, true)
     }
@@ -425,13 +625,18 @@ object PrefsManager {
      * so it is kept after Ramadan.
      */
     fun applyRamadanIshaOverrideIfNeeded(context: Context) {
-        applyRamadanIshaOverrideIfNeeded(context, HijrahDate.now())
+        applyRamadanIshaOverrideIfNeeded(context, HijrahDate.now(), getPlace(context))
     }
 
+    /**
+     * Plan 6.10's order: (1) the restore, at every place, with nothing checked before it; (2) the bump, at a
+     * Tunisian delegation only (A10), so a place abroad neither writes it nor records the year, and a return to
+     * Tunisia later in the same Ramadan applies it then; (3) a place abroad reads the saved values ([getConfig]).
+     */
     // Synchronized: the Application (main thread) and the scheduler can run this at once, and
     // a second override must not save the first one's 90 as the user's own value.
     @Synchronized
-    internal fun applyRamadanIshaOverrideIfNeeded(context: Context, hijrahDate: HijrahDate) {
+    internal fun applyRamadanIshaOverrideIfNeeded(context: Context, hijrahDate: HijrahDate, place: PrayerPlace = getPlace(context)) {
         val settings = prefs(context)
         val isRamadan = RamadanDetector.isRamadan(hijrahDate)
         val hijriYear = hijrahDate.get(ChronoField.YEAR)
@@ -442,6 +647,7 @@ object PrefsManager {
             (hijriYear == appliedYear && !isRamadan && hijrahDate.get(ChronoField.MONTH_OF_YEAR) > HIJRI_RAMADAN)
         if (afterAppliedRamadan) restoreIshaSavedBeforeRamadan(context)
         if (!isRamadan) return
+        if (place !is PrayerPlace.Inm) return // the bump is Tunisian only (A10)
         if (appliedYear == hijriYear) return // already applied this Ramadan
 
         val afterKey = "after_${Prayer.ISHA.name}"
@@ -573,40 +779,163 @@ object PrefsManager {
         edit.apply()
     }
 
-    fun getConfig(context: Context, prayer: Prayer): PrayerSilenceConfig {
+    /**
+     * A prayer's window settings. At a place abroad, while a Tunisian Ramadan bump is in force, Isha reads
+     * the user's own values saved before it (plan 6.10): the bump is Tunisian only, and the stored keys stay
+     * untouched so a Tunisian place later in the same Ramadan still gets 90. A saved UNSET reads as the default.
+     */
+    fun getConfig(context: Context, prayer: Prayer, place: PrayerPlace = getPlace(context)): PrayerSilenceConfig {
+        val settings = prefs(context)
+        val savedBeforeRamadan = prayer == Prayer.ISHA && place is PrayerPlace.Coordinates && settings.contains(KEY_RAMADAN_SAVED_ISHA_AFTER)
+        val afterMinutes = if (savedBeforeRamadan) {
+            settings.getInt(KEY_RAMADAN_SAVED_ISHA_AFTER, UNSET).takeIf { it != UNSET } ?: defaultAfterMinutes(prayer)
+        } else getAfterMinutes(context, prayer)
+        val endOffsetMinutes = if (savedBeforeRamadan) {
+            settings.getInt(KEY_RAMADAN_SAVED_ISHA_END_OFFSET, UNSET).takeIf { it != UNSET }
+        } else getEndOffsetMinutes(context, prayer)
         return PrayerSilenceConfig(
             mode = getSilenceMode(context, prayer),
-            afterMinutes = getAfterMinutes(context, prayer),
+            afterMinutes = afterMinutes,
             fixedHour = getFixedTimeHour(context, prayer),
             fixedMinute = getFixedTimeMinute(context, prayer),
             delayMode = getDelayMode(context, prayer),
             delayMinutes = getDelayMinutes(context, prayer),
             delayFixedHour = getDelayFixedHour(context, prayer),
             delayFixedMinute = getDelayFixedMinute(context, prayer),
-            endOffsetMinutes = getEndOffsetMinutes(context, prayer)
+            endOffsetMinutes = endOffsetMinutes
         )
     }
 
-    /** Publish the whole window together so readers never observe half of an edit. */
-    fun setConfig(context: Context, prayer: Prayer, config: PrayerSilenceConfig) {
+    /**
+     * A prayer's window as the planner reads it (plan 6.9): an unedited Dhuhr or Jumu'a start or end is unset,
+     * since its default (D12, A18) depends on the place and the date, which [getConfig] does not have. An
+     * endpoint is edited once any of its keys is stored. A fixed end carries the adhan offset it was saved at (D16).
+     */
+    fun getSilenceRule(context: Context, prayer: Prayer): com.tunisianprayertimes.silence.SilenceRule {
+        val settings = prefs(context)
+        val dhuhrOrJumua = prayer == Prayer.DHUHR || prayer == Prayer.JOMOAA
+        val startKeys = listOf("delay_mode", "delay", "delay_fixed_hour", "delay_fixed_minute").map { "${it}_${prayer.name}" }
+        val endKeys = listOf("mode", "after", "fixed_hour", "fixed_minute", "end_offset").map { "${it}_${prayer.name}" }
+        val saved = settings.getInt(endSavedOffsetKey(prayer), Int.MIN_VALUE).takeIf { it != Int.MIN_VALUE }
+        return com.tunisianprayertimes.silence.SilenceRule.of(
+            getConfig(context, prayer),
+            startUnset = dhuhrOrJumua && startKeys.none(settings::contains),
+            endUnset = dhuhrOrJumua && endKeys.none(settings::contains),
+            savedEndOffsetMinutes = saved,
+        )
+    }
+
+    private fun endSavedOffsetKey(prayer: Prayer) = "end_saved_offset_${prayer.name}"
+
+    /** D16: the offset from the adhan a fixed end had when the user saved it, the end of a day where even the cap does not fit. */
+    fun setEndSavedOffsetMinutes(context: Context, prayer: Prayer, minutes: Int?) {
         val edit = prefs(context).edit()
-            .putString("mode_${prayer.name}", config.mode.name)
-            .putInt("after_${prayer.name}", config.afterMinutes)
-            .putInt("fixed_hour_${prayer.name}", config.fixedHour)
-            .putInt("fixed_minute_${prayer.name}", config.fixedMinute)
-            .putString("delay_mode_${prayer.name}", config.delayMode.name)
-            .putInt("delay_${prayer.name}", config.delayMinutes)
-            .putInt("delay_fixed_hour_${prayer.name}", config.delayFixedHour)
-            .putInt("delay_fixed_minute_${prayer.name}", config.delayFixedMinute)
-            .dropIshaSavedBeforeRamadan(prayer)
-        // Local val: cross-module properties are not smart-castable.
-        val endOffsetMinutes = config.endOffsetMinutes
-        if (endOffsetMinutes == null) {
-            edit.remove("end_offset_${prayer.name}")
-        } else {
-            edit.putInt("end_offset_${prayer.name}", endOffsetMinutes)
-        }
+        if (minutes == null) edit.remove(endSavedOffsetKey(prayer)) else edit.putInt(endSavedOffsetKey(prayer), minutes)
         edit.apply()
+    }
+
+    /**
+     * Saved adhkar reminders that no longer fit every day of the coming year at the place (6.9), by id, with the
+     * problem their card shows; written after a change of place or method, cleared for a reminder saved again.
+     */
+    fun getAdhkarPlaceFlags(context: Context): Map<String, String> {
+        val stored = prefs(context).getString(KEY_ADHKAR_PLACE_FLAGS, null) ?: return emptyMap()
+        return runCatching {
+            val json = org.json.JSONObject(stored)
+            json.keys().asSequence().associateWith { json.getString(it) }
+        }.getOrDefault(emptyMap())
+    }
+
+    fun setAdhkarPlaceFlags(context: Context, flags: Map<String, String>) {
+        val edit = prefs(context).edit()
+        if (flags.isEmpty()) edit.remove(KEY_ADHKAR_PLACE_FLAGS) else edit.putString(KEY_ADHKAR_PLACE_FLAGS, org.json.JSONObject(flags).toString())
+        edit.apply()
+    }
+
+    fun clearAdhkarPlaceFlag(context: Context, reminderId: String) {
+        val flags = getAdhkarPlaceFlags(context)
+        if (reminderId in flags) setAdhkarPlaceFlags(context, flags - reminderId)
+    }
+
+    /** What a save does with one endpoint's keys (plan 6.9). */
+    enum class EndpointSave {
+        /** Untouched: the endpoint did not move. */
+        KEEP,
+
+        WRITE,
+
+        /** Removed: a Dhuhr or Jumu'a endpoint moved back to its default follows the default again (D12, A18). */
+        CLEAR,
+    }
+
+    /**
+     * Publish the window together so readers never observe half of an edit. The editors write only the endpoint
+     * that moved (6.9); a fixed end stores beside it its adhan offset on the day shown ([savedEndOffsetMinutes], D16).
+     */
+    fun setConfig(
+        context: Context,
+        prayer: Prayer,
+        config: PrayerSilenceConfig,
+        start: EndpointSave = EndpointSave.WRITE,
+        end: EndpointSave = EndpointSave.WRITE,
+        savedEndOffsetMinutes: Int? = null,
+    ) {
+        val edit = prefs(context).edit()
+        val p = prayer.name
+        when (end) {
+            EndpointSave.KEEP -> Unit
+            EndpointSave.WRITE -> {
+                edit.putString("mode_$p", config.mode.name)
+                    .putInt("after_$p", config.afterMinutes)
+                    .putInt("fixed_hour_$p", config.fixedHour)
+                    .putInt("fixed_minute_$p", config.fixedMinute)
+                // Local val: cross-module properties are not smart-castable.
+                val endOffsetMinutes = config.endOffsetMinutes
+                if (endOffsetMinutes == null) edit.remove("end_offset_$p") else edit.putInt("end_offset_$p", endOffsetMinutes)
+                if (savedEndOffsetMinutes == null) edit.remove(endSavedOffsetKey(prayer)) else edit.putInt(endSavedOffsetKey(prayer), savedEndOffsetMinutes)
+            }
+            EndpointSave.CLEAR -> listOf("mode_$p", "after_$p", "fixed_hour_$p", "fixed_minute_$p", "end_offset_$p", endSavedOffsetKey(prayer))
+                .forEach(edit::remove)
+        }
+        when (start) {
+            EndpointSave.KEEP -> Unit
+            EndpointSave.WRITE -> edit.putString("delay_mode_$p", config.delayMode.name)
+                .putInt("delay_$p", config.delayMinutes)
+                .putInt("delay_fixed_hour_$p", config.delayFixedHour)
+                .putInt("delay_fixed_minute_$p", config.delayFixedMinute)
+            EndpointSave.CLEAR -> listOf("delay_mode_$p", "delay_$p", "delay_fixed_hour_$p", "delay_fixed_minute_$p").forEach(edit::remove)
+        }
+        if (start != EndpointSave.KEEP || end != EndpointSave.KEEP) edit.dropIshaSavedBeforeRamadan(prayer)
+        edit.apply()
+    }
+
+    /**
+     * The window the editors open on (plan 6.9): [getConfig] with the defaults of a Dhuhr or Jumu'a endpoint never
+     * edited written out (D12, A18), so the editors show what the planner arms.
+     */
+    fun getEffectiveConfig(context: Context, prayer: Prayer, place: PrayerPlace = getPlace(context)): PrayerSilenceConfig {
+        val rule = getSilenceRule(context, prayer)
+        val defaults = com.tunisianprayertimes.silence.SilenceEndpoints.withDefaults(rule, prayer, inm = place is PrayerPlace.Inm)
+        var config = getConfig(context, prayer, place)
+        if (rule.start == com.tunisianprayertimes.silence.SilenceStart.Unset) {
+            config = when (val start = defaults.start) {
+                is com.tunisianprayertimes.silence.SilenceStart.Clock ->
+                    config.copy(delayMode = DelayMode.FIXED_TIME, delayFixedHour = start.time.hour, delayFixedMinute = start.time.minute)
+                is com.tunisianprayertimes.silence.SilenceStart.FromAdhan -> config.copy(delayMode = DelayMode.MINUTES, delayMinutes = start.minutes)
+                com.tunisianprayertimes.silence.SilenceStart.Unset -> config
+            }
+        }
+        if (rule.end == com.tunisianprayertimes.silence.SilenceEnd.Unset) {
+            config = when (val end = defaults.end) {
+                is com.tunisianprayertimes.silence.SilenceEnd.Clock ->
+                    config.copy(mode = SilenceMode.FIXED_TIME, fixedHour = end.time.hour, fixedMinute = end.time.minute, endOffsetMinutes = null)
+                is com.tunisianprayertimes.silence.SilenceEnd.FromAdhan -> config.copy(mode = SilenceMode.DURATION, endOffsetMinutes = end.minutes)
+                is com.tunisianprayertimes.silence.SilenceEnd.FromStart ->
+                    config.copy(mode = SilenceMode.DURATION, endOffsetMinutes = null, afterMinutes = end.minutes)
+                com.tunisianprayertimes.silence.SilenceEnd.Unset -> config
+            }
+        }
+        return config
     }
 
     fun observeConfigChanges(context: Context, prayer: Prayer, onChanged: () -> Unit): () -> Unit {

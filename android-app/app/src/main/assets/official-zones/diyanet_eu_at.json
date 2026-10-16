@@ -1,0 +1,1539 @@
+{
+ "schema": 1,
+ "authority": "diyanet_eu_at",
+ "methodId": "diyanet_eu",
+ "country": "AT",
+ "mapping": "NEAREST",
+ "source": "IGGÖ (Islamische Glaubensgemeinschaft in Österreich): its nine state capitals' 2026 tables, Diyanet's method; Diyanet's own Austrian entries (the second tier) not yet included",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+    "from": "2026-04-01",
+    "to": "2026-12-31",
+    "days": 2475,
+    "zones": 9,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+    "from": "2026-04-01",
+    "to": "2026-12-31",
+    "days": 2475,
+    "zones": 9,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9744,
+   "SUNRISE": 0.9794,
+   "DHUHR": 0.9818,
+   "ASR": 0.9794,
+   "MAGHRIB": 0.9802,
+   "ISHA": 0.9744
+  },
+  "within1": {
+   "FAJR": 0.9985,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    0,
+    0,
+    270,
+    0,
+    0,
+    0,
+    0,
+    270,
+    279,
+    270,
+    279
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    0,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
+   ],
+   "DHUHR": [
+    0,
+    0,
+    0,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
+   ],
+   "ASR": [
+    0,
+    0,
+    0,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
+   ],
+   "MAGHRIB": [
+    0,
+    0,
+    0,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
+   ],
+   "ISHA": [
+    0,
+    0,
+    0,
+    270,
+    0,
+    0,
+    0,
+    0,
+    270,
+    279,
+    270,
+    279
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "bregenz",
+   "point": {
+    "latE5": 4750310,
+    "lngE5": 974710
+   },
+   "morningPoint": {
+    "latE5": 4751310,
+    "lngE5": 972778
+   },
+   "eveningPoint": {
+    "latE5": 4751310,
+    "lngE5": 972778
+   },
+   "nameAr": "بريغنتس",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4750310,
+      "lngE5": 974710
+     },
+     "catalogueIds": [
+      2781503
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9737,
+     "SUNRISE": 0.9855,
+     "DHUHR": 0.9673,
+     "ASR": 0.9709,
+     "MAGHRIB": 0.9745,
+     "ISHA": 0.9474
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "eisenstadt",
+   "point": {
+    "latE5": 4784570,
+    "lngE5": 1652330
+   },
+   "morningPoint": {
+    "latE5": 4790770,
+    "lngE5": 1669417
+   },
+   "eveningPoint": {
+    "latE5": 4790770,
+    "lngE5": 1669417
+   },
+   "nameAr": "أيزنشتات",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4784570,
+      "lngE5": 1652330
+     },
+     "catalogueIds": [
+      2780190
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9803,
+     "SUNRISE": 0.9709,
+     "DHUHR": 0.9891,
+     "ASR": 0.9927,
+     "MAGHRIB": 0.9709,
+     "ISHA": 0.9803
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "graz",
+   "point": {
+    "latE5": 4707070,
+    "lngE5": 1543950
+   },
+   "morningPoint": {
+    "latE5": 4707820,
+    "lngE5": 1541328
+   },
+   "eveningPoint": {
+    "latE5": 4707820,
+    "lngE5": 1541328
+   },
+   "nameAr": "غراتس",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4707070,
+      "lngE5": 1543950
+     },
+     "catalogueIds": [
+      2778067
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9803,
+     "SUNRISE": 0.9782,
+     "DHUHR": 0.9818,
+     "ASR": 0.9818,
+     "MAGHRIB": 0.9818,
+     "ISHA": 0.9671
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "innsbruck",
+   "point": {
+    "latE5": 4726920,
+    "lngE5": 1140410
+   },
+   "morningPoint": {
+    "latE5": 4726970,
+    "lngE5": 1140551
+   },
+   "eveningPoint": {
+    "latE5": 4726970,
+    "lngE5": 1140551
+   },
+   "nameAr": "إنسبروك",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4726920,
+      "lngE5": 1140410
+     },
+     "catalogueIds": [
+      2768442
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9737,
+     "SUNRISE": 0.9782,
+     "DHUHR": 0.9891,
+     "ASR": 0.9782,
+     "MAGHRIB": 0.9927,
+     "ISHA": 0.9934
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "klagenfurt",
+   "point": {
+    "latE5": 4662490,
+    "lngE5": 1430500
+   },
+   "morningPoint": {
+    "latE5": 4662490,
+    "lngE5": 1429976
+   },
+   "eveningPoint": {
+    "latE5": 4662490,
+    "lngE5": 1429976
+   },
+   "nameAr": "كلاغنفورت",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4662490,
+      "lngE5": 1430500
+     },
+     "catalogueIds": [
+      2774326
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9934,
+     "SUNRISE": 0.9818,
+     "DHUHR": 0.9964,
+     "ASR": 0.9818,
+     "MAGHRIB": 0.9709,
+     "ISHA": 0.9868
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "linz",
+   "point": {
+    "latE5": 4830690,
+    "lngE5": 1428580
+   },
+   "morningPoint": {
+    "latE5": 4828340,
+    "lngE5": 1424080
+   },
+   "eveningPoint": {
+    "latE5": 4828340,
+    "lngE5": 1424080
+   },
+   "nameAr": "لينتس",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4830690,
+      "lngE5": 1428580
+     },
+     "catalogueIds": [
+      2772400
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9671,
+     "SUNRISE": 0.9855,
+     "DHUHR": 0.9709,
+     "ASR": 0.9818,
+     "MAGHRIB": 0.9709,
+     "ISHA": 0.9934
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "salzburg",
+   "point": {
+    "latE5": 4780950,
+    "lngE5": 1305500
+   },
+   "morningPoint": {
+    "latE5": 4781850,
+    "lngE5": 1304650
+   },
+   "eveningPoint": {
+    "latE5": 4781850,
+    "lngE5": 1304650
+   },
+   "nameAr": "سالزبورغ",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4780950,
+      "lngE5": 1305500
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9671,
+     "SUNRISE": 0.9709,
+     "DHUHR": 0.9709,
+     "ASR": 0.9818,
+     "MAGHRIB": 0.9891,
+     "ISHA": 0.9737
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "st-poelten",
+   "point": {
+    "latE5": 4820470,
+    "lngE5": 1562560
+   },
+   "morningPoint": {
+    "latE5": 4821270,
+    "lngE5": 1560450
+   },
+   "eveningPoint": {
+    "latE5": 4821270,
+    "lngE5": 1560450
+   },
+   "nameAr": "سانت بولتن",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4820470,
+      "lngE5": 1562560
+     },
+     "catalogueIds": [
+      2766429
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9539,
+     "SUNRISE": 0.9709,
+     "DHUHR": 0.9891,
+     "ASR": 0.9745,
+     "MAGHRIB": 0.9855,
+     "ISHA": 0.9671
+    },
+    "within1": {
+     "FAJR": 0.9934,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "wien",
+   "point": {
+    "latE5": 4820820,
+    "lngE5": 1637380
+   },
+   "morningPoint": {
+    "latE5": 4821170,
+    "lngE5": 1634536
+   },
+   "eveningPoint": {
+    "latE5": 4821170,
+    "lngE5": 1634536
+   },
+   "nameAr": "فيينا",
+   "reachKm": 25.0,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4820820,
+      "lngE5": 1637380
+     },
+     "catalogueIds": [
+      2761369
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "IGGÖ's 2026 city tables (derislam.at), April-December, held out by month; Fajr and Isha outside May-August",
+      "from": "2026-04-01",
+      "to": "2026-12-31",
+      "days": 275,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9803,
+     "SUNRISE": 0.9927,
+     "DHUHR": 0.9818,
+     "ASR": 0.9709,
+     "MAGHRIB": 0.9855,
+     "ISHA": 0.9605
+    },
+    "within1": {
+     "FAJR": 0.9934,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  }
+ ]
+}

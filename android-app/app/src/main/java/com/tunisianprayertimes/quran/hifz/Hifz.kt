@@ -234,9 +234,12 @@ fun List<HifzPoint>.nextRepeat(today: Long, after: Long, slotAt: (day: Long, tim
     return best
 }
 
-/** Where a plan [repeat] chosen now starts: its first reminder later than [after], today or in the next two days. */
+/**
+ * Where a plan [repeat] chosen now starts: its first reminder later than [after], from yesterday, whose Isha
+ * may come after midnight (prayer day today − 1, plan 6.9), to the next two days.
+ */
 fun firstRepeat(repeat: HifzRepeat, today: Long, after: Long, slotAt: (day: Long, time: HifzWhen) -> Long?): HifzSlot? {
-    for (day in today..today + 2) {
+    for (day in today - 1..today + 2) {
         repeat.times.mapNotNull { time -> slotAt(day, time)?.takeIf { it > after }?.let { HifzSlot(day, time, it) } }
             .minByOrNull { it.at }
             ?.let { return it }

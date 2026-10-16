@@ -2,7 +2,8 @@
 <resources>
     <!-- Prayer tab settings: entry to the prayer-time computation explainer -->
     <string name="prayer_method_entry_title">كيف تُحسب مواقيت الصلاة؟</string>
-    <string name="prayer_method_entry_subtitle">طريقة المعهد الوطني للرصد الجوي خطوة بخطوة، بمثال يوم واضح</string>
+    <string name="prayer_method_entry_example_title">مثال: كيف يحسب المعهد الوطني للرصد الجوي مواقيت تونس</string>
+    <string name="prayer_method_entry_subtitle">طريقة الحساب المستعملة خطوة بخطوة</string>
 
     <!-- Explainer dialog -->
     <string name="prayer_method_example_note">نشرح الحساب بمثال واضح: مدينة تونس في أول الصيف (%1$s)، حيث يسهل تصوّر موضع الشمس. وفي آخر الشرح نعرض بالخطوات نفسها نتيجة اليوم الذي اخترته (%2$s) في %3$s.</string>

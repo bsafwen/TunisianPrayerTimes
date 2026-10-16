@@ -1,0 +1,1048 @@
+{
+ "schema": 1,
+ "authority": "re_cir",
+ "methodId": "re_cir",
+ "country": "RE",
+ "mapping": "NAMED_REGIONS",
+ "source": "Centre Islamique de la Réunion: Ramadan 1444-1446 and Chawwal 1445 tables (2023-2025) and Baytoul Hayaate's Ramadan 1447 copy (2026), one perpetual table; four regions and the Le Tampon iftar column",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "CIR tables by month and day (Ramadan 1444-1446, Chawwal 1445, Baytoul Hayaate 1447)",
+    "from": "2023-03-23",
+    "to": "2026-03-21",
+    "days": 153,
+    "zones": 5,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "CIR rows at their own dates, month-split, five zones",
+    "from": "2023-03-23",
+    "to": "2026-03-21",
+    "days": 153,
+    "zones": 5,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9262,
+   "SUNRISE": 0.0,
+   "DHUHR": 0.0,
+   "ASR": 0.0,
+   "MAGHRIB": 0.7105,
+   "ISHA": 0.0
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 0.0,
+   "DHUHR": 0.0,
+   "ASR": 0.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 0.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    50,
+    360,
+    150,
+    50,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "DHUHR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ASR": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    50,
+    405,
+    255,
+    50,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ISHA": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "nord",
+   "point": {
+    "latE5": -2088200,
+    "lngE5": 5545000
+   },
+   "offsets": {
+    "MAGHRIB": 0.07
+   },
+   "nameAr": "شمال الجزيرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": -2088200,
+      "lngE5": 5545000
+     },
+     "catalogueIds": [
+      935264
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2089700,
+      "lngE5": 5555100
+     },
+     "catalogueIds": [
+      935255
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2090617,
+      "lngE5": 5560788
+     },
+     "catalogueIds": [
+      935248
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2088877,
+      "lngE5": 5542267
+     },
+     "catalogueIds": [
+      935708
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "CIR tables by month and day (Ramadan 1444-1446, Chawwal 1445, Baytoul Hayaate 1447)",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 5,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "CIR rows of the fajr_n and iftar_nse columns at their own dates, month-split",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9508,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 0.7105,
+     "ISHA": 0.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      72,
+      30,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      81,
+      51,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "est",
+   "point": {
+    "latE5": -2103800,
+    "lngE5": 5571500
+   },
+   "eveningPoint": {
+    "latE5": -2088200,
+    "lngE5": 5545000
+   },
+   "offsets": {
+    "FAJR": -0.23,
+    "MAGHRIB": 0.07
+   },
+   "nameAr": "شرق الجزيرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": -2103800,
+      "lngE5": 5571500
+     },
+     "catalogueIds": [
+      935267
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2096300,
+      "lngE5": 5565000
+     },
+     "catalogueIds": [
+      935268
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2099667,
+      "lngE5": 5567823
+     },
+     "catalogueIds": [
+      936048
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2108522,
+      "lngE5": 5574944
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2093338,
+      "lngE5": 5564764
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "CIR tables by month and day (Ramadan 1444-1446, Chawwal 1445, Baytoul Hayaate 1447)",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 5,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "CIR rows of the fajr_e and iftar_nse columns at their own dates, month-split",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.918,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 0.7105,
+     "ISHA": 0.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      72,
+      30,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      81,
+      51,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "sud",
+   "point": {
+    "latE5": -2133900,
+    "lngE5": 5547800
+   },
+   "eveningPoint": {
+    "latE5": -2088200,
+    "lngE5": 5545000
+   },
+   "offsets": {
+    "FAJR": 0.66,
+    "MAGHRIB": 0.07
+   },
+   "nameAr": "جنوب الجزيرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": -2117100,
+      "lngE5": 5528800
+     },
+     "catalogueIds": [
+      935225
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2128600,
+      "lngE5": 5541100
+     },
+     "catalogueIds": [
+      935223
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2133900,
+      "lngE5": 5547800
+     },
+     "catalogueIds": [
+      935214
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2137800,
+      "lngE5": 5561700
+     },
+     "catalogueIds": [
+      935227
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "CIR tables by month and day (Ramadan 1444-1446, Chawwal 1445, Baytoul Hayaate 1447)",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 5,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "CIR rows of the fajr_s and iftar_nse columns at their own dates, month-split",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9344,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 0.7105,
+     "ISHA": 0.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      72,
+      30,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      81,
+      51,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ouest",
+   "point": {
+    "latE5": -2101000,
+    "lngE5": 5527100
+   },
+   "morningPoint": {
+    "latE5": -2092900,
+    "lngE5": 5533500
+   },
+   "eveningPoint": {
+    "latE5": -2088200,
+    "lngE5": 5545000
+   },
+   "offsets": {
+    "FAJR": 1.05,
+    "MAGHRIB": 1.07
+   },
+   "nameAr": "غرب الجزيرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": -2092900,
+      "lngE5": 5533500
+     },
+     "catalogueIds": [
+      935691
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2093800,
+      "lngE5": 5529400
+     },
+     "catalogueIds": [
+      935616
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2101000,
+      "lngE5": 5527100
+     },
+     "catalogueIds": [
+      935221
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2105203,
+      "lngE5": 5522571
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": -2108426,
+      "lngE5": 5526892
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "CIR tables by month and day (Ramadan 1444-1446, Chawwal 1445, Baytoul Hayaate 1447)",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 5,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "CIR rows of the fajr_o and iftar_o columns at their own dates, month-split",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8934,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 0.7105,
+     "ISHA": 0.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      72,
+      30,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      81,
+      51,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "sud_tampon",
+   "point": {
+    "latE5": -2127700,
+    "lngE5": 5551800
+   },
+   "morningPoint": {
+    "latE5": -2133900,
+    "lngE5": 5547800
+   },
+   "eveningPoint": {
+    "latE5": -2088200,
+    "lngE5": 5545000
+   },
+   "offsets": {
+    "FAJR": 0.66,
+    "MAGHRIB": 0.07
+   },
+   "elevationShiftFloor": 2.0,
+   "nameAr": "جنوب الجزيرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": -2127700,
+      "lngE5": 5551800
+     },
+     "catalogueIds": [
+      935582
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "CIR tables by month and day (Ramadan 1444-1446, Chawwal 1445, Baytoul Hayaate 1447)",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 5,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "CIR rows of the fajr_s and iftar_tampon columns at their own dates, month-split",
+      "from": "2023-03-23",
+      "to": "2026-03-21",
+      "days": 153,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9344,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 0.7105,
+     "ISHA": 0.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.0,
+     "ASR": 0.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      10,
+      72,
+      30,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      10,
+      81,
+      51,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

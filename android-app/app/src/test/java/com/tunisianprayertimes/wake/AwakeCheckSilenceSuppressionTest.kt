@@ -8,6 +8,7 @@ import android.content.Intent
 import android.media.AudioManager
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceModeController
 import kotlinx.coroutines.runBlocking
@@ -15,6 +16,7 @@ import java.util.Calendar
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,6 +32,19 @@ class AwakeCheckSilenceSuppressionTest {
     private lateinit var context: Context
     private lateinit var notificationManager: NotificationManager
     private lateinit var shadowAlarmManager: ShadowAlarmManager
+
+    // The scheduler's clock at 00:30 in Tunis, hours from any default window (6.9): these runs must not depend on
+    // the time of day, since an open or imminent prayer window turns an alarm into a prayer conflict.
+    @Before
+    fun pinSilenceClock() {
+        val tunis = java.time.ZoneId.of("Africa/Tunis")
+        SilenceScheduler.clock = { java.time.ZonedDateTime.of(java.time.LocalDate.now(tunis), java.time.LocalTime.of(0, 30), tunis).toInstant() }
+    }
+
+    @After
+    fun releaseSilenceClock() {
+        SilenceScheduler.clock = { java.time.Instant.now() }
+    }
 
     @Before
     fun setup() {
@@ -174,26 +189,11 @@ class AwakeCheckSilenceSuppressionTest {
         )
     }
 
+    /** A trigger inside Tunis's Dhuhr window of Tuesday 2026-06-02: D12's 12:40–13:15 in Africa/Tunis (6.9). */
     private fun dhuhrSilenceWindowTriggerAtMillis(): Long {
-        val delegationId = 615
-        val year = 2026
-        val month = 6
-        val day = 2
         PrefsManager.setEnabled(context, true)
-        PrefsManager.setDelegationId(context, delegationId)
-        val prayerTimes = requireNotNull(
-            PrayerTimesRepository.loadDayPrayerTimes(context, delegationId, year, month, day),
-        )
-        return Calendar.getInstance().apply {
-            set(Calendar.YEAR, year)
-            set(Calendar.MONTH, month - 1)
-            set(Calendar.DAY_OF_MONTH, day)
-            set(Calendar.HOUR_OF_DAY, prayerTimes.dhuhr.hour)
-            set(Calendar.MINUTE, prayerTimes.dhuhr.minute)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-            add(Calendar.MINUTE, 3)
-        }.timeInMillis
+        PrefsManager.setDelegationId(context, 615)
+        return java.time.ZonedDateTime.of(2026, 6, 2, 12, 50, 0, 0, java.time.ZoneId.of("Africa/Tunis")).toInstant().toEpochMilli()
     }
 
     private fun markAutoSilenceActive() {

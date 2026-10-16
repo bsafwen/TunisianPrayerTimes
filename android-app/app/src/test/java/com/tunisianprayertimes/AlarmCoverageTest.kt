@@ -156,8 +156,9 @@ class AlarmCoverageTest {
             audioManager.ringerMode
         )
         assertFalse(PrefsManager.isAutoSilenceActive(context))
-        // todayTimes == null returns early, so no alarms at all (not even midnight reschedule)
-        assertEquals("No alarms when prayer data missing", 0, shadowAlarmManager.scheduledAlarms.size)
+        // No window without times; the 00:01 reschedule is armed even then (plan 6.9).
+        val actions = shadowAlarmManager.scheduledAlarms.map { Shadows.shadowOf(it.operation).savedIntent.action }
+        assertEquals("No prayer alarm when prayer data missing", listOf("com.tunisianprayertimes.ACTION_RESCHEDULE"), actions)
     }
 
     // ==================== Inside prayer window ====================

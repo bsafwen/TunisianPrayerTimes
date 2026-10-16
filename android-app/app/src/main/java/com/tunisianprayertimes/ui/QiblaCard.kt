@@ -113,7 +113,9 @@ import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.WorldMagneticModel
 import com.tunisianprayertimes.calculateQibla
 import com.tunisianprayertimes.headingAccuracyDegreesFromRotationVector
-import com.tunisianprayertimes.isPhoneLikelyInTunisia
+import com.tunisianprayertimes.PrayerTimesRepository
+import com.tunisianprayertimes.isPhoneLikelyAtPlace
+import com.tunisianprayertimes.place.PrayerPlace
 import com.tunisianprayertimes.isPhoneTooTilted
 import com.tunisianprayertimes.locationBearingUncertaintyDegrees
 import com.tunisianprayertimes.magneticFieldZone
@@ -226,7 +228,7 @@ private enum class QiblaStabilityStatus {
 }
 
 @Composable
-fun QiblaCard(selectedDelegationId: Int) {
+fun QiblaCard(placeRevision: Int) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val cachedLocation = remember { cachedRealtimeQiblaLocation }
@@ -266,17 +268,19 @@ fun QiblaCard(selectedDelegationId: Int) {
             null
         }
     }
-    // Abroad, a Tunisian delegation would point the qibla the wrong way.
-    val phoneLikelyInTunisia = remember { isPhoneLikelyInTunisia(context) }
-    var delegationLookupFinished by remember(selectedDelegationId, phoneLikelyInTunisia) {
-        mutableStateOf(!phoneLikelyInTunisia)
+    // The saved place stands in only where the phone probably is (6.8): elsewhere it would point the qibla the wrong way.
+    val savedPlace = remember(placeRevision) { PrayerTimesRepository.place(context) }
+    val phoneLikelyAtPlace = remember(savedPlace) { isPhoneLikelyAtPlace(context, savedPlace) }
+    val selectedDelegationId = (savedPlace as? PrayerPlace.Inm)?.delegationId
+    var delegationLookupFinished by remember(savedPlace, phoneLikelyAtPlace) {
+        mutableStateOf(!phoneLikelyAtPlace || selectedDelegationId == null)
     }
     val selectedDelegation by produceState<Delegation?>(
         initialValue = null,
         selectedDelegationId,
-        phoneLikelyInTunisia,
+        phoneLikelyAtPlace,
     ) {
-        if (!phoneLikelyInTunisia) return@produceState
+        if (!phoneLikelyAtPlace || selectedDelegationId == null) return@produceState
         value = withContext(Dispatchers.IO) {
             runCatching { GouvernoratRepository.loadAll(context) }.getOrNull()
                 ?.asSequence()
@@ -289,7 +293,19 @@ fun QiblaCard(selectedDelegationId: Int) {
         }
         delegationLookupFinished = true
     }
-    val delegationLocation = remember(selectedDelegation) {
+    val placeLocation = remember(savedPlace, phoneLikelyAtPlace) {
+        (savedPlace as? PrayerPlace.Coordinates)?.takeIf { phoneLikelyAtPlace }?.let { place ->
+            QiblaLocationState(
+                latitude = place.point.latitude,
+                longitude = place.point.longitude,
+                altitudeMeters = (place.elevationM ?: 0).toDouble(),
+                accuracyMeters = null,
+                source = QiblaLocationSource.SelectedDelegation,
+                delegationName = PrefsManager.getPlaceNameSnapshot(context),
+            )
+        }
+    }
+    val selectedDelegationLocation = remember(selectedDelegation) {
         selectedDelegation?.let { delegation ->
             QiblaLocationState(
                 latitude = delegation.lat,
@@ -301,6 +317,7 @@ fun QiblaCard(selectedDelegationId: Int) {
             )
         }
     }
+    val delegationLocation = placeLocation ?: selectedDelegationLocation
     val deviceLocation = if (locationPermissionGranted) currentLocation else null
     // The bearing moves only about 0.2° per 10 km, so the selected delegation gives usable
     // guidance straight away, and whenever the phone's own location is unavailable.

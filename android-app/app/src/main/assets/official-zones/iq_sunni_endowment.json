@@ -1,0 +1,890 @@
+{
+ "schema": 1,
+ "authority": "iq_sunni_endowment",
+ "methodId": "iq_sunni_endowment",
+ "country": "IQ",
+ "mapping": "NEAREST",
+ "source": "Iraq's Sunni Endowment (dws.gov.iq): Baghdad's perpetual table (reference year 2021), computed for the actual year (A8); the 27 other cities computed as the Endowment computes Baghdad, at Accurate Times' entries (8.8)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "dws.gov.iq API: Baghdad and suburbs, 2026 (a perpetual table, reference year 2021)",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "dws.gov.iq API: Baghdad and suburbs, 2026 (a perpetual table, reference year 2021)",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.8219,
+   "SUNRISE": 0.8658,
+   "DHUHR": 0.9425,
+   "ASR": 0.9123,
+   "MAGHRIB": 0.7918,
+   "ISHA": 0.8164
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "SUNRISE": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "DHUHR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ASR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "MAGHRIB": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ISHA": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 29,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "exactAdmin1": [
+  "05",
+  "08",
+  "11",
+  "19"
+ ],
+ "zones": [
+  {
+   "id": "al_qaim",
+   "point": {
+    "latE5": 3436972,
+    "lngE5": 4109333
+   },
+   "elevationM": 175,
+   "sunriseAltitudeDeg": -1.3069,
+   "sunsetAltitudeDeg": -1.3069,
+   "nameAr": "القائم",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3436972,
+      "lngE5": 4109333
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "amarah",
+   "point": {
+    "latE5": 3183750,
+    "lngE5": 4715167
+   },
+   "elevationM": 15,
+   "sunriseAltitudeDeg": -0.9657,
+   "sunsetAltitudeDeg": -0.9657,
+   "nameAr": "العمارة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3183750,
+      "lngE5": 4715167
+     },
+     "catalogueIds": [
+      99608
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "baghdad",
+   "point": {
+    "latE5": 3333861,
+    "lngE5": 4439389
+   },
+   "elevationM": 46,
+   "pressureHpa": 1008.0,
+   "temperatureC": 25.0,
+   "sunriseAltitudeDeg": -1.0145,
+   "sunsetAltitudeDeg": -1.0145,
+   "nameAr": "بغداد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3333861,
+      "lngE5": 4439389
+     },
+     "catalogueIds": [
+      98182
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "dws.gov.iq API: Baghdad and suburbs, 2026 (a perpetual table, reference year 2021)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "dws.gov.iq API: Baghdad and suburbs, 2026 (a perpetual table, reference year 2021)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8219,
+     "SUNRISE": 0.8658,
+     "DHUHR": 0.9425,
+     "ASR": 0.9123,
+     "MAGHRIB": 0.7918,
+     "ISHA": 0.8164
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "baiji",
+   "point": {
+    "latE5": 3492917,
+    "lngE5": 4349361
+   },
+   "elevationM": 110,
+   "sunriseAltitudeDeg": -1.2059,
+   "sunsetAltitudeDeg": -1.2059,
+   "nameAr": "بيجي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3492917,
+      "lngE5": 4349361
+     },
+     "catalogueIds": [
+      97783
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "balad",
+   "point": {
+    "latE5": 3401444,
+    "lngE5": 4414694
+   },
+   "elevationM": 55,
+   "sunriseAltitudeDeg": -1.0937,
+   "sunsetAltitudeDeg": -1.0937,
+   "nameAr": "بلد",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3401444,
+      "lngE5": 4414694
+     },
+     "catalogueIds": [
+      98112
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "baqubah",
+   "point": {
+    "latE5": 3375056,
+    "lngE5": 4463250
+   },
+   "elevationM": 45,
+   "sunriseAltitudeDeg": -1.068,
+   "sunsetAltitudeDeg": -1.068,
+   "nameAr": "بعقوبة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3375056,
+      "lngE5": 4463250
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "basra",
+   "point": {
+    "latE5": 3054278,
+    "lngE5": 4775361
+   },
+   "elevationM": 3,
+   "sunriseAltitudeDeg": -0.8891,
+   "sunsetAltitudeDeg": -0.8891,
+   "nameAr": "البصرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3054278,
+      "lngE5": 4775361
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "diwaniyah",
+   "point": {
+    "latE5": 3198667,
+    "lngE5": 4492778
+   },
+   "elevationM": 25,
+   "sunriseAltitudeDeg": -1.0063,
+   "sunsetAltitudeDeg": -1.0063,
+   "nameAr": "الديوانية",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3198667,
+      "lngE5": 4492778
+     },
+     "catalogueIds": [
+      99762
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "fallujah",
+   "point": {
+    "latE5": 3334861,
+    "lngE5": 4378556
+   },
+   "elevationM": 45,
+   "sunriseAltitudeDeg": -1.068,
+   "sunsetAltitudeDeg": -1.068,
+   "nameAr": "الفلوجة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3334861,
+      "lngE5": 4378556
+     },
+     "catalogueIds": [
+      99454
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "haditha",
+   "point": {
+    "latE5": 3413917,
+    "lngE5": 4237917
+   },
+   "elevationM": 120,
+   "sunriseAltitudeDeg": -1.223,
+   "sunsetAltitudeDeg": -1.223,
+   "nameAr": "حديثة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3413917,
+      "lngE5": 4237917
+     },
+     "catalogueIds": [
+      96309
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "hillah",
+   "point": {
+    "latE5": 3248222,
+    "lngE5": 4443306
+   },
+   "elevationM": 40,
+   "sunriseAltitudeDeg": -1.0541,
+   "sunsetAltitudeDeg": -1.0541,
+   "nameAr": "الحلة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3248222,
+      "lngE5": 4443306
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "karbala",
+   "point": {
+    "latE5": 3261444,
+    "lngE5": 4402472
+   },
+   "elevationM": 32,
+   "sunriseAltitudeDeg": -1.03,
+   "sunsetAltitudeDeg": -1.03,
+   "nameAr": "كربلاء",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3261444,
+      "lngE5": 4402472
+     },
+     "catalogueIds": [
+      94824
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "kirkuk",
+   "point": {
+    "latE5": 3546889,
+    "lngE5": 4439083
+   },
+   "elevationM": 350,
+   "sunriseAltitudeDeg": -1.5121,
+   "sunsetAltitudeDeg": -1.5121,
+   "nameAr": "كركوك",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3546889,
+      "lngE5": 4439083
+     },
+     "catalogueIds": [
+      94787
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "kufa",
+   "point": {
+    "latE5": 3203389,
+    "lngE5": 4440111
+   },
+   "elevationM": 30,
+   "sunriseAltitudeDeg": -1.0235,
+   "sunsetAltitudeDeg": -1.0235,
+   "nameAr": "الكوفة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3203389,
+      "lngE5": 4440111
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "kut",
+   "point": {
+    "latE5": 3250611,
+    "lngE5": 4582472
+   },
+   "elevationM": 25,
+   "sunriseAltitudeDeg": -1.0063,
+   "sunsetAltitudeDeg": -1.0063,
+   "nameAr": "الكوت",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3250611,
+      "lngE5": 4582472
+     },
+     "catalogueIds": [
+      99131
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "mahmudiyah",
+   "point": {
+    "latE5": 3305750,
+    "lngE5": 4436722
+   },
+   "elevationM": 40,
+   "sunriseAltitudeDeg": -1.0541,
+   "sunsetAltitudeDeg": -1.0541,
+   "nameAr": "المحمودية",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3305750,
+      "lngE5": 4436722
+     },
+     "catalogueIds": [
+      99100
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "mandali",
+   "point": {
+    "latE5": 3374778,
+    "lngE5": 4555333
+   },
+   "elevationM": 130,
+   "sunriseAltitudeDeg": -1.2394,
+   "sunsetAltitudeDeg": -1.2394,
+   "nameAr": "مندلي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3374778,
+      "lngE5": 4555333
+     },
+     "catalogueIds": [
+      93709
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "mosul",
+   "point": {
+    "latE5": 3633778,
+    "lngE5": 4313361
+   },
+   "elevationM": 222,
+   "sunriseAltitudeDeg": -1.3691,
+   "sunsetAltitudeDeg": -1.3691,
+   "nameAr": "الموصل",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3633778,
+      "lngE5": 4313361
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "muqdadiyah",
+   "point": {
+    "latE5": 3397667,
+    "lngE5": 4492500
+   },
+   "elevationM": 60,
+   "sunriseAltitudeDeg": -1.1057,
+   "sunsetAltitudeDeg": -1.1057,
+   "nameAr": "المقدادية",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3397667,
+      "lngE5": 4492500
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "najaf",
+   "point": {
+    "latE5": 3200028,
+    "lngE5": 4433111
+   },
+   "elevationM": 60,
+   "sunriseAltitudeDeg": -1.1056,
+   "sunsetAltitudeDeg": -1.1056,
+   "nameAr": "النجف",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3200028,
+      "lngE5": 4433111
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "nasiriyah",
+   "point": {
+    "latE5": 3103222,
+    "lngE5": 4626389
+   },
+   "elevationM": 10,
+   "sunriseAltitudeDeg": -0.9402,
+   "sunsetAltitudeDeg": -0.9402,
+   "nameAr": "الناصرية",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3103222,
+      "lngE5": 4626389
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "ramadi",
+   "point": {
+    "latE5": 3341611,
+    "lngE5": 4322083
+   },
+   "elevationM": 69,
+   "sunriseAltitudeDeg": -1.1261,
+   "sunsetAltitudeDeg": -1.1261,
+   "nameAr": "الرمادي",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3341611,
+      "lngE5": 4322083
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "rutba",
+   "point": {
+    "latE5": 3303806,
+    "lngE5": 4028500
+   },
+   "elevationM": 620,
+   "sunriseAltitudeDeg": -1.7494,
+   "sunsetAltitudeDeg": -1.7494,
+   "nameAr": "الرطبة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3303806,
+      "lngE5": 4028500
+     },
+     "catalogueIds": [
+      98677
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "samarra",
+   "point": {
+    "latE5": 3419361,
+    "lngE5": 4387528
+   },
+   "elevationM": 80,
+   "sunriseAltitudeDeg": -1.1494,
+   "sunsetAltitudeDeg": -1.1494,
+   "nameAr": "سامراء",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3419361,
+      "lngE5": 4387528
+     },
+     "catalogueIds": [
+      91597
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "samawah",
+   "point": {
+    "latE5": 3131889,
+    "lngE5": 4528694
+   },
+   "elevationM": 15,
+   "sunriseAltitudeDeg": -0.9657,
+   "sunsetAltitudeDeg": -0.9657,
+   "nameAr": "السماوة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3131889,
+      "lngE5": 4528694
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "sinjar",
+   "point": {
+    "latE5": 3632194,
+    "lngE5": 4186028
+   },
+   "elevationM": 530,
+   "sunriseAltitudeDeg": -1.6769,
+   "sunsetAltitudeDeg": -1.6769,
+   "nameAr": "سنجار",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3632194,
+      "lngE5": 4186028
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "tal_afar",
+   "point": {
+    "latE5": 3637778,
+    "lngE5": 4244167
+   },
+   "elevationM": 400,
+   "sunriseAltitudeDeg": -1.5612,
+   "sunsetAltitudeDeg": -1.5612,
+   "nameAr": "تلعفر",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3637778,
+      "lngE5": 4244167
+     },
+     "catalogueIds": [
+      90393
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "tikrit",
+   "point": {
+    "latE5": 3460389,
+    "lngE5": 4368472
+   },
+   "elevationM": 110,
+   "sunriseAltitudeDeg": -1.2059,
+   "sunsetAltitudeDeg": -1.2059,
+   "nameAr": "تكريت",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3460389,
+      "lngE5": 4368472
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ]
+  }
+ ]
+}

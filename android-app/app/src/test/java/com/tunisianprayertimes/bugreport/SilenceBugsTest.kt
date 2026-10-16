@@ -131,12 +131,18 @@ class SilenceBugsTest {
         PrefsManager.setConfig(context, Prayer.ISHA, PrayerSilenceConfig(afterMinutes = 30))
         val maghribEnd = isha + 20
 
-        withLocalClockAt(maghribEnd / 60, maghribEnd % 60) {
+        // Windows are instants in the place's zone (6.6): the scheduler's clock, not the phone's zone, moves.
+        val tunis = java.time.ZoneId.of("Africa/Tunis")
+        val localToday = java.time.LocalDate.of(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH))
+        SilenceScheduler.clock = { java.time.ZonedDateTime.of(localToday, java.time.LocalTime.of(maghribEnd / 60, maghribEnd % 60), tunis).toInstant() }
+        try {
             SilenceModeController.enableAutoSilence(context, Prayer.MAGHRIB)
             SilenceReceiver().onReceive(
                 context,
                 Intent("com.tunisianprayertimes.ACTION_UNSILENCE").putExtra("extra_prayer", Prayer.MAGHRIB.name),
             )
+        } finally {
+            SilenceScheduler.clock = { java.time.Instant.now() }
         }
 
         assertTrue("Isha's window is still active, so silence must continue", PrefsManager.isAutoSilenceActive(context))

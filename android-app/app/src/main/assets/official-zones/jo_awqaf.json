@@ -1,0 +1,5800 @@
+{
+ "schema": 1,
+ "authority": "jo_awqaf",
+ "methodId": "jo_awqaf",
+ "country": "JO",
+ "mapping": "NEAREST",
+ "byAdmin1": true,
+ "namedFirst": true,
+ "source": "Jordan's Ministry of Awqaf (awqaf.gov.jo, opendata.gov.jo): the calendar's 15 zones, each computed at a western and an eastern site (E6) with its own elevations, and its 18 further places as Amman's time plus a monthly offset derived on the phone (MONTHLY_DIFFERENCE), fitted to the 2023 calendar and the 2025 offset pages",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): the 15 zones",
+    "from": "2023-01-01",
+    "to": "2023-12-31",
+    "days": 365,
+    "zones": 15,
+    "monthSplit": false
+   },
+   {
+    "source": "jo_ministry_2025_pdf offset pages 8-19: the 18 further places",
+    "from": "2025-01-15",
+    "to": "2025-12-15",
+    "days": 12,
+    "zones": 18,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): the 15 zones, month-split",
+    "from": "2023-01-01",
+    "to": "2023-12-31",
+    "days": 365,
+    "zones": 15,
+    "monthSplit": true
+   },
+   {
+    "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): the zones",
+    "from": "2025-01-01",
+    "to": "2025-02-08",
+    "days": 31,
+    "zones": 15,
+    "monthSplit": false
+   },
+   {
+    "source": "awqaf.gov.jo prayer-time page, 2026-10-08 capture: Amman",
+    "from": "2026-10-08",
+    "to": "2026-10-17",
+    "days": 10,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman plus the printed offsets of the 18 further places, month-split",
+    "from": "2025-01-01",
+    "to": "2025-02-08",
+    "days": 3,
+    "zones": 18,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9962,
+   "SUNRISE": 0.9969,
+   "DHUHR": 0.9986,
+   "ASR": 0.9977,
+   "MAGHRIB": 0.9953,
+   "ISHA": 0.9957
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    524,
+    446,
+    465,
+    450,
+    465,
+    450,
+    465,
+    465,
+    450,
+    475,
+    450,
+    465
+   ],
+   "SUNRISE": [
+    524,
+    446,
+    465,
+    450,
+    465,
+    450,
+    465,
+    465,
+    450,
+    475,
+    450,
+    465
+   ],
+   "DHUHR": [
+    524,
+    446,
+    465,
+    450,
+    465,
+    450,
+    465,
+    465,
+    450,
+    475,
+    450,
+    465
+   ],
+   "ASR": [
+    524,
+    446,
+    465,
+    450,
+    465,
+    450,
+    465,
+    465,
+    450,
+    475,
+    450,
+    465
+   ],
+   "MAGHRIB": [
+    524,
+    446,
+    465,
+    450,
+    465,
+    450,
+    465,
+    465,
+    450,
+    475,
+    450,
+    465
+   ],
+   "ISHA": [
+    524,
+    446,
+    465,
+    450,
+    465,
+    450,
+    465,
+    465,
+    450,
+    475,
+    450,
+    465
+   ]
+  },
+  "heldOutRamadanDays": 435,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "1",
+   "nameAr": "عمان، البلقاء، الزرقاء، مادبا",
+   "point": {
+    "latE5": 3195520,
+    "lngE5": 3594500
+   },
+   "morningPoint": {
+    "latE5": 3202028,
+    "lngE5": 3599726
+   },
+   "eveningPoint": {
+    "latE5": 3202028,
+    "lngE5": 3582774
+   },
+   "elevationM": 933,
+   "eveningElevationM": 934,
+   "admin1": [
+    "16",
+    "02",
+    "17",
+    "23"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3195520,
+      "lngE5": 3594500
+     },
+     "catalogueIds": [
+      250441
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": 3203920,
+      "lngE5": 3572720
+     },
+     "catalogueIds": [
+      250258
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": 3207280,
+      "lngE5": 3608800
+     },
+     "catalogueIds": [
+      250090
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": 3171600,
+      "lngE5": 3579390
+     },
+     "catalogueIds": [
+      248370
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): عمان، البلقاء، الزرقاء، مادبا",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): عمان، البلقاء، الزرقاء، مادبا, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): عمان، البلقاء، الزرقاء، مادبا",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.jo prayer-time page, 2026-10-08 capture: عمان، البلقاء، الزرقاء، مادبا",
+      "from": "2026-10-08",
+      "to": "2026-10-17",
+      "days": 10,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9974,
+     "DHUHR": 0.9974,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9841,
+     "ISHA": 0.9974
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      41,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      41,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      41,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      41,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      41,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      41,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "2",
+   "nameAr": "إربد",
+   "point": {
+    "latE5": 3255560,
+    "lngE5": 3585000
+   },
+   "morningPoint": {
+    "latE5": 3253650,
+    "lngE5": 3601877
+   },
+   "eveningPoint": {
+    "latE5": 3253650,
+    "lngE5": 3580701
+   },
+   "elevationM": 513,
+   "eveningElevationM": 512,
+   "offsets": {
+    "MAGHRIB": 1.0
+   },
+   "admin1": [
+    "18"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3255560,
+      "lngE5": 3585000
+     },
+     "catalogueIds": [
+      248946
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): إربد",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): إربد, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): إربد",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9973,
+     "MAGHRIB": 0.9918,
+     "ISHA": 0.9946
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "3",
+   "nameAr": "الكرك",
+   "point": {
+    "latE5": 3118250,
+    "lngE5": 3570000
+   },
+   "morningPoint": {
+    "latE5": 3116944,
+    "lngE5": 3574871
+   },
+   "eveningPoint": {
+    "latE5": 3116944,
+    "lngE5": 3569650
+   },
+   "elevationM": 1120,
+   "eveningElevationM": 1119,
+   "admin1": [
+    "09"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3118250,
+      "lngE5": 3570000
+     },
+     "catalogueIds": [
+      250624
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الكرك",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الكرك, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): الكرك",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9973,
+     "SUNRISE": 0.9973,
+     "DHUHR": 0.9973,
+     "ASR": 0.9946,
+     "MAGHRIB": 0.9946,
+     "ISHA": 0.9946
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "4",
+   "nameAr": "الطفيلة",
+   "point": {
+    "latE5": 3083750,
+    "lngE5": 3560440
+   },
+   "morningPoint": {
+    "latE5": 3081972,
+    "lngE5": 3565333
+   },
+   "eveningPoint": {
+    "latE5": 3081972,
+    "lngE5": 3560143
+   },
+   "elevationM": 1410,
+   "eveningElevationM": 1408,
+   "admin1": [
+    "12"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3083750,
+      "lngE5": 3560440
+     },
+     "catalogueIds": [
+      250198
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الطفيلة",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الطفيلة, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): الطفيلة",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9973,
+     "SUNRISE": 0.9973,
+     "DHUHR": 1.0,
+     "ASR": 0.9946,
+     "MAGHRIB": 0.9973,
+     "ISHA": 0.9973
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "5",
+   "nameAr": "معان",
+   "point": {
+    "latE5": 3019620,
+    "lngE5": 3573410
+   },
+   "morningPoint": {
+    "latE5": 3020833,
+    "lngE5": 3573121
+   },
+   "eveningPoint": {
+    "latE5": 3020833,
+    "lngE5": 3573117
+   },
+   "elevationM": 970,
+   "eveningElevationM": 970,
+   "admin1": [
+    "19"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3019620,
+      "lngE5": 3573410
+     },
+     "catalogueIds": [
+      248382
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): معان",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): معان, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): معان",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9918,
+     "SUNRISE": 0.9973,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9918,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "6",
+   "nameAr": "العقبة",
+   "point": {
+    "latE5": 2952670,
+    "lngE5": 3500780
+   },
+   "morningPoint": {
+    "latE5": 2952444,
+    "lngE5": 3502028
+   },
+   "eveningPoint": {
+    "latE5": 2952444,
+    "lngE5": 3502018
+   },
+   "elevationM": 157,
+   "eveningElevationM": 158,
+   "admin1": [
+    "21"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2952670,
+      "lngE5": 3500780
+     },
+     "catalogueIds": [
+      250774
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): العقبة",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): العقبة, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): العقبة",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9891,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9946,
+     "MAGHRIB": 0.9973,
+     "ISHA": 0.9946
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "7",
+   "nameAr": "الأغوار الشمالية",
+   "point": {
+    "latE5": 3261100,
+    "lngE5": 3560900
+   },
+   "morningPoint": {
+    "latE5": 3261139,
+    "lngE5": 3560342
+   },
+   "eveningPoint": {
+    "latE5": 3261139,
+    "lngE5": 3560307
+   },
+   "elevationM": 14,
+   "eveningElevationM": 14,
+   "admin1": [
+    "18"
+   ],
+   "belowSeaLevel": true,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3261100,
+      "lngE5": 3560900
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الأغوار الشمالية",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الأغوار الشمالية, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): الأغوار الشمالية",
+      "from": "2025-01-01",
+      "to": "2025-01-01",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9891,
+     "SUNRISE": 0.9918,
+     "DHUHR": 1.0,
+     "ASR": 0.9973,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9863
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "8",
+   "nameAr": "جرش وعجلون",
+   "point": {
+    "latE5": 3228080,
+    "lngE5": 3589930
+   },
+   "morningPoint": {
+    "latE5": 3228633,
+    "lngE5": 3595995
+   },
+   "eveningPoint": {
+    "latE5": 3228633,
+    "lngE5": 3580130
+   },
+   "elevationM": 935,
+   "eveningElevationM": 1029,
+   "admin1": [
+    "22",
+    "20"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3228080,
+      "lngE5": 3589930
+     },
+     "catalogueIds": [
+      248875
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": 3233330,
+      "lngE5": 3575280
+     },
+     "catalogueIds": [
+      250799
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): جرش وعجلون",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): جرش وعجلون, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): جرش وعجلون",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9973,
+     "SUNRISE": 0.9918,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9864,
+     "ISHA": 0.9973
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "9",
+   "nameAr": "المفرق",
+   "point": {
+    "latE5": 3234290,
+    "lngE5": 3620800
+   },
+   "morningPoint": {
+    "latE5": 3235000,
+    "lngE5": 3641037
+   },
+   "eveningPoint": {
+    "latE5": 3235000,
+    "lngE5": 3619850
+   },
+   "elevationM": 579,
+   "eveningElevationM": 579,
+   "offsets": {
+    "MAGHRIB": 1.0
+   },
+   "admin1": [
+    "15"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3234290,
+      "lngE5": 3620800
+     },
+     "catalogueIds": [
+      250582
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): المفرق",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): المفرق, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): المفرق",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9918,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9946,
+     "ASR": 0.9973,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9973
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      33,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "10",
+   "nameAr": "أم القطين",
+   "point": {
+    "latE5": 3232000,
+    "lngE5": 3663000
+   },
+   "morningPoint": {
+    "latE5": 3225000,
+    "lngE5": 3681268
+   },
+   "eveningPoint": {
+    "latE5": 3225000,
+    "lngE5": 3654848
+   },
+   "elevationM": 667,
+   "eveningElevationM": 667,
+   "offsets": {
+    "MAGHRIB": 1.0
+   },
+   "admin1": [
+    "15"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3232000,
+      "lngE5": 3663000
+     },
+     "catalogueIds": [
+      246345
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): أم القطين",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): أم القطين, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): أم القطين",
+      "from": "2025-01-01",
+      "to": "2025-01-01",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9945,
+     "ASR": 0.9945,
+     "MAGHRIB": 0.9973,
+     "ISHA": 0.9973
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "11",
+   "nameAr": "ذيبان",
+   "point": {
+    "latE5": 3149900,
+    "lngE5": 3578200
+   },
+   "morningPoint": {
+    "latE5": 3150000,
+    "lngE5": 3593927
+   },
+   "eveningPoint": {
+    "latE5": 3150000,
+    "lngE5": 3578202
+   },
+   "elevationM": 772,
+   "eveningElevationM": 772,
+   "admin1": [
+    "23"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3149900,
+      "lngE5": 3578200
+     },
+     "catalogueIds": [
+      249664
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): ذيبان",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): ذيبان, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): ذيبان",
+      "from": "2025-01-01",
+      "to": "2025-01-01",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9945,
+     "DHUHR": 0.9973,
+     "ASR": 0.9973,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "12",
+   "nameAr": "الأزرق",
+   "point": {
+    "latE5": 3188210,
+    "lngE5": 3683020
+   },
+   "morningPoint": {
+    "latE5": 3183694,
+    "lngE5": 3681406
+   },
+   "eveningPoint": {
+    "latE5": 3183694,
+    "lngE5": 3681365
+   },
+   "elevationM": 417,
+   "eveningElevationM": 418,
+   "admin1": [
+    "17"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3188210,
+      "lngE5": 3683020
+     },
+     "catalogueIds": [
+      250095
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الأزرق",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الأزرق, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): الأزرق",
+      "from": "2025-01-01",
+      "to": "2025-01-01",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9973,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "13",
+   "nameAr": "الأغوار الوسطى",
+   "point": {
+    "latE5": 3190200,
+    "lngE5": 3562000
+   },
+   "morningPoint": {
+    "latE5": 3188917,
+    "lngE5": 3561395
+   },
+   "eveningPoint": {
+    "latE5": 3188917,
+    "lngE5": 3561386
+   },
+   "elevationM": 14,
+   "eveningElevationM": 14,
+   "admin1": [
+    "02"
+   ],
+   "belowSeaLevel": true,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3190200,
+      "lngE5": 3562000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الأغوار الوسطى",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الأغوار الوسطى, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): الأغوار الوسطى",
+      "from": "2025-01-01",
+      "to": "2025-01-01",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9973,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9973
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "14",
+   "nameAr": "الشوبك والبتراء",
+   "point": {
+    "latE5": 3051900,
+    "lngE5": 3553600
+   },
+   "morningPoint": {
+    "latE5": 3039400,
+    "lngE5": 3549186
+   },
+   "eveningPoint": {
+    "latE5": 3039400,
+    "lngE5": 3549146
+   },
+   "elevationM": 1543,
+   "eveningElevationM": 1546,
+   "admin1": [
+    "19"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3051900,
+      "lngE5": 3553600
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": 3032100,
+      "lngE5": 3547890
+     },
+     "catalogueIds": [
+      246008
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الشوبك والبتراء",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الشوبك والبتراء, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): الشوبك والبتراء",
+      "from": "2025-01-01",
+      "to": "2025-01-01",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9973,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9973,
+     "ASR": 0.9973,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "15",
+   "nameAr": "الضليل والهاشمية",
+   "point": {
+    "latE5": 3212080,
+    "lngE5": 3628010
+   },
+   "morningPoint": {
+    "latE5": 3213000,
+    "lngE5": 3624388
+   },
+   "eveningPoint": {
+    "latE5": 3213000,
+    "lngE5": 3613715
+   },
+   "elevationM": 534,
+   "eveningElevationM": 536,
+   "admin1": [
+    "17"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3212080,
+      "lngE5": 3628010
+     },
+     "catalogueIds": [
+      10861986
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": 3212200,
+      "lngE5": 3611200
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الضليل والهاشمية",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): الضليل والهاشمية, refitted on odd months and scored on even months, and the reverse",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): الضليل والهاشمية",
+      "from": "2025-01-01",
+      "to": "2025-01-01",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9973,
+     "SUNRISE": 0.9973,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9973,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      32,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "16",
+   "nameAr": "ارحاب",
+   "point": {
+    "latE5": 3231700,
+    "lngE5": 3608300
+   },
+   "morningPoint": {
+    "latE5": 3235700,
+    "lngE5": 3607351
+   },
+   "eveningPoint": {
+    "latE5": 3235700,
+    "lngE5": 3596973
+   },
+   "elevationM": 775,
+   "eveningElevationM": 781,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3231700,
+      "lngE5": 3608300
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: ارحاب",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus ارحاب's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "15"
+   ]
+  },
+  {
+   "id": "17",
+   "nameAr": "العمري",
+   "point": {
+    "latE5": 3153000,
+    "lngE5": 3707000
+   },
+   "morningPoint": {
+    "latE5": 3152333,
+    "lngE5": 3707006
+   },
+   "eveningPoint": {
+    "latE5": 3152333,
+    "lngE5": 3707001
+   },
+   "elevationM": 448,
+   "eveningElevationM": 445,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3153000,
+      "lngE5": 3707000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: العمري",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus العمري's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "17"
+   ]
+  },
+  {
+   "id": "18",
+   "nameAr": "الصفاوي",
+   "point": {
+    "latE5": 3219800,
+    "lngE5": 3713000
+   },
+   "morningPoint": {
+    "latE5": 3219500,
+    "lngE5": 3712670
+   },
+   "eveningPoint": {
+    "latE5": 3219500,
+    "lngE5": 3712147
+   },
+   "elevationM": 580,
+   "eveningElevationM": 584,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3219800,
+      "lngE5": 3713000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: الصفاوي",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus الصفاوي's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "15"
+   ]
+  },
+  {
+   "id": "19",
+   "nameAr": "الرويشد",
+   "point": {
+    "latE5": 3250410,
+    "lngE5": 3820110
+   },
+   "morningPoint": {
+    "latE5": 3250833,
+    "lngE5": 3820000
+   },
+   "eveningPoint": {
+    "latE5": 3250833,
+    "lngE5": 3820000
+   },
+   "elevationM": 576,
+   "eveningElevationM": 570,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3250410,
+      "lngE5": 3820110
+     },
+     "catalogueIds": [
+      11352362
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: الرويشد",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus الرويشد's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "15"
+   ]
+  },
+  {
+   "id": "20",
+   "nameAr": "حدود الكرامة",
+   "point": {
+    "latE5": 3274000,
+    "lngE5": 3897000
+   },
+   "morningPoint": {
+    "latE5": 3273500,
+    "lngE5": 3897149
+   },
+   "eveningPoint": {
+    "latE5": 3273500,
+    "lngE5": 3897000
+   },
+   "elevationM": 665,
+   "eveningElevationM": 656,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3274000,
+      "lngE5": 3897000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: حدود الكرامة",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus حدود الكرامة's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.3333,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "admin1": [
+    "15"
+   ]
+  },
+  {
+   "id": "21",
+   "nameAr": "القطرانة",
+   "point": {
+    "latE5": 3124700,
+    "lngE5": 3604600
+   },
+   "morningPoint": {
+    "latE5": 3124000,
+    "lngE5": 3605559
+   },
+   "eveningPoint": {
+    "latE5": 3124000,
+    "lngE5": 3604833
+   },
+   "elevationM": 642,
+   "eveningElevationM": 658,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3124700,
+      "lngE5": 3604600
+     },
+     "catalogueIds": [
+      250480
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: القطرانة",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus القطرانة's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "09"
+   ]
+  },
+  {
+   "id": "22",
+   "nameAr": "الحسا",
+   "point": {
+    "latE5": 3082000,
+    "lngE5": 3596000
+   },
+   "morningPoint": {
+    "latE5": 3070944,
+    "lngE5": 3586816
+   },
+   "eveningPoint": {
+    "latE5": 3070944,
+    "lngE5": 3586816
+   },
+   "elevationM": 816,
+   "eveningElevationM": 817,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3082000,
+      "lngE5": 3596000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: الحسا",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus الحسا's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.3333,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "admin1": [
+    "12"
+   ]
+  },
+  {
+   "id": "23",
+   "nameAr": "الحسينية الجنوبية",
+   "point": {
+    "latE5": 3060000,
+    "lngE5": 3578000
+   },
+   "morningPoint": {
+    "latE5": 3060000,
+    "lngE5": 3578333
+   },
+   "eveningPoint": {
+    "latE5": 3060000,
+    "lngE5": 3578333
+   },
+   "elevationM": 902,
+   "eveningElevationM": 910,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3060000,
+      "lngE5": 3578000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: الحسينية الجنوبية",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus الحسينية الجنوبية's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "19"
+   ]
+  },
+  {
+   "id": "24",
+   "nameAr": "غور الصافي",
+   "point": {
+    "latE5": 3103610,
+    "lngE5": 3546540
+   },
+   "morningPoint": {
+    "latE5": 3102722,
+    "lngE5": 3547743
+   },
+   "eveningPoint": {
+    "latE5": 3102722,
+    "lngE5": 3546765
+   },
+   "pressureHpa": 1013.0,
+   "temperatureC": 22.0,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3103610,
+      "lngE5": 3546540
+     },
+     "catalogueIds": [
+      250267
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: غور الصافي",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus غور الصافي's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.6667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "admin1": [
+    "09"
+   ],
+   "belowSeaLevel": true
+  },
+  {
+   "id": "25",
+   "nameAr": "قريقرة",
+   "point": {
+    "latE5": 3050000,
+    "lngE5": 3534000
+   },
+   "morningPoint": {
+    "latE5": 3054500,
+    "lngE5": 3532371
+   },
+   "eveningPoint": {
+    "latE5": 3054500,
+    "lngE5": 3532371
+   },
+   "elevationM": 158,
+   "eveningElevationM": 162,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3050000,
+      "lngE5": 3534000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: قريقرة",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus قريقرة's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.3333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "admin1": [
+    "21"
+   ]
+  },
+  {
+   "id": "26",
+   "nameAr": "غرندل",
+   "point": {
+    "latE5": 3008000,
+    "lngE5": 3521000
+   },
+   "morningPoint": {
+    "latE5": 3008333,
+    "lngE5": 3521702
+   },
+   "eveningPoint": {
+    "latE5": 3008333,
+    "lngE5": 3520974
+   },
+   "elevationM": 300,
+   "eveningElevationM": 298,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3008000,
+      "lngE5": 3521000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: غرندل",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus غرندل's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.3333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "admin1": [
+    "21"
+   ]
+  },
+  {
+   "id": "27",
+   "nameAr": "رحمة",
+   "point": {
+    "latE5": 2992000,
+    "lngE5": 3514000
+   },
+   "morningPoint": {
+    "latE5": 2991667,
+    "lngE5": 3514008
+   },
+   "eveningPoint": {
+    "latE5": 2991667,
+    "lngE5": 3514008
+   },
+   "elevationM": 144,
+   "eveningElevationM": 151,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2992000,
+      "lngE5": 3514000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: رحمة",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus رحمة's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "21"
+   ]
+  },
+  {
+   "id": "28",
+   "nameAr": "القويرة",
+   "point": {
+    "latE5": 2980000,
+    "lngE5": 3531000
+   },
+   "morningPoint": {
+    "latE5": 2980306,
+    "lngE5": 3530500
+   },
+   "eveningPoint": {
+    "latE5": 2980306,
+    "lngE5": 3530500
+   },
+   "elevationM": 716,
+   "eveningElevationM": 711,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2980000,
+      "lngE5": 3531000
+     },
+     "catalogueIds": [
+      250462
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: القويرة",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus القويرة's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "21"
+   ]
+  },
+  {
+   "id": "29",
+   "nameAr": "رم",
+   "point": {
+    "latE5": 2957410,
+    "lngE5": 3542130
+   },
+   "morningPoint": {
+    "latE5": 2957500,
+    "lngE5": 3555907
+   },
+   "eveningPoint": {
+    "latE5": 2957500,
+    "lngE5": 3542500
+   },
+   "elevationM": 802,
+   "eveningElevationM": 805,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2957410,
+      "lngE5": 3542130
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: رم",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus رم's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "21"
+   ]
+  },
+  {
+   "id": "30",
+   "nameAr": "المدورة",
+   "point": {
+    "latE5": 2932000,
+    "lngE5": 3600000
+   },
+   "morningPoint": {
+    "latE5": 2930361,
+    "lngE5": 3602246
+   },
+   "eveningPoint": {
+    "latE5": 2930361,
+    "lngE5": 3601765
+   },
+   "elevationM": 606,
+   "eveningElevationM": 616,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2932000,
+      "lngE5": 3600000
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: المدورة",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus المدورة's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "19"
+   ]
+  },
+  {
+   "id": "31",
+   "nameAr": "الجفر",
+   "point": {
+    "latE5": 3031700,
+    "lngE5": 3616700
+   },
+   "morningPoint": {
+    "latE5": 3031667,
+    "lngE5": 3616667
+   },
+   "eveningPoint": {
+    "latE5": 3031667,
+    "lngE5": 3616667
+   },
+   "elevationM": 734,
+   "eveningElevationM": 736,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3031700,
+      "lngE5": 3616700
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: الجفر",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus الجفر's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "19"
+   ]
+  },
+  {
+   "id": "32",
+   "nameAr": "باير",
+   "point": {
+    "latE5": 3076200,
+    "lngE5": 3667900
+   },
+   "morningPoint": {
+    "latE5": 3076194,
+    "lngE5": 3667774
+   },
+   "eveningPoint": {
+    "latE5": 3076194,
+    "lngE5": 3667774
+   },
+   "elevationM": 739,
+   "eveningElevationM": 747,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3076200,
+      "lngE5": 3667900
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: باير",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus باير's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   },
+   "admin1": [
+    "19"
+   ]
+  },
+  {
+   "id": "33",
+   "nameAr": "القدس",
+   "point": {
+    "latE5": 3178340,
+    "lngE5": 3523390
+   },
+   "morningPoint": {
+    "latE5": 3177500,
+    "lngE5": 3528949
+   },
+   "eveningPoint": {
+    "latE5": 3177500,
+    "lngE5": 3518214
+   },
+   "elevationM": 729,
+   "eveningElevationM": 714,
+   "baseZoneId": "1",
+   "offsetRule": "MONTHLY_DIFFERENCE",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3178340,
+      "lngE5": 3523390
+     },
+     "catalogueIds": [
+      7303419
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "jo_ministry_2025_pdf offset pages 8-19: القدس",
+      "from": "2025-01-15",
+      "to": "2025-12-15",
+      "days": 12,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "jo_ministry_2023_xls (opendata.gov.jo Calendar 2023): Amman's zone (the base zone)",
+      "from": "2023-01-01",
+      "to": "2023-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "jo_ministry_2025_pdf daily pages (jo2025_sample.txt): Amman's printed minute plus القدس's printed offset, offsets derived at points refitted on odd months and scored on even months, and the reverse",
+      "from": "2025-01-01",
+      "to": "2025-02-08",
+      "days": 3,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.6667,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "country": "PS",
+   "reachKm": 15.0
+  }
+ ]
+}

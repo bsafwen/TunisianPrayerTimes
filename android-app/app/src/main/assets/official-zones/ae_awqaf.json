@@ -1,0 +1,1800 @@
+{
+ "schema": 1,
+ "authority": "ae_awqaf",
+ "methodId": "ae_awqaf",
+ "country": "AE",
+ "mapping": "NEAREST",
+ "byAdmin1": true,
+ "source": "The General Authority of Islamic Affairs and Endowments (awqaf.gov.ae): its 41 locations' tables, computed with ICOP's Accurate Times; three fitted on their 2026 tables (Abu Dhabi, Al Ain, Dubai)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "ae_awqaf_tables_2026",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 468,
+    "zones": 3,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "ae_awqaf_tables_2026",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 468,
+    "zones": 3,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9594,
+   "SUNRISE": 0.9594,
+   "DHUHR": 0.9786,
+   "ASR": 0.9829,
+   "MAGHRIB": 0.9786,
+   "ISHA": 0.9509
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    33,
+    27,
+    51,
+    30,
+    33,
+    50,
+    30,
+    30,
+    30,
+    73,
+    30,
+    51
+   ],
+   "SUNRISE": [
+    33,
+    27,
+    51,
+    30,
+    33,
+    50,
+    30,
+    30,
+    30,
+    73,
+    30,
+    51
+   ],
+   "DHUHR": [
+    33,
+    27,
+    51,
+    30,
+    33,
+    50,
+    30,
+    30,
+    30,
+    73,
+    30,
+    51
+   ],
+   "ASR": [
+    33,
+    27,
+    51,
+    30,
+    33,
+    50,
+    30,
+    30,
+    30,
+    73,
+    30,
+    51
+   ],
+   "MAGHRIB": [
+    33,
+    27,
+    51,
+    30,
+    33,
+    50,
+    30,
+    30,
+    30,
+    73,
+    30,
+    51
+   ],
+   "ISHA": [
+    33,
+    27,
+    51,
+    30,
+    33,
+    50,
+    30,
+    30,
+    30,
+    73,
+    30,
+    51
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "36",
+   "point": {
+    "latE5": 2445118,
+    "lngE5": 5439696
+   },
+   "morningPoint": {
+    "latE5": 2447000,
+    "lngE5": 5464300
+   },
+   "eveningPoint": {
+    "latE5": 2447000,
+    "lngE5": 5429960
+   },
+   "elevationM": 223,
+   "eveningElevationM": 223,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 204,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 204,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9853,
+     "SUNRISE": 0.9853,
+     "DHUHR": 1.0,
+     "ASR": 0.9853,
+     "MAGHRIB": 0.9902,
+     "ISHA": 0.9853
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      11,
+      9,
+      31,
+      10,
+      11,
+      30,
+      10,
+      10,
+      10,
+      31,
+      10,
+      31
+     ],
+     "SUNRISE": [
+      11,
+      9,
+      31,
+      10,
+      11,
+      30,
+      10,
+      10,
+      10,
+      31,
+      10,
+      31
+     ],
+     "DHUHR": [
+      11,
+      9,
+      31,
+      10,
+      11,
+      30,
+      10,
+      10,
+      10,
+      31,
+      10,
+      31
+     ],
+     "ASR": [
+      11,
+      9,
+      31,
+      10,
+      11,
+      30,
+      10,
+      10,
+      10,
+      31,
+      10,
+      31
+     ],
+     "MAGHRIB": [
+      11,
+      9,
+      31,
+      10,
+      11,
+      30,
+      10,
+      10,
+      10,
+      31,
+      10,
+      31
+     ],
+     "ISHA": [
+      11,
+      9,
+      31,
+      10,
+      11,
+      30,
+      10,
+      10,
+      10,
+      31,
+      10,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "nameAr": "أبوظبي",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2435893,
+      "lngE5": 5448267
+     },
+     "catalogueIds": [
+      12042053
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2442588,
+      "lngE5": 5460500
+     },
+     "catalogueIds": [
+      8057551
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2430978,
+      "lngE5": 5462944
+     },
+     "catalogueIds": [
+      12042052
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2439268,
+      "lngE5": 5470779
+     },
+     "catalogueIds": [
+      12047416
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2434794,
+      "lngE5": 5455368
+     },
+     "catalogueIds": [
+      13118447
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2436727,
+      "lngE5": 5463721
+     },
+     "catalogueIds": [
+      8057552
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2443208,
+      "lngE5": 5461582
+     },
+     "catalogueIds": [
+      13118448
+     ]
+    }
+   ]
+  },
+  {
+   "id": "37",
+   "point": {
+    "latE5": 2419167,
+    "lngE5": 5576056
+   },
+   "morningPoint": {
+    "latE5": 2420750,
+    "lngE5": 5607030
+   },
+   "eveningPoint": {
+    "latE5": 2420750,
+    "lngE5": 5553010
+   },
+   "elevationM": 428,
+   "eveningElevationM": 286,
+   "pressureHpa": 965.0,
+   "temperatureC": 27.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-30",
+      "days": 122,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-30",
+      "days": 122,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9754,
+     "SUNRISE": 0.9754,
+     "DHUHR": 0.9918,
+     "ASR": 0.9836,
+     "MAGHRIB": 0.9918,
+     "ISHA": 0.9918
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      11,
+      10,
+      10
+     ],
+     "SUNRISE": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      11,
+      10,
+      10
+     ],
+     "DHUHR": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      11,
+      10,
+      10
+     ],
+     "ASR": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      11,
+      10,
+      10
+     ],
+     "MAGHRIB": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      11,
+      10,
+      10
+     ],
+     "ISHA": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      11,
+      10,
+      10
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "nameAr": "العين",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2419167,
+      "lngE5": 5576056
+     },
+     "catalogueIds": [
+      292913
+     ]
+    }
+   ]
+  },
+  {
+   "id": "39",
+   "point": {
+    "latE5": 2296667,
+    "lngE5": 5430000
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "حميم",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "40",
+   "point": {
+    "latE5": 2462000,
+    "lngE5": 5461861
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الشهامة",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "45",
+   "point": {
+    "latE5": 2515861,
+    "lngE5": 5287222
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "جزيرة داس",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "46",
+   "point": {
+    "latE5": 2451750,
+    "lngE5": 5230917
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "جزيرة دلما",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "47",
+   "point": {
+    "latE5": 2473361,
+    "lngE5": 5577750
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الشويب",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "50",
+   "point": {
+    "latE5": 2402083,
+    "lngE5": 5176222
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "السلع",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "51",
+   "point": {
+    "latE5": 2346889,
+    "lngE5": 5530389
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "القوع",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2375355,
+      "lngE5": 5532739
+     },
+     "catalogueIds": [
+      12470174
+     ]
+    }
+   ]
+  },
+  {
+   "id": "52",
+   "point": {
+    "latE5": 2405944,
+    "lngE5": 5577833
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "جبل حفيت",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "54",
+   "point": {
+    "latE5": 2416778,
+    "lngE5": 5511139
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الخزنة",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2416778,
+      "lngE5": 5511139
+     },
+     "catalogueIds": [
+      292818
+     ]
+    }
+   ]
+  },
+  {
+   "id": "56",
+   "point": {
+    "latE5": 2314355,
+    "lngE5": 5378810
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "ليوا",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2314355,
+      "lngE5": 5378810
+     },
+     "catalogueIds": [
+      291279
+     ]
+    }
+   ]
+  },
+  {
+   "id": "57",
+   "point": {
+    "latE5": 2365416,
+    "lngE5": 5370522
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "مدينة زايد",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2365416,
+      "lngE5": 5370522
+     },
+     "catalogueIds": [
+      291580
+     ]
+    }
+   ]
+  },
+  {
+   "id": "58",
+   "point": {
+    "latE5": 2409167,
+    "lngE5": 5349333
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "المرفأ",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "61",
+   "point": {
+    "latE5": 2411028,
+    "lngE5": 5273056
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الرويس",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2411028,
+      "lngE5": 5273056
+     },
+     "catalogueIds": [
+      292688
+     ]
+    }
+   ]
+  },
+  {
+   "id": "63",
+   "point": {
+    "latE5": 2446235,
+    "lngE5": 5533715
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "سويحان",
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2446235,
+      "lngE5": 5533715
+     },
+     "catalogueIds": [
+      413256
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2458242,
+      "lngE5": 5574670
+     },
+     "catalogueIds": [
+      12748680
+     ]
+    }
+   ]
+  },
+  {
+   "id": "65",
+   "point": {
+    "latE5": 2488639,
+    "lngE5": 5306944
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "جزيرة زركوه",
+   "admin1": [
+    "01"
+   ]
+  },
+  {
+   "id": "66",
+   "point": {
+    "latE5": 2540177,
+    "lngE5": 5547878
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "عجمان",
+   "admin1": [
+    "02"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2540177,
+      "lngE5": 5547878
+     },
+     "catalogueIds": [
+      292932
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2540977,
+      "lngE5": 5547106
+     },
+     "catalogueIds": [
+      8475913
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2540001,
+      "lngE5": 5552925
+     },
+     "catalogueIds": [
+      414901
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2540338,
+      "lngE5": 5543340
+     },
+     "catalogueIds": [
+      8475866
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2541814,
+      "lngE5": 5550791
+     },
+     "catalogueIds": [
+      8475923
+     ]
+    }
+   ]
+  },
+  {
+   "id": "67",
+   "point": {
+    "latE5": 2532990,
+    "lngE5": 5602188
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "المنامة",
+   "admin1": [
+    "02"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2532990,
+      "lngE5": 5602188
+     },
+     "catalogueIds": [
+      292799
+     ]
+    }
+   ]
+  },
+  {
+   "id": "68",
+   "point": {
+    "latE5": 2481089,
+    "lngE5": 5610657
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "مصفوت",
+   "admin1": [
+    "02"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2481089,
+      "lngE5": 5610657
+     },
+     "catalogueIds": [
+      291489
+     ]
+    }
+   ]
+  },
+  {
+   "id": "69",
+   "point": {
+    "latE5": 2507725,
+    "lngE5": 5530927
+   },
+   "morningPoint": {
+    "latE5": 2511750,
+    "lngE5": 5554770
+   },
+   "eveningPoint": {
+    "latE5": 2511750,
+    "lngE5": 5507630
+   },
+   "elevationM": 215,
+   "eveningElevationM": 240,
+   "pressureHpa": 989.0,
+   "temperatureC": 29.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-30",
+      "days": 142,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-30",
+      "days": 142,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9085,
+     "SUNRISE": 0.9085,
+     "DHUHR": 0.9366,
+     "ASR": 0.9789,
+     "MAGHRIB": 0.9507,
+     "ISHA": 0.8662
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      31,
+      10,
+      10
+     ],
+     "SUNRISE": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      31,
+      10,
+      10
+     ],
+     "DHUHR": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      31,
+      10,
+      10
+     ],
+     "ASR": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      31,
+      10,
+      10
+     ],
+     "MAGHRIB": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      31,
+      10,
+      10
+     ],
+     "ISHA": [
+      11,
+      9,
+      10,
+      10,
+      11,
+      10,
+      10,
+      10,
+      10,
+      31,
+      10,
+      10
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "nameAr": "دبي",
+   "admin1": [
+    "03"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2522499,
+      "lngE5": 5538947
+     },
+     "catalogueIds": [
+      291061
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2524882,
+      "lngE5": 5548545
+     },
+     "catalogueIds": [
+      13118436
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2520131,
+      "lngE5": 5538388
+     },
+     "catalogueIds": [
+      412567
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2524805,
+      "lngE5": 5544128
+     },
+     "catalogueIds": [
+      13118422
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2523685,
+      "lngE5": 5531419
+     },
+     "catalogueIds": [
+      6691115
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2524612,
+      "lngE5": 5529222
+     },
+     "catalogueIds": [
+      8225407
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2524004,
+      "lngE5": 5530106
+     },
+     "catalogueIds": [
+      6691091
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2524151,
+      "lngE5": 5527805
+     },
+     "catalogueIds": [
+      6691093
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2520795,
+      "lngE5": 5524969
+     },
+     "catalogueIds": [
+      291775
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2522462,
+      "lngE5": 5526888
+     },
+     "catalogueIds": [
+      13118420,
+      385024
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2517047,
+      "lngE5": 5523336
+     },
+     "catalogueIds": [
+      8469819
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2519881,
+      "lngE5": 5525565
+     },
+     "catalogueIds": [
+      6691096
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2515491,
+      "lngE5": 5521015
+     },
+     "catalogueIds": [
+      290581
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2500255,
+      "lngE5": 5510811
+     },
+     "catalogueIds": [
+      11524601
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2527139,
+      "lngE5": 5530323
+     },
+     "catalogueIds": [
+      8226485,
+      292261
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2526797,
+      "lngE5": 5531272
+     },
+     "catalogueIds": [
+      8226648
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2527148,
+      "lngE5": 5536165
+     },
+     "catalogueIds": [
+      6691083
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2527925,
+      "lngE5": 5536995
+     },
+     "catalogueIds": [
+      13118433
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2527375,
+      "lngE5": 5532265
+     },
+     "catalogueIds": [
+      13118421
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2527744,
+      "lngE5": 5533675
+     },
+     "catalogueIds": [
+      8201275
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2528413,
+      "lngE5": 5533153
+     },
+     "catalogueIds": [
+      292991
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2511607,
+      "lngE5": 5513506
+     },
+     "catalogueIds": [
+      6691113
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2522536,
+      "lngE5": 5530500
+     },
+     "catalogueIds": [
+      6691114
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2513227,
+      "lngE5": 5520567
+     },
+     "catalogueIds": [
+      13118419
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2512015,
+      "lngE5": 5518285
+     },
+     "catalogueIds": [
+      8469814
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2508525,
+      "lngE5": 5514646
+     },
+     "catalogueIds": [
+      8469788
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2519272,
+      "lngE5": 5542013
+     },
+     "catalogueIds": [
+      8469658
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2522443,
+      "lngE5": 5541412
+     },
+     "catalogueIds": [
+      8200824
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2516744,
+      "lngE5": 5540708
+     },
+     "catalogueIds": [
+      290503
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2529173,
+      "lngE5": 5533822
+     },
+     "catalogueIds": [
+      6691079
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2516383,
+      "lngE5": 5540987
+     },
+     "catalogueIds": [
+      8469668
+     ]
+    }
+   ]
+  },
+  {
+   "id": "70",
+   "point": {
+    "latE5": 2503763,
+    "lngE5": 5559135
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "أرياف دبي",
+   "admin1": [
+    "03"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2503763,
+      "lngE5": 5559135
+     },
+     "catalogueIds": [
+      13118439
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2493138,
+      "lngE5": 5547531
+     },
+     "catalogueIds": [
+      412981
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2489952,
+      "lngE5": 5562545
+     },
+     "catalogueIds": [
+      394142
+     ]
+    }
+   ]
+  },
+  {
+   "id": "71",
+   "point": {
+    "latE5": 2480073,
+    "lngE5": 5612726
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "حتا",
+   "admin1": [
+    "03"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2480073,
+      "lngE5": 5612726
+     },
+     "catalogueIds": [
+      292862
+     ]
+    }
+   ]
+  },
+  {
+   "id": "72",
+   "point": {
+    "latE5": 2561955,
+    "lngE5": 5627291
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "دبا",
+   "admin1": [
+    "04",
+    "06"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2559246,
+      "lngE5": 5626176
+     },
+     "catalogueIds": [
+      292231
+     ]
+    }
+   ]
+  },
+  {
+   "id": "73",
+   "point": {
+    "latE5": 2511641,
+    "lngE5": 5634141
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الفجيرة",
+   "admin1": [
+    "04"
+   ]
+  },
+  {
+   "id": "75",
+   "point": {
+    "latE5": 2529972,
+    "lngE5": 5616639
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "مسافي",
+   "admin1": [
+    "04"
+   ]
+  },
+  {
+   "id": "81",
+   "point": {
+    "latE5": 2487556,
+    "lngE5": 5617306
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الحويلات",
+   "admin1": [
+    "05"
+   ]
+  },
+  {
+   "id": "82",
+   "point": {
+    "latE5": 2578953,
+    "lngE5": 5594320
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "رأس الخيمة",
+   "admin1": [
+    "05"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2587658,
+      "lngE5": 5601862
+     },
+     "catalogueIds": [
+      292692
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2570910,
+      "lngE5": 5580772
+     },
+     "catalogueIds": [
+      291794
+     ]
+    }
+   ]
+  },
+  {
+   "id": "83",
+   "point": {
+    "latE5": 2602790,
+    "lngE5": 5608352
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "شعم",
+   "admin1": [
+    "05"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2602790,
+      "lngE5": 5608352
+     },
+     "catalogueIds": [
+      292674
+     ]
+    }
+   ]
+  },
+  {
+   "id": "84",
+   "point": {
+    "latE5": 2509750,
+    "lngE5": 5602694
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "شوكة",
+   "admin1": [
+    "05"
+   ]
+  },
+  {
+   "id": "85",
+   "point": {
+    "latE5": 2627083,
+    "lngE5": 5529972
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "طنب الكبرى",
+   "admin1": [
+    "05"
+   ]
+  },
+  {
+   "id": "86",
+   "point": {
+    "latE5": 2586698,
+    "lngE5": 5502363
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "جزيرة أبوموسى",
+   "admin1": [
+    "06"
+   ]
+  },
+  {
+   "id": "87",
+   "point": {
+    "latE5": 2528812,
+    "lngE5": 5588157
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الذيد",
+   "admin1": [
+    "06"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2528812,
+      "lngE5": 5588157
+     },
+     "catalogueIds": [
+      292953
+     ]
+    }
+   ]
+  },
+  {
+   "id": "88",
+   "point": {
+    "latE5": 2533132,
+    "lngE5": 5634199
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الساحل الشرقي",
+   "admin1": [
+    "04",
+    "06"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2533132,
+      "lngE5": 5634199
+     },
+     "catalogueIds": [
+      291696
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2505130,
+      "lngE5": 5635422
+     },
+     "catalogueIds": [
+      291763
+     ]
+    }
+   ]
+  },
+  {
+   "id": "89",
+   "point": {
+    "latE5": 2513518,
+    "lngE5": 5588430
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "مليحة",
+   "admin1": [
+    "06"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2513518,
+      "lngE5": 5588430
+     },
+     "catalogueIds": [
+      13117825
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2497355,
+      "lngE5": 5577781
+     },
+     "catalogueIds": [
+      13118445
+     ]
+    }
+   ]
+  },
+  {
+   "id": "91",
+   "point": {
+    "latE5": 2533420,
+    "lngE5": 5541221
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "الشارقة",
+   "admin1": [
+    "06"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2547819,
+      "lngE5": 5553377
+     },
+     "catalogueIds": [
+      292856
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2534586,
+      "lngE5": 5542165
+     },
+     "catalogueIds": [
+      13118437
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2532354,
+      "lngE5": 5538774
+     },
+     "catalogueIds": [
+      8476509
+     ]
+    },
+    {
+     "centre": {
+      "latE5": 2531532,
+      "lngE5": 5563211
+     },
+     "catalogueIds": [
+      13118438
+     ]
+    }
+   ]
+  },
+  {
+   "id": "92",
+   "point": {
+    "latE5": 2523417,
+    "lngE5": 5421833
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "جزيرة صير بو نعير",
+   "admin1": [
+    "06"
+   ]
+  },
+  {
+   "id": "94",
+   "point": {
+    "latE5": 2556473,
+    "lngE5": 5555517
+   },
+   "elevationM": 223,
+   "eveningElevationM": 240,
+   "pressureHpa": 988.0,
+   "temperatureC": 29.0,
+   "nameAr": "أم القيوين",
+   "admin1": [
+    "07"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2555073,
+      "lngE5": 5568619
+     },
+     "catalogueIds": [
+      13118446
+     ]
+    }
+   ]
+  }
+ ]
+}

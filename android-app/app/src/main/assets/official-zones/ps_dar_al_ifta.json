@@ -1,0 +1,2632 @@
+{
+ "schema": 1,
+ "authority": "ps_dar_al_ifta",
+ "methodId": "ps_dar_al_ifta",
+ "country": "PS",
+ "mapping": "LISTED_PLACES",
+ "source": "The Palestinian Dar al-Ifta's perpetual Al-Aqsa table (darifta.ps, ssalah2012.pdf, winter time) with the published differences of its 16 Palestinian places, computed for the actual year (A8)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+    "from": "2016-01-01",
+    "to": "2016-12-31",
+    "days": 366,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27): months split odd/even, each row computed for 2026 (A8)",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 366,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.4044,
+   "SUNRISE": 0.4399,
+   "DHUHR": 0.959,
+   "ASR": 0.7459,
+   "MAGHRIB": 0.5984,
+   "ISHA": 0.5082
+  },
+  "within1": {
+   "FAJR": 0.9262,
+   "SUNRISE": 0.9754,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 0.9945,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    31,
+    29,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "SUNRISE": [
+    31,
+    29,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "DHUHR": [
+    31,
+    29,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ASR": [
+    31,
+    29,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "MAGHRIB": [
+    31,
+    29,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ISHA": [
+    31,
+    29,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "quds",
+   "nameAr": "القدس",
+   "point": {
+    "latE5": 3178340,
+    "lngE5": 3523390
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3178340,
+      "lngE5": 3523390
+     },
+     "catalogueIds": [
+      7303419
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "morningPoint": {
+    "latE5": 3185800,
+    "lngE5": 3520606
+   },
+   "eveningPoint": {
+    "latE5": 3185800,
+    "lngE5": 3520606
+   }
+  },
+  {
+   "id": "ramallah",
+   "nameAr": "رام الله",
+   "point": {
+    "latE5": 3189960,
+    "lngE5": 3520420
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3189960,
+      "lngE5": 3520420
+     },
+     "catalogueIds": [
+      282239
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus رام الله's printed difference (+0): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 0.0,
+    "SUNRISE": 0.0,
+    "DHUHR": 0.0,
+    "ASR": 0.0,
+    "MAGHRIB": 0.0,
+    "ISHA": 0.0
+   }
+  },
+  {
+   "id": "bethlehem",
+   "nameAr": "بيت لحم",
+   "point": {
+    "latE5": 3170490,
+    "lngE5": 3520380
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3170490,
+      "lngE5": 3520380
+     },
+     "catalogueIds": [
+      284315
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus بيت لحم's printed difference (+0): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 0.0,
+    "SUNRISE": 0.0,
+    "DHUHR": 0.0,
+    "ASR": 0.0,
+    "MAGHRIB": 0.0,
+    "ISHA": 0.0
+   }
+  },
+  {
+   "id": "jenin",
+   "nameAr": "جنين",
+   "point": {
+    "latE5": 3245940,
+    "lngE5": 3530090
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3245940,
+      "lngE5": 3530090
+     },
+     "catalogueIds": [
+      283506
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus جنين's printed difference (+0): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 0.0,
+    "SUNRISE": 0.0,
+    "DHUHR": 0.0,
+    "ASR": 0.0,
+    "MAGHRIB": 0.0,
+    "ISHA": 0.0
+   }
+  },
+  {
+   "id": "nablus",
+   "nameAr": "نابلس",
+   "point": {
+    "latE5": 3222110,
+    "lngE5": 3525440
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3222110,
+      "lngE5": 3525440
+     },
+     "catalogueIds": [
+      282615
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus نابلس's printed difference (+0): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 0.0,
+    "SUNRISE": 0.0,
+    "DHUHR": 0.0,
+    "ASR": 0.0,
+    "MAGHRIB": 0.0,
+    "ISHA": 0.0
+   }
+  },
+  {
+   "id": "jericho",
+   "nameAr": "أريحا",
+   "point": {
+    "latE5": 3186670,
+    "lngE5": 3545000
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3186670,
+      "lngE5": 3545000
+     },
+     "catalogueIds": [
+      284899
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus أريحا's printed difference (-1): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": -1.0,
+    "SUNRISE": -1.0,
+    "DHUHR": -1.0,
+    "ASR": -1.0,
+    "MAGHRIB": -1.0,
+    "ISHA": -1.0
+   }
+  },
+  {
+   "id": "hebron",
+   "nameAr": "الخليل",
+   "point": {
+    "latE5": 3152930,
+    "lngE5": 3509380
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3152930,
+      "lngE5": 3509380
+     },
+     "catalogueIds": [
+      285066
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus الخليل's printed difference (+1): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 1.0,
+    "SUNRISE": 1.0,
+    "DHUHR": 1.0,
+    "ASR": 1.0,
+    "MAGHRIB": 1.0,
+    "ISHA": 1.0
+   }
+  },
+  {
+   "id": "idhna",
+   "nameAr": "إذنا",
+   "point": {
+    "latE5": 3155860,
+    "lngE5": 3497580
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3155860,
+      "lngE5": 3497580
+     },
+     "catalogueIds": [
+      283621
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus إذنا's printed difference (+1): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 1.0,
+    "SUNRISE": 1.0,
+    "DHUHR": 1.0,
+    "ASR": 1.0,
+    "MAGHRIB": 1.0,
+    "ISHA": 1.0
+   }
+  },
+  {
+   "id": "dura",
+   "nameAr": "دورا",
+   "point": {
+    "latE5": 3150780,
+    "lngE5": 3502930
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3150780,
+      "lngE5": 3502930
+     },
+     "catalogueIds": [
+      284011
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus دورا's printed difference (+1): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 1.0,
+    "SUNRISE": 1.0,
+    "DHUHR": 1.0,
+    "ASR": 1.0,
+    "MAGHRIB": 1.0,
+    "ISHA": 1.0
+   }
+  },
+  {
+   "id": "beit_awwa",
+   "nameAr": "بيت عوا",
+   "point": {
+    "latE5": 3150860,
+    "lngE5": 3494610
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3150860,
+      "lngE5": 3494610
+     },
+     "catalogueIds": [
+      283129
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus بيت عوا's printed difference (+1): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 1.0,
+    "SUNRISE": 1.0,
+    "DHUHR": 1.0,
+    "ASR": 1.0,
+    "MAGHRIB": 1.0,
+    "ISHA": 1.0
+   }
+  },
+  {
+   "id": "tulkarm",
+   "nameAr": "طولكرم",
+   "point": {
+    "latE5": 3231160,
+    "lngE5": 3502690
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3231160,
+      "lngE5": 3502690
+     },
+     "catalogueIds": [
+      281577
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus طولكرم's printed difference (+1): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 1.0,
+    "SUNRISE": 1.0,
+    "DHUHR": 1.0,
+    "ASR": 1.0,
+    "MAGHRIB": 1.0,
+    "ISHA": 1.0
+   }
+  },
+  {
+   "id": "qalqilya",
+   "nameAr": "قلقيلية",
+   "point": {
+    "latE5": 3218970,
+    "lngE5": 3497060
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3218970,
+      "lngE5": 3497060
+     },
+     "catalogueIds": [
+      282457
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus قلقيلية's printed difference (+1.5): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7678,
+     "SUNRISE": 0.7678,
+     "DHUHR": 0.9617,
+     "ASR": 0.8306,
+     "MAGHRIB": 0.6913,
+     "ISHA": 0.7049
+    },
+    "within1": {
+     "FAJR": 0.9317,
+     "SUNRISE": 0.9781,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 2.0,
+    "SUNRISE": 2.0,
+    "DHUHR": 2.0,
+    "ASR": 2.0,
+    "MAGHRIB": 2.0,
+    "ISHA": 2.0
+   }
+  },
+  {
+   "id": "gaza",
+   "nameAr": "غزة",
+   "point": {
+    "latE5": 3150160,
+    "lngE5": 3446670
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3150160,
+      "lngE5": 3446670
+     },
+     "catalogueIds": [
+      281133
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus غزة's printed difference (+3): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 3.0,
+    "SUNRISE": 3.0,
+    "DHUHR": 3.0,
+    "ASR": 3.0,
+    "MAGHRIB": 3.0,
+    "ISHA": 3.0
+   }
+  },
+  {
+   "id": "rafah",
+   "nameAr": "رفح",
+   "point": {
+    "latE5": 3129720,
+    "lngE5": 3424360
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3129720,
+      "lngE5": 3424360
+     },
+     "catalogueIds": [
+      281102
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus رفح's printed difference (+4): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 4.0,
+    "SUNRISE": 4.0,
+    "DHUHR": 4.0,
+    "ASR": 4.0,
+    "MAGHRIB": 4.0,
+    "ISHA": 4.0
+   }
+  },
+  {
+   "id": "khan_younis",
+   "nameAr": "خان يونس",
+   "point": {
+    "latE5": 3134020,
+    "lngE5": 3430630
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3134020,
+      "lngE5": 3430630
+     },
+     "catalogueIds": [
+      281124
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus خان يونس's printed difference (+4): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 4.0,
+    "SUNRISE": 4.0,
+    "DHUHR": 4.0,
+    "ASR": 4.0,
+    "MAGHRIB": 4.0,
+    "ISHA": 4.0
+   }
+  },
+  {
+   "id": "deir_al_balah",
+   "nameAr": "دير البلح",
+   "point": {
+    "latE5": 3141830,
+    "lngE5": 3434930
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3141830,
+      "lngE5": 3434930
+     },
+     "catalogueIds": [
+      281141
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27), read at the reference year 2016 (E5)",
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "darifta_perpetual_table (ssalah2012.pdf, pages 4-27) plus دير البلح's printed difference (+4): months split odd/even, each row computed for 2026 (A8)",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.4044,
+     "SUNRISE": 0.4399,
+     "DHUHR": 0.959,
+     "ASR": 0.7459,
+     "MAGHRIB": 0.5984,
+     "ISHA": 0.5082
+    },
+    "within1": {
+     "FAJR": 0.9262,
+     "SUNRISE": 0.9754,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9945,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      29,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   },
+   "baseZoneId": "quds",
+   "offsets": {
+    "FAJR": 4.0,
+    "SUNRISE": 4.0,
+    "DHUHR": 4.0,
+    "ASR": 4.0,
+    "MAGHRIB": 4.0,
+    "ISHA": 4.0
+   }
+  }
+ ]
+}

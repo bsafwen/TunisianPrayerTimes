@@ -20,7 +20,6 @@ import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.Prayer
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
@@ -29,7 +28,6 @@ import com.tunisianprayertimes.adhkar.DhikrTimeKind
 import com.tunisianprayertimes.quran.QuranRepository
 import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.quran.audio.QuranPlaybackService
-import com.tunisianprayertimes.ui.resolvePrayerTimelineWindow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -160,20 +158,18 @@ object HifzReminder {
             Prayer.ISHA -> DhikrTimeKind.ISHA
             else -> return null
         }
-        val zone = ZoneId.systemDefault()
-        var adhan = DhikrReminderScheduler.resolveTime(context, DhikrTime(kind), date) ?: return null
         val friday = prayer == Prayer.DHUHR && date.dayOfWeek == DayOfWeek.FRIDAY
         val silenced = if (friday) Prayer.JOMOAA else prayer
-        val jumuahHour = PrefsManager.getJomoaaTimeHour(context)
-        if (friday && jumuahHour in 0..23) {
-            adhan = date.atTime(jumuahHour, PrefsManager.getJomoaaTimeMinute(context).coerceIn(0, 59)).atZone(zone).toInstant().toEpochMilli()
-        }
-        val silenceEnd = if (PrefsManager.isEnabled(context) && PrefsManager.isPrayerSilenceEnabled(context, silenced)) {
-            val time = Instant.ofEpochMilli(adhan).atZone(zone)
-            val window = resolvePrayerTimelineWindow(PrayerTime(silenced, time.hour, time.minute), PrefsManager.getConfig(context, silenced))
-            date.atStartOfDay(zone).toInstant().toEpochMilli() + window.endMinutes * 60_000L
+        // The planner's window of that prayer day (6.9): its adhan (the Jumu'a time on a Friday) and its end
+        // as instants, so a change of the clocks that day does not move the reminder.
+        val window = if (PrefsManager.isEnabled(context)) {
+            com.tunisianprayertimes.SilenceScheduler.planner(context).windowsOf(date).firstOrNull { it.prayer == silenced }
         } else null
-        return maxOf(adhan + 10 * 60_000L, silenceEnd?.plus(2 * 60_000L) ?: (adhan + 20 * 60_000L))
+        val adhan = window?.adhan?.toEpochMilli()
+            ?: (if (friday) com.tunisianprayertimes.PrayerTimesRepository.jumuaTime(context, date)?.toEpochMilli() else null)
+            ?: DhikrReminderScheduler.resolveTime(context, DhikrTime(kind), date)
+            ?: return null
+        return maxOf(adhan + 10 * 60_000L, window?.end?.toEpochMilli()?.plus(2 * 60_000L) ?: (adhan + 20 * 60_000L))
     }
 
     /** Where a plan chosen now starts: its first reminder, today or in the next days. */

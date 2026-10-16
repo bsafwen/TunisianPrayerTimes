@@ -9,6 +9,7 @@ import android.media.AudioManager
 import android.os.Looper
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.WakeMainAlarmMode
@@ -16,6 +17,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,6 +34,19 @@ class AlarmServiceSilenceGuardTest {
     private lateinit var context: Context
     private lateinit var notificationManager: NotificationManager
     private lateinit var shadowAlarmManager: ShadowAlarmManager
+
+    // The scheduler's clock at 00:30 in Tunis, hours from any default window (6.9): these runs must not depend on
+    // the time of day, since an open or imminent prayer window turns an alarm into a prayer conflict.
+    @Before
+    fun pinSilenceClock() {
+        val tunis = java.time.ZoneId.of("Africa/Tunis")
+        SilenceScheduler.clock = { java.time.ZonedDateTime.of(java.time.LocalDate.now(tunis), java.time.LocalTime.of(0, 30), tunis).toInstant() }
+    }
+
+    @After
+    fun releaseSilenceClock() {
+        SilenceScheduler.clock = { java.time.Instant.now() }
+    }
 
     @Before
     fun setup() {

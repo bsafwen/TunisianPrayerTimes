@@ -50,7 +50,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.ui.theme.NextPrayerBg
 import kotlin.math.roundToInt
@@ -64,7 +63,7 @@ import kotlin.math.roundToInt
 internal fun PrayerSilenceSection(
     prayer: Prayer,
     prayerName: String,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     config: PrayerSilenceConfig,
     window: PrayerTimelineWindow,
     scale: PrayerTimelineScale,
@@ -94,7 +93,7 @@ internal fun PrayerSilenceSection(
         PrayerSilenceHeader(
             prayer = prayer,
             prayerName = prayerName,
-            prayerTime = prayerTime,
+            anchor = anchor,
             isNextPrayer = isNextPrayer,
             enabled = enabled,
             showSwitch = showSwitch,
@@ -112,7 +111,7 @@ internal fun PrayerSilenceSection(
         ) {
             SilenceIntervalDetails(
                 prayerName = prayerName,
-                prayerTime = prayerTime,
+                anchor = anchor,
                 window = window,
                 config = config,
                 enabled = enabled,
@@ -124,7 +123,7 @@ internal fun PrayerSilenceSection(
             PrayerSilenceRangeSlider(
                 prayer = prayer,
                 prayerName = prayerName,
-                prayerTime = prayerTime,
+                anchor = anchor,
                 config = config,
                 scale = scale,
                 window = window,
@@ -168,7 +167,7 @@ private val HeaderClockTextStyle = TextStyle(
 private fun PrayerSilenceHeader(
     prayer: Prayer,
     prayerName: String,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     isNextPrayer: Boolean,
     enabled: Boolean,
     showSwitch: Boolean,
@@ -178,7 +177,7 @@ private fun PrayerSilenceHeader(
     onEnabledChange: (Boolean) -> Unit,
     onPrayerTimeClick: (() -> Unit)?,
 ) {
-    val timeText = prayerClockText(prayerMinutesOfDay(prayerTime))
+    val timeText = prayerClockText(anchor.minutes)
     val switchDescription = stringResource(R.string.prayer_silence_switch_desc, prayerName)
     val disclosureLabel = stringResource(
         if (expanded) R.string.prayer_silence_collapse_desc else R.string.prayer_silence_expand_desc,
@@ -210,7 +209,7 @@ private fun PrayerSilenceHeader(
             HeaderNameGroup(
                 prayer = prayer,
                 prayerName = prayerName,
-                prayerTime = prayerTime,
+                anchor = anchor,
                 isNextPrayer = isNextPrayer,
                 hasAdvanced = hasAdvanced,
                 expanded = expanded,
@@ -277,7 +276,7 @@ private fun PrayerSilenceHeader(
 private fun HeaderNameGroup(
     prayer: Prayer,
     prayerName: String,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     isNextPrayer: Boolean,
     hasAdvanced: Boolean,
     expanded: Boolean,
@@ -287,7 +286,7 @@ private fun HeaderNameGroup(
     onExpandedChange: (Boolean) -> Unit,
     onPrayerTimeClick: (() -> Unit)?,
 ) {
-    val timeText = prayerClockText(prayerMinutesOfDay(prayerTime))
+    val timeText = prayerClockText(anchor.minutes)
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -341,6 +340,7 @@ private fun HeaderNameGroup(
                     onPrayerTimeClick = onPrayerTimeClick,
                     modifier = Modifier.align(Alignment.CenterVertically),
                 )
+                PrayerTimeMarkers(prayerName = prayerName, anchor = anchor)
             }
             if (isNextPrayer) {
                 Text(
@@ -488,14 +488,14 @@ private val EndpointDurationTextStyle = TextStyle(
 @Composable
 private fun SilenceIntervalDetails(
     prayerName: String,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     window: PrayerTimelineWindow,
     config: PrayerSilenceConfig,
     enabled: Boolean,
     onEditStart: () -> Unit,
     onEditEnd: () -> Unit,
 ) {
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    val prayerMinutes = anchor.minutes
     val startIdentity = stringResource(R.string.prayer_silence_start_label)
     val endIdentity = stringResource(R.string.prayer_silence_end_label)
     val startRule = endpointRuleCaption(config, window, SilenceEndpoint.START, prayerMinutes)

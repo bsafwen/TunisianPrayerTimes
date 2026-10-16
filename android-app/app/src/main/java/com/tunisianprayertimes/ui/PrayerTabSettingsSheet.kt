@@ -79,6 +79,10 @@ internal fun PrayerTabSettingsSheet(
     onAutoLocationChange: (Boolean) -> Unit,
     onShowPrayerTimeMethod: () -> Unit,
     onDismiss: () -> Unit,
+    /** The method settings of plan 6.11 ([PrayerMethodSection]). */
+    methodSection: @Composable () -> Unit = {},
+    /** INM's formula explained: the place's own method in Tunisia (D7), an example from Tunis abroad (6.11). */
+    inmMethodIsExample: Boolean = false,
 ) {
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -120,14 +124,15 @@ internal fun PrayerTabSettingsSheet(
                 testTag = TestTags.AUTO_LOCATION_SWITCH,
             )
             HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
-            PrayerTimeMethodRow(onClick = onShowPrayerTimeMethod)
+            methodSection()
+            PrayerTimeMethodRow(asExample = inmMethodIsExample, onClick = onShowPrayerTimeMethod)
         }
     }
 }
 
 /** Opens [PrayerTimeMethodDialog], which shows how the prayer times are computed. */
 @Composable
-private fun PrayerTimeMethodRow(onClick: () -> Unit) {
+private fun PrayerTimeMethodRow(asExample: Boolean, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -140,7 +145,7 @@ private fun PrayerTimeMethodRow(onClick: () -> Unit) {
     ) {
         Column(Modifier.weight(1f)) {
             Text(
-                text = stringResource(R.string.prayer_method_entry_title),
+                text = stringResource(if (asExample) R.string.prayer_method_entry_example_title else R.string.prayer_method_entry_title),
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextDark,

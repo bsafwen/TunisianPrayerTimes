@@ -13,6 +13,7 @@ import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.isInsideTunisiaBounds
 import com.tunisianprayertimes.ui.EndpointRuleMode
+import com.tunisianprayertimes.ui.PrayerTimelineAnchor
 import com.tunisianprayertimes.ui.resolvePrayerTimelineWindow
 import com.tunisianprayertimes.ui.soundMatches
 import com.tunisianprayertimes.ui.withStartRule
@@ -66,21 +67,22 @@ class LogicBugsTest {
 
         val result = DelegationLocator.resolveGpsLocation(context, lat, lng)
 
-        assertFalse("A fix inside a delegation sector must not turn silencing off (got $result)",
-            result is DelegationLocationResult.OutsideTunisia)
+        assertTrue("A fix inside a delegation sector takes a delegation (got $result)",
+            result is DelegationLocationResult.Success)
     }
 
     /** L5: switching a previous-day adhan-relative start to "Fixed" moves it 24 hours later. */
     @Test
     fun L5_fixingAPreviousDayStartKeepsItOnThePreviousDay() {
-        val prayerTime = PrayerTime(Prayer.FAJR, 6, 0)
+        val anchor = PrayerTimelineAnchor.demo(Prayer.FAJR, 6, 0)
         val config = PrayerSilenceConfig(delayMinutes = -420) // 7 hours before a 06:00 adhan
-        val before = resolvePrayerTimelineWindow(prayerTime, config)
+        val before = resolvePrayerTimelineWindow(anchor, config)
         assertEquals("Precondition: 23:00 on the previous day", -60, before.startMinutes)
 
-        val fixed = config.withStartRule(EndpointRuleMode.FIXED_TIME, before.startMinutes - 360, before.startMinutes)
+        // D16: a fixed start takes its clock's occurrence nearest the adhan, the previous evening's.
+        val fixed = config.withStartRule(anchor, EndpointRuleMode.FIXED_TIME, anchor.offsetAt(before.startMinutes), before.startMinutes)
 
-        assertEquals(-60, resolvePrayerTimelineWindow(prayerTime, fixed).startMinutes)
+        assertEquals(-60, resolvePrayerTimelineWindow(anchor, fixed).startMinutes)
     }
 
     /** L12: an extra alarm with a different progressive-volume setting is shown as "same as main sound". */

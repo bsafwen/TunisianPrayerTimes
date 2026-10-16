@@ -54,11 +54,8 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import kotlin.math.abs
-
-internal const val EndpointOffsetLimitMinutes = 10_080
 
 /**
  * The one endpoint rule editor used by the precision sheet. It is stateless:
@@ -69,7 +66,7 @@ internal const val EndpointOffsetLimitMinutes = 10_080
 internal fun EndpointRuleEditor(
     endpoint: SilenceEndpoint,
     config: PrayerSilenceConfig,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     window: PrayerTimelineWindow,
     enabled: Boolean,
     relativeValue: String,
@@ -83,11 +80,10 @@ internal fun EndpointRuleEditor(
     modifier: Modifier = Modifier,
 ) {
     val start = endpoint == SilenceEndpoint.START
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
     val mode = if (start) config.startRuleMode() else config.endRuleMode()
     val fixed = mode == EndpointRuleMode.FIXED_TIME
     val resolvedMinutes = if (start) window.startMinutes else window.endMinutes
-    val resolvedOffset = resolvedMinutes - prayerMinutes
+    val resolvedOffset = anchor.offsetAt(resolvedMinutes)
     val direction = offsetDirection(resolvedOffset)
     Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         EndpointModeChoices(
@@ -143,7 +139,9 @@ internal fun EndpointRuleEditor(
                     },
                     onIncrease = {
                         val current = relativeValue.toIntOrNull() ?: abs(resolvedOffset)
-                        onRelativeValueChange((current + 1).toString())
+                        // The endpoint domain (6.9): the stepper stops at the limit.
+                        val limit = endpointOffsetLimit(endpoint, after = direction != EndpointDirection.BEFORE)
+                        onRelativeValueChange((current + 1).coerceAtMost(limit).toString())
                     },
                     onValueChange = onRelativeValueChange,
                 )

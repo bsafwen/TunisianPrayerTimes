@@ -1,0 +1,195 @@
+country	code	name
+AE	07	Umm Al Quwain
+AE	05	Ras Al Khaimah
+AE	03	Dubai
+AE	06	Sharjah
+AE	04	Fujairah
+AE	02	Ajman
+AE	01	Abu Dhabi
+DZ	15	Tlemcen
+DZ	14	Tizi Ouzou
+DZ	56	Tissemsilt
+DZ	55	Tipaza
+DZ	54	Tindouf
+DZ	13	Tiaret
+DZ	33	Tebessa
+DZ	53	Tamanrasset
+DZ	52	Souk Ahras
+DZ	31	Skikda
+DZ	30	Sidi Bel Abbes
+DZ	12	Setif
+DZ	10	Saida
+DZ	51	Relizane
+DZ	29	Oum el Bouaghi
+DZ	50	Ouargla
+DZ	09	Oran
+DZ	49	Naama
+DZ	27	M'Sila
+DZ	07	Mostaganem
+DZ	48	Mila
+DZ	06	Medea
+DZ	26	Mascara
+DZ	25	Laghouat
+DZ	47	Khenchela
+DZ	24	Jijel
+DZ	46	Illizi
+DZ	23	Guelma
+DZ	45	Ghardaia
+DZ	44	El Tarf
+DZ	43	El Oued
+DZ	42	El Bayadh
+DZ	22	Djelfa
+DZ	04	Constantine
+DZ	41	Chlef
+DZ	40	Boumerdes
+DZ	21	Bouira
+DZ	39	Bordj Bou Arreridj
+DZ	20	Blida
+DZ	19	Biskra
+DZ	18	Bejaia
+DZ	38	Bechar
+DZ	03	Batna
+DZ	37	Annaba
+DZ	01	Algiers
+DZ	36	Ain Temouchent
+DZ	35	Ain Defla
+DZ	34	Adrar
+DZ	BB	Bordj Badji Mokhtar
+DZ	TM	Timimoun
+DZ	BA	Beni Abbes
+DZ	IG	In Guezzam
+DZ	IS	In Salah
+DZ	DJ	Djanet
+DZ	EM	El Menia
+DZ	TG	Touggourt
+DZ	MG	El Mghair
+DZ	OD	Ouled Djellal
+IQ	02	Basra
+IQ	16	Wasit
+IQ	18	Salah ad Din
+IQ	15	Nineveh
+IQ	14	Maysan
+IQ	12	Karbala
+IQ	11	Erbil
+IQ	10	Diyala
+IQ	09	Dhi Qar
+IQ	08	Duhok
+IQ	07	Baghdad
+IQ	06	Babil
+IQ	13	Kirkuk
+IQ	05	Sulaymaniyah
+IQ	17	Najaf
+IQ	04	Al-Qadisiyah
+IQ	03	Muthanna
+IQ	01	Anbar
+IQ	19	Halabja
+JO	19	Ma'an
+JO	18	Irbid
+JO	17	Zarqa
+JO	12	Tafielah
+JO	16	Amman
+JO	15	Mafraq
+JO	09	Karak
+JO	02	Balqa
+JO	20	Ajloun
+JO	22	Jerash
+JO	21	Aqaba
+JO	23	Madaba
+MR	06	Trarza
+MR	11	Tiris Zemmour
+MR	09	Tagant
+MR	12	Inchiri
+MR	02	Hodh El Gharbi
+MR	01	Hodh Ech Chargi
+MR	10	Guidimaka
+MR	04	Gorgol
+MR	08	Dakhlet Nouadhibou
+MR	05	Brakna
+MR	03	Assaba
+MR	07	Adrar
+MR	13	Nouakchott West
+MR	14	Nouakchott North
+MR	15	Nouakchott South
+RU	88	Yaroslavl Oblast
+RU	86	Voronezh Oblast
+RU	85	Vologda Oblast
+RU	84	Volgograd Oblast
+RU	81	Ulyanovsk
+RU	80	Udmurtiya Republic
+RU	77	Tver Oblast
+RU	76	Tula Oblast
+RU	73	Tatarstan Republic
+RU	72	Tambov Oblast
+RU	70	Stavropol Kray
+RU	69	Smolensk Oblast
+RU	67	Saratov Oblast
+RU	65	Samara Oblast
+RU	62	Ryazan Oblast
+RU	61	Rostov
+RU	60	Pskov Oblast
+RU	90	Perm Krai
+RU	57	Penza Oblast
+RU	56	Oryol oblast
+RU	55	Orenburg Oblast
+RU	52	Novgorod Oblast
+RU	68	North Ossetia-Alania
+RU	50	Nenets
+RU	49	Murmansk
+RU	48	Moscow
+RU	47	Moscow Oblast
+RU	46	Mordoviya Republic
+RU	45	Mariy-El Republic
+RU	43	Lipetsk Oblast
+RU	42	Leningradskaya Oblast'
+RU	66	St.-Petersburg
+RU	41	Kursk Oblast
+RU	38	Krasnodar Krai
+RU	37	Kostroma Oblast
+RU	34	Komi
+RU	33	Kirov Oblast
+RU	28	Karelia
+RU	27	Karachayevo-Cherkesiya Republic
+RU	25	Kaluga Oblast
+RU	24	Kalmykiya Republic
+RU	23	Kaliningrad Oblast
+RU	22	Kabardino-Balkariya Republic
+RU	21	Ivanovo Oblast
+RU	19	Ingushetiya Republic
+RU	51	Nizhny Novgorod Oblast
+RU	17	Dagestan
+RU	16	Chuvash Republic
+RU	12	Chechnya
+RU	10	Bryansk Oblast
+RU	09	Belgorod Oblast
+RU	08	Bashkortostan Republic
+RU	07	Astrakhan Oblast
+RU	06	Arkhangelskaya
+RU	01	Adygeya Republic
+RU	83	Vladimir Oblast
+RU	87	Yamalo-Nenets
+RU	78	Tyumen Oblast
+RU	79	Republic of Tyva
+RU	75	Tomsk Oblast
+RU	71	Sverdlovsk Oblast
+RU	54	Omsk Oblast
+RU	53	Novosibirsk Oblast
+RU	40	Kurgan Oblast
+RU	91	Krasnoyarsk Krai
+RU	32	Khanty-Mansia
+RU	31	Khakasiya Republic
+RU	29	Kuzbass
+RU	03	Altai
+RU	13	Chelyabinsk
+RU	04	Altai Krai
+RU	63	Sakha
+RU	59	Primorye
+RU	30	Khabarovsk
+RU	20	Irkutsk Oblast
+RU	89	Jewish Autonomous Oblast
+RU	05	Amur Oblast
+RU	11	Buryatiya Republic
+RU	64	Sakhalin Oblast
+RU	44	Magadan Oblast
+RU	92	Kamchatka
+RU	15	Chukotka
+RU	93	Zabaykalskiy (Transbaikal) Kray

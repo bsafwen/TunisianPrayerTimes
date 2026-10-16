@@ -36,26 +36,19 @@ class WakeSilenceEndTest {
 
     @Test
     fun wakeSilenceDoesNotBorrowEndFromCoincidentPrayerWindow() {
-        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        val startHour = if (hour < 12) 0 else 12
-        val endHour = if (hour < 12) 12 else 0 // Midnight on the following day.
+        // Now is 20 minutes into today's Fajr window (60 minutes from the adhan by default).
         Prayer.entries.forEach { PrefsManager.setPrayerSilenceEnabled(context, it, it == Prayer.FAJR) }
-        PrefsManager.setConfig(
-            context,
-            Prayer.FAJR,
-            PrayerSilenceConfig(
-                mode = SilenceMode.FIXED_TIME,
-                fixedHour = endHour,
-                fixedMinute = 0,
-                delayMode = DelayMode.FIXED_TIME,
-                delayFixedHour = startHour,
-                delayFixedMinute = 0,
-            ),
-        )
-        assertNotNull("The overlapping prayer window must be present for this regression", SilenceScheduler.currentSilenceWindowEnd(context))
+        val today = java.time.LocalDate.now(java.time.ZoneId.of("Africa/Tunis"))
+        val fajr = checkNotNull(PrayerTimesRepository.prayerDay(context, today)?.get(com.tunisianprayertimes.engine.TimeEvent.FAJR)?.at)
+        SilenceScheduler.clock = { fajr.plusSeconds(20 * 60) }
+        try {
+            assertNotNull("The overlapping prayer window must be present for this regression", SilenceScheduler.currentSilenceWindowEnd(context))
 
-        assertTrue(WakeAlarmScheduler.activateSilenceUntilAlarm(context, "wake-1"))
-        assertTrue(SilenceStatus.isAppControlledSilenceActive(context))
-        assertNull(SilenceStatus.appSilenceEndsAt(context))
+            assertTrue(WakeAlarmScheduler.activateSilenceUntilAlarm(context, "wake-1"))
+            assertTrue(SilenceStatus.isAppControlledSilenceActive(context))
+            assertNull(SilenceStatus.appSilenceEndsAt(context))
+        } finally {
+            SilenceScheduler.clock = { java.time.Instant.now() }
+        }
     }
 }

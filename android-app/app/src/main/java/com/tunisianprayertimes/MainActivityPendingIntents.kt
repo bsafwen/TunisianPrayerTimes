@@ -19,6 +19,7 @@ object MainActivityPendingIntents {
     const val WAKE_ALARM_CLOCK_URI = "tunisianprayertimes://main/alarm-clock/wake"
     const val SILENCE_ALARM_CLOCK_URI = "tunisianprayertimes://main/alarm-clock/silence"
     const val SILENCE_GUARD_URI = "tunisianprayertimes://main/silence/guard"
+    const val CHOOSE_PLACE_URI = "tunisianprayertimes://main/prayers/choose-place"
 
     /** Awake-check notification: brings the app back on the alarms tab. */
     fun awakeCheck(context: Context): PendingIntent = activity(
@@ -44,6 +45,15 @@ object MainActivityPendingIntents {
     fun silenceGuard(context: Context): PendingIntent = activity(
         context,
         mainIntent(context, SILENCE_GUARD_URI),
+    )
+
+    /** The travel notification (6.8): the prayers tab with the city picker open. */
+    fun choosePlace(context: Context): PendingIntent = activity(
+        context,
+        mainIntent(context, CHOOSE_PLACE_URI)
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_PRAYERS)
+            .putExtra(MainTabNavigation.EXTRA_PRAYERS_ACTION, MainTabNavigation.PRAYERS_ACTION_CHOOSE_PLACE),
     )
 
     private fun mainIntent(context: Context, uri: String): Intent =

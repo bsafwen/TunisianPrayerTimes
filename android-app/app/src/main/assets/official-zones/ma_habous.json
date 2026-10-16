@@ -1,0 +1,7639 @@
+{
+ "schema": 1,
+ "authority": "ma_habous",
+ "methodId": "ma_habous",
+ "country": "MA",
+ "mapping": "NEAREST",
+ "source": "Ministry of Habous and Islamic Affairs (habous.gov.ma), 191 locality tables; points and horizons fitted on 26 localities' tables of 2026-09-13 to 2026-10-12",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "ma_habous_html",
+    "from": "2026-09-13",
+    "to": "2026-10-12",
+    "days": 30,
+    "zones": 26,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "ma_habous_html",
+    "from": "2026-09-13",
+    "to": "2026-10-12",
+    "days": 30,
+    "zones": 26,
+    "monthSplit": true
+   },
+   {
+    "source": "ma_habous_wayback_2024",
+    "from": "2024-05-10",
+    "to": "2025-01-01",
+    "days": 59,
+    "zones": 2,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.97,
+   "SUNRISE": 0.9574,
+   "DHUHR": 0.9793,
+   "ASR": 0.977,
+   "MAGHRIB": 0.9539,
+   "ISHA": 0.9712
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    1,
+    0,
+    0,
+    0,
+    44,
+    14,
+    0,
+    0,
+    468,
+    312,
+    0,
+    29
+   ],
+   "SUNRISE": [
+    1,
+    0,
+    0,
+    0,
+    44,
+    14,
+    0,
+    0,
+    468,
+    312,
+    0,
+    29
+   ],
+   "DHUHR": [
+    1,
+    0,
+    0,
+    0,
+    44,
+    14,
+    0,
+    0,
+    468,
+    312,
+    0,
+    29
+   ],
+   "ASR": [
+    1,
+    0,
+    0,
+    0,
+    44,
+    14,
+    0,
+    0,
+    468,
+    312,
+    0,
+    29
+   ],
+   "MAGHRIB": [
+    1,
+    0,
+    0,
+    0,
+    44,
+    14,
+    0,
+    0,
+    468,
+    312,
+    0,
+    29
+   ],
+   "ISHA": [
+    1,
+    0,
+    0,
+    0,
+    44,
+    14,
+    0,
+    0,
+    468,
+    312,
+    0,
+    29
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "1",
+   "nameAr": "الرباط",
+   "point": {
+    "latE5": 3402460,
+    "lngE5": -684883
+   },
+   "elevationM": 46,
+   "sunriseAltitudeDeg": -1.235,
+   "sunsetAltitudeDeg": -1.219,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3401325,
+      "lngE5": -683255
+     },
+     "catalogueIds": [
+      2538475
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "ma_habous_wayback_2024",
+      "from": "2024-05-10",
+      "to": "2025-01-01",
+      "days": 59,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9888,
+     "SUNRISE": 0.9101,
+     "DHUHR": 0.9775,
+     "ASR": 0.9663,
+     "MAGHRIB": 0.9551,
+     "ISHA": 0.9663
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      1,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      29
+     ],
+     "SUNRISE": [
+      1,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      29
+     ],
+     "DHUHR": [
+      1,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      29
+     ],
+     "ASR": [
+      1,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      29
+     ],
+     "MAGHRIB": [
+      1,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      29
+     ],
+     "ISHA": [
+      1,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      29
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "2",
+   "nameAr": "الخميسات",
+   "point": {
+    "latE5": 3382404,
+    "lngE5": -606627
+   },
+   "elevationM": 451,
+   "sunriseAltitudeDeg": -1.711,
+   "sunsetAltitudeDeg": -1.626,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3382404,
+      "lngE5": -606627
+     },
+     "catalogueIds": [
+      2558470
+     ]
+    }
+   ]
+  },
+  {
+   "id": "3",
+   "nameAr": "تيفلت",
+   "point": {
+    "latE5": 3389469,
+    "lngE5": -630649
+   },
+   "elevationM": 340,
+   "sunriseAltitudeDeg": -1.643,
+   "sunsetAltitudeDeg": -1.569,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3389469,
+      "lngE5": -630649
+     },
+     "catalogueIds": [
+      2528659
+     ]
+    }
+   ]
+  },
+  {
+   "id": "4",
+   "nameAr": "الرماني",
+   "point": {
+    "latE5": 3352838,
+    "lngE5": -660348
+   },
+   "elevationM": 313,
+   "sunriseAltitudeDeg": -1.625,
+   "sunsetAltitudeDeg": -1.553,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3352838,
+      "lngE5": -660348
+     },
+     "catalogueIds": [
+      2557134
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5",
+   "nameAr": "والماس",
+   "point": {
+    "latE5": 3342585,
+    "lngE5": -600137
+   },
+   "elevationM": 1175,
+   "sunriseAltitudeDeg": -2.029,
+   "sunsetAltitudeDeg": -1.894,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3342585,
+      "lngE5": -600137
+     },
+     "catalogueIds": [
+      2538898
+     ]
+    }
+   ]
+  },
+  {
+   "id": "6",
+   "nameAr": "بوزنيقة",
+   "point": {
+    "latE5": 3378942,
+    "lngE5": -715968
+   },
+   "elevationM": 43,
+   "sunriseAltitudeDeg": -1.353,
+   "sunsetAltitudeDeg": -1.325,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3378942,
+      "lngE5": -715968
+     },
+     "catalogueIds": [
+      2553751
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7",
+   "nameAr": "القنيطرة",
+   "point": {
+    "latE5": 3426101,
+    "lngE5": -658020
+   },
+   "elevationM": 13,
+   "sunriseAltitudeDeg": -1.281,
+   "sunsetAltitudeDeg": -1.264,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3426101,
+      "lngE5": -658020
+     },
+     "catalogueIds": [
+      2544571
+     ]
+    }
+   ]
+  },
+  {
+   "id": "8",
+   "nameAr": "سيدي قاسم",
+   "point": {
+    "latE5": 3422149,
+    "lngE5": -570775
+   },
+   "elevationM": 83,
+   "sunriseAltitudeDeg": -1.416,
+   "sunsetAltitudeDeg": -1.377,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3422149,
+      "lngE5": -570775
+     },
+     "catalogueIds": [
+      2533191
+     ]
+    }
+   ]
+  },
+  {
+   "id": "9",
+   "nameAr": "سيدي يحيى الغرب",
+   "point": {
+    "latE5": 3430494,
+    "lngE5": -630404
+   },
+   "elevationM": 18,
+   "sunriseAltitudeDeg": -1.297,
+   "sunsetAltitudeDeg": -1.277,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3430494,
+      "lngE5": -630404
+     },
+     "catalogueIds": [
+      2532822
+     ]
+    }
+   ]
+  },
+  {
+   "id": "10",
+   "nameAr": "سيدي سليمان",
+   "point": {
+    "latE5": 3426479,
+    "lngE5": -592598
+   },
+   "elevationM": 37,
+   "sunriseAltitudeDeg": -1.342,
+   "sunsetAltitudeDeg": -1.315,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3426479,
+      "lngE5": -592598
+     },
+     "catalogueIds": [
+      2532945
+     ]
+    }
+   ]
+  },
+  {
+   "id": "11",
+   "nameAr": "سوق أربعاء الغرب",
+   "point": {
+    "latE5": 3468473,
+    "lngE5": -600344
+   },
+   "elevationM": 38,
+   "sunriseAltitudeDeg": -1.344,
+   "sunsetAltitudeDeg": -1.317,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3468473,
+      "lngE5": -600344
+     },
+     "catalogueIds": [
+      12718688
+     ]
+    }
+   ]
+  },
+  {
+   "id": "12",
+   "nameAr": "عرباوة",
+   "point": {
+    "latE5": 3490239,
+    "lngE5": -594871
+   },
+   "elevationM": 143,
+   "sunriseAltitudeDeg": -1.485,
+   "sunsetAltitudeDeg": -1.436,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3490239,
+      "lngE5": -594871
+     },
+     "catalogueIds": [
+      2557391
+     ]
+    }
+   ]
+  },
+  {
+   "id": "13",
+   "nameAr": "مولاي بوسلهام",
+   "point": {
+    "latE5": 3488158,
+    "lngE5": -629455
+   },
+   "elevationM": 45,
+   "sunriseAltitudeDeg": -1.357,
+   "sunsetAltitudeDeg": -1.328,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3488158,
+      "lngE5": -629455
+     },
+     "catalogueIds": [
+      2541833
+     ]
+    }
+   ]
+  },
+  {
+   "id": "14",
+   "nameAr": "طنجة",
+   "point": {
+    "latE5": 3575615,
+    "lngE5": -581249
+   },
+   "elevationM": 20,
+   "sunriseAltitudeDeg": -1.43,
+   "sunsetAltitudeDeg": -1.401,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3576727,
+      "lngE5": -579975
+     },
+     "catalogueIds": [
+      2530335
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8667,
+     "SUNRISE": 0.9,
+     "DHUHR": 0.9333,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9667,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "15",
+   "nameAr": "تطوان",
+   "point": {
+    "latE5": 3557845,
+    "lngE5": -536837
+   },
+   "elevationM": 121,
+   "sunriseAltitudeDeg": -1.462,
+   "sunsetAltitudeDeg": -1.416,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3557845,
+      "lngE5": -536837
+     },
+     "catalogueIds": [
+      2528910
+     ]
+    }
+   ]
+  },
+  {
+   "id": "16",
+   "nameAr": "العرائش",
+   "point": {
+    "latE5": 3519321,
+    "lngE5": -615572
+   },
+   "elevationM": 38,
+   "sunriseAltitudeDeg": -1.344,
+   "sunsetAltitudeDeg": -1.317,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3519321,
+      "lngE5": -615572
+     },
+     "catalogueIds": [
+      2543549
+     ]
+    }
+   ]
+  },
+  {
+   "id": "17",
+   "nameAr": "أصيلة",
+   "point": {
+    "latE5": 3546522,
+    "lngE5": -603415
+   },
+   "elevationM": 17,
+   "sunriseAltitudeDeg": -1.294,
+   "sunsetAltitudeDeg": -1.275,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3546522,
+      "lngE5": -603415
+     },
+     "catalogueIds": [
+      2557055
+     ]
+    }
+   ]
+  },
+  {
+   "id": "18",
+   "nameAr": "شفشاون",
+   "point": {
+    "latE5": 3516438,
+    "lngE5": -526360
+   },
+   "elevationM": 607,
+   "sunriseAltitudeDeg": -1.961,
+   "sunsetAltitudeDeg": -1.84,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3516878,
+      "lngE5": -526360
+     },
+     "catalogueIds": [
+      2553455
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.8667,
+     "DHUHR": 1.0,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.9667,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "19",
+   "nameAr": "مرتيل",
+   "point": {
+    "latE5": 3561662,
+    "lngE5": -527522
+   },
+   "elevationM": 5,
+   "sunriseAltitudeDeg": -1.248,
+   "sunsetAltitudeDeg": -1.236,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3561662,
+      "lngE5": -527522
+     },
+     "catalogueIds": [
+      2542987
+     ]
+    }
+   ]
+  },
+  {
+   "id": "20",
+   "nameAr": "المضيق",
+   "point": {
+    "latE5": 3568313,
+    "lngE5": -532871
+   },
+   "elevationM": 23,
+   "sunriseAltitudeDeg": -1.31,
+   "sunsetAltitudeDeg": -1.289,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3568313,
+      "lngE5": -532871
+     },
+     "catalogueIds": [
+      2542898
+     ]
+    }
+   ]
+  },
+  {
+   "id": "21",
+   "nameAr": "القصر الكبير",
+   "point": {
+    "latE5": 3500044,
+    "lngE5": -590378
+   },
+   "elevationM": 18,
+   "sunriseAltitudeDeg": -1.297,
+   "sunsetAltitudeDeg": -1.277,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3500044,
+      "lngE5": -590378
+     },
+     "catalogueIds": [
+      2544001
+     ]
+    }
+   ]
+  },
+  {
+   "id": "22",
+   "nameAr": "القصر الصغير",
+   "point": {
+    "latE5": 3584214,
+    "lngE5": -555427
+   },
+   "elevationM": 18,
+   "sunriseAltitudeDeg": -1.297,
+   "sunsetAltitudeDeg": -1.277,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3584214,
+      "lngE5": -555427
+     },
+     "catalogueIds": [
+      2543998
+     ]
+    }
+   ]
+  },
+  {
+   "id": "23",
+   "nameAr": "الحسيمة",
+   "point": {
+    "latE5": 3525165,
+    "lngE5": -393723
+   },
+   "elevationM": 74,
+   "sunriseAltitudeDeg": -1.403,
+   "sunsetAltitudeDeg": -1.367,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3525165,
+      "lngE5": -393723
+     },
+     "catalogueIds": [
+      2558545
+     ]
+    }
+   ]
+  },
+  {
+   "id": "24",
+   "nameAr": "سبتة",
+   "point": {
+    "latE5": 3588919,
+    "lngE5": -534781
+   },
+   "elevationM": 22,
+   "sunriseAltitudeDeg": -1.6,
+   "sunsetAltitudeDeg": -1.536,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3588919,
+      "lngE5": -532042
+     },
+     "catalogueIds": [
+      6362987
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "country": "ES"
+  },
+  {
+   "id": "25",
+   "nameAr": "الفنيدق",
+   "point": {
+    "latE5": 3584906,
+    "lngE5": -535747
+   },
+   "elevationM": 21,
+   "sunriseAltitudeDeg": -1.305,
+   "sunsetAltitudeDeg": -1.284,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3584906,
+      "lngE5": -535747
+     },
+     "catalogueIds": [
+      2548818
+     ]
+    }
+   ]
+  },
+  {
+   "id": "26",
+   "nameAr": "الجبهة",
+   "point": {
+    "latE5": 3520549,
+    "lngE5": -466524
+   },
+   "elevationM": 14,
+   "sunriseAltitudeDeg": -1.285,
+   "sunsetAltitudeDeg": -1.267,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3520549,
+      "lngE5": -466524
+     },
+     "catalogueIds": [
+      2550079
+     ]
+    }
+   ]
+  },
+  {
+   "id": "27",
+   "nameAr": "واد لاو",
+   "point": {
+    "latE5": 3544840,
+    "lngE5": -509627
+   },
+   "elevationM": 20,
+   "sunriseAltitudeDeg": -1.303,
+   "sunsetAltitudeDeg": -1.282,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3544840,
+      "lngE5": -509627
+     },
+     "catalogueIds": [
+      2540698
+     ]
+    }
+   ]
+  },
+  {
+   "id": "28",
+   "nameAr": "باب برد",
+   "point": {
+    "latE5": 3499827,
+    "lngE5": -489297
+   },
+   "elevationM": 1237,
+   "sunriseAltitudeDeg": -2.051,
+   "sunsetAltitudeDeg": -1.912,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3499827,
+      "lngE5": -489297
+     },
+     "catalogueIds": [
+      2554130
+     ]
+    }
+   ]
+  },
+  {
+   "id": "29",
+   "nameAr": "وزان",
+   "point": {
+    "latE5": 3479584,
+    "lngE5": -557849
+   },
+   "elevationM": 306,
+   "sunriseAltitudeDeg": -1.62,
+   "sunsetAltitudeDeg": -1.549,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3479584,
+      "lngE5": -557849
+     },
+     "catalogueIds": [
+      2540810
+     ]
+    }
+   ]
+  },
+  {
+   "id": "30",
+   "nameAr": "بوسكور",
+   "point": {
+    "latE5": 3471350,
+    "lngE5": -361160
+   },
+   "elevationM": 659,
+   "sunriseAltitudeDeg": -1.523,
+   "sunsetAltitudeDeg": -1.484,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3471350,
+      "lngE5": -361160
+     }
+    }
+   ]
+  },
+  {
+   "id": "31",
+   "nameAr": "وجدة",
+   "point": {
+    "latE5": 3468139,
+    "lngE5": -192859
+   },
+   "elevationM": 549,
+   "sunriseAltitudeDeg": -1.743,
+   "sunsetAltitudeDeg": -1.658,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3468139,
+      "lngE5": -190858
+     },
+     "catalogueIds": [
+      2540483
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9667,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "32",
+   "nameAr": "بركان",
+   "point": {
+    "latE5": 3492000,
+    "lngE5": -232000
+   },
+   "elevationM": 173,
+   "sunriseAltitudeDeg": -1.514,
+   "sunsetAltitudeDeg": -1.46,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3492000,
+      "lngE5": -232000
+     },
+     "catalogueIds": [
+      2555467
+     ]
+    }
+   ]
+  },
+  {
+   "id": "33",
+   "nameAr": "فكيك",
+   "point": {
+    "latE5": 3210891,
+    "lngE5": -122516
+   },
+   "elevationM": 898,
+   "sunriseAltitudeDeg": -1.838,
+   "sunsetAltitudeDeg": -1.751,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3210891,
+      "lngE5": -122855
+     },
+     "catalogueIds": [
+      2548851
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "34",
+   "nameAr": "بوعرفة",
+   "point": {
+    "latE5": 3253379,
+    "lngE5": -196209
+   },
+   "elevationM": 1169,
+   "sunriseAltitudeDeg": -2.027,
+   "sunsetAltitudeDeg": -1.892,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3253379,
+      "lngE5": -196209
+     },
+     "catalogueIds": [
+      2555157
+     ]
+    }
+   ]
+  },
+  {
+   "id": "35",
+   "nameAr": "كرسيف",
+   "point": {
+    "latE5": 3422568,
+    "lngE5": -335361
+   },
+   "elevationM": 367,
+   "sunriseAltitudeDeg": -1.661,
+   "sunsetAltitudeDeg": -1.584,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3422568,
+      "lngE5": -335361
+     },
+     "catalogueIds": [
+      2548489
+     ]
+    }
+   ]
+  },
+  {
+   "id": "36",
+   "nameAr": "جرادة",
+   "point": {
+    "latE5": 3431000,
+    "lngE5": -216000
+   },
+   "elevationM": 1045,
+   "sunriseAltitudeDeg": -1.982,
+   "sunsetAltitudeDeg": -1.854,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3431000,
+      "lngE5": -216000
+     },
+     "catalogueIds": [
+      2545017
+     ]
+    }
+   ]
+  },
+  {
+   "id": "37",
+   "nameAr": "عين الشعير",
+   "point": {
+    "latE5": 3220436,
+    "lngE5": -251941
+   },
+   "elevationM": 982,
+   "sunriseAltitudeDeg": -1.958,
+   "sunsetAltitudeDeg": -1.834,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3220436,
+      "lngE5": -251941
+     },
+     "catalogueIds": [
+      2560908
+     ]
+    }
+   ]
+  },
+  {
+   "id": "38",
+   "nameAr": "تاوريرت",
+   "point": {
+    "latE5": 3440731,
+    "lngE5": -289732
+   },
+   "elevationM": 394,
+   "sunriseAltitudeDeg": -1.678,
+   "sunsetAltitudeDeg": -1.598,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3440731,
+      "lngE5": -289732
+     },
+     "catalogueIds": [
+      2530048
+     ]
+    }
+   ]
+  },
+  {
+   "id": "39",
+   "nameAr": "الناظور",
+   "point": {
+    "latE5": 3516813,
+    "lngE5": -293352
+   },
+   "elevationM": 19,
+   "sunriseAltitudeDeg": -1.3,
+   "sunsetAltitudeDeg": -1.28,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3516813,
+      "lngE5": -293352
+     },
+     "catalogueIds": [
+      2541479
+     ]
+    }
+   ]
+  },
+  {
+   "id": "40",
+   "nameAr": "مليلية",
+   "point": {
+    "latE5": 3528184,
+    "lngE5": -295931
+   },
+   "elevationM": 14,
+   "sunriseAltitudeDeg": -1.194,
+   "sunsetAltitudeDeg": -1.189,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3529369,
+      "lngE5": -293833
+     },
+     "catalogueIds": [
+      2513947
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 0.9333,
+     "DHUHR": 1.0,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.8667,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "country": "ES"
+  },
+  {
+   "id": "41",
+   "nameAr": "دبدو",
+   "point": {
+    "latE5": 3398228,
+    "lngE5": -304263
+   },
+   "elevationM": 994,
+   "sunriseAltitudeDeg": -1.962,
+   "sunsetAltitudeDeg": -1.838,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3398228,
+      "lngE5": -304263
+     },
+     "catalogueIds": [
+      2552407
+     ]
+    }
+   ]
+  },
+  {
+   "id": "42",
+   "nameAr": "سلوان",
+   "point": {
+    "latE5": 3507313,
+    "lngE5": -294230
+   },
+   "elevationM": 80,
+   "sunriseAltitudeDeg": -1.412,
+   "sunsetAltitudeDeg": -1.374,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3507313,
+      "lngE5": -294230
+     },
+     "catalogueIds": [
+      2537469
+     ]
+    }
+   ]
+  },
+  {
+   "id": "43",
+   "nameAr": "بني أنصار",
+   "point": {
+    "latE5": 3526000,
+    "lngE5": -293000
+   },
+   "elevationM": 9,
+   "sunriseAltitudeDeg": -1.267,
+   "sunsetAltitudeDeg": -1.252,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3526000,
+      "lngE5": -293000
+     },
+     "catalogueIds": [
+      2555882
+     ]
+    }
+   ]
+  },
+  {
+   "id": "44",
+   "nameAr": "فرخانة",
+   "point": {
+    "latE5": 3528776,
+    "lngE5": -298533
+   },
+   "elevationM": 56,
+   "sunriseAltitudeDeg": -1.376,
+   "sunsetAltitudeDeg": -1.344,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3528776,
+      "lngE5": -298533
+     },
+     "catalogueIds": [
+      2549014
+     ]
+    }
+   ]
+  },
+  {
+   "id": "45",
+   "nameAr": "تالسينت",
+   "point": {
+    "latE5": 3253599,
+    "lngE5": -344143
+   },
+   "elevationM": 1332,
+   "sunriseAltitudeDeg": -2.083,
+   "sunsetAltitudeDeg": -1.94,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3253599,
+      "lngE5": -344143
+     },
+     "catalogueIds": [
+      2530923
+     ]
+    }
+   ]
+  },
+  {
+   "id": "46",
+   "nameAr": "تندرارة",
+   "point": {
+    "latE5": 3304964,
+    "lngE5": -200018
+   },
+   "elevationM": 1442,
+   "sunriseAltitudeDeg": -2.119,
+   "sunsetAltitudeDeg": -1.97,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3304964,
+      "lngE5": -200018
+     },
+     "catalogueIds": [
+      2528981
+     ]
+    }
+   ]
+  },
+  {
+   "id": "47",
+   "nameAr": "العيون الشرقية",
+   "point": {
+    "latE5": 3458319,
+    "lngE5": -250612
+   },
+   "elevationM": 604,
+   "sunriseAltitudeDeg": -1.793,
+   "sunsetAltitudeDeg": -1.695,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3458319,
+      "lngE5": -250612
+     },
+     "catalogueIds": [
+      2550806
+     ]
+    }
+   ]
+  },
+  {
+   "id": "48",
+   "nameAr": "بني ادرار",
+   "point": {
+    "latE5": 3486005,
+    "lngE5": -198979
+   },
+   "elevationM": 453,
+   "sunriseAltitudeDeg": -1.712,
+   "sunsetAltitudeDeg": -1.627,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3486005,
+      "lngE5": -198979
+     },
+     "catalogueIds": [
+      2555885
+     ]
+    }
+   ]
+  },
+  {
+   "id": "49",
+   "nameAr": "السعيدية",
+   "point": {
+    "latE5": 3508195,
+    "lngE5": -222897
+   },
+   "elevationM": 4,
+   "sunriseAltitudeDeg": -1.242,
+   "sunsetAltitudeDeg": -1.231,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3508195,
+      "lngE5": -222897
+     },
+     "catalogueIds": [
+      2537802
+     ]
+    }
+   ]
+  },
+  {
+   "id": "50",
+   "nameAr": "رأس الماء",
+   "point": {
+    "latE5": 3514069,
+    "lngE5": -242455
+   },
+   "elevationM": 5,
+   "sunriseAltitudeDeg": -1.248,
+   "sunsetAltitudeDeg": -1.236,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3514069,
+      "lngE5": -242455
+     },
+     "catalogueIds": [
+      2538392
+     ]
+    }
+   ]
+  },
+  {
+   "id": "51",
+   "nameAr": "تافوغالت",
+   "point": {
+    "latE5": 3480781,
+    "lngE5": -241089
+   },
+   "elevationM": 796,
+   "sunriseAltitudeDeg": -1.881,
+   "sunsetAltitudeDeg": -1.769,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3480781,
+      "lngE5": -241089
+     },
+     "catalogueIds": [
+      2531904,
+      8739768
+     ]
+    }
+   ]
+  },
+  {
+   "id": "52",
+   "nameAr": "فزوان",
+   "point": {
+    "latE5": 3491781,
+    "lngE5": -220402
+   },
+   "elevationM": 249,
+   "sunriseAltitudeDeg": -1.578,
+   "sunsetAltitudeDeg": -1.514,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3491781,
+      "lngE5": -220402
+     },
+     "catalogueIds": [
+      11067730
+     ]
+    }
+   ]
+  },
+  {
+   "id": "53",
+   "nameAr": "أحفير",
+   "point": {
+    "latE5": 3495368,
+    "lngE5": -210027
+   },
+   "elevationM": 252,
+   "sunriseAltitudeDeg": -1.581,
+   "sunsetAltitudeDeg": -1.516,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3495368,
+      "lngE5": -210027
+     },
+     "catalogueIds": [
+      2561124
+     ]
+    }
+   ]
+  },
+  {
+   "id": "54",
+   "nameAr": "زايو",
+   "point": {
+    "latE5": 3494282,
+    "lngE5": -273290
+   },
+   "elevationM": 198,
+   "sunriseAltitudeDeg": -1.537,
+   "sunsetAltitudeDeg": -1.479,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3494282,
+      "lngE5": -273290
+     },
+     "catalogueIds": [
+      2526435
+     ]
+    }
+   ]
+  },
+  {
+   "id": "55",
+   "nameAr": "دريوش",
+   "point": {
+    "latE5": 3497705,
+    "lngE5": -337902
+   },
+   "elevationM": 287,
+   "sunriseAltitudeDeg": -1.607,
+   "sunsetAltitudeDeg": -1.538,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3497705,
+      "lngE5": -337902
+     },
+     "catalogueIds": [
+      2550985
+     ]
+    }
+   ]
+  },
+  {
+   "id": "56",
+   "nameAr": "بني تجيت",
+   "point": {
+    "latE5": 3228928,
+    "lngE5": -346616
+   },
+   "elevationM": 1104,
+   "sunriseAltitudeDeg": -2.004,
+   "sunsetAltitudeDeg": -1.872,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3228928,
+      "lngE5": -346616
+     },
+     "catalogueIds": [
+      2555610
+     ]
+    }
+   ]
+  },
+  {
+   "id": "57",
+   "nameAr": "بوعنان",
+   "point": {
+    "latE5": 3203738,
+    "lngE5": -304978
+   },
+   "elevationM": 861,
+   "sunriseAltitudeDeg": -1.909,
+   "sunsetAltitudeDeg": -1.793,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3203738,
+      "lngE5": -304978
+     },
+     "catalogueIds": [
+      2555182
+     ]
+    }
+   ]
+  },
+  {
+   "id": "58",
+   "nameAr": "الدار البيضاء",
+   "point": {
+    "latE5": 3356521,
+    "lngE5": -765815
+   },
+   "elevationM": 27,
+   "sunriseAltitudeDeg": -1.324,
+   "sunsetAltitudeDeg": -1.314,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3358831,
+      "lngE5": -761138
+     },
+     "catalogueIds": [
+      2553604
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "59",
+   "nameAr": "المحمدية",
+   "point": {
+    "latE5": 3368607,
+    "lngE5": -738298
+   },
+   "elevationM": 29,
+   "sunriseAltitudeDeg": -1.325,
+   "sunsetAltitudeDeg": -1.301,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3368607,
+      "lngE5": -738298
+     },
+     "catalogueIds": [
+      2542051
+     ]
+    }
+   ]
+  },
+  {
+   "id": "60",
+   "nameAr": "بن سليمان",
+   "point": {
+    "latE5": 3361601,
+    "lngE5": -712153
+   },
+   "elevationM": 270,
+   "sunriseAltitudeDeg": -1.594,
+   "sunsetAltitudeDeg": -1.528,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3361601,
+      "lngE5": -712153
+     },
+     "catalogueIds": [
+      2555519
+     ]
+    }
+   ]
+  },
+  {
+   "id": "61",
+   "nameAr": "سطات",
+   "point": {
+    "latE5": 3300103,
+    "lngE5": -761662
+   },
+   "elevationM": 365,
+   "sunriseAltitudeDeg": -1.659,
+   "sunsetAltitudeDeg": -1.582,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3300103,
+      "lngE5": -761662
+     },
+     "catalogueIds": [
+      2537406
+     ]
+    }
+   ]
+  },
+  {
+   "id": "62",
+   "nameAr": "الكارة",
+   "point": {
+    "latE5": 3327732,
+    "lngE5": -723236
+   },
+   "elevationM": 349,
+   "sunriseAltitudeDeg": -1.649,
+   "sunsetAltitudeDeg": -1.574,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3327732,
+      "lngE5": -723236
+     },
+     "catalogueIds": [
+      2550419
+     ]
+    }
+   ]
+  },
+  {
+   "id": "63",
+   "nameAr": "البروج",
+   "point": {
+    "latE5": 3250467,
+    "lngE5": -719238
+   },
+   "elevationM": 413,
+   "sunriseAltitudeDeg": -1.689,
+   "sunsetAltitudeDeg": -1.607,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3250467,
+      "lngE5": -719238
+     },
+     "catalogueIds": [
+      2550547
+     ]
+    }
+   ]
+  },
+  {
+   "id": "64",
+   "nameAr": "ابن أحمد",
+   "point": {
+    "latE5": 3306635,
+    "lngE5": -724161
+   },
+   "elevationM": 603,
+   "sunriseAltitudeDeg": -1.792,
+   "sunsetAltitudeDeg": -1.694,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3306635,
+      "lngE5": -724161
+     },
+     "catalogueIds": [
+      2556076
+     ]
+    }
+   ]
+  },
+  {
+   "id": "65",
+   "nameAr": "برشيد",
+   "point": {
+    "latE5": 3326553,
+    "lngE5": -758754
+   },
+   "elevationM": 220,
+   "sunriseAltitudeDeg": -1.555,
+   "sunsetAltitudeDeg": -1.495,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3326553,
+      "lngE5": -758754
+     },
+     "catalogueIds": [
+      2556272
+     ]
+    }
+   ]
+  },
+  {
+   "id": "66",
+   "nameAr": "الجديدة",
+   "point": {
+    "latE5": 3325682,
+    "lngE5": -851015
+   },
+   "elevationM": 10,
+   "sunriseAltitudeDeg": -1.205,
+   "sunsetAltitudeDeg": -1.178,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3325682,
+      "lngE5": -850882
+     },
+     "catalogueIds": [
+      2550078
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "67",
+   "nameAr": "أزمور",
+   "point": {
+    "latE5": 3328952,
+    "lngE5": -834250
+   },
+   "elevationM": 28,
+   "sunriseAltitudeDeg": -1.323,
+   "sunsetAltitudeDeg": -1.299,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3328952,
+      "lngE5": -834250
+     },
+     "catalogueIds": [
+      2556657
+     ]
+    }
+   ]
+  },
+  {
+   "id": "68",
+   "nameAr": "سيدي بنور",
+   "point": {
+    "latE5": 3265236,
+    "lngE5": -842769
+   },
+   "elevationM": 182,
+   "sunriseAltitudeDeg": -1.522,
+   "sunsetAltitudeDeg": -1.467,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3265236,
+      "lngE5": -842769
+     },
+     "catalogueIds": [
+      2536074
+     ]
+    }
+   ]
+  },
+  {
+   "id": "69",
+   "nameAr": "خميس الزمامرة",
+   "point": {
+    "latE5": 3262287,
+    "lngE5": -870227
+   },
+   "elevationM": 165,
+   "sunriseAltitudeDeg": -1.507,
+   "sunsetAltitudeDeg": -1.454,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3262287,
+      "lngE5": -870227
+     },
+     "catalogueIds": [
+      2549888
+     ]
+    }
+   ]
+  },
+  {
+   "id": "70",
+   "nameAr": "خنيفرة",
+   "point": {
+    "latE5": 3293492,
+    "lngE5": -567532
+   },
+   "elevationM": 868,
+   "sunriseAltitudeDeg": -1.883,
+   "sunsetAltitudeDeg": -1.784,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3293492,
+      "lngE5": -566167
+     },
+     "catalogueIds": [
+      2544333
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "71",
+   "nameAr": "مولاي بوعزة",
+   "point": {
+    "latE5": 3322576,
+    "lngE5": -619807
+   },
+   "elevationM": 952,
+   "sunriseAltitudeDeg": -1.946,
+   "sunsetAltitudeDeg": -1.824,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3322576,
+      "lngE5": -619807
+     },
+     "catalogueIds": [
+      2541843
+     ]
+    }
+   ]
+  },
+  {
+   "id": "72",
+   "nameAr": "زاوية أحنصال",
+   "point": {
+    "latE5": 3183179,
+    "lngE5": -610118
+   },
+   "elevationM": 1651,
+   "sunriseAltitudeDeg": -2.184,
+   "sunsetAltitudeDeg": -2.025,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3183179,
+      "lngE5": -610118
+     },
+     "catalogueIds": [
+      2526392
+     ]
+    }
+   ]
+  },
+  {
+   "id": "73",
+   "nameAr": "بني ملال",
+   "point": {
+    "latE5": 3233725,
+    "lngE5": -636048
+   },
+   "elevationM": 538,
+   "sunriseAltitudeDeg": -1.992,
+   "sunsetAltitudeDeg": -1.861,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3233725,
+      "lngE5": -634983
+     },
+     "catalogueIds": [
+      2555745
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.8667,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "74",
+   "nameAr": "أزيلال",
+   "point": {
+    "latE5": 3196156,
+    "lngE5": -657109
+   },
+   "elevationM": 1357,
+   "sunriseAltitudeDeg": -2.092,
+   "sunsetAltitudeDeg": -1.947,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3196156,
+      "lngE5": -657109
+     },
+     "catalogueIds": [
+      2556570
+     ]
+    }
+   ]
+  },
+  {
+   "id": "75",
+   "nameAr": "الفقيه بنصالح",
+   "point": {
+    "latE5": 3250213,
+    "lngE5": -668771
+   },
+   "elevationM": 444,
+   "sunriseAltitudeDeg": -1.707,
+   "sunsetAltitudeDeg": -1.623,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3250213,
+      "lngE5": -668771
+     },
+     "catalogueIds": [
+      2548830
+     ]
+    }
+   ]
+  },
+  {
+   "id": "76",
+   "nameAr": "دمنات",
+   "point": {
+    "latE5": 3173443,
+    "lngE5": -700505
+   },
+   "elevationM": 927,
+   "sunriseAltitudeDeg": -1.936,
+   "sunsetAltitudeDeg": -1.815,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3173443,
+      "lngE5": -700505
+     },
+     "catalogueIds": [
+      2552317
+     ]
+    }
+   ]
+  },
+  {
+   "id": "77",
+   "nameAr": "القصيبة",
+   "point": {
+    "latE5": 3257286,
+    "lngE5": -601947
+   },
+   "elevationM": 1079,
+   "sunriseAltitudeDeg": -1.994,
+   "sunsetAltitudeDeg": -1.865,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3257286,
+      "lngE5": -601947
+     },
+     "catalogueIds": [
+      2549750
+     ]
+    }
+   ]
+  },
+  {
+   "id": "78",
+   "nameAr": "قصبة تادلة",
+   "point": {
+    "latE5": 3259770,
+    "lngE5": -626844
+   },
+   "elevationM": 499,
+   "sunriseAltitudeDeg": -1.738,
+   "sunsetAltitudeDeg": -1.649,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3259770,
+      "lngE5": -626844
+     },
+     "catalogueIds": [
+      2544720
+     ]
+    }
+   ]
+  },
+  {
+   "id": "79",
+   "nameAr": "خريبكة",
+   "point": {
+    "latE5": 3288108,
+    "lngE5": -690630
+   },
+   "elevationM": 804,
+   "sunriseAltitudeDeg": -1.885,
+   "sunsetAltitudeDeg": -1.772,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3288108,
+      "lngE5": -690630
+     },
+     "catalogueIds": [
+      2544248
+     ]
+    }
+   ]
+  },
+  {
+   "id": "80",
+   "nameAr": "وادي زم",
+   "point": {
+    "latE5": 3286270,
+    "lngE5": -657359
+   },
+   "elevationM": 783,
+   "sunriseAltitudeDeg": -1.876,
+   "sunsetAltitudeDeg": -1.765,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3286270,
+      "lngE5": -657359
+     },
+     "catalogueIds": [
+      2540689
+     ]
+    }
+   ]
+  },
+  {
+   "id": "81",
+   "nameAr": "فاس",
+   "point": {
+    "latE5": 3405943,
+    "lngE5": -500948
+   },
+   "elevationM": 406,
+   "sunriseAltitudeDeg": -1.553,
+   "sunsetAltitudeDeg": -1.5,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3403313,
+      "lngE5": -500028
+     },
+     "catalogueIds": [
+      2548885
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "82",
+   "nameAr": "صفرو",
+   "point": {
+    "latE5": 3383186,
+    "lngE5": -482800
+   },
+   "elevationM": 809,
+   "sunriseAltitudeDeg": -1.887,
+   "sunsetAltitudeDeg": -1.774,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3383186,
+      "lngE5": -482800
+     },
+     "catalogueIds": [
+      2537545
+     ]
+    }
+   ]
+  },
+  {
+   "id": "83",
+   "nameAr": "مولاي يعقوب",
+   "point": {
+    "latE5": 3408793,
+    "lngE5": -518171
+   },
+   "elevationM": 254,
+   "sunriseAltitudeDeg": -1.582,
+   "sunsetAltitudeDeg": -1.517,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3408793,
+      "lngE5": -518171
+     },
+     "catalogueIds": [
+      2541779
+     ]
+    }
+   ]
+  },
+  {
+   "id": "84",
+   "nameAr": "بولمان",
+   "point": {
+    "latE5": 3336376,
+    "lngE5": -472896
+   },
+   "elevationM": 1712,
+   "sunriseAltitudeDeg": -2.202,
+   "sunsetAltitudeDeg": -2.04,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3336376,
+      "lngE5": -472896
+     },
+     "catalogueIds": [
+      2554389
+     ]
+    }
+   ]
+  },
+  {
+   "id": "85",
+   "nameAr": "ميسور",
+   "point": {
+    "latE5": 3304893,
+    "lngE5": -398947
+   },
+   "elevationM": 883,
+   "sunriseAltitudeDeg": -1.918,
+   "sunsetAltitudeDeg": -1.8,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3304893,
+      "lngE5": -398947
+     },
+     "catalogueIds": [
+      2542147
+     ]
+    }
+   ]
+  },
+  {
+   "id": "86",
+   "nameAr": "رباط الخير",
+   "point": {
+    "latE5": 3381518,
+    "lngE5": -440717
+   },
+   "elevationM": 1146,
+   "sunriseAltitudeDeg": -2.019,
+   "sunsetAltitudeDeg": -1.885,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3381518,
+      "lngE5": -440717
+     },
+     "catalogueIds": [
+      2596460
+     ]
+    }
+   ]
+  },
+  {
+   "id": "87",
+   "nameAr": "المنزل بني يازغة",
+   "point": {
+    "latE5": 3383758,
+    "lngE5": -454472
+   },
+   "elevationM": 860,
+   "sunriseAltitudeDeg": -1.909,
+   "sunsetAltitudeDeg": -1.792,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3383758,
+      "lngE5": -454472
+     },
+     "catalogueIds": [
+      2549623
+     ]
+    }
+   ]
+  },
+  {
+   "id": "88",
+   "nameAr": "إموزار كندر",
+   "point": {
+    "latE5": 3372871,
+    "lngE5": -501092
+   },
+   "elevationM": 1352,
+   "sunriseAltitudeDeg": -2.09,
+   "sunsetAltitudeDeg": -1.945,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3372871,
+      "lngE5": -501092
+     },
+     "catalogueIds": [
+      2546028
+     ]
+    }
+   ]
+  },
+  {
+   "id": "89",
+   "nameAr": "تازة",
+   "point": {
+    "latE5": 3421000,
+    "lngE5": -401000
+   },
+   "elevationM": 530,
+   "sunriseAltitudeDeg": -1.755,
+   "sunsetAltitudeDeg": -1.663,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3421000,
+      "lngE5": -401000
+     },
+     "catalogueIds": [
+      2529317
+     ]
+    }
+   ]
+  },
+  {
+   "id": "90",
+   "nameAr": "تاونات",
+   "point": {
+    "latE5": 3453661,
+    "lngE5": -464009
+   },
+   "elevationM": 600,
+   "sunriseAltitudeDeg": -1.791,
+   "sunsetAltitudeDeg": -1.693,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3453661,
+      "lngE5": -464009
+     },
+     "catalogueIds": [
+      2530155
+     ]
+    }
+   ]
+  },
+  {
+   "id": "91",
+   "nameAr": "أكنول",
+   "point": {
+    "latE5": 3465371,
+    "lngE5": -386754
+   },
+   "elevationM": 1021,
+   "sunriseAltitudeDeg": -1.973,
+   "sunsetAltitudeDeg": -1.846,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3465371,
+      "lngE5": -386754
+     },
+     "catalogueIds": [
+      2558633
+     ]
+    }
+   ]
+  },
+  {
+   "id": "92",
+   "nameAr": "تيزي وسلي",
+   "point": {
+    "latE5": 3476214,
+    "lngE5": -379582
+   },
+   "elevationM": 1302,
+   "sunriseAltitudeDeg": -2.073,
+   "sunsetAltitudeDeg": -1.931,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3476214,
+      "lngE5": -379582
+     },
+     "catalogueIds": [
+      2527100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "93",
+   "nameAr": "بورد",
+   "point": {
+    "latE5": 3474276,
+    "lngE5": -404726
+   },
+   "elevationM": 1251,
+   "sunriseAltitudeDeg": -2.056,
+   "sunsetAltitudeDeg": -1.916,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3474276,
+      "lngE5": -404726
+     }
+    }
+   ]
+  },
+  {
+   "id": "94",
+   "nameAr": "تاهلة",
+   "point": {
+    "latE5": 3405388,
+    "lngE5": -444077
+   },
+   "elevationM": 606,
+   "sunriseAltitudeDeg": -1.61,
+   "sunsetAltitudeDeg": -1.557,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3404965,
+      "lngE5": -442162
+     },
+     "catalogueIds": [
+      2531480
+     ]
+    }
+   ]
+  },
+  {
+   "id": "95",
+   "nameAr": "تيسة",
+   "point": {
+    "latE5": 3428791,
+    "lngE5": -466372
+   },
+   "elevationM": 214,
+   "sunriseAltitudeDeg": -1.55,
+   "sunsetAltitudeDeg": -1.491,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3428791,
+      "lngE5": -466372
+     },
+     "catalogueIds": [
+      2527366
+     ]
+    }
+   ]
+  },
+  {
+   "id": "96",
+   "nameAr": "قرية با محمد",
+   "point": {
+    "latE5": 3437094,
+    "lngE5": -521380
+   },
+   "elevationM": 160,
+   "sunriseAltitudeDeg": -1.502,
+   "sunsetAltitudeDeg": -1.45,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3437094,
+      "lngE5": -521380
+     },
+     "catalogueIds": [
+      2544821
+     ]
+    }
+   ]
+  },
+  {
+   "id": "97",
+   "nameAr": "كتامة",
+   "point": {
+    "latE5": 3491875,
+    "lngE5": -456889
+   },
+   "elevationM": 1254,
+   "sunriseAltitudeDeg": -2.057,
+   "sunsetAltitudeDeg": -1.917,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3491875,
+      "lngE5": -456889
+     },
+     "catalogueIds": [
+      12718692
+     ]
+    }
+   ]
+  },
+  {
+   "id": "98",
+   "nameAr": "واد أمليل",
+   "point": {
+    "latE5": 3420000,
+    "lngE5": -428000
+   },
+   "elevationM": 301,
+   "sunriseAltitudeDeg": -1.617,
+   "sunsetAltitudeDeg": -1.546,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3420000,
+      "lngE5": -428000
+     },
+     "catalogueIds": [
+      2540716
+     ]
+    }
+   ]
+  },
+  {
+   "id": "99",
+   "nameAr": "مكناس",
+   "point": {
+    "latE5": 3388989,
+    "lngE5": -557628
+   },
+   "elevationM": 531,
+   "sunriseAltitudeDeg": -1.655,
+   "sunsetAltitudeDeg": -1.604,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3389352,
+      "lngE5": -554727
+     },
+     "catalogueIds": [
+      2542715
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9333,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "100",
+   "nameAr": "يفرن",
+   "point": {
+    "latE5": 3352923,
+    "lngE5": -511019
+   },
+   "elevationM": 1648,
+   "sunriseAltitudeDeg": -2.111,
+   "sunsetAltitudeDeg": -1.966,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3352666,
+      "lngE5": -511019
+     },
+     "catalogueIds": [
+      2546917
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9333,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9333,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "101",
+   "nameAr": "الحاجب",
+   "point": {
+    "latE5": 3368786,
+    "lngE5": -537100
+   },
+   "elevationM": 1023,
+   "sunriseAltitudeDeg": -1.973,
+   "sunsetAltitudeDeg": -1.847,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3368786,
+      "lngE5": -537100
+     },
+     "catalogueIds": [
+      2550252
+     ]
+    }
+   ]
+  },
+  {
+   "id": "102",
+   "nameAr": "زرهون",
+   "point": {
+    "latE5": 3405555,
+    "lngE5": -553702
+   },
+   "elevationM": 553,
+   "sunriseAltitudeDeg": -1.813,
+   "sunsetAltitudeDeg": -1.744,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3405555,
+      "lngE5": -552132
+     },
+     "catalogueIds": [
+      2541805
+     ]
+    }
+   ]
+  },
+  {
+   "id": "103",
+   "nameAr": "آزرو",
+   "point": {
+    "latE5": 3342379,
+    "lngE5": -522126
+   },
+   "elevationM": 1277,
+   "sunriseAltitudeDeg": -2.077,
+   "sunsetAltitudeDeg": -1.948,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3343443,
+      "lngE5": -522126
+     },
+     "catalogueIds": [
+      2556464
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9333,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "104",
+   "nameAr": "مراكش",
+   "point": {
+    "latE5": 3163416,
+    "lngE5": -802390
+   },
+   "elevationM": 457,
+   "sunriseAltitudeDeg": -1.654,
+   "sunsetAltitudeDeg": -1.601,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3163416,
+      "lngE5": -799994
+     },
+     "catalogueIds": [
+      2542997
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9333,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9333,
+     "ISHA": 0.9667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "105",
+   "nameAr": "قلعة السراغنة",
+   "point": {
+    "latE5": 3205121,
+    "lngE5": -741079
+   },
+   "elevationM": 471,
+   "sunriseAltitudeDeg": -1.723,
+   "sunsetAltitudeDeg": -1.636,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3205121,
+      "lngE5": -741079
+     },
+     "catalogueIds": [
+      2549979
+     ]
+    }
+   ]
+  },
+  {
+   "id": "106",
+   "nameAr": "الصويرة",
+   "point": {
+    "latE5": 3149158,
+    "lngE5": -977429
+   },
+   "elevationM": 7,
+   "sunriseAltitudeDeg": -1.223,
+   "sunsetAltitudeDeg": -1.22,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3151250,
+      "lngE5": -977000
+     },
+     "catalogueIds": [
+      2549263
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9333,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "107",
+   "nameAr": "شيشاوة",
+   "point": {
+    "latE5": 3154351,
+    "lngE5": -876275
+   },
+   "elevationM": 356,
+   "sunriseAltitudeDeg": -1.654,
+   "sunsetAltitudeDeg": -1.578,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3154351,
+      "lngE5": -876275
+     },
+     "catalogueIds": [
+      2553303
+     ]
+    }
+   ]
+  },
+  {
+   "id": "108",
+   "nameAr": "بنجرير",
+   "point": {
+    "latE5": 3224088,
+    "lngE5": -795397
+   },
+   "elevationM": 474,
+   "sunriseAltitudeDeg": -1.724,
+   "sunsetAltitudeDeg": -1.637,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3224088,
+      "lngE5": -795397
+     },
+     "catalogueIds": [
+      2556018
+     ]
+    }
+   ]
+  },
+  {
+   "id": "109",
+   "nameAr": "الرحامنة",
+   "point": {
+    "latE5": 3248244,
+    "lngE5": -792241
+   },
+   "elevationM": 473,
+   "sunriseAltitudeDeg": -1.759,
+   "sunsetAltitudeDeg": -1.686,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3248244,
+      "lngE5": -791533
+     },
+     "catalogueIds": [
+      2532646
+     ]
+    }
+   ]
+  },
+  {
+   "id": "110",
+   "nameAr": "تمنار",
+   "point": {
+    "latE5": 3100087,
+    "lngE5": -967802
+   },
+   "elevationM": 320,
+   "sunriseAltitudeDeg": -1.63,
+   "sunsetAltitudeDeg": -1.557,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3100087,
+      "lngE5": -967802
+     },
+     "catalogueIds": [
+      2530843
+     ]
+    }
+   ]
+  },
+  {
+   "id": "111",
+   "nameAr": "آسفي",
+   "point": {
+    "latE5": 3229297,
+    "lngE5": -924632
+   },
+   "elevationM": 45,
+   "sunriseAltitudeDeg": -1.264,
+   "sunsetAltitudeDeg": -1.243,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3229939,
+      "lngE5": -923718
+     },
+     "catalogueIds": [
+      2537881
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 0.9333,
+     "DHUHR": 0.9667,
+     "ASR": 0.9333,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.9667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "112",
+   "nameAr": "الوليدية",
+   "point": {
+    "latE5": 3273372,
+    "lngE5": -903059
+   },
+   "elevationM": 51,
+   "sunriseAltitudeDeg": -1.368,
+   "sunsetAltitudeDeg": -1.337,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3273372,
+      "lngE5": -903059
+     },
+     "catalogueIds": [
+      2541068
+     ]
+    }
+   ]
+  },
+  {
+   "id": "113",
+   "nameAr": "اليوسفية",
+   "point": {
+    "latE5": 3224634,
+    "lngE5": -852941
+   },
+   "elevationM": 302,
+   "sunriseAltitudeDeg": -1.617,
+   "sunsetAltitudeDeg": -1.547,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3224634,
+      "lngE5": -852941
+     },
+     "catalogueIds": [
+      2526488
+     ]
+    }
+   ]
+  },
+  {
+   "id": "114",
+   "nameAr": "تسلطانت",
+   "point": {
+    "latE5": 3154766,
+    "lngE5": -796282
+   },
+   "elevationM": 544,
+   "sunriseAltitudeDeg": -1.674,
+   "sunsetAltitudeDeg": -1.6,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3154766,
+      "lngE5": -798218
+     }
+    }
+   ]
+  },
+  {
+   "id": "115",
+   "nameAr": "تامصلوحت",
+   "point": {
+    "latE5": 3149472,
+    "lngE5": -809772
+   },
+   "elevationM": 563,
+   "sunriseAltitudeDeg": -1.772,
+   "sunsetAltitudeDeg": -1.677,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3149472,
+      "lngE5": -809772
+     },
+     "catalogueIds": [
+      2530641
+     ]
+    }
+   ]
+  },
+  {
+   "id": "116",
+   "nameAr": "قطارة",
+   "point": {
+    "latE5": 3187261,
+    "lngE5": -817663
+   },
+   "elevationM": 456,
+   "sunriseAltitudeDeg": -1.667,
+   "sunsetAltitudeDeg": -1.599,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3187230,
+      "lngE5": -817436
+     },
+     "catalogueIds": [
+      12718679
+     ]
+    }
+   ]
+  },
+  {
+   "id": "117",
+   "nameAr": "أكادير",
+   "point": {
+    "latE5": 3040426,
+    "lngE5": -956704
+   },
+   "elevationM": 31,
+   "sunriseAltitudeDeg": -1.437,
+   "sunsetAltitudeDeg": -1.395,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3042018,
+      "lngE5": -959815
+     },
+     "catalogueIds": [
+      2561668
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 0.9,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.8667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "118",
+   "nameAr": "تارودانت",
+   "point": {
+    "latE5": 3047028,
+    "lngE5": -887695
+   },
+   "elevationM": 237,
+   "sunriseAltitudeDeg": -1.569,
+   "sunsetAltitudeDeg": -1.506,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3047028,
+      "lngE5": -887695
+     },
+     "catalogueIds": [
+      2529649
+     ]
+    }
+   ]
+  },
+  {
+   "id": "119",
+   "nameAr": "تزنيت",
+   "point": {
+    "latE5": 2969742,
+    "lngE5": -973162
+   },
+   "elevationM": 240,
+   "sunriseAltitudeDeg": -1.571,
+   "sunsetAltitudeDeg": -1.508,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2969742,
+      "lngE5": -973162
+     },
+     "catalogueIds": [
+      2527089
+     ]
+    }
+   ]
+  },
+  {
+   "id": "120",
+   "nameAr": "إغرم",
+   "point": {
+    "latE5": 3008928,
+    "lngE5": -846023
+   },
+   "elevationM": 1723,
+   "sunriseAltitudeDeg": -2.206,
+   "sunsetAltitudeDeg": -2.043,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3008928,
+      "lngE5": -846023
+     },
+     "catalogueIds": [
+      2545797
+     ]
+    }
+   ]
+  },
+  {
+   "id": "121",
+   "nameAr": "تالوين",
+   "point": {
+    "latE5": 3052917,
+    "lngE5": -791262
+   },
+   "elevationM": 1007,
+   "sunriseAltitudeDeg": -1.967,
+   "sunsetAltitudeDeg": -1.842,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3052917,
+      "lngE5": -791262
+     },
+     "catalogueIds": [
+      2531014
+     ]
+    }
+   ]
+  },
+  {
+   "id": "122",
+   "nameAr": "تافراوت",
+   "point": {
+    "latE5": 2972449,
+    "lngE5": -897470
+   },
+   "elevationM": 993,
+   "sunriseAltitudeDeg": -1.962,
+   "sunsetAltitudeDeg": -1.837,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2972449,
+      "lngE5": -897470
+     },
+     "catalogueIds": [
+      2531877
+     ]
+    }
+   ]
+  },
+  {
+   "id": "123",
+   "nameAr": "طاطا",
+   "point": {
+    "latE5": 2974409,
+    "lngE5": -797300
+   },
+   "elevationM": 684,
+   "sunriseAltitudeDeg": -1.831,
+   "sunsetAltitudeDeg": -1.727,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2974409,
+      "lngE5": -797300
+     },
+     "catalogueIds": [
+      2529362
+     ]
+    }
+   ]
+  },
+  {
+   "id": "124",
+   "nameAr": "أقا",
+   "point": {
+    "latE5": 2938914,
+    "lngE5": -825490
+   },
+   "elevationM": 522,
+   "sunriseAltitudeDeg": -1.751,
+   "sunsetAltitudeDeg": -1.659,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2938914,
+      "lngE5": -825490
+     },
+     "catalogueIds": [
+      2558667
+     ]
+    }
+   ]
+  },
+  {
+   "id": "125",
+   "nameAr": "فم لحصن",
+   "point": {
+    "latE5": 2901889,
+    "lngE5": -889111
+   },
+   "elevationM": 480,
+   "sunriseAltitudeDeg": -1.728,
+   "sunsetAltitudeDeg": -1.64,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2901889,
+      "lngE5": -889111
+     },
+     "catalogueIds": [
+      12718689
+     ]
+    }
+   ]
+  },
+  {
+   "id": "126",
+   "nameAr": "بويكرة",
+   "point": {
+    "latE5": 3021793,
+    "lngE5": -937023
+   },
+   "elevationM": 117,
+   "sunriseAltitudeDeg": -1.457,
+   "sunsetAltitudeDeg": -1.412,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3021793,
+      "lngE5": -937023
+     },
+     "catalogueIds": [
+      13429580
+     ]
+    }
+   ]
+  },
+  {
+   "id": "127",
+   "nameAr": "أولاد تايمة",
+   "point": {
+    "latE5": 3039467,
+    "lngE5": -920897
+   },
+   "elevationM": 129,
+   "sunriseAltitudeDeg": -1.47,
+   "sunsetAltitudeDeg": -1.423,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3039467,
+      "lngE5": -920897
+     },
+     "catalogueIds": [
+      2539134
+     ]
+    }
+   ]
+  },
+  {
+   "id": "128",
+   "nameAr": "الرشيدية",
+   "point": {
+    "latE5": 3193140,
+    "lngE5": -444698
+   },
+   "elevationM": 1039,
+   "sunriseAltitudeDeg": -1.896,
+   "sunsetAltitudeDeg": -1.774,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3193140,
+      "lngE5": -442663
+     },
+     "catalogueIds": [
+      7280528
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 0.8667,
+     "DHUHR": 0.9333,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "129",
+   "nameAr": "الريصاني",
+   "point": {
+    "latE5": 3128318,
+    "lngE5": -426565
+   },
+   "elevationM": 761,
+   "sunriseAltitudeDeg": -1.866,
+   "sunsetAltitudeDeg": -1.757,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3128318,
+      "lngE5": -426565
+     },
+     "catalogueIds": [
+      2538027,
+      12718664
+     ]
+    }
+   ]
+  },
+  {
+   "id": "130",
+   "nameAr": "أرفود",
+   "point": {
+    "latE5": 3143530,
+    "lngE5": -423258
+   },
+   "elevationM": 809,
+   "sunriseAltitudeDeg": -1.887,
+   "sunsetAltitudeDeg": -1.774,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3143530,
+      "lngE5": -423258
+     },
+     "catalogueIds": [
+      2549356
+     ]
+    }
+   ]
+  },
+  {
+   "id": "131",
+   "nameAr": "تنديت",
+   "point": {
+    "latE5": 3368570,
+    "lngE5": -363610
+   },
+   "elevationM": 818,
+   "sunriseAltitudeDeg": -1.753,
+   "sunsetAltitudeDeg": -1.694,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3368570,
+      "lngE5": -363610
+     }
+    }
+   ]
+  },
+  {
+   "id": "132",
+   "nameAr": "كلميمة",
+   "point": {
+    "latE5": 3169227,
+    "lngE5": -495256
+   },
+   "elevationM": 1028,
+   "sunriseAltitudeDeg": -1.975,
+   "sunsetAltitudeDeg": -1.849,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3169227,
+      "lngE5": -495256
+     },
+     "catalogueIds": [
+      2548623
+     ]
+    }
+   ]
+  },
+  {
+   "id": "133",
+   "nameAr": "إملشيل",
+   "point": {
+    "latE5": 3215309,
+    "lngE5": -561394
+   },
+   "elevationM": 2162,
+   "sunriseAltitudeDeg": -2.381,
+   "sunsetAltitudeDeg": -2.146,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3215309,
+      "lngE5": -562453
+     },
+     "catalogueIds": [
+      2546187
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9333,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.7667,
+     "ISHA": 0.9333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "134",
+   "nameAr": "تنجداد",
+   "point": {
+    "latE5": 3150764,
+    "lngE5": -503293
+   },
+   "elevationM": 1005,
+   "sunriseAltitudeDeg": -1.967,
+   "sunsetAltitudeDeg": -1.841,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3150764,
+      "lngE5": -503293
+     },
+     "catalogueIds": [
+      2527925
+     ]
+    }
+   ]
+  },
+  {
+   "id": "135",
+   "nameAr": "الريش",
+   "point": {
+    "latE5": 3225644,
+    "lngE5": -450152
+   },
+   "elevationM": 1319,
+   "sunriseAltitudeDeg": -2.079,
+   "sunsetAltitudeDeg": -1.936,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3225644,
+      "lngE5": -450152
+     },
+     "catalogueIds": [
+      2538059
+     ]
+    }
+   ]
+  },
+  {
+   "id": "136",
+   "nameAr": "ميدلت",
+   "point": {
+    "latE5": 3268520,
+    "lngE5": -474485
+   },
+   "elevationM": 1462,
+   "sunriseAltitudeDeg": -2.166,
+   "sunsetAltitudeDeg": -1.995,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3268520,
+      "lngE5": -474512
+     },
+     "catalogueIds": [
+      2542227
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9667,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "137",
+   "nameAr": "زاكورة",
+   "point": {
+    "latE5": 3033241,
+    "lngE5": -583840
+   },
+   "elevationM": 733,
+   "sunriseAltitudeDeg": -1.854,
+   "sunsetAltitudeDeg": -1.746,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3033241,
+      "lngE5": -583840
+     },
+     "catalogueIds": [
+      2526452
+     ]
+    }
+   ]
+  },
+  {
+   "id": "138",
+   "nameAr": "ورزازات",
+   "point": {
+    "latE5": 3091894,
+    "lngE5": -692747
+   },
+   "elevationM": 1113,
+   "sunriseAltitudeDeg": -1.99,
+   "sunsetAltitudeDeg": -1.863,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3091894,
+      "lngE5": -689341
+     },
+     "catalogueIds": [
+      2540850
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9667,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "139",
+   "nameAr": "تنغير",
+   "point": {
+    "latE5": 3151472,
+    "lngE5": -553278
+   },
+   "elevationM": 1281,
+   "sunriseAltitudeDeg": -2.066,
+   "sunsetAltitudeDeg": -1.925,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3151472,
+      "lngE5": -553278
+     },
+     "catalogueIds": [
+      2527915
+     ]
+    }
+   ]
+  },
+  {
+   "id": "140",
+   "nameAr": "هسكورة",
+   "point": {
+    "latE5": 3106262,
+    "lngE5": -655920
+   },
+   "elevationM": 1226,
+   "sunriseAltitudeDeg": -2.012,
+   "sunsetAltitudeDeg": -1.885,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3106262,
+      "lngE5": -655250
+     },
+     "catalogueIds": [
+      2532628
+     ]
+    }
+   ]
+  },
+  {
+   "id": "141",
+   "nameAr": "قلعة مكونة",
+   "point": {
+    "latE5": 3124573,
+    "lngE5": -613260
+   },
+   "elevationM": 1431,
+   "sunriseAltitudeDeg": -2.116,
+   "sunsetAltitudeDeg": -1.967,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3124573,
+      "lngE5": -613260
+     },
+     "catalogueIds": [
+      2549981
+     ]
+    }
+   ]
+  },
+  {
+   "id": "142",
+   "nameAr": "أكدز",
+   "point": {
+    "latE5": 3069356,
+    "lngE5": -644628
+   },
+   "elevationM": 940,
+   "sunriseAltitudeDeg": -1.941,
+   "sunsetAltitudeDeg": -1.82,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3069356,
+      "lngE5": -644628
+     },
+     "catalogueIds": [
+      2561539
+     ]
+    }
+   ]
+  },
+  {
+   "id": "143",
+   "nameAr": "بومالن دادس",
+   "point": {
+    "latE5": 3137986,
+    "lngE5": -598819
+   },
+   "elevationM": 1539,
+   "sunriseAltitudeDeg": -2.15,
+   "sunsetAltitudeDeg": -1.996,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3137986,
+      "lngE5": -598819
+     },
+     "catalogueIds": [
+      2554322
+     ]
+    }
+   ]
+  },
+  {
+   "id": "144",
+   "nameAr": "النيف",
+   "point": {
+    "latE5": 3111411,
+    "lngE5": -517154
+   },
+   "elevationM": 871,
+   "sunriseAltitudeDeg": -1.913,
+   "sunsetAltitudeDeg": -1.796,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3111411,
+      "lngE5": -517154
+     },
+     "catalogueIds": [
+      2558398
+     ]
+    }
+   ]
+  },
+  {
+   "id": "145",
+   "nameAr": "أسول",
+   "point": {
+    "latE5": 3195286,
+    "lngE5": -520812
+   },
+   "elevationM": 1641,
+   "sunriseAltitudeDeg": -2.181,
+   "sunsetAltitudeDeg": -2.022,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3195286,
+      "lngE5": -520812
+     },
+     "catalogueIds": [
+      2556835
+     ]
+    }
+   ]
+  },
+  {
+   "id": "146",
+   "nameAr": "أمسمرير",
+   "point": {
+    "latE5": 3170160,
+    "lngE5": -580117
+   },
+   "elevationM": 1999,
+   "sunriseAltitudeDeg": -2.284,
+   "sunsetAltitudeDeg": -2.108,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3170160,
+      "lngE5": -580117
+     },
+     "catalogueIds": [
+      2541599
+     ]
+    }
+   ]
+  },
+  {
+   "id": "147",
+   "nameAr": "تازارين",
+   "point": {
+    "latE5": 3077788,
+    "lngE5": -556000
+   },
+   "elevationM": 858,
+   "sunriseAltitudeDeg": -1.908,
+   "sunsetAltitudeDeg": -1.792,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3077788,
+      "lngE5": -556000
+     },
+     "catalogueIds": [
+      2529101
+     ]
+    }
+   ]
+  },
+  {
+   "id": "148",
+   "nameAr": "سيدي إفني",
+   "point": {
+    "latE5": 2937975,
+    "lngE5": -1017299
+   },
+   "elevationM": 44,
+   "sunriseAltitudeDeg": -1.355,
+   "sunsetAltitudeDeg": -1.326,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2937975,
+      "lngE5": -1017299
+     },
+     "catalogueIds": [
+      2534515
+     ]
+    }
+   ]
+  },
+  {
+   "id": "149",
+   "nameAr": "كلميم",
+   "point": {
+    "latE5": 2898696,
+    "lngE5": -1005738
+   },
+   "elevationM": 301,
+   "sunriseAltitudeDeg": -1.617,
+   "sunsetAltitudeDeg": -1.546,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2898696,
+      "lngE5": -1005738
+     },
+     "catalogueIds": [
+      2548526
+     ]
+    }
+   ]
+  },
+  {
+   "id": "150",
+   "nameAr": "أسا",
+   "point": {
+    "latE5": 2860986,
+    "lngE5": -942986
+   },
+   "elevationM": 318,
+   "sunriseAltitudeDeg": -1.628,
+   "sunsetAltitudeDeg": -1.556,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2860986,
+      "lngE5": -942986
+     },
+     "catalogueIds": [
+      2556996
+     ]
+    }
+   ]
+  },
+  {
+   "id": "151",
+   "nameAr": "الزاك",
+   "point": {
+    "latE5": 2802210,
+    "lngE5": -929397
+   },
+   "elevationM": 410,
+   "sunriseAltitudeDeg": -1.687,
+   "sunsetAltitudeDeg": -1.606,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2802210,
+      "lngE5": -929397
+     },
+     "catalogueIds": [
+      2526459
+     ]
+    }
+   ]
+  },
+  {
+   "id": "152",
+   "nameAr": "طانطان",
+   "point": {
+    "latE5": 2843799,
+    "lngE5": -1110321
+   },
+   "elevationM": 45,
+   "sunriseAltitudeDeg": -1.357,
+   "sunsetAltitudeDeg": -1.328,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2843799,
+      "lngE5": -1110321
+     },
+     "catalogueIds": [
+      2530241
+     ]
+    }
+   ]
+  },
+  {
+   "id": "153",
+   "nameAr": "بويزكارن",
+   "point": {
+    "latE5": 2917705,
+    "lngE5": -971181
+   },
+   "elevationM": 635,
+   "sunriseAltitudeDeg": -1.808,
+   "sunsetAltitudeDeg": -1.708,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2917705,
+      "lngE5": -971181
+     },
+     "catalogueIds": [
+      2554594
+     ]
+    }
+   ]
+  },
+  {
+   "id": "154",
+   "nameAr": "المحبس",
+   "point": {
+    "latE5": 2741434,
+    "lngE5": -904785
+   },
+   "elevationM": 465,
+   "sunriseAltitudeDeg": -1.719,
+   "sunsetAltitudeDeg": -1.633,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2741434,
+      "lngE5": -904785
+     },
+     "catalogueIds": [
+      2462123
+     ]
+    }
+   ]
+  },
+  {
+   "id": "155",
+   "nameAr": "لمسيد",
+   "point": {
+    "latE5": 2653914,
+    "lngE5": -1383876
+   },
+   "elevationM": 60,
+   "sunriseAltitudeDeg": -1.382,
+   "sunsetAltitudeDeg": -1.349,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2653914,
+      "lngE5": -1383876
+     },
+     "catalogueIds": [
+      2462188
+     ]
+    }
+   ]
+  },
+  {
+   "id": "156",
+   "nameAr": "العيون",
+   "point": {
+    "latE5": 2715744,
+    "lngE5": -1322631
+   },
+   "elevationM": 68,
+   "sunriseAltitudeDeg": -1.199,
+   "sunsetAltitudeDeg": -1.19,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2714180,
+      "lngE5": -1318797
+     },
+     "catalogueIds": [
+      2462881
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "ma_habous_wayback_2024",
+      "from": "2024-05-10",
+      "to": "2024-06-07",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9661,
+     "SUNRISE": 0.9661,
+     "DHUHR": 0.9831,
+     "ASR": 0.9661,
+     "MAGHRIB": 0.9661,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      22,
+      7,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "157",
+   "nameAr": "السمارة",
+   "point": {
+    "latE5": 2673841,
+    "lngE5": -1167194
+   },
+   "elevationM": 188,
+   "sunriseAltitudeDeg": -1.528,
+   "sunsetAltitudeDeg": -1.472,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2673841,
+      "lngE5": -1167194
+     },
+     "catalogueIds": [
+      2461874
+     ]
+    }
+   ]
+  },
+  {
+   "id": "158",
+   "nameAr": "بوجدور",
+   "point": {
+    "latE5": 2613073,
+    "lngE5": -1448513
+   },
+   "elevationM": 28,
+   "sunriseAltitudeDeg": -1.323,
+   "sunsetAltitudeDeg": -1.299,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2613073,
+      "lngE5": -1448513
+     },
+     "catalogueIds": [
+      2463029
+     ]
+    }
+   ]
+  },
+  {
+   "id": "159",
+   "nameAr": "طرفاية",
+   "point": {
+    "latE5": 2793920,
+    "lngE5": -1292604
+   },
+   "elevationM": 5,
+   "sunriseAltitudeDeg": -1.248,
+   "sunsetAltitudeDeg": -1.236,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2793920,
+      "lngE5": -1292604
+     },
+     "catalogueIds": [
+      2529923
+     ]
+    }
+   ]
+  },
+  {
+   "id": "160",
+   "nameAr": "تفاريتي",
+   "point": {
+    "latE5": 2615511,
+    "lngE5": -1056214
+   },
+   "elevationM": 486,
+   "sunriseAltitudeDeg": -1.89,
+   "sunsetAltitudeDeg": -1.778,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2615790,
+      "lngE5": -1055889
+     },
+     "catalogueIds": [
+      2461667
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9333,
+     "ASR": 0.9,
+     "MAGHRIB": 0.8667,
+     "ISHA": 0.8333
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "161",
+   "nameAr": "بوكراع",
+   "point": {
+    "latE5": 2635389,
+    "lngE5": -1278389
+   },
+   "elevationM": 199,
+   "sunriseAltitudeDeg": -1.537,
+   "sunsetAltitudeDeg": -1.48,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2635389,
+      "lngE5": -1278389
+     },
+     "catalogueIds": [
+      2463090
+     ]
+    }
+   ]
+  },
+  {
+   "id": "162",
+   "nameAr": "كلتة زمور",
+   "point": {
+    "latE5": 2514276,
+    "lngE5": -1237168
+   },
+   "elevationM": 419,
+   "sunriseAltitudeDeg": -1.693,
+   "sunsetAltitudeDeg": -1.61,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2514276,
+      "lngE5": -1237168
+     },
+     "catalogueIds": [
+      9645313
+     ]
+    }
+   ]
+  },
+  {
+   "id": "163",
+   "nameAr": "أمكالة",
+   "point": {
+    "latE5": 2628729,
+    "lngE5": -1113547
+   },
+   "elevationM": 279,
+   "sunriseAltitudeDeg": -1.601,
+   "sunsetAltitudeDeg": -1.533,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2628729,
+      "lngE5": -1113547
+     },
+     "catalogueIds": [
+      13608327
+     ]
+    }
+   ]
+  },
+  {
+   "id": "164",
+   "nameAr": "أخفنير",
+   "point": {
+    "latE5": 2809455,
+    "lngE5": -1205157
+   },
+   "elevationM": 15,
+   "sunriseAltitudeDeg": -1.288,
+   "sunsetAltitudeDeg": -1.27,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2809455,
+      "lngE5": -1205157
+     },
+     "catalogueIds": [
+      9645312
+     ]
+    }
+   ]
+  },
+  {
+   "id": "165",
+   "nameAr": "الداخلة",
+   "point": {
+    "latE5": 2368477,
+    "lngE5": -1596840
+   },
+   "elevationM": 6,
+   "sunriseAltitudeDeg": -1.263,
+   "sunsetAltitudeDeg": -1.208,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2368477,
+      "lngE5": -1595798
+     },
+     "catalogueIds": [
+      2463447
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ma_habous_html",
+      "from": "2026-09-13",
+      "to": "2026-10-12",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9333,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9667
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      12,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "166",
+   "nameAr": "الكويرة",
+   "point": {
+    "latE5": 2083228,
+    "lngE5": -1708988
+   },
+   "elevationM": 9,
+   "sunriseAltitudeDeg": -1.267,
+   "sunsetAltitudeDeg": -1.252,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2083228,
+      "lngE5": -1708988
+     },
+     "catalogueIds": [
+      2462651
+     ]
+    }
+   ]
+  },
+  {
+   "id": "167",
+   "nameAr": "أوسرد",
+   "point": {
+    "latE5": 2255400,
+    "lngE5": -1433000
+   },
+   "elevationM": 306,
+   "sunriseAltitudeDeg": -1.62,
+   "sunsetAltitudeDeg": -1.549,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2255400,
+      "lngE5": -1433000
+     },
+     "catalogueIds": [
+      2463161
+     ]
+    }
+   ]
+  },
+  {
+   "id": "168",
+   "nameAr": "بئر كندوز",
+   "point": {
+    "latE5": 2160336,
+    "lngE5": -1645018
+   },
+   "elevationM": 36,
+   "sunriseAltitudeDeg": -1.34,
+   "sunsetAltitudeDeg": -1.313,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2160336,
+      "lngE5": -1645018
+     },
+     "catalogueIds": [
+      2463112
+     ]
+    }
+   ]
+  },
+  {
+   "id": "169",
+   "nameAr": "بئر أنزاران",
+   "point": {
+    "latE5": 2389000,
+    "lngE5": -1453603
+   },
+   "elevationM": 190,
+   "sunriseAltitudeDeg": -1.53,
+   "sunsetAltitudeDeg": -1.473,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2389000,
+      "lngE5": -1453603
+     },
+     "catalogueIds": [
+      2463113
+     ]
+    }
+   ]
+  },
+  {
+   "id": "301",
+   "nameAr": "خميس سيدي عبد الجليل",
+   "point": {
+    "latE5": 3408145,
+    "lngE5": -458880
+   },
+   "elevationM": 294,
+   "sunriseAltitudeDeg": -1.648,
+   "sunsetAltitudeDeg": -1.599,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3409625,
+      "lngE5": -458177
+     },
+     "catalogueIds": [
+      2537133
+     ]
+    }
+   ]
+  },
+  {
+   "id": "302",
+   "nameAr": "أولاد عياد",
+   "point": {
+    "latE5": 3220000,
+    "lngE5": -680000
+   },
+   "elevationM": 450,
+   "sunriseAltitudeDeg": -1.711,
+   "sunsetAltitudeDeg": -1.626,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3220000,
+      "lngE5": -680000
+     },
+     "catalogueIds": [
+      2540207
+     ]
+    }
+   ]
+  },
+  {
+   "id": "303",
+   "nameAr": "تاهلة",
+   "point": {
+    "latE5": 3404965,
+    "lngE5": -442235
+   },
+   "elevationM": 606,
+   "sunriseAltitudeDeg": -1.609,
+   "sunsetAltitudeDeg": -1.559,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3404965,
+      "lngE5": -442162
+     },
+     "catalogueIds": [
+      2531480
+     ]
+    }
+   ]
+  },
+  {
+   "id": "304",
+   "nameAr": "مطماطة",
+   "point": {
+    "latE5": 3409914,
+    "lngE5": -455219
+   },
+   "elevationM": 306,
+   "sunriseAltitudeDeg": -1.62,
+   "sunsetAltitudeDeg": -1.549,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3409914,
+      "lngE5": -455219
+     },
+     "catalogueIds": [
+      2542957
+     ]
+    }
+   ]
+  },
+  {
+   "id": "305",
+   "nameAr": "إيمنتانوت",
+   "point": {
+    "latE5": 3117213,
+    "lngE5": -884728
+   },
+   "elevationM": 896,
+   "sunriseAltitudeDeg": -1.923,
+   "sunsetAltitudeDeg": -1.805,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3117213,
+      "lngE5": -884728
+     },
+     "catalogueIds": [
+      2546128
+     ]
+    }
+   ]
+  },
+  {
+   "id": "306",
+   "nameAr": "سيدي غانم",
+   "point": {
+    "latE5": 3131025,
+    "lngE5": -945983
+   },
+   "elevationM": 779,
+   "sunriseAltitudeDeg": -1.893,
+   "sunsetAltitudeDeg": -1.777,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3131025,
+      "lngE5": -945684
+     },
+     "catalogueIds": [
+      10924503
+     ]
+    }
+   ]
+  },
+  {
+   "id": "307",
+   "nameAr": "تفنتان",
+   "point": {
+    "latE5": 3134750,
+    "lngE5": -753770
+   },
+   "elevationM": 1693,
+   "sunriseAltitudeDeg": -1.533,
+   "sunsetAltitudeDeg": -1.479,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3134750,
+      "lngE5": -753770
+     }
+    }
+   ]
+  },
+  {
+   "id": "308",
+   "nameAr": "آيت القاق",
+   "point": {
+    "latE5": 3122931,
+    "lngE5": -778932
+   },
+   "elevationM": 2009,
+   "sunriseAltitudeDeg": -2.509,
+   "sunsetAltitudeDeg": -2.238,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3122931,
+      "lngE5": -781274
+     },
+     "catalogueIds": [
+      10950408
+     ]
+    }
+   ]
+  },
+  {
+   "id": "309",
+   "nameAr": "أكدال أملشيل",
+   "point": {
+    "latE5": 3204190,
+    "lngE5": -549410
+   },
+   "elevationM": 2306,
+   "sunriseAltitudeDeg": -2.393,
+   "sunsetAltitudeDeg": -2.178,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3204190,
+      "lngE5": -549410
+     }
+    }
+   ]
+  },
+  {
+   "id": "310",
+   "nameAr": "اكودال املشيل ميدلت",
+   "point": {
+    "latE5": 3204756,
+    "lngE5": -549120
+   },
+   "elevationM": 2352,
+   "sunriseAltitudeDeg": -1.992,
+   "sunsetAltitudeDeg": -1.878,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3200881,
+      "lngE5": -549138
+     },
+     "catalogueIds": [
+      2561479
+     ]
+    }
+   ]
+  },
+  {
+   "id": "311",
+   "nameAr": "أكايوار",
+   "point": {
+    "latE5": 3124100,
+    "lngE5": -781730
+   },
+   "elevationM": 2009,
+   "sunriseAltitudeDeg": -1.976,
+   "sunsetAltitudeDeg": -1.864,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3124100,
+      "lngE5": -781730
+     }
+    }
+   ]
+  },
+  {
+   "id": "312",
+   "nameAr": "عين العودة",
+   "point": {
+    "latE5": 3380333,
+    "lngE5": -679461
+   },
+   "elevationM": 237,
+   "sunriseAltitudeDeg": -1.569,
+   "sunsetAltitudeDeg": -1.506,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3380333,
+      "lngE5": -679461
+     },
+     "catalogueIds": [
+      2560939
+     ]
+    }
+   ]
+  },
+  {
+   "id": "313",
+   "nameAr": "أسكين",
+   "point": {
+    "latE5": 3132812,
+    "lngE5": -775941
+   },
+   "elevationM": 988,
+   "sunriseAltitudeDeg": -1.96,
+   "sunsetAltitudeDeg": -1.836,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3132812,
+      "lngE5": -775941
+     },
+     "catalogueIds": [
+      2557058
+     ]
+    }
+   ]
+  },
+  {
+   "id": "314",
+   "nameAr": "آيت ورير",
+   "point": {
+    "latE5": 3156517,
+    "lngE5": -766163
+   },
+   "elevationM": 671,
+   "sunriseAltitudeDeg": -1.825,
+   "sunsetAltitudeDeg": -1.722,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3156517,
+      "lngE5": -766163
+     },
+     "catalogueIds": [
+      2559217
+     ]
+    }
+   ]
+  },
+  {
+   "id": "315",
+   "nameAr": "زاوية مولاي ابراهيم",
+   "point": {
+    "latE5": 3128785,
+    "lngE5": -796830
+   },
+   "elevationM": 1239,
+   "sunriseAltitudeDeg": -2.052,
+   "sunsetAltitudeDeg": -1.913,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3128785,
+      "lngE5": -796830
+     },
+     "catalogueIds": [
+      2541830
+     ]
+    }
+   ]
+  },
+  {
+   "id": "316",
+   "nameAr": "تولكولت",
+   "point": {
+    "latE5": 3122111,
+    "lngE5": -906953
+   },
+   "elevationM": 1043,
+   "sunriseAltitudeDeg": -1.978,
+   "sunsetAltitudeDeg": -1.859,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3122218,
+      "lngE5": -907943
+     },
+     "catalogueIds": [
+      2530160
+     ]
+    }
+   ]
+  },
+  {
+   "id": "317",
+   "nameAr": "إيكس",
+   "point": {
+    "latE5": 3096010,
+    "lngE5": -785750
+   },
+   "elevationM": 1546,
+   "sunriseAltitudeDeg": -2.487,
+   "sunsetAltitudeDeg": -2.23,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3096010,
+      "lngE5": -785750
+     }
+    }
+   ]
+  },
+  {
+   "id": "318",
+   "nameAr": "كرس",
+   "point": {
+    "latE5": 3146790,
+    "lngE5": -763620
+   },
+   "elevationM": 890,
+   "sunriseAltitudeDeg": -2.284,
+   "sunsetAltitudeDeg": -2.104,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3146790,
+      "lngE5": -763620
+     }
+    }
+   ]
+  },
+  {
+   "id": "319",
+   "nameAr": "تيسنت",
+   "point": {
+    "latE5": 2989826,
+    "lngE5": -731619
+   },
+   "elevationM": 560,
+   "sunriseAltitudeDeg": -1.771,
+   "sunsetAltitudeDeg": -1.676,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2989826,
+      "lngE5": -731619
+     },
+     "catalogueIds": [
+      2527307
+     ]
+    }
+   ]
+  },
+  {
+   "id": "320",
+   "nameAr": "فم زكيد",
+   "point": {
+    "latE5": 3008792,
+    "lngE5": -687119
+   },
+   "elevationM": 715,
+   "sunriseAltitudeDeg": -1.846,
+   "sunsetAltitudeDeg": -1.739,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3008792,
+      "lngE5": -687119
+     },
+     "catalogueIds": [
+      2548769
+     ]
+    }
+   ]
+  },
+  {
+   "id": "321",
+   "nameAr": "قصر إيش",
+   "point": {
+    "latE5": 3251244,
+    "lngE5": -100340
+   },
+   "elevationM": 1177,
+   "sunriseAltitudeDeg": -2.03,
+   "sunsetAltitudeDeg": -1.895,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3251244,
+      "lngE5": -100340
+     },
+     "catalogueIds": [
+      2547514
+     ]
+    }
+   ]
+  },
+  {
+   "id": "322",
+   "nameAr": "إيمين ثلاث",
+   "point": {
+    "latE5": 3159710,
+    "lngE5": -653130
+   },
+   "elevationM": 1819,
+   "sunriseAltitudeDeg": -1.883,
+   "sunsetAltitudeDeg": -1.788,
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3159710,
+      "lngE5": -653130
+     }
+    }
+   ]
+  }
+ ]
+}

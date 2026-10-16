@@ -7,8 +7,11 @@ on:
       - "multiplatform/**"
       - "test-data/islamic-calendar/**"
       - "test-data/inm-prayer-times/**"
+      - "test-data/engine-reference/**"
       - "data/prayer-formula/**"
       - "docs/csv/**"
+      - "scripts/prayer_formula/**"
+      - "tv-app/app/src/main/assets/dashboard/formula.js"
       - ".github/workflows/desktop-tests.yml"
   pull_request:
     branches: [main]
@@ -16,8 +19,11 @@ on:
       - "multiplatform/**"
       - "test-data/islamic-calendar/**"
       - "test-data/inm-prayer-times/**"
+      - "test-data/engine-reference/**"
       - "data/prayer-formula/**"
       - "docs/csv/**"
+      - "scripts/prayer_formula/**"
+      - "tv-app/app/src/main/assets/dashboard/formula.js"
       - ".github/workflows/desktop-tests.yml"
 
 env:
@@ -50,6 +56,23 @@ jobs:
 
       - name: Run shared tests (commonTest on JVM)
         run: ./gradlew :shared:javaTest
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Check the INM reference against the published tables
+        working-directory: .
+        run: python scripts/prayer_formula/inm_prayer_times.py --verify
+
+      - name: Check the TV dashboard's formula
+        working-directory: .
+        run: node scripts/prayer_formula/check_dashboard_formula.js
+
+      - name: Check the shared engine's independent reference
+        working-directory: .
+        run: python -m unittest scripts/prayer_formula/test_prayer_engine_reference.py
 
       - name: Upload test results
         if: always()

@@ -1,0 +1,10935 @@
+{
+ "schema": 1,
+ "authority": "dz_marw",
+ "methodId": "dz_marw",
+ "country": "DZ",
+ "mapping": "NEAREST",
+ "byAdmin1": true,
+ "source": "Algeria's Ministry of Religious Affairs and Endowments: yearly calendars 1447 (Algiers) and 1448 (Algiers, Djelfa, Adrar), three reference tables and 67 places' monthly offsets",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "MARW calendars 1448 (Alger.pdf, Djelfa.pdf, Adrar.pdf): reference tables and monthly offsets",
+    "from": "2026-06-16",
+    "to": "2027-06-05",
+    "days": 355,
+    "zones": 70,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "MARW calendars 1448: all 70 places, Hijri months split odd/even",
+    "from": "2026-06-16",
+    "to": "2027-06-05",
+    "days": 355,
+    "zones": 70,
+    "monthSplit": true
+   },
+   {
+    "source": "MARW calendar 1447 (Alger.pdf): Algiers and its 25 places",
+    "from": "2025-06-27",
+    "to": "2026-06-15",
+    "days": 354,
+    "zones": 26,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.918,
+   "SUNRISE": 0.9345,
+   "DHUHR": 0.9736,
+   "ASR": 0.9018,
+   "MAGHRIB": 0.934,
+   "ISHA": 0.9024
+  },
+  "within1": {
+   "FAJR": 0.9996,
+   "SUNRISE": 0.9996,
+   "DHUHR": 0.9999,
+   "ASR": 0.999,
+   "MAGHRIB": 0.9995,
+   "ISHA": 0.9994
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    2976,
+    2688,
+    2976,
+    2880,
+    2976,
+    1894,
+    2976,
+    2976,
+    2880,
+    2976,
+    2880,
+    2976
+   ],
+   "SUNRISE": [
+    2976,
+    2688,
+    2976,
+    2880,
+    2976,
+    1894,
+    2976,
+    2976,
+    2880,
+    2976,
+    2880,
+    2976
+   ],
+   "DHUHR": [
+    2976,
+    2688,
+    2976,
+    2880,
+    2976,
+    1894,
+    2976,
+    2976,
+    2880,
+    2976,
+    2880,
+    2976
+   ],
+   "ASR": [
+    2976,
+    2688,
+    2976,
+    2880,
+    2976,
+    1894,
+    2976,
+    2976,
+    2880,
+    2976,
+    2880,
+    2976
+   ],
+   "MAGHRIB": [
+    2976,
+    2688,
+    2976,
+    2880,
+    2976,
+    1894,
+    2976,
+    2976,
+    2880,
+    2976,
+    2880,
+    2976
+   ],
+   "ISHA": [
+    2976,
+    2558,
+    2976,
+    2724,
+    2976,
+    1894,
+    2976,
+    2976,
+    2880,
+    2976,
+    2880,
+    2976
+   ]
+  },
+  "heldOutRamadanDays": 59,
+  "quirkDays": 11,
+  "maxDiffMin": 61
+ },
+ "hijriMonthStarts": {
+  "1447": [
+   "2025-06-27",
+   "2025-07-26",
+   "2025-08-25",
+   "2025-09-23",
+   "2025-10-23",
+   "2025-11-22",
+   "2025-12-21",
+   "2026-01-20",
+   "2026-02-19",
+   "2026-03-20",
+   "2026-04-19",
+   "2026-05-18"
+  ],
+  "1448": [
+   "2026-06-16",
+   "2026-07-16",
+   "2026-08-14",
+   "2026-09-13",
+   "2026-10-12",
+   "2026-11-11",
+   "2026-12-11",
+   "2027-01-09",
+   "2027-02-08",
+   "2027-03-10",
+   "2027-04-08",
+   "2027-05-08"
+  ]
+ },
+ "zones": [
+  {
+   "id": "algiers",
+   "nameAr": "الجزائر",
+   "point": {
+    "latE5": 3676523,
+    "lngE5": 305897
+   },
+   "admin1": [
+    "01"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3677623,
+      "lngE5": 305997
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): reference table",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): reference table, Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): reference table",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "djelfa",
+   "nameAr": "الجلفة",
+   "point": {
+    "latE5": 3467378,
+    "lngE5": 325878
+   },
+   "admin1": [
+    "22"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3467278,
+      "lngE5": 326278
+     },
+     "catalogueIds": [
+      2500017
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): reference table",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): reference table, Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "adrar",
+   "nameAr": "أدرار",
+   "point": {
+    "latE5": 2787417,
+    "lngE5": -27789
+   },
+   "halfMonthWindows": true,
+   "admin1": [
+    "34"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2787417,
+      "lngE5": -29389
+     },
+     "catalogueIds": [
+      2508813
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): reference table",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): reference table, Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "el-tarf",
+   "nameAr": "الطارف",
+   "point": {
+    "latE5": 3676644,
+    "lngE5": 831661
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "44"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3676694,
+      "lngE5": 831361
+     },
+     "catalogueIds": [
+      2497323
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): El Tarf's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): El Tarf (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): El Tarf (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "souk-ahras",
+   "nameAr": "سوق أهراس",
+   "point": {
+    "latE5": 3628239,
+    "lngE5": 796561
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "52"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3628639,
+      "lngE5": 795111
+     },
+     "catalogueIds": [
+      2479215
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Souk Ahras's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Souk Ahras (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Souk Ahras (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9154,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9986,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "annaba",
+   "nameAr": "عنابة",
+   "point": {
+    "latE5": 3690000,
+    "lngE5": 776667
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "37"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3690000,
+      "lngE5": 776667
+     },
+     "catalogueIds": [
+      2506999
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Annaba's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Annaba (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Annaba (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "guelma",
+   "nameAr": "قالمة",
+   "point": {
+    "latE5": 3646944,
+    "lngE5": 743883
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "23"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3646194,
+      "lngE5": 742583
+     },
+     "catalogueIds": [
+      2495662
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Guelma's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Guelma (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Guelma (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.8745,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9972,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "oum-el-bouaghi",
+   "nameAr": "أم البواقي",
+   "point": {
+    "latE5": 3587778,
+    "lngE5": 712133
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "29"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3587528,
+      "lngE5": 711333
+     },
+     "catalogueIds": [
+      2484620
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Oum El Bouaghi's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Oum El Bouaghi (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Oum El Bouaghi (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.8759,
+     "MAGHRIB": 0.9083,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9958,
+     "MAGHRIB": 0.9972,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "skikda",
+   "nameAr": "سكيكدة",
+   "point": {
+    "latE5": 3687361,
+    "lngE5": 691117
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "31"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3687611,
+      "lngE5": 690917
+     },
+     "catalogueIds": [
+      2479536
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Skikda's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Skikda (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Skikda (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "constantine",
+   "nameAr": "قسنطينة",
+   "point": {
+    "latE5": 3635350,
+    "lngE5": 660822
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "04"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3636500,
+      "lngE5": 661472
+     },
+     "catalogueIds": [
+      2501152
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Constantine's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Constantine (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Constantine (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.8773,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.8281
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9958,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9986
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "mila",
+   "nameAr": "ميلة",
+   "point": {
+    "latE5": 3644928,
+    "lngE5": 627494
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "48"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3645028,
+      "lngE5": 626444
+     },
+     "catalogueIds": [
+      2487452
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Mila's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Mila (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Mila (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9111,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "jijel",
+   "nameAr": "جيجل",
+   "point": {
+    "latE5": 3682333,
+    "lngE5": 577083
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "24"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3682083,
+      "lngE5": 576333
+     },
+     "catalogueIds": [
+      2492913
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Jijel's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Jijel (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Jijel (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.8872,
+     "DHUHR": 0.9873,
+     "ASR": 0.8378,
+     "MAGHRIB": 0.8674,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9929,
+     "MAGHRIB": 0.9972,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "setif",
+   "nameAr": "سطيف",
+   "point": {
+    "latE5": 3619361,
+    "lngE5": 542011
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "12"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3619111,
+      "lngE5": 541361
+     },
+     "catalogueIds": [
+      2481700
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Setif's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Setif (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Setif (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.8759,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.8696
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9958,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9971
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "bejaia",
+   "nameAr": "بجاية",
+   "point": {
+    "latE5": 3674983,
+    "lngE5": 507467
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "18"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3675583,
+      "lngE5": 508417
+     },
+     "catalogueIds": [
+      2505329
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Bejaia's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Bejaia (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Bejaia (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8914,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "bordj-bou-arreridj",
+   "nameAr": "برج بوعريريج",
+   "point": {
+    "latE5": 3607139,
+    "lngE5": 477139
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "39"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3607389,
+      "lngE5": 476139
+     },
+     "catalogueIds": [
+      2503701
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Bordj Bou Arreridj's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Bordj Bou Arreridj (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Bordj Bou Arreridj (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8984,
+     "SUNRISE": 0.9168,
+     "DHUHR": 0.9873,
+     "ASR": 0.8745,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "msila",
+   "nameAr": "المسيلة",
+   "point": {
+    "latE5": 3570089,
+    "lngE5": 454922
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "27"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3570889,
+      "lngE5": 453722
+     },
+     "catalogueIds": [
+      2486690
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): M'Sila's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): M'Sila (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): M'Sila (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.8787,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.8696
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9971
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "tizi-ouzou",
+   "nameAr": "تيزي وزو",
+   "point": {
+    "latE5": 3671167,
+    "lngE5": 405983
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "14"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3671167,
+      "lngE5": 404583
+     },
+     "catalogueIds": [
+      2475744
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Tizi Ouzou's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Tizi Ouzou (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Tizi Ouzou (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9182,
+     "DHUHR": 0.6559,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9972,
+     "DHUHR": 0.9972,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "dellys",
+   "nameAr": "دلس",
+   "point": {
+    "latE5": 3691644,
+    "lngE5": 391606
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "40"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3691694,
+      "lngE5": 391306
+     },
+     "catalogueIds": [
+      2500583
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Dellys's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Dellys (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Dellys (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8984,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "bouira",
+   "nameAr": "البويرة",
+   "point": {
+    "latE5": 3637472,
+    "lngE5": 390244
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "21"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3637472,
+      "lngE5": 390194
+     },
+     "catalogueIds": [
+      2502958
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Bouira's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Bouira (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Bouira (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.8787,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "boumerdes",
+   "nameAr": "بومرداس",
+   "point": {
+    "latE5": 3676639,
+    "lngE5": 347694
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "40"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3676639,
+      "lngE5": 347694
+     },
+     "catalogueIds": [
+      2474141
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Boumerdes's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Boumerdes (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Boumerdes (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "blida",
+   "nameAr": "البليدة",
+   "point": {
+    "latE5": 3647600,
+    "lngE5": 284350
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "20"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3647000,
+      "lngE5": 282750
+     },
+     "catalogueIds": [
+      2503769
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Blida's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Blida (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Blida (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.89,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 0.9986,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "medea",
+   "nameAr": "المدية",
+   "point": {
+    "latE5": 3626417,
+    "lngE5": 275439
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "06"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3626417,
+      "lngE5": 275389
+     },
+     "catalogueIds": [
+      2488835
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Medea's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Medea (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Medea (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8984,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "tipaza",
+   "nameAr": "تيبازة",
+   "point": {
+    "latE5": 3658972,
+    "lngE5": 244889
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "55"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3658972,
+      "lngE5": 244889
+     },
+     "catalogueIds": [
+      2476028
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Tipaza's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Tipaza (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Tipaza (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.914,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.8717,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9944,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "ain-defla",
+   "nameAr": "عين الدفلى",
+   "point": {
+    "latE5": 3626339,
+    "lngE5": 197428
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "35"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3626389,
+      "lngE5": 196778
+     },
+     "catalogueIds": [
+      2508228
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Ain Defla's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Ain Defla (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Ain Defla (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.8491,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.8739
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9958,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "chlef",
+   "nameAr": "الشلف",
+   "point": {
+    "latE5": 3616500,
+    "lngE5": 133444
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "41"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3616500,
+      "lngE5": 133444
+     },
+     "catalogueIds": [
+      2498611
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Chlef's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Chlef (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Chlef (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8956,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.8575,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.9083
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9929,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "relizane",
+   "nameAr": "غليزان",
+   "point": {
+    "latE5": 3573072,
+    "lngE5": 55933
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "51"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3573722,
+      "lngE5": 55583
+     },
+     "catalogueIds": [
+      2483668
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Relizane's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Relizane (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Relizane (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.7433,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.8682
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9971
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "mostaganem",
+   "nameAr": "مستغانم",
+   "point": {
+    "latE5": 3593161,
+    "lngE5": 9317
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "07"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3593111,
+      "lngE5": 8917
+     },
+     "catalogueIds": [
+      2487134
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Mostaganem's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Mostaganem (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Mostaganem (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9309,
+     "SUNRISE": 0.9563,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9083,
+     "ISHA": 0.8682
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9972,
+     "ISHA": 0.9971
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "oran",
+   "nameAr": "وهران",
+   "point": {
+    "latE5": 3569489,
+    "lngE5": -62583
+   },
+   "baseZoneId": "algiers",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "09"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3569889,
+      "lngE5": -63583
+     },
+     "catalogueIds": [
+      2485926
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Oran's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Alger.pdf): Oran (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "MARW calendar 1447 (Alger.pdf): Oran (reference minute + printed offset)",
+      "from": "2025-06-27",
+      "to": "2026-06-15",
+      "days": 354,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8928,
+     "SUNRISE": 0.921,
+     "DHUHR": 0.9873,
+     "ASR": 0.914,
+     "MAGHRIB": 0.9478,
+     "ISHA": 0.8854
+    },
+    "within1": {
+     "FAJR": 0.9972,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "SUNRISE": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "DHUHR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ASR": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "MAGHRIB": [
+      62,
+      56,
+      62,
+      60,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ],
+     "ISHA": [
+      62,
+      51,
+      62,
+      54,
+      62,
+      39,
+      62,
+      62,
+      60,
+      62,
+      60,
+      62
+     ]
+    },
+    "heldOutRamadanDays": 59,
+    "quirkDays": 11,
+    "maxDiffMin": 61
+   }
+  },
+  {
+   "id": "tebessa",
+   "nameAr": "تبسة",
+   "point": {
+    "latE5": 3540867,
+    "lngE5": 812817
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "33"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3540417,
+      "lngE5": 812417
+     },
+     "catalogueIds": [
+      2477461
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tebessa's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tebessa (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "bir-el-ater",
+   "nameAr": "بئر العاتر",
+   "point": {
+    "latE5": 3474472,
+    "lngE5": 806000
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "33"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3474472,
+      "lngE5": 806000
+     },
+     "catalogueIds": [
+      2503878
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Bir el Ater's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Bir el Ater (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "khenchela",
+   "nameAr": "خنشلة",
+   "point": {
+    "latE5": 3543883,
+    "lngE5": 715333
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "47"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3543583,
+      "lngE5": 714333
+     },
+     "catalogueIds": [
+      2491889
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Khenchela's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Khenchela (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.862,
+     "MAGHRIB": 0.8535,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9972,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "el-oued",
+   "nameAr": "الوادي",
+   "point": {
+    "latE5": 3335783,
+    "lngE5": 687556
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "43"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3335583,
+      "lngE5": 686306
+     },
+     "catalogueIds": [
+      2497411
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): El Oued's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): El Oued (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.8704,
+     "ISHA": 0.8592
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "batna",
+   "nameAr": "باتنة",
+   "point": {
+    "latE5": 3555583,
+    "lngE5": 617389
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "03"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3555583,
+      "lngE5": 617389
+     },
+     "catalogueIds": [
+      2505572
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Batna's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Batna (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "touggourt",
+   "nameAr": "تقرت",
+   "point": {
+    "latE5": 3311083,
+    "lngE5": 607100
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "TG"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3311083,
+      "lngE5": 607000
+     },
+     "catalogueIds": [
+      2475475
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Touggourt's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Touggourt (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.8479
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9972
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "biskra",
+   "nameAr": "بسكرة",
+   "point": {
+    "latE5": 3485078,
+    "lngE5": 574306
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "19"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3485028,
+      "lngE5": 572806
+     },
+     "catalogueIds": [
+      2503826
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Biskra's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Biskra (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.862,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 0.9944,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "bou-saada",
+   "nameAr": "بوسعادة",
+   "point": {
+    "latE5": 3521233,
+    "lngE5": 418389
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "27"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3520833,
+      "lngE5": 417389
+     },
+     "catalogueIds": [
+      2502385
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Bou Saada's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Bou Saada (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ain-el-melh",
+   "nameAr": "عين الملح",
+   "point": {
+    "latE5": 3484689,
+    "lngE5": 417961
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "27"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3484139,
+      "lngE5": 416361
+     },
+     "catalogueIds": [
+      2508130
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ain El Melh's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ain El Melh (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.8592,
+     "DHUHR": 0.9803,
+     "ASR": 0.8535,
+     "MAGHRIB": 0.8535,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9972,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "hassi-rmel",
+   "nameAr": "حاسي الرمل",
+   "point": {
+    "latE5": 3293011,
+    "lngE5": 327661
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "25"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3293861,
+      "lngE5": 325861
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Hassi R'Mel's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Hassi R'Mel (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8704,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.8423,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.7775
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9944,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9944
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "laghouat",
+   "nameAr": "الأغواط",
+   "point": {
+    "latE5": 3380000,
+    "lngE5": 288600
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "25"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3380000,
+      "lngE5": 286500
+     },
+     "catalogueIds": [
+      2491191
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Laghouat's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Laghouat (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ain-oussera",
+   "nameAr": "عين وسارة",
+   "point": {
+    "latE5": 3545339,
+    "lngE5": 291483
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "22"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3545139,
+      "lngE5": 290583
+     },
+     "catalogueIds": [
+      2507972
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ain Oussera's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ain Oussera (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.8648,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9915,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "tissemsilt",
+   "nameAr": "تيسمسيلت",
+   "point": {
+    "latE5": 3561472,
+    "lngE5": 181956
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "56"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3560722,
+      "lngE5": 181056
+     },
+     "catalogueIds": [
+      2475860
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tissemsilt's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tissemsilt (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.8648,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.8535
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9915,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "tiaret",
+   "nameAr": "تيارت",
+   "point": {
+    "latE5": 3537833,
+    "lngE5": 133394
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "13"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3537083,
+      "lngE5": 131694
+     },
+     "catalogueIds": [
+      2476897
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tiaret's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tiaret (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.8451,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9944,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "el-bayadh",
+   "nameAr": "البيض",
+   "point": {
+    "latE5": 3368456,
+    "lngE5": 102417
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "42"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3368306,
+      "lngE5": 101917
+     },
+     "catalogueIds": [
+      2498543
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): El Bayadh's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): El Bayadh (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.8507
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9972
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "saida",
+   "nameAr": "سعيدة",
+   "point": {
+    "latE5": 3484478,
+    "lngE5": 15917
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "10"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3483028,
+      "lngE5": 15167
+     },
+     "catalogueIds": [
+      2482572
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Saida's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Saida (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.8732,
+     "DHUHR": 0.9803,
+     "ASR": 0.8451,
+     "MAGHRIB": 0.8648,
+     "ISHA": 0.8451
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9944,
+     "MAGHRIB": 0.9887,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "mascara",
+   "nameAr": "معسكر",
+   "point": {
+    "latE5": 3540539,
+    "lngE5": 14778
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "26"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3539639,
+      "lngE5": 14028
+     },
+     "catalogueIds": [
+      2490098
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Mascara's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Mascara (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8563,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.8592
+    },
+    "within1": {
+     "FAJR": 0.9972,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "naama",
+   "nameAr": "النعامة",
+   "point": {
+    "latE5": 3326917,
+    "lngE5": -31017
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "49"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3326667,
+      "lngE5": -31667
+     },
+     "catalogueIds": [
+      2486523
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Naama's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Naama (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.862,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.8423,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9972,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "sidi-bel-abbes",
+   "nameAr": "سيدي بلعباس",
+   "point": {
+    "latE5": 3520672,
+    "lngE5": -62083
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "30"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3518972,
+      "lngE5": -63083
+     },
+     "catalogueIds": [
+      2481007
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Sidi Bel Abbes's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Sidi Bel Abbes (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8704,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ben-badis",
+   "nameAr": "ابن باديس",
+   "point": {
+    "latE5": 3495622,
+    "lngE5": -90783
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "30"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3495222,
+      "lngE5": -91583
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ben Badis (Sidi Bel Abbes)'s monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ben Badis (Sidi Bel Abbes) (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.8451,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9944,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "tlemcen",
+   "nameAr": "تلمسان",
+   "point": {
+    "latE5": 3488133,
+    "lngE5": -130850
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "15"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3487833,
+      "lngE5": -131500
+     },
+     "catalogueIds": [
+      2475687
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tlemcen's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Tlemcen (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.862
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9859
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "ain-temouchent",
+   "nameAr": "عين تموشنت",
+   "point": {
+    "latE5": 3530022,
+    "lngE5": -113228
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "36"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3529722,
+      "lngE5": -114028
+     },
+     "catalogueIds": [
+      2507901
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ain Temouchent's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ain Temouchent (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.8732,
+     "DHUHR": 0.9803,
+     "ASR": 0.8535,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "sebdou",
+   "nameAr": "سبدو",
+   "point": {
+    "latE5": 3463694,
+    "lngE5": -133139
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "15"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3463694,
+      "lngE5": -133139
+     },
+     "catalogueIds": [
+      2482211
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Sebdou's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Sebdou (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.938,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "maghnia",
+   "nameAr": "مغنية",
+   "point": {
+    "latE5": 3484794,
+    "lngE5": -172050
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "15"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3484944,
+      "lngE5": -172750
+     },
+     "catalogueIds": [
+      2490584
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Maghnia's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Maghnia (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8535,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ouled-djellal",
+   "nameAr": "أولاد جلال",
+   "point": {
+    "latE5": 3443650,
+    "lngE5": 506889
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "OD"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3443000,
+      "lngE5": 506139
+     },
+     "catalogueIds": [
+      2484933
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ouled Djellal's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): Ouled Djellal (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8704,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "el-mghair",
+   "nameAr": "المغير",
+   "point": {
+    "latE5": 3395739,
+    "lngE5": 593122
+   },
+   "baseZoneId": "djelfa",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "MG"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3395139,
+      "lngE5": 592222
+     },
+     "catalogueIds": [
+      2497655
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): El M'Ghair's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Djelfa.pdf): El M'Ghair (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8704,
+     "SUNRISE": 0.9408,
+     "DHUHR": 0.9803,
+     "ASR": 0.9211,
+     "MAGHRIB": 0.9352,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "in-amenas",
+   "nameAr": "عين أمناس",
+   "point": {
+    "latE5": 2803911,
+    "lngE5": 955311
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "46"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2804361,
+      "lngE5": 954111
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): In Amenas's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): In Amenas (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8592,
+     "SUNRISE": 0.8592,
+     "DHUHR": 0.9887,
+     "ASR": 0.8958,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.893
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9972,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "djanet",
+   "nameAr": "جانت",
+   "point": {
+    "latE5": 2456078,
+    "lngE5": 949150
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "DJ"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2455528,
+      "lngE5": 948500
+     },
+     "catalogueIds": [
+      2500275
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Djanet's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Djanet (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9042,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.907,
+     "ISHA": 0.8873
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "illizi",
+   "nameAr": "إليزي",
+   "point": {
+    "latE5": 2650902,
+    "lngE5": 848195
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "46"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2650802,
+      "lngE5": 848295
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Illizi's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Illizi (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9042,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9972,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "in-guezzam",
+   "nameAr": "إن قزام",
+   "point": {
+    "latE5": 1956911,
+    "lngE5": 577356
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "IG"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 1957361,
+      "lngE5": 576806
+     },
+     "catalogueIds": [
+      2493273
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): In Guezzam's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): In Guezzam (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8648,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.8676,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.8901
+    },
+    "within1": {
+     "FAJR": 0.9972,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9972
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "tamanrasset",
+   "nameAr": "تمنراست",
+   "point": {
+    "latE5": 2278950,
+    "lngE5": 553278
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "53"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2278500,
+      "lngE5": 552278
+     },
+     "catalogueIds": [
+      2478216
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Tamanrasset's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Tamanrasset (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.8873
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "ouargla",
+   "nameAr": "ورقلة",
+   "point": {
+    "latE5": 3196317,
+    "lngE5": 535250
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "50"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3194917,
+      "lngE5": 532500
+     },
+     "catalogueIds": [
+      2485801
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Ouargla's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Ouargla (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.862,
+     "MAGHRIB": 0.9127,
+     "ISHA": 0.8958
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9972,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9944
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "ghardaia",
+   "nameAr": "غرداية",
+   "point": {
+    "latE5": 3249583,
+    "lngE5": 368633
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "45"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3249083,
+      "lngE5": 367333
+     },
+     "catalogueIds": [
+      2496049
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Ghardaia's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Ghardaia (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.893,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.9972,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "el-menia",
+   "nameAr": "المنيعة",
+   "point": {
+    "latE5": 3057856,
+    "lngE5": 288967
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "EM"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3057556,
+      "lngE5": 288417
+     },
+     "catalogueIds": [
+      2498305
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): El Menia's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): El Menia (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8563,
+     "SUNRISE": 0.9042,
+     "DHUHR": 0.9887,
+     "ASR": 0.8986,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 0.9915,
+     "SUNRISE": 0.9972,
+     "DHUHR": 1.0,
+     "ASR": 0.9944,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "in-salah",
+   "nameAr": "إن صالح",
+   "point": {
+    "latE5": 2719817,
+    "lngE5": 248189
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "IS"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2719667,
+      "lngE5": 247889
+     },
+     "catalogueIds": [
+      6930641
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): In Salah's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): In Salah (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8958,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.8901,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 0.9972,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "beni-abbes",
+   "nameAr": "بني عباس",
+   "point": {
+    "latE5": 3013506,
+    "lngE5": -215961
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "BA"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3013306,
+      "lngE5": -216611
+     },
+     "catalogueIds": [
+      2504755
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Beni Abbes's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Beni Abbes (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9042,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "bordj-badji-mokhtar",
+   "nameAr": "برج باجي مختار",
+   "point": {
+    "latE5": 2133217,
+    "lngE5": 95428
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "BB"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2132917,
+      "lngE5": 94778
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Bordj Badji Mokhtar's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Bordj Badji Mokhtar (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.907,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "reggane",
+   "nameAr": "رقان",
+   "point": {
+    "latE5": 2672456,
+    "lngE5": 17039
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "34"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2671556,
+      "lngE5": 17139
+     },
+     "catalogueIds": [
+      2483761
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Reggane's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Reggane (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.893,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.907,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 0.9972,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "timimoun",
+   "nameAr": "تميمون",
+   "point": {
+    "latE5": 2925917,
+    "lngE5": 23883
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "TM"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2926417,
+      "lngE5": 23583
+     },
+     "catalogueIds": [
+      2476403
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Timimoun's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Timimoun (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "bechar",
+   "nameAr": "بشار",
+   "point": {
+    "latE5": 3161667,
+    "lngE5": -221317
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "38"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3161667,
+      "lngE5": -221667
+     },
+     "catalogueIds": [
+      2505530
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Bechar's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Bechar (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8958,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.8873
+    },
+    "within1": {
+     "FAJR": 0.9944,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "tindouf",
+   "nameAr": "تندوف",
+   "point": {
+    "latE5": 2767361,
+    "lngE5": -814672
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "54"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2767111,
+      "lngE5": -814722
+     },
+     "catalogueIds": [
+      2476301
+     ]
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Tindouf's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Tindouf (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.893,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.8986,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 0.9972,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  },
+  {
+   "id": "beni-ounif",
+   "nameAr": "بني ونيف",
+   "point": {
+    "latE5": 3205161,
+    "lngE5": -124061
+   },
+   "baseZoneId": "adrar",
+   "offsetRule": "WINDOW_CEILING",
+   "admin1": [
+    "38"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3204861,
+      "lngE5": -124861
+     },
+     "catalogueIds": []
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Beni Ounif's monthly offsets",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "MARW calendar 1448 (Adrar.pdf): Beni Ounif (reference minute + printed offset), Hijri months split odd/even",
+      "from": "2026-06-16",
+      "to": "2027-06-05",
+      "days": 355,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9324,
+     "SUNRISE": 0.9437,
+     "DHUHR": 0.9887,
+     "ASR": 0.9324,
+     "MAGHRIB": 0.9493,
+     "ISHA": 0.9296
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      20,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

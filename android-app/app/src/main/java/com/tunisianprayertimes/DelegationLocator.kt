@@ -97,11 +97,18 @@ internal fun isInsideTunisia(context: Context, lat: Double, lng: Double): Boolea
 }
 
 sealed interface DelegationLocationResult {
+    /** A Tunisian delegation (INM). */
     data class Success(val delegation: Delegation, val locality: Locality? = null) : DelegationLocationResult
+
+    /** A place abroad in an open region (6.8), stored rounded to 0.01°, with its «قرب X» label or none. */
+    data class Abroad(val place: com.tunisianprayertimes.place.PrayerPlace.Coordinates, val label: String?) : DelegationLocationResult
+
     data object PermissionDenied : DelegationLocationResult
     data object LocationUnavailable : DelegationLocationResult
     data object NoDelegationFound : DelegationLocationResult
-    data object OutsideTunisia : DelegationLocationResult
+
+    /** A fix in a region whose switch is still off (plan 2): ignored, the saved place and auto-silence are kept. */
+    data class RegionClosed(val countryCode: String?) : DelegationLocationResult
 }
 
 internal data class LocationPermissionState(
@@ -153,34 +160,43 @@ object DelegationLocator {
             ?.takeIf { isUsableLocation(it, maxAgeMs = maxAgeMs) }
     }
 
+    /** What a silent fix did (plan 6.8): none came, it kept the saved place, or it stored a new one. */
+    enum class FixOutcome { NO_FIX, UNCHANGED, CHANGED }
+
     /**
      * Uses a recent cached or fused location to silently update the saved
      * delegation if the user has moved to a different one. Returns true if the
      * delegation changed.
      */
-    suspend fun updateDelegationFromLastLocation(context: Context): Boolean {
-        return updateDelegationFromLocation(context) { permissionState ->
+    suspend fun updateDelegationFromLastLocation(context: Context): Boolean =
+        updatePlaceFromLastLocation(context) == FixOutcome.CHANGED
+
+    /** [updateDelegationFromLastLocation], telling a missing fix apart from an unchanged place (6.8's travel rule). */
+    suspend fun updatePlaceFromLastLocation(context: Context): FixOutcome =
+        updateDelegationFromLocation(context) { permissionState ->
             locationProvider.findRecentLocation(context, permissionState)
         }
-    }
 
     /**
      * Uses a bounded fresh-location lookup before silently updating the saved
      * delegation. Use this from scheduled background checks where a short
      * location wait is acceptable.
      */
-    suspend fun updateDelegationFromCurrentLocation(context: Context): Boolean {
-        return updateDelegationFromLocation(context) { permissionState ->
+    suspend fun updateDelegationFromCurrentLocation(context: Context): Boolean =
+        updatePlaceFromCurrentLocation(context) == FixOutcome.CHANGED
+
+    /** [updateDelegationFromCurrentLocation], telling a missing fix apart from an unchanged place. */
+    suspend fun updatePlaceFromCurrentLocation(context: Context): FixOutcome =
+        updateDelegationFromLocation(context) { permissionState ->
             locationProvider.findFreshLocation(context, permissionState)
         }
-    }
 
     private suspend fun updateDelegationFromLocation(
         context: Context,
         locationSource: suspend (LocationPermissionState) -> Location?
-    ): Boolean {
+    ): FixOutcome {
         val permissionState = locationPermissionState(context)
-        if (!permissionState.hasAny) return false
+        if (!permissionState.hasAny) return FixOutcome.NO_FIX
 
         val location: Location? = try {
             locationSource(permissionState)
@@ -188,17 +204,34 @@ object DelegationLocator {
             null
         }
 
-        if (location == null) return false
-        if (!isUsableSilentUpdateLocation(location)) return false
+        if (location == null) return FixOutcome.NO_FIX
+        if (!isUsableSilentUpdateLocation(location)) return FixOutcome.NO_FIX
 
         val accuracyMeters = if (location.hasAccuracy()) location.accuracy.toDouble() else null
         val result = withContext(Dispatchers.IO) {
             resolveGpsLocation(context, location.latitude, location.longitude, accuracyMeters)
-        } as? DelegationLocationResult.Success ?: return false
-        val currentId = PrefsManager.getDelegationId(context)
-        // Refresh the neighborhood even when travel stays within one timetable's area.
-        PrefsManager.setGpsLocation(context, result)
-        return result.delegation.id != currentId
+        }
+        val saved = PrefsManager.getPlace(context)
+        val savedLabel = PrefsManager.getPlaceNameSnapshot(context)
+        return when (result) {
+            is DelegationLocationResult.Success -> {
+                // Refresh the neighborhood even when travel stays within one timetable's area.
+                PrefsManager.setGpsLocation(context, result)
+                val changed = saved != com.tunisianprayertimes.place.PrayerPlace.Inm(result.delegation.id)
+                if (changed) PlaceResolution.onPlaceChanged(context, saved, PrefsManager.getPlace(context), savedLabel, result.delegation.nomAr)
+                if (changed) FixOutcome.CHANGED else FixOutcome.UNCHANGED
+            }
+            is DelegationLocationResult.Abroad -> {
+                // 6.8: a semantic change at any distance, otherwise only a move of more than 3 km.
+                if (!PlaceResolution.shouldStore(context, saved, result.place)) return FixOutcome.UNCHANGED
+                PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
+                PlaceResolution.onPlaceChanged(context, saved, result.place, savedLabel, result.label)
+                FixOutcome.CHANGED
+            }
+            // A closed region ignores the fix (plan 2): the saved place stays.
+            is DelegationLocationResult.RegionClosed -> FixOutcome.UNCHANGED
+            else -> FixOutcome.NO_FIX
+        }
     }
 
     suspend fun detectNearestDelegation(context: Context): DelegationLocationResult {
@@ -235,7 +268,8 @@ object DelegationLocator {
         accuracyMeters: Double? = null,
     ): DelegationLocationResult {
         if (!validCoordinates(lat, lng)) return DelegationLocationResult.LocationUnavailable
-        if (!isInsideTunisia(context, lat, lng)) return DelegationLocationResult.OutsideTunisia
+        // Outside the outline nothing is rejected (6.8): a place abroad, a closed region, or Tunisia's nearest delegation.
+        if (!isInsideTunisia(context, lat, lng)) return PlaceResolution.resolveAbroad(context, lat, lng)
         val index = runCatching { NeighborhoodRepository.load(context) }.getOrNull()
         val nearest = GouvernoratRepository.findNearestDelegation(context, lat, lng)
             ?: return DelegationLocationResult.NoDelegationFound

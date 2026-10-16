@@ -1,0 +1,332 @@
+{
+ "schema": 1,
+ "authority": "ps_gaza_awqaf",
+ "methodId": "ps_gaza_awqaf",
+ "country": "PS",
+ "mapping": "NATIONAL",
+ "source": "The Gaza Strip's Ministry of Awqaf: one table for the five governorates (decree of 2021-10-05), fitted to its Dhu al-Hijja 1444 table, its radio's daily posts of 2026 and its website widget",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "gaza_awqaf_dhulhijja_1444 (Telegram image, transcribed)",
+    "from": "2023-06-19",
+    "to": "2023-07-18",
+    "days": 30,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "gaza_awqaf_quran_radio_2026 (daily posts)",
+    "from": "2026-05-19",
+    "to": "2026-06-09",
+    "days": 22,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "palwakf.ps widget, 2026-10-08",
+    "from": "2026-10-08",
+    "to": "2026-10-08",
+    "days": 1,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "gaza_awqaf_dhulhijja_1444 (Telegram image, transcribed), scored with the parameters fitted on the 2026 rows",
+    "from": "2023-06-19",
+    "to": "2023-07-18",
+    "days": 30,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "gaza_awqaf_quran_radio_2026 (daily posts) and palwakf.ps widget, 2026-10-08, scored with the parameters fitted on the 2023 table",
+    "from": "2026-05-19",
+    "to": "2026-10-08",
+    "days": 23,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.2075,
+   "SUNRISE": 0.7885,
+   "DHUHR": 0.5283,
+   "ASR": 0.6792,
+   "MAGHRIB": 0.7736,
+   "ISHA": 0.6226
+  },
+  "within1": {
+   "FAJR": 0.9623,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 0.9811
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    21,
+    18,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    21,
+    18,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "DHUHR": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    21,
+    18,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "ASR": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    21,
+    18,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    21,
+    18,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "ISHA": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    21,
+    18,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "gaza",
+   "nameAr": "محافظات غزة",
+   "point": {
+    "latE5": 3150160,
+    "lngE5": 3446670
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3150160,
+      "lngE5": 3446670
+     },
+     "catalogueIds": [
+      281133
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "gaza_awqaf_dhulhijja_1444 (Telegram image, transcribed)",
+      "from": "2023-06-19",
+      "to": "2023-07-18",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "gaza_awqaf_quran_radio_2026 (daily posts)",
+      "from": "2026-05-19",
+      "to": "2026-06-09",
+      "days": 22,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "palwakf.ps widget, 2026-10-08",
+      "from": "2026-10-08",
+      "to": "2026-10-08",
+      "days": 1,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "gaza_awqaf_dhulhijja_1444 (Telegram image, transcribed), scored with the parameters fitted on the 2026 rows",
+      "from": "2023-06-19",
+      "to": "2023-07-18",
+      "days": 30,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "gaza_awqaf_quran_radio_2026 (daily posts) and palwakf.ps widget, 2026-10-08, scored with the parameters fitted on the 2023 table",
+      "from": "2026-05-19",
+      "to": "2026-10-08",
+      "days": 23,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.2075,
+     "SUNRISE": 0.7885,
+     "DHUHR": 0.5283,
+     "ASR": 0.6792,
+     "MAGHRIB": 0.7736,
+     "ISHA": 0.6226
+    },
+    "within1": {
+     "FAJR": 0.9623,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9811
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      13,
+      21,
+      18,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      13,
+      21,
+      18,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      13,
+      21,
+      18,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      13,
+      21,
+      18,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      13,
+      21,
+      18,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      13,
+      21,
+      18,
+      0,
+      0,
+      1,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  }
+ ]
+}

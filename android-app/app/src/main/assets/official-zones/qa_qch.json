@@ -1,0 +1,1139 @@
+{
+ "schema": 1,
+ "authority": "qa_qch",
+ "methodId": "qa_qch",
+ "country": "QA",
+ "mapping": "LISTED_PLACES",
+ "namedFirst": true,
+ "source": "Qatar Calendar House's tables (Doha's perpetual table, computed for the actual year) and its places",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "qa_awqaf_api_2026_at_2006",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "qa_qch_towns_print_1448_cal",
+    "from": "2026-08-14",
+    "to": "2026-10-11",
+    "days": 59,
+    "zones": 5,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "qa_qch_doha",
+    "from": "2022-10-26",
+    "to": "2026-10-11",
+    "days": 207,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "qa_qch_towns",
+    "from": "2026-08-14",
+    "to": "2026-10-11",
+    "days": 59,
+    "zones": 5,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.8477,
+   "SUNRISE": 0.8065,
+   "DHUHR": 0.9493,
+   "ASR": 0.9401,
+   "MAGHRIB": 0.8528,
+   "ISHA": 0.894
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    11,
+    21,
+    28,
+    0,
+    15,
+    31,
+    85,
+    120,
+    60,
+    23,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    11,
+    21,
+    28,
+    0,
+    15,
+    31,
+    31,
+    30,
+    27,
+    23,
+    0
+   ],
+   "DHUHR": [
+    0,
+    11,
+    21,
+    28,
+    0,
+    15,
+    31,
+    31,
+    30,
+    27,
+    23,
+    0
+   ],
+   "ASR": [
+    0,
+    11,
+    21,
+    28,
+    0,
+    15,
+    31,
+    31,
+    30,
+    27,
+    23,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    11,
+    21,
+    28,
+    0,
+    15,
+    31,
+    85,
+    120,
+    60,
+    23,
+    0
+   ],
+   "ISHA": [
+    0,
+    11,
+    21,
+    28,
+    0,
+    15,
+    31,
+    31,
+    30,
+    27,
+    23,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 30,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "3",
+   "nameAr": "الدوحة",
+   "point": {
+    "latE5": 2528545,
+    "lngE5": 5153096
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2528545,
+      "lngE5": 5153096
+     },
+     "catalogueIds": [
+      290030
+     ],
+     "areaKm": 0.0
+    },
+    {
+     "centre": {
+      "latE5": 2568389,
+      "lngE5": 5150583
+     },
+     "catalogueIds": [
+      289962
+     ],
+     "areaKm": 6.0
+    },
+    {
+     "centre": {
+      "latE5": 2517151,
+      "lngE5": 5160337
+     },
+     "catalogueIds": [
+      289915
+     ],
+     "areaKm": 6.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "qa_awqaf_api_2026_at_2006",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "qa_qch_doha",
+      "from": "2022-10-26",
+      "to": "2026-10-11",
+      "days": 207,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.7971,
+     "SUNRISE": 0.8213,
+     "DHUHR": 0.9662,
+     "ASR": 0.9469,
+     "MAGHRIB": 0.8937,
+     "ISHA": 0.8937
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      11,
+      21,
+      28,
+      0,
+      15,
+      31,
+      31,
+      30,
+      17,
+      23,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      11,
+      21,
+      28,
+      0,
+      15,
+      31,
+      31,
+      30,
+      17,
+      23,
+      0
+     ],
+     "DHUHR": [
+      0,
+      11,
+      21,
+      28,
+      0,
+      15,
+      31,
+      31,
+      30,
+      17,
+      23,
+      0
+     ],
+     "ASR": [
+      0,
+      11,
+      21,
+      28,
+      0,
+      15,
+      31,
+      31,
+      30,
+      17,
+      23,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      11,
+      21,
+      28,
+      0,
+      15,
+      31,
+      31,
+      30,
+      17,
+      23,
+      0
+     ],
+     "ISHA": [
+      0,
+      11,
+      21,
+      28,
+      0,
+      15,
+      31,
+      31,
+      30,
+      17,
+      23,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 30,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "morningPoint": {
+    "latE5": 2528210,
+    "lngE5": 5153300
+   },
+   "eveningPoint": {
+    "latE5": 2528210,
+    "lngE5": 5153300
+   }
+  },
+  {
+   "id": "6",
+   "nameAr": "الشمال",
+   "point": {
+    "latE5": 2612933,
+    "lngE5": 5120090
+   },
+   "offsets": {
+    "FAJR": 1.0
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2612933,
+      "lngE5": 5120090
+     },
+     "catalogueIds": [
+      289739
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "qa_qch_print_1448",
+      "from": "2026-08-14",
+      "to": "2026-10-11",
+      "days": 59,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "qa_qch_print_1448_month_split",
+      "from": "2026-08-14",
+      "to": "2026-10-11",
+      "days": 59,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "qa_qch_cal",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9016,
+     "SUNRISE": 0.5,
+     "DHUHR": 0.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.6885,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      30,
+      13,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      30,
+      13,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "morningPoint": {
+    "latE5": 2609880,
+    "lngE5": 5125300
+   },
+   "eveningPoint": {
+    "latE5": 2609880,
+    "lngE5": 5125300
+   }
+  },
+  {
+   "id": "14",
+   "nameAr": "دخان",
+   "point": {
+    "latE5": 2542485,
+    "lngE5": 5078227
+   },
+   "offsets": {
+    "FAJR": 1.0
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2542485,
+      "lngE5": 5078227
+     },
+     "catalogueIds": [
+      289813
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "qa_qch_print_1448",
+      "from": "2026-08-14",
+      "to": "2026-10-11",
+      "days": 59,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "qa_qch_print_1448_month_split",
+      "from": "2026-08-14",
+      "to": "2026-10-11",
+      "days": 59,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "qa_qch_cal",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9672,
+     "SUNRISE": 0.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9344,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      30,
+      13,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      30,
+      13,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "morningPoint": {
+    "latE5": 2537690,
+    "lngE5": 5082360
+   },
+   "eveningPoint": {
+    "latE5": 2537690,
+    "lngE5": 5082360
+   }
+  },
+  {
+   "id": "15",
+   "nameAr": "أبو سمرة",
+   "point": {
+    "latE5": 2474375,
+    "lngE5": 5083174
+   },
+   "offsets": {
+    "FAJR": 1.0
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2474375,
+      "lngE5": 5083174
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "qa_qch_print_1448",
+      "from": "2026-08-14",
+      "to": "2026-10-11",
+      "days": 59,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "qa_qch_print_1448_month_split",
+      "from": "2026-08-14",
+      "to": "2026-10-11",
+      "days": 59,
+      "zones": 1,
+      "monthSplit": true
+     },
+     {
+      "source": "qa_qch_cal",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8689,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.5,
+     "ASR": 0.0,
+     "MAGHRIB": 0.8033,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      30,
+      13,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      30,
+      13,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "morningPoint": {
+    "latE5": 2469290,
+    "lngE5": 5091860
+   },
+   "eveningPoint": {
+    "latE5": 2469290,
+    "lngE5": 5091860
+   }
+  },
+  {
+   "id": "13",
+   "nameAr": "مسيعيد",
+   "point": {
+    "latE5": 2499226,
+    "lngE5": 5155067
+   },
+   "offsets": {
+    "FAJR": 1.0
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2499226,
+      "lngE5": 5155067
+     },
+     "catalogueIds": [
+      289525
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "qa_qch_cal",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "qa_qch_cal_leave_one_out",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5,
+     "SUNRISE": 0.5,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.5,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "morningPoint": {
+    "latE5": 2499226,
+    "lngE5": 5162350
+   },
+   "eveningPoint": {
+    "latE5": 2499226,
+    "lngE5": 5162350
+   }
+  },
+  {
+   "id": "16",
+   "nameAr": "حالول",
+   "point": {
+    "latE5": 2567325,
+    "lngE5": 5241096
+   },
+   "offsets": {
+    "FAJR": 1.0
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2567325,
+      "lngE5": 5241096
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "qa_qch_cal",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "qa_qch_cal_leave_one_out",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5,
+     "SUNRISE": 0.5,
+     "DHUHR": 0.5,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
+   "morningPoint": {
+    "latE5": 2567325,
+    "lngE5": 5258350
+   },
+   "eveningPoint": {
+    "latE5": 2567325,
+    "lngE5": 5258350
+   }
+  }
+ ]
+}

@@ -46,12 +46,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.ui.theme.SilenceRed
 import kotlin.math.abs
 
-private const val SharedOffsetLimitMinutes = 10_080
+/** The endpoint domain of 6.9: a start within 720 min of the adhan, an end from 720 before to 1,440 after it. */
+private val SharedStartOffsets = -720..720
+private val SharedEndOffsets = -720..1440
 
 /** The shared start/end rule draft applied to the selected prayers. */
 internal data class SharedSilenceRuleDraft(
@@ -66,11 +67,14 @@ internal data class SharedSilenceRuleDraft(
 /** Applies this rule to one prayer without touching its enabled state. */
 internal fun SharedSilenceRuleDraft.applyTo(
     base: PrayerSilenceConfig,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
 ): PrayerSilenceConfig {
-    val started = base.withStartRule(startMode, startOffsetMinutes, startClockMinutes)
-    val ended = started.withEndRule(endMode, endOffsetMinutes, endClockMinutes)
-    return ended.withLegacyDurationSynced(prayerTime)
+    // Clock times are shown in the phone's clock: a start's occurrence nearest the adhan, an end's first after the start (D16).
+    val startAxis = if (startMode == EndpointRuleMode.FIXED_TIME) anchor.startAxisFor(startClockMinutes) else anchor.axisAtOffset(startOffsetMinutes)
+    val started = base.withStartRule(anchor, startMode, startOffsetMinutes, startAxis)
+    val endAxis = if (endMode == EndpointRuleMode.FIXED_TIME) anchor.endAxisFor(endClockMinutes, startAxis) else anchor.axisAtOffset(endOffsetMinutes)
+    val ended = started.withEndRule(anchor, endMode, endOffsetMinutes, endAxis)
+    return ended.withLegacyDurationSynced(anchor)
 }
 
 private enum class SharedClockTarget { START, END }
@@ -83,7 +87,7 @@ private enum class SharedClockTarget { START, END }
 @Composable
 internal fun SharedSilenceSettingsSheet(
     prayerNames: List<Pair<Prayer, String>>,
-    prayerTimes: Map<Prayer, PrayerTime>,
+    anchors: Map<Prayer, PrayerTimelineAnchor>,
     initialDraft: SharedSilenceRuleDraft,
     onDismiss: () -> Unit,
     onApply: (List<Prayer>, SharedSilenceRuleDraft) -> Unit,
@@ -101,8 +105,8 @@ internal fun SharedSilenceSettingsSheet(
 
     val startAdhan = startMode == EndpointRuleMode.ADHAN.name
     val endAdhan = endMode == EndpointRuleMode.ADHAN.name
-    val startOffset = startOffsetText.trim().toIntOrNull()?.takeIf { abs(it) <= SharedOffsetLimitMinutes }
-    val endOffset = endOffsetText.trim().toIntOrNull()?.takeIf { abs(it) <= SharedOffsetLimitMinutes }
+    val startOffset = startOffsetText.trim().toIntOrNull()?.takeIf { it in SharedStartOffsets }
+    val endOffset = endOffsetText.trim().toIntOrNull()?.takeIf { it in SharedEndOffsets }
     val offsetsValid = (!startAdhan || startOffset != null) && (!endAdhan || endOffset != null)
     val draft = SharedSilenceRuleDraft(
         startMode = EndpointRuleMode.valueOf(startMode),
@@ -115,8 +119,8 @@ internal fun SharedSilenceSettingsSheet(
     val selectedPrayers = prayerNames.map { it.first }.filter { it.name in selected }
     val invalidPrayer = if (offsetsValid && selected.isNotEmpty()) {
         selectedPrayers.firstOrNull { prayer ->
-            val time = prayerTimes[prayer] ?: return@firstOrNull false
-            !configResolvesToValidWindow(time, draft.applyTo(PrayerSilenceConfig(), time))
+            val anchor = anchors[prayer] ?: return@firstOrNull false
+            !configResolvesToValidWindow(anchor, draft.applyTo(PrayerSilenceConfig(), anchor))
         }
     } else {
         null
@@ -204,6 +208,7 @@ internal fun SharedSilenceSettingsSheet(
                     onModeChange = { adhan -> startMode = if (adhan) EndpointRuleMode.ADHAN.name else EndpointRuleMode.FIXED_TIME.name },
                     onOffsetChange = { startOffsetText = it },
                     onClockClick = { clockTarget = SharedClockTarget.START },
+                    offsets = SharedStartOffsets,
                 )
                 SharedEndpointRuleEditor(
                     title = stringResource(R.string.prayer_silence_shared_end_rule),
@@ -213,6 +218,7 @@ internal fun SharedSilenceSettingsSheet(
                     onModeChange = { adhan -> endMode = if (adhan) EndpointRuleMode.ADHAN.name else EndpointRuleMode.FIXED_TIME.name },
                     onOffsetChange = { endOffsetText = it },
                     onClockClick = { clockTarget = SharedClockTarget.END },
+                    offsets = SharedEndOffsets,
                 )
                 if (startAdhan || endAdhan) {
                     Text(
@@ -349,8 +355,10 @@ private fun SharedEndpointRuleEditor(
     onModeChange: (Boolean) -> Unit,
     onOffsetChange: (String) -> Unit,
     onClockClick: () -> Unit,
+    /** The endpoint's domain (6.9): the stepper stops at its bounds. */
+    offsets: IntRange,
 ) {
-    val offsetValue = offsetText.toIntOrNull()?.takeIf { abs(it) <= SharedOffsetLimitMinutes } ?: 0
+    val offsetValue = offsetText.toIntOrNull()?.takeIf { it in offsets } ?: 0
     // The field shows the typed minutes. The sign stays on the text even while the field
     // is empty ("-"), so clearing a "before adhan" value keeps its direction.
     val selectedDirection = when {
@@ -399,7 +407,10 @@ private fun SharedEndpointRuleEditor(
                     increaseLabel = stringResource(R.string.prayer_silence_increase_minute),
                     unitLabel = stringResource(R.string.prayer_editor_minutes_unit),
                     onDecrease = { onOffsetChange(sign + (abs(offsetValue) - 1).coerceAtLeast(1)) },
-                    onIncrease = { onOffsetChange(sign + (abs(offsetValue) + 1)) },
+                    onIncrease = {
+                        val limit = if (sign.isEmpty()) offsets.last else -offsets.first
+                        onOffsetChange(sign + (abs(offsetValue) + 1).coerceAtMost(limit))
+                    },
                     onValueChange = { text ->
                         val digits = normalizeEndpointNumber(text)
                         onOffsetChange(if (digits.toIntOrNull() == 0) "0" else sign + digits)

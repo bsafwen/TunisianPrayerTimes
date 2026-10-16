@@ -35,6 +35,9 @@ object MainTabNavigation {
     const val QURAN_ACTION_HIFZ_FIX_PREFIX = "hifz_fix:"
     /** Followed by points' ids, «1,2»: those points, from a reminder about several. */
     const val QURAN_ACTION_HIFZ_POINTS_PREFIX = "hifz_points:"
+    /** What the prayers tab opens: the city picker, from the travel notification (6.8). */
+    const val EXTRA_PRAYERS_ACTION = "com.tunisianprayertimes.extra.PRAYERS_ACTION"
+    const val PRAYERS_ACTION_CHOOSE_PLACE = "choose_place"
 }
 
 /**
@@ -51,6 +54,7 @@ internal class MainTabRequests {
         val dhikrReminderId: String? = null,
         val dhikrOccurrenceId: String? = null,
         val quranAction: String? = null,
+        val prayersAction: String? = null,
     )
 
     private var sequence = 0
@@ -97,6 +101,7 @@ internal class MainTabRequests {
             dhikrReminderId = intent.getStringExtra(MainTabNavigation.EXTRA_DHIKR_REMINDER_ID),
             dhikrOccurrenceId = intent.getStringExtra(com.tunisianprayertimes.adhkar.DhikrReminderScheduler.EXTRA_OCCURRENCE_ID),
             quranAction = intent.getStringExtra(MainTabNavigation.EXTRA_QURAN_ACTION),
+            prayersAction = intent.getStringExtra(MainTabNavigation.EXTRA_PRAYERS_ACTION),
         )
     }
 
@@ -171,6 +176,7 @@ class MainActivity : AppCompatActivity() {
                     requestedDhikrReminderId = tabRequest.dhikrReminderId,
                     requestedDhikrOccurrenceId = tabRequest.dhikrOccurrenceId,
                     requestedQuranAction = tabRequest.quranAction,
+                    requestedPrayersAction = tabRequest.prayersAction,
                 )
             }
         }

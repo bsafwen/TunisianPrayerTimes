@@ -1,0 +1,19 @@
+{
+ "schema": 1,
+ "authority": "km_fitted",
+ "methodId": "km_fitted",
+ "country": "KM",
+ "mapping": "NATIONAL",
+ "source": "The Comoros' traditional Moroni table as a daily formula (the table 16 of 24 mosques use, plan 5.6, A3); one zone at Moroni's point, the sunrise at the user's point",
+ "zones": [
+  {
+   "id": "moroni",
+   "nameAr": "موروني",
+   "point": {
+    "latE5": -1170000,
+    "lngE5": 4325000
+   },
+   "sunriseAtPlace": true
+  }
+ ]
+}

@@ -1,0 +1,2024 @@
+{
+ "schema": 1,
+ "authority": "sy_awqaf",
+ "methodId": "sy_awqaf",
+ "country": "SY",
+ "mapping": "NEAREST",
+ "source": "Syria's Ministry of Awqaf: its 14 governorate Ramadan tables (1446 and 1447, Telegram @SyMOfE), applied all year (Q12)",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+    "from": "2026-02-19",
+    "to": "2026-03-19",
+    "days": 29,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+    "from": "2025-03-01",
+    "to": "2025-03-29",
+    "days": 29,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578), values fitted on Raqqa 1446",
+    "from": "2026-02-19",
+    "to": "2026-03-19",
+    "days": 29,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568), values fitted on Damascus 1447",
+    "from": "2025-03-01",
+    "to": "2025-03-29",
+    "days": 29,
+    "zones": 1,
+    "monthSplit": false
+   },
+   {
+    "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): the nine other tables",
+    "from": "2026-02-19",
+    "to": "2026-03-19",
+    "days": 18,
+    "zones": 9,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.9178,
+   "SUNRISE": 0.9589,
+   "DHUHR": 0.9726,
+   "ASR": 0.9863,
+   "MAGHRIB": 0.9589,
+   "ISHA": 0.9589
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    0,
+    17,
+    56,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "SUNRISE": [
+    0,
+    17,
+    56,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "DHUHR": [
+    0,
+    17,
+    56,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ASR": [
+    0,
+    17,
+    56,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "MAGHRIB": [
+    0,
+    17,
+    56,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "ISHA": [
+    0,
+    17,
+    56,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "heldOutRamadanDays": 76,
+  "quirkDays": 3,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "damascus",
+   "point": {
+    "latE5": 3351160,
+    "lngE5": 3630660
+   },
+   "morningPoint": {
+    "latE5": 3351160,
+    "lngE5": 3630150
+   },
+   "eveningPoint": {
+    "latE5": 3351160,
+    "lngE5": 3630150
+   },
+   "nameAr": "دمشق",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3351160,
+      "lngE5": 3630660
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578), the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578), day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8148,
+     "SUNRISE": 0.963,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.963
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      8,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      8,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      8,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      8,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      8,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      8,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 2,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "aleppo",
+   "point": {
+    "latE5": 3620210,
+    "lngE5": 3713430
+   },
+   "morningPoint": {
+    "latE5": 3620210,
+    "lngE5": 3716590
+   },
+   "eveningPoint": {
+    "latE5": 3620210,
+    "lngE5": 3716590
+   },
+   "nameAr": "حلب",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3620210,
+      "lngE5": 3713430
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): aleppo, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): aleppo, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "homs",
+   "point": {
+    "latE5": 3473240,
+    "lngE5": 3671370
+   },
+   "nameAr": "حمص",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3473240,
+      "lngE5": 3671370
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): homs, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): homs, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "hama",
+   "point": {
+    "latE5": 3513180,
+    "lngE5": 3675780
+   },
+   "nameAr": "حماة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3513180,
+      "lngE5": 3675780
+     },
+     "catalogueIds": [
+      170017
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): hama, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): hama, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "latakia",
+   "point": {
+    "latE5": 3553170,
+    "lngE5": 3579150
+   },
+   "nameAr": "اللاذقية",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3553170,
+      "lngE5": 3579150
+     },
+     "catalogueIds": [
+      173576
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): latakia, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): latakia, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "tartus",
+   "point": {
+    "latE5": 3488902,
+    "lngE5": 3588659
+   },
+   "nameAr": "طرطوس",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3488902,
+      "lngE5": 3588659
+     },
+     "catalogueIds": [
+      163345
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "idlib",
+   "point": {
+    "latE5": 3593060,
+    "lngE5": 3663390
+   },
+   "nameAr": "إدلب",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3593060,
+      "lngE5": 3663390
+     },
+     "catalogueIds": [
+      169389
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): idlib, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): idlib, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "raqqa",
+   "point": {
+    "latE5": 3595283,
+    "lngE5": 3900788
+   },
+   "morningPoint": {
+    "latE5": 3595283,
+    "lngE5": 3901250
+   },
+   "eveningPoint": {
+    "latE5": 3595283,
+    "lngE5": 3901250
+   },
+   "nameAr": "الرقة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3595283,
+      "lngE5": 3900788
+     },
+     "catalogueIds": [
+      172955
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568), the point",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568), day-split",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.9286,
+     "DHUHR": 0.9643,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9643,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      28,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      28,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      28,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      28,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      28,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      28,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 29,
+    "quirkDays": 1,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "deir_ez_zor",
+   "point": {
+    "latE5": 3533588,
+    "lngE5": 4014084
+   },
+   "nameAr": "دير الزور",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3533588,
+      "lngE5": 4014084
+     },
+     "catalogueIds": [
+      170794
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  },
+  {
+   "id": "hasakah",
+   "point": {
+    "latE5": 3650240,
+    "lngE5": 4074770
+   },
+   "nameAr": "الحسكة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3650240,
+      "lngE5": 4074770
+     },
+     "catalogueIds": [
+      173811
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): hasakah, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): hasakah, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "daraa",
+   "point": {
+    "latE5": 3261890,
+    "lngE5": 3610210
+   },
+   "morningPoint": {
+    "latE5": 3261890,
+    "lngE5": 3618690
+   },
+   "eveningPoint": {
+    "latE5": 3261890,
+    "lngE5": 3618690
+   },
+   "nameAr": "درعا",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3261890,
+      "lngE5": 3610210
+     },
+     "catalogueIds": [
+      170905
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): daraa, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): daraa, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.5,
+     "ASR": 0.5,
+     "MAGHRIB": 0.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "suwayda",
+   "point": {
+    "latE5": 3270900,
+    "lngE5": 3656950
+   },
+   "nameAr": "السويداء",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3270900,
+      "lngE5": 3656950
+     },
+     "catalogueIds": [
+      172408
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): suwayda, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): suwayda, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "quneitra",
+   "point": {
+    "latE5": 3312580,
+    "lngE5": 3582470
+   },
+   "nameAr": "القنيطرة",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3312580,
+      "lngE5": 3582470
+     },
+     "catalogueIds": [
+      173334
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
+      "from": "2025-03-01",
+      "to": "2025-03-29",
+      "days": 29,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): quneitra, the point",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578): quneitra, day-split",
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 2,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "eastern_ghouta",
+   "point": {
+    "latE5": 3357175,
+    "lngE5": 3640270
+   },
+   "nameAr": "الغوطة الشرقية",
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3357175,
+      "lngE5": 3640270
+     },
+     "catalogueIds": [
+      170592
+     ],
+     "areaKm": 0.0
+    }
+   ]
+  }
+ ]
+}

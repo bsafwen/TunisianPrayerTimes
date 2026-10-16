@@ -1,0 +1,3585 @@
+{
+ "schema": 1,
+ "authority": "ly_awqaf",
+ "methodId": "ly_awqaf",
+ "country": "LY",
+ "mapping": "NEAREST",
+ "source": "Libya's General Authority of Awqaf (awqaf.gov.ly): 22 city tables from one perpetual table keyed by month and day, computed for the actual year (A8); Dar al-Ifta's Tripoli API gives the same values",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+    "from": "2016-07-18",
+    "to": "2026-10-18",
+    "days": 62,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+    "from": "2016-07-18",
+    "to": "2026-10-18",
+    "days": 62,
+    "zones": 1,
+    "monthSplit": true
+   },
+   {
+    "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11) and Benghazi homepage captures (2014, 2016): the 21 other cities, day-split (Benghazi month-split)",
+    "from": "2014-03-05",
+    "to": "2026-10-11",
+    "days": 45,
+    "zones": 21,
+    "monthSplit": false
+   }
+  ],
+  "exact": {
+   "FAJR": 0.8505,
+   "SUNRISE": 0.8411,
+   "DHUHR": 0.9159,
+   "ASR": 0.8318,
+   "MAGHRIB": 0.8411,
+   "ISHA": 0.785
+  },
+  "within1": {
+   "FAJR": 1.0,
+   "SUNRISE": 1.0,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    6,
+    4,
+    5,
+    58,
+    4,
+    4
+   ],
+   "SUNRISE": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    6,
+    4,
+    5,
+    58,
+    4,
+    4
+   ],
+   "DHUHR": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    6,
+    4,
+    5,
+    58,
+    4,
+    4
+   ],
+   "ASR": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    6,
+    4,
+    5,
+    58,
+    4,
+    4
+   ],
+   "MAGHRIB": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    6,
+    4,
+    5,
+    58,
+    4,
+    4
+   ],
+   "ISHA": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    6,
+    4,
+    5,
+    58,
+    4,
+    4
+   ]
+  },
+  "heldOutRamadanDays": 6,
+  "quirkDays": 0,
+  "maxDiffMin": 1
+ },
+ "zones": [
+  {
+   "id": "Tripoli",
+   "nameAr": "طرابلس",
+   "point": {
+    "latE5": 3288720,
+    "lngE5": 1319130
+   },
+   "morningPoint": {
+    "latE5": 3290200,
+    "lngE5": 1327300
+   },
+   "eveningPoint": {
+    "latE5": 3290200,
+    "lngE5": 1327300
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3288720,
+      "lngE5": 1319130
+     },
+     "catalogueIds": [
+      2210247
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.8387,
+     "SUNRISE": 0.8226,
+     "DHUHR": 0.8871,
+     "ASR": 0.8548,
+     "MAGHRIB": 0.8548,
+     "ISHA": 0.7419
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      3,
+      4,
+      3,
+      4,
+      4,
+      5,
+      6,
+      4,
+      5,
+      16,
+      4,
+      4
+     ],
+     "SUNRISE": [
+      3,
+      4,
+      3,
+      4,
+      4,
+      5,
+      6,
+      4,
+      5,
+      16,
+      4,
+      4
+     ],
+     "DHUHR": [
+      3,
+      4,
+      3,
+      4,
+      4,
+      5,
+      6,
+      4,
+      5,
+      16,
+      4,
+      4
+     ],
+     "ASR": [
+      3,
+      4,
+      3,
+      4,
+      4,
+      5,
+      6,
+      4,
+      5,
+      16,
+      4,
+      4
+     ],
+     "MAGHRIB": [
+      3,
+      4,
+      3,
+      4,
+      4,
+      5,
+      6,
+      4,
+      5,
+      16,
+      4,
+      4
+     ],
+     "ISHA": [
+      3,
+      4,
+      3,
+      4,
+      4,
+      5,
+      6,
+      4,
+      5,
+      16,
+      4,
+      4
+     ]
+    },
+    "heldOutRamadanDays": 6,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Ejdabya",
+   "nameAr": "إجدابيا",
+   "point": {
+    "latE5": 3075540,
+    "lngE5": 2022630
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3075540,
+      "lngE5": 2022630
+     },
+     "catalogueIds": [
+      89113
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Ejdabya",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Ejdabya, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Breaka",
+   "nameAr": "البريقة",
+   "point": {
+    "latE5": 3041000,
+    "lngE5": 1958000
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3041000,
+      "lngE5": 1958000
+     },
+     "catalogueIds": [
+      2215210
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Breaka",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Breaka, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.5,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 0.5,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "beda",
+   "nameAr": "البيضاء",
+   "point": {
+    "latE5": 3276270,
+    "lngE5": 2175510
+   },
+   "morningPoint": {
+    "latE5": 3276270,
+    "lngE5": 2199087
+   },
+   "eveningPoint": {
+    "latE5": 3276270,
+    "lngE5": 2199087
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3276270,
+      "lngE5": 2175510
+     },
+     "catalogueIds": [
+      89055
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): beda",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): beda, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.5,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 0.5,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Alkomos",
+   "nameAr": "الخمس",
+   "point": {
+    "latE5": 3264860,
+    "lngE5": 1426190
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3264860,
+      "lngE5": 1426190
+     },
+     "catalogueIds": [
+      2219905
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Alkomos",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Alkomos, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 0.5,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Almarag",
+   "nameAr": "المرج",
+   "point": {
+    "latE5": 3249300,
+    "lngE5": 2083000
+   },
+   "morningPoint": {
+    "latE5": 3249300,
+    "lngE5": 2088861
+   },
+   "eveningPoint": {
+    "latE5": 3249300,
+    "lngE5": 2088861
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3249300,
+      "lngE5": 2083000
+     },
+     "catalogueIds": [
+      88903
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Almarag",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Almarag, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.0,
+     "DHUHR": 0.5,
+     "ASR": 0.5,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Alzaweya",
+   "nameAr": "الزاوية",
+   "point": {
+    "latE5": 3275710,
+    "lngE5": 1272760
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3275710,
+      "lngE5": 1272760
+     },
+     "catalogueIds": [
+      2218970
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Alzaweya",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Alzaweya, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 0.5,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Koufra",
+   "nameAr": "الكفرة",
+   "point": {
+    "latE5": 2419970,
+    "lngE5": 2329050
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2419970,
+      "lngE5": 2329050
+     },
+     "catalogueIds": [
+      88562
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Koufra",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Koufra, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "Emsaed",
+   "nameAr": "امساعد",
+   "point": {
+    "latE5": 3158600,
+    "lngE5": 2505100
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3158600,
+      "lngE5": 2505100
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Emsaed",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Emsaed, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "Ojala",
+   "nameAr": "أوجلة",
+   "point": {
+    "latE5": 2910810,
+    "lngE5": 2128690
+   },
+   "offsets": {
+    "ASR": 8.0
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2910810,
+      "lngE5": 2128690
+     },
+     "catalogueIds": [
+      88533
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Ojala",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Ojala, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Benghazi",
+   "nameAr": "بنغازي",
+   "point": {
+    "latE5": 3211670,
+    "lngE5": 2006670
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3211670,
+      "lngE5": 2006670
+     },
+     "catalogueIds": [
+      88319
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11) and homepage captures (2014, 2016): Benghazi",
+      "from": "2014-03-05",
+      "to": "2026-10-11",
+      "days": 5,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11) and homepage captures (2014, 2016): Benghazi, month-split",
+      "from": "2014-03-05",
+      "to": "2026-10-11",
+      "days": 5,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.6,
+     "SUNRISE": 0.8,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.6,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "BanyWalead",
+   "nameAr": "بني وليد",
+   "point": {
+    "latE5": 3175660,
+    "lngE5": 1399420
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3175660,
+      "lngE5": 1399420
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): BanyWalead",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): BanyWalead, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Jalo",
+   "nameAr": "جالو",
+   "point": {
+    "latE5": 2903310,
+    "lngE5": 2154820
+   },
+   "offsets": {
+    "ASR": 8.0
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2903310,
+      "lngE5": 2154820
+     },
+     "catalogueIds": [
+      86049
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Jalo",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Jalo, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Derna",
+   "nameAr": "درنة",
+   "point": {
+    "latE5": 3276700,
+    "lngE5": 2263670
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3276700,
+      "lngE5": 2263670
+     },
+     "catalogueIds": [
+      87205
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Derna",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Derna, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 0
+   }
+  },
+  {
+   "id": "Raslanof",
+   "nameAr": "رأس لانوف",
+   "point": {
+    "latE5": 3048330,
+    "lngE5": 1856670
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3048330,
+      "lngE5": 1856670
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Raslanof",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Raslanof, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 0.5,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Zaleaten",
+   "nameAr": "زلطن",
+   "point": {
+    "latE5": 3246740,
+    "lngE5": 1456870
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3246740,
+      "lngE5": 1456870
+     },
+     "catalogueIds": [
+      2208485
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Zaleaten",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Zaleaten, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Sabha",
+   "nameAr": "سبها",
+   "point": {
+    "latE5": 2703770,
+    "lngE5": 1442830
+   },
+   "morningPoint": {
+    "latE5": 2703770,
+    "lngE5": 1446491
+   },
+   "eveningPoint": {
+    "latE5": 2703770,
+    "lngE5": 1446491
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2703770,
+      "lngE5": 1442830
+     },
+     "catalogueIds": [
+      2212775
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Sabha",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Sabha, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.5,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Sert",
+   "nameAr": "سرت",
+   "point": {
+    "latE5": 3120890,
+    "lngE5": 1658870
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3120890,
+      "lngE5": 1658870
+     },
+     "catalogueIds": [
+      2210554
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Sert",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Sert, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Tobrek",
+   "nameAr": "طبرق",
+   "point": {
+    "latE5": 3208360,
+    "lngE5": 2397640
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3208360,
+      "lngE5": 2397640
+     },
+     "catalogueIds": [],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Tobrek",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Tobrek, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Ekdames",
+   "nameAr": "إغدامس",
+   "point": {
+    "latE5": 3013370,
+    "lngE5": 950070
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3013370,
+      "lngE5": 950070
+     },
+     "catalogueIds": [
+      2217440
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Ekdames",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Ekdames, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 0.5,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 0.5,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Mosrata",
+   "nameAr": "مصراتة",
+   "point": {
+    "latE5": 3237540,
+    "lngE5": 1509250
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 3237540,
+      "lngE5": 1509250
+     },
+     "catalogueIds": [
+      2214846
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Mosrata",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Mosrata, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.5,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.5
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  },
+  {
+   "id": "Hoon",
+   "nameAr": "هون",
+   "point": {
+    "latE5": 2912680,
+    "lngE5": 1594770
+   },
+   "morningPoint": {
+    "latE5": 2912680,
+    "lngE5": 1575645
+   },
+   "eveningPoint": {
+    "latE5": 2912680,
+    "lngE5": 1575645
+   },
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 2912680,
+      "lngE5": 1594770
+     },
+     "catalogueIds": [
+      2216645
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli",
+      "from": "2016-07-18",
+      "to": "2026-10-18",
+      "days": 62,
+      "zones": 1,
+      "monthSplit": false
+     },
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Hoon",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "awqaf.gov.ly city endpoint (2026-10-08, 10-11): Hoon, day-split",
+      "from": "2026-10-08",
+      "to": "2026-10-11",
+      "days": 2,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.5,
+     "ISHA": 1.0
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "SUNRISE": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "DHUHR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ASR": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "MAGHRIB": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ],
+     "ISHA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   }
+  }
+ ]
+}

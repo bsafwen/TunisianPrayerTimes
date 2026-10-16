@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.DelayMode
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
@@ -83,7 +82,7 @@ private val PrayerEditorConfigSaver = listSaver<PrayerSilenceConfig, Any>(
 internal fun PrayerSilenceEditorSheet(
     prayer: Prayer,
     prayerName: String,
-    prayerTime: PrayerTime,
+    anchor: PrayerTimelineAnchor,
     config: PrayerSilenceConfig,
     endpoint: SilenceEndpoint,
     onDismiss: () -> Unit,
@@ -91,10 +90,9 @@ internal fun PrayerSilenceEditorSheet(
 ) {
     val focusManager = LocalFocusManager.current
     val start = endpoint == SilenceEndpoint.START
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
-    val initialWindow = resolvePrayerTimelineWindow(prayerTime, config)
+    val initialWindow = resolvePrayerTimelineWindow(anchor, config)
     val initialResolved = if (start) initialWindow.startMinutes else initialWindow.endMinutes
-    val initialOffset = initialResolved - prayerMinutes
+    val initialOffset = anchor.offsetAt(initialResolved)
     val initialClock = Math.floorMod(initialResolved, MINUTES_PER_DAY)
 
     var draft by rememberSaveable(prayer, config, endpoint, stateSaver = PrayerEditorConfigSaver) {
@@ -111,25 +109,25 @@ internal fun PrayerSilenceEditorSheet(
     }
     var saved by remember(prayer, config, endpoint) { mutableStateOf(false) }
 
-    val window = resolvePrayerTimelineWindow(prayerTime, draft)
+    val window = resolvePrayerTimelineWindow(anchor, draft)
     val fixed = (if (start) draft.startRuleMode() else draft.endRuleMode()) == EndpointRuleMode.FIXED_TIME
     val resolvedMinutes = if (start) window.startMinutes else window.endMinutes
-    val resolvedOffset = resolvedMinutes - prayerMinutes
+    val resolvedOffset = anchor.offsetAt(resolvedMinutes)
 
     val relativeValid = fixed || resolvedOffset == 0 ||
-        relativeText.toIntOrNull()?.let { it in 1..EndpointOffsetLimitMinutes } == true
+        relativeText.toIntOrNull()?.let { it in 1..endpointOffsetLimit(endpoint, after = resolvedOffset >= 0) } == true
     val hourValue = hourText.toIntOrNull()
     val minuteValue = minuteText.toIntOrNull()
     val clockValid = !fixed ||
         (hourValue != null && hourValue in 0..23 && minuteValue != null && minuteValue in 0..59)
-    val windowValid = configResolvesToValidWindow(prayerTime, draft)
+    val windowValid = configResolvesToValidWindow(anchor, draft)
     val valid = relativeValid && clockValid && windowValid
 
-    fun applyRule(mode: EndpointRuleMode, offsetMinutes: Int, clockMinutes: Int) {
+    fun applyRule(mode: EndpointRuleMode, offsetMinutes: Int, axisMinutes: Int) {
         draft = if (start) {
-            draft.withStartRule(mode, offsetMinutes, clockMinutes)
+            draft.withStartRule(anchor, mode, offsetMinutes, axisMinutes)
         } else {
-            draft.withEndRule(mode, offsetMinutes, clockMinutes)
+            draft.withEndRule(anchor, mode, offsetMinutes, axisMinutes)
         }
     }
 
@@ -137,7 +135,9 @@ internal fun PrayerSilenceEditorSheet(
         val h = hourText.toIntOrNull() ?: return
         val m = minuteText.toIntOrNull() ?: return
         if (h !in 0..23 || m !in 0..59) return
-        applyRule(EndpointRuleMode.FIXED_TIME, resolvedOffset, h * 60 + m)
+        // A typed clock: a start's occurrence nearest the adhan, an end's first one after the start (D16).
+        val axis = if (start) anchor.startAxisFor(h * 60 + m) else anchor.endAxisFor(h * 60 + m, window.startMinutes)
+        applyRule(EndpointRuleMode.FIXED_TIME, anchor.offsetAt(axis), axis)
     }
 
     val endpointTitle = stringResource(
@@ -172,26 +172,26 @@ internal fun PrayerSilenceEditorSheet(
                 EndpointRuleEditor(
                     endpoint = endpoint,
                     config = draft,
-                    prayerTime = prayerTime,
+                    anchor = anchor,
                     window = window,
                     enabled = !saved,
                     relativeValue = relativeText,
                     hourValue = hourText,
                     minuteValue = minuteText,
                     onModeSelected = { target ->
-                        val currentWindow = resolvePrayerTimelineWindow(prayerTime, draft)
+                        val currentWindow = resolvePrayerTimelineWindow(anchor, draft)
                         val currentResolved = if (start) currentWindow.startMinutes else currentWindow.endMinutes
                         if (target == EndpointRuleMode.FIXED_TIME) {
                             applyRule(
                                 EndpointRuleMode.FIXED_TIME,
-                                currentResolved - prayerMinutes,
+                                anchor.offsetAt(currentResolved),
                                 currentResolved,
                             )
                             val clock = Math.floorMod(currentResolved, MINUTES_PER_DAY)
                             hourText = clockField(clock / 60)
                             minuteText = clockField(clock % 60)
                         } else {
-                            val offset = currentResolved - prayerMinutes
+                            val offset = anchor.offsetAt(currentResolved)
                             applyRule(EndpointRuleMode.ADHAN, offset, currentResolved)
                             relativeText = abs(offset).toString()
                         }
@@ -216,7 +216,7 @@ internal fun PrayerSilenceEditorSheet(
                         val digits = normalizeEndpointNumber(raw).take(4)
                         relativeText = digits
                         val parsed = digits.toIntOrNull()
-                        if (parsed != null && parsed <= EndpointOffsetLimitMinutes) {
+                        if (parsed != null && parsed <= endpointOffsetLimit(endpoint, after = resolvedOffset >= 0)) {
                             val signed = when {
                                 parsed == 0 -> 0
                                 resolvedOffset < 0 -> -parsed
@@ -247,7 +247,7 @@ internal fun PrayerSilenceEditorSheet(
                     if (valid && !saved) {
                         saved = true
                         focusManager.clearFocus()
-                        if (!onSave(draft.withLegacyDurationSynced(prayerTime))) {
+                        if (!onSave(draft.withLegacyDurationSynced(anchor))) {
                             saved = false
                         }
                     }

@@ -21,7 +21,6 @@ object ScheduleRefreshCoordinator {
     const val RESULT_DISABLED = "disabled"
     const val RESULT_PERMISSION_MISSING = "permission_missing"
     const val RESULT_MANUAL_ACTIVE = "manual_active"
-    const val RESULT_OUTSIDE_TUNISIA = "outside_tunisia"
     const val RESULT_WAKE_DISABLED = "wake_disabled"
 
     data class RefreshResult(
@@ -67,14 +66,11 @@ object ScheduleRefreshCoordinator {
             return RESULT_MANUAL_ACTIVE
         }
 
-        val outsideTunisia = PrefsManager.isDisabledOutsideTunisia(appContext)
-        if (!outsideTunisia) {
-            SilenceScheduler.scheduleAll(appContext)
-        }
+        SilenceScheduler.scheduleAll(appContext)
         SilenceVerifyWorker.enqueue(appContext)
         SilenceGuardService.stopIfNotNeeded(appContext)
 
-        return if (outsideTunisia) RESULT_OUTSIDE_TUNISIA else RESULT_SUCCESS
+        return RESULT_SUCCESS
     }
 
     suspend fun syncWake(context: Context): String {

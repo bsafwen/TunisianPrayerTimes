@@ -10,10 +10,9 @@ import androidx.annotation.VisibleForTesting
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.Prayer
-import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerTimesRepository
-import com.tunisianprayertimes.SilenceAlarmComputer
+import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.MainActivityPendingIntents
@@ -25,6 +24,10 @@ import com.tunisianprayertimes.isRepeatingWakeAlarm
 import com.tunisianprayertimes.isSuppressedWakeOccurrence
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.nap.NapSilenceController
+import com.tunisianprayertimes.silence.SilenceWindowPlanner
+import java.time.DayOfWeek
+import java.time.Instant
+import java.time.LocalDate
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.CoroutineScope
@@ -195,8 +198,8 @@ object WakeAlarmScheduler {
 	)
 
 	/** Every occurrence of the alarm around today, a skipped one included but not one the user stopped. */
-	fun occurrenceWindows(context: Context, delegationId: Int, config: PrayerWakeConfig): List<OccurrenceWindow> =
-		occurrenceWindows(config, loadPrayerDayContexts(context, delegationId, Calendar.getInstance()))
+	fun occurrenceWindows(context: Context, config: PrayerWakeConfig): List<OccurrenceWindow> =
+		occurrenceWindows(config, loadPrayerDayContexts(context, Calendar.getInstance()))
 
 	private fun occurrenceWindows(
 		config: PrayerWakeConfig,
@@ -245,7 +248,7 @@ object WakeAlarmScheduler {
 		val config = repository.getWakeAlarm(alarmId) ?: return null
 		val now = Calendar.getInstance()
 		val awakeCheckEventId = wakeMainEventId(alarmId)
-		val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
+		val prayerDays = loadPrayerDayContexts(context, now)
 		val occurrenceAtMillis = WakeAlarmQueueHolder.queue.activeOccurrenceForAlarm(alarmId)
 			?: AwakeCheckService.activeOccurrenceForEvent(awakeCheckEventId)
 			?: pendingAwakeCheckOccurrenceAtMillis(context, alarmId, now.timeInMillis)
@@ -295,7 +298,7 @@ object WakeAlarmScheduler {
 		if (!config.enabled) return null
 
 		// Skipping concerns the next alarm; the running occurrence, if any, is ended with stopWakeAlarm.
-		val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
+		val prayerDays = loadPrayerDayContexts(context, now)
 		val nextOccurrenceAtMillis = occurrenceWindows(config, prayerDays)
 			.filter { window -> window.startsAtMillis > now.timeInMillis }
 			.minByOrNull { window -> window.startsAtMillis }
@@ -456,13 +459,9 @@ object WakeAlarmScheduler {
 			return
 		}
 
-		val delegationId = PrefsManager.getDelegationId(context)
-		val prayerDays = loadPrayerDayContexts(context, delegationId, now)
-		val silenceConfigs: Map<Prayer, PrayerSilenceConfig> = if (PrefsManager.isEnabled(context)) {
-			Prayer.entries.associateWith { prayer -> PrefsManager.getConfig(context, prayer) }
-		} else {
-			emptyMap()
-		}
+		val prayerDays = loadPrayerDayContexts(context, now)
+		// The windows the silence scheduler arms (6.9), so a conflict is the silence that would really hold.
+		val silencePlanner = if (PrefsManager.isEnabled(context)) SilenceScheduler.planner(context) else null
 		if (prayerDays.isEmpty() && enabledConfigs.any { config ->
 			config.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW
 		}) {
@@ -489,7 +488,7 @@ object WakeAlarmScheduler {
 			result.mainAlarm?.let { trigger ->
 				val eventId = wakeMainEventId(trigger.alarmId)
 				if (eventId in preservedDueEventIds) return@let
-				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
+				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(silencePlanner)
 					.takeIf { autoSilenceOverrideAllowed }
 				scheduleTrigger(
 					context = context,
@@ -512,7 +511,7 @@ object WakeAlarmScheduler {
 					subAlarmId = requireNotNull(trigger.subAlarmId),
 				)
 				if (eventId in preservedDueEventIds) return@forEach
-				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
+				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(silencePlanner)
 					.takeIf { autoSilenceOverrideAllowed }
 				scheduleTrigger(
 					context = context,
@@ -743,33 +742,34 @@ object WakeAlarmScheduler {
 		)
 	}
 
-	private fun loadPrayerDayContexts(
+	/**
+	 * A context for every calendar day from −1 to the look-ahead (6.9): fixed-time alarms come from the calendar
+	 * day, prayer-relative ones from the prayer day of the same date, which a day without times leaves null.
+	 */
+	fun loadPrayerDayContexts(
 		context: Context,
-		delegationId: Int,
 		now: Calendar,
-	): List<WakeAlarmComputer.PrayerDayContext> {
-		val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-		val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
+	): List<WakeAlarmComputer.PrayerDayContext> = loadPrayerDayContexts(context, now, -1..WAKE_RECURRING_LOOKAHEAD_DAYS)
 
-		return (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
+	/** The context of each calendar day [offsets] away from [now]'s (6.9). */
+	fun loadPrayerDayContexts(
+		context: Context,
+		now: Calendar,
+		offsets: IntRange,
+	): List<WakeAlarmComputer.PrayerDayContext> {
+		val place = PrayerTimesRepository.place(context)
+		return offsets.map { dayOffset ->
 			val date = (now.clone() as Calendar).apply {
 				add(Calendar.DAY_OF_YEAR, dayOffset)
 			}
-			PrayerTimesRepository.loadDayPrayerTimes(
-				context = context,
-				delegationId = delegationId,
-				year = date.get(Calendar.YEAR),
-				month = date.get(Calendar.MONTH) + 1,
-				day = date.get(Calendar.DAY_OF_MONTH),
-			)?.let { prayerTimes ->
-				WakeAlarmComputer.PrayerDayContext(
-					date = date,
-					prayerTimes = prayerTimes,
-					isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-					jomoaaHour = jomoaaHour,
-					jomoaaMinute = jomoaaMinute,
-				)
-			}
+			val localDate = LocalDate.of(date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH))
+			val friday = localDate.dayOfWeek == DayOfWeek.FRIDAY
+			WakeAlarmComputer.PrayerDayContext(
+				date = date,
+				prayerDay = PrayerTimesRepository.prayerDay(context, localDate, place),
+				isFriday = friday,
+				jumua = if (friday) PrayerTimesRepository.jumuaTime(context, localDate, place) else null,
+			)
 		}
 	}
 
@@ -826,29 +826,10 @@ object WakeAlarmScheduler {
 		)
 	}
 
+	/** The prayer whose silence window holds this trigger (the planner's windows around it, 6.9), or null. */
 	private fun WakeAlarmComputer.ScheduledWakeTrigger.autoSilenceConflictPrayer(
-		prayerDays: List<WakeAlarmComputer.PrayerDayContext>,
-		silenceConfigs: Map<Prayer, PrayerSilenceConfig>,
-	): Prayer? {
-		if (silenceConfigs.isEmpty()) {
-			return null
-		}
-
-		return prayerDays
-			.asSequence()
-			.mapNotNull { prayerDay ->
-				SilenceAlarmComputer.overlapForTrigger(
-					triggerAtMillis = triggerAtMillis,
-					prayerDay = prayerDay.date,
-					prayerTimes = prayerDay.prayerTimes,
-					configs = silenceConfigs,
-					isFriday = prayerDay.isFriday,
-					jomoaaHour = prayerDay.jomoaaHour,
-					jomoaaMinute = prayerDay.jomoaaMinute,
-				)?.prayer
-			}
-			.firstOrNull()
-	}
+		planner: SilenceWindowPlanner?,
+	): Prayer? = planner?.windowAt(Instant.ofEpochMilli(triggerAtMillis))?.prayer
 
 	private fun PrayerWakeConfig.shouldUseAutoSilenceConflictPlayback(): Boolean =
 		mainAlarm.mode == WakeMainAlarmMode.FROM_NOW || ringDuringSilenceWindow

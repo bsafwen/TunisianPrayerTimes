@@ -76,15 +76,7 @@ internal object AwakeCheckSilencePolicy {
             return false
         }
 
-        val dismissedPrayer = SilenceScheduler.currentSilenceWindowPrayer(context)
-            ?: autoSilenceConflictPrayer
-        dismissedPrayer?.let { prayer ->
-            PrefsManager.setAutoSilenceDismissed(
-                context = context,
-                millis = System.currentTimeMillis(),
-                prayer = prayer,
-            )
-        }
+        SilenceScheduler.dismissCurrentWindows(context, SilenceScheduler.currentSilenceWindowPrayer(context) ?: autoSilenceConflictPrayer)
 
         val lifted = SilenceModeController.disableAutoSilence(context)
         if (lifted) {
@@ -98,35 +90,7 @@ internal object AwakeCheckSilencePolicy {
             return false
         }
 
-        val delegationId = PrefsManager.getDelegationId(context)
-        val triggerDay = Calendar.getInstance().apply { timeInMillis = triggerAtMillis }
-        val silenceConfigs: Map<Prayer, PrayerSilenceConfig> = Prayer.entries.associateWith { prayer ->
-            PrefsManager.getConfig(context, prayer)
-        }
-        val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-        val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-
-        return (-1..0).any { dayOffset ->
-            val prayerDay = (triggerDay.clone() as Calendar).apply {
-                add(Calendar.DAY_OF_YEAR, dayOffset)
-            }
-            val prayerTimes = PrayerTimesRepository.loadDayPrayerTimes(
-                context = context,
-                delegationId = delegationId,
-                year = prayerDay.get(Calendar.YEAR),
-                month = prayerDay.get(Calendar.MONTH) + 1,
-                day = prayerDay.get(Calendar.DAY_OF_MONTH),
-            ) ?: return@any false
-
-            SilenceAlarmComputer.overlapForTrigger(
-                triggerAtMillis = triggerAtMillis,
-                prayerDay = prayerDay,
-                prayerTimes = prayerTimes,
-                configs = silenceConfigs,
-                isFriday = prayerDay.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-                jomoaaHour = jomoaaHour,
-                jomoaaMinute = jomoaaMinute,
-            ) != null
-        }
+        // The planner's windows around the trigger (6.9), as the scheduler arms them.
+        return SilenceScheduler.planner(context).windowAt(java.time.Instant.ofEpochMilli(triggerAtMillis)) != null
     }
 }

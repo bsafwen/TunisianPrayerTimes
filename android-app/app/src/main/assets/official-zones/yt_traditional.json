@@ -1,0 +1,19 @@
+{
+ "schema": 1,
+ "authority": "yt_traditional",
+ "methodId": "yt_traditional",
+ "country": "YT",
+ "mapping": "NATIONAL",
+ "source": "Mayotte's traditional table, the Moroni table less 3 min (horaires-priere-mayotte.fr's 2026 table and mosques, plan 7.6); one zone at Moroni's point, sunrise at the user's point",
+ "zones": [
+  {
+   "id": "mayotte",
+   "nameAr": "مايوت",
+   "point": {
+    "latE5": -1170000,
+    "lngE5": 4325000
+   },
+   "sunriseAtPlace": true
+  }
+ ]
+}

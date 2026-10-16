@@ -165,7 +165,6 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.ClockTime
 import com.tunisianprayertimes.AnalyticsTracker
-import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.DelegationLocationResult
 import com.tunisianprayertimes.DelegationLocator
@@ -181,10 +180,21 @@ import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerRelativeOffset
 import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.PlaceResolution
+import com.tunisianprayertimes.PlaceCatalogue
+import com.tunisianprayertimes.CitySearch
+import com.tunisianprayertimes.place.PrayerPlace
+import com.tunisianprayertimes.silence.SilenceEnd
+import com.tunisianprayertimes.silence.SilenceEndpoints
+import com.tunisianprayertimes.silence.SilenceFit
+import com.tunisianprayertimes.silence.SilenceRule
+import com.tunisianprayertimes.silence.SilenceStart
+import com.tunisianprayertimes.place.Region
+import com.tunisianprayertimes.place.Regions
+import com.tunisianprayertimes.place.CountryResolver as PlaceCountry
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
 import com.tunisianprayertimes.RamadanOverrideChecker
@@ -192,6 +202,7 @@ import com.tunisianprayertimes.OfficialIslamicDates
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.ScheduleRefreshCoordinator
 import com.tunisianprayertimes.SilenceAlarmComputer
+import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
@@ -211,6 +222,7 @@ import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.AwakeCheckService
 import java.time.LocalDate
+import java.time.LocalTime
 import java.util.Date
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.ui.theme.BannerBg
@@ -310,12 +322,14 @@ private fun WakeQuickPreset.testTag(): String = when (this) {
     WakeQuickPreset.TIMER -> TestTags.WAKE_QUICK_PRESET_TIMER
 }
 
+/** The next prayer (6.9): its instant, its hour and minute in the phone's clock, and its prayer day. */
 private data class NextPrayerCountdownInfo(
     val prayer: Prayer,
     val hour: Int,
     val minute: Int,
     val triggerAtMillis: Long,
     val isTomorrow: Boolean,
+    val prayerDay: LocalDate,
 )
 
 @Composable
@@ -326,6 +340,7 @@ fun MainScreen(
     requestedDhikrReminderId: String? = null,
     requestedDhikrOccurrenceId: String? = null,
     requestedQuranAction: String? = null,
+    requestedPrayersAction: String? = null,
 ) {
     val context = LocalContext.current
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
@@ -392,16 +407,30 @@ fun MainScreen(
     var autoLocationEnabled by rememberSaveable {
         mutableStateOf(PrefsManager.isAutoLocationUpdateEnabled(context))
     }
-    var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
-    var locationPickerRequested by remember { mutableStateOf(false) }
+    var delegationId by rememberSaveable { mutableIntStateOf(screenTimesId(context)) }
+    var locationPickerRequested by remember { mutableStateOf(PrefsManager.consumePlacePickerOnStart(context)) }
+    // 6.8: a skipped first run's place, shown with «تأكيد الموقع» until the user confirms it or a fix arrives.
+    var placeProvisional by remember(delegationId) { mutableStateOf(PrefsManager.isPlaceProvisional(context)) }
+    // 6.4, 6.11: a chooser country's question, or an unknown country's «تأكيد الطريقة», until answered. The chooser
+    // opens by itself once per country and session; dismissed, it leaves the banner.
+    var methodQuestion by remember(delegationId) { mutableStateOf(runCatching { pendingMethodQuestion(context) }.getOrNull()) }
+    var methodChooserSeen by rememberSaveable { mutableStateOf(setOf<String>()) }
+    var methodChooserOpen by remember { mutableStateOf(false) }
+    LaunchedEffect(methodQuestion) {
+        val question = methodQuestion
+        if (question != null && question.hasChooser && question.key !in methodChooserSeen) {
+            methodChooserSeen = methodChooserSeen + question.key
+            methodChooserOpen = true
+        }
+    }
     var prayerTabSettingsOpen by rememberSaveable { mutableStateOf(false) }
     var prayerTimeMethodOpen by rememberSaveable { mutableStateOf(false) }
     DisposableEffect(context) {
         // Background location updates must refresh the timetable alongside the label.
         val unsubscribe = PrefsManager.observeLocationSelection(context) {
-            delegationId = PrefsManager.getDelegationId(context)
+            delegationId = screenTimesId(context)
         }
-        delegationId = PrefsManager.getDelegationId(context)
+        delegationId = screenTimesId(context)
         onDispose { unsubscribe() }
     }
     var manualSilenceMode by rememberSaveable { mutableStateOf(PrefsManager.getManualSilenceMode(context)) }
@@ -453,7 +482,7 @@ fun MainScreen(
             DelegationLocator.hasLocationPermission(context)
         ) {
             if (DelegationLocator.updateDelegationFromLastLocation(context)) {
-                delegationId = PrefsManager.getDelegationId(context)
+                delegationId = screenTimesId(context)
             }
         }
 
@@ -551,6 +580,10 @@ fun MainScreen(
         if (requestedIndex in mainDestinations.indices) {
             selectedDestinationIndex = requestedIndex
         }
+        // The travel notification opens the city picker (6.8).
+        if (requestedDestination == MainTabNavigation.DESTINATION_PRAYERS &&
+            requestedPrayersAction == MainTabNavigation.PRAYERS_ACTION_CHOOSE_PLACE
+        ) locationPickerRequested = true
     }
     val currentDestinationIndex = if (selectedDestinationIndex in mainDestinations.indices) {
         selectedDestinationIndex
@@ -804,6 +837,25 @@ fun MainScreen(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
+                        methodQuestion?.let { question ->
+                            MethodConfirmBanner(
+                                question = question,
+                                onChoose = { if (question.hasChooser) methodChooserOpen = true else prayerTabSettingsOpen = true },
+                                onConfirm = {
+                                    answerMethodQuestion(context, question, methodId = null, asrShadow = null)
+                                    methodQuestion = null
+                                },
+                            )
+                        }
+                        if (placeProvisional) {
+                            ProvisionalPlaceBanner(
+                                onConfirm = {
+                                    PrefsManager.setPlaceProvisional(context, false)
+                                    placeProvisional = false
+                                },
+                                onChange = { locationPickerRequested = true },
+                            )
+                        }
                         LocationPickerCard(
                             delegationId = delegationId,
                             openRequested = locationPickerRequested,
@@ -812,10 +864,6 @@ fun MainScreen(
                                 delegationId = delegation.id
                                 PrefsManager.setDelegationId(context, delegation.id)
                                 rescheduleIfEnabled()
-                            },
-                            onOutsideTunisia = {
-                                autoSilenceEnabled = false
-                                PrefsManager.setEnabled(context, false)
                             },
                             modifier = Modifier.weight(1f),
                         )
@@ -945,12 +993,7 @@ fun MainScreen(
                                         SilenceModeController.setManualNormal(context)
                                     } else {
                                         SilenceModeController.disableAutoSilence(context)
-                                        val dismissedPrayer = SilenceScheduler.currentSilenceWindowPrayer(context)
-                                        if (dismissedPrayer != null) {
-                                            PrefsManager.setAutoSilenceDismissed(
-                                                context, System.currentTimeMillis(), dismissedPrayer
-                                            )
-                                        }
+                                        SilenceScheduler.dismissCurrentWindows(context, SilenceScheduler.currentSilenceWindowPrayer(context))
                                     }
                                     SilenceModeController.notifyIfMissedCallDuringSilence(context)
                                     refreshSilenceState()
@@ -1067,11 +1110,14 @@ fun MainScreen(
                                     prayerTimeMethodOpen = true
                                 },
                                 onDismiss = { prayerTabSettingsOpen = false },
+                                methodSection = { PrayerMethodSection(onTimesChanged = { delegationId = screenTimesId(context) }) },
+                                inmMethodIsExample = PrayerTimesRepository.place(context) !is PrayerPlace.Inm,
                             )
                         }
                         if (prayerTimeMethodOpen) {
                             PrayerTimeMethodDialog(
-                                delegationId = delegationId,
+                                // Abroad, INM's worked example is always Tunis's (615, 6.11).
+                                delegationId = (PrayerTimesRepository.place(context) as? PrayerPlace.Inm)?.delegationId ?: PlaceResolution.TUNIS_DELEGATION_ID,
                                 selectedDate = prayerTableSelectedDate,
                                 onDismiss = { prayerTimeMethodOpen = false },
                             )
@@ -1106,7 +1152,7 @@ fun MainScreen(
                     }
 
                     MainDestination.Qibla -> {
-                        QiblaCard(selectedDelegationId = delegationId)
+                        QiblaCard(placeRevision = delegationId)
                     }
                     MainDestination.Adhkar, MainDestination.Quran -> Unit
                 }
@@ -1263,6 +1309,19 @@ fun MainScreen(
             )
         }
 
+        methodQuestion?.takeIf { methodChooserOpen }?.let { question ->
+            MethodChooserSheet(
+                question = question,
+                onAnswered = {
+                    methodChooserOpen = false
+                    methodQuestion = null
+                    delegationId = screenTimesId(context)
+                    mainScope.launch { ScheduleRefreshCoordinator.syncAll(context) }
+                },
+                onDismiss = { methodChooserOpen = false },
+            )
+        }
+
         // Full-screen wake alarm editor overlay
         editingWakeAlarm?.let { wakeAlarm ->
             val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
@@ -1303,10 +1362,12 @@ fun MainScreen(
                 onSave = { config ->
                     val stagedSilenceEditor = wakeSilenceConflictEditor
                     if (stagedSilenceEditor?.hasEditedSilenceWindow == true && !config.ringDuringSilenceWindow) {
+                        val conflict = stagedSilenceEditor.originalConflict
                         persistPrayerSilenceConfig(
                             context = context,
-                            prayer = stagedSilenceEditor.originalConflict.silencePrayer,
+                            prayer = conflict.silencePrayer,
                             config = stagedSilenceEditor.draftSilenceConfig,
+                            anchor = conflict.silencePrayerDay?.let { timelineAnchorFor(context, conflict.silencePrayer, it) },
                         )
                     }
                     mainScope.launch {
@@ -1340,7 +1401,7 @@ fun MainScreen(
                     wakeSilenceConflictEditor = WakeSilenceConflictEditorState(
                         draftConfig = draftConfig,
                         originalConflict = conflict,
-                        draftSilenceConfig = PrefsManager.getConfig(context, conflict.silencePrayer),
+                        draftSilenceConfig = PrefsManager.getEffectiveConfig(context, conflict.silencePrayer),
                     )
                 },
                 onCancelSilenceWindowEdit = {
@@ -1568,7 +1629,6 @@ private fun BatteryBanner(context: Context) {
 private fun LocationPickerCard(
     delegationId: Int,
     onDelegationSelected: (Delegation) -> Unit,
-    onOutsideTunisia: () -> Unit = {},
     openRequested: Boolean = false,
     onOpenRequestHandled: () -> Unit = {},
     modifier: Modifier = Modifier,
@@ -1617,6 +1677,12 @@ private fun LocationPickerCard(
         value = withContext(Dispatchers.Default) { LocalityRepository.preparePicker(context, allDelegations) }
     }
     val savedDelegation = remember(delegationId, allDelegations) { allDelegations.find { it.id == delegationId } }
+    val openRegionCities by produceState(emptyList<PlaceCatalogue.Row>()) {
+        value = withContext(Dispatchers.IO) {
+            val open = listOf(Region.ARAB_LEAGUE, Region.EUROPE, Region.OVERSEAS_FRANCE, Region.OTHER).filter { PrefsManager.isRegionOpen(context, it) }
+            if (open.isEmpty()) emptyList() else PlaceCatalogue.get(context).listedRows().filter { Regions.of(it.ref.countryCode) in open }
+        }
+    }
 
     var selectedLocation by remember { mutableStateOf(PrefsManager.getLocationSelection(context)) }
     DisposableEffect(context) {
@@ -1627,7 +1693,8 @@ private fun LocationPickerCard(
     }
     LaunchedEffect(sourcesChecked, allDelegations, selectedLocation) {
         val saved = selectedLocation
-        if (!sourcesChecked || saved.fromGps) return@LaunchedEffect
+        // The source repair is for a Tunisian locality only (6.8).
+        if (!sourcesChecked || saved.fromGps || PrefsManager.getPlace(context) !is PrayerPlace.Inm) return@LaunchedEffect
         val id = saved.localityId ?: return@LaunchedEffect
         val sources = allDelegations
         val repaired = withContext(Dispatchers.Default) {
@@ -1645,7 +1712,8 @@ private fun LocationPickerCard(
         onDelegationSelected(source)
         selectedLocation = PrefsManager.getLocationSelection(context)
     }
-    val savedSourceUnavailable = sourcesChecked && selectedLocation.delegationId !in availableIds
+    val savedSourceUnavailable = sourcesChecked && PrefsManager.getPlace(context) is PrayerPlace.Inm &&
+        selectedLocation.delegationId !in availableIds
     var showSheet by remember { mutableStateOf(false) }
     var locating by remember { mutableStateOf(false) }
 
@@ -1669,9 +1737,6 @@ private fun LocationPickerCard(
 
             when (result) {
                 is DelegationLocationResult.Success -> {
-                    if (PrefsManager.isDisabledOutsideTunisia(context)) {
-                        PrefsManager.setDisabledOutsideTunisia(context, false)
-                    }
                     AnalyticsTracker.markDelegationSource(context, "gps_success")
                     onDelegationSelected(result.delegation)
                     PrefsManager.setGpsLocation(context, result)
@@ -1719,19 +1784,27 @@ private fun LocationPickerCard(
                     ).show()
                 }
 
-                DelegationLocationResult.OutsideTunisia -> {
+                is DelegationLocationResult.Abroad -> {
+                    AnalyticsTracker.markDelegationSource(context, "gps_abroad")
+                    val saved = PrefsManager.getPlace(context)
+                    val savedLabel = PrefsManager.getPlaceNameSnapshot(context)
+                    PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
+                    scope.launch { PlaceResolution.onPlaceChanged(context, saved, result.place, savedLabel, result.label) }
+                    selectedLocation = PrefsManager.getLocationSelection(context)
+                }
+
+                is DelegationLocationResult.RegionClosed -> {
                     AnalyticsTracker.permissionStepResult(
                         context = context,
                         permissionType = "location",
                         result = "outside_tunisia",
                         entryPoint = "delegation_picker",
                     )
-                    SilenceScheduler.cancelAll(context)
-                    PrefsManager.setDisabledOutsideTunisia(context, true)
-                    onOutsideTunisia()
+                    // Principle 7 and D20: a fix abroad never switches auto-silence off. While its region is
+                    // closed (plan 2) the fix is ignored and the saved place is kept.
                     Toast.makeText(
                         context,
-                        context.getString(R.string.location_outside_tunisia),
+                        context.getString(R.string.location_region_closed),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -1768,10 +1841,14 @@ private fun LocationPickerCard(
         }
     }
 
-    val locationTitle = selectedLocation.name
+    val savedPlace = remember(selectedLocation) { PrefsManager.getPlace(context) }
+    val abroad = savedPlace as? PrayerPlace.Coordinates
+    val locationTitle = if (abroad != null) {
+        PrefsManager.getPlaceNameSnapshot(context) ?: stringResource(R.string.location_current_place)
+    } else selectedLocation.name
         ?: if (selectedLocation.fromGps) stringResource(R.string.location_current_position)
         else stringResource(R.string.hint_search_delegation)
-    val hasLocation = selectedLocation.name != null || selectedLocation.fromGps
+    val hasLocation = abroad != null || selectedLocation.name != null || selectedLocation.fromGps
     val governorateName = remember(gouvernorats, delegationId) {
         gouvernorats.firstOrNull { gov -> gov.delegations.any { it.id == delegationId } }?.nomAr
     }
@@ -1783,7 +1860,9 @@ private fun LocationPickerCard(
     ).joinToString("، ")
     val gpsSource = stringResource(R.string.location_header_from_gps)
         .takeIf { selectedLocation.fromGps && selectedLocation.name != null }
-    val locationSubtitle = listOfNotNull(gpsSource, placeContext.takeIf { it.isNotEmpty() })
+    val locationSubtitle = if (abroad != null) {
+        listOfNotNull(gpsSource, abroad.countryCode?.let { CitySearch.countryName(PlaceCountry.normalize(it)) }).joinToString(" · ")
+    } else listOfNotNull(gpsSource, placeContext.takeIf { it.isNotEmpty() })
         .joinToString(" · ")
 
     Column(modifier = modifier.testTag(TestTags.LOCATION_PICKER)) {
@@ -1920,7 +1999,20 @@ private fun LocationPickerCard(
                         Toast.makeText(context, R.string.location_no_match, Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
+            },
+            cities = openRegionCities,
+            selectedCityId = (savedPlace as? PrayerPlace.Coordinates)?.catalogueId,
+            onSelectCity = { row ->
+                showSheet = false
+                val old = PrefsManager.getPlace(context)
+                val oldLabel = PrefsManager.getPlaceNameSnapshot(context)
+                val place = PlaceResolution.placeFromCatalogue(context, row)
+                val label = PlaceResolution.catalogueLabel(row)
+                AnalyticsTracker.markDelegationSource(context, "manual_abroad")
+                PrefsManager.setPlace(context, place, label, fromGps = false)
+                scope.launch { PlaceResolution.onPlaceChanged(context, old, place, oldLabel, label) }
+                selectedLocation = PrefsManager.getLocationSelection(context)
+            },
         )
     }
 }
@@ -1962,19 +2054,7 @@ private fun TodayNextPrayerCard(
         Calendar.getInstance().apply { timeInMillis = currentTimeMillis }
     }
     val currentDayMillis = remember(currentTimeMillis) { startOfDayMillis(currentTimeMillis) }
-    val todayTimes = remember(delegationId, currentDayMillis) {
-        try {
-            PrayerTimesRepository.loadDayPrayerTimes(
-                context = context,
-                delegationId = delegationId,
-                year = currentCalendar.get(Calendar.YEAR),
-                month = currentCalendar.get(Calendar.MONTH) + 1,
-                day = currentCalendar.get(Calendar.DAY_OF_MONTH),
-            )
-        } catch (e: Exception) {
-            null
-        }
-    }
+    val timesKey = remember(delegationId, currentDayMillis) { PrayerTimesRepository.timesKey(context) }
 
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
@@ -1986,15 +2066,8 @@ private fun TodayNextPrayerCard(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    val countdown = remember(delegationId, todayTimes, currentTimeMillis) {
-        resolveNextPrayerCountdown(
-            context = context,
-            delegationId = delegationId,
-            todayTimes = todayTimes,
-            nowMillis = currentTimeMillis,
-            jomoaaHour = PrefsManager.getJomoaaTimeHour(context),
-            jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
-        )
+    val countdown = remember(timesKey, currentTimeMillis) {
+        runCatching { resolveNextPrayerCountdown(context, currentTimeMillis) }.getOrNull()
     }
     val activeAutoSilencePrayer = remember(autoSilenceActive, currentTimeMillis) {
         if (autoSilenceActive) SilenceScheduler.currentSilenceWindowPrayer(context) else null
@@ -2114,41 +2187,31 @@ private fun PrayerSettingsCard(
         isSameCalendarDay(selectedDate, currentDayMillis)
     }
 
-    val displayTimes = remember(delegationId, selectedDate) {
-        try {
-            PrayerTimesRepository.loadDayPrayerTimes(
-                context, delegationId,
-                selectedCal.get(Calendar.YEAR),
-                selectedCal.get(Calendar.MONTH) + 1,
-                selectedCal.get(Calendar.DAY_OF_MONTH)
-            )
-        } catch (e: Exception) { null }
+    val selectedLocalDate = remember(selectedDate) {
+        LocalDate.of(selectedCal.get(Calendar.YEAR), selectedCal.get(Calendar.MONTH) + 1, selectedCal.get(Calendar.DAY_OF_MONTH))
     }
-    val nextDayFajr = remember(delegationId, selectedDate) {
-        loadNextDayFajr(context, delegationId, selectedDate)
+    // The five adhans of the prayer day shown, as instants (6.6).
+    val dailyAnchors = remember(delegationId, selectedLocalDate, refreshTick) {
+        runCatching { prayerTimelineAnchors(context, selectedLocalDate) }.getOrDefault(emptyMap())
     }
+    // Dhuhr in the phone's clock, for the Eid rows' cut-off (Tunisia only, A10).
+    val dhuhrClock = dailyAnchors[Prayer.DHUHR]?.let { Math.floorMod(it.minutes, 1440) } ?: (13 * 60)
 
     val canGoBack = remember(delegationId, selectedDate) {
         val prev = Calendar.getInstance().apply {
             timeInMillis = selectedDate
             add(Calendar.DAY_OF_MONTH, -1)
         }
-        PrayerTimesRepository.hasPrayerData(
-            context, delegationId,
-            prev.get(Calendar.YEAR),
-            prev.get(Calendar.MONTH) + 1
-        )
+        LocalDate.of(prev.get(Calendar.YEAR), prev.get(Calendar.MONTH) + 1, prev.get(Calendar.DAY_OF_MONTH)) in
+            PrayerTimesRepository.getDateRange(PrayerTimesRepository.place(context))
     }
     val canGoForward = remember(delegationId, selectedDate) {
         val next = Calendar.getInstance().apply {
             timeInMillis = selectedDate
             add(Calendar.DAY_OF_MONTH, 1)
         }
-        PrayerTimesRepository.hasPrayerData(
-            context, delegationId,
-            next.get(Calendar.YEAR),
-            next.get(Calendar.MONTH) + 1
-        )
+        LocalDate.of(next.get(Calendar.YEAR), next.get(Calendar.MONTH) + 1, next.get(Calendar.DAY_OF_MONTH)) in
+            PrayerTimesRepository.getDateRange(PrayerTimesRepository.place(context))
     }
 
     val prayerNames = mapOf(
@@ -2162,7 +2225,9 @@ private fun PrayerSettingsCard(
         Prayer.AID_ADHA to stringResource(R.string.prayer_aid_adha)
     )
 
-    val isAidFitr = remember(selectedDate, displayTimes, currentTimeMillis, correctedCalendar) {
+    val isAidFitr = remember(selectedDate, dailyAnchors, currentTimeMillis, correctedCalendar) {
+        // Eid stays Tunisian (A10): a place abroad shows no Eid row.
+        if (PrayerTimesRepository.place(context) !is com.tunisianprayertimes.place.PrayerPlace.Inm) return@remember false
         val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
         val gregDate = LocalDate.of(
             cal.get(Calendar.YEAR),
@@ -2173,12 +2238,14 @@ private fun PrayerSettingsCard(
             date = gregDate,
             nowHour = currentCalendar.get(Calendar.HOUR_OF_DAY),
             nowMinute = currentCalendar.get(Calendar.MINUTE),
-            dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
-            dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
+            dhuhrHour = dhuhrClock / 60,
+            dhuhrMinute = dhuhrClock % 60,
             isToday = isToday,
         )
     }
-    val isAidAdha = remember(selectedDate, displayTimes, currentTimeMillis, correctedCalendar) {
+    val isAidAdha = remember(selectedDate, dailyAnchors, currentTimeMillis, correctedCalendar) {
+        // Eid stays Tunisian (A10): a place abroad shows no Eid row.
+        if (PrayerTimesRepository.place(context) !is com.tunisianprayertimes.place.PrayerPlace.Inm) return@remember false
         val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
         val gregDate = LocalDate.of(
             cal.get(Calendar.YEAR),
@@ -2189,45 +2256,19 @@ private fun PrayerSettingsCard(
             date = gregDate,
             nowHour = currentCalendar.get(Calendar.HOUR_OF_DAY),
             nowMinute = currentCalendar.get(Calendar.MINUTE),
-            dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
-            dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
+            dhuhrHour = dhuhrClock / 60,
+            dhuhrMinute = dhuhrClock % 60,
             isToday = isToday,
         )
     }
 
-    // Jomoaa custom time from prefs (or Dhuhr as fallback)
-    var jomoaaH by rememberSaveable { mutableIntStateOf(PrefsManager.getJomoaaTimeHour(context)) }
-    var jomoaaM by rememberSaveable { mutableIntStateOf(PrefsManager.getJomoaaTimeMinute(context)) }
-    val resolvedJomoaaH = if (jomoaaH >= 0) jomoaaH else displayTimes?.dhuhr?.hour ?: -1
-    val resolvedJomoaaM = if (jomoaaM >= 0) jomoaaM else displayTimes?.dhuhr?.minute ?: -1
+    // Jumu'a and Eid times are edited from their rows: shown in the phone's clock, stored in the place's (6.6).
+    var silenceTimesRevision by remember { mutableIntStateOf(0) }
 
-    // Aid Fitr custom time from prefs (or Shuruk of Eid day as fallback)
-    var aidFitrH by rememberSaveable { mutableIntStateOf(PrefsManager.getAidFitrTimeHour(context)) }
-    var aidFitrM by rememberSaveable { mutableIntStateOf(PrefsManager.getAidFitrTimeMinute(context)) }
-    val defaultAidFitrTime = remember(delegationId, selectedHijriYear, correctedCalendar) {
-        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidFitrDate(selectedHijriYear))
-    }
-    val resolvedAidFitrH = if (aidFitrH >= 0) aidFitrH else defaultAidFitrTime?.first ?: -1
-    val resolvedAidFitrM = if (aidFitrM >= 0) aidFitrM else defaultAidFitrTime?.second ?: -1
-
-    // Aid Adha custom time from prefs (or Shuruk of Eid day as fallback)
-    var aidAdhaH by rememberSaveable { mutableIntStateOf(PrefsManager.getAidAdhaTimeHour(context)) }
-    var aidAdhaM by rememberSaveable { mutableIntStateOf(PrefsManager.getAidAdhaTimeMinute(context)) }
-    val defaultAidAdhaTime = remember(delegationId, selectedHijriYear, correctedCalendar) {
-        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidAdhaDate(selectedHijriYear))
-    }
-    val resolvedAidAdhaH = if (aidAdhaH >= 0) aidAdhaH else defaultAidAdhaTime?.first ?: -1
-    val resolvedAidAdhaM = if (aidAdhaM >= 0) aidAdhaM else defaultAidAdhaTime?.second ?: -1
-
-    // Next prayer logic — only for today, Friday-aware
+    // The next of the day's prayers, today only, by instant (Jumu'a in Dhuhr's place on a Friday).
     val nextPrayer = if (isToday) {
-        displayTimes?.nextPrayer(
-            currentCalendar.get(Calendar.HOUR_OF_DAY),
-            currentCalendar.get(Calendar.MINUTE),
-            currentCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-            PrefsManager.getJomoaaTimeHour(context),
-            PrefsManager.getJomoaaTimeMinute(context)
-        )
+        val now = java.time.Instant.ofEpochMilli(currentTimeMillis)
+        PrayerTimesRepository.prayerOccurrences(context, selectedLocalDate).firstOrNull { it.at > now }?.prayer
     } else null
 
     val dailyPrayers = remember { listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA) }
@@ -2239,24 +2280,30 @@ private fun PrayerSettingsCard(
             if (isAidAdha) add(Prayer.AID_ADHA)
         }
     }
-    val sectionTimes = mapOf(
-        Prayer.FAJR to displayTimes?.fajr,
-        Prayer.DHUHR to displayTimes?.dhuhr,
-        Prayer.ASR to displayTimes?.asr,
-        Prayer.MAGHRIB to displayTimes?.maghrib,
-        Prayer.ISHA to displayTimes?.isha,
-        Prayer.JOMOAA to PrayerTime(Prayer.JOMOAA, resolvedJomoaaH, resolvedJomoaaM),
-        Prayer.AID_FITR to PrayerTime(Prayer.AID_FITR, resolvedAidFitrH, resolvedAidFitrM),
-        Prayer.AID_ADHA to PrayerTime(Prayer.AID_ADHA, resolvedAidAdhaH, resolvedAidAdhaM),
-    )
-    val timelineScale = remember(
-        displayTimes, refreshTick, selectedDate,
-        jomoaaH, jomoaaM, aidFitrH, aidFitrM, aidAdhaH, aidAdhaM, isAidFitr, isAidAdha,
+    // The editors' anchors (6.9, D8): each adhan as an instant; Jumu'a on the Friday on or after the date shown.
+    val sectionAnchors: Map<Prayer, PrayerTimelineAnchor> = remember(
+        delegationId, selectedLocalDate, refreshTick, silenceTimesRevision, isAidFitr, isAidAdha, selectedHijriYear, correctedCalendar,
     ) {
+        val place = PrayerTimesRepository.place(context)
+        buildMap {
+            putAll(dailyAnchors)
+            jumuaTimelineAnchor(context, selectedLocalDate, place)?.let { put(Prayer.JOMOAA, it) }
+            if (isAidFitr) {
+                eidTimelineAnchor(context, Prayer.AID_FITR, RamadanOverrideChecker.getEidFitrDate(selectedHijriYear), place)?.let { put(Prayer.AID_FITR, it) }
+            }
+            if (isAidAdha) {
+                eidTimelineAnchor(context, Prayer.AID_ADHA, RamadanOverrideChecker.getEidAdhaDate(selectedHijriYear), place)?.let { put(Prayer.AID_ADHA, it) }
+            }
+        }
+    }
+    // The next adhan after each row's, for the overlap warning.
+    val nextAnchors: Map<Prayer, PrayerTimelineAnchor?> = remember(sectionAnchors) {
+        sectionAnchors.mapValues { (_, anchor) -> nextTimelineAnchor(context, anchor) }
+    }
+    val timelineScale = remember(sectionAnchors, refreshTick, sectionPrayers) {
         val entries = sectionPrayers.mapNotNull { prayer ->
-            sectionTimes[prayer]
-                ?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
-                ?.let { time -> time to resolvePrayerTimelineWindow(time, PrefsManager.getConfig(context, prayer)) }
+            sectionAnchors[prayer]
+                ?.let { anchor -> anchor to resolvePrayerTimelineWindow(anchor, PrefsManager.getEffectiveConfig(context, prayer)) }
                 ?.takeIf { (_, window) -> window.endMinutes >= window.startMinutes }
         }
         sharedPrayerTimelineScale(entries)
@@ -2313,35 +2360,47 @@ private fun PrayerSettingsCard(
                     onDateSelected = { millis -> onSelectedDateChange(millis) }
                 )
             }
+            // 6.11: the official zone the place maps to, and the place's UTC offset when the phone keeps another zone.
+            val listNotes = remember(delegationId, selectedLocalDate) { runCatching { timesListNotes(context, selectedLocalDate) }.getOrNull() }
+            listNotes?.zoneName?.let { zone ->
+                Text(
+                    text = stringResource(R.string.list_zone_line, zone),
+                    fontSize = 12.sp,
+                    color = PrayerSilencePalette.SecondaryText,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp).testTag("times_zone_line"),
+                )
+            }
+            listNotes?.placeOffset?.let { offset ->
+                Text(
+                    text = stringResource(R.string.list_place_offset, offset),
+                    fontSize = 12.sp,
+                    color = PrayerSilencePalette.SecondaryText,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp).testTag("times_place_offset"),
+                )
+            }
 
-            if (displayTimes != null) {
+            if (dailyAnchors.isNotEmpty()) {
                 sectionPrayers.forEachIndexed { index, prayer ->
                     if (index > 0) {
                         HorizontalDivider(color = PrayerSilencePalette.SoftBorder, thickness = 1.dp)
                     }
-                    val prayerTime = sectionTimes[prayer]
-                    val nextPrayerTime = when (prayer) {
-                        Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB -> sectionTimes[
-                            dailyPrayers[dailyPrayers.indexOf(prayer) + 1]
-                        ]
-                        Prayer.ISHA -> nextDayFajr
-                        Prayer.JOMOAA -> displayTimes.allPrayers().find { it.prayer == Prayer.ASR }
-                        Prayer.AID_FITR, Prayer.AID_ADHA -> displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR }
-                    }
-                    val nextPrayerIsTomorrow = prayer == Prayer.ISHA
+                    val anchor = sectionAnchors[prayer]
+                    val nextAnchor = nextAnchors[prayer]
                     val onTimeClick: (() -> Unit)? = when (prayer) {
                         Prayer.JOMOAA -> {
                             {
+                                val jumua = sectionAnchors[Prayer.JOMOAA]
+                                val shown = jumua?.let { Math.floorMod(it.minutes, 1440) } ?: (13 * 60)
                                 val picker = MaterialTimePicker.Builder()
                                     .setTimeFormat(TimeFormat.CLOCK_24H)
-                                    .setHour(resolvedJomoaaH.coerceAtLeast(0))
-                                    .setMinute(resolvedJomoaaM.coerceAtLeast(0))
+                                    .setHour(shown / 60)
+                                    .setMinute(shown % 60)
                                     .setTitleText(context.getString(R.string.pick_jomoaa_time))
                                     .build()
                                 picker.addOnPositiveButtonClickListener {
-                                    jomoaaH = picker.hour
-                                    jomoaaM = picker.minute
-                                    PrefsManager.setJomoaaTime(context, picker.hour, picker.minute)
+                                    // Per country abroad (6.9, A18), today's keys in Tunisia.
+                                    PrefsManager.setJumuaTime(context, PrayerTimesRepository.place(context), pickedPlaceClock(jumua, picker.hour, picker.minute))
+                                    silenceTimesRevision++
                                     refreshTick++
                                     onConfigChanged()
                                 }
@@ -2350,16 +2409,18 @@ private fun PrayerSettingsCard(
                         }
                         Prayer.AID_FITR -> {
                             {
+                                val eid = sectionAnchors[Prayer.AID_FITR]
+                                val shown = eid?.let { Math.floorMod(it.minutes, 1440) } ?: (7 * 60)
                                 val picker = MaterialTimePicker.Builder()
                                     .setTimeFormat(TimeFormat.CLOCK_24H)
-                                    .setHour(resolvedAidFitrH.coerceAtLeast(0))
-                                    .setMinute(resolvedAidFitrM.coerceAtLeast(0))
+                                    .setHour(shown / 60)
+                                    .setMinute(shown % 60)
                                     .setTitleText(context.getString(R.string.pick_aid_fitr_time))
                                     .build()
                                 picker.addOnPositiveButtonClickListener {
-                                    aidFitrH = picker.hour
-                                    aidFitrM = picker.minute
-                                    PrefsManager.setAidFitrTime(context, picker.hour, picker.minute)
+                                    val clock = pickedPlaceClock(eid, picker.hour, picker.minute)
+                                    PrefsManager.setAidFitrTime(context, clock.hour, clock.minute)
+                                    silenceTimesRevision++
                                     refreshTick++
                                     onConfigChanged()
                                 }
@@ -2368,16 +2429,18 @@ private fun PrayerSettingsCard(
                         }
                         Prayer.AID_ADHA -> {
                             {
+                                val eid = sectionAnchors[Prayer.AID_ADHA]
+                                val shown = eid?.let { Math.floorMod(it.minutes, 1440) } ?: (7 * 60)
                                 val picker = MaterialTimePicker.Builder()
                                     .setTimeFormat(TimeFormat.CLOCK_24H)
-                                    .setHour(resolvedAidAdhaH.coerceAtLeast(0))
-                                    .setMinute(resolvedAidAdhaM.coerceAtLeast(0))
+                                    .setHour(shown / 60)
+                                    .setMinute(shown % 60)
                                     .setTitleText(context.getString(R.string.pick_aid_adha_time))
                                     .build()
                                 picker.addOnPositiveButtonClickListener {
-                                    aidAdhaH = picker.hour
-                                    aidAdhaM = picker.minute
-                                    PrefsManager.setAidAdhaTime(context, picker.hour, picker.minute)
+                                    val clock = pickedPlaceClock(eid, picker.hour, picker.minute)
+                                    PrefsManager.setAidAdhaTime(context, clock.hour, clock.minute)
+                                    silenceTimesRevision++
                                     refreshTick++
                                     onConfigChanged()
                                 }
@@ -2390,9 +2453,8 @@ private fun PrayerSettingsCard(
                         PrayerRow(
                             prayer = prayer,
                             prayerName = prayerNames[prayer] ?: prayer.name,
-                            prayerTime = prayerTime,
-                            nextPrayerTime = nextPrayerTime,
-                            nextPrayerIsTomorrow = nextPrayerIsTomorrow,
+                            anchor = anchor,
+                            nextAnchor = nextAnchor,
                             isNextPrayer = prayer == nextPrayer && prayer != Prayer.JOMOAA,
                             onConfigChanged = {
                                 refreshTick++
@@ -2441,7 +2503,7 @@ private fun PrayerSettingsCard(
                         TextButton(
                             onClick = {
                                 sharedUndoBefore?.forEach { (prayer, config) ->
-                                    persistPrayerSilenceConfig(context, prayer, config)
+                                    persistPrayerSilenceConfig(context, prayer, config, sectionAnchors[prayer])
                                 }
                                 sharedUndoBefore = null
                                 sharedUndoAfter = null
@@ -2467,26 +2529,22 @@ private fun PrayerSettingsCard(
     }
 
     if (sharedSheetOpen) {
-        val sharedTimes = dailyPrayers.mapNotNull { prayer ->
-            sectionTimes[prayer]
-                ?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
-                ?.let { prayer to it }
-        }.toMap()
+        val sharedAnchors = dailyPrayers.mapNotNull { prayer -> sectionAnchors[prayer]?.let { prayer to it } }.toMap()
         val sharedInitial = remember(sharedSheetOpen, refreshTick, selectedDate, delegationId) {
-            val entries = sharedTimes.map { (prayer, time) ->
-                time to PrefsManager.getConfig(context, prayer)
+            val entries = sharedAnchors.map { (prayer, anchor) ->
+                anchor to PrefsManager.getEffectiveConfig(context, prayer)
             }
             fun uniformStart(): Pair<EndpointRuleMode, Int>? {
                 if (entries.isEmpty()) return null
                 if (entries.all { (_, config) -> config.startRuleMode() == EndpointRuleMode.ADHAN }) {
-                    val offsets = entries.map { (time, config) ->
-                        val window = resolvePrayerTimelineWindow(time, config)
-                        window.startMinutes - prayerMinutesOfDay(time)
+                    val offsets = entries.map { (anchor, config) ->
+                        anchor.offsetAt(resolvePrayerTimelineWindow(anchor, config).startMinutes)
                     }
                     return offsets.distinct().singleOrNull()?.let { EndpointRuleMode.ADHAN to it }
                 }
                 if (entries.all { (_, config) -> config.startRuleMode() == EndpointRuleMode.FIXED_TIME }) {
-                    val clocks = entries.map { (_, config) -> config.delayFixedHour * 60 + config.delayFixedMinute }
+                    // Clock times as the phone shows them (D8).
+                    val clocks = entries.map { (anchor, config) -> Math.floorMod(resolvePrayerTimelineWindow(anchor, config).startMinutes, 1440) }
                     return clocks.distinct().singleOrNull()?.let { EndpointRuleMode.FIXED_TIME to it }
                 }
                 return null
@@ -2494,25 +2552,24 @@ private fun PrayerSettingsCard(
             fun uniformEnd(): Pair<EndpointRuleMode, Int>? {
                 if (entries.isEmpty()) return null
                 if (entries.all { (_, config) -> config.endRuleMode() == EndpointRuleMode.ADHAN }) {
-                    val offsets = entries.map { (time, config) ->
-                        val window = resolvePrayerTimelineWindow(time, config)
-                        window.endMinutes - prayerMinutesOfDay(time)
+                    val offsets = entries.map { (anchor, config) ->
+                        anchor.offsetAt(resolvePrayerTimelineWindow(anchor, config).endMinutes)
                     }
                     return offsets.distinct().singleOrNull()?.let { EndpointRuleMode.ADHAN to it }
                 }
                 if (entries.all { (_, config) -> config.endRuleMode() == EndpointRuleMode.FIXED_TIME }) {
-                    val clocks = entries.map { (_, config) -> config.fixedHour * 60 + config.fixedMinute }
+                    val clocks = entries.map { (anchor, config) -> Math.floorMod(resolvePrayerTimelineWindow(anchor, config).endMinutes, 1440) }
                     return clocks.distinct().singleOrNull()?.let { EndpointRuleMode.FIXED_TIME to it }
                 }
                 return null
             }
             val start = uniformStart() ?: (EndpointRuleMode.ADHAN to 0)
             val end = uniformEnd() ?: (EndpointRuleMode.ADHAN to 30)
-            val fallbackStartClock = entries.firstOrNull()?.let { (time, config) ->
-                Math.floorMod(resolvePrayerTimelineWindow(time, config).startMinutes, 1440)
+            val fallbackStartClock = entries.firstOrNull()?.let { (anchor, config) ->
+                Math.floorMod(resolvePrayerTimelineWindow(anchor, config).startMinutes, 1440)
             } ?: 0
-            val fallbackEndClock = entries.firstOrNull()?.let { (time, config) ->
-                Math.floorMod(resolvePrayerTimelineWindow(time, config).endMinutes, 1440)
+            val fallbackEndClock = entries.firstOrNull()?.let { (anchor, config) ->
+                Math.floorMod(resolvePrayerTimelineWindow(anchor, config).endMinutes, 1440)
             } ?: 0
             SharedSilenceRuleDraft(
                 startMode = start.first,
@@ -2525,24 +2582,25 @@ private fun PrayerSettingsCard(
         }
         SharedSilenceSettingsSheet(
             prayerNames = dailyPrayers.map { it to (prayerNames[it] ?: it.name) },
-            prayerTimes = sharedTimes,
+            anchors = sharedAnchors,
             initialDraft = sharedInitial,
             onDismiss = { sharedSheetOpen = false },
             onApply = { prayers, draft ->
-                val previous = prayers.map { it to PrefsManager.getConfig(context, it) }
+                val previous = prayers.map { it to PrefsManager.getEffectiveConfig(context, it) }
                 val intended = prayers.mapNotNull { prayer ->
-                    val time = sharedTimes[prayer] ?: return@mapNotNull null
-                    prayer to draft.applyTo(PrefsManager.getConfig(context, prayer), time)
+                    val anchor = sharedAnchors[prayer] ?: return@mapNotNull null
+                    prayer to draft.applyTo(PrefsManager.getEffectiveConfig(context, prayer), anchor)
                 }.toMap()
                 intended.forEach { (prayer, config) ->
-                    persistPrayerSilenceConfig(context, prayer, config)
+                    persistPrayerSilenceConfig(context, prayer, config, sharedAnchors[prayer])
                 }
                 val persisted = intended.size == prayers.size && intended.all { (prayer, config) ->
-                    PrefsManager.getConfig(context, prayer) == config
+                    val anchor = sharedAnchors.getValue(prayer)
+                    resolvePrayerTimelineWindow(anchor, PrefsManager.getEffectiveConfig(context, prayer)) == resolvePrayerTimelineWindow(anchor, config)
                 }
                 if (!persisted) {
                     previous.forEach { (prayer, config) ->
-                        persistPrayerSilenceConfig(context, prayer, config)
+                        persistPrayerSilenceConfig(context, prayer, config, sharedAnchors[prayer])
                     }
                     sharedUndoBefore = null
                     sharedUndoAfter = null
@@ -2641,24 +2699,18 @@ private fun SunriseAndNightTimesCard(
         (selectedCalendar.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
     }
 
+    // The prayer days around the date shown, as instants (6.6), shown in the phone's clock (D8).
+    val selectedLocal = remember(selectedDayMillis) {
+        LocalDate.of(selectedCalendar.get(Calendar.YEAR), selectedCalendar.get(Calendar.MONTH) + 1, selectedCalendar.get(Calendar.DAY_OF_MONTH))
+    }
     val selectedTimes = remember(delegationId, selectedDayMillis) {
-        try {
-            PrayerTimesRepository.loadDayPrayerTimes(
-                context,
-                delegationId,
-                selectedCalendar.get(Calendar.YEAR),
-                selectedCalendar.get(Calendar.MONTH) + 1,
-                selectedCalendar.get(Calendar.DAY_OF_MONTH),
-            )
-        } catch (e: Exception) {
-            null
-        }
+        runCatching { PrayerTimesRepository.prayerDay(context, selectedLocal) }.getOrNull()
     }
     val previousTimes = remember(delegationId, selectedDayMillis) {
-        loadDayPrayerTimesWithFallback(context, delegationId, previousCalendar)
+        runCatching { PrayerTimesRepository.prayerDay(context, selectedLocal.minusDays(1)) }.getOrNull()
     }
     val nextTimes = remember(delegationId, selectedDayMillis) {
-        loadDayPrayerTimesWithFallback(context, delegationId, nextCalendar)
+        runCatching { PrayerTimesRepository.prayerDay(context, selectedLocal.plusDays(1)) }.getOrNull()
     }
 
     DisposableEffect(lifecycleOwner) {
@@ -2700,17 +2752,17 @@ private fun SunriseAndNightTimesCard(
             }
             .sortedBy { alarm -> alarm.minuteOfDay }
     }
-    val selectedFajrMillis = prayerTimeMillis(selectedCalendar, selectedTimesForDay.fajr)
+    fun atMillis(day: com.tunisianprayertimes.engine.PrayerDay?, event: com.tunisianprayertimes.engine.TimeEvent): Long? =
+        day?.get(event)?.at?.toEpochMilli()
+    val selectedFajrMillis = atMillis(selectedTimesForDay, com.tunisianprayertimes.engine.TimeEvent.FAJR) ?: return
     val isToday = isSameCalendarDay(selectedDayMillis, currentDayMillis)
     val usePreviousNight = isToday &&
         currentTimeMillis < selectedFajrMillis && previousTimes != null
-    val nightStartCalendar = if (usePreviousNight) previousCalendar else selectedCalendar
-    val nightEndCalendar = if (usePreviousNight) selectedCalendar else nextCalendar
     val nightStartTimes = if (usePreviousNight) requireNotNull(previousTimes) else selectedTimesForDay
     val nightEndTimes = if (usePreviousNight) selectedTimesForDay else (nextTimes ?: return)
 
-    val nightStartMillis = prayerTimeMillis(nightStartCalendar, nightStartTimes.maghrib)
-    val nightEndMillis = prayerTimeMillis(nightEndCalendar, nightEndTimes.fajr)
+    val nightStartMillis = atMillis(nightStartTimes, com.tunisianprayertimes.engine.TimeEvent.MAGHRIB) ?: return
+    val nightEndMillis = atMillis(nightEndTimes, com.tunisianprayertimes.engine.TimeEvent.FAJR) ?: return
     if (nightEndMillis <= nightStartMillis) return
 
     val thirdDurationMillis = (nightEndMillis - nightStartMillis) / 3L
@@ -2729,34 +2781,27 @@ private fun SunriseAndNightTimesCard(
         2 -> "الآن: الثلث الأخير"
         else -> "الليلة القادمة"
     }
-    fun timelinePrayer(prayerTime: PrayerTime): NightTimelinePrayer = NightTimelinePrayer(
-        prayer = prayerTime.prayer,
-        title = prayerName(context, prayerTime.prayer),
-        time = formatClockTime(prayerTime.hour, prayerTime.minute),
-        minuteOfDay = prayerTime.hour * 60 + prayerTime.minute,
+    fun timelinePrayer(prayer: Prayer, millis: Long): NightTimelinePrayer = NightTimelinePrayer(
+        prayer = prayer,
+        title = prayerName(context, prayer),
+        time = formatTimeOfDay(millis),
+        minuteOfDay = minuteOfDay(millis),
     )
     val isFriday = selectedCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
-    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val middayPrayer = if (isFriday) {
-        PrayerTime(
-            prayer = Prayer.JOMOAA,
-            hour = if (jomoaaHour >= 0) jomoaaHour else selectedTimesForDay.dhuhr.hour,
-            minute = if (jomoaaMinute >= 0) jomoaaMinute else selectedTimesForDay.dhuhr.minute,
-        )
-    } else {
-        selectedTimesForDay.dhuhr
-    }
-    val timelinePrayers = listOf(
-        timelinePrayer(nightEndTimes.fajr),
-        timelinePrayer(middayPrayer),
-        timelinePrayer(selectedTimesForDay.asr),
-        timelinePrayer(nightStartTimes.maghrib),
-        timelinePrayer(nightStartTimes.isha),
+    val dhuhrMillis = atMillis(selectedTimesForDay, com.tunisianprayertimes.engine.TimeEvent.DHUHR) ?: return
+    // Jumu'a at its resolved time on a Friday (A18).
+    val jumuaMillis = if (isFriday) PrayerTimesRepository.jumuaTime(context, selectedLocal)?.toEpochMilli() else null
+    val timelinePrayers = listOfNotNull(
+        timelinePrayer(Prayer.FAJR, nightEndMillis),
+        timelinePrayer(if (jumuaMillis != null) Prayer.JOMOAA else Prayer.DHUHR, jumuaMillis ?: dhuhrMillis),
+        atMillis(selectedTimesForDay, com.tunisianprayertimes.engine.TimeEvent.ASR)?.let { timelinePrayer(Prayer.ASR, it) },
+        timelinePrayer(Prayer.MAGHRIB, nightStartMillis),
+        atMillis(nightStartTimes, com.tunisianprayertimes.engine.TimeEvent.ISHA)?.let { timelinePrayer(Prayer.ISHA, it) },
     )
+    val sunriseMillis = atMillis(selectedTimesForDay, com.tunisianprayertimes.engine.TimeEvent.SUNRISE) ?: return
     val data = NightTimesCardData(
-        sunriseTime = formatClockTime(selectedTimesForDay.shurukHour, selectedTimesForDay.shurukMinute),
-        sunriseMinuteOfDay = selectedTimesForDay.shurukHour * 60 + selectedTimesForDay.shurukMinute,
+        sunriseTime = formatTimeOfDay(sunriseMillis),
+        sunriseMinuteOfDay = minuteOfDay(sunriseMillis),
         currentMinuteOfDay = minuteOfDay(currentTimeMillis),
         showCurrentTime = isToday,
         nightRange = "من ${formatTimeOfDay(nightStartMillis)} إلى ${formatTimeOfDay(nightEndMillis)}",
@@ -4868,7 +4913,7 @@ private fun WakeAlarmListPanel(
     val todayStartMillis = startOfDayMillis(nowMillis)
     val windowsByAlarm = remember(wakeAlarms, delegationId, todayStartMillis) {
         wakeAlarms.associate { alarm ->
-            alarm.id to WakeAlarmScheduler.occurrenceWindows(context, delegationId, alarm)
+            alarm.id to WakeAlarmScheduler.occurrenceWindows(context, alarm)
         }
     }
     val awakeCheckRunning by AwakeCheckService.isRunning.collectAsStateWithLifecycle()
@@ -5523,9 +5568,8 @@ private fun WakeAlarmFeatureChip(text: String) {
 private fun PrayerRow(
     prayer: Prayer,
     prayerName: String,
-    prayerTime: PrayerTime?,
-    nextPrayerTime: PrayerTime?,
-    nextPrayerIsTomorrow: Boolean = false,
+    anchor: PrayerTimelineAnchor?,
+    nextAnchor: PrayerTimelineAnchor?,
     isNextPrayer: Boolean,
     highlighted: Boolean = false,
     draftSilenceConfig: PrayerSilenceConfig? = null,
@@ -5539,7 +5583,7 @@ private fun PrayerRow(
 ) {
     val context = LocalContext.current
     val usesDraft = draftSilenceConfig != null && onDraftSilenceConfigChange != null
-    var savedConfig by remember(context, prayer) { mutableStateOf(PrefsManager.getConfig(context, prayer)) }
+    var savedConfig by remember(context, prayer) { mutableStateOf(PrefsManager.getEffectiveConfig(context, prayer)) }
     val config = if (usesDraft) requireNotNull(draftSilenceConfig) else savedConfig
     var prayerEnabled by remember(context, prayer) {
         mutableStateOf(PrefsManager.isPrayerSilenceEnabled(context, prayer))
@@ -5550,9 +5594,9 @@ private fun PrayerRow(
     var undoAfter by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
     val currentConfig by rememberUpdatedState(config)
     // The overlap warning below uses the next prayer's saved window, which can change from that prayer's row.
-    val nextPrayer = nextPrayerTime?.prayer
+    val nextPrayer = nextAnchor?.prayer
     var nextPrayerConfig by remember(context, nextPrayer) {
-        mutableStateOf(nextPrayer?.let { PrefsManager.getConfig(context, it) })
+        mutableStateOf(nextPrayer?.let { PrefsManager.getEffectiveConfig(context, it) })
     }
 
     DisposableEffect(context, prayer, usesDraft) {
@@ -5560,7 +5604,7 @@ private fun PrayerRow(
             ({})
         } else {
             PrefsManager.observeConfigChanges(context, prayer) {
-                savedConfig = PrefsManager.getConfig(context, prayer)
+                savedConfig = PrefsManager.getEffectiveConfig(context, prayer)
             }
         }
         val stopObservingEnabled = if (usesDraft) {
@@ -5580,7 +5624,7 @@ private fun PrayerRow(
             ({})
         } else {
             PrefsManager.observeConfigChanges(context, nextPrayer) {
-                nextPrayerConfig = PrefsManager.getConfig(context, nextPrayer)
+                nextPrayerConfig = PrefsManager.getEffectiveConfig(context, nextPrayer)
             }
         }
         onDispose { stopObservingNextConfig() }
@@ -5607,9 +5651,12 @@ private fun PrayerRow(
             onDraftSilenceConfigChange?.invoke(updated)
         } else {
             savedConfig = updated
-            persistPrayerSilenceConfig(context, prayer, updated)
-            val persisted = PrefsManager.getConfig(context, prayer)
-            if (persisted != updated) {
+            persistPrayerSilenceConfig(context, prayer, updated, anchor)
+            val persisted = PrefsManager.getEffectiveConfig(context, prayer)
+            // Compared by the window armed: an endpoint left at its default is stored as unset (6.9).
+            val matches = anchor?.let { resolvePrayerTimelineWindow(it, persisted) == resolvePrayerTimelineWindow(it, updated) }
+                ?: (persisted == updated)
+            if (!matches) {
                 savedConfig = persisted
                 undoBefore = null
                 undoAfter = null
@@ -5627,7 +5674,7 @@ private fun PrayerRow(
     }
 
     fun commitConfig(updated: PrayerSilenceConfig): Boolean {
-        val previous = if (usesDraft) config else PrefsManager.getConfig(context, prayer)
+        val previous = if (usesDraft) config else PrefsManager.getEffectiveConfig(context, prayer)
         if (updated == previous) return true
         undoBefore = previous
         undoAfter = updated
@@ -5639,12 +5686,27 @@ private fun PrayerRow(
         return applied
     }
 
-    val validPrayerTime = prayerTime?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
-    val savedWindow = validPrayerTime?.let { resolvePrayerTimelineWindow(it, config) }
+    // D16's year run (6.9): a window with a clock endpoint is checked over the coming year before it is saved.
+    var pendingYearFit by remember(prayer) { mutableStateOf<Pair<PrayerSilenceConfig, SilenceFit>?>(null) }
+    val rowScope = rememberCoroutineScope()
+    fun commitChecked(updated: PrayerSilenceConfig) {
+        val checkedAnchor = anchor
+        val hasClock = updated.startRuleMode() == EndpointRuleMode.FIXED_TIME || updated.endRuleMode() == EndpointRuleMode.FIXED_TIME
+        if (usesDraft || checkedAnchor == null || !hasClock) {
+            commitConfig(updated)
+            return
+        }
+        rowScope.launch {
+            val fit = withContext(Dispatchers.Default) { silenceYearFit(context, checkedAnchor, updated) }
+            if (fit.fitsAllYear) commitConfig(updated) else pendingYearFit = updated to fit
+        }
+    }
+
+    val savedWindow = anchor?.let { resolvePrayerTimelineWindow(it, config) }
     val window = previewWindow ?: savedWindow
-    val scale = timelineScale ?: remember(validPrayerTime, savedWindow) {
-        if (validPrayerTime != null && savedWindow != null) {
-            sharedPrayerTimelineScale(listOf(validPrayerTime to savedWindow))
+    val scale = timelineScale ?: remember(anchor, savedWindow) {
+        if (anchor != null && savedWindow != null) {
+            sharedPrayerTimelineScale(listOf(anchor to savedWindow))
         } else {
             PrayerTimelineScale(
                 DEFAULT_TIMELINE_START_OFFSET_MINUTES,
@@ -5655,12 +5717,11 @@ private fun PrayerRow(
     val warningRes = when {
         window == null -> null
         window.endMinutes < window.startMinutes -> R.string.prayer_timeline_invalid_window
-        nextPrayerTime != null && nextPrayerTime.hour in 0..23 && nextPrayerTime.minute in 0..59 -> {
+        anchor != null && nextAnchor != null -> {
             // The next prayer's silence can start before its adhan, so compare with whichever comes first.
-            val nextSilenceStart = nextPrayerConfig?.let { resolvePrayerTimelineWindow(nextPrayerTime, it).startMinutes }
-            val nextMinute = minOf(nextPrayerTime.minutesOfDay(), nextSilenceStart ?: Int.MAX_VALUE) +
-                if (nextPrayerIsTomorrow) 1440 else 0
-            R.string.warning_overlaps_next_prayer.takeIf { window.endMinutes > nextMinute }
+            val nextSilenceStart = nextPrayerConfig?.let { silenceEndsAt(nextAnchor, it).start }
+            val nextStart = minOf(nextAnchor.adhan, nextSilenceStart ?: nextAnchor.adhan)
+            R.string.warning_overlaps_next_prayer.takeIf { window.endMinutes > anchor.axisOf(nextStart) }
         }
         else -> null
     }
@@ -5669,11 +5730,11 @@ private fun PrayerRow(
             .fillMaxWidth()
             .background(if (highlighted) GoldLight.copy(alpha = 0.30f) else Color.Transparent),
     ) {
-        if (validPrayerTime != null && window != null) {
+        if (anchor != null && window != null) {
             PrayerSilenceSection(
                 prayer = prayer,
                 prayerName = prayerName,
-                prayerTime = validPrayerTime,
+                anchor = anchor,
                 config = config,
                 window = window,
                 scale = scale,
@@ -5698,8 +5759,8 @@ private fun PrayerRow(
                 onPreviewWindow = { previewWindow = it },
                 onCommitWindow = { candidate ->
                     previewWindow = null
-                    prayerTimelineConfigForWindow(validPrayerTime, config, candidate)?.let { updated ->
-                        commitConfig(updated)
+                    prayerTimelineConfigForWindow(anchor, config, candidate)?.let { updated ->
+                        commitChecked(updated)
                     }
                 },
                 onEditEndpoint = { endpoint -> editorEndpoint = endpoint },
@@ -5743,7 +5804,7 @@ private fun PrayerRow(
                 TextButton(
                     onClick = {
                         val previous = undoBefore
-                        val current = if (usesDraft) config else PrefsManager.getConfig(context, prayer)
+                        val current = if (usesDraft) config else PrefsManager.getEffectiveConfig(context, prayer)
                         if (previous != null && current == undoAfter) applyConfig(previous)
                         undoBefore = null
                         undoAfter = null
@@ -5756,19 +5817,44 @@ private fun PrayerRow(
         }
     }
     val currentEditorEndpoint = editorEndpoint
-    if (currentEditorEndpoint != null && validPrayerTime != null) {
+    if (currentEditorEndpoint != null && anchor != null) {
         PrayerSilenceEditorSheet(
             prayer = prayer,
             prayerName = prayerName,
-            prayerTime = validPrayerTime,
+            anchor = anchor,
             config = config,
             endpoint = currentEditorEndpoint,
             onDismiss = { editorEndpoint = null },
             onSave = { updated ->
-                val applied = commitConfig(updated)
-                if (applied) editorEndpoint = null
-                applied
+                editorEndpoint = null
+                commitChecked(updated)
+                true
             },
+        )
+    }
+    val yearFit = pendingYearFit
+    if (yearFit != null && anchor != null) {
+        val (draft, fit) = yearFit
+        SilenceYearFitDialog(
+            fit = fit,
+            anchor = anchor,
+            onAdhanRelative = fit.adhanRelativeEnd?.let { offset ->
+                {
+                    pendingYearFit = null
+                    commitConfig(draft.copy(mode = SilenceMode.DURATION, endOffsetMinutes = offset).withLegacyDurationSynced(anchor))
+                }
+            },
+            onLaterFixedEnd = fit.laterFixedEnd?.let { time ->
+                {
+                    pendingYearFit = null
+                    commitConfig(draft.copy(mode = SilenceMode.FIXED_TIME, fixedHour = time.hour, fixedMinute = time.minute, endOffsetMinutes = null))
+                }
+            },
+            onKeep = {
+                pendingYearFit = null
+                commitConfig(draft)
+            },
+            onDismiss = { pendingYearFit = null },
         )
     }
 }
@@ -5782,24 +5868,15 @@ private fun WakeSilenceConflictPrayerEditor(
     val context = LocalContext.current
     val targetPrayer = editorState.originalConflict.silencePrayer
     val conflict = editorState.currentConflict ?: editorState.originalConflict
-    val conflictCalendar = remember(conflict.silenceStartAtMillis) {
-        Calendar.getInstance().apply { timeInMillis = conflict.silenceStartAtMillis }
+    // The conflicting window's own prayer day (6.9), else the day its silence starts on at the place.
+    val prayerDay = conflict.silencePrayerDay ?: java.time.Instant.ofEpochMilli(conflict.silenceStartAtMillis)
+        .atZone(PrayerTimesRepository.place(context).zone).toLocalDate()
+    val anchors = remember(delegationId, prayerDay, targetPrayer) {
+        val anchor = timelineAnchorFor(context, targetPrayer, prayerDay)
+        anchor to anchor?.let { nextTimelineAnchor(context, it) }
     }
-    val displayTimes = remember(delegationId, conflict.silenceStartAtMillis) {
-        try {
-            PrayerTimesRepository.loadDayPrayerTimes(
-                context,
-                delegationId,
-                conflictCalendar.get(Calendar.YEAR),
-                conflictCalendar.get(Calendar.MONTH) + 1,
-                conflictCalendar.get(Calendar.DAY_OF_MONTH),
-            )
-        } catch (e: Exception) {
-            null
-        }
-    }
-
-    if (displayTimes == null) {
+    val (anchor, nextAnchor) = anchors
+    if (anchor == null) {
         Text(
             text = stringResource(R.string.no_prayer_data),
             fontSize = 12.sp,
@@ -5809,28 +5886,12 @@ private fun WakeSilenceConflictPrayerEditor(
         return
     }
 
-    val isFriday = conflictCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
-    val scheduledPrayers = remember(displayTimes, isFriday) {
-        displayTimes.scheduledPrayers(
-            isFriday = isFriday,
-            jomoaaHour = PrefsManager.getJomoaaTimeHour(context),
-            jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
-        )
-    }
-    val prayerIndex = scheduledPrayers.indexOfFirst { prayerTime -> prayerTime.prayer == targetPrayer }
-    val prayerTime = scheduledPrayers.getOrNull(prayerIndex)
-    val nextDayFajr = remember(delegationId, conflict.silenceStartAtMillis) {
-        loadNextDayFajr(context, delegationId, conflict.silenceStartAtMillis)
-    }
-    val nextPrayerTime = scheduledPrayers.getOrNull(prayerIndex + 1) ?: nextDayFajr
-
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         PrayerRow(
             prayer = targetPrayer,
             prayerName = prayerName(context, targetPrayer),
-            prayerTime = prayerTime,
-            nextPrayerTime = nextPrayerTime,
-            nextPrayerIsTomorrow = prayerIndex == scheduledPrayers.lastIndex,
+            anchor = anchor,
+            nextAnchor = nextAnchor,
             isNextPrayer = false,
             highlighted = false,
             draftSilenceConfig = editorState.draftSilenceConfig,
@@ -5839,22 +5900,6 @@ private fun WakeSilenceConflictPrayerEditor(
             showEnableSwitch = false,
         )
     }
-}
-
-private fun PrayerTime.minutesOfDay(): Int = hour * 60 + minute
-
-private fun loadNextDayFajr(context: Context, delegationId: Int, dayMillis: Long): PrayerTime? {
-    val nextDay = Calendar.getInstance().apply {
-        timeInMillis = dayMillis
-        add(Calendar.DAY_OF_MONTH, 1)
-    }
-    return PrayerTimesRepository.loadDayPrayerTimes(
-        context,
-        delegationId,
-        nextDay.get(Calendar.YEAR),
-        nextDay.get(Calendar.MONTH) + 1,
-        nextDay.get(Calendar.DAY_OF_MONTH),
-    )?.fajr
 }
 
 @Composable
@@ -6604,130 +6649,56 @@ private fun prayerName(context: Context, prayer: Prayer): String = when (prayer)
     Prayer.AID_ADHA -> context.getString(R.string.prayer_aid_adha)
 }
 
+/**
+ * The next prayer by instant over prayer days D − 1..D + 1 (6.6, 6.9): at 00:30 yesterday's 01:07 Isha is
+ * still next. On a Friday, Jumu'a at its resolved time stands in Dhuhr's place.
+ */
 private fun resolveNextPrayerCountdown(
     context: Context,
-    delegationId: Int,
-    todayTimes: DayPrayerTimes?,
     nowMillis: Long,
-    jomoaaHour: Int,
-    jomoaaMinute: Int,
 ): NextPrayerCountdownInfo? {
-    if (todayTimes == null) return null
-
-    val now = Calendar.getInstance().apply { timeInMillis = nowMillis }
-    val todayPrayer = todayTimes
-        .scheduledPrayers(
-            isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-            jomoaaHour = jomoaaHour,
-            jomoaaMinute = jomoaaMinute,
-        )
-        .firstOrNull { prayerTime -> prayerTimeMillis(now, prayerTime) > nowMillis }
-    if (todayPrayer != null) {
-        return NextPrayerCountdownInfo(
-            prayer = todayPrayer.prayer,
-            hour = todayPrayer.hour,
-            minute = todayPrayer.minute,
-            triggerAtMillis = prayerTimeMillis(now, todayPrayer),
-            isTomorrow = false,
-        )
-    }
-
-    val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
-    val tomorrowPrayer = loadDayPrayerTimesWithFallback(context, delegationId, tomorrow)
-        ?.scheduledPrayers(
-            isFriday = tomorrow.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-            jomoaaHour = jomoaaHour,
-            jomoaaMinute = jomoaaMinute,
-        )
-        ?.firstOrNull()
-        ?: return null
-
+    val place = PrayerTimesRepository.place(context)
+    val now = java.time.Instant.ofEpochMilli(nowMillis)
+    val next = PrayerTimesRepository.upcomingPrayers(context, now, place).firstOrNull() ?: return null
+    val local = next.at.atZone(java.time.ZoneId.systemDefault())
     return NextPrayerCountdownInfo(
-        prayer = tomorrowPrayer.prayer,
-        hour = tomorrowPrayer.hour,
-        minute = tomorrowPrayer.minute,
-        triggerAtMillis = prayerTimeMillis(tomorrow, tomorrowPrayer),
-        isTomorrow = true,
+        prayer = next.prayer,
+        hour = local.hour,
+        minute = local.minute,
+        triggerAtMillis = next.at.toEpochMilli(),
+        isTomorrow = next.prayerDay > now.atZone(place.zone).toLocalDate(),
+        prayerDay = next.prayerDay,
     )
 }
 
-private fun resolveUpcomingManualSilencePrayer(
-    context: Context,
-    delegationId: Int,
-    nowMillis: Long = System.currentTimeMillis()
-): Prayer? {
-    val now = Calendar.getInstance().apply { timeInMillis = nowMillis }
-    val todayTimes = loadDayPrayerTimesWithFallback(context, delegationId, now)
-    val upcomingToday = todayTimes?.manualSilencePrayers(context, now)?.firstOrNull { prayerTime ->
-        prayerTimeMillis(now, prayerTime) > nowMillis
-    }
-    if (upcomingToday != null) return upcomingToday.prayer
-
-    val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
-    return loadDayPrayerTimesWithFallback(context, delegationId, tomorrow)
-        ?.manualSilencePrayers(context, tomorrow)?.firstOrNull()?.prayer
+/**
+ * The id the screen keys its remembered times on: the delegation in Tunisia, else a negative hash of the
+ * times key (6.6), so a new place or method abroad recomputes every remembered time and matches no delegation.
+ */
+internal fun screenTimesId(context: Context): Int = when (val place = PrayerTimesRepository.place(context)) {
+    is PrayerPlace.Inm -> place.delegationId
+    is PrayerPlace.Coordinates -> -(PrayerTimesRepository.timesKey(context, place).hashCode() and Int.MAX_VALUE) - 1
 }
 
+/** The prayer the manual silence card targets next: on a Friday the card's Dhuhr stands for Jumu'a. */
+private fun resolveUpcomingManualSilencePrayer(
+    context: Context,
+    @Suppress("UNUSED_PARAMETER") delegationId: Int,
+    nowMillis: Long = System.currentTimeMillis()
+): Prayer? = PrayerTimesRepository.upcomingPrayers(context, java.time.Instant.ofEpochMilli(nowMillis))
+    .firstOrNull()?.prayer?.let { if (it == Prayer.JOMOAA) Prayer.DHUHR else it }
+
+/** The next adhan of [prayer] after now (6.9), Jumu'a standing for Dhuhr on a Friday. */
 private fun resolveManualSilencePrayerEndMillis(
     context: Context,
-    delegationId: Int,
+    @Suppress("UNUSED_PARAMETER") delegationId: Int,
     prayer: Prayer,
     nowMillis: Long = System.currentTimeMillis()
 ): Long? {
     if (prayer !in WAKE_SUPPORTED_PRAYERS) return null
-
-    val now = Calendar.getInstance().apply { timeInMillis = nowMillis }
-    for (dayOffset in 0..1) {
-        val day = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, dayOffset) }
-        val prayerTime = loadDayPrayerTimesWithFallback(context, delegationId, day)
-            ?.manualSilencePrayers(context, day)
-            ?.firstOrNull { it.prayer == prayer }
-            ?: continue
-        val targetMillis = prayerTimeMillis(day, prayerTime)
-        if (targetMillis > nowMillis) return targetMillis
-    }
-
-    return null
-}
-
-/**
- * The day's prayers as the manual silence card offers them. On Fridays silence scheduling
- * replaces Dhuhr with Jomoaa at its custom time, so the card's Dhuhr stands for Jomoaa that day.
- */
-private fun DayPrayerTimes.manualSilencePrayers(context: Context, day: Calendar): List<PrayerTime> =
-    scheduledPrayers(
-        isFriday = day.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-        jomoaaHour = PrefsManager.getJomoaaTimeHour(context),
-        jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
-    ).map { prayerTime ->
-        if (prayerTime.prayer == Prayer.JOMOAA) prayerTime.copy(prayer = Prayer.DHUHR) else prayerTime
-    }
-
-private fun loadDayPrayerTimesWithFallback(
-    context: Context,
-    delegationId: Int,
-    day: Calendar
-) = PrayerTimesRepository.loadDayPrayerTimes(
-    context,
-    delegationId,
-    day.get(Calendar.YEAR),
-    day.get(Calendar.MONTH) + 1,
-    day.get(Calendar.DAY_OF_MONTH)
-) ?: PrayerTimesRepository.loadDayPrayerTimes(
-    context,
-    delegationId,
-    day.get(Calendar.YEAR) - 1,
-    day.get(Calendar.MONTH) + 1,
-    day.get(Calendar.DAY_OF_MONTH)
-)
-
-private fun prayerTimeMillis(day: Calendar, prayerTime: PrayerTime): Long {
-    return (day.clone() as Calendar).apply {
-        set(Calendar.HOUR_OF_DAY, prayerTime.hour)
-        set(Calendar.MINUTE, prayerTime.minute)
-        set(Calendar.SECOND, 0)
-        set(Calendar.MILLISECOND, 0)
-    }.timeInMillis
+    return PrayerTimesRepository.upcomingPrayers(context, java.time.Instant.ofEpochMilli(nowMillis))
+        .firstOrNull { (if (it.prayer == Prayer.JOMOAA) Prayer.DHUHR else it.prayer) == prayer }
+        ?.at?.toEpochMilli()
 }
 
 /** What the auto-silence scheduler will do at the upcoming prayer. */
@@ -6747,14 +6718,17 @@ private fun resolveUpcomingSilence(
     context: Context,
     countdown: NextPrayerCountdownInfo,
 ): UpcomingSilence? {
-    if (!PrefsManager.isEnabled(context) || PrefsManager.isDisabledOutsideTunisia(context)) {
+    if (!PrefsManager.isEnabled(context)) {
         return UpcomingSilence.AutoSilenceOff
     }
     if (!PrefsManager.isPrayerSilenceEnabled(context, countdown.prayer)) return UpcomingSilence.PrayerOff
-    val prayerTime = PrayerTime(countdown.prayer, countdown.hour, countdown.minute)
-    return resolvePrayerTimelineWindow(prayerTime, PrefsManager.getConfig(context, countdown.prayer))
-        .takeIf { window -> window.endMinutes > window.startMinutes }
-        ?.let { window -> UpcomingSilence.Window(window) }
+    // The window the scheduler arms for that prayer day (6.9), on the editors' axis: the phone's clock (D8).
+    val window = SilenceScheduler.windowOf(context, countdown.prayer, countdown.prayerDay) ?: return null
+    val place = PrayerTimesRepository.place(context)
+    val anchor = PrayerTimelineAnchor(
+        countdown.prayer, countdown.prayerDay, java.time.Instant.ofEpochMilli(countdown.triggerAtMillis), place.zone, place is PrayerPlace.Inm,
+    )
+    return UpcomingSilence.Window(PrayerTimelineWindow(anchor.axisOf(window.start), anchor.axisOf(window.end)))
 }
 
 private fun formatCountdownRemaining(targetAtMillis: Long, currentTimeMillis: Long): String {
@@ -6881,26 +6855,7 @@ private fun nextWakeAlarmTriggers(
 ): List<WakeAlarmComputer.ScheduledWakeTrigger> {
     if (!config.enabled) return emptyList()
     val now = Calendar.getInstance()
-    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
-        val date = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, dayOffset) }
-        PrayerTimesRepository.loadDayPrayerTimes(
-            context = context,
-            delegationId = delegationId,
-            year = date.get(Calendar.YEAR),
-            month = date.get(Calendar.MONTH) + 1,
-            day = date.get(Calendar.DAY_OF_MONTH),
-        )?.let { times ->
-            WakeAlarmComputer.PrayerDayContext(
-                date = date,
-                prayerTimes = times,
-                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-                jomoaaHour = jomoaaHour,
-                jomoaaMinute = jomoaaMinute,
-            )
-        }
-    }
+    val prayerDays = WakeAlarmScheduler.loadPrayerDayContexts(context, now)
     return WakeAlarmComputer.compute(now, config, prayerDays)
         .allTriggers
 }
@@ -6912,24 +6867,46 @@ private fun scheduledWakeAlarmTriggersForDay(
     day: Calendar,
 ): List<WakeAlarmComputer.ScheduledWakeTrigger> {
     if (!config.enabled) return emptyList()
-    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val times = PrayerTimesRepository.loadDayPrayerTimes(
-        context = context,
-        delegationId = delegationId,
-        year = day.get(Calendar.YEAR),
-        month = day.get(Calendar.MONTH) + 1,
-        day = day.get(Calendar.DAY_OF_MONTH),
-    ) ?: return emptyList()
-    val prayerDay = WakeAlarmComputer.PrayerDayContext(
-        date = day,
-        prayerTimes = times,
-        isFriday = day.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-        jomoaaHour = jomoaaHour,
-        jomoaaMinute = jomoaaMinute,
-    )
-    return WakeAlarmComputer.scheduledTriggers(config, listOf(prayerDay))
+    val prayerDays = WakeAlarmScheduler.loadPrayerDayContexts(context, day, 0..0)
+    return WakeAlarmComputer.scheduledTriggers(config, prayerDays)
 }
+
+/** «تأكيد الموقع» (6.8): the place a skipped first run chose, until the user confirms it or picks another. */
+@Composable
+private fun ProvisionalPlaceBanner(onConfirm: () -> Unit, onChange: () -> Unit) {
+    val context = LocalContext.current
+    val label = remember { PrefsManager.getPlaceNameSnapshot(context) ?: context.getString(R.string.location_default_tunis) }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 6.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(BannerBg)
+            .border(1.dp, BannerStroke, RoundedCornerShape(12.dp))
+            .padding(horizontal = 14.dp, vertical = 10.dp)
+            .testTag("provisional_place_banner"),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text(stringResource(R.string.location_confirm_title), fontSize = 15.sp, fontWeight = FontWeight.Bold, color = BannerText)
+        Text(stringResource(R.string.location_confirm_text, label), fontSize = 13.sp, color = TextDark, lineHeight = 19.sp)
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            TextButton(onClick = onConfirm, modifier = Modifier.heightIn(min = 48.dp)) {
+                Text(stringResource(R.string.location_confirm_yes), color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
+            }
+            TextButton(onClick = onChange, modifier = Modifier.heightIn(min = 48.dp)) {
+                Text(stringResource(R.string.location_confirm_change), color = GreenPrimaryDark)
+            }
+        }
+    }
+}
+
+/** Two ends are the same setting; a fixed end by its clock alone, its saved offset being the day's (D16). */
+private fun sameSilenceEnd(a: SilenceEnd, b: SilenceEnd): Boolean =
+    if (a is SilenceEnd.Clock && b is SilenceEnd.Clock) a.time == b.time else a == b
+
+/** A clock picked in the phone's clock for [anchor]'s day, as the place's clock it is stored in (6.6). */
+private fun pickedPlaceClock(anchor: PrayerTimelineAnchor?, hour: Int, minute: Int): LocalTime =
+    anchor?.placeClockAt(Math.floorDiv(anchor.minutes, 1440) * 1440 + hour * 60 + minute) ?: LocalTime.of(hour, minute)
 
 private fun refreshWakeSilenceConflictEditor(
     context: Context,
@@ -6947,12 +6924,38 @@ private fun refreshWakeSilenceConflictEditor(
     editRevision = editorState.editRevision + 1,
 )
 
+/**
+ * Stores a prayer's window as the user left it (plan 6.9): only the endpoint that moved, so the other keeps following
+ * its default (D12, A18); a Dhuhr or Jumu'a endpoint moved back to its default follows it again; and a fixed end's
+ * offset from the adhan on the day shown ([anchor], else today), which D16 falls back on.
+ */
 private fun persistPrayerSilenceConfig(
     context: Context,
     prayer: Prayer,
     config: PrayerSilenceConfig,
+    anchor: PrayerTimelineAnchor? = null,
 ) {
-    PrefsManager.setConfig(context, prayer, config)
+    val place = PrayerTimesRepository.place(context)
+    val inm = place is PrayerPlace.Inm
+    val previous = SilenceEndpoints.withDefaults(PrefsManager.getSilenceRule(context, prayer), prayer, inm)
+    val defaults = SilenceEndpoints.withDefaults(SilenceRule(SilenceStart.Unset, SilenceEnd.Unset), prayer, inm)
+    val next = SilenceRule.of(config)
+    val followsDefaults = prayer == Prayer.DHUHR || prayer == Prayer.JOMOAA
+    fun save(moved: Boolean, isDefault: Boolean) = when {
+        !moved -> PrefsManager.EndpointSave.KEEP
+        followsDefaults && isDefault -> PrefsManager.EndpointSave.CLEAR
+        else -> PrefsManager.EndpointSave.WRITE
+    }
+    val shownOn = anchor ?: timelineAnchorFor(context, prayer, LocalDate.now(place.zone), place)
+    val savedOffset = if (config.endRuleMode() == EndpointRuleMode.FIXED_TIME) {
+        shownOn?.let { it.offsetAt(resolvePrayerTimelineWindow(it, config).endMinutes) }
+    } else null
+    PrefsManager.setConfig(
+        context, prayer, config,
+        start = save(next.start != previous.start, next.start == defaults.start),
+        end = save(!sameSilenceEnd(next.end, previous.end), sameSilenceEnd(next.end, defaults.end)),
+        savedEndOffsetMinutes = savedOffset,
+    )
     AnalyticsTracker.silenceConfigChanged(
         context = context,
         prayer = prayer,
@@ -6972,65 +6975,29 @@ private fun findWakeSilenceConflictForGuide(
     if (!config.enabled || !PrefsManager.isEnabled(context)) return null
 
     val now = Calendar.getInstance()
-    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
-        val date = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, dayOffset) }
-        PrayerTimesRepository.loadDayPrayerTimes(
-            context = context,
-            delegationId = delegationId,
-            year = date.get(Calendar.YEAR),
-            month = date.get(Calendar.MONTH) + 1,
-            day = date.get(Calendar.DAY_OF_MONTH),
-        )?.let { times ->
-            WakeAlarmComputer.PrayerDayContext(
-                date = date,
-                prayerTimes = times,
-                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-                jomoaaHour = jomoaaHour,
-                jomoaaMinute = jomoaaMinute,
-            )
-        }
-    }
-    val silenceConfigs = Prayer.entries.associateWith { prayer ->
-        if (prayer == targetPrayer && stagedSilenceConfig != null) {
-            stagedSilenceConfig
-        } else {
-            PrefsManager.getConfig(context, prayer)
-        }
-    }
+    val prayerDays = WakeAlarmScheduler.loadPrayerDayContexts(context, now)
+    // The windows the scheduler arms (6.9), with the editor's draft in place of the target prayer's.
+    val planner = SilenceScheduler.plannerWithDraft(context, targetPrayer, stagedSilenceConfig)
 
     return WakeAlarmComputer.compute(now, config, prayerDays)
         .allTriggers
         .asSequence()
         .mapNotNull { trigger ->
-            prayerDays
-                .asSequence()
-                .mapNotNull { prayerDay ->
-                    SilenceAlarmComputer.overlapForTrigger(
-                        triggerAtMillis = trigger.triggerAtMillis,
-                        prayerDay = prayerDay.date,
-                        prayerTimes = prayerDay.prayerTimes,
-                        configs = silenceConfigs,
-                        isFriday = prayerDay.isFriday,
-                        jomoaaHour = prayerDay.jomoaaHour,
-                        jomoaaMinute = prayerDay.jomoaaMinute,
-                    )
-                }
-                .firstOrNull { overlap -> overlap.prayer == targetPrayer }
-                ?.let { overlap ->
+            planner.containing(java.time.Instant.ofEpochMilli(trigger.triggerAtMillis))
+                .firstOrNull { window -> window.prayer == targetPrayer }
+                ?.let { window ->
                     WakeSilenceConflictSummary(
                         detail = context.getString(
                             R.string.wake_editor_warning_silence_overlap,
                             wakeGuideTriggerLabel(context, trigger),
                             formatWakeAlarmDateTime(trigger.triggerAtMillis),
-                            prayerName(context, overlap.prayer),
-                            formatWakeAlarmDateTime(overlap.startAtMillis),
-                            formatWakeAlarmDateTime(overlap.endAtMillis),
+                            prayerName(context, window.prayer),
+                            formatWakeAlarmDateTime(window.start.toEpochMilli()),
+                            formatWakeAlarmDateTime(window.end.toEpochMilli()),
                         ),
-                        silencePrayer = overlap.prayer,
-                        silenceStartAtMillis = overlap.startAtMillis,
-                        silenceEndAtMillis = overlap.endAtMillis,
+                        silencePrayer = window.prayer,
+                        silenceStartAtMillis = window.start.toEpochMilli(),
+                        silenceEndAtMillis = window.end.toEpochMilli(),
                         triggerAtMillis = trigger.triggerAtMillis,
                     )
                 }

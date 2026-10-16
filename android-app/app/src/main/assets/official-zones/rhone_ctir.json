@@ -1,0 +1,287 @@
+{
+ "schema": 1,
+ "authority": "rhone_ctir",
+ "methodId": "rhone_ctir",
+ "country": "FR",
+ "mapping": "NATIONAL",
+ "source": "Conseil des Mosquees du Rhone (CTIR), unified calendar 2020 (cmrofficiel.fr), called by date in 2026; one zone for the departement",
+ "fit": {
+  "fittedOn": [
+   {
+    "source": "CTIR 2020 table (cmrofficiel.fr), summer-time rows read as the previous date",
+    "from": "2020-01-01",
+    "to": "2020-12-31",
+    "days": 366,
+    "zones": 1,
+    "monthSplit": false
+   }
+  ],
+  "heldOut": [
+   {
+    "source": "CTIR 2020 table read by date in 2026, as Rhone's mosques use it",
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "days": 365,
+    "zones": 1,
+    "monthSplit": true
+   }
+  ],
+  "exact": {
+   "FAJR": 0.3342,
+   "SUNRISE": 0.3945,
+   "DHUHR": 0.8795,
+   "ASR": 0.6603,
+   "MAGHRIB": 0.3973,
+   "ISHA": 0.3589
+  },
+  "within1": {
+   "FAJR": 0.9945,
+   "SUNRISE": 0.9945,
+   "DHUHR": 1.0,
+   "ASR": 1.0,
+   "MAGHRIB": 0.9973,
+   "ISHA": 0.9973
+  },
+  "daysPerMonth": {
+   "FAJR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "SUNRISE": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "DHUHR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ASR": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "MAGHRIB": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ],
+   "ISHA": [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+   ]
+  },
+  "heldOutRamadanDays": 0,
+  "quirkDays": 0,
+  "maxDiffMin": 2
+ },
+ "zones": [
+  {
+   "id": "69",
+   "point": {
+    "latE5": 4574405,
+    "lngE5": 484248
+   },
+   "nameAr": "الرون",
+   "admin2": [
+    "69"
+   ],
+   "namedPlaces": [
+    {
+     "centre": {
+      "latE5": 4574906,
+      "lngE5": 484789
+     },
+     "catalogueIds": [
+      2996944
+     ],
+     "areaKm": 0.0
+    }
+   ],
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "CTIR 2020 table (cmrofficiel.fr), summer-time rows read as the previous date",
+      "from": "2020-01-01",
+      "to": "2020-12-31",
+      "days": 366,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "CTIR 2020 table read by date in 2026, as Rhone's mosques use it",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.3342,
+     "SUNRISE": 0.3945,
+     "DHUHR": 0.8795,
+     "ASR": 0.6603,
+     "MAGHRIB": 0.3973,
+     "ISHA": 0.3589
+    },
+    "within1": {
+     "FAJR": 0.9945,
+     "SUNRISE": 0.9945,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9973,
+     "ISHA": 0.9973
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 2
+   }
+  }
+ ]
+}
