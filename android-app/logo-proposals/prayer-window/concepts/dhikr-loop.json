@@ -1,0 +1,19 @@
+{
+  "id": "dhikr-loop",
+  "name": "Dhikr Loop",
+  "tag": "Remembrance / sculptural",
+  "file": "concepts/dhikr-loop.svg",
+  "summary": "An open, asymmetric ribbon and a single counting marker. A bold identity for daily remembrance.",
+  "why": "The continuous ribbon represents returning to remembrance. A single separate marker makes the act of counting visible without drawing a string of beads. Unequal curves and a cut shoulder create a sculptural mark that remains strong at launcher size.",
+  "risk": "It gives dhikr priority over prayer times, and its abstract form needs the app name to establish context.",
+  "key1": "One returning ribbon",
+  "sub1": "A daily remembrance practice",
+  "key2": "One counting marker",
+  "sub2": "Progress through repetition",
+  "palette": {
+    "background": "#F15B3F",
+    "ink": "#1F2928",
+    "sun": "#FFF5E8",
+    "name": "DHIKR LOOP / VERMILION + INK"
+  }
+}

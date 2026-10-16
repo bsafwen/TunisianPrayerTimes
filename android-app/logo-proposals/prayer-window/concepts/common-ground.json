@@ -1,0 +1,20 @@
+{
+  "id": "common-ground",
+  "name": "Common Ground",
+  "tag": "Collective / geometric",
+  "group": "creative",
+  "file": "concepts/common-ground.svg",
+  "summary": "Two folded prayer rows and two points of light form a bold, welcoming geometric signature.",
+  "why": "Broad aligned bands suggest prayer rows seen from above, linking individual routines to a shared daily rhythm. The two small diamonds balance the mark like the beginning and end of a day. Warm persimmon and dark violet make this direction unusually vivid.",
+  "risk": "Its prayer association is abstract; the bands can also read as layers or a chevron emblem.",
+  "key1": "The aligned rows",
+  "sub1": "A shared prayer rhythm",
+  "key2": "The paired lights",
+  "sub2": "A day framed by devotion",
+  "palette": {
+    "background": "#EF744E",
+    "ink": "#362B53",
+    "sun": "#FFF2D7",
+    "name": "COMMON GROUND / PERSIMMON & PLUM"
+  }
+}

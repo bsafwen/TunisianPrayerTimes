@@ -99,11 +99,12 @@ class DashboardTest {
         // The phone keeps the fonts; everything else, which holds the mosque's settings, is never stored.
         assertEquals(DashboardRoutes.FONT_CACHE, readex.cacheControl)
         assertEquals(200, call("GET", "/fonts/amiri.ttf", query = emptyMap()).status)
+        assertEquals(200, call("GET", "/fonts/mushaf-qaloun.ttf", query = emptyMap()).status)
         for (path in listOf("/fonts/reem-kufi.ttf", "/fonts/../index.html", "/fonts/readex-pro.TTF", "/fonts/", "/fonts/x/readex-pro.ttf")) {
             assertEquals(path, 404, call("GET", path, query = emptyMap()).status)
         }
         assertEquals(404, call("POST", "/fonts/readex-pro.ttf", query = emptyMap()).status)
-        assertEquals(listOf("readex-pro.ttf", "amiri.ttf"), backend.fontsAsked)
+        assertEquals(listOf("readex-pro.ttf", "amiri.ttf", "mushaf-qaloun.ttf"), backend.fontsAsked)
         // Loading the page's fonts is not using the session.
         assertEquals(1_000L, routes.lastUsedAt)
         assertEquals("no-store", call("GET", "/", query = emptyMap()).cacheControl)

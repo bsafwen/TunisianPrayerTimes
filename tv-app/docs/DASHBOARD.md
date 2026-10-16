@@ -28,8 +28,9 @@ session started shows its code without a new session.
   restored ("undo the last import").
 - The page itself (`/`, `/app.js`, `/formula.js`, `/style.css`, `/views/*.js`) is static and holds no data;
   it lives in `app/src/main/assets/dashboard/`. Its fonts come from the app too, so it looks like
-  the screen without internet: `/fonts/readex-pro.ttf` (everything) and `/fonts/amiri.ttf` (the
-  adhkar texts, loaded on that section only), `font/ttf`, public like the page. Any other name is 404.
+  the screen without internet: `/fonts/readex-pro.ttf` (everything), `/fonts/amiri.ttf` (the
+  adhkar texts) and `/fonts/mushaf-qaloun.ttf` (the Qur'an passages, as the mushaf prints them),
+  the last two loaded on the adhkar section only; `font/ttf`, public like the page. Any other name is 404.
 
 ## The page
 
@@ -303,7 +304,11 @@ lists the screen shows when the mosque changed nothing:
   A long text (several pages on screen) with a count above 1 is shown whole again for each
   reading, three times at most. A page holds at most 260 characters and 6 lines; the pages of a
   text are as even as its verse ends, pause marks and punctuation allow (`pages()` in
-  `views/adhkar.js` is the TV's `AdhkarPacer.pages`, line for line).
+  `views/adhkar.js` is the TV's `AdhkarPacer.pages`, line for line; its spaces are Java's, so the
+  no-break space that binds a verse number to its word is not one).
+- `mushafText`, only for a Qur'an passage (Ayat al-Kursi, the surahs, the last verses of al-Baqarah): the
+  words as the mushaf prints them, for the mushaf font. The screen shows, pages and times these; `text`
+  stays the catalog's readable wording, for search.
 - `afterSalahMillis`: how long the TV shows the text after the prayer, at its `count`.
   `tickerMillis`: at least how long it stays in the ticker (every page or step at least 12 s, longer
   only for its reading time; the announcements between texts add time). The ticker pages and never

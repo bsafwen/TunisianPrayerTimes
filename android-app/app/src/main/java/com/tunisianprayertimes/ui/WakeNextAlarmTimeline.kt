@@ -41,7 +41,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
@@ -50,39 +49,71 @@ import kotlin.math.roundToInt
 
 internal enum class WakeStopState { RUNG, NEXT, UPCOMING }
 
-/** One ring of an alarm's coming occurrence: an extra alarm, or the main alarm at offset 0. */
+/**
+ * One ring of an alarm's occurrence: an extra alarm, or the main alarm at offset 0. The last stop can instead be
+ * the awake check that follows the rings, once it is scheduled.
+ */
 internal data class WakeTimelineStop(
     val atMillis: Long,
     val signedOffsetMinutes: Int,
     val state: WakeStopState,
+    val isAwakeCheck: Boolean = false,
+    /** Going now: a ring that is ringing, or the awake check while it asks. */
+    val ongoing: Boolean = false,
+    /** Where the line leading to this stop starts filling, when not at the stop before it. */
+    val progressFromMillis: Long? = null,
 ) {
-    val isMain: Boolean get() = signedOffsetMinutes == 0
+    val isMain: Boolean get() = !isAwakeCheck && signedOffsetMinutes == 0
 }
 
 private const val MINUTE_MILLIS = 60_000L
 
+/** The awake check as the strip's last stop. [fromMillis] is when it was set, where its line starts filling. */
+internal data class WakeTimelineAwakeCheck(
+    val atMillis: Long,
+    val fromMillis: Long?,
+    val running: Boolean,
+    /** It is what comes next, every ring having gone. */
+    val isNext: Boolean,
+)
+
 /**
- * Every ring of the occurrence that [nextTriggerAtMillis] belongs to, earliest first. Stops before the
- * next trigger have rung, the stop at it rings next. [occurrenceAtMillis] is the main alarm's time.
+ * Every ring of the occurrence whose main alarm is at [occurrenceAtMillis], as signed minutes [offsets] (0 is the
+ * main alarm), earliest first. Stops before [highlightedAtMillis] have rung, the stop at it is the one going
+ * ([highlightedOngoing]) or coming next, later ones are still to come; with nothing highlighted every ring has gone.
+ * A scheduled awake check follows the rings as the last stop.
  */
 internal fun wakeTimelineStops(
-    subAlarms: List<PrayerWakeSubAlarm>,
+    offsets: List<Int>,
     occurrenceAtMillis: Long,
-    nextTriggerAtMillis: Long,
+    highlightedAtMillis: Long?,
+    highlightedOngoing: Boolean = false,
+    awakeCheck: WakeTimelineAwakeCheck? = null,
 ): List<WakeTimelineStop> {
-    val offsets = (subAlarms.map { it.signedOffsetMinutes } + 0).distinct().sorted()
-    return offsets.map { offset ->
+    val rings = offsets.distinct().sorted().map { offset ->
         val atMillis = occurrenceAtMillis + offset * MINUTE_MILLIS
         WakeTimelineStop(
             atMillis = atMillis,
             signedOffsetMinutes = offset,
             state = when {
-                atMillis < nextTriggerAtMillis -> WakeStopState.RUNG
-                atMillis == nextTriggerAtMillis -> WakeStopState.NEXT
+                highlightedAtMillis == null || atMillis < highlightedAtMillis -> WakeStopState.RUNG
+                atMillis == highlightedAtMillis -> WakeStopState.NEXT
                 else -> WakeStopState.UPCOMING
             },
+            ongoing = highlightedOngoing && atMillis == highlightedAtMillis,
         )
     }
+    val check = awakeCheck?.let { check ->
+        WakeTimelineStop(
+            atMillis = check.atMillis,
+            signedOffsetMinutes = ((check.atMillis - occurrenceAtMillis) / MINUTE_MILLIS).toInt(),
+            state = if (check.isNext) WakeStopState.NEXT else WakeStopState.UPCOMING,
+            isAwakeCheck = true,
+            ongoing = check.running,
+            progressFromMillis = check.fromMillis,
+        )
+    }
+    return rings + listOfNotNull(check)
 }
 
 private val TimelineNodeZone = 36.dp
@@ -189,8 +220,10 @@ private fun TimelineStops(
                             strokeWidth = strokeWidth,
                             pathEffect = dashes,
                         )
-                        val progress = ((nowMillis - earlier.atMillis).toFloat() /
-                            (later.atMillis - earlier.atMillis).toFloat()).coerceIn(0f, 1f)
+                        // The check's line fills from when it was set (the last ring's stop), not from that ring's time.
+                        val fromMillis = later.progressFromMillis ?: earlier.atMillis
+                        val progress = ((nowMillis - fromMillis).toFloat() /
+                            (later.atMillis - fromMillis).coerceAtLeast(1L).toFloat()).coerceIn(0f, 1f)
                         drawLine(
                             color = StopGold.copy(alpha = 0.95f),
                             start = Offset(from, centerY),
@@ -224,20 +257,22 @@ private fun TimelineStop(
     modifier: Modifier = Modifier,
 ) {
     val gapText = when {
+        stop.isAwakeCheck -> stringResource(R.string.wake_timeline_awake_check)
         stop.isMain -> stringResource(R.string.wake_timeline_main)
         stop.signedOffsetMinutes < 0 ->
             stringResource(R.string.wake_timeline_before, abs(stop.signedOffsetMinutes).toString())
         else -> stringResource(R.string.wake_timeline_after, stop.signedOffsetMinutes.toString())
     }
-    val description = if (stop.isMain) {
-        stringResource(R.string.wake_timeline_a11y_main, timeText)
-    } else {
-        stringResource(R.string.wake_timeline_a11y_extra, timeText, gapText)
+    val description = when {
+        stop.isAwakeCheck -> stringResource(R.string.wake_timeline_a11y_awake_check, timeText)
+        stop.isMain -> stringResource(R.string.wake_timeline_a11y_main, timeText)
+        else -> stringResource(R.string.wake_timeline_a11y_extra, timeText, gapText)
     }
-    val stateText = when (stop.state) {
-        WakeStopState.RUNG -> stringResource(R.string.wake_timeline_state_rung)
-        WakeStopState.NEXT -> stringResource(R.string.wake_timeline_state_next)
-        WakeStopState.UPCOMING -> null
+    val stateText = when {
+        stop.ongoing -> stringResource(R.string.wake_alarm_row_in_progress)
+        stop.state == WakeStopState.RUNG -> stringResource(R.string.wake_timeline_state_rung)
+        stop.state == WakeStopState.NEXT -> stringResource(R.string.wake_timeline_state_next)
+        else -> null
     }
     val rung = stop.state == WakeStopState.RUNG
     val timeColor = when (stop.state) {
@@ -265,7 +300,7 @@ private fun TimelineStop(
             modifier = Modifier.height(TimelineNodeZone),
             contentAlignment = Alignment.Center,
         ) {
-            TimelineNode(isMain = stop.isMain, state = stop.state)
+            TimelineNode(isMain = stop.isMain, isAwakeCheck = stop.isAwakeCheck, state = stop.state)
         }
         Text(
             text = timeText,
@@ -290,11 +325,12 @@ private fun TimelineStop(
 }
 
 @Composable
-private fun TimelineNode(isMain: Boolean, state: WakeStopState) {
+private fun TimelineNode(isMain: Boolean, isAwakeCheck: Boolean, state: WakeStopState) {
     val next = state == WakeStopState.NEXT
     val rung = state == WakeStopState.RUNG
     val size = when {
         isMain -> 26.dp
+        isAwakeCheck -> 20.dp
         rung -> 16.dp
         else -> 14.dp
     }
@@ -312,7 +348,9 @@ private fun TimelineNode(isMain: Boolean, state: WakeStopState) {
         rung -> BorderStroke(1.5.dp, Color.White.copy(alpha = 0.45f))
         else -> BorderStroke(2.dp, Color.White.copy(alpha = 0.88f))
     }
+    // The awake check keeps its sun, so it never reads as one more ring.
     val iconRes = when {
+        isAwakeCheck -> R.drawable.ic_adhkar_sun
         rung -> R.drawable.ic_check
         isMain -> R.drawable.ic_tab_alarms
         else -> null
@@ -343,7 +381,13 @@ private fun TimelineNode(isMain: Boolean, state: WakeStopState) {
                     painter = painterResource(iconRes),
                     contentDescription = null,
                     tint = iconTint,
-                    modifier = Modifier.size(if (isMain) 16.dp else 10.dp),
+                    modifier = Modifier.size(
+                        when {
+                            isMain -> 16.dp
+                            isAwakeCheck -> 13.dp
+                            else -> 10.dp
+                        },
+                    ),
                 )
             }
         }

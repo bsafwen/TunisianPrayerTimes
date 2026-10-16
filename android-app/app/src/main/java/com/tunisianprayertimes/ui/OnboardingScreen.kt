@@ -825,7 +825,11 @@ private fun PermissionsStep(
                             result = "request_opened",
                             entryPoint = "onboarding",
                         )
-                        context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+                        // The app's own page, not the list of every app.
+                        context.startActivity(
+                            Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+                                .setData(Uri.parse("package:" + context.packageName)),
+                        )
                     }
                 }
             )

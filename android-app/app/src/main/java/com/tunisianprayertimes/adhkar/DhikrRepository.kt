@@ -365,7 +365,7 @@ class DhikrRepository(context: Context) {
         return accepted
     }
     fun openSession(items: List<String>, category: DhikrCategory? = null, occurrenceId: String? = null,
-                    fresh: Boolean = false, targetCountOverride: Int? = null,
+                    targetCountOverride: Int? = null,
                     now: Long = System.currentTimeMillis(), collectionReading: Boolean = false): String {
         val known = state.value
         require(items.isNotEmpty() && items.all { known.findDhikr(it) != null })
@@ -384,7 +384,7 @@ class DhikrRepository(context: Context) {
             // keep its progress and identity so an older session cannot reopen a goal.
             val existing = if (occurrence != null) old.sessions.values
                 .filter { it.occurrenceId == occurrenceId }.maxByOrNull { it.updatedAtMillis }
-                else if (fresh) null else if (periodKey != null) {
+                else if (periodKey != null) {
                     old.sessions.values.filter {
                         it.occurrenceId == null && it.category == category && it.collectionPeriodKey == periodKey &&
                             it.targetCountOverride == targetCountOverride
@@ -402,30 +402,25 @@ class DhikrRepository(context: Context) {
                 }.maxByOrNull { it.updatedAtMillis }
             // Daily collections share one occasion between the Adhkar tab and reminders: carry the
             // newer reading's progress into the session being opened instead of starting over.
-            val progress = if (periodKey == null || (fresh && occurrence == null)) null else old.sessions.values.filter {
+            val progress = if (periodKey == null) null else old.sessions.values.filter {
                 it.category == category && it.collectionPeriodKey == periodKey && it.targetCountOverride == targetCountOverride
             }.maxByOrNull { it.updatedAtMillis }?.takeIf {
                 it.id != existing?.id && (existing == null || it.updatedAtMillis > existing.updatedAtMillis)
             }
             val migratedCounts = if (occurrence != null && category == null) mapOf(occurrence.dhikrId to occurrence.count)
-                else if (occurrence != null || fresh || periodKey != null) emptyMap() else items.associateWith { id ->
+                else if (occurrence != null || periodKey != null) emptyMap() else items.associateWith { id ->
                     store.legacyCount("reading|" + id)
                         .coerceAtMost(targetCountOverride ?: old.findDhikr(id)!!.countForCollection(category))
                 }
-            val savedAt = if (fresh && periodKey != null && occurrence == null) {
-                val latest = old.sessions.values.filter { it.collectionPeriodKey == periodKey }
-                    .maxOfOrNull { it.updatedAtMillis }
-                if (latest != null && latest >= now && latest < Long.MAX_VALUE) latest + 1 else now
-            } else now
             val base = progress ?: existing
             val session = base?.let { (existing ?: DhikrSession(itemIds = items, occurrenceId = occurrenceId)).copy(
                 itemIds = items, category = category,
                 counts = base.counts.filterKeys { it in items },
                 skippedIds = base.skippedIds.intersect(items.toSet()),
                 index = items.indexOf(base.itemId).coerceAtLeast(0),
-                targetCountOverride = targetCountOverride, collectionPeriodKey = periodKey, updatedAtMillis = savedAt) }
+                targetCountOverride = targetCountOverride, collectionPeriodKey = periodKey, updatedAtMillis = now) }
                 ?: DhikrSession(itemIds = items, category = category, occurrenceId = occurrenceId, counts = migratedCounts,
-                    targetCountOverride = targetCountOverride, collectionPeriodKey = periodKey, updatedAtMillis = savedAt)
+                    targetCountOverride = targetCountOverride, collectionPeriodKey = periodKey, updatedAtMillis = now)
             selected = session.id
             val sessions = if (occurrenceId == null) old.sessions else old.sessions.filterValues {
                 it.occurrenceId != occurrenceId || it.id == session.id
@@ -707,7 +702,7 @@ internal fun collectionRepresentative(category: DhikrCategory): String =
     DhikrCatalog.collectionOrder[category].orEmpty().firstOrNull { DhikrCatalog.find(it) != null }
         ?: DhikrCatalog.entries.firstOrNull { category in it.categories }?.id
         ?: DhikrCatalog.entries.first().id
-/** Full-list readings resume within their occasion; other collections reset only on New Session. */
+/** Full-list readings resume within their occasion; other collections keep a single reading. */
 internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategory, occurrenceId: String?, now: Long): String {
     // Morning, evening and night readings belong to a daily occasion however they were opened.
     val startKind = collectionOccasionStart(category)
@@ -731,9 +726,11 @@ internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategor
 }
 /** Marks the period of a morning or evening reading made outside its occasion. */
 private const val OUTSIDE_OCCASION_SUFFIX = ":outside"
+/** A [collectionReadingPeriodKey] of a morning or evening reading made outside its occasion. */
+internal fun isOutsideOccasionPeriod(periodKey: String): Boolean = periodKey.endsWith(OUTSIDE_OCCASION_SUFFIX)
 /** When the occasion of [category] next begins, if [now] lies outside it; null inside it, or for other collections. */
 internal fun collectionOccasionOpensAt(context: Context, category: DhikrCategory, now: Long): Long? {
-    if (!collectionReadingPeriodKey(context, category, null, now).endsWith(OUTSIDE_OCCASION_SUFFIX)) return null
+    if (!isOutsideOccasionPeriod(collectionReadingPeriodKey(context, category, null, now))) return null
     val kind = collectionOccasionStart(category) ?: return null
     val date = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
     return listOf(date, date.plusDays(1)).firstNotNullOfOrNull { day ->

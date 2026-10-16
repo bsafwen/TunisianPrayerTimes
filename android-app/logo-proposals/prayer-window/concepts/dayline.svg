@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Dayline - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#1C2634"/>
+  <g transform="rotate(-24 54 54)">
+    <path fill="#D7E6EB" d="M26 56H82A3 3 0 0 1 82 62H26A3 3 0 0 1 26 56Z"/>
+    <path fill="#D7E6EB" d="M28 44A4 4 0 0 1 36 44V62H28ZM39 44A4 4 0 0 1 47 44V62H39ZM50 44A4 4 0 0 1 58 44V62H50ZM72 44A4 4 0 0 1 80 44V62H72Z"/>
+    <path fill="#D8FF65" d="M61 42A4 4 0 0 1 69 42V62H61Z"/>
+  </g>
+</svg>

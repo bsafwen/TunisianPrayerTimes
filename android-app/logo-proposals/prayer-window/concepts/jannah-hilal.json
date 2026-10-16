@@ -1,0 +1,15 @@
+{
+  "id": "jannah-hilal",
+  "name": "Jannah Hilal",
+  "tag": "Garden / a flourishing crescent",
+  "file": "concepts/jannah-hilal.svg",
+  "summary": "A generous crescent cradles a flourishing garden, with a spring flowing through its open side.",
+  "why": "The crescent becomes the garden's protective outer form, rather than a small added badge. Three gold leaves open inside it and a flowing band of water crosses the lower opening, joining a familiar Islamic visual reference to the original hope-and-renewal idea.",
+  "risk": "The crescent can emphasize Ramadan or the lunar calendar; its Islamic association is clearer than its prayer-time function.",
+  "key1": "The embracing crescent",
+  "sub1": "A familiar Islamic reference",
+  "key2": "The growing garden",
+  "sub2": "Hope, renewal, and a spring",
+  "palette": {"background": "#153F3B", "ink": "#C6E5CA", "sun": "#EBC77D", "name": "JANNAH HILAL / FOREST + CELADON"},
+  "group": "jannah-variation"
+}

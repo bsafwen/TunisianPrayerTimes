@@ -1,0 +1,20 @@
+{
+  "id": "quiet-companion",
+  "name": "Quiet Companion",
+  "tag": "Prayer / peace / companionship",
+  "file": "concepts/quiet-companion.svg",
+  "summary": "A worshipper sits on their heels on a prayer rug, facing the Kaaba, with a calm cat resting beside them.",
+  "why": "The person, rug, and distant Kaaba share one direction, while the cat sits naturally beside the rug. A rear view keeps the scene private and peaceful. The warm ivory, jade, and gold carry the calm character of Quiet Joy into a small moment of companionship.",
+  "risk": "This is an illustrative mark with several subjects. At 24 pixels the Kaaba band and the cat's ears and tail become less distinct; the scene reads best at 48 pixels and above.",
+  "key1": "A shared direction",
+  "sub1": "Prayer facing the Kaaba",
+  "key2": "A quiet companion",
+  "sub2": "A cat resting nearby",
+  "group": "companionship",
+  "palette": {
+    "background": "#F3ECDE",
+    "ink": "#24594D",
+    "sun": "#D9A55E",
+    "name": "QUIET COMPANION / IVORY + JADE + WARM GOLD"
+  }
+}

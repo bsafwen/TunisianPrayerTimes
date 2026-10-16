@@ -150,10 +150,10 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
         if (editorUnderneath) { readerId = null; readerReminderSource = null }
     }
     fun openItems(items: List<String>, collection: DhikrCategory? = null, occurrence: DhikrOccurrence? = null,
-        fresh: Boolean = false, targetCountOverride: Int? = null, collectionReading: Boolean = false,
+        targetCountOverride: Int? = null, collectionReading: Boolean = false,
         sourceReminderId: String? = null) {
         var id = ""
-        mutate({ id = repo.openSession(items, collection, occurrence?.id, fresh, targetCountOverride,
+        mutate({ id = repo.openSession(items, collection, occurrence?.id, targetCountOverride,
             collectionReading = collectionReading) }) {
             readerReminderSource = (sourceReminderId ?: occurrence?.ruleId)?.let { "$id|$it" }
             readerId = id; keyboardFocus.clearFocus()
@@ -331,9 +331,13 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
         onDispose { lifecycle.lifecycle.removeObserver(observer) }
     }
     LaunchedEffect(Unit) { while (true) { delay(30_000); now = System.currentTimeMillis() } }
-    LaunchedEffect(readerId, now) {
+    val readerComplete = readerId?.let { state.sessions[it] }?.let { state.isComplete(it) } == true
+    LaunchedEffect(readerId, now, readerComplete) {
         val id = readerId ?: return@LaunchedEffect
         val session = repo.state.value.sessions[id] ?: return@LaunchedEffect
+        // A finished reading, and its closing card, stay until the reader leaves them: nothing more can
+        // be counted on it. An undo makes it a reading in progress again, and it moves on at once.
+        if (repo.state.value.isComplete(session)) return@LaunchedEffect
         val collection = session.category ?: return@LaunchedEffect
         if (session.occurrenceId != null || session.collectionPeriodKey == null ||
             collection !in setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.NIGHT)) return@LaunchedEffect
@@ -497,16 +501,6 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onTextSize = { size -> mutate({ repo.setTextSize(size) }) },
                         onHaptics = { enabled -> mutate({ repo.setHaptics(enabled) }) },
                         onVariant = { variant -> mutate({ repo.setVariant(session.itemId, variant) }) },
-                        onNewSession = {
-                            val collectionReading = session.collectionPeriodKey != null
-                            val items = if (collectionReading && session.category != null)
-                                repo.state.value.collectionEntries(session.category).map(DhikrEntry::id)
-                            else session.itemIds
-                            if (items.isEmpty()) showEmptyReminderCollection()
-                            else openItems(items, session.category, fresh = true,
-                                targetCountOverride = session.targetCountOverride,
-                                collectionReading = collectionReading)
-                        },
                         reminderActionLabel = when {
                             ownReminder != null && readsCollection -> "تعديل تذكير هذه المجموعة"
                             ownReminder != null -> "تعديل تذكير هذا الذكر"
@@ -1022,9 +1016,7 @@ private fun DhikrEntryCard(entry: DhikrEntry, onClick: () -> Unit, displayCatego
             Column(Modifier.weight(1f).padding(vertical = 6.dp)) {
                 Text(entry.title, color = AdhkarHeading, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
                     maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Text(dhikrPreview(entry.text), color = p.muted,
-                    fontFamily = AdhkarReadingFont, fontSize = 12.sp,
-                    maxLines = 1, overflow = TextOverflow.Ellipsis)
+                DhikrPreview(entry.id, dhikrPreview(entry.text), p.muted, 12.sp, maxLines = 1)
                 Text(if (entry.steps.isNotEmpty()) collectionTitle(displayCategory ?: DhikrCategory.SALAH) +
                         " · " + entry.steps.joinToString(" + ") { latinNumber(it.repetitions) }
                     else if (entry.custom) "ذكر أضفته · التكرار: " + latinNumber(entry.defaultCount)

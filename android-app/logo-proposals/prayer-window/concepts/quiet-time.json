@@ -1,0 +1,19 @@
+{
+  "id": "quiet-time",
+  "name": "Quiet Time",
+  "tag": "Time / protected focus",
+  "file": "concepts/quiet-time.svg",
+  "summary": "A clock opens into a pause. A bright, modern identity for an app that protects prayer time.",
+  "why": "The familiar clock carries the prayer schedule. Its open corner becomes a pause symbol, connecting timekeeping to the app's automatic silence during prayer. Acid yellow gives the mark a confident presence among conventional prayer icons.",
+  "risk": "Without the app name, the mark could read as a focus timer. The silence feature is more prominent than Quran reading.",
+  "key1": "The open clock",
+  "sub1": "Prayer at its time",
+  "key2": "The pause",
+  "sub2": "Silence during prayer",
+  "palette": {
+    "background": "#EDEB5A",
+    "ink": "#212C42",
+    "sun": "#F8F7E7",
+    "name": "QUIET TIME / CITRON & INK"
+  }
+}

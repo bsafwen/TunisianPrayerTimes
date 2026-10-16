@@ -55,7 +55,7 @@ interface DashboardBackend {
     fun asset(name: String): ByteArray?
 
     /**
-     * A font of the page ([DashboardRoutes.FONTS]: "readex-pro.ttf", "amiri.ttf"), from the app's own
+     * A font of the page ([DashboardRoutes.FONTS]: "readex-pro.ttf", "amiri.ttf", "mushaf-qaloun.ttf"), from the app's own
      * font resources, so the page looks like the screen without internet; null for any other name.
      */
     fun font(name: String): ByteArray?
@@ -312,8 +312,11 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
         /** The page's own files: nothing else can be read through this path. */
         private val PAGE_FILE = Regex("""index\.html|app\.js|formula\.js|style\.css|views/[a-z0-9-]{1,40}\.js""")
 
-        /** The fonts the page may ask for at /fonts/NAME: Readex Pro for everything, Amiri for the adhkar texts. */
-        val FONTS = setOf("readex-pro.ttf", "amiri.ttf")
+        /**
+         * The fonts the page may ask for at /fonts/NAME: Readex Pro for everything, Amiri for the adhkar texts, the
+         * mushaf font for the Qur'an passages.
+         */
+        val FONTS = setOf("readex-pro.ttf", "amiri.ttf", "mushaf-qaloun.ttf")
 
         /** A plain file name: no folders, no hidden files. */
         val IMAGE_NAME = Regex("""[A-Za-z0-9_-][A-Za-z0-9._-]{0,79}\.(?i:jpg|jpeg|png|webp)""")

@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.mosque
 
+import com.tunisianprayertimes.adhkar.MushafPassages
 import java.time.LocalDate
 
 /**
@@ -10,7 +11,13 @@ import java.time.LocalDate
  */
 object DisplayTexts {
 
-    data class DisplayText(val id: String, val text: String, val reference: String)
+    data class DisplayText(val id: String, val text: String, val reference: String) {
+        /** A verse or the basmala as the mushaf prints it ([MushafPassages], for the mushaf font); else [text]. */
+        val mushafText: String get() = MushafPassages.text(id) ?: text
+
+        /** Whether [mushafText] is the mushaf's (set it in the mushaf font). */
+        val isMushaf: Boolean get() = id in MushafPassages.ids
+    }
 
     /**
      * On ordinary days, in turn: what the Quran says of the prayer (its fixed times, guarding it,

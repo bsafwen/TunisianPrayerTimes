@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,6 +27,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
@@ -64,6 +66,7 @@ internal interface QuranPlayerActions {
  * The fine controls, over the bottom of the page without hiding it: the surah's slider landing on
  * verse starts, ±5 s, stop, the reciter and the memorisation chips.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun QuranExpandedPlayer(
     playback: QuranPlaybackState,
@@ -81,6 +84,9 @@ internal fun QuranExpandedPlayer(
     var dragging by remember { mutableStateOf<Float?>(null) }
     val duration = playback.durationMs.coerceAtLeast(1L)
     val fraction = dragging ?: (playback.positionMs.toFloat() / duration).coerceIn(0f, 1f)
+    val sliderEnabled = playback.surah != null && playback.durationMs > 0L && !playback.loading
+    val sliderColors = SliderDefaults.colors(thumbColor = GreenPrimary, activeTrackColor = GreenPrimary, inactiveTrackColor = Color(0xFFC8DCD3))
+    val sliderInteractionSource = remember { MutableInteractionSource() }
     val target = dragging?.let { f ->
         track?.let { t ->
             val position = (f * duration).toLong()
@@ -138,7 +144,7 @@ internal fun QuranExpandedPlayer(
                                 actions.seekVerse(ayah)
                             }
                         },
-                        enabled = playback.surah != null && playback.durationMs > 0L && !playback.loading,
+                        enabled = sliderEnabled,
                         // TalkBack's forward and back step verse by verse; a slider's own 5% steps would snap
                         // back to the start of the verse under way.
                         modifier = Modifier.weight(1f).testTag("quran_player_slider").clearAndSetSemantics {
@@ -153,7 +159,27 @@ internal fun QuranExpandedPlayer(
                                 ayah != null
                             }
                         },
-                        colors = SliderDefaults.colors(thumbColor = GreenPrimary, activeTrackColor = GreenPrimary, inactiveTrackColor = Color(0xFFC8DCD3)),
+                        colors = sliderColors,
+                        interactionSource = sliderInteractionSource,
+                        thumb = {
+                            // Resize only the visible marker; Slider retains its 48.dp touch target.
+                            SliderDefaults.Thumb(
+                                interactionSource = sliderInteractionSource,
+                                colors = sliderColors,
+                                enabled = sliderEnabled,
+                                thumbSize = DpSize(4.dp, 24.dp),
+                            )
+                        },
+                        track = { sliderState ->
+                            SliderDefaults.Track(
+                                sliderState = sliderState,
+                                enabled = sliderEnabled,
+                                colors = sliderColors,
+                                // Keep the position marker connected to the timeline, including at the start.
+                                thumbTrackGapSize = 0.dp,
+                                trackInsideCornerSize = 0.dp,
+                            )
+                        },
                     )
                     IconButton(onClick = { actions.skipBy(5_000L) }, enabled = playback.surah != null) {
                         Icon(painterResource(R.drawable.ic_quran_forward5), "تقديم 5 ثوانٍ", tint = GreenPrimaryDark)

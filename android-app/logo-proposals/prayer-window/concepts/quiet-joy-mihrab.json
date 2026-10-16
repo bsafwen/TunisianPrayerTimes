@@ -1,0 +1,20 @@
+{
+  "id": "quiet-joy-mihrab",
+  "name": "Quiet Joy Mihrab",
+  "tag": "A welcoming place for prayer",
+  "file": "concepts/quiet-joy-mihrab.svg",
+  "summary": "Quiet Joy's soft embrace rises into a generous prayer niche, holding the warm golden circle within an open, peaceful space.",
+  "why": "The jade curve keeps its welcoming upward movement beneath a generous pointed mihrab. Two small openings separate the architecture from the soft embrace, keeping the interior light and spacious. The off-center gold circle preserves the original warmth and gentle happiness.",
+  "risk": "The niche strengthens the prayer association, though the abstract interior can also suggest a sheltered person or a place of wellbeing.",
+  "key1": "The generous mihrab",
+  "sub1": "A clear place for prayer",
+  "key2": "The warm embrace",
+  "sub2": "Calm and quiet happiness",
+  "group": "quiet-joy-prayer",
+  "palette": {
+    "background": "#F3ECDE",
+    "ink": "#24594D",
+    "sun": "#D9A55E",
+    "name": "QUIET JOY MIHRAB / IVORY + JADE + WARM GOLD"
+  }
+}

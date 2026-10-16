@@ -22,6 +22,7 @@ import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
 import com.tunisianprayertimes.isRepeatingWakeAlarm
+import com.tunisianprayertimes.isSkippingWakeOccurrence
 import com.tunisianprayertimes.isSuppressedWakeOccurrence
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.nap.NapSilenceController
@@ -46,6 +47,9 @@ object WakeAlarmScheduler {
 	private const val REPAIR_REQUEST_CODE = 70_001
 	private const val REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES = 2L
 	private val DUE_DELIVERY_GRACE_MILLIS = TimeUnit.HOURS.toMillis(12)
+	private val DUE_RING_GRACE_MILLIS = TimeUnit.MINUTES.toMillis(15)
+	private const val KEY_RING_OFFSETS_PREFIX = "rings:"
+	private val RING_OFFSETS_RETAIN_MILLIS = TimeUnit.DAYS.toMillis(2)
 	private val reminderRefreshScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
 	fun activateSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
@@ -213,27 +217,126 @@ object WakeAlarmScheduler {
 				)
 			}
 
-	/** The occurrence whose awake check is scheduled and has not started yet. */
-	private fun pendingAwakeCheckOccurrenceAtMillis(context: Context, alarmId: String, nowMillis: Long): Long? {
-		val eventId = wakeMainEventId(alarmId)
-		val triggerAtMillis = AwakeCheckScheduler.triggerAtMillis(context, eventId) ?: return null
-		return AwakeCheckScheduler.occurrenceAtMillis(context, eventId)?.takeIf { triggerAtMillis > nowMillis }
+	/** One ring of an occurrence: when it is or was due, and whether it is an extra or the main alarm. */
+	data class Ring(val atMillis: Long, val isExtra: Boolean)
+
+	/** An occurrence in progress: what is ringing or late, and its awake check once the last ring is stopped. */
+	data class RunningOccurrence(
+		val occurrenceAtMillis: Long,
+		/** The ring going now, or one waiting in the queue behind another alarm's ring ([ringWaiting]). */
+		val ringing: Ring? = null,
+		val ringWaiting: Boolean = false,
+		/** A ring past its time that Android has not delivered yet. */
+		val dueRing: Ring? = null,
+		/** When the awake check starts, or started if it is running. */
+		val awakeCheckAtMillis: Long? = null,
+		/** When the awake check was set, i.e. when the last ring was stopped. */
+		val awakeCheckFromMillis: Long? = null,
+		val awakeCheckRunning: Boolean = false,
+		/** The occurrence's rings as signed minutes from its main alarm, as they were scheduled. */
+		val ringOffsets: List<Int>? = null,
+	)
+
+	/**
+	 * The alarm's occurrence in progress: from its earliest ring to its latest, and while a delivered ring, a ring that
+	 * is late, or the awake check that follows is still going. A skipped occurrence never rings, so it is not in
+	 * progress. The alarm row offers Stop in this state and Skip otherwise; the hero and the row show this occurrence
+	 * until it ends.
+	 */
+	fun runningOccurrence(
+		context: Context,
+		config: PrayerWakeConfig,
+		windows: List<OccurrenceWindow>,
+		nowMillis: Long = System.currentTimeMillis(),
+	): RunningOccurrence? {
+		val awakeCheckEventId = wakeMainEventId(config.id)
+		val queuedRing = WakeAlarmQueueHolder.queue.ringForAlarm(config.id)
+		val awakeCheckRunningFor = AwakeCheckService.activeOccurrenceForEvent(awakeCheckEventId)
+		val awakeCheckPendingFor = AwakeCheckScheduler.occurrenceAtMillis(context, awakeCheckEventId)
+			?.takeIf { AwakeCheckScheduler.isPending(context, awakeCheckEventId, nowMillis) }
+		val dueRings = dueRings(context, config, nowMillis)
+		val occurrenceAtMillis = queuedRing?.payload?.resolvedOccurrenceAtMillis()
+			?: awakeCheckRunningFor
+			?: awakeCheckPendingFor
+			?: dueRings.minByOrNull { (_, ring) -> ring.atMillis }?.first
+			?: windows
+				.firstOrNull { window ->
+					nowMillis in window.startsAtMillis..window.endsAtMillis &&
+						!config.isSkippingWakeOccurrence(window.occurrenceAtMillis)
+				}
+				?.occurrenceAtMillis
+			?: return null
+		val awakeCheckRunning = awakeCheckRunningFor == occurrenceAtMillis
+		val awakeCheckOfThisOccurrence = awakeCheckRunning || awakeCheckPendingFor == occurrenceAtMillis
+		val ownRing = queuedRing?.takeIf { ring -> ring.payload.resolvedOccurrenceAtMillis() == occurrenceAtMillis }
+		return RunningOccurrence(
+			occurrenceAtMillis = occurrenceAtMillis,
+			ringing = ownRing?.payload?.let { payload -> Ring(payload.triggerAtMillis, payload.isSubAlarm) },
+			ringWaiting = ownRing?.waiting == true,
+			dueRing = dueRings
+				.filter { (occurrence, _) -> occurrence == occurrenceAtMillis }
+				.minByOrNull { (_, ring) -> ring.atMillis }
+				?.second,
+			awakeCheckAtMillis = when {
+				awakeCheckRunning -> AwakeCheckService.activeTriggerForEvent(awakeCheckEventId)
+					?: AwakeCheckScheduler.triggerAtMillis(context, awakeCheckEventId)
+				awakeCheckOfThisOccurrence -> AwakeCheckScheduler.triggerAtMillis(context, awakeCheckEventId)
+				else -> null
+			},
+			awakeCheckFromMillis = AwakeCheckScheduler.scheduledAtMillis(context, awakeCheckEventId)
+				.takeIf { awakeCheckOfThisOccurrence },
+			awakeCheckRunning = awakeCheckRunning,
+			ringOffsets = occurrenceRingOffsets(context, config.id, occurrenceAtMillis),
+		)
 	}
 
 	/**
-	 * True from the earliest ring of an occurrence to its latest, and while a delivered ring or the awake check
-	 * that follows is still going. The alarm row offers Stop in this state and Skip otherwise.
+	 * Rings of the alarm past their time that Android has not delivered yet, with their occurrences, for at most
+	 * [DUE_RING_GRACE_MILLIS]. Until one arrives its occurrence stays in progress, so Stop can still end it and Skip
+	 * cannot be pressed for the next alarm by mistake.
 	 */
-	fun isWakeAlarmRunning(
-		context: Context,
-		alarmId: String,
-		windows: List<OccurrenceWindow>,
-		nowMillis: Long = System.currentTimeMillis(),
-	): Boolean =
-		windows.any { window -> nowMillis in window.startsAtMillis..window.endsAtMillis } ||
-			WakeAlarmQueueHolder.queue.activeOccurrenceForAlarm(alarmId) != null ||
-			AwakeCheckService.activeOccurrenceForEvent(wakeMainEventId(alarmId)) != null ||
-			pendingAwakeCheckOccurrenceAtMillis(context, alarmId, nowMillis) != null
+	private fun dueRings(context: Context, config: PrayerWakeConfig, nowMillis: Long): List<Pair<Long, Ring>> {
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		val mainEventId = wakeMainEventId(config.id)
+		return scheduledEventIds(context)
+			.filter { eventId -> wakeAlarmIdFromEventId(eventId) == config.id }
+			.mapNotNull { eventId ->
+				val triggerAtMillis = prefs.getLong(KEY_TRIGGER_PREFIX + eventId, 0L)
+				val occurrenceAtMillis = prefs.getLong(KEY_OCCURRENCE_PREFIX + eventId, 0L)
+				val due = triggerAtMillis in (nowMillis - DUE_RING_GRACE_MILLIS + 1)..nowMillis &&
+					occurrenceAtMillis > 0L &&
+					!prefs.getBoolean(KEY_DELIVERED_PREFIX + eventId, false) &&
+					!config.isSuppressedWakeOccurrence(occurrenceAtMillis)
+				if (due) occurrenceAtMillis to Ring(triggerAtMillis, isExtra = eventId != mainEventId) else null
+			}
+	}
+
+	/** The occurrence's rings as signed minutes from its main alarm, as scheduled before it started. */
+	private fun occurrenceRingOffsets(context: Context, alarmId: String, occurrenceAtMillis: Long): List<Int>? =
+		context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+			.getString(ringOffsetsKey(alarmId, occurrenceAtMillis), null)
+			?.split(',')
+			?.mapNotNull { offset -> offset.toIntOrNull() }
+			?.takeIf { offsets -> offsets.isNotEmpty() }
+
+	/** Whether the alarm's awake check is still to start or running, so a finished one-off is kept for it. */
+	fun hasAwakeCheckInProgress(context: Context, alarmId: String): Boolean {
+		val eventId = wakeMainEventId(alarmId)
+		return AwakeCheckService.activeOccurrenceForEvent(eventId) != null || AwakeCheckScheduler.isPending(context, eventId)
+	}
+
+	/** Deletes a one-off whose rings are all over once its awake check has ended. */
+	fun removeExpiredOneOffAfterAwakeCheckAsync(context: Context, alarmId: String) {
+		reminderRefreshScope.launch {
+			runCatching {
+				val repository = PrayerWakeRepository(context)
+				val config = repository.getWakeAlarm(alarmId) ?: return@runCatching
+				if (config.isExpiredOneOffWakeAlarm(System.currentTimeMillis()) && !hasAwakeCheckInProgress(context, alarmId)) {
+					repository.deleteWakeAlarm(alarmId)
+				}
+			}.onFailure { error -> Log.w(TAG, "Failed to remove one-off $alarmId after its awake check", error) }
+		}
+	}
 
 	/**
 	 * Stops the alarm's running occurrence whatever the type of its rings: the one ringing, the extras still to come
@@ -246,12 +349,8 @@ object WakeAlarmScheduler {
 		val now = Calendar.getInstance()
 		val awakeCheckEventId = wakeMainEventId(alarmId)
 		val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
-		val occurrenceAtMillis = WakeAlarmQueueHolder.queue.activeOccurrenceForAlarm(alarmId)
-			?: AwakeCheckService.activeOccurrenceForEvent(awakeCheckEventId)
-			?: pendingAwakeCheckOccurrenceAtMillis(context, alarmId, now.timeInMillis)
-			?: occurrenceWindows(config, prayerDays)
-				.firstOrNull { window -> now.timeInMillis in window.startsAtMillis..window.endsAtMillis }
-				?.occurrenceAtMillis
+		val occurrenceAtMillis = runningOccurrence(context, config, occurrenceWindows(config, prayerDays), now.timeInMillis)
+			?.occurrenceAtMillis
 			?: return null
 		val repeating = config.isRepeatingWakeAlarm()
 		val updated: PrayerWakeConfig? = if (repeating) {
@@ -336,10 +435,12 @@ object WakeAlarmScheduler {
 		configs = repo.getCurrentStore().alarms
 		// Keep each skip on its original occurrence while any of its extras remain pending.
 		scheduleAllInternal(context, now, configs)
-		// Auto-delete one-off (FROM_NOW) alarms once all their triggers are in the past
+		// Auto-delete one-off (FROM_NOW) alarms once all their triggers are in the past and their awake check is over
 		val nowMillis = System.currentTimeMillis()
 		configs
-			.filter { config -> config.isExpiredOneOffWakeAlarm(nowMillis) }
+			.filter { config ->
+				config.isExpiredOneOffWakeAlarm(nowMillis) && !hasAwakeCheckInProgress(context, config.id)
+			}
 			.forEach { config -> runCatching { repo.deleteWakeAlarm(config.id) } }
 	}
 
@@ -471,9 +572,18 @@ object WakeAlarmScheduler {
 
 		val scheduledEventIds = linkedSetOf<String>().apply { addAll(retainedEventIds) }
 		var latestTriggerAtMillis: Long? = null
+		val ringOffsetsEditor = prefs.edit()
+		prefs.all.keys
+			.filter { key -> key.startsWith(KEY_RING_OFFSETS_PREFIX) }
+			.filter { key ->
+				val occurrenceAtMillis = key.substringAfterLast(':').toLongOrNull() ?: 0L
+				occurrenceAtMillis < now.timeInMillis - RING_OFFSETS_RETAIN_MILLIS
+			}
+			.forEach(ringOffsetsEditor::remove)
 		enabledConfigs.forEach { config ->
 			val autoSilenceOverrideAllowed = config.shouldUseAutoSilenceConflictPlayback()
 			val result = WakeAlarmComputer.compute(now, config, prayerDays)
+			recordRingOffsets(prefs, ringOffsetsEditor, config, result.allTriggers, now.timeInMillis)
 			val lastExtraOffset = config.subAlarms
 				.map { subAlarm -> subAlarm.signedOffsetMinutes }
 				.filter { offset -> offset >= 0 }
@@ -531,6 +641,7 @@ object WakeAlarmScheduler {
 			}
 		}
 
+		ringOffsetsEditor.apply()
 		persistScheduledEventIds(context, scheduledEventIds)
 		if (onlyAlarmId != null) return
 		val needsRepairForSkippedOccurrences = enabledConfigs.any { config ->
@@ -549,6 +660,30 @@ object WakeAlarmScheduler {
 			cancelRepairAlarm(context)
 		}
 	}
+
+	/**
+	 * Keeps the rings each coming occurrence is scheduled with, so an occurrence in progress still shows the rings it
+	 * really had after the alarm is edited. An occurrence that has started keeps the rings it started with.
+	 */
+	private fun recordRingOffsets(
+		prefs: android.content.SharedPreferences,
+		editor: android.content.SharedPreferences.Editor,
+		config: PrayerWakeConfig,
+		triggers: List<WakeAlarmComputer.ScheduledWakeTrigger>,
+		nowMillis: Long,
+	) {
+		val offsets = (listOf(0) + config.subAlarms.map { subAlarm -> subAlarm.signedOffsetMinutes }).distinct().sorted()
+		triggers.map { trigger -> trigger.occurrenceAtMillis }.distinct().forEach { occurrenceAtMillis ->
+			val key = ringOffsetsKey(config.id, occurrenceAtMillis)
+			val startsAtMillis = occurrenceAtMillis + offsets.first().toMillis()
+			if (!prefs.contains(key) || nowMillis < startsAtMillis) {
+				editor.putString(key, offsets.joinToString(","))
+			}
+		}
+	}
+
+	private fun ringOffsetsKey(alarmId: String, occurrenceAtMillis: Long): String =
+		"$KEY_RING_OFFSETS_PREFIX$alarmId:$occurrenceAtMillis"
 
 	@VisibleForTesting
 	internal fun repairTriggerAtMillis(now: Calendar, latestWakeTriggerAtMillis: Long?): Long {
@@ -609,21 +744,15 @@ object WakeAlarmScheduler {
 		)
 
 		try {
-			if (trigger.isSubAlarm) {
-				alarmManager.setExactAndAllowWhileIdle(
-					AlarmManager.RTC_WAKEUP,
+			// Extras are alarm clocks too: OxygenOS delivered setExactAndAllowWhileIdle extras up to 75% of the time
+			// left late (capped at an hour), so a "1 minute before" extra rang after the main alarm.
+			alarmManager.setAlarmClock(
+				AlarmManager.AlarmClockInfo(
 					trigger.triggerAtMillis,
-					pendingIntent,
-				)
-			} else {
-				alarmManager.setAlarmClock(
-					AlarmManager.AlarmClockInfo(
-						trigger.triggerAtMillis,
-						MainActivityPendingIntents.wakeAlarmClock(context),
-					),
-					pendingIntent,
-				)
-			}
+					MainActivityPendingIntents.wakeAlarmClock(context),
+				),
+				pendingIntent,
+			)
 			context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE).edit()
 				.putLong(KEY_TRIGGER_PREFIX + eventId, trigger.triggerAtMillis)
 				.putLong(KEY_OCCURRENCE_PREFIX + eventId, trigger.occurrenceAtMillis)

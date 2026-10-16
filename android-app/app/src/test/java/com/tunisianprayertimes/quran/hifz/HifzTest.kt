@@ -3,6 +3,7 @@ package com.tunisianprayertimes.quran.hifz
 import android.app.Application
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.quran.QuranCatalog
+import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranPage
 import com.tunisianprayertimes.quran.QuranSearchEntry
 import com.tunisianprayertimes.quran.QuranSurah
@@ -45,6 +46,55 @@ class HifzTest {
         assertEquals(listOf(3L, 7L, 14L, 30L, 60L, 60L), days)
         assertTrue(p.mastered)
         assertEquals(5L, p.masteredAt)
+    }
+
+    @Test
+    fun oldNotebook_keepsItsScheduleWithoutInventingRecallHistory() {
+        val original = point(HifzKind.Word, verse(2, 18), step = 2, slips = 4, due = 120L)
+        val old = JSONObject(encodeHifzPoints(listOf(original)))
+        old.getJSONArray("points").getJSONObject(0).remove("checks")
+
+        val restored = decodeHifzPoints(old.toString()).single()
+        assertEquals(original, restored)
+        assertTrue(restored.checks.isEmpty())
+        assertNull(restored.recentFeedback)
+        assertTrue(restored.needsCare)
+    }
+
+    @Test
+    fun grading_preservesRecentEvidenceAcrossNotebookAndUndoSerialization() {
+        val previous = (1L..60L).map { HifzCheck(100L + it, HifzGrade.Held, it) }
+        val original = point(HifzKind.Word, verse(2, 18), step = 4).copy(checks = previous)
+        val graded = original.graded(HifzGrade.Again, today = 161L, now = 61L)
+        val expected = previous.drop(1) + HifzCheck(161L, HifzGrade.Again, 61L)
+
+        assertEquals(expected, graded.checks)
+        assertEquals(expected, decodeHifzChecks(encodeHifzChecks(graded.checks)))
+        assertEquals(graded, decodeHifzPoints(encodeHifzPoints(listOf(graded))).single())
+        val undo = com.tunisianprayertimes.ui.HifzGiven.of(original, HifzGrade.Again)
+        assertEquals(previous, com.tunisianprayertimes.ui.HifzGiven.decode(undo.encode())!!.checks)
+    }
+
+    @Test
+    fun careFollowsRecentDifficulty_andRequiresRecoveryAfterANewSlip() {
+        val fresh = point(HifzKind.Start, verse(2, 18))
+        val hesitant = fresh.graded(HifzGrade.Hesitated, 100L, 10L)
+        assertFalse(hesitant.needsCare)
+        val struggling = hesitant.graded(HifzGrade.Hesitated, 102L, 20L)
+        assertTrue(struggling.needsCare)
+        val improving = struggling.graded(HifzGrade.Held, 104L, 30L)
+        assertTrue(improving.needsCare)
+        val recovered = improving.graded(HifzGrade.Held, 107L, 40L)
+        assertFalse(recovered.needsCare)
+
+        // A newly recorded slip invalidates the old run of successes, including after a restart.
+        val slippedAgain = recovered.copy(slips = recovered.slips + 1, step = 0, lastSlipAt = 50L)
+        val restored = decodeHifzPoints(encodeHifzPoints(listOf(slippedAgain))).single()
+        assertTrue(restored.needsCare)
+        val firstRecovery = restored.graded(HifzGrade.Held, 108L, 60L)
+        assertTrue(firstRecovery.needsCare)
+        assertFalse(firstRecovery.graded(HifzGrade.Held, 111L, 70L).needsCare)
+        assertTrue(fresh.graded(HifzGrade.Again, 100L, 10L).needsCare)
     }
 
     @Test
@@ -195,14 +245,14 @@ class HifzTest {
     fun gradeDetails_sayWhenTheVerseComesBack() {
         val fresh = point(HifzKind.Ending, verse(2, 17))
         assertEquals("دون تردد · تعود بعد 3 أيام", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Held))
-        assertEquals("صحيحة بعد تردد · تعود بعد يومين", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Hesitated))
+        assertEquals("بتردد أو تلميح · تعود بعد يومين", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Hesitated))
         assertEquals("أخطأت أو نسيت · تعود غدًا", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Again))
         val last = point(HifzKind.Ending, verse(2, 17), step = 3)
         assertEquals("دون تردد · تثبت، وتعود بعد شهر للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Held))
         assertEquals("أخطأت أو نسيت · تعود غدًا · وتبدأ مددها من جديد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Again))
         val held = point(HifzKind.Ending, verse(2, 17), step = HifzMasteredStep)
         assertEquals("دون تردد · تعود بعد شهرين للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Held))
-        assertEquals("صحيحة بعد تردد · تعود بعد يومين · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Hesitated))
+        assertEquals("بتردد أو تلميح · تعود بعد يومين · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Hesitated))
         assertEquals("أخطأت أو نسيت · تعود غدًا · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Again))
         assertEquals("بعد أسبوعين", com.tunisianprayertimes.ui.hifzWhen(14L))
         assertEquals("بعد 12 يومًا", com.tunisianprayertimes.ui.hifzWhen(12L))
@@ -283,8 +333,9 @@ class HifzTest {
         val openings = HifzOpenings(catalog)
         // «أو» alone opens other verses; «أو كصيب» opens only Al-Baqarah 18.
         assertEquals(2, openings.distinct(verse(2, 18)))
-        // Exact code points from the app's Qaloun text: the order of shadda and kasra matters.
-        assertEquals("\u0623\u064e\u0648\u0652 \u0643\u064e\u0635\u064e\u064a\u0651\u0650\u0628\u0656", openings.printed(verse(2, 18), 2))
+        // Exact code points in the mushaf spelling (QuranMushafText): the order of shadda and kasra is kept, and the
+        // bundled text's open kasratan U+0656 is Unicode's U+08F2.
+        assertEquals("\u0623\u064e\u0648\u0652 \u0643\u064e\u0635\u064e\u064a\u0651\u0650\u0628\u08f2", openings.printed(verse(2, 18), 2))
         // In Qaloun's reading «يكاد» also opens Maryam 91 and Ash-Shura 3, where Hafs reads «تكاد».
         assertEquals(2, openings.distinct(verse(2, 19)))
         assertEquals(1, openings.distinct(verse(2, 16)))
@@ -344,7 +395,7 @@ class HifzTest {
         val ending = hifzFix(catalog, point(HifzKind.Ending, verse(2, 17), other = verse(2, 170)))!!
         assertEquals("تتفقان في 5 كلمات قبل الخاتمة", ending.reasons.first())
         assertEquals(5, ending.partAt)
-        assertEquals(catalog.verse(2, 17)!!.text.split(' ').takeLast(3).joinToString(" "), ending.wording)
+        assertEquals(catalog.verse(2, 17)!!.text.split(' ').takeLast(3).joinToString(" ") { QuranMushafText.word(it) }, ending.wording)
 
         val skip = hifzFix(catalog, point(HifzKind.Skip, verse(2, 68)))!!
         assertTrue(skip.reasons.toString(), skip.reasons.first().startsWith("67 و68 و69 تشترك في أول 7 كلمات"))

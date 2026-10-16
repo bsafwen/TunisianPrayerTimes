@@ -84,7 +84,7 @@ object DhikrCatalog {
             id = "salah_istighfar",
             title = "الاستغفار بعد الصلاة",
             text = "أَسْتَغْفِرُ اللَّهَ",
-            reference = "صحيح مسلم 591؛ ثلاث مرات عقب السلام",
+            reference = "صحيح مسلم 591",
             defaultCount = 3,
             categories = setOf(DhikrCategory.SALAH)
         ),
@@ -100,7 +100,7 @@ object DhikrCatalog {
             id = "salah_la_mani",
             title = "لا مانع لما أعطيت",
             text = "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ، وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ.",
-            reference = "صحيح البخاري 844؛ صحيح مسلم 593؛ دبر كل صلاة مكتوبة",
+            reference = "صحيح البخاري 844؛ صحيح مسلم 593",
             defaultCount = 1,
             categories = setOf(DhikrCategory.SALAH)
         ),
@@ -108,7 +108,7 @@ object DhikrCatalog {
             id = SALAH_HUNDRED_ID,
             title = "ذكر المائة بعد الصلاة",
             text = salahHundredSteps.joinToString("، ثم ") { "${it.text} (${it.repetitions})" },
-            reference = "صحيح مسلم 597؛ التسبيح والتحميد والتكبير ثلاثًا وثلاثين لكل منها، ثم التهليل مرة واحدة تمام المائة",
+            reference = "صحيح مسلم 597",
             defaultCount = salahHundredSteps.sumOf(DhikrStep::repetitions),
             categories = setOf(DhikrCategory.SALAH),
             steps = salahHundredSteps,
@@ -149,7 +149,7 @@ object DhikrCatalog {
             id = "bismillah_protection",
             title = "بسم الله الذي لا يضر مع اسمه شيء",
             text = "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ، وَهُوَ السَّمِيعُ الْعَلِيمُ.",
-            reference = "سنن أبي داود 5088؛ ثلاثًا صباحًا ومساءً؛ صححه الألباني",
+            reference = "سنن أبي داود 5088؛ صححه الألباني",
             defaultCount = 3,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING)
         ),
@@ -157,7 +157,7 @@ object DhikrCatalog {
             id = "subhanallah_bihamdih",
             title = "سبحان الله وبحمده",
             text = "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
-            reference = "صحيح مسلم 2692؛ مائة مرة صباحًا ومساءً",
+            reference = "صحيح مسلم 2692",
             defaultCount = 100,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING)
         ),
@@ -165,7 +165,7 @@ object DhikrCatalog {
             id = "surah_ikhlas",
             title = "سورة الإخلاص",
             text = "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\nقُلْ هُوَ اللَّهُ أَحَدٌ ۝1 اللَّهُ الصَّمَدُ ۝2 لَمْ يَلِدْ وَلَمْ يُولَدْ ۝3 وَلَمْ يَكُنْ لَهُ كُفُؤًا أَحَدٌ ۝4",
-            reference = SURAH_OCCASIONS.format("القرآن 112"),
+            reference = SURAH_SOURCES.format("القرآن 112"),
             defaultCount = 3,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionCountOverrides = mapOf(DhikrCategory.SALAH to 1),
@@ -175,7 +175,7 @@ object DhikrCatalog {
             id = "surah_falaq",
             title = "سورة الفلق",
             text = "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\nقُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝1 مِنْ شَرِّ مَا خَلَقَ ۝2 وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝3 وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝4 وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ ۝5",
-            reference = SURAH_OCCASIONS.format("القرآن 113"),
+            reference = SURAH_SOURCES.format("القرآن 113"),
             defaultCount = 3,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionCountOverrides = mapOf(DhikrCategory.SALAH to 1),
@@ -185,7 +185,7 @@ object DhikrCatalog {
             id = "surah_nas",
             title = "سورة الناس",
             text = "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\nقُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝1 مَلِكِ النَّاسِ ۝2 إِلَٰهِ النَّاسِ ۝3 مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝4 الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝5 مِنَ الْجِنَّةِ وَالنَّاسِ ۝6",
-            reference = SURAH_OCCASIONS.format("القرآن 114"),
+            reference = SURAH_SOURCES.format("القرآن 114"),
             defaultCount = 3,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionCountOverrides = mapOf(DhikrCategory.SALAH to 1),
@@ -203,18 +203,18 @@ object DhikrCatalog {
             id = "ayat_kursi",
             title = "آية الكرسي",
             text = "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۝253 لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهْوَ الْعَلِيُّ الْعَظِيمُ ۝254",
-            reference = "البقرة 253–254 (قالون، العد المدني الأخير)؛ عند النوم: صحيح البخاري 2311؛ صباحًا ومساءً: مستدرك الحاكم (حديث أبي بن كعب)؛ دبر كل صلاة: السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححهما الألباني",
+            reference = "البقرة 253–254 (قالون، العد المدني الأخير)؛ صحيح البخاري 2311؛ مستدرك الحاكم (حديث أبي بن كعب)؛ السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححهما الألباني",
             defaultCount = 1,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionReferences = mapOf(
-                DhikrCategory.SALAH to "البقرة 253–254 (قالون، العد المدني الأخير)؛ دبر كل صلاة: السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححه الألباني",
+                DhikrCategory.SALAH to "البقرة 253–254 (قالون، العد المدني الأخير)؛ السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححه الألباني",
             ),
         ),
         DhikrEntry(
             id = "sleep_tasbih",
             title = "التسبيح عند النوم",
             text = "سُبْحَانَ اللَّهِ",
-            reference = "صحيح مسلم 2727؛ التسبيح والتحميد ثلاثًا وثلاثين، والتكبير أربعًا وثلاثين",
+            reference = "صحيح مسلم 2727",
             defaultCount = 33,
             categories = setOf(DhikrCategory.SLEEP)
         ),
@@ -222,7 +222,7 @@ object DhikrCatalog {
             id = "sleep_tahmid",
             title = "التحميد عند النوم",
             text = "الْحَمْدُ لِلَّهِ",
-            reference = "صحيح مسلم 2727؛ ثلاثًا وثلاثين",
+            reference = "صحيح مسلم 2727",
             defaultCount = 33,
             categories = setOf(DhikrCategory.SLEEP)
         ),
@@ -230,7 +230,7 @@ object DhikrCatalog {
             id = "sleep_takbir",
             title = "التكبير عند النوم",
             text = "اللَّهُ أَكْبَرُ",
-            reference = "صحيح مسلم 2727؛ أربعًا وثلاثين",
+            reference = "صحيح مسلم 2727",
             defaultCount = 34,
             categories = setOf(DhikrCategory.SLEEP)
         ),
@@ -238,7 +238,7 @@ object DhikrCatalog {
             id = "sleep_submission",
             title = "دعاء الاضطجاع على الجانب الأيمن",
             text = "اللَّهُمَّ أَسْلَمْتُ وَجْهِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ.",
-            reference = "صحيح البخاري 6311؛ بعد الوضوء والاضطجاع على الشق الأيمن، ويجعله آخر ما يقول",
+            reference = "صحيح البخاري 6311",
             defaultCount = 1,
             categories = setOf(DhikrCategory.SLEEP)
         ),
@@ -270,7 +270,7 @@ object DhikrCatalog {
             id = "before_food",
             title = "عند بدء الطعام",
             text = "بِسْمِ اللَّهِ",
-            reference = "صحيح البخاري 5376؛ التسمية قبل الطعام",
+            reference = "صحيح البخاري 5376",
             defaultCount = 1,
             categories = setOf(DhikrCategory.DAILY)
         ),
@@ -286,7 +286,7 @@ object DhikrCatalog {
             id = "after_food_drink",
             title = "الحمد بعد الطعام والشراب",
             text = "الْحَمْدُ لِلَّهِ",
-            reference = "صحيح مسلم 2734؛ حمد الله بعد الأكل والشرب",
+            reference = "صحيح مسلم 2734",
             defaultCount = 1,
             categories = setOf(DhikrCategory.DAILY)
         ),
@@ -326,7 +326,7 @@ object DhikrCatalog {
             id = "travel",
             title = "دعاء السفر",
             text = "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ. سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ. اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى. اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ. اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ، وَالْخَلِيفَةُ فِي الْأَهْلِ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ، وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ.",
-            reference = "صحيح مسلم 1342؛ عند الاستواء على المركوب، ويتضمن الزخرف 12–13 (العد المدني الأخير)",
+            reference = "صحيح مسلم 1342؛ ويتضمن الزخرف 12–13 (العد المدني الأخير)",
             defaultCount = 1,
             categories = setOf(DhikrCategory.DAILY)
         ),
@@ -374,7 +374,7 @@ object DhikrCatalog {
             id = "evening_refuge",
             title = "الاستعاذة بكلمات الله التامات",
             text = "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ.",
-            reference = "مساءً: صحيح مسلم 2709؛ وعند نزول المنزل: صحيح مسلم 2708؛ دون تعيين عدد في الروايتين",
+            reference = "صحيح مسلم 2709، 2708",
             defaultCount = 1,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.DAILY)
         )
@@ -498,12 +498,15 @@ object DhikrCatalog {
     fun find(id: String): DhikrEntry? = byId[id]
 }
 
-/** The after-prayer clause of the three protective surahs' source. */
-private const val AFTER_EVERY_PRAYER = "دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)"
+/** The hadith for reading the three protective surahs after every prayer. */
+private const val AFTER_PRAYER_HADITH = "سنن أبي داود 1523 (صحيح)"
 
-/** Shared by the three protective surahs; `%s` is the surah reference. */
-private const val SURAH_OCCASIONS =
-    "%s؛ ثلاثًا صباحًا ومساءً: سنن أبي داود 5082 (حسن)؛ " + AFTER_EVERY_PRAYER + "؛ وعند النوم مع النفث في الكفين ومسح الجسد ثلاثًا: صحيح البخاري 5017"
+/**
+ * Shared by the three protective surahs; `%s` is the surah reference. The hadiths are those of the
+ * morning and evening, after the prayer, and bedtime, in that order.
+ */
+private const val SURAH_SOURCES =
+    "%s؛ سنن أبي داود 5082 (حسن)؛ " + AFTER_PRAYER_HADITH + "؛ صحيح البخاري 5017"
 
 /** The same surahs after the prayer, cited by name; `%s` is the surah's name. */
-private const val SURAH_AFTER_SALAH = "%s؛ " + AFTER_EVERY_PRAYER
+private const val SURAH_AFTER_SALAH = "%s؛ " + AFTER_PRAYER_HADITH

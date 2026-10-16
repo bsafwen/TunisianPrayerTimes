@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Fivefold - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#ECE7DB"/>
+  <path fill="#263F49" d="M55.1 25L81.6 44.3L62.8 55.4L59.8 47.1Z"/>
+  <path fill="#263F49" transform="rotate(72 54 54)" d="M55.1 25L81.6 44.3L62.8 55.4L59.8 47.1Z"/>
+  <path fill="#263F49" transform="rotate(144 54 54)" d="M55.1 25L81.6 44.3L62.8 55.4L59.8 47.1Z"/>
+  <path fill="#263F49" transform="rotate(216 54 54)" d="M55.1 25L81.6 44.3L62.8 55.4L59.8 47.1Z"/>
+  <path fill="#D05A36" transform="rotate(288 54 54)" d="M55.1 25L81.6 44.3L62.8 55.4L59.8 47.1Z"/>
+</svg>

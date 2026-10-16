@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Jannah Mihrab - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#153F3B"/>
+  <path fill="#C6E5CA" d="M54 23C62 33 78 39 78 53V70H69V53C69 45 61 41 54 34C47 41 39 45 39 53V70H30V53C30 39 46 33 54 23Z"/>
+  <path fill="#EBC77D" d="M43 48C52 48 56 53 54 63C45 63 41 58 43 48ZM65 45C67 54 63 60 56 60C54 52 57 47 65 45Z"/>
+  <path fill="#EBC77D" d="M35 74C43 70 50 71 57 74C64 77 69 76 75 72V79C67 83 61 83 54 79C47 75 42 76 38 79Z"/>
+</svg>

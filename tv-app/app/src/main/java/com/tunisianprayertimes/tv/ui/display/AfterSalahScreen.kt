@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.mosque.AdhkarSlide
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.theme.Amiri
+import com.tunisianprayertimes.tv.ui.theme.Mushaf
 import com.tunisianprayertimes.tv.ui.theme.Dots
 import com.tunisianprayertimes.tv.ui.theme.KhatamStar
 import com.tunisianprayertimes.tv.ui.theme.MedallionRule
@@ -65,7 +66,7 @@ fun AfterSalahAzkarScreen(slide: AdhkarSlide, index: Int, total: Int, sky: SkyCo
                 MedallionRule(450.dp, starSize = 23.dp, gap = 11.dp, double = true)
                 FittedText(
                     shown.value.text,
-                    midadStyle(44.sp, family = Amiri, lineHeight = 1.9f),
+                    midadStyle(44.sp, family = if (shown.value.mushaf) Mushaf else Amiri, lineHeight = 1.9f),
                     Modifier.weight(1f, fill = false),
                     maxWidth = 720.dp,
                 )

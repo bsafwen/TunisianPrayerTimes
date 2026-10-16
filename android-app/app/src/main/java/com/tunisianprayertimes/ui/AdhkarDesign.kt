@@ -37,6 +37,13 @@ private fun adhkarPaletteOf(scheme: ColorScheme) = AdhkarPalette(
 )
 internal val LocalAdhkarPalette = staticCompositionLocalOf { adhkarPaletteOf(lightColorScheme()) }
 internal val AdhkarReadingFont = FontFamily(Font(R.font.noto_naskh_arabic))
+/**
+ * Qur'an text in the app's mushaf spelling ([com.tunisianprayertimes.quran.QuranMushafText],
+ * [com.tunisianprayertimes.adhkar.MushafPassages]): Amiri Quran redrawn with the marks of the app's Qaloun mushaf
+ * (scripts/mushaf_font/build_font.py; SIL Open Font License): its wasl, eased hamza, small alif, waqf signs and
+ * verse frame.
+ */
+internal val QuranMushafFont = FontFamily(Font(R.font.mushaf_qaloun))
 private val AdhkarUiFont = FontFamily(Font(R.font.noto_sans_arabic), Font(R.font.noto_sans_arabic_semibold, FontWeight.SemiBold))
 private fun TextStyle.adhkarUi() = copy(fontFamily = AdhkarUiFont,
     lineHeight = 1.5.em,

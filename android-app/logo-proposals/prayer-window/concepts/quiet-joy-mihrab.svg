@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Quiet Joy Mihrab - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F3ECDE"/>
+  <path fill="#24594D" d="M27 59V49C27 36 40 29 54 23C68 29 81 36 81 49V54H73V49C73 41 65 36 54 31C43 36 35 41 35 49V59Z"/>
+  <path fill="#24594D" d="M31 64C40 70 51 72 62 68C69 65 75 61 78 58C80 56 82 58 81 61C77 73 66 80 54 80C42 80 32 73 28 66C26 63 28 62 31 64Z"/>
+  <circle cx="60" cy="45" r="7.5" fill="#D9A55E"/>
+</svg>

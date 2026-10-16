@@ -83,6 +83,7 @@ class PrayerWakeRepository(private val context: Context) {
         var skippedAlarmIdToClear: String? = null
         var scheduledMetadataAlarmIdToClear: String? = null
         var awakeCheckGroupAlarmIdToClear: String? = null
+        var disabledAlarmIdToRelease: String? = null
         context.prayerWakeDataStore.edit { preferences ->
             val current = decodePrayerWakeStore(preferences[prayerWakeStoreKey])
             val resolvedId = config.id.takeIf { id -> id.isNotBlank() }
@@ -113,6 +114,7 @@ class PrayerWakeRepository(private val context: Context) {
                 skippedAlarmIdToClear = resolvedId
             }
             if (!updatedConfig.enabled) {
+                disabledAlarmIdToRelease = resolvedId
                 awakeCheckEventIdsToCancel = buildSet {
                     add(wakeMainEventId(resolvedId))
                     val subAlarms = current.alarmFor(resolvedId)?.subAlarms.orEmpty() + updatedConfig.subAlarms
@@ -122,6 +124,8 @@ class PrayerWakeRepository(private val context: Context) {
             val updated = current.alarms.replaceOrAppend(updatedConfig)
             preferences[prayerWakeStoreKey] = encodePrayerWakeStore(PrayerWakeStore(alarms = updated))
         }
+        // Release this alarm's silence only after saving; other silence owners stay active.
+        disabledAlarmIdToRelease?.let { WakeAlarmScheduler.removeSilenceUntilAlarm(context, it) }
         // Awake checks use separate PendingIntents from the regular wake alarm schedule.
         skippedAlarmIdToClear?.let(WakeOccurrenceSkipRegistry::clearAlarm)
         scheduledMetadataAlarmIdToClear?.let { alarmId ->
@@ -170,10 +174,9 @@ class PrayerWakeRepository(private val context: Context) {
         var awakeCheckEventIdsToCancel = emptySet<String>()
         context.prayerWakeDataStore.edit { preferences ->
             val current = decodePrayerWakeStore(preferences[prayerWakeStoreKey])
-            // The expiry cleanup removes a completed one-off before the awake check of its last ring runs, and that
-            // check must still run (see AwakeCheckReceiver). Deleting any other alarm drops its pending checks.
+            // Deleting an alarm drops its pending checks. The expiry cleanup waits for a completed one-off's awake
+            // check to end before deleting it (WakeAlarmScheduler.hasAwakeCheckInProgress), so none is lost there.
             current.alarmFor(id)
-                ?.takeUnless { removed -> removed.isExpiredOneOffWakeAlarm(System.currentTimeMillis()) }
                 ?.let { removed ->
                     awakeCheckEventIdsToCancel = buildSet {
                         add(wakeMainEventId(id))

@@ -1,0 +1,20 @@
+{
+  "id": "sakina-salah",
+  "name": "Sakina Salah",
+  "tag": "Peace + prayer / one emblem",
+  "file": "concepts/sakina-salah.svg",
+  "summary": "Sakina's dove carries prayer in its wing: a folded prayer rug becomes part of the bird itself.",
+  "why": "The original dove keeps its gentle head and rounded body. Its raised wing becomes a folded prayer rug with a broad pointed niche cut through it. The prayer cue belongs to the silhouette, joining peace and salah in one emblem.",
+  "risk": "The rug-wing is intentionally abstract. The niche is clearest at launcher size, while the small icon still reads first as a dove.",
+  "key1": "The familiar dove",
+  "sub1": "Peace and quiet presence",
+  "key2": "A prayer rug as a wing",
+  "sub2": "Prayer within the same form",
+  "group": "combined",
+  "palette": {
+    "background": "#4F7096",
+    "ink": "#FFF6E7",
+    "sun": "#E4BB77",
+    "name": "SAKINA SALAH / DUSK BLUE + GOLD"
+  }
+}

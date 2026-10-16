@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wake_extra_add">إضافة تنبيه</string>
+    <string name="wake_extra_overview_hint">تنبيهات مرتبطة بوقت المنبه الرئيسي. اضغط على أي تنبيه لتعديله.</string>
+    <string name="wake_extra_empty_hint">أضف تنبيهًا قبل المنبه الرئيسي أو بعده، واختر الوقت والصوت لكل تنبيه.</string>
+    <string name="wake_extra_main_alarm">المنبه الرئيسي</string>
+    <string name="wake_extra_new_title">إضافة تنبيه</string>
+    <string name="wake_extra_edit_title">تعديل التنبيه</string>
+    <string name="wake_extra_save">حفظ التعديل</string>
+    <string name="wake_extra_cancel">إلغاء</string>
+    <string name="wake_extra_main_time">المنبه الرئيسي: %1$s</string>
+    <string name="wake_extra_when">موعد التنبيه</string>
+    <string name="wake_extra_quick_minutes">اختيار سريع بالدقائق</string>
+    <string name="wake_extra_minutes_label">عدد الدقائق</string>
+    <string name="wake_extra_minutes_range">من دقيقة واحدة إلى 180 دقيقة</string>
+    <string name="wake_extra_minutes_error">أدخل عددًا من 1 إلى 180</string>
+    <string name="wake_extra_time_invalid">أدخل عدد الدقائق لعرض وقت التنبيه</string>
+    <string name="wake_extra_sound_customize">تخصيص الصوت</string>
+</resources>

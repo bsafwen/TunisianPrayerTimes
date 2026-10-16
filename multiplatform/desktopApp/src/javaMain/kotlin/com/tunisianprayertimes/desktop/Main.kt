@@ -22,7 +22,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
@@ -33,6 +35,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.tunisianprayertimes.*
+import com.tunisianprayertimes.adhkar.MushafPassages
 import com.tunisianprayertimes.platform.*
 import com.tunisianprayertimes.ui.Strings
 import com.tunisianprayertimes.ui.theme.*
@@ -48,6 +51,9 @@ import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
+
+/** The app's mushaf font (resources/fonts, built by scripts/mushaf_font; SIL Open Font License). */
+private val MushafFont = FontFamily(Font("fonts/mushaf_qaloun.ttf"))
 
 /** Tray icon reference shared with the background scheduler for notifications. */
 private var globalTrayIcon: TrayIcon? = null
@@ -453,7 +459,8 @@ private fun IslamicHeader() {
             .padding(top = 14.dp, bottom = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "﷽", fontSize = 28.sp, color = Gold)
+        // The basmala as the app's Qaloon mushaf prints it, in the app's mushaf font.
+        Text(text = MushafPassages.text("basmala").orEmpty(), fontFamily = MushafFont, fontSize = 22.sp, color = Gold)
         Text(
             text = Strings.SUBTITLE,
             fontSize = 14.sp,

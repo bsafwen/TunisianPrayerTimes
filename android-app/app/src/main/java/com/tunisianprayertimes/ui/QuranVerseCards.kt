@@ -38,7 +38,10 @@ import kotlinx.coroutines.withContext
 /** The colour of a verse with a hifz point to keep in mind: a light tint and a dashed outline. */
 internal val QuranHifzViolet = androidx.compose.ui.graphics.Color(0xFF7E57C2)
 
-/** What a selected verse offers. [slipLabel] is «التصحيح» once the verse has a hifz point. */
+/**
+ * What a selected verse offers. «أخطأت» records a slip in it; once the verse has a point, «التصحيح» opens it. [onGrade],
+ * in «وضع المراجعة» on a verse whose check is due: the reader just recited it from memory, and answers here.
+ */
 @Composable
 internal fun QuranVerseCard(
     title: String,
@@ -54,6 +57,8 @@ internal fun QuranVerseCard(
     modifier: Modifier = Modifier,
     /** «مراجعة»: the verse covers itself again after this long; a line along the top counts it down. */
     hidesAfterMs: Long? = null,
+    onGrade: ((com.tunisianprayertimes.quran.hifz.HifzGrade) -> Unit)? = null,
+    onReview: (() -> Unit)? = null,
 ) {
     QuranFloatingCard(modifier.testTag("quran_verse_card")) {
         if (hidesAfterMs != null) QuranCountdownLine(title, hidesAfterMs, GreenPrimary.copy(alpha = 0.55f))
@@ -63,13 +68,31 @@ internal fun QuranVerseCard(
                 Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء التحديد", Modifier.size(18.dp), tint = TextMuted)
             }
         }
+        if (onGrade != null) Column(Modifier.fillMaxWidth().padding(horizontal = 14.dp).testTag("quran_verse_due")) {
+            Text("مراجعة اليوم · كيف قرأتها قبل كشفها؟", fontSize = 12.sp, color = QuranHifzViolet)
+            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                listOf(
+                    com.tunisianprayertimes.quran.hifz.HifzGrade.Held to "دون مساعدة",
+                    com.tunisianprayertimes.quran.hifz.HifzGrade.Hesitated to "بتردد أو تلميح",
+                    com.tunisianprayertimes.quran.hifz.HifzGrade.Again to "أخطأت أو نسيت",
+                ).forEach { (grade, label) ->
+                    OutlinedButton(
+                        onClick = { onGrade(grade) }, contentPadding = PaddingValues(horizontal = 6.dp, vertical = 4.dp),
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp),
+                    ) { Text(label, fontSize = 12.sp, maxLines = 2, textAlign = androidx.compose.ui.text.style.TextAlign.Center) }
+                }
+            }
+        }
+        if (onReview != null) OutlinedButton(onClick = onReview, modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp).testTag("quran_verse_review")) {
+            Text("اختبر هذا الموضع", fontSize = 13.sp)
+        }
         val actions: List<@Composable RowScope.() -> Unit> = listOf(
             { CardAction(R.drawable.ic_quran_headphones, "استمع", onListen, Modifier.testTag("quran_verse_listen")) },
             { CardAction(R.drawable.ic_quran_repeat, "كرّر", onRepeat, Modifier.testTag("quran_verse_repeat")) },
             {
                 if (hasPoint) CardAction(R.drawable.ic_quran_mark, "التصحيح", onPoint, Modifier.testTag("quran_verse_fix"), tint = QuranHifzViolet,
                     description = "التصحيح: الصواب في هذا الموضع")
-                else CardAction(R.drawable.ic_quran_slip, "موضع", onPoint, Modifier.testTag("quran_verse_point"), description = "سجّل موضعا للمراجعة")
+                else CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: سجّلها للمراجعة")
             },
             {
                 CardAction(
@@ -123,7 +146,7 @@ private fun RowScope.CardAction(
 private val CardActionLabelStyle = TextStyle(fontSize = 12.sp)
 
 /** Every label a verse card's action may show, to measure the widest. */
-private val CardActionLabels = listOf("استمع", "كرّر", "التصحيح", "موضع", "محفوظة", "علامة", "نسخ", "مشاركة")
+private val CardActionLabels = listOf("استمع", "كرّر", "التصحيح", "أخطأت", "محفوظة", "علامة", "نسخ", "مشاركة")
 
 private object QuranRealTime : MotionDurationScale {
     override val scaleFactor: Float get() = 1f

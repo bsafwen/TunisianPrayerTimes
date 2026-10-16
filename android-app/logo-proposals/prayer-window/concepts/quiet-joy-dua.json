@@ -1,0 +1,20 @@
+{
+  "id": "quiet-joy-dua",
+  "name": "Quiet Joy Dua",
+  "tag": "Prayer / hopeful supplication",
+  "file": "concepts/quiet-joy-dua.svg",
+  "summary": "Quiet Joy's welcoming curve becomes two gently cupped palms, holding an open space for dua and a touch of warmth.",
+  "why": "Two broad jade palms preserve the original mark's soft, uplifting silhouette while making the prayer gesture visible. Simple inward thumb turns suggest hands raised in dua without detailed fingers. The warm, slightly offset circle adds hope and quiet happiness without depicting a person.",
+  "risk": "It communicates supplication more clearly than scheduled salah. Cupped hands can also suggest care or generosity outside the app's context.",
+  "key1": "The cupped palms",
+  "sub1": "A gentle gesture of dua",
+  "key2": "The warm light",
+  "sub2": "Hope and quiet happiness",
+  "group": "quiet-joy-prayer",
+  "palette": {
+    "background": "#F3ECDE",
+    "ink": "#24594D",
+    "sun": "#D9A55E",
+    "name": "QUIET JOY DUA / IVORY + JADE + WARM GOLD"
+  }
+}

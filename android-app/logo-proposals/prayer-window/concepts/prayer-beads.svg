@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Prayer Beads - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#662F44"/>
+  <path fill="#EEA082" fill-rule="evenodd" d="M54 28A22 22 0 1 1 54 72A22 22 0 1 1 54 28ZM54 31A19 19 0 1 0 54 69A19 19 0 1 0 54 31Z"/>
+  <circle cx="54" cy="30" r="5.6" fill="#FFF3E2"/>
+  <circle cx="68.14" cy="35.86" r="5.6" fill="#FFF3E2"/>
+  <circle cx="74" cy="50" r="5.6" fill="#FFF3E2"/>
+  <circle cx="68.14" cy="64.14" r="5.6" fill="#FFF3E2"/>
+  <circle cx="54" cy="70" r="5.6" fill="#FFF3E2"/>
+  <circle cx="39.86" cy="64.14" r="5.6" fill="#FFF3E2"/>
+  <circle cx="34" cy="50" r="5.6" fill="#FFF3E2"/>
+  <circle cx="39.86" cy="35.86" r="5.6" fill="#FFF3E2"/>
+  <path fill="#EEA082" d="M52 74H56V77L61 83C59 84 57 84.6 55 84.6V79H53V84.6C51 84.6 49 84 47 83L52 77Z"/>
+</svg>

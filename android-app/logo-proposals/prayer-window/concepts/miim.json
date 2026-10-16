@@ -1,0 +1,20 @@
+{
+  "id": "miim",
+  "name": "Miim",
+  "tag": "Arabic monogram / prayer times",
+  "group": "creative",
+  "file": "concepts/miim.svg",
+  "summary": "A custom geometric م, the first letter of مواقيت. Arabic identity becomes the entire symbol.",
+  "why": "The compact head and descending stroke preserve the structure of an isolated Arabic miim. Broad geometry gives the letter a contemporary silhouette, while a gold face gives its head the feel of a folded plane. مواقيت connects the mark directly to prayer times.",
+  "risk": "It relies on recognition of the Arabic letter and does not illustrate the app's functions by itself.",
+  "key1": "The letter م",
+  "sub1": "From مواقيت, prayer times",
+  "key2": "A folded gold face",
+  "sub2": "A distinctive Arabic identity",
+  "palette": {
+    "background": "#253D32",
+    "ink": "#F8F0DA",
+    "sun": "#E2B45D",
+    "name": "MIIM / FOREST + WARM GOLD"
+  }
+}

@@ -572,6 +572,7 @@ class DashboardBackendImpl(
         val resource = when (name) {
             "readex-pro.ttf" -> com.tunisianprayertimes.tv.R.font.readex_pro
             "amiri.ttf" -> com.tunisianprayertimes.tv.R.font.amiri
+            "mushaf-qaloun.ttf" -> com.tunisianprayertimes.tv.R.font.mushaf_qaloun
             else -> return null
         }
         return runCatching { context.resources.openRawResource(resource).use { it.readBytes() } }.getOrNull()

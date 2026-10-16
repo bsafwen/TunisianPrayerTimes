@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.mosque.AdhkarSlide
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.theme.Amiri
+import com.tunisianprayertimes.tv.ui.theme.Mushaf
 import com.tunisianprayertimes.tv.ui.theme.FriezeEdge
 import com.tunisianprayertimes.tv.ui.theme.KhatamStar
 import com.tunisianprayertimes.tv.ui.theme.Midad
@@ -160,6 +161,8 @@ private class TickerType(val family: FontFamily, val lineHeight: Float, val size
  * the letters: closer lines than this put the second line's marks into the first one's.
  */
 private val SACRED = TickerType(Amiri, lineHeight = 1.75f, size = 25, minOneLine = 19, minTwoLines = 14)
+/** A Qur'an text a mosque put in the ticker, as the mushaf prints it, in its font. */
+private val MUSHAF = TickerType(Mushaf, lineHeight = 1.75f, size = 25, minOneLine = 19, minTwoLines = 14)
 /** A mosque's written announcement: its own words, in the interface's face. */
 private val ANNOUNCEMENT = TickerType(Readex, lineHeight = 1.3f, size = 20, minOneLine = 16, minTwoLines = 13)
 
@@ -195,7 +198,11 @@ private fun fitLine(measurer: TextMeasurer, density: Density, slide: AdhkarSlide
     val textMax = (available - source.width).coerceAtLeast(1)
 
     val announcement = MainScreenModel.isAnnouncement(slide)
-    val type = if (announcement) ANNOUNCEMENT else SACRED
+    val type = when {
+        announcement -> ANNOUNCEMENT
+        slide.mushaf -> MUSHAF
+        else -> SACRED
+    }
     val text = if (announcement) TvStrings.mosqueText(slide.text) else slide.text
     val style = (type.size downTo type.minOneLine).map(type::style).firstOrNull { layout(text, it, textMax).lineCount == 1 }
         ?: (type.minOneLine downTo type.minTwoLines).map(type::style).firstOrNull { style ->

@@ -1,0 +1,15 @@
+{
+  "id": "sakina",
+  "name": "Sakina",
+  "tag": "Peace / a sheltering wing",
+  "file": "concepts/sakina.svg",
+  "summary": "A dove settles into a broad protective wing. Soft blue and ivory turn the logo into a small moment of peace.",
+  "why": "The bird is drawn in a resting curve, with one generous wing folding toward its body. It expresses the emotional promise of quiet prayer without a mute sign or a building. The cool wing and warm body remain one strong silhouette.",
+  "risk": "A dove communicates peace more directly than Islam; it can also suggest a wellbeing or charitable organization.",
+  "key1": "The settled dove",
+  "sub1": "Peace and gentleness",
+  "key2": "A sheltering wing",
+  "sub2": "A protected moment",
+  "palette": {"background": "#4F7096", "ink": "#FFF6E7", "sun": "#BFD9D3", "name": "SAKINA / DUSK BLUE + IVORY"},
+  "group": "serenity"
+}

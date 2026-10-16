@@ -1,0 +1,19 @@
+{
+  "id": "verse-steps",
+  "name": "Verse Steps",
+  "tag": "Quran memorization",
+  "file": "concepts/verse-steps.svg",
+  "summary": "One continuous stepped ribbon and a next-passage marker turn Quran memorization into a compact modern identity.",
+  "why": "A single connected ribbon climbs through three levels. Its next square stays slightly ahead, suggesting learning a passage, reviewing it, and moving on. The geometry is deliberately bold enough for a small app icon.",
+  "risk": "It can read as progress or learning in general; Quran meaning comes from the app name.",
+  "key1": "Connected steps",
+  "sub1": "Learn, repeat, retain",
+  "key2": "The next square",
+  "sub2": "A passage to reach",
+  "palette": {
+    "background": "#DCF5ED",
+    "ink": "#087B68",
+    "sun": "#D14D42",
+    "name": "PALE MINT / JADE / VERMILION"
+  }
+}

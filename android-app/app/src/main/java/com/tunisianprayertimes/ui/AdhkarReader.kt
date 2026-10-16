@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.ui
 
+import android.os.Build
 import android.view.HapticFeedbackConstants
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -23,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -75,7 +77,7 @@ import kotlin.math.sign
     onEditCustom: () -> Unit, onDeleteCustom: () -> Unit,
     onAddToCollection: () -> Unit, onReorderCollection: () -> Unit,
     onTextSize: (Int) -> Unit, onHaptics: (Boolean) -> Unit, onVariant: (String) -> Unit,
-    onNewSession: () -> Unit, reminder: DhikrReminder?, reminderActionLabel: String, onReminder: () -> Unit,
+    reminder: DhikrReminder?, reminderActionLabel: String, onReminder: () -> Unit,
     onConfigureReminder: () -> Unit, onDeleteReminder: () -> Unit,
     skipReminderLabel: String?, onSkipReminder: () -> Unit,
     snackbar: SnackbarHostState,
@@ -100,7 +102,6 @@ import kotlin.math.sign
     var textSettings by remember { mutableStateOf(false) }
     var wordings by remember { mutableStateOf(false) }
     var showExplanation by remember(session.itemId) { mutableStateOf(false) }
-    var showNarration by remember(session.itemId) { mutableStateOf(false) }
     var menu by remember { mutableStateOf(false) }
     var confirmRemove by remember { mutableStateOf(false) }
     val lifecycle = LocalLifecycleOwner.current
@@ -109,7 +110,6 @@ import kotlin.math.sign
     val swipeFlickPx = with(LocalDensity.current) { 24.dp.toPx() }
     val swipeFlickVelocityPx = with(LocalDensity.current) { 400.dp.toPx() }
     val explanationRequester = remember(entry.id) { BringIntoViewRequester() }
-    val narrationRequester = remember(entry.id) { BringIntoViewRequester() }
     DisposableEffect(session.occurrenceId, lifecycle) {
         fun presence(active: Boolean) { DhikrReadingPresence.occurrenceId = if (active) session.occurrenceId else null }
         presence(lifecycle.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED))
@@ -125,9 +125,6 @@ import kotlin.math.sign
     }
     LaunchedEffect(showExplanation, entry.id) {
         if (showExplanation) explanationRequester.bringIntoView()
-    }
-    LaunchedEffect(showNarration, entry.id) {
-        if (showNarration) narrationRequester.bringIntoView()
     }
     val canNavigate = session.itemIds.size > 1
     val currentIndex = session.index.coerceIn(0, session.itemIds.lastIndex)
@@ -149,8 +146,22 @@ import kotlin.math.sign
     val canAdvanceOnTap = complete && canNavigate
     val canUndo = count > 0 && open
     val sessionDone = session.itemIds.count { it in session.skippedIds || (session.counts[it] ?: 0) >= state.target(session, it) }
-    val newSessionLabel = if (session.occurrenceId == null || state.isComplete(session) || !open)
-        (if (session.occurrenceId != null) "بدء قراءة مستقلة" else "بدء جلسة جديدة") else null
+    // The closing card thanks the reader once, when their own count or skip completes the reading with
+    // at least one dhikr read: a list only skipped through earns nothing yet, a reading already earned
+    // when it opens says nothing, nor does one undone and completed again.
+    val closing = closingKind(session, fromReminder = reminder != null)
+    val closingEarned = state.isComplete(session) &&
+        session.itemIds.any { (session.counts[it] ?: 0) >= state.target(session, it) }
+    var closingDue by rememberSaveable(session.id) { mutableStateOf(!closingEarned) }
+    var closingCard by rememberSaveable(session.id) { mutableStateOf(false) }
+    LaunchedEffect(session.id, closingEarned) {
+        if (!closingEarned || !closingDue) return@LaunchedEffect
+        closingDue = false
+        if (closing == null) return@LaunchedEffect
+        closingCard = true
+        if (state.countHaptics && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            view.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
+    }
     fun countOnce() {
         // A swiped-away dhikr stays current until the move lands; never count it unseen.
         if (!canCount || swipe.moving) return
@@ -320,13 +331,13 @@ import kotlin.math.sign
                             val neighbourTarget = state.target(session, neighbour.id)
                             DhikrPage(neighbour, readerSourceEntry(neighbour, neighbourTarget), neighbourCount,
                                 complete = neighbourCount >= neighbourTarget, skipped = neighbour.id in session.skippedIds,
-                                textSize = state.textSize, newSessionLabel = newSessionLabel,
+                                textSize = state.textSize,
                                 scroll = rememberScrollState(), scrollEnabled = false,
                                 modifier = Modifier.graphicsLayer {
                                     translationX = swipe.offset.floatValue - side * paneWidth.floatValue
                                 }.clearAndSetSemantics { })
                         }
-                        DhikrPage(entry, sourceEntry, count, complete, skipped, state.textSize, newSessionLabel, readingScroll,
+                        DhikrPage(entry, sourceEntry, count, complete, skipped, state.textSize, readingScroll,
                             // While swiping, the text's scroll must not pick the gesture up and cancel it midway.
                             scrollEnabled = !swipe.dragging,
                             modifier = Modifier.graphicsLayer { translationX = swipe.offset.floatValue },
@@ -340,9 +351,8 @@ import kotlin.math.sign
                             onActivate = ::activateDhikr,
                             onSources = { sources = true },
                             showExplanation = showExplanation, onToggleExplanation = { showExplanation = !showExplanation },
-                            showNarration = showNarration, onToggleNarration = { showNarration = !showNarration },
-                            explanationRequester = explanationRequester, narrationRequester = narrationRequester,
-                            onWordings = { wordings = true }, onNewSession = onNewSession)
+                            explanationRequester = explanationRequester,
+                            onWordings = { wordings = true })
                     }
 
                     // Counter: increment on the right, undo on the left, tap the ring to count too. Once the
@@ -459,7 +469,8 @@ import kotlin.math.sign
             text = { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("يبقى تقدّمك محفوظًا عند تغيير حجم النص.", color = p.muted)
                 Slider(value = state.textSize.toFloat(), onValueChange = { onTextSize(it.toInt()) }, valueRange = 24f..40f, steps = 7)
-                Text("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp, color = p.forest)
+                MushafPassage(MushafPassages.text("basmala").orEmpty(), "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", state.textSize.sp,
+                    (state.textSize * 1.9f).sp, p.forest)
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("الاهتزاز عند العدّ", Modifier.weight(1f), color = AdhkarHeading, fontSize = 14.sp)
                     AdhkarSwitch(state.countHaptics, onCheckedChange = onHaptics)
@@ -476,6 +487,9 @@ import kotlin.math.sign
                 Text("إزالة", color = MaterialTheme.colorScheme.error, fontWeight = FontWeight.SemiBold)
             } },
             dismissButton = { TextButton(onClick = { confirmRemove = false }) { Text("إلغاء") } })
+        if (closingCard && closing != null) DhikrClosingCard(closing,
+            readingTitle = reminder?.let { reminderTitle(it, state) }?.ifBlank { null } ?: entry.title,
+            onDone = { closingCard = false; onDismiss() }, onStay = { closingCard = false })
     }
 }
 
@@ -487,15 +501,18 @@ import kotlin.math.sign
 @Composable
 private fun DhikrPage(
     entry: DhikrEntry, sourceEntry: DhikrEntry, count: Int, complete: Boolean, skipped: Boolean, textSize: Int,
-    newSessionLabel: String?, scroll: ScrollState, scrollEnabled: Boolean = true, modifier: Modifier = Modifier,
+    scroll: ScrollState, scrollEnabled: Boolean = true, modifier: Modifier = Modifier,
     live: Boolean = false,
     activateLabel: String? = null, onActivate: () -> Unit = {}, onSources: () -> Unit = {},
     showExplanation: Boolean = false, onToggleExplanation: () -> Unit = {},
-    showNarration: Boolean = false, onToggleNarration: () -> Unit = {},
-    explanationRequester: BringIntoViewRequester? = null, narrationRequester: BringIntoViewRequester? = null,
-    onWordings: () -> Unit = {}, onNewSession: () -> Unit = {},
+    explanationRequester: BringIntoViewRequester? = null,
+    onWordings: () -> Unit = {},
 ) {
     val p = LocalAdhkarPalette.current
+    // The page names the works cited and nothing else; gradings and narrators stay in the source sheet.
+    val citations = remember(entry.custom, sourceEntry.reference) {
+        if (entry.custom) sourceEntry.reference else dhikrCitations(sourceEntry.reference)
+    }
     val activate = Modifier.clickable(enabled = live && activateLabel != null, onClickLabel = activateLabel, onClick = onActivate)
     // The same tap anywhere on the page, so a short dhikr is not a small target. Without a ripple: a
     // full-page flash on every count is too loud. The source, chips and buttons keep their own taps.
@@ -505,7 +522,12 @@ private fun DhikrPage(
         .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(Modifier.height(28.dp))
-        if (entry.steps.isEmpty()) {
+        // A Qur'an passage is typed as the mushaf prints it.
+        val mushaf = if (entry.custom) null else MushafPassages.text(entry.id)
+        if (entry.steps.isEmpty() && mushaf != null) {
+            MushafPassage(mushaf, entry.text, textSize.sp, (textSize * 1.9f).sp, p.forest,
+                Modifier.fillMaxWidth().then(activate).testTag("adhkar_reader_text"))
+        } else if (entry.steps.isEmpty()) {
             Text(entry.text, fontFamily = AdhkarReadingFont, fontSize = textSize.sp,
                 lineHeight = (textSize * 1.9f).sp, color = p.forest, textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyLarge.copy(textDirection = TextDirection.ContentOrRtl),
@@ -536,52 +558,45 @@ private fun DhikrPage(
             }
         }
         Spacer(Modifier.height(20.dp))
-        if (sourceEntry.reference.isNotBlank() || entry.custom) {
-            Text(sourceEntry.reference.ifBlank { "ذكر أضفته" }, color = p.muted, fontSize = 13.sp,
+        if (citations.isNotBlank() || entry.custom) {
+            Text(citations.ifBlank { "ذكر أضفته" }, color = p.muted, fontSize = 13.sp,
                 textAlign = TextAlign.Center, modifier = Modifier.clickable(enabled = live, onClick = onSources))
         }
         if (skipped && !complete) Text("تم تخطّي هذا الذكر", color = p.primary, fontSize = 12.sp,
             textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
-        if (sourceEntry.explanation.isNotBlank() || sourceEntry.narration.isNotBlank() || entry.variants.size > 1) {
+        val hasNarration = sourceEntry.narration.isNotBlank()
+        val hasExplanation = sourceEntry.explanation.isNotBlank()
+        if (hasNarration || hasExplanation || entry.variants.size > 1) {
             Spacer(Modifier.height(12.dp))
             // A chip that does not fit moves to the next line rather than squeezing its label.
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
                 verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (entry.variants.size > 1) ReaderToggleChip(R.drawable.ic_adhkar_list, "الصيغ الواردة",
                     "الصيغ", "adhkar_variants", live, onWordings)
-                if (sourceEntry.explanation.isNotBlank()) ReaderToggleChip(R.drawable.ic_adhkar_info, "الشرح",
+                if (hasNarration || hasExplanation) ReaderToggleChip(R.drawable.ic_adhkar_info, "الشرح",
                     if (showExplanation) "إخفاء الشرح" else "الشرح", "adhkar_explanation_toggle", live, onToggleExplanation)
-                if (sourceEntry.narration.isNotBlank()) ReaderToggleChip(R.drawable.ic_adhkar_bookmark, "الحديث",
-                    if (showNarration) "إخفاء الحديث" else "الحديث", "adhkar_narration_toggle", live, onToggleNarration)
             }
-            if (showNarration) {
+            if (showExplanation && (hasNarration || hasExplanation)) {
                 Spacer(Modifier.height(12.dp))
+                // The hadith the dhikr comes from opens the explanation, then what it means.
                 Surface(shape = RoundedCornerShape(18.dp), color = AdhkarSurface,
                     border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth()
-                        .then(narrationRequester?.let { Modifier.bringIntoViewRequester(it) } ?: Modifier)
-                        .testTag("adhkar_narration")) {
-                    Column(Modifier.fillMaxWidth().padding(18.dp)) {
-                        Text("نص الحديث", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 14.sp)
-                        Spacer(Modifier.height(8.dp))
-                        Text(sourceEntry.narration, Modifier.fillMaxWidth(), color = p.forest,
-                            fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
+                        .then(explanationRequester?.let { Modifier.bringIntoViewRequester(it) } ?: Modifier)
+                        .testTag("adhkar_explanation")) {
+                    Column(Modifier.fillMaxWidth().padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        if (hasNarration) {
+                            Text("نص الحديث", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                            Text(sourceEntry.narration, Modifier.fillMaxWidth(), color = p.forest,
+                                fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
+                        }
+                        if (hasExplanation) {
+                            if (hasNarration) Text("الشرح", Modifier.padding(top = 10.dp), color = AdhkarHeading,
+                                fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                            Text(sourceEntry.explanation, Modifier.fillMaxWidth(), color = p.forest,
+                                fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
+                        }
                     }
                 }
-            }
-            if (showExplanation) {
-                Spacer(Modifier.height(12.dp))
-                Surface(shape = RoundedCornerShape(18.dp), color = AdhkarSurface,
-                    border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth()
-                        .then(explanationRequester?.let { Modifier.bringIntoViewRequester(it) } ?: Modifier)) {
-                    Text(sourceEntry.explanation, Modifier.fillMaxWidth().padding(18.dp), color = p.forest,
-                        fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
-                }
-            }
-        }
-        if (newSessionLabel != null) {
-            Spacer(Modifier.height(8.dp))
-            TextButton(onClick = onNewSession, enabled = live, modifier = Modifier.testTag("adhkar_new_session")) {
-                Text(newSessionLabel, color = p.primary, fontSize = 13.sp)
             }
         }
         Spacer(Modifier.height(24.dp))
@@ -591,7 +606,7 @@ private fun DhikrPage(
 /** The daily tahlil read a hundred times cites the hundred-times hadith rather than the ten-times one. */
 private fun readerSourceEntry(entry: DhikrEntry, target: Int): DhikrEntry =
     if (target >= 100 && entry.id == TAHLIL_DAILY_ID) entry.copy(
-        reference = "صحيح البخاري 3293؛ صحيح مسلم 2691؛ مائة مرة في يوم",
+        reference = "صحيح البخاري 3293؛ صحيح مسلم 2691",
         explanation = "هذا التهليل إفراد لله بالعبادة والملك والحمد، وإقرار بعموم قدرته. من قاله مائة مرة في يوم كانت له عدل عشر رقاب، وكُتبت له مائة حسنة، ومُحيت عنه مائة سيئة، وكان في حرز من الشيطان حتى يمسي؛ ولم يأت أحد بأفضل مما جاء به إلا من عمل أكثر من ذلك.",
         narration = DhikrNarrations.tahlilHundred,
     ) else entry
@@ -648,7 +663,7 @@ private fun CounterButton(icon: Int, description: String, enabled: Boolean, size
     }
 }
 
-/** Pill under the dhikr that expands a detail card (explanation or source hadith) in place. */
+/** Pill under the dhikr that opens a sheet or expands the explanation card in place. */
 @Composable
 private fun ReaderToggleChip(icon: Int, description: String, label: String, tag: String, enabled: Boolean, onClick: () -> Unit) {
     val p = LocalAdhkarPalette.current

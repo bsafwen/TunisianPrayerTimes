@@ -106,7 +106,7 @@
 
   /** The first `max` characters of a text on one line, cut between words, with "…" when cut. */
   function shorten(text, max) {
-    var line = String(text || "").replace(/\s+/g, " ").trim();
+    var line = String(text || "").replace(/[ \t\n\v\f\r]+/g, " ").trim();
     if (line.length <= max) return line;
     var cut = line.slice(0, max);
     var space = cut.lastIndexOf(" ");
@@ -117,18 +117,19 @@
 
   var PAGE_CHARS = 260;
   var PAGE_LINES = 6;
-  var PAGE_BREAK = /(\u06DD[0-9\u0660-\u0669]+|[\u06D6\u06D7\u06DA\u060C,.\u061B;\u061F?!:\n]+)\s*/g;
-  var SPACES = /\s+/g;
+  var PAGE_BREAK = /(\u06DD[0-9\u0660-\u0669]+|[\u06D6\u06D7\u06DA\u060C,.\u061B;\u061F?!:\n]+)[ \t\n\v\f\r]*/g;
+  // Spaces as the TV (Java) sees them: a no-break space binds a verse frame to its word, so it is not one.
+  var SPACES = /[ \t\n\v\f\r]+/g;
 
   function paceMillis(text, count) {
-    var words = String(text).split(/\s+/).filter(function (word) { return word; }).length;
+    var words = String(text).split(/[ \t\n\v\f\r]+/).filter(function (word) { return word; }).length;
     var perRepetition = Math.max(2500, 450 * words);
     return Math.min(150000, Math.max(6000, perRepetition * Math.max(1, count)));
   }
 
   /** How much of a page text.slice(from, to) takes: its share of the characters or of the lines, whichever is more. */
   function fill(text, from, to) {
-    var lines = text.slice(from, to).replace(/\s+$/, "").split("\n").length;
+    var lines = text.slice(from, to).replace(/[ \t\n\v\f\r]+$/, "").split("\n").length;
     return Math.max((to - from) / PAGE_CHARS, lines / PAGE_LINES);
   }
 
@@ -211,7 +212,7 @@
 
   /** The ticker reads a text once, on one line, each page at least 12 s. */
   function tickerPagesMillis(text) {
-    return pages(text.replace(/\s+/g, " ")).reduce(function (sum, page) { return sum + Math.max(TICKER_MIN_SLIDE_MILLIS, paceMillis(page, 1)); }, 0);
+    return pages(text.replace(/[ \t\n\v\f\r]+/g, " ")).reduce(function (sum, page) { return sum + Math.max(TICKER_MIN_SLIDE_MILLIS, paceMillis(page, 1)); }, 0);
   }
 
   /** About how long the TV shows one item of a list, in milliseconds (in the ticker, the least). */
@@ -227,7 +228,7 @@
     if (key === "ticker") return number(entry.tickerMillis);
     var n = readCount(item.count);
     if (!countChanged(key, item) || isNaN(n)) return number(entry.afterSalahMillis);
-    return repeatedMillis(String(entry.text || ""), n);
+    return repeatedMillis(shownText(entry), n);
   }
 
   function listMillis(key, list) {
@@ -519,18 +520,26 @@
    * The whole text in a <details> (its first words as the summary); a short text as it is. Steps show
    * how many times each is said, except in the ticker, which reads each step once.
    */
+  /** The words the screen shows: a Qur'an passage as the mushaf prints it, any other text as the catalog words it. */
+  function shownText(entry) {
+    return String(typeof entry.mushafText === "string" ? entry.mushafText : (entry.text || ""));
+  }
+
   function textBlock(el, entry, key) {
-    var text = String(entry.text || "");
+    // A Qur'an passage is shown as the screen shows it: as the mushaf prints it, in the mushaf font.
+    var mushaf = typeof entry.mushafText === "string";
+    var text = shownText(entry);
+    var textClass = mushaf ? "dhikr-text mushaf" : "dhikr-text";
     var steps = Array.isArray(entry.steps) ? entry.steps : [];
     var preview = shorten(text, 90);
-    if (!steps.length && preview === text.replace(/\s+/g, " ").trim()) return el("p", { class: "dhikr-text", text: text });
+    if (!steps.length && preview === text.replace(/\s+/g, " ").trim()) return el("p", { class: textClass, text: text });
     var body = steps.length
       ? el("ol", { class: "dhikr-text" }, steps.map(function (step) {
         return el("li", { text: String(step.text) + (key === "ticker" ? "" : " × " + step.count) });
       }))
-      : el("p", { class: "dhikr-text", text: text });
+      : el("p", { class: textClass, text: text });
     var summary = el("summary", { text: preview });
-    var details = el("details", { class: "dhikr" }, summary, body);
+    var details = el("details", { class: mushaf ? "dhikr mushaf" : "dhikr" }, summary, body);
     details.addEventListener("toggle", function () { summary.textContent = details.open ? "إخفاء النص" : preview; });
     return details;
   }
@@ -696,7 +705,7 @@
         el("span", { class: "title", text: entry.title }),
         idLine(el, entry.id)),
       el("div", { class: "reference", text: sourceText(entry.reference) }),
-      el("p", { class: "dhikr-text", text: shorten(entry.text, 80) }),
+      el("p", { class: typeof entry.mushafText === "string" ? "dhikr-text mushaf" : "dhikr-text", text: shorten(shownText(entry), 80) }),
       el("div", { class: "row" }, el("button", {
         type: "button", text: present ? "في القائمة" : "إضافة", disabled: present,
         attrs: { "aria-label": present ? "«" + entry.title + "» في القائمة" : "إضافة «" + entry.title + "» إلى " + section.title },

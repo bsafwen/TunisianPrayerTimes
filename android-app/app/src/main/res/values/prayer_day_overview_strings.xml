@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prayer_day_overview_today">اليوم في لمحة</string>
+    <string name="prayer_day_overview_selected">اليوم المختار</string>
+    <string name="prayer_day_overview_now">الوقت الآن</string>
+    <string name="prayer_day_overview_24_hours">على مدار ٢٤ ساعة</string>
+    <string name="prayer_day_overview_daytime">النهار</string>
+    <string name="prayer_day_overview_nighttime">الليل</string>
+    <string name="prayer_day_overview_until">إلى %1$s</string>
+    <string name="prayer_day_overview_prayers">الصلوات</string>
+    <string name="prayer_day_overview_alarms">المنبّهات والتنبيهات</string>
+    <string name="prayer_day_overview_sunrise">الشروق</string>
+    <string name="prayer_day_overview_sunset">الغروب</string>
+    <string name="prayer_day_overview_next_alarm">التنبيه القادم</string>
+    <string name="prayer_day_overview_no_more_alarms">لا توجد تنبيهات أخرى اليوم</string>
+    <string name="prayer_day_overview_no_alarms">لا توجد منبّهات أو تنبيهات في هذا اليوم</string>
+    <string name="prayer_day_overview_details">تفاصيل اليوم</string>
+    <string name="prayer_day_overview_show_details">عرض تفاصيل اليوم</string>
+    <string name="prayer_day_overview_alarm_count">المنبّهات والتنبيهات: %1$d</string>
+    <string name="prayer_day_overview_night">أثلاث الليل</string>
+    <string name="prayer_day_overview_main_alarm">منبّه رئيسي</string>
+    <string name="prayer_day_overview_extra_alarm">تنبيه إضافي</string>
+    <string name="prayer_day_overview_edit_alarm">تعديل المنبّه</string>
+    <string name="prayer_day_overview_edit_named_alarm">تعديل %1$s، %2$s</string>
+    <string name="prayer_day_overview_dial_description">خريطة اليوم على مدار ٢٤ ساعة. الشروق %1$s، والغروب %2$s. مواعيد الصلاة: %3$s. عدد المنبّهات والتنبيهات: %4$d.</string>
+    <string name="prayer_day_overview_current_description">الوقت الآن %1$s.</string>
+    <string name="prayer_day_overview_sun_angle">زاوية الشمس الآن</string>
+    <string name="prayer_day_overview_sun_angle_description">زاوية الشمس الآن %1$s.</string>
+    <string name="prayer_day_overview_third_description">الثلث %1$s، من %2$s إلى %3$s</string>
+    <string name="prayer_day_overview_third_active_description">الثلث %1$s، من %2$s إلى %3$s، الآن</string>
+</resources>

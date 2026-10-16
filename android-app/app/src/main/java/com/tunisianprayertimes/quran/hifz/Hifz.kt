@@ -14,18 +14,24 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 
-/** What went wrong when reciting a verse from memory. */
+/**
+ * What went wrong when reciting a verse from memory, in the order a verse goes: its start, the verse as a whole, its
+ * middle, its end. [label] is how the reader says it when recording, [short] the one noun every list and title uses.
+ */
 enum class HifzKind(val key: String, val label: String, val short: String) {
-    /** Closed the verse with another verse's ending. */
-    Ending("ending", "ختمتها بخاتمة أخرى", "خاتمة"),
+    /** Could not recall how the verse begins. */
+    Start("start", "نسيتها", "نسيان الآية"),
     /** Went from the verse before straight to the one after. */
-    Skip("skip", "تخطيتها", "قفز"),
+    Skip("skip", "تخطيتها", "تخطٍّ"),
     /** Drifted into a similar verse, in the same chapter or another. */
     Similar("similar", "دخلت في آية شبيهة", "شبيهة"),
     /** A wrong word or vowel in the right verse. */
-    Word("word", "كلمة أو حركة", "كلمة"),
-    /** Could not recall how the verse begins. */
-    Start("start", "توقفت في أولها", "بداية");
+    Word("word", "أخطأت في كلمة أو حركة", "كلمة"),
+    /** Closed the verse with another verse's ending. */
+    Ending("ending", "ختمتها بخاتمة أخرى", "خاتمة");
+
+    /** The slip is told by the verse it was confused with: a different look-alike is a slip of its own. */
+    val lookAlike: Boolean get() = this == Ending || this == Similar
 
     companion object {
         fun of(key: String): HifzKind? = entries.firstOrNull { it.key == key }
@@ -150,14 +156,43 @@ data class HifzPoint(
     val repeatUntil: Long? = null,
     /** How many days the reader chose for [repeat]: shown again when the plan is changed. */
     val repeatDays: Int = 0,
+    /** Actual spaced checks, oldest first. Older notebooks have no inferred review history. */
+    val checks: List<HifzCheck> = emptyList(),
 ) {
     val mastered: Boolean get() = step >= HifzMasteredStep
     /** The first of [slipWords]: where a look-alike parts, or the first wrong word. */
     val word: Int? get() = slipWords.minOrNull()
     /** Brought back by [repeat] on [day]. */
     fun repeatsOn(day: Long): Boolean = !repeat.none && repeatUntil != null && day <= repeatUntil
-    /** Slipped three times: shown first, as «يحتاج عناية». */
-    val needsCare: Boolean get() = slips >= 3 && !mastered
+    /** Recent difficulty has priority until two unaided checks show recovery. */
+    val needsCare: Boolean
+        get() {
+            if (checks.isEmpty()) return slips >= 3 && !mastered
+            if (lastSlipAt > checks.last().at) return true
+            val recent = checks.filter { it.at >= lastSlipAt }.takeLast(3)
+            if (recent.size >= 2 && recent.takeLast(2).all { it.grade == HifzGrade.Held }) return false
+            return recent.any { it.grade == HifzGrade.Again } ||
+                recent.count { it.grade == HifzGrade.Hesitated } >= 2 ||
+                (recent.size < 2 && lastSlipAt > checks.first().at) ||
+                (checks.size < 2 && slips >= 3 && !mastered)
+        }
+    /** Feedback is about observed checks, never an invented history for an older notebook. */
+    val recentFeedback: String?
+        get() {
+            val last = checks.lastOrNull() ?: return null
+            if (lastSlipAt > last.at) return "سُجّل خطأ جديد بعد آخر مراجعة"
+            val sinceSlip = checks.filter { it.at >= lastSlipAt }
+            if (sinceSlip.size >= 2 && sinceSlip.takeLast(2).all { it.grade == HifzGrade.Held }) {
+                return "تذكرتها دون مساعدة في آخر مراجعتين"
+            }
+            return when (last.grade) {
+                HifzGrade.Held -> "آخر مراجعة: تذكرتها دون مساعدة"
+                HifzGrade.Hesitated -> "آخر مراجعة: تردد أو احتجت تلميحًا"
+                HifzGrade.Again -> "آخر مراجعة: تحتاج تدريبًا"
+            }
+        }
+    /** Checks still to pass, each «أتقنتها», before the point is held («ثبتت»). */
+    val checksToHold: Int get() = (HifzMasteredStep - step).coerceAtLeast(0)
     fun isDue(today: Long): Boolean = dueDay <= today
 }
 
@@ -168,6 +203,24 @@ const val HifzMasteredStep = 4
 
 /** How a check went: «أتقنتها», «ترددت», «ما زالت تحتاج تدريبا». */
 enum class HifzGrade { Held, Hesitated, Again }
+
+/** One scheduled recall result; immediate practice does not write a second check. */
+data class HifzCheck(val day: Long, val grade: HifzGrade, val at: Long)
+
+private const val HifzCheckLimit = 60
+
+/** Compact format shared by the notebook and the review's undo snapshot. */
+fun encodeHifzChecks(checks: List<HifzCheck>): String = checks.takeLast(HifzCheckLimit)
+    .joinToString(",") { "${it.day}:${it.grade.name}:${it.at}" }
+
+fun decodeHifzChecks(value: String?): List<HifzCheck> = value.orEmpty().split(',').mapNotNull { row ->
+    val parts = row.split(':')
+    if (parts.size != 3) return@mapNotNull null
+    val day = parts[0].toLongOrNull() ?: return@mapNotNull null
+    val grade = HifzGrade.entries.firstOrNull { it.name == parts[1] } ?: return@mapNotNull null
+    val at = parts[2].toLongOrNull() ?: return@mapNotNull null
+    HifzCheck(day, grade, at)
+}.takeLast(HifzCheckLimit)
 
 /**
  * The point after a review graded [grade] on [today]. A hesitation brings the point back in 2 days, one step
@@ -184,8 +237,9 @@ fun HifzPoint.graded(grade: HifzGrade, today: Long, now: Long): HifzPoint = when
         val back = (step - 1).coerceAtLeast(0)
         copy(step = back, dueDay = today + 2, masteredAt = masteredAt.takeIf { back >= HifzMasteredStep })
     }
-    HifzGrade.Again -> copy(step = 0, dueDay = today + 1, masteredAt = null)
-}
+    // Failing a check is a slip like any other: it counts towards «يحتاج عناية».
+    HifzGrade.Again -> copy(step = 0, dueDay = today + 1, masteredAt = null, slips = slips + 1, lastSlipAt = now)
+}.copy(checks = (checks + HifzCheck(today, grade, now)).takeLast(HifzCheckLimit))
 
 /** A «أتقنتها» now makes the point held («ثبتت»). */
 val HifzPoint.holdsNext: Boolean get() = step + 1 == HifzMasteredStep
@@ -203,9 +257,29 @@ fun List<HifzPoint>.dueToday(today: Long, limit: Int = Int.MAX_VALUE): List<Hifz
         .sortedWith(compareByDescending<HifzPoint> { it.needsCare }.thenBy { it.dueDay }.thenByDescending { it.slips }.thenBy { it.verse })
         .take(limit)
 
-/** A point on the same verse and of the same kind counts as the same slip again. */
-fun List<HifzPoint>.sameSlip(verse: QuranVerseReference, kind: HifzKind): HifzPoint? =
-    firstOrNull { it.verse == verse && it.kind == kind }
+/**
+ * A review's batch: the checks [dueToday] picks, then in mushaf order, as a hafiz goes through the pages. Two points
+ * on one verse are kept apart, since the second would come right after its own answer.
+ */
+fun List<HifzPoint>.reviewBatch(today: Long, limit: Int): List<HifzPoint> {
+    val batch = mutableListOf<HifzPoint>()
+    val later = mutableListOf<HifzPoint>()
+    dueToday(today, limit).sortedWith(compareBy<HifzPoint> { it.verse }.thenBy { it.id }).forEach { point ->
+        if (batch.lastOrNull()?.verse == point.verse) later += point else batch += point
+    }
+    later.forEach { point ->
+        val at = (0..batch.size).firstOrNull { i -> batch.getOrNull(i - 1)?.verse != point.verse && batch.getOrNull(i)?.verse != point.verse }
+        batch.add(at ?: batch.size, point)
+    }
+    return batch
+}
+
+/**
+ * The point a new record of [kind] on [verse] counts again: the same verse and kind, and for a look-alike the same
+ * other verse, or one not known on either side. A second look-alike is a slip of its own, never written over the first.
+ */
+fun List<HifzPoint>.sameSlip(verse: QuranVerseReference, kind: HifzKind, other: QuranVerseReference? = null): HifzPoint? =
+    firstOrNull { it.verse == verse && it.kind == kind && (!kind.lookAlike || other == null || it.other == null || it.other == other) }
 
 /** A reminder of a plan: [time] on [day], an epoch day, coming at [at] in wall-clock milliseconds. */
 data class HifzSlot(val day: Long, val time: HifzWhen, val at: Long)
@@ -298,7 +372,7 @@ object HifzRepository {
         now: Long = System.currentTimeMillis(),
     ): HifzPoint = change(context) { points ->
         val today = epochDay(now)
-        val existing = points.sameSlip(verse, kind)
+        val existing = points.sameSlip(verse, kind, other)
         val point = existing?.copy(
             other = other ?: existing.other,
             // A word slip adds the words missed this time; a look-alike keeps one parting word.
@@ -379,6 +453,7 @@ internal fun encodeHifzPoints(points: List<HifzPoint>): String = JSONObject()
             .put("createdAt", point.createdAt)
             .put("lastSlipAt", point.lastSlipAt)
             .put("headsUp", point.headsUp)
+            .put("checks", encodeHifzChecks(point.checks))
     }))
     .toString()
 
@@ -407,6 +482,7 @@ internal fun decodeHifzPoints(value: String): List<HifzPoint> {
             repeat = HifzRepeat.decode(row.optString("repeat")) ?: HifzRepeat.None,
             repeatUntil = if (row.has("repeatUntil")) row.getLong("repeatUntil") else null,
             repeatDays = row.optInt("repeatDays"),
+            checks = decodeHifzChecks(row.optString("checks")),
         )
     }
 }
@@ -414,8 +490,10 @@ internal fun decodeHifzPoints(value: String): List<HifzPoint> {
 /** How «المراجعة» behaves; kept in its own preferences. */
 data class HifzSettings(
     val reminder: Boolean = true,
-    /** Minutes after sunrise for the daily reminder. */
+    /** Minutes after sunrise for the daily reminder, unless it comes [reminderAfterFajr]. */
     val reminderAfterSunriseMin: Int = 45,
+    /** The daily reminder comes after Fajr, as the plans' «بعد الفجر», rather than after sunrise. */
+    val reminderAfterFajr: Boolean = false,
     /** Points in one review and in the morning reminder; more due points wait for the next review. */
     val perDay: Int = 5,
     val markers: Boolean = true,
@@ -441,6 +519,7 @@ data class HifzSettings(
             return HifzSettings(
                 reminder = prefs.getBoolean("reminder", true),
                 reminderAfterSunriseMin = prefs.getInt("reminder_offset", 45).takeIf { it in ReminderOffsets } ?: 45,
+                reminderAfterFajr = prefs.getBoolean("reminder_after_fajr", false),
                 perDay = prefs.getInt("per_day", 5).takeIf { it in PerDayChoices } ?: 5,
                 markers = prefs.getBoolean("markers", true),
                 headsUp = prefs.getBoolean("heads_up", true),
@@ -457,6 +536,7 @@ data class HifzSettings(
             context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
                 .putBoolean("reminder", settings.reminder)
                 .putInt("reminder_offset", settings.reminderAfterSunriseMin)
+                .putBoolean("reminder_after_fajr", settings.reminderAfterFajr)
                 .putInt("per_day", settings.perDay)
                 .putBoolean("markers", settings.markers)
                 .putBoolean("heads_up", settings.headsUp)

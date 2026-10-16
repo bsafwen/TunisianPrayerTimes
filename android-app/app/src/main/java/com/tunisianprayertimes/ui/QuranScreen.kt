@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.SystemClock
 import android.view.WindowManager
-import android.view.accessibility.AccessibilityManager
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
@@ -25,7 +24,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
-import androidx.compose.foundation.gestures.awaitLongPressOrCancellation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.ScrollableDefaults
@@ -100,6 +98,7 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranDivisions
 import com.tunisianprayertimes.quran.QuranDivisionsRepository
+import com.tunisianprayertimes.quran.QuranGoTo
 import com.tunisianprayertimes.quran.QuranHighlightRect
 import com.tunisianprayertimes.quran.QuranHighlightRepository
 import com.tunisianprayertimes.quran.QuranHighlights
@@ -125,6 +124,7 @@ import com.tunisianprayertimes.quran.quranPlayAction
 import com.tunisianprayertimes.quran.quranShareText
 import com.tunisianprayertimes.quran.withRecentSearch
 import com.tunisianprayertimes.quran.hifz.HifzGrade
+import com.tunisianprayertimes.quran.hifz.HifzLearning
 import com.tunisianprayertimes.quran.hifz.HifzKind
 import com.tunisianprayertimes.quran.hifz.HifzLookAlikes
 import com.tunisianprayertimes.quran.hifz.HifzLookAlikesCache
@@ -136,6 +136,8 @@ import com.tunisianprayertimes.quran.hifz.epochDay
 import com.tunisianprayertimes.quran.hifz.HifzRepository
 import com.tunisianprayertimes.quran.hifz.HifzSettings
 import com.tunisianprayertimes.quran.hifz.dueToday
+import com.tunisianprayertimes.quran.hifz.reviewBatch
+import com.tunisianprayertimes.quran.hifz.sameSlip
 import com.tunisianprayertimes.quran.hifz.graded
 import com.tunisianprayertimes.quran.hifz.hifzCue
 import com.tunisianprayertimes.quran.hifz.hifzDrill
@@ -168,7 +170,13 @@ import kotlin.math.sign
 // The first supplied scan includes Fatiha and Baqarah on printed page 2.
 internal const val QuranScanCount = 603
 /** «مراجعة»: the colour that covers a verse. */
-private val QuranReviewMask = Color(0xFFEFE8DA)
+internal val QuranReviewMask = Color(0xFFEFE8DA)
+/** The day's review: the cover of the verse asked, in the points' colour, so that the page says which verse it is. */
+private val QuranAskedMask = Color(0xFFE6DCF7)
+/** A verse recited faster than this leaves no time to read a heads-up: it comes a verse earlier. */
+private const val QuranShortVerseMs = 6_000L
+/** «قبل التسميع» offered for a hizb is noted by day under this plus its number, apart from the chapters' notes. */
+private const val BriefedHizbKey = 1000
 /** Half the height of a verse number on the scan (59 of 1450), with a little room. */
 private const val QuranNumberHalfHeight = 0.0233f
 /** «مراجعة»: how far around a verse number a tap still opens its verse, rather than erasing. */
@@ -186,8 +194,8 @@ private class QuranErased(val left: Float, val top: Float, val right: Float, val
 /** «مراجعة»: how wide the finger erases, on screen: about a word with the page fitted, a letter or two zoomed in. */
 private val QuranEraserWidth = 32.dp
 /** «مراجعة»: an erased piece stays clear this long after the finger left it, then fades back over [QuranEraseFadeMs]. */
-private const val QuranErasedMs = 1_700L
-private const val QuranEraseFadeMs = 300L
+private const val QuranErasedMs = 3_400L
+private const val QuranEraseFadeMs = 600L
 /** A verse «مراجعة» shows whole, opened by its number, a search or a bookmark, does not hide before this. */
 private const val QuranReviewMinMs = 1_500L
 /** Hosary's pace, for a verse whose timing is not read yet. */
@@ -265,18 +273,21 @@ fun QuranScreen(
         ) {
             val scans = pages
             when {
-                scans != null -> QuranReader(
-                    // The index knows which chapters each page holds.
-                    pages = catalog?.pages ?: scans,
-                    catalog = catalog,
-                    highlights = highlights,
-                    divisions = divisions,
-                    detailsFailed = detailsFailed,
-                    onRetry = { attempt++ },
-                    onPageSettled = { pageSettled = true },
-                    onHideNavigation = onHideNavigation,
-                    hifzRequest = hifzRequest,
-                )
+                // The hifz sheets show their verses on the mushaf too, once the verses' places are read.
+                scans != null -> CompositionLocalProvider(LocalQuranHighlights provides highlights) {
+                    QuranReader(
+                        // The index knows which chapters each page holds.
+                        pages = catalog?.pages ?: scans,
+                        catalog = catalog,
+                        highlights = highlights,
+                        divisions = divisions,
+                        detailsFailed = detailsFailed,
+                        onRetry = { attempt++ },
+                        onPageSettled = { pageSettled = true },
+                        onHideNavigation = onHideNavigation,
+                        hifzRequest = hifzRequest,
+                    )
+                }
                 failed -> Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
                     Text("تعذّر فتح المصحف", color = TextMuted)
                     TextButton(onClick = { attempt++ }) { Text("إعادة المحاولة") }
@@ -285,20 +296,6 @@ fun QuranScreen(
             }
         }
     }
-}
-
-/** TalkBack, or another service that explores by touch, is on: then nothing on the page can be erased by finger. */
-@Composable
-private fun rememberTouchExploration(): Boolean {
-    val context = LocalContext.current
-    val manager = remember(context) { context.getSystemService(AccessibilityManager::class.java) }
-    var exploring by remember(manager) { mutableStateOf(manager?.isTouchExplorationEnabled == true) }
-    DisposableEffect(manager) {
-        val listener = AccessibilityManager.TouchExplorationStateChangeListener { exploring = it }
-        manager?.addTouchExplorationStateChangeListener(listener)
-        onDispose { manager?.removeTouchExplorationStateChangeListener(listener) }
-    }
-    return exploring
 }
 
 /** The notebook's writes, one at a time and in the order they were asked for. */
@@ -368,7 +365,6 @@ private fun QuranReader(
     var recentSearches by remember { mutableStateOf(readRecentSearches(prefs)) }
     var zoomed by remember { mutableStateOf(false) }
     val page = pages[pager.currentPage]
-    val haptics = LocalHapticFeedback.current
     val clipboard = LocalClipboard.current
     val snackbar = remember { SnackbarHostState() }
     var tapHint by remember { mutableStateOf(!prefs.getBoolean("hint_tap_seen", false)) }
@@ -377,7 +373,7 @@ private fun QuranReader(
     var reviewEraserHint by remember { mutableStateOf(!prefs.getBoolean("hint_review_eraser_seen", false)) }
     var keepAwake by remember { mutableStateOf(prefs.getBoolean("keep_awake", true)) }
     /** «مراجعة»: every verse is covered; the finger erases the cover where it touches, and it comes back by itself. */
-    var reviewMode by remember { mutableStateOf(prefs.getBoolean("review_mode", false)) }
+    var reviewMode by rememberSaveable { mutableStateOf(prefs.getBoolean("review_mode", false)) }
     var nightOn by remember { mutableStateOf(prefs.getBoolean("night_on", false)) }
     var nightLevel by remember { mutableFloatStateOf(prefs.getFloat("night_level", 0.3f)) }
     // Read only by the keep-awake effect, outside composition: a touch must not recompose the reader.
@@ -406,7 +402,7 @@ private fun QuranReader(
      */
     // Pages not known yet, as the activity comes back, are taken as there: the sheet would only flash in and out.
     val reviewOnPage = panel == "hifzReview" && catalog != null && highlights != null && (media?.pagesReady ?: true) &&
-        !pageFillsWidth && !touchExploration
+        !pageFillsWidth && !touchExploration && density.fontScale <= 1.3f
     // The review on the page has the whole screen: no header, no player, no bottom bar.
     val focus = ((zoomed || focusChosen) && panel == null) || reviewOnPage
     val hifzPoints by HifzRepository.points.collectAsStateWithLifecycle()
@@ -418,7 +414,30 @@ private fun QuranReader(
         resumes++
         onPauseOrDispose { }
     }
-    val today = remember(hifzPoints, resumes) { todayEpochDay() }
+    val today by produceState(todayEpochDay(), resumes) {
+        while (true) {
+            value = todayEpochDay()
+            delay(60_000L)
+        }
+    }
+    var learning by remember { mutableStateOf(HifzLearning.read(context, todayEpochDay())) }
+    LaunchedEffect(resumes) { learning = HifzLearning.read(context, todayEpochDay()) }
+    fun updateLearning(change: (HifzLearning) -> HifzLearning) {
+        val next = change(learning.onDay(todayEpochDay()))
+        if (next != learning) {
+            learning = next.write(context)
+        }
+    }
+    LaunchedEffect(today, resumes, hifzPoints) {
+        if (HifzRepository.isLoaded) updateLearning { it.retain(HifzRepository.points.value.map { p -> p.id }.toSet()) }
+    }
+    val eligibleDueIds = hifzPoints.filter { it.isDue(today) && it.id !in learning.onDay(today).practised }.map { it.id }.toSet()
+    var passageDraft by rememberSaveable { mutableStateOf<String?>(null) }
+    val passage = remember(passageDraft) { HifzPassage.decode(passageDraft) }
+    var passagePriorMask by rememberSaveable { mutableStateOf(false) }
+    var passageRecorded by rememberSaveable { mutableStateOf<List<Long>>(emptyList()) }
+    var passageSummary by rememberSaveable { mutableStateOf(false) }
+    var passageFinished by rememberSaveable { mutableStateOf(false) }
     /** The verse whose heads-up the reader closed, so it stays closed for this pass. */
     var headsUpClosedDraft by rememberSaveable { mutableStateOf<String?>(null) }
     val headsUpClosed = remember(headsUpClosedDraft) { decodeVerse(headsUpClosedDraft) }
@@ -428,12 +447,43 @@ private fun QuranReader(
     /** «أوقف قبلها»: the verse to recite from memory once the one before it ends. */
     var recitePromptDraft by rememberSaveable { mutableStateOf<String?>(null) }
     val recitePrompt = remember(recitePromptDraft) { decodeVerse(recitePromptDraft) }
+    /** «أكمل» at the turn: the point's verse is heard now, against what the reader recited. */
+    var turnHeardDraft by rememberSaveable { mutableStateOf<String?>(null) }
+    val turnHeard = remember(turnHeardDraft) { decodeVerse(turnHeardDraft) }
+    /** Once it is heard: «هل قرأت الآية 47 صحيحة؟». */
+    var turnResultDraft by rememberSaveable { mutableStateOf<String?>(null) }
+    val turnResult = remember(turnResultDraft) { decodeVerse(turnResultDraft) }
     /** The day's review, fixed when it opens so grading does not reorder it. */
     var reviewIds by rememberSaveable { mutableStateOf<List<Long>>(emptyList()) }
     /** Each review opened starts over from its first point. */
     var reviewSession by rememberSaveable { mutableIntStateOf(0) }
+    var reviewStartedDay by rememberSaveable { mutableLongStateOf(todayEpochDay()) }
+    /** «أعد ما أخطأت فيه»: the review asks again what was failed, and changes no schedule. */
+    var reviewPractice by rememberSaveable { mutableStateOf(false) }
+    /** The day's answers in its reviews ended, «day:tally»: the day's next review adds to them. */
+    var reviewDayDraft by rememberSaveable { mutableStateOf<String?>(null) }
+    fun reviewDayTally(): HifzTally = reviewDayDraft?.split(':', limit = 2)
+        ?.takeIf { it.size == 2 && it[0] == todayEpochDay().toString() }?.let { HifzTally.decode(it[1]) } ?: run {
+            val day = todayEpochDay()
+            val points = HifzRepository.points.value
+            val checks = points.mapNotNull { it.checks.firstOrNull { check -> check.day == day } }
+            HifzTally(
+                held = checks.count { it.grade == HifzGrade.Held },
+                hesitated = checks.count { it.grade == HifzGrade.Hesitated },
+                again = checks.count { it.grade == HifzGrade.Again },
+                heldNow = points.count { it.mastered && it.masteredAt?.let { at -> epochDay(at) == day } == true },
+            )
+        }
     /** The review's place and answers, whichever way it shows. */
-    val reviewState = rememberSaveable(reviewSession, saver = HifzReviewState.Saver) { HifzReviewState() }
+    val reviewState = rememberSaveable(reviewSession, saver = HifzReviewState.Saver) {
+        HifzReviewState(practice = reviewPractice, earlier = if (reviewPractice) HifzTally() else reviewDayTally(),
+            pendingPracticeIds = learning.pending, exposedVerses = learning.onDay(todayEpochDay()).exposed)
+    }
+    var practiceUndoBefore by rememberSaveable(reviewSession) { mutableStateOf<Map<Long, Boolean>>(emptyMap()) }
+    /** The answers of the review in view count for the day's next one; a practice changes nothing. */
+    fun keepReviewDay() {
+        if (panel == "hifzReview" && !reviewState.practice) reviewDayDraft = "${todayEpochDay()}:${reviewState.day.encode()}"
+    }
     val reviewQueue = remember(reviewIds, hifzPoints) { reviewIds.mapNotNull { id -> hifzPoints.firstOrNull { it.id == id } } }
     val reviewIndex = reviewState.index(reviewQueue)
     val reviewPoint = if (panel == "hifzReview") reviewQueue.getOrNull(reviewIndex) else null
@@ -447,15 +497,22 @@ private fun QuranReader(
     val reviewRevealed = reviewState.revealed(reviewPoint)
     val reviewPages = remember(catalog, reviewVerse) { reviewVerse?.let { catalog?.pagesForVerse(it.surah, it.ayah) }.orEmpty() }
     /** The verses of the points still to come in this review: covered wherever they are, so none is seen before it is asked. */
-    val reviewUpcoming = remember(panel, reviewQueue, reviewIndex, reviewVerse) {
-        if (panel != "hifzReview") emptySet() else reviewQueue.drop(reviewIndex + 1).map { it.verse }.toSet() - setOfNotNull(reviewVerse)
+    val reviewUpcoming = remember(panel, reviewQueue, reviewIndex, reviewVerse, hifzPoints, today) {
+        if (panel != "hifzReview") emptySet() else
+            (reviewQueue.drop(reviewIndex + 1).map { it.verse } + hifzPoints.filter { it.isDue(today) }.map { it.verse }).toSet() - setOfNotNull(reviewVerse)
     }
-    val reviewStillDue = remember(hifzPoints, today) { hifzPoints.count { it.isDue(today) } }
-    val reviewNextCheckIn = remember(hifzPoints, today) { hifzPoints.minOfOrNull { it.dueDay }?.minus(today) }
+    val reviewStillDue = eligibleDueIds.size
+    val reviewNextCheckIn = remember(hifzPoints, today, learning.practised) {
+        hifzPoints.minOfOrNull { if (it.id in learning.onDay(today).practised && it.isDue(today)) today + 1 else it.dueDay }?.minus(today)
+    }
     /** The page the reader was on when the review opened: the review on the page turns back to it at the end. */
     var reviewFromPage by rememberSaveable { mutableStateOf<Int?>(null) }
     /** A fix opened over the review or the notebook, which stay where they were. */
     var stackedFix by rememberSaveable { mutableStateOf<Long?>(null) }
+    /** A point corrected from its fix, over it: «تعديل الموضع». */
+    var editingPoint by rememberSaveable { mutableStateOf<Long?>(null) }
+    /** A change made over the notebook, said at its top with its undo, since a snackbar would be under it. */
+    var hifzNotice by remember { mutableStateOf<HifzNotice?>(null) }
     /** The audio playing was started by the review card in view: it stops when the card is left. */
     var reviewAudio by rememberSaveable { mutableStateOf(false) }
     /** The review played something, so the listener's own place is put back when it ends. */
@@ -464,6 +521,8 @@ private fun QuranReader(
     var reviewReturn by rememberSaveable { mutableStateOf<String?>(null) }
     /** A page reached by a jump that plays or shows a verse: no «قبل التسميع» over it. */
     var skipBriefingPage by remember { mutableStateOf<Int?>(null) }
+    /** The hizb whose «قبل التسميع» is offered over the page, once a day, rather than opened over it. */
+    var briefingOffer by rememberSaveable { mutableStateOf<Int?>(null) }
     /**
      * The review asks to recite aloud: a recitation under way pauses, and its place is kept, so that whatever the
      * review plays, the listener finds it again when the review ends. A second review keeps the first place.
@@ -507,12 +566,16 @@ private fun QuranReader(
     fun hosaryMs(verse: QuranVerseReference): Long = hosaryTimings?.getOrNull(verse.surah - 1)?.timings?.getOrNull(verse.ayah - 1)
         ?.takeIf { it.ayah == verse.ayah }?.let { it.endMs - it.startMs }
         ?: ((catalog?.verse(verse)?.let { v -> hifzWords(v.text).keys.sumOf { it.length } } ?: 40) * QuranMsPerLetter)
+    /** «مراجعة»: the verse opened, covered again; its card stays, so that «أخطأت» or an answer is no race. */
+    var recoveredDraft by remember { mutableStateOf<String?>(null) }
+    val recovered = remember(recoveredDraft) { decodeVerse(recoveredDraft) }
     // «مراجعة»: a verse shown whole is covered again once Hosary would have recited it.
     LaunchedEffect(selection, reviewMode, hosaryTimings) {
+        recoveredDraft = null
         val verse = selection ?: return@LaunchedEffect
         if (!reviewMode) return@LaunchedEffect
         delay(hosaryMs(verse).coerceAtLeast(QuranReviewMinMs))
-        if (selectionDraft == encodeVerse(verse)) selectionDraft = null
+        if (selectionDraft == encodeVerse(verse)) recoveredDraft = encodeVerse(verse)
     }
     /**
      * Set below, once the review's audio helpers exist: a reminder tapped during a review ends it first, turning back
@@ -529,12 +592,21 @@ private fun QuranReader(
         // A new review takes the page over without turning back in between, and still comes back to the page the
         // reader left for the first one.
         val from = reviewFromPage ?: pager.currentPage
-        val due = if (action == "hifz_review") HifzRepository.points.value.dueToday(todayEpochDay(), hifzSettings.perDay).map { it.id } else emptyList()
+        val due = if (action == "hifz_review") HifzRepository.points.value
+            .filter { it.id !in learning.onDay(todayEpochDay()).practised }
+            .reviewBatch(todayEpochDay(), hifzSettings.perDay).map { it.id } else emptyList()
         if (panel == "hifzReview") endReviewNow[0]?.invoke(due.isEmpty())
         stackedFix = null
         when (action) {
             "hifz_review" -> {
                 HifzReminder.clearDigest(context)
+                if (passage != null) {
+                    passageDraft = null
+                    passageSummary = false
+                    reviewMode = passagePriorMask
+                }
+                reviewPractice = false
+                reviewStartedDay = todayEpochDay()
                 reviewSession++
                 reviewIds = due
                 panel = if (reviewIds.isEmpty()) "hifz" else "hifzReview"
@@ -580,17 +652,42 @@ private fun QuranReader(
             (verses.firstOrNull { it.ayah > 0 && it.pages.first() == page.number } ?: verses.firstOrNull { it.ayah > 0 })?.reference
         }
     }
+    /** «قبل التسميع» for the page in view: its hizb, or its chapter while the ahzab are not read; with its name. */
+    fun briefingScope(): Pair<String, String?> {
+        val top = pageTop?.reference
+        val hizb = top?.let { divisions?.thumnOf(it)?.hizb }
+        return when {
+            hizb != null -> "h$hizb" to "الحزب $hizb"
+            top != null -> "s${top.surah}" to surahName(top.surah)
+            else -> "0" to null
+        }
+    }
+    // The offer goes with the hizb it was made for.
+    LaunchedEffect(pageTop, divisions) {
+        val offered = briefingOffer ?: return@LaunchedEffect
+        if (pageTop?.let { divisions?.thumnOf(it.reference)?.hizb } != offered) briefingOffer = null
+    }
     val sessionVerse = playback.surah?.let { s -> (playback.ayah ?: playback.gapAfter)?.takeIf { it > 0 }?.let { QuranVerseReference(s, it) } }
     val sessionOnPage = sessionVerse != null && catalog?.pagesForVerse(sessionVerse.surah, sessionVerse.ayah)?.contains(page.number) == true
     val hasSession = playback.surah != null
-    // The verse after the one recited has a point: a heads-up, from which a stop before it can be asked for.
-    // With «توقف قبل الموضع» on, the playback service stops before every point by itself, also with the screen off.
-    val headsUpPoint = sessionVerse?.takeIf { hifzSettings.headsUp && playback.playing && playback.playlist == null }
-        ?.let { v -> QuranVerseReference(v.surah, v.ayah + 1) }
-        ?.takeIf { next -> playback.repeat?.contains(next) != false }
-        ?.let { next -> pointsByVerse[next]?.firstOrNull { p -> p.headsUp } }
-        ?.takeIf { it.verse != headsUpClosed && it.verse != recitePrompt }
+    // The verse after the one recited has a point: a heads-up asks it, and a stop before it can be asked for. It comes a
+    // verse earlier when the verse before the point is short, and stays while the point's own verse is recited, to check
+    // it against. With «توقف قبل الموضع» on, the playback service stops before every point by itself, also with the
+    // screen off, and the card only asks.
+    val stopsItself = hifzSettings.stopBefore && listening.verseTimes == 0
+    val headsUpPoint = sessionVerse?.takeIf { (hifzSettings.headsUp || stopsItself) && playback.playing && playback.playlist == null }?.let { v ->
+        fun pointAt(ayah: Int) = QuranVerseReference(v.surah, ayah).takeIf { at -> playback.repeat?.contains(at) != false }
+            ?.let { at -> pointsByVerse[at]?.firstOrNull { p -> p.headsUp } }
+        val nextIsShort = track?.takeIf { it.number == v.surah }?.let { t ->
+            val start = t.startOf(v.ayah + 1)
+            val end = t.endOf(v.ayah + 1)
+            start != null && end != null && end - start < QuranShortVerseMs
+        } == true
+        pointAt(v.ayah + 1) ?: pointAt(v.ayah + 2)?.takeIf { nextIsShort } ?: pointAt(v.ayah)
+    }?.takeIf { it.verse != headsUpClosed && it.verse != recitePrompt }
     val headsUp = remember(headsUpPoint, catalog) { headsUpPoint?.let { p -> catalog?.let { hifzFix(it, p) } } }
+    /** The point's own verse is recited now: the card shows what to check it against. */
+    val headsUpDuring = headsUpPoint != null && headsUpPoint.verse == sessionVerse
     /** The stop that a point arms: after the verse before it. */
     fun stopAfter(before: QuranVerseReference) = QuranSleep(QuranSleep.Kind.Verse, before)
     /** Stops after [before] so that the reader recites [point] from memory first. */
@@ -623,10 +720,13 @@ private fun QuranReader(
     // heads-up card when the verse before is heard again from its start.
     LaunchedEffect(sessionVerse, hasSession, playback.playing, playback.repeat, playback.playlist, track, listeningSleep == null) {
         fun left(before: QuranVerseReference) = (!hasSession && sessionSeen) || (sessionVerse != null && sessionVerse != before)
+        // A stop asked a verse early waits through the verse before the one it follows.
+        fun leftArmed(before: QuranVerseReference) = (!hasSession && sessionSeen) ||
+            (sessionVerse != null && !(sessionVerse.surah == before.surah && sessionVerse.ayah in before.ayah - 1..before.ayah))
         var armed = armedBefore
         var prompt = recitePrompt
         // Into the point or elsewhere, a repetition that no longer reaches the point, or a drill: the turn is over.
-        if (armed != null && (left(armed) || playback.playlist != null || (prompt != null && playback.repeat?.contains(prompt) == false))) {
+        if (armed != null && (leftArmed(armed) || playback.playlist != null || (prompt != null && playback.repeat?.contains(prompt) == false))) {
             val sleep = QuranAudioController.listening.value.sleep
             if (sleep == stopAfter(armed)) QuranAudioController.updateListening(context) { it.copy(sleep = null) }
             armedDraft = null
@@ -634,8 +734,11 @@ private fun QuranReader(
             armed = null
             prompt = null
         }
-        // A heads-up closed for this pass comes back on the next one.
-        headsUpClosed?.let { closed -> if (left(QuranVerseReference(closed.surah, closed.ayah - 1))) headsUpClosedDraft = null }
+        // A heads-up closed for this pass comes back on the next one, once the recitation is past its point.
+        headsUpClosed?.let { closed ->
+            val near = sessionVerse != null && sessionVerse.surah == closed.surah && sessionVerse.ayah in closed.ayah - 2..closed.ayah
+            if ((!hasSession && sessionSeen) || (sessionVerse != null && !near)) headsUpClosedDraft = null
+        }
         val before = sessionVerse ?: return@LaunchedEffect
         val end = track?.takeIf { it.number == before.surah }?.endOf(before.ayah)
         val position = QuranAudioController.state.value.positionMs
@@ -647,6 +750,26 @@ private fun QuranReader(
     }
     // At the turn the prompt is in the dock, which the expanded player covers.
     LaunchedEffect(turnPoint) { if (turnPoint != null) expanded = false }
+    // The point's verse heard after the reader's turn: once it ends, the reader says how their recitation went.
+    LaunchedEffect(sessionVerse, playback.playing, hasSession) {
+        val heard = turnHeard ?: return@LaunchedEffect
+        val v = sessionVerse
+        val endedOnIt = !playback.playing && v == heard &&
+            track?.takeIf { it.number == heard.surah }?.endOf(heard.ayah)?.let { QuranAudioController.state.value.positionMs >= it - 300L } == true
+        when {
+            (v != null && v.surah == heard.surah && v.ayah == heard.ayah + 1) || endedOnIt -> {
+                turnHeardDraft = null
+                turnResultDraft = encodeVerse(heard)
+            }
+            // Elsewhere, or over: no question about a verse not heard.
+            (!hasSession && sessionSeen) || (v != null && (v.surah != heard.surah || v.ayah !in heard.ayah - 1..heard.ayah)) -> turnHeardDraft = null
+        }
+    }
+    LaunchedEffect(turnResult) {
+        if (turnResult == null) return@LaunchedEffect
+        delay(15_000L)
+        turnResultDraft = null
+    }
     // A recitation that ended elsewhere (the notification, a headset) closes the player with it.
     LaunchedEffect(hasSession) { if (!hasSession) expanded = false }
     val playAction = quranPlayAction(
@@ -675,13 +798,16 @@ private fun QuranReader(
             // Not over a jump made to play or to show a verse, nor over a recitation: the reader asked for that.
             val jumped = skipBriefingPage == it
             skipBriefingPage = null
-            if (index != null && hifzSettings.briefing && panel == null && !jumped && !QuranAudioController.state.value.playing) {
+            // Offered over the page, never opened over it, and not while the verses are hidden: «قبل التسميع» would show
+            // what the reader is about to recite.
+            if (index != null && hifzSettings.briefing && panel == null && !jumped && !reviewMode && !QuranAudioController.state.value.playing) {
                 val day = todayEpochDay()
-                val opened = index.versesOnPage(it + 1).filter { v -> v.ayah == 1 }.map { v -> v.surah }
-                    .firstOrNull { s -> HifzRepository.points.value.any { p -> p.verse.surah == s && !p.mastered } && !HifzSettings.briefedToday(context, s, day) }
-                if (opened != null) {
-                    HifzSettings.markBriefed(context, opened, day)
-                    panel = "hifzBriefing:$opened"
+                val parts = divisions
+                val hizb = index.versesOnPage(it + 1).firstOrNull { v -> v.ayah > 0 }?.reference?.let { v -> parts?.thumnOf(v)?.hizb }
+                if (hizb != null && !HifzSettings.briefedToday(context, BriefedHizbKey + hizb, day) &&
+                    HifzRepository.points.value.any { p -> !p.mastered && parts?.thumnOf(p.verse)?.hizb == hizb }) {
+                    HifzSettings.markBriefed(context, BriefedHizbKey + hizb, day)
+                    briefingOffer = hizb
                 }
             }
             libraryRevision++
@@ -823,8 +949,29 @@ private fun QuranReader(
     /** «وضع المراجعة», from the eye in the bar or from the «المراجعة» sheet. */
     fun setVersesHidden(on: Boolean) {
         reviewMode = on
-        prefs.edit().putBoolean("review_mode", on).apply()
+        if (passage == null) prefs.edit().putBoolean("review_mode", on).apply()
         selectionDraft = null
+    }
+    fun startReciting(chosen: HifzPassage) {
+        starter.cancel()
+        QuranAudioController.pause(context)
+        clearTransient()
+        if (passage == null) passagePriorMask = reviewMode
+        passageDraft = chosen.encode()
+        passageRecorded = emptyList()
+        passageSummary = false
+        passageFinished = false
+        reviewMode = true
+        focusChosen = false
+        panel = null
+        catalog?.pagesForVerse(chosen.from.surah, chosen.from.ayah)?.firstOrNull()?.let { goToPage(it, brief = false) }
+    }
+    fun endPassage() {
+        passageDraft = null
+        passageSummary = false
+        reviewMode = passagePriorMask
+        selectionDraft = null
+        panel = "hifz"
     }
     fun stopWithUndo() {
         val before = QuranAudioController.state.value
@@ -942,49 +1089,91 @@ private fun QuranReader(
             HifzReminder.refresh(context)
         }
     }
+    /** [home]: recorded from the notebook, which opens again with the record said at its top. */
     fun recordSlip(
         verse: QuranVerseReference, kind: HifzKind, other: QuranVerseReference?, slipWords: Set<Int>, bothWays: Boolean, hafs: Boolean,
-        repeat: HifzRepeat, days: Int,
+        repeat: HifzRepeat, days: Int, home: Boolean = false,
     ) {
-        panel = null
+        val pendingBefore = learning.pending
+        panel = if (home) "hifz" else null
         selectionDraft = null
-        val before = HifzRepository.points.value.firstOrNull { it.verse == verse && it.kind == kind }
+        val known = HifzRepository.points.value
+        // The same slip: same verse and kind, and for a look-alike the same other verse; another look-alike is its own.
+        val before = known.sameSlip(verse, kind, other)
+        // «في الاتجاهين»: the look-alike is a slip too, checked on its own, unless it already is one.
+        val mirror = other?.takeIf { bothWays && kind.lookAlike && known.sameSlip(it, kind, verse) == null }
         scope.launch {
-            val (saved, first) = withContext(Dispatchers.IO) {
+            val recorded = withContext(Dispatchers.IO) {
                 val now = System.currentTimeMillis()
                 val first = HifzReminder.firstRepeatSlot(context, repeat, now)
                 val until = if (repeat.none) null else HifzReminder.repeatUntil(first, days, now)
-                HifzRepository.record(context, verse, kind, other, slipWords, bothWays, hafs, repeat, until, if (until == null) 0 else days)
-                    .also { HifzReminder.refresh(context) } to first
+                val saved = HifzRepository.record(context, verse, kind, other, slipWords, bothWays, hafs, repeat, until, if (until == null) 0 else days, now)
+                val mirrored = mirror?.let {
+                    HifzRepository.record(context, it, kind, verse, emptySet(), true, hafs, repeat, until, if (until == null) 0 else days, now + 1)
+                }
+                HifzReminder.refresh(context)
+                Triple(saved, first, mirrored)
             }
+            val (saved, first, mirrored) = recorded
+            if (passage != null && saved.verse in passage) passageRecorded = (passageRecorded + saved.id + listOfNotNull(mirrored?.id)).distinct()
+            updateLearning { state -> state.pending(saved.id, true).let { next -> mirrored?.let { next.pending(it.id, true) } ?: next } }
             // Says when the slip comes back: the first reminder chosen, or the next morning's.
             val next = when {
                 first != null -> "أول تذكير ${HifzReminder.slotLabel(first, todayEpochDay())}"
                 repeat.none && hifzSettings.reminder -> "تذكير الصباح غدًا"
                 else -> null
             }
-            val result = snackbar.showSnackbar(QuranSnackbar(
+            val message = listOfNotNull(
                 // A slip recorded again says so: its point starts its checks over.
-                message = listOfNotNull(
-                    if (before != null) "سُجّل مرة أخرى" else "حُفظ في دفتر المواضع",
-                    "${surahName(verse.surah)} ${verse.ayah}",
-                    before?.let { hifzSlipsLabel(saved.slips) },
-                    next,
-                ).joinToString(" · "),
+                if (before != null) "سُجّل مرة أخرى" else "حُفظ في دفتر المواضع",
+                "${surahName(verse.surah)} ${verse.ayah}",
+                before?.let { hifzSlipsLabel(saved.slips) },
+                mirrored?.let { "والشبيهة ${if (it.verse.surah == verse.surah) "${it.verse.ayah}" else "${surahName(it.verse.surah)} ${it.verse.ayah}"}" },
+                next,
+            ).joinToString(" · ")
+            val undo = {
+                updateLearning { state -> state.pending(saved.id, saved.id in pendingBefore).let { next -> mirrored?.let { next.pending(it.id, it.id in pendingBefore) } ?: next } }
+                passageRecorded = passageRecorded - saved.id - listOfNotNull(mirrored?.id).toSet()
+                saveHifz {
+                    HifzRepository.restore(context, before, removeId = saved.id)
+                    mirrored?.let { HifzRepository.delete(context, it.id) }
+                }
+            }
+            if (home) {
+                hifzNotice = HifzNotice(message, undo = { undo(); hifzNotice = null }, again = { panel = "hifz:record" }, practice = { stackedFix = saved.id })
+                return@launch
+            }
+            val result = snackbar.showSnackbar(QuranSnackbar(
+                message = message,
                 // The undo stays while the right wording is heard.
                 actionLabel = "تراجع",
-                secondLabel = "استمع للصواب",
-                onSecond = { catalog?.let { index -> playList(hifzListen(index, listOf(saved), hifzSettings.copy(drillGap = 0f))) } },
+                secondLabel = "تدرّب الآن",
+                onSecond = { panel = "hifzFix:${saved.id}" },
                 dismissOnSecond = false,
             ))
-            if (result == SnackbarResult.ActionPerformed) saveHifz { HifzRepository.restore(context, before, removeId = saved.id) }
+            if (result == SnackbarResult.ActionPerformed) undo()
         }
     }
     fun openFix(point: HifzPoint) { panel = "hifzFix:${point.id}" }
-    fun startReview() {
+    /**
+     * The day's review: the checks due, in mushaf order; [first], tapped in the notebook before its check, asked first.
+     * [again]: «أعد ما أخطأت فيه», those points asked once more, no schedule changed. The day's answers add up.
+     */
+    fun startReview(first: HifzPoint? = null, again: List<Long>? = null) {
         HifzReminder.clearDigest(context)
+        keepReviewDay()
+        val batch = again ?: run {
+            val due = HifzRepository.points.value.filter { it.id !in learning.onDay(todayEpochDay()).practised }.reviewBatch(todayEpochDay(), hifzSettings.perDay)
+            // A point on the first one's verse waits for the end: it would come right after its own answer.
+            val ordered = if (first == null) due
+                else listOf(first) + due.filter { it.id != first.id }.take(hifzSettings.perDay - 1).sortedBy { it.verse == first.verse }
+            ordered.map { it.id }
+        }
+        if (passage != null) endPassage()
+        reviewPractice = again != null
+        reviewStartedDay = todayEpochDay()
         reviewSession++
-        reviewIds = HifzRepository.points.value.dueToday(todayEpochDay(), hifzSettings.perDay).map { it.id }
+        reviewIds = batch
         panel = "hifzReview"
         keepPlaceForReview()
         // «تابع المراجعة» keeps the page the first review left.
@@ -1014,6 +1203,7 @@ private fun QuranReader(
      */
     fun endReview(backToPage: Boolean = true) {
         leaveReviewCard()
+        keepReviewDay()
         panel = null
         reviewIds = emptyList()
         stackedFix = null
@@ -1050,6 +1240,17 @@ private fun QuranReader(
 
     endReviewNow[0] = { back -> endReview(backToPage = back) }
     val reviewActions = object : HifzReviewActions {
+        override fun pendingPracticeChanged(id: Long, pending: Boolean) { updateLearning { it.pending(id, pending) } }
+        override fun exposed(verses: Set<QuranVerseReference>) { updateLearning { it.expose(verses) } }
+        override fun practiceResult(point: HifzPoint, grade: HifzGrade?) {
+            if (grade == null) {
+                practiceUndoBefore[point.id]?.let { before -> updateLearning { it.practised(point.id, before) } }
+                practiceUndoBefore = practiceUndoBefore - point.id
+            } else {
+                if (point.id !in practiceUndoBefore) practiceUndoBefore = practiceUndoBefore + (point.id to (point.id in learning.onDay(todayEpochDay()).practised))
+                updateLearning { it.practised(point.id, true) }
+            }
+        }
         override fun grade(point: HifzPoint, grade: HifzGrade) {
             val now = System.currentTimeMillis()
             saveHifz {
@@ -1059,16 +1260,96 @@ private fun QuranReader(
         }
         override fun undo(given: HifzGiven) = saveHifz {
             HifzRepository.points.value.firstOrNull { it.id == given.id }?.let { now ->
-                HifzRepository.update(context, now.copy(step = given.step, dueDay = given.dueDay, masteredAt = given.masteredAt))
+                HifzRepository.update(
+                    context,
+                    now.copy(step = given.step, dueDay = given.dueDay, masteredAt = given.masteredAt, slips = given.slips, lastSlipAt = given.lastSlipAt, checks = given.checks),
+                )
             }
         }
-        override fun listenBefore(point: HifzPoint) { catalog?.let { reviewPlay(hifzCue(it, point, hifzSettings)) } }
-        override fun listen(point: HifzPoint) { catalog?.let { reviewPlay(hifzListen(it, listOf(point), hifzSettings.copy(drillGap = 0f))) } }
-        override fun drill(point: HifzPoint) { catalog?.let { reviewPlay(hifzDrill(it, point, hifzSettings)) } }
+        override fun listenBefore(point: HifzPoint) {
+            catalog?.let { reviewPlay(hifzCue(it, point, hifzSettings)) }
+        }
+        override fun listen(point: HifzPoint) {
+            catalog?.let { reviewPlay(hifzListen(it, listOf(point), hifzSettings.copy(drillGap = 0f))) }
+        }
+        override fun drill(point: HifzPoint) {
+            catalog?.let { reviewPlay(hifzDrill(it, point, hifzSettings)) }
+        }
         override fun fix(point: HifzPoint) { stackedFix = point.id }
         override fun leaveCard() = leaveReviewCard()
         override fun more() = startReview()
+        override fun retry(ids: List<Long>) = startReview(again = ids)
+        override fun listenTo(ids: List<Long>) {
+            // The checks are done: the review gives way to the reader, whose page follows the recitation, and the
+            // listener's own place comes back once it ends.
+            val index = catalog ?: return
+            val points = HifzRepository.points.value.filter { it.id in ids }
+            endReview(backToPage = false)
+            playList(hifzListen(index, points, hifzSettings))
+        }
         override fun dismiss() = endReview()
+    }
+    LaunchedEffect(learning.exposed, reviewSession) {
+        if (panel == "hifzReview") reviewState.syncExposed(learning.onDay(todayEpochDay()).exposed, reviewActions)
+        else reviewState.seedExposed(learning.onDay(todayEpochDay()).exposed)
+    }
+    LaunchedEffect(today) {
+        if (reviewStartedDay != today) {
+            val wasReviewing = panel == "hifzReview"
+            if (wasReviewing) endReview()
+            reviewDayDraft = null
+            reviewIds = emptyList()
+            reviewSession++
+            reviewStartedDay = today
+            if (wasReviewing) {
+                panel = "hifz"
+                hifzNotice = HifzNotice("بدأ يوم جديد؛ حُفظ تدريبك المتبقي وجُدّدت قائمة المراجعة.", undo = null)
+            }
+        }
+    }
+    // Count heard audio, not a download request that might never start playing.
+    LaunchedEffect(playback.playing, playback.surah, playback.ayah, panel) {
+        val heard = if (playback.playing) playback.surah?.let { surah -> playback.ayah?.takeIf { it > 0 }?.let { QuranVerseReference(surah, it) } } else null
+        if (heard != null) {
+            if (panel == "hifzReview") reviewState.noteExposed(setOf(heard), reviewActions)
+            else updateLearning { it.expose(setOf(heard)) }
+        }
+    }
+    // Visible reader answers and recording previews also count as study for today's checks.
+    LaunchedEffect(selection, panel, pager.settledPage, reviewMode, passageDraft, pagesReady) {
+        if (panel == null && catalog != null && pagesReady) {
+            val visible = if (reviewMode) setOfNotNull(selection) else catalog.versesOnPage(pager.settledPage + 1)
+                .filter { it.ayah > 0 }.map { it.reference }.toSet()
+            if (visible.isNotEmpty()) updateLearning { it.expose(visible) }
+        }
+        if (panel?.startsWith("hifzRecord:") == true) {
+            val parts = panel!!.removePrefix("hifzRecord:").split(':')
+            val surah = parts.getOrNull(0)?.toIntOrNull()
+            val ayah = parts.getOrNull(1)?.toIntOrNull()
+            if (surah != null && ayah != null) updateLearning { it.expose(setOf(QuranVerseReference(surah, ayah))) }
+        }
+    }
+    // A comparison is visible even when the same verse remains covered in the background reader.
+    LaunchedEffect(reviewPoint?.id, reviewRevealed, stackedFix, panel) {
+        val correction = stackedFix?.let { id -> hifzPoints.firstOrNull { it.id == id } }
+            ?: panel?.removePrefix("hifzFix:")?.toLongOrNull()?.let { id -> hifzPoints.firstOrNull { it.id == id } }
+            ?: reviewPoint?.takeIf { reviewRevealed }
+        val visible = buildSet {
+            correction?.let { point ->
+                add(point.verse)
+                point.other?.let(::add)
+                if (point.kind == HifzKind.Start || point.kind == HifzKind.Skip) {
+                    if (point.verse.ayah > 1) add(QuranVerseReference(point.verse.surah, point.verse.ayah - 1))
+                    add(QuranVerseReference(point.verse.surah, point.verse.ayah + 1))
+                }
+            }
+            reviewPoint?.takeIf { !reviewRevealed && (it.kind == HifzKind.Start || it.kind == HifzKind.Skip) && it.verse.ayah > 1 }
+                ?.let { add(QuranVerseReference(it.verse.surah, it.verse.ayah - 1)) }
+        }
+        if (visible.isNotEmpty()) {
+            if (panel == "hifzReview") reviewState.noteExposed(visible, reviewActions)
+            else updateLearning { it.expose(visible) }
+        }
     }
     // The card follows its point in the queue, wherever the review shows.
     LaunchedEffect(panel == "hifzReview", reviewSession, reviewPoint?.id, reviewState.index(reviewQueue)) {
@@ -1088,6 +1369,8 @@ private fun QuranReader(
         // A review closed some other way than its end, as when another panel replaces one brought back with the app:
         // its page to turn back to must not be the next review's.
         if (panel != "hifzReview") reviewFromPage = null
+        // The notebook's note goes with it.
+        if (panel != "hifz") hifzNotice = null
     }
     LaunchedEffect(reviewOnPage) {
         // Nothing of the reader's own stays over the page the review uses.
@@ -1096,9 +1379,11 @@ private fun QuranReader(
         clearTransient()
     }
 
+    /** Points still to hold: those held keep their checks, but no longer mark the page. */
     val pageHifzCount = remember(catalog, page.number, pointsByVerse) {
-        catalog?.versesOnPage(page.number)?.count { it.ayah > 0 && it.reference in pointsByVerse } ?: 0
+        catalog?.versesOnPage(page.number)?.count { it.ayah > 0 && pointsByVerse[it.reference]?.any { p -> !p.mastered } == true } ?: 0
     }
+    val hifzDueAll = eligibleDueIds.size
     /** What the hifz sheets show of the recitation, since they cover the player: a hifz playlist, or anything playing. */
     val hifzAudio: HifzAudio? = playback.playlist.let { list ->
         when {
@@ -1108,7 +1393,7 @@ private fun QuranReader(
             }
             list != null -> HifzAudio(
                 title = if (list.items.size > 1) "${list.title} · ${playback.playlistIndex + 1} من ${list.items.size}" else list.title,
-                line = playback.gapAfter?.let { "دورك: ردّد الآية $it" } ?: list.labels.getOrNull(playback.playlistIndex).orEmpty(),
+                line = playback.gapAfter?.let { hifzGapLine(list, playback.playlistIndex, it) } ?: list.labels.getOrNull(playback.playlistIndex).orEmpty(),
                 playing = playback.playing || playback.loading,
             )
             // The listener's own recitation, paused or not, while a service holds it: kept, never stopped from a sheet.
@@ -1119,6 +1404,9 @@ private fun QuranReader(
             else -> null
         }
     }
+    // Resolve nullable audio before the composition-local content lambda captures it.
+    val activeHifzAudio = hifzAudio?.let { audio -> if (audio.finished) null else audio }
+    val reviewHifzAudio = hifzAudio?.let { audio -> if (reviewAudio || audio.playing) audio else null }
     val hifzAudioControls = remember(context, starter) {
         HifzAudioControls(
             pause = { QuranAudioController.pause(context) },
@@ -1146,19 +1434,67 @@ private fun QuranReader(
                 repeat, until, if (until == null) 0 else hifzSettings.newRepeatDays, now)
         }
     }
+    /** Audio-assisted turns are practice; scheduled checks use the shared recall flow. */
+    fun answerTurn(verse: QuranVerseReference, right: Boolean) {
+        turnResultDraft = null
+        val points = pointsByVerse[verse].orEmpty()
+        if (!right && points.size != 1) {
+            panel = "hifzRecord:${verse.surah}:${verse.ayah}"
+            return
+        }
+        if (points.isEmpty()) return
+        val before = learning.onDay(todayEpochDay())
+        updateLearning { state -> points.fold(state.expose(setOf(verse))) { next, point -> next.pending(point.id, !right).practised(point.id, true) } }
+        scope.launch {
+            val result = snackbar.showSnackbar(QuranSnackbar(
+                message = if (right) "استرجعتها بعد الاستماع · تبقى المراجعة في موعدها" else "أُضيفت إلى التدريب · تبقى المراجعة في موعدها",
+                actionLabel = "تراجع", secondLabel = "تدرّب الآن".takeIf { !right }, onSecond = { startReview(again = points.map { it.id }) },
+                duration = SnackbarDuration.Long,
+            ))
+            if (result == SnackbarResult.ActionPerformed) updateLearning { state ->
+                points.fold(state) { next, point -> next.pending(point.id, point.id in before.pending).practised(point.id, point.id in before.practised) }
+            }
+        }
+    }
+    /** «حفظتها» in a reminder's list: those points' reminders stop; their checks go on. */
+    fun stopReminders(points: List<HifzPoint>) {
+        saveHifz {
+            points.forEach { p ->
+                HifzRepository.points.value.firstOrNull { it.id == p.id }?.let { HifzRepository.update(context, it.copy(repeat = HifzRepeat.None, repeatUntil = null, repeatDays = 0)) }
+            }
+        }
+        scope.launch {
+            val text = if (points.size == 1) "توقف تذكير ${surahName(points[0].verse.surah)} ${points[0].verse.ayah} · تبقى في مراجعاتك"
+                else "توقفت تذكيرات ${quranPointsLabel(points.size)} · تبقى في مراجعاتك"
+            val result = snackbar.showSnackbar(text, actionLabel = "تراجع", duration = SnackbarDuration.Long)
+            if (result == SnackbarResult.ActionPerformed) saveHifz { points.forEach { HifzRepository.restore(context, it) } }
+        }
+    }
     val hifzScope = QuranReaderScope(
         context = context,
         save = ::saveHifz,
         play = { list, review -> if (review) reviewPlay(list) else playList(list) },
+        playBehind = { list -> playList(list, follow = false) },
+        recall = { point ->
+            starter.cancel()
+            stackedFix = null
+            startReview(again = listOf(point.id))
+        },
+        edit = { point -> editingPoint = point.id },
+        openSettings = { stackedFix = null; panel = "hifzSettings" },
+        notice = { hifzNotice = it },
         settings = { hifzSettings },
         undo = { message, action ->
             scope.launch {
                 if (snackbar.showSnackbar(message, actionLabel = "تراجع", duration = SnackbarDuration.Short) == SnackbarResult.ActionPerformed) action()
             }
         },
-        audio = hifzAudio?.takeIf { !it.finished },
+        audio = activeHifzAudio,
         audioControls = hifzAudioControls,
-        slipAgain = ::slipAgain,
+        slipAgain = { point -> updateLearning { it.pending(point.id, true) }; slipAgain(point) },
+        pendingPractice = learning.pending,
+        practisedToday = learning.onDay(today).practised,
+        restoreLearning = { id, pending, practised -> updateLearning { it.pending(id, pending).practised(id, practised) } },
         recordOther = { verse ->
             val home = panel == "hifz"
             stackedFix = null
@@ -1219,9 +1555,17 @@ private fun QuranReader(
             focusChosen -> focusChosen = false
         }
     }
-    // The review on the page ends with Back, as its sheet does; a zoomed page first comes back whole.
-    BackHandler(enabled = reviewOnPage) { endReview() }
+    // The review on the page stops with Back, as its sheet does: what was answered shows first, and a second Back leaves.
+    BackHandler(enabled = reviewOnPage) { reviewState.requestEnd(reviewQueue, reviewActions) }
+    BackHandler(enabled = passage != null && panel == null && !passageSummary) {
+        passageFinished = false
+        passageSummary = true
+    }
 
+    CompositionLocalProvider(LocalQuranExposure provides { exposed ->
+        if (panel == "hifzReview") reviewState.noteExposed(exposed, reviewActions)
+        else updateLearning { it.expose(exposed) }
+    }) {
     Box(
         Modifier.fillMaxSize().pointerInput(Unit) {
             // Any touch keeps the screen awake for a while; nothing is consumed here.
@@ -1245,6 +1589,12 @@ private fun QuranReader(
                             quranPageLabel(page.number),
                             pageTop?.let { divisions?.thumnOf(it.reference)?.hizb }?.let { "الحزب $it" },
                         ).joinToString(" · "),
+                        // Where the full one does not fit: the page's number alone, never a hizb cut off.
+                        compactSubtitle = listOfNotNull(
+                            "${page.number}",
+                            pageTop?.let { divisions?.thumnOf(it.reference)?.hizb }?.let { "الحزب $it" },
+                        ).joinToString(" · "),
+                        hifzDue = hifzDueAll,
                         reviewMode = reviewMode,
                         onReviewMode = { setVersesHidden(!reviewMode) },
                         pageBookmarked = remember(libraryRevision, page.number) { library.isPageBookmarked(page.number) },
@@ -1312,15 +1662,23 @@ private fun QuranReader(
                     val recitedAyah = playback.ayah ?: playback.gapAfter
                     /** The page of the verse the review asks. */
                     val reviewHere = reviewVerse != null && number in reviewPages
+                    /**
+                     * The verse asked is covered until «أظهر», and again for the drill after «ما زالت تحتاج تدريبًا»: it
+                     * is recited from memory, the eraser at hand.
+                     */
+                    val reviewCovered = !reviewRevealed
                     val hidden = when {
                         highlights == null || catalog == null -> emptyList()
                         // The review: the verse asked and all after it, until «أظهر»; the verses before it stay clear,
                         // but for those of points still to come.
                         reviewVerse != null && reviewHere -> catalog.versesOnPage(number).filter {
-                            it.ayah > 0 && ((!reviewRevealed && it.reference >= reviewVerse) || it.reference in reviewUpcoming)
+                            it.ayah > 0 && ((reviewCovered && it.reference >= reviewVerse) || it.reference in reviewUpcoming)
                         }
-                        // «مراجعة»: every numbered verse on the page is covered, except one opened by its number, a search or a bookmark.
-                        reviewMode -> catalog.versesOnPage(number).filter { it.ayah > 0 && it.reference != selection }
+                        // «مراجعة»: every numbered verse on the page is covered, except one opened by its number, a search or
+                        // a bookmark, until it covers itself again.
+                        reviewMode -> catalog.versesOnPage(number).filter {
+                            it.ayah > 0 && (passage == null || it.reference in passage) && (it.reference != selection || it.reference == recovered)
+                        }
                         reviewUpcoming.isNotEmpty() -> catalog.versesOnPage(number).filter { it.ayah > 0 && it.reference in reviewUpcoming }
                         else -> emptyList()
                     }
@@ -1344,6 +1702,7 @@ private fun QuranReader(
                             addAll(highlights?.rectangles(number, reviewTarget.surah, reviewTarget.ayah).orEmpty())
                         }
                         selection != null -> highlights?.rectangles(number, selection.surah, selection.ayah).orEmpty()
+                        passage != null -> highlights?.rectangles(number, passage.from.surah, passage.from.ayah).orEmpty()
                         rangeFrom != null -> selected
                         expanded -> highlights?.rectangles(number, playback.surah, recitedAyah).orEmpty()
                         else -> emptyList()
@@ -1364,18 +1723,25 @@ private fun QuranReader(
                         foundRects = if (highlights != null && found != null) found.verses.flatMap { highlights.rectangles(number, it.surah, it.ayah) } else emptyList(),
                         hiddenRects = hidden.flatMap { highlights?.rectangles(number, it.surah, it.ayah).orEmpty() },
                         numberHoles = numberHoles,
-                        hifzRects = if (reviewVerse != null && reviewHere) {
-                            // The verse asked, in the points' colour over its cover: the card names it, the page shows it.
+                        // The verse asked, its cover in the points' colour: the card names it, the page shows it.
+                        askedRects = if (reviewVerse != null && reviewHere && reviewCovered) {
                             highlights?.rectangles(number, reviewVerse.surah, reviewVerse.ayah).orEmpty()
+                        } else if (passage != null && reviewMode) {
+                            highlights?.rectangles(number, passage.from.surah, passage.from.ayah).orEmpty()
+                        } else emptyList(),
+                        hifzRects = if (reviewVerse != null && reviewHere) {
+                            // Shown, in the points' colour.
+                            if (reviewCovered) emptyList() else highlights?.rectangles(number, reviewVerse.surah, reviewVerse.ayah).orEmpty()
                         } else if (panel == "hifzReview") {
                             // No other point is marked while the review goes: the ones to come are covered.
                             emptyList()
                         } else if (hifzSettings.markers && highlights != null && catalog != null && pointsByVerse.isNotEmpty()) {
                             // Hidden while the verse is recited, found or selected: one tint at a time.
                             val recited = playback.surah?.let { s -> recitedAyah?.let { QuranVerseReference(s, it) } }
+                            // Points still to hold: a held one keeps its checks, not its mark.
                             catalog.versesOnPage(number).filter { v ->
-                                v.ayah > 0 && v.reference in pointsByVerse && v.reference != recited && v.reference != selection &&
-                                    found?.verses?.contains(v.reference) != true
+                                v.ayah > 0 && pointsByVerse[v.reference]?.any { !it.mastered } == true && v.reference != recited &&
+                                    v.reference != selection && found?.verses?.contains(v.reference) != true
                             }.flatMap { highlights.rectangles(number, it.surah, it.ayah) }
                         } else emptyList(),
                         selectedRects = selected,
@@ -1387,13 +1753,26 @@ private fun QuranReader(
                         rectsOf = { v -> highlights?.rectangles(number, v.surah, v.ayah).orEmpty() },
                         // «مراجعة» gives taps and long presses to the eraser, unless a passage is being chosen; so does the
                         // review's cover, until «أظهر».
-                        erasing = highlights != null && catalog != null && if (reviewHere) !reviewRevealed else reviewMode && rangeFrom == null,
+                        erasing = highlights != null && catalog != null && if (reviewHere) reviewCovered else reviewMode && rangeFrom == null,
                         lineAt = { x, y -> highlights?.lineAt(number, x, y) },
+                        onErased = { piece ->
+                            val exposed = catalog?.versesOnPage(number).orEmpty().filter { verse ->
+                                verse.ayah > 0 && highlights?.rectangles(number, verse.surah, verse.ayah).orEmpty()
+                                    .any { r -> piece.left < r.right && piece.right > r.left && piece.top < r.bottom && piece.bottom > r.top }
+                            }.map { it.reference }.toSet()
+                            if (panel == "hifzReview") reviewState.noteExposed(exposed, reviewActions)
+                            else updateLearning { it.expose(exposed) }
+                            val point = reviewPoint
+                            if (point != null && !reviewRevealed && highlights?.rectangles(number, point.verse.surah, point.verse.ayah)
+                                    .orEmpty().any { r -> piece.left < r.right && piece.right > r.left && piece.top < r.bottom && piece.bottom > r.top }) {
+                                reviewState.markAssisted(point)
+                            }
+                        },
                         onTap = { verse ->
                             when {
-                                // The review on the page chooses nothing: a tap on the number of the verse asked shows it,
-                                // as «أظهر» does.
-                                reviewOnPage -> if (verse != null && verse == reviewTarget) reviewState.reveal(reviewQueue, reviewActions)
+                                // The review on the page chooses nothing, and only «أظهر» shows the answer: a tap meant
+                                // for the eraser on the verse's number must not give it away.
+                                reviewOnPage -> Unit
                                 verse == null -> {
                                     // A tap on paper outside the text clears what was shown over the page; with
                                     // nothing shown, it brings the tools back, and the next one hides them again.
@@ -1409,26 +1788,19 @@ private fun QuranReader(
                                 }
                             }
                         },
-                        onVerseLongPress = { x, y ->
-                            // Choosing a verse needs both its place on the page and the text index; not during the review.
-                            val verse = if (catalog != null && !reviewOnPage) highlights?.verseAt(number, x, y) else null
-                            if (verse != null) {
-                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                if (tapHint) hideHint("hint_tap_seen")
-                                beginRange(verse)
-                            }
-                            verse != null
-                        },
                         onZoomChanged = { if (index == pager.currentPage) zoomed = it },
                         onSettled = { if (index == pager.currentPage) onPageSettled() },
                     )
                 }
                 // A review brought back before the verses' places are read again: the page waits under a plain cover
                 // rather than show the verse it asks.
-                if (panel == "hifzReview" && !detailsFailed && (catalog == null || highlights == null)) Box(
+                if (((panel == "hifzReview" && !detailsFailed) || passage != null) && (catalog == null || highlights == null)) Box(
                     Modifier.matchParentSize().background(BgCream).pointerInput(Unit) { awaitEachGesture { awaitFirstDown() } },
                     contentAlignment = Alignment.Center,
-                ) { CircularProgressIndicator(color = GreenPrimary) }
+                ) {
+                    if (detailsFailed && passage != null) Text("تعذّر تجهيز غطاء الآيات. عد إلى المراجعة وحاول فتح المصحف مجددًا.", Modifier.padding(24.dp), color = TextMuted)
+                    else CircularProgressIndicator(color = GreenPrimary)
+                }
                 if (media != null && !pagesReady && media.pages != null) QuranPagesEmptyState(
                     media,
                     onDownload = { media.fetch(listOfNotNull(media.pages), allowMetered = true) },
@@ -1478,7 +1850,7 @@ private fun QuranReader(
                             }
                             HifzReviewCard(
                                 state = reviewState, catalog = catalog, lookAlikes = lookAlikes, queue = reviewQueue,
-                                audio = hifzAudio?.takeIf { reviewAudio || it.playing }, audioControls = hifzAudioControls,
+                                audio = reviewHifzAudio, audioControls = hifzAudioControls,
                                 drillGap = hifzSettings.drillGap, stillDue = reviewStillDue, nextCheckIn = reviewNextCheckIn,
                                 actions = reviewActions,
                                 maxHeight = (configuration.screenHeightDp * 0.6f).dp,
@@ -1496,6 +1868,12 @@ private fun QuranReader(
                                 eraserHint = reviewEraserHint, onEraserHintClosed = { hideHint("hint_review_eraser_seen") },
                             )
                         }
+                        passage != null && catalog != null && selection == null && rangeFrom == null && !expanded && panel == null -> HifzPassageCard(
+                            catalog, passage,
+                            onRecord = { panel = "hifzPassageRecord" },
+                            onFinish = { passageFinished = true; passageSummary = true },
+                            onReturn = { catalog.pagesForVerse(passage.from.surah, passage.from.ayah).firstOrNull()?.let { goToPage(it, brief = false) } },
+                        )
                         rangeFrom != null -> QuranRangeCard(
                             title = quranRangeTitle(surahName, (rangeTo?.let { if (it < rangeFrom) it else rangeFrom } ?: rangeFrom), rangeTo?.let { if (it < rangeFrom) rangeFrom else it }),
                             endChosen = rangeTo != null,
@@ -1519,13 +1897,27 @@ private fun QuranReader(
                         )
                         // The verse card, below, takes this place.
                         selection != null && !expanded -> Unit
-                        headsUp != null && hifzSettings.headsUp && !expanded && catalog != null && !(hifzSettings.stopBefore && listening.verseTimes != 0) -> HifzHeadsUpCard(
-                            fix = headsUp,
-                            onStop = if (otherTimer || verseEndBehind) null else {
-                                { sessionVerse?.let { before -> armStopBefore(before, headsUp.point.verse) } }
-                            },
-                            onFix = { openFix(headsUp.point) },
-                            onClose = { headsUpClosedDraft = encodeVerse(headsUp.point.verse) },
+                        headsUp != null && !expanded && catalog != null -> {
+                            val point = headsUp.point.verse
+                            val before = QuranVerseReference(point.surah, point.ayah - 1)
+                            HifzHeadsUpCard(
+                                fix = headsUp,
+                                during = headsUpDuring,
+                                stopsItself = stopsItself,
+                                // Too late once the verse before has ended; not over another timer of the listener's.
+                                onStop = if (headsUpDuring || stopsItself || point.ayah <= 1 || otherTimer || (sessionVerse == before && verseEndBehind)) null else {
+                                    { armStopBefore(before, point) }
+                                },
+                                onFix = { openFix(headsUp.point) },
+                                onClose = { headsUpClosedDraft = encodeVerse(point) },
+                                onExposed = { updateLearning { it.expose(setOf(point)) } },
+                            )
+                        }
+                        briefingOffer != null && !expanded && !reviewMode && catalog != null -> QuranOfferChip(
+                            text = "قبل التسميع · مواضعك في الحزب $briefingOffer",
+                            action = "اعرضها",
+                            onAction = { panel = "hifzBriefing:h$briefingOffer"; briefingOffer = null },
+                            onClose = { briefingOffer = null },
                         )
                         // «مراجعة» gives the tap to the eraser.
                         tapHint && catalog != null && !expanded && !reviewMode -> QuranHint("اضغط على أي آية لتستمع منها أو تكرّرها أو تنسخها") { hideHint("hint_tap_seen") }
@@ -1537,7 +1929,9 @@ private fun QuranReader(
                     if (selection != null) lastCardVerse[0] = selection
                     val cardVerse = selection ?: lastCardVerse[0] ?: QuranVerseReference(1, 1).takeIf { catalog != null }
                     if (cardVerse != null) QuranCardSlot(shown = selection != null && rangeFrom == null && !expanded) {
+                        val cardDue = if (reviewMode) pointsByVerse[cardVerse]?.firstOrNull { it.isDue(today) } else null
                         QuranVerseCard(
+                            onReview = cardDue?.let { due -> { updateLearning { it.expose(setOf(cardVerse)) }; selectionDraft = null; startReview(first = due) } },
                             hidesAfterMs = if (reviewMode && selection != null) hosaryMs(cardVerse).coerceAtLeast(QuranReviewMinMs) else null,
                             title = "${surahName(cardVerse.surah)} · الآية ${cardVerse.ayah}",
                             bookmarked = remember(libraryRevision, cardVerse) { library.isBookmarked(cardVerse) },
@@ -1606,7 +2000,10 @@ private fun QuranReader(
                 val reciteNotice = turnPoint?.let { v ->
                     QuranDockNotice("سمّع الآية ${v.ayah} من حفظك", "ثم استمع إليها للتأكد", primary = "أكمل", secondary = "أعد الآية ${v.ayah - 1}".takeIf { v.ayah > 1 })
                 }
-                val notice = reciteNotice ?: quranDockNotice(playback, media, pending, download, reciter.shortName, surahName)
+                val resultNotice = turnResult?.takeIf { reciteNotice == null }?.let { v ->
+                    QuranDockNotice("هل قرأت الآية ${v.ayah} صحيحة؟", "كما سمعتها الآن", primary = "نعم", secondary = "أخطأت")
+                }
+                val notice = reciteNotice ?: resultNotice ?: quranDockNotice(playback, media, pending, download, reciter.shortName, surahName)
                 QuranDock(
                     playback = playback,
                     track = track,
@@ -1637,7 +2034,11 @@ private fun QuranReader(
                     onNoticePrimary = {
                         when {
                             // The turn ends once the point itself is recited, not now: see the disarming effect.
-                            reciteNotice != null -> resumeSession()
+                            reciteNotice != null -> {
+                                turnPoint?.let { turnHeardDraft = encodeVerse(it) }
+                                resumeSession()
+                            }
+                            resultNotice != null -> turnResult?.let { answerTurn(it, right = true) }
                             download?.status == QuranPackStatus.WaitingForWifi || download?.status == QuranPackStatus.NeedsConfirmation ->
                                 media?.source?.confirmMobileData(pending, mobileData)
                             download?.status == QuranPackStatus.Failed -> media?.fetch(pending, allowMetered = true)
@@ -1650,7 +2051,8 @@ private fun QuranReader(
                         if (reciteNotice != null && point != null && point.ayah > 1) {
                             QuranAudioController.seekVerse(context, point.surah, point.ayah - 1)
                             QuranAudioController.resume(context)
-                        } else starter.cancel()
+                        } else if (resultNotice != null) turnResult?.let { answerTurn(it, right = false) }
+                        else starter.cancel()
                     },
                     onScrub = { scrub = it; if (it != null && stripHint) hideHint("hint_strip_seen") },
                     onScrubEnd = { target ->
@@ -1694,7 +2096,7 @@ private fun QuranReader(
             currentPage = page.number,
             lastListened = playback.surah?.let { s -> "${surahName(s)} · ${playback.ayah?.takeIf { it > 0 }?.let { "الآية $it" } ?: "البداية"} · ${reciter.shortName}" },
             listeningNow = playback.playing,
-            hifzDue = remember(hifzPoints, today, hifzSettings.perDay) { hifzPoints.dueToday(today, hifzSettings.perDay).size },
+            hifzDue = eligibleDueIds.size.coerceAtMost(hifzSettings.perDay),
             missingSurahs = remember(media?.states, playback.reciterId) {
                 val layout = media?.layout ?: return@remember emptySet<Int>()
                 layout.audioPacks(playback.reciterId).filterNot { media.state(it).available }.flatMap { it.surahs?.toList().orEmpty() }.toSet()
@@ -1711,13 +2113,38 @@ private fun QuranReader(
                 }
                 override fun resumeListening() { panel = null; resumeSession() }
                 override fun openHifz() { panel = "hifz" }
+                override fun search() { panel = "search" }
                 override fun dismiss() { panel = null }
             },
         )
         currentPanel == "search" -> if (catalog != null) QuranSearchSheet(
-            search, recentSearches,
+            catalog = catalog, divisions = divisions, search = search, recents = recentSearches,
             onClearRecents = { recentSearches = emptyList(); writeRecentSearches(prefs, emptyList()) },
             onDismiss = { panel = null }, onResult = ::openResult,
+            onPlayResult = { position ->
+                search.visible.getOrNull(position)?.verses?.firstOrNull()?.let { verse ->
+                    openResult(position)
+                    startFrom(verse)
+                }
+            },
+            onLocation = { target, play ->
+                recentSearches = recentSearches.withRecentSearch(search.query).also { writeRecentSearches(prefs, it) }
+                when (target) {
+                    is QuranGoTo.Page -> goToPage((target.printed - 1).coerceAtLeast(1))
+                    is QuranGoTo.Surah -> {
+                        goToPage(catalog.surahs[target.number - 1].page, brief = !play)
+                        if (play) startFrom(QuranVerseReference(target.number, 1))
+                    }
+                    is QuranGoTo.Hizb -> divisions?.hizbStart(target.number)?.let { start ->
+                        showVerse(start.start)
+                        if (play) startFrom(start.start)
+                    }
+                    is QuranGoTo.Verse -> {
+                        showVerse(target.verse)
+                        if (play) startFrom(target.verse)
+                    }
+                }
+            },
         )
         currentPanel == "reciter" -> QuranReciterSheet(
             selected = playback.reciterId,
@@ -1744,9 +2171,11 @@ private fun QuranReader(
             val parts = currentPanel.removePrefix("hifzRecord:").removeSuffix(":typed").removeSuffix(":home").split(':').mapNotNull { it.toIntOrNull() }
             if (catalog != null && parts.size == 2) HifzRecordSheet(
                 catalog = catalog, lookAlikes = lookAlikes, initialVerse = QuranVerseReference(parts[0], parts[1]),
-                onSave = ::recordSlip, onDismiss = { panel = if (home) "hifz" else null },
+                onSave = { verse, kind, other, words, both, hafs, repeat, days -> recordSlip(verse, kind, other, words, both, hafs, repeat, days, home) },
+                onDismiss = { panel = if (home) "hifz" else null },
                 defaultRepeat = hifzSettings.newRepeat, defaultDays = hifzSettings.newRepeatDays,
                 offerPrevious = !typed,
+                points = hifzPoints, drillGap = hifzSettings.drillGap,
             ) else if (catalog != null) panel = null
         }
         currentPanel.startsWith("hifzFix:") -> {
@@ -1764,14 +2193,25 @@ private fun QuranReader(
             catalog = catalog, points = hifzPoints, settings = hifzSettings, today = today,
             startRecording = currentPanel == "hifz:record",
             versesHidden = reviewMode,
+            briefingLabel = briefingScope().second?.let { "قبل التسميع · $it" } ?: "قبل التسميع",
+            notice = hifzNotice, onNoticeClosed = { hifzNotice = null },
+            audio = activeHifzAudio, audioControls = hifzAudioControls,
+            pendingPractice = hifzPoints.filter { it.id in learning.pending },
+            eligibleDueIds = eligibleDueIds,
+            practicedToday = hifzPoints.count { it.isDue(today) && it.id in learning.onDay(today).practised },
             actions = object : HifzHomeActions {
                 override fun recordShown() { if (panel == "hifz:record") panel = "hifz" }
                 override fun review() = startReview()
-                override fun listen(points: List<HifzPoint>) { panel = null; playList(hifzListen(catalog, points, hifzSettings)) }
-                override fun briefing() {
-                    val here = pageTop?.surah?.takeIf { s -> hifzPoints.any { it.verse.surah == s } }
-                    panel = "hifzBriefing:${here ?: 0}"
+                override fun resumePractice(ids: List<Long>) = startReview(again = ids)
+                override fun dismissPractice(ids: List<Long>) {
+                    updateLearning { it.copy(pending = it.pending - ids.toSet()) }
+                    ids.forEach(reviewState::forgetPoint)
                 }
+                override fun recite() { panel = "hifzRecite" }
+                override fun reviewFrom(point: HifzPoint) = startReview(first = point)
+                override fun listen(points: List<HifzPoint>) { panel = null; playList(hifzListen(catalog, points, hifzSettings)) }
+                // The passage of the page in view; closing it comes back here.
+                override fun briefing() { panel = "hifzBriefing:${briefingScope().first}:home" }
                 // Over the notebook, which keeps its tab, filters and place when the fix closes.
                 override fun open(point: HifzPoint) { stackedFix = point.id }
                 override fun record(verse: QuranVerseReference) { panel = "hifzRecord:${verse.surah}:${verse.ayah}:typed" }
@@ -1779,6 +2219,13 @@ private fun QuranReader(
                 override fun hideVerses(on: Boolean) = setVersesHidden(on)
                 override fun dismiss() { panel = null }
             },
+        )
+        currentPanel == "hifzRecite" -> if (catalog != null) HifzPassageSetup(
+            catalog = catalog, page = page.number, onStart = ::startReciting, onDismiss = { panel = "hifz" },
+        )
+        currentPanel == "hifzPassageRecord" -> if (catalog != null && passage != null) HifzPassageRecordSheet(
+            catalog = catalog, passage = passage, page = page.number,
+            onRecord = { panel = "hifzRecord:${it.surah}:${it.ayah}" }, onDismiss = { panel = null },
         )
         currentPanel == "hifzSettings" -> HifzSettingsSheet(
             settings = hifzSettings,
@@ -1792,23 +2239,43 @@ private fun QuranReader(
         // The review on the page is drawn with the page; the sheet takes it wherever the page cannot.
         currentPanel == "hifzReview" -> if (catalog != null && !reviewOnPage) HifzReviewSheet(
             state = reviewState, catalog = catalog, lookAlikes = lookAlikes, queue = reviewQueue,
-            audio = hifzAudio?.takeIf { reviewAudio || it.playing }, audioControls = hifzAudioControls,
+            audio = reviewHifzAudio, audioControls = hifzAudioControls,
             drillGap = hifzSettings.drillGap, stillDue = reviewStillDue, nextCheckIn = reviewNextCheckIn,
             actions = reviewActions,
         )
         currentPanel.startsWith("hifzBriefing:") -> {
-            val surah = currentPanel.removePrefix("hifzBriefing:").toIntOrNull() ?: 0
-            val points = hifzPoints.filter { surah == 0 || it.verse.surah == surah }
-            if (catalog != null && points.isNotEmpty()) HifzBriefingSheet(
+            // «hifzBriefing:h5», a hizb; «:s2», a chapter; «:0», every point. «:home»: opened from the notebook.
+            val home = currentPanel.endsWith(":home")
+            val scopeKey = currentPanel.removePrefix("hifzBriefing:").removeSuffix(":home")
+            val hizb = scopeKey.takeIf { it.startsWith("h") }?.drop(1)?.toIntOrNull()
+            val surah = scopeKey.takeIf { it.startsWith("s") }?.drop(1)?.toIntOrNull() ?: scopeKey.toIntOrNull()?.takeIf { it > 0 }
+            // The points still to hold: a held one needs no look before reciting.
+            val points = remember(hifzPoints, scopeKey, divisions) {
+                hifzPoints.filter { p ->
+                    !p.mastered && when {
+                        hizb != null -> divisions?.thumnOf(p.verse)?.hizb == hizb
+                        surah != null -> p.verse.surah == surah
+                        else -> true
+                    }
+                }
+            }
+            if (catalog != null) HifzBriefingSheet(
                 catalog = catalog,
-                title = if (surah == 0) "كل المواضع" else surahName(surah),
+                title = when {
+                    hizb != null -> "الحزب $hizb"
+                    surah != null -> surahName(surah)
+                    else -> "كل المواضع"
+                },
                 points = points,
                 always = hifzSettings.briefing,
                 onAlways = { hifzSettings = hifzSettings.copy(briefing = it); HifzSettings.write(context, hifzSettings) },
                 onListen = { panel = null; playList(hifzListen(catalog, points, hifzSettings)) },
                 onOpen = { stackedFix = it.id },
-                onDismiss = { panel = null },
-            ) else if (catalog != null && HifzRepository.isLoaded) panel = null
+                onDismiss = { panel = if (home) "hifz" else null },
+                // With the verses hidden, each waits under its cover, as on the page.
+                covered = reviewMode,
+                onExposed = { verse -> updateLearning { it.expose(setOf(verse)) } },
+            )
         }
         currentPanel.startsWith("hifzPoints:") -> {
             // A reminder about several points: those points and their right wordings.
@@ -1816,11 +2283,22 @@ private fun QuranReader(
             val points = hifzPoints.filter { it.id in ids }
             if (catalog != null && points.isNotEmpty()) HifzBriefingSheet(
                 catalog = catalog, title = "مواضع التذكير", points = points,
+                onExposed = { verse -> updateLearning { it.expose(setOf(verse)) } },
                 header = "تذكير", hint = "الصواب في كل موضع · اضغط على موضع لتفتح تصحيحه",
                 always = false, onAlways = null,
                 onListen = { panel = null; playList(hifzListen(catalog, points, hifzSettings.copy(drillGap = 0f))) },
                 onOpen = { stackedFix = it.id },
                 onDismiss = { panel = null },
+                // «حفظتها»: its reminders stop, its checks go on. For all of them, the list has done its work.
+                onLearned = { learned ->
+                    if (learned.size > 1) panel = null
+                    stopReminders(learned)
+                },
+                planLine = { p ->
+                    p.takeIf { it.repeatsOn(today) }?.let {
+                        "تذكير ${HifzReminder.repeatShortPhrase(it.repeat)} حتى ${HifzReminder.dayLabel(it.repeatUntil!!, today)}"
+                    }
+                },
             ) else if (catalog != null && HifzRepository.isLoaded) panel = "hifz"
         }
         currentPanel == "typedRange" -> {
@@ -1849,6 +2327,8 @@ private fun QuranReader(
             HifzFixPanel(
                 catalog, lookAlikes, point, today, onBack = { stackedFix = null },
                 onLeave = { stackedFix = null; panel = null },
+                pageInView = overReview && reviewOnPage,
+                overHub = panel == "hifz",
                 onOpenVerse = { verse ->
                     if (overReview) {
                         endReview(backToPage = false)
@@ -1865,12 +2345,44 @@ private fun QuranReader(
                 onSibling = { stackedFix = it.id },
                 // Under a sheet, an undo snackbar could not be seen: a point deleted from the review simply leaves it.
                 overReview = overReview,
+                onReviewRecall = if (overReview && reviewState.training(reviewPoint) && reviewPoint?.id == point.id) ({
+                    stackedFix = null
+                    reviewState.retest(point, reviewActions)
+                }) else null,
                 onDeleted = { id ->
+                    reviewState.forgetPoint(id)
+                    updateLearning { it.copy(pending = it.pending - id, practised = it.practised - id) }
                     if (overReview) leaveReviewCard()
                     reviewIds = reviewIds - id
                 },
             )
         } } else if (catalog != null && HifzRepository.isLoaded) stackedFix = null
+    }
+    // «تعديل الموضع», over the fix it was opened from, which shows the change when it closes.
+    editingPoint?.let { id ->
+        val point = hifzPoints.firstOrNull { it.id == id }
+        if (catalog != null && point != null) key(id) {
+            HifzRecordSheet(
+                catalog = catalog, lookAlikes = lookAlikes, initialVerse = point.verse,
+                onSave = { _, _, _, _, _, _, _, _ -> }, onDismiss = { editingPoint = null },
+                points = hifzPoints, drillGap = hifzSettings.drillGap,
+                editing = point,
+                onEdit = { changed ->
+                    editingPoint = null
+                    saveHifz { HifzRepository.update(context, changed) }
+                },
+            )
+        } else if (catalog != null && HifzRepository.isLoaded) editingPoint = null
+    }
+    if (passageSummary && passage != null && catalog != null) {
+        val recorded = passageRecorded.filter { id -> hifzPoints.any { it.id == id } }
+        HifzPassageSummary(
+            catalog, passage, recorded.size, passageFinished,
+            onContinue = { passageSummary = false },
+            onPractice = if (recorded.isEmpty()) null else ({ endPassage(); startReview(again = recorded) }),
+            onDone = ::endPassage,
+        )
+    }
     }
 }
 
@@ -1888,13 +2400,26 @@ private fun QuranReaderScope.HifzFixPanel(
     onSibling: (HifzPoint) -> Unit,
     /** Over the review: its card owns the audio, and the review's answers say how a slip went. */
     overReview: Boolean = false,
+    /** The point's page is in view behind the fix, under the review's card: no «في المصحف». */
+    pageInView: Boolean = false,
+    /** Over the notebook, which stays open: a drill plays under it, and a delete is said at its top. */
+    overHub: Boolean = false,
+    onReviewRecall: (() -> Unit)? = null,
     onDeleted: (Long) -> Unit = {},
 ) {
+    val pendingBeforeSlip = rememberSaveable(point.id) { point.id in pendingPractice }
+    val practisedBeforeSlip = rememberSaveable(point.id) { point.id in practisedToday }
     HifzFixSheet(
         catalog = catalog, lookAlikes = lookAlikes, point = point, today = today, undoable = !overReview,
+        onEdit = { edit(point) },
+        // The settings replace the sheet below: not over the review, which they would end.
+        onSettings = if (overReview) null else openSettings,
         audio = audio, audioControls = audioControls, drillGap = settings().drillGap,
         onSlipAgain = if (overReview) null else ({ slipAgain(point) }),
-        onUndoSlipAgain = { before -> save { HifzRepository.restore(context, before) } },
+        onUndoSlipAgain = { before ->
+            save { HifzRepository.restore(context, before) }
+            restoreLearning(point.id, pendingBeforeSlip, practisedBeforeSlip)
+        },
         onOtherSlip = if (overReview) null else ({ recordOther(point.verse) }),
         siblings = siblings(point), onSibling = onSibling,
         headsUpOn = settings().headsUp, stopBeforeOn = settings().stopBefore,
@@ -1915,20 +2440,38 @@ private fun QuranReaderScope.HifzFixPanel(
             }
         },
         defaultDays = settings().newRepeatDays,
-        // Over the review, back to its card, whose strip shows the drill; elsewhere to the page and its player.
+        // Over the review, back to its card, whose strip shows the drill; over the notebook, back to it, whose strip
+        // shows it too; elsewhere to the page and its player.
         onDrill = {
-            if (overReview) onBack() else onLeave()
-            play(hifzDrill(catalog, point, settings()), overReview)
+            val drill = hifzDrill(catalog, point, settings())
+            // Keep the correction and its recall action available while listening and repeating.
+            if (overReview) play(drill, true) else playBehind(drill)
         },
-        onListen = { play(hifzListen(catalog, listOf(point), settings().copy(drillGap = 0f)), overReview) },
-        onOpen = { onOpenVerse(point.verse) },
+        onRecall = if (overReview) onReviewRecall else ({ recall(point) }),
+        // Heard with the fix open, its strip in view: the page does not turn behind it.
+        onListen = {
+            val list = hifzListen(catalog, listOf(point), settings().copy(drillGap = 0f))
+            if (overReview) play(list, true) else playBehind(list)
+        },
+        onOpen = if (pageInView) null else ({ onOpenVerse(point.verse) }),
         onDelete = {
-            // Over the review, its card shows the change and no snackbar could be seen; elsewhere the sheets close
-            // so that the «تراجع» can.
-            if (overReview) onBack() else onLeave()
+            val wasPending = point.id in pendingPractice
+            val wasPractised = point.id in practisedToday
+            // Over the review, its card shows the change and no snackbar could be seen; over the notebook, its top says
+            // so with the undo; elsewhere the sheets close so that the snackbar's «تراجع» can be seen.
+            if (overReview || overHub) onBack() else onLeave()
             save { HifzRepository.delete(context, point.id) }
             onDeleted(point.id)
-            if (!overReview) undo("حُذف الموضع · ${hifzVerseName(catalog, point.verse)}") { save { HifzRepository.restore(context, point) } }
+            val message = "حُذف الموضع · ${hifzVerseName(catalog, point.verse)}"
+            val restore = {
+                save { HifzRepository.restore(context, point) }
+                restoreLearning(point.id, wasPending, wasPractised)
+            }
+            when {
+                overReview -> Unit
+                overHub -> notice(HifzNotice(message, restore))
+                else -> undo(message, restore)
+            }
         },
         onDismiss = onBack,
     )
@@ -1940,6 +2483,16 @@ private class QuranReaderScope(
     val save: (() -> Unit) -> Unit,
     /** Plays a fix's audio; `review` when the fix is over the review, whose card then owns it. */
     val play: (list: QuranPlaylist?, review: Boolean) -> Unit,
+    /** Plays behind a sheet that stays open: the page does not follow it. */
+    val playBehind: (QuranPlaylist?) -> Unit,
+    /** A fresh unaided attempt; practice never changes the scheduled check twice. */
+    val recall: (HifzPoint) -> Unit,
+    /** «تعديل الموضع» over the fix. */
+    val edit: (HifzPoint) -> Unit,
+    /** The settings of «المراجعة», in place of the sheets open. */
+    val openSettings: () -> Unit,
+    /** Said at the top of the notebook, with its undo. */
+    val notice: (HifzNotice) -> Unit,
     val settings: () -> HifzSettings,
     val undo: (message: String, action: () -> Unit) -> Unit,
     /** The recitation playing, shown in the sheets that cover the player. */
@@ -1947,6 +2500,9 @@ private class QuranReaderScope(
     val audioControls: HifzAudioControls,
     /** «أخطأت فيها مرة أخرى»: the slip counted again, its plan kept while it runs. */
     val slipAgain: (HifzPoint) -> Unit,
+    val pendingPractice: Set<Long>,
+    val practisedToday: Set<Long>,
+    val restoreLearning: (Long, Boolean, Boolean) -> Unit,
     /** «خطأ آخر في هذه الآية». */
     val recordOther: (QuranVerseReference) -> Unit,
     /** The other points of a point's verse. */
@@ -1966,23 +2522,70 @@ private class QuranSnackbar(
     override val withDismissAction: Boolean = false
 }
 
-/** Above the dock while the verse before a point is recited: the right wording only, never the slip. */
+/**
+ * Above the dock as a point nears: the question first, as the review asks it, so that the reader recites before seeing;
+ * the right wording behind «أظهر الصواب»; «أوقف قبلها» to recite it from memory at the turn. While the point's own verse
+ * is recited ([during]), the wording to check it against. Never the slip itself.
+ */
 @Composable
-private fun HifzHeadsUpCard(fix: com.tunisianprayertimes.quran.hifz.HifzFix, onStop: (() -> Unit)?, onFix: () -> Unit, onClose: () -> Unit) {
+private fun HifzHeadsUpCard(
+    fix: com.tunisianprayertimes.quran.hifz.HifzFix,
+    during: Boolean,
+    /** The recitation stops before the point by itself («توقف قبل الموضع»). */
+    stopsItself: Boolean,
+    onStop: (() -> Unit)?,
+    onFix: () -> Unit,
+    onClose: () -> Unit,
+    onExposed: () -> Unit,
+) {
+    var shown by remember(fix.point.id) { mutableStateOf(false) }
+    val open = shown || during
+    LaunchedEffect(open) { if (open) onExposed() }
     QuranFloatingCard(Modifier.testTag("hifz_heads_up")) {
         Row(Modifier.fillMaxWidth().padding(start = 14.dp, end = 2.dp, top = 4.dp), verticalAlignment = Alignment.CenterVertically) {
             QuranHifzSquare(12.dp)
             Spacer(Modifier.width(8.dp))
-            Text("بعدها الآية ${fix.point.verse.ayah} · ${fix.wordingLabel}:", Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+            Text(
+                withQuranQuotes(when {
+                    during -> "الآية ${fix.point.verse.ayah} الآن · ${fix.wordingLabel}:"
+                    open -> "بعد قليل الآية ${fix.point.verse.ayah} · ${fix.wordingLabel}:"
+                    else -> "بعد قليل الآية ${fix.point.verse.ayah} · ${fix.point.kind.short}"
+                }),
+                Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
+            )
             IconButton(onClick = onClose, modifier = Modifier.size(36.dp)) {
                 Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء التنبيه", Modifier.size(16.dp), tint = TextMuted)
             }
         }
-        Text(fix.wording, Modifier.padding(horizontal = 14.dp), fontFamily = AdhkarReadingFont, fontSize = 18.sp, lineHeight = 34.sp, color = TextDark)
-        Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp).padding(bottom = 6.dp), horizontalArrangement = Arrangement.End) {
-            TextButton(onClick = onFix) { Text("التصحيح") }
-            if (onStop != null) Button(onClick = onStop, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_stop_before")) {
+        if (open) Text(fix.wording, Modifier.padding(horizontal = 14.dp), fontFamily = QuranMushafFont, fontSize = 18.sp, lineHeight = 34.sp, color = TextDark)
+        else {
+            Text(fix.question, Modifier.padding(horizontal = 14.dp), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = TextDark)
+            if (stopsItself) Text("تتوقف التلاوة قبلها لتسمّعها من حفظك", Modifier.padding(horizontal = 14.dp), fontSize = 12.sp, color = TextMuted)
+        }
+        Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp).padding(bottom = 6.dp), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
+            if (open) TextButton(onClick = onFix) { Text("التصحيح") }
+            else TextButton(onClick = { shown = true }, modifier = Modifier.testTag("hifz_heads_up_reveal")) { Text("أظهر الصواب") }
+            if (onStop != null && !open) Button(onClick = onStop, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_stop_before")) {
                 Text("أوقف قبلها")
+            }
+        }
+    }
+}
+
+/** Offered over the page rather than opened over it, as «قبل التسميع»: a tap shows it; it goes with the page. */
+@Composable
+private fun QuranOfferChip(text: String, action: String, onAction: () -> Unit, onClose: () -> Unit) {
+    Surface(
+        shape = RoundedCornerShape(12.dp), color = Color.White, border = BorderStroke(1.dp, QuranHifzViolet),
+        modifier = Modifier.padding(horizontal = 24.dp, vertical = 12.dp).testTag("hifz_briefing_offer"),
+    ) {
+        Row(Modifier.padding(start = 12.dp, end = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+            QuranHifzSquare(10.dp)
+            Spacer(Modifier.width(8.dp))
+            Text(text, Modifier.weight(1f, fill = false), color = TextDark, fontSize = 13.sp)
+            TextButton(onClick = onAction) { Text(action, color = QuranHifzViolet, fontWeight = FontWeight.SemiBold) }
+            IconButton(onClick = onClose, modifier = Modifier.size(32.dp)) {
+                Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء", Modifier.size(16.dp), tint = TextMuted)
             }
         }
     }
@@ -1993,6 +2596,9 @@ private fun HifzHeadsUpCard(fix: com.tunisianprayertimes.quran.hifz.HifzFix, onS
 private fun QuranHeader(
     title: String,
     subtitle: String,
+    compactSubtitle: String,
+    /** Checks due today: a dot on the menu, and their number beside «المراجعة» in it. */
+    hifzDue: Int,
     pageBookmarked: Boolean,
     keepAwake: Boolean,
     reviewMode: Boolean,
@@ -2022,12 +2628,18 @@ private fun QuranHeader(
         ) {
             Text("$title ▾", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(subtitle, fontSize = 12.sp, color = TextMuted, maxLines = 1)
+                // With large text the full line would cut off the hizb: the shorter one then.
+                var compact by remember(subtitle) { mutableStateOf(false) }
+                Text(
+                    if (compact) compactSubtitle else subtitle, Modifier.weight(1f, fill = false), fontSize = 12.sp, color = TextMuted,
+                    maxLines = 1, softWrap = false, overflow = TextOverflow.Ellipsis,
+                    onTextLayout = { if (it.hasVisualOverflow && !compact) compact = true },
+                )
                 if (hifzCount > 0) {
                     Spacer(Modifier.width(8.dp))
                     QuranHifzSquare(10.dp)
                     Text(" $hifzCount", fontSize = 12.sp, color = QuranHifzViolet, fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.semantics { contentDescription = "${quranPointsLabel(hifzCount)} للمراجعة في هذه الصفحة" })
+                        modifier = Modifier.semantics { contentDescription = "${quranPointsLabel(hifzCount)} في هذه الصفحة" })
                 }
             }
         }
@@ -2043,7 +2655,7 @@ private fun QuranHeader(
         // «مراجعة» is used often: one tap in the bar, filled while it is on.
         Box(
             button.toggleable(value = reviewMode, enabled = catalogReady, role = Role.Switch, onValueChange = { onReviewMode() })
-                .semantics { contentDescription = "وضع المراجعة" }.testTag("quran_review_mode"),
+                .semantics { contentDescription = "إخفاء الآيات للتسميع" }.testTag("quran_review_mode"),
             contentAlignment = Alignment.Center,
         ) {
             Box(
@@ -2062,7 +2674,12 @@ private fun QuranHeader(
         }
         Box {
             IconButton(onClick = { menu = true }, modifier = button.testTag("quran_menu")) {
-                Icon(painterResource(R.drawable.ic_quran_more_vert), "خيارات القراءة", icon, tint = GreenPrimary)
+                BadgedBox(badge = { if (hifzDue > 0) Badge(containerColor = QuranHifzViolet) }) {
+                    Icon(
+                        painterResource(R.drawable.ic_quran_more_vert),
+                        if (hifzDue > 0) "خيارات القراءة · ${quranPointsLabel(hifzDue)} للمراجعة اليوم" else "خيارات القراءة", icon, tint = GreenPrimary,
+                    )
+                }
             }
             DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
                 DropdownMenuItem(
@@ -2072,7 +2689,11 @@ private fun QuranHeader(
                 )
                 DropdownMenuItem(text = { Text("إضاءة القراءة الليلية…") }, onClick = { menu = false; onNight() })
                 DropdownMenuItem(text = { Text("التنزيلات") }, onClick = { menu = false; onDownloads() })
-                DropdownMenuItem(text = { Text("المراجعة") }, onClick = { menu = false; onHifz() }, enabled = catalogReady)
+                DropdownMenuItem(
+                    text = { Text("المراجعة") },
+                    trailingIcon = { if (hifzDue > 0) Badge(containerColor = QuranHifzViolet, contentColor = Color.White) { Text("$hifzDue") } },
+                    onClick = { menu = false; onHifz() }, enabled = catalogReady,
+                )
                 DropdownMenuItem(
                     text = { Text("مواضعي على الصفحات") },
                     trailingIcon = { Switch(checked = markers, onCheckedChange = null) },
@@ -2154,6 +2775,19 @@ private fun QuranNightDialog(enabled: Boolean, level: Float, onEnabled: (Boolean
     )
 }
 
+/**
+ * A drill's silence: what the reader says in it. After the right verse, it again; after its look-alike, the right one
+ * from memory, which comes next to check it.
+ */
+private fun hifzGapLine(list: QuranPlaylist, index: Int, ayah: Int): String {
+    val label = list.labels.getOrNull(index).orEmpty()
+    return when {
+        label.startsWith("الشبيهة") -> "دورك: اقرأ الصواب من حفظك"
+        label.startsWith("الصواب") -> "دورك: ردّد $label"
+        else -> "دورك: ردّد الآية $ayah"
+    }
+}
+
 /** What the dock says beside its controls. */
 private fun quranDockText(
     playback: com.tunisianprayertimes.quran.audio.QuranPlaybackState,
@@ -2201,7 +2835,7 @@ private fun quranDockText(
     }
     playback.playlist?.let { list ->
         val round = if (list.rounds > 1) " · المرة ${playback.playlistRound} من ${list.rounds}" else ""
-        val line = playback.gapAfter?.let { "دورك: ردّد الآية $it" } ?: "${list.labels.getOrNull(playback.playlistIndex).orEmpty()} · $reciterShort"
+        val line = playback.gapAfter?.let { hifzGapLine(list, playback.playlistIndex, it) } ?: "${list.labels.getOrNull(playback.playlistIndex).orEmpty()} · $reciterShort"
         return QuranDockText("${list.title} · ${playback.playlistIndex + 1} من ${list.items.size}", line + round)
     }
     val title = "${surahName(surah)} · " + when {
@@ -2335,6 +2969,8 @@ private fun QuranPageImage(
     hiddenRects: List<QuranHighlightRect> = emptyList(),
     /** «مراجعة»: where each verse's number shows through the cover; a tap on one opens that verse. */
     numberHoles: Map<QuranVerseReference, QuranHighlightRect> = emptyMap(),
+    /** The day's review: the verse asked, among [hiddenRects], covered in the points' colour with their dashed outline. */
+    askedRects: List<QuranHighlightRect> = emptyList(),
     selectedRects: List<QuranHighlightRect>,
     /**
      * The page fills the width of the view and scrolls up and down in it, from its top: see [quranPageFillsWidth].
@@ -2357,27 +2993,28 @@ private fun QuranPageImage(
     /** Where a verse lies on this page, to show it pressed under the finger. */
     rectsOf: (QuranVerseReference) -> List<QuranHighlightRect>,
     /**
-     * «مراجعة»: a tap erases the cover of the line under it, a finger wide, and a long press then a drag erases
-     * all the finger crosses, line by line. A tap on a verse's number still reaches [onTap] with that verse,
-     * and a tap off the text as paper (null).
+     * «مراجعة»: a tap erases the cover of the line under it, a finger wide. A drag or long press starting on
+     * covered text erases all the finger crosses, line by line; swipes starting off the cover navigate.
+     * A tap on a verse's number still reaches [onTap] with that verse, and a tap off the text as paper (null).
      */
     erasing: Boolean = false,
     /** The text line at a point of the original scan, as a verse rectangle on it: its top and bottom bound the line. */
     lineAt: (x: Float, y: Float) -> QuranHighlightRect? = { _, _ -> null },
+    onErased: (QuranErased) -> Unit = {},
+    /** A tap, or out of «مراجعة» a long press, at its release: on a verse, or on paper (null). */
     onTap: (QuranVerseReference?) -> Unit,
-    /** A long press at a point of the original scan, each coordinate from 0 to 1; true when it chose a verse. */
-    onVerseLongPress: (x: Float, y: Float) -> Boolean,
     onZoomChanged: (Boolean) -> Unit,
     /** The scan is on screen, or could not be read. */
     onSettled: () -> Unit,
 ) {
     val context = LocalContext.current.applicationContext
     // The gesture detector outlives recompositions; it must call the newest callback.
-    val currentOnVerseLongPress by rememberUpdatedState(onVerseLongPress)
     val currentOnTap by rememberUpdatedState(onTap)
     val currentErasing by rememberUpdatedState(erasing)
     val currentLineAt by rememberUpdatedState(lineAt)
+    val currentOnErased by rememberUpdatedState(onErased)
     val currentNumberHoles by rememberUpdatedState(numberHoles)
+    val currentHiddenRects by rememberUpdatedState(hiddenRects)
     val currentVerseAt by rememberUpdatedState(verseAt)
     val currentOnSettled by rememberUpdatedState(onSettled)
     var bitmap by remember(page.assetPath) { mutableStateOf<ImageBitmap?>(null) }
@@ -2578,6 +3215,7 @@ private fun QuranPageImage(
      * the last touch over it.
      */
     fun addErased(piece: QuranErased) {
+        currentOnErased(piece)
         val under = erased.filter { it.left < piece.right && piece.left < it.right && it.top < piece.bottom && piece.top < it.bottom }
         if (under.isNotEmpty()) {
             erased.removeAll(under)
@@ -2605,18 +3243,19 @@ private fun QuranPageImage(
         erasingUnder?.let { addErased(QuranErased(it.left, it.top, it.right, it.bottom, SystemClock.uptimeMillis())) }
         erasingUnder = null
     }
+    fun numberAt(point: Offset): QuranVerseReference? = toScan(point)?.let { (x, y) ->
+        currentNumberHoles.entries.firstOrNull { (_, hole) ->
+            x in hole.left - QuranNumberTouchSlop..hole.right + QuranNumberTouchSlop &&
+                y in hole.top - QuranNumberTouchSlop..hole.bottom + QuranNumberTouchSlop
+        }?.key
+    }
     fun tap(point: Offset) {
         pressedVerse = null
         if (stoppedScroll[0]) return
         if (currentErasing) {
             // «مراجعة»: a tap on a verse's number opens that verse; on the text it erases there, and only
             // there; off the text it is a tap on paper.
-            val numbered = toScan(point)?.let { (x, y) ->
-                currentNumberHoles.entries.firstOrNull { (_, hole) ->
-                    x in hole.left - QuranNumberTouchSlop..hole.right + QuranNumberTouchSlop &&
-                        y in hole.top - QuranNumberTouchSlop..hole.bottom + QuranNumberTouchSlop
-                }?.key
-            }
+            val numbered = numberAt(point)
             val piece = if (numbered == null) erasedAt(point, SystemClock.uptimeMillis()) else null
             if (piece != null) addErased(piece) else currentOnTap(numbered)
             return
@@ -2736,32 +3375,48 @@ private fun QuranPageImage(
                     onTap = ::tap,
                 )
             }
-            // Its own detector: a long press on a margin, or with two fingers resting before a pinch,
-            // must leave the rest of the gesture to the zoom, the pan and the page swipe.
+            // Innermost so a drag starting on covered text claims its first move past slop before the pager,
+            // scroll or zoom can take it. Margins, visible text and verse numbers leave navigation available;
+            // a second finger before activation leaves the gesture to pinch zoom.
             .pointerInput(page.number) {
                 awaitEachGesture {
                     val down = awaitFirstDown(requireUnconsumed = false)
-                    // Null when the finger lifts or another gesture takes over first. If the first finger lifts
-                    // while another rests, the long press is the other one's.
-                    val pressed = awaitLongPressOrCancellation(down.id) ?: return@awaitEachGesture
-                    val press = pressed.position
+                    if (!currentErasing || stoppedScroll[0] || numberAt(down.position) != null) return@awaitEachGesture
+                    val (x, y) = toScan(down.position) ?: return@awaitEachGesture
+                    if (currentHiddenRects.none { x in it.left..it.right && y in it.top..it.bottom }) return@awaitEachGesture
                     if (currentEvent.changes.count { it.pressed } != 1) return@awaitEachGesture
-                    val eraser = currentErasing
-                    if (eraser) {
-                        // «مراجعة»: a long press on the text starts the eraser, which then follows the finger.
-                        // Anywhere else it does nothing, and its release is a tap on paper.
-                        erasingUnder = erasedAt(press, 0L) ?: return@awaitEachGesture
-                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                    } else {
-                        val point = toScan(press) ?: return@awaitEachGesture
-                        if (!currentOnVerseLongPress(point.first, point.second)) return@awaitEachGesture
+                    var pressed = down
+                    var cancelled = false
+                    // Keep tap-to-peek and hold-to-peek, but do not require a hold before rubbing the cover.
+                    withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) {
+                        while (true) {
+                            val event = awaitPointerEvent()
+                            val change = event.changes.firstOrNull { it.id == down.id }
+                            if (change == null || !change.pressed || event.changes.any { it.isConsumed } ||
+                                event.changes.count { it.pressed } != 1 || !currentErasing) {
+                                cancelled = true
+                                break
+                            }
+                            pressed = change
+                            if ((change.position - down.position).getDistance() > viewConfiguration.touchSlop) break
+                            if (awaitPointerEvent(PointerEventPass.Final).changes.any { it.isConsumed }) {
+                                cancelled = true
+                                break
+                            }
+                        }
                     }
-                    // The press chose a verse or started the eraser: nothing else acts on what is left of this
-                    // gesture, not even another finger.
-                    var finger: Offset? = press.takeIf { eraser }
+                    if (cancelled || !currentErasing || currentEvent.changes.count { it.pressed } != 1) return@awaitEachGesture
+                    val firstPiece = erasedAt(down.position, 0L) ?: return@awaitEachGesture
+                    erasingUnder = firstPiece
+                    currentEvent.changes.forEach { it.consume() }
+                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                    currentOnErased(firstPiece)
+                    eraseAlong(down.position, pressed.position)
+                    // Nothing else acts on what is left of this gesture, not even another finger.
+                    var finger: Offset? = pressed.position
                     try {
                         do {
-                            val event = awaitPointerEvent()
+                            val event = awaitPointerEvent(PointerEventPass.Initial)
                             event.changes.forEach { it.consume() }
                             val from = finger ?: continue
                             val change = event.changes.firstOrNull { it.id == pressed.id }
@@ -2834,7 +3489,7 @@ private fun QuranPageImage(
                                 clipRect(
                                     origin.x + rect.left * imageWidth, origin.y + rect.top * imageHeight,
                                     origin.x + rect.right * imageWidth, origin.y + rect.bottom * imageHeight,
-                                ) { drawRect(QuranReviewMask) }
+                                ) { drawRect(if (rect in askedRects) QuranAskedMask else QuranReviewMask) }
                             }
                         }
                         // The scan where the Image draws it, rounded as it rounds, so that it lines up to the pixel. Its
@@ -2855,6 +3510,13 @@ private fun QuranPageImage(
                             if (amount > 0f) uncover(piece, amount)
                         }
                         erasingUnder?.let { uncover(it, 1f) }
+                        askedRects.forEach { rect ->
+                            drawRoundRect(
+                                QuranHifzViolet, origin + Offset(rect.left * imageWidth, rect.top * imageHeight),
+                                Size((rect.right - rect.left) * imageWidth, (rect.bottom - rect.top) * imageHeight), CornerRadius(3.dp.toPx()),
+                                style = Stroke(1.5.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 3.dp.toPx()))),
+                            )
+                        }
                     }
                     // Only the found, recited and pressed verses are coloured; the rest of the page stays white.
                     // A point's marker is a shape as well as a colour; a pressed verse shows only as pressed.
