@@ -3,8 +3,9 @@
 Fits `sa_umm_al_qura`, KACST's Umm al-Qura prayer times (plan 8.7, 8.8, 9.4; milestone AM2), and writes its
 official-zone asset, android-app/app/src/main/assets/official-zones/sa_umm_al_qura.json (schema 1).
 
-Data, read at run time and never copied (D13, A7): KACST's year tables in test-data-local/research-2026-10-08/SA,
-found through that folder's MANIFEST.tsv, whose source URL gives each table's query point and year. Every table
+Data, read at run time and never copied (D13, A7): KACST's year tables in test-data-local/research-2026-10-08/SA
+and research-2026-10-17/SA (Ha'il, the 13th region), found through each folder's MANIFEST.tsv, whose source URL
+gives each table's query point and year. Every table
 was asked for at one of the 173 places of KACST's own list (sa/web/cities.json, regions in sa/web/regions.json),
 and KACST's service computes any point and any year with today's rule.
 
@@ -53,6 +54,9 @@ AUTHORITY = "sa_umm_al_qura"
 TZ = "Asia/Riyadh"                      # +03 all year since 1947
 RESEARCH = common.LOCAL_DATA / "research-2026-10-08"
 SA_DIR = RESEARCH / "SA"
+# Each research folder whose MANIFEST.tsv lists KACST tables (paths relative to its SA folder): Ha'il, KACST place
+# 1008, was fetched on 2026-10-17 for the 13th region (9.5).
+TABLE_FOLDERS = (RESEARCH, common.LOCAL_DATA / "research-2026-10-17")
 APP_YEARS = range(2020, 2101)
 REACH_KM = 25.0                         # 6.5, 8.8: every KACST entry, whatever its type, to start
 SOURCE = "kacst_api"
@@ -133,16 +137,18 @@ def kacst_tables(places: list[Place]) -> list[Table]:
     """Every KACST year table the manifest lists, at the KACST place its query point is."""
     by_point = {p.published: p for p in places}
     out = []
-    with open(RESEARCH / "MANIFEST.tsv", encoding="utf-8", newline="") as fh:
-        for r in csv.DictReader(fh, delimiter="\t"):
-            if r["group"] != "SA" or "GetPrayerByYear" not in r["source"]:
-                continue
+    for folder in TABLE_FOLDERS:
+        if not (folder / "MANIFEST.tsv").exists():
+            continue
+        with open(folder / "MANIFEST.tsv", encoding="utf-8", newline="") as fh:
+            entries = [r for r in csv.DictReader(fh, delimiter="\t") if r["group"] == "SA" and "GetPrayerByYear" in r["source"]]
+        for r in entries:
             query = dict(re.findall(r"[?&](\w+)=([-\w.]+)", r["source"]))
             place = by_point.get((float(query["lat"]), float(query["lon"])))
             if place is None or query.get("zone") != "3":
                 raise SystemExit(f"{r['path']}: query point not one of KACST's places, or zone not +3")
             year, rows = int(query["yg"]), []
-            for o in json.loads((SA_DIR / r["path"]).read_text(encoding="utf-8")):
+            for o in json.loads((folder / "SA" / r["path"]).read_text(encoding="utf-8")):
                 g, h = o["gregorianDate"], o["hijriDate"]
                 day = datetime.date(g["year"], g["month"], g["day"])
                 rows.append(Row(place, day, (h["year"], h["month"], h["day"]),

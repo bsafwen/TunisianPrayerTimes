@@ -38,8 +38,10 @@ query points. 2026: `sa/web/riyadh2026.json`, `mecca_2026.json`, `jeddah_2026.js
 `sa_skeptic/data/arar_2025.json`, `najran_2025.json`. 2027: `sa_skeptic/data/medina_2027.json`, `tabuk_2027.json`,
 `buraydah_2027.json`. `medina_2000.json` and `medina_2008.json`, outside the app's years, are a side check. Each
 row's Umm al-Qura date, which decides Ramadan and the quirk days, equals Java's `HijrahDate` on all 5,477 rows.
+Ha'il's 2026 table (KACST place 1008, the 13th region), fetched on 2026-10-17 with the owner's OK, is in
+`test-data-local/research-2026-10-17/SA/hail_2026.json`, listed by that folder's own `MANIFEST.tsv`.
 
-**Fit.** Two folds by year: A fits on the eight 2026 tables and scores 2025 and 2027, B the reverse; both pick the
+**Fit.** Two folds by year: A fits on the nine 2026 tables and scores 2025 and 2027, B the reverse; both pick the
 same values, so each table is scored by values fitted without it. Each published minute bounds the unrounded time,
 hence the parameter (9.4). Among the configurations and values covered by at least the best count minus 0.75 % of
 the windows, a conventional value wins (plain rounding, the standard altitude, an integer factor), then the fewest
@@ -51,28 +53,30 @@ decimals, then the default configuration; any tolerance from about 0.45 % to 1.1
    other day and 120 on every Ramadan day.
 4. Asr factor 1, geometric, `KACST`, up (apparent sun 3.4–3.5 % fewer, the event instant 7–8 %).
 
-**Held-out scores**, quirk days left out (13 tables, 4,518 days):
+**Held-out scores**, quirk days left out (14 tables, 4,867 days):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| exact | 99.40 % | 99.56 % | 99.80 % | 99.51 % | 99.47 % | 99.47 % |
+| exact | 99.42 % | 99.53 % | 99.82 % | 99.53 % | 99.51 % | 99.51 % |
 | fold A (2025, 2027) | 99.36 % | 99.65 % | 99.71 % | 99.31 % | 99.19 % | 99.19 % |
-| fold B (2026) | 99.43 % | 99.50 % | 99.86 % | 99.64 % | 99.64 % | 99.64 % |
-| the profile before (MEEUS, no shift) | 98.10 % | 97.84 % | 98.15 % | 98.56 % | 98.30 % | 98.30 % |
+| fold B (2026) | 99.46 % | 99.46 % | 99.87 % | 99.65 % | 99.68 % | 99.68 % |
+| the profile before (MEEUS, no shift) | 98.16 % | 97.85 % | 98.16 % | 98.57 % | 98.28 % | 98.28 % |
 
-Every time is within 1 minute (2 at most on quirk days). Each of the 13 zones has its own record: the lowest is
-98.27 % on one time (Tabuk, Arar), every month has at least 26 days, and its whole Ramadan is held out (385 Ramadan
-days in all). Side check, Medina 2000 and 2008: 95.1–98.4 % per time, all within 1 minute (there the previous-date
-days fall elsewhere in the Hijri month and count as misses).
+Every time is within 1 minute (2 at most on quirk days). Each of the 14 zones has its own record: the lowest is
+98.27 % on one time (Tabuk, Arar), every month has at least 26 days, and its whole Ramadan is held out (415 Ramadan
+days in all). Ha'il's own: 99.1–100 % exact, all within 1 minute. Side check, Medina 2000 and 2008: 95.1–98.4 % per
+time, all within 1 minute (there the previous-date days fall elsewhere in the Hijri month and count as misses).
 
-**Tier A** (9.5) fails only on the regions: the held-out points are in 12 of the 13 (none in Ha'il).
+**Tier A** (9.5) passes since 2026-10-17: every time 99.4 % exact or more and all within 1 minute, at least 26
+held-out days in every month, a whole Ramadan held out, and held-out points in all 13 regions (Ha'il, the 13th, from
+its 2026 table). Every Saudi place shows «مطابقة للجدول الرسمي» (6.11: the national record decides it). The values
+are unchanged: both folds pick the shipped profile.
 
 **Quirk days** (8.3, 8.7, A8). A row on Hijri days 2–6 whose Fajr, sunrise, Dhuhr, Asr and Maghrib all equal the
-profile's times for the previous civil date, and not all five its own date's, is counted apart: 227 days, 15–20 per
+profile's times for the previous civil date, and not all five its own date's, is counted apart: 243 days, 15–20 per
 table, on Hijri days 4–6 in 2025, 3–5 in 2026 and 2–3 in 2027. The app does not reproduce them.
 
 **Open.**
-- A table for a place in Ha'il (any year; Ha'il itself is KACST id 1008) gives the 13th region.
 - The second's origin. E18 carries it as a constant; a method field for a shift would read better.
 - The −0.83° sunrise beside the standard sunset (with the shift, the standard sunrise needs 2 s, not 1).
 - The previous-date days move one Hijri day earlier each year and leave days 2–6 from 2028; later tables need the
