@@ -818,32 +818,15 @@ fun MainScreen(
                 if (selectedDestination == MainDestination.Today) {
                     // The location is the page header: the bottom tab already names the page,
                     // and the place is what decides every time shown below it.
+                    // The two round buttons sit on the title's first line, whatever the name's lines and the notes
+                    // under it (both rows are aligned at the top).
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 8.dp, bottom = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically,
+                        verticalAlignment = Alignment.Top,
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
-                        methodQuestion?.let { question ->
-                            MethodConfirmBanner(
-                                question = question,
-                                onChoose = { if (question.hasChooser) methodChooserOpen = true else prayerTabSettingsOpen = true },
-                                onConfirm = {
-                                    answerMethodQuestion(context, question, methodId = null, asrShadow = null)
-                                    methodQuestion = null
-                                },
-                            )
-                        }
-                        if (placeProvisional) {
-                            ProvisionalPlaceBanner(
-                                onConfirm = {
-                                    PrefsManager.setPlaceProvisional(context, false)
-                                    placeProvisional = false
-                                },
-                                onChange = { locationPickerRequested = true },
-                            )
-                        }
                         LocationPickerCard(
                             delegationId = delegationId,
                             openRequested = locationPickerRequested,
@@ -856,6 +839,26 @@ fun MainScreen(
                             modifier = Modifier.weight(1f),
                         )
                         PrayerTabSettingsButton(onClick = { prayerTabSettingsOpen = true })
+                    }
+                    // The place's and the method's questions, under the header they are about.
+                    methodQuestion?.let { question ->
+                        MethodConfirmBanner(
+                            question = question,
+                            onChoose = { if (question.hasChooser) methodChooserOpen = true else prayerTabSettingsOpen = true },
+                            onConfirm = {
+                                answerMethodQuestion(context, question, methodId = null, asrShadow = null)
+                                methodQuestion = null
+                            },
+                        )
+                    }
+                    if (placeProvisional) {
+                        ProvisionalPlaceBanner(
+                            onConfirm = {
+                                PrefsManager.setPlaceProvisional(context, false)
+                                placeProvisional = false
+                            },
+                            onChange = { locationPickerRequested = true },
+                        )
                     }
                 } else {
                     // No page title: the selected bottom tab already names the page.
@@ -1850,8 +1853,9 @@ private fun LocationPickerCard(
         savedDelegation?.nomAr?.takeIf { it != locationTitle },
         governorateName?.takeIf { it != locationTitle && it != savedDelegation?.nomAr },
     ).joinToString("، ")
+    // A place abroad found by GPS is named by its catalogue city («قرب X»), a delegation by its neighbourhood.
     val gpsSource = stringResource(R.string.location_header_from_gps)
-        .takeIf { selectedLocation.fromGps && selectedLocation.name != null }
+        .takeIf { selectedLocation.fromGps && (selectedLocation.name != null || abroad != null) }
     val locationSubtitle = if (abroad != null) {
         listOfNotNull(gpsSource, abroad.countryCode?.let { CitySearch.countryName(PlaceCountry.normalize(it)) }).joinToString(" · ")
     } else listOfNotNull(gpsSource, placeContext.takeIf { it.isNotEmpty() })
@@ -1860,7 +1864,7 @@ private fun LocationPickerCard(
     Column(modifier = modifier.testTag(TestTags.LOCATION_PICKER)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             // Full name, never truncated: a long name wraps instead of being cut off.
@@ -1949,7 +1953,9 @@ private fun LocationPickerCard(
                 color = TextMuted,
                 modifier = Modifier.padding(top = 6.dp),
             )
-        } else if (selectedLocation.fromGps && selectedLocation.name == null) {
+        } else if (abroad == null && selectedLocation.fromGps && selectedLocation.name == null) {
+            // Tunisia only: a delegation found by GPS whose neighbourhood polygons have no name there. Abroad there are
+            // no neighbourhoods, and the catalogue city is the name.
             Text(
                 text = stringResource(R.string.location_neighborhood_unavailable),
                 fontSize = 12.sp,
@@ -5247,10 +5253,11 @@ private fun scheduledWakeAlarmTriggersForDay(
 private fun ProvisionalPlaceBanner(onConfirm: () -> Unit, onChange: () -> Unit) {
     val context = LocalContext.current
     val label = remember { PrefsManager.getPlaceNameSnapshot(context) ?: context.getString(R.string.location_default_tunis) }
+    // Inside the page's own 16 dp margins, under the place header.
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 6.dp)
+            .padding(vertical = 6.dp)
             .clip(RoundedCornerShape(12.dp))
             .background(BannerBg)
             .border(1.dp, BannerStroke, RoundedCornerShape(12.dp))

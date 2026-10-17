@@ -160,10 +160,11 @@ internal fun MethodChooserSheet(question: MethodQuestion, onAnswered: () -> Unit
 @Composable
 internal fun MethodConfirmBanner(question: MethodQuestion, onChoose: () -> Unit, onConfirm: () -> Unit) {
     val method = MethodPresentation.name(question.defaults.preselected ?: question.defaults.fallback)
+    // Inside the page's own 16 dp margins, under the place header.
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 6.dp)
+            .padding(vertical = 6.dp)
             .clip(RoundedCornerShape(12.dp))
             .background(BannerBg)
             .border(1.dp, BannerStroke, RoundedCornerShape(12.dp))
