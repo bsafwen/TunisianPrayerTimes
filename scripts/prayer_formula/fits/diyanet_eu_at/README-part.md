@@ -81,6 +81,13 @@ limit: a place more than 25 km from every capital takes the nearest, as IGGÖ's 
 - IGGÖ's locate API on 2026-10-11 named the nearest tier-1 entry, by fitted point and by town alike, at 9 of the 10
   points read (Wels, Eferding, Pöchlarn, Tulln, Zell am See, Lienz → Heiligenblut, Leibnitz …). The exception, a query
   labelled Melk that returned POCHLARN while Diyanet lists MELK, is unexplained (its coordinates were not noted).
+- **January to March from a mosque** (`fits/diyanet_eu_at/mosque_year.py` with `fits/mosque_years.py`, 2026-10-17,
+  owner's idea; plan 9.5). One Vienna mosque of the owner's dataset prints IGGÖ's Wien table on all 275 days, every
+  time to the minute (another prints 96.8 % of them, every time within 1 min; none of the other 29 Austrian mosques
+  follows a capital's table). Its January to March 2026 (90 days) are a held-out body of `wien`'s record (`source`
+  "mosque_follower"): Fajr 100 %, sunrise 100 %, Dhuhr 97.8 %, Asr 98.9 %, Maghrib 98.9 %, Isha 97.8 % exact, every
+  time within 1 min. `wien` now has every month on all times but Fajr and Isha from May to August, which 9.2 leaves to
+  the takdir, so it still cannot pass 9.5's coverage.
 
 **Data** (test-data-local, read at run time, never copied): `research-2026-10-11/AT/iggo2026.csv` (derislam.at, nine
 cities, 1 April–31 December 2026, 275 days each), `iggo_locate_api_2026-10-11.txt` (the site's nearest-place API, notes

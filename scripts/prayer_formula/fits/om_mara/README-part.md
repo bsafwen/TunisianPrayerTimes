@@ -86,12 +86,32 @@ ALMANAC was in the engine, the profile shipped VSOP87 with + 1.28 s: 98.15 % hel
 **Tier A** (9.5). The six full-year zones pass: every time 99.46–100 % exact, all within 1 minute, 29 or more
 held-out days in every month. The 80 other zones fail on coverage: 31 held-out days, at most 3 in a month. 33 of
 them are exact on every held-out time; the weakest time is 28 of 31 (Ras Madrakah's Fajr, Nimr's Isha). They show
-«مستخلصة من جداول» until a year of calendar_page2 tables per zone is held out.
+«مستخلصة من جداول» until a year of calendar_page2 tables per zone is held out, or a follower's year (below).
+
+**A whole year from the mosques** (`fits/om_mara/mosque_year.py` with `fits/mosque_years.py`, 2026-10-17, owner's
+idea; plan 9.5). Nine mosques of the owner's dataset print a zone's table on all 25 page4 dates of 2026 (two a
+month), at least 98.7 % of the minutes exact and none more than 1 min off: two at Muscat (0), whose full-year table
+leaves nothing more to score, and seven at five of the 80 other zones. Each zone's follower with the most dates is
+its held-out year on the other 340 days of 2026 (`source` "mosque_follower"):
+
+| Zone | Followers | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha | Tier A |
+|---|---|---|---|---|---|---|---|---|
+| 3 «ازكي» (Izki) | 1 | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % | passes |
+| 28 «بركاء» (Barka) | 1 | 100 % | 100 % | 100 % | 100 % | 100 % | 99 % | passes |
+| 29 «بهلاء» (Bahla) | 1 | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % | passes |
+| 53 «صحم» (Saham) | 2 | 98 % | 99 % | 99 % | 99 % | 99 % | 99 % | passes |
+| 58 «ضنك» (Dhank) | 2 | 99 % | 100 % | 99 % | 92 % | 99 % | 100 % | no: Asr beyond 1 min on 14 days of February |
+
+Every time of the first four is within 1 minute, so they pass 9.5 and show «مطابقة للجدول الرسمي». Dhank's two
+followers share one calendar, whose Asr is 2 min early on 10 days of early February and 7–9 min late on its last
+four; no other follower strays in February, so that Asr is the mosques', not the ministry's, and Dhank stays
+«مستخلصة من جداول». 21 more mosques print 80–97 % of a zone's minutes (four at Barka 95.3 %, one at Samail 96.7 %,
+five at Al Buraimi 89.3 %): not followers.
 
 **Quirk days.** None: every miss is 1 minute, at a rounding boundary.
 
 **Open issues.**
 - A full-year calendar_page2 table for each of the 80 zones (11 years are online, 2021–2031), for their points and
-  their tier-A coverage.
+  their tier-A coverage (four have it from a follower, above).
 - The towns of six wilayat (above), and M5's catalogue rows for every named town.
 - The origin of the constant shift; a method field for it would read better than an E18 constant.

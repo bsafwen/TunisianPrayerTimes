@@ -74,3 +74,27 @@ writes none, so run it again after any fit that rewrites an asset.
 `monthSplit`), per time the held-out share exact and within 1 minute, the held-out days per calendar month,
 `heldOutRamadanDays`, `quirkDays`, `maxDiffMin`, and, for `sa_umm_al_qura`, the held-out `regions`. The
 phone decides the chip from it (`FitStats.passesTierA`, 9.5).
+
+## A year from the mosques (plan 9.5, owner 2026-10-17)
+
+Where the official days at hand cover less than a year, a mosque of the owner's dataset that follows the official
+table stands in for it: `mosque_years.py` tries every mosque of the country against its three nearest zones' official
+days of 2026 and keeps it where it reproduces one (at least 20 days, 98 % of the minutes exact, none more than 1 min
+off); per zone, the follower with the most official days is scored on its other days of 2026, as the app computes the
+zone, and its year is added to the zone's record as a held-out body (`source` "mosque_follower", which the explainer
+shows as «تقويم مسجد يتّبع الجدول الرسمي»). Days a calendar prints on a wrong clock are quirk days. Each fit's
+`mosque_year.py` gives it the official days and the profile; run it after `fit.py` (`--write`; it refuses a record
+that holds a follower year already). The dataset is read in place, never copied, and mawaqit.net is never fetched.
+
+| Fit | Followers | Year added | Result |
+|---|---|---|---|
+| `ma_habous` | 195 mosques, 58 localities | 2026 outside Habous's months, quirk days apart | 95–97 % exact per time, all within 1 min; no tier A |
+| `ly_awqaf` | 7, Tripoli | 305 days | 83–96 %, all within 1 min (A8); the other 21 cities have 3 official days, 20 needed |
+| `kw_awqaf` | 11 (Jahra, Abdali, Ahmadi) | the 6 untranscribed months, every zone | 66–87 %, all within 1 min (A8); tier B |
+| `om_mara` | 9 (Muscat, 5 other zones) | 340 days per zone | Izki, Barka, Bahla and Saham 98–100 %: tier A; Dhank's follower sets its own February Asr |
+| `diyanet_eu_at` | 1, Vienna (IGGÖ) | January to March | 97.8–100 %, all within 1 min; summer Fajr and Isha stay with the takdir (9.2) |
+| `sy_awqaf` | none: one Eastern Ghouta mosque prints Damascus's Ramadan 97.5 %, 2 min once | | |
+| `ie_ifi` | Ramadan followers (Dundalk; three in Dublin) | none | Dublin's keep their own Isha from May to August (up to 86 min off IFI's table), so a Ramadan match does not vouch for the year |
+| `luxembourg_shoura` | none (97.2 %: their own December sunrise) | | their August Asr shows a one-row slip in the transcription or the print (README) |
+| `bg_grand_mufti`, `eg_egsa`, `mr_islamic_affairs`, `ye_awqaf`, `si_islamska_skupnost`, `dum_rf` | none: the mosques compute their own times (at best 44 %, 83 %, 55 %, 27 %, 6 % and 72 % of the minutes; Egypt on 5 official days) | | |
+| `qa`, `ps_gaza_awqaf`, `hr_miz_zagreb`, `jo_awqaf`'s further places, North Macedonia's BFI | not tried: no mosque at the waiting places (Qatar's towns, Gaza), or under 20 official days of 2026 | | |

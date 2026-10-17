@@ -61,6 +61,18 @@ at the reference year and 546 (85.0 %) at the actual dates; by year mod 4, 432 o
 to 06-04) gives 145 of 150 computed for 2019. No zone can pass tier A (9.5: October data only outside Tripoli; LY
 is tier B).
 
+**A whole year from the mosques** (`fits/ly_awqaf/mosque_year.py` with `fits/mosque_years.py`, 2026-10-17, owner's
+idea; plan 9.5). Seven Tripoli mosques of the owner's dataset print Tripoli's table on all 60 of its month-days read
+at 2026 (the table is perpetual), to the minute. The first of them (0.4 km from the zone's point) is Tripoli's
+held-out year on its other 305 days (`source` "mosque_follower"): Fajr 84.6 %, sunrise 87.2 %, Dhuhr
+93.4 %, Asr 95.7 %, Maghrib 89.2 %, Isha 83.3 % exact, every time within 1 min, the perpetual table's A8 differences
+as on the official rows. Tripoli's record now holds 28–32 held-out days in every month (tier B either way). The
+other 21 cities have 3 official days each (2026-10-08, 10-11 and the collector's 10-16), against the 20 a follower
+needs; 31 of their mosques print the city's minute on every time of those days (17 at Ajdabiya, 7 at Sirte, 4 at Zawiya,
+2 at Benghazi on its 5 days, 1 at Al Bayda), and 45 mosques 17–26 km from Zawiya's point print its minute + 1.
+The script reads the daily collector's pages too, so a
+run once 20 days are collected (about 2026-11-02) adds those cities' years.
+
 **Quirk days.** None counted: Jalo's and Awjila's Asr is reproduced by its zone offset. The table has no 29 February
 row (A8 computes the day).
 
@@ -70,7 +82,8 @@ Sabratha and Zuwara keep Zawiya's table (Isha 1.1 and 3.4 min beyond its margin)
 
 **Open issues.**
 - A year of the daily collection (9.3) for all 22 cities: the 21 cities' points rest on two October days (their
-  latitudes not at all), Benghazi's on five; Jalo's and Awjila's Asr + 8 may vary with the season.
+  latitudes not at all), Benghazi's on five; Jalo's and Awjila's Asr + 8 may vary with the season. From 20 collected
+  days, `mosque_year.py --write` (after `fit.py`) gives the cities whose mosques follow them a held-out year.
 - Al Bayda and Hun are computed about 20 km from their towns: the Awqaf's own coordinates, or not its formula there.
   `NEAREST` maps by the zone point, so their zone boundaries move with it; E6 morning and evening points would keep
   the town centres for mapping.

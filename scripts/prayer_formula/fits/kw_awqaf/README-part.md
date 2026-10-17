@@ -65,13 +65,25 @@ equal Kuwait City's (their printed and computed minutes both add the same whole 
 **Tier.** Kuwait is tier B (9.5): every time within 1 minute, held out: passes (a perpetual table computed for the
 actual year cannot reach tier A, A8).
 
+**A whole year from the mosques** (`fits/kw_awqaf/mosque_year.py` with `fits/mosque_years.py`, 2026-10-17, owner's
+idea; plan 9.5). Eleven mosques of the owner's dataset print a listed place's table, Kuwait City's sheet plus the
+place's published offset, on all 180 transcribed rows read at 2026 (quirk rows aside): 9 at Al Jahra (+ 2), one at
+Abdali (+ 2) and one at Fahaheel, on Ahmadi's (99.9 %, 99.9 % and 98.8 % of the minutes exact, none more than 1 min
+off). Since the 12 zones are one table and whole-minute offsets, the year of the first follower with the most rows,
+its other 185 days (January, April, May, July, August and September, the months not transcribed), is a held-out body
+of every zone's record (`source` "mosque_follower"): Fajr 65.9 %, sunrise 73.5 %, Dhuhr 87.0 %, Asr 87.0 %, Maghrib
+70.8 %, Isha 65.9 % exact, every time within 1 min. Lower than the transcribed months held out (77–88 %) on Fajr and
+Isha, as A8's leap-cycle differences fall unevenly over the year, but within 1 minute everywhere: tier B holds. About
+70 more mosques share one calendar 96.3 % exact against the sheet, every time within 1 min: another computation of
+the same method (the ministry's yearly times, perhaps), not a follower.
+
 **Quirk days.** 29 February (read at 2012-02-29 for 2011, at 2028-02-29 for the 2026 score) and 1 March, counted
 apart (Q15): the only 2-minute difference of the year is the sheet's 29 February sunrise (06:16, after 28 February's
 06:15).
 
 **Open questions.**
 - The other six months (January, April, May, July, August, September) are not transcribed; the ministry's PDF would
-  replace the photos (9.3).
+  replace the photos (9.3). Until then the followers' calendars hold them out (above).
 - Asr on the apparent sun is new: the plan's 8.2 row had the geometric sun. A written statement from the ministry or
   the Al-Ojairi centre would confirm it, and the angles.
 - Ramadan: the sheet shows nothing; Ramadan 1448 tables would show any change.

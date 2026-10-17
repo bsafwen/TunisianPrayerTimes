@@ -54,3 +54,11 @@ wrong side of its change (60 min off); Dhuhr on 2 October is printed 13:34 betwe
 2. One year, eleven months: the 2027 table, when published, is the held-out year (whether the Shoura keeps the same
    program, and the same early evening sun).
 3. Troisvierges and the north, near the validity guard's threshold (6.5), are for the scan with this point.
+4. August's Asr may be one row off (found 2026-10-17 with the owner's mosque dataset, `fits/mosque_years.py`): from
+   2 to 23 August each transcribed Asr is the previous day's in the calendars of three mosques (Bettembourg, Mamer,
+   Mersch) that print the Shoura's table everywhere else, its four quirk days corrected; the transcription repeats
+   17:49 on the 2nd and skips 17:29 at the 24th. The fitted profile agrees with the mosques on the shifted days (21
+   August, the fit's one 2-min miss, is 17:31.4 computed, 17:31 at the mosques, 17:33 transcribed). Re-read the
+   Shoura's August page: a slip of the transcription is fixed in `shoura2026.csv`, a misprint of the Shoura becomes 22
+   quirk days. Those mosques are not followers for a year (97.2 % exact: their December sunrise is also 7–8 min early),
+   so February stays missing.

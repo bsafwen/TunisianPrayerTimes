@@ -92,7 +92,11 @@ the method at the user's own point; «حسب موقعي بالضبط» stays the
 **Open.**
 1. The Isha floor's bends need a finer E18 (73 points, 5 days apart, say) or a rule of their own (Isha = Maghrib +
    max(90, the interval)); either is an engine change, not proposed for the first release.
-2. The IFI's year tables for its towns, if it publishes them, are the held-out data for the towns' rule (Q23).
+2. The IFI's year tables for its towns, if it publishes them, are the held-out data for the towns' rule (Q23). The
+   owner's mosques do not stand in (`fits/mosque_years.py`, 2026-10-17): Dundalk's one mosque prints its town's
+   Ramadan table on all 30 days, but the three Dublin mosques that print Dublin's do not keep the IFI's year table
+   from May to August, whose Isha they set themselves (up to 86 min apart; every other time and month to the minute),
+   so a Ramadan match does not vouch for a mosque's summer.
 3. A8's drift: the app's 2028 Fajr and Isha are within 1 min of the printed table on 93.7 % and 90.4 % of days only
    (up to 4 min). Computing a perpetual table at its reference year (E5 in the engine, not only in the harness) would
    remove it; the owner's A8 decision keeps the actual year.
