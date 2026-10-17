@@ -41,10 +41,10 @@ class MethodChooserTest {
         PrefsManager.setPlace(context, place(48.86, 2.35, "Europe/Paris", "FR", "75"), "باريس", fromGps = false)
         val question = requireNotNull(pendingMethodQuestion(context))
         assertTrue(question.hasChooser)
-        answerMethodQuestion(context, question, methodId = "isna", asrShadow = null)
+        answerMethodQuestion(context, question, methodId = "fajr15_isha15", asrShadow = null)
         assertNull(pendingMethodQuestion(context))
         val choice = requireNotNull(PrefsManager.getMethodChoice(context, question.place))
-        assertEquals("isna", choice.methodId)
+        assertEquals("fajr15_isha15", choice.methodId)
         assertTrue(choice.chooserAnswered)
         assertTrue(choice.methodPicked)
     }

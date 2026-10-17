@@ -32,7 +32,7 @@ Its inputs:
 
 *Europe*
 
-- Europe has no single authority, and nearby mosques often differ by 30–50 minutes at Fajr. The app ships 26 presets tied to European bodies or practice, beside the shared reference methods (MWL, ISNA, Karachi 18°/18°, Umm al-Qura, Egyptian, INM's own…). Where practice is split (France, Belgium, the Netherlands, Switzerland, Germany, Italy, Spain, the UK, Sweden), the user is asked once, with the entries the owner's mosque dataset shows (5.6); in France the list puts the Rhône mosques' published table first in Rhône and Diyanet first in Bas-Rhin (D4). In the UK and Portugal the Asr factor is asked too.
+- Europe has no single authority, and nearby mosques often differ by 30–50 minutes at Fajr. The app ships 27 presets tied to European bodies or practice, beside the shared reference methods (MWL, ISNA, Karachi 18°/18°, Umm al-Qura, Egyptian, INM's own…). Where practice is split (France, Belgium, the Netherlands, Switzerland, Germany, Italy, Spain, the UK, Sweden), the user is asked once, with the entries the owner's mosque dataset shows (5.6); in France the list puts the Rhône mosques' published table first in Rhône and Diyanet first in Bas-Rhin (D4). In the UK and Portugal the Asr factor is asked too.
 - North of 48.56°N, the sun never reaches 18° below the horizon on some summer nights, so Fajr and Isha need a rule: about 19 such mornings in Paris, 60 in London, 122 in Oslo. Above about 65.7°N the sun itself does not set, and near the polar circle Asr can disappear. The default rule (D5) is the angle-based rule, applied every night, because it is what mosques there publish most often (5.6); it can move a real time on some nights, and the method sheet says so. Local Relative Estimation, the Muslim World League's 2009 rule, is an option.
 - Isha can fall at 01:07 in Paris in June, and Fajr at 23:53 the evening before in Kazan in May.
 
@@ -615,7 +615,7 @@ Each chip comes with a one-line source. In Austria, for example, `diyanet_eu` re
 
 **`inm` is for Tunisian places only.** It is the only method of `PrayerPlace.Inm` (D7), which has no method sheet, and the method sheet of a `Coordinates` place never lists it.
 
-**Where the methods are listed.** The reference presets below serve every region. The 26 European presets are in 7.5, the 23 profiles in 8.7 (19 authority profiles and the four fitted country profiles of A3), and the four profiles of overseas France in 7.6. "Rule" means the generic rule of D5; every preset and profile carries it, or its own rule, with the polar rule of D6.
+**Where the methods are listed.** The reference presets below serve every region. The 27 European presets are in 7.5, the 23 profiles in 8.7 (19 authority profiles and the four fitted country profiles of A3), and the four profiles of overseas France in 7.6. "Rule" means the generic rule of D5; every preset and profile carries it, or its own rule, with the polar rule of D6.
 
 | id | Fajr | Isha | Offsets (min) | High latitude | Evidence |
 |---|---|---|---|---|---|
@@ -630,7 +630,7 @@ Each chip comes with a one-line source. In Austria, for example, `diyanet_eu` re
 
 - `umm_al_qura` takes `sa_umm_al_qura`'s rounding only. Its Ramadan Isha (Maghrib + 120) keeps `PLACE_CALENDAR`, which outside Tunisia is the computed Umm al-Qura calendar (E8). Its evidence is FROM_TABLES, so its chip is «مستخلصة من جداول» everywhere it is offered, European method sheets included.
 - The former Europe presets `algeria` and `morocco` are replaced one for one by the fitted profiles `dz_marw` and `ma_habous` (8.7), which answer the open "Moroccan ministry's own parameters".
-- In all, 60 presets and profiles plus `custom`: the 7 above, 26 European (7.5), the 23 profiles of 8.7 and the 4 of overseas France (7.6).
+- In all, 61 presets and profiles plus `custom`: the 7 above, 27 European (7.5), the 23 profiles of 8.7 and the 4 of overseas France (7.6).
 
 **Changes reschedule.** Changing the method, the Asr factor, the rule, an adjustment or the picked zone invalidates the caches and reschedules silence, wake alarms, adhkar and hifz reminders, as a location change does.
 
@@ -654,18 +654,18 @@ Each chip comes with a one-line source. In Austria, for example, `diyanet_eu` re
 | BG | `bg_grand_mufti`: the Chief Mufti's table of the nearest of its 48 cities (8.8) | no |
 | GR | `diyanet_tr` (inferred: the Thrace muftis' tables are not yet looked for; AM0 looks, 8.8) | no |
 | PT | `mwl` (D15) | the Asr factor only |
-| ES | `mwl` (preselected), `isna` | yes |
-| IT | `mwl`, `isna`; no preselection | yes |
+| ES | `mwl` (preselected), `fajr15_isha15` | yes |
+| IT | `mwl`, `fajr15_isha15`; no preselection | yes |
 | IE | `ie_ifi`: the IFI's table of the nearest of its 33 towns, whatever the distance, with the validity guard (6.5, 7.5, Q23) | no |
 | RU, Moscow and Moscow oblast | `dum_rf`: DUM RF's one table «موسكو» for both, the scope its sheet names, with the validity guard (6.5, 7.4) | no |
 | RU, Tatarstan | `ru_dum_rt`: the table of the nearest of DUM RT's 44 places, Kazan, Naberezhnye Chelny and the district centres (6.5, 7.5) | no |
 | RU, elsewhere | `mwl` (D15): no other muftiate's table was found or checked (12); until the user picks a method (`methodPicked` false), every Russian place change resolves these three rows again, as France's fallback is | no |
-| FR | `mdf_12` (12° / 12°, D15), `isna`, `diyanet_eu`, `mwl`; in Rhône (69) `rhone_ctir` is added and listed first, in Bas-Rhin (67) `diyanet_eu` is listed first; no preselection; every time inside the validity envelope (E19, 7.7) | yes |
+| FR | `mdf_12` (12° / 12°, D15), `fajr15_isha15`, `diyanet_eu`, `mwl`; in Rhône (69) `rhone_ctir` is added and listed first, in Bas-Rhin (67) `diyanet_eu` is listed first; no preselection; every time inside the validity envelope (E19, 7.7) | yes |
 | BE | `karachi`, `be_sunrise_90`, `diyanet_eu`, `mwl`; no preselection | yes |
-| NL | `diyanet_eu`, `mwl`, `isna`; no preselection | yes |
-| CH | `isna`, `fajr15_isha90`, `mwl`, `diyanet_eu`, `mdf_12`; no preselection | yes |
+| NL | `diyanet_eu`, `mwl`, `fajr15_isha15`; no preselection | yes |
+| CH | `fajr15_isha15`, `fajr15_isha90`, `mwl`, `diyanet_eu`, `mdf_12`; no preselection | yes |
 | DE, SE | `diyanet_eu` (preselected), `mwl` | yes |
-| GB | `isna`, `mwl`; no preselection; plus the Asr factor; the UK presets under «طرق أخرى» (D15) | yes |
+| GB | `fajr15_isha15`, `mwl`; no preselection; plus the Asr factor; the UK presets under «طرق أخرى» (D15) | yes |
 | NO, Svalbard included (D2) | `irn`: IRN's table for the place's municipality (D6, 6.5, 7.4) | no |
 | every other European country, Finland and Poland included | `mwl` | no |
 | RE | `re_cir`, from the CIR's region of the place (`NAMED_REGIONS`, 6.5; 7.6) | the Asr factor only |
@@ -699,7 +699,7 @@ Every list also offers «طرق أخرى» (all presets and profiles, except `in
 
 **Choosers.** One component, `MethodChooserSheet`, serves every chooser country; `PrayerMethodSheet` is the picker. Each entry shows its chip and today's two key times, Fajr and Isha. «اختر ما يوافق مسجدك», and a note that it can be changed later.
 
-- **Dismissal** keeps the country's fallback: the preselected entry where there is one (DE and SE `diyanet_eu`, ES `mwl`, YT `yt_traditional`); otherwise FR `mdf_12` (`rhone_ctir` in 69, `diyanet_eu` in 67), BE `karachi`, CH `isna`, and `mwl` in NL, IT and GB (5.6).
+- **Dismissal** keeps the country's fallback: the preselected entry where there is one (DE and SE `diyanet_eu`, ES `mwl`, YT `yt_traditional`); otherwise FR `mdf_12` (`rhone_ctir` in 69, `diyanet_eu` in 67), BE `karachi`, CH `fajr15_isha15`, and `mwl` in NL, IT and GB (5.6).
 - After any dismissed chooser (DE, SE, ES and YT included), «تأكيد الطريقة» stays until the user answers.
 
 **One choice per country.** The phone keeps one `PrayerMethodChoice` per country, `method_choice_<CC>` (plus the separate keys below), holding the method, the Asr factor, the adjustments, the zone pick, whether the chooser was answered (`chooserAnswered`, for «تأكيد الطريقة») and whether the user picked the method (`methodPicked`, which stops the default being resolved again on a move: FR, HR, RS, RU, PS).
@@ -1265,7 +1265,7 @@ What the table shows:
 
 ### 7.5 European presets
 
-The 26 presets tied to European bodies or practice ("rule" means the generic rule of D5). The reference presets they sit beside are in 6.3, and the country defaults in 6.4.
+The 27 presets tied to European bodies or practice ("rule" means the generic rule of D5). The reference presets they sit beside are in 6.3, and the country defaults in 6.4.
 
 | id | Fajr | Isha | Offsets (min) | High latitude | Evidence |
 |---|---|---|---|---|---|
@@ -1274,6 +1274,7 @@ The 26 presets tied to European bodies or practice ("rule" means the generic rul
 | `rhone_ctir` | ≈ 14.5° | ≈ 13.5° | whole minutes with the E1 rounding mode the AM2 fit picks (9.4): the table's Dhuhr ≈ + 5.5 is Dhuhr + 5 rounded up (or + 6 rounded down), and its Maghrib ≈ + 2.6 about + 3; fitted from the 2020 table, the only one published, which Rhône's mosques still call by date (reference year 2020, the actual year at runtime, A8; Q33); in Rhône (69) every time comes from one zone, «الرون», at Lyon's point (6.5), elsewhere from the user's point | rule (never needed at 45–46°N) | from tables: the Conseil des Mosquées du Rhône's published unified calendar, one table for the whole département; Lyon's mosques call it as printed (5.6) |
 | `be_sunrise_90` | sunrise − 90 | 18° | none | rule (Isha) | from tables: Belgium's common practice in the mosque dataset (D15, 5.6) |
 | `fajr15_isha90` | 15° | Maghrib + 90 | none | rule (Fajr) | from tables: common in Switzerland and Germany in the mosque dataset (D4, 5.6) |
+| `fajr15_isha15` | 15° | 15° | none | rule | from tables: France's most common after 12° and 12°, and beside MWL in Italy, Spain, Switzerland, the Netherlands and the UK, in the mosque dataset (D4, 5.6). ISNA's angles, offered in Europe's lists under the practice, since ISNA's North American name misleads there (owner, 2026-10-17); `isna` stays among the other methods |
 | `gmp` | 18°, bounded by the seasonal curve as in `mcw` (at Paris always the curve: sunrise − 92 to 118 min) | Maghrib + 87 | Dhuhr + 5, Maghrib + 3 | Moonsighting seasonal, Fajr only (Isha is an interval) | from tables: the Grande Mosquée de Paris's October 2026 timetable, all six times within 1 min on all 31 days (Q21) |
 | `apbif` | 18°; on nights without it, the local solar midnight (the middle of the night of 7.4; at Paris the two are within 0.1 min on those nights) | 12°; on nights without it, likewise, by APBIF's own principle (only north of 54.56°N; APBIF states no rule there) | Fajr, Dhuhr, Asr and Maghrib + 6; Asr factor 1; E2 `Fixed(−1°)` on sunrise and sunset; E1 DOWN on sunrise, UP on Maghrib and NEAREST on the rest, checked in M3 on its tables | its own: the middle of the night on absent nights, unramped, as its tables show (Paris 2026: Fajr 02:02 on 12 June, 01:57 on 13 June, 02:00 on 30 June, 02:08 on 1 July); each such time is ESTIMATED | published: APBIF's methodology page and its 2026 tables (7.2); under «طرق أخرى» only, not in the French list (D4); 4 of the dataset's French mosques follow its Fajr (support only, 5.6) |
 | `diyanet_eu` | 18° | 16° | sunrise −7, Dhuhr +5, Asr +4, Maghrib +7 | Diyanet takdir; 5 h minimum | from tables; E4 `DAILY_0H_UT`, the sun once a day at 0h UT, as IGGÖ's 2026 tables and Diyanet's own show (Diyanet's Leibnitz table, 2026-10-11 to 11-10: 96–98 % of times exact at the town's centre and 99 % at a point under 1 km away, all within 1 min, against 45 % with the sun at the event instant). In Austria its zones are IGGÖ's nine city tables and Diyanet's Austrian places (6.5). Each IGGÖ table is computed at its fitted point, 0–4 km from the city centre except Eisenstadt's, 14 km east-north-east: on April–December 2026 (2,475 city-days; Fajr and Isha outside May–August) 97.7–98.9 % of times are exact per city and every time is within 1 minute, where the sun at the event instant leaves Vienna's Maghrib and Isha exact on about 1 day in 5. At their towns' points, Diyanet's Wels, Eferding, Pöchlarn, Tulln and Zell am See entries equal IGGÖ's site on all six times of 2026-10-11 |

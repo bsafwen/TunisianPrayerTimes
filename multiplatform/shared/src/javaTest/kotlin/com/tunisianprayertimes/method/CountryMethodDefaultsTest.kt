@@ -23,8 +23,9 @@ class CountryMethodDefaultsTest {
             }
             assertTrue(d.fallback in d.entries || d.chooser == com.tunisianprayertimes.method.ChooserKind.NONE || d.chooser == ChooserKind.ASR_ONLY, "$cc")
         }
-        // The plan's 60 (6.3) with `inm`, which never reaches the engine: 6 reference presets, 26 European, 23 profiles, 4 overseas.
-        assertEquals(59, PrayerMethods.ALL.size)
+        // The plan's 61 (6.3) with `inm`, which never reaches the engine: 6 reference presets, 27 European (15° and 15°
+        // under its practice since 2026-10-17), 23 profiles, 4 overseas.
+        assertEquals(60, PrayerMethods.ALL.size)
         assertEquals(PrayerMethods.ALL.size, PrayerMethods.ALL.map { it.id }.toSet().size, "ids are unique")
     }
 
@@ -32,7 +33,7 @@ class CountryMethodDefaultsTest {
     fun franceByDepartement() {
         val paris = CountryMethodDefaults.forCountry("FR", admin2 = "75")
         assertEquals("mdf_12", paris.fallback)
-        assertEquals(listOf("mdf_12", "isna", "diyanet_eu", "mwl"), paris.entries)
+        assertEquals(listOf("mdf_12", "fajr15_isha15", "diyanet_eu", "mwl"), paris.entries)
         assertEquals(null, paris.preselected)
         assertTrue(paris.resolvesOnMove)
         val lyon = CountryMethodDefaults.forCountry("FR", admin2 = "69")
@@ -67,7 +68,12 @@ class CountryMethodDefaultsTest {
         assertEquals("diyanet_eu", germany.preselected)
         assertEquals("diyanet_eu", germany.fallback)
         assertEquals("karachi", CountryMethodDefaults.forCountry("BE").fallback)
-        assertEquals("isna", CountryMethodDefaults.forCountry("CH").fallback)
+        assertEquals("fajr15_isha15", CountryMethodDefaults.forCountry("CH").fallback)
+        // Europe's lists offer 15° and 15° under its practice, never under ISNA's North American name.
+        for (cc in listOf("FR", "ES", "IT", "NL", "CH", "GB")) {
+            val entries = CountryMethodDefaults.forCountry(cc).entries
+            assertTrue("isna" !in entries && "fajr15_isha15" in entries, "$cc: $entries")
+        }
         for (cc in listOf("NL", "IT", "GB")) assertEquals("mwl", CountryMethodDefaults.forCountry(cc).fallback, cc)
         assertEquals(ChooserKind.METHODS_AND_ASR, CountryMethodDefaults.forCountry("GB").chooser)
         assertEquals(ChooserKind.ASR_ONLY, CountryMethodDefaults.forCountry("PT").chooser)

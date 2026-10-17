@@ -43,6 +43,9 @@ data class CountryDefault(
 object CountryMethodDefaults {
     private const val MWL = "mwl"
 
+    /** 15° and 15° as Europe's mosques practise it (EuropeanPresets.FAJR15_ISHA15), never under ISNA's name in Europe. */
+    private const val FIFTEEN = "fajr15_isha15"
+
     /**
      * The default for a place: [iso2] its country, [territory] its resolved zone id (Asia/Gaza tells the Gaza
      * Strip from the West Bank), [admin1] an RU federal subject (GeoNames code or name), [admin2] an FR
@@ -66,8 +69,8 @@ object CountryMethodDefaults {
             "BG" -> CountryDefault("bg_grand_mufti")
             "GR" -> CountryDefault("diyanet_tr", inferred = true)
             "PT" -> CountryDefault(MWL, chooser = ChooserKind.ASR_ONLY)
-            "ES" -> CountryDefault(MWL, ChooserKind.METHODS, listOf(MWL, "isna"), preselected = MWL)
-            "IT" -> CountryDefault(MWL, ChooserKind.METHODS, listOf(MWL, "isna"))
+            "ES" -> CountryDefault(MWL, ChooserKind.METHODS, listOf(MWL, FIFTEEN), preselected = MWL)
+            "IT" -> CountryDefault(MWL, ChooserKind.METHODS, listOf(MWL, FIFTEEN))
             "IE" -> CountryDefault("ie_ifi")
             "RU" -> CountryDefault(
                 when {
@@ -79,10 +82,10 @@ object CountryMethodDefaults {
             )
             "FR" -> france(admin2)
             "BE" -> CountryDefault("karachi", ChooserKind.METHODS, listOf("karachi", "be_sunrise_90", "diyanet_eu", MWL))
-            "NL" -> CountryDefault(MWL, ChooserKind.METHODS, listOf("diyanet_eu", MWL, "isna"))
-            "CH" -> CountryDefault("isna", ChooserKind.METHODS, listOf("isna", "fajr15_isha90", MWL, "diyanet_eu", "mdf_12"))
+            "NL" -> CountryDefault(MWL, ChooserKind.METHODS, listOf("diyanet_eu", MWL, FIFTEEN))
+            "CH" -> CountryDefault(FIFTEEN, ChooserKind.METHODS, listOf(FIFTEEN, "fajr15_isha90", MWL, "diyanet_eu", "mdf_12"))
             "DE", "SE" -> CountryDefault("diyanet_eu", ChooserKind.METHODS, listOf("diyanet_eu", MWL), preselected = "diyanet_eu")
-            "GB" -> CountryDefault(MWL, ChooserKind.METHODS_AND_ASR, listOf("isna", MWL))
+            "GB" -> CountryDefault(MWL, ChooserKind.METHODS_AND_ASR, listOf(FIFTEEN, MWL))
             "NO", "SJ" -> CountryDefault("irn")
             "RE" -> CountryDefault("re_cir", chooser = ChooserKind.ASR_ONLY)
             "YT" -> CountryDefault("yt_traditional", ChooserKind.METHODS, listOf("yt_traditional", MWL), preselected = "yt_traditional")
@@ -116,7 +119,7 @@ object CountryMethodDefaults {
 
     /** France's list (D4): the same everywhere, `rhone_ctir` first in Rhône (69), `diyanet_eu` first in Bas-Rhin (67). */
     private fun france(admin2: String?): CountryDefault {
-        val base = listOf("mdf_12", "isna", "diyanet_eu", MWL)
+        val base = listOf("mdf_12", FIFTEEN, "diyanet_eu", MWL)
         return when (admin2) {
             "69" -> CountryDefault("rhone_ctir", ChooserKind.METHODS, listOf("rhone_ctir") + base, resolvesOnMove = true)
             "67" -> CountryDefault("diyanet_eu", ChooserKind.METHODS, listOf("diyanet_eu") + (base - "diyanet_eu"), resolvesOnMove = true)

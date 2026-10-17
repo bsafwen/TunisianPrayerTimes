@@ -64,6 +64,19 @@ object EuropeanPresets {
         evidence = tables("Common in Switzerland and Germany in the mosque dataset"),
     )
 
+    /**
+     * 15° and 15° as Europe's mosques practise it (D4, 5.6): France's most common after 12° and 12°, and beside MWL in
+     * Italy, Spain, Switzerland, the Netherlands and the UK. The angles are ISNA's, but Europe's lists offer them under
+     * the practice, not under a North American society's name (owner, 2026-10-17); `isna` stays among the others.
+     */
+    val FAJR15_ISHA15 = PrayerMethod(
+        id = "fajr15_isha15",
+        fajr = FajrRule.Angle(15.0),
+        isha = IshaRule.Angle(15.0),
+        highLatitude = HighLatitudeRule.AngleBased,
+        evidence = tables("Common in mosques in France, Italy, Spain, Switzerland, the Netherlands and the UK in the mosque dataset"),
+    )
+
     val GMP = PrayerMethod(
         id = "gmp",
         fajr = FajrRule.Angle(18.0),
@@ -305,7 +318,7 @@ object EuropeanPresets {
     }
 
     val EUROPE: List<PrayerMethod> = listOf(
-        MWL_ANGLE, MDF_12, RHONE_CTIR, BE_SUNRISE_90, FAJR15_ISHA90, GMP, APBIF, DIYANET_EU, DIYANET_TR, IRN, RU_DUM_RT,
+        MWL_ANGLE, MDF_12, RHONE_CTIR, BE_SUNRISE_90, FAJR15_ISHA90, FAJR15_ISHA15, GMP, APBIF, DIYANET_EU, DIYANET_TR, IRN, RU_DUM_RT,
         BOSNIA_IZ, HR_MIZ_ZAGREB, SI_ISLAMSKA_SKUPNOST, LUXEMBOURG_SHOURA, IE_IFI, MCW, LONDON_UNIFIED, UK_18_NEAREST_DAY,
         CIL_LISBON, DUM_RF, ECFR_90, AL_KMSH, XK_BIK, MK_BFI, BG_GRAND_MUFTI,
     )
