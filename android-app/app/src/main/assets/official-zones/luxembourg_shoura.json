@@ -8,44 +8,44 @@
  "fit": {
   "fittedOn": [
    {
-    "source": "The Shoura's 2026 table (shoura.lu), 11 months (no February page)",
+    "source": "The Shoura's 2026 table (shoura.lu), 12 months",
     "from": "2026-01-01",
     "to": "2026-12-31",
-    "days": 336,
+    "days": 364,
     "zones": 1,
     "monthSplit": false
    }
   ],
   "heldOut": [
    {
-    "source": "The Shoura's 2026 table (shoura.lu), 11 months (no February page), held out by month",
+    "source": "The Shoura's 2026 table (shoura.lu), 12 months, held out by month",
     "from": "2026-01-01",
     "to": "2026-12-31",
-    "days": 336,
+    "days": 364,
     "zones": 1,
     "monthSplit": true
    }
   ],
   "exact": {
-   "FAJR": 0.7672,
-   "SUNRISE": 0.8571,
-   "DHUHR": 0.8985,
-   "ASR": 0.7262,
-   "MAGHRIB": 0.5659,
-   "ISHA": 0.5565
+   "FAJR": 0.8623,
+   "SUNRISE": 0.8462,
+   "DHUHR": 0.8898,
+   "ASR": 0.7982,
+   "MAGHRIB": 0.6768,
+   "ISHA": 0.5907
   },
   "within1": {
    "FAJR": 1.0,
    "SUNRISE": 1.0,
    "DHUHR": 1.0,
-   "ASR": 0.997,
+   "ASR": 1.0,
    "MAGHRIB": 1.0,
    "ISHA": 1.0
   },
   "daysPerMonth": {
    "FAJR": [
     31,
-    0,
+    28,
     31,
     30,
     31,
@@ -59,7 +59,7 @@
    ],
    "SUNRISE": [
     31,
-    0,
+    28,
     31,
     30,
     31,
@@ -73,7 +73,7 @@
    ],
    "DHUHR": [
     31,
-    0,
+    28,
     31,
     30,
     31,
@@ -87,13 +87,13 @@
    ],
    "ASR": [
     31,
-    0,
+    28,
     31,
     30,
     31,
     30,
     31,
-    31,
+    9,
     30,
     31,
     29,
@@ -101,7 +101,7 @@
    ],
    "MAGHRIB": [
     31,
-    0,
+    28,
     29,
     30,
     31,
@@ -115,7 +115,7 @@
    ],
    "ISHA": [
     31,
-    0,
+    28,
     31,
     30,
     31,
@@ -129,8 +129,8 @@
    ]
   },
   "heldOutRamadanDays": 0,
-  "quirkDays": 4,
-  "maxDiffMin": 2
+  "quirkDays": 26,
+  "maxDiffMin": 1
  },
  "zones": [
   {
@@ -140,11 +140,11 @@
     "lngE5": 613000
    },
    "morningPoint": {
-    "latE5": 4963667,
+    "latE5": 4961667,
     "lngE5": 622259
    },
    "eveningPoint": {
-    "latE5": 4963667,
+    "latE5": 4961667,
     "lngE5": 622259
    },
    "nameAr": "لوكسمبورغ",
@@ -163,44 +163,44 @@
    "fit": {
     "fittedOn": [
      {
-      "source": "The Shoura's 2026 table (shoura.lu), 11 months (no February page)",
+      "source": "The Shoura's 2026 table (shoura.lu), 12 months",
       "from": "2026-01-01",
       "to": "2026-12-31",
-      "days": 336,
+      "days": 364,
       "zones": 1,
       "monthSplit": false
      }
     ],
     "heldOut": [
      {
-      "source": "The Shoura's 2026 table (shoura.lu), 11 months (no February page), held out by month",
+      "source": "The Shoura's 2026 table (shoura.lu), 12 months, held out by month",
       "from": "2026-01-01",
       "to": "2026-12-31",
-      "days": 336,
+      "days": 364,
       "zones": 1,
       "monthSplit": true
      }
     ],
     "exact": {
-     "FAJR": 0.7672,
-     "SUNRISE": 0.8571,
-     "DHUHR": 0.8985,
-     "ASR": 0.7262,
-     "MAGHRIB": 0.5659,
-     "ISHA": 0.5565
+     "FAJR": 0.8623,
+     "SUNRISE": 0.8462,
+     "DHUHR": 0.8898,
+     "ASR": 0.7982,
+     "MAGHRIB": 0.6768,
+     "ISHA": 0.5907
     },
     "within1": {
      "FAJR": 1.0,
      "SUNRISE": 1.0,
      "DHUHR": 1.0,
-     "ASR": 0.997,
+     "ASR": 1.0,
      "MAGHRIB": 1.0,
      "ISHA": 1.0
     },
     "daysPerMonth": {
      "FAJR": [
       31,
-      0,
+      28,
       31,
       30,
       31,
@@ -214,7 +214,7 @@
      ],
      "SUNRISE": [
       31,
-      0,
+      28,
       31,
       30,
       31,
@@ -228,7 +228,7 @@
      ],
      "DHUHR": [
       31,
-      0,
+      28,
       31,
       30,
       31,
@@ -242,13 +242,13 @@
      ],
      "ASR": [
       31,
-      0,
+      28,
       31,
       30,
       31,
       30,
       31,
-      31,
+      9,
       30,
       31,
       29,
@@ -256,7 +256,7 @@
      ],
      "MAGHRIB": [
       31,
-      0,
+      28,
       29,
       30,
       31,
@@ -270,7 +270,7 @@
      ],
      "ISHA": [
       31,
-      0,
+      28,
       31,
       30,
       31,
@@ -284,8 +284,8 @@
      ]
     },
     "heldOutRamadanDays": 0,
-    "quirkDays": 4,
-    "maxDiffMin": 2
+    "quirkDays": 26,
+    "maxDiffMin": 1
    }
   }
  ]

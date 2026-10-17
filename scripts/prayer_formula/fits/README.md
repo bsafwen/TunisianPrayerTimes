@@ -95,6 +95,6 @@ that holds a follower year already). The dataset is read in place, never copied,
 | `diyanet_eu_at` | 1, Vienna (IGGÖ) | January to March | 97.8–100 %, all within 1 min; summer Fajr and Isha stay with the takdir (9.2) |
 | `sy_awqaf` | none: one Eastern Ghouta mosque prints Damascus's Ramadan 97.5 %, 2 min once | | |
 | `ie_ifi` | Ramadan followers (Dundalk; three in Dublin) | none | Dublin's keep their own Isha from May to August (up to 86 min off IFI's table), so a Ramadan match does not vouch for the year |
-| `luxembourg_shoura` | none (97.2 %: their own December sunrise) | | their August Asr shows a one-row slip in the transcription or the print (README) |
+| `luxembourg_shoura` | none (97.2 %: their own December sunrise) | | their August Asr showed the print's one-row slip, now 22 quirk days; February was then read from the Shoura's PDF, so the record has all 12 months (README) |
 | `bg_grand_mufti`, `eg_egsa`, `mr_islamic_affairs`, `ye_awqaf`, `si_islamska_skupnost`, `dum_rf` | none: the mosques compute their own times (at best 44 %, 83 %, 55 %, 27 %, 6 % and 72 % of the minutes; Egypt on 5 official days) | | |
 | `qa`, `ps_gaza_awqaf`, `hr_miz_zagreb`, `jo_awqaf`'s further places, North Macedonia's BFI | not tried: no mosque at the waiting places (Qatar's towns, Gaza), or under 20 official days of 2026 | | |

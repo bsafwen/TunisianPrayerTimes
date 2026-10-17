@@ -175,15 +175,15 @@ object EuropeanPresets {
         evidence = tables("vaktija.si, October–December 2026 (fits/si_islamska_skupnost)"),
     )
 
-    // M3 fit (fits/luxembourg_shoura): 12.8° / 12.8° (the windows' own 12.815° and 12.787°); Asr and Isha on the sun at
-    // 10 h UT and Maghrib at 0 h UT (E4); Isha up. Every held-out time within 1 min but one Asr day.
+    // M3 fit (fits/luxembourg_shoura, all 12 months since 2026-10-17): 12.8° / 12.8° (the windows' own 12.824° and
+    // 12.812°); Asr on the sun at 10 h UT, Maghrib and Isha at 0 h UT (E4); Isha up. Every held-out time within 1 min.
     val LUXEMBOURG_SHOURA = angles(
         "luxembourg_shoura", 12.8, 12.8, tables("The Shoura's 2026 table (fits/luxembourg_shoura)"), HighLatitudeRule.AngleBasedAbsentNights,
     ) {
         copy(
             rounding = Rounding.ALL_NEAREST + mapOf(TimeEvent.ISHA to Rounding.UP),
             sunEvaluation = mapOf(
-                TimeEvent.ASR to SunEvaluation.DAILY_10H_UT, TimeEvent.MAGHRIB to SunEvaluation.DAILY_0H_UT, TimeEvent.ISHA to SunEvaluation.DAILY_10H_UT,
+                TimeEvent.ASR to SunEvaluation.DAILY_10H_UT, TimeEvent.MAGHRIB to SunEvaluation.DAILY_0H_UT, TimeEvent.ISHA to SunEvaluation.DAILY_0H_UT,
             ),
         )
     }

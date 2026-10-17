@@ -9,9 +9,12 @@ Data, read at run time from test-data-local and never copied (D13, A7):
 - research-2026-10-11/LU/shoura2026.csv: the Shoura's 2026 table (shoura.lu), six clock times a day, Luxembourg
   clock time (summer time on its dates); no February page; 10 November missing; the rows of 18 and 19 November
   are printed (and transcribed) as October and are read as November (their values are November's).
+- research-2026-10-17/LU/shoura2026_february.csv (if present): February, read from page 2 of the Shoura's year PDF
+  (Prayer-Timetable-2026-EN.pdf, uploaded 2026-09), every minute within 1 min of the profile fitted without it.
 
 Documented misprints (8.3), counted apart: Maghrib on 27 and 28 March and Fajr on 25 October carry the summer-time
-hour on the wrong side of its change (one hour off), Dhuhr on 2 October is printed 13:34 between 13:25 and 13:24.
+hour on the wrong side of its change (one hour off), Dhuhr on 2 October is printed 13:34 between 13:25 and 13:24,
+and Asr from 2 to 23 August is printed one row late (QUIRKS).
 
 The table is for 2026, so it is fitted and scored at 2026 dates (no reference year, E5).
 
@@ -47,6 +50,9 @@ EVENTS = common.EVENTS
 AUTHORITY = "luxembourg_shoura"
 TZ = "Europe/Luxembourg"
 DATA = common.LOCAL_DATA / "research-2026-10-11" / "LU" / "shoura2026.csv"
+# February, which the 2026-10-11 transcription lacks, read on 2026-10-17 from the Shoura's year PDF (shoura.lu,
+# wp-content/uploads/2026/09/Prayer-Timetable-2026-EN.pdf, page 2); read if present.
+FEBRUARY = common.LOCAL_DATA / "research-2026-10-17" / "LU" / "shoura2026_february.csv"
 YEAR = 2026
 CENTRE = (49.61167, 6.13)              # Luxembourg City, GeoNames 2960316 (the plan's "Luxembourg City's centre")
 BOX = 0.1                              # degrees around the centre searched for the table's point
@@ -61,7 +67,11 @@ PLAN_ANGLE = 13.0
 COLUMNS = ("fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha")
 QUIRKS = {(datetime.date(YEAR, 3, 27), "MAGHRIB"), (datetime.date(YEAR, 3, 28), "MAGHRIB"),
           (datetime.date(YEAR, 10, 2), "DHUHR"), (datetime.date(YEAR, 10, 25), "FAJR")}
-SOURCE = "The Shoura's 2026 table (shoura.lu), 11 months (no February page)"
+# August's Asr from the 2nd to the 23rd is printed one row late: 17:49 twice (1 and 2 August), 17:29 never (17:30 on
+# the 23rd, 17:28 on the 24th), each printed minute the one before's (the PDF read on 2026-10-17 shows it so, and
+# three mosques that print the table everywhere else print the unslipped column, as the profile computes it).
+QUIRKS |= {(datetime.date(YEAR, 8, day), "ASR") for day in range(2, 24)}
+SOURCE = "The Shoura's 2026 table (shoura.lu)"
 SOURCE_LINE = "The Shoura of Luxembourg's 2026 prayer timetable (shoura.lu): one table for the Grand Duchy"
 
 
@@ -406,8 +416,13 @@ def describe(p: dict) -> str:
 def main() -> int:
     started = time.time()
     rows = parse(DATA)
+    if FEBRUARY.exists():
+        february = parse(FEBRUARY)
+        assert not set(february) & set(rows), "February twice"
+        rows.update(february)
     months_present = sorted({d.month for d in rows})
-    log(f"luxembourg_shoura: {len(rows)} rows of the Shoura's 2026 table ({DATA.name}), months {months_present}")
+    log(f"luxembourg_shoura: {len(rows)} rows of the Shoura's 2026 table ({DATA.name}"
+        + (f", {FEBRUARY.name}" if FEBRUARY.exists() else "") + f"), months {months_present}")
     halves = {"odd": [m for m in months_present if m % 2 == 1], "even": [m for m in months_present if m % 2 == 0]}
     fitted = {}
     for name, months in halves.items():
@@ -441,9 +456,10 @@ def main() -> int:
         log("  " + line)
 
     days = len(rows)
+    source = f"{SOURCE}, {len(months_present)} months"
     stats = common.fit_stats(
-        [common.sample(SOURCE, min(rows), max(rows), days, 1)],
-        [common.sample(SOURCE + ", held out by month", min(rows), max(rows), days, 1, month_split=True)],
+        [common.sample(source, min(rows), max(rows), days, 1)],
+        [common.sample(source + ", held out by month", min(rows), max(rows), days, 1, month_split=True)],
         held, quirk_days=len({d for d, _ in QUIRKS}))
     asset_zone = {k: v for k, v in zone.items() if k != "authority"}
     asset_zone.update({"nameAr": "لوكسمبورغ", "namedPlaces": [{"centre": common.point(*CENTRE), "catalogueIds": [], "areaKm": 0.0}],

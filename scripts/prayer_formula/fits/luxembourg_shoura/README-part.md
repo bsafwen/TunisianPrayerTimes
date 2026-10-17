@@ -1,64 +1,69 @@
 ### Luxembourg: the Shoura's table (`luxembourg_shoura`)
 
-Fitted by `fits/luxembourg_shoura/fit.py` (2026-10-15, under a minute); asset
+Fitted by `fits/luxembourg_shoura/fit.py` (2026-10-15, refitted on all 12 months 2026-10-17, under a minute); asset
 `official-zones/luxembourg_shoura.json`, one zone, mapping `NATIONAL`.
 
 **The table.** The Shoura of Luxembourg's 2026 timetable (shoura.lu), one table for the Grand Duchy, Luxembourg clock
-time with summer time on its own dates. The transcription has 336 days: no February page, 10 November missing, and
-18–19 November printed as October (read as November: their values are November's). It is a 2026 table, so it is
-fitted and scored at 2026 dates (no reference year). Its morning times and Dhuhr follow the sun at the event instant;
-its Asr, Maghrib and Isha follow a sun taken much earlier: with the sun once a day at 5–6 h UT the evening columns
-fit far better than with any engine mode (Maghrib 292 of 334 windows at the city centre, against 242 at 10 h UT, 233
-at 0 h UT and 157 at the event instant; printed by `fit.py`). The engine's nearest modes are kept per time (E4).
+time with summer time on its own dates. The transcription of 2026-10-11 has 336 days: no February page, 10 November
+missing, and 18–19 November printed as October (read as November: their values are November's). February was read on
+2026-10-17 from the Shoura's year PDF (`Prayer-Timetable-2026-EN.pdf`, uploaded in September 2026, page 2), whose
+January and August pages equal the transcription: 364 days. It is a 2026 table, so it is fitted and scored at 2026
+dates (no reference year). Its morning times and Dhuhr follow the sun at the event instant; its Asr, Maghrib and Isha
+follow a sun taken much earlier: with the sun once a day at 5 h UT the evening columns fit far better than with any
+engine mode (Maghrib 320 of 362 windows at the city centre, against 259 at 0 h UT, 253 at 10 h UT and 157 at the event
+instant; printed by `fit.py`). The engine's nearest modes are kept per time (E4).
 
 **Method** (stages of 9.4 by windows at 2026; an alternative must cover more than 0.5 % more windows than the default:
-stage 0's evaluation, NEAREST, offset 0; VSOP87 1,551 windows against MEEUS's 1,564, so MEEUS):
+stage 0's evaluation, NEAREST, offset 0; VSOP87 1,673 windows against MEEUS's 1,667, so MEEUS):
 
-- Fajr **12.8°** at the event instant, NEAREST (the windows' own angle 12.815°, 289 of 335; 278 at 12.8°).
-- Sunrise and Dhuhr at the event instant, NEAREST, no offset (291 of 336 and 304 of 335).
-- Asr factor 1, the sun at 10 h UT (`DAILY_10H_UT`), NEAREST (253 of 336; at the centre, at the event instant, 186).
-- Maghrib at sunset, the sun at 0 h UT (`DAILY_0H_UT`), NEAREST (226 of 334).
-- Isha **12.8°**, the sun at 10 h UT, **UP** (212 of 336; the windows' own angle 12.787°, 216).
-- Stage 0 (one evaluation for all six at the centre, 13° / 13°, NEAREST): `DAILY_10H_UT` 970 of 2,012 windows,
-  `DAILY_0H_UT` 890, the event instant 853, `KACST` 729. `AngleBasedAbsentNights` (Q37) never acts: 12.8° is reached
+- Fajr **12.8°** at the event instant, NEAREST (the windows' own angle 12.824°, 305 of 363; 275 at 12.8°).
+- Sunrise and Dhuhr at the event instant, NEAREST, no offset (312 of 364 and 331 of 363).
+- Asr factor 1, the sun at 10 h UT (`DAILY_10H_UT`), NEAREST (273 of 342).
+- Maghrib at sunset, the sun at 0 h UT (`DAILY_0H_UT`), NEAREST (244 of 362).
+- Isha **12.8°**, the sun at 0 h UT, **UP** (232 of 364; the windows' own angle 12.812°, 239). On the eleven months
+  of 2026-10-15 the sun at 10 h UT won (212 of 336); February tips it to 0 h UT, and the profile follows
+  (`EuropeanPresets.LUXEMBOURG_SHOURA`).
+- Stage 0 (one evaluation for all six at the centre, 13° / 13°, NEAREST): `DAILY_10H_UT` 1,014 of 2,158 windows,
+  `DAILY_0H_UT` 969, the event instant 891, `KACST` 742. `AngleBasedAbsentNights` (Q37) never acts: 12.8° is reached
   every night south of 53.76°N, and in-sample no time is ESTIMATED.
 
 **Zone.** `lu`, «لوكسمبورغ»: its point is Luxembourg City's centre (GeoNames 2960316, 49.61167 N 6.13 E), its named
-place; the fitted computing point 49.63667 N 6.22259 E (7.1 km east-north-east) is its E6 morning and evening point.
-Mapping `NATIONAL`: every Luxembourg place takes it where the validity guard allows (6.5).
+place; the fitted computing point 49.61667 N 6.22259 E (6.7 km east) is its E6 morning and evening point (49.63667 N
+on the eleven months). Mapping `NATIONAL`: every Luxembourg place takes it where the validity guard allows (6.5).
 
-**Data** (test-data-local, read at run time, never copied): `research-2026-10-11/LU/shoura2026.csv`.
+**Data** (test-data-local, read at run time, never copied): `research-2026-10-11/LU/shoura2026.csv` and
+`research-2026-10-17/LU/shoura2026_february.csv` (its README gives the source and the checks).
 
 **Held out** (month split: the stages refitted on the odd months score the even ones, and the reverse; common.compute;
-334–336 days per time), exact / within 1 min:
+342–364 days per time), exact / within 1 min:
 
 | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha | Worst |
 |---|---|---|---|---|---|---|
-| 76.7 / 100 % | 85.7 / 100 % | 89.9 / 100 % | 72.6 / 99.7 % | 56.6 / 100 % | 55.7 / 100 % | 2 min |
+| 86.2 / 100 % | 84.6 / 100 % | 89.0 / 100 % | 79.8 / 100 % | 67.7 / 100 % | 59.1 / 100 % | 1 min |
 
-- One time is 2 min off: Asr on 21 August. In-sample, 63.1–90.4 % exact, every time but one Asr within 1 min.
-- The preset before the fit (13° / 13°, no offsets, NEAREST, the event instant, at the centre): Fajr 10.1 % exact and
-  84.2 % within 1, Isha 23.5 % and 54.8 %, Maghrib 92.8 % within 1, up to 4 min off. The ±4 of 9.2 ("until its fit is
-  settled") can become ±1 (Asr ±2, for one day), with the documented misprints skipped.
-- Both halves find Fajr 12.8° at the event instant, sunrise and Dhuhr at the event instant and Isha 12.8° rounded up;
-  they differ on the evening evaluations (0 h or 10 h UT, within a few windows of each other), on Maghrib's rounding
-  and on the sun model, and their points lie within 2 km of the final one.
+- In-sample, 63.7–90.9 % exact, every time within 1 min. The eleven months held out 55.7–89.9 % exact, Asr's 21
+  August 2 min off (now a quirk day, below).
+- The preset before the fit (13° / 13°, no offsets, NEAREST, the event instant, at the centre): Fajr 9.9 % exact and
+  85.4 % within 1, Isha 21.7 % and 50.5 %, Maghrib 91.4 % within 1, up to 4 min off. The ±4 of 9.2 ("until its fit is
+  settled") can become ±1, with the documented misprints skipped.
+- Both halves find Fajr 12.8° at the event instant, sunrise and Dhuhr at the event instant, Asr at 10 h UT and Isha
+  12.8° rounded up, on VSOP87; they differ on Isha's evaluation (0 h UT on the odd months, 10 h UT on the even ones)
+  and take Maghrib at 10 h UT, and their points lie within 3.4 km of the final one.
+- No zone record can pass tier A (9.5): every month is held out, but 59–89 % exact per time.
 
-**Quirk days** (4, counted apart): Maghrib on 27 and 28 March and Fajr on 25 October carry the summer-time hour on the
-wrong side of its change (60 min off); Dhuhr on 2 October is printed 13:34 between 13:25 and 13:24.
+**Quirk days** (26 dates, counted apart): Maghrib on 27 and 28 March and Fajr on 25 October carry the summer-time hour
+on the wrong side of its change (60 min off); Dhuhr on 2 October is printed 13:34 between 13:25 and 13:24; Asr from
+2 to 23 August is printed one row late: 17:49 on both the 1st and the 2nd, never 17:29 (17:30 on the 23rd, 17:28 on
+the 24th), each printed minute the day before's. The PDF prints it so (read 2026-10-17); three mosques of the owner's
+dataset that print the table everywhere else (Bettembourg, Mamer, Mersch) print the unslipped column, which the
+profile computes (21 August: 17:31.4 computed, 17:31 at the mosques, 17:33 printed).
 
 **Open.**
-1. The evening columns' early sun (5–6 h UT) is no engine mode: by the windows at the centre, a `DAILY_6H_UT`-like E4
-   mode could lift Maghrib from 68 % to about 87 % exact and Isha from 63 % to about 77 %, but every time is already
-   within 1 min (Asr's one day aside), so none is proposed for the first release.
-2. One year, eleven months: the 2027 table, when published, is the held-out year (whether the Shoura keeps the same
-   program, and the same early evening sun).
+1. The evening columns' early sun (5–6 h UT) is no engine mode: by the windows at the centre, an E4 mode at that hour
+   could lift Maghrib from 67 % to about 88 % exact and Isha from 64 % to about 77 %, but every time is already
+   within 1 min, so none is proposed for the first release.
+2. The 2027 table, when published, is the held-out year (whether the Shoura keeps the same program, and the same early
+   evening sun); 10 November 2026 is not transcribed.
 3. Troisvierges and the north, near the validity guard's threshold (6.5), are for the scan with this point.
-4. August's Asr may be one row off (found 2026-10-17 with the owner's mosque dataset, `fits/mosque_years.py`): from
-   2 to 23 August each transcribed Asr is the previous day's in the calendars of three mosques (Bettembourg, Mamer,
-   Mersch) that print the Shoura's table everywhere else, its four quirk days corrected; the transcription repeats
-   17:49 on the 2nd and skips 17:29 at the 24th. The fitted profile agrees with the mosques on the shifted days (21
-   August, the fit's one 2-min miss, is 17:31.4 computed, 17:31 at the mosques, 17:33 transcribed). Re-read the
-   Shoura's August page: a slip of the transcription is fixed in `shoura2026.csv`, a misprint of the Shoura becomes 22
-   quirk days. Those mosques are not followers for a year (97.2 % exact: their December sunrise is also 7–8 min early),
-   so February stays missing.
+4. The mosques that print the Shoura's table (5.6) are not followers for a year (`fits/mosque_years.py`): their
+   December sunrise is 7–8 min early, 97.2 % of the minutes exact.
