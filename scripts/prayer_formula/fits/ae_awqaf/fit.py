@@ -5,14 +5,20 @@ Accurate Times (plan 8.1, 8.2, 8.5, 8.6, 8.7, 8.8, Q13; milestone AM2, harness 9
 asset, android-app/app/src/main/assets/official-zones/ae_awqaf.json (schema 1).
 
 Data, read at run time and never copied (D13, A7):
+- test-data-local/research-2026-10-17/AE/awqaf_email_2026.csv: Awqaf's 2026 tables for nine locations, every day,
+  which Awqaf emailed to the owner on 2026-10-17 on the condition that the app makes no money from them (README there):
+  36 Abu Dhabi, 37 Al Ain, 57, 66 Ajman, 69 Dubai, 73 Fujairah, 82 Ras Al Khaimah, 91 Sharjah, 94 Umm Al Quwain. The
+  fitted zones' rows; the website's copies below cross-check it. The file labels 57 "Al Ruways", but its fitted point
+  lies 9 km from Madinat Zayed, which Awqaf's area list also gives location 57 (Al Ruways and Al Dhannah are 61).
 - test-data-local/research-2026-10-08/AE/ae/ad36.txt, ain37.txt, dxb69.txt: Awqaf's 2026 tables for Abu Dhabi (36),
-  Al Ain (37) and Dubai (69), every third day; aeskeptic/work/ad_official.txt (Abu Dhabi, every day of March, June,
-  October and December 2026) and aeskeptic/work/dxb_oct.txt (Dubai, every day of October 2026), collected
-  independently and equal to the first files on every shared day.
+  Al Ain (37) and Dubai (69), every third day, from its website; aeskeptic/work/ad_official.txt (Abu Dhabi, every day
+  of March, June, October and December 2026) and aeskeptic/work/dxb_oct.txt (Dubai, every day of October 2026),
+  collected independently and equal to the first files on every shared day. They agree with the email on every shared
+  day but one (Abu Dhabi's Maghrib of 2026-03-30, a minute later on the website), which the run reports.
 - test-data-local/research-2026-10-11/AE/emirates_2026-10-11.json: Awqaf's area list (319 areas, 41 locations).
 - test-data-local/research-2026-10-11/GEONAMES/cities1000.zip: town points for the zones and the named areas.
 - C:/Accurate Times/loc.txt (ICOP's Accurate Times 5.7, the owner's install; supportive evidence only, 8.5): read in
-  place, as search seeds for the three fitted zones and, for the locations without a GeoNames town, the point of the
+  place, as search seeds for the nine fitted zones and, for the locations without a GeoNames town, the point of the
   entry that names the location; nothing else of it goes into the asset.
 
 The plan's method (8.2, 8.7) is kept and checked by windows: 18/18, Dhuhr + 2, Asr factor 1 on the apparent sun (E13)
@@ -20,7 +26,8 @@ with the noon shadow taken at Dhuhr's published instant, transit + 2 min (E4 SHA
 misses in June and July otherwise), every time to the nearest minute, VSOP87 (E14); sunrise and sunset on E2
 `Refraction` with the zone's pressure and
 temperature and its morning and evening elevations (fallback `Fixed(-1.4)` at exact coordinates); Fajr and sunrise at
-the eastern point, the rest at the western point (E6; Accurate Times' "City Settings").
+the eastern point, the rest at the western point (E6; Accurate Times' "City Settings"), and Al Ain's sunrise at a
+point of its own (E6 eventPoints).
 
 Each fitted zone, by windows (a published minute bounds the unrounded time to a minute, so each day bounds the
 parameter; the value most days allow wins):
@@ -31,18 +38,20 @@ parameter; the value most days allow wins):
 3. the evening elevation, from Maghrib (pressure and temperature from the morning elevation by the climate law of
    Accurate Times' UAE entries: ISA lapse rate with 30 C at sea level, rounded as the entries store them);
 4. the eastern longitude and the morning elevation jointly, from Fajr (18 degrees) and sunrise (9.4: Fajr is not
-   traded for sunrise).
+   traded for sunrise);
+5. at the zones of OWN_SUNRISE (Al Ain), sunrise's own longitude on the zone's parallel and the morning elevation,
+   jointly from sunrise, then the evening elevation again at the new pressure and temperature.
+Dubai's table (69) is not reproduced: its times miss single minutes on scattered days of every month (tier B).
 Held out: the one year in hand (2026), by month-split (fold A fits each zone on the odd months and scores the even
 ones, fold B the reverse). The asset takes the values fitted on every day; its FitStats are the folds' scores.
 
-The zones' values are fixed (FIRST_FIT): the stages above ran on 2026-10-15 with Asr's noon shadow at the transit,
-and when Asr moved to SHADOW_AT_DHUHR every other value, the folds' own included, was kept (coordinator's decision),
-so a run reproduces them and only rescores; --refit runs the stages again, Asr's new rule included (for new tables).
+The zones' values are fixed (FIRST_FIT): the stages above ran on 2026-10-18 on the emailed year, so a run reproduces
+them and only rescores; --refit runs the stages again (for new tables).
 
-The 38 other locations have no official table in hand (Awqaf's Open Data API is not collected, 9.3): they are
-written with provisional inputs, the town point with the fitted zones' median elevations and no eastern point, and no
-fit record; CHECK reports how Accurate Times' own entries would do on the three fitted tables (their parameters stay
-out of the asset until a table confirms them, 8.5). The three locations no allowed source places (43, 74, 80) are
+The 32 other locations have no official table in hand (Awqaf's Open Data API registers UAE residents only, 9.3): 29
+are written with provisional inputs, the town point with the fitted zones' median elevations and no eastern point,
+and no fit record; CHECK reports how Accurate Times' own entries would do on the nine fitted tables (their parameters
+stay out of the asset until a table confirms them, 8.5). The three locations no allowed source places (43, 74, 80) are
 left out.
 
 The search loops use an interpolated sun table fed to the reference engine's own solver functions; every score
@@ -78,15 +87,16 @@ AE = common.LOCAL_DATA / "research-2026-10-08" / "AE"
 AREAS = common.LOCAL_DATA / "research-2026-10-11" / "AE" / "emirates_2026-10-11.json"
 GEONAMES = common.LOCAL_DATA / "research-2026-10-11" / "GEONAMES" / "cities1000.zip"
 LOC = Path("C:/Accurate Times/loc.txt")
+EMAIL = common.LOCAL_DATA / "research-2026-10-17" / "AE" / "awqaf_email_2026.csv"
+EMAIL_KEYS = {"FAJR": "fajr", "SUNRISE": "shuroq", "DHUHR": "dhuhr", "ASR": "asr", "MAGHRIB": "maghrib", "ISHA": "isha"}
 SOURCE = "ae_awqaf_tables_2026"
-SOURCE_LINE = ("The General Authority of Islamic Affairs and Endowments (awqaf.gov.ae): its 41 locations' tables, computed "
-               "with ICOP's Accurate Times; three fitted on their 2026 tables (Abu Dhabi, Al Ain, Dubai)")
+SOURCE_LINE = ("The General Authority of Islamic Affairs and Endowments (Awqaf): its 41 locations' tables, computed with "
+               "ICOP's Accurate Times; nine fitted on the 2026 tables Awqaf sent to the developer")
 EVIDENCE = ("Awqaf's tables, computed with Accurate Times: 18/18, Dhuhr + 2, apparent Asr with the noon shadow at Dhuhr, "
             "per-zone points and elevations")
 TABLES = {"36": (("ae/ad36.txt", "compact"), ("aeskeptic/work/ad_official.txt", "daily")),
           "37": (("ae/ain37.txt", "compact"),),
           "69": (("ae/dxb69.txt", "compact"), ("aeskeptic/work/dxb_oct.txt", "daily"))}
-SEED = {"36": "UAE-AD-Abu Dhabi", "37": "UAE-AD-Ain", "69": "UAE-DUB-Dubai"}   # search seeds only
 EMIRATES = {1: "01", 2: "03", 3: "06", 4: "02", 5: "07", 6: "05", 7: "04"}       # area list id -> GeoNames AE admin1
 DHUHR_OFFSET_MIN = 2
 FAJR_DEG = ISHA_DEG = 18.0
@@ -95,20 +105,37 @@ ASR_MODE = "SHADOW_AT_DHUHR"              # E4: Asr's noon shadow at Dhuhr's pub
 FOLDS = (("A", (1, 3, 5, 7, 9, 11)), ("B", (2, 4, 6, 8, 10, 12)))
 TOLERANCE = 0.0075
 LAT_STEP = 0.0025
+# E6 eventPoints: the zones whose sunrise takes a longitude of its own on the zone's parallel (stage 5). At Al Ain's
+# shared eastern point sunrise misses 12 held-out days of 365 (96.7 %) and no single longitude and elevation serve
+# both Fajr and sunrise; at its own longitude, 12 km further east with a lower morning elevation, it misses 5.
+OWN_SUNRISE = ("37",)
 # The locations without a table take the fitted zones' median elevations. True would write instead the elevation,
 # point and city diameter of the Accurate Times entry that names the location: better where the entry holds (CHECK),
 # but plan 8.5 ships its parameters only once an official table confirms them.
 SHIP_ACCURATE_TIMES_INPUTS = False
-# Each fitted zone's values from the fit of 2026-10-15 (all days, and each month-split fold's own), kept when Asr moved
-# to SHADOW_AT_DHUHR (coordinator's decision, 2026-10-15): a run reproduces them and only rescores; --refit re-picks.
-# (latitude of both points, western longitude, eastern longitude, morning elevation m, evening elevation m)
+# Each fitted zone's values from the refit of 2026-10-18 on Awqaf's emailed year (all days, and each month-split
+# fold's own; Asr by SHADOW_AT_DHUHR): a run reproduces them and only rescores; --refit re-picks.
+# (latitude of both points, western longitude, eastern longitude, morning elevation m, evening elevation m[, sunrise's
+# own longitude, OWN_SUNRISE])
 FIRST_FIT = {
-    "36": {"all": (24.47, 54.2996, 54.643, 223, 223), "A": (24.47, 54.2996, 54.6395, 229, 224),
-           "B": (24.46, 54.2994, 54.6434, 222, 222)},
-    "37": {"all": (24.2075, 55.5301, 56.0703, 428, 286), "A": (24.2075, 55.5306, 56.0735, 424, 286),
-           "B": (24.2075, 55.5299, 56.0708, 429, 285)},
-    "69": {"all": (25.1175, 55.0763, 55.5477, 215, 240), "A": (25.1375, 55.07, 55.5407, 219, 234),
-           "B": (25.115, 55.0828, 55.5433, 210, 241)},
+    "36": {"all": (24.4625, 54.2996, 54.6444, 222, 223), "A": (24.4625, 54.2996, 54.6435, 222, 223),
+           "B": (24.4625, 54.2994, 54.6444, 222, 223)},
+    "37": {"all": (24.2125, 55.53, 56.071, 323, 282, 56.191), "A": (24.21, 55.53, 56.071, 352, 284, 56.1585),
+           "B": (24.2125, 55.5299, 56.071, 293, 280, 56.226)},
+    "57": {"all": (23.6575, 53.6133, 53.8581, 192, 194), "A": (23.655, 53.6116, 53.8586, 192, 193),
+           "B": (23.6575, 53.6133, 53.8593, 192, 194)},
+    "66": {"all": (25.415, 55.4321, 55.6262, 225, 224), "A": (25.4175, 55.4321, 55.6264, 225, 224),
+           "B": (25.4175, 55.4343, 55.6238, 225, 223)},
+    "69": {"all": (25.11, 55.0778, 55.5459, 222, 234), "A": (25.1, 55.0712, 55.5473, 225, 227),
+           "B": (25.11, 55.0817, 55.5431, 216, 245)},
+    "73": {"all": (25.1475, 56.2188, 56.3597, 240, 239), "A": (25.145, 56.2205, 56.3592, 239, 238),
+           "B": (25.14, 56.2197, 56.3599, 242, 241)},
+    "82": {"all": (25.7425, 55.8842, 56.1305, 224, 223), "A": (25.7475, 55.8839, 56.1285, 224, 225),
+           "B": (25.7425, 55.8844, 56.131, 223, 223)},
+    "91": {"all": (25.315, 55.3484, 55.6459, 221, 223), "A": (25.315, 55.3486, 55.6462, 221, 223),
+           "B": (25.3175, 55.3476, 55.646, 222, 221)},
+    "94": {"all": (25.5575, 55.537, 55.7832, 222, 223), "A": (25.555, 55.5359, 55.7852, 221, 222),
+           "B": (25.5575, 55.537, 55.7833, 222, 224)},
 }
 EPOCH = datetime.date(1970, 1, 1)
 # Awqaf's 41 locations: Arabic name (the location's principal area; Awqaf's own labels are not in hand), the town
@@ -182,7 +209,36 @@ def read_table(path: Path, kind: str) -> dict[datetime.date, dict[str, int]]:
     return out
 
 
-def zone_rows(zone_id: str) -> tuple[list[Row], str]:
+def email_tables() -> dict[str, dict[datetime.date, dict[str, int]]]:
+    """Awqaf's emailed 2026 tables: zone -> date -> event -> epoch seconds (Imsak and the Hijri date left out)."""
+    out: dict[str, dict[datetime.date, dict[str, int]]] = {}
+    if not EMAIL.exists():
+        return out
+    with open(EMAIL, encoding="utf-8-sig", newline="") as fh:
+        for r in csv.DictReader(fh):
+            d = datetime.date.fromisoformat(r["date"])
+            if d in out.setdefault(r["zone"], {}):
+                raise SystemExit(f"{EMAIL.name}: zone {r['zone']} has {d} twice")
+            out[r["zone"]][d] = {e: common.local_to_epoch(TZ, d, r[k]) for e, k in EMAIL_KEYS.items()}
+    return out
+
+
+def zone_rows(zone_id: str, email: dict | None = None) -> tuple[list[Row], str]:
+    """A zone's rows: Awqaf's emailed year where it has the zone (the website's copies then only cross-check it,
+    a differing day reported), else the website's tables."""
+    if email and zone_id in email:
+        table = email[zone_id]
+        notes = [f"emailed table: {len(table)} days"]
+        for rel, kind in TABLES.get(zone_id, ()):
+            t = read_table(AE / rel, kind)
+            shared = sorted(set(t) & set(table))
+            differ = [f"{d} {e} {(table[d][e] - t[d][e]) // 60:+d}" for d in shared for e in EVENTS if t[d][e] != table[d][e]]
+            notes.append(f"{rel}: {len(shared)} shared days, " + (f"differs: {', '.join(differ)}" if differ else "equal"))
+        rows = [Row(d, table[d]) for d in sorted(table)]
+        for r in rows:
+            if [r.published[e] for e in EVENTS] != sorted(r.published[e] for e in EVENTS):
+                raise SystemExit(f"zone {zone_id} {r.day}: times out of order")
+        return rows, "; ".join(notes)
     merged: dict[datetime.date, dict[str, int]] = {}
     notes = []
     for rel, kind in TABLES[zone_id]:
@@ -349,6 +405,7 @@ class ZoneFit:
     p: float
     t: float
     counts: dict
+    lng_rise: float | None = None         # sunrise's own longitude on the zone's parallel (OWN_SUNRISE)
 
     def east_km(self) -> float:
         return km((self.lat, self.lng_w), (self.lat, self.lng_m))
@@ -452,11 +509,57 @@ def fit_zone(rows: list[Row], sun, seed: dict) -> ZoneFit:
                    {"DHUHR": dh_n, "ASR": asr_n, "ISHA": isha_n, "MAGHRIB": mag_n, "FAJR": fajr_n, "SUNRISE": rise_n, "n": n})
 
 
+def own_sunrise(rows: list[Row], sun, f: ZoneFit) -> ZoneFit:
+    """Stage 5 (OWN_SUNRISE): sunrise's own longitude on the zone's parallel and the morning elevation, jointly from
+    sunrise's elevation windows (the most days, then the longitude nearest Fajr's; 0.01 degree steps within 0.3 of
+    it, then 0.0025 within 0.06 of the best), pressure and temperature following the elevation; then the evening
+    elevation again from Maghrib at the western point, at the new pressure and temperature."""
+    h_m, h_e, mag_n = f.h_m, f.h_e, f.counts.get("MAGHRIB")
+    for _ in range(3):
+        p, t = climate(h_m)
+        hz = Horizon(p, t)
+        best = None
+        centre = f.lng_m
+        for span, step in ((0.3, 0.01), (0.06, 0.0025)):
+            for j in range(int(round(2 * span / step)) + 1):
+                lng = round(centre - span + step * j, 4)
+                rise = []
+                for row in rows:
+                    cy = row.cycle
+                    r = sun(cy.jd0 + ref.transit(cy, sun, lng) / 24)[2]
+                    e1 = hz.elevation(ref.altitude(cy, sun, f.lat, lng, cy.hours(row.published["SUNRISE"] - 30)), r)
+                    e2 = hz.elevation(ref.altitude(cy, sun, f.lat, lng, cy.hours(row.published["SUNRISE"] + 30)), r)
+                    rise.append((min(e1, e2), max(e1, e2)))
+                n, spans = sweep(rise)
+                key = (n, -abs(lng - f.lng_m))
+                if best is None or key > best[0]:
+                    best = (key, lng, widest_middle(spans))
+            centre = best[1]
+        h_new = float(round(best[2]))
+        p, t = climate(h_new)
+        hz = Horizon(p, t)
+        mag = []
+        for row in rows:
+            cy = row.cycle
+            r = sun(cy.jd0 + ref.transit(cy, sun, f.lng_w) / 24)[2]
+            e1 = hz.elevation(ref.altitude(cy, sun, f.lat, f.lng_w, cy.hours(row.published["MAGHRIB"] - 30)), r)
+            e2 = hz.elevation(ref.altitude(cy, sun, f.lat, f.lng_w, cy.hours(row.published["MAGHRIB"] + 30)), r)
+            mag.append((min(e1, e2), max(e1, e2)))
+        mag_n, m_spans = sweep(mag)
+        h_e = float(round(widest_middle(m_spans)))
+        converged = h_new == h_m
+        h_m = h_new
+        if converged:
+            break
+    p, t = climate(h_m)
+    return ZoneFit(f.lat, f.lng_w, f.lng_m, h_m, h_e, p, t, dict(f.counts, SUNRISE=best[0][0], MAGHRIB=mag_n), best[1])
+
+
 def fixed_zone(v: tuple) -> ZoneFit:
     """FIRST_FIT's values as a ZoneFit (pressure and temperature from the morning elevation, as fitted)."""
-    lat, lng_w, lng_m, h_m, h_e = v
+    lat, lng_w, lng_m, h_m, h_e = v[:5]
     p, t = climate(h_m)
-    return ZoneFit(lat, lng_w, lng_m, float(h_m), float(h_e), p, t, {})
+    return ZoneFit(lat, lng_w, lng_m, float(h_m), float(h_e), p, t, {}, v[5] if len(v) > 5 else None)
 
 
 def _spans_from(windows: list[tuple[float, float]], threshold: int) -> list[tuple[float, float]]:
@@ -486,15 +589,18 @@ def method_json(sun_model: str = "VSOP87", asr_sun: str = "APPARENT", asr_mode: 
 
 
 def fitted_zone(zone_id: str, town: tuple[float, float], f: ZoneFit) -> dict:
-    return {"id": zone_id, "point": common.point(*town), "morningPoint": common.point(f.lat, f.lng_m),
-            "eveningPoint": common.point(f.lat, f.lng_w), "elevationM": int(f.h_m), "eveningElevationM": int(f.h_e),
-            "pressureHpa": f.p, "temperatureC": f.t}
+    z = {"id": zone_id, "point": common.point(*town), "morningPoint": common.point(f.lat, f.lng_m),
+         "eveningPoint": common.point(f.lat, f.lng_w), "elevationM": int(f.h_m), "eveningElevationM": int(f.h_e),
+         "pressureHpa": f.p, "temperatureC": f.t}
+    if f.lng_rise is not None:
+        z["eventPoints"] = {"SUNRISE": common.point(f.lat, f.lng_rise)}
+    return z
 
 
 def engine_zone(z: dict) -> dict:
     lat, lng = z["point"]["latE5"] / 1e5, z["point"]["lngE5"] / 1e5
     return common.zone_json(z["id"], lat, lng, authority=AUTHORITY, **{k: z.get(k) for k in (
-        "morningPoint", "eveningPoint", "elevationM", "eveningElevationM", "pressureHpa", "temperatureC")})
+        "morningPoint", "eveningPoint", "elevationM", "eveningElevationM", "pressureHpa", "temperatureC", "eventPoints")})
 
 
 def score(method: dict, z: dict, rows: list[Row]) -> common.Score:
@@ -633,20 +739,36 @@ def main() -> int:
     meeus = TableSun("MEEUS", datetime.date(2026, 1, 1), datetime.date(2026, 12, 31))
     method = method_json()
 
+    email = email_tables()
+    if set(email) - set(LOCATIONS):
+        raise SystemExit(f"{EMAIL.name}: zones {sorted(set(email) - set(LOCATIONS))} are not Awqaf locations")
     fitted, records, all_rows, fold_scores = {}, {}, {}, {}
-    for zid in TABLES:
-        rows, note = zone_rows(zid)
+    for zid in sorted(set(TABLES) | set(email), key=int):
+        rows, note = zone_rows(zid, email)
         all_rows[zid] = rows
-        seed = at[SEED[zid]]
+        seed = at[LOCATIONS[zid][2]]
         town = places[LOCATIONS[zid][1]]
-        say(f"zone {zid} {LOCATIONS[zid][0]} ({town.name}): {len(rows)} days ({note}); seed {SEED[zid]}")
-        f = fit_zone(rows, sun, seed) if refit else fixed_zone(FIRST_FIT[zid]["all"])
+        fresh = refit or zid not in FIRST_FIT       # a zone without fixed values yet runs the stages
+        say(f"zone {zid} {LOCATIONS[zid][0]} ({town.name}): {len(rows)} days ({note}); seed {LOCATIONS[zid][2]}"
+            + ("" if not fresh or refit else "; no fixed values yet: the stages run"))
+        f = fit_zone(rows, sun, seed) if fresh else fixed_zone(FIRST_FIT[zid]["all"])
+        if fresh and zid in OWN_SUNRISE:
+            shared = f.counts["SUNRISE"]
+            f = own_sunrise(rows, sun, f)
+            say(f"  stage 5: sunrise at its own {f.lng_rise:.4f} E ({km((f.lat, f.lng_m), (f.lat, f.lng_rise)):.1f} km east of "
+                f"Fajr's), {f.counts['SUNRISE']} days' windows against {shared} at Fajr's point")
         fitted[zid] = f
         say(f"  all days: western {f.lat:.4f} N {f.lng_w:.4f} E, eastern {f.lng_m:.4f} E ({f.east_km():.1f} km), "
-            f"morning {f.h_m:.0f} m, evening {f.h_e:.0f} m, {f.p:.0f} hPa {f.t:.0f} C" + (f"; windows {f.counts}" if f.counts else ""))
+            + (f"sunrise {f.lng_rise:.4f} E, " if f.lng_rise is not None else "")
+            + f"morning {f.h_m:.0f} m, evening {f.h_e:.0f} m, {f.p:.0f} hPa {f.t:.0f} C" + (f"; windows {f.counts}" if f.counts else ""))
         say("  " + window_checks(rows, sun, f))
+        say(f"  computing point {km((f.lat, f.lng_w), (town.lat, town.lng)):.1f} km from {town.name}; nearest GeoNames town "
+            + min((f"{p.name} {km((f.lat, f.lng_w), (p.lat, p.lng)):.1f} km" for p in places.values()),
+                  key=lambda s: float(s.rsplit(' ', 2)[-2])))
         if refit:
             fm = fit_zone(rows, meeus, seed)
+            if zid in OWN_SUNRISE:
+                fm = own_sunrise(rows, meeus, fm)
             mz = fitted_zone(zid, (town.lat, town.lng), fm)
             say(f"  MEEUS refit: {overall(score(method_json('MEEUS'), mz, rows)):.2%} exact in-sample, against VSOP87's "
                 f"{overall(score(method, fitted_zone(zid, (town.lat, town.lng), f), rows)):.2%}")
@@ -654,13 +776,16 @@ def main() -> int:
         asr_transit = 0
         for name, months in FOLDS:
             part = [r for r in rows if r.day.month in months]
-            ff = fit_zone(part, sun, seed) if refit else fixed_zone(FIRST_FIT[zid][name])
+            ff = fit_zone(part, sun, seed) if fresh else fixed_zone(FIRST_FIT[zid][name])
+            if fresh and zid in OWN_SUNRISE:
+                ff = own_sunrise(part, sun, ff)
             rest = [r for r in rows if r.day.month not in months]
             s = score(method, fitted_zone(zid, (town.lat, town.lng), ff), rest)
             held.append(s)
             asr_transit += score(method_json(asr_mode="EVENT_INSTANT"), fitted_zone(zid, (town.lat, town.lng), ff), rest).exact["ASR"]
-            say(f"  fold {name} ({'fitted' if refit else 'fixed values fitted'} on {len(part)} days): {ff.lat:.4f} N, "
-                f"{ff.lng_w:.4f} / {ff.lng_m:.4f} E, {ff.h_m:.0f} / {ff.h_e:.0f} m; held out: {shares(s)}")
+            say(f"  fold {name} ({'fitted' if fresh else 'fixed values fitted'} on {len(part)} days): {ff.lat:.4f} N, "
+                f"{ff.lng_w:.4f} / {ff.lng_m:.4f} E" + (f", sunrise {ff.lng_rise:.4f} E" if ff.lng_rise is not None else "")
+                + f", {ff.h_m:.0f} / {ff.h_e:.0f} m; held out: {shares(s)}")
         total = merged(held)
         say(f"  held-out Asr {total.exact['ASR']}/{len(rows)} with the noon shadow at Dhuhr (shipped); at the same fold points "
             f"with the shadow at the transit (EVENT_INSTANT) {asr_transit}/{len(rows)}")
@@ -684,7 +809,7 @@ def main() -> int:
     # out).
     check = {}
     for zid, rows in all_rows.items():
-        e = at[SEED[zid]]
+        e = at[LOCATIONS[zid][2]]
         p, t = climate(e["elev"])
         east = e["lng"] + e["diam"] / (111.32 * math.cos(math.radians(e["lat"])))
         town = places[LOCATIONS[zid][1]]
@@ -765,7 +890,7 @@ def main() -> int:
     days = sum(len(r) for r in all_rows.values())
     profile = common.fit_stats([common.sample(SOURCE, first, last, days, len(fitted))],
                                [common.sample(SOURCE, first, last, days, len(fitted), month_split=True)], profile_total)
-    say(f"profile (three zones, held out): {shares(profile_total)}; within 1 min: "
+    say(f"profile ({len(fitted)} zones, held out): {shares(profile_total)}; within 1 min: "
         + ", ".join(f"{e} {profile['within1'][e]:.1%}" for e in EVENTS) + f"; worst {profile_total.worst} min")
     path = common.write_asset(AUTHORITY, AUTHORITY, "AE", "NEAREST", zones, fit=profile, source=SOURCE_LINE, by_admin1=True)
     say(f"wrote {path.relative_to(common.ROOT).as_posix()}: {len(zones)} zones")

@@ -66,6 +66,7 @@ object EngineTestSupport {
         put("point", point(zone.point))
         put("morningPoint", zone.morningPoint?.let(::point) ?: JsonNull)
         put("eveningPoint", zone.eveningPoint?.let(::point) ?: JsonNull)
+        if (zone.eventPoints.isNotEmpty()) put("eventPoints", buildJsonObject { zone.eventPoints.forEach { (e, p) -> put(e.name, point(p)) } })
         put("elevationM", zone.elevationM)
         put("eveningElevationM", zone.eveningElevationM)
         put("pressureHpa", zone.pressureHpa)
@@ -97,6 +98,8 @@ object EngineTestSupport {
             point = pointOf(o["point"])!!,
             morningPoint = pointOf(o["morningPoint"]),
             eveningPoint = pointOf(o["eveningPoint"]),
+            eventPoints = o["eventPoints"]?.takeIf { it !is JsonNull }?.jsonObject.orEmpty()
+                .map { (k, v) -> TimeEvent.valueOf(k) to checkNotNull(pointOf(v)) }.toMap(),
             elevationM = o["elevationM"]?.jsonPrimitive?.intOrNull,
             eveningElevationM = o["eveningElevationM"]?.jsonPrimitive?.intOrNull,
             pressureHpa = o["pressureHpa"]?.jsonPrimitive?.doubleOrNull,

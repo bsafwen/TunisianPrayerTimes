@@ -147,6 +147,14 @@ class DeviceScenariosInstrumentedTest {
             Scenario("gaza", GAZA, days("2026-03-27", 3) + days("2026-10-23", 3)),
             Scenario("moroni", MORONI, listOf(today)),
             Scenario("dubai-friday", DUBAI, listOf(LocalDate.of(2026, 10, 16))),
+            Scenario("sharjah", SHARJAH, days("2026-06-20", 2) + days("2026-12-20", 2) + today),
+            Scenario("manama-own-points", MANAMA, days("2026-06-20", 3) + today),
+            Scenario("kuwait-printed-leap-day", KUWAIT_CITY, days("2028-02-28", 3) + today),
+            Scenario("doha-printed-ramadan", DOHA, days("2026-02-17", 3) + today),
+            Scenario("beirut-printed-changes", BEIRUT, days("2026-03-28", 3) + days("2026-10-24", 3)),
+            Scenario("ramallah-printed", RAMALLAH, days("2026-03-27", 3) + days("2026-10-23", 3)),
+            Scenario("baghdad-printed", BAGHDAD, days("2026-06-20", 2) + today),
+            Scenario("nouakchott-printed", NOUAKCHOTT, days("2026-04-01", 2) + days("2026-05-01", 2) + today),
             Scenario("tunis-615", null, days("2026-01-01", 365), delegation = 615),
         )
         val out = StringBuilder()
@@ -202,6 +210,13 @@ class DeviceScenariosInstrumentedTest {
             val actual = Duration.between(day[TimeEvent.MAGHRIB].at, day[TimeEvent.ISHA].at).toMinutes()
             if (actual != gap) problems += "Riyadh $date: Isha $actual min after Maghrib, expected $gap"
         }
+        // A8: a perpetual table shows its printed clock times again every year.
+        storeCatalogueCity(KUWAIT_CITY)
+        val kuwait = ZoneId.of("Asia/Kuwait")
+        fun clocks(date: String) = PrayerTimesRepository.prayerDay(context, LocalDate.parse(date))!!.let { day ->
+            TimeEvent.entries.map { day[it].at?.atZone(kuwait)?.format(CLOCK) }
+        }
+        if (clocks("2026-03-15") != clocks("2031-03-15")) problems += "Kuwait 2026-03-15 ${clocks("2026-03-15")} against 2031-03-15 ${clocks("2031-03-15")}"
         // The UAE's Friday prayer: 12:45 local time.
         storeCatalogueCity(DUBAI)
         val jumua = PrayerTimesRepository.jumuaTime(context, LocalDate.of(2026, 10, 16))?.atZone(ZoneId.of("Asia/Dubai"))
@@ -574,6 +589,14 @@ class DeviceScenariosInstrumentedTest {
         const val GAZA = 281133L
         const val MORONI = 921772L
         const val DUBAI = 292223L
+        const val SHARJAH = 292672L
+        const val MANAMA = 290340L
+        const val KUWAIT_CITY = 285787L
+        const val DOHA = 290030L
+        const val BEIRUT = 276781L
+        const val RAMALLAH = 282239L
+        const val BAGHDAD = 98182L
+        const val NOUAKCHOTT = 2377450L
 
         val CHOICE_JSON = Json { encodeDefaults = false }
         val LOCAL: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US)

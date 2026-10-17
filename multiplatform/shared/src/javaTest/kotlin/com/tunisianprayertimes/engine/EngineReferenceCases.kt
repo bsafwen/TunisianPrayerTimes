@@ -111,6 +111,11 @@ class EngineReferenceCases {
         val LE_TAMPON_300 = place(-21.278, 55.517, "Indian/Reunion", country = "RE", elevationM = 300)
         val CILAOS = place(-21.1336, 55.4717, "Indian/Reunion", country = "RE", elevationM = 1200)
         val KUWAIT_JAHRA = place(29.3375, 47.6581, "Asia/Kuwait", country = "KW")
+        val KUWAIT_CITY = place(29.3759, 47.9774, "Asia/Kuwait", country = "KW")
+        val JERUSALEM = place(31.7767, 35.2345, "Asia/Hebron", country = "PS")
+        val BEIRUT = place(33.8938, 35.5018, "Asia/Beirut", country = "LB")
+        val NOUAKCHOTT = place(18.0735, -15.9582, "Africa/Nouakchott", country = "MR")
+        val BAGHDAD = place(33.3152, 44.3661, "Asia/Baghdad", country = "IQ")
         val DAMASCUS = place(33.5138, 36.2765, "Asia/Damascus", country = "SY")
         val BERLIN = place(52.52, 13.405, "Europe/Berlin", country = "DE")
         val OSLO = place(59.9139, 10.7522, "Europe/Oslo", country = "NO")
@@ -263,6 +268,48 @@ class EngineReferenceCases {
             evidence = Evidence(EvidenceKind.APPROXIMATE, "test"),
         )
         val MAGHRIB_ANGLE = method("maghrib_angle", 16.0, 14.0) { copy(maghribAngle = 4.0) }
+        // A8 (revised 2026-10-17): perpetual tables shown as printed, at their reference year.
+        val KUWAIT_PRINTED = method("kw_printed_like", 18.0, 17.5) { copy(asrSun = AsrSun.APPARENT, referenceYear = 2011) }
+        val QATAR_PRINTED = QATAR_LIKE.copy(id = "qa_printed_like", sunModel = SunModel.VSOP87, referenceYear = 2006)
+        val PALESTINE_PRINTED = method("ps_printed_like", 18.065, 17.847) {
+            copy(
+                offsets = mapOf(TimeEvent.MAGHRIB to 5),
+                rounding = mapOf(TimeEvent.FAJR to Rounding.DOWN, TimeEvent.SUNRISE to Rounding.UP, TimeEvent.DHUHR to Rounding.DOWN,
+                    TimeEvent.ASR to Rounding.DOWN, TimeEvent.MAGHRIB to Rounding.NEAREST, TimeEvent.ISHA to Rounding.UP),
+                horizon = Horizons(HorizonModel.Fixed(-1.5559), HorizonModel.Fixed(-1.0643)),
+                asrSun = AsrSun.APPARENT,
+                referenceYear = 2016,
+            )
+        }
+        val LEBANON_PRINTED = method("lb_printed_like", 19.69, 17.5) {
+            copy(
+                offsets = mapOf(TimeEvent.MAGHRIB to 4),
+                sunEvaluation = E.associateWith { if (it == TimeEvent.FAJR) SunEvaluation.DAILY_0H_UT else SunEvaluation.DAILY_10H_UT },
+                referenceYear = 1931,
+            )
+        }
+        val IRAQ_PRINTED = method("iq_printed_like", 18.0, 17.0) {
+            copy(
+                offsets = mapOf(TimeEvent.DHUHR to 5, TimeEvent.ASR to 3, TimeEvent.MAGHRIB to 2),
+                horizon = Horizons(HorizonModel.Fixed(-1.0145), HorizonModel.Fixed(-1.0145)),
+                asrSun = AsrSun.APPARENT,
+                sunModel = SunModel.VSOP87,
+                sunEvaluation = mapOf(TimeEvent.ASR to SunEvaluation.SHADOW_AT_DHUHR),
+                referenceYear = 2021,
+            )
+        }
+        val MAURITANIA_PRINTED = method("mr_printed_like", 19.5, 17.5) {
+            copy(
+                offsets = mapOf(TimeEvent.SUNRISE to 1, TimeEvent.MAGHRIB to 1),
+                horizon = Horizons(HorizonModel.Fixed(-1.066), HorizonModel.Fixed(-1.051)),
+                revisions = listOf(
+                    MethodRevision(LocalDate.of(2022, 4, 2), MethodChange(fajr = FajrRule.Angle(19.0), isha = IshaRule.Angle(17.0))),
+                    MethodRevision(LocalDate.of(2022, 5, 2), MethodChange(offsets = mapOf(TimeEvent.SUNRISE to 0, TimeEvent.MAGHRIB to 2),
+                        fajr = FajrRule.Angle(19.5), isha = IshaRule.Angle(17.5))),
+                ),
+                referenceYear = 2023,
+            )
+        }
         val MWL_CAPPED = PrayerMethods.MWL.copy(id = "mwl_capped", ishaLatest = LocalTime.of(22, 45))
         val ISNA_HANAFI = PrayerMethods.ISNA.copy(id = "isna_hanafi", asrShadow = 2)
         val CUSTOM_GMP = PrayerMethod(
@@ -312,6 +359,38 @@ class EngineReferenceCases {
         val SPLIT_POINTS_ZONE = MOSTAR_ZONE.copy(id = "split_points", morningPoint = LatLngE5.of(44.05, 17.95), eveningPoint = LatLngE5.of(43.55, 17.70))
         val SHAMAL_ZONE = zone("al_shamal", 26.13, 51.21) { copy(offsets = mapOf(TimeEvent.FAJR to 1.0)) }
         val DAMASCUS_ZONE = zone("damascus", 33.51, 36.29) { copy(offsets = mapOf(TimeEvent.ASR to 0.25, TimeEvent.ISHA to 0.25)) }
+        // A8's perpetual tables at zones: Kuwait City's computing point, and a place shifting it by whole minutes.
+        val KUWAIT_PRINTED_CITY_ZONE = zone("kuwait_city", 29.367, 47.974) {
+            copy(morningPoint = LatLngE5.of(29.33, 47.99), eveningPoint = LatLngE5.of(29.33, 47.99))
+        }
+        val JAHRA_PRINTED_ZONE = zone("jahra_printed", 29.34, 47.66) { copy(baseZoneId = "kuwait_city", offsets = E.associateWith { 2.0 }) }
+        // E6, a time's own point: Bahrain's calendar, every time at its own point, an Isha rule's `at` against the
+        // zone's Isha point, and a polar zone.
+        val BAHRAIN_OWN_ZONE = zone("bahrain_own", 26.2279, 50.5857) {
+            copy(
+                morningPoint = LatLngE5.of(26.21, 50.72), eveningPoint = LatLngE5.of(26.15, 50.44),
+                eventPoints = mapOf(TimeEvent.SUNRISE to LatLngE5.of(26.205, 50.62), TimeEvent.ASR to LatLngE5.of(26.18, 50.44),
+                    TimeEvent.ISHA to LatLngE5.of(26.145, 50.72)),
+            )
+        }
+        val OWN_POINTS_ZONE = zone("own_points", 33.51, 36.29) {
+            copy(
+                eventPoints = mapOf(
+                    TimeEvent.FAJR to LatLngE5.of(33.70, 36.60), TimeEvent.SUNRISE to LatLngE5.of(33.40, 36.50),
+                    TimeEvent.DHUHR to LatLngE5.of(33.51, 36.00), TimeEvent.ASR to LatLngE5.of(33.20, 36.10),
+                    TimeEvent.MAGHRIB to LatLngE5.of(33.80, 35.90), TimeEvent.ISHA to LatLngE5.of(33.30, 35.80),
+                ),
+            )
+        }
+        val LJUBLJANA_OWN_ZONE = zone("ljubljana_own", 46.0569, 14.5058) {
+            copy(eventPoints = mapOf(TimeEvent.ISHA to LatLngE5.of(46.50, 15.50), TimeEvent.FAJR to LatLngE5.of(46.00, 15.00)))
+        }
+        val TROMSO_OWN_ZONE = zone("tromso_own", 69.6492, 18.9553) {
+            copy(
+                eventPoints = mapOf(TimeEvent.FAJR to LatLngE5.of(69.0, 19.5), TimeEvent.ISHA to LatLngE5.of(70.0, 18.5),
+                    TimeEvent.MAGHRIB to LatLngE5.of(69.5, 19.0)),
+            )
+        }
 
         fun all(): List<Case> {
             val cases = mutableListOf<Case>()
@@ -469,6 +548,33 @@ class EngineReferenceCases {
             add("polar-bodo-diyanet", BODO, EngineTestSupport.dates("2026-12-21", "2026-06-21"), com.tunisianprayertimes.method.EuropeanPresets.DIYANET_EU)
             add("polar-lulea", LULEA, EngineTestSupport.dates("2026-06-21"), PrayerMethods.MWL)
             add("polar-ecfr-tromso", TROMSO, EngineTestSupport.dates("2026-06-21", "2026-12-21"), com.tunisianprayertimes.method.EuropeanPresets.ECFR_90)
+            // A8 (revised 2026-10-17): perpetual tables as printed, at their reference year: other years, the year itself,
+            // 29 February, E9 and E8 by the actual date, a zone with a base zone, and summer time (the table's clock is
+            // the zone's standard time).
+            val printed = EngineTestSupport.dates("2026-03-15", "2026-07-01", "2026-12-21", "2028-02-29", "2011-06-21", "2012-02-29")
+            add("kw-printed-city", KUWAIT_CITY, printed, KUWAIT_PRINTED) { copy(zone = KUWAIT_PRINTED_CITY_ZONE) }
+            add("kw-printed-jahra", KUWAIT_JAHRA, EngineTestSupport.dates("2026-06-21", "2027-01-10"), KUWAIT_PRINTED) {
+                copy(zone = JAHRA_PRINTED_ZONE, baseZone = KUWAIT_PRINTED_CITY_ZONE)
+            }
+            add("qa-printed", DOHA, EngineTestSupport.dates("2020-08-19", "2020-08-20", "2026-06-21", "2026-09-15"), QATAR_PRINTED)
+            add("qa-printed-ramadan", DOHA, EngineTestSupport.dates("2026-03-01", "2027-02-20"), QATAR_PRINTED) { copy(ramadanDay = true) }
+            add("ps-printed", JERUSALEM, EngineTestSupport.dates("2026-01-15", "2026-03-26", "2026-03-28", "2026-07-01", "2026-10-23",
+                "2026-10-25", "2028-02-29"), PALESTINE_PRINTED)
+            add("lb-printed", BEIRUT, EngineTestSupport.dates("2026-03-28", "2026-03-29", "2026-06-21", "2026-10-24", "2026-10-25",
+                "2026-12-21"), LEBANON_PRINTED)
+            add("iq-printed", BAGHDAD, SEASONS, IRAQ_PRINTED)
+            add("mr-printed", NOUAKCHOTT, EngineTestSupport.dates("2022-03-15", "2022-04-15", "2022-05-15", "2026-03-04", "2026-08-01"),
+                MAURITANIA_PRINTED)
+            // E6, a time's own point.
+            add("bh-own-points", MANAMA, SEASONS + nearZenith, BAHRAIN_EVENT_LIKE) { copy(zone = BAHRAIN_OWN_ZONE) }
+            add("own-points-damascus", DAMASCUS, SEASONS, PrayerMethods.MWL) { copy(zone = OWN_POINTS_ZONE) }
+            add("own-points-maghrib-angle", DAMASCUS, SEASONS, MAGHRIB_ANGLE) { copy(zone = OWN_POINTS_ZONE) }
+            add("own-points-shadow-at-dhuhr", DAMASCUS, SEASONS, UAE_LIKE) { copy(zone = OWN_POINTS_ZONE) }
+            add("own-points-isha-at", LJUBLJANA, EngineTestSupport.dates("2026-01-15", "2026-10-15"),
+                com.tunisianprayertimes.method.EuropeanPresets.SI_ISLAMSKA_SKUPNOST) { copy(zone = LJUBLJANA_OWN_ZONE) }
+            add("own-points-polar", TROMSO, EngineTestSupport.dates("2026-06-21", "2026-12-21", "2026-04-20"), PrayerMethods.MWL) {
+                copy(zone = TROMSO_OWN_ZONE)
+            }
             return cases
         }
 

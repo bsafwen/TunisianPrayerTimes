@@ -4,8 +4,11 @@ import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.ALGERIA_LIK
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.ALGIERS_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.AMMAN
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.AMMAN_ZONE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BAHRAIN_EVENT_LIKE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BAHRAIN_LIKE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BAHRAIN_OWN_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BAHRAIN_ZONE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BEIRUT
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BLIDA
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BLIDA_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BOSNIA_LIKE
@@ -19,8 +22,14 @@ import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.IRBID_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.JAHRA_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.JORDAN_LIKE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.KOSOVO_LIKE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.KUWAIT_CITY
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.KUWAIT_CITY_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.KUWAIT_JAHRA
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.KUWAIT_PRINTED
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.KUWAIT_PRINTED_CITY_ZONE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.LEBANON_PRINTED
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.LJUBLJANA
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.LJUBLJANA_OWN_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.LONDON
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MANAMA
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MECCA
@@ -31,6 +40,7 @@ import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MWL_CAPPED
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.PARIS
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.PRISTINA
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.QATAR_LIKE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.QATAR_PRINTED
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.REUNION_LIKE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SAINT_DENIS_RE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SANAA
@@ -57,6 +67,7 @@ import java.time.Duration
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZoneOffset
 import kotlin.math.abs
 import kotlin.math.floor
 import kotlin.test.Test
@@ -305,6 +316,78 @@ class EngineRulesTest {
         // At exact coordinates every time is at the place's own point.
         val exact = explain(MANAMA, march, BAHRAIN_LIKE)
         assertTrue(exact.events.all { it.longitudeDeg == null || abs(it.longitudeDeg!! - 50.586) < 1e-9 })
+    }
+
+    @Test
+    fun e6TimesAtTheirOwnPoints() {
+        // Bahrain's own-point zone: Fajr at the morning point, Dhuhr and Maghrib at the evening point, sunrise, Asr
+        // and Isha each at its own.
+        val e = explain(MANAMA, march, BAHRAIN_EVENT_LIKE, zone = BAHRAIN_OWN_ZONE)
+        val points = mapOf(
+            TimeEvent.FAJR to (26.21 to 50.72), TimeEvent.SUNRISE to (26.205 to 50.62), TimeEvent.DHUHR to (null to 50.44),
+            TimeEvent.ASR to (26.18 to 50.44), TimeEvent.MAGHRIB to (26.15 to 50.44), TimeEvent.ISHA to (26.145 to 50.72),
+        )
+        for ((event, point) in points) {
+            val explained = e.events[event.ordinal]
+            assertEquals(point.second, checkNotNull(explained.longitudeDeg), 1e-9, event.name)
+            point.first?.let { assertEquals(it, checkNotNull(explained.latitudeDeg), 1e-9, event.name) }
+        }
+        // An Isha rule's own point (Slovenia's Sarajevo) wins over the zone's Isha point; Fajr takes the zone's.
+        val si = com.tunisianprayertimes.method.EuropeanPresets.SI_ISLAMSKA_SKUPNOST
+        val sarajevo = checkNotNull((si.isha as IshaRule.Angle).at)
+        val sl = explain(LJUBLJANA, LocalDate.of(2026, 1, 15), si, zone = LJUBLJANA_OWN_ZONE)
+        assertEquals(sarajevo.longitude, checkNotNull(sl.events[TimeEvent.ISHA.ordinal].longitudeDeg), 1e-9)
+        assertEquals(15.0, checkNotNull(sl.events[TimeEvent.FAJR.ordinal].longitudeDeg), 1e-9)
+        // A zone without its own points is untouched.
+        assertEquals(
+            explain(MANAMA, march, BAHRAIN_LIKE, zone = BAHRAIN_ZONE).day,
+            explain(MANAMA, march, BAHRAIN_LIKE, zone = BAHRAIN_ZONE.copy(eventPoints = emptyMap())).day,
+        )
+    }
+
+    @Test
+    fun a8PerpetualTablesShowTheirReferenceYear() {
+        val plain = KUWAIT_PRINTED.copy(referenceYear = null)
+        fun clock(e: EngineExplanation) = TimeEvent.entries.map { e.at(it).atZone(KUWAIT_CITY.zone).toLocalTime() }
+        // Any other year shows the reference year's (2011) clock minutes on the same month and day, on its own date;
+        // 29 February takes the first leap year from the reference year.
+        for ((date, table) in listOf(
+            LocalDate.of(2026, 3, 15) to LocalDate.of(2011, 3, 15),
+            LocalDate.of(2031, 7, 1) to LocalDate.of(2011, 7, 1),
+            LocalDate.of(2028, 2, 29) to LocalDate.of(2012, 2, 29),
+        )) {
+            val shown = explain(KUWAIT_CITY, date, KUWAIT_PRINTED, zone = KUWAIT_PRINTED_CITY_ZONE)
+            assertEquals(clock(explain(KUWAIT_CITY, table, plain, zone = KUWAIT_PRINTED_CITY_ZONE)), clock(shown), "$date")
+            assertEquals(date, shown.day.date)
+            assertEquals(date, shown.at(TimeEvent.DHUHR).atZone(KUWAIT_CITY.zone).toLocalDate())
+            assertEquals(KUWAIT_PRINTED, shown.method)
+        }
+        assertEquals(LocalDate.of(2012, 2, 29), PrayerEngine.tableDate(LocalDate.of(2028, 2, 29), 2011))
+        assertEquals(LocalDate.of(2008, 2, 29), PrayerEngine.tableDate(LocalDate.of(2024, 2, 29), 2006))
+        assertEquals(LocalDate.of(2006, 12, 31), PrayerEngine.tableDate(LocalDate.of(2026, 12, 31), 2006))
+        // The reference year itself is computed as before.
+        val june2011 = LocalDate.of(2011, 6, 21)
+        assertEquals(clock(explain(KUWAIT_CITY, june2011, plain)), clock(explain(KUWAIT_CITY, june2011, KUWAIT_PRINTED)))
+        // E9 and E8 follow the actual date: Qatar's Fajr − 1 from 2020-08-20, its Ramadan Maghrib + 1.
+        val unrevised = QATAR_PRINTED.copy(revisions = emptyList())
+        assertSeconds(-60.0, explain(DOHA, june, unrevised).unrounded(TimeEvent.FAJR), explain(DOHA, june, QATAR_PRINTED).unrounded(TimeEvent.FAJR))
+        val beforeRevision = LocalDate.of(2020, 8, 19)
+        assertEquals(explain(DOHA, beforeRevision, unrevised).unrounded(TimeEvent.FAJR), explain(DOHA, beforeRevision, QATAR_PRINTED).unrounded(TimeEvent.FAJR))
+        val ramadan = LocalDate.of(2027, 2, 20)
+        assertSeconds(60.0, explain(DOHA, ramadan, QATAR_PRINTED).unrounded(TimeEvent.MAGHRIB),
+            explain(DOHA, ramadan, QATAR_PRINTED, ramadanDay = true).unrounded(TimeEvent.MAGHRIB))
+        // Summer time: the table's clock is the zone's standard time (+02 in Beirut), so a summer date shows its row
+        // an hour later on the phone's clock, and a winter date as printed.
+        val tableYear = LEBANON_PRINTED.copy(referenceYear = null)
+        val standard = BEIRUT.copy(zoneId = "+02:00")
+        for ((date, hours) in listOf(LocalDate.of(2026, 7, 1) to 1L, LocalDate.of(2026, 12, 21) to 0L)) {
+            val shown = explain(BEIRUT, date, LEBANON_PRINTED)
+            val printed = explain(standard, LocalDate.of(1931, date.monthValue, date.dayOfMonth), tableYear)
+            for (event in TimeEvent.entries) {
+                assertEquals(printed.at(event).atZone(ZoneOffset.ofHours(2)).toLocalTime().plusHours(hours),
+                    shown.at(event).atZone(BEIRUT.zone).toLocalTime(), "$date $event")
+            }
+        }
     }
 
     @Test

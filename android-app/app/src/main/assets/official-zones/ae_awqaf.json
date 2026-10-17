@@ -5,15 +5,15 @@
  "country": "AE",
  "mapping": "NEAREST",
  "byAdmin1": true,
- "source": "The General Authority of Islamic Affairs and Endowments (awqaf.gov.ae): its 41 locations' tables, computed with ICOP's Accurate Times; three fitted on their 2026 tables (Abu Dhabi, Al Ain, Dubai)",
+ "source": "The General Authority of Islamic Affairs and Endowments (Awqaf): its 41 locations' tables, computed with ICOP's Accurate Times; nine fitted on the 2026 tables Awqaf sent to the developer",
  "fit": {
   "fittedOn": [
    {
     "source": "ae_awqaf_tables_2026",
     "from": "2026-01-01",
     "to": "2026-12-31",
-    "days": 468,
-    "zones": 3,
+    "days": 3285,
+    "zones": 9,
     "monthSplit": false
    }
   ],
@@ -22,18 +22,18 @@
     "source": "ae_awqaf_tables_2026",
     "from": "2026-01-01",
     "to": "2026-12-31",
-    "days": 468,
-    "zones": 3,
+    "days": 3285,
+    "zones": 9,
     "monthSplit": true
    }
   ],
   "exact": {
-   "FAJR": 0.9594,
-   "SUNRISE": 0.9594,
-   "DHUHR": 0.9786,
-   "ASR": 0.9829,
-   "MAGHRIB": 0.9786,
-   "ISHA": 0.9509
+   "FAJR": 0.986,
+   "SUNRISE": 0.9836,
+   "DHUHR": 0.9915,
+   "ASR": 0.9866,
+   "MAGHRIB": 0.9817,
+   "ISHA": 0.9793
   },
   "within1": {
    "FAJR": 1.0,
@@ -45,88 +45,88 @@
   },
   "daysPerMonth": {
    "FAJR": [
-    33,
-    27,
-    51,
-    30,
-    33,
-    50,
-    30,
-    30,
-    30,
-    73,
-    30,
-    51
+    279,
+    252,
+    279,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
    ],
    "SUNRISE": [
-    33,
-    27,
-    51,
-    30,
-    33,
-    50,
-    30,
-    30,
-    30,
-    73,
-    30,
-    51
+    279,
+    252,
+    279,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
    ],
    "DHUHR": [
-    33,
-    27,
-    51,
-    30,
-    33,
-    50,
-    30,
-    30,
-    30,
-    73,
-    30,
-    51
+    279,
+    252,
+    279,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
    ],
    "ASR": [
-    33,
-    27,
-    51,
-    30,
-    33,
-    50,
-    30,
-    30,
-    30,
-    73,
-    30,
-    51
+    279,
+    252,
+    279,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
    ],
    "MAGHRIB": [
-    33,
-    27,
-    51,
-    30,
-    33,
-    50,
-    30,
-    30,
-    30,
-    73,
-    30,
-    51
+    279,
+    252,
+    279,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
    ],
    "ISHA": [
-    33,
-    27,
-    51,
-    30,
-    33,
-    50,
-    30,
-    30,
-    30,
-    73,
-    30,
-    51
+    279,
+    252,
+    279,
+    270,
+    279,
+    270,
+    279,
+    279,
+    270,
+    279,
+    270,
+    279
    ]
   },
   "heldOutRamadanDays": 0,
@@ -141,14 +141,14 @@
     "lngE5": 5439696
    },
    "morningPoint": {
-    "latE5": 2447000,
-    "lngE5": 5464300
+    "latE5": 2446250,
+    "lngE5": 5464440
    },
    "eveningPoint": {
-    "latE5": 2447000,
+    "latE5": 2446250,
     "lngE5": 5429960
    },
-   "elevationM": 223,
+   "elevationM": 222,
    "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
@@ -158,7 +158,7 @@
       "source": "ae_awqaf_tables_2026",
       "from": "2026-01-01",
       "to": "2026-12-31",
-      "days": 204,
+      "days": 365,
       "zones": 1,
       "monthSplit": false
      }
@@ -168,18 +168,18 @@
       "source": "ae_awqaf_tables_2026",
       "from": "2026-01-01",
       "to": "2026-12-31",
-      "days": 204,
+      "days": 365,
       "zones": 1,
       "monthSplit": true
      }
     ],
     "exact": {
-     "FAJR": 0.9853,
-     "SUNRISE": 0.9853,
+     "FAJR": 0.9918,
+     "SUNRISE": 0.9973,
      "DHUHR": 1.0,
-     "ASR": 0.9853,
-     "MAGHRIB": 0.9902,
-     "ISHA": 0.9853
+     "ASR": 0.9918,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9973
     },
     "within1": {
      "FAJR": 1.0,
@@ -191,87 +191,87 @@
     },
     "daysPerMonth": {
      "FAJR": [
-      11,
-      9,
       31,
-      10,
-      11,
+      28,
+      31,
       30,
-      10,
-      10,
-      10,
       31,
-      10,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
       31
      ],
      "SUNRISE": [
-      11,
-      9,
       31,
-      10,
-      11,
+      28,
+      31,
       30,
-      10,
-      10,
-      10,
       31,
-      10,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
       31
      ],
      "DHUHR": [
-      11,
-      9,
       31,
-      10,
-      11,
+      28,
+      31,
       30,
-      10,
-      10,
-      10,
       31,
-      10,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
       31
      ],
      "ASR": [
-      11,
-      9,
       31,
-      10,
-      11,
+      28,
+      31,
       30,
-      10,
-      10,
-      10,
       31,
-      10,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
       31
      ],
      "MAGHRIB": [
-      11,
-      9,
       31,
-      10,
-      11,
+      28,
+      31,
       30,
-      10,
-      10,
-      10,
       31,
-      10,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
       31
      ],
      "ISHA": [
-      11,
-      9,
       31,
-      10,
-      11,
+      28,
+      31,
       30,
-      10,
-      10,
-      10,
       31,
-      10,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
       31
      ]
     },
@@ -356,24 +356,30 @@
     "lngE5": 5576056
    },
    "morningPoint": {
-    "latE5": 2420750,
-    "lngE5": 5607030
+    "latE5": 2421250,
+    "lngE5": 5607100
    },
    "eveningPoint": {
-    "latE5": 2420750,
-    "lngE5": 5553010
+    "latE5": 2421250,
+    "lngE5": 5553000
    },
-   "elevationM": 428,
-   "eveningElevationM": 286,
-   "pressureHpa": 965.0,
-   "temperatureC": 27.0,
+   "elevationM": 323,
+   "eveningElevationM": 282,
+   "pressureHpa": 977.0,
+   "temperatureC": 28.0,
+   "eventPoints": {
+    "SUNRISE": {
+     "latE5": 2421250,
+     "lngE5": 5619100
+    }
+   },
    "fit": {
     "fittedOn": [
      {
       "source": "ae_awqaf_tables_2026",
       "from": "2026-01-01",
-      "to": "2026-12-30",
-      "days": 122,
+      "to": "2026-12-31",
+      "days": 365,
       "zones": 1,
       "monthSplit": false
      }
@@ -382,19 +388,19 @@
      {
       "source": "ae_awqaf_tables_2026",
       "from": "2026-01-01",
-      "to": "2026-12-30",
-      "days": 122,
+      "to": "2026-12-31",
+      "days": 365,
       "zones": 1,
       "monthSplit": true
      }
     ],
     "exact": {
-     "FAJR": 0.9754,
-     "SUNRISE": 0.9754,
-     "DHUHR": 0.9918,
-     "ASR": 0.9836,
+     "FAJR": 0.9945,
+     "SUNRISE": 0.9781,
+     "DHUHR": 1.0,
+     "ASR": 0.989,
      "MAGHRIB": 0.9918,
-     "ISHA": 0.9918
+     "ISHA": 0.9945
     },
     "within1": {
      "FAJR": 1.0,
@@ -406,88 +412,88 @@
     },
     "daysPerMonth": {
      "FAJR": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
-      11,
-      10,
-      10
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "SUNRISE": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
-      11,
-      10,
-      10
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "DHUHR": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
-      11,
-      10,
-      10
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "ASR": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
-      11,
-      10,
-      10
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "MAGHRIB": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
-      11,
-      10,
-      10
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "ISHA": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
-      11,
-      10,
-      10
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ]
     },
     "heldOutRamadanDays": 0,
@@ -516,8 +522,8 @@
     "latE5": 2296667,
     "lngE5": 5430000
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "حميم",
@@ -531,8 +537,8 @@
     "latE5": 2462000,
     "lngE5": 5461861
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "الشهامة",
@@ -546,8 +552,8 @@
     "latE5": 2515861,
     "lngE5": 5287222
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "جزيرة داس",
@@ -561,8 +567,8 @@
     "latE5": 2451750,
     "lngE5": 5230917
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "جزيرة دلما",
@@ -576,8 +582,8 @@
     "latE5": 2473361,
     "lngE5": 5577750
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "الشويب",
@@ -591,8 +597,8 @@
     "latE5": 2402083,
     "lngE5": 5176222
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "السلع",
@@ -606,8 +612,8 @@
     "latE5": 2346889,
     "lngE5": 5530389
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "القوع",
@@ -632,8 +638,8 @@
     "latE5": 2405944,
     "lngE5": 5577833
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "جبل حفيت",
@@ -647,8 +653,8 @@
     "latE5": 2416778,
     "lngE5": 5511139
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "الخزنة",
@@ -673,8 +679,8 @@
     "latE5": 2314355,
     "lngE5": 5378810
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "ليوا",
@@ -699,10 +705,145 @@
     "latE5": 2365416,
     "lngE5": 5370522
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
-   "pressureHpa": 988.0,
+   "morningPoint": {
+    "latE5": 2365750,
+    "lngE5": 5385810
+   },
+   "eveningPoint": {
+    "latE5": 2365750,
+    "lngE5": 5361330
+   },
+   "elevationM": 192,
+   "eveningElevationM": 194,
+   "pressureHpa": 992.0,
    "temperatureC": 29.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9945,
+     "ASR": 0.9918,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9973
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
    "nameAr": "مدينة زايد",
    "admin1": [
     "01"
@@ -725,8 +866,8 @@
     "latE5": 2409167,
     "lngE5": 5349333
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "المرفأ",
@@ -740,8 +881,8 @@
     "latE5": 2411028,
     "lngE5": 5273056
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "الرويس",
@@ -766,8 +907,8 @@
     "latE5": 2446235,
     "lngE5": 5533715
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "سويحان",
@@ -801,8 +942,8 @@
     "latE5": 2488639,
     "lngE5": 5306944
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "جزيرة زركوه",
@@ -816,10 +957,145 @@
     "latE5": 2540177,
     "lngE5": 5547878
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "morningPoint": {
+    "latE5": 2541500,
+    "lngE5": 5562620
+   },
+   "eveningPoint": {
+    "latE5": 2541500,
+    "lngE5": 5543210
+   },
+   "elevationM": 225,
+   "eveningElevationM": 224,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9918,
+     "SUNRISE": 0.9945,
+     "DHUHR": 0.9918,
+     "ASR": 0.9863,
+     "MAGHRIB": 0.989,
+     "ISHA": 0.989
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
    "nameAr": "عجمان",
    "admin1": [
     "02"
@@ -878,8 +1154,8 @@
     "latE5": 2532990,
     "lngE5": 5602188
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "المنامة",
@@ -904,8 +1180,8 @@
     "latE5": 2481089,
     "lngE5": 5610657
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "مصفوت",
@@ -931,24 +1207,24 @@
     "lngE5": 5530927
    },
    "morningPoint": {
-    "latE5": 2511750,
-    "lngE5": 5554770
+    "latE5": 2511000,
+    "lngE5": 5554590
    },
    "eveningPoint": {
-    "latE5": 2511750,
-    "lngE5": 5507630
+    "latE5": 2511000,
+    "lngE5": 5507780
    },
-   "elevationM": 215,
-   "eveningElevationM": 240,
-   "pressureHpa": 989.0,
+   "elevationM": 222,
+   "eveningElevationM": 234,
+   "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "fit": {
     "fittedOn": [
      {
       "source": "ae_awqaf_tables_2026",
       "from": "2026-01-01",
-      "to": "2026-12-30",
-      "days": 142,
+      "to": "2026-12-31",
+      "days": 365,
       "zones": 1,
       "monthSplit": false
      }
@@ -957,19 +1233,19 @@
      {
       "source": "ae_awqaf_tables_2026",
       "from": "2026-01-01",
-      "to": "2026-12-30",
-      "days": 142,
+      "to": "2026-12-31",
+      "days": 365,
       "zones": 1,
       "monthSplit": true
      }
     ],
     "exact": {
-     "FAJR": 0.9085,
-     "SUNRISE": 0.9085,
-     "DHUHR": 0.9366,
-     "ASR": 0.9789,
-     "MAGHRIB": 0.9507,
-     "ISHA": 0.8662
+     "FAJR": 0.9178,
+     "SUNRISE": 0.9041,
+     "DHUHR": 0.9562,
+     "ASR": 0.9616,
+     "MAGHRIB": 0.9096,
+     "ISHA": 0.863
     },
     "within1": {
      "FAJR": 1.0,
@@ -981,88 +1257,88 @@
     },
     "daysPerMonth": {
      "FAJR": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
       31,
-      10,
-      10
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "SUNRISE": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
       31,
-      10,
-      10
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "DHUHR": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
       31,
-      10,
-      10
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "ASR": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
       31,
-      10,
-      10
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "MAGHRIB": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
       31,
-      10,
-      10
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ],
      "ISHA": [
-      11,
-      9,
-      10,
-      10,
-      11,
-      10,
-      10,
-      10,
-      10,
       31,
-      10,
-      10
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
      ]
     },
     "heldOutRamadanDays": 0,
@@ -1363,8 +1639,8 @@
     "latE5": 2503763,
     "lngE5": 5559135
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "أرياف دبي",
@@ -1407,8 +1683,8 @@
     "latE5": 2480073,
     "lngE5": 5612726
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "حتا",
@@ -1433,8 +1709,8 @@
     "latE5": 2561955,
     "lngE5": 5627291
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "دبا",
@@ -1460,10 +1736,145 @@
     "latE5": 2511641,
     "lngE5": 5634141
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
-   "pressureHpa": 988.0,
-   "temperatureC": 29.0,
+   "morningPoint": {
+    "latE5": 2514750,
+    "lngE5": 5635970
+   },
+   "eveningPoint": {
+    "latE5": 2514750,
+    "lngE5": 5621880
+   },
+   "elevationM": 240,
+   "eveningElevationM": 239,
+   "pressureHpa": 986.0,
+   "temperatureC": 28.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9918,
+     "SUNRISE": 0.9945,
+     "DHUHR": 0.9918,
+     "ASR": 0.9863,
+     "MAGHRIB": 0.9781,
+     "ISHA": 0.989
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
    "nameAr": "الفجيرة",
    "admin1": [
     "04"
@@ -1475,8 +1886,8 @@
     "latE5": 2529972,
     "lngE5": 5616639
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "مسافي",
@@ -1490,8 +1901,8 @@
     "latE5": 2487556,
     "lngE5": 5617306
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "الحويلات",
@@ -1505,10 +1916,145 @@
     "latE5": 2578953,
     "lngE5": 5594320
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "morningPoint": {
+    "latE5": 2574250,
+    "lngE5": 5613050
+   },
+   "eveningPoint": {
+    "latE5": 2574250,
+    "lngE5": 5588420
+   },
+   "elevationM": 224,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9973,
+     "SUNRISE": 0.9918,
+     "DHUHR": 0.9973,
+     "ASR": 0.9918,
+     "MAGHRIB": 0.9781,
+     "ISHA": 0.9918
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
    "nameAr": "رأس الخيمة",
    "admin1": [
     "05"
@@ -1540,8 +2086,8 @@
     "latE5": 2602790,
     "lngE5": 5608352
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "شعم",
@@ -1566,8 +2112,8 @@
     "latE5": 2509750,
     "lngE5": 5602694
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "شوكة",
@@ -1581,8 +2127,8 @@
     "latE5": 2627083,
     "lngE5": 5529972
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "طنب الكبرى",
@@ -1596,8 +2142,8 @@
     "latE5": 2586698,
     "lngE5": 5502363
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "جزيرة أبوموسى",
@@ -1611,8 +2157,8 @@
     "latE5": 2528812,
     "lngE5": 5588157
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "الذيد",
@@ -1637,8 +2183,8 @@
     "latE5": 2533132,
     "lngE5": 5634199
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "الساحل الشرقي",
@@ -1673,8 +2219,8 @@
     "latE5": 2513518,
     "lngE5": 5588430
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "مليحة",
@@ -1708,10 +2254,145 @@
     "latE5": 2533420,
     "lngE5": 5541221
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "morningPoint": {
+    "latE5": 2531500,
+    "lngE5": 5564590
+   },
+   "eveningPoint": {
+    "latE5": 2531500,
+    "lngE5": 5534840
+   },
+   "elevationM": 221,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9973,
+     "SUNRISE": 0.9973,
+     "DHUHR": 0.9945,
+     "ASR": 0.9863,
+     "MAGHRIB": 0.9945,
+     "ISHA": 0.9945
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
    "nameAr": "الشارقة",
    "admin1": [
     "06"
@@ -1761,8 +2442,8 @@
     "latE5": 2523417,
     "lngE5": 5421833
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
    "nameAr": "جزيرة صير بو نعير",
@@ -1776,10 +2457,145 @@
     "latE5": 2556473,
     "lngE5": 5555517
    },
-   "elevationM": 223,
-   "eveningElevationM": 240,
+   "morningPoint": {
+    "latE5": 2555750,
+    "lngE5": 5578320
+   },
+   "eveningPoint": {
+    "latE5": 2555750,
+    "lngE5": 5553700
+   },
+   "elevationM": 222,
+   "eveningElevationM": 223,
    "pressureHpa": 988.0,
    "temperatureC": 29.0,
+   "fit": {
+    "fittedOn": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": false
+     }
+    ],
+    "heldOut": [
+     {
+      "source": "ae_awqaf_tables_2026",
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "days": 365,
+      "zones": 1,
+      "monthSplit": true
+     }
+    ],
+    "exact": {
+     "FAJR": 0.9918,
+     "SUNRISE": 0.9945,
+     "DHUHR": 0.9973,
+     "ASR": 0.9945,
+     "MAGHRIB": 0.9945,
+     "ISHA": 0.9973
+    },
+    "within1": {
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
+    },
+    "daysPerMonth": {
+     "FAJR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "SUNRISE": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "DHUHR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ASR": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "MAGHRIB": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ],
+     "ISHA": [
+      31,
+      28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31
+     ]
+    },
+    "heldOutRamadanDays": 0,
+    "quirkDays": 0,
+    "maxDiffMin": 1
+   },
    "nameAr": "أم القيوين",
    "admin1": [
     "07"
