@@ -124,7 +124,7 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
                 }
                 record.heldOut.forEach { sample ->
                     Text(
-                        "${sample.source}: " + LRI + "${sample.from} → ${sample.to}" + PDI + "، " + LRI + "${sample.days}" + PDI + " يومًا",
+                        "${heldOutSourceLabel(sample.source)}: " + LRI + "${sample.from} → ${sample.to}" + PDI + "، " + LRI + "${sample.days}" + PDI + " يومًا",
                         fontSize = 12.sp, color = TextMuted,
                     )
                 }
@@ -173,6 +173,12 @@ private fun TwilightYearStrip(nights: List<Boolean>) {
 
 private fun degrees(value: Double): String =
     if (value % 1.0 == 0.0) "${value.toInt()}°" else value.toBigDecimal().stripTrailingZeros().toPlainString() + "°"
+
+/** A held-out body's source in words where it is not the authority's own table (scripts/prayer_formula/fits/mosque_years.py). */
+private fun heldOutSourceLabel(source: String): String = when (source) {
+    "mosque_follower" -> "تقويم مسجد يتّبع الجدول الرسمي"
+    else -> source
+}
 
 private fun angles(method: PrayerMethod): List<Double> = listOfNotNull(
     (method.fajr as? FajrRule.Angle)?.degrees,
