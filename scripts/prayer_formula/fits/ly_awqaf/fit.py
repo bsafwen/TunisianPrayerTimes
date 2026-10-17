@@ -69,7 +69,7 @@ EAST_SHIFT = {"DOWN": 0.0, "NEAREST": 0.125, "UP": 0.25}  # the same table at a 
 START_OFFSETS = {"DHUHR": 4, "MAGHRIB": 4}                  # 8.2's minutes; stage 3 checks them
 NAME_AR = {"Ojala": "أوجلة"}            # the selector labels Awjila «اجدابيا» like Ajdabiya; the app says أوجلة (8.8)
 SOURCE_LINE = ("Libya's General Authority of Awqaf (awqaf.gov.ly): 22 city tables from one perpetual table keyed by "
-               "month and day, computed for the actual year (A8); Dar al-Ifta's Tripoli API gives the same values")
+               "month and day, shown as printed at its reference year (A8); Dar al-Ifta's Tripoli API gives the same values")
 TRIPOLI_SOURCE = "awqaf.gov.ly homepage captures (2016-2018, 2025-2026) and api.ifta.ly (2026-10-08 to 10-18): Tripoli"
 CITY_SOURCE = "awqaf.gov.ly city endpoint (2026-10-08, 10-11)"
 CITIES_SOURCE = CITY_SOURCE + " and Benghazi homepage captures (2014, 2016)"
@@ -456,6 +456,7 @@ def method_of(p: dict) -> dict:
         id=AUTHORITY, fajr={"type": "angle", "degrees": p["alpha"]}, isha={"type": "angle", "degrees": p["alpha"]},
         offsets=dict(p["off"]), rounding={e: p["rnd"] for e in EVENTS}, sunModel=p["sun"],
         sunEvaluation={e: p["eval"] for e in EVENTS}, twilightLatitudeScale=p["scale"], highLatitude={"type": "angle_based"},
+        referenceYear=p["year"],
         evidence={"kind": "FROM_TABLES", "source": "fit"})
 
 

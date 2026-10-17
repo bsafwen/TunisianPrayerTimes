@@ -28,7 +28,7 @@ import mosque_years as M  # noqa: E402
 
 ASSET = C.ASSETS / "kw_awqaf.json"
 METHOD = C.method_json(id=F.AUTHORITY, fajr={"type": "angle", "degrees": 18.0}, isha={"type": "angle", "degrees": 17.5},
-                       asrSun="APPARENT", evidence={"kind": "FROM_TABLES", "source": F.EVIDENCE})
+                       asrSun="APPARENT", referenceYear=2011, evidence={"kind": "FROM_TABLES", "source": F.EVIDENCE})
 
 
 def main(argv: list[str]) -> int:

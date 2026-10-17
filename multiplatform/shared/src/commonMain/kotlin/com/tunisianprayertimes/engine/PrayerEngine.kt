@@ -14,7 +14,9 @@ import com.tunisianprayertimes.place.ZoneOffsetRule
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.Year
 import java.time.ZonedDateTime
+import java.time.temporal.ChronoUnit
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -63,7 +65,43 @@ object PrayerEngine {
         offsetWindow: ClosedRange<LocalDate>? = null,
         adjustments: Map<TimeEvent, Int> = emptyMap(),
         terrainClass: TerrainClass? = null,
-    ): EngineExplanation = Computation(place, date, method, ramadanDay, zone, baseZone, offsetWindow, adjustments, terrainClass).run()
+    ): EngineExplanation {
+        val year = method.referenceYear
+        if (year == null || date.year == year) {
+            return Computation(place, date, method, ramadanDay, zone, baseZone, offsetWindow, adjustments, terrainClass).run()
+        }
+        // A8 (owner, revised 2026-10-17): a perpetual table shows every year as printed. The date runs as its own
+        // month and day of the table's year, in the zone's standard time (the table's clock), with every rule but
+        // the sun's as it stands on the date (E8 through ramadanDay, E9 through revisedFor); each time keeps its
+        // clock minute and moves to the date by whole days.
+        val inTable = tableDate(date, year)
+        val standard = place.zone.rules.getStandardOffset(date.atTime(12, 0).atZone(place.zone).toInstant())
+        val asOf = method.revisedFor(date).copy(revisions = emptyList(), referenceYear = null)
+        val explained = Computation(place.copy(zoneId = standard.id), inTable, asOf, ramadanDay, zone, baseZone, offsetWindow,
+            adjustments, terrainClass).run()
+        return explained.movedTo(date, place, method.revisedFor(date), ChronoUnit.DAYS.between(inTable, date) * 86_400L)
+    }
+
+    /** A8: [date]'s month and day in a perpetual table's [year]; 29 February in the first leap year from it. */
+    fun tableDate(date: LocalDate, year: Int): LocalDate =
+        if (date.monthValue == 2 && date.dayOfMonth == 29) LocalDate.of(generateSequence(year) { it + 1 }.first { Year.isLeap(it.toLong()) }, 2, 29)
+        else LocalDate.of(year, date.monthValue, date.dayOfMonth)
+
+    /** A table year's explanation moved to [date] at [place] by [seconds] (whole days). */
+    private fun EngineExplanation.movedTo(date: LocalDate, place: PrayerPlace.Coordinates, method: PrayerMethod, seconds: Long): EngineExplanation {
+        fun Instant.moved(): Instant = plusSeconds(seconds)
+        fun EventTime.moved(): EventTime = copy(at = at?.moved())
+        fun NightExplanation.moved() = NightExplanation(sunset.moved(), sunrise.moved(), lowestPoint.moved())
+        return copy(
+            day = PrayerDay(date, place.zone, place.cacheKey, day.events.map { it.moved() }),
+            cycleDate = cycleDate.plusDays(seconds / 86_400L),
+            civilNoon = civilNoon.moved(),
+            method = method,
+            nightBefore = nightBefore?.moved(),
+            nightAfter = nightAfter?.moved(),
+            events = events.map { it.copy(raw = it.raw?.moved(), unrounded = it.unrounded?.moved(), time = it.time.moved()) },
+        )
+    }
 }
 
 /** One time while it is computed: epoch seconds (null when absent), its status and every change to it. */

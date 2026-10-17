@@ -4,7 +4,7 @@
  "methodId": "iq_sunni_endowment",
  "country": "IQ",
  "mapping": "NEAREST",
- "source": "Iraq's Sunni Endowment (dws.gov.iq): Baghdad's perpetual table (reference year 2021), computed for the actual year (A8); the 27 other cities computed as the Endowment computes Baghdad, at Accurate Times' entries (8.8)",
+ "source": "Iraq's Sunni Endowment (dws.gov.iq): Baghdad's perpetual table, shown as printed (reference year 2021, A8); the 27 other cities computed as the Endowment computes Baghdad, at Accurate Times' entries (8.8)",
  "fit": {
   "fittedOn": [
    {
@@ -27,12 +27,12 @@
    }
   ],
   "exact": {
-   "FAJR": 0.8219,
-   "SUNRISE": 0.8658,
-   "DHUHR": 0.9425,
-   "ASR": 0.9123,
-   "MAGHRIB": 0.7918,
-   "ISHA": 0.8164
+   "FAJR": 1.0,
+   "SUNRISE": 0.9836,
+   "DHUHR": 0.9973,
+   "ASR": 1.0,
+   "MAGHRIB": 0.9836,
+   "ISHA": 1.0
   },
   "within1": {
    "FAJR": 1.0,
@@ -229,12 +229,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.8219,
-     "SUNRISE": 0.8658,
-     "DHUHR": 0.9425,
-     "ASR": 0.9123,
-     "MAGHRIB": 0.7918,
-     "ISHA": 0.8164
+     "FAJR": 1.0,
+     "SUNRISE": 0.9836,
+     "DHUHR": 0.9973,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9836,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,

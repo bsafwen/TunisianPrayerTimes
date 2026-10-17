@@ -30,7 +30,7 @@ wins), on the year table without its shifted rows (quirk days, below):
 Quirk days: rows that match the next date's computed times better than their own (a block in early March, which the
 imsakiya's first two days share), found with a first pass and counted apart.
 Held out: the year table by month-split (stages 1-4 refitted on the odd months and scored on the even ones, and the
-reverse), scored as the app shows it, computed for the actual year (A8): 2026 for the year table (served for 2026),
+reverse), scored as the app shows it, the table as printed (A8): 2026 for the year table (served for 2026),
 2024 for the imsakiya, whose days each fold scores with the half that left their month out.
 
 Usage: python scripts/prayer_formula/fits/lb_dar_al_fatwa/fit.py
@@ -68,7 +68,7 @@ QUIRK_GAIN = 1.5                          # minutes (four events summed) by whic
 FRACTION_GAIN = 0.02                      # an E7 fraction, or a fixed horizon over Standard, only past 2 % of the days
 MODEL_GAIN = 0.005                        # another sun model than MEEUS only past 0.5 % of the times
 SOURCE_LINE =("Dar al-Fatwa's Beirut table (the Ramadan 1445 imsakiya, and the perpetual year table its screen at Ras "
-               "Beirut shows, equal on all 180 times), computed for the actual year (A8); one zone for all of Lebanon")
+               "Beirut shows, equal on all 180 times), shown as printed at its reference year (A8); one zone for all of Lebanon")
 IMSAKIYA_SOURCE = "darelfatwa.gov.lb Ramadan 1445 imsakiya, Beirut (official)"
 YEAR_SOURCE = ("tv.masjidi.app region 2: the perpetual Beirut table Dar al-Fatwa's screen at Ras Beirut shows "
                "(equals the imsakiya), scored for 2026")
@@ -435,7 +435,7 @@ def method_of(p: dict) -> dict:
         id=AUTHORITY, fajr={"type": "angle", "degrees": p["angles"]["FAJR"]}, isha={"type": "angle", "degrees": p["angles"]["ISHA"]},
         offsets=offsets, rounding=rounding, sunModel=p["model"], sunEvaluation=modes,
         asrSun="APPARENT" if p["apparent"] else "GEOMETRIC",
-        horizon={"sunrise": horizon("SUNRISE"), "sunset": horizon("MAGHRIB")},
+        horizon={"sunrise": horizon("SUNRISE"), "sunset": horizon("MAGHRIB")}, referenceYear=p["year"],
         highLatitude={"type": "angle_based"}, evidence={"kind": "FROM_TABLES", "source": "fit"})
 
 

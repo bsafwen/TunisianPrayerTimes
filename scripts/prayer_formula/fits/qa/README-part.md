@@ -4,8 +4,8 @@
 which the plan treats together, and writes `official-zones/qa_awqaf.json` and `qa_qch.json`: the same six zones,
 each asset with its own records.
 
-**Method.** The Ministry's table and QCH's are one perpetual table, read here at its reference year 2006 (E5) and
-computed for the actual year in the app (A8).
+**Method.** The Ministry's table and QCH's are one perpetual table, read here at its reference year 2006 (E5),
+which the app shows every year: the table as printed (A8, revised by the owner on 2026-10-17; `referenceYear`).
 
 | Time | Rule | Rounding (E1) |
 |---|---|---|
@@ -78,26 +78,35 @@ sources: `qa_awqaf_api_2026_at_2006` (the API's 2026 days, read at 2006), `qa_aw
 `qa_qch_print_1448_month_split` (the printed town minutes), `qa_qch_cal` and `qa_qch_cal_leave_one_out` (`/cal`),
 and the profiles' `qa_qch_towns_print_1448_cal` and `qa_qch_towns`.
 
-**Held-out scores** (FitStats, common.compute at the actual dates; all within 1 minute, worst 1 minute outside the
-quirk days):
+**Held-out scores** (FitStats, common.compute at the actual dates, as the app shows them: the table as printed; all
+within 1 minute, worst 1 minute outside the quirk days):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| `qa_awqaf` Doha, record (439 days) | 85.0 % | 89.1 % | 96.4 % | 96.8 % | 88.8 % | 88.8 % |
-| month-split of 2026 (363 days) | 85.7 % | 89.8 % | 97.2 % | 97.5 % | 92.6 % | 92.6 % |
-| the API's 2020-2025 and 2027 days (76) | 81.6 % | 85.5 % | 92.1 % | 93.4 % | 71.1 % | 71.1 % |
-| `qa_qch` Doha, every QCH day (207: 2022, 2025, 2026) | 79.7 % | 82.1 % | 96.6 % | 94.7 % | 89.4 % | 89.4 % |
+| `qa_awqaf` Doha, record (439 days) | 96.8 % | 98.6 % | 98.9 % | 99.1 % | 96.6 % | 96.6 % |
+| month-split of 2026 (363 days) | 97.2 % | 98.9 % | 98.6 % | 99.2 % | 96.1 % | 96.1 % |
+| the API's 2020-2025 and 2027 days (76) | 94.7 % | 97.4 % | 100 % | 98.7 % | 98.7 % | 98.7 % |
+| `qa_qch` Doha, every QCH day (207: 2022, 2025, 2026) | 97.6 % | 99.0 % | 98.6 % | 100 % | 95.2 % | 95.2 % |
 | Al Shamal (61 printed days; others 2 `/cal` days) | 90.2 % | 1 of 2 | `qa_qch` 0 of 2 | `qa_qch` 2 of 2 | 68.9 % | 2 of 2 |
 | Dukhan | 96.7 % | 0 of 2 | 2 of 2 | 2 of 2 | 93.4 % | 2 of 2 |
 | Abu Samra | 86.9 % | 2 of 2 | 1 of 2 | 0 of 2 | 80.3 % | 2 of 2 |
 | Mesaieed, Halul (leave one `/cal` day out) | 1 of 2 each | 1 of 2 each | 2/2, 1/2 | 2/2, 2/2 | 1/2, 2/2 | 1/2, 2/2 |
 
-Computed at the reference year the table is 98.0 % exact; computed for 2026, 1 minute off on 2–14 % of the times
-(Fajr the most), as 8.3 expects. Held-out Ramadan days: `qa_awqaf` 36, `qa_qch` 30 (Ramadan 1447 in full).
+Before A8's revision the app computed each date's own year: Doha's record was then 85.0–96.8 % exact (Fajr 85.0 %,
+Maghrib and Isha 88.8 %). Held-out Ramadan days: `qa_awqaf` 36, `qa_qch` 30 (Ramadan 1447 in full).
 
-**Tier A** (9.5). No zone passes. Doha fails on the perpetual table computed for the actual year (Fajr 85.0 %,
-sunrise 89.1 %, Maghrib and Isha 88.8 %; `qa_qch` likewise) and would fail even in-sample at 2006 (Maghrib and Isha
-96.4 %). The towns lack data: Fajr and Maghrib on 61 days of August to October, the other times on two `/cal` days.
+**September's Maghrib column** (2026-10-17). Seven of the table's Maghrib misses at 2006 fall on 13–16 and 25–27
+September, each printed a minute late although the computed time lies 0.21–0.47 min into its minute: the column
+runs about 17 s (0.28 min) later than 2006's sun all September, and only there (no Maghrib miss in August or
+October; the other September times fit 2006). Per month, September's Maghrib alone matches a year of the next
+leap phase (2003, 2007, 2011: 29 of 30, against 23 at 2006), while every other month and time prefers 2006 (all
+six times over the year: 2006 2,148 of 2,190, 2003 1,941, 2007 1,976). A reference-year scan over all four leap
+phases (1998–2014, VSOP87 and MEEUS) confirms 2006. The column is kept as misses, not quirk days: the app does not
+reproduce it, and it costs Doha tier A by four days (Maghrib and Isha 96.1 % held out, 97 % needs 352 of 363).
+
+**Tier A** (9.5). No zone passes. Doha's record misses the gate on Fajr (96.8 %, the API's other years' Fajr
+94.7 %), Maghrib and Isha (96.6 %, September's column above); `qa_qch` on Maghrib and Isha (95.2 %) and on its
+months (QCH's Doha days cover nine). The towns lack data: Fajr and Maghrib on 61 days of August to October, the other times on two `/cal` days.
 
 **Quirk days.** `qa_awqaf`: 2026-02-17 and 2026-03-19, where the API's Ramadan follows its own Hijri labels
 (Maghrib and Isha up to 2 minutes off there); 2027-02-07 has no API row at hand. None for `qa_qch`.
@@ -106,6 +115,6 @@ sunrise 89.1 %, Maghrib and Isha 88.8 %; `qa_qch` likewise) and would fail even 
 - A year of `/cal` days (all six places, every time) and of QCH's calendars, for the towns' points and records;
   the 1447 calendars (images) would date the change of the town minutes.
 - Al Shamal's Maghrib: no point reproduces more than 47 of its 59 printed minutes (the plan's point the same).
-- The September Maghrib glitch of the perpetual table (six days, both publishers): kept as misses, not quirk days.
+- September's Maghrib column (above), both publishers: kept as misses, not quirk days.
 - QCH's Ramadan 1448 page (`qa_skeptic/dl/ramadan.html`, 2027-02-08 to 03-08) fits no Doha computation (its Dhuhr
   runs from 11:42 to 11:49 across February, against 11:48 to 11:45 computed): not used.

@@ -91,6 +91,20 @@ class MethodPresentationTest {
     }
 
     @Test
+    fun anyCountryWhoseZonePassesMatchesInItsOwnCountry() {
+        // Owner, 2026-10-17: the gate decides, not a list of countries (9.5).
+        val bh = method("bh_calendar")
+        val bahrain = OfficialZone("bh_calendar", "bahrain", "البحرين", LatLngE5.of(26.2, 50.6), fit = fit())
+        assertEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(bh, place("BH"), MappedZone(bahrain, null), null))
+        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(bh, place("SA"), MappedZone(bahrain, null), null))
+        val jerusalem = OfficialZone("jo_awqaf", "33", "القدس", LatLngE5.of(31.78, 35.23), fit = fit(), country = "PS")
+        assertEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(method("jo_awqaf"), place("PS"), MappedZone(jerusalem, null), null))
+        // A table no authority publishes never claims the official one.
+        val nord = OfficialZone("re_cir", "nord", "الشمال", LatLngE5.of(-20.9, 55.5), fit = fit())
+        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(method("re_cir"), place("RE"), MappedZone(nord, null), null))
+    }
+
+    @Test
     fun theCustomMethodHasItsOwnChip() {
         assertEquals(MethodChip.CUSTOM, MethodPresentation.chip(PrayerMethods.MWL.copy(id = "custom"), place("FR"), null, null))
     }

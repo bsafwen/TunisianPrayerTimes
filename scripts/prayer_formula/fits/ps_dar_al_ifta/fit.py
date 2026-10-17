@@ -6,7 +6,7 @@ milestone AM10, 9.4), and writes its official-zone asset, android-app/app/src/ma
 The table «توقيت الصلاة الدهري حسب توقيت المسجد الأقصى المبارك» (Jerusalem 1433/2012, a reprint of an older table,
 still served on darifta.ps) gives 366 rows keyed by month and day in winter time (UTC+2) all year, and, on its page 2,
 the whole-minute differences of the places outside Al-Aqsa. It is perpetual: the fit reads each row at a reference year
-(E5, harness only) and every held-out score is computed for the actual year, as the app shows it (A8).
+(E5) and every held-out score is computed as the app shows it: the table as printed, at that year (A8).
 
 Data, read at run time from test-data-local and never copied (D13, A7):
 - research-2026-10-08/PS/ps/dahri2012.txt: the table's 366 rows (parsed from ssalah2012.pdf pages 4-27; an independent
@@ -57,7 +57,7 @@ ACTUAL_YEAR = 2026                      # held-out rows are scored as the app sh
 ROUNDINGS = {"NEAREST": (-0.5, 0.5), "UP": (-1.0, 0.0), "DOWN": (0.0, 1.0)}
 OFFSETS = {"SUNRISE": (-4, -3, -2, -1, 0), "MAGHRIB": (0, 1, 2, 3, 4, 5, 6), "DHUHR": (0, 1)}
 SOURCE_LINE = ("The Palestinian Dar al-Ifta's perpetual Al-Aqsa table (darifta.ps, ssalah2012.pdf, winter time) with the "
-               "published differences of its 16 Palestinian places, computed for the actual year (A8)")
+               "published differences of its 16 Palestinian places, shown as printed at its reference year (A8)")
 # Dar al-Ifta's places in Palestine and their differences from Al-Aqsa on all six times (table page 2): 0 for
 # Jerusalem, Ramallah, Bethlehem, Jenin and Nablus; -1 Jericho; +1 Hebron, Idhna, Dura, Beit Awwa, Tulkarm; +1.5
 # Qalqilya, applied as +2 (owner rule, 8.8: the only mosque of its group in the dataset calls +2); +3 Gaza; +4 Rafah,
@@ -418,7 +418,7 @@ def method_of(f: dict) -> dict:
                   "ASR": ev["ASR"][2]["rounding"], "MAGHRIB": ev["MAGHRIB"][2]["rounding"], "ISHA": ev["ISHA"][2]["rounding"]},
         horizon={"sunrise": {"type": "fixed", "altitudeDeg": ev["SUNRISE"][2]["altitude"]},
                  "sunset": {"type": "fixed", "altitudeDeg": ev["MAGHRIB"][2]["altitude"]}},
-        asrSun="APPARENT" if ev["ASR"][2]["apparent"] else "GEOMETRIC", sunModel=f["model"],
+        asrSun="APPARENT" if ev["ASR"][2]["apparent"] else "GEOMETRIC", sunModel=f["model"], referenceYear=f["year"],
         highLatitude={"type": "angle_based"}, evidence={"kind": "FROM_TABLES", "source": "fit"})
 
 

@@ -49,7 +49,7 @@ def method_json(**fields) -> dict:
         "polar": "MIN_DAY_NIGHT_5H", "minDayNightHours": None,
         "rounding": {e: "NEAREST" for e in EVENTS},
         "horizon": {"sunrise": {"type": "standard"}, "sunset": {"type": "standard"}}, "dipOnTwilight": False,
-        "sunEvaluation": {}, "ramadanOffsets": {}, "ramadanDays": "PLACE_CALENDAR", "revisions": [],
+        "sunEvaluation": {}, "ramadanOffsets": {}, "ramadanDays": "PLACE_CALENDAR", "revisions": [], "referenceYear": None,
         "maghribTerrain": None, "jumua": {"type": "at_dhuhr"}, "evidence": {"kind": "FROM_TABLES", "source": "fit"}, "fit": None,
     }
     m.update(fields)

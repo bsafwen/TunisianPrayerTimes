@@ -2,8 +2,10 @@
 """
 Oman's zones held out on a whole year now (fits/mosque_years.py, owner 2026-10-17): the owner's mosques that follow a
 zone's table on every official day of 2026 at hand (calendar_page4's dates for all 86 zones, calendar_page2's whole
-year for six), their 2026 calendars scored on the other days at the zone (official-zones/om_mara.json), as the app
-computes it. The profile is fit.py's (the ALMANAC sun once a day at 0 h UT, + 0.86 s, README).
+year for six, and since 2026-10-17 for the 80 others too), their 2026 calendars scored on the other days at the zone
+(official-zones/om_mara.json), as the app computes it. With every zone's whole 2026 official, a follower has no day
+left to score, so no record takes a follower year (Dhank's followers, whose February Asr is their own, never could).
+The profile is fit.py's (the ALMANAC sun once a day at 0 h UT, + 0.86 s, README).
 
 Usage: python scripts/prayer_formula/fits/om_mara/mosque_year.py [--write]   (run fit.py first)
 """
@@ -36,7 +38,7 @@ def main(argv: list[str]) -> int:
     for day, rows in pages.items():
         for zid, minutes in rows.items():
             add(zid, day, minutes)
-    for zid, days in F.full_year().items():
+    for zid, days in list(F.full_year().items()) + list(F.zone_years(F.ZONE_PAGES).items()):
         for day, minutes in days.items():
             add(zid, day, minutes)
     zones = {z["id"]: z for z in json.loads(ASSET.read_text(encoding="utf-8"))["zones"]}

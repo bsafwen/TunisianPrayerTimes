@@ -70,6 +70,7 @@ object OfficialZones {
         val point: PointJson,
         val morningPoint: PointJson? = null,
         val eveningPoint: PointJson? = null,
+        val eventPoints: Map<TimeEvent, PointJson> = emptyMap(),
         val elevationM: Int? = null,
         val eveningElevationM: Int? = null,
         val pressureHpa: Double? = null,
@@ -121,6 +122,7 @@ object OfficialZones {
                 OfficialZone(
                     authority = authority, id = z.id, nameAr = z.nameAr, point = z.point.toPoint(),
                     morningPoint = z.morningPoint?.toPoint(), eveningPoint = z.eveningPoint?.toPoint(),
+                    eventPoints = z.eventPoints.mapValues { (_, p) -> p.toPoint() },
                     elevationM = z.elevationM, eveningElevationM = z.eveningElevationM,
                     pressureHpa = z.pressureHpa, temperatureC = z.temperatureC,
                     sunriseAltitudeDeg = z.sunriseAltitudeDeg, sunsetAltitudeDeg = z.sunsetAltitudeDeg,
@@ -145,6 +147,7 @@ object OfficialZones {
                     fun p(x: LatLngE5) = PointJson(x.latE5, x.lngE5)
                     ZoneJson(
                         id = z.id, nameAr = z.nameAr, point = p(z.point), morningPoint = z.morningPoint?.let(::p), eveningPoint = z.eveningPoint?.let(::p),
+                        eventPoints = z.eventPoints.mapValues { (_, x) -> p(x) },
                         elevationM = z.elevationM, eveningElevationM = z.eveningElevationM, pressureHpa = z.pressureHpa, temperatureC = z.temperatureC,
                         sunriseAltitudeDeg = z.sunriseAltitudeDeg, sunsetAltitudeDeg = z.sunsetAltitudeDeg, offsets = z.offsets,
                         baseZoneId = z.baseZoneId, offsetRule = z.offsetRule, halfMonthWindows = z.halfMonthWindows, terrainClass = z.terrainClass,

@@ -4,7 +4,7 @@
  "methodId": "kw_awqaf",
  "country": "KW",
  "mapping": "LISTED_PLACES",
- "source": "The Ministry of Awqaf's perpetual timetable for Kuwait City and its suburbs (Mosques Sector, on Dr Saleh Al-Ojairi's calendar), with the footer's minute offsets for 11 places; computed for the actual year",
+ "source": "The Ministry of Awqaf's perpetual timetable for Kuwait City and its suburbs (Mosques Sector, on Dr Saleh Al-Ojairi's calendar), with the footer's minute offsets for 11 places; shown as printed, at its reference year 2011",
  "fit": {
   "fittedOn": [
    {
@@ -27,12 +27,12 @@
    }
   ],
   "exact": {
-   "FAJR": 0.7722,
-   "SUNRISE": 0.7444,
-   "DHUHR": 0.8833,
-   "ASR": 0.8333,
-   "MAGHRIB": 0.7833,
-   "ISHA": 0.7833
+   "FAJR": 0.9333,
+   "SUNRISE": 0.9278,
+   "DHUHR": 0.9611,
+   "ASR": 0.9278,
+   "MAGHRIB": 0.9667,
+   "ISHA": 0.9778
   },
   "within1": {
    "FAJR": 1.0,
@@ -189,12 +189,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -344,12 +344,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -499,12 +499,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -662,12 +662,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -823,12 +823,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -986,12 +986,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -1147,12 +1147,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -1308,12 +1308,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -1471,12 +1471,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -1632,12 +1632,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -1793,12 +1793,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,
@@ -1954,12 +1954,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7151,
-     "SUNRISE": 0.7397,
-     "DHUHR": 0.8767,
-     "ASR": 0.852,
-     "MAGHRIB": 0.7452,
-     "ISHA": 0.7205
+     "FAJR": 0.9068,
+     "SUNRISE": 0.9014,
+     "DHUHR": 0.9178,
+     "ASR": 0.9288,
+     "MAGHRIB": 0.9343,
+     "ISHA": 0.9507
     },
     "within1": {
      "FAJR": 1.0,

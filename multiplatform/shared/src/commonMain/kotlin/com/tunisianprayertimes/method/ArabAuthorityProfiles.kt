@@ -85,8 +85,9 @@ object ArabAuthorityProfiles {
     }
 
     // AM2 fit (scripts/prayer_formula/fits/ly_awqaf): 18.357° (window 18.3557–18.3579), reference year 2006.
-    val LY_AWQAF = profile("ly_awqaf", angle(18.357), ishaAngle(18.357), tables("The General Authority of Awqaf's perpetual table (reference year 2006), computed for the actual year")) {
+    val LY_AWQAF = profile("ly_awqaf", angle(18.357), ishaAngle(18.357), tables("The General Authority of Awqaf's perpetual table, as printed (reference year 2006)")) {
         copy(
+            referenceYear = 2006,
             offsets = mapOf(TimeEvent.DHUHR to 4, TimeEvent.MAGHRIB to 4),
             rounding = ALL_DOWN,
             sunModel = SunModel.TEXTBOOK,
@@ -101,6 +102,7 @@ object ArabAuthorityProfiles {
     // is their zones' (E7). 98–99.6 % exact at reference year 2023, all within 1 minute.
     val MR_ISLAMIC_AFFAIRS = profile("mr_islamic_affairs", angle(19.5), ishaAngle(17.5), tables("The Ministry of Islamic Affairs's Ramadan tables, applied all year")) {
         copy(
+            referenceYear = 2023,
             offsets = mapOf(TimeEvent.SUNRISE to 1, TimeEvent.MAGHRIB to 1),
             horizon = Horizons(HorizonModel.Fixed(-1.066), HorizonModel.Fixed(-1.051)),
             asrSun = AsrSun.APPARENT,
@@ -123,12 +125,13 @@ object ArabAuthorityProfiles {
     }
 
     // AM10 fit (fits/ps_dar_al_ifta), Al-Aqsa's perpetual table at reference year 2016 (MEEUS): every time within 1 minute
-    // there; computed for the actual year Fajr is within 1 minute on 342 of 365 days in 2026 (A8), so not tier B.
+    // there, which the app shows every year since A8's revision (2026-10-17).
     val PS_DAR_AL_IFTA = profile(
         "ps_dar_al_ifta", angle(18.065), ishaAngle(17.847),
-        tables("Dar al-Ifta's perpetual Al-Aqsa table (reference year 2016), computed for the actual year"),
+        tables("Dar al-Ifta's perpetual Al-Aqsa table, as printed (reference year 2016)"),
     ) {
         copy(
+            referenceYear = 2016,
             offsets = mapOf(TimeEvent.MAGHRIB to 5),
             rounding = mapOf(
                 TimeEvent.FAJR to Rounding.DOWN, TimeEvent.SUNRISE to Rounding.UP, TimeEvent.DHUHR to Rounding.DOWN,
@@ -154,9 +157,10 @@ object ArabAuthorityProfiles {
 
     // AM10 fit (fits/lb_dar_al_fatwa), Beirut's year table at reference year 1931: Fajr 19.69° (window 19.6936–19.6943°),
     // Isha 17.50°, sunrise at −0.9379°, the sun once a day (Fajr at 0 h UT, the rest at 10 h UT: an almanac's table);
-    // 78.5–95.8 % exact at the reference year, 99.7–100 % within 2 minutes computed for 2026.
+    // 78.5–95.8 % exact at the reference year, which the app shows every year (A8, revised 2026-10-17).
     val LB_DAR_AL_FATWA = profile("lb_dar_al_fatwa", angle(19.69), ishaAngle(17.5), tables("Dar al-Fatwa's Beirut imsakiya (Ramadan 1445)")) {
         copy(
+            referenceYear = 1931,
             offsets = mapOf(TimeEvent.MAGHRIB to 4),
             rounding = Rounding.ALL_NEAREST + mapOf(TimeEvent.MAGHRIB to Rounding.UP, TimeEvent.DHUHR to Rounding.DOWN, TimeEvent.ASR to Rounding.DOWN),
             horizon = Horizons(HorizonModel.Fixed(-0.9379), HorizonModel.Standard),
@@ -181,9 +185,10 @@ object ArabAuthorityProfiles {
     // AM2 fit (fits/iq_sunni_endowment), Baghdad's 2026 table at reference year 2021: each zone's horizon from Hohenkerk and
     // Sinclair's refraction at its Accurate Times inputs (PerZone; SqrtHeight within 0.029° of that law at exact
     // coordinates), sunrise + 0 and Maghrib + 2, every time to the nearest, Asr's noon shadow at the published Dhuhr (E4
-    // SHADOW_AT_DHUHR, as Accurate Times computes); 98.4–100 % exact at the reference year, all within 1 minute for 2026.
-    val IQ_SUNNI_ENDOWMENT = profile("iq_sunni_endowment", angle(18.0), ishaAngle(17.0), tables("The Sunni Endowment's perpetual city tables, computed for the actual year")) {
+    // SHADOW_AT_DHUHR, as Accurate Times computes); 98.4–100 % exact at the reference year, which the app shows every year.
+    val IQ_SUNNI_ENDOWMENT = profile("iq_sunni_endowment", angle(18.0), ishaAngle(17.0), tables("The Sunni Endowment's perpetual city tables, as printed (reference year 2021)")) {
         copy(
+            referenceYear = 2021,
             offsets = mapOf(TimeEvent.DHUHR to 5, TimeEvent.ASR to 3, TimeEvent.MAGHRIB to 2),
             horizon = Horizons(
                 HorizonModel.PerZone(HorizonModel.SqrtHeight(0.7987, 0.03853)),
@@ -196,9 +201,9 @@ object ArabAuthorityProfiles {
     }
 
     // AM10 fit (fits/kw_awqaf): Asr on the apparent sun (170 of 180 days against 154), at Kuwait City's computing
-    // point (in the asset); 93–99 % exact at reference year 2011, 74–88 % computed for 2026 (A8), all within 1 minute.
-    val KW_AWQAF = profile("kw_awqaf", angle(18.0), ishaAngle(17.5), tables("The Ministry of Awqaf's perpetual timetable, computed for the actual year")) {
-        copy(asrSun = AsrSun.APPARENT)
+    // point (in the asset); 93–99 % exact at reference year 2011, which the app shows every year (A8, revised 2026-10-17).
+    val KW_AWQAF = profile("kw_awqaf", angle(18.0), ishaAngle(17.5), tables("The Ministry of Awqaf's perpetual timetable, as printed (reference year 2011)")) {
+        copy(referenceYear = 2011, asrSun = AsrSun.APPARENT)
     }
 
     val QA_AWQAF = profile("qa_awqaf", angle(18.0), IshaRule.MinutesAfter(90), tables("Qatar Calendar House and the Ministry's tables")) {
@@ -207,7 +212,9 @@ object ArabAuthorityProfiles {
             ramadanOffsets = mapOf(TimeEvent.MAGHRIB to 1),
             ramadanDays = RamadanDays.UMM_AL_QURA_COMPUTED,
             revisions = listOf(MethodRevision(LocalDate.of(2020, 8, 20), MethodChange(offsets = mapOf(TimeEvent.FAJR to -1)))),
-            // AM2 fit (fits/qa): VSOP87 at reference year 2006 (2,148 of 2,190 minutes against 2,144), every other value confirmed.
+            // AM2 fit (fits/qa): VSOP87 at reference year 2006 (2,148 of 2,190 minutes against 2,144), every other value confirmed;
+            // the perpetual table as printed (A8, revised 2026-10-17).
+            referenceYear = 2006,
             sunModel = SunModel.VSOP87,
         )
     }
@@ -221,14 +228,15 @@ object ArabAuthorityProfiles {
         ),
     )
 
-    // AM10 fit (fits/bh_calendar), on the 1448 calendar at its stated longitudes with fitted latitudes (in the asset):
-    // Dhuhr 64 s after the transit (the semi-diameter's crossing), Fajr 18.01°, Isha 17.82°, sunrise at −0.83°, Asr on
-    // the sun at the Asr instant itself (E4 SHADOW_AT_EVENT); 94.4–98.0 % exact held out (month split), all within 1 minute.
-    val BH_CALENDAR = profile("bh_calendar", angle(18.01), ishaAngle(17.82), tables("The Supreme Council for Islamic Affairs's calendar")) {
+    // AM10 fit (fits/bh_calendar), on the 1448 calendar, each time at a point of its own (E6 eventPoints, in the asset;
+    // 2026-10-17): Fajr 17.98° and Isha 18.05° (the stated 18°), sunrise at −0.88°, Maghrib at the standard altitude,
+    // Dhuhr 64 s after the transit (the semi-diameter's crossing), Asr on the sun at the Asr instant itself (E4
+    // SHADOW_AT_EVENT); 96.6–99.4 % exact held out (month split), all within 1 minute.
+    val BH_CALENDAR = profile("bh_calendar", angle(17.98), ishaAngle(18.05), tables("The Supreme Council for Islamic Affairs's calendar")) {
         copy(
             dhuhrAfterTransitMin = 1.07,
             rounding = TimeEvent.entries.associateWith { if (it == TimeEvent.MAGHRIB) Rounding.NEAREST else Rounding.DOWN },
-            horizon = Horizons(HorizonModel.Fixed(-0.83), HorizonModel.Standard),
+            horizon = Horizons(HorizonModel.Fixed(-0.88), HorizonModel.Standard),
             sunEvaluation = mapOf(TimeEvent.ASR to SunEvaluation.SHADOW_AT_EVENT),
             sunModel = SunModel.VSOP87,
         )

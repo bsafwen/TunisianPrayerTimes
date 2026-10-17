@@ -31,7 +31,7 @@ wins), at Accurate Times' Baghdad entry, which stays the computing point (stage 
    whole minute loses more than 2 % of the days (and 2 days) to the best window.
 6. The point: a grid around the entry, reported only (the entry is kept unless the grid beats it by more than 1 %).
 Held out: the 2026 table by month-split (stages 1-5 refitted on the odd months and scored on the even ones, and the
-reverse), scored as the app shows it, computed for the actual year (A8). The 27 other cities have no official data.
+reverse), scored as the app shows it, the table as printed (A8). The 27 other cities have no official data.
 The asset also lists the Kurdistan Region's governorates in its top-level "exactAdmin1" (6.5: EXACT there).
 
 Usage: python scripts/prayer_formula/fits/iq_sunni_endowment/fit.py [--no-mosques]
@@ -84,8 +84,8 @@ NAMES = {
     "Samawah": ("samawah", "السماوة"), "Sinjar": ("sinjar", "سنجار"), "Tall Afar": ("tal_afar", "تلعفر"),
     "Tikrit": ("tikrit", "تكريت"),
 }
-SOURCE_LINE = ("Iraq's Sunni Endowment (dws.gov.iq): Baghdad's perpetual table (reference year 2021), computed for the "
-               "actual year (A8); the 27 other cities computed as the Endowment computes Baghdad, at Accurate Times' "
+SOURCE_LINE = ("Iraq's Sunni Endowment (dws.gov.iq): Baghdad's perpetual table, shown as printed (reference year "
+               "2021, A8); the 27 other cities computed as the Endowment computes Baghdad, at Accurate Times' "
                "entries (8.8)")
 TABLE_SOURCE = "dws.gov.iq API: Baghdad and suburbs, 2026 (a perpetual table, reference year 2021)"
 
@@ -581,7 +581,7 @@ def method_of(p: dict, fallback: tuple[float, float]) -> dict:
         offsets={e: v for e, v in offsets.items() if v}, rounding=rounding, sunModel=p["model"],
         sunEvaluation=({} if p["mode"] == "EVENT_INSTANT" else {e: p["mode"] for e in EVENTS})
         | ({"ASR": "SHADOW_AT_DHUHR"} if p.get("shadow_at_dhuhr") else {}),
-        asrSun="APPARENT" if p["apparent"] else "GEOMETRIC", horizon={"sunrise": side, "sunset": side},
+        asrSun="APPARENT" if p["apparent"] else "GEOMETRIC", horizon={"sunrise": side, "sunset": side}, referenceYear=p["year"],
         highLatitude={"type": "angle_based"}, evidence={"kind": "FROM_TABLES", "source": "fit"})
 
 
@@ -705,7 +705,8 @@ def main(argv=None) -> int:
     print(f"  exact coordinates: SqrtHeight b {fallback[0]} k {fallback[1]} (the law within {fallback[2]:.4f} deg, 0-1500 m)")
     method = method_of(p, fallback)
 
-    # Held out: month-split, scored computed for the actual year (A8) and, for information, at the reference year.
+    # Held out: month-split, scored as the app shows it (the table as printed, A8) and, for information, at the
+    # reference year itself.
     folds, folds_ref = [], []
     for label, keep in (("odd", 1), ("even", 0)):
         print(f"Baghdad, {label} months:")

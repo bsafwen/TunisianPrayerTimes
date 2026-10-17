@@ -3,7 +3,7 @@
 `fits/ly_awqaf/fit.py` (about 1 minute) fits the General Authority of Awqaf's table and writes
 `official-zones/ly_awqaf.json`. The table is perpetual, keyed by month and day: the fit reads each row at its
 reference year (E5), and every score is computed by `common.compute` at the row's actual date, as the app shows
-it (A8).
+it: the table as printed, every date as its month and day of 2006 (A8, revised by the owner on 2026-10-17).
 
 **Method.** Fajr and Isha 18.357° at a twilight latitude of 0.99330562·φ (E17), Dhuhr transit + 4, Maghrib sunset
 + 4, sunrise on the standard horizon, Asr factor 1 on the geometric sun, all six truncated (E1 DOWN), the TEXTBOOK
@@ -52,21 +52,21 @@ within 1 min, worst 1 min):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| Profile, 107 days | 85.0 % | 84.1 % | 91.6 % | 83.2 % | 84.1 % | 78.5 % |
-| Tripoli, 62 days | 83.9 % | 82.3 % | 88.7 % | 85.5 % | 85.5 % | 74.2 % |
+| Profile, 107 days | 98.1 % | 95.3 % | 93.5 % | 93.5 % | 94.4 % | 90.6 % |
+| Tripoli, 62 days | 98.4 % | 95.2 % | 91.9 % | 95.2 % | 98.4 % | 90.3 % |
+| Profile, each date's own sun (before A8's revision) | 85.0 % | 84.1 % | 91.6 % | 83.2 % | 84.1 % | 78.5 % |
 
-Most misses come from computing the actual year: the final asset reproduces 619 of the 642 official minutes (96.4 %)
-at the reference year and 546 (85.0 %) at the actual dates; by year mod 4, 432 of 480 in 2006's phase (2018, 2026),
-89 of 120 in 2017 and 2025, 25 of 42 in 2016. LCRSSS's Benghazi Ramadan 1440 table (another publisher, 2019-05-06
+The final asset reproduces 619 of the 642 official minutes (96.4 %) as printed, which the app shows; computed for
+each date's own sun, as before A8's revision, 546 (85.0 %). LCRSSS's Benghazi Ramadan 1440 table (another publisher, 2019-05-06
 to 06-04) gives 145 of 150 computed for 2019. No zone can pass tier A (9.5: October data only outside Tripoli; LY
 is tier B).
 
 **A whole year from the mosques** (`fits/ly_awqaf/mosque_year.py` with `fits/mosque_years.py`, 2026-10-17, owner's
 idea; plan 9.5). Seven Tripoli mosques of the owner's dataset print Tripoli's table on all 60 of its month-days read
 at 2026 (the table is perpetual), to the minute. The first of them (0.4 km from the zone's point) is Tripoli's
-held-out year on its other 305 days (`source` "mosque_follower"): Fajr 84.6 %, sunrise 87.2 %, Dhuhr
-93.4 %, Asr 95.7 %, Maghrib 89.2 %, Isha 83.3 % exact, every time within 1 min, the perpetual table's A8 differences
-as on the official rows. Tripoli's record now holds 28–32 held-out days in every month (tier B either way). The
+held-out year on its other 305 days (`source` "mosque_follower"): as printed, Fajr 92.1 %, sunrise 96.7 %, Dhuhr
+95.7 %, Asr 97.4 %, Maghrib 95.4 %, Isha 92.5 % exact, every time within 1 min (for each date's own sun, before A8's
+revision, 83.3–95.7 %). Tripoli's record now holds 28–32 held-out days in every month (tier B either way). The
 other 21 cities have 3 official days each (2026-10-08, 10-11 and the collector's 10-16), against the 20 a follower
 needs; 31 of their mosques print the city's minute on every time of those days (17 at Ajdabiya, 7 at Sirte, 4 at Zawiya,
 2 at Benghazi on its 5 days, 1 at Al Bayda), and 45 mosques 17–26 km from Zawiya's point print its minute + 1.
@@ -74,7 +74,7 @@ The script reads the daily collector's pages too, so a
 run once 20 days are collected (about 2026-11-02) adds those cities' years.
 
 **Quirk days.** None counted: Jalo's and Awjila's Asr is reproduced by its zone offset. The table has no 29 February
-row (A8 computes the day).
+row (A8 computes it as 2008's, the first leap year from 2006).
 
 **Validity guard** (side check, 2026; Sabratha and Ghat at `ZoneMappingTest`'s points, the others approximate):
 Sabratha and Zuwara keep Zawiya's table (Isha 1.1 and 3.4 min beyond its margin); Nalut and Wazin (Fajr 11.1 and

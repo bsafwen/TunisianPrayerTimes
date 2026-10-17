@@ -70,6 +70,11 @@ data class PrayerMethod(
     val ramadanDays: RamadanDays = RamadanDays.PLACE_CALENDAR,
     /** E9: the method's fields are its rule before the first revision. */
     val revisions: List<MethodRevision> = emptyList(),
+    /**
+     * A8 (owner, revised 2026-10-17): a perpetual table's year (E5). Each date is computed as its own month and day
+     * of that year, in the zone's standard time, so the app shows the table as printed; null computes the actual year.
+     */
+    val referenceYear: Int? = null,
     /** E10. */
     val maghribTerrain: TerrainRule? = null,
     /** A18. */
@@ -83,6 +88,7 @@ data class PrayerMethod(
         require(seasonalOffsets.values.all { it.size == SEASONAL_POINTS }) { "$id: E18 offsets take $SEASONAL_POINTS points a year" }
         require(takvimMeans.isEmpty() || takvimMeans.size == 24) { "$id: the Takvim's Table 1 has 24 means" }
         require(revisions.zipWithNext().all { (a, b) -> a.validFrom < b.validFrom }) { "$id: revisions in date order" }
+        require(referenceYear == null || referenceYear in 1800..2200) { "$id: reference year $referenceYear" }
     }
 
     /** True for the user's «مخصّصة» method, which E19 checks everywhere (6.11). */

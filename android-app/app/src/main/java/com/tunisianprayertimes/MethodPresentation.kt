@@ -119,10 +119,18 @@ object MethodPresentation {
     /** A signed minute value in an LTR isolate with U+2212 (6.11): «⁦−3⁩», «⁦+5⁩». */
     fun signedMinutes(value: Int): String = LRI + (if (value < 0) MINUS + (-value) else "+$value") + PDI
 
-    private val TIER_A = setOf("SA", "EG", "MA", "JO", "QA", "AE", "OM", "YE")
+    /**
+     * The country of each method with official zones, where a zone names no other (9.5: any country whose zone record
+     * passes the gate, owner 2026-10-17). A place outside it never shows «مطابقة للجدول الرسمي».
+     */
     private val PROFILE_COUNTRY = mapOf(
         "sa_umm_al_qura" to "SA", "eg_egsa" to "EG", "ma_habous" to "MA", "jo_awqaf" to "JO", "qa_awqaf" to "QA", "qa_qch" to "QA",
-        "ae_awqaf" to "AE", "om_mara" to "OM", "ye_awqaf" to "YE",
+        "ae_awqaf" to "AE", "om_mara" to "OM", "ye_awqaf" to "YE", "dz_marw" to "DZ", "ly_awqaf" to "LY",
+        "mr_islamic_affairs" to "MR", "ps_dar_al_ifta" to "PS", "ps_gaza_awqaf" to "PS", "sy_awqaf" to "SY", "kw_awqaf" to "KW",
+        "iq_sunni_endowment" to "IQ", "lb_dar_al_fatwa" to "LB", "bh_calendar" to "BH",
+        "irn" to "NO", "luxembourg_shoura" to "LU", "diyanet_eu" to "AT", "bosnia_iz" to "BA", "diyanet_tr" to "TR",
+        "xk_bik" to "XK", "bg_grand_mufti" to "BG", "si_islamska_skupnost" to "SI", "hr_miz_zagreb" to "HR", "ie_ifi" to "IE",
+        "dum_rf" to "RU",
     )
 
     /** The Kurdistan Region's governorates (Q8), matched on GeoNames' admin1 names: Erbil, Sulaymaniyah, Duhok, Halabja. */
@@ -133,21 +141,23 @@ object MethodPresentation {
 
     /**
      * The chip of A6 (6.11): «رسمية» for a national body's own definition in its own country, «مطابقة للجدول الرسمي»
-     * where the mapped zone's own held-out record passes the tier-A gate (for `sa_umm_al_qura` anywhere in Saudi
-     * Arabia, its profile's record), else the evidence's chip, with the Kurdistan Region's exception ([admin1Name]:
-     * the name of the place's stored admin1, from the catalogue).
+     * where the mapped zone's own held-out record passes the tier-A gate in the zone's own country, whatever the
+     * country (owner, 2026-10-17; for `sa_umm_al_qura` anywhere in Saudi Arabia, its profile's record), except for a
+     * table no authority publishes, else the evidence's chip, with the Kurdistan Region's exception ([admin1Name]: the
+     * name of the place's stored admin1, from the catalogue).
      */
     fun chip(method: PrayerMethod, place: PrayerPlace, mapped: MappedZone?, profileFit: FitStats?, admin1Name: String? = null): MethodChip {
         if (method.isCustom) return MethodChip.CUSTOM
         val cc = (place as? PrayerPlace.Coordinates)?.countryCode
         if ((method.id == "bosnia_iz" && cc == "BA") || (method.id == "diyanet_tr" && cc == "TR")) return MethodChip.OFFICIAL
         if (method.id == "iq_sunni_endowment" && cc == "IQ" && isKurdistan(admin1Name)) return MethodChip.APPROXIMATE
-        val profileCountry = PROFILE_COUNTRY[method.id]
-        if (profileCountry != null && profileCountry in TIER_A && profileCountry == cc) {
-            val passes = if (method.id == "sa_umm_al_qura") profileFit?.passesTierA(method) == true
-            else mapped != null && mapped.zone.fit?.passesTierA(method) == true &&
+        if (method.id == "sa_umm_al_qura") {
+            if (cc == "SA" && profileFit?.passesTierA(method) == true) return MethodChip.MATCHES_TABLE
+        } else if (mapped != null && mapped.zone.authority !in UNOFFICIAL_ZONES) {
+            val zoneCountry = mapped.zone.country ?: PROFILE_COUNTRY[method.id]
+            val passes = mapped.zone.fit?.passesTierA(method) == true &&
                 mapped.baseZone.let { base -> base == null || base.fit?.passesTierA(method) == true }
-            if (passes) return MethodChip.MATCHES_TABLE
+            if (zoneCountry != null && zoneCountry == cc && passes) return MethodChip.MATCHES_TABLE
         }
         return when (method.evidence.kind) {
             EvidenceKind.PUBLISHED -> MethodChip.PUBLISHED

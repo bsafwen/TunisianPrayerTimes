@@ -19,7 +19,8 @@ Ministry of Islamic Affairs and Original Education's Ramadan imsakiyas and write
 The tables are a perpetual imsakiya since 2023: 2023, 2024 and 2025 agree on all 30 of Nouakchott's shared
 month-days, and 12 of the 13 Imsak times Al-Akhbar relayed for 2026-03-04 equal it. The fit reads every row at the
 reference year 2023 (E5): all six times give 2,684 of 2,700 at 2023, against 2,663 at 2019, 2,633 at 2015 and
-1,815 at 2020.
+1,815 at 2020. The app shows the table as printed, every date as its month and day of 2023 (A8, revised by the
+owner on 2026-10-17; `referenceYear` in the profile, its E9 revisions still by the actual date).
 
 What the windows show, on the 450 rows of the current rule:
 - **Asr is on the apparent sun.** With Dhuhr, one longitude per capital covers 899 of 900 windows on the apparent sun
@@ -74,14 +75,16 @@ stage is refitted on each fold. Scored with `common.compute`:
 
 | Exact, 450 rows | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| As the app shows it, the actual year (FitStats) | 58.7 % | 61.1 % | 85.1 % | 88.0 % | 91.1 % | 86.7 % |
-| At the reference year 2023: the table itself | 98.4 % | 97.6 % | 98.4 % | 99.6 % | 98.2 % | 98.9 % |
+| As the app shows it, as printed (FitStats) | 98.4 % | 97.6 % | 98.4 % | 99.6 % | 98.2 % | 98.9 % |
+| Each date's own sun, as before A8's revision | 58.7 % | 61.1 % | 85.1 % | 88.0 % | 91.1 % | 86.7 % |
 
-Every held-out time is within 1 minute. The app's lower scores are the perpetual table's (A8): its 2024 and 2025
-reprints repeat 2023's minutes, while the app computes each year's own sun. The folds agree on the rules. Their
+Every held-out time is within 1 minute. The 2024 and 2025 reprints repeat 2023's minutes, as the app now shows them;
+computed for each year's own sun they would miss far more. The folds agree on the rules. Their
 fitted values are sunrise −1.065° and −1.055°, sunset −1.047° and −1.048°, and interior shift −1.5 and −1.54.
 
-**Tier.** B (9.5): every held-out time is within 1 minute. No zone has held-out days outside March and April.
+**Tier.** B (9.5): every held-out time is within 1 minute, and every time is 97.6 % exact or more as printed, but no
+zone has held-out days outside March and April: Ramadan imsakiyas alone cannot cover the year (tier A needs 7
+held-out days in every month).
 
 **Quirk days.** None.
 

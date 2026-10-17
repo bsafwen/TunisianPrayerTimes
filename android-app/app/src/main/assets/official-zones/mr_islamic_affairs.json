@@ -28,12 +28,12 @@
    }
   ],
   "exact": {
-   "FAJR": 0.5867,
-   "SUNRISE": 0.6111,
-   "DHUHR": 0.8511,
-   "ASR": 0.88,
-   "MAGHRIB": 0.9111,
-   "ISHA": 0.8667
+   "FAJR": 0.9844,
+   "SUNRISE": 0.9756,
+   "DHUHR": 0.9844,
+   "ASR": 0.9956,
+   "MAGHRIB": 0.9822,
+   "ISHA": 0.9889
   },
   "within1": {
    "FAJR": 1.0,
@@ -187,12 +187,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6222,
-     "SUNRISE": 0.6556,
-     "DHUHR": 0.8778,
-     "ASR": 0.8667,
-     "MAGHRIB": 0.9111,
-     "ISHA": 0.8556
+     "FAJR": 0.9444,
+     "SUNRISE": 0.9778,
+     "DHUHR": 0.9889,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9889,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -347,12 +347,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6333,
-     "SUNRISE": 0.6333,
-     "DHUHR": 0.8333,
-     "ASR": 0.8333,
+     "FAJR": 1.0,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
      "MAGHRIB": 0.9667,
-     "ISHA": 0.8333
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -507,12 +507,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6667,
-     "SUNRISE": 0.6333,
-     "DHUHR": 0.9,
-     "ASR": 0.7667,
-     "MAGHRIB": 0.8667,
-     "ISHA": 0.8333
+     "FAJR": 1.0,
+     "SUNRISE": 0.9667,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9667
     },
     "within1": {
      "FAJR": 1.0,
@@ -659,12 +659,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6,
-     "SUNRISE": 0.5667,
-     "DHUHR": 0.8667,
-     "ASR": 0.8667,
-     "MAGHRIB": 0.9333,
-     "ISHA": 0.9667
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -762,7 +762,7 @@
     },
     "heldOutRamadanDays": 30,
     "quirkDays": 0,
-    "maxDiffMin": 1
+    "maxDiffMin": 0
    }
   },
   {
@@ -811,12 +811,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6333,
-     "SUNRISE": 0.6667,
-     "DHUHR": 0.8,
-     "ASR": 0.7667,
-     "MAGHRIB": 0.9,
-     "ISHA": 0.9333
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9667,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -971,12 +971,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.5667,
-     "SUNRISE": 0.5667,
-     "DHUHR": 0.8333,
-     "ASR": 0.9333,
-     "MAGHRIB": 0.9333,
-     "ISHA": 0.9
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9667,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -1131,12 +1131,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.5667,
-     "SUNRISE": 0.7333,
-     "DHUHR": 0.8333,
-     "ASR": 0.8667,
+     "FAJR": 0.9333,
+     "SUNRISE": 0.9333,
+     "DHUHR": 0.9667,
+     "ASR": 0.9667,
      "MAGHRIB": 1.0,
-     "ISHA": 0.8667
+     "ISHA": 0.9333
     },
     "within1": {
      "FAJR": 1.0,
@@ -1291,12 +1291,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.5333,
-     "SUNRISE": 0.6,
-     "DHUHR": 0.8,
-     "ASR": 0.9667,
-     "MAGHRIB": 0.9,
-     "ISHA": 0.9333
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -1394,7 +1394,7 @@
     },
     "heldOutRamadanDays": 30,
     "quirkDays": 0,
-    "maxDiffMin": 1
+    "maxDiffMin": 0
    }
   },
   {
@@ -1451,12 +1451,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4333,
-     "SUNRISE": 0.6,
-     "DHUHR": 0.8,
+     "FAJR": 1.0,
+     "SUNRISE": 0.9667,
+     "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.8667,
-     "ISHA": 0.7
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -1611,12 +1611,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6667,
-     "SUNRISE": 0.5667,
-     "DHUHR": 0.8667,
-     "ASR": 0.8667,
-     "MAGHRIB": 0.8333,
-     "ISHA": 0.9
+     "FAJR": 1.0,
+     "SUNRISE": 0.9,
+     "DHUHR": 0.9667,
+     "ASR": 0.9667,
+     "MAGHRIB": 0.9667,
+     "ISHA": 0.9667
     },
     "within1": {
      "FAJR": 1.0,
@@ -1771,12 +1771,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6667,
-     "SUNRISE": 0.6,
-     "DHUHR": 0.8667,
-     "ASR": 0.8667,
-     "MAGHRIB": 1.0,
-     "ISHA": 0.9
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 0.9667,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9333,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -1931,12 +1931,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.3333,
-     "SUNRISE": 0.4667,
-     "DHUHR": 0.8667,
-     "ASR": 0.9667,
-     "MAGHRIB": 0.8333,
-     "ISHA": 0.8333
+     "FAJR": 1.0,
+     "SUNRISE": 0.9667,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 0.9667,
+     "ISHA": 1.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -2091,12 +2091,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.6333,
-     "SUNRISE": 0.5667,
-     "DHUHR": 0.8667,
-     "ASR": 0.9,
-     "MAGHRIB": 0.9,
-     "ISHA": 0.8333
+     "FAJR": 1.0,
+     "SUNRISE": 1.0,
+     "DHUHR": 1.0,
+     "ASR": 1.0,
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9667
     },
     "within1": {
      "FAJR": 1.0,

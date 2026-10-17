@@ -4,7 +4,7 @@
  "methodId": "lb_dar_al_fatwa",
  "country": "LB",
  "mapping": "NATIONAL",
- "source": "Dar al-Fatwa's Beirut table (the Ramadan 1445 imsakiya, and the perpetual year table its screen at Ras Beirut shows, equal on all 180 times), computed for the actual year (A8); one zone for all of Lebanon",
+ "source": "Dar al-Fatwa's Beirut table (the Ramadan 1445 imsakiya, and the perpetual year table its screen at Ras Beirut shows, equal on all 180 times), shown as printed at its reference year (A8); one zone for all of Lebanon",
  "fit": {
   "fittedOn": [
    {
@@ -35,20 +35,20 @@
    }
   ],
   "exact": {
-   "FAJR": 0.1811,
-   "SUNRISE": 0.2677,
-   "DHUHR": 0.7375,
-   "ASR": 0.5354,
-   "MAGHRIB": 0.2782,
-   "ISHA": 0.3071
+   "FAJR": 0.7927,
+   "SUNRISE": 0.9239,
+   "DHUHR": 0.9528,
+   "ASR": 0.9344,
+   "MAGHRIB": 0.9318,
+   "ISHA": 0.8766
   },
   "within1": {
-   "FAJR": 0.727,
-   "SUNRISE": 0.8819,
+   "FAJR": 1.0,
+   "SUNRISE": 0.9974,
    "DHUHR": 1.0,
    "ASR": 1.0,
-   "MAGHRIB": 0.9475,
-   "ISHA": 0.9396
+   "MAGHRIB": 1.0,
+   "ISHA": 1.0
   },
   "daysPerMonth": {
    "FAJR": [
@@ -138,7 +138,7 @@
   },
   "heldOutRamadanDays": 30,
   "quirkDays": 14,
-  "maxDiffMin": 3
+  "maxDiffMin": 2
  },
  "zones": [
   {
@@ -198,20 +198,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.1811,
-     "SUNRISE": 0.2677,
-     "DHUHR": 0.7375,
-     "ASR": 0.5354,
-     "MAGHRIB": 0.2782,
-     "ISHA": 0.3071
+     "FAJR": 0.7927,
+     "SUNRISE": 0.9239,
+     "DHUHR": 0.9528,
+     "ASR": 0.9344,
+     "MAGHRIB": 0.9318,
+     "ISHA": 0.8766
     },
     "within1": {
-     "FAJR": 0.727,
-     "SUNRISE": 0.8819,
+     "FAJR": 1.0,
+     "SUNRISE": 0.9974,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9475,
-     "ISHA": 0.9396
+     "MAGHRIB": 1.0,
+     "ISHA": 1.0
     },
     "daysPerMonth": {
      "FAJR": [
@@ -301,7 +301,7 @@
     },
     "heldOutRamadanDays": 30,
     "quirkDays": 14,
-    "maxDiffMin": 3
+    "maxDiffMin": 2
    }
   }
  ]

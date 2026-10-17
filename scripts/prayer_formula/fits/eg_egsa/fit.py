@@ -13,6 +13,10 @@ Data, read at run time and never copied (D13, A7):
 - test-data-local/research-2026-10-08/EG/eg_skeptic/ram.py and aug.py: hand transcriptions, embedded in those
   scripts, of EGSA's Ramadan 1445 imsakiya for Cairo (2024-03-11 to 04-09) and of its 2025-08-13 table for six
   cities, both as reprinted by Al-Dostor. Read with ast.literal_eval (never executed) and only held out.
+- test-data-local/research-2026-10-17/EG/monthly/m2026_MM_CI.html: EGSA's monthly view (esa.gov.eg/
+  monthlymwaket.aspx), every month of 2026 for each city of its menu (owner's OK, 2026-10-17; MANIFEST.tsv one level
+  up), each page checked against its own selections. A city with all twelve months gets its point from its 2026 and
+  a month-split held out (the year stage below); the profile stays the daily pages'.
 - Town centres: GeoNames (geonames.org, read 2026-10-15), in TOWNS below; they are not official times.
 
 Method. The 2025-26 copies (8 days, 623 city-days, 621 without two quirk days) are the fitting data. Each published
@@ -29,7 +33,11 @@ intersection (or of the largest subset one point covers). Stages (9.4), each by 
 Held out: leave one day out. For each of the 8 days, the sun model, the horizon, the Asr rule and every city's
 point are refitted on the 7 others and the day is scored with common.compute (the reference engine, which the
 Kotlin engine matches); the same is repeated with the standard horizon and with the MEEUS sun for comparison. The
-two reprints are held out at the final points. Quirk days (8.3), counted apart: the 2024 copies, made before EGSA
+two reprints are held out at the final points.
+Year stage: a city with the monthly view's whole 2026 is computed at the point its year's windows cover best (a
+grid swept on the linearised windows, relinearised twice), and held out on a month-split of that year (the point
+fitted on the odd months scored on the even ones, and the reverse, with common.compute); the profile is checked on
+the year at those points (each value's neighbours), not refitted. Quirk days (8.3), counted apart: the 2024 copies, made before EGSA
 moved 49 cities' points (printed below), and two new cities on 2025-04-29, before their points moved.
 
 Usage: python scripts/prayer_formula/fits/eg_egsa/fit.py [--wayback DIR]
@@ -39,6 +47,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import calendar
 import datetime
 import html
 import itertools
@@ -62,7 +71,9 @@ PAGE = EG / "eg" / "praytimes.html"
 RAMADAN_REPRINT = EG / "eg_skeptic" / "ram.py"
 AUGUST_REPRINT = EG / "eg_skeptic" / "aug.py"
 WAYBACK = common.LOCAL_DATA / "research-2026-10-11" / "EG" / "wayback"
+MONTHLY = common.LOCAL_DATA / "research-2026-10-17" / "EG" / "monthly"
 PAGE_SOURCE = "EGSA's all-cities daily page (esa.gov.eg/praytimes.aspx): Wayback copies and the 2026-10-08 copy"
+YEAR_SOURCE = "EGSA's monthly view (esa.gov.eg/monthlymwaket.aspx): every day of 2026"
 RAMADAN_SOURCE = "EGSA's Ramadan 1445 imsakiya for Cairo, as reprinted by Al-Dostor"
 AUGUST_SOURCE = "EGSA's 2025-08-13 table for six cities, as reprinted by Al-Dostor"
 
@@ -203,6 +214,29 @@ def official_days(wayback: Path) -> tuple[dict, list[str]]:
         for day, rows in page_rows(f).items():
             days.setdefault(day, {}).update(rows)
     return days, [f.name for f in files]
+
+
+def monthly_year(folder: Path) -> tuple[dict[str, dict[datetime.date, list[int]]], list[datetime.date]]:
+    """The monthly view's 2026 (m2026_MM_CI.html): city -> {date: six minutes}, a city only with all twelve months,
+    and the days a page leaves out (the view skips a few rows). Each page must select its file's month and hold
+    only that month of the one city it selects."""
+    out: dict[str, dict[datetime.date, list[int]]] = {}
+    months: dict[str, set[int]] = {}
+    gaps = []
+    for f in sorted(folder.glob("m2026_*_*.html")) if folder.is_dir() else []:
+        text = f.read_text(encoding="utf-8", errors="replace")
+        selected = re.findall(r'<option selected="selected" value="([^"]*)"', text)
+        city, month = clean(html.unescape(selected[0])), int(selected[1])
+        rows = page_rows(f)
+        names = {n for day in rows.values() for n in day}
+        if int(f.stem.split("_")[1]) != month or names != {city} or any((d.year, d.month) != (2026, month) for d in rows):
+            raise SystemExit(f"{f.name}: not {city}'s month {month} of 2026 (cities {names})")
+        gaps += [(city, datetime.date(2026, month, d)) for d in range(1, calendar.monthrange(2026, month)[1] + 1)
+                 if datetime.date(2026, month, d) not in rows]
+        for day, row in rows.items():
+            out.setdefault(city, {})[day] = row[city]
+        months.setdefault(city, set()).add(month)
+    return {c: days for c, days in out.items() if len(months[c]) == 12}, gaps
 
 
 def city_menu() -> list[str]:
@@ -432,6 +466,72 @@ def cover(rows, deep: bool = True):
             elif n == best:
                 cells.append((x, y))
     return best, (sum(c[0] for c in cells) / len(cells), sum(c[1] for c in cells) / len(cells))
+
+
+def sweep_best(rows, half: float, step: float) -> tuple[int, tuple[float, float]]:
+    """The grid offset (x, y), |x|, |y| <= half, that the most windows lo <= a x + b y < hi hold, swept row by row
+    (each window an interval of x per y); among the best cells, the centroid of their largest 4-connected group."""
+    n = int(round(half / step))
+    width = 2 * n + 1
+    best, cells = -1, []
+    for j in range(-n, n + 1):
+        y = j * step
+        diff = [0] * (width + 1)
+        for a, b, lo, hi, _, _ in rows:
+            c = b * y
+            if abs(a) < 1e-12:
+                if lo <= c < hi:
+                    diff[0] += 1
+                    diff[width] -= 1
+                continue
+            x0, x1 = (lo - c) / a, (hi - c) / a
+            if a < 0:
+                x0, x1 = x1, x0
+            i0, i1 = max(-n, math.ceil(x0 / step - 1e-9)), min(n, math.ceil(x1 / step - 1e-9) - 1)
+            if i0 <= i1:
+                diff[i0 + n] += 1
+                diff[i1 + n + 1] -= 1
+        run = 0
+        for i in range(width):
+            run += diff[i]
+            if run > best:
+                best, cells = run, [(i - n, j)]
+            elif run == best:
+                cells.append((i - n, j))
+    pool, seen, groups = set(cells), set(), []
+    for start in cells:
+        if start in seen:
+            continue
+        seen.add(start)
+        group, todo = [], [start]
+        while todo:
+            c = todo.pop()
+            group.append(c)
+            for nb in ((c[0] + 1, c[1]), (c[0] - 1, c[1]), (c[0], c[1] + 1), (c[0], c[1] - 1)):
+                if nb in pool and nb not in seen:
+                    seen.add(nb)
+                    todo.append(nb)
+        groups.append(group)
+    group = max(groups, key=len)
+    return best, (step * sum(c[0] for c in group) / len(group), step * sum(c[1] for c in group) / len(group))
+
+
+def year_point(name: str, obs: dict, start: tuple[float, float], p: dict, suns: Suns) -> City:
+    """A city's point from [obs] (date -> six minutes): the best cell of a coarse sweep around [start], then two fine
+    sweeps, each after relinearising at the point found. The City returned is linearised at that point (its base)."""
+    city = City(name, obs, start)
+    days = sorted(obs)
+    for half, step in ((0.06, 0.002), (0.004, 0.0002), (0.001, 0.00005)):
+        city.linearise(p["model"], p, suns)
+        _, (x, y) = sweep_best(city.rows(p["model"], days, p), half, step)
+        city.base = (city.base[0] + x, city.base[1] + y)
+    city.linearise(p["model"], p, suns)
+    return city
+
+
+def held_at_base(city: City, p: dict) -> int:
+    """The windows the city's own point (its base) holds under the profile [p] (linearised values)."""
+    return sum(1 for _, _, lo, hi, _, _ in city.rows(p["model"], sorted(city.obs), p) if lo <= 0.0 < hi)
 
 
 def stab(intervals) -> int:
@@ -754,18 +854,67 @@ def main() -> int:
         say(f"  those days at the current points: the {len(north)} cities {shares(merged(quirk_old[m[2]] for m in north))}; "
             f"the {len(moved) - len(north)} others {shares(merged(quirk_old[m[2]] for m in moved if m[0] <= 5))}")
 
+    # Year stage: the monthly view's 2026, for the zones that have all of it.
+    year, gaps = monthly_year(MONTHLY)
+    year_zones = [n for n in zone_names if n in year]
+    not_zones = sorted(set(year) - set(zone_names))
+    say(f"Year stage: the monthly view's whole 2026 for {len(year)} cities, {len(year_zones)} of the {len(zone_names)} "
+        f"zones" + (f"; cities without a daily row (not zones): {', '.join(not_zones)}" if not_zones else "")
+        + (f"; days the view leaves out: {', '.join(f'{n} {d}' for n, d in gaps)}" if gaps else ""))
+    differ = [(n, d) for n in year_zones for d, row in year[n].items()
+              if d in days and n in days[d] and days[d][n] != row and (n, d) not in REVISED_2025]
+    shared = sum(1 for n in year_zones for d in year[n] if d in days and n in days[d])
+    say(f"  the monthly view against the daily pages on the {shared} city-days both hold: {len(differ)} differ"
+        + (f" ({', '.join(f'{n} {d}' for n, d in differ[:6])})" if differ else ""))
+    year_cities, year_scores = {}, {}
+    year_suns = Suns(min(min(days), datetime.date(2026, 1, 1)), max(max(days), datetime.date(2026, 12, 31)))
+    for k, n in enumerate(year_zones):
+        city = year_point(n, year[n], points[n][:2], profile, year_suns)
+        year_cities[n] = city
+        s = common.Score()
+        for keep in (1, 0):                     # the point on half the months, scored on the other half
+            part = {d: v for d, v in year[n].items() if d.month % 2 == keep}
+            fold = year_point(n, part, points[n][:2], profile, year_suns)
+            for d in sorted(year[n]):
+                if d.month % 2 != keep:
+                    for e, g, w in zip(EV, table(final, zone_ids[n], fold.base[0], fold.base[1], d), year[n][d]):
+                        s.add(e, d, g, w)
+        year_scores[n] = s
+        if k % 10 == 9:
+            say(f"  {k + 1}/{len(year_zones)} cities, {time.time() - started:.0f} s", flush=True)
+    if year_zones:
+        say(f"Held out, the year's month-split ({len(year_zones)} cities): {shares(merged(year_scores.values()))}")
+        moved = sorted((km(year_cities[n].base, points[n][:2]), n) for n in year_zones)
+        say(f"  the year's points against the daily pages' points: median {statistics.median(m for m, _ in moved):.2f} km, "
+            f"farthest " + ", ".join(f"{TOWNS[n][0]} {m:.1f} km" for m, n in moved[::-1][:5]))
+        windows = sum(len(c.rows(profile["model"], sorted(c.obs), profile)) for c in year_cities.values())
+
+        def on_year(q):
+            return sum(held_at_base(c, q) for c in year_cities.values())
+        say(f"  the profile on the year at the year's points (windows held of {windows}): as fitted {on_year(profile)}; "
+            f"horizon " + ", ".join(f"{h:+.4f} {on_year({**profile, 'horizon': h})}" for h in (-0.8455, -0.8445, -0.8425, -0.8415))
+            + "; Fajr " + ", ".join(f"{v} {on_year({**profile, 'fajr': v})}" for v in (19.45, 19.55))
+            + "; Isha " + ", ".join(f"{v} {on_year({**profile, 'isha': v})}" for v in (17.45, 17.55))
+            + "; Asr " + ", ".join(f"{r} {on_year({**profile, 'asr': r})}" for r in ASR_RULES))
+
     # The asset.
     first, last = recent[0], recent[-1]
     zone_days = sum(len(o) for o in obs.values())
     loo_source = PAGE_SOURCE + "; leave one day out: each day scored with the profile and points fitted on the other days"
     zones = []
+    y0, y1 = datetime.date(2026, 1, 1), datetime.date(2026, 12, 31)
     for n in zone_names:
-        lat, lng = points[n][:2]
+        lat, lng = year_cities[n].base if n in year_cities else points[n][:2]
         t = TOWNS[n]
         centre = (t[2], t[3]) if t[1] is not None else (lat, lng)
         n_days = len(obs[n])
+        fitted = [common.sample(PAGE_SOURCE, first, last, n_days, 1)]
         held = [common.sample(loo_source, first, last, n_days, 1)]
         score = [loo[n]]
+        if n in year_cities:
+            fitted.append(common.sample(YEAR_SOURCE, y0, y1, len(year[n]), 1))
+            held.append(common.sample(YEAR_SOURCE + "; month split", y0, y1, len(year[n]), 1, month_split=True))
+            score.append(year_scores[n])
         ramadan_days = 0
         if n == cairo:
             held.append(common.sample(RAMADAN_SOURCE, min(ramadan), max(ramadan), len(ramadan), 1))
@@ -775,7 +924,7 @@ def main() -> int:
             held.append(common.sample(AUGUST_SOURCE, aug_day, aug_day, 1, 1))
             score.append(aug_by_city[n])
         s = merged(score)
-        stats = common.fit_stats([common.sample(PAGE_SOURCE, first, last, n_days, 1)], held, s, ramadan_days, quirk_days[n])
+        stats = common.fit_stats(fitted, held, s, ramadan_days, quirk_days[n])
         stats["maxDiffMin"] = max(s.worst, quirk[n].worst)
         # Plan 8.8: the zone's point is its town, which the mapping measures from; the fitted computing point goes
         # into the morning and evening points (E6, README S6), so every time is still computed there.
@@ -788,20 +937,23 @@ def main() -> int:
             "namedPlaces": [{"centre": town, "catalogueIds": [], "areaKm": area_km(t[4])}],
             "fit": stats,
         })
-    profile_score = merged([loo_all, ram_score, aug_score])
-    profile_stats = common.fit_stats(
-        [common.sample(PAGE_SOURCE, first, last, zone_days, len(zone_names))],
-        [common.sample(loo_source, first, last, zone_days, len(zone_names)),
-         common.sample(RAMADAN_SOURCE, min(ramadan), max(ramadan), len(ramadan), 1),
-         common.sample(AUGUST_SOURCE, aug_day, aug_day, len(aug_by_city), len(aug_by_city))],
-        profile_score, len(ramadan), sum(quirk_days.values()))
+    profile_score = merged([loo_all, ram_score, aug_score] + list(year_scores.values()))
+    profile_fitted = [common.sample(PAGE_SOURCE, first, last, zone_days, len(zone_names))]
+    profile_held = [common.sample(loo_source, first, last, zone_days, len(zone_names)),
+                    common.sample(RAMADAN_SOURCE, min(ramadan), max(ramadan), len(ramadan), 1),
+                    common.sample(AUGUST_SOURCE, aug_day, aug_day, len(aug_by_city), len(aug_by_city))]
+    if year_zones:
+        profile_fitted.append(common.sample(YEAR_SOURCE, y0, y1, 365, len(year_zones)))
+        profile_held.append(common.sample(YEAR_SOURCE + "; month split", y0, y1, 365, len(year_zones), month_split=True))
+    profile_stats = common.fit_stats(profile_fitted, profile_held, profile_score, len(ramadan), sum(quirk_days.values()))
     profile_stats["maxDiffMin"] = max(profile_score.worst, max(q.worst for q in quirk.values()))
     path = common.write_asset(
         AUTHORITY, AUTHORITY, "EG", "NEAREST", zones, fit=profile_stats, named_first=True,
         source=f"The Egyptian General Survey Authority's all-cities daily table (esa.gov.eg/praytimes.aspx): {len(zones)} "
                f"cities, each computed at a point fitted on {len(recent)} days of {first.year}-{str(last.year)[2:]} "
-               "(Wayback copies and the 2026-10-08 page)")
-    say(f"Profile held out (leave one day out + reprints): {shares(profile_score)}")
+               "(Wayback copies and the 2026-10-08 page)"
+               + (f", {len(year_zones)} of them on their whole 2026 from EGSA's monthly view" if year_zones else ""))
+    say(f"Profile held out (leave one day out + reprints + the year's month-split): {shares(profile_score)}")
     say(f"Wrote {path} ({len(zones)} zones) in {time.time() - started:.0f} s")
     return 0
 

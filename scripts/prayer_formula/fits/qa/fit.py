@@ -651,7 +651,7 @@ def method_of(p: dict, method_id: str) -> dict:
         rounding={e: p["rounding"] for e in EV}, sunModel=p["model"],
         sunEvaluation={} if p["mode"] == "EVENT_INSTANT" else {e: p["mode"] for e in EV},
         asrShadow=2 if p["asr"] == "shadow2" else 1, asrSun="APPARENT" if p["asr"] == "apparent" else "GEOMETRIC",
-        horizon={"sunrise": horizon, "sunset": horizon}, ramadanOffsets={"MAGHRIB": p["ramadan"]},
+        horizon={"sunrise": horizon, "sunset": horizon}, ramadanOffsets={"MAGHRIB": p["ramadan"]}, referenceYear=p["year"],
         ramadanDays="UMM_AL_QURA_COMPUTED", revisions=revisions,
         evidence={"kind": "FROM_TABLES", "source": "fit"})
 
@@ -1100,10 +1100,10 @@ def main() -> int:
             doha_held + [common.sample(QCH_SOURCE + "_towns", *span_of(days48 + list(cal)), len(set(days48) | set(cal)), 5)],
             prof, ram_days if a == "qa_awqaf" else qch_ram, len(quirk) if a == "qa_awqaf" else 0)
         path = common.write_asset(a, a, "QA", "LISTED_PLACES", zones, fit=prof_stats, named_first=True,
-                                  source=("Qatar's Ministry of Awqaf (Doha's perpetual table, computed for the actual year) "
+                                  source=("Qatar's Ministry of Awqaf (Doha's perpetual table, as printed: reference year 2006) "
                                           "and Qatar Calendar House's places" if a == "qa_awqaf" else
-                                          "Qatar Calendar House's tables (Doha's perpetual table, computed for the actual "
-                                          "year) and its places"))
+                                          "Qatar Calendar House's tables (Doha's perpetual table, as printed: reference year "
+                                          "2006) and its places"))
         verdicts = {z["id"]: tier_a(z["fit"]) for z in zones}
         print(f"Wrote {path.relative_to(common.ROOT).as_posix()}; tier A: " + "; ".join(
             f"{z['id']} {'passes' if not verdicts[z['id']] else 'fails (' + ', '.join(verdicts[z['id']][:3]) + ')'}" for z in zones))

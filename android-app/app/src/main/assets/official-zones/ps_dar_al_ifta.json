@@ -4,7 +4,7 @@
  "methodId": "ps_dar_al_ifta",
  "country": "PS",
  "mapping": "LISTED_PLACES",
- "source": "The Palestinian Dar al-Ifta's perpetual Al-Aqsa table (darifta.ps, ssalah2012.pdf, winter time) with the published differences of its 16 Palestinian places, computed for the actual year (A8)",
+ "source": "The Palestinian Dar al-Ifta's perpetual Al-Aqsa table (darifta.ps, ssalah2012.pdf, winter time) with the published differences of its 16 Palestinian places, shown as printed at its reference year (A8)",
  "fit": {
   "fittedOn": [
    {
@@ -27,20 +27,20 @@
    }
   ],
   "exact": {
-   "FAJR": 0.4044,
-   "SUNRISE": 0.4399,
-   "DHUHR": 0.959,
-   "ASR": 0.7459,
-   "MAGHRIB": 0.5984,
-   "ISHA": 0.5082
+   "FAJR": 0.5765,
+   "SUNRISE": 0.6858,
+   "DHUHR": 0.8989,
+   "ASR": 0.7732,
+   "MAGHRIB": 0.7022,
+   "ISHA": 0.5847
   },
   "within1": {
-   "FAJR": 0.9262,
-   "SUNRISE": 0.9754,
+   "FAJR": 0.9945,
+   "SUNRISE": 1.0,
    "DHUHR": 1.0,
    "ASR": 1.0,
-   "MAGHRIB": 0.9945,
-   "ISHA": 1.0
+   "MAGHRIB": 1.0,
+   "ISHA": 0.9945
   },
   "daysPerMonth": {
    "FAJR": [
@@ -174,20 +174,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -329,20 +329,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -485,20 +485,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -641,20 +641,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -797,20 +797,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -953,20 +953,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -1109,20 +1109,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -1265,20 +1265,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -1421,20 +1421,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -1577,20 +1577,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -1733,20 +1733,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -1889,19 +1889,19 @@
      }
     ],
     "exact": {
-     "FAJR": 0.7678,
-     "SUNRISE": 0.7678,
-     "DHUHR": 0.9617,
-     "ASR": 0.8306,
-     "MAGHRIB": 0.6913,
-     "ISHA": 0.7049
+     "FAJR": 0.7923,
+     "SUNRISE": 0.8388,
+     "DHUHR": 0.9454,
+     "ASR": 0.8962,
+     "MAGHRIB": 0.8115,
+     "ISHA": 0.8005
     },
     "within1": {
-     "FAJR": 0.9317,
-     "SUNRISE": 0.9781,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
+     "MAGHRIB": 1.0,
      "ISHA": 1.0
     },
     "daysPerMonth": {
@@ -2045,20 +2045,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -2201,20 +2201,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -2357,20 +2357,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [
@@ -2513,20 +2513,20 @@
      }
     ],
     "exact": {
-     "FAJR": 0.4044,
-     "SUNRISE": 0.4399,
-     "DHUHR": 0.959,
-     "ASR": 0.7459,
-     "MAGHRIB": 0.5984,
-     "ISHA": 0.5082
+     "FAJR": 0.5765,
+     "SUNRISE": 0.6858,
+     "DHUHR": 0.8989,
+     "ASR": 0.7732,
+     "MAGHRIB": 0.7022,
+     "ISHA": 0.5847
     },
     "within1": {
-     "FAJR": 0.9262,
-     "SUNRISE": 0.9754,
+     "FAJR": 0.9945,
+     "SUNRISE": 1.0,
      "DHUHR": 1.0,
      "ASR": 1.0,
-     "MAGHRIB": 0.9945,
-     "ISHA": 1.0
+     "MAGHRIB": 1.0,
+     "ISHA": 0.9945
     },
     "daysPerMonth": {
      "FAJR": [

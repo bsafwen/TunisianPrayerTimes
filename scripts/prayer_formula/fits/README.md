@@ -89,12 +89,12 @@ that holds a follower year already). The dataset is read in place, never copied,
 | Fit | Followers | Year added | Result |
 |---|---|---|---|
 | `ma_habous` | 195 mosques, 58 localities | 2026 outside Habous's months, quirk days apart | 95–97 % exact per time, all within 1 min; no tier A |
-| `ly_awqaf` | 7, Tripoli | 305 days | 83–96 %, all within 1 min (A8); the other 21 cities have 3 official days, 20 needed |
-| `kw_awqaf` | 11 (Jahra, Abdali, Ahmadi) | the 6 untranscribed months, every zone | 66–87 %, all within 1 min (A8); tier B |
-| `om_mara` | 9 (Muscat, 5 other zones) | 340 days per zone | Izki, Barka, Bahla and Saham 98–100 %: tier A; Dhank's follower sets its own February Asr |
+| `ly_awqaf` | 7, Tripoli | 305 days | as printed (A8) 92–97 %, all within 1 min; the other 21 cities have 3 official days, 20 needed |
+| `kw_awqaf` | 11 (Jahra, Abdali, Ahmadi) | the 6 untranscribed months, every zone | as printed (A8) 88–93 %, all within 1 min; tier B; their months also confirm the reference year 2011 |
+| `om_mara` | 9 (Muscat, 5 other zones) | none since 2026-10-17 | Izki, Barka, Bahla and Saham reached tier A on their 340 days (98–100 %); every zone's whole 2026 is now official (calendar_page2), so no follower day is left, and all 86 zones pass on the ministry's own tables; Dhank's follower sets its own February Asr |
 | `diyanet_eu_at` | 1, Vienna (IGGÖ) | January to March | 97.8–100 %, all within 1 min; summer Fajr and Isha stay with the takdir (9.2) |
 | `sy_awqaf` | none: one Eastern Ghouta mosque prints Damascus's Ramadan 97.5 %, 2 min once | | |
 | `ie_ifi` | Ramadan followers (Dundalk; three in Dublin) | none | Dublin's keep their own Isha from May to August (up to 86 min off IFI's table), so a Ramadan match does not vouch for the year |
 | `luxembourg_shoura` | none (97.2 %: their own December sunrise) | | their August Asr showed the print's one-row slip, now 22 quirk days; February was then read from the Shoura's PDF, so the record has all 12 months (README) |
-| `bg_grand_mufti`, `eg_egsa`, `mr_islamic_affairs`, `ye_awqaf`, `si_islamska_skupnost`, `dum_rf` | none: the mosques compute their own times (at best 44 %, 83 %, 55 %, 27 %, 6 % and 72 % of the minutes; Egypt on 5 official days) | | |
+| `bg_grand_mufti`, `eg_egsa`, `mr_islamic_affairs`, `ye_awqaf`, `si_islamska_skupnost`, `dum_rf` | none: the mosques compute their own times (at best 44 %, 83 %, 55 %, 27 %, 6 % and 72 % of the minutes; Egypt on 5 official days) | | Egypt needs none since 2026-10-17: EGSA's monthly view gives every city's 2026, and all 78 pass |
 | `qa`, `ps_gaza_awqaf`, `hr_miz_zagreb`, `jo_awqaf`'s further places, North Macedonia's BFI | not tried: no mosque at the waiting places (Qatar's towns, Gaza), or under 20 official days of 2026 | | |

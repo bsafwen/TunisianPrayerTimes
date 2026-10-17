@@ -35,7 +35,13 @@ internal data class Site(
     val pressureHpa: Double,
     val temperatureC: Double,
     val zone: OfficialZone?,
+    /** E6, a time's own point (`OfficialZone.eventPoints`). */
+    val eventPoints: Map<TimeEvent, Point> = emptyMap(),
 ) {
+    /** Where [event] is computed: its own point, else the morning point (Fajr, sunrise) or the evening point. */
+    fun pointOf(event: TimeEvent): Point =
+        eventPoints[event] ?: if (event == TimeEvent.FAJR || event == TimeEvent.SUNRISE) morning else evening
+
     companion object {
         const val STANDARD_PRESSURE_HPA = 1010.0
         const val STANDARD_TEMPERATURE_C = 10.0
@@ -56,6 +62,7 @@ internal data class Site(
                 pressureHpa = zone.pressureHpa ?: STANDARD_PRESSURE_HPA,
                 temperatureC = zone.temperatureC ?: STANDARD_TEMPERATURE_C,
                 zone = zone,
+                eventPoints = zone.eventPoints.mapValues { (_, point) -> Point.of(point) },
             )
         }
     }
@@ -124,23 +131,26 @@ internal class Sky(val site: Site, val date: LocalDate, val zoneId: ZoneId, val 
 
     fun sunrise(c: SolarCycle = cycle): Solved {
         val sun = provider(TimeEvent.SUNRISE, c)
-        val distance = sun.at(c.jd0 + Solver.transit(site.morning.longitude, sun, c) / 24.0).distanceAu
+        val point = site.pointOf(TimeEvent.SUNRISE)
+        val distance = sun.at(c.jd0 + Solver.transit(point.longitude, sun, c) / 24.0).distanceAu
         val altitude = HorizonAltitude.of(method.horizon.sunrise, true, horizonInputs(true, distance))
-        return solve(site.morning, site.morning.latitude, altitude, -1, sun, c)
+        return solve(point, point.latitude, altitude, -1, sun, c)
     }
 
     fun sunset(c: SolarCycle = cycle): Solved {
         val sun = provider(TimeEvent.MAGHRIB, c)
-        val distance = sun.at(c.jd0 + Solver.transit(site.evening.longitude, sun, c) / 24.0).distanceAu
+        val point = site.pointOf(TimeEvent.MAGHRIB)
+        val distance = sun.at(c.jd0 + Solver.transit(point.longitude, sun, c) / 24.0).distanceAu
         val altitude = HorizonAltitude.of(method.horizon.sunset, false, horizonInputs(false, distance))
-        return solve(site.evening, site.evening.latitude, altitude, +1, sun, c)
+        return solve(point, point.latitude, altitude, +1, sun, c)
     }
 
-    /** The transit at the evening point, with Dhuhr's evaluation: Dhuhr before any minutes. */
+    /** The transit at Dhuhr's point (the evening point), with Dhuhr's evaluation: Dhuhr before any minutes. */
     val transit: Solved by lazy {
         val sun = provider(TimeEvent.DHUHR, cycle)
-        val hours = Solver.transit(site.evening.longitude, sun, cycle)
-        Solved(cycle.epochSeconds(hours), site.evening, null, sun.at(cycle.jd0 + hours / 24.0))
+        val point = site.pointOf(TimeEvent.DHUHR)
+        val hours = Solver.transit(point.longitude, sun, cycle)
+        Solved(cycle.epochSeconds(hours), point, null, sun.at(cycle.jd0 + hours / 24.0))
     }
 
     val sunrise: Solved by lazy { sunrise(cycle) }
@@ -148,12 +158,17 @@ internal class Sky(val site: Site, val date: LocalDate, val zoneId: ZoneId, val 
 
     /**
      * Fajr (side −1, morning point) or Isha (+1, evening point, or [at], `IshaRule.Angle.at`) at a depression
-     * angle: the method's own ([scaled]: E17's twilight latitude, E4's evaluation, E3's dip), or, for E19's
-     * bounds, the plain angle at the real latitude and the sun at its own instant.
+     * angle: the method's own ([scaled]: E17's twilight latitude, E4's evaluation, E3's dip, the time's own point),
+     * or, for E19's bounds, the plain angle at the real latitude and the sun at its own instant, at the morning or
+     * evening point.
      */
     fun twilight(event: TimeEvent, angleDeg: Double, scaled: Boolean = true, at: LatLngE5? = null): Solved {
         val morning = event == TimeEvent.FAJR
-        val point = at?.let(Point::of) ?: if (morning) site.morning else site.evening
+        val point = at?.let(Point::of) ?: when {
+            scaled -> site.pointOf(event)
+            morning -> site.morning
+            else -> site.evening
+        }
         val latitude = point.latitude * if (scaled) method.twilightLatitudeScale else 1.0
         val dip = if (scaled && method.dipOnTwilight) {
             HorizonAltitude.geometricDipDeg(if (morning) site.morningElevationM else site.eveningElevationM)
@@ -163,13 +178,14 @@ internal class Sky(val site: Site, val date: LocalDate, val zoneId: ZoneId, val 
     }
 
     /** E12: Maghrib at a depression angle. */
-    fun maghribAngle(angleDeg: Double): Solved =
-        solve(site.evening, site.evening.latitude, -angleDeg, 1, provider(TimeEvent.MAGHRIB, cycle), cycle)
+    fun maghribAngle(angleDeg: Double): Solved = site.pointOf(TimeEvent.MAGHRIB).let { point ->
+        solve(point, point.latitude, -angleDeg, 1, provider(TimeEvent.MAGHRIB, cycle), cycle)
+    }
 
-    /** The method's shadow Asr (E4, E13, E15); absent when the noon sun gives no shadow ratio. */
+    /** The method's shadow Asr (E4, E13, E15) at Asr's point; absent when the noon sun gives no shadow ratio. */
     val asr: Solved by lazy {
         val sun = provider(TimeEvent.ASR, cycle)
-        val point = site.evening
+        val point = site.pointOf(TimeEvent.ASR)
         val transitHours = Solver.transit(point.longitude, sun, cycle)
         val signed = method.asr == AsrRule.SignedShadow
         fun altitudeAt(noonZenith: Double) = asrAltitudeAtZenith(

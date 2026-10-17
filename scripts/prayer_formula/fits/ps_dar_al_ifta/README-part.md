@@ -3,8 +3,8 @@
 `fits/ps_dar_al_ifta/fit.py` (2026-10-15, about 30 s on 16 workers) fits Dar al-Ifta's perpetual table «توقيت الصلاة
 الدهري حسب توقيت المسجد الأقصى المبارك» (Jerusalem 1433/2012, a reprint of an older table, still served on darifta.ps)
 and writes `official-zones/ps_dar_al_ifta.json`. The table gives 366 rows keyed by month and day, in winter time (UTC+2)
-all year; the fit reads each row at a reference year (E5) and every held-out score is computed for the actual year,
-as the app shows it (A8).
+all year; the fit reads each row at a reference year (E5) and every held-out score is computed as the app shows it:
+the table as printed, every date as its month and day of 2016 (A8, revised by the owner on 2026-10-17).
 
 **Method** (each time fitted on its own; the windows count the times within 1 minute first, the tier-B gate, then
 the exact ones, since no formula reproduces the table to the minute):
@@ -45,14 +45,16 @@ parsed from `ssalah2012.pdf` pages 4-27; an independent parse is identical) and,
 `research-2026-10-08/PS/pdf2012/p02.png` (the differences).
 
 **Held-out scores** (the table split by month, each half fitted on the other; every held-out row computed for 2026,
-the 29 February row for 2028; common.compute):
+the 29 February row for 2028, as printed; common.compute):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| Exact | 40.4 % | 44.0 % | 95.9 % | 74.6 % | 59.8 % | 50.8 % |
-| Within 1 minute | 92.6 % | 97.5 % | 100 % | 100 % | 99.5 % | 100 % |
+| Exact, as printed | 57.7 % | 68.6 % | 89.9 % | 77.3 % | 70.2 % | 58.5 % |
+| Within 1 minute, as printed | 99.5 % | 100 % | 100 % | 100 % | 100 % | 99.5 % |
+| Exact for 2026's own sun (before A8's revision) | 40.4 % | 44.0 % | 95.9 % | 74.6 % | 59.8 % | 50.8 % |
 
-The final profile computed for each year (exact / within 1, of 365 or 366):
+The final profile computed for each year's own sun, as the app did before A8's revision (exact / within 1, of 365
+or 366); the app now shows the 2016 row every year:
 
 | Year | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
@@ -66,8 +68,9 @@ The leap phase carries most of the difference: the further a year is from a leap
 the table's. Every place's record equals Al-Aqsa's, shifted by its whole-minute difference; Qalqilya's +2 meets either
 neighbouring minute of the printed +1.5 on 79 % of times.
 
-**Tier.** B (9.5) is met only at the reference year: computed for the actual year (A8), up to 7 % of Fajr times and
-2.5 % of sunrise times are 2 min off in 2026 (worst 2). The chip stays «مستخلصة من جداول».
+**Tier.** B (9.5) is nearly met as printed: every time within 1 minute held out but 2 Fajr and 2 Isha days of 366
+(2 min off). The table itself defeats every formula tried by about ±1.5 min with the season (Quirk days, below), so
+tier A is out of reach: in-sample at 2016 Fajr is 57.7 % exact. The chip stays «مستخلصة من جداول».
 
 **Quirk days.** None identified. The table's residuals against every formula tried wander by about ±1.5 min with the
 season (against the fitted rule, Fajr runs earliest from February to May, Isha earliest in June and latest in August and

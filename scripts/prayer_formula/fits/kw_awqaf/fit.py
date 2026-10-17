@@ -63,8 +63,8 @@ FEB = common.LOCAL_DATA / "research-2026-10-11" / "KW" / "feb.txt"
 GEONAMES = common.LOCAL_DATA / "research-2026-10-11" / "GEONAMES" / "cities1000.zip"
 SOURCE = "kw_awqaf_perpetual_sheets"
 SOURCE_LINE = ("The Ministry of Awqaf's perpetual timetable for Kuwait City and its suburbs (Mosques Sector, on Dr Saleh "
-               "Al-Ojairi's calendar), with the footer's minute offsets for 11 places; computed for the actual year")
-EVIDENCE = "The Ministry of Awqaf's perpetual timetable (reference year fitted), computed for the actual year"
+               "Al-Ojairi's calendar), with the footer's minute offsets for 11 places; shown as printed, at its reference year 2011")
+EVIDENCE = "The Ministry of Awqaf's perpetual timetable, as printed (reference year 2011)"
 MODELS = ("MEEUS", "VSOP87", "TEXTBOOK")
 YEARS = range(1990, 2027)                 # reference years tried, to the year of the edition awgatalsalat names
 SCORE_YEAR = 2026                         # the held-out rows are scored at their month and day in this year (A8)
@@ -399,7 +399,7 @@ def method_of(f: Fitted) -> dict:
         id=AUTHORITY, fajr={"type": "angle", "degrees": p["FAJR"].value}, isha={"type": "angle", "degrees": p["ISHA"].value},
         offsets={"DHUHR": whole} if whole else {}, dhuhrAfterTransitMin=round(offset - whole, 6),
         asrShadow=int(p["ASR"].value), asr={"type": "shadow"}, asrSun=asr_sun, sunModel=f.model, rounding=rounding,
-        horizon={"sunrise": horizon_of(p["SUNRISE"].value), "sunset": horizon_of(p["MAGHRIB"].value)},
+        horizon={"sunrise": horizon_of(p["SUNRISE"].value), "sunset": horizon_of(p["MAGHRIB"].value)}, referenceYear=f.year,
         evidence={"kind": "FROM_TABLES", "source": EVIDENCE},
     )
 
@@ -578,7 +578,7 @@ def main() -> int:
     path = common.write_asset(AUTHORITY, AUTHORITY, "KW", "LISTED_PLACES", zones, fit=profile, source=SOURCE_LINE)
     say(f"wrote {path.relative_to(common.ROOT).as_posix()}: {len(zones)} zones; method {method['fajr']}, {method['isha']}, "
         f"offsets {method['offsets']}, dhuhrAfterTransitMin {method['dhuhrAfterTransitMin']}, rounding {method['rounding']}, "
-        f"horizon {method['horizon']}, asrSun {method['asrSun']}, sunModel {method['sunModel']}; reference year {year} (E5, harness only)")
+        f"horizon {method['horizon']}, asrSun {method['asrSun']}, sunModel {method['sunModel']}; reference year {year} (A8: the app shows it every year)")
     return 0
 
 

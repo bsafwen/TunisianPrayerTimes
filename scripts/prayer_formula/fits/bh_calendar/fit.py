@@ -16,27 +16,25 @@ printed and every FitStats comes from common.compute, the reference engine.
 
 Stages (9.4), each by windows (a published minute bounds the unrounded time to a minute, so each day bounds the
 parameter; the value most days allow wins, read to the data's resolution: among the values within TOLERANCE of the
-best count, a conventional value first, then the fewest decimals). The stated longitudes are kept; the latitudes are
-scanned (LATITUDES), each point's latitude being the one where its times' picked values cover the most days.
+best count, a conventional value first, then the fewest decimals).
 1. Dhuhr: the sun model and the rounding, and the offset after the transit at the stated western longitude, in
    minutes (E7 `dhuhrAfterTransitMin`).
-2. Sunrise and Maghrib: rounding and horizon altitude (E2), at each point's latitude.
-3. Fajr and Isha: rounding and angle.
-4. Asr: factor 1 on the geometric sun, with the noon shadow at the declination of the Asr instant itself (E4
-   SHADOW_AT_EVENT), and its rounding; the other evaluations and the apparent sun are compared in the report.
+2. Each other time at a point of its own (E6, `eventPoints`; 2026-10-17): the calendar's times do not share the two
+   stated points (fitted on 2026-10-15 at two points, Asr, Maghrib and Isha stayed at 94.4-96.9 % held out). Each
+   time scans a grid of points (OWN_LATS x OWN_LNGS, between the two stated longitudes; Asr and Maghrib on the stated
+   western longitude, which Dhuhr shares, their latitudes only) and keeps, among the points whose picked value covers
+   the most days, the one nearest the middle of that plateau: Fajr and Isha at the stated 18 degrees where it holds,
+   sunrise and Maghrib their horizon altitude (E2), Asr factor 1 on the geometric sun with the noon shadow at the
+   declination of the Asr instant itself (E4 SHADOW_AT_EVENT); each with its rounding.
 Held out: the one calendar in hand, by month-split (fold A fits on the odd calendar months and scores the even ones,
-fold B the reverse). The asset takes the values fitted on all 355 days; its FitStats are the folds' held-out scores.
+fold B the reverse), every score from common.compute with the zone's own points. The asset takes the values fitted
+on all 355 days; its FitStats are the folds' held-out scores.
 
-The values are fixed (FIRST_FIT): the stages above ran on 2026-10-15 with Asr on DAILY_10H_UT, and when Asr moved to
-SHADOW_AT_EVENT every other value, the folds' own included, was kept (coordinator's decision), so a run reproduces
-them and only rescores; --refit runs the stages again (for a new calendar).
-
-Usage: python scripts/prayer_formula/fits/bh_calendar/fit.py [--refit]
+Usage: python scripts/prayer_formula/fits/bh_calendar/fit.py
 """
 
 from __future__ import annotations
 
-import argparse
 import csv
 import datetime
 import functools
@@ -64,27 +62,15 @@ SOURCE_LINE = ("The Supreme Council for Islamic Affairs's Bahraini calendar (alm
 EVIDENCE = "The Supreme Council for Islamic Affairs's calendar, 1448: its stated two points and rules, fitted"
 KEYS = dict(zip(EVENTS, ("fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha")))
 MODELS = ("VSOP87", "MEEUS", "TEXTBOOK")
-ASR_MODES = ("EVENT_INSTANT", "DAILY_0H_UT", "DAILY_10H_UT", "KACST", "SHADOW_AT_EVENT")   # compared (report)
 ASR_MODE = "SHADOW_AT_EVENT"              # E4, shipped: the noon shadow at the declination of the Asr instant itself
-# The values of the fit of 2026-10-15 (all days, and each month-split fold's own), kept when Asr moved from
-# DAILY_10H_UT to SHADOW_AT_EVENT (coordinator's decision, 2026-10-15): a rerun reproduces them; --refit re-picks.
-# Angles in degrees, altitudes in degrees, Dhuhr in minutes after the transit; each with its rounding (E1).
-FIRST_FIT = {
-    "all": {"model": "VSOP87", "morning_lat": 26.205, "evening_lat": 26.175, "fajr": (18.01, "DOWN"),
-            "sunrise": (-0.83, "DOWN"), "dhuhr": (1.07, "DOWN"), "asr": "DOWN", "maghrib": (-0.8333, "NEAREST"),
-            "isha": (17.82, "DOWN")},
-    "A": {"model": "VSOP87", "morning_lat": 26.215, "evening_lat": 26.18, "fajr": (18.008, "DOWN"),
-          "sunrise": (-0.8333, "DOWN"), "dhuhr": (1.1, "DOWN"), "asr": "DOWN", "maghrib": (-0.95, "DOWN"),
-          "isha": (17.81, "DOWN")},
-    "B": {"model": "VSOP87", "morning_lat": 26.205, "evening_lat": 26.165, "fajr": (18.01, "DOWN"),
-          "sunrise": (-0.8333, "DOWN"), "dhuhr": (1.07, "DOWN"), "asr": "DOWN", "maghrib": (-0.8333, "NEAREST"),
-          "isha": (17.825, "DOWN")},
-}
-ASR_SUNS = ("GEOMETRIC", "APPARENT")
+MODEL = "VSOP87"                          # E14: the Dhuhr windows' best sun (349 of 355 days, MEEUS 348, TEXTBOOK 300)
+OWN_LATS = tuple(round(26.10 + 0.005 * i, 3) for i in range(41))     # 26.100 .. 26.300
+OWN_LNGS = tuple(round(50.44 + 0.02 * j, 2) for j in range(15))      # 50.44 .. 50.72: between the stated longitudes
+OWN_TIMES = {"FAJR": (-1, 18.0, "east"), "SUNRISE": (-1, -0.8333, "east"), "ASR": (1, 1.0, "west"),
+             "MAGHRIB": (1, -0.8333, "west"), "ISHA": (1, 18.0, "west")}     # side, stated value, stated point
 ROUNDINGS = ("NEAREST", "DOWN", "UP")
 EDGES = {"NEAREST": (-30, 30), "UP": (-60, 0), "DOWN": (0, 60)}   # E1: seconds around the published minute
 STANDARD_ALTITUDE = -0.8333
-LATITUDES = tuple(round(26.10 + 0.005 * i, 3) for i in range(41))   # 26.100 .. 26.300
 TOLERANCE = 0.0075                        # values within 0.75 % of the best count are read as equally good
 FOLDS = (("A", (1, 3, 5, 7, 9, 11)), ("B", (2, 4, 6, 8, 10, 12)))   # the months each fold fits on
 EPOCH = datetime.date(1970, 1, 1)
@@ -164,23 +150,6 @@ class TableSun:
         w = x - i
         a, b = self.values[i], self.values[i + 1]
         return a[0] + (b[0] - a[0]) * w, a[1] + (b[1] - a[1]) * w, a[2] + (b[2] - a[2]) * w
-
-
-class FixedSun:
-    """S4's daily modes and KACST: the sun of one instant of the cycle's date, whatever JD."""
-
-    def __init__(self, sun, jd0: float, mode: str):
-        if mode == "DAILY_0H_UT":
-            self.fixed = sun(jd0)
-        elif mode == "DAILY_10H_UT":
-            self.fixed = sun(jd0 + 10 / 24)
-        elif mode == "KACST":
-            self.fixed = (sun(jd0 + 21 / 24)[0],) + tuple(sun(jd0 + 9 / 24)[1:])
-        else:
-            raise ValueError(mode)
-
-    def __call__(self, jd: float):
-        return self.fixed
 
 
 def sweep(windows: list[tuple[float, float]]) -> tuple[int, list[tuple[float, float]]]:
@@ -297,29 +266,6 @@ def angle_windows(rows: list[Row], sun, lat: float, lng: float, event: str, side
     return out
 
 
-def asr_windows(rows: list[Row], sun, lat: float, lng: float) -> dict[tuple, list]:
-    """(ASR, mode, asr sun, rounding): per row, the shadow factor that puts Asr in the published minute. With
-    SHADOW_AT_EVENT the converged Asr takes the declination of its own instant for the noon shadow, so each edge of
-    the minute uses the declination at that edge."""
-    out = {}
-    for row in rows:
-        for mode in ASR_MODES:
-            s = sun if mode in ("EVENT_INSTANT", "SHADOW_AT_EVENT") else FixedSun(sun, row.cycle.jd0, mode)
-            t0 = ref.transit(row.cycle, s, lng)
-            zenith = abs(lat - s(row.cycle.jd0 + t0 / 24)[0])
-            edges = {d: row.published["ASR"] + d for d in (-60, -30, 0, 30, 60)}
-            alt = {d: altitude(row, s, lat, lng, t) for d, t in edges.items()}
-            if mode == "SHADOW_AT_EVENT":
-                zen = {d: abs(lat - s(ref.jd_of_instant(t))[0]) for d, t in edges.items()}
-            else:
-                zen = dict.fromkeys(edges, zenith)
-            for asr_sun in ASR_SUNS:
-                k = {d: shadow_factor(a, zen[d], asr_sun) for d, a in alt.items()}
-                for r, (a, b) in EDGES.items():
-                    out.setdefault(("ASR", mode, asr_sun, r), []).append((min(k[a], k[b]), max(k[a], k[b])))
-    return out
-
-
 def dhuhr_windows(rows: list[Row], suns: dict, lng: float) -> dict[tuple, list]:
     """(model, rounding): per row, the offset after the transit (s) that puts Dhuhr in the published minute."""
     out = {}
@@ -333,116 +279,107 @@ def dhuhr_windows(rows: list[Row], suns: dict, lng: float) -> dict[tuple, list]:
 
 # --- Stages ----------------------------------------------------------------------------------------------------
 
+def asr_event_windows(rows: list[Row], sun, lat: float, lng: float) -> dict[tuple, list]:
+    """(ASR, rounding): per row, the shadow factor that puts the shipped Asr in the published minute: the geometric
+    sun, the noon shadow at the declination of the Asr instant itself (each edge of the minute takes its own)."""
+    out = {("ASR", r): [] for r in ROUNDINGS}
+    for row in rows:
+        edges = {d: row.published["ASR"] + d for d in (-60, -30, 0, 30, 60)}
+        alt = {d: altitude(row, sun, lat, lng, t) for d, t in edges.items()}
+        zen = {d: abs(lat - sun(ref.jd_of_instant(t))[0]) for d, t in edges.items()}
+        k = {d: shadow_factor(a, zen[d], "GEOMETRIC") for d, a in alt.items()}
+        for r, (a, b) in EDGES.items():
+            out[("ASR", r)].append((min(k[a], k[b]), max(k[a], k[b])))
+    return out
+
+
+def own_windows(rows: list[Row], sun, west_lng: float) -> dict[tuple, dict]:
+    """(time, lat, lng): that time's windows at each grid point; Asr and Maghrib on the stated western longitude only,
+    which Dhuhr shares (Maghrib's point is the zone's evening point)."""
+    grid = {}
+    for e, (side, _, _) in OWN_TIMES.items():
+        for lat in OWN_LATS:
+            for lng in (west_lng,) if e in ("ASR", "MAGHRIB") else OWN_LNGS:
+                grid[(e, lat, lng)] = (asr_event_windows(rows, sun, lat, lng) if e == "ASR"
+                                       else angle_windows(rows, sun, lat, lng, e, side))
+    say(f"  windows at {len(grid)} points of the grid")
+    return grid
+
+
 @dataclass
-class Fitted:
-    model: str
-    dhuhr: Pick                            # (model, rounding), offset in s
-    morning_lat: float
-    evening_lat: float
-    picks: dict[str, Pick]                 # FAJR, SUNRISE, MAGHRIB, ISHA, ASR at the chosen latitudes
-    by_lat: dict[str, list]                # per latitude, the summed picked counts (report)
+class Own:
+    dhuhr: Pick                                 # (model, rounding): the offset after the transit, in s
+    points: dict[str, tuple[float, float]]      # FAJR, SUNRISE, ASR, MAGHRIB, ISHA
+    picks: dict[str, Pick]
 
 
-class Windows:
-    """Every window the stages read, computed once for all rows; a fold subsets them by row index."""
-
-    def __init__(self, rows: list[Row], suns: dict, east: tuple[float, float], west: tuple[float, float]):
-        self.rows = rows
-        self.dhuhr = dhuhr_windows(rows, {m: suns[m] for m in MODELS}, west[1])
-        self.morning: dict[tuple[str, float], dict] = {}
-        self.evening: dict[tuple[str, float], dict] = {}
-        for model in ("VSOP87", "MEEUS"):
-            for lat in LATITUDES:
-                w = angle_windows(rows, suns[model], lat, east[1], "FAJR", -1)
-                w.update(angle_windows(rows, suns[model], lat, east[1], "SUNRISE", -1))
-                self.morning[(model, lat)] = w
-                w = angle_windows(rows, suns[model], lat, west[1], "MAGHRIB", 1)
-                w.update(angle_windows(rows, suns[model], lat, west[1], "ISHA", 1))
-                w.update(asr_windows(rows, suns[model], lat, west[1]))
-                self.evening[(model, lat)] = w
-            say(f"  windows for {model}: {len(LATITUDES)} latitudes x 2 points")
-
-
-def fit(win: Windows, idx: list[int], stated: tuple[tuple[float, float], tuple[float, float]]) -> Fitted:
-    (east_lat, _), (west_lat, _) = stated
-    best = None
-    for model in ("VSOP87", "MEEUS"):
-        morning, evening = [], []
-        for lat in LATITUDES:
-            w = win.morning[(model, lat)]
-            f = pick(w, idx, [("FAJR", r) for r in ROUNDINGS], (18.0,))
-            s = pick(w, idx, [("SUNRISE", r) for r in ROUNDINGS], (STANDARD_ALTITUDE,))
-            morning.append((f.at_value + s.at_value, -abs(lat - east_lat), lat, {"FAJR": f, "SUNRISE": s}))
-            w = win.evening[(model, lat)]
-            m = pick(w, idx, [("MAGHRIB", r) for r in ROUNDINGS], (STANDARD_ALTITUDE,))
-            i = pick(w, idx, [("ISHA", r) for r in ROUNDINGS], (18.0,))
-            a = pick_at(w, idx, [("ASR", ASR_MODE, "GEOMETRIC", r) for r in ROUNDINGS], (1.0,))
-            evening.append((m.at_value + i.at_value + a.at_value, -abs(lat - west_lat), lat, {"MAGHRIB": m, "ISHA": i, "ASR": a}))
-        mo, ev = max(morning), max(evening)
-        # 1. Dhuhr: the rounding and the offset after the transit at the stated western longitude, in minutes. All
-        # three roundings fit alike (nearest after a shift of half a minute is down); DOWN is tried first because only
-        # its window holds the stated rule, the whole disc past the meridian (16' at 15" a second: 64 s).
-        dh_model = pick(win.dhuhr, idx, [(model, r) for r in ("DOWN", "NEAREST", "UP")], scale=60.0)
-        total = mo[0] + ev[0] + dh_model.at_value
-        if best is None or total > best[0]:
-            best = (total, model, dh_model, mo, ev, {"morning": morning, "evening": evening})
-    _, model, dh_model, mo, ev, by_lat = best
-    return Fitted(model, dh_model, mo[2], ev[2], {**mo[3], **ev[3]}, by_lat)
+def fit_own(grid: dict, dhuhr: dict, idx: list[int]) -> Own:
+    """Each time's point, rounding and value on the rows idx: among the grid points whose pick covers the most days,
+    the one nearest the middle of their largest connected group (the plateau's middle, not an edge of it); the stated
+    value (18 degrees, the standard horizon, factor 1) first."""
+    points, picks = {}, {}
+    for e, (_, value, _) in OWN_TIMES.items():
+        found = {}
+        for (name, lat, lng), w in grid.items():
+            if name == e:
+                keys = [(e, r) for r in ROUNDINGS]
+                found[(OWN_LATS.index(lat), OWN_LNGS.index(lng) if lng in OWN_LNGS else 0)] = (
+                    (lat, lng), pick_at(w, idx, keys, (value,)) if e == "ASR" else pick(w, idx, keys, (value,)))
+        top = max(p.at_value for _, p in found.values())
+        tied, groups = {c for c, (_, p) in found.items() if p.at_value == top}, []
+        while tied:
+            group, todo = [], [tied.pop()]
+            while todo:
+                c = todo.pop()
+                group.append(c)
+                for n in ((c[0] + 1, c[1]), (c[0] - 1, c[1]), (c[0], c[1] + 1), (c[0], c[1] - 1)):
+                    if n in tied:
+                        tied.remove(n)
+                        todo.append(n)
+            groups.append(sorted(group))
+        group = max(groups, key=lambda g: (len(g), [-x for c in g for x in c]))
+        mi, mj = sum(c[0] for c in group) / len(group), sum(c[1] for c in group) / len(group)
+        cell = min(group, key=lambda c: ((c[0] - mi) ** 2 + (c[1] - mj) ** 2, c))
+        points[e], picks[e] = found[cell]
+    return Own(pick(dhuhr, idx, [(MODEL, r) for r in ("DOWN", "NEAREST", "UP")], scale=60.0), points, picks)
 
 
-def fixed(win: Windows, idx: list[int], v: dict) -> Fitted:
-    """FIRST_FIT's values as a Fitted, each with the days its windows reproduce on idx (report)."""
-    model = v["model"]
-
-    def made(windows: dict, key: tuple, value: float) -> Pick:
-        sub = [windows[key][i] for i in idx]
-        return Pick(key, value, covering(sub, value), sweep(sub)[0], len(idx))
-
-    wm, we = win.morning[(model, round(v["morning_lat"], 3))], win.evening[(model, round(v["evening_lat"], 3))]
-    picks = {e: made(wm if e in ("FAJR", "SUNRISE") else we, (e, v[e.lower()][1]), v[e.lower()][0])
-             for e in ("FAJR", "SUNRISE", "MAGHRIB", "ISHA")}
-    picks["ASR"] = made(we, ("ASR", ASR_MODE, "GEOMETRIC", v["asr"]), 1.0)
-    dhuhr = made(win.dhuhr, (model, v["dhuhr"][1]), v["dhuhr"][0] * 60)
-    return Fitted(model, dhuhr, v["morning_lat"], v["evening_lat"], picks, {})
-
-
-def describe(f: Fitted) -> str:
-    p = f.picks
-    asr = p["ASR"].config
-    return (f"{f.model}; Dhuhr {f.dhuhr.config[1]} + {f.dhuhr.value / 60:g} min ({f.dhuhr.at_value}/{f.dhuhr.n}); "
-            f"morning {f.morning_lat:.3f} N: Fajr {p['FAJR'].value:g} {p['FAJR'].config[1]} ({p['FAJR'].at_value}), "
-            f"sunrise {p['SUNRISE'].value:g} {p['SUNRISE'].config[1]} ({p['SUNRISE'].at_value}); "
-            f"evening {f.evening_lat:.3f} N: Asr k {p['ASR'].value:g} {asr[1]} {asr[2]} {asr[3]} ({p['ASR'].at_value}), "
-            f"Maghrib {p['MAGHRIB'].value:g} {p['MAGHRIB'].config[1]} ({p['MAGHRIB'].at_value}), "
-            f"Isha {p['ISHA'].value:g} {p['ISHA'].config[1]} ({p['ISHA'].at_value})")
+def describe(f: Own) -> str:
+    return (f"Dhuhr {f.dhuhr.config[1]} + {f.dhuhr.value / 60:g} min ({f.dhuhr.at_value}/{f.dhuhr.n}); "
+            + "; ".join(f"{e[:3].lower()} {f.points[e][0]:.3f} N {f.points[e][1]:.2f} E {f.picks[e].config[-1]} "
+                        f"{f.picks[e].value:g} ({f.picks[e].at_value})" for e in OWN_TIMES))
 
 
 def horizon_of(altitude_deg: float) -> dict:
     return {"type": "standard"} if altitude_deg == STANDARD_ALTITUDE else {"type": "fixed", "altitudeDeg": altitude_deg}
 
 
-def method_of(f: Fitted) -> dict:
+def method_of(f: Own) -> dict:
     p = f.picks
-    _, asr_mode, asr_sun, asr_rounding = p["ASR"].config
     k = p["ASR"].value
     if k not in (1.0, 2.0):
         raise SystemExit(f"Asr shadow factor {k} is neither 1 nor 2")
-    rounding = {"FAJR": p["FAJR"].config[1], "SUNRISE": p["SUNRISE"].config[1], "DHUHR": f.dhuhr.config[1],
-                "ASR": asr_rounding, "MAGHRIB": p["MAGHRIB"].config[1], "ISHA": p["ISHA"].config[1]}
+    rounding = {e: (f.dhuhr.config[1] if e == "DHUHR" else p[e].config[-1]) for e in EVENTS}
     return common.method_json(
         id=AUTHORITY, fajr={"type": "angle", "degrees": p["FAJR"].value}, isha={"type": "angle", "degrees": p["ISHA"].value},
-        dhuhrAfterTransitMin=round(f.dhuhr.value / 60, 6), asrShadow=int(k), asr={"type": "shadow"}, asrSun=asr_sun,
-        sunModel=f.model, rounding=rounding,
+        dhuhrAfterTransitMin=round(f.dhuhr.value / 60, 6), asrShadow=int(k), asr={"type": "shadow"}, asrSun="GEOMETRIC",
+        sunModel=MODEL, rounding=rounding,
         horizon={"sunrise": horizon_of(p["SUNRISE"].value), "sunset": horizon_of(p["MAGHRIB"].value)},
-        sunEvaluation={} if asr_mode == "EVENT_INSTANT" else {"ASR": asr_mode},
+        sunEvaluation={"ASR": ASR_MODE},
         evidence={"kind": "FROM_TABLES", "source": EVIDENCE},
     )
 
 
-def zone_of(f: Fitted, stated, manama) -> dict:
-    (_, east_lng), (_, west_lng) = stated
-    return {"id": "bahrain", "nameAr": "البحرين", "point": common.point(manama[0], manama[1]),
-            "morningPoint": common.point(f.morning_lat, east_lng), "eveningPoint": common.point(f.evening_lat, west_lng)}
+def zone_of(f: Own, manama) -> dict:
+    """The national zone: Fajr's point as the morning point, Maghrib's (on Dhuhr's western longitude) as the evening
+    point, and each time whose own point differs from its default (E6 `eventPoints`)."""
+    morning, evening = f.points["FAJR"], f.points["MAGHRIB"]
+    own = {e: pt for e, pt in f.points.items() if pt != (morning if e in ("FAJR", "SUNRISE") else evening)}
+    zone = {"id": "bahrain", "nameAr": "البحرين", "point": common.point(manama[0], manama[1]),
+            "morningPoint": common.point(*morning), "eveningPoint": common.point(*evening)}
+    if own:
+        zone["eventPoints"] = {e: common.point(*own[e]) for e in EVENTS if e in own}
+    return zone
 
 
 # --- Scores ----------------------------------------------------------------------------------------------------
@@ -450,7 +387,7 @@ def zone_of(f: Fitted, stated, manama) -> dict:
 def computed(method: dict, zone: dict, day: datetime.date) -> dict[str, tuple]:
     lat, lng = zone["point"]["latE5"] / 1e5, zone["point"]["lngE5"] / 1e5
     z = common.zone_json(zone["id"], lat, lng, authority=AUTHORITY, morningPoint=zone["morningPoint"],
-                         eveningPoint=zone["eveningPoint"])
+                         eveningPoint=zone["eveningPoint"], eventPoints=zone.get("eventPoints", {}))
     return common.compute(common.case(method, lat, lng, TZ, day, zone=z, country="BH"))
 
 
@@ -501,94 +438,65 @@ def tier_a(stats: dict) -> list[str]:
 
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
-    parser = argparse.ArgumentParser(description="Fits bh_calendar and writes its official-zone asset.")
-    parser.add_argument("--refit", action="store_true", help="re-pick every value by the stages instead of FIRST_FIT")
-    refit = parser.parse_args().refit
     rows = calendar_rows()
     stated = stated_points()
     manama = geonames_point(MANAMA_GEONAMES_ID)
     say(f"{AUTHORITY}: {len(rows)} days {rows[0].day}..{rows[-1].day} (Hijri year {rows[0].hijri[-4:]}); "
-        f"stated points: east {stated[0]}, west {stated[1]}; zone point {manama[2]} {manama[0]:.5f} N {manama[1]:.5f} E; "
-        + ("re-picking every value (--refit)" if refit else "the fixed values of FIRST_FIT, Asr by SHADOW_AT_EVENT"))
+        f"stated points: east {stated[0]}, west {stated[1]}; zone point {manama[2]} {manama[0]:.5f} N {manama[1]:.5f} E")
     suns = {m: TableSun(m, rows[0].day, rows[-1].day) for m in MODELS}
-    win = Windows(rows, suns, *stated)
+    dhuhr = dhuhr_windows(rows, suns, stated[1][1])
+    per_model = {m: max(sweep(dhuhr[(m, r)])[0] for r in ROUNDINGS) for m in MODELS}
+    say("  1 Dhuhr, most windows per sun model at the stated 50.44 E: " + ", ".join(f"{m} {n}" for m, n in per_model.items()))
+    grid = own_windows(rows, suns[MODEL], stated[1][1])
 
     folds = {}
     for name, months in FOLDS:
         idx = [i for i, r in enumerate(rows) if r.day.month in months]
-        folds[name] = (idx, fit(win, idx, stated) if refit else fixed(win, idx, FIRST_FIT[name]))
-        say(f"fold {name} ({'fitted' if refit else 'fixed values fitted'} on months {','.join(map(str, months))}, "
-            f"{len(idx)} days): {describe(folds[name][1])}")
+        folds[name] = (idx, fit_own(grid, dhuhr, idx))
+        say(f"fold {name} (fitted on months {','.join(map(str, months))}, {len(idx)} days): {describe(folds[name][1])}")
     every = list(range(len(rows)))
-    final = fit(win, every, stated) if refit else fixed(win, every, FIRST_FIT["all"])
+    final = fit_own(grid, dhuhr, every)
     say(f"all {len(rows)} days: {describe(final)}")
-    per_model = {m: max(sweep(win.dhuhr[(m, r)])[0] for r in ROUNDINGS) for m in MODELS}
-    down = sweep(win.dhuhr[(final.model, "DOWN")])
-    say("  1 Dhuhr, most windows per sun model at the stated 50.44 E: " + ", ".join(f"{m} {n}" for m, n in per_model.items())
-        + f"; {final.model} DOWN offset window [{down[1][0][0]:.1f}, {down[1][-1][1]:.1f}) s; at 66 s (1.1 min) "
-        + f"{covering(win.dhuhr[(final.model, 'DOWN')], 66.0)} days")
-    if final.by_lat:
-        say("  2-4 summed picked counts per latitude (morning: Fajr + sunrise; evening: Asr + Maghrib + Isha):")
-        for side in ("morning", "evening"):
-            ranked = sorted(final.by_lat[side], reverse=True)[:5]
-            say(f"    {side}: " + "; ".join(f"{lat:.3f} N {n}" for n, _, lat, _ in ranked)
-                + f"; at the stated latitude {next(n for n, _, lat, _ in final.by_lat[side] if abs(lat - (stated[0][0] if side == 'morning' else stated[1][0])) < 1e-9)}")
-    evening = win.evening[(final.model, round(final.evening_lat, 3))]
-    modes = {}
-    for mode in ASR_MODES:
-        for s_ in ASR_SUNS:
-            modes[(mode, s_)] = max(covering(evening[("ASR", mode, s_, r)], 1.0) for r in ROUNDINGS)
-    say("    Asr at k = 1, best rounding, per evaluation and sun: " + ", ".join(f"{m} {s_[0]} {n}" for (m, s_), n in modes.items()))
-    stated_isha = max(covering(evening[("ISHA", r)], 18.0) for r in ROUNDINGS)
-    say(f"    Isha at the stated 18 degrees: {stated_isha}/{len(rows)} days at the fitted evening latitude")
-    p = final.picks
-    own = {}
-    for e, side, key in (("FAJR", "morning", ("FAJR", p["FAJR"].config[1])), ("SUNRISE", "morning", ("SUNRISE", p["SUNRISE"].config[1])),
-                         ("ASR", "evening", p["ASR"].config), ("MAGHRIB", "evening", ("MAGHRIB", p["MAGHRIB"].config[1])),
-                         ("ISHA", "evening", ("ISHA", p["ISHA"].config[1]))):
-        table = win.morning if side == "morning" else win.evening
-        own[e] = max((covering(table[(final.model, lat)][key], p[e].value), lat) for lat in LATITUDES)
-    say("    each time alone, at its fitted value and the stated longitude, prefers: "
-        + ", ".join(f"{e} {lat:.3f} N ({n})" for e, (n, lat) in own.items())
-        + " (the reduced latitudes of the stated points, tan u = (b/a) tan phi, are 26.194 and 26.144)")
+    shared = {e: max(covering(grid[(e, lat, lng)][final.picks[e].config], final.picks[e].value)
+                     for (name, lat, lng) in grid if name == e and (lat, lng) == final.points["FAJR" if e in ("FAJR", "SUNRISE") else "MAGHRIB"])
+              for e in OWN_TIMES}
+    say("  2 the same values at the zone's morning (Fajr's) or evening (Maghrib's) point instead of their own: "
+        + ", ".join(f"{e[:3].lower()} {n}" for e, n in shared.items()))
 
     method = method_of(final)
-    zone = zone_of(final, stated, manama)
+    zone = zone_of(final, manama)
     held = []
-    asr_daily = 0
     for name, (idx, f) in folds.items():
         scored = [rows[i] for i in range(len(rows)) if i not in set(idx)]
-        s, statuses = score(method_of(f), zone_of(f, stated, manama), scored)
+        s, statuses = score(method_of(f), zone_of(f, manama), scored)
         held.append(s)
-        former = dict(method_of(f), sunEvaluation={"ASR": "DAILY_10H_UT"})
-        asr_daily += score(former, zone_of(f, stated, manama), scored)[0].exact["ASR"]
         say(f"fold {name} held out ({len(scored)} days): {shares(s)}; worst {s.worst} min; not COMPUTED: {statuses or 'none'}")
     total = merged(held)
-    say(f"held-out Asr {total.exact['ASR']}/{len(rows)} with the noon shadow at the declination of the Asr instant "
-        f"(SHADOW_AT_EVENT, shipped); at the same fold points with DAILY_10H_UT {asr_daily}/{len(rows)}")
     in_sample, statuses = score(method, zone, rows)
     say(f"held out, both folds ({total.total['FAJR']} days): {shares(total)}; within 1 min: "
         + ", ".join(f"{e} {total.within1[e] / total.total[e]:.1%}" for e in EVENTS) + f"; worst {total.worst} min")
     say(f"the asset's values on all days (in-sample): {shares(in_sample)}; worst {in_sample.worst} min")
-    plan = dict(method)
-    plan.update(fajr={"type": "angle", "degrees": 18.0}, isha={"type": "angle", "degrees": 17.8}, dhuhrAfterTransitMin=1.1,
-                sunEvaluation={}, horizon={"sunrise": {"type": "standard"}, "sunset": {"type": "standard"}},
-                rounding={e: ("NEAREST" if e == "MAGHRIB" else "DOWN") for e in EVENTS}, sunModel="VSOP87", asrSun="GEOMETRIC")
-    plan_zone = dict(zone, morningPoint=common.point(26.22, 50.68), eveningPoint=common.point(26.22, 50.44))
-    before, _ = score(plan, plan_zone, rows)
-    say(f"the plan's profile before this fit (26.22 N both points, 18/17.8, Dhuhr + 1.1): {shares(before)}; worst {before.worst} min")
+    first = dict(method)
+    first.update(fajr={"type": "angle", "degrees": 18.01}, isha={"type": "angle", "degrees": 17.82}, dhuhrAfterTransitMin=1.07,
+                 horizon={"sunrise": {"type": "fixed", "altitudeDeg": -0.83}, "sunset": {"type": "standard"}},
+                 rounding={e: ("NEAREST" if e == "MAGHRIB" else "DOWN") for e in EVENTS})
+    first_zone = {"id": "bahrain", "nameAr": "البحرين", "point": zone["point"],
+                  "morningPoint": common.point(26.205, stated[0][1]), "eveningPoint": common.point(26.175, stated[1][1])}
+    before, _ = score(first, first_zone, rows)
+    say(f"the two-point values of 2026-10-15 (26.205 / 26.175 N, 18.01 / 17.82, Dhuhr + 1.07) on all days: {shares(before)}")
 
     sample = common.sample(SOURCE, rows[0].day, rows[-1].day, len(rows), 1)
     split = common.sample(SOURCE, rows[0].day, rows[-1].day, len(rows), 1, month_split=True)
     stats = common.fit_stats([sample], [split], total)
     failures = tier_a(stats)
-    say(f"tier A (9.5; Bahrain is tier B): {'passes' if not failures else 'fails: ' + '; '.join(failures)}; "
+    say(f"tier A (9.5): {'passes' if not failures else 'fails: ' + '; '.join(failures)}; "
         f"tier B (every time within 1 min): {'passes' if all(v == 1.0 for v in stats['within1'].values()) else 'fails'}")
     zone["fit"] = stats
     path = common.write_asset(AUTHORITY, AUTHORITY, "BH", "NATIONAL", [zone], fit=stats, source=SOURCE_LINE)
     say(f"wrote {path.relative_to(common.ROOT).as_posix()}: 1 zone; method {method['fajr']}, {method['isha']}, "
         f"dhuhrAfterTransitMin {method['dhuhrAfterTransitMin']}, rounding {method['rounding']}, horizon {method['horizon']}, "
-        f"sunEvaluation {method['sunEvaluation']}, asrSun {method['asrSun']}, sunModel {method['sunModel']}")
+        f"sunEvaluation {method['sunEvaluation']}, sunModel {method['sunModel']}; points: morning {final.points['FAJR']}, "
+        f"evening {final.points['MAGHRIB']}, own {zone.get('eventPoints', {})}")
     return 0
 
 

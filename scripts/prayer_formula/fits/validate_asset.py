@@ -16,7 +16,7 @@ EVENTS = {"FAJR", "SUNRISE", "DHUHR", "ASR", "MAGHRIB", "ISHA"}
 MAPPINGS = {"NEAREST", "NEAREST_LOCAL", "LISTED_PLACES", "DISTRICT", "NATIONAL", "NAMED_REGIONS", "ADMIN_AREA", "EXACT"}
 OFFSET_RULES = {"PUBLISHED", "MONTHLY_DIFFERENCE", "WINDOW_CEILING", "TAKVIM"}
 ZONE_KEYS = {
-    "id", "nameAr", "point", "morningPoint", "eveningPoint", "elevationM", "eveningElevationM", "pressureHpa", "temperatureC",
+    "id", "nameAr", "point", "morningPoint", "eveningPoint", "eventPoints", "elevationM", "eveningElevationM", "pressureHpa", "temperatureC",
     "sunriseAltitudeDeg", "sunsetAltitudeDeg", "offsets", "baseZoneId", "offsetRule", "halfMonthWindows", "terrainClass",
     "admin1", "admin2", "namedPlaces", "reachKm", "mappingTier", "switchDays", "fit", "country", "sunriseAtPlace",
     "elevationShiftFloor", "belowSeaLevel",
@@ -57,8 +57,10 @@ def problems_of(path: Path) -> list[str]:
             out.append(f"{where}: id must be a non-empty string")
         if not ARABIC.search(z.get("nameAr") or ""):
             out.append(f"{where}: nameAr must be Arabic")
-        for key in ("point", "morningPoint", "eveningPoint"):
-            p = z.get(key)
+        own = z.get("eventPoints") or {}
+        if set(own) - EVENTS:
+            out.append(f"{where}: eventPoints keys must be events")
+        for key, p in [(k, z.get(k)) for k in ("point", "morningPoint", "eveningPoint")] + [(f"eventPoints.{e}", p) for e, p in own.items()]:
             if p is None and key != "point":
                 continue
             if not (isinstance(p, dict) and isinstance(p.get("latE5"), int) and isinstance(p.get("lngE5"), int)

@@ -359,6 +359,14 @@ class Site:
     pressure: float
     temperature: float
     zone: dict | None
+    event_points: tuple = ()               # S6, a time's own point (eventPoints): ((event, (lat, lng)), ...)
+
+    def point_of(self, name: str) -> tuple[float, float]:
+        """Where a time is computed: its own point, else the morning point (Fajr, sunrise) or the evening point."""
+        for event_name, at in self.event_points:
+            if event_name == name:
+                return at
+        return self.morning if name in ("FAJR", "SUNRISE") else self.evening
 
 
 def lat_lng(point: dict) -> tuple[float, float]:
@@ -373,7 +381,8 @@ def zone_site(zone: dict) -> Site:
     evening_elev = float(zone["eveningElevationM"]) if zone.get("eveningElevationM") is not None else elev
     pressure = float(zone["pressureHpa"]) if zone.get("pressureHpa") is not None else 1010.0
     temperature = float(zone["temperatureC"]) if zone.get("temperatureC") is not None else 10.0
-    return Site("zone:" + zone["id"], point, morning, evening, elev, evening_elev, pressure, temperature, zone)
+    own = tuple(sorted((name, lat_lng(p)) for name, p in (zone.get("eventPoints") or {}).items()))
+    return Site("zone:" + zone["id"], point, morning, evening, elev, evening_elev, pressure, temperature, zone, own)
 
 
 # ---------------------------------------------------------------------------------------------
@@ -392,6 +401,14 @@ def round_instant(t: float, mode: str) -> float:
 
 def days_in_year(year: int) -> int:
     return 366 if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0 else 365
+
+
+def table_date(day: datetime.date, year: int) -> datetime.date:
+    """A8: day's month and day in a perpetual table's year; 29 February in the first leap year from it."""
+    if (day.month, day.day) == (2, 29):
+        while days_in_year(year) != 366:
+            year += 1
+    return datetime.date(year, day.month, day.day)
 
 
 def seasonal_value(values, day: datetime.date) -> float:
@@ -517,14 +534,14 @@ class RawDay:
 
     def _sunrise_horizon(self) -> tuple[SunFunction, float]:
         sun = self.sun("SUNRISE")
-        t0 = transit(self.cycle, sun, self.site.morning[1])
+        t0 = transit(self.cycle, sun, self.site.point_of("SUNRISE")[1])
         alt = self.engine.horizon_altitude(self.engine.method["horizon"]["sunrise"], self.site, "sunrise",
                                            lambda: sun(self.cycle.jd0 + t0 / 24)[2])
         return sun, alt
 
     def _horizon_event(self, which: str) -> float | None:
-        mode_event, side, (lat, lng) = (("SUNRISE", -1, self.site.morning) if which == "sunrise"
-                                        else ("MAGHRIB", 1, self.site.evening))
+        mode_event, side = ("SUNRISE", -1) if which == "sunrise" else ("MAGHRIB", 1)
+        lat, lng = self.site.point_of(mode_event)
         sun = self.sun(mode_event)
         t0 = transit(self.cycle, sun, lng)
         alt = self.engine.horizon_altitude(self.engine.method["horizon"][which], self.site, which,
@@ -541,8 +558,8 @@ class RawDay:
 
     @functools.cached_property
     def transit(self) -> float:
-        """Dhuhr's transit T, at the evening point, with DHUHR's sun."""
-        return self.cycle.instant(transit(self.cycle, self.sun("DHUHR"), self.site.evening[1]))
+        """Dhuhr's transit T, at Dhuhr's point (the evening point), with DHUHR's sun."""
+        return self.cycle.instant(transit(self.cycle, self.sun("DHUHR"), self.site.point_of("DHUHR")[1]))
 
     @functools.cached_property
     def polar_night(self) -> bool:
@@ -557,7 +574,7 @@ class RawDay:
         if angle is None:
             return self.sunset
         sun = self.sun("MAGHRIB")
-        lat, lng = self.site.evening
+        lat, lng = self.site.point_of("MAGHRIB")
         t0 = transit(self.cycle, sun, lng)
         return self.cycle.instant(event(self.cycle, sun, lat, lng, -float(angle), 1, t0))
 
@@ -570,7 +587,7 @@ class RawDay:
             raise ValueError(f"no shadow Asr for {kind}")
         mode = self.engine.modes["ASR"]
         sun = self.sun("ASR")
-        lat, lng = self.site.evening
+        lat, lng = self.site.point_of("ASR")
         t0 = transit(self.cycle, sun, lng)
         decl_t0 = sun(self.cycle.jd0 + t0 / 24)[0]   # the fixed δ in the daily modes and KACST
         # The noon zenith distance φ − δₙ, with its sign (S7).
@@ -625,9 +642,10 @@ class RawDay:
         return atand(1 / x)
 
     def angle_event(self, name: str, degrees: float, at: dict | None = None) -> float | None:
-        """S5: Fajr or Isha by angle, at latitude φ·twilightLatitudeScale (E17), with E4's sun; Isha at `at` when set."""
+        """S5: Fajr or Isha by angle, at latitude φ·twilightLatitudeScale (E17), with E4's sun, at the time's point;
+        Isha at `at` when set."""
         sun = self.sun(name)
-        lat, lng = lat_lng(at) if at is not None else (self.site.morning if name == "FAJR" else self.site.evening)
+        lat, lng = lat_lng(at) if at is not None else self.site.point_of(name)
         lat *= self.engine.method["twilightLatitudeScale"]
         t0 = transit(self.cycle, sun, lng)
         side = -1 if name == "FAJR" else 1
@@ -1814,7 +1832,31 @@ class CaseEngine:
 
     # The whole day ----------------------------------------------------------------------------
 
+    def in_table_year(self, year: int) -> PrayerDay:
+        """A8 (owner, revised 2026-10-17): a perpetual table shows every year as printed. D runs as its own month and
+        day of the table's year, in Z's standard time (the table's clock), with every rule but the sun's as it stands
+        on D (E8 through the case's ramadanDay, E9 through rule_for(D)); each time keeps its clock minute and moves to
+        D by whole days."""
+        table_day = table_date(self.day, year)
+        offsets, fajr, isha = self.rule_for(self.day)
+        method = dict(self.method, offsets=offsets, fajr=fajr, isha=isha, revisions=[], referenceYear=None)
+        std = self.standard_offset
+        shift = 86400 * (self.day - table_day).days
+        facts = dict(self.case["zoneFacts"], utcOffsetSeconds=std, offsetChanges=None,
+                     localMidnightEpochSeconds=epoch_days(table_day) * 86400 - std)
+        for key in ("ishaLatestEpochSeconds", "ishaEarliestEpochSeconds"):
+            if facts.get(key) is not None:
+                facts[key] = facts[key] - shift
+        day = CaseEngine(dict(self.case, date=table_day.isoformat(), method=method, zoneFacts=facts)).run()
+
+        def moved(values: dict) -> dict:
+            return {name: None if t is None else t + shift for name, t in values.items()}
+        return PrayerDay(moved(day.unrounded), moved(day.minutes), dict(day.rules))
+
     def run(self) -> PrayerDay:
+        year = self.method.get("referenceYear")
+        if year is not None and self.day.year != year:
+            return self.in_table_year(year)
         method = self.method
         site, shift = self.running_site_and_shift()
         times, rules, steps = self.steps_1_7(site, self.day, shift, bool(self.case["ramadanDay"]))

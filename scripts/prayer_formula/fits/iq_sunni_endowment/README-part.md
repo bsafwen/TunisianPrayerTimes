@@ -2,7 +2,9 @@
 
 `fits/iq_sunni_endowment/fit.py` (standard library, about 1 to 2 minutes) fits the Sunni Endowment's Baghdad table and
 writes `official-zones/iq_sunni_endowment.json`. The table is perpetual, computed for one year: the fit reads each row at
-that reference year (E5), and every score comes from `common.compute` at the row's actual date, as the app shows it (A8).
+that reference year (E5), and every score comes from `common.compute` at the row's actual date, as the app shows it. The
+app shows the table as printed (A8, revised by the owner on 2026-10-17): the method's `referenceYear` 2021 computes
+every date as its month and day of 2021.
 
 **Method** (fitted 2026-10-15; changes from 8.2 in bold):
 
@@ -55,18 +57,19 @@ API's 365 days of 2026), `C:/Accurate Times/loc.txt` (the 31 Iraqi entries), `re
 icop_ghc_1428_1450.csv` (Ramadan days only) and, for the side check, `mosque-dataset/mosques.db`.
 
 **Held-out scores** (FitStats: the 2026 table by month-split, each half's values scored on the other half, computed for
-2026 as the app shows it; all within 1 minute, worst 1 minute):
+2026 as the app shows it, at the reference year; all within 1 minute, worst 1 minute):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| Exact, computed for 2026 (FitStats) | 82.2 % | 86.6 % | 94.2 % | 91.2 % | 79.2 % | 81.6 % |
-| Within 1 minute, computed for 2026 | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % |
-| Exact at the reference year 2021 | 100 % | 98.4 % | 99.7 % | 100 % | 98.4 % | 100 % |
+| Exact, computed for 2026 as printed (FitStats) | 100 % | 98.4 % | 99.7 % | 100 % | 98.4 % | 100 % |
+| Within 1 minute | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % |
+| Exact for 2026's own sun (before A8's revision) | 82.2 % | 86.6 % | 94.2 % | 91.2 % | 79.2 % | 81.6 % |
 
-The shipped values on every row: at 2021 365, 359, 364, 365, 359, 365 of 365; for 2026 300, 316, 344, 333, 289, 298.
-Asr with the shadow at the transit and an E7 + 0.044, the previous values, gives 359 at 2021 and 328 for 2026. Tier B
-(9.5): met, 100 % within 1 minute held out. Tier A: not met; computing the actual year (A8) keeps Baghdad at 79–94 %
-exact. The other 27 cities have no official data and no fit record.
+The shipped values on every row: at 2021 (as printed) 365, 359, 364, 365, 359, 365 of 365; for 2026's own sun 300,
+316, 344, 333, 289, 298. Asr with the shadow at the transit and an E7 + 0.044, the previous values, gives 359 at 2021.
+Tier A (9.5): met by Baghdad's zone since 2026-10-17, when the app began to show the table as printed (A8): every time
+98.4–100 % exact held out over all twelve months, all within 1 minute. The other 27 cities have no official data and no
+fit record, so they show no «مطابقة للجدول الرسمي».
 
 **Side check: mosque calendars** (5.6, evidence only, never fitted): the most common calendar near Mosul's entry
 (14 of 16 mosques) gives, computed for 2021, Fajr 365, sunrise 361, Dhuhr 365, Asr 365, Maghrib 359, Isha 365 of 365;
@@ -75,7 +78,8 @@ Times' entries, the horizon law and the Dhuhr-instant shadow included.
 
 **Quirk days.** None.
 
-**Open issues.** (1) The 2027 table (held out) confirms the reference year 2021 if it repeats 2026 by month and day.
+**Open issues.** (1) The 2027 table (held out; the collector asks for it from January 2027) confirms the reference
+year 2021 if it repeats 2026 by month and day.
 (2) Sunrise alone wants a horizon 0.005° shallower than the law (363 days at −1.0099° against 359): a second of time, not
 chased. (3) No printed city table outside Baghdad; the 27 other zones rest on the law and Accurate Times' entries,
 supported by the Mosul and Kirkuk calendars. (4) The engine's `Refraction` model (Bennett at the dipped horizon, a

@@ -4,7 +4,8 @@
 `official-zones/lb_dar_al_fatwa.json`. The only official table is the Ramadan 1445 imsakiya (30 days); the perpetual
 366-row year table that Dar al-Fatwa's own screen at Ras Beirut shows (tv.masjidi.app, region 2) equals it on all 180
 times (checked at each run), so the fit runs on the year table and scores the imsakiya as its official copy. The table
-is perpetual and old: the fit reads it at a reference year (E5) and scores it computed for the actual year (A8).
+is perpetual and old: the fit reads it at a reference year (E5), and the app shows it as printed, every date as its
+month and day of 1931 (A8, revised by the owner on 2026-10-17; `referenceYear`).
 
 **Method** (fitted 2026-10-15; changes from 8.2 and 8.7 in bold):
 
@@ -49,20 +50,21 @@ at 33.8900 N 35.4606 E; `NATIONAL` for all of Lebanon, with the validity guard (
 2024-03-11 to 04-09) and `research-2026-10-08/LB/lb/region2.json` (the year table).
 
 **Held-out scores** (FitStats: the year table by month-split, each half's values scored on the other half for 2026, and
-the imsakiya's days for 2024 by the half that left their month out; quirk days apart):
+the imsakiya's days for 2024 by the half that left their month out, as the app shows them: as printed; quirk days
+apart):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| Exact (FitStats) | 18.1 % | 26.8 % | 73.8 % | 53.5 % | 27.8 % | 30.7 % |
-| Within 1 min (FitStats) | 72.7 % | 88.2 % | 100 % | 100 % | 94.8 % | 94.0 % |
-| Year table for 2026, within 2 min | 99.7 % | 100 % | 100 % | 100 % | 100 % | 100 % |
-| Imsakiya for 2024, exact | 0 % | 0 % | 42.9 % | 75.0 % | 3.6 % | 7.1 % |
-| Year table at the reference year, exact | 78.5 % | 92.4 % | 95.8 % | 93.2 % | 92.9 % | 89.0 % |
+| Exact (FitStats) | 79.3 % | 92.4 % | 95.3 % | 93.4 % | 93.2 % | 87.7 % |
+| Within 1 min (FitStats) | 100 % | 99.7 % | 100 % | 100 % | 100 % | 100 % |
+| Imsakiya for 2024, exact (28 days) | 89.3 % | 92.9 % | 89.3 % | 96.4 % | 96.4 % | 71.4 % |
+| Exact (FitStats) for each date's own sun, before A8's revision | 18.1 % | 26.8 % | 73.8 % | 53.5 % | 27.8 % | 30.7 % |
 
-Worst held-out difference 3 minutes (Fajr; the imsakiya's Fajr is 2 minutes off on most days of 2024, a leap year in
-which the table's sun lags the real one most). In-sample at 1931: 288, 333, 343, 329, 328, 313 of 353, worst 2. Tier A:
-not reached, nor reachable on one official Ramadan (9.5). Tier B with the 3-minute allowance of 9.5: met (worst 3).
-Computing the actual year (A8) is what costs the exact minutes: the table's sun lags the real sun by about a day.
+Worst held-out difference 2 minutes (one sunrise). In-sample at 1931, which the app shows every year: 288, 333, 343,
+329, 328, 313 of 353, worst 2; the imsakiya 26, 26, 28, 29, 27, 20 of 30. Before A8's revision the held-out
+differences reached 3 minutes, since the table's sun lags the real sun by about a day. Tier A: not reached (Fajr and
+Isha 79–88 % at best, the table's seasonal departures below), nor reachable on one official Ramadan (9.5). Tier B:
+every held-out time within 1 minute but one sunrise (99.7 %).
 
 **Validity guard** (side check, 2026, approximate town points): the table's own margins at Beirut are Fajr + 0.3,
 sunrise + 0.7, Dhuhr + 0.8, Asr + 0.8, Maghrib − 0.2, Isha + 0.3 min. Saida, Tripoli, Zahle, Baalbek and Nabatieh keep

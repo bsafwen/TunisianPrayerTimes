@@ -1,7 +1,8 @@
 #### Oman (`om_mara`)
 
 `fits/om_mara/fit.py` (under 1 minute) fits the Ministry of Endowments and Religious Affairs' zone tables and writes
-`official-zones/om_mara.json`, 86 zones. It needs the calendar_page4 pages (Data, below) and stops without them.
+`official-zones/om_mara.json`, 86 zones, every one tier A since 2026-10-17. It needs the calendar_page4 pages (Data,
+below) and stops without them.
 
 **Method.**
 
@@ -38,15 +39,15 @@ a minute), on the six zones with full 2026 tables:
 The six full-year points, at whole arc-minutes, are those found before (8.8): Muscat 23°35'N 58°17'E (the
 airport), Saiq 23°05'N 57°39'E, Sohar 24°21'N 56°44'E, Salalah 17°02'N 54°05'E, Musandam 26°11'N 56°15'E (Khasab),
 Masirah 20°40'N 58°54'E. The month-split folds keep them (shift + 0.89 s on the odd months, + 0.86 s on the even
-ones). Of the 80 other points, 27 lie 1 arc-minute from where the VSOP87 fit of the same day put them (26 in
-latitude, about 1.9 km; Quriyat 1' in both, 2.5 km); 49 equal the points fitted on 2026-10-11 (8.8), the other 37
-differ by 1–2' (mostly latitude, which 25 dates fix loosely).
+ones). The 80 other points, at whole arc-minutes too, are fitted on each zone's whole 2026 (calendar_page2, since
+2026-10-17; before, on the 25 page4 dates, which fix latitude loosely): 175,025 of their 175,200 minutes, the
+lowest zone 2,183 of 2,190. The profile stays the six zones' (the stages above).
 
 **Zones and mapping.** The 86 zones of calendar_page4, `NEAREST` with `namedFirst` (6.5, 8.8).
 - `id`: the ministry's CityID, the row order of calendar_page4 (checked against calendar_page2 at the six zones).
 - `nameAr`: the ministry's Arabic name.
-- The computing point: fitted at whole arc-minutes (the six from all of 2026, the 80 others from the 25 page4
-  dates of 2026), held in `morningPoint` and `eveningPoint` (E6).
+- The computing point: fitted at whole arc-minutes on each zone's whole 2026, held in `morningPoint` and
+  `eveningPoint` (E6).
 - `point` and `namedPlaces`: the town the zone is named after, with `areaKm` 10: GeoNames cities1000 for 31
   towns (ids in `TOWNS`, fit.py), OpenStreetMap places for 37 (Overpass, read 2026-10-11). `catalogueIds` stay
   empty until M5 builds the catalogue. 59 computing points lie within 7 km of their town. The far ones are the
@@ -66,7 +67,11 @@ differ by 1–2' (mostly latitude, which 25 dates fix loosely).
 - `research-2026-10-11/OM/page4/` (or `--pages DIR`): calendar_page4 pages `p4_YYYY_MM_DD.html`, 25 dates of 2026
   (two a month) and, under `holdout/`, 2027-02-14, 2027-08-10, 2029-04-18, 2029-11-02, 2031-06-28 and 2031-12-30,
   collected on 2026-10-11 (their SHA-256 sums in the folder's README).
-- FitSample sources: `om_mara_page2_2026` (calendar_page2, six zones), `om_mara_page4_2026` (the 25 page4 dates),
+- `research-2026-10-17/OM/page2/p2_2026_MM_Z.html`: calendar_page2, every month of 2026 at the 80 other zones
+  (960 pages, fetched 2026-10-17 with the owner's OK; MANIFEST.tsv one level up). Each page's own selectors (year,
+  month, CityID) are checked against its file name, and its rows against calendar_page4's on the 25 dates.
+- FitSample sources: `om_mara_page2_2026` (calendar_page2, six zones), `om_mara_page2_2026_zones` (calendar_page2,
+  the 80 other zones), `om_mara_page4_2026` (the 25 page4 dates),
   `om_mara_page4_2027_2031` (the 6 later dates), `om_mara_page2_muscat_2021_2031` (Muscat's 8 months);
   `_month_split` marks a month-split.
 
@@ -74,19 +79,19 @@ differ by 1–2' (mostly latitude, which 25 dates fix loosely).
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| Profile, 4,950 zone-days | 99.54 % | 99.76 % | 99.98 % | 99.72 % | 99.60 % | 99.41 % |
-| Six full-year zones: month-split, 6 later dates, Muscat's 2021 and 2031 | 99.88 % | 99.88 % | 99.96 % | 99.88 % | 99.92 % | 99.84 % |
-| 80 other zones: month-split of the 25 dates, 6 later dates | 99.19 % | 99.64 % | 100 % | 99.56 % | 99.27 % | 98.99 % |
-| The 6 dates of 2027–2031 alone, 86 zones (516 each) | 514 | 515 | 516 | 516 | 515 | 514 |
+| Profile, 32,150 zone-days | 99.9 % | 99.8 % | 100 % | 99.9 % | 99.9 % | 99.9 % |
+| Six full-year zones: month-split, 6 later dates, Muscat's 2021 and 2031 | 99.9 % | 99.9 % | 100 % | 99.9 % | 99.9 % | 99.8 % |
+| 80 other zones: month-split of their 2026, 6 later dates | 99.9 % | 99.8 % | 100 % | 99.9 % | 99.9 % | 99.9 % |
+| The 6 dates of 2027–2031 alone, 86 zones (516 each) | 99.8 % | 100 % | 100 % | 100 % | 100 % | 99.6 % |
 | Muscat, 2021 and 2031 (244 days) | 243 | 244 | 244 | 242 | 243 | 244 |
 
 On the 25 dates of 2026 the 86 points reproduce 12,882 of 12,900 minutes (the lowest zone 149 of 150). Before
 ALMANAC was in the engine, the profile shipped VSOP87 with + 1.28 s: 98.15 % held out (MEEUS with + 0.99 s 97.88 %).
 
-**Tier A** (9.5). The six full-year zones pass: every time 99.46–100 % exact, all within 1 minute, 29 or more
-held-out days in every month. The 80 other zones fail on coverage: 31 held-out days, at most 3 in a month. 33 of
-them are exact on every held-out time; the weakest time is 28 of 31 (Ras Madrakah's Fajr, Nimr's Isha). They show
-«مستخلصة من جداول» until a year of calendar_page2 tables per zone is held out, or a follower's year (below).
+**Tier A** (9.5). All 86 zones pass (2026-10-17): every time 99.2–100 % exact held out, all within 1 minute, 28 or
+more held-out days in every month; the weakest times are 99.2 % (Al Hashman's, Sur's and Manah's sunrise,
+Mudhaibi's and Marmour's Fajr). Before calendar_page2's year reached the 80 other zones they failed on coverage
+(31 held-out days, at most 3 in a month).
 
 **A whole year from the mosques** (`fits/om_mara/mosque_year.py` with `fits/mosque_years.py`, 2026-10-17, owner's
 idea; plan 9.5). Nine mosques of the owner's dataset print a zone's table on all 25 page4 dates of 2026 (two a
@@ -102,8 +107,9 @@ its held-out year on the other 340 days of 2026 (`source` "mosque_follower"):
 | 53 «صحم» (Saham) | 2 | 98 % | 99 % | 99 % | 99 % | 99 % | 99 % | passes |
 | 58 «ضنك» (Dhank) | 2 | 99 % | 100 % | 99 % | 92 % | 99 % | 100 % | no: Asr beyond 1 min on 14 days of February |
 
-Every time of the first four is within 1 minute, so they pass 9.5 and show «مطابقة للجدول الرسمي». Dhank's two
-followers share one calendar, whose Asr is 2 min early on 10 days of early February and 7–9 min late on its last
+Every time of the first four is within 1 minute, so they passed 9.5 before their official years came. Since
+2026-10-17 every zone's whole 2026 is official, so the followers have no day left to score and no record holds a
+follower year (`mosque_year.py` reads calendar_page2's zone pages too). Dhank's two followers share one calendar, whose Asr is 2 min early on 10 days of early February and 7–9 min late on its last
 four; no other follower strays in February, so that Asr is the mosques', not the ministry's, and Dhank stays
 «مستخلصة من جداول». 21 more mosques print 80–97 % of a zone's minutes (four at Barka 95.3 %, one at Samail 96.7 %,
 five at Al Buraimi 89.3 %): not followers.
@@ -111,7 +117,6 @@ five at Al Buraimi 89.3 %): not followers.
 **Quirk days.** None: every miss is 1 minute, at a rounding boundary.
 
 **Open issues.**
-- A full-year calendar_page2 table for each of the 80 zones (11 years are online, 2021–2031), for their points and
-  their tier-A coverage (four have it from a follower, above).
+- Another year of calendar_page2 (11 years are online, 2021–2031) as a held-out year for every zone.
 - The towns of six wilayat (above), and M5's catalogue rows for every named town.
 - The origin of the constant shift; a method field for it would read better than an E18 constant.

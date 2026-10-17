@@ -18,6 +18,11 @@ data class OfficialZone(
     val morningPoint: LatLngE5? = null,
     /** E6: Dhuhr, Asr, Maghrib and Isha are computed here. */
     val eveningPoint: LatLngE5? = null,
+    /**
+     * E6, a time's own point: each listed time is computed there instead of at the morning or evening point (Bahrain's
+     * calendar, whose times each follow a point of their own, 8.8); an Isha rule's own point (`IshaRule.Angle.at`) wins.
+     */
+    val eventPoints: Map<TimeEvent, LatLngE5> = emptyMap(),
     /** E2, E10: the morning elevation where the two differ. */
     val elevationM: Int? = null,
     /** Jordan's separate evening elevation (8.6). */

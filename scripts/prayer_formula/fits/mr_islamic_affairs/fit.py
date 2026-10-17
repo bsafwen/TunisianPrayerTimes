@@ -15,7 +15,7 @@ Data, read at run time from test-data-local and never copied (D13, A7):
 
 Since 2023 the imsakiya is a perpetual table, reprinted by month and day (2023, 2024 and 2025 agree on every shared
 date): its rows are read at the reference year 2023 (E5), the year it first appeared, while every score below is
-also given as the app shows it, computed for the actual year (A8). The 2021 and 2022 tables were computed for their
+also given as the app shows it: the table as printed, at that year (A8). The 2021 and 2022 tables were computed for their
 own years; they hold older rules (E9) and are fixtures outside FitStats (9.3, tier B).
 
 Stages (9.4), each by windows (a published minute bounds the unrounded time to a minute; the value most windows
@@ -160,12 +160,15 @@ def city_names() -> dict[str, str]:
 # and any horizon between A1 and A2 is interpolated (exact to 1e-4 min over that range).
 
 def method(fajr=19.5, isha=17.5, offsets=None, sunrise=None, sunset=None, model="MEEUS", asr_sun="GEOMETRIC",
-           revisions=None) -> dict:
+           revisions=None, reference_year=None) -> dict:
+    """[reference_year]: the perpetual table's year (A8, revised 2026-10-17): every date computed as that year's month
+    and day, as the app shows it; None computes each date's own year (the fixtures, the reference-year scan)."""
     hz = {"sunrise": {"type": "standard"} if sunrise is None else {"type": "fixed", "altitudeDeg": sunrise},
           "sunset": {"type": "standard"} if sunset is None else {"type": "fixed", "altitudeDeg": sunset}}
     return common.method_json(id=AUTHORITY, fajr={"type": "angle", "degrees": fajr}, isha={"type": "angle", "degrees": isha},
                               offsets=dict(offsets or {}), horizon=hz, sunModel=model, asrSun=asr_sun,
-                              revisions=list(revisions or []), evidence={"kind": "FROM_TABLES", "source": "fit"})
+                              revisions=list(revisions or []), referenceYear=reference_year,
+                              evidence={"kind": "FROM_TABLES", "source": "fit"})
 
 
 def local(epoch: float) -> float:
@@ -414,16 +417,17 @@ def profile_method(rule: Rule, old: dict) -> dict:
                                                "isha": {"type": "angle", "degrees": rule.isha}, "jumua": None}},
     ]
     return method(19.5, 17.5, offsets=old, sunrise=rule.sunrise, sunset=rule.sunset, model=rule.model,
-                  asr_sun=rule.asr_sun, revisions=revisions)
+                  asr_sun=rule.asr_sun, revisions=revisions, reference_year=REF_YEAR)
 
 
-def current_method(rule: Rule) -> dict:
-    """The current rule alone (as a method with no revisions); the plan's representation when its horizons are None."""
+def current_method(rule: Rule, reference_year: int | None = REF_YEAR) -> dict:
+    """The current rule alone (as a method with no revisions), the perpetual table at its year as the app shows it;
+    the plan's representation when its horizons are None."""
     offsets = {"MAGHRIB": int(rule.maghrib)}
     if rule.sunrise is None:            # the plan's: Nouakchott's - 1 as a method offset, the rest as zone offsets
         offsets["SUNRISE"] = -1
     return method(rule.fajr, rule.isha, offsets=offsets, sunrise=rule.sunrise, sunset=rule.sunset, model=rule.model,
-                  asr_sun=rule.asr_sun)
+                  asr_sun=rule.asr_sun, reference_year=reference_year)
 
 
 def zone_of(rule: Rule, cid: str) -> dict:
@@ -644,7 +648,7 @@ def main(argv=None) -> int:
     print(f"  Asr on the geometric sun at the same points: {gc['ASR']} against {rep['count']['ASR']}")
     # Reference-year scan: the final rule computed at each candidate year (the fit's points and horizons kept).
     scan = {}
-    m_cur = current_method(rule)
+    m_cur = current_method(rule, reference_year=None)
     for y in range(2011, REF_YEAR + 1):
         hits = 0
         for r in cur:
@@ -673,7 +677,7 @@ def main(argv=None) -> int:
               f"{fr.sunset}, shift {fr.sunrise_shift['kiffa']}, Fajr {fr.fajr}, Isha {fr.isha}); held out {len(score_rows)}: "
               f"{shares(merge(by_zone.values()))}")
     all_held = merge(held.values())
-    print("Held out, as the app shows it (actual years): " + shares(all_held))
+    print("Held out, as the app shows it (as printed, A8): " + shares(all_held))
     print("  the same at the reference year (the table itself): " + shares(merge(held_ref)))
     print("  the plan's representation, held out as the app shows it: " + shares(merge(held_plan)))
 

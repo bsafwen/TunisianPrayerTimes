@@ -5,7 +5,7 @@
  "country": "QA",
  "mapping": "LISTED_PLACES",
  "namedFirst": true,
- "source": "Qatar's Ministry of Awqaf (Doha's perpetual table, computed for the actual year) and Qatar Calendar House's places",
+ "source": "Qatar's Ministry of Awqaf (Doha's perpetual table, as printed: reference year 2006) and Qatar Calendar House's places",
  "fit": {
   "fittedOn": [
    {
@@ -52,12 +52,12 @@
    }
   ],
   "exact": {
-   "FAJR": 0.8658,
-   "SUNRISE": 0.882,
-   "DHUHR": 0.9636,
-   "ASR": 0.9681,
-   "MAGHRIB": 0.8642,
-   "ISHA": 0.8886
+   "FAJR": 0.9345,
+   "SUNRISE": 0.9777,
+   "DHUHR": 0.9886,
+   "ASR": 0.9909,
+   "MAGHRIB": 0.893,
+   "ISHA": 0.951
   },
   "within1": {
    "FAJR": 1.0,
@@ -227,12 +227,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.8497,
-     "SUNRISE": 0.8907,
-     "DHUHR": 0.9636,
-     "ASR": 0.9681,
-     "MAGHRIB": 0.8884,
-     "ISHA": 0.8884
+     "FAJR": 0.9681,
+     "SUNRISE": 0.9863,
+     "DHUHR": 0.9886,
+     "ASR": 0.9909,
+     "MAGHRIB": 0.9658,
+     "ISHA": 0.9658
     },
     "within1": {
      "FAJR": 1.0,
@@ -330,7 +330,7 @@
     },
     "heldOutRamadanDays": 36,
     "quirkDays": 2,
-    "maxDiffMin": 2
+    "maxDiffMin": 1
    },
    "morningPoint": {
     "latE5": 2528210,
@@ -393,12 +393,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.9016,
+     "FAJR": 0.8525,
      "SUNRISE": 0.5,
      "DHUHR": 0.0,
      "ASR": 0.0,
-     "MAGHRIB": 0.6885,
-     "ISHA": 1.0
+     "MAGHRIB": 0.6557,
+     "ISHA": 0.5
     },
     "within1": {
      "FAJR": 1.0,
@@ -559,12 +559,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.9672,
+     "FAJR": 0.8852,
      "SUNRISE": 0.0,
      "DHUHR": 0.0,
      "ASR": 0.0,
-     "MAGHRIB": 0.9344,
-     "ISHA": 1.0
+     "MAGHRIB": 0.7705,
+     "ISHA": 0.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -723,12 +723,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.8689,
+     "FAJR": 0.8525,
      "SUNRISE": 1.0,
      "DHUHR": 0.0,
      "ASR": 0.0,
-     "MAGHRIB": 0.8033,
-     "ISHA": 1.0
+     "MAGHRIB": 0.7541,
+     "ISHA": 0.0
     },
     "within1": {
      "FAJR": 1.0,
@@ -1038,11 +1038,11 @@
     ],
     "exact": {
      "FAJR": 0.5,
-     "SUNRISE": 0.5,
+     "SUNRISE": 1.0,
      "DHUHR": 0.0,
      "ASR": 0.0,
-     "MAGHRIB": 1.0,
-     "ISHA": 1.0
+     "MAGHRIB": 0.5,
+     "ISHA": 0.5
     },
     "within1": {
      "FAJR": 1.0,

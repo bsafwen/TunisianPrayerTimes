@@ -1,6 +1,7 @@
 ### Egypt (`eg_egsa`)
 
-Fitted by `fits/eg_egsa/fit.py` (2026-10-15, about 30 s); asset `official-zones/eg_egsa.json`, 78 zones.
+Fitted by `fits/eg_egsa/fit.py` (2026-10-15; the year stage 2026-10-17; about 6 minutes); asset
+`official-zones/eg_egsa.json`, 78 zones, every one tier A.
 
 **Method.** Fajr 19.5° (stated, Dar al-Ifta fatwa 4021) and Isha 17.5° (quoted there): the windows' best plateau
 is exactly 19.5 and 17.5 at 0.01° steps. Dhuhr = transit, Maghrib = sunset, Asr factor 1 with the noon shadow's
@@ -20,7 +21,8 @@ Rounding and offsets are checked against the town centres. The fitted points sit
 **Zones.** Each of the 78 cities in EGSA's all-cities table is a zone.
 - `id`: the city's position in EGSA's city menu (1 = Cairo). The menu has no ids of its own.
 - `nameAr`: EGSA's spelling without tatweel, with a space added in «6 أكتوبر».
-- `point`: fitted for all 78, as the centroid of the region where every one of the city's 2025-26 minutes holds.
+- The computing point (E6 morning and evening points, plan 8.8; `point` is the town): fitted for all 78 on the
+  city's whole 2026 from the monthly view (the year stage below), from the 2025-26 daily pages' point.
 - `namedPlaces`: one entry per zone.
   - Centre: the GeoNames town for 65 cities (Ras Sudr: GeoNames' cape; 6 October: GeoNames 7577132). GeoNames has
     no populated place for Toshka or for 12 new cities (ids 56, 65, 66, 69 to 78); their centre is the fitted point.
@@ -41,6 +43,11 @@ takes the nearest centre or point, under the validity guard.
   or a folder passed with `--wayback`. Without them, fit.py stops and does not write the asset.
 - `research-2026-10-08/EG/eg_skeptic/ram.py` and `aug.py`: transcribed Al-Dostor reprints of Cairo's Ramadan 1445
   imsakiya and of six cities' table for 2025-08-13. They are held out only.
+- `research-2026-10-17/EG/monthly/m2026_MM_CI.html` (MANIFEST.tsv beside): EGSA's monthly view
+  (esa.gov.eg/monthlymwaket.aspx) for every month of 2026 and every city of its menu, fetched 2026-10-17 with the
+  owner's OK, one form request per city and month. All 78 cities have their twelve months; the view leaves out
+  two days of 15th of May City (2026-03-20, 05-26) and has no table for Menouf, Diarb Negm, Abu Tisht and Samalut.
+  On the 311 city-days the daily pages hold too, the two agree on every time.
 - Town centres and populations come from GeoNames (`TOWNS` in fit.py, read 2026-10-15).
 
 **Held out** (common.compute). Each of the 8 days of 2025-26 is scored with the profile and points refitted on the
@@ -48,9 +55,17 @@ other 7 (leave one day out):
 - 3,623 of 3,726 times exact (97.24 %): Fajr 97.9, sunrise 96.9, Dhuhr 96.9, Asr 97.6, Maghrib 97.4, Isha 96.6 %.
   All are within 1 minute.
 - The reprints, at the final points: Cairo's Ramadan 2024 imsakiya 180 of 180, the six cities on 2025-08-13 36 of 36.
-- Profile record: 97.39 % (3,839 of 3,942).
-- Per zone: 24 zones are exact on every held-out time. The weakest is Alexandria, at 90.7 %.
-- No zone passes tier A: each has 1 held-out day per month, and none in January, May, September or November.
+- **The year stage** (2026-10-17): each city's point fitted on the monthly view's 2026 (a grid swept over the
+  linearised windows, relinearised twice), and held out by month split (the point fitted on the odd months scored
+  on the even ones, and the reverse, with common.compute): 169,395 of 170,808 times exact (99.17 %): Fajr 99.3,
+  sunrise 99.1, Dhuhr 99.3, Asr 99.3, Maghrib 99.0, Isha 99.1 %, every time within 1 minute. The points move a
+  median 0.9 km from the daily pages' (Badr City 3.3 km, El Hamool 3.2, Esna 3.1, Sharm el-Sheikh 3.0).
+- The year confirms the profile at those points (windows held, of 170,808): the horizon −0.8435° 169,860 (−0.8445°
+  169,803, −0.8425° 169,600), Fajr 19.5° (19.45° 162,749, 19.55° 162,801), Isha 17.5° (17.45° 162,751, 17.55°
+  163,125), Asr's shadow at transit (the apparent sun 166,616, at local midnight 162,234, factor 2 141,520).
+- Profile record: 99.13 % (173,234 of 174,750: the daily days left out, the reprints and the year's month split).
+- **Tier A**: all 78 zones pass (9.5): each zone's record holds its year's month split and its daily days left
+  out, 29 or more held-out days in every month, all six times at least 97 % exact and every one within 1 minute.
 
 **Quirk days** (158 city-days, counted apart):
 - The 2024-07-23 and 2024-08-11 copies predate a move of 49 cities' points. On those two days alone, the 49 cities
@@ -63,10 +78,9 @@ other 7 (leave one day out):
   July 2025.
 
 **Open issues.**
-- Tier A needs a year of daily pages, or the monthly form (which needs the owner's go-ahead).
+- The 2027 monthly view, held out as a whole year, shows whether EGSA moves any point again.
 - 41 more Wayback days (2022 to 2026) are listed but not yet saved.
-- Four menu cities have no row: Menouf, Diyarb Negm, Abu Tisht and Samalut.
+- Four menu cities have no row on the daily page and no table on the monthly view: Menouf, Diyarb Negm, Abu Tisht
+  and Samalut.
 - It is unknown whether Taba's, Mahalla's and the other far points are EGSA typos; the app follows EGSA either way.
 - The physical origin of the −0.8435° horizon (50.6′) is unknown.
-- Plan 8.8 puts the town centre in `point` and the fitted point in E6's morning and evening points. This asset
-  follows the AM2 brief instead: the fitted point in `point`, the town centre in `namedPlaces`.

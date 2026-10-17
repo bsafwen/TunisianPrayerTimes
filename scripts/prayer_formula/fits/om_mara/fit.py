@@ -15,6 +15,10 @@ Data, read at run time and never copied (D13, A7):
   collected on 2026-10-11. Read from test-data-local/research-2026-10-11/OM/page4/ (any depth) or --pages DIR.
   Without them only 2026-10-08 is at hand for the 80 other zones, which fixes no latitude: fit.py stops and does
   not write the asset.
+- test-data-local/research-2026-10-17/OM/page2/p2_2026_MM_Z.html: calendar_page2 for every month of 2026 at the 80
+  other zones (owner's OK, 2026-10-17; MANIFEST.tsv one level up), each page checked against its own selectors and
+  against page4's rows. A zone with all twelve months is fitted and held out on its year like the six (its point
+  only: the profile stays the six zones'); without them it keeps the 25 page4 dates.
 - Town centres (TOWNS below): GeoNames cities1000 (geonames.org, read 2026-10-15) where the town is listed there,
   otherwise OpenStreetMap places (Overpass, read 2026-10-11). They are not official data.
 
@@ -43,6 +47,7 @@ Usage: python scripts/prayer_formula/fits/om_mara/fit.py [--pages DIR]
 from __future__ import annotations
 
 import argparse
+import calendar
 import csv
 import datetime
 import html
@@ -64,6 +69,7 @@ TZ = "Asia/Muscat"                      # UTC+4 all year
 OM = common.LOCAL_DATA / "research-2026-10-08" / "OM"
 PAGES = common.LOCAL_DATA / "research-2026-10-11" / "OM" / "page4"
 FULL_YEAR_CSV = OM / "omv" / "om_check.csv"
+ZONE_PAGES = common.LOCAL_DATA / "research-2026-10-17" / "OM" / "page2"
 SOURCE_LINE = ("Oman's Ministry of Endowments and Religious Affairs (mara.gov.om): 86 zone tables, each computed at "
                "a zone point fitted at whole arc-minutes from the ministry's 2026 tables")
 # FitSample sources (6.3): short ids, explained in README-part.md.
@@ -71,6 +77,7 @@ FULL_SOURCE = "om_mara_page2_2026"              # calendar_page2, every day of 2
 PAGE_SOURCE = "om_mara_page4_2026"              # calendar_page4, 25 dates of 2026
 HELD_PAGE_SOURCE = "om_mara_page4_2027_2031"    # calendar_page4, 6 dates of 2027, 2029 and 2031
 YEARS_SOURCE = "om_mara_page2_muscat_2021_2031"  # calendar_page2, Muscat, 4 months of 2021 and of 2031
+ZONE_YEAR_SOURCE = "om_mara_page2_2026_zones"   # calendar_page2, every day of 2026 (the 80 other zones)
 BASE_OFFSETS = (0, 0, 5, 5, 5, 0)       # Fajr, sunrise, Dhuhr, Asr, Maghrib, Isha (plan 8.2)
 AREA_KM = 10.0                          # a named town's own area (6.5, 8.8)
 MODES = ("DAILY_0H_UT", "DAILY_10H_UT", "KACST", "EVENT_INSTANT")
@@ -152,6 +159,31 @@ def muscat_years() -> dict[datetime.date, list[int]]:
                 d, m, y = (int(x) for x in c[0].split("/"))
                 out[datetime.date(y, m, d)] = [clock(x, i) for i, x in enumerate(c[1:])]
     return out
+
+
+def zone_years(folder: Path) -> dict[int, dict[datetime.date, list[int]]]:
+    """The calendar_page2 pages of the other zones (p2_2026_MM_Z.html): zone -> {date: six minutes}, a zone only with
+    all twelve months; each page's selectors (year, month, CityID) must name the page's file."""
+    out: dict[int, dict[datetime.date, list[int]]] = {}
+    months: dict[int, set[int]] = {}
+    for f in sorted(folder.glob("p2_2026_*_*.html")) if folder.is_dir() else []:
+        _, year, month, zone = f.stem.split("_")
+        text = f.read_text(encoding="utf-8", errors="replace")
+        selected = [int(x) for x in re.findall(r"<option value =(\d+) Selected>", text, re.I)[:3]]
+        if selected != [int(year), int(month), int(zone)]:
+            raise SystemExit(f"{f.name}: the page selects {selected}")
+        rows = {}
+        for tr in re.findall(r"<tr.*?</tr>", text, re.S):
+            c = cells(tr)
+            if len(c) == 7 and re.fullmatch(r"\d{1,2}/\d{1,2}/\d{4}", c[0]):
+                d, m, y = (int(x) for x in c[0].split("/"))
+                rows[datetime.date(y, m, d)] = [clock(x, i) for i, x in enumerate(c[1:])]
+        expected = calendar.monthrange(int(year), int(month))[1]
+        if len(rows) != expected or any((d.year, d.month) != (int(year), int(month)) for d in rows):
+            raise SystemExit(f"{f.name}: {len(rows)} rows, not the month's {expected}")
+        out.setdefault(int(zone), {}).update(rows)
+        months.setdefault(int(zone), set()).add(int(month))
+    return {z: days for z, days in out.items() if len(months[z]) == 12}
 
 
 def page4(path: Path) -> tuple[datetime.date, list[tuple[str, list[int]]]]:
@@ -550,13 +582,15 @@ def main() -> int:
     english = english_names(pages[datetime.date(2026, 10, 8)])
     fit_dates = sorted(d for d in pages if d.year == 2026)
     held_dates = sorted(d for d in pages if d.year != 2026)
-    for z, days in full.items():                # the page rows are the CityIDs: check them on the six zones
+    zone_year = {z: days for z, days in zone_years(ZONE_PAGES).items() if z not in full}
+    for z, days in list(full.items()) + list(zone_year.items()):     # the page rows are the CityIDs: check them
         for d in pages:
             if d in days and days[d] != pages[d][z]:
                 raise SystemExit(f"zone {z} on {d}: page4 row differs from calendar_page2")
     print(f"Data: {sum(len(v) for v in full.values())} zone-days of 2026 at {len(full)} zones (calendar_page2); "
           f"{len(years)} Muscat days of 2021 and 2031; calendar_page4 on {len(pages)} dates "
-          f"({len(fit_dates)} of 2026, {len(held_dates)} later), 86 zones")
+          f"({len(fit_dates)} of 2026, {len(held_dates)} later), 86 zones; calendar_page2's whole 2026 at "
+          f"{len(zone_year)} more zones")
     if len(fit_dates) < 12:
         print(f"Only {len(fit_dates)} page4 date(s) of 2026 found (expected in {args.pages}); the 80 other zones' "
               "latitudes need dates across the year. The asset is not written.")
@@ -617,15 +651,22 @@ def main() -> int:
 
     # Stage 3: the 86 points.
     page_items = {z: [(d, pages[d][z]) for d in fit_dates] for z in range(86)}
+    year_items = {z: sorted(days.items()) for z, days in zone_year.items()}
     points = {}
     for z in range(86):
         if z in full:
             points[z] = pts[z]
+        elif z in year_items:
+            points[z] = best_point(year_items[z], seed_point(page_items[z], p), p)[1:]
         else:
             points[z] = best_point(page_items[z], seed_point(page_items[z], p), p)[1:]
     in_sample = {z: count(page_items[z], points[z][0] / 60, points[z][1] / 60, p) for z in range(86)}
-    print(f"Stage 3: 86 points; on the 25 dates of 2026 {sum(in_sample.values())}/{86 * 6 * len(fit_dates)} minutes "
-          f"(lowest zone {min(in_sample.values())}/{6 * len(fit_dates)})")
+    print(f"Stage 3: 86 points ({len(year_items)} of them on their whole 2026); on the 25 dates of 2026 "
+          f"{sum(in_sample.values())}/{86 * 6 * len(fit_dates)} minutes (lowest zone {min(in_sample.values())}/{6 * len(fit_dates)})")
+    if year_items:
+        on_year = {z: count(year_items[z], points[z][0] / 60, points[z][1] / 60, p) for z in year_items}
+        print(f"  the {len(year_items)} zones on their whole 2026: {sum(on_year.values())}/"
+              f"{6 * sum(len(v) for v in year_items.values())} minutes (lowest zone {min(on_year.values())})")
 
     # Month-split folds of the six full-year zones: one shift for the six and a point per zone, fitted on half the
     # months (the odd ones, then the even ones).
@@ -654,6 +695,16 @@ def main() -> int:
             d0, d1 = min(full[z]), max(full[z])
             fitted.append(common.sample(FULL_SOURCE, d0, d1, len(full[z]), 1))
             held.append(common.sample(FULL_SOURCE + "_month_split", d0, d1, len(full[z]), 1, month_split=True))
+        elif z in year_items:                   # the zone's point on half the months, scored on the other half
+            for keep in (1, 0):
+                part = [x for x in year_items[z] if x[0].month % 2 == keep]
+                _, la, lo = best_point(part, points[z], p)
+                s = common.Score()
+                score_days(method, zone_of(z, (la / 60, lo / 60), town), [x for x in year_items[z] if x[0].month % 2 != keep], s)
+                parts.append(s)
+            d0, d1 = year_items[z][0][0], year_items[z][-1][0]
+            fitted.append(common.sample(ZONE_YEAR_SOURCE, d0, d1, len(year_items[z]), 1))
+            held.append(common.sample(ZONE_YEAR_SOURCE + "_month_split", d0, d1, len(year_items[z]), 1, month_split=True))
         else:
             for keep in (1, 0):
                 part = [x for x in page_items[z] if x[0].month % 2 == keep]
@@ -684,10 +735,16 @@ def main() -> int:
 
     # Report.
     six = merged([zone_scores[z] for z in full])
-    rest = merged([zone_scores[z] for z in range(86) if z not in full])
+    yearz = [z for z in range(86) if z in year_items]
+    rest = [z for z in range(86) if z not in full and z not in year_items]
     allz = merged(zone_scores.values())
     print(f"Held out, the six full-year zones (month-split + 6 later dates; Muscat + 2021/2031): {shares(six)}")
-    print(f"Held out, the 80 other zones (month-split of the 25 dates + 6 later dates): {shares(rest)}")
+    if yearz:
+        print(f"Held out, the {len(yearz)} zones with calendar_page2's year (month-split + 6 later dates): "
+              f"{shares(merged([zone_scores[z] for z in yearz]))}")
+    if rest:
+        print(f"Held out, the {len(rest)} other zones (month-split of the 25 dates + 6 later dates): "
+              f"{shares(merged([zone_scores[z] for z in rest]))}")
     print(f"  Muscat's 2021 and 2031 months alone: {shares(notes['years'])}")
     print(f"  the 6 later page4 dates alone (86 zones): {shares(merged(notes['later']))}")
     print(f"  the month-splits alone (86 zones): {shares(merged(notes['split']))}")
@@ -704,7 +761,7 @@ def main() -> int:
         print(f"  zone {z} {english[z]}: " + ", ".join(f"{e[:3].lower()} {100 * zone_stats[z]['exact'][e]:.1f}" for e in EV)
               + ("; passes" if not f else "; fails: " + "; ".join(f)))
     weakest = sorted(range(86), key=lambda z: min(zone_stats[z]["exact"].values()))[:6]
-    print("  weakest zones (lowest time, of 31 held-out days): " + ", ".join(
+    print("  weakest zones (lowest held-out time): " + ", ".join(
         f"{z} {english[z]} {min(zone_stats[z]['exact'], key=zone_stats[z]['exact'].get)[:3].lower()} "
         f"{100 * min(zone_stats[z]['exact'].values()):.1f}" for z in weakest))
     low80 = Counter(sum(1 for e in EV if zone_stats[z]["exact"][e] < 0.97) for z in range(86) if z not in full)
@@ -766,15 +823,17 @@ def main() -> int:
           f"GeoNames, the rest OSM), {sum(1 for z in range(86) if not TOWNS[z])} without; computing point to town: "
           f"{sum(1 for d, _ in far if d <= 7)} within 7 km; farthest " + ", ".join(f"{english[z]} {d:.0f} km" for d, z in far[:6]))
     first, last = fit_dates[0], fit_dates[-1]
-    profile_stats = common.fit_stats(
-        [common.sample(FULL_SOURCE, datetime.date(2026, 1, 1), datetime.date(2026, 12, 31), 365, len(full)),
-         common.sample(PAGE_SOURCE, first, last, len(fit_dates), 86)],
-        [common.sample(FULL_SOURCE + "_month_split", datetime.date(2026, 1, 1), datetime.date(2026, 12, 31), 365, len(full),
-                       month_split=True),
-         common.sample(PAGE_SOURCE + "_month_split", first, last, len(fit_dates), 80, month_split=True),
-         common.sample(HELD_PAGE_SOURCE, held_dates[0], held_dates[-1], len(held_dates), 86),
-         common.sample(YEARS_SOURCE, min(years), max(years), len(years), 1)],
-        allz)
+    y0, y1 = datetime.date(2026, 1, 1), datetime.date(2026, 12, 31)
+    profile_fitted = [common.sample(FULL_SOURCE, y0, y1, 365, len(full)), common.sample(PAGE_SOURCE, first, last, len(fit_dates), 86)]
+    profile_held = [common.sample(FULL_SOURCE + "_month_split", y0, y1, 365, len(full), month_split=True)]
+    if yearz:
+        profile_fitted.append(common.sample(ZONE_YEAR_SOURCE, y0, y1, 365, len(yearz)))
+        profile_held.append(common.sample(ZONE_YEAR_SOURCE + "_month_split", y0, y1, 365, len(yearz), month_split=True))
+    if rest:
+        profile_held.append(common.sample(PAGE_SOURCE + "_month_split", first, last, len(fit_dates), len(rest), month_split=True))
+    profile_held += [common.sample(HELD_PAGE_SOURCE, held_dates[0], held_dates[-1], len(held_dates), 86),
+                     common.sample(YEARS_SOURCE, min(years), max(years), len(years), 1)]
+    profile_stats = common.fit_stats(profile_fitted, profile_held, allz)
     path = common.write_asset(AUTHORITY, AUTHORITY, "OM", "NEAREST", zones, fit=profile_stats, named_first=True,
                               source=SOURCE_LINE)
     print(f"Profile: Fajr {p['fajr']} deg, Isha {p['isha']} deg, offsets {dict(zip(EV, p['offsets']))}, {p['rounding']}, "
