@@ -7,29 +7,37 @@ The ministry publishes one table for the whole Strip: its decree of 2021-10-05 u
 monthly tables are headed «محافظات غزة», and its radio posts and website widget name no city (8.8). So the asset has
 one `NATIONAL` zone, «محافظات غزة», at Gaza City's point; the profile's minutes, angles and rounding are fitted here.
 
-Data, read at run time from test-data-local and never copied (D13, A7), every row at UTC+3 (summer time, checked with
-tzdata for Asia/Gaza on each date):
+Data, read at run time from test-data-local and never copied (D13, A7), every row at UTC+3:
+- research-2026-10-18/PS/gaza_ministry_2026.csv: the ministry's 2026 table, every day, all six times, which the ministry
+  emailed to the owner on 2026-10-18 (README there). All 365 rows are on UTC+3, winter included, while tzdata's
+  Asia/Gaza is UTC+2 until 2026-03-28 and from 2026-10-25: Dhuhr on 1 January (12:45) is the transit only at UTC+3. So
+  every row is read as a UTC+3 instant. The fitted rows.
 - research-2026-10-08/PS/ps/gaza_1444_dhulhijja.txt: the ministry's Dhu al-Hijja 1444 table, 30 days (2023-06-19 to
-  07-18), hand-transcribed from its Telegram image.
-- research-2026-10-08/PS/ps/gaza_2026_radio.txt: the ministry's Quran radio's daily posts, 22 days (2026-05-19 to 06-09).
-- research-2026-10-08/PS/ps/gaza_widget_20261008.txt: the palwakf.ps footer widget on 2026-10-08, five times (its
-  sunrise came from another site and is not used).
+  07-18), hand-transcribed from its Telegram image; gaza_2026_radio.txt: the ministry's Quran radio's daily posts, 22
+  days (2026-05-19 to 06-09); gaza_widget_20261008.txt: the palwakf.ps footer widget on 2026-10-08, five times (its
+  sunrise came from another site and is not used). Cross-checks, at UTC+3 (summer, checked with tzdata). The emailed
+  table equals them on the widget's day, 20 of the 22 radio days and 24 of the 30 days of 2023 (at the same dates):
+  the ministry's table is nearly the same every year.
+
+The table is no day-by-day computation: its Dhuhr strays from the transit by up to 148 s within a month and holds one
+minute for up to 26 days, so no constant reproduces more than 270 of its 365 Dhuhr minutes (any sun model, evaluation or
+table year). A fitted rule meets it within 1 minute on nearly every day, to the minute on about 60 %.
 
 Stages (9.4), by windows (a published minute bounds the unrounded time to a half-open minute; a window widened by one
 minute either side counts the times within 1 minute, and the value covered by the most of those, then by the most
-exact windows, wins), with a fast special-purpose model of the reference engine:
-1. Dhuhr: the rounding and whole-minute offset for each sun model, at Gaza City's point (53 days of May to July and
-   one October day hardly fix a point, and the 2023 table holds its Dhuhr on one minute for up to 8 days).
+exact windows, wins), with a fast special-purpose model of the reference engine, at Gaza City's point:
+1. Dhuhr: the rounding and whole-minute offset for each sun model.
 2. Fajr and Isha: the angle and the rounding; Egypt's 19.5 and 17.5 deg (8.2) where the windows hold them.
 3. Sunrise and Maghrib: the standard horizon with a whole-minute offset and the rounding; Asr's sun (E13) and rounding.
-Held out: each source scored with the parameters fitted on the other (the 2023 table against the 2026 posts and widget,
-and the reverse), through common.compute, the reference engine.
+Held out: the emailed year by month-split (fold A fits on the odd months and scores the even ones, fold B the reverse),
+through common.compute, the reference engine; the earlier sources are scored with the year's values.
 
 Usage: python scripts/prayer_formula/fits/ps_gaza_awqaf/fit.py
 """
 
 from __future__ import annotations
 
+import csv
 import datetime
 import math
 import sys
@@ -44,15 +52,19 @@ AUTHORITY = "ps_gaza_awqaf"
 TZ = "Asia/Gaza"
 D2R = math.pi / 180
 PS = common.LOCAL_DATA / "research-2026-10-08" / "PS" / "ps"
+EMAIL = common.LOCAL_DATA / "research-2026-10-18" / "PS" / "gaza_ministry_2026.csv"
+CLOCK = 10800                           # every source's clock: UTC+3 (the emailed table all year)
+FOLDS = (("A", (1, 3, 5, 7, 9, 11)), ("B", (2, 4, 6, 8, 10, 12)))
 GAZA_CITY = (31.5016, 34.4667)          # GeoNames 281133 (geonames.org, read 2026-10-15)
 MODELS = ("MEEUS", "VSOP87")
 ROUNDINGS = {"NEAREST": (-0.5, 0.5), "UP": (-1.0, 0.0), "DOWN": (0.0, 1.0)}
 OFFSETS = {"DHUHR": (0, 1, 2), "SUNRISE": (-2, -1, 0, 1), "MAGHRIB": (0, 1, 2, 3, 4, 5), "ASR": (0, 1, 2)}
 STATED = {"FAJR": 19.5, "ISHA": 17.5}   # Egypt's angles, which the research found close (8.2)
-SOURCES = {"table": "gaza_awqaf_dhulhijja_1444 (Telegram image, transcribed)",
+SOURCES = {"email": "gaza_awqaf_table_2026 (emailed by the ministry, every day)",
+           "table": "gaza_awqaf_dhulhijja_1444 (Telegram image, transcribed)",
            "radio": "gaza_awqaf_quran_radio_2026 (daily posts)", "widget": "palwakf.ps widget, 2026-10-08"}
 SOURCE_LINE = ("The Gaza Strip's Ministry of Awqaf: one table for the five governorates (decree of 2021-10-05), fitted to "
-               "its Dhu al-Hijja 1444 table, its radio's daily posts of 2026 and its website widget")
+               "its 2026 table, which the ministry sent to the developer")
 
 
 # ------------------------------------------------------------------------------------------------------------
@@ -78,6 +90,19 @@ def load(name: str, source: str) -> list[tuple[datetime.date, dict[str, int], st
 def load_all():
     return (load("gaza_1444_dhulhijja.txt", "table") + load("gaza_2026_radio.txt", "radio")
             + load("gaza_widget_20261008.txt", "widget"))
+
+
+def load_email() -> list[tuple[datetime.date, dict[str, int], str]]:
+    """The emailed 2026 table, every row on UTC+3 (no clock change, winter included)."""
+    out = []
+    with open(EMAIL, encoding="utf-8-sig", newline="") as fh:
+        for r in csv.DictReader(fh):
+            day = datetime.date.fromisoformat(r["date"])
+            out.append((day, {e: int(r[k][:2]) * 60 + int(r[k][3:]) for e, k in zip(
+                EVENTS, ("fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"))}, "email"))
+    if len(out) != 365 or len({d for d, _, _ in out}) != 365:
+        raise SystemExit(f"{EMAIL.name}: expected the 365 days of 2026")
+    return out
 
 
 # ------------------------------------------------------------------------------------------------------------
@@ -287,10 +312,9 @@ def score(rows, f: dict) -> common.Score:
     s = common.Score()
     for day, t, _ in rows:
         got = common.compute(common.case(method, GAZA_CITY[0], GAZA_CITY[1], TZ, day, zone=zone, country="PS"))
-        off = common.utc_offset(TZ, day)
         for e in EVENTS:
             if e in t:
-                s.add(e, day, (got[e][1] + off) // 60 % 1440, t[e])
+                s.add(e, day, (got[e][1] + CLOCK) // 60 % 1440, t[e])     # the instant on the sources' UTC+3 clock
     return s
 
 
@@ -307,42 +331,46 @@ def describe(f: dict) -> str:
             f"{ev['MAGHRIB'][1]['rounding']}, Isha {ev['ISHA'][1]['degrees']} deg {ev['ISHA'][1]['rounding']}")
 
 
+def merged(scores) -> common.Score:
+    out = common.Score()
+    for s in scores:
+        for e in EVENTS:
+            out.exact[e] += s.exact[e]
+            out.within1[e] += s.within1[e]
+            out.total[e] += s.total[e]
+            for m in range(12):
+                out.months[e][m] += s.months[e][m]
+        out.worst = max(out.worst, s.worst)
+        out.misses += s.misses
+    return out
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
-    rows = load_all()
-    by = {k: [r for r in rows if r[2] == k] for k in SOURCES}
-    print("Rows: " + ", ".join(f"{k} {len(v)}" for k, v in by.items()))
-    print("All rows:")
+    rows = load_email()
+    earlier = load_all()
+    by = {k: [r for r in earlier if r[2] == k] for k in SOURCES if k != "email"}
+    print(f"Rows: the emailed table {len(rows)}; earlier sources " + ", ".join(f"{k} {len(v)}" for k, v in by.items()))
+    print("All days of the emailed table:")
     final = fit(rows, print)
     print("Profile: " + describe(final))
     s_in = score(rows, final)
     print("In-sample: " + shares(s_in) + f"; worst {s_in.worst}")
-    halves = {
-        "table": ([r for r in rows if r[2] != "table"], by["table"]),
-        "2026": (by["table"], [r for r in rows if r[2] != "table"]),
-    }
     held = []
-    for label, (fit_rows, score_rows) in halves.items():
-        f = fit(fit_rows)
-        s = score(score_rows, f)
+    for name, months in FOLDS:
+        f = fit([r for r in rows if r[0].month in months])
+        s = score([r for r in rows if r[0].month not in months], f)
         held.append(s)
-        print(f"Held out on {label} (fitted on the other source): {describe(f)}\n  " + shares(s) + f"; worst {s.worst}")
-    held_all = common.Score()
-    for s in held:
-        for e in EVENTS:
-            held_all.exact[e] += s.exact[e]
-            held_all.within1[e] += s.within1[e]
-            held_all.total[e] += s.total[e]
-            for m in range(12):
-                held_all.months[e][m] += s.months[e][m]
-        held_all.worst = max(held_all.worst, s.worst)
-    print("Held out, both directions: " + shares(held_all) + f"; within 1 min {min(held_all.within1_shares().values()):.1%}")
+        print(f"Fold {name} (fitted on months {','.join(map(str, months))}): {describe(f)}\n  held out " + shares(s) + f"; worst {s.worst}")
+    held_all = merged(held)
+    print("Held out, both folds: " + shares(held_all) + "; within 1 min " + ", ".join(
+        f"{e[:3]} {held_all.within1[e] / held_all.total[e]:.1%}" for e in EVENTS) + f"; worst {held_all.worst}")
+    for k, v in by.items():
+        s = score(v, final)
+        print(f"Cross-check, {SOURCES[k]} ({len(v)} days) with the year's values: " + shares(s) + f"; worst {s.worst}")
 
-    samples = [common.sample(SOURCES[k], min(r[0] for r in v), max(r[0] for r in v), len(v), 1) for k, v in by.items()]
-    held_samples = [common.sample(SOURCES["table"] + ", scored with the parameters fitted on the 2026 rows",
-                                  min(r[0] for r in by["table"]), max(r[0] for r in by["table"]), len(by["table"]), 1),
-                    common.sample(SOURCES["radio"] + " and " + SOURCES["widget"] + ", scored with the parameters fitted on the 2023 table",
-                                  min(r[0] for r in by["radio"]), max(r[0] for r in by["widget"]), len(by["radio"]) + len(by["widget"]), 1)]
+    samples = [common.sample(SOURCES["email"], rows[0][0], rows[-1][0], len(rows), 1)]
+    held_samples = [common.sample(SOURCES["email"], rows[0][0], rows[-1][0], len(rows), 1, month_split=True)]
     stats = common.fit_stats(samples, held_samples, held_all)
     zone = zone_of(final)
     asset_zone = {"id": "gaza", "nameAr": "محافظات غزة", "point": zone["point"],

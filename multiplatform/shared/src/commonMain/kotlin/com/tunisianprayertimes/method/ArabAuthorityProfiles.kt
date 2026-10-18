@@ -142,16 +142,17 @@ object ArabAuthorityProfiles {
         )
     }
 
-    // AM10 fit (fits/ps_gaza_awqaf), the Ministry's Dhu al-Hijja 1444 table and its 2026 radio posts (53 days) at Gaza City's
-    // point: every time within 1 minute in-sample, 2 minutes at worst held out.
+    // AM10 fit (fits/ps_gaza_awqaf), the Ministry's 2026 table (emailed to the developer 2026-10-18, every day) at Gaza
+    // City's point: each time within 1 minute on 98.4–99.7 % of the days held out (month split), to the minute on 54–66 %;
+    // the table is no day-by-day computation (its Dhuhr holds one minute for up to 26 days).
     val PS_GAZA_AWQAF = profile(
-        "ps_gaza_awqaf", angle(19.37), ishaAngle(17.31),
-        tables("Gaza's Ministry of Awqaf: its Dhu al-Hijja 1444 table and 2026 radio posts, at Gaza City's point"),
+        "ps_gaza_awqaf", angle(19.4), ishaAngle(17.394),
+        tables("Gaza's Ministry of Awqaf: its 2026 table, at Gaza City's point"),
     ) {
         copy(
-            offsets = mapOf(TimeEvent.MAGHRIB to 2),
-            rounding = Rounding.ALL_NEAREST + mapOf(TimeEvent.SUNRISE to Rounding.UP, TimeEvent.MAGHRIB to Rounding.UP, TimeEvent.ISHA to Rounding.UP),
-            sunModel = SunModel.VSOP87,
+            offsets = mapOf(TimeEvent.MAGHRIB to 3),
+            rounding = Rounding.ALL_NEAREST + mapOf(TimeEvent.FAJR to Rounding.DOWN, TimeEvent.ISHA to Rounding.UP),
+            asrSun = AsrSun.APPARENT,
         )
     }
 
