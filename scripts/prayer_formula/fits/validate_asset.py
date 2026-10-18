@@ -19,8 +19,9 @@ ZONE_KEYS = {
     "id", "nameAr", "point", "morningPoint", "eveningPoint", "eventPoints", "elevationM", "eveningElevationM", "pressureHpa", "temperatureC",
     "sunriseAltitudeDeg", "sunsetAltitudeDeg", "offsets", "baseZoneId", "offsetRule", "halfMonthWindows", "terrainClass",
     "admin1", "admin2", "namedPlaces", "reachKm", "mappingTier", "switchDays", "fit", "country", "sunriseAtPlace",
-    "elevationShiftFloor", "belowSeaLevel",
+    "elevationShiftFloor", "belowSeaLevel", "referenceYear", "tableRows", "asrShadowHourUt", "fajrAngleDeg", "ishaAngleDeg",
 }
+TABLE_ROWS = {"CALENDAR", "LEAP_ROWS_FEB28", "LEAP_ROWS_MAR1", "COMMON_ROWS"}
 FIT_KEYS = {"fittedOn", "heldOut", "exact", "within1", "daysPerMonth", "heldOutRamadanDays", "quirkDays", "maxDiffMin"}
 ARABIC = re.compile(r"[؀-ۿ]")
 
@@ -78,6 +79,20 @@ def problems_of(path: Path) -> list[str]:
         for named in z.get("namedPlaces", []):
             if "centre" not in named:
                 out.append(f"{where}: a named place needs a centre")
+        year = z.get("referenceYear")
+        if year is not None and not (isinstance(year, int) and 1800 <= year <= 2200):
+            out.append(f"{where}: referenceYear {year}")
+        if z.get("tableRows", "CALENDAR") not in TABLE_ROWS:
+            out.append(f"{where}: tableRows {z.get('tableRows')}")
+        elif z.get("tableRows", "CALENDAR") != "CALENDAR" and year is None:
+            out.append(f"{where}: tableRows needs a referenceYear")
+        hour = z.get("asrShadowHourUt")
+        if hour is not None and not (isinstance(hour, (int, float)) and 0 <= hour < 72):
+            out.append(f"{where}: asrShadowHourUt {hour}")
+        for key in ("fajrAngleDeg", "ishaAngleDeg"):
+            angle = z.get(key)
+            if angle is not None and not (isinstance(angle, (int, float)) and 10 <= angle <= 21):
+                out.append(f"{where}: {key} {angle}")
         if z.get("fit"):
             fits.append((where, z["fit"]))
     for where, fit in fits:

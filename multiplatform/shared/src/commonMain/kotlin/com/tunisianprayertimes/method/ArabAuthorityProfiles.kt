@@ -173,13 +173,16 @@ object ArabAuthorityProfiles {
         )
     }
 
-    // AM10 fit (fits/sy_awqaf): Umm al-Qura's conventions with the MWL angles, KACST for Fajr, Asr and Isha and every time up
-    // but sunrise, with no zone fractions; 91.8–98.6 % exact on 73 Ramadan days, all within 1 minute.
-    val SY_AWQAF = profile("sy_awqaf", angle(18.0), ishaAngle(17.0), tables("The Ministry of Awqaf's Ramadan tables, applied all year")) {
+    // AM10 refit 2026-10-18 (fits/sy_awqaf): the ministry's mosque screens («مسجدك») show aladhan.com's PrayTimes: MWL
+    // 18°/17°, its low-precision sun once per time at PrayTimes' hours (E4 PRAYTIMES, S1 ALMANAC), the 0.833° horizon,
+    // Dhuhr + 1 and Maghrib + 2, every time to the nearest minute; each region's table year, rows and Asr shadow hour are
+    // its zone's (A8).
+    val SY_AWQAF = profile("sy_awqaf", angle(18.0), ishaAngle(17.0), tables("The Ministry of Awqaf's mosque-screen year tables, each region's as shown")) {
         copy(
-            rounding = TimeEvent.entries.associateWith { if (it == TimeEvent.SUNRISE) Rounding.DOWN else Rounding.UP },
-            sunEvaluation = listOf(TimeEvent.FAJR, TimeEvent.ASR, TimeEvent.ISHA).associateWith { SunEvaluation.KACST },
-            revisions = listOf(MethodRevision(LocalDate.of(2025, 3, 30), MethodChange(offsets = mapOf(TimeEvent.MAGHRIB to 2)))),
+            offsets = mapOf(TimeEvent.DHUHR to 1, TimeEvent.MAGHRIB to 2),
+            horizon = Horizons(HorizonModel.Fixed(-0.833), HorizonModel.Fixed(-0.833)),
+            sunModel = SunModel.ALMANAC,
+            sunEvaluation = TimeEvent.entries.associateWith { SunEvaluation.PRAYTIMES },
         )
     }
 

@@ -3,46 +3,54 @@
 Fits `sy_awqaf`, Syria's Ministry of Awqaf (plan 8.1, 8.2, 8.7, 8.8, Q12; milestone AM10, 9.4), and writes its
 official-zone asset, android-app/app/src/main/assets/official-zones/sy_awqaf.json (schema 1).
 
-Data, read at run time and never copied (D13, A7); every official table at hand is a Ramadan table:
-- test-data-local/research-2026-10-08/SY/sy/dam.txt: the ministry's Ramadan 1447 table for Damascus, 2026-02-19 to
-  03-19 (29 rows, hand transcription, the table's own repeated rows kept).
-- test-data-local/research-2026-10-08/SY/sy/raq1446.txt: its Ramadan 1446 table for Raqqa, 2025-03-01 to 03-29.
-- test-data-local/research-2026-10-08/SY/sy/cities.py, read as text (never run): days 1 and 29 of Ramadan 1447
-  (2026-02-19 and 03-19) for nine more governorate tables, and the research's town points for ten tables.
-(The day-1 rows of the Eastern Ghouta, Tartus, Deir ez-Zor and Raqqa 1447 tables are only in an image,
-research-2026-10-08/SY/sy/heads.png, so they are checked by hand in the README, not here.)
+The ministry's mosque screens (tv.masjidak.mow.gov.sy) and its app «مسجدك» show, for each region, a year table of 366
+rows that aladhan.com's PrayerTimes computed (the PHP port of PrayTimes.js that the API runs; found 2026-10-18): MWL
+18°/17°, the Astronomical Almanac's low-precision sun once per time at PrayTimes' default hours of local mean time on
+the date (E4 PRAYTIMES, S1 ALMANAC), the 0.833° horizon, Dhuhr + 1 and Maghrib + 2 (the request's tune), each time to
+the nearest minute, UTC+3. aladhan's Asr reads its noon shadow's declination at gregoriantojd + the API server clock's
+day fraction + 13/24, so each table keeps the time of day it was fetched (the zone's `asrShadowHourUt`). A screen
+shows row (the date's day in a leap year - 1) of its table (masjidi.min.js, getDayIndex with LEAD_MONTHS_DAYS
+[31, 29, ...]), so each table's year and row layout decide what shows on a date (A8 at the zone: `referenceYear`,
+`tableRows`):
+- LEAP_ROWS_FEB28 or LEAP_ROWS_MAR1: the year's dates, row 59 (29 February) copying 28 February or 1 March;
+- COMMON_ROWS (the north-east and the coast's last four, added 2026-08-20): the year's 365 days without 29 February,
+  then 31 December again; the screens then show the next day's row from 1 March to 30 December, as the app does.
 
-The tables are yearly (each Ramadan computed for its own year), so a score is the app's own computation of that date.
-Every score printed and every FitStats comes from common.compute, the reference engine; the search loops use the fast
-closed-form code below.
+Data, read at run time and never copied (D13, A7):
+- test-data-local/research-2026-10-18/SY/masjidak/region_<id>.json, ids 761-870 (README and MANIFEST there).
+- test-data-local/research-2026-10-18/SY/masjidak/mosques.tsv: sampled screens (mosque id, region, city, address,
+  name) from their configuration pages, which tie regions to towns.
+- test-data-local/research-2026-10-08/LB/lb/region2.json: the Beirut table that tv.masjidi.app serves; region 763 is
+  that table (checked here), so it is no Syrian zone.
+- test-data-local/research-2026-10-08/SY/sy/dam.txt and raq1446.txt: the ministry's printed Ramadan tables, scored as a
+  cross-check only (another product of the ministry).
+- android-app/app/src/main/assets/places/arab-cities.tsv: the place catalogue, which names the zones.
 
-Stages (9.4), each by windows (a published minute bounds the unrounded time to a minute; the value most windows
-cover wins), at the tables' town points (one or two Ramadans cannot place a point better):
-1. Dhuhr: sun model and evaluation from the Dhuhr column (reported).
-2. Each time's evaluation (E4 is a per-event map) and rounding: per time and evaluation, the shift windows of all the
-   fit tables at once (Fajr at 18 deg, Isha at 17 deg as the ministry's MWL adoption states, sunrise and Maghrib on the
-   standard horizon, Asr on the geometric or the apparent sun, E13); the whole or half minute most windows hold gives
-   the offset and rounding (a half is UP + floor or DOWN + ceil, 9.4); the evaluation and sun whose reading reproduces
-   most minutes win, ties going to the evaluation another time already uses, then the geometric sun, then EVENT_INSTANT.
-   Maghrib's offset is read per Ramadan (E9: + 0 in 1446, + 2 in 1447).
-3. The angles: the Fajr and Isha windows under the chosen evaluation and rounding, which must hold 18 and 17.
-4. E7 fractions only where the best window wins more than 2 % of the days over the whole or half minute.
-Quirk days: rows that match the previous date's computed times better than their own (the tables' repeated rows),
-found with a first pass and counted apart.
-Held out: Damascus 1447 scored with the values fitted on Raqqa 1446, Raqqa 1446 with those fitted on Damascus 1447
-(each Ramadan keeps its own E9 Maghrib offset, which only its own table gives), and the nine other tables' days with
-the values fitted on both.
+Per distinct table (identical regions share a zone), by windows (a published minute bounds the unrounded time to a
+minute; the value most windows hold wins) with the fast closed form below, which is the reference engine's PRAYTIMES
+computation (checked here on every day of every zone):
+1. The row layout from the file (row 59 copies row 58: FEB28; row 60: MAR1; else every layout is tried).
+2. The year (2000-2032) by Dhuhr's windows, the best few then by the point's score.
+3. The point: latitude scanned (32.2-37.4°, then finer), longitude by the windows of Fajr, sunrise, Dhuhr, Maghrib and
+   Isha; the middle of the best latitudes.
+4. Asr's shadow hour: 25 h + 24 h × f, f scanned by minutes, the middle of the best run.
+Held out (FitStats, 9.4): month split, steps 2-4 fitted on the odd months and scored on the even ones and the reverse
+(the layout is the file's); scores from common.compute, the reference engine, on the screens' dates of 2028 (a leap
+year, so that every row shows).
 
-Usage: python scripts/prayer_formula/fits/sy_awqaf/fit.py [--no-guard]
+Usage: python scripts/prayer_formula/fits/sy_awqaf/fit.py [--workers N]
 """
 
 from __future__ import annotations
 
 import argparse
 import datetime
+import json
 import math
-import re
+import os
 import sys
+from collections import Counter, defaultdict
+from multiprocessing import Pool
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -51,40 +59,43 @@ import common  # noqa: E402
 ref = common.ref
 EVENTS = common.EVENTS
 AUTHORITY = "sy_awqaf"
-TZ = "Asia/Damascus"                      # UTC+3 all year since 2022 (checked on every row)
+TZ = "Asia/Damascus"                      # UTC+3 all year since 2022; every table is on UTC+3
 TZ_MIN = 180
+MJ = common.LOCAL_DATA / "research-2026-10-18" / "SY" / "masjidak"
+MOSQUES = MJ / "mosques.tsv"
+BEIRUT = common.LOCAL_DATA / "research-2026-10-08" / "LB" / "lb" / "region2.json"
 SY = common.LOCAL_DATA / "research-2026-10-08" / "SY" / "sy"
+CATALOGUE = common.ROOT / "android-app" / "app" / "src" / "main" / "assets" / "places" / "arab-cities.tsv"
+KEYS = ("Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha")
+ANGLES = {"FAJR": 18.0, "ISHA": 17.0}
+TUNE = {"DHUHR": 1, "MAGHRIB": 2}
+HORIZON = 0.833
+SIDE = {"FAJR": -1, "SUNRISE": -1, "MAGHRIB": 1, "ISHA": 1, "ASR": 1}
 D2R = math.pi / 180
-MODES = ("EVENT_INSTANT", "DAILY_0H_UT", "DAILY_10H_UT", "KACST")
-ANGLES = {"FAJR": 18.0, "ISHA": 17.0}     # MWL, adopted by the ministry on 2025-02-28 (8.2, Q12)
-REVISION = datetime.date(2025, 3, 30)     # E9: Maghrib + 2 from the day after the 1446 tables (plan, provisional)
-FRACTION_GAIN = 0.02
-QUIRK_GAIN = 1.0                          # minutes (four events summed) by which the previous date must fit better
-# The 14 tables (8.8): id -> (Arabic name, town point). Ten points are the research's (cities.py); Raqqa, Deir ez-Zor
-# and Tartus are GeoNames' town points, and Eastern Ghouta («منطقة الغوطة الشرقية») takes Douma, its main town
-# (GeoNames, recalled, not checked online).
-ZONES = {
-    "damascus": ("دمشق", None), "aleppo": ("حلب", None), "homs": ("حمص", None), "hama": ("حماة", None),
-    "latakia": ("اللاذقية", None), "tartus": ("طرطوس", (34.88902, 35.88659)), "idlib": ("إدلب", None),
-    "raqqa": ("الرقة", (35.95283, 39.00788)), "deir_ez_zor": ("دير الزور", (35.33588, 40.14084)),
-    "hasakah": ("الحسكة", None), "daraa": ("درعا", None), "suwayda": ("السويداء", None),
-    "quneitra": ("القنيطرة", None), "eastern_ghouta": ("الغوطة الشرقية", (33.57175, 36.40270)),
-}
-CITIES_PY = {"Aleppo": "aleppo", "Hasakah": "hasakah", "Latakia": "latakia", "Homs": "homs", "Hama": "hama",
-             "Daraa": "daraa", "Suwayda": "suwayda", "Quneitra": "quneitra", "Idlib": "idlib", "Damascus": "damascus"}
-SOURCE_LINE = ("Syria's Ministry of Awqaf: its 14 governorate Ramadan tables (1446 and 1447, Telegram @SyMOfE), "
-               "applied all year (Q12)")
-SOURCES = {
-    "damascus": "Ministry of Awqaf Ramadan 1447 table, Damascus (t.me/SyMOfE/6578)",
-    "raqqa": "Ministry of Awqaf Ramadan 1446 table, Raqqa (t.me/SyMOfE/568)",
-    "other": "Ministry of Awqaf Ramadan 1447 tables, days 1 and 29 (t.me/SyMOfE/6569-6578)",
-}
-# The validity guard's cases (6.5, 8.8, 12), a side check at approximate town points (not verified). True = the plan
-# expects the nearest table kept, False = the place at its own point, None = near the threshold (the scan decides).
-GUARD_PLACES = (("Tabqa", 35.8361, 38.5481, True), ("Zabadani", 33.7250, 36.0972, True), ("Khan Shaykhun", 35.4417, 36.6500, True),
-                ("Al-Tanf", 33.4975, 38.6733, False), ("Ras al-Ayn", 36.8503, 40.0706, None), ("Sukhnah", 34.8964, 38.8706, None),
-                ("Tell Abyad", 36.6975, 38.9567, None), ("Palmyra", 34.5603, 38.2672, None), ("Malikiyah", 37.1806, 42.1394, None),
-                ("Qamishli", 37.0522, 41.2311, None), ("Abu Kamal", 34.4536, 40.9367, None), ("Nabek", 34.0233, 36.7281, None))
+FOLDS = (("A", (1, 3, 5, 7, 9, 11)), ("B", (2, 4, 6, 8, 10, 12)))   # the months each fold fits on
+YEARS = range(2000, 2033)
+LAYOUTS = ("LEAP_ROWS_FEB28", "LEAP_ROWS_MAR1", "COMMON_ROWS")
+SCREEN_YEAR = 2028                        # a leap year: each of its dates shows one row
+SCREEN_DAYS = [datetime.date(SCREEN_YEAR, 1, 1) + datetime.timedelta(days=i) for i in range(366)]
+BEIRUT_ID = 763
+SOURCE_LINE = ("Syria's Ministry of Awqaf: the year tables of its mosque screens and app «مسجدك» "
+               "(tv.masjidak.mow.gov.sy), each region's as the screens show it")
+SOURCE = "Ministry of Awqaf screen table (tv.masjidak.mow.gov.sy), region {ids}"
+METHOD = common.method_json(
+    id=AUTHORITY, fajr={"type": "angle", "degrees": ANGLES["FAJR"]}, isha={"type": "angle", "degrees": ANGLES["ISHA"]},
+    offsets=dict(TUNE), sunModel="ALMANAC", sunEvaluation={e: "PRAYTIMES" for e in EVENTS},
+    horizon={"sunrise": {"type": "fixed", "altitudeDeg": -HORIZON}, "sunset": {"type": "fixed", "altitudeDeg": -HORIZON}},
+    highLatitude={"type": "angle_based"}, evidence={"kind": "FROM_TABLES", "source": "fit"})
+SCREEN_KM = 120.0                         # a screen's town is matched within this distance of its table's computing point
+SHADOW_KM = 1.0                           # an unseen table this near another zone's main town is left to manual picks
+NAMED_KM = 3.0                            # a table's computing point names the place this near it
+MAIN_SHARE = 0.25                         # the screens' first town is a zone's main town from this share of its screens
+LIVE_MIN, LIVE_RATIO = 3, 2               # a town is live from 3 live screens, twice as many as on region tables
+LIVE = common.LOCAL_DATA / "research-2026-10-18" / "SY" / "aladhan_live"   # the API's calendars for the live towns
+LIVE_YEAR = 2024                          # masjidi.min.js requests calendar/2024
+LIVE_SHADOW_HOUR = 37.0                   # a live screen's fetch time is unknown: the middle of the day's (f = 0.5)
+LIVE_SOURCE = ("aladhan.com's API, calendar 2024 at {name} (the live screens' request: the town's point, no method; "
+               "its default there, {method}), fetched 2026-10-18")
 
 
 # ------------------------------------------------------------------------------------------------------------
@@ -95,302 +106,292 @@ def minute(text: str) -> int:
     return int(h) * 60 + int(m)
 
 
-def load_rows(path: Path, start: datetime.date) -> list[tuple[datetime.date, dict[str, int]]]:
-    out = []
-    for i, line in enumerate(l for l in path.read_text(encoding="utf-8").splitlines() if l.strip()):
-        day = start + datetime.timedelta(days=i)
-        if common.utc_offset(TZ, day) != TZ_MIN * 60:
-            raise SystemExit(f"{path.name} {day}: not UTC+3")
-        out.append((day, dict(zip(EVENTS, (minute(x) for x in line.split())))))
+def load_table(path: Path) -> list[dict[str, int]]:
+    raw = json.loads(path.read_text(encoding="utf-8-sig"))
+    if len(raw) != 366:
+        raise SystemExit(f"{path.name}: {len(raw)} rows")
+    return [{e: minute(r[k]) for e, k in zip(EVENTS, KEYS)} for r in raw]
+
+
+def load_tables() -> dict[int, list[dict[str, int]]]:
+    out = {}
+    for rid in range(761, 871):
+        path = MJ / f"region_{rid}.json"
+        if path.exists():
+            out[rid] = load_table(path)
     return out
 
 
-def load_cities() -> tuple[dict, dict]:
-    """cities.py read as text: {zone id: (lat, lng)} and {zone id: [(date, times)]} for its ten tables."""
-    text = (SY / "cities.py").read_text(encoding="utf-8")
-    points, rows = {}, {}
-    for name, lat, lng, a, b in re.findall(r"'(\w+)':\(([\d.]+),([\d.]+),\['([\d: ]+)','([\d: ]+)'\]\)", text):
-        zid = CITIES_PY[name]
-        points[zid] = (float(lat), float(lng))
-        rows[zid] = [(datetime.date(2026, 2, 19), dict(zip(EVENTS, (minute(x) for x in a.split())))),
-                     (datetime.date(2026, 3, 19), dict(zip(EVENTS, (minute(x) for x in b.split()))))]
-    if sorted(points) != sorted(CITIES_PY.values()):
-        raise SystemExit(f"cities.py: {sorted(points)}")
-    return points, rows
+def live_zone(town: dict, name: str, calendar: dict) -> tuple[dict, list[dict[str, int]], str]:
+    """A live town's zone from the API's answer for its point: the default method's angles and minutes as angles and
+    minutes on this method (its Dhuhr + 1 and Maghrib + 2), the 2024 calendar as the table (A8, CALENDAR rows), and Asr's
+    shadow at the middle of the day's fetch times; with the answer's 366 rows and the method's name."""
+    days = [d for month in sorted(calendar["data"], key=int) for d in calendar["data"][month]]
+    meta = days[0]["meta"]
+    params, tune = meta["method"]["params"], meta["offset"]
+    maghrib = params.get("Maghrib", "0 min")
+    if not (isinstance(params["Fajr"], (int, float)) and isinstance(params["Isha"], (int, float)) and str(maghrib).endswith("min")):
+        raise SystemExit(f"{name}: the API's method {meta['method']} is not angles with Maghrib by minutes")
+    offsets = {"FAJR": tune["Fajr"], "SUNRISE": tune["Sunrise"], "DHUHR": tune["Dhuhr"] - TUNE["DHUHR"], "ASR": tune["Asr"],
+               "MAGHRIB": float(str(maghrib).split()[0]) + tune["Maghrib"] - TUNE["MAGHRIB"], "ISHA": tune["Isha"]}
+    zone = common.zone_json(f"live{town['id']}", town["lat"], town["lng"], nameAr=name, referenceYear=LIVE_YEAR,
+                            offsets={e: float(v) for e, v in offsets.items() if v}, asrShadowHourUt=LIVE_SHADOW_HOUR,
+                            fajrAngleDeg=None if params["Fajr"] == ANGLES["FAJR"] else float(params["Fajr"]),
+                            ishaAngleDeg=None if params["Isha"] == ANGLES["ISHA"] else float(params["Isha"]))
+    zone.pop("authority", None)
+    rows = [{e: minute(d["timings"][k].split()[0]) for e, k in zip(EVENTS, KEYS)} for d in days]
+    if len(rows) != 366:
+        raise SystemExit(f"{name}: {len(rows)} days")
+    return zone, rows, f"{meta['method']['name']} (id {meta['method']['id']})"
+
+
+def file_layouts(rows) -> tuple[str, ...]:
+    """The layouts the file allows: its row 59 copies row 58 or row 60, else any."""
+    if rows[59] == rows[58]:
+        return ("LEAP_ROWS_FEB28", "COMMON_ROWS")
+    if rows[59] == rows[60]:
+        return ("LEAP_ROWS_MAR1", "COMMON_ROWS")
+    return LAYOUTS
+
+
+def load_screens(path: Path = MOSQUES, live: bool = False) -> list[tuple[int, str, str]]:
+    """The sampled screens with a region table: (region, town, address); with [live], those on aladhan's live API
+    instead, with region 0."""
+    out = []
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines()[1:]:
+            parts = line.split("\t")
+            if len(parts) < 4:
+                continue
+            if live and parts[1] == "-":
+                out.append((0, parts[2].strip(), parts[3].strip()))
+            elif not live and parts[1].isdigit():
+                out.append((int(parts[1]), parts[2].strip(), parts[3].strip()))
+    return out
+
+
+def live_towns(live: list, tables: list, catalogue: list[dict]) -> list[tuple[dict, int, int, str]]:
+    """The catalogue towns whose sampled screens run aladhan's API live: at least LIVE_MIN of them, and LIVE_RATIO times
+    as many as screens on a region table there. A screen's town (else its address) is the catalogue place of that Arabic
+    name, the most populous where several are; (town, live screens, table screens, the screens' own spelling)."""
+    by_key = defaultdict(list)
+    for c in catalogue:
+        for k in c["keys"]:
+            by_key[k].append(c)
+    counts: dict[int, list[int]] = defaultdict(lambda: [0, 0])
+    spelled: dict[int, Counter] = defaultdict(Counter)
+    rows = {c["id"]: c for c in catalogue}
+    for screens, which in ((live, 0), (tables, 1)):
+        for _, town, address in screens:
+            hits = by_key.get(arabic_key(town)) or by_key.get(arabic_key(address))
+            if hits:
+                c = max(hits, key=lambda c: c["population"])
+                counts[c["id"]][which] += 1
+                if which == 0:
+                    spelled[c["id"]][town] += 1
+    out = [(rows[cid], n_live, n_table, spelled[cid].most_common(1)[0][0]) for cid, (n_live, n_table) in counts.items()
+           if n_live >= LIVE_MIN and n_live >= LIVE_RATIO * n_table]
+    return sorted(out, key=lambda t: (-t[1], t[0]["id"]))
+
+
+def load_catalogue() -> list[dict]:
+    lines = CATALOGUE.read_text(encoding="utf-8").splitlines()
+    header = lines[0].split("\t")
+    rows = []
+    for line in lines[1:]:
+        c = dict(zip(header, line.split("\t")))
+        if c["country"] != "SY" or "n" in c.get("flags", ""):
+            continue
+        names = [c["arabic"]] + [a for a in c.get("aliases", "").split("|") if a and re_arabic(a)]
+        rows.append({"id": int(c["id"]), "arabic": c["arabic"], "name": c["name"], "lat": int(c["latE5"]) / 1e5,
+                     "lng": int(c["lngE5"]) / 1e5, "population": int(c["population"] or 0),
+                     "keys": {arabic_key(n) for n in names if arabic_key(n)}})
+    return rows
+
+
+def re_arabic(text: str) -> bool:
+    return any("؀" <= ch <= "ۿ" for ch in text)
 
 
 # ------------------------------------------------------------------------------------------------------------
-# Fast model for the search loops (S2-S7; Syria's cycle date is the civil date)
+# The fast closed form (aladhan's PrayerTimes): local minutes on UTC+3 before rounding
 
 _SUN: dict = {}
 
 
-def sun(day: datetime.date, model: str, mode: str, local_minute: float) -> tuple[float, float, float]:
-    key = (day, model, mode, None if mode != "EVENT_INSTANT" else round(local_minute, 1))
-    v = _SUN.get(key)
+def sun(jd: float) -> tuple[float, float, float]:
+    v = _SUN.get(jd)
     if v is None:
-        fn = ref.SUN_MODELS[model]
-        jd0 = ref.julian_day0(day)
-        if mode == "DAILY_0H_UT":
-            v = fn(jd0)
-        elif mode == "DAILY_10H_UT":
-            v = fn(jd0 + 10 / 24)
-        elif mode == "KACST":
-            v = (fn(jd0 + 21 / 24)[0],) + tuple(fn(jd0 + 9 / 24)[1:])
-        else:
-            v = fn(jd0 + (local_minute - TZ_MIN) / 1440)
-        _SUN[key] = v
+        if len(_SUN) > 400_000:
+            _SUN.clear()
+        v = _SUN[jd] = ref.almanac_sun(jd)
     return v
 
 
-def hour_angle(alt: float, lat: float, decl: float) -> float:
-    c = (math.sin(alt * D2R) - math.sin(lat * D2R) * math.sin(decl * D2R)) / (math.cos(lat * D2R) * math.cos(decl * D2R))
-    return math.acos(max(-1.0, min(1.0, c))) / D2R
-
-
-def altitude_at(lat: float, decl: float, h_deg: float) -> float:
-    s = math.sin(lat * D2R) * math.sin(decl * D2R) + math.cos(lat * D2R) * math.cos(decl * D2R) * math.cos(h_deg * D2R)
-    return math.asin(max(-1.0, min(1.0, s))) / D2R
-
-
-def asr_altitude(lat: float, decl_noon: float, apparent: bool) -> float:
-    zenith = abs(lat - decl_noon)
-    if not apparent:
-        return math.atan(1 / (1 + math.tan(zenith * D2R))) / D2R
-    h0 = 90 - zenith
-    h0a = h0 + ref.bennett(h0, 1010.0, 10.0)
-    aa = math.atan(1 / (1 + math.tan((90 - h0a) * D2R))) / D2R
-    return aa - ref.bennett(aa, 1010.0, 10.0)
-
-
-def base_minute(e, day, t, lat, lng, model, mode, apparent=False, angle=None) -> float:
-    """The unrounded local minute of [e] before any offset, under one evaluation."""
-    decl, eot, _ = sun(day, model, mode, t[e])
-    noon = 720 + TZ_MIN - eot - 4 * lng
+def unrounded(e: str, day: datetime.date, lat: float, lng: float, shadow_hour: float | None = None,
+              angles: dict | None = None, extra: dict | None = None) -> float:
+    """[angles]: a zone's own Fajr and Isha angles; [extra]: its minutes (a live town's)."""
+    jd0 = ref.julian_day0(day)
+    decl, eot, _ = sun(jd0 - lng / 360 + ref.PRAYTIMES_HOURS[e] / 24)
+    noon = 720 + TZ_MIN - 4 * lng - eot
+    minutes = TUNE.get(e, 0) + (extra or {}).get(e, 0)
     if e == "DHUHR":
-        return noon
+        return noon + minutes
     if e == "ASR":
-        decl_noon = sun(day, model, mode, t["DHUHR"])[0]
-        return noon + 4 * hour_angle(asr_altitude(lat, decl_noon, apparent), lat, decl)
-    alt = -(angle if angle is not None else ANGLES[e]) if e in ANGLES else -0.8333
-    return noon + (4 if e in ("MAGHRIB", "ISHA") else -4) * hour_angle(alt, lat, decl)
+        noon_decl = decl if shadow_hour is None else sun(jd0 + shadow_hour / 24)[0]
+        alt = math.atan(1 / (1 + math.tan(abs(lat - noon_decl) * D2R))) / D2R
+    else:
+        alt = -{**ANGLES, **(angles or {})}.get(e, HORIZON)
+    c = (math.sin(alt * D2R) - math.sin(lat * D2R) * math.sin(decl * D2R)) / (math.cos(lat * D2R) * math.cos(decl * D2R))
+    return noon + SIDE[e] * 4 * math.acos(max(-1.0, min(1.0, c))) / D2R + minutes
 
 
-def cover(intervals) -> tuple[int, list[tuple[float, float]]]:
-    marks = sorted([(lo, 1) for lo, hi in intervals] + [(hi, -1) for lo, hi in intervals])
-    best, cur, stretches = 0, 0, []
+def rounded(u: float) -> int:
+    return math.floor(u + 0.5)
+
+
+def cover(windows) -> tuple[int, float | None, tuple[float, float] | None]:
+    """The most windows any value holds, the middle of the widest such stretch, and that stretch."""
+    marks = sorted([(a, 1) for a, _ in windows] + [(b, -1) for _, b in windows])
+    best, cur, stretch = 0, 0, None
     for i, (x, s) in enumerate(marks):
         cur += s
         nxt = marks[i + 1][0] if i + 1 < len(marks) else x
         if nxt <= x:
             continue
-        if cur > best:
-            best, stretches = cur, [(x, nxt)]
-        elif cur == best and best > 0:
-            if stretches and stretches[-1][1] == x:
-                stretches[-1] = (stretches[-1][0], nxt)
-            else:
-                stretches.append((x, nxt))
-    return best, stretches
+        if cur > best or (cur == best and stretch is not None and nxt - x > stretch[1] - stretch[0]):
+            best, stretch = cur, (x, nxt)
+    return best, None if stretch is None else (stretch[0] + stretch[1]) / 2, stretch
 
 
-def reading(windows, fractions: bool = True) -> dict:
-    """The whole or half minute most windows hold (NEAREST + k; a half UP + floor or DOWN + ceil; 9.4), with an E7
-    fraction where the best stretch wins more than 2 % of the days."""
-    best, stretches = cover(windows)
-    lo = math.floor(min(a for a, _ in windows)) - 1
-    hi = math.ceil(max(b for _, b in windows)) + 1
-    cands = [k / 2 for k in range(2 * lo, 2 * hi + 1)]
-    counts = {c: sum(a <= c < b for a, b in windows) for c in cands}
-    mid = (stretches[0][0] + stretches[0][1]) / 2
-    c = max(cands, key=lambda c: (counts[c], -abs(c - mid)))
-    if c == int(c):
-        rounding, offset = "NEAREST", int(c)
-    else:
-        rounding, offset = min((("UP", math.floor(c)), ("DOWN", math.ceil(c))), key=lambda r: (abs(r[1]), r[0] != "DOWN"))
-    out = {"value": c, "plain": counts[c], "count": counts[c], "best": best, "stretch": stretches[0], "n": len(windows),
-           "rounding": rounding, "offset": offset, "fraction": 0.0}
-    if fractions and best - counts[c] > max(2, FRACTION_GAIN * len(windows)):
-        k = round(mid)
-        out.update(rounding="NEAREST", offset=k, fraction=round(mid - k, 3), count=best)
-    return out
-
-
-def describe(r: dict) -> str:
-    fraction = f" E7 {r['fraction']:+.3f}" if r["fraction"] else ""
-    return (f"{r['rounding']} {r['offset']:+d}{fraction}: {r['count']} of {r['n']} "
-            f"(best {r['best']} at {r['stretch'][0]:+.3f}..{r['stretch'][1]:+.3f})")
+def middle_of_best(scan: list[tuple[float, int]]) -> tuple[float, int, float, float]:
+    """The middle of the longest run of the best count in an evenly stepped scan: (value, count, run start, run end)."""
+    top = max(n for _, n in scan)
+    runs, cur = [], []
+    for v, n in scan:
+        if n == top:
+            cur.append(v)
+        elif cur:
+            runs.append(cur)
+            cur = []
+    if cur:
+        runs.append(cur)
+    run = max(runs, key=len)
+    return run[len(run) // 2], top, run[0], run[-1]
 
 
 # ------------------------------------------------------------------------------------------------------------
-# Stages
+# The fit of one table
 
-def windows_of(e, tables, model, mode, apparent=False, maghrib_by_table=None):
-    """Shift windows (NEAREST terms) of [e] over the tables, each at its town point; Maghrib net of its table's
-    Ramadan offset when [maghrib_by_table] gives one."""
+def shown(day: datetime.date, year: int, layout: str) -> datetime.date:
+    return ref.table_date(day, year, layout)
+
+
+def lng_windows(cases, lat: float, lng0: float):
+    """Per published minute of the five times, the longitudes at [lat] that give it (u falls 4 min per degree east)."""
     out = []
-    for name, (lat, lng), rows in tables:
-        extra = (maghrib_by_table or {}).get(name, 0) if e == "MAGHRIB" else 0
-        for day, t in rows:
-            u = base_minute(e, day, t, lat, lng, model, mode, apparent) + extra
-            out.append((t[e] - 0.5 - u, t[e] + 0.5 - u))
+    for day, t in cases:
+        for e in ("FAJR", "SUNRISE", "DHUHR", "MAGHRIB", "ISHA"):
+            u0 = unrounded(e, day, lat, lng0)
+            out.append((lng0 + (u0 - (t[e] + 0.5)) / 4, lng0 + (u0 - (t[e] - 0.5)) / 4))
     return out
 
 
-def fit(tables, say=print, report=True) -> dict:
-    """Stages 1-4 on [tables]: [(zone id, point, rows)]."""
-    if report:
-        for model in ("MEEUS", "VSOP87"):
-            res = {m: cover(windows_of("DHUHR", tables, model, m))[0] for m in MODES}
-            say(f"  stage 1, Dhuhr windows {model}: " + ", ".join(f"{m} {c}" for m, c in res.items()))
-    model = "MEEUS"
-    # Maghrib's offset per Ramadan (E9): each table's own reading at the event instant.
-    maghrib = {}
-    for name, point, rows in tables:
-        r = reading(windows_of("MAGHRIB", [(name, point, rows)], model, "EVENT_INSTANT"), fractions=False)
-        maghrib[name] = (r["value"] - 0.5) if r["rounding"] == "UP" else r["value"]
-    say("  stage 2, Maghrib per table at the event instant: " + ", ".join(
-        f"{n} +{maghrib[n]:g}" for n in maghrib) + " (with the rounding below)")
-    maghrib_net = {n: (math.floor(v)) for n, v in maghrib.items()}      # the whole minutes, read again jointly below
-    chosen, readings, apparent = {}, {}, False
-    for e in ("FAJR", "ISHA", "ASR", "SUNRISE", "DHUHR", "MAGHRIB"):
-        options = []
-        for mode in MODES:
-            for ap in ((False, True) if e == "ASR" else (False,)):
-                r = reading(windows_of(e, tables, model, mode, ap, maghrib_net), fractions=False)
-                options.append((r["plain"], mode, ap, r))
-        # The default (the event instant, the geometric sun) unless another option wins by more than 2 % of the days
-        # (and 2 days); among those, the most minutes, then the geometric sun, then an evaluation already used.
-        n_days = sum(len(rows) for _, _, rows in tables)
-        default = next(o for o in options if o[1] == "EVENT_INSTANT" and not o[2])
-        better = [o for o in options if o[0] - default[0] > max(2, FRACTION_GAIN * n_days)]
-        used = set(chosen.values())
-        mode_pick = default if not better else min(
-            better, key=lambda o: (-o[0], o[2], o[1] not in used, MODES.index(o[1])))
-        _, mode, ap, _ = mode_pick
-        chosen[e] = mode
-        if e == "ASR":
-            apparent = ap
-        readings[e] = reading(windows_of(e, tables, model, mode, ap, maghrib_net))
-        say(f"  stage 2, {e.lower()}: " + ", ".join(f"{o[1]}{' apparent' if o[2] else ''} {o[0]}" for o in options)
-            + f" -> {mode}{' apparent' if ap else ''}, " + describe(readings[e]))
-    # Stage 3: the angle windows under the chosen evaluation and rounding.
-    for e in ("FAJR", "ISHA"):
-        shift = readings[e]["value"] + readings[e]["fraction"]
-        wins = []
-        for name, (lat, lng), rows in tables:
-            for day, t in rows:
-                decl, eot, _ = sun(day, model, chosen[e], t[e])
-                noon = 720 + TZ_MIN - eot - 4 * lng
-                a = [-altitude_at(lat, decl, (m - shift - noon) / 4) for m in (t[e] - 0.5, t[e] + 0.5)]
-                wins.append((min(a), max(a)))
-        best, stretches = cover(wins)
-        at = sum(lo <= ANGLES[e] < hi for lo, hi in wins)
-        say(f"  stage 3, {e.lower()} angle windows: {best} of {len(wins)} at {stretches[0][0]:.4f}-{stretches[0][1]:.4f}; "
-            f"{at} at {ANGLES[e]}")
-    maghrib_offsets = {n: readings["MAGHRIB"]["offset"] + maghrib_net[n] for n in maghrib_net}
-    return {"model": model, "modes": chosen, "apparent": apparent, "readings": readings, "maghrib": maghrib_offsets}
+def point_fit(cases, lat_lo: float, lat_hi: float, step: float, lng0: float = 38.0):
+    """Latitude scanned from lat_lo to lat_hi, the longitude by windows at each; the best count's middle latitude."""
+    scan = []
+    n_steps = int(round((lat_hi - lat_lo) / step))
+    for k in range(n_steps + 1):
+        lat = round(lat_lo + k * step, 6)
+        n, lng, _ = cover(lng_windows(cases, lat, lng0))
+        scan.append((lat, n, lng))
+    lat, top, a, b = middle_of_best([(lat, n) for lat, n, _ in scan])
+    lng = next(g for x, n, g in scan if x == lat)
+    return top, lat, lng, (a, b)
 
 
-def round_minute(u: float, mode: str) -> int:
-    if mode == "DOWN":
-        return math.floor(u + 1e-3 / 60)
-    if mode == "UP":
-        return math.ceil(u - 1e-3 / 60)
-    return math.floor(u + 0.5)
+def fit_point(cases, lat_hint: float | None = None):
+    """Coarse, fine and finest latitude scans (the longitude re-centred each time)."""
+    if lat_hint is None:
+        n, lat, lng, _ = point_fit(cases, 32.2, 37.4, 0.02)
+    else:
+        n, lat, lng, _ = point_fit(cases, lat_hint - 0.06, lat_hint + 0.06, 0.004)
+    n, lat, lng, _ = point_fit(cases, lat - 0.024, lat + 0.024, 0.001, lng)
+    n, lat, lng, run = point_fit(cases, lat - 0.0012, lat + 0.0012, 0.00005, lng)
+    n, _, lng, _ = point_fit(cases, lat, lat, 1.0, lng)                # the longitude at that latitude, re-centred
+    return n, lat, lng, run
 
 
-def bounds(m: int, mode: str) -> tuple[float, float]:
-    """The unrounded minutes [lo, hi) that a published minute allows under a rounding (E1)."""
-    return {"DOWN": (m, m + 1), "NEAREST": (m - 0.5, m + 0.5), "UP": (m - 1, m)}[mode]
+def fit_shadow(cases, lat: float, lng: float) -> tuple[float, int, float, float]:
+    """Asr's shadow hour 25 + 24 f, f by minutes over [0, 1.05): the middle of the longest best run."""
+    scan = []
+    for k in range(0, 1512):
+        hour = 25 + k / 60
+        scan.append((hour, sum(rounded(unrounded("ASR", day, lat, lng, hour)) == t["ASR"] for day, t in cases)))
+    return middle_of_best(scan)
 
 
-def shift_of(p: dict, e: str, day: datetime.date) -> float:
-    """[e]'s minutes under the profile (its offset, E7 fraction and, for Maghrib, the E9 revision of [day])."""
-    r = p["readings"][e]
-    extra = (p["maghrib"]["damascus"] if day >= REVISION else p["maghrib"]["raqqa"]) if e == "MAGHRIB" else 0
-    return r["offset"] + r["fraction"] + extra
+def fit_table(job):
+    """One table on the screen days of [months]: layout (given), year, point, shadow hour."""
+    key, rows, layouts, months = job
+    days = [i for i, d in enumerate(SCREEN_DAYS) if d.month in months]
+    # Year and layout by Dhuhr's windows (the longitude absorbs the constant), then the point for the best few.
+    ranked = []
+    for layout in layouts:
+        for year in YEARS:
+            wins = []
+            for i in days:
+                u = unrounded("DHUHR", shown(SCREEN_DAYS[i], year, layout), 34.8, 38.0)
+                wins.append((38.0 + (u - (rows[i]["DHUHR"] + 0.5)) / 4, 38.0 + (u - (rows[i]["DHUHR"] - 0.5)) / 4))
+            ranked.append((cover(wins)[0], -abs(year - 2025), year, layout))
+    ranked.sort(reverse=True)
+    best, lat_hint = None, None
+    for n_dhuhr, _, year, layout in ranked[:4]:
+        cases = [(shown(SCREEN_DAYS[i], year, layout), rows[i]) for i in days]
+        n, lat, lng, run = fit_point(cases, lat_hint)
+        lat_hint = lat
+        cand = (n, -abs(year - 2025), year, layout, lat, lng, run, cases)
+        if best is None or cand[:2] > best[:2]:
+            best = cand
+    n, _, year, layout, lat, lng, run, cases = best
+    hour, n_asr, h0, h1 = fit_shadow(cases, lat, lng)
+    exact = {e: sum(rounded(unrounded(e, day, lat, lng, hour)) == t[e] for day, t in cases) for e in EVENTS}
+    return {"key": key, "months": months, "year": year, "layout": layout, "lat": round(lat, 5), "lng": round(lng, 5),
+            "latRun": run, "shadowHour": round(hour, 4), "shadowRun": (h0, h1), "exact": exact, "days": len(days),
+            "dhuhrTop": [(r[0], r[2], r[3]) for r in ranked[:6]]}
 
 
-def lng_windows(rows, lat, lng0, p, tol):
-    """Per published minute, the longitudes at [lat] that give it under the profile, widened by [tol] minutes."""
-    out = []
-    for day, t in rows:
-        for e in EVENTS:
-            u0 = base_minute(e, day, t, lat, lng0, p["model"], p["modes"][e], p["apparent"]) + shift_of(p, e, day)
-            lo, hi = bounds(t[e], p["readings"][e]["rounding"])
-            # u(lng) = u0 - 4 (lng - lng0) lies in [lo, hi)
-            out.append((lng0 + (u0 - hi - tol) / 4, lng0 + (u0 - lo + tol) / 4))
-    return out
+# ------------------------------------------------------------------------------------------------------------
+# Scoring through the reference engine
 
-
-def city_point(rows, town, p, tol) -> tuple[tuple[float, float], bool, int, int]:
-    """As the Libya fit does for cities with a few days: the town's latitude stays (a Ramadan hardly fixes one), and
-    its longitude too where it reproduces as many minutes as any longitude within 0.5 deg does, each minute within the
-    model's precision [tol]; otherwise the middle of the longitudes that do, nearest the town."""
-    lat, lng0 = town
-    wins = lng_windows(rows, lat, lng0, p, tol)
-    at_town = sum(a <= lng0 < b for a, b in wins)
-    top, stretches = cover([w for w in ((max(a, lng0 - 0.5), min(b, lng0 + 0.5)) for a, b in wins) if w[1] > w[0]])
-    if at_town >= top:
-        return town, False, top, at_town
-    a, b = min(stretches, key=lambda s: min(abs(s[0] - lng0), abs(s[1] - lng0)))
-    return (lat, round((a + b) / 2, 4)), True, top, at_town
-
-
-def precision(tables, p) -> float:
-    """The model's precision: the median distance by which the in-sample misses at the town points fall outside their
-    minute (the Libya fit's rule), so that a point is not moved for a second or two."""
-    out = []
-    for name, (lat, lng), rows in tables:
-        for day, t in rows:
-            for e in EVENTS:
-                u = base_minute(e, day, t, lat, lng, p["model"], p["modes"][e], p["apparent"]) + shift_of(p, e, day)
-                lo, hi = bounds(t[e], p["readings"][e]["rounding"])
-                if not lo <= u < hi:
-                    out.append(lo - u if u < lo else u - hi + 1e-9)
-    out.sort()
-    return round(out[(len(out) - 1) // 2], 3) if out else 0.0
-
-
-def method_of(p: dict, before: int, after: int) -> dict:
-    """The profile, Maghrib's offset [before] the E9 revision and [after] it (each read from its own Ramadan)."""
-    r = p["readings"]
-    offsets = {e: r[e]["offset"] for e in ("SUNRISE", "DHUHR", "ASR", "FAJR", "ISHA") if r[e]["offset"]}
-    rounding = {e: r[e]["rounding"] for e in EVENTS}
-    revisions = [] if before == after else [{"validFrom": REVISION.isoformat(), "change": {"offsets": {"MAGHRIB": after}}}]
-    if before:
-        offsets["MAGHRIB"] = before
-    modes = {e: m for e, m in p["modes"].items() if m != "EVENT_INSTANT"}
-    return common.method_json(
-        id=AUTHORITY, fajr={"type": "angle", "degrees": ANGLES["FAJR"]}, isha={"type": "angle", "degrees": ANGLES["ISHA"]},
-        offsets=offsets, rounding=rounding, sunModel=p["model"], sunEvaluation=modes,
-        asrSun="APPARENT" if p["apparent"] else "GEOMETRIC", revisions=revisions,
-        highLatitude={"type": "angle_based"}, evidence={"kind": "FROM_TABLES", "source": "fit"})
-
-
-def zone_of(zid: str, town: tuple[float, float], p: dict, computing: tuple[float, float] | None = None) -> dict:
-    """The zone: its town as `point` (mapping), a fitted computing point as the E6 morning and evening points."""
-    fractions = {e: p["readings"][e]["fraction"] for e in p["readings"] if p["readings"][e]["fraction"]}
-    z = common.zone_json(zid, town[0], town[1], nameAr=ZONES[zid][0], offsets=fractions)
-    if computing is not None and common.point(*computing) != z["point"]:
-        z["morningPoint"] = z["eveningPoint"] = common.point(*computing)
+def zone_of(zid: str, name: str, town: tuple[float, float], p: dict) -> dict:
+    z = common.zone_json(zid, town[0], town[1], nameAr=name, referenceYear=p["year"], tableRows=p["layout"],
+                         asrShadowHourUt=p["shadowHour"])
+    computing = common.point(p["lat"], p["lng"])
+    if computing != z["point"]:
+        z["morningPoint"] = z["eveningPoint"] = computing
     z.pop("authority", None)
     return z
 
 
-def table_minutes(method: dict, zone: dict, day: datetime.date) -> dict[str, int]:
+def score_job(job):
+    """The reference's minutes of a zone on the given screen days against its table: (key, [(day, event, got, want)])."""
+    key, zone, rows, day_indexes = job
     lat, lng = zone["point"]["latE5"] / 1e5, zone["point"]["lngE5"] / 1e5
-    got = common.compute(common.case(method, lat, lng, TZ, day, zone=zone, country="SY"))
-    off = common.utc_offset(TZ, day)
-    return {e: (got[e][1] + off) // 60 % 1440 for e in EVENTS}
-
-
-def score_into(score: common.Score, method: dict, zone: dict, rows) -> None:
-    for day, t in rows:
-        got = table_minutes(method, zone, day)
+    out = []
+    for i in day_indexes:
+        day = SCREEN_DAYS[i]
+        got = common.compute(common.case(METHOD, lat, lng, TZ, day, zone=zone, country="SY"))
         for e in EVENTS:
-            score.add(e, day, got[e], t[e])
+            out.append((i, e, (got[e][1] + TZ_MIN * 60) // 60 % 1440, rows[i][e]))
+    return key, out
+
+
+def score_of(results) -> common.Score:
+    s = common.Score()
+    for i, e, got, want in results:
+        s.add(e, SCREEN_DAYS[i], got, want)
+    return s
 
 
 def merge(scores) -> common.Score:
@@ -407,30 +408,18 @@ def merge(scores) -> common.Score:
     return out
 
 
-def shares(score: common.Score) -> str:
-    return " ".join(f"{e[:3]} {score.exact[e]}/{score.total[e]}" for e in EVENTS)
-
-
 def pct(score: common.Score) -> str:
-    return " ".join(f"{e[:3]} {100 * score.exact[e] / score.total[e]:.1f}%/{100 * score.within1[e] / score.total[e]:.1f}%"
+    return " ".join(f"{e[:3]} {100 * score.exact[e] / score.total[e]:.2f}%/{100 * score.within1[e] / score.total[e]:.1f}%"
                     for e in EVENTS if score.total[e])
 
 
-def quirks_of(rows, point, p) -> list[datetime.date]:
-    """Rows whose times match the previous date's computed times better than their own (four events away from noon)."""
-    lat, lng = point
-    out = []
-    for day, t in rows:
-        def err(d):
-            total = 0.0
-            for e in ("FAJR", "SUNRISE", "MAGHRIB", "ISHA"):
-                u = base_minute(e, d, t, lat, lng, p["model"], p["modes"][e])
-                total += abs(u + p["readings"][e]["value"] + (2 if e == "MAGHRIB" and d >= REVISION else 0) - t[e])
-            return total
-        if err(day - datetime.timedelta(days=1)) < err(day) - QUIRK_GAIN:
-            out.append(day)
-    return out
+def passes(score: common.Score) -> bool:
+    return all(score.exact[e] >= 0.97 * score.total[e] and score.within1[e] == score.total[e]
+               and min(score.months[e]) >= 7 for e in EVENTS)
 
+
+# ------------------------------------------------------------------------------------------------------------
+# Names and towns
 
 def km(lat1, lng1, lat2, lng2) -> float:
     a = (math.sin((lat2 - lat1) * D2R / 2) ** 2
@@ -438,168 +427,287 @@ def km(lat1, lng1, lat2, lng2) -> float:
     return 2 * 6371.0 * math.asin(math.sqrt(a))
 
 
-def guard_check(method: dict, zones: dict, year: int = 2026, say=print) -> None:
-    """The guard of 6.5 at each place: the nearest table's leads over the method at the place's own point (unrounded),
-    against the table's own margin at its zone point, plus 4 minutes."""
-    days = [datetime.date(year, 1, 1) + datetime.timedelta(days=i) for i in range(365)]
+def arabic_key(text: str) -> str:
+    """Arabic folded for matching a screen's town with the catalogue: hamzas, alif maqsura, ta marbuta, «ال», spaces."""
+    t = text.strip()
+    for a, b in (("أ", "ا"), ("إ", "ا"), ("آ", "ا"), ("ى", "ي"), ("ة", "ه"), ("ـ", "")):
+        t = t.replace(a, b)
+    words = [w[2:] if w.startswith("ال") and len(w) > 3 else w for w in t.split()]
+    return "".join(words)
 
-    def run(lat, lng, z=None):
-        return [common.compute(common.case(method, lat, lng, TZ, d, zone=z, country="SY")) for d in days]
 
-    def leads(r_days, t_days):
+def assign_towns(zones_in: dict, computing: dict, screens, catalogue: list[dict], live: dict[int, tuple[str, str]] | None = None) -> dict:
+    """Each zone's towns and mapping (6.5, 8.8): a sampled screen's town (else its address) is the catalogue place of
+    that Arabic name nearest the zone's computing point, within SCREEN_KM; a place goes to the zone with the most
+    screens there. A zone takes its main town (most screens) as `point` and name, and all its towns as named places.
+    A zone without matched screens keeps its computing point, named after the nearest catalogue place no other zone
+    holds; one without any sampled screen that lies within SHADOW_KM of another zone's town is left to manual picks
+    (tier 1), since that town's screens show the other table. [live]: the live towns' catalogue ids, each with its live
+    zone's id and name, which no table zone holds."""
+    live = live or {}
+    by_key = defaultdict(list)
+    for c in catalogue:
+        for k in c["keys"]:
+            by_key[k].append(c)
+    rows = {c["id"]: c for c in catalogue}
+    zone_of_region = {rid: zid for zid, (rids, _) in zones_in.items() for rid in rids}
+    counts: dict[int, Counter] = defaultdict(Counter)
+    spelled: dict[int, Counter] = defaultdict(Counter)      # the screens' own Arabic spelling of each matched place
+    sampled, matched = Counter(), Counter()
+    for rid, town, address in screens:
+        zid = zone_of_region.get(rid)
+        if zid is None:
+            continue
+        sampled[zid] += 1
+        lat, lng = computing[zid]
+        for text in (town, address):
+            hits = [c for c in by_key.get(arabic_key(text), []) if km(lat, lng, c["lat"], c["lng"]) <= SCREEN_KM]
+            if hits:
+                c = min(hits, key=lambda c: km(lat, lng, c["lat"], c["lng"]))
+                if c["id"] not in live:
+                    counts[c["id"]][zid] += 1
+                    spelled[c["id"]][text.strip()] += 1
+                    matched[zid] += 1
+                break
+
+    def arabic_name(c: dict) -> str | None:
+        """A place's Arabic name: the screens' own spelling, else the catalogue's where it is Arabic."""
+        if spelled[c["id"]]:
+            return spelled[c["id"]].most_common(1)[0][0]
+        return c["arabic"] if re_arabic(c["arabic"]) else None
+    towns: dict[str, Counter] = defaultdict(Counter)
+    for cid, by_zone in counts.items():
+        top = max(by_zone.values())
+        c = rows[cid]
+        zid = min((z for z, n in by_zone.items() if n == top), key=lambda z: km(*computing[z], c["lat"], c["lng"]))
+        towns[zid][cid] = by_zone[zid]
+    held = {cid: zid for zid, t in towns.items() for cid in t}
+
+    def nearest_to(zid):
+        lat, lng = computing[zid]
+        return sorted(((km(lat, lng, c["lat"], c["lng"]), c) for c in catalogue), key=lambda x: x[0])
+
+    # Main towns: the computing point's own town (within NAMED_KM, held by no other zone) where the screens hold it or
+    # name no town of their own often (under MAIN_SHARE of the sampled screens); else the screens' first town.
+    # Zones claim their main towns in order of their sampled screens, so that no town is two zones' main town.
+    mains: dict[str, dict] = {}
+    claimed: set[int] = set(live)
+    for zid in sorted(zones_in, key=lambda z: (-sampled[z], int(z[1:]))):
+        d0, c0 = nearest_to(zid)[0]
+        own = c0 if d0 <= NAMED_KM and held.get(c0["id"], zid) == zid and c0["id"] not in claimed else None
+        ranked = sorted(towns[zid].items(), key=lambda kv: (-kv[1], -rows[kv[0]]["population"]))
+        if own is not None and (own["id"] in towns[zid] or not ranked or ranked[0][1] < MAIN_SHARE * sampled[zid]):
+            mains[zid] = own
+        elif ranked:
+            mains[zid] = rows[ranked[0][0]]
+        if zid in mains:
+            claimed.add(mains[zid]["id"])
+    main_ids = {c["id"]: zid for zid, c in mains.items()} | {cid: z for cid, (z, _) in live.items()}
+    out, used_names = {}, {name for _, name in live.values()}
+    for zid in sorted(zones_in, key=lambda z: (z not in mains, int(z[1:]))):
+        lat, lng = computing[zid]
+        ranked = sorted(towns[zid].items(), key=lambda kv: (-kv[1], -rows[kv[0]]["population"]))
+        screens_note = (", ".join(f"{arabic_name(rows[cid]) or rows[cid]['name']} {n}" for cid, n in ranked)
+                        or "no town matched") + f" of {sampled[zid]} sampled screens"
+        near = [(d, c) for d, c in nearest_to(zid) if arabic_name(c)]
+        if zid in mains:
+            main = mains[zid]
+            name = arabic_name(main) or arabic_name(near[0][1])
+            named = [main] + [rows[cid] for cid, _ in ranked if cid != main["id"]]
+            point, how = (main["lat"], main["lng"]), f"town {name}; {screens_note}"
+        else:
+            # No main town: the computing point, named after its nearest place; a table without sampled screens at
+            # another zone's main town, or at another table's computing point, is left to manual picks.
+            d0, nearest = near[0]
+            twin = next((z for z in out if km(lat, lng, *computing[z]) < 0.1), None)
+            shadowed = sampled[zid] == 0 and ((nearest["id"] in main_ids and d0 <= SHADOW_KM) or twin is not None)
+            free = d0 <= NAMED_KM and not shadowed and nearest["id"] not in held and nearest["id"] not in main_ids
+            name, named, point = arabic_name(nearest), ([nearest] if free else []), (lat, lng)
+            how = f"computing point, {d0:.1f} km from {name}; {screens_note}"
+            if shadowed:
+                how += f"; manual pick only ({'computed at ' + twin + chr(39) + 's point' if twin else main_ids[nearest['id']] + chr(39) + 's town'})"
+        if name in used_names:
+            name = f"{name} ({zid[1:]})"
+        used_names.add(name)
+        out[zid] = {"point": point, "name": name, "named": named, "tier": 1 if zid not in mains and shadowed else 0, "how": how}
+    return {zid: out[zid] for zid in zones_in}
+
+
+# ------------------------------------------------------------------------------------------------------------
+# The validity guard (side check)
+
+# Places of 8.8's guard list and the live screens' towns, at approximate town points (GeoNames, not verified).
+GUARD_PLACES = (("Tabqa", 35.8361, 38.5481), ("Zabadani", 33.7250, 36.0972), ("Khan Shaykhun", 35.4417, 36.6500),
+                ("Al-Tanf", 33.4975, 38.6733), ("Ras al-Ayn", 36.8503, 40.0706), ("Sukhnah", 34.8964, 38.8706),
+                ("Tell Abyad", 36.6975, 38.9567), ("Palmyra", 34.5603, 38.2672), ("Malikiyah", 37.1806, 42.1394),
+                ("Qamishli", 37.0522, 41.2311), ("Nabek", 34.0233, 36.7281), ("Deir ez-Zor", 35.3359, 40.1408),
+                ("Mayadin", 35.0207, 40.4518), ("Abu Kamal", 34.4536, 40.9367), ("Quneitra", 33.1260, 35.8243))
+
+
+def mapped(lat: float, lng: float, zones: list[dict]) -> dict:
+    """The zone NEAREST with namedFirst gives a place that is no catalogue pick: the nearest named centre or point, in
+    the lowest tier (ZoneMapping.nearestWithRules)."""
+    tier = min(z.get("mappingTier", 0) for z in zones)
+
+    def distance(z):
+        centres = [n["centre"] for n in z.get("namedPlaces", [])] + [z["point"]]
+        return min(km(lat, lng, c["latE5"] / 1e5, c["lngE5"] / 1e5) for c in centres)
+    return min((z for z in zones if z.get("mappingTier", 0) == tier), key=distance)
+
+
+def guard_job(job):
+    """A place's verdict (6.5): the zone table's leads over the method at the place's own point (unrounded, a sunrise
+    late counting as a lead), beyond the table's own margin at its zone point, in minutes per time, over 2026."""
+    name, lat, lng, zone = job
+    days = [datetime.date(2026, 1, 1) + datetime.timedelta(days=i) for i in range(365)]
+    zlat, zlng = zone["point"]["latE5"] / 1e5, zone["point"]["lngE5"] / 1e5
+
+    def run(a, b, z=None):
+        return [common.compute(common.case(METHOD, a, b, TZ, d, zone=z, country="SY")) for d in days]
+
+    def leads(own, table):
         out = {e: [] for e in EVENTS}
-        for r, t in zip(r_days, t_days):
+        for r, t in zip(own, table):
             for e in EVENTS:
                 lead = (r[e][0] - t[e][1]) / 60
                 out[e].append(-lead if e == "SUNRISE" else lead)
         return out
-    cache = {}
-    for name, lat, lng, expect in GUARD_PLACES:
-        zid = min(zones, key=lambda z: km(lat, lng, *zones[z]["pt"]))
-        if zid not in cache:
-            z = zones[zid]
-            t_days = run(*z["pt"], z["zone"])
-            cache[zid] = (t_days, {e: max(v) for e, v in leads(run(*z["pt"]), t_days).items()})
-        t_days, margin = cache[zid]
-        excess = {e: max(v) - margin[e] for e, v in leads(run(lat, lng), t_days).items()}
-        worst = max(excess, key=excess.get)
-        keeps = excess[worst] <= 4
-        verdict = "keeps the table" if keeps else "its own point"
-        note = "" if expect is None or keeps == expect else "  (the plan expects the other verdict)"
-        say("  %-13s -> %-14s %4.0f km: worst %s %+.1f min beyond the margin: %s%s%s" % (
-            name, zid, km(lat, lng, *zones[zid]["pt"]), worst.lower(), excess[worst], verdict,
-            " (near the threshold in the plan)" if expect is None else "", note))
+    table = run(zlat, zlng, zone)
+    margin = {e: max(v) for e, v in leads(run(zlat, zlng), table).items()}
+    excess = {e: max(v) - margin[e] for e, v in leads(run(lat, lng), table).items()}
+    worst = max(excess, key=excess.get)
+    return name, zone["id"], zone["nameAr"], km(lat, lng, zlat, zlng), worst, excess[worst]
 
 
 # ------------------------------------------------------------------------------------------------------------
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--workers", type=int, default=max(1, min(12, (os.cpu_count() or 2) - 2)))
+    ap.add_argument("--screens", default=str(MOSQUES), help="the sampled screens (default: the research folder's)")
     ap.add_argument("--no-guard", action="store_true", help="skip the validity-guard side check")
     args = ap.parse_args(argv)
     sys.stdout.reconfigure(encoding="utf-8")
 
-    points, city_rows = load_cities()
-    for zid, (_, pt) in ZONES.items():
-        if pt is not None:
-            points[zid] = pt
-    damascus = load_rows(SY / "dam.txt", datetime.date(2026, 2, 19))
-    raqqa = load_rows(SY / "raq1446.txt", datetime.date(2025, 3, 1))
-    others = {zid: rows for zid, rows in city_rows.items() if zid != "damascus"}
-    print(f"Damascus 1447: {len(damascus)} rows; Raqqa 1446: {len(raqqa)} rows; {len(others)} more 1447 tables, 2 days each")
+    tables = load_tables()
+    beirut = load_table(BEIRUT) if BEIRUT.exists() else None
+    same = beirut is not None and tables.get(BEIRUT_ID) == beirut
+    print(f"{len(tables)} region tables; region {BEIRUT_ID} "
+          + ("is the Beirut table of tv.masjidi.app on all 366 rows: left out" if same else "left out (Beirut's, by the earlier check)"))
+    tables.pop(BEIRUT_ID, None)
+    groups: dict[tuple, list[int]] = defaultdict(list)
+    for rid, rows in sorted(tables.items()):
+        groups[tuple(tuple(r[e] for e in EVENTS) for r in rows)].append(rid)
+    zones_in = {f"r{rids[0]}": (rids, tables[rids[0]]) for rids in groups.values()}
+    print(f"{len(zones_in)} distinct tables: " + ", ".join("/".join(map(str, r)) for r, _ in zones_in.values() if len(r) > 1)
+          + " are identical")
 
-    # First pass on both Ramadan tables, to find the repeated rows; then the fit without them.
-    first = fit([("damascus", points["damascus"], damascus), ("raqqa", points["raqqa"], raqqa)], say=lambda s: None, report=False)
-    q_dam = quirks_of(damascus, points["damascus"], first)
-    q_raq = quirks_of(raqqa, points["raqqa"], first)
-    print("  quirk rows (they match the previous date): " + ", ".join(str(d) for d in q_dam + q_raq))
-    dam = [(d, t) for d, t in damascus if d not in q_dam]
-    raq = [(d, t) for d, t in raqqa if d not in q_raq]
+    jobs = []
+    for zid, (rids, rows) in zones_in.items():
+        layouts = file_layouts(rows)
+        for name, months in FOLDS:
+            jobs.append(((zid, name), rows, layouts, months))
+        jobs.append(((zid, "all"), rows, layouts, tuple(range(1, 13))))
+    with Pool(args.workers) as pool:
+        fitted = {r["key"]: r for r in pool.map(fit_table, jobs, chunksize=1)}
 
-    print("Damascus 1447 and Raqqa 1446:")
-    p = fit([("damascus", points["damascus"], dam), ("raqqa", points["raqqa"], raq)])
-    method = method_of(p, p["maghrib"]["raqqa"], p["maghrib"]["damascus"])      # 1446 before the revision, 1447 after
-    print("Damascus 1447 alone (to score Raqqa 1446):")
-    p_dam = fit([("damascus", points["damascus"], dam)], report=False)
-    print("Raqqa 1446 alone (to score Damascus 1447):")
-    p_raq = fit([("raqqa", points["raqqa"], raq)], report=False)
+    # The towns from the sampled screens (the layout is the file's: where a fold's differs, the whole year's is scored).
+    screens = load_screens(Path(args.screens))
+    catalogue = load_catalogue()
+    computing = {zid: (fitted[(zid, "all")]["lat"], fitted[(zid, "all")]["lng"]) for zid in zones_in}
+    # The live towns: a zone each from the API's answer for the town (fetched once into LIVE; a town without it is left out).
+    lives = []
+    for town, n_live, n_table, name in live_towns(load_screens(Path(args.screens), live=True), screens, catalogue):
+        path = LIVE / f"{town['id']}.json"
+        if not path.exists():
+            print(f"  live town {name}: no API answer in {LIVE.name}, left out")
+            continue
+        zone, rows, method_name = live_zone(town, name, json.loads(path.read_text(encoding="utf-8")))
+        zone["namedPlaces"] = [{"centre": zone["point"], "catalogueIds": [], "areaKm": 0.0}]
+        lives.append((zone, rows, method_name, n_live, n_table))
+    towns = assign_towns(zones_in, computing, screens, catalogue, live={int(z["id"][4:]): (z["id"], z["nameAr"]) for z, *_ in lives})
+    print(f"{len(screens)} sampled screens on region tables ({MOSQUES.name if Path(args.screens) == MOSQUES else args.screens}); "
+          f"{len(lives)} live towns")
 
-    # Each fold keeps both Ramadans' Maghrib offsets (E9): only its own table gives a Ramadan's offset.
-    p_dam = dict(p_dam, maghrib={"raqqa": p["maghrib"]["raqqa"], "damascus": p_dam["maghrib"]["damascus"]})
-    p_raq = dict(p_raq, maghrib={"raqqa": p_raq["maghrib"]["raqqa"], "damascus": p["maghrib"]["damascus"]})
-    m_dam = method_of(p_dam, p_dam["maghrib"]["raqqa"], p_dam["maghrib"]["damascus"])
-    m_raq = method_of(p_raq, p_raq["maghrib"]["raqqa"], p_raq["maghrib"]["damascus"])
-    data = {"damascus": dam, "raqqa": raq, **others}
-    tol = precision([("damascus", points["damascus"], dam), ("raqqa", points["raqqa"], raq)], p)
-    print(f"  the model's precision (median distance of the in-sample misses beyond their minute): {tol} min")
+    # Held out: each fold's values scored on the other months; in-sample: the shipped values on every day.
+    score_jobs = []
+    for zid, (rids, rows) in zones_in.items():
+        t = towns[zid]
+        for name, months in FOLDS:
+            p = dict(fitted[(zid, name)], layout=fitted[(zid, "all")]["layout"])
+            held = [i for i, d in enumerate(SCREEN_DAYS) if d.month not in months]
+            score_jobs.append(((zid, name), zone_of(zid, t["name"], t["point"], p), rows, held))
+        p = fitted[(zid, "all")]
+        score_jobs.append(((zid, "all"), zone_of(zid, t["name"], t["point"], p), rows, list(range(366))))
+    for zone, rows, *_ in lives:                       # nothing is fitted on a live town: its whole answer is held out
+        score_jobs.append(((zone["id"], "all"), zone, rows, list(range(366))))
+    with Pool(args.workers) as pool:
+        scored = dict(pool.map(score_job, score_jobs, chunksize=1))
 
-    # Computing points (the shipped asset): each table's own days.
-    computing = {}
-    for zid, rows in data.items():
-        pt, moved, top, at_town = city_point(rows, points[zid], p, tol)
-        computing[zid] = pt
-        if moved:
-            print(f"  {zid}: computing point {pt[0]:.4f} N {pt[1]:.4f} E, {km(*points[zid], *pt):.1f} km from the town "
-                  f"({top} of {6 * len(rows)} minutes there, {at_town} at the town)")
-
-    # Held out: each table's days with a profile fitted without its own table (Damascus by Raqqa's, Raqqa by
-    # Damascus's, the nine by both) and a computing point fitted on its other days (odd and even days; day 1 and day 29).
-    def day_split(zid, prof, meth):
-        rows = data[zid]
-        halves = [rows[0::2], rows[1::2]]
-        s = common.Score()
-        for k in (0, 1):
-            pt = city_point(halves[1 - k], points[zid], prof, tol)[0]
-            score_into(s, meth, zone_of(zid, points[zid], prof, pt), halves[k])
-        return s
-    held = {"damascus": day_split("damascus", p_raq, m_raq), "raqqa": day_split("raqqa", p_dam, m_dam)}
-    for zid in others:
-        held[zid] = day_split(zid, p, method)
-    quirk_score = common.Score()
-    score_into(quirk_score, method, zone_of("damascus", points["damascus"], p, computing["damascus"]),
-               [(d, t) for d, t in damascus if d in q_dam])
-    score_into(quirk_score, method, zone_of("raqqa", points["raqqa"], p, computing["raqqa"]), [(d, t) for d, t in raqqa if d in q_raq])
-    in_sample = {}
-    for zid, rows in data.items():
-        in_sample[zid] = common.Score()
-        score_into(in_sample[zid], method, zone_of(zid, points[zid], p, computing[zid]), rows)
-
-    # Zones, FitStats and the asset.
-    samples = {
-        "damascus": common.sample(SOURCES["damascus"], damascus[0][0], damascus[-1][0], len(damascus), 1),
-        "raqqa": common.sample(SOURCES["raqqa"], raqqa[0][0], raqqa[-1][0], len(raqqa), 1),
-    }
-    zones, guard_zones = [], {}
-    for zid in ZONES:
-        z = zone_of(zid, points[zid], p, computing.get(zid))
-        z["namedPlaces"] = [{"centre": z["point"], "catalogueIds": [], "areaKm": 0.0}]
-        if zid in held:
-            # The profile from the other tables, the computing point from the zone's own other days (day-split).
-            if zid in ("damascus", "raqqa"):
-                own, q = samples[zid], (len(q_dam) if zid == "damascus" else len(q_raq))
-                fitted_on = [samples["raqqa" if zid == "damascus" else "damascus"], dict(own, source=own["source"] + ", the point")]
-            else:
-                rows = others[zid]
-                own, q = common.sample(SOURCES["other"] + f": {zid}", rows[0][0], rows[-1][0], len(rows), 1), 0
-                fitted_on = [samples["damascus"], samples["raqqa"], dict(own, source=own["source"] + ", the point")]
-            held_out = [dict(own, source=own["source"] + ", day-split")]
-            z["fit"] = common.fit_stats(fitted_on, held_out, held[zid], ramadan_days=held[zid].total["FAJR"] + q, quirk_days=q)
+    zones, held_scores, in_scores, tier_a = [], [], [], 0
+    print("\nzone   regions          layout           year  computing point     shadow h  name (how)  | held out exact / within 1")
+    for zid, (rids, rows) in zones_in.items():
+        p = fitted[(zid, "all")]
+        t = towns[zid]
+        held = merge(score_of(scored[(zid, name)]) for name, _ in FOLDS)
+        inside = score_of(scored[(zid, "all")])
+        held_scores.append(held)
+        in_scores.append(inside)
+        z = zone_of(zid, t["name"], t["point"], p)
+        z["namedPlaces"] = [{"centre": common.point(c["lat"], c["lng"]), "catalogueIds": [], "areaKm": 0.0} for c in t["named"]]
+        if t["tier"]:
+            z["mappingTier"] = t["tier"]
+        ids = ", ".join(map(str, rids))
+        sample = common.sample(SOURCE.format(ids=ids), SCREEN_DAYS[0], SCREEN_DAYS[-1], 366, 1)
+        split = common.sample(SOURCE.format(ids=ids) + "; month split", SCREEN_DAYS[0], SCREEN_DAYS[-1], 366, 1, month_split=True)
+        z["fit"] = common.fit_stats([sample], [split], held)
         zones.append(z)
-        guard_zones[zid] = {"pt": points[zid], "zone": zone_of(zid, points[zid], p, computing.get(zid))}
-    all_held = merge(held.values())
-    other_days = sum(len(r) for r in others.values())
+        ok = passes(held)
+        tier_a += ok
+        folds = " ".join(f"{name}:{fitted[(zid, name)]['year']}" for name, _ in FOLDS)
+        print(f"{zid:<6} {'/'.join(map(str, rids)):<16} {p['layout']:<16} {p['year']}  {p['lat']:.5f} {p['lng']:.5f}  "
+              f"{p['shadowHour']:7.3f}  {t['name']} ({t['how']}) | {pct(held)}"
+              + ("" if ok else "  [not tier A]") + f"  folds {folds}"
+              + (f"  misses {held.misses[:6]}" if held.misses else ""))
+    all_held = merge(held_scores)
+    all_in = merge(in_scores)
+    print("\nLive towns (aladhan's API at the town; every day held out, Asr's fetch time unknown):")
+    live_scores = []
+    for zone, rows, method_name, n_live, n_table in lives:
+        score = score_of(scored[(zone["id"], "all")])
+        live_scores.append(score)
+        source = LIVE_SOURCE.format(name=zone["nameAr"], method=method_name)
+        zone["fit"] = common.fit_stats([], [common.sample(source, SCREEN_DAYS[0], SCREEN_DAYS[-1], 366, 1)], score)
+        zones.append(zone)
+        settings = ", ".join(f"{e.lower()} {v:+g}" for e, v in zone["offsets"].items())
+        angles = "".join(f", {k[:4]} {zone[k]:g}°" for k in ("fajrAngleDeg", "ishaAngleDeg") if zone.get(k) is not None)
+        print(f"  {zone['id']:<12} {zone['nameAr']} ({n_live} live screens, {n_table} on tables): {method_name}; {settings}{angles} | "
+              f"{pct(score)}" + ("" if passes(score) else "  [not tier A]"))
+    if lives:
+        print(f"  all live towns: {pct(merge(live_scores))}; worst {merge(live_scores).worst} min")
+    ids = sorted(rid for rids, _ in zones_in.values() for rid in rids)
+    # The profile's record is the region tables' (the live towns keep their own).
     profile_fit = common.fit_stats(
-        [samples["damascus"], samples["raqqa"]],
-        [dict(samples["damascus"], source=samples["damascus"]["source"] + ", values fitted on Raqqa 1446"),
-         dict(samples["raqqa"], source=samples["raqqa"]["source"] + ", values fitted on Damascus 1447"),
-         common.sample(SOURCES["other"] + ": the nine other tables", datetime.date(2026, 2, 19), datetime.date(2026, 3, 19),
-                       other_days, len(others))],
-        all_held, ramadan_days=sum(s.total["FAJR"] for s in held.values()) + len(q_dam) + len(q_raq),
-        quirk_days=len(q_dam) + len(q_raq))
-    profile_fit["maxDiffMin"] = max(all_held.worst, quirk_score.worst)
-    path = common.write_asset(AUTHORITY, AUTHORITY, "SY", "NEAREST", zones, fit=profile_fit, source=SOURCE_LINE)
-
-    r = p["readings"]
-    print("Profile: Fajr %g, Isha %g; %s; Asr on the %s sun; Maghrib +%d before %s, +%d from it; sun %s" % (
-        ANGLES["FAJR"], ANGLES["ISHA"], ", ".join(f"{e.lower()} {r[e]['rounding']} {r[e]['offset']:+d}"
-                                                  + (f" E7 {r[e]['fraction']:+.3f}" if r[e]["fraction"] else "")
-                                                  + f" ({p['modes'][e]})" for e in EVENTS),
-        "apparent" if p["apparent"] else "geometric", p["maghrib"]["raqqa"], REVISION, p["maghrib"]["damascus"], p["model"]))
-    print("Held out (FitStats; Damascus by Raqqa's values, Raqqa by Damascus's, nine tables by both): " + pct(all_held)
-          + f"; worst {all_held.worst} min")
-    for zid in ("damascus", "raqqa"):
-        print(f"  {zid}: " + shares(held[zid]))
-    print("  nine tables, days 1 and 29: " + shares(merge(held[z] for z in others)))
-    for zid in others:
-        s = held[zid]
-        bad = [m for m in s.misses]
-        print(f"    {zid}: {sum(s.exact.values())}/{sum(s.total.values())} exact" + (f", beyond 1 min: {bad}" if bad else ""))
-    print("In-sample (every table with the shipped values and points): " + shares(merge(in_sample.values())))
-    print("  Damascus 1447 and Raqqa 1446: " + shares(merge([in_sample["damascus"], in_sample["raqqa"]])))
-    print(f"Quirk rows with the shipped values: " + shares(quirk_score) + f"; worst {quirk_score.worst} min")
+        [common.sample(SOURCE.format(ids=f"{ids[0]}-{ids[-1]} ({len(ids)} regions)"), SCREEN_DAYS[0], SCREEN_DAYS[-1],
+                       366 * len(zones_in), len(zones_in))],
+        [common.sample(SOURCE.format(ids=f"{ids[0]}-{ids[-1]}") + "; month split", SCREEN_DAYS[0], SCREEN_DAYS[-1],
+                       366 * len(zones_in), len(zones_in), month_split=True)],
+        all_held)
+    path = common.write_asset(AUTHORITY, AUTHORITY, "SY", "NEAREST", zones, fit=profile_fit, source=SOURCE_LINE, named_first=True)
+    print(f"\nHeld out (month split, FitStats), {len(zones_in)} table zones: {pct(all_held)}; worst {all_held.worst} min; "
+          f"{tier_a} of {len(zones_in)} at tier A")
+    print(f"In-sample (the shipped values): {pct(all_in)}; worst {all_in.worst} min")
+    layouts = Counter(fitted[(z, 'all')]["layout"] for z in zones_in)
+    years = Counter(fitted[(z, 'all')]["year"] for z in zones_in)
+    print("Layouts: " + ", ".join(f"{k} {v}" for k, v in layouts.items()) + "; years: "
+          + ", ".join(f"{k} {v}" for k, v in sorted(years.items())))
     if not args.no_guard:
-        print("Validity guard, 2026 (side check):")
-        guard_check(method, guard_zones)
+        print("Validity guard, 2026 (side check; approximate town points; the guard acts beyond 4 min):")
+        with Pool(args.workers) as pool:
+            for name, zid, zname, d, worst, excess in pool.map(
+                    guard_job, [(n, a, b, mapped(a, b, zones)) for n, a, b in GUARD_PLACES], chunksize=1):
+                print(f"  {name:<14} -> {zid} «{zname}» {d:5.0f} km: worst {worst.lower()} {excess:+.1f} min beyond the margin: "
+                      + ("keeps the table" if excess <= 4 else "its own point"))
     print(f"Wrote {path.relative_to(common.ROOT)}")
     return 0
 

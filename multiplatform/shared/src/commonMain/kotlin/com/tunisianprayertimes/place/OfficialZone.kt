@@ -64,7 +64,43 @@ data class OfficialZone(
     val elevationShiftFloor: Double? = null,
     /** Jordan's Ghor tables: a place below sea level in the zone's governorate takes it first (8.8, step 1). */
     val belowSeaLevel: Boolean = false,
+    /** A8 at a zone: the year of the zone's own perpetual table, before the method's `referenceYear` (Syria's screens). */
+    val referenceYear: Int? = null,
+    /** A8: how the rows of the zone's table meet the calendar, with its [referenceYear]. */
+    val tableRows: TableRows = TableRows.CALENDAR,
+    /**
+     * E4 `PRAYTIMES`, aladhan's Asr: the noon shadow takes the declination at this hour after 0h UT of the date, 25 h plus
+     * the API server clock's time of day when the table was fetched (Syria's screens); null: the Asr sun's own.
+     */
+    val asrShadowHourUt: Double? = null,
+    /**
+     * S5 at a zone: the zone's own Fajr and Isha depression angles, replacing the method's where its rule is an angle
+     * (Syria's screens that run aladhan's API live, whose default for Syria is Jordan's 18°/18°).
+     */
+    val fajrAngleDeg: Double? = null,
+    val ishaAngleDeg: Double? = null,
 )
+
+/**
+ * A8: the date of a perpetual table's year that shows on a date (plan 6.2). The screens of Syria's ministry
+ * (tv.masjidak.mow.gov.sy) read row (the date's day in a leap year − 1) of a 366-row table.
+ */
+enum class TableRows {
+    /** The date's month and day in the table's year; 29 February in the first leap year from it. */
+    CALENDAR,
+
+    /** 366 rows of the table year's dates, read by leap-year day: 29 February repeats 28 February. */
+    LEAP_ROWS_FEB28,
+
+    /** 366 rows of the table year's dates, read by leap-year day: 29 February repeats 1 March. */
+    LEAP_ROWS_MAR1,
+
+    /**
+     * The table year's 365 days without 29 February, then 31 December again, read by leap-year day: from 1 March to
+     * 30 December a date shows the next day's row, 29 February shows 1 March.
+     */
+    COMMON_ROWS,
+}
 
 /** A place the authority itself names for a zone (plan 6.5). */
 data class NamedPlace(

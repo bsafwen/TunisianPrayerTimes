@@ -81,6 +81,33 @@ class OfficialZoneAssetsTest {
     }
 
     @Test
+    fun syriasPlacesTakeTheTablesTheirScreensShow() {
+        // fits/sy_awqaf: a zone is the town its sampled screens are in, whatever point its table was computed at.
+        val file = assetsFolder()?.resolve("sy_awqaf.json")?.takeIf { it.isFile } ?: return
+        val syria = OfficialZones.parse(file.readText())
+        val method = assertNotNull(PrayerMethods.byId(syria.methodId))
+        fun zoneAt(lat: Double, lng: Double, catalogueId: Long? = null): String? {
+            val point = LatLngE5.of(lat, lng)
+            val place = PrayerPlace.Coordinates(point.latE5, point.lngE5, null, "Asia/Damascus", ZoneSource.USER, "SY", catalogueId)
+            return ZoneMapping.attach(place, method, syria)?.id
+        }
+        // Region 783 is computed at Aleppo's point but shown in Jindires and Afrin; Aleppo's mosques show 804.
+        assertEquals("r783", zoneAt(36.39496, 36.6889))
+        assertEquals("r783", zoneAt(36.51194, 36.86954, catalogueId = 174186L))
+        assertEquals("r804", zoneAt(36.20124, 37.16117, catalogueId = 170063L))
+        // Region 809 is computed 60 km east of Salamiyah, whose mosques show it.
+        assertEquals("r809", zoneAt(35.01127, 37.05324))
+        // Damascus takes 764–767's table, even at the point region 761 (no sampled screen) was computed at.
+        assertEquals("r764", zoneAt(33.5102, 36.29128))
+        assertEquals("r764", zoneAt(33.50795, 36.28304))
+        // Live towns: Mayadin and Quneitra run aladhan's API, Khanasir too (its table, 786, is a manual pick).
+        assertEquals("live173480", zoneAt(35.01982, 40.45154))
+        assertEquals("live173334", zoneAt(33.12595, 35.82461))
+        assertEquals("live168351", zoneAt(35.78159, 37.49919))
+        assertEquals(1, syria.byId["r786"]?.mappingTier)
+    }
+
+    @Test
     fun theAssetFormatRoundTrips() {
         val zones = AuthorityZones(
             "om_mara", "om_mara", "OM", MappingKind.NEAREST, byAdmin1 = false, namedFirst = true, terrainClassKm = null, fit = null, source = "test",

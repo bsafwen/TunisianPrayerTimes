@@ -124,8 +124,11 @@ object ZoneMapping {
             if (province.isNotEmpty()) candidates = province
         }
         if (zones.namedFirst) {
-            // Not one of a zone's named places: the nearest town centre (Egypt) or zone point (Oman, Qatar).
-            return candidates.minByOrNull { z -> (z.namedPlaces.map { distance(place, it.centre) } + distance(place, z.point)).min() }
+            // Not one of a zone's named places: the nearest town centre (Egypt, Syria) or zone point (Oman, Qatar), in the
+            // lowest tier in reach (a Syrian table that no sampled screen shows, at another zone's town, is tier 1).
+            val tier = candidates.minOfOrNull { it.mappingTier } ?: return null
+            return candidates.filter { it.mappingTier == tier }
+                .minByOrNull { z -> (z.namedPlaces.map { distance(place, it.centre) } + distance(place, z.point)).min() }
         }
         zones.terrainClassKm?.let { km ->
             val rule = method.maghribTerrain ?: TerrainRule()

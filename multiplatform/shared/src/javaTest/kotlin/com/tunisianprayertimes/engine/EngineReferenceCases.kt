@@ -20,6 +20,7 @@ import com.tunisianprayertimes.method.TerrainRule
 import com.tunisianprayertimes.place.LatLngE5
 import com.tunisianprayertimes.place.OfficialZone
 import com.tunisianprayertimes.place.PrayerPlace
+import com.tunisianprayertimes.place.TableRows
 import com.tunisianprayertimes.place.ZoneOffsetRule
 import java.io.File
 import java.time.Duration
@@ -117,6 +118,10 @@ class EngineReferenceCases {
         val NOUAKCHOTT = place(18.0735, -15.9582, "Africa/Nouakchott", country = "MR")
         val BAGHDAD = place(33.3152, 44.3661, "Asia/Baghdad", country = "IQ")
         val DAMASCUS = place(33.5138, 36.2765, "Asia/Damascus", country = "SY")
+        val ALEPPO = place(36.2021, 37.1343, "Asia/Damascus", country = "SY")
+        val HASAKAH = place(36.5024, 40.7477, "Asia/Damascus", country = "SY")
+        val QADMUS = place(35.1018, 36.1611, "Asia/Damascus", country = "SY")
+        val MAYADIN = place(35.0207, 40.4518, "Asia/Damascus", country = "SY")
         val BERLIN = place(52.52, 13.405, "Europe/Berlin", country = "DE")
         val OSLO = place(59.9139, 10.7522, "Europe/Oslo", country = "NO")
         val AMSTERDAM = place(52.3676, 4.9041, "Europe/Amsterdam", country = "NL")
@@ -310,6 +315,15 @@ class EngineReferenceCases {
                 referenceYear = 2023,
             )
         }
+        // E4 PRAYTIMES: Syria's mosque screens, aladhan.com's PrayTimes (MWL, the ALMANAC sun at its default hours).
+        val SYRIA_SCREENS = method("sy_screens_like", 18.0, 17.0) {
+            copy(
+                offsets = mapOf(TimeEvent.DHUHR to 1, TimeEvent.MAGHRIB to 2),
+                horizon = Horizons(HorizonModel.Fixed(-0.833), HorizonModel.Fixed(-0.833)),
+                sunModel = SunModel.ALMANAC,
+                sunEvaluation = E.associateWith { SunEvaluation.PRAYTIMES },
+            )
+        }
         val MWL_CAPPED = PrayerMethods.MWL.copy(id = "mwl_capped", ishaLatest = LocalTime.of(22, 45))
         val ISNA_HANAFI = PrayerMethods.ISNA.copy(id = "isna_hanafi", asrShadow = 2)
         val CUSTOM_GMP = PrayerMethod(
@@ -385,6 +399,29 @@ class EngineReferenceCases {
         val LJUBLJANA_OWN_ZONE = zone("ljubljana_own", 46.0569, 14.5058) {
             copy(eventPoints = mapOf(TimeEvent.ISHA to LatLngE5.of(46.50, 15.50), TimeEvent.FAJR to LatLngE5.of(46.00, 15.00)))
         }
+        // A8 at a zone: the screens' table years and rows, aladhan's Asr shadow hour, the computing point off the town.
+        val DAMASCUS_SCREEN_ZONE = zone("r764", 33.51306, 36.29194) {
+            copy(morningPoint = LatLngE5.of(33.5052, 36.28361), eveningPoint = LatLngE5.of(33.5052, 36.28361),
+                referenceYear = 2011, tableRows = TableRows.LEAP_ROWS_MAR1, asrShadowHourUt = 48.42)
+        }
+        val ALEPPO_SCREEN_ZONE = zone("r783", 36.20124, 37.16117) {
+            copy(morningPoint = LatLngE5.of(36.2015, 37.1315), eveningPoint = LatLngE5.of(36.2015, 37.1315),
+                referenceYear = 2003, tableRows = TableRows.LEAP_ROWS_FEB28, asrShadowHourUt = 46.83)
+        }
+        val HASAKAH_SCREEN_ZONE = zone("r857", 36.5024, 40.7477) {
+            copy(morningPoint = LatLngE5.of(36.5, 40.74657), eveningPoint = LatLngE5.of(36.5, 40.74657),
+                referenceYear = 2024, tableRows = TableRows.COMMON_ROWS, asrShadowHourUt = 45.25)
+        }
+        val QADMUS_SCREEN_ZONE = zone("r870", 35.1018, 36.1611) {
+            copy(morningPoint = LatLngE5.of(35.1002, 36.16443), eveningPoint = LatLngE5.of(35.1002, 36.16443),
+                referenceYear = 2026, tableRows = TableRows.COMMON_ROWS, asrShadowHourUt = 44.8667)
+        }
+        // S5 at a zone: a screen on aladhan's live API at Mayadin, whose default for Syria is Jordan's method (18°/18°,
+        // Maghrib + 5, no tune), as a zone of the screens' method; and a zone's angles where Isha is by minutes.
+        val MAYADIN_LIVE_ZONE = zone("live_mayadin", 35.0207, 40.4518) {
+            copy(referenceYear = 2024, offsets = mapOf(TimeEvent.DHUHR to -1.0, TimeEvent.MAGHRIB to 3.0), ishaAngleDeg = 18.0)
+        }
+        val RIYADH_ANGLES_ZONE = zone("riyadh_angles", 24.7136, 46.6753) { copy(fajrAngleDeg = 19.0, ishaAngleDeg = 17.0) }
         val TROMSO_OWN_ZONE = zone("tromso_own", 69.6492, 18.9553) {
             copy(
                 eventPoints = mapOf(TimeEvent.FAJR to LatLngE5.of(69.0, 19.5), TimeEvent.ISHA to LatLngE5.of(70.0, 18.5),
@@ -475,6 +512,23 @@ class EngineReferenceCases {
                 copy(zone = JAHRA_ZONE, baseZone = KUWAIT_CITY_ZONE)
             }
             add("sy-damascus", DAMASCUS, SEASONS, SYRIA_LIKE) { copy(zone = DAMASCUS_ZONE) }
+            // E4 PRAYTIMES at exact coordinates (PrayTimes' own Asr shadow) and A8 at the screens' zones: 29 February in
+            // each layout, the north-east's next-day rows from 1 March to 30 December, 31 December, and a date of the
+            // table's own year that still shows another day.
+            val leapEdges = EngineTestSupport.dates("2028-02-28", "2028-02-29", "2028-03-01", "2026-12-30", "2026-12-31", "2026-10-18")
+            add("sy-screens-exact", DAMASCUS, SEASONS, SYRIA_SCREENS)
+            add("sy-screens-damascus", DAMASCUS, SEASONS + leapEdges, SYRIA_SCREENS) { copy(zone = DAMASCUS_SCREEN_ZONE) }
+            add("sy-screens-aleppo", ALEPPO, SEASONS + leapEdges, SYRIA_SCREENS) { copy(zone = ALEPPO_SCREEN_ZONE) }
+            add("sy-screens-hasakah", HASAKAH, SEASONS + leapEdges + EngineTestSupport.dates("2024-03-01", "2024-01-15"), SYRIA_SCREENS) {
+                copy(zone = HASAKAH_SCREEN_ZONE)
+            }
+            add("sy-screens-qadmus", QADMUS, EngineTestSupport.dates("2026-01-15", "2026-03-01", "2026-06-21", "2026-12-31"), SYRIA_SCREENS) {
+                copy(zone = QADMUS_SCREEN_ZONE)
+            }
+            add("sy-live-mayadin", MAYADIN, SEASONS + EngineTestSupport.dates("2028-02-29", "2024-06-21"), SYRIA_SCREENS) {
+                copy(zone = MAYADIN_LIVE_ZONE)
+            }
+            add("sa-riyadh-zone-angles", RIYADH, EngineTestSupport.dates("2026-06-21", "2026-12-21"), SAUDI_LIKE) { copy(zone = RIYADH_ANGLES_ZONE) }
             // E19 at mainland French places, and custom methods anywhere.
             add("custom-gmp-paris", PARIS, SEASONS, CUSTOM_GMP)
             add("custom-early-paris", PARIS, SEASONS, CUSTOM_EARLY)

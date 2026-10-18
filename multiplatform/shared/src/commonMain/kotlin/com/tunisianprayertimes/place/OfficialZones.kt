@@ -94,6 +94,11 @@ object OfficialZones {
         val sunriseAtPlace: Boolean = false,
         val elevationShiftFloor: Double? = null,
         val belowSeaLevel: Boolean = false,
+        val referenceYear: Int? = null,
+        val tableRows: TableRows = TableRows.CALENDAR,
+        val asrShadowHourUt: Double? = null,
+        val fajrAngleDeg: Double? = null,
+        val ishaAngleDeg: Double? = null,
     )
 
     @Serializable
@@ -132,7 +137,8 @@ object OfficialZones {
                     reachKm = z.reachKm ?: Double.POSITIVE_INFINITY, mappingTier = z.mappingTier,
                     switchDays = z.switchDays.mapValues { (_, r) -> r.first..r.last }, fit = z.fit,
                     country = z.country, sunriseAtPlace = z.sunriseAtPlace, elevationShiftFloor = z.elevationShiftFloor,
-                    belowSeaLevel = z.belowSeaLevel,
+                    belowSeaLevel = z.belowSeaLevel, referenceYear = z.referenceYear, tableRows = z.tableRows,
+                    asrShadowHourUt = z.asrShadowHourUt, fajrAngleDeg = z.fajrAngleDeg, ishaAngleDeg = z.ishaAngleDeg,
                 )
             },
         )
@@ -156,7 +162,8 @@ object OfficialZones {
                         reachKm = z.reachKm.takeIf { it.isFinite() }, mappingTier = z.mappingTier,
                         switchDays = z.switchDays.mapValues { (_, r) -> RangeJson(r.first, r.last) }, fit = z.fit,
                         country = z.country, sunriseAtPlace = z.sunriseAtPlace, elevationShiftFloor = z.elevationShiftFloor,
-                        belowSeaLevel = z.belowSeaLevel,
+                        belowSeaLevel = z.belowSeaLevel, referenceYear = z.referenceYear, tableRows = z.tableRows,
+                        asrShadowHourUt = z.asrShadowHourUt, fajrAngleDeg = z.fajrAngleDeg, ishaAngleDeg = z.ishaAngleDeg,
                     )
                 },
             )

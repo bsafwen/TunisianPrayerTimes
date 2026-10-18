@@ -233,6 +233,10 @@ private fun methodRows(method: PrayerMethod): List<Pair<String, String>> = build
         SunModel.VSOP87 -> "نظرية VSOP87 الدقيقة"
         SunModel.TEXTBOOK -> "المعادلات المختصرة لجدول الهيئة"
         SunModel.ALMANAC -> "معادلات التقويم الفلكي المختصرة"
-    } + if (method.sunEvaluation.values.any { it != SunEvaluation.EVENT_INSTANT && it != SunEvaluation.SHADOW_AT_EVENT }) "، مرة في اليوم لبعض الأوقات" else "")
+    } + when {
+        method.sunEvaluation.values.any { it == SunEvaluation.PRAYTIMES } -> "، مرة لكل وقت في ساعة ثابتة"
+        method.sunEvaluation.values.any { it != SunEvaluation.EVENT_INSTANT && it != SunEvaluation.SHADOW_AT_EVENT } -> "، مرة في اليوم لبعض الأوقات"
+        else -> ""
+    })
     add("الليالي القصيرة" to highLatitudeName(method.highLatitude))
 }

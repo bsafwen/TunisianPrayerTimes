@@ -10,6 +10,7 @@ import com.tunisianprayertimes.method.TerrainClass
 import com.tunisianprayertimes.place.LatLngE5
 import com.tunisianprayertimes.place.OfficialZone
 import com.tunisianprayertimes.place.PrayerPlace
+import com.tunisianprayertimes.place.TableRows
 import com.tunisianprayertimes.place.ZoneOffsetRule
 import java.time.Instant
 import java.time.LocalDate
@@ -66,26 +67,40 @@ object PrayerEngine {
         adjustments: Map<TimeEvent, Int> = emptyMap(),
         terrainClass: TerrainClass? = null,
     ): EngineExplanation {
-        val year = method.referenceYear
-        if (year == null || date.year == year) {
+        // A8 (owner, revised 2026-10-17): a perpetual table shows every year as printed. The date runs as the date of
+        // the table's year that shows on it (the zone's own year and rows before the method's year), in the zone's
+        // standard time (the table's clock), with every rule but the sun's as it stands on the date (E8 through
+        // ramadanDay, E9 through revisedFor); each time keeps its clock minute and moves to the date by whole days.
+        val year = zone?.referenceYear ?: method.referenceYear
+        val inTable = year?.let { tableDate(date, it, if (zone?.referenceYear != null) zone.tableRows else TableRows.CALENDAR) }
+        if (year == null || inTable == null || (date.year == year && inTable == date)) {
             return Computation(place, date, method, ramadanDay, zone, baseZone, offsetWindow, adjustments, terrainClass).run()
         }
-        // A8 (owner, revised 2026-10-17): a perpetual table shows every year as printed. The date runs as its own
-        // month and day of the table's year, in the zone's standard time (the table's clock), with every rule but
-        // the sun's as it stands on the date (E8 through ramadanDay, E9 through revisedFor); each time keeps its
-        // clock minute and moves to the date by whole days.
-        val inTable = tableDate(date, year)
         val standard = place.zone.rules.getStandardOffset(date.atTime(12, 0).atZone(place.zone).toInstant())
         val asOf = method.revisedFor(date).copy(revisions = emptyList(), referenceYear = null)
         val explained = Computation(place.copy(zoneId = standard.id), inTable, asOf, ramadanDay, zone, baseZone, offsetWindow,
             adjustments, terrainClass).run()
-        return explained.movedTo(date, place, method.revisedFor(date), ChronoUnit.DAYS.between(inTable, date) * 86_400L)
+        return explained.movedTo(date, place, method.revisedFor(date).withAnglesOf(zone), ChronoUnit.DAYS.between(inTable, date) * 86_400L)
     }
 
-    /** A8: [date]'s month and day in a perpetual table's [year]; 29 February in the first leap year from it. */
-    fun tableDate(date: LocalDate, year: Int): LocalDate =
-        if (date.monthValue == 2 && date.dayOfMonth == 29) LocalDate.of(generateSequence(year) { it + 1 }.first { Year.isLeap(it.toLong()) }, 2, 29)
-        else LocalDate.of(year, date.monthValue, date.dayOfMonth)
+    /** A8: the date of a perpetual table's [year] that shows on [date], its [rows] read as [TableRows] says. */
+    fun tableDate(date: LocalDate, year: Int, rows: TableRows = TableRows.CALENDAR): LocalDate {
+        val feb29 = date.monthValue == 2 && date.dayOfMonth == 29
+        return when (rows) {
+            TableRows.CALENDAR ->
+                if (feb29) LocalDate.of(generateSequence(year) { it + 1 }.first { Year.isLeap(it.toLong()) }, 2, 29)
+                else LocalDate.of(year, date.monthValue, date.dayOfMonth)
+            TableRows.LEAP_ROWS_FEB28 -> if (feb29) LocalDate.of(year, 2, 28) else LocalDate.of(year, date.monthValue, date.dayOfMonth)
+            TableRows.LEAP_ROWS_MAR1 -> if (feb29) LocalDate.of(year, 3, 1) else LocalDate.of(year, date.monthValue, date.dayOfMonth)
+            TableRows.COMMON_ROWS -> {
+                // The screen's row (the date's day in a leap year, from 0) holds the table year's day of that number
+                // without 29 February; the last row repeats 31 December.
+                val row = minOf(LocalDate.of(2024, date.monthValue, date.dayOfMonth).dayOfYear - 1, 364)
+                val shown = LocalDate.of(year, 1, 1).plusDays(row.toLong())
+                if (Year.isLeap(year.toLong()) && row >= 59) shown.plusDays(1) else shown
+            }
+        }
+    }
 
     /** A table year's explanation moved to [date] at [place] by [seconds] (whole days). */
     private fun EngineExplanation.movedTo(date: LocalDate, place: PrayerPlace.Coordinates, method: PrayerMethod, seconds: Long): EngineExplanation {
@@ -325,6 +340,17 @@ internal class MethodRun(
     }
 }
 
+/**
+ * S5 at a zone: the zone's own Fajr and Isha angles replace the method's where its rule is an angle (an Isha angle's
+ * own point stays); a rule by minutes is kept.
+ */
+private fun PrayerMethod.withAnglesOf(zone: OfficialZone?): PrayerMethod {
+    if (zone == null || (zone.fajrAngleDeg == null && zone.ishaAngleDeg == null)) return this
+    val fajr = (fajr as? FajrRule.Angle)?.let { rule -> zone.fajrAngleDeg?.let { rule.copy(degrees = it) } } ?: fajr
+    val isha = (isha as? IshaRule.Angle)?.let { rule -> zone.ishaAngleDeg?.let { rule.copy(degrees = it) } } ?: isha
+    return copy(fajr = fajr, isha = isha)
+}
+
 /** One call of [PrayerEngine.day]: steps 0–10. */
 private class Computation(
     val place: PrayerPlace.Coordinates,
@@ -337,8 +363,8 @@ private class Computation(
     val adjustments: Map<TimeEvent, Int>,
     val terrainClass: TerrainClass?,
 ) {
-    // Step 0: the method's revision for the actual date (E9).
-    val method = methodAsGiven.revisedFor(date)
+    // Step 0: the method's revision for the actual date (E9), then the zone's own twilight angles (S5).
+    val method = methodAsGiven.revisedFor(date).withAnglesOf(zone)
 
     /** A zone with a base zone runs at the base zone and adds its shift; any other zone runs at its own site. */
     private val shifted = zone != null && zone.baseZoneId != null && baseZone != null

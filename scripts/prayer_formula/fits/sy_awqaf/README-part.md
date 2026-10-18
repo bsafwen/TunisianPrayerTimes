@@ -1,100 +1,104 @@
 #### Syria (`sy_awqaf`)
 
-`fits/sy_awqaf/fit.py` (standard library, a few seconds) fits the Ministry of Awqaf's governorate tables and writes
-`official-zones/sy_awqaf.json`. Every official table at hand is a Ramadan table (February–March), so the fit can only
-check what a Ramadan shows; the method is applied all year (Q12).
+`fits/sy_awqaf/fit.py` (standard library, about 10 minutes on 10 processes) fits the year tables of the Ministry of
+Awqaf's mosque screens and the live screens' answers, and writes `official-zones/sy_awqaf.json`; `mosque_year.py`
+compares the owner's Syrian mosques with the zones (support only).
 
-**Method** (fitted 2026-10-15; changes from 8.2 and 8.7 in bold):
+**The source** (2026-10-18). The ministry's mosque screens (`tv.masjidak.mow.gov.sy/<mosque id>`) and its app «مسجدك»
+load a year table per region, `upload/json_prayers_times/prayer_times_region_json_<id>.json`, ids 761–870 (837
+missing): 109 files of 366 rows `{Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha}` ("H:MM", UTC+3), no dates, no names
+(`test-data-local/research-2026-10-18/SY/masjidak/`, README and MANIFEST there, never committed). A screen shows row
+(the date's day in a leap year − 1): `masjidi.min.js`'s `getDayIndex` sums `LEAD_MONTHS_DAYS` = [31, 29, 31, …], with
+the mosque's `daylightSaving` mode `none`. The same screen software can instead request
+`api.aladhan.com/v1/calendar/2024` at the mosque's own coordinates (`"type": "aladhan-api"`, live screens, below).
 
-| Time | Rule |
-|---|---|
-| Fajr | 18°, **rounded up**, **E4 `KACST`** (declination at 21h UT, which is local midnight, equation of time at 9h UT) |
-| Sunrise | standard horizon, rounded down, the sun at the event instant |
-| Dhuhr | transit, rounded up |
-| Asr | factor 1, geometric sun, rounded up, **E4 `KACST`**; **no E7 fraction** |
-| Maghrib | standard sunset, rounded up, + 0, then + 2 from 2025-03-30 (E9, provisional) |
-| Isha | 17°, rounded up, **E4 `KACST`**; **no E7 fraction** |
-| Sun | MEEUS |
+**The generator.** Every table is aladhan.com's PrayerTimes (the PHP port of PrayTimes.js that the API runs, read from
+its source): MWL 18°/17°; the Astronomical Almanac's low-precision sun with PrayTimes' constants (S1 `ALMANAC`), once
+per time at PrayTimes' default hour of local mean time on the date (Fajr 5, sunrise 6, Dhuhr 12, Asr 13, Maghrib and
+Isha 18; E4 `PRAYTIMES`); the 0.833° horizon; Dhuhr + 1 and Maghrib + 2 (the request's tune); each time to the nearest
+minute; UTC+3. Two traits are aladhan's own:
 
-These are Umm al-Qura's conventions (Saudi Arabia's rounding, all up but sunrise down, and KACST's once-a-day sun for
-the twilight and shadow times) with the MWL angles the ministry adopted and its own Maghrib minutes. Stages, by windows,
-on Damascus 1447 and Raqqa 1446 together (55 days without the quirk rows), at the tables' town points:
+- **Asr's noon shadow** takes the declination at `gregoriantojd(date) + f + 13/24`, where f is the API server clock's
+  day fraction when the table was fetched (`date('G')/24 − 0.5`, wrapped, plus its minutes; the server keeps UTC); the
+  hour angle uses the declination at 13h local mean time as usual. So each table keeps its own fetch time, the zone's
+  `asrShadowHourUt` = 25 + 24 f hours after 0h UT (42.65–48.73 h here: the ministry's staff fetched between about
+  05:30 and 11:40 UTC). Al-Qadmus's (870, uploaded 2026-08-20 08:00 UTC) says 44.87 h: fetched at about 07:52 UTC.
+- **The table year.** Each table is computed for its own year, which the low-precision sun distinguishes (its
+  perihelion drifts against the calendar: 2003 and 2023 at the same phase differ by up to 3 s in the equation of time,
+  enough to move several minutes a year), so the fit names it among 2000–2032: 2003 for 50 tables (Aleppo, Idlib and
+  Rif Dimashq), 2001 for the coast (6), 2010 for Daraa (6), 2020 and 2019 for Homs (8), 2023 for Hama (7), 2024 for
+  Suwayda (4) and the north-east (10), 2026 for the coast's last four, 2017 (2), 2011 (Damascus) and 2009 (1).
 
-1. Dhuhr: every sun and evaluation 54 of 55 (Dhuhr cannot tell them apart in a Ramadan).
-2. Each time's evaluation (switching from the event instant only past 2 % of the days): Fajr `KACST` 54 (event instant
-   47, sun at 10h UT 48), Isha `KACST` 55 (44), Asr `KACST` 54 on the geometric sun (the event instant 48 geometric, 54
-   apparent: the tie goes to the geometric sun and the evaluation Fajr and Isha use), sunrise at the event instant 54,
-   Dhuhr 54, Maghrib 53. Readings: Fajr up + 0, Isha up + 0, Asr up + 0, sunrise down + 0, Dhuhr up + 0, Maghrib up
-   + 0 net of its Ramadan's minutes (+ 0 in 1446, + 2 in 1447).
-3. The angles under these evaluations and roundings: Fajr 18.0023–18.0036° (54 at 18.0), Isha 16.9978–17.0040° (55 at
-   17.0). So 18° and 17° exactly, and none of 8.7's fractions: the plan's Fajr rounded down and Asr and Isha + 0.25 at
-   the event instant reproduce, on all 73 days at the town points, Fajr 64, sunrise 72, Dhuhr 72, Asr 63, Maghrib 70,
-   Isha 67, against 70, 72, 72, 70, 70, 71 here.
-4. Computing points, as the Libya fit places cities with few days: the town's latitude stays, its longitude too unless
-   some longitude within 0.5° reproduces more of the table's minutes, each within the model's precision (0.018 min):
-   Damascus 36.3015° E (0.5 km from the town), Raqqa 39.0125° E (0.4 km), Aleppo 37.1659° E (2.8 km), Daraa 36.1869° E
-   (7.9 km: 10 of 12 minutes there, 7 at the town); the others stay at the town.
+**The rows.** Row 59 of most files (83 tables) repeats row 58, so the screens show 28 February's times on 29 February
+(`LEAP_ROWS_FEB28`); Damascus's and one more (2) repeat 1 March (`LEAP_ROWS_MAR1`; region 761's rows 59–61 hold 1, 2
+and 2 March, so its 1 March shows the 2nd). The 14 files of 2026-08-20 (Hasakah, Qamishli, Malikiyah, Shaddadi, Ras
+al-Ayn, Raqqa, Ma'adan, Tabqa, Jarniyah and Tell Abyad, which are aladhan's 2024, a leap year, with 29 February
+dropped; Tartus, Banias, Safita and al-Qadmus, 2026) hold the year's 365 days and then 31 December again: read by
+leap-year day, their screens show the next day's row from 1 March to 30 December, and 1 March on 29 February
+(`COMMON_ROWS`). The app shows what the screens show (A8 at the zone: `referenceYear` and `tableRows`).
 
-**Quirk days.** Damascus 1447's rows of 2026-02-21 and 02-22 (the table repeats the 20th and then holds the 21st's
-values) and Raqqa 1446's of 2025-03-05 (it repeats the 4th): each matches the previous date's computed times better than
-its own. 3 quirk days, counted apart (2 minutes off at worst).
+**Region 763** is the Beirut table that tv.masjidi.app serves (`research-2026-10-08/LB/lb/region2.json`): equal on all
+366 rows (checked by the fit), Lebanon's Dar al-Fatwa on UTC+2. No Syrian zone.
 
-**Zones and mapping.** 14 zones, one per governorate table (8.8): Damascus, Aleppo, Homs, Hama, Latakia, Tartus, Idlib,
-Raqqa, Deir ez-Zor, Hasakah, Daraa, Suwayda, Quneitra and Eastern Ghouta («الغوطة الشرقية», at Douma, its main town);
-`NEAREST` with no reach limit, no admin1 constraint, and the validity guard. `point` and named place: the research's
-town points (`cities.py`) for ten, GeoNames' for Tartus, Raqqa and Deir ez-Zor, Douma for Eastern Ghouta; E6 morning
-and evening points where step 4 moved the longitude. No E7 offsets.
+**Fit, per distinct table** (100 distinct of 108 regions; 764–767, 768/769, 770/800/801, 832/849, 833/834 and
+838/843 are identical, so 99 table zones), by windows with the closed form, which is the reference engine's PRAYTIMES
+computation (the reference reproduces it on every day): the layout from the file, the year by Dhuhr's windows (the best
+four then by the point's score, ties to the year nearest 2025), the point by latitude scan (32.2–37.4°, 0.02°, 0.001°,
+0.00005°) and longitude windows of Fajr, sunrise, Dhuhr, Maghrib and Isha (the middle of the best latitudes), and
+Asr's shadow hour by minutes (the middle of the longest best run). Fitting the odd months and the even months apart
+gives every table the same year.
 
-**Data** (read at run time, never copied): `test-data-local/research-2026-10-08/SY/sy/dam.txt` (Damascus, Ramadan 1447,
-2026-02-19 to 03-19), `sy/raq1446.txt` (Raqqa, Ramadan 1446, 2025-03-01 to 03-29) and `sy/cities.py`, read as text
-(days 1 and 29 of nine more 1447 tables, and town points). The day-1 rows of the Eastern Ghouta, Tartus, Deir ez-Zor and
-Raqqa 1447 tables exist only in `sy/heads.png`; checked by hand with the shipped values: Eastern Ghouta at Douma 5 of 5
-(so Douma is its point), Deir ez-Zor 5 of 5, Tartus 4 of 5 (sunrise 1 minute), Raqqa 0 of 5: all five times 2 minutes
-later than the method at Raqqa (Fajr 05:43 against 05:41), and 5 of 5 at Tabqa or any point of Raqqa's latitude at
-38.48–38.52° E. The current Raqqa table thus seems computed about 45 km west of the city, unlike the 1446 one.
-
-**Held-out scores** (FitStats: Damascus 1447 scored with the values fitted on Raqqa 1446, Raqqa 1446 with those fitted
-on Damascus 1447, each with its computing point fitted on its other days, odd against even; the nine tables' two days
-with the values fitted on both and their points fitted on the other day; each Ramadan keeps its own E9 Maghrib minutes,
-which only its own table gives; 73 days, quirk days apart):
+**Held-out scores** (FitStats, every table zone: month split, the year, point and shadow hour fitted on the odd months
+and scored on the even ones and the reverse, through `common.compute` on the screens' dates of 2028; 36,234 days):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| All 73 days (FitStats) | 91.8 % | 95.9 % | 97.3 % | 98.6 % | 95.9 % | 95.9 % |
-| Damascus 1447, 27 days | 22 | 26 | 27 | 27 | 27 | 26 |
-| Raqqa 1446, 28 days | 28 | 26 | 27 | 28 | 27 | 28 |
-| Nine tables, 18 days | 17 | 18 | 17 | 17 | 16 | 16 |
+| exact | 99.87 % | 99.90 % | 99.93 % | 99.65 % | 99.89 % | 99.85 % |
+| within 1 min | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % |
 
-Every held-out time is within 1 minute. Damascus's Fajr misses are the fold's: Raqqa alone cannot choose `KACST` (27
-days against 26 at the event instant), Damascus alone can (27 against 21). Daraa keeps 7 of 12 held out (one day cannot
-place its point for the other). In-sample with the shipped values and points: 73, 72, 72, 73, 69, 71 of 73. Tier B
-(9.5): met, within 1 minute; no zone can reach tier A on Ramadan days only.
+All 99 table zones pass tier A (each at least 98.1 % exact on every time). In-sample with the shipped values: 100,
+100, 100, 99.94, 100 and 99.97 %. The misses are single rows, such as 761's 1 March.
 
-**Validity guard** (side check, 2026, approximate town points): Tabqa (Raqqa's table, 43 km), Zabadani and Khan
-Shaykhun keep their tables (at most 2.5 min beyond the margin); Al-Tanf (Eastern Ghouta's, 211 km, sunrise 9.3) takes the
-method at its own point, as 8.8 expects. Of the places 8.8 leaves to the scan: Ras al-Ayn (Isha 4.6), Sukhnah (Fajr
-6.3), Tell Abyad (Isha 4.2), Palmyra (sunrise 6.7), Malikiyah (sunrise 7.5) and Abu Kamal (sunrise 5.5) take their own
-point; Qamishli (sunrise 3.5) and Nabek (2.5) keep the table. With every time rounded toward the safe side (up, sunrise
-down), a table's own margin is at most 0 on every time, so the guard acts closer to the tables than 8.8's distances
-suggest.
+**Live screens.** A sample of the screens' configuration pages (2,047 of them: every 10th id from 3 and every 29th from
+1 and 14 up to 23,500; `research-2026-10-18/SY/masjidak/mosques.tsv`, never committed) shows 538 (26 %) with no table:
+their `apiOptions` are latitude, longitude and `shafaq` only, so aladhan answers with its default for the point, the
+authority whose seat is nearest, Jordan's ministry (id 23: Fajr 18°, Isha 18°, Maghrib = sunset + 5 min, no tune) for
+most of Syria and Turkey's Diyanet (id 13: 18°/17°, tune sunrise − 7, Dhuhr + 5, Asr + 4, Maghrib + 7) near the
+northern border, and the screen keeps its first answer for good (`masjidi.min.js`'s saved fetch refetches only when
+the options change). Where a town's sampled screens are mostly live (at least 3, and twice as many as on tables: 28
+towns, all of Deir ez-Zor governorate's sampled ones among them, Quneitra, eastern Aleppo, northern Aleppo and Afrin
+villages, Salqin, rural Homs, Dayr Atiyah, Ayn al-Fijah, Halfaya, Qastal Ma'af), the town is a zone of its own: the
+API's answer for the town's point (`research-2026-10-18/SY/aladhan_live/`, 28 calendars of 2024, fetched 2026-10-18,
+never committed) gives the default's angles and minutes, carried as the zone's `ishaAngleDeg` (S5) and `offsets` on
+this method (Jordan's: Dhuhr − 1, Maghrib + 3, Isha 18°; Turkey's: sunrise − 7, Dhuhr + 4, Asr + 4, Maghrib + 5), with
+2024's calendar (`referenceYear` 2024) and Asr's shadow hour at the middle of the day's possible fetch times (37 h:
+each screen's own is unknown, and daytime fetches fall about 12 h either side of it, since aladhan's day fraction wraps
+at 12:00 UTC). Against those answers, every day held out (nothing is fitted on them): Fajr, sunrise, Dhuhr, Maghrib
+and Isha 100 % exact, Asr 75.7 % (71–80 % by town), every time within 1 min; with this fetch's own hour (46.55 h) Asr
+is 100 % too, so the rest is aladhan's computation. Tier B, not A: a screen's Asr is its fetch time's.
 
-**The ministry's mosque screens (2026-10-18; not yet used).** The ministry's screen system and its app «مسجدك» load a
-year table per region, `tv.masjidak.mow.gov.sy/upload/json_prayers_times/prayer_times_region_json_<id>.json`, ids
-761–870 (109 regions, 100 distinct tables, 366 rows in a leap year's order; kept in
-`test-data-local/research-2026-10-18/SY/masjidak/` with a README, never committed). Mosques print these: 6 of the
-owner's 75 Syrian mosques match a region's table on all 365 days to the minute (regions 764, 844, 846, 847, Damascus
-area), none the Ramadan tables above. They are another product than the printed Ramadan tables: Damascus (764–767)
-differs from Ramadan 1447 by 1–2 minutes, and the method above, at Damascus, agrees with region 764 on only 75 Fajr,
-161 sunrise, 165 Dhuhr, 56 Asr, 219 Maghrib and 182 Isha of 365 days (Asr up to 3 minutes off). In exploration
-(`research-2026-10-18/SY/region_fits_2011_vsop87.tsv`): Damascus's table is a perpetual table of a year one before a
-leap year (2015, 2007, 2011 tie), and at a fitted point (33.5095 N 36.2833 E) reproduces Fajr 18° 358, sunrise 356,
-Dhuhr (transit + 1) 365, Maghrib (sunset + 2) 359 and Isha 17° 347 of 365, every time nearest at its own instant;
-its Asr is factor 1 with the previous day's declination in the hour angle (318–325 of 365; the standard rule 64).
-Aleppo's, Idlib's, Hama's and Rif Dimashq's regions fit that model at 90–98 %, the coast, Homs, the south and the
-north-east (Raqqa, Hasakah, Deir ez-Zor) at 20–85 %: another reference year or other settings per group, not yet
-found. Moving Syria to these tables (regions as zones, their own method) waits for that.
+**Zones and mapping** (`NEAREST`, `namedFirst`, the validity guard). Each table zone computes at its fitted point (E6
+morning and evening points). A screen's town (else its address) is the catalogue place of that Arabic name nearest the
+table's computing point (within 120 km), and each place goes to the zone with the most screens there, a live town to
+its own zone. A table zone's `point` and name are its main town: the computing point's own place (within 3 km) where
+the screens hold it or name no town in a quarter of them, else the screens' first town. So region 783, computed at
+Aleppo's point, is Jindires (its screens: Jindires, Afrin, Hajib, Sheikh al-Hadid), and Aleppo city is 804; 809 is
+Salamiyah, computed 60 km east of it at 35.01 N 37.71 E; 856 is al-Tall. Every town a zone's screens name is a named
+place of it (a catalogue pick there takes that zone). A zone without a main town keeps its computing point and the
+nearest place's name, with its region number where another zone has that name. Tables that no sampled screen shows,
+computed in another zone's main town or at another table's point, are left to manual picks (tier 1): 761 (Damascus,
+whose screens show 764–767), 762 (at 768/769's point) and 786 (Khanasir, a live town). The guard's side check (2026,
+approximate town points): Tabqa, Zabadani, Khan Shaykhun, Palmyra, Ras al-Ayn, Tell Abyad, Malikiyah, Qamishli and
+Nabek take their own regions' tables; Sukhnah and Al-Tanf take Palmyra's (65 and 124 km; 2.7 and 3.9 min beyond its
+margin, so the guard keeps it); Deir ez-Zor, Mayadin, Abu Kamal and Quneitra take their live towns.
 
-**Open issues.** (1) Only Ramadan tables in the fit; the screens' year tables above are the next source. (2) Raqqa's 1447 table points about 0.5° west of the city (one day, from the image): if
-confirmed, Raqqa's computing point moves to about 38.50° E; transcribing `heads.png` into `test-data-local` would let
-the fit use the four rows. (3) The E9 revision date stays the plan's (2025-03-30): the tables show + 0 in 1446 and + 2 in
-1447, not when it changed. (4) Daraa's table fits a point 8 km east of the town on two days only.
+**Cross-checks** (support): the owner's mosque dataset has 6 of its 75 Syrian mosques on a table zone on all 365 days
+(764 three times, 844, 846, 847; `mosque_year.py`); its two Deir ez-Zor mosques follow neither the tables nor the live
+screens. The ministry's printed Ramadan tables (Telegram @SyMOfE, 1446 and 1447) are another product, 1–2 minutes off
+the screens; the profile fitted on them before 2026-10-18 (Umm al-Qura's roundings with `KACST` evaluations,
+91.8–98.6 % on 73 Ramadan days) is replaced.
+
+**Open issues.** (1) Unsampled regions are named and placed by their computing point, which may not be the town their
+screens serve; no sampled screen shows the north-east's tables yet. (2) A live screen set up when aladhan's default for
+its point differed keeps that default. (3) If the ministry rewrites a file (the north-east's next-day rows, a new
+year), or the sample changes, the fit must run again.

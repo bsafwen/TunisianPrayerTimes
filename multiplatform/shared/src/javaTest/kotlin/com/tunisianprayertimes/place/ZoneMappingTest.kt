@@ -126,6 +126,18 @@ class ZoneMappingTest {
         assertEquals("giza", ZoneMapping.attach(place(30.02, 31.21, "Africa/Cairo", "EG"), EuropeanPresets.MWL_ANGLE, egypt)?.id)
         assertEquals("alexandria", ZoneMapping.attach(place(31.0, 30.4, "Africa/Cairo", "EG"), EuropeanPresets.MWL_ANGLE, egypt)?.id)
         assertTrue(egypt.zones[0].names(place(30.05, 31.24, "Africa/Cairo", "EG")))
+        // Syria: a table that no sampled screen shows, computed in another zone's town, is tier 1, so the town's own
+        // table serves even next to that table's point; a manual pick still takes it.
+        val syria = AuthorityZones("sy_awqaf", "sy_awqaf", "SY", MappingKind.NEAREST, false, true, null, source = "test", fit = null,
+            zones = listOf(
+                zone("sy_awqaf", "r764", 33.51, 36.29) { copy(namedPlaces = listOf(NamedPlace(LatLngE5.of(33.51, 36.29)))) },
+                zone("sy_awqaf", "r761", 33.508, 36.283) { copy(mappingTier = 1) },
+                zone("sy_awqaf", "r851", 33.5706, 36.4053) { copy(namedPlaces = listOf(NamedPlace(LatLngE5.of(33.5706, 36.4053)))) },
+            ))
+        val method = ArabAuthorityProfiles.SY_AWQAF
+        assertEquals("r764", ZoneMapping.attach(place(33.508, 36.283, "Asia/Damascus", "SY"), method, syria)?.id)
+        assertEquals("r851", ZoneMapping.attach(place(33.57, 36.40, "Asia/Damascus", "SY"), method, syria)?.id)
+        assertEquals("r761", ZoneMapping.resolve(place(33.508, 36.283, "Asia/Damascus", "SY"), method, syria, ZonePick.Zone("r761"), 2026)?.zone?.id)
     }
 
     @Test

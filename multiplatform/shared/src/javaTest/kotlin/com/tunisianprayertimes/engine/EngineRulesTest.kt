@@ -15,7 +15,11 @@ import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.BOSNIA_LIKE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.COMOROS_LIKE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.CUSTOM_EARLY
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.CUSTOM_GMP
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.DAMASCUS
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.DAMASCUS_SCREEN_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.DOHA
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.HASAKAH
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.HASAKAH_SCREEN_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.IN_GUEZZAM
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.IRBID
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.IRBID_ZONE
@@ -32,6 +36,8 @@ import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.LJUBLJANA
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.LJUBLJANA_OWN_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.LONDON
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MANAMA
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MAYADIN
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MAYADIN_LIVE_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MECCA
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MORONI
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.MOSTAR
@@ -42,6 +48,8 @@ import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.PRISTINA
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.QATAR_LIKE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.QATAR_PRINTED
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.REUNION_LIKE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.RIYADH
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.RIYADH_ANGLES_ZONE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SAINT_DENIS_RE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SANAA
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SANAA_ZONE
@@ -49,6 +57,7 @@ import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SARAJEVO_ZO
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SAUDI_LIKE
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SEIYUN
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SEIYUN_ZONE
+import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.SYRIA_SCREENS
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.TRIPOLI
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.TUNIS
 import com.tunisianprayertimes.engine.EngineReferenceCases.Companion.YEMEN_LIKE
@@ -63,13 +72,21 @@ import com.tunisianprayertimes.method.PrayerMethods
 import com.tunisianprayertimes.method.Rounding
 import com.tunisianprayertimes.place.OfficialZone
 import com.tunisianprayertimes.place.PrayerPlace
+import com.tunisianprayertimes.place.TableRows
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZoneOffset
 import kotlin.math.abs
+import kotlin.math.acos
+import kotlin.math.asin
+import kotlin.math.atan
+import kotlin.math.atan2
+import kotlin.math.cos
 import kotlin.math.floor
+import kotlin.math.sin
+import kotlin.math.tan
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -388,6 +405,115 @@ class EngineRulesTest {
                     shown.at(event).atZone(BEIRUT.zone).toLocalTime(), "$date $event")
             }
         }
+    }
+
+    @Test
+    fun e4PraytimesIsAladhansOnePass() {
+        // aladhan's PrayerTimes (the PHP port of PrayTimes.js), written out here: the Almanac's low-precision sun with
+        // PrayTimes' constants, each time's sun once at its default hour of local mean time, the hour angle in one pass,
+        // Dhuhr + 1 and Maghrib + 2, and Asr's noon shadow at the zone's hour after 0h UT (the API server's clock).
+        fun rad(x: Double) = Math.toRadians(x)
+        fun sunAt(jd: Double): Pair<Double, Double> {
+            val d = jd - 2451545.0
+            val g = (357.529 + 0.98560028 * d).mod(360.0)
+            val q = (280.459 + 0.98564736 * d).mod(360.0)
+            val l = q + 1.915 * sin(rad(g)) + 0.020 * sin(rad(2 * g))
+            val e = 23.439 - 0.00000036 * d
+            val ra = Math.toDegrees(atan2(cos(rad(e)) * sin(rad(l)), cos(rad(l)))) / 15
+            return Math.toDegrees(asin(sin(rad(e)) * sin(rad(l)))) to ((q / 15 - ra.mod(24.0) + 12).mod(24.0) - 12) * 60
+        }
+        val hours = mapOf(TimeEvent.FAJR to 5.0, TimeEvent.SUNRISE to 6.0, TimeEvent.DHUHR to 12.0, TimeEvent.ASR to 13.0,
+            TimeEvent.MAGHRIB to 18.0, TimeEvent.ISHA to 18.0)
+        fun aladhanUt(event: TimeEvent, date: LocalDate, lat: Double, lng: Double, shadowHour: Double?): Double {
+            val jd0 = SolarEngine.julianDay(date)
+            val (decl, eot) = sunAt(jd0 - lng / 360 + hours.getValue(event) / 24)
+            val noon = 12 - eot / 60 - lng / 15
+            fun ha(alt: Double) = Math.toDegrees(acos((sin(rad(alt)) - sin(rad(lat)) * sin(rad(decl))) / (cos(rad(lat)) * cos(rad(decl))))) / 15
+            return when (event) {
+                TimeEvent.FAJR -> noon - ha(-18.0)
+                TimeEvent.SUNRISE -> noon - ha(-0.833)
+                TimeEvent.DHUHR -> noon + 1 / 60.0
+                TimeEvent.ASR -> {
+                    val noonDecl = shadowHour?.let { sunAt(jd0 + it / 24).first } ?: decl
+                    noon + ha(Math.toDegrees(atan(1 / (1 + tan(rad(abs(lat - noonDecl)))))))
+                }
+                TimeEvent.MAGHRIB -> noon + ha(-0.833) + 2 / 60.0
+                TimeEvent.ISHA -> noon + ha(-17.0)
+            }
+        }
+        val point = checkNotNull(DAMASCUS_SCREEN_ZONE.eveningPoint)
+        // In the zone's own year a date shows itself, so the zone's computing point and Asr shadow hour are read directly.
+        for (date in listOf(LocalDate.of(2011, 1, 15), LocalDate.of(2011, 6, 21), LocalDate.of(2011, 10, 18))) {
+            val shown = explain(DAMASCUS, date, SYRIA_SCREENS, zone = DAMASCUS_SCREEN_ZONE)
+            val midnight = date.atStartOfDay(ZoneOffset.UTC).toInstant()
+            for (event in TimeEvent.entries) {
+                val expected = aladhanUt(event, date, point.latitude, point.longitude, DAMASCUS_SCREEN_ZONE.asrShadowHourUt)
+                assertSeconds(expected * 3600, midnight, shown.unrounded(event), tolerance = 0.05, message = "$date $event")
+            }
+        }
+        // At exact coordinates, PrayTimes.js's own noon shadow: the Asr sun's declination.
+        val exact = explain(DAMASCUS, june, SYRIA_SCREENS)
+        val midnight = june.atStartOfDay(ZoneOffset.UTC).toInstant()
+        for (event in TimeEvent.entries) {
+            val expected = aladhanUt(event, june, DAMASCUS.latE5 / 1e5, DAMASCUS.lngE5 / 1e5, null)
+            assertSeconds(expected * 3600, midnight, exact.unrounded(event), tolerance = 0.05, message = "exact $event")
+        }
+    }
+
+    @Test
+    fun a8ScreenRowsAtAZone() {
+        fun d(text: String) = LocalDate.parse(text)
+        // The screens read row (the date's day in a leap year − 1): 29 February copies 28 February or 1 March.
+        assertEquals(d("2003-02-28"), PrayerEngine.tableDate(d("2028-02-29"), 2003, TableRows.LEAP_ROWS_FEB28))
+        assertEquals(d("2003-03-01"), PrayerEngine.tableDate(d("2026-03-01"), 2003, TableRows.LEAP_ROWS_FEB28))
+        assertEquals(d("2020-02-28"), PrayerEngine.tableDate(d("2024-02-29"), 2020, TableRows.LEAP_ROWS_FEB28))
+        assertEquals(d("2011-03-01"), PrayerEngine.tableDate(d("2028-02-29"), 2011, TableRows.LEAP_ROWS_MAR1))
+        assertEquals(d("2011-12-31"), PrayerEngine.tableDate(d("2026-12-31"), 2011, TableRows.LEAP_ROWS_MAR1))
+        // A table of 365 days without 29 February, read by leap-year day: the next day's row from 1 March to 30 December.
+        for ((date, shown) in listOf(
+            "2026-01-15" to "2024-01-15", "2026-02-28" to "2024-02-28", "2028-02-29" to "2024-03-01", "2026-03-01" to "2024-03-02",
+            "2026-10-18" to "2024-10-19", "2026-12-30" to "2024-12-31", "2026-12-31" to "2024-12-31",
+        )) assertEquals(d(shown), PrayerEngine.tableDate(d(date), 2024, TableRows.COMMON_ROWS), date)
+        assertEquals(d("2026-03-02"), PrayerEngine.tableDate(d("2026-03-01"), 2026, TableRows.COMMON_ROWS))
+        assertEquals(d("2026-03-01"), PrayerEngine.tableDate(d("2028-02-29"), 2026, TableRows.COMMON_ROWS))
+        assertEquals(d("2026-12-31"), PrayerEngine.tableDate(d("2026-12-31"), 2026, TableRows.COMMON_ROWS))
+        // The zone's year and rows win over the method's: even in the table's own year, 1 March shows 2 March's row,
+        // a day earlier on the clock; in 2026 the same row shows at the same clock minutes.
+        val calendar = HASAKAH_SCREEN_ZONE.copy(tableRows = TableRows.CALENDAR)
+        val march2 = explain(HASAKAH, d("2024-03-02"), SYRIA_SCREENS, zone = calendar)
+        val march1 = explain(HASAKAH, d("2024-03-01"), SYRIA_SCREENS, zone = HASAKAH_SCREEN_ZONE)
+        assertEquals(d("2024-03-01"), march1.day.date)
+        for (event in TimeEvent.entries) assertSeconds(-86_400.0, march2.unrounded(event), march1.unrounded(event), message = event.name)
+        val later = explain(HASAKAH, d("2026-03-01"), SYRIA_SCREENS, zone = HASAKAH_SCREEN_ZONE)
+        for (event in TimeEvent.entries) {
+            assertEquals(march2.at(event).atZone(HASAKAH.zone).toLocalTime(), later.at(event).atZone(HASAKAH.zone).toLocalTime(), event.name)
+        }
+        // A zone without a year leaves the method's (none here): the date computes as itself.
+        assertEquals(explain(HASAKAH, june, SYRIA_SCREENS, zone = calendar.copy(referenceYear = null)).day.date, june)
+    }
+
+    @Test
+    fun s5ZoneAnglesReplaceTheMethodsAngles() {
+        // A zone's own Isha angle is the method's with that angle, at the zone; Fajr keeps the method's.
+        val live = MAYADIN_LIVE_ZONE
+        val plainZone = live.copy(ishaAngleDeg = null)
+        val withZone = explain(MAYADIN, june, SYRIA_SCREENS, zone = live)
+        val byMethod = explain(MAYADIN, june, SYRIA_SCREENS.copy(isha = IshaRule.Angle(18.0)), zone = plainZone)
+        for (event in TimeEvent.entries) assertSeconds(0.0, byMethod.unrounded(event), withZone.unrounded(event), message = event.name)
+        assertEquals(IshaRule.Angle(18.0), withZone.method.isha)
+        val seventeen = explain(MAYADIN, june, SYRIA_SCREENS, zone = plainZone)
+        assertTrue(seconds(seventeen.unrounded(TimeEvent.ISHA), withZone.unrounded(TimeEvent.ISHA)) > 240.0)
+        // Isha by minutes keeps its minutes; Fajr by angle takes the zone's.
+        val riyadh = explain(RIYADH, june, SAUDI_LIKE, zone = RIYADH_ANGLES_ZONE)
+        val plain = explain(RIYADH, june, SAUDI_LIKE, zone = RIYADH_ANGLES_ZONE.copy(fajrAngleDeg = null, ishaAngleDeg = null))
+        assertEquals(SAUDI_LIKE.isha, riyadh.method.isha)
+        assertSeconds(0.0, plain.unrounded(TimeEvent.ISHA), riyadh.unrounded(TimeEvent.ISHA))
+        assertTrue(seconds(riyadh.unrounded(TimeEvent.FAJR), plain.unrounded(TimeEvent.FAJR)) > 60.0, "19° comes before 18.5°")
+        // An Isha angle's own point stays with the zone's angle.
+        val slovenia = com.tunisianprayertimes.method.EuropeanPresets.SI_ISLAMSKA_SKUPNOST
+        val sarajevo = checkNotNull((slovenia.isha as IshaRule.Angle).at)
+        val angled = explain(LJUBLJANA, LocalDate.of(2026, 1, 15), slovenia, zone = LJUBLJANA_OWN_ZONE.copy(eventPoints = emptyMap(), ishaAngleDeg = 18.0))
+        assertEquals(IshaRule.Angle(18.0, sarajevo, (slovenia.isha as IshaRule.Angle).atNameAr), angled.method.isha)
     }
 
     @Test

@@ -239,12 +239,14 @@ SUN_MODELS = {"MEEUS": meeus_sun, "VSOP87": vsop87_sun, "TEXTBOOK": textbook_sun
 
 
 class SunFunction:
-    """S4: the sun of one evaluation mode, for a cycle with JD0."""
+    """S4: the sun of one evaluation mode, for a cycle with JD0 (PRAYTIMES: at praytimes_jd, the event's own hour)."""
 
-    def __init__(self, model, mode: str, jd0: float, noon_jd: float | None = None):
+    def __init__(self, model, mode: str, jd0: float, noon_jd: float | None = None, praytimes_jd: float | None = None):
         self.model = model
         self.eot = None                     # EVENT_DECLINATION: E and r held at local noon
-        if mode == "DAILY_0H_UT":
+        if mode == "PRAYTIMES":
+            self.fixed = model(praytimes_jd)
+        elif mode == "DAILY_0H_UT":
             self.fixed = model(jd0)
         elif mode == "DAILY_10H_UT":
             self.fixed = model(jd0 + 10 / 24)
@@ -270,6 +272,8 @@ class SunFunction:
 
 
 NOON_MODES = ("DAILY_LOCAL_NOON", "EVENT_DECLINATION")
+# S4 PRAYTIMES: PrayTimes.js's default hour of each time, in local mean time.
+PRAYTIMES_HOURS = {"FAJR": 5, "SUNRISE": 6, "DHUHR": 12, "ASR": 13, "MAGHRIB": 18, "ISHA": 18}
 
 
 # ---------------------------------------------------------------------------------------------
@@ -403,12 +407,26 @@ def days_in_year(year: int) -> int:
     return 366 if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0 else 365
 
 
-def table_date(day: datetime.date, year: int) -> datetime.date:
-    """A8: day's month and day in a perpetual table's year; 29 February in the first leap year from it."""
-    if (day.month, day.day) == (2, 29):
-        while days_in_year(year) != 366:
-            year += 1
-    return datetime.date(year, day.month, day.day)
+def table_date(day: datetime.date, year: int, rows: str = "CALENDAR") -> datetime.date:
+    """A8: the date of a perpetual table's year that shows on day. CALENDAR: day's month and day, 29 February in the
+    first leap year from it. The screens' 366 rows, read by day's day in a leap year: LEAP_ROWS_FEB28 and
+    LEAP_ROWS_MAR1, the year's dates, 29 February repeating 28 February or 1 March; COMMON_ROWS, the year's days
+    without 29 February and 31 December again, so that from 1 March to 30 December day shows the next day's row."""
+    feb29 = (day.month, day.day) == (2, 29)
+    if rows == "CALENDAR":
+        if feb29:
+            while days_in_year(year) != 366:
+                year += 1
+        return datetime.date(year, day.month, day.day)
+    if rows in ("LEAP_ROWS_FEB28", "LEAP_ROWS_MAR1"):
+        if feb29:
+            return datetime.date(year, 2, 28) if rows == "LEAP_ROWS_FEB28" else datetime.date(year, 3, 1)
+        return datetime.date(year, day.month, day.day)
+    if rows == "COMMON_ROWS":
+        row = min(datetime.date(2024, day.month, day.day).timetuple().tm_yday - 1, 364)
+        shown = datetime.date(year, 1, 1) + datetime.timedelta(days=row)
+        return shown + ONE_DAY if days_in_year(year) == 366 and row >= 59 else shown
+    raise ValueError(f"unknown table rows {rows}")
 
 
 def seasonal_value(values, day: datetime.date) -> float:
@@ -530,7 +548,10 @@ class RawDay:
     def sun(self, event_name: str) -> SunFunction:
         mode = self.engine.modes[event_name]
         noon = self.engine.local_noon_jd(self.day) if mode in NOON_MODES else None
-        return SunFunction(self.engine.model, mode, self.cycle.jd0, noon)
+        praytimes = None
+        if mode == "PRAYTIMES":
+            praytimes = self.cycle.jd0 - self.site.point_of(event_name)[1] / 360 + PRAYTIMES_HOURS[event_name] / 24
+        return SunFunction(self.engine.model, mode, self.cycle.jd0, noon, praytimes)
 
     def _sunrise_horizon(self) -> tuple[SunFunction, float]:
         sun = self.sun("SUNRISE")
@@ -597,6 +618,8 @@ class RawDay:
             offsets, _, _ = self.engine.rule_for(self.day)
             minutes = offsets.get("DHUHR", 0) + method["dhuhrAfterTransitMin"]
             noon = math.copysign(90 - altitude(self.cycle, sun, lat, lng, t0 + minutes / 60), lat - decl_t0)
+        elif mode == "PRAYTIMES" and (self.site.zone or {}).get("asrShadowHourUt") is not None:
+            noon = lat - self.engine.model(self.cycle.jd0 + self.site.zone["asrShadowHourUt"] / 24)[0]
         else:
             noon = lat - decl_t0
         alt = self.shadow_altitude(kind, noon)
@@ -1167,7 +1190,8 @@ class CaseEngine:
     # S9 steps 0-7 -----------------------------------------------------------------------------
 
     def rule_for(self, day: datetime.date) -> tuple[dict, dict, dict]:
-        """Step 0 (E9): offsets, fajr and isha after every revision with validFrom ≤ day."""
+        """Step 0 (E9): offsets, fajr and isha after every revision with validFrom ≤ day; then the zone's own Fajr and
+        Isha angles where the rule is an angle (S5)."""
         offsets = dict(self.method["offsets"])
         fajr, isha = self.method["fajr"], self.method["isha"]
         for revision in sorted(self.method["revisions"], key=lambda r: r["validFrom"]):
@@ -1179,6 +1203,11 @@ class CaseEngine:
                 fajr = change["fajr"]
             if change.get("isha") is not None:
                 isha = change["isha"]
+        zone = self.case["zone"] or {}
+        if fajr["type"] == "angle" and zone.get("fajrAngleDeg") is not None:
+            fajr = dict(fajr, degrees=float(zone["fajrAngleDeg"]))
+        if isha["type"] == "angle" and zone.get("ishaAngleDeg") is not None:
+            isha = dict(isha, degrees=float(zone["ishaAngleDeg"]))
         return offsets, fajr, isha
 
     @functools.cached_property
@@ -1832,14 +1861,14 @@ class CaseEngine:
 
     # The whole day ----------------------------------------------------------------------------
 
-    def in_table_year(self, year: int) -> PrayerDay:
-        """A8 (owner, revised 2026-10-17): a perpetual table shows every year as printed. D runs as its own month and
-        day of the table's year, in Z's standard time (the table's clock), with every rule but the sun's as it stands
-        on D (E8 through the case's ramadanDay, E9 through rule_for(D)); each time keeps its clock minute and moves to
-        D by whole days."""
-        table_day = table_date(self.day, year)
+    def in_table_year(self, table_day: datetime.date) -> PrayerDay:
+        """A8 (owner, revised 2026-10-17): a perpetual table shows every year as printed. D runs as the date of the
+        table's year that shows on it (table_date), in Z's standard time (the table's clock), with every rule but the
+        sun's as it stands on D (E8 through the case's ramadanDay, E9 through rule_for(D)); each time keeps its clock
+        minute and moves to D by whole days."""
         offsets, fajr, isha = self.rule_for(self.day)
         method = dict(self.method, offsets=offsets, fajr=fajr, isha=isha, revisions=[], referenceYear=None)
+        zone = None if self.case["zone"] is None else dict(self.case["zone"], referenceYear=None, tableRows=None)
         std = self.standard_offset
         shift = 86400 * (self.day - table_day).days
         facts = dict(self.case["zoneFacts"], utcOffsetSeconds=std, offsetChanges=None,
@@ -1847,16 +1876,19 @@ class CaseEngine:
         for key in ("ishaLatestEpochSeconds", "ishaEarliestEpochSeconds"):
             if facts.get(key) is not None:
                 facts[key] = facts[key] - shift
-        day = CaseEngine(dict(self.case, date=table_day.isoformat(), method=method, zoneFacts=facts)).run()
+        day = CaseEngine(dict(self.case, date=table_day.isoformat(), method=method, zone=zone, zoneFacts=facts)).run()
 
         def moved(values: dict) -> dict:
             return {name: None if t is None else t + shift for name, t in values.items()}
         return PrayerDay(moved(day.unrounded), moved(day.minutes), dict(day.rules))
 
     def run(self) -> PrayerDay:
-        year = self.method.get("referenceYear")
-        if year is not None and self.day.year != year:
-            return self.in_table_year(year)
+        zone = self.case["zone"] or {}
+        year = zone.get("referenceYear") or self.method.get("referenceYear")
+        if year is not None:
+            table_day = table_date(self.day, year, (zone.get("tableRows") if zone.get("referenceYear") else None) or "CALENDAR")
+            if self.day.year != year or table_day != self.day:
+                return self.in_table_year(table_day)
         method = self.method
         site, shift = self.running_site_and_shift()
         times, rules, steps = self.steps_1_7(site, self.day, shift, bool(self.case["ramadanDay"]))

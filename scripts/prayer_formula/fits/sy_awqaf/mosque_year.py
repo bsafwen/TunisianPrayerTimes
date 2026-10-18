@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Syria's governorates held out beyond Ramadan (fits/mosque_years.py, owner 2026-10-17): the owner's mosques that follow
-a governorate's Ramadan 1447 table on every day of it (the table's repeated rows left out, as fit.py leaves them), their
-2026 calendars scored on the other days at the governorate's zone (official-zones/sy_awqaf.json), as the app computes
-it. Every official table at hand is a Ramadan table, so a follower's year is the only check of the method outside
-Ramadan (Q12). The profile is fit.py's own, refitted here as fit.py does.
+Syria's mosques in the owner's dataset against the screens' zones (support only, owner 2026-10-11): each mosque's 2026
+calendar against every zone's 2026 days as the app shows them (fit.py's fast closed form, the reference's PRAYTIMES
+computation), the zone it matches best and the share of its minutes. A mosque that matches a zone on every day shows
+that mosques print the screens' tables. The zones' records are the tables' own whole years (fit.py), so nothing is
+merged into them, and the dataset is read in place, never copied (A7).
 
-Usage: python scripts/prayer_formula/fits/sy_awqaf/mosque_year.py [--write]   (run fit.py first)
+Usage: python scripts/prayer_formula/fits/sy_awqaf/mosque_year.py   (run fit.py first)
 """
 
 from __future__ import annotations
@@ -20,40 +20,66 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(HERE))
 import common as C  # noqa: E402
-import fit as F  # noqa: E402  (the Ramadan tables and the profile)
+import fit as F  # noqa: E402  (the fast closed form)
 import mosque_years as M  # noqa: E402
 
 ASSET = C.ASSETS / "sy_awqaf.json"
+DAYS = [datetime.date(M.YEAR, 1, 1) + datetime.timedelta(days=i) for i in range(365)]
 
 
-def epoch_rows(rows) -> dict:
-    """[(date, {event: local minute})] as {date: {event: UTC epoch minute}}."""
-    return {d: {e: C.local_to_epoch(F.TZ, d, f"{m // 60}:{m % 60:02d}") // 60 for e, m in t.items()} for d, t in rows}
+def zone_days(z: dict) -> dict:
+    """The zone's local minutes on every day of the dataset's year, as the app shows them."""
+    at = z.get("eveningPoint") or z["point"]
+    lat, lng = at["latE5"] / 1e5, at["lngE5"] / 1e5
+    angles = {e: z[k] for e, k in (("FAJR", "fajrAngleDeg"), ("ISHA", "ishaAngleDeg")) if z.get(k) is not None}
+    out = {}
+    for day in DAYS:
+        shown = F.ref.table_date(day, z["referenceYear"], z.get("tableRows", "CALENDAR"))
+        out[day] = {e: F.rounded(F.unrounded(e, shown, lat, lng, z.get("asrShadowHourUt"), angles, z.get("offsets")))
+                    for e in C.EVENTS}
+    return out
 
 
-def main(argv: list[str]) -> int:
+def compare(mosque: M.Mosque, days: dict) -> tuple[int, int, int]:
+    """Exact minutes, minutes compared and the largest difference of a mosque's calendar against a zone's days."""
+    exact = total = worst = 0
+    for day, computed in days.items():
+        printed = mosque.calendar.get(day)
+        if not printed:
+            continue
+        for e in C.EVENTS:
+            try:
+                h, m = (int(x) for x in str(printed[e]).strip()[:5].split(":"))
+            except ValueError:
+                continue
+            diff = abs((h * 60 + m - computed[e] + 720) % 1440 - 720)
+            total += 1
+            exact += diff == 0
+            worst = max(worst, diff)
+    return exact, total, worst
+
+
+def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
-    points, city_rows = F.load_cities()
-    for zid, (_, pt) in F.ZONES.items():
-        if pt is not None:
-            points[zid] = pt
-    damascus = F.load_rows(F.SY / "dam.txt", datetime.date(2026, 2, 19))
-    raqqa = F.load_rows(F.SY / "raq1446.txt", datetime.date(2025, 3, 1))
-    quiet = lambda *_: None  # noqa: E731
-    first = F.fit([("damascus", points["damascus"], damascus), ("raqqa", points["raqqa"], raqqa)], say=quiet, report=False)
-    q_dam = F.quirks_of(damascus, points["damascus"], first)
-    q_raq = F.quirks_of(raqqa, points["raqqa"], first)
-    dam = [(d, t) for d, t in damascus if d not in q_dam]
-    raq = [(d, t) for d, t in raqqa if d not in q_raq]
-    p = F.fit([("damascus", points["damascus"], dam), ("raqqa", points["raqqa"], raq)], say=quiet, report=False)
-    method = F.method_of(p, p["maghrib"]["raqqa"], p["maghrib"]["damascus"])
-    official = {zid: epoch_rows(rows) for zid, rows in city_rows.items() if zid != "damascus"}
-    official["damascus"] = epoch_rows(dam)
-    print(f"Damascus 1447: {len(dam)} days without the repeated rows ({', '.join(str(d) for d in q_dam)})")
-    zones = {z["id"]: z for z in json.loads(ASSET.read_text(encoding="utf-8"))["zones"]}
-    return M.run(argv, asset_path=ASSET, countries=["SY"], tz=F.TZ, official=official,
-                 compute_for=lambda zid: M.asset_computer(method, zones, zid, F.TZ, "SY"))
+    zones = json.loads(ASSET.read_text(encoding="utf-8"))["zones"]
+    tables = {z["id"]: zone_days(z) for z in zones}
+    names = {z["id"]: z["nameAr"] for z in zones}
+    mosques = M.mosques("SY")
+    print(f"{len(mosques)} Syrian mosques in the owner's dataset, {len(zones)} zones; each mosque's best zone:")
+    followers = 0
+    for mosque in sorted(mosques, key=lambda m: (m.city, m.name)):
+        scored = [(compare(mosque, days), zid) for zid, days in tables.items()]
+        (exact, total, worst), zid = max(scored, key=lambda s: (s[0][0] / max(1, s[0][1]), -s[0][2]))
+        if not total:
+            continue
+        share = exact / total
+        follows = share >= M.FOLLOW_EXACT and worst <= 1
+        followers += follows
+        print(f"  {mosque.city or '-'} / {mosque.name}: {zid} «{names[zid]}» {exact}/{total} ({100 * share:.1f} %), "
+              f"worst {worst} min{' - follows it' if follows else ''}")
+    print(f"{followers} of {len(mosques)} mosques follow a zone (at least {100 * M.FOLLOW_EXACT:.0f} % exact, all within 1 min)")
+    return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1:]))
+    sys.exit(main())

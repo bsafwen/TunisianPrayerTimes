@@ -106,6 +106,9 @@ internal class Sky(val site: Site, val date: LocalDate, val zoneId: ZoneId, val 
             val noon = SolarEngine.sun(model, localNoonJd(c))
             SunAt { jd -> SunState(instantSun.at(jd).declinationDeg, noon.equationOfTimeMin, noon.distanceAu) }
         }
+        SunEvaluation.PRAYTIMES -> fixed(
+            SolarEngine.sun(model, c.jd0 - site.pointOf(event).longitude / 360.0 + SunEvaluation.PRAYTIMES_HOURS.getValue(event) / 24.0),
+        )
     }
 
     /** S4: 12:00 local civil time of [c]'s civil date in the place's zone. */
@@ -208,6 +211,12 @@ internal class Sky(val site: Site, val date: LocalDate, val zoneId: ZoneId, val 
                 val dhuhr = transitHours + (method.offset(TimeEvent.DHUHR) + method.dhuhrAfterTransitMin) / 60.0
                 val noonZenith = 90.0 - Solver.altitude(dhuhr, point.latitude, point.longitude, sun, cycle)
                 altitude = altitudeAt(if (signed) noonZenith.withSign(point.latitude - atTransit) else noonZenith)
+                hours = solveAt(altitude)
+            }
+            SunEvaluation.PRAYTIMES -> {
+                // aladhan's noon shadow: δ at the zone's hour after 0h UT of the date; PrayTimes.js's own, the fixed δ, without one.
+                val declination = site.zone?.asrShadowHourUt?.let { SolarEngine.sun(model, cycle.jd0 + it / 24.0).declinationDeg } ?: atTransit
+                altitude = altitudeAt(zenithOf(declination))
                 hours = solveAt(altitude)
             }
             SunEvaluation.SHADOW_AT_EVENT -> {

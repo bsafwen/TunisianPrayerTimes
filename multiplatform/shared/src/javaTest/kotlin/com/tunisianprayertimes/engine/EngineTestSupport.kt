@@ -8,6 +8,7 @@ import com.tunisianprayertimes.method.PrayerMethod
 import com.tunisianprayertimes.place.LatLngE5
 import com.tunisianprayertimes.place.OfficialZone
 import com.tunisianprayertimes.place.PrayerPlace
+import com.tunisianprayertimes.place.TableRows
 import com.tunisianprayertimes.place.ZoneOffsetRule
 import com.tunisianprayertimes.method.TerrainClass
 import com.tunisianprayertimes.place.ZoneSource
@@ -82,6 +83,11 @@ object EngineTestSupport {
         })
         put("elevationShiftFloor", zone.elevationShiftFloor)
         put("sunriseAtPlace", zone.sunriseAtPlace)
+        zone.referenceYear?.let { put("referenceYear", it) }
+        if (zone.tableRows != TableRows.CALENDAR) put("tableRows", zone.tableRows.name)
+        zone.asrShadowHourUt?.let { put("asrShadowHourUt", it) }
+        zone.fajrAngleDeg?.let { put("fajrAngleDeg", it) }
+        zone.ishaAngleDeg?.let { put("ishaAngleDeg", it) }
     }
 
     fun zoneOf(element: JsonElement): OfficialZone? {
@@ -115,6 +121,11 @@ object EngineTestSupport {
             }.toMap(),
             elevationShiftFloor = o["elevationShiftFloor"]?.jsonPrimitive?.doubleOrNull,
             sunriseAtPlace = o["sunriseAtPlace"]?.jsonPrimitive?.booleanOrNull ?: false,
+            referenceYear = o["referenceYear"]?.jsonPrimitive?.intOrNull,
+            tableRows = string("tableRows")?.let(TableRows::valueOf) ?: TableRows.CALENDAR,
+            asrShadowHourUt = o["asrShadowHourUt"]?.jsonPrimitive?.doubleOrNull,
+            fajrAngleDeg = o["fajrAngleDeg"]?.jsonPrimitive?.doubleOrNull,
+            ishaAngleDeg = o["ishaAngleDeg"]?.jsonPrimitive?.doubleOrNull,
         )
     }
 
