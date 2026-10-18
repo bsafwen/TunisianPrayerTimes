@@ -103,7 +103,7 @@ class SilenceWindowPlanner(
         return SilenceFit(
             checkedDays = checked.size,
             notFitting = notFitting,
-            laterFixedEnd = if (notFitting.isEmpty()) null else laterFixedEnd(resolved, checked.map { it.second }),
+            laterFixedEnd = if (notFitting.isEmpty()) null else laterFixedEnd(prayer, resolved, checked.map { it.second }),
             adhanRelativeEnd = if (notFitting.isEmpty()) null else adhanRelativeEnd(resolved, checked.map { it.second }),
         )
     }
@@ -118,7 +118,7 @@ class SilenceWindowPlanner(
     }
 
     /** The earliest clock end, on the five-minute grid and not before the user's, after every day's start. */
-    private fun laterFixedEnd(rule: SilenceRule, checked: List<Checked>): LocalTime? {
+    private fun laterFixedEnd(prayer: Prayer, rule: SilenceRule, checked: List<Checked>): LocalTime? {
         val asSet = (rule.end as? SilenceEnd.Clock)?.time ?: return null
         val latestStart = checked.maxOf { it.start.atZone(zone).toLocalTime().truncatedTo(ChronoUnit.MINUTES) }
         val minutes = latestStart.toSecondOfDay() / 60 + 1
@@ -127,7 +127,7 @@ class SilenceWindowPlanner(
         val candidate = maxOf(LocalTime.of(onGrid / 60, onGrid % 60), asSet)
         // Each day's end as the planner resolves it, so a proposal is never an end the day reads as before its start.
         val fitsAll = checked.all { c ->
-            val end = SilenceEndpoints.end(SilenceEnd.Clock(candidate), c.start, c.adhan, zone)
+            val end = SilenceEndpoints.end(SilenceEnd.Clock(candidate), c.start, c.adhan, zone, prayer)
             end.resolution == EndResolution.AS_SET && !end.at.isAfter(c.adhan.plus(END_DOMAIN_MINUTES, ChronoUnit.MINUTES))
         }
         return candidate.takeIf { fitsAll }
@@ -173,7 +173,7 @@ class SilenceWindowPlanner(
             val resolved = SilenceEndpoints.withDefaults(rule, prayer, inm)
             val rawStart = SilenceEndpoints.start(resolved.start, adhan, zone)
             val start = clampedStart(resolved.start, adhan, zone)
-            val end = SilenceEndpoints.end(resolved.end, start, adhan, zone)
+            val end = SilenceEndpoints.end(resolved.end, start, adhan, zone, prayer)
             val endAt = minOf(end.at, adhan.plus(END_DOMAIN_MINUTES, ChronoUnit.MINUTES))
             return SilenceEnds(start, endAt, end.resolution, clamped = start != rawStart || endAt != end.at)
         }

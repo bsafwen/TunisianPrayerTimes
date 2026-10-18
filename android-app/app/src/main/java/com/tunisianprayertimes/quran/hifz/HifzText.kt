@@ -380,7 +380,7 @@ class HifzFix(
         }
 
     /**
-     * The morning reminder's line for a check: what will be asked, never its answer, which the review hides
+     * The reminder's line for a point, fresh or due a check: what will be asked, never its answer, which the review hides
      * until «أظهر».
      */
     val digestPrompt: String

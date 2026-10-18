@@ -61,6 +61,29 @@ class PlaceResolversTest {
     }
 
     @Test
+    fun ceutaAndMelillaKeepTheirAdmin1AndTheirOwnChoiceKeys() {
+        // 6.4: Ceuta and Melilla have their own keys, so a ma_habous pick there does not follow the user to the mainland.
+        val spain = ListIndex(
+            listOf(
+                row(6362987, 35.88919, -5.32042, "ES", "Europe/Madrid", admin1 = "CE"), // Ceuta
+                row(2513947, 35.29369, -2.93833, "ES", "Africa/Ceuta", admin1 = "ML"), // Melilla
+                row(2510112, 36.01393, -5.60695, "ES", "Europe/Madrid"), // Tarifa
+                row(3117735, 40.4165, -3.70256, "ES", "Europe/Madrid", admin1 = "29"), // Madrid, with a region code
+                row(2548885, 35.84755, -5.35835, "MA", "Africa/Casablanca"), // Fnideq
+            ),
+        )
+        val ceuta = CountryResolver.resolve(LatLngE5.of(35.888, -5.316), spain, "es", null)
+        assertEquals(CountryResolver.Resolution("ES", "CE"), ceuta)
+        assertEquals(CountryResolver.Resolution("ES", "ML"), CountryResolver.resolve(LatLngE5.of(35.29, -2.94), spain, "es", null))
+        // No other Spanish admin1 is kept: Tarifa across the strait, and Madrid's region code.
+        assertEquals(CountryResolver.Resolution("ES"), CountryResolver.resolve(LatLngE5.of(36.02, -5.60), spain, "es", null))
+        val madrid = CountryResolver.resolve(LatLngE5.of(40.42, -3.70), spain, "es", null)
+        assertEquals(CountryResolver.Resolution("ES"), madrid)
+        assertEquals("method_choice_ES-CE", CountryMethodDefaults.choiceKey(ceuta.countryCode, ceuta.admin1))
+        assertEquals("method_choice_ES", CountryMethodDefaults.choiceKey(madrid.countryCode, madrid.admin1))
+    }
+
+    @Test
     fun farFromEveryRow() {
         // Longyearbyen with no row in reach and no network: the phone's zone region SJ reads as NO.
         val longyearbyen = LatLngE5.of(78.2232, 15.6267)

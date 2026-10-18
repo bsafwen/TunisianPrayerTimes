@@ -1673,10 +1673,12 @@ private fun LocationPickerCard(
         value = withContext(Dispatchers.Default) { LocalityRepository.preparePicker(context, allDelegations) }
     }
     val savedDelegation = remember(delegationId, allDelegations) { allDelegations.find { it.id == delegationId } }
-    val openRegionCities by produceState(emptyList<PlaceCatalogue.Row>()) {
+    // The open regions' cities with their names folded once, so the picker's search never folds 26,000 names per key.
+    val openRegionCities by produceState(CitySearch.Index.EMPTY) {
         value = withContext(Dispatchers.IO) {
             val open = listOf(Region.ARAB_LEAGUE, Region.EUROPE, Region.OVERSEAS_FRANCE, Region.OTHER).filter { PrefsManager.isRegionOpen(context, it) }
-            if (open.isEmpty()) emptyList() else PlaceCatalogue.get(context).listedRows().filter { Regions.of(it.ref.countryCode) in open }
+            if (open.isEmpty()) CitySearch.Index.EMPTY
+            else CitySearch.Index(PlaceCatalogue.get(context).listedRows().filter { Regions.of(it.ref.countryCode) in open })
         }
     }
 
@@ -2189,8 +2191,11 @@ private fun PrayerSettingsCard(
     val selectedLocalDate = remember(selectedDate) {
         LocalDate.of(selectedCal.get(Calendar.YEAR), selectedCal.get(Calendar.MONTH) + 1, selectedCal.get(Calendar.DAY_OF_MONTH))
     }
+    // The anchors show the phone's clock (D8): the zone is read again at each recomposition (every minute and on
+    // resume), so a zone change re-anchors the rows as it does the hero and the night card.
+    val phoneZone = java.time.ZoneId.systemDefault()
     // The five adhans of the prayer day shown, as instants (6.6).
-    val dailyAnchors = remember(delegationId, selectedLocalDate, refreshTick) {
+    val dailyAnchors = remember(delegationId, selectedLocalDate, refreshTick, phoneZone) {
         runCatching { prayerTimelineAnchors(context, selectedLocalDate) }.getOrDefault(emptyMap())
     }
     // Dhuhr in the phone's clock, for the Eid rows' cut-off (Tunisia only, A10).
@@ -2283,7 +2288,7 @@ private fun PrayerSettingsCard(
     }
     // The editors' anchors (6.9, D8): each adhan as an instant; Jumu'a on the Friday on or after the date shown.
     val sectionAnchors: Map<Prayer, PrayerTimelineAnchor> = remember(
-        delegationId, selectedLocalDate, refreshTick, silenceTimesRevision, isAidFitr, isAidAdha, selectedHijriYear, correctedCalendar,
+        delegationId, selectedLocalDate, refreshTick, silenceTimesRevision, isAidFitr, isAidAdha, selectedHijriYear, correctedCalendar, phoneZone,
     ) {
         val place = PrayerTimesRepository.place(context)
         buildMap {
@@ -5310,7 +5315,7 @@ private fun nextWakeAlarmTriggers(
         .allTriggers
 }
 
-private fun scheduledWakeAlarmTriggersForDay(
+internal fun scheduledWakeAlarmTriggersForDay(
     context: android.content.Context,
     delegationId: Int,
     config: com.tunisianprayertimes.PrayerWakeConfig,

@@ -43,6 +43,7 @@ import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -333,6 +334,7 @@ import kotlin.math.sign
                                 complete = neighbourCount >= neighbourTarget, skipped = neighbour.id in session.skippedIds,
                                 textSize = state.textSize,
                                 scroll = rememberScrollState(), scrollEnabled = false,
+                                showQuranTitle = reminder?.collection != null,
                                 modifier = Modifier.graphicsLayer {
                                     translationX = swipe.offset.floatValue - side * paneWidth.floatValue
                                 }.clearAndSetSemantics { })
@@ -352,7 +354,9 @@ import kotlin.math.sign
                             onSources = { sources = true },
                             showExplanation = showExplanation, onToggleExplanation = { showExplanation = !showExplanation },
                             explanationRequester = explanationRequester,
-                            onWordings = { wordings = true })
+                            onWordings = { wordings = true },
+                            // A collection reminder heads the reader with its own name, not the passage's.
+                            showQuranTitle = reminder?.collection != null)
                     }
 
                     // Counter: increment on the right, undo on the left, tap the ring to count too. Once the
@@ -507,6 +511,7 @@ private fun DhikrPage(
     showExplanation: Boolean = false, onToggleExplanation: () -> Unit = {},
     explanationRequester: BringIntoViewRequester? = null,
     onWordings: () -> Unit = {},
+    showQuranTitle: Boolean = false,
 ) {
     val p = LocalAdhkarPalette.current
     // The page names the works cited and nothing else; gradings and narrators stay in the source sheet.
@@ -525,6 +530,10 @@ private fun DhikrPage(
         // A Qur'an passage is typed as the mushaf prints it.
         val mushaf = if (entry.custom) null else MushafPassages.text(entry.id)
         if (entry.steps.isEmpty() && mushaf != null) {
+            // Under its name (the surah, «آية الكرسي»), unless the header already reads it.
+            if (showQuranTitle) Text(entry.title, Modifier.fillMaxWidth().padding(bottom = 4.dp).semantics { heading() }
+                .testTag("adhkar_reader_quran_title"), color = AdhkarHeading, fontSize = 18.sp,
+                fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
             MushafPassage(mushaf, entry.text, textSize.sp, (textSize * 1.9f).sp, p.forest,
                 Modifier.fillMaxWidth().then(activate).testTag("adhkar_reader_text"))
         } else if (entry.steps.isEmpty()) {

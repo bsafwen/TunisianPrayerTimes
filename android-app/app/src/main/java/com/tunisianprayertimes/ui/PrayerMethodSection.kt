@@ -50,7 +50,6 @@ import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.engine.CustomMethodRanges
 import com.tunisianprayertimes.engine.HighLatitudeRule
 import com.tunisianprayertimes.engine.TimeEvent
-import com.tunisianprayertimes.method.CountryMethodDefaults
 import com.tunisianprayertimes.method.FajrRule
 import com.tunisianprayertimes.method.IshaRule
 import com.tunisianprayertimes.method.PrayerMethod
@@ -300,7 +299,8 @@ private fun PrayerMethodSheet(
     val context = LocalContext.current
     val defaults = remember(place) { placeTimes.defaults(place) }
     val country = defaults.entries.mapNotNull(PrayerMethods::byId)
-    val others = remember(place) { CountryMethodDefaults.otherMethods().filter { m -> country.none { it.id == m.id } } }
+    // Only the methods followed at the place (owner, 2026-10-18): never Slovenia's in Riyadh or New York.
+    val others = remember(place) { placeTimes.offeredMethods(place).filter { m -> country.none { it.id == m.id } } }
     val today = LocalDate.now(place.zone)
     val index = remember { OfficialZoneAssets.index(context) }
     val admin1Name = remember(place) { PlaceCatalogue.get(context).admin1Name(place.countryCode, place.admin1) }

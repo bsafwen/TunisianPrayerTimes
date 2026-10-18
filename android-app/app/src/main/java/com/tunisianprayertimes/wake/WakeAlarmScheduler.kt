@@ -53,6 +53,8 @@ object WakeAlarmScheduler {
 	private val DUE_RING_GRACE_MILLIS = TimeUnit.MINUTES.toMillis(15)
 	private const val KEY_RING_OFFSETS_PREFIX = "rings:"
 	private val RING_OFFSETS_RETAIN_MILLIS = TimeUnit.DAYS.toMillis(2)
+	/** How far a skip or a stop follows its occurrence: no two occurrences of an alarm are closer than a day. */
+	private val MARKER_FOLLOW_MILLIS = TimeUnit.HOURS.toMillis(12)
 	private val reminderRefreshScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
 	fun activateSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
@@ -434,6 +436,7 @@ object WakeAlarmScheduler {
 		val repo = PrayerWakeRepository(context)
 		val now = Calendar.getInstance()
 		var configs = repo.getCurrentStore().alarms
+		if (followMovedOccurrences(context, repo, configs, now)) configs = repo.getCurrentStore().alarms
 		val staleSkipCutoffMillis = now.timeInMillis - TimeUnit.MINUTES.toMillis(REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES)
 		configs
 			.filter { config ->
@@ -459,6 +462,56 @@ object WakeAlarmScheduler {
 				canRemoveExpiredOneOff(context, config, nowMillis)
 			}
 			.forEach { config -> runCatching { repo.deleteWakeAlarm(config.id) } }
+	}
+
+	/**
+	 * A skip or a stop names its occurrence by the main ring's instant. When the prayer time moves under it (another
+	 * place or method, an edited Jumu'a, a new phone zone for a fixed time), the marker follows its occurrence to the
+	 * nearest one within [MARKER_FOLLOW_MILLIS]; before, the moved occurrence rang although skipped. A marker more
+	 * than that in the past is spent and stays. Returns whether a marker moved.
+	 */
+	private suspend fun followMovedOccurrences(
+		context: Context,
+		repository: PrayerWakeRepository,
+		configs: List<PrayerWakeConfig>,
+		now: Calendar,
+	): Boolean {
+		val marked = configs.filter { config ->
+			config.isRepeatingWakeAlarm() &&
+				(config.skipNextOccurrenceAtMillis != null || config.stoppedOccurrenceAtMillis != null)
+		}
+		if (marked.isEmpty()) return false
+		val prayerDays = loadPrayerDayContexts(context, now)
+		var moved = false
+		marked.forEach { config ->
+			val occurrences = WakeAlarmComputer
+				.scheduledTriggers(config.copy(skipNextOccurrenceAtMillis = null, stoppedOccurrenceAtMillis = null), prayerDays)
+				.mapTo(mutableSetOf()) { trigger -> trigger.occurrenceAtMillis }
+			fun followed(marker: Long?): Long? = marker
+				?.takeIf { it !in occurrences && it > now.timeInMillis - MARKER_FOLLOW_MILLIS }
+				?.let { stale ->
+					occurrences
+						.filter { occurrence -> abs(occurrence - stale) < MARKER_FOLLOW_MILLIS }
+						.minByOrNull { occurrence -> abs(occurrence - stale) }
+				}
+			val skipped = config.skipNextOccurrenceAtMillis
+			followed(skipped)?.let { occurrence ->
+				repository.setWakeAlarmSkipOccurrence(config.id, occurrence) ?: return@let
+				WakeOccurrenceSkipRegistry.clear(config.id, requireNotNull(skipped))
+				WakeOccurrenceSkipRegistry.mark(config.id, occurrence)
+				// Rings put aside for an undo were due at the old time.
+				WakeAlarmQueueHolder.queue.discardSkippedOccurrence(config.id, skipped)
+				moved = true
+			}
+			val stopped = config.stoppedOccurrenceAtMillis
+			followed(stopped)?.let { occurrence ->
+				repository.setWakeAlarmStoppedOccurrence(config.id, occurrence) ?: return@let
+				WakeOccurrenceSkipRegistry.clear(config.id, requireNotNull(stopped))
+				WakeOccurrenceSkipRegistry.mark(config.id, occurrence)
+				moved = true
+			}
+		}
+		return moved
 	}
 
 	fun cancelAll(context: Context) {

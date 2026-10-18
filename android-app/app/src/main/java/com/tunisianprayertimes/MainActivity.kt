@@ -31,10 +31,6 @@ object MainTabNavigation {
     const val QURAN_ACTION_HIFZ = "hifz"
     const val QURAN_ACTION_HIFZ_REVIEW = "hifz_review"
     const val QURAN_ACTION_HIFZ_RECORD = "hifz_record"
-    /** Followed by a point's id: its fix, from a reminder about that point. */
-    const val QURAN_ACTION_HIFZ_FIX_PREFIX = "hifz_fix:"
-    /** Followed by points' ids, «1,2»: those points, from a reminder about several. */
-    const val QURAN_ACTION_HIFZ_POINTS_PREFIX = "hifz_points:"
     /** What the prayers tab opens: the city picker, from the travel notification (6.8). */
     const val EXTRA_PRAYERS_ACTION = "com.tunisianprayertimes.extra.PRAYERS_ACTION"
     const val PRAYERS_ACTION_CHOOSE_PLACE = "choose_place"

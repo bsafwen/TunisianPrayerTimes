@@ -98,7 +98,7 @@
             </intent-filter>
         </receiver>
 
-        <!-- The daily «المراجعة» reminder. -->
+        <!-- The «المراجعة» reminder, after prayers or at the times chosen. -->
         <receiver
             android:name=".quran.hifz.HifzReminderReceiver"
             android:exported="false" />

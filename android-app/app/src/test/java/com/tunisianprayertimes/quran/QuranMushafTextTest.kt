@@ -51,9 +51,10 @@ class QuranMushafTextTest {
     }
 
     @Test
-    fun plainTextDropsWhatOnlyTheMushafFontDraws() {
+    fun plainTextTakesMarksOtherFontsDrawAsMeant() {
+        // The wasl alone; the eased hamza on the line (13:5) as the dot above, not dropped with the hamza it marks.
         assertEquals("\u0671\u0644\u0652", QuranMushafText.plain("\u0671\u064E\u06EC\u0644\u0652"))
-        assertEquals("\u0623\u064E\u0670\u0630", QuranMushafText.plain("\u0623\u064E\u0670\u06DF\u0630"))
+        assertEquals("\u0623\u064E\u0670\u06EC\u0630", QuranMushafText.plain("\u0623\u064E\u0670\u06DF\u0630"))
     }
 
     @Test

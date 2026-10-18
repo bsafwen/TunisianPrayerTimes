@@ -54,7 +54,8 @@ object CountryResolver {
             picked != null && normalize(picked.countryCode) == country -> picked
             else -> index.nearestOf(point, country)
         }
-        return Resolution(country, admin1 = admin?.takeIf { country in ADMIN1_COUNTRIES }?.admin1, admin2 = admin?.takeIf { country in ADMIN2_COUNTRIES }?.admin2)
+        val admin1 = admin?.admin1?.takeIf { country in ADMIN1_COUNTRIES || (country == "ES" && it in CEUTA_MELILLA) }
+        return Resolution(country, admin1 = admin1, admin2 = admin?.takeIf { country in ADMIN2_COUNTRIES }?.admin2)
     }
 
     private fun countryOf(point: LatLngE5, index: CityIndex, networkCountry: String?, phoneZoneRegion: String?): String? {
@@ -77,6 +78,9 @@ object CountryResolver {
 
     /** The federal subject (RU), the wilaya (DZ, MR), the emirate (AE) or the governorate (JO, IQ). */
     val ADMIN1_COUNTRIES = setOf("RU", "DZ", "MR", "AE", "JO", "IQ")
+
+    /** Spain's only admin1 kept, Ceuta's and Melilla's: their own choice keys and Habous localities (6.4, 6.8). */
+    val CEUTA_MELILLA = setOf("CE", "ML")
 
     /** The département (FR), the governorate (PS), the district (TR) or the municipality (NO). */
     val ADMIN2_COUNTRIES = setOf("FR", "PS", "TR", "NO")

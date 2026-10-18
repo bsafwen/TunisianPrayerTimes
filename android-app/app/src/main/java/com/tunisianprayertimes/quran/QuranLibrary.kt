@@ -149,17 +149,22 @@ fun quranNameKey(value: String): String = value.trim()
     .removePrefix("سوره ").trim()
 
 /**
- * The text a verse is copied or shared as: the index's own Qaloun text, untouched, then where it is.
- * A passage joins its verses in order, each followed by its number.
+ * The text a verse is copied or shared as, for whatever font the other app has: the mushaf's words
+ * ([QuranMushafText.text]) in the code points other fonts draw as the mushaf means them ([QuranMushafText.plain]),
+ * then where it is. The index's own encoding is for the King Fahd font: elsewhere its wasl reads as a vowel, its open
+ * tanween as other marks, and its waqf signs are at Maghribi positions, not the mushaf's; so a verse goes without
+ * waqf signs, as the Quran tab shows it. The number is the mushaf's, in the later Madani count it names, which other
+ * mushafs do not all follow. A passage joins its verses in order, each followed by its number.
  */
 fun quranShareText(surahName: String, verses: List<QuranVerse>): String {
     val numbered = verses.filter { it.ayah > 0 }
     if (numbered.isEmpty()) return ""
-    val body = if (numbered.size == 1) numbered.first().text
-        else numbered.joinToString(" ") { "${it.text} (${it.ayah})" }
+    fun words(verse: QuranVerse) = QuranMushafText.plain(QuranMushafText.text(verse.text))
+    val body = if (numbered.size == 1) words(numbered.first())
+        else numbered.joinToString(" ") { "${words(it)} (${it.ayah})" }
     val where = if (numbered.size == 1) "$surahName: ${numbered.first().ayah}"
         else "$surahName: ${numbered.first().ayah} إلى ${numbered.last().ayah}"
-    return "﴿$body﴾ [$where] · رواية قالون عن نافع"
+    return "﴿$body﴾ [$where] · رواية قالون عن نافع، العدّ المدني الأخير"
 }
 
 /** A verse saved from the verse card, newest first. */

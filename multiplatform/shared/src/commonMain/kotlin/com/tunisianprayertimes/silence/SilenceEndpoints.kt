@@ -142,11 +142,11 @@ object SilenceEndpoints {
     /** An end's instant and how it was found. */
     data class End(val at: Instant, val resolution: EndResolution)
 
-    /** The end's instant from the window's (already clamped) [start] (D16). */
-    fun end(end: SilenceEnd, start: Instant, adhan: Instant, zone: ZoneId): End = when (end) {
+    /** The end's instant from the window's (already clamped) [start] (D16); [prayer] reads an Isha's evening end. */
+    fun end(end: SilenceEnd, start: Instant, adhan: Instant, zone: ZoneId, prayer: Prayer? = null): End = when (end) {
         is SilenceEnd.FromStart -> End(start.plusSeconds(end.minutes * 60L), EndResolution.AS_SET)
         is SilenceEnd.FromAdhan -> End(adhan.plusSeconds(end.minutes * 60L), EndResolution.AS_SET)
-        is SilenceEnd.Clock -> clockEnd(end, start, adhan, zone).let { resolved ->
+        is SilenceEnd.Clock -> clockEnd(end, start, adhan, zone, prayer).let { resolved ->
             // A floor after the adhan (D12's Jumu'a end in Tunisia): the later end is the rule as set.
             val floor = end.atLeastAdhanMinutes?.let { adhan.plusSeconds(it * 60L) }
             if (floor != null && floor >= resolved.at) End(floor, EndResolution.AS_SET) else resolved
@@ -158,14 +158,17 @@ object SilenceEndpoints {
      * D16: the clock time on the start's day when it comes after the start; otherwise later by at most
      * [CAP_MINUTES], never to the next day; and if that still comes before the start, the saved offset from
      * the adhan, so the prayer is still silenced. An adhan after midnight keeps an evening end on its evening:
-     * when the clock time's occurrence nearest the adhan comes before the adhan and the start (an Isha at 00:14
-     * with a 22:00 end), that is the end, before the start, not the start's day's 22:00 nearly a day later.
+     * when the clock time's occurrence nearest the end as saved (adhan + the saved offset; the adhan itself for an
+     * Isha saved before the offset was stored) comes before the start, that is the end, so an Isha at 00:14 with
+     * a 22:00 end saved at adhan + 150 is not silenced until 22:00 the same day. A long window saved on purpose
+     * keeps its end: Fajr until 23:45, saved about 20 h after the adhan, or set before offsets were stored.
      */
-    private fun clockEnd(end: SilenceEnd.Clock, start: Instant, adhan: Instant, zone: ZoneId): End {
+    private fun clockEnd(end: SilenceEnd.Clock, start: Instant, adhan: Instant, zone: ZoneId, prayer: Prayer?): End {
         val day = start.atZone(zone).toLocalDate()
         val onStartsDay = ZonedDateTime.of(day, end.time, zone).toInstant()
-        val nearest = nearestOccurrence(end.time, adhan, zone)
-        val asSet = if (onStartsDay > start && nearest < adhan && nearest <= start) nearest else onStartsDay
+        val meantNear = end.savedAdhanOffsetMinutes?.let { adhan.plusSeconds(it * 60L) } ?: adhan.takeIf { prayer == Prayer.ISHA }
+        val meant = meantNear?.let { nearestOccurrence(end.time, it, zone) }
+        val asSet = if (meant != null && onStartsDay > start && meant <= start) meant else onStartsDay
         if (asSet > start) return End(asSet, EndResolution.AS_SET)
         val lastMinuteOfDay = ZonedDateTime.of(asSet.atZone(zone).toLocalDate(), LocalTime.of(23, 59), zone).toInstant()
         val capped = minOf(asSet.plusSeconds(CAP_MINUTES * 60), lastMinuteOfDay)

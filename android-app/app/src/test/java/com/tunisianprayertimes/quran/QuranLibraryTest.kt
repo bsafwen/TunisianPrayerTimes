@@ -117,14 +117,44 @@ class QuranLibraryTest {
     }
 
     @Test
-    fun shareText_keepsTheIndexTextAndSaysWhereItIs() {
-        val one = QuranVerse(2, 21, "نص الآية", listOf(5))
-        val two = QuranVerse(2, 22, "نص التالية", listOf(5))
-        assertEquals("﴿نص الآية﴾ [البقرة: 21] · رواية قالون عن نافع", quranShareText("البقرة", listOf(one)))
+    fun shareText_isTheMushafsWordsForAnyFontAndSaysWhereItIs() {
+        // 1:5 and 1:6 as the index has them: the King Fahd encoding, whose wasl carries a joining vowel and a dot (other
+        // fonts would show a damma to read on the alif of ihdina, a fatha on the article).
+        val one = QuranVerse(1, 5, "\u0627\u064F\u06EA\u0647\u0652\u062F\u0650\u0646\u064E\u0627 \u0627\u064E\u06EC\u0644\u0635\u0651\u0650\u0631\u064E\u0670\u0637\u064E \u0627\u064E\u06EC\u0644\u0652\u0645\u064F\u0633\u0652\u062A\u064E\u0642\u0650\u064A\u0645\u064E", listOf(1))
+        val two = QuranVerse(1, 6, "\u0635\u0650\u0631\u064E\u0670\u0637\u064E \u0627\u064E\u06EC\u0644\u0630\u0650\u064A\u0646\u064E \u0623\u064E\u0646\u0652\u0639\u064E\u0645\u0652\u062A\u064E \u0639\u064E\u0644\u064E\u064A\u0652\u0647\u0650\u0645\u0652", listOf(1))
+        assertEquals("\uFD3F\u0671\u0647\u0652\u062F\u0650\u0646\u064E\u0627 \u0671\u0644\u0635\u0651\u0650\u0631\u064E\u0670\u0637\u064E \u0671\u0644\u0652\u0645\u064F\u0633\u0652\u062A\u064E\u0642\u0650\u064A\u0645\u064E\uFD3E [الفاتحة: 5] · رواية قالون عن نافع، العدّ المدني الأخير", quranShareText("الفاتحة", listOf(one)))
         assertEquals(
-            "﴿نص الآية (21) نص التالية (22)﴾ [البقرة: 21 إلى 22] · رواية قالون عن نافع",
-            quranShareText("البقرة", listOf(one, two)),
+            "\uFD3F\u0671\u0647\u0652\u062F\u0650\u0646\u064E\u0627 \u0671\u0644\u0635\u0651\u0650\u0631\u064E\u0670\u0637\u064E \u0671\u0644\u0652\u0645\u064F\u0633\u0652\u062A\u064E\u0642\u0650\u064A\u0645\u064E (5) \u0635\u0650\u0631\u064E\u0670\u0637\u064E \u0671\u0644\u0651\u064E\u0630\u0650\u064A\u0646\u064E \u0623\u064E\u0646\u0652\u0639\u064E\u0645\u0652\u062A\u064E \u0639\u064E\u0644\u064E\u064A\u0652\u0647\u0650\u0645\u0652 (6)\uFD3E [الفاتحة: 5 إلى 6] · رواية قالون عن نافع، العدّ المدني الأخير",
+            quranShareText("الفاتحة", listOf(one, two)),
         )
+        assertEquals("", quranShareText("الفاتحة", listOf(QuranVerse(1, 0, "\u0628\u0650\u0633\u0652\u0645\u0650 \u0627\u0644\u0644\u064E\u0651\u0647\u0650 \u0627\u0644\u0631\u064E\u0651\u062D\u0652\u0645\u064E\u0670\u0646\u0650 \u0627\u0644\u0631\u064E\u0651\u062D\u0650\u064A\u0645\u0650", listOf(1)))))
+    }
+
+    @Test
+    fun shareText_ofEveryVerseKeepsItsWordsInMarksOtherFontsDrawAsMeant() {
+        val entries = JSONObject(File("src/main/assets/quran/index.json").readText()).getJSONArray("entries")
+        val texts = LinkedHashMap<Pair<Int, Int>, MutableList<String>>()
+        for (k in 0 until entries.length()) {
+            val entry = entries.getJSONObject(k)
+            texts.getOrPut(entry.getInt("surah") to entry.getInt("ayah")) { mutableListOf() } += entry.getString("text")
+        }
+        // Waqf signs and the sajdah sign, the small zero, the empty low stop, the encoding's open tanween and its ya
+        // barree, a right-to-left mark: none is drawn by other fonts as the mushaf means it.
+        val foreign = Regex("[\u06D6-\u06DF\u06E9\u06EA\u0656\u0657\u065E\u06D2\u200F]")
+        var shared = 0
+        for ((key, fragments) in texts) {
+            if (key.second == 0) continue
+            val source = fragments.joinToString(" ")
+            val text = quranShareText("x", listOf(QuranVerse(key.first, key.second, source, listOf(1))))
+            val body = text.substringAfter('\uFD3F').substringBefore('\uFD3E')
+            assertEquals(key.toString(), "\uFD3F$body\uFD3E [x: ${key.second}] · رواية قالون عن نافع، العدّ المدني الأخير", text)
+            assertFalse(key.toString(), foreign.containsMatchIn(body))
+            // The wasl alif alone, as other fonts expect it: its joining vowel and dot are the mushaf font's.
+            assertFalse(key.toString(), Regex("\u0671[\u064B-\u0652\u06EC\u065C]").containsMatchIn(body))
+            assertEquals(key.toString(), QuranMushafText.text(source).split(' ').size, body.split(' ').size)
+            shared++
+        }
+        assertEquals(6214, shared)
     }
 
     @Test

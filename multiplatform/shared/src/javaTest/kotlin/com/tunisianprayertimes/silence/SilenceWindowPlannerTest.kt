@@ -139,6 +139,9 @@ class SilenceWindowPlannerTest {
         val night = assertNotNull(SilenceWindowPlanner.window(Prayer.ISHA, june21, isha, SilenceRule(SilenceStart.FromAdhan(0), SilenceEnd.Clock(LocalTime.of(0, 30), 16)), paris, false))
         assertEquals(at("2026-06-22", "00:30", paris), night.end)
         assertEquals(EndResolution.AS_SET, night.endResolution)
+        // Saved before offsets were stored: the same evening reading, then D12's adhan + 45.
+        val legacy = assertNotNull(SilenceWindowPlanner.window(Prayer.ISHA, june21, isha, SilenceRule(SilenceStart.FromAdhan(0), SilenceEnd.Clock(LocalTime.of(22, 0))), paris, false))
+        assertEquals(at("2026-06-22", "00:59", paris), legacy.end)
         // The year run counts such a day as not fitting, and proposes no fixed end that day would read as before its start.
         val planner = SilenceWindowPlanner(paris, false, emptyMap()) {
             SilenceDay(it, day(it, paris, "03:40", "05:30", "13:45", "17:55", "22:05", if (it.dayOfMonth % 2 == 0) "+1 00:14" else "23:50"))
@@ -147,6 +150,20 @@ class SilenceWindowPlannerTest {
         assertEquals(4, fit.notFitting.size)
         assertNull(fit.laterFixedEnd)
         assertEquals(150, fit.adhanRelativeEnd)
+    }
+
+    @Test
+    fun aLongFajrWindowKeepsItsEndOnItsDay() {
+        // Fajr silenced until 23:45 on purpose, about 20 h after the adhan: its end is never read as the evening
+        // before the adhan, whether saved with its offset or before offsets were stored.
+        val date = LocalDate.of(2026, 5, 21)
+        val fajr = at("2026-05-21", "03:40", tunis)
+        for (saved in listOf(null, 20 * 60 + 5)) {
+            val rule = SilenceRule(SilenceStart.FromAdhan(0), SilenceEnd.Clock(LocalTime.of(23, 45), saved))
+            val window = assertNotNull(SilenceWindowPlanner.window(Prayer.FAJR, date, fajr, rule, tunis, true))
+            assertEquals(at("2026-05-21", "23:45", tunis), window.end)
+            assertEquals(EndResolution.AS_SET, window.endResolution)
+        }
     }
 
     @Test

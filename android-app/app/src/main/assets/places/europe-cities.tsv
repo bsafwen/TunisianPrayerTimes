@@ -5672,7 +5672,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 2513917	ES				Mérida	Merida	ماردة	مريدا	3891802	-634292		59857	
 2513931	ES				Mengibar				3796978	-380884		9927	
 2513944	ES				Membrilla				3897198	-334330		6466	
-2513947	ES				Melilla		مليلية	Ciudad Autónoma de Melilla|Ciudad de Melilla	3529369	-293833	Africa/Ceuta	85985	
+2513947	ES	ML		14	Melilla		مليلية	Ciudad Autónoma de Melilla|Ciudad de Melilla	3529369	-293833	Africa/Ceuta	85985	
 2513949	ES				Meliana				3953333	-33333	Europe/Madrid	10395	
 2513961	ES				Medina Sidonia			Medina-Sidonia	3645695	-592717		11658	
 2513983	ES				Mazarrón	Mazarron			3759920	-131493		35221	
@@ -6665,7 +6665,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 6355021	ES				Port de Pollença	Port de Pollenca			3990750	308140		5900	
 6355127	ES				Costa Teguise				2899838	-1349911	Atlantic/Canary	7629	
 6355177	ES				La Manga del Mar Menor			La Manga	3764129	-71651	Europe/Madrid	10000	
-6362987	ES				Ceuta				3588919	-532042		83179	
+6362987	ES	CE		22	Ceuta				3588919	-532042		83179	
 6533820	ES				Sant Cristòfol de les Fonts	Sant Cristofol de les Fonts			4216964	249943		8791	
 6544075	ES				Port d'Alcúdia	Port d'Alcudia			3984182	313291		5099	
 6544099	ES				Moncloa-Aravaca				4043547	-373170		116531	
@@ -6734,7 +6734,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 8050880	ES				Ermitagaña	Ermitagana			4281084	-166409		17163	
 8050888	ES				Primer Ensanche				4281483	-164898		22538	
 8050889	ES				Segundo Ensanche				4281390	-164295		22538	
-8259951	ES				Principe				3587924	-534695		12000	
+8259951	ES	CE		88	Principe				3587924	-534695		12000	
 8285534	ES				Fuencarral-El Pardo				4049840	-373140		220085	
 8285535	ES				Villa de Vallecas				4036695	-360146		65162	
 8629192	ES				Natahoyo				4354035	-568233		20000	

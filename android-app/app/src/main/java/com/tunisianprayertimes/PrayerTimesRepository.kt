@@ -57,10 +57,13 @@ object PrayerTimesRepository {
     /** The saved place (6.8). */
     fun place(context: Context): PrayerPlace = PrefsManager.getPlace(context)
 
-    /** A place's method choice: its country's saved one, else the country's default (6.4); none for a delegation. */
+    /**
+     * A place's method choice: its country's saved one where its method is offered at the place, else the country's
+     * default (6.4, owner 2026-10-18); none for a delegation.
+     */
     fun choice(context: Context, place: PrayerPlace = place(context)): PrayerMethodChoice? = when (place) {
         is PrayerPlace.Inm -> null
-        is PrayerPlace.Coordinates -> PrefsManager.getMethodChoice(context, place) ?: placeTimes(context).defaultChoice(place)
+        is PrayerPlace.Coordinates -> placeTimes(context).choiceAt(place, PrefsManager.getMethodChoice(context, place))
     }
 
     /** What the times depend on (6.6): the place key, then the choice key. */

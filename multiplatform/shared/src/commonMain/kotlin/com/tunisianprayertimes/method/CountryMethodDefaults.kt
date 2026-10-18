@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.method
 
 import com.tunisianprayertimes.place.LatLngE5
+import com.tunisianprayertimes.place.Regions
 import kotlin.math.PI
 import kotlin.math.asin
 import kotlin.math.cos
@@ -141,8 +142,48 @@ object CountryMethodDefaults {
         }
     }
 
-    /** Every list also offers «طرق أخرى»: every preset and profile but `inm`, which serves Tunisian places only (D7). */
-    fun otherMethods(): List<PrayerMethod> = PrayerMethods.ALL
+    /**
+     * The international conventions, offered everywhere (owner, 2026-10-18): the reference presets (6.3), the Moonsighting
+     * Committee Worldwide's, and Diyanet's, which computes for every city in the world. Never `inm`, Tunisian places only (D7).
+     */
+    val EVERYWHERE: Set<String> = PrayerMethods.REFERENCE.map { it.id }.toSet() + setOf("mcw", "diyanet_tr")
+
+    private val EUROPE_BUT_TURKEY = Regions.EUROPE - "TR"
+
+    /**
+     * Where a method is followed besides the lists above (owner, 2026-10-18: a method only where people follow it): the area
+     * of the body that publishes it, or where the mosque dataset found it (5.6). The places an authority's tables name in
+     * another country come from its zones ([com.tunisianprayertimes.place.PlaceTimes.offers]).
+     */
+    private val AREAS: Map<String, Set<String>> = mapOf(
+        // Diyanet's European tables and the European Council for Fatwa and Research (Turkey has Diyanet's own).
+        "diyanet_eu" to EUROPE_BUT_TURKEY,
+        "ecfr_90" to EUROPE_BUT_TURKEY,
+        // Russia's two muftiates, defaults in Moscow and Tatarstan only.
+        "dum_rf" to setOf("RU"),
+        "ru_dum_rt" to setOf("RU"),
+        // A French pick is kept for all of France (owner, 2026-10-11); APBIF publishes for French towns.
+        "rhone_ctir" to setOf("FR"),
+        "gmp" to setOf("FR"),
+        "apbif" to setOf("FR"),
+        // The Islamic Community in Croatia, the default in the Zagreb area only.
+        "hr_miz_zagreb" to setOf("HR"),
+        "fajr15_isha90" to setOf("DE"),
+        "london_unified" to setOf("GB"),
+        "uk_18_nearest_day" to setOf("GB"),
+        "cil_lisbon" to setOf("PT"),
+        "mwl_angle" to setOf("IE"),
+        // Dar al-Ifta's national table in the Gaza Strip too (A17), and Qatar Calendar House's own variant.
+        "ps_dar_al_ifta" to setOf("PS"),
+        "qa_qch" to setOf("QA"),
+    )
+
+    /** Whether [methodId] is offered in country [iso2] whatever its list there: everywhere, or in one of its [AREAS]. */
+    fun offeredIn(methodId: String, iso2: String?): Boolean {
+        if (methodId in EVERYWHERE) return true
+        val cc = iso2?.uppercase()?.let { if (it == "EH") "MA" else if (it == "SJ") "NO" else it } ?: return false
+        return cc in AREAS[methodId].orEmpty()
+    }
 
     // GeoNames admin1 codes, with the names CountryResolver may give instead.
     private val MOSCOW = setOf("48", "Moscow", "Moskva")

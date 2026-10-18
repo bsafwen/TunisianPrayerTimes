@@ -123,8 +123,11 @@ object QuranMushafText {
     private val plainWasl = Regex("\u0671[\u064E\u064F\u0650][\u06EC\u06DF\u06EA]")
 
     /**
-     * Converted words for a font that is not the mushaf's (a notification, a line of the interface): the wasl as a
-     * bare U+0671 and no dot on the line, which other fonts draw as a small zero above.
+     * Converted words for a font that is not the mushaf's (a notification, a verse shared to another app):
+     * - the wasl as a bare U+0671: other fonts draw its joining vowel as a vowel to read (al-hamdu with a kasra, 1:1);
+     * - the dot on the line, an eased or changed hamza (13:5, 2:30), as the dot above (U+06EC), the Madinah mushafs'
+     *   sign of an eased hamza (41:44 in Hafs): other fonts draw U+06DF as the small zero of a silent letter, and
+     *   dropping it would drop the hamza.
      */
-    fun plain(text: String): String = text.replace(plainWasl, "\u0671").replace("\u06DF", "")
+    fun plain(text: String): String = text.replace(plainWasl, "\u0671").replace('\u06DF', '\u06EC')
 }

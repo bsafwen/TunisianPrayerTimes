@@ -52,6 +52,29 @@ class ZoneMappingTest {
     }
 
     @Test
+    fun ceutaAndMelillaTakeTheirHabousLocalitiesAndNoOtherSpanishPlaceDoes() {
+        // 6.8: Habous's localities 24 and 40 carry ES; a Spanish place takes one only in Ceuta or Melilla (CE, ML).
+        val habous = AuthorityZones(
+            authority = "ma_habous", methodId = "ma_habous", country = "MA", mapping = MappingKind.NEAREST, byAdmin1 = false, namedFirst = false,
+            terrainClassKm = null, fit = null, source = "test",
+            zones = listOf(
+                zone("ma_habous", "1", 35.7595, -5.8340), // Tangier
+                zone("ma_habous", "24", 35.8892, -5.3213) { copy(country = "ES") }, // Ceuta
+                zone("ma_habous", "40", 35.2937, -2.9383) { copy(country = "ES") }, // Melilla
+                zone("ma_habous", "60", 35.1681, -2.9335), // Nador
+            ),
+        )
+        val method = ArabAuthorityProfiles.MA_HABOUS
+        assertEquals("24", ZoneMapping.attach(place(35.888, -5.316, "Europe/Madrid", "ES", admin1 = "CE"), method, habous)?.id)
+        assertEquals("40", ZoneMapping.attach(place(35.29, -2.94, "Africa/Ceuta", "ES", admin1 = "ML"), method, habous)?.id)
+        // Tarifa, 29 km from Ceuta's locality, and Madrid used to take Ceuta's table: now the method at their own point.
+        assertNull(ZoneMapping.attach(place(36.0139, -5.6070, "Europe/Madrid", "ES"), method, habous))
+        assertNull(ZoneMapping.attach(place(40.4165, -3.7026, "Europe/Madrid", "ES"), method, habous))
+        // A Moroccan place never takes Ceuta's locality, even beside it.
+        assertEquals("1", ZoneMapping.attach(place(35.8476, -5.3584, "Africa/Casablanca", "MA"), method, habous)?.id)
+    }
+
+    @Test
     fun betweenTheTerrainLimitsAPlaceTakesItsNearestLocationsClass() {
         // E10: Maghrib + 6 at or below 650 m, + 10 at or above 1,100 m; between them, the nearest location's class.
         val method = ArabAuthorityProfiles.YE_AWQAF

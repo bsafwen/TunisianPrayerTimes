@@ -38,6 +38,7 @@ import com.tunisianprayertimes.localityKindClass
 import com.tunisianprayertimes.searchLocalities
 import com.tunisianprayertimes.ui.theme.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 
@@ -52,6 +53,16 @@ private class LocalityGroupResult(
     val groups: List<Triple<Int, String, List<Locality>>>,
 )
 
+/** The catalogue cities found for [query] in [cities], so a result is never shown for another query. */
+private class CityGroupResult(
+    val cities: com.tunisianprayertimes.CitySearch.Index,
+    val query: String,
+    val groups: List<Pair<String, List<com.tunisianprayertimes.PlaceCatalogue.Row>>>,
+)
+
+/** A pause in typing before the cities are searched: a word typed quickly is searched once. */
+private const val CITY_SEARCH_PAUSE_MS = 150L
+
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun LocalityPickerSheet(
@@ -61,7 +72,7 @@ internal fun LocalityPickerSheet(
     onDismiss: () -> Unit,
     onSelect: (Locality) -> Unit,
     // Catalogue cities of the open regions (6.8): country groups after the governorates, never snapped to a delegation.
-    cities: List<com.tunisianprayertimes.PlaceCatalogue.Row> = emptyList(),
+    cities: com.tunisianprayertimes.CitySearch.Index = com.tunisianprayertimes.CitySearch.Index.EMPTY,
     selectedCityId: Long? = null,
     onSelectCity: (com.tunisianprayertimes.PlaceCatalogue.Row) -> Unit = {},
 ) {
@@ -102,18 +113,24 @@ internal fun LocalityPickerSheet(
         currentResult != null -> currentResult.groups
         else -> emptyList()
     }
-    val isSearchPending = !search.isEmpty && currentResult == null
-    val cityGroups by produceState(emptyList<Pair<String, List<com.tunisianprayertimes.PlaceCatalogue.Row>>>(), cities, query) {
-        value = withContext(Dispatchers.Default) {
+    val cityResult by produceState<CityGroupResult?>(null, cities, query) {
+        if (query.isNotBlank()) delay(CITY_SEARCH_PAUSE_MS)
+        val found = withContext(Dispatchers.Default) {
+            val scope = this
             when {
-                cities.isEmpty() -> emptyList()
-                query.isBlank() -> com.tunisianprayertimes.CitySearch.countryGroups(cities)
-                else -> com.tunisianprayertimes.CitySearch.search(cities, query)
+                cities.isEmpty -> emptyList()
+                query.isBlank() -> com.tunisianprayertimes.CitySearch.countryGroups(cities.rows)
+                else -> cities.search(query) { scope.ensureActive() }
                     .groupBy { com.tunisianprayertimes.CitySearch.countryName(com.tunisianprayertimes.place.CountryResolver.normalize(it.ref.countryCode)) }
                     .toList()
             }
         }
+        value = CityGroupResult(cities, query, found)
     }
+    // Only the cities found for what is typed now: until they come, the sheet waits rather than show another query's.
+    val currentCities = cityResult?.takeIf { it.cities === cities && it.query == query }
+    val cityGroups = currentCities?.groups.orEmpty()
+    val isSearchPending = (!search.isEmpty && currentResult == null) || (!cities.isEmpty && currentCities == null && groups.isEmpty())
     LaunchedEffect(query, catalog) {
         listState.scrollToItem(if (query.isBlank()) catalog.selectionScrollIndex(selectedId) else 0)
     }

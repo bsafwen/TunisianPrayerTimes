@@ -95,47 +95,141 @@ class HifzTest {
         assertTrue(firstRecovery.needsCare)
         assertFalse(firstRecovery.graded(HifzGrade.Held, 111L, 70L).needsCare)
         assertTrue(fresh.graded(HifzGrade.Again, 100L, 10L).needsCare)
+        // Two right answers at two reminders of one day count once: the care stays until another day's.
+        val chronic = recovered.copy(slips = 5, step = 0, lastSlipAt = 80L, fresh = HifzFreshRecalls)
+        val sameDay = chronic.graded(HifzGrade.Held, 112L, 90L).graded(HifzGrade.Held, 112L, 100L)
+        assertTrue(sameDay.needsCare)
+        assertFalse(sameDay.graded(HifzGrade.Held, 113L, 110L).needsCare)
     }
 
     @Test
-    fun repeats_comeAfterTheChosenPrayersUntilTheirLastDay() {
-        // A day's reminders after prayers, in hours: Fajr 5, Dhuhr 13, Asr 16, Maghrib 19, Isha 21.
-        val hours = mapOf(Prayer.FAJR to 5L, Prayer.DHUHR to 13L, Prayer.ASR to 16L, Prayer.MAGHRIB to 19L, Prayer.ISHA to 21L)
-        val slotAt = { day: Long, time: HifzWhen -> day * 24 + hours.getValue((time as HifzWhen.After).prayer) }
-        val prayers = point(HifzKind.Word, verse(2, 18)).copy(repeat = HifzRepeatPreset.Prayers.repeat, repeatUntil = 102L)
-        val thrice = point(HifzKind.Ending, verse(2, 17)).copy(repeat = HifzRepeatPreset.Thrice.repeat, repeatUntil = 101L)
-        val daily = point(HifzKind.Skip, verse(2, 68))
-        val points = listOf(prayers, thrice, daily)
-        // At 14 on day 100 the next reminder is after Asr, for the point brought back after every prayer only.
-        assertEquals(HifzSlot(100L, HifzWhen.After(Prayer.ASR), 100L * 24 + 16), points.nextRepeat(100L, 100L * 24 + 14, slotAt))
-        assertEquals(listOf(prayers), points.repeatingAt(100L, HifzWhen.After(Prayer.ASR)))
-        // After Isha both come back; the daily one never does.
-        assertEquals(setOf(prayers, thrice), points.repeatingAt(100L, HifzWhen.After(Prayer.ISHA)).toSet())
-        assertFalse(daily.repeatsOn(100L))
-        // On the last day of the longer plan only its point; after it, nothing.
-        assertEquals(listOf(prayers), points.repeatingAt(102L, HifzWhen.After(Prayer.FAJR)))
-        assertNull(points.nextRepeat(102L, 102L * 24 + 22, slotAt))
+    fun aSlip_isAskedAtEveryReminderUntilReadRightThreeTimes_thenItsChecksSpaceOut() {
+        val gap = HifzFreshGapMs
+        var p = point(HifzKind.Ending, verse(2, 17)).copy(fresh = HifzFreshRecalls, dueDay = 100L, lastSlipAt = 1_000L)
+        // Not right after the slip, which is still in mind: once its gap has passed.
+        assertFalse(p.isDue(100L, 1_000L + gap - 1))
+        assertTrue(p.isDue(100L, 1_000L + gap))
+        // A hesitation asks again at the next reminder, without counting.
+        p = p.graded(HifzGrade.Hesitated, 100L, now = 10_000_000L)
+        assertEquals(HifzFreshRecalls, p.fresh)
+        assertEquals(100L, p.dueDay)
+        assertFalse(p.isDue(100L, 10_000_000L + gap - 1))
+        // Right twice: one more to go, still today.
+        p = p.graded(HifzGrade.Held, 100L, now = 20_000_000L).graded(HifzGrade.Held, 100L, now = 30_000_000L)
+        assertEquals(1, p.fresh)
+        assertTrue(p.spacesNext)
+        assertFalse(p.holdsNext)
+        assertEquals(1, p.daysAfter(HifzGrade.Held))
+        // The third: its checks space out from the next day, along the ladder.
+        p = p.graded(HifzGrade.Held, 100L, now = 40_000_000L)
+        assertEquals(0, p.fresh)
+        assertEquals(0, p.step)
+        assertEquals(101L, p.dueDay)
+        assertFalse(p.isDue(100L, Long.MAX_VALUE))
+        assertEquals(3, p.daysAfter(HifzGrade.Held))
+        assertEquals(104L, p.graded(HifzGrade.Held, 101L, 50_000_000L).dueDay)
+        // A failed check, later on, makes it fresh again, a slip counted.
+        val failed = p.copy(step = HifzMasteredStep, masteredAt = 7L).graded(HifzGrade.Again, 130L, now = 60_000_000L)
+        assertEquals(HifzFreshRecalls, failed.fresh)
+        assertEquals(0, failed.step)
+        assertNull(failed.masteredAt)
+        assertEquals(130L, failed.dueDay)
+        assertEquals(60_000_000L, failed.lastSlipAt)
+        assertEquals(p.slips + 1, failed.slips)
+        assertEquals(0, failed.daysAfter(HifzGrade.Again))
+    }
+
+    @Test
+    fun aFreshPoint_isAskedAgainTheSameDay_evenAfterPractice() {
+        val fresh = point(HifzKind.Word, verse(2, 18)).copy(fresh = 2, dueDay = 100L, lastSlipAt = 0L)
+        val practised = point(HifzKind.Skip, verse(2, 68), due = 100L)
+        val now = HifzFreshGapMs
+        // Practised today with its answer in view: the spaced check waits; the fresh point does not.
+        assertEquals(listOf(fresh), listOf(fresh, practised).askable(100L, now, practised = setOf(fresh.id, practised.id)))
+        assertEquals(listOf(fresh, practised), listOf(fresh, practised).askable(100L, now, practised = emptySet()))
+        // But its answer seen a moment ago, in its fix or on the page, puts its question a while after.
+        val seen = mapOf(fresh.verse to now - 60_000L)
+        assertEquals(listOf(practised), listOf(fresh, practised).askable(100L, now, emptySet(), seen))
+        assertEquals(now - 60_000L + HifzFreshGapMs, fresh.freshDueAt(seen[fresh.verse]))
+        assertTrue(listOf(fresh).askable(100L, now - 60_000L + HifzFreshGapMs, emptySet(), seen).isNotEmpty())
+        // A new slip comes first in a full batch, ahead of older checks that need care.
+        val older = (1..5).map { point(HifzKind.Word, verse(3, it), slips = 4, due = 90L) }
+        assertEquals(fresh, (older + fresh).reviewBatch(100L, now, limit = 5).first { it.fresh > 0 })
+        assertEquals(5, (older + fresh).reviewBatch(100L, now, limit = 5).size)
+    }
+
+    @Test
+    fun theReminder_comesAfterAPrayerOnceAFreshPointIsDue_andOnceADayForTheChecks() {
+        // A day's reminders after prayers, in minutes: Fajr 05:00, Dhuhr 13:00, Asr 16:00, Maghrib 19:00, Isha 20:30.
+        val minutes = mapOf(Prayer.FAJR to 300L, Prayer.DHUHR to 780L, Prayer.ASR to 960L, Prayer.MAGHRIB to 1140L, Prayer.ISHA to 1230L)
+        val min = 60_000L
+        val slotAt = { day: Long, time: HifzWhen -> (day * 1440 + minutes.getValue((time as HifzWhen.After).prayer)) * min }
+        val utc = java.time.ZoneOffset.UTC
+        val times = HifzTimesPreset.Prayers.times
+        val day = 100L
+        // A slip at 12:50: Dhuhr at 13:00 is too soon after it, Asr asks it.
+        val slip = point(HifzKind.Word, verse(2, 18)).copy(fresh = HifzFreshRecalls, dueDay = day, lastSlipAt = (day * 1440 + 770) * min)
+        assertEquals(
+            HifzSlot(day, HifzWhen.After(Prayer.ASR), slotAt(day, HifzWhen.After(Prayer.ASR))),
+            listOf(slip).nextReminder(times, day, (day * 1440 + 771) * min, remindedDay = day, zone = utc, slotAt = slotAt),
+        )
+        // Answered at Maghrib 19:10: Isha at 20:30 is past its gap and asks it again.
+        val answered = slip.copy(checks = listOf(HifzCheck(day, HifzGrade.Held, (day * 1440 + 1150) * min)))
+        assertEquals(
+            HifzWhen.After(Prayer.ISHA),
+            listOf(answered).nextReminder(times, day, (day * 1440 + 1151) * min, remindedDay = day, zone = utc, slotAt = slotAt)?.time,
+        )
+        // A check due tomorrow comes at its first reminder, after Fajr; once that day was reminded, the day after.
+        val check = point(HifzKind.Skip, verse(2, 68), due = day + 1)
+        val evening = (day * 1440 + 1300) * min
+        assertEquals(
+            HifzSlot(day + 1, HifzWhen.After(Prayer.FAJR), slotAt(day + 1, HifzWhen.After(Prayer.FAJR))),
+            listOf(check).nextReminder(times, day, evening, remindedDay = day, zone = utc, slotAt = slotAt),
+        )
+        val morning = (day * 1440 + 1440 + 400) * min
+        assertEquals(
+            HifzSlot(day + 2, HifzWhen.After(Prayer.FAJR), slotAt(day + 2, HifzWhen.After(Prayer.FAJR))),
+            listOf(check).nextReminder(times, day + 1, morning, remindedDay = day + 1, zone = utc, slotAt = slotAt),
+        )
+        // Turned on in the afternoon, a check due today is not left for tomorrow.
+        assertEquals(
+            HifzWhen.After(Prayer.ASR),
+            listOf(check.copy(dueDay = day)).nextReminder(times, day, (day * 1440 + 900) * min, remindedDay = day - 1, zone = utc, slotAt = slotAt)?.time,
+        )
+        // Practised today with its answer in view: the check is the next day's.
+        assertEquals(
+            day + 1,
+            listOf(check.copy(dueDay = day)).nextReminder(times, day, (day * 1440 + 900) * min, remindedDay = day - 1, practised = setOf(check.id), zone = utc, slotAt = slotAt)?.day,
+        )
+        // Nothing to ask, no reminder.
+        assertNull(emptyList<HifzPoint>().nextReminder(times, day, 0L, remindedDay = -1L, zone = utc, slotAt = slotAt))
         // A prayer whose time is not known is skipped for the next one.
         assertEquals(
             HifzWhen.After(Prayer.MAGHRIB),
-            points.nextRepeat(100L, 100L * 24 + 14) { day, time -> if (time == HifzWhen.After(Prayer.ASR)) null else slotAt(day, time) }?.time,
+            listOf(slip).nextReminder(times, day, (day * 1440 + 771) * min, remindedDay = day, zone = utc) { d, time ->
+                if (time == HifzWhen.After(Prayer.ASR)) null else slotAt(d, time)
+            }?.time,
         )
-        // A plan starts at its first reminder: after Isha when chosen at 20, after Fajr the next day when chosen at 22.
-        assertEquals(HifzSlot(100L, HifzWhen.After(Prayer.ISHA), 100L * 24 + 21), firstRepeat(HifzRepeatPreset.Thrice.repeat, 100L, 100L * 24 + 20, slotAt))
-        assertEquals(HifzSlot(101L, HifzWhen.After(Prayer.FAJR), 101L * 24 + 5), firstRepeat(HifzRepeatPreset.Prayers.repeat, 100L, 100L * 24 + 22, slotAt))
-        assertNull(firstRepeat(HifzRepeat.None, 100L, 0L, slotAt))
-        // «مرة في اليوم» is after Fajr only: chosen at 6, it starts the next morning.
-        assertEquals(HifzSlot(101L, HifzWhen.After(Prayer.FAJR), 101L * 24 + 5), firstRepeat(HifzRepeatPreset.Once.repeat, 100L, 100L * 24 + 6, slotAt))
     }
 
     @Test
-    fun repeats_findAnIshaThatEndsAfterMidnight_andNameAWeekAhead() {
+    fun theReminder_findsAnIshaThatEndsAfterMidnight_andNamesAWeekAhead() {
         // In minutes: Isha's reminder at 00:30, after its silence that ends past midnight.
         val minutes = mapOf(Prayer.FAJR to 300L, Prayer.DHUHR to 780L, Prayer.ASR to 960L, Prayer.MAGHRIB to 1140L, Prayer.ISHA to 1470L)
-        val slotAt = { day: Long, time: HifzWhen -> day * 1440 + minutes.getValue((time as HifzWhen.After).prayer) }
-        val points = listOf(point(HifzKind.Word, verse(2, 18)).copy(repeat = HifzRepeatPreset.Prayers.repeat, repeatUntil = 102L))
+        val min = 60_000L
+        val slotAt = { day: Long, time: HifzWhen -> (day * 1440 + minutes.getValue((time as HifzWhen.After).prayer)) * min }
+        val slip = point(HifzKind.Word, verse(2, 18)).copy(fresh = 1, dueDay = 100L, lastSlipAt = 0L)
         // Just after midnight on day 101, yesterday's Isha reminder is the next one, before Fajr.
-        assertEquals(HifzSlot(100L, HifzWhen.After(Prayer.ISHA), 101L * 1440 + 30), points.nextRepeat(101L, 101L * 1440 + 10, slotAt))
+        assertEquals(
+            HifzSlot(100L, HifzWhen.After(Prayer.ISHA), (101L * 1440 + 30) * min),
+            listOf(slip).nextReminder(HifzTimesPreset.Prayers.times, 101L, (101L * 1440 + 10) * min, remindedDay = 101L, zone = java.time.ZoneOffset.UTC, slotAt = slotAt),
+        )
+        // That Isha is day 100's: a check due on day 101 waits for day 101's Fajr.
+        val check = point(HifzKind.Skip, verse(2, 68), due = 101L)
+        assertEquals(
+            HifzSlot(101L, HifzWhen.After(Prayer.FAJR), (101L * 1440 + 300) * min),
+            listOf(check).nextReminder(HifzTimesPreset.Prayers.times, 100L, (100L * 1440 + 1300) * min, remindedDay = 100L, zone = java.time.ZoneOffset.UTC, slotAt = slotAt),
+        )
         // 2026-10-08 is a Thursday: a week on, the name would read as today.
         val thursday = java.time.LocalDate.of(2026, 10, 8).toEpochDay()
         assertEquals("اليوم", HifzReminder.dayLabel(thursday, thursday))
@@ -148,61 +242,59 @@ class HifzTest {
     }
 
     @Test
-    fun customPlans_mixPrayersAndClockTimes() {
+    fun theReminderTimes_mixPrayersAndClockTimes() {
         // In minutes: Fajr's reminder at 05:00, Isha's at 21:00; the reader's own times 13:00 and 22:30.
         val prayerAt = mapOf(Prayer.FAJR to 300L, Prayer.ISHA to 1260L)
         val slotAt = { day: Long, time: HifzWhen ->
-            day * 1440 + when (time) {
+            (day * 1440 + when (time) {
                 is HifzWhen.After -> prayerAt.getValue(time.prayer)
                 is HifzWhen.At -> time.minute.toLong()
-            }
+            }) * 60_000L
         }
-        val custom = HifzRepeat(setOf(Prayer.ISHA, Prayer.FAJR), setOf(1350, 780))
-        assertEquals(4, custom.perDay)
-        assertNull(HifzRepeatPreset.of(custom))
+        val utc = java.time.ZoneOffset.UTC
+        val custom = HifzTimes(setOf(Prayer.ISHA, Prayer.FAJR), setOf(1350, 780))
+        assertEquals(4, custom.count)
+        assertNull(HifzTimesPreset.of(custom))
         assertEquals(listOf(HifzWhen.After(Prayer.FAJR), HifzWhen.After(Prayer.ISHA), HifzWhen.At(780), HifzWhen.At(1350)), custom.times)
-        val points = listOf(point(HifzKind.Word, verse(2, 18)).copy(repeat = custom, repeatUntil = 101L))
-        // At 10 the next is 13:00 by the clock, then Isha, then 22:30; past the last day, nothing.
-        assertEquals(HifzSlot(100L, HifzWhen.At(780), 100L * 1440 + 780), points.nextRepeat(100L, 100L * 1440 + 600, slotAt))
-        assertEquals(HifzSlot(100L, HifzWhen.After(Prayer.ISHA), 100L * 1440 + 1260), points.nextRepeat(100L, 100L * 1440 + 800, slotAt))
-        assertEquals(HifzSlot(100L, HifzWhen.At(1350), 100L * 1440 + 1350), points.nextRepeat(100L, 100L * 1440 + 1300, slotAt))
-        assertNull(points.nextRepeat(101L, 101L * 1440 + 1400, slotAt))
-        assertEquals(points, points.repeatingAt(100L, HifzWhen.At(1350)))
-        assertTrue(points.repeatingAt(100L, HifzWhen.At(1351)).isEmpty())
-        // Chosen at 14, it starts at Isha.
-        assertEquals(HifzSlot(100L, HifzWhen.After(Prayer.ISHA), 100L * 1440 + 1260), firstRepeat(custom, 100L, 100L * 1440 + 840, slotAt))
-        // Stored as its times, and read back; a plan that is not one reads as none.
+        // At 10 the next is 13:00 by the clock, then Isha, then 22:30, then Fajr the next day.
+        assertEquals(HifzSlot(100L, HifzWhen.At(780), (100L * 1440 + 780) * 60_000L), custom.firstAfter((100L * 1440 + 600) * 60_000L, zone = utc, slotAt = slotAt))
+        assertEquals(HifzWhen.After(Prayer.ISHA), custom.firstAfter((100L * 1440 + 800) * 60_000L, zone = utc, slotAt = slotAt)?.time)
+        assertEquals(HifzWhen.At(1350), custom.firstAfter((100L * 1440 + 1300) * 60_000L, zone = utc, slotAt = slotAt)?.time)
+        assertEquals(HifzSlot(101L, HifzWhen.After(Prayer.FAJR), (101L * 1440 + 300) * 60_000L), custom.firstAfter((100L * 1440 + 1400) * 60_000L, zone = utc, slotAt = slotAt))
+        // From a later day: its first time.
+        assertEquals(HifzSlot(105L, HifzWhen.After(Prayer.FAJR), (105L * 1440 + 300) * 60_000L), custom.firstAfter(0L, 105L, utc, slotAt))
+        // Stored as its times, and read back; none, or what is not a time, reads as nothing.
         assertEquals("FAJR,ISHA,at780,at1350", custom.encode())
-        assertEquals(custom, HifzRepeat.decode(custom.encode()))
-        assertEquals(HifzRepeat.None, HifzRepeat.decode(""))
-        assertNull(HifzRepeat.decode("FAJR,at9999"))
-        assertEquals(HifzRepeatPreset.Once, HifzRepeatPreset.of(HifzRepeat.decode("FAJR")!!))
+        assertEquals(custom, HifzTimes.decode(custom.encode()))
+        assertNull(HifzTimes.decode(""))
+        assertNull(HifzTimes.decode("FAJR,at9999"))
+        assertEquals(HifzTimesPreset.Once, HifzTimesPreset.of(HifzTimes.decode("FAJR")!!))
         // In words, with the clock in western digits.
-        assertEquals("بعد الفجر والعشاء وفي الساعة 13:00 و22:30", HifzReminder.repeatPhrase(custom))
-        assertEquals("4 مرات في اليوم", HifzReminder.repeatShortPhrase(custom))
-        assertEquals("بعد الفجر والظهر والعشاء", HifzReminder.repeatPhrase(HifzRepeatPreset.Thrice.repeat))
-        assertEquals("في الساعة 08:05", HifzReminder.repeatPhrase(HifzRepeat(minutes = setOf(485))))
-        assertEquals("بعد كل صلاة وفي الساعة 22:30", HifzReminder.repeatPhrase(HifzRepeat(HifzPrayers.toSet(), setOf(1350))))
+        assertEquals("بعد الفجر والعشاء وفي الساعة 13:00 و22:30", HifzReminder.timesPhrase(custom))
+        assertEquals("بعد الفجر والظهر والعشاء", HifzReminder.timesPhrase(HifzTimesPreset.Thrice.times))
+        assertEquals("مرة في اليوم بعد الفجر", HifzReminder.timesPhrase(HifzTimesPreset.Once.times))
+        assertEquals("في الساعة 08:05", HifzReminder.timesPhrase(HifzTimes(minutes = setOf(485))))
+        assertEquals("بعد كل صلاة وفي الساعة 22:30", HifzReminder.timesPhrase(HifzTimes(HifzPrayers.toSet(), setOf(1350))))
         assertEquals("اليوم الساعة 13:00", HifzReminder.slotLabel(HifzSlot(100L, HifzWhen.At(780), 0L), 100L))
         assertEquals("مرتين في اليوم", HifzReminder.countPhrase(2))
         assertEquals("11 مرة في اليوم", HifzReminder.countPhrase(11))
-        assertEquals("لمدة يومين", HifzReminder.daysPhrase(2))
-        assertEquals("لمدة أسبوع", HifzReminder.daysPhrase(7))
-        assertEquals("لمدة 10 أيام", HifzReminder.daysPhrase(10))
-        assertEquals("أسبوعان", HifzReminder.daysLabel(14))
+        assertEquals("3 مرات", HifzReminder.recallsPhrase(3))
+        assertEquals("قراءتين صحيحتين", HifzReminder.freshLeftPhrase(2))
+        assertEquals("قراءة صحيحة واحدة", HifzReminder.freshLeftPhrase(1))
     }
 
     @Test
-    fun repeatPlan_isSavedAndReadBack() {
-        val planned = point(HifzKind.Word, verse(2, 18)).copy(slipWords = setOf(3), repeat = HifzRepeatPreset.Thrice.repeat, repeatUntil = 205L, repeatDays = 7)
-        val custom = point(HifzKind.Ending, verse(2, 17)).copy(repeat = HifzRepeat(setOf(Prayer.ASR), setOf(1290)), repeatUntil = 210L, repeatDays = 12)
+    fun aFreshPoint_isSavedAndReadBack() {
+        val fresh = point(HifzKind.Word, verse(2, 18)).copy(slipWords = setOf(3), fresh = 2)
         val plain = point(HifzKind.Skip, verse(2, 68))
-        assertEquals(listOf(planned, custom, plain), decodeHifzPoints(encodeHifzPoints(listOf(planned, custom, plain))))
-        // A notebook written before plans existed reads as no plan.
+        assertEquals(listOf(fresh, plain), decodeHifzPoints(encodeHifzPoints(listOf(fresh, plain))))
+        // A point on the ladder writes nothing for it, and reads back as on the ladder.
         val old = JSONObject(encodeHifzPoints(listOf(plain)))
-        assertFalse(old.getJSONArray("points").getJSONObject(0).has("repeat"))
-        assertEquals(HifzRepeat.None, decodeHifzPoints(old.toString()).single().repeat)
-        assertNull(decodeHifzPoints(old.toString()).single().repeatUntil)
+        assertFalse(old.getJSONArray("points").getJSONObject(0).has("fresh"))
+        assertEquals(0, decodeHifzPoints(old.toString()).single().fresh)
+        // Its undo keeps the right answers it still needed.
+        val given = com.tunisianprayertimes.ui.HifzGiven.of(fresh, HifzGrade.Held)
+        assertEquals(2, com.tunisianprayertimes.ui.HifzGiven.decode(given.encode())!!.fresh)
     }
 
     @Test
@@ -216,7 +308,8 @@ class HifzTest {
         assertFalse(hesitated.graded(HifzGrade.Held, 102L, 0L).mastered)
         val again = p.graded(HifzGrade.Again, 100L, 0L)
         assertEquals(0, again.step)
-        assertEquals(101L, again.dueDay)
+        assertEquals(100L, again.dueDay)
+        assertEquals(HifzFreshRecalls, again.fresh)
         assertEquals(30, p.daysAfter(HifzGrade.Held))
         assertTrue(p.holdsNext)
         // A held point that is hesitated on leaves «ثبتت» until it is held again; one held longer stays.
@@ -246,14 +339,23 @@ class HifzTest {
         val fresh = point(HifzKind.Ending, verse(2, 17))
         assertEquals("دون تردد · تعود بعد 3 أيام", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Held))
         assertEquals("بتردد أو تلميح · تعود بعد يومين", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Hesitated))
-        assertEquals("أخطأت أو نسيت · تعود غدًا", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Again))
+        assertEquals("أخطأت أو نسيت · نسألك عنها اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Again, "اليوم بعد المغرب"))
         val last = point(HifzKind.Ending, verse(2, 17), step = 3)
         assertEquals("دون تردد · تثبت، وتعود بعد شهر للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Held))
-        assertEquals("أخطأت أو نسيت · تعود غدًا · وتبدأ مددها من جديد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Again))
+        assertEquals("أخطأت أو نسيت · نسألك عنها في تذكير لاحق · وتبدأ مددها من جديد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Again))
         val held = point(HifzKind.Ending, verse(2, 17), step = HifzMasteredStep)
         assertEquals("دون تردد · تعود بعد شهرين للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Held))
         assertEquals("بتردد أو تلميح · تعود بعد يومين · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Hesitated))
-        assertEquals("أخطأت أو نسيت · تعود غدًا · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Again))
+        assertEquals("أخطأت أو نسيت · نسألك عنها غدًا بعد الفجر · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Again, "غدًا بعد الفجر"))
+        // A fresh point: asked again at the reminder named, or, with the reminder off, a while later.
+        val slip = point(HifzKind.Ending, verse(2, 17)).copy(fresh = 2)
+        assertEquals("دون تردد · نسألك عنها مرة أخرى اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Held, "اليوم بعد المغرب"))
+        assertEquals("دون تردد · تتباعد مراجعاتها، وتعود غدًا", com.tunisianprayertimes.ui.hifzGradeDetail(slip.copy(fresh = 1), HifzGrade.Held))
+        assertEquals("بتردد أو تلميح · نسألك عنها بعد 45 دقيقة", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Hesitated, "بعد 45 دقيقة"))
+        assertEquals("أخطأت أو نسيت · نسألك عنها اليوم بعد المغرب · من جديد", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Again, "اليوم بعد المغرب"))
+        assertEquals("اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(slip, HifzGrade.Held, "اليوم بعد المغرب"))
+        assertEquals("تعود غدًا", com.tunisianprayertimes.ui.hifzGradeShort(slip.copy(fresh = 1), HifzGrade.Held))
+        assertEquals("في تذكير لاحق، من جديد", com.tunisianprayertimes.ui.hifzGradeShort(last, HifzGrade.Again))
         assertEquals("بعد أسبوعين", com.tunisianprayertimes.ui.hifzWhen(14L))
         assertEquals("بعد 12 يومًا", com.tunisianprayertimes.ui.hifzWhen(12L))
         assertEquals("المراجعة غدًا", com.tunisianprayertimes.ui.hifzReviewWhen(1L))
@@ -267,8 +369,8 @@ class HifzTest {
             point(HifzKind.Similar, verse(4, 47), due = 101L),
             point(HifzKind.Word, verse(1, 4), due = 98L),
         )
-        assertEquals(listOf(verse(2, 17), verse(1, 4), verse(2, 68)), points.dueToday(100L).map { it.verse })
-        assertEquals(2, points.dueToday(100L, limit = 2).size)
+        assertEquals(listOf(verse(2, 17), verse(1, 4), verse(2, 68)), points.dueToday(100L, now = 0L).map { it.verse })
+        assertEquals(2, points.dueToday(100L, now = 0L, limit = 2).size)
         assertTrue(points[1].needsCare)
     }
 

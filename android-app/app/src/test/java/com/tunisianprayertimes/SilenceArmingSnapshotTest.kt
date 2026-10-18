@@ -175,11 +175,14 @@ class SilenceArmingSnapshotTest {
          *   (friday-jumua-1300, overlap-asr-maghrib), which changes no silence;
          * - no other trigger instant changed: an Isha end at 00:30 saved before D16 stored its adhan offset keeps
          *   today's instant (the legacy roll of [com.tunisianprayertimes.silence.SilenceEndpoints]).
+         * Reviewed since (2026-10-18): Jumu'a's default end at Inm places is the later of 13:15 and Jumu'a + 45 (owner),
+         * so friday-0005 ends at 13:21 (Dhuhr 12:36), friday-jumua-1300 at 13:45 and eid-fitr-1447, a Friday, at 13:19.
          */
         val EXPECTED_DIFFERENCES = listOf(
             "Dhuhr start 12:40 at Inm places (D12)",
             "D+1 armed a day ahead",
             "past starts of open windows cancelled",
+            "Jumu'a end at the later of 13:15 and Jumu'a + 45 at Inm places",
         )
     }
 }

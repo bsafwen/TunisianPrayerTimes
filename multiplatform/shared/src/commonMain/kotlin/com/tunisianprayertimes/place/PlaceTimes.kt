@@ -108,6 +108,32 @@ class PlaceTimes(
         CountryMethodDefaults.forCountry(place.countryCode, place.zoneId, place.admin1, place.admin2, place.point)
 
     /**
+     * Whether [methodId] is offered at [place] (owner, 2026-10-18: a method only where people follow it): the user's own
+     * «مخصّصة», the place's own list (D4), the international conventions and a method's other areas
+     * ([CountryMethodDefaults.offeredIn]), and the places an authority's tables name in another country, which its zones
+     * attach (Habous's Ceuta and Melilla, Jordan's Jerusalem entry, the Bosnian Takvim's towns, BIK's Preševo valley).
+     */
+    fun offers(place: PrayerPlace.Coordinates, methodId: String): Boolean {
+        if (methodId == PrayerMethod.CUSTOM_ID) return true
+        val defaults = defaults(place)
+        if (methodId == defaults.fallback || methodId in defaults.entries) return true
+        if (CountryMethodDefaults.offeredIn(methodId, place.countryCode)) return true
+        val method = PrayerMethods.byId(methodId) ?: return false
+        val asset = zones.forMethod(methodId, place.countryCode) ?: return false
+        val cc = place.countryCode?.let(CountryResolver::normalize) ?: return false
+        if (cc in asset.country.split(',').map { it.trim() }) return false
+        // A zone the tables list for the place's own country, never their fallback to their home table (BIK's in Belgrade).
+        return ZoneMapping.attach(place, method, asset)?.country == cc
+    }
+
+    /** «طرق أخرى» at [place] with its own list (6.11): every preset and profile offered there, in the catalogue's order. */
+    fun offeredMethods(place: PrayerPlace.Coordinates): List<PrayerMethod> = PrayerMethods.ALL.filter { offers(place, it.id) }
+
+    /** The choice [place] computes with: the stored one where its method is offered, else the country's default (owner, 2026-10-18). */
+    fun choiceAt(place: PrayerPlace.Coordinates, stored: PrayerMethodChoice?): PrayerMethodChoice =
+        stored?.takeIf { offers(place, it.methodId) } ?: defaultChoice(place)
+
+    /**
      * The method a choice computes with; an unknown id falls back to the country's default, then `mwl`. E15: the signed
      * shadow is Algeria's own, so a place outside DZ takes the method with the shadow rule (south of the equator the
      * signed shadow gives no Asr at all).

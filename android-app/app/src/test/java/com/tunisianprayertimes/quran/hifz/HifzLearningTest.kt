@@ -80,6 +80,23 @@ class HifzLearningTest {
     }
 
     @Test
+    fun whenAnAnswerWasSeen_isKeptAcrossMidnightForTheFreshPoints() {
+        val context = RuntimeEnvironment.getApplication()
+        val verse = QuranVerseReference(2, 17)
+        val at = System.currentTimeMillis()
+        HifzLearning(100).expose(setOf(verse), at).write(context)
+        assertEquals(at, HifzLearning.read(context, 100).seen[verse])
+        // The day's exposure goes at midnight; when it was seen stays, for a question a while after it.
+        val tomorrow = HifzLearning.read(context, 101)
+        assertTrue(tomorrow.exposed.isEmpty())
+        assertEquals(at, tomorrow.seen[verse])
+        // Seen again later: the later time; long ago: forgotten.
+        val later = HifzLearning(100, seen = mapOf(verse to at)).expose(setOf(QuranVerseReference(2, 18)), at + HifzFreshGapMs + 1)
+        assertNull(later.seen[verse])
+        assertEquals(at + HifzFreshGapMs + 1, later.seen[QuranVerseReference(2, 18)])
+    }
+
+    @Test
     fun listeningPastMidnightExpiresYesterdayAndRejectsItsDelayedWrite() {
         val context = RuntimeEnvironment.getApplication()
         val yesterdayVerse = QuranVerseReference(2, 17)

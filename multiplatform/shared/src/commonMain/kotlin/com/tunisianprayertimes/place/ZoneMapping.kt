@@ -77,7 +77,6 @@ object ZoneMapping {
         }
     }
 
-    /** The place's country as the authority's zones see it, or null outside every country they cover. */
     /**
      * E10: the place's own terrain class, its elevation's, or between the limits the class of the authority's
      * nearest location in its country (plan E10); the nearer limit when the authority has no terrain classes.
@@ -96,17 +95,22 @@ object ZoneMapping {
 
     private fun classOf(rule: TerrainRule, zone: OfficialZone): TerrainClass = rule.classOf((zone.elevationM ?: 0).toDouble(), zone.terrainClass)
 
+    /** The place's country as the authority's zones see it, or null outside every country they cover. */
     private fun countryOf(place: PrayerPlace.Coordinates, zones: AuthorityZones): String? {
         val raw = place.countryCode?.uppercase() ?: return null
         val cc = if (raw == "EH") "MA" else raw
         val covered = (listOf(zones.country) + zones.zones.mapNotNull { it.country }).flatMap { it.split(',') }.toSet()
         return when {
+            // Ceuta and Melilla take their Habous localities (6.8), whose zones carry ES; no other Spanish place does.
+            cc == "ES" && zones.authority == "ma_habous" -> cc.takeIf { place.admin1 in CEUTA_MELILLA }
+            // A Jerusalem place may take jo_awqaf's Jerusalem entry (8.8), within its reach.
             cc in covered -> cc
-            // Ceuta and Melilla take their Habous localities (6.8); a Jerusalem place may take jo_awqaf's Jerusalem entry (8.8).
-            cc == "ES" && zones.authority == "ma_habous" && place.admin1 in setOf("CE", "ML", "Ceuta", "Melilla") -> "ES"
             else -> null
         }
     }
+
+    /** Ceuta's and Melilla's admin1: GeoNames' codes, or the names a resolver may give instead. */
+    private val CEUTA_MELILLA = CountryResolver.CEUTA_MELILLA + setOf("Ceuta", "Melilla")
 
     private fun distance(place: PrayerPlace.Coordinates, p: LatLngE5) = CountryMethodDefaults.distanceKm(place.point, p)
 
