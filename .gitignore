@@ -141,3 +141,5 @@ android-app/app/build/
 # New files under the root scripts/ and docs/ stay local; files already committed there stay tracked.
 /scripts/
 /docs/
+
+native_listing_page
