@@ -108,6 +108,33 @@ class AwakeCheckDisableTest {
     }
 
     @Test
+    fun alreadyDeliveredAwakeCheckDoesNotStartAfterParentIsDeleted() = runBlocking {
+        val alarm = PrayerWakeConfig(id = "deleted-parent", prayer = Prayer.FAJR, enabled = true)
+        repository.saveWakeConfig(alarm)
+        scheduleAwakeCheck(wakeMainEventId(alarm.id))
+        val deliveredIntent = Intent(Shadows.shadowOf(shadowAlarmManager.scheduledAlarms.single().operation).savedIntent)
+        repository.deleteWakeAlarm(alarm.id)
+
+        context.deliverWakeBroadcast(AwakeCheckReceiver(), deliveredIntent)
+
+        assertNull(Shadows.shadowOf(context as Application).nextStartedService)
+        assertFalse(AwakeCheckScheduler.isPending(context, wakeMainEventId(alarm.id)))
+    }
+
+    @Test
+    fun missingParentCancelsItsMatchingAwakeCheckWithoutStartingService() = runBlocking {
+        val eventId = wakeMainEventId("missing-parent")
+        scheduleAwakeCheck(eventId)
+        val deliveredIntent = Intent(Shadows.shadowOf(shadowAlarmManager.scheduledAlarms.single().operation).savedIntent)
+
+        context.deliverWakeBroadcast(AwakeCheckReceiver(), deliveredIntent)
+
+        assertNull(Shadows.shadowOf(context as Application).nextStartedService)
+        assertNull(AwakeCheckScheduler.triggerAtMillis(context, eventId))
+        assertTrue(shadowAlarmManager.scheduledAlarms.isEmpty())
+    }
+
+    @Test
     fun completedOneOffIsKeptUntilItsAwakeCheckStarts() = runBlocking {
         val alarm = PrayerWakeConfig(
             id = "completed-one-off",
@@ -139,6 +166,7 @@ class AwakeCheckDisableTest {
                 delayMinutes = 3,
                 ringtonePresetName = null,
                 customRingtoneUri = null,
+                occurrenceAtMillis = System.currentTimeMillis(),
             ),
         )
     }

@@ -93,8 +93,15 @@ body {
   position: relative;
 }
 
+/* The basmala as the app's Qaloon mushaf prints it, in the app's mushaf font (fonts/MushafQaloun-OFL.txt). */
+@font-face {
+  font-family: "Mushaf Qaloun";
+  src: url("fonts/mushaf_qaloun.ttf") format("truetype");
+  font-display: swap;
+}
+
 .bismillah {
-  font-family: "Amiri Quran", "Amiri", serif;
+  font-family: "Mushaf Qaloun", "Amiri", serif;
   font-size: 1.55rem;
   color: var(--gold-light);
   letter-spacing: 0.04em;

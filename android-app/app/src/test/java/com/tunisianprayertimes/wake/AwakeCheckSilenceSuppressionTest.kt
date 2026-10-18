@@ -8,6 +8,8 @@ import android.content.Intent
 import android.media.AudioManager
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceModeController
@@ -167,6 +169,7 @@ class AwakeCheckSilenceSuppressionTest {
                 delayMinutes = 7,
                 ringtonePresetName = null,
                 customRingtoneUri = null,
+                occurrenceAtMillis = System.currentTimeMillis(),
             ),
         )
         assertEquals(1, shadowAlarmManager.scheduledAlarms.size)
@@ -177,14 +180,32 @@ class AwakeCheckSilenceSuppressionTest {
         scheduledTriggerAtMillis: Long? = null,
         autoSilenceOverrideAllowed: Boolean = false,
     ) {
+        val alarmId = requireNotNull(wakeAlarmIdFromEventId(eventId))
+        runBlocking {
+            PrayerWakeRepository(context).saveWakeConfig(
+                PrayerWakeConfig(id = alarmId, prayer = Prayer.FAJR, enabled = true),
+            )
+        }
+        val storedTriggerAtMillis = AwakeCheckScheduler.triggerAtMillis(context, eventId)
+        val deliveredTriggerAtMillis = scheduledTriggerAtMillis ?: storedTriggerAtMillis
+        if (storedTriggerAtMillis != null && deliveredTriggerAtMillis != storedTriggerAtMillis) {
+            // Deliver the current check late, after its original silence window ended.
+            context.getSharedPreferences("awake_check_occurrences", Context.MODE_PRIVATE)
+                .edit()
+                .putLong("$eventId:trigger", requireNotNull(deliveredTriggerAtMillis))
+                .commit()
+        }
+        val occurrenceAtMillis = AwakeCheckScheduler.occurrenceAtMillis(context, eventId)
+            ?: System.currentTimeMillis()
         context.deliverWakeBroadcast(
             AwakeCheckReceiver(),
             Intent(context, AwakeCheckReceiver::class.java)
                 .setAction(AwakeCheckReceiver.ACTION_START_AWAKE_CHECK)
                 .putExtra(EXTRA_EVENT_ID, eventId)
                 .putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
+                .putExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, occurrenceAtMillis)
                 .apply {
-                    scheduledTriggerAtMillis?.let { putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, it) }
+                    deliveredTriggerAtMillis?.let { putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, it) }
                 },
         )
     }

@@ -50,6 +50,7 @@ def spelling_alias(source: str, imlai: str) -> str:
 def build(args: argparse.Namespace) -> None:
     source_chapters = json.loads(args.chapter_map.read_text(encoding="utf-8"))["surahs"]
     page_overrides = json.loads(args.page_overrides.read_text(encoding="utf-8"))["overrides"]
+    text_corrections = json.loads(args.text_corrections.read_text(encoding="utf-8"))["corrections"]
     starts = [(int(p.attrib["sura"]), int(p.attrib["aya"])) for p in ET.parse(args.metadata).getroot().find("pages")]
     assert len(starts) == 604
     simple: dict[int, list[tuple[int, str, int]]] = {n: [] for n in range(1, 115)}
@@ -72,6 +73,13 @@ def build(args: argparse.Namespace) -> None:
         source = (args.source / f"surah-{number:03}.html").read_text(encoding="utf-8")
         verses = [(int(n), html.unescape(t)) for t, n in re.findall(r"<p>([^<]+) ﴿(\d+)﴾</p>", source)]
         assert verses and [n for n, _ in verses] == list(range(1, len(verses) + 1)), number
+        # Words of the source that differ from the scans, each checked on the page image (never inferred).
+        for fix in (f for f in text_corrections if f["surah"] == number):
+            ayah, text = verses[fix["ayah"] - 1]
+            tokens = text.split(" ")
+            assert tokens[fix["word"] - 1] == fix["from"], fix
+            tokens[fix["word"] - 1] = fix["to"]
+            verses[fix["ayah"] - 1] = (ayah, " ".join(tokens))
         total_verses += len(verses)
         words = [(verse, word) for verse, text in verses for word in text.split() if any(c.isalpha() for c in word)]
         reference = simple[number]
@@ -177,6 +185,7 @@ if __name__ == "__main__":
     parser.add_argument("--metadata", type=Path, required=True, help="Tanzil quran-data.xml")
     parser.add_argument("--chapter-map", type=Path, required=True, help="Visually checked supplied-image chapter map")
     parser.add_argument("--page-overrides", type=Path, default=Path("scripts/quran-data/qaloun-page-overrides.json"), help="Visually verified differences from the reference page boundaries")
+    parser.add_argument("--text-corrections", type=Path, default=Path("scripts/quran-data/qaloun-text-corrections.json"), help="Visually verified corrections of the source text")
     parser.add_argument("--names", type=Path, default=Path("qaloon-app/app/src/main/assets/quran_qaloon.json"))
     parser.add_argument("--output", type=Path, default=Path("android-app/app/src/main/assets/quran/index.json"))
     parser.add_argument("--audit", type=Path, required=True)

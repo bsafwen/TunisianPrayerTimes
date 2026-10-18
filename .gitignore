@@ -10,11 +10,7 @@ __pycache__/
 build-logic/.gradle/
 build-logic/build/
 data
-!/data/
-/data/*
-!/data/official-islamic-dates/
-!/data/prayer-formula/
-!/data/mosques/
+/data/
 
 # ── Secrets and machine-local config ────────────────────────────────────
 .env.local
@@ -141,3 +137,9 @@ android-app/app/build/
 # Official prayer timetables and research downloads stay local (terms of use, see
 # docs/prayer-times-beyond-tunisia-plan.md, decision A7).
 /test-data-local/
+
+# New files under the root scripts/ and docs/ stay local; files already committed there stay tracked.
+/scripts/
+/docs/
+
+native_listing_page

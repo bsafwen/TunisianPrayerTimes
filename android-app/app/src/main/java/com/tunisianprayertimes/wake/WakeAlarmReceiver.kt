@@ -16,10 +16,12 @@ import kotlinx.coroutines.launch
 class WakeAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val triggerPayload = intent.toWakeTriggerPayload() ?: return
+        WakeAlarmDeliveryTracker.begin(triggerPayload)
         WakeAlarmScheduler.markDelivered(context, triggerPayload)
         val pendingResult = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             var result = "success"
+            var handedToPlayback = false
             try {
                 val alarmId = wakeAlarmIdFromEventId(triggerPayload.eventId)
                 val config = alarmId?.let { PrayerWakeRepository(context).getWakeAlarm(it) }
@@ -71,13 +73,16 @@ class WakeAlarmReceiver : BroadcastReceiver() {
                         context,
                         WakePlaybackService.playbackIntent(context, payload),
                     )
+                    handedToPlayback = true
                 }
 
+                if (!handedToPlayback) WakeAlarmDeliveryTracker.finish(triggerPayload)
                 WakeAlarmScheduler.scheduleAll(context)
             } catch (error: Exception) {
                 result = "failure"
                 Log.w(TAG, "Failed to handle wake alarm trigger", error)
             } finally {
+                if (!handedToPlayback) WakeAlarmDeliveryTracker.finish(triggerPayload)
                 AnalyticsTracker.scheduleRefreshResult(
                     context = context,
                     source = "wake_alarm_fired",

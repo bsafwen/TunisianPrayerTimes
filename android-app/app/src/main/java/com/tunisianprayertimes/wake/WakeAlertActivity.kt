@@ -187,11 +187,11 @@ class WakeAlertActivity : AppCompatActivity() {
                                 stopSource = "alert_activity",
                                 wakeupCheckCompleted = wakeupCheckCompleted,
                             )
+                            val advanced = advanceToNextPayload()
                             WakeDismissalCoordinator.removeExpiredOneOffAlarmAfterDismissalAsync(
                                 context = this@WakeAlertActivity,
                                 payload = p,
                             )
-                            val advanced = advanceToNextPayload()
                             // Ask the service to refresh notification + ringtone
                             // for whatever is now current, or stop itself if the
                             // queue is empty.

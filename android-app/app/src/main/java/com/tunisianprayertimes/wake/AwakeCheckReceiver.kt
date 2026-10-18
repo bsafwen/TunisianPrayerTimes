@@ -61,10 +61,12 @@ class AwakeCheckReceiver : BroadcastReceiver() {
                             .takeIf { millis -> millis > 0L }
                             ?: AwakeCheckScheduler.occurrenceAtMillis(appContext, eventId)
                             ?: checkTriggerAtMillis
-                        // Completed one-off alarms are removed before their awake check runs.
-                        // A stored disabled parent still invalidates an already-delivered check.
-                        if (config != null && !config.enabled) {
-                            AwakeCheckScheduler.cancel(appContext, eventId)
+                        // A one-off stays stored until its check ends. Missing or disabled parents invalidate
+                        // an already-delivered check, without cancelling a newer check for the same alarm.
+                        if (alarmId != null && config?.enabled != true) {
+                            AwakeCheckScheduler.cancelIfMatching(
+                                appContext, eventId, occurrenceAtMillis, scheduledTriggerAtMillis,
+                            )
                             return@launch
                         }
                         if (alarmId != null && (
