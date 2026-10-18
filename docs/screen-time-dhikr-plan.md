@@ -2,7 +2,7 @@
 
 Status: plan only, nothing is implemented. Written 2026-10-04 and revised 2026-10-06 after a review against the code (claims checked file by file, then attacked for detection errors, lifecycle races, privacy gaps and missing decisions). Target: `android-app/` on branch `codex`.
 
-Working name in code: **usage nudge**. Draft name in the app: «تذكير أثناء التصفّح والألعاب».
+Working name in code: **usage nudge**. Draft name in the app: «تذكير أثناء اللهو».
 
 **In short.** When the user has spent 30 minutes (adjustable) in the social-media apps and games they chose, the phone shows a banner with a short dhikr, and one tap opens it in the Adhkar reader.
 
@@ -29,7 +29,7 @@ When the user has been in social-media apps or games for a long stretch, the pho
 
 | Step | Behaviour |
 |---|---|
-| Switch on | In the Adhkar tab, a new card «تذكير أثناء التصفّح والألعاب». Switching it on shows a short explanation of what is read and why, then opens the system "Usage access" page if it is not granted yet, then asks for notifications if they are off. |
+| Switch on | In the Adhkar tab, a new card «تذكير أثناء اللهو». Switching it on shows a short explanation of what is read and why, then opens the system "Usage access" page if it is not granted yet, then asks for notifications if they are off. |
 | Apps | Ready to use: the usual social and short-video apps and all games are counted. The card shows a summary, and tapping it opens the settings, where the list can be edited. Messaging apps are listed but not counted by default. |
 | Use the phone | After **30 minutes** (default) of continuous use of the counted apps, a banner appears with a short dhikr, for example «سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ.» |
 | Keep scrolling | The next reminder comes only after another full 30 minutes of continued use, with a different dhikr. There are never more than **3 a day** (default). |
@@ -39,23 +39,23 @@ When the user has been in social-media apps or games for a long stretch, the pho
 
 "Continuous use" means time in the counted apps where breaks of up to 3 minutes (another app, or the screen off) do not start a new session. The break itself is not counted.
 
-## 3. Decisions to confirm
+## 3. Decisions
 
-These are product choices. Each has a recommendation, and the rest of the plan assumes it.
+These product choices were **approved by the owner on 2026-10-06**, with the dhikr pool of decision 5 corrected the same day. The alternatives are kept for the record.
 
-| # | Decision | Recommendation | Alternative |
+| # | Decision | Chosen | Alternative not taken |
 |---|---|---|---|
 | 1 | What "too much" means | Continuous session time in the counted apps | A daily total across the counted apps. It fires once, late in the day, and overlaps with the system's Digital Wellbeing timers. Kept as an optional extra in section 11 |
 | 2 | Defaults and choices | 30 minutes and at most 3 reminders a day. Duration: a stepper from 15 to 120 minutes in steps of 5, with quick picks 15, 20, 30, 45, 60 and 90. Daily maximum: a stepper from 1 to 5 | — |
 | 3 | Apps counted by default | A curated list of social and short-video apps, plus «جميع الألعاب» (every app the system classes as a game, including games installed later). Messaging apps (WhatsApp, Messenger, Telegram, Discord) are listed but off | Start with nothing selected |
 | 4 | Choosing apps while switching on | No: the defaults apply, and the list is edited later from the card. This keeps switching on to at most two system steps | An app-picker step in the switch-on flow |
-| 5 | Which dhikr | A rotation over five short catalog adhkar of praise and tahlil (section 5.3), editable by the user. Rotation slows the habituation seen with a repeated identical prompt. Istighfar and supplications for distress are left out of the default pool: after "30 minutes in TikTok" they read as blame | One fixed dhikr |
+| 5 | Which dhikr | A rotation over seven short catalog adhkar (section 5.3): tasbih, tahmid, tahlil, «لا حول ولا قوة إلا بالله», istighfar and the supplication of Dhul-Nun. Editable by the user. Rotation slows the habituation seen with a repeated identical prompt | One fixed dhikr |
 | 6 | Notification wording | Title in the app's own plain words (draft «استراحة ذكر»); body = the dhikr text. No verse or hadith in the title in v1 | A verified line such as «أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ» (الرعد 29 in the app's Qaloon numbering). It would need an entry in `docs/adhkar-sources.md` and the owner's approval |
 | 7 | Vibration | One notification channel with a short vibration; the settings sheet links to the system channel page | A vibrating and a quiet channel chosen by an in-app switch, as scheduled reminders have |
 | 8 | Analytics | Only the existing `permission_step_result` event, with `permission_type = "usage_access"` and `entry_point = "adhkar"`, fired from the switch-on flow. It reveals that a user enabled the feature, and nothing else about its use | No event at all |
 | 9 | Listing installed apps | A `<queries>` element for launcher apps. The visible app picker and the game check use it | Curated `<package>` entries only: no picker for arbitrary apps and no game detection |
 | 10 | Distribution | Same manifest for Play and GitHub builds (there are no product flavors today) | A flavor without the permission |
-| 11 | What the reader asks after a tap | A new reading of that dhikr with its usual count, exactly as in the library (100 for `tahlil_ashr` and `subhanallah_bihamdih`, 1 for the others). The user can stop at any time | A reading with a goal of 1 |
+| 11 | What the reader asks after a tap | A new reading of that dhikr with its usual count, exactly as in the library (100 for `istighfar_absolute`, `tahlil_ashr` and `subhanallah_bihamdih`, 1 for the others). The user can stop at any time | A reading with a goal of 1 |
 
 ## 4. Platform facts that shape the design
 
@@ -337,14 +337,16 @@ Elapsed usage always comes from event timestamps, never from counting ticks. A l
 
 **Cost.** In normal mode there is one broadcast every 10 minutes or so of screen-on time, and rarely one while the screen is off. Each tick may cold-start the process. A cold start runs `Application.onCreate`, and with it `DhikrReminderScheduler.refresh(rearm = true)`: that holds `schedulingLock` for a full scan, re-sets every adhkar alarm, and may prune history into `state_v2`. That is about six times an hour of screen-on time, where today it happens only when the app is started.
 
-M0 measures it. If it is heavy, there are two options, both needing the owner's agreement:
+An estimate, to be replaced by M0's measurement: with 4 to 5 hours of screen time a day, about 30 ticks. At worst, each one is half a second of processor time for a cold start, so roughly 15 J a day, against about 70,000 J in a 5,000 mAh battery: well under 1%. Nothing runs while the phone sleeps, apart from the 6-hour safety job. There is no location, network, wake lock or service. Reduced mode, with up to 96 short jobs a day deferred to the system's maintenance windows, stays in the same order of magnitude.
+
+M0 measures it with `dumpsys batterystats`. If it is heavy, there are two options, both needing the owner's agreement:
 
 - widen the idle tick to 15 minutes;
 - limit the process-start re-arm of the adhkar scheduler to once an hour, keeping the re-arms at boot, on resume and in its 6-hour job.
 
 ### 5.3 The reminder notification
 
-**Channel.** `adhkar_usage_nudge_v1`, name «تذكير أثناء التصفّح والألعاب», with the recipe of `adhkar_reminders_v2`:
+**Channel.** `adhkar_usage_nudge_v1`, name «تذكير أثناء اللهو», with the recipe of `adhkar_reminders_v2`:
 
 - `IMPORTANCE_HIGH`, no sound, vibration `0, 250, 120, 250`, no badge.
 
@@ -365,19 +367,21 @@ It must be a separate channel, for two reasons:
 - `VISIBILITY_PRIVATE`, with a public version that shows only a neutral title («ذكر») and the dhikr. `setLocalOnly(true)`, so the reminder is not mirrored to a watch.
 - Tag `adhkar_usage_nudge` with id 1. The previous reminder is cancelled before a new one is posted, so each one can show as a banner.
 
-**Which dhikr.** A rotation over a pool of short catalog entries of praise and tahlil, all with reviewed sources:
+**Which dhikr.** A rotation over a pool of short catalog entries, all with reviewed sources (the owner's choice, 2026-10-06):
 
 | Id | Text |
 |---|---|
 | `kalimatan_khafifatan` | سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ. |
 | `tasbih_arba` | سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ. |
 | `la_hawla_quwwata` | لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ. |
+| `istighfar_absolute` | أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ. |
+| `dhi_nun` | لَا إِلَهَ إِلَّا أَنْتَ، سُبْحَانَكَ، إِنِّي كُنْتُ مِنَ الظَّالِمِينَ. |
 | `tahlil_ashr` | لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. |
 | `subhanallah_bihamdih` | سُبْحَانَ اللَّهِ وَبِحَمْدِهِ |
 
-Not in the default pool, but the user can add them: `istighfar_absolute`, `dhi_nun` (the supplication of one in distress) and `majlis_kaffara` (the expiation of a gathering). After a long session, their wording would read as blame or as a ruling on the session (principle 5).
+`majlis_kaffara` stays out of the default pool, only because it is said when leaving a gathering; the user can add it.
 
-Left to the owner: whether a short salawat entry should be added to the shared catalog. Today the only salawat entry is the long Ibrahimiyya form.
+Still open: whether a short salawat entry should be added to the shared catalog. Today the only salawat entry is the long Ibrahimiyya form.
 
 The pool is an editorial choice and is recorded with its date in `docs/adhkar-sources.md`. The user can change the selection to any catalog or personal dhikr without steps.
 
@@ -612,12 +616,14 @@ Controls reused: `AdhkarCard`, `AdhkarSwitch`, `AdhkarSectionHeader`, `DhikrShee
 | Notification | Names neither the app in use nor a duration; private on the lock screen; not mirrored to watches (section 5.3). |
 | Privacy policy (`docs/privacy-policy.html`) | Change the date. Reword the permissions intro to "some of which are optional", and add "Usage access (optional)" in the style of the Location entry: what is read (the app in front and since when, and the list of installed apps for the picker), that it is processed on the phone, and what is kept (the current session and today's count, deleted when the feature is switched off). Add "names of other apps and usage times" to what analytics never includes. Update the Notifications entry, which mentions only wake alarms, to cover adhkar and usage reminders. Say once that settings may be in the user's Android backup, except the usage-reminder files. In the data-deletion section, add switching the feature off and withdrawing Usage access. |
 | `README.md` privacy section | Rewrite it. It says the app collects no analytics (it uses Firebase Analytics) and makes only an hourly GitHub request (it also downloads Quran files from Google Play and Cloudflare, and the policy says the date check runs once a day in Ramadan). Point to the policy. |
-| `docs/adhkar-sources.md` | A dated editorial note for the reminder pool and the entries left out of it. A line stating that durations, app lists and daily limits are personal settings. |
+| `docs/adhkar-sources.md` | A dated editorial note for the reminder pool. A line stating that durations, app lists and daily limits are personal settings. |
 | Play listing | Describe the feature in the description, since sensitive accesses must serve a feature promoted in the listing. |
 | Data safety form | Review it once the items above are done; no new entry is expected because nothing leaves the device. |
 | Manifest | `PACKAGE_USAGE_STATS` with `tools:ignore="ProtectedPermissions"` and a one-line comment like its neighbours; the `<queries>` element; the receiver. |
 
 The Play Console steps are manual and are the owner's to do. The repo has no checklist for them, so they are listed in M5.
+
+**What Play will not ask for (checked 2026-10-06).** `PACKAGE_USAGE_STATS` has no section in Play's policy on sensitive permissions, so there is no Permissions Declaration Form for it. The forms on that page cover SMS and call log, background location, all-files access, `QUERY_ALL_PACKAGES`, accessibility, install packages, Health Connect, exact alarm and full-screen intent. No video is needed either, because the feature adds no foreground service. What a reviewer can check is the in-app disclosure, the privacy policy, the listing and the Data safety form. A missing disclosure is a common reason for rejection under the User Data policy.
 
 ## 7. Files
 
@@ -673,7 +679,7 @@ Outcome: the constants of `UsageNudgeTuning` are confirmed or adjusted, the cost
 
 **M1 — Logic.** `UsageNudgeComputer.kt` and its tests in the shared module, all passing with `./gradlew :shared:javaTest`. No Android code. It can start alongside M0.
 
-**M2 — Mockups.** HTML mockups of everything in section 5.8, with the Arabic copy. The owner approves them, together with decisions 2 to 8 and 11.
+**M2 — Mockups.** HTML mockups of everything in section 5.8, with the Arabic copy. The owner approves them; the decisions of section 3 are already approved.
 
 **M3 — Plumbing.** It can start while the mockups wait for approval. It covers:
 
@@ -693,11 +699,11 @@ It is checked with adb, before any UI exists: grant the access from the shell, s
 
 ## 9. Tests and validation
 
-**The android-app unit tests currently do not run.** The unit-test task builds a resource package of about 2.45 GB since the Quran audio was bundled, and fails. That affects every class in `android-app/app/src/test`, Robolectric or not, including the existing `AdhkarFlowTest`, `MainTabRequestsTest` and `MainActivityPendingIntentsTest`. M1 first checks whether this is still the case. Meanwhile:
+**State of the android-app unit tests.** For a while the unit-test task failed, because it built a resource package of about 2.45 GB once the Quran audio was bundled. On 2026-10-06 a filtered run (`./gradlew :app:testDebugUnitTest --tests "*Adhkar*"` from `android-app/`) worked again: 112 tests in seconds. M1 confirms that the classes this feature touches run too. The split stays as planned:
 
-- the logic tests live in the shared module, where they run;
-- the android-app tests below are written and run once the task works again;
-- the device checklist is the gate for everything that touches Android.
+- the logic tests live in the shared module, which runs on the plain JVM and is the fastest to iterate on;
+- the android-app tests below (`UsageNudgeMonitorTest`, and the extended `AdhkarFlowTest`, `MainTabRequestsTest` and `MainActivityPendingIntentsTest`) run with filtered `testDebugUnitTest` runs;
+- the device checklist is the gate for what tests cannot see: OEM behaviour, banners over games, battery.
 
 **Shared module (`UsageNudgeComputerTest`)**, run with `./gradlew :shared:javaTest` from `multiplatform/`:
 

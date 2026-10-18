@@ -8,6 +8,7 @@ The bundled Arabic catalog is a selection, not an exhaustive adhkar collection. 
 - Each dhikr has one master catalog entry with a stable ID. Collections reuse that entry through membership rather than copying its text; collection-specific count defaults belong to that membership context.
 - User reminder targets and time windows are personal settings. In particular, 100 salawat between 08:00 and Maghrib on Friday is a customizable personal goal, not a prescribed count or time window attributed to these hadiths.
 - The salawat (al-salat al-ibrahimiyya) is quoted in the wording of Ka'b ibn Ujra's narration, Bukhari 6357, which Muslim 406 also reports; the catalog and the screens cite both. It is cataloged under daily dhikr, not as an additional prescribed post-prayer formula, and it is one of the mosque TV's default ticker texts.
+- The salawat has several authentic wordings, all one dhikr: the reader's «الصيغ» chip lets the user read another in its place, with that wording's source and hadith; counts and reminders are unchanged, and the mosque TV keeps the default. Besides Bukhari 6357, `DhikrVariants` offers Ka'b ibn Ujra's «على إبراهيم وعلى آل إبراهيم» (Bukhari 3370), Abu Humayd al-Sa'idi's «وأزواجه وذريته» (Bukhari 3369, quoted; Muslim 407 has «وعلى أزواجه»), Abu Mas'ud al-Ansari's «في العالمين» (Muslim 405, commas added between clauses, the closing «والسلام كما قد علمتم» left out as it is not part of the salawat) and Abu Sa'id al-Khudri's «عبدك ورسولك» (Bukhari 6358). Texts and narrations were built from sunnah.com's code points and SHA-256-checked on 2026-10-09. The same day every cited number, narrator and wording was checked a second time on dorar.net (الموسوعة الحديثية), all graded صحيح: Bukhari 6357 and Muslim 406 «جميعا بلفظه»; Bukhari 3370 (Muslim 406 «بنحوه»); Bukhari 3369 and 6360 with Muslim 407 «باختلاف يسير»; Muslim 405, narrated by Abu Mas'ud 'Uqba ibn 'Amr, «من أفراد مسلم على البخاري»; Bukhari 6358 «من أفراد البخاري على مسلم».
 - The two light words (`kalimatan_khafifatan`) are cited to Bukhari 6682 and Muslim 2694, whose wording has the catalog's order, «سبحان الله وبحمده، سبحان الله العظيم»; the narration shown is Bukhari 6682's. Until 2026-10-06 the entry cited Bukhari 6406, which has the two phrases in the reverse order; Bukhari 7563 has the catalog's order of the phrases but puts «حبيبتان إلى الرحمن» first. The four narrations were checked on sunnah.com on 2026-10-06.
 - The after-prayer 33/33/33 tasbih, tahmid, and takbir followed by one tahlil are one reading item whose counter advances through four phrases (Muslim 597). Bedtime tasbih, tahmid, and takbir remain a separate 33/33/34 practice (Muslim 2727).
 - A standalone tahlil goal of at least 100 repetitions in one day uses Bukhari 3293 and Muslim 2691. Older saved 100-count reminder rules that pointed to the retired post-prayer tahlil ID are re-linked to the daily entry; old reading sessions containing retired entries are discarded.
@@ -65,6 +66,99 @@ The prayer-card excerpt `وَأَقِمِ الصَّلَاةَ لِذِكْرِ�
 The supplication of Dhu al-Nun in the additional catalog is part of [Qaloon 21:86](https://quranpedia.net/surah/7/21).
 
 The mosque TV shows, by default, the after-prayer collection (`salah_istighfar`, `salah_salam`, `salah_la_mani`, `salah_hundred`, `ayat_kursi`, `surah_ikhlas`, `surah_falaq`, `surah_nas`), and the ticker's `subhanallah_bihamdih`, `kalimatan_khafifatan`, `la_hawla_quwwata` and `salawat_ibrahimiyya`: every one has its row above. Its adhan screen shows the listener's replies below (`MosqueAdhkar.ADHAN_REPLIES`), not catalog entries, then the catalog's `after_adhan_wasila` (Bukhari 614) on a screen of its own (below); `adhan_response` and `adhan_shahada` (Muslim 386) stay in the catalog for the phone app.
+
+## Qur'an text as the mushaf
+
+Since 2026-10-15, wherever the apps show Qur'an text, it is typed exactly as the app's own mushaf prints it and set in the mushaf's font. That mushaf is the Qaloon mushaf of the Quran tab, in Mashriqi script with the Madinah waqf signs and the later Madani count. The places:
+- **Phone:** the Quran tab (search, verse excerpts, index and bookmarks, repeat sheet, the hifz heads-up); «المراجعة» (verse text, word chips, closings, finder); the adhkar's Qur'an passages (reader, closing card, lists); the prayer card's verse; the reader's size sample.
+- **Mosque TV:** the header verse, the after-prayer Ayat al-Kursi and surahs, a Qur'an text a mosque puts in the ticker, the setup basmala, and the dashboard's adhkar view.
+- **Other products:** the desktop app's and the website's basmala.
+
+Image crops of the pages were tried first for the adhkar (2026-10-14) and dropped: they could not follow the reader's text size.
+
+### The text
+
+The words are the bundled Qaloon text (King Fahd Complex encoding, from quranpedia), never retyped, only converted by code point. That encoding has the mushaf's own dabt: the wasl alif as the alif, the vowel it joins and a dot; open tanween; the eased hamza. The conversion (`scripts/mushaf_text/mushaf_text.py`, ported to `QuranMushafText` in android-app) changes only what the mushaf prints differently:
+- the encoding's waqf signs, set at Maghribi positions, go; so do its sajdah sign and stray right-to-left marks;
+- the opening letters of 29 surahs, spelled as read in the encoding («أَلَٓمِّٓ»), are the bare letters with only the madd and the shadda («الٓمّٓ», «كٓهيعٓصٓ», «طه»);
+- a word-final ya is dotless whatever it carries («إِنِّىَ», «إِلَىَّ», «يُحْىِ»), and so is a ya carrying the small alif («مَوْلَىٰنَا»);
+- a tanween fath before a final alif or alif maqsura, the iqlab one too (a fatha and a small meem, «أَبَدَۢا»), sits on the letter before it («كُفُؤًا», «هُدًى»), on a hamza over a tatweel on the tatweel («شَيْـًٔا»);
+- a hamza on an alif that the encoding marks with a madd and no vowel carries a fatha («ٱلْأَخِرَةِ», «لِأَدَمَ»);
+- the single lam of الذي, الذين, الذان, التي and الليل, prefixed or not, carries a shadda and a fatha («ٱلَّذِى», «وَالَّذِينَ», «لِلَّذِينَ», «ٱلَّيْلِ», «وَالَّذَٰنِ»); so does the second lam of the name Allah after li («لِلَّهِ»);
+- the pronoun «أَنَا» (and «لكنا», lakin ana) before a word that starts with neither a hamza nor an alif carries the round silent mark on its alif («أَنَاْ عَابِدٌ», «لَّٰكِنَّاْ هُوَ»);
+- a final letter merged whole into the next word's first (marked there with a shadda) loses its sukun («وَقُل رَّبِّ»); a nun merged with its ghunna keeps it, drawn grey in the mushaf («مَنْ يَّقُولُ»); so does a silent alif («عَصَواْ وَّكَانُواْ»);
+- the wasl alif is written on «ٱ» with its joining vowel and dot, because the shaper puts a vowel before a dot and could not otherwise tell it from an eased hamza (the dot first); the article of a surah's opening basmala, bare in the encoding, takes the basmala's wasl marks;
+- the encoding's other dots: above stays (U+06EC); below is the dot below (U+065C); on the line (U+06DF) stays and is drawn on the line, except on a waw («أَؤُ۬نَبِّئُكُم»), where the mushaf puts it above;
+- Unicode's code points for the open tanween (U+08F0–U+08F2), the dotless ya and the ya with hamza.
+
+The rules were read on the page scans, not assumed:
+- **Round 1:** 12 rules at 89 words spread evenly over the Quran, plus 20 random verses compared mark by mark. Each difference found was checked by a second reader told to refute it.
+- **Round 2:** 9 questions the first round raised, at 50 more words.
+
+A tool set each scan line over the same words typed in the font (`verse_sheet.py`, kept with the audit notes). `QuranMushafTextTest` pins the conversion of the whole text to the reference implementation's SHA-256. The conversion never adds, drops or moves a letter.
+
+One word of the source differs from the scans and is corrected in `scripts/quran-data/qaloun-text-corrections.json`, which `scripts/import-quran-index.py` applies: 17:62 opens with qala, with a fatha on the lam (page 287), where quranpedia has a sukun.
+
+### Waqf signs and verse numbers
+
+The source has no Madinah waqf signs, so the Quran tab and «المراجعة» show verses without them. The passages shown outside the Quran tab carry the mushaf's own signs, read line by line on the scans:
+- `scripts/mushaf_text/build_passages.py` writes them to `MushafPassages` (shared module).
+- They are the adhkar passages, the closing card's verses, the 14 header verses and the basmala.
+- A header verse keeps the sign that follows its last word in the mushaf (7 of them).
+
+A verse ends with its frame and number in Western digits, bound to the verse's last word by a no-break space. `MushafPassagesTest` holds each passage's SHA-256 and checks that its words are the Quran tab's words.
+
+### The font
+
+`mushaf_qaloun.ttf` is built by `scripts/mushaf_font/build_font.py` from Amiri Quran 1.003 (SIL Open Font License, no reserved name). Each product carries a copy with its licence: the phone, the TV, the desktop app and the website. The changes make Amiri draw what the mushaf draws:
+- **The wasl alif:** the joining vowel is a stroke on the alif. A fatha's grows out of the top of the stem like a flag, a damma's crosses its middle, a kasra's sits at its foot. A filled dot stands for the vowel it is started with: above, on its left at mid height, or under its foot. The middle dot of a damma start is included («ٱذْكُرُواْ», 33:41); Amiri has no glyph for it.
+- **The eased hamza at the start of a word:** its dot sits on the alif with its vowel above it, or under the alif's foot with a kasra under the dot.
+- **The dot on the line:** an eased or dropped hamza after a final madd alif («هَٰؤُلَآ•»), after a small alif standing in the line («أَٰ•ذَا»), or before an alif with its vowel («•َالِهَةً»). The tas-hil dot sits on top of a standing small alif («أَرَٰ۬يْتَ»).
+- **The small alif:** it stands in the line («إِلَٰهَ», «ٱلسَّمَٰوَٰتِ»).
+- **The closed dammatan:** two dammas, one above the other.
+- **The waqf signs:** small, just above the letters, over the gap after the word. Amiri draws them large, far above the line.
+- **The verse frame:** a ring with a cap above and below. The number inside is in bold sans digits, from Noto Sans Arabic UI SemiBold (SIL Open Font License).
+
+### What stays readable
+
+Some text keeps the readable wording:
+- **Search and sharing:** the catalog's readable wording stays for search, for TalkBack and for text copied or shared to other apps, which cannot use the font.
+- **Notifications:** «المراجعة» notifications show the converted words without what only the mushaf font draws (`QuranMushafText.plain`).
+- **Hadith quotations:** duas that quote the Qur'an inside a hadith's wording keep the hadith's text. These are the travel supplication (Muslim 1342, with al-Zukhruf 12–13), the supplication of Dhul-Nun (al-Anbiya 86) and the home-entry greeting. So does commentary quoting a few words.
+
+## Closing card
+
+When a reading is complete, the phone's reader shows a card over it (`DhikrClosingCard`, android-app). That covers the morning, evening and night lists, the bedtime and after-prayer adhkar, and a reading toward a reminder's goal. The card thanks the reader, prays for them in the app's own words, and quotes one text on the reward of remembering Allah from `DhikrClosingTexts` (shared module), one a day in turn. A verse is shown as the mushaf prints it (see «Qur'an passages as the mushaf» above); its text here is what TalkBack reads. The app's own lines are duas, never promises made on Allah's behalf. On 2026-10-14 they were drafted in three voices and judged for adab and for Arabic, and the following were left out:
+- a bare «غفر الله لك», which can sound like a reproach; the card says «غفر الله لنا ولك» instead;
+- a set «تقبّل الله» after every prayer, which some scholars discourage; the after-prayer card says «بارك الله فيك»;
+- «سترك الله» and «غمرك برحمته», whose usual contexts do not fit;
+- any wording that echoes a verse or hadith.
+
+The morning and evening cards credit completion to Allah («بفضل الله»). A morning or evening list finished outside its time gets a card that thanks for the dhikr without calling it that time's adhkar.
+
+| Text | Source | SHA-256 (first 16) |
+| --- | --- | --- |
+| `al_baqara_151` `فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ` | [Qaloon 2:151](https://quranpedia.net/surah/7/2) (Hafs 2:152) | `74913ce48be40da4` |
+| `ar_rad_29` `الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُمْ بِذِكْرِ اللَّهِ ۗ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ` | [Qaloon 13:29](https://quranpedia.net/surah/7/13) (Hafs 13:28) | `3151ded0245138f1` |
+| `al_ahzab_35` `إِنَّ الْمُسْلِمِينَ وَالْمُسْلِمَاتِ وَالْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ وَالْقَانِتِينَ وَالْقَانِتَاتِ وَالصَّادِقِينَ وَالصَّادِقَاتِ وَالصَّابِرِينَ وَالصَّابِرَاتِ وَالْخَاشِعِينَ وَالْخَاشِعَاتِ وَالْمُتَصَدِّقِينَ وَالْمُتَصَدِّقَاتِ وَالصَّائِمِينَ وَالصَّائِمَاتِ وَالْحَافِظِينَ فُرُوجَهُمْ وَالْحَافِظَاتِ وَالذَّاكِرِينَ اللَّهَ كَثِيرًا وَالذَّاكِرَاتِ أَعَدَّ اللَّهُ لَهُمْ مَغْفِرَةً وَأَجْرًا عَظِيمًا` | [Qaloon 33:35](https://quranpedia.net/surah/7/33) | `1cddaf00192042ee` |
+| `al_ahzab_41_43` `يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا اللَّهَ ذِكْرًا كَثِيرًا ۝41 وَسَبِّحُوهُ بُكْرَةً وَأَصِيلًا ۝42 هُوَ الَّذِي يُصَلِّي عَلَيْكُمْ وَمَلَائِكَتُهُ لِيُخْرِجَكُمْ مِنَ الظُّلُمَاتِ إِلَى النُّورِ ۚ وَكَانَ بِالْمُؤْمِنِينَ رَحِيمًا` | [Qaloon 33:41–43](https://quranpedia.net/surah/7/33) | `7ee5a259f6dee1ff` |
+| `taha_128` `فَاصْبِرْ عَلَىٰ مَا يَقُولُونَ وَسَبِّحْ بِحَمْدِ رَبِّكَ قَبْلَ طُلُوعِ الشَّمْسِ وَقَبْلَ غُرُوبِهَا ۖ وَمِنْ آنَاءِ اللَّيْلِ فَسَبِّحْ وَأَطْرَافَ النَّهَارِ لَعَلَّكَ تَرْضَىٰ` | [Qaloon 20:128](https://quranpedia.net/surah/7/20) (Hafs 20:130) | `baffdb58235452b7` |
+| `bukhari_7405` `عَنْ أَبِي هُرَيْرَةَ رضي الله عنه قَالَ قَالَ النَّبِيُّ ﷺ …` | [Sahih al-Bukhari 7405](https://sunnah.com/bukhari:7405); dorar.net: صحيح, «أخرجه مسلم (2675) باختلاف يسير» | `bd7de0a5bfc61d54` |
+| `bukhari_6465` `عَنْ عَائِشَةَ رضي الله عنها أَنَّهَا قَالَتْ سُئِلَ …` | [Sahih al-Bukhari 6465](https://sunnah.com/bukhari:6465); dorar.net: صحيح, «أخرجه مسلم (783) … بلفظه دون قوله: اكلفوا من العمل» | `43a81868b4b04cf4` |
+
+The verses were built from Tanzil's simple text (Hafs), downloaded from tanzil.net on 2026-10-14. They went through a conversion that reproduces every Qur'an passage of the catalog byte for byte:
+- no tatweel;
+- no assimilation shadda on a word's first letter;
+- a sukun on a bare nun or mim;
+- the vowel stored before the shadda.
+
+The only differences that remain are Qaloon's own readings (kufu'an, wa-hwa) and its verse breaks. Each verse was then compared word by word with the bundled Qaloon text (`quran/index.json`, from quranpedia). The five passages read the same in both riwayas, and their numbers are Qaloon's. The verse markers between verses follow the mosque screen texts: there is none after the last verse. In Ta-Ha 20:128 (Hafs 20:130) the Qaloon text writes «ءَانَآءِےْ اِ۬ليْلِ», which is spelling, not a different reading. It writes al-layl with one unmarked lam everywhere (2:163, 3:113, 35:13 …). The silent ya after the hamza is a seat the Uthmani rasm writes in a few words of this shape: Hafs has it in six, tilqa'i (10:15), wa-ita'i (16:90), ana'i (20:130), bi-liqa'i (30:8), wa-liqa'i (30:16) and wara'i (42:51). The Qaloon text keeps it in four of them and in no other word: tilqa'i (10:15), wa-ita'i (16:90), ana'i (20:128) and wara'i (42:48). The verse therefore reads «آنَاءِ اللَّيْلِ», as in Hafs, and every other word of the verse matches the Qaloon text letter for letter.
+
+The hadith were built from sunnah.com's code points with the `DhikrNarrations` conventions. The same conversion reproduces Bukhari 5009 and Muslim 2692 of the catalog byte for byte. Two more steps follow the catalog:
+- a vowelled alif maqsura is written as ya («إِلَيَّ», «أَيُّ»);
+- the reference is kept apart from the text, and the card shows it under the text.
+
+Bukhari 6465, rather than Muslim 783 or Bukhari 6464, gives «أدومها وإن قل» as a whole answer. The card labels it «من فضل المداومة», and the other texts «من فضل الذكر».
 
 ## Mosque screen texts
 
