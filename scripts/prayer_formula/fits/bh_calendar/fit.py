@@ -26,6 +26,10 @@ best count, a conventional value first, then the fewest decimals).
    the most days, the one nearest the middle of that plateau: Fajr and Isha at the stated 18 degrees where it holds,
    sunrise and Maghrib their horizon altitude (E2), Asr factor 1 on the geometric sun with the noon shadow at the
    declination of the Asr instant itself (E4 SHADOW_AT_EVENT); each with its rounding.
+   Then, finer (2026-10-18): every grid point within NEAR days of the best gets a fine grid around it (FINE_LAT, and
+   FINE_LNG for the times with a free longitude, half a grid cell each way), and the same rule picks among all the fine
+   points. The grid's 0.005 degree of latitude hid narrow peaks: Asr's best latitude for the odd months is 26.1855 N
+   (179 days), between two plateaus of 178 at the grid's points, and the grid's pick (26.20 N) lost 6 days held out.
 Held out: the one calendar in hand, by month-split (fold A fits on the odd calendar months and scores the even ones,
 fold B the reverse), every score from common.compute with the zone's own points. The asset takes the values fitted
 on all 355 days; its FitStats are the folds' held-out scores.
@@ -68,6 +72,8 @@ OWN_LATS = tuple(round(26.10 + 0.005 * i, 3) for i in range(41))     # 26.100 ..
 OWN_LNGS = tuple(round(50.44 + 0.02 * j, 2) for j in range(15))      # 50.44 .. 50.72: between the stated longitudes
 OWN_TIMES = {"FAJR": (-1, 18.0, "east"), "SUNRISE": (-1, -0.8333, "east"), "ASR": (1, 1.0, "west"),
              "MAGHRIB": (1, -0.8333, "west"), "ISHA": (1, 18.0, "west")}     # side, stated value, stated point
+NEAR = 2                                   # grid points within this many days of the best are refined
+FINE_LAT, FINE_LNG = 0.0005, 0.002         # the fine grid's steps, five each way (half a grid cell)
 ROUNDINGS = ("NEAREST", "DOWN", "UP")
 EDGES = {"NEAREST": (-30, 30), "UP": (-60, 0), "DOWN": (0, 60)}   # E1: seconds around the published minute
 STANDARD_ALTITUDE = -0.8333
@@ -313,34 +319,52 @@ class Own:
     picks: dict[str, Pick]
 
 
-def fit_own(grid: dict, dhuhr: dict, idx: list[int]) -> Own:
+def plateau(found: dict) -> tuple:
+    """found: cell (lattice steps, integers) -> ((lat, lng), Pick). Among the cells whose pick covers the most days,
+    the one nearest the middle of their largest connected group (the plateau's middle, not an edge of it)."""
+    top = max(p.at_value for _, p in found.values())
+    tied, groups = {c for c, (_, p) in found.items() if p.at_value == top}, []
+    while tied:
+        group, todo = [], [tied.pop()]
+        while todo:
+            c = todo.pop()
+            group.append(c)
+            for n in ((c[0] + 1, c[1]), (c[0] - 1, c[1]), (c[0], c[1] + 1), (c[0], c[1] - 1)):
+                if n in tied:
+                    tied.remove(n)
+                    todo.append(n)
+        groups.append(sorted(group))
+    group = max(groups, key=lambda g: (len(g), [-x for c in g for x in c]))
+    mi, mj = sum(c[0] for c in group) / len(group), sum(c[1] for c in group) / len(group)
+    cell = min(group, key=lambda c: ((c[0] - mi) ** 2 + (c[1] - mj) ** 2, c))
+    return found[cell]
+
+
+def fit_own(grid: dict, dhuhr: dict, idx: list[int], windows_at=None) -> Own:
     """Each time's point, rounding and value on the rows idx: among the grid points whose pick covers the most days,
     the one nearest the middle of their largest connected group (the plateau's middle, not an edge of it); the stated
-    value (18 degrees, the standard horizon, factor 1) first."""
+    value (18 degrees, the standard horizon, factor 1) first. With windows_at(time, lat, lng), the same rule then runs
+    on the fine grid around every grid point within NEAR days of the best (half a grid cell each way)."""
     points, picks = {}, {}
     for e, (_, value, _) in OWN_TIMES.items():
-        found = {}
-        for (name, lat, lng), w in grid.items():
-            if name == e:
-                keys = [(e, r) for r in ROUNDINGS]
-                found[(OWN_LATS.index(lat), OWN_LNGS.index(lng) if lng in OWN_LNGS else 0)] = (
-                    (lat, lng), pick_at(w, idx, keys, (value,)) if e == "ASR" else pick(w, idx, keys, (value,)))
-        top = max(p.at_value for _, p in found.values())
-        tied, groups = {c for c, (_, p) in found.items() if p.at_value == top}, []
-        while tied:
-            group, todo = [], [tied.pop()]
-            while todo:
-                c = todo.pop()
-                group.append(c)
-                for n in ((c[0] + 1, c[1]), (c[0] - 1, c[1]), (c[0], c[1] + 1), (c[0], c[1] - 1)):
-                    if n in tied:
-                        tied.remove(n)
-                        todo.append(n)
-            groups.append(sorted(group))
-        group = max(groups, key=lambda g: (len(g), [-x for c in g for x in c]))
-        mi, mj = sum(c[0] for c in group) / len(group), sum(c[1] for c in group) / len(group)
-        cell = min(group, key=lambda c: ((c[0] - mi) ** 2 + (c[1] - mj) ** 2, c))
-        points[e], picks[e] = found[cell]
+        keys = [(e, r) for r in ROUNDINGS]
+
+        def pick_of(w):
+            return pick_at(w, idx, keys, (value,)) if e == "ASR" else pick(w, idx, keys, (value,))
+        found = {(OWN_LATS.index(lat), OWN_LNGS.index(lng) if lng in OWN_LNGS else 0): ((lat, lng), pick_of(w))
+                 for (name, lat, lng), w in grid.items() if name == e}
+        if windows_at is not None:
+            top = max(p.at_value for _, p in found.values())
+            free_lng = e not in ("ASR", "MAGHRIB")
+            fine = set()
+            for (lat, lng), p in found.values():
+                if p.at_value >= top - NEAR:
+                    for a in range(-5, 6):
+                        for b in (range(-5, 6) if free_lng else (0,)):
+                            fine.add((round(lat + FINE_LAT * a, 4), round(lng + FINE_LNG * b, 3)))
+            # cells in fine steps, so neighbours are one step apart whichever grid point they came from
+            found = {(round(la / FINE_LAT), round(lo / FINE_LNG)): ((la, lo), pick_of(windows_at(e, la, lo))) for la, lo in fine}
+        points[e], picks[e] = plateau(found)
     return Own(pick(dhuhr, idx, [(MODEL, r) for r in ("DOWN", "NEAREST", "UP")], scale=60.0), points, picks)
 
 
@@ -448,17 +472,26 @@ def main() -> int:
     per_model = {m: max(sweep(dhuhr[(m, r)])[0] for r in ROUNDINGS) for m in MODELS}
     say("  1 Dhuhr, most windows per sun model at the stated 50.44 E: " + ", ".join(f"{m} {n}" for m, n in per_model.items()))
     grid = own_windows(rows, suns[MODEL], stated[1][1])
+    cache: dict[tuple, dict] = {}
+
+    def windows_at(e: str, lat: float, lng: float) -> dict:
+        if (e, lat, lng) not in cache:
+            cache[(e, lat, lng)] = (asr_event_windows(rows, suns[MODEL], lat, lng) if e == "ASR"
+                                    else angle_windows(rows, suns[MODEL], lat, lng, e, OWN_TIMES[e][0]))
+        return cache[(e, lat, lng)]
 
     folds = {}
     for name, months in FOLDS:
         idx = [i for i, r in enumerate(rows) if r.day.month in months]
-        folds[name] = (idx, fit_own(grid, dhuhr, idx))
+        folds[name] = (idx, fit_own(grid, dhuhr, idx, windows_at))
         say(f"fold {name} (fitted on months {','.join(map(str, months))}, {len(idx)} days): {describe(folds[name][1])}")
     every = list(range(len(rows)))
-    final = fit_own(grid, dhuhr, every)
+    coarse = fit_own(grid, dhuhr, every)
+    final = fit_own(grid, dhuhr, every, windows_at)
+    say(f"all {len(rows)} days, the grid alone: {describe(coarse)}")
     say(f"all {len(rows)} days: {describe(final)}")
-    shared = {e: max(covering(grid[(e, lat, lng)][final.picks[e].config], final.picks[e].value)
-                     for (name, lat, lng) in grid if name == e and (lat, lng) == final.points["FAJR" if e in ("FAJR", "SUNRISE") else "MAGHRIB"])
+    shared = {e: covering(windows_at(e, *final.points["FAJR" if e in ("FAJR", "SUNRISE") else "MAGHRIB"])[final.picks[e].config],
+                          final.picks[e].value)
               for e in OWN_TIMES}
     say("  2 the same values at the zone's morning (Fajr's) or evening (Maghrib's) point instead of their own: "
         + ", ".join(f"{e[:3].lower()} {n}" for e, n in shared.items()))

@@ -229,14 +229,14 @@ object ArabAuthorityProfiles {
     )
 
     // AM10 fit (fits/bh_calendar), on the 1448 calendar, each time at a point of its own (E6 eventPoints, in the asset;
-    // 2026-10-17): Fajr 17.98° and Isha 18.05° (the stated 18°), sunrise at −0.88°, Maghrib at the standard altitude,
-    // Dhuhr 64 s after the transit (the semi-diameter's crossing), Asr on the sun at the Asr instant itself (E4
-    // SHADOW_AT_EVENT); 96.6–99.4 % exact held out (month split), all within 1 minute.
-    val BH_CALENDAR = profile("bh_calendar", angle(17.98), ishaAngle(18.05), tables("The Supreme Council for Islamic Affairs's calendar")) {
+    // 2026-10-17, its points refined on a finer grid 2026-10-18): Fajr 17.975° and Isha 18.055° (the stated 18°),
+    // sunrise at −0.86°, Maghrib at −0.84°, Dhuhr 64 s after the transit (the semi-diameter's crossing), Asr on the sun
+    // at the Asr instant itself (E4 SHADOW_AT_EVENT); 97.2–99.4 % exact held out (month split), all within 1 minute.
+    val BH_CALENDAR = profile("bh_calendar", angle(17.975), ishaAngle(18.055), tables("The Supreme Council for Islamic Affairs's calendar")) {
         copy(
             dhuhrAfterTransitMin = 1.07,
             rounding = TimeEvent.entries.associateWith { if (it == TimeEvent.MAGHRIB) Rounding.NEAREST else Rounding.DOWN },
-            horizon = Horizons(HorizonModel.Fixed(-0.88), HorizonModel.Standard),
+            horizon = Horizons(HorizonModel.Fixed(-0.86), HorizonModel.Fixed(-0.84)),
             sunEvaluation = mapOf(TimeEvent.ASR to SunEvaluation.SHADOW_AT_EVENT),
             sunModel = SunModel.VSOP87,
         )

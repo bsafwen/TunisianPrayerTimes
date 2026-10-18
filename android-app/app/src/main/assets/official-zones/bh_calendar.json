@@ -27,12 +27,12 @@
    }
   ],
   "exact": {
-   "FAJR": 0.9859,
-   "SUNRISE": 0.9944,
+   "FAJR": 0.9887,
+   "SUNRISE": 0.9859,
    "DHUHR": 0.9718,
-   "ASR": 0.9662,
-   "MAGHRIB": 0.9859,
-   "ISHA": 0.9887
+   "ASR": 0.9803,
+   "MAGHRIB": 0.9831,
+   "ISHA": 0.9944
   },
   "within1": {
    "FAJR": 1.0,
@@ -141,25 +141,25 @@
     "lngE5": 5058565
    },
    "morningPoint": {
-    "latE5": 2621000,
-    "lngE5": 5072000
+    "latE5": 2621200,
+    "lngE5": 5072400
    },
    "eveningPoint": {
-    "latE5": 2615000,
+    "latE5": 2615150,
     "lngE5": 5044000
    },
    "eventPoints": {
     "SUNRISE": {
-     "latE5": 2620500,
-     "lngE5": 5062000
+     "latE5": 2620550,
+     "lngE5": 5064200
     },
     "ASR": {
-     "latE5": 2618000,
+     "latE5": 2618550,
      "lngE5": 5044000
     },
     "ISHA": {
-     "latE5": 2614500,
-     "lngE5": 5072000
+     "latE5": 2614550,
+     "lngE5": 5072600
     }
    },
    "fit": {
@@ -184,12 +184,12 @@
      }
     ],
     "exact": {
-     "FAJR": 0.9859,
-     "SUNRISE": 0.9944,
+     "FAJR": 0.9887,
+     "SUNRISE": 0.9859,
      "DHUHR": 0.9718,
-     "ASR": 0.9662,
-     "MAGHRIB": 0.9859,
-     "ISHA": 0.9887
+     "ASR": 0.9803,
+     "MAGHRIB": 0.9831,
+     "ISHA": 0.9944
     },
     "within1": {
      "FAJR": 1.0,

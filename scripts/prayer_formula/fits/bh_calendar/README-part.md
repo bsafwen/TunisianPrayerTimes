@@ -1,20 +1,21 @@
 #### Bahrain (`bh_calendar`)
 
-`fits/bh_calendar/fit.py` (about 2 minutes) fits the Bahraini calendar of 1448 that the Supreme Council for Islamic
+`fits/bh_calendar/fit.py` (about 5 minutes) fits the Bahraini calendar of 1448 that the Supreme Council for Islamic
 Affairs (SCIA) issues, and writes `official-zones/bh_calendar.json`. The SCIA's page states the method (two points,
 Isha at 18°, Dhuhr once the whole disc has crossed the meridian); the fit keeps what the calendar confirms and fits
 the rest.
 
-**Method** (refitted 2026-10-17: each time at a point of its own, S6 `eventPoints`).
+**Method** (refitted 2026-10-17: each time at a point of its own, S6 `eventPoints`; the points refined on a finer
+grid 2026-10-18).
 
 | Time | Rule | Point | Rounding (E1) |
 |---|---|---|---|
-| Fajr | 17.98° | 26.210 N 50.72 E (the zone's morning point) | down |
-| Sunrise | `Fixed(−0.88°)` | 26.205 N 50.62 E (its own) | down |
+| Fajr | 17.975° | 26.212 N 50.724 E (the zone's morning point) | down |
+| Sunrise | `Fixed(−0.86°)` | 26.2055 N 50.642 E (its own) | down |
 | Dhuhr | the transit + 1.07 min (`dhuhrAfterTransitMin`, E7: the whole disc past the meridian) | 50.44 E (the evening point) | down |
-| Asr | shadow factor 1, geometric sun, the noon shadow at the declination of the Asr instant itself (E4 `SHADOW_AT_EVENT`) | 26.180 N 50.44 E (its own) | down |
-| Maghrib | sunset at `Standard` (−0.8333°) | 26.150 N 50.44 E (the zone's evening point) | nearest |
-| Isha | 18.05° | 26.145 N 50.72 E (its own) | down |
+| Asr | shadow factor 1, geometric sun, the noon shadow at the declination of the Asr instant itself (E4 `SHADOW_AT_EVENT`) | 26.1855 N 50.44 E (its own) | down |
+| Maghrib | `Fixed(−0.84°)` | 26.1515 N 50.44 E (the zone's evening point) | nearest |
+| Isha | 18.055° | 26.1455 N 50.726 E (its own) | down |
 
 VSOP87 (E14). The stated points are 26.27 N 50.68 E (Dilmunia: Fajr and sunrise) and 26.22 N 50.44 E (Salman Town:
 the rest), the eastern longitude printed «68.50».
@@ -48,25 +49,30 @@ conventional value wins, then the fewest decimals):
 2. Each other time scans a grid, 26.100–26.300 N by 0.005° and 50.44–50.72 E by 0.02° (Asr and Maghrib on 50.44 E,
    their latitude only), picks its rounding and value at each point (the stated 18° and the standard horizon first),
    and keeps, among the points whose pick covers the most days, the one nearest the middle of that plateau.
-On all 355 days: Fajr 352, sunrise 353, Dhuhr 349, Asr 349, Maghrib 351, Isha 352.
+3. Finer (2026-10-18): every grid point within 2 days of the best gets a grid of 0.0005° (and 0.002° of longitude
+   where the longitude is free) for half a cell each way, and the same rule picks among all those points. The grid
+   alone hid narrow peaks: on the odd months Asr's best latitude is 26.1855 N (179 days), between two plateaus of 178
+   at the grid's points, and the grid's pick, 26.20 N, scored the even months 165 of 171 (26.1855 N: 171).
+On all 355 days: Fajr 352, sunrise 353, Dhuhr 349, Asr 350, Maghrib 351, Isha 353.
 
 **Held-out scores** (month-split: fold A fitted on the odd months, fold B on the even ones; each day scored by the
 fold that did not see it, with common.compute and the fold's own points; quirk days none):
 
 | | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
 |---|---|---|---|---|---|---|
-| exact, held out (355 days) | 98.6 % | 99.4 % | 97.2 % | 96.6 % | 98.6 % | 98.9 % |
+| exact, held out (355 days) | 98.9 % | 98.6 % | 97.2 % | 98.0 % | 98.3 % | 99.4 % |
 | within 1 min, held out | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % |
-| exact, the asset's values in-sample | 99.2 % | 99.4 % | 98.3 % | 98.3 % | 98.9 % | 99.2 % |
+| exact, the asset's values in-sample | 99.2 % | 99.4 % | 98.3 % | 98.6 % | 98.9 % | 99.4 % |
+| exact held out, the grid alone (2026-10-17) | 98.6 % | 99.4 % | 97.2 % | 96.6 % | 98.6 % | 98.9 % |
 | exact held out, the two points of 2026-10-15 | 97.5 % | 98.0 % | 97.2 % | 96.9 % | 96.9 % | 94.4 % |
 
-**Tier.** Bahrain is tier B (9.5): every time within 1 minute held out. Tier A fails on Asr alone, by two days (343
-of 355, 97 % needs 345): fold A's months leave Asr's latitude a plateau from 26.18 to 26.20 N, and its middle,
-26.20 N, scores the even months 165 of 171, where 26.18 N scores 171.
+**Tier.** Bahrain passes tier A (9.5): 97 % exact or more on every time held out, every time within 1 minute, every
+month held out on 20 to 31 days. With the grid alone Asr was two days short (343 of 355).
 
 **Quirk days.** None.
 
 **Open questions.**
-- The 1449 calendar (about June 2027) is the held-out year; with two calendars Asr's latitude is settled.
+- The 1449 calendar (about June 2027) is the held-out year; with two calendars the points are settled (the folds'
+  points differ by up to 0.024° of latitude for sunrise, and by 0.01° and 0.03° of longitude for Fajr and Isha).
 - Why the SCIA's times sit at these points (reduced latitudes for some, the eastern longitude for Isha); the SCIA's
   own program or statement would settle it (Q7).
