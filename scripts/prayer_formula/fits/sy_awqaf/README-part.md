@@ -78,8 +78,23 @@ point; Qamishli (sunrise 3.5) and Nabek (2.5) keep the table. With every time ro
 down), a table's own margin is at most 0 on every time, so the guard acts closer to the tables than 8.8's distances
 suggest.
 
-**Open issues.** (1) Only Ramadan tables: an official table for another season, summer above all, or the app «مسجدك»
-read on a few dates (9.3). (2) Raqqa's 1447 table points about 0.5° west of the city (one day, from the image): if
+**The ministry's mosque screens (2026-10-18; not yet used).** The ministry's screen system and its app «مسجدك» load a
+year table per region, `tv.masjidak.mow.gov.sy/upload/json_prayers_times/prayer_times_region_json_<id>.json`, ids
+761–870 (109 regions, 100 distinct tables, 366 rows in a leap year's order; kept in
+`test-data-local/research-2026-10-18/SY/masjidak/` with a README, never committed). Mosques print these: 6 of the
+owner's 75 Syrian mosques match a region's table on all 365 days to the minute (regions 764, 844, 846, 847, Damascus
+area), none the Ramadan tables above. They are another product than the printed Ramadan tables: Damascus (764–767)
+differs from Ramadan 1447 by 1–2 minutes, and the method above, at Damascus, agrees with region 764 on only 75 Fajr,
+161 sunrise, 165 Dhuhr, 56 Asr, 219 Maghrib and 182 Isha of 365 days (Asr up to 3 minutes off). In exploration
+(`research-2026-10-18/SY/region_fits_2011_vsop87.tsv`): Damascus's table is a perpetual table of a year one before a
+leap year (2015, 2007, 2011 tie), and at a fitted point (33.5095 N 36.2833 E) reproduces Fajr 18° 358, sunrise 356,
+Dhuhr (transit + 1) 365, Maghrib (sunset + 2) 359 and Isha 17° 347 of 365, every time nearest at its own instant;
+its Asr is factor 1 with the previous day's declination in the hour angle (318–325 of 365; the standard rule 64).
+Aleppo's, Idlib's, Hama's and Rif Dimashq's regions fit that model at 90–98 %, the coast, Homs, the south and the
+north-east (Raqqa, Hasakah, Deir ez-Zor) at 20–85 %: another reference year or other settings per group, not yet
+found. Moving Syria to these tables (regions as zones, their own method) waits for that.
+
+**Open issues.** (1) Only Ramadan tables in the fit; the screens' year tables above are the next source. (2) Raqqa's 1447 table points about 0.5° west of the city (one day, from the image): if
 confirmed, Raqqa's computing point moves to about 38.50° E; transcribing `heads.png` into `test-data-local` would let
 the fit use the four rows. (3) The E9 revision date stays the plan's (2025-03-30): the tables show + 0 in 1446 and + 2 in
 1447, not when it changed. (4) Daraa's table fits a point 8 km east of the town on two days only.

@@ -75,4 +75,8 @@ Qaa and Qoubaiyat (sunrise 4.9, 5.1, 4.9) take the method at their own point, as
 per-event evaluations. (2) The table's own sun is none of the engine's (Dhuhr 347 of 354 at best); the misses at the
 reference year are its seasonal departures (Fajr's angle wanders 19.62–19.75° by month). (3) The sunrise reading is
 close between −0.94° rounded to nearest and the standard horizon rounded down (one month-half picks each). (4) The
-North's mosques call another table (12); its publisher is unknown.
+North's mosques call another table (12); its publisher is unknown. (5) The year table has the format of the Syrian
+ministry's mosque-screen tables (366 rows in a leap year's order, `{Fajr, Sunrise, …}`), which also show an odd sun
+(Damascus's Asr takes the previous day's declination): one screen system's generator may explain both (2026-10-18,
+`fits/sy_awqaf` README). Dar al-Fatwa's website plugin table (`admin-ajax.php?action=get_monthly_timetable`, dated
+2023) is not it: its Maghrib is 5 minutes earlier and it adds an iqamah column.
