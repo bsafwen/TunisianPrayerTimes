@@ -30,6 +30,9 @@ object PlaceResolution {
     private const val ELEVATION_KM = 40.0
     private const val MOVE_KM = 3.0
 
+    /** 6.8: a place change clears a silence dismissal only where it moves that prayer's time by more than this. */
+    private const val DISMISSAL_MOVE_MINUTES = 45L
+
     /** East Jerusalem's governorate, approximated by its city's area (8.8, Q1): its clock follows the phone's when Israeli or West Bank time. */
     private val JERUSALEM = LatLngE5.of(31.7767, 35.2345)
     private const val JERUSALEM_KM = 15.0
@@ -182,9 +185,9 @@ object PlaceResolution {
 
     /**
      * After a stored change of place (6.8): the caches go, the choice of the new key is brought up to date,
-     * everything is scheduled again (dhikr, silence, wake, hifz), the dismissals go with the old times, every saved
-     * adhkar reminder is checked again over the year at the new place (6.9), and a change of kind, choice key,
-     * method, mapped zone or label is notified once on the `location` channel, naming the new zone.
+     * everything is scheduled again (dhikr, silence, wake, hifz), a dismissal goes only where its time moved by more
+     * than 45 min, every saved adhkar reminder is checked again over the year at the new place (6.9), and a change of
+     * kind, choice key, method, mapped zone or label is notified once on the `location` channel, naming the new zone.
      */
     suspend fun onPlaceChanged(context: Context, old: PrayerPlace, new: PrayerPlace, oldLabel: String?, newLabel: String?) {
         val before = runCatching { identity(context, old) }.getOrNull()
@@ -192,7 +195,7 @@ object PlaceResolution {
         DhikrReminderScheduler.invalidatePrayerCache()
         AnalyticsTracker.applyRegionalCollection(context)  // analytics follow the new place's country (EU rules)
         if (new is PrayerPlace.Coordinates) runCatching { refreshChoice(context, new) }.onFailure { Log.w(TAG, "Could not refresh the method choice", it) }
-        PrefsManager.clearAutoSilenceDismissals(context)
+        keepDismissalsWhoseTimesHeld(context, old, new)
         PrefsManager.clearAutoSilenceDismissed(context)
         runCatching { ScheduleRefreshCoordinator.syncAll(context) }.onFailure { Log.w(TAG, "Could not reschedule after a place change", it) }
         runCatching { DhikrReminderScheduler.recheckSavedReminders(context) }.onFailure { Log.w(TAG, "Could not re-check the adhkar reminders", it) }
@@ -204,6 +207,24 @@ object PlaceResolution {
             PlaceTimesHolder.placeTimes(context).defaults(new).chooser != com.tunisianprayertimes.method.ChooserKind.NONE &&
             PrefsManager.getMethodChoice(context, new)?.chooserAnswered != true
         if (visible) notifyPlaceChanged(context, newLabel, after?.zoneName, askMethod)
+    }
+
+    /**
+     * 6.8: the dismissed occurrences whose time the new place moves by at most 45 min stay dismissed (a neighbouring
+     * delegation never silences again a window the user ended); the others, and one the new place has no time for, go.
+     */
+    private fun keepDismissalsWhoseTimesHeld(context: Context, old: PrayerPlace, new: PrayerPlace) {
+        val dismissed = PrefsManager.getAutoSilenceDismissals(context)
+        if (dismissed.isEmpty()) return
+        fun at(place: PrayerPlace, prayer: Prayer, day: java.time.LocalDate) =
+            runCatching { PrayerTimesRepository.prayerOccurrences(context, day, place) }.getOrNull()?.firstOrNull { it.prayer == prayer }?.at
+        val kept = dismissed.filter { (prayer, day) ->
+            val before = at(old, prayer, day) ?: return@filter false
+            val after = at(new, prayer, day) ?: return@filter false
+            kotlin.math.abs(java.time.Duration.between(before, after).toMinutes()) <= DISMISSAL_MOVE_MINUTES
+        }
+        PrefsManager.clearAutoSilenceDismissals(context)
+        if (kept.isNotEmpty()) PrefsManager.addAutoSilenceDismissals(context, kept, keepFrom = kept.minOf { it.second })
     }
 
     private fun notifyPlaceChanged(context: Context, label: String?, zoneName: String?, askMethod: Boolean = false) {

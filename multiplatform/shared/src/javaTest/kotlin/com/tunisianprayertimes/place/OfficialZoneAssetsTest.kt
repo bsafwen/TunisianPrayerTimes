@@ -108,6 +108,24 @@ class OfficialZoneAssetsTest {
     }
 
     @Test
+    fun theUaesListedAreasTakeTheirLocation() {
+        // Plan 8.8: a place takes the location with the nearest listed area or own point in its emirate, so Awqaf's
+        // named areas take their own location: Sha'biyyat Al Hiyar → Sweihan (63), Al Shamkhah City → Abu Dhabi (36),
+        // Al Khawaneej 1 → Dubai (69), not the nearest location point.
+        val file = assetsFolder()?.resolve("ae_awqaf.json")?.takeIf { it.isFile } ?: return
+        val uae = OfficialZones.parse(file.readText())
+        val method = assertNotNull(PrayerMethods.byId(uae.methodId))
+        fun zoneAt(lat: Double, lng: Double, admin1: String, catalogueId: Long): String? {
+            val point = LatLngE5.of(lat, lng)
+            val place = PrayerPlace.Coordinates(point.latE5, point.lngE5, null, "Asia/Dubai", ZoneSource.USER, "AE", catalogueId, admin1 = admin1)
+            return ZoneMapping.attach(place, method, uae)?.id
+        }
+        assertEquals("63", zoneAt(24.58242, 55.74670, "01", 12748680L))
+        assertEquals("36", zoneAt(24.39268, 54.70779, "01", 12047416L))
+        assertEquals("69", zoneAt(25.24882, 55.48545, "03", 13118436L))
+    }
+
+    @Test
     fun theAssetFormatRoundTrips() {
         val zones = AuthorityZones(
             "om_mara", "om_mara", "OM", MappingKind.NEAREST, byAdmin1 = false, namedFirst = true, terrainClassKm = null, fit = null, source = "test",

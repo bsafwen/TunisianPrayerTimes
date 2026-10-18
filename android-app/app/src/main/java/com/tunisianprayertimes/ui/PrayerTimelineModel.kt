@@ -235,12 +235,15 @@ internal fun PrayerSilenceConfig.withEndRule(
     copy(mode = SilenceMode.DURATION, endOffsetMinutes = offsetMinutes)
 }
 
-/** The rule a draft schedules: a fixed end that keeps the stored clock keeps its saved adhan offset (D16). */
+/**
+ * The rule a draft schedules: a fixed end that keeps the stored clock is the stored end itself, with its saved adhan
+ * offset (D16) and its floor after the adhan (D12's Jumu'a end in Tunisia), so the editor draws what the planner arms.
+ */
 private fun PrayerSilenceConfig.ruleAt(anchor: PrayerTimelineAnchor): SilenceRule {
     val saved = anchor.savedEnd
         ?.takeIf { mode == SilenceMode.FIXED_TIME && fixedHour == it.time.hour && fixedMinute == it.time.minute }
-        ?.savedAdhanOffsetMinutes
-    return SilenceRule.of(this, savedEndOffsetMinutes = saved)
+    val rule = SilenceRule.of(this, savedEndOffsetMinutes = saved?.savedAdhanOffsetMinutes)
+    return if (saved != null && rule.end is SilenceEnd.Clock) rule.copy(end = saved) else rule
 }
 
 /** A draft's window on the anchor's day, resolved and clamped as the planner arms it (6.9, D16). */

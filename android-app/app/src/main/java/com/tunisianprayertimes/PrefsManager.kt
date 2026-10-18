@@ -216,6 +216,7 @@ object PrefsManager {
             prefs(context).getString(jumuaKey(place), null)?.let { runCatching { LocalTime.parse(it) }.getOrNull() }
     }
 
+    /** Sets a fixed Jumu'a time, or with null the A18 default; either way Jumu'a no longer follows Asr. */
     fun setJumuaTime(context: Context, place: PrayerPlace, time: LocalTime?) {
         when (place) {
             is PrayerPlace.Inm -> setJomoaaTime(context, time?.hour ?: -1, time?.minute ?: -1)
@@ -225,10 +226,29 @@ object PrefsManager {
                 edit.apply()
             }
         }
+        prefs(context).edit().remove(jumuaBeforeAsrKey(place)).apply()
+    }
+
+    /**
+     * Jumu'a held [minutes] before each Friday's Asr (about one Tunisian user in ten: their mosque prays an hour before
+     * Asr), per country like the fixed time; null when Jumu'a has a fixed time or the default.
+     */
+    fun getJumuaMinutesBeforeAsr(context: Context, place: PrayerPlace): Int? =
+        prefs(context).getInt(jumuaBeforeAsrKey(place), -1).takeIf { it >= 0 }
+
+    /** Makes Jumu'a follow Asr, [minutes] before it, in place of a fixed time. */
+    fun setJumuaMinutesBeforeAsr(context: Context, place: PrayerPlace, minutes: Int) {
+        setJumuaTime(context, place, null)
+        prefs(context).edit().putInt(jumuaBeforeAsrKey(place), minutes).apply()
     }
 
     private fun jumuaKey(place: PrayerPlace.Coordinates) =
         "jomoaa_time_" + (place.countryCode?.let(CountryResolver::normalize) ?: "ZZ")
+
+    private fun jumuaBeforeAsrKey(place: PrayerPlace) = when (place) {
+        is PrayerPlace.Inm -> "jomoaa_before_asr_minutes"
+        is PrayerPlace.Coordinates -> "jomoaa_before_asr_" + (place.countryCode?.let(CountryResolver::normalize) ?: "ZZ")
+    }
 
     /**
      * The developer switches of plan 2: each region stays closed until its milestones are done (the Arab League

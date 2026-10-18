@@ -1,10 +1,12 @@
 package com.tunisianprayertimes.place
 
 import com.tunisianprayertimes.InmPrayerTimes
+import com.tunisianprayertimes.engine.EventStatus
 import com.tunisianprayertimes.engine.InmPrayerDays
 import com.tunisianprayertimes.engine.PrayerEngine
 import com.tunisianprayertimes.engine.TimeEvent
 import com.tunisianprayertimes.method.ArabAuthorityProfiles
+import com.tunisianprayertimes.method.AsrRule
 import com.tunisianprayertimes.method.PrayerMethodChoice
 import com.tunisianprayertimes.method.PrayerMethods
 import com.tunisianprayertimes.method.ZonePick
@@ -48,6 +50,20 @@ class PlaceTimesTest {
         val moved = checkNotNull(times.day(riyadh, PrayerMethodChoice("mwl", asrShadow = 2, adjustments = mapOf(TimeEvent.MAGHRIB to 3)), date))
         assertEquals(3, Duration.between(plain[TimeEvent.MAGHRIB].at, moved[TimeEvent.MAGHRIB].at).toMinutes())
         assertEquals(true, Duration.between(plain[TimeEvent.ASR].at, moved[TimeEvent.ASR].at).toMinutes() > 30)
+    }
+
+    @Test
+    fun theSignedShadowStaysInAlgeria() {
+        // E15: dz_marw's signed noon shadow inside Algeria only; elsewhere the shadow rule. In Johannesburg in June the
+        // signed shadow has no Asr at all (1 + tan(φ − δ) < 0), which the polar midpoint used to stand in for.
+        val times = PlaceTimes(null)
+        val choice = PrayerMethodChoice("dz_marw")
+        assertEquals(AsrRule.SignedShadow, times.method(place(22.785, 5.5228, "Africa/Algiers", "DZ"), choice).asr)
+        val johannesburg = place(-26.2041, 28.0473, "Africa/Johannesburg", "ZA")
+        assertEquals(AsrRule.Shadow, times.method(johannesburg, choice).asr)
+        assertEquals(AsrRule.Shadow, times.method(place(48.8566, 2.3522, "Europe/Paris", null), choice).asr)
+        val day = checkNotNull(times.day(johannesburg, choice, LocalDate.of(2026, 6, 21)))
+        assertEquals(EventStatus.COMPUTED, day[TimeEvent.ASR].status)
     }
 
     @Test

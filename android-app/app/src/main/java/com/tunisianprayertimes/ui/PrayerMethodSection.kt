@@ -413,7 +413,7 @@ private fun CustomMethodSheet(base: PrayerMethod, mainlandFrance: Boolean, onSav
     var ishaByMinutes by remember { mutableStateOf(base.isha is IshaRule.MinutesAfter) }
     var ishaAngle by remember { mutableStateOf(clampAngle((base.isha as? IshaRule.Angle)?.degrees ?: 17.0, CustomMethodRanges.ISHA_ANGLES)) }
     var ishaMinutes by remember { mutableIntStateOf(((base.isha as? IshaRule.MinutesAfter)?.minutes ?: 90).coerceIn(CustomMethodRanges.ISHA_MINUTES)) }
-    var ishaEarliest by remember { mutableStateOf<LocalTime?>(null) }
+    var ishaEarliest by remember { mutableStateOf(base.ishaEarliest) }
     var asr by remember { mutableIntStateOf(base.asrShadow) }
     var dhuhr by remember { mutableIntStateOf((base.offset(TimeEvent.DHUHR)).coerceIn(CustomMethodRanges.DHUHR_MINUTES)) }
     var maghrib by remember { mutableIntStateOf((base.offset(TimeEvent.MAGHRIB)).coerceIn(CustomMethodRanges.MAGHRIB_MINUTES)) }

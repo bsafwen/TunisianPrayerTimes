@@ -22,8 +22,14 @@ internal class DayAstro(
     val sunriseRaw: Double? = sky.sunrise.seconds
     val sunsetRaw: Double? = sky.sunset.seconds
 
-    /** The sun's altitude at the transit, which tells a polar night (below the horizon) from a midnight sun. */
-    val noonAltitudeDeg: Double = Solver.altitude(sky.cycle.hours(transit), sky.site.evening.latitude, sky.site.evening.longitude, sky.instantSun, sky.cycle)
+    /**
+     * The sun's altitude at the transit, which tells a polar night (below the sunrise horizon) from a midnight sun: the
+     * sunrise's own sun at the morning point (H2), the one the sunrise is solved with, so a day without a sunrise is never
+     * read as a midnight sun by a hair (Steigen on 1 January 2026, under IRN's noon sun).
+     */
+    val noonAltitudeDeg: Double = Solver.altitude(
+        sky.cycle.hours(transit), sky.site.morning.latitude, sky.site.morning.longitude, sky.provider(TimeEvent.SUNRISE, sky.cycle), sky.cycle,
+    )
     val sunriseHorizonDeg: Double = checkNotNull(sky.sunrise.altitudeDeg)
 
     /** Only the rules that look at other nights' angles need these: computed on first use. */

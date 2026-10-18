@@ -42,14 +42,15 @@ internal class IrnNorth(private val season: Season) {
         val year = date.year
         val n = IrnRule.commonDay(date)
         val reals = HashMap<Int, Real>()
-        fun r(m: Int) = reals.getOrPut(m) { real(dateOf(year, m)) }
+        // Day n is the date itself: 29 February shares 28 February's number (its rules), never its times.
+        val cur = real(date)
+        fun r(m: Int) = if (m == n) cur else reals.getOrPut(m) { real(dateOf(year, m)) }
         fun line(m: Int, m0: Int, y0: Double, m1: Int, y1: Double): Double {
             val u0 = y0 - r(m0).midnightUtc
             val u1 = y1 - r(m1).midnightUtc
             return r(m).midnightUtc + u0 + (u1 - u0) * (m - m0).toDouble() / (m1 - m0)
         }
         fun uncapped(x: Real, k: Int) = if (k == RISE) x.riseUncapped else x.setUncapped
-        val cur = r(n)
         val out = cur.capped.copyOf()
         val days = days(year)
         if (days.svalbard) {

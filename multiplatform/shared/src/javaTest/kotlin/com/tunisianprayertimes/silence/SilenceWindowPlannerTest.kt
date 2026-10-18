@@ -105,6 +105,51 @@ class SilenceWindowPlannerTest {
     }
 
     @Test
+    fun aTunisianJumuaEndsAtTheLaterOf1315AndJumuaPlus45() {
+        // D12 with the owner's 2026-10-18 rule: Jumu'a's default window in Tunisia ends at 13:15 or 45 min after Jumu'a,
+        // whichever is later, so a mosque's later Jumu'a (an hour before Asr: 13:30 in winter, about 15:08 in summer)
+        // keeps its 45 min, never the 1 to 15 min D16's cap left. Dhuhr keeps 12:40-13:15.
+        val friday = LocalDate.of(2026, 10, 23)
+        val unset = SilenceRule(SilenceStart.Unset, SilenceEnd.Unset)
+        fun window(prayer: Prayer, time: String) = assertNotNull(SilenceWindowPlanner.window(prayer, friday, at(friday.toString(), time, tunis), unset, tunis, true))
+        for ((jumua, end) in listOf("12:20" to "13:15", "12:30" to "13:15", "13:00" to "13:45", "13:14" to "13:59", "13:30" to "14:15", "13:45" to "14:30", "15:08" to "15:53")) {
+            val w = window(Prayer.JOMOAA, jumua)
+            assertEquals(at(friday.toString(), jumua, tunis), w.start, jumua)
+            assertEquals(at(friday.toString(), end, tunis), w.end, jumua)
+            assertEquals(EndResolution.AS_SET, w.endResolution, jumua)
+        }
+        val dhuhr = window(Prayer.DHUHR, "12:20")
+        assertEquals(at(friday.toString(), "12:40", tunis), dhuhr.start)
+        assertEquals(at(friday.toString(), "13:15", tunis), dhuhr.end)
+        // The year run finds nothing to flag in the default rule.
+        val planner = SilenceWindowPlanner(tunis, true, emptyMap()) { SilenceDay(it, day(it, tunis, "05:30", "06:50", "12:20", "15:08", "17:40", "19:00"), jumua = at(it.toString(), "14:08", tunis)) }
+        assertTrue(planner.fit(Prayer.JOMOAA, unset, friday, 14).fitsAllYear)
+    }
+
+    @Test
+    fun anIshaAfterMidnightKeepsAnEveningEndOnItsEvening() {
+        // Brussels in June: Isha of 21 June at 00:14 on 22 June. A 22:00 end saved in Tunisia at adhan + 150 is the
+        // evening before the start, so the day keeps its saved offset (02:44), never 00:14 → 22:00 the same day.
+        val june21 = LocalDate.of(2026, 6, 21)
+        val isha = at("2026-06-22", "00:14", paris)
+        val evening = assertNotNull(SilenceWindowPlanner.window(Prayer.ISHA, june21, isha, SilenceRule(SilenceStart.FromAdhan(0), SilenceEnd.Clock(LocalTime.of(22, 0), 150)), paris, false))
+        assertEquals(at("2026-06-22", "02:44", paris), evening.end)
+        assertEquals(EndResolution.SAVED_OFFSET, evening.endResolution)
+        // An end after midnight is still that night's: 00:30.
+        val night = assertNotNull(SilenceWindowPlanner.window(Prayer.ISHA, june21, isha, SilenceRule(SilenceStart.FromAdhan(0), SilenceEnd.Clock(LocalTime.of(0, 30), 16)), paris, false))
+        assertEquals(at("2026-06-22", "00:30", paris), night.end)
+        assertEquals(EndResolution.AS_SET, night.endResolution)
+        // The year run counts such a day as not fitting, and proposes no fixed end that day would read as before its start.
+        val planner = SilenceWindowPlanner(paris, false, emptyMap()) {
+            SilenceDay(it, day(it, paris, "03:40", "05:30", "13:45", "17:55", "22:05", if (it.dayOfMonth % 2 == 0) "+1 00:14" else "23:50"))
+        }
+        val fit = planner.fit(Prayer.ISHA, SilenceRule(SilenceStart.FromAdhan(0), SilenceEnd.Clock(LocalTime.of(22, 0), 150)), june21, 4)
+        assertEquals(4, fit.notFitting.size)
+        assertNull(fit.laterFixedEnd)
+        assertEquals(150, fit.adhanRelativeEnd)
+    }
+
+    @Test
     fun aFixedStartTakesTheOccurrenceNearestTheAdhan() {
         // Plan 6.9: a Dhuhr at 12:30 with a fixed start at 00:20 starts the next night; a fixed end at 23:00 on
         // the start's day would be adhan + 34 h 30 min, so the domain clamps it to adhan + 1,440.

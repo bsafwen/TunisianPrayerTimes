@@ -8,7 +8,6 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZoneId
-import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 
 /** One silence window of a prayer day (plan 6.9): [start] inclusive, [end] exclusive. */
@@ -126,9 +125,10 @@ class SilenceWindowPlanner(
         val onGrid = (minutes + 4) / 5 * 5
         if (onGrid > 23 * 60 + 59) return null
         val candidate = maxOf(LocalTime.of(onGrid / 60, onGrid % 60), asSet)
+        // Each day's end as the planner resolves it, so a proposal is never an end the day reads as before its start.
         val fitsAll = checked.all { c ->
-            val end = ZonedDateTime.of(c.start.atZone(zone).toLocalDate(), candidate, zone).toInstant()
-            end > c.start && !end.isAfter(c.adhan.plus(END_DOMAIN_MINUTES, ChronoUnit.MINUTES))
+            val end = SilenceEndpoints.end(SilenceEnd.Clock(candidate), c.start, c.adhan, zone)
+            end.resolution == EndResolution.AS_SET && !end.at.isAfter(c.adhan.plus(END_DOMAIN_MINUTES, ChronoUnit.MINUTES))
         }
         return candidate.takeIf { fitsAll }
     }

@@ -190,6 +190,12 @@ internal class MethodRun(
     val nightBefore: Night? by lazy { season.nightBefore(date) }
     val nightAfter: Night? by lazy { season.nightAfter(date) }
 
+    /** The sunrise and sunset of steps 1–3: the raw events, or the times a polar rule set (H2's clamp, H8's cycle). */
+    var stepsSunrise: Double? = null
+        private set
+    var stepsSunset: Double? = null
+        private set
+
     operator fun get(event: TimeEvent): Slot = slots.getValue(event)
 
     fun run(): MethodRun {
@@ -245,7 +251,8 @@ internal class MethodRun(
             if (fajr.seconds.let { it == null || abs(mecca.fajr - it) > MOVED }) fajr.moveTo(3, StepKind.POLAR, mecca.fajr, RuleName.IRN_MECCA_CYCLE)
             if (isha.seconds.let { it == null || abs(mecca.isha - it) > MOVED }) isha.moveTo(3, StepKind.POLAR, mecca.isha, RuleName.IRN_MECCA_CYCLE)
         } else {
-            highLatitude(maghrib.seconds)
+            // H5's Isha counts from Maghrib before the zone's shift: Isha takes its own in step 7, once.
+            highLatitude(maghrib.seconds?.minus((zoneOffsets[TimeEvent.MAGHRIB] ?: 0.0) * 60.0))
         }
         // Step 7: the other times' offsets.
         for (event in listOf(TimeEvent.FAJR, TimeEvent.SUNRISE, TimeEvent.DHUHR, TimeEvent.ASR, TimeEvent.ISHA)) {
@@ -308,9 +315,13 @@ internal class MethodRun(
                 val value = minOf(if (shadow == null) middle else maxOf(shadow, middle), north.sunset - 3600.0)
                 if (shadow == null || abs(value - shadow) > MOVED) asr.moveTo(3, StepKind.POLAR, value, RuleName.POLAR_ASR_MIDPOINT)
             }
+            stepsSunrise = north.sunrise
+            stepsSunset = north.sunset
             return north
         }
         val ends = season.ends(date)
+        stepsSunrise = ends.sunrise
+        stepsSunset = ends.sunset
         ends.sunriseRule?.let { rule -> ends.sunrise?.let { sunrise.moveTo(2, StepKind.POLAR, it, rule) } }
         if (method.maghribAngle == null) ends.sunsetRule?.let { rule -> ends.sunset?.let { maghrib.moveTo(2, StepKind.POLAR, it, rule) } }
         if (asr.seconds == null && method.asr !is AsrRule.BeforeMaghrib) {

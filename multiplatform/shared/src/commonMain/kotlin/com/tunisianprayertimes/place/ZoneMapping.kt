@@ -170,8 +170,9 @@ object ZoneMapping {
     private fun montenegro(place: PrayerPlace.Coordinates, zones: AuthorityZones): OfficialZone? {
         val sarajevo = zones.zones.firstOrNull { it.baseZoneId == null } ?: return null
         val shift = floor(4 * (18.41 - place.lngE5 / 1e5) + 0.5)
+        // One id per whole-minute shift, the table it names: a move that keeps it is no change of zone (6.8).
         return OfficialZone(
-            authority = zones.authority, id = "me:${place.latE5},${place.lngE5}", nameAr = sarajevo.nameAr,
+            authority = zones.authority, id = "me:${shift.toInt()}", nameAr = sarajevo.nameAr,
             point = place.point, baseZoneId = sarajevo.id, country = "ME",
             offsets = com.tunisianprayertimes.engine.TimeEvent.entries.associateWith { shift },
         )

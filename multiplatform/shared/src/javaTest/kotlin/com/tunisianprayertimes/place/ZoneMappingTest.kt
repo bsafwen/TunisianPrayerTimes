@@ -173,6 +173,8 @@ class ZoneMappingTest {
         val podgorica = ZoneMapping.attach(place(42.4304, 19.2594, "Europe/Podgorica", "ME"), EuropeanPresets.BOSNIA_IZ, bosnia)
         assertEquals(-3.0, assertNotNull(podgorica).offsets[TimeEvent.FAJR])
         assertEquals("sarajevo", podgorica.baseZoneId)
+        // Its id names the shift, not the fix: a move across Podgorica is no change of zone (6.8).
+        assertEquals(podgorica.id, ZoneMapping.attach(place(42.4412, 19.2471, "Europe/Podgorica", "ME"), EuropeanPresets.BOSNIA_IZ, bosnia)?.id)
         assertEquals("bijelo_polje", ZoneMapping.attach(place(43.04, 19.75, "Europe/Podgorica", "ME"), EuropeanPresets.BOSNIA_IZ, bosnia)?.id)
     }
 

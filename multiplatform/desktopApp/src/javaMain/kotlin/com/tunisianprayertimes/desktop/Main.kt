@@ -65,6 +65,9 @@ private fun showNotification(message: String, type: TrayIcon.MessageType = TrayI
 fun main() {
     // Force Arabic locale so Material3 DatePicker displays in Arabic
     Locale.setDefault(Locale("ar", "TN"))
+    // INM's times are Tunis clock times (UTC+1 all year): every calendar of the app reads them in Tunis, so a
+    // computer set to another zone still shows the delegation's day and silences at the right instants.
+    TimeZone.setDefault(TimeZone.getTimeZone("Africa/Tunis"))
 
     // Initialize data loaders with the data directory
     val dataDir = resolveDataDir()
@@ -230,11 +233,34 @@ private fun scheduleAlarms() {
         jomoaaMinute = Preferences.getJomoaaTimeMinute()
     )
 
+    // A window of yesterday's still open after midnight (an Isha end at 00:30): the computer reads one day's times, so
+    // the midnight reschedule alone would end it at 00:01. Yesterday's computation at its last instant gives its end.
+    val endOfYesterday = (now.clone() as Calendar).apply {
+        add(Calendar.DAY_OF_YEAR, -1)
+        set(Calendar.HOUR_OF_DAY, 23)
+        set(Calendar.MINUTE, 59)
+        set(Calendar.SECOND, 59)
+        set(Calendar.MILLISECOND, 999)
+    }
+    val carriedEnds = PrayerDataLoader.loadDayPrayerTimes(
+        delegationId, endOfYesterday.get(Calendar.YEAR), endOfYesterday.get(Calendar.MONTH) + 1, endOfYesterday.get(Calendar.DAY_OF_MONTH),
+    )?.let { yesterdayTimes ->
+        SilenceAlarmComputer.compute(
+            now = endOfYesterday,
+            todayTimes = yesterdayTimes,
+            configs = configs,
+            isFriday = endOfYesterday.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+            jomoaaHour = Preferences.getJomoaaTimeHour(),
+            jomoaaMinute = Preferences.getJomoaaTimeMinute()
+        ).alarms.filter { it.action == SilenceAlarmComputer.AlarmAction.UNSILENCE && it.triggerAtMillis > now.timeInMillis }
+    }.orEmpty()
+    val inSilenceWindow = result.currentlyInSilenceWindow || carriedEnds.isNotEmpty()
+
     // Handle immediate state: if we're inside a silence window right now, silence immediately
-    if (result.currentlyInSilenceWindow && !SilenceController.isSilent()) {
+    if (inSilenceWindow && !SilenceController.isSilent()) {
         SilenceController.enableSilence()
         showNotification(Strings.TOAST_SILENT_ENABLED)
-    } else if (!result.currentlyInSilenceWindow && SilenceController.isSilent()
+    } else if (!inSilenceWindow && SilenceController.isSilent()
         && !Preferences.isManualSilenceActive()) {
         SilenceController.disableSilence()
         showNotification(Strings.TOAST_NORMAL_RESTORED)
@@ -243,7 +269,7 @@ private fun scheduleAlarms() {
     // Schedule precise one-shot tasks for each future alarm
     val nowMillis = now.timeInMillis
     synchronized(pendingAlarms) {
-        for (alarm in result.alarms) {
+        for (alarm in result.alarms + carriedEnds) {
             val delayMs = alarm.triggerAtMillis - nowMillis
             if (delayMs <= 0) continue // already past
 

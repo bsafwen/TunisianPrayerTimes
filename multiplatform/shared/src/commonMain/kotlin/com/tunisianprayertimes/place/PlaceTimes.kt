@@ -3,6 +3,7 @@ package com.tunisianprayertimes.place
 import com.tunisianprayertimes.engine.InmPrayerDays
 import com.tunisianprayertimes.engine.PrayerDay
 import com.tunisianprayertimes.engine.PrayerEngine
+import com.tunisianprayertimes.method.AsrRule
 import com.tunisianprayertimes.method.CountryMethodDefaults
 import com.tunisianprayertimes.method.PrayerMethod
 import com.tunisianprayertimes.method.PrayerMethodChoice
@@ -106,14 +107,25 @@ class PlaceTimes(
     fun defaults(place: PrayerPlace.Coordinates) =
         CountryMethodDefaults.forCountry(place.countryCode, place.zoneId, place.admin1, place.admin2, place.point)
 
-    /** The method a choice computes with; an unknown id falls back to the country's default, then `mwl`. */
-    fun method(place: PrayerPlace.Coordinates, choice: PrayerMethodChoice?): PrayerMethod =
-        choice?.resolve() ?: PrayerMethods.byId(defaults(place).fallback) ?: PrayerMethods.MWL
+    /**
+     * The method a choice computes with; an unknown id falls back to the country's default, then `mwl`. E15: the signed
+     * shadow is Algeria's own, so a place outside DZ takes the method with the shadow rule (south of the equator the
+     * signed shadow gives no Asr at all).
+     */
+    fun method(place: PrayerPlace.Coordinates, choice: PrayerMethodChoice?): PrayerMethod {
+        val method = choice?.resolve() ?: PrayerMethods.byId(defaults(place).fallback) ?: PrayerMethods.MWL
+        val inAlgeria = place.countryCode?.let(CountryResolver::normalize) == "DZ"
+        return if (method.asr == AsrRule.SignedShadow && !inAlgeria) method.copy(asr = AsrRule.Shadow) else method
+    }
 
-    /** The zone [place] maps to under [choice] in [year] (6.5), or null for exact coordinates. */
+    /**
+     * The zone [place] maps to under [choice] in [year] (6.5), or null for exact coordinates. The validity guard runs
+     * with the profile's own Asr factor: the user's factor, like the steppers, changes neither the zone nor the verdict.
+     */
     fun mapping(place: PrayerPlace.Coordinates, choice: PrayerMethodChoice?, year: Int): MappedZone? {
         val method = method(place, choice)
-        return ZoneMapping.resolve(place, method, zones.forMethod(method.id, place.countryCode), choice?.zonePick, year, guard)
+        val own = PrayerMethods.byId(method.id)?.let { profile -> method.copy(asrShadow = profile.asrShadow) } ?: method
+        return ZoneMapping.resolve(place, own, zones.forMethod(method.id, place.countryCode), choice?.zonePick, year, guard)
     }
 
     /** Prayer day [date] at [place], or null outside INM's delegations or the supported years. */

@@ -5,6 +5,7 @@
  "country": "AE",
  "mapping": "NEAREST",
  "byAdmin1": true,
+ "namedFirst": true,
  "source": "The General Authority of Islamic Affairs and Endowments (Awqaf): its 41 locations' tables, computed with ICOP's Accurate Times; nine fitted on the 2026 tables Awqaf sent to the developer",
  "fit": {
   "fittedOn": [

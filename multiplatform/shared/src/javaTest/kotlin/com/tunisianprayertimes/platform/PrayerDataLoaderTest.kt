@@ -61,6 +61,21 @@ class PrayerDataLoaderTest {
     }
 
     @Test
+    fun theFormulaServesEveryYearBesideTheCsvTables() {
+        // INM's delegation parameters beside the data: the phone's and the TV's formula, so 2027 has times and
+        // delegations too, where the bundled CSV tables stop at 2026.
+        val params = checkNotNull(javaClass.getResource("/delegation_params.json")).readText()
+        File(testDir, "prayer-formula").apply { mkdirs() }.resolve("delegation_params.json").writeText(params)
+        PrayerDataLoader.init(testDir)
+        val inm = InmPrayerTimes.fromParamsJson(params)
+        assertTrue(PrayerDataLoader.hasPrayerData(615, 2027, 1))
+        assertEquals(inm.loadDayPrayerTimes(615, 2027, 1, 1), PrayerDataLoader.loadDayPrayerTimes(615, 2027, 1, 1))
+        assertEquals(31, PrayerDataLoader.loadPrayerTimes(615, 2027, 1).size)
+
+        testDir.deleteRecursively()
+    }
+
+    @Test
     fun missingFileReturnsFalseAndEmptyList() {
         val emptyDir = File(System.getProperty("java.io.tmpdir"), "prayer-empty-${System.currentTimeMillis()}")
         emptyDir.mkdirs()

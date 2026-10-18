@@ -46,8 +46,11 @@ internal object ValidityEnvelope {
             val ceiling = sky.twilight(TimeEvent.FAJR, 12.0, scaled = false).seconds
             if (ceiling != null && t > ceiling) fajr.hold(ceiling, EnvelopeBound.FAJR_12, Rounding.DOWN)
         }
+        // The sunrise and sunset of steps 1–3 (owner, 2026-10-18): where a polar rule set them (the 5-hour minimum, irn's
+        // cycle), the envelope keeps that estimate, so a custom method in the far north keeps the times of the method it
+        // was made from instead of the real sun's short night.
         val sunrise = run[TimeEvent.SUNRISE]
-        val computedSunrise = sky.sunrise.seconds
+        val computedSunrise = run.stepsSunrise
         sunrise.seconds?.let { t ->
             if (computedSunrise != null && t > computedSunrise + ALLOWANCE_SECONDS) sunrise.hold(computedSunrise, EnvelopeBound.SUNRISE, Rounding.DOWN)
         }
@@ -58,7 +61,7 @@ internal object ValidityEnvelope {
         val firstShadow = sky.firstShadowAsr.seconds
         asr.seconds?.let { t -> if (firstShadow != null && t < firstShadow - ALLOWANCE_SECONDS) asr.hold(firstShadow, EnvelopeBound.ASR, Rounding.UP) }
         val maghrib = run[TimeEvent.MAGHRIB]
-        val sunset = sky.sunset.seconds
+        val sunset = run.stepsSunset
         maghrib.seconds?.let { t ->
             if (sunset != null && t < sunset + 60.0 - ALLOWANCE_SECONDS) maghrib.hold(sunset + 60.0, EnvelopeBound.MAGHRIB, Rounding.UP)
         }

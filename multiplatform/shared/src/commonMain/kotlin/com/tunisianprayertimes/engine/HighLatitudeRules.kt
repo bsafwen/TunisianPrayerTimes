@@ -1,5 +1,7 @@
 package com.tunisianprayertimes.engine
 
+import com.tunisianprayertimes.method.FajrRule
+import com.tunisianprayertimes.method.IshaRule
 import com.tunisianprayertimes.method.PrayerMethod
 import java.time.LocalDate
 import java.time.LocalTime
@@ -21,7 +23,7 @@ internal class HighLatitudeRules(
     private val date: LocalDate,
     private val zone: ZoneId,
     private val method: PrayerMethod,
-    /** Step 4's Maghrib, which the summer forms count Isha from. */
+    /** Step 4's Maghrib before the zone's shift, which the summer forms count Isha from (Isha takes its own shift in step 7). */
     private val maghrib: Double?,
     private val latitudeDeg: Double,
 ) {
@@ -59,9 +61,10 @@ internal class HighLatitudeRules(
             HighLatitudeRule.DumRf -> sunset?.let { set -> later(angleTime, sunrise - 0.30 * (DAY_SECONDS - (set - sunrise)), RuleName.DUM_RF) } ?: Bounded(angleTime, null)
             HighLatitudeRule.DumRt ->
                 if (night != null && staysAbove18(night)) moved(angleTime, sunrise - 2 * 3600.0, RuleName.DUM_RT) else Bounded(angleTime, null)
+            // H5: D5's bound on the other dates, under the summer form's own name.
             is HighLatitudeRule.SummerForm ->
                 if (rule.covers(MonthDay.from(date))) later(angleTime, sunrise - rule.fajrBeforeSunrise * 60.0, RuleName.SUMMER_FORM)
-                else night?.let { later(angleTime, sunrise - angleDeg / 60 * it.seconds, RuleName.ANGLE_BASED) } ?: Bounded(angleTime, null)
+                else night?.let { later(angleTime, sunrise - angleDeg / 60 * it.seconds, RuleName.SUMMER_FORM) } ?: Bounded(angleTime, null)
             HighLatitudeRule.Irn -> IrnRule(season, zone, method).fajr(date, angleTime, sunrise, nightBefore)
         }
     }
@@ -94,10 +97,15 @@ internal class HighLatitudeRules(
             HighLatitudeRule.DumRf -> sunrise?.let { rise -> earlier(angleTime, sunset + dumRfShare(date) * (DAY_SECONDS - (sunset - rise)), RuleName.DUM_RF) } ?: Bounded(angleTime, null)
             HighLatitudeRule.DumRt ->
                 if (night != null && staysAbove18(night)) moved(angleTime, sunset + 90 * 60.0, RuleName.DUM_RT) else Bounded(angleTime, null)
+            // H5: in the summer form's dates Isha moves only by its own interval; D5's bound on the other dates, under its name.
             is HighLatitudeRule.SummerForm -> {
                 val after = rule.ishaAfterMaghrib
-                if (after != null && maghrib != null && rule.covers(MonthDay.from(date))) earlier(angleTime, maghrib + after * 60.0, RuleName.SUMMER_FORM)
-                else night?.let { earlier(angleTime, sunset + angleDeg / 60 * it.seconds, RuleName.ANGLE_BASED) } ?: Bounded(angleTime, null)
+                when {
+                    !rule.covers(MonthDay.from(date)) ->
+                        night?.let { earlier(angleTime, sunset + angleDeg / 60 * it.seconds, RuleName.SUMMER_FORM) } ?: Bounded(angleTime, null)
+                    after != null && maghrib != null -> earlier(angleTime, maghrib + after * 60.0, RuleName.SUMMER_FORM)
+                    else -> Bounded(angleTime, null)
+                }
             }
             HighLatitudeRule.Irn -> IrnRule(season, zone, method).isha(date, angleTime, sunset, nightAfter)
         }
@@ -133,9 +141,13 @@ internal class HighLatitudeRules(
 
     // ---- Diyanet's takdir ----
 
-    /** H6: the year's table north of 44.375° N; elsewhere the angle time, or D5's α/60 of the night where it is absent. */
+    /**
+     * H6: the year's table north of 44.375° N; elsewhere the angle time, or D5's α/60 of the night where it is absent.
+     * The table is built on both angles, so a method with Fajr or Isha by minutes (a custom method from a Diyanet
+     * preset) takes the latter everywhere.
+     */
     private fun takdir(side: Side, angleTime: Double?, angleDeg: Double): Bounded {
-        if (latitudeDeg >= DiyanetTakdir.START_LATITUDE) {
+        if (latitudeDeg >= DiyanetTakdir.START_LATITUDE && method.fajr is FajrRule.Angle && method.isha is IshaRule.Angle) {
             DiyanetTakdir.of(season, date.year).value(date, side == Side.FAJR)?.let { return moved(angleTime, it, RuleName.DIYANET_TAKDIR) }
         }
         if (angleTime != null) return Bounded(angleTime, null)

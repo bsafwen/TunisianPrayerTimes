@@ -25,11 +25,14 @@ kotlin {
     }
 }
 
-// Copy prayer-time data files (gouvernorats.json + csv/) into the native bundle.
+// Copy prayer-time data files (gouvernorats.json + csv/, and INM's delegation parameters for the formula) into the native bundle.
 val stageAppResources by tasks.registering(Sync::class) {
     val docsDir = rootProject.file("../docs")
     from(docsDir) {
         include("gouvernorats.json", "csv/**")
+    }
+    from(rootProject.file("../data")) {
+        include("prayer-formula/delegation_params.json")
     }
     into(layout.buildDirectory.dir("app-resources/common"))
 }

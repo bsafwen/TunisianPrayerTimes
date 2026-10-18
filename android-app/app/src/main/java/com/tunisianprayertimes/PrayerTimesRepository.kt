@@ -26,6 +26,9 @@ object PrayerTimesRepository {
     /** Years offered in the app; meteo.tn publishes (and the formula is validated from) 2020. */
     val SUPPORTED_YEARS = InmPrayerTimes.SUPPORTED_YEARS
 
+    /** The Jumu'a an hour before Asr that about one Tunisian user in ten sets (their mosque's). */
+    const val JUMUA_MINUTES_BEFORE_ASR = 60
+
     private fun source(context: Context): InmPrayerTimes = PrayerDataLoader.prayerTimes(context)
 
     @Volatile
@@ -111,10 +114,22 @@ object PrayerTimesRepository {
             .sortedWith(compareBy<PrayerOccurrence>({ it.at }, { it.prayerDay }))
     }
 
-    /** The Friday [date]'s Jumu'a time: the edited time of the place's country (6.9), else [defaultJumuaTime]. */
+    /**
+     * The Friday [date]'s Jumu'a time: the edited time of the place's country (6.9), or the set minutes before that
+     * Friday's Asr (a mosque that prays an hour before Asr), never before Dhuhr; else [defaultJumuaTime].
+     */
     fun jumuaTime(context: Context, date: LocalDate, place: PrayerPlace = place(context)): Instant? {
         PrefsManager.getJumuaTime(context, place)?.let { return ZonedDateTime.of(date, it, place.zone).toInstant() }
+        PrefsManager.getJumuaMinutesBeforeAsr(context, place)?.let { minutes -> jumuaBeforeAsr(context, date, place, minutes)?.let { return it } }
         return defaultJumuaTime(context, place, date)
+    }
+
+    /** [minutes] before the Friday [date]'s Asr, never before its Dhuhr; null without an Asr that day. */
+    fun jumuaBeforeAsr(context: Context, date: LocalDate, place: PrayerPlace, minutes: Int): Instant? {
+        val day = prayerDay(context, date, place) ?: return null
+        val asr = day[TimeEvent.ASR].at ?: return null
+        val at = asr.minusSeconds(minutes * 60L)
+        return day[TimeEvent.DHUHR].at?.let { dhuhr -> maxOf(at, dhuhr) } ?: at
     }
 
     /** A18: the authority's Friday time, then the place's or country's entry of [SilenceDefaults], then Dhuhr. */

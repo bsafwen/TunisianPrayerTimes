@@ -34,9 +34,11 @@ sealed interface SilenceEnd {
     /**
      * A clock time in the place's zone, on the start's day (D16). [savedAdhanOffsetMinutes] is the end's
      * offset from the adhan on the day the user saved it: the end of a day on which even the capped end
-     * comes before the start. Null for a setting saved before the offset was stored.
+     * comes before the start. Null for a setting saved before the offset was stored. [atLeastAdhanMinutes]:
+     * never fewer minutes after the adhan (D12's Jumu'a end in Tunisia, owner 2026-10-18: the later of 13:15
+     * and Jumu'a + 45, so a mosque's later Jumu'a, an hour before Asr, keeps its whole window).
      */
-    data class Clock(val time: LocalTime, val savedAdhanOffsetMinutes: Int? = null) : SilenceEnd
+    data class Clock(val time: LocalTime, val savedAdhanOffsetMinutes: Int? = null, val atLeastAdhanMinutes: Int? = null) : SilenceEnd
 
     /** Never edited: D12's default for Dhuhr and Jumu'a, a [SilenceEndpoints.DEFAULT_MINUTES] window otherwise. */
     data object Unset : SilenceEnd
@@ -98,7 +100,7 @@ object SilenceEndpoints {
     const val DHUHR_START_MINUTES = 5
     const val DHUHR_END_MINUTES = 45
 
-    /** D12: Tunisia's Dhuhr window, read in `Africa/Tunis`; 13:15 also ends Jumu'a. */
+    /** D12: Tunisia's Dhuhr window, read in `Africa/Tunis`; 13:15 also ends Jumu'a, or Jumu'a + 45 when that is later (owner, 2026-10-18). */
     val TUNISIA_DHUHR_START: LocalTime = LocalTime.of(12, 40)
     val TUNISIA_DHUHR_END: LocalTime = LocalTime.of(13, 15)
 
@@ -110,8 +112,9 @@ object SilenceEndpoints {
 
     /**
      * The rule with D12's defaults in place of its unset endpoints. Jumu'a's window counts from the resolved
-     * Jumu'a time (A18), which the planner passes as its adhan, so its start defaults to + 0. [inm] is true
-     * for a Tunisian delegation.
+     * Jumu'a time (A18), which the planner passes as its adhan, so its start defaults to + 0; in Tunisia it ends
+     * at 13:15 or 45 min after Jumu'a, whichever is later (a mosque's Jumu'a an hour before Asr keeps 45 min).
+     * [inm] is true for a Tunisian delegation.
      */
     fun withDefaults(rule: SilenceRule, prayer: Prayer, inm: Boolean): SilenceRule {
         val dhuhrOrJumua = prayer == Prayer.DHUHR || prayer == Prayer.JOMOAA
@@ -121,6 +124,7 @@ object SilenceEndpoints {
             else -> SilenceStart.FromAdhan(0)
         }
         val end = if (rule.end != SilenceEnd.Unset) rule.end else when {
+            prayer == Prayer.JOMOAA && inm -> SilenceEnd.Clock(TUNISIA_DHUHR_END, DHUHR_END_MINUTES, atLeastAdhanMinutes = DHUHR_END_MINUTES)
             dhuhrOrJumua && inm -> SilenceEnd.Clock(TUNISIA_DHUHR_END, DHUHR_END_MINUTES)
             dhuhrOrJumua -> SilenceEnd.FromAdhan(DHUHR_END_MINUTES)
             else -> SilenceEnd.FromStart(DEFAULT_MINUTES)
@@ -142,27 +146,35 @@ object SilenceEndpoints {
     fun end(end: SilenceEnd, start: Instant, adhan: Instant, zone: ZoneId): End = when (end) {
         is SilenceEnd.FromStart -> End(start.plusSeconds(end.minutes * 60L), EndResolution.AS_SET)
         is SilenceEnd.FromAdhan -> End(adhan.plusSeconds(end.minutes * 60L), EndResolution.AS_SET)
-        is SilenceEnd.Clock -> clockEnd(end, start, adhan, zone)
+        is SilenceEnd.Clock -> clockEnd(end, start, adhan, zone).let { resolved ->
+            // A floor after the adhan (D12's Jumu'a end in Tunisia): the later end is the rule as set.
+            val floor = end.atLeastAdhanMinutes?.let { adhan.plusSeconds(it * 60L) }
+            if (floor != null && floor >= resolved.at) End(floor, EndResolution.AS_SET) else resolved
+        }
         SilenceEnd.Unset -> End(start.plusSeconds(DEFAULT_MINUTES * 60L), EndResolution.AS_SET)
     }
 
     /**
      * D16: the clock time on the start's day when it comes after the start; otherwise later by at most
      * [CAP_MINUTES], never to the next day; and if that still comes before the start, the saved offset from
-     * the adhan, so the prayer is still silenced.
+     * the adhan, so the prayer is still silenced. An adhan after midnight keeps an evening end on its evening:
+     * when the clock time's occurrence nearest the adhan comes before the adhan and the start (an Isha at 00:14
+     * with a 22:00 end), that is the end, before the start, not the start's day's 22:00 nearly a day later.
      */
     private fun clockEnd(end: SilenceEnd.Clock, start: Instant, adhan: Instant, zone: ZoneId): End {
         val day = start.atZone(zone).toLocalDate()
-        val asSet = ZonedDateTime.of(day, end.time, zone).toInstant()
+        val onStartsDay = ZonedDateTime.of(day, end.time, zone).toInstant()
+        val nearest = nearestOccurrence(end.time, adhan, zone)
+        val asSet = if (onStartsDay > start && nearest < adhan && nearest <= start) nearest else onStartsDay
         if (asSet > start) return End(asSet, EndResolution.AS_SET)
-        val lastMinuteOfDay = ZonedDateTime.of(day, LocalTime.of(23, 59), zone).toInstant()
+        val lastMinuteOfDay = ZonedDateTime.of(asSet.atZone(zone).toLocalDate(), LocalTime.of(23, 59), zone).toInstant()
         val capped = minOf(asSet.plusSeconds(CAP_MINUTES * 60), lastMinuteOfDay)
         if (capped > start) return End(capped, EndResolution.CAPPED)
         end.savedAdhanOffsetMinutes?.let { return End(adhan.plusSeconds(it * 60L), EndResolution.SAVED_OFFSET) }
         // A fixed end saved before its offset was stored: the offset it had where it was set is unknown. Its
         // clock's next occurrence after the start keeps today's meaning (an Isha end at 00:30) while that stays
         // within 12 h of the adhan; beyond, it is the 23-hour roll D16 forbids, so D12's adhan + 45 instead.
-        val rolled = ZonedDateTime.of(day.plusDays(1), end.time, zone).toInstant()
+        val rolled = if (asSet != onStartsDay) onStartsDay else ZonedDateTime.of(day.plusDays(1), end.time, zone).toInstant()
         val offset = if (!rolled.isAfter(adhan.plusSeconds(LEGACY_ROLL_LIMIT_MINUTES * 60))) rolled else adhan.plusSeconds(FALLBACK_OFFSET_MINUTES * 60L)
         return End(offset, EndResolution.SAVED_OFFSET)
     }

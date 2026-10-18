@@ -70,6 +70,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -2262,6 +2263,8 @@ private fun PrayerSettingsCard(
 
     // Jumu'a and Eid times are edited from their rows: shown in the phone's clock, stored in the place's (6.6).
     var silenceTimesRevision by remember { mutableIntStateOf(0) }
+    // Jumu'a's chooser (6.9, A18): the default, an hour before Asr (about one Tunisian user in ten), or a fixed time.
+    var jumuaChooserOpen by remember { mutableStateOf(false) }
 
     // The next of the day's prayers, today only, by instant (Jumu'a in Dhuhr's place on a Friday).
     val nextPrayer = if (isToday) {
@@ -2385,26 +2388,7 @@ private fun PrayerSettingsCard(
                     val anchor = sectionAnchors[prayer]
                     val nextAnchor = nextAnchors[prayer]
                     val onTimeClick: (() -> Unit)? = when (prayer) {
-                        Prayer.JOMOAA -> {
-                            {
-                                val jumua = sectionAnchors[Prayer.JOMOAA]
-                                val shown = jumua?.let { Math.floorMod(it.minutes, 1440) } ?: (13 * 60)
-                                val picker = MaterialTimePicker.Builder()
-                                    .setTimeFormat(TimeFormat.CLOCK_24H)
-                                    .setHour(shown / 60)
-                                    .setMinute(shown % 60)
-                                    .setTitleText(context.getString(R.string.pick_jomoaa_time))
-                                    .build()
-                                picker.addOnPositiveButtonClickListener {
-                                    // Per country abroad (6.9, A18), today's keys in Tunisia.
-                                    PrefsManager.setJumuaTime(context, PrayerTimesRepository.place(context), pickedPlaceClock(jumua, picker.hour, picker.minute))
-                                    silenceTimesRevision++
-                                    refreshTick++
-                                    onConfigChanged()
-                                }
-                                picker.show(activity.supportFragmentManager, "jomoaa_time_picker")
-                            }
-                        }
+                        Prayer.JOMOAA -> { { jumuaChooserOpen = true } }
                         Prayer.AID_FITR -> {
                             {
                                 val eid = sectionAnchors[Prayer.AID_FITR]
@@ -2467,6 +2451,59 @@ private fun PrayerSettingsCard(
                             },
                         )
                     }
+                }
+
+                if (jumuaChooserOpen) {
+                    // Per country abroad (6.9, A18), today's keys in Tunisia; times shown in the phone's clock, as the rows.
+                    val place = PrayerTimesRepository.place(context)
+                    val jumua = sectionAnchors[Prayer.JOMOAA]
+                    val friday = jumua?.prayerDay ?: selectedLocalDate
+                    val fixed = PrefsManager.getJumuaTime(context, place)
+                    fun shown(at: java.time.Instant?) = at?.let { formatTimeOfDay(it.toEpochMilli()) }
+                    fun saved() {
+                        silenceTimesRevision++
+                        refreshTick++
+                        onConfigChanged()
+                    }
+                    JumuaTimeDialog(
+                        current = when {
+                            fixed != null -> JumuaMode.FIXED
+                            PrefsManager.getJumuaMinutesBeforeAsr(context, place) != null -> JumuaMode.BEFORE_ASR
+                            else -> JumuaMode.DEFAULT
+                        },
+                        defaultAt = shown(PrayerTimesRepository.defaultJumuaTime(context, place, friday)),
+                        defaultHint = if (place is PrayerPlace.Inm) stringResource(R.string.jomoaa_time_default_tunisia_hint) else null,
+                        beforeAsrAt = shown(PrayerTimesRepository.jumuaBeforeAsr(context, friday, place, PrayerTimesRepository.JUMUA_MINUTES_BEFORE_ASR)),
+                        fixedAt = if (fixed != null) shown(jumua?.adhan) else null,
+                        onPick = { mode ->
+                            jumuaChooserOpen = false
+                            when (mode) {
+                                JumuaMode.DEFAULT -> {
+                                    PrefsManager.setJumuaTime(context, place, null)
+                                    saved()
+                                }
+                                JumuaMode.BEFORE_ASR -> {
+                                    PrefsManager.setJumuaMinutesBeforeAsr(context, place, PrayerTimesRepository.JUMUA_MINUTES_BEFORE_ASR)
+                                    saved()
+                                }
+                                JumuaMode.FIXED -> {
+                                    val start = jumua?.let { Math.floorMod(it.minutes, 1440) } ?: (13 * 60)
+                                    val picker = MaterialTimePicker.Builder()
+                                        .setTimeFormat(TimeFormat.CLOCK_24H)
+                                        .setHour(start / 60)
+                                        .setMinute(start % 60)
+                                        .setTitleText(context.getString(R.string.pick_jomoaa_time))
+                                        .build()
+                                    picker.addOnPositiveButtonClickListener {
+                                        PrefsManager.setJumuaTime(context, place, pickedPlaceClock(jumua, picker.hour, picker.minute))
+                                        saved()
+                                    }
+                                    picker.show(activity.supportFragmentManager, "jomoaa_time_picker")
+                                }
+                            }
+                        },
+                        onDismiss = { jumuaChooserOpen = false },
+                    )
                 }
 
                 if (!silencePermissionsGranted && anyPrayerEnabled) {
@@ -2727,11 +2764,17 @@ private fun SunriseAndNightTimesCard(
         2 -> "الآن: الثلث الأخير"
         else -> "الليلة القادمة"
     }
+    // A time's minute counted from the selected day's midnight in the phone's clock: an Isha after midnight
+    // (Paris in June) sorts after Maghrib in the details, at the same place on the dial.
+    fun minuteOfSelectedDay(millis: Long): Int {
+        val date = java.time.Instant.ofEpochMilli(millis).atZone(java.time.ZoneId.systemDefault()).toLocalDate()
+        return minuteOfDay(millis) + 1440 * java.time.temporal.ChronoUnit.DAYS.between(selectedLocal, date).toInt()
+    }
     fun timelinePrayer(prayer: Prayer, millis: Long): NightTimelinePrayer = NightTimelinePrayer(
         prayer = prayer,
         title = prayerName(context, prayer),
         time = formatTimeOfDay(millis),
-        minuteOfDay = minuteOfDay(millis),
+        minuteOfDay = minuteOfSelectedDay(millis),
     )
     val isFriday = selectedCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
     val dhuhrMillis = atMillis(selectedTimesForDay, com.tunisianprayertimes.engine.TimeEvent.DHUHR) ?: return
@@ -2753,7 +2796,7 @@ private fun SunriseAndNightTimesCard(
         currentTimeText = formatTimeOfDay(currentTimeMillis),
         sunAltitudeDeg = if (isToday) solarLocation?.let { solarAltitudeDegAt(it, currentTimeMillis) } else null,
         sunriseTime = formatTimeOfDay(sunriseMillis),
-        sunriseMinuteOfDay = minuteOfDay(sunriseMillis),
+        sunriseMinuteOfDay = minuteOfSelectedDay(sunriseMillis),
         currentMinuteOfDay = minuteOfDay(currentTimeMillis),
         showCurrentTime = isToday,
         nightRange = "من ${formatTimeOfDay(nightStartMillis)} $nightStartLabel إلى ${formatTimeOfDay(nightEndMillis)} $nightEndLabel",
@@ -3484,6 +3527,72 @@ private fun WakeNextAlarmDetails(
     }
 }
 
+/** How the place's country sets Jumu'a (6.9, A18). */
+private enum class JumuaMode { DEFAULT, BEFORE_ASR, FIXED }
+
+/**
+ * Jumu'a's time: the default (Dhuhr in Tunisia, A18 abroad), an hour before each Friday's Asr (about one Tunisian user
+ * in ten, whose mosque prays then), or a fixed time. Each choice shows this Friday's time.
+ */
+@Composable
+private fun JumuaTimeDialog(
+    current: JumuaMode,
+    defaultAt: String?,
+    defaultHint: String?,
+    beforeAsrAt: String?,
+    fixedAt: String?,
+    onPick: (JumuaMode) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        shape = RoundedCornerShape(16.dp),
+        containerColor = Color.White,
+        title = {
+            Text(
+                text = stringResource(R.string.jomoaa_time_choice_title),
+                color = PrayerNameColor,
+                fontWeight = FontWeight.Bold,
+            )
+        },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                JumuaChoice(stringResource(R.string.jomoaa_time_default), defaultHint, defaultAt, current == JumuaMode.DEFAULT) { onPick(JumuaMode.DEFAULT) }
+                JumuaChoice(stringResource(R.string.jomoaa_time_before_asr), stringResource(R.string.jomoaa_time_before_asr_hint), beforeAsrAt, current == JumuaMode.BEFORE_ASR) {
+                    onPick(JumuaMode.BEFORE_ASR)
+                }
+                JumuaChoice(stringResource(R.string.jomoaa_time_fixed), stringResource(R.string.jomoaa_time_fixed_hint), fixedAt, current == JumuaMode.FIXED) { onPick(JumuaMode.FIXED) }
+            }
+        },
+        confirmButton = {},
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(text = stringResource(R.string.jomoaa_time_cancel))
+            }
+        },
+    )
+}
+
+@Composable
+private fun JumuaChoice(title: String, hint: String?, time: String?, selected: Boolean, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .clickable(onClick = onClick)
+            .padding(vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        RadioButton(selected = selected, onClick = onClick)
+        Column(modifier = Modifier.weight(1f)) {
+            Text(text = title, color = TextDark, fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal)
+            hint?.let { Text(text = it, color = TextMuted, fontSize = 12.sp, lineHeight = 16.sp) }
+        }
+        // A clock in Arabic text, isolated left to right.
+        time?.let { Text(text = "⁦$it⁩", color = PrayerNameColor, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 8.dp)) }
+    }
+}
+
 @Composable
 private fun WakeAlarmDeleteDialog(
     alarmName: String,
@@ -3911,7 +4020,8 @@ private fun PrayerRow(
 ) {
     val context = LocalContext.current
     val usesDraft = draftSilenceConfig != null && onDraftSilenceConfigChange != null
-    var savedConfig by remember(context, prayer) { mutableStateOf(PrefsManager.getEffectiveConfig(context, prayer)) }
+    // The effective config takes the place's kind (D12's Tunisian defaults): a move between Tunisia and abroad reloads it.
+    var savedConfig by remember(context, prayer, anchor?.inm) { mutableStateOf(PrefsManager.getEffectiveConfig(context, prayer)) }
     val config = if (usesDraft) requireNotNull(draftSilenceConfig) else savedConfig
     var prayerEnabled by remember(context, prayer) {
         mutableStateOf(PrefsManager.isPrayerSilenceEnabled(context, prayer))
@@ -3923,7 +4033,7 @@ private fun PrayerRow(
     val currentConfig by rememberUpdatedState(config)
     // The overlap warning below uses the next prayer's saved window, which can change from that prayer's row.
     val nextPrayer = nextAnchor?.prayer
-    var nextPrayerConfig by remember(context, nextPrayer) {
+    var nextPrayerConfig by remember(context, nextPrayer, nextAnchor?.inm) {
         mutableStateOf(nextPrayer?.let { PrefsManager.getEffectiveConfig(context, it) })
     }
 
@@ -5215,7 +5325,9 @@ private fun scheduledWakeAlarmTriggersForDay(
         add(Calendar.DAY_OF_YEAR, 1)
     }.timeInMillis
     // Work backwards from each ring's offset to find its possible prayer dates. A ring just after
-    // midnight can belong to yesterday's occurrence; a pre-alarm can belong to tomorrow's.
+    // midnight can belong to yesterday's occurrence; a pre-alarm can belong to tomorrow's. The prayer itself
+    // can fall on another calendar day than its prayer day (an Isha after midnight in Paris in June), so each
+    // range takes one more day on both sides; rings outside [day] are filtered out below.
     val prayerOffset = if (config.mainAlarm.mode == WakeMainAlarmMode.PRAYER_RELATIVE) {
         config.mainAlarm.prayerOffset.minutes.toLong()
     } else {
@@ -5225,8 +5337,14 @@ private fun scheduledWakeAlarmTriggersForDay(
     (listOf(0L) + config.subAlarms.map { it.signedOffsetMinutes.toLong() }).forEach { ringOffset ->
         val totalOffsetMillis = (prayerOffset + ringOffset) * 60_000L
         val firstDay = startOfDayMillis(dayStart - totalOffsetMillis)
-        val lastDay = startOfDayMillis(dayEnd - 1L - totalOffsetMillis)
-        val candidate = (day.clone() as Calendar).apply { timeInMillis = firstDay }
+        val lastDay = (day.clone() as Calendar).apply {
+            timeInMillis = startOfDayMillis(dayEnd - 1L - totalOffsetMillis)
+            add(Calendar.DAY_OF_YEAR, 1)
+        }.timeInMillis
+        val candidate = (day.clone() as Calendar).apply {
+            timeInMillis = firstDay
+            add(Calendar.DAY_OF_YEAR, -1)
+        }
         while (candidate.timeInMillis <= lastDay) {
             candidateDays.add(candidate.timeInMillis)
             candidate.add(Calendar.DAY_OF_YEAR, 1)

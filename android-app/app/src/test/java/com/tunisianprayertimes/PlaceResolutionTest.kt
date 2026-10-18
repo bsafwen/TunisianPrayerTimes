@@ -178,6 +178,25 @@ class PlaceResolutionTest {
     }
 
     @Test
+    fun aMoveKeepsTheDismissalsWhoseTimesHeld() = kotlinx.coroutines.runBlocking {
+        // 6.8: a dismissal goes only where the move shifts its time by more than 45 min: Paris to Lyon (minutes) keeps
+        // an Asr the user ended, Lyon to Riyadh (hours) clears it.
+        val lyon = row(2996944, 45.74846, 4.84671, "FR", "Europe/Paris", "Lyon", "ليون", 522969, admin2 = "69")
+        PlaceCatalogue.setForTests(PlaceCatalogue.of(listOf(riyadh, koeln, paris, lyon, sfaxSeat)))
+        val atParis = PlaceResolution.placeFromCatalogue(context, paris, "Europe/Paris")
+        val atLyon = PlaceResolution.placeFromCatalogue(context, lyon, "Europe/Paris")
+        val atRiyadh = PlaceResolution.placeFromCatalogue(context, riyadh, "Asia/Riyadh")
+        val day = java.time.LocalDate.of(2026, 7, 1)
+        PrefsManager.addAutoSilenceDismissals(context, listOf(Prayer.ASR to day), keepFrom = day)
+        PrefsManager.setPlace(context, atLyon, "ليون", fromGps = true)
+        PlaceResolution.onPlaceChanged(context, atParis, atLyon, "باريس", "ليون")
+        assertEquals(setOf(Prayer.ASR to day), PrefsManager.getAutoSilenceDismissals(context))
+        PrefsManager.setPlace(context, atRiyadh, "الرياض", fromGps = true)
+        PlaceResolution.onPlaceChanged(context, atLyon, atRiyadh, "ليون", "الرياض")
+        assertEquals(emptySet<Pair<Prayer, java.time.LocalDate>>(), PrefsManager.getAutoSilenceDismissals(context))
+    }
+
+    @Test
     fun adhkarFlagsAfterAMoveAreKeptUntilTheReminderIsSavedAgain() {
         PrefsManager.setAdhkarPlaceFlags(context, mapOf("evening" to "من 12 أفريل", "night" to "من 1 جوان"))
         assertEquals(setOf("evening", "night"), PrefsManager.getAdhkarPlaceFlags(context).keys)

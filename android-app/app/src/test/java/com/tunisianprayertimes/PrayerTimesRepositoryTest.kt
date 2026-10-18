@@ -117,4 +117,35 @@ class PrayerTimesRepositoryTest {
             assertTrue("Delegation $id should have data", times.isNotEmpty())
         }
     }
+
+    @Test
+    fun jumuaAnHourBeforeAsrFollowsEachFridaysAsr() {
+        // About one Tunisian user in ten sets Jumu'a an hour before Asr, their mosque's time: it follows Asr every
+        // Friday (13:30-ish in winter, about 15:00 in summer), and a fixed time or the default replaces it.
+        val tunis = com.tunisianprayertimes.place.PrayerPlace.Inm(615)
+        PrefsManager.setJumuaMinutesBeforeAsr(context, tunis, PrayerTimesRepository.JUMUA_MINUTES_BEFORE_ASR)
+        for (friday in listOf(java.time.LocalDate.of(2026, 1, 2), java.time.LocalDate.of(2026, 7, 3))) {
+            val asr = requireNotNull(PrayerTimesRepository.prayerDay(context, friday, tunis)?.get(com.tunisianprayertimes.engine.TimeEvent.ASR)?.at)
+            assertEquals(asr.minusSeconds(3600), PrayerTimesRepository.jumuaTime(context, friday, tunis))
+        }
+        val july3 = java.time.LocalDate.of(2026, 7, 3)
+        PrefsManager.setJumuaTime(context, tunis, java.time.LocalTime.of(13, 30))
+        assertNull(PrefsManager.getJumuaMinutesBeforeAsr(context, tunis))
+        assertEquals(java.time.ZonedDateTime.of(july3, java.time.LocalTime.of(13, 30), tunis.zone).toInstant(), PrayerTimesRepository.jumuaTime(context, july3, tunis))
+        PrefsManager.setJumuaMinutesBeforeAsr(context, tunis, 60)
+        assertNull(PrefsManager.getJumuaTime(context, tunis))
+        PrefsManager.setJumuaTime(context, tunis, null)
+        assertNull(PrefsManager.getJumuaMinutesBeforeAsr(context, tunis))
+        assertEquals(PrayerTimesRepository.prayerDay(context, july3, tunis)?.get(com.tunisianprayertimes.engine.TimeEvent.DHUHR)?.at, PrayerTimesRepository.jumuaTime(context, july3, tunis))
+        // Trondheim in December: Asr comes less than an hour after Dhuhr, so Jumu'a holds at Dhuhr.
+        val point = com.tunisianprayertimes.place.LatLngE5.of(63.4305, 10.3951)
+        val trondheim = com.tunisianprayertimes.place.PrayerPlace.Coordinates(point.latE5, point.lngE5, null, "Europe/Oslo", com.tunisianprayertimes.place.ZoneSource.USER, "NO")
+        PrefsManager.setJumuaMinutesBeforeAsr(context, trondheim, 60)
+        val december = java.time.LocalDate.of(2026, 12, 18)
+        val day = requireNotNull(PrayerTimesRepository.prayerDay(context, december, trondheim))
+        val dhuhr = requireNotNull(day[com.tunisianprayertimes.engine.TimeEvent.DHUHR].at)
+        assertTrue(requireNotNull(day[com.tunisianprayertimes.engine.TimeEvent.ASR].at).minusSeconds(3600) < dhuhr)
+        assertEquals(dhuhr, PrayerTimesRepository.jumuaTime(context, december, trondheim))
+        PrefsManager.setJumuaTime(context, trondheim, null)
+    }
 }

@@ -93,6 +93,7 @@ internal data class NightTimelinePrayer(
     val prayer: Prayer,
     val title: String,
     val time: String,
+    /** Counted from the selected day's midnight, so past 1440 for an Isha after midnight. */
     val minuteOfDay: Int,
 )
 

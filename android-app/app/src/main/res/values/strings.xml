@@ -72,6 +72,14 @@
     <string name="pick_delay_time">اختر وقت بدء الإسكات</string>
     <string name="pick_end_time">اختر وقت الانتهاء</string>
     <string name="pick_jomoaa_time">اختر وقت صلاة الجمعة</string>
+    <string name="jomoaa_time_choice_title">وقت صلاة الجمعة</string>
+    <string name="jomoaa_time_default">الوقت الافتراضي</string>
+    <string name="jomoaa_time_default_tunisia_hint">عند أذان الظهر</string>
+    <string name="jomoaa_time_before_asr">قبل العصر بساعة</string>
+    <string name="jomoaa_time_before_asr_hint">يتبع وقت العصر كل جمعة</string>
+    <string name="jomoaa_time_fixed">وقت ثابت</string>
+    <string name="jomoaa_time_fixed_hint">تختاره بنفسك، نفسه كل جمعة</string>
+    <string name="jomoaa_time_cancel">إلغاء</string>
     <string name="ramadan_active">رمضان — إسكات العشاء ممتد إلى ساعة ونصف 🌙</string>
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>

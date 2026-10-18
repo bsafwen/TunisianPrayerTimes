@@ -8,8 +8,11 @@ import com.tunisianprayertimes.engine.IrnRule
 import com.tunisianprayertimes.engine.MoonsightingSeasonal
 import com.tunisianprayertimes.engine.PrayerEngine
 import com.tunisianprayertimes.engine.RuleName
+import com.tunisianprayertimes.engine.SunEvaluation
 import com.tunisianprayertimes.engine.TimeEvent
 import com.tunisianprayertimes.method.EuropeanPresets
+import com.tunisianprayertimes.method.FajrRule
+import com.tunisianprayertimes.method.IshaRule
 import com.tunisianprayertimes.method.PrayerMethod
 import com.tunisianprayertimes.method.PrayerMethods
 import com.tunisianprayertimes.place.LatLngE5
@@ -177,6 +180,29 @@ class HighLatitudeRulesTest {
         assertEquals(EventStatus.COMPUTED, riyadh.day[TimeEvent.FAJR].status)
         val lead = Duration.between(riyadh.events[0].unrounded, riyadh.events[1].raw).seconds / 60.0
         assertTrue(lead in 90.0..100.0, "Riyadh's 19° Fajr about sunrise − 94: $lead")
+    }
+
+    @Test
+    fun aSummerFormIshaTakesTheZonesShiftOnce() {
+        // H5: Celje is Ljubljana's table plus its published shifts (Maghrib and Isha − 4). In the summer form's dates
+        // Isha = Maghrib + 72 at Ljubljana, so Celje's Isha is Ljubljana's − 4, not − 8; outside them the rule keeps its name.
+        val sight = LatLngE5(4576608, 1441841)
+        val ljubljana = OfficialZone("si_islamska_skupnost", "ljubljana", "ليوبليانا", LatLngE5(4605108, 1450513), morningPoint = sight, eveningPoint = sight)
+        val celje = OfficialZone(
+            "si_islamska_skupnost", "celje", "تسليي", LatLngE5(4623092, 1526044), baseZoneId = "ljubljana",
+            offsets = mapOf(TimeEvent.FAJR to -2.0, TimeEvent.SUNRISE to -2.0, TimeEvent.DHUHR to -3.0, TimeEvent.ASR to -4.0, TimeEvent.MAGHRIB to -4.0, TimeEvent.ISHA to -4.0),
+        )
+        val place = place(46.23092, 15.26044, "Europe/Ljubljana")
+        val method = EuropeanPresets.SI_ISLAMSKA_SKUPNOST
+        for (date in listOf(LocalDate.of(2027, 5, 10), LocalDate.of(2026, 4, 25))) {
+            val l = PrayerEngine.explain(place, date, method, zone = ljubljana)
+            val c = PrayerEngine.explain(place, date, method, zone = celje, baseZone = ljubljana)
+            assertEquals(RuleName.SUMMER_FORM, c.day[TimeEvent.ISHA].rule, "$date")
+            val shift = Duration.between(l.events[TimeEvent.ISHA.ordinal].unrounded, c.events[TimeEvent.ISHA.ordinal].unrounded).seconds / 60.0
+            assertEquals(-4.0, shift, 0.01, "$date")
+        }
+        val outside = PrayerEngine.day(place(46.0569, 14.5058, "Europe/Ljubljana"), june21, method)
+        assertEquals(RuleName.SUMMER_FORM, outside[TimeEvent.FAJR].rule)
     }
 
     @Test
@@ -406,6 +432,76 @@ class HighLatitudeRulesTest {
             val shown = listOf(TimeEvent.FAJR, TimeEvent.MAGHRIB, TimeEvent.ISHA).map { day[it].at!!.atZone(tromso.zone).toLocalTime().toString() }
             shown.zip(expected).forEach { (s, e) -> assertTrue(minutesApart(s, e) <= 2, "Tromsø $date: $s against IRN's $e") }
             assertEquals(RuleName.IRN_MECCA_CYCLE, day[TimeEvent.FAJR].rule)
+        }
+    }
+
+    @Test
+    fun meccaCycleOnTheLeapDay() {
+        // H8 on 29 February: the date's own times, between 28 February's and 1 March's (day 59 numbers both dates).
+        val bodo = place(67.2804, 14.4049, "Europe/Oslo")
+        fun minutes(date: LocalDate, event: TimeEvent) =
+            PrayerEngine.day(bodo, date, EuropeanPresets.IRN)[event].at!!.atZone(bodo.zone).toLocalTime().toSecondOfDay() / 60
+        val leap = PrayerEngine.day(bodo, LocalDate.of(2028, 2, 29), EuropeanPresets.IRN).events.map { checkNotNull(it.at) }
+        assertEquals(6, leap.distinct().size, "six distinct times on 29 February: $leap")
+        assertEquals(leap, leap.sorted())
+        for (event in TimeEvent.entries) {
+            val (before, after) = minutes(LocalDate.of(2028, 2, 28), event) to minutes(LocalDate.of(2028, 3, 1), event)
+            val day = minutes(LocalDate.of(2028, 2, 29), event)
+            assertTrue(day in minOf(before, after) - 1..maxOf(before, after) + 1, "$event on 29 February: $day, not between $before and $after")
+        }
+    }
+
+    @Test
+    fun aDayWithoutSunriseIsNeverReadAsMidnightSun() {
+        // H2: the polar test takes the sun the sunrise is solved with. On Steigen's 1 January 2026 the instant sun clears
+        // the horizon by 0.0002° at the transit and IRN's noon sun does not: the day has no sunrise, so it is a polar night.
+        // IRN's own table: Fajr 07:01, Maghrib 14:09, Isha 16:55 (the winter floor), not a 16-hour day.
+        val point = LatLngE5(6785358, 1480171)
+        val steigen = OfficialZone("irn", "1848", "ستايغن", point, morningPoint = LatLngE5(6785358, 1480007), eveningPoint = LatLngE5(6785358, 1480007),
+            switchDays = mapOf(TimeEvent.MAGHRIB to 111..233, TimeEvent.DHUHR to 327..18))
+        val place = place(point.latitude, point.longitude, "Europe/Oslo")
+        val day = PrayerEngine.day(place, LocalDate.of(2026, 1, 1), EuropeanPresets.IRN, zone = steigen)
+        val shown = listOf(TimeEvent.FAJR, TimeEvent.MAGHRIB, TimeEvent.ISHA).map { day[it].at!!.atZone(place.zone).toLocalTime().toString() }
+        assertEquals(listOf("07:01", "14:09", "16:55"), shown)
+        // The 5-hour minimum on the same edge, for a method with IRN's noon sun: never a 19-hour day.
+        val noonSun = mwl.copy(id = "mwl_noon_sun", sunEvaluation = listOf(TimeEvent.SUNRISE, TimeEvent.MAGHRIB).associateWith { SunEvaluation.DAILY_LOCAL_NOON })
+        var date = LocalDate.of(2025, 12, 1)
+        while (date <= LocalDate.of(2026, 1, 20)) {
+            val e = PrayerEngine.explain(place, date, noonSun)
+            val length = Duration.between(e.events[TimeEvent.SUNRISE.ordinal].unrounded, e.events[TimeEvent.MAGHRIB.ordinal].unrounded)
+            assertTrue(length.toHours() < 6, "Steigen on $date: a ${length.toMinutes()}-minute day")
+            date = date.plusDays(1)
+        }
+    }
+
+    @Test
+    fun aCustomMethodKeepsThePolarEstimatesOfItsBase() {
+        // S10 (owner, 2026-10-18): E19 reads the sunrise and sunset of steps 1–3. In Tromsø on 10 May (real sunrise
+        // 02:25, sunset 23:02) «مخصّصة» keeps the 5-hour night of mwl (sunrise 03:11, Maghrib 22:11) and irn's Mecca
+        // cycle (Fajr 04:47, sunrise 06:06, Maghrib 19:18, Isha 20:33): never the real short night, never Fajr = sunrise.
+        val tromso = place(69.6492, 18.9553, "Europe/Oslo")
+        val date = LocalDate.of(2026, 5, 10)
+        for (base in listOf(mwl, EuropeanPresets.IRN)) {
+            val own = PrayerEngine.day(tromso, date, base)
+            val custom = PrayerEngine.day(tromso, date, base.copy(id = PrayerMethod.CUSTOM_ID))
+            for (event in listOf(TimeEvent.FAJR, TimeEvent.SUNRISE, TimeEvent.MAGHRIB, TimeEvent.ISHA)) {
+                assertEquals(own[event].at, custom[event].at, "${base.id} $event")
+            }
+            assertTrue(checkNotNull(custom[TimeEvent.FAJR].at) < checkNotNull(custom[TimeEvent.SUNRISE].at), "${base.id}: Fajr before sunrise")
+        }
+    }
+
+    @Test
+    fun aCustomMethodFromADiyanetPresetComputes() {
+        // H6 needs both angles: a «مخصّصة» made from diyanet_eu (it keeps the preset's rule) with Isha or Fajr by
+        // minutes takes the angle time where there is one, and never builds the table (it threw on every launch).
+        val customs = listOf(
+            EuropeanPresets.DIYANET_EU.copy(id = PrayerMethod.CUSTOM_ID, isha = IshaRule.MinutesAfter(90)),
+            EuropeanPresets.DIYANET_EU.copy(id = PrayerMethod.CUSTOM_ID, fajr = FajrRule.MinutesBeforeSunrise(90)),
+        )
+        for (custom in customs) for (date in listOf(june21, LocalDate.of(2026, 12, 21))) {
+            val day = PrayerEngine.day(berlin, date, custom)
+            assertTrue(day.events.all { it.at != null }, "${custom.fajr} / ${custom.isha} on $date: ${day.events}")
         }
     }
 
