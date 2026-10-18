@@ -148,7 +148,7 @@ class WakeOneOffLifecycleTest {
             WakeAlarmScheduler.runningOccurrence(
                 context,
                 stored,
-                WakeAlarmScheduler.occurrenceWindows(context, delegationId, stored),
+                WakeAlarmScheduler.occurrenceWindows(context, stored),
                 nowMillis,
             ),
         )
