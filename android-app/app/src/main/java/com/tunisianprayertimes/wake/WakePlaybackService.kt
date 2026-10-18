@@ -48,6 +48,15 @@ class WakePlaybackService : Service() {
         }
 
         val triggerPayload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY
+        return try {
+            playTrigger(triggerPayload, startId)
+        } finally {
+            // The queue now owns the ring, or this start was rejected.
+            WakeAlarmDeliveryTracker.finish(triggerPayload)
+        }
+    }
+
+    private fun playTrigger(triggerPayload: WakeTriggerPayload, startId: Int): Int {
         if (WakeOccurrenceSkipRegistry.contains(triggerPayload)) {
             android.util.Log.d("WakeFlow", "Service ignored skipped occurrence eventId=${triggerPayload.eventId}")
             if (WakeAlarmQueueHolder.queue.current == null) stopSelf(startId)

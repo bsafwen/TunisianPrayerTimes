@@ -1,15 +1,21 @@
 package com.tunisianprayertimes.ui
 
+import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerWakeConfig
+import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.WakeAlarmComputer
+import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.WakeRepeatMode
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.util.Calendar
 
 class WakeAlarmNowTest {
     private val minute = 60_000L
@@ -182,6 +188,82 @@ class WakeAlarmNowTest {
             stops.map { stop -> stop.state },
         )
         assertEquals(listOf(false, true, false, false), stops.map { stop -> stop.ongoing })
+    }
+
+    @Test
+    fun oneShotWithFiveMinuteExtra_keepsBothTimelineStopsThroughTheAwakeCheck() {
+        val alarm = PrayerWakeConfig(
+            id = "one-shot",
+            prayer = Prayer.FAJR,
+            enabled = true,
+            repeatMode = WakeRepeatMode.ONCE,
+            mainAlarm = WakeMainAlarmConfig(
+                mode = WakeMainAlarmMode.FROM_NOW,
+                oneOffTriggerAtMillis = todayMain,
+            ),
+            subAlarms = listOf(
+                PrayerWakeSubAlarm("after-five", 5, OffsetDirection.AFTER),
+            ),
+        )
+        val offsets = wakeAlarmRingOffsets(alarm.subAlarms.map { it.signedOffsetMinutes })
+        val extraAt = todayMain + 5 * minute
+
+        fun timelineAt(
+            clock: Long,
+            running: WakeAlarmScheduler.RunningOccurrence? = null,
+        ): List<WakeTimelineStop> {
+            val next = WakeAlarmComputer.compute(
+                now = Calendar.getInstance().apply { timeInMillis = clock },
+                config = alarm,
+                prayerDays = emptyList(),
+            ).allTriggers.firstOrNull()
+            val state = wakeAlarmNow(next, running)!!
+            return wakeTimelineStops(
+                offsets = state.occurrenceRingOffsets(offsets, clock),
+                occurrenceAtMillis = state.occurrenceAtMillis,
+                highlightedAtMillis = state.highlightedRing?.atMillis,
+                highlightedOngoing = state.focus == WakeAlarmFocus.RINGING,
+                awakeCheck = state.awakeCheckAtMillis?.let { atMillis ->
+                    WakeTimelineAwakeCheck(
+                        atMillis = atMillis,
+                        fromMillis = state.awakeCheckFromMillis,
+                        running = state.awakeCheckRunning,
+                        isNext = state.focus == WakeAlarmFocus.AWAKE_CHECK,
+                    )
+                },
+            )
+        }
+
+        val beforeMain = timelineAt(todayMain - minute)
+        assertEquals(listOf(todayMain, extraAt), beforeMain.map { it.atMillis })
+        assertEquals(listOf(WakeStopState.NEXT, WakeStopState.UPCOMING), beforeMain.map { it.state })
+        assertTrue(beforeMain.first().isMain)
+        assertFalse(beforeMain.last().isMain)
+        assertEquals(5, beforeMain.last().signedOffsetMinutes)
+
+        val betweenRings = timelineAt(
+            todayMain + minute,
+            WakeAlarmScheduler.RunningOccurrence(occurrenceAtMillis = todayMain, ringOffsets = offsets),
+        )
+        assertEquals(listOf(todayMain, extraAt), betweenRings.map { it.atMillis })
+        assertEquals(listOf(WakeStopState.RUNG, WakeStopState.NEXT), betweenRings.map { it.state })
+
+        val checkAt = extraAt + 3 * minute
+        val awaitingCheck = timelineAt(
+            extraAt + minute,
+            WakeAlarmScheduler.RunningOccurrence(
+                occurrenceAtMillis = todayMain,
+                awakeCheckAtMillis = checkAt,
+                awakeCheckFromMillis = extraAt,
+                ringOffsets = offsets,
+            ),
+        )
+        assertEquals(listOf(todayMain, extraAt, checkAt), awaitingCheck.map { it.atMillis })
+        assertEquals(
+            listOf(WakeStopState.RUNG, WakeStopState.RUNG, WakeStopState.NEXT),
+            awaitingCheck.map { it.state },
+        )
+        assertTrue(awaitingCheck.last().isAwakeCheck)
     }
 
     @Test

@@ -250,12 +250,15 @@ object WakeAlarmScheduler {
 		nowMillis: Long = System.currentTimeMillis(),
 	): RunningOccurrence? {
 		val awakeCheckEventId = wakeMainEventId(config.id)
+		// Read in handoff order: each owner is established before the previous one is cleared.
+		val dueRings = dueRings(context, config, nowMillis)
+		val arrivingRing = WakeAlarmDeliveryTracker.pendingForAlarm(config.id)
 		val queuedRing = WakeAlarmQueueHolder.queue.ringForAlarm(config.id)
 		val awakeCheckRunningFor = AwakeCheckService.activeOccurrenceForEvent(awakeCheckEventId)
 		val awakeCheckPendingFor = AwakeCheckScheduler.occurrenceAtMillis(context, awakeCheckEventId)
 			?.takeIf { AwakeCheckScheduler.isPending(context, awakeCheckEventId, nowMillis) }
-		val dueRings = dueRings(context, config, nowMillis)
 		val occurrenceAtMillis = queuedRing?.payload?.resolvedOccurrenceAtMillis()
+			?: arrivingRing?.resolvedOccurrenceAtMillis()
 			?: awakeCheckRunningFor
 			?: awakeCheckPendingFor
 			?: dueRings.minByOrNull { (_, ring) -> ring.atMillis }?.first
@@ -276,7 +279,9 @@ object WakeAlarmScheduler {
 			dueRing = dueRings
 				.filter { (occurrence, _) -> occurrence == occurrenceAtMillis }
 				.minByOrNull { (_, ring) -> ring.atMillis }
-				?.second,
+				?.second
+				?: arrivingRing?.takeIf { payload -> payload.resolvedOccurrenceAtMillis() == occurrenceAtMillis }
+					?.let { payload -> Ring(payload.triggerAtMillis, payload.isSubAlarm) },
 			awakeCheckAtMillis = when {
 				awakeCheckRunning -> AwakeCheckService.activeTriggerForEvent(awakeCheckEventId)
 					?: AwakeCheckScheduler.triggerAtMillis(context, awakeCheckEventId)
@@ -325,13 +330,22 @@ object WakeAlarmScheduler {
 		return AwakeCheckService.activeOccurrenceForEvent(eventId) != null || AwakeCheckScheduler.isPending(context, eventId)
 	}
 
+	/** A one-off finishes after delivery, every queued ring, and its follow-up check have ended. */
+	internal fun canRemoveExpiredOneOff(
+		context: Context,
+		config: PrayerWakeConfig,
+		nowMillis: Long = System.currentTimeMillis(),
+	): Boolean = config.isExpiredOneOffWakeAlarm(nowMillis) &&
+		!hasAwakeCheckInProgress(context, config.id) &&
+		runningOccurrence(context, config, emptyList(), nowMillis) == null
+
 	/** Deletes a one-off whose rings are all over once its awake check has ended. */
 	fun removeExpiredOneOffAfterAwakeCheckAsync(context: Context, alarmId: String) {
 		reminderRefreshScope.launch {
 			runCatching {
 				val repository = PrayerWakeRepository(context)
 				val config = repository.getWakeAlarm(alarmId) ?: return@runCatching
-				if (config.isExpiredOneOffWakeAlarm(System.currentTimeMillis()) && !hasAwakeCheckInProgress(context, alarmId)) {
+				if (canRemoveExpiredOneOff(context, config)) {
 					repository.deleteWakeAlarm(alarmId)
 				}
 			}.onFailure { error -> Log.w(TAG, "Failed to remove one-off $alarmId after its awake check", error) }
@@ -435,11 +449,11 @@ object WakeAlarmScheduler {
 		configs = repo.getCurrentStore().alarms
 		// Keep each skip on its original occurrence while any of its extras remain pending.
 		scheduleAllInternal(context, now, configs)
-		// Auto-delete one-off (FROM_NOW) alarms once all their triggers are in the past and their awake check is over
+		// Passing the final trigger does not finish a delivered or queued ring.
 		val nowMillis = System.currentTimeMillis()
 		configs
 			.filter { config ->
-				config.isExpiredOneOffWakeAlarm(nowMillis) && !hasAwakeCheckInProgress(context, config.id)
+				canRemoveExpiredOneOff(context, config, nowMillis)
 			}
 			.forEach { config -> runCatching { repo.deleteWakeAlarm(config.id) } }
 	}

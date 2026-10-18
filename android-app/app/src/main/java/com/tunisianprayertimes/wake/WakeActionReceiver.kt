@@ -34,13 +34,13 @@ class WakeActionReceiver : BroadcastReceiver() {
             stopSource = "notification_action",
             wakeupCheckCompleted = !payload.wakeUpCheckEnabled,
         )
+        // Advance the queue here: the alert screen only listens while it is started, and a stopped
+        // alarm left as current would be shown again, silent, the next time the app comes forward.
+        WakeAlarmQueueHolder.queue.handleDismiss(payload.eventId)
         WakeDismissalCoordinator.removeExpiredOneOffAlarmAfterDismissalAsync(
             context = context,
             payload = payload,
         )
-        // Advance the queue here: the alert screen only listens while it is started, and a stopped
-        // alarm left as current would be shown again, silent, the next time the app comes forward.
-        WakeAlarmQueueHolder.queue.handleDismiss(payload.eventId)
         // The service plays the next queued alarm, or stops itself and resumes silence when none is left.
         context.startService(
             Intent(context, WakePlaybackService::class.java)

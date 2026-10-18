@@ -86,11 +86,7 @@ internal object WakeDismissalCoordinator {
         val alarmId = wakeAlarmIdFromEventId(payload.eventId) ?: return false
         val repository = PrayerWakeRepository(context)
         val config = repository.getWakeAlarm(alarmId) ?: return false
-        if (!config.isExpiredOneOffWakeAlarm(nowMillis)) {
-            return false
-        }
-        // Kept, and shown, until its awake check is over; the check's end removes it.
-        if (WakeAlarmScheduler.hasAwakeCheckInProgress(context, alarmId)) {
+        if (!WakeAlarmScheduler.canRemoveExpiredOneOff(context, config, nowMillis)) {
             return false
         }
 

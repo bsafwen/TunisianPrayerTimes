@@ -127,14 +127,11 @@ class AwakeCheckService : Service() {
     }
 
     override fun onDestroy() {
+        val finishedAlarmId = runningEventId?.let(::wakeAlarmIdFromEventId)
         runningEventId?.let { eventId ->
             AwakeCheckScheduler.cancelIfMatching(
                 this, eventId, runningOccurrenceAtMillis, runningScheduledTriggerAtMillis,
             )
-            // A finished one-off waited for its check before going away.
-            wakeAlarmIdFromEventId(eventId)?.let { alarmId ->
-                WakeAlarmScheduler.removeExpiredOneOffAfterAwakeCheckAsync(applicationContext, alarmId)
-            }
         }
         runningEventId = null
         runningOccurrenceAtMillis = 0L
@@ -142,6 +139,10 @@ class AwakeCheckService : Service() {
         runningTriggerAtMillis = 0L
         runningStartedAtMillis = 0L
         _isRunning.value = false
+        // Clear the running state before the background cleanup reads it.
+        finishedAlarmId?.let { alarmId ->
+            WakeAlarmScheduler.removeExpiredOneOffAfterAwakeCheckAsync(applicationContext, alarmId)
+        }
         escalationJob?.cancel()
         stopPlayback()
         serviceScope.cancel()
