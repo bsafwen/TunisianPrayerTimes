@@ -65,7 +65,6 @@ object PlaceResolution {
             val nearest = GouvernoratRepository.findNearestDelegation(context, lat, lng) ?: return DelegationLocationResult.NoDelegationFound
             return DelegationLocationResult.Success(nearest, null)
         }
-        if (!PrefsManager.isRegionOpen(context, Regions.of(cc))) return DelegationLocationResult.RegionClosed(cc)
         val sameCountryRows = catalogue.rowsWithin(stored, ZoneResolver.RADIUS_KM)
             .filter { cc == null || CountryResolver.normalize(it.first.ref.countryCode) == cc }
         val zoneId = ZoneResolver.resolve(

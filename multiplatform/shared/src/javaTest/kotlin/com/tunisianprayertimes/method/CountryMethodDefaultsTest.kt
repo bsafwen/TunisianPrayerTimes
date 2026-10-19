@@ -108,8 +108,6 @@ class CountryMethodDefaultsTest {
         assertEquals(Region.OTHER, Regions.of("IR"))
         assertEquals(Region.UNKNOWN, Regions.of(null))
         assertEquals(22, Regions.ARAB_LEAGUE.size)
-        assertTrue(Regions.isOpen(Region.OTHER, arabLeagueOpen = true, europeOpen = true))
-        assertTrue(!Regions.isOpen(Region.OTHER, arabLeagueOpen = true, europeOpen = false))
     }
 
     @Test

@@ -145,7 +145,6 @@ fun OnboardingScreen(
                     AnalyticsTracker.markDelegationSource(context, "onboarding_gps_abroad")
                     placeLabel = result.label ?: context.getString(R.string.location_current_place)
                 }
-                is DelegationLocationResult.RegionClosed -> placeStatus = context.getString(R.string.onboarding_location_closed)
                 else -> placeStatus = context.getString(R.string.onboarding_location_failed)
             }
             locating = false

@@ -92,6 +92,7 @@ object HifzReminder {
         }
         val next = owed ?: points.nextReminder(
             settings.times, today, maxOf(now, shown), prefs.getLong("reminded_day", -1L), learning.exposed, learning.seen,
+            dailyAsked = dailyAsked(prefs),
         ) { day, time -> slotAt(app, day, time) }
         if (next == null) {
             alarms.cancel(remindIntent(app, null))
@@ -174,26 +175,71 @@ object HifzReminder {
     }
 
     /** The first reminder that may ask about a slip recorded at [now]; null with the reminder off. Call off the main thread. */
-    fun firstQuestion(context: Context, now: Long = System.currentTimeMillis()): HifzSlot? {
+    fun firstQuestion(context: Context, now: Long = System.currentTimeMillis(), fromDay: Long = Long.MIN_VALUE): HifzSlot? {
         val settings = HifzSettings.read(context)
         if (!settings.reminder) return null
-        return settings.times.firstAfter(now + HifzFreshGapMs - 1) { day, time -> slotAt(context, day, time) }
+        return settings.times.firstAfter(now + HifzFreshGapMs - 1, fromDay) { day, time -> slotAt(context, day, time) }
     }
 
     /**
-     * What becomes of a slip recorded now, said on the record sheet before it is saved: «أول سؤال عنها اليوم بعد العصر،
-     * ثم بعد كل صلاة حتى تقرأها صحيحة 3 مرات، ثم تتباعد مراجعاتها.» Call off the main thread.
+     * What becomes of a slip recorded now with its plan, [recalls] right answers asked at every reminder or [daily],
+     * said on the record sheet before it is saved: «أول سؤال عنها اليوم بعد العصر، ثم بعد كل صلاة حتى تُتمّ 3 قراءات
+     * دون مساعدة، ثم تتباعد أسئلتها.» Counted as the review's own answer says it, «دون مساعدة»: the reader judges, the
+     * app does not listen. Call off the main thread.
      */
-    fun freshSentence(context: Context, now: Long = System.currentTimeMillis()): String {
+    fun freshSentence(
+        context: Context, recalls: Int = HifzFreshRecalls, daily: Boolean = false, now: Long = System.currentTimeMillis(),
+        /** Asked once a day and already asked today: its first question is tomorrow's. */
+        tomorrow: Boolean = false,
+        /** Asked once a day, the slip of a point a reminder already asked on this prayer day: not before the next. */
+        askedDay: Long? = null,
+    ): String {
         val settings = HifzSettings.read(context)
-        val until = "حتى تقرأها صحيحة ${recallsPhrase(HifzFreshRecalls)}، ثم تتباعد مراجعاتها."
-        if (!settings.reminder) return "التذكير متوقف: تجدها في «مراجعة اليوم» بعد ${HifzFreshGapMs / 60_000L} دقيقة، ونسألك عنها $until"
-        val first = firstQuestion(context, now) ?: return "نسألك عنها ${timesPhrase(settings.times)} $until"
-        return "أول سؤال عنها ${slotLabel(first, epochDay(now))}، ثم ${timesPhrase(settings.times)} $until"
+        val today = epochDay(now)
+        val until = "حتى تُتمّ ${freshLeftPhrase(recalls)}، ثم تتباعد أسئلتها."
+        val often = if (daily && settings.times.count > 1) "في أول تذكير كل يوم" else timesPhrase(settings.times)
+        if (!settings.reminder) return "التذكير متوقف: تجدها في «مراجعة اليوم» " +
+            (if (tomorrow) "غدًا" else "بعد ${HifzFreshGapMs / 60_000L} دقيقة") + "، ونسألك عنها " + (if (daily) "مرة في اليوم " else "") + until
+        val first = firstQuestion(
+            context, now, maxOf(if (tomorrow) today + 1 else Long.MIN_VALUE, if (daily) askedDay?.plus(1) ?: Long.MIN_VALUE else Long.MIN_VALUE),
+        )
+        // One right answer is enough: no «ثم» of further questions before the checks.
+        if (recalls == 1) {
+            return "نسألك عنها ${first?.let { slotLabel(it, today) } ?: "في التذكير القادم"}، ثم تتباعد أسئلتها إن تذكّرتها دون مساعدة."
+        }
+        first ?: return "نسألك عنها $often $until"
+        return "أول سؤال عنها ${slotLabel(first, today)}، ثم $often $until"
     }
 
     /**
-     * When a recorded point is asked next, for its fix: «السؤال التالي اليوم بعد العصر.», «يصلك سؤالها الأحد بعد
+     * The reminder that next asks [point], a fresh one, as [nextReminder] arms it: a while after its slip, its answer
+     * and its verse last [seen]; and, asked once a day, not on a day a reminder already asked it. Null with the reminder
+     * off, or for a point no longer fresh. Call off the main thread.
+     */
+    fun nextAsk(context: Context, point: HifzPoint, seen: Long?, now: Long = System.currentTimeMillis()): HifzSlot? {
+        val settings = HifzSettings.read(context)
+        if (!settings.reminder || point.fresh <= 0) return null
+        val from = if (!point.daily) Long.MIN_VALUE
+            else maxOf(point.dueDay, dailyAskedDay(context, point.id)?.plus(1) ?: Long.MIN_VALUE)
+        return settings.times.firstAfter(maxOf(now, point.freshDueAt(seen) - 1), from) { d, t -> slotAt(context, d, t) }
+    }
+
+    /** The prayer day a reminder last asked [id], a point asked once a day; null when none did. */
+    fun dailyAskedDay(context: Context, id: Long): Long? =
+        dailyAsked(context.getSharedPreferences(PREFS, Context.MODE_PRIVATE))[id]
+
+    /**
+     * «غدًا بعد الفجر»: the first reminder of [day], where a spaced check is asked, and a point asked once a day; null
+     * with the reminder off. Call off the main thread.
+     */
+    fun dayFirstLabel(context: Context, day: Long, now: Long = System.currentTimeMillis()): String? {
+        val settings = HifzSettings.read(context)
+        if (!settings.reminder) return null
+        return settings.times.firstAfter(now, day) { d, t -> slotAt(context, d, t) }?.let { slotLabel(it, epochDay(now)) }
+    }
+
+    /**
+     * When a recorded point is asked next, for its fix: «السؤال القادم اليوم بعد العصر.», «السؤال القادم الأحد بعد
      * الفجر.» A fresh point's answer seen, as in this fix, puts its question a while later; a check whose verse was
      * looked at today waits for the next day. Call off the main thread.
      */
@@ -203,12 +249,14 @@ object HifzReminder {
         val learning = HifzLearning.read(context, today)
         val slotFrom = { after: Long, day: Long -> settings.times.firstAfter(after, day) { d, t -> slotAt(context, d, t) } }
         if (point.fresh > 0) {
-            // Its answer is in view in its fix, as it is said: asked a while after.
-            val due = point.freshDueAt(maxOf(now, learning.seen[point.verse] ?: now))
+            // Its answer is in view in its fix, as it is said: asked a while after; once a day, not before its day,
+            // nor on a day a reminder already asked it.
+            val seen = maxOf(now, learning.seen[point.verse] ?: now)
+            val due = point.freshAskAt(seen)
             return when {
                 now >= due -> "تجدها الآن في «مراجعة اليوم»."
                 !settings.reminder -> "تجدها في «مراجعة اليوم» ${dayAndClock(due, today)}."
-                else -> slotFrom(due - 1, Long.MIN_VALUE)?.let { "السؤال التالي ${slotLabel(it, today)}." }
+                else -> nextAsk(context, point, seen, now)?.let { "السؤال القادم ${slotLabel(it, today)}." }
                     ?: "تجدها في «مراجعة اليوم» ${dayAndClock(due, today)}."
             }
         }
@@ -216,8 +264,8 @@ object HifzReminder {
         val dueDay = if (point.dueDay <= today) today + 1 else point.dueDay
         if (dueDay <= today) return "حان موعد مراجعتها: تجدها في «مراجعة اليوم»."
         if (!settings.reminder) return "التذكير متوقف: تجدها في «مراجعة اليوم» ${dayLabel(dueDay, today)}."
-        val first = slotFrom(now, dueDay) ?: return "يصلك سؤالها ${dayLabel(dueDay, today)}."
-        return "يصلك سؤالها ${slotLabel(first, today)}."
+        val first = slotFrom(now, dueDay) ?: return "السؤال القادم ${dayLabel(dueDay, today)}."
+        return "السؤال القادم ${slotLabel(first, today)}."
     }
 
     /**
@@ -243,7 +291,7 @@ object HifzReminder {
 
     /** «بعد كل صلاة», «بعد الفجر والظهر والعشاء», «بعد الفجر وفي الساعة 13:00 و21:30». */
     fun timesPhrase(times: HifzTimes): String {
-        if (HifzTimesPreset.of(times) == HifzTimesPreset.Once) return "مرة في اليوم بعد الفجر"
+        if (HifzTimesPreset.of(times) == HifzTimesPreset.Once) return "كل يوم بعد الفجر"
         val prayers = HifzPrayers.filter { it in times.prayers }.map { prayerName(it, null) }
         val after = when {
             prayers.size == HifzPrayers.size -> "بعد كل صلاة"
@@ -254,12 +302,15 @@ object HifzReminder {
         return listOfNotNull(after, at).joinToString(" و")
     }
 
-    /** «مرة في اليوم», «مرتين في اليوم», «4 مرات في اليوم». */
+    /**
+     * «وقت واحد في اليوم», «وقتان في اليوم», «4 أوقات في اليوم»: the reminder's times, never «مرات», which count a
+     * mistake's answers.
+     */
     fun countPhrase(count: Int): String = when {
-        count == 1 -> "مرة في اليوم"
-        count == 2 -> "مرتين في اليوم"
-        count % 100 in 3..10 -> "$count مرات في اليوم"
-        else -> "$count مرة في اليوم"
+        count == 1 -> "وقت واحد في اليوم"
+        count == 2 -> "وقتان في اليوم"
+        count % 100 in 3..10 -> "$count أوقات في اليوم"
+        else -> "$count وقتًا في اليوم"
     }
 
     /** After a verb: «مرة واحدة», «مرتين», «3 مرات». */
@@ -270,12 +321,15 @@ object HifzReminder {
         else -> "$count مرة"
     }
 
-    /** After «بعد»: «قراءة صحيحة واحدة», «قراءتين صحيحتين», «3 قراءات صحيحة». */
+    /**
+     * The plan's unit, after «تُتمّ» or «بعد»: «قراءة واحدة دون مساعدة», «قراءتين دون مساعدة», «3 قراءات دون
+     * مساعدة». Said as the answer that counts is named, «دون مساعدة»: the reader judges the reading, the app does not.
+     */
     fun freshLeftPhrase(count: Int): String = when {
-        count == 1 -> "قراءة صحيحة واحدة"
-        count == 2 -> "قراءتين صحيحتين"
-        count % 100 in 3..10 -> "$count قراءات صحيحة"
-        else -> "$count قراءة صحيحة"
+        count == 1 -> "قراءة واحدة دون مساعدة"
+        count == 2 -> "قراءتين دون مساعدة"
+        count % 100 in 3..10 -> "$count قراءات دون مساعدة"
+        else -> "$count قراءة دون مساعدة"
     }
 
     /** «08:00», «21:30»: a minute of the day, by the 24-hour clock. */
@@ -389,12 +443,30 @@ object HifzReminder {
         val learning = HifzLearning.read(context, today)
         val due = HifzRepository.points.value.askable(today, now, learning.seen, learning.exposed)
         val checks = due.any { it.fresh == 0 && it.dueDay <= day }
-        if (due.none { it.fresh > 0 } && (!checks || prefs.getLong("reminded_day", -1L) >= day)) return
+        // A point asked once a day, already asked by a reminder of this day, waits in «مراجعة اليوم» without sounding again.
+        val asked = dailyAsked(prefs)
+        val fresh = due.filter { it.fresh > 0 && !(it.daily && (asked[it.id] ?: Long.MIN_VALUE) >= day) }
+        if (fresh.isEmpty() && (!checks || prefs.getLong("reminded_day", -1L) >= day)) return
         // A reminder that cannot reach the reader leaves the day's checks to a later one.
         if (!appNotificationsAllowed(context) || blockedChannel(context, listOf(CHANNEL_ID)) != null) return
         val posted = runCatching { post(context, due.reviewBatch(today, now, HifzRoundSize), due.size) }.isSuccess
-        if (posted && checks) prefs.edit().putLong("reminded_day", maxOf(day, prefs.getLong("reminded_day", -1L))).apply()
+        if (!posted) return
+        if (checks) prefs.edit().putLong("reminded_day", maxOf(day, prefs.getLong("reminded_day", -1L))).apply()
+        val dailyNow = due.filter { it.daily && it.fresh > 0 }.associate { it.id to day }
+        if (dailyNow.isNotEmpty()) prefs.edit().putString(
+            "daily_asked",
+            (asked.filterValues { it >= day - 2 } + dailyNow).entries.joinToString(",") { "${it.key}:${it.value}" },
+        ).apply()
     }
+
+    /** The prayer day each point asked once a day was last asked by a reminder; see [remind]. */
+    private fun dailyAsked(prefs: android.content.SharedPreferences): Map<Long, Long> =
+        prefs.getString("daily_asked", null).orEmpty().split(',').mapNotNull { row ->
+            val parts = row.split(':')
+            val id = parts.getOrNull(0)?.toLongOrNull() ?: return@mapNotNull null
+            val day = parts.getOrNull(1)?.toLongOrNull() ?: return@mapNotNull null
+            id to day
+        }.toMap()
 
     /**
      * [due] the review's points, [dueAll] every point to ask now, also those beyond one review's. [quiet]: the reminder

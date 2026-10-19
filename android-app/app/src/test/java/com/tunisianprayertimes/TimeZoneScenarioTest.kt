@@ -84,7 +84,6 @@ class TimeZoneScenarioTest {
         val haparanda = PlaceCatalogue.Row(CityRef(2708365, LatLngE5.of(65.8355, 24.1368), "SE", "Europe/Stockholm", population = 4856), "Haparanda", "Haparanda", "هاباراندا", emptyList(), null)
         val tornio = PlaceCatalogue.Row(CityRef(634093, LatLngE5.of(65.8481, 24.1466), "FI", "Europe/Helsinki", population = 22000), "Tornio", "Tornio", "تورنيو", emptyList(), null)
         PlaceCatalogue.setForTests(PlaceCatalogue.of(listOf(haparanda, tornio)))
-        PrefsManager.setRegionOpen(context, europe = true)
         val swedish = PlaceResolution.resolveAbroad(context, 65.84, 24.14, network = "se", phoneZone = "Europe/Stockholm")
         val inSweden = (swedish as DelegationLocationResult.Abroad).place
         assertEquals("SE", inSweden.countryCode)

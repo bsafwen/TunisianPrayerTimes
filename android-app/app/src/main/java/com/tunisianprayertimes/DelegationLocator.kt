@@ -100,15 +100,12 @@ sealed interface DelegationLocationResult {
     /** A Tunisian delegation (INM). */
     data class Success(val delegation: Delegation, val locality: Locality? = null) : DelegationLocationResult
 
-    /** A place abroad in an open region (6.8), stored rounded to 0.01°, with its «قرب X» label or none. */
+    /** A place abroad (6.8), stored rounded to 0.01°, with its «قرب X» label or none. */
     data class Abroad(val place: com.tunisianprayertimes.place.PrayerPlace.Coordinates, val label: String?) : DelegationLocationResult
 
     data object PermissionDenied : DelegationLocationResult
     data object LocationUnavailable : DelegationLocationResult
     data object NoDelegationFound : DelegationLocationResult
-
-    /** A fix in a region whose switch is still off (plan 2): ignored, the saved place and auto-silence are kept. */
-    data class RegionClosed(val countryCode: String?) : DelegationLocationResult
 }
 
 internal data class LocationPermissionState(
@@ -228,8 +225,6 @@ object DelegationLocator {
                 PlaceResolution.onPlaceChanged(context, saved, result.place, savedLabel, result.label)
                 FixOutcome.CHANGED
             }
-            // A closed region ignores the fix (plan 2): the saved place stays.
-            is DelegationLocationResult.RegionClosed -> FixOutcome.UNCHANGED
             else -> FixOutcome.NO_FIX
         }
     }

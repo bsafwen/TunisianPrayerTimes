@@ -513,7 +513,6 @@ fun hifzFix(catalog: QuranCatalog, point: HifzPoint, lookAlikes: HifzLookAlikes?
             HifzFix(point, words, null, emptySet(), emptySet(), null, before, near(point.verse.ayah + 1), reasons)
         }
         HifzKind.Word -> {
-            if (point.hafs) reasons += "قرأتها كما في رواية حفص؛ وهي هنا برواية قالون"
             HifzFix(point, words, null, emptySet(), emptySet(), point.word, null, null, reasons)
         }
     }
@@ -569,7 +568,7 @@ fun hifzDrill(catalog: QuranCatalog, point: HifzPoint): QuranPlaylist {
         labels = labels,
         rounds = 1,
         gapFactor = HifzDrillGap,
-        speed = if (point.hafs) 0.75f else HifzDrillSpeed.takeIf { it != 1f },
+        speed = HifzDrillSpeed.takeIf { it != 1f },
     )
 }
 
@@ -587,7 +586,7 @@ fun hifzListen(catalog: QuranCatalog, points: List<HifzPoint>): QuranPlaylist? {
         labels = items.map { hifzRangeLabel(name(it.from.surah), it) },
         rounds = 1,
         gapFactor = 0f,
-        speed = if (points.size == 1 && points.single().hafs) 0.75f else HifzDrillSpeed.takeIf { it != 1f },
+        speed = HifzDrillSpeed.takeIf { it != 1f },
     )
 }
 

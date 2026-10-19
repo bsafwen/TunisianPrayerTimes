@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.ui
 
+import androidx.compose.ui.graphics.StrokeCap
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.BitmapRegionDecoder
@@ -410,14 +411,21 @@ private fun QuranBandMarks(excerpt: QuranExcerpt) {
         fun sizeOf(r: QuranHighlightRect) = Size((r.right - r.left) * size.width, (r.bottom - r.top) / span * size.height)
         val corner = CornerRadius(3.dp.toPx())
         excerpt.covered.forEach { drawRect(QuranReviewMask, at(it), sizeOf(it)) }
-        val dashes = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 3.dp.toPx()))
+        // As the page marks a point: a light tint and a line under each line, never a frame read as a selection.
+        fun underline(r: QuranHighlightRect, color: Color, width: Float) {
+            val topLeft = at(r)
+            val box = sizeOf(r)
+            val inset = 3.dp.toPx().coerceAtMost(box.width / 4f)
+            val y = topLeft.y + box.height - width / 2f
+            drawLine(color, Offset(topLeft.x + inset, y), Offset(topLeft.x + box.width - inset, y), width, cap = StrokeCap.Round)
+        }
         excerpt.marked.forEach {
-            drawRoundRect(QuranHifzViolet.copy(alpha = 0.22f), at(it), sizeOf(it), corner, blendMode = BlendMode.Multiply)
-            drawRoundRect(QuranHifzViolet, at(it), sizeOf(it), corner, style = Stroke(1.5.dp.toPx(), pathEffect = dashes))
+            drawRoundRect(QuranHifzViolet.copy(alpha = 0.16f), at(it), sizeOf(it), corner, blendMode = BlendMode.Multiply)
+            underline(it, QuranHifzViolet, 2.dp.toPx())
         }
         excerpt.muted.forEach {
-            drawRoundRect(TextMuted.copy(alpha = 0.16f), at(it), sizeOf(it), corner, blendMode = BlendMode.Multiply)
-            drawRoundRect(TextMuted, at(it), sizeOf(it), corner, style = Stroke(1.dp.toPx(), pathEffect = dashes))
+            drawRoundRect(TextMuted.copy(alpha = 0.14f), at(it), sizeOf(it), corner, blendMode = BlendMode.Multiply)
+            underline(it, TextMuted, 1.5.dp.toPx())
         }
     }
 }

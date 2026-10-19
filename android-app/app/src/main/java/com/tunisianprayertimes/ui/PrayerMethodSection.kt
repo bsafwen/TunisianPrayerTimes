@@ -1,10 +1,11 @@
 package com.tunisianprayertimes.ui
 
 import android.app.TimePickerDialog
-import android.content.pm.ApplicationInfo
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,7 +17,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
@@ -58,7 +58,6 @@ import com.tunisianprayertimes.method.PrayerMethods
 import com.tunisianprayertimes.method.ZonePick
 import com.tunisianprayertimes.place.PlaceTimes
 import com.tunisianprayertimes.place.PrayerPlace
-import com.tunisianprayertimes.place.Region
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.TextDark
@@ -73,8 +72,8 @@ import kotlinx.coroutines.Dispatchers
 
 /**
  * The prayer-tab settings of plan 6.11 for a place abroad: «طريقة الحساب», the zone line with «حسب موقعي بالضبط»,
- * «وقت العصر», «الليالي القصيرة» where a rule can act, «تعديل الأوقات بالدقائق», and «مصادر البيانات». A Tunisian
- * place shows only «مصادر البيانات» (D7). Debug builds add the region switches of plan 2.
+ * «وقت العصر», «الليالي القصيرة» where a rule can act, and «تعديل الأوقات بالدقائق». A Tunisian place shows none of
+ * them (D7). The sources are in «طريقتك»: the method's own, and the place names' credit (owner, 2026-10-19).
  */
 @Composable
 internal fun PrayerMethodSection(onTimesChanged: () -> Unit) {
@@ -94,10 +93,6 @@ internal fun PrayerMethodSection(onTimesChanged: () -> Unit) {
         }
     }
 
-    if (context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0) {
-        RegionDeveloperRows(onChange = { changed() })
-        HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
-    }
     val abroad = place as? PrayerPlace.Coordinates
     if (abroad != null) {
         val choice = remember(revision) { PrayerTimesRepository.choice(context, abroad) ?: PrayerMethodChoice(PrayerMethods.MWL.id) }
@@ -177,13 +172,6 @@ internal fun PrayerMethodSection(onTimesChanged: () -> Unit) {
                 onDismiss = { sheet = null },
             )
         }
-    }
-    SettingsRow(title = "مصادر البيانات", subtitle = "GeoNames · Wikidata · مصادر الطرق", onClick = { sheet = "sources" })
-    if (sheet == "sources") {
-        val method = (place as? PrayerPlace.Coordinates)?.let { p ->
-            PrayerTimesRepository.placeTimesFor(context).method(p, PrayerTimesRepository.choice(context, p))
-        }
-        DataSourcesDialog(method = method, onDismiss = { sheet = null })
     }
 }
 
@@ -285,7 +273,7 @@ private fun HighLatitudeSheet(current: HighLatitudeRule, onPick: (HighLatitudeRu
 
 /**
  * `PrayerMethodSheet` (6.11): «الشائعة في بلدك» (the country's list, 6.4), «طرق أخرى», and «مخصّصة»; each entry with
- * its parameters, its chip and today's Fajr and Isha at the place.
+ * its parameters, its chip and today's Fajr, Maghrib and Isha at the place.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -316,14 +304,44 @@ private fun PrayerMethodSheet(
                 MethodEntry(place, m, today, current.methodId == m.id, placeTimes, index, admin1Name, inferred = false, onPick = onPick)
             }
             item { SectionTitle("مخصّصة") }
-            item {
-                SettingsRow(
-                    title = MethodPresentation.name(PrayerMethod.CUSTOM_ID),
-                    subtitle = "تعديل الزوايا والدقائق ضمن الأقوال المعتبرة",
-                    onClick = { onPick(PrayerMethod.CUSTOM_ID) },
-                )
-            }
+            item { CustomMethodEntry(place, current, placeTimes, today, onPick) }
         }
+    }
+}
+
+/**
+ * «مخصّصة» (6.11): the bounded editor's entry under its section title, laid out as the other entries; the user's own
+ * method, its parameters and today's times when it is the current one.
+ */
+@Composable
+private fun CustomMethodEntry(place: PrayerPlace.Coordinates, current: PrayerMethodChoice, placeTimes: PlaceTimes, today: LocalDate, onPick: (String) -> Unit) {
+    val custom = current.custom?.takeIf { current.methodId == PrayerMethod.CUSTOM_ID }
+    val day = remember(custom, today) { custom?.let { runCatching { placeTimes.day(place, current, today) }.getOrNull() } }
+    Column(Modifier.fillMaxWidth().clickable { onPick(PrayerMethod.CUSTOM_ID) }.padding(horizontal = 20.dp, vertical = 10.dp)) {
+        Text(
+            "تعديل الزوايا والدقائق", fontSize = 15.sp, color = if (custom != null) GreenPrimaryDark else TextDark,
+            fontWeight = if (custom != null) FontWeight.Bold else FontWeight.Normal,
+        )
+        if (custom != null) MethodDetails(custom, day)
+        else Text("ضمن الأقوال المعتبرة", fontSize = 12.sp, color = PrayerSilencePalette.SecondaryText)
+    }
+}
+
+/**
+ * An entry's details: the method's parameters, then today's Fajr, Maghrib and Isha in the phone's clock (owner,
+ * 2026-10-19: all three). Two blocks on one line where they fit, the times under the parameters where they do not;
+ * each label stays with its time.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun MethodDetails(method: PrayerMethod, day: com.tunisianprayertimes.engine.PrayerDay?) {
+    val zone = ZoneId.systemDefault()
+    fun clock(event: TimeEvent) = day?.get(event)?.at?.atZone(zone)?.let { String.format(Locale.US, "⁦%02d:%02d⁩", it.hour, it.minute) } ?: "—"
+    val times = listOf("الفجر" to TimeEvent.FAJR, "المغرب" to TimeEvent.MAGHRIB, "العشاء" to TimeEvent.ISHA)
+        .joinToString(" · ") { (label, event) -> label + " " + clock(event) }
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        Text(MethodPresentation.parameters(method), fontSize = 12.sp, color = PrayerSilencePalette.SecondaryText)
+        Text(times, fontSize = 12.sp, color = PrayerSilencePalette.SecondaryText)
     }
 }
 
@@ -348,8 +366,6 @@ internal fun MethodEntry(
     val day = remember(method.id, today) { runCatching { placeTimes.day(place, choice, today) }.getOrNull() }
     val mapped = remember(method.id) { runCatching { placeTimes.mapping(place, choice, today.year) }.getOrNull() }
     val chip = MethodPresentation.chip(method, place, mapped, method.fit ?: index.forMethod(method.id, place.countryCode)?.fit, admin1Name)
-    val zone = ZoneId.systemDefault()
-    fun clock(event: TimeEvent) = day?.get(event)?.at?.atZone(zone)?.let { String.format(Locale.US, "⁦%02d:%02d⁩", it.hour, it.minute) } ?: "—"
     Column(
         Modifier.fillMaxWidth().clickable { onPick(method.id) }.padding(horizontal = 20.dp, vertical = 10.dp),
     ) {
@@ -360,10 +376,7 @@ internal fun MethodEntry(
             )
             Text(chip.labelAr, fontSize = 11.sp, color = if (chip == MethodChip.MATCHES_TABLE || chip == MethodChip.OFFICIAL) GreenPrimary else TextMuted)
         }
-        Text(
-            MethodPresentation.parameters(method) + "   الفجر " + clock(TimeEvent.FAJR) + " · العشاء " + clock(TimeEvent.ISHA),
-            fontSize = 12.sp, color = PrayerSilencePalette.SecondaryText,
-        )
+        MethodDetails(method, day)
         if (inferred) Text("مقترحة بالقياس على البلد المجاور، ولم نجد بعدُ جدولًا محليًا.", fontSize = 11.sp, color = TextMuted)
     }
     HorizontalDivider(color = PrayerSilencePalette.SoftBorder, modifier = Modifier.padding(horizontal = 20.dp))
@@ -488,42 +501,5 @@ private fun AngleStepper(value: Double, range: ClosedFloatingPointRange<Double>,
         TextButton(onClick = { onValue((value - 0.5).coerceAtLeast(range.start)) }, enabled = value - 0.5 >= range.start) { Text("−") }
         Text(String.format(Locale.US, "⁦%s°⁩", value.toBigDecimal().stripTrailingZeros().toPlainString()), fontSize = 15.sp, color = TextDark, modifier = Modifier.width(72.dp))
         TextButton(onClick = { onValue((value + 0.5).coerceAtMost(range.endInclusive)) }, enabled = value + 0.5 <= range.endInclusive) { Text("+") }
-    }
-}
-
-/** «مصادر البيانات»: the place data's attribution and the method's own source. */
-@Composable
-private fun DataSourcesDialog(method: PrayerMethod?, onDismiss: () -> Unit) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        confirmButton = { TextButton(onClick = onDismiss) { Text("حسنًا") } },
-        title = { Text("مصادر البيانات") },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("أوقات تونس: المعهد الوطني للرصد الجوي.")
-                Text("أسماء الأماكن ومواقعها: GeoNames (CC BY 4.0)، والأسماء العربية الناقصة من Wikidata (CC0).")
-                if (method != null) Text("مصدر الطريقة الحالية: " + method.evidence.source)
-                Text("هذا التطبيق مستقل ولا يمثّل أي جهة رسمية.")
-            }
-        },
-    )
-}
-
-/** Debug builds only: the region switches of plan 2, so each region can be checked on its own. */
-@Composable
-private fun RegionDeveloperRows(onChange: () -> Unit) {
-    val context = LocalContext.current
-    var arab by remember { mutableStateOf(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE)) }
-    var europe by remember { mutableStateOf(PrefsManager.isRegionOpen(context, Region.EUROPE)) }
-    Column(Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
-        Text("مناطق التطوير", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextMuted)
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("الدول العربية", fontSize = 14.sp, color = TextDark, modifier = Modifier.weight(1f))
-            Switch(checked = arab, onCheckedChange = { arab = it; PrefsManager.setRegionOpen(context, arabLeague = it); onChange() })
-        }
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("أوروبا وبقية العالم", fontSize = 14.sp, color = TextDark, modifier = Modifier.weight(1f))
-            Switch(checked = europe, onCheckedChange = { europe = it; PrefsManager.setRegionOpen(context, europe = it); onChange() })
-        }
     }
 }

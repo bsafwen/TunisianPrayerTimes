@@ -187,8 +187,6 @@ import com.tunisianprayertimes.silence.SilenceEndpoints
 import com.tunisianprayertimes.silence.SilenceFit
 import com.tunisianprayertimes.silence.SilenceRule
 import com.tunisianprayertimes.silence.SilenceStart
-import com.tunisianprayertimes.place.Region
-import com.tunisianprayertimes.place.Regions
 import com.tunisianprayertimes.place.CountryResolver as PlaceCountry
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
@@ -1673,13 +1671,10 @@ private fun LocationPickerCard(
         value = withContext(Dispatchers.Default) { LocalityRepository.preparePicker(context, allDelegations) }
     }
     val savedDelegation = remember(delegationId, allDelegations) { allDelegations.find { it.id == delegationId } }
-    // The open regions' cities with their names folded once, so the picker's search never folds 26,000 names per key.
+    // Every country's cities (owner, 2026-10-19: all regions open), their names folded once, so the picker's search
+    // never folds 26,000 names per key.
     val openRegionCities by produceState(CitySearch.Index.EMPTY) {
-        value = withContext(Dispatchers.IO) {
-            val open = listOf(Region.ARAB_LEAGUE, Region.EUROPE, Region.OVERSEAS_FRANCE, Region.OTHER).filter { PrefsManager.isRegionOpen(context, it) }
-            if (open.isEmpty()) CitySearch.Index.EMPTY
-            else CitySearch.Index(PlaceCatalogue.get(context).listedRows().filter { Regions.of(it.ref.countryCode) in open })
-        }
+        value = withContext(Dispatchers.IO) { CitySearch.Index(PlaceCatalogue.get(context).listedRows()) }
     }
 
     var selectedLocation by remember { mutableStateOf(PrefsManager.getLocationSelection(context)) }
@@ -1789,22 +1784,6 @@ private fun LocationPickerCard(
                     PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
                     scope.launch { PlaceResolution.onPlaceChanged(context, saved, result.place, savedLabel, result.label) }
                     selectedLocation = PrefsManager.getLocationSelection(context)
-                }
-
-                is DelegationLocationResult.RegionClosed -> {
-                    AnalyticsTracker.permissionStepResult(
-                        context = context,
-                        permissionType = "location",
-                        result = "outside_tunisia",
-                        entryPoint = "delegation_picker",
-                    )
-                    // Principle 7 and D20: a fix abroad never switches auto-silence off. While its region is
-                    // closed (plan 2) the fix is ignored and the saved place is kept.
-                    Toast.makeText(
-                        context,
-                        context.getString(R.string.location_region_closed),
-                        Toast.LENGTH_LONG
-                    ).show()
                 }
             }
         }

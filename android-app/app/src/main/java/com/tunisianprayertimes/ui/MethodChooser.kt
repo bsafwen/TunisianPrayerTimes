@@ -88,7 +88,7 @@ internal fun answerMethodQuestion(context: Context, question: MethodQuestion, me
 
 /**
  * `MethodChooserSheet` (6.4, 6.11): one screen for every chooser country. The methods its mosques use, each with its
- * chip and today's Fajr and Isha, then the Asr factor where it is asked once (the UK, Portugal, Réunion).
+ * chip and today's Fajr, Maghrib and Isha, then the Asr factor where it is asked once (the UK, Portugal, Réunion).
  * Dismissing it keeps the country's fallback, and «تأكيد الطريقة» stays until the user answers.
  */
 @OptIn(ExperimentalMaterial3Api::class)

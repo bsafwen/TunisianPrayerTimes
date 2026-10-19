@@ -208,24 +208,8 @@ class DelegationLocatorTest {
     }
 
     @Test
-    fun `silent update outside Tunisia keeps the delegation while its region is closed`() = runBlocking {
-        // Plan 2: a fix in a region whose switch is off is ignored (development builds open both by default).
-        PrefsManager.setRegionOpen(context, europe = false)
-        PrefsManager.setDelegationId(context, 386)
-        DelegationLocator.locationProvider = FakeLocationProvider(
-            testLocation(lat = 48.8566, lng = 2.3522)
-        )
-
-        val outcome = DelegationLocator.updatePlaceFromLastLocation(context)
-
-        assertEquals(DelegationLocator.FixOutcome.UNCHANGED, outcome)
-        assertEquals(386, PrefsManager.getDelegationId(context))
-    }
-
-    @Test
-    fun `silent update in an open region abroad stores the place`() = runBlocking {
-        // Plan 6.8: no outside-Tunisia gate; a fix in Paris becomes a place abroad.
-        PrefsManager.setRegionOpen(context, europe = true)
+    fun `silent update abroad stores the place`() = runBlocking {
+        // Plan 6.8: no outside-Tunisia gate, every region open (owner, 2026-10-19); a fix in Paris becomes a place abroad.
         PrefsManager.setDelegationId(context, 386)
         DelegationLocator.locationProvider = FakeLocationProvider(
             testLocation(lat = 48.8566, lng = 2.3522)

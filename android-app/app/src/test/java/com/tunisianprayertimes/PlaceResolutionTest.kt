@@ -72,15 +72,20 @@ class PlaceResolutionTest {
     }
 
     @Test
-    fun aFixAbroadIsIgnoredWhileItsRegionIsClosed() {
-        PrefsManager.setRegionOpen(context, arabLeague = false)  // development builds open it by default
-        val result = PlaceResolution.resolveAbroad(context, 24.70, 46.70, network = "sa", phoneZone = "Asia/Riyadh")
-        assertEquals(DelegationLocationResult.RegionClosed("SA"), result)
+    fun aFixAbroadBecomesAPlaceInAReleaseBuildToo() {
+        // Every region is open in every build (owner, 2026-10-19): a release no longer ignores a fix in Riyadh.
+        val flags = context.applicationInfo.flags
+        try {
+            context.applicationInfo.flags = flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE.inv()
+            val result = PlaceResolution.resolveAbroad(context, 24.70, 46.70, network = "sa", phoneZone = "Asia/Riyadh")
+            assertEquals("SA", (result as DelegationLocationResult.Abroad).place.countryCode)
+        } finally {
+            context.applicationInfo.flags = flags
+        }
     }
 
     @Test
-    fun aFixInAnOpenRegionBecomesAPlaceAbroad() {
-        PrefsManager.setRegionOpen(context, arabLeague = true)
+    fun aFixAbroadBecomesAPlaceAbroad() {
         val result = PlaceResolution.resolveAbroad(context, 24.7012, 46.7044, network = "sa", phoneZone = "Europe/Paris")
         val abroad = result as DelegationLocationResult.Abroad
         assertEquals("SA", abroad.place.countryCode)
@@ -97,7 +102,6 @@ class PlaceResolutionTest {
         val roros = row(3141310, 62.57451, 11.38427, "NO", "Europe/Oslo", "Røros", "روروس", 3598, admin2 = "5025")
         val lesja = CityRef(-10_000_000L, LatLngE5.of(62.11463, 9.44037), "NO", "Europe/Oslo", admin2 = "3431")
         PlaceCatalogue.setForTests(PlaceCatalogue.of(listOf(roros), entryPoints = { if (it == "NO") listOf(lesja) else emptyList() }))
-        PrefsManager.setRegionOpen(context, europe = true)
         val result = PlaceResolution.resolveAbroad(context, 62.115, 9.441, network = "no", phoneZone = "Europe/Oslo")
         val place = (result as DelegationLocationResult.Abroad).place
         assertEquals("NO", place.countryCode)

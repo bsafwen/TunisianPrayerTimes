@@ -9,6 +9,8 @@ import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performSemanticsAction
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.QiblaMethod
@@ -89,7 +91,9 @@ class QiblaCardTest {
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_GREAT_CIRCLE).assertIsSelected()
         // In Tunis the two methods part by about 8°, and the sheet says so before the switch.
         compose.onNodeWithText(context.getString(R.string.qibla_method_difference, 8)).assertExists()
-        compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).performClick()
+        // The sheet has a window of its own, which Robolectric's injected touches do not reach: the choice is made
+        // through its click action, as TalkBack makes it.
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).performSemanticsAction(SemanticsActions.OnClick)
 
         waitForBearing(121.0)
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).assertIsSelected()

@@ -51,6 +51,10 @@ class AlarmServiceSilenceGuardTest {
     @Before
     fun setup() {
         context = ApplicationProvider.getApplicationContext()
+        // The app's own start-up waits for the main looper's first idle, and its first silence pass ends an
+        // auto-silence it finds outside any open prayer window, as a missed end (6.9). Let it run now, before a test
+        // sets up the silence it checks, rather than in the middle of the test.
+        Shadows.shadowOf(Looper.getMainLooper()).idle()
         context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE)
             .edit()
             .clear()
@@ -83,6 +87,7 @@ class AlarmServiceSilenceGuardTest {
                 delayMinutes = 7,
                 ringtonePresetName = null,
                 customRingtoneUri = null,
+                occurrenceAtMillis = occurrenceAtMillis(),
             ),
         )
         markAutoSilenceActive()
@@ -94,6 +99,8 @@ class AlarmServiceSilenceGuardTest {
                 eventId = eventId,
                 ringtonePreset = null,
                 customRingtoneUri = null,
+                scheduledTriggerAtMillis = deliveredTrigger(eventId),
+                occurrenceAtMillis = occurrenceAtMillis(),
             ),
         )
         val service = controller.create().get()
@@ -201,9 +208,31 @@ class AlarmServiceSilenceGuardTest {
                 delayMinutes = 7,
                 ringtonePresetName = null,
                 customRingtoneUri = null,
+                occurrenceAtMillis = occurrenceAtMillis(),
             ),
         )
         assertEquals(1, shadowAlarmManager.scheduledAlarms.size)
+    }
+
+    /**
+     * The ring the check follows, 00:25 today, five minutes before the pinned scheduler clock. A check belongs to one
+     * occurrence of its alarm, and the service cancels only the check of the occurrence it was started for.
+     */
+    private fun occurrenceAtMillis(): Long {
+        val tunis = java.time.ZoneId.of("Africa/Tunis")
+        return java.time.ZonedDateTime.of(java.time.LocalDate.now(tunis), java.time.LocalTime.of(0, 25), tunis).toInstant().toEpochMilli()
+    }
+
+    /**
+     * The check's trigger, as its receiver hands it to the service, which cancels only the check it was started for.
+     * Moved to 00:37, seven minutes after the pinned scheduler clock: the start asks the planner whether the trigger
+     * fell in a prayer window, and the real clock's could.
+     */
+    private fun deliveredTrigger(eventId: String): Long {
+        val tunis = java.time.ZoneId.of("Africa/Tunis")
+        val at = java.time.ZonedDateTime.of(java.time.LocalDate.now(tunis), java.time.LocalTime.of(0, 37), tunis).toInstant().toEpochMilli()
+        context.getSharedPreferences("awake_check_occurrences", Context.MODE_PRIVATE).edit().putLong("$eventId:trigger", at).commit()
+        return at
     }
 
     private fun startAwakeCheckService(eventId: String) =
@@ -214,6 +243,8 @@ class AlarmServiceSilenceGuardTest {
                 eventId = eventId,
                 ringtonePreset = null,
                 customRingtoneUri = null,
+                scheduledTriggerAtMillis = deliveredTrigger(eventId),
+                occurrenceAtMillis = occurrenceAtMillis(),
             ),
         ).also { controller ->
             val service = controller.create().get()

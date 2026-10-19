@@ -2,7 +2,6 @@ package com.tunisianprayertimes
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.pm.ApplicationInfo
 import android.app.NotificationManager
 import android.media.AudioManager
 import android.os.Handler
@@ -11,8 +10,6 @@ import com.tunisianprayertimes.method.CountryMethodDefaults
 import com.tunisianprayertimes.method.PrayerMethodChoice
 import com.tunisianprayertimes.place.CountryResolver
 import com.tunisianprayertimes.place.PrayerPlace
-import com.tunisianprayertimes.place.Region
-import com.tunisianprayertimes.place.Regions
 import com.tunisianprayertimes.place.ZoneResolver
 import com.tunisianprayertimes.place.ZoneSource
 import java.time.LocalTime
@@ -101,8 +98,6 @@ object PrefsManager {
         KEY_PLACE_KIND, KEY_PLACE_LAT_E5, KEY_PLACE_LNG_E5, KEY_PLACE_ELEVATION_M, KEY_PLACE_ZONE_ID, KEY_PLACE_ZONE_SOURCE,
         KEY_PLACE_COUNTRY, KEY_PLACE_ADMIN1, KEY_PLACE_ADMIN2, KEY_PLACE_CATALOGUE_ID, KEY_PLACE_NAME_SNAPSHOT,
     )
-    private const val KEY_REGION_ARAB_LEAGUE_OPEN = "region_arab_league_open"
-    private const val KEY_REGION_EUROPE_OPEN = "region_europe_open"
     private const val KEY_ADHKAR_PLACE_FLAGS = "adhkar_place_flags"
     private const val KEY_PICK_PLACE_ON_START = "pick_place_on_start"
     private val choiceJson = Json { ignoreUnknownKeys = true; encodeDefaults = false }
@@ -248,32 +243,6 @@ object PrefsManager {
     private fun jumuaBeforeAsrKey(place: PrayerPlace) = when (place) {
         is PrayerPlace.Inm -> "jomoaa_before_asr_minutes"
         is PrayerPlace.Coordinates -> "jomoaa_before_asr_" + (place.countryCode?.let(CountryResolver::normalize) ?: "ZZ")
-    }
-
-    /**
-     * The developer switches of plan 2: each region stays closed until its milestones are done (the Arab League
-     * at AM9, Europe, which also covers every other place outside Tunisia, at M9). Tunisia is always open. Every
-     * milestone before the release is done, so a development build opens both by default (AM9, and M9's device
-     * checks); a release build opens them once [REGIONS_OPEN_IN_RELEASE] is set for the release that ships both
-     * regions (M9). The debug switches still close either one.
-     */
-    fun isRegionOpen(context: Context, region: Region): Boolean {
-        val byDefault = REGIONS_OPEN_IN_RELEASE || (context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
-        return Regions.isOpen(
-            region,
-            arabLeagueOpen = prefs(context).getBoolean(KEY_REGION_ARAB_LEAGUE_OPEN, byDefault),
-            europeOpen = prefs(context).getBoolean(KEY_REGION_EUROPE_OPEN, byDefault),
-        )
-    }
-
-    /** M9 (plan 11): true in the release build that ships both regions. */
-    val REGIONS_OPEN_IN_RELEASE = false
-
-    fun setRegionOpen(context: Context, arabLeague: Boolean? = null, europe: Boolean? = null) {
-        val edit = prefs(context).edit()
-        arabLeague?.let { edit.putBoolean(KEY_REGION_ARAB_LEAGUE_OPEN, it) }
-        europe?.let { edit.putBoolean(KEY_REGION_EUROPE_OPEN, it) }
-        edit.apply()
     }
 
     fun getLocalityId(context: Context): String? = prefs(context).getString(KEY_LOCALITY_ID, null)

@@ -29,8 +29,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -50,11 +54,16 @@ import com.tunisianprayertimes.quran.hifz.HifzPoint
 import com.tunisianprayertimes.quran.hifz.shows
 import com.tunisianprayertimes.quran.hifz.HifzReminder
 import com.tunisianprayertimes.quran.hifz.daysAfter
+import com.tunisianprayertimes.quran.hifz.epochDay
+import com.tunisianprayertimes.quran.hifz.HifzFix
 import com.tunisianprayertimes.quran.hifz.decodeHifzChecks
 import com.tunisianprayertimes.quran.hifz.encodeHifzChecks
 import com.tunisianprayertimes.quran.hifz.hifzFix
 import com.tunisianprayertimes.quran.hifz.hifzWords
 import com.tunisianprayertimes.quran.hifz.holdsNext
+import com.tunisianprayertimes.quran.hifz.recallsAfterAgain
+import com.tunisianprayertimes.quran.hifz.HifzPace
+import com.tunisianprayertimes.quran.hifz.HifzMaxRecalls
 import com.tunisianprayertimes.quran.hifz.spacesNext
 import com.tunisianprayertimes.quran.hifz.todayEpochDay
 import com.tunisianprayertimes.ui.theme.*
@@ -100,17 +109,24 @@ internal data class HifzGiven(
     val checks: List<HifzCheck> = emptyList(),
     /** The right answers the point still needed at every reminder. */
     val fresh: Int = 0,
+    /** Its plan, which a failed answer may change: a passing slip that came back is judged again. */
+    val pace: HifzPace = HifzPace.Auto,
+    val autoRecalls: Int = HifzFreshRecalls,
+    val daily: Boolean = false,
 ) {
-    fun encode(): String = listOf(id, grade.name, step, dueDay, masteredAt ?: "", if (heldNow) 1 else 0, slips, lastSlipAt, encodeHifzChecks(checks), fresh).joinToString("|")
+    fun encode(): String = listOf(
+        id, grade.name, step, dueDay, masteredAt ?: "", if (heldNow) 1 else 0, slips, lastSlipAt, encodeHifzChecks(checks), fresh,
+        pace.key, autoRecalls, if (daily) 1 else 0,
+    ).joinToString("|")
 
     companion object {
         fun of(point: HifzPoint, grade: HifzGrade) = HifzGiven(
             point.id, grade, point.step, point.dueDay, point.masteredAt, grade == HifzGrade.Held && point.holdsNext, point.slips, point.lastSlipAt, point.checks,
-            point.fresh,
+            point.fresh, point.pace, point.autoRecalls, point.daily,
         )
 
         fun decode(value: String?): HifzGiven? {
-            val parts = value?.split('|')?.takeIf { it.size in 8..10 } ?: return null
+            val parts = value?.split('|')?.takeIf { it.size in 8..13 } ?: return null
             return HifzGiven(
                 id = parts[0].toLongOrNull() ?: return null,
                 grade = HifzGrade.entries.firstOrNull { it.name == parts[1] } ?: return null,
@@ -122,6 +138,9 @@ internal data class HifzGiven(
                 lastSlipAt = parts[7].toLongOrNull() ?: return null,
                 checks = decodeHifzChecks(parts.getOrNull(8)),
                 fresh = parts.getOrNull(9)?.toIntOrNull() ?: 0,
+                pace = HifzPace.of(parts.getOrNull(10)),
+                autoRecalls = parts.getOrNull(11)?.toIntOrNull()?.coerceIn(1, HifzMaxRecalls) ?: HifzFreshRecalls,
+                daily = parts.getOrNull(12) == "1",
             )
         }
     }
@@ -506,6 +525,12 @@ internal fun HifzReviewSheet(
     day: HifzTally? = null,
     /** When the next fresh point is asked, «اليوم بعد المغرب», when it comes before any spaced check; null for none. */
     nextFresh: String? = null,
+    /** «غدًا بعد الفجر»: tomorrow's first reminder; see [HifzReminder.dayFirstLabel]. */
+    tomorrow: String = "غدًا",
+    /** «غدًا بعد الفجر»: the first reminder of the next spaced check's day; null to say its day only. */
+    nextCheckLabel: String? = null,
+    /** When each fresh point of the review is asked next, as the reminders will ask it, by its id; see [HifzReminder.nextAsk]. */
+    nextFor: Map<Long, String> = emptyMap(),
 ) {
     val point = state.point(queue)
     state.shown(point)
@@ -523,12 +548,28 @@ internal fun HifzReviewSheet(
           Column(Modifier.fillMaxSize()) {
             HifzReviewTitle(state, queue, point, actions)
             if (point == null || state.stopping) {
-                HifzReviewEnd(state, queue, stillDue, nextCheckIn, actions, Modifier.weight(1f).padding(vertical = 32.dp), day, nextFresh)
+                HifzReviewEnd(
+                    state, catalog, queue, stillDue, nextCheckIn, actions, Modifier.weight(1f).padding(vertical = 32.dp), day, nextFresh,
+                    freshAgain, tomorrow, nextCheckLabel, nextFor,
+                )
                 return@Column
             }
             val fix = remember(point, lookAlikes) { hifzFix(catalog, point, lookAlikes) }
-            Column(Modifier.weight(1f).verticalScroll(contentScroll).padding(top = 8.dp, bottom = 16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            val revealed = fix != null && state.revealed(point)
+            // Once the answer is shown, the answers, or the training, come first: they are what this step asks. The
+            // correction follows, to read.
+            if (revealed) Column(
+                Modifier.heightIn(max = this@BoxWithConstraints.maxHeight * 0.55f).verticalScroll(rememberScrollState()).padding(top = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
                 HifzReviewHeading(catalog, point)
+                HifzReviewControls(
+                    state, catalog, queue, point, audio, audioControls, actions, compact = false, freshAgain = freshAgain,
+                    tomorrow = tomorrow, fix = fix, next = nextFor[point.id],
+                )
+            }
+            Column(Modifier.weight(1f).verticalScroll(contentScroll).padding(top = 8.dp, bottom = 16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                if (!revealed) HifzReviewHeading(catalog, point)
                 if (fix == null) return@Column
                 if (!state.revealed(point)) {
                     val talkBack = rememberTouchExploration()
@@ -558,11 +599,14 @@ internal fun HifzReviewSheet(
                     if (talkBack) inText()
                     HifzReviewHint(state, point, actions)
                 } else {
-                    HifzFixBody(catalog, fix, lookAlikes)
+                    // The words to mind are said above the answers; a look-alike keeps its comparison here.
+                    HifzFixBody(catalog, fix, lookAlikes, exact = point.kind.lookAlike)
                     HifzReviewAnswerActions(state, point, actions)
                     HifzReviewKey(point)
                 }
-                HifzReviewControls(state, catalog, queue, point, audio, audioControls, actions, compact = false, freshAgain = freshAgain)
+            }
+            if (fix != null && !revealed) Column(Modifier.padding(bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                HifzReviewControls(state, catalog, queue, point, audio, audioControls, actions, compact = false, freshAgain = freshAgain, tomorrow = tomorrow, fix = null)
             }
           }
         }
@@ -603,6 +647,12 @@ internal fun HifzReviewCard(
     eraserHint: Boolean,
     onEraserHintClosed: () -> Unit,
     modifier: Modifier = Modifier,
+    /** «غدًا بعد الفجر»: tomorrow's first reminder; see [HifzReminder.dayFirstLabel]. */
+    tomorrow: String = "غدًا",
+    /** «غدًا بعد الفجر»: the first reminder of the next spaced check's day; null to say its day only. */
+    nextCheckLabel: String? = null,
+    /** When each fresh point of the review is asked next, as the reminders will ask it, by its id; see [HifzReminder.nextAsk]. */
+    nextFor: Map<Long, String> = emptyMap(),
 ) {
     val point = state.point(queue)
     state.shown(point)
@@ -623,15 +673,24 @@ internal fun HifzReviewCard(
             }
             if (state.folded) return@Column
             if (point == null || state.stopping) {
-                HifzReviewEnd(state, queue, stillDue, nextCheckIn, actions, Modifier.padding(end = 10.dp, top = 4.dp, bottom = 6.dp), day, nextFresh)
+                HifzReviewEnd(
+                    state, catalog, queue, stillDue, nextCheckIn, actions, Modifier.padding(end = 10.dp, top = 4.dp, bottom = 6.dp), day, nextFresh,
+                    freshAgain, tomorrow, nextCheckLabel, nextFor,
+                )
                 return@Column
             }
             val fix = remember(point, lookAlikes) { hifzFix(catalog, point, lookAlikes) }
+            val revealed = fix != null && state.revealed(point)
+            // The verse and its slip, then, once its answer is shown, the answers or the training first in what
+            // scrolls, before anything to read: they are what this step asks, in view as the card opens on them, and
+            // never squeezed out of a card that has reached its height.
+            Column(Modifier.padding(end = 10.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                HifzReviewHeading(catalog, point, onPage = true)
+            }
             Column(
-                Modifier.weight(1f, fill = false).verticalScroll(contentScroll).padding(end = 10.dp),
+                Modifier.weight(1f, fill = false).verticalScroll(contentScroll).padding(end = 10.dp, top = 6.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
-                HifzReviewHeading(catalog, point, onPage = true)
                 if (fix == null) return@Column
                 if (!state.revealed(point)) {
                     Text(hifzReviewPageQuestion(catalog, point), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = TextDark)
@@ -655,14 +714,20 @@ internal fun HifzReviewCard(
                         }
                     }
                 } else {
-                    // The verse is on the page now; the card adds only what the page cannot show: the look-alike, the
-                    // words to mind.
-                    HifzFixBody(catalog, fix, lookAlikes, ownOnPage = false)
+                    HifzReviewControls(
+                        state, catalog, queue, point, audio, audioControls, actions, compact = true, freshAgain = freshAgain,
+                        tomorrow = tomorrow, fix = fix, next = nextFor[point.id],
+                    )
+                    // The verse is on the page now; the card adds only what the page cannot show: where the look-alike
+                    // parts from it, the words to mind. The look-alike's page opens on demand.
+                    HifzFixBody(catalog, fix, lookAlikes, ownOnPage = false, otherFolded = true, exact = point.kind.lookAlike)
                     HifzReviewAnswerActions(state, point, actions)
                     HifzReviewKey(point)
                 }
-                Spacer(Modifier.height(2.dp))
-                HifzReviewControls(state, catalog, queue, point, audio, audioControls, actions, compact = true, freshAgain = freshAgain)
+            }
+            // «أظهر» stays in reach under the question, however long.
+            if (fix != null && !revealed) Column(Modifier.padding(end = 10.dp, top = 6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                HifzReviewControls(state, catalog, queue, point, audio, audioControls, actions, compact = true, freshAgain = freshAgain, tomorrow = tomorrow, fix = null)
             }
         }
     }
@@ -703,7 +768,10 @@ internal fun hifzReviewPageQuestion(catalog: QuranCatalog, point: HifzPoint): St
     return "$begin$attention، ثم اضغط «أظهر»."
 }
 
-/** «سؤال 3 من 5», the undo of the last answer, and the end of the review. */
+/**
+ * «سؤال 3 من 5», one title for the whole question, its answer and its drill: the step is said by what the card asks
+ * under it. The undo of the last answer, and the end of the review, whose own card holds the undo.
+ */
 @Composable
 private fun HifzReviewTitle(
     state: HifzReviewState,
@@ -716,31 +784,25 @@ private fun HifzReviewTitle(
     val atEnd = state.atEnd(queue)
     Column(Modifier.fillMaxWidth()) {
       Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        val name = when {
-            atEnd -> "نتيجة المراجعة"
-            state.training(point) -> "تدريب"
-            state.revealed(point) -> "تقييم المحاولة"
-            else -> "سؤال"
-        }
-        // «سؤال 2 من 5», «تقييم المحاولة · 2 من 5»; a review of one question is not numbered.
+        // «سؤال 2 من 5»; a review of one question is not numbered.
         val count = state.count(queue)
-        val place = "${state.index(queue) + 1} من $count"
         Text(
             when {
-                point == null || atEnd || count < 2 -> name
-                name == "سؤال" -> "$name $place"
-                else -> "$name · $place"
+                atEnd -> "المراجعة"
+                point == null || count < 2 -> "سؤال"
+                else -> "سؤال ${state.index(queue) + 1} من $count"
             },
             Modifier.weight(1f).semantics { liveRegion = LiveRegionMode.Polite },
             fontSize = fontSize, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
         )
+        if (!atEnd) TextButton(
+            onClick = { state.requestEnd(queue, actions) }, contentPadding = PaddingValues(horizontal = 8.dp),
+            modifier = Modifier.testTag("hifz_review_end"),
+        ) { Text("إنهاء") }
         trailing()
       }
-      if (state.undoable(queue) != null || !atEnd) Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-        if (state.undoable(queue) != null) TextButton(onClick = { state.undo(queue, actions) }, modifier = Modifier.testTag("hifz_review_undo")) { Text("تراجع عن التقييم") }
-        if (!atEnd) {
-            TextButton(onClick = { state.requestEnd(queue, actions) }, modifier = Modifier.testTag("hifz_review_end")) { Text("إنهاء") }
-        }
+      if (!atEnd && state.undoable(queue) != null) Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+        TextButton(onClick = { state.undo(queue, actions) }, modifier = Modifier.testTag("hifz_review_undo")) { Text("تراجع عن التقييم") }
       }
     }
 }
@@ -786,15 +848,56 @@ private fun HifzReviewKey(point: HifzPoint) {
     if (point.key.isNotBlank()) Text("ضابطي: ${point.key}", fontSize = 13.sp, color = QuranHifzViolet)
 }
 
-/** After «أظهر»: the right wording heard, and the whole fix. */
+/**
+ * After «أظهر»: the right wording heard, and the whole fix, in one quiet row under the answers. Not in the drill,
+ * whose «استمع وكرّر» plays the right wording already.
+ */
 @Composable
 private fun HifzReviewAnswerActions(state: HifzReviewState, point: HifzPoint, actions: HifzReviewActions) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        OutlinedButton(onClick = { if (state.settled()) actions.listen(point) }, modifier = Modifier.testTag("hifz_review_listen")) {
+        if (!state.training(point)) TextButton(onClick = { if (state.settled()) actions.listen(point) }, modifier = Modifier.testTag("hifz_review_listen")) {
             Text("استمع للصواب", maxLines = 1)
         }
         Spacer(Modifier.weight(1f))
-        TextButton(onClick = { actions.fix(point) }) { Text("التصحيح كاملا") }
+        // A second tap on «أظهر», which was where this row now is, never opens the correction over the review.
+        TextButton(onClick = { if (state.settled()) actions.fix(point) }) { Text("التصحيح كاملًا") }
+    }
+}
+
+/**
+ * The right wording to mind, before the answers: the words that were missed, the ending, where the verse parts from
+ * its look-alike, in the mushaf's script, the words to mind marked. The evidence is read before the verdict is given.
+ */
+@Composable
+private fun HifzAnswerLine(fix: HifzFix) {
+    val words = fix.words
+    val shown = fix.wordingWords.filter { it in 0 until words.size }
+    if (shown.isEmpty()) return
+    val label = when (fix.point.kind) {
+        HifzKind.Word -> "الصواب"
+        HifzKind.Ending -> "خاتمتها"
+        HifzKind.Similar -> fix.wordingLabel
+        HifzKind.Skip, HifzKind.Start -> "أولها"
+    }
+    val text = remember(fix) {
+        buildAnnotatedString {
+            shown.forEachIndexed { n, i ->
+                if (n > 0) append(if (i > shown[n - 1] + 1) " … " else " ")
+                if (i in fix.stressed) withStyle(SpanStyle(color = GreenPrimary, fontWeight = FontWeight.SemiBold, textDecoration = TextDecoration.Underline)) {
+                    append(words.printed[i])
+                } else append(words.printed[i])
+            }
+            if (fix.point.kind != HifzKind.Ending && shown.last() < words.size - 1) append(" …")
+        }
+    }
+    Row(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(Color.White).padding(horizontal = 10.dp, vertical = 2.dp)
+            .testTag("hifz_answer_line"),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(withQuranQuotes("$label:"), fontSize = 12.sp, color = TextMuted)
+        Spacer(Modifier.width(8.dp))
+        Text(text, Modifier.weight(1f), fontFamily = QuranMushafFont, fontSize = 20.sp, lineHeight = 34.sp, color = TextDark)
     }
 }
 
@@ -813,6 +916,12 @@ private fun ColumnScope.HifzReviewControls(
     actions: HifzReviewActions,
     compact: Boolean,
     freshAgain: String,
+    /** «غدًا بعد الفجر»: the first reminder of tomorrow, where a spaced check or a once-a-day question comes. */
+    tomorrow: String,
+    /** The right wording, shown once the answer is, before the answers: what to judge by. */
+    fix: HifzFix?,
+    /** When this point, answered, is asked next, as the reminders will ask it; null before its answer. */
+    next: String? = null,
 ) {
     if (audio != null) HifzAudioStrip(audio, audioControls)
     when {
@@ -832,32 +941,38 @@ private fun ColumnScope.HifzReviewControls(
             // The answer just given has already set when it comes back: the drill is to hear the right wording now,
             // and the next reminder is the retest.
             Text(
-                "استمع إليها وكرّرها. " + if (point.fresh > 0) "نسألك عنها $freshAgain." else "تعود ${hifzWhen(point.dueDay - todayEpochDay())}.",
+                "استمع إليها وكرّرها. " + if (point.fresh > 0) "نسألك عنها ${next ?: if (point.daily) tomorrow else freshAgain}." else "تعود ${hifzWhen(point.dueDay - todayEpochDay())}.",
                 fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.testTag("hifz_review_training"),
             )
-            OutlinedButton(
-                onClick = { state.drill(point, actions) },
-                modifier = Modifier.fillMaxWidth().testTag("hifz_review_drill"),
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(if (state.drilled(point)) "استمع وكرّر مجددًا" else "استمع وكرّر", fontWeight = FontWeight.SemiBold)
-                    Text(
-                        if (compact) hifzCompactDrillLabel(point, HifzDrillGap)
-                        else hifzDrillLabel(point, catalog.surahs.getOrNull(point.verse.surah - 1)?.verseCount, HifzDrillGap) { catalog.surahs.getOrNull(it - 1)?.name.orEmpty() },
-                        fontSize = 12.sp, textAlign = TextAlign.Center,
-                    )
-                }
+            // The drill is the step this card asks: filled until it was played, then the way on is.
+            val drilled = state.drilled(point)
+            val drill: @Composable ColumnScope.() -> Unit = {
+                Text(if (drilled) "استمع وكرّر مجددًا" else "استمع وكرّر", fontWeight = FontWeight.SemiBold)
+                Text(
+                    if (compact) hifzCompactDrillLabel(point, HifzDrillGap)
+                    else hifzDrillLabel(point, catalog.surahs.getOrNull(point.verse.surah - 1)?.verseCount, HifzDrillGap) { catalog.surahs.getOrNull(it - 1)?.name.orEmpty() },
+                    fontSize = 12.sp, textAlign = TextAlign.Center,
+                )
             }
-            Button(
+            val drillModifier = Modifier.fillMaxWidth().testTag("hifz_review_drill")
+            if (!drilled) Button(
+                onClick = { state.drill(point, actions) }, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = drillModifier,
+            ) { Column(horizontalAlignment = Alignment.CenterHorizontally, content = drill) }
+            else OutlinedButton(onClick = { state.drill(point, actions) }, modifier = drillModifier) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, content = drill)
+            }
+            // «انتهيت» at the last question: it leads to what was answered, which ends the review.
+            val nextLabel = if (state.index(queue) + 1 < state.count(queue)) "التالي" else "انتهيت"
+            val nextModifier = Modifier.fillMaxWidth().testTag("hifz_review_next")
+            if (drilled) Button(
                 onClick = { if (state.settled()) state.next(queue, actions) },
-                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
-                modifier = Modifier.fillMaxWidth().testTag("hifz_review_next"),
-            ) {
-                Text(if (state.index(queue) + 1 < state.count(queue)) "التالي" else "نتيجة المراجعة")
-            }
+                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = nextModifier,
+            ) { Text(nextLabel) }
+            else OutlinedButton(onClick = { if (state.settled()) state.next(queue, actions) }, modifier = nextModifier) { Text(nextLabel) }
         }
         else -> {
-            Text("كيف استرجعتها قبل إظهار الصواب؟", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = TextDark)
+            fix?.let { HifzAnswerLine(it) }
+            Text("هل تذكّرتها قبل أن تكشفها؟", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = TextDark)
             if (state.assisted(point)) Text(
                 "استعنت بتلميح؛ تُسجّل هذه المحاولة بمساعدة.",
                 fontSize = 12.sp, color = QuranHifzViolet,
@@ -868,20 +983,26 @@ private fun ColumnScope.HifzReviewControls(
                 HifzGrade.Hesitated -> if (state.assisted(point)) "تذكّرتها بالمساعدة" else "بتردد أو تلميح"
                 HifzGrade.Again -> if (state.assisted(point)) "لم أتذكّرها" else "نسيت أو أخطأت"
             }
-            fun detail(grade: HifzGrade): String =
-                if (compact) hifzGradeShort(point, grade, freshAgain) else hifzGradeDetail(point, grade, freshAgain)
+            val outcomes = grades.associateWith { hifzGradeOutcome(point, it, freshAgain, tomorrow, short = compact) }
+            // The same time on every answer is said once, under them; each answer then says only what it does.
+            val shared = outcomes.values.map { it.back }.distinct().singleOrNull()
+            fun detail(grade: HifzGrade): String = outcomes.getValue(grade).text(withBack = shared == null, short = compact)
             val sideBySide = compact && LocalDensity.current.fontScale <= 1.3f
             if (sideBySide) Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 grades.forEach { grade ->
-                    HifzGradeChip(label(grade), detail(grade), tag = "hifz_grade_${grade.name.lowercase()}", modifier = Modifier.weight(1f)) {
+                    HifzGradeChip(label(grade), detail(grade), grade, tag = "hifz_grade_${grade.name.lowercase()}", modifier = Modifier.weight(1f)) {
                         state.grade(queue, actions, grade)
                     }
                 }
             } else {
                 grades.forEach { grade ->
-                    HifzGradeButton(label(grade), detail(grade), tag = "hifz_grade_${grade.name.lowercase()}") { state.grade(queue, actions, grade) }
+                    HifzGradeButton(label(grade), detail(grade), grade, tag = "hifz_grade_${grade.name.lowercase()}") { state.grade(queue, actions, grade) }
                 }
             }
+            if (shared != null) Text(
+                "تعود $shared أيًّا كان جوابك.", fontSize = 12.sp, color = TextMuted,
+                textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth().testTag("hifz_grade_shared_back"),
+            )
             if (!compact) TextButton(onClick = { state.howItWorks = true }, contentPadding = PaddingValues(horizontal = 4.dp), modifier = Modifier.testTag("hifz_how_it_works")) {
                 Text("كيف تعمل مراجعة اليوم؟", fontSize = 13.sp)
             }
@@ -893,21 +1014,53 @@ private fun ColumnScope.HifzReviewControls(
 private fun hifzCompactDrillLabel(point: HifzPoint, gap: Float): String {
     val passage = when {
         point.other != null && (point.kind == HifzKind.Ending || point.kind == HifzKind.Similar) -> "الموضعان بالتناوب · 5 تلاوات"
-        point.kind == HifzKind.Skip || point.kind == HifzKind.Start -> "الآيات المتصلة · 3 مرات"
-        else -> "الآية · 3 مرات"
+        point.kind == HifzKind.Skip || point.kind == HifzKind.Start -> "الآيات المتصلة · 3 تكرارات"
+        else -> "الآية · 3 تكرارات"
     }
-    return if (gap > 0f) "$passage · وقفات للترديد" else passage
+    return if (gap > 0f) "$passage · مع مهلة للترديد" else passage
 }
 
 /**
- * What was answered: at the end of the review, or when it is stopped early, which keeps «تابع الآن». The day's count
- * adds up every review of the day; the failed points can be asked once more, and what was reviewed can be heard now
- * that the checks are done.
+ * Where an answered point stands now, for the end of the review: «بقيت قراءتان دون مساعدة» with its next question, the
+ * milestone of its last right answer, «أتممت 3 قراءات دون مساعدة: تتباعد أسئلتها، أولها غدًا بعد الفجر», or its next
+ * spaced check. [next]: the time it names, to say it once when the review's own next question is the same.
+ */
+@Immutable
+internal data class HifzRoundLine(val text: String, val next: String?, val milestone: Boolean)
+
+internal fun hifzRoundLine(
+    catalog: QuranCatalog, point: HifzPoint, today: Long, again: String, tomorrow: String,
+    /** When the reminders ask this point next, from its own answer and its verse last seen; see [HifzReminder.nextAsk]. */
+    own: String? = null,
+): HifzRoundLine {
+    val name = hifzVerseName(catalog, point.verse)
+    val last = point.checks.lastOrNull()
+    return when {
+        point.fresh > 0 -> {
+            val next = own ?: if (point.daily) tomorrow else again
+            HifzRoundLine("$name: بقيت ${hifzReadingsLabel(point.fresh)} دون مساعدة · السؤال القادم $next", next, milestone = false)
+        }
+        // Its daily questions ended with this answer: the step it reached is said, and when it comes back.
+        point.step == 0 && last?.day == today && last.grade == HifzGrade.Held -> HifzRoundLine(
+            "$name: أتممت ${HifzReminder.freshLeftPhrase(point.recalls)} · تتباعد أسئلتها، أولها $tomorrow", tomorrow, milestone = true,
+        )
+        point.mastered && point.masteredAt?.let { epochDay(it) } == today ->
+            HifzRoundLine("$name: ثبتت · سؤال للتأكد ${hifzWhen(point.dueDay - today)}", null, milestone = true)
+        else -> HifzRoundLine("$name: السؤال القادم ${hifzWhen(point.dueDay - today)}", null, milestone = false)
+    }
+}
+
+/**
+ * What was answered: at the end of the review, or when it is stopped early, which keeps «تابع الآن». Each point
+ * answered says where it stands, so that the right answers given show as progress and the last one as the step it is;
+ * the day's count adds up every review of the day. The failed points can be asked once more, what was reviewed can be
+ * heard now that the checks are done, and the last answer taken back.
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun HifzReviewEnd(
     state: HifzReviewState,
+    catalog: QuranCatalog,
     queue: List<HifzPoint>,
     stillDue: Int,
     nextCheckIn: Long?,
@@ -916,43 +1069,51 @@ private fun HifzReviewEnd(
     /** The day's answers, a point counted once a day, a fresh one asked at several reminders too. */
     dayTally: HifzTally? = null,
     nextFresh: String? = null,
+    freshAgain: String = "في تذكير لاحق",
+    tomorrow: String = "غدًا",
+    nextCheckLabel: String? = null,
+    nextFor: Map<Long, String> = emptyMap(),
 ) {
     val stopped = state.stopping && state.point(queue) != null
     Column(modifier.fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         val day = dayTally ?: state.day
         val remaining = state.unanswered(queue)
+        val today = todayEpochDay()
+        val answered = state.gradedIds.mapNotNull { id -> queue.firstOrNull { it.id == id } }
+        val lines = remember(answered, today, freshAgain, tomorrow, nextFor) {
+            answered.map { hifzRoundLine(catalog, it, today, freshAgain, tomorrow, nextFor[it.id]) }
+        }
+        // What is said is judged by what shows: the first three lines.
+        val shown = lines.take(3)
         when {
             stopped -> {
                 Text("توقفت المراجعة", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                 Text("حُفظت إجاباتك: ${hifzCountLabel(state.graded)}", fontSize = 14.sp, color = TextDark)
-                Text("لم تختبرها بعد في هذه الجولة: ${hifzCountLabel(remaining)}", fontSize = 14.sp, color = TextMuted)
+                Text("لم تُسأل عنها بعد في هذه الجولة: ${hifzCountLabel(remaining)}", fontSize = 14.sp, color = TextMuted)
                 if (state.training(state.point(queue))) Text("يمكنك متابعة التدريب على الموضع الحالي.", fontSize = 13.sp, color = TextMuted)
             }
             day.graded > 0 -> {
                 Text("بارك الله فيك", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                Text("راجعت اليوم: ${hifzCountLabel(day.graded)}", fontSize = 14.sp, color = TextMuted)
-                Text(
-                    listOfNotNull(
-                        "دون مساعدة: ${day.held}".takeIf { day.held > 0 },
-                        "بعد تردد أو تلميح: ${day.hesitated}".takeIf { day.hesitated > 0 },
-                        "نسيت أو أخطأت: ${day.again}".takeIf { day.again > 0 },
-                    ).joinToString(" · "),
-                    fontSize = 14.sp, color = TextDark, textAlign = TextAlign.Center,
-                )
-                // The day counts each point once, by its first answer: a point asked again at a later reminder has
-                // its answer of this round said apart.
-                val round = state.round
-                if (round.graded > 0 && (round.held != day.held || round.hesitated != day.hesitated || round.again != day.again)) Text(
-                    "في هذه الجولة: " + listOfNotNull(
-                        "دون مساعدة: ${round.held}".takeIf { round.held > 0 },
-                        "بعد تردد أو تلميح: ${round.hesitated}".takeIf { round.hesitated > 0 },
-                        "نسيت أو أخطأت: ${round.again}".takeIf { round.again > 0 },
+                // Where each point answered now stands, the first few; the day's count when there were several.
+                shown.forEach { line ->
+                    Text(
+                        line.text, fontSize = 14.sp, textAlign = TextAlign.Center,
+                        fontWeight = if (line.milestone) FontWeight.SemiBold else FontWeight.Normal,
+                        color = if (line.milestone) GreenPrimary else TextDark, modifier = Modifier.testTag("hifz_review_progress"),
+                    )
+                }
+                if (lines.size > 3) Text("وغيرها: ${hifzCountLabel(lines.size - 3)}", fontSize = 13.sp, color = TextMuted)
+                if (day.graded > 1) Text(
+                    "راجعت اليوم: ${hifzCountLabel(day.graded)} · " + listOfNotNull(
+                        "دون مساعدة ${day.held}".takeIf { day.held > 0 },
+                        "بتردد ${day.hesitated}".takeIf { day.hesitated > 0 },
+                        "لم تتذكّر ${day.again}".takeIf { day.again > 0 },
                     ).joinToString(" · "),
                     fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
                 )
-                if (day.heldNow > 0) Text("ثبت منها: ${hifzCountLabel(day.heldNow)}", fontSize = 14.sp, color = GreenPrimary)
+                if (day.heldNow > 0 && shown.none { it.milestone && it.next == null }) Text("ثبت منها اليوم: ${hifzCountLabel(day.heldNow)}", fontSize = 14.sp, color = GreenPrimary)
             }
-            else -> Text(if (stillDue > 0) "لم يبق موضع في هذه المراجعة" else "لم يبق موضع للمراجعة الآن", fontSize = 16.sp, color = GreenPrimaryDark)
+            else -> Text(if (stillDue > 0) "لم يبق موضع في هذه المراجعة" else "لا أسئلة الآن", fontSize = 16.sp, color = GreenPrimaryDark)
         }
         // Points whose verse was shown in this review, by another point's answer: asked at the next reminder.
         val deferred = state.deferredIds.size
@@ -962,23 +1123,46 @@ private fun HifzReviewEnd(
             fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
         )
         if (!stopped) {
+            // The review's next question, unless a point's line says that very time already.
+            val next = when {
+                stillDue > 0 -> null
+                nextFresh != null -> nextFresh
+                nextCheckIn != null -> nextCheckLabel ?: hifzWhen(nextCheckIn)
+                else -> null
+            }
             if (stillDue > 0) Text("وبقي للمراجعة الآن: ${hifzCountLabel(stillDue)}", fontSize = 14.sp, color = TextDark)
-            else if (nextFresh != null) Text("السؤال القادم $nextFresh", fontSize = 14.sp, color = TextMuted)
-            else if (nextCheckIn != null) Text("المراجعة القادمة ${hifzWhen(nextCheckIn)}", fontSize = 14.sp, color = TextMuted)
+            else if (next != null && shown.none { it.next == next }) Text("السؤال القادم $next", fontSize = 14.sp, color = TextMuted)
         }
-        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            if (stopped) {
+        if (stopped) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Button(onClick = state::resume, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_review_resume")) {
                     Text("تابع الآن")
                 }
                 OutlinedButton(onClick = actions::dismiss, modifier = Modifier.testTag("hifz_review_later")) { Text("لاحقًا") }
-                return@FlowRow
+                // An answer given by mistake can still be taken back from here.
+                if (state.undoable(queue) != null) TextButton(onClick = { state.undo(queue, actions) }, modifier = Modifier.testTag("hifz_review_undo")) {
+                    Text("تراجع عن التقييم")
+                }
             }
-            if (state.gradedIds.isNotEmpty()) OutlinedButton(onClick = { actions.listenTo(state.gradedIds) }, modifier = Modifier.testTag("hifz_review_listen_done")) {
+            return@Column
+        }
+        // The way on is the widest: more questions when some are due, else back to the reading.
+        if (stillDue > 0) Button(
+            onClick = actions::more, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+            modifier = Modifier.fillMaxWidth().testTag("hifz_review_more"),
+        ) { Text("تابع مراجعات اليوم") }
+        else Button(
+            onClick = actions::dismiss, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+            modifier = Modifier.fillMaxWidth().testTag("hifz_review_done"),
+        ) { Text("تم") }
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            if (state.gradedIds.isNotEmpty()) TextButton(onClick = { actions.listenTo(state.gradedIds) }, modifier = Modifier.testTag("hifz_review_listen_done")) {
                 Text("استمع إلى ما راجعته")
             }
-            if (stillDue > 0) OutlinedButton(onClick = actions::more, modifier = Modifier.testTag("hifz_review_more")) { Text("تابع مراجعات اليوم") }
-            Button(onClick = actions::dismiss, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)) { Text("تم") }
+            if (stillDue > 0) TextButton(onClick = actions::dismiss, modifier = Modifier.testTag("hifz_review_done")) { Text("لاحقًا") }
+            if (state.undoable(queue) != null) TextButton(onClick = { state.undo(queue, actions) }, modifier = Modifier.testTag("hifz_review_undo")) {
+                Text("تراجع عن التقييم")
+            }
         }
     }
 }
@@ -1001,46 +1185,69 @@ private fun HifzAnswerSlot() {
 }
 
 /**
- * What answering [grade] means for [point]: how the reading went, then when it comes back, said as such. A fresh point
- * is asked again [again], «اليوم بعد المغرب», until its last right answer spaces its checks out; a failed check makes
- * any point fresh again.
+ * What an answer does to a point ([effect], none when it only comes back later), and when the verse comes back
+ * after it ([back]): «اليوم بعد المغرب», «غدًا بعد الفجر», «بعد 3 أيام». Apart, so that a time every answer shares is
+ * said once.
  */
-internal fun hifzGradeDetail(point: HifzPoint, grade: HifzGrade, again: String = "في تذكير لاحق"): String {
-    if (grade == HifzGrade.Again) return "أخطأت أو نسيت · " + when {
-        point.mastered -> "تخرج من «ثبتت»، ونسألك عنها $again حتى تقرأها صحيحة ${HifzReminder.recallsPhrase(HifzFreshRecalls)}"
-        point.restartsOnAgain -> "يبدأ العدّ من جديد: نسألك عنها $again حتى تقرأها صحيحة ${HifzReminder.recallsPhrase(HifzFreshRecalls)}"
-        else -> "خطأ آخر، ونسألك عنها $again"
-    }
-    if (point.fresh > 0) return when {
-        grade == HifzGrade.Hesitated -> "بتردد أو تلميح · لا تُحسب، ونسألك عنها $again"
-        point.spacesNext -> "دون تردد · تتباعد مراجعاتها، وتعود غدًا"
-        else -> "دون تردد · ${hifzFreshLeft(point.fresh - 1)}، ونسألك عنها $again"
-    }
-    val back = hifzWhen(point.daysAfter(grade).toLong())
-    return when (grade) {
-        HifzGrade.Held -> when {
-            point.holdsNext -> "دون تردد · تثبت، وتعود $back للتأكد"
-            point.mastered -> "دون تردد · تعود $back للتأكد"
-            else -> "دون تردد · تعود $back"
-        }
-        else -> "بتردد أو تلميح · تعود $back" + if (point.mastered && point.step - 1 < HifzMasteredStep) " · تخرج من «ثبتت»" else ""
+@Immutable
+internal data class HifzGradeOutcome(val effect: String?, val back: String) {
+    /** With [withBack], the time too: on its own line for the answers side by side ([short]), else after a comma. */
+    fun text(withBack: Boolean, short: Boolean): String = when {
+        !withBack -> effect.orEmpty()
+        effect == null -> "تعود $back"
+        short -> "$effect\nتعود $back"
+        else -> "$effect، وتعود $back"
     }
 }
 
 /**
- * [hifzGradeDetail] in a few words, for the answers side by side: what the answer does, then when the verse comes back
- * when that is at a coming reminder: «تبقى قراءتان» over «اليوم بعد المغرب», «لا تُحسب», «خطأ آخر», «تعود بعد 3 أيام».
+ * What answering [grade] means for [point]. A fresh point is asked again [again], «اليوم بعد المغرب», or, asked once a
+ * day, [tomorrow], «غدًا بعد الفجر», until its last right answer spaces its questions out from [tomorrow]; a failed
+ * answer makes any point fresh again, with more right answers when the mistake came back, and says why. [short]: in a
+ * few words, for the answers side by side.
  */
-internal fun hifzGradeShort(point: HifzPoint, grade: HifzGrade, again: String = "في تذكير لاحق"): String = when {
-    grade == HifzGrade.Again -> (if (point.mastered || point.restartsOnAgain) "من جديد: ${HifzFreshRecalls} قراءات" else "خطأ آخر") + "\n$again"
-    point.fresh > 0 -> when {
-        grade == HifzGrade.Hesitated -> "لا تُحسب\n$again"
-        point.spacesNext -> "تعود غدًا"
-        else -> "${hifzFreshLeft(point.fresh - 1)}\n$again"
+internal fun hifzGradeOutcome(
+    point: HifzPoint, grade: HifzGrade, again: String = "في تذكير لاحق", tomorrow: String = "غدًا", short: Boolean = false,
+): HifzGradeOutcome {
+    val next = if (point.daily) tomorrow else again
+    if (grade == HifzGrade.Again) {
+        val count = point.recallsAfterAgain
+        // A count that grows is said with its reason: it is no penalty, the mistake came back.
+        val raised = !point.mastered && count > point.recalls
+        val effect = when {
+            point.mastered -> if (short) "تخرج من «ثبتت»" else "تخرج من «ثبتت»، ونطلب ${HifzReminder.freshLeftPhrase(count)} من جديد"
+            point.restartsOnAgain -> if (short) "من جديد: ${hifzReadingsLabel(count)}" + (if (raised) "\nلأن الخطأ عاد" else "")
+                else "يبدأ العدّ من جديد: ${HifzReminder.freshLeftPhrase(count)}" + (if (raised) " بدل ${point.recalls}، لأن الخطأ عاد" else "")
+            else -> "خطأ آخر"
+        }
+        return HifzGradeOutcome(effect, next)
     }
-    grade == HifzGrade.Held && point.holdsNext -> "تثبت"
-    else -> "تعود ${hifzWhen(point.daysAfter(grade).toLong())}"
+    if (point.fresh > 0) return when {
+        grade == HifzGrade.Hesitated -> HifzGradeOutcome("لا تُحسب", next)
+        point.spacesNext -> HifzGradeOutcome(if (short) "تتباعد أسئلتها" else "أتممت قراءاتها: تتباعد أسئلتها", tomorrow)
+        else -> HifzGradeOutcome(hifzFreshLeft(point.fresh - 1), next)
+    }
+    val back = hifzWhen(point.daysAfter(grade).toLong())
+    return when (grade) {
+        HifzGrade.Held -> when {
+            point.holdsNext -> HifzGradeOutcome("تثبت", "$back للتأكد")
+            point.mastered -> HifzGradeOutcome(null, "$back للتأكد")
+            else -> HifzGradeOutcome(null, back)
+        }
+        else -> HifzGradeOutcome("تخرج من «ثبتت»".takeIf { point.mastered && point.step - 1 < HifzMasteredStep }, back)
+    }
 }
+
+/** [hifzGradeOutcome] said whole, with its time: «تبقى قراءة، وتعود اليوم بعد المغرب», «تعود بعد 3 أيام». */
+internal fun hifzGradeDetail(point: HifzPoint, grade: HifzGrade, again: String = "في تذكير لاحق", tomorrow: String = "غدًا"): String =
+    hifzGradeOutcome(point, grade, again, tomorrow).text(withBack = true, short = false)
+
+/**
+ * [hifzGradeDetail] in a few words, for the answers side by side: what the answer does over when the verse comes
+ * back: «تبقى قراءتان» over «تعود اليوم بعد المغرب», «لا تُحسب», «خطأ آخر», «تعود بعد 3 أيام».
+ */
+internal fun hifzGradeShort(point: HifzPoint, grade: HifzGrade, again: String = "في تذكير لاحق", tomorrow: String = "غدًا"): String =
+    hifzGradeOutcome(point, grade, again, tomorrow, short = true).text(withBack = true, short = true)
 
 /** «تبقى قراءتان», «تبقى قراءة»: the right answers [left] still needed after this one. */
 private fun hifzFreshLeft(left: Int): String = when (left) {
@@ -1053,30 +1260,55 @@ private fun hifzFreshLeft(left: Int): String = when (left) {
  * «نسيت» now sets back counted progress: a right answer of the fresh phase, or a step of the spaced checks. A point
  * never answered right since its slip only adds a slip.
  */
-private val HifzPoint.restartsOnAgain: Boolean get() = step > 0 || fresh in 1 until HifzFreshRecalls || (fresh == 0 && step == 0)
+private val HifzPoint.restartsOnAgain: Boolean get() = step > 0 || fresh in 1 until recalls || (fresh == 0 && step == 0) ||
+    recallsAfterAgain != recalls
 
-/** A grade: its name, and under it what it means and when the verse comes back. */
+/**
+ * Each answer in its own light tone, read at a glance and by more than its colour, its name being said: remembered
+ * green, hesitated plain, forgotten warm.
+ */
+@Immutable
+private data class HifzGradeTone(val container: Color, val border: Color, val content: Color)
+
+private fun hifzGradeTone(grade: HifzGrade): HifzGradeTone = when (grade) {
+    HifzGrade.Held -> HifzGradeTone(AdhkarSoftGreen, GreenPrimary.copy(alpha = 0.55f), GreenPrimaryDark)
+    HifzGrade.Hesitated -> HifzGradeTone(Color.White, CardBorder, TextDark)
+    HifzGrade.Again -> HifzGradeTone(BannerBg, BannerStroke.copy(alpha = 0.75f), Color(0xFF7A3B12))
+}
+
+/** A grade: its name, and under it what it means and, unless every answer shares it, when the verse comes back. */
 @Composable
-private fun HifzGradeButton(label: String, detail: String, tag: String, onClick: () -> Unit) {
+private fun HifzGradeButton(label: String, detail: String, grade: HifzGrade, tag: String, onClick: () -> Unit) {
+    val tone = hifzGradeTone(grade)
     val padding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     val content: @Composable RowScope.() -> Unit = {
         Column(Modifier.weight(1f)) {
             Text(label, fontWeight = FontWeight.SemiBold)
-            Text(detail, fontSize = 12.sp, lineHeight = 16.sp)
+            if (detail.isNotEmpty()) Text(detail, fontSize = 12.sp, lineHeight = 16.sp)
         }
     }
-    OutlinedButton(onClick = onClick, contentPadding = padding, modifier = Modifier.fillMaxWidth().testTag(tag), content = content)
+    OutlinedButton(
+        onClick = onClick, contentPadding = padding, border = BorderStroke(1.dp, tone.border),
+        colors = ButtonDefaults.outlinedButtonColors(containerColor = tone.container, contentColor = tone.content),
+        modifier = Modifier.fillMaxWidth().testTag(tag), content = content,
+    )
 }
 
-/** A grade side by side with the others, on the page's card: its name and, under it, when the verse comes back. */
+/** A grade side by side with the others, on the page's card: its name and, under it, what it does. */
 @Composable
-private fun HifzGradeChip(label: String, detail: String, tag: String, modifier: Modifier, onClick: () -> Unit) {
+private fun HifzGradeChip(label: String, detail: String, grade: HifzGrade, tag: String, modifier: Modifier, onClick: () -> Unit) {
+    val tone = hifzGradeTone(grade)
     val padding = PaddingValues(horizontal = 6.dp, vertical = 6.dp)
     val content: @Composable RowScope.() -> Unit = {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(label, fontWeight = FontWeight.SemiBold, fontSize = 14.sp, textAlign = TextAlign.Center, maxLines = 2)
-            Text(detail, fontSize = 11.sp, lineHeight = 14.sp, textAlign = TextAlign.Center, maxLines = 2)
+            // Whole, however many lines: the answers side by side grow together.
+            if (detail.isNotEmpty()) Text(detail, fontSize = 11.sp, lineHeight = 14.sp, textAlign = TextAlign.Center)
         }
     }
-    OutlinedButton(onClick = onClick, contentPadding = padding, shape = RoundedCornerShape(14.dp), modifier = modifier.fillMaxHeight().testTag(tag), content = content)
+    OutlinedButton(
+        onClick = onClick, contentPadding = padding, shape = RoundedCornerShape(14.dp), border = BorderStroke(1.dp, tone.border),
+        colors = ButtonDefaults.outlinedButtonColors(containerColor = tone.container, contentColor = tone.content),
+        modifier = modifier.fillMaxHeight().testTag(tag), content = content,
+    )
 }

@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
+import android.os.Looper
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.Prayer
@@ -51,6 +52,10 @@ class AwakeCheckSilenceSuppressionTest {
     @Before
     fun setup() {
         context = ApplicationProvider.getApplicationContext()
+        // The app's own start-up waits for the main looper's first idle, and its first silence pass ends an
+        // auto-silence it finds outside any open prayer window, as a missed end (6.9). Let it run now, before a test
+        // sets up the silence it checks, rather than in the middle of the test.
+        Shadows.shadowOf(Looper.getMainLooper()).idle()
         runBlocking { PrayerWakeRepository(context).clearAllWakeConfigs() }
         context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE)
             .edit()
@@ -127,7 +132,14 @@ class AwakeCheckSilenceSuppressionTest {
         )
         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
 
-        receiveStartAwakeCheck(eventId)
+        // Due at 00:37, outside every window: due now + 7 minutes, the check would be cancelled whenever this runs
+        // in a prayer window, as one scheduled inside a window is.
+        val tunis = java.time.ZoneId.of("Africa/Tunis")
+        receiveStartAwakeCheck(
+            eventId = eventId,
+            scheduledTriggerAtMillis = java.time.ZonedDateTime.of(java.time.LocalDate.now(tunis), java.time.LocalTime.of(0, 37), tunis)
+                .toInstant().toEpochMilli(),
+        )
 
         assertEquals("Stale silence flags without DND should not cancel pending awake-check alarms", 1, shadowAlarmManager.scheduledAlarms.size)
         val startedService = nextStartedService()

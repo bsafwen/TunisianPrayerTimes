@@ -144,6 +144,8 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
             }
             HorizontalDivider()
             ParameterRow("المصدر", method.evidence.source)
+            // GeoNames' licence asks for credit where its data is shown: the place names and points abroad (CC BY 4.0).
+            ParameterRow("أسماء الأماكن", "GeoNames (CC BY 4.0)، والأسماء العربية الناقصة من Wikidata (CC0)")
         }
     }
 }

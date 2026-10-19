@@ -619,7 +619,6 @@
     <string name="onboarding_location_done">موقعك: %1$s</string>
     <string name="onboarding_location_pick_later">ستختار مدينتك عند فتح التطبيق.</string>
     <string name="onboarding_location_failed">تعذّر تحديد موقعك. اختر مدينة، أو تابع ونقترح موقعًا تؤكّده لاحقًا.</string>
-    <string name="onboarding_location_closed">هذه المنطقة غير متاحة بعد. اختر مدينة أو تابع.</string>
     <string name="location_confirm_title">تأكيد الموقع</string>
     <string name="location_confirm_text">اخترنا لك %1$s من شبكة هاتفك ومنطقته الزمنية. هل هذا موقعك؟</string>
     <string name="location_confirm_yes">نعم</string>
@@ -650,6 +649,5 @@
     <string name="estimated_adjustment">أوقف تعديلُك بالدقائق %1$s عند حدّه.</string>
     <string name="estimated_order">تقدّم هذه الطريقة %1$s اليوم على الوقت الذي قبله، فجُعل معه.</string>
     <string name="estimated_night_middle">الفترة التي تحددها هذه الطريقة بعد المغرب أطول من نصف الليلة، فجُعل العشاء في وسط الليلة.</string>
-    <string name="location_region_closed">هذه المنطقة غير متاحة بعد في هذا الإصدار، فبقي موقعك المحفوظ.</string>
     <string name="onboarding_ready_desc_abroad">سيتكفل التطبيق بالباقي، ويمكنك ضبط طريقة الحساب لتوافق مسجدك من إعدادات المواقيت.\n\nصلاة مقبولة 🤲</string>
 </resources>

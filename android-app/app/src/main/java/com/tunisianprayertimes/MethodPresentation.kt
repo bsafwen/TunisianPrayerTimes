@@ -26,6 +26,7 @@ enum class MethodChip(val labelAr: String) {
 object MethodPresentation {
     private const val LRI = "⁦"
     private const val PDI = "⁩"
+    private const val RLI = "⁧"
     private const val MINUS = "−"
 
     private val NAMES = mapOf(
@@ -101,14 +102,20 @@ object MethodPresentation {
     fun parameters(method: PrayerMethod): String {
         val fajr = when (val f = method.fajr) {
             is FajrRule.Angle -> degrees(f.degrees)
-            is FajrRule.MinutesBeforeSunrise -> "${f.minutes} د"
+            is FajrRule.MinutesBeforeSunrise -> minutes(f.minutes)
         }
         val isha = when (val i = method.isha) {
             is IshaRule.Angle -> degrees(i.degrees)
-            is IshaRule.MinutesAfter -> "${i.minutes} د"
+            is IshaRule.MinutesAfter -> minutes(i.minutes)
         }
         return "$LRI$fajr · $isha$PDI"
     }
+
+    /**
+     * Minutes inside the parameters' LTR isolate: the Arabic «د» in an RTL isolate of its own, which the isolate around it
+     * sees as one neutral. Bare, the letter turned the rest of the line around: «90 د · 90 د» showed «90 د 90 · د».
+     */
+    private fun minutes(value: Int): String = "$value $RLI" + "د" + PDI
 
     /** The row of «طريقة الحساب»: the name, then its parameters. */
     fun summary(method: PrayerMethod): String = name(method.id) + " · " + parameters(method)

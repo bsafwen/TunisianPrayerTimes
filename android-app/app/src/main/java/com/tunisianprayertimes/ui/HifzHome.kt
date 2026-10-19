@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.ui
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -65,6 +66,8 @@ internal data class HifzNotice(
     val undo: (() -> Unit)?,
     val again: (() -> Unit)? = null,
     val correction: (() -> Unit)? = null,
+    /** What the undo is called: «إلغاء الحفظ» for a mistake saved, a bare «تراجع» reading as «تُراجِع» here. */
+    val undoLabel: String = "تراجع",
 )
 
 /**
@@ -83,6 +86,9 @@ internal fun HifzHomeSheet(
     now: Long,
     /** When the next fresh point is asked, «اليوم بعد المغرب», when it comes before any spaced check; null for none. */
     nextFresh: String? = null,
+    /** «غدًا بعد الفجر»: the first reminder of the next spaced check's day, [nextCheckIn] days on; null to say its day only. */
+    nextCheckLabel: String? = null,
+    nextCheckIn: Long? = null,
     /** Opened from the launcher's «سجّل موضعا»: ask for the verse at once. */
     startRecording: Boolean = false,
     notice: HifzNotice? = null,
@@ -174,13 +180,17 @@ internal fun HifzHomeSheet(
                             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                                 told.correction?.let { TextButton(onClick = it, modifier = Modifier.testTag("hifz_notice_correction")) { Text("التصحيح", fontSize = 13.sp) } }
                                 told.again?.let { TextButton(onClick = it) { Text("سجّل موضعا آخر", fontSize = 13.sp) } }
-                                told.undo?.let { TextButton(onClick = it, modifier = Modifier.testTag("hifz_notice_undo")) { Text("تراجع", fontSize = 13.sp) } }
+                                told.undo?.let { TextButton(onClick = it, modifier = Modifier.testTag("hifz_notice_undo")) { Text(told.undoLabel, fontSize = 13.sp) } }
                             }
                         }
                     }
                 }
                 if (!notebook) item(key = "today") {
-                    Surface(shape = RoundedCornerShape(16.dp), color = GoldLight) {
+                    // Gold calls for the review: only when there is a question to answer now. Otherwise a plain card.
+                    Surface(
+                        shape = RoundedCornerShape(16.dp), color = if (dueAll.isNotEmpty()) GoldLight else Color.White,
+                        border = if (dueAll.isNotEmpty()) null else BorderStroke(1.dp, CardBorder),
+                    ) {
                         Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                             if (dueAll.isNotEmpty()) {
                                 // Care determines batch selection; the selected points are presented in mushaf order.
@@ -192,7 +202,7 @@ internal fun HifzHomeSheet(
                                         "نبدأ بـ ${hifzCountLabel(batch.size)}".takeIf { dueAll.size > batch.size },
                                         "نحو ${quranMinutesLabel((batch.size + 1).coerceAtLeast(2))}",
                                         "نختار ما يحتاج عناية للجولة".takeIf { batch.any { it.needsCare } },
-                                        "منها ${hifzCountLabel(late)} متأخرة".takeIf { late > 0 },
+                                        "تأخّر منها ${hifzCountLabel(late)}".takeIf { late > 0 },
                                     ).joinToString(" · "),
                                     fontSize = 13.sp, color = Color(0xFF6E5A2E),
                                 )
@@ -207,8 +217,8 @@ internal fun HifzHomeSheet(
                                 val asked = if (settings.reminder) "نسألك عنها ${HifzReminder.timesPhrase(settings.times)}"
                                     else "تجدها في «مراجعة اليوم» بعد ${HifzFreshGapMs / 60_000L} دقيقة"
                                 Text(
-                                    "إذا أخطأت وأنت تقرأ، اضغط على الآية ثم «أخطأت». $asked، والآية مغطاة، حتى تقرأها صحيحة ${HifzReminder.recallsPhrase(HifzFreshRecalls)}.",
-                                    fontSize = 13.sp, color = Color(0xFF6E5A2E),
+                                    "إذا أخطأت وأنت تقرأ، اضغط على الآية ثم «أخطأت». $asked، والآية مغطاة، حتى تُتمّ ${HifzReminder.freshLeftPhrase(HifzFreshRecalls)}.",
+                                    fontSize = 13.sp, color = TextMuted,
                                 )
                             } else {
                                 // Held points come back too, to make sure of them. A check whose verse was looked at today is
@@ -217,13 +227,14 @@ internal fun HifzHomeSheet(
                                     if (point.isDue(today, now) && eligibleDueIds != null && point.id !in eligibleDueIds) today + 1 else point.dueDay
                                 }
                                 val allHeld = points.all { it.mastered }
-                                Text("لا مواضع مستحقة الآن", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                                Text("لا أسئلة الآن", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                                 when {
                                     // A fresh point comes back a while after its slip, its answer or its answer seen.
-                                    nextFresh != null -> Text("السؤال القادم $nextFresh", fontSize = 13.sp, color = Color(0xFF6E5A2E))
+                                    nextFresh != null -> Text("السؤال القادم $nextFresh", fontSize = 13.sp, color = TextMuted)
                                     next != null -> Text(
-                                        (if (allHeld) "مراجعة للتأكد " else "المراجعة القادمة ") + hifzWhen(next - today),
-                                        fontSize = 13.sp, color = Color(0xFF6E5A2E),
+                                        (if (allHeld) "سؤال للتأكد " else "السؤال القادم ") +
+                                            (nextCheckLabel?.takeIf { nextCheckIn == next - today } ?: hifzWhen(next - today)),
+                                        fontSize = 13.sp, color = TextMuted,
                                     )
                                 }
                             }
@@ -233,11 +244,25 @@ internal fun HifzHomeSheet(
                 if (!notebook && points.isNotEmpty()) item(key = "notebook_entry") {
                     Surface(
                         onClick = { openNotebook() }, modifier = Modifier.fillMaxWidth().testTag("hifz_open_notebook"),
-                        shape = RoundedCornerShape(12.dp), color = Color.White,
+                        shape = RoundedCornerShape(12.dp), color = Color.White, border = BorderStroke(1.dp, CardBorder),
                     ) {
-                        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(3.dp)) {
-                            Text("دفتر المواضع · ${hifzCountLabel(points.size)}", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                            Text("ابحث في مواضعك وافتح تصحيحها", fontSize = 12.sp, color = TextMuted)
+                        Row(Modifier.padding(start = 14.dp, end = 8.dp, top = 14.dp, bottom = 14.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                                Text("دفتر المواضع · ${hifzCountLabel(points.size)}", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                                // How far the mistakes have come: those held, those still asked at every reminder.
+                                val held = points.count { it.mastered }
+                                val daily = points.count { it.fresh > 0 }
+                                Text(
+                                    listOfNotNull(
+                                        "ثبت منها ${hifzCountLabel(held)}".takeIf { held > 0 },
+                                        "في أسئلتها اليومية ${hifzCountLabel(daily)}".takeIf { daily > 0 },
+                                        "ابحث في مواضعك وافتح تصحيحها",
+                                    ).joinToString(" · "),
+                                    fontSize = 12.sp, color = TextMuted,
+                                )
+                            }
+                            // It opens, as a row in a list does.
+                            Icon(painterResource(R.drawable.ic_adhkar_next), null, Modifier.size(18.dp), tint = GreenPrimaryDark)
                         }
                     }
                 }
@@ -258,7 +283,8 @@ internal fun HifzHomeSheet(
                     )
                     val held = points.count { it.mastered }
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        listOf("اليوم ${dueAll.size}", "الكل ${points.size}", "ثبتت $held").forEachIndexed { index, label ->
+                        // «الآن»: the questions that can be asked now; one due later today is not among them yet.
+                        listOf("الآن ${dueAll.size}", "الكل ${points.size}", "ثبتت $held").forEachIndexed { index, label ->
                             FilterChip(selected = tab == index, onClick = { tab = index }, label = { Text(label) },
                                 colors = FilterChipDefaults.filterChipColors(selectedContainerColor = GreenPrimary, selectedLabelColor = Color.White))
                         }
@@ -290,7 +316,7 @@ internal fun HifzHomeSheet(
                     item {
                         Column(Modifier.padding(top = 4.dp)) {
                             Text("يحتاج عناية", fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzViolet)
-                            Text("أخطاء أو تلميحات متكررة؛ تتراجع الأولوية بعد مراجعتين دون مساعدة", fontSize = 12.sp, color = TextMuted)
+                            Text("أخطاء أو تلميحات متكررة؛ تتراجع الأولوية بعد قراءتين دون مساعدة في يومين", fontSize = 12.sp, color = TextMuted)
                         }
                     }
                     items(care, key = { "care${it.id}" }) { HifzPointRow(catalog, it, today, eligibleDueIds?.contains(it.id) ?: it.isDue(today, now)) { openRow(it) } }
@@ -465,8 +491,8 @@ internal fun HifzSettingsSheet(settings: HifzSettings, onChange: (HifzSettings) 
                 HifzTimesChoice(settings.times) { onChange(settings.copy(times = it)) }
                 Text("يأتي التذكير ${HifzReminder.timesPhrase(settings.times)}", fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.padding(top = 4.dp))
                 Text(
-                    "يسألك عن الموضع الجديد في كل وقت منها حتى تقرأه صحيحًا ${HifzReminder.recallsPhrase(HifzFreshRecalls)}، " +
-                        "ثم عن مراجعاته المتباعدة في أول وقت من يومها. لا يظهر الصواب في الإشعار: تقرأ من حفظك والآية مغطاة.",
+                    "نسألك عن الخطأ الجديد في كل تذكير حتى تُتمّ القراءات دون مساعدة التي تطلبها خطته (${HifzFreshRecalls} لخطأ جديد)، " +
+                        "ثم عن أسئلته المتباعدة في أول تذكير من يومها. لا يظهر الصواب في الإشعار: تقرأ من حفظك والآية مغطاة.",
                     fontSize = 12.sp, color = TextMuted, modifier = Modifier.padding(top = 2.dp, bottom = 4.dp),
                 )
             } else Text(

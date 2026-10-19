@@ -49,6 +49,22 @@ class MethodPresentationTest {
         assertEquals("⁦18° · 17°⁩", MethodPresentation.parameters(PrayerMethods.MWL))
         assertEquals("⁦−3⁩", MethodPresentation.signedMinutes(-3))
         assertEquals("⁦+5⁩", MethodPresentation.signedMinutes(5))
+        // Shown in the Arabic sheet: minutes keep their order (2026-10-19, ECFR's showed «90 د 90 · د»).
+        assertEquals("18° · 17°", shownInArabic(MethodPresentation.parameters(PrayerMethods.MWL)))
+        assertEquals("90 د · 90 د", shownInArabic(MethodPresentation.parameters(method("ecfr_90"))))
+        assertEquals("18° · 87 د", shownInArabic(MethodPresentation.parameters(method("gmp"))))
+    }
+
+    /** [text] as an RTL line displays it, left to right, by the Unicode bidi algorithm; the isolate marks dropped. */
+    private fun shownInArabic(text: String): String {
+        val bidi = java.text.Bidi(text, java.text.Bidi.DIRECTION_RIGHT_TO_LEFT)
+        val levels = ByteArray(bidi.runCount) { bidi.getRunLevel(it).toByte() }
+        val runs = Array<Any>(bidi.runCount) {
+            val run = text.substring(bidi.getRunStart(it), bidi.getRunLimit(it))
+            if (levels[it] % 2 == 1) run.reversed() else run
+        }
+        java.text.Bidi.reorderVisually(levels, 0, runs, 0, runs.size)
+        return runs.joinToString("").filterNot { it in "⁦⁧⁨⁩" }
     }
 
     @Test

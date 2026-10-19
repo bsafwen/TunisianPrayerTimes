@@ -1,19 +1,16 @@
 package com.tunisianprayertimes
 
 import android.content.Context
-import android.content.pm.ApplicationInfo
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.engine.TimeEvent
 import com.tunisianprayertimes.method.PrayerMethodChoice
 import com.tunisianprayertimes.place.LatLngE5
 import com.tunisianprayertimes.place.PrayerPlace
-import com.tunisianprayertimes.place.Region
 import com.tunisianprayertimes.place.ZoneSource
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.chrono.HijrahDate
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -23,7 +20,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
-/** The place model, the per-country choice and Jumu'a time, the region switches and 6.10's Ramadan order. */
+/** The place model, the per-country choice and Jumu'a time, and 6.10's Ramadan order. */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [26])
 class PlacePrefsTest {
@@ -69,30 +66,6 @@ class PlacePrefsTest {
         assertNull(PrefsManager.getJumuaTime(context, riyadh))
     }
 
-    @Test
-    fun regionsOpenInDevelopmentBuildsAndWaitForM9InARelease() {
-        val flags = context.applicationInfo.flags
-        try {
-            // A development build opens both regions (AM9, M9's device checks); the debug switches still close one.
-            context.applicationInfo.flags = flags or ApplicationInfo.FLAG_DEBUGGABLE
-            assertTrue(PrefsManager.isRegionOpen(context, Region.TUNISIA))
-            assertTrue(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
-            assertTrue(PrefsManager.isRegionOpen(context, Region.EUROPE))
-            PrefsManager.setRegionOpen(context, europe = false)
-            assertTrue(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
-            assertFalse(PrefsManager.isRegionOpen(context, Region.EUROPE))
-            // A release build keeps them as REGIONS_OPEN_IN_RELEASE says until the release with both regions (M9).
-            context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE).edit().clear().commit()
-            context.applicationInfo.flags = flags and ApplicationInfo.FLAG_DEBUGGABLE.inv()
-            assertTrue(PrefsManager.isRegionOpen(context, Region.TUNISIA))
-            assertEquals(PrefsManager.REGIONS_OPEN_IN_RELEASE, PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
-            assertEquals(PrefsManager.REGIONS_OPEN_IN_RELEASE, PrefsManager.isRegionOpen(context, Region.EUROPE))
-            PrefsManager.setRegionOpen(context, arabLeague = true)
-            assertTrue(PrefsManager.isRegionOpen(context, Region.ARAB_LEAGUE))
-        } finally {
-            context.applicationInfo.flags = flags
-        }
-    }
 
     @Test
     fun theRamadanBumpIsTunisianAndItsRestoreIsEverywhere() {

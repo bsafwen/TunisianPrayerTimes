@@ -335,14 +335,16 @@ internal fun quranPointsLabel(count: Int): String = when {
     else -> "$count موضعا"
 }
 
-/** The small dashed violet square that stands for hifz points. */
+/** The small violet mark that stands for hifz points, as the page marks them: a light tint, underlined. */
 @Composable
 internal fun QuranHifzSquare(size: androidx.compose.ui.unit.Dp = 14.dp) {
     androidx.compose.foundation.Canvas(Modifier.size(size)) {
-        drawRoundRect(QuranHifzViolet.copy(alpha = 0.16f), cornerRadius = androidx.compose.ui.geometry.CornerRadius(3.dp.toPx()))
-        drawRoundRect(
-            QuranHifzViolet, cornerRadius = androidx.compose.ui.geometry.CornerRadius(3.dp.toPx()),
-            style = androidx.compose.ui.graphics.drawscope.Stroke(1.5.dp.toPx(), pathEffect = androidx.compose.ui.graphics.PathEffect.dashPathEffect(floatArrayOf(3.dp.toPx(), 2.dp.toPx()))),
+        drawRoundRect(QuranHifzViolet.copy(alpha = 0.2f), cornerRadius = androidx.compose.ui.geometry.CornerRadius(3.dp.toPx()))
+        val stroke = 2.dp.toPx()
+        val y = this.size.height - stroke / 2f
+        drawLine(
+            QuranHifzViolet, androidx.compose.ui.geometry.Offset(stroke / 2f, y), androidx.compose.ui.geometry.Offset(this.size.width - stroke / 2f, y),
+            stroke, cap = androidx.compose.ui.graphics.StrokeCap.Round,
         )
     }
 }
