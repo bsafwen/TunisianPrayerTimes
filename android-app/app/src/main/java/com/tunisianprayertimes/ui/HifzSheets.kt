@@ -557,9 +557,14 @@ internal fun HifzRecordSheet(
     // Asked once a day and already asked today, a slip counted again starts tomorrow, as record() saves it.
     val tomorrow = daily && again?.checks?.any { it.day == todayEpochDay() } == true
     LaunchedEffect(recalls, times, tomorrow, again?.id) {
-        if (editing == null) plan = withContext(Dispatchers.IO) {
-            // Asked once a day: not on a prayer day a reminder already asked it.
-            HifzReminder.freshSentence(context, recalls, times, tomorrow = tomorrow, askedDay = again?.let { HifzReminder.dailyAskedDay(context, it.id) })
+        // Again every minute while the sheet is open: a prayer that begins, or a reminder now less than 45 minutes off,
+        // changes when a slip saved now is first asked.
+        while (editing == null) {
+            plan = withContext(Dispatchers.IO) {
+                // Asked once a day: not on a prayer day a reminder already asked it.
+                HifzReminder.freshSentence(context, recalls, times, tomorrow = tomorrow, askedDay = again?.let { HifzReminder.dailyAskedDay(context, it.id) })
+            }
+            delay(60_000L)
         }
     }
     // Where the recitation probably left the verse, from the look-alike: offered, never saved unless the reader picks it.
@@ -1580,6 +1585,16 @@ private fun HifzTimesEditor(times: HifzTimes, onChange: (HifzTimes) -> Unit) {
                 modifier = Modifier.testTag("hifz_times_add_time"),
             )
         }
+        // A time that falls in a prayer today: its reminder waits for the prayer's end, as it is told here.
+        val inPrayer by produceState(emptyList<Pair<Int, Prayer>>(), times.minutes) {
+            value = withContext(Dispatchers.IO) { times.minutes.sorted().mapNotNull { m -> HifzReminder.prayerAt(m)?.let { m to it } } }
+        }
+        inPrayer.forEach { (minute, prayer) ->
+            Text(
+                "الساعة$NB${HifzReminder.clock(minute)} اليوم في وقت ${HifzReminder.prayerPhrase(prayer, todayEpochDay())}، فنذكّرك بعدها.",
+                fontSize = 12.sp, color = TextMuted, modifier = Modifier.testTag("hifz_times_in_prayer_$minute"),
+            )
+        }
     }
     picking?.let { changing ->
         HifzTimeDialog(
@@ -1753,7 +1768,7 @@ internal fun HifzHowItWorksDialog(onDismiss: () -> Unit) {
                 )
                 part(
                     "التذكير",
-                    "بعد كل صلاة، أو في الأوقات التي تختارها في الإعدادات، يصلك إشعار حين يكون لديك ما تراجعه، فيه أسئلة مواضعك دون أجوبتها. اضغط «ابدأ المراجعة» لتقرأها من حفظك والآية مغطاة في المصحف.",
+                    "بعد كل صلاة، أو في الأوقات التي تختارها في الإعدادات، يصلك إشعار حين يكون لديك ما تراجعه، فيه أسئلة مواضعك دون أجوبتها. اضغط «ابدأ المراجعة» لتقرأها من حفظك والآية مغطاة في المصحف. ولا يصلك في وقت الصلاة: إن وافق وقتُه صلاةً، يصلك بعدها.",
                     "إذا أخطأت في آية، أو نسيتها حين سألناك عنها، نذكّرك بها إلى أن تتذكّرها 3 مرات دون مساعدة، أو العدد الذي تختاره. بعد ذلك نذكّرك بها بعد يوم، ثم بعد 3 أيام، ثم بعد أسبوع، ثم بعد أسبوعين.",
                     "نقترح لكل خطأ عددًا: 3 مرات لخطأ جديد، و4 إذا عاد، و5 إذا تكرّر كثيرًا، ومرتين لآية كنت تحفظها جيدًا. ومن «تغيير التذكير» تختار لكل خطأ متى نذكّرك به (بعد كل صلاة، أو بعد صلوات تختارها، أو في ساعات تحددها)، وكم مرة: مرة واحدة أو 5 مرات.",
                     "النقاط بجانب كل موضع في دفترك تُظهر تقدّمه: البنفسجية للمرات التي تذكّرته فيها دون مساعدة، ثم الخضراء لأسئلته اللاحقة حتى يثبت.",
@@ -1765,7 +1780,7 @@ internal fun HifzHowItWorksDialog(onDismiss: () -> Unit) {
                     "• «بتردد أو تلميح»: تذكّرتها بعد تردد أو بمساعدة، فلا تُحسب. نذكّرك بها في تذكير لاحق، أو بعد يومين إن كانت التذكيرات قد قلّت.",
                     "• «نسيت أو أخطأت»: يُسجّل الخطأ، ونذكّرك بها من جديد إلى أن تتذكّرها دون مساعدة، ويزيد العدد إن عاد الخطأ.",
                     "إذا استعنت بتلميح أو كشفت جزءًا من الآية، اختر «تذكّرتها بالمساعدة» أو «لم أتذكّرها».",
-                    "لا نسألك عن آية رأيتها قبل قليل: بعد الخطأ نسألك عنها بعد ${HifzFreshGapMs / 60_000L}${NB}دقيقة على الأقل من آخر مرة رأيت فيها الصواب، وبعد ذلك لا نسألك عنها قبل اليوم التالي. كل سؤال يُطرح عليك يُحسب.",
+                    "لا نسألك عن آية رأيتها قبل قليل: إن كنت أخطأت فيها حديثًا، لا نسألك عنها قبل أن تمرّ ${HifzFreshGapMs / 60_000L}${NB}دقيقة على آخر مرة رأيت فيها الصواب، أو تنتهي الصلاة التالية، أيّهما أقرب؛ وإن كانت أسئلتها قد قلّت، لا نسألك عنها قبل اليوم التالي. كل سؤال يُطرح عليك يُحسب.",
                     "بعد التردد أو الخطأ، استمع إليها وكرّرها؛ ثم نسألك عنها في موعدها والآية مغطاة.",
                     "إذا تذكّرتها دون مساعدة في هذه الأسئلة كلها صارت «ثبتت»، وتعود بعد شهر ثم كل شهرين للتأكد.",
                     "«يحتاج عناية» يعتمد على الصعوبات الحديثة، ويزول حين تتذكّرها دون مساعدة في يومين بعد آخر خطأ.",

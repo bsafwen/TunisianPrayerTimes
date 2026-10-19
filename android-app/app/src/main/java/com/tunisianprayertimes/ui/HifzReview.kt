@@ -62,6 +62,7 @@ import com.tunisianprayertimes.quran.hifz.HifzFix
 import com.tunisianprayertimes.quran.hifz.decodeHifzChecks
 import com.tunisianprayertimes.quran.hifz.encodeHifzChecks
 import com.tunisianprayertimes.quran.hifz.hifzFix
+import com.tunisianprayertimes.quran.hifz.hifzWaitEnd
 import com.tunisianprayertimes.quran.hifz.hifzWords
 import com.tunisianprayertimes.quran.hifz.holdsNext
 import com.tunisianprayertimes.quran.hifz.recallsAfterAgain
@@ -330,11 +331,11 @@ internal class HifzReviewState private constructor(
     }
 
     /**
-     * Its answer was looked at a moment ago, so a recall now would be none: a fresh point within [HifzFreshGapMs] of
-     * its verse last seen, a spaced check whose verse was seen today.
+     * Its answer was looked at a moment ago, so a recall now would be none: a fresh point whose wait from its verse last
+     * seen is not over ([hifzWaitEnd]), a spaced check whose verse was seen today.
      */
     private fun spoiled(point: HifzPoint): Boolean =
-        if (point.fresh > 0) seenAt[point.verse]?.let { wallClock() - it < HifzFreshGapMs } == true else point.verse in exposedVerses
+        if (point.fresh > 0) seenAt[point.verse]?.let { wallClock() < hifzWaitEnd(it) } == true else point.verse in exposedVerses
 
     /** The card at [from] in [queue], or the first after it still to ask; those passed wait for the next reminder. */
     private fun moveTo(queue: List<HifzPoint>, from: Int) {

@@ -569,7 +569,11 @@ private fun QuranReader(
     val reviewRevealed = reviewState.revealed(reviewPoint)
     /** «اليوم بعد المغرب»: when a fresh point answered now is asked again, said on the review's answers, for each card. */
     val freshAgain by produceState("في تذكير لاحق", hifzSettings, today, reviewPoint?.id, reviewRevealed) {
-        value = withContext(Dispatchers.IO) { HifzReminder.freshAgainLabel(context, point = reviewPoint) }
+        // Again every minute while shown: a prayer that begins, or a reminder now less than 45 minutes off, changes it.
+        while (true) {
+            value = withContext(Dispatchers.IO) { HifzReminder.freshAgainLabel(context, point = reviewPoint) }
+            delay(60_000L)
+        }
     }
     val reviewPages = remember(catalog, reviewVerse) { reviewVerse?.let { catalog?.pagesForVerse(it.surah, it.ayah) }.orEmpty() }
     /** The verses of the points still to come in this review: covered wherever they are, so none is seen before it is asked. */

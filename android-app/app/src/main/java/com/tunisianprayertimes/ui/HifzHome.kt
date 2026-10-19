@@ -42,6 +42,8 @@ import com.tunisianprayertimes.quran.hifz.HifzRoundSize
 import com.tunisianprayertimes.quran.hifz.HifzSettings
 import com.tunisianprayertimes.quran.hifz.dueToday
 import com.tunisianprayertimes.ui.theme.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /** What «المراجعة» can ask of the reader. */
 internal interface HifzHomeActions {
@@ -233,7 +235,7 @@ internal fun HifzHomeSheet(
                                 Text("ابدأ من أخطائك", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                                 // When the questions come, as the settings say: with the reminder off, they wait in «مراجعة اليوم».
                                 val asked = if (settings.reminder) "نسألك عنها ${HifzReminder.timesPhrase(settings.times)}"
-                                    else "تجدها في «مراجعة اليوم» بعد ${HifzFreshGapMs / 60_000L}${NB}دقيقة"
+                                    else "تجدها في «مراجعة اليوم» بعد ${HifzFreshGapMs / 60_000L}${NB}دقيقة أو بعد الصلاة التالية، أيّهما أقرب"
                                 Text(
                                     "إذا أخطأت وأنت تقرأ، اضغط على الآية ثم «أخطأت». $asked، والآية مغطاة، إلى أن تتذكّرها ${HifzReminder.recallsPhrase(HifzFreshRecalls)} دون مساعدة.",
                                     fontSize = 13.sp, color = TextMuted,
@@ -385,12 +387,16 @@ internal fun HifzSpoilDialog(
     onOpen: () -> Unit,
     onDismiss: () -> Unit,
 ) {
+    // «قبل 45 دقيقة» until the prayers are read, off the main thread: «إلا بعد صلاة العصر» when that one is over first.
+    val wait by produceState("قبل ${HifzFreshGapMs / 60_000L}${NB}دقيقة", point.id) {
+        value = withContext(Dispatchers.IO) { HifzReminder.waitClause(System.currentTimeMillis()) }
+    }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("حان سؤال ${hifzVerseName(catalog, point.verse)}") },
         text = {
             Text(
-                if (point.fresh > 0) "إن رأيت تصحيحها الآن، لا نسألك عنها قبل ${HifzFreshGapMs / 60_000L}${NB}دقيقة."
+                if (point.fresh > 0) "إن رأيت تصحيحها الآن، لا نسألك عنها $wait."
                 else "إن رأيت تصحيحها الآن، نسألك عنها غدًا.",
             )
         },

@@ -32,6 +32,8 @@ class TunisianPrayerTimesApplication : Application() {
         AnalyticsTracker.applyRegionalCollection(this)
         SilenceController.init(this)
         TimerScheduler.init(this)
+        // The reminders of «المراجعة» keep clear of the prayers, and a prayer ends a fresh point's wait.
+        com.tunisianprayertimes.quran.hifz.HifzReminder.installPrayerSpans(this)
         refreshDhikrReminders()
         restoreManualSilenceTimer()
         dhikrLocationSubscription = PrefsManager.observeLocationSelection(this) { refreshDhikrReminders() }

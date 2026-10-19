@@ -113,6 +113,8 @@ import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
@@ -245,12 +247,13 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-private enum class MainDestination(val labelRes: Int, val iconRes: Int) {
-    Today(R.string.main_tab_today, R.drawable.ic_tab_today),
-    Alarms(R.string.main_tab_alarms, R.drawable.ic_tab_alarms),
-    Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla),
-    Adhkar(R.string.adhkar_title, R.drawable.ic_tab_adhkar),
-    Quran(R.string.main_tab_quran, R.drawable.ic_tab_quran),
+/** Each tab shows its outline icon, and its filled one in the pill while selected. */
+private enum class MainDestination(val labelRes: Int, val iconRes: Int, val selectedIconRes: Int) {
+    Today(R.string.main_tab_today, R.drawable.ic_tab_prayer, R.drawable.ic_tab_prayer_filled),
+    Alarms(R.string.main_tab_alarms, R.drawable.ic_tab_alarms_outline, R.drawable.ic_tab_alarms_filled),
+    Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla, R.drawable.ic_tab_qibla_filled),
+    Adhkar(R.string.adhkar_title, R.drawable.ic_tab_adhkar, R.drawable.ic_tab_adhkar),
+    Quran(R.string.main_tab_quran, R.drawable.ic_tab_quran, R.drawable.ic_tab_quran_filled),
 }
 
 private enum class WakeQuickPreset {
@@ -275,14 +278,18 @@ private const val DEFAULT_FIXED_ALARM_MINUTE = 0
 private val MainContentBottomPadding = 76.dp
 private val BottomNavigationMinHeight = 64.dp
 private val BottomNavigationVerticalPadding = 6.dp
-private val BottomNavigationItemFixedHeight = 29.dp
+private val BottomNavigationPillWidth = 56.dp
+private val BottomNavigationPillHeight = 30.dp
+private val BottomNavigationLabelGap = 3.dp
+private val BottomNavigationItemFixedHeight = BottomNavigationPillHeight + BottomNavigationLabelGap
+private val BottomNavigationLabelSize = 12.sp
 
 /** The bottom bar's row, above the system's bar: labels that wrap grow it rather than be cut by a fixed 64dp row. */
 @Composable
 private fun bottomNavigationRowHeight(labels: List<String>, widthPx: Float): androidx.compose.ui.unit.Dp {
     val textMeasurer = rememberTextMeasurer()
     val density = LocalDensity.current
-    val labelStyle = LocalTextStyle.current.merge(TextStyle(fontSize = 11.sp, fontWeight = FontWeight.Bold))
+    val labelStyle = LocalTextStyle.current.merge(TextStyle(fontSize = BottomNavigationLabelSize, fontWeight = FontWeight.Bold))
     val itemWidthPx = (widthPx - with(density) { 16.dp.toPx() }) / labels.size
     val labelWidthPx = (itemWidthPx - with(density) { 12.dp.toPx() }).coerceAtLeast(1f)
     val labelHeightPx = labels.maxOf { label ->
@@ -1197,9 +1204,13 @@ fun MainScreen(
                     bottomNavigationOccupiedPx = size.height + with(density) {
                         (MainContentBottomPadding - BottomNavigationMinHeight).roundToPx()
                     }
+                }
+                // A hairline over the bar's top edge, drawn so it adds nothing to the measured height.
+                .drawWithContent {
+                    drawContent()
+                    drawLine(CardBorder, Offset.Zero, Offset(size.width, 0f), strokeWidth = 1.dp.toPx())
                 },
             color = Color.White,
-            tonalElevation = 8.dp
         ) {
             Column(
                 modifier = Modifier
@@ -1222,9 +1233,9 @@ fun MainScreen(
                         mainDestinations.forEachIndexed { index, destination ->
                             val selected = currentDestinationIndex == index
                             val label = stringResource(destination.labelRes)
-                            val tabIndicatorColor by animateColorAsState(
-                                targetValue = if (selected) GreenPrimary else Color.Transparent,
-                                label = "bottomTabIndicator"
+                            val tabPillColor by animateColorAsState(
+                                targetValue = if (selected) NextPrayerBg else Color.Transparent,
+                                label = "bottomTabPill"
                             )
                             val tabContentColor by animateColorAsState(
                                 targetValue = if (selected) GreenPrimaryDark else TextMuted,
@@ -1247,40 +1258,40 @@ fun MainScreen(
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .width(26.dp)
-                                        .height(3.dp)
-                                        .clip(RoundedCornerShape(2.dp))
-                                        .background(tabIndicatorColor)
-                                )
-
-                                Spacer(Modifier.height(5.dp))
-
-                                Box {
-                                    Icon(
-                                        painter = painterResource(destination.iconRes),
-                                        contentDescription = label,
-                                        tint = tabContentColor,
-                                        modifier = Modifier.size(18.dp)
-                                    )
-                                    // A recitation plays on while another tab is open.
-                                    if (destination == MainDestination.Quran && !selected && quranPlayback.playing) {
-                                        Box(
-                                            Modifier
-                                                .align(Alignment.TopEnd)
-                                                .offset(x = 3.dp, y = (-2).dp)
-                                                .size(6.dp)
-                                                .clip(CircleShape)
-                                                .background(GreenPrimary)
-                                                .testTag("quran_tab_playing")
+                                        .size(BottomNavigationPillWidth, BottomNavigationPillHeight)
+                                        .clip(CircleShape)
+                                        .background(tabPillColor),
+                                    contentAlignment = Alignment.Center,
+                                ) {
+                                    Box {
+                                        Icon(
+                                            painter = painterResource(
+                                                if (selected) destination.selectedIconRes else destination.iconRes
+                                            ),
+                                            contentDescription = label,
+                                            tint = tabContentColor,
+                                            modifier = Modifier.size(24.dp)
                                         )
+                                        // A recitation plays on while another tab is open.
+                                        if (destination == MainDestination.Quran && !selected && quranPlayback.playing) {
+                                            Box(
+                                                Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .offset(x = 3.dp, y = (-2).dp)
+                                                    .size(7.dp)
+                                                    .clip(CircleShape)
+                                                    .background(GreenPrimary)
+                                                    .testTag("quran_tab_playing")
+                                            )
+                                        }
                                     }
                                 }
 
-                                Spacer(Modifier.height(3.dp))
+                                Spacer(Modifier.height(BottomNavigationLabelGap))
 
                                 Text(
                                     text = label,
-                                    fontSize = 11.sp,
+                                    fontSize = BottomNavigationLabelSize,
                                     fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
                                     color = tabContentColor,
                                     textAlign = TextAlign.Center,

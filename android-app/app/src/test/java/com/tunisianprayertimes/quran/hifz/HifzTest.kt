@@ -737,6 +737,183 @@ class HifzTest {
         prefs.edit().clear().commit()
     }
 
+    /** Fixed prayers for [block], then none again. */
+    private fun withPrayers(vararg spans: HifzPrayerSpan, block: () -> Unit) {
+        HifzPrayerSpans.around = { spans.toList() }
+        try {
+            block()
+        } finally {
+            HifzPrayerSpans.around = { emptyList() }
+        }
+    }
+
+    @Test
+    fun aPrayerInBetween_endsTheWait_butNotOneAlreadyBegun() {
+        val min = 60_000L
+        // Dhuhr from 13:00 to its reminder at 13:32, as minutes from the epoch's midnight.
+        val dhuhr = HifzPrayerSpan(Prayer.DHUHR, 780 * min, 812 * min)
+        withPrayers(dhuhr) {
+            // Recorded at 12:50, before it began: asked once it is over, not 3 minutes after its reminder.
+            assertEquals(812 * min, hifzWaitEnd(770 * min))
+            assertEquals(dhuhr, hifzWaitPrayer(770 * min))
+            // Recorded once it had begun: the whole wait.
+            assertEquals(785 * min + HifzFreshGapMs, hifzWaitEnd(785 * min))
+            // Recorded long before: the wait is over first.
+            assertEquals(700 * min + HifzFreshGapMs, hifzWaitEnd(700 * min))
+            assertNull(hifzWaitPrayer(700 * min))
+            // A fresh point follows it, its answer seen last as well.
+            val slip = point(HifzKind.Word, verse(2, 3), due = 0L).copy(fresh = 3, lastSlipAt = 770 * min)
+            assertEquals(812 * min, slip.freshDueAt)
+            assertFalse(slip.isDue(0L, 811 * min))
+            assertTrue(slip.isDue(0L, 812 * min))
+            assertEquals(790 * min + HifzFreshGapMs, slip.freshDueAt(790 * min))
+            // The reminder after that prayer asks it: Dhuhr's, not Asr's.
+            val slotAt = { _: Long, time: HifzWhen -> if (time == HifzWhen.After(Prayer.DHUHR)) 812 * min else 1000 * min }
+            val times = HifzTimes(prayers = setOf(Prayer.DHUHR, Prayer.ASR))
+            assertEquals(812 * min, listOf(slip).nextReminder(times, 0L, 771 * min, -1L, slotAt = slotAt)!!.at)
+        }
+    }
+
+    @Test
+    fun noReminderComesDuringAPrayer() {
+        val min = 60_000L
+        // Far north, Maghrib's span ends in Isha's.
+        withPrayers(HifzPrayerSpan(Prayer.MAGHRIB, 1100 * min, 1130 * min), HifzPrayerSpan(Prayer.ISHA, 1125 * min, 1160 * min)) {
+            assertEquals(1000 * min, hifzOutsidePrayers(1000 * min))
+            assertEquals(1160 * min, hifzOutsidePrayers(1110 * min))
+            // At a span's end, it is over.
+            assertEquals(1160 * min, hifzOutsidePrayers(1160 * min))
+        }
+    }
+
+    @Test
+    fun aClockTimeInAPrayer_comesAfterIt_andIsSaidSo() {
+        val context = org.robolectric.RuntimeEnvironment.getApplication()
+        val prefs = context.getSharedPreferences("quran_hifz", android.content.Context.MODE_PRIVATE)
+        prefs.edit().clear().commit()
+        val zone = java.time.ZoneId.systemDefault()
+        fun at(d: Long, minute: Int) = java.time.LocalDate.ofEpochDay(d).atTime(minute / 60, minute % 60).atZone(zone).toInstant().toEpochMilli()
+        // 5 October 2024, a Saturday.
+        val day = 20_001L
+        HifzSettings.write(context, HifzSettings(times = HifzTimes(minutes = setOf(790, 900))))
+        withPrayers(HifzPrayerSpan(Prayer.DHUHR, at(day, 780), at(day, 812))) {
+            // 13:10 falls in Dhuhr: it comes at 13:32, said «بعد الظهر».
+            assertEquals(at(day, 812), HifzReminder.slotAt(context, day, HifzWhen.At(790)))
+            val slot = HifzSlot(day, HifzWhen.At(790), at(day, 812))
+            assertEquals(Prayer.DHUHR, HifzReminder.heldAfter(slot))
+            assertEquals("اليوم بعد الظهر", HifzReminder.slotLabel(slot, day))
+            // 15:00 is its own.
+            assertEquals("اليوم الساعة${HifzReminder.NB}15:00", HifzReminder.slotLabel(HifzSlot(day, HifzWhen.At(900), at(day, 900)), day))
+            // A slip at 12:30 is asked at the moved 13:10, once Dhuhr is over.
+            val slip = point(HifzKind.Word, verse(2, 3), due = day).copy(fresh = 3, lastSlipAt = at(day, 750))
+            assertEquals(at(day, 812), HifzReminder.nextAsk(context, slip, null, at(day, 750))!!.at)
+            // Its answer seen now: not before 45 minutes, or not before that prayer is over.
+            assertEquals("إلا بعد صلاة الظهر", HifzReminder.waitClause(at(day, 770)))
+            assertEquals("قبل 45${HifzReminder.NB}دقيقة", HifzReminder.waitClause(at(day, 900)))
+            assertEquals("بعد صلاة الظهر", HifzReminder.waitPhrase(at(day, 770)))
+            assertEquals("بعد 45${HifzReminder.NB}دقيقة", HifzReminder.waitPhrase(at(day, 900)))
+        }
+        prefs.edit().clear().commit()
+    }
+
+    @Test
+    fun remindersThatComeTogether_ringOnceForAll() {
+        val context = org.robolectric.RuntimeEnvironment.getApplication()
+        val zone = java.time.ZoneId.systemDefault()
+        fun at(d: Long, minute: Int) = java.time.LocalDate.ofEpochDay(d).atTime(minute / 60, minute % 60).atZone(zone).toInstant().toEpochMilli()
+        val day = 20_001L
+        // The settings' 13:32, and a slip's own 13:10, which Dhuhr moves to 13:32 too.
+        val settings = HifzSettings(times = HifzTimes(minutes = setOf(812)))
+        val own = point(HifzKind.Word, verse(2, 3), due = day).copy(fresh = 3, times = HifzTimes(minutes = setOf(790)))
+        withPrayers(HifzPrayerSpan(Prayer.DHUHR, at(day, 780), at(day, 812))) {
+            assertEquals(mapOf(day to setOf(HifzWhen.At(790), HifzWhen.At(812))), HifzReminder.timesComing(context, settings, listOf(own), day, HifzWhen.At(790), at(day, 812), at(day, 812)))
+            assertEquals(mapOf(day to setOf(HifzWhen.At(812), HifzWhen.At(790))), HifzReminder.timesComing(context, settings, listOf(own), day, HifzWhen.At(812), at(day, 812), at(day, 812)))
+            // An alarm held from 12:15 to Dhuhr's end takes in what comes on the way.
+            val early = point(HifzKind.Word, verse(2, 4), due = day).copy(fresh = 3, times = HifzTimes(minutes = setOf(735)))
+            assertEquals(mapOf(day to setOf(HifzWhen.At(735), HifzWhen.At(790), HifzWhen.At(812))), HifzReminder.timesComing(context, settings, listOf(own, early), day, HifzWhen.At(735), at(day, 735), at(day, 812)))
+            // Alone, it is alone.
+            assertEquals(mapOf(day to setOf(HifzWhen.At(735))), HifzReminder.timesComing(context, settings, listOf(own, early), day, HifzWhen.At(735), at(day, 735), at(day, 736)))
+        }
+        // Across midnight: Isha of the day ends at 00:32, where the next day's 00:20 waits too.
+        val late = HifzSettings(times = HifzTimes(minutes = setOf(20)))
+        withPrayers(HifzPrayerSpan(Prayer.ISHA, at(day, 23 * 60 + 50), at(day + 1, 32))) {
+            assertEquals(at(day + 1, 32), HifzReminder.slotAt(context, day + 1, HifzWhen.At(20)))
+            val slip = point(HifzKind.Word, verse(2, 5), due = day).copy(fresh = 3, times = HifzTimes(minutes = setOf(23 * 60 + 55)))
+            assertEquals(
+                mapOf(day to setOf(HifzWhen.At(23 * 60 + 55)), day + 1 to setOf(HifzWhen.At(20))),
+                HifzReminder.timesComing(context, late, listOf(slip), day, HifzWhen.At(23 * 60 + 55), at(day + 1, 32), at(day + 1, 32)),
+            )
+        }
+    }
+
+    @Test
+    fun aReminderDeliveredTwice_ringsOnce() {
+        val app = org.robolectric.RuntimeEnvironment.getApplication()
+        org.robolectric.Shadows.shadowOf(app).grantPermissions(android.Manifest.permission.POST_NOTIFICATIONS)
+        val prefs = app.getSharedPreferences("quran_hifz", android.content.Context.MODE_PRIVATE)
+        prefs.edit().clear().commit()
+        val clock = java.time.ZonedDateTime.now()
+        val day = clock.toLocalDate().toEpochDay()
+        val minute = clock.hour * 60 + clock.minute
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(minute))))
+        // Asked at every reminder, its slip two hours ago: due at this minute's reminder.
+        val slip = point(HifzKind.Word, verse(2, 3), due = day)
+            .copy(id = 424_242L, fresh = 3, createdAt = System.currentTimeMillis() - 2 * 60 * 60_000L, lastSlipAt = System.currentTimeMillis() - 2 * 60 * 60_000L)
+        HifzRepository.restore(app, slip)
+        val shade = org.robolectric.Shadows.shadowOf(app.getSystemService(android.app.NotificationManager::class.java))
+        try {
+            HifzReminder.deliver(app, day, HifzWhen.At(minute))
+            assertEquals(1, shade.allNotifications.size)
+            // Opened, it goes; then the same alarm again, armed by a refresh that ran before it was shown, as the
+            // app's start does when that alarm wakes it: it rings no second time.
+            HifzReminder.clearReminder(app)
+            HifzReminder.deliver(app, day, HifzWhen.At(minute))
+            assertEquals(0, shade.allNotifications.size)
+        } finally {
+            HifzRepository.delete(app, slip.id)
+            HifzReminder.clearReminder(app)
+            prefs.edit().clear().commit()
+        }
+    }
+
+    @Test
+    fun theAppsStart_whileItsAlarmDelivers_ringsOnce() {
+        val app = org.robolectric.RuntimeEnvironment.getApplication()
+        org.robolectric.Shadows.shadowOf(app).grantPermissions(android.Manifest.permission.POST_NOTIFICATIONS)
+        val prefs = app.getSharedPreferences("quran_hifz", android.content.Context.MODE_PRIVATE)
+        prefs.edit().clear().commit()
+        // A reminder two minutes ago, its alarm still to come.
+        val clock = java.time.ZonedDateTime.now().minusMinutes(2)
+        val day = clock.toLocalDate().toEpochDay()
+        val minute = clock.hour * 60 + clock.minute
+        val at = HifzReminder.slotAt(app, day, HifzWhen.At(minute))!!
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(minute))))
+        val slip = point(HifzKind.Word, verse(2, 3), due = day)
+            .copy(id = 434_343L, fresh = 3, createdAt = at - 2 * 60 * 60_000L, lastSlipAt = at - 2 * 60 * 60_000L)
+        HifzRepository.restore(app, slip)
+        prefs.edit().putString("armed", "$day|at$minute|$at").putLong("shown_at", at - 60 * 60_000L).commit()
+        val shade = org.robolectric.Shadows.shadowOf(app.getSystemService(android.app.NotificationManager::class.java))
+        val alarms = org.robolectric.Shadows.shadowOf(app.getSystemService(android.app.AlarmManager::class.java))
+        try {
+            // The app's start refreshes first: the reminder is owed, armed again for now.
+            HifzReminder.refresh(app)
+            assertTrue(prefs.getString("armed", null)!!.startsWith("$day|at$minute|"))
+            @Suppress("DEPRECATION")
+            assertTrue(alarms.peekNextScheduledAlarm()!!.triggerAtTime <= System.currentTimeMillis() + 5_000L)
+            // Its first alarm delivers it; the one the refresh armed comes after, and rings nothing.
+            HifzReminder.deliver(app, day, HifzWhen.At(minute))
+            assertEquals(1, shade.allNotifications.size)
+            HifzReminder.clearReminder(app)
+            HifzReminder.deliver(app, day, HifzWhen.At(minute))
+            assertEquals(0, shade.allNotifications.size)
+            assertFalse(prefs.getString("armed", null).orEmpty().startsWith("$day|at$minute|"))
+        } finally {
+            HifzRepository.delete(app, slip.id)
+            HifzReminder.clearReminder(app)
+            prefs.edit().clear().commit()
+        }
+    }
+
     @Test
     fun notebook_survivesItsFile() {
         val original = listOf(

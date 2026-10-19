@@ -151,9 +151,48 @@ enum class HifzPace(val key: String) {
 }
 /**
  * The least time between a fresh point's slip or answer and its next question: long enough that the answer is
- * recalled, not still in mind. Shorter than the time between Maghrib and Isha, so that one comes after the other.
+ * recalled, not still in mind. A prayer prayed in between is enough too: see [hifzWaitEnd].
  */
 const val HifzFreshGapMs = 45 * 60_000L
+
+/**
+ * A prayer, as the reminder of «المراجعة» keeps clear of it: from its adhan, or the start of its silence when that comes
+ * first, to [end] (exclusive), when the reminder after it comes. The silence as the reader set it, also for a prayer
+ * the app does not silence. A Friday's Dhuhr is the Jumu'a.
+ */
+data class HifzPrayerSpan(val prayer: Prayer, val start: Long, val end: Long)
+
+/** The reader's prayers, for the reminder's times and a fresh point's wait; none until the app gives them, as in tests. */
+object HifzPrayerSpans {
+    /** The prayers of the prayer days around [at], from the day before to the day after. */
+    @Volatile var around: (at: Long) -> List<HifzPrayerSpan> = { emptyList() }
+    /** The prayers that may end a wait from [from]: [around], unless the app knows that wait is over anyway. */
+    @Volatile var forWait: (from: Long) -> List<HifzPrayerSpan> = { around(it) }
+}
+
+/**
+ * When a fresh point whose answer was last in mind at [from] may be asked: [HifzFreshGapMs] later, or once a prayer
+ * that began after [from] is over, when that comes first. A prayer in between takes the answer out of mind as the wait
+ * does, and a strict wait would pass over that prayer's reminder for the next one, hours later.
+ */
+fun hifzWaitEnd(from: Long): Long = hifzWaitPrayer(from)?.end ?: (from + HifzFreshGapMs)
+
+/** The prayer that ends the wait from [from] before [HifzFreshGapMs] is up; null when none does. See [hifzWaitEnd]. */
+fun hifzWaitPrayer(from: Long): HifzPrayerSpan? =
+    HifzPrayerSpans.forWait(from).filter { it.start > from && it.end < from + HifzFreshGapMs }.minByOrNull { it.end }
+
+/**
+ * [at], or the end of the prayer it falls in, and so on while that end falls in another: a reminder never comes during
+ * a prayer, whether its time was set by the clock or its alarm came late.
+ */
+fun hifzOutsidePrayers(at: Long): Long {
+    var t = at
+    // A few at most: prayers whose spans meet, as Maghrib and Isha may far north.
+    repeat(5) {
+        t = HifzPrayerSpans.around(t).filter { t >= it.start && t < it.end }.maxOfOrNull { it.end } ?: return t
+    }
+    return t
+}
 
 /**
  * One recurring slip, as references only: every text shown comes from the app's own Qaloun index.
@@ -184,7 +223,7 @@ data class HifzPoint(
     val masteredAt: Long? = null,
     /**
      * Right answers still needed before the checks space out ([HifzFreshRecalls] after a slip, 0 once on the ladder):
-     * until then the point is asked at every reminder, [HifzFreshGapMs] at least after its slip or its last answer.
+     * until then the point is asked at every reminder, a while after its slip or its last answer ([hifzWaitEnd]).
      */
     val fresh: Int = 0,
     /** Actual spaced checks, oldest first. Older notebooks have no inferred review history. */
@@ -211,7 +250,7 @@ data class HifzPoint(
     /** The first of [slipWords]: where a look-alike parts, or the first wrong word. */
     val word: Int? get() = slipWords.minOrNull()
     /** When a [fresh] point may be asked again: a while after its slip or its last answer, whichever came later. */
-    val freshDueAt: Long get() = maxOf(lastSlipAt, checks.lastOrNull()?.at ?: 0L) + HifzFreshGapMs
+    val freshDueAt: Long get() = hifzWaitEnd(maxOf(lastSlipAt, checks.lastOrNull()?.at ?: 0L))
     /** Recent difficulty has priority until two unaided checks show recovery. */
     val needsCare: Boolean
         get() {
@@ -253,7 +292,7 @@ data class HifzPoint(
      * When a fresh point may be asked, its answer [seen] last at that time (the verse shown, heard or corrected), also
      * a while ago: a recall right after seeing the answer would be none.
      */
-    fun freshDueAt(seen: Long?): Long = if (seen == null) freshDueAt else maxOf(freshDueAt, seen + HifzFreshGapMs)
+    fun freshDueAt(seen: Long?): Long = if (seen == null) freshDueAt else maxOf(freshDueAt, hifzWaitEnd(seen))
     /**
      * When a fresh point may next be asked: [freshDueAt], and for one asked [daily], not before the day after it was
      * answered.
@@ -615,7 +654,7 @@ object HifzRepository {
 
     /**
      * Records a slip, or counts it again on an existing point. Returns the point as saved: fresh, asked at the
-     * reminders from [HifzFreshGapMs] on, until it is answered right as many times as its plan says ([plan]: the
+     * reminders a while after ([hifzWaitEnd]), until it is answered right as many times as its plan says ([plan]: the
      * reader's choice; null keeps the point's, or the app's for a new one).
      */
     fun record(
