@@ -276,6 +276,26 @@ private val MainContentBottomPadding = 76.dp
 private val BottomNavigationMinHeight = 64.dp
 private val BottomNavigationVerticalPadding = 6.dp
 private val BottomNavigationItemFixedHeight = 29.dp
+
+/** The bottom bar's row, above the system's bar: labels that wrap grow it rather than be cut by a fixed 64dp row. */
+@Composable
+private fun bottomNavigationRowHeight(labels: List<String>, widthPx: Float): androidx.compose.ui.unit.Dp {
+    val textMeasurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    val labelStyle = LocalTextStyle.current.merge(TextStyle(fontSize = 11.sp, fontWeight = FontWeight.Bold))
+    val itemWidthPx = (widthPx - with(density) { 16.dp.toPx() }) / labels.size
+    val labelWidthPx = (itemWidthPx - with(density) { 12.dp.toPx() }).coerceAtLeast(1f)
+    val labelHeightPx = labels.maxOf { label ->
+        textMeasurer.measure(
+            text = label,
+            style = labelStyle,
+            constraints = Constraints(maxWidth = labelWidthPx.toInt().coerceAtLeast(1)),
+        ).size.height
+    }
+    val minContentHeightPx = with(density) { (BottomNavigationMinHeight - BottomNavigationVerticalPadding * 2).toPx() }
+    val itemContentHeightPx = with(density) { BottomNavigationItemFixedHeight.toPx() } + labelHeightPx
+    return with(density) { (maxOf(minContentHeightPx, itemContentHeightPx) + BottomNavigationVerticalPadding.toPx() * 2f).toDp() }
+}
 private val WakeAlarmAddButtonSize = 64.dp
 private val WakeAlarmAddButtonBottomPadding = 92.dp
 private val WakeAlarmAddButtonShadowElevation = 8.dp
@@ -777,6 +797,12 @@ fun MainScreen(
         label = "quranBottomPadding",
     )
     val quranPlayback by com.tunisianprayertimes.quran.audio.QuranAudioController.state.collectAsState()
+    // The bar's height above the system's own, worked out as the bar works it out: known before the bar is first shown,
+    // for the Quran page to rest clear of it from the start.
+    val quranBarRoom = bottomNavigationRowHeight(
+        mainDestinations.map { stringResource(it.labelRes) },
+        with(density) { androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp.dp.toPx() },
+    )
 
     val adhkarStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     val quranStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
@@ -794,8 +820,14 @@ fun MainScreen(
             }
         } else if (selectedDestination == MainDestination.Quran) {
             quranStateHolder.SaveableStateProvider("quran") {
+                // The bar comes over the reader, which keeps its height: the page never moves for the bar. The reader
+                // only lifts what it shows at its foot, the dock and its cards, above the bar.
+                val gestureBar = with(density) { navigationBarInsetPx.toDp() }
                 QuranScreen(
-                    modifier = Modifier.fillMaxSize().padding(bottom = quranBottomPadding),
+                    modifier = Modifier.fillMaxSize().padding(bottom = gestureBar),
+                    // Read where the reader lays out its foot: the bar sliding does not recompose either screen.
+                    bottomBar = { (quranBottomPadding - gestureBar).coerceAtLeast(0.dp) },
+                    bottomBarRoom = { quranBarRoom },
                     onHideNavigation = { quranHidesNavigation = it },
                     hifzRequest = requestedQuranAction?.let { it to requestedDestinationSequence },
                 )
@@ -1177,31 +1209,9 @@ fun MainScreen(
                 BoxWithConstraints(Modifier.fillMaxWidth()) {
                     // Content-driven height: wrapped labels grow the bar instead of
                     // being clipped by a fixed 64dp row.
-                    val textMeasurer = rememberTextMeasurer()
-                    val labels = mainDestinations.map { stringResource(it.labelRes) }
-                    val labelStyle = LocalTextStyle.current.merge(
-                        TextStyle(fontSize = 11.sp, fontWeight = FontWeight.Bold),
+                    val rowHeight = bottomNavigationRowHeight(
+                        mainDestinations.map { stringResource(it.labelRes) }, constraints.maxWidth.toFloat(),
                     )
-                    val itemWidthPx = (constraints.maxWidth - with(density) { 16.dp.toPx() }) /
-                        mainDestinations.size
-                    val labelWidthPx = (itemWidthPx - with(density) { 12.dp.toPx() }).coerceAtLeast(1f)
-                    val labelHeightPx = labels.maxOf { label ->
-                        textMeasurer.measure(
-                            text = label,
-                            style = labelStyle,
-                            constraints = Constraints(maxWidth = labelWidthPx.toInt().coerceAtLeast(1)),
-                        ).size.height
-                    }
-                    val minContentHeightPx = with(density) {
-                        (BottomNavigationMinHeight - BottomNavigationVerticalPadding * 2).toPx()
-                    }
-                    val itemContentHeightPx = with(density) {
-                        BottomNavigationItemFixedHeight.toPx()
-                    } + labelHeightPx
-                    val rowHeight = with(density) {
-                        (maxOf(minContentHeightPx, itemContentHeightPx) +
-                            BottomNavigationVerticalPadding.toPx() * 2f).toDp()
-                    }
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()

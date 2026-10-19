@@ -63,8 +63,8 @@ class QuranExcerptTest {
         assertTrue("no grey here", band.muted.isEmpty())
         // Only the neighbours sharing its lines are covered: never 35 or 36, every other verse the band crosses.
         val shown = setOf(verse(41, 35), asked)
-        val neighbours = catalog.versesOnPage(page).filter { it.ayah > 0 && it.reference !in shown }
-            .flatMap { rects(page, it.reference) }.filter { it.bottom > band.top && it.top < band.bottom }
+        val neighbours = highlights.covers(page, catalog.versesOnPage(page).filter { it.ayah > 0 && it.reference !in shown }
+            .flatMap { rects(page, it.reference) }).filter { it.bottom > band.top && it.top < band.bottom }
         assertEquals(neighbours.toSet(), band.covered.toSet())
         val endOfBefore = rects(page, verse(41, 35)).maxBy { it.top }
         assertTrue("the band shows the last line of 35", band.top <= endOfBefore.top && band.bottom >= rects(page, asked).maxOf { it.bottom })
@@ -87,7 +87,7 @@ class QuranExcerptTest {
         val asked = verse(41, 36)
         val page = catalog.pagesForVerse(41, 36).single()
         val band = quranExcerpts(highlights, catalog, asked, linesBefore = 1, cover = true).single()
-        assertTrue(band.covered.containsAll(rects(page, asked)))
+        assertTrue(band.covered.containsAll(highlights.covers(page, rects(page, asked))))
         assertTrue(rects(page, verse(41, 35)).none { it in band.covered })
         assertTrue("only what the band shows", band.covered.all { it.bottom > band.top && it.top < band.bottom })
     }
@@ -124,9 +124,9 @@ class QuranExcerptTest {
 
     @Test
     fun placeOnThePage() {
-        assertEquals("أعلى الصفحة", quranExcerptPlace(QuranExcerpt(1, 0.05f, 0.2f)))
-        assertEquals("وسط الصفحة", quranExcerptPlace(QuranExcerpt(1, 0.4f, 0.55f)))
-        assertEquals("أسفل الصفحة", quranExcerptPlace(QuranExcerpt(1, 0.8f, 0.95f)))
+        assertEquals("أعلى", quranExcerptPlace(QuranExcerpt(1, 0.05f, 0.2f)))
+        assertEquals("وسط", quranExcerptPlace(QuranExcerpt(1, 0.4f, 0.55f)))
+        assertEquals("أسفل", quranExcerptPlace(QuranExcerpt(1, 0.8f, 0.95f)))
         assertNotNull(quranExcerptPlace(QuranExcerpt(1, 0f, 1f)))
     }
 }

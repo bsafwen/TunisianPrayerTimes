@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -103,10 +104,25 @@ internal fun QuranDock(
     onNoticeSecondary: () -> Unit,
     onScrub: (QuranScrub?) -> Unit,
     onScrubEnd: (QuranScrub) -> Unit,
+    /** A finger is on the dock (true) or has left it: a paused dock stays while it is used. */
+    onHeld: (Boolean) -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
+    val currentHeld by rememberUpdatedState(onHeld)
     Column(
-        modifier.fillMaxWidth().height(QuranDockHeight).background(AdhkarSoftGreen).testTag("quran_dock"),
+        modifier.fillMaxWidth().height(QuranDockHeight).background(AdhkarSoftGreen).testTag("quran_dock")
+            .pointerInput(Unit) {
+                // Watched only, never consumed: the buttons and the strip under the finger work as before.
+                awaitEachGesture {
+                    awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
+                    currentHeld(true)
+                    try {
+                        do { val event = awaitPointerEvent(PointerEventPass.Initial) } while (event.changes.any { it.pressed })
+                    } finally {
+                        currentHeld(false)
+                    }
+                }
+            },
     ) {
         HorizontalDivider(color = CardBorder)
         DockStrip(playback, track, session && notice == null, notice?.progress, onScrub, onScrubEnd, onExpand)

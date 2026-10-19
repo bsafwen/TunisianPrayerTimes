@@ -58,7 +58,29 @@ class QuranHighlights internal constructor(
         return nearest
     }
 
+    /**
+     * [rects], covers on [page], each grown to halfway to the next line box above and below it on the same column: the
+     * marks over and under a covered line, which sit between the boxes, are covered with it, and covered lines meet with
+     * no seam. A side with no line within a line's height (a margin, a chapter heading) is left as it is.
+     */
+    fun covers(page: Int, rects: List<QuranHighlightRect>): List<QuranHighlightRect> {
+        if (rects.isEmpty()) return rects
+        val lines = pages[page]?.values?.flatten().orEmpty()
+        return rects.map { r ->
+            val height = r.bottom - r.top
+            val column = lines.filter { it.left < r.right && it.right > r.left }
+            val above = column.filter { it.bottom <= r.top + EDGE }.maxOfOrNull { it.bottom }?.takeIf { r.top - it < height }
+            val below = column.filter { it.top >= r.bottom - EDGE }.minOfOrNull { it.top }?.takeIf { it - r.bottom < height }
+            QuranHighlightRect(
+                r.left, above?.let { (it + r.top) / 2f } ?: r.top,
+                r.right, below?.let { (it + r.bottom) / 2f } ?: r.bottom,
+            )
+        }
+    }
+
     private companion object {
+        /** Boxes of one line may differ by this much at their edges. */
+        const val EDGE = 0.002f
         /** About a fifth of a text line, in the normalized scan coordinates. */
         const val TOUCH_SLOP = 0.012f
     }

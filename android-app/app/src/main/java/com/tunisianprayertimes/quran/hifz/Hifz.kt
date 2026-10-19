@@ -18,20 +18,24 @@ import java.time.ZoneId
  * What went wrong when reciting a verse from memory, in the order a verse goes: its start, the verse as a whole, its
  * middle, its end. [label] is how the reader says it when recording, [short] the one noun every list and title uses.
  */
+/** The kinds of slip, the most common first: the order the record sheet offers them in. Stored by [key]. */
 enum class HifzKind(val key: String, val label: String, val short: String) {
-    /** Could not recall how the verse begins. */
-    Start("start", "نسيتها", "نسيان الآية"),
+    /** A word forgotten or said wrong, or a vowel, in the right verse; its first word, when its opening would not come. */
+    Word("word", "نسيت كلمة أو أخطأت فيها", "كلمة"),
+    /** Could not recall how the verse begins: recorded before the choices were three, now a word slip on its first word. */
+    Start("start", "نسيت أولها", "أول الآية"),
     /** Went from the verse before straight to the one after. */
     Skip("skip", "تخطيتها", "تخطٍّ"),
     /** Drifted into a similar verse, in the same chapter or another. */
     Similar("similar", "دخلت في آية شبيهة", "شبيهة"),
-    /** A wrong word or vowel in the right verse. */
-    Word("word", "أخطأت في كلمة أو حركة", "كلمة"),
     /** Closed the verse with another verse's ending. */
     Ending("ending", "ختمتها بخاتمة أخرى", "خاتمة");
 
     /** The slip is told by the verse it was confused with: a different look-alike is a slip of its own. */
     val lookAlike: Boolean get() = this == Ending || this == Similar
+
+    /** One choice on «أخطأت»: a look-alike, whether it parts from the verse in its course or at its ending. */
+    fun sameChoice(other: HifzKind): Boolean = this == other || (lookAlike && other.lookAlike)
 
     companion object {
         fun of(key: String): HifzKind? = entries.firstOrNull { it.key == key }
@@ -104,7 +108,7 @@ enum class HifzTimesPreset(val key: String, val label: String, val times: HifzTi
     /** Once a day, after Fajr: the time of hifz and of review. */
     Once("once", "بعد الفجر فقط", HifzTimes(setOf(Prayer.FAJR))),
     /** After Fajr, Dhuhr and Isha: morning, midday and before sleep. */
-    Thrice("thrice", "3 أوقات في اليوم", HifzTimes(setOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ISHA))),
+    Thrice("thrice", "3${HifzReminder.NB}أوقات في اليوم", HifzTimes(setOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ISHA))),
     Prayers("prayers", "بعد كل صلاة", HifzTimes(HifzPrayers.toSet()));
 
     companion object {
@@ -187,12 +191,17 @@ data class HifzPoint(
     val checks: List<HifzCheck> = emptyList(),
     /** How many right answers it asks for while fresh; see [HifzPace]. */
     val pace: HifzPace = HifzPace.Auto,
-    /** While fresh, asked once a day, at the first reminder of a day it was not answered, rather than at every one. */
-    val daily: Boolean = false,
+    /**
+     * While fresh, the reminder times that ask it, the reader's own for this slip; null for those of the settings. One
+     * time of day is once a day: see [daily]. Its spaced checks come at the settings' times.
+     */
+    val times: HifzTimes? = null,
     /** What [HifzPace.Auto] asks for in this fresh phase, judged from the history when it began; see [hifzAutoRecalls]. */
     val autoRecalls: Int = HifzFreshRecalls,
 ) {
     val mastered: Boolean get() = step >= HifzMasteredStep
+    /** Its own times are one time of day: asked once a day, on a day it was not answered, rather than at every reminder. */
+    val daily: Boolean get() = times?.count == 1
     /** The right answers this fresh phase asks for in all, as [pace] says. */
     val recalls: Int get() = when (pace) {
         HifzPace.Auto -> autoRecalls
@@ -215,19 +224,21 @@ data class HifzPoint(
                 (recent.size < 2 && lastSlipAt > checks.first().at) ||
                 (checks.size < 2 && slips >= 3 && !mastered)
         }
-    /** Feedback is about observed checks, never an invented history for an older notebook. */
+    /**
+     * Feedback is about observed checks, never an invented history for an older notebook; said of the reader, as they
+     * answered, never a verdict on them: «لم تتذكّرها في آخر سؤال».
+     */
     val recentFeedback: String?
         get() {
             val last = checks.lastOrNull() ?: return null
-            if (lastSlipAt > last.at) return "سُجّل خطأ جديد بعد آخر مراجعة"
-            val sinceSlip = dailyChecksSinceSlip
-            if (sinceSlip.size >= 2 && sinceSlip.takeLast(2).all { it.grade == HifzGrade.Held }) {
-                return "تذكرتها دون مساعدة في آخر مراجعتين"
-            }
+            if (lastSlipAt > last.at) return "أخطأت فيها بعد آخر سؤال"
+            // The last two answers given, as said: not the first of each day, which «يحتاج عناية» goes by.
+            val lastTwo = checks.filter { it.at >= lastSlipAt }.takeLast(2)
+            if (lastTwo.size == 2 && lastTwo.all { it.grade == HifzGrade.Held }) return "تذكّرتها دون مساعدة في آخر سؤالين"
             return when (last.grade) {
-                HifzGrade.Held -> "آخر مراجعة: تذكرتها دون مساعدة"
-                HifzGrade.Hesitated -> "آخر مراجعة: تردد أو احتجت تلميحًا"
-                HifzGrade.Again -> "آخر مراجعة: تحتاج تدريبًا"
+                HifzGrade.Held -> "تذكّرتها دون مساعدة في آخر سؤال"
+                HifzGrade.Hesitated -> "تردّدت فيها في آخر سؤال"
+                HifzGrade.Again -> "لم تتذكّرها في آخر سؤال"
             }
         }
     /**
@@ -262,18 +273,22 @@ data class HifzPoint(
 }
 
 /**
- * A slip again, recorded or a failed answer: fresh again, its right answers asked anew, as many as its history now
- * calls for. A passing slip that came back was not one: the app judges again, unless the reader chooses ([pace],
- * [daily]). A [daily] point already asked today ([askedToday]) waits for the next day.
+ * A slip's plan as the reader sets it on «أخطأت» or in its correction: how many right answers ([pace]), and at which
+ * reminder times ([times]; null for the settings').
  */
-fun HifzPoint.relapsed(
-    today: Long, now: Long, askedToday: Boolean, pace: HifzPace? = null, daily: Boolean? = null,
-): HifzPoint {
+data class HifzPlan(val pace: HifzPace, val times: HifzTimes?)
+
+/**
+ * A slip again, recorded or a failed answer: fresh again, its right answers asked anew, as many as its history now
+ * calls for. A passing slip that came back was not one: the app judges again, unless the reader chooses ([plan]; null
+ * keeps the times it had). A [daily] point already asked today ([askedToday]) waits for the next day.
+ */
+fun HifzPoint.relapsed(today: Long, now: Long, askedToday: Boolean, plan: HifzPlan? = null): HifzPoint {
     val count = slips + 1
     val next = copy(
         slips = count, autoRecalls = hifzAutoRecalls(count, mastered),
-        pace = pace ?: if (this.pace == HifzPace.Light) HifzPace.Auto else this.pace,
-        daily = daily ?: this.daily,
+        pace = plan?.pace ?: if (this.pace == HifzPace.Light) HifzPace.Auto else this.pace,
+        times = if (plan != null) plan.times else times,
     )
     return next.copy(
         fresh = next.recalls, step = 0, dueDay = if (next.daily && askedToday) today + 1 else today, masteredAt = null,
@@ -292,10 +307,10 @@ val HifzPoint.rightSinceSlip: Int get() = checks.count { it.at >= lastSlipAt && 
 /**
  * The plan changed by the reader on [today]: a fresh point keeps the right answers it already gave ([rightSinceSlip]);
  * a count they already reach ends its questions, its checks spacing out from the next day. Asked once a day, one asked
- * today waits for tomorrow; asked at every reminder, it may come at the next one.
+ * today waits for tomorrow; asked at several times, it may come at the next one.
  */
-fun HifzPoint.withPlan(pace: HifzPace, daily: Boolean, today: Long): HifzPoint {
-    val changed = copy(pace = pace, daily = daily)
+fun HifzPoint.withPlan(plan: HifzPlan, today: Long): HifzPoint {
+    val changed = copy(pace = plan.pace, times = plan.times)
     if (fresh == 0) return changed
     val left = changed.recalls - rightSinceSlip
     if (left <= 0) return changed.copy(fresh = 0, step = 0, dueDay = today + HifzLadder.first())
@@ -303,8 +318,8 @@ fun HifzPoint.withPlan(pace: HifzPace, daily: Boolean, today: Long): HifzPoint {
     return changed.copy(
         fresh = left,
         dueDay = when {
-            daily && askedToday -> maxOf(dueDay, today + 1)
-            daily -> dueDay
+            changed.daily && askedToday -> maxOf(dueDay, today + 1)
+            changed.daily -> dueDay
             else -> minOf(dueDay, today)
         },
     )
@@ -477,15 +492,21 @@ internal fun HifzPoint.answerVerses(): Set<QuranVerseReference> = buildSet {
     other?.let(::add)
     val before = QuranVerseReference(verse.surah, verse.ayah - 1).takeIf { verse.ayah > 1 }
     when (kind) {
-        HifzKind.Start -> before?.let(::add)
         HifzKind.Skip -> {
             before?.let(::add)
             val landed = other?.takeIf { it.surah == verse.surah && it.ayah > verse.ayah }?.ayah ?: (verse.ayah + 1)
             (verse.ayah + 1..landed).forEach { add(QuranVerseReference(verse.surah, it)) }
         }
-        else -> Unit
+        // Its opening forgotten, it is heard from the verse before.
+        else -> if (atStart) before?.let(::add)
     }
 }
+
+/**
+ * The verse's opening was what slipped: a start forgotten, or a word slip on its first word. It is practised, and
+ * heard, from the end of the verse before, which is what calls it up.
+ */
+val HifzPoint.atStart: Boolean get() = kind == HifzKind.Start || (kind == HifzKind.Word && 0 in slipWords)
 
 /** A verse a point's question shows, the end of the verse before it, or its answer ([answerVerses]). */
 internal fun HifzPoint.shows(other: QuranVerseReference): Boolean =
@@ -496,7 +517,11 @@ internal fun HifzPoint.shows(other: QuranVerseReference): Boolean =
  * other verse, or one not known on either side. A second look-alike is a slip of its own, never written over the first.
  */
 fun List<HifzPoint>.sameSlip(verse: QuranVerseReference, kind: HifzKind, other: QuranVerseReference? = null): HifzPoint? =
-    firstOrNull { it.verse == verse && it.kind == kind && (!kind.lookAlike || other == null || it.other == null || it.other == other) }
+    // The very look-alike first: one recorded without it («لا أعرف») is the same slip only when none names it.
+    filter { it.verse == verse && it.kind.sameChoice(kind) }.let { same ->
+        same.firstOrNull { kind.lookAlike && other != null && it.other == other }
+            ?: same.firstOrNull { !kind.lookAlike || other == null || it.other == null || it.other == other }
+    }
 
 /** A reminder: [time] of the prayer day [day], an epoch day, coming at [at] in wall-clock milliseconds. */
 data class HifzSlot(val day: Long, val time: HifzWhen, val at: Long)
@@ -529,10 +554,10 @@ fun HifzTimes.firstAfter(
 }
 
 /**
- * The next reminder later than [after]: the first of [times] by which a fresh point may be asked again, its answer
- * last [seen] a while before, or, for the spaced checks, the first of [times] of their prayer day, and of no day already
- * reminded of them ([remindedDay], the last prayer day that was). A check whose verse was looked at today
- * ([seenToday]) is the next day's.
+ * The next reminder later than [after]: the first of a fresh point's times (its own, or [times]) by which it may be
+ * asked again, its answer last [seen] a while before; or, for the spaced checks, the first of [times] of their prayer
+ * day, and of no day already reminded of them ([remindedDay], the last prayer day that was). A check whose verse was
+ * looked at today ([seenToday]) is the next day's.
  */
 fun List<HifzPoint>.nextReminder(
     times: HifzTimes, today: Long, after: Long, remindedDay: Long, seenToday: Set<QuranVerseReference> = emptySet(),
@@ -541,12 +566,10 @@ fun List<HifzPoint>.nextReminder(
     dailyAsked: Map<Long, Long> = emptyMap(),
     slotAt: (day: Long, time: HifzWhen) -> Long?,
 ): HifzSlot? {
-    val (daily, often) = filter { it.fresh > 0 }.partition { it.daily }
-    val fresh = listOfNotNull(
-        often.minOfOrNull { it.freshDueAt(seen[it.verse]) }?.let { due -> times.firstAfter(maxOf(after, due - 1), zone = zone, slotAt = slotAt) },
-    ) + daily.mapNotNull {
-        val from = maxOf(it.dueDay, dailyAsked[it.id]?.plus(1) ?: Long.MIN_VALUE)
-        times.firstAfter(maxOf(after, it.freshDueAt(seen[it.verse]) - 1), from, zone, slotAt)
+    val fresh = filter { it.fresh > 0 }.mapNotNull {
+        // Once a day: not before its day, nor on a day a reminder already asked it.
+        val from = if (it.daily) maxOf(it.dueDay, dailyAsked[it.id]?.plus(1) ?: Long.MIN_VALUE) else Long.MIN_VALUE
+        (it.times ?: times).firstAfter(maxOf(after, it.freshDueAt(seen[it.verse]) - 1), from, zone, slotAt)
     }
     val checksDay = filter { it.fresh == 0 }.minOfOrNull { if (it.verse in seenToday && it.dueDay <= today) today + 1 else it.dueDay }
         ?.let { maxOf(it, remindedDay + 1) }
@@ -592,8 +615,8 @@ object HifzRepository {
 
     /**
      * Records a slip, or counts it again on an existing point. Returns the point as saved: fresh, asked at the
-     * reminders from [HifzFreshGapMs] on, until it is answered right as many times as its plan says ([pace], [daily]:
-     * the reader's choice; null keeps the point's, or the app's for a new one).
+     * reminders from [HifzFreshGapMs] on, until it is answered right as many times as its plan says ([plan]: the
+     * reader's choice; null keeps the point's, or the app's for a new one).
      */
     fun record(
         context: Context,
@@ -603,20 +626,21 @@ object HifzRepository {
         slipWords: Set<Int> = emptySet(),
         bothWays: Boolean = false,
         now: Long = System.currentTimeMillis(),
-        pace: HifzPace? = null,
-        daily: Boolean? = null,
+        plan: HifzPlan? = null,
     ): HifzPoint = change(context) { points ->
         val today = epochDay(now)
         val existing = points.sameSlip(verse, kind, other)
         val point = existing?.copy(
+            // A look-alike said again: as it is told this time, in its course or at its ending.
+            kind = kind,
             other = other ?: existing.other,
             // The words chosen now, which the sheet starts from the earlier ones; none chosen keeps those.
             slipWords = slipWords.ifEmpty { existing.slipWords },
             bothWays = bothWays || existing.bothWays,
-        )?.relapsed(today, now, askedToday = existing.checks.any { it.day == today }, pace = pace, daily = daily)
+        )?.relapsed(today, now, askedToday = existing.checks.any { it.day == today }, plan = plan)
             ?: HifzPoint(
                 id = now, verse = verse, kind = kind, other = other, slipWords = slipWords, bothWays = bothWays,
-                dueDay = today, createdAt = now, pace = pace ?: HifzPace.Auto, daily = daily ?: false,
+                dueDay = today, createdAt = now, pace = plan?.pace ?: HifzPace.Auto, times = plan?.times,
             ).let { it.copy(fresh = it.recalls) }
         (points.filterNot { it.id == point.id } + point) to point
     }
@@ -674,7 +698,7 @@ internal fun encodeHifzPoints(points: List<HifzPoint>): String = JSONObject()
                 point.masteredAt?.let { put("masteredAt", it) }
                 if (point.fresh > 0) put("fresh", point.fresh)
                 if (point.pace != HifzPace.Auto) put("pace", point.pace.key)
-                if (point.daily) put("daily", true)
+                point.times?.let { put("times", it.encode()) }
                 if (point.autoRecalls != HifzFreshRecalls) put("autoRecalls", point.autoRecalls)
             }
             .put("bothWays", point.bothWays)
@@ -711,7 +735,7 @@ internal fun decodeHifzPoints(value: String): List<HifzPoint> {
             fresh = row.optInt("fresh").coerceIn(0, HifzMaxRecalls),
             checks = decodeHifzChecks(row.optString("checks")),
             pace = HifzPace.of(row.optString("pace").ifEmpty { null }),
-            daily = row.optBoolean("daily"),
+            times = HifzTimes.decode(row.optString("times").ifEmpty { null }),
             autoRecalls = row.optInt("autoRecalls", HifzFreshRecalls).coerceIn(1, HifzMaxRecalls),
         )
     }

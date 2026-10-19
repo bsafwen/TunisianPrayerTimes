@@ -53,6 +53,20 @@ class QuranHighlightsTest {
     }
 
     @Test
+    fun covers_meetHalfwayBetweenLines_andLeaveAFarSideAlone() {
+        // Verse 2 on both lines: its first line grows down to the middle of the gap, its second up to it.
+        val grown = highlights.covers(7, highlights.rectangles(7, 2, 2))
+        assertEquals(.100f, grown[0].top)
+        assertEquals(.162f, grown[0].bottom, 1e-6f)
+        assertEquals(.162f, grown[1].top, 1e-6f)
+        assertEquals(.224f, grown[1].bottom)
+        // Verse 1 on the first line: no line above it, the line below in its column.
+        val same = highlights.covers(7, highlights.rectangles(7, 2, 1)).single()
+        assertEquals(.100f, same.top)
+        assertEquals(.162f, same.bottom, 1e-6f)
+    }
+
+    @Test
     fun lineAt_betweenTwoLines_takesTheNearest() {
         assertEquals(.100f, highlights.lineAt(7, .70f, .161f)?.top)
         assertEquals(.164f, highlights.lineAt(7, .70f, .1635f)?.top)

@@ -98,7 +98,7 @@ internal fun QuranIndexSheet(
                 QuranHifzSquare()
                 Spacer(Modifier.width(10.dp))
                 Text(
-                    if (hifzDue > 0) "المراجعة · ${quranPointsLabel(hifzDue)} اليوم" else "المراجعة · دفتر المواضع",
+                    if (hifzDue > 0) "المراجعة · ${hifzCountLabel(hifzDue)} الآن" else "المراجعة · دفتر المواضع",
                     Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
                 )
                 Text("‹", fontSize = 18.sp, color = TextMuted)
@@ -327,12 +327,12 @@ internal fun quranVerseCountLabel(count: Int): String = when {
     else -> "$count آية"
 }
 
-/** «موضع», «موضعان», «3 مواضع», «11 موضعا». */
+/** «موضع», «موضعان», «3 مواضع», «11 موضعًا». */
 internal fun quranPointsLabel(count: Int): String = when {
     count == 1 -> "موضع"
     count == 2 -> "موضعان"
-    count % 100 in 3..10 -> "$count مواضع"
-    else -> "$count موضعا"
+    count % 100 in 3..10 -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}مواضع"
+    else -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}موضعًا"
 }
 
 /** The small violet mark that stands for hifz points, as the page marks them: a light tint, underlined. */

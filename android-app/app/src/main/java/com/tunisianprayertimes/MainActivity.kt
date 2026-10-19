@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * «سجّل موضعا» from the launcher: a slip made in prayer or with a teacher is recorded at once; «مراجعة اليوم»: the
+     * «سجّل موضعًا» from the launcher: a slip made in prayer or with a teacher is recorded at once; «مراجعة اليوم»: the
      * day's checks, without going through the reader. Dynamic, because a static shortcut cannot follow the debug
      * build's package suffix.
      */
@@ -140,8 +140,8 @@ class MainActivity : AppCompatActivity() {
             val icon = android.graphics.drawable.Icon.createWithResource(this, R.drawable.ic_tab_quran)
             manager.dynamicShortcuts = listOf(
                 android.content.pm.ShortcutInfo.Builder(this, "hifz_record")
-                    .setShortLabel("سجّل موضعا")
-                    .setLongLabel("سجّل موضعا للمراجعة")
+                    .setShortLabel("سجّل موضعًا")
+                    .setLongLabel("سجّل موضعًا للمراجعة")
                     .setIcon(icon)
                     .setIntent(intent(MainTabNavigation.QURAN_ACTION_HIFZ_RECORD))
                     .setRank(0)

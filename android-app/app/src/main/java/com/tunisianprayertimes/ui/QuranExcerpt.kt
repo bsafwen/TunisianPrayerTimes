@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -42,6 +43,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -50,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranHighlightRect
 import com.tunisianprayertimes.quran.QuranHighlights
@@ -85,7 +88,10 @@ internal data class QuranExcerpt(
 /** How the verse of an excerpt stands out: the point's own verse, or the one it is confused with. */
 internal enum class QuranExcerptMark { Point, Other }
 
-/** Room above and below the lines of a band, a fifth of a line: the vowels over the first line stay whole. */
+/**
+ * Room above the first line of a band, a fifth of a line: the marks over it stay whole. Below, the band ends with its
+ * last line: what lies under it is mostly the next line's marks.
+ */
 private const val QuranExcerptPad = 0.008f
 
 /**
@@ -134,11 +140,14 @@ internal fun quranExcerpts(
     }
     val named = quranExcerptVerses(verse, linesBefore, linesAfter, after)
     return (own + around).groupBy({ it.first }, { it.second }).toSortedMap().map { (page, shown) ->
-        val top = (shown.minOf { it.top } - QuranExcerptPad).coerceAtLeast(0f)
-        val bottom = (shown.maxOf { it.bottom } + QuranExcerptPad).coerceAtMost(1f)
+        val firstLine = shown.minOf { it.top }
+        val top = (firstLine - QuranExcerptPad).coerceAtLeast(0f)
+        // No pad below: the pad above is for the first line's marks; below, it would only let in the next line's.
+        val bottom = shown.maxOf { it.bottom }
         val ownHere = own.filter { it.first == page }.map { it.second }
-        val covered = catalog.versesOnPage(page).filter { it.ayah > 0 && (it.reference !in named || (cover && it.reference >= verse)) }
-            .flatMap { highlights.rectangles(page, it.surah, it.ayah) }.filter { it.bottom > top && it.top < bottom }
+        // Each cover reaches halfway into the gaps around its line, as on the page: no seam between covered lines.
+        val covered = highlights.covers(page, catalog.versesOnPage(page).filter { it.ayah > 0 && (it.reference !in named || (cover && it.reference >= verse)) }
+            .flatMap { highlights.rectangles(page, it.surah, it.ayah) }).filter { it.bottom > top && it.top < bottom }
         QuranExcerpt(
             page, top, bottom,
             marked = ownHere.takeIf { mark == QuranExcerptMark.Point }.orEmpty(),
@@ -148,11 +157,11 @@ internal fun quranExcerpts(
     }
 }
 
-/** «أعلى الصفحة», «وسط الصفحة», «أسفل الصفحة»: where a band sits, as a reader remembers it. */
+/** «أعلى», «وسط», «أسفل»: where a band sits on its page, as a reader remembers it, said before the page: «أعلى صفحة 562». */
 internal fun quranExcerptPlace(excerpt: QuranExcerpt): String = when ((excerpt.top + excerpt.bottom) / 2f) {
-    in 0f..0.36f -> "أعلى الصفحة"
-    in 0.36f..0.64f -> "وسط الصفحة"
-    else -> "أسفل الصفحة"
+    in 0f..0.36f -> "أعلى"
+    in 0.36f..0.64f -> "وسط"
+    else -> "أسفل"
 }
 
 /** Bands already read, by page, band and scale: a sheet opened again, or scrolled back, shows them at once. */
@@ -199,9 +208,15 @@ internal fun QuranExcerpts(
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         excerpts.forEachIndexed { i, excerpt ->
-            QuranBandView(catalog, excerpt, if (i == 0) description else null) { missing = true }
+            Box {
+                QuranBandView(catalog, excerpt, if (i == 0) description else null) { missing = true }
+                // The Column's «تكبير المقطع» speaks for it.
+                if (i == 0) Icon(
+                    painterResource(R.drawable.ic_open_in_full), null,
+                    Modifier.align(Alignment.TopEnd).size(14.dp), tint = GreenPrimary,
+                )
+            }
         }
-        Text("المس المقطع لتكبيره", fontSize = 11.sp, color = GreenPrimary)
     }
     if (enlarged) QuranExcerptViewer(catalog, excerpts, description, lines) { enlarged = false }
 }
@@ -239,7 +254,6 @@ private fun QuranExcerptViewer(
                         Text("تكبير")
                     }
                 }
-                Text("كبّر بالأزرار ثم اسحب المقطع لرؤية بقية الكلمات.", fontSize = 12.sp, color = TextMuted)
                 if (!missing) TextButton(onClick = { textView = !textView; zoom = 1f }, modifier = Modifier.testTag("quran_excerpt_text")) {
                     Text(if (textView) "عرض صورة المصحف" else "عرض النص القابل للتكبير")
                 }
@@ -366,7 +380,7 @@ private fun QuranBandView(catalog: QuranCatalog, excerpt: QuranExcerpt, descript
         Row(Modifier.clearAndSetSemantics {}, verticalAlignment = Alignment.CenterVertically) {
             QuranPageSpot(excerpt)
             Spacer(Modifier.width(6.dp))
-            Text("${quranPageLabel(excerpt.page)} · ${quranExcerptPlace(excerpt)}", fontSize = 11.sp, color = TextMuted)
+            Text("${quranExcerptPlace(excerpt)} ${quranPageLabel(excerpt.page)}", fontSize = 11.sp, color = TextMuted)
         }
         BoxWithConstraints(Modifier.fillMaxWidth()) {
             val width = with(LocalDensity.current) { maxWidth.roundToPx() }
@@ -410,7 +424,12 @@ private fun QuranBandMarks(excerpt: QuranExcerpt) {
         fun at(r: QuranHighlightRect) = Offset(r.left * size.width, (r.top - excerpt.top) / span * size.height)
         fun sizeOf(r: QuranHighlightRect) = Size((r.right - r.left) * size.width, (r.bottom - r.top) / span * size.height)
         val corner = CornerRadius(3.dp.toPx())
-        excerpt.covered.forEach { drawRect(QuranReviewMask, at(it), sizeOf(it)) }
+        // A cover on the band's first line reaches the band's top: the marks of the line above it, which reach into
+        // the pad over that line, do not show over it.
+        excerpt.covered.forEach { r ->
+            val drawn = if (r.top <= excerpt.top + 2 * QuranExcerptPad) r.copy(top = minOf(r.top, excerpt.top)) else r
+            drawRect(QuranReviewMask, at(drawn), sizeOf(drawn))
+        }
         // As the page marks a point: a light tint and a line under each line, never a frame read as a selection.
         fun underline(r: QuranHighlightRect, color: Color, width: Float) {
             val topLeft = at(r)

@@ -225,24 +225,24 @@ fun hifzClosings(catalog: QuranCatalog, verse: QuranVerseReference, limit: Int =
 fun hifzWordsLabel(count: Int): String = when (count) {
     1 -> "كلمة واحدة"
     2 -> "كلمتين"
-    in 3..10 -> "$count كلمات"
-    else -> "$count كلمة"
+    in 3..10 -> "$count${HifzReminder.NB}كلمات"
+    else -> "$count${HifzReminder.NB}كلمة"
 }
 
 /** «تتفقان في كلمتين متتاليتين», «تتفقان في 4 كلمات متتالية». */
 fun hifzRunLabel(count: Int): String = when (count) {
     1 -> "تتفقان في كلمة واحدة"
     2 -> "تتفقان في كلمتين متتاليتين"
-    in 3..10 -> "تتفقان في $count كلمات متتالية"
-    else -> "تتفقان في $count كلمة متتالية"
+    in 3..10 -> "تتفقان في $count${HifzReminder.NB}كلمات متتالية"
+    else -> "تتفقان في $count${HifzReminder.NB}كلمة متتالية"
 }
 
 /** «آية واحدة», «آيتان», «5 آيات», «68 آية». */
 fun hifzVersesLabel(count: Int): String = when {
     count == 1 -> "آية واحدة"
     count == 2 -> "آيتان"
-    count % 100 in 3..10 -> "$count آيات"
-    else -> "$count آية"
+    count % 100 in 3..10 -> "$count${HifzReminder.NB}آيات"
+    else -> "$count${HifzReminder.NB}آية"
 }
 
 /** After a preposition: «بعد آيتين», «بعد 5 آيات». */
@@ -252,8 +252,8 @@ fun hifzVersesAfterLabel(count: Int): String = if (count == 2) "آيتين" else
 private fun hifzOtherVersesLabel(count: Int): String = when {
     count == 1 -> "آية أخرى"
     count == 2 -> "آيتان أخريان"
-    count % 100 in 3..10 -> "$count آيات أخرى"
-    else -> "$count آية أخرى"
+    count % 100 in 3..10 -> "$count${HifzReminder.NB}آيات أخرى"
+    else -> "$count${HifzReminder.NB}آية أخرى"
 }
 
 /** Everything a fix card and a hint need, from the index text. */
@@ -387,12 +387,35 @@ class HifzFix(
         get() = when (point.kind) {
             HifzKind.Ending -> "بماذا تختم؟"
             HifzKind.Similar -> partAt?.takeIf { it > 0 }?.let { "ماذا بعد «${words.printed[it - 1]}»؟" } ?: "كيف تكملها؟"
-            HifzKind.Word -> when (markedWords.size) {
-                0 -> "اقرأها من حفظك"
-                1 -> "ما الكلمة الصحيحة؟"
-                else -> "ما الكلمات الصحيحة؟"
+            // For each run of words to recall, at most two, the words before it, which the review leaves in view:
+            // something to recall from, never the answer. More of them while they also come elsewhere in the verse, so
+            // that the place is one; never a word to recall.
+            HifzKind.Word -> if (markedWords.isEmpty()) "اقرأها من حفظك" else {
+                val marked = markedWords.toSet()
+                val runs = markedWords.fold(mutableListOf<MutableList<Int>>()) { acc, i ->
+                    acc.also { if (it.isNotEmpty() && it.last().last() == i - 1) it.last().add(i) else it.add(mutableListOf(i)) }
+                }
+                fun elsewhere(from: Int, until: Int): Boolean {
+                    val cue = words.keys.subList(from, until)
+                    return (0..words.size - cue.size).any { it != from && words.keys.subList(it, it + cue.size) == cue }
+                }
+                // «كلمة» quoted from the verse before the run starting at [at]; null for the verse's opening.
+                fun cue(at: Int): String? {
+                    if (at == 0) return null
+                    var from = at - 1
+                    while (from > 0 && at - from < 3 && (from - 1) !in marked && elsewhere(from, at)) from--
+                    return "«${(from until at).joinToString(" ") { words.printed[it] }}»"
+                }
+                val first = cue(runs[0].first())
+                val second = runs.getOrNull(1)?.let { cue(it.first()) }
+                when {
+                    first == null && second == null -> "كيف تبدأ؟"
+                    first == null -> "كيف تبدأ، وماذا بعد $second؟"
+                    second == null -> "ماذا بعد $first؟"
+                    else -> "ماذا بعد $first، وبعد $second؟"
+                }
             }
-            HifzKind.Skip -> if (point.verse.ayah == 1) "ما أول آية في السورة؟" else "ما الآية بعد الآية ${point.verse.ayah - 1}؟"
+            HifzKind.Skip -> if (point.verse.ayah == 1) "ما أول آية في السورة؟" else "ماذا بعد الآية ${point.verse.ayah - 1}؟"
             HifzKind.Start -> "كيف تبدأ؟"
         }
 }
@@ -532,8 +555,7 @@ fun hifzPassage(catalog: QuranCatalog, point: HifzPoint): QuranRepeatRange {
             val landed = point.other?.takeIf { it.surah == v.surah && it.ayah > v.ayah }?.ayah ?: (v.ayah + 1)
             QuranRepeatRange(QuranVerseReference(v.surah, (v.ayah - 1).coerceAtLeast(1)), QuranVerseReference(v.surah, landed.coerceAtMost(count)), 1)
         }
-        HifzKind.Start -> QuranRepeatRange(QuranVerseReference(v.surah, (v.ayah - 1).coerceAtLeast(1)), v, 1)
-        else -> QuranRepeatRange(v, v, 1)
+        else -> if (point.atStart) QuranRepeatRange(QuranVerseReference(v.surah, (v.ayah - 1).coerceAtLeast(1)), v, 1) else QuranRepeatRange(v, v, 1)
     }
 }
 

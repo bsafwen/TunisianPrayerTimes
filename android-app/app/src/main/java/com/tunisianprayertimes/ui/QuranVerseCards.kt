@@ -62,6 +62,11 @@ internal fun QuranVerseCard(
     modifier: Modifier = Modifier,
     /** «مراجعة»: the verse covers itself again after this long; a line along the top counts it down. */
     hidesAfterMs: Long? = null,
+    /**
+     * «مراجعة»: what serves reciting from memory stays (hear it, repeat it, record a slip, mark where the review stands);
+     * copying and sharing serve reading the text, which this mode hides.
+     */
+    review: Boolean = false,
 ) {
     QuranFloatingCard(modifier.testTag("quran_verse_card")) {
         if (hidesAfterMs != null) QuranCountdownLine(title, hidesAfterMs, GreenPrimary.copy(alpha = 0.55f))
@@ -86,21 +91,23 @@ internal fun QuranVerseCard(
                 Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء التحديد", Modifier.size(18.dp), tint = TextMuted)
             }
         }
-        val actions: List<@Composable RowScope.() -> Unit> = listOf(
-            { CardAction(R.drawable.ic_quran_headphones, "استمع", onListen, Modifier.testTag("quran_verse_listen")) },
-            { CardAction(R.drawable.ic_quran_repeat, "كرّر", onRepeat, Modifier.testTag("quran_verse_repeat")) },
-            { CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: سجّلها للمراجعة") },
-            {
+        val actions = buildList<@Composable RowScope.() -> Unit> {
+            add { CardAction(R.drawable.ic_quran_headphones, "استمع", onListen, Modifier.testTag("quran_verse_listen")) }
+            add { CardAction(R.drawable.ic_quran_repeat, "كرّر", onRepeat, Modifier.testTag("quran_verse_repeat")) }
+            add { CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: سجّلها للمراجعة") }
+            add {
                 CardAction(
                     if (bookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark,
                     if (bookmarked) "محفوظة" else "علامة", onBookmark, Modifier.testTag("quran_verse_bookmark"),
                     tint = if (bookmarked) GreenPrimary else GreenPrimaryDark,
                 )
-            },
-            { CardAction(R.drawable.ic_quran_copy, "نسخ", onCopy, Modifier.testTag("quran_verse_copy")) },
-            { CardAction(R.drawable.ic_quran_share, "مشاركة", onShare, Modifier.testTag("quran_verse_share")) },
-        )
-        // One row of six while every label fits whole; with large text, two rows of three, never a label cut short.
+            }
+            if (!review) {
+                add { CardAction(R.drawable.ic_quran_copy, "نسخ", onCopy, Modifier.testTag("quran_verse_copy")) }
+                add { CardAction(R.drawable.ic_quran_share, "مشاركة", onShare, Modifier.testTag("quran_verse_share")) }
+            }
+        }
+        // One row while every label fits whole; with large text, two even rows, never a label cut short.
         val measurer = rememberTextMeasurer()
         val density = LocalDensity.current
         val labelStyle = LocalTextStyle.current.merge(CardActionLabelStyle)
@@ -111,7 +118,7 @@ internal fun QuranVerseCard(
             val oneRow = with(density) { widest.toDp() } + 4.dp <= maxWidth / actions.size
             if (oneRow) Row(Modifier.fillMaxWidth()) { actions.forEach { it() } }
             else Column {
-                actions.chunked(3).forEach { row -> Row(Modifier.fillMaxWidth()) { row.forEach { it() } } }
+                actions.chunked((actions.size + 1) / 2).forEach { row -> Row(Modifier.fillMaxWidth()) { row.forEach { it() } } }
             }
         }
     }
