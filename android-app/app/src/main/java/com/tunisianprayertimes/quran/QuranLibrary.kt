@@ -149,17 +149,21 @@ fun quranNameKey(value: String): String = value.trim()
     .removePrefix("سوره ").trim()
 
 /**
- * The text a verse is copied or shared as, for whatever font the other app has: the mushaf's words
- * ([QuranMushafText.text]) in the code points other fonts draw as the mushaf means them ([QuranMushafText.plain]),
- * then where it is. The index's own encoding is for the King Fahd font: elsewhere its wasl reads as a vowel, its open
- * tanween as other marks, and its waqf signs are at Maghribi positions, not the mushaf's; so a verse goes without
- * waqf signs, as the Quran tab shows it. The number is the mushaf's, in the later Madani count it names, which other
- * mushafs do not all follow. A passage joins its verses in order, each followed by its number.
+ * The text a verse is copied or shared as, as the app's mushaf prints it, for whatever font the other app has: the
+ * mushaf's words ([QuranMushafText.words]) with the mushaf's waqf signs ([waqf], read on its scans), in the code points
+ * other fonts draw as the mushaf means them ([QuranMushafText.plain]), then where it is. Not the index's own encoding,
+ * which is for the King Fahd font: elsewhere its wasl reads as a vowel and its open tanween as other marks, and its waqf
+ * signs are at Maghribi positions. The number is the mushaf's, in the later Madani count it names, which other mushafs
+ * do not all follow. A passage joins its verses in order, each followed by its number.
  */
-fun quranShareText(surahName: String, verses: List<QuranVerse>): String {
+fun quranShareText(surahName: String, verses: List<QuranVerse>, waqf: Map<QuranVerseReference, List<QuranWaqfSign>> = emptyMap()): String {
     val numbered = verses.filter { it.ayah > 0 }
     if (numbered.isEmpty()) return ""
-    fun words(verse: QuranVerse) = QuranMushafText.plain(QuranMushafText.text(verse.text))
+    fun words(verse: QuranVerse): String {
+        val signs = waqf[verse.reference].orEmpty().associate { it.word to it.sign }
+        val words = QuranMushafText.words(verse.text.split(' ')).mapIndexed { i, word -> signs[i]?.let { word + it } ?: word }
+        return QuranMushafText.plain(words.filter { it.isNotEmpty() }.joinToString(" "))
+    }
     val body = if (numbered.size == 1) words(numbered.first())
         else numbered.joinToString(" ") { "${words(it)} (${it.ayah})" }
     val where = if (numbered.size == 1) "$surahName: ${numbered.first().ayah}"

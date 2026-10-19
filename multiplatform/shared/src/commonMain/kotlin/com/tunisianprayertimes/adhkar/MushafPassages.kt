@@ -8,7 +8,7 @@ package com.tunisianprayertimes.adhkar
  * draws them as the mushaf does. By id: the adhkar's Qur'an passages and the closing card's verses (a surah starts
  * with its basmala on a line of its own), the verses of the mosque screen's header and of the phone's prayer card
  * (DisplayTexts ids, fragments without a number at their end), and the basmala. The catalog keeps its readable
- * wording for search, sharing and TalkBack.
+ * wording for search and TalkBack.
  */
 object MushafPassages {
     private val texts = mapOf(

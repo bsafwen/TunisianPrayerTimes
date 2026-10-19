@@ -60,7 +60,12 @@ class QuranExcerptTest {
         val band = bands.single()
         assertEquals(page, band.page)
         assertEquals(rects(page, asked), band.marked)
-        assertTrue("no grey and no cover here", band.muted.isEmpty() && band.covered.isEmpty())
+        assertTrue("no grey here", band.muted.isEmpty())
+        // Only the neighbours sharing its lines are covered: never 35 or 36, every other verse the band crosses.
+        val shown = setOf(verse(41, 35), asked)
+        val neighbours = catalog.versesOnPage(page).filter { it.ayah > 0 && it.reference !in shown }
+            .flatMap { rects(page, it.reference) }.filter { it.bottom > band.top && it.top < band.bottom }
+        assertEquals(neighbours.toSet(), band.covered.toSet())
         val endOfBefore = rects(page, verse(41, 35)).maxBy { it.top }
         assertTrue("the band shows the last line of 35", band.top <= endOfBefore.top && band.bottom >= rects(page, asked).maxOf { it.bottom })
     }
@@ -105,6 +110,11 @@ class QuranExcerptTest {
         val last = bands.last()
         assertEquals(landedPage, last.page)
         assertTrue(last.bottom >= rects(landedPage, landed).minBy { it.top }.bottom)
+        // The way through is shown, from 35 to where it landed; nothing of it is covered.
+        val way = (35..37).flatMap { a -> catalog.pagesForVerse(41, a).flatMap { rects(it, verse(41, a)) } }
+        assertTrue(bands.flatMap { it.covered }.none { it in way })
+        assertEquals(setOf(verse(41, 35), verse(41, 36), verse(41, 37)), quranExcerptVerses(skipped, linesBefore = 1, linesAfter = 1, after = landed))
+        assertEquals(setOf(verse(41, 20), verse(41, 21), verse(41, 22), verse(41, 23)), quranExcerptVerses(verse(41, 20), linesAfter = 1, after = verse(41, 23)))
     }
 
     @Test

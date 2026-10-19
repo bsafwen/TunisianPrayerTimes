@@ -27,6 +27,8 @@ class QuranCatalog internal constructor(
     val pages: List<QuranPage>,
     val surahs: List<QuranSurah>,
     private val entries: List<QuranSearchEntry>,
+    /** The mushaf's waqf signs by verse ([QuranWaqfSign]); none for a verse that has none. */
+    val waqf: Map<QuranVerseReference, List<QuranWaqfSign>> = emptyMap(),
 ) {
     private val searchIndex by lazy { QuranSearchIndex(entries, surahs) }
     val verseFragments: List<QuranVerseFragment> = entries.map {
@@ -130,9 +132,27 @@ object QuranRepository {
                 "Incomplete Qaloun verse index for chapter ${surah.number}"
             }
         }
-        return QuranCatalog(pages, surahs, entries)
+        return QuranCatalog(pages, surahs, entries, readWaqf(context))
+    }
+
+    private fun readWaqf(context: Context): Map<QuranVerseReference, List<QuranWaqfSign>> {
+        val source = JSONObject(context.assets.open("quran/waqf.json").bufferedReader().use { it.readText() })
+        return parseQuranWaqf(source.getJSONObject("signs"), source.getJSONObject("verses"))
     }
 }
+
+/** A waqf sign as the mushaf prints it, over the gap after word [word] (from 0) of its verse. */
+data class QuranWaqfSign(val word: Int, val sign: Char)
+
+internal fun parseQuranWaqf(signs: JSONObject, verses: JSONObject): Map<QuranVerseReference, List<QuranWaqfSign>> =
+    verses.keys().asSequence().associate { key ->
+        val (surah, ayah) = key.split(':').map { it.toInt() }
+        val row = verses.getJSONArray(key)
+        QuranVerseReference(surah, ayah) to List(row.length()) { i ->
+            val sign = row.getJSONArray(i)
+            QuranWaqfSign(sign.getInt(0), signs.getString(sign.getString(1)).single())
+        }
+    }
 
 /** Ignore recitation marks and accept the ordinary Arabic spelling used by keyboards. */
 internal fun normalizeQuranSearch(value: String): String = buildString {

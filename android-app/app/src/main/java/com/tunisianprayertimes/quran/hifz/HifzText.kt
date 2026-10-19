@@ -256,7 +256,7 @@ private fun hifzOtherVersesLabel(count: Int): String = when {
     else -> "$count آية أخرى"
 }
 
-/** Everything a fix card, a hint and a heads-up need, from the index text. */
+/** Everything a fix card and a hint need, from the index text. */
 class HifzFix(
     val point: HifzPoint,
     val words: HifzWords,
@@ -552,7 +552,7 @@ const val HifzCueTitle = "ما قبل الموضع"
  * same verse twice in a row); or the right verse or the passage around a skip, 3 times. Each recitation is
  * followed by the drill's silence, to repeat it.
  */
-fun hifzDrill(catalog: QuranCatalog, point: HifzPoint, settings: HifzSettings): QuranPlaylist {
+fun hifzDrill(catalog: QuranCatalog, point: HifzPoint): QuranPlaylist {
     val name = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
     val own = hifzPassage(catalog, point)
     val other = point.other?.takeIf { point.kind == HifzKind.Ending || point.kind == HifzKind.Similar }
@@ -568,16 +568,16 @@ fun hifzDrill(catalog: QuranCatalog, point: HifzPoint, settings: HifzSettings): 
         items = items,
         labels = labels,
         rounds = 1,
-        gapFactor = settings.drillGap,
-        speed = if (point.hafs) 0.75f else settings.drillSpeed.takeIf { it != 1f },
+        gapFactor = HifzDrillGap,
+        speed = if (point.hafs) 0.75f else HifzDrillSpeed.takeIf { it != 1f },
     )
 }
 
 /**
  * «مواضعي صوتا»: every fix in turn, the right wording only, straight through; one point's is «الاستماع إلى الموضع».
- * The drill's silence is for «درّب» alone, as its setting says.
+ * The drill's silence is for «درّب» alone.
  */
-fun hifzListen(catalog: QuranCatalog, points: List<HifzPoint>, settings: HifzSettings): QuranPlaylist? {
+fun hifzListen(catalog: QuranCatalog, points: List<HifzPoint>): QuranPlaylist? {
     if (points.isEmpty()) return null
     val name = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
     val items = points.sortedBy { it.verse }.map { hifzPassage(catalog, it) }.distinct()
@@ -587,7 +587,7 @@ fun hifzListen(catalog: QuranCatalog, points: List<HifzPoint>, settings: HifzSet
         labels = items.map { hifzRangeLabel(name(it.from.surah), it) },
         rounds = 1,
         gapFactor = 0f,
-        speed = if (points.size == 1 && points.single().hafs) 0.75f else settings.drillSpeed.takeIf { it != 1f },
+        speed = if (points.size == 1 && points.single().hafs) 0.75f else HifzDrillSpeed.takeIf { it != 1f },
     )
 }
 
@@ -595,7 +595,7 @@ fun hifzListen(catalog: QuranCatalog, points: List<HifzPoint>, settings: HifzSet
  * The verse before [point], heard once as a cue before reciting the point from memory: whatever the listener's
  * own repetition and silence settings, it never repeats. Null for a first verse.
  */
-fun hifzCue(catalog: QuranCatalog, point: HifzPoint, settings: HifzSettings): QuranPlaylist? {
+fun hifzCue(catalog: QuranCatalog, point: HifzPoint): QuranPlaylist? {
     if (point.verse.ayah <= 1) return null
     val before = QuranVerseReference(point.verse.surah, point.verse.ayah - 1)
     val range = QuranRepeatRange(before, before, 1)
@@ -605,6 +605,6 @@ fun hifzCue(catalog: QuranCatalog, point: HifzPoint, settings: HifzSettings): Qu
         labels = listOf(hifzRangeLabel(catalog.surahs.getOrNull(before.surah - 1)?.name.orEmpty(), range)),
         rounds = 1,
         gapFactor = 0f,
-        speed = settings.drillSpeed.takeIf { it != 1f },
+        speed = HifzDrillSpeed.takeIf { it != 1f },
     )
 }

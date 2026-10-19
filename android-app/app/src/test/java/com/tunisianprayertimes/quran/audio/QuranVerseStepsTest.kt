@@ -62,16 +62,6 @@ class QuranVerseStepsTest {
     }
 
     @Test
-    fun verseEnd_stopBeforeAPoint_comesWhenTheVerseIsLeft_neverInAnEndlessRepetition() {
-        // Before the silence to repeat: the stop is the reader's turn.
-        assertEquals(QuranVerseEnd.Sleep, quranVerseEnd(1, 1, false, 1f, 10_000L, 1f, stopBefore = true))
-        assertEquals(QuranVerseEnd.Again(2), quranVerseEnd(3, 1, false, 0f, 10_000L, 1f, stopBefore = true))
-        assertEquals(QuranVerseEnd.Sleep, quranVerseEnd(3, 3, false, 0f, 10_000L, 1f, stopBefore = true))
-        // Repeated until the listener moves on: the verse is not left, so no stop.
-        assertEquals(QuranVerseEnd.Again(8), quranVerseEnd(0, 7, false, 0f, 10_000L, 1f, stopBefore = true))
-    }
-
-    @Test
     fun verseEnd_pauseIsMeasuredInTheVerseLengthAtTheListeningSpeed() {
         assertEquals(QuranVerseEnd.Pause(10_000L), quranVerseEnd(1, 1, false, 1f, 10_000L, 1f))
         assertEquals(QuranVerseEnd.Pause(5_000L), quranVerseEnd(1, 1, false, 0.5f, 10_000L, 1f))

@@ -590,7 +590,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 359304	EG			16	Balţīm	Baltim	بلطيم		3155582	3108918		51280	
 359480	EG			79	Az Zaynīyah Qiblī	Az Zayniyah Qibli	الزينية قبلي		2575089	3267760		20000	
 359493	EG			16	Zagazig		الزقازيق		3058768	3150200		430445	
-359541	EG			8	Al ‘Ayn as Sukhnah	Al 'Ayn as Sukhnah	العين السخنة		2958902	3233597		45552	
+359541	EG			8	Al ‘Ayn as Sukhnah	Al 'Ayn as Sukhnah	العين السخنة	Ain Sukhna	2958902	3233597		45552	
 359576	EG			25	Awsīm	Awsim	أوسيم		3012303	3113571		94174	
 359678	EG			14	El-Tor		Aţ Ţūr	الطور	2824168	3362220		38285	
 359710	EG			12	At Tall al Kabīr	At Tall al Kabir	التل الكبير		3054323	3178504		46962	
@@ -692,11 +692,9 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 444473	EG			69	Dār as Salām	Dar as Salam	دار السلام		2627845	3205608		38008	
 6692512	EG			8	El Gouna		الجونة		2739417	3367825		15000	
 6692518	EG			5	Makadi Bay		خليج مكادي	Makady	2699123	3389952		4000	
-7521348	EG			30	Ain Sukhna		العين السخنة		2960018	3231671		45552	
-7799991	EG			271	New Cairo		القاهرة الجديدة		3003000	3147000		313139	
+7799991	EG			271	New Cairo		القاهرة الجديدة	Al Qahirah al Jadidah|Al Qāhirah al Jadīdah	3003000	3147000		313139	
 7799998	EG			191	El Shorouk		الشروق		3013806	3161556		91899	
 7911550	EG			151	Masākin Shirkat Abū al Wafā lil Muqāwalāt wa al Istithmār al ‘Aqārī	Masakin Shirkat Abu al Wafa lil Muqawalat wa al Istithmar al 'Aqari	مساكن شركة ابو الوفا للمقاولات و الإستثمار العقاري		3003253	3129625		2560	
-8134081	EG			229	Al Qāhirah al Jadīdah	Al Qahirah al Jadidah	القاهرة الجديدة		3004214	3144446		313139	
 8134082	EG			187	Jam‘īyat Iskān aḑ Ḑubbāţ bi Akādīmīyat ash Shurţah	Jam'iyat Iskan ad Dubbat bi Akadimiyat ash Shurtah	جمعية اسكان الضباط باكاديمية الشرطة		3005618	3142256		1228	
 8521413	EG			1565	Saint Catherine		مدينة سانت كاترين	St. Catherine	2856191	3394934		4603	
 8555994	EG			10	Shalateen		الشلاتين	Asch-Schalatin|Shalatin	2313235	3559094		12443	
@@ -2370,7 +2368,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 370510	SD			401	Marabba				1235000	3218333		12108	
 370838	SD			423	Maiurno				1341667	3366667		28727	
 371745	SD			1159	Kutum		كتم		1420000	2466667		34694	
-371760	SD			387	Kosti		ربك	Kusti|Kūstī	1316290	3266347		345068	
+371760	SD			387	Kosti		كوستي	Kusti|Kūstī	1316290	3266347		345068	
 371827	SD			642	Kurmuk		الكرمك		1055700	3428700		10375	
 371870	SD			255	Kuraymah		كريمة		1855000	3185000		19593	
 372386	SD			437	Kināna	Kinana			1403610	3317120		26233	
@@ -2418,7 +2416,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 379406	SD			398	Al Hilāliyya	Al Hilaliyya			1493980	3323400		17345	
 379416	SD			445	Al Ḩawātah	Al Hawatah	الحواتة		1341667	3463333		30184	
 379427	SD			401	Al Hasaheisa		الحصاحيصا		1475264	3329836		47408	
-379535	SD			519	Al Fūlah	Al Fulah	الفولة	Al-Fula	1173292	2835786		26020	
+379535	SD			519	Al Fūlah	Al Fulah	الفولة	Al-Fula|Al-Fulah|El Fula	1173292	2835786		26020	
 379555	SD			748	El Fasher		الفاشر	Al-Faschir|Al-Fashir	1362793	2534936		252609	
 379630	SD			348	El Bauga				1826197	3390812		19141	
 380129	SD			385	Ad Douiem		الدويم (مدينة)	Ad Duwaym|Al Dewaym|Dewaim|Ed Dueim	1400120	3231160		87068	
@@ -2433,7 +2431,6 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 6992535	SD			386	Al Giref Gharb				1556720	3258320		0	
 7026103	SD			408	Najaru		قرية نجرو		1447200	3324790		1153	
 8504621	SD			483	Gereida		قريضة		1127543	2514026		120000	
-11003055	SD			517	Al-Fulah		الفولة	Al-Fula|El Fula	1171195	2834620		0	
 12324108	SD			387	Riyadh		الرياض		1558340	3256770		0	
 12493849	SD			377	Al Jazeera Aba				1331926	3261316		21683	
 12809070	SD			383	ALdinigila wad dhahi		الدنيقيلة ود ضاحي		1388232	3237714		15000	

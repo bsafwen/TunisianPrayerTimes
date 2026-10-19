@@ -40,7 +40,7 @@ class QuranVerseCardLayoutTest {
                     Box(Modifier.width(344.dp)) {
                         QuranVerseCard(
                             title = "البقرة · الآية 47", bookmarked = false, hasPoint = true,
-                            onListen = {}, onRepeat = {}, onPoint = {}, onBookmark = {}, onCopy = {}, onShare = {}, onDismiss = {},
+                            onListen = {}, onRepeat = {}, onPoint = {}, onNotebook = {}, onBookmark = {}, onCopy = {}, onShare = {}, onDismiss = {},
                         )
                     }
                 }
@@ -64,9 +64,15 @@ class QuranVerseCardLayoutTest {
     }
 
     @Test
+    fun aVerseInTheNotebook_saysSoAboveItsActions() {
+        card(1.15f)
+        assertTrue(top("quran_verse_fix") < top("quran_verse_point"))
+    }
+
+    @Test
     fun largeText_putsTheActionsInTwoRowsOfThree() {
         card(2f)
-        assertEquals(top("quran_verse_listen"), top("quran_verse_fix"))
+        assertEquals(top("quran_verse_listen"), top("quran_verse_point"))
         assertEquals(top("quran_verse_bookmark"), top("quran_verse_share"))
         assertTrue(top("quran_verse_bookmark") > top("quran_verse_listen"))
     }

@@ -460,13 +460,13 @@ All minutes are added to unrounded instants; nothing is rounded before step 10.
 
 ### S10. E19, the validity envelope
 
-It applies to every method at a mainland French place (country code FR; overseas territories have their own codes) and to a custom method (`id = custom`) anywhere. The bounds use the plain angles at the real latitude, the method's points and `EVENT_INSTANT`; the raw sunrise, transit and sunset are the method's (S9 step 1).
+It applies to every method at a mainland French place (country code FR; overseas territories have their own codes) and to a custom method (`id = custom`) anywhere. The bounds use the plain angles at the real latitude, the method's points and `EVENT_INSTANT`; the transit is the method's raw one (S9 step 1), and the sunrise and sunset are those of steps 1–3 (S9 steps 2 and 3): where a polar rule set them (H2's 5-hour minimum, H8's cycle), the envelope keeps that estimate (owner, 2026-10-18), so a custom method in the far north keeps the times of the method it was made from instead of the real sun's short night. The steppers' window check (S12) keeps the raw sunrise and sunset.
 
 | Time | Rule (each checked in this order, on the time as it stands) | Moved to, rounding |
 |---|---|---|
 | Fajr | before F₁₈ − 60 s, F₁₈ the 18° instant (20° for a custom method outside mainland France; on a night without it, N(D − 1)'s lowest point) | F₁₈, UP |
 | Fajr | after the 12° instant (no bound on a night without it) | the 12° instant, DOWN |
-| Sunrise | after the raw sunrise + 60 s | the raw sunrise, DOWN |
+| Sunrise | after the sunrise + 60 s | that sunrise, DOWN |
 | Dhuhr | before transit + 72 s − 60 s | transit + 72 s, UP |
 | Asr | before A₁ − 60 s, A₁ the factor-1 `Shadow` Asr on the geometric sun | A₁, UP |
 | Maghrib | before sunset + 60 s − 60 s | sunset + 60 s, UP |
@@ -556,9 +556,9 @@ R (LRE) is the mean, over every date of D's calendar year with an Isha by angle 
 - DUM RF's night N′ is 24 h minus D's own day (sunset − sunrise, steps 1–3), for Fajr and Isha alike, as its tables take it. Its share r(D): 0.30 from 1 to 30 June; before 1 June, with n = floor((days from D to 1 June − 1)/3) + 1, and after 30 June, with n = floor((days from 30 June to D − 1)/3) + 1: max(0.25, 0.30 − n/240).
 - DUM RT's "lowest altitude" is the sun's altitude (S3, `EVENT_INSTANT`, evening point) at N's lowest point (S8).
 
-**H5. Summer forms.** `SummerForm(from, to, f, i)`: on a date whose month and day lie from `from` to `to` (both included; wrapping over the new year when `from` > `to`): Fajr = later(t, sunrise − f min) and, when i is set, Isha = earlier(t, step 4's Maghrib + i min). On other dates, D5's `AngleBased` (H4).
+**H5. Summer forms.** `SummerForm(from, to, f, i)`: on a date whose month and day lie from `from` to `to` (both included; wrapping over the new year when `from` > `to`): Fajr = later(t, sunrise − f min) and, when i is set, Isha = earlier(t, step 4's Maghrib before the zone's shift + i min), since Isha takes the zone's own shift in step 7 (a Slovenian place's Isha is Ljubljana's plus its shift, once). On other dates, D5's `AngleBased` (H4), under the summer form's name.
 
-**H6. Diyanet's takdir** (`DiyanetTakdir`): the criteria of the 2021 International Prayer Times Congress as Diyanet's 2027 tables apply them (fits/diyanet_takdir). It acts only where the evening point's latitude is at least 44.375° north: Diyanet's southern tables (45.9 to 54.8° S) keep the angle times all year. The rule builds a table for the whole of D's year Y. For each date x of Y, as seconds after 00:00 UTC of x (times of day, which compare across dates): F(x) and I(x) the angle events (S5, E4; absent when the sun does not reach the angle), R(x) and M(x) the sunrise and sunset of steps 1–3 (H2, with the held night) plus o_r and o_m (H2: the published sunrise and Maghrib), the sharia night S(x) = F(x) + 86,400 − M(x), the night N(x) = R(x) + 86,400 − M(x), and k = the Fajr angle / the Isha angle. Each date's Fajr and Isha start as F(x) and I(x).
+**H6. Diyanet's takdir** (`DiyanetTakdir`): the criteria of the 2021 International Prayer Times Congress as Diyanet's 2027 tables apply them (fits/diyanet_takdir). It acts only where the evening point's latitude is at least 44.375° north: Diyanet's southern tables (45.9 to 54.8° S) keep the angle times all year. It needs both angles: a method with Fajr or Isha by minutes (a custom method made from a Diyanet preset) keeps its angle time, or α/60 of the night where it is absent, as in the south. The rule builds a table for the whole of D's year Y. For each date x of Y, as seconds after 00:00 UTC of x (times of day, which compare across dates): F(x) and I(x) the angle events (S5, E4; absent when the sun does not reach the angle), R(x) and M(x) the sunrise and sunset of steps 1–3 (H2, with the held night) plus o_r and o_m (H2: the published sunrise and Maghrib), the sharia night S(x) = F(x) + 86,400 − M(x), the night N(x) = R(x) + 86,400 − M(x), and k = the Fajr angle / the Isha angle. Each date's Fajr and Isha start as F(x) and I(x).
 
 - *Case A*, F on every date from 1 February to 30 November of Y: both sides anchor on 21 June, with A_F = R − k·S/3 and A_I = M + S/3 of 21 June.
 - *Case B*, otherwise: xa and xb are the first and the last of those dates without F, l the date before xa, and r = S(l)/3/N(l). On every date x from xa to xb: Fajr = R(x) − k·r·N(x) and Isha = M(x) + r·N(x). The spring side anchors on xa and the autumn side on xb, each with the value of its date.

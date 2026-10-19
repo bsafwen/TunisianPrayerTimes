@@ -35,7 +35,7 @@ import com.tunisianprayertimes.LocalityPickerCatalog
 import com.tunisianprayertimes.LocalitySearchQuery
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.localityKindClass
-import com.tunisianprayertimes.searchLocalities
+import com.tunisianprayertimes.rankLocalities
 import com.tunisianprayertimes.ui.theme.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -48,16 +48,29 @@ private class LocalitySearchRequest(
     val governorateNames: Map<Int, String>,
 )
 
+/**
+ * One header and its rows: a governorate's localities or a country's cities, with the quality of its best match (0 a
+ * whole name, 1 a name's start, 2 another direct match, 3 a typo away). The sheet orders sections by it, so an exact
+ * city abroad comes before a Tunisian place found only as a typo; at equal quality Tunisia comes first.
+ */
+private sealed interface PickerSection {
+    val quality: Int
+}
+
+private class GovernorateSection(val governorateId: Int, val name: String, val rows: List<Locality>, override val quality: Int) : PickerSection
+
+private class CountrySection(val name: String, val rows: List<com.tunisianprayertimes.PlaceCatalogue.Row>, override val quality: Int) : PickerSection
+
 private class LocalityGroupResult(
     val request: LocalitySearchRequest,
-    val groups: List<Triple<Int, String, List<Locality>>>,
+    val groups: List<GovernorateSection>,
 )
 
 /** The catalogue cities found for [query] in [cities], so a result is never shown for another query. */
 private class CityGroupResult(
     val cities: com.tunisianprayertimes.CitySearch.Index,
     val query: String,
-    val groups: List<Pair<String, List<com.tunisianprayertimes.PlaceCatalogue.Row>>>,
+    val groups: List<CountrySection>,
 )
 
 /** A pause in typing before the cities are searched: a word typed quickly is searched once. */
@@ -89,7 +102,7 @@ internal fun LocalityPickerSheet(
     }
     val preparedGroups = remember(catalog, governorateNames) {
         catalog.groups.map { group ->
-            Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, group.rows)
+            GovernorateSection(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, group.rows, quality = 0)
         }
     }
     val searchResult by produceState<LocalityGroupResult?>(null, catalog, search, governorateNames) {
@@ -98,9 +111,12 @@ internal fun LocalityPickerSheet(
             val groups = withContext(Dispatchers.Default) {
                 val scope = this
                 catalog.groups.mapNotNull { group ->
-                    val rows = searchLocalities(group.rows, search) { scope.ensureActive() }
-                    if (rows.isEmpty()) null
-                    else Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, rows)
+                    val ranked = rankLocalities(group.rows, search) { scope.ensureActive() }
+                    if (ranked.isEmpty()) null
+                    else GovernorateSection(
+                        group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName,
+                        ranked.map { it.locality }, quality = ranked.minOf { it.quality },
+                    )
                 }
             }
             ensureActive()
@@ -119,10 +135,10 @@ internal fun LocalityPickerSheet(
             val scope = this
             when {
                 cities.isEmpty -> emptyList()
-                query.isBlank() -> com.tunisianprayertimes.CitySearch.countryGroups(cities.rows)
-                else -> cities.search(query) { scope.ensureActive() }
-                    .groupBy { com.tunisianprayertimes.CitySearch.countryName(com.tunisianprayertimes.place.CountryResolver.normalize(it.ref.countryCode)) }
-                    .toList()
+                query.isBlank() -> com.tunisianprayertimes.CitySearch.countryGroups(cities.rows).map { (name, rows) -> CountrySection(name, rows, quality = 0) }
+                else -> cities.searchRanked(query) { scope.ensureActive() }
+                    .groupBy { (row, _) -> com.tunisianprayertimes.CitySearch.countryName(com.tunisianprayertimes.place.CountryResolver.normalize(row.ref.countryCode)) }
+                    .map { (name, ranked) -> CountrySection(name, ranked.map { it.first }, quality = ranked.minOf { it.second }) }
             }
         }
         value = CityGroupResult(cities, query, found)
@@ -131,6 +147,8 @@ internal fun LocalityPickerSheet(
     val currentCities = cityResult?.takeIf { it.cities === cities && it.query == query }
     val cityGroups = currentCities?.groups.orEmpty()
     val isSearchPending = (!search.isEmpty && currentResult == null) || (!cities.isEmpty && currentCities == null && groups.isEmpty())
+    // Best match first, wherever it is; a stable sort keeps Tunisia's governorates first at equal quality.
+    val sections: List<PickerSection> = (groups + cityGroups).sortedBy { it.quality }
     LaunchedEffect(query, catalog) {
         listState.scrollToItem(if (query.isBlank()) catalog.selectionScrollIndex(selectedId) else 0)
     }
@@ -171,7 +189,7 @@ internal fun LocalityPickerSheet(
                 ) {
                     CircularProgressIndicator(modifier = Modifier.size(24.dp))
                 }
-            } else if (groups.isEmpty() && cityGroups.isEmpty()) {
+            } else if (sections.isEmpty()) {
                 Text(
                     stringResource(R.string.locality_no_results),
                     modifier = Modifier.fillMaxWidth().padding(24.dp),
@@ -180,7 +198,11 @@ internal fun LocalityPickerSheet(
             } else {
                 LazyColumn(state = listState, modifier = Modifier.fillMaxWidth().weight(1f)
                     .nestedScroll(scrollGuard).testTag("locality_list")) {
-                    groups.forEach { (governorId, governorName, rows) ->
+                    sections.forEach { section -> when (section) {
+                    is GovernorateSection -> {
+                        val governorId = section.governorateId
+                        val governorName = section.name
+                        val rows = section.rows
                         stickyHeader(key = "governorate:$governorId") {
                             Text(
                                 governorName, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = GreenPrimary,
@@ -224,7 +246,9 @@ internal fun LocalityPickerSheet(
                             HorizontalDivider(color = Divider, modifier = Modifier.padding(horizontal = 20.dp))
                         }
                     }
-                    cityGroups.forEach { (countryName, rows) ->
+                    is CountrySection -> {
+                        val countryName = section.name
+                        val rows = section.rows
                         stickyHeader(key = "country:$countryName") {
                             Text(
                                 countryName, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = GreenPrimary,
@@ -259,6 +283,7 @@ internal fun LocalityPickerSheet(
                             HorizontalDivider(color = Divider, modifier = Modifier.padding(horizontal = 20.dp))
                         }
                     }
+                    } }
                 }
             }
         }

@@ -37,11 +37,15 @@ import kotlinx.coroutines.withContext
 
 /** The colour of a verse with a hifz point to keep in mind: a light tint and a dashed outline. */
 internal val QuranHifzViolet = androidx.compose.ui.graphics.Color(0xFF7E57C2)
+/** «في دفترك»: the verse card's chip, on the points' light tint. */
+private val QuranHifzChipTint = androidx.compose.ui.graphics.Color(0xFFEDE5F8)
+private val QuranHifzChipText = androidx.compose.ui.graphics.Color(0xFF5E3EA1)
 
 /**
- * What a selected verse offers. «أخطأت» records a slip in it; once the verse has a point, «التصحيح» opens it. [onGrade],
- * in «وضع المراجعة» on a verse whose check is due: the reader just recited it from memory, and answers here.
+ * What a selected verse offers. «أخطأت» records a slip in it, always; a verse already in the notebook says so beside
+ * its title, «في دفترك · التصحيح», which opens its point ([onNotebook]).
  */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun QuranVerseCard(
     title: String,
@@ -50,6 +54,7 @@ internal fun QuranVerseCard(
     onListen: () -> Unit,
     onRepeat: () -> Unit,
     onPoint: () -> Unit,
+    onNotebook: () -> Unit,
     onBookmark: () -> Unit,
     onCopy: () -> Unit,
     onShare: () -> Unit,
@@ -57,43 +62,34 @@ internal fun QuranVerseCard(
     modifier: Modifier = Modifier,
     /** «مراجعة»: the verse covers itself again after this long; a line along the top counts it down. */
     hidesAfterMs: Long? = null,
-    onGrade: ((com.tunisianprayertimes.quran.hifz.HifzGrade) -> Unit)? = null,
-    onReview: (() -> Unit)? = null,
 ) {
     QuranFloatingCard(modifier.testTag("quran_verse_card")) {
         if (hidesAfterMs != null) QuranCountdownLine(title, hidesAfterMs, GreenPrimary.copy(alpha = 0.55f))
         Row(Modifier.fillMaxWidth().padding(start = 14.dp, end = 2.dp, top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(title, Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+            // The chip goes under the title when large text leaves no room beside it.
+            FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(title, Modifier.align(Alignment.CenterVertically), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                if (hasPoint) Surface(
+                    onClick = onNotebook,
+                    shape = RoundedCornerShape(15.dp),
+                    color = QuranHifzChipTint,
+                    border = BorderStroke(1.dp, QuranHifzViolet),
+                    modifier = Modifier.align(Alignment.CenterVertically).heightIn(min = 32.dp).testTag("quran_verse_fix")
+                        .semantics { contentDescription = "في دفترك: افتح تصحيح هذه الآية" },
+                ) {
+                    Box(Modifier.padding(horizontal = 12.dp, vertical = 6.dp), contentAlignment = Alignment.Center) {
+                        Text("في دفترك · التصحيح", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzChipText)
+                    }
+                }
+            }
             IconButton(onClick = onDismiss, modifier = Modifier.size(40.dp)) {
                 Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء التحديد", Modifier.size(18.dp), tint = TextMuted)
             }
         }
-        if (onGrade != null) Column(Modifier.fillMaxWidth().padding(horizontal = 14.dp).testTag("quran_verse_due")) {
-            Text("مراجعة اليوم · كيف قرأتها قبل كشفها؟", fontSize = 12.sp, color = QuranHifzViolet)
-            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                listOf(
-                    com.tunisianprayertimes.quran.hifz.HifzGrade.Held to "دون مساعدة",
-                    com.tunisianprayertimes.quran.hifz.HifzGrade.Hesitated to "بتردد أو تلميح",
-                    com.tunisianprayertimes.quran.hifz.HifzGrade.Again to "أخطأت أو نسيت",
-                ).forEach { (grade, label) ->
-                    OutlinedButton(
-                        onClick = { onGrade(grade) }, contentPadding = PaddingValues(horizontal = 6.dp, vertical = 4.dp),
-                        modifier = Modifier.weight(1f).heightIn(min = 48.dp),
-                    ) { Text(label, fontSize = 12.sp, maxLines = 2, textAlign = androidx.compose.ui.text.style.TextAlign.Center) }
-                }
-            }
-        }
-        if (onReview != null) OutlinedButton(onClick = onReview, modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp).testTag("quran_verse_review")) {
-            Text("اختبر هذا الموضع", fontSize = 13.sp)
-        }
         val actions: List<@Composable RowScope.() -> Unit> = listOf(
             { CardAction(R.drawable.ic_quran_headphones, "استمع", onListen, Modifier.testTag("quran_verse_listen")) },
             { CardAction(R.drawable.ic_quran_repeat, "كرّر", onRepeat, Modifier.testTag("quran_verse_repeat")) },
-            {
-                if (hasPoint) CardAction(R.drawable.ic_quran_mark, "التصحيح", onPoint, Modifier.testTag("quran_verse_fix"), tint = QuranHifzViolet,
-                    description = "التصحيح: الصواب في هذا الموضع")
-                else CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: سجّلها للمراجعة")
-            },
+            { CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: سجّلها للمراجعة") },
             {
                 CardAction(
                     if (bookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark,
@@ -146,7 +142,7 @@ private fun RowScope.CardAction(
 private val CardActionLabelStyle = TextStyle(fontSize = 12.sp)
 
 /** Every label a verse card's action may show, to measure the widest. */
-private val CardActionLabels = listOf("استمع", "كرّر", "التصحيح", "أخطأت", "محفوظة", "علامة", "نسخ", "مشاركة")
+private val CardActionLabels = listOf("استمع", "كرّر", "أخطأت", "محفوظة", "علامة", "نسخ", "مشاركة")
 
 private object QuranRealTime : MotionDurationScale {
     override val scaleFactor: Float get() = 1f

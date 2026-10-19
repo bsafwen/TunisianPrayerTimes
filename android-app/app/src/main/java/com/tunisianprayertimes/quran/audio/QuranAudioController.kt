@@ -90,11 +90,6 @@ data class QuranPlaybackState(
      * from there as ordinary recitation; null once anything else plays or moves.
      */
     val finishedPlaylist: QuranPlaylist? = null,
-    /**
-     * Paused before this verse, which has a hifz point, for the listener to recite it from memory first
-     * («توقف قبل الموضع»); null once playback goes on or moves.
-     */
-    val stoppedBefore: QuranVerseReference? = null,
 )
 
 /** The service owns playback; screens may disappear without interrupting the recitation. */
@@ -152,8 +147,6 @@ object QuranAudioController {
             val track = runCatching { QuranRecitationTimings.load(context, reciter(reciterId))[surah - 1] }.getOrNull()
             val position = saved.getLong(QuranPlaybackService.EXTRA_POSITION, 0L).coerceAtLeast(0L)
             val repeat = decodeQuranRepeat(saved.getString(QuranPlaybackService.KEY_REPEAT, null))
-            val stoppedBefore = saved.getString(QuranPlaybackService.KEY_STOPPED_BEFORE, null)?.split(':')
-                ?.mapNotNull { it.toIntOrNull() }?.takeIf { it.size == 2 }?.let { QuranVerseReference(it[0], it[1]) }
             restoredTrack = track
             publish(QuranPlaybackState(
                 reciterId = reciterId,
@@ -167,7 +160,6 @@ object QuranAudioController {
                 repeatWindow = repeat?.first?.let { range -> track?.repeatWindow(range) },
                 restored = true,
                 savedAtMs = saved.getLong(QuranPlaybackService.KEY_SAVED_AT, 0L),
-                stoppedBefore = stoppedBefore,
             ))
         }
     }
@@ -387,13 +379,12 @@ object QuranAudioController {
         val target = current.repeatWindow?.clamp(bounded) ?: bounded
         val surah = current.surah ?: return
         publish(current.copy(positionMs = target, ayah = track?.ayahAt(target), gapAfter = null, gapRemainingMs = 0L, gapTotalMs = 0L,
-            stoppedBefore = null, finishedPlaylist = null))
+            finishedPlaylist = null))
         context.getSharedPreferences(QuranPlaybackService.PREFERENCES, Context.MODE_PRIVATE).edit()
             .putString(QuranPlaybackService.EXTRA_RECITER, current.reciterId)
             .putInt(QuranPlaybackService.EXTRA_SURAH, surah)
             .putLong(QuranPlaybackService.EXTRA_POSITION, target)
             .remove(QuranPlaybackService.KEY_END_HANDLED)
-            .remove(QuranPlaybackService.KEY_STOPPED_BEFORE)
             .apply()
     }
 

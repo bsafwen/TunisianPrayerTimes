@@ -3,6 +3,7 @@ package com.tunisianprayertimes.quran
 import android.app.Application
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
+import com.tunisianprayertimes.adhkar.MushafPassages
 import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
@@ -130,31 +131,71 @@ class QuranLibraryTest {
         assertEquals("", quranShareText("الفاتحة", listOf(QuranVerse(1, 0, "\u0628\u0650\u0633\u0652\u0645\u0650 \u0627\u0644\u0644\u064E\u0651\u0647\u0650 \u0627\u0644\u0631\u064E\u0651\u062D\u0652\u0645\u064E\u0670\u0646\u0650 \u0627\u0644\u0631\u064E\u0651\u062D\u0650\u064A\u0645\u0650", listOf(1)))))
     }
 
-    @Test
-    fun shareText_ofEveryVerseKeepsItsWordsInMarksOtherFontsDrawAsMeant() {
+    private val waqf by lazy {
+        val source = JSONObject(File("src/main/assets/quran/waqf.json").readText())
+        parseQuranWaqf(source.getJSONObject("signs"), source.getJSONObject("verses"))
+    }
+
+    private val verseTexts by lazy {
         val entries = JSONObject(File("src/main/assets/quran/index.json").readText()).getJSONArray("entries")
-        val texts = LinkedHashMap<Pair<Int, Int>, MutableList<String>>()
+        val texts = LinkedHashMap<QuranVerseReference, MutableList<String>>()
         for (k in 0 until entries.length()) {
             val entry = entries.getJSONObject(k)
-            texts.getOrPut(entry.getInt("surah") to entry.getInt("ayah")) { mutableListOf() } += entry.getString("text")
+            texts.getOrPut(QuranVerseReference(entry.getInt("surah"), entry.getInt("ayah"))) { mutableListOf() } += entry.getString("text")
         }
-        // Waqf signs and the sajdah sign, the small zero, the empty low stop, the encoding's open tanween and its ya
-        // barree, a right-to-left mark: none is drawn by other fonts as the mushaf means it.
-        val foreign = Regex("[\u06D6-\u06DF\u06E9\u06EA\u0656\u0657\u065E\u06D2\u200F]")
+        texts.mapValues { it.value.joinToString(" ") }
+    }
+
+    private fun sharedWords(verse: QuranVerseReference): List<String> =
+        quranShareText("x", listOf(QuranVerse(verse.surah, verse.ayah, verseTexts.getValue(verse), listOf(1))), waqf)
+            .substringAfter('\uFD3F').substringBefore('\uFD3E').split(' ')
+
+    @Test
+    fun shareText_ofEveryVerseIsTheMushafsWordsAndSignsInMarksOtherFontsDrawAsMeant() {
+        // Signs the mushaf does not print (the lazim mim, la, the small seen), the sajdah sign, the small zero, the empty
+        // low stop, the encoding's open tanween and its ya barree, a right-to-left mark: none is drawn by other fonts as
+        // the mushaf means it.
+        val foreign = Regex("[\u06D8\u06D9\u06DC-\u06DF\u06E9\u06EA\u0656\u0657\u065E\u06D2\u200F]")
+        val signs = Regex("[\u06D6\u06D7\u06DA\u06DB]")
         var shared = 0
-        for ((key, fragments) in texts) {
-            if (key.second == 0) continue
-            val source = fragments.joinToString(" ")
-            val text = quranShareText("x", listOf(QuranVerse(key.first, key.second, source, listOf(1))))
+        for ((verse, source) in verseTexts) {
+            if (verse.ayah == 0) continue
+            val text = quranShareText("x", listOf(QuranVerse(verse.surah, verse.ayah, source, listOf(1))), waqf)
             val body = text.substringAfter('\uFD3F').substringBefore('\uFD3E')
-            assertEquals(key.toString(), "\uFD3F$body\uFD3E [x: ${key.second}] · رواية قالون عن نافع، العدّ المدني الأخير", text)
-            assertFalse(key.toString(), foreign.containsMatchIn(body))
+            assertEquals(verse.toString(), "\uFD3F$body\uFD3E [x: ${verse.ayah}] · رواية قالون عن نافع، العدّ المدني الأخير", text)
+            assertFalse(verse.toString(), foreign.containsMatchIn(body))
             // The wasl alif alone, as other fonts expect it: its joining vowel and dot are the mushaf font's.
-            assertFalse(key.toString(), Regex("\u0671[\u064B-\u0652\u06EC\u065C]").containsMatchIn(body))
-            assertEquals(key.toString(), QuranMushafText.text(source).split(' ').size, body.split(' ').size)
+            assertFalse(verse.toString(), Regex("\u0671[\u064B-\u0652\u06EC\u065C]").containsMatchIn(body))
+            val words = body.split(' ')
+            assertEquals(verse.toString(), QuranMushafText.text(source).split(' ').size, words.size)
+            // Each sign at its word's end, after the word's own marks.
+            val expected = waqf[verse].orEmpty().associate { it.word to it.sign }
+            words.forEachIndexed { i, word ->
+                val sign = word.lastOrNull()?.takeIf { signs.matches(it.toString()) }
+                assertEquals("$verse word $i", expected[i], sign)
+                assertEquals("$verse word $i", if (sign == null) 0 else 1, signs.findAll(word).count())
+            }
             shared++
         }
         assertEquals(6214, shared)
+        assertEquals(4305, waqf.values.sumOf { it.size })
+    }
+
+    @Test
+    fun shareText_signsAreThoseReadByHandForThePassagesShownOutsideTheQuranTab() {
+        val signs = Regex("[\u06D6\u06D7\u06DA\u06DB]")
+        for (id in MushafPassages.ids - "basmala") {
+            val surah = MushafPassages.SOURCES.getValue(id).split(' ').last().split(':').first().toInt()
+            val shared = MushafPassages.SOURCES.getValue(id).split(' ')
+                .map { it.split(':') }.filter { it[0].toInt() == surah && it[1].toInt() > 0 }
+                .flatMap { (_, ayah, range) ->
+                    val (from, to) = range.split('-').map(String::toInt)
+                    sharedWords(QuranVerseReference(surah, ayah.toInt())).subList(from, to + 1)
+                }
+                .joinToString("") { word -> signs.findAll(word).joinToString("") { it.value } }
+            val hand = signs.findAll(MushafPassages.text(id)!!).joinToString("") { it.value }
+            assertEquals(id, hand, shared)
+        }
     }
 
     @Test

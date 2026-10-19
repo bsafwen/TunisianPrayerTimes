@@ -20,63 +20,40 @@ class HifzLearningTest {
     }
 
     @Test
-    fun unfinishedPracticeSurvivesReloadAndDayChangeWhileExposureExpires() {
+    fun theDaysExposureSurvivesReloadAndExpiresAtMidnight() {
         val context = RuntimeEnvironment.getApplication()
         val verse = QuranVerseReference(2, 17)
-        HifzLearning(100, pending = setOf(7, 8), exposed = setOf(verse), practised = setOf(7)).write(context)
+        HifzLearning(100, exposed = setOf(verse)).write(context)
 
-        val restarted = HifzLearning.read(context, 100)
-        assertEquals(setOf(7L, 8L), restarted.pending)
-        assertEquals(setOf(verse), restarted.exposed)
-        assertEquals(setOf(7L), restarted.practised)
-        val tomorrow = HifzLearning.read(context, 101)
-        assertEquals(restarted.pending, tomorrow.pending)
-        assertTrue(tomorrow.exposed.isEmpty())
-        assertTrue(tomorrow.practised.isEmpty())
+        assertEquals(setOf(verse), HifzLearning.read(context, 100).exposed)
+        assertTrue(HifzLearning.read(context, 101).exposed.isEmpty())
     }
 
     @Test
-    fun completionAndUndoKeepOtherPendingWorkAcrossReload() {
-        val context = RuntimeEnvironment.getApplication()
-        val original = HifzLearning(100, pending = setOf(7, 8), practised = setOf(8))
-        original.pending(7, false).practised(7, true).write(context)
-        val completed = HifzLearning.read(context, 100)
-        assertEquals(setOf(8L), completed.pending)
-        assertEquals(setOf(7L, 8L), completed.practised)
-        completed.pending(7, 7L in original.pending).practised(7, 7L in original.practised).write(context)
-        assertEquals(original, HifzLearning.read(context, 100))
-    }
-
-    @Test
-    fun backgroundAudioSurvivesAStaleUiSnapshotWhileItsPracticeUpdateIsSaved() {
+    fun backgroundAudioSurvivesAStaleUiSnapshot() {
         val context = RuntimeEnvironment.getApplication()
         val seen = QuranVerseReference(2, 17)
         val heard = QuranVerseReference(2, 18)
-        val ui = HifzLearning(100, pending = setOf(7, 8), exposed = setOf(seen), practised = setOf(8))
+        val turned = QuranVerseReference(2, 19)
+        val ui = HifzLearning(100, exposed = setOf(seen))
         ui.write(context)
         HifzLearning.recordExposure(context, heard, 100)
 
-        val merged = ui.pending(7, false).practised(7, true).write(context)
-        assertEquals(setOf(seen, heard), merged.exposed)
-        assertEquals(setOf(8L), merged.pending)
-        assertEquals(setOf(7L, 8L), merged.practised)
+        val merged = ui.expose(setOf(turned)).write(context)
+        assertEquals(setOf(seen, heard, turned), merged.exposed)
+        assertEquals(setOf(heard, turned), merged.seen.keys)
         assertEquals(merged, HifzLearning.read(context, 100))
     }
 
     @Test
-    fun backgroundAudioPreservesTheLatestPracticeAndUndoChanges() {
+    fun theTrainingListsThatAreNoMoreAreDeletedFromStorage() {
         val context = RuntimeEnvironment.getApplication()
-        val heard = QuranVerseReference(2, 18)
-        HifzLearning(100, pending = setOf(7, 8), practised = setOf(8)).write(context)
-        val afterAudio = HifzLearning.recordExposure(context, heard, 100)
-        assertEquals(setOf(7L, 8L), afterAudio.pending)
-        assertEquals(setOf(8L), afterAudio.practised)
+        val prefs = context.getSharedPreferences("hifz_learning", Context.MODE_PRIVATE)
+        prefs.edit().putLong("day", 100).putStringSet("pending", setOf("7")).putStringSet("practised", setOf("8")).commit()
 
-        afterAudio.practised(8, false).write(context)
-        val repeated = HifzLearning.recordExposure(context, heard, 100)
-        assertTrue(repeated.practised.isEmpty())
-        assertEquals(setOf(7L, 8L), repeated.pending)
-        assertEquals(setOf(heard), repeated.exposed)
+        HifzLearning.read(context, 100).expose(setOf(QuranVerseReference(2, 17))).write(context)
+        assertFalse(prefs.contains("pending"))
+        assertFalse(prefs.contains("practised"))
     }
 
     @Test
@@ -101,12 +78,10 @@ class HifzLearningTest {
         val context = RuntimeEnvironment.getApplication()
         val yesterdayVerse = QuranVerseReference(2, 17)
         val todayVerse = QuranVerseReference(2, 18)
-        val yesterday = HifzLearning(100, pending = setOf(7), exposed = setOf(yesterdayVerse), practised = setOf(8))
+        val yesterday = HifzLearning(100, exposed = setOf(yesterdayVerse))
         yesterday.write(context)
         val today = HifzLearning.recordExposure(context, todayVerse, 101)
-        assertEquals(setOf(7L), today.pending)
         assertEquals(setOf(todayVerse), today.exposed)
-        assertTrue(today.practised.isEmpty())
         assertEquals(today, yesterday.write(context))
         assertEquals(today, HifzLearning.recordExposure(context, yesterdayVerse, 100))
         assertEquals(today, HifzLearning.read(context, 101))

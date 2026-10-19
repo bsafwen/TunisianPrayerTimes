@@ -56,12 +56,9 @@ internal fun quranVerseEnd(
     gapFactor: Float,
     verseLengthMs: Long,
     speed: Float,
-    /** The next verse is a point to recite from memory first: a stop once this verse is left, never in an endless repetition. */
-    stopBefore: Boolean = false,
 ): QuranVerseEnd = when {
     // The timer waits for the verse's last counted recitation; an endless repetition stops at this one.
     sleepHere && (verseTimes == 0 || round >= verseTimes) -> QuranVerseEnd.Sleep
-    stopBefore && verseTimes != 0 && round >= verseTimes -> QuranVerseEnd.Sleep
     verseTimes == 0 || round < verseTimes -> QuranVerseEnd.Again(round + 1)
     gapFactor > 0f && verseLengthMs > 0L ->
         QuranVerseEnd.Pause((verseLengthMs * gapFactor / speed.coerceAtLeast(0.25f)).roundToLong().coerceAtLeast(500L))

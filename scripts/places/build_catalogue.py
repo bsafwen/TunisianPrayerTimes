@@ -25,11 +25,12 @@ Both files share one format (one parser on the phone), a header line then one ro
 then id, with zone left empty where it repeats the row above's (the phone carries it down):
     id country admin1 admin2 dem name ascii arabic aliases latE5 lngE5 zone population flags
 admin1 and admin2 are GeoNames codes (FR's admin2 is the département, "69"); admin2 is kept for FR, TR, NO and
-PS rows, admin1 for RU, DZ, MR, AE, JO and IQ rows (the ones the zone mapping reads, 6.5); dem is kept for
-Arab and Réunion rows (E16, E10); ascii is left empty where it equals name (the phone reads the name then; it
+PS rows, admin1 for RU, DZ, MR, AE, JO and IQ rows and Spain's Ceuta and Melilla rows (CE, ML: the ones the zone
+mapping and the choice keys read, 6.4, 6.5); dem is kept for Arab, Réunion, Ceuta and Melilla rows (E16, E10); ascii is left empty where it equals name (the phone reads the name then; it
 keeps the two files under the budget); aliases are "|"-separated exonyms; flags holds "n" for a neighbour-only row.
 Western Sahara rows take MA (A1) and Svalbard rows NO, Longyearbyen kept (6.8). Arab rows within 2 km of a
-larger one are dropped (GeoNames' imported duplicates). The build reports Arabic coverage by population,
+larger one are dropped (GeoNames' imported duplicates), and rows of one country showing the same name within 6 km
+become one (merge_same_places). The build reports Arabic coverage by population,
 checks every zone with Python's zoneinfo, and fails above the 2 MB budget.
 """
 
@@ -37,8 +38,11 @@ from __future__ import annotations
 
 import argparse
 import io
+import json
 import math
+import re
 import sys
+import unicodedata
 import zipfile
 from collections import defaultdict
 from pathlib import Path
@@ -46,6 +50,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[2]
 ASSETS = ROOT / "android-app" / "app" / "src" / "main" / "assets" / "places"
+OFFICIAL_ZONES = ROOT / "android-app" / "app" / "src" / "main" / "assets" / "official-zones"
 BUDGET_BYTES = 2 * 1024 * 1024
 
 EUROPE = {
@@ -60,6 +65,8 @@ ARAB_LEAGUE = {
 }
 NEIGHBOURS = {"IR", "TD", "NE", "ML", "SN", "CF", "SS", "ET", "ER", "KE"}
 ADMIN1_COUNTRIES = {"RU", "DZ", "MR", "AE", "JO", "IQ"}
+# Spain's admin1 and dem only for Ceuta and Melilla: their own method choice keys and Habous localities (6.4, 6.8).
+CEUTA_MELILLA = {"CE", "ML"}
 ADMIN2_COUNTRIES = {"FR", "TR", "NO", "PS"}
 # GeoNames codes that put a place in a district far from it (found by fits/diyanet_tr, 2026-10-16): Çamyuva lies
 # beside Kemer (7732191), not in Alanya's district (7732185), 129 km away.
@@ -68,8 +75,15 @@ SEAT_CODES = {"PPLA", "PPLA2", "PPLA3", "PPLA4", "PPLC"}
 EXONYM_LANGUAGES = {"en", "fr", "de", "it", "es"}
 LONGYEARBYEN = 2729907
 HAWAR = 290243
+# GeoNames' only Arabic name for Kosti (371760) is «ربك», Rabak's, the town 8.5 km away; Kosti is «كوستي».
+ARABIC_FIXES = {HAWAR: "جزر حوار", 371760: "كوستي"}
 NEIGHBOUR_KM = 60.0
 DUPLICATE_KM = 2.0
+# One place in GeoNames twice: rows of one country showing the same name within this distance (2026-10-19, measured on
+# the catalogue: New Cairo's two entries 2.8 km apart, Ain Sukhna's 2.2, Derry and Londonderry 0.1, Peterhof and
+# Petrodvorets 5.7; the nearest distinct towns sharing a name, Mayotte's two Miréréni, 13.2 km apart).
+SAME_PLACE_KM = 6.0
+ARABIC_FOLDS = {"أ": "ا", "إ": "ا", "آ": "ا", "ى": "ي", "ة": "ه", "ؤ": "و", "ئ": "ي"}
 
 
 def km(a: tuple[float, float], b: tuple[float, float]) -> float:
@@ -157,12 +171,11 @@ def clean(text: str) -> str:
 
 def line_of(row: dict, arabic: str, aliases: set[str], neighbour: bool) -> str:
     cc = country_of(row)
-    admin1 = row["admin1"] if cc in ADMIN1_COUNTRIES and not neighbour else ""
+    exclave = cc == "ES" and row["admin1"] in CEUTA_MELILLA
+    admin1 = row["admin1"] if (cc in ADMIN1_COUNTRIES or exclave) and not neighbour else ""
     admin2 = ADMIN2_FIXES.get(row["id"], row["admin2"]) if cc in ADMIN2_COUNTRIES and not neighbour else ""
-    dem = row["dem"] if (cc in ARAB_LEAGUE or cc == "RE") and not neighbour else ""
+    dem = row["dem"] if (cc in ARAB_LEAGUE or cc == "RE" or exclave) and not neighbour else ""
     names = sorted(a for a in aliases if a not in (row["name"], row["ascii"], arabic))
-    if row["id"] == HAWAR:
-        arabic = "جزر حوار"
     cols = [
         str(row["id"]), cc, admin1, admin2, dem, clean(row["name"]), "" if row["ascii"] == row["name"] else clean(row["ascii"]),
         "" if neighbour else clean(arabic), "" if neighbour else "|".join(clean(a) for a in names[:12]),
@@ -189,6 +202,58 @@ def compress_zones(lines: list[str]) -> list[str]:
     return out
 
 
+def fold(text: str) -> str:
+    """A shown name as the picker compares it: lower case, Arabic letters folded, marks and tatweel removed."""
+    lower = "".join(ARABIC_FOLDS.get(c, c) for c in text.lower())
+    stripped = "".join(c for c in unicodedata.normalize("NFD", lower) if unicodedata.category(c) != "Mn").replace("ـ", "")
+    return re.sub(r"[\W_]+", " ", stripped).strip()
+
+
+def referenced_ids(folder: Path) -> set[int]:
+    """The catalogue rows the official zones name (6.5): every `catalogueIds` in their assets."""
+    found: set[int] = set()
+
+    def walk(node) -> None:
+        if isinstance(node, dict):
+            for key, value in node.items():
+                if key == "catalogueIds":
+                    found.update(int(v) for v in value)
+                else:
+                    walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    for asset in sorted(folder.glob("*.json")):
+        walk(json.loads(asset.read_text(encoding="utf-8")))
+    return found
+
+
+def merge_same_places(rows: list[dict], arabic_of, aliases: dict[int, set[str]], referenced: set[int]) -> list[dict]:
+    """
+    One row per place (D2): rows of one country showing the same name within SAME_PLACE_KM are one town entered twice in
+    GeoNames, which the picker would list twice. The kept row is one an official zone names, else the most populous,
+    else the oldest id; it takes the largest population and the others' names as aliases, so each spelling still finds it.
+    """
+    groups: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for r in rows:
+        groups[(country_of(r), fold(arabic_of(r) or r["name"]))].append(r)
+    dropped: set[int] = set()
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        kept: list[dict] = []
+        for r in sorted(group, key=lambda r: (r["id"] not in referenced, -r["population"], r["id"])):
+            twin = next((k for k in kept if km((k["lat"], k["lng"]), (r["lat"], r["lng"])) <= SAME_PLACE_KM), None)
+            if twin is None:
+                kept.append(r)
+                continue
+            twin["population"] = max(twin["population"], r["population"])
+            aliases[twin["id"]].update(a for a in [r["name"], r["ascii"], *aliases.get(r["id"], ())] if a)
+            dropped.add(r["id"])
+    return [r for r in rows if r["id"] not in dropped]
+
+
 def dedupe(rows: list[dict]) -> list[dict]:
     """Drops a row within 2 km of a larger kept row of the same country (a 1° grid keeps it fast)."""
     kept: list[dict] = []
@@ -208,6 +273,7 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--geonames", type=Path, required=True)
     parser.add_argument("--wikidata-ar", type=Path)
     parser.add_argument("--out", type=Path, default=ASSETS)
+    parser.add_argument("--zones", type=Path, default=OFFICIAL_ZONES, help="the official-zone assets whose named rows are kept")
     args = parser.parse_args(argv)
     g = args.geonames
 
@@ -250,18 +316,29 @@ def main(argv: list[str]) -> int:
     ids = {r["id"] for r in list(europe.values()) + list(overseas.values()) + arab_rows}
     arabic, aliases = read_alternate_names(dump_lines(g, "alternateNamesV2"), ids)
     wikidata = read_wikidata(args.wikidata_ar)
+    aliases = defaultdict(set, aliases)
+    for fixed in ARABIC_FIXES:
+        # A corrected row is no longer found by the name it replaces (Kosti by Rabak's «ربك»).
+        aliases[fixed].discard(arabic.get(fixed))
+
+    def arabic_of(r: dict) -> str:
+        return ARABIC_FIXES.get(r["id"]) or arabic.get(r["id"]) or wikidata.get(r["id"], "")
+
+    referenced = referenced_ids(args.zones)
+    europe_rows = merge_same_places(list(europe.values()) + list(overseas.values()), arabic_of, aliases, referenced)
+    arab_rows = merge_same_places(arab_rows, arabic_of, aliases, referenced)
 
     zones = set()
     europe_lines, arab_lines = [HEADER], [HEADER]
     coverage = defaultdict(lambda: [0, 0])
-    for r in sorted(list(europe.values()) + list(overseas.values()), key=lambda r: (country_of(r), r["id"])):
-        name = arabic.get(r["id"]) or wikidata.get(r["id"], "")
+    for r in sorted(europe_rows, key=lambda r: (country_of(r), r["id"])):
+        name = arabic_of(r)
         europe_lines.append(line_of(r, name, aliases.get(r["id"], set()), False))
         zones.add(r["zone"])
         coverage["europe"][0] += r["population"] * (1 if name else 0)
         coverage["europe"][1] += r["population"]
     for r in sorted(arab_rows, key=lambda r: (country_of(r), r["id"])):
-        name = arabic.get(r["id"]) or wikidata.get(r["id"], "")
+        name = arabic_of(r)
         arab_lines.append(line_of(r, name, aliases.get(r["id"], set()), False))
         zones.add(r["zone"])
         coverage["arab"][0] += r["population"] * (1 if name else 0)

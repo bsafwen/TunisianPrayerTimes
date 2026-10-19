@@ -28,8 +28,6 @@ import com.tunisianprayertimes.quran.QuranRepository
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.assets.QuranAssets
 import com.tunisianprayertimes.quran.assets.attachTo
-import com.tunisianprayertimes.quran.hifz.HifzRepository
-import com.tunisianprayertimes.quran.hifz.HifzSettings
 import com.tunisianprayertimes.quran.hifz.HifzLearning
 import com.tunisianprayertimes.quran.hifz.todayEpochDay
 import com.tunisianprayertimes.wake.AwakeCheckService
@@ -100,8 +98,6 @@ class QuranPlaybackService : Service() {
     private var playlistRound = 1
     /** The playlist just recited to its end, for «انتهى التدريب»; see [QuranPlaybackState.finishedPlaylist]. */
     private var finishedList: QuranPlaylist? = null
-    /** Paused before this verse's hifz point; see [QuranPlaybackState.stoppedBefore]. */
-    private var stoppedBefore: QuranVerseReference? = null
     /**
      * The listener's own place when a playlist took over, a drill or a listening to points: the playlist comes back
      * to it when it ends or is stopped, and it is what stays saved meanwhile, so that «درّب» never erases the wird.
@@ -109,8 +105,6 @@ class QuranPlaybackService : Service() {
     private var returnPlace: QuranReturnPlace? = null
     /** The playlist ended back on [returnPlace]: the place in view is the listener's own again. */
     private var backHome = false
-    /** Leaves the foreground once the reader has had time to recite a point stopped before. */
-    private var foregroundHold: Job? = null
     /** Ends the slow idle wait of the position poll as soon as audio starts. */
     private val pollWake = Channel<Unit>(Channel.CONFLATED)
 
@@ -151,11 +145,6 @@ class QuranPlaybackService : Service() {
             @Suppress("UnspecifiedRegisterReceiverFlag")
             registerReceiver(noisyReceiver, IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY))
         }
-        // Read off the main thread before the first verse ends: whether to stop before the reader's points, and where they are.
-        scope.launch(Dispatchers.IO) {
-            HifzSettings.read(applicationContext)
-            HifzRepository.load(applicationContext)
-        }
         scope.launch {
             while (isActive) {
                 // The app's alarm player does not request audio focus, so its active
@@ -174,9 +163,8 @@ class QuranPlaybackService : Service() {
         if (!current.playing) return 500L
         val listening = QuranAudioController.listening.value
         val speed = (playlist?.speed ?: listening.speed).coerceAtLeast(0.25f)
-        val verseEnd = currentVerse?.takeIf { verse ->
-            playlist != null || listening.verseTimes != 1 || listening.gapFactor > 0f || listening.sleep != null ||
-                recording?.let { stopsBeforePoint(it, QuranVerseReference(it.number, verse + 1)) } == true
+        val verseEnd = currentVerse?.takeIf {
+            playlist != null || listening.verseTimes != 1 || listening.gapFactor > 0f || listening.sleep != null
         }
             ?.let { recording?.endOf(it) }
         val end = listOfNotNull(
@@ -206,7 +194,6 @@ class QuranPlaybackService : Service() {
                 returnPlace = null
                 backHome = false
                 finishedList = null
-                stoppedBefore = null
                 repeat = repeatRange(intent, intent.getIntExtra(EXTRA_REPEAT_FROM_SURAH, surah), ayah)
                 repeatRound = if (repeat != null) intent.getIntExtra(EXTRA_REPEAT_ROUND, 1).coerceAtLeast(1) else 1
                 load(
@@ -229,7 +216,6 @@ class QuranPlaybackService : Service() {
                 }
                 backHome = false
                 finishedList = null
-                stoppedBefore = null
                 playlist = list
                 playlistIndex = intent.getIntExtra(EXTRA_PLAYLIST_INDEX, 0).coerceIn(0, list.items.lastIndex)
                 playlistRound = intent.getIntExtra(EXTRA_PLAYLIST_ROUND, 1).coerceIn(1, list.rounds)
@@ -277,7 +263,6 @@ class QuranPlaybackService : Service() {
         }
         explicitStop = false
         finishedList = null
-        stoppedBefore = null
         clearGap()
         currentVerse = ayah
         verseRound = 1
@@ -467,7 +452,6 @@ class QuranPlaybackService : Service() {
         try {
             media.start()
             finishedList = null
-            stoppedBefore = null
             applySpeed(media)
             publish(QuranAudioController.state.value.copy(playing = true, loading = false, error = null, interruption = null))
             refreshPosition()
@@ -478,8 +462,7 @@ class QuranPlaybackService : Service() {
         }
     }
 
-    /** [keepForeground]: the notification stays, as after a stop before a point that the reader resumes from the lock screen. */
-    private fun pausePlayback(userInitiated: Boolean, temporaryFocusLoss: Boolean = false, keepForeground: Boolean = false) {
+    private fun pausePlayback(userInitiated: Boolean, temporaryFocusLoss: Boolean = false) {
         if (userInitiated || !temporaryFocusLoss) {
             playWhenReady = false
             resumeAfterFocusGain = false
@@ -492,7 +475,7 @@ class QuranPlaybackService : Service() {
         persistPosition()
         if (!temporaryFocusLoss) {
             abandonFocus()
-            if (keepForeground) notifications.notify(NOTIFICATION_ID, buildNotification()) else leaveForeground()
+            leaveForeground()
         }
     }
 
@@ -531,7 +514,6 @@ class QuranPlaybackService : Service() {
     /** [quiet] keeps the controls steady while a repeated range silently returns to its start. */
     private fun seek(positionMs: Long, quiet: Boolean = false) {
         finishedList = null
-        stoppedBefore = null
         val current = QuranAudioController.state.value
         val waiting = recording
         if (!prepared && player == null && loadJob?.isActive != true && current.notDownloaded && waiting != null) {
@@ -714,7 +696,6 @@ class QuranPlaybackService : Service() {
         val track = recording ?: return
         if (track.number != surah || track.startOf(ayah) == null) return
         finishedList = null
-        stoppedBefore = null
         playlist = null
         repeat = QuranRepeatRange(QuranVerseReference(surah, ayah), QuranVerseReference(surah, ayah))
         repeatRound = 1
@@ -793,13 +774,7 @@ class QuranPlaybackService : Service() {
         // A drill recites each verse once, with its own silence and speed.
         val drill = playlist
         val times = if (drill != null) 1 else listening.verseTimes
-        // Only on the recitation that leaves the verse: never while it is still repeated, nor in an endless repetition.
-        val leaving = times != 0 && verseRound >= times
-        val beforePoint = QuranVerseReference(track.number, verse + 1).takeIf { drill == null && leaving && stopsBeforePoint(track, it) }
-        val step = quranVerseEnd(
-            times, verseRound, sleepHere, drill?.gapFactor ?: listening.gapFactor, end - start, drill?.speed ?: listening.speed,
-            stopBefore = beforePoint != null,
-        )
+        val step = quranVerseEnd(times, verseRound, sleepHere, drill?.gapFactor ?: listening.gapFactor, end - start, drill?.speed ?: listening.speed)
         return when (step) {
             is QuranVerseEnd.Again -> {
                 verseRound = step.round
@@ -810,26 +785,15 @@ class QuranPlaybackService : Service() {
                 true
             }
             QuranVerseEnd.Sleep -> {
-                // The listener's own timer ends here, or the next verse is a point to recite from memory first.
+                // The listener's own timer ends here.
                 if (sleepHere) QuranAudioController.clearSleep()
                 verseRound = 1
-                pausePlayback(userInitiated = true, keepForeground = beforePoint != null)
+                pausePlayback(userInitiated = true)
                 // Rest on the verse that ended, not on the first moments of the next one, with its end
                 // already handled: play goes on to the next verse instead of hearing this end again.
                 if (overshot) seek(end - 1L, quiet = true)
                 currentVerse = verse
                 verseEndHandled = verse
-                if (beforePoint != null) {
-                    stoppedBefore = beforePoint
-                    publish(QuranAudioController.state.value)
-                    persistPosition()
-                    // Ten minutes to recite it from memory with the controls on the lock screen, as a media app keeps them.
-                    foregroundHold?.cancel()
-                    foregroundHold = scope.launch {
-                        delay(10 * 60_000L)
-                        if (!playWhenReady) leaveForeground()
-                    }
-                }
                 true
             }
             is QuranVerseEnd.Pause -> {
@@ -842,19 +806,6 @@ class QuranPlaybackService : Service() {
                 false
             }
         }
-    }
-
-    /**
-     * «توقف قبل الموضع لأسمّعه»: [next] has a point the reader keeps a heads-up for, within the passage repeated if
-     * any. Decided here, in the service, so that it also happens with the screen off.
-     */
-    private fun stopsBeforePoint(track: QuranSurahRecording, next: QuranVerseReference): Boolean {
-        if (track.startOf(next.ayah) == null) return false
-        if (HifzRepository.points.value.none { it.verse == next && it.headsUp }) return false
-        if (repeat?.contains(next) == false) return false
-        // Within a passage repeated to memorise it, only its first pass stops: the next passes are its repetition.
-        if (repeat != null && repeatRound > 1) return false
-        return HifzSettings.read(this).stopBefore
     }
 
     private fun startGap(verse: Int, durationMs: Long) {
@@ -944,10 +895,10 @@ class QuranPlaybackService : Service() {
             repeatRound = if (range == null) 0 else repeatRound,
             repeatWindow = range?.let { recording?.takeIf { track -> track.number == value.surah }?.repeatWindow(it) },
             finishedPlaylist = finishedList,
-            stoppedBefore = stoppedBefore,
         )
-        // Quiet seeks can publish a target while their old playing flag is still set. Wait until it actually starts.
-        if (prepared && !seeking && state.playing && !state.loading && state.gapAfter == null) {
+        // A point's own audio heard (its listening, its drill, its cue), not the listener's recitation. Quiet seeks can
+        // publish a target while their old playing flag is still set: wait until it actually starts.
+        if (list != null && prepared && !seeking && state.playing && !state.loading && state.gapAfter == null) {
             val surah = state.surah
             val ayah = state.ayah
             if (surah != null && ayah != null && ayah > 0) {
@@ -959,7 +910,7 @@ class QuranPlaybackService : Service() {
             }
         }
         QuranAudioController.publish(state)
-        val key = "${state.reciterId}:${state.surah}:${state.ayah}:${state.playing}:${state.loading}:${state.error}:${state.notDownloaded}:$range:$repeatRound:${state.interruption}:${list?.title}:$playlistIndex:$playlistRound:${finishedList?.title}:$stoppedBefore"
+        val key = "${state.reciterId}:${state.surah}:${state.ayah}:${state.playing}:${state.loading}:${state.error}:${state.notDownloaded}:$range:$repeatRound:${state.interruption}:${list?.title}:$playlistIndex:$playlistRound:${finishedList?.title}"
         if (key != notificationKey) {
             notificationKey = key
             if (state.surah != null) notifications.notify(NOTIFICATION_ID, buildNotification())
@@ -1027,7 +978,6 @@ class QuranPlaybackService : Service() {
                 current.interruption == QuranInterruption.Alarm -> "توقفت التلاوة للمنبّه · اضغط تشغيل للمتابعة"
                 current.interruption == QuranInterruption.OtherAudio -> "توقفت التلاوة لصوت آخر · اضغط تشغيل للمتابعة"
                 // Said where the reader may be, the phone in a pocket: why it stopped, and what to do.
-                !active && current.stoppedBefore != null -> "توقفت قبل الموضع · سمّع الآية ${current.stoppedBefore.ayah} من حفظك ثم اضغط تشغيل"
                 !active && current.finishedPlaylist != null -> "${quranPlaylistEnded(current.finishedPlaylist.title)} · " + when {
                     backHome -> "اضغط تشغيل لتتابع استماعك" + (current.ayah?.let { " من الآية $it" } ?: "")
                     else -> current.ayah?.let { "اضغط تشغيل للمتابعة بعد الآية $it" } ?: "اضغط تشغيل للمتابعة"
@@ -1074,7 +1024,7 @@ class QuranPlaybackService : Service() {
         returnPlace?.takeIf { playlist != null }?.let { back ->
             preferences.edit().putString(EXTRA_RECITER, back.reciterId).putInt(EXTRA_SURAH, back.surah)
                 .putLong(EXTRA_POSITION, back.positionMs).putString(KEY_REPEAT, back.repeat).putInt(KEY_END_HANDLED, 0)
-                .remove(KEY_STOPPED_BEFORE).putLong(KEY_SAVED_AT, System.currentTimeMillis()).apply()
+                .putLong(KEY_SAVED_AT, System.currentTimeMillis()).apply()
             return
         }
         val state = QuranAudioController.state.value
@@ -1082,7 +1032,6 @@ class QuranPlaybackService : Service() {
         preferences.edit().putString(EXTRA_RECITER, state.reciterId).putInt(EXTRA_SURAH, surah)
             .putLong(EXTRA_POSITION, state.positionMs).putString(KEY_REPEAT, repeat?.takeIf { playlist == null }?.encode(repeatRound))
             .putInt(KEY_END_HANDLED, verseEndHandled?.takeIf { it == recording?.ayahAt(state.positionMs) } ?: 0)
-            .putString(KEY_STOPPED_BEFORE, stoppedBefore?.let { "${it.surah}:${it.ayah}" })
             .putLong(KEY_SAVED_AT, System.currentTimeMillis()).apply()
     }
 
@@ -1139,7 +1088,6 @@ class QuranPlaybackService : Service() {
     private fun goBack(back: QuranReturnPlace, ended: QuranPlaylist?) {
         returnPlace = null
         playlist = null
-        stoppedBefore = null
         val saved = decodeQuranRepeat(back.repeat)
         repeat = saved?.first
         repeatRound = saved?.second?.coerceAtLeast(1) ?: 1
@@ -1171,7 +1119,6 @@ class QuranPlaybackService : Service() {
             returnPlace = null
             playlist = null
             finishedList = null
-            stoppedBefore = null
             repeat = null
             repeatRound = 1
             explicitStop = true
@@ -1195,7 +1142,6 @@ class QuranPlaybackService : Service() {
         playWhenReady = false
         playlist = null
         finishedList = null
-        stoppedBefore = null
         repeat = null
         repeatRound = 1
         releasePlayer()
@@ -1268,7 +1214,6 @@ class QuranPlaybackService : Service() {
         internal const val KEY_REPEAT = "repeat"
         internal const val KEY_SAVED_AT = "savedAt"
         internal const val KEY_END_HANDLED = "endHandled"
-        internal const val KEY_STOPPED_BEFORE = "stoppedBefore"
         /** A verse end is handled this much early, so none of the next verse is heard before a repeat or pause. */
         private const val VerseEndEarlyMs = 40L
         /** A verse end noticed this late is still handled; later than that, playback jumped elsewhere. */

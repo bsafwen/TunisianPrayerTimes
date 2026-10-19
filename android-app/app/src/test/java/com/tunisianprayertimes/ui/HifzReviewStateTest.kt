@@ -3,6 +3,7 @@ package com.tunisianprayertimes.ui
 import androidx.compose.runtime.saveable.SaverScope
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.hifz.HifzCheck
+import com.tunisianprayertimes.quran.hifz.HifzFreshGapMs
 import com.tunisianprayertimes.quran.hifz.HifzGrade
 import com.tunisianprayertimes.quran.hifz.HifzKind
 import com.tunisianprayertimes.quran.hifz.HifzPoint
@@ -14,9 +15,8 @@ import org.junit.Test
 
 class HifzReviewStateTest {
     private var now = 10_000L
+    private var wall = 1_000_000_000L
     private val calls = mutableListOf<String>()
-    private val pendingChanges = mutableListOf<Pair<Long, Boolean>>()
-    private val practiceResults = mutableListOf<Pair<Long, HifzGrade?>>()
     private val exposures = mutableListOf<Set<QuranVerseReference>>()
     private var undone: HifzGiven? = null
     private val actions = object : HifzReviewActions {
@@ -28,10 +28,7 @@ class HifzReviewStateTest {
         override fun fix(point: HifzPoint) { calls += "fix ${point.id}" }
         override fun leaveCard() { calls += "leave" }
         override fun more() { calls += "more" }
-        override fun retry(ids: List<Long>) { calls += "retry $ids" }
         override fun listenTo(ids: List<Long>) { calls += "listenTo $ids" }
-        override fun pendingPracticeChanged(id: Long, pending: Boolean) { pendingChanges += id to pending }
-        override fun practiceResult(point: HifzPoint, grade: HifzGrade?) { practiceResults += point.id to grade }
         override fun exposed(verses: Set<QuranVerseReference>) { exposures += verses }
         override fun dismiss() { calls += "dismiss" }
     }
@@ -39,19 +36,35 @@ class HifzReviewStateTest {
     private fun point(ayah: Int, kind: HifzKind = HifzKind.Start) =
         HifzPoint(id = ayah.toLong(), verse = QuranVerseReference(41, ayah), kind = kind, dueDay = 100L, createdAt = 0L)
 
+    private fun state(
+        exposed: Set<QuranVerseReference> = emptySet(),
+        seen: Map<QuranVerseReference, Long> = emptyMap(),
+    ) = HifzReviewState(clock = { now }, exposedVerses = exposed, seenVerses = seen, wallClock = { wall })
+
     /** A review opened on [queue], its first card drawn, and time enough passed for a tap to count. */
-    private fun opened(queue: List<HifzPoint>): HifzReviewState {
-        val state = HifzReviewState(clock = { now })
-        state.follow(queue, actions)
-        shown(state, queue)
+    private fun opened(queue: List<HifzPoint>, review: HifzReviewState = state()): HifzReviewState {
+        review.follow(review.questions(queue), actions)
+        shown(review, review.questions(queue))
         calls.clear()
-        return state
+        return review
     }
 
     /** The card in view drawn, then the 400 ms guard over. */
     private fun shown(state: HifzReviewState, queue: List<HifzPoint>) {
         state.shown(state.point(queue))
         now += 500L
+    }
+
+    /** The card in view answered: revealed, then graded once the guard is over. */
+    private fun answer(state: HifzReviewState, queue: List<HifzPoint>, grade: HifzGrade) {
+        state.reveal(queue, actions)
+        shown(state, queue)
+        state.grade(queue, actions, grade)
+    }
+
+    private fun saved(state: HifzReviewState): HifzReviewState {
+        val value = with(HifzReviewState.Saver) { SaverScope { true }.save(state) }!!
+        return HifzReviewState.Saver.restore(value)!!
     }
 
     @Test
@@ -71,21 +84,6 @@ class HifzReviewStateTest {
         assertEquals(1, state.held)
         assertEquals(queue[1], state.point(queue))
         assertFalse("the next card starts hidden", state.revealed(state.point(queue)))
-    }
-
-    @Test
-    fun newBackgroundExposureHelpsOpenAttemptButOldExposureDoesNotSpoilRetest() {
-        val queue = listOf(point(36))
-        val state = opened(queue)
-        state.syncExposed(setOf(queue[0].verse), actions)
-        assertTrue(state.assisted(queue[0]))
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Hesitated)
-        shown(state, queue)
-        state.retest(queue[0], actions)
-        state.syncExposed(setOf(queue[0].verse), actions)
-        assertFalse("previous study should not mark a fresh retest as helped", state.assisted(queue[0]))
     }
 
     @Test
@@ -110,12 +108,9 @@ class HifzReviewStateTest {
     fun undoTakesTheLastGradeBackOnItsCardRevealed() {
         val queue = listOf(point(36), point(37))
         val state = opened(queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Hesitated)
-        assertEquals("hesitation opens correction before the next point", queue[0], state.point(queue))
+        answer(state, queue, HifzGrade.Hesitated)
+        assertEquals("a hesitation shows the training before the next point", queue[0], state.point(queue))
         assertTrue(state.training(queue[0]))
-        assertEquals(listOf(36L), state.failedIds)
         assertEquals(36L, state.undoable(queue)?.id)
         state.undo(queue, actions)
         state.follow(queue, actions)
@@ -129,9 +124,7 @@ class HifzReviewStateTest {
     fun aPointDeletedBeforeTheCardDoesNotMoveIt_theCardDeletedGivesWayToTheNext() {
         val queue = listOf(point(36), point(37), point(38))
         val state = opened(queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
+        answer(state, queue, HifzGrade.Held)
         assertEquals(queue[1], state.point(queue))
         // The first point deleted from a fix over the review: the card in view stays on 37.
         val fewer = queue - queue[0]
@@ -174,19 +167,17 @@ class HifzReviewStateTest {
     @Test
     fun eitherPreAnswerHintMakesSuccessfulRecallAssisted() {
         for (useMnemonic in listOf(true, false)) {
+            calls.clear()
             val queue = listOf(point(36).copy(key = "تذكّر بداية الآية"))
             val state = opened(queue)
             if (useMnemonic) state.showHint(queue[0]) else state.markAssisted(queue[0])
             assertTrue(state.assisted(queue[0]))
-            state.reveal(queue, actions)
-            shown(state, queue)
-            state.grade(queue, actions, HifzGrade.Held)
+            answer(state, queue, HifzGrade.Held)
 
             assertEquals(listOf("grade 36 Hesitated"), calls.filter { it.startsWith("grade ") })
             assertEquals(0, state.held)
             assertEquals(1, state.hesitated)
             assertTrue(state.training(queue[0]))
-            assertEquals(listOf(36L), state.failedIds)
         }
     }
 
@@ -205,91 +196,12 @@ class HifzReviewStateTest {
     }
 
     @Test
-    fun repairRetestDoesNotWriteAScheduledGradeTwice() {
-        for (firstGrade in listOf(HifzGrade.Hesitated, HifzGrade.Again)) {
-            val queue = listOf(point(36), point(37))
-            val state = opened(queue)
-            state.showHint(queue[0])
-            state.reveal(queue, actions)
-            shown(state, queue)
-            state.grade(queue, actions, firstGrade)
-            shown(state, queue)
-            state.retest(queue[0], actions)
-            assertTrue(state.retesting(queue[0]))
-            assertFalse(state.revealed(queue[0]))
-            assertFalse("fresh recall starts with every hint hidden", state.hinted(queue[0]))
-            assertFalse(state.assisted(queue[0]))
-
-            shown(state, queue)
-            state.reveal(queue, actions)
-            shown(state, queue)
-            state.grade(queue, actions, HifzGrade.Held)
-
-            assertEquals(listOf("grade 36 $firstGrade"), calls.filter { it.startsWith("grade ") })
-            assertEquals("training does not add another daily answer", 1, state.graded)
-            assertEquals(0, state.held)
-            assertEquals(firstGrade, state.undoable(queue)?.grade)
-            assertTrue(state.repaired(queue[0]))
-            assertTrue(state.failedIds.isEmpty())
-            assertEquals(listOf(36L), state.recoveredIds)
-            state.next(queue, actions)
-            assertEquals(queue[1], state.point(queue))
-        }
-    }
-
-    @Test
-    fun anAssistedRetestRemainsWeakAndKeepsTheOriginalSchedule() {
-        val queue = listOf(point(36))
-        val state = opened(queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Again)
-        shown(state, queue)
-        state.retest(queue[0], actions)
-        state.markAssisted(queue[0])
-        shown(state, queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
-
-        assertEquals(listOf("grade 36 Again"), calls.filter { it.startsWith("grade ") })
-        assertFalse(state.repaired(queue[0]))
-        assertTrue(state.retested(queue[0]))
-        assertEquals(listOf(36L), state.failedIds)
-        assertTrue(state.recoveredIds.isEmpty())
-    }
-
-    @Test
-    fun practiceKeepsHesitationsAndFailuresForRetryWithoutWritingSchedules() {
-        val queue = listOf(point(36), point(37))
-        val state = HifzReviewState(clock = { now }, practice = true)
-        state.follow(queue, actions)
-        shown(state, queue)
-        for (grade in listOf(HifzGrade.Hesitated, HifzGrade.Again)) {
-            state.reveal(queue, actions)
-            shown(state, queue)
-            state.grade(queue, actions, grade)
-            state.next(queue, actions)
-            shown(state, queue)
-        }
-
-        assertTrue(state.atEnd(queue))
-        assertEquals(listOf(36L, 37L), state.failedIds)
-        assertEquals(2, state.graded)
-        assertTrue(calls.none { it.startsWith("grade ") })
-        state.undo(queue, actions)
-        assertTrue(calls.none { it.startsWith("undo ") })
-    }
-
-    @Test
     fun finalAnswerKeepsUndoWithItsPreviousHistory() {
         val history = listOf(HifzCheck(98, HifzGrade.Held, 1_000), HifzCheck(99, HifzGrade.Hesitated, 2_000))
         val original = point(36).copy(step = 2, dueDay = 100, slips = 4, lastSlipAt = 900, checks = history)
         val queue = listOf(original)
         val state = opened(queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
+        answer(state, queue, HifzGrade.Held)
 
         assertTrue(state.atEnd(queue))
         assertEquals(history, state.undoable(queue)?.checks)
@@ -306,106 +218,10 @@ class HifzReviewStateTest {
     }
 
     @Test
-    fun savedRetestKeepsItsHiddenQuestionAndSeparateOutcome() {
-        val queue = listOf(point(36))
-        val state = opened(queue)
-        state.showHint(queue[0])
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
-        shown(state, queue)
-        state.retest(queue[0], actions)
-
-        fun restored(): HifzReviewState {
-            val saved = with(HifzReviewState.Saver) { SaverScope { true }.save(state) }!!
-            return HifzReviewState.Saver.restore(saved)!!
-        }
-        val question = restored()
-        assertEquals(queue[0], question.point(queue))
-        assertTrue(question.retesting(queue[0]))
-        assertFalse(question.revealed(queue[0]))
-        assertFalse(question.hinted(queue[0]))
-        assertFalse(question.assisted(queue[0]))
-        assertEquals(1, question.hesitated)
-        assertEquals(HifzGrade.Hesitated, question.undoable(queue)?.grade)
-
-        shown(state, queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
-        val result = restored()
-        assertTrue(result.repaired(queue[0]))
-        assertEquals(listOf(36L), result.recoveredIds)
-        assertTrue(result.failedIds.isEmpty())
-        assertEquals("recovered now does not rewrite the first attempt", 1, result.hesitated)
-        result.undo(queue, actions)
-        assertTrue("undo retains the original attempt's assistance", result.assisted(queue[0]))
-        assertEquals(0, result.graded)
-    }
-
-    @Test
     fun olderUndoSnapshotsWithoutHistoryStillDecode() {
         val given = HifzGiven.decode("36|Hesitated|2|100||0|4|900")
         assertEquals(36L, given?.id)
         assertTrue(given!!.checks.isEmpty())
-    }
-
-    @Test
-    fun pendingPracticeSurvivesTheNextBatchAndKeepsUnrelatedPoints() {
-        val queue = listOf(point(36))
-        val first = HifzReviewState(clock = { now }, pendingPracticeIds = setOf(90L))
-        first.follow(queue, actions)
-        shown(first, queue)
-        first.reveal(queue, actions)
-        shown(first, queue)
-        first.grade(queue, actions, HifzGrade.Again)
-        first.next(queue, actions)
-        assertEquals(setOf(90L, 36L), first.pendingPracticeIds)
-        assertEquals(36L to true, pendingChanges.last())
-
-        val second = HifzReviewState(clock = { now }, earlier = first.day, pendingPracticeIds = first.pendingPracticeIds)
-        assertTrue(second.failedIds.isEmpty())
-        assertEquals("the retry queue is independent of this batch's failures", setOf(90L, 36L), second.pendingPracticeIds)
-        assertEquals(1, second.day.again)
-    }
-
-    @Test
-    fun linkedAnswerExposureMakesTheLaterPointPracticeWithoutReclassifyingTheFirstAttempt() {
-        val queue = listOf(point(36), point(37))
-        val state = opened(queue)
-        state.reveal(queue, actions)
-        state.noteExposed(setOf(queue[1].verse), actions)
-        assertFalse("the original answer was recalled before reveal", state.practiceOnly(queue[0]))
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
-        assertTrue(state.practiceOnly(queue[1]))
-        assertFalse("an exposed answer is practice, not a false fresh attempt with a hint", state.assisted(queue[1]))
-        shown(state, queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
-
-        assertEquals(listOf("grade 36 Held"), calls.filter { it.startsWith("grade ") })
-        assertEquals(listOf(37L to HifzGrade.Held), practiceResults)
-        assertEquals(2, state.graded)
-        assertEquals("practice must not inflate the scheduled day's count", 1, state.day.graded)
-        assertEquals(listOf(37L), state.practiceIds)
-    }
-
-    @Test
-    fun aDayLedgerExposureBeforeOpeningCannotAdvanceTheSchedule() {
-        val queue = listOf(point(36))
-        val state = HifzReviewState(clock = { now }, exposedVerses = setOf(queue[0].verse))
-        state.follow(queue, actions)
-        shown(state, queue)
-        assertTrue(state.previouslyExposed(queue[0]))
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Again)
-        assertTrue(calls.none { it.startsWith("grade ") })
-        assertEquals(0, state.day.graded)
-        assertEquals(setOf(36L), state.pendingPracticeIds)
-        assertEquals(36L to HifzGrade.Again, practiceResults.last())
     }
 
     @Test
@@ -414,64 +230,129 @@ class HifzReviewStateTest {
         val state = opened(queue)
         state.noteExposed(setOf(queue[0].verse, queue[1].verse), actions)
         assertTrue(state.assisted(queue[0]))
-        assertFalse(state.previouslyExposed(queue[0]))
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
+        answer(state, queue, HifzGrade.Held)
         assertEquals(listOf("grade 36 Hesitated"), calls.filter { it.startsWith("grade ") })
         assertEquals(1, exposures.size)
     }
 
     @Test
-    fun undoRestoresPendingPracticeAndItsPreviousCompletionReceipt() {
-        val queue = listOf(point(36))
-        val state = HifzReviewState(clock = { now }, practice = true, pendingPracticeIds = setOf(36L, 90L))
-        state.follow(queue, actions)
-        shown(state, queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
-        assertEquals(setOf(90L), state.pendingPracticeIds)
-        val saved = with(HifzReviewState.Saver) { SaverScope { true }.save(state) }!!
-        val restored = HifzReviewState.Saver.restore(saved)!!
-        restored.undo(queue, actions)
-        assertEquals(setOf(36L, 90L), restored.pendingPracticeIds)
-        assertEquals(36L to null, practiceResults.last())
-        assertEquals(0, restored.graded)
-        assertEquals(0, restored.day.graded)
-        assertTrue(calls.none { it.startsWith("undo ") })
+    fun aPointWhoseVerseAnEarlierAnswerShowed_waitsForTheNextReminder() {
+        // 37 is the look-alike 36 was confused with: 36's answer shows it.
+        val all = listOf(point(36), point(37), point(38))
+        val state = opened(all)
+        state.reveal(state.questions(all), actions)
+        state.noteExposed(setOf(all[1].verse), actions)
+        shown(state, state.questions(all))
+        state.grade(state.questions(all), actions, HifzGrade.Held)
+
+        assertEquals(setOf(37L), state.deferredIds)
+        val asked = state.questions(all)
+        assertEquals(listOf(all[0], all[2]), asked)
+        assertEquals(2, state.count(asked))
+        state.requestEnd(asked, actions)
+        assertEquals("the stopped review counts only what it will still ask", 1, state.unanswered(asked))
+        assertEquals(all[2], state.point(asked))
+        assertFalse("the next card starts hidden", state.revealed(state.point(asked)))
+        // Its answer is still recorded as given: no answer is ever practice only.
+        assertEquals(listOf("grade 36 Held"), calls.filter { it.startsWith("grade ") })
+        // Kept as the activity is re-created.
+        assertEquals(setOf(37L), saved(state).deferredIds)
     }
 
     @Test
-    fun savedExposureLedgerDoesNotChangeTheAttemptAlreadyInProgress() {
-        val queue = listOf(point(36), point(37))
+    fun aSkip_countsOutTheVersesItsAnswerShows_beforeItIsShown() {
+        val all = listOf(point(36, HifzKind.Skip).copy(other = QuranVerseReference(41, 38)), point(37, HifzKind.Word), point(40, HifzKind.Word))
+        val state = opened(all)
+        assertEquals("its answer will show verse 37", 2, state.count(state.questions(all)))
+    }
+
+    @Test
+    fun theCount_followsWhatEachCardStillToComeWillShow() {
+        val lookAlike = point(20, HifzKind.Similar).copy(other = QuranVerseReference(41, 30))
+        val all = listOf(point(10, HifzKind.Word), lookAlike, point(30, HifzKind.Word))
+        val state = opened(all)
+        // From the first card: the look-alike's answer will show verse 30, whatever this one's answer.
+        assertEquals(2, state.count(state.questions(all)))
+        assertEquals(2, state.unanswered(state.questions(all)))
+    }
+
+    @Test
+    fun theCount_staysTheSameAsTheAnswerIsShown() {
+        val all = listOf(point(20, HifzKind.Similar).copy(other = QuranVerseReference(41, 30)), point(30, HifzKind.Word))
+        val state = opened(all)
+        assertEquals(1, state.count(state.questions(all)))
+        // «أظهر» notes the verse itself at once, its look-alike a moment later: the count does not jump meanwhile.
+        state.reveal(state.questions(all), actions)
+        assertEquals(1, state.count(state.questions(all)))
+    }
+
+    @Test
+    fun aLastPointShownByTheAnswerBeforeIt_endsTheReview() {
+        val all = listOf(point(36, HifzKind.Word), point(37, HifzKind.Word))
+        val state = opened(all)
+        assertEquals(2, state.count(state.questions(all)))
+        state.reveal(state.questions(all), actions)
+        state.noteExposed(setOf(all[1].verse), actions)
+        // Already counted out: «تقييم المحاولة» is unnumbered, and the training's button leads to the result.
+        assertEquals(1, state.count(state.questions(all)))
+        shown(state, state.questions(all))
+        state.grade(state.questions(all), actions, HifzGrade.Held)
+
+        val asked = state.questions(all)
+        assertEquals(listOf(all[0]), asked)
+        assertTrue(state.atEnd(asked))
+        assertEquals(1, state.deferredIds.size)
+    }
+
+    @Test
+    fun aSpacedCheckSeenToday_andAFreshPointSeenAMomentAgo_areNotAsked() {
+        val check = point(36)
+        val fresh = point(37).copy(fresh = 2)
+        val later = point(38).copy(fresh = 2)
+        val all = listOf(check, fresh, later)
+        // The check's verse was looked at today; the fresh point's answer was seen a minute ago, the other's long ago.
+        val state = opened(all, state(exposed = setOf(check.verse), seen = mapOf(fresh.verse to wall - 60_000L, later.verse to wall - HifzFreshGapMs - 1)))
+        val asked = state.questions(all)
+        assertEquals(setOf(36L, 37L), state.deferredIds)
+        assertEquals(listOf(later), asked)
+        assertEquals(later, state.point(asked))
+    }
+
+    @Test
+    fun noUndoOnceTheNextAnswerWasShown() {
+        val queue = listOf(point(10, HifzKind.Word), point(20, HifzKind.Word))
         val state = opened(queue)
+        answer(state, queue, HifzGrade.Held)
+        assertEquals(10L, state.undoable(queue)?.id)
+        shown(state, queue)
+        // The next question's answer seen: that question was asked, and the grade before it stays.
         state.reveal(queue, actions)
-        state.noteExposed(setOf(queue[1].verse), actions)
-        val saved = with(HifzReviewState.Saver) { SaverScope { true }.save(state) }!!
-        val restored = HifzReviewState.Saver.restore(saved)!!
-        assertFalse(restored.practiceOnly(queue[0]))
-        restored.next(queue, actions)
-        assertTrue(restored.practiceOnly(queue[1]))
+        assertNull(state.undoable(queue))
+    }
+
+    @Test
+    fun aFailedAnswerIsAlwaysRecorded() {
+        val queue = listOf(point(36))
+        // Looked at during the attempt, before «أظهر»: a helped attempt, still an answer.
+        val state = opened(queue)
+        state.noteExposed(setOf(queue[0].verse), actions)
+        answer(state, queue, HifzGrade.Again)
+        assertEquals(listOf("grade 36 Again"), calls.filter { it.startsWith("grade ") })
+        assertEquals(1, state.day.again)
     }
 
     @Test
     fun theReviewIsSavedAndReadBackWhole() {
         val queue = listOf(point(36), point(37), point(38))
         val state = opened(queue)
-        state.reveal(queue, actions)
+        answer(state, queue, HifzGrade.Held)
         shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Held)
-        shown(state, queue)
-        state.reveal(queue, actions)
-        shown(state, queue)
-        state.grade(queue, actions, HifzGrade.Again)
+        answer(state, queue, HifzGrade.Again)
         shown(state, queue)
         state.drill(queue[1], actions)
         state.folded = true
         state.howItWorks = true
-        val saved = with(HifzReviewState.Saver) { SaverScope { true }.save(state) }!!
-        val back = HifzReviewState.Saver.restore(saved)!!
+        val back = saved(state)
         assertEquals(queue[1], back.point(queue))
         assertTrue(back.revealed(queue[1]))
         assertTrue(back.training(queue[1]))
@@ -482,7 +363,7 @@ class HifzReviewStateTest {
         assertTrue(back.folded)
         assertTrue(back.howItWorks)
         // A review never opened reads back as new.
-        val fresh = HifzReviewState.Saver.restore(with(HifzReviewState.Saver) { SaverScope { true }.save(HifzReviewState(clock = { now })) }!!)!!
+        val fresh = saved(HifzReviewState(clock = { now }))
         assertEquals(queue[0], fresh.point(queue))
         assertNull(fresh.undoable(queue))
         assertEquals(0, fresh.graded)

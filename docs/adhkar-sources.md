@@ -101,7 +101,7 @@ One word of the source differs from the scans and is corrected in `scripts/quran
 
 ### Waqf signs and verse numbers
 
-The source has no Madinah waqf signs, so the Quran tab and «المراجعة» show verses without them. The passages shown outside the Quran tab carry the mushaf's own signs, read line by line on the scans:
+The source has no Madinah waqf signs, so the Quran tab and «المراجعة» show verses without them. Since 2026-10-18 the mushaf's signs of every verse are in `assets/quran/waqf.json`, read on the scans (see «Shared verses» below); only a shared verse uses them so far. The passages shown outside the Quran tab carry the mushaf's own signs, read line by line on the scans:
 - `scripts/mushaf_text/build_passages.py` writes them to `MushafPassages` (shared module).
 - They are the adhkar passages, the closing card's verses, the 14 header verses and the basmala.
 - A header verse keeps the sign that follows its last word in the mushaf (7 of them).
@@ -121,10 +121,31 @@ A verse ends with its frame and number in Western digits, bound to the verse's l
 
 ### What stays readable
 
-Some text keeps the readable wording:
-- **Search and sharing:** the catalog's readable wording stays for search, for TalkBack and for text copied or shared to other apps, which cannot use the font.
-- **Notifications:** «المراجعة» notifications show the converted words without what only the mushaf font draws (`QuranMushafText.plain`).
+Some text is not set in the mushaf font:
+- **Search and TalkBack:** the catalog's readable wording stays for search and for TalkBack.
+- **Copied and shared verses (since 2026-10-18):** the mushaf's converted words and its waqf signs (`waqf.json`), in code points other apps' fonts draw as the mushaf means them (`QuranMushafText.plain`), then the surah, the verse number, the riwaya and the count. The source encoding is not shared: other fonts draw its wasl as a vowel to read (a kasra on the alif of al-hamdu, 1:1), its open tanween as an inverted damma, a fatha with two dots or a subscript alif, and its ya as the Urdu yeh barree, and its waqf signs are at Maghribi positions.
+- **Notifications:** «المراجعة» notifications show the same form (`QuranMushafText.plain`).
 - **Hadith quotations:** duas that quote the Qur'an inside a hadith's wording keep the hadith's text. These are the travel supplication (Muslim 1342, with al-Zukhruf 12–13), the supplication of Dhul-Nun (al-Anbiya 86) and the home-entry greeting. So does commentary quoting a few words.
+
+### Shared verses
+
+`QuranMushafText.plain` writes the wasl as a bare «ٱ», and the dot on the line (an eased or changed hamza, 38 words such as 13:5 and 2:30) as the dot above (U+06EC), the Madinah mushafs' sign of an eased hamza. Other fonts draw U+06DF as the small zero of a silent letter, and dropping it would drop the hamza. Every code point it leaves is drawn by Noto Naskh Arabic (Android's Arabic font), Segoe UI, Arial, Tahoma and Times New Roman.
+
+The shared text was checked on 2026-10-18 against the King Fahd Complex's own Qaloon data (version 10, 2021, from [quran-data-kfgqpc](https://github.com/thetruetruth/quran-data-kfgqpc)):
+- The 6214 verses are divided and numbered alike, in every surah.
+- 6047 verses have the same words. In the others:
+  - waqf signs differ (66), but its signs are not used: they are Maghribi;
+  - the hamza of «شيئا» sits on a tatweel (77), and the opening letters order their madd differently (20);
+  - 7 verses space «أو», «ما» or «لو» against the next word differently (7:97, 15:7, 15:32, 27:20, 36:21, 37:17, 56:51). The letters are the same, and the scans set these words tight.
+  - In 6 words, version 10 differs from the scans or the rasm. 17:62: it has the sukun on the lam of qala as well; the scan has a fatha, as corrected. 34:23: it drops the shadda on the shin of al-shafa'a. 58:10: it drops the fatha on the waw of wa-'ala. 33:37: it gives a wasl mark to the alif after wa. 2:71: it puts the hamza of fa-ddara'tum above the small alif; the bundled text has it on the line, and both read the same.
+- The count is the scan's own: the edition's afterword (scan 604) says it follows the later Madani count (6214 verses).
+- The medallions match the index's verse ends on all 603 pages (`highlights-audit.json`). Printed numbers were read at 1:1–7, 2:1–4, 2:70–71, 2:252–253, 7:96–97, 13:4–5, 15:6–7, 15:32, 17:61–62, 27:19–20, 36:20–21, 37:16–17 and 56:50–51.
+
+The waqf signs (`assets/quran/waqf.json`, 4305 signs in 2630 verses) were read on the scans on 2026-10-18 by `scripts/mushaf_waqf` (its `build.py` says how):
+- **The signs:** the mushaf prints four: ج (2037), صلى (1678), قلى (586) and the paired ∴ (4, at 2:1 and 2:194). It prints no lazim mim and no «لا», not even where both Madinah Hafs texts have them (2:25, 2:117, 5:53, 10:65, 29:25, 36:75, 54:6 were read).
+- **The scan decides** each sign's kind and how many a verse has. Every glyph was found by matching one template of each sign, cut from the scans, over all 603 pages; true signs score 0.65 or more and everything else 0.62 or less, which was read on contact sheets of every hit in between.
+- **The word** each sign follows comes from its place in the verse's width on the page, choosing among the words after which the Madinah Hafs texts (KFGQPC data v18 and Tanzil's 1405H text) put a sign. Where neither has one, it is the nearest word. Most signs (3988) are where both Madinah texts have the same sign; 66 differ from both in kind, and Qaloun's own readings move some (2:283 has no sign after the name of Allah, before the jussive «fa-yaghfir»).
+- **Read on the scans:** 145 signs the matching flagged, 107 near a place where the Qaloun words differ from the Hafs ones, and the 17 whose kind neither Madinah text has. Five verses were corrected (`overrides.json`: 7:58, 9:102, 27:84, 57:18, 78:37). The 26 signs read by hand for `MushafPassages` all agree, and a test checks it.
 
 ## Closing card
 

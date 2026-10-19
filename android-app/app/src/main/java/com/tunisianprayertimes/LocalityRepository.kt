@@ -329,8 +329,22 @@ internal fun searchLocalities(
     localities: List<Locality>,
     query: LocalitySearchQuery,
     checkCancellation: () -> Unit,
-): List<Locality> {
-    if (query.isEmpty) return localities
+): List<Locality> = rankLocalities(localities, query, checkCancellation).map { it.locality }
+
+/**
+ * A match and its quality on the picker's one scale, shared with [CitySearch.Index.searchRanked] so a Tunisian place and
+ * a city abroad sort together: 0 the whole name, 1 its start, 2 another direct match, 3 a typo away («القاهرة» is two
+ * letters from «الزهرة», never before Cairo).
+ */
+internal class RankedLocality(val locality: Locality, val quality: Int)
+
+/** [searchLocalities] with each match's quality: the direct matches best first, then the typo matches. */
+internal fun rankLocalities(
+    localities: List<Locality>,
+    query: LocalitySearchQuery,
+    checkCancellation: () -> Unit,
+): List<RankedLocality> {
+    if (query.isEmpty) return localities.map { RankedLocality(it, 0) }
     val direct = mutableListOf<Locality>()
     val fuzzy = mutableListOf<FuzzyLocalityMatch>()
     localities.forEachIndexed { index, locality ->
@@ -351,13 +365,14 @@ internal fun searchLocalities(
             )
         }
     }
-    val directSorted = direct.sortedByDescending { primaryLocalityRank(it, query) }
+    val directSorted = direct.map { it to primaryLocalityRank(it, query) }.sortedByDescending { it.second }
+        .map { (locality, rank) -> RankedLocality(locality, if (rank == 3) 0 else if (rank == 2) 1 else 2) }
     val fuzzySorted = fuzzy.sortedWith(
         compareBy<FuzzyLocalityMatch> { it.edits }
             .thenByDescending { it.primaryRank }
             .thenBy { it.originalIndex },
     )
-    return directSorted + fuzzySorted.map { it.locality }
+    return directSorted + fuzzySorted.map { RankedLocality(it.locality, 3) }
 }
 
 internal fun withAvailablePrayerSource(locality: Locality, available: List<Delegation>): Locality? {

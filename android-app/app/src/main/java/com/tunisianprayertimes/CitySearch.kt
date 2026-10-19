@@ -57,7 +57,11 @@ object CitySearch {
          * («sur seine» finds Ivry-sur-Seine); ties by population. [checkpoint] runs every 1,024 cities, to stop a search
          * the next key made stale.
          */
-        fun search(query: String, limit: Int = 60, checkpoint: () -> Unit = {}): List<PlaceCatalogue.Row> {
+        fun search(query: String, limit: Int = 60, checkpoint: () -> Unit = {}): List<PlaceCatalogue.Row> =
+            searchRanked(query, limit, checkpoint).map { it.first }
+
+        /** [search] with each city's rank (0 a whole name, 1 a name's start, 2 a word's start), the picker's scale. */
+        fun searchRanked(query: String, limit: Int = 60, checkpoint: () -> Unit = {}): List<Pair<PlaceCatalogue.Row, Int>> {
             val q = normalize(query)
             if (q.isEmpty()) return emptyList()
             val whole = SEPARATOR + q + SEPARATOR
@@ -75,8 +79,7 @@ object CitySearch {
                 }
                 hits += rows[i] to rank
             }
-            return hits.sortedWith(compareBy<Pair<PlaceCatalogue.Row, Int>>({ it.second }, { -it.first.ref.population }))
-                .take(limit).map { it.first }
+            return hits.sortedWith(compareBy<Pair<PlaceCatalogue.Row, Int>>({ it.second }, { -it.first.ref.population })).take(limit)
         }
 
         companion object {

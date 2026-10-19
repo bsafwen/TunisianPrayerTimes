@@ -140,18 +140,19 @@ class HifzTest {
     }
 
     @Test
-    fun aFreshPoint_isAskedAgainTheSameDay_evenAfterPractice() {
+    fun aVerseLookedAt_waitsByItsPhase_aFreshPointAWhile_aSpacedCheckADay() {
         val fresh = point(HifzKind.Word, verse(2, 18)).copy(fresh = 2, dueDay = 100L, lastSlipAt = 0L)
-        val practised = point(HifzKind.Skip, verse(2, 68), due = 100L)
+        val check = point(HifzKind.Skip, verse(2, 68), due = 100L)
         val now = HifzFreshGapMs
-        // Practised today with its answer in view: the spaced check waits; the fresh point does not.
-        assertEquals(listOf(fresh), listOf(fresh, practised).askable(100L, now, practised = setOf(fresh.id, practised.id)))
-        assertEquals(listOf(fresh, practised), listOf(fresh, practised).askable(100L, now, practised = emptySet()))
-        // But its answer seen a moment ago, in its fix or on the page, puts its question a while after.
+        assertEquals(listOf(fresh, check), listOf(fresh, check).askable(100L, now))
+        // Seen today: the spaced check is tomorrow's; the fresh point goes by when it was seen, not by the day.
+        assertEquals(listOf(fresh), listOf(fresh, check).askable(100L, now, seenToday = setOf(fresh.verse, check.verse)))
+        assertTrue(check.isDue(101L, now, seenToday = emptySet()))
+        // Its answer seen a moment ago, in its fix or on the page, puts the fresh point's question a while after.
         val seen = mapOf(fresh.verse to now - 60_000L)
-        assertEquals(listOf(practised), listOf(fresh, practised).askable(100L, now, emptySet(), seen))
+        assertEquals(listOf(check), listOf(fresh, check).askable(100L, now, seen))
         assertEquals(now - 60_000L + HifzFreshGapMs, fresh.freshDueAt(seen[fresh.verse]))
-        assertTrue(listOf(fresh).askable(100L, now - 60_000L + HifzFreshGapMs, emptySet(), seen).isNotEmpty())
+        assertTrue(listOf(fresh).askable(100L, now - 60_000L + HifzFreshGapMs, seen).isNotEmpty())
         // A new slip comes first in a full batch, ahead of older checks that need care.
         val older = (1..5).map { point(HifzKind.Word, verse(3, it), slips = 4, due = 90L) }
         assertEquals(fresh, (older + fresh).reviewBatch(100L, now, limit = 5).first { it.fresh > 0 })
@@ -196,10 +197,10 @@ class HifzTest {
             HifzWhen.After(Prayer.ASR),
             listOf(check.copy(dueDay = day)).nextReminder(times, day, (day * 1440 + 900) * min, remindedDay = day - 1, zone = utc, slotAt = slotAt)?.time,
         )
-        // Practised today with its answer in view: the check is the next day's.
+        // Its verse looked at today: the check is the next day's.
         assertEquals(
             day + 1,
-            listOf(check.copy(dueDay = day)).nextReminder(times, day, (day * 1440 + 900) * min, remindedDay = day - 1, practised = setOf(check.id), zone = utc, slotAt = slotAt)?.day,
+            listOf(check.copy(dueDay = day)).nextReminder(times, day, (day * 1440 + 900) * min, remindedDay = day - 1, seenToday = setOf(check.verse), zone = utc, slotAt = slotAt)?.day,
         )
         // Nothing to ask, no reminder.
         assertNull(emptyList<HifzPoint>().nextReminder(times, day, 0L, remindedDay = -1L, zone = utc, slotAt = slotAt))
@@ -339,23 +340,44 @@ class HifzTest {
         val fresh = point(HifzKind.Ending, verse(2, 17))
         assertEquals("دون تردد · تعود بعد 3 أيام", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Held))
         assertEquals("بتردد أو تلميح · تعود بعد يومين", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Hesitated))
-        assertEquals("أخطأت أو نسيت · نسألك عنها اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Again, "اليوم بعد المغرب"))
+        // Forgotten, a spaced check starts its count over: three right answers again.
+        assertEquals(
+            "أخطأت أو نسيت · يبدأ العدّ من جديد: نسألك عنها اليوم بعد المغرب حتى تقرأها صحيحة 3 مرات",
+            com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Again, "اليوم بعد المغرب"),
+        )
         val last = point(HifzKind.Ending, verse(2, 17), step = 3)
         assertEquals("دون تردد · تثبت، وتعود بعد شهر للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Held))
-        assertEquals("أخطأت أو نسيت · نسألك عنها في تذكير لاحق · وتبدأ مددها من جديد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Again))
+        assertEquals(
+            "أخطأت أو نسيت · يبدأ العدّ من جديد: نسألك عنها في تذكير لاحق حتى تقرأها صحيحة 3 مرات",
+            com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Again),
+        )
         val held = point(HifzKind.Ending, verse(2, 17), step = HifzMasteredStep)
         assertEquals("دون تردد · تعود بعد شهرين للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Held))
         assertEquals("بتردد أو تلميح · تعود بعد يومين · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Hesitated))
-        assertEquals("أخطأت أو نسيت · نسألك عنها غدًا بعد الفجر · تخرج من «ثبتت»", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Again, "غدًا بعد الفجر"))
+        assertEquals(
+            "أخطأت أو نسيت · تخرج من «ثبتت»، ونسألك عنها غدًا بعد الفجر حتى تقرأها صحيحة 3 مرات",
+            com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Again, "غدًا بعد الفجر"),
+        )
         // A fresh point: asked again at the reminder named, or, with the reminder off, a while later.
         val slip = point(HifzKind.Ending, verse(2, 17)).copy(fresh = 2)
-        assertEquals("دون تردد · نسألك عنها مرة أخرى اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Held, "اليوم بعد المغرب"))
+        assertEquals("دون تردد · تبقى قراءة، ونسألك عنها اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Held, "اليوم بعد المغرب"))
         assertEquals("دون تردد · تتباعد مراجعاتها، وتعود غدًا", com.tunisianprayertimes.ui.hifzGradeDetail(slip.copy(fresh = 1), HifzGrade.Held))
-        assertEquals("بتردد أو تلميح · نسألك عنها بعد 45 دقيقة", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Hesitated, "بعد 45 دقيقة"))
-        assertEquals("أخطأت أو نسيت · نسألك عنها اليوم بعد المغرب · من جديد", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Again, "اليوم بعد المغرب"))
-        assertEquals("اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(slip, HifzGrade.Held, "اليوم بعد المغرب"))
+        assertEquals("بتردد أو تلميح · لا تُحسب، ونسألك عنها بعد 45 دقيقة", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Hesitated, "بعد 45 دقيقة"))
+        assertEquals(
+            "أخطأت أو نسيت · يبدأ العدّ من جديد: نسألك عنها اليوم بعد المغرب حتى تقرأها صحيحة 3 مرات",
+            com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Again, "اليوم بعد المغرب"),
+        )
+        // Never read right since its slip: only one more slip.
+        val new = slip.copy(fresh = HifzFreshRecalls)
+        assertEquals("أخطأت أو نسيت · خطأ آخر، ونسألك عنها اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(new, HifzGrade.Again, "اليوم بعد المغرب"))
+        // The chips side by side: what the answer does, over when the verse comes back.
+        assertEquals("تبقى قراءة\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(slip, HifzGrade.Held, "اليوم بعد المغرب"))
+        assertEquals("تبقى قراءتان\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(new, HifzGrade.Held, "اليوم بعد المغرب"))
         assertEquals("تعود غدًا", com.tunisianprayertimes.ui.hifzGradeShort(slip.copy(fresh = 1), HifzGrade.Held))
-        assertEquals("في تذكير لاحق، من جديد", com.tunisianprayertimes.ui.hifzGradeShort(last, HifzGrade.Again))
+        assertEquals("لا تُحسب\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(slip, HifzGrade.Hesitated, "اليوم بعد المغرب"))
+        assertEquals("خطأ آخر\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(new, HifzGrade.Again, "اليوم بعد المغرب"))
+        assertEquals("من جديد: 3 قراءات\nفي تذكير لاحق", com.tunisianprayertimes.ui.hifzGradeShort(last, HifzGrade.Again))
+        assertEquals("تعود بعد 3 أيام", com.tunisianprayertimes.ui.hifzGradeShort(fresh, HifzGrade.Held))
         assertEquals("بعد أسبوعين", com.tunisianprayertimes.ui.hifzWhen(14L))
         assertEquals("بعد 12 يومًا", com.tunisianprayertimes.ui.hifzWhen(12L))
         assertEquals("المراجعة غدًا", com.tunisianprayertimes.ui.hifzReviewWhen(1L))
@@ -375,10 +397,125 @@ class HifzTest {
     }
 
     @Test
+    fun aReviewBatch_asksOneOfAPairThatShowEachOther_theOneAnsweredLongestAgo() {
+        val near = point(HifzKind.Similar, verse(2, 58), other = verse(7, 161), due = 99L)
+            .copy(checks = listOf(HifzCheck(90L, HifzGrade.Held, 9_000L)))
+        val far = point(HifzKind.Similar, verse(7, 161), other = verse(2, 58), due = 99L)
+            .copy(checks = listOf(HifzCheck(80L, HifzGrade.Held, 8_000L)))
+        val between = point(HifzKind.Word, verse(3, 7), due = 99L)
+        val first = point(HifzKind.Word, verse(1, 4), due = 99L)
+        // A look-alike pair both ways: each answer shows the other verse. The one answered longest ago is asked, the
+        // other waits for the next reminder; the rest in mushaf order.
+        assertEquals(listOf(first, between, far), listOf(near, between, far, first).reviewBatch(100L, 0L, limit = 5))
+        // Answered now, it is the other one's turn.
+        val farAnswered = far.copy(checks = listOf(HifzCheck(100L, HifzGrade.Held, 10_000L)))
+        assertEquals(listOf(first, near, between), listOf(near, between, farAnswered, first).reviewBatch(100L, 0L, limit = 5))
+        // Two points of one verse take turns too; the look-alike whose answer shows that verse comes after it.
+        val sameVerse = point(HifzKind.Ending, verse(2, 58), due = 99L).copy(id = 1L)
+        assertEquals(listOf(sameVerse, far), listOf(near, far, sameVerse).reviewBatch(100L, 0L, limit = 5))
+    }
+
+    @Test
+    fun aReviewBatch_asksAPointBeforeThoseThatShowItsVerse() {
+        // A look-alike far away links two neighbours: the verse before first, then the verse whose question shows its
+        // end, then the look-alike whose answer shows that verse. All three are asked.
+        val lookAlike = point(HifzKind.Similar, verse(2, 3), other = verse(2, 10), due = 99L)
+        val before = point(HifzKind.Word, verse(2, 9), due = 99L)
+        val shown = point(HifzKind.Word, verse(2, 10), due = 99L)
+        assertEquals(listOf(before, shown, lookAlike), listOf(lookAlike, before, shown).reviewBatch(100L, 0L, limit = 5))
+        // A forgotten start shows the verse before it, which never shows it back: that verse first, however recently
+        // it was answered.
+        val word = point(HifzKind.Word, verse(2, 4), due = 99L).copy(checks = listOf(HifzCheck(99L, HifzGrade.Held, 9_900L)))
+        val start = point(HifzKind.Start, verse(2, 5), due = 99L).copy(checks = listOf(HifzCheck(96L, HifzGrade.Held, 9_600L)))
+        assertEquals(listOf(word, start), listOf(start, word).reviewBatch(100L, 0L, limit = 5))
+        // Neighbours of other kinds keep mushaf order, and all are asked.
+        val a = point(HifzKind.Word, verse(3, 9), due = 99L).copy(checks = listOf(HifzCheck(99L, HifzGrade.Held, 9_900L)))
+        val b = point(HifzKind.Ending, verse(3, 10), due = 99L)
+        val c = point(HifzKind.Start, verse(3, 11), due = 99L)
+        assertEquals(listOf(a, b, c), listOf(c, b, a).reviewBatch(100L, 0L, limit = 5))
+        // A skip shows every verse to where the recitation landed: a point in between is asked before it.
+        val skip = point(HifzKind.Skip, verse(4, 20), other = verse(4, 23), due = 99L)
+        val inBetween = point(HifzKind.Word, verse(4, 22), due = 99L)
+        assertEquals(listOf(inBetween, skip), listOf(skip, inBetween).reviewBatch(100L, 0L, limit = 5))
+        assertTrue(skip.shows(verse(4, 19)) && skip.shows(verse(4, 22)) && skip.shows(verse(4, 23)))
+        assertFalse(skip.shows(verse(4, 24)))
+        // A question shows the end of the verse before it; a forgotten start's answer, the verse before it, not after.
+        assertTrue(start.shows(verse(2, 4)))
+        assertFalse(start.shows(verse(2, 6)))
+        assertTrue(b.shows(verse(3, 9)))
+        assertFalse(b.shows(verse(3, 11)))
+    }
+
+    @Test
+    fun aReviewBatch_takesTurnsAlsoWithAPointRankedOutOfTheRound() {
+        val others = listOf(5, 6, 8, 9).map { point(HifzKind.Word, verse(it, 1), slips = 2, due = 99L) }
+        val ranked = point(HifzKind.Word, verse(2, 58), slips = 2, due = 99L).copy(checks = listOf(HifzCheck(90L, HifzGrade.Held, 9_000L)))
+        val waiting = point(HifzKind.Ending, verse(2, 58), due = 99L).copy(id = 1L, checks = listOf(HifzCheck(80L, HifzGrade.Held, 1_000L)))
+        // The sixth by rank, but answered longer ago than the one on its verse: it takes that one's place.
+        assertEquals(listOf(waiting) + others, (others + ranked + waiting).reviewBatch(100L, 0L, limit = 5))
+        val answered = waiting.copy(checks = listOf(HifzCheck(100L, HifzGrade.Held, 10_000L)))
+        assertEquals(listOf(ranked) + others, (others + ranked + answered).reviewBatch(100L, 0L, limit = 5))
+    }
+
+    @Test
+    fun aReviewBatch_takesBackAPointThatNoLongerConflicts() {
+        val check = { at: Long -> listOf(HifzCheck(80L, HifzGrade.Held, at)) }
+        val a = point(HifzKind.Word, verse(2, 20), due = 90L).copy(checks = check(30_000L))
+        val p1 = point(HifzKind.Ending, verse(2, 20), other = verse(2, 21), due = 91L).copy(id = 1L, bothWays = true, checks = check(20_000L))
+        val p2 = point(HifzKind.Ending, verse(2, 21), other = verse(2, 20), due = 92L).copy(id = 2L, bothWays = true, checks = check(10_000L))
+        // p1 takes a's place, then p2 takes p1's: a, which only p1 conflicted with, comes back, before p2 which shows it.
+        assertEquals(listOf(a, p2), listOf(a, p1, p2).reviewBatch(100L, 1_000_000L, limit = 5))
+    }
+
+    @Test
+    fun aReviewBatch_fillsFreedPlacesByRank() {
+        val check = { at: Long -> listOf(HifzCheck(80L, HifzGrade.Held, at)) }
+        val a = point(HifzKind.Word, verse(2, 20), due = 90L).copy(checks = check(9_000L))
+        val b = point(HifzKind.Ending, verse(2, 21), other = verse(2, 20), due = 91L).copy(checks = check(9_500L))
+        val (c, d, e, f) = listOf(5, 6, 8, 9).mapIndexed { i, s -> point(HifzKind.Word, verse(s, 1), due = 92L + i) }
+        val p = point(HifzKind.Ending, verse(2, 20), other = verse(2, 21), due = 96L).copy(id = 1L, checks = check(5_000L))
+        val g = point(HifzKind.Word, verse(10, 1), due = 97L)
+        // p, waiting longest, takes the places of a and b; the sixth by rank fills the second place, not the eighth.
+        assertEquals(listOf(p, c, d, e, f), listOf(a, b, c, d, e, f, p, g).reviewBatch(100L, 1_000_000L, limit = 5))
+    }
+
+    @Test
+    fun aReviewBatch_breaksALoopAtThePointAnsweredLast() {
+        // Each shows the next one's verse: 2:10 shows 3:5, whose question shows 3:4, whose look-alike is 2:10.
+        val a = point(HifzKind.Similar, verse(2, 10), other = verse(3, 5), due = 99L).copy(checks = listOf(HifzCheck(90L, HifzGrade.Held, 3_000L)))
+        val b = point(HifzKind.Word, verse(3, 5), due = 99L).copy(checks = listOf(HifzCheck(90L, HifzGrade.Held, 1_000L)))
+        val c = point(HifzKind.Similar, verse(3, 4), other = verse(2, 10), due = 99L).copy(checks = listOf(HifzCheck(90L, HifzGrade.Held, 2_000L)))
+        assertEquals(listOf(c, b), listOf(a, b, c).reviewBatch(100L, 0L, limit = 5))
+        // Then the one left out, answered longest ago, comes back.
+        val bAnswered = b.copy(checks = listOf(HifzCheck(100L, HifzGrade.Held, 10_000L)))
+        val cAnswered = c.copy(checks = listOf(HifzCheck(100L, HifzGrade.Held, 10_001L)))
+        assertTrue(a in listOf(a, bAnswered, cAnswered).reviewBatch(100L, 0L, limit = 5))
+    }
+
+    @Test
+    fun aReviewBatch_fromAChosenPoint_leavesOutWhatItsAnswerShows() {
+        val chosen = point(HifzKind.Similar, verse(2, 58), other = verse(7, 161), due = 99L)
+        val lookAlike = point(HifzKind.Word, verse(7, 161), due = 99L)
+        val apart = point(HifzKind.Word, verse(3, 7), due = 99L)
+        assertEquals(listOf(chosen, apart), listOf(lookAlike, apart, chosen).reviewBatch(100L, 0L, limit = 5, first = chosen))
+    }
+
+    @Test
+    fun settingsThatAreNoMore_areDeletedFromStorage() {
+        val context = org.robolectric.RuntimeEnvironment.getApplication()
+        val prefs = context.getSharedPreferences("quran_hifz", android.content.Context.MODE_PRIVATE)
+        prefs.edit().clear().putInt("per_day", 8).putBoolean("heads_up", true).putBoolean("stop_before", true)
+            .putBoolean("briefing", true).putFloat("drill_gap", 2f).putFloat("drill_speed", 0.75f).putLong("briefed_1005", 100L)
+            .putBoolean("reminder", false).commit()
+        assertFalse(HifzSettings.read(context).reminder)
+        assertEquals(setOf("reminder"), prefs.all.keys)
+    }
+
+    @Test
     fun notebook_survivesItsFile() {
         val original = listOf(
             point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)).copy(slipWords = setOf(17), bothWays = true, key = "الترتيب الهجائي"),
-            point(HifzKind.Word, verse(1, 4)).copy(hafs = true, masteredAt = 9L, headsUp = false),
+            point(HifzKind.Word, verse(1, 4)).copy(hafs = true, masteredAt = 9L),
         )
         assertEquals(original, decodeHifzPoints(encodeHifzPoints(original)))
     }
@@ -555,12 +692,12 @@ class HifzTest {
     @Test
     fun drill_alternatesTheRightVerseAndTheLookAlike_neverTheSameTwiceInARow() {
         val catalog = catalog()
-        val drill = hifzDrill(catalog, point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)), HifzSettings())
+        val drill = hifzDrill(catalog, point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)))
         assertEquals(listOf(verse(4, 47), verse(4, 115), verse(4, 47), verse(4, 115), verse(4, 47)), drill.items.map { it.from })
         assertEquals(1, drill.rounds)
         assertEquals(HifzDrillTitle, drill.title)
         assertEquals(listOf("الصواب · النساء 47", "الشبيهة · النساء 115", "الصواب · النساء 47", "الشبيهة · النساء 115", "الصواب · النساء 47"), drill.labels)
-        val skip = hifzDrill(catalog, point(HifzKind.Skip, verse(2, 68)), HifzSettings())
+        val skip = hifzDrill(catalog, point(HifzKind.Skip, verse(2, 68)))
         assertEquals(List(3) { QuranRepeatRange(verse(2, 67), verse(2, 69), 1) }, skip.items)
         assertEquals(List(3) { "البقرة 67 ← 68 ← 69" }, skip.labels)
         assertTrue(drill.isValid)
@@ -574,14 +711,14 @@ class HifzTest {
     @Test
     fun cue_isTheVerseBeforeOnceWithoutSilence_andOnePointsListenSaysSo() {
         val catalog = catalog()
-        val cue = hifzCue(catalog, point(HifzKind.Start, verse(2, 30)), HifzSettings())!!
+        val cue = hifzCue(catalog, point(HifzKind.Start, verse(2, 30)))!!
         assertEquals(listOf(QuranRepeatRange(verse(2, 29), verse(2, 29), 1)), cue.items)
         assertEquals(1, cue.rounds)
         assertEquals(0f, cue.gapFactor)
         assertTrue(cue.isValid)
-        assertNull(hifzCue(catalog, point(HifzKind.Skip, verse(2, 1)), HifzSettings()))
-        assertEquals(HifzListenOneTitle, hifzListen(catalog, listOf(point(HifzKind.Word, verse(2, 18))), HifzSettings())!!.title)
-        assertEquals(HifzListenTitle, hifzListen(catalog, listOf(point(HifzKind.Word, verse(2, 18)), point(HifzKind.Word, verse(2, 19))), HifzSettings())!!.title)
+        assertNull(hifzCue(catalog, point(HifzKind.Skip, verse(2, 1))))
+        assertEquals(HifzListenOneTitle, hifzListen(catalog, listOf(point(HifzKind.Word, verse(2, 18))))!!.title)
+        assertEquals(HifzListenTitle, hifzListen(catalog, listOf(point(HifzKind.Word, verse(2, 18)), point(HifzKind.Word, verse(2, 19))))!!.title)
     }
 
     @Test

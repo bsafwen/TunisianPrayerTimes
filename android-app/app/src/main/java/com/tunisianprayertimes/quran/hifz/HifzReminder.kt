@@ -39,7 +39,8 @@ import java.util.Locale
  * due then, each by its question and never its answer, and opens «مراجعة اليوم», where the verse waits covered and
  * the answer given decides when it comes back. A fresh slip, or one failed in a check, is asked at every reminder
  * until it is answered right [HifzFreshRecalls] times; a spaced check, at the first reminder of its day. Nothing is
- * posted when nothing is due, and the reminder goes once nothing it asked about is due any more.
+ * posted when nothing is due; a point answered or looked at since leaves the reminder shown, which goes once nothing
+ * is due any more.
  */
 object HifzReminder {
     const val CHANNEL_ID = "hifz_daily"
@@ -52,7 +53,10 @@ object HifzReminder {
     private const val STALE_MS = 3 * 60 * 60_000L
     private val laterDate = DateTimeFormatter.ofPattern("d MMMM", Locale.forLanguageTag("ar-TN-u-nu-latn"))
 
-    /** Arms the next reminder, or cancels it, and takes away one whose points are answered. Call off the main thread. */
+    /**
+     * Arms the next reminder, or cancels it, and takes away from the one shown the points no longer to ask: answered,
+     * or looked at since, from the review or elsewhere. Call off the main thread.
+     */
     fun refresh(context: Context, now: Long = System.currentTimeMillis()) {
         val app = context.applicationContext
         val alarms = app.getSystemService(AlarmManager::class.java) ?: return
@@ -61,10 +65,18 @@ object HifzReminder {
         val points = HifzRepository.points.value
         val today = epochDay(now)
         val learning = HifzLearning.read(app, today)
-        val askable = points.askable(today, now, learning.practised, learning.seen)
-        // The reminder goes once what it asked is answered, from the review or elsewhere.
-        if (!settings.reminder || askable.isEmpty()) clearReminder(app)
+        val askable = points.askable(today, now, learning.seen, learning.exposed)
         val prefs = app.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val posted = prefs.getString("posted", null).orEmpty().split(',').mapNotNull { it.toLongOrNull() }.toSet()
+        val gone = posted.any { id -> askable.none { it.id == id } }
+        when {
+            !settings.reminder || askable.isEmpty() -> clearReminder(app)
+            // Some of what it asked was answered or looked at since: it asks what is due now instead, as the review it
+            // opens would, without a second sound.
+            gone && showing(app) -> runCatching { post(app, askable.reviewBatch(today, now, HifzRoundSize), askable.size, quiet = true) }
+            // Swiped away: nothing left to update.
+            gone -> prefs.edit().remove("posted").apply()
+        }
         if (!settings.reminder || points.isEmpty()) {
             alarms.cancel(remindIntent(app, null))
             prefs.edit().remove("armed").apply()
@@ -76,10 +88,10 @@ object HifzReminder {
         // A reminder whose time came while its alarm waited, as an inexact one may for up to an hour, is still
         // owed: a refresh then shows it at once rather than moving on to the next prayer.
         val owed = prefs.getString("armed", null)?.let(::decodeSlot)?.takeIf {
-            it.at in (shown + 1)..now && now - it.at < STALE_MS && askable.isNotEmpty()
+            it.at in (shown + 1)..now && askable.isNotEmpty() && (now - it.at < STALE_MS || !laterSlot(app, settings, it.day, now))
         }
         val next = owed ?: points.nextReminder(
-            settings.times, today, maxOf(now, shown), prefs.getLong("reminded_day", -1L), learning.practised, learning.seen,
+            settings.times, today, maxOf(now, shown), prefs.getLong("reminded_day", -1L), learning.exposed, learning.seen,
         ) { day, time -> slotAt(app, day, time) }
         if (next == null) {
             alarms.cancel(remindIntent(app, null))
@@ -103,7 +115,16 @@ object HifzReminder {
     /** Takes the reminder away: its review was opened, or nothing it asked is due any more. */
     fun clearReminder(context: Context) {
         context.getSystemService(NotificationManager::class.java)?.cancel(NOTIFICATION_ID)
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().remove("posted").apply()
     }
+
+    /** The reminder is in the shade. */
+    private fun showing(context: Context): Boolean =
+        context.getSystemService(NotificationManager::class.java)?.activeNotifications?.any { it.id == NOTIFICATION_ID } == true
+
+    /** Another reminder of the prayer day [day] is still to come after [now]. */
+    private fun laterSlot(context: Context, settings: HifzSettings, day: Long, now: Long): Boolean =
+        settings.times.times.any { time -> (slotAt(context, day, time) ?: Long.MIN_VALUE) > now }
 
     private fun decodeSlot(value: String): HifzSlot? {
         val parts = value.split('|')
@@ -120,9 +141,10 @@ object HifzReminder {
     }
 
     /**
-     * When the reminder after [prayer] on [day] comes: once the prayer's silence ends when the app silences
-     * it, otherwise 20 minutes after the adhan; never sooner than 10 minutes after it. On Friday, Dhuhr is
-     * the Jumu'a. Null when that day's prayer times are not known.
+     * When the reminder after [prayer] on [day] comes: once the prayer's silence ends, the silence as the reader set it
+     * even when the app does not silence that prayer, so it never rings during the prayer or a Friday's khutba; 20
+     * minutes after the adhan when no window is known; never sooner than 10 minutes after it. On Friday, Dhuhr is the
+     * Jumu'a. Null when that day's prayer times are not known.
      */
     private fun afterPrayerAt(context: Context, day: Long, prayer: Prayer): Long? {
         val date = LocalDate.ofEpochDay(day)
@@ -138,9 +160,12 @@ object HifzReminder {
         val silenced = if (friday) Prayer.JOMOAA else prayer
         // The planner's window of that prayer day (6.9): its adhan (the Jumu'a time on a Friday) and its end
         // as instants, so a change of the clocks that day does not move the reminder.
-        val window = if (PrefsManager.isEnabled(context)) {
-            com.tunisianprayertimes.SilenceScheduler.planner(context).windowsOf(date).firstOrNull { it.prayer == silenced }
-        } else null
+        val window = runCatching {
+            com.tunisianprayertimes.SilenceScheduler.planner(
+                context, com.tunisianprayertimes.PrayerTimesRepository.place(context),
+                mapOf(silenced to PrefsManager.getSilenceRule(context, silenced)),
+            ).windowsOf(date).firstOrNull { it.prayer == silenced }
+        }.getOrNull()
         val adhan = window?.adhan?.toEpochMilli()
             ?: (if (friday) com.tunisianprayertimes.PrayerTimesRepository.jumuaTime(context, date)?.toEpochMilli() else null)
             ?: DhikrReminderScheduler.resolveTime(context, DhikrTime(kind), date)
@@ -169,8 +194,8 @@ object HifzReminder {
 
     /**
      * When a recorded point is asked next, for its fix: «السؤال التالي اليوم بعد العصر.», «يصلك سؤالها الأحد بعد
-     * الفجر.» A fresh point's answer seen, as in this fix, puts its question a while later; a check practised today with
-     * its answer in view waits for the next day. Call off the main thread.
+     * الفجر.» A fresh point's answer seen, as in this fix, puts its question a while later; a check whose verse was
+     * looked at today waits for the next day. Call off the main thread.
      */
     fun pointSentence(context: Context, point: HifzPoint, now: Long = System.currentTimeMillis()): String {
         val settings = HifzSettings.read(context)
@@ -187,7 +212,8 @@ object HifzReminder {
                     ?: "تجدها في «مراجعة اليوم» ${dayAndClock(due, today)}."
             }
         }
-        val dueDay = if (point.id in learning.practised && point.dueDay <= today) today + 1 else point.dueDay
+        // Its answer is in view in its fix: a check that counts is the next day's.
+        val dueDay = if (point.dueDay <= today) today + 1 else point.dueDay
         if (dueDay <= today) return "حان موعد مراجعتها: تجدها في «مراجعة اليوم»."
         if (!settings.reminder) return "التذكير متوقف: تجدها في «مراجعة اليوم» ${dayLabel(dueDay, today)}."
         val first = slotFrom(now, dueDay) ?: return "يصلك سؤالها ${dayLabel(dueDay, today)}."
@@ -326,7 +352,10 @@ object HifzReminder {
         else -> null
     }
 
-    /** Posts the reminder at [time] of the prayer day [day], unless it is hours late, then arms the next one. */
+    /**
+     * Posts the reminder at [time] of the prayer day [day], unless it is hours late with another of that day still to
+     * come, then arms the next one.
+     */
     internal fun deliver(context: Context, day: Long, time: HifzWhen?) {
         val app = context.applicationContext
         HifzRepository.load(app)
@@ -341,8 +370,10 @@ object HifzReminder {
                 refresh(app)
                 return
             }
-            if (at == null || now - at < STALE_MS) remind(app, settings, day, maxOf(now, at ?: now))
-            app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("shown_at", maxOf(at ?: now, now)).apply()
+            // Marked shown before it is posted: a refresh running meanwhile, as the app's start does, must not take
+            // this reminder for one still owed and bring it a second time.
+            app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("shown_at", maxOf(at ?: now, now)).commit()
+            if (at == null || now - at < STALE_MS || !laterSlot(app, settings, day, now)) remind(app, day, maxOf(now, at ?: now))
         }
         refresh(app)
     }
@@ -352,19 +383,24 @@ object HifzReminder {
      * of that day are and no reminder of it brought them yet. Then the fresh points and the checks together, as the
      * review they open asks them. Isha's reminder after midnight is its day's, so it never takes the next day's checks.
      */
-    private fun remind(context: Context, settings: HifzSettings, day: Long, now: Long) {
+    private fun remind(context: Context, day: Long, now: Long) {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val today = epochDay(now)
         val learning = HifzLearning.read(context, today)
-        val due = HifzRepository.points.value.askable(today, now, learning.practised, learning.seen)
+        val due = HifzRepository.points.value.askable(today, now, learning.seen, learning.exposed)
         val checks = due.any { it.fresh == 0 && it.dueDay <= day }
         if (due.none { it.fresh > 0 } && (!checks || prefs.getLong("reminded_day", -1L) >= day)) return
-        val posted = runCatching { post(context, due.reviewBatch(today, now, settings.perDay), due.size) }.isSuccess
+        // A reminder that cannot reach the reader leaves the day's checks to a later one.
+        if (!appNotificationsAllowed(context) || blockedChannel(context, listOf(CHANNEL_ID)) != null) return
+        val posted = runCatching { post(context, due.reviewBatch(today, now, HifzRoundSize), due.size) }.isSuccess
         if (posted && checks) prefs.edit().putLong("reminded_day", maxOf(day, prefs.getLong("reminded_day", -1L))).apply()
     }
 
-    /** [due] the review's points, [dueAll] every point to ask now, also those beyond one review's. */
-    private fun post(context: Context, due: List<HifzPoint>, dueAll: Int) {
+    /**
+     * [due] the review's points, [dueAll] every point to ask now, also those beyond one review's. [quiet]: the reminder
+     * already shown, asking fewer points now, without sounding again.
+     */
+    private fun post(context: Context, due: List<HifzPoint>, dueAll: Int, quiet: Boolean = false) {
         val manager = context.getSystemService(NotificationManager::class.java) ?: return
         manager.createNotificationChannel(NotificationChannel(CHANNEL_ID, "المراجعة", NotificationManager.IMPORTANCE_DEFAULT).apply {
             description = "أسئلة عن مواضعك بعد الصلوات أو في الأوقات التي اخترتها، دون أجوبتها"
@@ -392,8 +428,10 @@ object HifzReminder {
             .setContentIntent(review)
             .setAutoCancel(true)
             .setCategory(Notification.CATEGORY_REMINDER)
+            .setOnlyAlertOnce(quiet)
             .addAction(Notification.Action.Builder(null, "ابدأ المراجعة", review).build())
         manager.notify(NOTIFICATION_ID, builder.build())
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString("posted", due.joinToString(",") { it.id.toString() }).apply()
     }
 
     /** Qur'an words in a notification, which shows them in the system's font, not the mushaf's. */

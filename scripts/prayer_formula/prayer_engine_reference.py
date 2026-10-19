@@ -1088,14 +1088,16 @@ class CaseEngine:
                 return date_of_day_number(m - 365, year + 1)
             return date_of_day_number(m, year)
 
+        # Day n is the date itself: 29 February shares 28 February's number (its rules), never its times.
+        cur = self.north_day(site, day)
+
         def nd(m: int) -> dict:
-            return self.north_day(site, date_of(m))
+            return cur if m == n else self.north_day(site, date_of(m))
 
         def line(m: int, m0: int, y0: float, m1: int, y1: float) -> float:
             u0, u1 = y0 - nd(m0)["mid0"], y1 - nd(m1)["mid0"]
             return nd(m)["mid0"] + u0 + (u1 - u0) * (m - m0) / (m1 - m0)
 
-        cur = nd(n)
         mec = {k: cur["M_" + k] for k in ("rise", "set", "fajr", "isha")}
         out = {k: cur[k] for k in ("rise", "set", "fajr", "isha")}
         days = self.north_days(site, year)
@@ -1301,7 +1303,8 @@ class CaseEngine:
             if not by_angle:
                 continue
             old = times[name]
-            new = self.high_latitude(rule, site, day, name, old, times["MAGHRIB"])
+            # H5 counts Isha from Maghrib before the zone's shift: Isha takes its own in step 7, once.
+            new = self.high_latitude(rule, site, day, name, old, plus(times["MAGHRIB"], -shift.get("MAGHRIB", 0)))
             if new is not None and (old is None or abs(new - old) > 0.001):
                 rules[name] = "IRN_SOUTHERN_SUMMER" if rule["type"] == "irn" else rule["type"].upper()
             times[name] = new
@@ -1421,7 +1424,8 @@ class CaseEngine:
             for k in range(1, RAMP_DAYS + 1):
                 angle = self.angle_on(site, day - k * ONE_DAY, name)
                 if angle is not None:
-                    local = angle + self.utc_offset
+                    # Its clock time in Z on its own date (that date's UTC offset), read on D's.
+                    local = angle + self.offset_at(angle)
                     local_day = math.floor(local / 86400)
                     moved = (local_day + k) * 86400 + (local - local_day * 86400) - self.utc_offset
                     steps = self.day_steps(site, day)
@@ -1441,8 +1445,10 @@ class CaseEngine:
         return earlier(t, bound) if name == "ISHA" else later(t, bound)
 
     def takdir(self, site: Site, day: datetime.date, name: str, t: float | None) -> float | None:
-        """H6: Diyanet's takdir: the year's table north of 44.375° N, else t, or α/60 of the night when t is absent."""
-        if site.evening[0] >= TAKDIR_START:
+        """H6: Diyanet's takdir: the year's table north of 44.375° N, else t, or α/60 of the night when t is absent.
+        The table needs both angles: with Fajr or Isha by minutes (a custom method from a Diyanet preset), the latter."""
+        both = self.angle_degrees(day, "FAJR") is not None and self.angle_degrees(day, "ISHA") is not None
+        if site.evening[0] >= TAKDIR_START and both:
             value = self.takdir_table(site, day.year)[day][0 if name == "FAJR" else 1]
             if value is not None:
                 return epoch_days(day) * 86400 + value
@@ -1594,17 +1600,22 @@ class CaseEngine:
         steps = self.day_steps(site, day)
         if name == "ISHA":
             delay = 60 * (self.rule_for(day)[0].get("MAGHRIB", 0) + 40)
-            target = utc_hours(self.day_steps(site, date_of_day_number(172, day.year)).sunset + delay)
+            # Without the solstice's sunset or the anchor day's 15° Isha the rule does not act (the engine's IrnRule).
+            solstice_sunset = self.day_steps(site, date_of_day_number(172, day.year)).sunset
+            anchor = self.angle_on(site, date_of_day_number(first - 1 if n <= 172 else last + 1, day.year), "ISHA")
+            if solstice_sunset is None or anchor is None:
+                return t
+            target = utc_hours(solstice_sunset + delay)
             if n <= 172:
-                x0, y0, x1, y1 = first - 1, utc_hours(self.angle_on(site, date_of_day_number(first - 1, day.year),
-                                                                      "ISHA")), 172, target
+                x0, y0, x1, y1 = first - 1, utc_hours(anchor), 172, target
             else:
-                x0, y0, x1, y1 = 172, target, last + 1, utc_hours(self.angle_on(site, date_of_day_number(
-                    last + 1, day.year), "ISHA"))
+                x0, y0, x1, y1 = 172, target, last + 1, utc_hours(anchor)
             hours = y0 + (y1 - y0) * (n - x0) / (x1 - x0)
             return max(epoch_days(day) * 86400 + 3600 * hours, steps.sunset + delay)
         reference = first - 1 if n <= 172 else last + 1
         fajr = self.angle_on(site, date_of_day_number(reference, day.year), "FAJR")
+        if fajr is None:
+            return t
         local = fajr + self.offset_at(fajr)
         clock = local - math.floor(local / 86400) * 86400
         return min(self.clock_instant(day, clock), steps.sunrise - HOUR)
@@ -1785,8 +1796,8 @@ class CaseEngine:
                 move("ISHA", i12, "UP")
 
     def steppers(self, steps: DaySteps, times: dict, rules: dict) -> None:
-        """S12: the user's steppers and the window check."""
-        lower = {"DHUHR": steps.transit + 72, "ASR": steps.raw.a1, "MAGHRIB": steps.sunset}
+        """S12: the user's steppers and the window check, on the sun's disk: the raw sunrise and sunset, before any polar rule."""
+        lower = {"DHUHR": steps.transit + 72, "ASR": steps.raw.a1, "MAGHRIB": steps.raw.sunset}
         for name in EVENTS:
             n = (self.case.get("adjustments") or {}).get(name, 0)
             u = times[name]
@@ -1799,8 +1810,8 @@ class CaseEngine:
                     result = bound if v < bound - 60 else v
                 else:
                     result = v if n > 0 else u
-            elif name in ("FAJR", "SUNRISE") and steps.sunrise is not None:
-                bound = steps.sunrise
+            elif name in ("FAJR", "SUNRISE") and steps.raw.sunrise is not None:
+                bound = steps.raw.sunrise
                 if u <= bound:
                     result = bound if v > bound + 60 else v
                 else:

@@ -892,7 +892,9 @@ def main() -> int:
                                [common.sample(SOURCE, first, last, days, len(fitted), month_split=True)], profile_total)
     say(f"profile ({len(fitted)} zones, held out): {shares(profile_total)}; within 1 min: "
         + ", ".join(f"{e} {profile['within1'][e]:.1%}" for e in EVENTS) + f"; worst {profile_total.worst} min")
-    path = common.write_asset(AUTHORITY, AUTHORITY, "AE", "NEAREST", zones, fit=profile, source=SOURCE_LINE, by_admin1=True)
+    # A place takes the location with the nearest listed area or own point in its emirate (plan 8.8): named first.
+    path = common.write_asset(AUTHORITY, AUTHORITY, "AE", "NEAREST", zones, fit=profile, source=SOURCE_LINE, by_admin1=True,
+                              named_first=True)
     say(f"wrote {path.relative_to(common.ROOT).as_posix()}: {len(zones)} zones")
     return 0
 

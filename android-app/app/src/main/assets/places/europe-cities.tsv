@@ -7134,7 +7134,6 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 661164	FI				Anjala				6068333	2683333		16779	
 661226	FI				Amuri				6149957	2374459		5353	
 661352	FI				Alavus				6258333	2361667		10722	
-661576	FI				Alajärvi	Alajaervi			6300000	2381667		8793	
 661896	FI				Ähtäri	AEhtaeri			6255403	2406186		5180	
 662095	FI				Äänekoski	AEaenekoski	آنيكوسكي		6260000	2573333		17614	
 798210	FI				Haukilahti			Haukilahti-Westend	6015889	2477057		5873	
@@ -7218,7 +7217,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 7910855	FI				Toijala				6116780	2383819		8300	
 7911309	FI				Väståboland	Vaestaboland		Pargas	6029972	2230040		15498	
 8198723	FI				Sastamala				6134942	2290928		24495	
-11593510	FI				Älajärvi	AElajaervi			6300027	2381586		10308	
+11593510	FI				Älajärvi	AElajaervi		Alajaervi|Alajärvi	6300027	2381586		10308	
 11962456	FI				Vartiokylä	Vartiokylae			6021799	2509569		30244	
 11962457	FI				Länsisatama	Laensisatama			6015525	2491473		14542	
 12122452	FI				Kalasatama				6018515	2497934		5671	
@@ -10023,8 +10022,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 2643701	GB				Long Ditton				5138432	-32041		6343	
 2643704	GB				Longdendale				5346667	-200000		8873	
 2643726	GB				Long Ashton		لونغ آشتون		5142997	-266098		5254	
-2643734	GB				Londonderry County Borough		ديري		5499721	-730917		87153	
-2643736	GB				Derry		ديري	Derry / Londonderry|Derry City|Londonderry	5499810	-730934		83652	
+2643734	GB				Londonderry County Borough		ديري	Derry|Derry / Londonderry|Derry City|Londonderry	5499721	-730917		87153	
 2643738	GB				London Colney				5172453	-29646		9800	
 2643741	GB				City of London		مدينة لندن	Cité de Londres|London City|Londra|Londres|Square Mile	5151279	-9184		8072	
 2643743	GB				London		لندن	Londra|Londres	5150853	-12574		8961989	
@@ -18471,8 +18469,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 509987	RU	67			Petrovsk		بيتروفسك		5230881	4538992	Europe/Saratov	33622	
 510132	RU	65			Petrova Dubrava				5330000	5036667	Europe/Samara	6699	
 510171	RU	38			Petropavlovskaya				4508189	4045125	Europe/Moscow	6632	
-510225	RU	66			Petrodvorets		بيتيرهوف		5989565	2980145		61973	
-510291	RU	66			Peterhof		بيتيرهوف	Petergof	5988333	2990000		73199	
+510291	RU	66			Peterhof		بيتيرهوف	Petergof|Petrodvorets	5988333	2990000		73199	
 510342	RU	73			Pestretsy				5575408	4965110		7311	
 510347	RU	65			Pestravka				5240330	4995837	Europe/Samara	6623	
 510364	RU	52			Pestovo		بيستوفو		5859382	3580244	Europe/Moscow	15910	
@@ -21899,8 +21896,7 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 740490	TR		7911036		Reşadiye	Resadiye	رشدية (مدينة)		4039194	3733750		0	
 740511	TR		9551354		Pursaklar				4003203	3289528		0	
 740531	TR		8631399		Posof		بوسخوف		4151111	4272917		2900	
-740560	TR		8631629		Piraziz				4095178	3812400		0	
-740561	TR		8631629		Piraziz				4092244	3812458		9959	
+740560	TR		8631629		Piraziz				4095178	3812400		9959	
 740570	TR		8632565		Pınarhisar	Pinarhisar	بنار حصار		4162710	2751481		11180	
 740581	TR		8631984		Pınarbaşı	Pinarbasi			4160388	3311099		2491	
 740605	TR		8631637		Perşembe	Persembe	برشمبه		4106556	3777139		11808	
@@ -22281,7 +22277,6 @@ id	country	admin1	admin2	dem	name	ascii	arabic	aliases	latE5	lngE5	zone	populati
 10375669	TR		7732344		Merkez				4012954	2642075		0	
 10376352	TR		9549630		İlkadım	Ilkadim			4128732	3629046		0	
 10377367	TR		9535336		Kepez				3691579	3070782		0	
-10400338	TR		7732588		Ümraniye	UEmraniye	العمرانية		4103291	2910137		0	
 10402306	TR		9548904		Altınordu	Altinordu			4098404	3787348		0	
 10632124	TR		8632148		Atayurt		أتايورت		3638364	3402232		6876	
 11238838	TR		9538816		Merkezefendi				3780544	2904236		280341	
