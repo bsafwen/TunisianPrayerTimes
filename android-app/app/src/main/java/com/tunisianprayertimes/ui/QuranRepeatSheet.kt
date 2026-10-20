@@ -135,7 +135,7 @@ internal fun QuranRepeatSheet(
                             onClick = { times = ((count ?: 2) - 1).toString() },
                             enabled = count == null || count > 1,
                             modifier = Modifier.testTag("quran_repeat_fewer"),
-                        ) { Icon(painterResource(R.drawable.ic_remove), "مرة أقل") }
+                        ) { Icon(painterResource(R.drawable.ic_remove), "تقليص العدد") }
                         OutlinedTextField(
                             value = times,
                             onValueChange = { times = it.take(3) },
@@ -150,7 +150,7 @@ internal fun QuranRepeatSheet(
                             onClick = { times = ((count ?: 0) + 1).toString() },
                             enabled = count == null || count < QuranRepeatRange.MAX_TIMES,
                             modifier = Modifier.testTag("quran_repeat_more"),
-                        ) { Icon(painterResource(R.drawable.ic_add), "مرة أكثر") }
+                        ) { Icon(painterResource(R.drawable.ic_add), "زيادة العدد") }
                         Text(
                             count?.let(::quranRepeatTimesLabel) ?: "من 1 إلى ${QuranRepeatRange.MAX_TIMES}",
                             Modifier.padding(start = 4.dp), fontSize = 13.sp,

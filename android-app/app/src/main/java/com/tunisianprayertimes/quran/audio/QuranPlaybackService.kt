@@ -121,7 +121,7 @@ class QuranPlaybackService : Service() {
         // silences and «بعد السورة», not the defaults.
         QuranAudioController.readListening(this)
         notifications.createNotificationChannel(NotificationChannel(CHANNEL_ID, "تلاوة القرآن", NotificationManager.IMPORTANCE_LOW).apply {
-            description = "التحكم في تلاوة القرآن الكريم"
+            description = "التحكّم في تلاوة القرآن الكريم"
             setSound(null, null)
             enableVibration(false)
         })
@@ -1018,7 +1018,7 @@ class QuranPlaybackService : Service() {
             .setSmallIcon(R.drawable.ic_tab_quran)
             .setContentTitle(surahTitle(current.surah))
             .setContentText(current.error ?: when {
-                current.notDownloaded -> "السورة غير محمّلة على الجهاز. افتح التطبيق لتنزيلها."
+                current.notDownloaded -> "تلاوة السورة غير محمّلة على الجهاز. افتح التطبيق لتنزيلها."
                 current.interruption == QuranInterruption.Alarm -> "توقّفت التلاوة للمنبّه. اضغط «تشغيل» للمتابعة."
                 current.interruption == QuranInterruption.OtherAudio -> "توقّفت التلاوة لصوت آخر. اضغط «تشغيل» للمتابعة."
                 // Said where the reader may be, the phone in a pocket: why it stopped, and what to do.

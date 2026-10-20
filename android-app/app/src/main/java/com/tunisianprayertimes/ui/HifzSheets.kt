@@ -122,6 +122,10 @@ import java.util.Locale
 internal fun hifzVerseName(catalog: QuranCatalog, verse: QuranVerseReference): String =
     "${catalog.surahs.getOrNull(verse.surah - 1)?.name.orEmpty()} ${verse.ayah}"
 
+/** «الآية 2 من سورة الملك»: a verse as a sentence names it, after «عن». */
+internal fun hifzVerseAbout(catalog: QuranCatalog, verse: QuranVerseReference): String =
+    "الآية ${verse.ayah} من سورة ${catalog.surahs.getOrNull(verse.surah - 1)?.name.orEmpty()}"
+
 /** «صفحة 4», the printed page; never «ص 4», which reads as سورة ص. */
 internal fun hifzPage(catalog: QuranCatalog, verse: QuranVerseReference): String? =
     catalog.pagesForVerse(verse.surah, verse.ayah).firstOrNull()?.let { "صفحة ${it + 1}" }
@@ -287,8 +291,8 @@ internal fun hifzReviewWhen(days: Long): String = when {
     days >= 0L -> "نسألك عنها ${hifzWhen(days)}"
     days == -1L -> "سؤالها متأخّر منذ أمس"
     days == -2L -> "سؤالها متأخّر منذ يومين"
-    -days in 3L..10L -> "سؤالها متأخّر منذ ${-days}${NB}أيام"
-    else -> "سؤالها متأخّر منذ ${-days}${NB}يومًا"
+    -days % 100 in 3L..10L -> "سؤالها متأخّر منذ ${-days}${NB}أيام"
+    else -> "سؤالها متأخّر منذ ${-days}${NB}" + if (-days % 100 < 3) "يوم" else "يومًا"
 }
 
 /** The right answers a fresh point gave toward its plan, «دون مساعدة»: its [recalls] less those still needed. */
@@ -391,7 +395,7 @@ internal fun HifzLadder(point: HifzPoint) {
     val fresh = point.fresh > 0
     val label = when {
         point.mastered -> "ثبتت"
-        fresh && point.freshDone == 0 -> "المطلوب أن تتذكّرها ${HifzReminder.recallsPhrase(point.recalls)} دون مساعدة"
+        fresh && point.freshDone == 0 -> "نسألك عنها إلى أن تتذكّرها ${HifzReminder.recallsPhrase(point.recalls)} دون مساعدة"
         fresh -> "تذكّرتها ${HifzReminder.recallsPhrase(point.freshDone)} من ${point.recalls} دون مساعدة، ثم تقلّ الأسئلة"
         else -> hifzHoldsAfter(point.checksToHold)
     }
@@ -647,7 +651,7 @@ internal fun HifzRecordSheet(
                             Text(option.hint, fontSize = 12.sp, color = TextMuted)
                             // Already in the notebook for this verse: recording it again counts it again.
                             if (recorded.isNotEmpty()) Text(
-                                "مسجّلة من قبل · ${hifzSlipsLabel(recorded.maxOf { it.slips })}", fontSize = 12.sp, color = QuranHifzViolet,
+                                "سجّلته من قبل · ${hifzSlipsLabel(recorded.maxOf { it.slips })}", fontSize = 12.sp, color = QuranHifzViolet,
                             )
                         }
                     }
@@ -712,11 +716,11 @@ internal fun HifzRecordSheet(
                         // A verse found by the reader: where it parts from this one tells a look-alike from an ending.
                         if (typing) HifzVerseFinder(catalog, exclude = verse) { chosen -> chooseOther(chosen, hifzLookAlikeKind(catalog, verse, chosen)); typing = false }
                         TextButton(onClick = { detailsOpen = !detailsOpen }, contentPadding = PaddingValues(0.dp)) {
-                            Text(if (detailsOpen) "إخفاء التفاصيل الاختيارية" else "تفاصيل إضافية (اختياري)")
+                            Text(if (detailsOpen) "إخفاء التفاصيل الإضافية" else "تفاصيل إضافية (اختياري)")
                         }
                         if (detailsOpen && words != null) {
                             TextButton(onClick = { wordOpen = !wordOpen }, contentPadding = PaddingValues(0.dp)) {
-                                Text("أين افترقت عن الآية؟ (اختياري) ${if (wordOpen) "▴" else "▾"}", fontSize = 13.sp)
+                                Text("أين افترقت عن الآية؟ ${if (wordOpen) "▴" else "▾"}", fontSize = 13.sp)
                             }
                             if (wordOpen) HifzWordPicker(words, setOfNotNull(word), suggested = suggestedWord) { word = if (word == it) null else it }
                         }
@@ -724,7 +728,7 @@ internal fun HifzRecordSheet(
                             Checkbox(checked = bothWays, onCheckedChange = null)
                             Spacer(Modifier.width(8.dp))
                             Column {
-                                Text("قد أخلط في الاتجاهين", fontSize = 14.sp)
+                                Text("قد أقرأ كلًّا منهما مكان الأخرى", fontSize = 14.sp)
                                 Text("فنسألك عن الآيتين كلتيهما", fontSize = 12.sp, color = TextMuted)
                             }
                         }
@@ -837,7 +841,7 @@ private fun HifzLookAlikeRow(catalog: QuranCatalog, verse: QuranVerseReference, 
         else -> null
     }
     val from = ((partAt ?: o.runB) - 2).coerceIn(0, (words.size - 1).coerceAtLeast(0))
-    val where = if (candidate.verse.surah == verse.surah) "السورة نفسها" else "سورة ${catalog.surahs.getOrNull(candidate.verse.surah - 1)?.name.orEmpty()}"
+    val where = if (candidate.verse.surah == verse.surah) "السورة نفسها" else "سورة أخرى"
     Column(
         Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(if (selected) AdhkarSoftGreen else Color.White)
             .border(1.dp, if (selected) GreenPrimary else CardBorder, RoundedCornerShape(12.dp)).clickable(onClick = onClick)
@@ -894,7 +898,7 @@ internal fun HifzVerseFinder(
         OutlinedTextField(
             value = text, onValueChange = { text = it }, singleLine = true,
             modifier = Modifier.fillMaxWidth().testTag("hifz_verse_field"),
-            placeholder = { Text("كلمات من الآية أو الصفحة أو البقرة 170") },
+            placeholder = { Text("كلمات من الآية أو «صفحة 51» أو «البقرة 170»") },
             supportingText = when {
                 searching -> ({ Text("جارٍ البحث…") })
                 text.isNotBlank() && found.isEmpty() -> ({ Text(
@@ -975,11 +979,11 @@ private fun HifzSkipDestination(catalog: QuranCatalog, verse: QuranVerseReferenc
                 Text("كم آية تخطيت؟", fontSize = 13.sp, color = TextMuted)
                 Spacer(Modifier.width(4.dp))
                 IconButton(onClick = { more = true; onChange(landed - 1) }, enabled = skipped > 1) {
-                    Icon(painterResource(R.drawable.ic_remove), "آية أقل")
+                    Icon(painterResource(R.drawable.ic_remove), "تقليص العدد")
                 }
                 Text("$skipped", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.testTag("hifz_skip_count"))
                 IconButton(onClick = { more = true; onChange(landed + 1) }, enabled = landed < count) {
-                    Icon(painterResource(R.drawable.ic_add), "آية أكثر")
+                    Icon(painterResource(R.drawable.ic_add), "زيادة العدد")
                 }
             }
             TextButton(onClick = { choosing = !choosing }, contentPadding = PaddingValues(0.dp), modifier = Modifier.testTag("hifz_skip_choose")) {
@@ -1048,7 +1052,7 @@ internal fun hifzTypedVerse(text: String, catalog: QuranCatalog): QuranVerseRefe
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun HifzWordPicker(words: HifzWords, selected: Set<Int>, suggested: Int?, multi: Boolean = false, onSelect: (Int) -> Unit) {
-    if (suggested != null && suggested !in selected) Text(withQuranQuotes("نقترح «${words.printed[suggested]}»، المسها لتختارها."), fontSize = 12.sp, color = TextMuted)
+    if (suggested != null && suggested !in selected) Text(withQuranQuotes("نقترح «${words.printed[suggested]}»، اضغط عليها لتختارها."), fontSize = 12.sp, color = TextMuted)
     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         words.printed.forEachIndexed { i, printed ->
             val on = i in selected
@@ -1243,7 +1247,7 @@ private fun HifzFixContent(
                     val narrow = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 400 ||
                         androidx.compose.ui.platform.LocalDensity.current.fontScale > 1.3f
                     if (narrow) IconButton(onClick = onOpen, modifier = Modifier.testTag("hifz_fix_open")) {
-                        Icon(painterResource(R.drawable.ic_quran_locate), "في المصحف", Modifier.size(22.dp), tint = GreenPrimaryDark)
+                        Icon(painterResource(R.drawable.ic_quran_locate), "عرض الآية في المصحف", Modifier.size(22.dp), tint = GreenPrimaryDark)
                     } else TextButton(onClick = onOpen, modifier = Modifier.testTag("hifz_fix_open")) { Text("في المصحف") }
                 }
                 if (onEdit != null && gate == null) IconButton(onClick = onEdit, modifier = Modifier.testTag("hifz_fix_edit")) {
@@ -1251,7 +1255,7 @@ private fun HifzFixContent(
                 }
                 // One tap, no question: the undo comes with what it deleted.
                 IconButton(onClick = onDelete, modifier = Modifier.testTag("hifz_fix_delete")) {
-                    Icon(painterResource(R.drawable.ic_delete), "احذف الموضع", Modifier.size(20.dp), tint = GreenPrimaryDark)
+                    Icon(painterResource(R.drawable.ic_delete), "حذف الموضع", Modifier.size(20.dp), tint = GreenPrimaryDark)
                 }
                 IconButton(onClick = onDismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
             }
@@ -1327,7 +1331,7 @@ private fun HifzFixContent(
                 if (point.kind.lookAlike) {
                     val order = point.other?.let { o ->
                         val (first, second) = if (point.verse < o) point.verse to o else o to point.verse
-                        "في المصحف: ${hifzVerseName(catalog, first)} قبل ${hifzVerseName(catalog, second)}"
+                        "${hifzVerseName(catalog, first)} قبل ${hifzVerseName(catalog, second)} في المصحف"
                     }
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                         (listOfNotNull(order) + HifzKeyTemplates).filter { it !in key }.forEach { template ->
@@ -1392,12 +1396,12 @@ private fun HifzFixContent(
     }
 }
 
-/** «حان سؤال الملك 2» in the sheet, where its correction would be: the question first, the correction on purpose. */
+/** «حان وقتُ السؤال عن الآية 2 من سورة الملك» in the sheet, where its correction would be: the question first, the correction on purpose. */
 @Composable
 private fun HifzFixGateBox(catalog: QuranCatalog, opened: HifzPoint, gate: HifzFixGate) {
     Surface(shape = RoundedCornerShape(16.dp), color = GoldLight, modifier = Modifier.fillMaxWidth().testTag("hifz_fix_gate")) {
         Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("حان سؤال ${hifzVerseName(catalog, gate.due.verse)}", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+            Text("حان وقتُ السؤال عن ${hifzVerseAbout(catalog, gate.due.verse)}", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
             Text(hifzSpoilSentence(catalog, gate.due, opened), fontSize = 14.sp, color = TextDark)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                 Button(onClick = gate.onReview, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_gate_review")) {
@@ -1413,7 +1417,7 @@ private fun HifzFixGateBox(catalog: QuranCatalog, opened: HifzPoint, gate: HifzF
 @Composable
 private fun HifzPointHistory(point: HifzPoint) {
     var all by rememberSaveable(point.id) { mutableStateOf(false) }
-    HifzSection("نتائج أسئلتك", Modifier.testTag("hifz_point_history")) {
+    HifzSection("أجوبتك", Modifier.testTag("hifz_point_history")) {
         if (point.checks.isEmpty()) {
             Text("لم نسألك عنها بعد.", fontSize = 13.sp, color = TextMuted)
         } else {
@@ -1494,11 +1498,11 @@ internal fun hifzPracticeHint(point: HifzPoint): String {
     return when (point.kind) {
         HifzKind.Similar -> "قارن الآيتين، ثم اقرأ كل واحدة منهما من حفظك دون أن تدخل في الأخرى."
         HifzKind.Ending -> "لاحظ خاتمة كل من الآيتين، ثم اربطها بما قبلها واقرأ الآية كاملة من حفظك."
-        HifzKind.Skip -> if (v > 1) "صل آخر الآية ${v - 1} بالآية $v، ثم أكمل ما بعدها من حفظك." else "ابدأ بأول السورة ثم أكمل إلى الآية التالية من حفظك."
+        HifzKind.Skip -> if (v > 1) "صِل آخر الآية ${v - 1} بالآية $v، ثم أكمل ما بعدها من حفظك." else "ابدأ بأول السورة، ثم أكمل إلى الآية التالية من حفظك."
         HifzKind.Start -> if (v > 1) "اربط آخر الآية ${v - 1} بأول الآية $v، ثم أعدهما من حفظك." else "تأمّل بداية السورة، ثم غطِّها وابدأ من حفظك."
         HifzKind.Word -> if (point.atStart && v > 1) "اربط آخر الآية ${v - 1} بأول الآية $v، ثم أعدهما من حفظك."
-            else if (point.slipWords.isEmpty()) "راجع الآية كاملة وحدّد أين توقّفت، ثم أعد قراءتها من حفظك."
-            else "راجع ${if (point.slipWords.size > 1) "الكلمات التي أخطأت فيها" else "الكلمة التي أخطأت فيها"}، ثم اقرأ الآية كاملة من حفظك."
+            else if (point.slipWords.isEmpty()) "راجع الآية كاملة وحدّد أين أخطأت، ثم أعد قراءتها من حفظك."
+            else "راجع ${if (point.slipWords.size > 2) "الكلمات التي أخطأت فيها" else if (point.slipWords.size == 2) "الكلمتين اللتين أخطأت فيهما" else "الكلمة التي أخطأت فيها"}، ثم اقرأ الآية كاملة من حفظك."
     }
 }
 
@@ -1552,7 +1556,7 @@ internal fun HifzFixBody(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    if (point.kind == HifzKind.Ending) "لم تحدّد الخاتمة التي قلتها." else "لم تحدّد الآية التي ذهبت إليها.",
+                    if (point.kind == HifzKind.Ending) "لم تحدّد الخاتمة التي قلتها." else "لم تحدّد الآية التي دخلت فيها.",
                     Modifier.weight(1f), fontSize = 13.sp, color = TextMuted,
                 )
                 TextButton(onClick = onPickOther, modifier = Modifier.testTag("hifz_fix_pick_other")) { Text("حدّدها") }
@@ -1600,7 +1604,7 @@ internal fun HifzFixBody(
 private fun HifzExactCorrection(catalog: QuranCatalog, fix: HifzFix, onEdit: (() -> Unit)?) {
     val point = fix.point
     when (point.kind) {
-        HifzKind.Word -> HifzSection(if (point.slipWords.size > 1) "الكلمات الصحيحة" else "الكلمة الصحيحة", Modifier.testTag("hifz_exact_word")) {
+        HifzKind.Word -> HifzSection(if (point.slipWords.size > 2) "الكلمات الصحيحة" else if (point.slipWords.size == 2) "الكلمتان الصحيحتان" else "الكلمة الصحيحة", Modifier.testTag("hifz_exact_word")) {
             val selected = point.slipWords.sorted().filter { it in 0 until fix.words.size }
             if (selected.isEmpty()) {
                 Text("لم تحدّد الكلمة التي أخطأت فيها بعد؛ راجع الآية كاملة، ثم حدّدها.", fontSize = 14.sp, color = TextDark)
@@ -1757,7 +1761,7 @@ private fun HifzTimesEditor(times: HifzTimes, onChange: (HifzTimes) -> Unit) {
         }
         inPrayer.forEach { (minute, prayer) ->
             Text(
-                "الساعة$NB${HifzReminder.clock(minute)} اليوم في وقت ${HifzReminder.prayerPhrase(prayer, todayEpochDay())}، فنذكّرك بعدها.",
+                "الساعة$NB${HifzReminder.clock(minute)} توافق اليوم ${HifzReminder.prayerPhrase(prayer, todayEpochDay())}، فنذكّرك بعدها.",
                 fontSize = 12.sp, color = TextMuted, modifier = Modifier.testTag("hifz_times_in_prayer_$minute"),
             )
         }
@@ -1929,27 +1933,27 @@ internal fun HifzHowItWorksDialog(onDismiss: () -> Unit) {
         text = {
             Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 part(
-                    "سجّل الخطأ",
+                    "تسجيل الخطأ",
                     "إذا توقّفت أو أخطأت وأنت تقرأ، فاضغط على الآية ثم «أخطأت»، واختر ما حدث. وإن أخطأت في الصلاة أو مع معلّمك، فسجّله من «سجّل موضعًا» في «المراجعة». وتجد تصحيحه في «دفتر المراجعة» متى احتجت إليه.",
                 )
                 part(
                     "التذكير",
                     "بعد كل صلاة، أو في الأوقات التي تختارها في الإعدادات، يصلك إشعار حين يكون لديك ما تراجعه، فيه أسئلة مواضعك دون أجوبتها. اضغط «ابدأ المراجعة» لتقرأ الآيات من حفظك وهي مغطاة في المصحف. ولا يصلك الإشعار في وقت الصلاة: إن وافق وقتُه صلاةً، يصلك بعدها.",
                     "إذا أخطأت في آية، أو نسيتها حين سألناك عنها، نذكّرك بها إلى أن تتذكّرها 3${NB}مرات دون مساعدة، أو العدد الذي تختاره. ثم نذكّرك بها بعد يوم، ثم بعد 3${NB}أيام، ثم بعد أسبوع، ثم بعد أسبوعين.",
-                    "نقترح لكل خطأ عددًا: 3${NB}مرات لخطأ جديد، و4 إذا عاد، و5 إذا تكرّر كثيرًا، ومرتين لآية كنت تحفظها جيدًا. ومن «غيّر التذكير» تختار لكل خطأ متى نذكّرك به (بعد كل صلاة، أو بعد صلوات تختارها، أو في ساعات تحدّدها)، وكم مرة: مرة واحدة أو 5${NB}مرات.",
-                    "النقاط بجانب كل موضع في دفتر المراجعة تُظهر تقدّمه: البنفسجية للمرات التي تذكّرت فيها آيته دون مساعدة، ثم الخضراء لأسئلته اللاحقة إلى أن تثبت.",
+                    "نقترح لكل خطأ عددًا: 3${NB}مرات لخطأ جديد، و4 إذا عاد، و5 إذا تكرّر كثيرًا، ومرتين لآية كنت تحفظها جيدًا. ومن «غيّر التذكير» تختار لكل خطأ متى نذكّرك به (بعد كل صلاة، أو بعد صلوات تختارها، أو في ساعات تحدّدها)، وإلى متى: إلى أن تتذكّر الآية من مرة واحدة إلى 5${NB}مرات دون مساعدة.",
+                    "النقاط بجانب كل موضع في «دفتر المراجعة» تُظهر تقدّمه: البنفسجية للمرات التي تذكّرت فيها آيته دون مساعدة، ثم الخضراء لأسئلته اللاحقة إلى أن تثبت.",
                 )
                 part(
                     "السؤال",
                     "تُغطّى الآية في المصحف، فتقرؤها من حفظك، ثم تضغط «أظهر» وتختار:",
                     "• «دون مساعدة»: تذكّرتها دون تردّد أو تلميح. بعد الخطأ، تُحسب من المرات المطلوبة، وبعدها يطول الوقت قبل أن تعود: 3${NB}أيام، ثم أسبوع، ثم أسبوعان.",
-                    "• «بتردد أو تلميح»: تذكّرتها بعد تردّد أو بمساعدة، فلا تُحسب. نسألك عنها في تذكير لاحق، أو بعد يومين إن كانت أسئلتها قد قلّت.",
+                    "• «بتردّد أو تلميح»: تذكّرتها بعد تردّد أو بمساعدة، فلا تُحسب. نسألك عنها في تذكير لاحق، أو بعد يومين إن كانت أسئلتها قد قلّت.",
                     "• «نسيت أو أخطأت»: يُسجّل الخطأ، ونذكّرك بها من جديد إلى أن تتذكّرها دون مساعدة، ويزيد العدد إن عاد الخطأ.",
                     "إذا استعنت بتلميح أو كشفت جزءًا من الآية، فاختر «تذكّرتها بمساعدة» أو «لم أتذكّرها».",
                     "لا نسألك عن آية رأيتها قبل قليل: إن كنت أخطأت فيها حديثًا، ننتظر أن تمرّ ${HifzFreshGapMs / 60_000L}${NB}دقيقة على آخر مرة رأيت فيها الصواب، أو أن تنتهي الصلاة التالية، أيّهما أقرب؛ وإن كانت أسئلتها قد قلّت، لا نسألك عنها قبل اليوم التالي. كل سؤال نطرحه عليك يُحسب.",
-                    "بعد التردّد أو الخطأ، استمع إليها وكرّرها؛ ثم نسألك عنها في موعدها وهي مغطاة.",
+                    "بعد التردّد أو الخطأ، استمع إليها وكرّرها، ثم نسألك عنها في موعدها وهي مغطاة.",
                     "إذا تذكّرتها دون مساعدة في هذه الأسئلة كلها، فقد «ثبتت»، وتعود بعد شهر ثم كل شهرين للتأكد.",
-                    "يظهر «يحتاج عناية» على الآية التي تكرّرت صعوبتها حديثًا، ويزول حين تتذكّرها دون مساعدة في يومين بعد آخر خطأ.",
+                    "يظهر «يحتاج عناية» على الآية التي تكرّرت صعوبتها حديثًا، ويزول حين تتذكّرها دون مساعدة في يومين مختلفين بعد آخر خطأ.",
                 )
                 part("وضع المراجعة", "زر العين في أعلى المصحف يغطي الآيات، فتقرؤها من حفظك وتكشفها بإصبعك للتأكد.")
             }

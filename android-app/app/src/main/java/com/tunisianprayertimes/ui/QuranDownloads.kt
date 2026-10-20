@@ -258,7 +258,7 @@ internal fun QuranPagesDownloadBanner(
             )
             when (state.status) {
                 QuranPackStatus.WaitingForWifi -> TextButton(onClick = onUseMobileData, modifier = Modifier.testTag("quran_pages_mobile_data")) {
-                    Text("استخدم بيانات الجوال")
+                    Text("استخدم بيانات الهاتف")
                 }
                 QuranPackStatus.NeedsConfirmation -> TextButton(onClick = onUseMobileData) { Text("تابع") }
                 QuranPackStatus.Failed -> TextButton(onClick = { onDownload(true) }, modifier = Modifier.testTag("quran_pages_retry")) {
@@ -312,7 +312,7 @@ internal fun QuranRecitationDownloadsSection(
             QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("بانتظار شبكة Wi-Fi", Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
                 TextButton(onClick = { onUseMobileData(waiting) }, modifier = Modifier.testTag("quran_audio_mobile_data")) {
-                    Text("استخدم بيانات الجوال (${quranSize(waiting.sumOf { it.archive.bytes })})")
+                    Text("استخدم بيانات الهاتف (${quranSize(waiting.sumOf { it.archive.bytes })})")
                 }
             }
             QuranPackStatus.Pending, QuranPackStatus.Downloading, QuranPackStatus.Transferring -> {

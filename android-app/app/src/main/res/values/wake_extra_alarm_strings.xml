@@ -2,7 +2,7 @@
 <resources>
     <string name="wake_extra_add">إضافة تنبيه</string>
     <string name="wake_extra_overview_hint">تنبيهات مرتبطة بوقت المنبه الرئيسي. اضغط على أي تنبيه لتعديله.</string>
-    <string name="wake_extra_empty_hint">أضف تنبيهًا قبل المنبه الرئيسي أو بعده، واختر الوقت والصوت لكل تنبيه.</string>
+    <string name="wake_extra_empty_hint">أضف تنبيهًا قبل المنبه الرئيسي أو بعده، واختر لكل تنبيه وقته وصوته وتحدي إيقافه.</string>
     <string name="wake_extra_main_alarm">المنبه الرئيسي</string>
     <string name="wake_extra_new_title">إضافة تنبيه</string>
     <string name="wake_extra_edit_title">تعديل التنبيه</string>
@@ -16,4 +16,9 @@
     <string name="wake_extra_minutes_error">أدخل عددًا من 1 إلى 180</string>
     <string name="wake_extra_time_invalid">أدخل عدد الدقائق لعرض وقت التنبيه</string>
     <string name="wake_extra_sound_customize">تخصيص الصوت</string>
+    <string name="wake_extra_challenge_subtitle">لا يتوقف هذا التنبيه إلا بعد أن تُتمّ التحدي.</string>
+    <string name="wake_extra_use_main_challenge">استخدم تحدي المنبه الرئيسي</string>
+    <string name="wake_extra_detail_sound_same">صوت المنبه الرئيسي</string>
+    <!-- The extra alarm's sound, then its hardest stop challenge («تحدٍّ صعب»). -->
+    <string name="wake_extra_detail_with_challenge">%1$s • %2$s</string>
 </resources>

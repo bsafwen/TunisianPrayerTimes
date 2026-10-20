@@ -11,6 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
@@ -88,6 +89,31 @@ class MainTabRequestsTest {
 
         assertTrue(second.get().tabRequests.current.sequence > handled)
         assertEquals("tahlil", second.get().tabRequests.current.dhikrOccurrenceId)
+    }
+
+    @Test fun launcherTapOverTheLeftActivityClosesSoTheTaskShowsAsItWas() {
+        // 2026-10-20: a task begun by a shell start was left on the Quran tab; each launcher tap put a fresh
+        // activity, open on the prayers tab, over it (8 of them in one task on the OnePlus).
+        PrefsManager.markFirstLaunchDone(context)
+        val launcher = Intent(context, MainActivity::class.java)
+            .setAction(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+        val stacked = Robolectric.buildActivity(MainActivity::class.java, launcher)
+        shadowOf(stacked.get()).setIsTaskRoot(false)
+
+        stacked.create()
+
+        assertTrue(stacked.get().isFinishing)
+    }
+
+    @Test fun onlyAPlainLauncherTapOverTheTaskIsClosed() {
+        val launcher = launcher()
+        val shortcut = launcher().putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_QURAN)
+
+        assertTrue(isLauncherTapOverLeftTask(launcher, isTaskRoot = false, savedInstanceState = null))
+        assertFalse(isLauncherTapOverLeftTask(launcher, isTaskRoot = true, savedInstanceState = null))
+        assertFalse(isLauncherTapOverLeftTask(shortcut, isTaskRoot = false, savedInstanceState = null))
+        assertFalse(isLauncherTapOverLeftTask(reminder("morning"), isTaskRoot = false, savedInstanceState = null))
+        assertFalse(isLauncherTapOverLeftTask(launcher, isTaskRoot = false, savedInstanceState = Bundle()))
     }
 
     @Test fun reopeningFromRecentsIsNotANewRequest() {

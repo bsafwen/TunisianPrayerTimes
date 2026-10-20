@@ -34,7 +34,7 @@ internal fun QuranMedia.reciterStatus(reciterId: String): String? {
     val waiting = packs.filterNot { state(it).available }.map { state(it).status }
     val active = packs.filterNot { state(it).available }.any { state(it).active }
     return when {
-        ready == packs.size -> "محمّلة كاملة · ${quranSize(total)}"
+        ready == packs.size -> "محمّلة بالكامل · ${quranSize(total)}"
         // Asked for but held back: not a download under way.
         waiting.any { it == QuranPackStatus.WaitingForWifi || it == QuranPackStatus.NeedsConfirmation } -> "بانتظار شبكة ${ltr("Wi-Fi")} · $ready من ${packs.size}${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}حزم"
         active -> "جارٍ التنزيل · ${quranPercent(progress(packs) ?: 0f)}"
@@ -129,7 +129,7 @@ internal fun QuranDownloadsSheet(
                         )
                     }
                 }
-                Text("ننزّل الملفات عبر شبكة Wi-Fi، ونستأذنك قبل استخدام بيانات الجوال.", fontSize = 12.sp, color = TextMuted)
+                Text("ننزّل الملفات عبر شبكة Wi-Fi، ونستأذنك قبل استخدام بيانات الهاتف.", fontSize = 12.sp, color = TextMuted)
             }
         }
     }
@@ -162,7 +162,7 @@ internal fun QuranPagesEmptyState(media: QuranMedia, onDownload: () -> Unit, onU
                 QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> {
                     Text("الصفحات بانتظار شبكة Wi-Fi", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                     Button(onClick = onUseMobileData, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)) {
-                        Text("نزّل ${quranSize(pages.archive.bytes)} عبر بيانات الجوال")
+                        Text("نزّل ${quranSize(pages.archive.bytes)} عبر بيانات الهاتف")
                     }
                 }
                 QuranPackStatus.Failed -> {

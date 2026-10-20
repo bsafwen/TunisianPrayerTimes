@@ -447,7 +447,7 @@ fun hifzFix(catalog: QuranCatalog, point: HifzPoint, lookAlikes: HifzLookAlikes?
                 between == 0 -> reasons += "متتاليتان في السورة نفسها"
                 between > 0 -> reasons += "في السورة نفسها، بينهما ${hifzVersesLabel(between)}"
             }
-            if (point.bothWays) reasons += "قد تخلط بينهما في الاتجاهين، فنسألك عن الآيتين كلتيهما"
+            if (point.bothWays) reasons += "قد تقرأ كلًّا منهما مكان الأخرى، فنسألك عن الآيتين كلتيهما"
             // Where the look-alike parts, matched to the verse's own parting.
             val otherPartAt = when {
                 partAt == null -> null

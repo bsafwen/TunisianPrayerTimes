@@ -80,7 +80,7 @@ internal fun QuranVerseCard(
                     color = QuranHifzChipTint,
                     border = BorderStroke(1.dp, QuranHifzViolet),
                     modifier = Modifier.align(Alignment.CenterVertically).heightIn(min = 32.dp).testTag("quran_verse_fix")
-                        .semantics { contentDescription = "في دفتر المراجعة: اعرض تصحيحها" },
+                        .semantics { contentDescription = "في دفتر المراجعة: عرض تصحيحها" },
                 ) {
                     Box(Modifier.padding(horizontal = 12.dp, vertical = 6.dp), contentAlignment = Alignment.Center) {
                         Text("في دفتر المراجعة", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzChipText)
@@ -94,7 +94,7 @@ internal fun QuranVerseCard(
         val actions = buildList<@Composable RowScope.() -> Unit> {
             add { CardAction(R.drawable.ic_quran_headphones, "استمع", onListen, Modifier.testTag("quran_verse_listen")) }
             add { CardAction(R.drawable.ic_quran_repeat, "كرّر", onRepeat, Modifier.testTag("quran_verse_repeat")) }
-            add { CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: سجّلها للمراجعة") }
+            add { CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: تسجيلها للمراجعة") }
             add {
                 CardAction(
                     if (bookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark,
@@ -103,8 +103,8 @@ internal fun QuranVerseCard(
                 )
             }
             if (!review) {
-                add { CardAction(R.drawable.ic_quran_copy, "نسخ", onCopy, Modifier.testTag("quran_verse_copy")) }
-                add { CardAction(R.drawable.ic_quran_share, "مشاركة", onShare, Modifier.testTag("quran_verse_share")) }
+                add { CardAction(R.drawable.ic_quran_copy, "انسخ", onCopy, Modifier.testTag("quran_verse_copy")) }
+                add { CardAction(R.drawable.ic_quran_share, "شارك", onShare, Modifier.testTag("quran_verse_share")) }
             }
         }
         // One row while every label fits whole; with large text, two even rows, never a label cut short.
@@ -149,7 +149,7 @@ private fun RowScope.CardAction(
 private val CardActionLabelStyle = TextStyle(fontSize = 12.sp)
 
 /** Every label a verse card's action may show, to measure the widest. */
-private val CardActionLabels = listOf("استمع", "كرّر", "أخطأت", "علامة", "نسخ", "مشاركة")
+private val CardActionLabels = listOf("استمع", "كرّر", "أخطأت", "علامة", "انسخ", "شارك")
 
 private object QuranRealTime : MotionDurationScale {
     override val scaleFactor: Float get() = 1f
@@ -196,7 +196,7 @@ internal fun QuranRangeCard(
                     Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء", Modifier.size(18.dp), tint = TextMuted)
                 }
             }
-            if (!endChosen) Text("اضغط على آية النهاية، ولو في صفحة أخرى.", fontSize = 12.sp, color = TextMuted)
+            if (!endChosen) Text("اضغط على آخر آية تريدها، ولو في صفحة أخرى.", fontSize = 12.sp, color = TextMuted)
             // One scrolling row: on a narrow phone with large text the card must not take half the page.
             Row(Modifier.horizontalScroll(rememberScrollState()).padding(end = 10.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf(3, 5, 10, null).forEach { n ->

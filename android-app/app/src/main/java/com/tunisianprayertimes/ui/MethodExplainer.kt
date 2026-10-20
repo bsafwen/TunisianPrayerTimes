@@ -100,7 +100,7 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
         ) {
             Text("طريقتك", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = GreenPrimaryDark)
             Text(MethodPresentation.name(method.id), fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = TextDark)
-            Text(chip.labelAr, fontSize = 12.sp, color = GreenPrimary)
+            Text(MethodPresentation.chipLabel(chip, method.id), fontSize = 12.sp, color = GreenPrimary)
             mapped?.let { Text(MethodPresentation.zoneLine(method.id, it, place), fontSize = 13.sp, color = TextMuted) }
             HorizontalDivider()
             methodRows(method).forEach { (label, value) -> ParameterRow(label, value) }

@@ -1,8 +1,15 @@
 package com.tunisianprayertimes.ui
 
+import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrayerWakeSubAlarm
+import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.WakeUpCheckStep
+import com.tunisianprayertimes.WakeUpCheckType
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class WakeExtraAlarmRulesTest {
@@ -97,5 +104,58 @@ class WakeExtraAlarmRulesTest {
     fun edgeHold_neverMovesLessThanTheDragStepOfItsSpan() {
         assertEquals(65, nextExtraAlarmEdgeOffset(minutes = 60, tick = 0, minStepMinutes = 5))
         assertEquals(50, nextExtraAlarmEdgeOffset(minutes = 47, tick = 0, minStepMinutes = 5))
+    }
+
+    private val hardMaze = WakePlaybackOptions(
+        wakeUpCheckEnabled = true,
+        wakeUpCheckSteps = listOf(
+            WakeUpCheckStep(WakeUpCheckType.MATH, MathDifficulty.EASY),
+            WakeUpCheckStep(WakeUpCheckType.GYROSCOPE_MAZE, MathDifficulty.HARD),
+        ),
+    )
+
+    @Test
+    fun challenge_firstSwitchedOnStartsFromTheMainAlarmsChallenge() {
+        val extra = alarm(5)
+        val enabled = extra.playback.withChallengeEnabled(true, mainPlayback = hardMaze)
+
+        assertTrue(enabled.wakeUpCheckEnabled)
+        assertEquals(hardMaze.wakeUpCheckSteps, enabled.wakeUpCheckSteps)
+        assertTrue(extra.copy(playback = enabled).challengeMatches(hardMaze))
+    }
+
+    @Test
+    fun challenge_switchedBackOnKeepsTheExtraAlarmsOwnChallenge() {
+        val own = listOf(WakeUpCheckStep(WakeUpCheckType.WHACK_A_MOLE, MathDifficulty.INTERMEDIATE))
+        val off = WakePlaybackOptions(wakeUpCheckSteps = own)
+
+        val enabled = off.withChallengeEnabled(true, mainPlayback = hardMaze)
+
+        assertTrue(enabled.wakeUpCheckEnabled)
+        assertEquals(own, enabled.wakeUpCheckSteps)
+    }
+
+    @Test
+    fun challenge_withoutOneOnTheMainAlarmStartsFromAnEasySum() {
+        val enabled = WakePlaybackOptions().withChallengeEnabled(true, mainPlayback = WakePlaybackOptions())
+
+        assertEquals(listOf(WakeUpCheckStep(WakeUpCheckType.MATH, MathDifficulty.EASY)), enabled.effectiveWakeUpCheckSteps)
+    }
+
+    @Test
+    fun challenge_matchesTheMainAlarmOnlyWithTheSameChallengesInOrder() {
+        val reversed = hardMaze.copy(wakeUpCheckSteps = hardMaze.wakeUpCheckSteps.reversed())
+
+        assertTrue(alarm(5).challengeMatches(WakePlaybackOptions()))
+        assertFalse(alarm(5).challengeMatches(hardMaze))
+        assertFalse(alarm(5).copy(playback = reversed).challengeMatches(hardMaze))
+        // Settings kept behind a switched-off challenge don't count.
+        assertTrue(alarm(5).copy(playback = reversed.copy(wakeUpCheckEnabled = false)).challengeMatches(WakePlaybackOptions()))
+    }
+
+    @Test
+    fun challenge_hardestDifficultyIsNullWhenTheAlarmStopsWithATap() {
+        assertEquals(MathDifficulty.HARD, hardMaze.hardestChallengeDifficulty())
+        assertNull(hardMaze.copy(wakeUpCheckEnabled = false).hardestChallengeDifficulty())
     }
 }

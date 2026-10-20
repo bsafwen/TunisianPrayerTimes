@@ -1,6 +1,7 @@
 package com.tunisianprayertimes
 
 import com.tunisianprayertimes.engine.TimeEvent
+import com.tunisianprayertimes.method.EvidenceKind
 import com.tunisianprayertimes.method.FitSample
 import com.tunisianprayertimes.method.FitStats
 import com.tunisianprayertimes.method.PrayerMethods
@@ -73,6 +74,14 @@ class MethodPresentationTest {
         assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(bosnia, place("BA"), null, null))
         assertNotEquals(MethodChip.OFFICIAL, MethodPresentation.chip(bosnia, place("ME"), null, null))
         assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(method("diyanet_tr"), place("TR"), null, null))
+    }
+
+    /** A thin chip names the method's own source, so every method that can wear it needs one (owner, 2026-10-20). */
+    @Test
+    fun everyThinlySourcedMethodNamesItsSource() {
+        val thin = PrayerMethods.ALL.filter { it.evidence.kind == EvidenceKind.APPROXIMATE }.map { it.id } + "iq_sunni_endowment"
+        val unnamed = thin.filter { MethodPresentation.chipLabel(MethodChip.APPROXIMATE, it).isBlank() }
+        assertTrue("no source named: $unnamed", unnamed.isEmpty())
     }
 
     @Test

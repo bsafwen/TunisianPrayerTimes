@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.ui
 
+import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.WakePlaybackOptions
@@ -129,6 +130,36 @@ internal fun WakePlaybackOptions.withSoundOf(source: WakePlaybackOptions): WakeP
     vibrationOnly = source.vibrationOnly,
     progressiveVolume = source.progressiveVolume,
 )
+
+/** The stop challenge of [source]: on or off, and the same challenges at the same difficulties. */
+internal fun WakePlaybackOptions.withChallengeOf(source: WakePlaybackOptions): WakePlaybackOptions = copy(
+    wakeUpCheckEnabled = source.wakeUpCheckEnabled,
+    wakeUpCheckType = source.wakeUpCheckType,
+    mathDifficulty = source.mathDifficulty,
+    wakeUpCheckSteps = source.effectiveWakeUpCheckSteps,
+)
+
+/**
+ * Turns the stop challenge on or off. Switched on for the first time, it starts from the main
+ * alarm's challenge when that one has one, since that is the challenge the user already chose.
+ */
+internal fun WakePlaybackOptions.withChallengeEnabled(
+    enabled: Boolean,
+    mainPlayback: WakePlaybackOptions,
+): WakePlaybackOptions = if (enabled && wakeUpCheckSteps.isEmpty() && mainPlayback.wakeUpCheckEnabled) {
+    withChallengeOf(mainPlayback)
+} else {
+    copy(wakeUpCheckEnabled = enabled)
+}
+
+/** Same as the main alarm's: both off, or both on with the same challenges in the same order. */
+internal fun PrayerWakeSubAlarm.challengeMatches(mainPlayback: WakePlaybackOptions): Boolean =
+    playback.wakeUpCheckEnabled == mainPlayback.wakeUpCheckEnabled &&
+        (!mainPlayback.wakeUpCheckEnabled || playback.effectiveWakeUpCheckSteps == mainPlayback.effectiveWakeUpCheckSteps)
+
+/** The hardest difficulty among the challenges that stop this alarm, or null when it stops with a tap. */
+internal fun WakePlaybackOptions.hardestChallengeDifficulty(): MathDifficulty? =
+    if (wakeUpCheckEnabled) effectiveWakeUpCheckSteps.maxOfOrNull { step -> step.difficulty } else null
 
 internal fun PrayerWakeSubAlarm.soundMatches(mainPlayback: WakePlaybackOptions): Boolean =
     playback.vibrationOnly == mainPlayback.vibrationOnly &&

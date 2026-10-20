@@ -406,7 +406,7 @@ object HifzReminder {
         context: Context,
         point: HifzPoint,
         now: Long = System.currentTimeMillis(),
-        /** False behind its question, «حان سؤال …»: its answer is not in view, and its reminder still asks it. */
+        /** False behind its question, «حان وقتُ السؤال عن …»: its answer is not in view, and its reminder still asks it. */
         answerShown: Boolean = true,
     ): String {
         val settings = HifzSettings.read(context)
@@ -426,7 +426,7 @@ object HifzReminder {
         }
         // Its answer is in view in its fix: a check that counts is the next day's. Behind its question, still today's.
         val dueDay = if (point.dueDay <= today) (if (answerShown) today + 1 else today) else point.dueDay
-        if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» ${dayLabel(dueDay, today)}"
+        if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» ${if (dueDay == today) "الآن" else dayLabel(dueDay, today)}"
         val first = slotFrom(now, dueDay) ?: return "نسألك عنها ${dayLabel(dueDay, today)}"
         return "نسألك عنها ${slotLabel(first, today)}"
     }
@@ -491,7 +491,7 @@ object HifzReminder {
 
     /** «بعد الظهر», «بعد الجمعة», «الساعة 21:30». */
     fun timeLabel(time: HifzWhen, day: Long?): String = when (time) {
-        is HifzWhen.After -> "بعد ${prayerName(time.prayer, day)}"
+        is HifzWhen.After -> "بعد ${prayerName(time.prayer, day).let { if (it == "الجمعة") "صلاة $it" else it }}"
         is HifzWhen.At -> "الساعة$NB${clock(time.minute)}"
     }
 
@@ -504,7 +504,7 @@ object HifzReminder {
      */
     // A prayer day's Isha after midnight is still «اليوم» to the reader, never yesterday's weekday.
     fun slotLabel(slot: HifzSlot, today: Long): String = "${dayLabel(maxOf(slot.day, today), today)} " +
-        (heldAfter(slot)?.let { if (it == Prayer.AID_FITR || it == Prayer.AID_ADHA) "بعد ${prayerPhrase(it, slot.day)}" else "بعد ${prayerName(it, slot.day)}" }
+        (heldAfter(slot)?.let { if (it == Prayer.AID_FITR || it == Prayer.AID_ADHA) "بعد ${prayerPhrase(it, slot.day)}" else "بعد ${prayerName(it, slot.day).let { n -> if (n == "الجمعة") "صلاة $n" else n }}" }
             ?: timeLabel(slot.time, slot.day))
 
     /**
@@ -562,7 +562,7 @@ object HifzReminder {
     fun notificationProblem(context: Context, channels: List<String>): String? = when {
         channels.isEmpty() -> null
         !appNotificationsAllowed(context) -> "الإشعارات متوقّفة: لن يصلك أي تذكير."
-        blockedChannel(context, channels) == CHANNEL_ID -> "تذكير المراجعة متوقّف في إعدادات الإشعارات."
+        blockedChannel(context, channels) == CHANNEL_ID -> "إشعارات «المراجعة» متوقّفة في إعدادات الهاتف."
         else -> null
     }
 

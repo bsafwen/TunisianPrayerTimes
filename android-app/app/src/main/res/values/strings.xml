@@ -388,7 +388,14 @@
     <string name="wake_editor_wake_up_check_subtitle">لن تتمكن من إيقاف المنبه قبل إتمام تحدي الإيقاف.</string>
     <string name="wake_editor_wake_up_check_subtitle_compact">اختر نوع التحدي والخطوات التي تظهر عند الرنين.</string>
     <string name="wake_editor_wake_up_check_single_summary">%1$s • %2$s</string>
-    <string name="wake_editor_wake_up_check_steps_summary">%1$d خطوات</string>
+    <plurals name="wake_editor_wake_up_check_steps_summary">
+        <item quantity="zero">بلا تحدٍّ</item>
+        <item quantity="one">تحدٍّ واحد</item>
+        <item quantity="two">تحديان</item>
+        <item quantity="few">%1$d تحديات</item>
+        <item quantity="many">%1$d تحديًا</item>
+        <item quantity="other">%1$d تحدٍّ</item>
+    </plurals>
     <string name="wake_editor_math_difficulty_title">مستوى الصعوبة</string>
     <string name="wake_editor_math_difficulty_easy">سهل</string>
     <string name="wake_editor_math_difficulty_intermediate">متوسط</string>

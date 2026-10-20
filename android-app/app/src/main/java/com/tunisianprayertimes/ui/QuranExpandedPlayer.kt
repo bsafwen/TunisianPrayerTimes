@@ -374,7 +374,7 @@ internal fun QuranExpandedPlayer(
                     active = range != null,
                 ) { close ->
                     DropdownMenuItem(text = { Text("اختيار مقطع على الصفحة") }, onClick = { close(); actions.pickRangeOnPage() })
-                    DropdownMenuItem(text = { Text("بالأرقام…") }, onClick = { close(); actions.typedRange() })
+                    DropdownMenuItem(text = { Text("اختيار مقطع بالأرقام…") }, onClick = { close(); actions.typedRange() })
                     if (range != null) DropdownMenuItem(text = { Text(if (drill != null) quranPlaylistStopLabel(drill.title) else "إلغاء التكرار") }, onClick = { close(); actions.cancelRange() })
                 }
                 val drilling = drill != null
@@ -387,14 +387,14 @@ internal fun QuranExpandedPlayer(
                     }
                 }
                 val gap = drill?.gapFactor ?: listening.gapFactor
-                ChipMenu(if (gap > 0f) "مهلة: ${gapLabel(gap, short = true)}" else gapLabel(gap), active = gap > 0f, enabled = !drilling) { close ->
+                ChipMenu(if (gap > 0f) "المهلة: ${gapLabel(gap, short = true)}" else gapLabel(gap), active = gap > 0f, enabled = !drilling) { close ->
                     QuranGapChoices.forEach { g ->
                         DropdownMenuItem(
                             text = { Text(gapLabel(g), fontWeight = if (g == listening.gapFactor) FontWeight.Bold else FontWeight.Normal) },
                             onClick = { close(); actions.listening { it.copy(gapFactor = g) } },
                         )
                     }
-                    Text("وقت صامت لتردّد الآية بعد القارئ", Modifier.padding(horizontal = 16.dp, vertical = 8.dp), fontSize = 12.sp, color = TextMuted)
+                    Text("وقت صامت لتُردّد الآية بعد القارئ", Modifier.padding(horizontal = 16.dp, vertical = 8.dp), fontSize = 12.sp, color = TextMuted)
                 }
                 val speed = drill?.speed ?: listening.speed
                 ChipMenu("السرعة ${speedLabel(speed)}", active = speed != 1f, enabled = !drilling) { close ->
@@ -414,12 +414,12 @@ internal fun QuranExpandedPlayer(
                         DropdownMenuItem(text = { Text("بعد ${quranMinutesLabel(m)}") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Minutes, m) })
                     }
                 }
-                ChipMenu("بعد السورة: ${if (listening.continueAfterSurah) "تابع" else "توقّف"}", active = !listening.continueAfterSurah) { close ->
+                ChipMenu("بعد السورة: ${if (listening.continueAfterSurah) "متابعة" else "توقّف"}", active = !listening.continueAfterSurah) { close ->
                     DropdownMenuItem(
-                        text = { Text(nextSurahName?.let { "تابع إلى سورة $it" } ?: "تابع") },
+                        text = { Text(nextSurahName?.let { "المتابعة إلى سورة $it" } ?: "المتابعة") },
                         onClick = { close(); actions.listening { it.copy(continueAfterSurah = true) } },
                     )
-                    DropdownMenuItem(text = { Text("توقّف في نهايتها") }, onClick = { close(); actions.listening { it.copy(continueAfterSurah = false) } })
+                    DropdownMenuItem(text = { Text("التوقّف في نهايتها") }, onClick = { close(); actions.listening { it.copy(continueAfterSurah = false) } })
                 }
             }
         }
@@ -459,7 +459,7 @@ internal fun gapLabel(factor: Float, short: Boolean = false): String = when (fac
     0f -> "بلا مهلة"
     0.5f -> if (short) "نصف الآية" else "نصف مدة الآية"
     1f -> if (short) "مدة الآية" else "مدة الآية"
-    2f -> if (short) "ضعف الآية" else "ضعف مدة الآية"
+    2f -> if (short) "ضِعف الآية" else "ضِعف مدة الآية"
     else -> ltr("×$factor")
 }
 

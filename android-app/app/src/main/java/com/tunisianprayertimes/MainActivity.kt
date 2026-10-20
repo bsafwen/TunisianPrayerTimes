@@ -109,6 +109,17 @@ internal class MainTabRequests {
     }
 }
 
+/**
+ * The launcher icon, tapped while the app's task began with another intent (a notification tap, a shell start).
+ * Android does not bring that task back as it was: it puts a fresh activity, open on the prayers tab, over the one
+ * the user left. That fresh one closes at once, and the task shows as it was left.
+ */
+internal fun isLauncherTapOverLeftTask(intent: Intent?, isTaskRoot: Boolean, savedInstanceState: Bundle?): Boolean =
+    savedInstanceState == null && !isTaskRoot && intent != null &&
+        intent.action == Intent.ACTION_MAIN && intent.hasCategory(Intent.CATEGORY_LAUNCHER) &&
+        // The launcher shortcuts carry a destination: theirs is a request to follow.
+        !intent.hasExtra(MainTabNavigation.EXTRA_DESTINATION)
+
 class MainActivity : AppCompatActivity() {
 
     @VisibleForTesting
@@ -160,6 +171,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (isLauncherTapOverLeftTask(intent, isTaskRoot, savedInstanceState)) {
+            finish()
+            return
+        }
         tabRequests.onCreate(intent, savedInstanceState)
         publishShortcuts()
         enableEdgeToEdge(

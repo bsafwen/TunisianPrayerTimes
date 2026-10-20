@@ -298,7 +298,7 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
             ResultRow(quranPageLabel(page), catalog.pages.getOrNull(page - 1)?.surahNames?.joinToString("، ").orEmpty(), onClick = { actions.openPage(page) }, onPlay = null)
         }
         if (recent.isNotEmpty()) {
-            item { SectionLabel("الصفحات الأخيرة") }
+            item { SectionLabel("صفحات فتحتها مؤخرًا") }
             item {
                 @OptIn(ExperimentalLayoutApi::class)
                 FlowRow(Modifier.padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -327,14 +327,6 @@ internal fun quranVerseCountLabel(count: Int): String = when {
     count == 2 -> "آيتان"
     count % 100 in 3..10 -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}آيات"
     else -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}آية"
-}
-
-/** «موضع», «موضعان», «3 مواضع», «11 موضعًا». */
-internal fun quranPointsLabel(count: Int): String = when {
-    count == 1 -> "موضع واحد"
-    count == 2 -> "موضعان"
-    count % 100 in 3..10 -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}مواضع"
-    else -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}موضعًا"
 }
 
 /** The small violet mark that stands for hifz points, as the page marks them: a light tint, underlined. */

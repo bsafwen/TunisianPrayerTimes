@@ -215,7 +215,7 @@ internal fun HifzHomeSheet(
                                 }
                             }
                             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                told.correction?.let { TextButton(onClick = it, modifier = Modifier.testTag("hifz_notice_correction")) { Text("التصحيح", fontSize = 13.sp) } }
+                                told.correction?.let { TextButton(onClick = it, modifier = Modifier.testTag("hifz_notice_correction")) { Text("اعرض التصحيح", fontSize = 13.sp) } }
                                 told.again?.let { TextButton(onClick = it) { Text("سجّل موضعًا آخر", fontSize = 13.sp) } }
                                 told.undo?.let { TextButton(onClick = it, modifier = Modifier.testTag("hifz_notice_undo")) { Text(told.undoLabel, fontSize = 13.sp) } }
                             }
@@ -338,7 +338,7 @@ internal fun HifzHomeSheet(
                     item {
                         Column(Modifier.padding(top = 4.dp)) {
                             Text("يحتاج عناية", fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzViolet)
-                            Text("أخطأت فيها أو تردّدت أكثر من مرة، فنقدّمها في الأسئلة إلى أن تتذكّرها دون مساعدة في يومين.", fontSize = 12.sp, color = TextMuted)
+                            Text("أخطأت فيها أو تردّدت أكثر من مرة، فنقدّمها على غيرها في الأسئلة إلى أن تتذكّرها دون مساعدة في يومين مختلفين.", fontSize = 12.sp, color = TextMuted)
                         }
                     }
                     items(care, key = { "care${it.id}" }) { HifzPointRow(catalog, it, today, eligibleDueIds?.contains(it.id) ?: it.isDue(today, now), later.rows[it.id]) { openRow(it) } }
@@ -353,7 +353,7 @@ internal fun HifzHomeSheet(
                 if (notebook && shown.isEmpty()) item(key = "empty_notebook") {
                     Column(Modifier.fillMaxWidth().padding(vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                         Text(if (points.isEmpty()) "لم تسجّل مواضع بعد" else "لا مواضع تطابق اختيارك", fontSize = 14.sp, color = GreenPrimaryDark)
-                        Text(if (points.isEmpty()) "سجّل الموضع الذي توقّفت فيه لتجده هنا وتتابع مراجعته." else "جرّب اسم السورة أو رقم الآية أو كلمات من ملاحظتك.", fontSize = 13.sp, color = TextMuted)
+                        Text(if (points.isEmpty()) "سجّل الموضع الذي أخطأت فيه لتجده هنا وتتابع مراجعته." else "جرّب اسم السورة أو رقم الآية أو كلمات من ملاحظتك.", fontSize = 13.sp, color = TextMuted)
                         if (points.isNotEmpty()) TextButton(onClick = { query = ""; kindFilter = null; surahFilter = null; tab = 1 }) { Text("اعرض كل المواضع") }
                     }
                 }
@@ -434,7 +434,7 @@ internal fun HifzSpoilDialog(
     val sentence = hifzSpoilSentence(catalog, point, opened)
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("حان سؤال ${hifzVerseName(catalog, point.verse)}") },
+        title = { Text("حان وقتُ السؤال عن ${hifzVerseAbout(catalog, point.verse)}") },
         text = { Text(sentence) },
         confirmButton = {
             Button(onClick = onReview, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_spoil_review")) { Text("اسألني الآن") }

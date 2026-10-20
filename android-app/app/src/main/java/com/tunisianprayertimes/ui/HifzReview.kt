@@ -688,7 +688,7 @@ internal fun HifzReviewCard(
                 IconButton(onClick = { state.folded = !state.folded }, modifier = Modifier.size(36.dp).testTag("hifz_review_fold")) {
                     Icon(
                         painterResource(if (state.folded) R.drawable.ic_expand_less else R.drawable.ic_expand_more),
-                        if (state.folded) "اعرض بطاقة المراجعة" else "اطوِ البطاقة لترى الصفحة", Modifier.size(22.dp), tint = GreenPrimaryDark,
+                        if (state.folded) "عرض بطاقة المراجعة" else "طيّ البطاقة لرؤية الصفحة", Modifier.size(22.dp), tint = GreenPrimaryDark,
                     )
                 }
             }
@@ -729,7 +729,7 @@ internal fun HifzReviewCard(
                         Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(AdhkarSoftGreen).padding(start = 10.dp).testTag("hifz_review_eraser_hint"),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text("المس الغطاء لتكشف كلمة، واسحب فوقه لتكشف أكثر. لتقليب الصفحة، اسحب من الهامش.", Modifier.weight(1f), fontSize = 12.sp, color = GreenPrimaryDark)
+                        Text("المس الغطاء لتكشف كلمة، ومرّر إصبعك عليه ببطء لتكشف أكثر، أو بسرعة لتقلب الصفحة.",Modifier.weight(1f), fontSize = 12.sp, color = GreenPrimaryDark)
                         IconButton(onClick = onEraserHintClosed, modifier = Modifier.size(36.dp)) {
                             Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء الإرشاد", Modifier.size(14.dp), tint = GreenPrimaryDark)
                         }
@@ -806,7 +806,7 @@ private fun HifzReviewTitle(
         if (!atEnd && state.undoable(queue) != null) TextButton(
             onClick = { state.undo(queue, actions) }, contentPadding = PaddingValues(horizontal = 8.dp),
             modifier = Modifier.testTag("hifz_review_undo").semantics { contentDescription = "تراجع عن آخر جواب" },
-        ) { Text("تراجع") }
+        ) { Text("تراجع عن آخر جواب") }
         if (!atEnd) TextButton(
             onClick = { state.requestEnd(queue, actions) }, contentPadding = PaddingValues(horizontal = 8.dp),
             modifier = Modifier.testTag("hifz_review_end"),
@@ -830,7 +830,7 @@ private fun HifzReviewHeading(catalog: QuranCatalog, point: HifzPoint, onPage: B
             Modifier.weight(1f), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
         )
         when {
-            point.mastered -> Text("ثبتت · مراجعة للتأكد", fontSize = 12.sp, color = GreenPrimary)
+            point.mastered -> Text("ثبتت · سؤال للتأكد", fontSize = 12.sp, color = GreenPrimary)
             point.needsCare -> Text("يحتاج عناية", fontSize = 12.sp, color = QuranHifzViolet)
         }
     }
@@ -1010,7 +1010,7 @@ private fun ColumnScope.HifzReviewControls(
             val grades = if (state.assisted(point)) listOf(HifzGrade.Hesitated, HifzGrade.Again) else HifzGrade.entries.toList()
             fun label(grade: HifzGrade): String = when (grade) {
                 HifzGrade.Held -> "دون مساعدة"
-                HifzGrade.Hesitated -> if (state.assisted(point)) "تذكّرتها بمساعدة" else "بتردد أو تلميح"
+                HifzGrade.Hesitated -> if (state.assisted(point)) "تذكّرتها بمساعدة" else "بتردّد أو تلميح"
                 HifzGrade.Again -> if (state.assisted(point)) "لم أتذكّرها" else "نسيت أو أخطأت"
             }
             val outcomes = grades.associateWith { hifzGradeOutcome(point, it, freshAgain, tomorrow, short = compact) }
@@ -1124,8 +1124,8 @@ private fun HifzReviewEnd(
         when {
             stopped -> {
                 Text("توقّفت المراجعة", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                Text("سُجّلت أجوبتك: ${hifzCountLabel(state.graded)}", fontSize = 14.sp, color = TextDark)
-                Text("بقي في هذه الجولة: ${hifzCountLabel(remaining)}", fontSize = 14.sp, color = TextMuted)
+                Text("أجبت عن ${HifzReminder.pointsAbout(state.graded)}.", fontSize = 14.sp, color = TextDark)
+                if (remaining > 0) Text("بقي في هذه المراجعة ${hifzCountLabel(remaining)}.", fontSize = 14.sp, color = TextMuted)
                 if (state.training(state.point(queue))) Text("اضغط «تابع الآن» لتكمل التدريب على هذا الموضع.", fontSize = 13.sp, color = TextMuted)
             }
             day.graded > 0 -> {
@@ -1155,7 +1155,7 @@ private fun HifzReviewEnd(
                     ).mapIndexed { i, part -> if (i == 0) part else "و$part" }.joinToString("، ") + ".",
                     fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
                 )
-                if (day.heldNow > 0 && shown.none { it.milestone && it.next == null }) Text("ثبت منها اليوم: ${hifzCountLabel(day.heldNow)}", fontSize = 14.sp, color = GreenPrimary)
+                if (day.heldNow > 0 && shown.none { it.milestone && it.next == null }) Text("ثبت منها اليوم ${hifzCountLabel(day.heldNow)}.", fontSize = 14.sp, color = GreenPrimary)
             }
             else -> Text(if (stillDue > 0) "لم يبق موضع في هذه المراجعة" else "لا أسئلة الآن", fontSize = 16.sp, color = GreenPrimaryDark)
         }
@@ -1194,7 +1194,7 @@ private fun HifzReviewEnd(
         if (stillDue > 0) Button(
             onClick = actions::more, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
             modifier = Modifier.fillMaxWidth().testTag("hifz_review_more"),
-        ) { Text("تابع مراجعات اليوم") }
+        ) { Text("تابع مراجعة اليوم") }
         else Button(
             onClick = actions::dismiss, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
             modifier = Modifier.fillMaxWidth().testTag("hifz_review_done"),
@@ -1265,8 +1265,8 @@ internal fun hifzGradeOutcome(
         val effect = when {
             point.mastered -> if (short) "تخرج من «ثبتت»" else "تخرج من «ثبتت»، ونذكّرك بها من جديد إلى أن تتذكّرها ${HifzReminder.recallsPhrase(count)} دون مساعدة"
             point.restartsOnAgain -> if (short) "من جديد: ${hifzRecallsLabel(count)}" + (if (raised) "\nلأن الخطأ عاد" else "")
-                else "نذكّرك بها من جديد إلى أن تتذكّرها ${HifzReminder.recallsPhrase(count)} دون مساعدة" + (if (raised) " بدل ${point.recalls}، لأن الخطأ عاد" else "")
-            else -> "خطأ آخر"
+                else "نذكّرك بها من جديد إلى أن تتذكّرها ${HifzReminder.recallsPhrase(count)} دون مساعدة" + (if (raised) " بدل ${HifzReminder.recallsPhrase(point.recalls)}، لأن الخطأ عاد" else "")
+            else -> "تُحسب خطأً آخر"
         }
         return HifzGradeOutcome(effect, next)
     }

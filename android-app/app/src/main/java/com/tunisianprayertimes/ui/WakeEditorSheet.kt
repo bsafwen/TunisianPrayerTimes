@@ -1998,7 +1998,7 @@ private fun WakeRecurringSilenceConflictDialog(
 
 /** A setting row where the whole row toggles, so the label (nearest the thumb in RTL) works too. */
 @Composable
-private fun WakeSwitchSettingRow(
+internal fun WakeSwitchSettingRow(
     title: String,
     subtitle: String? = null,
     checked: Boolean,
@@ -2194,11 +2194,16 @@ private fun WakeExtraAlarmTimeline(
                 WakeExtraTimelineRow(
                     timeText = timeTextFor(subAlarm.signedOffsetMinutes),
                     description = wakeExtraAlarmOffsetText(subAlarm),
-                    detail = if (subAlarm.soundMatches(mainPlayback)) {
-                        stringResource(R.string.wake_editor_extra_sound_same)
-                    } else {
-                        wakeExtraAlarmSoundText(context, subAlarm.playback)
-                    },
+                    detail = wakeExtraAlarmDetailText(
+                        context = context,
+                        // Named outright: next to the challenge, «مثل المنبه الرئيسي» would read as the whole alarm.
+                        sound = if (subAlarm.soundMatches(mainPlayback)) {
+                            stringResource(R.string.wake_extra_detail_sound_same)
+                        } else {
+                            wakeExtraAlarmSoundText(context, subAlarm.playback)
+                        },
+                        playback = subAlarm.playback,
+                    ),
                     isMain = false,
                     isFirst = index == 0,
                     isLast = index == timeline.lastIndex,
@@ -2227,6 +2232,21 @@ internal fun wakeExtraAlarmSoundText(
     context.getString(R.string.wake_editor_vibration_only_title)
 } else {
     WakeRingtoneCatalog.titleFor(context, playback.ringtone, playback.customRingtoneUri)
+}
+
+/** The sound, then the hardest challenge that stops this extra alarm, if it has one. */
+private fun wakeExtraAlarmDetailText(
+    context: android.content.Context,
+    sound: String,
+    playback: WakePlaybackOptions,
+): String {
+    val challenge = when (playback.hardestChallengeDifficulty()) {
+        MathDifficulty.HARD -> context.getString(R.string.wake_alarm_feature_challenge_hard)
+        MathDifficulty.INTERMEDIATE -> context.getString(R.string.wake_alarm_feature_challenge_medium)
+        MathDifficulty.EASY -> context.getString(R.string.wake_alarm_feature_challenge_easy)
+        null -> return sound
+    }
+    return context.getString(R.string.wake_extra_detail_with_challenge, sound, challenge)
 }
 
 private val WAKE_EXTRA_ROW_PADDING = 16.dp
@@ -2317,7 +2337,8 @@ private fun WakeExtraTimelineRow(
                     text = detail,
                     fontSize = 11.sp,
                     color = TextMuted,
-                    maxLines = 1,
+                    // Two lines, so a long ringtone name doesn't hide the challenge after it.
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
             }
@@ -2473,16 +2494,7 @@ private fun WakeWakeCheckControls(
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
 ) {
     var wakeCheckExpanded by rememberSaveable { mutableStateOf(false) }
-    val challengeSteps = playback.effectiveWakeUpCheckSteps
-    val challengeSummary = if (challengeSteps.size == 1) {
-        stringResource(
-            R.string.wake_editor_wake_up_check_single_summary,
-            wakeCheckTypeLabel(challengeSteps.first().type),
-            wakeCheckDifficultyLabel(challengeSteps.first().difficulty),
-        )
-    } else {
-        stringResource(R.string.wake_editor_wake_up_check_steps_summary, challengeSteps.size)
-    }
+    val challengeSummary = wakeChallengeSummary(playback)
     val awakeCheckDelayChoices = (WAKE_AWAKE_CHECK_DELAY_CHOICES + playback.awakeCheckDelayMinutes)
         .distinct()
         .sorted()
@@ -2642,8 +2654,23 @@ private fun WakeAfterRingStep(
     }
 }
 
+/** The challenge's type and difficulty, or how many challenges follow one another. */
 @Composable
-private fun WakeChallengeEditLink(
+internal fun wakeChallengeSummary(playback: WakePlaybackOptions): String {
+    val steps = playback.effectiveWakeUpCheckSteps
+    return if (steps.size == 1) {
+        stringResource(
+            R.string.wake_editor_wake_up_check_single_summary,
+            wakeCheckTypeLabel(steps.first().type),
+            wakeCheckDifficultyLabel(steps.first().difficulty),
+        )
+    } else {
+        pluralStringResource(R.plurals.wake_editor_wake_up_check_steps_summary, steps.size, steps.size)
+    }
+}
+
+@Composable
+internal fun WakeChallengeEditLink(
     summary: String,
     expanded: Boolean,
     onClick: () -> Unit,
@@ -2683,7 +2710,7 @@ private fun WakeChallengeEditLink(
 }
 
 @Composable
-private fun WakeUpCheckStepsEditor(
+internal fun WakeUpCheckStepsEditor(
     playback: WakePlaybackOptions,
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
 ) {

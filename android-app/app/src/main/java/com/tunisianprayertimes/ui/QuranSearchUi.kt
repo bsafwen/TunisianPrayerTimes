@@ -320,7 +320,7 @@ internal fun QuranSearchSheet(
         title = { Text("مصادر النص") },
         text = {
             Column {
-                Text("نبحث في نص رواية قالون من الموسوعة القرآنية، ونستعين ببيانات Tanzil لأرقام الصفحات وللبحث بالإملاء المعتاد.", fontSize = 14.sp)
+                Text("نبحث في نص رواية قالون من الموسوعة القرآنية، ونستعين ببيانات Tanzil لأرقام الصفحات وللبحث بالرسم الإملائي.", fontSize = 14.sp)
                 TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://quranpedia.net/surah/7/1"))) }) { Text("الموسوعة القرآنية") }
                 TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://tanzil.net"))) }) { Text("Tanzil Project · CC BY 3.0") }
             }
@@ -337,7 +337,7 @@ private fun QuranSearchLocationRow(
     onOpen: (Boolean) -> Unit,
 ) {
     val (title, detail) = when (location) {
-        is QuranGoTo.Page -> "انتقال إلى صفحة ${location.printed}" to
+        is QuranGoTo.Page -> "صفحة ${location.printed}" to
             catalog.pages.getOrNull((location.printed - 1).coerceAtLeast(1) - 1)?.surahNames?.joinToString("، ").orEmpty()
         is QuranGoTo.Surah -> {
             val surah = catalog.surahs[location.number - 1]
@@ -398,7 +398,7 @@ private fun QuranSearchResultRow(result: QuranSearchResult, query: String, onCli
             )
             Text(quranPageLabel(result.page), fontSize = 12.sp, color = TextMuted)
             IconButton(onClick = onPlay) {
-                Icon(painterResource(R.drawable.ic_play_arrow), "الاستماع إلى الآية", tint = GreenPrimary)
+                Icon(painterResource(R.drawable.ic_play_arrow), when (result.verses.size) { 1 -> "الاستماع إلى الآية"; 2 -> "الاستماع إلى الآيتين"; else -> "الاستماع إلى الآيات" }, tint = GreenPrimary)
             }
         }
         Text(text, Modifier.padding(top = 8.dp), fontFamily = QuranMushafFont, fontSize = 22.sp, lineHeight = 36.sp, color = TextDark)

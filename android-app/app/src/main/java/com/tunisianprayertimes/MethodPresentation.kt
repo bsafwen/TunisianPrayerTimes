@@ -9,13 +9,17 @@ import com.tunisianprayertimes.place.MappedZone
 import com.tunisianprayertimes.place.PrayerPlace
 import java.util.Locale
 
-/** One chip per method (A6, plan 6.11). */
+/**
+ * One chip per method (A6, plan 6.11). A chip names what the method rests on, never how precise its times are: every
+ * method computes its own definition exactly (owner, 2026-10-20: «تقريبية» read as imprecise times).
+ */
 enum class MethodChip(val labelAr: String) {
     OFFICIAL("رسمية"),
     MATCHES_TABLE("مطابقة للجدول الرسمي"),
-    FROM_TABLES("مستخلصة من جداول"),
+    FROM_TABLES("مبنية على جداول منشورة"),
     PUBLISHED("طريقة منشورة"),
-    APPROXIMATE("تقريبية"),
+    /** Thin evidence: the chip names the method's own source ([MethodPresentation.chipLabel]). */
+    APPROXIMATE(""),
     CUSTOM("مخصّصة"),
 }
 
@@ -172,6 +176,28 @@ object MethodPresentation {
             EvidenceKind.APPROXIMATE -> MethodChip.APPROXIMATE
         }
     }
+
+    /**
+     * What each thinly sourced method rests on, named in its chip: a generic «limited sources» named none (owner,
+     * 2026-10-20: «which sources?!»). `iq_sunni_endowment` wears it in the Kurdistan Region only.
+     */
+    private val THIN_SOURCES = mapOf(
+        "sd_fitted" to "مبنية على أوقات مساجد محلية",
+        "so_fitted" to "مبنية على أوقات مساجد محلية",
+        "dj_fitted" to "مبنية على أوقات مساجد محلية",
+        "iq_sunni_endowment" to "مبنية على جدول بغداد",
+        "mcw" to "مبنية على صيغة اللجنة",
+        "london_unified" to "مبنية على صيغة لجنة رؤية الهلال",
+        "ecfr_90" to "مبنية على ما يُنقل عن المجلس",
+        "uk_18_nearest_day" to "مبنية على قرار برادفورد 1983",
+        "cil_lisbon" to "مبنية على موقع ${LRI}Aladhan$PDI",
+        "mk_bfi" to "مبنية على موقع الجماعة",
+        "mwl_angle" to "مبنية على حساب موقع المركز",
+    )
+
+    /** The chip's text: its label, or for thin evidence the method's own source. */
+    fun chipLabel(chip: MethodChip, methodId: String): String =
+        if (chip == MethodChip.APPROXIMATE) THIN_SOURCES[methodId].orEmpty() else chip.labelAr
 
     /** Tables no authority publishes for that place drop «الرسمي» (6.11). */
     private val UNOFFICIAL_ZONES = setOf("rhone_ctir", "km_fitted", "yt_traditional", "re_cir")

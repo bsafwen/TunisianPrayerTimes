@@ -374,7 +374,10 @@ internal fun MethodEntry(
                 MethodPresentation.name(method.id), fontSize = 15.sp, color = if (selected) GreenPrimaryDark else TextDark,
                 fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal, modifier = Modifier.weight(1f),
             )
-            Text(chip.labelAr, fontSize = 11.sp, color = if (chip == MethodChip.MATCHES_TABLE || chip == MethodChip.OFFICIAL) GreenPrimary else TextMuted)
+            Text(
+                MethodPresentation.chipLabel(chip, method.id), fontSize = 11.sp,
+                color = if (chip == MethodChip.MATCHES_TABLE || chip == MethodChip.OFFICIAL) GreenPrimary else TextMuted,
+            )
         }
         MethodDetails(method, day)
         if (inferred) Text("مقترحة بالقياس على البلد المجاور، ولم نجد بعدُ جدولًا محليًا.", fontSize = 11.sp, color = TextMuted)

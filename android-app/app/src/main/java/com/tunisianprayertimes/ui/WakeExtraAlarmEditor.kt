@@ -80,7 +80,7 @@ private val ExtraAlarmDraftSaver = Saver<PrayerWakeSubAlarm, String>(
     restore = { Json.decodeFromString(PrayerWakeSubAlarm.serializer(), it) },
 )
 
-/** Edits stay local until the explicit add/save action, including sound changes. */
+/** Edits stay local until the explicit add/save action, including sound and challenge changes. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun WakeExtraAlarmEditor(
@@ -97,6 +97,7 @@ internal fun WakeExtraAlarmEditor(
     var draft by rememberSaveable(subAlarm.id, stateSaver = ExtraAlarmDraftSaver) { mutableStateOf(subAlarm) }
     var minutesText by rememberSaveable(subAlarm.id) { mutableStateOf(subAlarm.minutesOffset.toString()) }
     var soundExpanded by rememberSaveable(subAlarm.id) { mutableStateOf(false) }
+    var challengeExpanded by rememberSaveable(subAlarm.id) { mutableStateOf(false) }
     val minutes = minutesText.toIntOrNull()
     val validMinutes = minutes?.takeIf { it in 1..WAKE_EXTRA_ALARM_MAX_OFFSET_MINUTES }
     val isBefore = draft.direction == OffsetDirection.BEFORE
@@ -346,6 +347,41 @@ internal fun WakeExtraAlarmEditor(
                                         Text(stringResource(R.string.wake_editor_extra_use_main_sound), fontWeight = FontWeight.Bold)
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+                Surface(color = Color.White, shape = RoundedCornerShape(16.dp)) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().padding(14.dp).testTag("wake_extra_challenge"),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        val challengeOn = draft.playback.wakeUpCheckEnabled
+                        WakeSwitchSettingRow(
+                            title = stringResource(R.string.wake_editor_wake_up_check_title),
+                            subtitle = if (challengeOn) null else stringResource(R.string.wake_extra_challenge_subtitle),
+                            checked = challengeOn,
+                            onCheckedChange = { enabled ->
+                                draft = draft.copy(playback = draft.playback.withChallengeEnabled(enabled, mainPlayback))
+                                if (enabled) challengeExpanded = true
+                            },
+                        )
+                        if (challengeOn) {
+                            WakeChallengeEditLink(
+                                summary = wakeChallengeSummary(draft.playback),
+                                expanded = challengeExpanded,
+                                onClick = { challengeExpanded = !challengeExpanded },
+                            )
+                        }
+                        AnimatedVisibility(challengeOn && challengeExpanded) {
+                            WakeUpCheckStepsEditor(
+                                playback = draft.playback,
+                                onPlaybackChange = { draft = draft.copy(playback = it) },
+                            )
+                        }
+                        if (mainPlayback.wakeUpCheckEnabled && !draft.challengeMatches(mainPlayback)) {
+                            TextButton(onClick = { draft = draft.copy(playback = draft.playback.withChallengeOf(mainPlayback)) }) {
+                                Text(stringResource(R.string.wake_extra_use_main_challenge), fontWeight = FontWeight.Bold)
                             }
                         }
                     }
