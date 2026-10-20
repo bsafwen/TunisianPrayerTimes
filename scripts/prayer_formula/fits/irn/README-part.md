@@ -110,7 +110,7 @@ apart:
   points (about 9 days off by 1–4 min at each switch); its north by H8's sudden seasons, its 63.56–66.33° Maghrib
   floor and its polar Asr (Tromsø up to 214 min off in the ramps).
 - **Tier** (9.5): with the current engine no zone passes (Dhuhr's ramp days alone break "every time within 1 min"),
-  so the asset ships its records with «مستخلصة من جداول» everywhere; with the proposed rules 354 of 358 zones pass
+  so the asset ships its records with «مبنية على جداول منشورة» everywhere; with the proposed rules 354 of 358 zones pass
   (below it: Svalbard, Fajr 95.6 % and Isha 95.1 % exact; Vestnes, Isha 96.4 %; Hasvik, Fajr 96.2 %; each within
   1 min on every day; and Røyrvik, whose sunrise of 31 December comes 2 min early), and `records.py` writes them
   now that the engine has the rules (below).

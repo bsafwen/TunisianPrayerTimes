@@ -166,9 +166,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
       <div class="legend" aria-label="Legend">
         <span><i class="dot k-match"></i>Can show <span class="ar">«مطابقة للجدول الرسمي»</span></span>
         <span><i class="dot k-official"></i>National body's own method <span class="ar">«رسمية»</span></span>
-        <span><i class="dot k-tables"></i>Fitted from tables <span class="ar">«مستخلصة من جداول»</span></span>
+        <span><i class="dot k-tables"></i>Fitted from tables <span class="ar">«مبنية على جداول منشورة»</span></span>
         <span><i class="dot k-published"></i>Published method <span class="ar">«طريقة منشورة»</span></span>
-        <span><i class="dot k-approx"></i>Approximate <span class="ar">«تقريبية»</span></span>
+        <span><i class="dot k-approx"></i>Thin evidence, its source named <span class="ar">«مبنية على أوقات مساجد محلية» …</span></span>
       </div>
     </aside>
     <main id="brief" class="brief" aria-live="polite"></main>
@@ -182,8 +182,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 
 <script>
 const LABELS = {
-  match: "مطابقة للجدول الرسمي", official: "رسمية", tables: "مستخلصة من جداول",
-  published: "طريقة منشورة", approx: "تقريبية", inm: "المعهد الوطني للرصد الجوي"
+  match: "مطابقة للجدول الرسمي", official: "رسمية", tables: "مبنية على جداول منشورة",
+  published: "طريقة منشورة", approx: "مبنية على …", inm: "المعهد الوطني للرصد الجوي"
 };
 const REGIONS = [
   ["all", "All"], ["tn", "Tunisia"], ["arab", "Arab League"], ["europe", "Europe"], ["overseas", "Overseas France"], ["world", "Elsewhere"]
@@ -378,7 +378,7 @@ const C = [
             "Its two dataset mosques don't follow the Awqaf."] },
 
 { cc: "IQ", name: "Iraq", ar: "العراق", region: "arab", dot: "match",
-  chips: [["match", "Baghdad"], ["tables", "27 other cities"], ["approx", "Kurdistan Region"]],
+  chips: [["match", "Baghdad"], ["tables", "27 other cities"], ["approx", "Kurdistan Region", "مبنية على جدول بغداد"]],
   methods: [["iq_sunni_endowment", "ديوان الوقف السني (العراق)", "no question"]],
   headline: "The Sunni Endowment's Baghdad table, shown as printed: 98.4–100 % of minutes, «مطابقة للجدول الرسمي» in Baghdad; the Kurdistan Region runs at the user's point.",
   rules: ["18°", "city horizon", "transit + 5", "×1, apparent sun, + 3", "city horizon + 2", "17°"],
@@ -387,7 +387,7 @@ const C = [
   acc: ["good", "Every time within 1 min"],
   accText: "Baghdad's 2026 held out by month, as printed: Fajr 100, sunrise 98.4, Dhuhr 99.7, Asr 100, Maghrib 98.4, Isha 100 % exact, all within 1 min.",
   pending: ["The 2027 table (from January) confirms the reference year; the Sunni Endowment's own API answers any date for Baghdad, so a held-out year can be read now.",
-            "No printed table for the other 27 cities, so they keep «مستخلصة من جداول»."] },
+            "No printed table for the other 27 cities, so they keep «مبنية على جداول منشورة»."] },
 
 { cc: "LB", name: "Lebanon", ar: "لبنان", region: "arab", dot: "tables",
   chips: [["tables", "one national zone"]],
@@ -413,7 +413,7 @@ const C = [
   pending: ["The 1449 calendar (about June 2027) as a held-out year; it also settles the points, which the two halves of the year place up to 3 km apart."] },
 
 { cc: "SD", name: "Sudan", ar: "السودان", region: "arab", dot: "approx",
-  chips: [["approx", "at the user's point"]],
+  chips: [["approx", "at the user's point", "مبنية على أوقات مساجد محلية"]],
   methods: [["sd_fitted", "طريقة مستخلصة (السودان)", "no question"]],
   headline: "18° and 18° at the user's own point: no official table is online.",
   rules: ["18°", "standard", "transit", "×1", "sunset", "18°"],
@@ -424,7 +424,7 @@ const C = [
   pending: ["The Islamic Fiqh Academy's current Khartoum table (the 2015 edition ran out)."] },
 
 { cc: "SO", name: "Somalia", ar: "الصومال", region: "arab", dot: "approx",
-  chips: [["approx", "at the user's point"]],
+  chips: [["approx", "at the user's point", "مبنية على أوقات مساجد محلية"]],
   methods: [["so_fitted", "طريقة مستخلصة (الصومال)", "no question"]],
   headline: "MWL's 18° and 17° at the user's own point: no official table found.",
   rules: MWL_RULES,
@@ -435,7 +435,7 @@ const C = [
   pending: ["Tables from the federal ministry (mesa.gov.so) or Somaliland's ministry."] },
 
 { cc: "DJ", name: "Djibouti", ar: "جيبوتي", region: "arab", dot: "approx",
-  chips: [["approx", "at the user's point"]],
+  chips: [["approx", "at the user's point", "مبنية على أوقات مساجد محلية"]],
   methods: [["dj_fitted", "طريقة مستخلصة (جيبوتي)", "no question"]],
   headline: "MWL's 18° and 17° at the user's own point: no official table found.",
   rules: MWL_RULES,
@@ -445,8 +445,8 @@ const C = [
   accText: "Checked against the owner's mosque dataset only (tier C).",
   pending: ["The unified adhan schedule of the Ramadan 2026 circular, from the Directorate of Islamic Affairs."] },
 
-{ cc: "KM", name: "Comoros", ar: "جزر القمر", region: "arab", dot: "approx",
-  chips: [["approx", "the Moroni table"]],
+{ cc: "KM", name: "Comoros", ar: "جزر القمر", region: "arab", dot: "tables",
+  chips: [["tables", "the Moroni table"]],
   methods: [["km_fitted", "الجدول التقليدي (جزر القمر)", "no question"]],
   headline: "The traditional Moroni table that 16 of the dataset's 24 mosques use, in all three islands.",
   rules: ["Moroni's sunrise − 73", "at the user's point", "transit + 4", "Maghrib − 168", "sunset + 3", "Maghrib + 74"],
@@ -573,7 +573,7 @@ const C = [
   pending: [] },
 
 { cc: "MK", name: "North Macedonia", ar: "مقدونيا الشمالية", region: "europe", dot: "approx",
-  chips: [["approx", "until fitted"]],
+  chips: [["approx", "until fitted", "مبنية على موقع الجماعة"]],
   methods: [["mk_bfi", "الجماعة الدينية الإسلامية في مقدونيا الشمالية", "no question"]],
   headline: "An approximate preset from the BFI's Skopje times, within 1 min on the two days collected.",
   rules: ["≈ sunrise − 50", "as Diyanet", "≈ transit + 7", "≈ ×1 + 2", "≈ sunset + 9", "≈ 15°"],
@@ -753,7 +753,7 @@ const C = [
   how: "IRN's 2026 tables with their two sun evaluations and northern rules: Mecca's day in the polar seasons, the floor days, Svalbard on Mecca's day all year.",
   zones: "358 municipalities (and Svalbard), by the place's municipality.",
   acc: ["good", "All within 1 min but one sunrise"],
-  accText: "354 of 358 municipality records pass the tier-A shares. Norway still shows «مستخلصة من جداول»: the app's «مطابقة للجدول الرسمي» list covers 8 Arab countries only.",
+  accText: "354 of 358 municipality records pass the tier-A shares. Norway still shows «مبنية على جداول منشورة»: the app's «مطابقة للجدول الرسمي» list covers 8 Arab countries only.",
   pending: ["Adding Norway to the app's tier-A country list would show «مطابقة للجدول الرسمي» in 354 municipalities.",
             "IRN's 2027 tables as a held-out year.",
             "A GPS place often carries a neighbouring municipality's number (the catalogue has rows in 95 of 357)."] },
@@ -861,8 +861,8 @@ function renderSummary() {
     ["Countries with their own entry", real.length, ""],
     ["Can show «مطابقة للجدول الرسمي» somewhere", count("match"), "match"],
     ["«رسمية»", count("official"), "official"],
-    ["«مستخلصة من جداول»", count("tables"), "tables"],
-    ["«تقريبية»", count("approx"), "approx"],
+    ["«مبنية على جداول منشورة»", count("tables"), "tables"],
+    ["Thin evidence, its source named", count("approx"), "approx"],
     ["Open in release builds", real.filter(c => c.release).length, ""]
   ];
   $("summary").innerHTML = items.map(([t, n, k]) =>
@@ -891,8 +891,8 @@ function renderList() {
 function renderBrief(cc) {
   const c = byCode.get(cc) || C[0];
   current = c.cc;
-  const chips = c.chips.map(([k, note]) =>
-    `<span class="chip k-${k}"><span class="ar">«${LABELS[k]}»</span>${note ? `<span>${esc(note)}</span>` : ""}</span>`).join("");
+  const chips = c.chips.map(([k, note, ar]) =>
+    `<span class="chip k-${k}"><span class="ar">«${ar || LABELS[k]}»</span>${note ? `<span>${esc(note)}</span>` : ""}</span>`).join("");
   const methods = c.methods.map(([id, ar, note]) =>
     `<div class="method"><span class="mono">${esc(id)}</span><span class="ar">${esc(ar)}</span><span class="release">${esc(note)}</span></div>`).join("");
   const rules = `<div class="rules"><table><thead><tr>${TIMES.map(t => `<th scope="col">${t}</th>`).join("")}</tr></thead>

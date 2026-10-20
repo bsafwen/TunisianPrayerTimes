@@ -50,7 +50,7 @@ location.
 Pressure and temperature follow the morning elevation by the climate law of Accurate Times' UAE entries (the ISA lapse
 rate with 30 °C at sea level, as whole hPa and °C). The western point lies 2.0–23.6 km from the location's town (Al
 Ain and Dubai the farthest). The 29 other locations take provisional inputs: the town point, the fitted zones' median
-elevations (222 m morning, 223 m evening, 988 hPa, 29 °C), no eastern point, and no fit record («مستخلصة من جداول»,
+elevations (222 m morning, 223 m evening, 988 hPa, 29 °C), no eastern point, and no fit record («مبنية على جداول منشورة»,
 9.5).
 
 These values are fixed in fit.py (`FIRST_FIT`, each fold's own included): the stages below chose them on 2026-10-18,

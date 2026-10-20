@@ -62,7 +62,7 @@ its own year, common.compute; exact / within 1 min). The asset's record is the f
   Isha 45.7 / 97.1 %, 3 min at worst.
 - Plan 9.2 (±2 min on the 2026 sheets and June 2025, ±3 on July 2025's Isha): met on the 2026 sheets and June 2025;
   July 2025's Isha reaches 4 min on three days with the engine as is and 3 with the tables' night. No tier: September
-  is missing and A8's year differences keep exact shares far below 97 %, so «مستخلصة من جداول».
+  is missing and A8's year differences keep exact shares far below 97 %, so «مبنية على جداول منشورة».
 
 **Engine change (proposed, not applied).** `HighLatitudeRule.DumRf` takes the night of its date, N = 24 h − (sunset(D)
 − sunrise(D)), for both caps: Fajr = later(t, sunrise(D) − 0.30·N), Isha = earlier(t, sunset(D) + r(D)·N). `fit.py

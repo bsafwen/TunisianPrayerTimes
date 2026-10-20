@@ -70,7 +70,7 @@ lowest are Bayt al-Faqih's Fajr (91 %), Al Mukalla's Asr (91 %), Marib's Maghrib
 
 **Tier A** (9.5): 4 of the 31 zones reach the shares (97 % exact on each time, all within 1 minute): Saada, Dhamar,
 Tarim and Jaar. None passes: the held-out days cover May to October only, and the gate needs 7 in every month. Every
-zone ships with «مستخلصة من جداول» until a year of the monthly collection (9.3) is scored.
+zone ships with «مبنية على جداول منشورة» until a year of the monthly collection (9.3) is scored.
 
 **Quirk days.** None: no held-out time is more than 1 minute off.
 

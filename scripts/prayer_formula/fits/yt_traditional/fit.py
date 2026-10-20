@@ -9,7 +9,7 @@ holds only a script); the owner's mosque dataset is never a source (5.6). So the
 table less 3 min: Fajr = sunrise - 76, Dhuhr + 1, Maghrib = sunset, Isha = Maghrib + 74, Asr = Maghrib - 168) and the
 asset is the plan's single zone: every time from Moroni's point, the point of `km_fitted` (plan 8.7: -11.70, 43.25),
 named «مايوت» so that the zone line never names Moroni, mapped NATIONAL, with the sunrise row at the user's own point
-(`sunriseAtPlace`, 6.5). It carries no FitStats, so the chip stays «مستخلصة من جداول» (Q36).
+(`sunriseAtPlace`, 6.5). It carries no FitStats, so the chip stays «مبنية على جداول منشورة» (Q36).
 
 Once the site's 2026 table is saved under test-data-local, this script is where it gets scored (9.2: within 2 min on at
 least 90 % of days per prayer, never more than 4 off; its sunrise column, the site's own, is not compared).

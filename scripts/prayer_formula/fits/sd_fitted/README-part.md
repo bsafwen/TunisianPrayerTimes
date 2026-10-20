@@ -5,7 +5,7 @@ written: the plan fixes every value (A3, owner, 2026-10-11) and runs the method 
 
 **Method** (the plan's, unchanged; 8.5, 8.7): Fajr 18°, Isha 18°, Dhuhr = transit, Maghrib = sunset, Asr factor 1,
 nearest rounding on all six, standard horizon (ICOP's Sudan preset turns elevation off), MEEUS sun at the event
-instant, `AngleBased` rule (it never acts). Evidence `APPROXIMATE`, chip «تقريبية».
+instant, `AngleBased` rule (it never acts). Evidence `APPROXIMATE`, chip «مبنية على أوقات مساجد محلية».
 
 **Zones and mapping.** None: exact coordinates (`EXACT`), so no asset.
 
@@ -61,12 +61,12 @@ Isha 19:26, Al-Awail Fajr 04:39 and Maghrib 18:01, and `sd_fitted` gives 04:41, 
 10 min apart on Fajr and 7 on Maghrib, as the thesis found Khartoum's printed tables up to 7 min apart (12);
 Al-Awail's two minutes are within 2 min of the profile.
 
-**Tier A.** Not applicable: tier C (9.5), no official data, so no FitStats; chip «تقريبية» (A3).
+**Tier A.** Not applicable: tier C (9.5), no official data, so no FitStats; chip «مبنية على أوقات مساجد محلية» (A3).
 
 **Quirk days.** None counted. The Khartoum calendar's fixed clock times are its own rule, not slips.
 
 **Open.**
 - The Islamic Fiqh Academy's current Khartoum table (9.3; the 2015 edition ran out around 2025) and its other
-  states' tables: the only target that would make this profile «مستخلصة من جداول».
+  states' tables: the only target that would make this profile «مبنية على جداول منشورة».
 - Whether the Academy uses Isha = Maghrib + 90 in Ramadan, as the news site's page does, or 18° (ICOP's preset, the
   Bahri mosque).

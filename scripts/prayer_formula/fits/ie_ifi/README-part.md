@@ -84,7 +84,7 @@ the method at the user's own point; «حسب موقعي بالضبط» stays the
   (2025–2028) instead moves the towns' fitted points by up to 21 km and leaves 2028's Fajr 93.7 % within 1 min, so the
   fit stays at 2026, the year of the Ramadan tables (the plan's E5 reference year; the IFI's own is unknown).
 - **Tier** (9.5): Dublin's held-out record fails the gate (Fajr and Isha below 97 % exact, Isha up to 13 min held
-  out), and A8's drift alone keeps later years below it, so every zone ships with «مستخلصة من جداول». The towns'
+  out), and A8's drift alone keeps later years below it, so every zone ships with «مبنية على جداول منشورة». The towns'
   records cover February and March only (no year tables: the IFI publishes only Ramadan tables for its towns).
 
 **Quirk days** (1, counted apart): Tralee's Isha on 14 March 2026 is printed 12 min after its neighbours' line.
